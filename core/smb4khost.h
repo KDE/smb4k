@@ -94,20 +94,6 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     QString hostName() const; 
 
     /**
-     * Returns the UNC (Uniform Naming Convention string) in the form //HOST.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     *
-     * Please note that this function returns a modified URL string (uppercase
-     * hostname, etc.) and automatically strips a trailing slash if one is present.
-     *
-     * @returns the UNC.
-     */
-    QString unc() const;
-                                                   
-    /**
      * Set the workgroup where this host is located.
      *
      * @param workgroup           The workgroup name
@@ -193,14 +179,14 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     bool isEmpty() const;
 
     /**
-     * Set the port for the use in the UNC.
+     * Set the port for the use in the URL.
      *
      * @param port            The port
      */
     void setPort(int port);
 
     /**
-     * Returns the port that is used in the UNC.
+     * Returns the port that is used in the URL.
      *
      * @returns the port.
      */

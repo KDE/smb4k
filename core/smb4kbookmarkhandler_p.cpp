@@ -177,7 +177,7 @@ void Smb4KBookmarkDialog::loadLists(const QList<BookmarkPtr> &bookmarks, const Q
   // the list widget afterwards.
   for (const BookmarkPtr &b : bookmarks)
   {
-    QListWidgetItem *item = new QListWidgetItem(b->icon(), b->unc(), m_widget);
+    QListWidgetItem *item = new QListWidgetItem(b->icon(), b->displayString(), m_widget);
     item->setData(Qt::UserRole, static_cast<QUrl>(b->url()));
     
     m_bookmarks << b;
@@ -597,8 +597,8 @@ void Smb4KBookmarkEditor::loadBookmarks()
     QTreeWidgetItem *bookmarkItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
     bookmarkItem->setData(0, QTreeWidgetItem::UserType, static_cast<QUrl>(bookmark->url()));
     bookmarkItem->setIcon(0, bookmark->icon());
-    bookmarkItem->setText(0, bookmark->unc());
-    bookmarkItem->setText((m_tree_widget->columnCount() - 1), QString("01_%1").arg(bookmark->unc()));
+    bookmarkItem->setText(0, bookmark->displayString());
+    bookmarkItem->setText((m_tree_widget->columnCount() - 1), QString("01_%1").arg(bookmark->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort)));
     bookmarkItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDragEnabled);
     
     if (!bookmark->groupName().isEmpty())

@@ -506,11 +506,11 @@ void Smb4KToolTip::setupNetworkBrowserToolTip()
         m_text_layout->addWidget(m_ip_label, 4, 1, 0);
       }
       
-      QLabel *unc_label = new QLabel(i18n("UNC"), this);
+      QLabel *unc_label = new QLabel(i18n("Location"), this);
       unc_label->setPalette(p);
       
       m_text_layout->addWidget(unc_label, 5, 0, Qt::AlignRight);
-      m_text_layout->addWidget(new QLabel(share->unc(), this), 5, 1, 0);
+      m_text_layout->addWidget(new QLabel(share->displayString(), this), 5, 1, 0);
       
       m_info_layout->addLayout(m_text_layout);
       m_info_layout->addSpacerItem(new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding));
@@ -566,11 +566,11 @@ void Smb4KToolTip::setupSharesViewToolTip()
       
   m_text_layout = new QGridLayout();
       
-  QLabel *unc_label = new QLabel(i18n("UNC"), this);
+  QLabel *unc_label = new QLabel(i18n("Location"), this);
   unc_label->setPalette(p);
       
   m_text_layout->addWidget(unc_label, 0, 0, Qt::AlignRight);
-  m_text_layout->addWidget(new QLabel(share->unc(), this), 0, 1, 0);
+  m_text_layout->addWidget(new QLabel(share->displayString(), this), 0, 1, 0);
       
   QLabel *mp_label = new QLabel(i18n("Mountpoint"), this);
   mp_label->setPalette(p);

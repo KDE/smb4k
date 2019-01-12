@@ -186,7 +186,7 @@ void Smb4KMounter::triggerRemounts(bool fill_list)
         //
         for (const OptionsPtr &opt : list)
         {
-          QList<SharePtr> mountedShares = findShareByUNC(opt->unc());
+          QList<SharePtr> mountedShares = findShareByUrl(opt->url());
           
           if (!mountedShares.isEmpty())
           {
@@ -540,7 +540,7 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
     // Check if the share has already been mounted. If it is already present,
     // do not process it and return.
     //
-    QString unc;
+    QUrl url;
     
     if (share->isHomesShare())
     {
@@ -553,14 +553,14 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
         // Do nothing
       }
 
-      unc = share->homeUNC();      
+      url = share->homeUrl();     
     }
     else
     {
-      unc = share->unc();
+      url = share->url();
     }
     
-    QList<SharePtr> mountedShares = findShareByUNC(unc);
+    QList<SharePtr> mountedShares = findShareByUrl(url);
     bool isMounted = false;
       
     for (const SharePtr &s : mountedShares)
@@ -920,7 +920,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent, QWidget *par
           if (KMessageBox::warningYesNo(parent,
               i18n("<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</b>.</p>"
                   "<p>Do you really want to unmount it?</p></qt>",
-                  share->unc(), share->path(), share->user().loginName()),
+                  share->displayString(), share->path(), share->user().loginName()),
               i18n("Foreign Share")) == KMessageBox::No)
           {
             return;
@@ -2007,14 +2007,11 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   if (!share->isHomesShare())
   {
     map.insert("mh_url", share->url());
-    map.insert("mh_unc", share->unc());
   }
   else
   {
     map.insert("mh_url", share->homeUrl());
     map.insert("mh_homes_url", share->url());
-    map.insert("mh_unc", share->homeUNC());
-    map.insert("mh_homes_unc", share->unc());
   }  
 
   map.insert("mh_workgroup", share->workgroupName());
@@ -2296,14 +2293,11 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   if (!share->isHomesShare())
   {
     map.insert("mh_url", share->url());
-    map.insert("mh_unc", share->unc());
   }
   else
   {
     map.insert("mh_url", share->homeUrl());
     map.insert("mh_homes_url", share->url());
-    map.insert("mh_unc", share->homeUNC());
-    map.insert("mh_homes_unc", share->unc());
   }  
 
   map.insert("mh_workgroup", share->workgroupName());
@@ -2364,7 +2358,6 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
   //
   map.insert("mh_command", umount);
   map.insert("mh_url", share->url());
-  map.insert("mh_unc", share->unc());
   
   if (Smb4KHardwareInterface::self()->isOnline())
   {
@@ -2419,7 +2412,6 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
   //
   map.insert("mh_command", umount);
   map.insert("mh_url", share->url());
-  map.insert("mh_unc", share->unc());
   
   if (Smb4KHardwareInterface::self()->isOnline())
   {
@@ -2772,7 +2764,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
         {
           SharePtr remount = s.next();
 
-          if (!importedShare->isForeign() && QString::compare(remount->unc(), importedShare->unc(), Qt::CaseInsensitive) == 0)
+          if (!importedShare->isForeign() && remount->url().matches(importedShare->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
           {
             Smb4KCustomOptionsManager::self()->removeRemount(remount);
             s.remove();

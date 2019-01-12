@@ -122,7 +122,7 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     QString workgroupName() const;
 
     /**
-     * Sets the UNC/URL of the network item
+     * Sets the URL of the network item
      * 
      * @param url             The URL
      */
@@ -134,17 +134,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * @returns the URL
      */
     QUrl url() const;
-
-    /**
-     * Returns the UNC in the form //HOST/Share.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     *
-     * @returns the UNC.
-     */
-    QString unc() const;
 
     /**
      * Returns the host name.
@@ -553,7 +542,7 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     bool wolSendBeforeMount() const;
     
     /**
-     * This function returns all custom options in a sorted map. The UNC,
+     * This function returns all custom options in a sorted map. The URL,
      * workgroup and IP address must be retrieved separately if needed.
      *
      * Note that all entries that are set and valid are returned here. This
@@ -567,13 +556,13 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     
     /**
      * Check if the custom options @p options are equal to those defined here. If
-     * you just want to check if the options have the same UNC and workgroup and 
+     * you just want to check if the options have the same URL and workgroup and 
      * belong to the same profile, set @p fullCheck to FALSE.
      * 
      * @param options             The options that are to be compared to the
      *                            ones defined here
      * @param fullCheck           Set this to FALSE if you just want to check
-     *                            the profile, UNC and workgroup.
+     *                            the profile, URL and workgroup.
      */
     bool equals(Smb4KCustomOptions *options, bool fullCheck = true) const;
     

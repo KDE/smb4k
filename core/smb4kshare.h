@@ -63,14 +63,12 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     Smb4KShare(const QString &hostName, const QString &shareName);
 
     /**
-     * This constructor takes the UNC @p unc (in the form [smb:]//[USER@]HOST/SHARE) as
-     * only argument. It feeds the internal url object with the string, that extracts
-     * all parts from it. All other information has to be set by the other functions
-     * this class provides.
+     * This constructor takes the URL @p url as only argument. All other 
+     * information has to be set by the other functions this class provides.
      *
-     * @param unc           The UNC in the form [smb:]//[USER@]HOST/SHARE.
+     * @param url           The URL
      */
-    explicit Smb4KShare(const QString &unc);
+    explicit Smb4KShare(const QUrl &url);
 
     /**
      * This is the copy constructor. It takes another Smb4KShare item and copies all
@@ -118,39 +116,6 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the host name
      */
     QString hostName() const;
-
-    /**
-     * Returns the UNC (Uniform Naming Convention string) in the form //HOST/Share.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     * 
-     * Please note that this function returns a modified URL string (uppercase
-     * hostname, etc.) and automatically strips a trailing slash if one is present.
-     *
-     * @returns the UNC.
-     */
-    QString unc() const;
-                                                   
-    /**
-     * In case of a 'homes' share, this function returns the UNC (Uniform 
-     * Naming Convention string) of the user's home repository in the form 
-     * //HOST/User.
-     * 
-     * If the share is not a 'homes' share or no user name for the homes share
-     * has been defined, this function returns an empty string.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     * 
-     * Please note that this function returns a modified URL string (uppercase
-     * hostname, etc.) and automatically strips a trailing slash if one is present.
-     *
-     * @returns the UNC.
-     */
-    QString homeUNC() const;
     
     /**
      * In case of a 'homes' share, this function returns the URL of the user's 
@@ -162,27 +127,18 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the user's home repository's URL.
      */
     QUrl homeUrl() const;
-
-    /**
-     * Returns the host's UNC (Uniform Naming Convention string) in the form //HOST.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     * 
-     * Please note that this function returns a modified URL string (uppercase
-     * hostname) and automatically strips a trailing slash if one is present.
-     *
-     * @returns the UNC of the host.
-     */
-    QString hostUNC() const;
     
     /**
      * Returns the display string. Prefer this over all other alternatives in your
      * GUI.
+     * 
+     * @param showHomesShare  Show the name of the users home share instead of 'homes'
+     *                        in case this is a homes share. Setting this argument on a 
+     *                        non-homes share does nothing.
+     * 
      * @returns the display string.
      */
-    QString displayString() const;
+    QString displayString(bool showHomeShare = false) const;
 
     /**
      * Set the workgroup where the host is located that offers this share.

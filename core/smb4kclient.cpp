@@ -57,7 +57,7 @@ Smb4KClient::Smb4KClient(QObject* parent)
   //
   // Connections
   // 
-  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
+  (QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
 }
 
 
@@ -200,8 +200,6 @@ void Smb4KClient::lookupDomains()
   job->setNetworkItem(item);
   job->setProcess(LookupDomains);
   
-  connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
-  
   //
   // Clear the pointer
   // 
@@ -245,8 +243,6 @@ void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
   job->setNetworkItem(workgroup);
   job->setProcess(LookupDomainMembers);
   
-  connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
-  
   //
   // Set the busy cursor
   //
@@ -284,8 +280,6 @@ void Smb4KClient::lookupShares(const HostPtr &host)
   Smb4KClientJob *job = new Smb4KClientJob(this);
   job->setNetworkItem(host);
   job->setProcess(LookupShares);
-  
-  connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
   
   //
   // Set the busy cursor
@@ -329,8 +323,6 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
     Smb4KClientJob *job = new Smb4KClientJob(this);
     job->setNetworkItem(item);
     job->setProcess(LookupFiles);
-    
-    connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
     
     //
     // Set the busy cursor
@@ -376,8 +368,6 @@ void Smb4KClient::printFile(const SharePtr& share, const KFileItem& fileItem, in
   job->setPrintFileItem(fileItem);
   job->setPrintCopies(copies);
   job->setProcess(PrintFile);
-    
-  connect(job, SIGNAL(result(KJob*)), this, SLOT(slotJobFinished(KJob*)));
   
   //
   // Set the busy cursor
@@ -900,7 +890,7 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
       
     for (const SharePtr &s : job->shares())
     {
-      if (s->workgroupName() == share->workgroupName() && s->unc() == share->unc())
+      if (s->workgroupName() == share->workgroupName() && s->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         found = true;
         break;
@@ -950,7 +940,7 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
     //
     // Add or update the shares
     //
-    if (!findShare(share->unc(), share->workgroupName()))
+    if (!findShare(share->url(), share->workgroupName()))
     {
       addShare(share);
     }
@@ -1008,7 +998,7 @@ void Smb4KClient::slotStartJobs()
 }
 
 
-void Smb4KClient::slotJobFinished(KJob *job)
+void Smb4KClient::slotResult(KJob *job)
 {
   //
   // Get the client job

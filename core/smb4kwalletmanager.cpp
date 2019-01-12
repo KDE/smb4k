@@ -54,6 +54,7 @@ Q_GLOBAL_STATIC(Smb4KWalletManagerStatic, p);
 Smb4KWalletManager::Smb4KWalletManager(QObject *parent)
 : QObject(parent), d(new Smb4KWalletManagerPrivate)
 {
+  qDebug() << "FIXME: Use URL instead of UNC for saving auth data in a wallet";
   d->wallet = 0;
   d->initialized = false;
 }
@@ -148,9 +149,9 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
         {
           QMap<QString,QString> map;
 
-          if (d->wallet->hasEntry(host->unc().toUpper()))
+          if (d->wallet->hasEntry(host->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper()))
           {
-            d->wallet->readMap(host->unc().toUpper(), map);
+            d->wallet->readMap(host->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper(), map);
           }
           else
           {
@@ -227,13 +228,13 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
 
           if (!share->isHomesShare())
           {
-            if (d->wallet->hasEntry(share->unc().toUpper()))
+            if (d->wallet->hasEntry(share->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper()))
             {
-              d->wallet->readMap(share->unc().toUpper(), map);
+              d->wallet->readMap(share->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper(), map);
             }
             else
             {
-              d->wallet->readMap(share->hostUNC().toUpper(), map);
+              d->wallet->readMap(share->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath).toUpper(), map);
             }
           }
           else
@@ -243,13 +244,13 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
             // name has already been provided.
             Smb4KHomesSharesHandler::self()->specifyUser(share, false);
 
-            if (d->wallet->hasEntry(share->homeUNC().toUpper()))
+            if (d->wallet->hasEntry(share->homeUrl().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper()))
             {
-              d->wallet->readMap(share->homeUNC().toUpper(), map);
+              d->wallet->readMap(share->homeUrl().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper(), map);
             }
             else
             {
-              d->wallet->readMap(share->hostUNC().toUpper(), map);
+              d->wallet->readMap(share->homeUrl().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath).toUpper(), map);
             }
           }
 
@@ -402,7 +403,7 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
               // Do nothing
             }
 
-            d->wallet->writeMap(host->unc().toUpper(), map);
+            d->wallet->writeMap(host->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper(), map);
             d->wallet->sync();
           }
           else
@@ -450,11 +451,11 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
 
             if (!share->isHomesShare())
             {
-              d->wallet->writeMap(share->unc().toUpper(), map);
+              d->wallet->writeMap(share->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper(), map);
             }
             else
             {
-              d->wallet->writeMap(share->homeUNC().toUpper(), map);
+              d->wallet->writeMap(share->homeUrl().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort).toUpper(), map);
             }
             d->wallet->sync();
           }
@@ -673,7 +674,7 @@ void Smb4KWalletManager::writeWalletEntries(const QList<Smb4KAuthInfo *> &entrie
         map["Workgroup"] = entries.at(i)->workgroupName();
         map["Login"] = entries.at(i)->userName();
         map["Password"] = entries.at(i)->password();
-        d->wallet->writeMap(entries.at(i)->unc(), map);
+        d->wallet->writeMap(entries.at(i)->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort), map);
       }
     }
 

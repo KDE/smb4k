@@ -74,6 +74,21 @@ class Smb4KNetworkSearchToolBar : public QToolBar
      */
     void clearSearch();
     
+    /**
+     * Set the completion strings. This function should be invoked before the
+     * search toolbar is shown.
+     * 
+     * @param strings         The list of completion strings
+     */
+    void setCompletionStrings(const QStringList &strings);
+    
+    /**
+     * Get the completion strings.
+     * 
+     * @returns the completion strings
+     */
+    QStringList completionStrings() const;
+    
   Q_SIGNALS:
     /**
      * Emitted when the search toolbar is to be closed (should be hidden)

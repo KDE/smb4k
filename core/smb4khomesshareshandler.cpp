@@ -100,7 +100,7 @@ bool Smb4KHomesSharesHandler::specifyUser(const SharePtr &share, bool overwrite,
   
   // Avoid that the dialog is opened although the homes
   // user name has already been defined.
-  if (share->isHomesShare() && (share->homeUNC().isEmpty() || overwrite))
+  if (share->isHomesShare() && (share->homeUrl().isEmpty() || overwrite))
   {
     QStringList users = findHomesUsers(share);
     

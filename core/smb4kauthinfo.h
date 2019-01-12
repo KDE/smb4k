@@ -65,7 +65,7 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      * Constructor for a share item.
      * 
      * In case the share is a 'homes' share, this constructor will automatically
-     * use the Smb4KShare::homeUNC() function to set the UNC.
+     * use the Smb4KShare::homeUrl() function to set the URL.
      *
      * @param share     The Smb4KShare item.
      */
@@ -101,7 +101,7 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      * might have carried including the password.
      * 
      * In case the share is a 'homes' share, this function will automatically
-     * use the Smb4KShare::homeUNC() function to set the UNC.
+     * use the Smb4KShare::homeUrl() function to set the URL.
      *
      * @param share     The Smb4KShare item
      */
@@ -123,28 +123,6 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      */
     QString workgroupName() const;
     
-    /**
-     * Returns the UNC in the form //HOST/Share.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     *
-     * @returns the UNC.
-     */
-    QString unc() const;
-
-    /**
-     * Returns the UNC of the host in the form //HOST.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     *
-     * @returns the host's UNC.
-     */
-    QString hostUNC() const;
-
     /**
      * Returns the host name.
      *
@@ -253,6 +231,13 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      * @returns the IP address
      */
     QString ipAddress() const;
+    
+    /**
+     * Returns the display string. Prefer this over all other alternatives in your
+     * GUI.
+     * @returns the display string.
+     */
+    QString displayString() const;
 
   private:
     /**

@@ -418,7 +418,7 @@ void Smb4KSharesViewDockWidget::slotDropEvent(Smb4KSharesViewItem* item, QDropEv
       }
       else
       {
-        KMessageBox::sorry(m_sharesView, i18n("<qt>There is no active connection to the share <b>%1</b>! You cannot drop any files here.</qt>", item->shareItem()->unc()));
+        KMessageBox::sorry(m_sharesView, i18n("<qt>There is no active connection to the share <b>%1</b>! You cannot drop any files here.</qt>", item->shareItem()->displayString()));
       }
     }
     else

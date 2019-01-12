@@ -82,7 +82,7 @@ Smb4KShare::Smb4KShare(const QString &host, const QString &name)
 }
 
 
-Smb4KShare::Smb4KShare(const QString &unc)
+Smb4KShare::Smb4KShare(const QUrl &url)
 : Smb4KBasicNetworkItem(Share), d(new Smb4KSharePrivate)
 {
   //
@@ -102,8 +102,7 @@ Smb4KShare::Smb4KShare(const QString &unc)
   //
   // Set the URL
   // 
-  pUrl->setUrl(unc, QUrl::TolerantMode);
-  pUrl->setScheme("smb");
+  *pUrl = url;
     
   //
   // Set the icon
@@ -186,16 +185,7 @@ void Smb4KShare::setShareName(const QString &name)
 
 QString Smb4KShare::shareName() const
 {
-  if (pUrl->path().startsWith('/'))
-  {
-    return pUrl->path().remove(0, 1);
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  return pUrl->path();
+  return pUrl->path().remove('/');
 }
 
 
@@ -209,40 +199,6 @@ void Smb4KShare::setHostName(const QString &hostName)
 QString Smb4KShare::hostName() const
 {
   return pUrl->host().toUpper();
-}
-
-
-QString Smb4KShare::unc() const
-{
-  QString unc;
-  
-  if (!hostName().isEmpty() && !shareName().isEmpty())
-  {
-    unc = QString("//%1/%2").arg(hostName()).arg(shareName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
-}
-
-
-QString Smb4KShare::homeUNC() const
-{
-  QString unc;
-
-  if (isHomesShare() && !hostName().isEmpty() && !pUrl->userName().isEmpty())
-  {
-    unc = QString("//%1/%2").arg(hostName()).arg(pUrl->userName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
 }
 
 
@@ -264,25 +220,17 @@ QUrl Smb4KShare::homeUrl() const
 }
 
 
-QString Smb4KShare::hostUNC() const
+QString Smb4KShare::displayString(bool showHomesShare) const
 {
-  QString unc;
-  
-  if (!hostName().isEmpty())
+  if (showHomesShare && isHomesShare())
   {
-    unc = QString("//%1").arg(hostName());
+    return i18n("%1 on %2", homeUrl().path().remove('/'), hostName());
   }
   else
   {
     // Do nothing
   }
   
-  return unc;
-}
-
-
-QString Smb4KShare::displayString() const
-{
   return i18n("%1 on %2", shareName(), hostName());
 }
 
@@ -578,14 +526,16 @@ QString Smb4KShare::diskUsageString() const
 
 bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
 {
+  qDebug() << "Simplify Smb4KShare::equals()";
+  
   Q_ASSERT(share);
 
   switch (flag)
   {
     case Full:
     {
-      // UNC
-      if (QString::compare(unc(), share->unc(), Qt::CaseInsensitive) != 0)
+      // URL
+      if (!url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         return false;
       }
@@ -728,8 +678,8 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
     }
     case NetworkOnly:
     {
-      // UNC
-      if (QString::compare(unc(), share->unc(), Qt::CaseInsensitive) != 0)
+      // URL
+      if (!url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         return false;
       }
@@ -792,8 +742,8 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
     }
     case MinimalNetworkOnly:
     {
-      // UNC
-      if (QString::compare(unc(), share->unc(), Qt::CaseInsensitive) != 0)
+      // URL
+      if (!url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         return false;
       }
@@ -826,8 +776,8 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
     }
     case LocalOnly:
     {
-      // UNC
-      if (QString::compare(unc(), share->unc(), Qt::CaseInsensitive) != 0)
+      // URL
+      if (!url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         return false;
       }
@@ -930,8 +880,8 @@ bool Smb4KShare::equals(Smb4KShare *share, CheckFlags flag) const
     }
     case MinimalLocalOnly:
     {
-      // UNC
-      if (QString::compare(unc(), share->unc(), Qt::CaseInsensitive) != 0)
+      // URL
+      if (!url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         return false;
       }
@@ -1245,7 +1195,8 @@ void Smb4KShare::setShareIcon()
 void Smb4KShare::update(Smb4KShare* share)
 {
   if (QString::compare(workgroupName(), share->workgroupName()) == 0 &&
-      (QString::compare(unc(), share->unc()) == 0 || QString::compare(homeUNC(), share->homeUNC()) == 0))
+      (url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort) || 
+      homeUrl().matches(share->homeUrl(), QUrl::RemoveUserInfo|QUrl::RemovePort)))
   {
     *pUrl = share->url();
     setMountData(share);

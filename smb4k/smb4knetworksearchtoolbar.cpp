@@ -250,6 +250,33 @@ void Smb4KNetworkSearchToolBar::setSearchResults(const QList<SharePtr>& list)
 }
 
 
+void Smb4KNetworkSearchToolBar::setCompletionStrings(const QStringList& strings)
+{
+  //
+  // Get the input combo box 
+  //
+  KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+  
+  //
+  // Set the completion strings
+  // 
+  comboBox->completionObject()->setItems(strings);
+}
+
+
+QStringList Smb4KNetworkSearchToolBar::completionStrings() const
+{
+  //
+  // Get the input combo box 
+  //
+  KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+  
+  //
+  // Return the completion strings
+  // 
+  return comboBox->completionObject()->items();
+}
+
 
 void Smb4KNetworkSearchToolBar::slotReturnKeyPressed()
 {
@@ -263,6 +290,11 @@ void Smb4KNetworkSearchToolBar::slotReturnKeyPressed()
   // 
   if (!comboBox->currentText().isEmpty())
   {
+    //
+    // Add the search item to the completion object
+    // 
+    comboBox->completionObject()->addItem(comboBox->currentText());
+    
     //
     // Emit the search signal
     // 
@@ -292,6 +324,11 @@ void Smb4KNetworkSearchToolBar::slotSearchActionTriggered()
     
     if (!comboBox->currentText().isEmpty())
     {
+      //
+      // Add the search item to the completion object
+      // 
+      comboBox->completionObject()->addItem(comboBox->currentText());
+    
       //
       // Emit the search signal
       // 

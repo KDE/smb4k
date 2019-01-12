@@ -101,23 +101,6 @@ QString Smb4KHost::hostName() const
 }
 
 
-QString Smb4KHost::unc() const
-{
-  QString unc;
-  
-  if (!hostName().isEmpty())
-  {
-    unc = QString("//%1").arg(hostName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
-}
-
-
 void Smb4KHost::setWorkgroupName(const QString &workgroup)
 {
   d->workgroup = workgroup.toUpper();

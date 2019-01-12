@@ -206,7 +206,7 @@ void Smb4KBookmarkMenu::setupMenu()
     
     for (const BookmarkPtr &bookmark : bookmarks)
     {
-      QList<SharePtr> mountedShares = findShareByUNC(bookmark->unc());
+      QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
       
       if (!mountedShares.isEmpty())
       {
@@ -281,11 +281,11 @@ void Smb4KBookmarkMenu::setupMenu()
         if (Smb4KSettings::showCustomBookmarkLabel() && !bookmark->label().isEmpty())
         {
           bookmarkAction = new QAction(bookmark->icon(), bookmark->label(), bookmarkGroupMenu->menu());
-          bookmarkAction->setObjectName(bookmark->unc());
+          bookmarkAction->setObjectName(bookmark->url().toDisplayString());
           QMap<QString,QVariant> bookmarkInfo;
           bookmarkInfo["type"] = "bookmark";
           bookmarkInfo["group"] = group;
-          bookmarkInfo["unc"] = bookmark->unc();
+          bookmarkInfo["url"] = bookmark->url();
           bookmarkInfo["text"] = bookmark->label();
           bookmarkAction->setData(bookmarkInfo);
           m_bookmarks->addAction(bookmarkAction);
@@ -294,18 +294,18 @@ void Smb4KBookmarkMenu::setupMenu()
         else
         {
           bookmarkAction = new QAction(bookmark->icon(), bookmark->displayString(), bookmarkGroupMenu->menu());
-          bookmarkAction->setObjectName(bookmark->unc());
+          bookmarkAction->setObjectName(bookmark->url().toDisplayString());
           QMap<QString,QVariant> bookmarkInfo;
           bookmarkInfo["type"] = "bookmark";
           bookmarkInfo["group"] = group;
-          bookmarkInfo["unc"] = bookmark->unc();
+          bookmarkInfo["url"] = bookmark->url();
           bookmarkInfo["text"] = bookmark->displayString();
           bookmarkAction->setData(bookmarkInfo);
           m_bookmarks->addAction(bookmarkAction);
           sortedBookmarks << bookmark->displayString();
         }
         
-        QList<SharePtr> mountedShares = findShareByUNC(bookmark->unc());
+        QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
         
         if (!mountedShares.isEmpty())
         {
@@ -374,11 +374,11 @@ void Smb4KBookmarkMenu::setupMenu()
     if (Smb4KSettings::showCustomBookmarkLabel() && !bookmark->label().isEmpty())
     {
       bookmarkAction = new QAction(bookmark->icon(), bookmark->label(), menu());
-      bookmarkAction->setObjectName(bookmark->unc());
+      bookmarkAction->setObjectName(bookmark->url().toDisplayString());
       QMap<QString,QVariant> bookmarkInfo;
       bookmarkInfo["type"] = "bookmark";
       bookmarkInfo["group"] = "";
-      bookmarkInfo["unc"] = bookmark->unc();
+      bookmarkInfo["url"] = bookmark->url();
       bookmarkInfo["text"] = bookmark->label();
       bookmarkAction->setData(bookmarkInfo);
       m_bookmarks->addAction(bookmarkAction);
@@ -387,18 +387,18 @@ void Smb4KBookmarkMenu::setupMenu()
     else
     {
       bookmarkAction = new QAction(bookmark->icon(), bookmark->displayString(), menu());
-      bookmarkAction->setObjectName(bookmark->unc());
+      bookmarkAction->setObjectName(bookmark->url().toDisplayString());
       QMap<QString,QVariant> bookmarkInfo;
       bookmarkInfo["type"] = "bookmark";
       bookmarkInfo["group"] = "";
-      bookmarkInfo["unc"] = bookmark->unc();
+      bookmarkInfo["url"] = bookmark->url();
       bookmarkInfo["text"] = bookmark->displayString();
       bookmarkAction->setData(bookmarkInfo);
       m_bookmarks->addAction(bookmarkAction);
       sortedBookmarks << bookmark->displayString();
     }
         
-    QList<SharePtr> mountedShares = findShareByUNC(bookmark->unc());
+    QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
         
     if (!mountedShares.isEmpty())
     {
@@ -529,9 +529,9 @@ void Smb4KBookmarkMenu::slotBookmarkActionTriggered(QAction *action)
 {
   QMap<QString,QVariant> info = action->data().toMap();
   QString bookmarkGroup = info.value("group").toString();
-  QString unc = info.value("unc").toString();
+  QUrl url = info.value("url").toUrl();
   
-  BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUNC(unc);
+  BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(url);
 
   if (bookmark && bookmarkGroup == bookmark->groupName())
   {
@@ -569,7 +569,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
     
     for (QAction *a : actions)
     {
-      if (share->unc() == a->data().toMap().value("unc").toString())
+      if (share->url() == a->data().toMap().value("url").toUrl())
       {
         a->setEnabled(!share->isMounted());
         bookmarkGroup = a->data().toMap().value("group").toString();

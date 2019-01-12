@@ -56,10 +56,8 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
   if (share)
   {
     KNotification *notification = new KNotification("shareMounted");
-    notification->setText(i18n("<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>", 
-                          share->unc(), share->path()));
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, 
-                            KIconLoader::DefaultState, QStringList("emblem-mounted")));
+    notification->setText(i18n("<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>", share->displayString(), share->path()));
+    notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList("emblem-mounted")));
     notification->setActions(QStringList(i18n("Open")));
     notification->setFlags(KNotification::CloseOnTimeout);
     
@@ -83,8 +81,7 @@ void Smb4KNotification::shareUnmounted(const SharePtr &share)
   if (share)
   {
     KNotification *notification = new KNotification("shareUnmounted");
-    notification->setText(i18n("<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>", 
-                          share->unc(), share->path()));
+    notification->setText(i18n("<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>", share->displayString(), share->path()));
     notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, 
                             KIconLoader::DefaultState, QStringList("emblem-unmounted")));
     notification->setFlags(KNotification::CloseOnTimeout);
@@ -166,7 +163,7 @@ void Smb4KNotification::bookmarkExists(Smb4KBookmark* bookmark)
   {
     KNotification *notification = new KNotification("bookmarkExists");
     notification->setText(i18n("<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>",
-                          bookmark->unc()));
+                          bookmark->displayString()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-warning", KIconLoader::NoGroup, 0, 
                             KIconLoader::DefaultState));
     notification->setFlags(KNotification::CloseOnTimeout);
@@ -188,7 +185,7 @@ void Smb4KNotification::bookmarkLabelInUse(Smb4KBookmark* bookmark)
     KNotification *notification = new KNotification("bookmarkLabelInUse");
     notification->setText(i18n("<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> "
                                 "is already being used and will automatically be renamed.</p>", 
-                                bookmark->label(), bookmark->unc()));
+                                bookmark->label(), bookmark->displayString()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-warning", KIconLoader::NoGroup, 0, 
                             KIconLoader::DefaultState));
     notification->setFlags(KNotification::CloseOnTimeout);
@@ -311,11 +308,11 @@ void Smb4KNotification::retrievingPreviewFailed(const SharePtr &share, const QSt
     
     if (!err_msg.isEmpty())
     {
-      text =  i18n("<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>", share->unc(), err_msg);
+      text =  i18n("<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>", share->displayString(), err_msg);
     }
     else
     {
-      text =  i18n("<p>Retrieving the preview of <b>%1</b> failed.</p>", share->unc());
+      text =  i18n("<p>Retrieving the preview of <b>%1</b> failed.</p>", share->displayString());
     }
     
     KNotification *notification = new KNotification("retrievingPreviewFailed");
@@ -342,11 +339,11 @@ void Smb4KNotification::mountingFailed(const SharePtr &share, const QString& err
     
     if (!err_msg.isEmpty())
     {
-      text = i18n("<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>", share->unc(), err_msg);
+      text = i18n("<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>", share->displayString(), err_msg);
     }
     else
     {
-      text = i18n("<p>Mounting the share <b>%1</b> failed.</p>", share->unc());
+      text = i18n("<p>Mounting the share <b>%1</b> failed.</p>", share->displayString());
     }
 
     KNotification *notification = new KNotification("mountingFailed");
@@ -373,11 +370,11 @@ void Smb4KNotification::unmountingFailed(const SharePtr &share, const QString& e
     
     if (!err_msg.isEmpty())
     {
-      text = i18n("<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></p>", share->unc(), share->path(), err_msg);
+      text = i18n("<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></p>", share->displayString(), share->path(), err_msg);
     }
     else
     {
-      text = i18n("<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>", share->unc(), share->path());
+      text = i18n("<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>", share->displayString(), share->path());
     }
     
     KNotification *notification = new KNotification("unmountingFailed");
@@ -402,7 +399,7 @@ void Smb4KNotification::unmountingNotAllowed(const SharePtr &share)
   {
     KNotification *notification = new KNotification("unmountingNotAllowed");
     notification->setText(i18n("<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. "
-                                "It is owned by the user <b>%3</b>.</p>", share->unc(), share->path(), share->user().loginName()));
+                                "It is owned by the user <b>%3</b>.</p>", share->displayString(), share->path(), share->user().loginName()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
     notification->setFlags(KNotification::CloseOnTimeout);
@@ -425,11 +422,11 @@ void Smb4KNotification::printingFailed(const SharePtr &printer, const QString& e
     
     if (!err_msg.isEmpty())
     {
-      text = i18n("<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>", printer->unc(), err_msg);
+      text = i18n("<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>", printer->displayString(), err_msg);
     }
     else
     {
-      text = i18n("<p>Printing on printer <b>%1</b> failed.</p>", printer->unc());
+      text = i18n("<p>Printing on printer <b>%1</b> failed.</p>", printer->displayString());
     }
     
     KNotification *notification = new KNotification("printingFailed");
@@ -508,7 +505,7 @@ void Smb4KNotification::cannotBookmarkPrinter(const SharePtr &share)
   if (share && share->isPrinter())
   {
     KNotification *notification = new KNotification("cannotBookmarkPrinter");
-    notification->setText(i18n("<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>", share->unc()));
+    notification->setText(i18n("<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>", share->displayString()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0,
                             KIconLoader::DefaultState));
     notification->setFlags(KNotification::CloseOnTimeout);

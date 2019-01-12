@@ -253,7 +253,7 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
       }
       case Host:
       {
-        if (QString::compare(unc(), share->hostUNC(), Qt::CaseInsensitive) == 0)
+        if (d->url.matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath))
         {
           d->url = share->url();
           d->type = Share;
@@ -312,46 +312,6 @@ void Smb4KCustomOptions::setUrl(const QUrl &url)
 QUrl Smb4KCustomOptions::url() const
 {
   return d->url;
-}
-
-
-QString Smb4KCustomOptions::unc() const
-{
-  QString unc;
-  
-  switch (d->type)
-  {
-    case Host:
-    {
-      if (!hostName().isEmpty())
-      {
-        unc = QString("//%1").arg(hostName());
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case Share:
-    {
-      if (!hostName().isEmpty() && !shareName().isEmpty())
-      {
-        unc = QString("//%1/%2").arg(hostName()).arg(shareName());
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return unc;
 }
 
 
@@ -914,8 +874,8 @@ bool Smb4KCustomOptions::equals(Smb4KCustomOptions *options, bool fullCheck) con
     // Do nothing
   }
   
-  // UNC
-  if (QString::compare(unc(), options->unc(), Qt::CaseInsensitive) != 0)
+  // URL
+  if (!d->url.matches(options->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
   {
     return false;
   }

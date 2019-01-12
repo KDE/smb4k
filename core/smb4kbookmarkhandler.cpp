@@ -167,7 +167,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *pa
     // Check if the share has already been bookmarked and skip it if it
     // already exists
     //
-    BookmarkPtr knownBookmark = findBookmarkByUNC(share->isHomesShare() ? share->homeUNC() : share->unc());
+    BookmarkPtr knownBookmark = findBookmarkByUrl(share->isHomesShare() ? share->homeUrl() : share->url());
     
     if (knownBookmark)
     {
@@ -273,7 +273,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
     //
     // Check if we have to add the bookmark
     // 
-    BookmarkPtr existingBookmark = findBookmarkByUNC(bookmark->unc());
+    BookmarkPtr existingBookmark = findBookmarkByUrl(bookmark->url());
       
     if (!existingBookmark)
     {
@@ -301,7 +301,7 @@ void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
     for (int i = 0; i < d->bookmarks.size(); ++i)
     {
       if ((!Smb4KSettings::useProfiles() || Smb4KSettings::activeProfile() == d->bookmarks.at(i)->profile()) &&
-          QString::compare(bookmark->unc(), d->bookmarks.at(i)->unc(), Qt::CaseInsensitive) == 0 &&
+          bookmark->url().matches(d->bookmarks.at(i)->url(), QUrl::RemoveUserInfo|QUrl::RemovePort) &&
           QString::compare(bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive) == 0)
       {
         d->bookmarks.takeAt(i).clear();
@@ -361,7 +361,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
       xmlWriter.setAutoFormatting(true);
       xmlWriter.writeStartDocument();
       xmlWriter.writeStartElement("bookmarks");
-      xmlWriter.writeAttribute("version", "1.1");
+      xmlWriter.writeAttribute("version", "2");
 
       for (const BookmarkPtr &bookmark : d->bookmarks)
       {
@@ -380,7 +380,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
         xmlWriter.writeAttribute("group", bookmark->groupName());
 
         xmlWriter.writeTextElement("workgroup", bookmark->workgroupName());
-        xmlWriter.writeTextElement("unc", bookmark->unc());
+        xmlWriter.writeTextElement("url", bookmark->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort));
         xmlWriter.writeTextElement("login", bookmark->login());
         xmlWriter.writeTextElement("ip", bookmark->hostIpAddress());
         xmlWriter.writeTextElement("label", bookmark->label());
@@ -429,8 +429,8 @@ void Smb4KBookmarkHandler::readBookmarkList()
 
       if (xmlReader.isStartElement())
       {
-        if (xmlReader.name() == "bookmarks" &&
-             (xmlReader.attributes().value("version") != "1.0" && xmlReader.attributes().value("version") != "1.1"))
+        if (xmlReader.name() == "bookmarks" && 
+            (xmlReader.attributes().value("version") != "1.1" && xmlReader.attributes().value("version") != "2.0"))
         {
           xmlReader.raiseError(i18n("The format of %1 is not supported.", xmlFile.fileName()));
           break;
@@ -458,6 +458,10 @@ void Smb4KBookmarkHandler::readBookmarkList()
                 else if (xmlReader.name() == "unc")
                 {
                   bookmark->setUrl(xmlReader.readElementText());
+                }
+                else if (xmlReader.name() == "url")
+                {
+                  bookmark->setUrl(QUrl(xmlReader.readElementText()));
                 }
                 else if (xmlReader.name() == "login")
                 {
@@ -525,7 +529,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
 }
 
 
-BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUNC(const QString &unc)
+BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
 {
   // Update the bookmarks:
   update();
@@ -533,17 +537,24 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUNC(const QString &unc)
   // Find the bookmark:
   BookmarkPtr bookmark;
 
-  for (const BookmarkPtr &b : bookmarksList())
+  if (!url.isEmpty() && url.isValid() && !bookmarksList().isEmpty())
   {
-    if (QString::compare(b->unc().toUpper(), unc.toUpper()) == 0)
+    for (const BookmarkPtr &b : bookmarksList())
     {
-      bookmark = b;
-      break;
+      if (b->url().matches(url, QUrl::RemoveUserInfo|QUrl::RemovePort))
+      {
+        bookmark = b;
+        break;
+      }
+      else
+      {
+        // Do nothing
+      }
     }
-    else
-    {
-      continue;
-    }
+  }
+  else
+  {
+    // Do nothing
   }
 
   return bookmark;
@@ -661,7 +672,7 @@ void Smb4KBookmarkHandler::resetBookmarks()
 
 bool Smb4KBookmarkHandler::isBookmarked(const SharePtr& share)
 {
-  if (findBookmarkByUNC(share->unc()))
+  if (findBookmarkByUrl(share->url()))
   {
     return true;
   }

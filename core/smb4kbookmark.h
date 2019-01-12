@@ -150,28 +150,6 @@ class Q_DECL_EXPORT Smb4KBookmark
     Smb4KGlobal::ShareType shareType() const;
 
     /**
-     * Returns the UNC in the form //HOST/Share.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     *
-     * @returns the UNC.
-     */
-    QString unc() const;
-
-    /**
-     * Returns the host's UNC in the form //HOST/Share.
-     * 
-     * This function should only be used for basic comparisons or for display
-     * purposes. If you need to do sophisticated comparisons, use the url() 
-     * function instead.
-     *
-     * @returns the host's UNC.
-     */
-    QString hostUNC() const;
-
-    /**
      * Set the (optional) bookmark label.
      *
      * @param label           The bookmark's label

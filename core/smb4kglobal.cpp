@@ -475,7 +475,7 @@ const QList<SharePtr> &Smb4KGlobal::sharesList()
 }
 
 
-SharePtr Smb4KGlobal::findShare(const QString& unc, const QString& workgroup)
+SharePtr Smb4KGlobal::findShare(const QUrl& url, const QString& workgroup)
 {
   SharePtr share;
   
@@ -483,8 +483,7 @@ SharePtr Smb4KGlobal::findShare(const QString& unc, const QString& workgroup)
 
   for (const SharePtr &s : p->sharesList)
   {
-    if (QString::compare(s->unc(), unc, Qt::CaseInsensitive) == 0 &&
-        (workgroup.isEmpty() || QString::compare(s->workgroupName(), workgroup, Qt::CaseInsensitive) == 0))
+    if (s->url().matches(url, QUrl::RemoveUserInfo|QUrl::RemovePort) && (workgroup.isEmpty() || QString::compare(s->workgroupName(), workgroup, Qt::CaseInsensitive) == 0))
     {
       share = s;
       break;
@@ -515,13 +514,13 @@ bool Smb4KGlobal::addShare(SharePtr share)
     //
     // Add the share
     //
-    if (!findShare(share->unc(), share->workgroupName()))
+    if (!findShare(share->url(), share->workgroupName()))
     {
       // 
       // Set the share mounted
       // Only honor shares that are owned by the user
       // 
-      QList<SharePtr> mountedShares = findShareByUNC(share->unc());
+      QList<SharePtr> mountedShares = findShareByUrl(share->url());
       
       if (!mountedShares.isEmpty())
       {
@@ -578,7 +577,7 @@ bool Smb4KGlobal::updateShare(SharePtr share)
     //
     // Updated the share
     //
-    SharePtr existingShare = findShare(share->unc(), share->workgroupName());
+    SharePtr existingShare = findShare(share->url(), share->workgroupName());
     
     if (existingShare)
     {
@@ -586,7 +585,7 @@ bool Smb4KGlobal::updateShare(SharePtr share)
       // Set the share mounted
       // Only honor shares that are owned by the user
       // 
-      QList<SharePtr> mountedShares = findShareByUNC(share->unc());
+      QList<SharePtr> mountedShares = findShareByUrl(share->url());
       
       if (!mountedShares.isEmpty())
       {
@@ -652,7 +651,7 @@ bool Smb4KGlobal::removeShare(SharePtr share)
     else
     {
       // Try harder to find the share.
-      SharePtr s = findShare(share->unc(), share->workgroupName());
+      SharePtr s = findShare(share->url(), share->workgroupName());
 
       if (s)
       {
@@ -764,19 +763,19 @@ SharePtr Smb4KGlobal::findShareByPath(const QString &path)
 }
 
 
-QList<SharePtr> Smb4KGlobal::findShareByUNC(const QString &unc)
+QList<SharePtr> Smb4KGlobal::findShareByUrl(const QUrl &url)
 {
   QList<SharePtr> shares;
 
   mutex.lock();
 
-  if (!unc.isEmpty() && !p->mountedSharesList.isEmpty())
+  if (!url.isEmpty() && url.isValid() && !p->mountedSharesList.isEmpty())
   {
     for (const SharePtr &s : p->mountedSharesList)
     {
-      if (QString::compare(s->unc(), unc, Qt::CaseInsensitive) == 0)
+      if (s->url().matches(url, QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
-        shares += s;
+        shares << s;
       }
       else
       {
@@ -836,7 +835,7 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
     if (!share->isForeign())
     {
       // Network shares
-      SharePtr networkShare = findShare(share->unc(), share->workgroupName());
+      SharePtr networkShare = findShare(share->url(), share->workgroupName());
       
       if (networkShare)
       {
@@ -850,7 +849,7 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
       // Search results
       for (SharePtr s : p->searchResults)
       {
-        if (share->unc() == s->unc())
+        if (share->url().matches(s->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
         {
           s->setMountData(share.data());
         }
@@ -949,7 +948,7 @@ bool Smb4KGlobal::updateMountedShare(SharePtr share)
     //
     if (!share->isForeign())
     {
-      SharePtr networkShare = findShare(share->unc(), share->workgroupName());
+      SharePtr networkShare = findShare(share->url(), share->workgroupName());
       
       if (networkShare)
       {
@@ -1040,7 +1039,7 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
     if (!share->isForeign())
     {
       // Network share
-      SharePtr networkShare = findShare(share->unc(), share->workgroupName());
+      SharePtr networkShare = findShare(share->url(), share->workgroupName());
       
       if (networkShare)
       {
@@ -1054,7 +1053,7 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
       // Search result
       for (SharePtr searchResult : searchResults())
       {
-        if (searchResult->unc() == share->unc())
+        if (searchResult->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
         {
           searchResult->resetMountData();
           break;
@@ -1150,7 +1149,7 @@ bool Smb4KGlobal::addSearchResult(SharePtr share)
     // Check if the share is already mounted. Ignore foreign shares
     // for that.
     // 
-    QList<SharePtr> mountedShares = findShareByUNC(share->unc());
+    QList<SharePtr> mountedShares = findShareByUrl(share->url());
     
     if (!mountedShares.isEmpty())
     {

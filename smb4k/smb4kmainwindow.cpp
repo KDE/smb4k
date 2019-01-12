@@ -679,6 +679,14 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget* dock)
 
 void Smb4KMainWindow::slotQuit()
 {
+  //
+  // Save the settings. Work around queryClose() not being called. :(
+  // 
+  saveSettings();
+  
+  //
+  // Quit the application
+  // 
   qApp->quit();
 }
 
@@ -862,10 +870,8 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
         }
         case Directory:
         {
-          qDebug() << "Smb4KMainWindow::slotClientAboutToStart(): Use Smb4KGlobal::findShare()";
-          
           FilePtr file = item.staticCast<Smb4KFile>();
-          
+
           for (const SharePtr &s : sharesList())
           {
             if (s->workgroupName() == file->workgroupName() && s->hostName() == file->hostName() && s->shareName() == file->shareName())
@@ -1000,7 +1006,7 @@ void Smb4KMainWindow::slotVisualMountFeedback(const SharePtr &share)
   {
     m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-ok",
                               KIconLoader::Small, 0, KIconLoader::DefaultState));
-    m_feedback_icon->setToolTip(i18n("%1 has been mounted successfully.", share->unc()));
+    m_feedback_icon->setToolTip(i18n("%1 has been mounted successfully.", share->displayString()));
 
     QList<QTabBar *> list = findChildren<QTabBar *>();
     QDockWidget *shares_dock = findChild<QDockWidget *>("SharesViewDockWidget");
@@ -1054,7 +1060,7 @@ void Smb4KMainWindow::slotVisualUnmountFeedback(const SharePtr &share)
   {
     m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon("dialog-ok",
                                 KIconLoader::Small, 0, KIconLoader::DefaultState));
-    m_feedback_icon->setToolTip(i18n("%1 has been unmounted successfully.", share->unc()));
+    m_feedback_icon->setToolTip(i18n("%1 has been unmounted successfully.", share->displayString()));
 
     QList<QTabBar *> list = findChildren<QTabBar *>();
     QDockWidget *shares_dock = findChild<QDockWidget *>("SharesViewDockWidget");

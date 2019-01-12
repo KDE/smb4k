@@ -314,6 +314,11 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
 
     ++it;
   }
+  
+  //
+  // Apply the completion strings to the search toolbar
+  // 
+  m_searchToolBar->setCompletionStrings(configGroup.readEntry("SearchItemCompletion", QStringList()));
 
   // 
   // Does anything has to be changed with the marked shares?
@@ -338,6 +343,11 @@ void Smb4KNetworkBrowserDockWidget::saveSettings()
   configGroup.writeEntry("ColumnPositionType", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::Type));
   configGroup.writeEntry("ColumnPositionIP", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::IP));
   configGroup.writeEntry("ColumnPositionComment", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::Comment));
+  
+  //
+  // Save the completion strings
+  // 
+  configGroup.writeEntry("SearchItemCompletion", m_searchToolBar->completionStrings());
 
   configGroup.sync();
 }
@@ -874,7 +884,7 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr& host)
           
           if (shareItem->type() == Share)
           {
-            SharePtr share = findShare(shareItem->shareItem()->unc(), shareItem->shareItem()->workgroupName());
+            SharePtr share = findShare(shareItem->shareItem()->url(), shareItem->shareItem()->workgroupName());
             
             if (share)
             {
@@ -909,7 +919,7 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr& host)
             {
               Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>(hostItem->child(i));
               
-              if (shareItem->shareItem()->unc() == share->unc())
+              if (shareItem->shareItem()->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
               {
                 foundShare = true;
                 break;
@@ -1317,7 +1327,7 @@ void Smb4KNetworkBrowserDockWidget::slotShareMounted(const SharePtr& share)
     
     if (item->type() == Share)
     {
-      if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
+      if (item->shareItem()->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         item->update();
         break;
@@ -1347,7 +1357,7 @@ void Smb4KNetworkBrowserDockWidget::slotShareUnmounted(const SharePtr& share)
     
     if (item->type() == Share)
     {
-      if (QString::compare(item->shareItem()->unc(), share->unc(), Qt::CaseInsensitive) == 0)
+      if (item->shareItem()->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         item->update();
         break;

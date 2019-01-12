@@ -79,13 +79,13 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
   QStringList command;
 #if defined(Q_OS_LINUX)
   command << mount;
-  command << args["mh_unc"].toString();
+  command << args["mh_url"].toUrl().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort);
   command << args["mh_mountpoint"].toString();
   command << args["mh_options"].toStringList();
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
   command << mount;
   command << args["mh_options"].toStringList();
-  command << args["mh_unc"].toString();
+  command << args["mh_url"].toUrl().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort);
   command << args["mh_mountpoint"].toString();
 #else
     // Do nothing.

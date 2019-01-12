@@ -34,6 +34,9 @@
 #include <QHostAddress>
 #include <QDebug>
 
+// KDE includes
+#include <KI18n/KLocalizedString>
+
 
 class Smb4KAuthInfoPrivate
 {
@@ -154,63 +157,6 @@ void Smb4KAuthInfo::setWorkgroupName(const QString &workgroup)
 QString Smb4KAuthInfo::workgroupName() const
 {
   return d->workgroup;
-}
-
-
-QString Smb4KAuthInfo::unc() const
-{
-  QString unc;
-  
-  switch (d->type)
-  {
-    case Host:
-    {
-      if (!hostName().isEmpty())
-      {
-        unc = QString("//%1").arg(hostName());
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    case Share:
-    {
-      if (!hostName().isEmpty() && !shareName().isEmpty())
-      {
-        unc = QString("//%1/%2").arg(hostName()).arg(shareName());
-      }
-      else
-      {
-        // Do nothing
-      }
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  return unc;
-}
-
-
-QString Smb4KAuthInfo::hostUNC() const
-{
-  QString unc;
-  
-  if (!hostName().isEmpty())
-  {
-    unc = QString("//%1").arg(hostName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
 }
 
 
@@ -396,4 +342,11 @@ QString Smb4KAuthInfo::ipAddress() const
 {
   return d->ip.toString();
 }
+
+
+QString Smb4KAuthInfo::displayString() const
+{
+  return i18n("%1 on %2", shareName(), hostName());
+}
+
 

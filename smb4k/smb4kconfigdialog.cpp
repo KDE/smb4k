@@ -795,40 +795,34 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
 
 void Smb4KConfigDialog::slotEnableApplyButton()
 {
-  // Check if we need to enable the Apply button.
+  // 
+  // Check if we need to enable the Apply button
+  // 
   bool enable = false;
   
-  // Check the wallet entries.
-  Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
+  // 
+  // Check the wallet entries
+  // 
+  Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
 
-  if (auth_options->walletEntriesMaybeChanged())
+  if (authenticationPage->walletEntriesMaybeChanged())
   {
-    QList<Smb4KAuthInfo *> old_wallet_entries = Smb4KWalletManager::self()->walletEntries();
-    QList<Smb4KAuthInfo *> new_wallet_entries = auth_options->getWalletEntries();
+    QList<Smb4KAuthInfo *> oldWalletEntries = Smb4KWalletManager::self()->walletEntries();
+    QList<Smb4KAuthInfo *> newWalletEntries = authenticationPage->getWalletEntries();
     
-    for (int i = 0; i < old_wallet_entries.size(); ++i)
+    for (Smb4KAuthInfo *oldEntry : oldWalletEntries)
     {
-      for (int j = 0; j < new_wallet_entries.size(); ++j)
+      for (Smb4KAuthInfo *newEntry : newWalletEntries)
       {
-        if (QString::compare(old_wallet_entries.at(i)->unc(),
-                               new_wallet_entries.at(j)->unc(),
-                               Qt::CaseInsensitive) == 0 &&
-             (QString::compare(old_wallet_entries.at(i)->workgroupName(),
-                                new_wallet_entries.at(j)->workgroupName(),
-                                Qt::CaseInsensitive) != 0 ||
-              QString::compare(old_wallet_entries.at(i)->userName(),
-                                new_wallet_entries.at(j)->userName(),
-                                Qt::CaseInsensitive) != 0 ||
-              QString::compare(old_wallet_entries.at(i)->password(),
-                                new_wallet_entries.at(j)->password(),
-                                Qt::CaseInsensitive) != 0))
+        if (oldEntry->url().matches(newEntry->url(), QUrl::RemovePort /* leave the user info here */) &&
+            oldEntry->workgroupName() == newEntry->workgroupName())
         {
           enable = true;
           break;
         }
         else
         {
-          continue;
+          // Do nothing
         }
       }
       
@@ -838,7 +832,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
   }
@@ -847,21 +841,23 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     // Do nothing
   }
   
-  // Check the custom settings.
-  Smb4KConfigPageCustomOptions *custom_options = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+  // 
+  // Check the custom options
+  // 
+  Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
   
-  if (!enable && custom_options && custom_options->customSettingsMaybeChanged())
+  if (!enable && customOptionsPage && customOptionsPage->customSettingsMaybeChanged())
   {
-    QList<OptionsPtr> new_list = custom_options->getCustomOptions();
-    QList<OptionsPtr> old_list = Smb4KCustomOptionsManager::self()->customOptions();
+    QList<OptionsPtr> newOptionsList = customOptionsPage->getCustomOptions();
+    QList<OptionsPtr> oldOptionsList = Smb4KCustomOptionsManager::self()->customOptions();
     
-    if (new_list.size() == old_list.size())
+    if (newOptionsList.size() == oldOptionsList.size())
     {
-      for (const OptionsPtr &no : new_list)
+      for (const OptionsPtr &newOptions : newOptionsList)
       {
-        for (const OptionsPtr &oo : old_list)
+        for (const OptionsPtr &oldOptions : oldOptionsList)
         {
-          if (!no->equals(oo.data()))
+          if (!newOptions->equals(oldOptions.data()))
           {
             enable = true;
             break;

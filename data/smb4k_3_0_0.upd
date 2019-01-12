@@ -44,3 +44,9 @@ RemoveGroup=Samba
 Group=Shares,Mounting
 AllKeys
 RemoveGroup=Shares
+# Move the completion items of the removed search
+# tab to the config group of the network neighborhood
+# browser
+Group=SearchDialog,NetworkBrowserPart
+AllKeys
+RemoveGroup=SearchDialog

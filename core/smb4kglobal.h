@@ -321,14 +321,17 @@ namespace Smb4KGlobal
   Q_DECL_EXPORT const QList<SharePtr> &sharesList();
 
   /**
-   * This function returns the share with UNC @p unc located in the workgroup or
+   * This function returns the share with URL @p url located in the workgroup or
    * domain @p workgroup. If there is no such share, 0 is returned. The workgroup
    * entry may be empty.
-   * @param unc           The UNC of the share
-   * @param wokgroup      The workgroup
-   * @returns the share that matches @p unc and optionally @p workgroup or 0.
+   * 
+   * @param url           The URL of the share
+   * 
+   * @param workgroup     The workgroup
+   * 
+   * @returns the share that matches @p url and optionally @p workgroup or 0.
    */
-  Q_DECL_EXPORT SharePtr findShare(const QString &unc, const QString &workgroup = QString());
+  Q_DECL_EXPORT SharePtr findShare(const QUrl &url, const QString &workgroup = QString());
 
   /**
    * This function takes a share @p share, checks whether it is already
@@ -401,19 +404,17 @@ namespace Smb4KGlobal
   Q_DECL_EXPORT SharePtr findShareByPath(const QString &path);
 
   /**
-   * Find all mounts of a particular share with UNC @p unc on the system.
+   * Find all mounts of a particular share with URL @p url on the system.
    *
-   * This function will compare the incoming string with the UNC of each
-   * mounted share to find all shares with the same UNC. For the comparison
-   * the scheme/protocol, the user info, and the port will be stripped. You
-   * can pass the UNC in any valid format. The function will internally
-   * convert the string into a QUrl and work with that.
-   *
-   * @param unc         The UNC of the share
-   *
-   * @returns the complete list of mounts with the UNC @p unc.
+   * This function will compare the incoming URL with the URL of each
+   * mounted share to find all shares with the same URL. For the comparison
+   * the user info and the port will be stripped.
+   * 
+   * @param url         The URL of the share
+   * 
+   * @returns the complete list of mounts with the URL @p url.
    */
-  Q_DECL_EXPORT QList<SharePtr> findShareByUNC(const QString &unc);
+  Q_DECL_EXPORT QList<SharePtr> findShareByUrl(const QUrl &url);
 
   /**
    * This function returns the list of inaccessible shares.

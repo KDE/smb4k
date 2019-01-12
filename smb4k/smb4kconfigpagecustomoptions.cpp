@@ -130,15 +130,15 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QW
   identificationBoxLayout->addWidget(workgroupLabel, 0, 0, 0);
   identificationBoxLayout->addWidget(workgroup, 0, 1, 0);
   
-  QLabel *uncLabel = new QLabel(i18n("UNC:"), identificationBox);
-  KLineEdit *unc = new KLineEdit(identificationBox);
-  unc->setObjectName("UNC");
-//   unc->setClearButtonEnabled(true);
-  unc->setReadOnly(true);
-  uncLabel->setBuddy(unc);
+  QLabel *locationLabel = new QLabel(i18n("Location:"), identificationBox);
+  KLineEdit *location = new KLineEdit(identificationBox);
+  location->setObjectName("Location");
+//   location->setClearButtonEnabled(true);
+  location->setReadOnly(true);
+  locationLabel->setBuddy(location);
   
-  identificationBoxLayout->addWidget(uncLabel, 1, 0, 0);
-  identificationBoxLayout->addWidget(unc, 1, 1, 0);
+  identificationBoxLayout->addWidget(locationLabel, 1, 0, 0);
+  identificationBoxLayout->addWidget(location, 1, 1, 0);
   
   QLabel *ipAddressLabel = new QLabel(i18n("IP Address:"), identificationBox);
   KLineEdit *ipAddress = new KLineEdit(identificationBox);
@@ -595,13 +595,13 @@ void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<OptionsPtr> &
       {
         case Host:
         {
-          QListWidgetItem *item = new QListWidgetItem(KDE::icon("network-server"), o->unc(), optionsListWidget, Host);
+          QListWidgetItem *item = new QListWidgetItem(KDE::icon("network-server"), o->displayString(), optionsListWidget, Host);
           item->setData(Qt::UserRole, o->url().toDisplayString());
           break;
         }
         case Share:
         {
-          QListWidgetItem *item = new QListWidgetItem(KDE::icon("folder-network"), o->unc(), optionsListWidget, Share);
+          QListWidgetItem *item = new QListWidgetItem(KDE::icon("folder-network"), o->displayString(), optionsListWidget, Share);
           item->setData(Qt::UserRole, o->url().toDisplayString());
           break;
         }
@@ -649,13 +649,13 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   }
   
   //
-  // UNC
+  // Location
   // 
-  KLineEdit *unc = findChild<KLineEdit *>("UNC");
+  KLineEdit *location = findChild<KLineEdit *>("Location");
   
-  if (unc)
+  if (location)
   {
-    unc->clear();
+    location->clear();
   }
   else
   {
@@ -1124,13 +1124,13 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   }
   
   //
-  // UNC
+  // Location
   // 
-  KLineEdit *unc = findChild<KLineEdit *>("UNC");
+  KLineEdit *location = findChild<KLineEdit *>("Location");
   
-  if (unc)
+  if (location)
   {
-    unc->setText(m_currentOptions->unc());
+    location->setText(m_currentOptions->displayString());
   }
   else
   {
@@ -2156,11 +2156,11 @@ void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
         // Do nothing
       }
       
-      KLineEdit *unc = findChild<KLineEdit *>("UNC");
+      KLineEdit *location = findChild<KLineEdit *>("Location");
       
-      if (unc)
+      if (location)
       {
-        if (item->text() == unc->text())
+        if (item->text() == location->text())
         {
           clearEditors();
         }

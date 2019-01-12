@@ -194,7 +194,7 @@ void Smb4KHomesUserDialog::setupView()
   pixmap->setPixmap(user_pix);
   pixmap->setAlignment(Qt::AlignBottom);
 
-  QLabel *label = new QLabel(i18n("Please specify a username for share<br><b>%1</b>.", m_share->unc()), description);
+  QLabel *label = new QLabel(i18n("Please specify a username for share<br><b>%1</b>.", m_share->displayString()), description);
   label->setWordWrap(true);
   label->setAlignment(Qt::AlignBottom);
 

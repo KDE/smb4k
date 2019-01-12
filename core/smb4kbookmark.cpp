@@ -167,40 +167,6 @@ Smb4KGlobal::ShareType Smb4KBookmark::shareType() const
 }
 
 
-QString Smb4KBookmark::unc() const
-{
-  QString unc;
-  
-  if (!hostName().isEmpty() && !shareName().isEmpty())
-  {
-    unc = QString("//%1/%2").arg(hostName()).arg(shareName());
-  }
-  else 
-  {
-    // Do nothing
-  }
-  
-  return unc;
-}
-
-
-QString Smb4KBookmark::hostUNC() const
-{
-  QString unc;
-  
-  if (!hostName().isEmpty())
-  {
-    unc = QString("//%1").arg(hostName());
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return unc;
-}
-
-
 void Smb4KBookmark::setLabel(const QString &label)
 {
   d->label = label;

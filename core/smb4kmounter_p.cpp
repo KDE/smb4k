@@ -2,7 +2,7 @@
     This file contains private helper classes for the Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2017 by Alexander Reinholdt
+    copyright            : (C) 2007-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -91,8 +91,7 @@ void Smb4KMountDialog::setupView()
   pixmap->setPixmap(mount_pix);
   pixmap->setAlignment(Qt::AlignBottom);
 
-  QLabel *label = new QLabel(i18n("Enter the location (UNC address) and optionally the IP address and "
-                                    "workgroup to mount a share."), description);
+  QLabel *label = new QLabel(i18n("Enter the location and optionally the IP address and workgroup to mount a share."), description);
   label->setWordWrap(true);
   label->setAlignment(Qt::AlignBottom);
 
@@ -104,12 +103,11 @@ void Smb4KMountDialog::setupView()
   QGridLayout *edit_layout = new QGridLayout(edit_widget);
   layout->setSpacing(5);
 
-  QLabel *shareLabel = new QLabel(i18n("UNC Address:"), edit_widget);
+  QLabel *shareLabel = new QLabel(i18n("Location:"), edit_widget);
   m_share_input = new KLineEdit(edit_widget);
-  m_share_input->setWhatsThis(i18n("The Uniform Naming Convention (UNC) address "
-    "describes the location of the share. It has the following syntax: "
-    "//[USER@]HOST/SHARE. The username is optional."));
-//   m_share_input->setToolTip(i18n("The UNC address of the share"));
+  m_share_input->setWhatsThis(i18n("The location of the share is provided by the Uniform Resource Locator (URL). It generally has the following syntax: "
+    "[smb:]//[USER:PASSWORD@]HOST:PORT/SHARE. The username, password and port are optional. You should omit to enter the password here, because it is shown in cleartext."));
+//   m_share_input->setToolTip(i18n("The URL of the share"));
   m_share_input->setCompletionMode(KCompletion::CompletionPopupAuto);
   m_share_input->setClearButtonEnabled(true);
   m_share_input->setMinimumWidth(200);
@@ -197,7 +195,7 @@ void Smb4KMountDialog::slotOkClicked()
   if (!m_share_input->text().trimmed().isEmpty())
   {
     //
-    // Get the UNC/URL
+    // Get the URL
     // 
     QString userInput = m_share_input->text().trimmed();
     

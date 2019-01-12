@@ -273,7 +273,7 @@ void Smb4KConfigPageAuthentication::displayWalletEntries()
       }
       default:
       {
-        (void) new QListWidgetItem(KDE::icon("dialog-password"), m_entries_list.at(i)->unc(), m_entries_widget);
+        (void) new QListWidgetItem(KDE::icon("dialog-password"), m_entries_list.at(i)->displayString(), m_entries_widget);
         break;
       }
     }
@@ -366,7 +366,7 @@ void Smb4KConfigPageAuthentication::showDetails(Smb4KAuthInfo *authInfo)
       entry_label->setFlags(entry_label->flags() & Qt::ItemIsEditable);
       entry_label->setForeground(palette().text());
           
-      QTableWidgetItem *entry = new QTableWidgetItem(authInfo->unc());
+      QTableWidgetItem *entry = new QTableWidgetItem(authInfo->displayString());
       entry->setFlags(entry->flags() & Qt::ItemIsEditable);
       entry->setForeground(palette().text());
           
@@ -481,9 +481,9 @@ void Smb4KConfigPageAuthentication::slotDetailsClicked(bool checked)
     // only one entry in the list.
     for (int i = 0; i < m_entries_list.size(); ++i)
     {
-      if (QString::compare(selected_items.first()->text(), m_entries_list.at(i)->unc()) == 0 ||
-           (QString::compare(selected_items.first()->text(), i18n("Default Login")) == 0 &&
-            m_entries_list.at(i)->type() == UnknownNetworkItem))
+      if (QString::compare(selected_items.first()->text(), m_entries_list.at(i)->displayString()) == 0 ||
+          (QString::compare(selected_items.first()->text(), i18n("Default Login")) == 0 &&
+          m_entries_list.at(i)->type() == UnknownNetworkItem))
       {
         showDetails(m_entries_list.at(i));
         break;
@@ -517,9 +517,9 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
   {
     for (int i = 0; i < m_entries_list.size(); ++i)
     {
-      if (QString::compare(m_details_widget->item(0, 1)->text(), m_entries_list.at(i)->unc()) == 0 ||
-           (QString::compare(m_details_widget->item(0, 1)->text(), i18n("Default Login")) == 0 &&
-           m_entries_list.at(i)->type() == UnknownNetworkItem))
+      if (QString::compare(m_details_widget->item(0, 1)->text(), m_entries_list.at(i)->displayString()) == 0 ||
+          (QString::compare(m_details_widget->item(0, 1)->text(), i18n("Default Login")) == 0 &&
+          m_entries_list.at(i)->type() == UnknownNetworkItem))
       {
         switch (m_entries_list.at(i)->type())
         {
@@ -634,9 +634,9 @@ void Smb4KConfigPageAuthentication::slotRemoveActionTriggered(bool /*checked*/)
 
   for (int i = 0; i < m_entries_list.size(); ++i)
   {
-    if (QString::compare(m_entries_widget->currentItem()->text(), m_entries_list.at(i)->unc()) == 0 ||
-         (QString::compare(m_entries_widget->currentItem()->text(), i18n("Default Login")) == 0 &&
-         m_entries_list.at(i)->type() == UnknownNetworkItem))
+    if (QString::compare(m_entries_widget->currentItem()->text(), m_entries_list.at(i)->displayString()) == 0 ||
+        (QString::compare(m_entries_widget->currentItem()->text(), i18n("Default Login")) == 0 &&
+        m_entries_list.at(i)->type() == UnknownNetworkItem))
     {
       switch (m_entries_list.at(i)->type())
       {
@@ -726,25 +726,25 @@ void Smb4KConfigPageAuthentication::slotUndoDetailsActionTriggered(bool /*checke
 {
   showDetails(m_auth_info);
   
-  for (int i = 0; i < m_entries_list.size(); ++i)
+  for (Smb4KAuthInfo *authInfo : m_entries_list)
   {
-    if (QString::compare(m_auth_info->unc(), m_entries_list.at(i)->unc()) == 0 ||
-         (m_auth_info->type() == UnknownNetworkItem && m_auth_info->type() == m_entries_list.at(i)->type()))
+    if (m_auth_info->url().matches(authInfo->url(), QUrl::RemovePort /* we can leave the user info here */) ||
+        (m_auth_info->type() == UnknownNetworkItem && m_auth_info->type() == authInfo->type()))
     {
       switch (m_auth_info->type())
       {
         case Host:
         case Share:
         {
-          m_entries_list[i]->setWorkgroupName(m_auth_info->workgroupName());
-          m_entries_list[i]->setUserName(m_auth_info->userName());
-          m_entries_list[i]->setPassword(m_auth_info->password());
+          authInfo->setWorkgroupName(m_auth_info->workgroupName());
+          authInfo->setUserName(m_auth_info->userName());
+          authInfo->setPassword(m_auth_info->password());
           break;
         }
         default:
         {
-          m_entries_list[i]->setUserName(m_auth_info->userName());
-          m_entries_list[i]->setPassword(m_auth_info->password());
+          authInfo->setUserName(m_auth_info->userName());
+          authInfo->setPassword(m_auth_info->password());
           break;
         }
       }
@@ -753,8 +753,8 @@ void Smb4KConfigPageAuthentication::slotUndoDetailsActionTriggered(bool /*checke
     }
     else
     {
-      continue;
-    }
+      // Do nothing
+    }          
   }
   
   m_collection->action("undo_details_action")->setEnabled(false);

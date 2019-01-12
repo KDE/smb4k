@@ -82,11 +82,11 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, cons
 
         if (!share->isHomesShare())
         {
-          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->unc()));
+          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->displayString()));
         }
         else
         {
-          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->homeUNC()));
+          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1 on %2</b>.</qt>", share->displayString(true)));
         }
       }
       else

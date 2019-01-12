@@ -138,15 +138,15 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     QList<BookmarkPtr> bookmarksList(const QString &group) const;
     
     /**
-     * This function searches for a bookmark using its UNC and returns a pointer
+     * This function searches for a bookmark using its URL and returns a pointer
      * to it if it is present or NULL.
      *
-     * @param UNC           The UNC of the bookmark that is searched.
+     * @param url           The URL of the bookmark that is searched.
      *
      * @returns the bookmark object that was searched for or NULL if it was not
      * found.
      */
-    BookmarkPtr findBookmarkByUNC(const QString &unc);
+    BookmarkPtr findBookmarkByUrl(const QUrl &url);
 
     /**
      * This function searches for a bookmark using its label and returns a pointer
