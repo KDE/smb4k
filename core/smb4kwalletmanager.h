@@ -2,7 +2,7 @@
     This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -121,11 +121,9 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
      * @param networkItem     The network item for that the authentication
      *                        information should be entered
      *
-     * @param parent          The optional parent widget of the password dialog
-     *
      * @returns TRUE if successful and FALSE otherwise
      */
-    bool showPasswordDialog(const NetworkItemPtr &networkItem, QWidget *parent = 0);
+    bool showPasswordDialog(const NetworkItemPtr &networkItem);
 
     /**
      * This function returns TRUE if the wallet system can be/is used and
@@ -167,12 +165,6 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
      * and is ready to process authentication information.
      */
     void initialized();
-    
-  protected Q_SLOTS:
-    /**
-     * This slot is invoked when the wallet is opened.
-     */
-    void slotWalletOpened(bool success);
 
   private:
     /**

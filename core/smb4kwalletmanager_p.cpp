@@ -2,7 +2,7 @@
     Private helper classes for the wallet manager of Smb4K.
                              -------------------
     begin                : Mo Dez 31 2012
-    copyright            : (C) 2012-2017 by Alexander Reinholdt
+    copyright            : (C) 2012-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
