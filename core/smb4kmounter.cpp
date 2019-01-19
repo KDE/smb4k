@@ -781,7 +781,7 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
 #if defined(Q_OS_LINUX)
           if (errorMsg.contains("mount error 13") || errorMsg.contains("mount error(13)") /* authentication error */)
           {
-            if (Smb4KWalletManager::self()->showPasswordDialog(share, 0))
+            if (Smb4KWalletManager::self()->showPasswordDialog(share))
             {
               d->retries << share;
             }

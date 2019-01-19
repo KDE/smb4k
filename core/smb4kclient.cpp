@@ -2,7 +2,7 @@
     This class provides the interface to the libsmbclient library.
                              -------------------
     begin                : Sa Oct 20 2018
-    copyright            : (C) 2018 by Alexander Reinholdt
+    copyright            : (C) 2018-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -627,7 +627,7 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
       {
         case Host:
         {
-          if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem(), QApplication::activeWindow()))
+          if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem()))
           {
             lookupShares(job->networkItem().staticCast<Smb4KHost>());
           }
@@ -640,7 +640,7 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
         }
         case Share:
         {
-          if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem(), QApplication::activeWindow()))
+          if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem()))
           {
             lookupFiles(job->networkItem().staticCast<Smb4KShare>());
           }
@@ -663,7 +663,7 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
           share->setLogin(file->login());
           share->setPassword(file->password());
           
-          if (Smb4KWalletManager::self()->showPasswordDialog(share, QApplication::activeWindow()))
+          if (Smb4KWalletManager::self()->showPasswordDialog(share))
           {
             file->setLogin(share->login());
             file->setPassword(share->password());

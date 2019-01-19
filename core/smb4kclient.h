@@ -2,7 +2,7 @@
     This class provides the interface to the libsmbclient library.
                              -------------------
     begin                : Sa Oct 20 2018
-    copyright            : (C) 2018 by Alexander Reinholdt
+    copyright            : (C) 2018-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
