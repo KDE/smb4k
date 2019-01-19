@@ -1108,12 +1108,12 @@ void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool /*checked*/)
     {
       case Host:
       {
-        Smb4KWalletManager::self()->showPasswordDialog(item->hostItem(), m_networkBrowser);
+        Smb4KWalletManager::self()->showPasswordDialog(item->hostItem());
         break;
       }
       case Share:
       {
-        Smb4KWalletManager::self()->showPasswordDialog(item->shareItem(), m_networkBrowser);
+        Smb4KWalletManager::self()->showPasswordDialog(item->shareItem());
         break;
       }
       default:
