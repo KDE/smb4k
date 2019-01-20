@@ -265,17 +265,44 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
       // 
       if (!authInfoMap.isEmpty())
       {
-        if ((networkItem->type() == Host && 
-            QString::compare(networkItem.staticCast<Smb4KHost>()->workgroupName(), authInfoMap.value("Workgroup"), Qt::CaseInsensitive) == 0) ||
-            (networkItem->type() == Share &&
-            QString::compare(networkItem.staticCast<Smb4KShare>()->workgroupName(), authInfoMap.value("Workgroup"), Qt::CaseInsensitive) == 0))
+        switch (networkItem->type())
         {
-          networkItem->url().setUserName(authInfoMap.value("Login"));
-          networkItem->url().setPassword(authInfoMap.value("Password"));
-        }
-        else
-        {
-          // Do nothing
+          case Host:
+          {
+            HostPtr host = networkItem.staticCast<Smb4KHost>();
+            
+            if (QString::compare(host->workgroupName(), authInfoMap.value("Workgroup"), Qt::CaseInsensitive) == 0)
+            {
+              host->setLogin(authInfoMap.value("Login"));
+              host->setPassword(authInfoMap.value("Password"));
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            break;
+          }
+          case Share:
+          {
+            SharePtr share = networkItem.staticCast<Smb4KShare>();
+            
+            if (QString::compare(share->workgroupName(), authInfoMap.value("Workgroup"), Qt::CaseInsensitive) == 0)
+            {
+              share->setLogin(authInfoMap.value("Login"));
+              share->setPassword(authInfoMap.value("Password"));
+            }
+            else
+            {
+              // Do nothing
+            }
+            
+            break;
+          }
+          default:
+          {
+            break;
+          }
         }
       }
       else
@@ -287,8 +314,29 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
         {
           d->wallet->readMap("DEFAULT_LOGIN", authInfoMap);
           
-          networkItem->url().setUserName(authInfoMap.value("Login"));
-          networkItem->url().setPassword(authInfoMap.value("Password"));
+          switch (networkItem->type())
+          {
+            case Host:
+            {
+              HostPtr host = networkItem.staticCast<Smb4KHost>();
+              host->setLogin(authInfoMap.value("Login"));
+              host->setPassword(authInfoMap.value("Password"));
+              
+              break;
+            }
+            case Share:
+            {
+              SharePtr share = networkItem.staticCast<Smb4KShare>();
+              share->setLogin(authInfoMap.value("Login"));
+              share->setPassword(authInfoMap.value("Password"));
+              
+              break;
+            }
+            default:
+            {
+              break;
+            }
+          }
         }
         else
         {
