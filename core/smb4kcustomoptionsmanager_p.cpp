@@ -2,7 +2,7 @@
     Private helper classes for Smb4KCustomOptionsManagerPrivate class
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2018 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -188,28 +188,19 @@ void Smb4KCustomOptionsDialog::setupView()
   QVBoxLayout *mountingTabLayout = new QVBoxLayout(mountingTab);
   mountingTabLayout->setSpacing(5);
   
-  // 
-  // Remounting
-  // 
-  QGroupBox *remountGroupBox = new QGroupBox(i18n("Remounting"), mountingTab);
-  QVBoxLayout *remountGroupBoxLayout = new QVBoxLayout(remountGroupBox);
-  remountGroupBoxLayout->setSpacing(5);
-  
-  QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), remountGroupBox);
-  remountAlways->setObjectName("RemountAlways");
-  remountAlways->setEnabled(m_options->type() == Share);
-  connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
-
-  remountGroupBoxLayout->addWidget(remountAlways, 0);
-
-  mountingTabLayout->addWidget(remountGroupBox, 0);
-  
   //
   // Common options
   //
   QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), mountingTab);
   QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
   commonBoxLayout->setSpacing(5);
+  
+  QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), commonBox);
+  remountAlways->setObjectName("RemountAlways");
+  remountAlways->setEnabled(m_options->type() == Share);
+  connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  
+  commonBoxLayout->addWidget(remountAlways, 0, 0, 1, 2, 0);
   
   // Write access
   QCheckBox *useWriteAccess = new QCheckBox(Smb4KMountSettings::self()->useWriteAccessItem()->label(), commonBox);
@@ -227,8 +218,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useWriteAccess, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(writeAccess, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(useWriteAccess, 0, 0, 0);
-  commonBoxLayout->addWidget(writeAccess, 0, 1, 0);
+  commonBoxLayout->addWidget(useWriteAccess, 1, 0, 0);
+  commonBoxLayout->addWidget(writeAccess, 1, 1, 0);
   
   // Remote file system port
   QCheckBox *useFilesystemPort = new QCheckBox(Smb4KMountSettings::self()->useRemoteFileSystemPortItem()->label(), commonBox);
@@ -243,8 +234,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useFilesystemPort, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(filesystemPort, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()));
 
-  commonBoxLayout->addWidget(useFilesystemPort, 1, 0, 0);
-  commonBoxLayout->addWidget(filesystemPort, 1, 1, 0);
+  commonBoxLayout->addWidget(useFilesystemPort, 2, 0, 0);
+  commonBoxLayout->addWidget(filesystemPort, 2, 1, 0);
   
   mountingTabLayout->addWidget(commonBox, 0);
   
@@ -300,8 +291,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(groupId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   
-  extensionsSupportBoxLayout->addWidget(useGroupId, 1, 2, 0);
-  extensionsSupportBoxLayout->addWidget(groupId, 1, 3, 0);
+  extensionsSupportBoxLayout->addWidget(useGroupId, 2, 0, 0);
+  extensionsSupportBoxLayout->addWidget(groupId, 2, 1, 0);
   
   // File mode
   QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), extensionsSupportBox);
@@ -315,8 +306,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useFileMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(fileMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
   
-  extensionsSupportBoxLayout->addWidget(useFileMode, 2, 0, 0);
-  extensionsSupportBoxLayout->addWidget(fileMode, 2, 1, 0);
+  extensionsSupportBoxLayout->addWidget(useFileMode, 3, 0, 0);
+  extensionsSupportBoxLayout->addWidget(fileMode, 3, 1, 0);
   
   // Directory mode
   QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), extensionsSupportBox);
@@ -330,8 +321,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useDirectoryMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
   
-  extensionsSupportBoxLayout->addWidget(useDirectoryMode, 2, 2, 0);
-  extensionsSupportBoxLayout->addWidget(directoryMode, 2, 3, 0);
+  extensionsSupportBoxLayout->addWidget(useDirectoryMode, 4, 0, 0);
+  extensionsSupportBoxLayout->addWidget(directoryMode, 4, 1, 0);
   
   mountingTabLayout->addWidget(extensionsSupportBox, 0);
   
@@ -656,28 +647,19 @@ void Smb4KCustomOptionsDialog::setupView()
   QVBoxLayout *mountingTabLayout = new QVBoxLayout(mountingTab);
   mountingTabLayout->setSpacing(5);
   
-  // 
-  // Remounting
-  // 
-  QGroupBox *remountGroupBox = new QGroupBox(i18n("Remounting"), mountingTab);
-  QVBoxLayout *remountGroupBoxLayout = new QVBoxLayout(remountGroupBox);
-  remountGroupBoxLayout->setSpacing(5);
-  
-  QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), remountGroupBox);
-  remountAlways->setObjectName("RemountAlways");
-  remountAlways->setEnabled(m_options->type() == Share);
-  connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
-
-  remountGroupBoxLayout->addWidget(remountAlways, 0);
-
-  mountingTabLayout->addWidget(remountGroupBox, 0);
-  
   //
   // Common options
   //
   QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), mountingTab);
   QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
   commonBoxLayout->setSpacing(5);
+  
+  QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), remountGroupBox);
+  remountAlways->setObjectName("RemountAlways");
+  remountAlways->setEnabled(m_options->type() == Share);
+  connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  
+  commonBoxLayout->addWidget(remountAlways, 0, 0, 1, 2, 0);
   
   // User Id
   QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), commonBox);
@@ -696,8 +678,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(userId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
 
-  commonBoxLayout->addWidget(useUserId, 0, 0, 0);
-  commonBoxLayout->addWidget(userId, 0, 1, 0);
+  commonBoxLayout->addWidget(useUserId, 1, 0, 0);
+  commonBoxLayout->addWidget(userId, 1, 1, 0);
   
   // Group Id
   QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), commonBox);
@@ -716,8 +698,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(groupId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(useGroupId, 1, 0, 0);
-  commonBoxLayout->addWidget(groupId, 1, 1, 0);
+  commonBoxLayout->addWidget(useGroupId, 2, 0, 0);
+  commonBoxLayout->addWidget(groupId, 2, 1, 0);
   
   // File mode
   QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), commonBox);
@@ -731,8 +713,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useFileMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(fileMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(useFileMode, 2, 0, 0);
-  commonBoxLayout->addWidget(fileMode, 2, 1, 0);
+  commonBoxLayout->addWidget(useFileMode, 3, 0, 0);
+  commonBoxLayout->addWidget(fileMode, 3, 1, 0);
   
   // Directory mode
   QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), commonBox);
@@ -746,8 +728,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useDirectoryMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(useDirectoryMode, 3, 0, 0);
-  commonBoxLayout->addWidget(directoryMode, 3, 1, 0);
+  commonBoxLayout->addWidget(useDirectoryMode, 4, 0, 0);
+  commonBoxLayout->addWidget(directoryMode, 4, 1, 0);
   
   mountingTabLayout->addWidget(commonBox, 0);
   mountingTabLayout->addStretch(100);
