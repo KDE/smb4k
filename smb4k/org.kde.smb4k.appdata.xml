@@ -18,6 +18,7 @@
   <name xml:lang="fi">Smb4K</name>
   <name xml:lang="fr">Smb4K</name>
   <name xml:lang="gl">Smb4K</name>
+  <name xml:lang="id">Smb4K</name>
   <name xml:lang="it">Smb4K</name>
   <name xml:lang="ko">Smb4K</name>
   <name xml:lang="nds">Smb4K</name>
@@ -45,6 +46,7 @@
   <summary xml:lang="fi">Edistynyt verkkoympäristöselain ja Samba-jakoliitostyökalu</summary>
   <summary xml:lang="fr">Navigateur avancé de voisinage réseau et utilitaire pour le montage des partages Samba</summary>
   <summary xml:lang="gl">Navegador avanzado da veciñanza de rede e ferramenta para montar comparticións de Samba</summary>
+  <summary xml:lang="id">Advanced Network Neighborhood Browser dan Samba Share Mounting Utility"</summary>
   <summary xml:lang="it">Navigatore di risorse di rete avanzato e programma per montare le condivisioni Samba</summary>
   <summary xml:lang="ko">고급 네트워크 환경 탐색 및 Samba 공유 마운트 유틸리티</summary>
   <summary xml:lang="nds">Verwiedert Nettwarkümgeven-Kieker un Inhangwrktüüch för Samba-Freegaven</summary>
@@ -72,6 +74,7 @@
     <p xml:lang="fi">Smb4K on edistynyt verkkoympäristöselain ja Samba-jakoliitostyökalu KDE-ohjelmistokokonaisuuteen. Se etsii verkostasi käytettävissä olevia työryhmiä, palvelimia ja jakoja sekä osaa liittää haluamasi jaot paikalliseen tiedostojärjestelmään.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba que forma parte da colección de software de KDE. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
+    <p xml:lang="id">Smb4K adalah sebuah penelusur tetangga jaringan terkemuka dan utilitas pengaitan berbagi Samba untuk KDE Software Compilation. Ini menyeken jaringan tetanggamu untuk semua workgroup, server, dan share yang tersedia dan bisa mengaitkan semua share yang diinginkan ke sistem file lokalmu.</p>
     <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba per KDE Software Compilation. Analizza la tue risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
     <p xml:lang="ko">Smb4K는 고급 네트워크 환경 탐색기 및 Samba 공유 마운트 도구입니다. 로컬 네트워크에 있는 작업 그룹, 서버, 공유 자원을 탐색할 수 있으며 로컬 파일 시스템에 공유를 마운트할 수 있습니다.</p>
     <p xml:lang="nds">Smb4K is en verwiedert Nettwarkümgeven-Kieker un Inhangwarktüüch för Samba-Freegaven för de KDE-Software-Tosamenstellen. Dat kiekt Dien Nettwarkümgeven na verföögbor Arbeitkoppeln, Servers un Freegaven dör un kann de Freegaven na Dien lokaal Dateisysteem inhangen.</p>
@@ -97,6 +100,7 @@
     <p xml:lang="fi">Smb4K käyttää Samba-ohjelmiston ohjelmia. Sen on tarkoitus olla helppokäyttöinen ja monipuolinen.</p>
     <p xml:lang="fr">Smb4K utilise les programmes de la suite logicielle Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
     <p xml:lang="gl">Smb4K fai uso dos programas da colección de software Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
+    <p xml:lang="id">Smb4K memanfaatkan program suite software Samba. Tujuannya adalah untuk menyediakan program yang mudah digunakan dan memiliki banyak fitur sebanyak mungkin.</p>
     <p xml:lang="it">Smb4K utilizza i programmi della suite Samba. Il suo scopo è quello di fornire un programma che sia facile da usare e che abbia più funzionalità possibili.</p>
     <p xml:lang="ko">Smb4K는 Samba 소프트웨어의 프로그램을 사용합니다. 사용하기 편하면서도 기능이 풍부한 프로그램을 목적으로 합니다.</p>
     <p xml:lang="nds">Smb4K bruukt de Programmen ut de Samba-Programmsammeln. Dat schaal sik eenfach bedenen laten un so veel Funkschonen hebben as mööglich.</p>
@@ -124,6 +128,7 @@
     <p xml:lang="fi">Ominaisuuksia:</p>
     <p xml:lang="fr">Fonctionnalité :</p>
     <p xml:lang="gl">Funcionalidades:</p>
+    <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Funzionalità:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nds">Markmalen:</p>
@@ -150,6 +155,7 @@
       <li xml:lang="fi">(Aktiivisten) työryhmien, verkkokoneiden ja -jakojen etsintä</li>
       <li xml:lang="fr">Balayage des groupes de travail (actifs), hôtes et partages</li>
       <li xml:lang="gl">Pode atopar grupos de traballo (activos), servidores e comparticións.</li>
+      <li xml:lang="id">Penyekènan untuk workgroup, host, dan share (yang aktif)</li>
       <li xml:lang="it">Ricerca di gruppi di lavoro, host e condivisioni (attivi)</li>
       <li xml:lang="ko">(활성) 작업 그룹, 호스트, 공유 검색</li>
       <li xml:lang="nds">Kieken na (aktiev) Arbeitkoppeln, Reekners un Freegaven</li>
@@ -173,6 +179,7 @@
       <li xml:lang="fi">CIFS- (Linux) ja SMBFS-tiedostojärjestelmien (FreeBSD) tuki</li>
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
+      <li xml:lang="id">Dukungan sistem file CIFS (Linux) dan SMBFS (FreeBSD)</li>
       <li xml:lang="it">Supporto dei file system CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="ko">CIFS(리눅스) 및 SMBFS(FreeBSD) 파일 시스템 지원</li>
       <li xml:lang="nds">Ünnerstütt dat CIFS- (op Linux) un SMBFS-Dateisysteem (op FreeBSD)</li>
@@ -196,6 +203,7 @@
       <li xml:lang="fi">Jakojen liittäminen ja irrottaminen</li>
       <li xml:lang="fr">Montage et démontage des partages</li>
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
+      <li xml:lang="id">Pengaitan dan pelepaskaitan share-share</li>
       <li xml:lang="it">Montaggio e smontaggio delle condivisioni</li>
       <li xml:lang="ko">공유 마운트 및 마운트 해제</li>
       <li xml:lang="nds">Freegaven in- un uthangen</li>
@@ -219,6 +227,7 @@
       <li xml:lang="fi">Pääsy liitetyn jaon tiedostoihin tiedostonhallinnasta tai päätteestä</li>
       <li xml:lang="fr">Accès aux fichiers d'un partage à travers un gestionnaire de fichiers ou un terminal</li>
       <li xml:lang="gl">Permite acceder aos ficheiros dunha compartición montada usando un xestor de ficheiros ou un terminal.</li>
+      <li xml:lang="id">Akses ke file pada share yang dikaitkan menggunakan pengelola file atau terminal</li>
       <li xml:lang="it">Accesso ai file di una condivisione montata usando un gestore dei file o un terminale</li>
       <li xml:lang="ko">파일 관리자나 터미널을 통해서 마운트된 공유 내 파일에 접근</li>
       <li xml:lang="nds">Togriep op de Dateien binnen en inhangt Freegaav över Dateipleger oder Konsool</li>
@@ -242,6 +251,7 @@
       <li xml:lang="fi">Ulkoisten liitosten ja irrotusten automaattinen havaitseminen</li>
       <li xml:lang="fr">Auto-détection des montages et démontages externes</li>
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
+      <li xml:lang="id">Auto deteksi kait dan lepaskait eksternal</li>
       <li xml:lang="it">Rilevazione automatica di montaggi o di smontaggi esterni</li>
       <li xml:lang="ko">외부 마운트 및 마운트 해제 자동 감지</li>
       <li xml:lang="nds">Automaatsch Opdecken vun In- un Uthangen vun buten ut</li>
@@ -265,6 +275,7 @@
       <li xml:lang="fi">Aiemmin käytettyjen jakojen uudelleenliittäminen ohjelman käynnistyessä</li>
       <li xml:lang="fr">Remontage de partages précédemment utilisés lors du démarrage du programme</li>
       <li xml:lang="gl">Pode volver a montar comparticións usadas previamente ao iniciar o programa.</li>
+      <li xml:lang="id">Mengaitkan-ulang share-share yang digunakan sebelumnya saat memulai program</li>
       <li xml:lang="it">Rimontaggio all'avvio del programma di una condivisione usata in precedenza</li>
       <li xml:lang="ko">프로그램을 시작할 때 이전에 사용한 공유 다시 마운트</li>
       <li xml:lang="nds">Wedderinhangen vun al vördem bruukt Freegaven bi Programmstart</li>
@@ -288,6 +299,7 @@
       <li xml:lang="fi">Erilaiset tiedot etäverkkokohteista ja liitetyistä jaoista</li>
       <li xml:lang="fr">Infos diverses sur les éléments réseau distants et les partages montés</li>
       <li xml:lang="gl">Fornece información variada sobre elementos remotos da rede e comparticións montadas.</li>
+      <li xml:lang="id">Bermacam-macam info tentang item-item jaringan jarak jauh dan share-share yang dikaitkan</li>
       <li xml:lang="it">Informazioni varie sugli elementi di rete remoti e sulle condivisioni montate</li>
       <li xml:lang="ko">원격 네트워크 항목과 마운트된 공유에 대한 정보 제공</li>
       <li xml:lang="nds">En Reeg verscheden Informatschonen över Indrääg binnen Nettwarken un inhangt Freegaven</li>
@@ -313,6 +325,7 @@
       <li xml:lang="fi">Verkkohaku</li>
       <li xml:lang="fr">Recherche sur le réseau</li>
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
+      <li xml:lang="id">Pencarian jaringan</li>
       <li xml:lang="it">Ricerca in rete</li>
       <li xml:lang="ko">네트워크 검색</li>
       <li xml:lang="nds">Nettwarksöök</li>
@@ -339,6 +352,7 @@
       <li xml:lang="fi">WINS-palvelintuki</li>
       <li xml:lang="fr">Prise en charge d'un serveur WINS</li>
       <li xml:lang="gl">É compatíbel con servidores WINS.</li>
+      <li xml:lang="id">Dukungan server WINS</li>
       <li xml:lang="it">Supporto per server WINS</li>
       <li xml:lang="ko">WINS 서버 지원</li>
       <li xml:lang="nds">WINS-Server-Ünnerstütten</li>
@@ -362,6 +376,7 @@
       <li xml:lang="fi">Jaon sisällön esikatselu</li>
       <li xml:lang="fr">Aperçu des contenus d'un partage</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición.</li>
+      <li xml:lang="id">Pratinjau isi-isi share</li>
       <li xml:lang="it">Anteprima dei contenuti di una condivisione</li>
       <li xml:lang="ko">공유 내용 미리 보기</li>
       <li xml:lang="nds">Vöransicht vun de Freegaav ehr Inholt</li>
@@ -385,6 +400,7 @@
       <li xml:lang="fi">Useampia tapoja etsiä työryhmien ja aluenimien alustavaa luetteloa</li>
       <li xml:lang="fr">Plusieurs méthodes pour découvrir la liste initiale des groupes de travail et des domaines</li>
       <li xml:lang="gl">Fornece varios métodos de busca na lista inicial de grupos de traballo e dominios.</li>
+      <li xml:lang="id">Beberapa metode untuk melihat daftar inisial workgroup dan domain</li>
       <li xml:lang="it">Vari metodi per consultare la lista iniziale dei gruppi di lavoro e dei domini</li>
       <li xml:lang="ko">작업 그룹과 도메인 목록을 가져오는 여러 방법</li>
       <li xml:lang="nds">Mehr Metoden för't Naslaan vun de eerste List mit Arbeitkoppeln un Domänen</li>
@@ -410,6 +426,7 @@
       <li xml:lang="fi">Oletuskirjautuminen</li>
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
       <li xml:lang="gl">Permite configurar credenciais predeterminadas de acceso.</li>
+      <li xml:lang="id">Login baku</li>
       <li xml:lang="it">Nome utente predefinito</li>
       <li xml:lang="ko">기본 로그인</li>
       <li xml:lang="nds">Standardanmellen</li>
@@ -433,6 +450,7 @@
       <li xml:lang="fi">Kotikansiojakojen erityiskäsittely</li>
       <li xml:lang="fr">Prise en charge spéciale des répertoires personnels partagés</li>
       <li xml:lang="gl">Xestiona de forma especial as particións de cartafoles persoais.</li>
+      <li xml:lang="id">Penanganan khusus share home</li>
       <li xml:lang="it">Gestione speciale delle condivisioni delle home</li>
       <li xml:lang="ko">홈 공유 특수 처리</li>
       <li xml:lang="nds">Besünner Hanteren vun Tohuus-Freegaven</li>
@@ -456,6 +474,7 @@
       <li xml:lang="fi">Mahdollisuus tehdä suosikkijaoista kirjanmerkkejä</li>
       <li xml:lang="fr">Possibilité d'avoir des partages favoris</li>
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
+      <li xml:lang="id">Kemampuan untuk memarkahi share favorit</li>
       <li xml:lang="it">Possibilità di aggiungere le condivisioni preferite nei segnalibri</li>
       <li xml:lang="ko">자주 찾는 공유 책갈피 추가</li>
       <li xml:lang="nds">Leestekens för vörtrocken Freegaven</li>
@@ -479,6 +498,7 @@
       <li xml:lang="fi">Ilmoitusaluekuvake</li>
       <li xml:lang="fr">Composant graphique dans la barre d'état</li>
       <li xml:lang="gl">Fornece un trebello na área de notificación.</li>
+      <li xml:lang="id">Widget system tray</li>
       <li xml:lang="it">Oggetto per il vassoio di sistema</li>
       <li xml:lang="ko">시스템 트레이 위젯</li>
       <li xml:lang="nds">Systeemafsnitt-Lüttprogramm</li>
@@ -502,6 +522,7 @@
       <li xml:lang="fi">Edistyneiden Samba-asetusten tuki</li>
       <li xml:lang="fr">Prise en charge des options avancées de Samba</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de Samba.</li>
+      <li xml:lang="id">Dukungan opsi Samba tingkatlanjut</li>
       <li xml:lang="it">Supporto alle opzioni avanzate di Samba</li>
       <li xml:lang="ko">고급 Samba 옵션 지원</li>
       <li xml:lang="nds">Ünnerstütt verwieder Samba-Optschonen</li>
@@ -525,6 +546,7 @@
       <li xml:lang="fi">Tulostinjakojen tuki</li>
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
+      <li xml:lang="id">Dukungan share printer</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
       <li xml:lang="ko">프린터 공유 지원</li>
       <li xml:lang="nds">Ünnerstütten vun Druckerfreegaven</li>
@@ -549,6 +571,7 @@
       <li xml:lang="fi">KWallet-tuki</li>
       <li xml:lang="fr">Prise en charge de KWallet</li>
       <li xml:lang="gl">Compatibilidade con KWallet.</li>
+      <li xml:lang="id">Dukungan KWallet</li>
       <li xml:lang="it">Supporto a KWallet</li>
       <li xml:lang="ko">KWallet 지원</li>
       <li xml:lang="nds">KWallet-Ünnerstütten</li>
@@ -572,6 +595,7 @@
       <li xml:lang="fi">Etäjakojen synkronointi paikallisen kopion kanssa ja päinvastoin</li>
       <li xml:lang="fr">Synchronisation d'un partage distant avec une copie locale et vice-versa</li>
       <li xml:lang="gl">Permite sincronizar comparticións remotas con copias locais en ambos sentidos.</li>
+      <li xml:lang="id">Sinkronisasi share jarak jauh dengan salinan lokal dan sebaliknya</li>
       <li xml:lang="it">Sincronizzazione di una condivisione remota con una copia locale e viceversa</li>
       <li xml:lang="ko">원격 공유와 로컬 사본 양방향 동기화</li>
       <li xml:lang="nds">Synkroniseren vun en feern Freegaav mit en lokaal Kopie, un ok ümdreiht</li>
@@ -595,6 +619,7 @@
       <li xml:lang="fi">Mahdollisuus mukauttaa määräpalvelinten ja -jakojen asetuksia</li>
       <li xml:lang="fr">Possibilité de définir des options personnalisées pour des serveurs et des partages individuels</li>
       <li xml:lang="gl">Permite definir configuracións personalizadas para servidores e comparticións concretas.</li>
+      <li xml:lang="id">Kemampuan untuk menentukan opsi kustom untuk share dan server individu</li>
       <li xml:lang="it">Capacità di definire opzioni personalizzate per server individuali e per le condivisioni</li>
       <li xml:lang="ko">서버 및 공유 자원별 설정</li>
       <li xml:lang="nds">Lett Di Dien egen Optschonen för enkelte Servers un Freegaven fastleggen</li>
@@ -618,6 +643,7 @@
       <li xml:lang="fi">Kannettavan tietokoneen tuki Solid-laitteistokehyksen avulla</li>
       <li xml:lang="fr">Prise en charge des ordinateurs portables avec le framework de gestion matérielle Solid</li>
       <li xml:lang="gl">Compatíbel con portátiles mediante a infraestrutura de dispositivos de hardware Solid.</li>
+      <li xml:lang="id">Dukungan laptop melalui kerangkakerja perangkat hardware Solid</li>
       <li xml:lang="it">Supporto ai computer portatili per mezzo dell'infrastruttura per i dispositivi hardware Solid</li>
       <li xml:lang="ko">Solid 하드웨어 장치 프레임워크를 통한 노트북 지원</li>
       <li xml:lang="nds">Klappreekner-Ünnerstütten över't Hardware-Rahmenwark Solid</li>
@@ -641,6 +667,7 @@
       <li xml:lang="fi">Wake-On-LAN-ominaisuudet</li>
       <li xml:lang="fr">Capacités de réveil par le réseau (Wake-on-LAN)</li>
       <li xml:lang="gl">Ofrece funcionalidades de espertar na rede (Wake-On-LAN).</li>
+      <li xml:lang="id">Kemampuan Wake-On-LAN</li>
       <li xml:lang="it">Funzionalità Wake-On-LAN</li>
       <li xml:lang="ko">Wake-On-LAN 기능</li>
       <li xml:lang="nds">Kann OpWaken-op-LAN (WOL)</li>
@@ -664,6 +691,7 @@
       <li xml:lang="fi">Plasmoidi työpöytäintegrointia varten</li>
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
       <li xml:lang="gl">Ofrece integración co escritorio mediante un plasmoide.</li>
+      <li xml:lang="id">Plasmoid untuk integrasi desktop</li>
       <li xml:lang="it">Plasmoide per l'integrazione desktop</li>
       <li xml:lang="ko">Plasmoid를 통한 데스크톱 통합</li>
       <li xml:lang="nds">Plasma-Lüttprogramm för't Integreren na den Schriefdisch</li>
@@ -690,6 +718,7 @@
     <p xml:lang="fi">Jos työskentelet Windowsin hallitsemassa verkkoympäristössä, halunnet asentaa tämän sovelluksen käyttääksesi helposti tarjolla olevia Windows-jakoja.</p>
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
     <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, este aplicativo axudarao a acceder facilmente aos recursos compartidos desde Windows.</p>
+    <p xml:lang="id">Jika kamu bekerja dalam lingkungan jaringan yang didominasi Windows, kamu mungkin ingin menginstal aplikasi ini untuk dapat mengakses secara mudah share-share yang di sediakan Windows</p>
     <p xml:lang="it">Se stai lavorando in una rete dominata da Windows potresti voler installare questa applicazione, per essere in grado di accedere facilmente alle condivisioni fornite da Windows.</p>
     <p xml:lang="ko">Windows가 대다수인 네트워크 환경에서 Windows 공유에 빠르게 접근하려면 이 프로그램을 사용할 수 있습니다.</p>
     <p xml:lang="nds">Arbeidst Du binnen en vun Windows präägt Nettwarkümgeven, kannst Du dit Programm installeren, wenn Du eenfach op de praatstahn Windows-Freegaven togriepen wullt.</p>
@@ -717,6 +746,7 @@
       <caption xml:lang="fi">Pääikkuna</caption>
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal</caption>
+      <caption xml:lang="id">Window utama</caption>
       <caption xml:lang="it">La finestra principale</caption>
       <caption xml:lang="ko">주 창</caption>
       <caption xml:lang="nds">Dat Hööftfinster</caption>
@@ -744,6 +774,7 @@
       <caption xml:lang="fi">Plasmoidi</caption>
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O plasmoide</caption>
+      <caption xml:lang="id">Plasmoid</caption>
       <caption xml:lang="it">Il plasmoide</caption>
       <caption xml:lang="ko">Plasmoid</caption>
       <caption xml:lang="nds">Dat Plasma-Lüttprogramm</caption>
