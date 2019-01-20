@@ -2,7 +2,7 @@
     The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2018 by Alexander Reinholdt
+    copyright            : (C) 2003-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -298,7 +298,8 @@ void Smb4KMounter::import(bool checkInaccessible)
     if (QString::compare(mountPoint->mountType(), "cifs") == 0 || QString::compare(mountPoint->mountType(), "smbfs") == 0)
     {
       // Create new share and set the mountpoint and the filesystem
-      SharePtr share = SharePtr(new Smb4KShare(mountPoint->mountedFrom()));
+      SharePtr share = SharePtr(new Smb4KShare());
+      share->setUrl(mountPoint->mountedFrom());
       share->setPath(mountPoint->mountPoint());
       share->setMounted(true);
       
@@ -568,6 +569,7 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
       if (!s->isForeign())
       {
         isMounted = true;
+        break;
       }
       else
       {
