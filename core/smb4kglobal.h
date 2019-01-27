@@ -2,7 +2,7 @@
     This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2017 by Alexander Reinholdt
+    copyright            : (C) 2005-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -161,14 +161,6 @@ namespace Smb4KGlobal
    * @returns TRUE if at least one of the core classes is doing something.
    */
   Q_DECL_EXPORT bool coreIsRunning();
-
-  /**
-   * Set the necessary default values.
-   *
-   * You only need to run this function if you do not use the initCore() function.
-   * Check if the core has been initialized by the coreIsInitialized() function.
-   */
-  Q_DECL_EXPORT void setDefaultSettings();
 
   /**
    * Check if the core has been initialized through the initCore() function.
@@ -506,12 +498,11 @@ namespace Smb4KGlobal
   Q_DECL_EXPORT void openShare(SharePtr share, OpenWith openWith = FileManager);
   
   /**
-   * Get the entries of the [global] section of the smb.conf file. By setting @p read 
-   * to TRUE you can force the smb.conf file to be reread.
+   * Get the entries of the [global] section of the smb.conf file.
    * 
    * @returns the entries of the [global] section of the smb.conf file
    */
-  Q_DECL_EXPORT const QMap<QString,QString> &globalSambaOptions(bool read = false);
+  Q_DECL_EXPORT const QMap<QString,QString> &globalSambaOptions();
   
   /**
    * Get the WINS server's name or IP address. Returns an empty string if there is no

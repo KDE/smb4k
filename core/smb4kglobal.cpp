@@ -2,7 +2,7 @@
     This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2017 by Alexander Reinholdt
+    copyright            : (C) 2005-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -59,11 +59,6 @@ void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
     p->modifyCursor = modifyCursor;
     
     // 
-    // Set default values
-    // 
-    p->setDefaultSettings();
-    
-    // 
     // Initialize the necessary core classes
     // 
     if (initClasses)
@@ -76,7 +71,6 @@ void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
       // Do nothing
     }
 
-    p->makeConnections();
     p->coreInitialized = true;
   }
   else
@@ -99,12 +93,6 @@ bool Smb4KGlobal::coreIsRunning()
   return (Smb4KClient::self()->isRunning() ||
           Smb4KMounter::self()->isRunning() ||
           Smb4KSynchronizer::self()->isRunning());
-}
-
-
-void Smb4KGlobal::setDefaultSettings()
-{
-  p->setDefaultSettings();
 }
 
 
@@ -1247,9 +1235,9 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
 }
 
 
-const QMap<QString,QString> &Smb4KGlobal::globalSambaOptions(bool read)
+const QMap<QString,QString> &Smb4KGlobal::globalSambaOptions()
 {
-  return p->globalSambaOptions(read);
+  return p->globalSambaOptions();
 }
 
 
