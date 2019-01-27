@@ -2,7 +2,7 @@
     The network neighborhood browser dock widget 
                              -------------------
     begin                : Sat Apr 28 2018
-    copyright            : (C) 2018 by Alexander Reinholdt
+    copyright            : (C) 2018-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -1457,6 +1457,12 @@ void Smb4KNetworkBrowserDockWidget::slotShowSearchToolBar()
 
 void Smb4KNetworkBrowserDockWidget::slotHideSearchToolBar()
 {
+  //
+  // Prevent another dock widget from stealing the focus when 
+  // the search tool bar is hidden
+  // 
+  m_networkBrowser->setFocus();
+  
   //
   // Hide the search toolbar
   // 
