@@ -654,7 +654,7 @@ void Smb4KCustomOptionsDialog::setupView()
   QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
   commonBoxLayout->setSpacing(5);
   
-  QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), remountGroupBox);
+  QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), commonBox);
   remountAlways->setObjectName("RemountAlways");
   remountAlways->setEnabled(m_options->type() == Share);
   connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
