@@ -301,7 +301,9 @@ void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
     for (int i = 0; i < d->bookmarks.size(); ++i)
     {
       if ((!Smb4KSettings::useProfiles() || Smb4KSettings::activeProfile() == d->bookmarks.at(i)->profile()) &&
-          bookmark->url().matches(d->bookmarks.at(i)->url(), QUrl::RemoveUserInfo|QUrl::RemovePort) &&
+          QString::compare(d->bookmarks.at(i)->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           bookmark->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           Qt::CaseInsensitive) == 0 &&
           QString::compare(bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive) == 0)
       {
         d->bookmarks.takeAt(i).clear();
@@ -541,7 +543,9 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
   {
     for (const BookmarkPtr &b : bookmarksList())
     {
-      if (b->url().matches(url, QUrl::RemoveUserInfo|QUrl::RemovePort))
+      if (QString::compare(b->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           Qt::CaseInsensitive) == 0)
       {
         bookmark = b;
         break;

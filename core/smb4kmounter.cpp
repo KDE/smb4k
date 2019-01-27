@@ -2757,7 +2757,10 @@ void Smb4KMounter::slotStatResult(KJob *job)
         {
           SharePtr remount = s.next();
 
-          if (!importedShare->isForeign() && remount->url().matches(importedShare->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
+          if (!importedShare->isForeign() && 
+              QString::compare(remount->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                               importedShare->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                               Qt::CaseInsensitive) == 0)
           {
             Smb4KCustomOptionsManager::self()->removeRemount(remount);
             s.remove();

@@ -253,7 +253,9 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
       }
       case Host:
       {
-        if (d->url.matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath))
+        if (QString::compare(d->url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath),
+                             share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath),
+                             Qt::CaseInsensitive) == 0)
         {
           d->url = share->url();
           d->type = Share;

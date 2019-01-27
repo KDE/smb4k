@@ -471,7 +471,10 @@ SharePtr Smb4KGlobal::findShare(const QUrl& url, const QString& workgroup)
 
   for (const SharePtr &s : p->sharesList)
   {
-    if (s->url().matches(url, QUrl::RemoveUserInfo|QUrl::RemovePort) && (workgroup.isEmpty() || QString::compare(s->workgroupName(), workgroup, Qt::CaseInsensitive) == 0))
+    if (QString::compare(s->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                         url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                         Qt::CaseInsensitive) == 0 &&
+        (workgroup.isEmpty() || QString::compare(s->workgroupName(), workgroup, Qt::CaseInsensitive) == 0))
     {
       share = s;
       break;
@@ -761,7 +764,9 @@ QList<SharePtr> Smb4KGlobal::findShareByUrl(const QUrl &url)
   {
     for (const SharePtr &s : p->mountedSharesList)
     {
-      if (s->url().matches(url, QUrl::RemoveUserInfo|QUrl::RemovePort))
+      if (QString::compare(s->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           Qt::CaseInsensitive) == 0)
       {
         shares << s;
       }
@@ -837,7 +842,9 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
       // Search results
       for (SharePtr s : p->searchResults)
       {
-        if (share->url().matches(s->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
+        if (QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                             s->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                             Qt::CaseInsensitive) == 0)
         {
           s->setMountData(share.data());
         }
@@ -1041,7 +1048,9 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
       // Search result
       for (SharePtr searchResult : searchResults())
       {
-        if (searchResult->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
+        if (QString::compare(searchResult->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                             share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                             Qt::CaseInsensitive) == 0)
         {
           searchResult->resetMountData();
           break;

@@ -275,7 +275,10 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
           for (const OptionsPtr &o : optionsList)
           {
             // In case of a host, there can only be an exact match.
-            if (host->url().matches(o->url(), QUrl::RemoveUserInfo|QUrl::RemovePort) || (host->url().isEmpty() && host->ipAddress() == o->ipAddress()))
+            if (QString::compare(host->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                                 o->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                                 Qt::CaseInsensitive) == 0 ||
+                (host->url().isEmpty() && host->ipAddress() == o->ipAddress()))
             {
               options = o;
               break;
@@ -300,12 +303,17 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
         {
           for (const OptionsPtr &o : optionsList)
           {
-            if (share->url().matches(o->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
+            if (QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                                 o->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                                 Qt::CaseInsensitive) == 0)
             {
               options = o;
               break;
             }
-            else if (!exactMatch && o->type() == Host && share->url().matches(o->url(), QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath))
+            else if (!exactMatch && o->type() == Host && 
+                     QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath),
+                                      o->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath),
+                                      Qt::CaseInsensitive) == 0)
             {
               options = o;
             }

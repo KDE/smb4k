@@ -693,9 +693,13 @@ void Smb4KShare::setShareIcon()
 
 void Smb4KShare::update(Smb4KShare* share)
 {
-  if (QString::compare(workgroupName(), share->workgroupName()) == 0 &&
-      (url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort) || 
-      homeUrl().matches(share->homeUrl(), QUrl::RemoveUserInfo|QUrl::RemovePort)))
+  if (QString::compare(workgroupName(), share->workgroupName(), Qt::CaseInsensitive) == 0 &&
+      (QString::compare(url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                        share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                        Qt::CaseInsensitive) == 0 ||
+       QString::compare(homeUrl().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                        share->homeUrl().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                        Qt::CaseInsensitive) == 0))
   {
     *pUrl = share->url();
     setMountData(share);
