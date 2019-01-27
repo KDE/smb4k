@@ -2,7 +2,7 @@
     These are the private helper classes of the Smb4KGlobal namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2017 by Alexander Reinholdt
+    copyright            : (C) 2007-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -36,6 +36,7 @@
 #include <QMap>
 #include <QObject>
 #include <QSharedPointer>
+#include <QFileSystemWatcher>
 
 /**
  * This class is a private helper for the Smb4KGlobal namespace.
@@ -86,23 +87,13 @@ class Smb4KGlobalPrivate : public QObject
     /**
      * The global options defined in smb.conf
      */
-    const QMap<QString,QString> &globalSambaOptions(bool read);
+    const QMap<QString,QString> &globalSambaOptions(bool read = false);
 
     /**
      * Boolean that is TRUE when only foreign shares
      * are in the list of mounted shares
      */
     bool onlyForeignShares;
-
-    /**
-     * Set default values for some settings
-     */
-    void setDefaultSettings();
-
-    /**
-     * Make connections
-     */
-    void makeConnections();
 
     /**
      * Boolean that is TRUE if the core classes have
@@ -130,9 +121,15 @@ class Smb4KGlobalPrivate : public QObject
      */
     void slotAboutToQuit();
     
+    /**
+     * Called when the smb.conf file is modified
+     */
+    void slotSmbConfModified(const QString &file);
+    
   private:
     QMap<QString,QString> m_sambaOptions;
     bool m_sambaConfigMissing;
+    QFileSystemWatcher *m_watcher;
 };
 
 #endif

@@ -2,7 +2,7 @@
     These are the private helper classes of the Smb4KGlobal namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2017 by Alexander Reinholdt
+    copyright            : (C) 2007-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,6 +41,7 @@
 #include <QHostAddress>
 #include <QAbstractSocket>
 #include <QHostInfo>
+#include <QDirIterator>
 
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
@@ -70,6 +71,17 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
   whitelistedMountArguments << "noposixpaths";
   whitelistedMountArguments << "posixpaths";
 #endif
+  
+  //
+  // File system watcher for smb.conf file
+  // 
+  m_watcher = new QFileSystemWatcher(this);
+  
+  //
+  // Connections
+  // 
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
+  connect(m_watcher, SIGNAL(fileChanged(QString)), this, SLOT(slotSmbConfModified(QString)));
 }
 
 
@@ -103,58 +115,66 @@ Smb4KGlobalPrivate::~Smb4KGlobalPrivate()
 
 const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
 {
-  if (read)
+  if ((!m_sambaConfigMissing && m_sambaOptions.isEmpty()) || read)
   {
+    // 
     // Clear the options.
+    // 
     m_sambaOptions.clear();
     
-    // Now search the smb.conf file and read the [global] section
-    // from it.
+    // 
+    // Now search the smb.conf file.
+    // 
     // With the introduction of Samba 4, the smb.conf file might also
     // be named smb4.conf. Thus we need to search for two filenames.
-    // Please note that the file named smb.conf will always be picked
-    // if it exists.
+    // 
     QStringList paths;
     paths << "/etc";
-    paths << "/etc/samba";
     paths << "/usr/local/etc";
-    paths << "/usr/local/etc/samba";
-    paths << "/usr/pkg/etc/samba";
+    paths << "/usr/pkg/etc";
     
-    QFile smbConf;
-    QStringList contents;
-
-    for (int i = 0; i < paths.size(); ++i)
+    QStringList files;
+    files << "smb.conf";
+    files << "smb4.conf";
+    
+    QString result;
+    
+    for (const QString &path : paths)
     {
-      QDir::setCurrent(paths.at(i));
-      QFile file1("smb.conf");
-      QFile file2("smb4.conf");
+      QDirIterator it(path, files, QDir::Files, QDirIterator::Subdirectories);
       
-      if (file1.exists())
+      while (it.hasNext())
       {
-        smbConf.setFileName(QDir::currentPath()+QDir::separator()+file1.fileName());
-        break;
+        result = it.next();
       }
-      else if (file2.exists())
+      
+      if (!result.isEmpty())
       {
-        smbConf.setFileName(QDir::currentPath()+QDir::separator()+file2.fileName());
         break;
       }
       else
       {
-        continue;
+        // Do nothing
       }
     }
     
-    if (smbConf.exists())
+    //
+    // Check if we found the file and read it. Otherwise show an error
+    // message to the user.
+    // 
+    QStringList contents;
+    
+    if (!result.isEmpty())
     {
+      QFile smbConf(result);
+      
       if (smbConf.open(QIODevice::ReadOnly | QIODevice::Text))
       {
         QTextStream ts(&smbConf);
         
         while (!ts.atEnd())
         {
-          contents.append(ts.readLine(0));
+          contents << ts.readLine(0);
         }
         
         smbConf.close();
@@ -164,7 +184,15 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
         Smb4KNotification::openingFileFailed(smbConf);
         return m_sambaOptions;
       }
-
+      
+      //
+      // Add the file to the file system watcher
+      // 
+      m_watcher->addPath(result);
+      
+      //
+      // Tell the program that the config file was found
+      // 
       m_sambaConfigMissing = false;
     }
     else
@@ -178,34 +206,39 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
       else
       {
         // Do nothing
-      }
+      }    
     }
     
-    // Now process the contents of the smb.conf file.
+    //
+    // Process the contents of the smb.conf file
+    // 
     if (!contents.isEmpty())
     {
-      // Process the file contents.
+      //
+      // Jump to the [global] section and get the listed parameters
+      // 
       for (int i = contents.indexOf("[global]", 0); i < contents.size(); ++i)
       {
         if (i == -1)
         {
-          // The smb.conf file does not contain a global section.
+          // 
+          // No [global] section found. Stop.
+          // 
           break;
         }
-        else
+        else if (contents.at(i).trimmed().startsWith('#') || contents.at(i).trimmed().startsWith(';') || contents.at(i).trimmed().isEmpty())
         {
-          // Do nothing
-        }
-        
-        if (contents.at(i).trimmed().startsWith('#') || contents.at(i).trimmed().startsWith(';'))
-        {
-          // This is a comment. We do not need it.
+          // 
+          // This is either a comment or an empty line. We do not want it.
+          // 
           continue;
         }
         else if (contents.at(i).trimmed().startsWith(QLatin1String("include")))
         {
-          // Look for the include file and put its contents into the
-          // m_sambaOptions map.
+          //
+          // This is an include file. Get its contents and insert it into the 
+          // global Samba options map
+          // 
           QFile includeFile(contents.at(i).section('=', 1, 1).trimmed());
 
           if (includeFile.exists())
@@ -222,13 +255,20 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
 
                 if (buffer.startsWith('#') || buffer.startsWith(';'))
                 {
+                  // 
+                  // This is either a comment or an empty line. We do not want it.
+                  // 
                   continue;
                 }
                 else
                 {
-                  QString key = buffer.section('=', 0, 0).trimmed().toLower();
-                  m_sambaOptions[key] = buffer.section('=', 1, 1).trimmed().toUpper();
-                  continue;
+                  //
+                  // This is an option. Put it into the global Samba options map
+                  // 
+                  QString key = contents.at(i).section('=', 0, 0).trimmed().toLower();
+                  QString value = contents.at(i).section('=', 1, 1).trimmed().toUpper();
+          
+                  m_sambaOptions.insert(key, value);
                 }
               }
             }
@@ -239,75 +279,36 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
             }
           }
         }
-        else if (contents.at(i).startsWith('[') && !contents.at(i).contains("[global]", Qt::CaseSensitive))
+        else if (contents.at(i).trimmed().startsWith('[') && !contents.at(i).contains("[global]", Qt::CaseSensitive))
         {
-          // We reached the end of the [global] section. Stop here.
+          //
+          // A new section begins. Stop.
+          // 
           break;
         }
         else
         {
-          // Put the entries of the [global] section into the m_sambaOptions
-          // map.
+          //
+          // This is an option. Put it into the global Samba options map
+          // 
           QString key = contents.at(i).section('=', 0, 0).trimmed().toLower();
-          m_sambaOptions[key] = contents.at(i).section('=', 1, 1).trimmed().toUpper();
+          QString value = contents.at(i).section('=', 1, 1).trimmed().toUpper();
+          
+          m_sambaOptions.insert(key, value);
         }
       }
     }
     else
     {
-      // Nothing to do
-    }
-
-    // Post-processing. Some values should be entered with their defaults, if they are
-    // not already present.
-    if (!m_sambaOptions.contains("netbios name"))
-    {
-      m_sambaOptions["netbios name"] = QHostInfo::localHostName().toUpper();
-    }
-    else
-    {
       // Do nothing
-    }  
+    }
   }
   else
   {
     // Do nothing
   }
-  
+    
   return m_sambaOptions;
-}
-
-
-void Smb4KGlobalPrivate::setDefaultSettings()
-{
-  // Samba options that have to be dynamically imported from smb.conf:
-  QMap<QString, QString> opts = globalSambaOptions(true);
-
-  if (!opts["netbios name"].isEmpty())
-  {
-    Smb4KSettings::self()->netBIOSNameItem()->setDefaultValue(opts["netbios name"]);
-
-    if (Smb4KSettings::netBIOSName().isEmpty())
-    {
-      Smb4KSettings::self()->netBIOSNameItem()->setDefault();
-    }
-  }
-
-  if (!opts["workgroup"].isEmpty())
-  {
-    Smb4KSettings::self()->domainNameItem()->setDefaultValue(opts["workgroup"]);
-
-    if (Smb4KSettings::domainName().isEmpty())
-    {
-      Smb4KSettings::self()->domainNameItem()->setDefault();
-    }
-  }
-}
-
-
-void Smb4KGlobalPrivate::makeConnections()
-{
-  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
 }
 
 
@@ -315,3 +316,10 @@ void Smb4KGlobalPrivate::slotAboutToQuit()
 {
   Smb4KSettings::self()->save();
 }
+
+
+void Smb4KGlobalPrivate::slotSmbConfModified(const QString &/*file*/)
+{
+  globalSambaOptions(true);
+}
+
