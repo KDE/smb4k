@@ -794,7 +794,7 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
           if (errorMsg.contains("Authentication error") || errorMsg.contains("Permission denied"))
           {
-            if (Smb4KWalletManager::self()->showPasswordDialog(share, 0))
+            if (Smb4KWalletManager::self()->showPasswordDialog(share))
             {
               d->retries << share;
             }
