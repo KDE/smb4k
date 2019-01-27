@@ -1985,6 +1985,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     // Do nothing
   }
   
+  m_maybe_changed = true;
   emit customSettingsModified();
 }
 
