@@ -2,7 +2,7 @@
     This class provides a container for the authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2018 by Alexander Reinholdt
+    copyright            : (C) 2004-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -180,22 +180,6 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      * @returns TRUE if the item is a homes share.
      */
     bool isHomesShare() const;
-
-    /**
-     * Compare another Smb4KAuthInfo object with this one an return TRUE if both carry
-     * the same data.
-     *
-     * @param info            The Smb4KAuthInfo object that should be compared with this
-     *                        one.
-     *
-     * @returns TRUE if the data that was compared is the same.
-     */
-    bool equals(Smb4KAuthInfo *info) const;
-    
-    /**
-     * Operator to check if two authentication information objects are equal.
-     */
-    bool operator==(Smb4KAuthInfo info) const { return equals(&info); }
 
     /**
      * Sets the URL of the share after some checks are passed.

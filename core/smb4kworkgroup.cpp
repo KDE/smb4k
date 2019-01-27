@@ -162,68 +162,6 @@ bool Smb4KWorkgroup::hasMasterBrowserIpAddress() const
 }
 
 
-bool Smb4KWorkgroup::isEmpty() const
-{
-  // Ignore all booleans.
-
-  if (!pUrl->host().isEmpty())
-  {
-    return false;
-  }
-
-  if (!d->masterURL.host().isEmpty())
-  {
-    return false;
-  }
-
-  if (!d->masterIP.isNull())
-  {
-    return false;
-  }
-  
-  // Do not include the icon here.
-
-  return true;
-}
-
-
-bool Smb4KWorkgroup::equals(Smb4KWorkgroup *workgroup) const
-{
-  Q_ASSERT(workgroup);
-
-  if (QString::compare(workgroupName(), workgroup->workgroupName()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (QString::compare(masterBrowserName(), workgroup->masterBrowserName()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (QString::compare(masterBrowserIpAddress(), workgroup->masterBrowserIpAddress()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Do not include the icon here.
-
-  return true;
-}
-
-
 void Smb4KWorkgroup::update(Smb4KWorkgroup* workgroup)
 {
   if (QString::compare(workgroupName(), workgroup->workgroupName()) == 0)

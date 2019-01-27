@@ -2,7 +2,7 @@
     This class provides a container for the authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2018 by Alexander Reinholdt
+    copyright            : (C) 2004-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -273,62 +273,6 @@ Smb4KGlobal::NetworkItem Smb4KAuthInfo::type() const
 bool Smb4KAuthInfo::isHomesShare() const
 {
   return d->homesShare;
-}
-
-
-bool Smb4KAuthInfo::equals(Smb4KAuthInfo *info) const
-{
-  // URL
-  if (d->url != info->url())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Type
-  if (d->type != info->type())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Workgroup
-  if (QString::compare(d->workgroup, info->workgroupName(), Qt::CaseInsensitive) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Homes share?
-  if (d->homesShare != info->isHomesShare())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // IP address
-  if (QString::compare(d->ip.toString(), info->ipAddress()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return true;
 }
 
 

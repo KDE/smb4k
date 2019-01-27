@@ -426,59 +426,6 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     QString diskUsageString() const;
 
     /**
-     * Enumeration for the checks.
-     *
-     * @enum Full               Full comparison
-     * @enum NetworkOnly        Only the network related values are compared
-     * @enum MinimalNetworkOnly Only the absolutely necessary network related values
-     *                          are compared
-     * @enum LocalOnly          Only those values are compared that are of local 
-     *                          importance
-     * @enum MinimalLocalOnly   Only those values are compared that have local importance
-     *                          and are absolutely necessary for a comparison
-     */
-    enum CheckFlags{ Full,
-                     NetworkOnly,
-                     MinimalNetworkOnly,
-                     LocalOnly,
-                     MinimalLocalOnly };
-
-    /**
-     * Compare another Smb4KShare object with this one an return TRUE if both carry
-     * the same data. Depending on the value of @p flag either all data will be compared
-     * or only the one that is network related or the one that is of local importance.
-     *
-     * Please note, that the UNC won't be checked with the flag CheckFlags::NetworkOnly,
-     * but only with either CheckFlags::Full or CheckFlags::LocalOnly.
-     *
-     * @param share           The Smb4KShare object that should be compared with this
-     *                        one.
-     *
-     * @param flag            The flag that determines which values are compared.
-     *
-     * @returns TRUE if the data that was compared is the same.
-     */
-    bool equals(Smb4KShare *share, CheckFlags flag) const;
-                 
-    /**
-     * Operator to check if two shares are equal. This operator performs a full check.
-     */
-    bool operator==(Smb4KShare share) const { return equals(&share, Full); }
-
-    /**
-     * Returns TRUE if values that were checked according to @p flag are empty.
-     * Modified booleans are not considered.
-     *
-     * Please note, that the UNC won't be checked with the flag CheckFlags::NetworkOnly,
-     * but only with either CheckFlags::Full or CheckFlags::LocalOnly.
-     *
-     * @param flag            The flag that determines which values are checked.
-     *
-     * @returns TRUE if the item is empty.
-     */
-    bool isEmpty(CheckFlags flag = Full) const;
-
-    /**
      * If this share was mounted, set @p mounted to TRUE. This function will not
      * work with printer shares.
      *

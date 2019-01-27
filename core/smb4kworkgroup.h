@@ -141,31 +141,6 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
     bool hasMasterBrowserIpAddress() const;
 
     /**
-     * Returns TRUE if the item is empty and FALSE otherwise. An item is not
-     * empty if at least one string (workgroup name, master name, etc.) has been
-     * set. A modified boolean will not be considered.
-     *
-     * @returns TRUE if the item is empty.
-     */
-    bool isEmpty() const;
-
-    /**
-     * Compare another Smb4KWorkgroup object with this one an return TRUE if both carry
-     * the same data.
-     *
-     * @param workgroup       The Smb4KWorkgroup object that should be compared with this
-     *                        one.
-     *
-     * @returns TRUE if the data that was compared is the same.
-     */
-    bool equals(Smb4KWorkgroup *workgroup) const;
-    
-    /**
-     * Operator to check if two items are equal.
-     */
-    bool operator==(Smb4KWorkgroup workgroup) const { return equals(&workgroup); }
-    
-    /**
      * Updates the workgroup item if the workgroup name of @p workgroup and
      * of this item is equal. Otherwise it does nothing.
      * @param workgroup       The workgroup object that is used to update

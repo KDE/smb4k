@@ -2,7 +2,7 @@
     This is the bookmark container for Smb4K (next generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2018 by Alexander Reinholdt
+    copyright            : (C) 2008-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -228,22 +228,6 @@ class Q_DECL_EXPORT Smb4KBookmark
      */
     QString profile() const;
     
-    /**
-     * Compare another Smb4KBookmark object with this one an return TRUE if both carry
-     * the same data.
-     *
-     * @param bookmark        The Smb4KBookmark object that should be compared with this
-     *                        one.
-     *
-     * @returns TRUE if the data that was compared is the same.
-     */
-    bool equals(Smb4KBookmark *bookmark) const;
-    
-    /**
-     * Operator to check if two bookmark objects are equal.
-     */
-    bool operator==(Smb4KBookmark bookmark) const { return equals(&bookmark); }
-
     /**
      * This function sets the icon of the bookmark.
      *

@@ -2,7 +2,7 @@
     This is the bookmark container for Smb4K (next generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2018 by Alexander Reinholdt
+    copyright            : (C) 2008-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -232,84 +232,6 @@ void Smb4KBookmark::setProfile(const QString &profile)
 QString Smb4KBookmark::profile() const
 {
   return d->profile;
-}
-
-
-bool Smb4KBookmark::equals(Smb4KBookmark *bookmark) const
-{
-  // URL
-  if (d->url != bookmark->url())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Workgroup
-  if (QString::compare(d->workgroup, bookmark->workgroupName(), Qt::CaseInsensitive) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // IP address
-  if (QString::compare(d->ip.toString(), bookmark->hostIpAddress()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Share type
-  if (d->type != bookmark->shareType())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Label
-  if (QString::compare(d->label, bookmark->label()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Group
-  if (QString::compare(d->group, bookmark->groupName()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  // Profile
-  if (QString::compare(d->profile, bookmark->profile()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // The icon is not used here.
-
-  return true;
 }
 
 

@@ -168,50 +168,6 @@ bool Smb4KHost::isMasterBrowser() const
 }
 
 
-bool Smb4KHost::isEmpty() const
-{
-  if (!pUrl->isEmpty())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (!d->workgroup.isEmpty())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (!d->ip.isNull())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (!d->comment.isEmpty())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Do not include icon here.
-
-  return true;
-}
-
-
 void Smb4KHost::setLogin(const QString &login)
 {
   pUrl->setUserName(login);
@@ -245,52 +201,6 @@ void Smb4KHost::setPort(int port)
 int Smb4KHost::port() const
 {
   return pUrl->port();
-}
-
-
-bool Smb4KHost::equals(Smb4KHost *host) const
-{
-  Q_ASSERT(host);
-
-  if (*pUrl != host->url())
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (QString::compare(workgroupName(), host->workgroupName()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (QString::compare(ipAddress(), host->ipAddress()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  if (QString::compare(comment(), host->comment()) != 0)
-  {
-    return false;
-  }
-  else
-  {
-    // Do nothing
-  }
-
-  // Do not include icon here.
-
-  return true;
 }
 
 

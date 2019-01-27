@@ -848,40 +848,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   
   if (!enable && customOptionsPage && customOptionsPage->customSettingsMaybeChanged())
   {
-    QList<OptionsPtr> newOptionsList = customOptionsPage->getCustomOptions();
-    QList<OptionsPtr> oldOptionsList = Smb4KCustomOptionsManager::self()->customOptions();
-    
-    if (newOptionsList.size() == oldOptionsList.size())
-    {
-      for (const OptionsPtr &newOptions : newOptionsList)
-      {
-        for (const OptionsPtr &oldOptions : oldOptionsList)
-        {
-          if (!newOptions->equals(oldOptions.data()))
-          {
-            enable = true;
-            break;
-          }
-          else
-          {
-            // Do nothing
-          }
-        }
-        
-        if (enable)
-        {
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-    }
-    else
-    {
-      enable = true;
-    }
+    enable = true;
   }
   else
   {

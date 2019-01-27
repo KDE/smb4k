@@ -170,15 +170,6 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     bool isMasterBrowser() const;
 
     /**
-     * Returns TRUE if the item is empty and FALSE otherwise. An item is not
-     * empty if at least one string (workgroup name, master name, etc.) has been
-     * set. A modified boolean will not be considered.
-     *
-     * @returns TRUE if the item is empty.
-     */
-    bool isEmpty() const;
-
-    /**
      * Set the port for the use in the URL.
      *
      * @param port            The port
@@ -191,22 +182,6 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @returns the port.
      */
     int port() const;
-
-    /**
-     * Compare another Smb4KHost object with this one an return TRUE if both carry
-     * the same data.
-     *
-     * @param host            The Smb4KHost object that should be compared with this
-     *                        one.
-     *
-     * @returns TRUE if the data that was compared is the same.
-     */
-    bool equals(Smb4KHost *host) const;
-    
-    /**
-     * Operator to check if two hosts are equal.
-     */
-    bool operator==(Smb4KHost host) const { return equals(&host); }
 
     /**
      * Set the authentication information for the host. This function will add

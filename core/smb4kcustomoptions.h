@@ -555,23 +555,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     QMap<QString,QString> customOptions() const;
     
     /**
-     * Check if the custom options @p options are equal to those defined here. If
-     * you just want to check if the options have the same URL and workgroup and 
-     * belong to the same profile, set @p fullCheck to FALSE.
-     * 
-     * @param options             The options that are to be compared to the
-     *                            ones defined here
-     * @param fullCheck           Set this to FALSE if you just want to check
-     *                            the profile, URL and workgroup.
-     */
-    bool equals(Smb4KCustomOptions *options, bool fullCheck = true) const;
-    
-    /**
-     * Operator to check if two custom options objects are equal.
-     */
-    bool operator==(Smb4KCustomOptions options) const { return equals(&options, true); }
-    
-    /**
      * Check if there are options defined
      * 
      * @returns TRUE if there are options defined and FALSE otherwise
