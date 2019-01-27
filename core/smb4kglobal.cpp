@@ -1243,20 +1243,19 @@ const QMap<QString,QString> &Smb4KGlobal::globalSambaOptions()
 
 const QString Smb4KGlobal::winsServer()
 {
-  QMap<QString,QString> global_opts = p->globalSambaOptions(false);
-  QString wins_server;
+  QString winsServer;
   
-  if (global_opts.contains("wins server"))
+  if (p->globalSambaOptions().contains("wins server"))
   {
-    wins_server = global_opts.value("wins server");
+    winsServer = p->globalSambaOptions().value("wins server");
   }
   else
   {
-    if (global_opts.contains("wins support") &&
-         (QString::compare(global_opts.value("wins support"), "yes", Qt::CaseInsensitive) == 0 ||
-          QString::compare(global_opts.value("wins support"), "true", Qt::CaseInsensitive) == 0))
+    if (p->globalSambaOptions().contains("wins support") &&
+        (QString::compare(p->globalSambaOptions().value("wins support"), "yes", Qt::CaseInsensitive) == 0 ||
+         QString::compare(p->globalSambaOptions().value("wins support"), "true", Qt::CaseInsensitive) == 0))
     {
-      wins_server = "127.0.0.1";
+      winsServer = "127.0.0.1";
     }
     else
     {
@@ -1264,7 +1263,7 @@ const QString Smb4KGlobal::winsServer()
     }
   }
   
-  return wins_server;
+  return winsServer;
 }
 
 
