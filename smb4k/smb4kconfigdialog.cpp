@@ -814,8 +814,8 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     {
       for (Smb4KAuthInfo *newEntry : newWalletEntries)
       {
-        if (oldEntry->url().matches(newEntry->url(), QUrl::RemovePort /* leave the user info here */) &&
-            oldEntry->workgroupName() == newEntry->workgroupName())
+        if (QString::compare(oldEntry->url().toString(QUrl::RemovePort), newEntry->url().toString(QUrl::RemovePort), Qt::CaseInsensitive) == 0 /* leave the user info here */ &&
+            QString::compare(oldEntry->workgroupName(), newEntry->workgroupName(), Qt::CaseInsensitive) == 0)
         {
           enable = true;
           break;

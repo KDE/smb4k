@@ -728,7 +728,9 @@ void Smb4KConfigPageAuthentication::slotUndoDetailsActionTriggered(bool /*checke
   
   for (Smb4KAuthInfo *authInfo : m_entries_list)
   {
-    if (m_auth_info->url().matches(authInfo->url(), QUrl::RemovePort /* we can leave the user info here */) ||
+    if (QString::compare(m_auth_info->url().toString(QUrl::RemovePort),
+                         authInfo->url().toString(QUrl::RemovePort),
+                         Qt::CaseInsensitive) == 0 /* we can leave the user info here */ ||
         (m_auth_info->type() == UnknownNetworkItem && m_auth_info->type() == authInfo->type()))
     {
       switch (m_auth_info->type())

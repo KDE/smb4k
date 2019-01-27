@@ -919,7 +919,9 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr& host)
             {
               Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>(hostItem->child(i));
               
-              if (shareItem->shareItem()->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
+              if (QString::compare(shareItem->shareItem()->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                                   share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                                   Qt::CaseInsensitive) == 0)
               {
                 foundShare = true;
                 break;
@@ -1327,7 +1329,9 @@ void Smb4KNetworkBrowserDockWidget::slotShareMounted(const SharePtr& share)
     
     if (item->type() == Share)
     {
-      if (item->shareItem()->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
+      if (QString::compare(item->shareItem()->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           Qt::CaseInsensitive) == 0)
       {
         item->update();
         break;
@@ -1357,7 +1361,9 @@ void Smb4KNetworkBrowserDockWidget::slotShareUnmounted(const SharePtr& share)
     
     if (item->type() == Share)
     {
-      if (item->shareItem()->url().matches(share->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
+      if (QString::compare(item->shareItem()->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
+                           Qt::CaseInsensitive) == 0)
       {
         item->update();
         break;
