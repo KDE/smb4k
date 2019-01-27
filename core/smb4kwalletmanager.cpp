@@ -81,7 +81,7 @@ void Smb4KWalletManager::init()
       //
       // Open the wallet synchronously.
       // 
-      d->wallet = KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), QApplication::activeWindow()->winId());
+      d->wallet = KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), QApplication::activeWindow() ? QApplication::activeWindow()->winId() : 0);
       
       //
       // Check if the walled was opened successfully and set the
