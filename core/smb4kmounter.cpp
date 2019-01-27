@@ -86,15 +86,6 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
 {
   setAutoDelete(false);
 
-  if (!coreIsInitialized())
-  {
-    setDefaultSettings();
-  }
-  else
-  {
-    // Do nothing
-  }
-
   d->timerId = -1;
   d->remountTimeout = 0;
   d->remountAttempts = 0;
