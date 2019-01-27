@@ -1060,7 +1060,7 @@ QHostAddress Smb4KClientJob::lookupIpAddress(const QString& name)
   // If the IP address is not to be determined for the local machine, we can use QHostInfo to
   // determine it. Otherwise we need to use QNetworkInterface for it.
   if (name.toUpper() == QHostInfo::localHostName().toUpper() || 
-      name.toUpper() == globalSambaOptions(true)["netbios name"].toUpper() || 
+      name.toUpper() == globalSambaOptions()["netbios name"].toUpper() || 
       name.toUpper() == Smb4KSettings::netBIOSName().toUpper())
   {
     // FIXME: Do we need to honor 'interfaces' here?
