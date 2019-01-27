@@ -113,19 +113,19 @@ Smb4KNetworkObject::~Smb4KNetworkObject()
 }
 
 
-Smb4KNetworkObject::NetworkItem Smb4KNetworkObject::type() const
+NetworkItem Smb4KNetworkObject::type() const
 {
   return static_cast<NetworkItem>(d->type);
 }
 
 
-Smb4KNetworkObject::NetworkItem Smb4KNetworkObject::parentType() const
+NetworkItem Smb4KNetworkObject::parentType() const
 {
   return static_cast<NetworkItem>(d->parentType);
 }
 
 
-void Smb4KNetworkObject::setType(Smb4KNetworkObject::NetworkItem type)
+void Smb4KNetworkObject::setType(NetworkItem type)
 {
   d->type = type;
   

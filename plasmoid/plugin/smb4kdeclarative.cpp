@@ -310,7 +310,7 @@ void Smb4KDeclarative::openMountDialog(QWidget* parent)
 
 void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
 {
-  if (object && object->type() == Smb4KNetworkObject::Share)
+  if (object && object->type() == Share)
   {
     QString shareName = object->url().path();
       
@@ -422,7 +422,7 @@ Smb4KNetworkObject* Smb4KDeclarative::findMountedShare(const QUrl& url, bool exa
 
 void Smb4KDeclarative::print(Smb4KNetworkObject* object)
 {
-  if (object && object->type() == Smb4KNetworkObject::Share)
+  if (object && object->type() == Share)
   {
     SharePtr printer = findShare("//"+object->hostName()+"/"+object->shareName(), object->workgroupName());
     
@@ -533,7 +533,7 @@ void Smb4KDeclarative::editBookmarks()
 
 void Smb4KDeclarative::synchronize(Smb4KNetworkObject* object)
 {
-  if (object && object->type() == Smb4KNetworkObject::Share)
+  if (object && object->type() == Share)
   {
     for (const SharePtr &share : mountedSharesList())
     {
@@ -560,7 +560,7 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
   {
     switch (object->type())
     {
-      case Smb4KNetworkObject::Host:
+      case Host:
       {
         for (const HostPtr &host : hostsList())
         {
@@ -576,7 +576,7 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
         }
         break;
       }
-      case Smb4KNetworkObject::Share:
+      case Share:
       {
         for (const SharePtr &share : sharesList())
         {
@@ -664,7 +664,7 @@ bool Smb4KDeclarative::profileUsage() const
 
 void Smb4KDeclarative::preview(Smb4KNetworkObject* object)
 {
-  if (object->type() == Smb4KNetworkObject::Share)
+  if (object->type() == Share)
   {
     QString unc = object->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash);
     SharePtr share = findShare(unc, object->workgroupName());
