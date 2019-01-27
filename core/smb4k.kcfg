@@ -6,6 +6,8 @@
   <include>QString</include>
   <include>QDir</include>
   <include>QUrl</include>
+  <include>QHostInfo</include>
+  <include>smb4kglobal.h</include>
   <kcfgfile name="smb4krc" />
 
 <!-- User Interface -->
@@ -91,12 +93,12 @@
     <entry name="NetBIOSName" type="String">
       <label>NetBIOS name:</label>
       <whatsthis>This is the NetBIOS name of this computer that is used by Smb4K. By default, it is either the NetBIOS name that is defined in the smb.conf file or the host name.</whatsthis>
-      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
+      <default code="true">Smb4KGlobal::globalSambaOptions().contains("netbios name") ? Smb4KGlobal::globalSambaOptions().value("netbios name") : QHostInfo::localHostName().toUpper()</default>
     </entry>
     <entry name="DomainName" type="String">
       <label>Domain:</label>
       <whatsthis>This is the workgroup or domain this computer is or should be in. By default, it is the workgroup that is defined in the smb.conf file.</whatsthis>
-      <!-- Will be filled by Smb4KCore::setDefaultConfigValues() -->
+      <default code="true">Smb4KGlobal::globalSambaOptions().contains("workgroup") ? Smb4KGlobal::globalSambaOptions().value("workgroup") : ""</default>
     </entry>
     <entry name="UseRemoteSmbPort" type="Bool">
       <label>SMB port:</label>
