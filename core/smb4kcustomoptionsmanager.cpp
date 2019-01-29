@@ -2,7 +2,7 @@
     Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2018 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -49,7 +49,7 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QDebug>
-#include <QCoreApplication>
+#include <QApplication>
 #include <QPointer>
 
 // KDE includes
@@ -1031,7 +1031,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<OptionsPtr> &op
 }
 
 
-void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &item, QWidget *parent)
+void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &item)
 {
   if (item)
   {
@@ -1074,7 +1074,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
         {
           if (share->isHomesShare())
           {
-            if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true, parent))
+            if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true))
             {
               return;
             }
@@ -1128,7 +1128,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
     
     if (options)
     {
-      QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, parent);
+      QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, QApplication::activeWindow());
         
       if (dlg->exec() == QDialog::Accepted)
       {

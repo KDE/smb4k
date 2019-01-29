@@ -2,7 +2,7 @@
     This class manages the profiles that were defined by the user.
                              -------------------
     begin                : Mi Aug 06 2014
-    copyright            : (C) 2014-2017 by Alexander Reinholdt
+    copyright            : (C) 2014-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -38,6 +38,7 @@
 // Qt includes
 #include <QPointer>
 #include <QTest>
+#include <QApplication>
 
 
 Q_GLOBAL_STATIC(Smb4KProfileManagerStatic, p);
@@ -226,15 +227,15 @@ void Smb4KProfileManager::migrateProfiles(const QList<QPair<QString,QString>>& l
 }
 
 
-void Smb4KProfileManager::removeProfile(const QString& name, QWidget* parent)
+void Smb4KProfileManager::removeProfile(const QString& name)
 {
   QStringList list;
   list << name;
-  removeProfiles(list, parent);
+  removeProfiles(list);
 }
 
 
-void Smb4KProfileManager::removeProfiles(const QStringList& list, QWidget* parent)
+void Smb4KProfileManager::removeProfiles(const QStringList& list)
 {
   if (d->useProfiles)
   {
@@ -266,7 +267,7 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list, QWidget* paren
         // of the removed profile to another one.
         if (Smb4KSettings::useMigrationAssistant())
         {
-          QPointer<Smb4KProfileMigrationDialog> dlg = new Smb4KProfileMigrationDialog(QStringList(name), d->profiles, parent);
+          QPointer<Smb4KProfileMigrationDialog> dlg = new Smb4KProfileMigrationDialog(QStringList(name), d->profiles, QApplication::activeWindow());
             
           if (dlg->exec() == QDialog::Accepted)
           {

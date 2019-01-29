@@ -89,19 +89,15 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * This function attempts to mount a share.
      *
      * @param share       The Smb4KShare object that is representing the share.
-     * 
-     * @param parent      The parent widget
      */
-    void mountShare(const SharePtr &share, QWidget *parent = 0);
+    void mountShare(const SharePtr &share);
 
     /**
      * Mounts a list of shares at once.
      *
      * @param shares      The list of shares
-     * 
-     * @param parent      The parent widget
      */
-    void mountShares(const QList<SharePtr> &shares, QWidget *parent = 0);
+    void mountShares(const QList<SharePtr> &shares);
 
     /**
      * This function attempts to unmount a share. With the parameter @p silent you 
@@ -111,10 +107,8 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param silent      Determines whether this function should emit an error code in
      *                    case of an error. The default value is FALSE.
-     * 
-     * @param parent      The parent widget
      */
-    void unmountShare(const SharePtr &share, bool silent = false, QWidget *parent = 0);
+    void unmountShare(const SharePtr &share, bool silent = false);
     
     /**
      * This function attempts to unmount a list of shares. With the parameter @p silent 
@@ -124,26 +118,23 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      * 
      * @param silent      Determines whether this function should emit an error code in
      *                    case of an error. The default value is FALSE.
-     * 
-     * @param parent      The parent widget
      */
-    void unmountShares(const QList<SharePtr> &shares, bool silent = false, QWidget *parent = 0);
+    void unmountShares(const QList<SharePtr> &shares, bool silent = false);
 
     /**
      * Unmounts all shares at once. This is a convenience function. It calls
      * unmountShares() to unmount all currently mounted shares.
      * 
-     * @param parent      The parent widget
+     * @param silent      Determines whether this function should emit an error code in
+     *                    case of an error. The default value is FALSE.
      */
-    void unmountAllShares(bool silent, QWidget *parent = 0);
+    void unmountAllShares(bool silent);
 
     /**
      * Mount a share via a mount dialog. The mount dialog is opened and you have
      * to enter the UNC and optionally the workgroup and IP address.
-     *
-     * @param parent      The parent widget of this dialog
      */
-    void openMountDialog(QWidget *parent = 0);
+    void openMountDialog();
 
     /**
      * This function reports if the mounter is running or not.

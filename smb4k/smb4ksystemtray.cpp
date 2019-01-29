@@ -168,7 +168,7 @@ void Smb4KSystemTray::loadSettings()
 
 void Smb4KSystemTray::slotMountDialog()
 {
-  Smb4KMounter::self()->openMountDialog(associatedWidget());
+  Smb4KMounter::self()->openMountDialog();
 }
 
 

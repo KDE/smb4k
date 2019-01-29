@@ -275,7 +275,7 @@ void Smb4KSharesMenu::slotMountedSharesListChanged()
 
 void Smb4KSharesMenu::slotUnmountAllShares()
 {
-  Smb4KMounter::self()->unmountAllShares(false, m_parent_widget);
+  Smb4KMounter::self()->unmountAllShares(false);
 }
 
 
@@ -308,15 +308,15 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
     
     if (type == "unmount")
     {
-      Smb4KMounter::self()->unmountShare(share, false, m_parent_widget);
+      Smb4KMounter::self()->unmountShare(share, false);
     }
     else if (type == "bookmark")
     {
-      Smb4KBookmarkHandler::self()->addBookmark(share, m_parent_widget);
+      Smb4KBookmarkHandler::self()->addBookmark(share);
     }
     else if (type == "sync")
     {
-      Smb4KSynchronizer::self()->synchronize(share, m_parent_widget);
+      Smb4KSynchronizer::self()->synchronize(share);
     }
     else if (type == "konsole")
     {

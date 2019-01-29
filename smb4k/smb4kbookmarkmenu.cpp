@@ -449,7 +449,7 @@ void Smb4KBookmarkMenu::setupMenu()
 
 void Smb4KBookmarkMenu::slotEditActionTriggered(bool /*checked*/)
 {
-  Smb4KBookmarkHandler::self()->editBookmarks(menu());
+  Smb4KBookmarkHandler::self()->editBookmarks();
 }
 
 

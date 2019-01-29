@@ -485,7 +485,7 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
   //
   if (share->isHomesShare())
   {
-    Smb4KHomesSharesHandler::self()->specifyUser(share, true, QApplication::activeWindow());
+    Smb4KHomesSharesHandler::self()->specifyUser(share, true);
   }
   else
   {

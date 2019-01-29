@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2018 by Alexander Reinholdt
+    copyright            : (C) 2004-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -48,6 +48,7 @@
 #include <QXmlStreamReader>
 #include <QPointer>
 #include <QMutableListIterator>
+#include <QApplication>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -107,13 +108,13 @@ Smb4KBookmarkHandler *Smb4KBookmarkHandler::self()
 }
 
 
-void Smb4KBookmarkHandler::addBookmark(const SharePtr &share, QWidget *parent)
+void Smb4KBookmarkHandler::addBookmark(const SharePtr &share)
 {
   if (share)
   {
     QList<SharePtr> shares;
     shares << share;
-    addBookmarks(shares, parent);
+    addBookmarks(shares);
   }
   else
   {
@@ -122,7 +123,7 @@ void Smb4KBookmarkHandler::addBookmark(const SharePtr &share, QWidget *parent)
 }
 
 
-void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *parent)
+void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
 {
   //
   // Prepare the list of bookmarks that should be added
@@ -149,7 +150,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *pa
     //
     if (share->isHomesShare())
     {
-      if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true, parent))
+      if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true))
       {
         continue;
       }
@@ -189,7 +190,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list, QWidget *pa
   //
   if (!newBookmarks.isEmpty())
   {
-    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog(newBookmarks, groupsList(), parent);
+    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog(newBookmarks, groupsList(), QApplication::activeWindow());
     
     if (dlg->exec() == QDialog::Accepted)
     {
@@ -689,14 +690,14 @@ bool Smb4KBookmarkHandler::isBookmarked(const SharePtr& share)
 }
 
 
-void Smb4KBookmarkHandler::editBookmarks(QWidget* parent)
+void Smb4KBookmarkHandler::editBookmarks()
 {
   //
   // Only allow one instance of the bookmark editor
   // 
   if (!d->editor)
   {
-    d->editor = new Smb4KBookmarkEditor(d->bookmarks, parent);
+    d->editor = new Smb4KBookmarkEditor(d->bookmarks, QApplication::activeWindow());
   }
   else
   {

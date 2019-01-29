@@ -2,7 +2,7 @@
     This class handles the homes shares
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2017 by Alexander Reinholdt
+    copyright            : (C) 2006-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -88,11 +88,9 @@ class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
      * 
      * @param overwrite   Overwrite user name or not
      *
-     * @param parent      The parent widget
-     *
      * @returns TRUE if user has been chosen and FALSE otherwise.
      */
-    bool specifyUser(const SharePtr &share, bool overwrite = true, QWidget *parent = 0);
+    bool specifyUser(const SharePtr &share, bool overwrite = true);
     
     /**
      * Return the list of users defined for a certain homes share.

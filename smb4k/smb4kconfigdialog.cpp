@@ -219,7 +219,7 @@ void Smb4KConfigDialog::propagateProfilesChanges()
     
     if (!removed_profiles.isEmpty())
     {
-      Smb4KProfileManager::self()->removeProfiles(removed_profiles, this);
+      Smb4KProfileManager::self()->removeProfiles(removed_profiles);
       profiles_page->clearRemovedProfiles();
     }
     else

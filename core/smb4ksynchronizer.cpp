@@ -2,7 +2,7 @@
     This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -39,7 +39,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QDir>
-#include <QCoreApplication>
+#include <QApplication>
 
 // KDE includes
 #include <KCoreAddons/KShell>
@@ -68,7 +68,7 @@ Smb4KSynchronizer *Smb4KSynchronizer::self()
 }
 
 
-void Smb4KSynchronizer::synchronize(const SharePtr &share, QWidget *parent)
+void Smb4KSynchronizer::synchronize(const SharePtr &share)
 {
   if (!isRunning(share))
   {
@@ -76,7 +76,7 @@ void Smb4KSynchronizer::synchronize(const SharePtr &share, QWidget *parent)
     // with the job tracker.
     Smb4KSyncJob *job = new Smb4KSyncJob(this);
     job->setObjectName(QString("SyncJob_%1").arg(share->canonicalPath()));
-    job->setupSynchronization(share, parent);
+    job->setupSynchronization(share, QApplication::activeWindow());
     
     connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
     connect(job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)));

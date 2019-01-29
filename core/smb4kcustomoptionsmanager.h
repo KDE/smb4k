@@ -2,7 +2,7 @@
     Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2018 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,7 +32,6 @@
 // Qt includes
 #include <QObject>
 #include <QScopedPointer>
-#include <QWidget>
 
 // forward declarations
 class Smb4KCustomOptionsManagerPrivate;
@@ -171,7 +170,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * 
      * @param parent              The parent widget
      */
-    void openCustomOptionsDialog(const NetworkItemPtr &item, QWidget *parent = 0);
+    void openCustomOptionsDialog(const NetworkItemPtr &item);
     
     /**
      * This function adds custom options for a single network item to the list

@@ -578,13 +578,13 @@ void Smb4KSharesViewDockWidget::slotUnmountActionTriggered(bool /*checked*/)
     }
   }
 
-  Smb4KMounter::self()->unmountShares(shares, false, m_sharesView);
+  Smb4KMounter::self()->unmountShares(shares, false);
 }
 
 
 void Smb4KSharesViewDockWidget::slotUnmountAllActionTriggered(bool /*checked*/)
 {
-  Smb4KMounter::self()->unmountAllShares(false, m_sharesView);
+  Smb4KMounter::self()->unmountAllShares(false);
 }
 
 
@@ -599,7 +599,7 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool /*checked*/)
     shares << item->shareItem();
   }
 
-  Smb4KBookmarkHandler::self()->addBookmarks(shares, m_sharesView);
+  Smb4KBookmarkHandler::self()->addBookmarks(shares);
 }
 
 
@@ -613,7 +613,7 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool /*checked*/)
 
     if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(item->shareItem()))
     {
-      Smb4KSynchronizer::self()->synchronize(item->shareItem(), m_sharesView);
+      Smb4KSynchronizer::self()->synchronize(item->shareItem());
     }
     else
     {

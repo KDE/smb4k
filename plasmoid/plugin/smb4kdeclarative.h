@@ -2,7 +2,7 @@
     This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2018 by Alexander Reinholdt
+    copyright            : (C) 2013-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -165,10 +165,8 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     
     /**
      * Open the mount dialog to mount a share.
-     * 
-     * @param parent      The parent of this dialog.
      */
-    Q_INVOKABLE void openMountDialog(QWidget *parent = 0);
+    Q_INVOKABLE void openMountDialog();
     
     /**
      * This function takes a network object and initiates the mounting of 

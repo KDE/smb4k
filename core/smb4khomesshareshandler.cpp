@@ -2,7 +2,7 @@
     This class handles the homes shares
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2017 by Alexander Reinholdt
+    copyright            : (C) 2006-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,7 +41,7 @@
 #include <QTextCodec>
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
-#include <QCoreApplication>
+#include <QApplication>
 #include <QPointer>
 
 // KDE includes
@@ -93,7 +93,7 @@ Smb4KHomesSharesHandler *Smb4KHomesSharesHandler::self()
 }
 
 
-bool Smb4KHomesSharesHandler::specifyUser(const SharePtr &share, bool overwrite, QWidget *parent)
+bool Smb4KHomesSharesHandler::specifyUser(const SharePtr &share, bool overwrite)
 {
   Q_ASSERT(share);
   bool success = false;
@@ -104,7 +104,7 @@ bool Smb4KHomesSharesHandler::specifyUser(const SharePtr &share, bool overwrite,
   {
     QStringList users = findHomesUsers(share);
     
-    QPointer<Smb4KHomesUserDialog> dlg = new Smb4KHomesUserDialog(share, parent);
+    QPointer<Smb4KHomesUserDialog> dlg = new Smb4KHomesUserDialog(share, QApplication::activeWindow());
     dlg->setUserNames(users);
     
     if (dlg->exec() == QDialog::Accepted)

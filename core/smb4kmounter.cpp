@@ -509,7 +509,7 @@ void Smb4KMounter::import(bool checkInaccessible)
 }
 
 
-void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
+void Smb4KMounter::mountShare(const SharePtr &share)
 {
   Q_ASSERT(share);
   
@@ -536,7 +536,7 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
     
     if (share->isHomesShare())
     {
-      if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true, parent))
+      if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true))
       {
         return;
       }
@@ -857,20 +857,20 @@ void Smb4KMounter::mountShare(const SharePtr &share, QWidget *parent)
 }
 
 
-void Smb4KMounter::mountShares(const QList<SharePtr> &shares, QWidget *parent)
+void Smb4KMounter::mountShares(const QList<SharePtr> &shares)
 {
   d->mountShares = true;
   
   for (const SharePtr &share : shares)
   {
-    mountShare(share, parent);
+    mountShare(share);
   }
   
   d->mountShares = false;
 }
 
 
-void Smb4KMounter::unmountShare(const SharePtr &share, bool silent, QWidget *parent)
+void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
 {
   Q_ASSERT(share);
   
@@ -910,7 +910,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent, QWidget *par
       {
         if (!silent)
         {
-          if (KMessageBox::warningYesNo(parent,
+          if (KMessageBox::warningYesNo(QApplication::activeWindow(),
               i18n("<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</b>.</p>"
                   "<p>Do you really want to unmount it?</p></qt>",
                   share->displayString(), share->path(), share->user().loginName()),
@@ -1070,7 +1070,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent, QWidget *par
 }
 
 
-void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent, QWidget *parent)
+void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent)
 {
 #if defined(Q_OS_LINUX)
   //
@@ -1088,7 +1088,7 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent, QWi
   {
     number--;
     d->unmountShares = (number != 0);
-    unmountShare(share, silent, parent);
+    unmountShare(share, silent);
   }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
   //
@@ -1099,7 +1099,7 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent, QWi
   
   for (const SharePtr &share : shares)
   {
-    unmountShare(share, silent, parent);
+    unmountShare(share, silent);
   }
   
   d->unmountShares = false;
@@ -1107,24 +1107,24 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent, QWi
 }
 
 
-void Smb4KMounter::unmountAllShares(bool silent, QWidget* parent)
+void Smb4KMounter::unmountAllShares(bool silent)
 {
-  unmountShares(mountedSharesList(), silent, parent);
+  unmountShares(mountedSharesList(), silent);
 }
 
 
-void Smb4KMounter::openMountDialog(QWidget *parent)
+void Smb4KMounter::openMountDialog()
 {
   if (!d->dialog)
   {
     SharePtr share = SharePtr(new Smb4KShare());
     
-    d->dialog = new Smb4KMountDialog(share, parent);
+    d->dialog = new Smb4KMountDialog(share, QApplication::activeWindow());
 
     if (d->dialog->exec() == QDialog::Accepted && d->dialog->validUserInput())
     {
       // Pass the share to mountShare().
-      mountShare(share, parent);
+      mountShare(share);
       
       // Bookmark the share if the user wants this.
       if (d->dialog->bookmarkShare())
@@ -2553,7 +2553,7 @@ void Smb4KMounter::slotAboutToQuit()
   //
   if (Smb4KMountSettings::unmountSharesOnExit())
   {
-    unmountAllShares(true, 0);
+    unmountAllShares(true);
   }
   else
   {
@@ -2640,7 +2640,7 @@ void Smb4KMounter::slotOnlineStateChanged(bool online)
     saveSharesForRemount();
     
     // Unmount all shares
-    unmountAllShares(true, 0);
+    unmountAllShares(true);
   }
 }
 
@@ -2864,7 +2864,7 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
     }
     
     // Unmount all shares
-    unmountAllShares(true, 0);
+    unmountAllShares(true);
     
     // Reset some variables.
     d->remountTimeout = 0;

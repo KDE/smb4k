@@ -2,7 +2,7 @@
     This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,7 +32,6 @@
 // Qt includes
 #include <QString>
 #include <QScopedPointer>
-#include <QWidget>
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>
@@ -70,10 +69,8 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      * does all the work.
      *
      * @param share         The Smb4KShare object
-     * 
-     * @param parent        The parent widget of the URL input dialog
      */
-    void synchronize(const SharePtr &share, QWidget *parent = 0);
+    void synchronize(const SharePtr &share);
 
     /**
      * This function tells you whether the synchronizer is running

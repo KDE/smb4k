@@ -1085,7 +1085,7 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool /*checked*/)
 
   if (!shares.isEmpty())
   {
-    Smb4KBookmarkHandler::self()->addBookmarks(shares, m_networkBrowser);
+    Smb4KBookmarkHandler::self()->addBookmarks(shares);
   }
   else
   {
@@ -1096,7 +1096,7 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool /*checked*/)
 
 void Smb4KNetworkBrowserDockWidget::slotMountManually(bool /*checked*/)
 {
-  Smb4KMounter::self()->openMountDialog(m_networkBrowser);
+  Smb4KMounter::self()->openMountDialog();
 }
 
 
@@ -1141,12 +1141,12 @@ void Smb4KNetworkBrowserDockWidget::slotCustomOptions(bool /*checked*/)
     {
       case Host:
       {
-        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->hostItem(), m_networkBrowser);
+        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->hostItem());
         break;
       }
       case Share:
       {
-        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->shareItem(), m_networkBrowser);
+        Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->shareItem());
         break;
       }
       default:
@@ -1245,7 +1245,7 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool /*checked*/)
     if (!unmounted.empty())
     {
       // Mount the (remaining) unmounted shares.
-      Smb4KMounter::self()->mountShares(unmounted, m_networkBrowser);
+      Smb4KMounter::self()->mountShares(unmounted);
     }
     else
     {
@@ -1269,11 +1269,11 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool /*checked*/)
         {
           if (!browserItem->shareItem()->isMounted())
           {
-            Smb4KMounter::self()->mountShare(browserItem->shareItem(), m_networkBrowser);
+            Smb4KMounter::self()->mountShare(browserItem->shareItem());
           }
           else
           {
-            Smb4KMounter::self()->unmountShare(browserItem->shareItem(), false, m_networkBrowser);
+            Smb4KMounter::self()->unmountShare(browserItem->shareItem(), false);
           }
           break;
         }

@@ -2,7 +2,7 @@
     This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2018 by Alexander Reinholdt
+    copyright            : (C) 2013-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -302,9 +302,9 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
 }
 
 
-void Smb4KDeclarative::openMountDialog(QWidget* parent)
+void Smb4KDeclarative::openMountDialog()
 {
-  Smb4KMounter::self()->openMountDialog(parent);
+  Smb4KMounter::self()->openMountDialog();
 }
 
 
@@ -383,7 +383,7 @@ void Smb4KDeclarative::unmount(Smb4KNetworkObject *object)
 
 void Smb4KDeclarative::unmountAll()
 {
-  Smb4KMounter::self()->unmountAllShares(false, 0);
+  Smb4KMounter::self()->unmountAllShares(false);
 }
 
 
@@ -486,7 +486,7 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
     // Now add the share.
     if (!shares.isEmpty())
     {
-      Smb4KBookmarkHandler::self()->addBookmarks(shares, 0);
+      Smb4KBookmarkHandler::self()->addBookmarks(shares);
     }
     else
     {

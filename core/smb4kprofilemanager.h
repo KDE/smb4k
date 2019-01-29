@@ -2,7 +2,7 @@
     This class manages the profiles that were defined by the user.
                              -------------------
     begin                : Mi Aug 06 2014
-    copyright            : (C) 2014-2017 by Alexander Reinholdt
+    copyright            : (C) 2014-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,7 +32,6 @@
 #include <QString>
 #include <QStringList>
 #include <QPair>
-#include <QWidget>
 
 // forward declarations
 class Smb4KProfileManagerPrivate;
@@ -129,19 +128,15 @@ class Q_DECL_EXPORT Smb4KProfileManager : public QObject
      * Remove a profile with all of its entries.
      * 
      * @param name        The name of the profile.
-     * @param parent      The parent widget for the profile migration
-     *                    dialog.
      */
-    void removeProfile(const QString &name, QWidget *parent = 0);
+    void removeProfile(const QString &name);
     
     /**
      * Remove a list of profiles with all of their entries.
      * 
      * @param list        The list of profile names.
-     * @param parent      The parent widget for the profile migration
-     *                    dialog.
      */
-    void removeProfiles(const QStringList &list, QWidget *parent = 0);
+    void removeProfiles(const QStringList &list);
     
   Q_SIGNALS:
     /**
