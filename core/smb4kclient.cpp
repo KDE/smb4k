@@ -617,8 +617,6 @@ void Smb4KClient::openPrintDialog(const SharePtr& share)
 
 void Smb4KClient::processErrors(Smb4KClientJob *job)
 {
-  qDebug() << "AN ERROR OCCURRED:" << job->errorText();
-  
   switch (job->error())
   {
     case Smb4KClientJob::AccessDeniedError:
@@ -688,7 +686,7 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
     }
     default:
     {
-      // FIXME: Start Smb4KNotification here
+      Smb4KNotification::networkCommunicationFailed(job->errorText());
       break;
     }
   }
