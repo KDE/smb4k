@@ -3,7 +3,7 @@
     namespace.
                              -------------------
     begin                : So Jun 22 2014
-    copyright            : (C) 2014-2017 by Alexander Reinholdt
+    copyright            : (C) 2014-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,22 +31,25 @@
 #include <QObject>
 #include <QUrl>
 
-class Smb4KNotificationActionRunner : public QObject
+// KDE includes
+#include <KNotifications/KNotification>
+
+
+class Smb4KNotifier : public KNotification
 {
   Q_OBJECT
   
   public:
-    explicit Smb4KNotificationActionRunner(QObject *parent = 0);
-    ~Smb4KNotificationActionRunner();
+    Smb4KNotifier(const QString &event);
+    ~Smb4KNotifier();
     void setMountpoint(const QUrl &mountpoint);
     QUrl mountpoint() const;
-    
+
   public Q_SLOTS:
     void slotOpenShare();
     
   private:
     QUrl m_mountpoint;
 };
-
 
 #endif

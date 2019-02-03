@@ -3,7 +3,7 @@
     namespace.
                              -------------------
     begin                : So Jun 22 2014
-    copyright            : (C) 2014-2017 by Alexander Reinholdt
+    copyright            : (C) 2014-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -29,32 +29,37 @@
 
 // KDE includes
 #include <KIOWidgets/KRun>
+#include <QApplication>
 
 
-Smb4KNotificationActionRunner::Smb4KNotificationActionRunner(QObject *parent)
-: QObject(parent)
+Smb4KNotifier::Smb4KNotifier(const QString& event)
+: KNotification(event, QApplication::activeWindow(), KNotification::CloseOnTimeout)
+{
+  if (event == "shareMounted")
+  {
+    connect(this, SIGNAL(activated(uint)), SLOT(slotOpenShare()));
+  }
+}
+
+
+Smb4KNotifier::~Smb4KNotifier()
 {
 }
 
 
-Smb4KNotificationActionRunner::~Smb4KNotificationActionRunner()
-{
-}
-
-
-void Smb4KNotificationActionRunner::setMountpoint(const QUrl& mountpoint)
+void Smb4KNotifier::setMountpoint(const QUrl& mountpoint)
 {
   m_mountpoint = mountpoint;
 }
 
 
-QUrl Smb4KNotificationActionRunner::mountpoint() const
+QUrl Smb4KNotifier::mountpoint() const
 {
   return m_mountpoint;
 }
 
 
-void Smb4KNotificationActionRunner::slotOpenShare()
+void Smb4KNotifier::slotOpenShare()
 {
   KRun::runUrl(m_mountpoint, "inode/directory", 0, KRun::RunFlags());
 }

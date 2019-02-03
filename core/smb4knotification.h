@@ -2,7 +2,7 @@
     This class provides notifications for Smb4K
                              -------------------
     begin                : Son Jun 27 2010
-    copyright            : (C) 2010-2018 by Alexander Reinholdt
+    copyright            : (C) 2010-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -120,56 +120,22 @@ namespace Smb4KNotification
   Q_DECL_EXPORT void sambaConfigFileMissing();
   
   /**
-   * This error message is shown if the list of workgroups could not
-   * be retrieved.
-   *
-   * @param err_msg   The error message
-   */
-  Q_DECL_EXPORT void retrievingDomainsFailed(const QString &err_msg);
-  
-  /**
-   * This error message is shown if the list of hosts could not
-   * be retrieved.
-   *
-   * @param err_msg   The error message
-   */
-  Q_DECL_EXPORT void retrievingHostsFailed(const WorkgroupPtr &workgroup, const QString &err_msg);
-  
-  /**
-   * This error message is shown if the list of shares could not
-   * be retrieved.
-   *
-   * @param host      The host object
-   *
-   * @param err_msg   The error message
-   */
-  Q_DECL_EXPORT void retrievingSharesFailed(const HostPtr &host, const QString &err_msg);
-  
-  /**
-   * This error message is shown if the preview could not be
-   * retrieved.
-   *
-   * @param err_msg   The error message
-   */
-  Q_DECL_EXPORT void retrievingPreviewFailed(const SharePtr &share, const QString &err_msg);
-  
-  /**
    * This error message is shown if the mounting of a share failed.
    *
    * @param share     The share that was to be mounted
    *
-   * @param err_msg   The error message
+   * @param errorMessage   The error message
    */
-  Q_DECL_EXPORT void mountingFailed(const SharePtr &share, const QString &err_msg);
+  Q_DECL_EXPORT void mountingFailed(const SharePtr &share, const QString &errorMessage);
   
   /**
    * This error message is shown if the unmounting of a share failed.
    *
    * @param share     The share that was to be unmounted
    *
-   * @param err_msg   The error message
+   * @param errorMessage   The error message
    */
-  Q_DECL_EXPORT void unmountingFailed(const SharePtr &share, const QString &err_msg);
+  Q_DECL_EXPORT void unmountingFailed(const SharePtr &share, const QString &errorMessage);
   
   /**
    * This error message is shown if the unmounting of a certain share
@@ -180,36 +146,17 @@ namespace Smb4KNotification
   Q_DECL_EXPORT void unmountingNotAllowed(const SharePtr &share);
   
   /**
-   * This error message is shown if printing failed.
-   *
-   * @param printer   The printer share
-   *
-   * @param err_msg   The error message
-   */
-  Q_DECL_EXPORT void printingFailed(const SharePtr &printer, const QString &err_msg);
-  
-  /**
    * This error message is shown if the synchronization failed.
    *
    * @param src       The source URL
    *
    * @param dest      The destination URL
    *
-   * @param err_msg   The error message
+   * @param errorMessage   The error message
    */
   Q_DECL_EXPORT void synchronizationFailed(const QUrl &src,
                                            const QUrl &dest,
-                                           const QString &err_msg);
-  
-  /**
-   * This error message is shown if the searching of the network
-   * neighborhood failed.
-   *
-   * @param item      The search item
-   *
-   * @param err_msg   The error message
-   */
-  Q_DECL_EXPORT void searchingFailed(const QString &item, const QString &err_msg);
+                                           const QString &errorMessage);
   
   /**
    * This error message is shown if a command could not be found.
@@ -244,9 +191,9 @@ namespace Smb4KNotification
    *
    * @param file      The QFile object
    *
-   * @param err_msg   The error message (optional)
+   * @param errorMessage   The error message (optional)
    */
-  Q_DECL_EXPORT void readingFileFailed(const QFile &file, const QString &err_msg);
+  Q_DECL_EXPORT void readingFileFailed(const QFile &file, const QString &errorMessage);
   
   /**
    * This error message is shown if the creation of a directory
@@ -269,15 +216,25 @@ namespace Smb4KNotification
    * the error code supplied by KAuth::ActionReply::errorCode() to
    * this function if available.
    *
-   * @param err_code  The error code
+   * @param errorCode  The error code
    */
-  Q_DECL_EXPORT void actionFailed(int err_code = -1);
+  Q_DECL_EXPORT void actionFailed(int errorCode = -1);
   
   /**
    * This error message is shown when an invalid URL was passed to some core
    * class that refuses to process it.
    */
   Q_DECL_EXPORT void invalidURLPassed();
+  
+  /**
+   * This error message is shown when a network related action could not be 
+   * perfomed or failed.
+   * 
+   * @param errorCode     The error code
+   * 
+   * @param errorMessage  The error message
+   */
+  Q_DECL_EXPORT void networkCommunicationFailed(const QString &errorMessage);
 };
 
 
