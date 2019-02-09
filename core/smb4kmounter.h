@@ -81,9 +81,9 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
     static Smb4KMounter *self();
     
     /**
-     * Aborts all running processes at once.
+     * Aborts all running processes.
      */
-    void abortAll();
+    void abort();
 
     /**
      * This function attempts to mount a share.

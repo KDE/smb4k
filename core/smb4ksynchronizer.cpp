@@ -120,29 +120,26 @@ bool Smb4KSynchronizer::isRunning(const SharePtr &share)
 }
 
 
-void Smb4KSynchronizer::abortAll()
-{
-  QListIterator<KJob *> it(subjobs());
-    
-  while (it.hasNext())
-  {
-    it.next()->kill(KJob::EmitResult);
-  }
-}
-
-
 void Smb4KSynchronizer::abort(const SharePtr &share)
 {
-  for (int i = 0; i < subjobs().size(); ++i)
+  if (share)
   {
-    if (QString::compare(QString("SyncJob_%1").arg(share->canonicalPath()), subjobs().at(i)->objectName()) == 0)
+    for (KJob *job : subjobs())
     {
-      subjobs().at(i)->kill(KJob::EmitResult);
-      break;
+      if (QString("SyncJob_%1").arg(share->canonicalPath()) == job->objectName())
+      {
+        job->kill(KJob::EmitResult);
+        break;
+      }
     }
-    else
+  }
+  else
+  {
+    QListIterator<KJob *> it(subjobs());
+      
+    while (it.hasNext())
     {
-      continue;
+      it.next()->kill(KJob::EmitResult);
     }
   }
 }
@@ -172,6 +169,6 @@ void Smb4KSynchronizer::slotJobFinished(KJob *job)
 
 void Smb4KSynchronizer::slotAboutToQuit()
 {
-  abortAll();
+  abort();
 }
 

@@ -134,7 +134,7 @@ Smb4KMounter *Smb4KMounter::self()
 }
 
 
-void Smb4KMounter::abortAll()
+void Smb4KMounter::abort()
 {
   if (!QCoreApplication::closingDown())
   {
@@ -2533,7 +2533,7 @@ void Smb4KMounter::slotAboutToQuit()
   //
   // Abort any actions
   //
-  abortAll();
+  abort();
 
   //
   // Check if the user wants to remount shares and save the
@@ -2628,7 +2628,7 @@ void Smb4KMounter::slotOnlineStateChanged(bool online)
   else
   {
     // Abort all running mount jobs
-    abortAll();
+    abort();
     
     // Mark all mounted shares as inaccessible
     for (const SharePtr &share : mountedSharesList())
@@ -2849,7 +2849,7 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
     // Stop the timer.
     killTimer(d->timerId);
 
-    abortAll();
+    abort();
     
     // Clear all remounts.
     while (!d->remounts.isEmpty())

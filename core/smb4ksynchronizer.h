@@ -89,20 +89,13 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
     bool isRunning(const SharePtr &share);
 
     /**
-     * This function aborts all synchronizations at once.
-     */
-    void abortAll();
-
-    /**
-     * This function aborts the synchronization for a certain mounted
-     * share.
-     *
-     * Only use this function if you have no access to a widget, that
-     * tracks the job.
+     * This function either aborts the synchronization for a certain 
+     * mounted share, if a valid pointer is passed, or aborts all running
+     * processes.
      *
      * @param share         The Smb4KShare object
      */
-    void abort(const SharePtr &share);
+    void abort(const SharePtr &share = 0);
 
     /**
      * This function starts the composite job

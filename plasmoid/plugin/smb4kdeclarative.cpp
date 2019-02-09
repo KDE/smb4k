@@ -625,7 +625,7 @@ void Smb4KDeclarative::startMounter()
 
 void Smb4KDeclarative::abortMounter()
 {
-  Smb4KMounter::self()->abortAll();
+  Smb4KMounter::self()->abort();
 }
 
 

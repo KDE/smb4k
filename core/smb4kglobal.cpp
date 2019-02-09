@@ -83,8 +83,8 @@ void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
 void Smb4KGlobal::abortCore()
 {
   Smb4KClient::self()->abort();
-  Smb4KMounter::self()->abortAll();
-  Smb4KSynchronizer::self()->abortAll();
+  Smb4KMounter::self()->abort();
+  Smb4KSynchronizer::self()->abort();
 }
 
 

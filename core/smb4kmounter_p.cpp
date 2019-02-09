@@ -249,7 +249,7 @@ void Smb4KMountDialog::slotOkClicked()
 
 void Smb4KMountDialog::slotCancelClicked()
 {
-  Smb4KMounter::self()->abortAll();
+  Smb4KMounter::self()->abort();
   reject();
 }
 
