@@ -80,11 +80,6 @@ class Smb4KGlobalPrivate : public QObject
     QList<QSharedPointer<Smb4KShare>> sharesList;
     
     /**
-     * This list contains the search results.
-     */
-    QList<QSharedPointer<Smb4KShare>> searchResults;
-    
-    /**
      * The global options defined in smb.conf
      */
     const QMap<QString,QString> &globalSambaOptions(bool read = false);

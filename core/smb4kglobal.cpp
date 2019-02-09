@@ -838,21 +838,6 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
       {
         // Do nothing
       }
-      
-      // Search results
-      for (SharePtr s : p->searchResults)
-      {
-        if (QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                             s->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                             Qt::CaseInsensitive) == 0)
-        {
-          s->setMountData(share.data());
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
     }
     else
     {
@@ -1044,22 +1029,6 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
       {
         // Do nothing
       }
-      
-      // Search result
-      for (SharePtr searchResult : searchResults())
-      {
-        if (QString::compare(searchResult->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                             share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                             Qt::CaseInsensitive) == 0)
-        {
-          searchResult->resetMountData();
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
     }
     else
     {
@@ -1134,76 +1103,6 @@ bool Smb4KGlobal::onlyForeignMountedShares()
 }
 
 
-bool Smb4KGlobal::addSearchResult(SharePtr share)
-{
-  bool added = false;
-  
-  if (share)
-  {
-    mutex.lock();
-    
-    //
-    // Check if the share is already mounted. Ignore foreign shares
-    // for that.
-    // 
-    QList<SharePtr> mountedShares = findShareByUrl(share->url());
-    
-    if (!mountedShares.isEmpty())
-    {
-      for (const SharePtr &mountedShare : mountedShares)
-      {
-        if (!mountedShare->isForeign())
-        {
-          share->setMountData(mountedShare.data());
-          break;
-        }
-        else
-        {
-          // Do nothing
-        }
-      }
-    }
-    else
-    {
-      // Do nothing
-    }
-    
-    //
-    // Add the search result.
-    // 
-    p->searchResults.append(share);
-    added = true;
-    mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
-  }
-  
-  return added;
-}
-
-
-void Smb4KGlobal::clearSearchResults()
-{
-  mutex.lock();
-  
-  while (!p->searchResults.isEmpty())
-  {
-    p->searchResults.takeFirst().clear();
-  }
-  
-  mutex.unlock();
-}
-
-
-QList<SharePtr> Smb4KGlobal::searchResults()
-{
-  return p->searchResults;
-}
-
-
-
 void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
 {
   if (!share || share->isInaccessible())
@@ -1247,32 +1146,6 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
 const QMap<QString,QString> &Smb4KGlobal::globalSambaOptions()
 {
   return p->globalSambaOptions();
-}
-
-
-const QString Smb4KGlobal::winsServer()
-{
-  QString winsServer;
-  
-  if (p->globalSambaOptions().contains("wins server"))
-  {
-    winsServer = p->globalSambaOptions().value("wins server");
-  }
-  else
-  {
-    if (p->globalSambaOptions().contains("wins support") &&
-        (QString::compare(p->globalSambaOptions().value("wins support"), "yes", Qt::CaseInsensitive) == 0 ||
-         QString::compare(p->globalSambaOptions().value("wins support"), "true", Qt::CaseInsensitive) == 0))
-    {
-      winsServer = "127.0.0.1";
-    }
-    else
-    {
-      // Do nothing
-    }
-  }
-  
-  return winsServer;
 }
 
 

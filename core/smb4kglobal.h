@@ -460,25 +460,6 @@ namespace Smb4KGlobal
   Q_DECL_EXPORT bool onlyForeignMountedShares();
   
   /**
-   * This functions adds a share to the search results.
-   * 
-   * @param share       The share item
-   */
-  Q_DECL_EXPORT bool addSearchResult(SharePtr share);
-  
-  /**
-   * This function clears the list of search results.
-   */
-  Q_DECL_EXPORT void clearSearchResults();
-  
-  /**
-   * This function returns the list of all search results
-   * 
-   * @returns the list of search results
-   */
-  Q_DECL_EXPORT QList<SharePtr> searchResults();
-  
-  /**
    * This enumeration determines with which application the mount point
    * of the current mounted share is to be opened.
    */
@@ -503,14 +484,6 @@ namespace Smb4KGlobal
    * @returns the entries of the [global] section of the smb.conf file
    */
   Q_DECL_EXPORT const QMap<QString,QString> &globalSambaOptions();
-  
-  /**
-   * Get the WINS server's name or IP address. Returns an empty string if there is no
-   * WINS server is defined.
-   * 
-   * @returns the WINS server
-   */
-  Q_DECL_EXPORT const QString winsServer();
   
   /**
    * This function returns TRUE if the core classes should set a busy cursor when 
