@@ -69,7 +69,8 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * @returns a static pointer to this class
      */
     static Smb4KCustomOptionsManager *self();
-    
+
+#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     /**
      * Add the share to the list of shares that are to be remounted
      * either only on next program start or always Smb4K is restarted.
@@ -110,6 +111,7 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * @returns the list of shares that are to be remounted
      */
     QList<OptionsPtr> sharesToRemount();
+#endif
 
     /**
      * Find custom options for the network item @p networkItem.
