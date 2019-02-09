@@ -58,7 +58,6 @@ typedef QSharedPointer<Smb4KCustomOptions> OptionsPtr;
 #endif
 
 #if !defined(Q_OS_LINUX) && !defined(Q_OS_FREEBSD) && !defined(Q_OS_NETBSD)
-#warning Defining SMB4K_UNSUPPORTED_PLATFORM
 #define SMB4K_UNSUPPORTED_PLATFORM
 #endif
 
