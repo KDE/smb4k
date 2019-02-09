@@ -616,8 +616,6 @@ void Smb4KClientJob::doLookups()
         }
         case SMBC_PRINTER_SHARE:
         {
-          qDebug() << "Found printer share:" << dirp->name;
-          
           //
           // Create a share pointer
           // 
@@ -893,8 +891,6 @@ void Smb4KClientJob::doPrinting()
            m_fileItem.mimetype().startsWith(QLatin1String("text")) || 
            m_fileItem.mimetype().startsWith(QLatin1String("message")))
   {
-
-    
     //
     // Set a printer object
     //

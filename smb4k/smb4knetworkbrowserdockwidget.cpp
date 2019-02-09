@@ -154,6 +154,16 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
   m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
   
   //
+  // Search action
+  // 
+  QAction *searchAction = new QAction(KDE::icon("search"), i18n("&Search"), this);
+  
+  connect(searchAction, SIGNAL(triggered(bool)), this, SLOT(slotShowSearchToolBar()));
+  
+  m_actionCollection->addAction("search_action", searchAction);
+  m_actionCollection->setDefaultShortcut(searchAction, QKeySequence::Find);
+  
+  //
   // Separator
   // 
   QAction *separator1 = new QAction(this);
@@ -172,15 +182,6 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
   m_actionCollection->addAction("bookmark_action", bookmarkAction);
   m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL+Qt::Key_B));
   
-  //
-  // Search action
-  // 
-  QAction *searchAction = new QAction(KDE::icon("search"), i18n("&Search"), this);
-  
-  connect(searchAction, SIGNAL(triggered(bool)), this, SLOT(slotShowSearchToolBar()));
-  
-  m_actionCollection->addAction("search_action", searchAction);
-  m_actionCollection->setDefaultShortcut(searchAction, QKeySequence::Find);
   
   //
   // Mount dialog action
