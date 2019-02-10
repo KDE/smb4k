@@ -1064,7 +1064,6 @@ void Smb4KCustomOptionsDialog::setupView()
 
 bool Smb4KCustomOptionsDialog::checkDefaultValues()
 {
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   // 
   // Always remount the share
   // 
@@ -1176,7 +1175,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
       return false;
     }
   }
-#endif
 
 #if defined(Q_OS_LINUX)
   // 
@@ -1342,7 +1340,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
 
 void Smb4KCustomOptionsDialog::setDefaultValues()
 {
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   // 
   // Always remount the share
   // 
@@ -1425,7 +1422,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     directoryMode->setText(Smb4KMountSettings::directoryMode());
   }
-#endif
   
 #if defined(Q_OS_LINUX)
   // 
@@ -1629,7 +1625,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
 
 void Smb4KCustomOptionsDialog::saveValues()
 {
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   //
   // Always remount the share
   // 
@@ -1717,7 +1712,6 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     m_options->setDirectoryMode(directoryMode->text());
   }
-#endif
 
 #if defined(Q_OS_LINUX)
   // 

@@ -639,7 +639,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     ipAddress->clear();
   }
   
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   //
   // Remounting
   // 
@@ -728,7 +727,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
     directoryMode->setText(Smb4KMountSettings::fileMode());
   }
-#endif
   
 #if defined(Q_OS_LINUX)
   //
@@ -1006,7 +1004,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     connect(ipAddress, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
   }
   
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   //
   // Remounting
   // 
@@ -1103,7 +1100,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     directoryMode->setText(m_currentOptions->directoryMode());
     connect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
   }
-#endif
   
 #if defined(Q_OS_LINUX)
   //
@@ -1354,7 +1350,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     m_currentOptions->setIpAddress(ipAddress->text());
   }
   
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   //
   // Remounting
   // 
@@ -1439,7 +1434,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setDirectoryMode(directoryMode->text());
   }
-#endif
   
 #if defined(Q_OS_LINUX)
   //
@@ -1628,7 +1622,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
       if (o->type() == Share && o->hostName() == m_currentOptions->hostName() && o->workgroupName() == m_currentOptions->workgroupName())
       {
         o->setIpAddress(m_currentOptions->ipAddress());
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
         o->setUseUser(m_currentOptions->useUser());
         o->setUser(m_currentOptions->user());
         o->setUseGroup(m_currentOptions->useGroup());
@@ -1637,7 +1630,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
         o->setFileMode(m_currentOptions->fileMode());
         o->setUseDirectoryMode(m_currentOptions->useDirectoryMode());
         o->setDirectoryMode(m_currentOptions->directoryMode());
-#endif
 #if defined(Q_OS_LINUX)
         o->setCifsUnixExtensionsSupport(m_currentOptions->cifsUnixExtensionsSupport());
         o->setUseFileSystemPort(m_currentOptions->useFileSystemPort());

@@ -92,7 +92,6 @@ Smb4KCustomOptionsManager *Smb4KCustomOptionsManager::self()
 }
 
 
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
 void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
 {
   if (share)
@@ -209,7 +208,6 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
   //
   return remounts;
 }
-#endif
 
 
 OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkItem, bool exactMatch)
@@ -484,7 +482,6 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                           options->setWOLSendBeforeMount(false);
                         }
                       }
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
                       else if (xmlReader.name() == "remount")
                       {
                         QString remount = xmlReader.readElementText();
@@ -584,7 +581,6 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                       {
                         options->setDirectoryMode(xmlReader.readElementText());
                       }
-#endif
 #if defined(Q_OS_LINUX)
                       else if (xmlReader.name() == "cifs_unix_extensions_support")
                       {
@@ -761,11 +757,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
       
       for (const OptionsPtr &options : d->options)
       {
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
         if (options->hasOptions() || options->remount() == Smb4KCustomOptions::RemountOnce)
-#else
-        if (options->hasOptions())
-#endif
         {
           xmlWriter.writeStartElement("options");
           xmlWriter.writeAttribute("type", options->type() == Host ? "host" : "share");
@@ -829,11 +821,7 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool optionsOnly)
       continue;
     }
 
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     if (o->hasOptions() || (!optionsOnly && o->remount() == Smb4KCustomOptions::RemountOnce))
-#else
-    if (o->hasOptions())
-#endif
     {
       options << o;
     }
@@ -877,11 +865,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<OptionsPtr> &op
         options->setProfile(Smb4KProfileManager::self()->activeProfile());
       }
       
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
       if (options->hasOptions() || options->remount() == Smb4KCustomOptions::RemountOnce)
-#else
-      if (options->hasOptions())
-#endif
       {
         d->options << options;
       }
@@ -1028,7 +1012,6 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options)
         if (o->type() == Share && o->hostName() == options->hostName() && o->workgroupName() == options->workgroupName())
         {
           o->setIpAddress(options->ipAddress());
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
           o->setUseUser(options->useUser());
           o->setUser(options->user());
           o->setUseGroup(options->useGroup());
@@ -1037,7 +1020,6 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options)
           o->setFileMode(options->fileMode());
           o->setUseDirectoryMode(options->useDirectoryMode());
           o->setDirectoryMode(options->directoryMode());
-#endif
 #if defined(Q_OS_LINUX)
           o->setCifsUnixExtensionsSupport(options->cifsUnixExtensionsSupport());
           o->setUseFileSystemPort(options->useFileSystemPort());

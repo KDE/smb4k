@@ -57,9 +57,6 @@ typedef QSharedPointer<Smb4KCustomOptions> OptionsPtr;
 #define SMB4K_DEPRECATED __attribute__ ((__deprecated__))
 #endif
 
-#if !defined(Q_OS_LINUX) && !defined(Q_OS_FREEBSD) && !defined(Q_OS_NETBSD)
-#define SMB4K_UNSUPPORTED_PLATFORM
-#endif
 
 /**
  * This is the global namespace. It provides access to the global lists

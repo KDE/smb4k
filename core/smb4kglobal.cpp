@@ -33,10 +33,7 @@
 #include "smb4knotification.h"
 #include "smb4ksynchronizer.h"
 #include "smb4kclient.h"
-
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
 #include "smb4kmounter.h"
-#endif
 
 // Qt includes
 #include <QMutex>
@@ -67,9 +64,7 @@ void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
     if (initClasses)
     {
       Smb4KClient::self()->start();
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
       Smb4KMounter::self()->start();
-#endif
     }
 
     p->coreInitialized = true;
@@ -80,9 +75,7 @@ void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
 void Smb4KGlobal::abortCore()
 {
   Smb4KClient::self()->abort();
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)  
   Smb4KMounter::self()->abort();
-#endif
   Smb4KSynchronizer::self()->abort();
 }
 
@@ -90,9 +83,7 @@ void Smb4KGlobal::abortCore()
 bool Smb4KGlobal::coreIsRunning()
 {
   return (Smb4KClient::self()->isRunning() ||
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
           Smb4KMounter::self()->isRunning() ||
-#endif
           Smb4KSynchronizer::self()->isRunning());
 }
 

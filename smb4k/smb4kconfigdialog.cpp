@@ -109,13 +109,11 @@ void Smb4KConfigDialog::setupDialog()
   network_area->setWidgetResizable(true);
   network_area->setFrameStyle(QFrame::NoFrame);
   
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)  
   Smb4KConfigPageMounting *mount_options = new Smb4KConfigPageMounting(this);
   QScrollArea *mount_area = new QScrollArea(this);
   mount_area->setWidget(mount_options);
   mount_area->setWidgetResizable(true);
   mount_area->setFrameStyle(QFrame::NoFrame);
-#endif
 
   Smb4KConfigPageAuthentication *auth_options = new Smb4KConfigPageAuthentication(this);
   QScrollArea *auth_area = new QScrollArea(this);
@@ -148,9 +146,7 @@ void Smb4KConfigDialog::setupDialog()
   // 
   m_user_interface  = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), "preferences-desktop");
   m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network Neighborhood"), "network-workgroup");
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   m_mounting        = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), "system-run");
-#endif
   m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
   m_synchronization = addPage(rsync_area, Smb4KSettings::self(),i18n("Synchronization"), "folder-sync");
   m_custom_options  = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Options"), "preferences-system-network");
@@ -267,7 +263,6 @@ bool Smb4KConfigDialog::checkNetworkPage()
 
 bool Smb4KConfigDialog::checkMountingPage()
 {
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   KUrlRequester *mount_prefix = m_mounting->widget()->findChild<KUrlRequester *>("kcfg_MountPrefix");
   
   QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
@@ -301,7 +296,6 @@ bool Smb4KConfigDialog::checkMountingPage()
     directory_mask->setFocus();
     return false;
   }
-#endif
   
   return true;
 }
@@ -694,12 +688,10 @@ void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem* /*current*/, KPageWidgetI
   {
     (void)checkNetworkPage();
   }
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   else if (before == m_mounting)
   {
     (void)checkMountingPage();
   }
-#endif
   else if (before == m_synchronization)
   {
     (void)checkSynchronizationPage();

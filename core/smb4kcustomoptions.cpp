@@ -53,7 +53,6 @@ class Smb4KCustomOptionsPrivate
     QUrl url;
     QHostAddress ip;
     NetworkItem type;
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     Smb4KCustomOptions::Remount remount;
     bool useUser;
     KUser user;
@@ -63,7 +62,6 @@ class Smb4KCustomOptionsPrivate
     QString fileMode;
     bool useDirectoryMode;
     QString directoryMode;
-#endif
 #if defined(Q_OS_LINUX)
     bool cifsUnixExtensionsSupport;
     bool useFileSystemPort;
@@ -89,7 +87,6 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
   d->workgroup = host->workgroupName();
   d->url = host->url();
   d->type = Host;
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   d->remount = UndefinedRemount;
   d->useUser = Smb4KMountSettings::useUserId();
   d->user = KUser(Smb4KMountSettings::userId());
@@ -99,7 +96,6 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
   d->fileMode = Smb4KMountSettings::fileMode();
   d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
   d->directoryMode = Smb4KMountSettings::directoryMode();
-#endif
 #if defined(Q_OS_LINUX)
   d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
   d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
@@ -123,7 +119,6 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
   d->url = share->url();
   d->workgroup = share->workgroupName();
   d->type = Share;
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   d->remount = UndefinedRemount;
   d->useUser = Smb4KMountSettings::useUserId();
   d->user = share->user();
@@ -133,7 +128,6 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
   d->fileMode = Smb4KMountSettings::fileMode();
   d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
   d->directoryMode = Smb4KMountSettings::directoryMode();
-#endif
 #if defined(Q_OS_LINUX)
   d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
   d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
@@ -163,7 +157,6 @@ Smb4KCustomOptions::Smb4KCustomOptions()
 : d(new Smb4KCustomOptionsPrivate)
 {
   d->type = UnknownNetworkItem;
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   d->remount = UndefinedRemount;
   d->useUser = Smb4KMountSettings::useUserId();
   d->user = KUser(Smb4KMountSettings::userId());
@@ -173,7 +166,6 @@ Smb4KCustomOptions::Smb4KCustomOptions()
   d->fileMode = Smb4KMountSettings::fileMode();
   d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
   d->directoryMode = Smb4KMountSettings::directoryMode();
-#endif
 #if defined(Q_OS_LINUX)
   d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
   d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
@@ -240,10 +232,8 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
 #if defined(Q_OS_LINUX)
         d->fileSystemPort = share->port() != -1 ? share->port() : d->fileSystemPort;
 #endif
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
         d->user = share->user();
         d->group = share->group();
-#endif
         d->ip.setAddress(share->hostIpAddress());
         break;
       }
@@ -258,10 +248,8 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
 #if defined(Q_OS_LINUX)
           d->fileSystemPort = share->port() != -1 ? share->port() : d->fileSystemPort;
 #endif
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
           d->user = share->user();
           d->group = share->group();
-#endif
           d->ip.setAddress(share->hostIpAddress());
         }
         break;
@@ -366,7 +354,6 @@ QString Smb4KCustomOptions::displayString() const
 }
 
 
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
 void Smb4KCustomOptions::setRemount(Smb4KCustomOptions::Remount remount)
 {
   switch (d->type)
@@ -485,7 +472,6 @@ QString Smb4KCustomOptions::directoryMode() const
 {
   return d->directoryMode;
 }
-#endif
 
 
 #if defined(Q_OS_LINUX)
@@ -693,7 +679,6 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
 {
   QMap<QString,QString> entries;
 
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   switch (d->remount)
   {
     case RemountOnce:
@@ -732,7 +717,6 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
   entries.insert("file_mode", d->fileMode);
   entries.insert("use_directory_mode", d->useDirectoryMode ? "true" : "false");
   entries.insert("directory_mode", d->directoryMode);
-#endif
   
 #if defined(Q_OS_LINUX)
   entries.insert("cifs_unix_extensions_support", d->cifsUnixExtensionsSupport ? "true" : "false");
@@ -831,7 +815,6 @@ bool Smb4KCustomOptions::hasOptions() const
   // the ip address, the type and the profile, because these things 
   // are not custom options.
   // 
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
   // Perform remount
   if (d->remount != Smb4KCustomOptions::UndefinedRemount)
   {
@@ -882,7 +865,6 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-#endif
 #if defined(Q_OS_LINUX)
   // CIFS Unix extension support
   if (d->cifsUnixExtensionsSupport != Smb4KMountSettings::cifsUnixExtensionsSupport())
@@ -971,7 +953,6 @@ bool Smb4KCustomOptions::hasOptions() const
 void Smb4KCustomOptions::update(Smb4KCustomOptions *options)
 {
     d->ip.setAddress(options->ipAddress());
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     d->remount = options->remount();
     d->useUser = options->useUser();
     d->user = options->user();
@@ -981,7 +962,6 @@ void Smb4KCustomOptions::update(Smb4KCustomOptions *options)
     d->fileMode = options->fileMode();
     d->useDirectoryMode = options->useDirectoryMode();
     d->directoryMode = options->directoryMode();
-#endif
 #if defined(Q_OS_LINUX)
     d->cifsUnixExtensionsSupport = options->cifsUnixExtensionsSupport();
     d->useFileSystemPort = options->useFileSystemPort();

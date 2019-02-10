@@ -177,7 +177,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      */
     QString displayString() const;
 
-#if !defined(SMB4K_UNSUPPORTED_PLATFORM)
     /**
      * Remount enumeration
      * 
@@ -320,7 +319,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * @returns the directory mode
      */
     QString directoryMode() const;
-#endif
     
 #if defined(Q_OS_LINUX)
     /**
