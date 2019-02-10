@@ -53,7 +53,6 @@ target_link_libraries(smb4kconfigdialog
 
 set(smb4k_SRCS
   main.cpp
-  smb4kbookmarkmenu.cpp
   smb4kprofilesmenu.cpp
   smb4kmainwindow.cpp
   smb4knetworkbrowser.cpp
@@ -64,19 +63,22 @@ set(smb4k_SRCS
   smb4ktooltip.cpp)
   
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
-  set(smb4k_SRCS ${smb4k_SRCS} 
+  set(smb4k_SRCS ${smb4k_SRCS}
+  smb4kbookmarkmenu.cpp
   smb4ksharesmenu.cpp
   smb4ksharesview.cpp
   smb4ksharesviewitem.cpp
   smb4ksharesviewdockwidget.cpp)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD")
-  set(smb4k_SRCS ${smb4k_SRCS} 
+  set(smb4k_SRCS ${smb4k_SRCS}
+  smb4kbookmarkmenu.cpp
   smb4ksharesmenu.cpp
   smb4ksharesview.cpp
   smb4ksharesviewitem.cpp
   smb4ksharesviewdockwidget.cpp)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD")
-  set(smb4k_SRCS ${smb4k_SRCS} 
+  set(smb4k_SRCS ${smb4k_SRCS}
+  smb4kbookmarkmenu.cpp
   smb4ksharesmenu.cpp
   smb4ksharesview.cpp
   smb4ksharesviewitem.cpp
