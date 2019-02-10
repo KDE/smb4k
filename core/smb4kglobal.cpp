@@ -71,16 +71,8 @@ void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
       Smb4KMounter::self()->start();
 #endif
     }
-    else
-    {
-      // Do nothing
-    }
 
     p->coreInitialized = true;
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -130,10 +122,6 @@ WorkgroupPtr Smb4KGlobal::findWorkgroup(const QString &name)
       workgroup = w;
       break;
     }
-    else
-    {
-      // Do nothing
-    }
   }
 
   mutex.unlock();
@@ -157,16 +145,8 @@ bool Smb4KGlobal::addWorkgroup(WorkgroupPtr workgroup)
       p->workgroupsList.append(workgroup);
       added = true;
     }
-    else
-    {
-      // Do nothing
-    }
 
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
 
   return added;
@@ -190,16 +170,8 @@ bool Smb4KGlobal::updateWorkgroup(WorkgroupPtr workgroup)
       existingWorkgroup->update(workgroup.data());
       updated = true;
     }
-    else
-    {
-      // Do nothing
-    }
     
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
   
   return updated;
@@ -239,24 +211,12 @@ bool Smb4KGlobal::removeWorkgroup(WorkgroupPtr workgroup)
           p->workgroupsList.takeAt(index).clear();
           removed = true;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
 
       workgroup.clear();
     }
 
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
 
   return removed;
@@ -296,10 +256,6 @@ HostPtr Smb4KGlobal::findHost(const QString &name, const QString &workgroup)
       host = h;
       break;
     }
-    else
-    {
-      // Do nothing
-    }
   }
 
   mutex.unlock();
@@ -323,16 +279,8 @@ bool Smb4KGlobal::addHost(HostPtr host)
       p->hostsList.append(host);
       added = true;
     }
-    else
-    {
-      // Do nothing
-    }
 
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
 
   return added;
@@ -356,16 +304,8 @@ bool Smb4KGlobal::updateHost(HostPtr host)
       existingHost->update(host.data());
       updated = true;
     }
-    else
-    {
-      // Do nothing
-    }
-    
+
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
   
   return updated;
@@ -405,24 +345,12 @@ bool Smb4KGlobal::removeHost(HostPtr host)
           p->hostsList.takeAt(index).clear();
           removed = true;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
 
       host.clear();
     }
 
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
 
   return removed;
@@ -454,10 +382,6 @@ QList<HostPtr> Smb4KGlobal::workgroupMembers(WorkgroupPtr workgroup)
     {
       hosts << h;
     }
-    else
-    {
-      // Do nothing
-    }
   }
 
   mutex.unlock();
@@ -487,10 +411,6 @@ SharePtr Smb4KGlobal::findShare(const QUrl& url, const QString& workgroup)
     {
       share = s;
       break;
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -537,10 +457,6 @@ bool Smb4KGlobal::addShare(SharePtr share)
           }
         }
       }
-      else
-      {
-        // Do nothing
-      }  
       
       // 
       // Add it
@@ -548,14 +464,6 @@ bool Smb4KGlobal::addShare(SharePtr share)
       p->sharesList.append(share);
       added = true;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 
   mutex.unlock();
@@ -602,10 +510,6 @@ bool Smb4KGlobal::updateShare(SharePtr share)
           }
         }
       }
-      else
-      {
-        // Do nothing
-      }
       
       // 
       // Update it
@@ -613,16 +517,8 @@ bool Smb4KGlobal::updateShare(SharePtr share)
       existingShare->update(share.data());
       updated = true;
     }
-    else
-    {
-      // Do nothing
-    }
-    
+
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
   
   return updated;
@@ -662,24 +558,12 @@ bool Smb4KGlobal::removeShare(SharePtr share)
           p->sharesList.takeAt(index).clear();
           removed = true;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
 
       share.clear();
     }
 
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
 
   return removed;
@@ -712,10 +596,6 @@ QList<SharePtr> Smb4KGlobal::sharedResources(HostPtr host)
     {
       shares += s;
     }
-    else
-    {
-      // Do nothing
-    }
   }
 
   mutex.unlock();
@@ -746,15 +626,7 @@ SharePtr Smb4KGlobal::findShareByPath(const QString &path)
         share = s;
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 
   mutex.unlock();
@@ -779,15 +651,7 @@ QList<SharePtr> Smb4KGlobal::findShareByUrl(const QUrl &url)
       {
         shares << s;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 
   mutex.unlock();
@@ -807,10 +671,6 @@ QList<SharePtr> Smb4KGlobal::findInaccessibleShares()
     if (s->isInaccessible())
     {
       inaccessibleShares += s;
-    }
-    else
-    {
-      // Do nothing
     }
   }
 
@@ -843,14 +703,6 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
       {
         networkShare->setMountData(share.data());
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
 
     if (!findShareByPath(share->path()))
@@ -867,24 +719,12 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
         {
           share->setHostIpAddress(networkHost->ipAddress());
         }
-        else
-        {
-          // Do nothing
-        }
         
         // Set the workgroup name
         if (share->workgroupName().isEmpty())
         {
           share->setWorkgroupName(networkHost->workgroupName());
         }
-        else
-        {
-          // Do nothing
-        }          
-      }
-      else
-      {
-        // Do nothing
       }
       
       p->mountedSharesList.append(share);
@@ -899,22 +739,10 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
           p->onlyForeignShares = false;
           break;
         }
-        else
-        {
-          // Do nothing
-        }
       }
-    }
-    else
-    {
-      // Do nothing
     }
 
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
 
   return added;
@@ -943,14 +771,6 @@ bool Smb4KGlobal::updateMountedShare(SharePtr share)
       {
         networkShare->setMountData(share.data());
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     SharePtr mountedShare = findShareByPath(share->path());
@@ -969,24 +789,12 @@ bool Smb4KGlobal::updateMountedShare(SharePtr share)
         {
           share->setHostIpAddress(networkHost->ipAddress());
         }
-        else
-        {
-          // Do nothing
-        }
         
         // Set the workgroup name
         if (share->workgroupName().isEmpty())
         {
           share->setWorkgroupName(networkHost->workgroupName());
         }
-        else
-        {
-          // Do nothing
-        }          
-      }
-      else
-      {
-        // Do nothing
       }
       
       //
@@ -995,16 +803,8 @@ bool Smb4KGlobal::updateMountedShare(SharePtr share)
       mountedShare->setMountData(share.data());
       updated = true;
     }
-    else
-    {
-      // Do nothing
-    }
     
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
   
   return updated;
@@ -1034,14 +834,6 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
       {
         networkShare->resetMountData();
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
 
     //
@@ -1069,14 +861,6 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
           p->mountedSharesList.takeAt(index).clear();
           removed = true;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
 
       share.clear();
@@ -1089,17 +873,9 @@ bool Smb4KGlobal::removeMountedShare(SharePtr share)
         p->onlyForeignShares = false;
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
     
     mutex.unlock();
-  }
-  else
-  {
-    // Do nothing
   }
   
   return removed;

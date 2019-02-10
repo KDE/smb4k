@@ -206,10 +206,6 @@ void Smb4KMountDialog::slotOkClicked()
     {
       userInput.replace("\\", "/");
     }
-    else
-    {
-      // Do nothing
-    }
     
     //
     // Set the URL and adjust the scheme
@@ -231,10 +227,6 @@ void Smb4KMountDialog::slotOkClicked()
       Smb4KNotification::invalidURLPassed();
       m_valid = false;
     }
-  }
-  else
-  {
-    // Do nothing
   }
   
   KConfigGroup group(Smb4KSettings::self()->config(), "MountDialog");
@@ -264,10 +256,6 @@ void Smb4KMountDialog::slotShareNameEntered()
   {
     completion->addItem(m_share_input->userText());
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -279,10 +267,6 @@ void Smb4KMountDialog::slotIPEntered()
   {
     completion->addItem(m_ip_input->userText());
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -293,10 +277,6 @@ void Smb4KMountDialog::slotWorkgroupEntered()
   if (!m_workgroup_input->userText().isEmpty())
   {
     completion->addItem(m_workgroup_input->userText());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

@@ -3,7 +3,7 @@
     Smb4K.
                              -------------------
     begin                : Do Apr 2 2009
-    copyright            : (C) 2009-2017 by Alexander Reinholdt
+    copyright            : (C) 2009-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -109,10 +109,6 @@ void Smb4KBasicNetworkItem::setUrl(const QUrl& url)
   {
     return;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Do some checks depending on the type of the network item
@@ -133,10 +129,6 @@ void Smb4KBasicNetworkItem::setUrl(const QUrl& url)
       {
         return;
       }
-      else
-      {
-        // Do nothing
-      }
       
       break;
     }
@@ -148,10 +140,6 @@ void Smb4KBasicNetworkItem::setUrl(const QUrl& url)
       if (url.path().isEmpty() || (url.path().size() == 1 && url.path().endsWith('/')))
       {
         return;
-      }
-      else
-      {
-        // Do nothing
       }
       
       break;
@@ -173,10 +161,6 @@ void Smb4KBasicNetworkItem::setUrl(const QUrl& url)
   if (d->url.scheme() != "smb")
   {
     d->url.setScheme("smb");
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

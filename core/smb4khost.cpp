@@ -2,7 +2,7 @@
     Smb4K's container class for information about a host.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -68,10 +68,6 @@ Smb4KHost::Smb4KHost(const Smb4KHost &h)
   {
     *pIcon = KDE::icon("network-server");
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -124,10 +120,6 @@ void Smb4KHost::setIpAddress(const QHostAddress& address)
   if (!address.isNull() && address.protocol() != QAbstractSocket::UnknownNetworkLayerProtocol)
   {
     d->ip = address;
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -225,14 +217,6 @@ void Smb4KHost::update(Smb4KHost* host)
     {
       setIpAddress(host->ipAddress());
     }
-    else
-    {
-      // Do nothing
-    }    
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

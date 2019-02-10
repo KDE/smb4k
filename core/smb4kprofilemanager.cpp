@@ -69,8 +69,7 @@ Smb4KProfileManager::Smb4KProfileManager(QObject* parent)
     d->activeProfile.clear();
   }
   
-  connect(Smb4KSettings::self(), SIGNAL(configChanged()), 
-          this,                  SLOT(slotConfigChanged()));
+  connect(Smb4KSettings::self(), SIGNAL(configChanged()), this, SLOT(slotConfigChanged()));
 }
 
 
@@ -101,10 +100,6 @@ void Smb4KProfileManager::setActiveProfile(const QString& name)
       emit aboutToChangeProfile();
       change = true;
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -112,10 +107,6 @@ void Smb4KProfileManager::setActiveProfile(const QString& name)
     {
       emit aboutToChangeProfile();
       change = true;
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -127,10 +118,6 @@ void Smb4KProfileManager::setActiveProfile(const QString& name)
     d->activeProfile = d->useProfiles ? name : QString();
     Smb4KSettings::setActiveProfile(d->activeProfile);
     emit activeProfileChanged(d->activeProfile);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -181,10 +168,6 @@ void Smb4KProfileManager::migrateProfiles(const QList<QPair<QString,QString>>& l
             d->profiles.replace(j, to);
             break;
           }
-          else
-          {
-            // Do nothing
-          }
         }
         
         // Migrate profiles.
@@ -198,10 +181,6 @@ void Smb4KProfileManager::migrateProfiles(const QList<QPair<QString,QString>>& l
         if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0)
         {
           setActiveProfile(to);
-        }
-        else
-        {
-          // Do nothing
         }
       }
       else
@@ -219,10 +198,6 @@ void Smb4KProfileManager::migrateProfiles(const QList<QPair<QString,QString>>& l
     
     Smb4KSettings::setProfilesList(d->profiles);
     emit profilesListChanged(d->profiles);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -255,10 +230,6 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list)
           it.remove();
           break;
         }
-        else
-        {
-          // Do nothing
-        }
       }
       
       if (!d->profiles.isEmpty())
@@ -273,22 +244,10 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list)
           {
             migrateProfile(dlg->from(), dlg->to());
           }
-          else
-          {
-            // Do nothing
-          }
         
           delete dlg;
         }
-        else
-        {
-          // Do nothing
-        }
       }
-      else
-      {
-        // Do nothing
-      }     
       
       // Remove the profile.
       Smb4KBookmarkHandler::self()->removeProfile(name);
@@ -301,18 +260,10 @@ void Smb4KProfileManager::removeProfiles(const QStringList& list)
       {
         setActiveProfile(!d->profiles.isEmpty() ? d->profiles.first() : QString());
       }
-      else
-      {
-         // Do nothing
-      }
     }
     
     Smb4KSettings::setProfilesList(d->profiles);
     emit profilesListChanged(d->profiles);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -330,10 +281,6 @@ void Smb4KProfileManager::slotConfigChanged()
     emit profileUsageChanged(d->useProfiles);
     usageChanged = true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Updated the list of profiles
@@ -342,10 +289,6 @@ void Smb4KProfileManager::slotConfigChanged()
   {
     d->profiles = Smb4KSettings::profilesList();
     emit profilesListChanged(d->profiles);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -383,16 +326,8 @@ void Smb4KProfileManager::slotConfigChanged()
     {
       migrateProfile(dlg->from(), dlg->to());
     }
-    else
-    {
-      // Do nothing
-    }
         
     delete dlg;
-  }
-  else
-  {
-    // Do nothing
   }
   
   //

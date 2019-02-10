@@ -78,10 +78,6 @@ Smb4KWorkgroup::Smb4KWorkgroup(const Smb4KWorkgroup &w)
   {
     *pIcon = KDE::icon("network-workgroup");
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -143,10 +139,6 @@ void Smb4KWorkgroup::setMasterBrowserIpAddress(const QHostAddress& address)
   {
     d->masterIP = address;
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -169,10 +161,10 @@ void Smb4KWorkgroup::update(Smb4KWorkgroup* workgroup)
     setMasterBrowserName(workgroup->masterBrowserName());
     setMasterBrowserIpAddress(workgroup->masterBrowserIpAddress());
   }
-  else
-  {
-    // Do nothing
-  }
+
+  
+  
+  
 }
 
 

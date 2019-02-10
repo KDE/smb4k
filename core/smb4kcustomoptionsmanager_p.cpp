@@ -492,10 +492,6 @@ void Smb4KCustomOptionsDialog::setupView()
     {
       remountAlways->setChecked((m_options->remount() == Smb4KCustomOptions::RemountAlways));
     }
-    else
-    {
-      // Do nothing
-    }
     
     // CIFS Unix extensions support
     cifsExtensionsSupport->setChecked(m_options->cifsUnixExtensionsSupport());
@@ -858,10 +854,6 @@ void Smb4KCustomOptionsDialog::setupView()
     {
       remountAlways->setChecked((m_options->remount() == Smb4KCustomOptions::RemountAlways));
     }
-    else
-    {
-      // Do nothing
-    }
     
     // User information
     useUserId->setChecked(m_options->useUser());
@@ -1086,19 +1078,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
       {
         return false;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1112,14 +1092,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *userId = findChild<KComboBox *>("UserId");
@@ -1132,14 +1104,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1153,14 +1117,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *groupId = findChild<KComboBox *>("GroupId");
@@ -1173,14 +1129,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1194,14 +1142,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
@@ -1212,14 +1152,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1233,14 +1165,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
@@ -1251,14 +1175,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
 
@@ -1274,14 +1190,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1295,14 +1203,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
@@ -1313,14 +1213,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1334,14 +1226,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
@@ -1352,14 +1236,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1373,14 +1249,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
@@ -1391,14 +1259,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
   
@@ -1413,14 +1273,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
@@ -1431,14 +1283,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }    
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1452,14 +1296,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     {
       return false;
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1477,14 +1313,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
       {
         return false;
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
@@ -1495,14 +1323,6 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
       {
         return false;
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
@@ -1513,19 +1333,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
       {
         return false;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 
   return true;
@@ -1546,14 +1354,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     {
       remountAlways->setChecked(false);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1565,10 +1365,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     useUserId->setChecked(Smb4KMountSettings::useUserId());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *userId = findChild<KComboBox *>("UserId");
   
@@ -1576,10 +1372,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     KUser user((K_UID)Smb4KMountSettings::userId().toInt());
     userId->setCurrentText(QString("%1 (%2)").arg(user.loginName()).arg(user.userId().nativeId()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1591,10 +1383,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     useGroupId->setChecked(Smb4KMountSettings::useGroupId());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *groupId = findChild<KComboBox *>("GroupId");
   
@@ -1602,10 +1390,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     KUserGroup group((K_GID)Smb4KMountSettings::groupId().toInt());
     groupId->setCurrentText(QString("%1 (%2)").arg(group.name()).arg(group.groupId().nativeId()));;
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1617,20 +1401,12 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     useFileMode->setChecked(Smb4KMountSettings::useFileMode());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
   
   if (fileMode)
   {
     fileMode->setText(Smb4KMountSettings::fileMode());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1642,20 +1418,12 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     useDirectoryMode->setChecked(Smb4KMountSettings::useDirectoryMode());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
   
   if (directoryMode)
   {
     directoryMode->setText(Smb4KMountSettings::directoryMode());
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
   
@@ -1669,10 +1437,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     cifsExtensionsSupport->setChecked(Smb4KMountSettings::cifsUnixExtensionsSupport());
   }
-  else
-  {
-    // Do nothing
-  }  
   
   // 
   // Filesystem port
@@ -1683,20 +1447,12 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     useFilesystemPort->setChecked(Smb4KMountSettings::useRemoteFileSystemPort());
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
   
   if (filesystemPort)
   {
     filesystemPort->setValue(Smb4KMountSettings::remoteFileSystemPort());
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1707,10 +1463,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   if (useWriteAccess)
   {
     useWriteAccess->setChecked(Smb4KMountSettings::useWriteAccess());
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
@@ -1738,10 +1490,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
   
   // 
   // Security mode
@@ -1751,10 +1499,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   if (useSecurityMode)
   {
     useSecurityMode->setChecked(Smb4KMountSettings::useSecurityMode());
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
@@ -1824,10 +1568,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
 #endif
   
   // 
@@ -1839,20 +1579,12 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   {
     useSmbPort->setChecked(Smb4KSettings::useRemoteSmbPort());
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
   
   if (smbPort)
   {
     smbPort->setValue(Smb4KSettings::remoteSmbPort());
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1863,10 +1595,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   if (useKerberos)
   {
     useKerberos->setChecked(Smb4KSettings::useKerberos());
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1881,20 +1609,12 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
       macAddress->clear();
       macAddress->setInputMask("HH:HH:HH:HH:HH:HH;_");
     }
-    else
-    {
-      // Do nothing
-    }
     
     QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
     
     if (sendPackageBeforeScan)
     {
       sendPackageBeforeScan->setChecked(false);
-    }
-    else
-    {
-      // Do nothing
     }
     
     QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
@@ -1903,14 +1623,6 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     {
       sendPackageBeforeMount->setChecked(false);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1936,14 +1648,6 @@ void Smb4KCustomOptionsDialog::saveValues()
         m_options->setRemount(Smb4KCustomOptions::RemountNever);
       }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1955,20 +1659,12 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     m_options->setUseUser(useUserId->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *userId = findChild<KComboBox *>("UserId");
   
   if (userId)
   {
     m_options->setUser(KUser(userId->itemData(userId->currentIndex()).toInt()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1980,20 +1676,12 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     m_options->setUseGroup(useGroupId->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *groupId = findChild<KComboBox *>("GroupId");
   
   if (groupId)
   {
     m_options->setGroup(KUserGroup(groupId->itemData(groupId->currentIndex()).toInt()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -2005,20 +1693,12 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     m_options->setUseFileMode(useFileMode->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
   
   if (fileMode)
   {
     m_options->setFileMode(fileMode->text());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -2030,20 +1710,12 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     m_options->setUseDirectoryMode(useDirectoryMode->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
   
   if (directoryMode)
   {
     m_options->setDirectoryMode(directoryMode->text());
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
 
@@ -2057,10 +1729,6 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     m_options->setCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   // 
   // Filesystem port
@@ -2071,20 +1739,12 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     m_options->setUseFileSystemPort(useFilesystemPort->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
   
   if (filesystemPort)
   {
     m_options->setFileSystemPort(filesystemPort->value());
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -2095,10 +1755,6 @@ void Smb4KCustomOptionsDialog::saveValues()
   if (useWriteAccess)
   {
     m_options->setUseWriteAccess(useWriteAccess->isChecked());
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
@@ -2116,14 +1772,6 @@ void Smb4KCustomOptionsDialog::saveValues()
     {
       m_options->setWriteAccess(Smb4KMountSettings::EnumWriteAccess::ReadOnly);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -2134,10 +1782,6 @@ void Smb4KCustomOptionsDialog::saveValues()
   if (useSecurityMode)
   {
     m_options->setUseSecurityMode(useSecurityMode->isChecked());
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
@@ -2190,14 +1834,6 @@ void Smb4KCustomOptionsDialog::saveValues()
     {
       m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Ntlmsspi);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
   
@@ -2210,20 +1846,12 @@ void Smb4KCustomOptionsDialog::saveValues()
   {
     m_options->setUseSmbPort(useSmbPort->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
   
   if (smbPort)
   {
     m_options->setSmbPort(smbPort->value());
-  }
-  else
-  {
-    // Do nothing
   }
   
   // Kerberos
@@ -2232,10 +1860,6 @@ void Smb4KCustomOptionsDialog::saveValues()
   if (useKerberos)
   {
     m_options->setUseKerberos(useKerberos->isChecked());
-  }
-  else
-  {
-    // Do nothing
   }
   
   // MAC address & Wake-On-LAN features
@@ -2247,20 +1871,12 @@ void Smb4KCustomOptionsDialog::saveValues()
     {
       m_options->setMACAddress(macAddress->text());
     }
-    else
-    {
-      // Do nothing
-    }
     
     QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
     
     if (sendPackageBeforeScan)
     {
       m_options->setWOLSendBeforeNetworkScan(sendPackageBeforeScan->isChecked());
-    }
-    else
-    {
-      // Do nothing
     }
     
     QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
@@ -2269,14 +1885,6 @@ void Smb4KCustomOptionsDialog::saveValues()
     {
       m_options->setWOLSendBeforeMount(sendPackageBeforeMount->isChecked());
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 
   KConfigGroup group(Smb4KSettings::self()->config(), "CustomOptionsDialog");
@@ -2303,15 +1911,7 @@ void Smb4KCustomOptionsDialog::slotCheckValues()
         b->setEnabled(!checkDefaultValues());
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2333,20 +1933,12 @@ void Smb4KCustomOptionsDialog::slotEnableWOLFeatures(const QString &mac)
   {
     sendPackageBeforeScan->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
   }
-  else
-  {
-    // Do nothing
-  }
   
   QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
   
   if (sendPackageBeforeMount)
   {
     sendPackageBeforeMount->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2363,20 +1955,12 @@ void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
   {
     useUserId->setEnabled(!support);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *userId = findChild<KComboBox *>("UserId");
   
   if (userId)
   {
     userId->setEnabled(!support);
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -2388,20 +1972,12 @@ void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
   {
     useGroupId->setEnabled(!support);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *groupId = findChild<KComboBox *>("GroupId");
   
   if (groupId)
   {
     groupId->setEnabled(!support);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -2413,20 +1989,12 @@ void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
   {
     useFileMode->setEnabled(!support);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
   
   if (fileMode)
   {
     fileMode->setEnabled(!support);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -2438,20 +2006,12 @@ void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
   {
     useDirectoryMode->setEnabled(!support);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
   
   if (directoryMode)
   {
     directoryMode->setEnabled(!support);
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
 }

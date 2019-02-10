@@ -156,10 +156,6 @@ void Smb4KClient::lookupDomains()
           
           socket->writeDatagram(sequence, addr, 9);
         }
-        else
-        {
-          // Do nothing
-        }
       }
       
       delete socket;
@@ -176,14 +172,6 @@ void Smb4KClient::lookupDomains()
       emit finished(item, WakeUp);
       item.clear();
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -211,10 +199,6 @@ void Smb4KClient::lookupDomains()
   if (!hasSubjobs() && modifyCursor())
   {
     QApplication::setOverrideCursor(Qt::BusyCursor);
-  }
-  else
-  {
-    // Do nothing
   }
 
   //
@@ -250,10 +234,6 @@ void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
   {
     QApplication::setOverrideCursor(Qt::BusyCursor);
   }
-  else
-  {
-    // Do nothing
-  }
 
   //
   // Add the job to the subjobs
@@ -287,10 +267,6 @@ void Smb4KClient::lookupShares(const HostPtr &host)
   if (!hasSubjobs() && modifyCursor())
   {
     QApplication::setOverrideCursor(Qt::BusyCursor);
-  }
-  else
-  {
-    // Do nothing
   }
 
   //
@@ -331,10 +307,6 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
     {
       QApplication::setOverrideCursor(Qt::BusyCursor);
     }
-    else
-    {
-      // Do nothing
-    }
 
     //
     // Add the job to the subjobs
@@ -345,10 +317,6 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
     // Start the job
     // 
     job->start();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -375,10 +343,6 @@ void Smb4KClient::printFile(const SharePtr& share, const KFileItem& fileItem, in
   if (!hasSubjobs() && modifyCursor())
   {
     QApplication::setOverrideCursor(Qt::BusyCursor);
-  }
-  else
-  {
-    // Do nothing
   }
 
   //
@@ -447,10 +411,6 @@ void Smb4KClient::search(const QString& item)
     {
       results << share;
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   //
@@ -475,10 +435,6 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
   {        
     return;
   }
-  else
-  {
-    // Do nothing
-  }
       
   //
   // 'homes' share check
@@ -486,10 +442,6 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
   if (share->isHomesShare())
   {
     Smb4KHomesSharesHandler::self()->specifyUser(share, true);
-  }
-  else
-  {
-    // Do nothing
   }
     
   //
@@ -505,10 +457,6 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
     if (share == p->share())
     {
       dlg = p;
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -530,10 +478,6 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
     connect(this, SIGNAL(aboutToStart(NetworkItemPtr,int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr,int)));
     connect(this, SIGNAL(finished(NetworkItemPtr,int)), dlg, SLOT(slotFinished(NetworkItemPtr,int)));
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Show the preview dialog
@@ -541,10 +485,6 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
   if (!dlg->isVisible())
   {
     dlg->setVisible(true);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -557,10 +497,6 @@ void Smb4KClient::openPrintDialog(const SharePtr& share)
   if (!share->isPrinter())
   {        
     return;
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -577,10 +513,6 @@ void Smb4KClient::openPrintDialog(const SharePtr& share)
     {
       dlg = p;
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   //
@@ -596,10 +528,6 @@ void Smb4KClient::openPrintDialog(const SharePtr& share)
     connect(dlg, SIGNAL(printFile(SharePtr, KFileItem, int)), this, SLOT(slotStartPrinting(SharePtr, KFileItem, int)));
     connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog *)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog *)));
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Show the preview dialog
@@ -607,10 +535,6 @@ void Smb4KClient::openPrintDialog(const SharePtr& share)
   if (!dlg->isVisible())
   {
     dlg->setVisible(true);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -629,10 +553,6 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
           {
             lookupShares(job->networkItem().staticCast<Smb4KHost>());
           }
-          else
-          {
-            // Do nothing
-          }
           
           break;
         }
@@ -641,10 +561,6 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
           if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem()))
           {
             lookupFiles(job->networkItem().staticCast<Smb4KShare>());
-          }
-          else
-          {
-            // Do nothing
           }
           
           break;
@@ -667,10 +583,6 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
             file->setPassword(share->password());
             
             lookupFiles(file);
-          }
-          else
-          {
-            // Do nothing
           }
 
           break;
@@ -731,10 +643,6 @@ void Smb4KClient::processWorkgroups(Smb4KClientJob *job)
       
       removeWorkgroup(workgroup);
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   //
@@ -772,10 +680,6 @@ void Smb4KClient::processWorkgroups(Smb4KClientJob *job)
           {
             host->setIpAddress(workgroup->masterBrowserIpAddress());
           }
-          else
-          {
-            // Do nothing
-          }          
         }
         else
         {
@@ -832,10 +736,6 @@ void Smb4KClient::processHosts(Smb4KClientJob *job)
       }
         
       removeHost(host);
-    }
-    else
-    {
-      // Do nothing
     }
   }
     
@@ -903,10 +803,6 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
     {
       removeShare(share);
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   //
@@ -921,18 +817,10 @@ void Smb4KClient::processShares(Smb4KClientJob *job)
     {
       continue;
     }
-    else
-    {
-      // Do nothing
-    }
       
     if (share->isPrinter() && !Smb4KSettings::detectPrinterShares())
     {
       continue;
-    }
-    else
-    {
-      // Do nothing
     }
       
     //
@@ -962,10 +850,6 @@ void Smb4KClient::processFiles(Smb4KClientJob *job)
     {
       continue;
     }
-    else
-    {
-      // Do nothing
-    }
     
     list << f;
   }  
@@ -988,10 +872,6 @@ void Smb4KClient::slotStartJobs()
     // Lookup domains as the first step
     // 
     lookupDomains();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1055,10 +935,6 @@ void Smb4KClient::slotResult(KJob *job)
       processErrors(clientJob);
     }
   }
-  else
-  {
-    // Do nothing
-  }
 
   //
   // Remove the job
@@ -1081,10 +957,6 @@ void Smb4KClient::slotResult(KJob *job)
   if (!hasSubjobs() && modifyCursor())
   {
     QApplication::restoreOverrideCursor();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1117,10 +989,6 @@ void Smb4KClient::slotPreviewDialogClosed(Smb4KPreviewDialog *dialog)
     int i = d->previewDialogs.indexOf(dialog);
     d->previewDialogs.takeAt(i);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -1151,10 +1019,6 @@ void Smb4KClient::slotPrintDialogClosed(Smb4KPrintDialog* dialog)
     // no need to delete the dialog here.
     int i = d->printDialogs.indexOf(dialog);
     d->printDialogs.takeAt(i);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

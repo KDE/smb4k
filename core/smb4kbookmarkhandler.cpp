@@ -76,10 +76,6 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
   {
     dir.mkpath(path);
   }
-  else
-  {
-    // Do nothing
-  }
 
   //
   // Read the list of bookmarks
@@ -116,10 +112,6 @@ void Smb4KBookmarkHandler::addBookmark(const SharePtr &share)
     shares << share;
     addBookmarks(shares);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -140,10 +132,6 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
       Smb4KNotification::cannotBookmarkPrinter(share);
       continue;
     }
-    else
-    {
-      // Do nothing
-    }
     
     //
     // Process homes shares
@@ -154,14 +142,6 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
       {
         continue;
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     //
@@ -174,10 +154,6 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
     {
       Smb4KNotification::bookmarkExists(knownBookmark.data());
       continue;
-    }
-    else
-    {
-      // Do nothing
     }
     
     BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark(share.data()));
@@ -199,16 +175,8 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
       // above.
       addBookmarks(dlg->bookmarks(), false);
     }
-    else
-    {
-      // Do nothing
-    }
     
     delete dlg;
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -240,17 +208,9 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
       {
         continue;
       }
-      else
-      {
-        // Do nothing
-      }
       
       it.remove();
     }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -265,10 +225,6 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
     {
       Smb4KNotification::bookmarkLabelInUse(bookmark.data());
       bookmark->setLabel(QString("%1 (1)").arg(bookmark->label()));
-    }
-    else
-    {
-      // Do nothing
     }
       
     //
@@ -310,19 +266,11 @@ void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
         d->bookmarks.takeAt(i).clear();
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
     
     // Write the list to the bookmarks file.
     writeBookmarkList();
     emit updated();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -339,10 +287,6 @@ void Smb4KBookmarkHandler::removeGroup(const QString& name)
         QString::compare(b->groupName(), name, Qt::CaseInsensitive) == 0)
     {
       it.remove();
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -372,10 +316,6 @@ void Smb4KBookmarkHandler::writeBookmarkList()
         {
           Smb4KNotification::invalidURLPassed();
           continue;
-        }
-        else
-        {
-          // Do nothing
         }
         
         xmlWriter.writeStartElement("bookmark");
@@ -478,10 +418,6 @@ void Smb4KBookmarkHandler::readBookmarkList()
                 {
                   bookmark->setLabel(xmlReader.readElementText());
                 }
-                else
-                {
-                  // Do nothing
-                }
 
                 continue;
               }
@@ -511,20 +447,12 @@ void Smb4KBookmarkHandler::readBookmarkList()
     {
       Smb4KNotification::readingFileFailed(xmlFile, xmlReader.errorString());
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
     if (xmlFile.exists())
     {
       Smb4KNotification::openingFileFailed(xmlFile);
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -551,15 +479,7 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
         bookmark = b;
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 
   return bookmark;
@@ -607,17 +527,9 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
       {
         bookmarks << b;
       }
-      else
-      {
-        // Do nothing
-      }
     }
     
     return bookmarks;
-  }
-  else
-  {
-    // Do nothing
   }
   
   // Return the list of bookmarks:
@@ -639,10 +551,6 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &group) con
     {
       bookmarks << bookmark;
     }
-    else
-    {
-      // Do nothing
-    }
   }
 
   return bookmarks;
@@ -658,10 +566,6 @@ QStringList Smb4KBookmarkHandler::groupsList() const
     if (!groups.contains(b->groupName()))
     {
       groups << b->groupName();
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -680,10 +584,6 @@ bool Smb4KBookmarkHandler::isBookmarked(const SharePtr& share)
   if (findBookmarkByUrl(share->url()))
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
   
   return false;
@@ -734,14 +634,6 @@ void Smb4KBookmarkHandler::update() const
       {
         bookmark->setHostIpAddress(host->ipAddress());
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
   }
 }
@@ -755,10 +647,6 @@ void Smb4KBookmarkHandler::migrateProfile(const QString& from, const QString& to
     if (QString::compare(bookmark->profile(), from, Qt::CaseSensitive) == 0)
     {
       bookmark->setProfile(to);
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -778,10 +666,6 @@ void Smb4KBookmarkHandler::removeProfile(const QString& name)
     if (QString::compare(bookmark->profile(), name, Qt::CaseSensitive) == 0)
     {
       it.remove();
-    }
-    else
-    {
-      // Do nothing
     }
   }
   

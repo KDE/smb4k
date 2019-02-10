@@ -2,7 +2,7 @@
     Private helpers for the homes shares handler
                              -------------------
     begin                : Mo Apr 11 2011
-    copyright            : (C) 2011-2017 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -253,10 +253,6 @@ void Smb4KHomesUserDialog::setUserNames(const QStringList &users)
     m_user_combo->setCurrentItem("");
     m_clear_button->setEnabled(true);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -272,10 +268,6 @@ QStringList Smb4KHomesUserDialog::userNames()
   if (!users.contains(m_user_combo->currentText()))
   {
     users << m_user_combo->currentText();
-  }
-  else
-  {
-    // Do nothing
   }
   
   return users;
@@ -312,10 +304,6 @@ void Smb4KHomesUserDialog::slotHomesUserEntered()
   if (!m_user_combo->currentText().isEmpty())
   {
     completion->addItem(m_user_combo->currentText());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

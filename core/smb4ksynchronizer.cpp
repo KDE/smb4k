@@ -86,10 +86,6 @@ void Smb4KSynchronizer::synchronize(const SharePtr &share)
     
     job->start();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 

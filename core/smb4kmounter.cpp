@@ -145,10 +145,6 @@ void Smb4KMounter::abort()
       it.next()->kill(KJob::EmitResult);
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -207,14 +203,6 @@ void Smb4KMounter::triggerRemounts(bool fill_list)
               {
                 d->remounts << share;
               }
-              else
-              {
-                // Do nothing
-              }
-            }
-            else
-            {
-              // Do nothing
             }
           }
           else
@@ -228,37 +216,17 @@ void Smb4KMounter::triggerRemounts(bool fill_list)
             {
               d->remounts << share;
             }
-            else
-            {
-              // Do nothing
-            }
           }
         }
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     if (!d->remounts.isEmpty())
     {
       mountShares(d->remounts);
     }
-    else
-    {
-      // Do nothing
-    }
 
     d->remountAttempts++;
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -271,10 +239,6 @@ void Smb4KMounter::import(bool checkInaccessible)
   if (!d->importedShares.isEmpty())
   {
     return;
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -309,10 +273,6 @@ void Smb4KMounter::import(bool checkInaccessible)
         {
           share->setLogin(option.section('=', 1, 1).trimmed());
         }
-        else
-        {
-          // Do nothing
-        }
       }
       
       // Work around empty usernames
@@ -320,16 +280,8 @@ void Smb4KMounter::import(bool checkInaccessible)
       {
         share->setLogin("guest");
       }
-      else
-      {
-        // Do nothing
-      }
       
       d->importedShares << share;
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -355,10 +307,6 @@ void Smb4KMounter::import(bool checkInaccessible)
         found = true;
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
     
     if (!found)
@@ -374,22 +322,10 @@ void Smb4KMounter::import(bool checkInaccessible)
         {
           dir.rmdir(dir.canonicalPath());
         }
-        else
-        {
-          // Do nothing
-        }        
-      }
-      else
-      {
-        // Do nothing
       }
       
       mountedShare->setMounted(false);
       unmountedShares << mountedShare;
-    }
-    else
-    {
-      // Do nothing
     }
     
     found = false;
@@ -473,14 +409,6 @@ void Smb4KMounter::import(bool checkInaccessible)
           it.remove();
           continue;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       QUrl url = QUrl::fromLocalFile(share->path());
@@ -492,19 +420,16 @@ void Smb4KMounter::import(bool checkInaccessible)
       
       job->start();
     }
-    
+
+    //
+    // Set d->firstImportDone here only for the case that no mounted shares
+    // could be found. In all other cases d->firstImportDone will be set in 
+    // slotStatResult().
+    // 
     if (!d->firstImportDone && d->importedShares.isEmpty())
     {
       d->firstImportDone = true;
     }
-    else
-    {
-      // Do nothing. d->firstImportDone will be set in slotStatResult().
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -523,10 +448,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
       Smb4KNotification::invalidURLPassed();
       return;
     }
-    else
-    {
-      // Do nothing
-    }
     
     //
     // Check if the share has already been mounted. If it is already present,
@@ -539,10 +460,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
       if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true))
       {
         return;
-      }
-      else
-      {
-        // Do nothing
       }
 
       url = share->homeUrl();     
@@ -562,19 +479,11 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         isMounted = true;
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
     
     if (isMounted)
     {
       return;
-    }
-    else
-    {
-      // Do nothing
     }
 
     //
@@ -636,16 +545,8 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         
         emit finished(WakeUp);
       }
-      else
-      {
-        // Do nothing
-      }
     }
-    else
-    {
-      // Do nothing
-    }
-    
+
     // 
     // Create the mountpoint
     //
@@ -719,10 +620,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
     {
       return;
     }
-    else
-    {
-      // Do nothing
-    }
     
     //
     // Emit the aboutToStart() signal
@@ -744,10 +641,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
     if (!hasSubjobs() && modifyCursor())
     {
       QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
-    else
-    {
-      // Do nothing
     }
       
     //
@@ -778,10 +671,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
             {
               d->retries << share;
             }
-            else
-            {
-              // Do nothing
-            }
           }
           else if (errorMsg.contains("Unable to find suitable address."))
           {
@@ -798,10 +687,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
             {
               d->retries << share;
             }
-            else
-            {
-              // Do nothing
-            }
           }
           else
           {
@@ -812,10 +697,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
           Smb4KNotification::mountingFailed(share.data(), errorMsg);
 #endif
         }
-        else
-        {
-          // Do nothing
-        }
       }
       else
       {
@@ -825,7 +706,6 @@ void Smb4KMounter::mountShare(const SharePtr &share)
     else
     {
       // FIXME: Report that the action could not be started
-      // Do nothing
     }
     
     //
@@ -840,19 +720,11 @@ void Smb4KMounter::mountShare(const SharePtr &share)
     {
       QApplication::restoreOverrideCursor();
     }
-    else
-    {
-      // Do nothing
-    }
-    
+
     //
     // Emit the finished() signal
     //
     emit finished(MountShare);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -884,10 +756,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
       Smb4KNotification::invalidURLPassed();
       return;
     }
-    else
-    {
-      // Do nothing
-    }
     
     //
     // Handle foreign shares according to the settings
@@ -900,10 +768,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
         {
           Smb4KNotification::unmountingNotAllowed(share);
         }
-        else
-        {
-          // Do nothing
-        }
+
         return;
       }
       else
@@ -918,10 +783,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
           {
             return;
           }
-          else
-          {
-            // Do nothing
-          }
         }
         else
         {
@@ -930,10 +791,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
           return;
         }
       }
-    }
-    else
-    {
-      // Do nothing
     }
     
     //
@@ -948,10 +805,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
       if (share->isInaccessible())
       {
         force = Smb4KMountSettings::forceUnmountInaccessible();
-      }
-      else
-      {
-        // Do nothing
       }
 #endif
     }
@@ -968,10 +821,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
     if (!fillUnmountActionArgs(share, force, silent, args))
     {
       return;
-    }
-    else
-    {
-      // Do nothing
     }
     
     //
@@ -994,10 +843,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
     if (!hasSubjobs() && modifyCursor())
     {
       QApplication::setOverrideCursor(Qt::BusyCursor);
-    }
-    else
-    {
-      // Do nothing
     }
       
     //
@@ -1024,10 +869,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
           // No error handling needed, just report the error message.
           Smb4KNotification::unmountingFailed(share, errorMsg);
         }
-        else
-        {
-          // Do nothing
-        }
       }
       else
       {
@@ -1038,7 +879,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
     else
     {
       // FIXME: Report that the action could not be started
-      // Do nothing
     }
     
     //
@@ -1053,19 +893,11 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
     {
       QApplication::restoreOverrideCursor();
     }
-    else
-    {
-      // Do nothing
-    }
     
     //
     // Emit the finished() signal
     //
     emit finished(UnmountShare);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1131,24 +963,12 @@ void Smb4KMounter::openMountDialog()
       {
         Smb4KBookmarkHandler::self()->addBookmark(share);
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
 
     delete d->dialog;
     d->dialog = 0;
 
     share.clear();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1216,21 +1036,9 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
         triggerRemounts(false);
         d->remountTimeout = -TIMEOUT;
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     d->remountTimeout += TIMEOUT;
-  }
-  else
-  {
-    // Do nothing
   }
   
   // Retry mounting those shares that failed. This is also only 
@@ -1243,10 +1051,6 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
     {
       d->retries.takeFirst().clear();
     }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1310,20 +1114,12 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       share->setPort(options->fileSystemPort());
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
     if (Smb4KMountSettings::useRemoteFileSystemPort())
     {
       share->setPort(Smb4KMountSettings::remoteFileSystemPort());
-    }
-    else
-    {
-      // Do nothing
     }
   }
 
@@ -1339,10 +1135,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   {
     argumentsList << QString("domain=%1").arg(KShell::quoteArg(share->workgroupName()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Host IP address
@@ -1350,10 +1142,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   if (share->hasHostIpAddress())
   {
     argumentsList << QString("ip=%1").arg(share->hostIpAddress());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1387,17 +1175,9 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(globalOptions["netbios name"]));
       }
-      else
-      {
-        // Do nothing
-      }
       
       // The server's NetBIOS name
       argumentsList << QString("servernetbiosname=%1").arg(KShell::quoteArg(share->hostName()));
-    }
-    else
-    {
-      // Do nothing
     }
   }
   else
@@ -1413,17 +1193,9 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(globalOptions["netbios name"]));
       }
-      else
-      {
-        // Do nothing
-      }
       
       // The server's NetBIOS name
       argumentsList << QString("servernetbiosname=%1").arg(KShell::quoteArg(share->hostName()));
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -1441,19 +1213,11 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         argumentsList << QString("uid=%1").arg(options->user().userId().nativeId());
       }
-      else
-      {
-        // Do nothing
-      }
       
       // Group id
       if (options->useGroup())
       {
         argumentsList << QString("gid=%1").arg(options->group().groupId().nativeId());
-      }
-      else
-      {
-        // Do nothing
       }
       
       // File mode
@@ -1461,24 +1225,12 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         argumentsList << QString("file_mode=%1").arg(options->fileMode());
       }
-      else
-      {
-        // Do nothing
-      }
       
       // Directory mode
       if (options->useDirectoryMode())
       {
         argumentsList << QString("dir_mode=%1").arg(options->directoryMode());
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   else
@@ -1490,19 +1242,11 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         argumentsList << QString("uid=%1").arg((K_UID)Smb4KMountSettings::userId().toInt());
       }
-      else
-      {
-        // Do nothing
-      }
       
       // Group id
       if (Smb4KMountSettings::useGroupId())
       {
         argumentsList << QString("gid=%1").arg((K_GID)Smb4KMountSettings::groupId().toInt());
-      }
-      else
-      {
-        // Do nothing
       }
       
       // File mode
@@ -1510,24 +1254,12 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         argumentsList << QString("file_mode=%1").arg(Smb4KMountSettings::fileMode());
       }
-      else
-      {
-        // Do nothing
-      }
       
       // Directory mode
       if (Smb4KMountSettings::useDirectoryMode())
       {
         argumentsList << QString("dir_mode=%1").arg(Smb4KMountSettings::directoryMode());
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -1541,10 +1273,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   {
     argumentsList << "forceuid";
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Force group id
@@ -1555,10 +1283,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   if (Smb4KMountSettings::forceGID())
   {
     argumentsList << "forcegid";
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1574,10 +1298,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
         {
           argumentsList << QString("iocharset=%1").arg(globalOptions["unix charset"].toLower());
         }
-        else
-        {
-          // Do nothing
-        }
+
         break;
       }
       default:
@@ -1586,10 +1307,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
         break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1601,20 +1318,12 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       argumentsList << QString("port=%1").arg(options->fileSystemPort());
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
     if (Smb4KMountSettings::useRemoteFileSystemPort())
     {
       argumentsList << QString("port=%1").arg(Smb4KMountSettings::remoteFileSystemPort());
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -1643,10 +1352,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -1669,10 +1374,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
           break;
         }
       }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -1740,10 +1441,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
   
   //  
   // Translate reserved characters
@@ -1763,10 +1460,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   if (Smb4KMountSettings::noLocking())
   {
     argumentsList << "nolock";
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1832,10 +1525,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -1897,10 +1586,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   //
@@ -1941,10 +1626,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
 
   //
   // Mount options provided by the user
@@ -1968,17 +1649,9 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         it.remove();
       }
-      else
-      {
-        // Do nothing
-      }
       
       argumentsList += list;
     }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -2030,10 +1703,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       map.insert("mh_krb5ticket", "FILE:"+ticket);
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   return true;
@@ -2078,10 +1747,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     argumentsList << "-W";
     argumentsList << KShell::quoteArg(share->workgroupName());
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // IP address
@@ -2091,11 +1756,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     argumentsList << "-I";
     argumentsList << share->hostIpAddress();
   }
-  else
-  {
-    // Do nothing
-  }
-  
+
   //
   // User Id
   // 
@@ -2106,10 +1767,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       argumentsList << "-u";
       argumentsList << QString("%1").arg(options->user().userId().nativeId());
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -2117,10 +1774,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       argumentsList << "-u";
       argumentsList << QString("%1").arg((K_UID)Smb4KMountSettings::userId().toInt());
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -2134,10 +1787,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       argumentsList << "-g";
       argumentsList << QString("%1").arg(options->group().groupId().nativeId());
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -2145,10 +1794,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       argumentsList << "-g";
       argumentsList << QString("%1").arg((K_GID)Smb4KMountSettings::groupId().toInt());
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -2191,14 +1836,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       argumentsList << "-E";
       argumentsList << QString("%1:%2").arg(clientCharset, serverCharset);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 
   //
@@ -2211,10 +1848,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       argumentsList << "-f";
       argumentsList << options->fileMode();
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -2222,10 +1855,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       argumentsList << "-f";
       argumentsList << Smb4KMountSettings::fileMode();
-    }
-    else
-    {
-      // Do nothing
     }
   }
 
@@ -2239,10 +1868,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       argumentsList << "-d";
       argumentsList << options->directoryMode();
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -2250,10 +1875,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       argumentsList << "-d";
       argumentsList << Smb4KMountSettings::directoryMode();
-    }
-    else
-    {
-      // Do nothing
     }
   }
 
@@ -2327,10 +1948,6 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
     Smb4KNotification::commandNotFound("umount");
     return false;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // The options
@@ -2340,10 +1957,6 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
   if (force)
   {
     options << "-l"; // lazy unmount
-  }
-  else
-  {
-    // Do nothing
   }
 
   //
@@ -2381,10 +1994,6 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
     Smb4KNotification::commandNotFound("umount");
     return false;
   }
-  else
-  {
-    // Do nothing
-  }
 
   //
   // The options
@@ -2394,10 +2003,6 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &share, bool force, bool
   if (force)
   {
     options << "-f";
-  }
-  else
-  {
-    // Do nothing
   }
 
   //
@@ -2504,11 +2109,7 @@ void Smb4KMounter::slotStartJobs()
     {
       import(true);
     }
-    else
-    {
-      // Do nothing
-    }
-    
+
     //
     // Start the timer
     //
@@ -2516,14 +2117,6 @@ void Smb4KMounter::slotStartJobs()
     {
       d->timerId = startTimer(TIMEOUT);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2543,10 +2136,6 @@ void Smb4KMounter::slotAboutToQuit()
   {
     saveSharesForRemount();
   }
-  else
-  {
-    // Do nothing
-  }
 
   //
   // Unmount the shares if the user chose to do so.
@@ -2554,10 +2143,6 @@ void Smb4KMounter::slotAboutToQuit()
   if (Smb4KMountSettings::unmountSharesOnExit())
   {
     unmountAllShares(true);
-  }
-  else
-  {
-    // Do nothing
   }
 
   //
@@ -2601,10 +2186,6 @@ void Smb4KMounter::slotAboutToQuit()
     if (dir.cdUp())
     {
       dir.rmdir(dir.canonicalPath());
-    }
-    else
-    {
-      // Do nothing
     }
   }
 }
@@ -2684,10 +2265,6 @@ void Smb4KMounter::slotStatResult(KJob *job)
   {
     return;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Add the size, user and group information
@@ -2739,10 +2316,6 @@ void Smb4KMounter::slotStatResult(KJob *job)
       {
         emit updated(updatedShare);
       }
-      else
-      {
-        // Do nothing
-      }
       
       importedShare.clear();
     }
@@ -2790,16 +2363,8 @@ void Smb4KMounter::slotStatResult(KJob *job)
               Smb4KNotification::sharesMounted(d->newlyMounted);
             }
           }
-          else
-          {
-            // Do nothing
-          }
           
           d->newlyMounted = 0;
-        }
-        else
-        {
-          // Do nothing
         }
         
         emit mountedSharesListChanged();
@@ -2819,10 +2384,6 @@ void Smb4KMounter::slotStatResult(KJob *job)
   {
     d->firstImportDone = true;
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -2834,10 +2395,6 @@ void Smb4KMounter::slotAboutToChangeProfile()
   if (Smb4KMountSettings::remountShares())
   {
     saveSharesForRemount();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2875,10 +2432,6 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
     // Restart the timer
     d->timerId = startTimer(TIMEOUT);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -2887,10 +2440,6 @@ void Smb4KMounter::slotProfileMigrated(const QString& from, const QString& to)
   if (QString::compare(from, d->activeProfile, Qt::CaseSensitive) == 0)
   {
     d->activeProfile = to;
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2914,10 +2463,6 @@ void Smb4KMounter::slotConfigChanged()
   {
     slotTriggerImport();
     d->detectAllShares = Smb4KMountSettings::detectAllShares();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

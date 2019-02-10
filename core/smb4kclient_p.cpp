@@ -97,10 +97,6 @@ static void get_auth_data_with_context_fn(SMBCCTX *context,
     {
       job->get_auth_data_fn(server, share, workgroup, maxLenWorkgroup, username, maxLenUsername, password, maxLenPassword);
     }
-    else
-    {
-      // Do nothing
-    }
   }
 }
 
@@ -234,14 +230,6 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* share, cha
           qstrncpy(username, h->login().toUtf8().data(), maxLenUsername);
           qstrncpy(password, h->password().toUtf8().data(), maxLenPassword);
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       break;
@@ -785,10 +773,6 @@ void Smb4KClientJob::doLookups()
               dir.clear();
             } 
           }
-          else
-          {
-            // Do nothing
-          }
           
           break;
         }
@@ -964,10 +948,6 @@ void Smb4KClientJob::doPrinting()
     emitResult();
     return;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Open the printer for printing
@@ -985,10 +965,6 @@ void Smb4KClientJob::doPrinting()
     emitResult();
     return;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Open the file
@@ -1002,10 +978,6 @@ void Smb4KClientJob::doPrinting()
     
     emitResult();
     return;
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1028,10 +1000,6 @@ void Smb4KClientJob::doPrinting()
         
         smbc_close_fn closePrinter = smbc_getFunctionClose(m_context);
         closePrinter(m_context, printer);
-      }
-      else
-      {
-        // Do nothing
       }
     }
     
@@ -1083,15 +1051,7 @@ QHostAddress Smb4KClientJob::lookupIpAddress(const QString& name)
           // FIXME: Use the right address here.
           ipAddress = addr;
         }
-        else
-        {
-          // Do nothing
-        }
       }
-      else
-      {
-        // Do nothing
-      }      
     }
   }
   else
@@ -1122,20 +1082,8 @@ QHostAddress Smb4KClientJob::lookupIpAddress(const QString& name)
             // FIXME: Use the right address here.
             ipAddress = addr;
           }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
         }
       }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -1250,10 +1198,6 @@ void Smb4KClientJob::slotStartJob()
   {
     smbc_setUser(m_context, m_item->url().userName().toUtf8().data());
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Set the port
@@ -1325,10 +1269,6 @@ void Smb4KClientJob::slotStartJob()
         break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1699,15 +1639,7 @@ void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
         emit requestPreview(m_currentItem);
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1760,10 +1692,6 @@ void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr> &list)
         item->setData(Qt::UserRole, f->url());
       }
     }
-    else
-    {
-      // Do nothing
-    }
     
     //
     // Sort the list widget
@@ -1784,10 +1712,6 @@ void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr> &list)
     //
     findChild<QAction *>("up_action")->setEnabled(!m_share->url().matches(m_currentItem->url(), QUrl::StripTrailingSlash));
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -1806,10 +1730,6 @@ void Smb4KPreviewDialog::slotAboutToStart(const NetworkItemPtr &item, int type)
           KDualAction *reloadAction = findChild<KDualAction *>();
           reloadAction->setActive(true);
         }
-        else
-        {
-          // Do nothing
-        }
         
         break;
       }
@@ -1822,10 +1742,6 @@ void Smb4KPreviewDialog::slotAboutToStart(const NetworkItemPtr &item, int type)
           KDualAction *reloadAction = findChild<KDualAction *>();
           reloadAction->setActive(true);
         }
-        else
-        {
-          // Do nothing
-        }
         
         break;
       }
@@ -1834,10 +1750,6 @@ void Smb4KPreviewDialog::slotAboutToStart(const NetworkItemPtr &item, int type)
         break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1857,10 +1769,6 @@ void Smb4KPreviewDialog::slotFinished(const NetworkItemPtr &item, int type)
           KDualAction *reloadAction = findChild<KDualAction *>();
           reloadAction->setActive(false);
         }
-        else
-        {
-          // Do nothing
-        }
         
         break;
       }
@@ -1873,10 +1781,6 @@ void Smb4KPreviewDialog::slotFinished(const NetworkItemPtr &item, int type)
           KDualAction *reloadAction = findChild<KDualAction *>();
           reloadAction->setActive(false);
         }
-        else
-        {
-          // Do nothing
-        }
         
         break;
       }
@@ -1885,10 +1789,6 @@ void Smb4KPreviewDialog::slotFinished(const NetworkItemPtr &item, int type)
         break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2078,10 +1978,6 @@ void Smb4KPrintDialog::slotPrintButtonClicked()
       Smb4KNotification::mimetypeNotSupported(m_fileItem.mimetype());
       return;
     }
-    else
-    {
-      // Do nothing. Mimetype is supported
-    }
 
     //
     // Save the window size
@@ -2104,10 +2000,6 @@ void Smb4KPrintDialog::slotPrintButtonClicked()
     // Close the print dialog
     // 
     accept();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

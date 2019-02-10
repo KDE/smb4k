@@ -64,10 +64,6 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
     notification->setMountpoint(mountpoint);
     notification->sendEvent();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -81,10 +77,6 @@ void Smb4KNotification::shareUnmounted(const SharePtr &share)
     notification->setText(i18n("<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>", share->displayString(), share->path()));
     notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList("emblem-unmounted")));
     notification->sendEvent();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -150,10 +142,6 @@ void Smb4KNotification::bookmarkExists(Smb4KBookmark* bookmark)
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -167,10 +155,6 @@ void Smb4KNotification::bookmarkLabelInUse(Smb4KBookmark* bookmark)
                                 bookmark->label(), bookmark->displayString()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -208,10 +192,6 @@ void Smb4KNotification::mountingFailed(const SharePtr &share, const QString& err
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -235,10 +215,6 @@ void Smb4KNotification::unmountingFailed(const SharePtr &share, const QString& e
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -253,10 +229,6 @@ void Smb4KNotification::unmountingNotAllowed(const SharePtr &share)
                                 "It is owned by the user <b>%3</b>.</p>", share->displayString(), share->path(), share->user().loginName()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -298,10 +270,6 @@ void Smb4KNotification::cannotBookmarkPrinter(const SharePtr &share)
     notification->setText(i18n("<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>", share->displayString()));
     notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent(); 
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

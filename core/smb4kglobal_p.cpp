@@ -152,10 +152,6 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
       {
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
     
     //
@@ -203,10 +199,6 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
         m_sambaConfigMissing = true;
         return m_sambaOptions;
       }
-      else
-      {
-        // Do nothing
-      }    
     }
     
     //
@@ -298,14 +290,6 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
     
   return m_sambaOptions;

@@ -2,7 +2,7 @@
     Provides an interface to the computer's hardware
                              -------------------
     begin                : Die Jul 14 2015
-    copyright            : (C) 2015-2017 by Alexander Reinholdt
+    copyright            : (C) 2015-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -106,10 +106,6 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
     {
       mountPointList.append(mountPoint->mountPoint());
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   QMutableStringListIterator it(mountPointList);
@@ -125,28 +121,16 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
       alreadyMounted.append(mp);
       it.remove();
     }
-    else
-    {
-      // Do nothing
-    }    
   }
   
   if (!d->mountPoints.isEmpty())
   {
     emit networkShareRemoved();
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (!mountPointList.isEmpty())
   {
     emit networkShareAdded();
-  }
-  else
-  {
-    // Do nothing
   }
   
   d->mountPoints.clear();
@@ -172,10 +156,6 @@ void Smb4KHardwareInterface::slotDeviceAdded(const QString& udi)
     d->udis.append(udi);
     emit networkShareAdded();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -195,10 +175,6 @@ void Smb4KHardwareInterface::slotDeviceRemoved(const QString& udi)
     {
       emit networkShareRemoved();
       d->udis.removeOne(udi);
-    }
-    else
-    {
-      // Do nothing
     }
   }
 }

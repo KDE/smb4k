@@ -134,10 +134,6 @@ QString Smb4KBookmark::shareName() const
   {
     return d->url.path().remove(0, 1);
   }
-  else
-  {
-    // Do nothing
-  }
 
   return d->url.path();
 }

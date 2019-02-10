@@ -218,10 +218,6 @@ void Smb4KBookmarkDialog::slotBookmarkClicked(QListWidgetItem *bookmark_item)
     {
       m_editors->setEnabled(true);
     }
-    else
-    {
-      // Do nothing
-    }
 
     QUrl url = bookmark_item->data(Qt::UserRole).toUrl();
     
@@ -259,10 +255,6 @@ void Smb4KBookmarkDialog::slotLabelEdited()
   {
     bookmark->setLabel(m_label_edit->userText());
   }
-  else
-  {
-    // Do nothing
-  }
 
   // Add label to completion object
   KCompletion *completion = m_label_edit->completionObject();
@@ -270,10 +262,6 @@ void Smb4KBookmarkDialog::slotLabelEdited()
   if (!m_label_edit->userText().isEmpty())
   {
     completion->addItem(m_label_edit->userText());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -289,19 +277,11 @@ void Smb4KBookmarkDialog::slotGroupEdited()
   {
     bookmark->setGroupName(m_group_combo->currentText());
   }
-  else
-  {
-    // Do nothing
-  }
 
   // Add the group name to the combo box
   if (m_group_combo->findText(m_group_combo->currentText()) == -1)
   {
     m_group_combo->addItem(m_group_combo->currentText());
-  }
-  else
-  {
-    // Do nothing
   }
 
   // Add group to completion object
@@ -310,10 +290,6 @@ void Smb4KBookmarkDialog::slotGroupEdited()
   if (!m_group_combo->currentText().isEmpty())
   {
     completion->addItem(m_group_combo->currentText());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -563,10 +539,6 @@ void Smb4KBookmarkEditor::loadBookmarks()
     {
       m_groups << bookmark->groupName();
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   //
@@ -582,10 +554,6 @@ void Smb4KBookmarkEditor::loadBookmarks()
       groupItem->setText((m_tree_widget->columnCount() - 1), QString("00_%1").arg(group));
       groupItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled);
       m_tree_widget->addTopLevelItem(groupItem);
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -609,10 +577,6 @@ void Smb4KBookmarkEditor::loadBookmarks()
       {
         items.first()->addChild(bookmarkItem);
         items.first()->setExpanded(true);
-      }
-      else
-      {
-        // Do nothing
       }
     }
     else
@@ -638,10 +602,6 @@ void Smb4KBookmarkEditor::loadBookmarks()
   if (!m_groups.contains("") && !m_groups.contains(QString()))
   {
     m_groups << "";
-  }
-  else
-  {
-    // Do nothing
   }
   
   m_group_combo->addItems(m_groups);
@@ -769,10 +729,6 @@ void Smb4KBookmarkEditor::slotLabelEdited()
   {
     bookmark->setLabel(m_label_edit->userText());
   }
-  else
-  {
-    // Do nothing
-  }
 
   // Add label to completion object
   KCompletion *completion = m_label_edit->completionObject();
@@ -780,10 +736,6 @@ void Smb4KBookmarkEditor::slotLabelEdited()
   if (!m_label_edit->userText().isEmpty())
   {
     completion->addItem(m_label_edit->userText());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -799,10 +751,6 @@ void Smb4KBookmarkEditor::slotLoginEdited()
   {
     bookmark->setLogin(m_login_edit->userText());
   }
-  else
-  {
-    // Do nothing
-  }
 
   // Add login to completion object
   KCompletion *completion = m_login_edit->completionObject();
@@ -810,10 +758,6 @@ void Smb4KBookmarkEditor::slotLoginEdited()
   if (!m_login_edit->userText().isEmpty())
   {
     completion->addItem(m_login_edit->userText());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -829,10 +773,6 @@ void Smb4KBookmarkEditor::slotIPEdited()
   {
     bookmark->setHostIpAddress(m_ip_edit->userText());
   }
-  else
-  {
-    // Do nothing
-  }
 
   // Add login to completion object
   KCompletion *completion = m_ip_edit->completionObject();
@@ -840,10 +780,6 @@ void Smb4KBookmarkEditor::slotIPEdited()
   if (!m_ip_edit->userText().isEmpty())
   {
     completion->addItem(m_ip_edit->userText());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -862,10 +798,6 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   {
     return;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Set the group name to the bookmark
@@ -875,10 +807,6 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   if (bookmark)
   {
     bookmark->setGroupName(m_group_combo->currentText());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -899,10 +827,6 @@ void Smb4KBookmarkEditor::slotGroupEdited()
       slotItemClicked(*it, 0);
       break;
     }
-    else
-    {
-      // Do nothing
-    }
     
     ++it;
   }
@@ -915,10 +839,6 @@ void Smb4KBookmarkEditor::slotGroupEdited()
   if (!m_group_combo->currentText().isEmpty())
   {
     completion->addItem(m_group_combo->currentText());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -943,10 +863,6 @@ void Smb4KBookmarkEditor::slotAddGroupTriggered(bool /*checked*/)
     // Add the group to the combo box
     m_group_combo->addItem(group_name);
     m_group_combo->completionObject()->addItem(group_name);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -973,10 +889,6 @@ void Smb4KBookmarkEditor::slotDeleteTriggered(bool /*checked*/)
       {
         it.remove();
         break;
-      }
-      else
-      {
-        // Do nothing
       }
     }
     
@@ -1054,10 +966,6 @@ void Smb4KBookmarkEditor::slotAdjust()
         {
           delete *it;
         }
-        else
-        {
-          // Do nothing
-        }
       }
       else
       {
@@ -1067,10 +975,6 @@ void Smb4KBookmarkEditor::slotAdjust()
         {
           bookmark->setGroupName("");
         }
-        else
-        {
-          // Do nothing
-        }        
       }
     }
     else
@@ -1080,10 +984,6 @@ void Smb4KBookmarkEditor::slotAdjust()
       if (bookmark)
       {
         bookmark->setGroupName((*it)->parent()->text(0));
-      }
-      else
-      {
-        // Do nothing
       }
     }
     ++it;

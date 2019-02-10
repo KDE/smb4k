@@ -2,7 +2,7 @@
     Smb4K's container class for information about a directory or file.
                              -------------------
     begin                : Sa Nov 10 2018
-    copyright            : (C) 2018 by Alexander Reinholdt
+    copyright            : (C) 2018-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -102,10 +102,6 @@ void Smb4KFile::setHostIpAddress(const QHostAddress &address)
   {
     d->ip = address;
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -161,17 +157,22 @@ QString Smb4KFile::name() const
 {
   QString name;
   
-  if (type() == Directory)
+  switch (type())
   {
-    name = pUrl->path().section(QDir::separator(), -1, -1);
-  }
-  else if (type() == File)
-  {
-    name = pUrl->fileName();
-  }
-  else
-  {
-    // Do nothing
+    case Directory:
+    {
+      name = pUrl->path().section(QDir::separator(), -1, -1);
+      break;
+    }
+    case File:
+    {
+      name = pUrl->fileName();
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
   
   return name;

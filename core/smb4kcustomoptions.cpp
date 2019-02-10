@@ -2,7 +2,7 @@
     This class carries custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2018 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -220,10 +220,6 @@ void Smb4KCustomOptions::setHost(Smb4KHost *host)
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -268,10 +264,6 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
 #endif
           d->ip.setAddress(share->hostIpAddress());
         }
-        else
-        {
-          // Do nothing
-        }
         break;
       }
       default:
@@ -279,10 +271,6 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
         break;
       }
     }    
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -328,10 +316,6 @@ QString Smb4KCustomOptions::shareName() const
   if (d->url.path().startsWith('/'))
   {
     return d->url.path().remove(0, 1);
-  }
-  else
-  {
-    // Do nothing
   }
 
   return d->url.path();
@@ -672,10 +656,6 @@ void Smb4KCustomOptions::setMACAddress(const QString &macAddress)
   {
     d->mac = macAddress;
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -857,19 +837,11 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Use user information
   if (d->useUser != Smb4KMountSettings::useUserId())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
   
   // User information
@@ -877,19 +849,11 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Use group information
   if (d->useGroup != Smb4KMountSettings::useGroupId())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
   
   // Group information
@@ -897,46 +861,26 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Use file mask
   if (d->useFileMode != Smb4KMountSettings::useFileMode())
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (d->fileMode != Smb4KMountSettings::fileMode())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (d->useDirectoryMode != Smb4KMountSettings::useDirectoryMode())
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (d->directoryMode != Smb4KMountSettings::directoryMode())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
 #if defined(Q_OS_LINUX)
@@ -945,19 +889,11 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Use filesystem port
   if (d->useFileSystemPort != Smb4KMountSettings::useRemoteFileSystemPort())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
   
   // File system port (used for mounting)
@@ -965,19 +901,11 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Use security mode
   if (d->useSecurityMode != Smb4KMountSettings::useSecurityMode())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
   
   // Security mode
@@ -985,29 +913,17 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Use write access
   if (d->useWriteAccess != Smb4KMountSettings::useWriteAccess())
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
 
   // Write access
   if (d->writeAccess != Smb4KMountSettings::writeAccess())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
 
@@ -1016,19 +932,11 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
 
   // SMB port
   if (d->smbPort != Smb4KSettings::remoteSmbPort())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
 
   // Kerberos
@@ -1036,19 +944,11 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // MAC address
   if (!d->mac.isEmpty())
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
   
   // Send WOL packages before first scan
@@ -1056,19 +956,11 @@ bool Smb4KCustomOptions::hasOptions() const
   {
     return true;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Send WOL packages before mount
   if (d->wakeOnLanBeforeMount)
   {
     return true;
-  }
-  else
-  {
-    // Do nothing
   }
   
   return false;

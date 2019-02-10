@@ -3,7 +3,7 @@
     class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -89,10 +89,6 @@ bool Smb4KSyncJob::doKill()
   {
     m_process->abort();
   }
-  else
-  {
-    // Do nothing
-  }
   
   return KJob::doKill();
 }
@@ -137,14 +133,6 @@ void Smb4KSyncJob::slotStartSynchronization()
           emitResult();
           return;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // Make sure that we have got the trailing slash present.
@@ -187,54 +175,30 @@ void Smb4KSyncJob::slotStartSynchronization()
     {
       command << "--recursive";
     }
-    else
-    {
-      // Do nothing
-    }
 
     if (Smb4KSettings::preserveSymlinks())
     {
       command << "--links";
-    }
-    else
-    {
-      // Do nothing
     }
 
     if (Smb4KSettings::preservePermissions())
     {
       command << "--perms";
     }
-    else
-    {
-      // Do nothing
-    }
 
     if (Smb4KSettings::preserveTimes())
     {
       command << "--times";
-    }
-    else
-    {
-      // Do nothing
     }
 
     if (Smb4KSettings::preserveGroup())
     {
       command << "--group";
     }
-    else
-    {
-      // Do nothing
-    }
 
     if (Smb4KSettings::preserveOwner())
     {
       command << "--owner";
-    }
-    else
-    {
-      // Do nothing
     }
 
     if (Smb4KSettings::preserveDevicesAndSpecials())
@@ -243,37 +207,21 @@ void Smb4KSyncJob::slotStartSynchronization()
       command << "--devices";
       command << "--specials";
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   if (Smb4KSettings::relativePathNames())
   {
     command << "--relative";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::noImpliedDirectories())
   {
     command << "--no-implied-dirs";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::transferDirectories())
   {
     command << "--dirs";
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::makeBackups())
@@ -284,23 +232,11 @@ void Smb4KSyncJob::slotStartSynchronization()
     {
       command << QString("--backup-dir=%1").arg(Smb4KSettings::backupDirectory().path());
     }
-    else
-    {
-      // Do nothing
-    }
 
     if (Smb4KSettings::useBackupSuffix())
     {
       command << QString("--suffix=%1").arg(Smb4KSettings::backupSuffix());
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -310,126 +246,70 @@ void Smb4KSyncJob::slotStartSynchronization()
   {
     command << "--update";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::updateInPlace())
   {
     command << "--inplace";
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::efficientSparseFileHandling())
   {
     command << "--sparse";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::copyFilesWhole())
   {
     command << "--whole-file";
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::updateExisting())
   {
     command << "--existing";
   }
-  else
-  {
-    // Do nothing
-  }
 
   if (Smb4KSettings::ignoreExisting())
   {
     command << "--ignore-existing";
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::transformSymlinks())
   {
     command << "--copy-links";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::transformUnsafeSymlinks())
   {
     command << "--copy-unsafe-links";
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::ignoreUnsafeSymlinks())
   {
     command << "--safe-links";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::mungeSymlinks())
   {
     command << "--munge-links";
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::preserveHardLinks())
   {
     command << "--hard-links";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::copyDirectorySymlinks())
   {
     command << "--copy-dirlinks";
-  }
-  else
-  {
-    // Do nothing
   }
 
   if (Smb4KSettings::keepDirectorySymlinks())
   {
     command << "--keep-dirlinks";
   }
-  else
-  {
-    // Do nothing
-  }
 
   if (Smb4KSettings::omitDirectoryTimes())
   {
     command << "--omit-dir-times";
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -443,41 +323,21 @@ void Smb4KSyncJob::slotStartSynchronization()
     {
       command << QString("--compress-level=%1").arg(Smb4KSettings::compressionLevel());
     }
-    else
-    {
-      // Do nothing
-    }
     
     if (Smb4KSettings::useSkipCompression())
     {
       command << QString("--skip-compress=%1").arg(Smb4KSettings::skipCompression());
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::self()->useMaximalTransferSize())
   {
     command << QString("--max-size=%1K").arg(Smb4KSettings::self()->maximalTransferSize());
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::self()->useMinimalTransferSize())
   {
     command << QString("--min-size=%1K").arg(Smb4KSettings::self()->minimalTransferSize());
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::keepPartial())
@@ -488,23 +348,11 @@ void Smb4KSyncJob::slotStartSynchronization()
     {
       command << QString("--partial-dir=%1").arg(Smb4KSettings::partialDirectory().path());
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::useBandwidthLimit())
   {
     command << QString("--bwlimit=%1K").arg(Smb4KSettings::bandwidthLimit());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -514,81 +362,45 @@ void Smb4KSyncJob::slotStartSynchronization()
   {
     command << "--remove-source-files";
   }
-  else
-  {
-    // Do nothing
-  }  
 
   if (Smb4KSettings::deleteExtraneous())
   {
     command << "--delete";
   }
-  else
-  {
-    // Do nothing
-  }
-  
+
   if (Smb4KSettings::deleteBefore())
   {
     command << "--delete-before";
-  }
-  else
-  {
-    // Do nothing
   }
 
   if (Smb4KSettings::deleteDuring())
   {
     command << "--delete-during";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::deleteAfter())
   {
     command << "--delete-after";
-  }
-  else
-  {
-    // Do nothing
   }
 
   if (Smb4KSettings::deleteExcluded())
   {
     command << "--delete-excluded";
   }
-  else
-  {
-    // Do nothing
-  }
 
   if (Smb4KSettings::ignoreErrors())
   {
     command << "--ignore-errors";
-  }
-  else
-  {
-    // Do nothing
   }
 
   if (Smb4KSettings::forceDirectoryDeletion())
   {
     command << "--force";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::useMaximumDelete())
   {
     command << QString("--max-delete=%1").arg(Smb4KSettings::maximumDeleteValue());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -598,45 +410,25 @@ void Smb4KSyncJob::slotStartSynchronization()
   {
     command << "--cvs-exclude";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::useExcludePattern())
   {
     command << QString("--exclude=%1").arg(Smb4KSettings::excludePattern());
-  }
-  else
-  {
-    // Do nothing
   }
 
   if (Smb4KSettings::useExcludeFrom())
   {
     command << QString("--exclude-from=%1").arg(Smb4KSettings::excludeFrom().path());
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::useIncludePattern())
   {
     command << QString("--include=%1").arg(Smb4KSettings::includePattern());
   }
-  else
-  {
-    // Do nothing
-  }
 
   if (Smb4KSettings::useIncludeFrom())
   {
     command << QString("--include-from=%1").arg(Smb4KSettings::includeFrom().path());
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (!Smb4KSettings::customFilteringRules().isEmpty())
@@ -644,28 +436,16 @@ void Smb4KSyncJob::slotStartSynchronization()
     qDebug() << "Do we need to spilt the filtering rules into a list?";
     command << Smb4KSettings::customFilteringRules();
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::useFFilterRule())
   {
     command << "-F";
-  }
-  else
-  {
-    // Do nothing
   }
 
   if (Smb4KSettings::useFFFilterRule())
   {
     command << "-F";
     command << "-F";
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -675,45 +455,25 @@ void Smb4KSyncJob::slotStartSynchronization()
   {
     command << QString("--block-size=%1").arg(Smb4KSettings::blockSize());
   }
-  else
-  {
-    // Do nothing
-  }
 
   if (Smb4KSettings::useChecksumSeed())
   {
     command << QString("--checksum-seed=%1").arg(Smb4KSettings::checksumSeed());
-  }
-  else
-  {
-    // Do nothing
   }
   
   if (Smb4KSettings::useChecksum())
   {
     command << "--checksum";
   }
-  else
-  {
-    // Do nothing
-  }
 
   if (Smb4KSettings::oneFileSystem())
   {
     command << "--one-file-system";
   }
-  else
-  {
-    // Do nothing
-  }
   
   if (Smb4KSettings::delayUpdates())
   {
     command << "--delay-updates";
-  }
-  else
-  {
-    // Do nothing
   }
   
   // Make sure that the trailing slash is present. rsync is very 
@@ -781,10 +541,6 @@ void Smb4KSyncJob::slotReadStandardOutput()
           setTotalAmount(KJob::Files, total);
           emitPercent(total - files, total);
         }
-        else
-        {
-          // Do nothing
-        }
       }
       else if (stdOut.at(i).contains(" to-chk="))
       {
@@ -802,10 +558,6 @@ void Smb4KSyncJob::slotReadStandardOutput()
           setProcessedAmount(KJob::Files, total - files);
           setTotalAmount(KJob::Files, total);
           emitPercent(total - files, total);
-        }
-        else
-        {
-          // Do nothing
         }
       }
       else if (stdOut.at(i).contains(" ir-chk="))
@@ -825,14 +577,6 @@ void Smb4KSyncJob::slotReadStandardOutput()
           setTotalAmount(KJob::Files, total);
           emitPercent(total - files, total);
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // No overall transfer progress can be determined
       }
 
       // Get transfer rate
@@ -853,22 +597,10 @@ void Smb4KSyncJob::slotReadStandardOutput()
           {
             tmp_speed *= 1e3;
           }
-          else
-          {
-            // Do nothing
-          }
 
           ulong speed = (ulong)tmp_speed;
           emitSpeed(speed /* B/s */);
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // No transfer rate available
       }
     }
     else if (!stdOut.at(i).contains("sending incremental file list"))
@@ -885,10 +617,6 @@ void Smb4KSyncJob::slotReadStandardOutput()
       emit description(this, i18n("Synchronizing"),
                        qMakePair(i18n("Source"), src_url.path()),
                        qMakePair(i18n("Destination"), dest_url.path()));
-    }
-    else
-    {
-      // Do nothing
     }
   }
 }
@@ -925,10 +653,6 @@ void Smb4KSyncJob::slotProcessFinished(int, QProcess::ExitStatus status)
       if (!m_process->isAborted())
       {
         Smb4KNotification::processError(m_process->error());
-      }
-      else
-      {
-        // Do nothing
       }
       break;
     }

@@ -57,10 +57,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, cons
         setPassword(host->password());
         setPrompt(i18n("<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName()));
       }
-      else
-      {
-        // Do nothing
-      }
+
       break;
     }
     case Share:
@@ -89,10 +86,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, cons
           setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1 on %2</b>.</qt>", share->displayString(true)));
         }
       }
-      else
-      {
-        // Do nothing
-      }
+
       break;
     }
     default:
@@ -123,10 +117,7 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword(const QString &user, const 
         host->setLogin(user);
         host->setPassword(pass);
       }
-      else
-      {
-        // Do nothing
-      }
+
       break;
     }
     case Share:
@@ -138,10 +129,7 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword(const QString &user, const 
         share->setLogin(user);
         share->setPassword(pass);
       }
-      else
-      {
-        // Do nothing
-      }
+
       break;
     }
     default:

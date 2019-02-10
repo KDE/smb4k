@@ -114,10 +114,6 @@ void Smb4KWalletManager::init()
         Smb4KNotification::openingWalletFailed(KWallet::Wallet::NetworkWallet());
       }
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -135,10 +131,6 @@ void Smb4KWalletManager::init()
       // 
       delete d->wallet;
       d->wallet = 0;
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -187,10 +179,6 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
             d->wallet->readMap(entry, authInfoMap);
             break;
           }
-          else
-          {
-            // Do nothing
-          }
         }
         else if (networkItem->type() == Share)
         {
@@ -221,10 +209,6 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
               {
                 d->wallet->readMap(entry, authInfoMap);
               }
-              else
-              {
-                // Do nothing
-              }
             }
             else
             {
@@ -243,20 +227,8 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
               {
                 d->wallet->readMap(entry, authInfoMap);
               }
-              else
-              {
-                // Do nothing
-              }
             }
           }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
         }
       }
       
@@ -276,10 +248,6 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
               host->setLogin(authInfoMap.value("Login"));
               host->setPassword(authInfoMap.value("Password"));
             }
-            else
-            {
-              // Do nothing
-            }
             
             break;
           }
@@ -291,10 +259,6 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
             {
               share->setLogin(authInfoMap.value("Login"));
               share->setPassword(authInfoMap.value("Password"));
-            }
-            else
-            {
-              // Do nothing
             }
             
             break;
@@ -338,20 +302,8 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
             }
           }
         }
-        else
-        {
-          // Do nothing
-        }
       }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -379,19 +331,7 @@ void Smb4KWalletManager::readDefaultAuthInfo(Smb4KAuthInfo *authInfo)
         authInfo->setUserName(authInfoMap.value("Login"));
         authInfo->setPassword(authInfoMap.value("Password"));
       }
-      else
-      {
-        // Do nothing
-      }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -445,10 +385,6 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
               {
                 authInfoMap.insert("Workgroup", host->workgroupName());
               }
-              else
-              {
-                // Do nothing
-              }
               
               //
               // Enter the IP address, if is exists
@@ -457,10 +393,6 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
               {
                 authInfoMap.insert("IP Address", host->ipAddress());
               }
-              else
-              {
-                // Do nothing
-              }
               
               //
               // Write the entry to the wallet
@@ -468,15 +400,7 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
               d->wallet->writeMap(host->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort), authInfoMap);
               d->wallet->sync();
             }
-            else
-            {
-              // Do nothing
-            }
           }
-          else
-          {
-            // Do nothing
-          }          
 
           break;
         }
@@ -513,10 +437,6 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
               {
                 authInfoMap.insert("Workgroup", share->workgroupName());
               }
-              else
-              {
-                // Do nothing
-              }
               
               //
               // Enter the IP address, if is exists
@@ -524,10 +444,6 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
               if (share->hasHostIpAddress())
               {
                 authInfoMap.insert("IP Address", share->hostIpAddress());
-              }
-              else
-              {
-                // Do nothing
               }
               
               //
@@ -542,14 +458,6 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
                 d->wallet->writeMap(share->homeUrl().toString(QUrl::RemoveUserInfo|QUrl::RemovePort), authInfoMap);
               }
             }
-            else
-            {
-              // Do nothing
-            }
-          }
-          else
-          {
-            // Do nothing
           }
           
           break;
@@ -560,14 +468,6 @@ void Smb4KWalletManager::writeAuthInfo(const NetworkItemPtr &networkItem)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -596,19 +496,7 @@ void Smb4KWalletManager::writeDefaultAuthInfo(Smb4KAuthInfo *authInfo)
         d->wallet->writeMap("DEFAULT_LOGIN", authInfoMap);
         d->wallet->sync();
       }
-      else
-      {
-        // Do nothing
-      }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -687,10 +575,6 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
             tempShare.clear();
           }
         }
-        else
-        {
-          // Do nothing
-        }
 
         break;
       }
@@ -712,16 +596,8 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
       writeAuthInfo(networkItem);
       success = true;
     }
-    else
-    {
-      // Do nothing
-    }
 
     delete dlg;
-  }
-  else
-  {
-    // Do nothing
   }
 
   return success;
@@ -798,10 +674,6 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
       entries << authInfo;
     }
   }
-  else
-  {
-    // Do nothing
-  }
   
   return entries;
 }
@@ -870,10 +742,6 @@ void Smb4KWalletManager::writeWalletEntries(const QList<Smb4KAuthInfo *> &entrie
       // 
       d->wallet->sync();
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

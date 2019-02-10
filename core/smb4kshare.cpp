@@ -2,7 +2,7 @@
     Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -126,10 +126,6 @@ Smb4KShare::Smb4KShare(const Smb4KShare &s)
   {
     setShareIcon();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -211,10 +207,6 @@ QUrl Smb4KShare::homeUrl() const
     u = *pUrl;
     u.setPath('/'+pUrl->userName(), QUrl::TolerantMode);
   }
-  else
-  {
-    // Do nothing
-  }
   
   return u;
 }
@@ -225,10 +217,6 @@ QString Smb4KShare::displayString(bool showHomesShare) const
   if (showHomesShare && isHomesShare())
   {
     return i18n("%1 on %2", homeUrl().path().remove('/'), hostName());
-  }
-  else
-  {
-    // Do nothing
   }
   
   return i18n("%1 on %2", shareName(), hostName());
@@ -315,10 +303,6 @@ void Smb4KShare::setHostIpAddress(const QHostAddress& address)
   {
     d->ip = address;
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -397,10 +381,6 @@ QString Smb4KShare::fileSystemString() const
     KMountPoint::Ptr mp = KMountPoint::currentMountPoints().findByPath(path());
     d->filesystem = mp->mountType().toUpper();
   }
-  else
-  {
-    // Do nothing
-  }
   
   return d->filesystem;
 }
@@ -436,10 +416,6 @@ void Smb4KShare::setMounted(bool mounted)
   {
     d->mounted = mounted;
     setShareIcon();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -545,10 +521,6 @@ void Smb4KShare::setMountData(Smb4KShare *share)
     d->shareType    = share->shareType();
     setShareIcon();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -595,10 +567,6 @@ void Smb4KShare::setAuthInfo(Smb4KAuthInfo *authInfo)
     pUrl->setUserName(authInfo->userName());
     pUrl->setPassword(authInfo->password());
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -609,10 +577,6 @@ void Smb4KShare::setLogin(const QString &login)
   if (!isHomesShare() || !login.isEmpty())
   {
     pUrl->setUserName(login);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -630,10 +594,6 @@ void Smb4KShare::setPassword(const QString &passwd)
   if (!isHomesShare() || !passwd.isEmpty())
   {
     pUrl->setPassword(passwd);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -670,10 +630,6 @@ void Smb4KShare::setShareIcon()
     {
       overlays << "task-attention";
     }
-    else
-    {
-      // Do nothing
-    }
 
     if (!isInaccessible())
     {
@@ -706,10 +662,6 @@ void Smb4KShare::update(Smb4KShare* share)
     setShareType(share->shareType());
     setComment(share->comment());
     setHostIpAddress(share->hostIpAddress());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

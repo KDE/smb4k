@@ -2,7 +2,7 @@
     Smb4K's container class for information about a directory or file.
                              -------------------
     begin                : Sa Nov 10 2018
-    copyright            : (C) 2018 by Alexander Reinholdt
+    copyright            : (C) 2018-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

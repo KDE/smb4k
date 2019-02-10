@@ -3,7 +3,7 @@
     class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

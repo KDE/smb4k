@@ -114,10 +114,6 @@ void Smb4KAuthInfo::setHost(Smb4KHost *host)
     d->homesShare = false;
     d->ip.setAddress(host->ipAddress());
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -140,10 +136,6 @@ void Smb4KAuthInfo::setShare(Smb4KShare *share)
     d->workgroup  = share->workgroupName();
     d->homesShare = share->isHomesShare();
     d->ip.setAddress(share->hostIpAddress());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -222,10 +214,6 @@ QString Smb4KAuthInfo::shareName() const
   {
     return d->url.path().remove(0, 1);
   }
-  else
-  {
-    // Do nothing
-  }
 
   return d->url.path();
 }
@@ -238,10 +226,6 @@ void Smb4KAuthInfo::setUserName(const QString &username)
   if (d->homesShare)
   {
     d->url.setPath(username);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
