@@ -16,11 +16,21 @@ set(smb4kconfigdialog_LIB_SRCS
   smb4kconfigdialog.cpp
   smb4kconfigpageauthentication.cpp
   smb4kconfigpagecustomoptions.cpp
-  smb4kconfigpagemounting.cpp
   smb4kconfigpagenetwork.cpp
   smb4kconfigpageprofiles.cpp
   smb4kconfigpagesynchronization.cpp
   smb4kconfigpageuserinterface.cpp)
+  
+if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
+  set(smb4kconfigdialog_LIB_SRCS ${smb4kconfigdialog_LIB_SRCS} 
+  smb4kconfigpagemounting.cpp)
+elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD")
+  set(smb4kconfigdialog_LIB_SRCS ${smb4kconfigdialog_LIB_SRCS} 
+  smb4kconfigpagemounting.cpp)
+elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD")
+  set(smb4kconfigdialog_LIB_SRCS ${smb4kconfigdialog_LIB_SRCS} 
+  smb4kconfigpagemounting.cpp)
+endif ()  
   
 add_library(smb4kconfigdialog MODULE ${smb4kconfigdialog_LIB_SRCS})
 
@@ -45,10 +55,6 @@ set(smb4k_SRCS
   main.cpp
   smb4kbookmarkmenu.cpp
   smb4kprofilesmenu.cpp
-  smb4ksharesmenu.cpp
-  smb4ksharesview.cpp
-  smb4ksharesviewitem.cpp
-  smb4ksharesviewdockwidget.cpp
   smb4kmainwindow.cpp
   smb4knetworkbrowser.cpp
   smb4knetworkbrowseritem.cpp
@@ -56,6 +62,26 @@ set(smb4k_SRCS
   smb4knetworksearchtoolbar.cpp
   smb4ksystemtray.cpp
   smb4ktooltip.cpp)
+  
+if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
+  set(smb4k_SRCS ${smb4k_SRCS} 
+  smb4ksharesmenu.cpp
+  smb4ksharesview.cpp
+  smb4ksharesviewitem.cpp
+  smb4ksharesviewdockwidget.cpp)
+elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD")
+  set(smb4k_SRCS ${smb4k_SRCS} 
+  smb4ksharesmenu.cpp
+  smb4ksharesview.cpp
+  smb4ksharesviewitem.cpp
+  smb4ksharesviewdockwidget.cpp)
+elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD")
+  set(smb4k_SRCS ${smb4k_SRCS} 
+  smb4ksharesmenu.cpp
+  smb4ksharesview.cpp
+  smb4ksharesviewitem.cpp
+  smb4ksharesviewdockwidget.cpp)
+endif ()
 
 add_executable(smb4k ${smb4k_SRCS})
 
