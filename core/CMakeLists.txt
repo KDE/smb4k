@@ -37,16 +37,29 @@ set(smb4kcore_LIB_SRCS
   smb4kworkgroup.cpp)
 
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
-  set(smb4kcore_LIB_SRCS ${smb4kcore_LIB_SRCS} smb4kmounter.cpp smb4kmounter_p.cpp)
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_linux.kcfgc)
+  set(smb4kcore_LIB_SRCS ${smb4kcore_LIB_SRCS} 
+  smb4kmounter.cpp 
+  smb4kmounter_p.cpp)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
+  smb4ksettings.kcfgc 
+  smb4kmountsettings_linux.kcfgc)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD")
-  set(smb4kcore_LIB_SRCS ${smb4kcore_LIB_SRCS} smb4kmounter.cpp smb4kmounter_p.cpp)
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_bsd.kcfgc)
+  set(smb4kcore_LIB_SRCS ${smb4kcore_LIB_SRCS} 
+  smb4kmounter.cpp 
+  smb4kmounter_p.cpp)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
+  smb4ksettings.kcfgc 
+  smb4kmountsettings_bsd.kcfgc)
 elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD")
-  set(smb4kcore_LIB_SRCS ${smb4kcore_LIB_SRCS} smb4kmounter.cpp smb4kmounter_p.cpp)
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc smb4kmountsettings_bsd.kcfgc)
+  set(smb4kcore_LIB_SRCS ${smb4kcore_LIB_SRCS} 
+  smb4kmounter.cpp 
+  smb4kmounter_p.cpp)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
+  smb4ksettings.kcfgc 
+  smb4kmountsettings_bsd.kcfgc)
 else ()
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS smb4ksettings.kcfgc)
+  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
+  smb4ksettings.kcfgc)
 endif ()
 
 add_library(smb4kcore SHARED ${smb4kcore_LIB_SRCS})
