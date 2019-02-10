@@ -2,7 +2,7 @@
     smb4kprofilesmenu  -  The menu for the profiles
                              -------------------
     begin                : Do Aug 10 2014
-    copyright            : (C) 2014-2017 by Alexander Reinholdt
+    copyright            : (C) 2014-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -85,10 +85,6 @@ void Smb4KProfilesMenu::refreshMenu()
     {
       action->setEnabled(Smb4KProfileManager::self()->useProfiles());
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   //
@@ -123,10 +119,6 @@ void Smb4KProfilesMenu::slotProfileUsageChanged(bool use)
     if (action)
     {
       action->setEnabled(use);
-    }
-    else
-    {
-      // Do nothing
     }
   }
   

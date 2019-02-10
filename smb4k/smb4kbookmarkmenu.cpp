@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2018 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -98,10 +98,6 @@ void Smb4KBookmarkMenu::refreshMenu()
   {
     menu()->clear();
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Set up the menu
@@ -122,10 +118,6 @@ void Smb4KBookmarkMenu::setBookmarkActionEnabled(bool enable)
   if (action)
   {
     action->setEnabled(enable);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -223,17 +215,9 @@ void Smb4KBookmarkMenu::setupMenu()
           }
         }
       }
-      else
-      {
-        // Do nothing
-      }
     }
     
     toplevelMount->setEnabled(mountedBookmarks != bookmarks.size());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -323,10 +307,6 @@ void Smb4KBookmarkMenu::setupMenu()
             }
           }
         }
-        else
-        {
-          // Do nothing
-        }
       }
       
       bookmarkGroupMount->setEnabled(mountedBookmarks != bookmarks.size());
@@ -353,10 +333,6 @@ void Smb4KBookmarkMenu::setupMenu()
           }
         }
       }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -414,10 +390,6 @@ void Smb4KBookmarkMenu::setupMenu()
           continue;
         }
       }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   
@@ -518,10 +490,6 @@ void Smb4KBookmarkMenu::slotGroupActionTriggered(QAction *action)
       mounts.takeFirst().clear();
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -543,10 +511,6 @@ void Smb4KBookmarkMenu::slotBookmarkActionTriggered(QAction *action)
     share->setLogin(bookmark->login());
     Smb4KMounter::self()->mountShare(share);
     share.clear();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -574,10 +538,6 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
         a->setEnabled(!share->isMounted());
         bookmarkGroup = a->data().toMap().value("group").toString();
         break;
-      }
-      else
-      {
-        // Do nothing
       }
     }
     
@@ -620,10 +580,6 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
         continue;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

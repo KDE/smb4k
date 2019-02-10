@@ -3,7 +3,7 @@
     user interface
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2017 by Alexander Reinholdt
+    copyright            : (C) 2006-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

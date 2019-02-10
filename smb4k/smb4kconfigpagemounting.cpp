@@ -2,7 +2,7 @@
     The configuration page for the mount options
                              -------------------
     begin                : So Mär 22 2015
-    copyright            : (C) 2015-2018 by Alexander Reinholdt
+    copyright            : (C) 2015-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -783,10 +783,6 @@ void Smb4KConfigPageMounting::slotNewUserTriggered(QAction *action)
   {
     userId->setText(action->data().toString());
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -797,10 +793,6 @@ void Smb4KConfigPageMounting::slotNewGroupTriggered(QAction *action)
   if (groupId)
   {
     groupId->setText(action->data().toString());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -813,20 +805,12 @@ void Smb4KConfigPageMounting::slotCIFSUnixExtensionsSupport(bool checked)
   {
     useUserId->setEnabled(!checked);
   }
-  else
-  {
-    // Do nothing
-  }
   
   QWidget *userIdInputWidget = findChild<QWidget *>("UserIdInputWidget");
   
   if (userIdInputWidget)
   {
     userIdInputWidget->setEnabled(!checked);
-  }
-  else
-  {
-    // Do nothing
   }
   
   QCheckBox *useGroupId = findChild<QCheckBox *>("kcfg_UseGroupId");
@@ -835,20 +819,12 @@ void Smb4KConfigPageMounting::slotCIFSUnixExtensionsSupport(bool checked)
   {
     useGroupId->setEnabled(!checked);
   }
-  else
-  {
-    // Do nothing
-  }
   
   QWidget *groupIdInputWidget = findChild<QWidget *>("GroupIdInputWidget");
   
   if (groupIdInputWidget)
   {
     groupIdInputWidget->setEnabled(!checked);
-  }
-  else
-  {
-    // Do nothing
   }
   
   QCheckBox *useFileMode = findChild<QCheckBox *>("kcfg_UseFileMode");
@@ -857,20 +833,12 @@ void Smb4KConfigPageMounting::slotCIFSUnixExtensionsSupport(bool checked)
   {
     useFileMode->setEnabled(!checked);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *fileMode = findChild<KLineEdit *>("kcfg_FileMode");
   
   if (fileMode)
   {
     fileMode->setEnabled(!checked);
-  }
-  else
-  {
-    // Do nothing
   }
   
   QCheckBox *useDirectoryMode = findChild<QCheckBox *>("kcfg_UseDirectoryMode");
@@ -879,20 +847,12 @@ void Smb4KConfigPageMounting::slotCIFSUnixExtensionsSupport(bool checked)
   {
     useDirectoryMode->setEnabled(!checked);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("kcfg_DirectoryMode");
   
   if (directoryMode)
   {
     directoryMode->setEnabled(!checked);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -933,20 +893,12 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
             deniedArgs << arg;
             it.remove();
           }
-          else
-          {
-            // Do nothing
-          }
         }
         
         if (!deniedArgs.isEmpty())
         {
           QString msg = i18np("<qt>The following entry is going to be removed from the additional options: %2. Please read the handbook for details.</qt>", "<qt>The following %1 entries are going to be removed from the additional options: %2. Please read the handbook for details.</qt>", deniedArgs.size(), deniedArgs.join(", "));
           KMessageBox::sorry(this, msg);
-        }
-        else
-        {
-          // Do nothing
         }
         
         cifsOptions->setText(list.join(",").trimmed());
@@ -956,14 +908,6 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
         cifsOptions->clear();
       }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
 }
@@ -980,20 +924,12 @@ void Smb4KConfigPageMounting::slotCharacterSets(bool on)
   {
     clientCharacterSetLabel->setEnabled(on);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *clientCharacterSet = findChild<KComboBox *>("kcfg_ClientCharset");
   
   if (clientCharacterSet)
   {
     clientCharacterSet->setEnabled(on);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1005,20 +941,12 @@ void Smb4KConfigPageMounting::slotCharacterSets(bool on)
   {
     serverCharacterSetLabel->setEnabled(on);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *serverCharacterSet = findChild<KComboBox *>("kcfg_ServerCodepage");
   
   if (serverCharacterSet)
   {
     serverCharacterSet->setEnabled(on);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

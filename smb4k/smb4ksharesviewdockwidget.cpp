@@ -2,7 +2,7 @@
     The network search widget dock widget 
                              -------------------
     begin                : Fri Mai 04 2018
-    copyright            : (C) 2018 by Alexander Reinholdt
+    copyright            : (C) 2018-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -296,10 +296,6 @@ void Smb4KSharesViewDockWidget::slotItemActivated(QListWidgetItem* /*item*/)
   {
     slotFileManagerActionTriggered(false);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -345,19 +341,11 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
         {
           syncsRunning += 1;
         }
-        else
-        {
-          // Do nothing
-        }
         
         // Is the share inaccessible at the moment?
         if (item->shareItem()->isInaccessible())
         {
           inaccessible += 1;
-        }
-        else
-        {
-          // Do nothing
         }
         
         // Was the share being mounted by another user?
@@ -365,14 +353,6 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
         {
           foreign += 1;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
     }
     
@@ -421,14 +401,6 @@ void Smb4KSharesViewDockWidget::slotDropEvent(Smb4KSharesViewItem* item, QDropEv
         KMessageBox::sorry(m_sharesView, i18n("<qt>There is no active connection to the share <b>%1</b>! You cannot drop any files here.</qt>", item->shareItem()->displayString()));
       }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -445,10 +417,6 @@ void Smb4KSharesViewDockWidget::slotViewModeChanged(QAction* action)
   else if (action->objectName() ==  "list_view_action")
   {
     Smb4KSettings::setSharesViewMode(Smb4KSettings::EnumSharesViewMode::ListView);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -480,10 +448,6 @@ void Smb4KSharesViewDockWidget::slotShareMounted(const SharePtr& share)
     actionCollection()->action("unmount_all_action")->setEnabled(
       ((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -505,10 +469,6 @@ void Smb4KSharesViewDockWidget::slotShareUnmounted(const SharePtr& share)
         {
           m_sharesView->setCurrentItem(0);
         }
-        else
-        {
-          // Do nothing
-        }
             
         delete m_sharesView->takeItem(i);
         break;
@@ -522,10 +482,6 @@ void Smb4KSharesViewDockWidget::slotShareUnmounted(const SharePtr& share)
     // Enable/disable the 'Unmount All' action
     actionCollection()->action("unmount_all_action")->setEnabled(
       ((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -552,10 +508,6 @@ void Smb4KSharesViewDockWidget::slotShareUpdated(const SharePtr& share)
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -571,10 +523,6 @@ void Smb4KSharesViewDockWidget::slotUnmountActionTriggered(bool /*checked*/)
     if (item)
     {
       shares << item->shareItem();
-    }
-    else
-    {
-      // Do nothing
     }
   }
 
@@ -615,10 +563,6 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool /*checked*/)
     {
       Smb4KSynchronizer::self()->synchronize(item->shareItem());
     }
-    else
-    {
-      // Do nothing
-    }
   }
 }
 
@@ -635,10 +579,6 @@ void Smb4KSharesViewDockWidget::slotKonsoleActionTriggered(bool /*checked*/)
     {
       openShare(item->shareItem(), Konsole);
     }
-    else
-    {
-      // Do nothing
-    }
   }
 }
 
@@ -654,10 +594,6 @@ void Smb4KSharesViewDockWidget::slotFileManagerActionTriggered(bool /*checked*/)
     if (item && !item->shareItem()->isInaccessible())
     {
       openShare(item->shareItem(), FileManager);
-    }
-    else
-    {
-      // Do nothing
     }
   }
 }
@@ -677,10 +613,6 @@ void Smb4KSharesViewDockWidget::slotIconSizeChanged(int group)
   {
     int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
     m_sharesView->setIconSize(QSize(iconSize, iconSize));
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

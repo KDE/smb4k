@@ -2,7 +2,7 @@
     This is the shares view of Smb4K.
                              -------------------
     begin                : Mo Dez 4 2006
-    copyright            : (C) 2006-2017 by Alexander Reinholdt
+    copyright            : (C) 2006-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -147,10 +147,6 @@ bool Smb4KSharesView::event(QEvent *e)
             m_tooltipItem->tooltip()->hide();
             m_tooltipItem = 0;
           }
-          else
-          {
-            // Do nothing
-          }
         }
       }
       else
@@ -160,10 +156,6 @@ bool Smb4KSharesView::event(QEvent *e)
           emit aboutToHideToolTip(m_tooltipItem);
           m_tooltipItem->tooltip()->hide();
           m_tooltipItem = 0;
-        }
-        else
-        {
-          // Do nothing
         }
       }
 
@@ -187,10 +179,6 @@ void Smb4KSharesView::leaveEvent(QEvent *e)
     m_tooltipItem->tooltip()->hide();
     m_tooltipItem = 0;
   }
-  else
-  {
-    // Do nothing
-  }
   
   m_mouseInside = false;
   QListWidget::leaveEvent(e);
@@ -213,10 +201,6 @@ void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
     m_tooltipItem->tooltip()->hide();
     m_tooltipItem = 0;
   }
-  else
-  {
-    // Do nothing
-  }
 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
@@ -227,10 +211,6 @@ void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
     clearSelection();
     setCurrentItem(0);
     emit itemPressed(currentItem());
-  }
-  else
-  {
-    // Do nothing
   }
 
   QListWidget::mousePressEvent(e);
@@ -250,10 +230,6 @@ void Smb4KSharesView::wheelEvent(QWheelEvent *e)
     emit aboutToHideToolTip(m_tooltipItem);
     m_tooltipItem->tooltip()->hide();
     m_tooltipItem = 0;
-  }
-  else
-  {
-    // Do nothing
   }
   
   QListWidget::wheelEvent(e);
@@ -360,10 +336,6 @@ void Smb4KSharesView::startDrag(Qt::DropActions supported)
     m_tooltipItem->tooltip()->hide();
     m_tooltipItem = 0;
   }
-  else
-  {
-    // Do nothing
-  }
 
   QList<QListWidgetItem *> list = selectedItems();
 
@@ -395,10 +367,6 @@ void Smb4KSharesView::startDrag(Qt::DropActions supported)
 
     drag->exec(supported, Qt::IgnoreAction);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -416,10 +384,6 @@ void Smb4KSharesView::slotItemEntered(QListWidgetItem *item)
     m_tooltipItem->tooltip()->hide();
     m_tooltipItem = 0;
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -431,10 +395,6 @@ void Smb4KSharesView::slotViewportEntered()
     emit aboutToHideToolTip(m_tooltipItem);
     m_tooltipItem->tooltip()->hide();
     m_tooltipItem = 0;
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

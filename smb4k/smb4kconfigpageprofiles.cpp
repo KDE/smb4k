@@ -2,7 +2,7 @@
     The configuration page for the profiles
                              -------------------
     begin                : Do Aug 07 2014
-    copyright            : (C) 2014-2017 by Alexander Reinholdt
+    copyright            : (C) 2014-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -153,10 +153,6 @@ void Smb4KConfigPageProfiles::slotProfileRemoved(const QString& name)
     {
       it.remove();
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   m_removed << name;
@@ -199,10 +195,6 @@ void Smb4KConfigPageProfiles::slotProfileChanged()
           write = false;
           break;
         }
-        else
-        {
-          // Do nothing
-        }
       }
       
       // Write the renamed profile to the list, if necessary.
@@ -211,19 +203,7 @@ void Smb4KConfigPageProfiles::slotProfileChanged()
         QPair<QString,QString> renamed(savedProfiles.first(), currentProfiles.first());
         m_renamed << renamed;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

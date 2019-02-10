@@ -2,7 +2,7 @@
     This class provides the network search toolbar.
                              -------------------
     begin                : Su Dec 23 2018
-    copyright            : (C) 2018 by Alexander Reinholdt
+    copyright            : (C) 2018-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -300,10 +300,6 @@ void Smb4KNetworkSearchToolBar::slotReturnKeyPressed()
     // 
     emit search(comboBox->currentText());
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -333,10 +329,6 @@ void Smb4KNetworkSearchToolBar::slotSearchActionTriggered()
       // Emit the search signal
       // 
       emit search(comboBox->currentText());
-    }
-    else
-    {
-      // Do nothing
     }
   }
   else
@@ -382,10 +374,6 @@ void Smb4KNetworkSearchToolBar::slotDownActionTriggered()
     //
     emit jumpToResult(url);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -402,10 +390,6 @@ void Smb4KNetworkSearchToolBar::slotUpActionTriggered()
     // Emit the jumpToResult() signal
     //
     emit jumpToResult(url);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

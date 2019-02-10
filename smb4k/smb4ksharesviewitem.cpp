@@ -2,7 +2,7 @@
     The item for Smb4K's shares view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2017 by Alexander Reinholdt
+    copyright            : (C) 2006-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

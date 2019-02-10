@@ -308,10 +308,6 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
     {
       m_networkBrowser->header()->moveSection(m_networkBrowser->header()->visualIndex(it.value()), it.key());
     }
-    else
-    {
-      // Do nothing
-    }
 
     ++it;
   }
@@ -385,10 +381,6 @@ void Smb4KNetworkBrowserDockWidget::slotItemActivated(QTreeWidgetItem* item, int
           {
             Smb4KClient::self()->lookupDomainMembers(browserItem->workgroupItem());
           }
-          else
-          {
-            // Do nothing
-          }
           break;
         }
         case Host:
@@ -396,10 +388,6 @@ void Smb4KNetworkBrowserDockWidget::slotItemActivated(QTreeWidgetItem* item, int
           if (browserItem->isExpanded())
           {
             Smb4KClient::self()->lookupShares(browserItem->hostItem());
-          }
-          else
-          {
-            // Do nothing
           }
           break;
         }
@@ -421,14 +409,6 @@ void Smb4KNetworkBrowserDockWidget::slotItemActivated(QTreeWidgetItem* item, int
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }    
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -521,10 +501,6 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
         }
       }
     }
-    else
-    {
-      // Do nothing. This is managed elsewhere.
-    }
   }
   else if (items.size() > 1)
   {
@@ -548,10 +524,6 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
         // Subtract shares mounted by the user
         // 
         unmountedShares--;
-      }
-      else
-      {
-        // Do nothing
       }
     }
     
@@ -599,10 +571,6 @@ void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr&
     rescanAbortAction->setActive(true);
     m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Cancel);
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Set the active status of the search tool bar 
@@ -610,10 +578,6 @@ void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr&
   if (process == NetworkSearch)
   {
     m_searchToolBar->setActiveState(true);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -633,10 +597,6 @@ void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*i
     rescanAbortAction->setActive(false);
     m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Set the active status of the search tool bar 
@@ -644,10 +604,6 @@ void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*i
   if (process == NetworkSearch)
   {
     m_searchToolBar->setActiveState(false);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -688,10 +644,6 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroups()
           delete networkItem;
         }
       }
-      else
-      {
-        // Do nothing
-      }
           
       ++itemIt;
     }
@@ -706,10 +658,6 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroups()
       if (items.isEmpty())
       {
         (void) new Smb4KNetworkBrowserItem(m_networkBrowser, workgroup);
-      }
-      else
-      {
-        // Do nothing
       }
     }
     
@@ -809,20 +757,12 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers(const WorkgroupPtr& wor
             {
               (void) new Smb4KNetworkBrowserItem(workgroupItem, host);
             }
-            else
-            {
-              // Do nothing
-            }
           }
           
           // Auto-expand the workgroup item, if applicable
           if (Smb4KSettings::autoExpandNetworkItems() && !workgroupItem->isExpanded() && !m_searchRunning)
           {
             m_networkBrowser->expandItem(workgroupItem);
-          }
-          else
-          {
-            // Do nothing
           }
         }
         else
@@ -837,10 +777,6 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers(const WorkgroupPtr& wor
           delete workgroupItem;
         }
       }
-      else
-      {
-        // Do nothing
-      }
     }
     
     //
@@ -848,10 +784,6 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers(const WorkgroupPtr& wor
     //
     m_networkBrowser->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
   }
-  else
-  {
-    // Do nothing
-  }  
 }
 
 
@@ -937,20 +869,12 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr& host)
             {
               (void) new Smb4KNetworkBrowserItem(hostItem, share);
             }
-            else
-            {
-              // Do nothing
-            }
           }
           
           // Auto-expand the host item, if applicable
           if (Smb4KSettings::autoExpandNetworkItems() && !hostItem->isExpanded() && !m_searchRunning)
           {
             m_networkBrowser->expandItem(hostItem);
-          }
-          else
-          {
-            // Do nothing
           }
         }
         else
@@ -973,10 +897,6 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr& host)
     // Sort the items
     //
     m_networkBrowser->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1030,10 +950,6 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
           } 
         }
       }
-      else
-      {
-        // Do nothing
-      }
     }
     else
     {
@@ -1048,10 +964,6 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
     if (Smb4KClient::self()->isRunning())
     {
       Smb4KClient::self()->abort();
-    }
-    else
-    {
-      // Do nothing
     }
   }
 }
@@ -1072,10 +984,6 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool /*checked*/)
       {
         shares << item->shareItem();
       }
-      else
-      {
-        // Do nothing
-      }
     }
   }
   else
@@ -1087,10 +995,6 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool /*checked*/)
   if (!shares.isEmpty())
   {
     Smb4KBookmarkHandler::self()->addBookmarks(shares);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1125,10 +1029,6 @@ void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool /*checked*/)
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -1156,10 +1056,6 @@ void Smb4KNetworkBrowserDockWidget::slotCustomOptions(bool /*checked*/)
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -1177,16 +1073,8 @@ void Smb4KNetworkBrowserDockWidget::slotPreview(bool /*checked*/)
       {
         Smb4KClient::self()->openPreviewDialog(item->shareItem());
       }
-      else
-      {
-        // Do nothing
-      }
     }
   }
-  else
-  {
-    // Do nothing
-  }  
 }
 
 
@@ -1197,10 +1085,6 @@ void Smb4KNetworkBrowserDockWidget::slotPrint(bool /*checked*/)
   if (item && item->shareItem()->isPrinter())
   {
     Smb4KClient::self()->openPrintDialog(item->shareItem());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1236,10 +1120,6 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool /*checked*/)
       else if (browserItem && !browserItem->shareItem()->isMounted())
       {
         unmounted << browserItem->shareItem();
-      }
-      else
-      {
-        // Do nothing
       }
     }
     
@@ -1284,10 +1164,6 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool /*checked*/)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
   }
 }
 
@@ -1313,10 +1189,6 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionChanged(bool active)
       m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(Qt::CTRL+Qt::Key_U));
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -1337,14 +1209,6 @@ void Smb4KNetworkBrowserDockWidget::slotShareMounted(const SharePtr& share)
         item->update();
         break;
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     ++it;
@@ -1369,14 +1233,6 @@ void Smb4KNetworkBrowserDockWidget::slotShareUnmounted(const SharePtr& share)
         item->update();
         break;
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     ++it;
@@ -1421,10 +1277,6 @@ void Smb4KNetworkBrowserDockWidget::slotMounterFinished(int process)
         break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1546,29 +1398,13 @@ void Smb4KNetworkBrowserDockWidget::slotSearchResults(const QList<SharePtr>& sha
           {
             m_networkBrowser->expandItem(networkItem->parent());
           }
-          else
-          {
-            // Do nothing
-          }
           
           if (!networkItem->parent()->parent()->isExpanded())
           {
             m_networkBrowser->expandItem(networkItem->parent()->parent());
           }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
         }
       }
-    }
-    else
-    {
-      // Do nothing
     }
     
     it++;
@@ -1596,10 +1432,6 @@ void Smb4KNetworkBrowserDockWidget::slotJumpToResult(const QString& url)
     {
       m_networkBrowser->setCurrentItem(networkItem);
       break;
-    }
-    else
-    {
-      // Do nothing
     }
     
     it++;

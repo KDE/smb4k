@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2017 by Alexander Reinholdt
+    copyright            : (C) 2007-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -72,10 +72,6 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, const Netw
           setForeground(i, brush);
         }
       }
-      else
-      {
-        // Do nothing
-      }
 
       setIcon(Network, host->icon());
       break;
@@ -96,11 +92,7 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, const Netw
           setFont(i, f);
         }
       }
-      else
-      {
-        // Do nothing
-      }
-      
+
       setIcon(Network, share->icon());
       break;
     }
@@ -142,10 +134,6 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, const 
           setForeground(i, brush);
         }
       }
-      else
-      {
-        // Do nothing
-      }
 
       setIcon(Network, host->icon());
       break;
@@ -165,10 +153,6 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, const 
           f.setItalic(true);
           setFont(i, f);
         }
-      }
-      else
-      {
-        // Do nothing
       }
       
       setIcon(Network, share->icon());
@@ -195,10 +179,6 @@ WorkgroupPtr Smb4KNetworkBrowserItem::workgroupItem()
   {
     return WorkgroupPtr();
   }
-  else
-  {
-    // Do nothing
-  }
   
   return m_item.staticCast<Smb4KWorkgroup>();
 }
@@ -210,10 +190,6 @@ HostPtr Smb4KNetworkBrowserItem::hostItem()
   {
     return HostPtr();
   }
-  else
-  {
-    // Do nothing
-  }
   
   return m_item.staticCast<Smb4KHost>();
 }
@@ -224,10 +200,6 @@ SharePtr Smb4KNetworkBrowserItem::shareItem()
   if (!m_item || (m_item && m_item->type() != Share))
   {
     return SharePtr();
-  }
-  else
-  {
-    // Do nothing
   }
   
   return m_item.staticCast<Smb4KShare>();

@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2017 by Alexander Reinholdt
+    copyright            : (C) 2007-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -138,10 +138,6 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
               m_tooltip_item->tooltip()->hide();
               m_tooltip_item = 0;
             }
-            else
-            {
-              // Do nothing
-            }
           }
           else
           {
@@ -158,10 +154,6 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
             m_tooltip_item->tooltip()->hide();
             m_tooltip_item = 0;
           }
-          else
-          {
-            // Do nothing
-          }         
         }
       }
       else
@@ -171,10 +163,6 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
           emit aboutToHideToolTip(m_tooltip_item);
           m_tooltip_item->tooltip()->hide();
           m_tooltip_item = 0;
-        }
-        else
-        {
-          // Do nothing
         }
       }
       
@@ -206,10 +194,6 @@ void Smb4KNetworkBrowser::mouseMoveEvent(QMouseEvent *e)
       m_tooltip_item->tooltip()->hide();
       m_tooltip_item = 0;
     }
-    else
-    {
-      // Do nothing
-    }
   }
   else
   {
@@ -219,10 +203,6 @@ void Smb4KNetworkBrowser::mouseMoveEvent(QMouseEvent *e)
       emit aboutToHideToolTip(m_tooltip_item);
       m_tooltip_item->tooltip()->hide();
       m_tooltip_item = 0;
-    }
-    else
-    {
-      // Do nothing
     }
   }
 
@@ -237,10 +217,6 @@ void Smb4KNetworkBrowser::leaveEvent(QEvent *e)
     emit aboutToHideToolTip(m_tooltip_item);
     m_tooltip_item->tooltip()->hide();
     m_tooltip_item = 0;
-  }
-  else
-  {
-    // Do nothing
   }
   
   m_mouse_inside = false;
@@ -266,10 +242,6 @@ void Smb4KNetworkBrowser::mousePressEvent(QMouseEvent *e)
     m_tooltip_item->tooltip()->hide();
     m_tooltip_item = 0;
   }
-  else
-  {
-    // Do nothing
-  }
 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
@@ -280,10 +252,6 @@ void Smb4KNetworkBrowser::mousePressEvent(QMouseEvent *e)
     currentItem()->setSelected(false);
     setCurrentItem(0);
     emit itemPressed(currentItem(), -1);
-  }
-  else
-  {
-    // Do nothing
   }
 
   QTreeWidget::mousePressEvent(e);
@@ -304,10 +272,6 @@ void Smb4KNetworkBrowser::wheelEvent(QWheelEvent *e)
     m_tooltip_item->tooltip()->hide();
     m_tooltip_item = 0;
   }
-  else
-  {
-    // Do nothing
-  }
   
   QTreeWidget::wheelEvent(e);
 }
@@ -327,10 +291,6 @@ void Smb4KNetworkBrowser::slotItemEntered(QTreeWidgetItem *item, int /*column*/)
     m_tooltip_item->tooltip()->hide();
     m_tooltip_item = 0;
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -342,10 +302,6 @@ void Smb4KNetworkBrowser::slotViewportEntered()
     m_tooltip_item->tooltip()->hide();
     m_tooltip_item = 0;
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -356,10 +312,6 @@ void Smb4KNetworkBrowser::slotItemActivated(QTreeWidgetItem *item, int /*column*
     emit aboutToHideToolTip(m_tooltip_item);
     m_tooltip_item->tooltip()->hide();
     m_tooltip_item = 0;
-  }
-  else
-  {
-    // Do nothing
   }
 
   // Only do something if there are no keyboard modifiers pressed
@@ -390,14 +342,6 @@ void Smb4KNetworkBrowser::slotItemActivated(QTreeWidgetItem *item, int /*column*
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -428,10 +372,6 @@ void Smb4KNetworkBrowser::slotItemSelectionChanged()
             {
               item->setSelected(false);
             }
-            else
-            {
-              // Do nothing
-            }
             break;
           }
           default:
@@ -440,15 +380,7 @@ void Smb4KNetworkBrowser::slotItemSelectionChanged()
           }
         }
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

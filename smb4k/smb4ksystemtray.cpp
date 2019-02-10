@@ -2,7 +2,7 @@
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
                              -------------------
     begin                : Mi Jun 13 2007
-    copyright            : (C) 2007-2018 by Alexander Reinholdt
+    copyright            : (C) 2007-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -127,10 +127,6 @@ void Smb4KSystemTray::loadSettings()
   {
     bookmarkMenu->refreshMenu();
   }
-  else
-  {
-    // Do nothing
-  }
 
   // 
   // Adjust the shares menu
@@ -141,10 +137,6 @@ void Smb4KSystemTray::loadSettings()
   {
     sharesMenu->refreshMenu();
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Adjust the profiles menu
@@ -154,10 +146,6 @@ void Smb4KSystemTray::loadSettings()
   if (profilesMenu)
   {
     profilesMenu->refreshMenu();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -181,10 +169,6 @@ void Smb4KSystemTray::slotConfigDialog()
   {
     KConfigDialog::showDialog("ConfigDialog");
     return;
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -214,10 +198,6 @@ void Smb4KSystemTray::slotConfigDialog()
       connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
       connect(dlg, SIGNAL(settingsChanged(QString)), this, SIGNAL(settingsChanged(QString)), Qt::UniqueConnection);
       dlg->show();
-    }
-    else
-    {
-      // Do nothing
     }
   }
   else

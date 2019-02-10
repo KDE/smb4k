@@ -3,7 +3,7 @@
     is for use with QtQuick.
                              -------------------
     begin                : Fr Mai 11 2013
-    copyright            : (C) 2013-2017 by Alexander Reinholdt
+    copyright            : (C) 2013-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -203,10 +203,6 @@ void Smb4KBookmarkObject::setHostIP(const QString& ip)
   if (d->hostIP.setAddress(ip))
   {
     emit changed();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

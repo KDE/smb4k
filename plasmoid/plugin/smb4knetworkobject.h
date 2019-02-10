@@ -3,7 +3,7 @@
     It is for use with QtQuick.
                              -------------------
     begin                : Fr Mär 02 2012
-    copyright            : (C) 2012-2017 by Alexander Reinholdt
+    copyright            : (C) 2012-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

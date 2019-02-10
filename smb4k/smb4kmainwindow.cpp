@@ -2,7 +2,7 @@
     The main window of Smb4K
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2018 by Alexander Reinholdt
+    copyright            : (C) 2008-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -294,10 +294,6 @@ void Smb4KMainWindow::setupView()
       tabifyDockWidget(docks.at(i-1), docks.at(i));
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -331,13 +327,8 @@ void Smb4KMainWindow::setupSystemTrayWidget()
   {
     m_system_tray_widget = new Smb4KSystemTray(this);
   }
-  else
-  {
-    // Do nothing
-  }
 
-  connect(m_system_tray_widget, SIGNAL(settingsChanged(QString)),
-          this,                 SLOT(slotSettingsChanged(QString)));
+  connect(m_system_tray_widget, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)));
 }
 
 
@@ -383,10 +374,6 @@ void Smb4KMainWindow::loadSettings()
   {
     networkBrowserDock->loadSettings();
   }
-  else
-  {
-    // Do nothing
-  }
   
   // 
   // Let the shares view load its settings
@@ -397,10 +384,6 @@ void Smb4KMainWindow::loadSettings()
   {
     sharesViewDock->loadSettings();
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Reload the list of bookmarks
@@ -410,10 +393,6 @@ void Smb4KMainWindow::loadSettings()
   if (bookmarkMenu)
   {
     bookmarkMenu->refreshMenu();
-  }
-  else
-  {
-    // Do nothing
   }
 
   // Check the state of the password handler and the wallet settings and
@@ -436,10 +415,6 @@ void Smb4KMainWindow::saveSettings()
   {
     networkBrowserDock->saveSettings();
   }
-  else
-  {
-    // Do nothing
-  }
   
   // 
   // Let the shares view load its settings
@@ -449,10 +424,6 @@ void Smb4KMainWindow::saveSettings()
   if (sharesViewDock)
   {
     sharesViewDock->saveSettings();
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -506,15 +477,7 @@ bool Smb4KMainWindow::eventFilter(QObject *obj, QEvent* e)
             setupDynamicActionList(networkBrowserDock);
             break;
           }
-          else
-          {
-            // Do nothing
-          }
         }
-      }
-      else
-      {
-        // Do nothing
       }
       
       //
@@ -535,15 +498,7 @@ bool Smb4KMainWindow::eventFilter(QObject *obj, QEvent* e)
             setupDynamicActionList(sharesViewDock);
             break;
           }
-          else
-          {
-            // Do nothing
-          }
         }
-      }
-      else
-      {
-        // Do nothing
       }
       break;
     }
@@ -596,10 +551,6 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget* dock)
     {
       bookmarkMenu->setBookmarkActionEnabled(false);
     }
-    else
-    {
-      // Do nothing
-    }
     
     // 
     // Prepare the dynamic action list for the main window
@@ -615,10 +566,6 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget* dock)
     {
       dockActionCollection = static_cast<Smb4KSharesViewDockWidget *>(dock)->actionCollection();
     }
-    else
-    {
-      // Do nothing
-    }
     
     for (QAction *action : dockActionCollection->actions())
     {
@@ -629,10 +576,6 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget* dock)
           bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
           connect(action, SIGNAL(changed()), this, SLOT(slotEnableBookmarkAction()));
           continue;
-        }
-        else
-        {
-          // Do nothing
         }
       }
       else if (QString::compare(action->objectName(), "filemanager_action") == 0)
@@ -651,10 +594,6 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget* dock)
       {
         continue;
       }
-      else
-      {
-        // Do nothing
-      }
       
       dynamicList << action;
     }
@@ -664,10 +603,6 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget* dock)
     // 
     unplugActionList("dynamic_list");
     plugActionList("dynamic_list", dynamicList);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -701,10 +636,6 @@ void Smb4KMainWindow::slotConfigDialog()
     KConfigDialog::showDialog("ConfigDialog");
     return;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // If the dialog does not exist, load and show it:
@@ -722,10 +653,6 @@ void Smb4KMainWindow::slotConfigDialog()
       connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
       connect(dlg, SIGNAL(settingsChanged(QString)), m_system_tray_widget, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
       dlg->show();
-    }
-    else
-    {
-      // Do nothing
     }
   }
   else
@@ -763,14 +690,6 @@ void Smb4KMainWindow::slotAddBookmarks()
         {
           action->trigger();
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
     }
     else if (QString::compare(m_focusWidget->metaObject()->className(), "Smb4KSharesViewDockWidget") == 0)
@@ -786,24 +705,8 @@ void Smb4KMainWindow::slotAddBookmarks()
         {
           action->trigger();
         }
-        else
-        {
-          // Do nothing
-        }
       }
-      else
-      {
-        // Do nothing
-      }      
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -879,10 +782,6 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
               message = i18n("Looking for files and directories in %1...", s->displayString());   
               break;
             }
-            else
-            {
-              // Do nothing
-            }
           }
                  
           break;
@@ -923,10 +822,6 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
   {
     m_progress_bar->setVisible(true);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -937,10 +832,6 @@ void Smb4KMainWindow::slotClientFinished(const NetworkItemPtr &/*item*/, int /*p
     m_progress_bar->setVisible(false);
     m_progress_bar->reset();
     statusBar()->showMessage(i18n("Done."), 2000);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -976,10 +867,6 @@ void Smb4KMainWindow::slotMounterAboutToStart(int process)
   {
     m_progress_bar->setVisible(true);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -990,10 +877,6 @@ void Smb4KMainWindow::slotMounterFinished(int /*process*/)
     m_progress_bar->setVisible(false);
     m_progress_bar->reset();
     statusBar()->showMessage(i18n("Done."), 2000);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1038,16 +921,8 @@ void Smb4KMainWindow::slotVisualMountFeedback(const SharePtr &share)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
 
     QTimer::singleShot(2000, this, SLOT(slotEndVisualFeedback()));
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1092,16 +967,8 @@ void Smb4KMainWindow::slotVisualUnmountFeedback(const SharePtr &share)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
 
     QTimer::singleShot(2000, this, SLOT(slotEndVisualFeedback()));
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1151,10 +1018,6 @@ void Smb4KMainWindow::slotSynchronizerAboutToStart(const QString &dest)
   {
     m_progress_bar->setVisible(true);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -1165,10 +1028,6 @@ void Smb4KMainWindow::slotSynchronizerFinished(const QString &/*dest*/)
     m_progress_bar->setVisible(false);
     m_progress_bar->reset();
     statusBar()->showMessage(i18n("Done."), 2000);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1202,19 +1061,7 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
           {
             bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
           }
-          else
-          {
-            // Do nothing
-          }
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
     }
     else if (QString::compare(m_focusWidget->metaObject()->className(), "Smb4KSharesViewDockWidget") == 0)
@@ -1237,29 +1084,9 @@ void Smb4KMainWindow::slotEnableBookmarkAction()
           {
             bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());
           }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
         }
       }
-      else
-      {
-        // Do nothing
-      }      
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1279,10 +1106,6 @@ void Smb4KMainWindow::slotNetworkBrowserVisibilityChanged(bool visible)
       dock->widget()->clearFocus();
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -1300,10 +1123,6 @@ void Smb4KMainWindow::slotSharesViewVisibilityChanged(bool visible)
     {
       dock->widget()->clearFocus();
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

@@ -191,10 +191,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
         {
           Smb4KClient::self()->lookupDomainMembers(workgroup);
         }
-        else
-        {
-          // Do nothing
-        }
+        
         break;
       }
       case Host:
@@ -206,10 +203,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
         {
           Smb4KClient::self()->lookupShares(host);
         }
-        else
-        {
-          // Do nothing
-        }
+        
         break;
       }
       case Share:
@@ -293,10 +287,6 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
   
   return object;
 }
@@ -317,10 +307,6 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
     if (shareName.startsWith('/'))
     {
       shareName = shareName.mid(1, -1);
-    }
-    else
-    {
-      // Do nothing
     }
       
     SharePtr share = findShare(object->url(), object->workgroupName());
@@ -349,10 +335,6 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
       share.clear();      
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -368,15 +350,7 @@ void Smb4KDeclarative::unmount(Smb4KNetworkObject *object)
       {
         Smb4KMounter::self()->unmountShare(share);
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -411,10 +385,6 @@ Smb4KNetworkObject* Smb4KDeclarative::findMountedShare(const QUrl& url, bool exa
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
   
   return object;
 }
@@ -430,14 +400,6 @@ void Smb4KDeclarative::print(Smb4KNetworkObject* object)
     {
       Smb4KClient::self()->openPrintDialog(printer);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -478,24 +440,12 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
         }
       }
     }
-    else
-    {
-      // Do nothing
-    }
     
     // Now add the share.
     if (!shares.isEmpty())
     {
       Smb4KBookmarkHandler::self()->addBookmarks(shares);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -513,14 +463,6 @@ void Smb4KDeclarative::removeBookmark(Smb4KBookmarkObject* object)
     {
       Smb4KBookmarkHandler::self()->removeBookmark(bookmark);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -541,15 +483,7 @@ void Smb4KDeclarative::synchronize(Smb4KNetworkObject* object)
       {
         Smb4KSynchronizer::self()->synchronize(share);
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -597,10 +531,6 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
         break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -673,14 +603,6 @@ void Smb4KDeclarative::preview(Smb4KNetworkObject* object)
     {
       Smb4KClient::self()->openPreviewDialog(share);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

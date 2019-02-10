@@ -552,10 +552,6 @@ void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<OptionsPtr> &
   {
     m_optionsList = list;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Get the list widget and display the new options
@@ -596,10 +592,6 @@ void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<OptionsPtr> &
 
     optionsListWidget->sortItems(Qt::AscendingOrder);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -625,10 +617,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     workgroup->clear();
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Location
@@ -638,10 +626,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   if (location)
   {
     location->clear();
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -653,10 +637,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(ipAddress, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
     ipAddress->clear();
-  }
-  else
-  {
-    // Do nothing
   }
   
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)
@@ -670,10 +650,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(remountAlways, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     remountAlways->setChecked(false);
   }
-  else
-  {                                                     
-    // Do nothing
-  }
   
   //
   // User Id
@@ -685,10 +661,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(useUserId, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useUserId->setChecked(false);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *userId = findChild<KComboBox *>("UserId");
   
@@ -697,10 +669,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(userId, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
     KUser user((K_UID)Smb4KMountSettings::userId().toInt());
     userId->setCurrentText(QString("%1 (%2)").arg(user.loginName()).arg(user.userId().nativeId()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -713,10 +681,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(useGroupId, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useGroupId->setChecked(false);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *groupId = findChild<KComboBox *>("GroupId");
   
@@ -725,10 +689,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(groupId, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
     KUserGroup group((K_GID)Smb4KMountSettings::groupId().toInt());
     groupId->setCurrentText(QString("%1 (%2)").arg(group.name()).arg(group.groupId().nativeId()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -741,10 +701,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(useFileMode, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useFileMode->setChecked(false);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
   
@@ -752,10 +708,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(fileMode, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
     fileMode->setText(Smb4KMountSettings::fileMode());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -768,10 +720,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(useDirectoryMode, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useDirectoryMode->setChecked(false);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
   
@@ -779,10 +727,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
     directoryMode->setText(Smb4KMountSettings::fileMode());
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
   
@@ -796,10 +740,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(useWriteAccess, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useWriteAccess->setChecked(false);
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
@@ -829,10 +769,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // File system port
@@ -844,10 +780,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(useFilesystemPort, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useFilesystemPort->setChecked(false);
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
   
@@ -855,10 +787,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(filesystemPort, SIGNAL(valueChanged(int)), this, SLOT(slotEntryChanged()));
     filesystemPort->setValue(Smb4KMountSettings::remoteFileSystemPort());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -872,10 +800,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCifsUnixExtensionsSupport(bool)));
     cifsExtensionsSupport->setChecked(false);
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Security mode
@@ -886,10 +810,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(useSecurityMode, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useSecurityMode->setChecked(false);
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
@@ -961,10 +881,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
 #endif
   
   //
@@ -977,10 +893,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useSmbPort->setChecked(false);
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
   
@@ -988,10 +900,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotEntryChanged()));
     smbPort->setValue(Smb4KSettings::remoteSmbPort());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1003,10 +911,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(useKerberos, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     useKerberos->setChecked(false);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1021,10 +925,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     macAddress->clear();
     macAddress->setInputMask("HH:HH:HH:HH:HH:HH;_");
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Wake-On-Lan: send package before scan
@@ -1035,10 +935,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(sendPackageBeforeScan, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     sendPackageBeforeScan->setChecked(false);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1051,10 +947,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     disconnect(sendPackageBeforeMount, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     sendPackageBeforeMount->setChecked(false);
   }
-  else
-  {
-    // Do nothing
-  }
 
   // 
   // Disable widgets
@@ -1064,10 +956,6 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   if (tabWidget)
   {
     tabWidget->setEnabled(false);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -1080,10 +968,6 @@ void Smb4KConfigPageCustomOptions::setCurrentOptions(const QString& url)
     {
       m_currentOptions = o;
       break;
-    }
-    else
-    {
-      // Do nothing
     }
   }
 }
@@ -1100,10 +984,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     workgroup->setText(m_currentOptions->workgroupName());
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Location
@@ -1113,10 +993,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   if (location)
   {
     location->setText(m_currentOptions->displayString());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1128,10 +1004,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     ipAddress->setText(m_currentOptions->ipAddress());
     connect(ipAddress, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)
@@ -1155,10 +1027,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     
     connect(remountAlways, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // User Id
@@ -1170,10 +1038,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     useUserId->setChecked(m_currentOptions->useUser());
     connect(useUserId, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *userId = findChild<KComboBox *>("UserId");
   
@@ -1181,10 +1045,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     userId->setCurrentText(QString("%1 (%2)").arg(m_currentOptions->user().loginName()).arg(m_currentOptions->user().userId().nativeId()));
     connect(userId, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1197,10 +1057,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     useGroupId->setChecked(m_currentOptions->useGroup());
     connect(useGroupId, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *groupId = findChild<KComboBox *>("GroupId");
   
@@ -1208,10 +1064,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     groupId->setCurrentText(QString("%1 (%2)").arg(m_currentOptions->group().name()).arg(m_currentOptions->group().groupId().nativeId()));
     connect(groupId, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1224,21 +1076,13 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     useFileMode->setChecked(m_currentOptions->useFileMode());
     connect(useFileMode, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
-  
+
   KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
   
   if (fileMode)
   {
     fileMode->setText(m_currentOptions->fileMode());
     connect(fileMode, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1251,10 +1095,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     useDirectoryMode->setChecked(m_currentOptions->useFileMode());
     connect(useDirectoryMode, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
   
@@ -1262,10 +1102,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     directoryMode->setText(m_currentOptions->directoryMode());
     connect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
   
@@ -1279,10 +1115,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     useWriteAccess->setChecked(m_currentOptions->useWriteAccess());
     connect(useWriteAccess, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
@@ -1312,10 +1144,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     
     connect(writeAccess, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // File system port
@@ -1327,10 +1155,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     useFilesystemPort->setChecked(m_currentOptions->useFileSystemPort());
     connect(useFilesystemPort, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
   
@@ -1338,10 +1162,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     filesystemPort->setValue(m_currentOptions->fileSystemPort());
     connect(filesystemPort, SIGNAL(valueChanged(int)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1355,10 +1175,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     cifsExtensionsSupport->setChecked(m_currentOptions->cifsUnixExtensionsSupport());
     connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Security mode
@@ -1369,10 +1185,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     useSecurityMode->setChecked(m_currentOptions->useSecurityMode());
     connect(useSecurityMode, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
@@ -1444,10 +1256,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     
     connect(securityMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   slotCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
 #endif
@@ -1462,10 +1270,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     useSmbPort->setChecked(m_currentOptions->useSmbPort());
     connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
   
@@ -1473,10 +1277,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     smbPort->setValue(m_currentOptions->smbPort());
     connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1488,10 +1288,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     useKerberos->setChecked(m_currentOptions->useKerberos());
     connect(useKerberos, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1506,10 +1302,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     connect(macAddress, SIGNAL(textEdited(QString)), this, SLOT(slotEnableWOLFeatures(QString)));
     slotEnableWOLFeatures(m_currentOptions->macAddress());
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Wake-On-Lan: Send package before scan
@@ -1521,10 +1313,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     sendPackageBeforeScan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
     connect(sendPackageBeforeScan, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Wake-On-Lan: Send package before mount
@@ -1535,10 +1323,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   {
     sendPackageBeforeMount->setChecked(m_currentOptions->wolSendBeforeMount());
     connect(sendPackageBeforeMount, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -1555,10 +1339,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     int wolTabIndex = tabWidget->count() - 1;
     tabWidget->widget(wolTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -1572,10 +1352,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   if (ipAddress)
   {
     m_currentOptions->setIpAddress(ipAddress->text());
-  }
-  else
-  {
-    // Do nothing
   }
   
 #if !defined(SMB4K_UNSUPPORTED_PLATFORM)
@@ -1595,10 +1371,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
       m_currentOptions->setRemount(Smb4KCustomOptions::RemountNever);
     }
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // User Id
@@ -1609,20 +1381,12 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setUseUser(useUserId->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *userId = findChild<KComboBox *>("UserId");
   
   if (userId)
   {
     m_currentOptions->setUser(KUser(userId->itemData(userId->currentIndex()).toInt()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1634,20 +1398,12 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setUseGroup(useGroupId->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *groupId = findChild<KComboBox *>("GroupId");
   
   if (groupId)
   {
     m_currentOptions->setGroup(KUserGroup(groupId->itemData(groupId->currentIndex()).toInt()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1659,20 +1415,12 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setUseFileMode(useFileMode->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
   
   if (fileMode)
   {
     m_currentOptions->setFileMode(fileMode->text());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1684,20 +1432,12 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setUseDirectoryMode(useDirectoryMode->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
   
   if (directoryMode)
   {
     m_currentOptions->setDirectoryMode(directoryMode->text());
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
   
@@ -1710,10 +1450,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   if (useWriteAccess)
   {
     m_currentOptions->setUseWriteAccess(useWriteAccess->isChecked());
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
@@ -1731,14 +1467,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     {
       m_currentOptions->setWriteAccess(Smb4KMountSettings::EnumWriteAccess::ReadOnly);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1750,20 +1478,12 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setUseFileSystemPort(useFilesystemPort->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
   
   if (filesystemPort)
   {
     m_currentOptions->setFileSystemPort(filesystemPort->value());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1775,10 +1495,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Security mode
@@ -1788,10 +1504,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   if (useSecurityMode)
   {
     m_currentOptions->setUseSecurityMode(useSecurityMode->isChecked());
-  }
-  else
-  {
-    // Do nothing
   }
   
   KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
@@ -1844,14 +1556,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     {
       m_currentOptions->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Ntlmsspi);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
   
@@ -1864,20 +1568,12 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setUseSmbPort(useSmbPort->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
   
   if (smbPort)
   {
     m_currentOptions->setSmbPort(smbPort->value());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1889,10 +1585,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setUseKerberos(useKerberos->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // MAC address
@@ -1902,10 +1594,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   if (macAddress)
   {
     m_currentOptions->setMACAddress(macAddress->text());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1917,10 +1605,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   {
     m_currentOptions->setWOLSendBeforeNetworkScan(sendPackageBeforeScan->isChecked());
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Wake-On-Lan: Send package before mount
@@ -1930,10 +1614,6 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   if (sendPackageBeforeMount)
   {
     m_currentOptions->setWOLSendBeforeMount(sendPackageBeforeMount->isChecked());
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -1974,15 +1654,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
         o->setWOLSendBeforeNetworkScan(m_currentOptions->wolSendBeforeNetworkScan());
         o->setWOLSendBeforeMount(m_currentOptions->wolSendBeforeMount());
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
   
   m_maybe_changed = true;
@@ -2009,24 +1681,8 @@ bool Smb4KConfigPageCustomOptions::eventFilter(QObject* obj, QEvent* e)
           clearEditors();
           optionsListWidget->clearSelection();
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
   
   return QObject::eventFilter(obj, e);
@@ -2077,10 +1733,6 @@ void Smb4KConfigPageCustomOptions::slotCustomContextMenuRequested(const QPoint& 
       {
         a->setEnabled(optionsListWidget->count() != 0);
       }
-      else
-      {
-        // Do nothing
-      }
     }
   
     KActionMenu *actionMenu = optionsListWidget->findChild<KActionMenu *>("ActionMenu");
@@ -2089,14 +1741,6 @@ void Smb4KConfigPageCustomOptions::slotCustomContextMenuRequested(const QPoint& 
     {
       actionMenu->menu()->popup(optionsListWidget->viewport()->mapToGlobal(pos));
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2108,10 +1752,6 @@ void Smb4KConfigPageCustomOptions::slotEditActionTriggered(bool /*checked*/)
   if (optionsListWidget)
   {
     slotEditCustomItem(optionsListWidget->currentItem());
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2134,10 +1774,6 @@ void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
       {
         m_optionsList.takeAt(index).clear();
       }
-      else
-      {
-        // Do nothing
-      }
       
       KLineEdit *location = findChild<KLineEdit *>("Location");
       
@@ -2147,14 +1783,6 @@ void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
         {
           clearEditors();
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       delete item;
@@ -2163,14 +1791,6 @@ void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
       m_maybe_changed = true;
       emit customSettingsModified();
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2187,10 +1807,6 @@ void Smb4KConfigPageCustomOptions::slotClearActionTriggered(bool /*checked*/)
     {
       delete optionsListWidget->item(0);
     }
-  }
-  else
-  {
-    // Do nothing
   }
 
   while (!m_optionsList.isEmpty())
@@ -2224,10 +1840,6 @@ void Smb4KConfigPageCustomOptions::slotEnableWOLFeatures(const QString &mac_addr
   {
     sendPackageBeforeScan->setEnabled(exp.exactMatch(mac_address));
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Wake-On-Lan: send package before mount
@@ -2237,10 +1849,6 @@ void Smb4KConfigPageCustomOptions::slotEnableWOLFeatures(const QString &mac_addr
   if (sendPackageBeforeMount)
   {
     sendPackageBeforeMount->setEnabled(exp.exactMatch(mac_address));
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -2256,20 +1864,12 @@ void Smb4KConfigPageCustomOptions::slotCifsUnixExtensionsSupport(bool on)
   {
     useUserId->setEnabled(!on);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *userId = findChild<KComboBox *>("UserId");
   
   if (userId)
   {
     userId->setEnabled(!on);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -2281,20 +1881,12 @@ void Smb4KConfigPageCustomOptions::slotCifsUnixExtensionsSupport(bool on)
   {
     useGroupId->setEnabled(!on);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KComboBox *groupId = findChild<KComboBox *>("GroupId");
   
   if (groupId)
   {
     groupId->setEnabled(!on);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -2306,20 +1898,12 @@ void Smb4KConfigPageCustomOptions::slotCifsUnixExtensionsSupport(bool on)
   {
     useFileMode->setEnabled(!on);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
   
   if (fileMode)
   {
     fileMode->setEnabled(!on);
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -2331,20 +1915,12 @@ void Smb4KConfigPageCustomOptions::slotCifsUnixExtensionsSupport(bool on)
   {
     useDirectoryMode->setEnabled(!on);
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
   
   if (directoryMode)
   {
     directoryMode->setEnabled(!on);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

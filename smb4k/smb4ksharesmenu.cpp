@@ -2,7 +2,7 @@
     smb4ksharesmenu  -  Shares menu
                              -------------------
     begin                : Mon Sep 05 2011
-    copyright            : (C) 2011-2018 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -102,10 +102,6 @@ void Smb4KSharesMenu::refreshMenu()
   {
     menu()->clear();
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Set up the menu
@@ -145,10 +141,6 @@ void Smb4KSharesMenu::setupMenu()
     if (!share)
     {
       continue;
-    }
-    else
-    {
-      // Do nothing
     }
     
     // Add the display name to the list
@@ -245,10 +237,6 @@ void Smb4KSharesMenu::setupMenu()
         addAction(action);
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
   }
   
@@ -293,10 +281,6 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
   {
     share = findShareByPath(action->data().toMap().value("mountpoint").toString());
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Now process the action
@@ -326,14 +310,6 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
     {
       openShare(share, Smb4KGlobal::FileManager);
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

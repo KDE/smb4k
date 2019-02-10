@@ -2,7 +2,7 @@
     The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2018 by Alexander Reinholdt
+    copyright            : (C) 2004-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

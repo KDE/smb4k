@@ -3,7 +3,7 @@
     It is for use with QtQuick.
                              -------------------
     begin                : Fr Mär 02 2012
-    copyright            : (C) 2012-2017 by Alexander Reinholdt
+    copyright            : (C) 2012-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -190,10 +190,6 @@ void Smb4KNetworkObject::setMasterBrowser(bool master)
     d->isMaster = master;
     emit changed();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -208,18 +204,10 @@ QString Smb4KNetworkObject::shareName() const
   {
     share_name = share_name.remove(0, 1);
   }
-  else
-  {
-    // Do nothing
-  }
 
   if (share_name.endsWith('/'))
   {
     share_name = share_name.remove(share_name.size() - 1, 1);
-  }
-  else
-  {
-    // Do nothing
   }
 
   return share_name;
@@ -351,14 +339,6 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
         d->inaccessible = false;
         d->printer      = false;
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   else if (d->type == Host && networkItem->type() == Smb4KGlobal::Host)
@@ -379,14 +359,6 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
         d->inaccessible = false;
         d->printer      = false;
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   else if (d->type == Share && networkItem->type() == Smb4KGlobal::Share)
@@ -410,14 +382,6 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
         d->mountpoint.setUrl(share->path(), QUrl::TolerantMode);
         d->mountpoint.setScheme("file");
       }
-      else
-      {
-        // Do nothing
-      }
-    }
-    else
-    {
-      // Do nothing
     }
   }
   else

@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2017 by Alexander Reinholdt
+    copyright            : (C) 2007-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

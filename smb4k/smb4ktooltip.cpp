@@ -113,10 +113,6 @@ void Smb4KToolTip::setup(Smb4KToolTip::Parent parent, const NetworkItemPtr &item
       }
     }
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -238,10 +234,6 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, const NetworkItemPtr &ite
         break;
       }
     }    
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -658,10 +650,6 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
             mb_label->setText(workgroup->masterBrowserName());
           }
         }
-        else
-        {
-          // Do nothing
-        }
         
         break;
       }
@@ -684,10 +672,6 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
             co_label->setText("-");
           }
         }
-        else
-        {
-          // Do nothing
-        }
       
         // IP address
         QLayoutItem *ip_item = m_text_layout->itemAtPosition(2, 1);
@@ -703,10 +687,6 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
           {
             ip_label->setText("-");
           }
-        }
-        else
-        {
-          // Do nothing
         }
       
         break;
@@ -735,10 +715,6 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
             co_label->setText("-");
           }
         }
-        else
-        {
-          // Do nothing
-        }
      
         // Mounted indicator
         QLayoutItem *mnt_item = m_text_layout->itemAtPosition(2, 1);
@@ -762,10 +738,6 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
             mnt_label->setText("-");
           }
         }
-        else
-        {
-          // Do nothing
-        }
         
         // The rest won't change while the tool tip is shown.
       
@@ -776,10 +748,6 @@ void Smb4KToolTip::updateNetworkBrowserToolTip()
         break;
       }
     }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -822,10 +790,6 @@ void Smb4KToolTip::updateSharesViewToolTip()
       s_label->setText(i18n("unknown"));
     }
   }
-  else
-  {
-    // Do nothing
-  }
   
   // The rest won't change while the tool tip is shown.
 }
@@ -849,10 +813,6 @@ void Smb4KToolTip::paintEvent(QPaintEvent *e)
     painter.translate(0.5, 0.5);
     toColor.setAlpha(220);
     fromColor.setAlpha(220);
-  }
-  else
-  {
-    // Do nothing
   }
 
   QLinearGradient gradient(QPointF(0.0, 0.0), QPointF(0.0, height()));

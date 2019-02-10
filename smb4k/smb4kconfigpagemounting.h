@@ -2,7 +2,7 @@
     The configuration page for the mount options
                              -------------------
     begin                : So Mär 22 2015
-    copyright            : (C) 2015-2018 by Alexander Reinholdt
+    copyright            : (C) 2015-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

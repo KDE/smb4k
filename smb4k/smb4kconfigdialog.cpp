@@ -2,7 +2,7 @@
     The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2018 by Alexander Reinholdt
+    copyright            : (C) 2004-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -187,10 +187,6 @@ void Smb4KConfigDialog::loadCustomOptions()
     QList<OptionsPtr> options = Smb4KCustomOptionsManager::self()->customOptions();
     m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions(options);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -200,10 +196,6 @@ void Smb4KConfigDialog::saveCustomOptions()
   {
     QList<OptionsPtr> options = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->getCustomOptions();
     Smb4KCustomOptionsManager::self()->replaceCustomOptions(options);
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -222,10 +214,6 @@ void Smb4KConfigDialog::propagateProfilesChanges()
       Smb4KProfileManager::self()->removeProfiles(removed_profiles);
       profiles_page->clearRemovedProfiles();
     }
-    else
-    {
-      // Do nothing
-    }
     
     // Rename the profiles.
     QList< QPair<QString,QString> > renamed_profiles = profiles_page->renamedProfiles();
@@ -235,24 +223,12 @@ void Smb4KConfigDialog::propagateProfilesChanges()
       Smb4KProfileManager::self()->migrateProfiles(renamed_profiles);
       profiles_page->clearRenamedProfiles();
     }
-    else
-    {
-      // Do nothing
-    }
     
     // Finally reload the custom options.
     if (!removed_profiles.isEmpty() || !renamed_profiles.isEmpty())
     {
       loadCustomOptions();
     }
-    else
-    {
-      // Do nothing
-    }
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -272,10 +248,6 @@ bool Smb4KConfigDialog::checkNetworkPage()
     custom_master_input->setFocus();
     return false;
   }
-  else
-  {
-    // Do nothing
-  }
   
   QRadioButton *scan_bcast_areas = m_network->widget()->findChild<QRadioButton *>("kcfg_ScanBroadcastAreas");
   KLineEdit *bcast_areas_input   = m_network->widget()->findChild<KLineEdit *>("kcfg_BroadcastAreas");
@@ -288,10 +260,6 @@ bool Smb4KConfigDialog::checkNetworkPage()
     bcast_areas_input->setFocus();
     return false;
   }
-  else
-  {
-    // Do nothing
-  }  
   
   return true;
 }
@@ -311,10 +279,6 @@ bool Smb4KConfigDialog::checkMountingPage()
     mount_prefix->setFocus();
     return false;
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *file_mask = m_mounting->widget()->findChild<KLineEdit *>("kcfg_FileMask");
   
@@ -327,10 +291,6 @@ bool Smb4KConfigDialog::checkMountingPage()
     file_mask->setFocus();
     return false;
   }
-  else
-  {
-    // Do nothing
-  }
   
   KLineEdit *directory_mask = m_mounting->widget()->findChild<KLineEdit *>("kcfg_DirectoryMask");
   
@@ -340,10 +300,6 @@ bool Smb4KConfigDialog::checkMountingPage()
     setCurrentPage(m_mounting);
     directory_mask->setFocus();
     return false;
-  }
-  else
-  {
-    // Do nothing
   }
 #endif
   
@@ -380,10 +336,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
         syncPrefix->setFocus();
         return false;
       }
-      else
-      {
-        // Do nothing
-      }
     
       // Backups
       QCheckBox *makeBackups = configPage->widget(i)->findChild<QCheckBox *>("kcfg_MakeBackups");
@@ -404,14 +356,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
             backupSuffix->setFocus();
             return false;
           }
-          else
-          {
-            // Do nothing
-          }
-        }
-        else
-        {
-          // Do nothing
         }
         
         if (useBackupDir && useBackupDir->isChecked())
@@ -424,19 +368,7 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
             backupDir->setFocus();
             return false;
           }
-          else
-          {
-            // Do nothing
-          }
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // Minimal transfer size
@@ -453,16 +385,8 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
           minTransferSize->setFocus();
           return false;
         }
-        else
-        {
-          // Do nothing
-        }
       }
-      else
-      {
-        // Do nothing
-      }
-      
+
       // Maximal transfer size
       QCheckBox *useMaxTransferSize = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseMaximalTransferSize");
       QSpinBox *maxTransferSize = configPage->widget(i)->findChild<QSpinBox *>("kcfg_MaximalTransferSize");
@@ -477,14 +401,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
           maxTransferSize->setFocus();
           return false;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // Partial directory
@@ -501,14 +417,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
           partialDirectory->setFocus();
           return false;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // Exclude exclude
@@ -525,14 +433,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
           excludePattern->setFocus();
           return false;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // Read exclude pattern from file
@@ -549,14 +449,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
           excludeFrom->setFocus();
           return false;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // Exclude exclude
@@ -573,14 +465,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
           includePattern->setFocus();
           return false;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // Read exclude pattern from file
@@ -597,14 +481,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
           includeFrom->setFocus();
           return false;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // Block size
@@ -621,14 +497,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
           fixedBlocksize->setFocus();
           return false;
         }
-        else
-        {
-          // Do nothing
-        }
-      }
-      else
-      {
-        // Do nothing
       }
       
       // NOTE: The is no need to check the following settings, because they may be empty or 0:
@@ -639,10 +507,6 @@ bool Smb4KConfigDialog::checkSynchronizationPage()
       // - kcfg_CustomFilteringRules
       // - kcfg_UseChecksumSeed & kcfg_ChecksumSeed
     }
-  }
-  else
-  {
-    // Do nothing
   }
 
   return true;
@@ -657,29 +521,17 @@ bool Smb4KConfigDialog::checkSettings()
   {
     return false;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Check Mounting page
   if (!checkMountingPage())
   {
     return false;
   }
-  else
-  {
-    // Do nothing
-  }
   
   // Check Synchronization page
   if (!checkSynchronizationPage())
   {
     return false;
-  }
-  else
-  {
-    // Do nothing
   }
   
   return true;
@@ -738,10 +590,6 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
     QList<Smb4KAuthInfo *> entries = auth_options->getWalletEntries();
     Smb4KWalletManager::self()->writeWalletEntries(entries);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -773,10 +621,6 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
       {
         slotLoadAuthenticationInformation();
       }
-      else
-      {
-        // Do nothing
-      }    
     }
     else
     {
@@ -785,10 +629,6 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
     }
     
     delete dlg;
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -820,25 +660,13 @@ void Smb4KConfigDialog::slotEnableApplyButton()
           enable = true;
           break;
         }
-        else
-        {
-          // Do nothing
-        }
       }
       
       if (enable)
       {
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
-  }
-  else
-  {
-    // Do nothing
   }
   
   // 
@@ -850,10 +678,6 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   {
     enable = true;
   }
-  else
-  {
-    // Do nothing
-  }
 
   QPushButton *applyButton = buttonBox()->button(QDialogButtonBox::Apply);
   
@@ -861,20 +685,12 @@ void Smb4KConfigDialog::slotEnableApplyButton()
   {
     applyButton->setEnabled(enable);
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
 void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem* /*current*/, KPageWidgetItem* before)
 {
-  if (before == m_user_interface)
-  {
-    // Nothing to do
-  }
-  else if (before == m_network)
+  if (before == m_network)
   {
     (void)checkNetworkPage();
   }
@@ -884,25 +700,9 @@ void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem* /*current*/, KPageWidgetI
     (void)checkMountingPage();
   }
 #endif
-  else if (before == m_authentication)
-  {
-    // Do nothing
-  }
   else if (before == m_synchronization)
   {
     (void)checkSynchronizationPage();
-  }
-  else if (before == m_custom_options)
-  {
-    // Do nothing
-  }
-  else if (before == m_profiles)
-  {
-    // Do nothing
-  }
-  else
-  {
-    // Do nothing
   }
 }
 

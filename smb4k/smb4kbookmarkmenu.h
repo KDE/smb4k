@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2018 by Alexander Reinholdt
+    copyright            : (C) 2011-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

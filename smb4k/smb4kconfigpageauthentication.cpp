@@ -2,7 +2,7 @@
     The configuration page for the authentication settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2017 by Alexander Reinholdt
+    copyright            : (C) 2003-2019 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -257,10 +257,6 @@ void Smb4KConfigPageAuthentication::displayWalletEntries()
   {
     m_entries_widget->clear();
   }
-  else
-  {
-    // Do nothing
-  }
   
   for (int i = 0; i < m_entries_list.size(); ++i)
   {
@@ -305,14 +301,6 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
         m_entries_widget->clearSelection();
         m_collection->action("remove_action")->setEnabled(false);
       }
-      else
-      {
-        // Do nothing. Is managed by slotItemSelectionChanged().
-      }
-    }
-    else
-    {
-      // Do nothing
     }
     
     return m_entries_widget->viewport()->eventFilter(object, e);
@@ -334,16 +322,8 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
         m_collection->action("edit_action")->setEnabled(false);
       }
     }
-    else
-    {
-      // Do nothing
-    }
     
     return m_details_widget->viewport()->eventFilter(object, e);
-  }
-  else
-  {
-    // Do nothing
   }
   
   return QTabWidget::eventFilter(object, e);
@@ -464,10 +444,6 @@ void Smb4KConfigPageAuthentication::slotDefaultLoginToggled(bool checked)
   {
     emit setDefaultLogin();
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -551,10 +527,6 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
                 }
               }
             }
-            else
-            {
-              // Do nothing
-            }
             
             break;
           }
@@ -580,10 +552,6 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
                 }
               }
             }
-            else
-            {
-              // Do nothing
-            }
             
             break;
           }
@@ -600,10 +568,6 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
     m_collection->action("undo_details_action")->setEnabled(true);
     m_maybe_changed = true;
     emit walletEntriesModified();
-  }
-  else
-  {
-    // Do nothing
   }
 }
 
@@ -626,10 +590,6 @@ void Smb4KConfigPageAuthentication::slotRemoveActionTriggered(bool /*checked*/)
        QString::compare(m_entries_widget->currentItem()->text(), m_details_widget->item(0, 1)->text()) == 0)
   {
     clearDetails();
-  }
-  else
-  {
-    // Do nothing
   }
 
   for (int i = 0; i < m_entries_list.size(); ++i)
@@ -715,10 +675,6 @@ void Smb4KConfigPageAuthentication::slotEditActionTriggered(bool /*checked*/)
   {
     m_details_widget->editItem(m_details_widget->currentItem());
   }
-  else
-  {
-    // Do nothing
-  }
 }
 
 
@@ -753,10 +709,6 @@ void Smb4KConfigPageAuthentication::slotUndoDetailsActionTriggered(bool /*checke
       
       break;
     }
-    else
-    {
-      // Do nothing
-    }          
   }
   
   m_collection->action("undo_details_action")->setEnabled(false);

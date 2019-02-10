@@ -68,10 +68,6 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
     reply.setType(ActionReply::HelperErrorType);
     return reply;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Mount command
@@ -87,8 +83,6 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
   command << args["mh_options"].toStringList();
   command << args["mh_url"].toUrl().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort);
   command << args["mh_mountpoint"].toString();
-#else
-    // Do nothing.
 #endif
   
   //
@@ -108,10 +102,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
   {
     proc.setEnv("KRB5CCNAME", args["mh_krb5ticket"].toString());
   }
-  else
-  {
-    // Do nothing
-  }
+
   proc.setProgram(command);
   proc.start();
     
@@ -130,10 +121,6 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
         proc.write(args["mh_url"].toUrl().password().toUtf8());
         proc.write("\r");
       }
-      else
-      {
-        // Do nothing
-      }
 
       // We want to be able to terminate the process from outside.
       // Thus, we implement a loop that checks periodically, if we
@@ -143,10 +130,6 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
         proc.kill();
         userKill = true;
       }
-      else
-      {
-        // Do nothing
-      }
     }
 
     if (proc.exitStatus() == KProcess::CrashExit)
@@ -155,10 +138,6 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
       {
         reply.setType(ActionReply::HelperErrorType);
         reply.setErrorDescription(i18n("The mount process crashed."));
-      }
-      else
-      {
-        // Do nothing
       }
     }
     else
@@ -196,10 +175,6 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
     reply.setType(ActionReply::HelperErrorType);
     return reply;
   }
-  else
-  {
-    // Do nothing
-  }
   
   //
   // Check if the mountpoint is valid and the filesystem is correct.
@@ -220,10 +195,6 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
       mountPointOk = true;
       break;
     }
-    else
-    {
-      // Do nothing
-    }
   }
   
   //
@@ -233,10 +204,6 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
   {
     reply.setType(ActionReply::HelperErrorType);
     reply.setErrorDescription(i18n("The mountpoint %1 is invalid.", args["mh_mountpoint"].toString()));
-  }
-  else
-  {
-    // Do nothing
   }
   
   //
@@ -271,10 +238,6 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
         userKill = true;
         break;
       }
-      else
-      {
-        // Do nothing
-      }
     }
 
     if (proc.exitStatus() == KProcess::CrashExit)
@@ -283,10 +246,6 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
       {
         reply.setType(ActionReply::HelperErrorType);
         reply.setErrorDescription(i18n("The unmount process crashed."));
-      }
-      else
-      {
-        // Do nothing
       }
     }
     else
