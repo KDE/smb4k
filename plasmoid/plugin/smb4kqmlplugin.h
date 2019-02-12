@@ -36,7 +36,7 @@ class Smb4KQMLPlugin : public QQmlExtensionPlugin
   Q_PLUGIN_METADATA(IID "org.kde.smb4k.smb4kqmlplugin")
 
   public:
-    void registerTypes(const char *uri);
+    void registerTypes(const char *uri) override;
 };
 
 #endif

@@ -59,7 +59,7 @@ class Q_DECL_EXPORT Smb4KToolTip : public QWidget
     const NetworkItemPtr &networkItem() { return m_item; }
     
   protected:
-    void paintEvent(QPaintEvent *e);
+    void paintEvent(QPaintEvent *e) override;
     
   protected slots:
     void slotHideToolTip();

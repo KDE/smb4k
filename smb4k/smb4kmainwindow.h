@@ -70,12 +70,12 @@ class Smb4KMainWindow : public KXmlGuiWindow
     /**
      * Reimplemented from KMainWindow.
      */
-    bool queryClose();
+    bool queryClose() override;
     
     /**
      * Reimplemented from KMainWindow
      */
-    bool eventFilter(QObject *obj, QEvent *e);
+    bool eventFilter(QObject *obj, QEvent *e) override;
 
   protected slots:
     /**

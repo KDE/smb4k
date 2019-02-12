@@ -91,7 +91,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
     /**
      * Reimplemented from QWidget.
      */
-    bool event(QEvent *e);
+    bool event(QEvent *e) override;
 
     /**
      * Reimplemented from QWidget. This function keeps track of the
@@ -99,7 +99,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The mouse event
      */
-    void mouseMoveEvent(QMouseEvent *e);
+    void mouseMoveEvent(QMouseEvent *e) override;
 
     /**
      * Reimplemented from QWidget. This function emits the signal
@@ -107,7 +107,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The event object
      */
-    void leaveEvent(QEvent *e);
+    void leaveEvent(QEvent *e) override;
 
     /**
      * Reimplemented from QWidget. This function emits the signal
@@ -115,7 +115,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The event object
      */
-    void enterEvent(QEvent *e);
+    void enterEvent(QEvent *e) override;
 
     /**
      * Reimplemented from QAbstractItemView. This function handles
@@ -123,7 +123,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The mouse event object
      */
-    void mousePressEvent(QMouseEvent *e);
+    void mousePressEvent(QMouseEvent *e) override;
 
     /**
      * Reimplemented from QAbstractItemView. This function is used
@@ -131,7 +131,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The focus event
      */
-    void focusOutEvent(QFocusEvent *e);
+    void focusOutEvent(QFocusEvent *e) override;
 
     /**
      * Reimplemented from QWidget. This function is used to handle
@@ -139,7 +139,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param e             The wheel event
      */
-    void wheelEvent(QWheelEvent *e);
+    void wheelEvent(QWheelEvent *e) override;
 
   protected slots:
    /**
@@ -149,8 +149,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
      *
      * @param column        The column where the item was entered.
      */
-    void slotItemEntered(QTreeWidgetItem *item,
-                          int column);
+    void slotItemEntered(QTreeWidgetItem *item, int column);
 
     /**
      * This slot is invoked when the viewport is entered. It is used

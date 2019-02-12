@@ -99,7 +99,7 @@ class Smb4KClientJob : public KJob
     /**
      * Starts the job.
      */
-    void start();
+    void start() override;
     
     /**
      * Set the basic network item

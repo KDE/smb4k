@@ -146,7 +146,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
     /**
      * This function starts the composite job
      */
-    void start();
+    void start() override;
     
   Q_SIGNALS:
     /**
@@ -200,7 +200,7 @@ class Q_DECL_EXPORT Smb4KMounter : public KCompositeJob
      *
      * @param event             The QTimerEvent event
      */
-    void timerEvent(QTimerEvent *event);
+    void timerEvent(QTimerEvent *event) override;
 
   protected Q_SLOTS:
     /**

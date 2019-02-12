@@ -96,7 +96,7 @@ class Smb4KSharesView : public QListWidget
     /**
      * Reimplemented from QListWidget.
      */
-    bool event(QEvent *e);
+    bool event(QEvent *e) override;
 
     /**
      * Reimplemented from QWidget. This function emits the signal
@@ -104,7 +104,7 @@ class Smb4KSharesView : public QListWidget
      *
      * @param e             The event object
      */
-    void leaveEvent(QEvent *e);
+    void leaveEvent(QEvent *e) override;
 
     /**
      * Reimplemented from QWidget. This function emits the signal
@@ -112,7 +112,7 @@ class Smb4KSharesView : public QListWidget
      *
      * @param e             The event object
      */
-    void enterEvent(QEvent *e);
+    void enterEvent(QEvent *e) override;
 
     /**
      * Reimplemented from QAbstractItemView. This function handles
@@ -120,7 +120,7 @@ class Smb4KSharesView : public QListWidget
      *
      * @param e             The mouse event object
      */
-    void mousePressEvent(QMouseEvent *e);
+    void mousePressEvent(QMouseEvent *e) override;
 
     /**
      * Reimplemented from QAbstractItemView. This function is used
@@ -128,7 +128,7 @@ class Smb4KSharesView : public QListWidget
      *
      * @param e             The focus event
      */
-    void focusOutEvent(QFocusEvent *e);
+    void focusOutEvent(QFocusEvent *e) override;
 
     /**
      * Reimplemented from QWidget. This function is used to handle
@@ -136,43 +136,43 @@ class Smb4KSharesView : public QListWidget
      *
      * @param e             The wheel event
      */
-    void wheelEvent(QWheelEvent *e);
+    void wheelEvent(QWheelEvent *e) override;
 
     /**
      * Reimplemented to allow dragging and dropping.
      *
      * @param e             The drag event
      */
-    virtual void dragEnterEvent(QDragEnterEvent *e);
+    virtual void dragEnterEvent(QDragEnterEvent *e) override;
 
     /**
      * Reimplemented to allow dragging and dropping.
      *
      * @param e             The drag move event
      */
-    void dragMoveEvent(QDragMoveEvent *e);
+    void dragMoveEvent(QDragMoveEvent *e) override;
 
     /**
      * Reimplemented to allow dragging and dropping.
      *
      * @param e             The drop event
      */
-    void dropEvent(QDropEvent *e);
+    void dropEvent(QDropEvent *e) override;
 
     /**
      * Reimplemented to allow only the copy drop action.
      */
-    Qt::DropActions supportedDropActions() const;
+    Qt::DropActions supportedDropActions() const override;
 
     /**
      * Reimplemented to allow dragging.
      */
-    QMimeData *mimeData(const QList<QListWidgetItem *> list) const;
+    QMimeData *mimeData(const QList<QListWidgetItem *> list) const override;
 
     /**
      * Reimplemented to allow dragging.
      */
-    void startDrag(Qt::DropActions supported);
+    void startDrag(Qt::DropActions supported) override;
 
   protected slots:
     /**

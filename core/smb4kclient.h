@@ -68,7 +68,7 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
     /**
      * This function starts the composite job
      */
-    void start();
+    void start() override;
     
     /**
      * Returns TRUE, if jobs are running and FALSE otherwise
@@ -203,7 +203,7 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
     /**
      * Called when a job finished. Reimplemented from KCompositeJob.
      */
-    void slotResult(KJob *job);
+    void slotResult(KJob *job) override;
     
     /**
      * Called when the application is about to be closed

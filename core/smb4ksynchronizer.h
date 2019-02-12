@@ -100,7 +100,7 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
     /**
      * This function starts the composite job
      */
-    void start();
+    void start() override;
 
   Q_SIGNALS:
     /**

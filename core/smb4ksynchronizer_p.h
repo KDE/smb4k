@@ -69,7 +69,7 @@ class Smb4KSyncJob : public KJob
     /**
      * Starts the synchronization
      */
-    void start();
+    void start() override;
 
     /**
      * Setup the synchronization process. You need to set the share, the parent
@@ -119,7 +119,7 @@ class Smb4KSyncJob : public KJob
      * Reimplemented from KJob. Kills the internal process and
      * then the job itself.
      */
-    bool doKill();
+    bool doKill() override;
     
   protected Q_SLOTS:
     void slotStartSynchronization();

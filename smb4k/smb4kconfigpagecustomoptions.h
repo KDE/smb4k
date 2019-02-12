@@ -94,7 +94,7 @@ class Smb4KConfigPageCustomOptions : public QWidget
     /**
      * Reimplemented from QObject
      */
-    bool eventFilter(QObject *obj, QEvent *e);
+    bool eventFilter(QObject *obj, QEvent *e) override;
     
   Q_SIGNALS:
     /**

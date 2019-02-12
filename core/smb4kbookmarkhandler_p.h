@@ -194,7 +194,7 @@ class Smb4KBookmarkEditor : public QDialog
     /**
      * Reimplemented from QObject
      */
-    bool eventFilter(QObject *obj, QEvent *e);
+    bool eventFilter(QObject *obj, QEvent *e) override;
 
   protected Q_SLOTS:
     /**
