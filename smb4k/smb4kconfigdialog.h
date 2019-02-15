@@ -63,19 +63,19 @@ class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
      * Reimplemented from KConfigDialog. Used to do things that 
      * KConfigDialog::updateSettings() does not do.
      */
-    void updateSettings();
+    void updateSettings() override;
     
     /**
      * Reimplemented from KConfigDialog. Used to do things before
      * the dialog is shown.
      */
-    void updateWidgets();
+    void updateWidgets() override;
     
     /**
      * Reimplemented from QDialog. Used to reset things after the dialog was
      * closed via the 'Cancel' button.
      */
-    void reject();
+    void reject() override;
     
     /**
      * This slot is connected to the "Load" button of the "Wallet Entries" tab

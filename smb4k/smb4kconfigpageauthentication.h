@@ -146,7 +146,7 @@ class Smb4KConfigPageAuthentication : public QTabWidget
      * Reimplemented.
      */
     bool eventFilter(QObject *object,
-                     QEvent *event);
+                     QEvent *event) override;
     
   protected slots:
     /**
