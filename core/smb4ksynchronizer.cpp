@@ -118,7 +118,7 @@ bool Smb4KSynchronizer::isRunning(const SharePtr &share)
 
 void Smb4KSynchronizer::abort(const SharePtr &share)
 {
-  if (share)
+  if (share && !share.isNull())
   {
     for (KJob *job : subjobs())
     {
