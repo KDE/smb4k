@@ -27,8 +27,7 @@
 #define SMB4KAUTHINFO_H
 
 // application specific includes
-#include "smb4khost.h"
-#include "smb4kshare.h"
+#include "smb4kbasicnetworkitem.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -54,22 +53,11 @@ class Q_DECL_EXPORT Smb4KAuthInfo
   
   public:
     /**
-     * Constructor for a host item.
-     *
-     * @param host      The Smb4KHost item.
-     */
-    explicit Smb4KAuthInfo(const Smb4KHost *host);
-
-
-    /**
-     * Constructor for a share item.
+     * Constructor
      * 
-     * In case the share is a 'homes' share, this constructor will automatically
-     * use the Smb4KShare::homeUrl() function to set the URL.
-     *
-     * @param share     The Smb4KShare item.
+     * @param item      The network item
      */
-    explicit Smb4KAuthInfo(const Smb4KShare *share);
+    explicit Smb4KAuthInfo(Smb4KBasicNetworkItem *item);
 
     /**
      * The empty constructor.
@@ -87,29 +75,9 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      * The destructor
      */
     ~Smb4KAuthInfo();
-
+    
     /**
-     * Set the host item. This overwrites all previous data that this object
-     * might have carried including the password.
-     *
-     * @param host      The Smb4KHost item
-     */
-    void setHost(Smb4KHost *host);
-
-    /**
-     * Set the share item. This overwrites all previous data that this object
-     * might have carried including the password.
-     * 
-     * In case the share is a 'homes' share, this function will automatically
-     * use the Smb4KShare::homeUrl() function to set the URL.
-     *
-     * @param share     The Smb4KShare item
-     */
-    void setShare(Smb4KShare *share);
-
-    /**
-     * Sets the workgroup name. This function should only be used if you neither can
-     * use setHost() nor setShare().
+     * Sets the workgroup name.
      *
      * @param workgroup The name of the workgroup
      */

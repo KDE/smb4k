@@ -29,6 +29,8 @@
 
 // application specific includes
 #include "smb4kauthinfo.h"
+#include "smb4khost.h"
+#include "smb4kshare.h"
 
 // Qt includes
 #include <QHostAddress>
@@ -49,40 +51,53 @@ class Smb4KAuthInfoPrivate
 };
 
 
-Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KHost *host)
+Smb4KAuthInfo::Smb4KAuthInfo(Smb4KBasicNetworkItem* item)
 : d(new Smb4KAuthInfoPrivate)
 {
-  d->url        = host->url();
-  d->type       = Host;
-  d->workgroup  = host->workgroupName();
-  d->homesShare = false;
-  d->ip.setAddress(host->ipAddress());
-}
+  d->type = item->type();
 
-
-Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KShare *share)
-: d(new Smb4KAuthInfoPrivate)
-{
-  if (!share->isHomesShare())
+  switch (d->type)
   {
-    d->url      = share->url();
+    case Host:
+    {
+      Smb4KHost *host = static_cast<Smb4KHost *>(item);
+      
+      if (host)
+      {
+        d->url = host->url();
+        d->workgroup = host->workgroupName();
+        d->homesShare = false;
+        d->ip.setAddress(host->ipAddress());
+      }
+      
+      break;
+    }
+    case Share:
+    {
+      Smb4KShare *share = static_cast<Smb4KShare *>(item);
+      
+      if (share)
+      {
+        d->url = !share->isHomesShare() ? share->homeUrl() : share->url();
+        d->workgroup = share->workgroupName();
+        d->homesShare = share->isHomesShare();
+        d->ip.setAddress(share->hostIpAddress());
+      }
+      
+      break;
+    }
+    default:
+    {
+      break;
+    }
   }
-  else
-  {
-    d->url      = share->homeUrl();
-  }
-
-  d->type       = Share;
-  d->workgroup  = share->workgroupName();
-  d->homesShare = share->isHomesShare();
-  d->ip.setAddress(share->hostIpAddress());
 }
 
 
 Smb4KAuthInfo::Smb4KAuthInfo()
 : d(new Smb4KAuthInfoPrivate)
 {
-  d->type       = UnknownNetworkItem;
+  d->type = UnknownNetworkItem;
   d->homesShare = false;
   d->url.clear();
   d->workgroup.clear();
@@ -99,44 +114,6 @@ Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KAuthInfo &i)
 
 Smb4KAuthInfo::~Smb4KAuthInfo()
 {
-}
-
-
-void Smb4KAuthInfo::setHost(Smb4KHost *host)
-{
-  Q_ASSERT(host);
-  
-  if (host)
-  {
-    d->url        = host->url();
-    d->type       = Host;
-    d->workgroup  = host->workgroupName();
-    d->homesShare = false;
-    d->ip.setAddress(host->ipAddress());
-  }
-}
-
-
-void Smb4KAuthInfo::setShare(Smb4KShare *share)
-{
-  Q_ASSERT(share);
-  
-  if (share)
-  {
-    if (!share->isHomesShare())
-    {
-      d->url      = share->url();
-    }
-    else
-    {
-      d->url      = share->homeUrl();
-    }
-    
-    d->type       = Share;
-    d->workgroup  = share->workgroupName();
-    d->homesShare = share->isHomesShare();
-    d->ip.setAddress(share->hostIpAddress());
-  }
 }
 
 
@@ -175,22 +152,9 @@ void Smb4KAuthInfo::setUrl(const QUrl &url)
 
 void Smb4KAuthInfo::setUrl(const QString &url)
 {
-  d->url.setUrl(url, QUrl::TolerantMode);
-  d->url.setScheme("smb");
-  
-  // Set the type.
-  if (!d->url.path().isEmpty() && d->url.path().length() > 1 && !d->url.path().endsWith('/'))
-  {
-    d->type = Share;
-  }
-  else
-  {
-    d->type = Host;
-  }
-  
-  // Determine whether this is a homes share.
-  qDebug() << "Smb4KAuthInfo::setUrl(): Check if determination of homes share works";
-  d->homesShare = (QString::compare(d->url.path().remove(0, 1), "homes", Qt::CaseSensitive) == 0);
+  QUrl tempUrl(url, QUrl::TolerantMode);
+  tempUrl.setScheme("smb");
+  setUrl(tempUrl);
 }
 
 
