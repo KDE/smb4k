@@ -96,7 +96,7 @@
   <sect1 id="running_smb4k" >
     <title>Running &smb4k;</title>
     
-    <para>Since version 2.9.71, &smb4k; is using the <application>libsmbclient</application> library to browse and search the network neighborhood and print files. You should check which version of &Samba; you are using, before you are using &smb4k;. Users of Samba 4.7 and above need to set the follwing setting in the [global] section of the <filename>smb.conf</filename> file to be able browse the network neighborhood:</para>
+    <para>Since version 2.9.71, &smb4k; is using the <application>libsmbclient</application> library to browse and search the network neighborhood and print files. You should check which version of &Samba; you are using, before you are using &smb4k;. Users of Samba 4.7 and above need to set the following setting in the [global] section of the <filename>smb.conf</filename> file to be able browse the network neighborhood:</para>
       
 <programlisting>[global]
 ...
