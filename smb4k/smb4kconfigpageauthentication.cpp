@@ -86,35 +86,39 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
 
   layout->addWidget(settingsBox, 0);
 
-  // Adjustments
-  slotKWalletButtonToggled(useWallet->isChecked());
-  slotDefaultLoginToggled(defaultAuth->isChecked());
-  
   //
   // Wallet Entries group box
   // 
   QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
   
-  QGridLayout *walletEntriesBoxLayout = new QGridLayout(walletEntriesBox);
+  QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
   walletEntriesBoxLayout->setSpacing(5);
   
+  //
+  // Wallet Entries editor
+  // 
+  QWidget *walletEntriesEditor = new QWidget(walletEntriesBox);
+  walletEntriesEditor->setObjectName("WalletEntriesEditor");
+  
+  QGridLayout *walletEntriesEditorLayout= new QGridLayout(walletEntriesEditor);
+  walletEntriesEditorLayout->setSpacing(5);
+  
   // The list view that shows the wallet entriea
-  m_entries_widget = new QListWidget(walletEntriesBox);
+  m_entries_widget = new QListWidget(walletEntriesEditor);
   m_entries_widget->setDragDropMode(QListWidget::NoDragDrop);
   m_entries_widget->setSelectionMode(QListWidget::SingleSelection);
   m_entries_widget->setContextMenuPolicy(Qt::CustomContextMenu);
   m_entries_widget->viewport()->installEventFilter(this);
   
   // Load button
-  QPushButton *loadButton = new QPushButton(walletEntriesBox);
+  QPushButton *loadButton = new QPushButton(walletEntriesEditor);
   loadButton->setObjectName("LoadButton");
   loadButton->setText(i18n("Load"));
   loadButton->setIcon(KDE::icon("document-open"));
-  loadButton->setWhatsThis(i18n("The login information that was stored by Smb4K will be loaded from the wallet. "
-                                   "If you chose to not use the wallet, pressing this button will have no effect."));
+  loadButton->setWhatsThis(i18n("The login information that was stored by Smb4K will be loaded from the wallet."));
   
   // The Remove button
-  QPushButton *removeButton = new QPushButton(walletEntriesBox);
+  QPushButton *removeButton = new QPushButton(walletEntriesEditor);
   removeButton->setObjectName("RemoveButton");
   removeButton->setText(i18n("Remove"));
   removeButton->setIcon(KDE::icon("edit-delete"));
@@ -122,7 +126,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   removeButton->setEnabled(false);
   
   // The Clear button
-  QPushButton *clearButton = new QPushButton(walletEntriesBox);
+  QPushButton *clearButton = new QPushButton(walletEntriesEditor);
   clearButton->setObjectName("ClearButton");
   clearButton->setText(i18n("Clear"));
   clearButton->setIcon(KDE::icon("edit-clear-list"));
@@ -130,19 +134,18 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   clearButton->setEnabled(false);
   
   // The Save button
-  QPushButton *saveButton = new QPushButton(walletEntriesBox);
+  QPushButton *saveButton = new QPushButton(walletEntriesEditor);
   saveButton->setObjectName("SaveButton");
   saveButton->setText(i18n("Save"));
   saveButton->setIcon(KDE::icon("document-save-all"));
   saveButton->setWhatsThis(i18n("All modifications you applied are saved to the wallet."));
   saveButton->setEnabled(false);
   
-  m_details_box = new QCheckBox(i18n("Show details"), walletEntriesBox);
-  m_details_box->setToolTip(i18n("Show the details of the selected entry."));
+  m_details_box = new QCheckBox(i18n("Show details"), walletEntriesEditor);
   m_details_box->setWhatsThis(i18n("Marking this check box will show the details of the selected login information below."));
   m_details_box->setEnabled(false);
   
-  m_details_widget = new QTableWidget(walletEntriesBox);
+  m_details_widget = new QTableWidget(walletEntriesEditor);
   m_details_widget->setContextMenuPolicy(Qt::CustomContextMenu);
   m_details_widget->horizontalHeader()->setVisible(false);
   m_details_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
@@ -151,15 +154,17 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   m_details_widget->viewport()->installEventFilter(this);
   m_details_widget->setEnabled(false);
   
-  walletEntriesBoxLayout->addWidget(m_entries_widget, 0, 0, 6, 1, 0);
-  walletEntriesBoxLayout->addWidget(loadButton, 0, 2, 0);
-  walletEntriesBoxLayout->addWidget(removeButton, 1, 2, 0);
-  walletEntriesBoxLayout->addWidget(clearButton, 2, 2, 0);
-  walletEntriesBoxLayout->addWidget(saveButton, 3, 2, 0);
-  walletEntriesBoxLayout->addWidget(m_details_box, 4, 2, 0);
-  walletEntriesBoxLayout->addWidget(m_details_widget, 5, 2, 0);
+  walletEntriesEditorLayout->addWidget(m_entries_widget, 0, 0, 6, 1, 0);
+  walletEntriesEditorLayout->addWidget(loadButton, 0, 2, 0);
+  walletEntriesEditorLayout->addWidget(removeButton, 1, 2, 0);
+  walletEntriesEditorLayout->addWidget(clearButton, 2, 2, 0);
+  walletEntriesEditorLayout->addWidget(saveButton, 3, 2, 0);
+  walletEntriesEditorLayout->addWidget(m_details_box, 4, 2, 0);
+  walletEntriesEditorLayout->addWidget(m_details_widget, 5, 2, 0);
 //   walletEntriesBoxLayout->addWidget(m_details_box, 4, 1, 1, 2, 0);
 //   walletEntriesBoxLayout->addWidget(m_details_widget, 5, 1, 1, 2, 0);
+  
+  walletEntriesBoxLayout->addWidget(walletEntriesEditor, 0);
   
   layout->addWidget(walletEntriesBox, 0);
   
@@ -174,7 +179,16 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   connect(m_details_box, SIGNAL(clicked(bool)), this, SLOT(slotDetailsClicked(bool)));
   connect(m_entries_widget, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
   connect(m_details_widget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));
-           
+  
+  // 
+  // Adjustments
+  // 
+  slotKWalletButtonToggled(useWallet->isChecked());
+  slotDefaultLoginToggled(defaultAuth->isChecked());
+     
+  //
+  // Set focus
+  // 
   loadButton->setFocus();
 }
 
@@ -356,6 +370,7 @@ void Smb4KConfigPageAuthentication::clearDetails()
 void Smb4KConfigPageAuthentication::slotKWalletButtonToggled(bool checked)
 {
   findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setEnabled(checked);
+  findChild<QWidget *>("WalletEntriesEditor")->setEnabled(checked);
 }
 
 
