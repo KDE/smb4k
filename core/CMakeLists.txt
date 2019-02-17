@@ -42,11 +42,9 @@ if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
   kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
   smb4ksettings.kcfgc 
   smb4kmountsettings_linux.kcfgc)
-elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD")
-  kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
-  smb4ksettings.kcfgc 
-  smb4kmountsettings_bsd.kcfgc)
-elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD")
+elseif(${CMAKE_HOST_SYSTEM_NAME} MATCHES "FreeBSD" OR
+       ${CMAKE_HOST_SYSTEM_NAME} MATCHES "NetBSD" OR
+       ${CMAKE_HOST_SYSTEM_NAME} MATCHES "DragonFly")
   kconfig_add_kcfg_files(smb4kcore_LIB_SRCS 
   smb4ksettings.kcfgc 
   smb4kmountsettings_bsd.kcfgc)
