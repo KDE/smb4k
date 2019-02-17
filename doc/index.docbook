@@ -32,8 +32,8 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2018-11-25</date>
-  <releaseinfo>&smb4k; 2.9.71</releaseinfo><!--FIXME change releaseinfo number-->
+  <date>2018-02-02</date>
+  <releaseinfo>&smb4k; 2.9.80</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
   </abstract>
@@ -51,7 +51,7 @@
 <chapter id="introduction" >
   <title>Introduction</title>
 
-  <para>This handbook describes &smb4k; 2.1.x and to some extent earlier versions.</para>
+  <para>This handbook describes &smb4k; 3.0.x and to some extent earlier versions.</para>
   <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
 
   <itemizedlist>
@@ -63,14 +63,12 @@
     <listitem><para>Remounting of previously used shares on program start</para></listitem>
     <listitem><para>Miscellaneous infos about remote network items and mounted shares</para></listitem>
     <listitem><para>Network search</para></listitem>
-    <listitem><para>WINS server support</para></listitem>
     <listitem><para>Preview of the contents of a remote share</para></listitem>
-    <listitem><para>Several methods to look up the initial list of workgroups and domains</para></listitem>
     <listitem><para>Default login</para></listitem>
     <listitem><para>Special handling of homes shares</para></listitem>
     <listitem><para>Ability to bookmark favorite shares</para></listitem>
     <listitem><para>System tray widget</para></listitem>
-    <listitem><para>Support of advanced Samba options</para></listitem>
+    <listitem><para>Support of advanced mount options</para></listitem>
     <listitem><para>Support of printer shares</para></listitem>
     <listitem><para>&kwallet5; support</para></listitem>
     <listitem><para>Synchronization of a remote share with a local copy and vice versa</para></listitem>
@@ -81,8 +79,7 @@
     <listitem><para>Profiles for different network neighborhood setups</para></listitem>
   </itemizedlist>
 
-  <para>If you encounter problems while using &smb4k;, please visit our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink> first. If you cannot find your problem described there, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k">bug tracker</ulink>.</para>
-  <para>For discussions about &smb4k;-related topics there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/">General Discussion</ulink> forum and we invite every user to participate.</para>
+  <para>If you encounter problems while using &smb4k;, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k">bug tracker</ulink>. For discussions about &smb4k;-related topics there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/">General Discussion</ulink> forum and we invite every user to participate.</para>
 </chapter>
 
 <!-- 
@@ -98,10 +95,16 @@
 
   <sect1 id="running_smb4k" >
     <title>Running &smb4k;</title>
+    
+    <para>Since version 2.9.71, &smb4k; is using the <application>libsmbclient</application> library to browse and search the network neighborhood and print files. You should check which version of &Samba; you are using, before you are using &smb4k;. Users of Samba 4.7 and above need to set the following setting in the [global] section of the <filename>smb.conf</filename> file to be able browse the network neighborhood:</para>
+      
+<programlisting>[global]
+...
+client max protocol = NT1
+...</programlisting>
 
-    <para>After the installation, you can run &smb4k; either from the K menu or from the command prompt by typing <screen><prompt>$</prompt> <userinput><command>smb4k</command></userinput></screen></para>
-    <para>&smb4k; does not take any arguments, except those that are known to all &kde; applications.</para>
-    <para>&smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or panel.</para>
+    <para>This is because, starting with Samba 4.7, the default protocol version has been set to SMB3 by the &Samba; team, but <application>libsmbclient</application> cannot handle this right now.</para>
+    <para>You can launch &smb4k; either from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. It does not take any arguments, except those that are known to all &kde; applications. &smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or panel.</para>
     <para>If the system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
     
     <screenshot id="notification_missing_program">
@@ -123,7 +126,7 @@
   <sect1 id="mainwindow_overview">
     <title>The Main Window</title>
   
-    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>), the network search widget (<guilabel>Network Search</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menubar and toolbar(s) are located. Below them you find the status bar.</para>
+    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menubar and toolbar(s) are located. Below them you find the status bar.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo>Screenshot of the main window</screeninfo>
@@ -133,7 +136,7 @@
       </mediaobject>
     </screenshot>
 
-    <para>&smb4k; comes with a compact unified toolbar as the default, but the user can still choose to use multiple toolbars. If you wish to use the classical way, four toolbars are defined, for each widget one: the main toolbar, the toolbars for the <guilabel>Network Neighborhood</guilabel> widget, the <guilabel>Shares View</guilabel> widget and the <guilabel>Network Search</guilabel> widget. The unified toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information and some important warnings, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, <link linkend="network_search_view">search dialog</link>, and <link linkend="shares_view">mounted shares view</link>.</para>
+    <para>&smb4k; comes with a toolbar that contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link> and <link linkend="shares_view">mounted shares view</link>.</para>
     <para>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (network folder icon) and the status of the authentication system (wallet or key icon).</para>
     <para>If the dock widgets are arranged as tabs, the user gets additional visual feedback. Each time a share is mounted or unmounted, the <guilabel>Mounted Shares</guilabel> tab is highlighted for a few seconds.</para>
     <para>The main window is highly configurable. You can hide or show all tabbed widgets (<menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>). They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the toolbars can be hidden/shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
@@ -453,125 +456,6 @@
 
       <para>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="bookmarks">Bookmarks</link> for more details.</para>
       <para>The bookmarks can be used to mount remote shares.</para>
-    </sect2>
-  </sect1>
-
-<!-- 
-      Using Smb4K : The Network Search View
-  -->
-
-  <sect1 id="network_search_view">
-    <title>The Network Search View</title>
-
-    <para>The <guilabel>Network Search</guilabel> view consists of the combo box where you can enter the search item and a list view where the search results are shown.</para>
-    <screenshot>
-      <screeninfo>Screenshot of the network search view</screeninfo>
-      <mediaobject>
-        <imageobject><imagedata fileref="network_search_view.png" format="PNG" /></imageobject>
-        <textobject><phrase>The network search view</phrase></textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Using Smb4K : The Network Search View : Searching 
-  -->
-
-    <sect2 id="network_search_view_searching">
-      <title>Searching</title>
-
-      <para>&smb4k; searches the network neighborhood for shares that match or contain the search string. To start a search, enter the term into the input box 
-        and either press the &Enter; key or click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action next to the input box. All network shares that match the search criterion are listed in the list view. If they are already mounted on the system, they are marked accordingly. If the search fails, an error message is displayed. Starting a new search will clear the list view. If you need to abort a search, click the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> action.</para>
-    </sect2>
-
-<!-- 
-      Using Smb4K : The Network Search View : Actions and Popup Menu 
-  -->
-
-    <sect2 id="network_search_view_menu">
-      <title>Actions and Popup Menu</title>
-
-      <para>For the network search also several actions are defined. They are present in the menubar under <guimenu>Search</guimenu>, the toolbar, in the widget itself and in its popup menu. The following ones are available:</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice>
-              <shortcut><keycombo action="simul">&Ctrl; <keycap>S</keycap></keycombo></shortcut>
-              <guimenuitem>Search</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem>
-            <para>Search for the string that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice>
-              <shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut>
-              <guimenuitem>Abort</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem>
-            <para>Abort the network search. This action is invisible by default and will only be visible instead of the <guimenuitem>Search</guimenuitem> action if a network search is running.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice>
-              <guimenuitem>Clear</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem>
-            <para>Clear the whole network search dialog. This action does not only clear the list view, but also the search item history in the combo box.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice>
-              <shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut>
-              <guimenuitem>Mount</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem>
-            <para>Mount a remote share from within the search dialog. Alternatively, you can double click the network share in the list view.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice>
-              <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
-              <guimenuitem>Unmount</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem>
-            <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>The popup menu contains two entries: The <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice> action and the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>M</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> dual action. The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> | <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut><guimenuitem>Abort</guimenuitem></menuchoice> dual action is located next to the search input box (as well as in the menubar and toolbar).</para>
-
-      <screenshot>
-        <screeninfo>Screenshot of the network search view's popup menu</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="network_search_view_popup_menu.png" format="PNG" />
-          </imageobject>
-          <textobject>
-            <phrase>The network search view's popup menu</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-    </sect2>
-  
-<!-- 
-      Using Smb4K : The Network Search View : Mounting a Share
-  -->
-
-    <sect2 id="network_search_view_adding">
-      <title>Mounting a Share</title>
-
-      <para>A discovered share can directly be mounted by either double clicking it or by selecting it and choosing the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>D</keycap></keycombo></shortcut><guimenuitem>Mount</guimenuitem></menuchoice> action from the popup menu. When mounting a homes share, you are asked to provide the user name and a share with that name is mounted. The homes share itself will, thus, not be labeled as mounted afterwards. Due to a shortcoming of the utility program that does the actual search (the <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command), &smb4k; cannot discriminate between printer and normal shares. Mounting a printer share will fail and an error notification will be shown.</para>
     </sect2>
   </sect1>
 
