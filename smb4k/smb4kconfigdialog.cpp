@@ -590,40 +590,38 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 void Smb4KConfigDialog::slotSetDefaultLogin()
 {
   Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
+
+  Smb4KAuthInfo authInfo;
   
-  if (!auth_options->undoRemoval())
+  // We do not need to call useDefaultAuthInfo(), because 
+  // Smb4KWalletManager::readDefaultAuthInfo() will do this
+  // for us.
+  Smb4KWalletManager::self()->readDefaultAuthInfo(&authInfo);
+    
+  QPointer<KPasswordDialog> dlg = new KPasswordDialog(this, KPasswordDialog::ShowUsernameLine);
+  dlg->setPrompt(i18n("Enter the default login information."));
+  dlg->setUsername(authInfo.userName());
+  dlg->setPassword(authInfo.password());
+    
+  if (dlg->exec() == KPasswordDialog::Accepted)
   {
-    Smb4KAuthInfo authInfo;
-    // We do not need to call useDefaultAuthInfo(), because 
-    // Smb4KWalletManager::readDefaultAuthInfo() will do this
-    // for us.
-    Smb4KWalletManager::self()->readDefaultAuthInfo(&authInfo);
-    
-    QPointer<KPasswordDialog> dlg = new KPasswordDialog(this, KPasswordDialog::ShowUsernameLine);
-    dlg->setPrompt(i18n("Enter the default login information."));
-    dlg->setUsername(authInfo.userName());
-    dlg->setPassword(authInfo.password());
-    
-    if (dlg->exec() == KPasswordDialog::Accepted)
-    {
-      authInfo.setUserName(dlg->username());
-      authInfo.setPassword(dlg->password());
+    authInfo.setUserName(dlg->username());
+    authInfo.setPassword(dlg->password());
       
-      Smb4KWalletManager::self()->writeDefaultAuthInfo(&authInfo);
+    Smb4KWalletManager::self()->writeDefaultAuthInfo(&authInfo);
       
-      if (auth_options->walletEntriesDisplayed())
-      {
-        slotLoadAuthenticationInformation();
-      }
-    }
-    else
+    if (auth_options->walletEntriesDisplayed())
     {
-      // Reset the checkbox.
-      auth_options->findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
+      slotLoadAuthenticationInformation();
     }
-    
-    delete dlg;
   }
+  else
+  {
+    // Reset the checkbox.
+    auth_options->findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
+  }
+    
+  delete dlg;
 }
 
 

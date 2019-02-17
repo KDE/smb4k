@@ -49,17 +49,11 @@
  */
 
 
-class Smb4KConfigPageAuthentication : public QTabWidget
+class Smb4KConfigPageAuthentication : public QWidget
 {
   Q_OBJECT
 
   public:
-    /**
-     * Tabs enumeration
-     */
-    enum Tabs{ GeneralTab = 0,
-               WalletEntriesTab = 1 };
-               
     /**
      * The constructor.
      *
@@ -102,14 +96,6 @@ class Smb4KConfigPageAuthentication : public QTabWidget
     bool walletEntriesDisplayed() { return m_entries_displayed; }
     
     /**
-     * Returns TRUE if a removal in the list widget is undone and FALSE
-     * otherwise.
-     * 
-     * @returns TRUE a removal is undone.
-     */
-    bool undoRemoval() { return m_undo_removal; }
-    
-    /**
      * Returns TRUE in the case the wallet entries might have changed. You need
      * to check this outside this widget, whether a change indeed occurred.
      * 
@@ -145,8 +131,7 @@ class Smb4KConfigPageAuthentication : public QTabWidget
     /**
      * Reimplemented.
      */
-    bool eventFilter(QObject *object,
-                     QEvent *event);
+    bool eventFilter(QObject *object, QEvent *event) override;
     
   protected slots:
     /**
@@ -189,20 +174,7 @@ class Smb4KConfigPageAuthentication : public QTabWidget
      * 
      * @param column          The column of the cell that was changed
      */
-    void slotDetailsChanged(int row,
-                             int column);
-    
-    /**
-     * This slot is connected to the KListWidget::customContextMenuRequested()
-     * signal and shows the menu in the list widget.
-     */
-    void slotShowListWidgetContextMenu(const QPoint &pos);
-    
-    /**
-     * This slot is connected to the QTableWidget::customContextMenuRequested()
-     * signal and shows the menu in the table widget.
-     */
-    void slotShowTableWidgetContextMenu(const QPoint &pos);
+    void slotDetailsChanged(int row, int column);
     
     /**
      * This slot is connected to the "Remove" action
@@ -219,25 +191,11 @@ class Smb4KConfigPageAuthentication : public QTabWidget
     void slotClearActionTriggered(bool checked);
     
     /**
-     * This slot is connected to the "Undo" action in the list widget.
-     * 
-     * @param checked         TRUE if the action is checked
-     */
-    void slotUndoListActionTriggered(bool checked);
-    
-    /**
      * This slot is connected to the "Edit" action in the table widget.
      * 
      * @param checked         TRUE if the action is checked
      */
     void slotEditActionTriggered(bool checked);
-    
-    /**
-     * This slot is connected to the "Undo" action in the table widget.
-     * 
-     * @param checked         TRUE if the action is checked
-     */
-    void slotUndoDetailsActionTriggered(bool checked);
     
     /**
      * This slot is connected to the "Save" button and resets all actions.
@@ -250,19 +208,11 @@ class Smb4KConfigPageAuthentication : public QTabWidget
     void showDetails(Smb4KAuthInfo *authInfo);
     void clearDetails();
     QListWidget *m_entries_widget;
-    QPushButton *m_load_button;
-    QPushButton *m_save_button;
     QCheckBox *m_details_box;
     QTableWidget *m_details_widget;
     QList<Smb4KAuthInfo *> m_entries_list;
     bool m_entries_displayed;
-    KActionCollection *m_collection;
-    KActionMenu *m_entries_menu;
-    KActionMenu *m_details_menu;
-    Smb4KAuthInfo *m_auth_info;
     bool m_loading_details;
-    bool m_default_login;
-    bool m_undo_removal;
     bool m_maybe_changed;
 };
 

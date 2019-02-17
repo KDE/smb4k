@@ -44,106 +44,105 @@
 
 // KDE includes
 #include <KI18n/KLocalizedString>
-#include <KWidgetsAddons/KGuiItem>
 #include <KIconThemes/KIconLoader>
 
 
-Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : QTabWidget(parent)
+Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : QWidget(parent)
 {
   m_entries_displayed = false;
   m_loading_details = false;
-  m_default_login = false;
-  m_undo_removal = false;
   m_maybe_changed = false;
-  m_auth_info = 0;
   
   //
-  // General tab
+  // Layout 
   // 
-  QWidget *general_tab          = new QWidget(this);
-
-  QGridLayout *general_layout   = new QGridLayout(general_tab);
-  general_layout->setSpacing(5);
-  general_layout->setMargin(0);
-  
-  QGroupBox *password_box  = new QGroupBox(i18n("Password Storage"), general_tab);
-
-  QGridLayout *pass_layout = new QGridLayout(password_box);
-  pass_layout->setSpacing(5);
-
-  QCheckBox *use_wallet    = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(),
-                             password_box);
-  use_wallet->setObjectName("kcfg_UseWallet");
-
-  pass_layout->addWidget(use_wallet, 0, 0, 0);
-
-  // Default login box
-  QGroupBox *default_box   = new QGroupBox(i18n("Default Login"), general_tab);
-  default_box->setObjectName("DefaultLoginBox");
-
-  QGridLayout *def_layout  = new QGridLayout(default_box);
-  def_layout->setSpacing(5);
-
-  QCheckBox *default_auth  = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(),
-                             default_box);
-  default_auth->setObjectName("kcfg_UseDefaultLogin");
-
-  def_layout->addWidget(default_auth, 0, 0, 1, 2, 0);
-
-  QSpacerItem *spacer = new QSpacerItem(10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding);
-
-  general_layout->addWidget(password_box, 0, 0, 0);
-  general_layout->addWidget(default_box, 1, 0, 0);
-  general_layout->addItem(spacer, 2, 0, 1, 1, 0);
-
-  connect(use_wallet,   SIGNAL(toggled(bool)),
-           this,         SLOT(slotKWalletButtonToggled(bool)));
-
-  connect(default_auth, SIGNAL(toggled(bool)),
-           this,         SLOT(slotDefaultLoginToggled(bool)));
-
-  slotKWalletButtonToggled(use_wallet->isChecked());
-  slotDefaultLoginToggled(default_auth->isChecked());
-  
-  insertTab(GeneralTab, general_tab, i18n("General Settings"));
+  QVBoxLayout *layout = new QVBoxLayout(this);
+  layout->setSpacing(5);
+  layout->setMargin(0);
   
   //
-  // Logins tab
-  //
-  QWidget *logins_tab        = new QWidget(this);
+  // Settings group box
+  // 
+  QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
   
-  QGridLayout *logins_layout = new QGridLayout(logins_tab);
-  logins_layout->setSpacing(5);
-  logins_layout->setMargin(0);
+  QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
+  settingsBoxLayout->setSpacing(5);
+  
+  // Wallet usage
+  QCheckBox *useWallet = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(), settingsBox);
+  useWallet->setObjectName("kcfg_UseWallet");
+  
+  connect(useWallet, SIGNAL(toggled(bool)), this, SLOT(slotKWalletButtonToggled(bool)));
+
+  settingsBoxLayout->addWidget(useWallet, 0);
+
+  // Default login
+  QCheckBox *defaultAuth  = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), settingsBox);
+  defaultAuth->setObjectName("kcfg_UseDefaultLogin");
+  
+  connect(defaultAuth, SIGNAL(toggled(bool)), this, SLOT(slotDefaultLoginToggled(bool)));
+
+  settingsBoxLayout->addWidget(defaultAuth, 0);
+
+  layout->addWidget(settingsBox, 0);
+
+  // Adjustments
+  slotKWalletButtonToggled(useWallet->isChecked());
+  slotDefaultLoginToggled(defaultAuth->isChecked());
+  
+  //
+  // Wallet Entries group box
+  // 
+  QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
+  
+  QGridLayout *walletEntriesBoxLayout = new QGridLayout(walletEntriesBox);
+  walletEntriesBoxLayout->setSpacing(5);
   
   // The list view that shows the wallet entriea
-  m_entries_widget = new QListWidget(logins_tab);
+  m_entries_widget = new QListWidget(walletEntriesBox);
   m_entries_widget->setDragDropMode(QListWidget::NoDragDrop);
   m_entries_widget->setSelectionMode(QListWidget::SingleSelection);
   m_entries_widget->setContextMenuPolicy(Qt::CustomContextMenu);
   m_entries_widget->viewport()->installEventFilter(this);
   
   // Load button
-  KGuiItem load_item = KGuiItem(i18n("Load"), "document-open",
-                                i18n("Load the entries stored in the wallet."),
-                                i18n("The login information that was stored by Smb4K will be loaded from the wallet. "
-                                      "If you chose to not use the wallet, pressing this button will have no effect."));
-  m_load_button = new QPushButton(logins_tab);
-  KGuiItem::assign(m_load_button, load_item);
+  QPushButton *loadButton = new QPushButton(walletEntriesBox);
+  loadButton->setObjectName("LoadButton");
+  loadButton->setText(i18n("Load"));
+  loadButton->setIcon(KDE::icon("document-open"));
+  loadButton->setWhatsThis(i18n("The login information that was stored by Smb4K will be loaded from the wallet. "
+                                   "If you chose to not use the wallet, pressing this button will have no effect."));
+  
+  // The Remove button
+  QPushButton *removeButton = new QPushButton(walletEntriesBox);
+  removeButton->setObjectName("RemoveButton");
+  removeButton->setText(i18n("Remove"));
+  removeButton->setIcon(KDE::icon("edit-delete"));
+  removeButton->setWhatsThis(i18n("The selected entry is removed from the wallet."));
+  removeButton->setEnabled(false);
+  
+  // The Clear button
+  QPushButton *clearButton = new QPushButton(walletEntriesBox);
+  clearButton->setObjectName("ClearButton");
+  clearButton->setText(i18n("Clear"));
+  clearButton->setIcon(KDE::icon("edit-clear-list"));
+  clearButton->setWhatsThis(i18n("All entries are removed from the wallet."));
+  clearButton->setEnabled(false);
   
   // The Save button
-  KGuiItem save_item = KGuiItem(i18n("Save"), "document-save-all",
-                                 i18n("Save the entries to the wallet."),
-                                 i18n("All modifications you applied are saved to the wallet."));
-  m_save_button = new QPushButton(logins_tab);
-  KGuiItem::assign(m_save_button, save_item);
+  QPushButton *saveButton = new QPushButton(walletEntriesBox);
+  saveButton->setObjectName("SaveButton");
+  saveButton->setText(i18n("Save"));
+  saveButton->setIcon(KDE::icon("document-save-all"));
+  saveButton->setWhatsThis(i18n("All modifications you applied are saved to the wallet."));
+  saveButton->setEnabled(false);
   
-  m_details_box = new QCheckBox(i18n("Show details"), logins_tab);
+  m_details_box = new QCheckBox(i18n("Show details"), walletEntriesBox);
   m_details_box->setToolTip(i18n("Show the details of the selected entry."));
   m_details_box->setWhatsThis(i18n("Marking this check box will show the details of the selected login information below."));
   m_details_box->setEnabled(false);
   
-  m_details_widget = new QTableWidget(logins_tab);
+  m_details_widget = new QTableWidget(walletEntriesBox);
   m_details_widget->setContextMenuPolicy(Qt::CustomContextMenu);
   m_details_widget->horizontalHeader()->setVisible(false);
   m_details_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
@@ -152,88 +151,31 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   m_details_widget->viewport()->installEventFilter(this);
   m_details_widget->setEnabled(false);
   
-  logins_layout->addWidget(m_entries_widget, 0, 0, 4, 1, 0);
-  logins_layout->addWidget(m_load_button, 0, 2, 0);
-  logins_layout->addWidget(m_save_button, 1, 2, 0);
-  logins_layout->addWidget(m_details_box, 2, 1, 1, 2, 0);
-  logins_layout->addWidget(m_details_widget, 3, 1, 1, 2, 0);
+  walletEntriesBoxLayout->addWidget(m_entries_widget, 0, 0, 6, 1, 0);
+  walletEntriesBoxLayout->addWidget(loadButton, 0, 2, 0);
+  walletEntriesBoxLayout->addWidget(removeButton, 1, 2, 0);
+  walletEntriesBoxLayout->addWidget(clearButton, 2, 2, 0);
+  walletEntriesBoxLayout->addWidget(saveButton, 3, 2, 0);
+  walletEntriesBoxLayout->addWidget(m_details_box, 4, 2, 0);
+  walletEntriesBoxLayout->addWidget(m_details_widget, 5, 2, 0);
+//   walletEntriesBoxLayout->addWidget(m_details_box, 4, 1, 1, 2, 0);
+//   walletEntriesBoxLayout->addWidget(m_details_widget, 5, 1, 1, 2, 0);
   
-  m_collection = new KActionCollection(logins_tab);  
-  QAction *remove_action = new QAction(KDE::icon("edit-delete"), i18n("Remove"), this);
-  QAction *clear_action = new QAction(KDE::icon("edit-clear-list"), i18n("Clear List"), this);
-  QAction *edit_action = new QAction(KDE::icon("edit-rename"), i18n("Edit"), this);
-  QAction *undo_details_action = new QAction(KDE::icon("edit-undo"), i18n("Undo"), this);
-  QAction *undo_list_action = new QAction(KDE::icon("edit-undo"), i18n("Undo"), this);
+  layout->addWidget(walletEntriesBox, 0);
   
-  m_collection->addAction("remove_action", remove_action);
-  m_collection->addAction("clear_action", clear_action);
-  m_collection->addAction("edit_action", edit_action);
-  m_collection->addAction("undo_details_action", undo_details_action);
-  m_collection->addAction("undo_list_action", undo_list_action);
-
-  remove_action->setEnabled(false);
-  clear_action->setEnabled(false);
-  edit_action->setEnabled(false);
-  undo_details_action->setEnabled(false);
-  undo_list_action->setEnabled(false);
-  
-  m_collection->addAction("remove_action", remove_action);
-  m_collection->addAction("clear_action", clear_action);
-  m_collection->addAction("edit_action", edit_action);
-  m_collection->addAction("undo_details_action", undo_details_action);
-  m_collection->addAction("undo_list_action", undo_list_action);
-  
-  m_entries_menu = new KActionMenu(m_entries_widget);
-  m_entries_menu->addAction(remove_action);
-  m_entries_menu->addAction(clear_action);
-  m_entries_menu->addAction(undo_list_action);
-  
-  m_details_menu = new KActionMenu(m_details_widget);
-  m_details_menu->addAction(edit_action);
-  m_details_menu->addAction(undo_details_action);
-  
-  connect(m_load_button,    SIGNAL(clicked(bool)),
-           this,             SIGNAL(loadWalletEntries()));
-  
-  connect(m_save_button,    SIGNAL(clicked(bool)),
-           this,             SIGNAL(saveWalletEntries()));
+  //
+  // Connections
+  // 
+  connect(loadButton, SIGNAL(clicked(bool)), this, SIGNAL(loadWalletEntries()));
+  connect(saveButton, SIGNAL(clicked(bool)), this, SIGNAL(saveWalletEntries()));
+  connect(saveButton, SIGNAL(clicked(bool)), this, SLOT(slotSaveClicked(bool)));
+  connect(removeButton, SIGNAL(clicked(bool)), this, SLOT(slotRemoveActionTriggered(bool)));
+  connect(clearButton, SIGNAL(clicked(bool)), this, SLOT(slotClearActionTriggered(bool)));
+  connect(m_details_box, SIGNAL(clicked(bool)), this, SLOT(slotDetailsClicked(bool)));
+  connect(m_entries_widget, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
+  connect(m_details_widget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));
            
-  connect(m_save_button,    SIGNAL(clicked(bool)),
-           this,             SLOT(slotSaveClicked(bool)));
-  
-  connect(m_details_box,    SIGNAL(clicked(bool)),
-           this,             SLOT(slotDetailsClicked(bool)));
-           
-  connect(m_entries_widget, SIGNAL(itemSelectionChanged()),
-           this,             SLOT(slotItemSelectionChanged()));
-           
-  connect(m_entries_widget, SIGNAL(customContextMenuRequested(QPoint)),
-           this,             SLOT(slotShowListWidgetContextMenu(QPoint)));
-           
-  connect(m_details_widget, SIGNAL(cellChanged(int,int)),
-           this,             SLOT(slotDetailsChanged(int,int)));
-           
-  connect(m_details_widget, SIGNAL(customContextMenuRequested(QPoint)),
-           this,             SLOT(slotShowTableWidgetContextMenu(QPoint)));
-           
-  connect(remove_action,    SIGNAL(triggered(bool)),
-           this,             SLOT(slotRemoveActionTriggered(bool)));
-           
-  connect(clear_action,     SIGNAL(triggered(bool)),
-           this,             SLOT(slotClearActionTriggered(bool)));
-           
-  connect(undo_list_action, SIGNAL(triggered(bool)),
-           this,             SLOT(slotUndoListActionTriggered(bool)));
-           
-  connect(edit_action,      SIGNAL(triggered(bool)),
-           this,             SLOT(slotEditActionTriggered(bool)));
-           
-  connect(undo_details_action, SIGNAL(triggered(bool)),
-           this,             SLOT(slotUndoDetailsActionTriggered(bool)));
-           
-  m_load_button->setFocus();
-  
-  insertTab(WalletEntriesTab, logins_tab, i18n("Wallet Entries"));
+  loadButton->setFocus();
 }
 
 
@@ -258,9 +200,9 @@ void Smb4KConfigPageAuthentication::displayWalletEntries()
     m_entries_widget->clear();
   }
   
-  for (int i = 0; i < m_entries_list.size(); ++i)
+  for (Smb4KAuthInfo *authInfo : m_entries_list)
   {
-    switch (m_entries_list.at(i)->type())
+    switch (authInfo->type())
     {
       case UnknownNetworkItem:
       {
@@ -269,7 +211,7 @@ void Smb4KConfigPageAuthentication::displayWalletEntries()
       }
       default:
       {
-        (void) new QListWidgetItem(KDE::icon("dialog-password"), m_entries_list.at(i)->displayString(), m_entries_widget);
+        (void) new QListWidgetItem(KDE::icon("dialog-password"), authInfo->displayString(), m_entries_widget);
         break;
       }
     }
@@ -279,7 +221,11 @@ void Smb4KConfigPageAuthentication::displayWalletEntries()
   
   m_entries_displayed = true;
   
-  m_collection->action("clear_action")->setEnabled(!m_entries_list.isEmpty());
+  //
+  // Enable buttons
+  // 
+  findChild<QPushButton *>("SaveButton")->setEnabled(m_entries_widget->count() != 0);
+  findChild<QPushButton *>("ClearButton")->setEnabled(m_entries_widget->count() != 0);
 }
 
 
@@ -299,34 +245,14 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
       {
         clearDetails();
         m_entries_widget->clearSelection();
-        m_collection->action("remove_action")->setEnabled(false);
+        findChild<QPushButton *>("RemoveButton")->setEnabled(false);
       }
     }
     
     return m_entries_widget->viewport()->eventFilter(object, e);
   }
-  else if (object == m_details_widget->viewport())
-  {
-    // Enable/disable the edit action.
-    if (e->type() == QEvent::MouseButtonPress)
-    {
-      QMouseEvent *event = static_cast<QMouseEvent *>(e);
-      QPoint pos = m_details_widget->mapFromGlobal(event->globalPos());
-      
-      if (m_details_widget->columnAt(pos.x()) > 0 && m_details_widget->rowAt(pos.y()) > 0)
-      {
-        m_collection->action("edit_action")->setEnabled(true);
-      }
-      else
-      {
-        m_collection->action("edit_action")->setEnabled(false);
-      }
-    }
-    
-    return m_details_widget->viewport()->eventFilter(object, e);
-  }
   
-  return QTabWidget::eventFilter(object, e);
+  return QWidget::eventFilter(object, e);
 }
 
 
@@ -405,7 +331,6 @@ void Smb4KConfigPageAuthentication::showDetails(Smb4KAuthInfo *authInfo)
     }
   }
 
-  m_auth_info = authInfo;
   m_loading_details = false;
 }
 
@@ -421,10 +346,6 @@ void Smb4KConfigPageAuthentication::clearDetails()
   m_details_widget->setRowCount(0);
   m_details_widget->setColumnCount(0);
   m_details_widget->setEnabled(!m_entries_widget->selectedItems().isEmpty());
-  
-  // Clear the auth info object and disable the "Undo" action
-  m_auth_info = NULL;
-  m_collection->action("undo_details_action")->setEnabled(false);
 }
 
 
@@ -434,7 +355,7 @@ void Smb4KConfigPageAuthentication::clearDetails()
 
 void Smb4KConfigPageAuthentication::slotKWalletButtonToggled(bool checked)
 {
-  findChild<QGroupBox *>("DefaultLoginBox")->setEnabled(checked);
+  findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setEnabled(checked);
 }
 
 
@@ -449,19 +370,18 @@ void Smb4KConfigPageAuthentication::slotDefaultLoginToggled(bool checked)
 
 void Smb4KConfigPageAuthentication::slotDetailsClicked(bool checked)
 {
-  QList<QListWidgetItem *> selected_items = m_entries_widget->selectedItems();
+  QList<QListWidgetItem *> selectedItems = m_entries_widget->selectedItems();
   
-  if (checked && !selected_items.isEmpty())
+  if (checked && !selectedItems.isEmpty())
   {
     // Since we have single selection defined, there is definitely
     // only one entry in the list.
-    for (int i = 0; i < m_entries_list.size(); ++i)
+    for (Smb4KAuthInfo *authInfo : m_entries_list)
     {
-      if (QString::compare(selected_items.first()->text(), m_entries_list.at(i)->displayString()) == 0 ||
-          (QString::compare(selected_items.first()->text(), i18n("Default Login")) == 0 &&
-          m_entries_list.at(i)->type() == UnknownNetworkItem))
+      if (QString::compare(selectedItems.first()->text(), authInfo->displayString()) == 0 ||
+          (QString::compare(selectedItems.first()->text(), i18n("Default Login")) == 0 && authInfo->type() == UnknownNetworkItem))
       {
-        showDetails(m_entries_list.at(i));
+        showDetails(authInfo);
         break;
       }
       else
@@ -483,7 +403,7 @@ void Smb4KConfigPageAuthentication::slotItemSelectionChanged()
   clearDetails();
   
   // Enable the details and remove action
-  m_collection->action("remove_action")->setEnabled(true);
+  findChild<QPushButton *>("RemoveButton")->setEnabled(true);
 }
 
 
@@ -491,13 +411,12 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
 {
   if (!m_loading_details)
   {
-    for (int i = 0; i < m_entries_list.size(); ++i)
+    for (Smb4KAuthInfo *authInfo : m_entries_list)
     {
-      if (QString::compare(m_details_widget->item(0, 1)->text(), m_entries_list.at(i)->displayString()) == 0 ||
-          (QString::compare(m_details_widget->item(0, 1)->text(), i18n("Default Login")) == 0 &&
-          m_entries_list.at(i)->type() == UnknownNetworkItem))
+      if (QString::compare(m_details_widget->item(0, 1)->text(), authInfo->displayString()) == 0 ||
+          (QString::compare(m_details_widget->item(0, 1)->text(), i18n("Default Login")) == 0 && authInfo->type() == UnknownNetworkItem))
       {
-        switch (m_entries_list.at(i)->type())
+        switch (authInfo->type())
         {
           case Host:
           case Share:
@@ -508,17 +427,17 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
               {
                 case 1: // Workgroup
                 {
-                  m_entries_list[i]->setWorkgroupName(m_details_widget->item(row, column)->text());
+                  authInfo->setWorkgroupName(m_details_widget->item(row, column)->text());
                   break;
                 }
                 case 2: // Login
                 {
-                  m_entries_list[i]->setUserName(m_details_widget->item(row, column)->text());
+                  authInfo->setUserName(m_details_widget->item(row, column)->text());
                   break;
                 }
                 case 3: // Password
                 {
-                  m_entries_list[i]->setPassword(m_details_widget->item(row, column)->text());
+                  authInfo->setPassword(m_details_widget->item(row, column)->text());
                   break;
                 }
                 default:
@@ -538,12 +457,12 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
               {
                 case 1: // Login
                 {
-                  m_entries_list[i]->setUserName(m_details_widget->item(row, column)->text());
+                  authInfo->setUserName(m_details_widget->item(row, column)->text());
                   break;
                 }
                 case 2: // Password
                 {
-                  m_entries_list[i]->setPassword(m_details_widget->item(row, column)->text());
+                  authInfo->setPassword(m_details_widget->item(row, column)->text());
                   break;
                 }
                 default:
@@ -565,22 +484,9 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
       }
     }
     
-    m_collection->action("undo_details_action")->setEnabled(true);
     m_maybe_changed = true;
     emit walletEntriesModified();
   }
-}
-
-
-void Smb4KConfigPageAuthentication::slotShowListWidgetContextMenu(const QPoint &pos)
-{
-  m_entries_menu->menu()->popup(m_entries_widget->viewport()->mapToGlobal(pos));
-}
-
-
-void Smb4KConfigPageAuthentication::slotShowTableWidgetContextMenu(const QPoint &pos)
-{
-  m_details_menu->menu()->popup(m_details_widget->viewport()->mapToGlobal(pos));
 }
 
 
@@ -595,15 +501,13 @@ void Smb4KConfigPageAuthentication::slotRemoveActionTriggered(bool /*checked*/)
   for (int i = 0; i < m_entries_list.size(); ++i)
   {
     if (QString::compare(m_entries_widget->currentItem()->text(), m_entries_list.at(i)->displayString()) == 0 ||
-        (QString::compare(m_entries_widget->currentItem()->text(), i18n("Default Login")) == 0 &&
-        m_entries_list.at(i)->type() == UnknownNetworkItem))
+        (QString::compare(m_entries_widget->currentItem()->text(), i18n("Default Login")) == 0 && m_entries_list.at(i)->type() == UnknownNetworkItem))
     {
       switch (m_entries_list.at(i)->type())
       {
         case UnknownNetworkItem:
         {
           QCheckBox *default_login = findChild<QCheckBox *>("kcfg_UseDefaultLogin");
-          m_default_login = default_login->isChecked();
           default_login->setChecked(false);
           break;
         }
@@ -624,8 +528,10 @@ void Smb4KConfigPageAuthentication::slotRemoveActionTriggered(bool /*checked*/)
 
   delete m_entries_widget->currentItem();
   
-  m_collection->action("undo_list_action")->setEnabled(true);
-  m_collection->action("clear_action")->setEnabled((m_entries_widget->count() != 0));
+  //
+  // Enabled buttons
+  // 
+  findChild<QPushButton *>("ClearButton")->setEnabled((m_entries_widget->count() != 0));
   
   m_maybe_changed = true;
   emit walletEntriesModified();
@@ -646,24 +552,16 @@ void Smb4KConfigPageAuthentication::slotClearActionTriggered(bool /*checked*/)
     delete m_entries_list.takeFirst();
   }
   
-  m_collection->action("undo_list_action")->setEnabled(true);
-  m_collection->action("clear_action")->setEnabled(false);
+  //
+  // Enabled widgets
+  // 
+  findChild<QPushButton *>("ClearButton")->setEnabled(false);
   
   QCheckBox *default_login = findChild<QCheckBox *>("kcfg_UseDefaultLogin");
-  m_default_login = default_login->isChecked();
   default_login->setChecked(false);
   
   m_maybe_changed = true;
   emit walletEntriesModified();
-}
-
-
-void Smb4KConfigPageAuthentication::slotUndoListActionTriggered(bool /*checked*/)
-{
-  m_undo_removal = true;
-  emit loadWalletEntries();
-  findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(m_default_login);
-  m_undo_removal = false;
 }
 
 
@@ -678,59 +576,20 @@ void Smb4KConfigPageAuthentication::slotEditActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KConfigPageAuthentication::slotUndoDetailsActionTriggered(bool /*checked*/)
-{
-  showDetails(m_auth_info);
-  
-  for (Smb4KAuthInfo *authInfo : m_entries_list)
-  {
-    if (QString::compare(m_auth_info->url().toString(QUrl::RemovePort),
-                         authInfo->url().toString(QUrl::RemovePort),
-                         Qt::CaseInsensitive) == 0 /* we can leave the user info here */ ||
-        (m_auth_info->type() == UnknownNetworkItem && m_auth_info->type() == authInfo->type()))
-    {
-      switch (m_auth_info->type())
-      {
-        case Host:
-        case Share:
-        {
-          authInfo->setWorkgroupName(m_auth_info->workgroupName());
-          authInfo->setUserName(m_auth_info->userName());
-          authInfo->setPassword(m_auth_info->password());
-          break;
-        }
-        default:
-        {
-          authInfo->setUserName(m_auth_info->userName());
-          authInfo->setPassword(m_auth_info->password());
-          break;
-        }
-      }
-      
-      break;
-    }
-  }
-  
-  m_collection->action("undo_details_action")->setEnabled(false);
-  
-  // Do not set m_dirty = false here, because we do not known whether another
-  // entry in the list as not already been altered.
-  
-  emit walletEntriesModified();
-}
-
-
 void Smb4KConfigPageAuthentication::slotSaveClicked(bool /*checked*/)
 {
-  m_collection->action("remove_action")->setEnabled(false);
-  m_collection->action("clear_action")->setEnabled((m_entries_widget->count() != 0));
-  m_collection->action("undo_list_action")->setEnabled(false);
-  m_collection->action("edit_action")->setEnabled(false);
-  m_collection->action("undo_details_action")->setEnabled(false);
+  //
+  // Disable buttons
+  // 
+  findChild<QPushButton *>("RemoveButton")->setEnabled(false);
+  findChild<QPushButton *>("ClearButton")->setEnabled((m_entries_widget->count() != 0));
+  
+  //
+  // Clear the selection in the list view
+  // 
+  m_entries_widget->clearSelection();
   
   m_maybe_changed = false;
   emit walletEntriesModified();
-  
-  m_auth_info = NULL;
 }
 
