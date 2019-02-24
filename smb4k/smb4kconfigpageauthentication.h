@@ -151,14 +151,6 @@ class Smb4KConfigPageAuthentication : public QWidget
     void slotDefaultLoginToggled(bool checked);
     
     /**
-     * This slot is connected to the "Details" button and shows the details
-     * of the selected wallet entry.
-     * 
-     * @param checked       TRUE if the button is checked
-     */
-    void slotDetailsClicked(bool checked);
-    
-    /**
      * This slot is connected to the KListWidget::itemSelectionChanged() signal.
      * It unmarks and enables/disables the "Show details" checkbox and clears the
      * the details widget.
@@ -177,25 +169,18 @@ class Smb4KConfigPageAuthentication : public QWidget
     void slotDetailsChanged(int row, int column);
     
     /**
-     * This slot is connected to the "Remove" action
+     * This slot is connected to the "Remove" button
      * 
      * @param checked         TRUE if the action is checked
      */
-    void slotRemoveActionTriggered(bool checked);
+    void slotRemoveClicked(bool checked);
     
     /**
-     * This slot is connected to the "Clear List" action
+     * This slot is connected to the "Clear" button
      * 
      * @param checked         TRUE if the action is checked
      */
-    void slotClearActionTriggered(bool checked);
-    
-    /**
-     * This slot is connected to the "Edit" action in the table widget.
-     * 
-     * @param checked         TRUE if the action is checked
-     */
-    void slotEditActionTriggered(bool checked);
+    void slotClearClicked(bool checked);
     
     /**
      * This slot is connected to the "Save" button and resets all actions.
@@ -208,11 +193,9 @@ class Smb4KConfigPageAuthentication : public QWidget
     void showDetails(Smb4KAuthInfo *authInfo);
     void clearDetails();
     QListWidget *m_entries_widget;
-    QCheckBox *m_details_box;
     QTableWidget *m_details_widget;
     QList<Smb4KAuthInfo *> m_entries_list;
     bool m_entries_displayed;
-    bool m_loading_details;
     bool m_maybe_changed;
 };
 
