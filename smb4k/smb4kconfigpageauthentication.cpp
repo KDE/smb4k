@@ -106,7 +106,29 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   m_entries_widget = new QListWidget(walletEntriesEditor);
   m_entries_widget->setDragDropMode(QListWidget::NoDragDrop);
   m_entries_widget->setSelectionMode(QListWidget::SingleSelection);
+  m_entries_widget->setContextMenuPolicy(Qt::ActionsContextMenu);
   m_entries_widget->viewport()->installEventFilter(this);
+
+  // Edit action
+  QAction *editAction = new QAction(KDE::icon("edit-rename"), i18n("Edit"), m_entries_widget);
+  editAction->setObjectName("EditAction");
+  editAction->setEnabled(false);
+  connect(editAction, SIGNAL(triggered(bool)), this, SLOT(slotEditClicked()));
+  m_entries_widget->addAction(editAction);
+  
+  // Remove action
+  QAction *removeAction = new QAction(KDE::icon("edit-delete"), i18n("Remove"), m_entries_widget);
+  removeAction->setObjectName("RemoveAction");
+  removeAction->setEnabled(false);
+  connect(removeAction, SIGNAL(triggered(bool)), this, SLOT(slotRemoveClicked()));
+  m_entries_widget->addAction(removeAction);
+  
+  // Clear action
+  QAction *clearAction = new QAction(KDE::icon("edit-clear-list"), i18n("Clear"), m_entries_widget);
+  clearAction->setObjectName("ClearAction");
+  clearAction->setEnabled(false);
+  connect(clearAction, SIGNAL(triggered(bool)), this, SLOT(slotClearClicked()));
+  m_entries_widget->addAction(clearAction);  
   
   connect(m_entries_widget, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
   
@@ -126,34 +148,6 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   walletEntriesEditorLayout->addWidget(loadButton, 0, 1, 0);
   
   // 
-  // Remove button
-  // 
-  QPushButton *removeButton = new QPushButton(walletEntriesEditor);
-  removeButton->setObjectName("RemoveButton");
-  removeButton->setText(i18n("Remove"));
-  removeButton->setIcon(KDE::icon("edit-delete"));
-  removeButton->setWhatsThis(i18n("The selected entry is removed from the wallet."));
-  removeButton->setEnabled(false);
-  
-  connect(removeButton, SIGNAL(clicked(bool)), this, SLOT(slotRemoveClicked(bool)));
-  
-  walletEntriesEditorLayout->addWidget(removeButton, 1, 1, 0);
-  
-  // 
-  // Clear button
-  // 
-  QPushButton *clearButton = new QPushButton(walletEntriesEditor);
-  clearButton->setObjectName("ClearButton");
-  clearButton->setText(i18n("Clear"));
-  clearButton->setIcon(KDE::icon("edit-clear-list"));
-  clearButton->setWhatsThis(i18n("All entries are removed from the wallet."));
-  clearButton->setEnabled(false);
-  
-  connect(clearButton, SIGNAL(clicked(bool)), this, SLOT(slotClearClicked(bool)));
-  
-  walletEntriesEditorLayout->addWidget(clearButton, 2, 1, 0);
-  
-  // 
   // Save button
   // 
   QPushButton *saveButton = new QPushButton(walletEntriesEditor);
@@ -166,8 +160,8 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   connect(saveButton, SIGNAL(clicked(bool)), this, SIGNAL(saveWalletEntries()));
   connect(saveButton, SIGNAL(clicked(bool)), this, SLOT(slotSaveClicked(bool)));
   
-  walletEntriesEditorLayout->addWidget(saveButton, 3, 1, 0);
-  walletEntriesEditorLayout->addItem(new QSpacerItem(0, 5, QSizePolicy::Fixed, QSizePolicy::Fixed), 4, 1);
+  walletEntriesEditorLayout->addWidget(saveButton, 1, 1, 0);
+  walletEntriesEditorLayout->addItem(new QSpacerItem(0, 10, QSizePolicy::Fixed, QSizePolicy::Fixed), 2, 1);
   
   //
   // The details widget
@@ -251,10 +245,10 @@ void Smb4KConfigPageAuthentication::displayWalletEntries()
   m_entries_displayed = true;
   
   //
-  // Enable buttons
+  // Enable buttons and actions
   // 
   findChild<QPushButton *>("SaveButton")->setEnabled(m_entries_widget->count() != 0);
-  findChild<QPushButton *>("ClearButton")->setEnabled(m_entries_widget->count() != 0);
+  findChild<QAction *>("ClearAction")->setEnabled(m_entries_widget->count() != 0);
 }
 
 
@@ -274,7 +268,8 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
       {
         clearDetails();
         m_entries_widget->clearSelection();
-        findChild<QPushButton *>("RemoveButton")->setEnabled(false);
+        findChild<QAction *>("EditAction")->setEnabled(false);
+        findChild<QAction *>("RemoveAction")->setEnabled(false);
       }
     }
     
@@ -285,7 +280,7 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
 }
 
 
-void Smb4KConfigPageAuthentication::showDetails(Smb4KAuthInfo *authInfo)
+void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
 {
   switch (authInfo->type())
   {
@@ -359,11 +354,6 @@ void Smb4KConfigPageAuthentication::showDetails(Smb4KAuthInfo *authInfo)
   }
   
   //
-  // Set the height
-  //
-  m_details_widget->setMaximumHeight(4 * m_details_widget->rowHeight(0) + 5);
-  
-  //
   // Connect signals
   // 
   connect(m_details_widget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));  
@@ -423,7 +413,7 @@ void Smb4KConfigPageAuthentication::slotItemSelectionChanged()
   // Clear details widget
   // 
   clearDetails();
-  
+
   //
   // Get the authentication information and load its
   // details into the details widget
@@ -435,14 +425,15 @@ void Smb4KConfigPageAuthentication::slotItemSelectionChanged()
       if (m_entries_widget->currentItem()->text() == authInfo->displayString() ||
           (m_entries_widget->currentItem()->text() == i18n("Default Login") && authInfo->type() == UnknownNetworkItem))
       {
-        showDetails(authInfo);
+        loadDetails(authInfo);
         break;
       }
     }
+    
+    // Enable actions
+    findChild<QAction *>("EditAction")->setEnabled(true);
+    findChild<QAction *>("RemoveAction")->setEnabled(true);
   }
-  
-  // Enable the details and remove action
-  findChild<QPushButton *>("RemoveButton")->setEnabled(true);
 }
 
 
@@ -522,7 +513,24 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
 }
 
 
-void Smb4KConfigPageAuthentication::slotRemoveClicked(bool /*checked*/)
+void Smb4KConfigPageAuthentication::slotEditClicked()
+{
+  if (m_entries_widget->currentItem())
+  {
+    //
+    // Since the details have been loaded to the details widget already
+    // by slotItemSelectionChanged(), only open the details widget here.
+    // 
+    if (!findChild<KCollapsibleGroupBox *>("DetailsBox")->isExpanded())
+    {
+      findChild<KCollapsibleGroupBox *>("DetailsBox")->setExpanded(true);
+    }
+  }
+}
+
+
+
+void Smb4KConfigPageAuthentication::slotRemoveClicked()
 {
   if ((m_details_widget->rowCount() != 0 && m_details_widget->columnCount() != 0) &&
        QString::compare(m_entries_widget->currentItem()->text(), m_details_widget->item(0, 1)->text()) == 0)
@@ -561,16 +569,16 @@ void Smb4KConfigPageAuthentication::slotRemoveClicked(bool /*checked*/)
   delete m_entries_widget->currentItem();
   
   //
-  // Enabled buttons
+  // Enable actions
   // 
-  findChild<QPushButton *>("ClearButton")->setEnabled((m_entries_widget->count() != 0));
+  findChild<QAction *>("ClearAction")->setEnabled((m_entries_widget->count() != 0));
   
   m_maybe_changed = true;
   emit walletEntriesModified();
 }
 
 
-void Smb4KConfigPageAuthentication::slotClearClicked(bool /*checked*/)
+void Smb4KConfigPageAuthentication::slotClearClicked()
 {
   clearDetails();
   
@@ -587,7 +595,7 @@ void Smb4KConfigPageAuthentication::slotClearClicked(bool /*checked*/)
   //
   // Enabled widgets
   // 
-  findChild<QPushButton *>("ClearButton")->setEnabled(false);
+  findChild<QAction *>("ClearAction")->setEnabled(false);
   
   QCheckBox *default_login = findChild<QCheckBox *>("kcfg_UseDefaultLogin");
   default_login->setChecked(false);
@@ -602,8 +610,9 @@ void Smb4KConfigPageAuthentication::slotSaveClicked(bool /*checked*/)
   //
   // Disable buttons
   // 
-  findChild<QPushButton *>("RemoveButton")->setEnabled(false);
-  findChild<QPushButton *>("ClearButton")->setEnabled((m_entries_widget->count() != 0));
+  findChild<QAction *>("EditAction")->setEnabled(false);
+  findChild<QAction *>("RemoveAction")->setEnabled(false);
+  findChild<QAction *>("ClearAction")->setEnabled((m_entries_widget->count() != 0));
   
   //
   // Clear the selection in the list view

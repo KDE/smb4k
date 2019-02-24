@@ -169,18 +169,19 @@ class Smb4KConfigPageAuthentication : public QWidget
     void slotDetailsChanged(int row, int column);
     
     /**
-     * This slot is connected to the "Remove" button
-     * 
-     * @param checked         TRUE if the action is checked
+     * This slot is called when the edit action is clicked.
      */
-    void slotRemoveClicked(bool checked);
+    void slotEditClicked();
+    
+    /**
+     * This slot is connected to the "Remove" button
+     */
+    void slotRemoveClicked();
     
     /**
      * This slot is connected to the "Clear" button
-     * 
-     * @param checked         TRUE if the action is checked
      */
-    void slotClearClicked(bool checked);
+    void slotClearClicked();
     
     /**
      * This slot is connected to the "Save" button and resets all actions.
@@ -190,7 +191,7 @@ class Smb4KConfigPageAuthentication : public QWidget
     void slotSaveClicked(bool checked);
     
   private:
-    void showDetails(Smb4KAuthInfo *authInfo);
+    void loadDetails(Smb4KAuthInfo *authInfo);
     void clearDetails();
     QListWidget *m_entries_widget;
     QTableWidget *m_details_widget;
