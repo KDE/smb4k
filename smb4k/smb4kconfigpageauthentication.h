@@ -83,12 +83,6 @@ class Smb4KConfigPageAuthentication : public QWidget
     const QList<Smb4KAuthInfo *> &getWalletEntries() { return m_entries_list; }
     
     /**
-     * Display the authentication information in the list widget.
-     * Use this function AFTER setEntries() if necessary.
-     */
-    void displayWalletEntries();
-    
-    /**
      * Returns TRUE if the wallet entries are displayed and FALSE otherwise.
      * 
      * @returns TRUE if the wallet entries are displayed

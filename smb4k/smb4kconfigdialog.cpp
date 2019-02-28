@@ -568,36 +568,56 @@ void Smb4KConfigDialog::reject()
 
 void Smb4KConfigDialog::slotLoadAuthenticationInformation()
 {
-  Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
-  QList<Smb4KAuthInfo *> entries = Smb4KWalletManager::self()->walletEntries();
-  auth_options->insertWalletEntries(entries);
-  auth_options->displayWalletEntries();
+  //
+  // Get the Authentication config page
+  // 
+  Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
+  
+  //
+  // Insert and display the wallet entries
+  // 
+  authenticationPage->insertWalletEntries(Smb4KWalletManager::self()->walletEntries());
 }
 
 
 void Smb4KConfigDialog::slotSaveAuthenticationInformation()
 {
-  Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
+  //
+  // Get the Authentication config page
+  // 
+  Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
   
-  if (auth_options->walletEntriesDisplayed())
+  //
+  // Save the authentication information to the wallet
+  // 
+  if (authenticationPage->walletEntriesDisplayed())
   {
-    QList<Smb4KAuthInfo *> entries = auth_options->getWalletEntries();
-    Smb4KWalletManager::self()->writeWalletEntries(entries);
+    Smb4KWalletManager::self()->writeWalletEntries(authenticationPage->getWalletEntries());
   }
 }
 
 
 void Smb4KConfigDialog::slotSetDefaultLogin()
 {
-  Smb4KConfigPageAuthentication *auth_options = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
-
+  //
+  // Get the Authentication config page
+  // 
+  Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
+  
+  //
+  // Create an authentication object for the default authentication information
+  // 
   Smb4KAuthInfo authInfo;
   
-  // We do not need to call useDefaultAuthInfo(), because 
-  // Smb4KWalletManager::readDefaultAuthInfo() will do this
-  // for us.
+  //
+  // Read the default authentication information
+  // 
   Smb4KWalletManager::self()->readDefaultAuthInfo(&authInfo);
-    
+
+  //
+  // Show the password dialog to enter or modify the default authentication
+  // information.
+  // 
   QPointer<KPasswordDialog> dlg = new KPasswordDialog(this, KPasswordDialog::ShowUsernameLine);
   dlg->setPrompt(i18n("Enter the default login information."));
   dlg->setUsername(authInfo.userName());
@@ -605,20 +625,28 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
     
   if (dlg->exec() == KPasswordDialog::Accepted)
   {
+    //
+    // Save the authentication information to the wallet
+    // 
     authInfo.setUserName(dlg->username());
     authInfo.setPassword(dlg->password());
       
     Smb4KWalletManager::self()->writeDefaultAuthInfo(&authInfo);
       
-    if (auth_options->walletEntriesDisplayed())
+    //
+    // Reload the list of authentication information
+    // 
+    if (authenticationPage->walletEntriesDisplayed())
     {
       slotLoadAuthenticationInformation();
     }
   }
   else
   {
-    // Reset the checkbox.
-    auth_options->findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
+    // 
+    // Discard the password dialog and reset the checkbox
+    // 
+    authenticationPage->findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
   }
     
   delete dlg;

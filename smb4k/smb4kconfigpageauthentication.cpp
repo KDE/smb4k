@@ -209,20 +209,26 @@ Smb4KConfigPageAuthentication::~Smb4KConfigPageAuthentication()
 
 void Smb4KConfigPageAuthentication::insertWalletEntries(const QList<Smb4KAuthInfo *> &list)
 {
+  //
+  // Insert the list of authentication information
+  // 
   m_entries_list = list;
+  
+  //
+  // Reset the changed flag, since we are (re)loading the information
+  // 
   m_maybe_changed = false;
   emit walletEntriesModified();
-}
-
-
-void Smb4KConfigPageAuthentication::displayWalletEntries()
-{
-  // Clear the list widget if necessary
-  if (m_entries_widget->count() != 0)
-  {
-    m_entries_widget->clear();
-  }
   
+  //
+  // Now clear the list wirdget
+  // 
+  m_entries_widget->clear();
+  
+  //
+  // Insert the authentication information entries into the
+  // list widget
+  // 
   for (Smb4KAuthInfo *authInfo : m_entries_list)
   {
     switch (authInfo->type())
@@ -240,8 +246,14 @@ void Smb4KConfigPageAuthentication::displayWalletEntries()
     }
   }
   
-  m_entries_widget->sortItems(/* ascending */);
+  //
+  // Sort the entries
+  // 
+  m_entries_widget->sortItems();
   
+  //
+  // Set the display flag to true
+  // 
   m_entries_displayed = true;
   
   //
