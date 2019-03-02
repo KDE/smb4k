@@ -145,7 +145,7 @@ void Smb4KConfigDialog::setupDialog()
   // Pages to the configuration dialog
   // 
   m_user_interface  = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), "preferences-desktop");
-  m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network Neighborhood"), "network-workgroup");
+  m_network         = addPage(network_area, Smb4KSettings::self(), i18n("Network"), "network-workgroup");
   m_mounting        = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), "system-run");
   m_authentication  = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
   m_synchronization = addPage(rsync_area, Smb4KSettings::self(),i18n("Synchronization"), "folder-sync");
