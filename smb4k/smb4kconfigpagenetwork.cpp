@@ -69,11 +69,13 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   QLabel *nebiosNameLabel = new QLabel(Smb4KSettings::self()->netBIOSNameItem()->label(), basicSettingsBox);
   KLineEdit *netbiosName = new KLineEdit(basicSettingsBox);
   netbiosName->setObjectName("kcfg_NetBIOSName");
+  netbiosName->setClearButtonEnabled(true);
   nebiosNameLabel->setBuddy(netbiosName);
 
   QLabel *domainLabel = new QLabel(Smb4KSettings::self()->domainNameItem()->label(), basicSettingsBox);
   KLineEdit *domain = new KLineEdit(basicSettingsBox);
   domain->setObjectName("kcfg_DomainName");
+  domain->setClearButtonEnabled(true);
   domainLabel->setBuddy(domain);
   
   QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), basicSettingsBox);
