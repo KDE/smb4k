@@ -505,9 +505,8 @@ void Smb4KShare::setMountData(Smb4KShare *share)
   Q_ASSERT(share);
 
   if (QString::compare(url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort), 
-                       share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort), 
-                       Qt::CaseInsensitive) == 0 &&
-      QString::compare(workgroupName(), share->workgroupName(), Qt::CaseInsensitive) == 0)
+                       share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort), Qt::CaseInsensitive) == 0 &&
+      (share->workgroupName().isEmpty() || QString::compare(workgroupName(), share->workgroupName(), Qt::CaseInsensitive) == 0))
   {
     d->path         = share->path();
     d->inaccessible = share->isInaccessible();
