@@ -96,15 +96,15 @@
   <sect1 id="running_smb4k" >
     <title>Running &smb4k;</title>
     
-    <para>Since version 2.9.71, &smb4k; is using the <application>libsmbclient</application> library to browse and search the network neighborhood and print files. You should check which version of &Samba; you are using, before you are using &smb4k;. Users of Samba 4.7 and above need to set the following setting in the [global] section of the <filename>smb.conf</filename> file to be able browse the network neighborhood:</para>
+    <para>Since version 2.9.71, &smb4k; is using the <application>libsmbclient</application> library to browse and search the network neighborhood and print files. For this reason, users of Samba 4.7 and above need to add the following setting to the [global] section of the <filename>smb.conf</filename> file to be able browse the network neighborhood:</para>
       
 <programlisting>[global]
 ...
 client max protocol = NT1
 ...</programlisting>
 
-    <para>This is because, starting with Samba 4.7, the default protocol version has been set to SMB3 by the &Samba; team, but <application>libsmbclient</application> cannot handle this right now.</para>
-    <para>You can launch &smb4k; either from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. It does not take any arguments, except those that are known to all &kde; applications. &smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or panel.</para>
+    <para>This is because, starting with Samba 4.7, the default protocol version of &Samba; has been set to SMB3 by the &Samba; team, but <application>libsmbclient</application> currently cannot handle this. You can consult the Samba Wiki's <ulink url="https://wiki.samba.org/index.php/User_Documentation">User Documentation</ulink> section, if you need help.</para>
+    <para>You can either launch &smb4k; from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or panel.</para>
     <para>If the system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
     
     <screenshot id="notification_missing_program">
@@ -116,7 +116,6 @@ client max protocol = NT1
     </screenshot>
     
     <para>In this case, please install the specified program or, if it is already present, add its location to the <envar>PATH</envar> environment variable in your shell's configuration file (for the <ulink url="man:/bash"><citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> shell it is the <filename>~/.bashrc</filename> file).</para>
-    <para>In addition, it is recommended that you configure Samba before using &smb4k;. Consult the Samba Wiki's <ulink url="https://wiki.samba.org/index.php/User_Documentation">User Documentation</ulink> section, if you need help.</para>
   </sect1>
 
 <!-- 
@@ -126,7 +125,7 @@ client max protocol = NT1
   <sect1 id="mainwindow_overview">
     <title>The Main Window</title>
   
-    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menubar and toolbar(s) are located. Below them you find the status bar.</para>
+    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menubar and toolbar are located. Below them you find the status bar.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo>Screenshot of the main window</screeninfo>
@@ -171,7 +170,7 @@ client max protocol = NT1
 
       <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. Opening a workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
       <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;.</para>
-      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
     </sect2>
 
 <!-- 
@@ -319,7 +318,7 @@ client max protocol = NT1
       <title>Tooltips</title>
 
       <para>For each network item a tooltip is provided that contains various information like the name of the workgroup and master browser, the name and IP address of the host, the name of the share, &etc;</para>
-      <para>The tooltips can be disabled in the <link linkend="configuration_user_interface_network_tooltips">configuration dialog</link>.</para>
+      <para>The tooltips can be disabled in the <link linkend="configuration_page_user_interface_network">configuration dialog</link>.</para>
     </sect2>
 
 <!-- 
@@ -383,7 +382,7 @@ client max protocol = NT1
         </mediaobject>
       </screenshot>
       <para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view and the <guibutton>Up</guibutton>, <guibutton>Back</guibutton>, and <guibutton>Forward</guibutton> button. The current location is displayed in the combo box on the right hand side. The <guibutton>Reload</guibutton> button reloads the contents of the current folder.</para>
-      <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_network_general_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
+      <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_page_network_samba_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
     </sect2>
 
 <!-- 
@@ -414,7 +413,7 @@ client max protocol = NT1
       <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
       <itemizedlist>
         <listitem><para>define custom Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
-        <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_network_wake_on_lan">here</link>),</para></listitem>
+        <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan">here</link>),</para></listitem>
         <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
       <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry.</para>
@@ -437,7 +436,7 @@ client max protocol = NT1
       <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
         <title>Samba</title>
 
-        <para>Depending on your selection, the settings in the custom options dialog either apply to all shares of a server or to a single one. You can define the SMB port, the file system port (&Linux; only), the write access, the user ID, the group ID and if Kerberos should be used for authentication. For detailed information on the individual settings, please see <link linkend="configuration_page_samba">here</link>.</para>
+        <para>Depending on your selection, the settings in the custom options dialog either apply to all shares of a server or to a single one. You can define the SMB port, the file system port (&Linux; only), the write access, the user ID, the group ID and if Kerberos should be used for authentication. For detailed information on the individual settings, please see <link linkend="configuration_page_network">here</link> and <link linkend="configuration_page_mounting">here</link>.</para>
       </sect3>
 
       <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
@@ -502,7 +501,7 @@ client max protocol = NT1
       </screenshot>
 
       <para>You can switch between the two views by selecting either the appropriate entry in the <guimenuitem>View Modes</guimenuitem> from the <link linkend="mainwindow_overview"><guimenu>Shares View</guimenu></link> menu of the main window or in the shares view's <link linkend="shares_view_actions_popup_menu">popup menu</link>.</para>
-      <para>By default, only your own mounts are displayed. However, you can tell &smb4k; to show all mounts by altering the <link linkend="configuration_page_shares_behavior">respective settings</link>.</para>
+      <para>By default, only your own mounts are displayed. However, you can tell &smb4k; to show all mounts by altering the <link linkend="configuration_page_mounting_basic_settings_behavior">respective settings</link>.</para>
     </sect2>
 
 <!-- 
@@ -549,8 +548,8 @@ client max protocol = NT1
             </menuchoice>
           </term>
           <listitem>
-            <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="configuration_page_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
-            <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_shares_behavior">settings</link> in the configuration dialog.</para>
+            <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
+            <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> in the configuration dialog.</para>
             <para>Read the <link linkend="shares_view_unmounting">Unmounting Shares</link> section for more details.</para>
           </listitem>
         </varlistentry>
@@ -635,7 +634,7 @@ client max protocol = NT1
       <title>Tooltips</title>
 
       <para>The tooltips provide information about the share name, the mount point, the user and group, the login, the file system, the disk usage, and the free disk space. If the share is <link linkend="shares_view_inaccessible_shares">inaccessible</link>, these values are marked as unknown.</para>
-      <para>Tooltips are enabled by default. You can deactivate them in the <link linkend="configuration_user_interface_shares_tooltips">configuration dialog</link>.</para>
+      <para>Tooltips are enabled by default. You can deactivate them in the <link linkend="configuration_page_user_interface_shares_view">configuration dialog</link>.</para>
     </sect2>
 
 <!-- 
@@ -671,7 +670,7 @@ client max protocol = NT1
       <itemizedlist>
         <listitem><para>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open it or to do synchronization with it. You will only be able to unmount it or add a bookmark.</para></listitem>
         <listitem><para>The central icon indicates that the share is online, accessible, and owned by you. You may perform all available actions on it.</para></listitem>
-        <listitem><para>All shares marked with a warning sign like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_page_shares_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_page_shares_behavior">change this behavior</link>, too.</para></listitem>
+        <listitem><para>All shares marked with a warning sign like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_page_mounting_basic_settings_behavior">change this behavior</link>, too.</para></listitem>
       </itemizedlist>
     </sect2>
 
@@ -705,7 +704,7 @@ client max protocol = NT1
     <sect2 id="shares_view_unmounting">
       <title>Unmounting Shares</title>
 
-      <para>One or multiple selected shares may be unmounted by either clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> action or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_shares_behavior">configuration dialog</link>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount:</para>
+      <para>One or multiple selected shares may be unmounted by either clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> action or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior">configuration dialog</link>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount:</para>
       <screenshot>
         <screeninfo>Screenshot of the warning dialog that is shown when a foreign share is to be unmounted</screeninfo>
         <mediaobject>
@@ -718,7 +717,7 @@ client max protocol = NT1
         </mediaobject>
       </screenshot>
       <para>If you click the <guibutton>Yes</guibutton> button, the share will definitely be unmounted. So, please think twice before you decide to unmount shares that are owned by other users!</para>
-      <para>Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="configuration_page_shares_behavior">configure</link> &smb4k; so as to perform a <ulink url="man:/umount">lazy unmount</ulink> on inaccessible shares (&Linux; only).</para>
+      <para>Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="configuration_page_mounting_basic_settings_behavior">configure</link> &smb4k; so as to perform a <ulink url="man:/umount">lazy unmount</ulink> on inaccessible shares (&Linux; only).</para>
       <para>All shares can be unmounted at once by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>N</keycap></keycombo></shortcut><guimenuitem>Unmount All</guimenuitem></menuchoice> action. Depending on your settings, this will also unmount foreign and inaccessible shares.</para>
       <para>After a successful unmount process, the user is notified. If unmounting fails, a notification with the returned error message will be shown.</para>
     </sect2>
@@ -833,7 +832,7 @@ client max protocol = NT1
             <menuchoice><guimenuitem>Unmount All</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Unmount all shares at once. Depending on your <link linkend="configuration_page_shares_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
+            <para>Unmount all shares at once. Depending on your <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link>, &smb4k; attempts to unmount either only those shares that are owned by you or all that are listed.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -904,7 +903,7 @@ client max protocol = NT1
         </mediaobject>
       </screenshot>
 
-      <para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_profiles">configuration dialog</link>.</para>
+      <para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
       <para>The other menu entries are:</para>
 
       <variablelist>
@@ -1042,7 +1041,7 @@ client max protocol = NT1
     </screenshot>
   
     <para>You can activate a certain profile by clicking it.</para>
-    <para>Profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_profiles">configuration dialog</link>.</para>
+    <para>Profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
   </sect2>
 </sect1>
 
@@ -1071,7 +1070,7 @@ client max protocol = NT1
       </screenshot>
 
       <para>Adding a groups may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group are arranged in a submenu with the group entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
-      <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the location by default. If you want to change this behavior, you can do so in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>.</para>
+      <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the location by default. If you want to change this behavior, you can do so in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>.</para>
     </sect2>
     
 <!--
@@ -1151,7 +1150,7 @@ client max protocol = NT1
       </screenshot>
 
       <para>In the tree view, the bookmarks are arranged according to the groups they belong to. Bookmarks without groups are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
-      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_user_interface_misc_bookmarks">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
+      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
       <para>The tree view also offers a popup menu containing the following three actions. They can be used to add groups or remove groups and/or bookmarks.</para>
 
       <screenshot>
@@ -1208,7 +1207,7 @@ client max protocol = NT1
   
     <sect2 id="profiles_enable">
       <title>Enabling and Managing Profiles</title>
-      <para>The use of different profiles can be enabled in the <link linkend="configuration_profiles">configuration dialog</link>. The first profile in the list, most likely the <guilabel>Home</guilabel> profile, is picked to be the active profile. You can also enable the profile migration assistant.</para>
+      <para>The use of different profiles can be enabled in the <link linkend="configuration_page_profiles">configuration dialog</link>. The first profile in the list, most likely the <guilabel>Home</guilabel> profile, is picked to be the active profile. You can also enable the profile migration assistant.</para>
       <para>Two profiles are pre-defined, <guilabel>Home</guilabel> and <guilabel>Work</guilabel>, but you can define as many profiles as you want. A new profile is added by entering its name into the edit line on the <guibutton>Profiles</guibutton> configuration page and clicking <guibutton>Add</guibutton> afterwards.</para>
       <screenshot>
         <screeninfo>Screenshot of the Profiles configuration page (add profile)</screeninfo>
@@ -1396,7 +1395,7 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : User Interface 
   -->
 
-  <sect1 id="configuration_user_interface">
+  <sect1 id="configuration_page_user_interface">
     <title>User Interface</title>
 
     <para>With the options located here you can change the appearance and behavior of several dialogs and widgets. Please note that if you want to change the appearance of the main window you will find additional options under <guimenu>Settings</guimenu> in the <link linkend="mainwindow_overview">menubar</link>.</para>
@@ -1407,162 +1406,171 @@ polkit.addRule(function(action, subject) {
         <textobject><phrase>The "Appearance" configuration tab</phrase></textobject>
       </mediaobject>
     </screenshot>
+    
+<!--
+      Configuring Smb4K : User Interface : Main Window
+  -->
+    <sect2 id="configuration_page_user_interface_main_window">
+      <title>Main Window</title>
+      
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Tab orientation</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Define the location of the tabs if the dock widgets in the main window are arranged in tabs. The following values can be chosen:</para>
+            <variablelist>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>Top</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>The tabs are located at the top.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>Bottom</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>The tabs are located at the bottom.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>Left</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>The tabs are located on the left side.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>Right</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>The tabs are located on the right side.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+            <para>Default: <guibutton>Bottom</guibutton></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Show custom bookmark label if available</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The custom description (label) of the bookmark is shown. It can be defined in the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
 
 <!-- 
       Configuring Smb4K : User Interface : Network Neighborhood 
   -->
 
-    <sect2 id="configuration_user_interface_network">
+    <sect2 id="configuration_page_user_interface_network">
       <title>Network Neighborhood</title>
 
-      <sect3 id="configuration_user_interface_network_behavior">
-        <title>Behavior</title>
-  
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Automatically expand domains and hosts</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Automatically expand domain and host items when a list of associated network items (domain members or shares) is added or updated. Please note that a domain or host item will always be expanded when you execute it.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_user_interface_network_columns">
-        <title>Columns</title>
-  
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Show the type of the share</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The type of the shares is shown (i. e. Disk, Printer, or IPC).</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Show the IP address of the server</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The IP address of the remote servers is shown.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Show the comment</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The comment of a remote server or share is shown.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_user_interface_network_tooltips">
-        <title>Tooltips</title>
-  
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Show a tooltip with information about the network item</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>A tooltip will be shown when you move the mouse pointer over an item in the network neighborhood browser. It contains information about the network item such as the workgroup or domain name, host name, comment, type, &etc;</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Automatically expand domains and hosts</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Automatically expand domain and host items when a list of associated network items (domain members or shares) is added or updated. Please note that a domain or host item will always be expanded when you execute it.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Show the type of the share</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The type of the shares is shown (i. e. Disk, Printer, or IPC).</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Show the IP address of the server</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The IP address of the remote servers is shown.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Show the comment</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The comment of a remote server or share is shown.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Show tooltips for network items</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>A tooltip will be shown when you move the mouse pointer over an item in the network neighborhood browser. It contains information about the network item such as the workgroup or domain name, host name, comment, type, &etc;</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
 
 <!-- 
-      Configuring Smb4K : User Interface : Mounted Shares 
+      Configuring Smb4K : User Interface : Shares View 
   -->
 
-    <sect2 id="configuration_user_interface_shares">
-      <title>Mounted Shares</title>
-    
-      <sect3 id="configuration_user_interface_shares_view">
-        <title>View</title>
+    <sect2 id="configuration_page_user_interface_shares_view">
+      <title>Shares View</title>
   
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>View mode of the shares view</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Define the view mode of the shares view.</para>
-              <para>The following modes are defined:</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>Icon View</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>The icon view mode</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>List View</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>The list view mode</para>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
-              <para>Default: <guibutton>Icon View</guibutton></para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_user_interface_shares_tooltips">
-        <title>Tooltips</title>
-  
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Show a tooltip with information about the share</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>A tooltip will be shown if you move the mouse pointer over an item in the shares view. It contains information about the underlying item such as the share name, UNC address, mount point, owner and group, login (&CIFS; file system, &Linux; only), disk usage, &etc;</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : User Interface : Miscellaneous Settings 
-  -->
-
-    <sect2 id="configuration_user_interface_misc">
-      <title>Miscellaneous Settings</title>
-
-      <sect3 id="configuration_user_interface_misc_bookmarks">
-        <title>Bookmarks</title>
-  
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Show custom bookmark label if available</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The custom description (label) of the bookmark is shown. It can be defined in the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>View mode of the shares view</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Define the view mode of the shares view.</para>
+            <para>The following modes are defined:</para>
+            <variablelist>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>Icon View</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>The icon view mode</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>List View</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>The list view mode</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+            <para>Default: <guibutton>Icon View</guibutton></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Show tooltips for mounted shares</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>A tooltip will be shown if you move the mouse pointer over an item in the shares view. It contains information about the mounted share such as the share name, UNC address, mount point, owner and group, login (&CIFS; file system, &Linux; only), disk usage, &etc;</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
   </sect1>
 
@@ -1570,11 +1578,11 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : Network 
 -->
 
-  <sect1 id="configuration_network">
+  <sect1 id="configuration_page_network">
     <title>Network</title>
 
-    <para>The options located here can be used to make &smb4k; send authentication information when querying the workgroup master browsers, to modify the behavior when previewing or looking up remote shares, and to enable the Wake-On-LAN features. If you want to adjust the behavior of Samba programs, see the <link linkend="configuration_page_samba">Samba</link> section.</para>
-
+    <para>The options located here influence the network communication. You can modify the behavior of the underlying libsmbclient library in the <guibutton>Samba</guibutton> tab and enable the Wake-On-LAN features in the <guibutton>Wake-On-LAN</guibutton> tab.</para>
+    
     <screenshot>
       <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
       <mediaobject>
@@ -1584,60 +1592,173 @@ polkit.addRule(function(action, subject) {
     </screenshot>
 
 <!-- 
-      Configuring Smb4K : Network 
+      Configuring Smb4K : Network : Samba (libsmbclient)
 -->
 
-    <sect2 id="configuration_network_master_authentication">
-      <title>Authentication</title>
+    <sect2 id="configuration_page_network_samba">
+      <title>Samba</title>
+      
+      <sect3 id="configuration_page_network_samba_basic_settings">
+        <title>Basic Settings</title>
 
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>The master browsers require authentication to return the browse list</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>If the workgroup master browsers require authentication to return the browse list, you need to check this button. This may be the case for example with some NAS devices. This setting is rarely needed and might even cause a master browser to return an empty browse list.</para>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
-
-    <sect2 id="configuration_network_general_behavior">
-      <title>Behavior</title>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>NetBIOS name</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Set the NetBIOS name of your computer. The text box should already be filled with the information found in the <filename>smb.conf</filename> configuration file or with the hostname of your computer. Under normal circumstances there is no need to change anything here.</para>
+              <para>Default: NetBIOS name defined in <filename>smb.conf</filename> or the hostname</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Domain</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Set the name of the domain/workgroup your computer is in. The text box should already be filled with the information found in the <filename>smb.conf</filename> configuration file. Under normal circumstances there is no need to change anything here.</para>
+              <para>Default: domain name defined in <filename>smb.conf</filename></para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>SMB port</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Enabling this setting sets the remote SMB port number to communicate with a remote host to the value defined in the spin box. Under FreeBSD, this is also the port that is used for mounting.</para>
+              <para>Unless you are using a firewall or have a customized network setup, you do not need to change anything here.</para>
+              <para>Default: not selected / port 139</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>This computer is on a large network neighborhood</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>In the default configuration, all available master browsers are queried when the browse list is compiled. On large network neighborhoods this can be very time consuming. Enabling this setting restricts the query to three master browsers.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Printer shares are detected.</para>
-            <para>Default: selected</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Hidden shares are detected. Hidden shares are ending with a $ sign, &eg; Musik$ or IPC$.</para>
-            <para>Default: selected</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
+      <sect3 id="configuration_page_network_samba_authentication">
+        <title>Authentication</title>
 
-    <sect2 id="configuration_network_wake_on_lan">
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Master browsers require authentication</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>If the workgroup master browsers require authentication to return the browse list, you need to check this button. This may be the case for example with some NAS devices. This setting is rarely needed and might even cause a master browser to return an empty browse list.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use Kerberos for authentication</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Use Kerberos for authentication in an Active Directory environment.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use Winbind ccache for authentication</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Try to use the credentials cached by Winbind.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+      
+      <sect3 id="configuration_page_network_samba_security">
+        <title>Security</title>
+        
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Encryption level</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Set the level of encryption that is used to make connections. The following settings can be chosen:</para>
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guilabel>None</guilabel></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Encryption is not used.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guilabel>Request</guilabel></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Encryption is requested.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guilabel>Require</guilabel></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Encryption is required.</para>
+                  </listitem>
+                </varlistentry>                
+              </variablelist>
+              <para>Default: not selected / <guilabel>None</guilabel></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        
+      </sect3>     
+
+      <sect3 id="configuration_page_network_samba_behavior">
+        <title>Behavior</title>
+    
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Printer shares are detected.</para>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Hidden shares are detected. Hidden shares are ending with a $ sign, &eg; Musik$ or IPC$.</para>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+    </sect2>
+    
+<!-- 
+      Configuring Smb4K : Network : Wake-On_LAN
+-->
+
+    <sect2 id="configuration_page_network_wake_on_lan">
       <title>Wake-On-LAN</title>
 
       <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
@@ -1666,454 +1787,6 @@ polkit.addRule(function(action, subject) {
   </sect1>
 
 <!-- 
-      Configuring Smb4K : Shares 
--->
-
-  <sect1 id="conmfiguration_page_shares">
-    <title>Shares</title>
-
-    <para>These options determine where &smb4k; will mount the remote shares and how it behaves &eg; on start-up and exit. If you want to configure the mount options, please see the <link linkend="configuration_page_samba">Samba</link> section.</para>
-
-    <screenshot>
-      <screeninfo>Screenshot of the "Shares" configuration tab</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="configuration_page_shares.png" format="PNG" />
-        </imageobject>
-        <textobject>
-          <phrase>The "Shares" configuration tab</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Configuring Smb4K : Shares : Directories 
--->
-
-    <sect2 id="conmfiguration_page_shares_directories">
-      <title>Directories</title>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Mount prefix</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>This is the base folder (mount prefix) where &smb4k; will mount the remote shares. It can be changed by using the &URL; requester (Click the button with the folder icon.) or by directly entering the new path into the text box. Path variables like <envar>$HOME</envar> are recognized.</para>
-            <para>Default: <filename class="directory">$HOME/smb4k/</filename></para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Force generated subdirectories to be lower case</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>All subdirectories that are created by &smb4k; below the mount prefix will be lower case.</para>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Shares : Behavior 
--->
-
-    <sect2 id="configuration_page_shares_behavior">
-      <title>Behavior</title>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Remount shares</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</para>
-            <note><para>This setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</para></note>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guilabel>Number of remount attempts</guilabel></menuchoice>
-          </term>
-          <listitem>
-            <para>Set the number of attempts that are made to remount shares before Smb4K gives up.</para>
-            <para>Default: 1</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guilabel>Interval between remount attempts</guilabel></menuchoice>
-          </term>
-          <listitem>
-            <para>Set the time that elapses between attempts to remount shares.</para>
-            <para>Default: 5 min</para>
-          </listitem>
-        </varlistentry>  
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Unmount all personal shares on exit</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</para>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Force the unmounting of inaccessible shares</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Force the unmounting of inaccessible shares (&Linux; only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmounting is done, a warning dialog is shown asking to approve the unmount.</para>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Allow the unmounting of shares that are owned by other users</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>This option will allow you to unmount shares that were mounted by other users.</para>
-            <para>USE WITH EXTREME CAUTION!</para>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Detect all shares that are mounted on the system</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (FreeBSD) and &CIFS; (&Linux;) file system that are present on the system.</para>
-            <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>  
-      </variablelist>
-    </sect2>
-  </sect1>
-
-<!-- 
-      Configuration: Authentication 
--->
-
-  <sect1 id="configuration_page_authentication">
-    <title>Authentication</title>
-
-    <para>Here you can change the settings affecting the authentication.</para>
-
-    <screenshot>
-      <screeninfo>Screenshot of the "Authentication" configuration page</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="configuration_page_authentication.png" format="PNG" />
-        </imageobject>
-        <textobject>
-          <phrase>The "Authentication" configuration page</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Configuring Smb4K : Authentication : General Settings
--->
-
-    <sect2 id="configuration_page_authentication_general">
-      <title>General Settings</title>
-    
-      <sect3 id="configuration_page_authentication_general_storage">
-        <title>Password Storage</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_page_authentication_general_default">
-        <title>Default Login</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
-              <screenshot>
-                <screeninfo>Screenshot of the default login input dialog</screeninfo>
-                <mediaobject>
-                  <imageobject><imagedata fileref="dialog_default_login.png" format="PNG" /></imageobject>
-                  <textobject><phrase>The default login input dialog</phrase></textobject>
-                </mediaobject>
-              </screenshot>
-              <para>You have to fill in at least the user name. Empty passwords are supported.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Authentication : Wallet Entries 
--->
-
-    <sect2 id="configuration_page_authentication_wallet_entries">
-      <title>Wallet Entries</title>
-      
-      <para>The <guilabel>Wallet Entries</guilabel> tab contains an editor with that you can modify or remove existing wallet entries.</para>
-      <screenshot>
-        <screeninfo>Screenshot of the wallet entries editor</screeninfo>
-        <mediaobject>
-          <imageobject><imagedata fileref="configuration_page_authentication_wallet_entries.png" format="PNG" /></imageobject>
-          <textobject><phrase>The wallet entries editor</phrase></textobject>
-        </mediaobject>
-      </screenshot>
-      <para>Before you can edit the wallet entries, you have to load them from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then on the left. An entry can be edited by selecting it and checking the <guibutton>Show details</guibutton> button. The details are then shown on the right and can be modified.</para>
-      <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
-      <para>Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu either in the wallet entries list widget or in the details widget.</para>
-      <para>After you finished editing, the changes have to be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
-    </sect2>
-  </sect1>
-
-<!-- 
-      Configuring Smb4K : Samba 
--->
-
-  <sect1 id="configuration_page_samba">
-    <title>Samba</title>
-
-    <para>Here you can directly influence the command line arguments that are passed to the &Samba; programs. Please note, that the settings will have no effect outside &smb4k; and that no changes will be applied to the <filename>smb.conf</filename> configuration file. For further information, please refer to the manual pages of the &Samba; software suite.</para>
-
-    <screenshot>
-      <screeninfo>Screenshot of the "Samba" configuration page</screeninfo>
-      <mediaobject>
-        <imageobject><imagedata fileref="configuration_page_samba.png" format="PNG" /></imageobject>
-        <textobject><phrase>The "Samba" configuration page</phrase></textobject>
-      </mediaobject>
-    </screenshot>
-
-<!-- 
-      Configuring Smb4K : Samba : Common Settings
--->
-  
-    <sect2 id="configuration_page_samba_common_settings">
-      <title>Common Settings</title>
-      
-      <sect3 id="configuration_page_samba_common_settings_common_options">
-        <title>Common Options</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>NetBIOS name</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the NetBIOS name of your computer. The text box should already be filled with the information found in the <filename>smb.conf</filename> configuration file or with the hostname of your computer. Under normal circumstances there is no need to change anything here.</para>
-              <para>Default: NetBIOS name defined in <filename>smb.conf</filename> or the hostname</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Domain</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the name of the domain/workgroup your computer is in. The text box should already be filled with the information found in the <filename>smb.conf</filename> configuration file. Under normal circumstances there is no need to change anything here.</para>
-              <para>Default: domain name defined in <filename>smb.conf</filename></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Socket options</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the TCP socket options. Please refer to the <ulink url="man:/smb.conf"><citerefentry><refentrytitle>smb.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink> manual page to learn more.</para>
-              <para>Default: socket options defined in <filename>smb.conf</filename></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>NetBIOS scope</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the NetBIOS scope. It is recommended that you read the <ulink url="man:/smb.conf"><citerefentry><refentrytitle>smb.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink> manual page before entering anything here.</para>
-              <para>Default: NetBIOS scope defined in <filename>smb.conf</filename></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>SMB port</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Sets the remote SMB port number that is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>, <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to communicate with a remote host. Under FreeBSD, this is also the port that is used for mounting.</para>
-              <para>Unless you are using a firewall or have a customized network setup, you do not need to change anything here.</para>
-              <para>Default: 139</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_page_samba_common_settings_authentication">
-        <title>Authentication</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Try to authenticate with Kerberos</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Use Kerberos for authentication in an Active Directory environment. This setting is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>, <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Authenticate with local machine account</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Make queries to the remote server using the machine account of the local server. This setting is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>, <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Use Winbind ccache for authentication</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Try to use the credentials cached by Winbind. This setting is used by <ulink url="man:/net"><citerefentry><refentrytitle>net</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>, <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_page_samba_common_settings_security">
-        <title>Security</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Encryption level</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the level of encryption that is used to make connections.</para> <!--FIXME None Request Require-->
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Signing state</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the client signing state. This setting is used by <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> and <ulink url="man:/smbtree"><citerefentry><refentrytitle>smbtree</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
-              <para>The following options are available:</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>None</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>Do not set the client signing state.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>On</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>Set the client signing state to <emphasis>on</emphasis>.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>Off</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>Set the client signing state to <emphasis>off</emphasis>.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>Required</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>Set the client signing state to <emphasis>required</emphasis>.</para>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
-              <para>Default: None</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Encrypt SMB transport</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>This option requires the remote server to support the &UNIX; extensions. Request that the connection be encrypted. This is new for &Samba; 3.2 and will only work with &Samba; 3.2 or above servers. Fails the connection if encryption cannot be negotiated.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Samba : Utility Programs 
--->
-
-    <sect2 id="configuration_page_samba_utility_programs">
-      <title>Utility Programs</title>
-    
-      <sect3 id="configuration_page_samba_utility_programs_smbclient">
-        <title>smbclient</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Name resolve order</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Determine what naming services and in what order are used to resolve host names to IP addresses. The option takes a space-separated string of different name resolution options. The options are: "lmhost", "host", "wins" and "bcast". For further information see the manual page of <ulink url="man:/smbclient"><citerefentry><refentrytitle>smbclient</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
-              <para>Default: options defined in <filename>smb.conf</filename></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Buffer size</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Change the transmit/send buffer size when getting or putting a file from/to a remote server.</para>
-              <para>Default: 65520 Bytes</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_page_samba_utility_programs_smbtree">
-        <title>smbtree</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Send requests as broadcasts</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Query network nodes by sending requests as broadcasts instead of querying the local master browser.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    </sect2>
-  </sect1>
-
-<!-- 
       Configuring Smb4K : Mounting 
 -->
 
@@ -2129,50 +1802,155 @@ polkit.addRule(function(action, subject) {
         <textobject><phrase>The "Mounting" configuration page</phrase></textobject>
       </mediaobject>
     </screenshot>
+    
+<!--
+      Configuring Smb4K : Mounting : Basic Settings
+-->
+    
+    <sect2 id="configuration_page_mounting_basic_settings">
+      <title>Basic Settings</title>
+      
+      <sect3 id="configuration_page_mounting_basic_settings_directories">
+        <title>Directories</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Mount prefix</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>This is the base folder (mount prefix) where &smb4k; will mount the remote shares. It can be changed by using the &URL; requester (Click the button with the folder icon.) or by directly entering the new path into the text box. Path variables like <envar>$HOME</envar> are recognized.</para>
+              <para>Default: <filename class="directory">$HOME/smb4k/</filename></para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Force generated subdirectories to be lower case</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>All subdirectories that are created by &smb4k; below the mount prefix will be lower case.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+
+      <sect3 id="configuration_page_mounting_basic_settings_behavior">
+        <title>Behavior</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Remount shares</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</para>
+              <note><para>This setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</para></note>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guilabel>Number of remount attempts</guilabel></menuchoice>
+            </term>
+            <listitem>
+              <para>Set the number of attempts that are made to remount shares before Smb4K gives up.</para>
+              <para>Default: 1</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guilabel>Interval between remount attempts</guilabel></menuchoice>
+            </term>
+            <listitem>
+              <para>Set the time that elapses between attempts to remount shares.</para>
+              <para>Default: 5 min</para>
+            </listitem>
+          </varlistentry>  
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Unmount all personal shares on exit</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Unmount all shares that belong to you when the program exits. Shares that are owned by other users are ignored.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Force the unmounting of inaccessible shares</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Force the unmounting of inaccessible shares (&Linux; only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmounting is done, a warning dialog is shown asking to approve the unmount.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Allow the unmounting of shares that are owned by other users</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>This option will allow you to unmount shares that were mounted by other users.</para>
+              <para>USE WITH EXTREME CAUTION!</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Detect all shares that are mounted on the system</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (FreeBSD) and &CIFS; (&Linux;) file system that are present on the system.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>  
+        </variablelist>
+      </sect3>
+    </sect2>
   
 <!--
-      Configuring Smb4K : Mounting : Common Settings
+      Configuring Smb4K : Mounting : Common Mount Settings
 -->
   
-    <sect2 id="configuration_page_mounting_common">
-      <title>Common Settings</title>
+    <sect2 id="configuration_page_mounting_common_mount_settings">
+      <title>Common Mount Settings</title>
 
-      <sect3 id="configuration_page_mounting_common_options">
+      <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
         <title>Common Options</title>
 
         <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Write access</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Here you can determine if the shares should be mounted <emphasis>read-write</emphasis> or <emphasis>read-only</emphasis> by default. This option is independent of the file mask and the folder mask settings above.</para>
-            <para>Default: read-write</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Client character set</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Sets the character set used by the client side (&ie; your computer).</para>
-            <para>Default: default</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>File system port</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
-            <para>This option is only available under &Linux;. Under FreeBSD, the port for mounting shares is set with the <guibutton>SMB port</guibutton> option.</para>
-            <para>Default: 445</para>
-          </listitem>
-        </varlistentry>
-       </variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Write access</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Here you can determine if the shares should be mounted <emphasis>read-write</emphasis> or <emphasis>read-only</emphasis> by default. This option is independent of the file mask and the folder mask settings above.</para>
+              <para>Default: read-write</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Client character set</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Sets the character set used by the client side (&ie; your computer).</para>
+              <para>Default: default</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>File system port</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
+              <para>This option is only available under &Linux;. Under FreeBSD, the port for mounting shares is set with the <link linkend="configuration_page_network_samba_basic_settings"><guibutton>SMB port</guibutton></link> option.</para>
+              <para>Default: 445</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
       </sect3>
 
-      <sect3 id="configuration_page_mounting_cifs">
+      <sect3 id="configuration_page_mounting_cifs_unix_extensions">
         <title>&CIFS; Unix Extensions Support</title>
         <variablelist>
         <varlistentry>
@@ -2181,7 +1959,7 @@ polkit.addRule(function(action, subject) {
           </term>
           <listitem>
             <para>Most versions of Samba support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few Samba servers, you can safely uncheck this option and define custom options for the Samba servers.</para>
-            <para>Default: your UID</para>
+            <para>Default: selected</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2474,6 +2252,97 @@ polkit.addRule(function(action, subject) {
           </listitem>
         </varlistentry>
       </variablelist>
+    </sect2>
+  </sect1>  
+  
+<!-- 
+      Configuration: Authentication 
+-->
+
+  <sect1 id="configuration_page_authentication">
+    <title>Authentication</title>
+
+    <para>Here you can change the settings affecting the authentication.</para>
+
+    <screenshot>
+      <screeninfo>Screenshot of the "Authentication" configuration page</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="configuration_page_authentication.png" format="PNG" />
+        </imageobject>
+        <textobject>
+          <phrase>The "Authentication" configuration page</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+<!-- 
+      Configuring Smb4K : Authentication : General Settings
+-->
+
+    <sect2 id="configuration_page_authentication_general">
+      <title>General Settings</title>
+    
+      <sect3 id="configuration_page_authentication_general_storage">
+        <title>Password Storage</title>
+        
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+
+      <sect3 id="configuration_page_authentication_general_default">
+        <title>Default Login</title>
+        
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
+              <screenshot>
+                <screeninfo>Screenshot of the default login input dialog</screeninfo>
+                <mediaobject>
+                  <imageobject><imagedata fileref="dialog_default_login.png" format="PNG" /></imageobject>
+                  <textobject><phrase>The default login input dialog</phrase></textobject>
+                </mediaobject>
+              </screenshot>
+              <para>You have to fill in at least the user name. Empty passwords are supported.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+    </sect2>
+
+<!-- 
+      Configuring Smb4K : Authentication : Wallet Entries 
+-->
+
+    <sect2 id="configuration_page_authentication_wallet_entries">
+      <title>Wallet Entries</title>
+      
+      <para>The <guilabel>Wallet Entries</guilabel> tab contains an editor with that you can modify or remove existing wallet entries.</para>
+      <screenshot>
+        <screeninfo>Screenshot of the wallet entries editor</screeninfo>
+        <mediaobject>
+          <imageobject><imagedata fileref="configuration_page_authentication_wallet_entries.png" format="PNG" /></imageobject>
+          <textobject><phrase>The wallet entries editor</phrase></textobject>
+        </mediaobject>
+      </screenshot>
+      <para>Before you can edit the wallet entries, you have to load them from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then on the left. An entry can be edited by selecting it and checking the <guibutton>Show details</guibutton> button. The details are then shown on the right and can be modified.</para>
+      <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
+      <para>Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu either in the wallet entries list widget or in the details widget.</para>
+      <para>After you finished editing, the changes have to be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
     </sect2>
   </sect1>
 
@@ -3256,7 +3125,7 @@ polkit.addRule(function(action, subject) {
     <sect2 id="configuration_page_custom_options_samba">
       <title>Samba</title>
     
-      <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the description of the <link linkend="configuration_page_samba">Samba</link> configuration page.</para>
+      <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the <link linkend="configuration_page_network_samba">&Samba;</link> settings.</para>
     </sect2>
 
 <!-- 
@@ -3274,7 +3143,7 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : Profiles 
 -->
 
-  <sect1 id="configuration_profiles">
+  <sect1 id="configuration_page_profiles">
     <title>Profiles</title>
     
     <para>On this page you can enable the use of profiles and manage your profiles.</para>
@@ -3291,7 +3160,7 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : Profiles : Settings 
 -->
 
-    <sect2 id="configuration_profiles_settings">
+    <sect2 id="configuration_page_profiles_settings">
       <title>Settings</title>
 
       <variablelist>
@@ -3300,7 +3169,7 @@ polkit.addRule(function(action, subject) {
             <menuchoice><guibutton>Use profiles</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Make Smb4K use profiles. This enables you to define different bookmarks and custom options for each profile. This is especially useful if you are using a laptop in different network neighborhoods, &eg; at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_profiles_profiles">profiles list</link> will be the active profile.</para>
+            <para>Make Smb4K use profiles. This enables you to define different bookmarks and custom options for each profile. This is especially useful if you are using a laptop in different network neighborhoods, &eg; at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_page_profiles_profiles">profiles list</link> will be the active profile.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
@@ -3320,7 +3189,7 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : Profiles : Profiles 
   -->
 
-    <sect2 id="configuration_profiles_profiles">
+    <sect2 id="configuration_page_profiles_profiles">
       <title>Profiles</title>
 
       <para>Here, you can manage your profiles. By default, there are two pre-defined ones (<guilabel>Home</guilabel> and <guilabel>Work</guilabel>), but you can add your own ones. When you enabled the use of profiles the first time, the first entry in the list will be the active profile.</para>
@@ -3651,8 +3520,8 @@ polkit.addRule(function(action, subject) {
           </menuchoice>
         </term>
         <listitem>
-          <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by the user. However, you can change this behavior by changing the <link linkend="configuration_page_shares_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
-            <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_shares_behavior">settings</link> in the configuration dialog.</para>
+          <para>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by the user. However, you can change this behavior by changing the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
+            <para>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> in the configuration dialog.</para>
             <para>Read the <link linkend="shares_view_unmounting">Unmounting Shares</link> section for more details.</para>
         </listitem>
       </varlistentry>
@@ -3907,18 +3776,15 @@ polkit.addRule(function(action, subject) {
       <listitem><para><ulink url="http://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
       <listitem><para><ulink url="http://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 4.0) or <ulink url="http://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
     </itemizedlist>
-    <para>&smb4k; depends on the following <ulink url="http://www.qt.io">&Qt;</ulink> (&ge; 5.5.0) and <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0) modules:</para>
+    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="http://www.qt.io">&Qt;</ulink> (&ge; 5.6.0) and <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0). If you also want to make use of the provided &plasmoid;, you should have at least <ulink url="http://www.qt.io">&Qt;</ulink> version 5.9.0 or later and compatible versions of &kf5; and &plasma; 5 installed.</para>
+    <para>&smb4k; build depends on the following &Qt; and &kf5; modules:</para>
     <itemizedlist>
       <listitem><para>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para></listitem>
-      <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, &solid;, KIO, KNotifications, KXmlGui, KJobWidgets, &kwallet5;, KDBusAddons, KParts, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
+      <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, &solid;, KIO, KNotifications, KXmlGui, KJobWidgets, &kwallet5;, KDBusAddons, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
     </itemizedlist>
-    <para>It also runtime depends on the following <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0) modules:</para>
+    <para>It also runtime depends on:</para>
     <itemizedlist>
-      <listitem><para>Plasma</para></listitem>
-    </itemizedlist>
-    <para>For a proper operation, you also need:</para>
-    <itemizedlist>
-      <listitem><para><ulink url="http://www.samba.org">Samba</ulink> (3.x or 4.x, 4.x recommended)</para></listitem>
+      <listitem><para>KPlasma</para></listitem>
       <listitem><para><ulink url="https://wiki.samba.org/index.php/LinuxCIFS_utils">LinuxCIFS utils</ulink> (&Linux; only)</para></listitem>
     </itemizedlist>
     <para>To enable full functionality, you may also want to install these programs:</para>
@@ -3956,7 +3822,7 @@ polkit.addRule(function(action, subject) {
 <prompt>$</prompt> <userinput><command>cmake</command> -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` -DCMAKE_BUILD_TYPE=Release <filename class="directory">..</filename></userinput>
 </screen>
 
-    <para>If &smb4k; cannot find some shared libraries after the installation (&eg; if you are using Kubuntu 16.04), it is necessary to add the <option>-DKDE_INSTALL_PLUGINDIR</option> argument to the command line above:</para>
+    <para>If &smb4k; cannot find some shared libraries after the installation (&eg; if you are using Kubuntu 16.04), it may be necessary to add the <option>-DKDE_INSTALL_PLUGINDIR</option> argument to the command line above:</para>
 
 <screen>
 <prompt>$</prompt> <userinput><command>cd</command> <filename class="directory">build</filename></userinput>
