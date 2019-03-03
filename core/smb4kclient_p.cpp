@@ -71,7 +71,7 @@
 #include <KIOWidgets/KUrlRequester>
 #include <KIOCore/KFileItem>
 
-#define SMBC_DEBUG 1
+#define SMBC_DEBUG 0
 
 using namespace Smb4KGlobal;
 
@@ -188,7 +188,7 @@ void Smb4KClientJob::setPrintCopies(int copies)
 }
 
 
-void Smb4KClientJob::get_auth_data_fn(const char* server, const char* share, char* workgroup, int maxLenWorkgroup, char* username, int maxLenUsername, char* password, int maxLenPassword)
+void Smb4KClientJob::get_auth_data_fn(const char* server, const char* /*share*/, char* workgroup, int /*maxLenWorkgroup*/, char* username, int maxLenUsername, char* password, int maxLenPassword)
 {
   //
   // Authentication
