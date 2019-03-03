@@ -396,8 +396,7 @@ SharePtr Smb4KGlobal::findShare(const QUrl& url, const QString& workgroup)
   for (const SharePtr &s : p->sharesList)
   {
     if (QString::compare(s->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                         url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                         Qt::CaseInsensitive) == 0 &&
+                         url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort), Qt::CaseInsensitive) == 0 &&
         (workgroup.isEmpty() || QString::compare(s->workgroupName(), workgroup, Qt::CaseInsensitive) == 0))
     {
       share = s;
@@ -682,12 +681,12 @@ bool Smb4KGlobal::addMountedShare(SharePtr share)
     mutex.lock();
 
     //
-    // Copy the mount data to the network share and the search results.
+    // Copy the mount data to the network share if available.
     // Only honor shares that were mounted by the user.
     //
     if (!share->isForeign())
     {
-      // Network shares
+      // Network share
       SharePtr networkShare = findShare(share->url(), share->workgroupName());
       
       if (networkShare)
