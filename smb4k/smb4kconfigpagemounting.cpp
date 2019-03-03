@@ -539,7 +539,7 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   // Behavior
   // 
-  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), this);
+  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), basicTab);
   QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
   behaviorBoxLayout->setSpacing(5);
   
@@ -752,6 +752,8 @@ void Smb4KConfigPageMounting::setupWidget()
   mountTabLayout->addWidget(commonOptionsBox, 0);
   mountTabLayout->addWidget(characterSetsBox, 0);
   mountTabLayout->addStretch(100);
+  
+  addTab(mountTab, i18n("Mount Settings"));
   
   //
   // Connections
