@@ -96,15 +96,12 @@
   <sect1 id="running_smb4k" >
     <title>Running &smb4k;</title>
     
-    <para>Since version 2.9.71, &smb4k; is using the <application>libsmbclient</application> library to browse and search the network neighborhood and print files. For this reason, users of Samba 4.7 and above need to add the following setting to the [global] section of the <filename>smb.conf</filename> file to be able browse the network neighborhood:</para>
-      
-<programlisting>[global]
-...
-client max protocol = NT1
-...</programlisting>
+    <para>You can either launch &smb4k; from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or panel.</para>
 
-    <para>This is because, starting with Samba 4.7, the default protocol version of &Samba; has been set to SMB3 by the &Samba; team, but <application>libsmbclient</application> currently cannot handle this. You can consult the Samba Wiki's <ulink url="https://wiki.samba.org/index.php/User_Documentation">User Documentation</ulink> section, if you need help.</para>
-    <para>You can either launch &smb4k; from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; also comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or panel.</para>
+    <note>
+      <para>If you are using &Samba; version 4.7 or above, you most likely have to change a setting in &Samba;'s configuration file to make browsing work. Have a look at the <link linkend="special_remarks_problems_browsing_samba_47">Special Remarks</link> section to find out what has to be adjusted.</para>
+    </note>
+
     <para>If the system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
     
     <screenshot id="notification_missing_program">
@@ -1314,29 +1311,17 @@ client max protocol = NT1
       Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016
 -->
    
-    <sect2 id="special_remarks_problems_browsing">
-      <title>Problems Browsing the Network Neighborhood</title>
+    <sect2 id="special_remarks_problems_browsing_samba_47">
+      <title>Problems Browsing the Network Neighborhood with &Samba; 4.7 and above</title>
       
-      <sect3 id="special_remarks_samba_security_updates">
-        <title>Samba Security Fixes of April 12, 2016</title>
-    
-        <para>On April 12, 2016, the Samba team released security fixes for the <ulink url="https://en.wikipedia.org/wiki/Badlock">Badlock bug</ulink>. Unfortunately, they also introduced a regression that causes the <command>net</command> command to fail on many systems when querying remote hosts. If you experience this issue, you can add two lines to the [global] section of your <filename>smb.conf</filename> file to make browsing work again:</para>
-  
+      <para>Since version 2.9.71, &smb4k; is using the <application>libsmbclient</application> library to browse and search the network neighborhood and print files. With the &Samba; 4.7 release, the default protocol version has been set to SMB3 by the &Samba; team. Unfortunately, the <application>libsmbclient</application> library cannot handle it correctly and browsing the network neighborhood will fail. For this reason, users of Samba 4.7 and above need to add the following setting to the [global] section of the <filename>smb.conf</filename> file to force &Samba; to use SMB1 (NT1) and, thus, fix the browsing of the network neighborhood:</para>
+      
 <programlisting>[global]
 ...
-client max protocol = SMB3
-client ipc max protocol = NT1
+client max protocol = NT1
 ...</programlisting>
-  
-        <para>Unfortunately, this fix for &smb4k; might break the possibility to connect to the network neighborhood with earlier versions of &dolphin; and maybe also other programs.</para>
-      </sect3>
-      
-      <sect3 id="special_remarks_samba_4_6">
-        <title>Samba 4.6.x</title>
-        <para>If you are using <emphasis role="bold">Samba 4.6.x</emphasis>, there is most likely an additional reason for this: It seems that at some point in time during the development, a bug was introduced that causes the command</para>
-        <screen><prompt>$</prompt> <userinput>net rap server domain -S &lt;server&gt; -U%</userinput></screen>
-        <para>to fail that is used by &smb4k; to retrieve the list of servers in a domain/workgroup (see <ulink url="http://samba.2283325.n4.nabble.com/PATCH-libcli-smb-Parse-primary-domain-from-session-setup-td4723954.html">here</ulink> for more details). All versions of Samba 4.6 until at least version 4.6.14 seem to be affected. Until this problem is not fixed, browsing the network neighborhood with Smb4K will not work. (Or, at least, I haven't found a workaround yet.)</para>
-      </sect3>
+
+        <para>If you need help, you can consult the Samba Wiki's <ulink url="https://wiki.samba.org/index.php/User_Documentation">User Documentation</ulink> section for further information.</para>
     </sect2>
     
 <!--
@@ -1627,7 +1612,7 @@ polkit.addRule(function(action, subject) {
             <listitem>
               <para>Enabling this setting sets the remote SMB port number to communicate with a remote host to the value defined in the spin box. Under FreeBSD, this is also the port that is used for mounting.</para>
               <para>Unless you are using a firewall or have a customized network setup, you do not need to change anything here.</para>
-              <para>Default: not selected / port 139</para>
+              <para>Default: 139</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -1712,7 +1697,7 @@ polkit.addRule(function(action, subject) {
                   </listitem>
                 </varlistentry>                
               </variablelist>
-              <para>Default: not selected / <guilabel>None</guilabel></para>
+              <para>Default: <guilabel>None</guilabel></para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3792,6 +3777,51 @@ polkit.addRule(function(action, subject) {
       <listitem><para><ulink url="http://rsync.samba.org">rsync</ulink></para></listitem>
     </itemizedlist>
     <para>The full list of changes can be found in the Git log at <ulink url="https://cgit.kde.org/smb4k.git">cgit.kde.org</ulink>. A summary can be found in the <filename>ChangeLog</filename> file in the tarball.</para>
+  </sect1>
+  
+<!--
+      Appendix: Supported Operating Systems
+  -->
+  
+  <sect1 id="appendix_supported_operating_systems">
+    <title>Supported Operating Systems</title>
+    
+    <para>The following operating systems are supported:</para>
+    
+    <informaltable frame="all">
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry>Operating System</entry>
+            <entry>Supported since</entry>
+            <entry>Remarks</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><ulink url="https://en.wikipedia.org/wiki/List_of_Linux_distributions">&Linux;</ulink></entry>
+            <entry align="center">the beginning</entry>
+            <entry>KDE / KF5 packages ships with the distribution</entry>
+          </row>
+          <row>
+            <entry><ulink url="https://www.freebsd.org">FreeBSD</ulink></entry>
+            <entry align="center">0.3.0</entry>
+            <entry>KDE / KF5 packages installed from ports</entry>
+          </row>
+          <row>
+            <entry><ulink url="https://www.netbsd.org">NetBSD</ulink></entry>
+            <entry align="center">1.2.0</entry>
+            <entry>KF5 packages installed from pkgsrc</entry>
+          </row>
+          <row>
+            <entry><ulink url="https://www.dragonflybsd.org">DragonFly BSD</ulink></entry>
+            <entry align="center">2.9.80</entry>
+            <entry>KF5 packages installed from dports</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    
   </sect1>
 
 <!-- 
