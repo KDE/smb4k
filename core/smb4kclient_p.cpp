@@ -182,9 +182,21 @@ void Smb4KClientJob::setPrintFileItem(const KFileItem& item)
 }
 
 
+KFileItem Smb4KClientJob::printFileItem() const
+{
+  return m_fileItem;
+}
+
+
 void Smb4KClientJob::setPrintCopies(int copies)
 {
   m_copies = copies;
+}
+
+
+int Smb4KClientJob::printCopies() const
+{
+  return m_copies;
 }
 
 
@@ -939,9 +951,6 @@ void Smb4KClientJob::doPrinting()
   
   if (!openPrinter)
   {
-    if (errno != 0)
-        qDebug() << "errno is set:" << errno;
-      
     setError(OpenPrintJobError);
     setErrorText(i18n("The print job could not be set up (step 1)"));
     
@@ -956,11 +965,18 @@ void Smb4KClientJob::doPrinting()
   
   if (!printer)
   {
-    if (errno != 0)
-        qDebug() << "errno is set:" << errno;
+    int errorCode = errno;
     
-    setError(OpenPrintJobError);
-    setErrorText(i18n("The print job could not be set up (step 2)"));
+    if (errorCode == EACCES)
+    {
+      setError(AccessDeniedError);
+      setErrorText(i18n("Permission denied"));
+    }
+    else
+    {
+      setError(OpenPrintJobError);
+      setErrorText(i18n("The print job could not be set up (step 2)"));
+    }
     
     emitResult();
     return;

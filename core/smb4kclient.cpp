@@ -560,7 +560,14 @@ void Smb4KClient::processErrors(Smb4KClientJob *job)
         {
           if (Smb4KWalletManager::self()->showPasswordDialog(job->networkItem()))
           {
-            lookupFiles(job->networkItem().staticCast<Smb4KShare>());
+            if (job->process() == Smb4KGlobal::PrintFile)
+            {
+              printFile(job->networkItem().staticCast<Smb4KShare>(), job->printFileItem(), job->printCopies());
+            }
+            else
+            {
+              lookupFiles(job->networkItem().staticCast<Smb4KShare>());
+            }
           }
           
           break;
