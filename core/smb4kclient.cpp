@@ -57,7 +57,7 @@ Smb4KClient::Smb4KClient(QObject* parent)
   //
   // Connections
   // 
-  (QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
 }
 
 
