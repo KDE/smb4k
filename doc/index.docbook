@@ -1,4 +1,5 @@
 <?xml version="1.0" ?>
+<?xml-stylesheet href="index.css" type="text/css"?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
   <!ENTITY smb4k "<application>Smb4K</application>">
   <!ENTITY % addindex "IGNORE">
@@ -28,11 +29,11 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
   </authorgroup>
   <copyright>
-    <year>2005-2018</year>
+    <year>2005-2019</year>
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2018-02-02</date>
+  <date>2018-03-09</date>
   <releaseinfo>&smb4k; 2.9.80</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
@@ -1795,6 +1796,8 @@ polkit.addRule(function(action, subject) {
     <sect2 id="configuration_page_mounting_basic_settings">
       <title>Basic Settings</title>
       
+      <para>The settings in this tab are the same for all supported operating systems.</para>
+      
       <sect3 id="configuration_page_mounting_basic_settings_directories">
         <title>Directories</title>
 
@@ -1894,11 +1897,13 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Configuring Smb4K : Mounting : Common Mount Settings
+      Configuring Smb4K : Mounting : Common Mount Settings (Linux)
 -->
   
     <sect2 id="configuration_page_mounting_common_mount_settings">
-      <title>Common Mount Settings</title>
+      <title>Common Mount Settings (&Linux; only)</title>
+      
+      <para>The <guilabel>Common Mount Settings</guilabel> tab is only available under &Linux;. The settings present under BSD can be found in the <link linkend="configuration_page_mounting_mount_settings">Mount Settings (BSD only)</link> section.</para>
 
       <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
         <title>Common Options</title>
@@ -1967,34 +1972,34 @@ polkit.addRule(function(action, subject) {
         </varlistentry>
         <varlistentry>
           <term>
-              <menuchoice><guibutton>File mode</guibutton></menuchoice><!--FIXME file mode <> directory mask - inconsistent in gui-->
+              <menuchoice><guibutton>File mode</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mask (fmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+            <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
             <para>Default: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
-            <menuchoice><guibutton>Directory mask</guibutton></menuchoice>
+            <menuchoice><guibutton>Directory mode</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the folder mask (dmask), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+            <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
             <para>Default: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
       </sect3>
     </sect2>
-  
+    
 <!--
-      Configuring Smb4K : Mounting : Advanced Settings
+      Configuring Smb4K : Mounting : Advanced Mount Settings (Linux)
 -->
 
-    <sect2 id="configuration_page_mounting_advanced">
-      <title>Advanced Settings</title>
+    <sect2 id="configuration_page_mounting_advanced_mount_settings">
+      <title>Advanced Mount Settings (&Linux; only)</title>
       
-      <para><emphasis>(This widget is not available under FreeBSD and NetBSD.)</emphasis></para>
+      <para>The <guilabel>Advanced Mount Settings</guilabel> tab is only available under &Linux;. The settings present under BSD can be found in the <link linkend="configuration_page_mounting_mount_settings">Mount Settings (BSD only)</link> section.</para>
       <para>Most of the options you can define here require &Linux; kernel 2.6.15 or later to work.</para>
       <variablelist>
         <varlistentry>
@@ -2039,7 +2044,7 @@ polkit.addRule(function(action, subject) {
           </term>
           <listitem>
             <para>Use inode numbers (unique persistent file identifiers) returned by the server instead of automatically generating temporary inode numbers on the client side. This parameter has no effect if the server does not support returning inode numbers or similar. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.</para>
-            <para>Default: not selected</para>
+            <para>Default: selected</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2103,8 +2108,16 @@ polkit.addRule(function(action, subject) {
                   <para>The <option>vers=3.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0 protocol that was introduced in Microsoft Windows 8 and Windows Server 2012.</para>
                 </listitem>
               </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice><guibutton>3.1.1 (Windows Server 2016)</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>The <option>vers=3.1.1</option> or <option>vers=3.11</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in Windows Server 2016.</para>
+                </listitem>
+              </varlistentry>
             </variablelist>
-            <para>Default: <guibutton>1.0 (Classic &CIFS;/SMBv1 protocol)</guibutton></para>
+            <para>Default: <guibutton>3.0 (Windows 8/Windows Server 2016)</guibutton></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2238,6 +2251,93 @@ polkit.addRule(function(action, subject) {
         </varlistentry>
       </variablelist>
     </sect2>
+    
+<!--
+      Configuring Smb4K : Mounting : Mount Settings (BSD)
+-->
+
+    <sect2 id="configuration_page_mounting_mount_settings">
+      <title>Mount Settings (BSD only)</title>
+      
+      <para>The <guilabel>Mount Settings</guilabel> tab is only available under FreeBSD, NetBSD and DragonFly BSD. The settings present under &Linux; can be found in the <link linkend="configuration_page_mounting_common_mount_settings">Common Mount Settings (&Linux; only)</link> and <link linkend="configuration_page_mounting_advanced_mount_settings">Advanced Mount Settings (&Linux; only)</link> sections.</para>
+      
+      <sect3 id="configuration_page_mounting_mount_settings_common_options">
+        <title>Common Options</title>
+        
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>User ID</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Sets the owner of the files and directories on the file system. By default, your UID is used. To change the UID, press the search button and choose one from the drop down menu.</para>
+              <para>Default: your UID</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Group ID</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Sets the group that owns the files and directories on the file system. By default, your GID is used. To change the GID, press the search button and choose one from the drop down menu.</para>
+              <para>Default: your GID</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+                <menuchoice><guibutton>File mode</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode, you should read the <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+              <para>Default: 0755</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Directory mode</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+              <para>Default: 0755</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+      
+      <sect3 id="configuration_page_mounting_mount_settings_character_sets">
+        <title>Character Sets</title>
+        
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use character sets</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Use the specified local and server's character sets (see below).</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Client character set</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Use the specified local character set.</para>
+              <para>Default: <guilabel>default</guilabel></para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Server character set</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Use the specified server's character set.</para>
+              <para>Default: <guilabel>default</guilabel></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+    </sect2>
   </sect1>  
   
 <!-- 
@@ -2265,48 +2365,37 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : Authentication : General Settings
 -->
 
-    <sect2 id="configuration_page_authentication_general">
-      <title>General Settings</title>
-    
-      <sect3 id="configuration_page_authentication_general_storage">
-        <title>Password Storage</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_page_authentication_general_default">
-        <title>Default Login</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
-              <screenshot>
-                <screeninfo>Screenshot of the default login input dialog</screeninfo>
-                <mediaobject>
-                  <imageobject><imagedata fileref="dialog_default_login.png" format="PNG" /></imageobject>
-                  <textobject><phrase>The default login input dialog</phrase></textobject>
-                </mediaobject>
-              </screenshot>
-              <para>You have to fill in at least the user name. Empty passwords are supported.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
+    <sect2 id="configuration_page_authentication_settings">
+      <title>Settings</title>
+      
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
+            <screenshot>
+              <screeninfo>Screenshot of the default login input dialog</screeninfo>
+              <mediaobject>
+                <imageobject><imagedata fileref="configuration_page_authentication_dialog_default_login.png" format="PNG" /></imageobject>
+                <textobject><phrase>The default login input dialog</phrase></textobject>
+              </mediaobject>
+            </screenshot>
+            <para>You have to fill in at least the user name. Empty passwords are supported.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
 
 <!-- 
@@ -2316,18 +2405,9 @@ polkit.addRule(function(action, subject) {
     <sect2 id="configuration_page_authentication_wallet_entries">
       <title>Wallet Entries</title>
       
-      <para>The <guilabel>Wallet Entries</guilabel> tab contains an editor with that you can modify or remove existing wallet entries.</para>
-      <screenshot>
-        <screeninfo>Screenshot of the wallet entries editor</screeninfo>
-        <mediaobject>
-          <imageobject><imagedata fileref="configuration_page_authentication_wallet_entries.png" format="PNG" /></imageobject>
-          <textobject><phrase>The wallet entries editor</phrase></textobject>
-        </mediaobject>
-      </screenshot>
-      <para>Before you can edit the wallet entries, you have to load them from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then on the left. An entry can be edited by selecting it and checking the <guibutton>Show details</guibutton> button. The details are then shown on the right and can be modified.</para>
+      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, They have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. The details are then shown and can be modified.</para>
       <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
-      <para>Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu either in the wallet entries list widget or in the details widget.</para>
-      <para>After you finished editing, the changes have to be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
+      <para>After you finished editing, the changes can be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
     </sect2>
   </sect1>
 
@@ -3751,11 +3831,11 @@ polkit.addRule(function(action, subject) {
     
     <para>The latest stable release is available at <ulink url="https://sourceforge.net/projects/smb4k/files/">https://sourceforge.net/projects/smb4k/files/</ulink>.</para>
   </sect1>
-
+  
   <sect1 id="appendix_requirements" >
     <title>Requirements</title>
 
-    <para>&smb4k; officially supports &Linux;, FreeBSD and NetBSD. Other operating systems might work as well, but haven't been tested.</para>
+    <para>&smb4k; officially supports &Linux;, FreeBSD, NetBSD and DragonFly BSD. Other operating systems might work as well, but haven't been tested.</para>
     <para>To compile &smb4k;, you need:</para>
     <itemizedlist>
       <listitem><para><ulink url="http://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
@@ -3779,51 +3859,6 @@ polkit.addRule(function(action, subject) {
     <para>The full list of changes can be found in the Git log at <ulink url="https://cgit.kde.org/smb4k.git">cgit.kde.org</ulink>. A summary can be found in the <filename>ChangeLog</filename> file in the tarball.</para>
   </sect1>
   
-<!--
-      Appendix: Supported Operating Systems
-  -->
-  
-  <sect1 id="appendix_supported_operating_systems">
-    <title>Supported Operating Systems</title>
-    
-    <para>The following operating systems are supported:</para>
-    
-    <informaltable frame="all">
-      <tgroup cols="3" align="left" colsep="1" rowsep="1">
-        <thead>
-          <row>
-            <entry>Operating System</entry>
-            <entry>Supported since</entry>
-            <entry>Remarks</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry><ulink url="https://en.wikipedia.org/wiki/List_of_Linux_distributions">&Linux;</ulink></entry>
-            <entry align="center">the beginning</entry>
-            <entry>KDE / KF5 packages ships with the distribution</entry>
-          </row>
-          <row>
-            <entry><ulink url="https://www.freebsd.org">FreeBSD</ulink></entry>
-            <entry align="center">0.3.0</entry>
-            <entry>KDE / KF5 packages installed from ports</entry>
-          </row>
-          <row>
-            <entry><ulink url="https://www.netbsd.org">NetBSD</ulink></entry>
-            <entry align="center">1.2.0</entry>
-            <entry>KF5 packages installed from pkgsrc</entry>
-          </row>
-          <row>
-            <entry><ulink url="https://www.dragonflybsd.org">DragonFly BSD</ulink></entry>
-            <entry align="center">2.9.80</entry>
-            <entry>KF5 packages installed from dports</entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </informaltable>
-    
-  </sect1>
-
 <!-- 
       Appendix: Configuration, Compilation and Installation 
   -->
@@ -3831,7 +3866,7 @@ polkit.addRule(function(action, subject) {
   <sect1 id="appendix_compilation">
     <title>Configuration, Compilation and Installation</title>
 
-    <para>This section describes the configuration, compilation and installation of &smb4k;. Make sure, you have read the <link linkend="appendix_requirements">Requirements</link> page before you start.</para>
+    <para>This section describes the configuration, compilation and installation of &smb4k;. Make sure, you have read the <link linkend="appendix_requirements">Requirements</link> section before you start.</para>
     <para><ulink url="https://sourceforge.net/projects/smb4k/files">Download</ulink> the version of &smb4k; you are interested in and extract the source tarball:</para>
     
 <screen>

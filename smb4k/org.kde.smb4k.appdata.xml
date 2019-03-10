@@ -90,7 +90,7 @@
     <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
     <p xml:lang="zh-TW">Smb4K 是一個 KDE 軟體集的進階網路芳鄰瀏覽器與Samba 分享掛載工具。它會掃描您的所有可用的工作群組中的網路芳鄰，伺服器與分享可以掛載所有您想要分享的東西到您的本機檔案系統中。</p>
     <p>
-      Smb4K utilizes the programs of the Samba software suite. Its purpose is to provide a program that is easy to use and has as many features as possible.
+      Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.
     </p>
     <p xml:lang="bs">Smb4k ugrađuje programe iz Samba softver paketa. Njegova svrha je da omogući program koji je lagan za upotrebu i ima što više mogućnosti.</p>
     <p xml:lang="ca">El Smb4K utilitza els programes de la suite de programari Samba. El seu propòsit és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
@@ -352,33 +352,7 @@
       <li xml:lang="x-test">xxNetwork searchxx</li>
       <li xml:lang="zh-CN">网络搜索</li>
       <li xml:lang="zh-TW">網路搜尋</li>
-      <li>WINS server support</li>
-      <li xml:lang="bs">Podrška za WINS server</li>
-      <li xml:lang="ca">Implementació del servidor WINS</li>
-      <li xml:lang="ca-valencia">Implementació del servidor WINS</li>
-      <li xml:lang="da">WINS-server-understøttelse</li>
-      <li xml:lang="de">Unterstützung für WINS-Server</li>
-      <li xml:lang="el">Υποστήριξη εξυπηρετητή WINS</li>
-      <li xml:lang="en-GB">WINS server support</li>
-      <li xml:lang="es">Apoyo para servidores WINS</li>
-      <li xml:lang="fi">WINS-palvelintuki</li>
-      <li xml:lang="fr">Prise en charge d'un serveur WINS</li>
-      <li xml:lang="gl">É compatíbel con servidores WINS.</li>
-      <li xml:lang="id">Dukungan server WINS</li>
-      <li xml:lang="it">Supporto per server WINS</li>
-      <li xml:lang="ko">WINS 서버 지원</li>
-      <li xml:lang="nds">WINS-Server-Ünnerstütten</li>
-      <li xml:lang="nl">Ondersteuning voor WINS-server</li>
-      <li xml:lang="pl">Obsługa serwera WINS</li>
-      <li xml:lang="pt">Suporte para servidores WINS</li>
-      <li xml:lang="pt-BR">Suporte para servidores WINS</li>
-      <li xml:lang="sk">Podpora serverov WINS</li>
-      <li xml:lang="sv">Stöd för WINS-server</li>
-      <li xml:lang="tr">WINS sunucu desteği</li>
-      <li xml:lang="uk">Підтримка серверів WINS.</li>
-      <li xml:lang="x-test">xxWINS server supportxx</li>
-      <li xml:lang="zh-TW">支援 WINS 伺服器</li>
-      <li>Preview of the contents of a share</li>
+      <li>Preview of the contents of a remote share</li>
       <li xml:lang="bs">Pregled sadržaja razmjene</li>
       <li xml:lang="ca">Vista prèvia dels continguts d'una compartició</li>
       <li xml:lang="ca-valencia">Vista prèvia dels continguts d'una compartició</li>
@@ -403,31 +377,6 @@
       <li xml:lang="uk">Попередній перегляд даних зі спільного ресурсу.</li>
       <li xml:lang="x-test">xxPreview of the contents of a sharexx</li>
       <li xml:lang="zh-TW">分享內容的預覽</li>
-      <li>Several methods to look up the initial list of workgroups and domains</li>
-      <li xml:lang="bs">Nekoliko metoda za pregled početnih lista radnih grupa i domena</li>
-      <li xml:lang="ca">Hi ha diversos mètodes per a cercar la llista inicial dels grups de treball i dominis</li>
-      <li xml:lang="ca-valencia">Hi ha diversos mètodes per a cercar la llista inicial dels grups de treball i dominis</li>
-      <li xml:lang="de">Mehrere Methoden zur Suche nach der anfänglichen Liste von Arbeitsgruppen und Domänen</li>
-      <li xml:lang="el">Πολλές μέθοδοι αναζήτησης στην αρχική λίστα ομάδων εργασίας και τομέων</li>
-      <li xml:lang="en-GB">Several methods to look up the initial list of workgroups and domains</li>
-      <li xml:lang="es">Varios métodos para buscar la lista inicial de grupos de trabajo y dominios</li>
-      <li xml:lang="fi">Useampia tapoja etsiä työryhmien ja aluenimien alustavaa luetteloa</li>
-      <li xml:lang="fr">Plusieurs méthodes pour découvrir la liste initiale des groupes de travail et des domaines</li>
-      <li xml:lang="gl">Fornece varios métodos de busca na lista inicial de grupos de traballo e dominios.</li>
-      <li xml:lang="id">Beberapa metode untuk melihat daftar inisial workgroup dan domain</li>
-      <li xml:lang="it">Vari metodi per consultare la lista iniziale dei gruppi di lavoro e dei domini</li>
-      <li xml:lang="ko">작업 그룹과 도메인 목록을 가져오는 여러 방법</li>
-      <li xml:lang="nds">Mehr Metoden för't Naslaan vun de eerste List mit Arbeitkoppeln un Domänen</li>
-      <li xml:lang="nl">Verschillende methoden om de initiële lijst van werkgroepen en domeinen op te zoeken</li>
-      <li xml:lang="pl">Kilka sposobów na znalezienie wstępnej listy grup roboczych i domen</li>
-      <li xml:lang="pt">Diversos métodos para pesquisar a lista inicial de grupos de trabalho e domínios</li>
-      <li xml:lang="pt-BR">Diversos métodos para pesquisar a lista inicial de grupos de trabalho e domínios</li>
-      <li xml:lang="sk">Niekoľko metód na hľadanie úvodného zoznamu pracovných skupín a domén</li>
-      <li xml:lang="sv">Flera metoder för att slå upp den ursprungliga listan med arbetsgrupper och domäner</li>
-      <li xml:lang="tr">Çalışma gruplarının ve alanların başlangıç listesine ulaşmak için farklı yöntemler</li>
-      <li xml:lang="uk">Декілька способів отримання початкового списку робочих груп та доменів.</li>
-      <li xml:lang="x-test">xxSeveral methods to look up the initial list of workgroups and domainsxx</li>
-      <li xml:lang="zh-TW">多種用來查詢工作群組與網域的初始清單的方法</li>
       <li>Default login</li>
       <li xml:lang="bs">Početna prijava</li>
       <li xml:lang="ca">Inici de sessió predeterminat</li>
@@ -530,7 +479,7 @@
       <li xml:lang="uk">Віджет системного лотка.</li>
       <li xml:lang="x-test">xxSystem tray widgetxx</li>
       <li xml:lang="zh-TW">系統匣小工具</li>
-      <li>Support of advanced Samba options</li>
+      <li>Support of advanced mount options</li>
       <li xml:lang="bs">Podrška za napredne Samba opcije</li>
       <li xml:lang="ca">Implementació per a les opcions avançades de Samba</li>
       <li xml:lang="ca-valencia">Implementació per a les opcions avançades de Samba</li>
@@ -731,6 +680,7 @@
       <li xml:lang="uk">Плазмоїд для інтеграції зі стільницею.</li>
       <li xml:lang="x-test">xxPlasmoid for desktop integrationxx</li>
       <li xml:lang="zh-TW">以 Plasmoid 提供桌面整合</li>
+      <li>Profiles for different network neighborhood setups</li>
     </ul>
     <p>
       If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
@@ -820,6 +770,6 @@
       <image>https://cdn.kde.org/screenshots/smb4k/screenshot_smb4k_plasmoid_1.png</image>
     </screenshot>
   </screenshots>
-  <url type="homepage">http://smb4k.sourceforge.net</url>
+  <url type="homepage">https://smb4k.sourceforge.io</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k</url>
 </component>
