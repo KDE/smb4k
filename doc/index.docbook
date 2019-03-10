@@ -29,11 +29,11 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
   </authorgroup>
   <copyright>
-    <year>2005-2018</year>
+    <year>2005-2019</year>
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2018-02-02</date>
+  <date>2018-03-09</date>
   <releaseinfo>&smb4k; 2.9.80</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
@@ -2365,48 +2365,37 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : Authentication : General Settings
 -->
 
-    <sect2 id="configuration_page_authentication_general">
-      <title>General Settings</title>
-    
-      <sect3 id="configuration_page_authentication_general_storage">
-        <title>Password Storage</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-
-      <sect3 id="configuration_page_authentication_general_default">
-        <title>Default Login</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
-              <screenshot>
-                <screeninfo>Screenshot of the default login input dialog</screeninfo>
-                <mediaobject>
-                  <imageobject><imagedata fileref="dialog_default_login.png" format="PNG" /></imageobject>
-                  <textobject><phrase>The default login input dialog</phrase></textobject>
-                </mediaobject>
-              </screenshot>
-              <para>You have to fill in at least the user name. Empty passwords are supported.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
+    <sect2 id="configuration_page_authentication_settings">
+      <title>Settings</title>
+      
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
+            <para>Default: selected</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Use a default login</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>The default login is used by default to authenticate to the servers in your network neighborhood. If you enable this feature, a password dialog pops up, where you can provide the default login information.</para>
+            <screenshot>
+              <screeninfo>Screenshot of the default login input dialog</screeninfo>
+              <mediaobject>
+                <imageobject><imagedata fileref="configuration_page_authentication_dialog_default_login.png" format="PNG" /></imageobject>
+                <textobject><phrase>The default login input dialog</phrase></textobject>
+              </mediaobject>
+            </screenshot>
+            <para>You have to fill in at least the user name. Empty passwords are supported.</para>
+            <para>Default: not selected</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
 
 <!-- 
@@ -2416,18 +2405,9 @@ polkit.addRule(function(action, subject) {
     <sect2 id="configuration_page_authentication_wallet_entries">
       <title>Wallet Entries</title>
       
-      <para>The <guilabel>Wallet Entries</guilabel> tab contains an editor with that you can modify or remove existing wallet entries.</para>
-      <screenshot>
-        <screeninfo>Screenshot of the wallet entries editor</screeninfo>
-        <mediaobject>
-          <imageobject><imagedata fileref="configuration_page_authentication_wallet_entries.png" format="PNG" /></imageobject>
-          <textobject><phrase>The wallet entries editor</phrase></textobject>
-        </mediaobject>
-      </screenshot>
-      <para>Before you can edit the wallet entries, you have to load them from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then on the left. An entry can be edited by selecting it and checking the <guibutton>Show details</guibutton> button. The details are then shown on the right and can be modified.</para>
+      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, They have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. The details are then shown and can be modified.</para>
       <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
-      <para>Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu either in the wallet entries list widget or in the details widget.</para>
-      <para>After you finished editing, the changes have to be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
+      <para>After you finished editing, the changes can be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
     </sect2>
   </sect1>
 
