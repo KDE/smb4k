@@ -48,15 +48,13 @@ Smb4KProfilesMenu::Smb4KProfilesMenu(QObject* parent)
   
   setToolBarMode(KSelectAction::MenuMode);
   
+  // 
   // Connections
-  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), 
-          this, SLOT(slotActiveProfileChanged(QString)));
-  connect(Smb4KProfileManager::self(), SIGNAL(profilesListChanged(QStringList)),
-          this, SLOT(slotProfilesListChanged(QStringList)));
-  connect(Smb4KProfileManager::self(), SIGNAL(profileUsageChanged(bool)),
-          this, SLOT(slotProfileUsageChanged(bool)));
-  connect(this, SIGNAL(triggered(QString)), 
-          this, SLOT(slotActionTriggered(QString)));
+  // 
+  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
+  connect(Smb4KProfileManager::self(), SIGNAL(profilesListChanged(QStringList)), this, SLOT(slotProfilesListChanged(QStringList)));
+  connect(Smb4KProfileManager::self(), SIGNAL(profileUsageChanged(bool)), this, SLOT(slotProfileUsageChanged(bool)));
+  connect(this, SIGNAL(triggered(QString)), this, SLOT(slotActionTriggered(QString)));
 }
 
 

@@ -64,12 +64,11 @@ Smb4KSharesView::Smb4KSharesView(QWidget *parent)
   m_tooltipItem = 0;
   m_mouseInside = false;
 
-  // Connections:
-  connect(this, SIGNAL(itemEntered(QListWidgetItem*)),
-          this, SLOT(slotItemEntered(QListWidgetItem*)));
-
-  connect(this, SIGNAL(viewportEntered()),
-          this, SLOT(slotViewportEntered()));
+  // 
+  // Connections
+  // 
+  connect(this, SIGNAL(itemEntered(QListWidgetItem*)), this, SLOT(slotItemEntered(QListWidgetItem*)));
+  connect(this, SIGNAL(viewportEntered()), this, SLOT(slotViewportEntered()));
 }
 
 

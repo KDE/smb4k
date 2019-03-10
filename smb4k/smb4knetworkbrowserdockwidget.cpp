@@ -114,8 +114,8 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
   connect(m_searchToolBar, SIGNAL(jumpToResult(QString)), this, SLOT(slotJumpToResult(QString)));
   connect(m_searchToolBar, SIGNAL(clearSearchResults()), this, SLOT(slotClearSearchResults()));
   
-  connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr, int)));
-  connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SLOT(slotClientFinished(NetworkItemPtr,int)));
+  connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr,int)));
+  connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr,int)), this, SLOT(slotClientFinished(NetworkItemPtr,int)));
   connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroups()));
   connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotWorkgroupMembers(WorkgroupPtr)));
   connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotShares(HostPtr)));

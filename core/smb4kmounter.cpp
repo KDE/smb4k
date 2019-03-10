@@ -99,7 +99,9 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->activeProfile = Smb4KProfileManager::self()->activeProfile();
   d->detectAllShares = Smb4KMountSettings::detectAllShares();
 
+  // 
   // Connections
+  // 
   connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
   connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareAdded()), this, SLOT(slotTriggerImport()));
   connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareRemoved()), this, SLOT(slotTriggerImport()));

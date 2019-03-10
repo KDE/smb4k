@@ -159,24 +159,15 @@ void Smb4KMountDialog::setupView()
 
   slotChangeInputValue(m_share_input->text());
 
+  // 
   // Connections
-  connect(m_share_input, SIGNAL(textChanged(QString)) ,
-          this, SLOT(slotChangeInputValue(QString)));
-
-  connect(m_share_input, SIGNAL(editingFinished()),
-          this, SLOT(slotShareNameEntered()));
-
-  connect(m_ip_input, SIGNAL(editingFinished()),
-          this, SLOT(slotIPEntered()));
-
-  connect(m_workgroup_input, SIGNAL(editingFinished()),
-          this, SLOT(slotWorkgroupEntered()));
-  
-  connect(m_ok_button, SIGNAL(clicked()), 
-          this, SLOT(slotOkClicked()));
-  
-  connect(m_cancel_button, SIGNAL(clicked()), 
-          this, SLOT(slotCancelClicked()));
+  // 
+  connect(m_share_input, SIGNAL(textChanged(QString)), this, SLOT(slotChangeInputValue(QString)));
+  connect(m_share_input, SIGNAL(editingFinished()), this, SLOT(slotShareNameEntered()));
+  connect(m_ip_input, SIGNAL(editingFinished()), this, SLOT(slotIPEntered()));
+  connect(m_workgroup_input, SIGNAL(editingFinished()), this, SLOT(slotWorkgroupEntered()));
+  connect(m_ok_button, SIGNAL(clicked()), this, SLOT(slotOkClicked()));
+  connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
 }
 
 

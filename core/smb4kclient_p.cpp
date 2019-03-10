@@ -1427,7 +1427,7 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr& share, QWidget* parent)
   // 
   QListWidget *listWidget = new QListWidget(this);
   listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-  connect(listWidget, SIGNAL(itemActivated(QListWidgetItem *)), SLOT(slotItemActivated(QListWidgetItem *)));
+  connect(listWidget, SIGNAL(itemActivated(QListWidgetItem*)), SLOT(slotItemActivated(QListWidgetItem*)));
   
   layout->addWidget(listWidget, 0);
   

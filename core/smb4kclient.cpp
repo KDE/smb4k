@@ -472,7 +472,7 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
     // Connections
     // 
     connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
-    connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog *)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog *)));
+    connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog*)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog*)));
     connect(dlg, SIGNAL(requestAbort()), this, SLOT(slotAbort()));
     connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
     connect(this, SIGNAL(aboutToStart(NetworkItemPtr,int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr,int)));
@@ -525,8 +525,8 @@ void Smb4KClient::openPrintDialog(const SharePtr& share)
     dlg = new Smb4KPrintDialog(share, QApplication::activeWindow());
     d->printDialogs << dlg;
     
-    connect(dlg, SIGNAL(printFile(SharePtr, KFileItem, int)), this, SLOT(slotStartPrinting(SharePtr, KFileItem, int)));
-    connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog *)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog *)));
+    connect(dlg, SIGNAL(printFile(SharePtr,KFileItem,int)), this, SLOT(slotStartPrinting(SharePtr,KFileItem,int)));
+    connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog*)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog*)));
   }
   
   //

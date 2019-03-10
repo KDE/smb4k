@@ -66,11 +66,11 @@ Smb4KHomesSharesHandler::Smb4KHomesSharesHandler(QObject *parent)
   
   d->homesUsers = readUserNames(false);
   
+  // 
   // Connections
-  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), 
-          this, SLOT(slotAboutToQuit()));
-  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), 
-          this, SLOT(slotActiveProfileChanged(QString)));
+  // 
+  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), this, SLOT(slotAboutToQuit()));
+  connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
 }
 
 
