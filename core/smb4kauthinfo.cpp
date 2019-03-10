@@ -145,8 +145,7 @@ void Smb4KAuthInfo::setUrl(const QUrl &url)
   }
   
   // Determine whether this is a homes share.
-  qDebug() << "Smb4KAuthInfo::setUrl(): Check if determination of homes share works";
-  d->homesShare = (QString::compare(d->url.path().remove(0, 1), "homes", Qt::CaseSensitive) == 0);
+  d->homesShare = (QString::compare(d->url.path().remove('/'), "homes", Qt::CaseSensitive) == 0);
 }
 
 
