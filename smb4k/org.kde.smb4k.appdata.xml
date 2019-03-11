@@ -63,7 +63,7 @@
   <summary xml:lang="zh-TW">進階網路芳鄰瀏覽器與 Samba 分享掛載工具</summary>
   <description>
     <p>
-      Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
+      Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
     <p xml:lang="bs">Smb4k je napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program za KDE softver kompilaciju. On skenira vašu mrežu susjeda za sve dostupne radne grupe, servere i razmjene i može ugraditi sve željene razmjene na vaš lokalni sistem datoteka.</p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba per a la compilació de programari KDE. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
