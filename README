@@ -1,97 +1,105 @@
-Smb4K README (version 1.0.x)
+Smb4K README (version 3.0.x)
 ============================
 
-Smb4K is an advanced network neighborhood browser for KDE. It uses the Samba 
-software suite to access the shares of the local network neighborhood. Its 
-purpose is to provide a program that's easy to use and has as many features 
-as possible.
-
-What's new?
------------
-- use of the KAuth framework for privilege escalation.
-- improved bookmark handling
-- better integration into the KDE desktop
-- laptop support
-- automatic scanning of the network
-- support of more command line arguments of the Samba utility programs
-- improved search dialog
-- changed way how to force the unmounting of inaccessible shares
-  (Linux only)
-- updated handbook
-- improved custom options dialog
-- visual mount and unmount feedback
+Smb4K is an advanced network neighborhood browser and Samba share mounting
+utility. It is based on the KDE Frameworks 5 and Samba's client library
+(libsmbclient). It scans your network neighborhood for all available workgroups, 
+servers and shares and can mount all desired shares to your local file system. 
+It is released under the terms of the GNU General Public License, version 2 
+(GPL v2+). Linux, FreeBSD and its derivatives (e. g. GhostBSD and TrueOS), 
+NetBSD and DragonFly BSD are officially supported.
 
 Features
 --------
+
 - Scanning for (active) workgroups, hosts, and shares
-- Support of the CIFS (Linux) and SMBFS (FreeBSD) file system
+- Support of the CIFS (Linux®) and SMBFS (FreeBSD) file system
 - Mounting and unmounting of shares
 - Access to the files of a mounted share using a file manager or terminal
 - Auto-detection of external mounts and unmounts
 - Remounting of previously used shares on program start
 - Miscellaneous infos about remote network items and mounted shares
 - Network search
-- WINS server support
 - Preview of the contents of a share
-- Several methods to look up the initial list of workgroups and domains
 - Default login
 - Special handling of homes shares
-- Ability to bookmark favorite shares and organizing them in groups
+- Ability to bookmark favorite shares
 - System tray widget
-- Support of advanced Samba options
+- Support of advanced mount options
 - Support of printer shares
 - KWallet support
 - Synchronization of a remote share with a local copy and vice versa
 - Ability to define custom options for individual servers and shares
 - Laptop support through the Solid hardware device framework
+- Wake-On-LAN capabilities
+- Plasmoid for desktop integration
+- Profiles for different network neighborhood setups
+
 
 Translations
 ------------
+
 Translations are provided by the KDE translators.
 
 Supported operating systems
 ---------------------------
-Smb4K officially supports Linux (kernel >= 2.2.x) and since version 0.4.1 also
-FreeBSD (>= 4.10-RELEASE). Smb4K might also run on other operating system.
+
+Smb4K officially supports Linux, FreeBSD and its derivatives (e. g. 
+GhostBSD and TrueOS), NetBSD and DragonFly BSD.
 
 Requirements
 ------------
-This version of Smb4K depends on the development files of the following
-libraries:
-- kdelibs & kdebase-runtime (>= 4.4.0): The powerful Open Source graphical
-  desktop environment for Unix workstations [http://www.kde.org]
-- Qt (>= 4.7.0): A multiplatform C++ application development framework.
-  [http://qt.nokia.com]
-- X.org or XFree86 - Freely redistributable implementations of the X Window
-  System [http://www.x.org or http://www.xfree86.org]
-- An implementation of the C library
 
-Make sure that you also have installed all header files of the libraries Qt
-and KDE are depending on. CMake, the cross-platform, open-source build system,
-version 2.6 or higher, is also needed.
+To compile Smb4K, you need:
 
-For a proper operation, you implicitly need:
-- Support of the /proc filesystem compiled into your kernel if you are using
-  Linux
-- Samba (3.x, 3.4 or higher recommended) [http://www.samba.org]
-- LinuxCIFS utils (>= 4.1 recommended, Linux only)
-- GNU grep [http://www.gnu.org/directory/grep.html]
-- GNU awk (GAWK) or similar [http://www.gnu.org/directory/gawk.html]
-- GNU sed [http://www.gnu.org/directory/sed.html]
-- GNU findutils (xargs) [http://www.gnu.org/directory/findutils.html]
+- CMake (version >= 3.2, https://www.cmake.org)
+- GNU Compiler Collection</ulink> (version >= 4.0, https://gcc.gnu.org)
+  or clang/LLVM</ulink> (version >= 3.0, http://clang.llvm.org)
 
-To enable full functionality, you may also want to install these packages:
-- rsync [http://rsync.samba.org/]
+To be able to use the main application of Smb4K you need at least Qt, 
+version >= 5.6.0 and KDE Frameworks 5 (KF5, version >= 5.25.0, 
+https://www.kde.org). If you also want to make use of the provided 
+Plasmoid, you should have at least Qt version 5.9.0 or later and 
+compatible versions of KF5 and Plasma 5 installed.
 
-Compilation and Installation
-----------------------------
-1. Extract the source tarball:
+Smb4K build depends on:
 
-   $ tar xvfj smb4k-1.0.0.tar.bz2
+- QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml
+- KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, 
+  KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, 
+  KJobWidgets, KWallet;, KDBusAddons, KConfigWidgets, KNotifications, 
+  KWindowSystem
+- libsmbclient
+  
+It also runtime depends on:
 
-2. Create a build directory:
+- KPlasma
+- LinuxCIFS utils (&Linux; only, https://wiki.samba.org/index.php/LinuxCIFS_utils)
 
-   $ cd smb4k-1.0.0
+To enable full functionality, you may also want to install these programs:
+
+- rsync (https://rsync.samba.org)
+
+The full list of changes can be found in the Git log at 
+https://cgit.kde.org/smb4k.git. A summary can be found in the ChangeLog file
+in the tarball.
+
+
+Configuration, Compilation and Installation
+-------------------------------------------
+
+To configure, compile and install Smb4K follow the steps below. Make sure, 
+you have read the Requirements section before you start.
+
+1. Download the version of Smb4K you are interested in and extract the 
+   source tarball:
+
+   $ tar xvfj smb4k-x.y.z.tar.xz
+
+2. Replace x.y.z with the version number. Change into the source code 
+   directory and create a build directory:
+
+   $ cd smb4k-x.y.z
    $ mkdir build
 
 3. Change into the build directory:
@@ -100,57 +108,72 @@ Compilation and Installation
 
 4. Configure the source:
 
-   $ cmake -DCMAKE_INSTALL_PREFIX=$(kde4-config --prefix) \
+   $ cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
      -DCMAKE_BUILD_TYPE=Release ..
 
-   If you would like to install the core header files as well, add the
-   -DINSTALL_HEADER_FILES=true argument to the above command.
+   If Smb4K cannot find some shared libraries after the installation (e.g. 
+   if you are using Kubuntu 16.04), it is necessary to add the 
+   -DKDE_INSTALL_PLUGINDIR argument to the command line above:
 
-5. Now compile and install Smb4K:
+   $ cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
+     -DKDE_INSTALL_PLUGINDIR=`qtpaths --plugin-dir` -DCMAKE_BUILD_TYPE=Release ..
+
+   If you want to compile Smb4K with debug symbols, replace Release by Debug.
+
+5. There are some Smb4K specific CMake arguments you might be interested in:
+
+   -DINSTALL_HEADER_FILES=ON/OFF    Install the core header files. This is off 
+                                    by default.
+   -DINSTALL_PLASMOID=ON/OFF        Install the plasmoid. This is on by default.
+
+6. After the configuration, compile and install Smb4K:
 
    $ make && sudo make install
 
-   If you want to be able to remove Smb4K with your package manager later on,
-   use checkinstall instead of make install. Its package should be present in
-   your distribution's repository.
+   If you want to be able to remove Smb4K with your package manager later on, 
+   use checkinstall instead of make install. The package should be present in 
+   your distribution's repository:
 
    $ make && sudo checkinstall
 
+
 Debugging the Source Code
 -------------------------
+
 If you experience crashes or similar and want to debug the source code yourself,
 compile the source code with debugging symbols. The procedure is similar to the
-one described in the "Compilation and Installation" section above, except that
-you need to modify the cmake command slightly:
+one described in the section above, except that you need to modify the cmake 
+command slightly:
 
-    $ cmake -DCMAKE_INSTALL_PREFIX=$(kde4-config --prefix) \
-      -DCMAKE_BUILD_TYPE=Debug ..
+   $ cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
+     -DCMAKE_BUILD_TYPE=Debug ..
 
 If you found the cause for a bug, please let us know. A backtrace or a patch
 will be much appreciated.
 
 Help and Support
 ----------------
-If you encounter problems when using Smb4K and need help or support, please
-visit our wiki at http://sourceforge.net/p/smb4k/wiki/. Most of the common 
-problems that arise when working with Smb4K are already covered there. You
-may also look for help in our 'Help' 
-(http://sourceforge.net/p/smb4k/discussion/help/) or 'General Discussion' 
-(http://sourceforge.net/p/smb4k/discussion/general/) forums.
+
+If you encounter problems when using Smb4K and/or need help or support, please
+contact us in our 'Help' (https://sourceforge.net/p/smb4k/discussion/help/) or 
+'General Discussion' (https://sourceforge.net/p/smb4k/discussion/general/) 
+forums.
 
 Bugs
 ----
+
 You are strongly encouraged to commit a bug report to
-http://sourceforge.net/p/smb4k/tickets/, if you find a problem. Please read
-the BUGS file for more information.
+https://bugs.kde.org/enter_bug.cgi?product=Smb4k&format=guided, if you find a problem.
 
 Copyright
 ---------
+
 Smb4K is released under the terms of the GNU General Public License (GPL),
 version 2. A copy of the license is available in the file COPYING.
 
 Latest Version
 --------------
-The latest stable version of Smb4K is always available from the Smb4K home page
-at http://smb4k.sourceforge.net.
+
+The latest stable version of Smb4K can always be downloaded from
+https://sourceforge.net/projects/smb4k/files/latest/download
 
