@@ -2405,7 +2405,7 @@ polkit.addRule(function(action, subject) {
     <sect2 id="configuration_page_authentication_wallet_entries">
       <title>Wallet Entries</title>
       
-      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, They have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. The details are then shown and can be modified.</para>
+      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, they have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. The details are then shown and can be modified.</para>
       <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
       <para>After you finished editing, the changes can be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
     </sect2>
