@@ -3838,14 +3838,15 @@ polkit.addRule(function(action, subject) {
     <para>&smb4k; officially supports &Linux;, FreeBSD, NetBSD and DragonFly BSD. Other operating systems might work as well, but haven't been tested.</para>
     <para>To compile &smb4k;, you need:</para>
     <itemizedlist>
-      <listitem><para><ulink url="http://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
-      <listitem><para><ulink url="http://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 4.0) or <ulink url="http://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
+      <listitem><para><ulink url="https://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
+      <listitem><para><ulink url="https://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 4.0) or <ulink url="https://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
     </itemizedlist>
-    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="http://www.qt.io">&Qt;</ulink> (&ge; 5.6.0) and <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0). If you also want to make use of the provided &plasmoid;, you should have at least <ulink url="http://www.qt.io">&Qt;</ulink> version 5.9.0 or later and compatible versions of &kf5; and &plasma; 5 installed.</para>
-    <para>&smb4k; build depends on the following &Qt; and &kf5; modules:</para>
+    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.6.0 and <ulink url="https://www.kde.org">&kf5;</ulink> version 5.25.0. If you also want to make use of the provided &plasmoid;, you should have at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.9.0 and compatible versions of &kf5; and &plasma; 5 installed.</para>
+    <para>&smb4k; build depends on:</para>
     <itemizedlist>
       <listitem><para>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para></listitem>
       <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, &solid;, KIO, KNotifications, KXmlGui, KJobWidgets, &kwallet5;, KDBusAddons, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
+      <listitem><para>libsmbclient</para></listitem>
     </itemizedlist>
     <para>It also runtime depends on:</para>
     <itemizedlist>
@@ -3854,7 +3855,7 @@ polkit.addRule(function(action, subject) {
     </itemizedlist>
     <para>To enable full functionality, you may also want to install these programs:</para>
     <itemizedlist>
-      <listitem><para><ulink url="http://rsync.samba.org">rsync</ulink></para></listitem>
+      <listitem><para><ulink url="https://rsync.samba.org">rsync</ulink></para></listitem>
     </itemizedlist>
     <para>The full list of changes can be found in the Git log at <ulink url="https://cgit.kde.org/smb4k.git">cgit.kde.org</ulink>. A summary can be found in the <filename>ChangeLog</filename> file in the tarball.</para>
   </sect1>
