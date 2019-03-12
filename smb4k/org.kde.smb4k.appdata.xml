@@ -65,33 +65,14 @@
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
-    <p xml:lang="bs">Smb4k je napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program za KDE softver kompilaciju. On skenira vašu mrežu susjeda za sve dostupne radne grupe, servere i razmjene i može ugraditi sve željene razmjene na vaš lokalni sistem datoteka.</p>
-    <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba per a la compilació de programari KDE. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
-    <p xml:lang="ca-valencia">El Smb4K és un explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba per a la compilació de programari KDE. Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
-    <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben für die KDE-Softwaresammlung. Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
-    <p xml:lang="el">Το Smb4K είναι ένας προηγμένος περιηγητής τοπικού δικτύου και το εργαλείο προσάρτησης κοινών πόρων Samba για το KDE Software Compilation. Σαρώνει το τοπικό σας δίκτυο για όλες τις διαθέσιμες ομάδες εργασίας, εξυπηρετητές και κοινούς πόρους και μπορεί να προσαρτά όλους τους επιθυμητούς κοινούς πόρους στο σύστημα αρχείων του υπολογιστή σας.</p>
-    <p xml:lang="en-GB">Smb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
-    <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba para «KDE Software Compilation». Escanea su entorno de red en busca de cualquier grupo de trabajo, servidores y recursos compartidos disponible y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
-    <p xml:lang="fi">Smb4K on edistynyt verkkoympäristöselain ja Samba-jakoliitostyökalu KDE-ohjelmistokokonaisuuteen. Se etsii verkostasi käytettävissä olevia työryhmiä, palvelimia ja jakoja sekä osaa liittää haluamasi jaot paikalliseen tiedostojärjestelmään.</p>
-    <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba pour KDE SC. Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
-    <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba que forma parte da colección de software de KDE. Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
-    <p xml:lang="id">Smb4K adalah sebuah penelusur tetangga jaringan terkemuka dan utilitas pengaitan berbagi Samba untuk KDE Software Compilation. Ini menyeken jaringan tetanggamu untuk semua workgroup, server, dan share yang tersedia dan bisa mengaitkan semua share yang diinginkan ke sistem file lokalmu.</p>
-    <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba per KDE Software Compilation. Analizza la tue risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
-    <p xml:lang="ko">Smb4K는 고급 네트워크 환경 탐색기 및 Samba 공유 마운트 도구입니다. 로컬 네트워크에 있는 작업 그룹, 서버, 공유 자원을 탐색할 수 있으며 로컬 파일 시스템에 공유를 마운트할 수 있습니다.</p>
-    <p xml:lang="nds">Smb4K is en verwiedert Nettwarkümgeven-Kieker un Inhangwarktüüch för Samba-Freegaven för de KDE-Software-Tosamenstellen. Dat kiekt Dien Nettwarkümgeven na verföögbor Arbeitkoppeln, Servers un Freegaven dör un kann de Freegaven na Dien lokaal Dateisysteem inhangen.</p>
-    <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares voor de KDE Software Compilation. Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
-    <p xml:lang="pl">Smb4K jest zaawansowaną przeglądarką otoczenia sieciowego i narzędziem do podpinania udziałów Samby dla Zbioru Oprogramowania KDE. Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić podpięcie wszystkich tych udziałów w lokalnym systemie plików.</p>
-    <p xml:lang="pt">O Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de partilhas do Samba para a Compilação de Aplicações do KDE. Ele sonda a sua vizinhança da rede à procura de todos os grupos de trabalho, servidores e partilhas disponíveis, podendo montar todas as partilhas desejadas no seu sistema de ficheiros local.</p>
-    <p xml:lang="pt-BR">Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de compartilhamentos do Samba para aplicativos do KDE. Ele verifica a vizinhança da rede à procura de todos os grupos de trabalho, servidores e compartilhamentos disponíveis, podendo montar todos os compartilhamentos desejados no seu sistema de arquivos local.</p>
-    <p xml:lang="sk">Smb4K je pokročilý prehliadač siete a nástroj na pripájanie Samba zdieľaní pre softvérovú kompiláciu KDE. Prehľadá vašu sieť, nájde všetky dostupné pracovné skupiny, servery a zdieľania a môže pripojiť všetky želané zdieľania do vášho miestneho súborového systému.</p>
-    <p xml:lang="sv">Smb4K är en avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-kataloger för KDE:s programvarusamling. Det söker igenom ditt nätverksgrannskap för att hitta alla tillgängliga arbetsgrupper, servrar och delade kataloger, och kan montera alla delade kataloger som önskas i det lokala filsystemet.</p>
-    <p xml:lang="tr">Smb4K, KDE Yazılım Derlemesi için gelişmiş bir ağ komşuları tarayıcısı ve samba paylaşım pağlama programıdır. Tüm ulaşılabilir çalışma grupları, sunucular ve paylaşımlar sizin ağ komşularınızı tarar, gerekli paylaşımları yerel dosya sisteminize bağlar.</p>
-    <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba для збірки програмного забезпечення KDE. Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
-    <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility for the KDE Software Compilation. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
-    <p xml:lang="zh-TW">Smb4K 是一個 KDE 軟體集的進階網路芳鄰瀏覽器與Samba 分享掛載工具。它會掃描您的所有可用的工作群組中的網路芳鄰，伺服器與分享可以掛載所有您想要分享的東西到您的本機檔案系統中。</p>
     <p>
       Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.
     </p>
+    <p xml:lang="ca">El Smb4K està basat en la biblioteca client del Samba. El seu propòsit és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
+    <p xml:lang="gl">Smb4K está baseado na biblioteca de cliente de Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
+    <p xml:lang="nl">Smb4K is gebaseerd op de client-bibliotheek van Samba. Het doel is een programma te bieden dat gemakkelijk is te gebruiken to use en zoveel mogelijk functies heeft.</p>
+    <p xml:lang="uk">Smb4K засновано на клієнтській бібліотеці Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
+    <p xml:lang="x-test">xxSmb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.xx</p>
     <p>
       Features:
     </p>
@@ -329,6 +310,12 @@
       <li xml:lang="zh-CN">网络搜索</li>
       <li xml:lang="zh-TW">網路搜尋</li>
       <li>Preview of the contents of a remote share</li>
+      <li xml:lang="ca">Vista prèvia del contingut d'una compartició remota</li>
+      <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición remota</li>
+      <li xml:lang="nl">Voorbeeldweergave van de inhoud van een share op afstand</li>
+      <li xml:lang="pt">Antevisão do conteúdo de uma partilha remota</li>
+      <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
+      <li xml:lang="x-test">xxPreview of the contents of a remote sharexx</li>
       <li>Default login</li>
       <li xml:lang="bs">Početna prijava</li>
       <li xml:lang="ca">Inici de sessió predeterminat</li>
@@ -432,6 +419,12 @@
       <li xml:lang="x-test">xxSystem tray widgetxx</li>
       <li xml:lang="zh-TW">系統匣小工具</li>
       <li>Support of advanced mount options</li>
+      <li xml:lang="ca">Implementació per a les opcions avançades de muntatge</li>
+      <li xml:lang="gl">Permite usar opcións avanzadas de montaxe</li>
+      <li xml:lang="nl">Ondersteuning van geavanceerde opties voor aankoppelen</li>
+      <li xml:lang="pt">Suporte para as opções avançadas de montagem</li>
+      <li xml:lang="uk">Підтримка додаткових параметрів монтування</li>
+      <li xml:lang="x-test">xxSupport of advanced mount optionsxx</li>
       <li>Support of printer shares</li>
       <li xml:lang="bs">Podrška za razmjene štampača</li>
       <li xml:lang="ca">Implementació per a les impressores compartides</li>
@@ -609,6 +602,12 @@
       <li xml:lang="x-test">xxPlasmoid for desktop integrationxx</li>
       <li xml:lang="zh-TW">以 Plasmoid 提供桌面整合</li>
       <li>Profiles for different network neighborhood setups</li>
+      <li xml:lang="ca">Perfils per a diferents configuracions del veïnatge de xarxa</li>
+      <li xml:lang="gl">Perfís de distintas configuracións de veciñanzas de rede</li>
+      <li xml:lang="nl">Profielen voor verschillende opzetten van netwerkomgevingen</li>
+      <li xml:lang="pt">Perfis para diferentes configurações da vizinhança da rede</li>
+      <li xml:lang="uk">Профілі для різних наборів налаштувань мережевого оточення</li>
+      <li xml:lang="x-test">xxProfiles for different network neighborhood setupsxx</li>
     </ul>
     <p>
       If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
