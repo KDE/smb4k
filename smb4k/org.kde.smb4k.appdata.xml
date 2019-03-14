@@ -323,6 +323,7 @@
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición remota</li>
       <li xml:lang="nl">Voorbeeldweergave van de inhoud van een share op afstand</li>
       <li xml:lang="pt">Antevisão do conteúdo de uma partilha remota</li>
+      <li xml:lang="pt-BR">Visualização do conteúdo de um compartilhamento remoto</li>
       <li xml:lang="sv">Förhandsgranskning av innehållet i en delad resurs</li>
       <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
       <li xml:lang="x-test">xxPreview of the contents of a remote sharexx</li>
@@ -434,6 +435,7 @@
       <li xml:lang="gl">Permite usar opcións avanzadas de montaxe</li>
       <li xml:lang="nl">Ondersteuning van geavanceerde opties voor aankoppelen</li>
       <li xml:lang="pt">Suporte para as opções avançadas de montagem</li>
+      <li xml:lang="pt-BR">Suporte para opções de montagem avançadas</li>
       <li xml:lang="sv">Stöd för avancerade monteringsalternativ</li>
       <li xml:lang="uk">Підтримка додаткових параметрів монтування</li>
       <li xml:lang="x-test">xxSupport of advanced mount optionsxx</li>
