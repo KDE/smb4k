@@ -2405,7 +2405,7 @@ polkit.addRule(function(action, subject) {
     <sect2 id="configuration_page_authentication_wallet_entries">
       <title>Wallet Entries</title>
       
-      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, They have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. The details are then shown and can be modified.</para>
+      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, they have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. The details are then shown and can be modified.</para>
       <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
       <para>After you finished editing, the changes can be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
     </sect2>
@@ -3793,11 +3793,11 @@ polkit.addRule(function(action, subject) {
 <chapter id="reporting_bugs">
   <title>Reporting Bugs</title>
 
-  <para>Before filing a bug report, please read our <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/">wiki</ulink>. Many common problems are already covered there. Also, try the <ulink url="https://sourceforge.net/projects/smb4k/files/">latest version</ulink> of &smb4k;. Maybe your problem has already been fixed.</para>
+  <para>Before filing a bug report, please try the <ulink url="https://sourceforge.net/projects/smb4k/files/">latest version</ulink> of &smb4k;. Maybe your problem has already been fixed.</para>
   <para>Follow these directions for your bug report:</para>
   <itemizedlist>
     <listitem><para>Describe <emphasis>in detail</emphasis> what you did to receive the problem you are reporting.</para></listitem>
-    <listitem><para>Provide the version of &smb4k; and &kde;.</para></listitem>
+    <listitem><para>Provide the version of &smb4k; and &kf5;.</para></listitem>
     <listitem><para>Mention your operating system (&Linux;, FreeBSD, &etc;) and the distribution that is running on your computer.</para></listitem>
     <listitem><para>Include the full error message if an error dialog was displayed.</para></listitem>
     <listitem><para>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <link linkend="appendix_compilation">Configuration, Compilation and Installation</link> chapter in the appendix.</para></listitem>
@@ -3814,7 +3814,7 @@ polkit.addRule(function(action, subject) {
 <chapter id="credits" >
   <title>Credits and License</title>
 
-  <para>Copyright &copy; 2003 - 2017, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
+  <para>Copyright &copy; 2003 - 2019, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
   &underFDL;
@@ -3861,14 +3861,15 @@ polkit.addRule(function(action, subject) {
     <para>&smb4k; officially supports &Linux;, FreeBSD, NetBSD and DragonFly BSD. Other operating systems might work as well, but haven't been tested.</para>
     <para>To compile &smb4k;, you need:</para>
     <itemizedlist>
-      <listitem><para><ulink url="http://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
-      <listitem><para><ulink url="http://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 4.0) or <ulink url="http://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
+      <listitem><para><ulink url="https://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
+      <listitem><para><ulink url="https://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 4.0) or <ulink url="https://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
     </itemizedlist>
-    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="http://www.qt.io">&Qt;</ulink> (&ge; 5.6.0) and <ulink url="http://www.kde.org">&kf5;</ulink> (&ge; 5.25.0). If you also want to make use of the provided &plasmoid;, you should have at least <ulink url="http://www.qt.io">&Qt;</ulink> version 5.9.0 or later and compatible versions of &kf5; and &plasma; 5 installed.</para>
-    <para>&smb4k; build depends on the following &Qt; and &kf5; modules:</para>
+    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.6.0 and <ulink url="https://www.kde.org">&kf5;</ulink> version 5.25.0. If you also want to make use of the provided &plasmoid;, you should have at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.9.0 and compatible versions of &kf5; and &plasma; 5 installed.</para>
+    <para>&smb4k; build depends on:</para>
     <itemizedlist>
       <listitem><para>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para></listitem>
       <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, &solid;, KIO, KNotifications, KXmlGui, KJobWidgets, &kwallet5;, KDBusAddons, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
+      <listitem><para>libsmbclient</para></listitem>
     </itemizedlist>
     <para>It also runtime depends on:</para>
     <itemizedlist>
@@ -3877,7 +3878,7 @@ polkit.addRule(function(action, subject) {
     </itemizedlist>
     <para>To enable full functionality, you may also want to install these programs:</para>
     <itemizedlist>
-      <listitem><para><ulink url="http://rsync.samba.org">rsync</ulink></para></listitem>
+      <listitem><para><ulink url="https://rsync.samba.org">rsync</ulink></para></listitem>
     </itemizedlist>
     <para>The full list of changes can be found in the Git log at <ulink url="https://cgit.kde.org/smb4k.git">cgit.kde.org</ulink>. A summary can be found in the <filename>ChangeLog</filename> file in the tarball.</para>
   </sect1>

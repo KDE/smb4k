@@ -472,7 +472,7 @@ void Smb4KNotification::invalidURLPassed()
 void Smb4KNotification::networkCommunicationFailed(const QString& errorMessage)
 {
   Smb4KNotifier *notification = new Smb4KNotifier("networkCommunicationFailed");
-  notification->setText(i18n("<p>The network communication failed with the following error message:</p><p>%1</p>").arg(errorMessage));
+  notification->setText(i18n("The network communication failed with the following error message: <s>%1</s>", errorMessage));
   notification->setPixmap(KIconLoader::global()->loadIcon("dialog-error", KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
   notification->sendEvent(); 
 }

@@ -122,14 +122,24 @@ class Smb4KClientJob : public KJob
     Smb4KGlobal::Process process() const;
     
     /**
-     * Set the file to print
+     * Set the file that is to be printed
      */
     void setPrintFileItem(const KFileItem &item);
+    
+    /**
+     * Get the file that is to be printed
+     */
+    KFileItem printFileItem() const;
     
     /**
      * Set the number of copies that are to be printed
      */
     void setPrintCopies(int copies);
+    
+    /**
+     * Get the number of copies that are to be printed
+     */
+    int printCopies() const;
     
     /**
      * The authentication function for libsmbclient

@@ -154,20 +154,14 @@ void Smb4KBookmarkDialog::setupView()
 
   setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
 
-  connect(m_widget, SIGNAL(itemClicked(QListWidgetItem*)), 
-          this, SLOT(slotBookmarkClicked(QListWidgetItem*)));
-  
-  connect(m_label_edit, SIGNAL(editingFinished()), 
-          this, SLOT(slotLabelEdited()));
-  
-  connect(m_group_combo->lineEdit(), SIGNAL(editingFinished()), 
-          this, SLOT(slotGroupEdited()));
-  
-  connect(m_ok_button, SIGNAL(clicked()), 
-          this, SLOT(slotDialogAccepted()));
-  
-  connect(m_cancel_button, SIGNAL(clicked()), 
-          this, SLOT(reject()));
+  //
+  // Connections
+  // 
+  connect(m_widget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotBookmarkClicked(QListWidgetItem*)));
+  connect(m_label_edit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
+  connect(m_group_combo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotGroupEdited()));
+  connect(m_ok_button, SIGNAL(clicked()), this, SLOT(slotDialogAccepted()));
+  connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
 
@@ -485,38 +479,20 @@ void Smb4KBookmarkEditor::setupView()
   layout->addWidget(m_editors);
   layout->addWidget(buttonBox);
 
-  connect(m_tree_widget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), 
-          this, SLOT(slotItemClicked(QTreeWidgetItem*,int)));
-  
-  connect(m_tree_widget, SIGNAL(customContextMenuRequested(QPoint)), 
-          this, SLOT(slotContextMenuRequested(QPoint)));
-  
-  connect(m_label_edit, SIGNAL(editingFinished()), 
-          this, SLOT(slotLabelEdited()));
-  
-  connect(m_ip_edit, SIGNAL(editingFinished()), 
-          this, SLOT(slotIPEdited()));
-  
-  connect(m_login_edit, SIGNAL(editingFinished()), 
-          this, SLOT(slotLoginEdited()));
-  
-  connect(m_group_combo->lineEdit(), SIGNAL(editingFinished()), 
-          this, SLOT(slotGroupEdited()));
-  
-  connect(m_add_group, SIGNAL(triggered(bool)), 
-          this, SLOT(slotAddGroupTriggered(bool)));
-  
-  connect(m_delete, SIGNAL(triggered(bool)), 
-          this, SLOT(slotDeleteTriggered(bool)));
-  
-  connect(m_clear, SIGNAL(triggered(bool)), 
-          this, SLOT(slotClearTriggered(bool)));
-  
-  connect(m_ok_button, SIGNAL(clicked()), 
-          this, SLOT(slotDialogAccepted()));
-  
-  connect(m_cancel_button, SIGNAL(clicked()), 
-          this, SLOT(slotDialogRejected()));
+  //
+  // Connections
+  // 
+  connect(m_tree_widget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(slotItemClicked(QTreeWidgetItem*,int)));
+  connect(m_tree_widget, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
+  connect(m_label_edit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
+  connect(m_ip_edit, SIGNAL(editingFinished()), this, SLOT(slotIPEdited()));
+  connect(m_login_edit, SIGNAL(editingFinished()), this, SLOT(slotLoginEdited()));
+  connect(m_group_combo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotGroupEdited()));
+  connect(m_add_group, SIGNAL(triggered(bool)), this, SLOT(slotAddGroupTriggered(bool)));
+  connect(m_delete, SIGNAL(triggered(bool)), this, SLOT(slotDeleteTriggered(bool)));
+  connect(m_clear, SIGNAL(triggered(bool)), this, SLOT(slotClearTriggered(bool)));
+  connect(m_ok_button, SIGNAL(clicked()), this, SLOT(slotDialogAccepted()));
+  connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(slotDialogRejected()));
 }
 
 

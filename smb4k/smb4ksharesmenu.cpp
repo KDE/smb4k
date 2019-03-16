@@ -70,9 +70,14 @@ Smb4KSharesMenu::Smb4KSharesMenu(QWidget *parentWidget, QObject *parent)
   // 
   m_actions = new QActionGroup(menu());
 
+  // 
   // Setup the menu
+  // 
   setupMenu();
 
+  //
+  // Connections
+  // 
   connect(m_actions, SIGNAL(triggered(QAction*)), SLOT(slotShareAction(QAction*)));
   connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), SLOT(slotMountedSharesListChanged()));
 }
