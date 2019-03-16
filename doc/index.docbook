@@ -3839,7 +3839,7 @@ polkit.addRule(function(action, subject) {
     <para>To compile &smb4k;, you need:</para>
     <itemizedlist>
       <listitem><para><ulink url="https://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
-      <listitem><para><ulink url="https://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 4.0) or <ulink url="https://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
+      <listitem><para><ulink url="https://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 5.0) or <ulink url="https://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
     </itemizedlist>
     <para>To be able to use the main application of &smb4k;, you need at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.6.0 and <ulink url="https://www.kde.org">&kf5;</ulink> version 5.25.0. If you also want to make use of the provided &plasmoid;, you should have at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.9.0 and compatible versions of &kf5; and &plasma; 5 installed.</para>
     <para>&smb4k; build depends on:</para>
