@@ -11,7 +11,7 @@ add_executable(mounthelper ${smb4kmounthelper_SRCS})
 target_link_libraries(mounthelper
   smb4kcore
   Qt5::Core
-  KF5::Auth
+  ${AUTHLIB}
   KF5::CoreAddons
   KF5::I18n
   KF5::KIOCore)
