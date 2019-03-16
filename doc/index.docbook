@@ -727,7 +727,7 @@
     <sect2 id="shares_view_synchronization">
       <title>Synchronization</title>
 
-      <para>The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Y</keycap></keycombo></shortcut><guimenuitem>Synchronize</guimenuitem></menuchoice> menu item opens the synchronization dialog. It offers you the mount point of the share as source and a path below the <link linkend="configuration_page_synchronization_basic_settings_defdest">synchronization prefix</link> as destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton>Swap Paths</guibutton> button.</para>
+      <para>The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Y</keycap></keycombo></shortcut><guimenuitem>Synchronize</guimenuitem></menuchoice> menu item opens the synchronization dialog. It offers you the mount point of the share as source and a path below the <link linkend="configuration_page_synchronization_basic_settings_default_destination">synchronization prefix</link> as destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton>Swap Paths</guibutton> button.</para>
       <screenshot>
         <screeninfo>Screenshot of the synchronization input dialog</screeninfo>
         <mediaobject>
@@ -2429,13 +2429,13 @@ polkit.addRule(function(action, subject) {
     </screenshot>
 
 <!-- 
-      Configuring Smb4K : Synchronization : Basic settings
+      Configuring Smb4K : Synchronization : Basic Settings
 -->
-
-    <sect2 id="configuration_page_synchronization_basic_settings">
-      <title>Copying</title>
-
-      <sect3 id="configuration_page_synchronization_basic_settings_defdest">
+    
+    <sect2 id="configuration_page_synchronisation_basic_settings">
+      <title>Basic Settings</title>
+      
+      <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title>Default Destination</title>
 
         <variablelist>
@@ -2451,10 +2451,10 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
         </variablelist>
       </sect3>
-
-      <sect3 id="configuration_page_synchronization_basic_settings_behavor">
-        <title>General</title>
-
+      
+      <sect3 id="configuration_page_synchronisation_basic_settings_behavior">
+        <title>Behavior</title>
+        
         <variablelist>
           <varlistentry>
             <term>
@@ -2509,7 +2509,7 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
         </variablelist>
       </sect3>
-
+      
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title>Backup</title>
 
@@ -2549,8 +2549,9 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
         </variablelist>
       </sect3>
+      
     </sect2>
-
+    
 <!--
       Configuring Smb4K : Synchronization : File Handling
 -->
@@ -2653,7 +2654,7 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Only transform unsafe symlinks</guibutton></menuchoice>
+              <menuchoice><guibutton>Transform unsafe symlinks</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Option: <option>--copy-unsafe-links</option></para>
@@ -2673,12 +2674,32 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
           <varlistentry>
             <term>
+              <menuchoice><guibutton>Munge symlinks</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-H</option>/<option>--munge-links</option></para>
+              <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to (1) modify all symlinks on the receiving side in a way that makes them unusable but recoverable, or (2) to unmunge symlinks on the sending side that had been stored in a munged state. This is useful if you do not quite trust the source of the data to not try to slip in a symlink to an unexpected place. For further information on this argument, please see the manual page of <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>          
+          <varlistentry>
+            <term>
               <menuchoice><guibutton>Preserve hard links</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Option: <option>-H</option>/<option>--hard-links</option></para>
               <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to look for hard-linked files in the transfer and link together the corresponding files on the receiving side. Without this option, hard-linked files in the transfer are treated as though they were separate files.</para>
               <para>Note that <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> can only detect hard links if both parts of the link are in the list of files being sent.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Copy directory symlinks</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-k</option>/<option>--copy-dirlinks</option></para>
+              <para>This option causes the sending side to treat a symlink to a directory as though it were a real directory.  This is useful if you don’t want symlinks to non-directories to be affected, as they would be using <option>--copy-links</option>.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -2696,7 +2717,7 @@ polkit.addRule(function(action, subject) {
       </sect3>
 
       <sect3 id="configuration_page_synchronization_file_handling_perms">
-        <title>File Permissions, &etc;</title>
+        <title>Permissions, &etc;</title>
 
         <variablelist>
           <varlistentry>
@@ -2711,21 +2732,21 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Preserve group</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-g</option>/<option>--group</option></para>
-              <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the group of the destination file to be the same as the on of the source file. If the receiving program is not running as the super-user (or with the <option>--no-super</option> option), only groups that the receiver is a member of will be preserved.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
               <menuchoice><guibutton>Preserve owner</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Option: <option>-o</option>/<option>--owner</option></para>
               <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the owner of the destination file to be the same as the one of the source file. By default, the preservation is done by name, but may fall back to using the ID number in some circumstances (see the <option>--numeric-ids</option> option for a full discussion). This option has no effect if the receiving <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is not run as the super user and <option>--super</option> is not specified.</para>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preserve group</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-g</option>/<option>--group</option></para>
+              <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the group of the destination file to be the same as the on of the source file. If the receiving program is not running as the super-user (or with the <option>--no-super</option> option), only groups that the receiver is a member of will be preserved.</para>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -2786,7 +2807,7 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Set Compression level:</guibutton></menuchoice>
+              <menuchoice><guibutton>Set compression level</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Explicitly set the compression level to use (--compress-level=NUM). If NUM is non-zero, the --compress argument is implied.</para>
@@ -2794,7 +2815,7 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Skip compression for following file suffixes:</guibutton></menuchoice>
+              <menuchoice><guibutton>Skip compression for following file suffixes</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Overwrite the list of file suffixes that will not be compressed (--skip-compress=LIST). The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manual page of rsync.</para>
@@ -2859,7 +2880,9 @@ polkit.addRule(function(action, subject) {
               <menuchoice><guibutton>Set bandwidth limit:</guibutton></menuchoice>
             </term>
             <listitem>
-                <para>Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE).</para>
+              <para>Option: <option>--bwlimit=RATE</option></para>
+              <para>Set the maximum data transfer rate in kilobytes per second.</para>
+              <para>Default: not selected; RATE: 0 KiB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3022,7 +3045,7 @@ polkit.addRule(function(action, subject) {
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Do not exclude files matching this pattern</guibutton></menuchoice>
+              <menuchoice><guibutton>Include files matching this pattern</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Option: <option>--include=PATTERN</option></para>
