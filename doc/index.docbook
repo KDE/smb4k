@@ -3189,7 +3189,7 @@ polkit.addRule(function(action, subject) {
       Configuring Smb4K : Custom Options
 -->
 
-  <sect1 id="configuration_page_custom_options"><!--FIXME changed to 4 tabs-->
+  <sect1 id="configuration_page_custom_options">
     <title>Custom Options</title>
 
     <para>All servers and shares for which you defined custom options are listed here.</para>
@@ -3197,14 +3197,33 @@ polkit.addRule(function(action, subject) {
     <screenshot>
       <screeninfo>Screenshot of the "Custom Options" configuration tab</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="configuration_page_custom_options.png" format="PNG" /></imageobject><!--FIXME update-->
+        <imageobject><imagedata fileref="configuration_page_custom_options.png" format="PNG" /></imageobject>
         <textobject><phrase>The "Custom Options" configuration tab</phrase></textobject>
       </mediaobject>
     </screenshot>
 
-    <para>The options defined for a network item can be edited by either double clicking an entry in the list view or by choosing the <guimenuitem>Edit</guimenuitem> item from the popup menu (right click on the selected item). The custom options are then being loaded and can be edited. To remove an entry, right click it and choose the <guimenuitem>Remove</guimenuitem> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item. Changes can be reset by choosing the <guimenuitem>Undo</guimenuitem> item from the popup menu.</para>
+    <para>The options defined for a network item can be edited by either double clicking an entry in the list view or by choosing the <guimenuitem>Edit</guimenuitem> item from the popup menu (right click on the selected item). The custom options are then being loaded and can be edited. To remove an entry, right click it and choose the <guimenuitem>Remove</guimenuitem> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
 
-    <para>The custom options are accessible through the editor widgets on the right. In the <guilabel>General</guilabel> section the UNC address of the network item and its editable IP address are shown. In case of a share, you can also define whether it should always be remounted. Below, the custom options are arranged in two tabs:</para>
+    <para>The custom options are accessible through the tabs on the right.</para>
+    
+<!--
+      Configuring Smb4K : Custom Options : Network Item
+-->
+    
+    <sect2 id="configuration_page_custom_options_network_item">
+      <title>Network Item</title>
+      
+      <para>This tab mostly serves as resource of information. In the <guilabel>Identification</guilabel> groupbox the workgroup or domain of the network item, its location and IP address are given. The IP address can be edited, in case you might need to adjust it.</para>
+    </sect2>
+    
+<!--
+      Configuring Smb4K : Custom Options : Mounting
+-->
+    <sect2 id="configuration_page_custom_options_mounting">
+      <title>Mounting</title>
+      
+      <para>Here you can edit settings used for mounting. Have a look at the <link linkend="configuration_page_mounting">Mounting</link> configuration page to learn more about the present options.</para>
+    </sect2>
 
 <!-- 
       Configuring Smb4K : Custom Options : Samba
