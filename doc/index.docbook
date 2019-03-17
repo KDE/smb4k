@@ -170,6 +170,26 @@
       <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;.</para>
       <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
     </sect2>
+    
+<!--
+      Using Smb4K : The Network Neighborhood Browser : Searching
+  -->
+    
+    <sect2 id="network_neighborhood_browser_searching">
+      <title>Searching</title>
+      
+      <para>To search the network neighborhood for shares that contain a certain search item, press either the search shortcut or activate the <guibutton>Search</guibutton> action from the menu (see also the <link linkend="network_neighborhood_browser_actions_popup_menu">Actions an Popup Menu</link> section below). The search toolbar opens at the bottom of the network neighborhood browser.</para>
+      
+      <screenshot>
+        <screeninfo>Screenshot of the network neighborhood browser with visible search toolbar</screeninfo>
+        <mediaobject>
+          <imageobject><imagedata fileref="network_neighborhood_browser_searching.png" format="PNG" /></imageobject>
+          <textobject><phrase>The network neighborhood browser with visible search toolbar</phrase></textobject>
+        </mediaobject>
+      </screenshot>
+      
+      <para>Enter the search term in the line edit and press the &Enter; key or click the <guibutton>Search</guibutton> button. &smb4k; starts to search the entire network neighborhood. When the search finished, all shares matching the search term are highlighted (selected). If you would like to do something with <emphasis>all</emphasis> discovered shares (&eg; mount or preview), you can immediately do this now. Otherwise, you can use the <guibutton>Up</guibutton> and <guibutton>Down</guibutton> buttons to jump to the individual search results. The <guibutton>Clear</guibutton> button can be used to clear the search. To close the search toolbar, press the <guibutton>Close</guibutton> button.</para>
+    </sect2>
 
 <!-- 
       Using Smb4K : The Network Neighborhood Browser : Actions and Popup Menu 
@@ -203,6 +223,17 @@
             <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action when a network scan is running.</para>
           </listitem>
         </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice>
+              <shortcut><keycombo action="simul">&Ctrl; <keycap>F</keycap></keycombo></shortcut>
+              <guimenuitem>Search</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para>Search the network neighborhood for a specified search term. Activating this action opens the search toolbar where you can enter the search term and start the search.</para>
+          </listitem>
+        </varlistentry>        
         <varlistentry>
           <term>
             <menuchoice>
@@ -342,7 +373,7 @@
         <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
       </orderedlist>
 
-      <para>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">mounted shares view</link>. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
+      <para>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
     </sect2>
 
 <!-- 
@@ -360,7 +391,7 @@
           <textobject><phrase>The print dialog</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>In the <guilabel>Printer</guilabel> section various information about the printer is shown. Under <guilabel>File</guilabel> you have to provide the path to the file you want to print. The number of copies can be defined under <guibutton>Options >></guibutton>. Press <guibutton>Print...</guibutton> to start the print process.</para>
+      <para>In the <guilabel>Information</guilabel> section various information about the printer is shown. Under <guilabel>File and Settings</guilabel> you have to provide the path to the file you want to print and the desired number of copies. Press <guibutton>Print</guibutton> to start the print process.</para>
       <para>&smb4k; currently supports PDF, Postscript, image, and text files. If you try to print a file with an unsupported mimetype, a notification with an error message will appear telling you the mimetype is not supported. In this case you have to convert the file manually to Postscript or PDF and try again.</para>
     </sect2>
 
@@ -379,7 +410,7 @@
           <textobject><phrase>The preview dialog</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view and the <guibutton>Up</guibutton>, <guibutton>Back</guibutton>, and <guibutton>Forward</guibutton> button. The current location is displayed in the combo box on the right hand side. The <guibutton>Reload</guibutton> button reloads the contents of the current folder.</para>
+      <para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view. You can go one level up by using the <guibutton>Up</guibutton> button and reload the contents of the current folder by pressing the <guibutton>Reload</guibutton> button. The current location is displayed in the combo box on the right hand side. You can also access already visited folders with it.</para>
       <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_page_network_samba_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
     </sect2>
 
