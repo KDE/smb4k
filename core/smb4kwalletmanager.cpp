@@ -537,7 +537,7 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
         // If the share is a 'homes' share, read the known logins
         // for that share.
         // 
-        if (share && share->isHomesShare())
+        if (share->isHomesShare())
         {
           //
           // Get the known logins
@@ -574,6 +574,10 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
             // 
             tempShare.clear();
           }
+        }
+        else
+        {
+          readAuthInfo(networkItem);
         }
 
         break;
