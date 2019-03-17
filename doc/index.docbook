@@ -3408,6 +3408,18 @@ polkit.addRule(function(action, subject) {
       <varlistentry>
         <term>
           <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>F</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Search</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the search toolbar in the network neighborhood browser.</para>
+        </listitem>
+      </varlistentry> 
+      <varlistentry>
+        <term>
+          <menuchoice>
             <guimenu>Network</guimenu>
             <guimenuitem>Add Bookmark</guimenuitem>
           </menuchoice>
@@ -3500,76 +3512,6 @@ polkit.addRule(function(action, subject) {
           <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
         </listitem>
       </varlistentry>
-    </variablelist>
-  </sect1>
-  
-<!--
-      Command Reference : The Search Menu
-  -->
-
-  <sect1 id="command_reference_search_menu">
-    <title>The Search Menu</title>
-
-    <variablelist>
-      <varlistentry>
-        <term>
-          <menuchoice>
-            <shortcut><keycombo action="simul">&Ctrl; <keycap>S</keycap></keycombo></shortcut>
-            <guimenu>Search</guimenu>
-            <guimenuitem>Search</guimenuitem>
-          </menuchoice>
-        </term>
-        <listitem>
-          <para>Search for the string that was entered in the search dialog. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network search is running.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice>
-            <shortcut><keycombo action="simul">&Ctrl; <keycap>A</keycap></keycombo></shortcut>
-            <guimenu>Search</guimenu>
-            <guimenuitem>Abort</guimenuitem>
-          </menuchoice>
-        </term>
-        <listitem>
-          <para>Abort the network search. This action is invisible by default and will only be visible instead of the <guimenuitem>Search</guimenuitem> action if a network search is running.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice>
-            <guimenu>Search</guimenu>
-            <guimenuitem>Clear</guimenuitem>
-          </menuchoice>
-        </term>
-        <listitem>
-          <para>Clear the whole network search dialog. This action does not only clear the list view, but also the search item history in the combo box.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice>
-            <shortcut><keycombo action="simul">&Ctrl; <keycap>D</keycap></keycombo></shortcut>
-            <guimenu>Search</guimenu>
-            <guimenuitem>Mount</guimenuitem>
-          </menuchoice>
-        </term>
-        <listitem>
-          <para>Mount a remote share from within the search dialog. Alternatively, you can double click the network share in the list view.</para>
-        </listitem>
-      </varlistentry>
-       <varlistentry>
-          <term>
-            <menuchoice>
-              <shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut>
-              <guimenu>Search</guimenu>
-              <guimenuitem>Unmount</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem>
-            <para>Unmount the selected share. This action is invisible by default and will only be visible instead of the <guimenuitem>Mount</guimenuitem> action when the share is currently mounted.</para>
-          </listitem>
-        </varlistentry>
     </variablelist>
   </sect1>
   
@@ -3952,14 +3894,14 @@ polkit.addRule(function(action, subject) {
         </thead>
         <tbody>
           <row>
-            <entry>-DINSTALL_HEADER_FILES=yes|no</entry>
+            <entry>-DINSTALL_HEADER_FILES=ON|OFF</entry>
             <entry align="center">1.0.0</entry>
             <entry>Install the core header files. This is off by default.</entry>
           </row>
           <row>
-            <entry>-DINSTALL_PLASMOID=yes|no</entry>
+            <entry>-DINSTALL_PLASMOID=ON|OFF</entry>
             <entry align="center">1.1.0</entry>
-            <entry>Install the plasmoid. This is on by default. For &smb4k; 2.0.x this option was removed, because the plasmoid was not ported yet.</entry>
+            <entry>Install the plasmoid. This is on by default.</entry>
           </row>
         </tbody>
       </tgroup>
