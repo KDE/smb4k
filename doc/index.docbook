@@ -57,7 +57,7 @@
 
   <itemizedlist>
     <listitem><para>Scanning for (active) workgroups, hosts, and shares</para></listitem>
-    <listitem><para>Support of the &CIFS; (&Linux;) and SMBFS (FreeBSD, NetBSD) file system</para></listitem>
+    <listitem><para>Support of the &CIFS; (&Linux;) and SMBFS (BSD) file system</para></listitem>
     <listitem><para>Mounting and unmounting of shares</para></listitem>
     <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
     <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
@@ -178,7 +178,7 @@
     <sect2 id="network_neighborhood_browser_searching">
       <title>Searching</title>
       
-      <para>To search the network neighborhood for shares that contain a certain search item, press either the search shortcut or activate the <guibutton>Search</guibutton> action from the menu (see also the <link linkend="network_neighborhood_browser_actions_popup_menu">Actions an Popup Menu</link> section below). The search toolbar opens at the bottom of the network neighborhood browser.</para>
+      <para>To search the network neighborhood for shares that contain a certain search item, execute the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>F</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action (see also the <link linkend="network_neighborhood_browser_actions_popup_menu">Actions an Popup Menu</link> section below). The search toolbar opens at the bottom of the network neighborhood browser.</para>
       
       <screenshot>
         <screeninfo>Screenshot of the network neighborhood browser with visible search toolbar</screeninfo>
@@ -373,7 +373,7 @@
         <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
       </orderedlist>
 
-      <para>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (FreeBSD, NetBSD) will be shown.</para>
+      <para>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be shown.</para>
     </sect2>
 
 <!-- 
@@ -429,7 +429,7 @@
           <textobject><phrase>The authentication dialog</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button will commit the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not all. In the latter case you will have to provide them <emphasis>every time</emphasis> they are needed.</para>
+      <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button commits the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not at all. In the latter case you have to provide them <emphasis>every time</emphasis> they are needed.</para>
     </sect2>
 
 <!-- 
@@ -441,11 +441,11 @@
 
       <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
       <itemizedlist>
-        <listitem><para>define custom Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
+        <listitem><para>define custom mount or Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
         <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan">here</link>),</para></listitem>
         <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
-      <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry.</para>
+      <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server or to a single one. </para>
 
       <screenshot>
         <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
@@ -460,12 +460,18 @@
       </screenshot>
 
       <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
-      <note><para>Under FreeBSD and NetBSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
+      <note><para>Under BSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
 
+      <sect3 id="network_neighborhood_browser_defining_custom_options_mounting">
+        <title>Mounting</title>
+        
+        <para>In this tab you can define settings related to mounting. Checking the <guibutton>Always remount this share</guibutton> button for a selected share leads to it being remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting">here</link>.</para>
+      </sect3>
+        
       <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
         <title>Samba</title>
 
-        <para>Depending on your selection, the settings in the custom options dialog either apply to all shares of a server or to a single one. You can define the SMB port, the file system port (&Linux; only), the write access, the user ID, the group ID and if Kerberos should be used for authentication. For detailed information on the individual settings, please see <link linkend="configuration_page_network">here</link> and <link linkend="configuration_page_mounting">here</link>.</para>
+        <para>You can define the SMB port and if Kerberos should be used for authentication. For detailed information on these settings, please see <link linkend="configuration_page_network">here</link>.</para>
       </sect3>
 
       <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
@@ -1340,7 +1346,7 @@
     <title>Special Remarks</title>
   
 <!-- 
-      Using Smb4K : Special Remarks : Samba Security Fixes of April 12, 2016
+      Using Smb4K : Special Remarks : Problems Browsing the Network Neighborhood with &Samba; 4.7 and above
 -->
    
     <sect2 id="special_remarks_problems_browsing_samba_47">
@@ -1382,6 +1388,24 @@ polkit.addRule(function(action, subject) {
       <para>This allows all users in the Unix group <emphasis>wheel</emphasis> to execute the mount and unmount action. You may adjust the group of authorized users to any group you need (&eg; <emphasis>sudo</emphasis> or <emphasis>operator</emphasis>).</para>
     </sect2>
   
+<!--
+      Using Smb4K : Special Remarks : Mounting Problems under BSD
+  -->
+    
+    <sect2 id="special_remarks_mounting_problems_under_bsd">
+      <title>Mounting Problems Under BSD</title>
+      
+      <para>If mounting of password-protected shares from either a &Samba; or a &Windows; server fails, this might be due to the fact that <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> only uses NTLMv1 authentication and the server does not support it. To fix mounting for a &Samba; server, you can add the following entry to the [global] section of the <filename>smb.conf</filename> file of <emphasis>the server</emphasis>:</para>
+      
+<programlisting>[global]
+...
+ntlm auth = yes
+...
+</programlisting>
+      
+      <para>To fix this issue for a &Windows; server, please contact the sysadmin and tell her or him that NTLMv1 authentication should be swtiched on (if possible).</para>
+    </sect2>
+    
 <!-- 
       Using Smb4K : Special Remarks : Other Desktops Than Plasma
 -->
@@ -1642,7 +1666,7 @@ polkit.addRule(function(action, subject) {
               <menuchoice><guibutton>SMB port</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Enabling this setting sets the remote SMB port number to communicate with a remote host to the value defined in the spin box. Under FreeBSD, this is also the port that is used for mounting.</para>
+              <para>Enabling this setting sets the remote SMB port number to communicate with a remote host to the value defined in the spin box. Under BSD, this is also the port that is used for mounting.</para>
               <para>Unless you are using a firewall or have a customized network setup, you do not need to change anything here.</para>
               <para>Default: 139</para>
             </listitem>
@@ -1919,7 +1943,7 @@ polkit.addRule(function(action, subject) {
               <menuchoice><guibutton>Detect all shares that are mounted on the system</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (FreeBSD) and &CIFS; (&Linux;) file system that are present on the system.</para>
+              <para>You will not only see the shares that were mounted and are owned by you, but also all other mounts using the SMBFS (BSD) and &CIFS; (&Linux;) file system that are present on the system.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>  
@@ -1964,7 +1988,7 @@ polkit.addRule(function(action, subject) {
             </term>
             <listitem>
               <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
-              <para>This option is only available under &Linux;. Under FreeBSD, the port for mounting shares is set with the <link linkend="configuration_page_network_samba_basic_settings"><guibutton>SMB port</guibutton></link> option.</para>
+              <para>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_samba_basic_settings"><guibutton>SMB port</guibutton></link> option.</para>
               <para>Default: 445</para>
             </listitem>
           </varlistentry>
