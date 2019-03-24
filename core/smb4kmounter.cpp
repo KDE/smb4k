@@ -2286,21 +2286,34 @@ void Smb4KMounter::slotStatResult(KJob *job)
   }
   
   //
-  // Is this a mount done by the user or by someone else?
-  // Make an educated guess...
+  // Decide whether this is a share mounted by the user or by someone
+  // else.
   // 
-  if ((importedShare->user().userId() == KUser(KUser::UseRealUserID).userId() &&
-       importedShare->group().groupId() == KUserGroup(KUser::UseRealUserID).groupId()) ||
-      importedShare->path().startsWith(Smb4KMountSettings::mountPrefix().path()) ||
-      importedShare->path().startsWith(QDir::homePath()) ||
-      importedShare->canonicalPath().startsWith(QDir(Smb4KMountSettings::mountPrefix().path()).canonicalPath()) ||
-      importedShare->canonicalPath().startsWith(QDir::home().canonicalPath()))
+  // Only use the path for that, since with the support of the CIFS 
+  // Unix Extensions the UID and GID might not be usable for the 
+  // determinations of foreign shares.
+  // 
+  if (importedShare->path().startsWith(Smb4KMountSettings::mountPrefix().path()) ||
+      importedShare->canonicalPath().startsWith(QDir(Smb4KMountSettings::mountPrefix().path()).canonicalPath()))
   {
-    // Same UID and GID
+    //
+    // The path is below the mount prefix
+    // 
+    importedShare->setForeign(false);
+  }
+  else if (importedShare->path().startsWith(QDir::homePath()) ||
+           importedShare->canonicalPath().startsWith(QDir::home().canonicalPath()))
+  {
+    //
+    // The path is below the home directory
+    // 
     importedShare->setForeign(false);
   }
   else
   {
+    //
+    // The path is elsewhere. This is most certainly a foreign share.
+    //
     importedShare->setForeign(true);
   }
   
