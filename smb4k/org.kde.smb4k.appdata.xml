@@ -334,6 +334,7 @@
       <li xml:lang="sv">Förhandsgranskning av innehållet i en delad resurs</li>
       <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
       <li xml:lang="x-test">xxPreview of the contents of a remote sharexx</li>
+      <li xml:lang="zh-TW">預覽遠端分享的內容</li>
       <li>Default login</li>
       <li xml:lang="bs">Početna prijava</li>
       <li xml:lang="ca">Inici de sessió predeterminat</li>
@@ -448,6 +449,7 @@
       <li xml:lang="sv">Stöd för avancerade monteringsalternativ</li>
       <li xml:lang="uk">Підтримка додаткових параметрів монтування</li>
       <li xml:lang="x-test">xxSupport of advanced mount optionsxx</li>
+      <li xml:lang="zh-TW">支援進階的掛載選項</li>
       <li>Support of printer shares</li>
       <li xml:lang="bs">Podrška za razmjene štampača</li>
       <li xml:lang="ca">Implementació per a les impressores compartides</li>
