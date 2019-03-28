@@ -627,7 +627,7 @@ void Smb4KShare::setShareIcon()
 
     if (isForeign())
     {
-      overlays << "task-attention";
+      overlays << "emblem-warning";
     }
 
     if (!isInaccessible())
