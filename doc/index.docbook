@@ -34,7 +34,7 @@
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
   <date>2018-03-09</date>
-  <releaseinfo>&smb4k; 2.9.80</releaseinfo><!--FIXME change releaseinfo number-->
+  <releaseinfo>&smb4k; 2.9.81</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
   </abstract>
