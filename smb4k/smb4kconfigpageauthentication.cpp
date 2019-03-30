@@ -33,14 +33,14 @@
 
 // Qt includes
 #include <QMouseEvent>
-#include <QCursor>
-#include <QMenu>
 #include <QHeaderView>
 #include <QListWidgetItem>
-#include <QLabel>
 #include <QCheckBox>
 #include <QGroupBox>
 #include <QGridLayout>
+#include <QPushButton>
+#include <QTableWidget>
+#include <QAction>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -103,36 +103,37 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   // 
   // The list view 
   // 
-  m_entries_widget = new QListWidget(walletEntriesEditor);
-  m_entries_widget->setDragDropMode(QListWidget::NoDragDrop);
-  m_entries_widget->setSelectionMode(QListWidget::SingleSelection);
-  m_entries_widget->setContextMenuPolicy(Qt::ActionsContextMenu);
-  m_entries_widget->viewport()->installEventFilter(this);
+  QListWidget *walletEntriesWidget = new QListWidget(walletEntriesEditor);
+  walletEntriesWidget->setObjectName("WalletEntriesWidget");
+  walletEntriesWidget->setDragDropMode(QListWidget::NoDragDrop);
+  walletEntriesWidget->setSelectionMode(QListWidget::SingleSelection);
+  walletEntriesWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
+  walletEntriesWidget->viewport()->installEventFilter(this);
 
   // Edit action
-  QAction *editAction = new QAction(KDE::icon("edit-rename"), i18n("Edit"), m_entries_widget);
+  QAction *editAction = new QAction(KDE::icon("edit-rename"), i18n("Edit"), walletEntriesWidget);
   editAction->setObjectName("EditAction");
   editAction->setEnabled(false);
   connect(editAction, SIGNAL(triggered(bool)), this, SLOT(slotEditClicked()));
-  m_entries_widget->addAction(editAction);
+  walletEntriesWidget->addAction(editAction);
   
   // Remove action
-  QAction *removeAction = new QAction(KDE::icon("edit-delete"), i18n("Remove"), m_entries_widget);
+  QAction *removeAction = new QAction(KDE::icon("edit-delete"), i18n("Remove"), walletEntriesWidget);
   removeAction->setObjectName("RemoveAction");
   removeAction->setEnabled(false);
   connect(removeAction, SIGNAL(triggered(bool)), this, SLOT(slotRemoveClicked()));
-  m_entries_widget->addAction(removeAction);
+  walletEntriesWidget->addAction(removeAction);
   
   // Clear action
-  QAction *clearAction = new QAction(KDE::icon("edit-clear-list"), i18n("Clear"), m_entries_widget);
+  QAction *clearAction = new QAction(KDE::icon("edit-clear-list"), i18n("Clear"), walletEntriesWidget);
   clearAction->setObjectName("ClearAction");
   clearAction->setEnabled(false);
   connect(clearAction, SIGNAL(triggered(bool)), this, SLOT(slotClearClicked()));
-  m_entries_widget->addAction(clearAction);  
+  walletEntriesWidget->addAction(clearAction);  
   
-  connect(m_entries_widget, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
+  connect(walletEntriesWidget, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
   
-  walletEntriesEditorLayout->addWidget(m_entries_widget, 0, 0, 7, 1, 0);
+  walletEntriesEditorLayout->addWidget(walletEntriesWidget, 0, 0, 7, 1, 0);
   
   // 
   // Load button
@@ -173,14 +174,15 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   QVBoxLayout *detailsBoxLayout = new QVBoxLayout(detailsBox);
   detailsBoxLayout->setSpacing(5);
   
-  m_details_widget = new QTableWidget(detailsBox);
-  m_details_widget->horizontalHeader()->setVisible(false);
-  m_details_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-  m_details_widget->verticalHeader()->setVisible(false);
-  m_details_widget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-  m_details_widget->viewport()->installEventFilter(this);
+  QTableWidget *detailsWidget = new QTableWidget(detailsBox);
+  detailsWidget->setObjectName("DetailsWidget");
+  detailsWidget->horizontalHeader()->setVisible(false);
+  detailsWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+  detailsWidget->verticalHeader()->setVisible(false);
+  detailsWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+  detailsWidget->viewport()->installEventFilter(this);
   
-  detailsBoxLayout->addWidget(m_details_widget, 0);
+  detailsBoxLayout->addWidget(detailsWidget, 0);
   
   walletEntriesEditorLayout->addWidget(detailsBox, 5, 1, 0);
   walletEntriesEditorLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Fixed, QSizePolicy::MinimumExpanding), 6, 1);
@@ -212,7 +214,7 @@ void Smb4KConfigPageAuthentication::insertWalletEntries(const QList<Smb4KAuthInf
   //
   // Insert the list of authentication information
   // 
-  m_entries_list = list;
+  m_entriesList = list;
   
   //
   // Reset the changed flag, since we are (re)loading the information
@@ -221,26 +223,32 @@ void Smb4KConfigPageAuthentication::insertWalletEntries(const QList<Smb4KAuthInf
   emit walletEntriesModified();
   
   //
-  // Now clear the list wirdget
+  // Get the list wirdget
   // 
-  m_entries_widget->clear();
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
+  
+  //
+  // Clear the list widget
+  // 
+  walletEntriesWidget->clear();
   
   //
   // Insert the authentication information entries into the
   // list widget
   // 
-  for (Smb4KAuthInfo *authInfo : m_entries_list)
+  for (Smb4KAuthInfo *authInfo : m_entriesList)
   {
     switch (authInfo->type())
     {
       case UnknownNetworkItem:
       {
-        (void) new QListWidgetItem(KDE::icon("dialog-password"), i18n("Default Login"), m_entries_widget);
+        (void) new QListWidgetItem(KDE::icon("dialog-password"), i18n("Default Login"), walletEntriesWidget);
         break;
       }
       default:
       {
-        (void) new QListWidgetItem(KDE::icon("dialog-password"), authInfo->displayString(), m_entries_widget);
+        (void) new QListWidgetItem(KDE::icon("dialog-password"), authInfo->displayString(), walletEntriesWidget);
         break;
       }
     }
@@ -249,7 +257,7 @@ void Smb4KConfigPageAuthentication::insertWalletEntries(const QList<Smb4KAuthInf
   //
   // Sort the entries
   // 
-  m_entries_widget->sortItems();
+  walletEntriesWidget->sortItems();
   
   //
   // Set the display flag to true
@@ -259,14 +267,22 @@ void Smb4KConfigPageAuthentication::insertWalletEntries(const QList<Smb4KAuthInf
   //
   // Enable buttons and actions
   // 
-  findChild<QPushButton *>("SaveButton")->setEnabled(m_entries_widget->count() != 0);
-  findChild<QAction *>("ClearAction")->setEnabled(m_entries_widget->count() != 0);
+  findChild<QPushButton *>("SaveButton")->setEnabled(walletEntriesWidget->count() != 0);
+  findChild<QAction *>("ClearAction")->setEnabled(walletEntriesWidget->count() != 0);
 }
 
 
 bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
 {
-  if (object == m_entries_widget->viewport())
+  //
+  // Get the list widget
+  // 
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
+  //
+  // Process the events in the list widget
+  // 
+  if (object == walletEntriesWidget->viewport())
   {
     // If the user clicked on the viewport of the entries view, clear 
     // the details widget and the "Details" button, if no item 
@@ -274,18 +290,18 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
     if (e->type() == QEvent::MouseButtonPress)
     {
       QMouseEvent *event = static_cast<QMouseEvent *>(e);
-      QPoint pos = m_entries_widget->mapFromGlobal(event->globalPos());
+      QPoint pos = walletEntriesWidget->mapFromGlobal(event->globalPos());
         
-      if (!m_entries_widget->itemAt(pos))
+      if (!walletEntriesWidget->itemAt(pos))
       {
         clearDetails();
-        m_entries_widget->clearSelection();
+        walletEntriesWidget->clearSelection();
         findChild<QAction *>("EditAction")->setEnabled(false);
         findChild<QAction *>("RemoveAction")->setEnabled(false);
       }
     }
     
-    return m_entries_widget->viewport()->eventFilter(object, e);
+    return walletEntriesWidget->viewport()->eventFilter(object, e);
   }
   
   return QWidget::eventFilter(object, e);
@@ -294,13 +310,23 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
 
 void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
 {
+  //
+  // Get the widgets
+  // 
+  QTableWidget *detailsWidget = findChild<QTableWidget *>("DetailsWidget");
+  KCollapsibleGroupBox *detailsGroupBox = findChild<KCollapsibleGroupBox *>("DetailsBox");
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
+  //
+  // Fill the details table widget with the information
+  // 
   switch (authInfo->type())
   {
     case Host:
     case Share:
     {
-      m_details_widget->setColumnCount(2);
-      m_details_widget->setRowCount(4);
+      detailsWidget->setColumnCount(2);
+      detailsWidget->setRowCount(4);
           
       QTableWidgetItem *entry_label = new QTableWidgetItem(i18n("Entry"));
       entry_label->setFlags(entry_label->flags() & Qt::ItemIsEditable);
@@ -322,21 +348,21 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
       password_label->setFlags(password_label->flags() & Qt::ItemIsEditable);
       password_label->setForeground(palette().text());
           
-      m_details_widget->setItem(0, 0, entry_label);
-      m_details_widget->setItem(0, 1, entry);
-      m_details_widget->setItem(1, 0, workgroup_label);
-      m_details_widget->setItem(1, 1, new QTableWidgetItem(authInfo->workgroupName()));
-      m_details_widget->setItem(2, 0, login_label);
-      m_details_widget->setItem(2, 1, new QTableWidgetItem(authInfo->userName()));
-      m_details_widget->setItem(3, 0, password_label);
-      m_details_widget->setItem(3, 1, new QTableWidgetItem(authInfo->password()));
+      detailsWidget->setItem(0, 0, entry_label);
+      detailsWidget->setItem(0, 1, entry);
+      detailsWidget->setItem(1, 0, workgroup_label);
+      detailsWidget->setItem(1, 1, new QTableWidgetItem(authInfo->workgroupName()));
+      detailsWidget->setItem(2, 0, login_label);
+      detailsWidget->setItem(2, 1, new QTableWidgetItem(authInfo->userName()));
+      detailsWidget->setItem(3, 0, password_label);
+      detailsWidget->setItem(3, 1, new QTableWidgetItem(authInfo->password()));
           
       break;
     }
     default:
     {
-      m_details_widget->setColumnCount(2);
-      m_details_widget->setRowCount(3);
+      detailsWidget->setColumnCount(2);
+      detailsWidget->setRowCount(3);
           
       QTableWidgetItem *entry_label = new QTableWidgetItem(i18n("Entry"));
       entry_label->setFlags(entry_label->flags() & Qt::ItemIsEditable);
@@ -354,12 +380,12 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
       password_label->setFlags(password_label->flags() & Qt::ItemIsEditable);
       password_label->setForeground(palette().text());
           
-      m_details_widget->setItem(0, 0, entry_label);
-      m_details_widget->setItem(0, 1, entry);
-      m_details_widget->setItem(1, 0, login_label);
-      m_details_widget->setItem(1, 1, new QTableWidgetItem(authInfo->userName()));
-      m_details_widget->setItem(2, 0, password_label);
-      m_details_widget->setItem(2, 1, new QTableWidgetItem(authInfo->password()));
+      detailsWidget->setItem(0, 0, entry_label);
+      detailsWidget->setItem(0, 1, entry);
+      detailsWidget->setItem(1, 0, login_label);
+      detailsWidget->setItem(1, 1, new QTableWidgetItem(authInfo->userName()));
+      detailsWidget->setItem(2, 0, password_label);
+      detailsWidget->setItem(2, 1, new QTableWidgetItem(authInfo->password()));
           
       break;
     }
@@ -368,34 +394,44 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
   //
   // Connect signals
   // 
-  connect(m_details_widget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));  
+  connect(detailsWidget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));  
   
   //
   // Enable the details box
   // 
-  findChild<KCollapsibleGroupBox *>("DetailsBox")->setEnabled(!m_entries_widget->selectedItems().isEmpty());
+  detailsGroupBox->setEnabled(!walletEntriesWidget->selectedItems().isEmpty());
 }
 
 
 void Smb4KConfigPageAuthentication::clearDetails()
 {
   //
+  // Get the widgets
+  // 
+  QTableWidget *detailsWidget = findChild<QTableWidget *>("DetailsWidget");
+  KCollapsibleGroupBox *detailsGroupBox = findChild<KCollapsibleGroupBox *>("DetailsBox");
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
+  //
   // Disconnect signals
   // 
-  disconnect(m_details_widget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));
+  disconnect(detailsWidget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));
   
   //
   // Collapse the details box and disable it.
   // 
-  findChild<KCollapsibleGroupBox *>("DetailsBox")->setExpanded(false);
-  findChild<KCollapsibleGroupBox *>("DetailsBox")->setEnabled(!m_entries_widget->selectedItems().isEmpty());
+  detailsGroupBox->setExpanded(false);
+  detailsGroupBox->setEnabled(!walletEntriesWidget->selectedItems().isEmpty());
   
   // 
   // Clear the table widget
   // 
-  m_details_widget->clear();
-  m_details_widget->setRowCount(0);
-  m_details_widget->setColumnCount(0);
+  if (detailsWidget->rowCount() != 0 && detailsWidget->columnCount() != 0)
+  {
+    detailsWidget->clear();
+    detailsWidget->setRowCount(0);
+    detailsWidget->setColumnCount(0);
+  }
 }
 
 
@@ -421,6 +457,11 @@ void Smb4KConfigPageAuthentication::slotDefaultLoginToggled(bool checked)
 
 void Smb4KConfigPageAuthentication::slotItemSelectionChanged()
 {
+  //
+  // Get the list widget
+  // 
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
   // 
   // Clear details widget
   // 
@@ -430,12 +471,12 @@ void Smb4KConfigPageAuthentication::slotItemSelectionChanged()
   // Get the authentication information and load its
   // details into the details widget
   // 
-  if (m_entries_widget->currentItem())
+  if (walletEntriesWidget->currentItem())
   {
-    for (Smb4KAuthInfo *authInfo : m_entries_list)
+    for (Smb4KAuthInfo *authInfo : m_entriesList)
     {
-      if (m_entries_widget->currentItem()->text() == authInfo->displayString() ||
-          (m_entries_widget->currentItem()->text() == i18n("Default Login") && authInfo->type() == UnknownNetworkItem))
+      if (walletEntriesWidget->currentItem()->text() == authInfo->displayString() ||
+          (walletEntriesWidget->currentItem()->text() == i18n("Default Login") && authInfo->type() == UnknownNetworkItem))
       {
         loadDetails(authInfo);
         break;
@@ -451,10 +492,18 @@ void Smb4KConfigPageAuthentication::slotItemSelectionChanged()
 
 void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
 {
-  for (Smb4KAuthInfo *authInfo : m_entries_list)
+  //
+  // Get the widget
+  // 
+  QTableWidget *detailsWidget = findChild<QTableWidget *>("DetailsWidget");
+  
+  //
+  // Find the right authentication information and pass the modifications
+  // 
+  for (Smb4KAuthInfo *authInfo : m_entriesList)
   {
-    if (QString::compare(m_details_widget->item(0, 1)->text(), authInfo->displayString()) == 0 ||
-        (QString::compare(m_details_widget->item(0, 1)->text(), i18n("Default Login")) == 0 && authInfo->type() == UnknownNetworkItem))
+    if (QString::compare(detailsWidget->item(0, 1)->text(), authInfo->displayString()) == 0 ||
+        (QString::compare(detailsWidget->item(0, 1)->text(), i18n("Default Login")) == 0 && authInfo->type() == UnknownNetworkItem))
     {
       switch (authInfo->type())
       {
@@ -467,17 +516,17 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
             {
               case 1: // Workgroup
               {
-                authInfo->setWorkgroupName(m_details_widget->item(row, column)->text());
+                authInfo->setWorkgroupName(detailsWidget->item(row, column)->text());
                 break;
               }
               case 2: // Login
               {
-                authInfo->setUserName(m_details_widget->item(row, column)->text());
+                authInfo->setUserName(detailsWidget->item(row, column)->text());
                 break;
               }
               case 3: // Password
               {
-                authInfo->setPassword(m_details_widget->item(row, column)->text());
+                authInfo->setPassword(detailsWidget->item(row, column)->text());
                 break;
               }
               default:
@@ -497,12 +546,12 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
             {
               case 1: // Login
               {
-                authInfo->setUserName(m_details_widget->item(row, column)->text());
+                authInfo->setUserName(detailsWidget->item(row, column)->text());
                 break;
               }
               case 2: // Password
               {
-                authInfo->setPassword(m_details_widget->item(row, column)->text());
+                authInfo->setPassword(detailsWidget->item(row, column)->text());
                 break;
               }
               default:
@@ -519,7 +568,11 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
       break;
     }
   }
-    
+  
+  //
+  // Tell the program that the authentication information may be changed
+  // and emit the appropriate signal
+  // 
   m_maybe_changed = true;
   emit walletEntriesModified();
 }
@@ -527,15 +580,21 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
 
 void Smb4KConfigPageAuthentication::slotEditClicked()
 {
-  if (m_entries_widget->currentItem())
+  //
+  // Get the widgets
+  // 
+  KCollapsibleGroupBox *detailsGroupBox = findChild<KCollapsibleGroupBox *>("DetailsBox");
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
+  if (walletEntriesWidget->currentItem())
   {
     //
     // Since the details have been loaded to the details widget already
     // by slotItemSelectionChanged(), only open the details widget here.
     // 
-    if (!findChild<KCollapsibleGroupBox *>("DetailsBox")->isExpanded())
+    if (!detailsGroupBox->isExpanded())
     {
-      findChild<KCollapsibleGroupBox *>("DetailsBox")->setExpanded(true);
+      detailsGroupBox->setExpanded(true);
     }
   }
 }
@@ -544,18 +603,25 @@ void Smb4KConfigPageAuthentication::slotEditClicked()
 
 void Smb4KConfigPageAuthentication::slotRemoveClicked()
 {
-  if ((m_details_widget->rowCount() != 0 && m_details_widget->columnCount() != 0) &&
-       QString::compare(m_entries_widget->currentItem()->text(), m_details_widget->item(0, 1)->text()) == 0)
-  {
-    clearDetails();
-  }
+  //
+  // Get the list widget
+  // 
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
+  //
+  // Clear the details widget
+  // 
+  clearDetails();
 
-  for (int i = 0; i < m_entries_list.size(); ++i)
+  // 
+  // Remove the appropriate entry from the list of authentication information
+  // 
+  for (int i = 0; i < m_entriesList.size(); ++i)
   {
-    if (QString::compare(m_entries_widget->currentItem()->text(), m_entries_list.at(i)->displayString()) == 0 ||
-        (QString::compare(m_entries_widget->currentItem()->text(), i18n("Default Login")) == 0 && m_entries_list.at(i)->type() == UnknownNetworkItem))
+    if (QString::compare(walletEntriesWidget->currentItem()->text(), m_entriesList.at(i)->displayString()) == 0 ||
+        (QString::compare(walletEntriesWidget->currentItem()->text(), i18n("Default Login")) == 0 && m_entriesList.at(i)->type() == UnknownNetworkItem))
     {
-      switch (m_entries_list.at(i)->type())
+      switch (m_entriesList.at(i)->type())
       {
         case UnknownNetworkItem:
         {
@@ -569,7 +635,7 @@ void Smb4KConfigPageAuthentication::slotRemoveClicked()
         }
       }
       
-      delete m_entries_list.takeAt(i);
+      delete m_entriesList.takeAt(i);
       break;
     }
     else
@@ -578,13 +644,20 @@ void Smb4KConfigPageAuthentication::slotRemoveClicked()
     }
   }
 
-  delete m_entries_widget->currentItem();
+  //
+  // Remove the current item
+  // 
+  delete walletEntriesWidget->currentItem();
   
   //
   // Enable actions
   // 
-  findChild<QAction *>("ClearAction")->setEnabled((m_entries_widget->count() != 0));
+  findChild<QAction *>("ClearAction")->setEnabled((walletEntriesWidget->count() != 0));
   
+  //
+  // Tell the program that the authentication information may be changed
+  // and emit the appropriate signal
+  // 
   m_maybe_changed = true;
   emit walletEntriesModified();
 }
@@ -592,16 +665,30 @@ void Smb4KConfigPageAuthentication::slotRemoveClicked()
 
 void Smb4KConfigPageAuthentication::slotClearClicked()
 {
+  //
+  // Get the list widget
+  // 
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
+  //
+  // Clear the details widget
+  // 
   clearDetails();
   
-  while (m_entries_widget->count() != 0)
+  //
+  // Remove all entries from the view
+  // 
+  while (walletEntriesWidget->count() != 0)
   {
-    delete m_entries_widget->item(0);
+    delete walletEntriesWidget->item(0);
   }
   
-  while(!m_entries_list.isEmpty())
+  //
+  // Remove all entries from the list off authentication information
+  // 
+  while(!m_entriesList.isEmpty())
   {
-    delete m_entries_list.takeFirst();
+    delete m_entriesList.takeFirst();
   }
   
   //
@@ -609,9 +696,15 @@ void Smb4KConfigPageAuthentication::slotClearClicked()
   // 
   findChild<QAction *>("ClearAction")->setEnabled(false);
   
-  QCheckBox *default_login = findChild<QCheckBox *>("kcfg_UseDefaultLogin");
-  default_login->setChecked(false);
+  //
+  // Uncheck the Default Login checkbox
+  // 
+  findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
   
+  //
+  // Tell the program that the authentication information may be changed
+  // and emit the appropriate signal
+  // 
   m_maybe_changed = true;
   emit walletEntriesModified();
 }
@@ -620,17 +713,26 @@ void Smb4KConfigPageAuthentication::slotClearClicked()
 void Smb4KConfigPageAuthentication::slotSaveClicked(bool /*checked*/)
 {
   //
+  // Get the list widget
+  // 
+  QListWidget *walletEntriesWidget = findChild<QListWidget *>("WalletEntriesWidget");
+  
+  //
   // Disable buttons
   // 
   findChild<QAction *>("EditAction")->setEnabled(false);
   findChild<QAction *>("RemoveAction")->setEnabled(false);
-  findChild<QAction *>("ClearAction")->setEnabled((m_entries_widget->count() != 0));
+  findChild<QAction *>("ClearAction")->setEnabled((walletEntriesWidget->count() != 0));
   
   //
   // Clear the selection in the list view
   // 
-  m_entries_widget->clearSelection();
-  
+  walletEntriesWidget->clearSelection();
+ 
+  //
+  // Tell the program that the authentication information may be changed
+  // and emit the appropriate signal
+  // 
   m_maybe_changed = false;
   emit walletEntriesModified();
 }

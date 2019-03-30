@@ -31,15 +31,7 @@
 
 // Qt includes
 #include <QList>
-#include <QTableWidget>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QTabWidget>
 #include <QListWidget>
-
-// KDE includes
-#include <KWidgetsAddons/KActionMenu>
-#include <KXmlGui/KActionCollection>
 
 /**
  * This is the configuration tab for the authentication settings
@@ -80,7 +72,7 @@ class Smb4KConfigPageAuthentication : public QWidget
      * 
      * @returns the list of entries.
      */
-    const QList<Smb4KAuthInfo *> &getWalletEntries() { return m_entries_list; }
+    const QList<Smb4KAuthInfo *> &getWalletEntries() { return m_entriesList; }
     
     /**
      * Returns TRUE if the wallet entries are displayed and FALSE otherwise.
@@ -187,9 +179,7 @@ class Smb4KConfigPageAuthentication : public QWidget
   private:
     void loadDetails(Smb4KAuthInfo *authInfo);
     void clearDetails();
-    QListWidget *m_entries_widget;
-    QTableWidget *m_details_widget;
-    QList<Smb4KAuthInfo *> m_entries_list;
+    QList<Smb4KAuthInfo *> m_entriesList;
     bool m_entries_displayed;
     bool m_maybe_changed;
 };
