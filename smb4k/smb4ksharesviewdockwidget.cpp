@@ -131,6 +131,11 @@ void Smb4KSharesViewDockWidget::loadSettings()
       break;
     }
   }
+  
+  //
+  // Adjust the actions if needed
+  // 
+  slotItemSelectionChanged();
 }
 
 

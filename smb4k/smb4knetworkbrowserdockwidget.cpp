@@ -327,6 +327,11 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
     // we need here.
     slotShareMounted(share);
   }
+  
+  //
+  // Adjust the actions, if needed
+  // 
+  slotItemSelectionChanged();
 }
 
 
