@@ -133,9 +133,38 @@ void Smb4KSharesViewDockWidget::loadSettings()
   }
   
   //
-  // Adjust the actions if needed
+  // Adjust the unmount actions if needed
   // 
-  slotItemSelectionChanged();
+  if (!m_sharesView->selectedItems().isEmpty())
+  {
+    QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
+    
+    if (selectedItems.size() == 1)
+    {
+      Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
+      bool syncRunning = Smb4KSynchronizer::self()->isRunning(item->shareItem());
+
+      m_actionCollection->action("unmount_action")->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
+    }
+    else if (selectedItems.size() > 1)
+    {
+      int foreign = 0;
+      
+      for (QListWidgetItem *selectedItem : selectedItems)
+      {
+        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
+        
+        if (item && item->shareItem()->isForeign())
+        {
+          foreign++;
+        }
+      }
+      
+      m_actionCollection->action("unmount_action")->setEnabled(((selectedItems.size() > foreign) || Smb4KMountSettings::unmountForeignShares()));
+    }
+  }
+
+  actionCollection()->action("unmount_all_action")->setEnabled(((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));
 }
 
 
@@ -286,7 +315,6 @@ void Smb4KSharesViewDockWidget::setupActions()
 
 void Smb4KSharesViewDockWidget::slotContextMenuRequested(const QPoint& pos)
 {
-  qDebug() << "Context menu";
   m_contextMenu->menu()->popup(m_sharesView->viewport()->mapToGlobal(pos));
 }
 
