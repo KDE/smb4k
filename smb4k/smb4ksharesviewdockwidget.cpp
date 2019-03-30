@@ -142,8 +142,6 @@ void Smb4KSharesViewDockWidget::loadSettings()
     if (selectedItems.size() == 1)
     {
       Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
-      bool syncRunning = Smb4KSynchronizer::self()->isRunning(item->shareItem());
-
       m_actionCollection->action("unmount_action")->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
     }
     else if (selectedItems.size() > 1)
