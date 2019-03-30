@@ -237,6 +237,7 @@
         <varlistentry>
           <term>
             <menuchoice>
+              <shortcut><keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo></shortcut>
               <guimenuitem>Add Bookmark</guimenuitem>
             </menuchoice>
           </term>
@@ -535,7 +536,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>You can switch between the two views by selecting either the appropriate entry in the <guimenuitem>View Modes</guimenuitem> from the <link linkend="mainwindow_overview"><guimenu>Shares View</guimenu></link> menu of the main window or in the shares view's <link linkend="shares_view_actions_popup_menu">popup menu</link>.</para>
+      <para>You can switch between the two views by selecting either the appropriate entry in the <guimenuitem>View Modes</guimenuitem> submenu from the <link linkend="mainwindow_overview"><guimenu>Shares View</guimenu></link> menu of the main window or in the shares view's <link linkend="shares_view_actions_popup_menu">popup menu</link>.</para>
       <para>By default, only your own mounts are displayed. However, you can tell &smb4k; to show all mounts by altering the <link linkend="configuration_page_mounting_basic_settings_behavior">respective settings</link>.</para>
     </sect2>
 
@@ -603,11 +604,12 @@
         <varlistentry>
           <term>
             <menuchoice>
+              <shortcut><keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo></shortcut>
               <guimenuitem>Add Bookmark</guimenuitem>
             </menuchoice>
           </term>
           <listitem>
-            <para>Add a bookmark to the currently selected mounted share. This action is disabled if no share is selected.</para>
+            <para>Add a bookmark to the currently selected mounted shares. This action is disabled if no share is selected.</para>
             <para>Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
           </listitem>
         </varlistentry>
@@ -703,7 +705,7 @@
         </mediaobject>
       </screenshot>
       <itemizedlist>
-        <listitem><para>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open it or to do synchronization with it. You will only be able to unmount it or add a bookmark.</para></listitem>
+        <listitem><para>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open it or synchronize it. You will only be able to unmount it or add a bookmark.</para></listitem>
         <listitem><para>The central icon indicates that the share is online, accessible, and owned by you. You may perform all available actions on it.</para></listitem>
         <listitem><para>All shares marked with a warning sign like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_page_mounting_basic_settings_behavior">change this behavior</link>, too.</para></listitem>
       </itemizedlist>
@@ -1144,7 +1146,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Add one or several bookmarks. At least one share has to be selected to enable this action.</para>
+            <para>Add bookmarks to the selected shares. At least one share has to be selected to enable this action.</para>
           </listitem>
         </varlistentry>
       </variablelist>
