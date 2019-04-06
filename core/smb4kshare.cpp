@@ -41,6 +41,7 @@
 #include <KIOCore/KIO/Global>
 #include <KIconThemes/KIconLoader>
 #include <KIOCore/KMountPoint>
+#include "kiconthemes_version.h"
 
 
 class Smb4KSharePrivate
@@ -603,14 +604,9 @@ QString Smb4KShare::password() const
 }
 
 
+#if KICONTHEMES_VERSION < QT_VERSION_CHECK(5,52,0)
 void Smb4KShare::setShareIcon()
 {
-  // 
-  // We have three base icons: 
-  // - remote folder
-  // - locked folder
-  // - printer
-  //
   if (!isPrinter())
   {
     // Overlays
@@ -644,6 +640,43 @@ void Smb4KShare::setShareIcon()
     *pIcon = KDE::icon("printer");
   }
 }
+#else
+void Smb4KShare::setShareIcon()
+{
+  if (!isPrinter())
+  {
+    // Overlays
+    QStringList overlays;
+    
+    if (isMounted())
+    {
+      if (isForeign())
+      {
+        overlays << "emblem-warning";
+      }
+      else
+      {
+        overlays << "";
+      }
+      
+      overlays << "emblem-mounted";
+    }
+
+    if (!isInaccessible())
+    {
+      *pIcon = KDE::icon("folder-network", overlays);
+    }
+    else
+    {
+      *pIcon = KDE::icon("folder-locked", overlays);
+    }
+  }
+  else
+  {
+    *pIcon = KDE::icon("printer");
+  }
+}
+#endif
 
 
 void Smb4KShare::update(Smb4KShare* share)
