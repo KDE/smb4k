@@ -33,7 +33,7 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2018-03-09</date>
+  <date>2019-04-07</date>
   <releaseinfo>&smb4k; 2.9.81</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
@@ -833,7 +833,7 @@
     <sect2 id="systemtray_location_usage">
       <title>Location and Usage</title>
 
-      <para>When &smb4k; is started, an icon appears in your system tray.</para>
+      <para>When &smb4k; is started, a status icon appears in your system tray. Its status is set to active if workgroups or domains were discovered in your network neighborhood. Otherwise it is set to inactive.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the system tray widget</screeninfo>
@@ -843,7 +843,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>By left clicking the icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
+      <para>By left clicking the (active) icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
     </sect2>
 
 <!-- 
