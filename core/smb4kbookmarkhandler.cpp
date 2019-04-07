@@ -308,7 +308,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
       xmlWriter.setAutoFormatting(true);
       xmlWriter.writeStartDocument();
       xmlWriter.writeStartElement("bookmarks");
-      xmlWriter.writeAttribute("version", "2");
+      xmlWriter.writeAttribute("version", "2.0");
 
       for (const BookmarkPtr &bookmark : d->bookmarks)
       {
