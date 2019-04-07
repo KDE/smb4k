@@ -320,7 +320,7 @@ void Smb4KProfileManager::slotConfigChanged()
     }
     
     // Now, launch the migration dialog.
-    QPointer<Smb4KProfileMigrationDialog> dlg = new Smb4KProfileMigrationDialog(from, to, 0);
+    QPointer<Smb4KProfileMigrationDialog> dlg = new Smb4KProfileMigrationDialog(from, to, QApplication::activeWindow());
           
     if (dlg->exec() == QDialog::Accepted)
     {
