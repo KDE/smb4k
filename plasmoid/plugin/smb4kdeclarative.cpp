@@ -50,8 +50,6 @@
 #include <QDebug>
 #include <QTest>
 
-using namespace Smb4KGlobal;
-
 
 Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
 : QObject(parent), d(new Smb4KDeclarativePrivate)
@@ -177,15 +175,15 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
   {
     switch (object->type())
     {
-      case Network:
+      case Smb4KNetworkObject::Network:
       {
         Smb4KClient::self()->lookupDomains();
         break;
       }
-      case Workgroup:
+      case Smb4KNetworkObject::Workgroup:
       {
         // Check if the workgroup is known.
-        WorkgroupPtr workgroup = findWorkgroup(object->url().host().toUpper());
+        WorkgroupPtr workgroup = Smb4KGlobal::findWorkgroup(object->url().host().toUpper());
         
         if (workgroup)
         {
@@ -194,10 +192,10 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
         
         break;
       }
-      case Host:
+      case Smb4KNetworkObject::Host:
       {
         // Check if the host is known.
-        HostPtr host = findHost(object->url().host().toUpper());
+        HostPtr host = Smb4KGlobal::findHost(object->url().host().toUpper());
         
         if (host)
         {
@@ -206,7 +204,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
         
         break;
       }
-      case Share:
+      case Smb4KNetworkObject::Share:
       {
         break;
       }
@@ -233,7 +231,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
   {  
     switch (type)
     {
-      case Workgroup:
+      case Smb4KNetworkObject::Workgroup:
       {
         for (Smb4KNetworkObject *obj : d->workgroupObjects)
         {
@@ -249,7 +247,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
         }
         break;
       }
-      case Host:
+      case Smb4KNetworkObject::Host:
       {
         for (Smb4KNetworkObject *obj : d->hostObjects)
         {
@@ -265,7 +263,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
         }
         break;
       }
-      case Share:
+      case Smb4KNetworkObject::Share:
       {
         for (Smb4KNetworkObject *obj : d->shareObjects)
         {
@@ -300,7 +298,7 @@ void Smb4KDeclarative::openMountDialog()
 
 void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
 {
-  if (object && object->type() == Share)
+  if (object && object->type() == Smb4KNetworkObject::Share)
   {
     QString shareName = object->url().path();
       
@@ -309,7 +307,7 @@ void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
       shareName = shareName.mid(1, -1);
     }
       
-    SharePtr share = findShare(object->url(), object->workgroupName());
+    SharePtr share = Smb4KGlobal::findShare(object->url(), object->workgroupName());
     
     if (share)
     {
@@ -344,7 +342,7 @@ void Smb4KDeclarative::unmount(Smb4KNetworkObject *object)
   {
     if (object->mountpoint().isValid())
     {
-      SharePtr share = findShareByPath(object->mountpoint().path());
+      SharePtr share = Smb4KGlobal::findShareByPath(object->mountpoint().path());
       
       if (share)
       {
@@ -392,9 +390,9 @@ Smb4KNetworkObject* Smb4KDeclarative::findMountedShare(const QUrl& url, bool exa
 
 void Smb4KDeclarative::print(Smb4KNetworkObject* object)
 {
-  if (object && object->type() == Share)
+  if (object && object->type() == Smb4KNetworkObject::Share)
   {
-    SharePtr printer = findShare("//"+object->hostName()+"/"+object->shareName(), object->workgroupName());
+    SharePtr printer = Smb4KGlobal::findShare(object->url(), object->workgroupName());
     
     if (printer)
     {
@@ -411,7 +409,7 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
     QList<SharePtr> shares; 
     
     // First, search the list of shares gathered by the scanner.
-    for (const SharePtr &share : sharesList())
+    for (const SharePtr &share : Smb4KGlobal::sharesList())
     {
       if (share->url() == object->url())
       {
@@ -427,7 +425,7 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
     // Second, if the list is still empty, try the list of mounted shares.
     if (shares.isEmpty())
     {
-      for (const SharePtr &mountedShare : mountedSharesList())
+      for (const SharePtr &mountedShare : Smb4KGlobal::mountedSharesList())
       {
         if (mountedShare->url() == object->url())
         {
@@ -444,6 +442,11 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject* object)
     // Now add the share.
     if (!shares.isEmpty())
     {
+      for (const SharePtr &p : shares)
+      {
+        qDebug() << p->url();
+      }
+      
       Smb4KBookmarkHandler::self()->addBookmarks(shares);
     }
   }
@@ -475,9 +478,9 @@ void Smb4KDeclarative::editBookmarks()
 
 void Smb4KDeclarative::synchronize(Smb4KNetworkObject* object)
 {
-  if (object && object->type() == Share)
+  if (object && object->type() == Smb4KNetworkObject::Share)
   {
-    for (const SharePtr &share : mountedSharesList())
+    for (const SharePtr &share : Smb4KGlobal::mountedSharesList())
     {
       if (share->url() == object->url())
       {
@@ -494,9 +497,9 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
   {
     switch (object->type())
     {
-      case Host:
+      case Smb4KNetworkObject::Host:
       {
-        for (const HostPtr &host : hostsList())
+        for (const HostPtr &host : Smb4KGlobal::hostsList())
         {
           if (host->url() == object->url())
           {
@@ -510,9 +513,9 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
         }
         break;
       }
-      case Share:
+      case Smb4KNetworkObject::Share:
       {
-        for (const SharePtr &share : sharesList())
+        for (const SharePtr &share : Smb4KGlobal::sharesList())
         {
           if (share->url() == object->url())
           {
@@ -594,10 +597,9 @@ bool Smb4KDeclarative::profileUsage() const
 
 void Smb4KDeclarative::preview(Smb4KNetworkObject* object)
 {
-  if (object->type() == Share)
+  if (object->type() == Smb4KNetworkObject::Share)
   {
-    QString unc = object->url().toString(QUrl::RemoveScheme|QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash);
-    SharePtr share = findShare(unc, object->workgroupName());
+    SharePtr share = Smb4KGlobal::findShare(object->url(), object->workgroupName());
     
     if (share)
     {
@@ -616,7 +618,7 @@ void Smb4KDeclarative::slotWorkgroupsListChanged()
     delete d->workgroupObjects.takeFirst();
   }
 
-  for (const WorkgroupPtr &workgroup : workgroupsList())
+  for (const WorkgroupPtr &workgroup : Smb4KGlobal::workgroupsList())
   {
     d->workgroupObjects << new Smb4KNetworkObject(workgroup.data());
   }
@@ -633,7 +635,7 @@ void Smb4KDeclarative::slotHostsListChanged()
     delete d->hostObjects.takeFirst();
   }
   
-  for (const HostPtr &host : hostsList())
+  for (const HostPtr &host : Smb4KGlobal::hostsList())
   {
     d->hostObjects << new Smb4KNetworkObject(host.data());
   }
@@ -650,7 +652,7 @@ void Smb4KDeclarative::slotSharesListChanged()
     delete d->shareObjects.takeFirst();
   }
 
-  for (const SharePtr &share : sharesList())
+  for (const SharePtr &share : Smb4KGlobal::sharesList())
   {
     d->shareObjects << new Smb4KNetworkObject(share.data());
   }
@@ -667,7 +669,7 @@ void Smb4KDeclarative::slotMountedSharesListChanged()
     delete d->mountedObjects.takeFirst();
   }
   
-  for (const SharePtr &mountedShare : mountedSharesList())
+  for (const SharePtr &mountedShare : Smb4KGlobal::mountedSharesList())
   {
     d->mountedObjects << new Smb4KNetworkObject(mountedShare.data());
   }

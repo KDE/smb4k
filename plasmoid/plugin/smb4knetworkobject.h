@@ -43,8 +43,6 @@
 // forward declaration
 class Smb4KNetworkObjectPrivate;
 
-using namespace Smb4KGlobal;
-
 /**
  * This class derives from QObject and makes the main functions of the 
  * network items Smb4KWorkgroup, Smb4KHost, and Smb4KShare available. Its 
@@ -58,6 +56,7 @@ using namespace Smb4KGlobal;
 class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
 {
   Q_OBJECT
+  
   Q_PROPERTY(NetworkItem type READ type WRITE setType NOTIFY changed)
   Q_PROPERTY(NetworkItem parentType READ parentType CONSTANT)
   Q_PROPERTY(QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed)
@@ -73,11 +72,21 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY(bool isMasterBrowser READ isMasterBrowser WRITE setMasterBrowser NOTIFY changed)
   Q_PROPERTY(bool isInaccessible READ isInaccessible WRITE setInaccessible NOTIFY changed)
   
-  Q_ENUM(NetworkItem)
-  
   friend class Smb4KNetworkObjectPrivate;
   
   public:
+    /**
+     * NetworkItem enumeration. Used to make the property system happy.
+     * Assigns the values of Smb4KGlobal::NetworkItem to its representatives.
+     */
+    enum NetworkItem {
+      Network = Smb4KGlobal::Network,
+      Workgroup = Smb4KGlobal::Workgroup,
+      Host = Smb4KGlobal::Host,
+      Share = Smb4KGlobal::Share,
+      Unknown = Smb4KGlobal::UnknownNetworkItem };
+    Q_ENUM(NetworkItem)
+    
     /**
      * Constructor for a workgroup.
      */

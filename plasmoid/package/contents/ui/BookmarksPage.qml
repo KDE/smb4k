@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2017-2018 by A. Reinholdt                               *
+ *   Copyright (C) 2017-2019 by A. Reinholdt                               *
  *                 <alexander.reinholdt@kdemail.net>                       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,13 +28,6 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 
 PlasmaComponents.Page {
   id: bookmarksPage
-  
-  //
-  // Bookmark editor
-  //
-  BookmarkEditor {
-    id: editor
-  }
   
   //
   // Tool bar
@@ -207,6 +200,9 @@ PlasmaComponents.Page {
       }
       
       getBookmarks(object.groupName)
+      
+      // Set the current item to 0
+      bookmarksListView.currentIndex = 0
     }
     else {
       iface.mount(object.url)
