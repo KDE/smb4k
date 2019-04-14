@@ -43,6 +43,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QDialogButtonBox>
+#include <QWindow>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -59,11 +60,12 @@ Smb4KMountDialog::Smb4KMountDialog(const SharePtr &share, QWidget *parent)
   setWindowTitle(i18n("Mount Share"));
   
   setupView();
-
-  setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
+  
+  create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "MountDialog");
-  KWindowConfig::saveWindowSize(windowHandle(), group);
+  KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size()); // workaround for QTBUG-40584
 
   m_share_input->completionObject()->setItems(group.readEntry("ShareNameCompletion", QStringList()));
   m_ip_input->completionObject()->setItems(group.readEntry("IPAddressCompletion", QStringList()));

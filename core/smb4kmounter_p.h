@@ -53,8 +53,8 @@ class Smb4KMountDialog : public QDialog
      *
      * @param parent      The parent widget
      */
-    explicit Smb4KMountDialog(const SharePtr &share,
-                              QWidget *parent = 0);
+    explicit Smb4KMountDialog(const SharePtr &share, QWidget *parent = 0);
+    
     /**
      * The destructor.
      */

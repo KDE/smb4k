@@ -136,12 +136,9 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
     //
     // Process homes shares
     //
-    if (share->isHomesShare())
+    if (share->isHomesShare() && !Smb4KHomesSharesHandler::self()->specifyUser(share, true))
     {
-      if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true))
-      {
-        continue;
-      }
+      continue;
     }
     
     //

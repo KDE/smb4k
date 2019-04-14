@@ -49,6 +49,7 @@
 #include <QDragMoveEvent>
 #include <QDragEnterEvent>
 #include <QDragLeaveEvent>
+#include <QWindow>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -65,8 +66,12 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks, co
   setupView();
   loadLists(bookmarks, groups);
 
+  create();
+  
   KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
   KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  
   m_label_edit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
   m_group_combo->completionObject()->setItems(group.readEntry("GroupCompletion", m_groups));
 
@@ -151,8 +156,6 @@ void Smb4KBookmarkDialog::setupView()
   layout->addWidget(m_widget, 0);
   layout->addWidget(m_editors, 0);
   layout->addWidget(buttonBox, 0);
-
-  setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
 
   //
   // Connections
@@ -336,15 +339,14 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QW
   loadBookmarks();
 
   //
-  // Set the editor's minimum width
-  // 
-  setMinimumWidth(sizeHint().height() > sizeHint().width() ? sizeHint().height() : sizeHint().width());
-
-  //
   // Load some other settings
-  // 
+  //
+  create();
+  
   KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
   KWindowConfig::restoreWindowSize(windowHandle(), group);
+  resize(windowHandle()->size());
+  
   m_label_edit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
   m_login_edit->completionObject()->setItems(group.readEntry("LoginCompletion", QStringList()));
   m_ip_edit->completionObject()->setItems(group.readEntry("IPCompletion", QStringList()));
