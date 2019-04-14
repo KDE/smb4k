@@ -730,18 +730,32 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(const SharePtr &share, QW
   layout->addWidget(m_destination, 2, 1, 0);
   layout->addWidget(buttonBox, 3, 0, 1, 2, 0);
 
+  // 
   // Connections
+  // 
   connect(m_cancel_button, SIGNAL(clicked()), SLOT(slotCancelClicked()));
   connect(m_synchronize_button, SIGNAL(clicked()), SLOT(slotSynchronizeClicked()));
   connect(m_swap_button, SIGNAL(clicked()), SLOT(slotSwapPathsClicked()));
 
-  setMinimumSize((sizeHint().width() > 350 ? sizeHint().width() : 350), sizeHint().height());
-  
+  //
+  // Set the dialog size
+  // 
   create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "SynchronizationDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  QSize dialogSize;
+  
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584  
 }
 
 

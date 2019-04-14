@@ -146,13 +146,24 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
   connect(cancelButton, SIGNAL(clicked()), SLOT(reject()));
 
   //
-  // Load settings
+  // Set the dialog size
   // 
   create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "CustomOptionsDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  QSize dialogSize;
+  
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584
   
   //
   // Enable/disable buttons

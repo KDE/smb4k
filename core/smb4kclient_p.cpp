@@ -1496,8 +1496,19 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr& share, QWidget* parent)
   create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  QSize dialogSize;
+  
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584
 
   //
   // Start the preview
@@ -1916,8 +1927,19 @@ Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr& share, QWidget* parent)
   create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  QSize dialogSize;
+  
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584
   
   //
   // Set the buttons

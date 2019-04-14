@@ -61,20 +61,50 @@
 Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks, const QStringList &groups, QWidget *parent)
 : QDialog(parent)
 {
+  //
+  // Set the window title
+  // 
   setWindowTitle(i18n("Add Bookmarks"));
 
+  //
+  // Setup the view
+  // 
   setupView();
+  
+  //
+  // Load the list of bookmarks and groups
+  // 
   loadLists(bookmarks, groups);
 
+  //
+  // Set the dialog size
+  // 
   create();
-  
+
   KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  QSize dialogSize;
   
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584
+
+  //
+  // Fill the completion objects
+  // 
   m_label_edit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
   m_group_combo->completionObject()->setItems(group.readEntry("GroupCompletion", m_groups));
 
+  //
+  // Connections
+  // 
   connect(KIconLoader::global(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)));
 }
 
@@ -339,14 +369,28 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QW
   loadBookmarks();
 
   //
-  // Load some other settings
-  //
+  // Set the dialog size
+  // 
   create();
-  
+
   KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size());
+  QSize dialogSize;
   
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584
+  
+  //
+  // Fill the completion objects
+  // 
   m_label_edit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
   m_login_edit->completionObject()->setItems(group.readEntry("LoginCompletion", QStringList()));
   m_ip_edit->completionObject()->setItems(group.readEntry("IPCompletion", QStringList()));

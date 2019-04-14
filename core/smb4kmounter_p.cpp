@@ -57,16 +57,39 @@ using namespace Smb4KGlobal;
 Smb4KMountDialog::Smb4KMountDialog(const SharePtr &share, QWidget *parent)
 : QDialog(parent), m_share(share), m_valid(true)
 {
+  //
+  // Set the title
+  // 
   setWindowTitle(i18n("Mount Share"));
   
+  //
+  // Set up the view
+  // 
   setupView();
   
+  //
+  // Set the dialog size
+  // 
   create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "MountDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  QSize dialogSize;
+  
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584
 
+  //
+  // Fill the completion objects
+  // 
   m_share_input->completionObject()->setItems(group.readEntry("ShareNameCompletion", QStringList()));
   m_ip_input->completionObject()->setItems(group.readEntry("IPAddressCompletion", QStringList()));
   m_workgroup_input->completionObject()->setItems(group.readEntry("WorkgroupCompletion", QStringList()));

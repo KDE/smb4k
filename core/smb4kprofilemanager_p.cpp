@@ -50,17 +50,35 @@
 Smb4KProfileMigrationDialog::Smb4KProfileMigrationDialog(const QStringList& from, const QStringList& to, QWidget* parent)
 : QDialog(parent), m_from_list(from), m_to_list(to)
 {
+  //
+  // Set the window title
+  // 
   setWindowTitle(i18n("Profile Migration Assistant"));
   
+  //
+  // Setup the view
+  // 
   setupView();
   
-  setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
-  
+  //
+  // Set the dialog size
+  // 
   create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "ProfileMigrationDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  QSize dialogSize;
+  
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584
 }
 
 

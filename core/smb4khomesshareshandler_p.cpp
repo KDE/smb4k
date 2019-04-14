@@ -157,18 +157,39 @@ void Smb4KHomesUsers::setProfile(const QString& profile)
 Smb4KHomesUserDialog::Smb4KHomesUserDialog(const SharePtr &share, QWidget *parent) 
 : QDialog(parent), m_share(share)
 {
+  //
+  // Set the window title
+  // 
   setWindowTitle(i18n("Specify User"));
-  
+
+  //
+  // Setup the view
+  // 
   setupView();
   
-  setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
-  
+  //
+  // Set the dialog size
+  // 
   create();
 
   KConfigGroup group(Smb4KSettings::self()->config(), "HomesUserDialog");
-  KWindowConfig::restoreWindowSize(windowHandle(), group);
-  resize(windowHandle()->size()); // workaround for QTBUG-40584
+  QSize dialogSize;
+  
+  if (group.exists())
+  {
+    KWindowConfig::restoreWindowSize(windowHandle(), group);
+    dialogSize = windowHandle()->size();
+  }
+  else
+  {
+    dialogSize = sizeHint();
+  }
+  
+  resize(dialogSize); // workaround for QTBUG-40584
 
+  //
+  // Fill the completion object
+  // 
   m_user_combo->completionObject()->setItems(group.readEntry("HomesUsersCompletion", QStringList()));
 }
 
