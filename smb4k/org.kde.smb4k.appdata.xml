@@ -688,7 +688,7 @@
       <li xml:lang="el">Πλασμοειδές για ενοποίηση με το γραφικό περιβάλλον</li>
       <li xml:lang="en-GB">Plasmoid for desktop integration</li>
       <li xml:lang="es">Plasmoide para integración en el escritorio</li>
-      <li xml:lang="fi">Plasmoidi työpöytäintegrointia varten</li>
+      <li xml:lang="fi">Sovelma työpöytäintegrointiin</li>
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
       <li xml:lang="gl">Ofrece integración co escritorio mediante un plasmoide.</li>
       <li xml:lang="id">Plasmoid untuk integrasi desktop</li>
@@ -715,7 +715,7 @@
     <p xml:lang="el">Αν εργάζεστε σε ένα περιβάλλον δικτύου υπό την κυριαρχία των Windows, θα θέλατε να εγκαταστήσετε την εφαρμογή αυτή για να μπορείτε να έχετε άνετηπρόσβαση στους κοινούς πόρους που παρέχουν τα Windows.</p>
     <p xml:lang="en-GB">If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.</p>
     <p xml:lang="es">Si estás trabajando en un entorno de red dominado por Windows, es posible que desees instalar esta aplicación para poder acceder fácilmente a los recursos Windows compartidos.</p>
-    <p xml:lang="fi">Jos työskentelet Windowsin hallitsemassa verkkoympäristössä, halunnet asentaa tämän sovelluksen käyttääksesi helposti tarjolla olevia Windows-jakoja.</p>
+    <p xml:lang="fi">Windowsin hallitsemassa verkkoympäristössä tämä sovellus helpottaa tarjolla olevien Windows-jakojen käyttöä.</p>
     <p xml:lang="fr">Si vous travaillez dans un réseau contenant majoritairement des PC sous Windows, vous voudrez sans doute installer cette application pour accéder facilement aux partages Windows.</p>
     <p xml:lang="gl">Se traballa nun ambiente de rede dominado por Windows, este aplicativo axudarao a acceder facilmente aos recursos compartidos desde Windows.</p>
     <p xml:lang="id">Jika kamu bekerja dalam lingkungan jaringan yang didominasi Windows, kamu mungkin ingin menginstal aplikasi ini untuk dapat mengakses secara mudah share-share yang di sediakan Windows</p>
@@ -771,7 +771,7 @@
       <caption xml:lang="el">Το πλασμοειδές</caption>
       <caption xml:lang="en-GB">The plasmoid</caption>
       <caption xml:lang="es">El plasmoide</caption>
-      <caption xml:lang="fi">Plasmoidi</caption>
+      <caption xml:lang="fi">Sovelma</caption>
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O plasmoide</caption>
       <caption xml:lang="id">Plasmoid</caption>
