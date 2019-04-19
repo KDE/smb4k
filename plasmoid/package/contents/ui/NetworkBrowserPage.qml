@@ -26,9 +26,12 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.smb4k.smb4kqmlplugin 2.0
 
+
 PlasmaComponents.Page {
   id: networkBrowserPage
   anchors.fill: parent
+  
+  property var parentObject: 0
   
   //
   // Tool bar
@@ -227,20 +230,14 @@ PlasmaComponents.Page {
     else {
       // Do nothing
     }
-  }
+  }  
   
   //
   // Functions
   //
   function rescan() {
-    if (networkBrowserListView.currentIndex != -1) {
-      var object = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object
-      if (object !== null) {
-        iface.lookup(object)
-      }
-      else {
-        // Do nothing
-      }
+    if (parentObject !== null) {
+      iface.lookup(parentObject)
     }
     else {
       iface.lookup()
@@ -248,45 +245,28 @@ PlasmaComponents.Page {
   }
   
   function abort() {
-    console.log("Stop only if running")
-    iface.stopScanner()
-    iface.stopMounter()
-    iface.stopPrinter()
+    iface.abortClient()
+    iface.abortMounter()
   }
   
   function up() {
-    if (networkBrowserListView.currentIndex != -1) {
-      var object = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object
+    if (parentObject !== null) {
       
-      switch (object.type) {
+      switch (parentObject.type) {
         case NetworkObject.Workgroup:
           networkBrowserListView.currentIndex = -1
+          iface.lookup()
           break
         case NetworkObject.Host:
-          networkBrowserListView.currentIndex = -1
-          iface.lookup()
-          break;
-        case NetworkObject.Share:
-          var parentObject = iface.findNetworkItem(object.parentURL, object.parentType)
-          if (parentObject !== 0) {
-            var grandparentObject = iface.findNetworkItem(parentObject.parentURL, parentObject.parentType)
-            if (grandparentObject !== null) {
-              iface.lookup(grandparentObject)
-            }
-            else {
-              // Do nothing
-            }
-          }
-          else {
-            // Do nothing
+          var object = iface.findNetworkItem(parentObject.parentUrl, parentObject.parentType)
+          if (object !== null) {
+            parentObject = object
+            iface.lookup(object)
           }
           break
         default:
           break
       }
-    }
-    else {
-      // Do nothing
     }
   }
   
@@ -303,6 +283,7 @@ PlasmaComponents.Page {
         }
       }
       else {
+        parentObject = object
         iface.lookup(object)
       }
     }
@@ -329,14 +310,7 @@ PlasmaComponents.Page {
   }
   
   function getHosts() {
-    var workgroupName = ""
-    
-    if (networkBrowserListView.currentIndex != -1) {
-      workgroupName = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object.workgroupName
-    }
-    else {
-      // Do nothing
-    }
+    var workgroupName = parentObject.workgroupName
     
     while (networkBrowserItemDelegateModel.model.count != 0) {
       networkBrowserItemDelegateModel.model.remove(0)
@@ -360,14 +334,7 @@ PlasmaComponents.Page {
   }
   
   function getShares() {
-    var hostName = ""
-    
-    if (networkBrowserListView.currentIndex != -1) {
-      hostName = networkBrowserItemDelegateModel.items.get(networkBrowserListView.currentIndex).model.object.hostName
-    }
-    else {
-      // Do nothing
-    }    
+    var hostName = parentObject.hostName
     
     while (networkBrowserItemDelegateModel.model.count != 0) {
       networkBrowserItemDelegateModel.model.remove(0)
@@ -403,6 +370,7 @@ PlasmaComponents.Page {
         else {
           object.isMounted = false
         }
+        
         networkBrowserItemDelegateModel.model.set(i, {"object": object})
       }
       else {
