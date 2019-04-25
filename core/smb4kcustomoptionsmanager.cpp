@@ -227,62 +227,69 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
   // 
   if (!optionsList.isEmpty())
   {
-    switch (networkItem->type())
+    for (const OptionsPtr &opt : optionsList)
     {
-      case Host:
+      //
+      // If we want to have an exact match, skip all options that do not match
+      // 
+      if (exactMatch)
+      {
+        if (networkItem->type() != opt->type() || 
+            QString::compare(networkItem->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash), 
+                             opt->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash), Qt::CaseInsensitive) != 0)
+        {
+          continue;
+        }
+      }
+      
+      //
+      // Now assign the options
+      // 
+      if (networkItem->type() == Host && opt->type() == Host)
       {
         HostPtr host = networkItem.staticCast<Smb4KHost>();
         
         if (host)
         {
-          for (const OptionsPtr &o : optionsList)
+          if (QString::compare(host->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash), 
+                               opt->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash), Qt::CaseInsensitive) == 0 ||
+              (host->url().isEmpty() && host->ipAddress() == opt->ipAddress()))
           {
-            // In case of a host, there can only be an exact match.
-            if (QString::compare(host->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                                 o->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                                 Qt::CaseInsensitive) == 0 ||
-                (host->url().isEmpty() && host->ipAddress() == o->ipAddress()))
-            {
-              options = o;
-              break;
-            }
+            options = opt;
+            break;
           }
         }
-        break;
       }
-      case Share:
+      else if (networkItem->type() == Share)
       {
         SharePtr share = networkItem.staticCast<Smb4KShare>();
         
         if (share)
         {
-          for (const OptionsPtr &o : optionsList)
+          if (opt->type() == Share &&
+              QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash), 
+                               opt->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash), Qt::CaseInsensitive) == 0)
           {
-            if (QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                                 o->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                                 Qt::CaseInsensitive) == 0)
-            {
-              options = o;
-              break;
-            }
-            else if (!exactMatch && o->type() == Host && 
-                     QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath),
-                                      o->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath),
-                                      Qt::CaseInsensitive) == 0)
-            {
-              options = o;
-            }
+            // Since this is the exact match, break here
+            options = opt;
+            break;
+          }
+          else if (opt->type() == Host &&
+                   QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath|QUrl::StripTrailingSlash), 
+                                    opt->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::RemovePath|QUrl::StripTrailingSlash), Qt::CaseInsensitive) == 0)
+          {
+            // These options belong to the host. Do not break here, 
+            // because there might still be an exact match
+            options = opt;
           }
         }
-        break;
-      }
-      default:
-      {
-        break;
       }
     }
   }
   
+  //
+  // Return the options
+  // 
   return options;
 }
 
