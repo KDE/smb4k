@@ -982,12 +982,12 @@
 
 <!-- 
       Using Smb4K : The Plasmoid 
--->
+  -->
 
 <sect1 id="plasmoid">
   <title>The &plasmoid;</title>
 
-  <para>&smb4k; comes with a &plasmoid; that can be added as a widget to the desktop or the panel. It consists of four views that are arranged as tabs: <guilabel>Network Neighborhood</guilabel>, <guilabel>Mounted Shares</guilabel>, <guilabel>Bookmarks</guilabel>, and <guilabel>Profiles</guilabel>.</para>
+  <para>&smb4k; comes with a &plasmoid; that can be added as a widget to the desktop or the panel. It consists of five tabs: <guilabel>Network Neighborhood</guilabel>, <guilabel>Mounted Shares</guilabel>, <guilabel>Bookmarks</guilabel>, <guilabel>Profiles</guilabel>, and <guilabel>Configuration</guilabel>.</para>
 
   <screenshot>
     <screeninfo>Screenshot of the plasmoid on the desktop</screeninfo>
@@ -999,7 +999,7 @@
 
 <!-- 
       Using Smb4K : The Plasmoid : Network Neighborhood Tab 
--->
+  -->
 
   <sect2 id="plasmoid_network_neighborhood">
     <title>Network Neighborhood Tab</title>
@@ -1021,7 +1021,7 @@
 
 <!-- 
       Using Smb4K : The Plasmoid : Mounted Shares Tab 
--->
+  -->
 
   <sect2 id="plasmoid_mounted_shares">
     <title>Mounted Shares Tab</title>
@@ -1041,7 +1041,7 @@
 
 <!-- 
       Using Smb4K : The Plasmoid : Bookmarks Tab 
--->
+  -->
 
   <sect2 id="plasmoid_bookmarks">
     <title>Bookmarks Tab</title>
@@ -1062,7 +1062,7 @@
 
 <!-- 
       Using Smb4K : The Plasmoid : Profiles Tab 
--->
+  -->
 
   <sect2 id="plasmoid_profiles">
     <title>Profiles Tab</title>
@@ -1080,6 +1080,25 @@
     <para>You can activate a certain profile by clicking it.</para>
     <para>Profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
   </sect2>
+  
+<!--
+      Using Smb4K : The Plasmoid : Configuration Tab
+  -->
+  
+  <sect2 id="plasmoid_configuration">
+    <title>Configuration Tab</title>
+    
+    <para>To configure the behavior of &smb4k;, you can launch the <link linkend="configuration">configuration dialog</link> on the <guilabel>Configuration</guilabel> page.</para>
+    
+    <screenshot>
+      <screeninfo>Screenshot of the plasmoid's configuration tab</screeninfo>
+      <mediaobject>
+        <imageobject><imagedata fileref="plasmoid_configuration_tab.png" format="PNG" /></imageobject>
+        <textobject><phrase>Configuration tab of the plasmoid</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </sect2>
+  
 </sect1>
 
 <!-- 
