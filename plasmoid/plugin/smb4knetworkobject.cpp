@@ -271,7 +271,7 @@ QUrl Smb4KNetworkObject::url() const
 }
 
 
-QUrl Smb4KNetworkObject::parentURL() const
+QUrl Smb4KNetworkObject::parentUrl() const
 {
   // Do not use QUrl::upUrl() here, because it produces
   // an URL like this: smb://HOST/Share/../ and we do not
@@ -301,7 +301,7 @@ QUrl Smb4KNetworkObject::parentURL() const
 }
 
 
-void Smb4KNetworkObject::setURL(const QUrl& url)
+void Smb4KNetworkObject::setUrl(const QUrl& url)
 {
   d->url = url;
   emit changed();

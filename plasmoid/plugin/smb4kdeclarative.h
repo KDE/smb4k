@@ -261,7 +261,7 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     Q_INVOKABLE void startClient();
     
     /**
-     * This function aborts the client
+     * This function stops the client
      */
     Q_INVOKABLE void abortClient();
     
@@ -271,7 +271,7 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     Q_INVOKABLE void startMounter();
     
     /**
-     * This function aborts any action of the mounter.
+     * This function stops any action of the mounter.
      */
     Q_INVOKABLE void abortMounter();
     
@@ -302,6 +302,11 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
      * @param object        The network object
      */
     Q_INVOKABLE void preview(Smb4KNetworkObject *object);
+    
+    /**
+     * Open the configuration dialog of the main application
+     */
+    Q_INVOKABLE void openConfigurationDialog();
 
   Q_SIGNALS:
     /**

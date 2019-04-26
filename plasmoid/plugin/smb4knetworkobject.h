@@ -64,8 +64,8 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
   Q_PROPERTY(QString shareName READ shareName WRITE setShareName NOTIFY changed)
   Q_PROPERTY(QString name READ name CONSTANT)
   Q_PROPERTY(QString comment READ comment WRITE setComment NOTIFY changed)
-  Q_PROPERTY(QUrl url READ url WRITE setURL NOTIFY changed)
-  Q_PROPERTY(QUrl parentURL READ parentURL CONSTANT)
+  Q_PROPERTY(QUrl url READ url WRITE setUrl NOTIFY changed)
+  Q_PROPERTY(QUrl parentUrl READ parentUrl CONSTANT)
   Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
   Q_PROPERTY(bool isPrinter READ isPrinter WRITE setPrinter NOTIFY changed)
   Q_PROPERTY(QUrl mountpoint READ mountpoint WRITE setMountpoint NOTIFY changed)
@@ -236,14 +236,14 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
      * 
      * @returns the item's parent URL
      */
-    QUrl parentURL() const;
+    QUrl parentUrl() const;
     
     /**
      * Set the URL of this network item.
      * 
      * @param url         The URL
      */
-    void setURL(const QUrl &url);
+    void setUrl(const QUrl &url);
     
     /**
      * This function returns TRUE if the network item is a share and it is

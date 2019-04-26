@@ -50,6 +50,11 @@
 #include <QDebug>
 #include <QTest>
 
+// KDE includes
+#include <KCoreAddons/KPluginLoader>
+#include <KCoreAddons/KPluginFactory>
+#include <KConfigWidgets/KConfigDialog>
+
 
 Smb4KDeclarative::Smb4KDeclarative(QObject* parent)
 : QObject(parent), d(new Smb4KDeclarativePrivate)
@@ -608,6 +613,35 @@ void Smb4KDeclarative::preview(Smb4KNetworkObject* object)
   }
 }
 
+
+void Smb4KDeclarative::openConfigurationDialog()
+{
+  //
+  // Check if the configuration dialog exists and try to show it.
+  //
+  if (KConfigDialog::exists("Smb4KConfigDialog"))
+  {
+    KConfigDialog::showDialog("Smb4KConfigDialog");
+    return;
+  }
+  
+  //
+  // If the dialog does not exist, load and show it:
+  //
+  KPluginLoader loader("smb4kconfigdialog", this);
+  KPluginFactory *configFactory = loader.factory();
+
+  if (configFactory)
+  {
+    KConfigDialog *dlg = configFactory->create<KConfigDialog>();
+    
+    if (dlg)
+    {
+      dlg->setObjectName("Smb4KConfigDialog");
+      dlg->show();
+    }
+  }
+}
 
 
 void Smb4KDeclarative::slotWorkgroupsListChanged()
