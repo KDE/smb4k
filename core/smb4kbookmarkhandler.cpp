@@ -594,7 +594,7 @@ void Smb4KBookmarkHandler::editBookmarks()
   // 
   if (!d->editor)
   {
-    d->editor = new Smb4KBookmarkEditor(d->bookmarks, QApplication::activeWindow());
+    d->editor = new Smb4KBookmarkEditor(bookmarksList(), QApplication::activeWindow());
   }
   else
   {
