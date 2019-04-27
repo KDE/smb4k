@@ -35,7 +35,6 @@
 #include "smb4ksettings.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4kwalletmanager.h"
-#include "smb4kprocess.h"
 #include "smb4knotification.h"
 #include "smb4kbookmarkhandler.h"
 #include "smb4kcustomoptionsmanager.h"

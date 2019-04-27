@@ -29,7 +29,6 @@
 
 // application specific includes
 #include "smb4ksynchronizer.h"
-#include "smb4kprocess.h"
 #include "smb4kglobal.h"
 
 // Qt includes
@@ -39,6 +38,7 @@
 
 // KDE includes
 #include <KCoreAddons/KJob>
+#include <KCoreAddons/KProcess>
 #include <KIOWidgets/KUrlRequester>
 #include <KJobWidgets/KUiServerJobTracker>
     
@@ -57,14 +57,6 @@ class Smb4KSyncJob : public KJob
      * Destructor
      */
     ~Smb4KSyncJob();
-
-    /**
-     * Returns TRUE if the job was started and FALSE
-     * otherwise
-     * 
-     * @returns TRUE if the job was started
-     */
-    bool isStarted() { return m_started; }
 
     /**
      * Starts the synchronization
@@ -128,12 +120,11 @@ class Smb4KSyncJob : public KJob
     void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
 
   private:
-    bool m_started;
     SharePtr m_share;
     QWidget *m_parent_widget;
     QUrl m_src;
     QUrl m_dest;
-    Smb4KProcess *m_process;
+    KProcess *m_process;
     KUiServerJobTracker *m_job_tracker;
 };
 

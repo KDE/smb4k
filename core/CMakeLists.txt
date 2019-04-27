@@ -28,7 +28,6 @@ set(smb4kcore_LIB_SRCS
   smb4kmounter_p.cpp
   smb4knotification.cpp
   smb4knotification_p.cpp
-  smb4kprocess.cpp
   smb4kprofilemanager.cpp
   smb4kprofilemanager_p.cpp
   smb4kshare.cpp

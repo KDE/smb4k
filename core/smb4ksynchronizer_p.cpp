@@ -56,7 +56,7 @@ using namespace Smb4KGlobal;
 
 
 Smb4KSyncJob::Smb4KSyncJob(QObject *parent) : KJob(parent),
-  m_started(false), m_share(0), m_parent_widget(0), m_process(0)
+  m_share(0), m_parent_widget(0), m_process(0)
 {
   setCapabilities(KJob::Killable);
   m_job_tracker = new KUiServerJobTracker(this);
@@ -70,7 +70,6 @@ Smb4KSyncJob::~Smb4KSyncJob()
 
 void Smb4KSyncJob::start()
 {
-  m_started = true;
   QTimer::singleShot(0, this, SLOT(slotStartSynchronization()));
 }
 
@@ -87,7 +86,7 @@ bool Smb4KSyncJob::doKill()
 {
   if (m_process && m_process->state() != KProcess::NotRunning)
   {
-    m_process->abort();
+    m_process->terminate();
   }
   
   return KJob::doKill();
@@ -493,7 +492,8 @@ void Smb4KSyncJob::slotStartSynchronization()
   //
   // The process
   //
-  m_process = new Smb4KProcess(this);
+  m_process = new KProcess(this);
+  m_process->setEnv("LANG", "en_US.UTF-8");
   m_process->setOutputChannelMode(KProcess::SeparateChannels);
   m_process->setProgram(command);
   
@@ -624,18 +624,25 @@ void Smb4KSyncJob::slotReadStandardOutput()
 
 void Smb4KSyncJob::slotReadStandardError()
 {
+  //
+  // Get the error message
+  // 
   QString stdErr = QString::fromUtf8(m_process->readAllStandardError(), -1).trimmed();
-
-  // Avoid reporting an error if the process was killed by calling the abort() function.
-  if (!m_process->isAborted() && (stdErr.contains("rsync error:") && !stdErr.contains("(code 23)")
-       /*ignore "some files were not transferred" error*/))
+  
+  //
+  // Make sure the process is terminated
+  // 
+  if (m_process->state() != KProcess::NotRunning)
   {
-    m_process->abort();
-    Smb4KNotification::synchronizationFailed(m_src, m_dest, stdErr);
+    m_process->terminate();
   }
-  else
+  
+  //
+  // Report an error if the process was not terminated
+  // 
+  if (!(stdErr.contains("rsync error") && stdErr.contains("(code 20)")))
   {
-    // Go ahead
+    Smb4KNotification::synchronizationFailed(m_src, m_dest, stdErr);
   }
 }
 
@@ -650,10 +657,7 @@ void Smb4KSyncJob::slotProcessFinished(int, QProcess::ExitStatus status)
   {
     case QProcess::CrashExit:
     {
-      if (!m_process->isAborted())
-      {
-        Smb4KNotification::processError(m_process->error());
-      }
+      Smb4KNotification::processError(m_process->error());
       break;
     }
     default:
