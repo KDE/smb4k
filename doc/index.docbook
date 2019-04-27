@@ -1373,7 +1373,7 @@
     <sect2 id="special_remarks_problems_browsing_samba_47">
       <title>Problems Browsing the Network Neighborhood with &Samba; 4.7 and above</title>
       
-      <para>Since version 2.9.71, &smb4k; is using the <application>libsmbclient</application> library to browse and search the network neighborhood and print files. With the &Samba; 4.7 release, the default protocol version has been set to SMB3 by the &Samba; team. Unfortunately, the <application>libsmbclient</application> library cannot handle it correctly and browsing the network neighborhood will fail. For this reason, users of Samba 4.7 and above need to add the following setting to the [global] section of the <filename>smb.conf</filename> file to force &Samba; to use SMB1 (NT1) and, thus, fix the browsing of the network neighborhood:</para>
+      <para>Since version 2.9.71, &smb4k; is using &Samba;'s client library (<application>libsmbclient</application>) to browse and search the network neighborhood and print files. With the &Samba; 4.7 release, the default protocol version has been set to SMB3 by the &Samba; team. Unfortunately, &Samba;'s client library cannot handle it correctly at the moment and browsing the network neighborhood will fail. For this reason, users of Samba 4.7 and above need to add the following setting to the [global] section of the <filename>smb.conf</filename> file to force &Samba; to use SMB1 (NT1) and, thus, fix the browsing of the network neighborhood:</para>
       
 <programlisting>[global]
 ...
@@ -1643,7 +1643,7 @@ ntlm auth = yes
   <sect1 id="configuration_page_network">
     <title>Network</title>
 
-    <para>The options located here influence the network communication. You can modify the behavior of the underlying libsmbclient library in the <guibutton>Samba</guibutton> tab and enable the Wake-On-LAN features in the <guibutton>Wake-On-LAN</guibutton> tab.</para>
+    <para>The options located here influence the network communication. You can modify the behavior of the underlying <application>libsmbclient</application> library in the <guibutton>Samba</guibutton> tab and enable the Wake-On-LAN features in the <guibutton>Wake-On-LAN</guibutton> tab.</para>
     
     <screenshot>
       <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
@@ -3901,7 +3901,7 @@ ntlm auth = yes
       <listitem><para><ulink url="https://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
       <listitem><para><ulink url="https://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 5.0) or <ulink url="https://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
     </itemizedlist>
-    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.6.0 and <ulink url="https://www.kde.org">&kf5;</ulink> version 5.25.0. If you also want to make use of the provided &plasmoid;, you should have at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.9.0 and compatible versions of &kf5; and &plasma; 5 installed.</para>
+    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.6.0 and <ulink url="https://www.kde.org">&kf5;</ulink> version 5.25.0 to be installed. The provided &plasmoid; is known to run with &Qt; version 5.6.1, &kf5; version 5.36 and &plasma; version 5.8.9. Earlier versions of &kf5; and &plasma; might work as well but have not been tested.</para>
     <para>&smb4k; build depends on:</para>
     <itemizedlist>
       <listitem><para>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para></listitem>

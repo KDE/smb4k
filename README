@@ -58,9 +58,9 @@ To compile Smb4K, you need:
 
 To be able to use the main application of Smb4K you need at least Qt, 
 version >= 5.6.0 and KDE Frameworks 5 (KF5, version >= 5.25.0, 
-https://www.kde.org). If you also want to make use of the provided 
-Plasmoid, you should have at least Qt version 5.9.0 or later and 
-compatible versions of KF5 and Plasma 5 installed.
+https://www.kde.org). The provided plasmoid is known to run with Qt 
+version 5.6.1, KF5 version 5.36 and Plasma version 5.8.9. Earlier 
+versions of KF5 and Plasma might work as well but have not been tested.
 
 Smb4K build depends on:
 
