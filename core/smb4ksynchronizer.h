@@ -95,7 +95,7 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      *
      * @param share         The Smb4KShare object
      */
-    void abort(const SharePtr &share = 0);
+    void abort(const SharePtr &share = SharePtr());
 
     /**
      * This function starts the composite job
