@@ -1097,6 +1097,10 @@
         <textobject><phrase>Configuration tab of the plasmoid</phrase></textobject>
       </mediaobject>
     </screenshot>
+    
+    <note>
+      <para>You should not open a configuration dialog through the main application and the &plasmoid; at the same time, because they might interfer with each other.</para>
+    </note>
   </sect2>
   
 </sect1>
@@ -1125,7 +1129,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>Adding a groups may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group are arranged in a submenu with the group entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
+      <para>Adding a group may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group are arranged in a submenu with the group entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
       <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the location by default. If you want to change this behavior, you can do so in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>.</para>
     </sect2>
     
