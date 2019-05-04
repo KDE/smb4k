@@ -89,10 +89,15 @@ Smb4KProfileMigrationDialog::~Smb4KProfileMigrationDialog()
 
 void Smb4KProfileMigrationDialog::setupView()
 {
+  //
+  // The layout
+  // 
   QVBoxLayout *layout = new QVBoxLayout(this);
   layout->setSpacing(5);
   
-  // Description
+  // 
+  // The description
+  // 
   QWidget *description = new QWidget(this);
 
   QHBoxLayout *desc_layout = new QHBoxLayout(description);
@@ -111,6 +116,9 @@ void Smb4KProfileMigrationDialog::setupView()
   desc_layout->addWidget(pixmap, 0);
   desc_layout->addWidget(label, Qt::AlignBottom);
   
+  //
+  // The input widgets
+  // 
   QWidget *editors = new QWidget(this);
   
   QGridLayout *editors_layout = new QGridLayout(editors);
@@ -154,7 +162,7 @@ void Smb4KProfileMigrationDialog::setupView()
   else
   {
     m_to_box->addItems(m_to_list);
-    m_to_box->setCurrentItem(Smb4KProfileManager::self()->activeProfile());
+    m_to_box->setCurrentText(Smb4KProfileManager::self()->activeProfile());
   }
   
   editors_layout->addWidget(m_to_box, 1, 1, 0);
@@ -167,24 +175,35 @@ void Smb4KProfileMigrationDialog::setupView()
   m_cancel_button->setShortcut(Qt::Key_Escape);
   
   m_ok_button->setDefault(true);
+  m_ok_button->setEnabled(!m_to_box->currentText().isEmpty());
   
   layout->addWidget(description, 0);
   layout->addWidget(editors, 0);
   layout->addWidget(buttonBox, 0);
   
   connect(m_ok_button, SIGNAL(clicked()), this, SLOT(slotOkClicked()));
-  connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(reject()));  
+  connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
 
 QString Smb4KProfileMigrationDialog::from() const
 {
+  if (m_from_box->currentText() == i18n("<Default Profile>"))
+  {
+    return QString();
+  }
+  
   return m_from_box->currentText();
 }
 
 
 QString Smb4KProfileMigrationDialog::to() const
 {
+  if (m_to_box->currentText() == i18n("<Default Profile>"))
+  {
+    return QString();
+  }
+  
   return m_to_box->currentText();
 }
 
