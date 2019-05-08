@@ -1119,7 +1119,7 @@
     <sect2 id="bookmarks_adding">
       <title>Adding Bookmarks</title>
 
-      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link><!-- Remove the following in favor of the commented part --> and the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
+      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
@@ -1240,7 +1240,7 @@
         </varlistentry>
         <varlistentry>
           <term>
-            <menuchoice><guimenuitem>Clear Bookmarks</guimenuitem></menuchoice>
+            <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice>
           </term>
           <listitem>
             <para>Remove all bookmarks from the tree view including all groups.</para>
@@ -1299,7 +1299,7 @@
           </textobject>
         </mediaobject>
       </screenshot>
-      <para>Under <guilabel>Old Profile</guilabel> the old profile (<guilabel>&lt;Default Profile&gt;</guilabel> in this case) is listed. Under <guilabel>New Profile</guilabel> you can choose the profile where the settings should be migrated to from a drop-down menu. Clicking the <guibutton>OK</guibutton> button migrates the settings, clicking <guibutton>Cancel</guibutton> cancels the action.</para>
+      <para>Under <guilabel>Old Profile</guilabel> the old profile (<guilabel>&lt;Default Profile&gt;</guilabel> in this case) is listed. Under <guilabel>New Profile</guilabel> you can choose the profile where the settings should be migrated to from a drop-down menu. The first profile in the list is preselected. Clicking the <guibutton>OK</guibutton> button migrates the settings, clicking <guibutton>Cancel</guibutton> cancels the action.</para>
       <note><para>In order to use the migration assistant when you enable the use of profiles the first time, you need to enable its use at the same time you enable the use of profiles.</para></note>
     </sect2>
   
