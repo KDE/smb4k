@@ -33,7 +33,7 @@
 
 
 Smb4KNotifier::Smb4KNotifier(const QString& event)
-: KNotification(event, QApplication::activeWindow(), KNotification::CloseOnTimeout)
+: KNotification(event, KNotification::CloseOnTimeout)
 {
   if (event == "shareMounted")
   {

@@ -64,16 +64,12 @@ class Smb4KSyncJob : public KJob
     void start() override;
 
     /**
-     * Setup the synchronization process. You need to set the share, the parent
-     * widget is optional.
+     * Setup the synchronization process. This function must be 
+     * called before start() is run.
      *
-     * This function must be called before start() is run.
-     *
-     * @param src       The source
-     *
-     * @param dest      The destination
+     * @param share     The share
      */
-    void setupSynchronization(const SharePtr &share, QWidget *parent = 0);
+    void setupSynchronization(const SharePtr &share);
 
     /**
      * Returns the source directory.
@@ -121,7 +117,6 @@ class Smb4KSyncJob : public KJob
 
   private:
     SharePtr m_share;
-    QWidget *m_parent_widget;
     QUrl m_src;
     QUrl m_dest;
     KProcess *m_process;

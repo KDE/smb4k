@@ -76,7 +76,7 @@ void Smb4KSynchronizer::synchronize(const SharePtr &share)
     // with the job tracker.
     Smb4KSyncJob *job = new Smb4KSyncJob(this);
     job->setObjectName(QString("SyncJob_%1").arg(share->canonicalPath()));
-    job->setupSynchronization(share, QApplication::activeWindow());
+    job->setupSynchronization(share);
     
     connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
     connect(job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)));

@@ -43,6 +43,7 @@
 #include <QLabel>
 #include <QDialogButtonBox>
 #include <QWindow>
+#include <QApplication>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
@@ -55,8 +56,8 @@
 using namespace Smb4KGlobal;
 
 
-Smb4KSyncJob::Smb4KSyncJob(QObject *parent) : KJob(parent),
-  m_share(0), m_parent_widget(0), m_process(0)
+Smb4KSyncJob::Smb4KSyncJob(QObject *parent) 
+: KJob(parent), m_share(0), m_process(0)
 {
   setCapabilities(KJob::Killable);
   m_job_tracker = new KUiServerJobTracker(this);
@@ -74,11 +75,12 @@ void Smb4KSyncJob::start()
 }
 
 
-void Smb4KSyncJob::setupSynchronization(const SharePtr &share, QWidget *parent)
+void Smb4KSyncJob::setupSynchronization(const SharePtr &share)
 {
-  Q_ASSERT(share);
-  m_share = share;
-  m_parent_widget = parent;
+  if (share)
+  {
+    m_share = share;
+  }
 }
 
 
@@ -117,16 +119,16 @@ void Smb4KSyncJob::slotStartSynchronization()
   if (m_share)
   {
     // Show the user an URL input dialog.
-    QPointer<Smb4KSynchronizationDialog> dlg = new Smb4KSynchronizationDialog(m_share, m_parent_widget);
+    QPointer<Smb4KSynchronizationDialog> dlg = new Smb4KSynchronizationDialog(m_share, QApplication::activeWindow());
 
     if (dlg->exec() == QDialog::Accepted)
     {
       // Create the destination directory if it does not already exits.
-      if (!QFile::exists(dlg->destination().path()))
+      QDir syncDir(dlg->destination().path());
+      
+      if (!syncDir.exists())
       {
-        QDir syncDir(dlg->destination().path());
-
-        if (!syncDir.mkpath(dlg->destination().path()))
+        if (!QDir().mkpath(syncDir.path()))
         {
           Smb4KNotification::mkdirFailed(syncDir);
           emitResult();
