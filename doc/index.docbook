@@ -1099,7 +1099,7 @@
     </screenshot>
     
     <note>
-      <para>You should not open a configuration dialog through the main application and the &plasmoid; at the same time, because they might interfer with each other.</para>
+      <para>You should not open a configuration dialog through the main application and the &plasmoid; at the same time, because they might interfere with each other.</para>
     </note>
   </sect2>
   
