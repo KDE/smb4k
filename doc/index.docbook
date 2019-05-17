@@ -1351,7 +1351,7 @@
 
     <sect2 id="notifications_manage">
       <title>Managing Notifications</title>
-      <para>&smb4k; uses notifications to inform the user about events, warnings and errors. They can be managed via the &systemsettings;. To modify the behavior of one or all notifications, open the <guibutton>Application and System Notifications</guibutton> module and choose the <guibutton>Manage Notifications</guibutton> entry. In the tab <guilabel>Applications</guilabel> select the <guilabel>Advanced Network Neighborhood Browser</guilabel> entry from the drop-down menu:</para>
+      <para>Notifications can be managed via the &systemsettings;. To modify the behavior of a notification, navigate to the <guibutton>Notifications</guibutton> page. Under <guilabel>Event source</guilabel> select the <guilabel>Advanced Network Neighborhood Browser</guilabel> entry from the drop-down menu:</para>
       <screenshot>
         <screeninfo>Screenshot of the systemsettings notification module</screeninfo>
         <mediaobject>
