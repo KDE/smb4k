@@ -66,6 +66,7 @@
     </p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions de Samba. està basat ens els Frameworks 5 del KDE i la biblioteca client del Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="ca-valencia">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions de Samba. està basat ens els Frameworks 5 del KDE i la biblioteca client del Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
+    <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben. Es basiert auf den KDE Frameworks 5 und der Samba-Bibliothek libsmbclient.Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
     <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba. È basato su KDE Frameworks 5 e sulla libreria client di Samba (libsmbclient). Analizza le risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op de KDE Frameworks 5 en de clientbiblotheek van Samba (libsmbclient). Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
     <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba. Програму засновано на KDE Frameworks 5 та клієнтській бібліотеці Samba (libsmbclient). Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
@@ -75,6 +76,7 @@
     </p>
     <p xml:lang="ca">El Smb4K està basat en la biblioteca client del Samba. El seu propòsit és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
     <p xml:lang="ca-valencia">El Smb4K està basat en la biblioteca client del Samba. El seu propòsit és proporcionar un programa de fàcil ús i contindre tantes característiques com siga possible.</p>
+    <p xml:lang="de">Smb4K benutzt die Samba-Bibliothek, um ein Programm mit leichter Handhabung und möglichst vielen Funktionen zur Verfügung zu stellen.</p>
     <p xml:lang="it">Smb4K è basato sulla libreria client di Samba. Il suo scopo è quello di fornire un programma che sia facile da usare e che abbia più funzionalità possibili.</p>
     <p xml:lang="nl">Smb4K is gebaseerd op de clientbibliotheek van Samba. Het doel is een programma te bieden dat gemakkelijk is te gebruiken en zoveel mogelijk functies heeft.</p>
     <p xml:lang="uk">Smb4K засновано на клієнтській бібліотеці Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
@@ -309,6 +311,7 @@
       <li>Preview of the contents of a remote share</li>
       <li xml:lang="ca">Vista prèvia del contingut d'una compartició remota</li>
       <li xml:lang="ca-valencia">Vista prèvia del contingut d'una compartició remota</li>
+      <li xml:lang="de">Vorschau des Inhalts einer entfernten Freigabe</li>
       <li xml:lang="it">Anteprima dei contenuti di una condivisione remota</li>
       <li xml:lang="nl">Voorbeeldweergave van de inhoud van een share op afstand</li>
       <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
@@ -414,6 +417,7 @@
       <li>Support of advanced mount options</li>
       <li xml:lang="ca">Implementació per a les opcions avançades de muntatge</li>
       <li xml:lang="ca-valencia">Implementació per a les opcions avançades de muntatge</li>
+      <li xml:lang="de">Unterstützung der erweiterten Einstellungen zum Einhängen</li>
       <li xml:lang="it">Supporto alle opzioni avanzate di montaggio</li>
       <li xml:lang="nl">Ondersteuning van geavanceerde opties voor aankoppelen</li>
       <li xml:lang="uk">Підтримка додаткових параметрів монтування</li>
@@ -590,6 +594,7 @@
       <li>Profiles for different network neighborhood setups</li>
       <li xml:lang="ca">Perfils per a diferents configuracions del veïnatge de xarxa</li>
       <li xml:lang="ca-valencia">Perfils per a diferents configuracions del veïnatge de xarxa</li>
+      <li xml:lang="de">Profile für verschiedene Einstellungen der Netzwerkumgebung</li>
       <li xml:lang="it">Profili per diverse impostazioni delle risorse di rete</li>
       <li xml:lang="nl">Profielen voor verschillende opzetten van netwerkomgevingen</li>
       <li xml:lang="uk">Профілі для різних наборів налаштувань мережевого оточення</li>
