@@ -1,3 +1,45 @@
+Smb4K 3.0.0 (2019-06-10):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=3.0
+
+- Moved to libsmbclient for network related communication. Removed 
+  the old scan, search, preview and print classes. Adjusted the rest 
+  of the code accordingly.
+- Removed periodic scanning capabilities and other obsolete settings.
+- Only start a network scan, if the computer is online.
+- Removed the search tab from the main window. Searches can now be 
+  done directly in the browser window.
+- Use the display string 'SHARE on HOST' instead of the UNC in the GUI.
+- Added several more mount options under Linux.
+- Added several new custom options and reworked the custom options 
+  dialog.
+- Improved support for NetBSD and added Dragonfly BSD as supported
+  operating system.
+- Reworked the configuration dialog on many pages. Moved several settings
+  around.
+- Added more rsync options:
+  - Compression level: --compress-level=NUM
+  - Skip compression: --skip-compress=LIST
+  - Munge symlinks: --munge-links
+  - Copy directory symlinks: --copy-dirlinks
+  - Set bandwidth limit: --bwlimit=RATE
+- Got rid of KParts. The dock widgets are now direct children of the 
+  main window.
+- Changed the system tray icon.
+- Overhauled the notifications.
+- Improved plasmoid:
+  - Added 'Configuration' page.
+  - Introduced sorting of items.
+  - Reworked the layout.
+  - Introduced more actions that can be performed on single items.
+- Fixed restoring the window sizes.
+- Cleaned up code.
+- Changed many things under the hood (see Git log if you wish to learn
+  more about this).
+- Updated handbook.
+- And much, much more.
+
 Smb4K 2.1.1 (2018-07-22):
 
 See the summary of changes below. For a full list of changes, please
