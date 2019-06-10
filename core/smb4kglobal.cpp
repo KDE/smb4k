@@ -940,6 +940,8 @@ QStringList Smb4KGlobal::whitelistedMountArguments()
 
 const QString Smb4KGlobal::findMountExecutable()
 {
+  qDebug() << QStandardPaths::findExecutable("mount.cifs");
+  
   QStringList paths;
   paths << "/bin";
   paths << "/sbin";
