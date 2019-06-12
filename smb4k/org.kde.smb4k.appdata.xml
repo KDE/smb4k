@@ -76,6 +76,7 @@
     <p xml:lang="ko">Smb4K는 고급 네트워크 환경 탐색기 및 Samba 공유 마운트 도구입니다. KDE 프레임워크 5와 Samba 클라이언트 라이브러리(libsmbclient)를 사용합니다. 로컬 네트워크에 있는 작업 그룹, 서버, 공유 자원을 탐색할 수 있으며 로컬 파일 시스템에 공유를 마운트할 수 있습니다.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op de KDE Frameworks 5 en de clientbiblotheek van Samba (libsmbclient). Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
     <p xml:lang="pt">O Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de partilhas do Samba. Baseia-se nas Plataformas do KDE 5 e na biblioteca-cliente do Samba (libsmbclient). Ele sonda a sua vizinhança da rede à procura de todos os grupos de trabalho, servidores e partilhas disponíveis, podendo montar todas as partilhas desejadas no seu sistema de ficheiros local.</p>
+    <p xml:lang="pt-BR">Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de compartilhamentos do Samba. Ele tem como base o KDE Frameworks 5 e a biblioteca-cliente do Samba (libsmbclient). Verifica a vizinhança da rede à procura de todos os grupos de trabalho, servidores e compartilhamentos disponíveis, podendo montar todos os compartilhamentos desejados no seu sistema de arquivos local.</p>
     <p xml:lang="sv">Smb4K är en avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-kataloger. Den är baserad på KDE:s ramverk 5 och Sambas klientbibliotek (libsmbclient). Den söker igenom ditt nätverksgrannskap för att hitta alla tillgängliga arbetsgrupper, servrar och delade kataloger, och kan montera alla delade kataloger som önskas i det lokala filsystemet.</p>
     <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba. Програму засновано на KDE Frameworks 5 та клієнтській бібліотеці Samba (libsmbclient). Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
     <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
@@ -94,6 +95,7 @@
     <p xml:lang="ko">Smb4K는 Samba 클라이언트 라이브러리를 사용합니다. 사용하기 편하면서도 기능이 풍부한 프로그램을 목적으로 합니다.</p>
     <p xml:lang="nl">Smb4K is gebaseerd op de clientbibliotheek van Samba. Het doel is een programma te bieden dat gemakkelijk is te gebruiken en zoveel mogelijk functies heeft.</p>
     <p xml:lang="pt">O Smb4K baseia-se na biblioteca-cliente do Samba. O seu objectivo é oferecer um programa que seja simples de usar e tenha tantas funcionalidades quantas possíveis.</p>
+    <p xml:lang="pt-BR">O Smb4K tem como base a biblioteca-cliente do Samba. Seu objetivo é oferecer um programa que seja simples de usar e tenha todas as funcionalidades possíveis.</p>
     <p xml:lang="sv">Smb4K är baserat på Sambas klientbibliotek. Dess syfte är att tillhandahålla ett program som är enkelt att använda och har så många funktioner som möjligt.</p>
     <p xml:lang="uk">Smb4K засновано на клієнтській бібліотеці Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
     <p xml:lang="x-test">xxSmb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.xx</p>
@@ -337,6 +339,7 @@
       <li xml:lang="ko">원격 공유 내용 미리 보기</li>
       <li xml:lang="nl">Voorbeeldweergave van de inhoud van een share op afstand</li>
       <li xml:lang="pt">Antevisão do conteúdo de uma partilha remota</li>
+      <li xml:lang="pt-BR">Visualização do conteúdo de um compartilhamento remoto</li>
       <li xml:lang="sv">Förhandsgranskning av innehållet i en delad resurs</li>
       <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
       <li xml:lang="x-test">xxPreview of the contents of a remote sharexx</li>
@@ -451,6 +454,7 @@
       <li xml:lang="ko">고급 마운트 옵션 지원</li>
       <li xml:lang="nl">Ondersteuning van geavanceerde opties voor aankoppelen</li>
       <li xml:lang="pt">Suporte para as opções avançadas de montagem</li>
+      <li xml:lang="pt-BR">Suporte para opções de montagem avançadas</li>
       <li xml:lang="sv">Stöd för avancerade monteringsalternativ</li>
       <li xml:lang="uk">Підтримка додаткових параметрів монтування</li>
       <li xml:lang="x-test">xxSupport of advanced mount optionsxx</li>
@@ -636,6 +640,7 @@
       <li xml:lang="ko">다른 네트워크 환경 설정 프로필</li>
       <li xml:lang="nl">Profielen voor verschillende opzetten van netwerkomgevingen</li>
       <li xml:lang="pt">Perfis para diferentes configurações da vizinhança da rede</li>
+      <li xml:lang="pt-BR">Perfis para diferentes configurações de vizinhança da rede</li>
       <li xml:lang="sv">Profiler för olika inställningar av nätverksgrannskap</li>
       <li xml:lang="uk">Профілі для різних наборів налаштувань мережевого оточення</li>
       <li xml:lang="x-test">xxProfiles for different network neighborhood setupsxx</li>
