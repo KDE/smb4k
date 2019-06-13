@@ -392,14 +392,30 @@ QString Smb4KClientJob::workgroup()
 void Smb4KClientJob::doLookups()
 {
   // 
-  // Read the given URL
+  // Get the function to open the directory
   // 
-  int dirfd;
-  struct smbc_dirent *dirp = nullptr;
+  smbc_opendir_fn openDirectory = smbc_getFunctionOpendir(m_context);
   
-  dirfd = smbc_opendir(m_item->url().toString().toUtf8().data());
+  if (!openDirectory)
+  {
+    int errorCode = errno;
+    
+    setError(UnknownError);
+    setErrorText(strerror(errorCode));
+
+    emitResult();
+    return;
+
+    emitResult();
+    return;
+  }
   
-  if (dirfd < 0)
+  //
+  // Open the directory
+  // 
+  SMBCFILE *directory = openDirectory(m_context, m_item->url().toString().toUtf8().data());
+  
+  if (!directory)
   {
     int errorCode = errno;
     
@@ -408,44 +424,44 @@ void Smb4KClientJob::doLookups()
       case ENOMEM:
       {
         setError(OutOfMemoryError);
-        setErrorText(i18n("Out of memory"));
+        setErrorText(strerror(errorCode));
         break;
       }
       case EACCES:
       {
         setError(AccessDeniedError);
-        setErrorText(i18n("Permission denied"));
+        setErrorText(strerror(errorCode));
         break;
       }
       case EINVAL:
       {
         setError(InvalidUrlError);
-        setErrorText(i18n("An invalid URL was passed"));
+        setErrorText(strerror(errorCode));
         break;
       }
       case ENOENT:
       {
         setError(NonExistentUrlError);
-        setErrorText(i18n("The URL does not exist"));
+        setErrorText(strerror(errorCode));
         break;
       }
       case ENOTDIR:
       {
         setError(NoDirectoryError);
-        setErrorText(i18n("Name is not a directory"));
+        setErrorText(strerror(errorCode));
         break;
       }
       case EPERM:
       {
         setError(NotPermittedError);
         // Is the error message correct? 
-        setErrorText(i18n("Operation not permitted"));
+        setErrorText(strerror(errorCode));
         break;
       }
       case ENODEV:
       {
         setError(NotFoundError);
-        setErrorText(i18n("The workgroup or server could not be found"));
+        setErrorText(strerror(errorCode));
         break;
       }
       default:
@@ -454,362 +470,323 @@ void Smb4KClientJob::doLookups()
         setErrorText(i18n("Unknown error"));
       }
     }
+    
+    emitResult();
+    return;
+  }
+  
+  //
+  // Read the directory
+  // 
+  struct smbc_dirent *directoryEntry = nullptr;
+  smbc_readdir_fn readDirectory = smbc_getFunctionReaddir(m_context);
+  
+  if (!readDirectory)
+  {
+    int errorCode = errno;
+    
+    setError(UnknownError);
+    setErrorText(strerror(errorCode));
 
     emitResult();
     return;
   }
-  else
+  
+  while ((directoryEntry = readDirectory(m_context, directory)) != nullptr)
   {
-    //
-    // Get the entries of the "directory"
-    // 
-    while ((dirp = smbc_readdir(dirfd)) != nullptr)
+    switch (directoryEntry->smbc_type)
     {
-      switch (dirp->smbc_type)
+      case SMBC_WORKGROUP:
       {
-        case SMBC_WORKGROUP:
+        // 
+        // Create a workgroup pointer
+        // 
+        WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
+          
+        // 
+        // Set the workgroup name
+        // 
+        QString workgroupName = QString::fromUtf8(directoryEntry->name);
+        workgroup->setWorkgroupName(workgroupName);
+          
+        // 
+        // Set the master browser
+        // 
+        QString masterBrowserName = QString::fromUtf8(directoryEntry->comment);
+        workgroup->setMasterBrowserName(masterBrowserName);
+          
+        // 
+        // Lookup IP address
+        // 
+        QHostAddress address = lookupIpAddress(masterBrowserName);
+          
+        // 
+        // Process the IP address. 
+        // If the address is null, the server most likely went offline. So, skip the
+        // workgroup and delete the pointer.
+        // 
+        if (!address.isNull())
         {
-          // 
-          // Create a workgroup pointer
-          // 
-          WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
-          
-          // 
-          // Set the workgroup name
-          // 
-          QString workgroupName = QString::fromUtf8(dirp->name);
-          workgroup->setWorkgroupName(workgroupName);
-          
-          // 
-          // Set the master browser
-          // 
-          QString masterBrowserName = QString::fromUtf8(dirp->comment);
-          workgroup->setMasterBrowserName(masterBrowserName);
-          
-          // 
-          // Lookup IP address
-          // 
-          QHostAddress address = lookupIpAddress(masterBrowserName);
-          
-          // 
-          // Process the IP address. 
-          // If the address is null, the server most likely went offline. So, skip the
-          // workgroup and delete the pointer.
-          // 
-          if (!address.isNull())
-          {
-            workgroup->setMasterBrowserIpAddress(address);
-            m_workgroups << workgroup;
-          }
-          else
-          {
-            workgroup.clear();
-          }
-          
-          break;
+          workgroup->setMasterBrowserIpAddress(address);
+          m_workgroups << workgroup;
         }
-        case SMBC_SERVER:
+        else
         {
-          // 
-          // Create a host pointer
-          // 
-          HostPtr host = HostPtr(new Smb4KHost());
-          
-          // 
-          // Set the workgroup name
-          // 
-          host->setWorkgroupName(m_item->url().host());
-          
-          // 
-          // Set the host name
-          // 
-          QString hostName = QString::fromUtf8(dirp->name);
-          host->setHostName(hostName);
-          
-          // 
-          // Set the comment
-          // 
-          QString comment = QString::fromUtf8(dirp->comment);
-          host->setComment(comment);
-          
-          // 
-          // Lookup IP address
-          // 
-          QHostAddress address = lookupIpAddress(hostName);
-          
-          // 
-          // Process the IP address. 
-          // If the address is null, the server most likely went offline. So, skip it
-          // and delete the pointer.
-          // 
-          if (!address.isNull())
-          {
-            host->setIpAddress(address);
-            m_hosts << host;
-          }
-          else
-          {
-            host.clear();
-          } 
-          
-          break;
+          workgroup.clear();
         }
-        case SMBC_FILE_SHARE:
+          
+        break;
+      }
+      case SMBC_SERVER:
+      {
+        // 
+        // Create a host pointer
+        // 
+        HostPtr host = HostPtr(new Smb4KHost());
+          
+        // 
+        // Set the workgroup name
+        // 
+        host->setWorkgroupName(m_item->url().host());
+          
+        // 
+        // Set the host name
+        // 
+        QString hostName = QString::fromUtf8(directoryEntry->name);
+        host->setHostName(hostName);
+          
+        // 
+        // Set the comment
+        // 
+        QString comment = QString::fromUtf8(directoryEntry->comment);
+        host->setComment(comment);
+          
+        // 
+        // Lookup IP address
+        // 
+        QHostAddress address = lookupIpAddress(hostName);
+          
+        // 
+        // Process the IP address. 
+        // If the address is null, the server most likely went offline. So, skip it
+        // and delete the pointer.
+        // 
+        if (!address.isNull())
         {
-          //
-          // Create a share pointer
-          // 
-          SharePtr share = SharePtr(new Smb4KShare());
-          
-          //
-          // Set the workgroup name
-          // 
-          share->setWorkgroupName(m_item.staticCast<Smb4KHost>()->workgroupName());
-          
-          //
-          // Set the host name
-          // 
-          share->setHostName(m_item->url().host());
-          
-          //
-          // Set the share name
-          // 
-          share->setShareName(QString::fromUtf8(dirp->name));
-          
-          // 
-          // Set the comment
-          // 
-          share->setComment(QString::fromUtf8(dirp->comment));
-          
-          //
-          // Set share type
-          // 
-          share->setShareType(FileShare);
-          
-          //
-          // Set the authentication data
-          // 
-          share->setLogin(m_item->url().userName());
-          share->setPassword(m_item->url().password());
-          
-          // 
-          // Lookup IP address
-          // 
-          QHostAddress address = lookupIpAddress(m_item->url().host());
-          
-          // 
-          // Process the IP address. 
-          // If the address is null, the server most likely went offline. So, skip it
-          // and delete the pointer.
-          // 
-          if (!address.isNull())
-          {
-            share->setHostIpAddress(address);
-            m_shares << share;
-          }
-          else
-          {
-            share.clear();
-          } 
-          
-          break;
+          host->setIpAddress(address);
+          m_hosts << host;
         }
-        case SMBC_PRINTER_SHARE:
+        else
         {
-          //
-          // Create a share pointer
-          // 
-          SharePtr share = SharePtr(new Smb4KShare());
+          host.clear();
+        } 
           
-          //
-          // Set the workgroup name
-          // 
-          share->setWorkgroupName(m_item.staticCast<Smb4KHost>()->workgroupName());
+        break;
+      }
+      case SMBC_FILE_SHARE:
+      {
+        //
+        // Create a share pointer
+        // 
+        SharePtr share = SharePtr(new Smb4KShare());
+        
+        //
+        // Set the workgroup name
+        // 
+        share->setWorkgroupName(m_item.staticCast<Smb4KHost>()->workgroupName());
           
-          //
-          // Set the host name
-          // 
-          share->setHostName(m_item->url().host());
+        //
+        // Set the host name
+        // 
+        share->setHostName(m_item->url().host());
           
-          //
-          // Set the share name
-          // 
-          share->setShareName(QString::fromUtf8(dirp->name));
+        //
+        // Set the share name
+        // 
+        share->setShareName(QString::fromUtf8(directoryEntry->name));
           
-          // 
-          // Set the comment
-          // 
-          share->setComment(QString::fromUtf8(dirp->comment));
+        // 
+        // Set the comment
+        // 
+        share->setComment(QString::fromUtf8(directoryEntry->comment));
+        
+        //
+        // Set share type
+        // 
+        share->setShareType(FileShare);
           
-          //
-          // Set share type
-          // 
-          share->setShareType(PrinterShare);
+        //
+        // Set the authentication data
+        // 
+        share->setLogin(m_item->url().userName());
+        share->setPassword(m_item->url().password());
+        
+        // 
+        // Lookup IP address
+        // 
+        QHostAddress address = lookupIpAddress(m_item->url().host());
           
-          //
-          // Set the authentication data
-          // 
-          share->setLogin(m_item->url().userName());
-          share->setPassword(m_item->url().password());
-          
-          // 
-          // Lookup IP address
-          // 
-          QHostAddress address = lookupIpAddress(m_item->url().host());
-          
-          // 
-          // Process the IP address. 
-          // If the address is null, the server most likely went offline. So, skip it
-          // and delete the pointer.
-          // 
-          if (!address.isNull())
-          {
-            share->setHostIpAddress(address);
-            m_shares << share;
-          }
-          else
-          {
-            share.clear();
-          } 
-          
-          break;
-        }
-        case SMBC_IPC_SHARE:
+        // 
+        // Process the IP address. 
+        // If the address is null, the server most likely went offline. So, skip it
+        // and delete the pointer.
+        // 
+        if (!address.isNull())
         {
-          //
-          // Create a share pointer
-          // 
-          SharePtr share = SharePtr(new Smb4KShare());
-          
-          //
-          // Set the workgroup name
-          // 
-          share->setWorkgroupName(m_item.staticCast<Smb4KHost>()->workgroupName());
-          
-          //
-          // Set the host name
-          // 
-          share->setHostName(m_item->url().host());
-          
-          //
-          // Set the share name
-          // 
-          share->setShareName(QString::fromUtf8(dirp->name));
-          
-          // 
-          // Set the comment
-          // 
-          share->setComment(QString::fromUtf8(dirp->comment));
-          
-          //
-          // Set share type
-          // 
-          share->setShareType(IpcShare);
-          
-          //
-          // Set the authentication data
-          // 
-          share->setLogin(m_item->url().userName());
-          share->setPassword(m_item->url().password());
-          
-          // 
-          // Lookup IP address
-          // 
-          QHostAddress address = lookupIpAddress(m_item->url().host());
-          
-          // 
-          // Process the IP address. 
-          // If the address is null, the server most likely went offline. So, skip it
-          // and delete the pointer.
-          // 
-          if (!address.isNull())
-          {
-            share->setHostIpAddress(address);
-            m_shares << share;
-          }
-          else
-          {
-            share.clear();
-          } 
-          
-          break;
+          share->setHostIpAddress(address);
+          m_shares << share;
         }
-        case SMBC_DIR:
+        else
         {
-          //
-          // Do not process '.' and '..' directories
-          // 
-          QString name = QString::fromUtf8(dirp->name);
+          share.clear();
+        } 
           
-          if (name != "." && name != "..")
-          {
-            //
-            // Create the URL for the discovered item
-            // 
-            QUrl u = m_item->url();
-            u.setPath(m_item->url().path()+QDir::separator()+QString::fromUtf8(dirp->name));
-            
-            //
-            // We do not stat directories. Directly create the directory object
-            // 
-            FilePtr dir = FilePtr(new Smb4KFile(u, Directory));
-            
-            //
-            // Set the workgroup name
-            //
-            dir->setWorkgroupName(m_item.staticCast<Smb4KShare>()->workgroupName());
-            
-            //
-            // Set the authentication data
-            // 
-            dir->setLogin(m_item->url().userName());
-            dir->setPassword(m_item->url().password());
-            
-            // 
-            // Lookup IP address
-            // 
-            QHostAddress address = lookupIpAddress(m_item->url().host());
-            
-            // 
-            // Process the IP address. 
-            // If the address is null, the server most likely went offline. So, skip it
-            // and delete the pointer.
-            // 
-            if (!address.isNull())
-            {
-              dir->setHostIpAddress(address);
-              m_files << dir;
-            }
-            else
-            {
-              dir.clear();
-            } 
-          }
+        break;
+      }
+      case SMBC_PRINTER_SHARE:
+      {
+        //
+        // Create a share pointer
+        // 
+        SharePtr share = SharePtr(new Smb4KShare());
           
-          break;
+        //
+        // Set the workgroup name
+        // 
+        share->setWorkgroupName(m_item.staticCast<Smb4KHost>()->workgroupName());
+          
+        //
+        // Set the host name
+        // 
+        share->setHostName(m_item->url().host());
+          
+        //
+        // Set the share name
+        // 
+        share->setShareName(QString::fromUtf8(directoryEntry->name));
+          
+        // 
+        // Set the comment
+        // 
+        share->setComment(QString::fromUtf8(directoryEntry->comment));
+          
+        //
+        // Set share type
+        // 
+        share->setShareType(PrinterShare);
+          
+        //
+        // Set the authentication data
+        // 
+        share->setLogin(m_item->url().userName());
+        share->setPassword(m_item->url().password());
+          
+        // 
+        // Lookup IP address
+        // 
+        QHostAddress address = lookupIpAddress(m_item->url().host());
+        
+        // 
+        // Process the IP address. 
+        // If the address is null, the server most likely went offline. So, skip it
+        // and delete the pointer.
+        // 
+        if (!address.isNull())
+        {
+          share->setHostIpAddress(address);
+          m_shares << share;
         }
-        case SMBC_FILE:
+        else
+        {
+          share.clear();
+        } 
+          
+        break;
+      }
+      case SMBC_IPC_SHARE:
+      {
+        //
+        // Create a share pointer
+        // 
+        SharePtr share = SharePtr(new Smb4KShare());
+          
+        //
+        // Set the workgroup name
+        // 
+        share->setWorkgroupName(m_item.staticCast<Smb4KHost>()->workgroupName());
+          
+        //
+        // Set the host name
+        // 
+        share->setHostName(m_item->url().host());
+          
+        //
+        // Set the share name
+        // 
+        share->setShareName(QString::fromUtf8(directoryEntry->name));
+          
+        // 
+        // Set the comment
+        // 
+        share->setComment(QString::fromUtf8(directoryEntry->comment));
+          
+        //
+        // Set share type
+        // 
+        share->setShareType(IpcShare);
+          
+        //
+        // Set the authentication data
+        // 
+        share->setLogin(m_item->url().userName());
+        share->setPassword(m_item->url().password());
+          
+        // 
+        // Lookup IP address
+        // 
+        QHostAddress address = lookupIpAddress(m_item->url().host());
+          
+        // 
+        // Process the IP address. 
+        // If the address is null, the server most likely went offline. So, skip it
+        // and delete the pointer.
+        // 
+        if (!address.isNull())
+        {
+          share->setHostIpAddress(address);
+          m_shares << share;
+        }
+        else
+        {
+          share.clear();
+        } 
+          
+        break;
+      }
+      case SMBC_DIR:
+      {
+        //
+        // Do not process '.' and '..' directories
+        // 
+        QString name = QString::fromUtf8(directoryEntry->name);
+          
+        if (name != "." && name != "..")
         {
           //
           // Create the URL for the discovered item
           // 
           QUrl u = m_item->url();
-          u.setPath(m_item->url().path()+QDir::separator()+QString::fromUtf8(dirp->name));
-            
+          u.setPath(m_item->url().path()+QDir::separator()+QString::fromUtf8(directoryEntry->name));
+          
           //
-          // Create the directory object
+          // We do not stat directories. Directly create the directory object
           // 
-          FilePtr dir = FilePtr(new Smb4KFile(u, File));
+          FilePtr dir = FilePtr(new Smb4KFile(u, Directory));
             
           //
           // Set the workgroup name
           //
           dir->setWorkgroupName(m_item.staticCast<Smb4KShare>()->workgroupName());
-          
-          //
-          // Stat the file
-          //
-          // FIXME
             
           //
           // Set the authentication data
@@ -836,26 +813,93 @@ void Smb4KClientJob::doLookups()
           {
             dir.clear();
           } 
+        }
+          
+        break;
+      }
+      case SMBC_FILE:
+      {
+        //
+        // Create the URL for the discovered item
+        // 
+        QUrl u = m_item->url();
+        u.setPath(m_item->url().path()+QDir::separator()+QString::fromUtf8(directoryEntry->name));
+          
+        //
+        // Create the directory object
+        // 
+        FilePtr dir = FilePtr(new Smb4KFile(u, File));
             
-          break;
-        }
-        case SMBC_LINK:
+        //
+        // Set the workgroup name
+        //
+        dir->setWorkgroupName(m_item.staticCast<Smb4KShare>()->workgroupName());
+          
+        //
+        // Stat the file
+        //
+        // FIXME
+            
+        //
+        // Set the authentication data
+        // 
+        dir->setLogin(m_item->url().userName());
+        dir->setPassword(m_item->url().password());
+            
+        // 
+        // Lookup IP address
+        // 
+        QHostAddress address = lookupIpAddress(m_item->url().host());
+            
+        // 
+        // Process the IP address. 
+        // If the address is null, the server most likely went offline. So, skip it
+        // and delete the pointer.
+        // 
+        if (!address.isNull())
         {
-          qDebug() << "Processing links is not implemented.";
-          qDebug() << dirp->name;
-          qDebug() << dirp->comment;
-          break;
+          dir->setHostIpAddress(address);
+          m_files << dir;
         }
-        default:
+        else
         {
-          qDebug() << "Need to process network item " << dirp->name;
-          break;
-        }
+          dir.clear();
+        } 
+            
+        break;
+      }
+      case SMBC_LINK:
+      {
+        qDebug() << "Processing links is not implemented.";
+        qDebug() << directoryEntry->name;
+        qDebug() << directoryEntry->comment;
+        break;
+      }
+      default:
+      {
+        qDebug() << "Need to process network item " << directoryEntry->name;
+        break;
       }
     }
-    
-    smbc_closedir(dirfd);
   }
+  
+  //
+  // Close the directory
+  // 
+  smbc_closedir_fn closeDirectory = smbc_getFunctionClosedir(m_context);
+  
+  if (!closeDirectory)
+  {
+    int errorCode = errno;
+    
+    setError(UnknownError);
+    setErrorText(strerror(errorCode));
+
+    emitResult();
+    return;
+  }
+  
+  (void)closeDirectory(m_context, directory);
 }
 
 
@@ -951,8 +995,10 @@ void Smb4KClientJob::doPrinting()
   
   if (!openPrinter)
   {
+    int errorCode = errno;
+    
     setError(OpenPrintJobError);
-    setErrorText(i18n("The print job could not be set up (step 1)"));
+    setErrorText(strerror(errorCode));
     
     emitResult();
     return;
@@ -970,12 +1016,12 @@ void Smb4KClientJob::doPrinting()
     if (errorCode == EACCES)
     {
       setError(AccessDeniedError);
-      setErrorText(i18n("Permission denied"));
+      setErrorText(strerror(errorCode));
     }
     else
     {
       setError(OpenPrintJobError);
-      setErrorText(i18n("The print job could not be set up (step 2)"));
+      setErrorText(strerror(errorCode));
     }
     
     emitResult();

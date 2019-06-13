@@ -40,6 +40,7 @@
 #include <QUrl>
 #include <QStandardPaths>
 #include <QDebug>
+#include <QDirIterator>
 
 // KDE includes
 #include <KCoreAddons/KShell>
@@ -940,6 +941,16 @@ QStringList Smb4KGlobal::whitelistedMountArguments()
 
 const QString Smb4KGlobal::findMountExecutable()
 {
+  QDirIterator it("/", QStringList("mount.cifs"), QDir::Files, QDirIterator::Subdirectories);
+      
+  while (it.hasNext())
+  {
+    QString result = it.next();
+    
+    if (result.endsWith("mount.cifs"))
+      qDebug() << result;
+  }
+  
   QStringList paths;
   paths << "/bin";
   paths << "/sbin";

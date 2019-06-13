@@ -132,6 +132,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
     paths << "/etc";
     paths << "/usr/local/etc";
     paths << "/usr/pkg/etc";
+    paths << "/app/etc";
     
     QStringList files;
     files << "smb.conf";
