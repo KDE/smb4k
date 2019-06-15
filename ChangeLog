@@ -4,7 +4,7 @@ See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=3.0
 
 - Implemented safe defaults to fix the "Smb4K mounts shares read-
-  only" reported by Forolinux.
+  only" issue reported by Forolinux.
 - Updated handbook.
 - Updated translations.
 
