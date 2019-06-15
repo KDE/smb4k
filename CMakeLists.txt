@@ -2,7 +2,11 @@ project(smb4k)
 
 set(VERSION_MAJOR 3)
 set(VERSION_MINOR 0)
+<<<<<<< HEAD
 set(VERSION_PATCH 70)
+=======
+set(VERSION_PATCH 1)
+>>>>>>> 8741834... Updated ChangeLog.
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
