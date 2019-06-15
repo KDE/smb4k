@@ -34,7 +34,7 @@
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
   <date>2019-05-19</date>
-  <releaseinfo>&smb4k; 3.0.0</releaseinfo><!--FIXME change releaseinfo number-->
+  <releaseinfo>&smb4k; 3.0.1</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
   </abstract>
@@ -2029,7 +2029,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para>Most versions of Samba support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few Samba servers, you can safely uncheck this option and define custom options for the Samba servers.</para>
-            <para>Default: selected</para>
+            <para>Default: not selected</para>
           </listitem>
         </varlistentry>
         <varlistentry>
