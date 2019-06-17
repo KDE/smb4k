@@ -68,6 +68,7 @@
     <p xml:lang="ca-valencia">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions de Samba. està basat ens els Frameworks 5 del KDE i la biblioteca client del Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben. Es basiert auf den KDE Frameworks 5 und der Samba-Bibliothek libsmbclient.Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighbourhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighbourhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
+    <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba. Se basa en la infraestructura de KDE 5 y la biblioteca de clientes de Samba (libsmbclient). Escanea su entorno de red en busca de los grupos de trabajo, servidores y recursos compartidos disponibles y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
     <p xml:lang="fi">Smb4K on kehittynyt verkkoympäristöselain ja Samba-jakoliitostyökalu. Se pohjautuu KDE Frameworks 5:een ja Samban asiakaskirjastoon (libsmbclient). Se etsii verkkoympäristöstä työryhmiä, palvelimia ja jakoja ja osaa liittää halutut jaot paikalliseen tiedostojärjestelmään.</p>
     <p xml:lang="fr">Smb4K est un navigateur de voisinage réseau avancé et un utilitaire de montage Samba. Il repose sur KDE Frameworks 5 et la librairie client de Samba (libsmbclient). Il balaye votre voisinage réseau à la recherche des groupes de travail, serveurs et partages disponibles et peut afficher tous les partages désirés sur votre système de fichiers local.</p>
     <p xml:lang="gl">Smb4K é un navegador avanzado da veciñanza de rede e unha ferramenta para montar comparticións de Samba. Está baseada na versión 5 das infraestruturas de KDE e a biblioteca de cliente de Samba (libsmbclient). Examina a veciñanza de rede en busca de grupos de traballo, servidores e comparticións dispoñíbeis, e pode montar todas as comparticións que queira no seu sistema de ficheiros local.</p>
@@ -87,6 +88,7 @@
     <p xml:lang="ca-valencia">El Smb4K està basat en la biblioteca client del Samba. El seu propòsit és proporcionar un programa de fàcil ús i contindre tantes característiques com siga possible.</p>
     <p xml:lang="de">Smb4K benutzt die Samba-Bibliothek, um ein Programm mit leichter Handhabung und möglichst vielen Funktionen zur Verfügung zu stellen.</p>
     <p xml:lang="en-GB">Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.</p>
+    <p xml:lang="es">Smb4K se basa en la biblioteca de clientes de Samba. Su propósito es proporcionar un programa que sea fácil de usar y tenga tantas prestaciones como sea posible.</p>
     <p xml:lang="fi">Smb4K perustuu Samban asiakaskirjastoon. Se pyrkii tarjoamaan ohjelman, joka on sekä helppokäyttöinen että mahdollisimman monipuolinen.</p>
     <p xml:lang="fr">Smb4K utilise la librairie client de Samba. Son objectif est de fournir un programme facile à utiliser et fournissant le plus de fonctionnalités possibles.</p>
     <p xml:lang="gl">Smb4K está baseado na biblioteca de cliente de Samba. O seu obxectivo é o de fornecer un programa fácil de usar que forneza tantas funcionalidades como sexa posíbel.</p>
@@ -331,6 +333,7 @@
       <li xml:lang="ca-valencia">Vista prèvia del contingut d'una compartició remota</li>
       <li xml:lang="de">Vorschau des Inhalts einer entfernten Freigabe</li>
       <li xml:lang="en-GB">Preview of the contents of a remote share</li>
+      <li xml:lang="es">Vista previa del contenido de un recurso compartido remoto</li>
       <li xml:lang="fi">Etäjaon sisällön esikatselu</li>
       <li xml:lang="fr">Aperçu des contenus d'un partage distant</li>
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición remota</li>
@@ -446,6 +449,7 @@
       <li xml:lang="ca-valencia">Implementació per a les opcions avançades de muntatge</li>
       <li xml:lang="de">Unterstützung der erweiterten Einstellungen zum Einhängen</li>
       <li xml:lang="en-GB">Support of advanced mount options</li>
+      <li xml:lang="es">Apoyo para opciones avanzadas de montaje</li>
       <li xml:lang="fi">Lisäliitosasetusten tuki</li>
       <li xml:lang="fr">Prise en charge des options de montage avancées</li>
       <li xml:lang="gl">Permite usar opcións avanzadas de montaxe</li>
@@ -632,6 +636,7 @@
       <li xml:lang="ca-valencia">Perfils per a diferents configuracions del veïnatge de xarxa</li>
       <li xml:lang="de">Profile für verschiedene Einstellungen der Netzwerkumgebung</li>
       <li xml:lang="en-GB">Profiles for different network neighbourhood setups</li>
+      <li xml:lang="es">Perfiles para diferentes configuraciones de entorno de red</li>
       <li xml:lang="fi">Profiilit eri verkkoympäristömäärityksille</li>
       <li xml:lang="fr">Profils pour les différentes configurations de voisinage réseau</li>
       <li xml:lang="gl">Perfís para distintas configuracións de veciñanza de rede</li>
