@@ -1363,7 +1363,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     }
     else
     {
-      m_currentOptions->setRemount(Smb4KCustomOptions::RemountNever);
+      m_currentOptions->setRemount(Smb4KCustomOptions::UndefinedRemount);
     }
   }
   

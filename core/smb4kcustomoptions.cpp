@@ -691,11 +691,6 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
       entries.insert("remount", "always");
       break;
     }
-    case RemountNever:
-    {
-      entries.insert("remount", "never");
-      break;      
-    }
     case UndefinedRemount:
     {
       entries.insert("remount", QString());
