@@ -66,34 +66,16 @@ class Smb4KClientJob : public KJob
     /**
      * Error enumeration
      * 
-     * @enum OutOfMemoryError    Out of memory
-     * @enum NullContextError    The passed SMBCCTX context was a null pointer
-     * @enum SmbConfError        The smb.conf file could not be read
+     * @enum ClientError         The client failed
      * @enum AccessDeniedError   Permission denied
-     * @enum InvalidUrlError     The URL that was passed is invalid
-     * @enum NonExistentUrlError The URL does not exist
-     * @enum NoDirectoryError    The name is not a directory
-     * @enum NetPermittedError   The operation is not permitted
-     * @enum NotFoundError       The network item was not found
      * @enum FileAccessError     The file could not be read
-     * @enum OpenPrintJobError   The printer share could not be opened
      * @enum PrintFileError      The file could not be printed
-     * @enum UnknownError        Unknown error 
      */
     enum {
-      OutOfMemoryError = UserDefinedError,
-      NullContextError,
-      SmbConfError,
+      ClientError = UserDefinedError,
       AccessDeniedError,
-      InvalidUrlError,
-      NonExistentUrlError,
-      NoDirectoryError,
-      NotPermittedError,
-      NotFoundError,
       FileAccessError,
-      OpenPrintJobError,
-      PrintFileError,
-      UnknownError
+      PrintFileError
     };
     
     /**

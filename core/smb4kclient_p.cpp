@@ -400,7 +400,7 @@ void Smb4KClientJob::doLookups()
   {
     int errorCode = errno;
     
-    setError(UnknownError);
+    setError(ClientError);
     setErrorText(strerror(errorCode));
 
     emitResult();
@@ -421,53 +421,16 @@ void Smb4KClientJob::doLookups()
     
     switch (errorCode)
     {
-      case ENOMEM:
-      {
-        setError(OutOfMemoryError);
-        setErrorText(strerror(errorCode));
-        break;
-      }
       case EACCES:
       {
         setError(AccessDeniedError);
         setErrorText(strerror(errorCode));
         break;
       }
-      case EINVAL:
-      {
-        setError(InvalidUrlError);
-        setErrorText(strerror(errorCode));
-        break;
-      }
-      case ENOENT:
-      {
-        setError(NonExistentUrlError);
-        setErrorText(strerror(errorCode));
-        break;
-      }
-      case ENOTDIR:
-      {
-        setError(NoDirectoryError);
-        setErrorText(strerror(errorCode));
-        break;
-      }
-      case EPERM:
-      {
-        setError(NotPermittedError);
-        // Is the error message correct? 
-        setErrorText(strerror(errorCode));
-        break;
-      }
-      case ENODEV:
-      {
-        setError(NotFoundError);
-        setErrorText(strerror(errorCode));
-        break;
-      }
       default:
       {
-        setError(UnknownError);
-        setErrorText(i18n("Unknown error"));
+        setError(ClientError);
+        setErrorText(strerror(errorCode));
       }
     }
     
@@ -485,7 +448,7 @@ void Smb4KClientJob::doLookups()
   {
     int errorCode = errno;
     
-    setError(UnknownError);
+    setError(ClientError);
     setErrorText(strerror(errorCode));
 
     emitResult();
@@ -892,7 +855,7 @@ void Smb4KClientJob::doLookups()
   {
     int errorCode = errno;
     
-    setError(UnknownError);
+    setError(ClientError);
     setErrorText(strerror(errorCode));
 
     emitResult();
@@ -997,7 +960,7 @@ void Smb4KClientJob::doPrinting()
   {
     int errorCode = errno;
     
-    setError(OpenPrintJobError);
+    setError(ClientError);
     setErrorText(strerror(errorCode));
     
     emitResult();
@@ -1013,15 +976,20 @@ void Smb4KClientJob::doPrinting()
   {
     int errorCode = errno;
     
-    if (errorCode == EACCES)
+    switch (errorCode)
     {
-      setError(AccessDeniedError);
-      setErrorText(strerror(errorCode));
-    }
-    else
-    {
-      setError(OpenPrintJobError);
-      setErrorText(strerror(errorCode));
+      case EACCES:
+      {
+        setError(AccessDeniedError);
+        setErrorText(strerror(errorCode));
+        break;
+      }
+      default:
+      {
+        setError(ClientError);
+        setErrorText(strerror(errorCode));
+        break;
+      }
     }
     
     emitResult();
@@ -1164,21 +1132,8 @@ void Smb4KClientJob::slotStartJob()
   {
     int errorCode = errno;
     
-    switch (errorCode)
-    {
-      case ENOMEM:
-      {
-        setError(OutOfMemoryError);
-        setErrorText(i18n("Out of memory"));
-        break;
-      }
-      default:
-      {
-        setError(UnknownError);
-        setErrorText(i18n("Unknown error"));
-        break;
-      }
-    }
+    setError(ClientError);
+    setErrorText(strerror(errorCode));
     
     emitResult();
     return;
@@ -1374,32 +1329,8 @@ void Smb4KClientJob::slotStartJob()
   {
     int errorCode = errno;
     
-    switch (errorCode)
-    {
-      case ENOMEM:
-      {
-        setError(OutOfMemoryError);
-        setErrorText(i18n("Out of memory"));
-        break;
-      }
-      case EBADF:
-      {
-        setError(NullContextError);
-        setErrorText(i18n("NULL context given"));
-        break;
-      }
-      case ENOENT:
-      {
-        setError(SmbConfError);
-        setErrorText(i18n("The smb.conf file would not load"));
-        break;
-      }
-      default:
-      {
-        setError(UnknownError);
-        setErrorText(i18n("Unknown error"));
-      }
-    }
+    setError(ClientError);
+    setErrorText(strerror(errorCode));
 
     smbc_free_context(m_context, 0);
 
