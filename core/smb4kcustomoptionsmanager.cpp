@@ -96,6 +96,9 @@ void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
 {
   if (share)
   {
+    //
+    // Find the right custom options, if they exist
+    // 
     OptionsPtr options = findOptions(share, true);
     
     if (options)
@@ -116,6 +119,9 @@ void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
       d->options << options;
     }
     
+    //
+    // Write the custom options
+    // 
     writeCustomOptions();
   }
 }
@@ -125,20 +131,35 @@ void Smb4KCustomOptionsManager::removeRemount(const SharePtr &share, bool force)
 {
   if (share)
   {
+    //
+    // Get the remount
+    // 
     OptionsPtr options = findOptions(share, true);
     
+    //
+    // Remove the remount flag and, if there are no more options defined,
+    // the options object itself. Save the modified list to the file afterwards.
+    // 
     if (options)
     {
       if (options->remount() == Smb4KCustomOptions::RemountOnce)
       {
-        options->setRemount(Smb4KCustomOptions::RemountNever);
+        options->setRemount(Smb4KCustomOptions::UndefinedRemount);
       }
       else if (options->remount() == Smb4KCustomOptions::RemountAlways && force)
       {
-        options->setRemount(Smb4KCustomOptions::RemountNever);
-      }     
+        options->setRemount(Smb4KCustomOptions::UndefinedRemount);
+      }
+      
+      if (!options->hasOptions())
+      {
+        removeCustomOptions(options, false);
+      }
     }
     
+    //
+    // Write the options
+    //
     writeCustomOptions();
   }
 }
@@ -147,25 +168,26 @@ void Smb4KCustomOptionsManager::removeRemount(const SharePtr &share, bool force)
 void Smb4KCustomOptionsManager::clearRemounts(bool force)
 {
   //
-  // List of relevant custom options
+  // Remove the remount flag and, if there are nomore options defined,
+  // also the options object. Write everything to the file afterwards.
   //
-  QList<OptionsPtr> options = customOptions(false);
-  
-  //
-  // Remove the remount flags
-  //
-  for (const OptionsPtr &o : options)
+  for (const OptionsPtr &o : d->options)
   {
     if (o->type() == Share)
     {
       if (o->remount() == Smb4KCustomOptions::RemountOnce)
       {
-        o->setRemount(Smb4KCustomOptions::RemountNever);
+        o->setRemount(Smb4KCustomOptions::UndefinedRemount);
       }
       else if (o->remount() == Smb4KCustomOptions::RemountAlways && force)
       {
-        o->setRemount(Smb4KCustomOptions::RemountNever);
+        o->setRemount(Smb4KCustomOptions::UndefinedRemount);
       }
+    }
+    
+    if (!o->hasOptions())
+    {
+      removeCustomOptions(o, false);
     }
   }
   
@@ -501,10 +523,6 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                         {
                           options->setRemount(Smb4KCustomOptions::RemountAlways);
                         }
-                        else if (remount == "never")
-                        {
-                          options->setRemount(Smb4KCustomOptions::RemountNever);
-                        }
                         else
                         {
                           options->setRemount(Smb4KCustomOptions::UndefinedRemount);
@@ -806,8 +824,6 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
   {
     xmlFile.remove();
   }
-  
-  // FIXME: Flush the list of custom options and reload it?
 }
 
 
@@ -960,11 +976,11 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
       {
         if (options->hasOptions())
         {
-          addCustomOptions(options);
+          addCustomOptions(options, true);
         }
         else
         {
-          removeCustomOptions(options);
+          removeCustomOptions(options, true);
         }
       }
       else
@@ -978,7 +994,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
 }
 
 
-void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options)
+void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool write)
 {
   if (options)
   {
@@ -1047,14 +1063,17 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options)
     }
     
     //
-    // Write the custom options to the file
+    // Write the custom options to the file, if desired
     //
-    writeCustomOptions();
+    if (write)
+    {
+      writeCustomOptions();
+    }
   }
 }
 
 
-void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options)
+void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options, bool write)
 {
   if (options)
   {
@@ -1073,9 +1092,12 @@ void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options)
     }
     
     //
-    // Write the custom options to the file
+    // Write the custom options to the file, if desired
     //
-    writeCustomOptions();
+    if (write)
+    {
+      writeCustomOptions();
+    }
   }
 }
 

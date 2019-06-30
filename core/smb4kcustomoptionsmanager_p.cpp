@@ -1651,7 +1651,7 @@ void Smb4KCustomOptionsDialog::saveValues()
       }
       else
       {
-        m_options->setRemount(Smb4KCustomOptions::RemountNever);
+        m_options->setRemount(Smb4KCustomOptions::UndefinedRemount);
       }
     }
   }

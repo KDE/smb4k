@@ -181,16 +181,20 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * the original object.
      * 
      * @param options             The custom options
+     * 
+     * @param write               Write the options to the file
      */
-    void addCustomOptions(const OptionsPtr &options);
+    void addCustomOptions(const OptionsPtr &options, bool write = false);
     
     /**
      * This function removes custom options for a single network item from the
      * list of options.
      * 
      * @param options             The custom options
+     * 
+     * @param write               Write the options to the file
      */
-    void removeCustomOptions(const OptionsPtr &options);
+    void removeCustomOptions(const OptionsPtr &options, bool write = false);
     
     /**
      * This function returns a list of custom option objects that have 
