@@ -82,6 +82,7 @@
     <p xml:lang="sv">Smb4K är en avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-kataloger. Den är baserad på KDE:s ramverk 5 och Sambas klientbibliotek (libsmbclient). Den söker igenom ditt nätverksgrannskap för att hitta alla tillgängliga arbetsgrupper, servrar och delade kataloger, och kan montera alla delade kataloger som önskas i det lokala filsystemet.</p>
     <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba. Програму засновано на KDE Frameworks 5 та клієнтській бібліотеці Samba (libsmbclient). Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
     <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
+    <p xml:lang="zh-CN">Smb4K 是一个高级的网络邻居浏览器和 Samba 共享挂载工具。它基于 KDE 框架 5 和 Samba 客户端库 (libsmbclient)。它会扫描您的网络邻居，发现所有可用的工作组，服务器和共享，并挂载所有想要共享的内容到您的文件系统。</p>
     <p>
       Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.
     </p>
@@ -103,6 +104,7 @@
     <p xml:lang="sv">Smb4K är baserat på Sambas klientbibliotek. Dess syfte är att tillhandahålla ett program som är enkelt att använda och har så många funktioner som möjligt.</p>
     <p xml:lang="uk">Smb4K засновано на клієнтській бібліотеці Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
     <p xml:lang="x-test">xxSmb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.xx</p>
+    <p xml:lang="zh-CN">Smb4K 基于 Samba 的客户端库。它的目标是易于使用且功能丰富。</p>
     <p>
       Features:
     </p>
@@ -349,6 +351,7 @@
       <li xml:lang="sv">Förhandsgranskning av innehållet i en delad resurs</li>
       <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
       <li xml:lang="x-test">xxPreview of the contents of a remote sharexx</li>
+      <li xml:lang="zh-CN">远程共享内容的预览</li>
       <li>Default login</li>
       <li xml:lang="bs">Početna prijava</li>
       <li xml:lang="ca">Inici de sessió predeterminat</li>
@@ -466,6 +469,7 @@
       <li xml:lang="sv">Stöd för avancerade monteringsalternativ</li>
       <li xml:lang="uk">Підтримка додаткових параметрів монтування</li>
       <li xml:lang="x-test">xxSupport of advanced mount optionsxx</li>
+      <li xml:lang="zh-CN">支持高级挂载选项</li>
       <li>Support of printer shares</li>
       <li xml:lang="bs">Podrška za razmjene štampača</li>
       <li xml:lang="ca">Implementació per a les impressores compartides</li>
@@ -654,6 +658,7 @@
       <li xml:lang="sv">Profiler för olika inställningar av nätverksgrannskap</li>
       <li xml:lang="uk">Профілі для різних наборів налаштувань мережевого оточення</li>
       <li xml:lang="x-test">xxProfiles for different network neighborhood setupsxx</li>
+      <li xml:lang="zh-CN">为不同网络邻居设置配备不同配置方案</li>
     </ul>
     <p>
       If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.
