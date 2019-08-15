@@ -42,6 +42,8 @@
 #include <KDBusAddons/KDBusService>
 #include <KCrash/KCrash>
 
+#include <smb4k_version.h>
+
 using namespace Smb4KGlobal;
 
 
@@ -148,7 +150,7 @@ int main(int argc, char **argv)
   KLocalizedString::setApplicationDomain("smb4k");
   
   // Create the about data for Smb4K  
-  KAboutData aboutData(QStringLiteral("smb4k"), i18n("Smb4K"), QStringLiteral(VERSION),
+  KAboutData aboutData(QStringLiteral("smb4k"), i18n("Smb4K"), QStringLiteral(SMB4K_VERSION_STRING),
     i18n("Advanced network neighborhood browser and Samba share mounting utility"),
     KAboutLicense::GPL_V2, i18n("\u00A9 2003-2019 Alexander Reinholdt"), QString(), 
     QStringLiteral("https://smb4k.sourceforge.io"));

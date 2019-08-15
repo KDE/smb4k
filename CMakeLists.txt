@@ -34,6 +34,9 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMInstallIcons)
+include(ECMSetupVersion)
+
+ecm_setup_version(${VERSION} VARIABLE_PREFIX SMB4K VERSION_HEADER smb4k_version.h)
 
 # Qt5 modules
 find_package(Qt5Core ${QT_MIN_VERSION} REQUIRED)
