@@ -1,3 +1,14 @@
+Smb4K 3.0.2 (2019-08-15):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=3.0
+
+- Fixed and improved handling of custom options, especially the remount 
+  options. Removed the "RemountNever" enum entry, since it is actually 
+  not needed for a proper operation.
+- Updated home page address.
+- Updated translations.
+
 Smb4K 3.0.1 (2019-06-15):
 
 See the summary of changes below. For a full list of changes, please
