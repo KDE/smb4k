@@ -23,8 +23,6 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#include <config.h>
-
 // application specific includes
 #include "smb4kmainwindow.h"
 #include "core/smb4ksettings.h"

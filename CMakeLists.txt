@@ -79,9 +79,6 @@ if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
   set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS ON)
 endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake
-               ${CMAKE_CURRENT_BINARY_DIR}/config.h)
-
 # Make sure that all libraries, plugins, etc. are installed
 # into the right place.
 set(KDE_INSTALL_USE_QT_SYS_PATHS ON CACHE BOOLEAN "Use Qt system paths for installation" FORCE)
