@@ -59,6 +59,7 @@
   <summary xml:lang="sv">Avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-resurser</summary>
   <summary xml:lang="uk">Переглядач мережевого оточення з додатковими можливостями та засіб для монтування спільних ресурсів Samba</summary>
   <summary xml:lang="x-test">xxAdvanced Network Neighborhood Browser and Samba Share Mounting Utilityxx</summary>
+  <summary xml:lang="zh-CN">高级网络邻居浏览器和 Samba 共享挂载工具</summary>
   <summary xml:lang="zh-TW">進階網路芳鄰瀏覽器與 Samba 分享掛載工具</summary>
   <description>
     <p>
@@ -159,6 +160,7 @@
       <li xml:lang="sv">Sökning efter (aktiva) arbetsgrupper, värddatorer och delade resurser</li>
       <li xml:lang="uk">Виявлення (активних) робочих груп, вузлів та спільних ресурсів.</li>
       <li xml:lang="x-test">xxScanning for (active) workgroups, hosts, and sharesxx</li>
+      <li xml:lang="zh-CN">扫描(活动)工作组、主机和共享</li>
       <li xml:lang="zh-TW">掃描（活躍的）工作群組、主機與分享</li>
       <li>Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
       <li xml:lang="bs">Podrška za CIFS (Linux) i SMBFS (FreeBSD) sistem datoteka</li>
@@ -183,6 +185,7 @@
       <li xml:lang="sv">Stöd för filsystemen CIFS (Linux) och SMBFS (FreeBSD)</li>
       <li xml:lang="uk">Підтримка файлових систем CIFS (Linux) та SMBFS (FreeBSD).</li>
       <li xml:lang="x-test">xxSupport of the CIFS (Linux) and SMBFS (FreeBSD) file systemxx</li>
+      <li xml:lang="zh-CN">支持 CIFS (Linux) 和 SMBFS (FreeBSD) 文件系统</li>
       <li xml:lang="zh-TW">支援 CIFS (Linux) 與 SMBFS (FreeBSD) 檔案系統</li>
       <li>Mounting and unmounting of shares</li>
       <li xml:lang="bs">Namještanje i razmještanje razmjena</li>
@@ -207,6 +210,7 @@
       <li xml:lang="sv">Montera och avmontera delade resurser</li>
       <li xml:lang="uk">Монтування і демонтування спільних ресурсів.</li>
       <li xml:lang="x-test">xxMounting and unmounting of sharesxx</li>
+      <li xml:lang="zh-CN">挂载和卸载共享</li>
       <li xml:lang="zh-TW">掛載與解除掛載分享</li>
       <li>Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="bs">Pristup datotekama namještene razmjene koristeći upravitelj datotekom ili terminal</li>
@@ -377,6 +381,7 @@
       <li xml:lang="sv">Standardinloggning</li>
       <li xml:lang="uk">Типова реєстрація.</li>
       <li xml:lang="x-test">xxDefault loginxx</li>
+      <li xml:lang="zh-CN">默认登录</li>
       <li xml:lang="zh-TW">預設登入</li>
       <li>Special handling of homes shares</li>
       <li xml:lang="bs">Posebno korištenje početnih razmjena</li>
@@ -449,6 +454,7 @@
       <li xml:lang="sv">Grafisk komponent i systembrickan</li>
       <li xml:lang="uk">Віджет системного лотка.</li>
       <li xml:lang="x-test">xxSystem tray widgetxx</li>
+      <li xml:lang="zh-CN">系统托盘小部件</li>
       <li xml:lang="zh-TW">系統匣小工具</li>
       <li>Support of advanced mount options</li>
       <li xml:lang="ca">Implementació per a les opcions avançades de muntatge</li>
@@ -493,6 +499,7 @@
       <li xml:lang="sv">Stöd för delade skrivare</li>
       <li xml:lang="uk">Підтримка спільних принтерів.</li>
       <li xml:lang="x-test">xxSupport of printer sharesxx</li>
+      <li xml:lang="zh-CN">支持打印机共享</li>
       <li xml:lang="zh-TW">印表機分享的支援</li>
       <li>KWallet support</li>
       <li xml:lang="bs">KWallet podrška</li>
@@ -518,6 +525,7 @@
       <li xml:lang="sv">Stöd för plånboken</li>
       <li xml:lang="uk">Підтримка роботи з KWallet.</li>
       <li xml:lang="x-test">xxKWallet supportxx</li>
+      <li xml:lang="zh-CN">KWallet 支持</li>
       <li xml:lang="zh-TW">支援 KWallet</li>
       <li>Synchronization of a remote share with a local copy and vice versa</li>
       <li xml:lang="bs">Sinhronizacija udaljenih razmjena sa lokalnom kopijom i obrnuto</li>
@@ -614,6 +622,7 @@
       <li xml:lang="sv">Funktioner för att väckas av lokalt nätverk</li>
       <li xml:lang="uk">Можливості пробудження сигналом з локальної мережі.</li>
       <li xml:lang="x-test">xxWake-On-LAN capabilitiesxx</li>
+      <li xml:lang="zh-CN">局域网唤醒功能</li>
       <li xml:lang="zh-TW">LAN 喚醒的能力</li>
       <li>Plasmoid for desktop integration</li>
       <li xml:lang="bs">Plasmoid za integraciju radne površine</li>
@@ -638,6 +647,7 @@
       <li xml:lang="sv">Plasmoid för integrering med skrivbordssökning</li>
       <li xml:lang="uk">Плазмоїд для інтеграції зі стільницею.</li>
       <li xml:lang="x-test">xxPlasmoid for desktop integrationxx</li>
+      <li xml:lang="zh-CN">Plasma 桌面部件集成</li>
       <li xml:lang="zh-TW">以 Plasmoid 提供桌面整合</li>
       <li>Profiles for different network neighborhood setups</li>
       <li xml:lang="ca">Perfils per a diferents configuracions del veïnatge de xarxa</li>
@@ -713,6 +723,7 @@
       <caption xml:lang="sv">Huvudfönstret</caption>
       <caption xml:lang="uk">Головне вікно.</caption>
       <caption xml:lang="x-test">xxThe main windowxx</caption>
+      <caption xml:lang="zh-CN">主窗口</caption>
       <caption xml:lang="zh-TW">主視窗</caption>
       <image>https://cdn.kde.org/screenshots/smb4k/screenshot_smb4k_mainwindow_1.png</image>
     </screenshot>
@@ -741,6 +752,7 @@
       <caption xml:lang="sv">Plasmoiden</caption>
       <caption xml:lang="uk">Плазмоїд.</caption>
       <caption xml:lang="x-test">xxThe plasmoidxx</caption>
+      <caption xml:lang="zh-CN">Plasma 桌面部件</caption>
       <caption xml:lang="zh-TW">Plasmoid 元件</caption>
       <image>https://cdn.kde.org/screenshots/smb4k/screenshot_smb4k_plasmoid_1.png</image>
     </screenshot>
