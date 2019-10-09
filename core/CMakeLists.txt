@@ -78,7 +78,7 @@ target_link_libraries(smb4kcore
   KF5::XmlGui
   ${LIBSMBCLIENT_LIBRARIES})
 
-set_target_properties(smb4kcore PROPERTIES VERSION 6.0.0 SOVERSION 6)
+set_target_properties(smb4kcore PROPERTIES VERSION 6.1.0 SOVERSION 6)
 install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
 
 
