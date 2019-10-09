@@ -34,6 +34,7 @@
 #include <QScopedPointer>
 #include <QUrl>
 #include <QNetworkConfigurationManager>
+#include <QNetworkSession>
 
 class Smb4KHardwareInterfacePrivate;
 
@@ -68,17 +69,8 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     
     /**
      * This function checks the current network configuration.
-     * You should run this if @see isOnline() and @see networkConfigUpdated() return
-     * both FALSE.
      */
     void updateNetworkConfig();
-    
-    /**
-     * This function returns TRUE if the network configuration was already updated
-     * and FALSE otherwise.
-     * @returns TRUE if the network configuration was updated and FALSE otherwise.
-     */
-    bool networkConfigIsUpdated() const;
     
     /**
      * This function returns TRUE if the system is online and FALSE otherwise.
@@ -122,6 +114,12 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
      * signal and sets d->networkConfigUpdated to TRUE.
      */
     void slotNetworkConfigUpdated();
+    
+    /**
+     * This slot is called when the state of the network connection changed. 
+     * It is connected to the QNetworkSession::stateChanged() signal.
+     */
+    void slotConnectionStateChanged(QNetworkSession::State state);
     
     /**
      * This slot is called when a device was added to the system.

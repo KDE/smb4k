@@ -45,10 +45,9 @@ Q_GLOBAL_STATIC(Smb4KHardwareInterfaceStatic, p);
 Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
 : QObject(parent), d(new Smb4KHardwareInterfacePrivate)
 {
-  d->networkConfigUpdated = false;
+  d->networkSession = nullptr;
   
   connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
-  connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SIGNAL(onlineStateChanged(bool)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
 
@@ -75,15 +74,14 @@ void Smb4KHardwareInterface::updateNetworkConfig()
 }
 
 
-bool Smb4KHardwareInterface::networkConfigIsUpdated() const
-{
-  return d->networkConfigUpdated;
-}
-
-
 bool Smb4KHardwareInterface::isOnline() const
 {
-  return d->networkConfigManager.isOnline();
+  if (d->networkSession)
+  {
+    return (d->networkSession->state() == QNetworkSession::Connected);
+  }
+  
+  return false;
 }
 
 
@@ -138,9 +136,48 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
 
 void Smb4KHardwareInterface::slotNetworkConfigUpdated()
 {
-  d->networkConfigUpdated = true;
+  //
+  // Create a network session object if necessary and connect it to the stateChanged()
+  // signal to monitor changes of the network connection.
+  // 
+  if (!d->networkSession)
+  {
+    d->networkSession = new QNetworkSession(d->networkConfigManager.defaultConfiguration(), this);
+    connect(d->networkSession, SIGNAL(stateChanged(QNetworkSession::State)), this, SLOT(slotConnectionStateChanged(QNetworkSession::State)));
+  }
+
+  //
+  // Tell the application that the network configuration was updated
+  // 
   emit networkConfigUpdated();
+  
+  //
+  // Check the state of the network session and emit the onlineStateChanged()
+  // signal accordingly.
+  // 
+  if (d->networkSession->state() == QNetworkSession::Connected)
+  {
+    emit onlineStateChanged(true);
+  }
+  else
+  {
+    emit onlineStateChanged(false);
+  }
 }
+
+
+void Smb4KHardwareInterface::slotConnectionStateChanged(QNetworkSession::State state)
+{
+  if (state == QNetworkSession::Connected)
+  {
+    emit onlineStateChanged(true);
+  }
+  else
+  {
+    emit onlineStateChanged(false);
+  }
+}
+
 
 
 void Smb4KHardwareInterface::slotDeviceAdded(const QString& udi)

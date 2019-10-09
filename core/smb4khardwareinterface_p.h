@@ -32,12 +32,13 @@
 // Qt includes
 #include <QStringList>
 #include <QNetworkConfigurationManager>
+#include <QNetworkSession>
 
 class Smb4KHardwareInterfacePrivate
 {
   public:
     QNetworkConfigurationManager networkConfigManager;
-    bool networkConfigUpdated;
+    QNetworkSession *networkSession;
     QStringList udis;
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
     QStringList mountPoints;
