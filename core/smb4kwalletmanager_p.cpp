@@ -83,7 +83,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, cons
         }
         else
         {
-          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1 on %2</b>.</qt>", share->displayString(true)));
+          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->displayString(true)));
         }
       }
 

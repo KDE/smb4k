@@ -23,8 +23,8 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KNETWORKSEARCHBAR_H
-#define SMB4KNETWORKSEARCHBAR_H
+#ifndef SMB4KNETWORKSEARCHTOOLBAR_H
+#define SMB4KNETWORKSEARCHTOOLBAR_H
 
 // application specific includes
 #include "core/smb4kglobal.h"

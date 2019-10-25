@@ -43,7 +43,6 @@
 #include <QLabel>
 #include <QGroupBox>
 #include <QTabWidget>
-#include <QPushButton>
 #include <QDialogButtonBox>
 #include <QWindow>
 
