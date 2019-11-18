@@ -401,9 +401,6 @@ void Smb4KClientJob::doLookups()
 
     emitResult();
     return;
-
-    emitResult();
-    return;
   }
   
   //
