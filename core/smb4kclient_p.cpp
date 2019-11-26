@@ -424,6 +424,7 @@ void Smb4KClientJob::doLookups()
       {
         setError(ClientError);
         setErrorText(strerror(errorCode));
+        break;
       }
     }
     
@@ -1149,10 +1150,14 @@ void Smb4KClientJob::slotStartJob()
   {
     case Network:
     {
-      // 
-      // We do not know about the servers and the domains/workgroups
-      // present. So, do not set anything and use the default.
-      // 
+      //
+      // If desired set the protocol to SMB1 ("NT1") so that the workgroups 
+      // and domains can be discovered.
+      //
+      if (Smb4KSettings::forceSMB1Protocol())
+      {
+        smbc_setOptionProtocols(m_context, "NT1", "NT1");
+      }
       break;
     }
     case Workgroup:

@@ -83,6 +83,9 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   
   QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), basicSettingsBox);
   largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
+  
+  QCheckBox *forceSMB1Protocol = new QCheckBox(Smb4KSettings::self()->forceSMB1ProtocolItem()->label(), basicSettingsBox);
+  forceSMB1Protocol->setObjectName("kcfg_ForceSMB1Protocol");
 
   basicSettingsBoxLayout->addWidget(nebiosNameLabel, 0, 0, 0);
   basicSettingsBoxLayout->addWidget(netbiosName, 0, 1, 0);
@@ -91,6 +94,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   basicSettingsBoxLayout->addWidget(useRemoteSmbPort, 2, 0, 0);
   basicSettingsBoxLayout->addWidget(remoteSmbPort, 2, 1, 0);
   basicSettingsBoxLayout->addWidget(largeNetworkNeighborhood, 3, 0, 1, 2, 0);
+  basicSettingsBoxLayout->addWidget(forceSMB1Protocol, 4, 0, 1, 2, 0);
   
   sambaTabLayout->addWidget(basicSettingsBox, 0);
 
