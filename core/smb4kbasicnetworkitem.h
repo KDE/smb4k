@@ -110,7 +110,7 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
     QUrl *pUrl;
     
     /**
-     * Export a pointer to the private icon variable.
+     * Expose a pointer to the private icon variable.
      */
     QIcon *pIcon;
     
