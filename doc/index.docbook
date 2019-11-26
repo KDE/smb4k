@@ -3823,7 +3823,7 @@ ntlm auth = yes
   <sect1 id="command_reference_help_menu">
     <title>The Help Menu</title>
 
-    <para>Additionally &smb4k; has the common &kde; <guimenu>Help</guimenu> menu items, for more information read the section about the <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
+    <para>Additionally &smb4k; has the common &kde; <guimenu>Help</guimenu> menu items, for more information read the section about the <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.</para>
   </sect1>
 </chapter>
 
