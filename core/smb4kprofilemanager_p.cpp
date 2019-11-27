@@ -98,7 +98,7 @@ void Smb4KProfileMigrationDialog::setupView()
 
   QHBoxLayout *desc_layout = new QHBoxLayout(description);
   desc_layout->setSpacing(5);
-  desc_layout->setMargin(0);
+  desc_layout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *pixmap = new QLabel(description);
   QPixmap pix = KDE::icon("format-list-unordered").pixmap(KIconLoader::SizeHuge);
@@ -119,7 +119,7 @@ void Smb4KProfileMigrationDialog::setupView()
   
   QGridLayout *editors_layout = new QGridLayout(editors);
   editors_layout->setSpacing(5);
-  editors_layout->setMargin(0);
+  editors_layout->setContentsMargins(0, 0, 0, 0);
   editors_layout->setColumnStretch(0, 0);
   editors_layout->setColumnStretch(1, 1);
   

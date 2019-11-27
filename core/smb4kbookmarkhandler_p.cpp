@@ -129,7 +129,7 @@ void Smb4KBookmarkDialog::setupView()
 
   QHBoxLayout *desc_layout = new QHBoxLayout(description);
   desc_layout->setSpacing(5);
-  desc_layout->setMargin(0);
+  desc_layout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *pixmap = new QLabel(description);
   QPixmap sync_pix = KDE::icon("bookmark-new").pixmap(KIconLoader::SizeHuge);
@@ -155,7 +155,7 @@ void Smb4KBookmarkDialog::setupView()
 
   QGridLayout *editors_layout = new QGridLayout(m_editors);
   editors_layout->setSpacing(5);
-  editors_layout->setMargin(0);
+  editors_layout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
   m_label_edit = new KLineEdit(m_editors);
@@ -481,7 +481,7 @@ void Smb4KBookmarkEditor::setupView()
 
   QGridLayout *editors_layout = new QGridLayout(m_editors);
   editors_layout->setSpacing(5);
-  editors_layout->setMargin(0);
+  editors_layout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
   m_label_edit = new KLineEdit(m_editors);

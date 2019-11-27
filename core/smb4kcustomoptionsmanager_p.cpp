@@ -76,7 +76,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
   
   QHBoxLayout *headerLayout = new QHBoxLayout(header);
   headerLayout->setSpacing(5);
-  headerLayout->setMargin(0);
+  headerLayout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *pixmap = new QLabel(header);
   QPixmap preferencesPixmap = KDE::icon("preferences-system-network").pixmap(KIconLoader::SizeHuge);
