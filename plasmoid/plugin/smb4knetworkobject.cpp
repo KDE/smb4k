@@ -198,12 +198,12 @@ QString Smb4KNetworkObject::shareName() const
 
   if (share_name.startsWith('/'))
   {
-    share_name = share_name.remove(0, 1);
+    share_name.remove(0, 1);
   }
 
   if (share_name.endsWith('/'))
   {
-    share_name = share_name.remove(share_name.size() - 1, 1);
+    share_name.remove(share_name.size() - 1, 1);
   }
 
   return share_name;

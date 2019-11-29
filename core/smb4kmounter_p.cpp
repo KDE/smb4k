@@ -228,7 +228,7 @@ void Smb4KMountDialog::slotOkClicked()
     //
     // Set the URL of the share
     // 
-    if (smbUrl.isValid() && !smbUrl.host().isEmpty() && !smbUrl.path().isEmpty() && !smbUrl.path().endsWith(QLatin1String("/")))
+    if (smbUrl.isValid() && !smbUrl.host().isEmpty() && !smbUrl.path().isEmpty() && !smbUrl.path().endsWith(QLatin1Char('/')))
     {
       m_share->setUrl(smbUrl);
       m_share->setWorkgroupName(m_workgroup_input->text().trimmed());
