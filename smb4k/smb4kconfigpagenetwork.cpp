@@ -46,22 +46,17 @@
 Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(parent)
 {
   //
-  // Network Neighborhood tab
+  // Basic Samba Settings
   // 
-  QWidget *sambaTab = new QWidget(this);
+  QWidget *commonSambaTab = new QWidget(this);
+  QVBoxLayout *commonSambaTabLayout = new QVBoxLayout(commonSambaTab);
   
-  QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
-  sambaTabLayout->setSpacing(5);
-  sambaTabLayout->setMargin(0);
-  
-  // 
+  //
   // Basic Settings group box
   // 
-  QGroupBox *basicSettingsBox = new QGroupBox(i18n("Basic Settings"), sambaTab);
-
+  QGroupBox *basicSettingsBox = new QGroupBox(i18n("Basic Settings"), commonSambaTab);
   QGridLayout *basicSettingsBoxLayout = new QGridLayout(basicSettingsBox);
-  basicSettingsBoxLayout->setSpacing(5);
-
+  
   QLabel *nebiosNameLabel = new QLabel(Smb4KSettings::self()->netBIOSNameItem()->label(), basicSettingsBox);
   KLineEdit *netbiosName = new KLineEdit(basicSettingsBox);
   netbiosName->setObjectName("kcfg_NetBIOSName");
@@ -83,9 +78,6 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   
   QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), basicSettingsBox);
   largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
-  
-  QCheckBox *forceSMB1Protocol = new QCheckBox(Smb4KSettings::self()->forceSMB1ProtocolItem()->label(), basicSettingsBox);
-  forceSMB1Protocol->setObjectName("kcfg_ForceSMB1Protocol");
 
   basicSettingsBoxLayout->addWidget(nebiosNameLabel, 0, 0, 0);
   basicSettingsBoxLayout->addWidget(netbiosName, 0, 1, 0);
@@ -94,16 +86,54 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   basicSettingsBoxLayout->addWidget(useRemoteSmbPort, 2, 0, 0);
   basicSettingsBoxLayout->addWidget(remoteSmbPort, 2, 1, 0);
   basicSettingsBoxLayout->addWidget(largeNetworkNeighborhood, 3, 0, 1, 2, 0);
-  basicSettingsBoxLayout->addWidget(forceSMB1Protocol, 4, 0, 1, 2, 0);
   
-  sambaTabLayout->addWidget(basicSettingsBox, 0);
-
+  //
+  // Behavior group box
   // 
+  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), commonSambaTab);
+  QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
+  
+  QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behaviorBox);
+  detectPrinters->setObjectName("kcfg_DetectPrinterShares");
+
+  QCheckBox *detectHiddenShares = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), behaviorBox);
+  detectHiddenShares->setObjectName("kcfg_DetectHiddenShares");  
+  
+  QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behaviorBox);
+  previewHiddenItems->setObjectName("kcfg_PreviewHiddenItems");
+  
+  behaviorBoxLayout->addWidget(detectPrinters, 0, 0, 0);
+  behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1, 0);
+  behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0, 0);
+  
+  commonSambaTabLayout->addWidget(basicSettingsBox, 0);
+  commonSambaTabLayout->addWidget(behaviorBox, 0);
+  commonSambaTabLayout->addStretch(100);
+  
+  addTab(commonSambaTab, i18n("Common Samba Settings"));
+  
+  //
+  // Advanced Samba Settings
+  // 
+  QWidget *advancedSambaTab = new QWidget(this);
+  QVBoxLayout *advancedSambaTabLayout = new QVBoxLayout(advancedSambaTab);
+  
+  //
+  // Protocol group box
+  // 
+  QGroupBox *protocolsBox = new QGroupBox(i18n("Protocols"), basicSettingsBox);
+  QVBoxLayout *protocolsBoxLayout = new QVBoxLayout(protocolsBox);
+  
+  QCheckBox *forceSMB1Protocol = new QCheckBox(Smb4KSettings::self()->forceSMB1ProtocolItem()->label(), protocolsBox);
+  forceSMB1Protocol->setObjectName("kcfg_ForceSMB1Protocol");
+  
+  protocolsBoxLayout->addWidget(forceSMB1Protocol, 0);
+  
+  //
   // Authentication group box
   // 
-  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
+  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), advancedSambaTab);
   QGridLayout *authenticationBoxLayout = new QGridLayout(authenticationBox);
-  authenticationBoxLayout->setSpacing(5);
 
   QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), authenticationBox);
   masterBrowsersRequireAuth->setObjectName("kcfg_MasterBrowsersRequireAuth");
@@ -117,13 +147,11 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   authenticationBoxLayout->addWidget(masterBrowsersRequireAuth, 0, 0, 0);
   authenticationBoxLayout->addWidget(useKerberos, 0, 1, 0);
   authenticationBoxLayout->addWidget(useCCache, 1, 0, 0);
-
-  sambaTabLayout->addWidget(authenticationBox, 0);
   
   //
   // Security group box
   // 
-  QGroupBox *securityBox = new QGroupBox(i18n("Security"), sambaTab);
+  QGroupBox *securityBox = new QGroupBox(i18n("Security"), advancedSambaTab);
   QGridLayout *securityBoxLayout = new QGridLayout(securityBox);
   securityBoxLayout->setSpacing(5);
   
@@ -144,51 +172,24 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   securityBoxLayout->addWidget(useEncryptionLevel, 0, 0, 0);
   securityBoxLayout->addWidget(encryptionLevel, 0, 1, 0);
   
-  sambaTabLayout->addWidget(securityBox, 0);
+  advancedSambaTabLayout->addWidget(protocolsBox, 0);
+  advancedSambaTabLayout->addWidget(authenticationBox, 0);
+  advancedSambaTabLayout->addWidget(securityBox, 0);
+  advancedSambaTabLayout->addStretch(100);
   
-  // 
-  // Behavior group box
-  // 
-  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), sambaTab);
-  QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
-  behaviorBoxLayout->setSpacing(5);
-  
-  QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behaviorBox);
-  detectPrinters->setObjectName("kcfg_DetectPrinterShares");
-
-  QCheckBox *detectHiddenShares = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), behaviorBox);
-  detectHiddenShares->setObjectName("kcfg_DetectHiddenShares");  
-  
-  QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behaviorBox);
-  previewHiddenItems->setObjectName("kcfg_PreviewHiddenItems");
-  
-  behaviorBoxLayout->addWidget(detectPrinters, 0, 0, 0);
-  behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1, 0);
-  behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0, 0);
-  
-  sambaTabLayout->addWidget(behaviorBox, 0);
-  sambaTabLayout->addStretch(100);
-  
-  addTab(sambaTab, i18n("Samba"));
+  addTab(advancedSambaTab, i18n("Advanced Samba Settings"));
   
   //
   // Wake-On-LAN tab
   //
   QWidget *wakeOnLanTab = new QWidget(this);
-  
-  //
-  // Wake-On-LAN tab layout
-  //
   QVBoxLayout *wakeOnLanTabLayout = new QVBoxLayout(wakeOnLanTab);
-  wakeOnLanTabLayout->setSpacing(5);
-  wakeOnLanTabLayout->setMargin(0);
   
   // 
   // Wake-On-LAN group box
   // 
   QGroupBox *wakeOnLanBox = new QGroupBox(i18n("Wake-On-LAN"), wakeOnLanTab);
   QGridLayout *wakeOnLanBoxLayout = new QGridLayout(wakeOnLanBox);
-  wakeOnLanBoxLayout->setSpacing(5);
   
   QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), wakeOnLanBox);
   enableWakeOnLan->setObjectName("kcfg_EnableWakeOnLAN");
