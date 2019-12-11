@@ -152,8 +152,8 @@
       <default>None</default>
     </entry>
     <entry name="ForceSMB1Protocol" type="Bool">
-      <label>Force SMB1 protocol for workgroup and domain lookups</label>
-      <whatsthis>If you have trouble discovering the workgroups and domains in your network neighborhood, you should consider to switch this setting on. Smb4K will then force the use of the SMB1 protocol for searching for workgroups and domains.</whatsthis>
+      <label>Force SMB protocol version 1.0 for workgroup and domain lookups</label>
+      <whatsthis>If you have trouble discovering the workgroups and domains in your network neighborhood, you should consider to switch this setting on. Smb4K will then force the use of the SMB 1.0 protocol for searching for workgroups and domains.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="PreviewHiddenItems" type="Bool">
