@@ -208,7 +208,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   QFrame *wakeOnLanNote = new QFrame(wakeOnLanBox);
   QGridLayout *wakeOnLanNoteLayout = new QGridLayout(wakeOnLanNote);
   wakeOnLanNoteLayout->setSpacing(10);
-  wakeOnLanNoteLayout->setMargin(5);
+  wakeOnLanNoteLayout->setContentsMargins(5, 5, 5, 5);
 
   QLabel *importantPixmap = new QLabel(wakeOnLanNote);
   importantPixmap->setPixmap(KIconLoader::global()->loadIcon("emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium));

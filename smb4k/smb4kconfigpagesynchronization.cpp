@@ -51,7 +51,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   QWidget *basicTab = new QWidget(this);
   QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
   basicTabLayout->setSpacing(5);
-  basicTabLayout->setMargin(0);
+  basicTabLayout->setContentsMargins(0, 0, 0, 0);
   
   // Default destination (rsync)
   QGroupBox *pathsBox = new QGroupBox(i18n("Default Destination"), basicTab);
@@ -126,7 +126,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   QWidget *fileHandlingTab = new QWidget(this);
   QVBoxLayout *fileHandlingTabLayout = new QVBoxLayout(fileHandlingTab);
   fileHandlingTabLayout->setSpacing(5);
-  fileHandlingTabLayout->setMargin(0);
+  fileHandlingTabLayout->setContentsMargins(0, 0, 0, 0);
   
   // General
   QGroupBox *generalHandlingBox = new QGroupBox(i18n("General"), fileHandlingTab);
@@ -222,7 +222,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   QWidget *transferTab = new QWidget(this);
   QVBoxLayout *transferTabLayout = new QVBoxLayout(transferTab);
   transferTabLayout->setSpacing(5);
-  transferTabLayout->setMargin(0);
+  transferTabLayout->setContentsMargins(0, 0, 0, 0);
   
   // Compression
   QGroupBox *compressionBox = new QGroupBox(i18n("Compression"), transferTab);
@@ -305,7 +305,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   QWidget *deleteTab = new QWidget(this);
   QVBoxLayout *deleteTabLayout = new QVBoxLayout(deleteTab);
   deleteTabLayout->setSpacing(5);
-  deleteTabLayout->setMargin(0);
+  deleteTabLayout->setContentsMargins(0, 0, 0, 0);
   
   // Files and Directories
   QGroupBox *filesAndDirsBox = new QGroupBox(i18n("Files && Directories"), deleteTab);
@@ -363,7 +363,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   QWidget *filterTab = new QWidget(this);
   QVBoxLayout *filterTabLayout = new QVBoxLayout(filterTab);
   filterTabLayout->setSpacing(5);
-  filterTabLayout->setMargin(0);
+  filterTabLayout->setContentsMargins(0, 0, 0, 0);
 
   // General
   QGroupBox *generalFilterBox = new QGroupBox(i18n("General"), filterTab);
@@ -437,7 +437,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   QWidget *miscTab = new QWidget(this);
   QVBoxLayout *miscTabLayout = new QVBoxLayout(miscTab);
   miscTabLayout->setSpacing(5);
-  miscTabLayout->setMargin(0);
+  miscTabLayout->setContentsMargins(0, 0, 0, 0);
 
   // Checksums
   QGroupBox *checksumsBox= new QGroupBox(i18n("Checksums"), miscTab);

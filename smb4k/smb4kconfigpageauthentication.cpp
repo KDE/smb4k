@@ -54,7 +54,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   // 
   QVBoxLayout *layout = new QVBoxLayout(this);
   layout->setSpacing(5);
-  layout->setMargin(0);
+  layout->setContentsMargins(0, 0, 0, 0);
   
   //
   // Settings group box

@@ -50,7 +50,7 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   // 
   QVBoxLayout *layout = new QVBoxLayout(this);
   layout->setSpacing(5);
-  layout->setMargin(0);
+  layout->setContentsMargins(0, 0, 0, 0);
   
   // 
   // Main Window settings

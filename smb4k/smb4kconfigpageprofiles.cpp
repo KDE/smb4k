@@ -44,7 +44,7 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget* parent)
   // Layout
   QVBoxLayout *layout = new QVBoxLayout(this);
   layout->setSpacing(5);
-  layout->setMargin(0);
+  layout->setContentsMargins(0, 0, 0, 0);
   
   QGroupBox *settings = new QGroupBox(i18n("Settings"), this);
   

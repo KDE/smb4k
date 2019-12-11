@@ -204,7 +204,7 @@ void Smb4KHomesUserDialog::setupView()
 
   QHBoxLayout *desc_layout = new QHBoxLayout(description);
   desc_layout->setSpacing(5);
-  desc_layout->setMargin(0);
+  desc_layout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *pixmap = new QLabel(description);
   QPixmap user_pix = KDE::icon("user-identity").pixmap(KIconLoader::SizeHuge);
@@ -222,7 +222,7 @@ void Smb4KHomesUserDialog::setupView()
   
   QGridLayout *input_layout = new QGridLayout(input);
   input_layout->setSpacing(5);
-  input_layout->setMargin(0);
+  input_layout->setContentsMargins(0, 0, 0, 0);
   input_layout->setColumnStretch(0, 0);
   input_layout->setColumnStretch(1, 1);
   
