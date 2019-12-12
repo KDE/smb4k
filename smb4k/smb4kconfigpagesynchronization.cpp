@@ -50,13 +50,10 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // 
   QWidget *basicTab = new QWidget(this);
   QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
-  basicTabLayout->setSpacing(5);
-  basicTabLayout->setContentsMargins(0, 0, 0, 0);
   
   // Default destination (rsync)
   QGroupBox *pathsBox = new QGroupBox(i18n("Default Destination"), basicTab);
   QGridLayout *pathsBoxLayout = new QGridLayout(pathsBox);
-  pathsBoxLayout->setSpacing(5);
 
   QLabel *rsyncPrefixLabel = new QLabel(Smb4KSettings::self()->rsyncPrefixItem()->label(), pathsBox);
   KUrlRequester *rsyncPrefix = new KUrlRequester(pathsBox);
@@ -70,7 +67,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Behavior
   QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), basicTab);
   QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
-  behaviorBoxLayout->setSpacing(5);
   
   QCheckBox *archiveMode = new QCheckBox(Smb4KSettings::self()->archiveModeItem()->label(), behaviorBox);
   archiveMode->setObjectName("kcfg_ArchiveMode");
@@ -92,7 +88,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Backup
   QGroupBox *backupBox = new QGroupBox(i18n("Backup"), basicTab);
   QGridLayout *backupBoxLayout = new QGridLayout(backupBox);
-  backupBoxLayout->setSpacing(5);
 
   QCheckBox *makeBackups = new QCheckBox(Smb4KSettings::self()->makeBackupsItem()->label(), backupBox);
   makeBackups->setObjectName("kcfg_MakeBackups");
@@ -125,13 +120,10 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // 
   QWidget *fileHandlingTab = new QWidget(this);
   QVBoxLayout *fileHandlingTabLayout = new QVBoxLayout(fileHandlingTab);
-  fileHandlingTabLayout->setSpacing(5);
-  fileHandlingTabLayout->setContentsMargins(0, 0, 0, 0);
   
   // General
   QGroupBox *generalHandlingBox = new QGroupBox(i18n("General"), fileHandlingTab);
   QGridLayout *generalHandlingBoxLayout = new QGridLayout(generalHandlingBox);
-  generalHandlingBoxLayout->setSpacing(5);
   
   QCheckBox *updateTarget = new QCheckBox(Smb4KSettings::self()->updateTargetItem()->label(), generalHandlingBox);
   updateTarget->setObjectName("kcfg_UpdateTarget");
@@ -156,7 +148,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Links
   QGroupBox *linksBox = new QGroupBox(i18n("Links"), fileHandlingTab);
   QGridLayout *linksBoxLayout = new QGridLayout(linksBox);
-  linksBoxLayout->setSpacing(5);
   
   QCheckBox *preserveLinks = new QCheckBox(Smb4KSettings::self()->preserveSymlinksItem()->label(), linksBox);
   preserveLinks->setObjectName("kcfg_PreserveSymlinks");
@@ -187,7 +178,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Permissions & Attributes
   QGroupBox *permissionsBox = new QGroupBox(i18n("Permissions, etc."), fileHandlingTab);
   QGridLayout *permissionsBoxLayout = new QGridLayout(permissionsBox);
-  permissionsBoxLayout->setSpacing(5);
   
   QCheckBox *preservePerms = new QCheckBox(Smb4KSettings::self()->preservePermissionsItem()->label(), permissionsBox);
   preservePerms->setObjectName("kcfg_PreservePermissions");
@@ -221,13 +211,10 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // 
   QWidget *transferTab = new QWidget(this);
   QVBoxLayout *transferTabLayout = new QVBoxLayout(transferTab);
-  transferTabLayout->setSpacing(5);
-  transferTabLayout->setContentsMargins(0, 0, 0, 0);
   
   // Compression
   QGroupBox *compressionBox = new QGroupBox(i18n("Compression"), transferTab);
   QGridLayout *compressionBoxLayout = new QGridLayout(compressionBox);
-  compressionBoxLayout->setSpacing(5);
   
   QCheckBox *compressData = new QCheckBox(Smb4KSettings::self()->compressDataItem()->label(), compressionBox);
   compressData->setObjectName("kcfg_CompressData");
@@ -250,7 +237,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Files
   QGroupBox *filesBox = new QGroupBox(i18n("Files"), transferTab);
   QGridLayout *filesBoxLayout = new QGridLayout(filesBox);
-  filesBoxLayout->setSpacing(5);
   
   QCheckBox *minTransferSizeButton = new QCheckBox(Smb4KSettings::self()->useMinimalTransferSizeItem()->label(), filesBox);
   minTransferSizeButton->setObjectName("kcfg_UseMinimalTransferSize");
@@ -281,7 +267,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Miscellaneous
   QGroupBox *miscTransferBox = new QGroupBox(i18n("Miscellaneous"), transferTab);
   QGridLayout *miscTransferBoxLayout = new QGridLayout(miscTransferBox);
-  miscTransferBoxLayout->setSpacing(5);
   
   QCheckBox *bwLimitButton = new QCheckBox(Smb4KSettings::self()->useBandwidthLimitItem()->label(), miscTransferBox);
   bwLimitButton->setObjectName("kcfg_UseBandwidthLimit");
@@ -304,13 +289,10 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // 
   QWidget *deleteTab = new QWidget(this);
   QVBoxLayout *deleteTabLayout = new QVBoxLayout(deleteTab);
-  deleteTabLayout->setSpacing(5);
-  deleteTabLayout->setContentsMargins(0, 0, 0, 0);
   
   // Files and Directories
   QGroupBox *filesAndDirsBox = new QGroupBox(i18n("Files && Directories"), deleteTab);
   QGridLayout *filesAndDirsBoxLayout = new QGridLayout(filesAndDirsBox);
-  filesAndDirsBoxLayout->setSpacing(5);
   
   QCheckBox *removeSource = new QCheckBox(Smb4KSettings::self()->removeSourceFilesItem()->label(), filesAndDirsBox);
   removeSource->setObjectName("kcfg_RemoveSourceFiles");
@@ -341,7 +323,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Restrictions
   QGroupBox *restrictionsBox = new QGroupBox(i18n("Restrictions"), deleteTab);
   QGridLayout *restrictionsBoxLayout = new QGridLayout(restrictionsBox);
-  restrictionsBoxLayout->setSpacing(5);
   
   QCheckBox *maxDeleteButton = new QCheckBox(Smb4KSettings::self()->useMaximumDeleteItem()->label(), restrictionsBox);
   maxDeleteButton->setObjectName("kcfg_UseMaximumDelete");
@@ -362,13 +343,10 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   //
   QWidget *filterTab = new QWidget(this);
   QVBoxLayout *filterTabLayout = new QVBoxLayout(filterTab);
-  filterTabLayout->setSpacing(5);
-  filterTabLayout->setContentsMargins(0, 0, 0, 0);
 
   // General
   QGroupBox *generalFilterBox = new QGroupBox(i18n("General"), filterTab);
   QGridLayout *generalFilterBoxLayout = new QGridLayout(generalFilterBox);
-  generalFilterBoxLayout->setSpacing(5);
 
   QCheckBox *cvsExclude = new QCheckBox(Smb4KSettings::self()->useCVSExcludeItem()->label(), generalFilterBox);
   cvsExclude->setObjectName("kcfg_UseCVSExclude");
@@ -406,7 +384,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Filter rules
   QGroupBox *filterRulesBox = new QGroupBox(i18n("Filter Rules"), filterTab);
   QGridLayout *filterRulesBoxLayout = new QGridLayout(filterRulesBox);
-  filterRulesBoxLayout->setSpacing(5);
 
   QLabel *customRulesLabel = new QLabel(Smb4KSettings::self()->customFilteringRulesItem()->label(), filterRulesBox);
   KLineEdit *customRules = new KLineEdit(filterRulesBox);
@@ -436,13 +413,10 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   //
   QWidget *miscTab = new QWidget(this);
   QVBoxLayout *miscTabLayout = new QVBoxLayout(miscTab);
-  miscTabLayout->setSpacing(5);
-  miscTabLayout->setContentsMargins(0, 0, 0, 0);
 
   // Checksums
   QGroupBox *checksumsBox= new QGroupBox(i18n("Checksums"), miscTab);
   QGridLayout *checksumsBoxLayout = new QGridLayout(checksumsBox);
-  checksumsBoxLayout->setSpacing(5);
 
   QCheckBox *blockSizeButton = new QCheckBox(Smb4KSettings::self()->useBlockSizeItem()->label(), checksumsBox);
   blockSizeButton->setObjectName("kcfg_UseBlockSize");
@@ -465,7 +439,6 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   // Miscellaneous
   QGroupBox *miscBox = new QGroupBox(i18n("Miscellaneous"), miscTab);
   QGridLayout *miscBoxLayout = new QGridLayout(miscBox);
-  miscBoxLayout->setSpacing(5);
 
   QCheckBox *oneFilesystem = new QCheckBox(Smb4KSettings::self()->oneFileSystemItem()->label(), miscBox);
   oneFilesystem->setObjectName("kcfg_OneFileSystem");

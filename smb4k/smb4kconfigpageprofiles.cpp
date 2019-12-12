@@ -43,42 +43,37 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget* parent)
 {
   // Layout
   QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
-  layout->setContentsMargins(0, 0, 0, 0);
   
   QGroupBox *settings = new QGroupBox(i18n("Settings"), this);
-  
-  QVBoxLayout *settings_layout = new QVBoxLayout(settings);
-  settings_layout->setSpacing(5);
-//   settings_layout->setMargin(0);  
+  QVBoxLayout *settingsLayout = new QVBoxLayout(settings);
   
   // Use profiles
-  QCheckBox *use_profiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settings);
-  use_profiles->setObjectName("kcfg_UseProfiles");
+  QCheckBox *useProfiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settings);
+  useProfiles->setObjectName("kcfg_UseProfiles");
   
   // Use profile migration assistant
-  QCheckBox *use_assistant = new QCheckBox(Smb4KSettings::self()->useMigrationAssistantItem()->label(), settings);
-  use_assistant->setObjectName("kcfg_UseMigrationAssistant");
+  QCheckBox *useAssistant = new QCheckBox(Smb4KSettings::self()->useMigrationAssistantItem()->label(), settings);
+  useAssistant->setObjectName("kcfg_UseMigrationAssistant");
   
-  settings_layout->addWidget(use_profiles, 0, 0);
-  settings_layout->addWidget(use_assistant, 1, 0);
+  settingsLayout->addWidget(useProfiles, 0, 0);
+  settingsLayout->addWidget(useAssistant, 1, 0);
   
   QGroupBox *profiles = new QGroupBox(i18n("Profiles"), this);
   
-  QVBoxLayout *profiles_layout = new QVBoxLayout(profiles);
-  profiles_layout->setSpacing(5);
+  QVBoxLayout *profilesLayout = new QVBoxLayout(profiles);
+  profilesLayout->setSpacing(5);
   
   // List of profiles
   m_profiles = new KEditListWidget(profiles);
   m_profiles->setObjectName("kcfg_ProfilesList");
   m_profiles->setEnabled(Smb4KSettings::self()->useProfiles());
   
-  profiles_layout->addWidget(m_profiles, 0, 0);
+  profilesLayout->addWidget(m_profiles, 0, 0);
   
   layout->addWidget(settings, 0, 0);
   layout->addWidget(profiles, 1, 0);
 
-  connect(use_profiles, SIGNAL(stateChanged(int)), this, SLOT(slotEnableWidget(int)));
+  connect(useProfiles, SIGNAL(stateChanged(int)), this, SLOT(slotEnableWidget(int)));
   connect(m_profiles, SIGNAL(removed(QString)), this, SLOT(slotProfileRemoved(QString)));
   connect(m_profiles->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotProfileChanged()));
 }

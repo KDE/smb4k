@@ -76,16 +76,12 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   QWidget *basicTab = new QWidget(this);
   QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
-  basicTabLayout->setSpacing(5);
-  basicTabLayout->setContentsMargins(0, 0, 0, 0);
   
   //
   // Directories
   // 
   QGroupBox *directoryBox = new QGroupBox(i18n("Directories"), basicTab);
-
   QGridLayout *directoryBoxLayout = new QGridLayout(directoryBox);
-  directoryBoxLayout->setSpacing(5);
 
   QLabel *prefixLabel = new QLabel(Smb4KMountSettings::self()->mountPrefixItem()->label(), directoryBox);
   KUrlRequester *prefix = new KUrlRequester(directoryBox);
@@ -108,7 +104,6 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), this);
   QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
-  behaviorBoxLayout->setSpacing(5);
   
   QCheckBox *remountShares = new QCheckBox(Smb4KMountSettings::self()->remountSharesItem()->label(), behaviorBox);
   remountShares->setObjectName("kcfg_RemountShares");
@@ -160,16 +155,12 @@ void Smb4KConfigPageMounting::setupWidget()
   //
   QWidget *commonTab = new QWidget(this);
   QVBoxLayout *commonTabLayout = new QVBoxLayout(commonTab);
-  commonTabLayout->setSpacing(5);
-  commonTabLayout->setContentsMargins(0, 0, 0, 0);
 
   // 
   // Common options group box
   // 
   QGroupBox *commonOptions = new QGroupBox(i18n("Common Options"), commonTab);
-
   QGridLayout *commonOptionsLayout = new QGridLayout(commonOptions);
-  commonOptionsLayout->setSpacing(5);
 
   // Write access
   QCheckBox *useWriteAccess = new QCheckBox(Smb4KMountSettings::self()->useWriteAccessItem()->label(), commonOptions);
@@ -221,9 +212,7 @@ void Smb4KConfigPageMounting::setupWidget()
   // CIFS Unix Extensions Support group box
   // 
   QGroupBox *cifsExtensionSupportBox= new QGroupBox(i18n("CIFS Unix Extensions Support"), commonTab);
-  
   QGridLayout *cifsExtensionSupportLayout = new QGridLayout(cifsExtensionSupportBox);
-  cifsExtensionSupportLayout->setSpacing(5);
   
   // CIFS Unix extensions support
   QCheckBox *cifsExtensionsSupport = new QCheckBox(Smb4KMountSettings::self()->cifsUnixExtensionsSupportItem()->label(), cifsExtensionSupportBox);
@@ -239,8 +228,6 @@ void Smb4KConfigPageMounting::setupWidget()
   userIdInputWidget->setObjectName("UserIdInputWidget");
 
   QGridLayout *userLayout = new QGridLayout(userIdInputWidget);
-  userLayout->setSpacing(5);
-  userLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *userId = new KLineEdit(userIdInputWidget);
   userId->setObjectName("kcfg_UserId");
@@ -277,8 +264,6 @@ void Smb4KConfigPageMounting::setupWidget()
   groupIdInputWidget->setObjectName("GroupIdInputWidget");
 
   QGridLayout *groupLayout = new QGridLayout(groupIdInputWidget);
-  groupLayout->setSpacing(5);
-  groupLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *groupId = new KLineEdit(groupIdInputWidget);
   groupId->setObjectName("kcfg_GroupId");
@@ -341,13 +326,9 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   QWidget *advancedTab = new QWidget(this);
   QVBoxLayout *advancedTabLayout = new QVBoxLayout(advancedTab);
-  advancedTabLayout->setSpacing(5);
-  advancedTabLayout->setContentsMargins(0, 0, 0, 0);
   
   QGroupBox *advancedOptions = new QGroupBox(i18n("Advanced Options"), advancedTab);
-
   QGridLayout *advancedOptionsLayout = new QGridLayout(advancedOptions);
-  advancedOptionsLayout->setSpacing(5);
   
   // Force Uid
   QCheckBox *forceUid = new QCheckBox(Smb4KMountSettings::self()->forceUIDItem()->label(), advancedOptions);
@@ -393,10 +374,7 @@ void Smb4KConfigPageMounting::setupWidget()
   
   // Extra widget for the rest of the options
   QWidget *advancedOptionsExtraWidget = new QWidget(advancedOptions);
-
   QGridLayout *advancedOptionsExtraWidgetLayout = new QGridLayout(advancedOptionsExtraWidget);
-  advancedOptionsExtraWidgetLayout->setSpacing(5);
-  advancedOptionsExtraWidgetLayout->setContentsMargins(0, 0, 0, 0);
   
   // SMB protocol version
   QCheckBox *useSmbProtocol = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), advancedOptionsExtraWidget);
@@ -453,10 +431,7 @@ void Smb4KConfigPageMounting::setupWidget()
   QLabel *additionalOptionsLabel = new QLabel(Smb4KMountSettings::self()->customCIFSOptionsItem()->label(), advancedOptionsExtraWidget);
   
   QWidget *additionalOptionsWidget = new QWidget(advancedOptionsExtraWidget);
-  
   QHBoxLayout *additionalOptionsWidgetLayout = new QHBoxLayout(additionalOptionsWidget);
-  additionalOptionsWidgetLayout->setSpacing(5);
-  additionalOptionsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *additionalOptions = new KLineEdit(additionalOptionsWidget);
   additionalOptions->setObjectName("kcfg_CustomCIFSOptions");
@@ -505,16 +480,12 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   QWidget *basicTab = new QWidget(this);
   QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
-  basicTabLayout->setSpacing(5);
-  basicTabLayout->setContentsMargins(0, 0, 0, 0);
-  
+//   
   //
   // Directories
   // 
   QGroupBox *directoryBox = new QGroupBox(i18n("Directories"), basicTab);
-
   QGridLayout *directoryBoxLayout = new QGridLayout(directoryBox);
-  directoryBoxLayout->setSpacing(5);
 
   QLabel *prefixLabel = new QLabel(Smb4KMountSettings::self()->mountPrefixItem()->label(), directoryBox);
   KUrlRequester *prefix = new KUrlRequester(directoryBox);
@@ -537,7 +508,6 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), basicTab);
   QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
-  behaviorBoxLayout->setSpacing(5);
   
   QCheckBox *remountShares = new QCheckBox(Smb4KMountSettings::self()->remountSharesItem()->label(), behaviorBox);
   remountShares->setObjectName("kcfg_RemountShares");
@@ -585,15 +555,12 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   QWidget *mountTab = new QWidget(this);
   QVBoxLayout *mountTabLayout = new QVBoxLayout(mountTab);
-  mountTabLayout->setSpacing(5);
-  mountTabLayout->setContentsMargins(0, 0, 0, 0);
 
   //
   // Common Options
   //
   QGroupBox *commonOptionsBox = new QGroupBox(i18n("Common Options"), mountTab);
   QGridLayout *commonOptionsBoxLayout = new QGridLayout(commonOptionsBox);
-  commonOptionsBoxLayout->setSpacing(5);
 
   // User information
   QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), commonOptionsBox);
@@ -603,8 +570,6 @@ void Smb4KConfigPageMounting::setupWidget()
   userIdInputWidget->setObjectName("UserIdInputWidget");
 
   QGridLayout *userLayout = new QGridLayout(userIdInputWidget);
-  userLayout->setSpacing(5);
-  userLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *userId = new KLineEdit(userIdInputWidget);
   userId->setObjectName("kcfg_UserId");
@@ -641,8 +606,6 @@ void Smb4KConfigPageMounting::setupWidget()
   groupIdInputWidget->setObjectName("GroupIdInputWidget");
 
   QGridLayout *groupLayout = new QGridLayout(groupIdInputWidget);
-  groupLayout->setSpacing(5);
-  groupLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *groupId = new KLineEdit(groupIdInputWidget);
   groupId->setObjectName("kcfg_GroupId");
@@ -700,7 +663,6 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   QGroupBox *characterSetsBox = new QGroupBox(i18n("Character Sets"), mountTab);
   QGridLayout *characterSetsBoxLayout = new QGridLayout(characterSetsBox);
-  characterSetsBoxLayout->setSpacing(5);  
   
   // Client character set
   QCheckBox *useCharacterSets = new QCheckBox(Smb4KMountSettings::self()->useCharacterSetsItem()->label(), characterSetsBox);

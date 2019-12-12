@@ -53,15 +53,12 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   // Layout 
   // 
   QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
-  layout->setContentsMargins(0, 0, 0, 0);
   
   //
   // Settings group box
   // 
   QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
   QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
-  settingsBoxLayout->setSpacing(5);
   
   // Wallet usage
   QCheckBox *useWallet = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(), settingsBox);
@@ -86,7 +83,6 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   // 
   QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
   QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
-  walletEntriesBoxLayout->setSpacing(5);
   
   //
   // Wallet Entries editor
@@ -94,7 +90,6 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   QWidget *walletEntriesEditor = new QWidget(walletEntriesBox);
   walletEntriesEditor->setObjectName("WalletEntriesEditor");
   QGridLayout *walletEntriesEditorLayout= new QGridLayout(walletEntriesEditor);
-  walletEntriesEditorLayout->setSpacing(5);
   
   // 
   // The list view 
@@ -168,7 +163,6 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   detailsBox->setTitle(i18n("Details"));
   detailsBox->setEnabled(false);
   QVBoxLayout *detailsBoxLayout = new QVBoxLayout(detailsBox);
-  detailsBoxLayout->setSpacing(5);
   
   QTableWidget *detailsWidget = new QTableWidget(detailsBox);
   detailsWidget->setObjectName("DetailsWidget");

@@ -49,15 +49,12 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   // Layout
   // 
   QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
-  layout->setContentsMargins(0, 0, 0, 0);
   
   // 
   // Main Window settings
   // 
   QGroupBox *mainWindowBox = new QGroupBox(i18n("Main Window"), this);
   QGridLayout *mainWindowBoxLayout = new QGridLayout(mainWindowBox);
-  mainWindowBoxLayout->setSpacing(5);
   
   QLabel *tabOrientationLabel = new QLabel(Smb4KSettings::self()->mainWindowTabOrientationItem()->label(), mainWindowBox);
   
@@ -122,7 +119,6 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   // 
   QGroupBox *sharesViewBox = new QGroupBox(i18n("Shares View"), this);
   QGridLayout *sharesViewBoxLayout = new QGridLayout(sharesViewBox);
-  sharesViewBoxLayout->setSpacing(5);
   
   QLabel *viewModeLabel = new QLabel(Smb4KSettings::self()->sharesViewModeItem()->label(), sharesViewBox);
   
@@ -148,70 +144,6 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   
   layout->addWidget(sharesViewBox, 0);
   layout->addStretch(100);
-  
-
-
-//   // Network item tooltips
-//   QGroupBox *network_tooltips_box = new QGroupBox(i18n("Tooltips"), networkNeighborhoodTab);
-// 
-//   QGridLayout *n_tooltips_layout = new QGridLayout(network_tooltips_box);
-//   n_tooltips_layout->setSpacing(5);
-// 
-
-// 
-//   n_tooltips_layout->addWidget(network_tooltip, 0, 0, 0);
-// 
-//   networkNeighborhoodTabLayout->addWidget(behavior_box);
-//   networkNeighborhoodTabLayout->addWidget(columns_box);
-//   networkNeighborhoodTabLayout->addWidget(network_tooltips_box);
-//   networkNeighborhoodTabLayout->addStretch(100);
-// 
-//   addTab(networkNeighborhoodTab, i18n("Network Neighborhood"));
-// 
-//   //
-//   // Shares view
-//   //
-//   QWidget *shares_view_tab = new QWidget(this);
-// 
-//   QVBoxLayout *shares_view_layout = new QVBoxLayout(shares_view_tab);
-//   shares_view_layout->setSpacing(5);
-//   shares_view_layout->setMargin(0);
-//   
-//   // View
-//   QGroupBox *viewBox = new QGroupBox(i18n("View Mode"), shares_view_tab);
-//   QHBoxLayout *viewBoxLayout = new QHBoxLayout(viewBox);
-//   viewBoxLayout->setSpacing(5);
-//   
-//   QLabel *viewModeLabel = new QLabel(Smb4KSettings::self()->sharesViewModeItem()->label(), viewBox);
-//   KComboBox *viewMode = new KComboBox(viewBox);
-//   viewMode->setObjectName("kcfg_SharesViewMode");
-//   viewMode->insertItem(Smb4KSettings::EnumSharesViewMode::IconView,
-//                        Smb4KSettings::self()->sharesViewModeItem()->choices().value(Smb4KSettings::EnumSharesViewMode::IconView).label);
-//   viewMode->insertItem(Smb4KSettings::EnumSharesViewMode::ListView,
-//                        Smb4KSettings::self()->sharesViewModeItem()->choices().value(Smb4KSettings::EnumSharesViewMode::ListView).label);  
-//   viewModeLabel->setBuddy(viewMode);
-//   
-//   viewBoxLayout->addWidget(viewModeLabel);
-//   viewBoxLayout->addWidget(viewMode);
-// 
-//   // Share tooltips
-//   QGroupBox *share_tooltips_box = new QGroupBox(i18n("Tooltips"), shares_view_tab);
-// 
-//   QGridLayout *s_tooltips_layout = new QGridLayout(share_tooltips_box);
-//   s_tooltips_layout->setSpacing(5);
-// 
-//   QCheckBox *show_share_tooltip = new QCheckBox(Smb4KSettings::self()->showShareToolTipItem()->label(), share_tooltips_box);
-//   show_share_tooltip->setObjectName("kcfg_ShowShareToolTip");
-// 
-//   s_tooltips_layout->addWidget(show_share_tooltip, 0, 0, 0);
-// 
-//   QSpacerItem *spacer4 = new QSpacerItem(10, 10, QSizePolicy::Preferred, QSizePolicy::Expanding);
-// 
-//   shares_view_layout->addWidget(viewBox);
-//   shares_view_layout->addWidget(share_tooltips_box);
-//   shares_view_layout->addItem(spacer4);
-// 
-//   addTab(shares_view_tab, i18n("Mounted Shares"));
 }
 
 
