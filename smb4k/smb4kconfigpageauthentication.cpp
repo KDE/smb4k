@@ -83,6 +83,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   // 
   QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
   QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
+  walletEntriesBoxLayout->setContentsMargins(0, 0, 0, 0);
   
   //
   // Wallet Entries editor

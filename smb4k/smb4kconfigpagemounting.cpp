@@ -228,6 +228,7 @@ void Smb4KConfigPageMounting::setupWidget()
   userIdInputWidget->setObjectName("UserIdInputWidget");
 
   QGridLayout *userLayout = new QGridLayout(userIdInputWidget);
+  userLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *userId = new KLineEdit(userIdInputWidget);
   userId->setObjectName("kcfg_UserId");
@@ -264,6 +265,7 @@ void Smb4KConfigPageMounting::setupWidget()
   groupIdInputWidget->setObjectName("GroupIdInputWidget");
 
   QGridLayout *groupLayout = new QGridLayout(groupIdInputWidget);
+  groupLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *groupId = new KLineEdit(groupIdInputWidget);
   groupId->setObjectName("kcfg_GroupId");
@@ -375,6 +377,7 @@ void Smb4KConfigPageMounting::setupWidget()
   // Extra widget for the rest of the options
   QWidget *advancedOptionsExtraWidget = new QWidget(advancedOptions);
   QGridLayout *advancedOptionsExtraWidgetLayout = new QGridLayout(advancedOptionsExtraWidget);
+  advancedOptionsExtraWidgetLayout->setContentsMargins(0, 0, 0, 0);
   
   // SMB protocol version
   QCheckBox *useSmbProtocol = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), advancedOptionsExtraWidget);
@@ -432,6 +435,7 @@ void Smb4KConfigPageMounting::setupWidget()
   
   QWidget *additionalOptionsWidget = new QWidget(advancedOptionsExtraWidget);
   QHBoxLayout *additionalOptionsWidgetLayout = new QHBoxLayout(additionalOptionsWidget);
+  additionalOptionsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *additionalOptions = new KLineEdit(additionalOptionsWidget);
   additionalOptions->setObjectName("kcfg_CustomCIFSOptions");

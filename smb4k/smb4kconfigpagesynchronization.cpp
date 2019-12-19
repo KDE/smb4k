@@ -229,10 +229,10 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
   skipCompression->setClearButtonEnabled(true);
   
   compressionBoxLayout->addWidget(compressData, 0, 0, 1, -1, 0);
-  compressionBoxLayout->addWidget(compressionLevelButton, 1, 0, 1, 1, 0);
-  compressionBoxLayout->addWidget(compressionLevel, 1, 1, 1, 1, 0);
-  compressionBoxLayout->addWidget(skipCompressionButton, 2, 0, 1, 1, 0);
-  compressionBoxLayout->addWidget(skipCompression, 2, 1, 1, 1, 0);
+  compressionBoxLayout->addWidget(compressionLevelButton, 1, 0, 0);
+  compressionBoxLayout->addWidget(compressionLevel, 1, 1, 0);
+  compressionBoxLayout->addWidget(skipCompressionButton, 2, 0, 0);
+  compressionBoxLayout->addWidget(skipCompression, 2, 1, 0);
   
   // Files
   QGroupBox *filesBox = new QGroupBox(i18n("Files"), transferTab);
