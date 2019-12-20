@@ -35,6 +35,7 @@ include(KDECMakeSettings)
 include(FeatureSummary)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
+include(CheckSymbolExists)
 
 ecm_setup_version(${VERSION} VARIABLE_PREFIX SMB4K VERSION_HEADER smb4k_version.h)
 
@@ -72,6 +73,15 @@ set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)
 
 # Find libsmbclient.h
 find_package(Libsmbclient REQUIRED MODULE)
+
+# Check that the required smbc_* functions are provided
+set(CMAKE_REQUIRED_LIBRARIES ${LIBSMBCLIENT_LIBRARIES})
+set(CMAKE_REQUIRED_INCLUDES ${LIBSMBCLIENT_INCLUDE_DIRS})
+check_symbol_exists(smbc_setOptionProtocols libsmbclient.h HAVE_SMBC_PROTOCOL)
+
+if (NOT HAVE_SMBC_PROTOCOL)
+  message("The function smbc_setOptionProtocols() is missing in Samba's client library's header file." FATAL_ERROR)
+endif()
 
 # Make sure that Smb4K builds when several custom targets
 # with the same name exist (happens in the po directory).
