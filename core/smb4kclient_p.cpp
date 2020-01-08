@@ -2,7 +2,7 @@
     Private classes for the SMB client
                              -------------------
     begin                : So Oct 21 2018
-    copyright            : (C) 2018-2019 by Alexander Reinholdt
+    copyright            : (C) 2018-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -1150,14 +1150,10 @@ void Smb4KClientJob::slotStartJob()
   {
     case Network:
     {
-      //
-      // If desired set the protocol to SMB1 ("NT1") so that the workgroups 
-      // and domains can be discovered.
-      //
-      if (Smb4KSettings::forceSMB1Protocol())
-      {
-        smbc_setOptionProtocols(m_context, "NT1", "NT1");
-      }
+      // 
+      // We do not know about the servers and the domains/workgroups
+      // present. So, do not set anything and use the default.
+      // 
       break;
     }
     case Workgroup:
@@ -1255,6 +1251,15 @@ void Smb4KClientJob::slotStartJob()
   else
   {
     smbc_setOptionBrowseMaxLmbCount(m_context, 0 /* all master browsers */);
+  }
+  
+  //
+  // Set the protocol to SMB1 ("NT1") if desired so that the workgroups 
+  // and domains can be discovered.
+  //
+  if (Smb4KSettings::forceSMB1Protocol() && m_item->type() == Network)
+  {
+    smbc_setOptionProtocols(m_context, "NT1", "NT1");
   }
   
   //
