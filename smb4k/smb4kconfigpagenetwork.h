@@ -2,7 +2,7 @@
     The configuration page for the network settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2019 by Alexander Reinholdt
+    copyright            : (C) 2003-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

@@ -3,7 +3,7 @@
     settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2019 by Alexander Reinholdt
+    copyright            : (C) 2003-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -124,6 +124,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   QGroupBox *protocolsBox = new QGroupBox(i18n("Protocols"), basicSettingsBox);
   QVBoxLayout *protocolsBoxLayout = new QVBoxLayout(protocolsBox);
   
+  // Force SMBv1 protocol for workgroup lookups
   QCheckBox *forceSMB1Protocol = new QCheckBox(Smb4KSettings::self()->forceSMB1ProtocolItem()->label(), protocolsBox);
   forceSMB1Protocol->setObjectName("kcfg_ForceSMB1Protocol");
   
@@ -153,7 +154,6 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   // 
   QGroupBox *securityBox = new QGroupBox(i18n("Security"), advancedSambaTab);
   QGridLayout *securityBoxLayout = new QGridLayout(securityBox);
-  securityBoxLayout->setSpacing(5);
   
   // Encryption level
   QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), securityBox);
