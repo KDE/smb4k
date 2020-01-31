@@ -1,31 +1,59 @@
+#
+# Project
+# 
 project(smb4k)
 
+#
+# Version
+# 
 set(VERSION_MAJOR 3)
 set(VERSION_MINOR 0)
 set(VERSION_PATCH 70)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
+# 
 # Minimum required CMake version
+# 
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
+# 
 # CMake policies
+# 
 cmake_policy(SET CMP0037 NEW)
 
 if (POLICY CMP0071)
   cmake_policy(SET CMP0071 NEW)
 endif()
 
+# 
 # Minimum required versions of Qt5 and KF5
+# 
 set(QT_MIN_VERSION "5.6.0")
 set(KF5_MIN_VERSION "5.25.0")
 
+#
+# Adjustments 
+# 
 if(KF5_VERSION VERSION_GREATER "5.55.0")
     set(AUTHLIB KF5::AuthCore)
 else()
     set(AUTHLIB KF5::Auth)
 endif()
 
+#
+# Options for building Smb4K
+# 
+
+# Install header files
+option(INSTALL_HEADER_FILES "Install header files" OFF)
+
+# Install plasmoid
+option(INSTALL_PLASMOID "Install the plasmoid" ON)
+
+#
+# Required packages and includes
+# 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/)
 
@@ -68,8 +96,11 @@ find_package(KF5WindowSystem ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5XmlGui ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED) 
 
-find_package(KF5Plasma ${KF5_MIN_VERSION})
-set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)
+# Install the plasmoid if desired
+if (INSTALL_PLASMOID)
+  find_package(KF5Plasma ${KF5_MIN_VERSION})
+  set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)
+endif()
 
 # Find libsmbclient.h
 find_package(Libsmbclient REQUIRED MODULE)
@@ -83,8 +114,10 @@ if (NOT HAVE_SMBC_PROTOCOL)
   message("The function smbc_setOptionProtocols() is missing in Samba's client library's header file." FATAL_ERROR)
 endif()
 
+# 
 # Make sure that Smb4K builds when several custom targets
 # with the same name exist (happens in the po directory).
+# 
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
   set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS ON)
 endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
@@ -92,11 +125,15 @@ if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
    add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x060000)
 endif()
 
+# 
 # Make sure that all libraries, plugins, etc. are installed
 # into the right place.
+# 
 set(KDE_INSTALL_USE_QT_SYS_PATHS ON CACHE BOOLEAN "Use Qt system paths for installation" FORCE)
 
+# 
 # Add subdirectories
+# 
 add_subdirectory(core)
 add_subdirectory(helpers)
 add_subdirectory(smb4k)
@@ -110,18 +147,17 @@ if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
   endif(KF5DocTools_FOUND)
 endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
 
-# Install the header files if desired
-option(INSTALL_HEADER_FILES "Install header files" OFF)
-
+# 
+# Make adjustments according to the options set by the user
+# 
+# Header files: Notify the user
 if (INSTALL_HEADER_FILES)
   message(STATUS "Installing core header files (-DINSTALL_HEADER_FILES=false to disable)")
 elseif (NOT INSTALL_HEADER_FILES)
   message(STATUS "Not installing core header files (-DINSTALL_HEADER_FILES=true to enable)")
 endif(INSTALL_HEADER_FILES)
 
-# Do not install the plasmoid if not desired
-option(INSTALL_PLASMOID "Install the plasmoid" ON)
-
+# Plasmoid: Notify the user and add the subdirectory if desired
 if (INSTALL_PLASMOID)
   message(STATUS "Installing plasmoid (-DINSTALL_PLASMOID=false to disable)")
   add_subdirectory(plasmoid)
