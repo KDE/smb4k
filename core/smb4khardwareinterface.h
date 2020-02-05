@@ -2,7 +2,7 @@
     Provides an interface to the computer's hardware
                              -------------------
     begin                : Die Jul 14 2015
-    copyright            : (C) 2015-2019 by Alexander Reinholdt
+    copyright            : (C) 2015-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -84,7 +84,7 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
      * Reimplemented from QObject to check for mounts and unmounts on operating
      * systems that are not fully supported by Solid, yet.
      */
-    void timerEvent(QTimerEvent *e);
+    void timerEvent(QTimerEvent *e) override;
 #endif
     
   Q_SIGNALS:
