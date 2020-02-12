@@ -18,6 +18,7 @@
   <name xml:lang="fi">Smb4K</name>
   <name xml:lang="fr">Smb4K</name>
   <name xml:lang="gl">Smb4K</name>
+  <name xml:lang="ia">Smb4K</name>
   <name xml:lang="id">Smb4K</name>
   <name xml:lang="it">Smb4K</name>
   <name xml:lang="ko">Smb4K</name>
@@ -131,6 +132,7 @@
     <p xml:lang="fi">Ominaisuuksia:</p>
     <p xml:lang="fr">Fonctionnalité :</p>
     <p xml:lang="gl">Funcionalidades:</p>
+    <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Funzionalità:</p>
     <p xml:lang="ko">기능:</p>
