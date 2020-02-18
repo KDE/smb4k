@@ -423,9 +423,13 @@ void Smb4KClientJob::doLookups()
       case ENOENT:
       {
         //
-        // Just exit silently when the query for domains 
-        // and workgroups failed.
+        // Exit silently when the query for domains and workgroups failed.
         // 
+        if (m_item->type() != Network)
+        {
+          setError(ClientError);
+          setErrorText(strerror(errorCode));
+        }
         break;
       }
       default:
