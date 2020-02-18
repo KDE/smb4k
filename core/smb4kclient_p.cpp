@@ -420,6 +420,14 @@ void Smb4KClientJob::doLookups()
         setErrorText(strerror(errorCode));
         break;
       }
+      case ENOENT:
+      {
+        //
+        // Just exit silently when the query for domains 
+        // and workgroups failed.
+        // 
+        break;
+      }
       default:
       {
         setError(ClientError);
