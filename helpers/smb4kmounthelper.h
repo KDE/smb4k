@@ -2,7 +2,7 @@
     The helper that mounts and unmounts shares.
                              -------------------
     begin                : Sa Okt 16 2010
-    copyright            : (C) 2010-2017 by Alexander Reinholdt
+    copyright            : (C) 2010-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
