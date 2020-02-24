@@ -87,6 +87,16 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     void timerEvent(QTimerEvent *e) override;
 #endif
     
+    /**
+     * Inhibit shutdown and sleep.
+     */
+    void inhibit();
+    
+    /**
+     * Uninhibit shutdown and sleep.
+     */
+    void uninhibit();
+    
   Q_SIGNALS:
     /**
      * This signal is emitted when a network share is added to the system

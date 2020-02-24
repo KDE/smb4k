@@ -27,9 +27,13 @@
 #include "smb4khardwareinterface.h"
 #include "smb4khardwareinterface_p.h"
 
+#include <unistd.h>
+
 // Qt includes
 #include <QDebug>
 #include <QTest>
+#include <QStringLiteral>
+#include <QDBusReply>
 
 // KDE includes
 #include <Solid/DeviceNotifier>
@@ -46,6 +50,14 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
 : QObject(parent), d(new Smb4KHardwareInterfacePrivate)
 {
   d->networkSession = nullptr;
+  d->fileDescriptor.setFileDescriptor(-1);
+  
+  d->dbusInterface.reset(new QDBusInterface("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", QDBusConnection::systemBus(), this));
+  
+  if (!d->dbusInterface->isValid())
+  {
+    d->dbusInterface.reset(new QDBusInterface("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager", "org.freedesktop.ConsoleKit.Manager", QDBusConnection::systemBus(), this));
+  }
   
   connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
@@ -132,6 +144,46 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
   d->mountPoints.append(mountPointList);
 }
 #endif
+
+
+void Smb4KHardwareInterface::inhibit()
+{
+  if (d->fileDescriptor.isValid())
+  {
+    return;
+  }
+  
+  if (d->dbusInterface->isValid())
+  {
+    QVariantList args;
+    args << QStringLiteral("shutdown:sleep");
+    args << QStringLiteral("Smb4K");
+    args << QStringLiteral("Mounting or unmounting in progress");
+    args << QStringLiteral("delay");
+    
+    QDBusReply<QDBusUnixFileDescriptor> descriptor = d->dbusInterface->callWithArgumentList(QDBus::Block, QStringLiteral("Inhibit"), args);
+    
+    if (descriptor.isValid())
+    {
+      d->fileDescriptor = descriptor.value();
+    }
+  }
+}
+
+
+void Smb4KHardwareInterface::uninhibit()
+{
+  if (!d->fileDescriptor.isValid())
+  {
+    return;
+  }
+  
+  if (d->dbusInterface->isValid())
+  {
+    close(d->fileDescriptor.fileDescriptor());
+    d->fileDescriptor.setFileDescriptor(-1);
+  }
+}
 
 
 void Smb4KHardwareInterface::slotNetworkConfigUpdated()

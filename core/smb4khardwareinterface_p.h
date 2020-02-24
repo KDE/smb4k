@@ -33,6 +33,8 @@
 #include <QStringList>
 #include <QNetworkConfigurationManager>
 #include <QNetworkSession>
+#include <QDBusInterface>
+#include <QDBusUnixFileDescriptor>
 
 class Smb4KHardwareInterfacePrivate
 {
@@ -43,6 +45,8 @@ class Smb4KHardwareInterfacePrivate
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
     QStringList mountPoints;
 #endif
+    QScopedPointer<QDBusInterface> dbusInterface;
+    QDBusUnixFileDescriptor fileDescriptor;
 };
 
 
