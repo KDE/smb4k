@@ -922,6 +922,8 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent)
     number--;
     d->unmountShares = (number != 0);
     unmountShare(share, silent);
+    
+    QTest::qWait(50);
   }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
   //
@@ -933,6 +935,8 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent)
   for (const SharePtr &share : shares)
   {
     unmountShare(share, silent);
+    
+    QTest::qWait(50);
   }
   
   d->unmountShares = false;
