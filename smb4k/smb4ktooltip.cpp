@@ -47,6 +47,7 @@
 #include <QStyle>
 #include <QStyleOptionFrame>
 #include <QAbstractScrollArea>
+#include <QScreen>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -241,7 +242,7 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, const NetworkItemPtr &ite
 void Smb4KToolTip::show(const QPoint &pos)
 {
   // Get the geometry of the screen where the cursor is
-  const QRect screenRect = QApplication::desktop()->screenGeometry(pos);
+  const QRect screenRect = QApplication::screenAt(pos)->geometry();
   
   // Adjust the size
   adjustSize();
