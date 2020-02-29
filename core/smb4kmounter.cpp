@@ -2,7 +2,7 @@
     The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2019 by Alexander Reinholdt
+    copyright            : (C) 2003-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -89,8 +89,6 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->newlyUnmounted = 0;
   d->dialog = 0;
   d->firstImportDone = false;
-  d->mountShares = false;
-  d->unmountShares = false;
   d->activeProfile = Smb4KProfileManager::self()->activeProfile();
   d->detectAllShares = Smb4KMountSettings::detectAllShares();
 
@@ -332,37 +330,16 @@ void Smb4KMounter::import(bool checkInaccessible)
   {
     d->newlyUnmounted += unmountedShares.size();
     
-    if (!d->mountShares && !d->unmountShares)
+    if (d->newlyUnmounted == 1)
     {
-      if (d->newlyUnmounted == 1)
-      {
-        // Copy the share
-        SharePtr unmountedShare = unmountedShares.first();
+      // Copy the share
+      SharePtr unmountedShare = unmountedShares.first();
         
-        // Remove the share from the global list and notify the program and user
-        removeMountedShare(unmountedShares.first());
-        emit unmounted(unmountedShare);
-        Smb4KNotification::shareUnmounted(unmountedShare);
-        unmountedShare.clear();
-      }
-      else
-      {
-        for (const SharePtr &share : unmountedShares)
-        {
-          // Copy the share
-          SharePtr unmountedShare = share;
-          
-          // Remove the share from the global list and notify the program
-          removeMountedShare(share);
-          emit unmounted(unmountedShare);
-          unmountedShare.clear();
-        }
-        
-        // Notify the user
-        Smb4KNotification::sharesUnmounted(d->newlyUnmounted);
-      }
-      
-      d->newlyUnmounted = 0;
+      // Remove the share from the global list and notify the program and user
+      removeMountedShare(unmountedShares.first());
+      emit unmounted(unmountedShare);
+      Smb4KNotification::shareUnmounted(unmountedShare);
+      unmountedShare.clear();
     }
     else
     {
@@ -370,14 +347,18 @@ void Smb4KMounter::import(bool checkInaccessible)
       {
         // Copy the share
         SharePtr unmountedShare = share;
-        
+          
         // Remove the share from the global list and notify the program
         removeMountedShare(share);
         emit unmounted(unmountedShare);
         unmountedShare.clear();
       }
+        
+      // Notify the user
+      Smb4KNotification::sharesUnmounted(d->newlyUnmounted);
     }
-    
+      
+    d->newlyUnmounted = 0;
     emit mountedSharesListChanged();
   }
   else
@@ -728,14 +709,10 @@ void Smb4KMounter::mountShare(const SharePtr &share)
 
 void Smb4KMounter::mountShares(const QList<SharePtr> &shares)
 {
-  d->mountShares = true;
-  
   for (const SharePtr &share : shares)
   {
     mountShare(share);
   }
-  
-  d->mountShares = false;
 }
 
 
@@ -871,7 +848,6 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
       {
         Smb4KNotification::actionFailed(errorCode);
       }
-
     }
     else
     {
@@ -901,38 +877,28 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
 
 void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent)
 {
-#if defined(Q_OS_LINUX)
   //
-  // Under Linux, we have to take an approach that is a bit awkward in this function. 
-  // Since the import function is invoked via Smb4KHardwareInterface::networkShareRemoved()
-  // before mountShare() returns, no unmount of multiple shares will ever be reported
-  // when d->unmountShares is set to FALSE *after* the loop ended. To make the reporting
-  // work correctly, we need to set d->unmountShares to FALSE before the last unmount
-  // is started.
+  // Inhibit shutdown and sleep
+  // 
+  Smb4KHardwareInterface::self()->inhibit();
+
   //
-  d->unmountShares = true;
-  int number = shares.size();
-  
+  // Unmount the list of shares
+  // 
   for (const SharePtr &share : shares)
   {
-    number--;
-    d->unmountShares = (number != 0);
+    // Unmount the share
     unmountShare(share, silent);
+    
+    // Wait for 50 ms so we can act on the networkShareRemoved() 
+    // signal and we do not trigger a busy error from mount.cifs
+    QTest::qWait(50);
   }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+
   //
-  // Since under FreeBSD the emission of Smb4KHardwareInterface::networkShareRemoved() is 
-  // triggered by a timer, we can use a nice approach here.
-  //
-  d->unmountShares = true;
-  
-  for (const SharePtr &share : shares)
-  {
-    unmountShare(share, silent);
-  }
-  
-  d->unmountShares = false;
-#endif
+  // Uninhibit shutdown and sleep
+  // 
+  Smb4KHardwareInterface::self()->uninhibit();
 }
 
 
@@ -2363,7 +2329,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
         d->newlyMounted += 1;
         emit mounted(importedShare);
         
-        if (d->importedShares.isEmpty() && !d->mountShares && !d->unmountShares)
+        if (d->importedShares.isEmpty())
         {
           if (d->firstImportDone)
           {

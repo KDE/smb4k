@@ -174,8 +174,8 @@ class Smb4KMounterPrivate
     QList<SharePtr> remounts;
     QString activeProfile;
     bool detectAllShares;
-    bool mountShares;
-    bool unmountShares;
+//     bool mountShares;
+//     bool unmountShares;
     bool firstImportDone;
 };
 
