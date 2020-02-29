@@ -425,8 +425,11 @@ void Smb4KClientJob::doLookups()
       }
       case ENOENT:
       {
-        setError(NonExistentUrlError);
-        setErrorText(i18n("The URL does not exist"));
+        if (!m_item->type() != Network)
+        {
+          setError(NonExistentUrlError);
+          setErrorText(i18n("The URL does not exist"));
+        }
         break;
       }
       case ENOTDIR:

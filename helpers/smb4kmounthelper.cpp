@@ -2,7 +2,7 @@
     The helper that mounts and unmounts shares.
                              -------------------
     begin                : Sa Okt 16 2010
-    copyright            : (C) 2010-2017 by Alexander Reinholdt
+    copyright            : (C) 2010-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -92,7 +92,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
   proc.setOutputChannelMode(KProcess::SeparateChannels);
   proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
 #if defined(Q_OS_LINUX)
-  proc.setEnv("PASSWD", args["mh_url"].toUrl().password(), true);
+  proc.setEnv("PASSWD", args["mh_url"].toUrl().password().toUtf8().data(), true);
 #endif
   // We need this to avoid a translated password prompt.
   proc.setEnv("LANG", "C");
@@ -118,7 +118,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
 
       if (out.startsWith("Password"))
       {
-        proc.write(args["mh_url"].toUrl().password().toUtf8());
+        proc.write(args["mh_url"].toUrl().password().toUtf8().data());
         proc.write("\r");
       }
 
