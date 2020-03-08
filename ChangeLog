@@ -1,3 +1,18 @@
+Smb4K 3.0.3 (2020-03-08):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=3.0
+
+- Exit silently when the query for domains and workgroups failed
+  (BUG 417754).
+- Fixed authentication problems while mounting due to special characters
+  in the password (BUG 367911).
+- Wait for 50 ms after the unmount of a share before starting the next 
+  one (BUG 417631).
+- Replace deprecated QApplication::desktop()->screenGeometry() function
+  and, thus, silence a compiler warning.
+- Updated translations.
+
 Smb4K 3.0.2 (2019-08-15):
 
 See the summary of changes below. For a full list of changes, please
