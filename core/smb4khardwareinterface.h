@@ -78,15 +78,6 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
      */
     bool isOnline() const;
 
-#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-  protected:
-    /**
-     * Reimplemented from QObject to check for mounts and unmounts on operating
-     * systems that are not fully supported by Solid, yet.
-     */
-    void timerEvent(QTimerEvent *e) override;
-#endif
-    
     /**
      * Inhibit shutdown and sleep.
      */
@@ -96,6 +87,15 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
      * Uninhibit shutdown and sleep.
      */
     void uninhibit();
+
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+  protected:
+    /**
+     * Reimplemented from QObject to check for mounts and unmounts on operating
+     * systems that are not fully supported by Solid, yet.
+     */
+    void timerEvent(QTimerEvent *e) override;
+#endif
     
   Q_SIGNALS:
     /**

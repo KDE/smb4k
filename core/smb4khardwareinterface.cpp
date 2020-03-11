@@ -97,6 +97,46 @@ bool Smb4KHardwareInterface::isOnline() const
 }
 
 
+void Smb4KHardwareInterface::inhibit()
+{
+  if (d->fileDescriptor.isValid())
+  {
+    return;
+  }
+  
+  if (d->dbusInterface->isValid())
+  {
+    QVariantList args;
+    args << QStringLiteral("shutdown:sleep");
+    args << QStringLiteral("Smb4K");
+    args << QStringLiteral("Mounting or unmounting in progress");
+    args << QStringLiteral("delay");
+    
+    QDBusReply<QDBusUnixFileDescriptor> descriptor = d->dbusInterface->callWithArgumentList(QDBus::Block, QStringLiteral("Inhibit"), args);
+    
+    if (descriptor.isValid())
+    {
+      d->fileDescriptor = descriptor.value();
+    }
+  }
+}
+
+
+void Smb4KHardwareInterface::uninhibit()
+{
+  if (!d->fileDescriptor.isValid())
+  {
+    return;
+  }
+  
+  if (d->dbusInterface->isValid())
+  {
+    close(d->fileDescriptor.fileDescriptor());
+    d->fileDescriptor.setFileDescriptor(-1);
+  }
+}
+
+
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 // Using FreeBSD 11 with KF 5.27, Solid is not able to detect mounted shares.
 // Thus, we check here whether shares have been mounted or unmounted.
@@ -144,46 +184,6 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
   d->mountPoints.append(mountPointList);
 }
 #endif
-
-
-void Smb4KHardwareInterface::inhibit()
-{
-  if (d->fileDescriptor.isValid())
-  {
-    return;
-  }
-  
-  if (d->dbusInterface->isValid())
-  {
-    QVariantList args;
-    args << QStringLiteral("shutdown:sleep");
-    args << QStringLiteral("Smb4K");
-    args << QStringLiteral("Mounting or unmounting in progress");
-    args << QStringLiteral("delay");
-    
-    QDBusReply<QDBusUnixFileDescriptor> descriptor = d->dbusInterface->callWithArgumentList(QDBus::Block, QStringLiteral("Inhibit"), args);
-    
-    if (descriptor.isValid())
-    {
-      d->fileDescriptor = descriptor.value();
-    }
-  }
-}
-
-
-void Smb4KHardwareInterface::uninhibit()
-{
-  if (!d->fileDescriptor.isValid())
-  {
-    return;
-  }
-  
-  if (d->dbusInterface->isValid())
-  {
-    close(d->fileDescriptor.fileDescriptor());
-    d->fileDescriptor.setFileDescriptor(-1);
-  }
-}
 
 
 void Smb4KHardwareInterface::slotNetworkConfigUpdated()
