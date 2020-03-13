@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2019 by Alexander Reinholdt
+    copyright            : (C) 2007-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,6 +34,14 @@
 #include <QDebug>
 #include <QBrush>
 #include <QApplication>
+#include <QHBoxLayout>
+#include <QGridLayout>
+#include <QLabel>
+
+// KDE includes
+#include <KIconThemes/KIconLoader>
+#include <KWidgetsAddons/KSeparator>
+#include <KI18n/KLocalizedString>
 
 using namespace Smb4KGlobal;
 
@@ -41,9 +49,6 @@ using namespace Smb4KGlobal;
 Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, const NetworkItemPtr &item)
 : QTreeWidgetItem(parent, item->type()), m_item(item)
 {
-  m_tooltip   = new Smb4KToolTip();
-  m_tooltip->setup(Smb4KToolTip::NetworkBrowser, m_item);
-  
   switch (m_item->type())
   {
     case Workgroup:
@@ -97,15 +102,14 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidget *parent, const Netw
       break;
     }
   }
+  
+  setupToolTipContentsWidget();
 }
 
 
 Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, const NetworkItemPtr &item)
 : QTreeWidgetItem(parent, item->type()), m_item(item)
 {
-  m_tooltip   = new Smb4KToolTip();
-  m_tooltip->setup(Smb4KToolTip::NetworkBrowser, m_item);
-  
   switch (m_item->type())
   {
     case Workgroup:
@@ -159,13 +163,15 @@ Smb4KNetworkBrowserItem::Smb4KNetworkBrowserItem(QTreeWidgetItem *parent, const 
       break;
     }
   }
+  
+  setupToolTipContentsWidget();
 }
 
 
 
 Smb4KNetworkBrowserItem::~Smb4KNetworkBrowserItem()
 {
-  delete m_tooltip;
+  m_toolTipContentsWidget.clear();
 }
 
 
@@ -267,12 +273,298 @@ void Smb4KNetworkBrowserItem::update()
     }
   }
     
-  m_tooltip->update(Smb4KToolTip::NetworkBrowser, m_item);
+  setupToolTipContentsWidget();
 }
 
 
-Smb4KToolTip* Smb4KNetworkBrowserItem::tooltip()
+QWidget *Smb4KNetworkBrowserItem::toolTipContentsWidget()
 {
-  return m_tooltip;
+  return m_toolTipContentsWidget;
 }
+
+
+
+void Smb4KNetworkBrowserItem::setupToolTipContentsWidget()
+{
+  //
+  // The layout
+  // 
+  QHBoxLayout *mainLayout = nullptr;
+  
+  // 
+  // Make sure the widget exists
+  // 
+  if (!m_toolTipContentsWidget)
+  {
+    m_toolTipContentsWidget = new QWidget(treeWidget());
+    mainLayout = new QHBoxLayout(m_toolTipContentsWidget);
+  }
+  else
+  {
+    mainLayout = qobject_cast<QHBoxLayout *>(m_toolTipContentsWidget->layout());
+  }
+  
+  //
+  // Update the contents, if possible
+  // 
+  if (!m_toolTipContentsWidget->layout()->isEmpty())
+  {
+    switch (m_item->type())
+    {
+      case Workgroup:
+      {
+        WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
+        QLabel *masterBrowserName = m_toolTipContentsWidget->findChild<QLabel *>("MasterBrowserName");
+            
+        if (workgroup->hasMasterBrowserIpAddress())
+        {
+          masterBrowserName->setText(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIpAddress()+')');
+        }
+        else
+        {
+          masterBrowserName->setText(workgroup->masterBrowserName());
+        }
+        break;
+      }
+      case Host:
+      {
+        HostPtr host = m_item.staticCast<Smb4KHost>();
+        m_toolTipContentsWidget->findChild<QLabel *>("CommentString")->setText(!host->comment().isEmpty() ? host->comment() : "-");
+        m_toolTipContentsWidget->findChild<QLabel *>("IPAddressString")->setText(host->hasIpAddress() ? host->ipAddress() : "-");
+        break;
+      }
+      case Share:
+      {
+        SharePtr share = m_item.staticCast<Smb4KShare>();
+        
+        m_toolTipContentsWidget->findChild<QLabel *>("CommentString")->setText(!share->comment().isEmpty() ? share->comment() : "-");
+        m_toolTipContentsWidget->findChild<QLabel *>("IPAddressString")->setText(share->hasHostIpAddress() ? share->hostIpAddress() : "-");
+        
+        QLabel *mountedState = m_toolTipContentsWidget->findChild<QLabel *>("MountedState");
+            
+        if (!share->isPrinter())
+        {
+          mountedState->setText(share->isMounted() ? i18n("yes") : i18n("no"));
+        }
+        else
+        {
+          mountedState->setText("-");
+        }
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+    
+    return;
+  }
+  
+  //
+  // Set up the widget
+  // 
+  
+  // Icon
+  QLabel *iconLabel = new QLabel(m_toolTipContentsWidget);
+  iconLabel->setPixmap(m_item->icon().pixmap(KIconLoader::SizeEnormous));
+  mainLayout->addWidget(iconLabel, Qt::AlignHCenter);
+  
+  // Header
+  QGridLayout *descriptionLayout = new QGridLayout();
+  mainLayout->addLayout(descriptionLayout);
+  
+  QLabel *caption = new QLabel(m_toolTipContentsWidget);
+  caption->setForegroundRole(QPalette::ToolTipText);
+  caption->setBackgroundRole(QPalette::AlternateBase);
+      
+  QFont captionFont = caption->font();
+  captionFont.setBold(true);
+  caption->setFont(captionFont);
+
+  descriptionLayout->addWidget(caption, 0, 0, 1, 2, Qt::AlignHCenter);
+  
+  KSeparator *separator = new KSeparator(Qt::Horizontal, m_toolTipContentsWidget);
+  separator->setForegroundRole(QPalette::ToolTipText);
+  
+  descriptionLayout->addWidget(separator, 1, 0, 1, 2, 0);
+  
+  // Type
+  QLabel *typeCaption = new QLabel(i18n("Type:"), m_toolTipContentsWidget);
+  typeCaption->setForegroundRole(QPalette::ToolTipText);
+  
+  descriptionLayout->addWidget(typeCaption, 2, 0, Qt::AlignRight);
+  
+  QLabel *typeName = new QLabel(m_toolTipContentsWidget);
+  typeName->setForegroundRole(QPalette::ToolTipText);
+  
+  descriptionLayout->addWidget(typeName, 2, 1, 0);
+  
+  switch (m_item->type())
+  {
+    case Workgroup:
+    {
+      WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
+     
+      caption->setText(workgroup->workgroupName());
+      typeName->setText(i18n("Workgroup"));
+      
+      // Master browser
+      QLabel *masterBrowserLabel = new QLabel(i18n("Master Browser:"), m_toolTipContentsWidget);
+      masterBrowserLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(masterBrowserLabel, 3, 0, Qt::AlignRight);
+      
+      QLabel *masterBrowserName = new QLabel(m_toolTipContentsWidget);
+      masterBrowserName->setObjectName("MasterBrowserName");
+      masterBrowserName->setForegroundRole(QPalette::ToolTipText);
+      
+      if (workgroup->hasMasterBrowserIpAddress())
+      {
+        masterBrowserName->setText(QString("%1 (%2)").arg(workgroup->masterBrowserName()).arg(workgroup->masterBrowserIpAddress()));
+      }
+      else
+      {
+        masterBrowserName->setText(workgroup->masterBrowserName());
+      }
+      
+      descriptionLayout->addWidget(masterBrowserName, 3, 1, 0);
+      
+      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 4, 0, 2, 1, 0);
+      
+      break;
+    }
+    case Host:
+    {
+      HostPtr host = m_item.staticCast<Smb4KHost>();
+      caption->setText(host->hostName());
+      typeName->setText(i18n("Host"));
+      
+      // Comment
+      QLabel *commentLabel = new QLabel(i18n("Comment:"), m_toolTipContentsWidget);
+      commentLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(commentLabel, 3, 0, Qt::AlignRight);
+      
+      QLabel *commentString = new QLabel(!host->comment().isEmpty() ? host->comment() : "-", m_toolTipContentsWidget);
+      commentString->setObjectName("CommentString");
+      commentString->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(commentString, 3, 1, 0);
+      
+      // IP address
+      QLabel *ipAddressLabel = new QLabel(i18n("IP Address:"), m_toolTipContentsWidget);
+      ipAddressLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(ipAddressLabel, 4, 0, Qt::AlignRight);
+      
+      QLabel *ipAddress = new QLabel(host->hasIpAddress() ? host->ipAddress() : "-", m_toolTipContentsWidget);
+      ipAddress->setObjectName("IPAddressString");
+      ipAddress->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(ipAddress, 4, 1, 0);
+      
+      // Workgroup
+      QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), m_toolTipContentsWidget);
+      workgroupLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(workgroupLabel, 5, 0, Qt::AlignRight);
+      
+      QLabel *workgroupName = new QLabel(host->workgroupName(), m_toolTipContentsWidget);
+      workgroupName->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(workgroupName, 5, 1, 0);
+      
+      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 6, 0, 2, 1, 0);
+      
+      break;
+    }
+    case Share:
+    {
+      SharePtr share = m_item.staticCast<Smb4KShare>();
+      caption->setText(share->shareName());
+      typeName->setText(i18n("Share (%1)", share->shareTypeString()));
+      
+      // Comment
+      QLabel *commentLabel = new QLabel(i18n("Comment:"), m_toolTipContentsWidget);
+      commentLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(commentLabel, 3, 0, Qt::AlignRight);
+      
+      QLabel *commentString = new QLabel(!share->comment().isEmpty() ? share->comment() : "-", m_toolTipContentsWidget);
+      commentString->setObjectName("CommentString");
+      commentString->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(commentString, 3, 1, 0);
+      
+      // State (mounted/not mounted)
+      QLabel *mountedLabel = new QLabel(i18n("Mounted:"), m_toolTipContentsWidget);
+      mountedLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(mountedLabel, 4, 0, Qt::AlignRight);
+      
+      QLabel *mountedState = nullptr;
+      
+      if (!share->isPrinter())
+      {
+        mountedState = new QLabel(share->isMounted() ? i18n("yes") : i18n("no"), m_toolTipContentsWidget);
+      }
+      else
+      {
+        mountedState = new QLabel("-", m_toolTipContentsWidget);
+      }      
+      
+      mountedState->setObjectName("MountedState");
+      mountedState->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(mountedState, 4, 1, 0);
+      
+      // Host
+      QLabel *hostLabel = new QLabel(i18n("Host:"), m_toolTipContentsWidget);
+      hostLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(hostLabel, 5, 0, Qt::AlignRight);
+      
+      QLabel *hostName = new QLabel(share->hostName(), m_toolTipContentsWidget);
+      hostName->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(hostName, 5, 1, 0);
+      
+      // IP address
+      QLabel *ipAddressLabel = new QLabel(i18n("IP Address:"), m_toolTipContentsWidget);
+      ipAddressLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(ipAddressLabel, 6, 0, Qt::AlignRight);
+      
+      QLabel *ipAddressString = new QLabel(share->hasHostIpAddress() ? share->hostIpAddress() : "-", m_toolTipContentsWidget);
+      ipAddressString->setObjectName("IPAddressString");
+      ipAddressString->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(ipAddressString, 6, 1, 0);
+      
+      // Location
+      QLabel *locationLabel = new QLabel(i18n("Location:"), m_toolTipContentsWidget);
+      locationLabel->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(locationLabel, 7, 0, Qt::AlignRight);
+      
+      QLabel *locationString = new QLabel(share->displayString(), m_toolTipContentsWidget);
+      locationString->setForegroundRole(QPalette::ToolTipText);
+      
+      descriptionLayout->addWidget(locationString, 7, 1, 0);
+      
+      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 8, 0, 2, 1, 0);
+      
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+  
+  m_toolTipContentsWidget->adjustSize();
+}
+
+
 

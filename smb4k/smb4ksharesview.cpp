@@ -2,7 +2,7 @@
     This is the shares view of Smb4K.
                              -------------------
     begin                : Mo Dez 4 2006
-    copyright            : (C) 2006-2019 by Alexander Reinholdt
+    copyright            : (C) 2006-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,7 +26,6 @@
 // application specific includes
 #include "smb4ksharesview.h"
 #include "smb4ksharesviewitem.h"
-#include "smb4ktooltip.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksettings.h"
 
@@ -36,6 +35,8 @@
 #include <QDrag>
 #include <QDesktopWidget>
 #include <QApplication>
+#include <QScreen>
+#include <QLayout>
 
 // KDE includes
 #include <KIconThemes/KIconLoader>
@@ -55,16 +56,9 @@ Smb4KSharesView::Smb4KSharesView(QWidget *parent)
   setUniformItemSizes(true);
   setWrapping(true);
   
+  m_toolTip = new KToolTipWidget(this);
+  
   setContextMenuPolicy(Qt::CustomContextMenu);
-
-  m_tooltipItem = 0;
-  m_mouseInside = false;
-
-  // 
-  // Connections
-  // 
-  connect(this, SIGNAL(itemEntered(QListWidgetItem*)), this, SLOT(slotItemEntered(QListWidgetItem*)));
-  connect(this, SIGNAL(viewportEntered()), this, SLOT(slotViewportEntered()));
 }
 
 
@@ -130,27 +124,23 @@ bool Smb4KSharesView::event(QEvent *e)
       {
         if (Smb4KSettings::showShareToolTip())
         {
-          m_tooltipItem = item;
-          emit aboutToShowToolTip(m_tooltipItem);
-          m_tooltipItem->tooltip()->show(cursor().pos());
-        }
-        else
-        {
-          if (m_tooltipItem)
+          QPoint tooltipPos = cursor().pos();
+            
+          int testWidth = item->toolTipContentsWidget()->width() + cursor().pos().x() + m_toolTip->layout()->contentsMargins().left() + m_toolTip->layout()->contentsMargins().right();
+            
+          if (QApplication::screenAt(pos)->virtualSize().width() < testWidth)
           {
-            emit aboutToHideToolTip(m_tooltipItem);
-            m_tooltipItem->tooltip()->hide();
-            m_tooltipItem = 0;
+            tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
           }
-        }
-      }
-      else
-      {
-        if (m_tooltipItem)
-        {
-          emit aboutToHideToolTip(m_tooltipItem);
-          m_tooltipItem->tooltip()->hide();
-          m_tooltipItem = 0;
+            
+          int testHeight = item->toolTipContentsWidget()->height() + cursor().pos().y() + m_toolTip->layout()->contentsMargins().top() + m_toolTip->layout()->contentsMargins().bottom();
+            
+          if (QApplication::screenAt(pos)->virtualSize().height() < testHeight)
+          {
+            tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
+          }
+            
+          m_toolTip->showAt(tooltipPos, item->toolTipContentsWidget(), nativeParentWidget()->windowHandle());
         }
       }
 
@@ -166,37 +156,8 @@ bool Smb4KSharesView::event(QEvent *e)
 }
 
 
-void Smb4KSharesView::leaveEvent(QEvent *e)
-{
-  if (m_tooltipItem)
-  {
-    emit aboutToHideToolTip(m_tooltipItem);
-    m_tooltipItem->tooltip()->hide();
-    m_tooltipItem = 0;
-  }
-  
-  m_mouseInside = false;
-  QListWidget::leaveEvent(e);
-}
-
-
-void Smb4KSharesView::enterEvent(QEvent *e)
-{
-  m_mouseInside = true;
-  QListWidget::enterEvent(e);
-}
-
-
 void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
 {
-  // Hide the current tool tip so that it is not in the way.
-  if (m_tooltipItem)
-  {
-    emit aboutToHideToolTip(m_tooltipItem);
-    m_tooltipItem->tooltip()->hide();
-    m_tooltipItem = 0;
-  }
-
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
   QListWidgetItem *item = itemAt(e->pos());
@@ -209,25 +170,6 @@ void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
   }
 
   QListWidget::mousePressEvent(e);
-}
-
-
-void Smb4KSharesView::focusOutEvent(QFocusEvent *e)
-{
-  QListWidget::focusOutEvent(e);
-}
-
-
-void Smb4KSharesView::wheelEvent(QWheelEvent *e)
-{
-  if (m_tooltipItem)
-  {
-    emit aboutToHideToolTip(m_tooltipItem);
-    m_tooltipItem->tooltip()->hide();
-    m_tooltipItem = 0;
-  }
-  
-  QListWidget::wheelEvent(e);
 }
 
 
@@ -325,13 +267,6 @@ QMimeData *Smb4KSharesView::mimeData(const QList<QListWidgetItem *> list) const
 
 void Smb4KSharesView::startDrag(Qt::DropActions supported)
 {
-  if (m_tooltipItem)
-  {
-    emit aboutToHideToolTip(m_tooltipItem);
-    m_tooltipItem->tooltip()->hide();
-    m_tooltipItem = 0;
-  }
-
   QList<QListWidgetItem *> list = selectedItems();
 
   if (!list.isEmpty())
@@ -361,35 +296,6 @@ void Smb4KSharesView::startDrag(Qt::DropActions supported)
     drag->setMimeData(data);
 
     drag->exec(supported, Qt::IgnoreAction);
-  }
-}
-
-
-/////////////////////////////////////////////////////////////////////////////
-// SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KSharesView::slotItemEntered(QListWidgetItem *item)
-{
-  Smb4KSharesViewItem *share_item = static_cast<Smb4KSharesViewItem *>(item);
-  
-  if (m_tooltipItem && m_tooltipItem != share_item)
-  {
-    emit aboutToHideToolTip(m_tooltipItem);
-    m_tooltipItem->tooltip()->hide();
-    m_tooltipItem = 0;
-  }
-}
-
-
-void Smb4KSharesView::slotViewportEntered()
-{
-  // Hide the tool tip.
-  if (m_tooltipItem)
-  {
-    emit aboutToHideToolTip(m_tooltipItem);
-    m_tooltipItem->tooltip()->hide();
-    m_tooltipItem = 0;
   }
 }
 

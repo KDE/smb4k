@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2019 by Alexander Reinholdt
+    copyright            : (C) 2007-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -26,7 +26,6 @@
 // application specific includes
 #include "smb4knetworkbrowser.h"
 #include "smb4knetworkbrowseritem.h"
-#include "smb4ktooltip.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kshare.h"
@@ -34,13 +33,11 @@
 // Qt includes
 #include <QTimer>
 #include <QMouseEvent>
-#include <QFocusEvent>
-#include <QWheelEvent>
-#include <QCursor>
-#include <QHelpEvent>
 #include <QHeaderView>
-#include <QDesktopWidget>
 #include <QApplication>
+#include <QRect>
+#include <QScreen>
+#include <QLayout>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -56,9 +53,8 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser(QWidget *parent)
   setSelectionMode(ExtendedSelection);
   
   setContextMenuPolicy(Qt::CustomContextMenu);
-
-  m_tooltip_item = 0;
-  m_mouse_inside = false;
+  
+  m_toolTip = new KToolTipWidget(this);
 
   QStringList header_labels;
   header_labels.append(i18n("Network"));
@@ -73,8 +69,6 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser(QWidget *parent)
   // Connections
   // 
   connect(this, SIGNAL(itemActivated(QTreeWidgetItem*,int)), this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
-  connect(this, SIGNAL(itemEntered(QTreeWidgetItem*,int)), this, SLOT(slotItemEntered(QTreeWidgetItem*,int)));
-  connect(this, SIGNAL(viewportEntered()), this, SLOT(slotViewportEntered()));
   connect(this, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
 }
 
@@ -121,39 +115,26 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
           
           // Check that the tooltip is not over the root decoration.
           // If it is, hide it.
-          if (pos.x() <= ind * indentation())
+          if (pos.x() > ind * indentation())
           {
-            if (m_tooltip_item)
+            QPoint tooltipPos = cursor().pos();
+            
+            int testWidth = item->toolTipContentsWidget()->width() + cursor().pos().x() + m_toolTip->layout()->contentsMargins().left() + m_toolTip->layout()->contentsMargins().right();
+            
+            if (QApplication::screenAt(pos)->virtualSize().width() < testWidth)
             {
-              emit aboutToHideToolTip(m_tooltip_item);
-              m_tooltip_item->tooltip()->hide();
-              m_tooltip_item = 0;
+              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
             }
+            
+            int testHeight = item->toolTipContentsWidget()->height() + cursor().pos().y() + m_toolTip->layout()->contentsMargins().top() + m_toolTip->layout()->contentsMargins().bottom();
+            
+            if (QApplication::screenAt(pos)->virtualSize().height() < testHeight)
+            {
+              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
+            }
+            
+            m_toolTip->showAt(tooltipPos, item->toolTipContentsWidget(), nativeParentWidget()->windowHandle());
           }
-          else
-          {
-            m_tooltip_item = item;
-            emit aboutToShowToolTip(m_tooltip_item);
-            m_tooltip_item->tooltip()->show(cursor().pos());
-          }
-        }
-        else
-        {
-          if (m_tooltip_item)
-          {
-            emit aboutToHideToolTip(m_tooltip_item);
-            m_tooltip_item->tooltip()->hide();
-            m_tooltip_item = 0;
-          }
-        }
-      }
-      else
-      {
-        if (m_tooltip_item)
-        {
-          emit aboutToHideToolTip(m_tooltip_item);
-          m_tooltip_item->tooltip()->hide();
-          m_tooltip_item = 0;
         }
       }
       
@@ -169,71 +150,8 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
 }
 
 
-void Smb4KNetworkBrowser::mouseMoveEvent(QMouseEvent *e)
-{
-  // Find the item over which the user moved the mouse:
-  Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(itemAt(e->pos()));
-
-  if (item)
-  {
-    emit itemEntered(item, columnAt(e->pos().x()));
-    
-    // Hide tool tip if the items diverge.
-    if (m_tooltip_item && m_tooltip_item->tooltip()->networkItem() != item->networkItem())
-    {
-      emit aboutToHideToolTip(m_tooltip_item);
-      m_tooltip_item->tooltip()->hide();
-      m_tooltip_item = 0;
-    }
-  }
-  else
-  {
-    // Hide the tool tip
-    if (m_tooltip_item)
-    {
-      emit aboutToHideToolTip(m_tooltip_item);
-      m_tooltip_item->tooltip()->hide();
-      m_tooltip_item = 0;
-    }
-  }
-
-  QTreeWidget::mouseMoveEvent(e);
-}
-
-
-void Smb4KNetworkBrowser::leaveEvent(QEvent *e)
-{
-  if (m_tooltip_item)
-  {
-    emit aboutToHideToolTip(m_tooltip_item);
-    m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = 0;
-  }
-  
-  m_mouse_inside = false;
-
-  QTreeWidget::leaveEvent(e);
-}
-
-
-void Smb4KNetworkBrowser::enterEvent(QEvent *e)
-{
-  m_mouse_inside = true;
-
-  QTreeWidget::enterEvent(e);
-}
-
-
 void Smb4KNetworkBrowser::mousePressEvent(QMouseEvent *e)
 {
-  // Hide the current tool tip so that it is not in the way.
-  if (m_tooltip_item)
-  {
-    emit aboutToHideToolTip(m_tooltip_item);
-    m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = 0;
-  }
-
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
   QTreeWidgetItem *item = itemAt(e->pos());
@@ -242,29 +160,9 @@ void Smb4KNetworkBrowser::mousePressEvent(QMouseEvent *e)
   {
     currentItem()->setSelected(false);
     setCurrentItem(0);
-    emit itemPressed(currentItem(), -1);
   }
 
   QTreeWidget::mousePressEvent(e);
-}
-
-
-void Smb4KNetworkBrowser::focusOutEvent(QFocusEvent *e)
-{
-  QTreeWidget::focusOutEvent(e);
-}
-
-
-void Smb4KNetworkBrowser::wheelEvent(QWheelEvent *e)
-{
-  if (m_tooltip_item)
-  {
-    emit aboutToHideToolTip(m_tooltip_item);
-    m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = 0;
-  }
-  
-  QTreeWidget::wheelEvent(e);
 }
 
 
@@ -272,39 +170,8 @@ void Smb4KNetworkBrowser::wheelEvent(QWheelEvent *e)
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KNetworkBrowser::slotItemEntered(QTreeWidgetItem *item, int /*column*/)
-{
-  Smb4KNetworkBrowserItem *browser_item = static_cast<Smb4KNetworkBrowserItem *>(item);
-  
-  if (m_tooltip_item && m_tooltip_item != browser_item)
-  {
-    emit aboutToHideToolTip(m_tooltip_item);
-    m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = 0;
-  }
-}
-
-
-void Smb4KNetworkBrowser::slotViewportEntered()
-{
-  if (m_tooltip_item)
-  {
-    emit aboutToHideToolTip(m_tooltip_item);
-    m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = 0;
-  }
-}
-
-
 void Smb4KNetworkBrowser::slotItemActivated(QTreeWidgetItem *item, int /*column*/)
 {
-  if (m_tooltip_item)
-  {
-    emit aboutToHideToolTip(m_tooltip_item);
-    m_tooltip_item->tooltip()->hide();
-    m_tooltip_item = 0;
-  }
-
   // Only do something if there are no keyboard modifiers pressed
   // and there is only one item selected.
   if (QApplication::keyboardModifiers() == Qt::NoModifier && selectedItems().size() == 1)

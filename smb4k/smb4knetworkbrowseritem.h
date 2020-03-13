@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2019 by Alexander Reinholdt
+    copyright            : (C) 2007-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,11 +28,11 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
-#include "smb4ktooltip.h"
 
 // Qt includes
 #include <QTreeWidgetItem>
 #include <QTreeWidget>
+#include <QPointer>
 
 
 class Smb4KNetworkBrowser;
@@ -106,22 +106,28 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
     void update();
     
     /**
-     * This function returns the tool tip of this item.
+     * This function returns the widget with contents that is to be shown 
+     * in the tooltip.
      * 
-     * @returns the tool tip.
+     * @returns the widget that is to be shown in the tooltip
      */
-    Smb4KToolTip *tooltip();
-
+    QWidget *toolTipContentsWidget();
+    
   private:
+    /**
+     * This function sets up the tooltip contents widget
+     */
+    void setupToolTipContentsWidget();
+    
     /**
      * The network item
      */
     NetworkItemPtr m_item;
     
     /**
-     * The tool tip of this item
+     * The widget with the information for the tooltip
      */
-    Smb4KToolTip *m_tooltip;
+    QPointer<QWidget> m_toolTipContentsWidget;
 };
 
 #endif
