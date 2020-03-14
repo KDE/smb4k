@@ -2,7 +2,7 @@
     The item for Smb4K's shares view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2019 by Alexander Reinholdt
+    copyright            : (C) 2006-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,10 +28,11 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
-#include "smb4ktooltip.h"
 
 // Qt includes
 #include <QListWidgetItem>
+#include <QPointer>
+#include <QWidget>
 
 // forward declarations
 class Smb4KSharesView;
@@ -73,28 +74,34 @@ class Smb4KSharesViewItem : public QListWidgetItem
     void update();
     
     /**
-     * This function returns the tool tip of this item.
-     * 
-     * @returns the tool tip.
-     */
-    Smb4KToolTip *tooltip();
-    
-    /**
      * This function modifies the alignment according to the @p mode used in
      * the parent list widget.
      */
     void setItemAlignment(QListView::ViewMode mode);
     
+    /**
+     * This function returns the widget with contents that is to be shown 
+     * in the tooltip.
+     * 
+     * @returns the widget that is to be shown in the tooltip
+     */
+    QWidget *toolTipContentsWidget();
+    
   private:
+    /**
+     * This function sets up the tooltip contents widget
+     */
+    void setupToolTipContentsWidget();
+    
     /**
      * The Smb4KShare item
      */
     SharePtr m_share;
     
     /**
-     * The tool tip
+     * The widget with the information for the tooltip
      */
-    Smb4KToolTip *m_tooltip;
+    QPointer<QWidget> m_toolTipContentsWidget;
 };
 
 #endif

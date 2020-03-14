@@ -2,7 +2,7 @@
     This is the shares view of Smb4K.
                              -------------------
     begin                : Mo Dez 4 2006
-    copyright            : (C) 2006-2019 by Alexander Reinholdt
+    copyright            : (C) 2006-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,6 +30,9 @@
 #include <QTimer>
 #include <QMimeData>
 #include <QListWidget>
+
+// KDE includes
+#include <KWidgetsAddons/KToolTipWidget>
 
 // forward declarations
 class Smb4KSharesViewItem;
@@ -77,20 +80,6 @@ class Smb4KSharesView : public QListWidget
      * @param e             The drop event.
      */
     void acceptedDropEvent(Smb4KSharesViewItem *item, QDropEvent *e);
-    
-    /**
-     * This signal is emitted when a tool tip is about to be shown.
-     * 
-     * @param item          The shares list view item
-     */
-    void aboutToShowToolTip(Smb4KSharesViewItem *item);
-    
-    /**
-     * This signal is emitted when a tool tip is about to be hidden.
-     * 
-     * @param item          The shares list view item
-     */
-    void aboutToHideToolTip(Smb4KSharesViewItem *item);
 
   protected:
     /**
@@ -99,44 +88,12 @@ class Smb4KSharesView : public QListWidget
     bool event(QEvent *e) override;
 
     /**
-     * Reimplemented from QWidget. This function emits the signal
-     * mouseOutside().
-     *
-     * @param e             The event object
-     */
-    void leaveEvent(QEvent *e) override;
-
-    /**
-     * Reimplemented from QWidget. This function emits the signal
-     * mouseInside().
-     *
-     * @param e             The event object
-     */
-    void enterEvent(QEvent *e) override;
-
-    /**
      * Reimplemented from QAbstractItemView. This function handles
      * mouse press events.
      *
      * @param e             The mouse event object
      */
     void mousePressEvent(QMouseEvent *e) override;
-
-    /**
-     * Reimplemented from QAbstractItemView. This function is used
-     * to stop the auto selection.
-     *
-     * @param e             The focus event
-     */
-    void focusOutEvent(QFocusEvent *e) override;
-
-    /**
-     * Reimplemented from QWidget. This function is used to handle
-     * the tooltip.
-     *
-     * @param e             The wheel event
-     */
-    void wheelEvent(QWheelEvent *e) override;
 
     /**
      * Reimplemented to allow dragging and dropping.
@@ -174,31 +131,11 @@ class Smb4KSharesView : public QListWidget
      */
     void startDrag(Qt::DropActions supported) override;
 
-  protected slots:
-    /**
-     * This slot is invoked when an item in the shares view has been entered.
-     * It is used to display the tool tips.
-     *
-     * @param item            The item that is under the mouse.
-     */
-    void slotItemEntered(QListWidgetItem *item);
-
-    /**
-     * This slot is invoked when the viewport is entered. It is used
-     * to hide the tool tip if needed.
-     */
-    void slotViewportEntered();
-
   private:
     /**
-     * The item for that a tool tip is shown
+     * The tool top widget
      */
-    Smb4KSharesViewItem *m_tooltipItem;
-
-    /**
-     * Is the mouse inside the widget?
-     */
-    bool m_mouseInside;
+    KToolTipWidget *m_toolTip;
 };
 
 #endif
