@@ -242,7 +242,11 @@ void Smb4KToolTip::update(Smb4KToolTip::Parent parent, const NetworkItemPtr &ite
 void Smb4KToolTip::show(const QPoint &pos)
 {
   // Get the geometry of the screen where the cursor is
+#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+  const QRect screenRect = QApplication::desktop()->screenGeometry(pos);
+#else
   const QRect screenRect = QApplication::screenAt(pos)->geometry();
+#endif
   
   // Adjust the size
   adjustSize();
