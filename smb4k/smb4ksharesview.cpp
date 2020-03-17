@@ -35,7 +35,11 @@
 #include <QDrag>
 #include <QDesktopWidget>
 #include <QApplication>
+#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0) 
+#include <QDesktopWidget>
+#else
 #include <QScreen>
+#endif
 #include <QLayout>
 
 // KDE includes
@@ -128,17 +132,31 @@ bool Smb4KSharesView::event(QEvent *e)
             
           int testWidth = item->toolTipContentsWidget()->width() + cursor().pos().x() + m_toolTip->layout()->contentsMargins().left() + m_toolTip->layout()->contentsMargins().right();
             
-          if (QApplication::screenAt(pos)->virtualSize().width() < testWidth)
-          {
-            tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
-          }
+#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+            if (QApplication::desktop()->screenGeometry(pos).width() < testWidth)
+            {
+              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
+            }
             
-          int testHeight = item->toolTipContentsWidget()->height() + cursor().pos().y() + m_toolTip->layout()->contentsMargins().top() + m_toolTip->layout()->contentsMargins().bottom();
+            int testHeight = item->toolTipContentsWidget()->height() + cursor().pos().y() + m_toolTip->layout()->contentsMargins().top() + m_toolTip->layout()->contentsMargins().bottom();
             
-          if (QApplication::screenAt(pos)->virtualSize().height() < testHeight)
-          {
-            tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
-          }
+            if (QApplication::desktop()->screenGeometry(pos).height() < testHeight)
+            {
+              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
+            }
+#else
+            if (QApplication::screenAt(pos)->virtualSize().width() < testWidth)
+            {
+              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
+            }
+            
+            int testHeight = item->toolTipContentsWidget()->height() + cursor().pos().y() + m_toolTip->layout()->contentsMargins().top() + m_toolTip->layout()->contentsMargins().bottom();
+            
+            if (QApplication::screenAt(pos)->virtualSize().height() < testHeight)
+            {
+              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
+            }
+#endif
             
           m_toolTip->showAt(tooltipPos, item->toolTipContentsWidget(), nativeParentWidget()->windowHandle());
         }
