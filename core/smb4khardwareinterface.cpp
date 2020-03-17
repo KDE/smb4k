@@ -32,7 +32,7 @@
 // Qt includes
 #include <QDebug>
 #include <QTest>
-#include <QStringLiteral>
+#include <QString>
 #include <QDBusReply>
 
 // KDE includes
