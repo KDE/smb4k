@@ -136,22 +136,38 @@ bool Smb4KSharesView::event(QEvent *e)
 #if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
           if (QApplication::desktop()->screenGeometry(pos).width() < testWidth)
           {
-            tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
+            tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right() - 5);
+          }
+          else
+          {
+            tooltipPos.setX(cursor().pos().x() + 5);
           }
             
           if (QApplication::desktop()->screenGeometry(pos).height() < testHeight)
           {
-            tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
+            tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom() - 5);
+          }
+          else
+          {
+            tooltipPos.setY(cursor().pos().y() + 5);
           }
 #else
           if (QApplication::screenAt(pos)->virtualSize().width() < testWidth)
           {
-            tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
+            tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right() - 5);
+          }
+          else
+          {
+            tooltipPos.setX(cursor().pos().x() + 5);
           }
             
           if (QApplication::screenAt(pos)->virtualSize().height() < testHeight)
           {
-            tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
+            tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom() - 5);
+          }
+          else
+          {
+            tooltipPos.setY(cursor().pos().y() + 5);
           }
 #endif
             
@@ -173,8 +189,18 @@ bool Smb4KSharesView::event(QEvent *e)
 
 void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
 {
+  //
+  // Hide the tooltip
+  // 
+  if (m_toolTip->isVisible())
+  {
+    m_toolTip->hide();
+  }
+  
+  // 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
+  // 
   QListWidgetItem *item = itemAt(e->pos());
 
   if (!item && !selectedItems().isEmpty())
@@ -185,6 +211,20 @@ void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
   }
 
   QListWidget::mousePressEvent(e);
+}
+
+
+void Smb4KSharesView::mouseMoveEvent(QMouseEvent* e)
+{
+  //
+  // Hide the tooltip
+  // 
+  if (m_toolTip->isVisible())
+  {
+    m_toolTip->hide();
+  }
+  
+  QListWidget::mouseMoveEvent(e);
 }
 
 

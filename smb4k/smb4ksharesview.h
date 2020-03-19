@@ -94,6 +94,14 @@ class Smb4KSharesView : public QListWidget
      * @param e             The mouse event object
      */
     void mousePressEvent(QMouseEvent *e) override;
+    
+    /**
+     * Reimplemented from QAbstractItemView. This function handles
+     * mouse move events.
+     * 
+     * @param e             The mouse event object
+     */
+    void mouseMoveEvent(QMouseEvent *e) override;
 
     /**
      * Reimplemented to allow dragging and dropping.

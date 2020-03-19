@@ -88,7 +88,9 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
   {
     case QEvent::ToolTip:
     {
-      // Intercept the tool tip event and show our own tool tip.
+      // 
+      // Intercept the tool tip event and show our own tool tip
+      // 
       QPoint pos = viewport()->mapFromGlobal(cursor().pos());
       Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(itemAt(pos));
       
@@ -117,34 +119,51 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
             }
           }
           
-          // Check that the tooltip is not over the root decoration.
-          // If it is, hide it.
+          //
+          // Show the tooltip 
+          // 
           if (pos.x() > ind * indentation())
           {
             QPoint tooltipPos = cursor().pos();
             
-            int testWidth = item->toolTipContentsWidget()->width() + cursor().pos().x() + m_toolTip->layout()->contentsMargins().left() + m_toolTip->layout()->contentsMargins().right();
-            int testHeight = item->toolTipContentsWidget()->height() + cursor().pos().y() + m_toolTip->layout()->contentsMargins().top() + m_toolTip->layout()->contentsMargins().bottom();
+            int testWidth = item->toolTipContentsWidget()->width() + cursor().pos().x() + m_toolTip->layout()->contentsMargins().left() + m_toolTip->layout()->contentsMargins().right() + 5;
+            int testHeight = item->toolTipContentsWidget()->height() + cursor().pos().y() + m_toolTip->layout()->contentsMargins().top() + m_toolTip->layout()->contentsMargins().bottom() + 5;
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
             if (QApplication::desktop()->screenGeometry(pos).width() < testWidth)
             {
-              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
+              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right() - 5);
+            }
+            else
+            {
+              tooltipPos.setX(cursor().pos().x() + 5);
             }
             
             if (QApplication::desktop()->screenGeometry(pos).height() < testHeight)
             {
-              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
+              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom() - 5);
+            }
+            else
+            {
+              tooltipPos.setY(cursor().pos().y() + 5);
             }
 #else
             if (QApplication::screenAt(pos)->virtualSize().width() < testWidth)
             {
-              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right());
+              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right() - 5);
+            }
+            else
+            {
+              tooltipPos.setX(cursor().pos().x() + 5);
             }
             
             if (QApplication::screenAt(pos)->virtualSize().height() < testHeight)
             {
-              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom());
+              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom() - 5);
+            }
+            else
+            {
+              tooltipPos.setY(cursor().pos().y() + 5);
             }
 #endif
             
@@ -167,8 +186,18 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
 
 void Smb4KNetworkBrowser::mousePressEvent(QMouseEvent *e)
 {
+  //
+  // Hide the tooltip
+  // 
+  if (m_toolTip->isVisible())
+  {
+    m_toolTip->hide();
+  }
+  
+  // 
   // Get the item that is under the mouse. If there is no
   // item, unselect the current item.
+  // 
   QTreeWidgetItem *item = itemAt(e->pos());
 
   if (!item && currentItem())
@@ -179,6 +208,21 @@ void Smb4KNetworkBrowser::mousePressEvent(QMouseEvent *e)
 
   QTreeWidget::mousePressEvent(e);
 }
+
+
+void Smb4KNetworkBrowser::mouseMoveEvent(QMouseEvent* e)
+{
+  //
+  // Hide the tooltip
+  // 
+  if (m_toolTip->isVisible())
+  {
+    m_toolTip->hide();
+  }
+  
+  QTreeWidget::mouseMoveEvent(e);
+}
+
 
 
 /////////////////////////////////////////////////////////////////////////////
