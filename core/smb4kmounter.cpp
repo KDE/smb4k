@@ -2200,33 +2200,30 @@ void Smb4KMounter::slotOnlineStateChanged(bool online)
 {
   if (online)
   {
-    // Remount shares after the network became available (again)
-    // If the computer awakes from a sleep state, there might still be 
-    // an unmount job in the queue. So, wait until all jobs have been
-    // performed before starting to remount the shares.
-    while (isRunning())
+    //
+    // Check all shares and send the updated signal
+    // 
+    for (const SharePtr &share : mountedSharesList())
     {
-      QTest::qWait(TIMEOUT);
+      check(share);
+      emit updated(share);
     }
-    
-    triggerRemounts(true);
   }
   else
   {
-    // Abort all running mount jobs
+    //
+    // Abort all running jobs if the computer goes offline
+    // 
     abort();
     
-    // Mark all mounted shares as inaccessible
+    //
+    // Mark all mounted shares as inaccessible and send the updated() signal
+    // 
     for (const SharePtr &share : mountedSharesList())
     {
       share->setInaccessible(true);
+      emit updated(share);
     }
-    
-    // Save the shares for automatic remounting
-    saveSharesForRemount();
-    
-    // Unmount all shares
-    unmountAllShares(true);
   }
 }
 
