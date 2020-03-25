@@ -2201,7 +2201,7 @@ void Smb4KMounter::slotOnlineStateChanged(bool online)
   if (online)
   {
     //
-    // Check all shares and send the updated signal
+    // Check all shares and send the updated() signal
     // 
     for (const SharePtr &share : mountedSharesList())
     {
