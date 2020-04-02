@@ -611,9 +611,6 @@ void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr& /*i
 
 void Smb4KNetworkBrowserDockWidget::slotWorkgroups()
 {
-  //
-  // Process the global workgroup list
-  //
   if (!workgroupsList().isEmpty())
   {
     //
@@ -679,218 +676,198 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroups()
 
 void Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers(const WorkgroupPtr& workgroup)
 {
-  //
-  // Process the list of domain members
-  //
   if (workgroup)
   {
     //
-    // Find the workgroup(s) 
-    //
-    QList<QTreeWidgetItem *> workgroups = m_networkBrowser->findItems(workgroup->workgroupName(), Qt::MatchFixedString, Smb4KNetworkBrowser::Network);
-    QMutableListIterator<QTreeWidgetItem *> it(workgroups);
+    // Find the right workgroup
+    // 
+    QList<QTreeWidgetItem *> workgroups = m_networkBrowser->findItems(workgroup->workgroupName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network);
+    Smb4KNetworkBrowserItem *workgroupItem = nullptr;
     
-    while (it.hasNext())
+    for (QTreeWidgetItem *item : workgroups)
     {
-      QTreeWidgetItem *item = it.next();
+      Smb4KNetworkBrowserItem *tempWorkgroup = static_cast<Smb4KNetworkBrowserItem *>(item);
       
-      if (item->type() == Workgroup)
+      if (tempWorkgroup->type() == Workgroup && tempWorkgroup->workgroupItem()->workgroupName() == workgroup->workgroupName())
       {
-        Smb4KNetworkBrowserItem *workgroupItem = static_cast<Smb4KNetworkBrowserItem *>(item);
-        QTreeWidgetItemIterator itemIt(workgroupItem);
-        
-        //
-        // Remove obsolete hosts and update existing ones
-        //
-        while (*itemIt)
-        {
-          Smb4KNetworkBrowserItem *networkItem = static_cast<Smb4KNetworkBrowserItem *>(*itemIt);
-          
-          if (networkItem->type() == Host)
-          {
-            HostPtr host = findHost(networkItem->hostItem()->hostName(), networkItem->hostItem()->workgroupName());
-            
-            if (host)
-            {
-              networkItem->update();
-            }
-            else
-            {
-              delete networkItem;
-            }
-          }
-          else
-          {
-            break;
-          }
-          
-          ++itemIt;
-        }
-        
-        //
-        // Add new hosts to the workgroup item and remove obsolete workgroups if
-        // necessary. Honor the auto-expand feature.
-        //
-        QList<HostPtr> members = workgroupMembers(workgroupItem->workgroupItem());
-        
-        if (!members.isEmpty())
-        {
-          for (const HostPtr &host : members)
-          {
-            bool foundHost = false;
-            
-            for (int i = 0; i < workgroupItem->childCount(); ++i)
-            {
-              Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>(workgroupItem->child(i));
-              
-              if (hostItem->hostItem()->hostName() == host->hostName())
-              {
-                foundHost = true;
-                break;
-              }
-              else
-              {
-                continue;
-              }
-            }
-            
-            if (!foundHost)
-            {
-              (void) new Smb4KNetworkBrowserItem(workgroupItem, host);
-            }
-          }
-          
-          // Auto-expand the workgroup item, if applicable
-          if (Smb4KSettings::autoExpandNetworkItems() && !workgroupItem->isExpanded() && !m_searchRunning)
-          {
-            m_networkBrowser->expandItem(workgroupItem);
-          }
-        }
-        else
-        {
-          // Delete all hosts of the workgroup (if there should still be some) and
-          // remove the workgroup item from the view (no hosts => no workgroup)
-          while (workgroupItem->childCount() != 0)
-          {
-            delete workgroupItem->takeChild(0);
-          }
-          
-          delete workgroupItem;
-        }
+        workgroupItem = tempWorkgroup;
+        break;
       }
     }
     
     //
-    // Sort the items
-    //
-    m_networkBrowser->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
+    // Process the hosts
+    // 
+    if (workgroupItem)
+    {
+      //
+      // Remove obsolete hosts and update existing ones
+      // 
+      QTreeWidgetItemIterator hostIt(workgroupItem);
+      
+      while (*hostIt)
+      {
+        Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>(*hostIt);
+        
+        if (hostItem->type() == Host)
+        {
+          HostPtr host = findHost(hostItem->hostItem()->hostName(), hostItem->hostItem()->workgroupName());
+          
+          if (host)
+          {
+            hostItem->update();
+          }
+          else
+          {
+            delete hostItem;
+          }
+        }
+        
+        ++hostIt;
+      }
+      
+      //
+      // Add new hosts to the workgroup item and remove obsolete workgroups if
+      // necessary. Honor the auto-expand feature.
+      //
+      QList<HostPtr> members = workgroupMembers(workgroup);
+      
+      if (!members.isEmpty())
+      {
+        for (const HostPtr &host : members)
+        {
+          bool foundHost = false;
+            
+          for (int i = 0; i < workgroupItem->childCount(); ++i)
+          {
+            Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>(workgroupItem->child(i));
+              
+            if (hostItem->hostItem()->hostName() == host->hostName())
+            {
+              foundHost = true;
+              break;
+            }
+          }
+            
+          if (!foundHost)
+          {
+            (void) new Smb4KNetworkBrowserItem(workgroupItem, host);
+          }
+        }
+          
+        // 
+        // Auto-expand the workgroup item, if applicable
+        // 
+        if (Smb4KSettings::autoExpandNetworkItems() && !workgroupItem->isExpanded() && !m_searchRunning)
+        {
+          m_networkBrowser->expandItem(workgroupItem);
+        }
+      }
+      else
+      {
+        // 
+        // Remove empty workgroup.
+        // 
+        delete workgroupItem;
+      }
+      
+      //
+      // Sort the items
+      //
+      m_networkBrowser->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
+    }
   }
 }
 
 
 void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr& host)
 {
-  //
-  // Process the list of shares
-  // 
   if (host)
   {
     //
-    // Find the host(s)
-    //
+    // Find the right host
+    // 
     QList<QTreeWidgetItem *> hosts = m_networkBrowser->findItems(host->hostName(), Qt::MatchFixedString|Qt::MatchRecursive, Smb4KNetworkBrowser::Network);
-    QMutableListIterator<QTreeWidgetItem *> it(hosts);
+    Smb4KNetworkBrowserItem *hostItem = nullptr;
     
-    while (it.hasNext())
+    for (QTreeWidgetItem *item : hosts)
     {
-      Smb4KNetworkBrowserItem *hostItem = static_cast<Smb4KNetworkBrowserItem *>(it.next());
+      Smb4KNetworkBrowserItem *tempHost = static_cast<Smb4KNetworkBrowserItem *>(item);
       
-      if (hostItem->type() == Host && hostItem->hostItem()->workgroupName() == host->workgroupName())
+      if (tempHost->type() == Host && tempHost->hostItem()->workgroupName() == host->workgroupName())
       {
-        QTreeWidgetItemIterator itemIt(hostItem);
+        hostItem = tempHost;
+        break;
+      }
+    }
+    
+    //
+    // Process the shares
+    // 
+    if (hostItem)
+    {
+      //
+      // Remove obsolete shares and update existing ones
+      // 
+      QTreeWidgetItemIterator shareIt(hostItem);
+      
+      while (*shareIt)
+      {
+        Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>(*shareIt);
         
-        //
-        // Remove obsolete shares and update existing ones
-        //
-        while (*itemIt)
+        if (shareItem->type() == Share)
         {
-          Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>(*itemIt);
+          SharePtr share = findShare(shareItem->shareItem()->url(), shareItem->shareItem()->workgroupName());
           
-          if (shareItem->type() == Share)
+          if (share)
           {
-            SharePtr share = findShare(shareItem->shareItem()->url(), shareItem->shareItem()->workgroupName());
-            
-            if (share)
-            {
-              shareItem->update();
-            }
-            else
-            {
-              delete shareItem;
-            }
+            shareItem->update();
           }
           else
           {
-            break;
+            delete shareItem;
           }
-          
-          ++itemIt;
         }
         
-        //
-        // Add new shares to the host item. The host will not be removed from the
-        // view when it has no shares. Honor the auto-expand feature.
-        //
-        QList<SharePtr> shares = sharedResources(host);
-        
-        if (!shares.isEmpty())
-        {
-          for (const SharePtr &share : shares)
-          {
-            bool foundShare = false;
-            
-            for (int i = 0; i < hostItem->childCount(); ++i)
-            {
-              Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>(hostItem->child(i));
-              
-              if (QString::compare(shareItem->shareItem()->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                                   share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                                   Qt::CaseInsensitive) == 0)
-              {
-                foundShare = true;
-                break;
-              }
-              else
-              {
-                continue;
-              }
-            }
-            
-            if (!foundShare)
-            {
-              (void) new Smb4KNetworkBrowserItem(hostItem, share);
-            }
-          }
-          
-          // Auto-expand the host item, if applicable
-          if (Smb4KSettings::autoExpandNetworkItems() && !hostItem->isExpanded() && !m_searchRunning)
-          {
-            m_networkBrowser->expandItem(hostItem);
-          }
-        }
-        else
-        {
-          // Delete all shares (if there should still be some), but leave the 
-          // host in the view.
-          while (hostItem->childCount() != 0)
-          {
-            delete hostItem->takeChild(0);
-          }
-        }
+        ++shareIt;
       }
-      else
+      
+      //
+      // Add new shares to the host item. The host will not be removed from the
+      // view when it has no shares. Honor the auto-expand feature.
+      //
+      QList<SharePtr> shares = sharedResources(host);
+      
+      if (!shares.isEmpty())
       {
-        continue;
+        for (const SharePtr &share : shares)
+        {
+          bool foundShare = false;
+          
+          for (int i = 0; i < hostItem->childCount(); ++i)
+          {
+            Smb4KNetworkBrowserItem *shareItem = static_cast<Smb4KNetworkBrowserItem *>(hostItem->child(i));
+            
+            if (shareItem->shareItem()->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort) == share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort))
+            {
+              foundShare = true;
+              break;
+            }
+          }
+
+          if (!foundShare)
+          {
+            (void) new Smb4KNetworkBrowserItem(hostItem, share);
+          }
+        }        
+        
+        // 
+        // Auto-expand the host item, if applicable
+        // 
+        if (Smb4KSettings::autoExpandNetworkItems() && !hostItem->isExpanded() && !m_searchRunning)
+        {
+          m_networkBrowser->expandItem(hostItem);
+        }
       }
     }
     
@@ -954,14 +931,18 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
     }
     else
     {
+      // 
       // If several items are selected or no selected items,
       // only the network can be scanned.
+      // 
       Smb4KClient::self()->lookupDomains();
     }
   }
   else
   {
+    // 
     // Stop all actions performed by the client
+    // 
     if (Smb4KClient::self()->isRunning())
     {
       Smb4KClient::self()->abort();
