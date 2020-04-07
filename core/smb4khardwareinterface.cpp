@@ -50,6 +50,7 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
 : QObject(parent), d(new Smb4KHardwareInterfacePrivate)
 {
   d->networkSession = nullptr;
+  d->systemOnline = false;
   d->fileDescriptor.setFileDescriptor(-1);
   
   d->dbusInterface.reset(new QDBusInterface("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", QDBusConnection::systemBus(), this));
@@ -209,11 +210,19 @@ void Smb4KHardwareInterface::slotNetworkConfigUpdated()
   // 
   if (d->networkSession->state() == QNetworkSession::Connected)
   {
-    emit onlineStateChanged(true);
+    if (!d->systemOnline)
+    {
+      d->systemOnline = true;
+      emit onlineStateChanged(true);
+    }
   }
   else
   {
-    emit onlineStateChanged(false);
+    if (d->systemOnline)
+    {
+      d->systemOnline = false;
+      emit onlineStateChanged(false);
+    }
   }
 }
 
@@ -222,11 +231,19 @@ void Smb4KHardwareInterface::slotConnectionStateChanged(QNetworkSession::State s
 {
   if (state == QNetworkSession::Connected)
   {
-    emit onlineStateChanged(true);
+    if (!d->systemOnline)
+    {
+      d->systemOnline = true;
+      emit onlineStateChanged(true);
+    }
   }
   else
   {
-    emit onlineStateChanged(false);
+    if (d->systemOnline)
+    {
+      d->systemOnline = false;
+      emit onlineStateChanged(false);
+    }
   }
 }
 

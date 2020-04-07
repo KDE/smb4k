@@ -47,6 +47,7 @@ class Smb4KHardwareInterfacePrivate
 #endif
     QScopedPointer<QDBusInterface> dbusInterface;
     QDBusUnixFileDescriptor fileDescriptor;
+    bool systemOnline;
 };
 
 
