@@ -26,6 +26,7 @@
 // application specific includes
 #include "smb4kmounthelper.h"
 #include "../core/smb4kglobal.h"
+#include "../core/smb4khardwareinterface.h"
 
 // Qt includes
 #include <QProcessEnvironment>
@@ -49,6 +50,15 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
   // The action reply
   //
   ActionReply reply;
+  
+  //
+  // Check if the system is online and return an error if it is not
+  // 
+  if (!Smb4KHardwareInterface::self()->isOnline())
+  {
+    reply.setType(ActionReply::HelperErrorType);
+    return reply;
+  }
   
   //
   // Get the mount executable
@@ -217,44 +227,59 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
   proc.setOutputChannelMode(KProcess::SeparateChannels);
   proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
   proc.setProgram(command);
-  proc.start();
   
-  if (proc.waitForStarted(-1))
+  //
+  // Depending on the online state, use a different behavior for unmounting.
+  // 
+  // Extensive tests have shown that - when offline - unmounting does not 
+  // work properly when the the process is not detached. Thus, detach it 
+  // when the system is offline.
+  // 
+  if (Smb4KHardwareInterface::self()->isOnline())
   {
-    // We want to be able to terminate the process from outside.
-    // Thus, we implement a loop that checks periodically, if we
-    // need to kill the process.
-    bool userKill = false;
-
-    while (!proc.waitForFinished(10))
+    proc.start();
+    
+    if (proc.waitForStarted(-1))
     {
-      if (HelperSupport::isStopped())
+      // We want to be able to terminate the process from outside.
+      // Thus, we implement a loop that checks periodically, if we
+      // need to kill the process.
+      bool userKill = false;
+
+      while (!proc.waitForFinished(10))
       {
-        proc.kill();
-        userKill = true;
-        break;
+        if (HelperSupport::isStopped())
+        {
+          proc.kill();
+          userKill = true;
+          break;
+        }
       }
-    }
-
-    if (proc.exitStatus() == KProcess::CrashExit)
-    {
-      if (!userKill)
+      
+      if (proc.exitStatus() == KProcess::CrashExit)
       {
-        reply.setType(ActionReply::HelperErrorType);
-        reply.setErrorDescription(i18n("The unmount process crashed."));
+        if (!userKill)
+        {
+          reply.setType(ActionReply::HelperErrorType);
+          reply.setErrorDescription(i18n("The unmount process crashed."));
+        }
+      }
+      else
+      {
+        // Check if there is output on stderr.
+        QString stdErr = QString::fromUtf8(proc.readAllStandardError());
+        reply.addData("mh_error_message", stdErr.trimmed());
       }
     }
     else
     {
-      // Check if there is output on stderr.
-      QString stdErr = QString::fromUtf8(proc.readAllStandardError());
-      reply.addData("mh_error_message", stdErr.trimmed());
+      reply.setType(ActionReply::HelperErrorType);
+      reply.setErrorDescription(i18n("The unmount process could not be started."));
     }
   }
   else
   {
-    reply.setType(ActionReply::HelperErrorType);
-    reply.setErrorDescription(i18n("The unmount process could not be started."));
+    proc.startDetached();
   }
   
   return reply;
