@@ -70,15 +70,7 @@ Smb4KClient *Smb4KClient::self()
 
 void Smb4KClient::start()
 {
-  //
-  // Check the network configurations
-  //
-  Smb4KHardwareInterface::self()->updateNetworkConfig();
- 
-  //
-  // Connect to Smb4KHardwareInterface to be able to get the response
-  // 
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkSessionInitialized()), this, SLOT(slotStartJobs()));
 }
 
 
@@ -863,17 +855,16 @@ void Smb4KClient::processFiles(Smb4KClientJob *job)
 
 void Smb4KClient::slotStartJobs()
 {
+  //
+  // Disconnect from Smb4KHardwareInterface
+  //
+  disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkSessionInitialized()), this, SLOT(slotStartJobs()));
+
+  //
+  // Lookup domains as the first step
+  // 
   if (Smb4KHardwareInterface::self()->isOnline())
   {
-    //
-    // Disconnect from Smb4KHardwareInterface::networkConfigUpdated() signal,
-    // otherwise we get unwanted periodic scanning.
-    //
-    disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkConfigUpdated()), this, SLOT(slotStartJobs()));
-    
-    //
-    // Lookup domains as the first step
-    // 
     lookupDomains();
   }
 }
