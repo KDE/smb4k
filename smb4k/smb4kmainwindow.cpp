@@ -868,12 +868,14 @@ void Smb4KMainWindow::slotMounterAboutToStart(int process)
 
 void Smb4KMainWindow::slotMounterFinished(int /*process*/)
 {
-  if (!coreIsRunning())
-  {
-    m_progress_bar->setVisible(false);
-    m_progress_bar->reset();
-    statusBar()->showMessage(i18n("Done."), 2000);
-  }
+  QTimer::singleShot(250, [this] () {
+    if (!coreIsRunning())
+    {
+      m_progress_bar->setVisible(false);
+      m_progress_bar->reset();
+      statusBar()->showMessage(i18n("Done."), 2000);
+    }
+  });
 }
 
 
