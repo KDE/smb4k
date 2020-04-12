@@ -49,10 +49,16 @@ Q_GLOBAL_STATIC(Smb4KHardwareInterfaceStatic, p);
 Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
 : QObject(parent), d(new Smb4KHardwareInterfacePrivate)
 {
+  //
+  // Initialize some members
+  // 
   d->networkSession = nullptr;
   d->systemOnline = false;
   d->fileDescriptor.setFileDescriptor(-1);
   
+  //
+  // Set up the DBUS interface
+  // 
   d->dbusInterface.reset(new QDBusInterface("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", QDBusConnection::systemBus(), this));
   
   if (!d->dbusInterface->isValid())
@@ -60,7 +66,15 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     d->dbusInterface.reset(new QDBusInterface("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager", "org.freedesktop.ConsoleKit.Manager", QDBusConnection::systemBus(), this));
   }
   
+  //
+  // Do the initial setup of the network configuration
+  // 
+  d->networkConfigManager.updateConfigurations();
+  
   connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
+  connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
+  
+  
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
 
@@ -78,12 +92,6 @@ Smb4KHardwareInterface::~Smb4KHardwareInterface()
 Smb4KHardwareInterface* Smb4KHardwareInterface::self()
 {
   return &p->instance;
-}
-
-
-void Smb4KHardwareInterface::updateNetworkConfig()
-{
-  d->networkConfigManager.updateConfigurations();
 }
 
 
@@ -189,40 +197,64 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
 
 void Smb4KHardwareInterface::slotNetworkConfigUpdated()
 {
-  //
-  // Create a network session object if necessary and connect it to the stateChanged()
-  // signal to monitor changes of the network connection.
-  // 
-  if (!d->networkSession)
+  if (d->networkConfigManager.isOnline())
   {
-    d->networkSession = new QNetworkSession(d->networkConfigManager.defaultConfiguration(), this);
-    connect(d->networkSession, SIGNAL(stateChanged(QNetworkSession::State)), this, SLOT(slotConnectionStateChanged(QNetworkSession::State)));
-  }
-
-  //
-  // Tell the application that the network configuration was updated
-  // 
-  emit networkConfigUpdated();
-  
-  //
-  // Check the state of the network session and emit the onlineStateChanged()
-  // signal accordingly.
-  // 
-  if (d->networkSession->state() == QNetworkSession::Connected)
-  {
-    if (!d->systemOnline)
+    //
+    // Create a network session object and connect it to the stateChanged()
+    // signal to monitor changes of the network connection.
+    // 
+    if (!d->networkSession)
     {
-      d->systemOnline = true;
-      emit onlineStateChanged(true);
+      d->networkSession = new QNetworkSession(d->networkConfigManager.defaultConfiguration(), this);
+      connect(d->networkSession, SIGNAL(stateChanged(QNetworkSession::State)), this, SLOT(slotConnectionStateChanged(QNetworkSession::State)));
     }
+    
+    //
+    // Tell the program that the network session was initialized
+    // 
+    emit networkSessionInitialized();
+    
+    //
+    // Check the state of the network session and emit the onlineStateChanged()
+    // signal accordingly.
+    // 
+    if (d->networkSession->state() == QNetworkSession::Connected)
+    {
+      if (!d->systemOnline)
+      {
+        d->systemOnline = true;
+        emit onlineStateChanged(true);
+      }
+    }
+    else
+    {
+      if (d->systemOnline)
+      {
+        d->systemOnline = false;
+        emit onlineStateChanged(false);
+      }
+    }
+    
+    //
+    // Disconnect from the network configuration manager, because we now have our 
+    // network session object
+    // 
+    connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
+    connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
   }
   else
   {
-    if (d->systemOnline)
-    {
-      d->systemOnline = false;
-      emit onlineStateChanged(false);
-    }
+    d->systemOnline = false;
+    emit onlineStateChanged(false);
+  }
+}
+
+
+void Smb4KHardwareInterface::slotOnlineStateChanged(bool on)
+{
+  if (on && !d->networkSession)
+  {
+    d->networkConfigManager.updateConfigurations();
   }
 }
 
@@ -246,7 +278,6 @@ void Smb4KHardwareInterface::slotConnectionStateChanged(QNetworkSession::State s
     }
   }
 }
-
 
 
 void Smb4KHardwareInterface::slotDeviceAdded(const QString& udi)

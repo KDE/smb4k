@@ -68,11 +68,6 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     static Smb4KHardwareInterface *self();
     
     /**
-     * This function checks the current network configuration.
-     */
-    void updateNetworkConfig();
-    
-    /**
      * This function returns TRUE if the system is online and FALSE otherwise.
      * @returns TRUE if the system is online.
      */
@@ -111,7 +106,7 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     /**
      * This signal is emitted when the network configuration was updated.
      */
-    void networkConfigUpdated();
+    void networkSessionInitialized();
     
     /**
      * This signal is emitted when the online state changed.
@@ -121,9 +116,15 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
   protected Q_SLOTS:
     /**
      * This slot is called by the QNetworkConfigurationManager::updateCompleted()
-     * signal and sets d->networkConfigUpdated to TRUE.
+     * signal and sets up the network session.
      */
     void slotNetworkConfigUpdated();
+    
+    /**
+     * This slot is called by the QNetworkConfigurationManager::onlineStateChanged()
+     * signal and is used to update the network configuration if necessary.
+     */
+    void slotOnlineStateChanged(bool on);
     
     /**
      * This slot is called when the state of the network connection changed. 
