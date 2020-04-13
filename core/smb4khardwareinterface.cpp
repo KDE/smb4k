@@ -71,9 +71,11 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
   // 
   d->networkConfigManager.updateConfigurations();
   
+  //
+  // Connections
+  // 
   connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
   connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
-  
   
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
@@ -239,8 +241,8 @@ void Smb4KHardwareInterface::slotNetworkConfigUpdated()
     // Disconnect from the network configuration manager, because we now have our 
     // network session object
     // 
-    connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
-    connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
+    disconnect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
+    disconnect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
   }
   else
   {
