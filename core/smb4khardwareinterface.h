@@ -2,7 +2,7 @@
     Provides an interface to the computer's hardware
                              -------------------
     begin                : Die Jul 14 2015
-    copyright            : (C) 2015-2019 by Alexander Reinholdt
+    copyright            : (C) 2015-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,6 +34,7 @@
 #include <QScopedPointer>
 #include <QUrl>
 #include <QNetworkConfigurationManager>
+#include <QNetworkSession>
 
 class Smb4KHardwareInterfacePrivate;
 
@@ -67,24 +68,20 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     static Smb4KHardwareInterface *self();
     
     /**
-     * This function checks the current network configuration.
-     * You should run this if @see isOnline() and @see networkConfigUpdated() return
-     * both FALSE.
-     */
-    void updateNetworkConfig();
-    
-    /**
-     * This function returns TRUE if the network configuration was already updated
-     * and FALSE otherwise.
-     * @returns TRUE if the network configuration was updated and FALSE otherwise.
-     */
-    bool networkConfigIsUpdated() const;
-    
-    /**
      * This function returns TRUE if the system is online and FALSE otherwise.
      * @returns TRUE if the system is online.
      */
     bool isOnline() const;
+
+    /**
+     * Inhibit shutdown and sleep.
+     */
+    void inhibit();
+    
+    /**
+     * Uninhibit shutdown and sleep.
+     */
+    void uninhibit();
 
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
   protected:
@@ -92,7 +89,7 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
      * Reimplemented from QObject to check for mounts and unmounts on operating
      * systems that are not fully supported by Solid, yet.
      */
-    void timerEvent(QTimerEvent *e);
+    void timerEvent(QTimerEvent *e) override;
 #endif
     
   Q_SIGNALS:
@@ -109,7 +106,7 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     /**
      * This signal is emitted when the network configuration was updated.
      */
-    void networkConfigUpdated();
+    void networkSessionInitialized();
     
     /**
      * This signal is emitted when the online state changed.
@@ -119,9 +116,21 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
   protected Q_SLOTS:
     /**
      * This slot is called by the QNetworkConfigurationManager::updateCompleted()
-     * signal and sets d->networkConfigUpdated to TRUE.
+     * signal and sets up the network session.
      */
     void slotNetworkConfigUpdated();
+    
+    /**
+     * This slot is called by the QNetworkConfigurationManager::onlineStateChanged()
+     * signal and is used to update the network configuration if necessary.
+     */
+    void slotOnlineStateChanged(bool on);
+    
+    /**
+     * This slot is called when the state of the network connection changed. 
+     * It is connected to the QNetworkSession::stateChanged() signal.
+     */
+    void slotConnectionStateChanged(QNetworkSession::State state);
     
     /**
      * This slot is called when a device was added to the system.

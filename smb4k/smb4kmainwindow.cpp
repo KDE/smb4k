@@ -23,10 +23,6 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4kmainwindow.h"
 #include "smb4ksystemtray.h"
@@ -872,12 +868,14 @@ void Smb4KMainWindow::slotMounterAboutToStart(int process)
 
 void Smb4KMainWindow::slotMounterFinished(int /*process*/)
 {
-  if (!coreIsRunning())
-  {
-    m_progress_bar->setVisible(false);
-    m_progress_bar->reset();
-    statusBar()->showMessage(i18n("Done."), 2000);
-  }
+  QTimer::singleShot(250, [this] () {
+    if (!coreIsRunning())
+    {
+      m_progress_bar->setVisible(false);
+      m_progress_bar->reset();
+      statusBar()->showMessage(i18n("Done."), 2000);
+    }
+  });
 }
 
 

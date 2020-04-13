@@ -2,7 +2,7 @@
     Provides an interface to the computer's hardware
                              -------------------
     begin                : Die Jul 14 2015
-    copyright            : (C) 2015-2019 by Alexander Reinholdt
+    copyright            : (C) 2015-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,17 +23,17 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 // application specific includes
 #include "smb4khardwareinterface.h"
 #include "smb4khardwareinterface_p.h"
 
+#include <unistd.h>
+
 // Qt includes
 #include <QDebug>
 #include <QTest>
+#include <QString>
+#include <QDBusReply>
 
 // KDE includes
 #include <Solid/DeviceNotifier>
@@ -49,10 +49,32 @@ Q_GLOBAL_STATIC(Smb4KHardwareInterfaceStatic, p);
 Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
 : QObject(parent), d(new Smb4KHardwareInterfacePrivate)
 {
-  d->networkConfigUpdated = false;
+  //
+  // Initialize some members
+  // 
+  d->networkSession = nullptr;
+  d->systemOnline = false;
+  d->fileDescriptor.setFileDescriptor(-1);
+  
+  //
+  // Set up the DBUS interface
+  // 
+  d->dbusInterface.reset(new QDBusInterface("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", QDBusConnection::systemBus(), this));
+  
+  if (!d->dbusInterface->isValid())
+  {
+    d->dbusInterface.reset(new QDBusInterface("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager", "org.freedesktop.ConsoleKit.Manager", QDBusConnection::systemBus(), this));
+  }
+  
+  //
+  // Do the initial setup of the network configuration
+  // 
+  d->networkConfigManager.updateConfigurations();
   
   connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
-  connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SIGNAL(onlineStateChanged(bool)));
+  connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
+  
+  
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
 
@@ -73,21 +95,54 @@ Smb4KHardwareInterface* Smb4KHardwareInterface::self()
 }
 
 
-void Smb4KHardwareInterface::updateNetworkConfig()
-{
-  d->networkConfigManager.updateConfigurations();
-}
-
-
-bool Smb4KHardwareInterface::networkConfigIsUpdated() const
-{
-  return d->networkConfigUpdated;
-}
-
-
 bool Smb4KHardwareInterface::isOnline() const
 {
-  return d->networkConfigManager.isOnline();
+  if (d->networkSession)
+  {
+    return (d->networkSession->state() == QNetworkSession::Connected);
+  }
+  
+  return false;
+}
+
+
+void Smb4KHardwareInterface::inhibit()
+{
+  if (d->fileDescriptor.isValid())
+  {
+    return;
+  }
+  
+  if (d->dbusInterface->isValid())
+  {
+    QVariantList args;
+    args << QStringLiteral("shutdown:sleep");
+    args << QStringLiteral("Smb4K");
+    args << QStringLiteral("Mounting or unmounting in progress");
+    args << QStringLiteral("delay");
+    
+    QDBusReply<QDBusUnixFileDescriptor> descriptor = d->dbusInterface->callWithArgumentList(QDBus::Block, QStringLiteral("Inhibit"), args);
+    
+    if (descriptor.isValid())
+    {
+      d->fileDescriptor = descriptor.value();
+    }
+  }
+}
+
+
+void Smb4KHardwareInterface::uninhibit()
+{
+  if (!d->fileDescriptor.isValid())
+  {
+    return;
+  }
+  
+  if (d->dbusInterface->isValid())
+  {
+    close(d->fileDescriptor.fileDescriptor());
+    d->fileDescriptor.setFileDescriptor(-1);
+  }
 }
 
 
@@ -142,8 +197,86 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
 
 void Smb4KHardwareInterface::slotNetworkConfigUpdated()
 {
-  d->networkConfigUpdated = true;
-  emit networkConfigUpdated();
+  if (d->networkConfigManager.isOnline())
+  {
+    //
+    // Create a network session object and connect it to the stateChanged()
+    // signal to monitor changes of the network connection.
+    // 
+    if (!d->networkSession)
+    {
+      d->networkSession = new QNetworkSession(d->networkConfigManager.defaultConfiguration(), this);
+      connect(d->networkSession, SIGNAL(stateChanged(QNetworkSession::State)), this, SLOT(slotConnectionStateChanged(QNetworkSession::State)));
+    }
+    
+    //
+    // Tell the program that the network session was initialized
+    // 
+    emit networkSessionInitialized();
+    
+    //
+    // Check the state of the network session and emit the onlineStateChanged()
+    // signal accordingly.
+    // 
+    if (d->networkSession->state() == QNetworkSession::Connected)
+    {
+      if (!d->systemOnline)
+      {
+        d->systemOnline = true;
+        emit onlineStateChanged(true);
+      }
+    }
+    else
+    {
+      if (d->systemOnline)
+      {
+        d->systemOnline = false;
+        emit onlineStateChanged(false);
+      }
+    }
+    
+    //
+    // Disconnect from the network configuration manager, because we now have our 
+    // network session object
+    // 
+    connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
+    connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
+  }
+  else
+  {
+    d->systemOnline = false;
+    emit onlineStateChanged(false);
+  }
+}
+
+
+void Smb4KHardwareInterface::slotOnlineStateChanged(bool on)
+{
+  if (on && !d->networkSession)
+  {
+    d->networkConfigManager.updateConfigurations();
+  }
+}
+
+
+void Smb4KHardwareInterface::slotConnectionStateChanged(QNetworkSession::State state)
+{
+  if (state == QNetworkSession::Connected)
+  {
+    if (!d->systemOnline)
+    {
+      d->systemOnline = true;
+      emit onlineStateChanged(true);
+    }
+  }
+  else
+  {
+    if (d->systemOnline)
+    {
+      d->systemOnline = false;
+      emit onlineStateChanged(false);
+    }
+  }
 }
 
 
