@@ -3,9 +3,16 @@ Smb4K 3.0.4 (2020-03-xx):
 See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://cgit.kde.org/smb4k.git/log/?h=3.0
 
-- Remove the automatic unmounting on loss of connection (BUG 415165).
 - Fix build with Qt 5.9 and lower. `QApplication::screenAt()` only 
   exists since 5.10.
+- Improved the mount helper. It will not freeze anymore when the 
+  system is offline (BUG 415165).
+- Fixed crashes and other problems in the mounter (BUG 398296, 
+  BUG 415165, BUG 415726 and BUG 419658).
+- Implemented inhibition of shutdown and sleep while the mounter 
+  performs unmounts.
+- Improved the handling of online and offline state in the hardware
+  interface.
 
 Smb4K 3.0.3 (2020-03-08):
 
