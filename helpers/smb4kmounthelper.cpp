@@ -30,13 +30,13 @@
 // application specific includes
 #include "smb4kmounthelper.h"
 #include "../core/smb4kglobal.h"
-#include "../core/smb4khardwareinterface.h"
 
 // Qt includes
 #include <QProcessEnvironment>
 #include <QDebug>
 #include <QLatin1String>
 #include <QUrl>
+#include <QNetworkConfigurationManager>
 
 // KDE includes
 #include <KAuth/KAuthHelperSupport>
@@ -58,7 +58,9 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
   //
   // Check if the system is online and return an error if it is not
   // 
-  if (!Smb4KHardwareInterface::self()->isOnline())
+  QNetworkConfigurationManager networkManager;
+  
+  if (!networkManager.isOnline())
   {
     reply.setType(ActionReply::HelperErrorType);
     return reply;
@@ -239,7 +241,9 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
   // work properly when the the process is not detached. Thus, detach it 
   // when the system is offline.
   // 
-  if (Smb4KHardwareInterface::self()->isOnline())
+  QNetworkConfigurationManager networkManager;
+  
+  if (networkManager.isOnline())
   {
     proc.start();
     
