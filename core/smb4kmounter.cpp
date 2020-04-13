@@ -2414,25 +2414,22 @@ void Smb4KMounter::slotStatResult(KJob *job)
         d->newlyMounted += 1;
         emit mounted(importedShare);
         
-        if (d->firstImportDone)
+        if (!isRunning() && d->firstImportDone && d->importedShares.isEmpty() && d->newlyMounted == 1)
         {
-          if (!isRunning() && d->importedShares.isEmpty() && d->newlyMounted == 1)
-          {
-            Smb4KNotification::shareMounted(importedShare);
-          }
-          
-          QTimer::singleShot(250, [this]() {
-            if (!isRunning())
-            {
-              if (d->importedShares.isEmpty() && d->newlyMounted > 1)
-              {
-                Smb4KNotification::sharesMounted(d->newlyMounted);
-              }
-              
-              d->newlyMounted = 0;
-            }
-          });
+          Smb4KNotification::shareMounted(importedShare);
         }
+          
+        QTimer::singleShot(250, [this]() {
+          if (!isRunning())
+          {
+            if (d->firstImportDone && d->importedShares.isEmpty() && d->newlyMounted > 1)
+            {
+              Smb4KNotification::sharesMounted(d->newlyMounted);
+            }
+              
+            d->newlyMounted = 0;
+          }
+        });
           
         emit mountedSharesListChanged();
       }
