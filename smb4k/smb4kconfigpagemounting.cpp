@@ -2,7 +2,7 @@
     The configuration page for the mount options
                              -------------------
     begin                : So Mär 22 2015
-    copyright            : (C) 2015-2019 by Alexander Reinholdt
+    copyright            : (C) 2015-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -484,7 +484,7 @@ void Smb4KConfigPageMounting::setupWidget()
   // 
   QWidget *basicTab = new QWidget(this);
   QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
-//   
+ 
   //
   // Directories
   // 
@@ -574,6 +574,7 @@ void Smb4KConfigPageMounting::setupWidget()
   userIdInputWidget->setObjectName("UserIdInputWidget");
 
   QGridLayout *userLayout = new QGridLayout(userIdInputWidget);
+  userLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *userId = new KLineEdit(userIdInputWidget);
   userId->setObjectName("kcfg_UserId");
@@ -610,6 +611,7 @@ void Smb4KConfigPageMounting::setupWidget()
   groupIdInputWidget->setObjectName("GroupIdInputWidget");
 
   QGridLayout *groupLayout = new QGridLayout(groupIdInputWidget);
+  groupLayout->setContentsMargins(0, 0, 0, 0);
 
   KLineEdit *groupId = new KLineEdit(groupIdInputWidget);
   groupId->setObjectName("kcfg_GroupId");
