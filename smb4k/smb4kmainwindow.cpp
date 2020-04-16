@@ -83,7 +83,7 @@ Smb4KMainWindow::Smb4KMainWindow()
   createStandardStatusBarAction();
   setDockNestingEnabled(true);
   setupActions();
-  setupGUI(QSize(800, 600), Default, "smb4k_shell.rc");
+  setupGUI(Default, "smb4k_shell.rc");
   setupView();
   setupMenuBar();
   setupStatusBar();
