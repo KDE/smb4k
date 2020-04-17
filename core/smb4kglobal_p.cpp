@@ -242,7 +242,7 @@ const QMap<QString,QString> &Smb4KGlobalPrivate::globalSambaOptions(bool read)
               {
                 buffer = ts.readLine(0).trimmed();
 
-                if (buffer.startsWith('#') || buffer.startsWith(';'))
+                if (buffer.startsWith('#') || buffer.startsWith(';') || contents.at(i).trimmed().isEmpty())
                 {
                   // 
                   // This is either a comment or an empty line. We do not want it.
