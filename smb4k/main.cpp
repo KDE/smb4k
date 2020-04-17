@@ -139,7 +139,8 @@ int main(int argc, char **argv)
   }
   
   // Set attributes
-  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
   
   // Create the application
   QApplication app(argc, argv);
