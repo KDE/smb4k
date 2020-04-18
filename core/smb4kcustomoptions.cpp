@@ -819,7 +819,7 @@ bool Smb4KCustomOptions::hasOptions() const
   }
   
   // User information
-  if (d->user.userId() != KUser(Smb4KMountSettings::userId()).userId())
+  if (d->user.userId().toString() != Smb4KMountSettings::userId())
   {
     return true;
   }
@@ -831,7 +831,7 @@ bool Smb4KCustomOptions::hasOptions() const
   }
   
   // Group information
-  if (d->group.groupId() != KUserGroup(Smb4KMountSettings::groupId()).groupId())
+  if (d->group.groupId().toString() != Smb4KMountSettings::groupId())
   {
     return true;
   }
