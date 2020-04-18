@@ -20,7 +20,7 @@
     </entry>
     <entry name="UserId" type="String">
       <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
-      <default code="true">QString("%1").arg(KUser(KUser::UseRealUserID).userId().nativeId())</default>
+      <default code="true">KUserId::currentUserId().toString()</default>
     </entry>
     <entry name="UseGroupId" type="Bool">
       <label>Group ID:</label>
@@ -29,7 +29,7 @@
     </entry>
     <entry name="GroupId" type="String">
       <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
-      <default code="true">QString("%1").arg(KUserGroup(KUser::UseRealUserID).groupId().nativeId())</default>
+      <default code="true">KGroupId::currentGroupId().toString()</default>
     </entry>
     <entry name="UseFileMode" type="Bool">
       <label>File mode:</label>
