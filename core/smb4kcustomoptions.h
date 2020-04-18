@@ -184,7 +184,6 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      *                          is started.
      * @param RemountAlways     Remount the share every time the application is
      *                          started.
-     * @param RemountNever      Never remount the share.
      * @param UndefinedRemount  No remount behavior is undefined.
      */
     enum Remount { RemountOnce,
