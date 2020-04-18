@@ -778,7 +778,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
       
       for (const OptionsPtr &options : d->options)
       {
-        if (options->hasOptions() || options->remount() == Smb4KCustomOptions::RemountOnce)
+        if (options->hasOptions())
         {
           xmlWriter.writeStartElement("options");
           xmlWriter.writeAttribute("type", options->type() == Host ? "host" : "share");
@@ -884,7 +884,7 @@ void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<OptionsPtr> &op
         options->setProfile(Smb4KProfileManager::self()->activeProfile());
       }
       
-      if (options->hasOptions() || options->remount() == Smb4KCustomOptions::RemountOnce)
+      if (options->hasOptions())
       {
         d->options << options;
       }
