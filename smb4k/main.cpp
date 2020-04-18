@@ -180,9 +180,6 @@ int main(int argc, char **argv)
   // tray is closed.
   app.setQuitOnLastWindowClosed(false);
   
-  // Support high dpi screens
-  app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-  
   // Program icon
   app.setWindowIcon(QIcon::fromTheme(QLatin1String("smb4k")));
   
