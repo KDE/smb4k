@@ -63,6 +63,7 @@
 #include <KCoreAddons/KPluginFactory>
 #include <KXmlGui/KXMLGUIFactory>
 #include <KWidgetsAddons/KMessageBox>
+#include "kiconthemes_version.h"
 
 using namespace Smb4KGlobal;
 using namespace KParts;
@@ -518,7 +519,12 @@ void Smb4KMainWindow::setupMountIndicator()
   }
   else
   {
-    overlays.append("emblem-mounted");
+#if KICONTHEMES_VERSION < QT_VERSION_CHECK(5,52,0)
+    overlays << "emblem-mounted";
+#else
+    overlays << "";
+    overlays << "emblem-mounted";
+#endif
     m_feedback_icon->setToolTip(i18np("There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size()));
   }
 
