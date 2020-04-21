@@ -43,6 +43,7 @@
 #include <QToolTip>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QPainterPath>
 #include <QStylePainter>
 #include <QStyle>
 #include <QStyleOptionFrame>
