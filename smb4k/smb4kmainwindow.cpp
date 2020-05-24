@@ -442,7 +442,7 @@ void Smb4KMainWindow::saveSettings()
 
 bool Smb4KMainWindow::queryClose()
 {
-  if (!qApp->isSavingSession() && isVisible())
+  if (!QApplication::closingDown() && !qApp->isSavingSession() && isVisible())
   {
     // This part has been 'stolen' from JuK application.
     KMessageBox::information(this,
