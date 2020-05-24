@@ -125,6 +125,11 @@ Smb4KMainWindow::Smb4KMainWindow()
   // Apply the main window settings
   // 
   setAutoSaveSettings(KConfigGroup(Smb4KSettings::self()->config(), "MainWindow"), true);
+  
+  //
+  // Save the setting no matter how the application is closed
+  //
+  connect(qApp, &QCoreApplication::aboutToQuit, this, [this] () { saveSettings(); });
 }
 
 
@@ -427,6 +432,11 @@ void Smb4KMainWindow::saveSettings()
   // Save if the main window should be started docked.
   // 
   Smb4KSettings::setStartMainWindowDocked(!isVisible());
+  
+  //
+  // Save the settings
+  // 
+  Smb4KSettings::self()->save();
 }
 
 
