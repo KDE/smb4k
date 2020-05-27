@@ -26,11 +26,11 @@
 #ifndef SMB4KNETWORKBROWSER_H
 #define SMB4KNETWORKBROWSER_H
 
+// application specific includes
+#include <smb4ktooltip.h>
+
 // Qt includes
 #include <QTreeWidget>
-
-// KDE includes
-#include <KWidgetsAddons/KToolTipWidget>
 
 // forward declarations
 class Smb4KNetworkBrowserItem;
@@ -107,7 +107,7 @@ class Smb4KNetworkBrowser : public QTreeWidget
     /**
      * The tool top widget
      */
-    KToolTipWidget *m_toolTip;
+    Smb4KToolTip *m_toolTip;
 };
 
 #endif

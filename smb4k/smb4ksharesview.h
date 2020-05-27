@@ -26,13 +26,13 @@
 #ifndef SMB4KSHARESVIEW_H
 #define SMB4KSHARESVIEW_H
 
+// application specific includes
+#include <smb4ktooltip.h>
+
 // Qt includes
 #include <QTimer>
 #include <QMimeData>
 #include <QListWidget>
-
-// KDE includes
-#include <KWidgetsAddons/KToolTipWidget>
 
 // forward declarations
 class Smb4KSharesViewItem;
@@ -143,7 +143,7 @@ class Smb4KSharesView : public QListWidget
     /**
      * The tool top widget
      */
-    KToolTipWidget *m_toolTip;
+    Smb4KToolTip *m_toolTip;
 };
 
 #endif

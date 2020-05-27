@@ -32,10 +32,17 @@
 // Qt includes
 #include <QTreeWidgetItem>
 #include <QTreeWidget>
-#include <QPointer>
 
-
+// forward declarations
 class Smb4KNetworkBrowser;
+
+/**
+ * This class provides the items for the network neighborhood browser
+ * of Smb4K.
+ *
+ * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+ */
+
 class Smb4KNetworkBrowserItem : public QTreeWidgetItem
 {
   public:
@@ -105,29 +112,11 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
      */
     void update();
     
-    /**
-     * This function returns the widget with contents that is to be shown 
-     * in the tooltip.
-     * 
-     * @returns the widget that is to be shown in the tooltip
-     */
-    QWidget *toolTipContentsWidget();
-    
   private:
-    /**
-     * This function sets up the tooltip contents widget
-     */
-    void setupToolTipContentsWidget();
-    
     /**
      * The network item
      */
     NetworkItemPtr m_item;
-    
-    /**
-     * The widget with the information for the tooltip
-     */
-    QPointer<QWidget> m_toolTipContentsWidget;
 };
 
 #endif

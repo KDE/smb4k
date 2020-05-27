@@ -35,11 +35,7 @@
 #include <QMouseEvent>
 #include <QHeaderView>
 #include <QApplication>
-#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0) 
-#include <QDesktopWidget>
-#else
-#include <QScreen>
-#endif
+
 #include <QLayout>
 
 // KDE includes
@@ -57,7 +53,7 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser(QWidget *parent)
   
   setContextMenuPolicy(Qt::CustomContextMenu);
   
-  m_toolTip = new KToolTipWidget(this);
+  m_toolTip = new Smb4KToolTip(this);
 
   QStringList header_labels;
   header_labels.append(i18n("Network"));
@@ -123,50 +119,15 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
           // 
           if (pos.x() > ind * indentation())
           {
-            QPoint tooltipPos = cursor().pos();
+            //
+            // Set up the tooltip
+            // 
+            m_toolTip->setupToolTip(Smb4KToolTip::NetworkItem, item->networkItem());
             
-            int testWidth = item->toolTipContentsWidget()->width() + cursor().pos().x() + m_toolTip->layout()->contentsMargins().left() + m_toolTip->layout()->contentsMargins().right() + 5;
-            int testHeight = item->toolTipContentsWidget()->height() + cursor().pos().y() + m_toolTip->layout()->contentsMargins().top() + m_toolTip->layout()->contentsMargins().bottom() + 5;
-
-#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
-            if (QApplication::desktop()->screenGeometry(pos).width() < testWidth)
-            {
-              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right() - 5);
-            }
-            else
-            {
-              tooltipPos.setX(cursor().pos().x() + 5);
-            }
-            
-            if (QApplication::desktop()->screenGeometry(pos).height() < testHeight)
-            {
-              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom() - 5);
-            }
-            else
-            {
-              tooltipPos.setY(cursor().pos().y() + 5);
-            }
-#else
-            if (QApplication::screenAt(pos)->virtualSize().width() < testWidth)
-            {
-              tooltipPos.setX(cursor().pos().x() - item->toolTipContentsWidget()->width() - m_toolTip->layout()->contentsMargins().left() - m_toolTip->layout()->contentsMargins().right() - 5);
-            }
-            else
-            {
-              tooltipPos.setX(cursor().pos().x() + 5);
-            }
-            
-            if (QApplication::screenAt(pos)->virtualSize().height() < testHeight)
-            {
-              tooltipPos.setY(cursor().pos().y() - item->toolTipContentsWidget()->height() - m_toolTip->layout()->contentsMargins().top() - m_toolTip->layout()->contentsMargins().bottom() - 5);
-            }
-            else
-            {
-              tooltipPos.setY(cursor().pos().y() + 5);
-            }
-#endif
-            
-            m_toolTip->showAt(tooltipPos, item->toolTipContentsWidget(), nativeParentWidget()->windowHandle());
+            //
+            // Show the tooltip
+            // 
+            m_toolTip->show(cursor().pos(), nativeParentWidget()->windowHandle());
           }
         }
       }

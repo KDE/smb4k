@@ -54,7 +54,8 @@ set(smb4k_SRCS
   smb4ksharesview.cpp
   smb4ksharesviewitem.cpp
   smb4ksharesviewdockwidget.cpp
-  smb4ksystemtray.cpp)
+  smb4ksystemtray.cpp
+  smb4ktooltip.cpp)
   
 add_executable(smb4k ${smb4k_SRCS})
 

@@ -1,8 +1,8 @@
 /***************************************************************************
-    The item for Smb4K's shares view.
+    smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
-    begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2020 by Alexander Reinholdt
+    begin                : Mi Mai 2020 
+    copyright            : (C) 2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -23,67 +23,84 @@
  *   MA 02110-1335, USA                                                    *
  ***************************************************************************/
 
-#ifndef SMB4KSHARESVIEWITEM_H
-#define SMB4KSHARESVIEWITEM_H
+#ifndef SMB4KTOOLTIP_H
+#define SMB4KTOOLTIP_H
 
 // application specific includes
-#include "core/smb4kglobal.h"
+#include <smb4kglobal.h>
 
 // Qt includes
-#include <QListWidgetItem>
-#include <QPointer>
-#include <QWidget>
+#include <QPoint>
+#include <QWindow>
+#include <QHBoxLayout>
 
-// forward declarations
-class Smb4KSharesView;
+// KDE includes
+#include <KWidgetsAddons/KToolTipWidget>
 
-/**
- * This class provides the items for the shares icon view
- * of Smb4K.
- *
- * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
- */
+// Forward declaration
+class Smb4KBasicNetworkItem;
 
-class Smb4KSharesViewItem : public QListWidgetItem
+class Smb4KToolTip : public KToolTipWidget
 {
+  Q_OBJECT
+  
   public:
     /**
-     * The constructor.
-     *
-     * @param share         The Smb4KShare object that represents the share.
-     *
-     * @param parent        The parent widget of this item.
+     * The constructor
      */
-    Smb4KSharesViewItem(Smb4KSharesView *parent, const SharePtr &share);
-
+    Smb4KToolTip(QWidget *parent = nullptr);
+    
     /**
      * The destructor
      */
-    ~Smb4KSharesViewItem();
+    ~Smb4KToolTip();
     
     /**
-     * This function returns the encapsulated Smb4KShare item.
+     * This enumeration determines the kind of tooltip 
+     * this is to be shown.
      * 
-     * @returns the encapsulated Smb4KShare item.
+     * @enum NetworkItem  Tooltip reflecting a remote network item
+     * @enum MountedShare Tooltip reflecting a mounted share
      */
-    const SharePtr &shareItem() { return m_share; }
-
-    /**
-     * This function updates the encapsulated Smb4KShare object.
-     */
-    void update();
+    enum Type {
+      NetworkItem,
+      MountedShare };
     
     /**
-     * This function modifies the alignment according to the @p mode used in
-     * the parent list widget.
+     * Set up the tooltip. 
      */
-    void setItemAlignment(QListView::ViewMode mode);
+    void setupToolTip(Type type, NetworkItemPtr item);
+    
+    /**
+     * Show the tooltip
+     */
+    void show(const QPoint &pos, QWindow *transientParent);
     
   private:
     /**
-     * The Smb4KShare item
+     * Setup the contents widget for a remote network item
      */
-    SharePtr m_share;
+    void setupNetworkItemContents();
+    
+    /**
+     * Setup the contents widget for a mounted share
+     */
+    void setupMountedShareContents();
+    
+    /**
+     * The network item
+     */
+    NetworkItemPtr m_item;
+    
+    /**
+     * The contents widget for the tooltip
+     */
+    QWidget *m_contentsWidget;
+    
+    /**
+     * The main layout
+     */
+    QHBoxLayout *m_mainLayout;
 };
 
 #endif
