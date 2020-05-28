@@ -27,7 +27,7 @@
 #define SMB4KNETWORKBROWSER_H
 
 // application specific includes
-#include <smb4ktooltip.h>
+#include "smb4ktooltip.h"
 
 // Qt includes
 #include <QTreeWidget>
@@ -65,6 +65,11 @@ class Smb4KNetworkBrowser : public QTreeWidget
                   Type = 1,
                   IP = 2,
                   Comment = 3 };
+                  
+    /**
+     * The tooltip
+     */
+    Smb4KToolTip *toolTip();
 
   protected:
     /**

@@ -106,6 +106,12 @@ void Smb4KSharesView::setViewMode(QListView::ViewMode mode, int iconSize)
 }
 
 
+Smb4KToolTip *Smb4KSharesView::toolTip()
+{
+  return m_toolTip;
+}
+
+
 bool Smb4KSharesView::event(QEvent *e)
 {
   switch (e->type())

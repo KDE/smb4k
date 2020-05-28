@@ -53,6 +53,7 @@ using namespace Smb4KGlobal;
 Smb4KToolTip::Smb4KToolTip(QWidget* parent) : KToolTipWidget(parent)
 {
   m_contentsWidget = new QWidget(parent);
+  m_type = Unknown;
 }
 
 
@@ -63,6 +64,11 @@ Smb4KToolTip::~Smb4KToolTip()
 
 void Smb4KToolTip::setupToolTip(Smb4KToolTip::Type type, NetworkItemPtr item)
 {
+  //
+  // Copy the type
+  // 
+  m_type = type;
+  
   //
   // Copy the item
   // 
@@ -81,7 +87,7 @@ void Smb4KToolTip::setupToolTip(Smb4KToolTip::Type type, NetworkItemPtr item)
   //
   // Setup the contents widget
   // 
-  switch (type)
+  switch (m_type)
   {
     case NetworkItem:
     {
@@ -99,6 +105,40 @@ void Smb4KToolTip::setupToolTip(Smb4KToolTip::Type type, NetworkItemPtr item)
     }
   }
 }
+
+
+void Smb4KToolTip::update()
+{
+  //
+  // Return if there is no item
+  // 
+  if (!m_item.isNull() || m_type ==  Unknown)
+  {
+    return;
+  }
+  
+  //
+  // Update the contents widget
+  // 
+  switch (m_type)
+  {
+    case NetworkItem:
+    {
+      setupNetworkItemContents();
+      break;
+    }
+    case MountedShare:
+    {
+      setupMountedShareContents();
+      break;
+    }
+    default:
+    {
+      break;
+    }
+  }
+}
+
 
 void Smb4KToolTip::show(const QPoint& pos, QWindow *transientParent)
 {

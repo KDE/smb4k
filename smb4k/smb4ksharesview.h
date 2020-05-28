@@ -69,6 +69,11 @@ class Smb4KSharesView : public QListWidget
      * @param iconSize      The size of the icons
      */
     void setViewMode(ViewMode mode, int iconSize);
+    
+    /**
+     * The tooltip
+     */
+    Smb4KToolTip *toolTip();
 
   signals:
     /**

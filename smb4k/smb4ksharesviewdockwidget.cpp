@@ -471,6 +471,11 @@ void Smb4KSharesViewDockWidget::slotShareMounted(const SharePtr& share)
     // Sort the view
     m_sharesView->sortItems(Qt::AscendingOrder);
     
+    //
+    // Update the tooltip
+    //
+    m_sharesView->toolTip()->update();
+    
     // Enable/disable the 'Unmount All' action
     actionCollection()->action("unmount_all_action")->setEnabled(
       ((!onlyForeignMountedShares() || Smb4KMountSettings::unmountForeignShares()) && m_sharesView->count() != 0));

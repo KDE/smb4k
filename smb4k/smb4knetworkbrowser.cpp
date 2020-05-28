@@ -77,6 +77,13 @@ Smb4KNetworkBrowser::~Smb4KNetworkBrowser()
 }
 
 
+Smb4KToolTip *Smb4KNetworkBrowser::toolTip()
+{
+  return m_toolTip;
+}
+
+
+
 bool Smb4KNetworkBrowser::event(QEvent *e)
 {
   switch (e->type())

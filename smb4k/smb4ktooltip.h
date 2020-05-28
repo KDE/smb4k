@@ -64,7 +64,8 @@ class Smb4KToolTip : public KToolTipWidget
      */
     enum Type {
       NetworkItem,
-      MountedShare };
+      MountedShare,
+      Unknown };
     
     /**
      * Set up the tooltip. 
@@ -75,6 +76,11 @@ class Smb4KToolTip : public KToolTipWidget
      * Show the tooltip
      */
     void show(const QPoint &pos, QWindow *transientParent);
+    
+    /**
+     * Update the tooltip
+     */
+    void update();
     
   private:
     /**
@@ -91,6 +97,11 @@ class Smb4KToolTip : public KToolTipWidget
      * The network item
      */
     NetworkItemPtr m_item;
+    
+    /**
+     * The type
+     */
+    Type m_type;
     
     /**
      * The contents widget for the tooltip
