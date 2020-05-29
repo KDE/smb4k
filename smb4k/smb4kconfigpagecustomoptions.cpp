@@ -416,6 +416,7 @@ void Smb4KConfigPageCustomOptions::setupMountingTab()
   securityMode->addItem(ntlmv2Text);
   securityMode->addItem(ntlmv2iText);
   securityMode->addItem(ntlmsspText);
+  securityMode->addItem(ntlmsspiText);
   
   advancedOptionsBoxLayout->addWidget(useSecurityMode, 0, 0, 0);
   advancedOptionsBoxLayout->addWidget(securityMode, 0, 1, 0);
