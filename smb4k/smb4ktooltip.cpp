@@ -309,7 +309,7 @@ void Smb4KToolTip::setupNetworkItemContents()
       
       if (workgroup->hasMasterBrowserIpAddress())
       {
-        masterBrowserName->setText(QString("%1 (%2)").arg(workgroup->masterBrowserName()).arg(workgroup->masterBrowserIpAddress()));
+        masterBrowserName->setText(QString("%1 (%2)").arg(workgroup->masterBrowserName(), workgroup->masterBrowserIpAddress()));
       }
       else
       {

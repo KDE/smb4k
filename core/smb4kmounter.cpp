@@ -380,7 +380,7 @@ void Smb4KMounter::import(bool checkInaccessible)
     //
     // Do last things
     // 
-    QTimer::singleShot(250, [this]() {
+    QTimer::singleShot(250, this, [this]() {
       if (!isRunning())
       {
         //
@@ -694,7 +694,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
       if (errorCode == 0)
       {
         // Get the error message
-        QString errorMsg = job->data()["mh_error_message"].toString();
+        QString errorMsg = job->data().value("mh_error_message").toString();
         
         if (!errorMsg.isEmpty())
         {
@@ -912,7 +912,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
       if (errorCode == 0)
       {
         // Get the error message
-        QString errorMsg = job->data()["mh_error_message"].toString();
+        QString errorMsg = job->data().value("mh_error_message").toString();
         
         if (!errorMsg.isEmpty())
         {
@@ -2419,7 +2419,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
           Smb4KNotification::shareMounted(importedShare);
         }
           
-        QTimer::singleShot(250, [this]() {
+        QTimer::singleShot(250, this, [this]() {
           if (!isRunning())
           {
             if (d->firstImportDone && d->importedShares.isEmpty() && d->newlyMounted > 1)

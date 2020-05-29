@@ -884,7 +884,7 @@ void Smb4KMainWindow::slotMounterAboutToStart(int process)
 
 void Smb4KMainWindow::slotMounterFinished(int /*process*/)
 {
-  QTimer::singleShot(250, [this] () {
+  QTimer::singleShot(250, this, [this] () {
     if (!coreIsRunning())
     {
       m_progress_bar->setVisible(false);

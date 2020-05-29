@@ -701,8 +701,7 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(const SharePtr &share, QW
   description->setAlignment(Qt::AlignBottom);
 
   QUrl src_url  = QUrl(QDir::cleanPath(m_share->path()));
-  QUrl dest_url = QUrl(QDir::cleanPath(QString("%1/%2/%3").arg(Smb4KSettings::rsyncPrefix().path())
-                       .arg(m_share->hostName()).arg(m_share->shareName())));
+  QUrl dest_url = QUrl(QDir::cleanPath(QString("%1/%2/%3").arg(Smb4KSettings::rsyncPrefix().path(), m_share->hostName(), m_share->shareName())));
 
   QLabel *source_label = new QLabel(i18n("Source:"), this);
   m_source = new KUrlRequester(this);

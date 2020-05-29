@@ -289,7 +289,6 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
   if (share)
   {
     QString type = action->data().toMap().value("type").toString();
-    QString mountpoint = action->data().toMap().value("mountpoint").toString();
     
     if (type == "unmount")
     {

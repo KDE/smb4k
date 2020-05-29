@@ -938,7 +938,7 @@ void Smb4KClient::slotResult(KJob *job)
   //
   // Emit the finished signal
   // 
-  finished(item, process);
+  emit finished(item, process);
   
   //
   // Clear the network item pointer
