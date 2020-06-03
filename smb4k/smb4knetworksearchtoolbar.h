@@ -2,7 +2,7 @@
     This class provides the network search toolbar.
                              -------------------
     begin                : Su Dec 23 2018
-    copyright            : (C) 2018-2019 by Alexander Reinholdt
+    copyright            : (C) 2018-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -93,7 +93,7 @@ class Smb4KNetworkSearchToolBar : public QToolBar
     /**
      * Emitted when the search toolbar is to be closed (should be hidden)
      */
-    void close();
+    void closeSearchBar();
     
     /**
      * Emitted when a search should be done

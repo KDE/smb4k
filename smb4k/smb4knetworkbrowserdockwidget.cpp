@@ -2,7 +2,7 @@
     The network neighborhood browser dock widget 
                              -------------------
     begin                : Sat Apr 28 2018
-    copyright            : (C) 2018-2019 by Alexander Reinholdt
+    copyright            : (C) 2018-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -104,7 +104,7 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
   connect(m_networkBrowser, SIGNAL(itemActivated(QTreeWidgetItem*,int)), this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
   connect(m_networkBrowser, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
   
-  connect(m_searchToolBar, SIGNAL(close()), this, SLOT(slotHideSearchToolBar()));
+  connect(m_searchToolBar, SIGNAL(closeSearchBar()), this, SLOT(slotHideSearchToolBar()));
   connect(m_searchToolBar, SIGNAL(search(QString)), this, SLOT(slotPerformSearch(QString)));
   connect(m_searchToolBar, SIGNAL(abort()), this, SLOT(slotStopSearch()));
   connect(m_searchToolBar, SIGNAL(jumpToResult(QString)), this, SLOT(slotJumpToResult(QString)));
