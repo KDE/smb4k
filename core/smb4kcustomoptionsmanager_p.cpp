@@ -1950,6 +1950,8 @@ void Smb4KCustomOptionsDialog::slotEnableWOLFeatures(const QString &mac)
 
 void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
 {
+  Q_UNUSED(support);
+  
 #if defined(Q_OS_LINUX)
   // 
   // User id
