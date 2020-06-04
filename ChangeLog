@@ -1,3 +1,16 @@
+Smb4K 3.0.6 (2020-06-03):
+
+See the summery of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.0
+
+- Save the mainwindow settings no matter how the application is closed.
+  This fixes the inability of Smb4K to started docked to the system tray.
+- Do not show a message box when the main window is visible and the user
+  logs off.
+- Add missing mount option 'ntlmsspi' to the respective combo box in the
+  config dialog.
+- Silence a compiler warning under BSD.
+
 Smb4K 3.0.5 (2020-05-12):
 
 See the summary of changes below. For a full list of changes, please
