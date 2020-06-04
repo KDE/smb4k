@@ -203,14 +203,21 @@ void Smb4KToolTip::setupNetworkItemContents()
       {
         WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
         QLabel *masterBrowserName = m_contentsWidget->findChild<QLabel *>("MasterBrowserName");
-            
-        if (workgroup->hasMasterBrowserIpAddress())
+        
+        if (workgroup->hasMasterBrowser())
         {
-          masterBrowserName->setText(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIpAddress()+')');
+          if (workgroup->hasMasterBrowserIpAddress())
+          {
+            masterBrowserName->setText(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIpAddress()+')');
+          }
+          else
+          {
+            masterBrowserName->setText(workgroup->masterBrowserName());
+          }
         }
         else
         {
-          masterBrowserName->setText(workgroup->masterBrowserName());
+          masterBrowserName->setText("-");
         }
         break;
       }
@@ -307,13 +314,20 @@ void Smb4KToolTip::setupNetworkItemContents()
       masterBrowserName->setObjectName("MasterBrowserName");
       masterBrowserName->setForegroundRole(QPalette::ToolTipText);
       
-      if (workgroup->hasMasterBrowserIpAddress())
+      if (workgroup->hasMasterBrowser())
       {
-        masterBrowserName->setText(QString("%1 (%2)").arg(workgroup->masterBrowserName(), workgroup->masterBrowserIpAddress()));
+        if (workgroup->hasMasterBrowserIpAddress())
+        {
+          masterBrowserName->setText(workgroup->masterBrowserName()+" ("+workgroup->masterBrowserIpAddress()+')');
+        }
+        else
+        {
+          masterBrowserName->setText(workgroup->masterBrowserName());
+        }
       }
       else
       {
-        masterBrowserName->setText(workgroup->masterBrowserName());
+        masterBrowserName->setText("-");
       }
       
       descriptionLayout->addWidget(masterBrowserName, 3, 1, 0);

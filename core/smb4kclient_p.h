@@ -163,7 +163,9 @@ class Smb4KClientJob : public KJob
     void slotStartJob();
     
   private:
+    void initClientLibrary();
     void doLookups();
+    void doDnsDiscovery();
     void doPrinting();
     QHostAddress lookupIpAddress(const QString &name);
     Smb4KGlobal::Process m_process;

@@ -94,7 +94,8 @@ find_package(KF5Wallet ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5WidgetsAddons ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5WindowSystem ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5XmlGui ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED) 
+find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF5DNSSD ${KF5_MIN_VERSION} REQUIRED)
 
 # Install the plasmoid if desired
 if (INSTALL_PLASMOID)

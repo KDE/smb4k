@@ -106,6 +106,14 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * @returns the name of the master browser.
      */
     QString masterBrowserName() const;
+    
+    /**
+     * Returns TRUE if there is a master browser and FALSE otherwise. No master 
+     * browser might be defined, if the DNS-SD method is used.
+     * 
+     * @returns TRUE if there is a master browser.
+     */
+    bool hasMasterBrowser() const;
 
     /**
      * Set the IP address of the master browser. @p ip will only be accepted

@@ -103,6 +103,23 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
      */
     QUrl url() const;
     
+    /**
+     * Set @p discovered to TRUE if this network item was discovered using
+     * the DNS-SD service.
+     * 
+     * @param discovered    Set this to TRUE if the network item was discovered 
+     *                      using the DNS-SD service
+     */
+    void setDnsDiscovered(bool discovered);
+    
+    /**
+     * Return TRUE if the network item was discovered using the DNS-SD
+     * service and FALSE otherwise.
+     * 
+     * @return TRUE if discovered by DNS-SD.
+     */
+    bool dnsDiscovered() const;
+    
   protected:
     /**
      * Expose a pointer to the private URL variable.

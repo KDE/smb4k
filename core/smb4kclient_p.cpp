@@ -56,6 +56,7 @@
 #include <QPrinter>
 #include <QTemporaryDir>
 #include <QTextDocument>
+#include <QTest>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -66,6 +67,9 @@
 #include <KWidgetsAddons/KDualAction>
 #include <KIOWidgets/KUrlRequester>
 #include <KIOCore/KFileItem>
+
+#include <KDNSSD/DNSSD/ServiceBrowser>
+#include <KDNSSD/DNSSD/RemoteService>
 
 #define SMBC_DEBUG 0
 
@@ -138,6 +142,15 @@ Smb4KClientJob::~Smb4KClientJob()
   while (!m_files.isEmpty())
   {
     m_files.takeFirst().clear();
+  }
+  
+  //
+  // Delete the context
+  // 
+  if (!m_context)
+  {
+    qDebug() << "Delete the context";
+    delete m_context;
   }
 }
 
@@ -385,10 +398,277 @@ QString Smb4KClientJob::workgroup()
 }
 
 
-void Smb4KClientJob::doLookups()
+void Smb4KClientJob::initClientLibrary()
 {
   // 
-  // Get the function to open the directory
+  // Allocate new context
+  // 
+  m_context = smbc_new_context();
+  
+  if (!m_context)
+  {
+    int errorCode = errno;
+    
+    setError(ClientError);
+    setErrorText(strerror(errorCode));
+    
+    emitResult();
+    return;
+  }
+  
+  //
+  // Get the custom options
+  // 
+  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(m_item);
+  
+  // 
+  // Set debug level
+  // 
+  smbc_setDebug(m_context, SMBC_DEBUG);
+  
+  //
+  // Set the NetBIOS name and the workgroup to make connections
+  // 
+  switch (m_item->type())
+  {
+    case Network:
+    {
+      // 
+      // We do not know about the servers and the domains/workgroups
+      // present. So, do not set anything and use the default.
+      // 
+      break;
+    }
+    case Workgroup:
+    {
+      //
+      // In case this domain/workgroup was discovered by the DNS-SD service, there is 
+      // no master browser and the workgroup/domain might not be identical with the one 
+      // defined in the network neighborhood. Thus, only set the NetBIOS name and the 
+      // workgroup if no DNS-SD discovery was used.
+      // 
+      if (!m_item->dnsDiscovered())
+      {
+        WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
+        smbc_setNetbiosName(m_context, workgroup->masterBrowserName().toUtf8().data());
+        smbc_setWorkgroup(m_context, workgroup->workgroupName().toUtf8().data());
+      }
+      
+      break;
+    }
+    case Host:
+    {
+      //
+      // In case the domain/workgroup was discovered by the DNS-SD service, the 
+      // workgroup/domain might not be identical with the one defined in the network 
+      // neighborhood. Thus, only set the workgroup if no DNS-SD discovery was used.
+      // 
+      HostPtr host = m_item.staticCast<Smb4KHost>();
+      WorkgroupPtr workgroup = findWorkgroup(host->workgroupName());
+      
+      if (!workgroup->dnsDiscovered())
+      {
+        smbc_setWorkgroup(m_context, host->workgroupName().toUtf8().data());
+      }
+      
+      smbc_setNetbiosName(m_context, host->hostName().toUtf8().data());
+
+      break;
+    }
+    case Share:
+    {
+      //
+      // In case the domain/workgroup was discovered by the DNS-SD service, the 
+      // workgroup/domain might not be identical with the one defined in the network 
+      // neighborhood. Thus, only set the workgroup if no DNS-SD discovery was used.
+      // 
+      SharePtr share = m_item.staticCast<Smb4KShare>();
+      WorkgroupPtr workgroup = findWorkgroup(share->workgroupName());
+      
+      if (!workgroup->dnsDiscovered())
+      {
+        smbc_setWorkgroup(m_context, share->workgroupName().toUtf8().data());
+      }
+      
+      smbc_setNetbiosName(m_context, share->hostName().toUtf8().data());
+      
+      break;
+    }
+    case Directory:
+    {
+      //
+      // In case the domain/workgroup was discovered by the DNS-SD service, the 
+      // workgroup/domain might not be identical with the one defined in the network 
+      // neighborhood. Thus, only set the workgroup if no DNS-SD discovery was used.
+      // 
+      FilePtr file = m_item.staticCast<Smb4KFile>();
+      WorkgroupPtr workgroup = findWorkgroup(file->workgroupName());
+      
+      if (!workgroup->dnsDiscovered())
+      {
+        smbc_setWorkgroup(m_context, file->workgroupName().toUtf8().data());
+      }
+      
+      smbc_setNetbiosName(m_context, file->hostName().toUtf8().data());
+
+      break;      
+    }
+    default:
+    {
+      break;
+    }
+  }
+
+  //
+  // Set the user for making the connection
+  // 
+  if (!m_item->url().userName().isEmpty())
+  {
+    smbc_setUser(m_context, m_item->url().userName().toUtf8().data());
+  }
+  
+  //
+  // Set the port
+  // 
+  if (options)
+  {
+    if (options->useSmbPort())
+    {
+      smbc_setPort(m_context, options->smbPort());
+    }
+    else
+    {
+      smbc_setPort(m_context, 0 /* use the default */);
+    }
+  }
+  else
+  {
+    if (Smb4KSettings::useRemoteSmbPort())
+    {
+      smbc_setPort(m_context, Smb4KSettings::remoteSmbPort());
+    }
+    else
+    {
+      smbc_setPort(m_context, 0 /* use the default */);
+    }
+  }
+
+  //
+  // Set the user data (this class)
+  // 
+  smbc_setOptionUserData(m_context, this);
+  
+  //
+  // Set number of master browsers to be used
+  // 
+  if (Smb4KSettings::largeNetworkNeighborhood())
+  {
+    smbc_setOptionBrowseMaxLmbCount(m_context, 3);
+  }
+  else
+  {
+    smbc_setOptionBrowseMaxLmbCount(m_context, 0 /* all master browsers */);
+  }
+  
+  //
+  // Set the protocol to SMB1 ("NT1") if desired so that the workgroups 
+  // and domains can be discovered.
+  //
+  if (Smb4KSettings::forceSmb1Protocol() && m_item->type() == Network)
+  {
+    smbc_setOptionProtocols(m_context, "NT1", "NT1");
+  }
+  
+  //
+  // Set the encryption level
+  // 
+  if (Smb4KSettings::useEncryptionLevel())
+  {
+    switch (Smb4KSettings::encryptionLevel())
+    {
+      case Smb4KSettings::EnumEncryptionLevel::None:
+      {
+        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_NONE);
+        break;
+      }
+      case Smb4KSettings::EnumEncryptionLevel::Request:
+      {
+        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_REQUEST);
+        break;
+      }
+      case Smb4KSettings::EnumEncryptionLevel::Require:
+      {
+        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_REQUIRE);
+        break;
+      }
+      default:
+      {
+        break;
+      }
+    }
+  }
+  
+  //
+  // Set the usage of anonymous login 
+  // 
+  smbc_setOptionNoAutoAnonymousLogin(m_context, false);
+  
+  //
+  // Set the usage of the winbind ccache
+  // 
+  smbc_setOptionUseCCache(m_context, Smb4KSettings::useWinbindCCache());
+  
+  //
+  // Set usage of Kerberos
+  // 
+  if (options)
+  {
+    smbc_setOptionUseKerberos(m_context, options->useKerberos());
+  }
+  else
+  {
+    smbc_setOptionUseKerberos(m_context, Smb4KSettings::useKerberos());
+  }
+  
+  smbc_setOptionFallbackAfterKerberos(m_context, 1);
+  
+  //
+  // Set the channel for debug output
+  // 
+  smbc_setOptionDebugToStderr(m_context, 1);
+  
+  //
+  // Set auth callback function
+  // 
+  smbc_setFunctionAuthDataWithContext(m_context, get_auth_data_with_context_fn);
+  
+  // 
+  // Initialize context with the previously defined options
+  // 
+  if (!smbc_init_context(m_context))
+  {
+    int errorCode = errno;
+    
+    setError(ClientError);
+    setErrorText(strerror(errorCode));
+
+    smbc_free_context(m_context, 1);
+
+    emitResult();
+    return;
+  }  
+}
+
+
+void Smb4KClientJob::doLookups()
+{
+  //
+  // Set the new context
+  // 
+  (void)smbc_set_context(m_context);
+  
+  // 
+  // Get the function to open the directory. 
   // 
   smbc_opendir_fn openDirectory = smbc_getFunctionOpendir(m_context);
   
@@ -398,46 +678,51 @@ void Smb4KClientJob::doLookups()
     
     setError(ClientError);
     setErrorText(strerror(errorCode));
-
-    emitResult();
     return;
   }
   
   //
   // Open the directory
   // 
+  // If we use DNS-SD, the workgroup/domain name will most likely be unknown
+  // for Samba and the followin function fails. Since we do not want the lookup 
+  // to stop here in that case, do not throw an error when using DNS-SD and 
+  // Network and Workgroup (parent) items.
+  // 
   SMBCFILE *directory = openDirectory(m_context, m_item->url().toString().toUtf8().data());
   
   if (!directory)
   {
-    int errorCode = errno;
-    
-    switch (errorCode)
+    if (!Smb4KSettings::useDnsServiceDiscovery() && !(m_item->type() == Network || m_item->type() == Workgroup))
     {
-      case EACCES:
+      int errorCode = errno;
+      
+      switch (errorCode)
       {
-        setError(AccessDeniedError);
-        setErrorText(strerror(errorCode));
-        break;
-      }
-      case ENOENT:
-      {
-        if (m_item->type() != Network)
+        case EACCES:
+        {
+          setError(AccessDeniedError);
+          setErrorText(strerror(errorCode));
+          break;
+        }
+        case ENOENT:
+        {
+          if (m_item->type() != Network)
+          {
+            setError(ClientError);
+            setErrorText(strerror(errorCode));
+          }
+          break;
+        }
+        default:
         {
           setError(ClientError);
           setErrorText(strerror(errorCode));
+          break;
         }
-        break;
-      }
-      default:
-      {
-        setError(ClientError);
-        setErrorText(strerror(errorCode));
-        break;
       }
     }
-    
-    emitResult();
+      
     return;
   }
   
@@ -454,7 +739,6 @@ void Smb4KClientJob::doLookups()
     setError(ClientError);
     setErrorText(strerror(errorCode));
 
-    emitResult();
     return;
   }
   
@@ -861,16 +1145,173 @@ void Smb4KClientJob::doLookups()
     setError(ClientError);
     setErrorText(strerror(errorCode));
 
-    emitResult();
     return;
   }
   
   (void)closeDirectory(m_context, directory);
+  
+  //
+  // Free the context
+  // 
+  smbc_free_context(m_context, 1);
+}
+
+
+void Smb4KClientJob::doDnsDiscovery()
+{
+  //
+  // Set up the DNS-SD browser
+  // 
+  KDNSSD::ServiceBrowser serviceBrowser(QStringLiteral("_smb._tcp"));
+  
+  // 
+  // This code is inspired by the DNS-SD discoverer of the SMB 
+  // kio slave
+  // 
+  bool browsingFinished = false;
+  
+  connect(&serviceBrowser, &KDNSSD::ServiceBrowser::serviceAdded, 
+          this, [&] (KDNSSD::RemoteService::Ptr service) {
+            switch (m_process)
+            {
+              case LookupDomains:
+              {
+                //
+                // Check if the workgroup/domain is already known
+                // 
+                bool foundWorkgroup = false;
+                
+                for (const WorkgroupPtr &w : qAsConst(m_workgroups))
+                {
+                  if (QString::compare(w->workgroupName(), service->domain(), Qt::CaseInsensitive) == 0)
+                  {
+                    foundWorkgroup = true;
+                    break;
+                  }
+                }
+                
+                //
+                // If the workgroup is not known yet, add it to the list
+                // 
+                if (!foundWorkgroup)
+                {
+                  //
+                  // Create the workgroup item
+                  // 
+                  WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
+                  
+                  //
+                  // Set the _DNS-SD_ domain name
+                  // 
+                  workgroup->setWorkgroupName(service->domain());
+                  
+                  //
+                  // Tell the program that the workgroup was discovered by DNS-SD
+                  // 
+                  workgroup->setDnsDiscovered(true);
+                  
+                  //
+                  // Add the workgroup
+                  // 
+                  m_workgroups << workgroup;
+                }
+                break;
+              }
+              case LookupDomainMembers:
+              {
+                //
+                // Check if the server is already known
+                // 
+                bool foundServer = false;
+                
+                for (const HostPtr &h : qAsConst(m_hosts))
+                {
+                  if (QString::compare(h->hostName(), service->serviceName(), Qt::CaseInsensitive) == 0 &&
+                      QString::compare(h->workgroupName(), service->domain(), Qt::CaseInsensitive) == 0)
+                  {
+                    foundServer = true;
+                    break;
+                  }
+                }
+                
+                //
+                // If the server is not known yet, add it to the list
+                // 
+                if (!foundServer)
+                {
+                  //
+                  // Create the host item
+                  // 
+                  HostPtr host = HostPtr(new Smb4KHost());
+                  
+                  //
+                  // Set the _DNS-SD_ host name
+                  // 
+                  host->setHostName(service->serviceName());
+                  
+                  //
+                  // Set the _DNS-SD_ domain name
+                  // 
+                  host->setWorkgroupName(service->domain());
+                  
+                  //
+                  // Tell the program that the workgroup was discovered by DNS-SD
+                  //                   
+                  host->setDnsDiscovered(true);
+                  
+                  // 
+                  // Lookup IP address
+                  // 
+                  QHostAddress address = lookupIpAddress(service->serviceName());
+          
+                  // 
+                  // Process the IP address. 
+                  // 
+                  if (!address.isNull())
+                  {
+                    host->setIpAddress(address);
+                  }
+                  
+                  //
+                  // Add the host
+                  // 
+                  m_hosts << host;
+                }
+                
+                break;
+              }
+              default:
+              {
+                break;
+              }
+            }
+          });
+  
+  connect(&serviceBrowser, &KDNSSD::ServiceBrowser::finished,
+          this, [&] () {
+            browsingFinished = true;
+            serviceBrowser.disconnect();
+          });
+  
+  serviceBrowser.startBrowse();
+  
+  //
+  // Wait until the browsing finished
+  // 
+  while (!browsingFinished)
+  {
+    QTest::qWait(50);
+  }
 }
 
 
 void Smb4KClientJob::doPrinting()
 {
+  //
+  // Set the new context
+  // 
+  (void)smbc_set_context(m_context);
+  
   //
   // The URL that is to be printed
   // 
@@ -966,7 +1407,6 @@ void Smb4KClientJob::doPrinting()
     setError(ClientError);
     setErrorText(strerror(errorCode));
     
-    emitResult();
     return;
   }
   
@@ -995,7 +1435,6 @@ void Smb4KClientJob::doPrinting()
       }
     }
     
-    emitResult();
     return;
   }
   
@@ -1009,7 +1448,6 @@ void Smb4KClientJob::doPrinting()
     setError(FileAccessError);
     setErrorText(i18n("The file %1 could not be read", fileUrl.path()));
     
-    emitResult();
     return;
   }
   
@@ -1044,6 +1482,11 @@ void Smb4KClientJob::doPrinting()
   // 
   smbc_close_fn closePrinter = smbc_getFunctionClose(m_context);
   closePrinter(m_context, printer);
+  
+  //
+  // Free the context
+  // 
+  smbc_free_context(m_context, 1);
 }
 
 
@@ -1126,234 +1569,10 @@ QHostAddress Smb4KClientJob::lookupIpAddress(const QString& name)
 
 void Smb4KClientJob::slotStartJob()
 {
-  // 
-  // Allocate new context
-  // 
-  m_context = smbc_new_context();
-  
-  if (!m_context)
-  {
-    int errorCode = errno;
-    
-    setError(ClientError);
-    setErrorText(strerror(errorCode));
-    
-    emitResult();
-    return;
-  }
-  
   //
-  // Get the custom options
+  // Initialize the client library
   // 
-  OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(m_item);
-  
-  // 
-  // Set debug level
-  // 
-  smbc_setDebug(m_context, SMBC_DEBUG);
-  
-  //
-  // Set the NetBIOS name and the workgroup to make connections
-  // 
-  switch (m_item->type())
-  {
-    case Network:
-    {
-      // 
-      // We do not know about the servers and the domains/workgroups
-      // present. So, do not set anything and use the default.
-      // 
-      break;
-    }
-    case Workgroup:
-    {
-      //
-      // Set the NetBIOS name of the master browser and the workgroup to be queried
-      // 
-      WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
-      smbc_setNetbiosName(m_context, workgroup->masterBrowserName().toUtf8().data());
-      smbc_setWorkgroup(m_context, workgroup->workgroupName().toUtf8().data());
-      break;
-    }
-    case Host:
-    {
-      //
-      // Set both the NetBIOS name of the server and the workgroup to be queried
-      // 
-      HostPtr host = m_item.staticCast<Smb4KHost>();
-      smbc_setNetbiosName(m_context, host->hostName().toUtf8().data());
-      smbc_setWorkgroup(m_context, host->workgroupName().toUtf8().data());
-      break;
-    }
-    case Share:
-    {
-      //
-      // Set both the NetBIOS name of the server and the workgroup to be queried
-      // 
-      SharePtr share = m_item.staticCast<Smb4KShare>();
-      smbc_setNetbiosName(m_context, share->hostName().toUtf8().data());
-      smbc_setWorkgroup(m_context, share->workgroupName().toUtf8().data());
-      break;
-    }
-    case Directory:
-    {
-      //
-      // Set both the NetBIOS name of the server and the workgroup to be queried
-      // 
-      FilePtr file = m_item.staticCast<Smb4KFile>();
-      smbc_setNetbiosName(m_context, file->hostName().toUtf8().data());
-      smbc_setWorkgroup(m_context, file->workgroupName().toUtf8().data());
-      break;      
-    }
-    default:
-    {
-      break;
-    }
-  }
-
-  //
-  // Set the user for making the connection
-  // 
-  if (!m_item->url().userName().isEmpty())
-  {
-    smbc_setUser(m_context, m_item->url().userName().toUtf8().data());
-  }
-  
-  //
-  // Set the port
-  // 
-  if (options)
-  {
-    if (options->useSmbPort())
-    {
-      smbc_setPort(m_context, options->smbPort());
-    }
-    else
-    {
-      smbc_setPort(m_context, 0 /* use the default */);
-    }
-  }
-  else
-  {
-    if (Smb4KSettings::useRemoteSmbPort())
-    {
-      smbc_setPort(m_context, Smb4KSettings::remoteSmbPort());
-    }
-    else
-    {
-      smbc_setPort(m_context, 0 /* use the default */);
-    }
-  }
-
-  //
-  // Set the user data (this class)
-  // 
-  smbc_setOptionUserData(m_context, this);
-  
-  //
-  // Set number of master browsers to be used
-  // 
-  if (Smb4KSettings::largeNetworkNeighborhood())
-  {
-    smbc_setOptionBrowseMaxLmbCount(m_context, 3);
-  }
-  else
-  {
-    smbc_setOptionBrowseMaxLmbCount(m_context, 0 /* all master browsers */);
-  }
-  
-  //
-  // Set the protocol to SMB1 ("NT1") if desired so that the workgroups 
-  // and domains can be discovered.
-  //
-  if (Smb4KSettings::forceSMB1Protocol() && m_item->type() == Network)
-  {
-    smbc_setOptionProtocols(m_context, "NT1", "NT1");
-  }
-  
-  //
-  // Set the encryption level
-  // 
-  if (Smb4KSettings::useEncryptionLevel())
-  {
-    switch (Smb4KSettings::encryptionLevel())
-    {
-      case Smb4KSettings::EnumEncryptionLevel::None:
-      {
-        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_NONE);
-        break;
-      }
-      case Smb4KSettings::EnumEncryptionLevel::Request:
-      {
-        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_REQUEST);
-        break;
-      }
-      case Smb4KSettings::EnumEncryptionLevel::Require:
-      {
-        smbc_setOptionSmbEncryptionLevel(m_context, SMBC_ENCRYPTLEVEL_REQUIRE);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  
-  //
-  // Set the usage of anonymous login 
-  // 
-  smbc_setOptionNoAutoAnonymousLogin(m_context, false);
-  
-  //
-  // Set the usage of the winbind ccache
-  // 
-  smbc_setOptionUseCCache(m_context, Smb4KSettings::useWinbindCCache());
-  
-  //
-  // Set usage of Kerberos
-  // 
-  if (options)
-  {
-    smbc_setOptionUseKerberos(m_context, options->useKerberos());
-  }
-  else
-  {
-    smbc_setOptionUseKerberos(m_context, Smb4KSettings::useKerberos());
-  }
-  
-  smbc_setOptionFallbackAfterKerberos(m_context, 1);
-  
-  //
-  // Set the channel for debug output
-  // 
-  smbc_setOptionDebugToStderr(m_context, 1);
-  
-  //
-  // Set auth callback function
-  // 
-  smbc_setFunctionAuthDataWithContext(m_context, get_auth_data_with_context_fn);
-  
-  // 
-  // Initialize context with the previously defined options
-  // 
-  if (!smbc_init_context(m_context))
-  {
-    int errorCode = errno;
-    
-    setError(ClientError);
-    setErrorText(strerror(errorCode));
-
-    smbc_free_context(m_context, 0);
-
-    emitResult();
-    return;
-  }
-  
-  //
-  // Set the new context
-  // 
-  (void)smbc_set_context(m_context);
+  initClientLibrary();
   
   //
   // Process the given URL according to the passed process
@@ -1362,14 +1581,36 @@ void Smb4KClientJob::slotStartJob()
   {
     case LookupDomains:
     case LookupDomainMembers:
+    {
+      //
+      // Do lookups using the client library
+      // 
+      doLookups();
+
+      //
+      // Do lookups using DNS service discovery
+      // 
+      if (Smb4KSettings::useDnsServiceDiscovery())
+      {
+        doDnsDiscovery();
+      }
+      
+      break;
+    }
     case LookupShares:
     case LookupFiles:
     {
+      //
+      // Do lookups using the client library
+      // 
       doLookups();
       break;
     }
     case PrintFile:
     {
+      //
+      // Print files using the client library
+      // 
       doPrinting();
       break;
     }
@@ -1378,11 +1619,6 @@ void Smb4KClientJob::slotStartJob()
       break;
     }
   }
-  
-  //
-  // Free the context
-  // 
-  smbc_free_context(m_context, 0);
   
   //
   // Emit the result

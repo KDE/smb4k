@@ -48,13 +48,28 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   //
   // Basic Samba Settings
   // 
-  QWidget *commonSambaTab = new QWidget(this);
-  QVBoxLayout *commonSambaTabLayout = new QVBoxLayout(commonSambaTab);
+  QWidget *commonTab = new QWidget(this);
+  QVBoxLayout *commonTabLayout = new QVBoxLayout(commonTab);
+  
+  //
+  // Browse Settings group box
+  // 
+  QGroupBox *browseSettingsBox = new QGroupBox(i18n("Browse Settings"), commonTab);
+  QVBoxLayout *browseSettingsBoxLayout = new QVBoxLayout(browseSettingsBox);
+  
+  QCheckBox *useDnsServiceDiscovery = new QCheckBox(Smb4KSettings::self()->useDnsServiceDiscoveryItem()->label(), browseSettingsBox);
+  useDnsServiceDiscovery->setObjectName("kcfg_UseDnsServiceDiscovery");
+  
+  QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), browseSettingsBox);
+  forceSmb1Protocol->setObjectName("kcfg_ForceSmb1Protocol");
+  
+  browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 0);
+  browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 0);
   
   //
   // Basic Settings group box
   // 
-  QGroupBox *basicSettingsBox = new QGroupBox(i18n("Basic Settings"), commonSambaTab);
+  QGroupBox *basicSettingsBox = new QGroupBox(i18n("Basic Samba Settings"), commonTab);
   QGridLayout *basicSettingsBoxLayout = new QGridLayout(basicSettingsBox);
   
   QLabel *nebiosNameLabel = new QLabel(Smb4KSettings::self()->netBIOSNameItem()->label(), basicSettingsBox);
@@ -90,7 +105,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   //
   // Behavior group box
   // 
-  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), commonSambaTab);
+  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), commonTab);
   QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
   
   QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behaviorBox);
@@ -106,29 +121,18 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1, 0);
   behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0, 0);
   
-  commonSambaTabLayout->addWidget(basicSettingsBox, 0);
-  commonSambaTabLayout->addWidget(behaviorBox, 0);
-  commonSambaTabLayout->addStretch(100);
+  commonTabLayout->addWidget(browseSettingsBox, 0);
+  commonTabLayout->addWidget(basicSettingsBox, 0);
+  commonTabLayout->addWidget(behaviorBox, 0);
+  commonTabLayout->addStretch(100);
   
-  addTab(commonSambaTab, i18n("Common Samba Settings"));
+  addTab(commonTab, i18n("Common Settings"));
   
   //
   // Advanced Samba Settings
   // 
   QWidget *advancedSambaTab = new QWidget(this);
   QVBoxLayout *advancedSambaTabLayout = new QVBoxLayout(advancedSambaTab);
-  
-  //
-  // Protocol group box
-  // 
-  QGroupBox *protocolsBox = new QGroupBox(i18n("Protocols"), basicSettingsBox);
-  QVBoxLayout *protocolsBoxLayout = new QVBoxLayout(protocolsBox);
-  
-  // Force SMBv1 protocol for workgroup lookups
-  QCheckBox *forceSMB1Protocol = new QCheckBox(Smb4KSettings::self()->forceSMB1ProtocolItem()->label(), protocolsBox);
-  forceSMB1Protocol->setObjectName("kcfg_ForceSMB1Protocol");
-  
-  protocolsBoxLayout->addWidget(forceSMB1Protocol, 0);
   
   //
   // Authentication group box
@@ -172,12 +176,11 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   securityBoxLayout->addWidget(useEncryptionLevel, 0, 0, 0);
   securityBoxLayout->addWidget(encryptionLevel, 0, 1, 0);
   
-  advancedSambaTabLayout->addWidget(protocolsBox, 0);
   advancedSambaTabLayout->addWidget(authenticationBox, 0);
   advancedSambaTabLayout->addWidget(securityBox, 0);
   advancedSambaTabLayout->addStretch(100);
   
-  addTab(advancedSambaTab, i18n("Advanced Samba Settings"));
+  addTab(advancedSambaTab, i18n("Advanced Settings"));
   
   //
   // Wake-On-LAN tab

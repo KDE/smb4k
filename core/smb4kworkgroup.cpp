@@ -123,6 +123,12 @@ QString Smb4KWorkgroup::masterBrowserName() const
 }
 
 
+bool Smb4KWorkgroup::hasMasterBrowser() const
+{
+  return !d->masterURL.host().isEmpty();
+}
+
+
 void Smb4KWorkgroup::setMasterBrowserIpAddress(const QString &ip)
 {
   d->masterIP.setAddress(ip);

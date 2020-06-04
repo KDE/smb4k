@@ -90,6 +90,16 @@
 <!-- Network -->
 
   <group name="Network">
+    <entry name="UseDnsServiceDiscovery" type="Bool">
+      <label>Use modern DNS service discovery (DNS-SD)</label>
+      <whatsthis>Use modern DNS service discovery (DNS-SD). This service is used to discover servers that provide shared SMB resources. When using this service, the discovered domains correspond to the DNS-SD domains (e. g. LOCAL) and most likely not the ones defined in the network neighborhood. If you use this option, there is no need to force Samba to use the SMB protocol version 1.0 for browsing.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry name="ForceSmb1Protocol" type="Bool">
+      <label>Force SMB protocol version 1.0 for workgroup and domain lookups</label>
+      <whatsthis>If you have trouble discovering the workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. Smb4K will then force the use of the SMB protocol version 1.0 for browsing workgroups and domains. This, however, only applies to searches done using Samba's client library. Please note that, when using this option, some servers running modern Samba versions might be inaccessible. If you are using the DNS discovery service (DNS-SD), you can switch off this option.</whatsthis>
+      <default>false</default>
+    </entry>
     <entry name="NetBIOSName" type="String">
       <label>NetBIOS name:</label>
       <whatsthis>This is the NetBIOS name of this computer that is used by Smb4K. By default, it is either the NetBIOS name that is defined in the smb.conf file or the host name.</whatsthis>
@@ -150,11 +160,6 @@
         </choice>
       </choices>
       <default>None</default>
-    </entry>
-    <entry name="ForceSMB1Protocol" type="Bool">
-      <label>Force SMB protocol version 1.0 for workgroup and domain lookups</label>
-      <whatsthis>If you have trouble discovering the workgroups and domains in your network neighborhood, you should consider to switch this setting on. Smb4K will then force the use of the SMB 1.0 protocol for searching for workgroups and domains.</whatsthis>
-      <default>true</default>
     </entry>
     <entry name="PreviewHiddenItems" type="Bool">
       <label>Preview hidden files and directories</label>

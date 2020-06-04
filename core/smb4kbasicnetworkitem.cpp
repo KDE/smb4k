@@ -39,6 +39,7 @@ class Smb4KBasicNetworkItemPrivate
     NetworkItem type;
     QIcon icon;
     QUrl url;
+    bool dnsDiscovered;
 };
 
 
@@ -49,6 +50,11 @@ Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(NetworkItem type)
   // Set the type
   // 
   d->type = type;
+  
+  //
+  // Initialize the dnsDiscovered variable
+  // 
+  d->dnsDiscovered = false;
   
   //
   // Initialize the protected variables
@@ -165,5 +171,19 @@ QUrl Smb4KBasicNetworkItem::url() const
 {
   return d->url;
 }
+
+
+void Smb4KBasicNetworkItem::setDnsDiscovered(bool discovered)
+{
+  d->dnsDiscovered = discovered;
+}
+
+
+bool Smb4KBasicNetworkItem::dnsDiscovered() const
+{
+  return d->dnsDiscovered;
+}
+
+
 
 

@@ -76,6 +76,7 @@ target_link_libraries(smb4kcore
   KF5::JobWidgets
   KF5::Wallet
   KF5::XmlGui
+  KF5::DNSSD
   ${LIBSMBCLIENT_LIBRARIES})
 
 set_target_properties(smb4kcore PROPERTIES VERSION 6.1.0 SOVERSION 6)

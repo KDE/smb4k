@@ -2,7 +2,7 @@
     This class provides the interface to the libsmbclient library.
                              -------------------
     begin                : Sa Oct 20 2018
-    copyright            : (C) 2018-2019 by Alexander Reinholdt
+    copyright            : (C) 2018-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -901,6 +901,7 @@ void Smb4KClient::slotResult(KJob *job)
         }
         case Workgroup:
         {
+          qDebug() << "Processing the hosts ...";
           // Process the discovered workgroup members
           processHosts(clientJob);
           break;
