@@ -901,7 +901,6 @@ void Smb4KClient::slotResult(KJob *job)
         }
         case Workgroup:
         {
-          qDebug() << "Processing the hosts ...";
           // Process the discovered workgroup members
           processHosts(clientJob);
           break;
