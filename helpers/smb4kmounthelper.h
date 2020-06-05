@@ -42,12 +42,12 @@ class Smb4KMountHelper : public QObject
     /**
      * Mounts a CIFS/SMBFS share.
      */
-    KAuth::ActionReply mount(const QVariantMap &args);
+    ActionReply mount(const QVariantMap &args);
 
     /**
      * Unmounts a CIFS/SMBFS share.
      */
-    KAuth::ActionReply unmount(const QVariantMap &args);
+    ActionReply unmount(const QVariantMap &args);
 };
 
 #endif
