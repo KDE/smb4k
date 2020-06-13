@@ -37,36 +37,6 @@
   <name xml:lang="zh-CN">Smb4K</name>
   <name xml:lang="zh-TW">Smb4K</name>
   <summary>Discover and mount SAMBA and Windows shares over the network</summary>
-  <summary xml:lang="bs">Napredni pretraživač mrežnih susjeda i Samba dijeljeni ugrađeni uslužni program</summary>
-  <summary xml:lang="ca">Explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba</summary>
-  <summary xml:lang="ca-valencia">Explorador avançat del veïnatge de xarxa i utilitat per a muntar les comparticions de Samba</summary>
-  <summary xml:lang="cs">Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť samba</summary>
-  <summary xml:lang="da">Den avancerede browser til netværksnabolag og værktøj til montering af Samba-ressourcer</summary>
-  <summary xml:lang="de">Erweiterter Browser für die Netzwerkumgebung und Dienstprogramm zum Einhängen von Samba-Freigaben</summary>
-  <summary xml:lang="el">Προηγμένος περιηγητής τοπικού δικτύου και εργαλείο προσάρτησης κοινών πόρων Samba</summary>
-  <summary xml:lang="en-GB">Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
-  <summary xml:lang="es">Navegador avanzado del entorno de red y utilidad para montar recursos compartidos de Samba</summary>
-  <summary xml:lang="et">Täiustatud võrgunaabruse sirvija ja Samba jagatud ressursside ühendamise tööriist</summary>
-  <summary xml:lang="eu">Sareko auzo-arakatzaile aurreratua eta Samba partekatzeak muntatzeko baliagarritasuna</summary>
-  <summary xml:lang="fi">Edistynyt verkkoympäristöselain ja Samba-jakoliitostyökalu</summary>
-  <summary xml:lang="fr">Navigateur avancé de voisinage réseau et utilitaire pour le montage des partages Samba</summary>
-  <summary xml:lang="gl">Navegador avanzado da veciñanza de rede e ferramenta para montar comparticións de Samba</summary>
-  <summary xml:lang="id">Penelusur Jaringan Tetangga Terkemuka dan Utilitas Pengaitan Berbagi Samba</summary>
-  <summary xml:lang="it">Navigatore di risorse di rete avanzato e programma per montare le condivisioni Samba</summary>
-  <summary xml:lang="ko">고급 네트워크 환경 탐색 및 Samba 공유 마운트 유틸리티</summary>
-  <summary xml:lang="nds">Verwiedert Nettwarkümgeven-Kieker un Inhangwrktüüch för Samba-Freegaven</summary>
-  <summary xml:lang="nl">Geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares</summary>
-  <summary xml:lang="pl">Zaawansowana przeglądarka otoczenia sieciowego i narzędzie do podpinania udziałów Samby</summary>
-  <summary xml:lang="pt">Navegador Avançado da Vizinhança na Rede e Utilitário de Montagem de Partilhas de Samba</summary>
-  <summary xml:lang="pt-BR">Navegador avançado da vizinhança da rede e utilitário de montagem de compartilhamentos Samba</summary>
-  <summary xml:lang="ru">Диспетчер сетевого окружения и инструмент для подключения общих ресурсов с использованием протокола Samba</summary>
-  <summary xml:lang="sk">Pokročilý prehliadač sieťového okolia a nástroj na pripojenie zdieľaní Samba</summary>
-  <summary xml:lang="sv">Avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-resurser</summary>
-  <summary xml:lang="tr">Gelişmiş Ağ Komşuları Tarayıcısı ve Samba Paylaşım Bağlama Programı</summary>
-  <summary xml:lang="uk">Переглядач мережевого оточення з додатковими можливостями та засіб для монтування спільних ресурсів Samba</summary>
-  <summary xml:lang="x-test">xxAdvanced Network Neighborhood Browser and Samba Share Mounting Utilityxx</summary>
-  <summary xml:lang="zh-CN">高级网络邻居浏览器和 Samba 共享挂载工具</summary>
-  <summary xml:lang="zh-TW">進階網路芳鄰瀏覽器與 Samba 分享掛載工具</summary>
   <description>
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
