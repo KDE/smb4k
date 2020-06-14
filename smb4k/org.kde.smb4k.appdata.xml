@@ -37,6 +37,11 @@
   <name xml:lang="zh-CN">Smb4K</name>
   <name xml:lang="zh-TW">Smb4K</name>
   <summary>Discover and mount SAMBA and Windows shares over the network</summary>
+  <summary xml:lang="ca">Descobreix munta comparticions SAMBA i Windows sobre la xarxa</summary>
+  <summary xml:lang="en-GB">Discover and mount SAMBA and Windows shares over the network</summary>
+  <summary xml:lang="et">SAMBA ja Windowsi jagatud ressursside tuvastamine võrgus ja nende ühendamine</summary>
+  <summary xml:lang="uk">Виявлення і монтування спільних ресурсів SAMBA і Windows у мережі</summary>
+  <summary xml:lang="x-test">xxDiscover and mount SAMBA and Windows shares over the networkxx</summary>
   <description>
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
