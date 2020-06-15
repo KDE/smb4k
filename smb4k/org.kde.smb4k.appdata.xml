@@ -40,6 +40,8 @@
   <summary xml:lang="ca">Descobreix munta comparticions SAMBA i Windows sobre la xarxa</summary>
   <summary xml:lang="en-GB">Discover and mount SAMBA and Windows shares over the network</summary>
   <summary xml:lang="et">SAMBA ja Windowsi jagatud ressursside tuvastamine võrgus ja nende ühendamine</summary>
+  <summary xml:lang="nl">Ontdek en koppel aan SAMBA en Windows-shares over het netwerk</summary>
+  <summary xml:lang="pt">Descubra e monte partilhas de SAMBA e do Windows na rede</summary>
   <summary xml:lang="uk">Виявлення і монтування спільних ресурсів SAMBA і Windows у мережі</summary>
   <summary xml:lang="x-test">xxDiscover and mount SAMBA and Windows shares over the networkxx</summary>
   <description>
