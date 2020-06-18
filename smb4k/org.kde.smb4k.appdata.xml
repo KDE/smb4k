@@ -31,6 +31,7 @@
   <name xml:lang="sk">Smb4K</name>
   <name xml:lang="sv">Smb4K</name>
   <name xml:lang="uk">Smb4K</name>
+  <name xml:lang="x-test">xxSmb4Kxx</name>
   <name xml:lang="zh-CN">Smb4K</name>
   <name xml:lang="zh-TW">Smb4K</name>
   <summary>Advanced Network Neighborhood Browser and Samba Share Mounting Utility</summary>
@@ -59,6 +60,7 @@
   <summary xml:lang="sk">Pokročilý prehliadač sieťového okolia a nástroj na pripojenie zdieľaní Samba</summary>
   <summary xml:lang="sv">Avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-resurser</summary>
   <summary xml:lang="uk">Переглядач мережевого оточення з додатковими можливостями та засіб для монтування спільних ресурсів Samba</summary>
+  <summary xml:lang="x-test">xxAdvanced Network Neighborhood Browser and Samba Share Mounting Utilityxx</summary>
   <summary xml:lang="zh-CN">高级网络邻居浏览器和 Samba 共享挂载工具</summary>
   <summary xml:lang="zh-TW">進階網路芳鄰瀏覽器與 Samba 分享掛載工具</summary>
   <description>
@@ -85,6 +87,7 @@
     <p xml:lang="sk">Smb4K je pokročilý prehliadač siete a nástroj na pripájanie Samba zdieľaní pre softvérovú kompiláciu KDE. Prehľadá vašu sieť, nájde všetky dostupné pracovné skupiny, servery a zdieľania a môže pripojiť všetky želané zdieľania do vášho miestneho súborového systému.</p>
     <p xml:lang="sv">Smb4K är en avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-kataloger. Den är baserad på KDE:s ramverk 5 och Sambas klientbibliotek (libsmbclient). Den söker igenom ditt nätverksgrannskap för att hitta alla tillgängliga arbetsgrupper, servrar och delade kataloger, och kan montera alla delade kataloger som önskas i det lokala filsystemet.</p>
     <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba. Програму засновано на KDE Frameworks 5 та клієнтській бібліотеці Samba (libsmbclient). Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
+    <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
     <p xml:lang="zh-CN">Smb4K 是一个高级的网络邻居浏览器和 Samba 共享挂载工具。它基于 KDE 框架 5 和 Samba 客户端库 (libsmbclient)。它会扫描您的网络邻居，发现所有可用的工作组，服务器和共享，并挂载所有想要共享的内容到您的文件系统。</p>
     <p>
       Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.
@@ -109,6 +112,7 @@
     <p xml:lang="sk">Smb4K používa programy softvérového balíka Samba. Jeho cieľom je poskytnúť program, ktorý sa ľahko používa a obsahuje toľko funkcií, ako je len možné.</p>
     <p xml:lang="sv">Smb4K är baserat på Sambas klientbibliotek. Dess syfte är att tillhandahålla ett program som är enkelt att använda och har så många funktioner som möjligt.</p>
     <p xml:lang="uk">Smb4K засновано на клієнтській бібліотеці Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
+    <p xml:lang="x-test">xxSmb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.xx</p>
     <p xml:lang="zh-CN">Smb4K 基于 Samba 的客户端库。它的目标是易于使用且功能丰富。</p>
     <p>
       Features:
@@ -138,6 +142,7 @@
     <p xml:lang="sk">Funkcie:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="uk">Можливості:</p>
+    <p xml:lang="x-test">xxFeatures:xx</p>
     <p xml:lang="zh-CN">功能：</p>
     <p xml:lang="zh-TW">功能：</p>
     <ul>
@@ -165,6 +170,7 @@
       <li xml:lang="sk">Prehľadávanie aktívnych pracovných skupín, hostiteľov a zdieľaní</li>
       <li xml:lang="sv">Sökning efter (aktiva) arbetsgrupper, värddatorer och delade resurser</li>
       <li xml:lang="uk">Виявлення (активних) робочих груп, вузлів та спільних ресурсів.</li>
+      <li xml:lang="x-test">xxScanning for (active) workgroups, hosts, and sharesxx</li>
       <li xml:lang="zh-CN">扫描(活动)工作组、主机和共享</li>
       <li xml:lang="zh-TW">掃描（活躍的）工作群組、主機與分享</li>
       <li>Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
@@ -191,6 +197,7 @@
       <li xml:lang="sk">Podpora súborových systémov CIFS (Linux) a SMBFS (FreeBSD)</li>
       <li xml:lang="sv">Stöd för filsystemen CIFS (Linux) och SMBFS (FreeBSD)</li>
       <li xml:lang="uk">Підтримка файлових систем CIFS (Linux) та SMBFS (FreeBSD).</li>
+      <li xml:lang="x-test">xxSupport of the CIFS (Linux) and SMBFS (FreeBSD) file systemxx</li>
       <li xml:lang="zh-CN">支持 CIFS (Linux) 和 SMBFS (FreeBSD) 文件系统</li>
       <li xml:lang="zh-TW">支援 CIFS (Linux) 與 SMBFS (FreeBSD) 檔案系統</li>
       <li>Mounting and unmounting of shares</li>
@@ -217,6 +224,7 @@
       <li xml:lang="sk">Pripájanie a odpájanie zdieľaní</li>
       <li xml:lang="sv">Montera och avmontera delade resurser</li>
       <li xml:lang="uk">Монтування і демонтування спільних ресурсів.</li>
+      <li xml:lang="x-test">xxMounting and unmounting of sharesxx</li>
       <li xml:lang="zh-CN">挂载和卸载共享</li>
       <li xml:lang="zh-TW">掛載與解除掛載分享</li>
       <li>Access to the files of a mounted share using a file manager or terminal</li>
@@ -243,6 +251,7 @@
       <li xml:lang="sk">Prístup k súborom pripojených zdieľaní pomocou správcu súborov alebo terminálu</li>
       <li xml:lang="sv">Åtkomst av filer på en monterad delad resurs med en filhanterare eller terminal</li>
       <li xml:lang="uk">Доступ до файлів змонтованого спільного ресурсу за допомогою програми для керування файлами або термінала.</li>
+      <li xml:lang="x-test">xxAccess to the files of a mounted share using a file manager or terminalxx</li>
       <li xml:lang="zh-TW">使用檔案管理員或終端機存取已掛載分享的檔案</li>
       <li>Auto-detection of external mounts and unmounts</li>
       <li xml:lang="bs">Auto-detekcija vanjskih namještanja i razmještanja</li>
@@ -268,6 +277,7 @@
       <li xml:lang="sk">Automatická detekcia externých pripojení a odpojení</li>
       <li xml:lang="sv">Automatiskt detektion av externa monteringar och avmonteringar</li>
       <li xml:lang="uk">Автоматичне виявлення зовнішніх дій з монтування або демонтування.</li>
+      <li xml:lang="x-test">xxAuto-detection of external mounts and unmountsxx</li>
       <li xml:lang="zh-TW">自動偵測外部掛載與解除掛載</li>
       <li>Remounting of previously used shares on program start</li>
       <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
@@ -293,6 +303,7 @@
       <li xml:lang="sk">Znovupripojenie predtým použitých zdieľaní pri spustení programu</li>
       <li xml:lang="sv">Montering av tidigare använda delade resurser igen vid programstart</li>
       <li xml:lang="uk">Повторне монтування раніше використаних спільних ресурсів під час запуску програми.</li>
+      <li xml:lang="x-test">xxRemounting of previously used shares on program startxx</li>
       <li xml:lang="zh-TW">在程式啟動時重新掛載先前使用過的分享</li>
       <li>Miscellaneous infos about remote network items and mounted shares</li>
       <li xml:lang="bs">Raznovrsne informacije o udaljenim mrežnim stavkama i namještenim razmjenama</li>
@@ -318,6 +329,7 @@
       <li xml:lang="sk">Rôzne informácie o vzdialených sieťových položkách a pripojených zdieľaniach</li>
       <li xml:lang="sv">Diverse information om fjärrobjekt i nätverket och monterade delade resurser</li>
       <li xml:lang="uk">Показ різноманітних відомостей щодо віддалених елементів мережі та змонтованих спільних ресурсів.</li>
+      <li xml:lang="x-test">xxMiscellaneous infos about remote network items and mounted sharesxx</li>
       <li xml:lang="zh-TW">關於遠端網路項目與已掛載的分享的其他資訊</li>
       <li>Network search</li>
       <li xml:lang="bs">Pretraga mreže</li>
@@ -345,6 +357,7 @@
       <li xml:lang="sk">Prehľadávanie siete</li>
       <li xml:lang="sv">Nätverkssökning</li>
       <li xml:lang="uk">Мережевий пошук.</li>
+      <li xml:lang="x-test">xxNetwork searchxx</li>
       <li xml:lang="zh-CN">网络搜索</li>
       <li xml:lang="zh-TW">網路搜尋</li>
       <li>Preview of the contents of a remote share</li>
@@ -369,6 +382,7 @@
       <li xml:lang="sk">Náhľad obsahu vzdialeného zdieľania</li>
       <li xml:lang="sv">Förhandsgranskning av innehållet i en delad resurs</li>
       <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
+      <li xml:lang="x-test">xxPreview of the contents of a remote sharexx</li>
       <li xml:lang="zh-CN">远程共享内容的预览</li>
       <li>Default login</li>
       <li xml:lang="bs">Početna prijava</li>
@@ -396,6 +410,7 @@
       <li xml:lang="sk">Štandardné prihlásenie</li>
       <li xml:lang="sv">Standardinloggning</li>
       <li xml:lang="uk">Типова реєстрація.</li>
+      <li xml:lang="x-test">xxDefault loginxx</li>
       <li xml:lang="zh-CN">默认登录</li>
       <li xml:lang="zh-TW">預設登入</li>
       <li>Special handling of homes shares</li>
@@ -422,6 +437,7 @@
       <li xml:lang="sk">Špeciálne zaobchádzanie so zdieľaniami home</li>
       <li xml:lang="sv">Särskild hantering av delade hemkataloger</li>
       <li xml:lang="uk">Особливі інструменти роботи з домашніми спільними ресурсами.</li>
+      <li xml:lang="x-test">xxSpecial handling of homes sharesxx</li>
       <li xml:lang="zh-TW">家目錄分享的特別處理</li>
       <li>Ability to bookmark favorite shares</li>
       <li xml:lang="bs">Sposobnost bilježenja omiljenih razmjena</li>
@@ -447,6 +463,7 @@
       <li xml:lang="sk">Podpora záložiek zdieľaní</li>
       <li xml:lang="sv">Möjlighet att lägga till bokmärken för favoritresurser</li>
       <li xml:lang="uk">Можливість створення закладок для потрібних вам спільних ресурсів.</li>
+      <li xml:lang="x-test">xxAbility to bookmark favorite sharesxx</li>
       <li xml:lang="zh-TW">將最愛的分享加入書籤的能力</li>
       <li>System tray widget</li>
       <li xml:lang="bs">Kontrola za poslužavnik sistema</li>
@@ -472,6 +489,7 @@
       <li xml:lang="sk">Widget v systémovej lište</li>
       <li xml:lang="sv">Grafisk komponent i systembrickan</li>
       <li xml:lang="uk">Віджет системного лотка.</li>
+      <li xml:lang="x-test">xxSystem tray widgetxx</li>
       <li xml:lang="zh-CN">系统托盘小部件</li>
       <li xml:lang="zh-TW">系統匣小工具</li>
       <li>Support of advanced mount options</li>
@@ -496,6 +514,7 @@
       <li xml:lang="sk">Podpora pokročilých volieb pripojenia</li>
       <li xml:lang="sv">Stöd för avancerade monteringsalternativ</li>
       <li xml:lang="uk">Підтримка додаткових параметрів монтування</li>
+      <li xml:lang="x-test">xxSupport of advanced mount optionsxx</li>
       <li xml:lang="zh-CN">支持高级挂载选项</li>
       <li>Support of printer shares</li>
       <li xml:lang="bs">Podrška za razmjene štampača</li>
@@ -521,6 +540,7 @@
       <li xml:lang="sk">Podpora zdieľania tlačiarní</li>
       <li xml:lang="sv">Stöd för delade skrivare</li>
       <li xml:lang="uk">Підтримка спільних принтерів.</li>
+      <li xml:lang="x-test">xxSupport of printer sharesxx</li>
       <li xml:lang="zh-CN">支持打印机共享</li>
       <li xml:lang="zh-TW">印表機分享的支援</li>
       <li>KWallet support</li>
@@ -548,6 +568,7 @@
       <li xml:lang="sk">Podpora KWallet</li>
       <li xml:lang="sv">Stöd för plånboken</li>
       <li xml:lang="uk">Підтримка роботи з KWallet.</li>
+      <li xml:lang="x-test">xxKWallet supportxx</li>
       <li xml:lang="zh-CN">KWallet 支持</li>
       <li xml:lang="zh-TW">支援 KWallet</li>
       <li>Synchronization of a remote share with a local copy and vice versa</li>
@@ -574,6 +595,7 @@
       <li xml:lang="sk">Synchronizácia vzdialených zdieľaní s miestnou kópiou a naopak</li>
       <li xml:lang="sv">Synkronisering av delade fjärresurser med en lokal kopia och tvärtom</li>
       <li xml:lang="uk">Синхронізація віддаленого спільного ресурсу з локальною копією і навпаки.</li>
+      <li xml:lang="x-test">xxSynchronization of a remote share with a local copy and vice versaxx</li>
       <li xml:lang="zh-TW">將遠端分享與本機複本同步的能力，反過來也可以</li>
       <li>Ability to define custom options for individual servers and shares</li>
       <li xml:lang="bs">Sposobnost definisanja prilagođenih opcija za individualne servere i razmjene</li>
@@ -599,6 +621,7 @@
       <li xml:lang="sk">Možnosť definovať vlastné voľby pre individuálne servery a zdieľania</li>
       <li xml:lang="sv">Möjlighet att definiera egna alternativ för enskilda servrar och delade resurser</li>
       <li xml:lang="uk">Можливість визначення нетипових параметрів для окремих серверів та спільних ресурсів.</li>
+      <li xml:lang="x-test">xxAbility to define custom options for individual servers and sharesxx</li>
       <li xml:lang="zh-TW">為每個伺服器與分享定義自訂選項的能力</li>
       <li>Laptop support through the Solid hardware device framework</li>
       <li xml:lang="bs">Laptop podrška preko čvrstog hardver uređajnog okruženja</li>
@@ -624,6 +647,7 @@
       <li xml:lang="sk">Podpora laptopov cez framework hardvérových zariadení Solid</li>
       <li xml:lang="sv">Stöd för bärbara datorer via Solid-ramverket för hårdvaruenheter</li>
       <li xml:lang="uk">Підтримка ноутбуків за допомогою оболонки для роботи з пристроями Solid.</li>
+      <li xml:lang="x-test">xxLaptop support through the Solid hardware device frameworkxx</li>
       <li xml:lang="zh-TW">透過 Solid 硬體裝置框架支援筆記型電腦</li>
       <li>Wake-On-LAN capabilities</li>
       <li xml:lang="bs">Wake-On-LAN mogućnosti</li>
@@ -649,6 +673,7 @@
       <li xml:lang="sk">Schopnosti Wake-On-LAN</li>
       <li xml:lang="sv">Funktioner för att väckas av lokalt nätverk</li>
       <li xml:lang="uk">Можливості пробудження сигналом з локальної мережі.</li>
+      <li xml:lang="x-test">xxWake-On-LAN capabilitiesxx</li>
       <li xml:lang="zh-CN">局域网唤醒功能</li>
       <li xml:lang="zh-TW">LAN 喚醒的能力</li>
       <li>Plasmoid for desktop integration</li>
@@ -675,6 +700,7 @@
       <li xml:lang="sk">Plazmoid pre integráciu s pracovnou plochou</li>
       <li xml:lang="sv">Plasmoid för integrering med skrivbordssökning</li>
       <li xml:lang="uk">Плазмоїд для інтеграції зі стільницею.</li>
+      <li xml:lang="x-test">xxPlasmoid for desktop integrationxx</li>
       <li xml:lang="zh-CN">Plasma 桌面部件集成</li>
       <li xml:lang="zh-TW">以 Plasmoid 提供桌面整合</li>
       <li>Profiles for different network neighborhood setups</li>
@@ -698,6 +724,7 @@
       <li xml:lang="sk">Profily pre rôzne nastavenia sieťového okolia</li>
       <li xml:lang="sv">Profiler för olika inställningar av nätverksgrannskap</li>
       <li xml:lang="uk">Профілі для різних наборів налаштувань мережевого оточення</li>
+      <li xml:lang="x-test">xxProfiles for different network neighborhood setupsxx</li>
       <li xml:lang="zh-CN">为不同网络邻居设置配备不同配置方案</li>
     </ul>
     <p>
@@ -726,6 +753,7 @@
     <p xml:lang="sk">Ak pracujete vo Windows sieťovom prostredí, možno budete chcieť nainštalovať túto aplikáciu, aby ste mali možnosť jednoducho pristupovať ku zdieľaniam Windows.</p>
     <p xml:lang="sv">Om du arbetar i en Windows-dominerad nätverksmiljö, kan du vilja installera detta program för att enkelt kunna komma åt de delade Windows-kataloger som tillhandahålls.</p>
     <p xml:lang="uk">Якщо ви працюєте у середовищі з переважним використанням Windows, вам варто встановити цю програму для полегшення доступу до спільних ресурсів Windows.</p>
+    <p xml:lang="x-test">xxIf you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.xx</p>
     <p xml:lang="zh-TW">若您正在 Windows 主導的網路環境下工作，您可能會想要安裝這個應用程式來讓存取提供的 Windows 分享更簡單。</p>
   </description>
   <screenshots>
@@ -755,6 +783,7 @@
       <caption xml:lang="sk">Hlavné okno</caption>
       <caption xml:lang="sv">Huvudfönstret</caption>
       <caption xml:lang="uk">Головне вікно.</caption>
+      <caption xml:lang="x-test">xxThe main windowxx</caption>
       <caption xml:lang="zh-CN">主窗口</caption>
       <caption xml:lang="zh-TW">主視窗</caption>
       <image>https://cdn.kde.org/screenshots/smb4k/screenshot_smb4k_mainwindow_1.png</image>
@@ -785,6 +814,7 @@
       <caption xml:lang="sk">Plazmoid</caption>
       <caption xml:lang="sv">Plasmoiden</caption>
       <caption xml:lang="uk">Плазмоїд.</caption>
+      <caption xml:lang="x-test">xxThe plasmoidxx</caption>
       <caption xml:lang="zh-CN">Plasma 桌面部件</caption>
       <caption xml:lang="zh-TW">Plasmoid 元件</caption>
       <image>https://cdn.kde.org/screenshots/smb4k/screenshot_smb4k_plasmoid_1.png</image>
