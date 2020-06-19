@@ -82,6 +82,11 @@ target_link_libraries(smb4kcore
 set_target_properties(smb4kcore PROPERTIES VERSION 6.1.0 SOVERSION 6)
 install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
 
+if (WITH_WS_DISCOVERY)
+  target_compile_definitions(smb4kcore PRIVATE USE_WS_DISCOVERY=${WITH_WS_DISCOVERY})
+  target_link_libraries(smb4kcore KDSoap::WSDiscoveryClient)
+endif(WITH_WS_DISCOVERY)
+
 
 ########### install files ###############
 

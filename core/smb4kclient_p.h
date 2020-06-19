@@ -165,6 +165,9 @@ class Smb4KClientJob : public KJob
   private:
     void initClientLibrary();
     void doLookups();
+#ifdef USE_WS_DISCOVERY
+    void doWsDiscovery();
+#endif
     void doDnsDiscovery();
     void doPrinting();
     QHostAddress lookupIpAddress(const QString &name);

@@ -48,28 +48,67 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   //
   // Basic Samba Settings
   // 
-  QWidget *commonTab = new QWidget(this);
-  QVBoxLayout *commonTabLayout = new QVBoxLayout(commonTab);
+  QWidget *basicTab = new QWidget(this);
+  QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
   
   //
   // Browse Settings group box
   // 
-  QGroupBox *browseSettingsBox = new QGroupBox(i18n("Browse Settings"), commonTab);
+  QGroupBox *browseSettingsBox = new QGroupBox(i18n("Browse Settings"), basicTab);
   QVBoxLayout *browseSettingsBoxLayout = new QVBoxLayout(browseSettingsBox);
+
+#ifdef USE_WS_DISCOVERY
+  QCheckBox *useWsDiscovery = new QCheckBox(Smb4KSettings::self()->useWsDiscoveryItem()->label(), browseSettingsBox);
+  useWsDiscovery->setObjectName("kcfg_UseWsDiscovery");
+#endif
   
   QCheckBox *useDnsServiceDiscovery = new QCheckBox(Smb4KSettings::self()->useDnsServiceDiscoveryItem()->label(), browseSettingsBox);
   useDnsServiceDiscovery->setObjectName("kcfg_UseDnsServiceDiscovery");
   
   QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), browseSettingsBox);
   forceSmb1Protocol->setObjectName("kcfg_ForceSmb1Protocol");
-  
+
+#ifdef USE_WS_DISCOVERY
+  browseSettingsBoxLayout->addWidget(useWsDiscovery, 0);
+#endif
   browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 0);
   browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 0);
   
   //
+  // Behavior group box
+  // 
+  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), basicTab);
+  QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
+  
+  QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behaviorBox);
+  detectPrinters->setObjectName("kcfg_DetectPrinterShares");
+
+  QCheckBox *detectHiddenShares = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), behaviorBox);
+  detectHiddenShares->setObjectName("kcfg_DetectHiddenShares");  
+  
+  QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behaviorBox);
+  previewHiddenItems->setObjectName("kcfg_PreviewHiddenItems");
+  
+  behaviorBoxLayout->addWidget(detectPrinters, 0, 0, 0);
+  behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1, 0);
+  behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0, 0);
+  
+  basicTabLayout->addWidget(browseSettingsBox, 0);
+  basicTabLayout->addWidget(behaviorBox, 0);
+  basicTabLayout->addStretch(100);
+  
+  addTab(basicTab, i18n("Basic Settings"));
+  
+  //
+  // Samba Settings
+  // 
+  QWidget *sambaTab = new QWidget(this);
+  QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
+  
+  //
   // Basic Settings group box
   // 
-  QGroupBox *basicSettingsBox = new QGroupBox(i18n("Basic Samba Settings"), commonTab);
+  QGroupBox *basicSettingsBox = new QGroupBox(i18n("Common Settings"), sambaTab);
   QGridLayout *basicSettingsBoxLayout = new QGridLayout(basicSettingsBox);
   
   QLabel *nebiosNameLabel = new QLabel(Smb4KSettings::self()->netBIOSNameItem()->label(), basicSettingsBox);
@@ -103,41 +142,9 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   basicSettingsBoxLayout->addWidget(largeNetworkNeighborhood, 3, 0, 1, 2, 0);
   
   //
-  // Behavior group box
-  // 
-  QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), commonTab);
-  QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
-  
-  QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behaviorBox);
-  detectPrinters->setObjectName("kcfg_DetectPrinterShares");
-
-  QCheckBox *detectHiddenShares = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), behaviorBox);
-  detectHiddenShares->setObjectName("kcfg_DetectHiddenShares");  
-  
-  QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behaviorBox);
-  previewHiddenItems->setObjectName("kcfg_PreviewHiddenItems");
-  
-  behaviorBoxLayout->addWidget(detectPrinters, 0, 0, 0);
-  behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1, 0);
-  behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0, 0);
-  
-  commonTabLayout->addWidget(browseSettingsBox, 0);
-  commonTabLayout->addWidget(basicSettingsBox, 0);
-  commonTabLayout->addWidget(behaviorBox, 0);
-  commonTabLayout->addStretch(100);
-  
-  addTab(commonTab, i18n("Common Settings"));
-  
-  //
-  // Advanced Samba Settings
-  // 
-  QWidget *advancedSambaTab = new QWidget(this);
-  QVBoxLayout *advancedSambaTabLayout = new QVBoxLayout(advancedSambaTab);
-  
-  //
   // Authentication group box
   // 
-  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), advancedSambaTab);
+  QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
   QGridLayout *authenticationBoxLayout = new QGridLayout(authenticationBox);
 
   QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), authenticationBox);
@@ -156,7 +163,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   //
   // Security group box
   // 
-  QGroupBox *securityBox = new QGroupBox(i18n("Security"), advancedSambaTab);
+  QGroupBox *securityBox = new QGroupBox(i18n("Security"), sambaTab);
   QGridLayout *securityBoxLayout = new QGridLayout(securityBox);
   
   // Encryption level
@@ -176,11 +183,12 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   securityBoxLayout->addWidget(useEncryptionLevel, 0, 0, 0);
   securityBoxLayout->addWidget(encryptionLevel, 0, 1, 0);
   
-  advancedSambaTabLayout->addWidget(authenticationBox, 0);
-  advancedSambaTabLayout->addWidget(securityBox, 0);
-  advancedSambaTabLayout->addStretch(100);
+  sambaTabLayout->addWidget(basicSettingsBox, 0);
+  sambaTabLayout->addWidget(authenticationBox, 0);
+  sambaTabLayout->addWidget(securityBox, 0);
+  sambaTabLayout->addStretch(100);
   
-  addTab(advancedSambaTab, i18n("Advanced Settings"));
+  addTab(sambaTab, i18n("Samba"));
   
   //
   // Wake-On-LAN tab

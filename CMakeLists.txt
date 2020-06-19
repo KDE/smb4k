@@ -51,6 +51,9 @@ option(INSTALL_HEADER_FILES "Install header files" OFF)
 # Install plasmoid
 option(INSTALL_PLASMOID "Install the plasmoid" ON)
 
+# Build with KDSoap WS Discovery client
+option(WITH_WS_DISCOVERY "Build with WS-Discovery to discover domains and workgroups" ON)
+
 #
 # Required packages and includes
 #
@@ -114,6 +117,12 @@ check_symbol_exists(smbc_setOptionProtocols libsmbclient.h HAVE_SMBC_PROTOCOL)
 if (NOT HAVE_SMBC_PROTOCOL)
   message("The function smbc_setOptionProtocols() is missing in Samba's client library's header file." FATAL_ERROR)
 endif()
+
+# Find KDSoap client
+if (WITH_WS_DISCOVERY)
+  find_package(KDSoap 1.9.0 REQUIRED)
+  find_package(KDSoapWSDiscoveryClient 0.2 REQUIRED)
+endif(WITH_WS_DISCOVERY)
 
 #
 # Make sure that Smb4K builds when several custom targets

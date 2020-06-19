@@ -67,9 +67,17 @@
 #include <KWidgetsAddons/KDualAction>
 #include <KIOWidgets/KUrlRequester>
 #include <KIOCore/KFileItem>
-
 #include <KDNSSD/DNSSD/ServiceBrowser>
 #include <KDNSSD/DNSSD/RemoteService>
+
+#ifdef USE_WS_DISCOVERY
+#include <WSDiscoveryClient>
+#include <WSDiscoveryTargetService>
+#include <KDSoapClient/KDQName>
+#include <KDSoapClient/KDSoapClientInterface>
+#include <KDSoapClient/KDSoapMessage>
+#include <KDSoapClient/KDSoapMessageAddressingProperties>
+#endif
 
 #define SMBC_DEBUG 0
 
@@ -441,16 +449,23 @@ void Smb4KClientJob::initClientLibrary()
     }
     case Workgroup:
     {
+      WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
+
       //
-      // In case this domain/workgroup was discovered by the DNS-SD service, there is 
-      // no master browser and the workgroup/domain might not be identical with the one 
-      // defined in the network neighborhood. Thus, only set the NetBIOS name and the 
-      // workgroup if no DNS-SD discovery was used.
+      // Only set the NetBIOS name, if the workgroup entry has a master browser
+      // 
+      if (workgroup->hasMasterBrowser())
+      {
+        smbc_setNetbiosName(m_context, workgroup->masterBrowserName().toUtf8().data());
+      }
+      
+      //
+      // In case this domain/workgroup was discovered by the DNS-SD service, the workgroup/domain 
+      // might not be identical with the one defined in the network neighborhood. Thus, only set 
+      // the workgroup if no DNS-SD discovery was used.
       // 
       if (!m_item->dnsDiscovered())
       {
-        WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
-        smbc_setNetbiosName(m_context, workgroup->masterBrowserName().toUtf8().data());
         smbc_setWorkgroup(m_context, workgroup->workgroupName().toUtf8().data());
       }
       
@@ -1157,6 +1172,294 @@ void Smb4KClientJob::doLookups()
 }
 
 
+#ifdef USE_WS_DISCOVERY
+void Smb4KClientJob::doWsDiscovery()
+{
+  //
+  // The KDSoap WS-Discovery client
+  // 
+  WSDiscoveryClient client(this);
+  
+  //
+  // Create a singleshot timer that stops the scanning after 
+  // a certain amount of time, if no activity has been observed
+  // 
+  QTimer timer(this);
+  timer.setSingleShot(true);
+  
+  //
+  // The timer interval
+  // 
+  int timerInterval = 1000;
+  
+  //
+  // Determines whether the process finished
+  // 
+  bool processFinished = false;
+  
+  //
+  // Connection to initiate the resolution of the address
+  // 
+  connect(&client, &WSDiscoveryClient::probeMatchReceived,
+          this, [&] (const WSDiscoveryTargetService &service) {
+            //
+            // Stop the timer
+            // 
+            timer.stop();
+            
+            //
+            // If there is no address, we need to resolve it
+            // 
+            if (service.xAddrList().isEmpty())
+            {
+              client.sendResolve(service.endpointReference());
+            }
+            
+            //
+            // Restart the timer
+            // 
+            timer.start(timerInterval);            
+          });
+  
+  //
+  // Connection to resolve addresses and add the discovered workgroups
+  // 
+  connect(&client, &WSDiscoveryClient::resolveMatchReceived,
+          this, [&] (const WSDiscoveryTargetService &service) {
+            //
+            // Stop the timer
+            // 
+            timer.stop();
+            
+            //
+            // If there are addresses available, resolve them and add the 
+            // discovered workgroups to the workgroups list
+            // 
+            if (!service.xAddrList().isEmpty())
+            {
+              for (const QUrl &address : service.xAddrList())
+              {
+                KDSoapClientInterface clientInterface(address.toString(), QStringLiteral("http://schemas.xmlsoap.org/ws/2004/09/transfer"));
+                clientInterface.setSoapVersion(KDSoapClientInterface::SoapVersion::SOAP1_2);
+                clientInterface.setTimeout(5000);
+                
+                KDSoapMessage soapMessage;
+                KDSoapMessageAddressingProperties soapMessageProperties;
+                soapMessageProperties.setAddressingNamespace(KDSoapMessageAddressingProperties::Addressing200408);
+                soapMessageProperties.setAction(QStringLiteral("http://schemas.xmlsoap.org/ws/2004/09/transfer/Get"));
+                soapMessageProperties.setMessageID(QStringLiteral("urn:uuid:")+QUuid::createUuid().toString(QUuid::WithoutBraces));
+                soapMessageProperties.setDestination(service.endpointReference());
+                soapMessageProperties.setReplyEndpointAddress(KDSoapMessageAddressingProperties::predefinedAddressToString(
+                                                              KDSoapMessageAddressingProperties::Anonymous,
+                                                              KDSoapMessageAddressingProperties::Addressing200408));
+                soapMessageProperties.setSourceEndpointAddress(QStringLiteral("urn:uuid:")+QUuid::createUuid().toString(QUuid::WithoutBraces));
+                soapMessage.setMessageAddressingProperties(soapMessageProperties);
+                
+                KDSoapMessage response = clientInterface.call(QString(), soapMessage);
+                
+                if (!response.isFault())
+                {
+                  KDSoapValueList childValues = response.childValues();
+                  
+                  for (const KDSoapValue &value : qAsConst(childValues))
+                  {
+                    QString entry = value.childValues().child("Relationship").childValues().child("Host").childValues().child("Computer").value().toString();
+
+                    switch (m_process)
+                    {
+                      case LookupDomains:
+                      {
+                        //
+                        // Get the name of the workgroup or domain
+                        // 
+                        QString workgroupName = entry.section(":", 1, -1);
+                    
+                        //
+                        // Process the workgroup name. Only add a new workgroup, if it
+                        // is not present already.
+                        // 
+                        if (!workgroupName.isEmpty())
+                        {
+                          //
+                          // Check if the workgroup/domain is already known
+                          // 
+                          bool foundWorkgroup = false;
+                          
+                          for (const WorkgroupPtr &w : qAsConst(m_workgroups))
+                          {
+                            if (QString::compare(w->workgroupName(), workgroupName, Qt::CaseInsensitive) == 0)
+                            {
+                              foundWorkgroup = true;
+                              break;
+                            }
+                          }
+                          
+                          //
+                          // If the workgroup is unknown, add it to the list
+                          // 
+                          if (!foundWorkgroup)
+                          {
+                            //
+                            // Create the workgroup object
+                            // 
+                            WorkgroupPtr workgroup = WorkgroupPtr(new Smb4KWorkgroup());
+                            
+                            //
+                            // Set the workgroup/domain name
+                            // 
+                            workgroup->setWorkgroupName(workgroupName);
+                            
+                            //
+                            // Add the workgroup
+                            // 
+                            m_workgroups << workgroup;
+                          }
+                        }
+                        
+                        break;
+                      }
+                      case LookupDomainMembers:
+                      {
+                        //
+                        // Get the workgroup name
+                        // 
+                        QString workgroupName = entry.section(":", 1, -1);
+                        
+                        //
+                        // Get the host name. Unfortunately, the delimiter depends on
+                        // whether the host is member of a workgroup (/) or domain (\). 
+                        // 
+                        QString hostName;
+                        
+                        if (entry.contains('/'))
+                        {
+                          hostName = entry.section('/', 0, 0);
+                        }
+                        else if (entry.contains('\\'))
+                        {
+                          hostName = entry.section('\\', 0, 0);
+                        }
+                        
+                        //
+                        // Process the host name. Only add a new host, if it
+                        // is not present already.
+                        // 
+                        if (!workgroupName.isEmpty() && !hostName.isEmpty())
+                        {
+                          //
+                          // Check if the server is already known
+                          // 
+                          bool foundServer = false;
+                          
+                          for (const HostPtr &h : qAsConst(m_hosts))
+                          {
+                            if (QString::compare(h->hostName(), hostName, Qt::CaseInsensitive) == 0 &&
+                                QString::compare(h->workgroupName(), workgroupName, Qt::CaseInsensitive) == 0)
+                            {
+                              foundServer = true;
+                              break;
+                            }
+                          }
+                          
+                          //
+                          // If the server is unknown, add it to the list
+                          // 
+                          if (!foundServer)
+                          {
+                            //
+                            // Create the host object
+                            // 
+                            HostPtr host = HostPtr(new Smb4KHost());
+                            
+                            //
+                            // Set the workgroup/domain name
+                            // 
+                            host->setWorkgroupName(workgroupName);
+                            
+                            //
+                            // Set the host name
+                            // 
+                            host->setHostName(hostName);
+                            
+                            // 
+                            // Lookup IP address
+                            // 
+                            QHostAddress address = lookupIpAddress(hostName);
+                    
+                            // 
+                            // Process the IP address. 
+                            // 
+                            if (!address.isNull())
+                            {
+                              host->setIpAddress(address);
+                            }
+                            
+                            //
+                            // Add the host
+                            // 
+                            m_hosts << host;
+                          }
+                        }
+                        
+                        break;
+                      }
+                      default:
+                      {
+                        break;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            
+            //
+            // Restart the timer
+            // 
+            timer.start(timerInterval);
+          });
+  
+  //
+  // Connection to stop the process, if no activity has been observed
+  // for a certain time
+  // 
+  connect(&timer, &QTimer::timeout,
+          this, [&] () {
+            processFinished = true;
+          });
+  
+  //
+  // Start the client
+  // 
+  client.start();
+  
+  //
+  // Define the type
+  // 
+  KDQName type("wsdp:Device");
+  type.setNameSpace(QStringLiteral("http://schemas.xmlsoap.org/ws/2006/02/devprof"));
+  
+  //
+  // Send the probe
+  // 
+  client.sendProbe({type}, {});
+  
+  //
+  // Start the timer
+  // 
+  timer.start();
+  
+  //
+  // Wait until the process finished
+  // 
+  while (!processFinished)
+  {
+    QTest::qWait(50);
+  }
+}
+#endif
+
+
 void Smb4KClientJob::doDnsDiscovery()
 {
   //
@@ -1170,6 +1473,9 @@ void Smb4KClientJob::doDnsDiscovery()
   // 
   bool browsingFinished = false;
   
+  //
+  // Connection to process the discovered network items
+  // 
   connect(&serviceBrowser, &KDNSSD::ServiceBrowser::serviceAdded, 
           this, [&] (KDNSSD::RemoteService::Ptr service) {
             switch (m_process)
@@ -1226,8 +1532,12 @@ void Smb4KClientJob::doDnsDiscovery()
                 
                 for (const HostPtr &h : qAsConst(m_hosts))
                 {
-                  if (QString::compare(h->hostName(), service->serviceName(), Qt::CaseInsensitive) == 0 &&
-                      QString::compare(h->workgroupName(), service->domain(), Qt::CaseInsensitive) == 0)
+                  //
+                  // On a local network there will most likely be no two servers with
+                  // identical name, thus, to avoid duplicates, only test the hostname
+                  // here.
+                  // 
+                  if (QString::compare(h->hostName(), service->serviceName(), Qt::CaseInsensitive) == 0)
                   {
                     foundServer = true;
                     break;
@@ -1287,6 +1597,9 @@ void Smb4KClientJob::doDnsDiscovery()
             }
           });
   
+  //
+  // Connection to stop the processing
+  // 
   connect(&serviceBrowser, &KDNSSD::ServiceBrowser::finished,
           this, [&] () {
             browsingFinished = true;
@@ -1586,6 +1899,16 @@ void Smb4KClientJob::slotStartJob()
       // Do lookups using the client library
       // 
       doLookups();
+      
+#ifdef USE_WS_DISCOVERY
+      //
+      // Do lookups using WS discovery
+      //
+      if (Smb4KSettings::useWsDiscovery())
+      {
+        doWsDiscovery();
+      }
+#endif
 
       //
       // Do lookups using DNS service discovery
