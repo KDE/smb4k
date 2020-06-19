@@ -180,20 +180,6 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     QString shareTypeString() const;
 
     /**
-     * Sets the comment that was defined for the share.
-     *
-     * @param comment       The comment for the share
-     */
-    void setComment(const QString &comment);
-
-    /**
-     * Returns the comment that was defined for this share.
-     *
-     * @returns the comment.
-     */
-    QString comment() const;
-
-    /**
      * Set the IP address of the host where the share is located. @p ip will
      * only be accepted if it is compatible with either IPv4 or IPv6.
      *

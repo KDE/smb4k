@@ -40,6 +40,7 @@ class Smb4KBasicNetworkItemPrivate
     QIcon icon;
     QUrl url;
     bool dnsDiscovered;
+    QString comment;
 };
 
 
@@ -183,6 +184,20 @@ bool Smb4KBasicNetworkItem::dnsDiscovered() const
 {
   return d->dnsDiscovered;
 }
+
+
+void Smb4KBasicNetworkItem::setComment(const QString& comment)
+{
+  d->comment = comment;
+}
+
+
+QString Smb4KBasicNetworkItem::comment() const
+{
+  return d->comment;
+}
+
+
 
 
 

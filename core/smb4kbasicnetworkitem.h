@@ -120,6 +120,20 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
      */
     bool dnsDiscovered() const;
     
+    /**
+     * Set the comment for this network item.
+     * 
+     * @param comment       The comment
+     */
+    void setComment(const QString &comment);
+    
+    /**
+     * Return the comment for this network item.
+     * 
+     * @returns the comment
+     */
+    QString comment() const;
+    
   protected:
     /**
      * Expose a pointer to the private URL variable.

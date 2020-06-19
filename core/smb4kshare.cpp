@@ -44,7 +44,6 @@ class Smb4KSharePrivate
 {
   public:
     QString workgroup;
-    QString comment;
     QHostAddress ip;
     QString path;
     bool inaccessible;
@@ -273,18 +272,6 @@ QString Smb4KShare::shareTypeString() const
   }
   
   return typeString;
-}
-
-
-void Smb4KShare::setComment(const QString &comment)
-{
-  d->comment = comment;
-}
-
-
-QString Smb4KShare::comment() const
-{
-  return d->comment;
 }
 
 

@@ -41,7 +41,6 @@ class Smb4KHostPrivate
   public:
     QString workgroup;
     QHostAddress ip;
-    QString comment;
     bool isMaster;
 };
 
@@ -129,18 +128,6 @@ QString Smb4KHost::ipAddress() const
 bool Smb4KHost::hasIpAddress() const
 {
   return !d->ip.isNull();
-}
-
-
-void Smb4KHost::setComment(const QString &comment)
-{
-  d->comment = comment;
-}
-
-
-QString Smb4KHost::comment() const
-{
-  return d->comment;
 }
 
 

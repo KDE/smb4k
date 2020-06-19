@@ -140,21 +140,6 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
     bool hasIpAddress() const;
 
     /**
-     * Set the comment that was defined for the host.
-     *
-     * @param comment             The comment string
-     */
-    void setComment(const QString &comment);
-
-    /**
-     * Returns the comment that was defined or an empty string if there
-     * was no comment.
-     *
-     * @returns the comment or an empty string.
-     */
-    QString comment() const;
-
-    /**
      * Set this host to be a master browser.
      *
      * @param master              Set this to TRUE if the host is a master
