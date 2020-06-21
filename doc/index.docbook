@@ -3905,14 +3905,19 @@ ntlm auth = yes
       <listitem><para><ulink url="https://www.cmake.org">CMake</ulink> (&ge; 3.2)</para></listitem>
       <listitem><para><ulink url="https://gcc.gnu.org">GNU Compiler Collection</ulink> (g++ &ge; 5.0) or <ulink url="https://clang.llvm.org">clang/LLVM</ulink> (&ge; 3.0)</para></listitem>
     </itemizedlist>
-    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.6.0 and <ulink url="https://www.kde.org">&kf5;</ulink> version 5.25.0 to be installed. The provided &plasmoid; is known to run with &Qt; version 5.6.1, &kf5; version 5.36 and &plasma; version 5.8.9. Earlier versions of &kf5; and &plasma; might work as well but have not been tested.</para>
+    <para>To be able to use the main application of &smb4k;, you need at least <ulink url="https://www.qt.io">&Qt;</ulink> version 5.9.0 and <ulink url="https://www.kde.org">&kf5;</ulink> version 5.44.0 to be installed.</para>
     <para>&smb4k; build depends on:</para>
     <itemizedlist>
       <listitem><para>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para></listitem>
-      <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, &solid;, KIO, KNotifications, KXmlGui, KJobWidgets, &kwallet5;, KDBusAddons, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
+      <listitem><para>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, &solid;, KIO, KNotifications, KXmlGui, KJobWidgets, &kwallet5;, KDBusAddons, KDNSSD, KConfigWidgets, KNotifications, KWindowSystem</para></listitem>
       <listitem><para>libsmbclient</para></listitem>
     </itemizedlist>
-    <para>It also runtime depends on:</para>
+    <para>If you would like to enable WS-Discovery support (see also <link linkend="appendix_compilation">here</link>), you additionally need:</para>
+    <itemizedlist>
+      <listitem><para><ulink url="https://www.kdab.com/development-resources/qt-tools/kd-soap/">KDSoap</ulink> (version &ge; 1.9.0)</para></listitem>
+      <listitem><para><ulink url="https://github.com/caspermeijn/kdsoap-ws-discovery-client">KDSoap WS-Discovery client</ulink> (version &ge; 0.2)</para></listitem>
+    </itemizedlist>
+    <para>&smb4k; runtime depends on:</para>
     <itemizedlist>
       <listitem><para>KPlasma</para></listitem>
       <listitem><para><ulink url="https://wiki.samba.org/index.php/LinuxCIFS_utils">LinuxCIFS utils</ulink> (&Linux; only)</para></listitem>
@@ -3921,7 +3926,7 @@ ntlm auth = yes
     <itemizedlist>
       <listitem><para><ulink url="https://rsync.samba.org">rsync</ulink></para></listitem>
     </itemizedlist>
-    <para>The full list of changes can be found in the Git log at <ulink url="https://cgit.kde.org/smb4k.git">cgit.kde.org</ulink>. A summary can be found in the <filename>ChangeLog</filename> file in the tarball.</para>
+    <para>The full list of changes can be found in the Git log at <ulink url="https://invent.kde.org/networksmb4k.git">invent.kde.org</ulink>. A summary can be found in the <filename>ChangeLog</filename> file in the tarball.</para>
   </sect1>
   
 <!-- 
@@ -3982,6 +3987,11 @@ ntlm auth = yes
             <entry>-DINSTALL_PLASMOID=ON|OFF</entry>
             <entry align="center">1.1.0</entry>
             <entry>Install the plasmoid. This is on by default.</entry>
+          </row>
+          <row>
+            <entry>-DWITH_WS_DISCOVERY=ON|OFF</entry>
+            <entry align="center">3.1.0</entry>
+            <entry>Build with WS-Discovery support for browsing. This is off by default.</entry>
           </row>
         </tbody>
       </tgroup>
