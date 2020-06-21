@@ -52,7 +52,7 @@ option(INSTALL_HEADER_FILES "Install header files" OFF)
 option(INSTALL_PLASMOID "Install the plasmoid" ON)
 
 # Build with KDSoap WS Discovery client
-option(WITH_WS_DISCOVERY "Build with WS-Discovery to discover domains and workgroups" ON)
+option(WITH_WS_DISCOVERY "Build with WS-Discovery support for browsing" OFF)
 
 #
 # Required packages and includes
