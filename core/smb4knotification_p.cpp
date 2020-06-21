@@ -28,8 +28,12 @@
 #include "smb4knotification_p.h"
 
 // KDE includes
+#include <kio_version.h>
+#if KIO_VERSION < QT_VERSION_CHECK(5,71,0)
 #include <KIOWidgets/KRun>
-#include <QApplication>
+#else
+#include <KIO/OpenUrlJob>
+#endif
 
 
 Smb4KNotifier::Smb4KNotifier(const QString& event)
@@ -61,6 +65,13 @@ QUrl Smb4KNotifier::mountpoint() const
 
 void Smb4KNotifier::slotOpenShare()
 {
+#if KIO_VERSION < QT_VERSION_CHECK(5,71,0)
   KRun::runUrl(m_mountpoint, "inode/directory", 0, KRun::RunFlags());
+#else
+  KIO::OpenUrlJob *job = new KIO::OpenUrlJob(m_mountpoint, "inode/directory");
+  job->setFollowRedirections(false);
+  job->setAutoDelete(true);
+  job->start();
+#endif
 }
 

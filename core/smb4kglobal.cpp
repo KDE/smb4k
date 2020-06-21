@@ -40,7 +40,13 @@
 
 // KDE includes
 #include <KCoreAddons/KShell>
+#include <kio_version.h>
+#if KIO_VERSION < QT_VERSION_CHECK(5, 71, 0)
 #include <KIOWidgets/KRun>
+#else
+#include <KIO/OpenUrlJob>
+#include <KIO/CommandLauncherJob>
+#endif
 
 Q_GLOBAL_STATIC(Smb4KGlobalPrivate, p);
 QMutex mutex(QMutex::Recursive /* needed to avoid dead-locks */);
@@ -887,22 +893,36 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
     case FileManager:
     {
       QUrl url = QUrl::fromLocalFile(share->canonicalPath());
-
+      
+#if KIO_VERSION < QT_VERSION_CHECK(5,71,0)
       (void) new KRun(url, 0);
+#else
+      KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url);
+      job->setFollowRedirections(false);
+      job->setAutoDelete(true);
+      job->start();
+#endif
 
       break;
     }
     case Konsole:
     {
       QString konsole = QStandardPaths::findExecutable("konsole");
-
-      if (konsole.isEmpty())
+      
+      if (!konsole.isEmpty())
       {
-        Smb4KNotification::commandNotFound("konsole");
+#if KIO_VERSION < QT_VERSION_CHECK(5,71,0)
+        KRun::runCommand(konsole+" --workdir "+KShell::quoteArg(share->canonicalPath()), 0);
+#else
+        KIO::CommandLauncherJob *job = new KIO::CommandLauncherJob(konsole);
+        job->setWorkingDirectory(share->canonicalPath());
+        job->setAutoDelete(true);
+        job->start();
+#endif
       }
       else
       {
-        KRun::runCommand(konsole+" --workdir "+KShell::quoteArg(share->canonicalPath()), 0);
+        Smb4KNotification::commandNotFound("konsole");
       }
 
       break;
