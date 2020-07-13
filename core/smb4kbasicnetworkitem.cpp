@@ -3,7 +3,7 @@
     Smb4K.
                              -------------------
     begin                : Do Apr 2 2009
-    copyright            : (C) 2009-2019 by Alexander Reinholdt
+    copyright            : (C) 2009-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
