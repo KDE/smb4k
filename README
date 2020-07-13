@@ -1,13 +1,15 @@
-Smb4K README (version 3.0.x)
-============================
+Smb4K README
+============
 
 Smb4K is an advanced network neighborhood browser and Samba share mounting
-utility. It is based on the KDE Frameworks 5 and Samba's client library
-(libsmbclient). It scans your network neighborhood for all available workgroups, 
-servers and shares and can mount all desired shares to your local file system. 
-It is released under the terms of the GNU General Public License, version 2 
-(GPL v2+). Linux, FreeBSD and its derivatives (e. g. GhostBSD and TrueOS), 
-NetBSD and DragonFly BSD are officially supported.
+utility. It is based on the KDE Frameworks 5, Samba's client library
+(libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans 
+your network neighborhood for all available workgroups, servers and shares 
+and can mount all desired shares to your local file system. It is released 
+under the terms of the GNU General Public License, version 2 (GPL v2+). 
+Linux, FreeBSD and its derivatives (e. g. GhostBSD and TrueOS), NetBSD and 
+DragonFly BSD are officially supported.
+
 
 Features
 --------
@@ -41,29 +43,27 @@ Translations
 
 Translations are provided by the KDE translators.
 
+
 Supported operating systems
 ---------------------------
 
 Smb4K officially supports Linux, FreeBSD and its derivatives (e. g. 
 GhostBSD and TrueOS), NetBSD and DragonFly BSD.
 
+
 Requirements
 ------------
 
 To compile Smb4K, you need:
-
 - CMake (version >= 3.2, https://www.cmake.org)
 - GNU Compiler Collection</ulink> (version >= 5.0, https://gcc.gnu.org)
-  or clang/LLVM</ulink> (version >= 3.0, https://clang.llvm.org)
+  or clang/LLVM (version >= 3.0, https://clang.llvm.org)
 
 To be able to use the main application of Smb4K you need at least Qt, 
 version >= 5.9.0 and KDE Frameworks 5 (KF5, version >= 5.44.0,
-https://www.kde.org). The provided plasmoid is known to run with Qt 
-version 5.6.1, KF5 version 5.36 and Plasma version 5.8.9. Earlier 
-versions of KF5 and Plasma might work as well but have not been tested.
+https://www.kde.org). 
 
 Smb4K build depends on:
-
 - QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml
 - KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, 
   KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, 
@@ -71,17 +71,22 @@ Smb4K build depends on:
   KCrash, KDNSSD
 - libsmbclient
 
-It also runtime depends on:
+If you would like to enable WS-Discovery support, you additionally need
+(see also below for required build option):
+- KDSoap (version >= 1.9.0, 
+  https://www.kdab.com/development-resources/qt-tools/kd-soap/)
+- KDSoap WS-Discovery client (version >= 0.2, 
+  https://github.com/caspermeijn/kdsoap-ws-discovery-client/
 
+It also runtime depends on:
 - KPlasma
-- LinuxCIFS utils (&Linux; only, https://wiki.samba.org/index.php/LinuxCIFS_utils)
+- LinuxCIFS utils (Linux only, https://wiki.samba.org/index.php/LinuxCIFS_utils)
 
 To enable full functionality, you may also want to install these programs:
-
 - rsync (https://rsync.samba.org)
 
 The full list of changes can be found in the Git log at 
-https://cgit.kde.org/smb4k.git. A summary can be found in the ChangeLog file
+https://invent.kde.org/network/smb4k. A summary can be found in the ChangeLog file
 in the tarball.
 
 
@@ -120,20 +125,15 @@ you have read the Requirements section before you start.
 
    If you want to compile Smb4K with debug symbols, replace Release by Debug.
 
-5. There are some Smb4K specific CMake arguments you might be interested in:
+   There are some Smb4K specific CMake arguments you might be interested in:
 
    -DINSTALL_HEADER_FILES=ON/OFF    Install the core header files. This is off 
                                     by default.
+                                    
    -DINSTALL_PLASMOID=ON/OFF        Install the plasmoid. This is on by default.
 
    -DWITH_WS_DISCOVERY=ON/OFF       Build with WS-Discovery support for
                                     browsing. This is off by default.
-
-   If you would like to enable WS-Discovery support, you additionally need:
-   - KDSoap >= 1.9.0
-     https://www.kdab.com/development-resources/qt-tools/kd-soap/
-   - KDSoap WS-Discovery client >= 0.2
-     https://github.com/caspermeijn/kdsoap-ws-discovery-client
 
 6. After the configuration, compile and install Smb4K:
 
@@ -160,6 +160,7 @@ command slightly:
 If you found the cause for a bug, please let us know. A backtrace or a patch
 will be much appreciated.
 
+
 Help and Support
 ----------------
 
@@ -168,17 +169,20 @@ contact us in our 'Help' (https://sourceforge.net/p/smb4k/discussion/help/) or
 'General Discussion' (https://sourceforge.net/p/smb4k/discussion/general/) 
 forums.
 
+
 Bugs
 ----
 
 You are strongly encouraged to commit a bug report to
 https://bugs.kde.org/enter_bug.cgi?product=Smb4k&format=guided, if you find a problem.
 
+
 Copyright
 ---------
 
 Smb4K is released under the terms of the GNU General Public License (GPL),
 version 2. A copy of the license is available in the file COPYING.
+
 
 Latest Version
 --------------
