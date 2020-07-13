@@ -39,6 +39,7 @@
   <name xml:lang="zh-TW">Smb4K</name>
   <summary>Discover and mount SAMBA and Windows shares over the network</summary>
   <summary xml:lang="ca">Descobreix munta comparticions SAMBA i Windows sobre la xarxa</summary>
+  <summary xml:lang="ca-valencia">Descobreix munta comparticions SAMBA i Windows sobre la xarxa</summary>
   <summary xml:lang="en-GB">Discover and mount SAMBA and Windows shares over the network</summary>
   <summary xml:lang="es">Descubra y monte archivos compartidos SAMBA y Windows en red</summary>
   <summary xml:lang="et">SAMBA ja Windowsi jagatud ressursside tuvastamine võrgus ja nende ühendamine</summary>
