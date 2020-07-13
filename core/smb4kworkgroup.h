@@ -2,7 +2,7 @@
     Smb4K's container class for information about a workgroup.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2017 by Alexander Reinholdt
+    copyright            : (C) 2008-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
