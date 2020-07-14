@@ -845,7 +845,7 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
         //
         // This is, among others, the proper fix to the security issue reported
         // by Heiner Markert (aka CVE-2014-2581).
-        QStringList whitelist = whitelistedMountArguments();
+        QStringList allowedArgs = allowedMountArguments();
         QStringList deniedArgs;
         QStringList list = options.split(',', QString::SkipEmptyParts);
         QMutableStringListIterator it(list);
@@ -854,7 +854,7 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
         {
           QString arg = it.next().section("=", 0, 0);
           
-          if (!whitelist.contains(arg))
+          if (!allowedArgs.contains(arg))
           {
             deniedArgs << arg;
             it.remove();

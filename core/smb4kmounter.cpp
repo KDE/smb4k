@@ -1675,7 +1675,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     //
     // This is, among others, the proper fix to the security issue reported
     // by Heiner Markert (aka CVE-2014-2581).
-    QStringList whitelist = whitelistedMountArguments();
+    QStringList allowedArgs = allowedMountArguments();
     QStringList list = Smb4KMountSettings::customCIFSOptions().split(',', QString::SkipEmptyParts);
     QMutableStringListIterator it(list);
     
@@ -1683,7 +1683,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       QString arg = it.next().section("=", 0, 0);
       
-      if (!whitelist.contains(arg))
+      if (!allowedArgs.contains(arg))
       {
         it.remove();
       }

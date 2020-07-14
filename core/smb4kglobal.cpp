@@ -946,9 +946,9 @@ bool Smb4KGlobal::modifyCursor()
 
 
 #if defined(Q_OS_LINUX)
-QStringList Smb4KGlobal::whitelistedMountArguments()
+QStringList Smb4KGlobal::allowedMountArguments()
 {
-  return p->whitelistedMountArguments;
+  return p->allowedMountArguments;
 }
 #endif
 

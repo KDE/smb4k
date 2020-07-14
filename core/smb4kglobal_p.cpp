@@ -47,25 +47,25 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
   m_sambaConfigMissing = false;
   
 #ifdef Q_OS_LINUX
-  whitelistedMountArguments << "dynperm";
-  whitelistedMountArguments << "rwpidforward";
-  whitelistedMountArguments << "hard";
-  whitelistedMountArguments << "soft";
-  whitelistedMountArguments << "noacl";
-  whitelistedMountArguments << "cifsacl";
-  whitelistedMountArguments << "backupuid";
-  whitelistedMountArguments << "backupgid";
-  whitelistedMountArguments << "ignorecase";
-  whitelistedMountArguments << "nocase";
-  whitelistedMountArguments << "nobrl";
-  whitelistedMountArguments << "sfu";
-  whitelistedMountArguments << "nounix";
-  whitelistedMountArguments << "nouser_xattr";
-  whitelistedMountArguments << "fsc";
-  whitelistedMountArguments << "multiuser";
-  whitelistedMountArguments << "actimeo";
-  whitelistedMountArguments << "noposixpaths";
-  whitelistedMountArguments << "posixpaths";
+  allowedMountArguments << "dynperm";
+  allowedMountArguments << "rwpidforward";
+  allowedMountArguments << "hard";
+  allowedMountArguments << "soft";
+  allowedMountArguments << "noacl";
+  allowedMountArguments << "cifsacl";
+  allowedMountArguments << "backupuid";
+  allowedMountArguments << "backupgid";
+  allowedMountArguments << "ignorecase";
+  allowedMountArguments << "nocase";
+  allowedMountArguments << "nobrl";
+  allowedMountArguments << "sfu";
+  allowedMountArguments << "nounix";
+  allowedMountArguments << "nouser_xattr";
+  allowedMountArguments << "fsc";
+  allowedMountArguments << "multiuser";
+  allowedMountArguments << "actimeo";
+  allowedMountArguments << "noposixpaths";
+  allowedMountArguments << "posixpaths";
 #endif
   
   //

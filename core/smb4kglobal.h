@@ -491,10 +491,10 @@ namespace Smb4KGlobal
   
 #if defined(Q_OS_LINUX)
   /**
-   * This list contains all whitelisted arguments for the mount.cifs binary and
+   * This list contains all allowed arguments for the mount.cifs binary and
    * is only present under the Linux operating system.
    */
-  Q_DECL_EXPORT QStringList whitelistedMountArguments();
+  Q_DECL_EXPORT QStringList allowedMountArguments();
 #endif
   
   /**
