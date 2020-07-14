@@ -2,7 +2,7 @@
     This is the global namespace for Smb4K.
                              -------------------
     begin                : Sa Apr 2 2005
-    copyright            : (C) 2005-2019 by Alexander Reinholdt
+    copyright            : (C) 2005-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -613,8 +613,7 @@ SharePtr Smb4KGlobal::findShareByPath(const QString &path)
   {
     for (const SharePtr &s : p->mountedSharesList)
     {
-      if (QString::compare(s->path(), path, Qt::CaseInsensitive) == 0 ||
-          QString::compare(s->canonicalPath(), path, Qt::CaseInsensitive) == 0)
+      if (QString::compare(s->path(), path, Qt::CaseInsensitive) == 0 || QString::compare(s->canonicalPath(), path, Qt::CaseInsensitive) == 0)
       {
         share = s;
         break;
@@ -638,11 +637,10 @@ QList<SharePtr> Smb4KGlobal::findShareByUrl(const QUrl &url)
   {
     for (const SharePtr &s : p->mountedSharesList)
     {
-      if (QString::compare(s->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                           url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                           Qt::CaseInsensitive) == 0)
+      if (QString::compare(s->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort), url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort), Qt::CaseInsensitive) == 0)
       {
         shares << s;
+        break;
       }
     }
   }
