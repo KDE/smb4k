@@ -145,6 +145,11 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
      */
     QIcon *pIcon;
     
+    /**
+     * Expose a pointer to the private comment variable.
+     */
+    QString *pComment;
+    
   private:
     const QScopedPointer<Smb4KBasicNetworkItemPrivate> d;
 };

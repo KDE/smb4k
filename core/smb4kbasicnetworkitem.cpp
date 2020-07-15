@@ -62,6 +62,7 @@ Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(NetworkItem type)
   // 
   pUrl = &d->url;
   pIcon = &d->icon;
+  pComment = &d->comment;
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(const Smb4KBasicNetworkItem &item)
@@ -77,6 +78,7 @@ Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(const Smb4KBasicNetworkItem &item)
   // 
   pUrl = &d->url;
   pIcon = &d->icon;
+  pComment = &d->comment;
 }
 
 
