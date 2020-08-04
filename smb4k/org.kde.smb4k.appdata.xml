@@ -67,8 +67,8 @@
     <p>
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
-    <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions de Samba. està basat ens els Frameworks 5 del KDE i la biblioteca client del Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
-    <p xml:lang="ca-valencia">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions de Samba. està basat ens els Frameworks 5 del KDE i la biblioteca client del Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
+    <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions de Samba. Està basat en els Frameworks 5 del KDE i la biblioteca client de Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
+    <p xml:lang="ca-valencia">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions de Samba. Està basat en els Frameworks 5 del KDE i la biblioteca client de Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben. Es basiert auf den KDE Frameworks 5 und der Samba-Bibliothek libsmbclient.Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighbourhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighbourhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba. Se basa en la infraestructura de KDE 5 y la biblioteca de clientes de Samba (libsmbclient). Escanea su entorno de red en busca de los grupos de trabajo, servidores y recursos compartidos disponibles y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
@@ -92,8 +92,8 @@
     <p>
       Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.
     </p>
-    <p xml:lang="ca">El Smb4K està basat en la biblioteca client del Samba. El seu propòsit és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
-    <p xml:lang="ca-valencia">El Smb4K està basat en la biblioteca client del Samba. El seu propòsit és proporcionar un programa de fàcil ús i contindre tantes característiques com siga possible.</p>
+    <p xml:lang="ca">El Smb4K està basat en la biblioteca client de Samba. El seu propòsit és proporcionar un programa de fàcil ús i contenir tantes característiques com sigui possible.</p>
+    <p xml:lang="ca-valencia">El Smb4K està basat en la biblioteca client de Samba. El seu propòsit és proporcionar un programa de fàcil ús i contindre tantes característiques com siga possible.</p>
     <p xml:lang="de">Smb4K benutzt die Samba-Bibliothek, um ein Programm mit leichter Handhabung und möglichst vielen Funktionen zur Verfügung zu stellen.</p>
     <p xml:lang="en-GB">Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.</p>
     <p xml:lang="es">Smb4K se basa en la biblioteca de clientes de Samba. Su propósito es proporcionar un programa que sea fácil de usar y tenga tantas prestaciones como sea posible.</p>
@@ -281,8 +281,8 @@
       <li xml:lang="zh-TW">自動偵測外部掛載與解除掛載</li>
       <li>Remounting of previously used shares on program start</li>
       <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
-      <li xml:lang="ca">Tornar a muntar comparticions emprades anteriorment en iniciar el programa</li>
-      <li xml:lang="ca-valencia">Tornar a muntar comparticions emprades anteriorment en iniciar el programa</li>
+      <li xml:lang="ca">Torna a muntar les comparticions emprades anteriorment en iniciar el programa</li>
+      <li xml:lang="ca-valencia">Torna a muntar les comparticions emprades anteriorment en iniciar el programa</li>
       <li xml:lang="de">Erneutes Einhängen von vorher benutzten Freigaben beim Start des Programms</li>
       <li xml:lang="el">Αναπροσαρτά κοινούς πόρους προηγούμενης χρήσης στην εκκίνηση του προγράμματος</li>
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
@@ -441,8 +441,8 @@
       <li xml:lang="zh-TW">家目錄分享的特別處理</li>
       <li>Ability to bookmark favorite shares</li>
       <li xml:lang="bs">Sposobnost bilježenja omiljenih razmjena</li>
-      <li xml:lang="ca">La possibilitat d'apuntar les comparticions a les adreces d'interès</li>
-      <li xml:lang="ca-valencia">La possibilitat d'apuntar les comparticions a les adreces d'interés</li>
+      <li xml:lang="ca">La capacitat d'apuntar les comparticions com a adreces d'interès</li>
+      <li xml:lang="ca-valencia">La capacitat d'apuntar les comparticions com a adreces d'interés</li>
       <li xml:lang="de">Lesezeichen für bevorzugte Freigaben</li>
       <li xml:lang="el">Δυνατότητα αποθήκευσης πόρων σε σελιδοδείκτες</li>
       <li xml:lang="en-GB">Ability to bookmark favorite shares</li>
