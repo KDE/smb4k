@@ -5,6 +5,6 @@ ecm_install_icons( ICONS
                    32-apps-smb4k.png
                    22-apps-smb4k.png
                    16-apps-smb4k.png
-                   DESTINATION  ${KDE_INSTALL_ICONDIR}
+                   DESTINATION  ${ICON_INSTALL_DIR}
                    THEME hicolor   )
 

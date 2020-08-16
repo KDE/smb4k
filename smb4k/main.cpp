@@ -156,6 +156,7 @@ int main(int argc, char **argv)
   
   // DBus prefix
   aboutData.setOrganizationDomain("kde.org");
+  aboutData.setDesktopFileName(QStringLiteral("org.kde.")+ aboutData.componentName());
   
   // Authors
   aboutData.addAuthor(i18n("Alexander Reinholdt"), i18n("Developer"), QStringLiteral("alexander.reinholdt@kdemail.net"));
