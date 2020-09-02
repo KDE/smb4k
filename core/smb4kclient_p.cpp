@@ -151,15 +151,6 @@ Smb4KClientJob::~Smb4KClientJob()
   {
     m_files.takeFirst().clear();
   }
-  
-  //
-  // Delete the context
-  // 
-  if (!m_context)
-  {
-    qDebug() << "Delete the context";
-    delete m_context;
-  }
 }
 
 
@@ -409,13 +400,13 @@ QString Smb4KClientJob::workgroup()
 void Smb4KClientJob::initClientLibrary()
 {
   // 
-  // Allocate new context
+  // Get new context
   // 
-  m_context = smbc_new_context();
+  m_context = static_cast<SMBCCTX *>(Smb4KGlobal::globalSmbContext());
   
   if (!m_context)
   {
-    int errorCode = errno;
+    int errorCode = EBADF;
     
     setError(ClientError);
     setErrorText(strerror(errorCode));
@@ -486,6 +477,9 @@ void Smb4KClientJob::initClientLibrary()
         smbc_setWorkgroup(m_context, host->workgroupName().toUtf8().data());
       }
       
+      //
+      // Set the NetBIOS name
+      // 
       smbc_setNetbiosName(m_context, host->hostName().toUtf8().data());
 
       break;
@@ -505,6 +499,9 @@ void Smb4KClientJob::initClientLibrary()
         smbc_setWorkgroup(m_context, share->workgroupName().toUtf8().data());
       }
       
+      //
+      // Set the NetBIOS name
+      // 
       smbc_setNetbiosName(m_context, share->hostName().toUtf8().data());
       
       break;
@@ -524,6 +521,9 @@ void Smb4KClientJob::initClientLibrary()
         smbc_setWorkgroup(m_context, file->workgroupName().toUtf8().data());
       }
       
+      //
+      // Set the NetBIOS name
+      // 
       smbc_setNetbiosName(m_context, file->hostName().toUtf8().data());
 
       break;      
@@ -593,6 +593,10 @@ void Smb4KClientJob::initClientLibrary()
   {
     smbc_setOptionProtocols(m_context, "NT1", "NT1");
   }
+  else
+  {
+    smbc_setOptionProtocols(m_context, nullptr, nullptr);
+  }
   
   //
   // Set the encryption level
@@ -656,22 +660,6 @@ void Smb4KClientJob::initClientLibrary()
   // Set auth callback function
   // 
   smbc_setFunctionAuthDataWithContext(m_context, get_auth_data_with_context_fn);
-  
-  // 
-  // Initialize context with the previously defined options
-  // 
-  if (!smbc_init_context(m_context))
-  {
-    int errorCode = errno;
-    
-    setError(ClientError);
-    setErrorText(strerror(errorCode));
-
-    smbc_free_context(m_context, 1);
-
-    emitResult();
-    return;
-  }  
 }
 
 
@@ -1164,11 +1152,6 @@ void Smb4KClientJob::doLookups()
   }
   
   (void)closeDirectory(m_context, directory);
-  
-  //
-  // Free the context
-  // 
-  smbc_free_context(m_context, 1);
 }
 
 
@@ -1809,11 +1792,15 @@ QHostAddress Smb4KClientJob::lookupIpAddress(const QString& name)
   // The IP address object
   // 
   QHostAddress ipAddress;
-  
+
+  //
+  // Get the IP address
+  // 
   // If the IP address is not to be determined for the local machine, we can use QHostInfo to
   // determine it. Otherwise we need to use QNetworkInterface for it.
+  // 
   if (name.toUpper() == QHostInfo::localHostName().toUpper() || 
-      name.toUpper() == globalSambaOptions()["netbios name"].toUpper() || 
+      name.toUpper() == machineNetbiosName().toUpper() || 
       name.toUpper() == Smb4KSettings::netBIOSName().toUpper())
   {
     // FIXME: Do we need to honor 'interfaces' here?

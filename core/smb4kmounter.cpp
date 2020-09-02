@@ -27,6 +27,7 @@
 #include "smb4kmounter.h"
 #include "smb4kmounter_p.h"
 #include "smb4kauthinfo.h"
+#include "smb4kworkgroup.h"
 #include "smb4kshare.h"
 #include "smb4ksettings.h"
 #include "smb4khomesshareshandler.h"
@@ -1140,7 +1141,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   // Global and custom options
   // 
-  QMap<QString, QString> globalOptions = globalSambaOptions();
   OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share);
   
   //
@@ -1169,7 +1169,11 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   // Workgroup or domain
   // 
-  if (!share->workgroupName().trimmed().isEmpty())
+  // Do not use this, if the domain is a DNS domain.
+  // 
+  WorkgroupPtr workgroup = findWorkgroup(share->workgroupName());
+  
+  if (!workgroup->dnsDiscovered() && !share->workgroupName().trimmed().isEmpty())
   {
     argumentsList << QString("domain=%1").arg(KShell::quoteArg(share->workgroupName()));
   }
@@ -1209,13 +1213,13 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
       }
-      else if (!globalOptions["netbios name"].isEmpty())
+      else if (!machineNetbiosName().isEmpty())
       {
-        argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(globalOptions["netbios name"]));
+        argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(machineNetbiosName()));
       }
       
       // The server's NetBIOS name
-      argumentsList << QString("servernetbiosname=%1").arg(KShell::quoteArg(share->hostName()));
+      argumentsList << QString("servern=%1").arg(KShell::quoteArg(share->hostName()));
     }
   }
   else
@@ -1227,13 +1231,13 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
       {
         argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
       }
-      else if (!globalOptions["netbios name"].isEmpty())
+      else if (!machineNetbiosName().isEmpty())
       {
-        argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(globalOptions["netbios name"]));
+        argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(machineNetbiosName()));
       }
       
       // The server's NetBIOS name
-      argumentsList << QString("servernetbiosname=%1").arg(KShell::quoteArg(share->hostName()));
+      argumentsList << QString("servern=%1").arg(KShell::quoteArg(share->hostName()));
     }
   }
   
@@ -1332,11 +1336,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       case Smb4KMountSettings::EnumClientCharset::default_charset:
       {
-        if (!globalOptions["unix charset"].isEmpty())
-        {
-          argumentsList << QString("iocharset=%1").arg(globalOptions["unix charset"].toLower());
-        }
-
         break;
       }
       default:
@@ -1717,9 +1716,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     map.insert("mh_url", share->homeUrl());
     map.insert("mh_homes_url", share->url());
   }  
-
-  map.insert("mh_workgroup", share->workgroupName());
-  map.insert("mh_ip", share->hostIpAddress());
   
   //
   // Location of the Kerberos ticket
@@ -1952,9 +1948,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     map.insert("mh_homes_url", share->url());
   }  
 
-  map.insert("mh_workgroup", share->workgroupName());
-  map.insert("mh_ip", share->hostIpAddress());
-  
   return true;
 }
 #else
