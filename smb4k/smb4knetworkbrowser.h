@@ -26,14 +26,12 @@
 #ifndef SMB4KNETWORKBROWSER_H
 #define SMB4KNETWORKBROWSER_H
 
-// application specific includes
-#include "smb4ktooltip.h"
-
 // Qt includes
 #include <QTreeWidget>
 
 // forward declarations
 class Smb4KNetworkBrowserItem;
+class Smb4KToolTip;
 
 /**
  * This is the network neighborhood browser widget.

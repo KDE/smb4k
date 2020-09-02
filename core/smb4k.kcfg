@@ -102,7 +102,7 @@
     </entry>
     <entry name="ForceSmb1Protocol" type="Bool">
       <label>Force SMB protocol version 1.0 for workgroup and domain lookups</label>
-      <whatsthis>You should use this option only as last resort, because the SMB protocol version 1.0 is unsafe and has been disable in newer Samba and Windows versions. If you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. Smb4K will then force the use of the SMB protocol version 1.0 for browsing workgroups and domains. This, however, only applies to searches done using Samba's client library. Please note that, when using this option, some servers running modern Samba or Windows versions might get inaccessible. If you are using the DNS service discovery (DNS-SD), you should switch this option off.</whatsthis>
+      <whatsthis>You should use this option only as last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer Samba and Windows versions. If you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. Smb4K will then force the use of the SMB protocol version 1.0 for browsing workgroups and domains. This, however, only applies to searches done using Samba's client library. Please note that, when using this option, some servers running modern Samba or Windows versions might get inaccessible. If you are using the DNS Service Discovery (DNS-SD) or Services Dynamic Discovery (WS-Discovery), you should switch this option off.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="NetBIOSName" type="String">
