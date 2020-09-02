@@ -26,9 +26,6 @@
 #ifndef SMB4KSHARESVIEW_H
 #define SMB4KSHARESVIEW_H
 
-// application specific includes
-#include <smb4ktooltip.h>
-
 // Qt includes
 #include <QTimer>
 #include <QMimeData>

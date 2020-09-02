@@ -26,6 +26,7 @@
 // application specific includes
 #include "smb4ksharesviewdockwidget.h"
 #include "smb4ksharesviewitem.h"
+#include "smb4ktooltip.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4ksynchronizer.h"
