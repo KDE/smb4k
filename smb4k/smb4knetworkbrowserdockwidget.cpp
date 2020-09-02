@@ -26,6 +26,7 @@
 // application specific includes
 #include "smb4knetworkbrowserdockwidget.h"
 #include "smb4knetworkbrowseritem.h"
+#include "smb4ktooltip.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kworkgroup.h"
 #include "core/smb4khost.h"
