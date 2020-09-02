@@ -475,11 +475,27 @@ namespace Smb4KGlobal
   Q_DECL_EXPORT void openShare(SharePtr share, OpenWith openWith = FileManager);
   
   /**
-   * Get the entries of the [global] section of the smb.conf file.
+   * Get the SMB context. You have to type cast the pointer to SMBCCTX.
    * 
-   * @returns the entries of the [global] section of the smb.conf file
+   * @note Do not init or free the context in the classes you use it.
+   * 
+   * @returns the SMB context
    */
-  Q_DECL_EXPORT const QMap<QString,QString> &globalSambaOptions();
+  Q_DECL_EXPORT void *globalSmbContext(); 
+  
+  /**
+   * Get the NetBIOS name of this computer.
+   * 
+   * @returns the NetBIOS name
+   */
+  Q_DECL_EXPORT const QString machineNetbiosName();
+  
+  /**
+   * Get the name of the workgroup or domain this computer is in.
+   * 
+   * @returns the workgroup or domain
+   */
+  Q_DECL_EXPORT const QString machineWorkgroupName();
   
   /**
    * This function returns TRUE if the core classes should set a busy cursor when 

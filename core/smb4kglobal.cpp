@@ -933,10 +933,23 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
 }
 
 
-const QMap<QString,QString> &Smb4KGlobal::globalSambaOptions()
+void *Smb4KGlobal::globalSmbContext()
 {
-  return p->globalSambaOptions();
+  return p->smbContext;
 }
+
+
+const QString Smb4KGlobal::machineNetbiosName()
+{
+  return p->machineNetbiosName;
+}
+
+
+const QString Smb4KGlobal::machineWorkgroupName()
+{
+  return p->machineWorkgroupName;
+}
+
 
 
 bool Smb4KGlobal::modifyCursor()

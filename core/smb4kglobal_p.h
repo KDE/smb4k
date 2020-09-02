@@ -31,6 +31,9 @@
 #include "smb4khost.h"
 #include "smb4kshare.h"
 
+// Samba includes
+#include <libsmbclient.h>
+
 // Qt includes
 #include <QList>
 #include <QMap>
@@ -80,11 +83,6 @@ class Smb4KGlobalPrivate : public QObject
     QList<QSharedPointer<Smb4KShare>> sharesList;
     
     /**
-     * The global options defined in smb.conf
-     */
-    const QMap<QString,QString> &globalSambaOptions(bool read = false);
-
-    /**
      * Boolean that is TRUE when only foreign shares
      * are in the list of mounted shares
      */
@@ -109,22 +107,27 @@ class Smb4KGlobalPrivate : public QObject
      */
     QStringList allowedMountArguments;
 #endif
+    
+    /**
+     * The global SMB context
+     */
+    SMBCCTX *smbContext;
+    
+    /**
+     * The machine's NetBIOS name
+     */
+    QString machineNetbiosName;
+    
+    /**
+     * The machine's workgroup name
+     */
+    QString machineWorkgroupName;
 
   protected Q_SLOTS:
     /**
      * This slot does last things before the application quits
      */
     void slotAboutToQuit();
-    
-    /**
-     * Called when the smb.conf file is modified
-     */
-    void slotSmbConfModified(const QString &file);
-    
-  private:
-    QMap<QString,QString> m_sambaOptions;
-    bool m_sambaConfigMissing;
-    QFileSystemWatcher *m_watcher;
 };
 
 #endif
