@@ -3,6 +3,9 @@ stages:
 
 build:
     stage: build
+    before_script:
+        - apt update
+        - apt install -y cmake g++ extra-cmake-modules
     script:
         - echo "Building Smb4K"
         - mkdir build
