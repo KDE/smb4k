@@ -1,0 +1,11 @@
+stages:
+    - build
+
+build:
+    stage: build
+    script:
+        - echo "Building Smb4K"
+        - mkdir build
+        - cd build
+        - cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_WS_DISCOVERY=OFF -DINSTALL_PLASMOID=OFF -DINSTALL_HEADER_FILES=OFF ..
+        - make
