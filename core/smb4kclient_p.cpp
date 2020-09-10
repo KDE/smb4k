@@ -151,6 +151,11 @@ Smb4KClientJob::~Smb4KClientJob()
   {
     m_files.takeFirst().clear();
   }
+  
+  //
+  // Free the SMB context
+  // 
+  smbc_free_context(m_context, 1);
 }
 
 
@@ -402,14 +407,32 @@ void Smb4KClientJob::initClientLibrary()
   // 
   // Get new context
   // 
-  m_context = static_cast<SMBCCTX *>(Smb4KGlobal::globalSmbContext());
+  m_context= smbc_new_context();
   
   if (!m_context)
   {
-    int errorCode = EBADF;
+    int errorCode = errno;
     
     setError(ClientError);
     setErrorText(strerror(errorCode));
+    
+    emitResult();
+    return;
+  }
+  
+  //
+  // Init the context
+  //
+  m_context = smbc_init_context(m_context);
+      
+  if (!m_context)
+  {
+    int errorCode = errno;
+    
+    setError(ClientError);
+    setErrorText(strerror(errorCode));
+    
+    smbc_free_context(m_context, 1);
     
     emitResult();
     return;
@@ -595,7 +618,7 @@ void Smb4KClientJob::initClientLibrary()
   }
   else
   {
-    smbc_setOptionProtocols(m_context, nullptr, nullptr);
+    smbc_setOptionProtocols(m_context, NULL, NULL);
   }
   
   //
