@@ -475,15 +475,6 @@ namespace Smb4KGlobal
   Q_DECL_EXPORT void openShare(SharePtr share, OpenWith openWith = FileManager);
   
   /**
-   * Get the SMB context. You have to type cast the pointer to SMBCCTX.
-   * 
-   * @note Do not init or free the context in the classes you use it.
-   * 
-   * @returns the SMB context
-   */
-  Q_DECL_EXPORT void *globalSmbContext(); 
-  
-  /**
    * Get the NetBIOS name of this computer.
    * 
    * @returns the NetBIOS name

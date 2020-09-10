@@ -2,7 +2,7 @@
     These are the private helper classes of the Smb4KGlobal namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2019 by Alexander Reinholdt
+    copyright            : (C) 2007-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,6 +27,9 @@
 #include "smb4kglobal_p.h"
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
+
+// Samba includes
+#include <libsmbclient.h>
 
 // Qt includes
 #include <QDir>
@@ -70,7 +73,7 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
   //
   // Create and init the SMB context
   // 
-  smbContext= smbc_new_context();
+  SMBCCTX *smbContext= smbc_new_context();
   
   if (smbContext)
   {
@@ -87,6 +90,11 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
   // 
   machineNetbiosName = QString::fromUtf8(smbc_getNetbiosName(smbContext)).toUpper();
   machineWorkgroupName = QString::fromUtf8(smbc_getWorkgroup(smbContext)).toUpper();
+  
+  //
+  // Free the SMB context
+  // 
+  smbc_free_context(smbContext, 1);
   
   //
   // Connections
@@ -128,11 +136,6 @@ Smb4KGlobalPrivate::~Smb4KGlobalPrivate()
   {
     sharesList.takeFirst().clear();
   }
-  
-  //
-  // Free the SMB context
-  // 
-  smbc_free_context(smbContext, 1);
 }
 
 

@@ -933,12 +933,6 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
 }
 
 
-void *Smb4KGlobal::globalSmbContext()
-{
-  return p->smbContext;
-}
-
-
 const QString Smb4KGlobal::machineNetbiosName()
 {
   return p->machineNetbiosName;

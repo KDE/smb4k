@@ -2,7 +2,7 @@
     These are the private helper classes of the Smb4KGlobal namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2019 by Alexander Reinholdt
+    copyright            : (C) 2007-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,9 +30,6 @@
 #include "smb4kworkgroup.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
-
-// Samba includes
-#include <libsmbclient.h>
 
 // Qt includes
 #include <QList>
@@ -107,11 +104,6 @@ class Smb4KGlobalPrivate : public QObject
      */
     QStringList allowedMountArguments;
 #endif
-    
-    /**
-     * The global SMB context
-     */
-    SMBCCTX *smbContext;
     
     /**
      * The machine's NetBIOS name
