@@ -162,17 +162,17 @@ endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
 #
 # Header files: Notify the user
 if (INSTALL_HEADER_FILES)
-  message(STATUS "Installing core header files (-DINSTALL_HEADER_FILES=false to disable)")
+  message(STATUS "Installing core header files (-DINSTALL_HEADER_FILES=OFF to disable)")
 elseif (NOT INSTALL_HEADER_FILES)
-  message(STATUS "Not installing core header files (-DINSTALL_HEADER_FILES=true to enable)")
+  message(STATUS "Not installing core header files (-DINSTALL_HEADER_FILES=ON to enable)")
 endif(INSTALL_HEADER_FILES)
 
 # Plasmoid: Notify the user and add the subdirectory if desired
 if (INSTALL_PLASMOID)
-  message(STATUS "Installing plasmoid (-DINSTALL_PLASMOID=false to disable)")
+  message(STATUS "Installing plasmoid (-DINSTALL_PLASMOID=OFF to disable)")
   add_subdirectory(plasmoid)
 elseif(NOT INSTALL_PLASMOID)
-  message(STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=true to enable)")
+  message(STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=ON to enable)")
 endif(INSTALL_PLASMOID)
 
 ########### install files ###############
