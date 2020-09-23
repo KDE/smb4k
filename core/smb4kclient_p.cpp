@@ -33,9 +33,7 @@
 
 // System includes
 #include <errno.h>
-// #include <sys/types.h>
 #include <sys/stat.h>
-// #include <unistd.h>
 
 // Qt includes
 #include <QTimer>
