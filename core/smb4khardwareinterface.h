@@ -33,8 +33,6 @@
 #include <QObject>
 #include <QScopedPointer>
 #include <QUrl>
-#include <QNetworkConfigurationManager>
-#include <QNetworkSession>
 
 class Smb4KHardwareInterfacePrivate;
 
@@ -83,14 +81,12 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
      */
     void uninhibit();
 
-#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
   protected:
     /**
      * Reimplemented from QObject to check for mounts and unmounts on operating
      * systems that are not fully supported by Solid, yet.
      */
     void timerEvent(QTimerEvent *e) override;
-#endif
     
   Q_SIGNALS:
     /**
@@ -115,24 +111,6 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     
   protected Q_SLOTS:
     /**
-     * This slot is called by the QNetworkConfigurationManager::updateCompleted()
-     * signal and sets up the network session.
-     */
-    void slotNetworkConfigUpdated();
-    
-    /**
-     * This slot is called by the QNetworkConfigurationManager::onlineStateChanged()
-     * signal and is used to update the network configuration if necessary.
-     */
-    void slotOnlineStateChanged(bool on);
-    
-    /**
-     * This slot is called when the state of the network connection changed. 
-     * It is connected to the QNetworkSession::stateChanged() signal.
-     */
-    void slotConnectionStateChanged(QNetworkSession::State state);
-    
-    /**
      * This slot is called when a device was added to the system.
      * @param udi     the device UDI
      */
@@ -145,6 +123,15 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     void slotDeviceRemoved(const QString &udi);
     
   private:
+    /**
+     * Check the online state and emit the @see onlineStateChanged() accordingly, if
+     * @p emitSignal is set to TRUE.
+     */
+    void checkOnlineState(bool emitSignal = true);
+    
+    /**
+     * Pointer to private class
+     */
     QScopedPointer<Smb4KHardwareInterfacePrivate> d;
 };
 

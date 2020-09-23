@@ -27,6 +27,7 @@
 #include "smb4khardwareinterface.h"
 #include "smb4khardwareinterface_p.h"
 
+// system includes
 #include <unistd.h>
 
 // Qt includes
@@ -34,6 +35,8 @@
 #include <QTest>
 #include <QString>
 #include <QDBusReply>
+#include <QNetworkInterface>
+#include <QTimer>
 
 // KDE includes
 #include <Solid/DeviceNotifier>
@@ -52,7 +55,6 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
   //
   // Initialize some members
   // 
-  d->networkSession = nullptr;
   d->systemOnline = false;
   d->fileDescriptor.setFileDescriptor(-1);
   
@@ -67,22 +69,31 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
   }
   
   //
-  // Do the initial setup of the network configuration
-  // 
-  d->networkConfigManager.updateConfigurations();
-  
-  //
   // Connections
   // 
-  connect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
-  connect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
-  
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
+  
+  //
+  // Start the network monitoring
+  // 
+  QTimer::singleShot(50, [&] () {
+    //
+    // Check the online state
+    // 
+    checkOnlineState(false);    
+    
+    //
+    // Tell the program that we are ready to check the network accessibilty
+    // 
+    emit networkSessionInitialized();
 
-#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-  startTimer(2000);
-#endif
+    // 
+    // Start the timer to continously check the online state
+    // and, under FreeBSD, additionally the mounted shares.
+    // 
+    startTimer(1000);
+  });
 }
 
 
@@ -99,12 +110,7 @@ Smb4KHardwareInterface* Smb4KHardwareInterface::self()
 
 bool Smb4KHardwareInterface::isOnline() const
 {
-  if (d->networkSession)
-  {
-    return (d->networkSession->state() == QNetworkSession::Connected);
-  }
-  
-  return false;
+  return d->systemOnline;
 }
 
 
@@ -148,12 +154,46 @@ void Smb4KHardwareInterface::uninhibit()
 }
 
 
-#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-// Using FreeBSD 11 with KF 5.27, Solid is not able to detect mounted shares.
-// Thus, we check here whether shares have been mounted or unmounted.
-// This is a hack and should be removed as soon as possible.
+void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
+{
+  bool online = false;
+  QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
+  
+  for (const QNetworkInterface &interface : qAsConst(interfaces))
+  {
+    if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
+    {
+      online = true;
+      break;
+    }
+  }
+  
+  if (online != d->systemOnline)
+  {
+    d->systemOnline = online;
+    
+    if (emitSignal)
+    {
+      emit onlineStateChanged(d->systemOnline);
+    }
+  }
+}
+
+
 void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
 {
+  //
+  // Check for network connectivity
+  // 
+  checkOnlineState();
+  
+  
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+  //
+  // Using FreeBSD 11 with KF 5.27, Solid is not able to detect mounted shares.
+  // Thus, we check here whether shares have been mounted or unmounted.
+  // This is a hack and should be removed as soon as possible.
+  // 
   KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
   QStringList mountPointList, alreadyMounted;
   
@@ -193,92 +233,7 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
   d->mountPoints.clear();
   d->mountPoints.append(alreadyMounted);
   d->mountPoints.append(mountPointList);
-}
 #endif
-
-
-void Smb4KHardwareInterface::slotNetworkConfigUpdated()
-{
-  if (d->networkConfigManager.isOnline())
-  {
-    //
-    // Create a network session object and connect it to the stateChanged()
-    // signal to monitor changes of the network connection.
-    // 
-    if (!d->networkSession)
-    {
-      d->networkSession = new QNetworkSession(d->networkConfigManager.defaultConfiguration(), this);
-      connect(d->networkSession, SIGNAL(stateChanged(QNetworkSession::State)), this, SLOT(slotConnectionStateChanged(QNetworkSession::State)));
-    }
-    
-    //
-    // Tell the program that the network session was initialized
-    // 
-    emit networkSessionInitialized();
-    
-    //
-    // Check the state of the network session and emit the onlineStateChanged()
-    // signal accordingly.
-    // 
-    if (d->networkSession->state() == QNetworkSession::Connected)
-    {
-      if (!d->systemOnline)
-      {
-        d->systemOnline = true;
-        emit onlineStateChanged(true);
-      }
-    }
-    else
-    {
-      if (d->systemOnline)
-      {
-        d->systemOnline = false;
-        emit onlineStateChanged(false);
-      }
-    }
-    
-    //
-    // Disconnect from the network configuration manager, because we now have our 
-    // network session object
-    // 
-    disconnect(&d->networkConfigManager, SIGNAL(updateCompleted()), this, SLOT(slotNetworkConfigUpdated()));
-    disconnect(&d->networkConfigManager, SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
-  }
-  else
-  {
-    d->systemOnline = false;
-    emit onlineStateChanged(false);
-  }
-}
-
-
-void Smb4KHardwareInterface::slotOnlineStateChanged(bool on)
-{
-  if (on && !d->networkSession)
-  {
-    d->networkConfigManager.updateConfigurations();
-  }
-}
-
-
-void Smb4KHardwareInterface::slotConnectionStateChanged(QNetworkSession::State state)
-{
-  if (state == QNetworkSession::Connected)
-  {
-    if (!d->systemOnline)
-    {
-      d->systemOnline = true;
-      emit onlineStateChanged(true);
-    }
-  }
-  else
-  {
-    if (d->systemOnline)
-    {
-      d->systemOnline = false;
-      emit onlineStateChanged(false);
-    }
-  }
 }
 
 
@@ -288,7 +243,6 @@ void Smb4KHardwareInterface::slotDeviceAdded(const QString& udi)
   
   if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare))
   {
-    d->udis.append(udi);
     emit networkShareAdded();
   }
 }
@@ -298,19 +252,9 @@ void Smb4KHardwareInterface::slotDeviceRemoved(const QString& udi)
 {
   Solid::Device device(udi);
   
-  // For some reason, the device has no valid type at the moment (Frameworks 5.9, 
-  // July 2015). Thus, we need the code in the else block for now. 
   if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare))
   {
     emit networkShareRemoved();
-  }
-  else
-  {
-    if (d->udis.contains(udi))
-    {
-      emit networkShareRemoved();
-      d->udis.removeOne(udi);
-    }
   }
 }
 
