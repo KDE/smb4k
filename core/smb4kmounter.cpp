@@ -1765,7 +1765,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   // Global and custom options
   // 
-  QMap<QString, QString> globalOptions = globalSambaOptions();
   OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share);
   
   //
@@ -1840,7 +1839,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       case Smb4KMountSettings::EnumClientCharset::default_charset:
       {
-        clientCharset = globalOptions["unix charset"].toLower(); // maybe empty
         break;
       }
       default:
@@ -1855,7 +1853,6 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
     {
       case Smb4KMountSettings::EnumServerCodepage::default_codepage:
       {
-        serverCharset = globalOptions["dos charset"].toLower(); // maybe empty
         break;
       }
       default:
