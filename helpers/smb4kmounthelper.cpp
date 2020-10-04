@@ -32,7 +32,7 @@
 #include <QDebug>
 #include <QLatin1String>
 #include <QUrl>
-#include <QNetworkConfigurationManager>
+#include <QNetworkInterface>
 
 // KDE includes
 #include <KAuth/KAuthHelperSupport>
@@ -54,9 +54,23 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap& args)
   //
   // Check if the system is online and return an error if it is not
   // 
-  QNetworkConfigurationManager networkManager;
+  bool online = false;
+  QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
   
-  if (!networkManager.isOnline())
+  for (const QNetworkInterface &interface : qAsConst(interfaces))
+  {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
+#else
+    if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning && !online)
+#endif
+    {
+      online = true;
+      break;
+    }
+  }
+  
+  if (!online)
   {
     reply.setType(ActionReply::HelperErrorType);
     return reply;
@@ -234,12 +248,26 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap& args)
   // Depending on the online state, use a different behavior for unmounting.
   // 
   // Extensive tests have shown that - when offline - unmounting does not 
-  // work properly when the the process is not detached. Thus, detach it 
-  // when the system is offline.
+  // work properly when the process is not detached. Thus, detach it when 
+  // the system is offline.
   // 
-  QNetworkConfigurationManager networkManager;
+  bool online = false;
+  QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
   
-  if (networkManager.isOnline())
+  for (const QNetworkInterface &interface : qAsConst(interfaces))
+  {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+    if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
+#else
+    if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning && !online)
+#endif
+    {
+      online = true;
+      break;
+    }
+  }
+  
+  if (online)
   {
     proc.start();
     
