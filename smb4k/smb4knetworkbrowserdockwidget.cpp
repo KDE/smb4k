@@ -62,7 +62,6 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString& titl
   QWidget *mainWidget = new QWidget(this);
   QVBoxLayout *mainWidgetLayout = new QVBoxLayout(mainWidget);
   mainWidgetLayout->setContentsMargins(0, 0, 0, 0);
-  mainWidgetLayout->setSpacing(5);
   
   m_networkBrowser = new Smb4KNetworkBrowser(mainWidget);
   m_searchToolBar = new Smb4KNetworkSearchToolBar(mainWidget);

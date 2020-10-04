@@ -688,7 +688,6 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(const SharePtr &share, QW
   m_synchronize_button->setDefault(true);
 
   QGridLayout *layout = new QGridLayout(this);
-  layout->setSpacing(5);
 
   QLabel *pixmap = new QLabel(this);
   QPixmap sync_pix = KDE::icon("folder-sync").pixmap(KIconLoader::SizeHuge);

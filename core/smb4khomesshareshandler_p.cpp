@@ -198,13 +198,11 @@ Smb4KHomesUserDialog::~Smb4KHomesUserDialog()
 void Smb4KHomesUserDialog::setupView()
 {
   QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
 
   QWidget *description = new QWidget(this);
 
-  QHBoxLayout *desc_layout = new QHBoxLayout(description);
-  desc_layout->setSpacing(5);
-  desc_layout->setContentsMargins(0, 0, 0, 0);
+  QHBoxLayout *descriptionLayout = new QHBoxLayout(description);
+  descriptionLayout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *pixmap = new QLabel(description);
   QPixmap user_pix = KDE::icon("user-identity").pixmap(KIconLoader::SizeHuge);
@@ -215,16 +213,15 @@ void Smb4KHomesUserDialog::setupView()
   label->setWordWrap(true);
   label->setAlignment(Qt::AlignBottom);
 
-  desc_layout->addWidget(pixmap, 0);
-  desc_layout->addWidget(label, Qt::AlignBottom);
+  descriptionLayout->addWidget(pixmap, 0);
+  descriptionLayout->addWidget(label, Qt::AlignBottom);
   
   QWidget *input = new QWidget(this);
   
-  QGridLayout *input_layout = new QGridLayout(input);
-  input_layout->setSpacing(5);
-  input_layout->setContentsMargins(0, 0, 0, 0);
-  input_layout->setColumnStretch(0, 0);
-  input_layout->setColumnStretch(1, 1);
+  QGridLayout *inputLayout = new QGridLayout(input);
+  inputLayout->setContentsMargins(0, 0, 0, 0);
+  inputLayout->setColumnStretch(0, 0);
+  inputLayout->setColumnStretch(1, 1);
   
   QLabel *input_label = new QLabel(i18n("User:"), input);
 
@@ -232,8 +229,8 @@ void Smb4KHomesUserDialog::setupView()
   m_user_combo->setDuplicatesEnabled(false);
   m_user_combo->setEditable(true);
   
-  input_layout->addWidget(input_label, 0, 0);
-  input_layout->addWidget(m_user_combo, 0, 1);
+  inputLayout->addWidget(input_label, 0, 0);
+  inputLayout->addWidget(m_user_combo, 0, 1);
   
   QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
   m_clear_button = buttonBox->addButton(i18n("Clear List"), QDialogButtonBox::ActionRole);

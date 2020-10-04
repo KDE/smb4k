@@ -85,7 +85,6 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   // 
   QGroupBox *networkNeighhoodBox = new QGroupBox(i18n("Network Neighborhood"), this);
   QGridLayout *networkNeighhoodBoxLayout = new QGridLayout(networkNeighhoodBox);
-  networkNeighhoodBoxLayout->setSpacing(5);
   
   QCheckBox *autoExpand = new QCheckBox(Smb4KSettings::self()->autoExpandNetworkItemsItem()->label(), networkNeighhoodBox);
   autoExpand->setObjectName("kcfg_AutoExpandNetworkItems");

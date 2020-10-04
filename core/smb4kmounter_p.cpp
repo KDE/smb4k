@@ -100,12 +100,9 @@ Smb4KMountDialog::~Smb4KMountDialog()
 void Smb4KMountDialog::setupView()
 {
   QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
 
   QWidget *description = new QWidget(this);
-
-  QHBoxLayout *desc_layout = new QHBoxLayout(description);
-  desc_layout->setSpacing(5);
+  QHBoxLayout *descriptionLayout = new QHBoxLayout(description);
 
   QLabel *pixmap = new QLabel(description);
   QPixmap mount_pix = KDE::icon("view-form", QStringList("emblem-mounted")).pixmap(KIconLoader::SizeHuge);
@@ -116,16 +113,14 @@ void Smb4KMountDialog::setupView()
   label->setWordWrap(true);
   label->setAlignment(Qt::AlignBottom);
 
-  desc_layout->addWidget(pixmap, 0);
-  desc_layout->addWidget(label, Qt::AlignBottom);
+  descriptionLayout->addWidget(pixmap, 0);
+  descriptionLayout->addWidget(label, Qt::AlignBottom);
 
-  QWidget *edit_widget = new QWidget(this);
+  QWidget *editWidget = new QWidget(this);
+  QGridLayout *editWidgetLayout = new QGridLayout(editWidget);
 
-  QGridLayout *editLayout = new QGridLayout(edit_widget);
-  layout->setSpacing(5);
-
-  QLabel *shareLabel = new QLabel(i18n("Location:"), edit_widget);
-  m_share_input = new KLineEdit(edit_widget);
+  QLabel *shareLabel = new QLabel(i18n("Location:"), editWidget);
+  m_share_input = new KLineEdit(editWidget);
   m_share_input->setWhatsThis(i18n("The location of the share is provided by the Uniform Resource Locator (URL). It generally has the following syntax: "
     "[smb:]//[USER:PASSWORD@]HOST:PORT/SHARE. The username, password and port are optional. You should omit to enter the password here, because it is shown in cleartext."));
 //   m_share_input->setToolTip(i18n("The URL of the share"));
@@ -134,8 +129,8 @@ void Smb4KMountDialog::setupView()
   m_share_input->setMinimumWidth(200);
   m_share_input->setFocus();
 
-  QLabel *addressLabel = new QLabel(i18n("IP Address:"), edit_widget);
-  m_ip_input = new KLineEdit(edit_widget);
+  QLabel *addressLabel = new QLabel(i18n("IP Address:"), editWidget);
+  m_ip_input = new KLineEdit(editWidget);
   m_ip_input->setWhatsThis(i18n("The Internet Protocol (IP) address identifies the "
     "host in the network and indicates where it is. It has two valid formats, the one "
     "known as IP version 4 (e.g. 192.168.2.11) and the version 6 format "
@@ -145,8 +140,8 @@ void Smb4KMountDialog::setupView()
   m_ip_input->setClearButtonEnabled(true);
   m_ip_input->setMinimumWidth(200);
 
-  QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), edit_widget);
-  m_workgroup_input = new KLineEdit(edit_widget);
+  QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), editWidget);
+  m_workgroup_input = new KLineEdit(editWidget);
   m_workgroup_input->setWhatsThis(i18n("The workgroup or domain identifies the "
     "peer-to-peer computer network the host is located in."));
 //   m_workgroup_input->setToolTip(i18n("The workgroup where the host is located"));
@@ -154,12 +149,12 @@ void Smb4KMountDialog::setupView()
   m_workgroup_input->setClearButtonEnabled(true);
   m_workgroup_input->setMinimumWidth(200);
 
-  editLayout->addWidget(shareLabel, 0, 0);
-  editLayout->addWidget(m_share_input, 0, 1);
-  editLayout->addWidget(addressLabel, 1, 0);
-  editLayout->addWidget(m_ip_input, 1, 1);
-  editLayout->addWidget(workgroupLabel, 2, 0);
-  editLayout->addWidget(m_workgroup_input, 2, 1);
+  editWidgetLayout->addWidget(shareLabel, 0, 0);
+  editWidgetLayout->addWidget(m_share_input, 0, 1);
+  editWidgetLayout->addWidget(addressLabel, 1, 0);
+  editWidgetLayout->addWidget(m_ip_input, 1, 1);
+  editWidgetLayout->addWidget(workgroupLabel, 2, 0);
+  editWidgetLayout->addWidget(m_workgroup_input, 2, 1);
 
   m_bookmark = new QCheckBox(i18n("Add this share to the bookmarks"), this);
   m_bookmark->setWhatsThis(i18n("If you tick this checkbox, the share will be bookmarked "
@@ -174,7 +169,7 @@ void Smb4KMountDialog::setupView()
   m_cancel_button->setShortcut(Qt::Key_Escape);
 
   layout->addWidget(description, Qt::AlignBottom);
-  layout->addWidget(edit_widget, 0);
+  layout->addWidget(editWidget, 0);
   layout->addWidget(m_bookmark, 0);
   layout->addWidget(buttonBox, 0);
 

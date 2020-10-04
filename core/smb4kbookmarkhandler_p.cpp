@@ -123,13 +123,10 @@ const QList<BookmarkPtr> &Smb4KBookmarkDialog::bookmarks()
 void Smb4KBookmarkDialog::setupView()
 {
   QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
 
   QWidget *description = new QWidget(this);
-
-  QHBoxLayout *desc_layout = new QHBoxLayout(description);
-  desc_layout->setSpacing(5);
-  desc_layout->setContentsMargins(0, 0, 0, 0);
+  QHBoxLayout *descriptionLayout = new QHBoxLayout(description);
+  descriptionLayout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *pixmap = new QLabel(description);
   QPixmap sync_pix = KDE::icon("bookmark-new").pixmap(KIconLoader::SizeHuge);
@@ -141,8 +138,8 @@ void Smb4KBookmarkDialog::setupView()
   label->setWordWrap(true);
   label->setAlignment(Qt::AlignBottom);
 
-  desc_layout->addWidget(pixmap, 0);
-  desc_layout->addWidget(label, Qt::AlignBottom);
+  descriptionLayout->addWidget(pixmap, 0);
+  descriptionLayout->addWidget(label, Qt::AlignBottom);
 
   m_widget = new QListWidget(this);
   m_widget->setSortingEnabled(true);
@@ -154,7 +151,6 @@ void Smb4KBookmarkDialog::setupView()
   m_editors->setEnabled(false);
 
   QGridLayout *editorsLayout = new QGridLayout(m_editors);
-  editorsLayout->setSpacing(5);
   editorsLayout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
@@ -452,7 +448,6 @@ bool Smb4KBookmarkEditor::eventFilter(QObject *obj, QEvent *e)
 void Smb4KBookmarkEditor::setupView()
 {
   QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
 
   m_tree_widget = new QTreeWidget(this);
   m_tree_widget->setColumnCount(2);
@@ -480,7 +475,6 @@ void Smb4KBookmarkEditor::setupView()
   m_editors->setEnabled(false);
 
   QGridLayout *editorsLayout = new QGridLayout(m_editors);
-  editorsLayout->setSpacing(5);
   editorsLayout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *l_label = new QLabel(i18n("Label:"), m_editors);

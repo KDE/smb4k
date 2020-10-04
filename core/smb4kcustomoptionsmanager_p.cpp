@@ -68,14 +68,12 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
   // Set up the layout
   //
   QVBoxLayout *layout = new QVBoxLayout(this);
-  layout->setSpacing(5);
   setLayout(layout);
   
   // Header
   QWidget *header = new QWidget(this);
   
   QHBoxLayout *headerLayout = new QHBoxLayout(header);
-  headerLayout->setSpacing(5);
   headerLayout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *pixmap = new QLabel(header);
@@ -190,16 +188,13 @@ void Smb4KCustomOptionsDialog::setupView()
   // Custom options for mounting
   // 
   QWidget *mountingTab = new QWidget(tabWidget);
-  
   QVBoxLayout *mountingTabLayout = new QVBoxLayout(mountingTab);
-  mountingTabLayout->setSpacing(5);
   
   //
   // Common options
   //
   QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), mountingTab);
   QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
-  commonBoxLayout->setSpacing(5);
   
   QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), commonBox);
   remountAlways->setObjectName("RemountAlways");
@@ -250,7 +245,6 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QGroupBox *extensionsSupportBox = new QGroupBox(i18n("CIFS Unix Extensions Support"), mountingTab);
   QGridLayout *extensionsSupportBoxLayout = new QGridLayout(extensionsSupportBox);
-  extensionsSupportBoxLayout->setSpacing(5);
   
   QCheckBox *cifsExtensionsSupport = new QCheckBox(i18n("This server supports the CIFS Unix extensions"), extensionsSupportBox);
   cifsExtensionsSupport->setObjectName("CifsExtensionsSupport");
@@ -337,7 +331,6 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QGroupBox *advancedOptionsBox = new QGroupBox(i18n("Advanced Options"), mountingTab);
   QGridLayout *advancedOptionsBoxLayout = new QGridLayout(advancedOptionsBox);
-  advancedOptionsBoxLayout->setSpacing(5);
   
   // Security mode
   QCheckBox *useSecurityMode = new QCheckBox(Smb4KMountSettings::self()->useSecurityModeItem()->label(), advancedOptionsBox);
@@ -381,14 +374,12 @@ void Smb4KCustomOptionsDialog::setupView()
   //
   QWidget *sambaTab = new QWidget(tabWidget);
   QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
-  sambaTabLayout->setSpacing(5);
 
   //
   // Common Options
   //
   QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
   QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
-  commonSambaOptionsBoxLayout->setSpacing(5);
   
   // SMB port
   QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
@@ -413,7 +404,6 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
   QVBoxLayout *authenticationBoxLayout = new QVBoxLayout(authenticationBox);
-  authenticationBoxLayout->setSpacing(5);
   
   // Kerberos
   QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
@@ -436,14 +426,12 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QWidget *wakeOnLanTab = new QWidget(tabWidget);
   QVBoxLayout *wakeOnLanTabLayout = new QVBoxLayout(wakeOnLanTab);
-  wakeOnLanTabLayout->setSpacing(5);
   
   // 
   // MAC address
   // 
   QGroupBox *macAddressBox = new QGroupBox(i18n("MAC Address"), wakeOnLanTab);
   QGridLayout *macAddressBoxLayout = new QGridLayout(macAddressBox);
-  macAddressBoxLayout->setSpacing(5);
   
   // MAC address
   QLabel *macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressBox);
@@ -466,7 +454,6 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
   QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
-  wakeOnLANActionsBoxLayout->setSpacing(5);
   
   // Send magic package before network scan
   QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);
@@ -645,16 +632,13 @@ void Smb4KCustomOptionsDialog::setupView()
   // Custom options for mounting
   // 
   QWidget *mountingTab = new QWidget(tabWidget);
-  
   QVBoxLayout *mountingTabLayout = new QVBoxLayout(mountingTab);
-  mountingTabLayout->setSpacing(5);
   
   //
   // Common options
   //
   QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), mountingTab);
   QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
-  commonBoxLayout->setSpacing(5);
   
   QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), commonBox);
   remountAlways->setObjectName("RemountAlways");
@@ -743,14 +727,12 @@ void Smb4KCustomOptionsDialog::setupView()
   //
   QWidget *sambaTab = new QWidget(tabWidget);
   QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
-  sambaTabLayout->setSpacing(5);
 
   //
   // Common Options
   //
   QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
   QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
-  commonSambaOptionsBoxLayout->setSpacing(5);
   
   // SMB port
   QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
@@ -775,7 +757,6 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
   QVBoxLayout *authenticationBoxLayout = new QVBoxLayout(authenticationBox);
-  authenticationBoxLayout->setSpacing(5);
   
   // Kerberos
   QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
@@ -798,14 +779,12 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QWidget *wakeOnLanTab = new QWidget(tabWidget);
   QVBoxLayout *wakeOnLanTabLayout = new QVBoxLayout(wakeOnLanTab);
-  wakeOnLanTabLayout->setSpacing(5);
   
   // 
   // MAC address
   // 
   QGroupBox *macAddressBox = new QGroupBox(i18n("MAC Address"), wakeOnLanTab);
   QGridLayout *macAddressBoxLayout = new QGridLayout(macAddressBox);
-  macAddressBoxLayout->setSpacing(5);
   
   // MAC address
   QLabel *macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressBox);
@@ -828,7 +807,6 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
   QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
-  wakeOnLANActionsBoxLayout->setSpacing(5);
   
   // Send magic package before network scan
   QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);
@@ -923,14 +901,12 @@ void Smb4KCustomOptionsDialog::setupView()
   //
   QWidget *sambaTab = new QWidget(tabWidget);
   QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
-  sambaTabLayout->setSpacing(5);
 
   //
   // Common Options
   //
   QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
   QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
-  commonSambaOptionsBoxLayout->setSpacing(5);
   
   // SMB port
   QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
@@ -955,7 +931,6 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
   QVBoxLayout *authenticationBoxLayout = new QVBoxLayout(authenticationBox);
-  authenticationBoxLayout->setSpacing(5);
   
   // Kerberos
   QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
@@ -978,14 +953,12 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QWidget *wakeOnLanTab = new QWidget(tabWidget);
   QVBoxLayout *wakeOnLanTabLayout = new QVBoxLayout(wakeOnLanTab);
-  wakeOnLanTabLayout->setSpacing(5);
   
   // 
   // MAC address
   // 
   QGroupBox *macAddressBox = new QGroupBox(i18n("MAC Address"), wakeOnLanTab);
   QGridLayout *macAddressBoxLayout = new QGridLayout(macAddressBox);
-  macAddressBoxLayout->setSpacing(5);
   
   // MAC address
   QLabel *macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressBox);
@@ -1008,7 +981,6 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
   QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
-  wakeOnLANActionsBoxLayout->setSpacing(5);
   
   // Send magic package before network scan
   QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);

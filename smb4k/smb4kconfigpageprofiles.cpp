@@ -59,9 +59,7 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget* parent)
   settingsLayout->addWidget(useAssistant, 1);
   
   QGroupBox *profiles = new QGroupBox(i18n("Profiles"), this);
-  
   QVBoxLayout *profilesLayout = new QVBoxLayout(profiles);
-  profilesLayout->setSpacing(5);
   
   // List of profiles
   m_profiles = new KEditListWidget(profiles);
