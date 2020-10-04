@@ -232,8 +232,8 @@ void Smb4KHomesUserDialog::setupView()
   m_user_combo->setDuplicatesEnabled(false);
   m_user_combo->setEditable(true);
   
-  input_layout->addWidget(input_label, 0, 0, 0);
-  input_layout->addWidget(m_user_combo, 0, 1, 0);
+  input_layout->addWidget(input_label, 0, 0);
+  input_layout->addWidget(m_user_combo, 0, 1);
   
   QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
   m_clear_button = buttonBox->addButton(i18n("Clear List"), QDialogButtonBox::ActionRole);

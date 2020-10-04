@@ -282,7 +282,7 @@ void Smb4KToolTip::setupNetworkItemContents()
   KSeparator *separator = new KSeparator(Qt::Horizontal, m_contentsWidget);
   separator->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(separator, 1, 0, 1, 2, 0);
+  descriptionLayout->addWidget(separator, 1, 0, 1, 2);
   
   // Type
   QLabel *typeCaption = new QLabel(i18n("Type:"), m_contentsWidget);
@@ -293,7 +293,7 @@ void Smb4KToolTip::setupNetworkItemContents()
   QLabel *typeName = new QLabel(m_contentsWidget);
   typeName->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(typeName, 2, 1, 0);
+  descriptionLayout->addWidget(typeName, 2, 1);
   
   switch (m_item->type())
   {
@@ -330,9 +330,9 @@ void Smb4KToolTip::setupNetworkItemContents()
         masterBrowserName->setText("-");
       }
       
-      descriptionLayout->addWidget(masterBrowserName, 3, 1, 0);
+      descriptionLayout->addWidget(masterBrowserName, 3, 1);
       
-      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 4, 0, 2, 1, 0);
+      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 4, 0, 2, 1);
       
       break;
     }
@@ -352,7 +352,7 @@ void Smb4KToolTip::setupNetworkItemContents()
       commentString->setObjectName("CommentString");
       commentString->setForegroundRole(QPalette::ToolTipText);
       
-      descriptionLayout->addWidget(commentString, 3, 1, 0);
+      descriptionLayout->addWidget(commentString, 3, 1);
       
       // IP address
       QLabel *ipAddressLabel = new QLabel(i18n("IP Address:"), m_contentsWidget);
@@ -364,7 +364,7 @@ void Smb4KToolTip::setupNetworkItemContents()
       ipAddress->setObjectName("IPAddressString");
       ipAddress->setForegroundRole(QPalette::ToolTipText);
       
-      descriptionLayout->addWidget(ipAddress, 4, 1, 0);
+      descriptionLayout->addWidget(ipAddress, 4, 1);
       
       // Workgroup
       QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), m_contentsWidget);
@@ -375,9 +375,9 @@ void Smb4KToolTip::setupNetworkItemContents()
       QLabel *workgroupName = new QLabel(host->workgroupName(), m_contentsWidget);
       workgroupName->setForegroundRole(QPalette::ToolTipText);
       
-      descriptionLayout->addWidget(workgroupName, 5, 1, 0);
+      descriptionLayout->addWidget(workgroupName, 5, 1);
       
-      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 6, 0, 2, 1, 0);
+      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 6, 0, 2, 1);
       
       break;
     }
@@ -397,7 +397,7 @@ void Smb4KToolTip::setupNetworkItemContents()
       commentString->setObjectName("CommentString");
       commentString->setForegroundRole(QPalette::ToolTipText);
       
-      descriptionLayout->addWidget(commentString, 3, 1, 0);
+      descriptionLayout->addWidget(commentString, 3, 1);
       
       // State (mounted/not mounted)
       QLabel *mountedLabel = new QLabel(i18n("Mounted:"), m_contentsWidget);
@@ -419,7 +419,7 @@ void Smb4KToolTip::setupNetworkItemContents()
       mountedState->setObjectName("MountedState");
       mountedState->setForegroundRole(QPalette::ToolTipText);
       
-      descriptionLayout->addWidget(mountedState, 4, 1, 0);
+      descriptionLayout->addWidget(mountedState, 4, 1);
       
       // Host
       QLabel *hostLabel = new QLabel(i18n("Host:"), m_contentsWidget);
@@ -430,7 +430,7 @@ void Smb4KToolTip::setupNetworkItemContents()
       QLabel *hostName = new QLabel(share->hostName(), m_contentsWidget);
       hostName->setForegroundRole(QPalette::ToolTipText);
       
-      descriptionLayout->addWidget(hostName, 5, 1, 0);
+      descriptionLayout->addWidget(hostName, 5, 1);
       
       // IP address
       QLabel *ipAddressLabel = new QLabel(i18n("IP Address:"), m_contentsWidget);
@@ -442,7 +442,7 @@ void Smb4KToolTip::setupNetworkItemContents()
       ipAddressString->setObjectName("IPAddressString");
       ipAddressString->setForegroundRole(QPalette::ToolTipText);
       
-      descriptionLayout->addWidget(ipAddressString, 6, 1, 0);
+      descriptionLayout->addWidget(ipAddressString, 6, 1);
       
       // Location
       QLabel *locationLabel = new QLabel(i18n("Location:"), m_contentsWidget);
@@ -453,9 +453,9 @@ void Smb4KToolTip::setupNetworkItemContents()
       QLabel *locationString = new QLabel(share->displayString(), m_contentsWidget);
       locationString->setForegroundRole(QPalette::ToolTipText);
       
-      descriptionLayout->addWidget(locationString, 7, 1, 0);
+      descriptionLayout->addWidget(locationString, 7, 1);
       
-      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 8, 0, 2, 1, 0);
+      descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 8, 0, 2, 1);
       
       break;
     }
@@ -528,7 +528,7 @@ void Smb4KToolTip::setupMountedShareContents()
   KSeparator *separator = new KSeparator(Qt::Horizontal, m_contentsWidget);
   separator->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(separator, 1, 0, 1, 2, 0);
+  descriptionLayout->addWidget(separator, 1, 0, 1, 2);
   
   // Location
   QLabel *locationLabel = new QLabel(i18n("Location:"), m_contentsWidget);
@@ -539,7 +539,7 @@ void Smb4KToolTip::setupMountedShareContents()
   QLabel *locationString = new QLabel(share->displayString(), m_contentsWidget);
   locationString->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(locationString, 2, 1, 0);
+  descriptionLayout->addWidget(locationString, 2, 1);
   
   // Mount point
   QLabel *mountpointLabel = new QLabel(i18n("Mountpoint:"), m_contentsWidget);
@@ -550,7 +550,7 @@ void Smb4KToolTip::setupMountedShareContents()
   QLabel *mountpointString = new QLabel(share->path(), m_contentsWidget);
   mountpointString->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(mountpointString, 3, 1, 0);
+  descriptionLayout->addWidget(mountpointString, 3, 1);
   
   // Login
   QLabel *loginLabel = new QLabel(i18n("Login:"), m_contentsWidget);
@@ -562,7 +562,7 @@ void Smb4KToolTip::setupMountedShareContents()
   loginString->setObjectName("LoginString");
   loginString->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(loginString, 4, 1, 0);
+  descriptionLayout->addWidget(loginString, 4, 1);
   
   // Owner
   QLabel *ownerLabel = new QLabel(i18n("Owner:"), m_contentsWidget);
@@ -576,7 +576,7 @@ void Smb4KToolTip::setupMountedShareContents()
   QLabel *ownerString = new QLabel(QString("%1 - %2").arg(owner, group),m_contentsWidget);
   ownerString->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(ownerString, 5, 1, 0);
+  descriptionLayout->addWidget(ownerString, 5, 1);
   
   // File system
   QLabel *fileSystemLabel = new QLabel(i18n("File system:"), m_contentsWidget);
@@ -587,7 +587,7 @@ void Smb4KToolTip::setupMountedShareContents()
   QLabel *fileSystemString = new QLabel(share->fileSystemString(), m_contentsWidget);
   fileSystemString->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(fileSystemString, 6, 1, 0);
+  descriptionLayout->addWidget(fileSystemString, 6, 1);
   
   // Size
   QLabel *sizeLabel = new QLabel(i18n("Size:"), m_contentsWidget);
@@ -610,9 +610,9 @@ void Smb4KToolTip::setupMountedShareContents()
   sizeString->setObjectName("SizeString");
   sizeString->setForegroundRole(QPalette::ToolTipText);
   
-  descriptionLayout->addWidget(sizeString, 7, 1, 0);
+  descriptionLayout->addWidget(sizeString, 7, 1);
 
-  descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 8, 0, 2, 1, 0);
+  descriptionLayout->addItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Minimum), 8, 0, 2, 1);
   
   m_contentsWidget->adjustSize();  
   m_contentsWidget->ensurePolished();

@@ -117,14 +117,14 @@ void Smb4KProfileMigrationDialog::setupView()
   // 
   QWidget *editors = new QWidget(this);
   
-  QGridLayout *editors_layout = new QGridLayout(editors);
-  editors_layout->setSpacing(5);
-  editors_layout->setContentsMargins(0, 0, 0, 0);
-  editors_layout->setColumnStretch(0, 0);
-  editors_layout->setColumnStretch(1, 1);
+  QGridLayout *editorsLayout = new QGridLayout(editors);
+  editorsLayout->setSpacing(5);
+  editorsLayout->setContentsMargins(0, 0, 0, 0);
+  editorsLayout->setColumnStretch(0, 0);
+  editorsLayout->setColumnStretch(1, 1);
   
   QLabel *from = new QLabel(i18n("Old Profile:"), editors);
-  editors_layout->addWidget(from, 0, 0, 0);
+  editorsLayout->addWidget(from, 0, 0);
   
   m_from_box = new KComboBox(editors);
   
@@ -144,10 +144,10 @@ void Smb4KProfileMigrationDialog::setupView()
     }
   }
   
-  editors_layout->addWidget(m_from_box, 0, 1, 0);
+  editorsLayout->addWidget(m_from_box, 0, 1);
   
   QLabel *to = new QLabel(i18n("New Profile:"), editors);
-  editors_layout->addWidget(to, 1, 0, 0);
+  editorsLayout->addWidget(to, 1, 0);
   
   m_to_box = new KComboBox(editors);
   
@@ -161,7 +161,7 @@ void Smb4KProfileMigrationDialog::setupView()
     m_to_box->setCurrentText(Smb4KProfileManager::self()->activeProfile());
   }
   
-  editors_layout->addWidget(m_to_box, 1, 1, 0);
+  editorsLayout->addWidget(m_to_box, 1, 1);
   
   QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
   m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);

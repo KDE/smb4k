@@ -206,7 +206,7 @@ void Smb4KCustomOptionsDialog::setupView()
   remountAlways->setEnabled(m_options->type() == Share);
   connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(remountAlways, 0, 0, 1, 2, 0);
+  commonBoxLayout->addWidget(remountAlways, 0, 0, 1, 2);
   
   // Write access
   QCheckBox *useWriteAccess = new QCheckBox(Smb4KMountSettings::self()->useWriteAccessItem()->label(), commonBox);
@@ -224,8 +224,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useWriteAccess, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(writeAccess, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(useWriteAccess, 1, 0, 0);
-  commonBoxLayout->addWidget(writeAccess, 1, 1, 0);
+  commonBoxLayout->addWidget(useWriteAccess, 1, 0);
+  commonBoxLayout->addWidget(writeAccess, 1, 1);
   
   // Remote file system port
   QCheckBox *useFilesystemPort = new QCheckBox(Smb4KMountSettings::self()->useRemoteFileSystemPortItem()->label(), commonBox);
@@ -240,8 +240,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useFilesystemPort, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(filesystemPort, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()));
 
-  commonBoxLayout->addWidget(useFilesystemPort, 2, 0, 0);
-  commonBoxLayout->addWidget(filesystemPort, 2, 1, 0);
+  commonBoxLayout->addWidget(useFilesystemPort, 2, 0);
+  commonBoxLayout->addWidget(filesystemPort, 2, 1);
   
   mountingTabLayout->addWidget(commonBox, 0);
   
@@ -258,7 +258,7 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), SLOT(slotCifsExtensionsSupport(bool)));
   
-  extensionsSupportBoxLayout->addWidget(cifsExtensionsSupport, 0, 0, 1, 4, 0);
+  extensionsSupportBoxLayout->addWidget(cifsExtensionsSupport, 0, 0, 1, 4);
   
   // User Id
   QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), extensionsSupportBox);
@@ -277,8 +277,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(userId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
 
-  extensionsSupportBoxLayout->addWidget(useUserId, 1, 0, 0);
-  extensionsSupportBoxLayout->addWidget(userId, 1, 1, 0);
+  extensionsSupportBoxLayout->addWidget(useUserId, 1, 0);
+  extensionsSupportBoxLayout->addWidget(userId, 1, 1);
   
   // Group Id
   QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), extensionsSupportBox);
@@ -297,8 +297,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(groupId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   
-  extensionsSupportBoxLayout->addWidget(useGroupId, 2, 0, 0);
-  extensionsSupportBoxLayout->addWidget(groupId, 2, 1, 0);
+  extensionsSupportBoxLayout->addWidget(useGroupId, 2, 0);
+  extensionsSupportBoxLayout->addWidget(groupId, 2, 1);
   
   // File mode
   QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), extensionsSupportBox);
@@ -312,8 +312,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useFileMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(fileMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
   
-  extensionsSupportBoxLayout->addWidget(useFileMode, 3, 0, 0);
-  extensionsSupportBoxLayout->addWidget(fileMode, 3, 1, 0);
+  extensionsSupportBoxLayout->addWidget(useFileMode, 3, 0);
+  extensionsSupportBoxLayout->addWidget(fileMode, 3, 1);
   
   // Directory mode
   QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), extensionsSupportBox);
@@ -327,8 +327,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useDirectoryMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
   
-  extensionsSupportBoxLayout->addWidget(useDirectoryMode, 4, 0, 0);
-  extensionsSupportBoxLayout->addWidget(directoryMode, 4, 1, 0);
+  extensionsSupportBoxLayout->addWidget(useDirectoryMode, 4, 0);
+  extensionsSupportBoxLayout->addWidget(directoryMode, 4, 1);
   
   mountingTabLayout->addWidget(extensionsSupportBox, 0);
   
@@ -368,8 +368,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useSecurityMode, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(securityMode, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
 
-  advancedOptionsBoxLayout->addWidget(useSecurityMode, 0, 0, 0);
-  advancedOptionsBoxLayout->addWidget(securityMode, 0, 1, 0);
+  advancedOptionsBoxLayout->addWidget(useSecurityMode, 0, 0);
+  advancedOptionsBoxLayout->addWidget(securityMode, 0, 1);
   
   mountingTabLayout->addWidget(advancedOptionsBox, 0);
   mountingTabLayout->addStretch(100);
@@ -403,8 +403,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotCheckValues()));
   
-  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0, 0);
-  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1, 0);
+  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0);
+  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1);
   
   sambaTabLayout->addWidget(commonSambaOptionsBox, 0);
   
@@ -456,8 +456,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotCheckValues()));
   connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotEnableWOLFeatures(QString)));
   
-  macAddressBoxLayout->addWidget(macAddressLabel, 0, 0, 0);
-  macAddressBoxLayout->addWidget(macAddress, 0, 1, 0);
+  macAddressBoxLayout->addWidget(macAddressLabel, 0, 0);
+  macAddressBoxLayout->addWidget(macAddress, 0, 1);
 
   wakeOnLanTabLayout->addWidget(macAddressBox, 0);
   
@@ -661,7 +661,7 @@ void Smb4KCustomOptionsDialog::setupView()
   remountAlways->setEnabled(m_options->type() == Share);
   connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(remountAlways, 0, 0, 1, 2, 0);
+  commonBoxLayout->addWidget(remountAlways, 0, 0, 1, 2);
   
   // User Id
   QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), commonBox);
@@ -680,8 +680,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(userId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
 
-  commonBoxLayout->addWidget(useUserId, 1, 0, 0);
-  commonBoxLayout->addWidget(userId, 1, 1, 0);
+  commonBoxLayout->addWidget(useUserId, 1, 0);
+  commonBoxLayout->addWidget(userId, 1, 1);
   
   // Group Id
   QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), commonBox);
@@ -700,8 +700,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(groupId, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(useGroupId, 2, 0, 0);
-  commonBoxLayout->addWidget(groupId, 2, 1, 0);
+  commonBoxLayout->addWidget(useGroupId, 2, 0);
+  commonBoxLayout->addWidget(groupId, 2, 1);
   
   // File mode
   QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), commonBox);
@@ -715,8 +715,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useFileMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(fileMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(useFileMode, 3, 0, 0);
-  commonBoxLayout->addWidget(fileMode, 3, 1, 0);
+  commonBoxLayout->addWidget(useFileMode, 3, 0);
+  commonBoxLayout->addWidget(fileMode, 3, 1);
   
   // Directory mode
   QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), commonBox);
@@ -730,8 +730,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useDirectoryMode, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(directoryMode, SIGNAL(textEdited(QString)), this, SLOT(slotCheckValues()));
   
-  commonBoxLayout->addWidget(useDirectoryMode, 4, 0, 0);
-  commonBoxLayout->addWidget(directoryMode, 4, 1, 0);
+  commonBoxLayout->addWidget(useDirectoryMode, 4, 0);
+  commonBoxLayout->addWidget(directoryMode, 4, 1);
   
   mountingTabLayout->addWidget(commonBox, 0);
   mountingTabLayout->addStretch(100);
@@ -765,8 +765,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotCheckValues()));
   
-  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0, 0);
-  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1, 0);
+  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0);
+  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1);
   
   sambaTabLayout->addWidget(commonSambaOptionsBox, 0);
   
@@ -818,8 +818,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotCheckValues()));
   connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotEnableWOLFeatures(QString)));
   
-  macAddressBoxLayout->addWidget(macAddressLabel, 0, 0, 0);
-  macAddressBoxLayout->addWidget(macAddress, 0, 1, 0);
+  macAddressBoxLayout->addWidget(macAddressLabel, 0, 0);
+  macAddressBoxLayout->addWidget(macAddress, 0, 1);
 
   wakeOnLanTabLayout->addWidget(macAddressBox, 0);
   
@@ -945,8 +945,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotCheckValues()));
   
-  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0, 0);
-  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1, 0);
+  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0);
+  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1);
   
   sambaTabLayout->addWidget(commonSambaOptionsBox, 0);
   
@@ -998,8 +998,8 @@ void Smb4KCustomOptionsDialog::setupView()
   connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotCheckValues()));
   connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotEnableWOLFeatures(QString)));
   
-  macAddressBoxLayout->addWidget(macAddressLabel, 0, 0, 0);
-  macAddressBoxLayout->addWidget(macAddress, 0, 1, 0);
+  macAddressBoxLayout->addWidget(macAddressLabel, 0, 0);
+  macAddressBoxLayout->addWidget(macAddress, 0, 1);
 
   wakeOnLanTabLayout->addWidget(macAddressBox, 0);
   

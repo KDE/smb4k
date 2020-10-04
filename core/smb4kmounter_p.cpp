@@ -121,7 +121,7 @@ void Smb4KMountDialog::setupView()
 
   QWidget *edit_widget = new QWidget(this);
 
-  QGridLayout *edit_layout = new QGridLayout(edit_widget);
+  QGridLayout *editLayout = new QGridLayout(edit_widget);
   layout->setSpacing(5);
 
   QLabel *shareLabel = new QLabel(i18n("Location:"), edit_widget);
@@ -154,12 +154,12 @@ void Smb4KMountDialog::setupView()
   m_workgroup_input->setClearButtonEnabled(true);
   m_workgroup_input->setMinimumWidth(200);
 
-  edit_layout->addWidget(shareLabel, 0, 0, 0);
-  edit_layout->addWidget(m_share_input, 0, 1, 0);
-  edit_layout->addWidget(addressLabel, 1, 0, 0);
-  edit_layout->addWidget(m_ip_input, 1, 1, 0);
-  edit_layout->addWidget(workgroupLabel, 2, 0, 0);
-  edit_layout->addWidget(m_workgroup_input, 2, 1, 0);
+  editLayout->addWidget(shareLabel, 0, 0);
+  editLayout->addWidget(m_share_input, 0, 1);
+  editLayout->addWidget(addressLabel, 1, 0);
+  editLayout->addWidget(m_ip_input, 1, 1);
+  editLayout->addWidget(workgroupLabel, 2, 0);
+  editLayout->addWidget(m_workgroup_input, 2, 1);
 
   m_bookmark = new QCheckBox(i18n("Add this share to the bookmarks"), this);
   m_bookmark->setWhatsThis(i18n("If you tick this checkbox, the share will be bookmarked "

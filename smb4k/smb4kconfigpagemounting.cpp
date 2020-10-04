@@ -93,9 +93,9 @@ void Smb4KConfigPageMounting::setupWidget()
   QCheckBox *lowercaseSubdirs = new QCheckBox(Smb4KMountSettings::self()->forceLowerCaseSubdirsItem()->label(), directoryBox);
   lowercaseSubdirs->setObjectName("kcfg_ForceLowerCaseSubdirs");
 
-  directoryBoxLayout->addWidget(prefixLabel, 0, 0, 0);
-  directoryBoxLayout->addWidget(prefix, 0, 1, 0);
-  directoryBoxLayout->addWidget(lowercaseSubdirs, 1, 0, 1, 2, 0);
+  directoryBoxLayout->addWidget(prefixLabel, 0, 0);
+  directoryBoxLayout->addWidget(prefix, 0, 1);
+  directoryBoxLayout->addWidget(lowercaseSubdirs, 1, 0, 1, 2);
   
   basicTabLayout->addWidget(directoryBox, 0);
   
@@ -135,15 +135,15 @@ void Smb4KConfigPageMounting::setupWidget()
   QCheckBox *detectAllShares = new QCheckBox(Smb4KMountSettings::self()->detectAllSharesItem()->label(), behaviorBox);
   detectAllShares->setObjectName("kcfg_DetectAllShares");
 
-  behaviorBoxLayout->addWidget(remountShares, 0, 0, 1, 2, 0);
-  behaviorBoxLayout->addWidget(remountAttemptsLabel, 1, 0, 0);
-  behaviorBoxLayout->addWidget(remountAttempts, 1, 1, 0);
-  behaviorBoxLayout->addWidget(remountIntervalLabel, 2, 0, 0);
-  behaviorBoxLayout->addWidget(remountInterval, 2, 1, 0);
-  behaviorBoxLayout->addWidget(unmountAllShares, 3, 0, 1, 2, 0);
-  behaviorBoxLayout->addWidget(unmountInaccessibleShares, 4, 0, 1, 2, 0);
-  behaviorBoxLayout->addWidget(unmountForeignShares, 5, 0, 1, 2, 0);
-  behaviorBoxLayout->addWidget(detectAllShares, 6, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(remountShares, 0, 0, 1, 2);
+  behaviorBoxLayout->addWidget(remountAttemptsLabel, 1, 0);
+  behaviorBoxLayout->addWidget(remountAttempts, 1, 1);
+  behaviorBoxLayout->addWidget(remountIntervalLabel, 2, 0);
+  behaviorBoxLayout->addWidget(remountInterval, 2, 1);
+  behaviorBoxLayout->addWidget(unmountAllShares, 3, 0, 1, 2);
+  behaviorBoxLayout->addWidget(unmountInaccessibleShares, 4, 0, 1, 2);
+  behaviorBoxLayout->addWidget(unmountForeignShares, 5, 0, 1, 2);
+  behaviorBoxLayout->addWidget(detectAllShares, 6, 0, 1, 2);
   
   basicTabLayout->addWidget(behaviorBox, 0);
   basicTabLayout->addStretch(100);
@@ -176,8 +176,8 @@ void Smb4KConfigPageMounting::setupWidget()
     writeAccess->addItem(wa.label);
   }
   
-  commonOptionsLayout->addWidget(useWriteAccess, 0, 0, 0);
-  commonOptionsLayout->addWidget(writeAccess, 0, 1, 0);
+  commonOptionsLayout->addWidget(useWriteAccess, 0, 0);
+  commonOptionsLayout->addWidget(writeAccess, 0, 1);
 
   // Character set
   QCheckBox *useCharacterSet = new QCheckBox(Smb4KMountSettings::self()->useClientCharsetItem()->label(), commonOptions);
@@ -193,8 +193,8 @@ void Smb4KConfigPageMounting::setupWidget()
     characterSet->addItem(c.label);
   }
   
-  commonOptionsLayout->addWidget(useCharacterSet, 1, 0, 0);
-  commonOptionsLayout->addWidget(characterSet, 1, 1, 0);
+  commonOptionsLayout->addWidget(useCharacterSet, 1, 0);
+  commonOptionsLayout->addWidget(characterSet, 1, 1);
 
   // Remote filesystem port
   QCheckBox *useFilesystemPort = new QCheckBox(Smb4KMountSettings::self()->useRemoteFileSystemPortItem()->label(), commonOptions);
@@ -203,8 +203,8 @@ void Smb4KConfigPageMounting::setupWidget()
   QSpinBox *filesystemPort = new QSpinBox(commonOptions);
   filesystemPort->setObjectName("kcfg_RemoteFileSystemPort");
 
-  commonOptionsLayout->addWidget(useFilesystemPort, 2, 0, 0);
-  commonOptionsLayout->addWidget(filesystemPort, 2, 1, 0);
+  commonOptionsLayout->addWidget(useFilesystemPort, 2, 0);
+  commonOptionsLayout->addWidget(filesystemPort, 2, 1);
   
   commonTabLayout->addWidget(commonOptions, 0);
   
@@ -218,7 +218,7 @@ void Smb4KConfigPageMounting::setupWidget()
   QCheckBox *cifsExtensionsSupport = new QCheckBox(Smb4KMountSettings::self()->cifsUnixExtensionsSupportItem()->label(), cifsExtensionSupportBox);
   cifsExtensionsSupport->setObjectName("kcfg_CifsUnixExtensionsSupport");
   
-  cifsExtensionSupportLayout->addWidget(cifsExtensionsSupport, 0, 0, 1, 2, 0);
+  cifsExtensionSupportLayout->addWidget(cifsExtensionsSupport, 0, 0, 1, 2);
   
   // User information
   QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), cifsExtensionSupportBox);
@@ -251,11 +251,11 @@ void Smb4KConfigPageMounting::setupWidget()
     userAction->setData(u.userId().nativeId());
   }
 
-  userLayout->addWidget(userId, 0, 0, 0);
+  userLayout->addWidget(userId, 0, 0);
   userLayout->addWidget(userChooser, 0, 1, Qt::AlignCenter);
   
-  cifsExtensionSupportLayout->addWidget(useUserId, 1, 0, 0);
-  cifsExtensionSupportLayout->addWidget(userIdInputWidget, 1, 1, 0);
+  cifsExtensionSupportLayout->addWidget(useUserId, 1, 0);
+  cifsExtensionSupportLayout->addWidget(userIdInputWidget, 1, 1);
 
   // Group information
   QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), cifsExtensionSupportBox);
@@ -288,11 +288,11 @@ void Smb4KConfigPageMounting::setupWidget()
     groupAction->setData(g.groupId().nativeId());
   }
 
-  groupLayout->addWidget(groupId, 0, 0, 0);
+  groupLayout->addWidget(groupId, 0, 0);
   groupLayout->addWidget(groupChooser, 0, 1, Qt::AlignCenter);
   
-  cifsExtensionSupportLayout->addWidget(useGroupId, 2, 0, 0);
-  cifsExtensionSupportLayout->addWidget(groupIdInputWidget, 2, 1, 0);
+  cifsExtensionSupportLayout->addWidget(useGroupId, 2, 0);
+  cifsExtensionSupportLayout->addWidget(groupIdInputWidget, 2, 1);
 
   // File mask
   QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), cifsExtensionSupportBox);
@@ -303,8 +303,8 @@ void Smb4KConfigPageMounting::setupWidget()
   fileMode->setClearButtonEnabled(true);
   fileMode->setAlignment(Qt::AlignRight);
   
-  cifsExtensionSupportLayout->addWidget(useFileMode, 3, 0, 0);
-  cifsExtensionSupportLayout->addWidget(fileMode, 3, 1, 0);
+  cifsExtensionSupportLayout->addWidget(useFileMode, 3, 0);
+  cifsExtensionSupportLayout->addWidget(fileMode, 3, 1);
 
   // Directory mask
   QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), cifsExtensionSupportBox);
@@ -315,10 +315,10 @@ void Smb4KConfigPageMounting::setupWidget()
   directoryMode->setClearButtonEnabled(true);
   directoryMode->setAlignment(Qt::AlignRight);
 
-  cifsExtensionSupportLayout->addWidget(useDirectoryMode, 4, 0, 0);
-  cifsExtensionSupportLayout->addWidget(directoryMode, 4, 1, 0);
+  cifsExtensionSupportLayout->addWidget(useDirectoryMode, 4, 0);
+  cifsExtensionSupportLayout->addWidget(directoryMode, 4, 1);
 
-  commonTabLayout->addWidget(cifsExtensionSupportBox, 1, 0);
+  commonTabLayout->addWidget(cifsExtensionSupportBox, 1);
   commonTabLayout->addStretch(100);
   
   addTab(commonTab, i18n("Common Mount Settings"));
@@ -336,43 +336,43 @@ void Smb4KConfigPageMounting::setupWidget()
   QCheckBox *forceUid = new QCheckBox(Smb4KMountSettings::self()->forceUIDItem()->label(), advancedOptions);
   forceUid->setObjectName("kcfg_ForceUID");
   
-  advancedOptionsLayout->addWidget(forceUid, 0, 0, 0);
+  advancedOptionsLayout->addWidget(forceUid, 0, 0);
   
   // Force Gid
   QCheckBox *forceGid = new QCheckBox(Smb4KMountSettings::self()->forceGIDItem()->label(), advancedOptions);
   forceGid->setObjectName("kcfg_ForceGID");
   
-  advancedOptionsLayout->addWidget(forceGid, 0, 1, 0);
+  advancedOptionsLayout->addWidget(forceGid, 0, 1);
 
   // Permission checks
   QCheckBox *permissionChecks = new QCheckBox(Smb4KMountSettings::self()->permissionChecksItem()->label(), advancedOptions);
   permissionChecks->setObjectName("kcfg_PermissionChecks");
   
-  advancedOptionsLayout->addWidget(permissionChecks, 1, 0, 0);
+  advancedOptionsLayout->addWidget(permissionChecks, 1, 0);
   
   // Client controls Ids
   QCheckBox *clientControlsIds = new QCheckBox(Smb4KMountSettings::self()->clientControlsIDsItem()->label(), advancedOptions);
   clientControlsIds->setObjectName("kcfg_ClientControlsIDs");
   
-  advancedOptionsLayout->addWidget(clientControlsIds, 1, 1, 0);
+  advancedOptionsLayout->addWidget(clientControlsIds, 1, 1);
 
   // Use server inode numbers
   QCheckBox *useServerInodes = new QCheckBox(Smb4KMountSettings::self()->serverInodeNumbersItem()->label(), advancedOptions);
   useServerInodes->setObjectName("kcfg_ServerInodeNumbers");
   
-  advancedOptionsLayout->addWidget(useServerInodes, 2, 0, 0);
+  advancedOptionsLayout->addWidget(useServerInodes, 2, 0);
 
   // Translate reserved characters
   QCheckBox *translateReservedCharacters = new QCheckBox(Smb4KMountSettings::self()->translateReservedCharsItem()->label(), advancedOptions);
   translateReservedCharacters->setObjectName("kcfg_TranslateReservedChars");
   
-  advancedOptionsLayout->addWidget(translateReservedCharacters, 2, 1, 0);
+  advancedOptionsLayout->addWidget(translateReservedCharacters, 2, 1);
   
   // No locking
   QCheckBox *no_locking = new QCheckBox(Smb4KMountSettings::self()->noLockingItem()->label(), advancedOptions);
   no_locking->setObjectName("kcfg_NoLocking");
   
-  advancedOptionsLayout->addWidget(no_locking, 3, 0, 0);
+  advancedOptionsLayout->addWidget(no_locking, 3, 0);
   
   // Extra widget for the rest of the options
   QWidget *advancedOptionsExtraWidget = new QWidget(advancedOptions);
@@ -393,8 +393,8 @@ void Smb4KConfigPageMounting::setupWidget()
     smbProtocol->addItem(c.label);
   }
   
-  advancedOptionsExtraWidgetLayout->addWidget(useSmbProtocol, 0, 0, 0);
-  advancedOptionsExtraWidgetLayout->addWidget(smbProtocol, 0, 1, 0);
+  advancedOptionsExtraWidgetLayout->addWidget(useSmbProtocol, 0, 0);
+  advancedOptionsExtraWidgetLayout->addWidget(smbProtocol, 0, 1);
   
   // Cache mode
   QCheckBox *useCacheMode = new QCheckBox(Smb4KMountSettings::self()->useCacheModeItem()->label(), advancedOptionsExtraWidget);
@@ -410,8 +410,8 @@ void Smb4KConfigPageMounting::setupWidget()
     cacheMode->addItem(c.label);
   }
   
-  advancedOptionsExtraWidgetLayout->addWidget(useCacheMode, 1, 0, 0);
-  advancedOptionsExtraWidgetLayout->addWidget(cacheMode, 1, 1, 0);
+  advancedOptionsExtraWidgetLayout->addWidget(useCacheMode, 1, 0);
+  advancedOptionsExtraWidgetLayout->addWidget(cacheMode, 1, 1);
   
   // Security mode
   QCheckBox *useSecurityMode = new QCheckBox(Smb4KMountSettings::self()->useSecurityModeItem()->label(), advancedOptionsExtraWidget);
@@ -427,8 +427,8 @@ void Smb4KConfigPageMounting::setupWidget()
     securityMode->addItem(c.label);
   }
   
-  advancedOptionsExtraWidgetLayout->addWidget(useSecurityMode, 2, 0, 0);
-  advancedOptionsExtraWidgetLayout->addWidget(securityMode, 2, 1, 0);
+  advancedOptionsExtraWidgetLayout->addWidget(useSecurityMode, 2, 0);
+  advancedOptionsExtraWidgetLayout->addWidget(securityMode, 2, 1);
 
   // Additional options
   QLabel *additionalOptionsLabel = new QLabel(Smb4KMountSettings::self()->customCIFSOptionsItem()->label(), advancedOptionsExtraWidget);
@@ -450,10 +450,10 @@ void Smb4KConfigPageMounting::setupWidget()
   additionalOptionsWidgetLayout->addWidget(additionalOptions, 0);
   additionalOptionsWidgetLayout->addWidget(additionalOptionsEdit, 0);
 
-  advancedOptionsExtraWidgetLayout->addWidget(additionalOptionsLabel, 3, 0, 0);
-  advancedOptionsExtraWidgetLayout->addWidget(additionalOptionsWidget, 3, 1, 0);
+  advancedOptionsExtraWidgetLayout->addWidget(additionalOptionsLabel, 3, 0);
+  advancedOptionsExtraWidgetLayout->addWidget(additionalOptionsWidget, 3, 1);
 
-  advancedOptionsLayout->addWidget(advancedOptionsExtraWidget, 4, 0, 1, 2, 0);
+  advancedOptionsLayout->addWidget(advancedOptionsExtraWidget, 4, 0, 1, 2);
   
   advancedTabLayout->addWidget(advancedOptions, 0);
   advancedTabLayout->addStretch(100);
@@ -501,9 +501,9 @@ void Smb4KConfigPageMounting::setupWidget()
   QCheckBox *lowercaseSubdirs = new QCheckBox(Smb4KMountSettings::self()->forceLowerCaseSubdirsItem()->label(), directoryBox);
   lowercaseSubdirs->setObjectName("kcfg_ForceLowerCaseSubdirs");
 
-  directoryBoxLayout->addWidget(prefixLabel, 0, 0, 0);
-  directoryBoxLayout->addWidget(prefix, 0, 1, 0);
-  directoryBoxLayout->addWidget(lowercaseSubdirs, 1, 0, 1, 2, 0);
+  directoryBoxLayout->addWidget(prefixLabel, 0, 0);
+  directoryBoxLayout->addWidget(prefix, 0, 1);
+  directoryBoxLayout->addWidget(lowercaseSubdirs, 1, 0, 1, 2);
   
   basicTabLayout->addWidget(directoryBox, 0);
   
@@ -540,14 +540,14 @@ void Smb4KConfigPageMounting::setupWidget()
   QCheckBox *detectAllShares = new QCheckBox(Smb4KMountSettings::self()->detectAllSharesItem()->label(), behaviorBox);
   detectAllShares->setObjectName("kcfg_DetectAllShares");
 
-  behaviorBoxLayout->addWidget(remountShares, 0, 0, 1, 2, 0);
-  behaviorBoxLayout->addWidget(remountAttemptsLabel, 1, 0, 0);
-  behaviorBoxLayout->addWidget(remountAttempts, 1, 1, 0);
-  behaviorBoxLayout->addWidget(remountIntervalLabel, 2, 0, 0);
-  behaviorBoxLayout->addWidget(remountInterval, 2, 1, 0);
-  behaviorBoxLayout->addWidget(unmountAllShares, 3, 0, 1, 2, 0);
-  behaviorBoxLayout->addWidget(unmountForeignShares, 4, 0, 1, 2, 0);
-  behaviorBoxLayout->addWidget(detectAllShares, 5, 0, 1, 2, 0);
+  behaviorBoxLayout->addWidget(remountShares, 0, 0, 1, 2);
+  behaviorBoxLayout->addWidget(remountAttemptsLabel, 1, 0);
+  behaviorBoxLayout->addWidget(remountAttempts, 1, 1);
+  behaviorBoxLayout->addWidget(remountIntervalLabel, 2, 0);
+  behaviorBoxLayout->addWidget(remountInterval, 2, 1);
+  behaviorBoxLayout->addWidget(unmountAllShares, 3, 0, 1, 2);
+  behaviorBoxLayout->addWidget(unmountForeignShares, 4, 0, 1, 2);
+  behaviorBoxLayout->addWidget(detectAllShares, 5, 0, 1, 2);
   
   basicTabLayout->addWidget(behaviorBox, 0);
   basicTabLayout->addStretch(100);
@@ -597,11 +597,11 @@ void Smb4KConfigPageMounting::setupWidget()
     userAction->setData(u.userId().nativeId());
   }
 
-  userLayout->addWidget(userId, 0, 0, 0);
+  userLayout->addWidget(userId, 0, 0);
   userLayout->addWidget(userChooser, 0, 1, Qt::AlignCenter);
   
-  commonOptionsBoxLayout->addWidget(useUserId, 0, 0, 0);
-  commonOptionsBoxLayout->addWidget(userIdInputWidget, 0, 1, 0);
+  commonOptionsBoxLayout->addWidget(useUserId, 0, 0);
+  commonOptionsBoxLayout->addWidget(userIdInputWidget, 0, 1);
   
   // Group information
   QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), commonOptionsBox);
@@ -634,11 +634,11 @@ void Smb4KConfigPageMounting::setupWidget()
     groupAction->setData(g.groupId().nativeId());
   }
 
-  groupLayout->addWidget(groupId, 0, 0, 0);
+  groupLayout->addWidget(groupId, 0, 0);
   groupLayout->addWidget(groupChooser, 0, 1, Qt::AlignCenter);
   
-  commonOptionsBoxLayout->addWidget(useGroupId, 1, 0, 0);
-  commonOptionsBoxLayout->addWidget(groupIdInputWidget, 1, 1, 0);
+  commonOptionsBoxLayout->addWidget(useGroupId, 1, 0);
+  commonOptionsBoxLayout->addWidget(groupIdInputWidget, 1, 1);
 
   // File mask
   QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), commonOptionsBox);
@@ -649,8 +649,8 @@ void Smb4KConfigPageMounting::setupWidget()
   fileMode->setClearButtonEnabled(true);
   fileMode->setAlignment(Qt::AlignRight);
   
-  commonOptionsBoxLayout->addWidget(useFileMode, 2, 0, 0);
-  commonOptionsBoxLayout->addWidget(fileMode, 2, 1, 0);
+  commonOptionsBoxLayout->addWidget(useFileMode, 2, 0);
+  commonOptionsBoxLayout->addWidget(fileMode, 2, 1);
 
   // Directory mask
   QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), commonOptionsBox);
@@ -661,8 +661,8 @@ void Smb4KConfigPageMounting::setupWidget()
   directoryMode->setClearButtonEnabled(true);
   directoryMode->setAlignment(Qt::AlignRight);
 
-  commonOptionsBoxLayout->addWidget(useDirectoryMode, 3, 0, 0);
-  commonOptionsBoxLayout->addWidget(directoryMode, 3, 1, 0);
+  commonOptionsBoxLayout->addWidget(useDirectoryMode, 3, 0);
+  commonOptionsBoxLayout->addWidget(directoryMode, 3, 1);
   
   // 
   // Character sets
@@ -707,11 +707,11 @@ void Smb4KConfigPageMounting::setupWidget()
   
   serverCharacterSetLabel->setBuddy(serverCharacterSet);
   
-  characterSetsBoxLayout->addWidget(useCharacterSets, 0, 0, 1, 2, 0);
-  characterSetsBoxLayout->addWidget(clientCharacterSetLabel, 1, 0, 0);
-  characterSetsBoxLayout->addWidget(clientCharacterSet, 1, 1, 0);
-  characterSetsBoxLayout->addWidget(serverCharacterSetLabel, 2, 0, 0);
-  characterSetsBoxLayout->addWidget(serverCharacterSet, 2, 1, 0);  
+  characterSetsBoxLayout->addWidget(useCharacterSets, 0, 0, 1, 2);
+  characterSetsBoxLayout->addWidget(clientCharacterSetLabel, 1, 0);
+  characterSetsBoxLayout->addWidget(clientCharacterSet, 1, 1);
+  characterSetsBoxLayout->addWidget(serverCharacterSetLabel, 2, 0);
+  characterSetsBoxLayout->addWidget(serverCharacterSet, 2, 1);  
   
   mountTabLayout->addWidget(commonOptionsBox, 0);
   mountTabLayout->addWidget(characterSetsBox, 0);

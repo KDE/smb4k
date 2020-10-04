@@ -89,9 +89,9 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behaviorBox);
   previewHiddenItems->setObjectName("kcfg_PreviewHiddenItems");
   
-  behaviorBoxLayout->addWidget(detectPrinters, 0, 0, 0);
-  behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1, 0);
-  behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0, 0);
+  behaviorBoxLayout->addWidget(detectPrinters, 0, 0);
+  behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1);
+  behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0);
   
   basicTabLayout->addWidget(browseSettingsBox, 0);
   basicTabLayout->addWidget(behaviorBox, 0);
@@ -133,13 +133,13 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), basicSettingsBox);
   largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
 
-  basicSettingsBoxLayout->addWidget(nebiosNameLabel, 0, 0, 0);
-  basicSettingsBoxLayout->addWidget(netbiosName, 0, 1, 0);
-  basicSettingsBoxLayout->addWidget(domainLabel, 1, 0, 0);
-  basicSettingsBoxLayout->addWidget(domain, 1, 1, 0);
-  basicSettingsBoxLayout->addWidget(useRemoteSmbPort, 2, 0, 0);
-  basicSettingsBoxLayout->addWidget(remoteSmbPort, 2, 1, 0);
-  basicSettingsBoxLayout->addWidget(largeNetworkNeighborhood, 3, 0, 1, 2, 0);
+  basicSettingsBoxLayout->addWidget(nebiosNameLabel, 0, 0);
+  basicSettingsBoxLayout->addWidget(netbiosName, 0, 1);
+  basicSettingsBoxLayout->addWidget(domainLabel, 1, 0);
+  basicSettingsBoxLayout->addWidget(domain, 1, 1);
+  basicSettingsBoxLayout->addWidget(useRemoteSmbPort, 2, 0);
+  basicSettingsBoxLayout->addWidget(remoteSmbPort, 2, 1);
+  basicSettingsBoxLayout->addWidget(largeNetworkNeighborhood, 3, 0, 1, 2);
   
   //
   // Authentication group box
@@ -156,9 +156,9 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), authenticationBox);
   useCCache->setObjectName("kcfg_UseWinbindCCache");
 
-  authenticationBoxLayout->addWidget(masterBrowsersRequireAuth, 0, 0, 0);
-  authenticationBoxLayout->addWidget(useKerberos, 0, 1, 0);
-  authenticationBoxLayout->addWidget(useCCache, 1, 0, 0);
+  authenticationBoxLayout->addWidget(masterBrowsersRequireAuth, 0, 0);
+  authenticationBoxLayout->addWidget(useKerberos, 0, 1);
+  authenticationBoxLayout->addWidget(useCCache, 1, 0);
   
   //
   // Security group box
@@ -180,8 +180,8 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
     encryptionLevel->addItem(c.label);
   }
 
-  securityBoxLayout->addWidget(useEncryptionLevel, 0, 0, 0);
-  securityBoxLayout->addWidget(encryptionLevel, 0, 1, 0);
+  securityBoxLayout->addWidget(useEncryptionLevel, 0, 0);
+  securityBoxLayout->addWidget(encryptionLevel, 0, 1);
   
   sambaTabLayout->addWidget(basicSettingsBox, 0);
   sambaTabLayout->addWidget(authenticationBox, 0);
@@ -235,10 +235,10 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   wakeOnLanNoteLayout->addWidget(message, 0, 1, Qt::AlignVCenter);
   wakeOnLanNoteLayout->setColumnStretch(1, 1);
   
-  wakeOnLanBoxLayout->addWidget(enableWakeOnLan, 0, 0, 1, 2, 0);
-  wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTimeLabel, 1, 0, 0);
-  wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTime, 1, 1, 0);
-  wakeOnLanBoxLayout->addWidget(wakeOnLanNote, 2, 0, 1, 2, 0);
+  wakeOnLanBoxLayout->addWidget(enableWakeOnLan, 0, 0, 1, 2);
+  wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTimeLabel, 1, 0);
+  wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTime, 1, 1);
+  wakeOnLanBoxLayout->addWidget(wakeOnLanNote, 2, 0, 1, 2);
   
   wakeOnLanTabLayout->addWidget(wakeOnLanBox, 0);
   wakeOnLanTabLayout->addStretch(100);

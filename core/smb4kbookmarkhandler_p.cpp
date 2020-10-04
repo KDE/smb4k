@@ -153,9 +153,9 @@ void Smb4KBookmarkDialog::setupView()
   m_editors = new QWidget(this);
   m_editors->setEnabled(false);
 
-  QGridLayout *editors_layout = new QGridLayout(m_editors);
-  editors_layout->setSpacing(5);
-  editors_layout->setContentsMargins(0, 0, 0, 0);
+  QGridLayout *editorsLayout = new QGridLayout(m_editors);
+  editorsLayout->setSpacing(5);
+  editorsLayout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
   m_label_edit = new KLineEdit(m_editors);
@@ -164,10 +164,10 @@ void Smb4KBookmarkDialog::setupView()
   QLabel *g_label = new QLabel(i18n("Group:"), m_editors);
   m_group_combo = new KComboBox(true, m_editors);
 
-  editors_layout->addWidget(l_label, 0, 0, 0);
-  editors_layout->addWidget(m_label_edit, 0, 1, 0);
-  editors_layout->addWidget(g_label, 1, 0, 0);
-  editors_layout->addWidget(m_group_combo, 1, 1, 0);
+  editorsLayout->addWidget(l_label, 0, 0);
+  editorsLayout->addWidget(m_label_edit, 0, 1);
+  editorsLayout->addWidget(g_label, 1, 0);
+  editorsLayout->addWidget(m_group_combo, 1, 1);
   
   QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
   m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);
@@ -479,9 +479,9 @@ void Smb4KBookmarkEditor::setupView()
   m_editors = new QWidget(this);
   m_editors->setEnabled(false);
 
-  QGridLayout *editors_layout = new QGridLayout(m_editors);
-  editors_layout->setSpacing(5);
-  editors_layout->setContentsMargins(0, 0, 0, 0);
+  QGridLayout *editorsLayout = new QGridLayout(m_editors);
+  editorsLayout->setSpacing(5);
+  editorsLayout->setContentsMargins(0, 0, 0, 0);
 
   QLabel *l_label = new QLabel(i18n("Label:"), m_editors);
   m_label_edit = new KLineEdit(m_editors);
@@ -499,14 +499,14 @@ void Smb4KBookmarkEditor::setupView()
   m_group_combo = new KComboBox(true, m_editors);
   m_group_combo->setDuplicatesEnabled(false);
 
-  editors_layout->addWidget(l_label, 0, 0, 0);
-  editors_layout->addWidget(m_label_edit, 0, 1, 0);
-  editors_layout->addWidget(lg_label, 1, 0, 0);
-  editors_layout->addWidget(m_login_edit, 1, 1, 0);
-  editors_layout->addWidget(i_label, 2, 0, 0);
-  editors_layout->addWidget(m_ip_edit, 2, 1, 0);
-  editors_layout->addWidget(g_label, 3, 0, 0);
-  editors_layout->addWidget(m_group_combo, 3, 1, 0);
+  editorsLayout->addWidget(l_label, 0, 0);
+  editorsLayout->addWidget(m_label_edit, 0, 1);
+  editorsLayout->addWidget(lg_label, 1, 0);
+  editorsLayout->addWidget(m_login_edit, 1, 1);
+  editorsLayout->addWidget(i_label, 2, 0);
+  editorsLayout->addWidget(m_ip_edit, 2, 1);
+  editorsLayout->addWidget(g_label, 3, 0);
+  editorsLayout->addWidget(m_group_combo, 3, 1);
   
   QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
   m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);

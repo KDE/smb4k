@@ -55,8 +55,8 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget* parent)
   QCheckBox *useAssistant = new QCheckBox(Smb4KSettings::self()->useMigrationAssistantItem()->label(), settings);
   useAssistant->setObjectName("kcfg_UseMigrationAssistant");
   
-  settingsLayout->addWidget(useProfiles, 0, 0);
-  settingsLayout->addWidget(useAssistant, 1, 0);
+  settingsLayout->addWidget(useProfiles, 0);
+  settingsLayout->addWidget(useAssistant, 1);
   
   QGroupBox *profiles = new QGroupBox(i18n("Profiles"), this);
   
@@ -68,10 +68,10 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget* parent)
   m_profiles->setObjectName("kcfg_ProfilesList");
   m_profiles->setEnabled(Smb4KSettings::self()->useProfiles());
   
-  profilesLayout->addWidget(m_profiles, 0, 0);
+  profilesLayout->addWidget(m_profiles, 0);
   
-  layout->addWidget(settings, 0, 0);
-  layout->addWidget(profiles, 1, 0);
+  layout->addWidget(settings, 0);
+  layout->addWidget(profiles, 1);
 
   connect(useProfiles, SIGNAL(stateChanged(int)), this, SLOT(slotEnableWidget(int)));
   connect(m_profiles, SIGNAL(removed(QString)), this, SLOT(slotProfileRemoved(QString)));

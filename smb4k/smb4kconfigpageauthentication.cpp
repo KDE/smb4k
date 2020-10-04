@@ -125,7 +125,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   
   connect(walletEntriesWidget, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
   
-  walletEntriesEditorLayout->addWidget(walletEntriesWidget, 0, 0, 7, 1, 0);
+  walletEntriesEditorLayout->addWidget(walletEntriesWidget, 0, 0, 7, 1);
   
   // 
   // Load button
@@ -138,7 +138,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   
   connect(loadButton, SIGNAL(clicked(bool)), this, SIGNAL(loadWalletEntries()));
   
-  walletEntriesEditorLayout->addWidget(loadButton, 0, 1, 0);
+  walletEntriesEditorLayout->addWidget(loadButton, 0, 1);
   
   // 
   // Save button
@@ -153,7 +153,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   connect(saveButton, SIGNAL(clicked(bool)), this, SIGNAL(saveWalletEntries()));
   connect(saveButton, SIGNAL(clicked(bool)), this, SLOT(slotSaveClicked(bool)));
   
-  walletEntriesEditorLayout->addWidget(saveButton, 1, 1, 0);
+  walletEntriesEditorLayout->addWidget(saveButton, 1, 1);
   walletEntriesEditorLayout->addItem(new QSpacerItem(0, 10, QSizePolicy::Fixed, QSizePolicy::Fixed), 2, 1);
   
   //
@@ -175,7 +175,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent) : 
   
   detailsBoxLayout->addWidget(detailsWidget, 0);
   
-  walletEntriesEditorLayout->addWidget(detailsBox, 5, 1, 0);
+  walletEntriesEditorLayout->addWidget(detailsBox, 5, 1);
   walletEntriesEditorLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Fixed, QSizePolicy::MinimumExpanding), 6, 1);
   
   walletEntriesBoxLayout->addWidget(walletEntriesEditor, 0);

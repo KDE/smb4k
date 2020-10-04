@@ -2405,22 +2405,22 @@ Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr& share, QWidget* parent)
   QLabel *printerNameLabel = new QLabel(i18n("Printer:"), informationBox);
   QLabel *printerName = new QLabel(share->displayString(), informationBox);
   
-  informationBoxLayout->addWidget(printerNameLabel, 0, 0, 0);
-  informationBoxLayout->addWidget(printerName, 0, 1, 0);
+  informationBoxLayout->addWidget(printerNameLabel, 0, 0);
+  informationBoxLayout->addWidget(printerName, 0, 1);
   
   // IP address
   QLabel *ipAddressLabel = new QLabel(i18n("IP Address:"), informationBox);
   QLabel *ipAddress = new QLabel(share->hostIpAddress(), informationBox);
   
-  informationBoxLayout->addWidget(ipAddressLabel, 1, 0, 0);
-  informationBoxLayout->addWidget(ipAddress, 1, 1, 0);
+  informationBoxLayout->addWidget(ipAddressLabel, 1, 0);
+  informationBoxLayout->addWidget(ipAddress, 1, 1);
   
   // Workgroup
   QLabel *workgroupNameLabel = new QLabel(i18n("Domain:"), informationBox);
   QLabel *workgroupName = new QLabel(share->workgroupName(), informationBox);
   
-  informationBoxLayout->addWidget(workgroupNameLabel, 2, 0, 0);
-  informationBoxLayout->addWidget(workgroupName, 2, 1, 0);
+  informationBoxLayout->addWidget(workgroupNameLabel, 2, 0);
+  informationBoxLayout->addWidget(workgroupName, 2, 1);
   
   layout->addWidget(informationBox);
   
@@ -2440,8 +2440,8 @@ Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr& share, QWidget* parent)
     "images. If the file's mimetype is not supported, you need to convert it."));
   connect(file, SIGNAL(textChanged(QString)), this, SLOT(slotUrlChanged()));
   
-  fileBoxLayout->addWidget(fileLabel, 0, 0, 0);
-  fileBoxLayout->addWidget(file, 0, 1, 0);
+  fileBoxLayout->addWidget(fileLabel, 0, 0);
+  fileBoxLayout->addWidget(file, 0, 1);
   
   // Copies
   QLabel *copiesLabel = new QLabel(i18n("Copies:"), fileBox);
@@ -2450,8 +2450,8 @@ Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr& share, QWidget* parent)
   copies->setMinimum(1);
   copies->setWhatsThis(i18n("This is the number of copies you want to print."));
   
-  fileBoxLayout->addWidget(copiesLabel, 1, 0, 0);
-  fileBoxLayout->addWidget(copies, 1, 1, 0);
+  fileBoxLayout->addWidget(copiesLabel, 1, 0);
+  fileBoxLayout->addWidget(copies, 1, 1);
   
   layout->addWidget(fileBox);
   

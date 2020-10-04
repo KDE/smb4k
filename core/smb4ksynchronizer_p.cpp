@@ -723,13 +723,13 @@ Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(const SharePtr &share, QW
   m_destination->setWhatsThis(i18n("This is the destination directory. It will be updated with the data "
     "from the source directory."));
 
-  layout->addWidget(pixmap, 0, 0, 0);
+  layout->addWidget(pixmap, 0, 0);
   layout->addWidget(description, 0, 1, Qt::AlignBottom);
-  layout->addWidget(source_label, 1, 0, 0);
-  layout->addWidget(m_source, 1, 1, 0);
-  layout->addWidget(destination_label, 2, 0, 0);
-  layout->addWidget(m_destination, 2, 1, 0);
-  layout->addWidget(buttonBox, 3, 0, 1, 2, 0);
+  layout->addWidget(source_label, 1, 0);
+  layout->addWidget(m_source, 1, 1);
+  layout->addWidget(destination_label, 2, 0);
+  layout->addWidget(m_destination, 2, 1);
+  layout->addWidget(buttonBox, 3, 0, 1, 2);
 
   // 
   // Connections

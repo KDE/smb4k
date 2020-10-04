@@ -70,13 +70,13 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   
   tabOrientationLabel->setBuddy(tabOrientation);
   
-  mainWindowBoxLayout->addWidget(tabOrientationLabel, 0, 0, 0);
-  mainWindowBoxLayout->addWidget(tabOrientation, 0, 1, 0);
+  mainWindowBoxLayout->addWidget(tabOrientationLabel, 0, 0);
+  mainWindowBoxLayout->addWidget(tabOrientation, 0, 1);
   
   QCheckBox *showBookmarkLabel = new QCheckBox(Smb4KSettings::self()->showCustomBookmarkLabelItem()->label(), mainWindowBox);
   showBookmarkLabel->setObjectName("kcfg_ShowCustomBookmarkLabel");
   
-  mainWindowBoxLayout->addWidget(showBookmarkLabel, 1, 0, 1, 2, 0);
+  mainWindowBoxLayout->addWidget(showBookmarkLabel, 1, 0, 1, 2);
 
   layout->addWidget(mainWindowBox, 0);
   
@@ -90,27 +90,27 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
   QCheckBox *autoExpand = new QCheckBox(Smb4KSettings::self()->autoExpandNetworkItemsItem()->label(), networkNeighhoodBox);
   autoExpand->setObjectName("kcfg_AutoExpandNetworkItems");
   
-  networkNeighhoodBoxLayout->addWidget(autoExpand, 0, 0, 0);
+  networkNeighhoodBoxLayout->addWidget(autoExpand, 0, 0);
   
   QCheckBox *showType = new QCheckBox(Smb4KSettings::self()->showTypeItem()->label(), networkNeighhoodBox);
   showType->setObjectName("kcfg_ShowType");
   
-  networkNeighhoodBoxLayout->addWidget(showType, 0, 1, 0);
+  networkNeighhoodBoxLayout->addWidget(showType, 0, 1);
   
   QCheckBox *showIpAddress = new QCheckBox(Smb4KSettings::self()->showIPAddressItem()->label(), networkNeighhoodBox);
   showIpAddress->setObjectName("kcfg_ShowIPAddress");
   
-  networkNeighhoodBoxLayout->addWidget(showIpAddress, 1, 0, 0);
+  networkNeighhoodBoxLayout->addWidget(showIpAddress, 1, 0);
   
   QCheckBox *showComment = new QCheckBox(Smb4KSettings::self()->showCommentItem()->label(), networkNeighhoodBox);
   showComment->setObjectName("kcfg_ShowComment");
   
-  networkNeighhoodBoxLayout->addWidget(showComment, 1, 1, 0);
+  networkNeighhoodBoxLayout->addWidget(showComment, 1, 1);
   
   QCheckBox *showNetworkTooltip = new QCheckBox(Smb4KSettings::self()->showNetworkItemToolTipItem()->label(), networkNeighhoodBox);
   showNetworkTooltip->setObjectName("kcfg_ShowNetworkItemToolTip");
   
-  networkNeighhoodBoxLayout->addWidget(showNetworkTooltip, 2, 0, 1, 2, 0);
+  networkNeighhoodBoxLayout->addWidget(showNetworkTooltip, 2, 0, 1, 2);
   
   layout->addWidget(networkNeighhoodBox, 0);
   
@@ -134,13 +134,13 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 
   viewModeLabel->setBuddy(viewMode);
 
-  sharesViewBoxLayout->addWidget(viewModeLabel, 0, 0, 0);
-  sharesViewBoxLayout->addWidget(viewMode, 0, 1, 0);
+  sharesViewBoxLayout->addWidget(viewModeLabel, 0, 0);
+  sharesViewBoxLayout->addWidget(viewMode, 0, 1);
   
   QCheckBox *showShareTooltip = new QCheckBox(Smb4KSettings::self()->showShareToolTipItem()->label(), sharesViewBox);
   showShareTooltip->setObjectName("kcfg_ShowShareToolTip");
   
-  sharesViewBoxLayout->addWidget(showShareTooltip, 1, 0, 1, 2, 0);
+  sharesViewBoxLayout->addWidget(showShareTooltip, 1, 0, 1, 2);
   
   layout->addWidget(sharesViewBox, 0);
   layout->addStretch(100);
