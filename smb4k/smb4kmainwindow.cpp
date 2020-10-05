@@ -2,7 +2,7 @@
     The main window of Smb4K
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2019 by Alexander Reinholdt
+    copyright            : (C) 2008-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -529,12 +529,7 @@ void Smb4KMainWindow::setupMountIndicator()
   }
   else
   {
-#if KICONTHEMES_VERSION < QT_VERSION_CHECK(5,52,0)
     overlays << "emblem-mounted";
-#else
-    overlays << "";
-    overlays << "emblem-mounted";
-#endif
     m_feedback_icon->setToolTip(i18np("There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size()));
   }
 

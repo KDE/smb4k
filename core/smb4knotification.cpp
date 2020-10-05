@@ -56,11 +56,7 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
     
     Smb4KNotifier *notification = new Smb4KNotifier("shareMounted");
     notification->setText(i18n("<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>", share->displayString(), share->path()));
-#if KICONTHEMES_VERSION < QT_VERSION_CHECK(5,52,0)
     notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList("emblem-mounted")));
-#else
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList({"","emblem-mounted"})));
-#endif
     notification->setActions(QStringList(i18n("Open")));
     notification->setMountpoint(mountpoint);
     notification->sendEvent();
@@ -76,11 +72,7 @@ void Smb4KNotification::shareUnmounted(const SharePtr &share)
   {
     Smb4KNotifier *notification = new Smb4KNotifier("shareUnmounted");
     notification->setText(i18n("<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>", share->displayString(), share->path()));
-#if KICONTHEMES_VERSION < QT_VERSION_CHECK(5,52,0)
     notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList("emblem-unmounted")));
-#else
-    notification->setPixmap(KIconLoader::global()->loadIcon("folder-network", KIconLoader::NoGroup, 0, KIconLoader::DefaultState, QStringList({"","emblem-unmounted"})));
-#endif
     notification->sendEvent();
   }
 }
