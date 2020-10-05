@@ -11,5 +11,5 @@ build:
         - echo "Building Smb4K"
         - mkdir build
         - cd build
-        - cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_WS_DISCOVERY=OFF -DINSTALL_PLASMOID=OFF -DINSTALL_HEADER_FILES=OFF ..
+        - cmake -DCMAKE_BUILD_TYPE=Debug -DSMB4K_WITH_WS_DISCOVERY=OFF -DSMB4K_INSTALL_PLASMOID=OFF ..
         - make
