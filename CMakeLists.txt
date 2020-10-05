@@ -44,15 +44,11 @@ endif()
 #
 # Options for building Smb4K
 #
-
-# Install header files
-option(INSTALL_HEADER_FILES "Install header files" OFF)
-
 # Install plasmoid
-option(INSTALL_PLASMOID "Install the plasmoid" ON)
+option(SMB4K_INSTALL_PLASMOID "Install the plasmoid" ON)
 
 # Build with KDSoap WS Discovery client
-option(WITH_WS_DISCOVERY "Build with WS-Discovery support for browsing" OFF)
+option(SMB4K_WITH_WS_DISCOVERY "Build with WS-Discovery support for browsing" OFF)
 
 #
 # Required packages and includes
@@ -101,7 +97,7 @@ find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5DNSSD ${KF5_MIN_VERSION} REQUIRED)
 
 # Install the plasmoid if desired
-if (INSTALL_PLASMOID)
+if (SMB4K_INSTALL_PLASMOID)
   find_package(KF5Plasma ${KF5_MIN_VERSION})
   set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)
 endif()
@@ -119,10 +115,10 @@ if (NOT HAVE_SMBC_PROTOCOL)
 endif()
 
 # Find KDSoap client
-if (WITH_WS_DISCOVERY)
+if (SMB4K_WITH_WS_DISCOVERY)
   find_package(KDSoap 1.9.0 REQUIRED)
   find_package(KDSoapWSDiscoveryClient 0.2 REQUIRED)
-endif(WITH_WS_DISCOVERY)
+endif(SMB4K_WITH_WS_DISCOVERY)
 
 #
 # Make sure that Smb4K builds when several custom targets
@@ -160,20 +156,13 @@ endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
 #
 # Make adjustments according to the options set by the user
 #
-# Header files: Notify the user
-if (INSTALL_HEADER_FILES)
-  message(STATUS "Installing core header files (-DINSTALL_HEADER_FILES=OFF to disable)")
-elseif (NOT INSTALL_HEADER_FILES)
-  message(STATUS "Not installing core header files (-DINSTALL_HEADER_FILES=ON to enable)")
-endif(INSTALL_HEADER_FILES)
-
 # Plasmoid: Notify the user and add the subdirectory if desired
-if (INSTALL_PLASMOID)
-  message(STATUS "Installing plasmoid (-DINSTALL_PLASMOID=OFF to disable)")
+if (SMB4K_INSTALL_PLASMOID)
+  message(STATUS "Installing plasmoid (-DSMB4K_INSTALL_PLASMOID=OFF to disable)")
   add_subdirectory(plasmoid)
-elseif(NOT INSTALL_PLASMOID)
-  message(STATUS "Not installing plasmoid (-DINSTALL_PLASMOID=ON to enable)")
-endif(INSTALL_PLASMOID)
+elseif(NOT SMB4K_INSTALL_PLASMOID)
+  message(STATUS "Not installing plasmoid (-DSMB4K_INSTALL_PLASMOID=ON to enable)")
+endif(SMB4K_INSTALL_PLASMOID)
 
 ########### install files ###############
 

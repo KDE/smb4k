@@ -127,12 +127,9 @@ you have read the Requirements section before you start.
 
    There are some Smb4K specific CMake arguments you might be interested in:
 
-   -DINSTALL_HEADER_FILES=ON/OFF    Install the core header files. This is off 
-                                    by default.
-                                    
-   -DINSTALL_PLASMOID=ON/OFF        Install the plasmoid. This is on by default.
+   -DSMB4K_INSTALL_PLASMOID=ON/OFF  Install the plasmoid. This is on by default.
 
-   -DWITH_WS_DISCOVERY=ON/OFF       Build with WS-Discovery support for
+   -DSMB4K_WITH_WS_DISCOVERY=ON/OFF Build with WS-Discovery support for
                                     browsing. This is off by default.
 
 6. After the configuration, compile and install Smb4K:

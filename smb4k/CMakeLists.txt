@@ -39,9 +39,9 @@ target_link_libraries(smb4kconfigdialog
   KF5::KIOWidgets
   smb4kcore)
   
-if (WITH_WS_DISCOVERY)
-  target_compile_definitions(smb4kconfigdialog PRIVATE USE_WS_DISCOVERY=${WITH_WS_DISCOVERY})
-endif(WITH_WS_DISCOVERY)
+if (SMB4K_WITH_WS_DISCOVERY)
+  target_compile_definitions(smb4kconfigdialog PRIVATE USE_WS_DISCOVERY=${SMB4K_WITH_WS_DISCOVERY})
+endif(SMB4K_WITH_WS_DISCOVERY)
 
 ########### Main Application #########################
 

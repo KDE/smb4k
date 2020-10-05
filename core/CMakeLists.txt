@@ -82,10 +82,10 @@ target_link_libraries(smb4kcore
 set_target_properties(smb4kcore PROPERTIES VERSION 6.1.0 SOVERSION 6)
 install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
 
-if (WITH_WS_DISCOVERY)
-  target_compile_definitions(smb4kcore PRIVATE USE_WS_DISCOVERY=${WITH_WS_DISCOVERY})
+if (SMB4K_WITH_WS_DISCOVERY)
+  target_compile_definitions(smb4kcore PRIVATE USE_WS_DISCOVERY=${SMB4K_WITH_WS_DISCOVERY})
   target_link_libraries(smb4kcore KDSoap::WSDiscoveryClient)
-endif(WITH_WS_DISCOVERY)
+endif(SMB4K_WITH_WS_DISCOVERY)
 
 
 ########### install files ###############
@@ -93,27 +93,3 @@ endif(WITH_WS_DISCOVERY)
 install(FILES smb4k.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 install(FILES smb4k.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})
 
-if (INSTALL_HEADER_FILES)
-  install(FILES
-    smb4kauthinfo.h
-    smb4kbasicnetworkitem.h
-    smb4kbookmark.h
-    smb4kbookmarkhandler.h
-    smb4kclient.h
-    smb4kcustomoptions.h
-    smb4kcustomoptionsmanager.h
-    smb4kfile.h
-    smb4kglobal.h
-    smb4khardwareinterface.h
-    smb4khomesshareshandler.h
-    smb4khost.h
-    smb4kmounter.h
-    smb4knotification.h
-    smb4kprocess.h
-    smb4kprofilemanager.h
-    smb4kshare.h
-    smb4ksynchronizer.h
-    smb4kwalletmanager.h
-    smb4kworkgroup.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR})
-endif (INSTALL_HEADER_FILES)
