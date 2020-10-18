@@ -446,8 +446,8 @@ bool Smb4KMainWindow::queryClose()
   {
     // This part has been 'stolen' from JuK application.
     KMessageBox::information(this,
-            i18n("<qt>Closing the main window will keep Smb4K running in the system tray. "
-                  "Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"),
+            i18n("<qt>Closing the main window will keep Smb4K running in the system tray.<br>"
+                 "Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"),
             i18n("Docking"), "DockToSystemTrayInfo");
     setVisible(false);
     return false;
@@ -563,7 +563,7 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget* dock)
     // Prepare the dynamic action list for the main window
     //
     QList<QAction *> dynamicList;
-    KActionCollection *dockActionCollection = 0;
+    KActionCollection *dockActionCollection = nullptr;
     
     if (dock->objectName() == "NetworkBrowserDockWidget")
     {
