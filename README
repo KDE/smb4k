@@ -56,16 +56,14 @@ Requirements
 
 To compile Smb4K, you need:
 - CMake (version >= 3.2, https://www.cmake.org)
-- GNU Compiler Collection</ulink> (version >= 5.0, https://gcc.gnu.org)
+- GNU Compiler Collection (version >= 5.0, https://gcc.gnu.org)
   or clang/LLVM (version >= 3.0, https://clang.llvm.org)
 
-To be able to use the main application of Smb4K you need at least Qt, 
-version >= 5.9.0 and KDE Frameworks 5 (KF5, version >= 5.44.0,
-https://www.kde.org). 
-
 Smb4K build depends on:
-- QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml
-- KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, 
+- Qt (version >= 5.9, https://www.qt.io): QtCore, QtGui, QtWidgets, 
+  QtTest, QtNetwork, QtPrintSupport, QtQml
+- KDE Frameworks 5 (KF5, version >= 5.44.0, https://www.kde.org): ECM, 
+  KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, 
   KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, 
   KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem,
   KCrash, KDNSSD
@@ -82,7 +80,7 @@ It also runtime depends on:
 - KPlasma
 - LinuxCIFS utils (Linux only, https://wiki.samba.org/index.php/LinuxCIFS_utils)
 
-To enable full functionality, you may also want to install these programs:
+To enable full functionality, you may also want to install:
 - rsync (https://rsync.samba.org)
 
 The full list of changes can be found in the Git log at 
@@ -137,10 +135,18 @@ you have read the Requirements section before you start.
    $ make && sudo make install
 
    If you want to be able to remove Smb4K with your package manager later on, 
-   use checkinstall instead of make install. The package should be present in 
-   your distribution's repository:
+   use the following approaches depending on your distribution.
+   
+   (a) Debian, Ubuntu, openSUSE, Fedora, Redhat, Slackware: Use checkinstall 
+   instead of make install. The package should be present in your distribution's
+   repository.
 
-   $ make && sudo checkinstall
+    $ make && sudo checkinstall
+   
+   (b) Arch, Manjaro: Create a PKGBUILD file inside the source's root directory
+   and run the following command to install Smb4K.
+   
+   $ makepkg -i
 
 
 Debugging the Source Code
