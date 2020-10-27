@@ -2,7 +2,7 @@
     This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2019 by Alexander Reinholdt
+    copyright            : (C) 2013-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -56,7 +56,7 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
   Q_PROPERTY(QQmlListProperty<Smb4KNetworkObject> shares READ shares NOTIFY sharesListChanged)
   Q_PROPERTY(QQmlListProperty<Smb4KNetworkObject> mountedShares READ mountedShares NOTIFY mountedSharesListChanged)
   Q_PROPERTY(QQmlListProperty<Smb4KBookmarkObject> bookmarks READ bookmarks NOTIFY bookmarksListChanged)
-  Q_PROPERTY(QQmlListProperty<Smb4KBookmarkObject> bookmarkGroups READ bookmarkGroups NOTIFY bookmarksListChanged)
+  Q_PROPERTY(QQmlListProperty<Smb4KBookmarkObject> bookmarkCategories READ bookmarkCategories NOTIFY bookmarksListChanged)
   Q_PROPERTY(QQmlListProperty<Smb4KProfileObject> profiles READ profiles NOTIFY profilesListChanged)
   Q_PROPERTY(QString activeProfile READ activeProfile WRITE setActiveProfile NOTIFY activeProfileChanged)
   Q_PROPERTY(bool profileUsage READ profileUsage NOTIFY profileUsageChanged);
@@ -120,13 +120,13 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     QQmlListProperty<Smb4KBookmarkObject> bookmarks();
     
     /**
-     * This function returns the list of bookmark groups. Basically, this is the 
-     * the list returned by the Smb4KBookmarkHandler::groupsList() function 
+     * This function returns the list of bookmark categories. Basically, this is the 
+     * the list returned by the Smb4KBookmarkHandler::categoryList() function 
      * converted into a list of Smb4KBookmarkObject objects.
      * 
      * @returns the list of bookmarks
      */
-    QQmlListProperty<Smb4KBookmarkObject> bookmarkGroups();
+    QQmlListProperty<Smb4KBookmarkObject> bookmarkCategories();
     
     /**
      * This function returns the list of profiles. Basically, this is the list
@@ -179,7 +179,15 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
      * 
      * @param object         The network object
      */
-    Q_INVOKABLE void mount(Smb4KNetworkObject *object);
+    Q_INVOKABLE void mountShare(Smb4KNetworkObject *object);
+    
+    /**
+     * This function takes a bookmark object and initiates the mounting of 
+     * the respective remote share.
+     * 
+     * @param object         The bookmark object
+     */
+    Q_INVOKABLE void mountBookmark(Smb4KBookmarkObject *object);
     
     /**
      * This function takes a network object and initiates the unmounting of 

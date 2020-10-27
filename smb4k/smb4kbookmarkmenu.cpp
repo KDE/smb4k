@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2019 by Alexander Reinholdt
+    copyright            : (C) 2011-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -58,14 +58,18 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QWidget *parentWidget, QObject *p
   // 
   m_bookmarks = new QActionGroup(menu());
 
+  //
   // Set up the menu
+  // 
   setupMenu();
 
+  // 
   // Connections
+  // 
   connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), SLOT(slotBookmarksUpdated()));
   connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
   connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
-  connect(m_actions, SIGNAL(triggered(QAction*)), SLOT(slotGroupActionTriggered(QAction*)));
+  connect(m_actions, SIGNAL(triggered(QAction*)), SLOT(slotCategoryActionTriggered(QAction*)));
   connect(m_bookmarks, SIGNAL(triggered(QAction*)), SLOT(slotBookmarkActionTriggered(QAction*)));
 }
 
@@ -169,16 +173,16 @@ void Smb4KBookmarkMenu::setupMenu()
   }
   
   //
-  // Get the list of groups
+  // Get the list of categories
   //
-  QStringList allGroups = Smb4KBookmarkHandler::self()->groupsList();
-  allGroups.sort();
+  QStringList allCategories = Smb4KBookmarkHandler::self()->categoryList();
+  allCategories.sort();
   
   //
   // Insert a toplevel mount action, if necessary. Crucial for this is that there are 
-  // no (non-empty) groups defined. Enable it if not all toplevel bookmarks are mounted.
+  // no (non-empty) categories defined. Enable it if not all toplevel bookmarks are mounted.
   //
-  if (allGroups.isEmpty() || (allGroups.size() == 1 && allGroups.first().isEmpty()))
+  if (allCategories.isEmpty() || (allCategories.size() == 1 && allCategories.first().isEmpty()))
   {
     QAction *toplevelMount = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), menu());
     toplevelMount->setObjectName("toplevel_mount");
@@ -205,10 +209,6 @@ void Smb4KBookmarkMenu::setupMenu()
             mountedBookmarks++;
             break;
           }
-          else
-          {
-            continue;
-          }
         }
       }
     }
@@ -222,35 +222,35 @@ void Smb4KBookmarkMenu::setupMenu()
   addSeparator();
   
   //
-  // Now add the groups and their bookmarks
+  // Now add the categories and their bookmarks
   //
-  for (const QString &group : allGroups)
+  for (const QString &category : allCategories)
   {
-    if (!group.isEmpty())
+    if (!category.isEmpty())
     {
-      // Group menu entry
-      KActionMenu *bookmarkGroupMenu = new KActionMenu(group, menu());
-      bookmarkGroupMenu->setIcon(KDE::icon("folder-favorites"));
+      // Category menu entry
+      KActionMenu *bookmarkCategoryMenu = new KActionMenu(category, menu());
+      bookmarkCategoryMenu->setIcon(KDE::icon("folder-favorites"));
       QMap<QString,QVariant> menuInfo;
-      menuInfo["type"] = "group_menu";
-      menuInfo["group"] = group;
-      bookmarkGroupMenu->setData(menuInfo);
-      addAction(bookmarkGroupMenu);
+      menuInfo["type"] = "category_menu";
+      menuInfo["category"] = category;
+      bookmarkCategoryMenu->setData(menuInfo);
+      addAction(bookmarkCategoryMenu);
       
-      // Mount action for the group
-      QAction *bookmarkGroupMount = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), bookmarkGroupMenu->menu());
-      QMap<QString,QVariant> groupMountInfo;
-      groupMountInfo["type"] = "group_mount";
-      groupMountInfo["group"] = group;
-      bookmarkGroupMount->setData(groupMountInfo);
-      bookmarkGroupMenu->addAction(bookmarkGroupMount);
-      m_actions->addAction(bookmarkGroupMount);
+      // Mount action for the category
+      QAction *bookmarkCategoryMount = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), bookmarkCategoryMenu->menu());
+      QMap<QString,QVariant> categoryMountInfo;
+      categoryMountInfo["type"] = "category_mount";
+      categoryMountInfo["category"] = category;
+      bookmarkCategoryMount->setData(categoryMountInfo);
+      bookmarkCategoryMenu->addAction(bookmarkCategoryMount);
+      m_actions->addAction(bookmarkCategoryMount);
       
-      // Get the list of bookmarks belonging to this group.
-      // Use it to decide whether the group mount action should be enabled 
-      // (only if not all bookmarks belonging to this group are mounted) and
+      // Get the list of bookmarks belonging to this category.
+      // Use it to decide whether the category mount action should be enabled 
+      // (only if not all bookmarks belonging to this category are mounted) and
       // to sort the bookmarks.      
-      QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(group);
+      QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(category);
       QStringList sortedBookmarks;
       int mountedBookmarks = 0;
       
@@ -260,11 +260,11 @@ void Smb4KBookmarkMenu::setupMenu()
         
         if (Smb4KSettings::showCustomBookmarkLabel() && !bookmark->label().isEmpty())
         {
-          bookmarkAction = new QAction(bookmark->icon(), bookmark->label(), bookmarkGroupMenu->menu());
+          bookmarkAction = new QAction(bookmark->icon(), bookmark->label(), bookmarkCategoryMenu->menu());
           bookmarkAction->setObjectName(bookmark->url().toDisplayString());
           QMap<QString,QVariant> bookmarkInfo;
           bookmarkInfo["type"] = "bookmark";
-          bookmarkInfo["group"] = group;
+          bookmarkInfo["category"] = category;
           bookmarkInfo["url"] = bookmark->url();
           bookmarkInfo["text"] = bookmark->label();
           bookmarkAction->setData(bookmarkInfo);
@@ -273,11 +273,11 @@ void Smb4KBookmarkMenu::setupMenu()
         }
         else
         {
-          bookmarkAction = new QAction(bookmark->icon(), bookmark->displayString(), bookmarkGroupMenu->menu());
+          bookmarkAction = new QAction(bookmark->icon(), bookmark->displayString(), bookmarkCategoryMenu->menu());
           bookmarkAction->setObjectName(bookmark->url().toDisplayString());
           QMap<QString,QVariant> bookmarkInfo;
           bookmarkInfo["type"] = "bookmark";
-          bookmarkInfo["group"] = group;
+          bookmarkInfo["category"] = category;
           bookmarkInfo["url"] = bookmark->url();
           bookmarkInfo["text"] = bookmark->displayString();
           bookmarkAction->setData(bookmarkInfo);
@@ -293,25 +293,22 @@ void Smb4KBookmarkMenu::setupMenu()
           {
             if (!share->isForeign())
             {
+              qDebug() << "Disabling bookmark" << share->url().toDisplayString();
               bookmarkAction->setEnabled(false);
               mountedBookmarks++;
               break;
-            }
-            else
-            {
-              continue;
             }
           }
         }
       }
       
-      bookmarkGroupMount->setEnabled(mountedBookmarks != bookmarks.size());
+      bookmarkCategoryMount->setEnabled(mountedBookmarks != bookmarks.size());
       sortedBookmarks.sort();
       
       // Add a separator
-      bookmarkGroupMenu->addSeparator();
+      bookmarkCategoryMenu->addSeparator();
       
-      // Insert the sorted bookmarks into the group menu
+      // Insert the sorted bookmarks into the category menu
       QList<QAction *> actions = m_bookmarks->actions();
       
       for (const QString &b : sortedBookmarks)
@@ -320,12 +317,8 @@ void Smb4KBookmarkMenu::setupMenu()
         {
           if (a->text() == b)
           {
-            bookmarkGroupMenu->addAction(a);
+            bookmarkCategoryMenu->addAction(a);
             break;
-          }
-          else
-          {
-            continue;
           }
         }
       }
@@ -333,7 +326,7 @@ void Smb4KBookmarkMenu::setupMenu()
   }
   
   //
-  // Add all bookmarks that have no group
+  // Add all bookmarks that have no category
   // Sort the bookmarks before.  
   //
   QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList("");
@@ -349,7 +342,7 @@ void Smb4KBookmarkMenu::setupMenu()
       bookmarkAction->setObjectName(bookmark->url().toDisplayString());
       QMap<QString,QVariant> bookmarkInfo;
       bookmarkInfo["type"] = "bookmark";
-      bookmarkInfo["group"] = "";
+      bookmarkInfo["category"] = "";
       bookmarkInfo["url"] = bookmark->url();
       bookmarkInfo["text"] = bookmark->label();
       bookmarkAction->setData(bookmarkInfo);
@@ -362,7 +355,7 @@ void Smb4KBookmarkMenu::setupMenu()
       bookmarkAction->setObjectName(bookmark->url().toDisplayString());
       QMap<QString,QVariant> bookmarkInfo;
       bookmarkInfo["type"] = "bookmark";
-      bookmarkInfo["group"] = "";
+      bookmarkInfo["category"] = "";
       bookmarkInfo["url"] = bookmark->url();
       bookmarkInfo["text"] = bookmark->displayString();
       bookmarkAction->setData(bookmarkInfo);
@@ -378,12 +371,9 @@ void Smb4KBookmarkMenu::setupMenu()
       {
         if (!share->isForeign())
         {
+          qDebug() << "Disabling bookmark" << share->url().toDisplayString();
           bookmarkAction->setEnabled(false);
           break;
-        }
-        else
-        {
-          continue;
         }
       }
     }
@@ -401,10 +391,6 @@ void Smb4KBookmarkMenu::setupMenu()
       {
         addAction(a);
         break;
-      }
-      else
-      {
-        continue;
       }
     }
   }
@@ -431,7 +417,7 @@ void Smb4KBookmarkMenu::slotToplevelMountActionTriggered(bool /*checked*/)
 {
   //
   // Mount all top level bookmarks.
-  // This slot will only be called if there are no groups defined.
+  // This slot will only be called if there are no categories defined.
   //
   QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList();
   QList<SharePtr> mounts;
@@ -457,14 +443,14 @@ void Smb4KBookmarkMenu::slotToplevelMountActionTriggered(bool /*checked*/)
 }
 
 
-void Smb4KBookmarkMenu::slotGroupActionTriggered(QAction *action)
+void Smb4KBookmarkMenu::slotCategoryActionTriggered(QAction *action)
 {
-  if (action->data().toMap().value("type").toString() == "group_mount")
+  if (action->data().toMap().value("type").toString() == "category_mount")
   {
     //
-    // Mount all bookmarks of one group
+    // Mount all bookmarks of one category
     //
-    QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(action->data().toMap().value("group").toString());
+    QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(action->data().toMap().value("category").toString());
     QList<SharePtr> mounts;
 
     for (const BookmarkPtr &bookmark : bookmarks)
@@ -492,12 +478,12 @@ void Smb4KBookmarkMenu::slotGroupActionTriggered(QAction *action)
 void Smb4KBookmarkMenu::slotBookmarkActionTriggered(QAction *action)
 {
   QMap<QString,QVariant> info = action->data().toMap();
-  QString bookmarkGroup = info.value("group").toString();
+  QString bookmarkCategory = info.value("category").toString();
   QUrl url = info.value("url").toUrl();
   
   BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(url);
 
-  if (bookmark && bookmarkGroup == bookmark->groupName())
+  if (bookmark && bookmarkCategory == bookmark->categoryName())
   {
     SharePtr share = SharePtr(new Smb4KShare());
     share->setHostName(bookmark->hostName());
@@ -525,34 +511,32 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
     // Enable or disable the bookmark
     //
     QList<QAction *> actions = m_bookmarks->actions();
-    QString bookmarkGroup;
+    QString bookmarkCategory;
     
     for (QAction *a : actions)
     {
-      if (share->url() == a->data().toMap().value("url").toUrl())
+      QUrl bookmarkUrl = a->data().toMap().value("url").toUrl();
+      
+      if (share->url().matches(bookmarkUrl, QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         a->setEnabled(!share->isMounted());
-        bookmarkGroup = a->data().toMap().value("group").toString();
+        bookmarkCategory = a->data().toMap().value("category").toString();
         break;
       }
     }
     
     //
-    // Check if all bookmarks belonging to this group are 
+    // Check if all bookmarks belonging to this category are 
     // mounted. Enable the respective mount action if necessary.
     //
     bool allMounted = true;
       
     for (QAction *a : actions)
     {
-      if (a->data().toMap().value("group").toString() == bookmarkGroup && a->isEnabled())
+      if (a->data().toMap().value("category").toString() == bookmarkCategory && a->isEnabled())
       {
         allMounted = false;
         break;
-      }
-      else
-      {
-        continue;
       }
     }
       
@@ -560,20 +544,16 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
       
     for (QAction *a : allActions)
     {
-      if (a->data().toMap().value("type").toString() == "toplevel_mount" && bookmarkGroup.isEmpty())
+      if (a->data().toMap().value("type").toString() == "toplevel_mount" && bookmarkCategory.isEmpty())
       {
         a->setEnabled(!allMounted);
         break;
       }
-      else if (a->data().toMap().value("type").toString() == "group_mount" &&
-               a->data().toMap().value("group").toString() == bookmarkGroup)
+      else if (a->data().toMap().value("type").toString() == "category_mount" &&
+               a->data().toMap().value("category").toString() == bookmarkCategory)
       {
         a->setEnabled(!allMounted);
         break;
-      }
-      else
-      {
-        continue;
       }
     }
   }

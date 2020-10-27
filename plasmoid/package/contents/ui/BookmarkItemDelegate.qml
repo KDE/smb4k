@@ -52,7 +52,7 @@ PlasmaComponents.ListItem {
         anchors.verticalCenter: parent.verticalCenter
         PlasmaCore.IconItem {
           id: delegateItemIcon
-          source: (object.isGroup ? "folder-bookmark" : "folder-network-symbolic")
+          source: (object.isCategory ? "folder-bookmark" : "folder-network-symbolic")
           overlays: [
             (object.isMounted ? "emblem-mounted" : "")
           ]
@@ -67,12 +67,12 @@ PlasmaComponents.ListItem {
           id: delegateItemText
           elide: Text.ElideRight
           text: {
-            if (!object.isGroup) {
+            if (!object.isCategory) {
               object.shareName+(object.label.length != 0 ? " ("+object.label+")" : "")+
               "<br>"+i18n("<font size=\"-1\">on %1</font>", object.hostName)
             }
             else {
-              object.groupName
+              object.categoryName
             }
           }
           enabled: delegate.enabled

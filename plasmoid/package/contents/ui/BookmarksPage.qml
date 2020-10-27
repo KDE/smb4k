@@ -71,10 +71,10 @@ PlasmaComponents.Page {
     function lessThan(left, right) {
       var less = false
 
-      if (left.isGroup && right.isGroup) {
-        less = (left.groupName < right.groupName)
+      if (left.isCategory && right.isCategory) {
+        less = (left.categoryName < right.categoryName)
       }
-      else if (!left.isGroup && !right.isGroup) {        
+      else if (!left.isCategory && !right.isCategory) {        
         if (left.hostName == right.hostName) {
           less = (left.shareName < right.shareName)
         }
@@ -140,7 +140,7 @@ PlasmaComponents.Page {
         
       onItemClicked: {
         bookmarksListView.currentIndex = DelegateModel.itemsIndex
-        bookmarkOrGroupClicked(object)
+        bookmarkOrCategoryClicked(object)
       }
     }
   }
@@ -188,24 +188,24 @@ PlasmaComponents.Page {
   //
   function back() {
     // Since the 'Back' button is only useful when you
-    // are currently in a group subfolder and want to 
+    // are currently in a category subfolder and want to 
     // go back to the toplevel, just run fillView() here.
     fillView()
   }
   
-  function bookmarkOrGroupClicked(object) {
-    if (object.isGroup) {
+  function bookmarkOrCategoryClicked(object) {
+    if (object.isCategory) {
       while (bookmarkItemDelegateModel.model.count != 0) {
         bookmarkItemDelegateModel.model.remove(0)
       }
       
-      getBookmarks(object.groupName)
+      getBookmarks(object.categoryName)
       
       // Set the current item to 0
       bookmarksListView.currentIndex = 0
     }
     else {
-      iface.mount(object.url)
+      iface.mountBookmark(object)
     }
   }
   
@@ -214,7 +214,7 @@ PlasmaComponents.Page {
       var object = bookmarkItemDelegateModel.model.get(i).object
       
       if (object !== null) {
-        if (!object.isGroup) {
+        if (!object.isCategory) {
           var mountedShare = iface.findMountedShare(object.url, false)
           
           if (mountedShare !== null) {
@@ -241,11 +241,11 @@ PlasmaComponents.Page {
       bookmarkItemDelegateModel.model.remove(0)
     }
     
-    // Get groups
-    if (iface.bookmarkGroups.length != 0) {
-      for (var i = 0; i < iface.bookmarkGroups.length; i++) {
-        if (iface.bookmarkGroups[i].groupName.length != 0) {
-          bookmarkItemDelegateModel.model.append({"object": iface.bookmarkGroups[i]})
+    // Get categories
+    if (iface.bookmarkCategories.length != 0) {
+      for (var i = 0; i < iface.bookmarkCategories.length; i++) {
+        if (iface.bookmarkCategories[i].categoryName.length != 0) {
+          bookmarkItemDelegateModel.model.append({"object": iface.bookmarkCategories[i]})
         }
         else {
           // Do nothing
@@ -263,10 +263,10 @@ PlasmaComponents.Page {
     bookmarksListView.currentIndex = 0
   }
   
-  function getBookmarks(groupName) {
+  function getBookmarks(categoryName) {
     if (iface.bookmarks.length != 0) {
       for (var i = 0; i < iface.bookmarks.length; i++) {
-        if (iface.bookmarks[i].groupName == groupName) {
+        if (iface.bookmarks[i].categoryName == categoryName) {
           var bookmark = iface.bookmarks[i]
           var mountedShare = iface.findMountedShare(bookmark.url, false)
           if (mountedShare !== null) {

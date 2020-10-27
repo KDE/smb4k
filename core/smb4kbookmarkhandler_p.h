@@ -2,7 +2,7 @@
     Private classes for the bookmark handler
                              -------------------
     begin                : Sun Mar 20 2011
-    copyright            : (C) 2011-2018 by Alexander Reinholdt
+    copyright            : (C) 2011-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -56,13 +56,11 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
      *
      * @param bookmarks       The list of bookmarks that are to be saved
      * 
-     * @param groups          The list of available bookmark groups
+     * @param categories      The list of available bookmark categories
      *
      * @param parent          The parent widget
      */
-    Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks,
-                        const QStringList &groups,
-                        QWidget *parent);
+    Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks, const QStringList &categories, QWidget *parent);
 
    /**
     * The destructor
@@ -81,7 +79,7 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     /**
      * Called when a bookmark was clicked in the list widget.
      */
-    void slotBookmarkClicked(QListWidgetItem *bookmark_item);
+    void slotBookmarkClicked(QListWidgetItem *bookmarkItem);
 
     /**
      * Called when the label is edited by the user
@@ -89,9 +87,9 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     void slotLabelEdited();
 
     /**
-     * Called when the group is edited by the user
+     * Called when the category is edited by the user
      */
-    void slotGroupEdited();
+    void slotCategoryEdited();
 
     /**
      * Called when the OK button was clicked
@@ -110,24 +108,14 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     void setupView();
     
     /**
-     * Load the list of bookmarks and the one of the groups
+     * Load the list of bookmarks and the one of the categories
      */
-    void loadLists(const QList<BookmarkPtr> &bookmarks, const QStringList &groups);
+    void loadLists(const QList<BookmarkPtr> &bookmarks, const QStringList &categories);
 
     /**
      * Finds the bookmark in the list
      */
     BookmarkPtr findBookmark(const QUrl &url);
-    
-    /**
-     * Ok push button
-     */
-    QPushButton *m_ok_button;
-    
-    /**
-     * Cancel push button
-     */
-    QPushButton *m_cancel_button;
 
     /**
      * The list of bookmarks
@@ -137,27 +125,7 @@ class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
     /**
      * The list of groups
      */
-    QStringList m_groups;
-
-    /**
-     * The tree widget for the potential bookmarks
-     */
-    QListWidget *m_widget;
-
-    /**
-     * The widget containing the editors
-     */
-    QWidget *m_editors;
-
-    /**
-     * The label
-     */
-    KLineEdit *m_label_edit;
-    
-    /**
-     * The groups
-     */
-    KComboBox *m_group_combo;
+    QStringList m_categories;
 };
 
 
@@ -213,9 +181,9 @@ class Smb4KBookmarkEditor : public QDialog
     void slotLabelEdited();
 
     /**
-     * Called when the group is edited by the user
+     * Called when the category is edited by the user
      */
-    void slotGroupEdited();
+    void slotCategoryEdited();
 
     /**
      * Called when the IP address is edited by the user
@@ -230,7 +198,7 @@ class Smb4KBookmarkEditor : public QDialog
     /**
      * Called when the add action was triggered
      */
-    void slotAddGroupTriggered(bool checked);
+    void slotAddCategoryTriggered(bool checked);
 
     /**
      * Called when the delete action was triggered
@@ -272,16 +240,6 @@ class Smb4KBookmarkEditor : public QDialog
      * Finds the bookmark in the list
      */
     BookmarkPtr findBookmark(const QUrl &url);
-    
-    /**
-     * Ok push button
-     */
-    QPushButton *m_ok_button;
-    
-    /**
-     * Cancel push button
-     */
-    QPushButton *m_cancel_button;
 
     /**
      * List of the bookmarks that are being processed
@@ -289,59 +247,9 @@ class Smb4KBookmarkEditor : public QDialog
     QList<BookmarkPtr> m_bookmarks;
 
     /**
-     * Tree widget
-     */
-    QTreeWidget *m_tree_widget;
-
-    /**
-     * The widget containing the editors
-     */
-    QWidget *m_editors;
-
-    /**
-     * The label
-     */
-    KLineEdit *m_label_edit;
-
-    /**
-     * The IP address
-     */
-    KLineEdit *m_ip_edit;
-
-    /**
-     * The login
-     */
-    KLineEdit *m_login_edit;
-
-    /**
-     * The groups
-     */
-    KComboBox *m_group_combo;
-
-    /**
      * The list of groups
      */
-    QStringList m_groups;
-
-    /**
-     * Action menu
-     */
-    KActionMenu *m_menu;
-
-    /**
-     * Add group action
-     */
-    QAction *m_add_group;
-
-    /**
-     * Delete action
-     */
-    QAction *m_delete;
-
-    /**
-     * Clear action
-     */
-    QAction *m_clear;
+    QStringList m_categories;
 };
 
 

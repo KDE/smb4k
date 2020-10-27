@@ -2,7 +2,7 @@
     This is the bookmark container for Smb4K (next generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2019 by Alexander Reinholdt
+    copyright            : (C) 2008-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -46,7 +46,7 @@ class Smb4KBookmarkPrivate
     QString workgroup;
     QHostAddress ip;
     QString label;
-    QString group;
+    QString category;
     QString profile;
     QIcon icon;
     Smb4KGlobal::ShareType type;
@@ -203,15 +203,15 @@ QUrl Smb4KBookmark::url() const
 }
 
 
-void Smb4KBookmark::setGroupName(const QString &name)
+void Smb4KBookmark::setCategoryName(const QString &name)
 {
-  d->group = name;
+  d->category = name;
 }
 
 
-QString Smb4KBookmark::groupName() const
+QString Smb4KBookmark::categoryName() const
 {
-  return d->group;
+  return d->category;
 }
 
 

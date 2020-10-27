@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2019 by Alexander Reinholdt
+    copyright            : (C) 2004-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -81,6 +81,15 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * @param share         The share that is to be bookmarked.
      */
     void addBookmark(const SharePtr &share);
+    
+    /**
+     * This function adds a new bookmark. The bookmark will be copied 
+     * internally, so it is save to clear the bookmark pointer after
+     * it was passed to this function.
+     * 
+     * @param bookmark      The bookmark that is to be added.
+     */
+    void addBookmark(const BookmarkPtr &bookmark);
 
     /**
      * This function adds several bookmarks at once. It takes a list of 
@@ -109,11 +118,11 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     void removeBookmark(const BookmarkPtr &bookmark);
     
     /**
-     * This function removes a group and all the bookmarks it contains.
+     * This function removes a category and all the bookmarks it contains.
      * 
      * @param name          The group name
      */
-    void removeGroup(const QString &name);
+    void removeCategory(const QString &name);
 
     /**
      * Get the list of bookmarks.
@@ -124,13 +133,13 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     QList<BookmarkPtr> bookmarksList() const;
     
     /**
-     * Get the list of bookmarks belonging to a certain group.
+     * Get the list of bookmarks belonging to a certain category.
      *
-     * @param group         The name of the group the bookmarks are organized in
+     * @param category      The name of the category the bookmarks are organized in
      *
-     * @returns a list of bookmarks belonging to a certain group
+     * @returns a list of bookmarks belonging to a certain category
      */
-    QList<BookmarkPtr> bookmarksList(const QString &group) const;
+    QList<BookmarkPtr> bookmarksList(const QString &category) const;
     
     /**
      * This function searches for a bookmark using its URL and returns a pointer
@@ -155,11 +164,11 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     BookmarkPtr findBookmarkByLabel(const QString &label);
 
     /**
-     * Returns the sorted list of bookmark groups.
+     * Returns the sorted list of bookmark categories.
      *
-     * @returns the list of groups
+     * @returns the list of categories
      */
-    QStringList groupsList() const;  
+    QStringList categoryList() const;  
     
     /**
      * Reset the bookmarks by reloading them from the file.              

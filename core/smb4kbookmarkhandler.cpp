@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2019 by Alexander Reinholdt
+    copyright            : (C) 2004-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -15,7 +15,7 @@
  *   This program is distributed in the hope that it will be useful, but   *
  *   WITHOUT ANY WARRANTY; without even the implied warranty of            *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
- *   General Public License for more details.                              *
+//  *   General Public License for more details.                              *
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
@@ -111,6 +111,41 @@ void Smb4KBookmarkHandler::addBookmark(const SharePtr &share)
 }
 
 
+void Smb4KBookmarkHandler::addBookmark(const BookmarkPtr &bookmark)
+{
+  if (bookmark)
+  {
+    //
+    // Create a list that will be passed to addBookmarks()
+    // 
+    QList<BookmarkPtr> bookmarks;
+    
+    //
+    // Check if the share has already been bookmarked and skip it if it
+    // already exists
+    //
+    BookmarkPtr knownBookmark = findBookmarkByUrl(bookmark->url());
+    
+    if (knownBookmark)
+    {
+      Smb4KNotification::bookmarkExists(knownBookmark.data());
+      return;
+    }
+    
+    //
+    // Copy the bookmark and add the correct profile (may be empty)
+    // 
+    BookmarkPtr newBookmark = BookmarkPtr(bookmark);
+    newBookmark->setProfile(Smb4KProfileManager::self()->activeProfile());
+    
+    //
+    // Add the bookmark
+    // 
+    addBookmarks(bookmarks, false);
+  }
+}
+
+
 void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
 {
   //
@@ -159,7 +194,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
   //
   if (!newBookmarks.isEmpty())
   {
-    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog(newBookmarks, groupsList(), QApplication::activeWindow());
+    QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog(newBookmarks, categoryList(), QApplication::activeWindow());
     
     if (dlg->exec() == QDialog::Accepted)
     {
@@ -254,7 +289,7 @@ void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
           QString::compare(d->bookmarks.at(i)->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
                            bookmark->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
                            Qt::CaseInsensitive) == 0 &&
-          QString::compare(bookmark->groupName(), d->bookmarks.at(i)->groupName(), Qt::CaseInsensitive) == 0)
+          QString::compare(bookmark->categoryName(), d->bookmarks.at(i)->categoryName(), Qt::CaseInsensitive) == 0)
       {
         d->bookmarks.takeAt(i).clear();
         break;
@@ -268,7 +303,7 @@ void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
 }
 
 
-void Smb4KBookmarkHandler::removeGroup(const QString& name)
+void Smb4KBookmarkHandler::removeCategory(const QString& name)
 {
   QMutableListIterator<BookmarkPtr> it(d->bookmarks);
   
@@ -277,7 +312,7 @@ void Smb4KBookmarkHandler::removeGroup(const QString& name)
     const BookmarkPtr &b = it.next();
     
     if ((!Smb4KSettings::useProfiles() || Smb4KSettings::activeProfile() == b->profile()) ||
-        QString::compare(b->groupName(), name, Qt::CaseInsensitive) == 0)
+        QString::compare(b->categoryName(), name, Qt::CaseInsensitive) == 0)
     {
       it.remove();
     }
@@ -301,7 +336,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
       xmlWriter.setAutoFormatting(true);
       xmlWriter.writeStartDocument();
       xmlWriter.writeStartElement("bookmarks");
-      xmlWriter.writeAttribute("version", "2.0");
+      xmlWriter.writeAttribute("version", "3.0");
 
       for (const BookmarkPtr &bookmark : d->bookmarks)
       {
@@ -313,7 +348,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
         
         xmlWriter.writeStartElement("bookmark");
         xmlWriter.writeAttribute("profile", bookmark->profile());
-        xmlWriter.writeAttribute("group", bookmark->groupName());
+        xmlWriter.writeAttribute("category", bookmark->categoryName());
 
         xmlWriter.writeTextElement("workgroup", bookmark->workgroupName());
         xmlWriter.writeTextElement("url", bookmark->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort));
@@ -366,7 +401,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
       if (xmlReader.isStartElement())
       {
         if (xmlReader.name() == "bookmarks" && 
-            (xmlReader.attributes().value("version") != "1.1" && xmlReader.attributes().value("version") != "2.0"))
+            (xmlReader.attributes().value("version") != "2.0" && xmlReader.attributes().value("version") != "3.0"))
         {
           xmlReader.raiseError(i18n("The format of %1 is not supported.", xmlFile.fileName()));
           break;
@@ -379,7 +414,16 @@ void Smb4KBookmarkHandler::readBookmarkList()
             
             BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark());
             bookmark->setProfile(profile);
-            bookmark->setGroupName(xmlReader.attributes().value("group").toString());
+            
+            if (xmlReader.attributes().hasAttribute("group"))
+            {
+              // For backward compatibility (since Smb4K 3.0.72)
+              bookmark->setCategoryName(xmlReader.attributes().value("group").toString());
+            }
+            else
+            {
+              bookmark->setCategoryName(xmlReader.attributes().value("category").toString());
+            }
               
             while (!(xmlReader.isEndElement() && xmlReader.name() == "bookmark"))
             {
@@ -390,10 +434,6 @@ void Smb4KBookmarkHandler::readBookmarkList()
                 if (xmlReader.name() == "workgroup")
                 {
                   bookmark->setWorkgroupName(xmlReader.readElementText());
-                }
-                else if (xmlReader.name() == "unc")
-                {
-                  bookmark->setUrl(xmlReader.readElementText());
                 }
                 else if (xmlReader.name() == "url")
                 {
@@ -530,17 +570,17 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
 }
 
 
-QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &group) const
+QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &category) const
 {
   // Update bookmarks
   update();
 
-  // Get the list of bookmarks organized in the given group
+  // Get the list of bookmarks organized in the given category
   QList<BookmarkPtr> bookmarks;
 
   for (const BookmarkPtr &bookmark : bookmarksList())
   {
-    if (QString::compare(group, bookmark->groupName(), Qt::CaseInsensitive) == 0)
+    if (QString::compare(category, bookmark->categoryName(), Qt::CaseInsensitive) == 0)
     {
       bookmarks << bookmark;
     }
@@ -550,19 +590,19 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &group) con
 }
 
 
-QStringList Smb4KBookmarkHandler::groupsList() const
+QStringList Smb4KBookmarkHandler::categoryList() const
 {
-  QStringList groups;
+  QStringList categories;
   
   for (const BookmarkPtr &b : bookmarksList())
   {
-    if (!groups.contains(b->groupName()))
+    if (!categories.contains(b->categoryName()))
     {
-      groups << b->groupName();
+      categories << b->categoryName();
     }
   }
   
-  return groups;
+  return categories;
 }
 
 

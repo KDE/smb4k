@@ -88,7 +88,7 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   d->checkTimeout = 0;
   d->newlyMounted = 0;
   d->newlyUnmounted = 0;
-  d->dialog = 0;
+  d->dialog = nullptr;
   d->firstImportDone = false;
   d->longActionRunning = false;
   d->activeProfile = Smb4KProfileManager::self()->activeProfile();
@@ -1000,8 +1000,9 @@ void Smb4KMounter::openMountDialog()
   if (!d->dialog)
   {
     SharePtr share = SharePtr(new Smb4KShare());
+    BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark());
     
-    d->dialog = new Smb4KMountDialog(share, QApplication::activeWindow());
+    d->dialog = new Smb4KMountDialog(share, bookmark, QApplication::activeWindow());
 
     if (d->dialog->exec() == QDialog::Accepted && d->dialog->validUserInput())
     {
@@ -1011,14 +1012,15 @@ void Smb4KMounter::openMountDialog()
       // Bookmark the share if the user wants this.
       if (d->dialog->bookmarkShare())
       {
-        Smb4KBookmarkHandler::self()->addBookmark(share);
+        Smb4KBookmarkHandler::self()->addBookmark(bookmark);
       }
     }
 
     delete d->dialog;
-    d->dialog = 0;
+    d->dialog = nullptr;
 
     share.clear();
+    bookmark.clear();
   }
 }
 

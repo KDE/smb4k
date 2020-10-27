@@ -2,7 +2,7 @@
     This file contains private helper classes for the Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2019 by Alexander Reinholdt
+    copyright            : (C) 2007-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -38,10 +38,6 @@
 #include <QPushButton>
 #include <QPointer>
 
-// KDE includes
-#include <KCompletion/KLineEdit>
-
-
 
 class Smb4KMountDialog : public QDialog
 {
@@ -50,10 +46,14 @@ class Smb4KMountDialog : public QDialog
   public:
     /**
      * The constructor.
+     * 
+     * @param share       A pointer to an empty share
+     *
+     * @param bookmark    A pointer to an empty bookmark
      *
      * @param parent      The parent widget
      */
-    explicit Smb4KMountDialog(const SharePtr &share, QWidget *parent = 0);
+    explicit Smb4KMountDialog(const SharePtr &share, const BookmarkPtr &bookmark, QWidget *parent = 0);
     
     /**
      * The destructor.
@@ -65,25 +65,30 @@ class Smb4KMountDialog : public QDialog
      *
      * @returns TRUE if the share should be bookmarked
      */
-    bool bookmarkShare() { return m_bookmark->isChecked(); }
+    bool bookmarkShare();
     
     /**
      * Returns if the user input is valid or not.
      * 
      * @returns TRUE if the user input is valid.
      */
-    bool validUserInput() { return m_valid; }
-
+    bool validUserInput();
+    
   protected Q_SLOTS:
     /**
-     * This slot is activated if the OK button has been clicked.
+     * This slot is activated when the OK button has been clicked.
      */
     void slotOkClicked();
 
     /**
-     * This slot is activated if the Cancel button has been clicked.
+     * This slot is activated when the Cancel button has been clicked.
      */
     void slotCancelClicked();
+    
+    /**
+     * This slot is activated when the 'Add Bookmark' button has been clicked.
+     */
+    void slotBookmarkButtonClicked();
 
     /**
      * This slot is being enabled if there is input text.
@@ -109,6 +114,11 @@ class Smb4KMountDialog : public QDialog
      * line work.
      */
     void slotWorkgroupEntered();
+    
+    /**
+     * This slot is used for enabling / disabling the bookmark editor widgets
+     */
+    void slotAddBookmarkClicked(bool on);
 
   private:
     /**
@@ -117,35 +127,14 @@ class Smb4KMountDialog : public QDialog
     void setupView();
     
     /**
-     * The Ok button
+     * Check that the user input is valid.
      */
-    QPushButton *m_ok_button;
+    bool validUserInput(const QString &input);
     
     /**
-     * The Cancel button
+     * Adjust the size
      */
-    QPushButton *m_cancel_button;
-
-    /**
-     * The line edit where the user has to enter the share.
-     */
-    KLineEdit *m_share_input;
-
-    /**
-     * The line edit where the user can enter the IP address.
-     */
-    KLineEdit *m_ip_input;
-
-    /**
-     * The line edit where the user can enter the workgroup.
-     */
-    KLineEdit *m_workgroup_input;
-
-    /**
-     * This checkbox determines whether the share should be added to the
-     * bookmarks.
-     */
-    QCheckBox *m_bookmark;
+    void adjustDialogSize();
 
     /**
      * The share that is passed to the mounter.
@@ -153,9 +142,19 @@ class Smb4KMountDialog : public QDialog
     SharePtr m_share;
     
     /**
+     * The bookmark that was passed to the dialog
+     */
+    BookmarkPtr m_bookmark;
+    
+    /**
      * Valid user input?
      */
     bool m_valid;
+    
+    /**
+     * List of bookmark categories
+     */
+    QStringList m_categories;
 };
 
 

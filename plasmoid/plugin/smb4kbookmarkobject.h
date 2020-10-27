@@ -3,7 +3,7 @@
     is for use with QtQuick.
                              -------------------
     begin                : Fr Mai 11 2013
-    copyright            : (C) 2013-2019 by Alexander Reinholdt
+    copyright            : (C) 2013-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -57,9 +57,9 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
   
   Q_PROPERTY(QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed)
   Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY changed)
-  Q_PROPERTY(QUrl url READ url WRITE setURL NOTIFY changed)
-  Q_PROPERTY(QString groupName READ groupName WRITE setGroupName NOTIFY changed)
-  Q_PROPERTY(bool isGroup READ isGroup WRITE setGroup NOTIFY changed)
+  Q_PROPERTY(QUrl url READ url WRITE setUrl NOTIFY changed)
+  Q_PROPERTY(QString categoryName READ categoryName WRITE setCategoryName NOTIFY changed)
+  Q_PROPERTY(bool isCategory READ isCategory WRITE setCategory NOTIFY changed)
   Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
   Q_PROPERTY(QString hostName READ hostName CONSTANT)
   Q_PROPERTY(QString shareName READ shareName CONSTANT)
@@ -75,7 +75,7 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
     /**
      * Constructor for a bookmark group
      */
-    explicit Smb4KBookmarkObject(const QString &groupName, QObject *parent = 0);
+    explicit Smb4KBookmarkObject(const QString &categoryName, QObject *parent = 0);
     
     /**
      * Empty constructor
@@ -142,7 +142,7 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @param url       The URL
      */
-    void setURL(const QUrl &url);
+    void setUrl(const QUrl &url);
     
     /**
      * This function returns the name of the group the bookmark is
@@ -150,14 +150,14 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @returns the group
      */
-    QString groupName() const;
+    QString categoryName() const;
     
     /**
      * Set the name of the group this bookmark is in.
      * 
      * @param name      The group name
      */
-    void setGroupName(const QString &name);
+    void setCategoryName(const QString &name);
     
     /**
      * This function returns TRUE if this object represents a bookmark
@@ -165,14 +165,14 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
      * 
      * @returns TRUE if this object is a bookmark group
      */
-    bool isGroup() const;
+    bool isCategory() const;
     
     /**
-     * For a bookmark group @p group has to be set to TRUE.
+     * For a bookmark category @p category has to be set to TRUE.
      * 
-     * @param group     TRUE for a bookmark group and FALSE otherwise
+     * @param category  TRUE for a bookmark group and FALSE otherwise
      */
-    void setGroup(bool group);
+    void setCategory(bool category);
     
     /**
      * Returns TRUE if the share that is represented by this bookmark 

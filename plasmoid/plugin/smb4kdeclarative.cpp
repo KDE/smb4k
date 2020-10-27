@@ -2,7 +2,7 @@
     This class provides the interface for Plasma and QtQuick
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2019 by Alexander Reinholdt
+    copyright            : (C) 2013-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -116,9 +116,9 @@ Smb4KDeclarative::~Smb4KDeclarative()
     delete d->bookmarkObjects.takeFirst();
   }
   
-  while (!d->bookmarkGroupObjects.isEmpty())
+  while (!d->bookmarkCategoryObjects.isEmpty())
   {
-    delete d->bookmarkGroupObjects.takeFirst();
+    delete d->bookmarkCategoryObjects.takeFirst();
   }
   
   while (!d->profileObjects.isEmpty())
@@ -158,9 +158,9 @@ QQmlListProperty<Smb4KBookmarkObject> Smb4KDeclarative::bookmarks()
 }
 
 
-QQmlListProperty<Smb4KBookmarkObject> Smb4KDeclarative::bookmarkGroups()
+QQmlListProperty<Smb4KBookmarkObject> Smb4KDeclarative::bookmarkCategories()
 {
-  return QQmlListProperty<Smb4KBookmarkObject>(this, d->bookmarkGroupObjects);
+  return QQmlListProperty<Smb4KBookmarkObject>(this, d->bookmarkCategoryObjects);
 }
 
 
@@ -226,7 +226,7 @@ void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
 
 Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
 {
-  Smb4KNetworkObject *object = 0;
+  Smb4KNetworkObject *object = nullptr;
   
   if (url.isValid())
   {  
@@ -297,42 +297,36 @@ void Smb4KDeclarative::openMountDialog()
 }
 
 
-void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
+void Smb4KDeclarative::mountShare(Smb4KNetworkObject *object)
 {
   if (object && object->type() == Smb4KNetworkObject::Share)
   {
-    QString shareName = object->url().path();
-      
-    if (shareName.startsWith('/'))
-    {
-      shareName = shareName.mid(1, -1);
-    }
-      
     SharePtr share = Smb4KGlobal::findShare(object->url(), object->workgroupName());
     
     if (share)
     {
       Smb4KMounter::self()->mountShare(share);
     }
-    else
-    {
-      // If the share is not in the global list of shares,
-      // try the list of bookmarks.
-      BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(object->url());
+  }
+}
+
+
+void Smb4KDeclarative::mountBookmark(Smb4KBookmarkObject *object)
+{
+  if (object)
+  {
+    // If the share is not in the global list of shares,
+    // try the list of bookmarks.
+    BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(object->url());
       
-      share = SharePtr(new Smb4KShare());
-      share->setUrl(object->url());
-      share->setWorkgroupName(bookmark->workgroupName());
-      share->setHostIpAddress(bookmark->hostIpAddress());
-      Smb4KMounter::self()->mountShare(share);
+    SharePtr share = SharePtr(new Smb4KShare());
+    share->setUrl(object->url());
+    share->setWorkgroupName(bookmark->workgroupName());
+    share->setHostIpAddress(bookmark->hostIpAddress());
+
+    Smb4KMounter::self()->mountShare(share);
       
-      while (Smb4KMounter::self()->isRunning())
-      {
-        QTest::qWait(50);
-      }
-      
-      share.clear();      
-    }
+    share.clear();      
   }
 }
 
@@ -716,9 +710,9 @@ void Smb4KDeclarative::slotBookmarksListChanged()
     delete d->bookmarkObjects.takeFirst();
   }
   
-  while (!d->bookmarkGroupObjects.isEmpty())
+  while (!d->bookmarkCategoryObjects.isEmpty())
   {
-    delete d->bookmarkGroupObjects.takeFirst();
+    delete d->bookmarkCategoryObjects.takeFirst();
   }
   
   for (const BookmarkPtr &bookmark : Smb4KBookmarkHandler::self()->bookmarksList())
@@ -726,9 +720,9 @@ void Smb4KDeclarative::slotBookmarksListChanged()
     d->bookmarkObjects << new Smb4KBookmarkObject(bookmark.data());
   }
   
-  for (const QString &group : Smb4KBookmarkHandler::self()->groupsList())
+  for (const QString &group : Smb4KBookmarkHandler::self()->categoryList())
   {
-    d->bookmarkGroupObjects << new Smb4KBookmarkObject(group);
+    d->bookmarkCategoryObjects << new Smb4KBookmarkObject(group);
   }
   
   emit bookmarksListChanged();

@@ -39,7 +39,7 @@ class Smb4KDeclarativePrivate
     QList<Smb4KNetworkObject *> shareObjects;
     QList<Smb4KNetworkObject *> mountedObjects;
     QList<Smb4KBookmarkObject *> bookmarkObjects;
-    QList<Smb4KBookmarkObject *> bookmarkGroupObjects;
+    QList<Smb4KBookmarkObject *> bookmarkCategoryObjects;
     QList<Smb4KProfileObject *> profileObjects;
 };
 

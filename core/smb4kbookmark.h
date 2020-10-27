@@ -2,7 +2,7 @@
     This is the bookmark container for Smb4K (next generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2019 by Alexander Reinholdt
+    copyright            : (C) 2008-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -199,23 +199,23 @@ class Q_DECL_EXPORT Smb4KBookmark
     QUrl url() const;
 
     /**
-     * Set the group this bookmark belongs to.
+     * Set the category this bookmark belongs to.
      *
-     * @param name            The group name
+     * @param name            The category name
      */
-    void setGroupName(const QString &name);
+    void setCategoryName(const QString &name);
 
     /**
-     * Returns the group name of this bookmark.
+     * Returns the name of the category this bookmark is in.
      *
-     * @returns the group name
+     * @returns the category name
      */
-    QString groupName() const;
+    QString categoryName() const;
     
     /**
      * Sets the profile this bookmark belongs to. The profile is meant 
      * to distinguish between several network environments, like home
-     * and work, and is not an alternative to the group functions.
+     * and work, and is not an alternative to the categories.
      * 
      * @param profile         The profile name
      */

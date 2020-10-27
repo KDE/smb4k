@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2019 by Alexander Reinholdt
+    copyright            : (C) 2011-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -56,9 +56,7 @@ class Smb4KBookmarkMenu : public KActionMenu
     /**
      * Constructor
      */
-    explicit Smb4KBookmarkMenu(int type,
-                                QWidget *parentWidget = 0,
-                                QObject *parent = 0);
+    explicit Smb4KBookmarkMenu(int type, QWidget *parentWidget = 0, QObject *parent = 0);
 
     /**
      * Destructor
@@ -100,9 +98,9 @@ class Smb4KBookmarkMenu : public KActionMenu
     void slotToplevelMountActionTriggered(bool checked);
     
     /**
-     * Called when a group action is triggered
+     * Called when a category action is triggered
      */
-    void slotGroupActionTriggered(QAction *action);
+    void slotCategoryActionTriggered(QAction *action);
     
     /**
      * Called when a bookmark action is triggered

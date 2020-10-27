@@ -3,7 +3,7 @@
     is for use with QtQuick.
                              -------------------
     begin                : Fr Mai 11 2013
-    copyright            : (C) 2013-2019 by Alexander Reinholdt
+    copyright            : (C) 2013-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,9 +40,9 @@ class Smb4KBookmarkObjectPrivate
     QString workgroup;
     QUrl url;
     QString label;
-    QString group;
+    QString category;
     QString login;
-    bool isGroup;
+    bool isCategory;
     bool isMounted;
     QHostAddress hostIP;
 };
@@ -54,19 +54,19 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* paren
   d->workgroup  = bookmark->workgroupName();
   d->url        = bookmark->url();
   d->label      = bookmark->label();
-  d->group      = bookmark->groupName();
+  d->category   = bookmark->categoryName();
   d->login      = bookmark->login();
-  d->isGroup    = false;
+  d->isCategory = false;
   d->isMounted  = false;
   d->hostIP.setAddress(bookmark->hostIpAddress());
 }
 
 
-Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& groupName, QObject* parent)
+Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& categoryName, QObject* parent)
 : QObject(parent), d(new Smb4KBookmarkObjectPrivate)
 {
-  d->group      = groupName;
-  d->isGroup    = true;
+  d->category   = categoryName;
+  d->isCategory = true;
   d->isMounted  = false;
 }
 
@@ -75,7 +75,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& groupName, QObject* pare
 Smb4KBookmarkObject::Smb4KBookmarkObject(QObject* parent)
 : QObject(parent), d(new Smb4KBookmarkObjectPrivate)
 {
-  d->isGroup    = false;
+  d->isCategory = false;
   d->isMounted  = false;
 }
 
@@ -129,35 +129,35 @@ QUrl Smb4KBookmarkObject::url() const
 }
 
 
-void Smb4KBookmarkObject::setURL(const QUrl& url)
+void Smb4KBookmarkObject::setUrl(const QUrl& url)
 {
   d->url = url;
   emit changed();
 }
 
 
-QString Smb4KBookmarkObject::groupName() const
+QString Smb4KBookmarkObject::categoryName() const
 {
-  return d->group;
+  return d->category;
 }
 
 
-void Smb4KBookmarkObject::setGroupName(const QString& name)
+void Smb4KBookmarkObject::setCategoryName(const QString& name)
 {
-  d->group = name;
+  d->category = name;
   emit changed();
 }
 
 
-bool Smb4KBookmarkObject::isGroup() const
+bool Smb4KBookmarkObject::isCategory() const
 {
-  return d->isGroup;
+  return d->isCategory;
 }
 
 
-void Smb4KBookmarkObject::setGroup(bool group)
+void Smb4KBookmarkObject::setCategory(bool category)
 {
-  d->isGroup = group;
+  d->isCategory = category;
   emit changed();
 }
 

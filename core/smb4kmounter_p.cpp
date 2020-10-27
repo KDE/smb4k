@@ -2,7 +2,7 @@
     This file contains private helper classes for the Smb4KMounter class.
                              -------------------
     begin                : Do Jul 19 2007
-    copyright            : (C) 2007-2019 by Alexander Reinholdt
+    copyright            : (C) 2007-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,6 +31,8 @@
 #include "smb4kglobal.h"
 #include "smb4kcustomoptions.h"
 #include "smb4kcustomoptionsmanager.h"
+#include "smb4kbookmarkhandler.h"
+#include "smb4kbookmark.h"
 
 // Qt includes
 #include <QUrl>
@@ -46,12 +48,14 @@
 #include <KI18n/KLocalizedString>
 #include <KConfigGui/KWindowConfig>
 #include <KIconThemes/KIconLoader>
+#include <KCompletion/KLineEdit>
+#include <KCompletion/KComboBox>
 
 using namespace Smb4KGlobal;
 
 
-Smb4KMountDialog::Smb4KMountDialog(const SharePtr &share, QWidget *parent)
-: QDialog(parent), m_share(share), m_valid(true)
+Smb4KMountDialog::Smb4KMountDialog(const SharePtr &share, const BookmarkPtr &bookmark, QWidget *parent)
+: QDialog(parent), m_share(share), m_bookmark(bookmark), m_valid(false)
 {
   //
   // Set the title
@@ -82,13 +86,36 @@ Smb4KMountDialog::Smb4KMountDialog(const SharePtr &share, QWidget *parent)
   }
   
   resize(dialogSize); // workaround for QTBUG-40584
+  
+  setBaseSize(dialogSize);
 
+  // 
+  // Get the widgets
+  // 
+  KLineEdit *locationInput = findChild<KLineEdit *>("LocationInput");
+  KLineEdit *ipInput = findChild<KLineEdit *>("IpInput");
+  KLineEdit *workgroupInput = findChild<KLineEdit *>("WorkgroupInput");
+  KLineEdit *labelInput = findChild<KLineEdit *>("LabelInput");
+  KComboBox *categoryInput = findChild<KComboBox *>("CategoryInput");
+  
   //
   // Fill the completion objects
   // 
-  m_share_input->completionObject()->setItems(group.readEntry("ShareNameCompletion", QStringList()));
-  m_ip_input->completionObject()->setItems(group.readEntry("IPAddressCompletion", QStringList()));
-  m_workgroup_input->completionObject()->setItems(group.readEntry("WorkgroupCompletion", QStringList()));
+  if (group.hasKey("ShareNameCompletion"))
+  {
+    // For backward compatibility (since Smb4K 3.0.72).
+    locationInput->completionObject()->setItems(group.readEntry("ShareNameCompletion", QStringList()));
+    group.deleteEntry("ShareNameCompletion");
+  }
+  else
+  {
+    locationInput->completionObject()->setItems(group.readEntry("LocationCompletion", QStringList()));
+  }
+  
+  ipInput->completionObject()->setItems(group.readEntry("IPAddressCompletion", QStringList()));
+  workgroupInput->completionObject()->setItems(group.readEntry("WorkgroupCompletion", QStringList()));
+  labelInput->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
+  categoryInput->completionObject()->setItems(group.readEntry("CategoryCompletion", m_categories));
 }
 
 
@@ -101,6 +128,9 @@ void Smb4KMountDialog::setupView()
 {
   QVBoxLayout *layout = new QVBoxLayout(this);
 
+  //
+  // Widget for the inputs for mounting
+  // 
   QWidget *description = new QWidget(this);
   QHBoxLayout *descriptionLayout = new QHBoxLayout(description);
 
@@ -119,72 +149,193 @@ void Smb4KMountDialog::setupView()
   QWidget *editWidget = new QWidget(this);
   QGridLayout *editWidgetLayout = new QGridLayout(editWidget);
 
-  QLabel *shareLabel = new QLabel(i18n("Location:"), editWidget);
-  m_share_input = new KLineEdit(editWidget);
-  m_share_input->setWhatsThis(i18n("The location of the share is provided by the Uniform Resource Locator (URL). It generally has the following syntax: "
+  QLabel *locationLabel = new QLabel(i18n("Location:"), editWidget);
+  KLineEdit *locationInput = new KLineEdit(editWidget);
+  locationInput->setObjectName("LocationInput");
+  locationInput->setWhatsThis(i18n("The location of the share is provided by the Uniform Resource Locator (URL). It generally has the following syntax: "
     "[smb:]//[USER:PASSWORD@]HOST:PORT/SHARE. The username, password and port are optional. You should omit to enter the password here, because it is shown in cleartext."));
 //   m_share_input->setToolTip(i18n("The URL of the share"));
-  m_share_input->setCompletionMode(KCompletion::CompletionPopupAuto);
-  m_share_input->setClearButtonEnabled(true);
-  m_share_input->setMinimumWidth(200);
-  m_share_input->setFocus();
+  locationInput->setCompletionMode(KCompletion::CompletionPopupAuto);
+  locationInput->setClearButtonEnabled(true);
+  locationInput->setMinimumWidth(200);
+  locationInput->setFocus();
 
-  QLabel *addressLabel = new QLabel(i18n("IP Address:"), editWidget);
-  m_ip_input = new KLineEdit(editWidget);
-  m_ip_input->setWhatsThis(i18n("The Internet Protocol (IP) address identifies the "
+  QLabel *ipLabel = new QLabel(i18n("IP Address:"), editWidget);
+  KLineEdit *ipInput = new KLineEdit(editWidget);
+  ipInput->setObjectName("IpInput");
+  ipInput->setWhatsThis(i18n("The Internet Protocol (IP) address identifies the "
     "host in the network and indicates where it is. It has two valid formats, the one "
     "known as IP version 4 (e.g. 192.168.2.11) and the version 6 format "
     "(e.g. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."));
 //   m_ip_input->setToolTip(i18n("The IP address of the host where the share is located"));
-  m_ip_input->setCompletionMode(KCompletion::CompletionPopupAuto);
-  m_ip_input->setClearButtonEnabled(true);
-  m_ip_input->setMinimumWidth(200);
+  ipInput->setCompletionMode(KCompletion::CompletionPopupAuto);
+  ipInput->setClearButtonEnabled(true);
+  ipInput->setMinimumWidth(200);
 
   QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), editWidget);
-  m_workgroup_input = new KLineEdit(editWidget);
-  m_workgroup_input->setWhatsThis(i18n("The workgroup or domain identifies the "
+  KLineEdit *workgroupInput = new KLineEdit(editWidget);
+  workgroupInput->setObjectName("WorkgroupInput");
+  workgroupInput->setWhatsThis(i18n("The workgroup or domain identifies the "
     "peer-to-peer computer network the host is located in."));
-//   m_workgroup_input->setToolTip(i18n("The workgroup where the host is located"));
-  m_workgroup_input->setCompletionMode(KCompletion::CompletionPopupAuto);
-  m_workgroup_input->setClearButtonEnabled(true);
-  m_workgroup_input->setMinimumWidth(200);
+//   workgroupInput->setToolTip(i18n("The workgroup where the host is located"));
+  workgroupInput->setCompletionMode(KCompletion::CompletionPopupAuto);
+  workgroupInput->setClearButtonEnabled(true);
+  workgroupInput->setMinimumWidth(200);
 
-  editWidgetLayout->addWidget(shareLabel, 0, 0);
-  editWidgetLayout->addWidget(m_share_input, 0, 1);
-  editWidgetLayout->addWidget(addressLabel, 1, 0);
-  editWidgetLayout->addWidget(m_ip_input, 1, 1);
+  editWidgetLayout->addWidget(locationLabel, 0, 0);
+  editWidgetLayout->addWidget(locationInput, 0, 1);
+  editWidgetLayout->addWidget(ipLabel, 1, 0);
+  editWidgetLayout->addWidget(ipInput, 1, 1);
   editWidgetLayout->addWidget(workgroupLabel, 2, 0);
-  editWidgetLayout->addWidget(m_workgroup_input, 2, 1);
+  editWidgetLayout->addWidget(workgroupInput, 2, 1);
+  
+  //
+  // Widget for the bookmark settings
+  // 
+  QWidget *bookmarkWidget = new QWidget(this);
+  bookmarkWidget->setObjectName("BookmarkWidget");
+  bookmarkWidget->setVisible(false);
+  QGridLayout *bookmarkWidgetLayout = new QGridLayout(bookmarkWidget);
 
-  m_bookmark = new QCheckBox(i18n("Add this share to the bookmarks"), this);
-  m_bookmark->setWhatsThis(i18n("If you tick this checkbox, the share will be bookmarked "
+  QCheckBox *addBookmark = new QCheckBox(i18n("Add this share to the bookmarks"), bookmarkWidget);
+  addBookmark->setObjectName("AddBookmark");
+  addBookmark->setWhatsThis(i18n("If you tick this checkbox, the share will be bookmarked "
     "and you can access it e.g. through the \"Bookmarks\" menu entry in the main window."));
 //   m_bookmark->setToolTip(i18n("Add this share to the bookmarks"));
   
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
-  m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);
-  m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
+  QLabel *labelLabel = new QLabel(i18n("Label:"), bookmarkWidget);
+  labelLabel->setObjectName("LabelLabel");
+  labelLabel->setEnabled(false);
+  KLineEdit *labelInput = new KLineEdit(bookmarkWidget);
+  labelInput->setObjectName("LabelInput");
+  labelInput->setWhatsThis(i18n("Add a label describing your bookmark. It is then shown instead of the location."));
+  labelInput->setCompletionMode(KCompletion::CompletionPopupAuto);
+  labelInput->setClearButtonEnabled(true);
+  labelInput->setEnabled(false);
+
+  QLabel *categoryLabel = new QLabel(i18n("Category:"), bookmarkWidget);
+  categoryLabel->setObjectName("CategoryLabel");
+  categoryLabel->setEnabled(false);
+  KComboBox *categoryInput = new KComboBox(true, bookmarkWidget);
+  categoryInput->setObjectName("CategoryInput");
+  categoryInput->setWhatsThis(i18n("Assign a category to your bookmark. This way you can organize your bookmarks."));
+  categoryInput->setCompletionMode(KCompletion::CompletionPopupAuto);
+  categoryInput->lineEdit()->setClearButtonEnabled(true);
+  categoryInput->setEnabled(false);
   
-  m_ok_button->setShortcut(Qt::CTRL|Qt::Key_Return);
-  m_cancel_button->setShortcut(Qt::Key_Escape);
+  m_categories = Smb4KBookmarkHandler::self()->categoryList();
+  categoryInput->addItems(m_categories);
+  categoryInput->setCurrentItem("");
+  
+  bookmarkWidgetLayout->addWidget(addBookmark, 0, 0, 1, 2);
+  bookmarkWidgetLayout->addWidget(labelLabel, 1, 0);
+  bookmarkWidgetLayout->addWidget(labelInput, 1, 1);
+  bookmarkWidgetLayout->addWidget(categoryLabel, 2, 0);
+  bookmarkWidgetLayout->addWidget(categoryInput, 2, 1);
+  
+  //
+  // Button box
+  // 
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+  QPushButton *okButton = buttonBox->addButton(QDialogButtonBox::Ok);
+  okButton->setObjectName("OkButton");
+  QPushButton *cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
+  QPushButton *bookmarkButton = buttonBox->addButton(i18nc("Bookmark this share. Show input widgets in the dialog for this.", "Bookmark >>"), QDialogButtonBox::ActionRole);
+  bookmarkButton->setObjectName("BookmarkButton");
+  
+  okButton->setShortcut(Qt::CTRL|Qt::Key_Return);
+  cancelButton->setShortcut(Qt::Key_Escape);
 
   layout->addWidget(description, Qt::AlignBottom);
   layout->addWidget(editWidget, 0);
-  layout->addWidget(m_bookmark, 0);
+  layout->addWidget(bookmarkWidget, 0);
   layout->addWidget(buttonBox, 0);
 
-  slotChangeInputValue(m_share_input->text());
+  slotChangeInputValue(locationInput->text());
 
   // 
   // Connections
   // 
-  connect(m_share_input, SIGNAL(textChanged(QString)), this, SLOT(slotChangeInputValue(QString)));
-  connect(m_share_input, SIGNAL(editingFinished()), this, SLOT(slotShareNameEntered()));
-  connect(m_ip_input, SIGNAL(editingFinished()), this, SLOT(slotIPEntered()));
-  connect(m_workgroup_input, SIGNAL(editingFinished()), this, SLOT(slotWorkgroupEntered()));
-  connect(m_ok_button, SIGNAL(clicked()), this, SLOT(slotOkClicked()));
-  connect(m_cancel_button, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+  connect(locationInput, SIGNAL(textChanged(QString)), this, SLOT(slotChangeInputValue(QString)));
+  connect(locationInput, SIGNAL(editingFinished()), this, SLOT(slotShareNameEntered()));
+  connect(ipInput, SIGNAL(editingFinished()), this, SLOT(slotIPEntered()));
+  connect(workgroupInput, SIGNAL(editingFinished()), this, SLOT(slotWorkgroupEntered()));
+  connect(okButton, SIGNAL(clicked()), this, SLOT(slotOkClicked()));
+  connect(cancelButton, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
+  connect(bookmarkButton, SIGNAL(clicked()), this, SLOT(slotBookmarkButtonClicked()));
+  connect(addBookmark, SIGNAL(clicked(bool)), this, SLOT(slotAddBookmarkClicked(bool)));
 }
+
+
+bool Smb4KMountDialog::bookmarkShare()
+{
+  //
+  // Get the widget
+  // 
+  QCheckBox *addBookmark = findChild<QCheckBox *>("AddBookmark");
+  
+  //
+  // Return the state
+  // 
+  return addBookmark->isChecked();
+}
+
+
+bool Smb4KMountDialog::validUserInput()
+{
+  return m_valid;
+}
+
+
+bool Smb4KMountDialog::validUserInput(const QString &input)
+{
+  //
+  // Copy the input string
+  // 
+  QString userInput = input;
+  
+  //
+  // Take care of a Windows-like UNC addresses
+  // 
+  if (userInput.startsWith(QLatin1String("\\")))
+  {
+    userInput.replace("\\", "/");
+  }
+    
+  //
+  // Set the URL and adjust the scheme
+  // 
+  QUrl smbUrl = QUrl::fromUserInput(userInput);
+  smbUrl.setScheme("smb");
+    
+  //
+  // Check that the URL of the share is valid
+  // 
+  if (smbUrl.isValid() && !smbUrl.host().isEmpty() && !smbUrl.path().isEmpty() && !smbUrl.path().endsWith(QLatin1Char('/')))
+  {
+    m_valid = true;
+  }
+  else
+  {
+    m_valid = false;
+  }
+    
+  return m_valid;
+}
+
+
+void Smb4KMountDialog::adjustDialogSize()
+{
+  ensurePolished();
+  layout()->activate();
+    
+  QSize newSize;
+  newSize.setWidth(size().width());
+  newSize.setHeight(sizeHint().height());
+
+  resize(newSize);
+}
+
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -193,55 +344,105 @@ void Smb4KMountDialog::setupView()
 
 void Smb4KMountDialog::slotChangeInputValue(const QString& _test)
 {
-  m_ok_button->setEnabled(!_test.isEmpty());
+  //
+  // Find the button
+  // 
+  QPushButton *okButton = findChild<QPushButton *>("OkButton");
+  QPushButton *bookmarkButton = findChild<QPushButton *>("BookmarkButton");
+  
+  //
+  // Enable/disable the buttons
+  // 
+  bool enable = validUserInput(_test);
+  okButton->setEnabled(enable);
+  bookmarkButton->setEnabled(enable);
 }
 
 
 void Smb4KMountDialog::slotOkClicked()
 {
-  if (!m_share_input->text().trimmed().isEmpty())
+  //
+  // Get widgets
+  // 
+  KLineEdit *locationInput = findChild<KLineEdit *>("LocationInput");
+  KLineEdit *ipInput = findChild<KLineEdit *>("IpInput");
+  KLineEdit *workgroupInput = findChild<KLineEdit *>("WorkgroupInput");
+  QWidget *bookmarkWidget = findChild<QWidget *>("BookmarkWidget");
+  KLineEdit *labelInput = findChild<KLineEdit *>("LabelInput");
+  KComboBox *categoryInput = findChild<KComboBox *>("CategoryInput");
+  
+  //
+  // Process the location input
+  // 
+  if (!locationInput->text().trimmed().isEmpty())
   {
     //
     // Get the URL
     // 
-    QString userInput = m_share_input->text().trimmed();
+    QString userInput = locationInput->text().trimmed();
     
     //
-    // Take care of a Windows-like UNC addresses
+    // Check that the user input is valid
     // 
-    if (userInput.startsWith(QLatin1String("\\")))
+    if (validUserInput(userInput))
     {
-      userInput.replace("\\", "/");
-    }
+      //
+      // Take care of a Windows-like UNC addresses
+      // 
+      if (userInput.startsWith(QLatin1String("\\")))
+      {
+        userInput.replace("\\", "/");
+      }
     
-    //
-    // Set the URL and adjust the scheme
-    // 
-    QUrl smbUrl = QUrl::fromUserInput(userInput);
-    smbUrl.setScheme("smb");
+      //
+      // Set the URL and adjust the scheme
+      // 
+      QUrl smbUrl = QUrl::fromUserInput(userInput);
+      smbUrl.setScheme("smb");
     
-    //
-    // Set the URL of the share
-    // 
-    if (smbUrl.isValid() && !smbUrl.host().isEmpty() && !smbUrl.path().isEmpty() && !smbUrl.path().endsWith(QLatin1Char('/')))
-    {
+      //
+      // Set the URL of the share
+      // 
       m_share->setUrl(smbUrl);
-      m_share->setWorkgroupName(m_workgroup_input->text().trimmed());
-      m_share->setHostIpAddress(m_ip_input->text().trimmed());
+      m_share->setWorkgroupName(workgroupInput->text().trimmed());
+      m_share->setHostIpAddress(ipInput->text().trimmed());
     }
     else
     {
       Smb4KNotification::invalidURLPassed();
-      m_valid = false;
     }
   }
   
+  //
+  // Process the bookmark, if necessary
+  // 
+  if (bookmarkShare())
+  {
+    m_bookmark->setUrl(m_share->url());
+    m_bookmark->setWorkgroupName(m_share->workgroupName());
+    m_bookmark->setHostIpAddress(m_share->hostIpAddress());
+    m_bookmark->setLabel(labelInput->text().trimmed());
+    m_bookmark->setCategoryName(categoryInput->currentText());
+  }
+  
+  //
+  // Close the bookmark widget and adjust the size
+  // 
+  bookmarkWidget->setVisible(false);
+  adjustDialogSize();
+  
+  //
+  // Save the window size and the completion items
+  // 
   KConfigGroup group(Smb4KSettings::self()->config(), "MountDialog");
   KWindowConfig::saveWindowSize(windowHandle(), group);
-  group.writeEntry("ShareNameCompletion", m_share_input->completionObject()->items());
-  group.writeEntry("IPAddressCompletion", m_ip_input->completionObject()->items());
-  group.writeEntry("WorkgroupCompletion", m_workgroup_input->completionObject()->items());
+  group.writeEntry("LocationCompletion", locationInput->completionObject()->items());
+  group.writeEntry("IPAddressCompletion", ipInput->completionObject()->items());
+  group.writeEntry("WorkgroupCompletion", workgroupInput->completionObject()->items());
   
+  //
+  // Close the dialog
+  // 
   accept();
 }
 
@@ -253,37 +454,104 @@ void Smb4KMountDialog::slotCancelClicked()
 }
 
 
+void Smb4KMountDialog::slotBookmarkButtonClicked()
+{
+  //
+  // Get the widget
+  // 
+  QWidget *bookmarkWidget = findChild<QWidget *>("BookmarkWidget");
+  
+  //
+  // Open / close the widget
+  // 
+  bookmarkWidget->setVisible(!bookmarkWidget->isVisible());
+  
+  //
+  // Set the height of the dialog when the widget is hidden
+  // 
+  if (!bookmarkWidget->isVisible())
+  {
+    adjustDialogSize();
+  }
+}
+
+
 void Smb4KMountDialog::slotShareNameEntered()
 {
-  KCompletion *completion = m_share_input->completionObject();
-  QUrl url(m_share_input->userText());
+  //
+  // Get the widget
+  // 
+  KLineEdit *locationInput = findChild<KLineEdit *>("LocationInput");
+  
+  //
+  // Add the completion item
+  // 
+  KCompletion *completion = locationInput->completionObject();
+  QUrl url(locationInput->userText());
   url.setScheme("smb");
 
   if (url.isValid() && !url.isEmpty())
   {
-    completion->addItem(m_share_input->userText());
+    completion->addItem(locationInput->userText());
   }
 }
 
 
 void Smb4KMountDialog::slotIPEntered()
 {
-  KCompletion *completion = m_ip_input->completionObject();
+  //
+  // Get the widget
+  // 
+  KLineEdit *ipInput = findChild<KLineEdit *>("IpInput");
+  
+  //
+  // Add the completion item
+  // 
+  KCompletion *completion = ipInput->completionObject();
 
-  if (!m_ip_input->userText().isEmpty())
+  if (!ipInput->userText().isEmpty())
   {
-    completion->addItem(m_ip_input->userText());
+    completion->addItem(ipInput->userText());
   }
 }
 
 
 void Smb4KMountDialog::slotWorkgroupEntered()
 {
-  KCompletion *completion = m_workgroup_input->completionObject();
+  //
+  // Get the widget
+  // 
+  KLineEdit *workgroupInput = findChild<KLineEdit *>("WorkgroupInput");
+  
+  //
+  // Add the completion item
+  // 
+  KCompletion *completion = workgroupInput->completionObject();
 
-  if (!m_workgroup_input->userText().isEmpty())
+  if (!workgroupInput->userText().isEmpty())
   {
-    completion->addItem(m_workgroup_input->userText());
+    completion->addItem(workgroupInput->userText());
   }
 }
+
+
+void Smb4KMountDialog::slotAddBookmarkClicked(bool on)
+{
+  // 
+  // Get the widgets
+  // 
+  QLabel *labelLabel = findChild<QLabel *>("LabelLabel");
+  KLineEdit *labelInput = findChild<KLineEdit *>("LabelInput");
+  QLabel *categoryLabel = findChild<QLabel *>("CategoryLabel");
+  KComboBox *categoryInput = findChild<KComboBox *>("CategoryInput");
+  
+  //
+  // Enable / disable the widgets
+  // 
+  labelLabel->setEnabled(on);
+  labelInput->setEnabled(on);
+  categoryLabel->setEnabled(on);
+  categoryInput->setEnabled(on);
+}
+
 
