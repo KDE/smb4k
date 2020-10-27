@@ -130,7 +130,7 @@ you have read the Requirements section before you start.
    -DSMB4K_WITH_WS_DISCOVERY=ON/OFF Build with WS-Discovery support for
                                     browsing. This is off by default.
 
-6. After the configuration, compile and install Smb4K:
+5. After the configuration, compile and install Smb4K:
 
    $ make && sudo make install
 
