@@ -293,7 +293,6 @@ void Smb4KBookmarkMenu::setupMenu()
           {
             if (!share->isForeign())
             {
-              qDebug() << "Disabling bookmark" << share->url().toDisplayString();
               bookmarkAction->setEnabled(false);
               mountedBookmarks++;
               break;
