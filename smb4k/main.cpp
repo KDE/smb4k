@@ -2,7 +2,7 @@
     Main file of the Smb4K program.
                              -------------------
     begin                : Sam Mär  1 14:57:21 CET 2003
-    copyright            : (C) 2003-2016 by Alexander Reinholdt
+    copyright            : (C) 2003-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
