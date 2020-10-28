@@ -74,7 +74,7 @@ If you would like to enable WS-Discovery support, you additionally need
 - KDSoap (version >= 1.9.0, 
   https://www.kdab.com/development-resources/qt-tools/kd-soap/)
 - KDSoap WS-Discovery client (version >= 0.2, 
-  https://github.com/caspermeijn/kdsoap-ws-discovery-client/
+  https://github.com/caspermeijn/kdsoap-ws-discovery-client/)
 
 It also runtime depends on:
 - KPlasma
@@ -141,7 +141,7 @@ you have read the Requirements section before you start.
    instead of make install. The package should be present in your distribution's
    repository.
 
-    $ make && sudo checkinstall
+   $ make && sudo checkinstall
    
    (b) Arch, Manjaro: Create a PKGBUILD file inside the source's root directory
    and run the following command to install Smb4K.
