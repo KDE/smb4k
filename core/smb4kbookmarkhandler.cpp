@@ -15,7 +15,7 @@
  *   This program is distributed in the hope that it will be useful, but   *
  *   WITHOUT ANY WARRANTY; without even the implied warranty of            *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
-//  *   General Public License for more details.                              *
+ *   General Public License for more details.                              *
  *                                                                         *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
@@ -133,10 +133,12 @@ void Smb4KBookmarkHandler::addBookmark(const BookmarkPtr &bookmark)
     }
     
     //
-    // Copy the bookmark and add the correct profile (may be empty)
+    // Copy the bookmark, add the correct profile (may be empty) and
+    // add it to the list.
     // 
     BookmarkPtr newBookmark = BookmarkPtr(bookmark);
     newBookmark->setProfile(Smb4KProfileManager::self()->activeProfile());
+    bookmarks << newBookmark;
     
     //
     // Add the bookmark
@@ -262,6 +264,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
       
     if (!existingBookmark)
     {
+      qDebug() << "Adding the bookmark to the internal list";
       d->bookmarks << bookmark;
     }
     else
