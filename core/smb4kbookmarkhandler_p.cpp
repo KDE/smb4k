@@ -472,6 +472,7 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QW
   KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
   KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
   KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
+  KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
   
   if (group.hasKey("GroupCompletion"))
   {
@@ -487,6 +488,7 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QW
   labelEdit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
   ipEdit->completionObject()->setItems(group.readEntry("IPCompletion", QStringList()));
   loginEdit->completionObject()->setItems(group.readEntry("LoginCompletion", QStringList()));
+  workgroupEdit->completionObject()->setItems(group.readEntry("WorkgroupCompletion", QStringList()));
   
   //
   // Connections
@@ -601,6 +603,14 @@ void Smb4KBookmarkEditor::setupView()
   KLineEdit *loginEdit = new KLineEdit(editorWidgets);
   loginEdit->setObjectName("LoginEdit");
   loginEdit->setClearButtonEnabled(true);
+  
+  //
+  // The workgroup/domain edit line
+  // 
+  QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), editorWidgets);
+  KLineEdit *workgroupEdit = new KLineEdit(editorWidgets);
+  workgroupEdit->setObjectName("WorkgroupEdit");
+  workgroupEdit->setClearButtonEnabled(true);
 
   //
   // The IP address line edit
@@ -622,10 +632,12 @@ void Smb4KBookmarkEditor::setupView()
   editorsLayout->addWidget(labelEdit, 0, 1);
   editorsLayout->addWidget(loginLabel, 1, 0);
   editorsLayout->addWidget(loginEdit, 1, 1);
-  editorsLayout->addWidget(ipLabel, 2, 0);
-  editorsLayout->addWidget(ipEdit, 2, 1);
-  editorsLayout->addWidget(categoryLabel, 3, 0);
-  editorsLayout->addWidget(categoryCombo, 3, 1);
+  editorsLayout->addWidget(workgroupLabel, 2, 0);
+  editorsLayout->addWidget(workgroupEdit, 2, 1);
+  editorsLayout->addWidget(ipLabel, 3, 0);
+  editorsLayout->addWidget(ipEdit, 3, 1);
+  editorsLayout->addWidget(categoryLabel, 4, 0);
+  editorsLayout->addWidget(categoryCombo, 4, 1);
   
   QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
   QPushButton *okButton = buttonBox->addButton(QDialogButtonBox::Ok);
@@ -646,7 +658,8 @@ void Smb4KBookmarkEditor::setupView()
   connect(treeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(slotItemClicked(QTreeWidgetItem*,int)));
   connect(treeWidget, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
   connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
-  connect(ipEdit, SIGNAL(editingFinished()), this, SLOT(slotIPEdited()));
+  connect(ipEdit, SIGNAL(editingFinished()), this, SLOT(slotIpEdited()));
+  connect(workgroupEdit, SIGNAL(editingFinished()), this, SLOT(slotWorkgroupNameEdited()));
   connect(loginEdit, SIGNAL(editingFinished()), this, SLOT(slotLoginEdited()));
   connect(categoryCombo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotCategoryEdited()));
   connect(addCategoryAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCategoryTriggered(bool)));
@@ -791,6 +804,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
   KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
   KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
   KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
+  KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
   
   //
   // Process the item
@@ -811,6 +825,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
           labelEdit->setText(bookmark->label());
           loginEdit->setText(bookmark->login());
           ipEdit->setText(bookmark->hostIpAddress());
+          workgroupEdit->setText(bookmark->workgroupName());
           categoryCombo->setCurrentItem(bookmark->categoryName());
           editorWidgets->setEnabled(true);
         }
@@ -819,6 +834,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
           labelEdit->clear();
           loginEdit->clear();
           ipEdit->clear();
+          workgroupEdit->clear();
           categoryCombo->clearEditText();
           editorWidgets->setEnabled(false);
         }
@@ -828,6 +844,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
         labelEdit->clear();
         loginEdit->clear();
         ipEdit->clear();
+        workgroupEdit->clear();
         categoryCombo->clearEditText();
         editorWidgets->setEnabled(false);
       }
@@ -842,6 +859,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
         labelEdit->setText(bookmark->label());
         loginEdit->setText(bookmark->login());
         ipEdit->setText(bookmark->hostIpAddress());
+        workgroupEdit->setText(bookmark->workgroupName());
         categoryCombo->setCurrentItem(bookmark->categoryName());
         editorWidgets->setEnabled(true);
       }
@@ -850,6 +868,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
         labelEdit->clear();
         loginEdit->clear();
         ipEdit->clear();
+        workgroupEdit->clear();
         categoryCombo->clearEditText();
         editorWidgets->setEnabled(false);
       }
@@ -860,6 +879,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
     labelEdit->clear();
     loginEdit->clear();
     ipEdit->clear();
+    workgroupEdit->clear();
     categoryCombo->clearEditText();
     editorWidgets->setEnabled(false);
   }
@@ -892,19 +912,24 @@ void Smb4KBookmarkEditor::slotLabelEdited()
   QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
   KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
   
-  // 
-  // Set the label
+  //
+  // Find the bookmark
   // 
   QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
   BookmarkPtr bookmark = findBookmark(url);
 
+  // 
+  // Set the label
+  // 
   if (bookmark)
   {
     bookmark->setLabel(labelEdit->userText());
   }
 
-  // Add label to completion object
+  // 
+  // Add the label to the completion object
+  // 
   KCompletion *completion = labelEdit->completionObject();
 
   if (!labelEdit->userText().isEmpty())
@@ -922,17 +947,24 @@ void Smb4KBookmarkEditor::slotLoginEdited()
   QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
   KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
   
-  // Set the login
+  //
+  // Find the bookmark
+  // 
   QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
   BookmarkPtr bookmark = findBookmark(url);
 
+  //
+  // Set the login
+  // 
   if (bookmark)
   {
     bookmark->setLogin(loginEdit->userText());
   }
 
-  // Add login to completion object
+  // 
+  // Add the login to the completion object
+  // 
   KCompletion *completion = loginEdit->completionObject();
 
   if (!loginEdit->userText().isEmpty())
@@ -942,7 +974,7 @@ void Smb4KBookmarkEditor::slotLoginEdited()
 }
 
 
-void Smb4KBookmarkEditor::slotIPEdited()
+void Smb4KBookmarkEditor::slotIpEdited()
 {
   //
   // Get the widgets
@@ -950,17 +982,24 @@ void Smb4KBookmarkEditor::slotIPEdited()
   QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
   KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
   
-  // Set the ip address
+  //
+  // Find the bookmark
+  // 
   QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
   BookmarkPtr bookmark = findBookmark(url);
 
+  //
+  // Set the IP address
+  // 
   if (bookmark)
   {
     bookmark->setHostIpAddress(ipEdit->userText());
   }
 
-  // Add login to completion object
+  // 
+  // Add the IP address to the completion object
+  // 
   KCompletion *completion = ipEdit->completionObject();
 
   if (!ipEdit->userText().isEmpty())
@@ -970,16 +1009,51 @@ void Smb4KBookmarkEditor::slotIPEdited()
 }
 
 
+void Smb4KBookmarkEditor::slotWorkgroupNameEdited()
+{
+  //
+  // Get the widgets
+  // 
+  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+  KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
+  
+  //
+  // Find the bookmark
+  // 
+  QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
+
+  BookmarkPtr bookmark = findBookmark(url);
+  
+  //
+  // Set the workgroup name
+  // 
+  if (bookmark)
+  {
+    bookmark->setWorkgroupName(workgroupEdit->userText());
+  }
+  
+  //
+  // Add the workgroup name to the completion object
+  // 
+  KCompletion *completion = workgroupEdit->completionObject();
+  
+  if (!workgroupEdit->userText().isEmpty())
+  {
+    completion->addItem(workgroupEdit->userText());
+  }
+}
+
+
 void Smb4KBookmarkEditor::slotCategoryEdited()
 {
   //
-  // get the widgets
+  // Get the widgets
   // 
   KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
   QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
   
   //
-  // Get the URL of the current item.
+  // Get the URL of the current item
   //
   QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
   
@@ -992,10 +1066,13 @@ void Smb4KBookmarkEditor::slotCategoryEdited()
   }
   
   //
-  // Set the group name to the bookmark
+  // Find the bookmark
   //
   BookmarkPtr bookmark = findBookmark(url);
   
+  //
+  // Set the category
+  // 
   if (bookmark)
   {
     bookmark->setCategoryName(categoryCombo->currentText());
@@ -1024,7 +1101,7 @@ void Smb4KBookmarkEditor::slotCategoryEdited()
   }
 
   // 
-  // Add the group to the completion object
+  // Add the category to the completion object
   // 
   KCompletion *completion = categoryCombo->completionObject();
 
@@ -1128,6 +1205,7 @@ void Smb4KBookmarkEditor::slotDialogAccepted()
   KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
   KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
   KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
+  KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
   
   //
   // Write the dialog properties to the config file
@@ -1138,6 +1216,7 @@ void Smb4KBookmarkEditor::slotDialogAccepted()
   group.writeEntry("LoginCompletion", loginEdit->completionObject()->items());
   group.writeEntry("IPCompletion", ipEdit->completionObject()->items());
   group.writeEntry("CategoryCompletion", categoryCombo->completionObject()->items());
+  group.writeEntry("WorkgroupCompletion", workgroupEdit->completionObject()->items());
   
   //
   // Accept the dialog

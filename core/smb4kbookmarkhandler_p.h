@@ -188,7 +188,12 @@ class Smb4KBookmarkEditor : public QDialog
     /**
      * Called when the IP address is edited by the user
      */
-    void slotIPEdited();
+    void slotIpEdited();
+    
+    /**
+     * Called when the workgroup name is edited by the user
+     */
+    void slotWorkgroupNameEdited();
 
     /**
      * Called when the login is edited by the user
