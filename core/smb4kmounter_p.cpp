@@ -258,8 +258,10 @@ void Smb4KMountDialog::setupView()
   // 
   connect(locationInput, SIGNAL(textChanged(QString)), this, SLOT(slotChangeInputValue(QString)));
   connect(locationInput, SIGNAL(editingFinished()), this, SLOT(slotShareNameEntered()));
-  connect(ipInput, SIGNAL(editingFinished()), this, SLOT(slotIPEntered()));
+  connect(ipInput, SIGNAL(editingFinished()), this, SLOT(slotIpEntered()));
   connect(workgroupInput, SIGNAL(editingFinished()), this, SLOT(slotWorkgroupEntered()));
+  connect(labelInput, SIGNAL(editingFinished()), this, SLOT(slotLabelEntered()));
+  connect(categoryInput->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotCategoryEntered()));
   connect(okButton, SIGNAL(clicked()), this, SLOT(slotOkClicked()));
   connect(cancelButton, SIGNAL(clicked()), this, SLOT(slotCancelClicked()));
   connect(bookmarkButton, SIGNAL(clicked()), this, SLOT(slotBookmarkButtonClicked()));
@@ -439,6 +441,8 @@ void Smb4KMountDialog::slotOkClicked()
   group.writeEntry("LocationCompletion", locationInput->completionObject()->items());
   group.writeEntry("IPAddressCompletion", ipInput->completionObject()->items());
   group.writeEntry("WorkgroupCompletion", workgroupInput->completionObject()->items());
+  group.writeEntry("LabelCompletion", labelInput->completionObject()->items());
+  group.writeEntry("CategoryCompletion", categoryInput->completionObject()->items());
   
   //
   // Close the dialog
@@ -497,7 +501,7 @@ void Smb4KMountDialog::slotShareNameEntered()
 }
 
 
-void Smb4KMountDialog::slotIPEntered()
+void Smb4KMountDialog::slotIpEntered()
 {
   //
   // Get the widget
@@ -532,6 +536,44 @@ void Smb4KMountDialog::slotWorkgroupEntered()
   {
     completion->addItem(workgroupInput->userText());
   }
+}
+
+
+void Smb4KMountDialog::slotLabelEntered()
+{
+  //
+  // Get the widget
+  // 
+  KLineEdit *labelInput = findChild<KLineEdit *>("LabelInput");
+  
+  //
+  // Add the completion item
+  // 
+  KCompletion *completion = labelInput->completionObject();
+  
+  if (!labelInput->userText().isEmpty())
+  {
+    completion->addItem(labelInput->userText());
+  }
+}
+
+
+void Smb4KMountDialog::slotCategoryEntered()
+{
+  //
+  // Get the widget
+  // 
+  KComboBox *categoryInput = findChild<KComboBox *>("CategoryInput");
+  
+  //
+  // Add the completion item
+  // 
+  KCompletion *completion = categoryInput->completionObject();
+  
+  if (!categoryInput->currentText().isEmpty())
+  {
+    completion->addItem(categoryInput->currentText());
+  }  
 }
 
 

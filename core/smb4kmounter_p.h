@@ -107,13 +107,25 @@ class Smb4KMountDialog : public QDialog
      * This slot is used for making text completion for the IP edit line
      * work.
      */
-    void slotIPEntered();
+    void slotIpEntered();
 
     /**
      * This slot is used for making text completion for the workgroup edit
      * line work.
      */
     void slotWorkgroupEntered();
+    
+    /**
+     * This slot is used for making text completion for the label edit line
+     * work.
+     */
+    void slotLabelEntered();
+    
+    /**
+     * This slot is used for making text completion for the category name
+     * edit line work.
+     */
+    void slotCategoryEntered();
     
     /**
      * This slot is used for enabling / disabling the bookmark editor widgets
