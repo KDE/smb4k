@@ -31,8 +31,6 @@
 
 // Qt includes
 #include <QStringList>
-#include <QNetworkConfigurationManager>
-#include <QNetworkSession>
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
 
@@ -45,6 +43,7 @@ class Smb4KHardwareInterfacePrivate
     QScopedPointer<QDBusInterface> dbusInterface;
     QDBusUnixFileDescriptor fileDescriptor;
     bool systemOnline;
+    QStringList udis;
 };
 
 
