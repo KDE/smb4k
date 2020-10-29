@@ -243,10 +243,18 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent */*e*/)
 
 void Smb4KHardwareInterface::slotDeviceAdded(const QString& udi)
 {
+  //
+  // Create a device from the UDI
+  // 
   Solid::Device device(udi);
   
+  //
+  // Check if the device is a network device and emit the networkShareAdded()
+  // signal if it is.
+  // 
   if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare))
   {
+    d->udis << udi;
     emit networkShareAdded();
   }
 }
@@ -254,11 +262,29 @@ void Smb4KHardwareInterface::slotDeviceAdded(const QString& udi)
 
 void Smb4KHardwareInterface::slotDeviceRemoved(const QString& udi)
 {
+  //
+  // Create a device from the UDI
+  // 
   Solid::Device device(udi);
   
+  //
+  // Check if the device is a network device and emit the networkShareRemoved()
+  // signal if it is.
+  // 
+  // NOTE:For some reason, the device has no valid type. Thus, we need the code 
+  // in the else block for now. 
+  // 
   if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare))
   {
     emit networkShareRemoved();
+  }
+  else
+  {
+    if (d->udis.contains(udi))
+    {
+      emit networkShareRemoved();
+      d->udis.removeOne(udi);
+    }
   }
 }
 
