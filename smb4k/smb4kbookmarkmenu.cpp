@@ -533,7 +533,9 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
     
     for (QAction *a : actions)
     {
-      if (share->url() == a->data().toMap().value("url").toUrl())
+      QUrl bookmarkUrl = a->data().toMap().value("url").toUrl();
+      
+      if (share->url().matches(bookmarkUrl, QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         a->setEnabled(!share->isMounted());
         bookmarkGroup = a->data().toMap().value("group").toString();
