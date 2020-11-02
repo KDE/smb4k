@@ -179,7 +179,16 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
      * 
      * @param object         The network object
      */
-    Q_INVOKABLE void mount(Smb4KNetworkObject *object);
+    Q_INVOKABLE void mountShare(Smb4KNetworkObject *object);
+    
+    /**
+     * This function takes a bookmark object and initiates the mounting of 
+     * the respective remote share.
+     * 
+     * @param object         The bookmark object
+     */
+    Q_INVOKABLE void mountBookmark(Smb4KBookmarkObject *object);
+
     
     /**
      * This function takes a network object and initiates the unmounting of 

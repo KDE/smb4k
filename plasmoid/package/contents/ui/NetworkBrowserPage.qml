@@ -276,7 +276,7 @@ PlasmaComponents.Page {
       
       if (object.type == NetworkObject.Share) {
         if (!object.isPrinter) {
-          iface.mount(object)
+          iface.mountShare(object)
         }
         else {
           iface.print(object)

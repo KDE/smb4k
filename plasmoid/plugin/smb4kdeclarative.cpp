@@ -301,42 +301,36 @@ void Smb4KDeclarative::openMountDialog()
 }
 
 
-void Smb4KDeclarative::mount(Smb4KNetworkObject *object)
+void Smb4KDeclarative::mountShare(Smb4KNetworkObject *object)
 {
   if (object && object->type() == Smb4KNetworkObject::Share)
   {
-    QString shareName = object->url().path();
-      
-    if (shareName.startsWith('/'))
-    {
-      shareName = shareName.mid(1, -1);
-    }
-      
     SharePtr share = Smb4KGlobal::findShare(object->url(), object->workgroupName());
     
     if (share)
     {
       Smb4KMounter::self()->mountShare(share);
     }
-    else
-    {
-      // If the share is not in the global list of shares,
-      // try the list of bookmarks.
-      BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(object->url());
+  }
+}
+
+
+void Smb4KDeclarative::mountBookmark(Smb4KBookmarkObject *object)
+{
+  if (object)
+  {
+    // If the share is not in the global list of shares,
+    // try the list of bookmarks.
+    BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(object->url());
       
-      share = SharePtr(new Smb4KShare());
-      share->setUrl(object->url());
-      share->setWorkgroupName(bookmark->workgroupName());
-      share->setHostIpAddress(bookmark->hostIpAddress());
-      Smb4KMounter::self()->mountShare(share);
+    SharePtr share = SharePtr(new Smb4KShare());
+    share->setUrl(object->url());
+    share->setWorkgroupName(bookmark->workgroupName());
+    share->setHostIpAddress(bookmark->hostIpAddress());
+    
+    Smb4KMounter::self()->mountShare(share);
       
-      while (Smb4KMounter::self()->isRunning())
-      {
-        QTest::qWait(50);
-      }
-      
-      share.clear();      
-    }
+    share.clear();      
   }
 }
 

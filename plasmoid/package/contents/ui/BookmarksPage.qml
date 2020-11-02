@@ -205,7 +205,7 @@ PlasmaComponents.Page {
       bookmarksListView.currentIndex = 0
     }
     else {
-      iface.mount(object.url)
+      iface.mountBookmark(object.url)
     }
   }
   
