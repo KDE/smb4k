@@ -607,8 +607,7 @@ void Smb4KClientJob::initClientLibrary()
   }
   
   //
-  // Set the protocol to SMB1 ("NT1") if desired so that the workgroups 
-  // and domains can be discovered.
+  // Set the protocol version if desired.
   //
   if (Smb4KSettings::forceSmb1Protocol() && m_item->type() == Network)
   {
@@ -616,7 +615,62 @@ void Smb4KClientJob::initClientLibrary()
   }
   else
   {
-    smbc_setOptionProtocols(m_context, NULL, NULL);
+    if (Smb4KSettings::useClientProtocolVersions())
+    {
+      QString minimal, maximal;
+      
+      switch (Smb4KSettings::minimalClientProtocolVersion())
+      {
+        case Smb4KSettings::EnumMinimalClientProtocolVersion::NT1:
+        {
+          minimal = "NT1";
+          break;
+        }
+        case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB2:
+        {
+          minimal = "SMB2";
+          break;
+        }
+        case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB3:
+        {
+          minimal = "SMB3";
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+
+      switch (Smb4KSettings::maximalClientProtocolVersion())
+      {
+        case Smb4KSettings::EnumMaximalClientProtocolVersion::NT1:
+        {
+          maximal = "NT1";
+          break;
+        }
+        case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB2:
+        {
+          maximal = "SMB2";
+          break;
+        }
+        case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB3:
+        {
+          maximal = "SMB3";
+          break;
+        }
+        default:
+        {
+          break;
+        }
+      }
+      
+      smbc_setOptionProtocols(m_context, minimal.toLatin1(), maximal.toLatin1());
+    }
+    else
+    {
+      smbc_setOptionProtocols(m_context, NULL, NULL);
+    }
   }
   
   //

@@ -55,7 +55,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   // Browse Settings group box
   // 
   QGroupBox *browseSettingsBox = new QGroupBox(i18n("Browse Settings"), basicTab);
-  QVBoxLayout *browseSettingsBoxLayout = new QVBoxLayout(browseSettingsBox);
+  QGridLayout *browseSettingsBoxLayout = new QGridLayout(browseSettingsBox);
 
 #ifdef USE_WS_DISCOVERY
   QCheckBox *useWsDiscovery = new QCheckBox(Smb4KSettings::self()->useWsDiscoveryItem()->label(), browseSettingsBox);
@@ -67,12 +67,59 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   
   QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), browseSettingsBox);
   forceSmb1Protocol->setObjectName("kcfg_ForceSmb1Protocol");
+  
+  QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), browseSettingsBox);
+  useClientProtocolVersions->setObjectName("kcfg_UseClientProtocolVersions");
+  
+  QLabel *minimalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), browseSettingsBox);
+  minimalProtocolVersionLabel->setIndent(25);
+  minimalProtocolVersionLabel->setObjectName("MinimalProtocolVersionLabel");
+  
+  KComboBox *minimalProtocolVersion = new KComboBox(browseSettingsBox);
+  minimalProtocolVersion->setObjectName("kcfg_MinimalClientProtocolVersion");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : minimalProtocolVersionChoices)
+  {
+    minimalProtocolVersion->addItem(c.label);
+  }
+  
+  QLabel *maximalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), browseSettingsBox);
+  maximalProtocolVersionLabel->setIndent(25);
+  maximalProtocolVersionLabel->setObjectName("MaximalProtocolVersionLabel");
+  
+  KComboBox *maximalProtocolVersion = new KComboBox(browseSettingsBox);
+  maximalProtocolVersion->setObjectName("kcfg_MaximalClientProtocolVersion");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : maximalProtocolVersionChoices)
+  {
+    maximalProtocolVersion->addItem(c.label);
+  }
 
+  minimalProtocolVersionLabel->setBuddy(minimalProtocolVersion);
+  maximalProtocolVersionLabel->setBuddy(maximalProtocolVersion);
+  
 #ifdef USE_WS_DISCOVERY
-  browseSettingsBoxLayout->addWidget(useWsDiscovery, 0);
+  browseSettingsBoxLayout->addWidget(useWsDiscovery, 0, 0, 1, 2);
+  browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 1, 0, 1, 2);
+  browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 2, 0, 1, 2);
+  browseSettingsBoxLayout->addWidget(useClientProtocolVersions, 3, 0, 1, 2);
+  browseSettingsBoxLayout->addWidget(minimalProtocolVersionLabel, 4, 0);
+  browseSettingsBoxLayout->addWidget(minimalProtocolVersion, 4, 1);
+  browseSettingsBoxLayout->addWidget(maximalProtocolVersionLabel, 5, 0);
+  browseSettingsBoxLayout->addWidget(maximalProtocolVersion, 5, 1);
+#else
+  browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 0, 0, 1, 2);
+  browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 1, 0, 1, 2);
+  browseSettingsBoxLayout->addWidget(useClientProtocolVersions, 2, 0, 1, 2);
+  browseSettingsBoxLayout->addWidget(minimalProtocolVersionLabel, 3, 0);
+  browseSettingsBoxLayout->addWidget(minimalProtocolVersion, 3, 1);
+  browseSettingsBoxLayout->addWidget(maximalProtocolVersionLabel, 4, 0);
+  browseSettingsBoxLayout->addWidget(maximalProtocolVersion, 4, 1);
 #endif
-  browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 0);
-  browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 0);
   
   //
   // Behavior group box
@@ -243,10 +290,41 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   wakeOnLanTabLayout->addStretch(100);
   
   addTab(wakeOnLanTab, i18n("Wake-On-LAN"));
+
+  //
+  // Connections
+  // 
+  connect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotSetProtocolVersionsToggled(bool)));
+  
+  //
+  // Set the correct state to the protocol version widgets
+  // 
+  slotSetProtocolVersionsToggled(useClientProtocolVersions->isChecked());
 }
 
 
 Smb4KConfigPageNetwork::~Smb4KConfigPageNetwork()
 {
 }
+
+
+void Smb4KConfigPageNetwork::slotSetProtocolVersionsToggled(bool on)
+{
+  //
+  // Get the widgets
+  // 
+  QLabel *minimalProtocolVersionLabel = findChild<QLabel *>("MinimalProtocolVersionLabel");
+  KComboBox *minimalProtocolVersion = findChild<KComboBox *>("kcfg_MinimalClientProtocolVersion");
+  QLabel *maximalProtocolVersionLabel = findChild<QLabel *>("MaximalProtocolVersionLabel");
+  KComboBox *maximalProtocolVersion = findChild<KComboBox *>("kcfg_MaximalClientProtocolVersion");
+  
+  //
+  // Enable / disable widgets
+  // 
+  minimalProtocolVersionLabel->setEnabled(on);
+  minimalProtocolVersion->setEnabled(on);
+  maximalProtocolVersionLabel->setEnabled(on);
+  maximalProtocolVersion->setEnabled(on);
+}
+
 

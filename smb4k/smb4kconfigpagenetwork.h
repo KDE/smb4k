@@ -52,5 +52,12 @@ class Smb4KConfigPageNetwork : public QTabWidget
      * The destructor
      */
     ~Smb4KConfigPageNetwork();
+    
+  protected Q_SLOTS:
+    /**
+     * This slot is called when the button for setting the SMB protocol
+     * versions is toggled.
+     */
+    void slotSetProtocolVersionsToggled(bool on);
 };
 #endif
