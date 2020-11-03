@@ -86,6 +86,11 @@ class Smb4KConfigPageMounting : public QTabWidget
      */
     void slotCharacterSets(bool on);
     
+    /**
+     * This slot is activated when the "Remount shares" check box is toggled
+     */
+    void slotRemountSharesToggled(bool on);
+    
   private:
     /**
      * Set up the widget

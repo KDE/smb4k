@@ -254,6 +254,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   
   QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), wakeOnLanBox);
   wakeOnLanWaitingTimeLabel->setIndent(25);
+  wakeOnLanWaitingTimeLabel->setObjectName("WakeOnLanWaitingTimeLabel");
   
   QSpinBox *wakeOnLanWaitingTime = new QSpinBox(wakeOnLanBox);
   wakeOnLanWaitingTime->setObjectName("kcfg_WakeOnLANWaitingTime");
@@ -295,11 +296,13 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   // Connections
   // 
   connect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotSetProtocolVersionsToggled(bool)));
+  connect(enableWakeOnLan, SIGNAL(toggled(bool)), this, SLOT(slotEnableWakeOnLanFeatureToggled(bool)));
   
   //
-  // Set the correct state to the protocol version widgets
+  // Set the correct states to the widgets
   // 
-  slotSetProtocolVersionsToggled(useClientProtocolVersions->isChecked());
+  slotSetProtocolVersionsToggled(Smb4KSettings::useClientProtocolVersions());
+  slotEnableWakeOnLanFeatureToggled(Smb4KSettings::enableWakeOnLAN());
 }
 
 
@@ -326,5 +329,22 @@ void Smb4KConfigPageNetwork::slotSetProtocolVersionsToggled(bool on)
   maximalProtocolVersionLabel->setEnabled(on);
   maximalProtocolVersion->setEnabled(on);
 }
+
+
+void Smb4KConfigPageNetwork::slotEnableWakeOnLanFeatureToggled(bool on)
+{
+  //
+  // Get the widgets
+  // 
+  QLabel *wakeOnLanWaitingTimeLabel = findChild<QLabel *>("WakeOnLanWaitingTimeLabel");
+  QSpinBox *wakeOnLanWaitingTime = findChild<QSpinBox *>("kcfg_WakeOnLANWaitingTime");
+  
+  //
+  // Enable / disable widgets
+  // 
+  wakeOnLanWaitingTimeLabel->setEnabled(on);
+  wakeOnLanWaitingTime->setEnabled(on);
+}
+
 
 

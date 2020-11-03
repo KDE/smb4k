@@ -59,5 +59,11 @@ class Smb4KConfigPageNetwork : public QTabWidget
      * versions is toggled.
      */
     void slotSetProtocolVersionsToggled(bool on);
+    
+    /**
+     * This slot is called when the button for setting the Wake-On-LAN
+     * feature is toggled.
+     */
+    void slotEnableWakeOnLanFeatureToggled(bool on);
 };
 #endif

@@ -109,6 +109,7 @@ void Smb4KConfigPageMounting::setupWidget()
   remountShares->setObjectName("kcfg_RemountShares");
   
   QLabel *remountAttemptsLabel = new QLabel(Smb4KMountSettings::self()->remountAttemptsItem()->label(), behaviorBox);
+  remountAttemptsLabel->setObjectName("RemountAttemptsLabel");
   remountAttemptsLabel->setIndent(25);
   
   QSpinBox *remountAttempts = new QSpinBox(behaviorBox);
@@ -116,6 +117,7 @@ void Smb4KConfigPageMounting::setupWidget()
   remountAttemptsLabel->setBuddy(remountAttempts);
   
   QLabel *remountIntervalLabel = new QLabel(Smb4KMountSettings::self()->remountIntervalItem()->label(), behaviorBox);
+  remountIntervalLabel->setObjectName("RemountIntervalLabel");  
   remountIntervalLabel->setIndent(25);
   
   QSpinBox *remountInterval = new QSpinBox(behaviorBox);
@@ -464,14 +466,16 @@ void Smb4KConfigPageMounting::setupWidget()
   // Adjust widgets
   // 
   slotCIFSUnixExtensionsSupport(Smb4KMountSettings::cifsUnixExtensionsSupport());
+  slotRemountSharesToggled(Smb4KMountSettings::remountShares());
   
   //
   // Connections
   //
   connect(userMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewUserTriggered(QAction*)));
   connect(groupMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewGroupTriggered(QAction*)));
-  connect(cifsExtensionsSupport, SIGNAL(clicked(bool)), this, SLOT(slotCIFSUnixExtensionsSupport(bool)));
-  connect(additionalOptionsEdit, SIGNAL(clicked(bool)), this, SLOT(slotAdditionalCIFSOptions()));  
+  connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCIFSUnixExtensionsSupport(bool)));
+  connect(additionalOptionsEdit, SIGNAL(toggled(bool)), this, SLOT(slotAdditionalCIFSOptions()));
+  connect(remountShares, SIGNAL(toggled(bool)), this, SLOT(slotRemountSharesToggled(bool)));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 //
@@ -517,6 +521,7 @@ void Smb4KConfigPageMounting::setupWidget()
   remountShares->setObjectName("kcfg_RemountShares");
   
   QLabel *remountAttemptsLabel = new QLabel(Smb4KMountSettings::self()->remountAttemptsItem()->label(), behaviorBox);
+  remountAttemptsLabel->setObjectName("RemountAttemptsLabel");
   remountAttemptsLabel->setIndent(25);
   
   QSpinBox *remountAttempts = new QSpinBox(behaviorBox);
@@ -524,6 +529,7 @@ void Smb4KConfigPageMounting::setupWidget()
   remountAttemptsLabel->setBuddy(remountAttempts);
   
   QLabel *remountIntervalLabel = new QLabel(Smb4KMountSettings::self()->remountIntervalItem()->label(), behaviorBox);
+  remountIntervalLabel->setObjectName("RemountIntervalLabel");  
   remountIntervalLabel->setIndent(25);
   
   QSpinBox *remountInterval = new QSpinBox(behaviorBox);
@@ -725,11 +731,13 @@ void Smb4KConfigPageMounting::setupWidget()
   connect(userMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewUserTriggered(QAction*)));
   connect(groupMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewGroupTriggered(QAction*)));
   connect(useCharacterSets, SIGNAL(toggled(bool)), this, SLOT(slotCharacterSets(bool)));
+  connect(remountShares, SIGNAL(toggled(bool)), this, SLOT(slotRemountSharesToggled(bool)));
   
   //
   // Enable / disable widgets
   //
   slotCharacterSets(Smb4KMountSettings::useCharacterSets());
+  slotRemountSharesToggled(Smb4KMountSettings::remountShares());
 }
 #else
 //
@@ -915,4 +923,25 @@ void Smb4KConfigPageMounting::slotCharacterSets(bool on)
     serverCharacterSet->setEnabled(on);
   }
 }
+
+
+void Smb4KConfigPageMounting::slotRemountSharesToggled(bool on)
+{
+  //
+  // Get the widget
+  // 
+  QLabel *remountAttemptsLabel = findChild<QLabel *>("RemountAttemptsLabel");
+  QSpinBox *remountAttempts = findChild<QSpinBox *>("kcfg_RemountAttempts");
+  QLabel *remountIntervalLabel = findChild<QLabel *>("RemountIntervalLabel");  
+  QSpinBox *remountInterval = findChild<QSpinBox *>("kcfg_RemountInterval");
+
+  //
+  // Enable / disable the widgets
+  // 
+  remountAttemptsLabel->setEnabled(on);
+  remountAttempts->setEnabled(on);
+  remountIntervalLabel->setEnabled(on);
+  remountInterval->setEnabled(on);
+}
+
 
