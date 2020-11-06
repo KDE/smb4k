@@ -1,3 +1,13 @@
+Smb4K 3.0.7 (2020-11-06):
+
+See the summery of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.0
+
+- Fix enabling / disabling of bookmarks menu according to the mounting state
+  in the bookmark menu.
+- Make mounting of bookmarks work (again) in the plasmoid. (Backported from 
+  master.)
+
 Smb4K 3.0.6 (2020-06-03):
 
 See the summery of changes below. For a full list of changes, please
