@@ -235,7 +235,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   sambaTabLayout->addWidget(securityBox, 0);
   sambaTabLayout->addStretch(100);
   
-  addTab(sambaTab, i18n("Samba"));
+  addTab(sambaTab, i18n("Samba Settings"));
   
   //
   // Wake-On-LAN tab
@@ -290,7 +290,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   wakeOnLanTabLayout->addWidget(wakeOnLanBox, 0);
   wakeOnLanTabLayout->addStretch(100);
   
-  addTab(wakeOnLanTab, i18n("Wake-On-LAN"));
+  addTab(wakeOnLanTab, i18n("Wake-On-LAN Settings"));
 
   //
   // Connections
