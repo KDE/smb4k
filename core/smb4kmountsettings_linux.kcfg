@@ -212,11 +212,20 @@
         <choice name="ThreePointZero">
           <label>3.0 (Windows 8/Windows Server 2012)</label>
         </choice>
+        <choice name="ThreePointZeroPointTwo">
+          <label>3.0.2 (Windows 8.1/Windows Server 2012R2)</label>
+        </choice>
         <choice name="ThreePointOnePointOne">
           <label>3.1.1 (Windows Server 2016)</label>
         </choice>
+        <choice name="ThreeAndAbove">
+          <label>3 (Version 3.0 and above)</label>
+        </choice>
+        <choice name="Default">
+          <label>default (Negotiate the highest version)</label>
+        </choice>
       </choices>
-      <default>ThreePointZero</default>
+      <default>Default</default>
     </entry>
     <entry name="UseCacheMode" type="Bool">
       <label>Cache mode:</label>

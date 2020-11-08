@@ -1654,9 +1654,24 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
         argumentsList << "vers=3.0";
         break;
       }
+      case Smb4KMountSettings::EnumSmbProtocolVersion::ThreePointZeroPointTwo:
+      {
+        argumentsList << "vers=3.0.2";
+        break;
+      }
       case Smb4KMountSettings::EnumSmbProtocolVersion::ThreePointOnePointOne:
       {
         argumentsList << "vers=3.1.1";
+        break;
+      }
+      case Smb4KMountSettings::EnumSmbProtocolVersion::ThreeAndAbove:
+      {
+        argumentsList << "vers=3";
+        break;
+      }
+      case Smb4KMountSettings::EnumSmbProtocolVersion::Default:
+      {
+        argumentsList << "vers=default";
         break;
       }
       default:
