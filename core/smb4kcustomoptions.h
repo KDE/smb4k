@@ -2,7 +2,7 @@
     This class carries custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2019 by Alexander Reinholdt
+    copyright            : (C) 2011-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -196,14 +196,14 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * 
      * @param remount       One entry of the Remount enumeration
      */
-    void setRemount(Remount remount);
+    void setRemount(int remount);
     
     /**
      * Returns if the network item should be remounted.
      * 
      * @returns if the network item should be remounted.
      */
-    Remount remount() const;
+    int remount() const;
     
     /**
      * Set if the information about the user that is to be owner of the share 
@@ -364,6 +364,35 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * @returns the file system port
      */
     int fileSystemPort() const;
+
+    /**
+     * Set if the SMB protocol version for mounting should be set.
+     * 
+     * @param use             Boolean that determines if the SMB protocol version
+     *                        for mounting should be set
+     */
+    void setUseSmbMountProtocolVersion(bool use);
+    
+    /**
+     * Returns if the SMB protocol version for mounting should be set.
+     * 
+     * @returns TRUE if the SMB protocol version for mounting should be set.
+     */
+    bool useSmbMountProtocolVersion() const;
+    
+    /**
+     * Set the SMB protocol version for mounting.
+     * 
+     * @param version         The protocol version used for mounting
+     */
+    void setSmbMountProtocolVersion(int version);
+    
+    /**
+     * Returns the SMB protocol version for mounting.
+     * 
+     * @returns the SMB protocol version
+     */
+    int smbMountProtocolVersion() const;
     
     /**
      * Set if the security mode should be used.

@@ -2,7 +2,7 @@
     Private helper classes for Smb4KCustomOptionsManagerPrivate class
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2019 by Alexander Reinholdt
+    copyright            : (C) 2011-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -185,15 +185,15 @@ void Smb4KCustomOptionsDialog::setupView()
   dialogLayout->addWidget(tabWidget, 0);
   
   //
-  // Custom options for mounting
+  // Tab "Common Mount Settings"
   // 
-  QWidget *mountingTab = new QWidget(tabWidget);
-  QVBoxLayout *mountingTabLayout = new QVBoxLayout(mountingTab);
+  QWidget *commonMountSettingsTab = new QWidget(tabWidget);
+  QVBoxLayout *commonMountSettingsTabLayout = new QVBoxLayout(commonMountSettingsTab);
   
   //
   // Common options
   //
-  QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), mountingTab);
+  QGroupBox *commonBox = new QGroupBox(i18n("Common Options"), commonMountSettingsTab);
   QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
   
   QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), commonBox);
@@ -210,11 +210,12 @@ void Smb4KCustomOptionsDialog::setupView()
   KComboBox *writeAccess = new KComboBox(commonBox);
   writeAccess->setObjectName("WriteAccess");
   
-  QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
-  QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
   
-  writeAccess->addItem(readWriteText);
-  writeAccess->addItem(readOnlyText);
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : writeAccessChoices)
+  {
+    writeAccess->addItem(wa.label);
+  }
   
   connect(useWriteAccess, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(writeAccess, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
@@ -230,7 +231,6 @@ void Smb4KCustomOptionsDialog::setupView()
   filesystemPort->setObjectName("FileSystemPort");
   filesystemPort->setMinimum(Smb4KMountSettings::self()->remoteFileSystemPortItem()->minValue().toInt());
   filesystemPort->setMaximum(Smb4KMountSettings::self()->remoteFileSystemPortItem()->maxValue().toInt());
-//   filesystemPort->setSliderEnabled(true);
   
   connect(useFilesystemPort, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(filesystemPort, SIGNAL(valueChanged(int)), SLOT(slotCheckValues()));
@@ -238,12 +238,12 @@ void Smb4KCustomOptionsDialog::setupView()
   commonBoxLayout->addWidget(useFilesystemPort, 2, 0);
   commonBoxLayout->addWidget(filesystemPort, 2, 1);
   
-  mountingTabLayout->addWidget(commonBox, 0);
+  commonMountSettingsTabLayout->addWidget(commonBox, 0);
   
   //
   // CIFS Unix Extensions Support
   // 
-  QGroupBox *extensionsSupportBox = new QGroupBox(i18n("CIFS Unix Extensions Support"), mountingTab);
+  QGroupBox *extensionsSupportBox = new QGroupBox(i18n("CIFS Unix Extensions Support"), commonMountSettingsTab);
   QGridLayout *extensionsSupportBoxLayout = new QGridLayout(extensionsSupportBox);
   
   QCheckBox *cifsExtensionsSupport = new QCheckBox(i18n("This server supports the CIFS Unix extensions"), extensionsSupportBox);
@@ -265,7 +265,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
   for (const KUser &u : allUsers)
   {
-    userId->addItem(QString("%1 (%2)").arg(u.loginName()).arg(u.userId().nativeId()), QVariant::fromValue<K_GID>(u.groupId().nativeId()));
+    userId->addItem(QString("%1 (%2)").arg(u.loginName(), u.userId().toString()));
   }
   
   connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -285,7 +285,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
   for (const KUserGroup &g : allGroups)
   {
-    groupId->addItem(QString("%1 (%2)").arg(g.name()).arg(g.groupId().nativeId()), QVariant::fromValue<K_GID>(g.groupId().nativeId()));
+    groupId->addItem(QString("%1 (%2)").arg(g.name(), g.groupId().toString()));
   }
   
   connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -324,13 +324,42 @@ void Smb4KCustomOptionsDialog::setupView()
   extensionsSupportBoxLayout->addWidget(useDirectoryMode, 4, 0);
   extensionsSupportBoxLayout->addWidget(directoryMode, 4, 1);
   
-  mountingTabLayout->addWidget(extensionsSupportBox, 0);
+  commonMountSettingsTabLayout->addWidget(extensionsSupportBox, 0);
+  commonMountSettingsTabLayout->addStretch(100);
+  
+  tabWidget->addTab(commonMountSettingsTab, i18n("Common Mount Settings"));
+  
+  //
+  // Tab "Advanced Mount Settings"
+  // 
+  QWidget *advancedMountSettingsTab = new QWidget(tabWidget);
+  QVBoxLayout *advancedMountSettingsTabLayout = new QVBoxLayout(advancedMountSettingsTab);
   
   //
   // Advanced options
   // 
-  QGroupBox *advancedOptionsBox = new QGroupBox(i18n("Advanced Options"), mountingTab);
+  QGroupBox *advancedOptionsBox = new QGroupBox(i18n("Advanced Options"), advancedMountSettingsTab);
   QGridLayout *advancedOptionsBoxLayout = new QGridLayout(advancedOptionsBox);
+  
+  // SMB protocol version
+  QCheckBox *useSmbMountProtocol = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), advancedOptionsBox);
+  useSmbMountProtocol->setObjectName("UseSmbProtocolVersion");
+
+  KComboBox *smbMountProtocol = new KComboBox(advancedOptionsBox);
+  smbMountProtocol->setObjectName("SmbProtocolVersion");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : smbProtocolChoices)
+  {
+    smbMountProtocol->addItem(c.label);
+  }
+  
+  connect(useSmbMountProtocol, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+  connect(smbMountProtocol, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
+  
+  advancedOptionsBoxLayout->addWidget(useSmbMountProtocol, 0, 0);
+  advancedOptionsBoxLayout->addWidget(smbMountProtocol, 0, 1);
   
   // Security mode
   QCheckBox *useSecurityMode = new QCheckBox(Smb4KMountSettings::self()->useSecurityModeItem()->label(), advancedOptionsBox);
@@ -339,35 +368,23 @@ void Smb4KCustomOptionsDialog::setupView()
   KComboBox *securityMode = new KComboBox(advancedOptionsBox);
   securityMode->setObjectName("SecurityMode");
   
-  QString noneText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::None).label;
-  QString krb5Text = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Krb5).label;
-  QString krb5iText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Krb5i).label;
-  QString ntlmText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlm).label;
-  QString ntlmiText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmi).label;
-  QString ntlmv2Text = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmv2).label;
-  QString ntlmv2iText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmv2i).label;
-  QString ntlmsspText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmssp).label;
-  QString ntlmsspiText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmsspi).label;
+  QList<KConfigSkeleton::ItemEnum::Choice> securityModeChoices = Smb4KMountSettings::self()->securityModeItem()->choices();
   
-  securityMode->addItem(noneText);
-  securityMode->addItem(krb5Text);
-  securityMode->addItem(krb5iText);
-  securityMode->addItem(ntlmText);
-  securityMode->addItem(ntlmiText);
-  securityMode->addItem(ntlmv2Text);
-  securityMode->addItem(ntlmv2iText);
-  securityMode->addItem(ntlmsspText);
+  for (const KConfigSkeleton::ItemEnum::Choice &c : securityModeChoices)
+  {
+    securityMode->addItem(c.label);
+  }
   
   connect(useSecurityMode, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
   connect(securityMode, SIGNAL(currentIndexChanged(int)), SLOT(slotCheckValues()));
-
-  advancedOptionsBoxLayout->addWidget(useSecurityMode, 0, 0);
-  advancedOptionsBoxLayout->addWidget(securityMode, 0, 1);
   
-  mountingTabLayout->addWidget(advancedOptionsBox, 0);
-  mountingTabLayout->addStretch(100);
+  advancedOptionsBoxLayout->addWidget(useSecurityMode, 1, 0);
+  advancedOptionsBoxLayout->addWidget(securityMode, 1, 1);
   
-  tabWidget->addTab(mountingTab, i18n("Mounting"));
+  advancedMountSettingsTabLayout->addWidget(advancedOptionsBox, 0);
+  advancedMountSettingsTabLayout->addStretch(100);
+  
+  tabWidget->addTab(advancedMountSettingsTab, i18n("Advanced Mount Settings"));
   
   //
   // Custom options for Samba
@@ -389,7 +406,6 @@ void Smb4KCustomOptionsDialog::setupView()
   smbPort->setObjectName("SmbPort");
   smbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
   smbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
-//   smbPort->setSliderEnabled(true);
   
   connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotCheckValues()));
@@ -416,7 +432,7 @@ void Smb4KCustomOptionsDialog::setupView()
   sambaTabLayout->addWidget(authenticationBox, 0);
   sambaTabLayout->addStretch(100);
 
-  tabWidget->addTab(sambaTab, i18n("Samba"));
+  tabWidget->addTab(sambaTab, i18n("Browse Settings"));
 
   //
   // Custom options for Wake-On-LAN
@@ -474,13 +490,14 @@ void Smb4KCustomOptionsDialog::setupView()
   wakeOnLanTabLayout->addWidget(wakeOnLANActionsBox, 0);
   wakeOnLanTabLayout->addStretch(100);
 
-  tabWidget->addTab(wakeOnLanTab, i18n("Wake-On-LAN"));
+  tabWidget->addTab(wakeOnLanTab, i18n("Wake-On-LAN Settings"));
   
   //
   // Load settings
   // 
   if (m_options->hasOptions())
   {
+    // Remounting
     if (m_options->type() == Share)
     {
       remountAlways->setChecked((m_options->remount() == Smb4KCustomOptions::RemountAlways));
@@ -491,11 +508,11 @@ void Smb4KCustomOptionsDialog::setupView()
     
     // User information
     useUserId->setChecked(m_options->useUser());
-    userId->setCurrentText(QString("%1 (%2)").arg(m_options->user().loginName()).arg(m_options->user().userId().nativeId()));
+    userId->setCurrentText(QString("%1 (%2)").arg(m_options->user().loginName(), m_options->user().userId().toString()));
     
     // Group information
     useGroupId->setChecked(m_options->useGroup());
-    groupId->setCurrentText(QString("%1 (%2)").arg(m_options->group().name()).arg(m_options->group().groupId().nativeId()));
+    groupId->setCurrentText(QString("%1 (%2)").arg(m_options->group().name(), m_options->group().groupId().toString()));
     
     // File mode
     useFileMode->setChecked(m_options->useFileMode());
@@ -511,80 +528,21 @@ void Smb4KCustomOptionsDialog::setupView()
     
     // Write access
     useWriteAccess->setChecked(m_options->useWriteAccess());
-
-    switch (m_options->writeAccess())
-    {
-      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
-      {
-        writeAccess->setCurrentText(readWriteText);
-        break;
-      }
-      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
-      {
-        writeAccess->setCurrentText(readOnlyText);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
+    
+    QString writeAccessText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(m_options->writeAccess()).label;
+    writeAccess->setCurrentText(writeAccessText);
+    
+    // SMB protocol version for mounting
+    useSmbMountProtocol->setChecked(m_options->useSmbMountProtocolVersion());
+    
+    QString smbMountProtocolVersionString = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices().value(m_options->smbMountProtocolVersion()).label;
+    smbMountProtocol->setCurrentText(smbMountProtocolVersionString);
     
     // Security mode
     useSecurityMode->setChecked(m_options->useSecurityMode());
-
-    switch (m_options->securityMode())
-    {
-      case Smb4KMountSettings::EnumSecurityMode::None:
-      {
-        securityMode->setCurrentText(noneText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Krb5:
-      {
-        securityMode->setCurrentText(krb5Text);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Krb5i:
-      {
-        securityMode->setCurrentText(krb5iText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlm:
-      {
-        securityMode->setCurrentText(ntlmText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
-      {
-        securityMode->setCurrentText(ntlmiText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
-      {
-        securityMode->setCurrentText(ntlmv2Text);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
-      {
-        securityMode->setCurrentText(ntlmv2iText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
-      {
-        securityMode->setCurrentText(ntlmsspText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
-      {
-        securityMode->setCurrentText(ntlmsspiText);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
+    
+    QString securityModeText = Smb4KMountSettings::self()->securityModeItem()->choices().value(m_options->securityMode()).label;
+    securityMode->setCurrentText(securityModeText);
     
     // Remote SMB port
     useSmbPort->setChecked(m_options->useSmbPort());
@@ -658,7 +616,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
   for (const KUser &u : allUsers)
   {
-    userId->addItem(QString("%1 (%2)").arg(u.loginName()).arg(u.userId().nativeId()), QVariant::fromValue<K_GID>(u.groupId().nativeId()));
+    userId->addItem(QString("%1 (%2)").arg(u.loginName(), u.userId().toString());
   }
   
   connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -678,7 +636,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
   for (const KUserGroup &g : allGroups)
   {
-    groupId->addItem(QString("%1 (%2)").arg(g.name()).arg(g.groupId().nativeId()), QVariant::fromValue<K_GID>(g.groupId().nativeId()));
+    groupId->addItem(QString("%1 (%2)").arg(g.name(), g.groupId().toString()));
   }
   
   connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -720,7 +678,7 @@ void Smb4KCustomOptionsDialog::setupView()
   mountingTabLayout->addWidget(commonBox, 0);
   mountingTabLayout->addStretch(100);
   
-  tabWidget->addTab(mountingTab, i18n("Mounting"));
+  tabWidget->addTab(mountingTab, i18n("Mount Settings"));
   
   //
   // Custom options for Samba
@@ -742,7 +700,6 @@ void Smb4KCustomOptionsDialog::setupView()
   smbPort->setObjectName("SmbPort");
   smbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
   smbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
-//   smbPort->setSliderEnabled(true);
   
   connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotCheckValues()));
@@ -769,7 +726,7 @@ void Smb4KCustomOptionsDialog::setupView()
   sambaTabLayout->addWidget(authenticationBox, 0);
   sambaTabLayout->addStretch(100);
 
-  tabWidget->addTab(sambaTab, i18n("Samba"));
+  tabWidget->addTab(sambaTab, i18n("Browse Settings"));
 
   //
   // Custom options for Wake-On-LAN
@@ -827,7 +784,7 @@ void Smb4KCustomOptionsDialog::setupView()
   wakeOnLanTabLayout->addWidget(wakeOnLANActionsBox, 0);
   wakeOnLanTabLayout->addStretch(100);
 
-  tabWidget->addTab(wakeOnLanTab, i18n("Wake-On-LAN"));
+  tabWidget->addTab(wakeOnLanTab, i18n("Wake-On-LAN Settings"));
   
   //
   // Load settings
@@ -841,11 +798,11 @@ void Smb4KCustomOptionsDialog::setupView()
     
     // User information
     useUserId->setChecked(m_options->useUser());
-    userId->setCurrentText(QString("%1 (%2)").arg(m_options->user().loginName()).arg(m_options->user().userId().nativeId()));
+    userId->setCurrentText(QString("%1 (%2)").arg(m_options->user().loginName(), m_options->user().userId().toString()));
     
     // Group information
     useGroupId->setChecked(m_options->useGroup());
-    groupId->setCurrentText(QString("%1 (%2)").arg(m_options->group().name()).arg(m_options->group().groupId().nativeId()));
+    groupId->setCurrentText(QString("%1 (%2)").arg(m_options->group().name(), m_options->group().groupId().toString()));
     
     // File mode
     useFileMode->setChecked(m_options->useFileMode());
@@ -916,7 +873,6 @@ void Smb4KCustomOptionsDialog::setupView()
   smbPort->setObjectName("SmbPort");
   smbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
   smbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
-//   smbPort->setSliderEnabled(true);
   
   connect(useSmbPort, SIGNAL(toggled(bool)), this, SLOT(slotCheckValues()));
   connect(smbPort, SIGNAL(valueChanged(int)), this, SLOT(slotCheckValues()));
@@ -1075,11 +1031,22 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
   
   if (userId)
   {
-    K_UID uid = (K_UID)userId->itemData(userId->currentIndex()).toInt();
-
-    if (uid != (K_UID)Smb4KMountSettings::userId().toInt())
+    bool ok = false;
+    K_UID uid = (K_UID)Smb4KMountSettings::userId().toInt(&ok);
+    
+    if (ok)
     {
-      return false;
+      KUser defaultUserId(uid);
+      
+      if (defaultUserId.isValid())
+      {
+        QString defaultUserIdString = QString("%1 (%2)").arg(defaultUserId.loginName(), defaultUserId.userId().toString());
+        
+        if (userId->currentText() != defaultUserIdString)
+        {
+          return false;
+        }
+      }
     }
   }
   
@@ -1100,11 +1067,22 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
   
   if (groupId)
   {
-    K_GID gid = (K_GID)groupId->itemData(groupId->currentIndex()).toInt();
-
-    if (gid != (K_GID)Smb4KMountSettings::groupId().toInt())
+    bool ok = false;
+    K_GID gid = (K_GID)Smb4KMountSettings::groupId().toInt(&ok);
+    
+    if (ok)
     {
-      return false;
+      KUserGroup defaultGroupId(gid);
+      
+      if (defaultGroupId.isValid())
+      {
+        QString defaultGroupIdString = QString("%1 (%2)").arg(defaultGroupId.name(), defaultGroupId.groupId().toString());
+        
+        if (groupId->currentText() != defaultGroupIdString)
+        {
+          return false;
+        }
+      }
     }
   }
   
@@ -1209,6 +1187,29 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
   if (writeAccess)
   {  
     if (writeAccess->currentText() != Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::self()->writeAccess()).label)
+    {
+      return false;
+    }
+  }
+  
+  //
+  // SMB mount protocol version
+  // 
+  QCheckBox *useSmbMountProtocol = findChild<QCheckBox *>("UseSmbProtocolVersion");
+  
+  if (useSmbMountProtocol)
+  {
+    if (useSmbMountProtocol->isChecked() != Smb4KMountSettings::useSmbProtocolVersion())
+    {
+      return false;
+    }
+  }
+  
+  KComboBox *smbMountProtocol = findChild<KComboBox *>("SmbProtocolVersion");
+  
+  if (smbMountProtocol)
+  {
+    if (smbMountProtocol->currentText() != Smb4KMountSettings::self()->smbProtocolVersionItem()->choices().value(Smb4KMountSettings::self()->smbProtocolVersion()).label)
     {
       return false;
     }
@@ -1345,8 +1346,18 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   
   if (userId)
   {
-    KUser user((K_UID)Smb4KMountSettings::userId().toInt());
-    userId->setCurrentText(QString("%1 (%2)").arg(user.loginName()).arg(user.userId().nativeId()));
+    bool ok = false;
+    K_UID uid = (K_UID)Smb4KMountSettings::userId().toInt(&ok);
+    
+    if (ok)
+    {
+      KUser defaultUserId(uid);
+      
+      if (defaultUserId.isValid())
+      {
+        userId->setCurrentText(QString("%1 (%2)").arg(defaultUserId.loginName(), defaultUserId.userId().toString()));
+      }
+    }
   }
   
   // 
@@ -1363,8 +1374,18 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   
   if (groupId)
   {
-    KUserGroup group((K_GID)Smb4KMountSettings::groupId().toInt());
-    groupId->setCurrentText(QString("%1 (%2)").arg(group.name()).arg(group.groupId().nativeId()));;
+    bool ok = false;
+    K_GID gid = (K_GID)Smb4KMountSettings::groupId().toInt(&ok);
+    
+    if (ok)
+    {
+      KUserGroup defaultGroupId(gid);
+      
+      if (defaultGroupId.isValid())
+      {
+        groupId->setCurrentText(QString("%1 (%2)").arg(defaultGroupId.name(), defaultGroupId.groupId().toString()));
+      }
+    }
   }
   
   //
@@ -1443,26 +1464,26 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   
   if (writeAccess)
   {
-    QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
-    QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
-    
-    switch (Smb4KMountSettings::writeAccess())
-    {
-      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
-      {
-        writeAccess->setCurrentText(readWriteText);
-        break;
-      }
-      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
-      {
-        writeAccess->setCurrentText(readOnlyText);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
+    QString writeAccessText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::writeAccess()).label;
+    writeAccess->setCurrentText(writeAccessText);
+  }
+  
+  //
+  // SMB mount protocol version
+  // 
+  QCheckBox *useSmbMountProtocol = findChild<QCheckBox *>("UseSmbProtocolVersion");
+  
+  if (useSmbMountProtocol)
+  {
+    useSmbMountProtocol->setChecked(Smb4KMountSettings::useSmbProtocolVersion());
+  }
+  
+  KComboBox *smbMountProtocol = findChild<KComboBox *>("SmbProtocolVersion");
+  
+  if (smbMountProtocol)
+  {
+    QString smbMountProtocolVersionString = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices().value(Smb4KMountSettings::smbProtocolVersion()).label;
+    smbMountProtocol->setCurrentText(smbMountProtocolVersionString);
   }
   
   // 
@@ -1479,68 +1500,8 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
   
   if (securityMode)
   {
-    QString noneText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::None).label;
-    QString krb5Text = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Krb5).label;
-    QString krb5iText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Krb5i).label;
-    QString ntlmText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlm).label;
-    QString ntlmiText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmi).label;
-    QString ntlmv2Text = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmv2).label;
-    QString ntlmv2iText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmv2i).label;
-    QString ntlmsspText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmssp).label;
-    QString ntlmsspiText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmsspi).label;  
-    
-    switch (Smb4KMountSettings::securityMode())
-    {
-      case Smb4KMountSettings::EnumSecurityMode::None:
-      {
-        securityMode->setCurrentText(noneText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Krb5:
-      {
-        securityMode->setCurrentText(krb5Text);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Krb5i:
-      {
-        securityMode->setCurrentText(krb5iText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlm:
-      {
-        securityMode->setCurrentText(ntlmText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
-      {
-        securityMode->setCurrentText(ntlmiText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
-      {
-        securityMode->setCurrentText(ntlmv2Text);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
-      {
-        securityMode->setCurrentText(ntlmv2iText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
-      {
-        securityMode->setCurrentText(ntlmsspText);
-        break;
-      }
-      case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
-      {
-        securityMode->setCurrentText(ntlmsspiText);
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
+    QString securityModeText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::securityMode()).label;
+    securityMode->setCurrentText(securityModeText);
   }
 #endif
   
@@ -1637,7 +1598,20 @@ void Smb4KCustomOptionsDialog::saveValues()
   
   if (userId)
   {
-    m_options->setUser(KUser(userId->itemData(userId->currentIndex()).toInt()));
+    QString selectedUserIdString = userId->currentText().section("(", 1, 1).section(")", 0, 0).trimmed();
+    
+    bool ok = false;
+    K_UID uid = (K_UID)selectedUserIdString.toInt(&ok);
+    
+    if (ok)
+    {
+      KUser selectedUserId(uid);
+      
+      if (selectedUserId.isValid())
+      {
+        m_options->setUser(selectedUserId);
+      }
+    }
   }
   
   // 
@@ -1654,7 +1628,20 @@ void Smb4KCustomOptionsDialog::saveValues()
   
   if (groupId)
   {
-    m_options->setGroup(KUserGroup(groupId->itemData(groupId->currentIndex()).toInt()));
+    QString selectedGroupIdString = groupId->currentText().section("(", 1, 1).section(")", 0, 0).trimmed();
+    
+    bool ok = false;
+    K_GID gid = (K_GID)selectedGroupIdString.toInt(&ok);
+    
+    if (ok)
+    {
+      KUserGroup selectedGroupId(gid);
+      
+      if (selectedGroupId.isValid())
+      {
+        m_options->setGroup(selectedGroupId);
+      }
+    }
   }
   
   //
@@ -1733,16 +1720,41 @@ void Smb4KCustomOptionsDialog::saveValues()
   
   if (writeAccess)
   {
-    QString readWriteText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadWrite).label;
-    QString readOnlyText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::EnumWriteAccess::ReadOnly).label;
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
     
-    if (writeAccess->currentText() == readWriteText)
+    for (int i = 0; i < writeAccessChoices.size(); i++)
     {
-      m_options->setWriteAccess(Smb4KMountSettings::EnumWriteAccess::ReadWrite);
+      if (writeAccess->currentText() == writeAccessChoices.at(i).label)
+      {
+        m_options->setWriteAccess(i);
+        break;
+      }
     }
-    else if (writeAccess->currentText() == readOnlyText)
+  }
+  
+  //
+  // SMB mount protocol version
+  // 
+  QCheckBox *useSmbMountProtocol = findChild<QCheckBox *>("UseSmbProtocolVersion");
+  
+  if (useSmbMountProtocol)
+  {
+    m_options->setUseSmbMountProtocolVersion(useSmbMountProtocol->isChecked());
+  }
+  
+  KComboBox *smbMountProtocol = findChild<KComboBox *>("SmbProtocolVersion");
+  
+  if (smbMountProtocol)
+  {
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolVersionChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
+    
+    for (int i = 0; i < smbProtocolVersionChoices.size(); i++)
     {
-      m_options->setWriteAccess(Smb4KMountSettings::EnumWriteAccess::ReadOnly);
+      if (smbMountProtocol->currentText() == smbProtocolVersionChoices.at(i).label)
+      {
+        m_options->setSmbMountProtocolVersion(i);
+        break;
+      }
     }
   }
   
@@ -1760,51 +1772,15 @@ void Smb4KCustomOptionsDialog::saveValues()
   
   if (securityMode)
   {
-    QString noneText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::None).label;
-    QString krb5Text = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Krb5).label;
-    QString krb5iText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Krb5i).label;
-    QString ntlmText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlm).label;
-    QString ntlmiText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmi).label;
-    QString ntlmv2Text = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmv2).label;
-    QString ntlmv2iText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmv2i).label;
-    QString ntlmsspText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmssp).label;
-    QString ntlmsspiText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::EnumSecurityMode::Ntlmsspi).label;
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> securityModeChoices = Smb4KMountSettings::self()->securityModeItem()->choices();
     
-    if (securityMode->currentText() == noneText)
+    for (int i = 0; i < securityModeChoices.size(); i++)
     {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::None);
-    }
-    else if (securityMode->currentText() == krb5Text)
-    {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Krb5);
-    }
-    else if (securityMode->currentText() == krb5iText)
-    {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Krb5i);
-    }
-    else if (securityMode->currentText() == ntlmText)
-    {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Ntlm);
-    }
-    else if (securityMode->currentText() == ntlmiText)
-    {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Ntlmi);
-    }
-    else if (securityMode->currentText() == ntlmv2Text)
-    {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Ntlmv2);
-    }
-    else if (securityMode->currentText() == ntlmv2iText)
-    {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Ntlmv2i);
-    }
-    else if (securityMode->currentText() == ntlmsspText)
-    {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Ntlmssp);
-    }
-    else if (securityMode->currentText() == ntlmsspiText)
-    {
-      m_options->setSecurityMode(Smb4KMountSettings::EnumSecurityMode::Ntlmsspi);
+      if (securityMode->currentText() == securityModeChoices.at(i).label)
+      {
+        m_options->setSecurityMode(i);
+        break;
+      }
     }
   }
 #endif

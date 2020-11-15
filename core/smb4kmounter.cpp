@@ -1206,41 +1206,31 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   // According to the manual page, this is only needed when port 139
   // is used. So, we only pass the NetBIOS name in that case.
   // 
+  bool setNetbiosNames = false;
+  
   if (options)
   {
-    if (options->useFileSystemPort() && options->fileSystemPort() == 139)
-    {
-      // The client's NetBIOS name
-      if (!Smb4KSettings::netBIOSName().isEmpty())
-      {
-        argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
-      }
-      else if (!machineNetbiosName().isEmpty())
-      {
-        argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(machineNetbiosName()));
-      }
-      
-      // The server's NetBIOS name
-      argumentsList << QString("servern=%1").arg(KShell::quoteArg(share->hostName()));
-    }
+    setNetbiosNames = (options->useFileSystemPort() && options->fileSystemPort() == 139);
   }
   else
   {
-    if (Smb4KMountSettings::useRemoteFileSystemPort() && Smb4KMountSettings::remoteFileSystemPort() == 139)
+    setNetbiosNames = (Smb4KMountSettings::useRemoteFileSystemPort() && Smb4KMountSettings::remoteFileSystemPort() == 139);
+  }
+  
+  if (setNetbiosNames)
+  {
+    // The client's NetBIOS name
+    if (!Smb4KSettings::netBIOSName().isEmpty())
     {
-      // The client's NetBIOS name
-      if (!Smb4KSettings::netBIOSName().isEmpty())
-      {
-        argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
-      }
-      else if (!machineNetbiosName().isEmpty())
-      {
-        argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(machineNetbiosName()));
-      }
-      
-      // The server's NetBIOS name
-      argumentsList << QString("servern=%1").arg(KShell::quoteArg(share->hostName()));
+      argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
     }
+    else if (!machineNetbiosName().isEmpty())
+    {
+      argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(machineNetbiosName()));
+    }
+      
+    // The server's NetBIOS name
+    argumentsList << QString("servern=%1").arg(KShell::quoteArg(share->hostName()));
   }
   
   //
@@ -1248,62 +1238,50 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   // 
   // This sets the uid, gid, file_mode and dir_mode arguments, if necessary.
   // 
+  bool useCifsUnixExtensionsSupport = false;
+  QString userString, groupString, fileModeString, directoryModeString;
+  
   if (options)
   {
-    if (!options->cifsUnixExtensionsSupport())
-    {
-      // User id
-      if (options->useUser())
-      {
-        argumentsList << QString("uid=%1").arg(options->user().userId().nativeId());
-      }
-      
-      // Group id
-      if (options->useGroup())
-      {
-        argumentsList << QString("gid=%1").arg(options->group().groupId().nativeId());
-      }
-      
-      // File mode
-      if (options->useFileMode())
-      {
-        argumentsList << QString("file_mode=%1").arg(options->fileMode());
-      }
-      
-      // Directory mode
-      if (options->useDirectoryMode())
-      {
-        argumentsList << QString("dir_mode=%1").arg(options->directoryMode());
-      }
-    }
+    useCifsUnixExtensionsSupport = options->cifsUnixExtensionsSupport();
+    userString = options->useUser() ? options->user().userId().toString() : QString();
+    groupString = options->useGroup() ? options->group().groupId().toString() : QString();
+    fileModeString = options->useFileMode() ? options->fileMode() : QString();
+    directoryModeString = options->useDirectoryMode() ? options->directoryMode() : QString();
   }
   else
   {
-    if (!Smb4KMountSettings::cifsUnixExtensionsSupport())
+    useCifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
+    userString = Smb4KMountSettings::useUserId() ? Smb4KMountSettings::userId() : QString();
+    groupString = Smb4KMountSettings::useGroupId() ? Smb4KMountSettings::groupId() : QString();
+    fileModeString = Smb4KMountSettings::useFileMode() ? Smb4KMountSettings::fileMode() : QString();
+    directoryModeString = Smb4KMountSettings::useDirectoryMode() ? Smb4KMountSettings::directoryMode() : QString();
+  }
+  
+  if (!useCifsUnixExtensionsSupport)
+  {
+    // User id
+    if (!userString.isEmpty())
     {
-      // User id
-      if (Smb4KMountSettings::useUserId())
-      {
-        argumentsList << QString("uid=%1").arg((K_UID)Smb4KMountSettings::userId().toInt());
-      }
+      argumentsList << QString("uid=%1").arg(userString);
+    }
       
-      // Group id
-      if (Smb4KMountSettings::useGroupId())
-      {
-        argumentsList << QString("gid=%1").arg((K_GID)Smb4KMountSettings::groupId().toInt());
-      }
+    // Group id
+    if (!groupString.isEmpty())
+    {
+      argumentsList << QString("gid=%1").arg(groupString);
+    }
       
-      // File mode
-      if (Smb4KMountSettings::useFileMode())
-      {
-        argumentsList << QString("file_mode=%1").arg(Smb4KMountSettings::fileMode());
-      }
+    // File mode
+    if (!fileModeString.isEmpty())
+    {
+      argumentsList << QString("file_mode=%1").arg(fileModeString);
+    }
       
-      // Directory mode
-      if (Smb4KMountSettings::useDirectoryMode())
-      {
-        argumentsList << QString("dir_mode=%1").arg(Smb4KMountSettings::directoryMode());
-      }
+    // Directory mode
+    if (!directoryModeString.isEmpty())
+    {
+      argumentsList << QString("dir_mode=%1").arg(directoryModeString);
     }
   }
   
@@ -1369,49 +1347,37 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   // Write access
   // 
+  bool useWriteAccess = false;
+  int writeAccess = -1;
+  
   if (options)
   {
-    if (options->useWriteAccess())
-    {
-      switch (options->writeAccess())
-      {
-        case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
-        {
-          argumentsList << "rw";
-          break;
-        }
-        case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
-        {
-          argumentsList << "ro";
-          break;
-        }
-        default:
-        {
-          break;
-        }
-      }
-    }
+    useWriteAccess = options->useWriteAccess();
+    writeAccess = options->writeAccess();
   }
   else
   {
-    if (Smb4KMountSettings::useWriteAccess())
+    useWriteAccess = Smb4KMountSettings::useWriteAccess();
+    writeAccess = Smb4KMountSettings::writeAccess();
+  }
+  
+  if (useWriteAccess)
+  {
+    switch (writeAccess)
     {
-      switch (Smb4KMountSettings::writeAccess())
+      case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
       {
-        case Smb4KMountSettings::EnumWriteAccess::ReadWrite:
-        {
-          argumentsList << "rw";
-          break;
-        }
-        case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
-        {
-          argumentsList << "ro";
-          break;
-        }
-        default:
-        {
-          break;
-        }
+        argumentsList << "rw";
+        break;
+      }
+      case Smb4KMountSettings::EnumWriteAccess::ReadOnly:
+      {
+        argumentsList << "ro";
+        break;
+      }
+      default:
+      {
+        break;
       }
     }
   }
@@ -1504,125 +1470,75 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   // 
   // Security mode
   // 
+  bool useSecurityMode = false;
+  int securityMode = -1;
+  
   if (options)
   {
-    if (options->useSecurityMode())
-    {
-      switch (options->securityMode())
-      {
-        case Smb4KMountSettings::EnumSecurityMode::None:
-        {
-          argumentsList << "sec=none";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Krb5:
-        {
-          argumentsList << "sec=krb5";
-          argumentsList << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).userId().nativeId());
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Krb5i:
-        {
-          argumentsList << "sec=krb5i";
-          argumentsList << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).userId().nativeId());
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlm:
-        {
-          argumentsList << "sec=ntlm";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
-        {
-          argumentsList << "sec=ntlmi";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
-        {
-          argumentsList << "sec=ntlmv2";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
-        {
-          argumentsList << "sec=ntlmv2i";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
-        {
-          argumentsList << "sec=ntlmssp";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
-        {
-          argumentsList << "sec=ntlmsspi";
-          break;
-        }
-        default:
-        {
-          // Smb4KSettings::EnumSecurityMode::Default,
-          break;
-        }
-      }
-    }
+    useSecurityMode = options->useSecurityMode();
+    securityMode = options->securityMode();
   }
   else
   {
-    if (Smb4KMountSettings::useSecurityMode())
+    useSecurityMode = Smb4KMountSettings::useSecurityMode();
+    securityMode = Smb4KMountSettings::securityMode();
+  }
+  
+  if (useSecurityMode)
+  {
+    switch (securityMode)
     {
-      switch (Smb4KMountSettings::securityMode())
+      case Smb4KMountSettings::EnumSecurityMode::None:
       {
-        case Smb4KMountSettings::EnumSecurityMode::None:
-        {
-          argumentsList << "sec=none";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Krb5:
-        {
-          argumentsList << "sec=krb5";
-          argumentsList << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).userId().nativeId());
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Krb5i:
-        {
-          argumentsList << "sec=krb5i";
-          argumentsList << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).userId().nativeId());
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlm:
-        {
-          argumentsList << "sec=ntlm";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
-        {
-          argumentsList << "sec=ntlmi";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
-        {
-          argumentsList << "sec=ntlmv2";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
-        {
-          argumentsList << "sec=ntlmv2i";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
-        {
-          argumentsList << "sec=ntlmssp";
-          break;
-        }
-        case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
-        {
-          argumentsList << "sec=ntlmsspi";
-          break;
-        }
-        default:
-        {
-          // Smb4KSettings::EnumSecurityMode::Default,
-          break;
-        }
+        argumentsList << "sec=none";
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Krb5:
+      {
+        argumentsList << "sec=krb5";
+        argumentsList << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).userId().nativeId());
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Krb5i:
+      {
+        argumentsList << "sec=krb5i";
+        argumentsList << QString("cruid=%1").arg(KUser(KUser::UseRealUserID).userId().nativeId());
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlm:
+      {
+        argumentsList << "sec=ntlm";
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmi:
+      {
+        argumentsList << "sec=ntlmi";
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2:
+      {
+        argumentsList << "sec=ntlmv2";
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmv2i:
+      {
+        argumentsList << "sec=ntlmv2i";
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmssp:
+      {
+        argumentsList << "sec=ntlmssp";
+        break;
+      }
+      case Smb4KMountSettings::EnumSecurityMode::Ntlmsspi:
+      {
+        argumentsList << "sec=ntlmsspi";
+        break;
+      }
+      default:
+      {
+        // Smb4KSettings::EnumSecurityMode::Default,
+        break;
       }
     }
   }
@@ -1630,9 +1546,23 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   // SMB protocol version
   // 
-  if (Smb4KMountSettings::useSmbProtocolVersion())
+  bool useSmbMountProtocolVersion = false;
+  int smbMountProtocolVersion = -1;
+  
+  if (options)
   {
-    switch (Smb4KMountSettings::smbProtocolVersion())
+    useSmbMountProtocolVersion = options->useSmbMountProtocolVersion();
+    smbMountProtocolVersion = options->smbMountProtocolVersion();
+  }
+  else
+  {
+    useSmbMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
+    smbMountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
+  }
+  
+  if (useSmbMountProtocolVersion)
+  {
+    switch (smbMountProtocolVersion)
     {
       case Smb4KMountSettings::EnumSmbProtocolVersion::OnePointZero:
       {

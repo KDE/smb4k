@@ -2,7 +2,7 @@
     The configuration page for the custom options
                              -------------------
     begin                : Sa Jan 19 2013
-    copyright            : (C) 2013-2019 by Alexander Reinholdt
+    copyright            : (C) 2013-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 

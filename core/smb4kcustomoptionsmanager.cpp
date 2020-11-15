@@ -2,7 +2,7 @@
     Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2019 by Alexander Reinholdt
+    copyright            : (C) 2011-2020 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -376,13 +376,19 @@ void Smb4KCustomOptionsManager::readCustomOptions()
       if (xmlReader.isStartElement())
       {
         if (xmlReader.name() == "custom_options" && 
-            (xmlReader.attributes().value("version") != "1.2" && xmlReader.attributes().value("version") != "2.0"))
+            (xmlReader.attributes().value("version") != "2.0" && xmlReader.attributes().value("version") != "3.0"))
         {
           xmlReader.raiseError(i18n("The format of %1 is not supported.", xmlFile.fileName()));
           break;
         }
-        else
+        else if (xmlReader.name() == "custom_options" && xmlReader.attributes().value("version") == "2.0")
         {
+          // 
+          // NOTE: This is for backward compatibility only (since version 3.0.73) and 
+          // should be removed in the future again.
+          // 
+          qDebug() << "Importing old data format";
+          
           if (xmlReader.name() == "options")
           {
             OptionsPtr options = OptionsPtr(new Smb4KCustomOptions());
@@ -413,12 +419,6 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                 else if (xmlReader.name() == "url")
                 {
                   QUrl url(xmlReader.readElementText());
-                  options->setUrl(url);
-                }
-                else if (xmlReader.name() == "unc")
-                {
-                  QUrl url = QUrl::fromUserInput(xmlReader.readElementText());
-                  url.setScheme("smb");
                   options->setUrl(url);
                 }
                 else if (xmlReader.name() == "ip")
@@ -736,6 +736,308 @@ void Smb4KCustomOptionsManager::readCustomOptions()
             d->options << options;  
           }
         }
+        else
+        {
+          if (xmlReader.name() == "options")
+          {
+            OptionsPtr options = OptionsPtr(new Smb4KCustomOptions());
+            options->setProfile(xmlReader.attributes().value("profile").toString());
+            
+            //
+            // Initialize the options 
+            // 
+            if (QString::compare(xmlReader.attributes().value("type").toString(), "host", Qt::CaseInsensitive) == 0)
+            {
+              options->setHost(new Smb4KHost());
+            }
+            else
+            {
+              options->setShare(new Smb4KShare());
+            }
+
+            while (!(xmlReader.isEndElement() && xmlReader.name() == "options"))
+            {
+              xmlReader.readNext();
+  
+              if (xmlReader.isStartElement())
+              {
+                if (xmlReader.name() == "workgroup")
+                {
+                  options->setWorkgroupName(xmlReader.readElementText());
+                }
+                else if (xmlReader.name() == "url")
+                {
+                  QUrl url(xmlReader.readElementText());
+                  options->setUrl(url);
+                }
+                else if (xmlReader.name() == "ip")
+                {
+                  options->setIpAddress(xmlReader.readElementText());
+                }
+                else if (xmlReader.name() == "custom")
+                {
+                  while (!(xmlReader.isEndElement() && xmlReader.name() == "custom"))
+                  {
+                    xmlReader.readNext();
+                    
+                    if (xmlReader.isStartElement())
+                    {
+                      if (xmlReader.name() == "smb_port")
+                      {
+                        bool ok = false;
+                        int portNumber = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setSmbPort(portNumber);
+                        }
+                      }
+                      else if (xmlReader.name() == "use_smb_port")
+                      {
+                        bool ok = false;
+                        bool useSmbPort = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseSmbPort(useSmbPort);
+                        }
+                      }
+                      else if (xmlReader.name() == "kerberos")
+                      {
+                        bool ok = false;
+                        bool useKerberos = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseKerberos(useKerberos);
+                        }
+                      }
+                      else if (xmlReader.name() == "mac_address")
+                      {
+                        QString macAddress = xmlReader.readElementText();
+                        
+                        QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
+  
+                        if (exp.exactMatch(macAddress))
+                        {
+                          options->setMACAddress(macAddress);
+                        }
+                      }
+                      else if (xmlReader.name() == "wol_send_before_first_scan")
+                      {
+                        bool ok = false;
+                        bool send = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setWOLSendBeforeNetworkScan(send);
+                        }
+                      }
+                      else if (xmlReader.name() == "wol_send_before_mount")
+                      {
+                        bool ok = false;
+                        bool send = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setWOLSendBeforeMount(send);
+                        }
+                      }
+                      else if (xmlReader.name() == "remount")
+                      {
+                        bool ok = false;
+                        int remount = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setRemount(remount);
+                        }
+                      }
+                      else if (xmlReader.name() == "use_user")
+                      {
+                        bool ok = false;
+                        bool useUser = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseUser(useUser);
+                        }
+                      }
+                      else if (xmlReader.name() == "uid")
+                      {
+                        bool ok = false;
+                        int uid = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          KUser user((K_UID)uid);
+                        
+                          if (user.isValid())
+                          {
+                            options->setUser(user);
+                          }
+                        }
+                      }
+                      else if (xmlReader.name() == "use_group")
+                      {
+                        bool ok = false;
+                        bool useGroup = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseGroup(useGroup);
+                        }
+                      }
+                      else if (xmlReader.name() == "gid")
+                      {
+                        bool ok = false;
+                        int gid = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          KUserGroup group((K_GID)gid);
+                        
+                          if (group.isValid())
+                          {
+                            options->setGroup(group);
+                          }
+                        }
+                      }
+                      else if (xmlReader.name() == "use_file_mode")
+                      {
+                        bool ok = false;
+                        bool useFileMode = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseFileMode(useFileMode);
+                        }
+                      }
+                      else if (xmlReader.name() == "file_mode")
+                      {
+                        options->setFileMode(xmlReader.readElementText());
+                      }
+                      else if (xmlReader.name() == "use_directory_mode")
+                      {
+                        bool ok = false;
+                        bool useDirectoryMode = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseDirectoryMode(useDirectoryMode);
+                        }
+                      }
+                      else if (xmlReader.name() == "directory_mode")
+                      {
+                        options->setDirectoryMode(xmlReader.readElementText());
+                      }
+#if defined(Q_OS_LINUX)
+                      else if (xmlReader.name() == "cifs_unix_extensions_support")
+                      {
+                        bool ok = false;
+                        bool cifsUnixExtensionsSupported = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setCifsUnixExtensionsSupport(cifsUnixExtensionsSupported);
+                        }
+                      }
+                      else if (xmlReader.name() == "use_filesystem_port")
+                      {
+                        bool ok = false;
+                        bool useFilesystemPort = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseFileSystemPort(useFilesystemPort);
+                        }
+                      }
+                      else if (xmlReader.name() == "filesystem_port")
+                      {
+                        bool ok = false;
+                        int portNumber = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setFileSystemPort(portNumber);
+                        }
+                      }
+                      else if (xmlReader.name() == "use_smb_mount_protocol_version")
+                      {
+                        bool ok = false;
+                        bool useSmbMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseSmbMountProtocolVersion(useSmbMountProtocolVersion);
+                        }
+                      }
+                      else if (xmlReader.name() =="smb_mount_protocol_version")
+                      {
+                        bool ok = false;
+                        int smbMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setSmbMountProtocolVersion(smbMountProtocolVersion);
+                        }
+                      }
+                      else if (xmlReader.name() == "use_security_mode")
+                      {
+                        bool ok = false;
+                        bool useSecurityMode = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseSecurityMode(useSecurityMode);
+                        }
+                      }
+                      else if (xmlReader.name() == "security_mode")
+                      {
+                        bool ok = false;
+                        int securityMode = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setSecurityMode(securityMode);
+                        }
+                      }
+                      else if (xmlReader.name() == "use_write_access")
+                      {
+                        bool ok = false;
+                        bool useWriteAccess = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseWriteAccess(useWriteAccess);
+                        }
+                      }
+                      else if (xmlReader.name() == "write_access")
+                      {
+                        bool ok = false;
+                        int writeAccess = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setWriteAccess(writeAccess);
+                        }
+                      }
+#endif
+                    }
+                  }
+                }
+  
+                continue;
+              }
+              else
+              {
+                continue;
+              }
+            }            
+              
+            d->options << options;  
+          }
+        }
       }
     }
 
@@ -774,7 +1076,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
       xmlWriter.setAutoFormatting(true);
       xmlWriter.writeStartDocument();
       xmlWriter.writeStartElement("custom_options");
-      xmlWriter.writeAttribute("version", "2.0");
+      xmlWriter.writeAttribute("version", "3.0");
       
       for (const OptionsPtr &options : d->options)
       {
@@ -1043,6 +1345,8 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
           o->setCifsUnixExtensionsSupport(options->cifsUnixExtensionsSupport());
           o->setUseFileSystemPort(options->useFileSystemPort());
           o->setFileSystemPort(options->fileSystemPort());
+          o->setUseSmbMountProtocolVersion(options->useSmbMountProtocolVersion());
+          o->setSmbMountProtocolVersion(options->smbMountProtocolVersion());
           o->setUseSecurityMode(options->useSecurityMode());
           o->setSecurityMode(options->securityMode());
           o->setUseWriteAccess(options->useWriteAccess());
