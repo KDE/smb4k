@@ -89,9 +89,9 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
   d->type = Host;
   d->remount = UndefinedRemount;
   d->useUser = Smb4KMountSettings::useUserId();
-  d->user = KUser(Smb4KMountSettings::userId());
+  d->user = KUser((K_UID)Smb4KMountSettings::userId().toInt());
   d->useGroup = Smb4KMountSettings::useGroupId();
-  d->group = KUserGroup(Smb4KMountSettings::groupId());
+  d->group = KUserGroup((K_GID)Smb4KMountSettings::groupId().toInt());
   d->useFileMode = Smb4KMountSettings::useFileMode();
   d->fileMode = Smb4KMountSettings::fileMode();
   d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
@@ -159,9 +159,9 @@ Smb4KCustomOptions::Smb4KCustomOptions()
   d->type = UnknownNetworkItem;
   d->remount = UndefinedRemount;
   d->useUser = Smb4KMountSettings::useUserId();
-  d->user = KUser(Smb4KMountSettings::userId());
+  d->user = KUser((K_UID)Smb4KMountSettings::userId().toInt());
   d->useGroup = Smb4KMountSettings::useGroupId();
-  d->group = KUserGroup(Smb4KMountSettings::groupId());
+  d->group = KUserGroup((K_GID)Smb4KMountSettings::groupId().toInt());
   d->useFileMode = Smb4KMountSettings::useFileMode();
   d->fileMode = Smb4KMountSettings::fileMode();
   d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
