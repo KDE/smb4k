@@ -749,10 +749,10 @@ void Smb4KCustomOptionsDialog::setupView()
   QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
   
   // Minimal and maximal client protocol versions
-  QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), commonMountSettingsTab);
+  QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), commonSambaOptionsBox);
   useClientProtocolVersions->setObjectName("UseClientProtocolVersions");
   
-  QLabel *minimalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), commonMountSettingsTab);
+  QLabel *minimalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), commonSambaOptionsBox);
   minimalClientProtocolVersionLabel->setIndent(25);
   minimalClientProtocolVersionLabel->setObjectName("MinimalProtocolVersionLabel");
   
@@ -766,11 +766,11 @@ void Smb4KCustomOptionsDialog::setupView()
     minimalClientProtocolVersion->addItem(c.label);
   }
   
-  QLabel *maximalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), commonMountSettingsTab);
+  QLabel *maximalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), commonSambaOptionsBox);
   maximalClientProtocolVersionLabel->setIndent(25);
   maximalClientProtocolVersionLabel->setObjectName("MaximalProtocolVersionLabel");
   
-  KComboBox *maximalClientProtocolVersion = new KComboBox(commonMountSettingsTab);
+  KComboBox *maximalClientProtocolVersion = new KComboBox(commonSambaOptionsBox);
   maximalClientProtocolVersion->setObjectName("MaximalClientProtocolVersion");
   
   QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
