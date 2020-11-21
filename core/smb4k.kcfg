@@ -118,10 +118,10 @@
           <label>NT1 (Classic CIFS/SMBv1 protocol)</label>
         </choice>
         <choice name="SMB2">
-          <label>SMB2 (Windows Vista and later versions of Windows)</label>
+          <label>SMB2 (Windows Vista and above)</label>
         </choice>
         <choice name="SMB3">
-          <label>SMB3 (Windows 8 and later versions of Windows)</label>
+          <label>SMB3 (Windows 8 and above)</label>
         </choice>
       </choices>
       <default>SMB2</default>
@@ -134,10 +134,10 @@
           <label>NT1 (Classic CIFS/SMBv1 protocol)</label>
         </choice>
         <choice name="SMB2">
-          <label>SMB2 (Windows Vista and later versions of Windows)</label>
+          <label>SMB2 (Windows Vista and above)</label>
         </choice>
         <choice name="SMB3">
-          <label>SMB3 (Windows 8 and later versions of Windows)</label>
+          <label>SMB3 (Windows 8 and above)</label>
         </choice>
       </choices>
       <default>SMB3</default>

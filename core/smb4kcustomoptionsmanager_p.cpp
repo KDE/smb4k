@@ -672,7 +672,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
   for (const KUser &u : allUsers)
   {
-    userId->addItem(QString("%1 (%2)").arg(u.loginName(), u.userId().toString());
+    userId->addItem(QString("%1 (%2)").arg(u.loginName(), u.userId().toString()));
   }
   
   connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
