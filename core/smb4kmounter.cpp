@@ -1546,23 +1546,23 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   // SMB protocol version
   // 
-  bool useSmbMountProtocolVersion = false;
-  int smbMountProtocolVersion = -1;
+  bool useMountProtocolVersion = false;
+  int mountProtocolVersion = -1;
   
   if (options)
   {
-    useSmbMountProtocolVersion = options->useSmbMountProtocolVersion();
-    smbMountProtocolVersion = options->smbMountProtocolVersion();
+    useMountProtocolVersion = options->useMountProtocolVersion();
+    mountProtocolVersion = options->mountProtocolVersion();
   }
   else
   {
-    useSmbMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
-    smbMountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
+    useMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
+    mountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
   }
   
-  if (useSmbMountProtocolVersion)
+  if (useMountProtocolVersion)
   {
-    switch (smbMountProtocolVersion)
+    switch (mountProtocolVersion)
     {
       case Smb4KMountSettings::EnumSmbProtocolVersion::OnePointZero:
       {

@@ -58,16 +58,20 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   QGridLayout *browseSettingsBoxLayout = new QGridLayout(browseSettingsBox);
 
 #ifdef USE_WS_DISCOVERY
+  // Use WS-Discovery
   QCheckBox *useWsDiscovery = new QCheckBox(Smb4KSettings::self()->useWsDiscoveryItem()->label(), browseSettingsBox);
   useWsDiscovery->setObjectName("kcfg_UseWsDiscovery");
 #endif
   
+  // Use DNS-SD
   QCheckBox *useDnsServiceDiscovery = new QCheckBox(Smb4KSettings::self()->useDnsServiceDiscoveryItem()->label(), browseSettingsBox);
   useDnsServiceDiscovery->setObjectName("kcfg_UseDnsServiceDiscovery");
   
+  // Force SMBv1 protocol for browsing
   QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), browseSettingsBox);
   forceSmb1Protocol->setObjectName("kcfg_ForceSmb1Protocol");
   
+  // Set client protocol versions
   QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), browseSettingsBox);
   useClientProtocolVersions->setObjectName("kcfg_UseClientProtocolVersions");
   

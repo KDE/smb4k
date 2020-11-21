@@ -607,7 +607,7 @@ void Smb4KClientJob::initClientLibrary()
   }
   
   //
-  // Set the protocol version if desired.
+  // Set the protocol version if desired
   //
   if (Smb4KSettings::forceSmb1Protocol() && m_item->type() == Network)
   {
@@ -615,25 +615,44 @@ void Smb4KClientJob::initClientLibrary()
   }
   else
   {
-    if (Smb4KSettings::useClientProtocolVersions())
+    int minimal = -1;
+    int maximal = -1;
+    QString minimalClientProtocolVersionString, maximalClientProtocolVersionString;
+    
+    if (options)
     {
-      QString minimal, maximal;
-      
-      switch (Smb4KSettings::minimalClientProtocolVersion())
+      if (options->useClientProtocolVersions())
+      {
+        minimal = options->minimalClientProtocolVersion();
+        maximal = options->maximalClientProtocolVersion();
+      }
+    }
+    else
+    {
+      if (Smb4KSettings::useClientProtocolVersions())
+      {
+        minimal = Smb4KSettings::minimalClientProtocolVersion();
+        maximal = Smb4KSettings::maximalClientProtocolVersion();
+      }
+    }
+
+    if (minimal != -1 && maximal != -1)
+    {
+      switch (minimal)
       {
         case Smb4KSettings::EnumMinimalClientProtocolVersion::NT1:
         {
-          minimal = "NT1";
+          minimalClientProtocolVersionString = "NT1";
           break;
         }
         case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB2:
         {
-          minimal = "SMB2";
+          minimalClientProtocolVersionString = "SMB2";
           break;
         }
         case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB3:
         {
-          minimal = "SMB3";
+          minimalClientProtocolVersionString = "SMB3";
           break;
         }
         default:
@@ -646,17 +665,17 @@ void Smb4KClientJob::initClientLibrary()
       {
         case Smb4KSettings::EnumMaximalClientProtocolVersion::NT1:
         {
-          maximal = "NT1";
+          maximalClientProtocolVersionString = "NT1";
           break;
         }
         case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB2:
         {
-          maximal = "SMB2";
+          maximalClientProtocolVersionString = "SMB2";
           break;
         }
         case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB3:
         {
-          maximal = "SMB3";
+          maximalClientProtocolVersionString = "SMB3";
           break;
         }
         default:
@@ -664,8 +683,11 @@ void Smb4KClientJob::initClientLibrary()
           break;
         }
       }
-      
-      smbc_setOptionProtocols(m_context, minimal.toLatin1(), maximal.toLatin1());
+    }
+    
+    if (!minimalClientProtocolVersionString.isEmpty() && !maximalClientProtocolVersionString.isEmpty())
+    {
+      smbc_setOptionProtocols(m_context, minimalClientProtocolVersionString.toLatin1(), maximalClientProtocolVersionString.toLatin1());
     }
     else
     {

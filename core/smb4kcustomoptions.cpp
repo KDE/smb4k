@@ -62,14 +62,17 @@ class Smb4KCustomOptionsPrivate
     bool cifsUnixExtensionsSupport;
     bool useFileSystemPort;
     int fileSystemPort;
-    bool useSmbMountProtocolVersion;
-    int smbMountProtocolVersion;
+    bool useMountProtocolVersion;
+    int mountProtocolVersion;
     bool useSecurityMode;
     int securityMode;
     bool useWriteAccess;
     int writeAccess;
 #endif
     QString profile;
+    bool useClientProtocolVersions;
+    int minimalClientProtocolVersion;
+    int maximalClientProtocolVersion;
     bool useSmbPort;
     int smbPort;
     bool useKerberos;
@@ -98,13 +101,16 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
   d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
   d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
   d->fileSystemPort = Smb4KMountSettings::remoteFileSystemPort();
-  d->useSmbMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
-  d->smbMountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
+  d->useMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
+  d->mountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
   d->useSecurityMode = Smb4KMountSettings::useSecurityMode();
   d->securityMode = Smb4KMountSettings::securityMode();
   d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
   d->writeAccess = Smb4KMountSettings::writeAccess();
 #endif
+  d->useClientProtocolVersions = Smb4KSettings::useClientProtocolVersions();
+  d->minimalClientProtocolVersion = Smb4KSettings::minimalClientProtocolVersion();
+  d->maximalClientProtocolVersion = Smb4KSettings::maximalClientProtocolVersion();
   d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
   d->smbPort = host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort();
   d->useKerberos = Smb4KSettings::useKerberos();
@@ -132,13 +138,16 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
   d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
   d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
   d->fileSystemPort = share->port() != -1 ? share->port() : Smb4KMountSettings::remoteFileSystemPort();
-  d->useSmbMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
-  d->smbMountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
+  d->useMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
+  d->mountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
   d->useSecurityMode = Smb4KMountSettings::useSecurityMode();
   d->securityMode = Smb4KMountSettings::securityMode();
   d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
   d->writeAccess = Smb4KMountSettings::writeAccess();
 #endif
+  d->useClientProtocolVersions = Smb4KSettings::useClientProtocolVersions();
+  d->minimalClientProtocolVersion = Smb4KSettings::minimalClientProtocolVersion();
+  d->maximalClientProtocolVersion = Smb4KSettings::maximalClientProtocolVersion();
   d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
   d->smbPort = Smb4KSettings::remoteSmbPort();
   d->useKerberos = Smb4KSettings::useKerberos();
@@ -172,13 +181,16 @@ Smb4KCustomOptions::Smb4KCustomOptions()
   d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
   d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
   d->fileSystemPort = Smb4KMountSettings::remoteFileSystemPort();
-  d->useSmbMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
-  d->smbMountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
+  d->useMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
+  d->mountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
   d->useSecurityMode = Smb4KMountSettings::useSecurityMode();
   d->securityMode = Smb4KMountSettings::securityMode();
   d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
   d->writeAccess = Smb4KMountSettings::writeAccess();
 #endif
+  d->useClientProtocolVersions = Smb4KSettings::useClientProtocolVersions();
+  d->minimalClientProtocolVersion = Smb4KSettings::minimalClientProtocolVersion();
+  d->maximalClientProtocolVersion = Smb4KSettings::maximalClientProtocolVersion();
   d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
   d->smbPort = Smb4KSettings::remoteSmbPort();
   d->useKerberos = Smb4KSettings::useKerberos();
@@ -528,27 +540,27 @@ int Smb4KCustomOptions::fileSystemPort() const
 }
 
 
-void Smb4KCustomOptions::setUseSmbMountProtocolVersion(bool use)
+void Smb4KCustomOptions::setUseMountProtocolVersion(bool use)
 {
-  d->useSmbMountProtocolVersion = use;
+  d->useMountProtocolVersion = use;
 }
 
 
-bool Smb4KCustomOptions::useSmbMountProtocolVersion() const
+bool Smb4KCustomOptions::useMountProtocolVersion() const
 {
-  return d->useSmbMountProtocolVersion;
+  return d->useMountProtocolVersion;
 }
 
 
-void Smb4KCustomOptions::setSmbMountProtocolVersion(int version)
+void Smb4KCustomOptions::setMountProtocolVersion(int version)
 {
-  d->smbMountProtocolVersion = version;
+  d->mountProtocolVersion = version;
 }
 
 
-int Smb4KCustomOptions::smbMountProtocolVersion() const
+int Smb4KCustomOptions::mountProtocolVersion() const
 {
-  return d->smbMountProtocolVersion;
+  return d->mountProtocolVersion;
 }
 
 
@@ -610,6 +622,41 @@ void Smb4KCustomOptions::setProfile(const QString &profile)
 QString Smb4KCustomOptions::profile() const
 {
   return d->profile;
+}
+
+void Smb4KCustomOptions::setUseClientProtocolVersions(bool use)
+{
+  d->useClientProtocolVersions = use;
+}
+
+
+bool Smb4KCustomOptions::useClientProtocolVersions() const
+{
+  return d->useClientProtocolVersions;
+}
+
+
+void Smb4KCustomOptions::setMinimalClientProtocolVersion(int version)
+{
+  d->minimalClientProtocolVersion = version;
+}
+
+
+int Smb4KCustomOptions::minimalClientProtocolVersion() const
+{
+  return d->minimalClientProtocolVersion;
+}
+
+
+void Smb4KCustomOptions::setMaximalClientProtocolVersion(int version)
+{
+  d->maximalClientProtocolVersion = version;
+}
+
+
+int Smb4KCustomOptions::maximalClientProtocolVersion() const
+{
+  return d->maximalClientProtocolVersion;
 }
 
 
@@ -751,8 +798,8 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
   // 
   // Mount protocol version
   // 
-  entries.insert("use_smb_mount_protocol_version", QString("%1").arg(d->useSmbMountProtocolVersion));
-  entries.insert("smb_mount_protocol_version", QString("%1").arg(d->smbMountProtocolVersion));
+  entries.insert("use_smb_mount_protocol_version", QString("%1").arg(d->useMountProtocolVersion));
+  entries.insert("smb_mount_protocol_version", QString("%1").arg(d->mountProtocolVersion));
   
   //
   // Security mode
@@ -766,6 +813,13 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
   entries.insert("use_write_access", QString("%1").arg(d->useWriteAccess));
   entries.insert("write_access", QString("%1").arg(d->writeAccess));
 #endif
+ 
+  //
+  // Client protocol versions
+  // 
+  entries.insert("use_client_protocol_versions", QString("%1").arg(d->useClientProtocolVersions));
+  entries.insert("minimal_client_protocol_version", QString("%1").arg(d->minimalClientProtocolVersion));
+  entries.insert("maximal_client_protocol_version", QString("%1").arg(d->maximalClientProtocolVersion));
   
   // 
   // SMB port used by the client 
@@ -870,13 +924,13 @@ bool Smb4KCustomOptions::hasOptions() const
   }
   
   // Use SMB mount protocol version
-  if (d->useSmbMountProtocolVersion != Smb4KMountSettings::useSmbProtocolVersion())
+  if (d->useMountProtocolVersion != Smb4KMountSettings::useSmbProtocolVersion())
   {
     return true;
   }
   
   // SMB mount protocol version
-  if (d->smbMountProtocolVersion != Smb4KMountSettings::smbProtocolVersion())
+  if (d->mountProtocolVersion != Smb4KMountSettings::smbProtocolVersion())
   {
     return true;
   }
@@ -905,6 +959,24 @@ bool Smb4KCustomOptions::hasOptions() const
     return true;
   }
 #endif
+
+  // Use client protocol versions
+  if (d->useClientProtocolVersions != Smb4KSettings::useClientProtocolVersions())
+  {
+    return true;
+  }
+  
+  // Minimal client protocol version
+  if (d->minimalClientProtocolVersion != Smb4KSettings::minimalClientProtocolVersion())
+  {
+    return true;
+  }
+  
+  // Maximal client protocol version
+  if (d->maximalClientProtocolVersion != Smb4KSettings::maximalClientProtocolVersion())
+  {
+    return true;
+  }
 
   // Use SMB port
   if (d->useSmbPort != Smb4KSettings::useRemoteSmbPort())
@@ -963,13 +1035,16 @@ void Smb4KCustomOptions::update(Smb4KCustomOptions *options)
     d->cifsUnixExtensionsSupport = options->cifsUnixExtensionsSupport();
     d->useFileSystemPort = options->useFileSystemPort();
     d->fileSystemPort = options->fileSystemPort();
-    d->useSmbMountProtocolVersion = options->useSmbMountProtocolVersion();
-    d->smbMountProtocolVersion = options->smbMountProtocolVersion();
+    d->useMountProtocolVersion = options->useMountProtocolVersion();
+    d->mountProtocolVersion = options->mountProtocolVersion();
     d->useSecurityMode = options->useSecurityMode();
     d->securityMode = options->securityMode();
     d->useWriteAccess = options->useWriteAccess();
     d->writeAccess = options->writeAccess();
 #endif
+    d->useClientProtocolVersions = options->useClientProtocolVersions();
+    d->minimalClientProtocolVersion = options->minimalClientProtocolVersion();
+    d->maximalClientProtocolVersion = options->maximalClientProtocolVersion();
     d->profile = options->profile();
     d->useSmbPort = options->useSmbPort();
     d->smbPort = options->smbPort();

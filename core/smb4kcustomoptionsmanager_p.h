@@ -55,6 +55,7 @@ class Smb4KCustomOptionsDialog : public QDialog
     void slotOKClicked();
     void slotEnableWOLFeatures(const QString &mac);
     void slotCifsExtensionsSupport(bool support);
+    void slotUseClientProtocolVersions(bool use);
     
   private:
     void setupView();

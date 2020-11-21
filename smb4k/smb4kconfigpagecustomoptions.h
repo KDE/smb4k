@@ -169,6 +169,11 @@ class Smb4KConfigPageCustomOptions : public QWidget
      */
     void slotCifsUnixExtensionsSupport(bool on);
     
+    /**
+     * Enabled / disables the settings of the client protocol version widgets.
+     */
+    void slotUseClientProtocolVersions(bool use);
+    
   private:
     void setupMountingTab();
     void clearEditors();

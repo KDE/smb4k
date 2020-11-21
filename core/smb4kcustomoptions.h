@@ -371,28 +371,28 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * @param use             Boolean that determines if the SMB protocol version
      *                        for mounting should be set
      */
-    void setUseSmbMountProtocolVersion(bool use);
+    void setUseMountProtocolVersion(bool use);
     
     /**
      * Returns if the SMB protocol version for mounting should be set.
      * 
      * @returns TRUE if the SMB protocol version for mounting should be set.
      */
-    bool useSmbMountProtocolVersion() const;
+    bool useMountProtocolVersion() const;
     
     /**
      * Set the SMB protocol version for mounting.
      * 
      * @param version         The protocol version used for mounting
      */
-    void setSmbMountProtocolVersion(int version);
+    void setMountProtocolVersion(int version);
     
     /**
      * Returns the SMB protocol version for mounting.
      * 
      * @returns the SMB protocol version
      */
-    int smbMountProtocolVersion() const;
+    int mountProtocolVersion() const;
     
     /**
      * Set if the security mode should be used.
@@ -468,6 +468,50 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * @returns the profile name
      */
     QString profile() const;
+    
+    /**
+     * Set whether the client minimal and maximal protocol versions should
+     * be set/used.
+     * 
+     * @param use             TRUE, if the protocol versions should used
+     */
+    void setUseClientProtocolVersions(bool use);
+    
+    /**
+     * Returns whether the client minimal and maximal protocol versions
+     * should be set/used.
+     * 
+     * @returns TRUE if the client protocol versions should be set/used.
+     */
+    bool useClientProtocolVersions() const;
+    
+    /**
+     * Set the minimal client protocol version to use.
+     * 
+     * @param version         The SMB protocol version
+     */
+    void setMinimalClientProtocolVersion(int version);
+    
+    /**
+     * Return the minimal client protocol version to use.
+     * 
+     * @returns the minimal client protocol version to use.
+     */
+    int minimalClientProtocolVersion() const;
+    
+    /**
+     * Set the maximal client protocol version to use.
+     * 
+     * @param version         The SMB protocol version
+     */
+    void setMaximalClientProtocolVersion(int version);
+    
+    /**
+     * Return the maximal client protocol version to use.
+     * 
+     * @returns the maximal client protocol version to use.
+     */
+    int maximalClientProtocolVersion() const;
     
     /**
      * Set whether the SMB port should be used.

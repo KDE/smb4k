@@ -931,6 +931,36 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                       {
                         options->setDirectoryMode(xmlReader.readElementText());
                       }
+                      else if (xmlReader.name() == "use_client_protocol_versions")
+                      {
+                        bool ok = false;
+                        bool useClientProtocolVersions = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setUseClientProtocolVersions(useClientProtocolVersions);
+                        }
+                      }
+                      else if (xmlReader.name() == "minimal_client_protocol_version")
+                      {
+                        bool ok = false;
+                        int minimalClientProtocolVersion = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setMinimalClientProtocolVersion(minimalClientProtocolVersion);
+                        }
+                      }
+                      else if (xmlReader.name() == "maximal_client_protocol_version")
+                      {
+                        bool ok = false;
+                        int maximalClientProtocolVersion = xmlReader.readElementText().toInt(&ok);
+                        
+                        if (ok)
+                        {
+                          options->setMaximalClientProtocolVersion(maximalClientProtocolVersion);
+                        }
+                      }
 #if defined(Q_OS_LINUX)
                       else if (xmlReader.name() == "cifs_unix_extensions_support")
                       {
@@ -965,21 +995,21 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                       else if (xmlReader.name() == "use_smb_mount_protocol_version")
                       {
                         bool ok = false;
-                        bool useSmbMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
+                        bool useMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
                         
                         if (ok)
                         {
-                          options->setUseSmbMountProtocolVersion(useSmbMountProtocolVersion);
+                          options->setUseMountProtocolVersion(useMountProtocolVersion);
                         }
                       }
                       else if (xmlReader.name() =="smb_mount_protocol_version")
                       {
                         bool ok = false;
-                        int smbMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
+                        int mountProtocolVersion = xmlReader.readElementText().toInt(&ok);
                         
                         if (ok)
                         {
-                          options->setSmbMountProtocolVersion(smbMountProtocolVersion);
+                          options->setMountProtocolVersion(mountProtocolVersion);
                         }
                       }
                       else if (xmlReader.name() == "use_security_mode")
@@ -1345,8 +1375,8 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
           o->setCifsUnixExtensionsSupport(options->cifsUnixExtensionsSupport());
           o->setUseFileSystemPort(options->useFileSystemPort());
           o->setFileSystemPort(options->fileSystemPort());
-          o->setUseSmbMountProtocolVersion(options->useSmbMountProtocolVersion());
-          o->setSmbMountProtocolVersion(options->smbMountProtocolVersion());
+          o->setUseMountProtocolVersion(options->useMountProtocolVersion());
+          o->setMountProtocolVersion(options->mountProtocolVersion());
           o->setUseSecurityMode(options->useSecurityMode());
           o->setSecurityMode(options->securityMode());
           o->setUseWriteAccess(options->useWriteAccess());

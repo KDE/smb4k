@@ -157,14 +157,57 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QW
   setupMountingTab();
   
   //
-  // Samba tab
+  // Browsing tab
   // 
   QWidget *sambaTab = new QWidget(tabWidget);
   QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
   
+  //
   // Common Options
+  //
   QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
   QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
+  
+  // Minimal and maximal client protocol versions
+  QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), commonSambaOptionsBox);
+  useClientProtocolVersions->setObjectName("UseClientProtocolVersions");
+  
+  QLabel *minimalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), commonSambaOptionsBox);
+  minimalClientProtocolVersionLabel->setIndent(25);
+  minimalClientProtocolVersionLabel->setObjectName("MinimalClientProtocolVersionLabel");
+  
+  KComboBox *minimalClientProtocolVersion = new KComboBox(commonSambaOptionsBox);
+  minimalClientProtocolVersion->setObjectName("MinimalClientProtocolVersion");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalClientProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : minimalClientProtocolVersionChoices)
+  {
+    minimalClientProtocolVersion->addItem(c.label);
+  }
+  
+  QLabel *maximalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), commonSambaOptionsBox);
+  maximalClientProtocolVersionLabel->setIndent(25);
+  maximalClientProtocolVersionLabel->setObjectName("MaximalClientProtocolVersionLabel");
+  
+  KComboBox *maximalClientProtocolVersion = new KComboBox(commonSambaOptionsBox);
+  maximalClientProtocolVersion->setObjectName("MaximalClientProtocolVersion");
+  
+  QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
+  
+  for (const KCoreConfigSkeleton::ItemEnum::Choice &c : maximalClientProtocolVersionChoices)
+  {
+    maximalClientProtocolVersion->addItem(c.label);
+  }
+
+  minimalClientProtocolVersionLabel->setBuddy(minimalClientProtocolVersion);
+  maximalClientProtocolVersionLabel->setBuddy(maximalClientProtocolVersion);
+  
+  commonSambaOptionsBoxLayout->addWidget(useClientProtocolVersions, 0, 0, 1, 2);
+  commonSambaOptionsBoxLayout->addWidget(minimalClientProtocolVersionLabel, 1, 0);
+  commonSambaOptionsBoxLayout->addWidget(minimalClientProtocolVersion, 1, 1);
+  commonSambaOptionsBoxLayout->addWidget(maximalClientProtocolVersionLabel, 2, 0);
+  commonSambaOptionsBoxLayout->addWidget(maximalClientProtocolVersion, 2, 1);
   
   // SMB port
   QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
@@ -174,10 +217,9 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QW
   smbPort->setObjectName("SmbPort");
   smbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
   smbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
-//   smbPort->setSliderEnabled(true);
   
-  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 0, 0);
-  commonSambaOptionsBoxLayout->addWidget(smbPort, 0, 1);
+  commonSambaOptionsBoxLayout->addWidget(useSmbPort, 3, 0);
+  commonSambaOptionsBoxLayout->addWidget(smbPort, 3, 1);
   
   sambaTabLayout->addWidget(commonSambaOptionsBox, 0);
   
@@ -401,21 +443,21 @@ void Smb4KConfigPageCustomOptions::setupMountingTab()
   QGridLayout *advancedOptionsBoxLayout = new QGridLayout(advancedOptionsBox);
   
   // SMB protocol version
-  QCheckBox *useSmbMountProtocolVersion = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), advancedOptionsBox);
-  useSmbMountProtocolVersion->setObjectName("UseSmbProtocolVersion");
+  QCheckBox *useMountProtocolVersion = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), advancedOptionsBox);
+  useMountProtocolVersion->setObjectName("UseMountProtocolVersion");
 
-  KComboBox *smbMountProtocolVersion = new KComboBox(advancedOptionsBox);
-  smbMountProtocolVersion->setObjectName("SmbProtocolVersion");
+  KComboBox *mountProtocolVersion = new KComboBox(advancedOptionsBox);
+  mountProtocolVersion->setObjectName("MountProtocolVersion");
   
   QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
   
   for (const KCoreConfigSkeleton::ItemEnum::Choice &c : smbProtocolChoices)
   {
-    smbMountProtocolVersion->addItem(c.label);
+    mountProtocolVersion->addItem(c.label);
   }
   
-  advancedOptionsBoxLayout->addWidget(useSmbMountProtocolVersion, 0, 0);
-  advancedOptionsBoxLayout->addWidget(smbMountProtocolVersion, 0, 1);
+  advancedOptionsBoxLayout->addWidget(useMountProtocolVersion, 0, 0);
+  advancedOptionsBoxLayout->addWidget(mountProtocolVersion, 0, 1);
   
   // Security mode
   QCheckBox *useSecurityMode = new QCheckBox(Smb4KMountSettings::self()->useSecurityModeItem()->label(), advancedOptionsBox);
@@ -745,8 +787,8 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(writeAccess, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
     
-    QString writeAccessText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::writeAccess()).label;
-    writeAccess->setCurrentText(writeAccessText);
+    QString writeAccessString = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::writeAccess()).label;
+    writeAccess->setCurrentText(writeAccessString);
   }
   
   //
@@ -783,22 +825,22 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   //
   // SMB mount protocol version
   //
-  QCheckBox *useSmbMountProtocolVersion = findChild<QCheckBox *>("UseSmbProtocolVersion");
+  QCheckBox *useMountProtocolVersion = findChild<QCheckBox *>("UseMountProtocolVersion");
   
-  if (useSmbMountProtocolVersion)
+  if (useMountProtocolVersion)
   {
-    disconnect(useSmbMountProtocolVersion, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-    useSmbMountProtocolVersion->setChecked(false);
+    disconnect(useMountProtocolVersion, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+    useMountProtocolVersion->setChecked(false);
   }
   
-  KComboBox *smbMountProtocolVersion = findChild<KComboBox *>("SmbProtocolVersion");
+  KComboBox *mountProtocolVersion = findChild<KComboBox *>("MountProtocolVersion");
   
-  if (smbMountProtocolVersion)
+  if (mountProtocolVersion)
   {
-    disconnect(smbMountProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
+    disconnect(mountProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
     
-    QString smbMountProtocolVersionString = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::securityMode()).label;
-    smbMountProtocolVersion->setCurrentText(smbMountProtocolVersionString);
+    QString mountProtocolVersionString = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::securityMode()).label;
+    mountProtocolVersion->setCurrentText(mountProtocolVersionString);
   }
   
   //
@@ -818,10 +860,42 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   {
     disconnect(securityMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
     
-    QString securityModeText = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::securityMode()).label;
-    securityMode->setCurrentText(securityModeText);
+    QString securityModeString = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::securityMode()).label;
+    securityMode->setCurrentText(securityModeString);
   }
 #endif
+  
+  //
+  // Client protocol versions
+  // 
+  QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>("UseClientProtocolVersions");
+  
+  if (useClientProtocolVersions)
+  {
+    disconnect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+    disconnect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotUseClientProtocolVersions(bool)));
+    useClientProtocolVersions->setChecked(false);
+  }
+  
+  KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>("MinimalClientProtocolVersion");
+  
+  if (minimalClientProtocolVersion)
+  {
+    disconnect(minimalClientProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
+    
+    QString minimalClientProtocolVersionString = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices().value(Smb4KSettings::minimalClientProtocolVersion()).label;
+    minimalClientProtocolVersion->setCurrentText(minimalClientProtocolVersionString);
+  }
+  
+  KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>("MaximalClientProtocolVersion");
+  
+  if (maximalClientProtocolVersion)
+  {
+    disconnect(maximalClientProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
+    
+    QString maximalClientProtocolVersionString = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices().value(Smb4KSettings::maximalClientProtocolVersion()).label;
+    maximalClientProtocolVersion->setCurrentText(maximalClientProtocolVersionString);
+  }
   
   //
   // SMB port
@@ -1050,8 +1124,8 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   
   if (writeAccess)
   {
-    QString writeAccessText = Smb4KMountSettings::self()->writeAccessItem()->choices().value(m_currentOptions->writeAccess()).label;
-    writeAccess->setCurrentText(writeAccessText);
+    QString writeAccessString = Smb4KMountSettings::self()->writeAccessItem()->choices().value(m_currentOptions->writeAccess()).label;
+    writeAccess->setCurrentText(writeAccessString);
     connect(writeAccess, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
   }
   
@@ -1089,21 +1163,21 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   //
   // SMB mount protocol version
   //
-  QCheckBox *useSmbMountProtocolVersion = findChild<QCheckBox *>("UseSmbProtocolVersion");
+  QCheckBox *useMountProtocolVersion = findChild<QCheckBox *>("UseMountProtocolVersion");
   
-  if (useSmbMountProtocolVersion)
+  if (useMountProtocolVersion)
   {
-    useSmbMountProtocolVersion->setChecked(m_currentOptions->useSmbMountProtocolVersion());
-    connect(useSmbMountProtocolVersion, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+    useMountProtocolVersion->setChecked(m_currentOptions->useMountProtocolVersion());
+    connect(useMountProtocolVersion, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
   }
   
-  KComboBox *smbMountProtocolVersion = findChild<KComboBox *>("SmbProtocolVersion");
+  KComboBox *mountProtocolVersion = findChild<KComboBox *>("MountProtocolVersion");
   
-  if (smbMountProtocolVersion)
+  if (mountProtocolVersion)
   {
-    QString smbMountProtocolVersionString = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices().value(m_currentOptions->smbMountProtocolVersion()).label;
-    smbMountProtocolVersion->setCurrentText(smbMountProtocolVersionString);
-    connect(smbMountProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
+    QString mountProtocolVersionString = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices().value(m_currentOptions->mountProtocolVersion()).label;
+    mountProtocolVersion->setCurrentText(mountProtocolVersionString);
+    connect(mountProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
   }
   
   //
@@ -1121,13 +1195,41 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   
   if (securityMode)
   {
-    QString securityModeText = Smb4KMountSettings::self()->securityModeItem()->choices().value(m_currentOptions->securityMode()).label;
-    securityMode->setCurrentText(securityModeText);
+    QString securityModeString = Smb4KMountSettings::self()->securityModeItem()->choices().value(m_currentOptions->securityMode()).label;
+    securityMode->setCurrentText(securityModeString);
     connect(securityMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
   }
-  
-  slotCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
 #endif
+
+  //
+  // Client protocol versions
+  // 
+  QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>("UseClientProtocolVersions");
+  
+  if (useClientProtocolVersions)
+  {
+    useClientProtocolVersions->setChecked(m_currentOptions->useClientProtocolVersions());
+    connect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotUseClientProtocolVersions(bool)));
+    connect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+  }
+  
+  KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>("MinimalClientProtocolVersion");
+  
+  if (minimalClientProtocolVersion)
+  {
+    QString minimalClientProtocolVersionString = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices().value(m_currentOptions->minimalClientProtocolVersion()).label;
+    minimalClientProtocolVersion->setCurrentText(minimalClientProtocolVersionString);
+    connect(minimalClientProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
+  }
+  
+  KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>("MaximalClientProtocolVersion");
+  
+  if (maximalClientProtocolVersion)
+  {
+    QString maximalClientProtocolVersionString = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices().value(m_currentOptions->maximalClientProtocolVersion()).label;
+    maximalClientProtocolVersion->setCurrentText(maximalClientProtocolVersionString);
+    connect(maximalClientProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
+  }
 
   //
   // SMB port
@@ -1169,7 +1271,6 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     macAddress->setText(m_currentOptions->macAddress());
     connect(macAddress, SIGNAL(textEdited(QString)), this, SLOT(slotEntryChanged()));
     connect(macAddress, SIGNAL(textEdited(QString)), this, SLOT(slotEnableWOLFeatures(QString)));
-    slotEnableWOLFeatures(m_currentOptions->macAddress());
   }
   
   //
@@ -1208,6 +1309,10 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     int wolTabIndex = tabWidget->count() - 1;
     tabWidget->widget(wolTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
   }
+  
+  slotCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
+  slotUseClientProtocolVersions(useClientProtocolVersions->isChecked());
+  slotEnableWOLFeatures(m_currentOptions->macAddress());
 }
 
 
@@ -1391,24 +1496,24 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   //
   // SMB mount protocol version
   // 
-  QCheckBox *useSmbMountProtocolVersion = findChild<QCheckBox *>("UseSmbProtocolVersion");
+  QCheckBox *useMountProtocolVersion = findChild<QCheckBox *>("UseMountProtocolVersion");
   
-  if (useSmbMountProtocolVersion)
+  if (useMountProtocolVersion)
   {
-    m_currentOptions->setUseSmbMountProtocolVersion(useSmbMountProtocolVersion->isChecked());
+    m_currentOptions->setUseMountProtocolVersion(useMountProtocolVersion->isChecked());
   }
   
-  KComboBox *smbMountProtocolVersion = findChild<KComboBox *>("SmbProtocolVersion");
+  KComboBox *mountProtocolVersion = findChild<KComboBox *>("MountProtocolVersion");
   
-  if (smbMountProtocolVersion)
+  if (mountProtocolVersion)
   {
-    QList<KCoreConfigSkeleton::ItemEnum::Choice> smbMountProtocolVersionChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> mountProtocolVersionChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
     
-    for (int i = 0; i < smbMountProtocolVersionChoices.size(); i++)
+    for (int i = 0; i < mountProtocolVersionChoices.size(); i++)
     {
-      if (smbMountProtocolVersion->currentText() == smbMountProtocolVersionChoices.at(i).label)
+      if (mountProtocolVersion->currentText() == mountProtocolVersionChoices.at(i).label)
       {
-        m_currentOptions->setSmbMountProtocolVersion(i);
+        m_currentOptions->setMountProtocolVersion(i);
         break;
       }
     }
@@ -1440,6 +1545,48 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     }
   }
 #endif
+
+  //
+  // Client protocol versions
+  // 
+  QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>("UseClientProtocolVersions");
+  
+  if (useClientProtocolVersions)
+  {
+    m_currentOptions->setUseClientProtocolVersions(useClientProtocolVersions->isChecked());
+  }
+  
+  KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>("MinimalClientProtocolVersion");
+  
+  if (minimalClientProtocolVersion)
+  {
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalClientProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
+    
+    for (int i = 0; i < minimalClientProtocolVersionChoices.size(); i++)
+    {
+      if (minimalClientProtocolVersion->currentText() == minimalClientProtocolVersionChoices.at(i).label)
+      {
+        m_currentOptions->setMinimalClientProtocolVersion(i);
+        break;
+      }
+    }
+  }
+  
+  KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>("MaximalClientProtocolVersion");
+  
+  if (maximalClientProtocolVersion)
+  {
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
+    
+    for (int i = 0; i < maximalClientProtocolVersionChoices.size(); i++)
+    {
+      if (maximalClientProtocolVersion->currentText() == maximalClientProtocolVersionChoices.at(i).label)
+      {
+        m_currentOptions->setMaximalClientProtocolVersion(i);
+        break;
+      }
+    }
+  }
   
   //
   // SMB port
@@ -1522,13 +1669,16 @@ void Smb4KConfigPageCustomOptions::commitChanges()
         o->setCifsUnixExtensionsSupport(m_currentOptions->cifsUnixExtensionsSupport());
         o->setUseFileSystemPort(m_currentOptions->useFileSystemPort());
         o->setFileSystemPort(m_currentOptions->fileSystemPort());
-        o->setUseSmbMountProtocolVersion(m_currentOptions->useSmbMountProtocolVersion());
-        o->setSmbMountProtocolVersion(m_currentOptions->smbMountProtocolVersion());
+        o->setUseMountProtocolVersion(m_currentOptions->useMountProtocolVersion());
+        o->setMountProtocolVersion(m_currentOptions->mountProtocolVersion());
         o->setUseSecurityMode(m_currentOptions->useSecurityMode());
         o->setSecurityMode(m_currentOptions->securityMode());
         o->setUseWriteAccess(m_currentOptions->useWriteAccess());
         o->setWriteAccess(m_currentOptions->writeAccess());
 #endif
+        o->setUseClientProtocolVersions(m_currentOptions->useClientProtocolVersions());
+        o->setMinimalClientProtocolVersion(m_currentOptions->minimalClientProtocolVersion());
+        o->setMaximalClientProtocolVersion(m_currentOptions->maximalClientProtocolVersion());
         o->setUseSmbPort(m_currentOptions->useSmbPort());
         o->setSmbPort(m_currentOptions->smbPort());
         o->setUseKerberos(m_currentOptions->useKerberos());
@@ -1803,6 +1953,44 @@ void Smb4KConfigPageCustomOptions::slotCifsUnixExtensionsSupport(bool on)
   if (directoryMode)
   {
     directoryMode->setEnabled(!on);
+  }
+}
+
+
+void Smb4KConfigPageCustomOptions::slotUseClientProtocolVersions(bool use)
+{
+  //
+  // Minimal client protocol version
+  // 
+  QLabel *minimalClientProtocolVersionLabel = findChild<QLabel *>("MinimalClientProtocolVersionLabel");
+  
+  if (minimalClientProtocolVersionLabel)
+  {
+    minimalClientProtocolVersionLabel->setEnabled(use);
+  }
+  
+  KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>("MinimalClientProtocolVersion");
+  
+  if (minimalClientProtocolVersion)
+  {
+    minimalClientProtocolVersion->setEnabled(use);
+  }
+  
+  //
+  // Maximal client protocol version
+  // 
+  QLabel *maximalClientProtocolVersionLabel = findChild<QLabel *>("MaximalClientProtocolVersionLabel");
+  
+  if (maximalClientProtocolVersionLabel)
+  {
+    maximalClientProtocolVersionLabel->setEnabled(use);
+  }
+  
+  KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>("MaximalClientProtocolVersion");
+  
+  if (maximalClientProtocolVersion)
+  {
+    maximalClientProtocolVersion->setEnabled(use);
   }
 }
 
