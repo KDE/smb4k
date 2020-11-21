@@ -1310,7 +1310,9 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     tabWidget->widget(wolTabIndex)->setEnabled(Smb4KSettings::enableWakeOnLAN());
   }
   
+#if defined(Q_OS_LINUX)
   slotCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
+#endif
   slotUseClientProtocolVersions(useClientProtocolVersions->isChecked());
   slotEnableWOLFeatures(m_currentOptions->macAddress());
 }
