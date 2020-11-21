@@ -1527,7 +1527,7 @@ void Smb4KClientJob::doWsDiscovery()
   //
   // Start the timer
   // 
-  timer.start();
+  timer.start(timerInterval);
   
   //
   // Wait until the process finished
