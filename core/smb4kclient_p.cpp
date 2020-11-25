@@ -1339,8 +1339,9 @@ void Smb4KClientJob::doWsDiscovery()
                           QString workgroupName = entry.section(":", 1, -1);
                           
                           //
-                          // Work around an empty workgroup/domain name. Use the "LOCAL"
-                          // domain from DNS-SD for that.
+                          // In Windows 10, version 1803, the homegroup was removed. So, work
+                          // around an empty workgroup/domain name. Use the "LOCAL" domain from
+                          // DNS-SD for that.
                           // 
                           if (workgroupName.isEmpty())
                           {
@@ -1393,8 +1394,9 @@ void Smb4KClientJob::doWsDiscovery()
                           QString workgroupName = entry.section(":", 1, -1);
                           
                           //
-                          // Work around an empty workgroup/domain name. Use the "LOCAL"
-                          // domain from DNS-SD for that.
+                          // In Windows 10, version 1803, the homegroup was removed. So, work
+                          // around an empty workgroup/domain name. Use the "LOCAL" domain from
+                          // DNS-SD for that.
                           // 
                           if (workgroupName.isEmpty())
                           {
@@ -1550,8 +1552,9 @@ void Smb4KClientJob::doWsDiscovery()
                         QString workgroupName = entry.section(":", 1, -1);
                           
                         //
-                        // Work around an empty workgroup/domain name. Use the "LOCAL"
-                        // domain from DNS-SD for that.
+                        // In Windows 10, version 1803, the homegroup was removed. So, work
+                        // around an empty workgroup/domain name. Use the "LOCAL" domain from
+                        // DNS-SD for that.
                         // 
                         if (workgroupName.isEmpty())
                         {
@@ -1604,8 +1607,9 @@ void Smb4KClientJob::doWsDiscovery()
                         QString workgroupName = entry.section(":", 1, -1);
                           
                         //
-                        // Work around an empty workgroup/domain name. Use the "LOCAL"
-                        // domain from DNS-SD for that.
+                        // In Windows 10, version 1803, the homegroup was removed. So, work
+                        // around an empty workgroup/domain name. Use the "LOCAL" domain from
+                        // DNS-SD for that.
                         // 
                         if (workgroupName.isEmpty())
                         {
