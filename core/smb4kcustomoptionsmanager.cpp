@@ -387,8 +387,6 @@ void Smb4KCustomOptionsManager::readCustomOptions()
           // NOTE: This is for backward compatibility only (since version 3.0.73) and 
           // should be removed in the future again.
           // 
-          qDebug() << "Importing old data format";
-          
           if (xmlReader.name() == "options")
           {
             OptionsPtr options = OptionsPtr(new Smb4KCustomOptions());
