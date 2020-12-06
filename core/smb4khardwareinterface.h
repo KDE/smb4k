@@ -100,11 +100,6 @@ class Q_DECL_EXPORT Smb4KHardwareInterface : public QObject
     void networkShareRemoved();
     
     /**
-     * This signal is emitted when the network configuration was updated.
-     */
-    void networkSessionInitialized();
-    
-    /**
      * This signal is emitted when the online state changed.
      */
     void onlineStateChanged(bool online);

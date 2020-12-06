@@ -73,27 +73,17 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
   // 
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
   connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
-  
-  //
-  // Start the network monitoring
-  // 
-  QTimer::singleShot(50, [&] () {
-    //
-    // Check the online state
-    // 
-    checkOnlineState(false);    
-    
-    //
-    // Tell the program that we are ready to check the network accessibilty
-    // 
-    emit networkSessionInitialized();
 
-    // 
-    // Start the timer to continously check the online state
-    // and, under FreeBSD, additionally the mounted shares.
-    // 
-    startTimer(1000);
-  });
+  //
+  // Check the online state
+  // 
+  checkOnlineState(false);
+  
+  // 
+  // Start the timer to continously check the online state
+  // and, under FreeBSD, additionally the mounted shares.
+  // 
+  startTimer(1000);
 }
 
 
@@ -162,9 +152,9 @@ void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
   for (const QNetworkInterface &interface : qAsConst(interfaces))
   {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-    if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
+    if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning)
 #else
-    if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning && !online)
+    if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning)
 #endif
     {
       online = true;
