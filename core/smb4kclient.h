@@ -201,6 +201,11 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
     void slotStartJobs();
     
     /**
+     * React on changes of the online state
+     */
+    void slotOnlineStateChanged(bool online);
+    
+    /**
      * Called when a job finished. Reimplemented from KCompositeJob.
      */
     void slotResult(KJob *job) override;

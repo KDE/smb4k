@@ -41,6 +41,7 @@
 #include <QHostAddress>
 #include <QTest>
 #include <QApplication>
+#include <QTimer>
 
 using namespace Smb4KGlobal;
 
@@ -70,7 +71,18 @@ Smb4KClient *Smb4KClient::self()
 
 void Smb4KClient::start()
 {
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkSessionInitialized()), this, SLOT(slotStartJobs()));
+  //
+  // Connect to the online state monitoring
+  // 
+  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
+  
+  //
+  // Start the scanning
+  // 
+  if (Smb4KHardwareInterface::self()->isOnline())
+  {
+    QTimer::singleShot(50, this, SLOT(slotStartJobs()));
+  }
 }
 
 
@@ -856,16 +868,21 @@ void Smb4KClient::processFiles(Smb4KClientJob *job)
 void Smb4KClient::slotStartJobs()
 {
   //
-  // Disconnect from Smb4KHardwareInterface
-  //
-  disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkSessionInitialized()), this, SLOT(slotStartJobs()));
-
-  //
   // Lookup domains as the first step
   // 
-  if (Smb4KHardwareInterface::self()->isOnline())
+  lookupDomains();
+}
+
+
+void Smb4KClient::slotOnlineStateChanged(bool online)
+{
+  if (online)
   {
-    lookupDomains();
+    slotStartJobs();
+  }
+  else
+  {
+    abort();
   }
 }
 

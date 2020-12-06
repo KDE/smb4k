@@ -97,10 +97,6 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
   // 
   // Connections
   // 
-  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareAdded()), this, SLOT(slotTriggerImport()));
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareRemoved()), this, SLOT(slotTriggerImport()));
-  
   connect(Smb4KProfileManager::self(), SIGNAL(migratedProfile(QString,QString)), this, SLOT(slotProfileMigrated(QString,QString)));
   connect(Smb4KProfileManager::self(), SIGNAL(aboutToChangeProfile()), this, SLOT(slotAboutToChangeProfile()));
   connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
@@ -1027,7 +1023,20 @@ void Smb4KMounter::openMountDialog()
 
 void Smb4KMounter::start()
 {
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkSessionInitialized()), this, SLOT(slotStartJobs()));
+  //
+  // Connect to the relevant signals provided by Smb4KHardwareInterface.
+  // 
+  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareAdded()), this, SLOT(slotTriggerImport()));
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareRemoved()), this, SLOT(slotTriggerImport()));
+  
+  //
+  // Start with importing shares
+  // 
+  if (Smb4KHardwareInterface::self()->isOnline())
+  {
+    QTimer::singleShot(50, this, SLOT(slotStartJobs()));
+  }
 }
 
 
@@ -2068,22 +2077,11 @@ void Smb4KMounter::check(const SharePtr &share)
 void Smb4KMounter::slotStartJobs()
 {
   //
-  // Disconnect from Smb4KHardwareInterface.
-  //
-  disconnect(Smb4KHardwareInterface::self(), SIGNAL(networkSessionInitialized()), this, SLOT(slotStartJobs()));
-  
-  //
   // Start the import of shares
   // 
   if (Smb4KHardwareInterface::self()->isOnline())
   {
-    //
-    // Import the mounted shares
-    //
-    if (!d->firstImportDone)
-    {
-      import(true);
-    }
+    import(true);
   }
   
   //
@@ -2171,14 +2169,9 @@ void Smb4KMounter::slotOnlineStateChanged(bool online)
   if (online)
   {
     //
-    // Trigger the remounts, but only when the first import has been done 
-    // already. Otherwise we would get errors. In this case the remounting 
-    // is done by the code in timerEvent().
-    // 
-    if (d->firstImportDone)
-    {
-      triggerRemounts(true);
-    }
+    // (Re-)start the job
+    //
+    slotStartJobs();
   }
   else
   {
