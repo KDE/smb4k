@@ -153,7 +153,7 @@ void Smb4KMountDialog::setupView()
   KLineEdit *locationInput = new KLineEdit(editWidget);
   locationInput->setObjectName("LocationInput");
   locationInput->setWhatsThis(i18n("The location of the share is provided by the Uniform Resource Locator (URL). It generally has the following syntax: "
-    "[smb:]//[USER:PASSWORD@]HOST:PORT/SHARE. The username, password and port are optional. You should omit to enter the password here, because it is shown in cleartext."));
+    "[smb:]//[USER:PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are optional. You should omit to enter the password here, because it is shown in cleartext."));
 //   m_share_input->setToolTip(i18n("The URL of the share"));
   locationInput->setCompletionMode(KCompletion::CompletionPopupAuto);
   locationInput->setClearButtonEnabled(true);
