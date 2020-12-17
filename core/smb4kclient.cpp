@@ -74,7 +74,7 @@ void Smb4KClient::start()
   //
   // Connect to the online state monitoring
   // 
-  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
+  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)), Qt::UniqueConnection);
   
   //
   // Start the scanning
