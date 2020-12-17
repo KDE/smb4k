@@ -250,7 +250,7 @@ void Smb4KMounter::import(bool checkInaccessible)
   {
     if (QString::compare(mountPoint->mountType(), "cifs") == 0 || QString::compare(mountPoint->mountType(), "smbfs") == 0)
     {
-      // Create new share and set the mountpoint and the filesystem
+      // Create a new share and set the mountpoint and filesystem
       SharePtr share = SharePtr(new Smb4KShare());
       share->setUrl(mountPoint->mountedFrom());
       share->setPath(mountPoint->mountPoint());
@@ -287,8 +287,6 @@ void Smb4KMounter::import(bool checkInaccessible)
   // Check which shares were unmounted. Remove all obsolete mountpoints, emit
   // the unmounted() signal on each of the unmounted shares and remove them
   // from the global list.
-  // NOTE: The unmount() signal is emitted *BEFORE* the share is removed
-  // from the global list! You need to account for that in your application.
   //
   QList<SharePtr> unmountedShares;
   
@@ -375,26 +373,18 @@ void Smb4KMounter::import(bool checkInaccessible)
     }
     
     //
-    // Do last things
+    // Report the number of unmounted shares to the user if it are 
+    // several ones
     // 
-    QTimer::singleShot(250, this, [this]() {
-      if (!isRunning())
-      {
-        //
-        // Report the number of unmounted shares to the user if it were 
-        // several ones
-        // 
-        if (d->newlyUnmounted > 1)
-        {
-          Smb4KNotification::sharesUnmounted(d->newlyUnmounted);
-        }
+    if (d->newlyUnmounted > 1)
+    {
+      Smb4KNotification::sharesUnmounted(d->newlyUnmounted);
+    }
       
-        //
-        // Reset the number of newly unmounted shares
-        // 
-        d->newlyUnmounted = 0;
-      }
-    });
+    //
+    // Reset the number of newly unmounted shares
+    // 
+    d->newlyUnmounted = 0;
 
     //
     // Tell the program the list of mounted shares changed
@@ -967,10 +957,6 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent)
   {
     // Unmount the share
     unmountShare(share, silent);
-    
-    // Wait for 50 ms so we can act on the networkShareRemoved() 
-    // signal and we do not trigger a busy error from umount
-    QTest::qWait(TIMEOUT);
   }
 
   //
@@ -1026,9 +1012,9 @@ void Smb4KMounter::start()
   //
   // Connect to the relevant signals provided by Smb4KHardwareInterface.
   // 
-  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)));
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareAdded()), this, SLOT(slotTriggerImport()));
-  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareRemoved()), this, SLOT(slotTriggerImport()));
+  connect(Smb4KHardwareInterface::self(), SIGNAL(onlineStateChanged(bool)), this, SLOT(slotOnlineStateChanged(bool)), Qt::UniqueConnection);
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareAdded()), this, SLOT(slotTriggerImport()), Qt::UniqueConnection);
+  connect(Smb4KHardwareInterface::self(), SIGNAL(networkShareRemoved()), this, SLOT(slotTriggerImport()), Qt::UniqueConnection);
   
   //
   // Start with importing shares
@@ -2230,10 +2216,6 @@ void Smb4KMounter::slotStatResult(KJob *job)
       importedShare = d->importedShares.takeAt(i);
       break;
     }
-    else
-    {
-      continue;
-    }
   }
   
   //
@@ -2349,7 +2331,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
           Smb4KNotification::shareMounted(importedShare);
         }
           
-        QTimer::singleShot(250, this, [this]() {
+        QTimer::singleShot(250, [&] () {
           if (!isRunning())
           {
             if (d->firstImportDone && d->importedShares.isEmpty() && d->newlyMounted > 1)
@@ -2440,7 +2422,13 @@ void Smb4KMounter::slotProfileMigrated(const QString& from, const QString& to)
 
 void Smb4KMounter::slotTriggerImport()
 {
-  import(true);
+  //
+  // Wait a bit so that the mount or unmount process can finish and
+  // then start importing the shares
+  // 
+  QTimer::singleShot(250, [&] () {
+    import(true);
+  });
 }
 
 
