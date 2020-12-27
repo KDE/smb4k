@@ -9,6 +9,7 @@
   <!ENTITY CIFS "<acronym>CIFS</acronym>">
   <!ENTITY Samba "<application>Samba</application>">
   <!ENTITY solid "<application>Solid</application>">
+  <!ENTITY kdbusaddons "<application>KDBusAddons</application>">
 ]>
 
 <book id="smb4k" lang="&language;" >
@@ -29,11 +30,11 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
   </authorgroup>
   <copyright>
-    <year>2005-2019</year>
+    <year>2005-2020</year>
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2020-11-24</date>
+  <date>2020-12-24</date>
   <releaseinfo>&smb4k; 3.1.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
@@ -74,7 +75,7 @@
     <listitem><para>&kwallet5; support</para></listitem>
     <listitem><para>Synchronization of a remote share with a local copy and vice versa</para></listitem>
     <listitem><para>Ability to define custom options for individual servers and shares</para></listitem>
-    <listitem><para>Laptop support through the &solid; hardware device framework</para></listitem>
+    <listitem><para>Hardware support through the &solid; device integration framework, the &kdbusaddons; convenience classes and the &Qt; Network module</para></listitem>
     <listitem><para>Wake-On-LAN capabilities</para></listitem>
     <listitem><para>&plasmoid; for desktop integration</para></listitem>
     <listitem><para>Profiles for different network neighborhood setups</para></listitem>
