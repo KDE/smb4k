@@ -159,7 +159,7 @@ void Smb4KMounter::triggerRemounts(bool fillList)
     //
     // Process the list and honor the settings the user chose
     //
-    for (const OptionsPtr &option : options)
+    for (const OptionsPtr &option : qAsConst(options))
     {
       //
       // Skip one time remount shares, if needed
@@ -175,7 +175,7 @@ void Smb4KMounter::triggerRemounts(bool fillList)
       QList<SharePtr> mountedShares = findShareByUrl(option->url());
       bool remountShare = true;
       
-      for (const SharePtr &share : mountedShares)
+      for (const SharePtr &share : qAsConst(mountedShares))
       {
         if (!share->isForeign())
         {
@@ -191,7 +191,7 @@ void Smb4KMounter::triggerRemounts(bool fillList)
       {
         bool insertShare = true;
         
-        for (const SharePtr &share : d->remounts)
+        for (const SharePtr &share : qAsConst(d->remounts))
         {
           if (QString::compare(share->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort), option->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort)) == 0)
           {
@@ -246,7 +246,7 @@ void Smb4KMounter::import(bool checkInaccessible)
   // 
   // Now determine all mountpoints that have the SMBFS or the CIFS filesystem.
   // 
-  for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
+  for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints))
   {
     if (QString::compare(mountPoint->mountType(), "cifs") == 0 || QString::compare(mountPoint->mountType(), "smbfs") == 0)
     {
@@ -271,6 +271,10 @@ void Smb4KMounter::import(bool checkInaccessible)
         {
           share->setLogin(option.section('=', 1, 1).trimmed());
         }
+        else
+        {
+          qDebug() << "Not implemented mount option:" << option;
+        }
       }
       
       // Work around empty usernames
@@ -294,9 +298,9 @@ void Smb4KMounter::import(bool checkInaccessible)
   {
     bool found = false;
     
-    for (const SharePtr &mountedShare : mountedSharesList())
+    for (const SharePtr &mountedShare : qAsConst(mountedSharesList()))
     {
-      for (const SharePtr &importedShare : d->importedShares)
+      for (const SharePtr &importedShare : qAsConst(d->importedShares))
       {
         // Check the mountpoint, since that one is unique. We will only use
         // Smb4KShare::path(), so that we do not run into trouble if a share 
@@ -328,7 +332,7 @@ void Smb4KMounter::import(bool checkInaccessible)
   {
     d->newlyUnmounted += unmountedShares.size();
     
-    for (const SharePtr &share : unmountedShares)
+    for (const SharePtr &share : qAsConst(unmountedShares))
     {
       // 
       // Remove the mountpoint if the share is not a foreign one
@@ -493,7 +497,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
     QList<SharePtr> mountedShares = findShareByUrl(url);
     bool isMounted = false;
       
-    for (const SharePtr &s : mountedShares)
+    for (const SharePtr &s : qAsConst(mountedShares))
     {
       if (!s->isForeign())
       {
@@ -758,18 +762,11 @@ void Smb4KMounter::mountShares(const QList<SharePtr> &shares)
   d->longActionRunning = true;
   
   //
-  // Unmount the shares
+  // Mount the shares
   // 
   for (const SharePtr &share : shares)
   {
-    //
-    // Mount the share
-    // 
     mountShare(share);
-    
-    // Wait for 50 ms so we can act on the networkShareAdded() 
-    // signal and we do not trigger a busy error from mount
-    QTest::qWait(TIMEOUT);
   }
   
   //
@@ -2114,13 +2111,13 @@ void Smb4KMounter::slotAboutToQuit()
   QStringList hostDirs = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
   QStringList mountpoints;
   
-  for (const QString &hostDir : hostDirs)
+  for (const QString &hostDir : qAsConst(hostDirs))
   {
     dir.cd(hostDir);
     
     QStringList shareDirs = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
     
-    for (const QString &shareDir : shareDirs)
+    for (const QString &shareDir : qAsConst(shareDirs))
     {
       dir.cd(shareDir);
       mountpoints << dir.absolutePath();
@@ -2131,13 +2128,13 @@ void Smb4KMounter::slotAboutToQuit()
   }
   
   // Remove those mountpoints where a share is actually mounted.
-  for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints)
+  for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints))
   {
     mountpoints.removeOne(mountPoint->mountPoint());
   }
   
   // Remove the empty mountpoints.
-  for (const QString &mp : mountpoints)
+  for (const QString &mp : qAsConst(mountpoints))
   {
     dir.cd(mp);
     dir.rmdir(dir.canonicalPath());
@@ -2331,7 +2328,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
           Smb4KNotification::shareMounted(importedShare);
         }
           
-        QTimer::singleShot(250, [&] () {
+        QTimer::singleShot(250, this, [&] () {
           if (!isRunning())
           {
             if (d->firstImportDone && d->importedShares.isEmpty() && d->newlyMounted > 1)
@@ -2424,10 +2421,13 @@ void Smb4KMounter::slotTriggerImport()
 {
   //
   // Wait a bit so that the mount or unmount process can finish and
-  // then start importing the shares
+  // then start importing the shares, if no jobs are running anymore
   // 
-  QTimer::singleShot(250, [&] () {
-    import(true);
+  QTimer::singleShot(TIMEOUT, this, [&] () {
+    if (!isRunning())
+    {
+      import(true);
+    }
   });
 }
 
@@ -2436,7 +2436,7 @@ void Smb4KMounter::slotConfigChanged()
 {
   if (d->detectAllShares != Smb4KMountSettings::detectAllShares())
   {
-    slotTriggerImport();
+    import(true);
     d->detectAllShares = Smb4KMountSettings::detectAllShares();
   }
 }
