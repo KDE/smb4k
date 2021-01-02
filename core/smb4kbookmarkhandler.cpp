@@ -498,9 +498,6 @@ void Smb4KBookmarkHandler::readBookmarkList()
 
 BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
 {
-  // Update the bookmarks:
-  update();
-
   // Find the bookmark:
   BookmarkPtr bookmark;
 
@@ -508,9 +505,7 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
   {
     for (const BookmarkPtr &b : bookmarksList())
     {
-      if (QString::compare(b->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                           url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort),
-                           Qt::CaseInsensitive) == 0)
+      if (b->url().matches(url, QUrl::RemoveUserInfo|QUrl::RemovePort))
       {
         bookmark = b;
         break;
@@ -524,9 +519,6 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
 
 BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
 {
-  // Update the bookmarks:
-  update();
-
   // Find the bookmark:
   BookmarkPtr bookmark;
 
@@ -536,10 +528,6 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
     {
       bookmark = b;
       break;
-    }
-    else
-    {
-      continue;
     }
   }
 
