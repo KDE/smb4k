@@ -571,7 +571,7 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &category) 
 
   for (const BookmarkPtr &bookmark : bookmarksList())
   {
-    if (QString::compare(category, bookmark->categoryName(), Qt::CaseInsensitive) == 0)
+    if (category == bookmark->categoryName())
     {
       bookmarks << bookmark;
     }
