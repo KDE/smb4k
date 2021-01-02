@@ -505,7 +505,10 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
   {
     for (const BookmarkPtr &b : bookmarksList())
     {
-      if (b->url().matches(url, QUrl::RemoveUserInfo|QUrl::RemovePort))
+      // NOTE: Since also user provided URLs can be bookmarked, we cannot use
+      // QUrl::matches() here, because it does not allow for case insensitive 
+      // comparison.
+      if (QString::compare(url.toString(QUrl::RemoveUserInfo|QUrl::RemovePort), b->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort), Qt::CaseInsensitive) == 0)
       {
         bookmark = b;
         break;
@@ -561,7 +564,7 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
 }
 
 
-QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &category) const
+QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &categoryName) const
 {
   // Update bookmarks
   update();
@@ -571,7 +574,7 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &category) 
 
   for (const BookmarkPtr &bookmark : bookmarksList())
   {
-    if (category == bookmark->categoryName())
+    if (categoryName == bookmark->categoryName())
     {
       bookmarks << bookmark;
     }
