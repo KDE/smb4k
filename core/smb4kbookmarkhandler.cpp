@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2020 by Alexander Reinholdt
+    copyright            : (C) 2004-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -548,11 +548,11 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
   {
     QList<BookmarkPtr> bookmarks;
     
-    for (const BookmarkPtr &b : d->bookmarks)
+    for (const BookmarkPtr &bookmark : d->bookmarks)
     {
-      if (b->profile() == Smb4KSettings::activeProfile())
+      if (bookmark->profile() == Smb4KSettings::activeProfile())
       {
-        bookmarks << b;
+        bookmarks << bookmark;
       }
     }
     
@@ -566,10 +566,6 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
 
 QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &categoryName) const
 {
-  // Update bookmarks
-  update();
-
-  // Get the list of bookmarks organized in the given category
   QList<BookmarkPtr> bookmarks;
 
   for (const BookmarkPtr &bookmark : bookmarksList())
