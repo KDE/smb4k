@@ -2,7 +2,7 @@
     This class handles the bookmarks.
                              -------------------
     begin                : Fr Jan 9 2004
-    copyright            : (C) 2004-2020 by Alexander Reinholdt
+    copyright            : (C) 2004-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -135,11 +135,11 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     /**
      * Get the list of bookmarks belonging to a certain category.
      *
-     * @param category      The name of the category the bookmarks are organized in
+     * @param categoryName  The name of the category the bookmarks are organized in
      *
      * @returns a list of bookmarks belonging to a certain category
      */
-    QList<BookmarkPtr> bookmarksList(const QString &category) const;
+    QList<BookmarkPtr> bookmarksList(const QString &categoryName) const;
     
     /**
      * This function searches for a bookmark using its URL and returns a pointer
@@ -200,9 +200,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     void readBookmarkList();
 
     /**
-     * This function updates the data of the bookmarks, i.e. is searches for
-     * the host provided by m_hosts and sets the appropriate data, if
-     * necessary.
+     * This function updates the data of the bookmarks.
      */
     void update() const;
 
