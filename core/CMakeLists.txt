@@ -79,7 +79,6 @@ target_link_libraries(smb4kcore
   KF5::DNSSD
   ${LIBSMBCLIENT_LIBRARIES})
 
-set_target_properties(smb4kcore PROPERTIES VERSION 6.1.0 SOVERSION 6)
 install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
 
 if (SMB4K_WITH_WS_DISCOVERY)
