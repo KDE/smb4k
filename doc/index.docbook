@@ -30,11 +30,11 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
   </authorgroup>
   <copyright>
-    <year>2005-2020</year>
+    <year>2005-2021</year>
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2020-12-24</date>
+  <date>2021-01-06</date>
   <releaseinfo>&smb4k; 3.1.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
@@ -409,7 +409,7 @@
         </mediaobject>
       </screenshot>
       <para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view. You can go one level up by using the <guibutton>Up</guibutton> button and reload the contents of the current folder by pressing the <guibutton>Reload</guibutton> button. The current location is displayed in the combo box on the right hand side. You can also access already visited folders with it.</para>
-      <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_page_network_samba_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
+      <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_page_network_basic_settings_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
     </sect2>
 
 <!-- 
@@ -1627,7 +1627,7 @@ ntlm auth = yes
   <sect1 id="configuration_page_network">
     <title>Network</title>
 
-    <para>The options located here influence the network communication. You can modify the behavior of the underlying <application>libsmbclient</application> library in the <guibutton>Samba</guibutton> tab and enable the Wake-On-LAN features in the <guibutton>Wake-On-LAN</guibutton> tab.</para>
+    <para>The options located here influence the network communication. You can modify the browsing and display behavior in the <guibutton>Basic Settings</guibutton> tab, the options passed to the underlying <application>libsmbclient</application> library in the <guibutton>Samba Settings</guibutton> tab and enable the Wake-On-LAN features in the <guibutton>Wake-On-LAN Settings</guibutton> tab.</para>
     
     <screenshot>
       <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
@@ -1636,16 +1636,129 @@ ntlm auth = yes
         <textobject><phrase>The "Network" configuration tab</phrase></textobject>
       </mediaobject>
     </screenshot>
+    
+<!--
+      Configuring Smb4K : Network : Basic Settings
+    -->
+    
+    <sect2 id="configuration_page_network_basic_settings">
+      <title>Basic Settings</title>
+      
+      <sect3 id="configuration_page_network_basic_settings_browse_settings">
+        <title>Browse Settings</title>
+        
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use Web Services Dynamic Discovery (WS-Discovery) for browsing</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The Web Services Dynamic Discovery (WS-Discovery) is used to browse the local network and discover workgroups, domains and hosts. This is useful, if your network neighborhood is dominated by servers with modern Windows versions. If you use this option, there should be no need to force Samba's client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
+              <note><para>This setting is optional and only appears, if you compiled &smb4k; with WS-Discovery support.</para></note>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use DNS Service Discovery (DNS-SD) for browsing</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>The DNS Service Discovery (DNS-SD) is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg; named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing. If you use this option, there is no need to force Samba's client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Force SMB protocol version 1.0 for workgroup and domain lookups</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Force Samba's client library to use the SMB protocol version 1.0 for browsing workgroups and domains. You should use this option only as last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer Samba and Windows versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need it.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Set minimal and maximal SMB protocol version</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Set the minimal and maximal SMB protocol version that is used by Samba's client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovering of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
+              <para>The following settings can be applied for the minimal and maximal protocol version, respectively:</para>
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guibutton>NT1 (Classic CIFS/SMBv1 protocol)</guibutton></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>This is the current up to date version of the protocol. It is used by Windows NT and known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guibutton>SMB2 (Windows Vista and above)</guibutton></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>This is the re-implementation of the SMB protocol. It is used by Windows Vista and later versions of Windows.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guibutton>SMB3 (Windows 8 and above)</guibutton></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>This is the same as SMB2. This protocol version is used by Windows 8 and above.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+        
+      <sect3 id="configuration_page_network_basic_settings_behavior">
+        <title>Behavior</title>
+    
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Printer shares are detected.</para>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Hidden shares are detected. Hidden shares are ending with a $ sign, &eg; Musik$ or IPC$.</para>
+              <para>Default: selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+    </sect2>
 
 <!-- 
       Configuring Smb4K : Network : Samba (libsmbclient)
 -->
 
-    <sect2 id="configuration_page_network_samba">
-      <title>Samba</title>
+    <sect2 id="configuration_page_network_samba_settings">
+      <title>Samba Settings</title>
       
-      <sect3 id="configuration_page_network_samba_basic_settings">
-        <title>Basic Settings</title>
+      <sect3 id="configuration_page_network_samba_settings_common_settings">
+        <title>Common Settings</title>
 
         <variablelist>
           <varlistentry>
@@ -1688,7 +1801,7 @@ ntlm auth = yes
         </variablelist>
       </sect3>
     
-      <sect3 id="configuration_page_network_samba_authentication">
+      <sect3 id="configuration_page_network_samba_settings_authentication">
         <title>Authentication</title>
 
         <variablelist>
@@ -1722,7 +1835,7 @@ ntlm auth = yes
         </variablelist>
       </sect3>
       
-      <sect3 id="configuration_page_network_samba_security">
+      <sect3 id="configuration_page_network_samba_settings_security">
         <title>Security</title>
         
         <variablelist>
@@ -1762,42 +1875,7 @@ ntlm auth = yes
             </listitem>
           </varlistentry>
         </variablelist>
-        
       </sect3>     
-
-      <sect3 id="configuration_page_network_samba_behavior">
-        <title>Behavior</title>
-    
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Detect printer shares</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Printer shares are detected.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Detect hidden shares</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Hidden shares are detected. Hidden shares are ending with a $ sign, &eg; Musik$ or IPC$.</para>
-              <para>Default: selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Preview hidden files and directories</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Show all files and directories including the hidden ones when opening a share's contents in the preview dialog.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
     </sect2>
     
 <!-- 
@@ -1805,7 +1883,7 @@ ntlm auth = yes
 -->
 
     <sect2 id="configuration_page_network_wake_on_lan">
-      <title>Wake-On-LAN</title>
+      <title>Wake-On-LAN Settings</title>
 
       <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
 
@@ -1993,7 +2071,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
-              <para>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_samba_basic_settings"><guibutton>SMB port</guibutton></link> option.</para>
+              <para>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_samba_settings_common_settings"><guibutton>SMB port</guibutton></link> option.</para>
               <para>Default: 445</para>
             </listitem>
           </varlistentry>
@@ -3292,7 +3370,7 @@ ntlm auth = yes
     <sect2 id="configuration_page_custom_options_samba">
       <title>Samba</title>
     
-      <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the <link linkend="configuration_page_network_samba">&Samba;</link> settings.</para>
+      <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the <link linkend="configuration_page_network_samba_settings">&Samba;</link> settings.</para>
     </sect2>
 
 <!-- 
