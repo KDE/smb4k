@@ -92,7 +92,7 @@
   <group name="Network">
     <entry name="UseWsDiscovery" type="Bool">
       <label>Use Web Services Dynamic Discovery (WS-Discovery) for browsing</label>
-      <whatsthis>The Web Services Dynamic Discovery (WS-Discovery) is used to browse the local network and discover workgroups, domains and hosts. This is useful, if your network neighborhood is dominated by servers with modern Windows versions. If you use this option, there may be no need to force Samba's client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</whatsthis>
+      <whatsthis>The Web Services Dynamic Discovery (WS-Discovery) is used to browse the local network and discover workgroups, domains and hosts. This is useful, if your network neighborhood is dominated by servers with modern Windows versions. If you use this option, there should be no need to force Samba's client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</whatsthis>
       <default>true</default>
     </entry>
     <entry name="UseDnsServiceDiscovery" type="Bool">
@@ -102,13 +102,13 @@
     </entry>
     <entry name="ForceSmb1Protocol" type="Bool">
       <label>Force SMB protocol version 1.0 for workgroup and domain lookups</label>
-      <whatsthis>You should use this option only as last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer Samba and Windows versions. If you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. Smb4K will then force the use of the SMB protocol version 1.0 for browsing workgroups and domains. This, however, only applies to searches done using Samba's client library. If you are using the DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), you should switch this option off.</whatsthis>
+      <whatsthis>Smb4K will force Samba's client library to use the SMB protocol version 1.0 for browsing workgroups and domains. You should use this option only as last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer Samba and Windows versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need it.</whatsthis>
       <default>false</default>
     </entry>
     <entry name="UseClientProtocolVersions" type="Bool">
-        <label>Set minimal and maximal SMB protocol version</label>
-        <whatsthis>By enabling this option, Smb4K will set the minimal and maximal SMB protocol version that is used by Samba's client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovering of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</whatsthis>
-        <default>false</default>
+      <label>Set minimal and maximal SMB protocol version</label>
+      <whatsthis>Smb4K will set the minimal and maximal SMB protocol version that is used by Samba's client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovering of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</whatsthis>
+      <default>false</default>
     </entry>
     <entry name="MinimalClientProtocolVersion" type="Enum">
       <label>Minimal SMB protocol version:</label>
