@@ -165,7 +165,7 @@
 
       <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. Opening a workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
       <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;.</para>
-      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan_settings">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
     </sect2>
     
 <!--
@@ -440,7 +440,7 @@
       <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
       <itemizedlist>
         <listitem><para>define custom mount or Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
-        <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan">here</link>),</para></listitem>
+        <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan_settings">here</link>),</para></listitem>
         <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
       <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server or to a single one. </para>
@@ -1682,33 +1682,80 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Set the minimal and maximal SMB protocol version that is used by Samba's client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovering of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
-              <para>The following settings can be applied for the minimal and maximal protocol version, respectively:</para>
+              <para>The settings below for the minimal and maximal SMB protocol version are enabled by checking this checkbox.</para>
               <variablelist>
                 <varlistentry>
                   <term>
-                    <menuchoice><guibutton>NT1 (Classic CIFS/SMBv1 protocol)</guibutton></menuchoice>
+                    <menuchoice><guibutton>Minimal SMB protocol version:</guibutton></menuchoice>
                   </term>
                   <listitem>
-                    <para>This is the current up to date version of the protocol. It is used by Windows NT and known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
+                    <para>The following protocol versions can be set:</para>
+                    <variablelist>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guibutton>NT1 (Classic CIFS/SMBv1 protocol)</guibutton></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>This is the current up to date version of the protocol. It is used by &Windows; NT and known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guibutton>SMB2 (Windows Vista and above)</guibutton></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>This is the re-implementation of the SMB protocol. It is used by &Windows; Vista and above.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guibutton>SMB3 (Windows 8 and above)</guibutton></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>This is the same as SMB2. This protocol version is used by &Windows; 8 and above.</para>
+                        </listitem>
+                      </varlistentry>
+                    </variablelist>
+                    <para>Default: SMB2 (Windows Vista and above)</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
                   <term>
-                    <menuchoice><guibutton>SMB2 (Windows Vista and above)</guibutton></menuchoice>
+                    <menuchoice><guibutton>Maximal SMB protocol version:</guibutton></menuchoice>
                   </term>
                   <listitem>
-                    <para>This is the re-implementation of the SMB protocol. It is used by Windows Vista and later versions of Windows.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice><guibutton>SMB3 (Windows 8 and above)</guibutton></menuchoice>
-                  </term>
-                  <listitem>
-                    <para>This is the same as SMB2. This protocol version is used by Windows 8 and above.</para>
+                    <para>The following protocol versions can be set:</para>
+                    <variablelist>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guibutton>NT1 (Classic CIFS/SMBv1 protocol)</guibutton></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>This is the current up to date version of the protocol. It is used by &Windows; NT and known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guibutton>SMB2 (Windows Vista and above)</guibutton></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>This is the re-implementation of the SMB protocol. It is used by &Windows; Vista and above.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guibutton>SMB3 (Windows 8 and above)</guibutton></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>This is the same as SMB2. This protocol version is used by &Windows; 8 and above.</para>
+                        </listitem>
+                      </varlistentry>
+                    </variablelist>
+                    <para>Default: SMB3 (Windows 8 and above)</para>
                   </listitem>
                 </varlistentry>
               </variablelist>
+              <para>It is mandatory that the maximal SMB protocol version equals or is greater than the minimal SMB protocol version.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -1751,7 +1798,7 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Samba (libsmbclient)
+      Configuring Smb4K : Network : Samba Settings (libsmbclient)
 -->
 
     <sect2 id="configuration_page_network_samba_settings">
@@ -1879,10 +1926,10 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Configuring Smb4K : Network : Wake-On_LAN
+      Configuring Smb4K : Network : Wake-On_LAN Settings
 -->
 
-    <sect2 id="configuration_page_network_wake_on_lan">
+    <sect2 id="configuration_page_network_wake_on_lan_settings">
       <title>Wake-On-LAN Settings</title>
 
       <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
@@ -1972,27 +2019,29 @@ ntlm auth = yes
             <listitem>
               <para>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</para>
               <note><para>This setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</para></note>
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guilabel>Number of remount attempts</guilabel></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Set the number of attempts that are made to remount shares before Smb4K gives up.</para>
+                    <para>Default: 1</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guilabel>Interval between remount attempts</guilabel></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Set the time that elapses between attempts to remount shares.</para>
+                    <para>Default: 5 min</para>
+                  </listitem>
+                </varlistentry>  
+              </variablelist>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guilabel>Number of remount attempts</guilabel></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the number of attempts that are made to remount shares before Smb4K gives up.</para>
-              <para>Default: 1</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guilabel>Interval between remount attempts</guilabel></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the time that elapses between attempts to remount shares.</para>
-              <para>Default: 5 min</para>
-            </listitem>
-          </varlistentry>  
           <varlistentry>
             <term>
               <menuchoice><guibutton>Unmount all personal shares on exit</guibutton></menuchoice>
