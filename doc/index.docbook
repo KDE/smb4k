@@ -1420,9 +1420,6 @@ ntlm auth = yes
 
       <para>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to install the application <application>qt5ct</application> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/">here</ulink>). To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
 <programlisting>export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
-      <note>
-        <para>Under NetBSD <application>qt5ct</application> might complain about a missing <filename>libfreetype.so.17</filename> or <filename>libGL.so.2</filename> shared library file and refuse to start. To fix this problem, create the <filename>/etc/ld.so.conf</filename> file and add the path <filename class="directory">/usr/X11R7/lib</filename> to it.</para>
-      </note>
     </sect2>
   </sect1>
 </chapter>
@@ -1469,7 +1466,7 @@ ntlm auth = yes
             <variablelist>
               <varlistentry>
                 <term>
-                  <menuchoice><guibutton>Top</guibutton></menuchoice>
+                  <menuchoice><guimenuitem>Top</guimenuitem></menuchoice>
                 </term>
                 <listitem>
                   <para>The tabs are located at the top.</para>
@@ -1477,7 +1474,7 @@ ntlm auth = yes
               </varlistentry>
               <varlistentry>
                 <term>
-                  <menuchoice><guibutton>Bottom</guibutton></menuchoice>
+                  <menuchoice><guimenuitem>Bottom</guimenuitem></menuchoice>
                 </term>
                 <listitem>
                   <para>The tabs are located at the bottom.</para>
@@ -1485,7 +1482,7 @@ ntlm auth = yes
               </varlistentry>
               <varlistentry>
                 <term>
-                  <menuchoice><guibutton>Left</guibutton></menuchoice>
+                  <menuchoice><guimenuitem>Left</guimenuitem></menuchoice>
                 </term>
                 <listitem>
                   <para>The tabs are located on the left side.</para>
@@ -1493,14 +1490,14 @@ ntlm auth = yes
               </varlistentry>
               <varlistentry>
                 <term>
-                  <menuchoice><guibutton>Right</guibutton></menuchoice>
+                  <menuchoice><guimenuitem>Right</guimenuitem></menuchoice>
                 </term>
                 <listitem>
                   <para>The tabs are located on the right side.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: <guibutton>Bottom</guibutton></para>
+            <para>Default: <guimenuitem>Bottom</guimenuitem></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1589,7 +1586,7 @@ ntlm auth = yes
             <variablelist>
               <varlistentry>
                 <term>
-                  <menuchoice><guibutton>Icon View</guibutton></menuchoice>
+                  <menuchoice><guimenuitem>Icon View</guimenuitem></menuchoice>
                 </term>
                 <listitem>
                   <para>The icon view mode</para>
@@ -1597,14 +1594,14 @@ ntlm auth = yes
               </varlistentry>
               <varlistentry>
                 <term>
-                  <menuchoice><guibutton>List View</guibutton></menuchoice>
+                  <menuchoice><guimenuitem>List View</guimenuitem></menuchoice>
                 </term>
                 <listitem>
                   <para>The list view mode</para>
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: <guibutton>Icon View</guibutton></para>
+            <para>Default: <guimenuitem>Icon View</guimenuitem></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1686,14 +1683,14 @@ ntlm auth = yes
               <variablelist>
                 <varlistentry>
                   <term>
-                    <menuchoice><guibutton>Minimal SMB protocol version:</guibutton></menuchoice>
+                    <menuchoice><guilabel>Minimal SMB protocol version:</guilabel></menuchoice>
                   </term>
                   <listitem>
                     <para>The following protocol versions can be set:</para>
                     <variablelist>
                       <varlistentry>
                         <term>
-                          <menuchoice><guibutton>NT1 (Classic CIFS/SMBv1 protocol)</guibutton></menuchoice>
+                          <menuchoice><guimenuitem>NT1 (Classic CIFS/SMBv1 protocol)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
                           <para>This is the current up to date version of the protocol. It is used by &Windows; NT and known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
@@ -1701,7 +1698,7 @@ ntlm auth = yes
                       </varlistentry>
                       <varlistentry>
                         <term>
-                          <menuchoice><guibutton>SMB2 (Windows Vista and above)</guibutton></menuchoice>
+                          <menuchoice><guimenuitem>SMB2 (Windows Vista and above)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
                           <para>This is the re-implementation of the SMB protocol. It is used by &Windows; Vista and above.</para>
@@ -1709,26 +1706,26 @@ ntlm auth = yes
                       </varlistentry>
                       <varlistentry>
                         <term>
-                          <menuchoice><guibutton>SMB3 (Windows 8 and above)</guibutton></menuchoice>
+                          <menuchoice><guimenuitem>SMB3 (Windows 8 and above)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
                           <para>This is the same as SMB2. This protocol version is used by &Windows; 8 and above.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
-                    <para>Default: SMB2 (Windows Vista and above)</para>
+                    <para>Default: <guimenuitem>SMB2 (Windows Vista and above)</guimenuitem></para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
                   <term>
-                    <menuchoice><guibutton>Maximal SMB protocol version:</guibutton></menuchoice>
+                    <menuchoice><guilabel>Maximal SMB protocol version:</guilabel></menuchoice>
                   </term>
                   <listitem>
                     <para>The following protocol versions can be set:</para>
                     <variablelist>
                       <varlistentry>
                         <term>
-                          <menuchoice><guibutton>NT1 (Classic CIFS/SMBv1 protocol)</guibutton></menuchoice>
+                          <menuchoice><guimenuitem>NT1 (Classic CIFS/SMBv1 protocol)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
                           <para>This is the current up to date version of the protocol. It is used by &Windows; NT and known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
@@ -1736,7 +1733,7 @@ ntlm auth = yes
                       </varlistentry>
                       <varlistentry>
                         <term>
-                          <menuchoice><guibutton>SMB2 (Windows Vista and above)</guibutton></menuchoice>
+                          <menuchoice><guimenuitem>SMB2 (Windows Vista and above)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
                           <para>This is the re-implementation of the SMB protocol. It is used by &Windows; Vista and above.</para>
@@ -1744,14 +1741,14 @@ ntlm auth = yes
                       </varlistentry>
                       <varlistentry>
                         <term>
-                          <menuchoice><guibutton>SMB3 (Windows 8 and above)</guibutton></menuchoice>
+                          <menuchoice><guimenuitem>SMB3 (Windows 8 and above)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
                           <para>This is the same as SMB2. This protocol version is used by &Windows; 8 and above.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
-                    <para>Default: SMB3 (Windows 8 and above)</para>
+                    <para>Default: <guimenuitem>SMB3 (Windows 8 and above)</guimenuitem></para>
                   </listitem>
                 </varlistentry>
               </variablelist>
@@ -1895,7 +1892,7 @@ ntlm auth = yes
               <variablelist>
                 <varlistentry>
                   <term>
-                    <menuchoice><guilabel>None</guilabel></menuchoice>
+                    <menuchoice><guimenuitem>None</guimenuitem></menuchoice>
                   </term>
                   <listitem>
                     <para>Encryption is not used.</para>
@@ -1903,7 +1900,7 @@ ntlm auth = yes
                 </varlistentry>
                 <varlistentry>
                   <term>
-                    <menuchoice><guilabel>Request</guilabel></menuchoice>
+                    <menuchoice><guimenuitem>Request</guimenuitem></menuchoice>
                   </term>
                   <listitem>
                     <para>Encryption is requested.</para>
@@ -1911,14 +1908,14 @@ ntlm auth = yes
                 </varlistentry>
                 <varlistentry>
                   <term>
-                    <menuchoice><guilabel>Require</guilabel></menuchoice>
+                    <menuchoice><guimenuitem>Require</guimenuitem></menuchoice>
                   </term>
                   <listitem>
                     <para>Encryption is required.</para>
                   </listitem>
                 </varlistentry>                
               </variablelist>
-              <para>Default: <guilabel>None</guilabel></para>
+              <para>Default: <guimenuitem>None</guimenuitem></para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -1941,16 +1938,18 @@ ntlm auth = yes
           </term>
           <listitem>
             <para>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
+            <variablelist>
+              <varlistentry>
+                <term>
+                  <menuchoice><guilabel>Waiting time</guilabel></menuchoice>
+                </term>
+                <listitem>
+                  <para>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</para>
+                  <para>Default: 5 s</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
             <para>Default: not selected</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Waiting time</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</para>
-            <para>Default: 5 s</para>
           </listitem>
         </varlistentry>
       </variablelist>
