@@ -854,8 +854,8 @@ bool Smb4KCustomOptions::hasOptions() const
   // the ip address, the type and the profile, because these things 
   // are not custom options.
   // 
-  // Perform remount
-  if (d->remount != Smb4KCustomOptions::UndefinedRemount)
+  // Perform persistent remounts
+  if (d->remount == Smb4KCustomOptions::RemountAlways)
   {
     return true;
   }
