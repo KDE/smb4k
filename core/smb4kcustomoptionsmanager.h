@@ -2,7 +2,7 @@
     Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2020 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -144,24 +144,16 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
     OptionsPtr findOptions(const QUrl &url);
     
     /**
-     * Get the list of custom options. By default, the list not only comprises of those 
-     * items that have custom options defined but also of those that are "only" to be 
-     * remounted. If @p optionsOnly is defined, only those entries are returned that have
-     * custom options defined. Those that are only to be remounted won't be returned.
+     * Get the list of custom options. If @p withoutRemountOnce is defined, only those 
+     * entries are returned that have custom options apart from the remount settings
+     * defined.
      * 
-     * @param optionsOnly         Only return those entries that have custom options defined
+     * @param withoutRemountOnce  Returns the list of custom options without those that
+     *                            have only the one time remount option set.
      * 
      * @returns the list of custom options objects.
      */
-    QList<OptionsPtr> customOptions(bool optionsOnly = false);
-    
-    /**
-     * Replace all previously defined custom options with a list of new ones. If you
-     * just want to change certain custom options, use the findOptions() functions.
-     * 
-     * @param optionsList        The list of new or updated options
-     */
-    void replaceCustomOptions(const QList<OptionsPtr> &optionsList);
+    QList<OptionsPtr> customOptions(bool withoutRemountOnce = false);
     
     /**
      * This function opens the custom options dialog.
@@ -208,6 +200,11 @@ class Q_DECL_EXPORT Smb4KCustomOptionsManager : public QObject
      * Reload custom options from the file.              
      */
     void resetCustomOptions();
+    
+    /**
+     * Save custom options to the file.
+     */
+    void saveCustomOptions();
     
   protected Q_SLOTS:
     /**

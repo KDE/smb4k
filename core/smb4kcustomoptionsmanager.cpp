@@ -2,7 +2,7 @@
     Manage custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2020 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -167,23 +167,23 @@ void Smb4KCustomOptionsManager::clearRemounts(bool force)
   // Remove the remount flag and, if there are nomore options defined,
   // also the options object. Write everything to the file afterwards.
   //
-  for (const OptionsPtr &o : d->options)
+  for (const OptionsPtr &options : d->options)
   {
-    if (o->type() == Share)
+    if (options->type() == Share)
     {
-      if (o->remount() == Smb4KCustomOptions::RemountOnce)
+      if (options->remount() == Smb4KCustomOptions::RemountOnce)
       {
-        o->setRemount(Smb4KCustomOptions::UndefinedRemount);
+        options->setRemount(Smb4KCustomOptions::UndefinedRemount);
       }
-      else if (o->remount() == Smb4KCustomOptions::RemountAlways && force)
+      else if (options->remount() == Smb4KCustomOptions::RemountAlways && force)
       {
-        o->setRemount(Smb4KCustomOptions::UndefinedRemount);
+        options->setRemount(Smb4KCustomOptions::UndefinedRemount);
       }
     }
     
-    if (!o->hasOptions())
+    if (!options->hasOptions())
     {
-      removeCustomOptions(o, false);
+      removeCustomOptions(options, false);
     }
   }
   
@@ -199,7 +199,7 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
   //
   // List of relevant custom options
   //
-  QList<OptionsPtr> options = customOptions(false);
+  QList<OptionsPtr> optionsList = customOptions(false);
   
   //
   // List of remounts
@@ -209,15 +209,11 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
   //
   // Get the list of remounts
   //
-  for (const OptionsPtr &o : options)
+  for (const OptionsPtr &options : optionsList)
   {
-    if (o->remount() == Smb4KCustomOptions::RemountOnce)
+    if (options->remount() != Smb4KCustomOptions::UndefinedRemount)
     {
-      remounts << o;
-    }
-    else if (o->remount() == Smb4KCustomOptions::RemountAlways)
-    {
-      remounts << o;
+      remounts << options;
     }
   }
   
@@ -1153,75 +1149,33 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
 }
 
 
-QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool optionsOnly)
+QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOnce)
 {
   //
   // Options list
   //
-  QList<OptionsPtr> options;
+  QList<OptionsPtr> optionsList;
 
   //
   // Get this list of options
   //
-  for (const OptionsPtr &o : d->options)
+  for (const OptionsPtr &options : d->options)
   {
-    if (Smb4KSettings::useProfiles() && o->profile() != Smb4KProfileManager::self()->activeProfile())
+    if (Smb4KSettings::useProfiles() && options->profile() != Smb4KProfileManager::self()->activeProfile())
     {
       continue;
     }
 
-    if (o->hasOptions() || (!optionsOnly && o->remount() == Smb4KCustomOptions::RemountOnce))
+    if (options->hasOptions(withoutRemountOnce))
     {
-      options << o;
+      optionsList << options;
     }
   }
   
   //
   // Return the list of relevant options
   //
-  return options;
-}
-
-
-void Smb4KCustomOptionsManager::replaceCustomOptions(const QList<OptionsPtr> &optionsList)
-{
-  //
-  // Clear the list of options. Honor profiles.
-  //
-  QMutableListIterator<OptionsPtr> it(d->options);
-  
-  while (it.hasNext())
-  {
-    OptionsPtr options = it.next();
-    
-    if (Smb4KSettings::useProfiles() && options->profile() != Smb4KProfileManager::self()->activeProfile())
-    {
-      continue;
-    }
-    
-    it.remove();
-  }
-  
-  //
-  // Append the new list
-  //
-  if (!optionsList.isEmpty())
-  {
-    for (const OptionsPtr &options : optionsList)
-    {
-      if (Smb4KSettings::useProfiles())
-      {
-        options->setProfile(Smb4KProfileManager::self()->activeProfile());
-      }
-      
-      if (options->hasOptions())
-      {
-        d->options << options;
-      }
-    }
-  }
-  
-  writeCustomOptions();
+  return optionsList;
 }
 
 
@@ -1411,8 +1365,7 @@ void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options, b
     for (int i = 0; i < d->options.size(); ++i)
     {
       if ((!Smb4KSettings::useProfiles() || Smb4KProfileManager::self()->activeProfile() == d->options.at(i)->profile()) &&
-          d->options.at(i)->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash) == 
-          options->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash))
+          d->options.at(i)->url().matches(options->url(), QUrl::RemoveUserInfo|QUrl::RemovePort|QUrl::StripTrailingSlash))
       {
         d->options.takeAt(i).clear();
         break;
@@ -1432,7 +1385,7 @@ void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options, b
 
 QList<OptionsPtr> Smb4KCustomOptionsManager::wakeOnLanEntries() const
 {
-  QList<OptionsPtr> list;
+  QList<OptionsPtr> optionsList;
   
   //
   // Get the Wake-On-LAN entries
@@ -1441,20 +1394,26 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::wakeOnLanEntries() const
   {
     if (!options->macAddress().isEmpty() && (options->wolSendBeforeNetworkScan() || options->wolSendBeforeMount()))
     {
-      list << options;
+      optionsList << options;
     }
   }
   
   // 
   // Return them
   //
-  return list;
+  return optionsList;
 }
 
 
 void Smb4KCustomOptionsManager::resetCustomOptions()
 {
   readCustomOptions();
+}
+
+
+void Smb4KCustomOptionsManager::saveCustomOptions()
+{
+  writeCustomOptions();
 }
 
 
