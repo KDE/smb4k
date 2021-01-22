@@ -2,7 +2,7 @@
     The configuration dialog of Smb4K
                              -------------------
     begin                : Sa Apr 14 2007
-    copyright            : (C) 2004-2020 by Alexander Reinholdt
+    copyright            : (C) 2004-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -176,8 +176,8 @@ void Smb4KConfigDialog::loadCustomOptions()
 {
   if (m_custom_options)
   {
-    QList<OptionsPtr> options = Smb4KCustomOptionsManager::self()->customOptions();
-    m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions(options);
+    QList<OptionsPtr> optionsList = Smb4KCustomOptionsManager::self()->customOptions(true);
+    m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions(optionsList);
   }
 }
 
@@ -186,8 +186,32 @@ void Smb4KConfigDialog::saveCustomOptions()
 {
   if (m_custom_options)
   {
-    QList<OptionsPtr> options = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->getCustomOptions();
-    Smb4KCustomOptionsManager::self()->replaceCustomOptions(options);
+    QList<OptionsPtr> optionsList = Smb4KCustomOptionsManager::self()->customOptions(true);
+    QList<OptionsPtr> editedOptionsList = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->getCustomOptions();
+    
+    while (!optionsList.isEmpty())
+    {
+      OptionsPtr options = optionsList.takeFirst();
+      bool foundOptions = false;
+      
+      for (const OptionsPtr &editedOptions : qAsConst(editedOptionsList))
+      {
+        if (editedOptions->url().matches(options->url(), QUrl::RemoveUserInfo|QUrl::RemovePort))
+        {
+          // We do not need to update the custom options, because we are
+          // using QSharedPointers.
+          foundOptions = true;
+          break;
+        }        
+      }
+      
+      if (!foundOptions)
+      {
+        Smb4KCustomOptionsManager::self()->removeCustomOptions(options);
+      }
+    }
+    
+    Smb4KCustomOptionsManager::self()->saveCustomOptions();
   }
 }
 
