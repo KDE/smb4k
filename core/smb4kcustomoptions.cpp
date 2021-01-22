@@ -2,7 +2,7 @@
     This class carries custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2020 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -847,15 +847,16 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
 }
 
 
-bool Smb4KCustomOptions::hasOptions() const
+bool Smb4KCustomOptions::hasOptions(bool withoutRemountOnce) const
 {
   //
   // NOTE: This function does not honor the workgroup, the url,
   // the ip address, the type and the profile, because these things 
   // are not custom options.
   // 
-  // Perform persistent remounts
-  if (d->remount == Smb4KCustomOptions::RemountAlways)
+  
+  // Perform remounts
+  if ((!withoutRemountOnce && d->remount != Smb4KCustomOptions::UndefinedRemount) || d->remount == Smb4KCustomOptions::RemountAlways)
   {
     return true;
   }

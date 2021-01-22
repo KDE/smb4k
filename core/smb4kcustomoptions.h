@@ -2,7 +2,7 @@
     This class carries custom options
                              -------------------
     begin                : Fr 29 Apr 2011
-    copyright            : (C) 2011-2020 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -624,11 +624,12 @@ class Q_DECL_EXPORT Smb4KCustomOptions
     QMap<QString,QString> customOptions() const;
     
     /**
-     * Check if there are options defined
+     * Check if there are options defined. If @p withoutRemountOnce is set, 
+     * this function will ignore the setting Smb4KCustomOptions::RemountOnce.
      * 
      * @returns TRUE if there are options defined and FALSE otherwise
      */
-    bool hasOptions() const;
+    bool hasOptions(bool withoutRemountOnce = false) const;
     
     /**
      * Update this custom options object. You cannot change the workgroup,
