@@ -151,7 +151,7 @@ int main(int argc, char **argv)
   // Create the about data for Smb4K  
   KAboutData aboutData(QStringLiteral("smb4k"), i18n("Smb4K"), QStringLiteral(SMB4K_VERSION_STRING),
     i18n("Advanced network neighborhood browser and Samba share mounting utility"),
-    KAboutLicense::GPL_V2, i18n("\u00A9 2003-2020 Alexander Reinholdt"), QString(), 
+    KAboutLicense::GPL_V2, i18n("\u00A9 2003-2021 Alexander Reinholdt"), QString(), 
     QStringLiteral("https://smb4k.sourceforge.io"));
   
   // DBus prefix
