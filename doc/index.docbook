@@ -1680,6 +1680,8 @@ ntlm auth = yes
             <listitem>
               <para>Set the minimal and maximal SMB protocol version that is used by Samba's client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovering of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
               <para>The settings below for the minimal and maximal SMB protocol version are enabled by checking this checkbox.</para>
+              <para>It is mandatory that the maximal SMB protocol version equals or is greater than the minimal SMB protocol version.</para>
+              <para>Default: not selected</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -1752,8 +1754,6 @@ ntlm auth = yes
                   </listitem>
                 </varlistentry>
               </variablelist>
-              <para>It is mandatory that the maximal SMB protocol version equals or is greater than the minimal SMB protocol version.</para>
-              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -1938,6 +1938,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
+            <para>Default: not selected</para>
             <variablelist>
               <varlistentry>
                 <term>
@@ -1949,7 +1950,6 @@ ntlm auth = yes
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: not selected</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2018,6 +2018,7 @@ ntlm auth = yes
             <listitem>
               <para>Remount all your shares that were mounted when you exited the program or changed a profile. If the remounting of a share fails, Smb4K will retry the next time it is started. Shares that were mounted by other users are ignored.</para>
               <note><para>This setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</para></note>
+              <para>Default: not selected</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -2038,7 +2039,6 @@ ntlm auth = yes
                   </listitem>
                 </varlistentry>  
               </variablelist>
-              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
