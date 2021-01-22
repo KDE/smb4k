@@ -2,7 +2,7 @@
     The core class that mounts the shares.
                              -------------------
     begin                : Die Jun 10 2003
-    copyright            : (C) 2003-2020 by Alexander Reinholdt
+    copyright            : (C) 2003-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -270,10 +270,6 @@ void Smb4KMounter::import(bool checkInaccessible)
         else if (option.startsWith(QLatin1String("username=")) || option.startsWith(QLatin1String("user=")))
         {
           share->setLogin(option.section('=', 1, 1).trimmed());
-        }
-        else
-        {
-          qDebug() << "Not implemented mount option:" << option;
         }
       }
       
@@ -719,7 +715,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
           }
 #else
           qWarning() << "Smb4KMounter::slotMountJobFinished(): Error handling not implemented!";
-          Smb4KNotification::mountingFailed(share.data(), errorMsg);
+          Smb4KNotification::mountingFailed(share, errorMsg);
 #endif
         }
       }
