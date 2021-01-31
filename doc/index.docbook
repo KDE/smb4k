@@ -2100,8 +2100,26 @@ ntlm auth = yes
               <menuchoice><guibutton>Write access</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Here you can determine if the shares should be mounted <emphasis>read-write</emphasis> or <emphasis>read-only</emphasis> by default. This option is independent of the file mask and the folder mask settings above.</para>
-              <para>Default: read-write</para>
+              <para>The write access to a share can be determined here. This option is independent of the file mask and the folder mask settings above. Available options are:</para>
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>read-write</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Mount the share read-write.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>read-only</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Mount the share read-only.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+              <para>Default: <guimenuitem>read-write</guimenuitem></para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2110,7 +2128,193 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Sets the character set used by the client side (&ie; your computer).</para>
-              <para>Default: default</para>
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>default</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Default character set used by the client's kernel.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-1</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-1:1998. This character-encoding scheme is used throughout the Americas, Western Europe, Oceania, and much of Africa.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-2</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-2:1999.  It is informally referred to as "Latin-2". It is generally intended for Central or "Eastern European" languages that are written in the Latin script.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-3</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-3:1999. It is informally referred to as Latin-3 or South European. It was designed to cover Turkish, Maltese and Esperanto, though the introduction of ISO/IEC 8859-9 superseded it for Turkish.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-4</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-4:1998. It is informally referred to as Latin-4 or North European. It was designed to cover Estonian, Latvian, Lithuanian, Greenlandic, and Sami. It has been largely superseded by ISO/IEC 8859-10 and Unicode.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-5</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-5:1999. It is informally referred to as Latin/Cyrillic. It was designed to cover languages using a Cyrillic alphabet such as Bulgarian, Belarusian, Russian, Serbian and Macedonian but was never widely used.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-6</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-6:1999. It is informally referred to as Latin/Arabic. It was designed to cover Arabic.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-7</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-7:2003. It is informally referred to as Latin/Greek. It was designed to cover the modern Greek language.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-8</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-8:1999. It is informally referred to as Latin/Hebrew. ISO/IEC 8859-8 covers all the Hebrew letters, but no Hebrew vowel signs.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-9</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-9:1999. It is informally referred to as Latin-5 or Turkish. It was designed to cover the Turkish language, designed as being of more use than the ISO/IEC 8859-3 encoding.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-13</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-13:1998. It is informally referred to as Latin-7 or Baltic Rim. It was designed to cover the Baltic languages, and added characters used in the Polish language missing from the earlier encodings ISO 8859-4 and ISO 8859-10. Unlike these two, it does not cover the Nordic languages.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-14</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-14:1998. It is informally referred to as Latin-8 or Celtic. It was designed to cover the Celtic languages, such as Irish, Manx, Scottish Gaelic, Welsh, Cornish, and Breton.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>iso8859-15</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>ISO/IEC 8859-15:1999. It is informally referred to as Latin-9 (and for a while Latin-0). It is similar to ISO 8859-1, and thus also intended for “Western European” languages, but replaces some less common symbols with the euro sign and some letters that were deemed necessary.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>utf8</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Unicode (or Universal Coded Character Set) Transformation Format – 8-bit. UTF-8 is used by many &Linux; distributions as default character set, and is, in addition, by far the most common encoding for the World Wide Web.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>koi8-r</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>KOI8-R (RFC 1489) is an 8-bit character encoding, derived from the KOI-8 encoding by the programmer Andrei Chernov in 1993 and designed to cover Russian, which uses a Cyrillic alphabet.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>koi8-u</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>KOI8-U (RFC 2319) is an 8-bit character encoding, designed to cover Ukrainian, which uses a Cyrillic alphabet.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>koi8-ru</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>KOI8-RU is an 8-bit character encoding, designed to cover Russian, Ukrainian, and Belarusian which use a Cyrillic alphabet.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>cp1251</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Windows-1251 is an 8-bit character encoding, designed to cover languages that use the Cyrillic script such as Russian, Bulgarian, Serbian Cyrillic and other languages. In Linux, the encoding is known as cp1251.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>gb2312</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>GB/T 2312-1980 is a key official character set of the People's Republic of China, used for Simplified Chinese characters. GB2312 is the registered internet name for EUC-CN, which is its usual encoded form. GB/T 2312-1980 has been superseded by GBK and GB18030, which include additional characters, but GB/T 2312 remains in widespread use as a subset of those encodings. </para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>big5</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Big-5 or Big5 is a Chinese character encoding method used in Taiwan, Hong Kong, and Macau for traditional Chinese characters. The People's Republic of China (PRC), which uses simplified Chinese characters, uses the GB 18030 character set instead.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>euc-jp</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>EUC-JP is a variable-width encoding used to represent the elements of three Japanese character set standards, namely JIS X 0208, JIS X 0212, and JIS X 0201.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>euc-kr</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>EUC-KR is a variable-width encoding to represent Korean text using two coded character sets, KS X 1001 (formerly KS C 5601) and either ISO 646:KR (KS X 1003, formerly KS C 5636) or US-ASCII, depending on variant. KS X 2901 (formerly KS C 5861) stipulates the encoding and RFC 1557 dubbed it as EUC-KR.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guimenuitem>tis-620</guimenuitem></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>Thai Industrial Standard 620-2533, commonly referred to as TIS-620, is the most common character set and character encoding for the Thai language.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+              <para>Default: <guimenuitem>default</guimenuitem></para>
             </listitem>
           </varlistentry>
           <varlistentry>
