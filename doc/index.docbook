@@ -2731,7 +2731,7 @@ ntlm auth = yes
   </sect1>  
   
 <!-- 
-      Configuration: Authentication 
+      Configuring Smb4K : Authentication 
 -->
 
   <sect1 id="configuration_page_authentication">
@@ -2752,7 +2752,7 @@ ntlm auth = yes
     </screenshot>
 
 <!-- 
-      Configuring Smb4K : Authentication : General Settings
+      Configuring Smb4K : Authentication : Settings
 -->
 
     <sect2 id="configuration_page_authentication_settings">
@@ -4165,7 +4165,7 @@ ntlm auth = yes
 <chapter id="credits" >
   <title>Credits and License</title>
 
-  <para>Copyright &copy; 2003 - 2019, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
+  <para>Copyright &copy; 2003 - 2021, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
   &underFDL;
