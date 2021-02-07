@@ -32,7 +32,6 @@ Features
 - KWallet support
 - Synchronization of a remote share with a local copy and vice versa
 - Ability to define custom options for individual servers and shares
-- Laptop support through the Solid hardware device framework
 - Hardware support through the Solid device integration framework, the KDBusAddons 
   convenience classes and the Qt Network module
 - Wake-On-LAN capabilities
