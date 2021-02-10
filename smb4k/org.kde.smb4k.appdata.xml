@@ -48,6 +48,7 @@
   <summary xml:lang="eu">Sarean aurkitu eta muntatu SAMBA eta Windows partekatzeak</summary>
   <summary xml:lang="fi">Etsi ja liitä Samba- ja Windows-jakoja verkon yli</summary>
   <summary xml:lang="fr">Découvre et monte des partages Windows et SAMBA à travers le réseau</summary>
+  <summary xml:lang="id">Temukan dan kaitkan SAMBA dan berbagi Windows melalui jaringan</summary>
   <summary xml:lang="it">Rileva e monta nella rete le condivisioni SAMBA e Windows</summary>
   <summary xml:lang="nl">Ontdek en koppel aan SAMBA en Windows-shares over het netwerk</summary>
   <summary xml:lang="pt">Descubra e monte partilhas de SAMBA e do Windows na rede</summary>
@@ -433,6 +434,7 @@
       <li xml:lang="fi">Oletuskirjautuminen</li>
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
       <li xml:lang="gl">Permite configurar credenciais predeterminadas de acceso.</li>
+      <li xml:lang="ia">Authentication predefinite</li>
       <li xml:lang="id">Login baku</li>
       <li xml:lang="it">Nome utente predefinito</li>
       <li xml:lang="ko">기본 로그인</li>
@@ -580,7 +582,7 @@
       <li xml:lang="fi">Tulostinjakojen tuki</li>
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
-      <li xml:lang="id">Dukungan berbagi pencetak</li>
+      <li xml:lang="id">Dukungan berbagi printer</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
       <li xml:lang="ko">프린터 공유 지원</li>
       <li xml:lang="nds">Ünnerstütten vun Druckerfreegaven</li>
