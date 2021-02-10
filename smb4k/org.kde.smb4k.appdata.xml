@@ -20,6 +20,7 @@
   <name xml:lang="fi">Smb4K</name>
   <name xml:lang="fr">Smb4K</name>
   <name xml:lang="gl">Smb4K</name>
+  <name xml:lang="ia">Smb4K</name>
   <name xml:lang="id">Smb4K</name>
   <name xml:lang="it">Smb4K</name>
   <name xml:lang="ko">Smb4K</name>
@@ -137,6 +138,7 @@
     <p xml:lang="fi">Ominaisuuksia:</p>
     <p xml:lang="fr">Fonctionnalité :</p>
     <p xml:lang="gl">Funcionalidades:</p>
+    <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Funzionalità:</p>
     <p xml:lang="ko">기능:</p>
@@ -552,7 +554,7 @@
       <li xml:lang="fi">Tulostinjakojen tuki</li>
       <li xml:lang="fr">Prise en charge des imprimantes partagées</li>
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
-      <li xml:lang="id">Dukungan berbagi pencetak</li>
+      <li xml:lang="id">Dukungan berbagi printer</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
       <li xml:lang="ko">프린터 공유 지원</li>
       <li xml:lang="nds">Ünnerstütten vun Druckerfreegaven</li>
