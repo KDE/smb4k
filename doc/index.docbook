@@ -3153,7 +3153,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>cp1257</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>Code page 1257 is a &Microsoft; &Windows; code page to support the the Estonian, Latvian and Lithuanian languages.</para>
+                          <para>Code page 1257 is a &Microsoft; &Windows; code page to support Estonian, Latvian and Lithuanian languages.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
