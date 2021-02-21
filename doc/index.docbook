@@ -34,10 +34,10 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2021-01-06</date>
+  <date>2021-02-12</date>
   <releaseinfo>&smb4k; 3.1.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
-    <para>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
+    <para>&smb4k; is an advanced network neighborhood browser and &Samba; share mounting utility.</para>
   </abstract>
   <keywordset>
     <keyword>KDE</keyword>
@@ -57,7 +57,7 @@
   <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
 
   <itemizedlist>
-    <listitem><para>Scanning for (active) workgroups, hosts, and shares using Samba's client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)</para></listitem>
+    <listitem><para>Scanning for (active) workgroups, hosts, and shares using &Samba;'s client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)</para></listitem>
     <listitem><para>Support of the &CIFS; (&Linux;) and SMBFS (BSD) file system</para></listitem>
     <listitem><para>Mounting and unmounting of shares</para></listitem>
     <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
@@ -439,7 +439,7 @@
 
       <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
       <itemizedlist>
-        <listitem><para>define custom mount or Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
+        <listitem><para>define custom mount or &Samba; options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
         <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan_settings">here</link>),</para></listitem>
         <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
@@ -1650,7 +1650,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Use Web Services Dynamic Discovery (WS-Discovery) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The Web Services Dynamic Discovery (WS-Discovery) is used to browse the local network and discover workgroups, domains and hosts. This is useful, if your network neighborhood is dominated by servers with modern Windows versions. If you use this option, there should be no need to force Samba's client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
+              <para>The Web Services Dynamic Discovery (WS-Discovery) is used to browse the local network and discover workgroups, domains and hosts. This is useful, if your network neighborhood is dominated by servers with modern &Windows; versions. If you use this option, there should be no need to force &Samba;'s client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
               <note><para>This setting is optional and only appears, if you compiled &smb4k; with WS-Discovery support.</para></note>
               <para>Default: selected</para>
             </listitem>
@@ -1660,7 +1660,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Use DNS Service Discovery (DNS-SD) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The DNS Service Discovery (DNS-SD) is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg; named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing. If you use this option, there is no need to force Samba's client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
+              <para>The DNS Service Discovery (DNS-SD) is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg; named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing. If you use this option, there is no need to force &Samba;'s client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -1669,7 +1669,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Force SMB protocol version 1.0 for workgroup and domain lookups</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Force Samba's client library to use the SMB protocol version 1.0 for browsing workgroups and domains. You should use this option only as last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer Samba and Windows versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need it.</para>
+              <para>Force &Samba;'s client library to use the SMB protocol version 1.0 for browsing workgroups and domains. You should use this option only as last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer &Samba; and &Windows; versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need it.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -1678,7 +1678,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Set minimal and maximal SMB protocol version</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Set the minimal and maximal SMB protocol version that is used by Samba's client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovering of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
+              <para>Set the minimal and maximal SMB protocol version that is used by &Samba;'s client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovering of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
               <para>The settings below for the minimal and maximal SMB protocol version are enabled by checking this checkbox.</para>
               <para>It is mandatory that the maximal SMB protocol version equals or is greater than the minimal SMB protocol version.</para>
               <para>Default: not selected</para>
@@ -2338,7 +2338,7 @@ ntlm auth = yes
             <menuchoice><guibutton>All or most of the servers support the &CIFS; Unix extensions</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Most versions of Samba support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few Samba servers, you can safely uncheck this option and define custom options for the Samba servers.</para>
+            <para>Most versions of &Samba; support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few &Samba; servers, you can safely uncheck this option and define custom options for the &Samba; servers.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
@@ -2442,7 +2442,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Translate reserved characters</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Translate six of the seven reserved characters (not backslash, but including the colon, question mark, pipe, asterisk, greater than and less than characters) to the remap range (above 0xF000), which also allows the client side to recognize files created with such characters by &Windows;’s POSIX emulation. This can also be useful when mounting to most versions of Samba. This has no effect if the server does not support Unicode.</para>
+            <para>Translate six of the seven reserved characters (not backslash, but including the colon, question mark, pipe, asterisk, greater than and less than characters) to the remap range (above 0xF000), which also allows the client side to recognize files created with such characters by &Windows;’s POSIX emulation. This can also be useful when mounting to most versions of &Samba;. This has no effect if the server does not support Unicode.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
@@ -2487,7 +2487,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>2.1 (Windows 7/Windows Server 2008R2)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=2.1</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.1 protocol that was introduced in Microsoft Windows 7 and Windows Server 2008R2.</para>
+                  <para>The <option>vers=2.1</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.1 protocol that was introduced in &Microsoft; &Windows; 7 and &Windows; Server 2008R2.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2495,7 +2495,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>3.0 (Windows 8/Windows Server 2012)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0 protocol that was introduced in Microsoft Windows 8 and Windows Server 2012.</para>
+                  <para>The <option>vers=3.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0 protocol that was introduced in &Microsoft; &Windows; 8 and &Windows; Server 2012.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2503,7 +2503,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>3.1.1 (Windows Server 2016)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3.1.1</option> or <option>vers=3.11</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in Windows Server 2016.</para>
+                  <para>The <option>vers=3.1.1</option> or <option>vers=3.11</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in &Windows; Server 2016.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
@@ -2711,7 +2711,7 @@ ntlm auth = yes
                     <menuchoice><guibutton>Client character set</guibutton></menuchoice>
                   </term>
                   <listitem>
-                    <para>Use the specified local character set. The following ones are available:</para>
+                    <para>Use this character set for the client side. The following ones are available:</para>
                     <variablelist>
                       <varlistentry>
                         <term>
@@ -2898,7 +2898,7 @@ ntlm auth = yes
                         </listitem>
                       </varlistentry>
                     </variablelist>
-                    <para>Default: <guilabel>default</guilabel></para>
+                    <para>Default: <guimenuitem>default</guimenuitem></para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -2906,7 +2906,273 @@ ntlm auth = yes
                     <menuchoice><guibutton>Server character set</guibutton></menuchoice>
                   </term>
                   <listitem>
-                    <para>Use the specified server's character set.</para>
+                    <para>Use this character set for the server side. The following ones are available:</para>
+                    <variablelist>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>default</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Default character set used by the server.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp437</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 437 is the character set of the original IBM PC (personal computer). It is also known as CP437, OEM-US, OEM 437, PC-8, or DOS Latin US. The set includes all printable ASCII characters, extended codes for accented letters (diacritics), some Greek letters, icons, and line-drawing symbols.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp720</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 720 is a code page used to write Arabic in Egypt, Iraq, Jordan, Saudi Arabia, and Syria.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp737</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 737 is a code page used to write the Greek language in Greece.</para>
+                        </listitem>
+                      </varlistentry> 
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp775</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 775 is a code page used to write the Estonian, Lithuanian and Latvian languages.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp850</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 850 is a code page used in Western Europe.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp852</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 852 is a code page used to write Central European languages that use Latin script (such as Bosnian, Croatian, Czech, Hungarian, Polish, Romanian, Serbian, Slovak or Slovene).</para>
+                        </listitem>
+                      </varlistentry> 
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp855</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 855 is a code page used to write Cyrillic script. Code page 872 is the euro currency update of code page 855.</para>
+                        </listitem>
+                      </varlistentry> 
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp857</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 857 is a code page used in Turkey to write Turkish. It is based on code page 850, but with many changes. It includes all characters from ISO 8859-9.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp858</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 858 is a code page used to write Western European languages. Similarly to code page 850, Code page 858 supports the entire repertoire of ISO 8859-1, but in a different arrangement.</para>
+                        </listitem>
+                      </varlistentry>   
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp860</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 860 is a code page used in Portugal to write Portuguese and it is also suitable to write Spanish and Italian.</para>
+                        </listitem>
+                      </varlistentry>                        
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp861</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 861 is a code page used in Iceland to write the Icelandic language (as well as other Nordic languages).</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp862</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 862 is a code page in Israel for Hebrew.</para>
+                        </listitem>
+                      </varlistentry>  
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp863</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 863 is a code page used in Canada to write French (mainly in Quebec) although it lacks some letters.</para>
+                        </listitem>
+                      </varlistentry>  
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp864</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 864 is a code page used to write Arabic in Egypt, Iraq, Jordan, Saudi Arabia, and Syria.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp865</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 865 is a code page used in Denmark and Norway to write Nordic languages (except Icelandic, for which code page 861 is used).</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp866</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 866 is a code page used in Russia to write Cyrillic script.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp869</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 869 is a code page used to write Greek language.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp874</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 874, also known as Code page 9066, is used to write Thai language.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp932</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 932 is the &Microsoft; &Windows; code page for the Japanese language, which is an extended variant of the Shift JIS Japanese character encoding.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp936</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 936 is the &Microsoft; &Windows; code page for simplified Chinese.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp949</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 949 is the &Microsoft; &Windows; code page for the Korean language.</para>
+                        </listitem>
+                      </varlistentry> 
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp950</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 950 is the &Microsoft; &Windows; code page for Traditional Chinese.</para>
+                        </listitem>
+                      </varlistentry> 
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1250</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1250 is a &Microsoft; &Windows; code page to represent texts in Central European and Eastern European languages that use Latin script, such as Polish, Czech, Slovak, Hungarian, Slovene, Bosnian, Croatian, Serbian (Latin script), Romanian (before 1993 spelling reform) and Albanian. It may also be used with the German language.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1251</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1251 is a &Microsoft; &Windows; code page designed to cover languages that use the Cyrillic script such as Russian, Bulgarian, Serbian Cyrillic and other languages.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1252</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1252 is a &Microsoft; &Windows; code page used for English and many European languages including Spanish, French, and German.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1253</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1253 is a &Microsoft; &Windows; code page used to write modern Greek. It is not capable of supporting the older polytonic Greek.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1254</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1254 is a &Microsoft; &Windows; code page write Turkish.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1255</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1255 is a &Microsoft; &Windows; code page write Hebrew.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1256</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1256 is a &Microsoft; &Windows; code page write Arabic (and possibly some other languages that use Arabic script, like Persian and Urdu).</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1257</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1257 is a &Microsoft; &Windows; code page to support the the Estonian, Latvian and Lithuanian languages.</para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>cp1258</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Code page 1258 is a &Microsoft; &Windows; code page to represent Vietnamese texts. It makes use of combining diacritical marks. </para>
+                        </listitem>
+                      </varlistentry>
+                      <varlistentry>
+                        <term>
+                          <menuchoice><guimenuitem>unicode</guimenuitem></menuchoice>
+                        </term>
+                        <listitem>
+                          <para>Unicode is an information technology standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems.</para>
+                        </listitem>
+                      </varlistentry>
+                    </variablelist>
                     <para>Default: <guilabel>default</guilabel></para>
                   </listitem>
                 </varlistentry>
@@ -3808,9 +4074,9 @@ ntlm auth = yes
 -->
 
     <sect2 id="configuration_page_custom_options_samba">
-      <title>Samba</title>
+      <title>&Samba;</title>
     
-      <para>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the <link linkend="configuration_page_network_samba_settings">&Samba;</link> settings.</para>
+      <para>You can edit various &Samba; settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the <link linkend="configuration_page_network_samba_settings">&Samba;</link> settings.</para>
     </sect2>
 
 <!-- 
