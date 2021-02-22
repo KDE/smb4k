@@ -2703,7 +2703,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Use character sets</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Use the specified local and server's character sets (see below).</para>
+              <para>Use the specified local and server's character sets.</para>
               <para>Default: not selected</para>
               <variablelist>
                 <varlistentry>
