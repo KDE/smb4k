@@ -3249,8 +3249,8 @@ ntlm auth = yes
     <sect2 id="configuration_page_authentication_wallet_entries">
       <title>Wallet Entries</title>
       
-      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, they have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. The details are then shown and can be modified.</para>
-      <para>An entry can be removed by right clicking it and choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
+      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, they have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. As alternative you can just right click the entry and choose the <guimenuitem>Edit</guimenuitem> item in the popup menu. The details are then shown and can be modified.</para>
+      <para>An entry can be removed by choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
       <para>After you finished editing, the changes can be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
     </sect2>
   </sect1>
@@ -4061,32 +4061,50 @@ ntlm auth = yes
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Mounting
+      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
 -->
-    <sect2 id="configuration_page_custom_options_mounting">
-      <title>Mounting</title>
+    <sect2 id="configuration_page_custom_options_common_mount_settings">
+      <title>Common Mount Settings (&Linux; only)</title>
       
-      <para>Here you can edit settings used for mounting. Have a look at the <link linkend="configuration_page_mounting">Mounting</link> configuration page to learn more about the present options.</para>
+      <para>Here you can edit common settings used for mounting under &Linux;. Have a look at the <link linkend="configuration_page_mounting">Mounting</link> configuration page to learn more about the present options.</para>
+    </sect2>
+    
+<!--
+      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
+-->
+    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
+      <title>Advanced Mount Settings (&Linux; only)</title>
+      
+      <para>Here you can edit advanced settings used for mounting under &Linux;. Have a look at the <link linkend="configuration_page_mounting">Mounting</link> configuration page to learn more about the present options.</para>
+    </sect2>
+    
+<!--
+      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
+-->
+    <sect2 id="configuration_page_custom_options_mount_settings">
+      <title>Mount Settings (BSD only)</title>
+      
+      <para>Here you can edit settings used for mounting under BSD. Have a look at the <link linkend="configuration_page_mounting">Mounting</link> configuration page to learn more about the present options.</para>
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Samba
+      Configuring Smb4K : Custom Options : Browse Settings
 -->
 
-    <sect2 id="configuration_page_custom_options_samba">
-      <title>&Samba;</title>
+    <sect2 id="configuration_page_custom_options_browse_settings">
+      <title>Browse Settings</title>
     
-      <para>You can edit various &Samba; settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the <link linkend="configuration_page_network_samba_settings">&Samba;</link> settings.</para>
+      <para>You can edit various &Samba; settings that are used for browsing. For more information, have a look at the <link linkend="configuration_page_network_samba_settings">&Samba;</link> settings.</para>
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN 
+      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
 -->
 
-    <sect2 id="configuration_page_custom_options_wol">
-      <title>Wake-On-LAN</title>
+    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
+      <title>Wake-On-LAN Settings</title>
     
-      <para>Here you can edit the options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+      <para>Here you can edit the Wake-On-LAN options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
     </sect2>
   </sect1>
 
@@ -4564,6 +4582,32 @@ ntlm auth = yes
         </term>
         <listitem>
           <para>Hide or show the dock widgets in the main window.</para>
+          <variablelist>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>Settings</guimenu>
+                  <guisubmenu>Dock Widgets</guisubmenu>
+                  <guimenuitem>Network Neighborhood</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>Hide or show the <guilabel>Network Neighborhood</guilabel> dock widget.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term>
+                <menuchoice>
+                  <guimenu>Settings</guimenu>
+                  <guisubmenu>Dock Widgets</guisubmenu>
+                  <guimenuitem>Mounted Shares</guimenuitem>
+                </menuchoice>
+              </term>
+              <listitem>
+                <para>Hide or show the <guilabel>Mounted Shares</guilabel> dock widget.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
         </listitem>
       </varlistentry>
       <varlistentry>
