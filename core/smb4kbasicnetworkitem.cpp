@@ -200,6 +200,10 @@ QString Smb4KBasicNetworkItem::comment() const
 }
 
 
+bool Smb4KBasicNetworkItem::hasUserInfo() const
+{
+  return !d->url.userInfo().isEmpty();
+}
 
 
 

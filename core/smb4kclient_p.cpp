@@ -250,8 +250,11 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* /*share*/,
           // 
           // Copy the authentication data
           // 
-          qstrncpy(username, h->login().toUtf8().data(), maxLenUsername);
-          qstrncpy(password, h->password().toUtf8().data(), maxLenPassword);
+          if (h->hasUserInfo())
+          {
+            qstrncpy(username, h->login().toUtf8().data(), maxLenUsername);
+            qstrncpy(password, h->password().toUtf8().data(), maxLenPassword);
+          }
         }
       }
       
@@ -272,8 +275,11 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* /*share*/,
       // 
       // Copy the authentication data
       // 
-      qstrncpy(username, h->login().toUtf8().data(), maxLenUsername);
-      qstrncpy(password, h->password().toUtf8().data(), maxLenPassword);
+      if (h->hasUserInfo())
+      {
+        qstrncpy(username, h->login().toUtf8().data(), maxLenUsername);
+        qstrncpy(password, h->password().toUtf8().data(), maxLenPassword);
+      }
       
       break;
     }
@@ -291,9 +297,12 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* /*share*/,
         
       // 
       // Copy the authentication data
-      // 
-      qstrncpy(username, s->login().toUtf8().data(), maxLenUsername);
-      qstrncpy(password, s->password().toUtf8().data(), maxLenPassword);
+      //
+      if (s->hasUserInfo())
+      {
+        qstrncpy(username, s->login().toUtf8().data(), maxLenUsername);
+        qstrncpy(password, s->password().toUtf8().data(), maxLenPassword);
+      }
       
       break;
     }
@@ -321,9 +330,12 @@ void Smb4KClientJob::get_auth_data_fn(const char* server, const char* /*share*/,
         
       // 
       // Copy the authentication data
-      // 
-      qstrncpy(username, s->login().toUtf8().data(), maxLenUsername);
-      qstrncpy(password, s->password().toUtf8().data(), maxLenPassword);
+      //
+      if (s->hasUserInfo())
+      {
+        qstrncpy(username, s->login().toUtf8().data(), maxLenUsername);
+        qstrncpy(password, s->password().toUtf8().data(), maxLenPassword);
+      }
       
       break;
     }
@@ -558,9 +570,17 @@ void Smb4KClientJob::initClientLibrary()
   //
   // Set the user for making the connection
   // 
+  // To be able to connect to a Windows 10 server and get the list
+  // of shared resources, use the 'guest' user here, if the URL 
+  // does not provide a user name.
+  // 
   if (!m_item->url().userName().isEmpty())
   {
     smbc_setUser(m_context, m_item->url().userName().toUtf8().data());
+  }
+  else
+  {
+    smbc_setUser(m_context, "guest");
   }
   
   //

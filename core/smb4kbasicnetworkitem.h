@@ -134,6 +134,11 @@ class Q_DECL_EXPORT Smb4KBasicNetworkItem
      */
     QString comment() const;
     
+    /**
+     * Returms true, if the URL carries user information
+     */
+    bool hasUserInfo() const;
+    
   protected:
     /**
      * Expose a pointer to the private URL variable.
