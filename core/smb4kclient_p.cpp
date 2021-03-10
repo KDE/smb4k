@@ -488,7 +488,7 @@ void Smb4KClientJob::initClientLibrary()
       // might not be identical with the one defined in the network neighborhood. Thus, only set 
       // the workgroup if no DNS-SD discovery was used.
       // 
-      if (!m_item->dnsDiscovered())
+      if (!workgroup->dnsDiscovered())
       {
         smbc_setWorkgroup(m_context, workgroup->workgroupName().toUtf8().data());
       }
@@ -505,7 +505,7 @@ void Smb4KClientJob::initClientLibrary()
       HostPtr host = m_item.staticCast<Smb4KHost>();
       WorkgroupPtr workgroup = findWorkgroup(host->workgroupName());
       
-      if (!workgroup->dnsDiscovered())
+      if (workgroup && !workgroup->dnsDiscovered())
       {
         smbc_setWorkgroup(m_context, host->workgroupName().toUtf8().data());
       }
@@ -527,7 +527,7 @@ void Smb4KClientJob::initClientLibrary()
       SharePtr share = m_item.staticCast<Smb4KShare>();
       WorkgroupPtr workgroup = findWorkgroup(share->workgroupName());
       
-      if (!workgroup->dnsDiscovered())
+      if (workgroup && !workgroup->dnsDiscovered())
       {
         smbc_setWorkgroup(m_context, share->workgroupName().toUtf8().data());
       }
@@ -549,7 +549,7 @@ void Smb4KClientJob::initClientLibrary()
       FilePtr file = m_item.staticCast<Smb4KFile>();
       WorkgroupPtr workgroup = findWorkgroup(file->workgroupName());
       
-      if (!workgroup->dnsDiscovered())
+      if (workgroup && !workgroup->dnsDiscovered())
       {
         smbc_setWorkgroup(m_context, file->workgroupName().toUtf8().data());
       }
