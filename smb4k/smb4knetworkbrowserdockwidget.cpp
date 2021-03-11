@@ -1335,6 +1335,11 @@ void Smb4KNetworkBrowserDockWidget::slotPerformSearch(const QString& item)
   m_networkBrowser->setFocus();
   
   //
+  // Clear the selections in the network browser
+  // 
+  m_networkBrowser->clearSelection();
+  
+  //
   // A global search is underway
   // 
   m_searchRunning = true;
