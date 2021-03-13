@@ -244,11 +244,11 @@ void Smb4KMounter::import(bool checkInaccessible)
   KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded|KMountPoint::NeedMountOptions);
   
   // 
-  // Now determine all mountpoints that have the SMBFS or the CIFS filesystem.
+  // Now determine all mountpoints that have the appropriate filesystem.
   // 
   for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints))
   {
-    if (QString::compare(mountPoint->mountType(), "cifs") == 0 || QString::compare(mountPoint->mountType(), "smbfs") == 0)
+    if (mountPoint->mountType() == "cifs" || mountPoint->mountType() == "smb3" || mountPoint->mountType() == "smbfs")
     {
       // Create a new share and set the mountpoint and filesystem
       SharePtr share = SharePtr(new Smb4KShare());
