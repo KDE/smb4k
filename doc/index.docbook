@@ -144,7 +144,7 @@
     <title>The Network Neighborhood Browser</title>
 
     <para>The interaction with the network neighborhood is done with the <guilabel>Network Neighborhood</guilabel> browser. It contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the control next to the item name or by executing the item itself.</para>
-    <para>In the network tree, the master browser of each workgroup or domain is highlighted by blue font color. Mounted shares are marked with the respective folder icon and an italic font.</para>
+    <para>In the network tree, the master browser of each workgroup or domain is highlighted by blue font color, if it was detected (&eg; when using DNS-SD, the master browser of a &Windows; domain is not recognized). Mounted shares are marked with the respective folder icon and an italic font.</para>
 
     <screenshot>
       <screeninfo>Screenshot of the network neighborhood browser</screeninfo>
@@ -163,8 +163,8 @@
     <sect2 id="network_neighborhood_browser_browsing">
       <title>Browsing</title>
 
-      <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. Opening a workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
-      <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;.</para>
+      <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. For this purpose it uses &Samba;'s client library, <ulink url="https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD">DNS Service Discovery (DNS-SD)</ulink> and, optionally, <ulink url="https://en.wikipedia.org/wiki/WS-Discovery">Web Services Dynamic Discovery (WS-Discovery)</ulink>. The way &smb4k; browses the network neighborhood can be adjusted in the <link linkend="configuration_page_network_basic_settings_browse_settings"><guilabel>Network</guilabel> configuration page</link>.</para>
+      <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;. Due to the use of DNS-SD, you will most likely find a domain called <emphasis>LOCAL</emphasis> in the network neighborhood browser. This is the default local DNS domain used by services like <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</ulink> and not an actual &Windows; domain. Opening a domain or workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
       <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan_settings">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
     </sect2>
     
@@ -322,7 +322,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>Although you can interact with the network neighborhood using the keyboard shortcuts mentioned above, in most cases it is more convenient to use the mouse. By right clicking you can open a popup menu. It contains all actions that are available in the network neighborhood browser. Depending on the position where you clicked (on a network item or on the viewport), some of them may be disabled. The figure below shows the popup menu opened on a remote share.</para>
+      <para>Although you can interact with the network neighborhood using the keyboard shortcuts mentioned above, in most cases it is more convenient to use the mouse. By right clicking you can open a popup menu. It contains all actions that are available in the network neighborhood browser. Depending on the position where you clicked (on a network item or on the viewport), some of them may be disabled. The screenshot below shows the popup menu opened on a remote share.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the popup menu of the network neighborhood browser</screeninfo>
@@ -368,7 +368,7 @@
             <textobject><phrase>The "Mount Share" dialog</phrase></textobject>
           </mediaobject>
         </screenshot>
-        <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton>Add this share to the bookmarks</guibutton> check box.</para></listitem>
+        <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend and you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. </para></listitem>
       </orderedlist>
 
       <para>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be shown.</para>
@@ -439,11 +439,11 @@
 
       <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
       <itemizedlist>
-        <listitem><para>define custom mount or &Samba; options for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
+        <listitem><para>define custom mount or browse settings for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
         <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan_settings">here</link>),</para></listitem>
-        <listitem><para>always mount a certain share on start-up or if the corresponding profile is loaded.</para></listitem>
+        <listitem><para>always mount a certain share on start-up or when the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
-      <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server or to a single one. </para>
+      <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server or to a single one.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
@@ -460,20 +460,32 @@
       <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
       <note><para>Under BSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
 
-      <sect3 id="network_neighborhood_browser_defining_custom_options_mounting">
-        <title>Mounting</title>
+      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
+        <title>Common Mount Settings (&Linux; only)</title>
         
-        <para>In this tab you can define settings related to mounting. Checking the <guibutton>Always remount this share</guibutton> button for a selected share leads to it being remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting">here</link>.</para>
+        <para>In this tab you can define common settings related to mounting. Checking the <guibutton>Always remount this share</guibutton> button for a selected share leads to it being remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting">here</link>.</para>
+      </sect3>
+      
+      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
+        <title>Advanced Mount Settings (&Linux; only)</title>
+        
+        <para>In this tab you can define advanced settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">here</link>.</para>
+      </sect3>
+      
+      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
+        <title>Mount Settings (BSD only)</title>
+        
+        <para>In this tab you can define settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">here</link>.</para>
       </sect3>
         
       <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
-        <title>Samba</title>
+        <title>Browse Settings</title>
 
-        <para>You can define the SMB port and if Kerberos should be used for authentication. For detailed information on these settings, please see <link linkend="configuration_page_network">here</link>.</para>
+        <para>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In additions, you can decide if Kerberos should be used for authentication. For detailed information on these settings, please see <link linkend="configuration_page_network">here</link>.</para>
       </sect3>
 
       <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
-        <title>Wake-On-LAN</title>
+        <title>Wake-On-LAN Settings</title>
     
         <para>To make the Wake-On-LAN feature work, you need to provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it out on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN package to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
       </sect3>
