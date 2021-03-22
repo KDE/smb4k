@@ -1662,7 +1662,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Use Web Services Dynamic Discovery (WS-Discovery) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The Web Services Dynamic Discovery (WS-Discovery) is used to browse the local network and discover workgroups, domains and hosts. This is useful, if your network neighborhood is dominated by servers with modern &Windows; versions. If you use this option, there should be no need to force &Samba;'s client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
+              <para>The Web Services Dynamic Discovery (WS-Discovery) is used to browse the local network and discover workgroups, domains and hosts. This is useful if your network neighborhood is dominated by servers with modern &Windows; versions. If you use this option, there should be no need to force &Samba;'s client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
               <note><para>This setting is optional and only appears, if you compiled &smb4k; with WS-Discovery support.</para></note>
               <para>Default: selected</para>
             </listitem>
@@ -1672,7 +1672,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Use DNS Service Discovery (DNS-SD) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The DNS Service Discovery (DNS-SD) is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg; named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing. If you use this option, there is no need to force &Samba;'s client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
+              <para>The DNS Service Discovery (DNS-SD) is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg; named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing. If you use this option, there is no need to force &Samba;'s client library to use the SMB protocol version 1.0 when searching for workgroups and domains.</para>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -1681,7 +1681,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Force SMB protocol version 1.0 for workgroup and domain lookups</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Force &Samba;'s client library to use the SMB protocol version 1.0 for browsing workgroups and domains. You should use this option only as last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer &Samba; and &Windows; versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider to switch this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need it.</para>
+              <para>For a last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer &Samba; and &Windows; versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider switching this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need it.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -1690,7 +1690,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Set minimal and maximal SMB protocol version</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Set the minimal and maximal SMB protocol version that is used by &Samba;'s client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovering of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
+              <para>Set the minimal and maximal SMB protocol version that is used by &Samba;'s client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovery of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
               <para>The settings below for the minimal and maximal SMB protocol version are enabled by checking this checkbox.</para>
               <para>It is mandatory that the maximal SMB protocol version equals or is greater than the minimal SMB protocol version.</para>
               <para>Default: not selected</para>
@@ -2350,7 +2350,7 @@ ntlm auth = yes
             <menuchoice><guibutton>All or most of the servers support the &CIFS; Unix extensions</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Most versions of &Samba; support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few &Samba; servers, you can safely uncheck this option and define custom options for the &Samba; servers.</para>
+            <para>Most versions of &Samba; support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a &Windows; dominated network neighborhood with only a few &Samba; servers, you can safely uncheck this option and define custom options for the &Samba; servers.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
@@ -2454,7 +2454,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Translate reserved characters</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Translate six of the seven reserved characters (not backslash, but including the colon, question mark, pipe, asterisk, greater than and less than characters) to the remap range (above 0xF000), which also allows the client side to recognize files created with such characters by &Windows;’s POSIX emulation. This can also be useful when mounting to most versions of &Samba;. This has no effect if the server does not support Unicode.</para>
+            <para>Translate six of the seven reserved characters (not backslash, but including the colon, question mark, pipe, asterisk, greater than, and less than characters) to the remap range (above 0xF000), which also allows the client side to recognize files created with such characters by &Windows;’s POSIX emulation. This can also be useful when mounting to most versions of &Samba;. This has no effect if the server does not support Unicode.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
@@ -2723,7 +2723,7 @@ ntlm auth = yes
                     <menuchoice><guibutton>Client character set</guibutton></menuchoice>
                   </term>
                   <listitem>
-                    <para>Use this character set for the client side. The following ones are available:</para>
+                    <para>Use this character set for the client side. These character sets are available:</para>
                     <variablelist>
                       <varlistentry>
                         <term>
@@ -2918,7 +2918,7 @@ ntlm auth = yes
                     <menuchoice><guibutton>Server character set</guibutton></menuchoice>
                   </term>
                   <listitem>
-                    <para>Use this character set for the server side. The following ones are available:</para>
+                    <para>Use this character set for the server side. These character sets are available:</para>
                     <variablelist>
                       <varlistentry>
                         <term>
@@ -2997,7 +2997,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>cp858</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>Code page 858 is a code page used to write Western European languages. Similarly to code page 850, Code page 858 supports the entire repertoire of ISO 8859-1, but in a different arrangement.</para>
+                          <para>Code page 858 is a code page used to write Western European languages. Like code page 850, Code page 858 supports the entire repertoire of ISO 8859-1, but in a different arrangement.</para>
                         </listitem>
                       </varlistentry>   
                       <varlistentry>
@@ -3005,7 +3005,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>cp860</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>Code page 860 is a code page used in Portugal to write Portuguese and it is also suitable to write Spanish and Italian.</para>
+                          <para>Code page 860 is a code page used in Portugal to write Portuguese, and it is also suitable to write Spanish and Italian.</para>
                         </listitem>
                       </varlistentry>                        
                       <varlistentry>
@@ -3069,7 +3069,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>cp874</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>Code page 874, also known as Code page 9066, is used to write Thai language.</para>
+                          <para>Code page 874, also known as Code page 9066, is used to write the Thai language.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3117,7 +3117,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>cp1251</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>Code page 1251 is a &Microsoft; &Windows; code page designed to cover languages that use the Cyrillic script such as Russian, Bulgarian, Serbian Cyrillic and other languages.</para>
+                          <para>Code page 1251 is a &Microsoft; &Windows; code page designed to cover languages that use the Cyrillic script such as Russian, Bulgarian, Serbian Cyrillic, and other languages.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3141,7 +3141,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>cp1254</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>Code page 1254 is a &Microsoft; &Windows; code page write Turkish.</para>
+                          <para>Code page 1254 is a &Microsoft; &Windows; code page used to write Turkish.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3149,7 +3149,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>cp1255</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>Code page 1255 is a &Microsoft; &Windows; code page write Hebrew.</para>
+                          <para>Code page 1255 is a &Microsoft; &Windows; code page used to write Hebrew.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -3165,7 +3165,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>cp1257</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>Code page 1257 is a &Microsoft; &Windows; code page to support Estonian, Latvian and Lithuanian languages.</para>
+                          <para>Code page 1257 is a &Microsoft; &Windows; code page to support the Estonian, Latvian and Lithuanian languages.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
