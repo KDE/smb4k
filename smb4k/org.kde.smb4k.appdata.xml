@@ -154,8 +154,8 @@
     <ul>
       <li>Scanning for (active) workgroups, hosts, and shares</li>
       <li xml:lang="bs">Pretraživanje (aktivnih) radnih grupa, hostova i razmjena</li>
-      <li xml:lang="ca">Escaneig per a grups de treball (actius), servidors i comparticions</li>
-      <li xml:lang="ca-valencia">Escaneig per a grups de treball (actius), servidors i comparticions</li>
+      <li xml:lang="ca">Exploració de grups de treball (actius), servidors i comparticions</li>
+      <li xml:lang="ca-valencia">Exploració de grups de treball (actius), servidors i comparticions</li>
       <li xml:lang="de">Suche nach (aktiven) Arbeitsgruppen, Rechnern und Freigaben</li>
       <li xml:lang="el">Σαρώνει για (ενεργές) ομάδες εργασίας, υπολογιστές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Scanning for (active) workgroups, hosts, and shares</li>
