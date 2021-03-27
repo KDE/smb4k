@@ -850,7 +850,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>By left clicking the (active) icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
+      <para>By left clicking the status icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
     </sect2>
 
 <!-- 
@@ -1126,7 +1126,7 @@
     <sect2 id="bookmarks_adding">
       <title>Adding Bookmarks</title>
 
-      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
+      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign a category to the bookmark.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
@@ -1136,7 +1136,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>Adding a group may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group are arranged in a submenu with the group entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
+      <para>Assigning a category may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one category are arranged in a submenu with the category entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
       <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the location by default. If you want to change this behavior, you can do so in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>.</para>
     </sect2>
     
@@ -1147,7 +1147,7 @@
     <sect2 id="bookmarks_menu">
       <title>Accessing and Managing Bookmarks</title>
 
-      <para>In the main window, the bookmarks can be accessed and managed through the <guilabel>Bookmarks</guilabel> menu:</para>
+      <para>In the main window, the bookmarks can be accessed and managed through the <guilabel>Bookmarks</guilabel> menu.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the bookmark popup menu</screeninfo>
@@ -1181,7 +1181,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>In case you have not defined any groups, there is a third item:</para>
+      <para>In case you have not defined any categories, there is a third item:</para>
 
       <variablelist>
         <varlistentry>
@@ -1194,9 +1194,10 @@
         </varlistentry>
       </variablelist>
 
-      <para>All other entries are either group submenus or shares that do not belong to a group. All entries are listed alphabetically and the bookmarks may either appear with their location or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
-      <para>For each group there is a submenu. It contains all bookmarks belonging to the group and a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item. The latter one can be used to mount all bookmarks in that submenu at once.</para>
-      <para>In the system tray widget, there is an identical <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> except that the <guilabel>Add Bookmark</guilabel> entry is missing. The plasmoid provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the toolbar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a group folder. The <guimenuitem>Edit</guimenuitem> action will open the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
+      <para>All other entries are either category submenus or bookmarks that do not belong to any category. All entries are listed alphabetically and the bookmarks may either appear with their location or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
+      <para>The category submenus contain the assigned bookmarks and in each case a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item. The latter one can be used to mount all bookmarks of that category at once.</para>
+      <para>In the system tray widget, there is a similar <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> that, however, does not come with the <guilabel>Add Bookmark</guilabel> entry.</para>
+      <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark categories and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the toolbar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a category folder. The <guimenuitem>Edit</guimenuitem> action opens the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
     </sect2>
     
 <!--
@@ -1216,9 +1217,9 @@
         </mediaobject>
       </screenshot>
 
-      <para>In the tree view, the bookmarks are arranged according to the groups they belong to. Bookmarks without groups are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
-      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
-      <para>The tree view also offers a popup menu containing the following three actions. They can be used to add groups or remove groups and/or bookmarks.</para>
+      <para>In the tree view, the bookmarks are arranged according to the categories they belong to. Bookmarks without a category are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
+      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and category name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stores the correct values at the time you bookmark the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>. The category entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
+      <para>The tree view also offers a popup menu containing the following three actions. They can be used to add categories or to remove groups and bookmarks.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the popup menu of the bookmark editor</screeninfo>
@@ -1231,10 +1232,10 @@
       <variablelist>
         <varlistentry>
           <term>
-            <menuchoice><guimenuitem>Add Group</guimenuitem></menuchoice>
+            <menuchoice><guimenuitem>Add Category</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Add a bookmark group. After you created a group, you can move bookmarks to it.</para>
+            <para>Add a bookmark category. After you created a category, you can move bookmarks to it.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1242,7 +1243,7 @@
             <menuchoice><guimenuitem>Remove</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Remove a selected bookmark or group. In case of a group, all bookmarks stored under that group are also removed.</para>
+            <para>Remove a selected bookmark or category. In case of a category, all bookmarks stored under that group are also removed.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1250,7 +1251,7 @@
             <menuchoice><guimenuitem>Clear</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Remove all bookmarks from the tree view including all groups.</para>
+            <para>Remove all bookmarks and categories from the tree view.</para>
           </listitem>
         </varlistentry>
       </variablelist>
