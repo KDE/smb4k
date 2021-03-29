@@ -1163,7 +1163,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   // 
   WorkgroupPtr workgroup = findWorkgroup(share->workgroupName());
   
-  if ((workgroup && !workgroup->dnsDiscovered()) && !share->workgroupName().trimmed().isEmpty())
+  if ((workgroup && !workgroup->dnsDiscovered()) && !share->workgroupName().isEmpty())
   {
     argumentsList << QString("domain=%1").arg(KShell::quoteArg(share->workgroupName()));
   }
@@ -1708,9 +1708,13 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   QStringList argumentsList;
   
   //
-  // Workgroup
+  // Workgroup or domain
   // 
-  if (!share->workgroupName().isEmpty())
+  // Do not use this, if the domain is a DNS domain.
+  // 
+  WorkgroupPtr workgroup = findWorkgroup(share->workgroupName());
+  
+  if ((workgroup && !workgroup->dnsDiscovered()) && !share->workgroupName().isEmpty())
   {
     argumentsList << "-W";
     argumentsList << KShell::quoteArg(share->workgroupName());
