@@ -1359,7 +1359,7 @@
 
     <sect2 id="notifications_manage">
       <title>Managing Notifications</title>
-      <para>Notifications can be managed via the &systemsettings;. To modify the behavior of a notification, navigate to the <guibutton>Notifications</guibutton> page. Under <guilabel>Event source</guilabel> select the <guilabel>Advanced Network Neighborhood Browser</guilabel> entry from the drop-down menu:</para>
+      <para>Notifications can be managed via the &systemsettings;. To modify the behavior of a notification, navigate to the <guibutton>Notifications</guibutton> page. For &plasma; 5.21 and up, then click the <guibutton>Configure</guibutton> button besides the label <guilabel>Applications</guilabel> and choose &smb4k; from the appearing list view. Clicking the <guibutton>Configure Events...</guibutton> opens the following dialog:</para>
       <screenshot>
         <screeninfo>Screenshot of the systemsettings notification module</screeninfo>
         <mediaobject>
@@ -1367,7 +1367,7 @@
           <textobject><phrase>Systemsettings notification module</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>All available notifications are shown in the list view and can be edited, enabled and disabled according to your liking.</para>
+      <para>Here, all available notifications are shown in the list view and can be edited, enabled and disabled according to your liking.</para>
     </sect2>
   </sect1>
 
