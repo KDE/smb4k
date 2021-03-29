@@ -54,7 +54,7 @@
   <title>Introduction</title>
 
   <para>This handbook describes &smb4k; 3.1.x and to some extent earlier versions.</para>
-  <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
+  <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a &Windows;-dominated network environment:</para>
 
   <itemizedlist>
     <listitem><para>Scanning for (active) workgroups, hosts, and shares using &Samba;'s client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)</para></listitem>
@@ -63,17 +63,17 @@
     <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
     <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
     <listitem><para>Remounting of previously used shares on program start</para></listitem>
-    <listitem><para>Miscellaneous infos about remote network items and mounted shares</para></listitem>
+    <listitem><para>Miscellaneous info about remote network items and mounted shares</para></listitem>
     <listitem><para>Network search</para></listitem>
     <listitem><para>Preview of the contents of a remote share</para></listitem>
     <listitem><para>Default login</para></listitem>
-    <listitem><para>Special handling of homes shares</para></listitem>
+    <listitem><para>Special handling of home shares</para></listitem>
     <listitem><para>Ability to bookmark favorite shares</para></listitem>
     <listitem><para>System tray widget</para></listitem>
     <listitem><para>Support of advanced mount options</para></listitem>
     <listitem><para>Support of printer shares</para></listitem>
     <listitem><para>&kwallet5; support</para></listitem>
-    <listitem><para>Synchronization of a remote share with a local copy and vice versa</para></listitem>
+    <listitem><para>Synchronization of a remote share with a local copy, and vice versa</para></listitem>
     <listitem><para>Ability to define custom options for individual servers and shares</para></listitem>
     <listitem><para>Hardware support through the &solid; device integration framework, the &kdbusaddons; convenience classes and the &Qt; Network module</para></listitem>
     <listitem><para>Wake-On-LAN capabilities</para></listitem>
@@ -81,7 +81,7 @@
     <listitem><para>Profiles for different network neighborhood setups</para></listitem>
   </itemizedlist>
 
-  <para>If you encounter problems while using &smb4k;, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k">bug tracker</ulink>. For discussions about &smb4k;-related topics, there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/">General Discussion</ulink> forum and we invite every user to participate.</para>
+  <para>If you encounter problems while using &smb4k;, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/">Help</ulink> forum. In case you find a bug, please report it to our <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k">bug tracker</ulink>. For discussions about &smb4k;-related topics, there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/">General Discussion</ulink> forum, and we invite every user to participate.</para>
 </chapter>
 
 <!-- 
@@ -98,7 +98,7 @@
   <sect1 id="running_smb4k" >
     <title>Running &smb4k;</title>
     
-    <para>You can either launch &smb4k; from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as widget to the desktop or panel.</para>
+    <para>You can either launch &smb4k; from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as a widget to the desktop or panel.</para>
 
     <para>If the system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
     
@@ -120,7 +120,7 @@
   <sect1 id="mainwindow_overview">
     <title>The Main Window</title>
   
-    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menubar and toolbar are located. Below them you find the status bar.</para>
+    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menubar and toolbar are located. Below them you will see the status bar.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo>Screenshot of the main window</screeninfo>
@@ -130,8 +130,8 @@
       </mediaobject>
     </screenshot>
 
-    <para>The toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information, please have a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link> and <link linkend="shares_view">mounted shares view</link>.</para>
-    <para>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (network folder icon) and the status of the authentication system (wallet or key icon).</para>
+    <para>The toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link> and <link linkend="shares_view">mounted shares view</link>.</para>
+    <para>The status bar provides some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (network folder icon) and the status of the authentication system (wallet or key icon).</para>
     <para>If the dock widgets are arranged as tabs, the user gets additional visual feedback. Each time a share is mounted or unmounted, the <guilabel>Mounted Shares</guilabel> tab is highlighted for a few seconds.</para>
     <para>The main window is highly configurable. You can hide or show all tabbed widgets (<menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>). They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the toolbars can be hidden or shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
   </sect1>
@@ -143,8 +143,8 @@
   <sect1 id="network_neighborhood_browser">
     <title>The Network Neighborhood Browser</title>
 
-    <para>The interaction with the network neighborhood is done with the <guilabel>Network Neighborhood</guilabel> browser. It contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the control next to the item name or by executing the item itself.</para>
-    <para>In the network tree, the master browser of each workgroup or domain is highlighted by blue font color, if it was detected (&eg; when using DNS-SD, the master browser of a &Windows; domain is not recognized). Mounted shares are marked with the respective folder icon and an italic font.</para>
+    <para>The interaction with the network neighborhood is done with the <guilabel>Network Neighborhood</guilabel> browser. It contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the control next to the item's name or by executing the item itself.</para>
+    <para>In the network tree, the master browser in each workgroup or domain is highlighted by a blue font color, if it was detected (&eg; when using DNS-SD, the master browser of a &Windows; domain is not recognized). Mounted shares are marked with the respective folder icon and an italic font.</para>
 
     <screenshot>
       <screeninfo>Screenshot of the network neighborhood browser</screeninfo>
@@ -163,9 +163,9 @@
     <sect2 id="network_neighborhood_browser_browsing">
       <title>Browsing</title>
 
-      <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. For this purpose it uses &Samba;'s client library, <ulink url="https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD">DNS Service Discovery (DNS-SD)</ulink> and, optionally, <ulink url="https://en.wikipedia.org/wiki/WS-Discovery">Web Services Dynamic Discovery (WS-Discovery)</ulink>. The way &smb4k; browses the network neighborhood can be adjusted in the <link linkend="configuration_page_network_basic_settings_browse_settings"><guilabel>Network</guilabel> configuration page</link>.</para>
-      <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;. Due to the use of DNS-SD, you will most likely find a domain called <emphasis>LOCAL</emphasis> in the network neighborhood browser. This is the default local DNS domain used by services like <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</ulink> and not an actual &Windows; domain. Opening a domain or workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
-      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan_settings">configuration dialog</link>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+      <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up, and presents them in the network neighborhood browser. For this purpose it uses &Samba;'s client library, <ulink url="https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD">DNS Service Discovery (DNS-SD)</ulink> and, optionally, <ulink url="https://en.wikipedia.org/wiki/WS-Discovery">Web Services Dynamic Discovery (WS-Discovery)</ulink>. The way &smb4k; browses the network neighborhood can be adjusted in the <link linkend="configuration_page_network_basic_settings_browse_settings"><guilabel>Network</guilabel> configuration page</link>.</para>
+      <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie;, when you execute a network item. Due to the use of DNS-SD, you will most likely find a domain called <emphasis>LOCAL</emphasis> in the network neighborhood browser. This is the default local DNS domain used by services like <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</ulink> and not an actual &Windows; domain. Opening a domain or workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you must open the desired server.</para>
+      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan_settings">configuration dialog</link>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
     </sect2>
     
 <!--
@@ -175,7 +175,7 @@
     <sect2 id="network_neighborhood_browser_searching">
       <title>Searching</title>
       
-      <para>To search the network neighborhood for shares that contain a certain search item, execute the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>F</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action (see also the <link linkend="network_neighborhood_browser_actions_popup_menu">Actions an Popup Menu</link> section below). The search toolbar opens at the bottom of the network neighborhood browser.</para>
+      <para>To search the network neighborhood for shares that contain a certain search item, execute the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>F</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action (see also the <link linkend="network_neighborhood_browser_actions_popup_menu">Actions and Popup Menu</link> section below). The search toolbar opens at the bottom of the network neighborhood browser.</para>
       
       <screenshot>
         <screeninfo>Screenshot of the network neighborhood browser with visible search toolbar</screeninfo>
@@ -185,7 +185,7 @@
         </mediaobject>
       </screenshot>
       
-      <para>Enter the search term in the line edit and press the &Enter; key or click the <guibutton>Search</guibutton> button. &smb4k; starts to search the entire network neighborhood. When the search finished, all shares matching the search term are highlighted (selected). If you would like to do something with <emphasis>all</emphasis> discovered shares (&eg; mount or preview), you can immediately do this now. Otherwise, you can use the <guibutton>Up</guibutton> and <guibutton>Down</guibutton> buttons to jump to the individual search results. The <guibutton>Clear</guibutton> button can be used to clear the search. To close the search toolbar, press the <guibutton>Close</guibutton> button.</para>
+      <para>Enter the search term in the line edit and press the &Enter; key, or click the <guibutton>Search</guibutton> button. &smb4k; starts to search the entire network neighborhood. When the search is finished, all shares matching the search term are highlighted (selected). If you would like to do something with <emphasis>all</emphasis> discovered shares (&eg; mount or preview), you can immediately do this now. Otherwise, you can use the <guibutton>Up</guibutton> and <guibutton>Down</guibutton> buttons to jump to the individual search results. The <guibutton>Clear</guibutton> button can be used to clear the search. To close the search toolbar, press the <guibutton>Close</guibutton> button.</para>
     </sect2>
 
 <!-- 
@@ -195,7 +195,7 @@
     <sect2 id="network_neighborhood_browser_actions_popup_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>For the network neighborhood browser several actions are defined. They are present in the menubar under <guimenu>Network</guimenu>, in the toolbar and the popup menu. The following ones are available:</para>
+      <para>Several actions are defined for the network neighborhood browser. They are present in the menubar under <guimenu>Network</guimenu>, in the toolbar, and in the popup menu. The following actions are available:</para>
     
       <variablelist>
         <varlistentry>
@@ -206,7 +206,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Scan the whole network neighborhood, the highlighted workgroup/domain or computer for new entries. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network scan is running.</para>
+            <para>Scan the whole network neighborhood, the highlighted workgroup/domain, or the computer for new entries. This action is visible by default and will be replaced by the <guimenuitem>Abort</guimenuitem> action if a network scan is running.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -217,7 +217,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action when a network scan is running.</para>
+            <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible (instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action) when a network scan is running.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -228,7 +228,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Search the network neighborhood for a specified search term. Activating this action opens the search toolbar where you can enter the search term and start the search.</para>
+            <para>Search the network neighborhood for a specified term. Activating this action opens the search toolbar, where you can enter the search term and start the search.</para>
           </listitem>
         </varlistentry>        
         <varlistentry>
@@ -251,7 +251,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for mounting shares "manually". This feature may be needed if &smb4k; cannot find a server from which you want to mount a certain shared resource.</para>
+            <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for mounting shares "manually". This feature may be needed if &smb4k; cannot find the server from which you want to mount a certain shared resource.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -306,7 +306,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Mount the selected remote share. By default and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled. If you selected a mounted share, this action is replaced by the <guimenuitem>Unmount</guimenuitem> action.</para>
+            <para>Mount the selected remote share. By default, and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled. If you selected a mounted share, this action is replaced by the <guimenuitem>Unmount</guimenuitem> action.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
