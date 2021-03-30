@@ -344,7 +344,7 @@
     <sect2 id="network_neighborhood_browser_tooltips">
       <title>Tooltips</title>
 
-      <para>For each network item a tooltip is provided that contains various information like the name of the workgroup and master browser, the name and IP address of the host, the name of the share, &etc;</para>
+      <para>For each network item, a tooltip is provided that contains various information like the name of the workgroup and master browser, the name and IP address of the host, the name of the share, &etc;</para>
       <para>The tooltips can be disabled in the <link linkend="configuration_page_user_interface_network">configuration dialog</link>.</para>
     </sect2>
 
@@ -368,10 +368,10 @@
             <textobject><phrase>The "Mount Share" dialog</phrase></textobject>
           </mediaobject>
         </screenshot>
-        <para>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend and you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. </para></listitem>
+        <para>Here you can enter the location of the share as a <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting>, or as a URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend so you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. </para></listitem>
       </orderedlist>
 
-      <para>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be shown.</para>
+      <para>A share is often password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you must enter the correct user name (if not already provided) and password. &smb4k; will proceed with mounting the share unless the wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be displayed.</para>
     </sect2>
 
 <!-- 
@@ -389,8 +389,8 @@
           <textobject><phrase>The print dialog</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>In the <guilabel>Information</guilabel> section various information about the printer is shown. Under <guilabel>File and Settings</guilabel> you have to provide the path to the file you want to print and the desired number of copies. Press <guibutton>Print</guibutton> to start the print process.</para>
-      <para>&smb4k; currently supports PDF, Postscript, image, and text files. If you try to print a file with an unsupported mimetype, a notification with an error message will appear telling you the mimetype is not supported. In this case you have to convert the file manually to Postscript or PDF and try again.</para>
+      <para>The <guilabel>Information</guilabel> section displays various information about the printer. Under <guilabel>File and Settings</guilabel> you must provide the path to the file you want to print and the desired number of copies. Press <guibutton>Print</guibutton> to start the print process.</para>
+      <para>&smb4k; currently supports PDF, Postscript, image, and text files. If you try to print a file with an unsupported mimetype, a notification with an error message will appear telling you the mimetype is not supported. In this case you should convert the file manually to Postscript or PDF and try again.</para>
     </sect2>
 
 <!-- 
@@ -409,7 +409,7 @@
         </mediaobject>
       </screenshot>
       <para>The preview dialog acts like a simple file manager. You can navigate through the contents of the remote share by clicking the folder icons in the list view. You can go one level up by using the <guibutton>Up</guibutton> button and reload the contents of the current folder by pressing the <guibutton>Reload</guibutton> button. The current location is displayed in the combo box on the right hand side. You can also access already visited folders with it.</para>
-      <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_page_network_basic_settings_behavior">configuration dialog</link>. File transfers or the like are not possible.</para>
+      <para>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_page_network_basic_settings_behavior">configuration dialog</link>. File transfers and the like are not possible.</para>
     </sect2>
 
 <!-- 
@@ -419,7 +419,7 @@
     <sect2 id="network_neighborhood_browser_authentication">
       <title>Providing Authentication Information</title>
 
-      <para>Many servers or remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same happens, if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
+      <para>Many servers and remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same thing happens if you click the  <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>T</keycap></keycombo></shortcut><guimenuitem>Authentication</guimenuitem></menuchoice> menu entry.</para>
       <screenshot>
         <screeninfo>Screenshot of the authentication dialog</screeninfo>
         <mediaobject>
@@ -427,7 +427,7 @@
           <textobject><phrase>The authentication dialog</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button commits the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not at all. In the latter case you have to provide them <emphasis>every time</emphasis> they are needed.</para>
+      <para>If a user name has already been provided, it will be shown in the respective field. If it is wrong, or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton>OK</guibutton> button commits the data. Depending on your choice in the <link linkend="configuration_page_authentication">configuration dialog</link>, the user name and password will be stored permanently in a digital wallet or not at all. In the latter case you have to provide them <emphasis>every time</emphasis> they are needed.</para>
     </sect2>
 
 <!-- 
@@ -439,11 +439,11 @@
 
       <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
       <itemizedlist>
-        <listitem><para>define custom mount or browse settings for a single server or share that deviate from the ones defined in the configuration dialog,</para></listitem>
-        <listitem><para>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan_settings">here</link>),</para></listitem>
-        <listitem><para>always mount a certain share on start-up or when the corresponding profile is loaded.</para></listitem>
+        <listitem><para>define custom mount or browse settings for a single server or share that deviate from the values defined in the configuration dialog,</para></listitem>
+        <listitem><para>define a server that should be awakened prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan_settings">here</link>),</para></listitem>
+        <listitem><para>always mount a particular share on start-up or when the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
-      <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server or to a single one.</para>
+      <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server, or to only one.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
@@ -457,37 +457,37 @@
         </mediaobject>
       </screenshot>
 
-      <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
-      <note><para>Under BSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para></note>
+      <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will save the custom settings and close the dialog.</para>
+      <note><para>Under BSD, the dialog contains fewer entries than if you run a different operating system, because several of the options are not supported.</para></note>
 
       <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
         <title>Common Mount Settings (&Linux; only)</title>
         
-        <para>In this tab you can define common settings related to mounting. Checking the <guibutton>Always remount this share</guibutton> button for a selected share leads to it being remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting">here</link>.</para>
+        <para>In this tab you can define common settings related to mounting. Checking the <guibutton>Always remount this share</guibutton> button for a selected share leads to it being remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting">this section</link>.</para>
       </sect3>
       
       <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
         <title>Advanced Mount Settings (&Linux; only)</title>
         
-        <para>In this tab you can define advanced settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">here</link>.</para>
+        <para>In this tab you can define advanced settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">this section</link>.</para>
       </sect3>
       
       <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
         <title>Mount Settings (BSD only)</title>
         
-        <para>In this tab you can define settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">here</link>.</para>
+        <para>In this tab you can define settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">this page</link>.</para>
       </sect3>
         
       <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
         <title>Browse Settings</title>
 
-        <para>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In additions, you can decide if Kerberos should be used for authentication. For detailed information on these settings, please see <link linkend="configuration_page_network">here</link>.</para>
+        <para>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information on these settings, please see <link linkend="configuration_page_network">the network configuration page</link>.</para>
       </sect3>
 
       <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
         <title>Wake-On-LAN Settings</title>
     
-        <para>To make the Wake-On-LAN feature work, you need to provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it out on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN package to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
+        <para>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN package to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
       </sect3>
     </sect2>
 
@@ -498,7 +498,7 @@
     <sect2 id="network_neighborhood_browser_adding_bookmarks">
       <title>Adding Bookmarks</title>
 
-      <para>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="bookmarks">Bookmarks</link> for more details.</para>
+      <para>A bookmark is added by selecting a remote share (only these can be bookmarked), and pressing the <keycombo action="simul">&Ctrl; <keycap>B</keycap></keycombo> keyboard shortcut or selecting the <guimenuitem>Add Bookmark</guimenuitem> menu item. The bookmark will then be accessible through the <guimenu>Bookmarks</guimenu> menu. See the section <link linkend="bookmarks">Bookmarks</link> for more details.</para>
       <para>The bookmarks can be used to mount remote shares.</para>
     </sect2>
   </sect1>
@@ -519,7 +519,7 @@
     <sect2 id="shares_view_views">
       <title>Different Views</title>
 
-      <para>&smb4k; comes with two alternative views: an icon and a list view. They are both shown below. The default one is the icon view.</para>
+      <para>&smb4k; comes with two alternative views: an icon view and a list view. They are both shown below. The icon view is the default.</para>
       <para>The icon view:</para>
       <screenshot>
         <screeninfo>Screenshot of the shares icon view</screeninfo>
@@ -556,7 +556,7 @@
     <sect2 id="shares_view_actions_popup_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>For the shares view several actions are defined. They are present in the menubar under <guimenu>Shares</guimenu>, the toolbar and in its popup menu. The following ones are available:</para>
+      <para>In the shares view, several options are defined. They are present in the menubar under <guimenu>Shares</guimenu>, in the toolbar, and in the popup menu. The following options are available:</para>
 
       <variablelist>
         <varlistentry>
@@ -656,7 +656,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>The popup menu includes all actions that can be performed on a mounted share:</para>
+      <para>The popup menu includes all the actions that can be performed on a mounted share:</para>
       <screenshot>
         <screeninfo>Screenshot of the popup menu of the shares view</screeninfo>
         <mediaobject>
@@ -668,7 +668,7 @@
           </textobject>
         </mediaobject>
       </screenshot>
-      <para>It can be opened by clicking the right mouse button.</para>
+      <para>It can be opened by clicking the &RMB;.</para>
     </sect2>
 
 <!-- 
