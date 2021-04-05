@@ -51,6 +51,7 @@
   <summary xml:lang="id">Temukan dan kaitkan SAMBA dan berbagi Windows melalui jaringan</summary>
   <summary xml:lang="it">Rileva e monta nella rete le condivisioni SAMBA e Windows</summary>
   <summary xml:lang="nl">Ontdek en koppel aan SAMBA en Windows-shares over het netwerk</summary>
+  <summary xml:lang="pl">Wykrywaj i podpinaj zasoby SAMBY oraz Windowsa w sieci</summary>
   <summary xml:lang="pt">Descubra e monte partilhas de SAMBA e do Windows na rede</summary>
   <summary xml:lang="pt-BR">Descubra e monte compartilhamentos SAMBA e Windows pela rede</summary>
   <summary xml:lang="sl">Odkrijte in priklopite skupno rabo mrežnih diskov SAMBA in Windows</summary>
@@ -76,7 +77,7 @@
     <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba. È basato su KDE Frameworks 5 e sulla libreria client di Samba (libsmbclient). Analizza le risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
     <p xml:lang="ko">Smb4K는 고급 네트워크 환경 탐색기 및 Samba 공유 마운트 도구입니다. KDE 프레임워크 5와 Samba 클라이언트 라이브러리(libsmbclient)를 사용합니다. 로컬 네트워크에 있는 작업 그룹, 서버, 공유 자원을 탐색할 수 있으며 로컬 파일 시스템에 공유를 마운트할 수 있습니다.</p>
     <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op het KDE Frameworks 5 en de clientbibliotheek (libsmbclient). Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
-    <p xml:lang="pl">Smb4K jest zaawansowaną przeglądarką otoczenia sieciowego i narzędziem do podpinania udziałów Samby. Jest oparta na Szkieletach KDE 5 i bibliotece klienckiej Samby (libsmbclient). Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić podpięcie wszystkich tych udziałów w lokalnym systemie plików.</p>
+    <p xml:lang="pl">Smb4K jest rozbudowaną przeglądarką otoczenia sieciowego i narzędziem do podpinania udziałów Samby. Jest oparta na Szkieletach KDE 5 i bibliotece klienckiej Samby (libsmbclient). Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić podpięcie wszystkich tych udziałów w lokalnym systemie plików.</p>
     <p xml:lang="pt">O Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de partilhas do Samba. Baseia-se nas Plataformas do KDE 5 e na biblioteca-cliente do Samba (libsmbclient). Ele sonda a sua vizinhança da rede à procura de todos os grupos de trabalho, servidores e partilhas disponíveis, podendo montar todas as partilhas desejadas no seu sistema de ficheiros local.</p>
     <p xml:lang="pt-BR">Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de compartilhamentos do Samba. Ele tem como base o KDE Frameworks 5 e a biblioteca-cliente do Samba (libsmbclient). Verifica a vizinhança da rede à procura de todos os grupos de trabalho, servidores e compartilhamentos disponíveis, podendo montar todos os compartilhamentos desejados no seu sistema de arquivos local.</p>
     <p xml:lang="ru">Smb4K — это приложение с расширенными возможностями для просмотра сетевого окружения и подключения общих сетевых ресурсов. Приложение Smb4K основано на KDE Frameworks версии 5 и клиентской библиотеке libsmbclient из набора приложений Samba. Smb4K позволяет выполнять поиск рабочих групп, серверов и общих ресурсов в сетевом окружении и подключать выбранные общие сетевые ресурсы к локальной файловой системе.</p>
@@ -557,7 +558,7 @@
       <li xml:lang="it">Supporto alle opzioni avanzate di montaggio</li>
       <li xml:lang="ko">고급 마운트 옵션 지원</li>
       <li xml:lang="nl">Ondersteuning van geavanceerde opties voor aankoppelen</li>
-      <li xml:lang="pl">Obsługa zaawansowanych możliwości podpinania</li>
+      <li xml:lang="pl">Obsługa rozszerzonych możliwości podpinania</li>
       <li xml:lang="pt">Suporte para as opções avançadas de montagem</li>
       <li xml:lang="pt-BR">Suporte para opções de montagem avançadas</li>
       <li xml:lang="ru">Поддержка расширенных параметров подключения;</li>
