@@ -749,7 +749,7 @@
     <sect2 id="shares_view_unmounting">
       <title>Unmounting Shares</title>
 
-      <para>One or multiple selected shares may be unmounted by either clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> action or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior">configuration dialog</link>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount:</para>
+      <para>One or multiple selected shares may be unmounted by either clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>U</keycap></keycombo></shortcut><guimenuitem>Unmount</guimenuitem></menuchoice> action, or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior">configuration dialog</link>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount:</para>
       <screenshot>
         <screeninfo>Screenshot of the warning dialog that is shown when a foreign share is to be unmounted</screeninfo>
         <mediaobject>
@@ -774,7 +774,7 @@
     <sect2 id="shares_view_synchronization">
       <title>Synchronization</title>
 
-      <para>The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Y</keycap></keycombo></shortcut><guimenuitem>Synchronize</guimenuitem></menuchoice> menu item opens the synchronization dialog. It offers you the mount point of the share as source and a path below the <link linkend="configuration_page_synchronization_basic_settings_default_destination">synchronization prefix</link> as destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton>Swap Paths</guibutton> button.</para>
+      <para>The <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Y</keycap></keycombo></shortcut><guimenuitem>Synchronize</guimenuitem></menuchoice> menu item opens the synchronization dialog. It offers you the mount point of the share as the source and a path below the <link linkend="configuration_page_synchronization_basic_settings_default_destination">synchronization prefix</link> as the destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton>Swap Paths</guibutton> button.</para>
       <screenshot>
         <screeninfo>Screenshot of the synchronization input dialog</screeninfo>
         <mediaobject>
@@ -802,7 +802,7 @@
             
       <note>
         <para>The total number of files that is shown in the progress dialog corresponds to the number of files present on the share and not necessarily to the total number of files that will actually be transferred.</para>
-        <para>The progress is calculated from the number of transferred files devided by the total number of files present on the share. Their size is not considered. That means that one very large file adds to the progress as much as a very small one does. Also, due to the way <application>rsync</application> displays the transfer progress, the progress bar is only updated after the transfer of the file finished.</para>
+        <para>The progress is calculated from the number of transferred files devided by the total number of files present on the share. File sizes are not considered. That means that one very large file adds to the progress just as much as a very small one does. Also, because of the way <application>rsync</application> displays the transfer progress, the progress bar is only updated after the transfer of another file finishes.</para>
       </note>
     </sect2>
 
@@ -816,10 +816,10 @@
       <para>&smb4k; provides two possibilities to open a mounted share:</para>
       <itemizedlist>
         <listitem><formalpara><title>Open a share with &konsole;</title>
-          <para>You can open the mounted share in &konsole; by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>L</keycap></keycombo></shortcut><guimenuitem>Open with Konsole</guimenuitem></menuchoice> action. This is useful if you need to run shell scripts on the share or similar.</para>
+          <para>You can open the mounted share in &konsole; by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>L</keycap></keycombo></shortcut><guimenuitem>Open with Konsole</guimenuitem></menuchoice> action. This is useful if you need to run a shell script on the share or do spmething similar.</para>
         </formalpara></listitem>
         <listitem><formalpara><title>Open a share with the default file manager</title>
-          <para>You can open the share in the default file manager (&eg; &dolphin;) by clicking the share icon or selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>I</keycap></keycombo></shortcut><guimenuitem>Open with File Manager</guimenuitem></menuchoice> action.</para>
+          <para>You can open the share in the default file manager (&eg; &dolphin;) by clicking the share icon or by selecting the <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>I</keycap></keycombo></shortcut><guimenuitem>Open with File Manager</guimenuitem></menuchoice> action.</para>
         </formalpara></listitem>
       </itemizedlist>
       <note><para>If a share is marked as inaccessible, it cannot be opened.</para></note>
@@ -850,7 +850,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>By left clicking the status icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
+      <para>By left clicking the status icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use, and configure &smb4k; without opening the main window.</para>
     </sect2>
 
 <!-- 
@@ -881,7 +881,7 @@
         </varlistentry>
       </variablelist>
     
-      <para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu">here</link>.</para>
+      <para>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu">the popup menu section</link>.</para>
 
       <variablelist>
         <varlistentry>
@@ -905,7 +905,7 @@
             <menuchoice><guimenuitem>Synchronize</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu">here</link> and <link linkend="shares_view_synchronization">here</link>.</para>
+            <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu">this page</link> and <link linkend="shares_view_synchronization">also this page</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -926,7 +926,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="bookmarks_adding">here</link> and <link linkend="bookmarks_editor">here</link>).</para>
+      <para>The <guimenuitem>Bookmarks</guimenuitem> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="bookmarks_adding">adding bookmarks</link> and <link linkend="bookmarks_editor">editing bookmarks</link>).</para>
 
       <screenshot>
         <screeninfo>Screenshot of the Bookmarks menu of the system tray widget</screeninfo>
@@ -936,7 +936,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>Its layout is as described <link linkend="bookmarks_menu">here</link> except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
+      <para>Its layout is as described <link linkend="bookmarks_menu">here</link>, except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
       <para>In the <guimenuitem>Profiles</guimenuitem> menu, all <link linkend="profiles">defined</link> profiles are listed:</para>
 
       <screenshot>
@@ -948,7 +948,7 @@
       </screenshot>
 
       <para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
-      <para>The other menu entries are:</para>
+      <para>These are the other menu entries:</para>
 
       <variablelist>
         <varlistentry>
@@ -964,7 +964,7 @@
             <menuchoice><guimenuitem>Configure &smb4k;...</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Open the configuration dialog. See <link linkend="configuration">here</link> for a full list of available settings.</para>
+            <para>Open the configuration dialog. See <link linkend="configuration">the configuration section</link> for a full list of available settings.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -972,7 +972,7 @@
             <menuchoice><guimenuitem>Minimize | Restore</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Hide (minimize) or show (restore) the main window. Which text is shown depends on the state of the main window.</para>
+            <para>Hide (minimize) or show (restore) the main window. The text shown depends on the state of the main window.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1021,9 +1021,9 @@
       </mediaobject>
     </screenshot>
 
-    <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share or invoke the print dialog. To go one level up again, you need to click the <guibutton>Up</guibutton> button in the toolbar.</para>
-    <para>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding it to the bookmarks</link>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the respective action.</para>
-    <para>Besides the <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With them you can do a rescan, abort any running action or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
+    <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share, or invoke the print dialog. To go up one level, you need to click the <guibutton>Up</guibutton> button in the toolbar.</para>
+    <para>For hosts and shares, there are some action buttons to the right of the network's name. For hosts, there is one button with which you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding the share to the bookmarks</link>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the chosen action.</para>
+    <para>Besides the <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With these you can do a rescan, abort any running action, or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
   </sect2>
 
 <!-- 
@@ -1042,8 +1042,8 @@
         <textobject><phrase>Bookmarks tab of the plasmoid</phrase></textobject></mediaobject>
     </screenshot>
 
-    <para>Right to the name of the share and its host, three action buttons are arranged. The first one is for <link linkend="bookmarks_adding">adding a bookmark</link>, the second for <link linkend="shares_view_synchronization">synchronization</link> and the third for <link linkend="shares_view_unmounting">unmounting the share</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
-    <para>The toolbar only contains the <guibutton>Unmount All</guibutton> action that lets you unmount all shares at once.</para>
+    <para>To the right of the name of the share and its host, three action buttons are arranged. The first is for <link linkend="bookmarks_adding">adding a bookmark</link>, the second is for <link linkend="shares_view_synchronization">synchronization</link>, and the third is for <link linkend="shares_view_unmounting">unmounting the share</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the selected action.</para>
+    <para>The toolbar contains the <guibutton>Unmount All</guibutton> action that lets you unmount all shares at once.</para>
   </sect2>
 
 <!-- 
@@ -1053,7 +1053,7 @@
   <sect2 id="plasmoid_bookmarks">
     <title>Bookmarks Tab</title>
 
-    <para>On the <guilabel>Bookmarks</guilabel> page, the bookmark groups and bookmarks defined for the currently active profile are listed:</para>
+    <para>The bookmark groups and bookmarks defined for the currently active profile are listed on the <guilabel>Bookmarks</guilabel> page.</para>
     
     <screenshot>
       <screeninfo>Screenshot of the plasmoid's bookmarks tab</screeninfo>
@@ -1064,7 +1064,7 @@
     </screenshot>
 
     <para>Bookmarked shares can be mounted by left clicking the respective bookmark. Bookmark groups can be entered the same way.</para>
-    <para>To edit or remove the bookmarks, you can press the <guibutton>Edit</guibutton> action button in the toolbar to open the <link linkend="bookmarks_editor">Bookmark Editor</link>. To get back to the toplevel the <guibutton>Back</guibutton> button is used.</para>
+    <para>To edit or remove the bookmarks, press the <guibutton>Edit</guibutton> action button in the toolbar to open the <link linkend="bookmarks_editor">Bookmark Editor</link>. To get back to the top level, use the <guibutton>Back</guibutton> button.</para>
   </sect2>
 
 <!-- 
@@ -1074,7 +1074,7 @@
   <sect2 id="plasmoid_profiles">
     <title>Profiles Tab</title>
   
-    <para>On the <guilabel>Profiles</guilabel> page, all defined profiles are listed. The currently active one is marked with an appended <guilabel>(active)</guilabel> label.</para>
+    <para>All defined profiles are listed on the <guilabel>Profiles</guilabel> page. The currently active profile is marked with an appended <guilabel>(active)</guilabel> label.</para>
   
     <screenshot>
       <screeninfo>Screenshot of the plasmoid's profiles tab</screeninfo>
@@ -1106,7 +1106,7 @@
     </screenshot>
     
     <note>
-      <para>You should not open a configuration dialog through the main application and the &plasmoid; at the same time, because they might interfere with each other.</para>
+      <para>You should not open two configuration dialogs (through the main application and via the &plasmoid;) at the same time, because they might interfere with each other.</para>
     </note>
   </sect2>
   
@@ -1126,7 +1126,7 @@
     <sect2 id="bookmarks_adding">
       <title>Adding Bookmarks</title>
 
-      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign a category to the bookmark.</para>
+      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign the bookmark to a category.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
@@ -1136,7 +1136,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>Assigning a category may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one category are arranged in a submenu with the category entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
+      <para>Defining categories may help you organize the bookmarks. In the bookmark menu, all bookmarks belonging to one category are arranged in a submenu with the category entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
       <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the location by default. If you want to change this behavior, you can do so in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>.</para>
     </sect2>
     
@@ -1157,7 +1157,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>In the menu there are two static items available:</para>
+      <para>There are two static items available in the menu:</para>
 
       <variablelist>
         <varlistentry>
@@ -1165,7 +1165,7 @@
             <menuchoice><guimenuitem>Edit Bookmarks</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Open the <link linkend="bookmarks_editor">bookmark editor</link>. This action is disabled if there are no bookmarks.</para>
+            <para>Opens the <link linkend="bookmarks_editor">bookmark editor</link>. This action is disabled if there are no bookmarks.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1176,12 +1176,12 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Add bookmarks to the selected shares. At least one share has to be selected to enable this action.</para>
+            <para>Adds bookmarks to the selected shares. At least one share must be selected to enable this action.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
-      <para>In case you have not defined any categories, there is a third item:</para>
+      <para>If you have not defined any categories, there is a third item:</para>
 
       <variablelist>
         <varlistentry>
@@ -1189,15 +1189,15 @@
             <menuchoice><guimenuitem>Mount All Bookmarks</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Mount all top-level bookmarks at once. It is disabled if all bookmarked shares are mounted.</para>
+            <para>Mount all top-level bookmarks at once. This choice is disabled if all bookmarked shares are aready mounted.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
-      <para>All other entries are either category submenus or bookmarks that do not belong to any category. All entries are listed alphabetically and the bookmarks may either appear with their location or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
-      <para>The category submenus contain the assigned bookmarks and in each case a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item. The latter one can be used to mount all bookmarks of that category at once.</para>
-      <para>In the system tray widget, there is a similar <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> that, however, does not come with the <guilabel>Add Bookmark</guilabel> entry.</para>
-      <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark categories and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the toolbar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a category folder. The <guimenuitem>Edit</guimenuitem> action opens the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
+      <para>All the rest of the entries are either category submenus or bookmarks that do not belong to any category. All entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. When you click a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is temporarily disabled.</para>
+      <para>The category submenus contain the assigned bookmarks, and in each case a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item is also present. The latter item can be used to mount all bookmarks in that category at once.</para>
+      <para>In the system tray widget, there is a similar <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> which, however, does not come with the <guilabel>Add Bookmark</guilabel> entry.</para>
+      <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar manner as in the bookmark menu. The bookmark categories and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the toolbar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a category folder. The <guimenuitem>Edit</guimenuitem> action opens the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
     </sect2>
     
 <!--
