@@ -1699,7 +1699,7 @@ void Smb4KDnsDiscoveryJob::slotFinished()
 }
 
 
-
+#ifdef USE_WS_DISCOVERY
 Smb4KWsDiscoveryJob::Smb4KWsDiscoveryJob(QObject* parent)
 : Smb4KClientBaseJob(parent)
 {
@@ -2189,6 +2189,7 @@ void Smb4KWsDiscoveryJob::slotDiscoveryFinished()
 {
     emitResult();
 }
+#endif
 
 
 
