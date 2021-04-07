@@ -2,7 +2,7 @@
     Private classes for the SMB client
                              -------------------
     begin                : So Oct 21 2018
-    copyright            : (C) 2018-2020 by Alexander Reinholdt
+    copyright            : (C) 2018-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -38,6 +38,7 @@
 #include <libsmbclient.h>
 
 // Qt includes
+#include <QTimer>
 #include <QUrl>
 #include <QHostAddress>
 #include <QDialog>
@@ -46,22 +47,68 @@
 // KDE includes
 #include <KCoreAddons/KJob>
 #include <KIOCore/KFileItem>
+#include <KDNSSD/DNSSD/ServiceBrowser>
+#include <KDNSSD/DNSSD/RemoteService>
+
+#ifdef USE_WS_DISCOVERY
+#include <WSDiscoveryClient>
+#endif
 
 
-class Smb4KClientJob : public KJob
+class Smb4KClientBaseJob : public KJob
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+    
+public:
     /**
      * Constructor
      */
-    explicit Smb4KClientJob(QObject *parent = 0);
+    explicit Smb4KClientBaseJob(QObject *parent = nullptr);
     
     /**
      * Destructor
      */
-    ~Smb4KClientJob();
+    ~Smb4KClientBaseJob();
+    
+    /**
+     * Set the process
+     */
+    void setProcess(Smb4KGlobal::Process process);
+    
+    /**
+     * Return the process
+     */
+    Smb4KGlobal::Process process() const;
+    
+    /**
+     * Set the basic network item
+     */
+    void setNetworkItem(NetworkItemPtr networkItem);
+    
+    /**
+     * Return the basic network item
+     */
+    NetworkItemPtr networkItem() const;
+    
+    /**
+     * The list of workgroups that was discovered.
+     */
+    QList<WorkgroupPtr> workgroups();
+    
+    /**
+     * The list of hosts that was discovered.
+     */
+    QList<HostPtr> hosts();
+    
+    /**
+     * The list shares that was discovered.
+     */
+    QList<SharePtr> shares();
+    
+    /**
+     * The ist of files and directories that were discovered.
+     */
+    QList<FilePtr> files();
     
     /**
      * Error enumeration
@@ -78,30 +125,44 @@ class Smb4KClientJob : public KJob
       PrintFileError
     };
     
+protected:
+    Smb4KGlobal::Process *pProcess;
+    NetworkItemPtr *pNetworkItem;
+    QList<WorkgroupPtr> *pWorkgroups;
+    QList<HostPtr> *pHosts;
+    QList<SharePtr> *pShares;
+    QList<FilePtr> *pFiles;
+    QHostAddress lookupIpAddress(const QString &name);
+    
+private:
+    Smb4KGlobal::Process m_process;
+    NetworkItemPtr m_networkItem;
+    QList<WorkgroupPtr> m_workgroups;
+    QList<HostPtr> m_hosts;
+    QList<SharePtr> m_shares;
+    QList<FilePtr> m_files;
+};
+
+
+class Smb4KClientJob : public Smb4KClientBaseJob
+{
+  Q_OBJECT
+  
+public:
+    /**
+     * Constructor
+     */
+    explicit Smb4KClientJob(QObject *parent = nullptr);
+    
+    /**
+     * Destructor
+     */
+    ~Smb4KClientJob();
+    
     /**
      * Starts the job.
      */
     void start() override;
-    
-    /**
-     * Set the basic network item
-     */
-    void setNetworkItem(NetworkItemPtr item);
-    
-    /**
-     * Return the basic network item
-     */
-    NetworkItemPtr networkItem() const;
-    
-    /**
-     * Set the process
-     */
-    void setProcess(Smb4KGlobal::Process process);
-    
-    /**
-     * Return the process
-     */
-    Smb4KGlobal::Process process() const;
     
     /**
      * Set the file that is to be printed
@@ -134,60 +195,89 @@ class Smb4KClientJob : public KJob
                           int maxLenUsername,
                           char *password,
                           int maxLenPassword);
-    /**
-     * The list of workgroups that was discovered.
-     */
-    QList<WorkgroupPtr> workgroups();
-    
-    /**
-     * The list of hosts that was discovered.
-     */
-    QList<HostPtr> hosts();
-    
-    /**
-     * The list shares that was discovered.
-     */
-    QList<SharePtr> shares();
-    
-    /**
-     * The ist of files and directories that were discovered.
-     */
-    QList<FilePtr> files();
-    
-    /**
-     * The workgroup
-     */
-    QString workgroup();
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     void slotStartJob();
     
-  private:
+private:
     void initClientLibrary();
     void doLookups();
-#ifdef USE_WS_DISCOVERY
-    void doWsDiscovery();
-#endif
-    void doDnsDiscovery();
     void doPrinting();
-    QHostAddress lookupIpAddress(const QString &name);
-    Smb4KGlobal::Process m_process;
     SMBCCTX *m_context;
-    NetworkItemPtr m_item;
-    QList<WorkgroupPtr> m_workgroups;
-    QList<HostPtr> m_hosts;
-    QList<SharePtr> m_shares;
-    QList<FilePtr> m_files;
     KFileItem m_fileItem;
     int m_copies;
 };
+
+
+class Smb4KDnsDiscoveryJob : public Smb4KClientBaseJob
+{
+  Q_OBJECT
+  
+public:
+    /**
+     * Constructor
+     */
+    explicit Smb4KDnsDiscoveryJob(QObject *parent = nullptr);
+    
+    /**
+     * Destructor
+     */
+    ~Smb4KDnsDiscoveryJob();
+    
+    /**
+     * Start the job
+     */
+    void start() override;
+    
+protected Q_SLOTS:
+    void slotStartJob();
+    void slotServiceAdded(KDNSSD::RemoteService::Ptr service);
+    void slotFinished();
+    
+private:
+    KDNSSD::ServiceBrowser *m_serviceBrowser;
+};
+
+
+#ifdef USE_WS_DISCOVERY
+class Smb4KWsDiscoveryJob : public Smb4KClientBaseJob
+{
+    Q_OBJECT
+    
+public:
+    /**
+     * Constructor
+     */
+    explicit Smb4KWsDiscoveryJob(QObject *parent = nullptr);
+    
+    /**
+     * Destructor
+     */
+    ~Smb4KWsDiscoveryJob();
+    
+    /**
+     * Start the job
+     */
+    void start() override;
+    
+protected Q_SLOTS:
+    void slotStartJob();
+    void slotProbeMatchReceived(const WSDiscoveryTargetService &service);
+    void slotResolveMatchReceived(const WSDiscoveryTargetService &service);
+    void slotDiscoveryFinished();
+    
+private:
+    WSDiscoveryClient *m_discoveryClient;
+    QTimer *m_timer;
+};
+#endif
 
 
 class Smb4KPreviewDialog : public QDialog
 {
   Q_OBJECT
   
-  public:
+public:
     /**
      * Constructor
      */
@@ -205,7 +295,7 @@ class Smb4KPreviewDialog : public QDialog
      */
     SharePtr share() const;
     
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * Request a preview
      */
@@ -220,8 +310,8 @@ class Smb4KPreviewDialog : public QDialog
      * Emitted when the process should be aborted
      */
     void requestAbort();
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     /**
      * Do last things before the dialog is closed
      */
@@ -273,7 +363,7 @@ class Smb4KPreviewDialog : public QDialog
      */
     void slotFinished(const NetworkItemPtr &item, int type);
     
-  private:
+private:
     SharePtr m_share;
     NetworkItemPtr m_currentItem;
     QList<FilePtr> m_listing;
@@ -284,7 +374,7 @@ class Smb4KPrintDialog : public QDialog
 {
   Q_OBJECT
   
-  public:
+public:
     /**
      * Constructor
      */
@@ -309,7 +399,7 @@ class Smb4KPrintDialog : public QDialog
      */
     KFileItem fileItem() const;
     
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * Emitted when a file is to be printed
      */
@@ -320,7 +410,7 @@ class Smb4KPrintDialog : public QDialog
      */
     void aboutToClose(Smb4KPrintDialog *dialog);
     
-  protected Q_SLOTS:
+protected Q_SLOTS:
     /**
      * Print button was clicked
      */
@@ -336,7 +426,7 @@ class Smb4KPrintDialog : public QDialog
      */
     void slotUrlChanged();
     
-  private:
+private:
     SharePtr m_share;
     KFileItem m_fileItem;
 };
@@ -344,15 +434,17 @@ class Smb4KPrintDialog : public QDialog
 
 class Smb4KClientPrivate
 {
-  public:
+public:
     QList<Smb4KPreviewDialog *> previewDialogs;
     QList<Smb4KPrintDialog *> printDialogs;
+    QList<WorkgroupPtr> tempWorkgroupList;
+    QList<HostPtr> tempHostList;
 };
 
 
 class Smb4KClientStatic
 {
-  public:
+public:
     Smb4KClient instance;
 };
 
