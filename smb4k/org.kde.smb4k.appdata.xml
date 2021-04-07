@@ -48,6 +48,7 @@
   <summary xml:lang="it">Rileva e monta nella rete le condivisioni SAMBA e Windows</summary>
   <summary xml:lang="nl">Ontdek en koppel aan SAMBA en Windows-shares over het netwerk</summary>
   <summary xml:lang="pl">Wykrywaj i podpinaj zasoby SAMBY oraz Windowsa w sieci</summary>
+  <summary xml:lang="pt-BR">Descubra e monte compartilhamentos SAMBA e Windows pela rede</summary>
   <summary xml:lang="sl">Odkrijte in priklopite skupno rabo mrežnih diskov SAMBA in Windows</summary>
   <summary xml:lang="sv">Upptäck och montera delade SAMBA- och Windows-resurser via nätverket</summary>
   <summary xml:lang="uk">Виявлення і монтування спільних ресурсів SAMBA і Windows у мережі</summary>
@@ -416,6 +417,7 @@
       <li xml:lang="fi">Oletuskirjautuminen</li>
       <li xml:lang="fr">Identificateur de connexion par défaut</li>
       <li xml:lang="gl">Permite configurar credenciais predeterminadas de acceso.</li>
+      <li xml:lang="ia">Authentication predefinite</li>
       <li xml:lang="id">Login baku</li>
       <li xml:lang="it">Nome utente predefinito</li>
       <li xml:lang="ko">기본 로그인</li>
