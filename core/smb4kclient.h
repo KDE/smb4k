@@ -2,7 +2,7 @@
     This class provides the interface to the libsmbclient library.
                              -------------------
     begin                : Sa Oct 20 2018
-    copyright            : (C) 2018-2020 by Alexander Reinholdt
+    copyright            : (C) 2018-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -39,7 +39,7 @@
 // forward declarations
 class Smb4KClientPrivate;
 class Smb4KBasicNetworkItem;
-class Smb4KClientJob;
+class Smb4KClientBaseJob;
 class Smb4KPreviewDialog;
 class Smb4KPrintDialog;
 
@@ -47,7 +47,7 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
 {
   Q_OBJECT
   
-  public:
+public:
     /**
      * The constructor
      */
@@ -144,7 +144,7 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      */
     void openPrintDialog(const SharePtr &share);
     
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * This signal is emitted when the client starts its work.
      * 
@@ -194,7 +194,7 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      */
     void searchResults(const QList<SharePtr> &list);
     
-  protected Q_SLOTS:
+protected Q_SLOTS:
     /**
      * Start the composite job
      */
@@ -240,39 +240,39 @@ class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
      */
     void slotPrintDialogClosed(Smb4KPrintDialog *dialog);
     
-  private:
+private:
     /**
      * Process errors
      */
-    void processErrors(Smb4KClientJob *job);
+    void processErrors(Smb4KClientBaseJob *job);
     
     /**
      * Process the domains/workgroups retrieved from the network
      * 
-     * @param job             The client job
+     * @param job             The client base job
      */
-    void processWorkgroups(Smb4KClientJob *job);
+    void processWorkgroups(Smb4KClientBaseJob *job);
     
     /**
      * Process the domain/workgroup members
      * 
      * @param job             The client job
      */
-    void processHosts(Smb4KClientJob *job);
+    void processHosts(Smb4KClientBaseJob *job);
     
     /**
      * Process the shares
      * 
      * @param job             The client job
      */
-    void processShares(Smb4KClientJob *job);
+    void processShares(Smb4KClientBaseJob *job);
     
     /**
      * Process the files and directories
      * 
      * @param job             The client job
      */
-    void processFiles(Smb4KClientJob *job);
+    void processFiles(Smb4KClientBaseJob *job);
       
     /**
      * Pointer to the Smb4KClientPrivate class
