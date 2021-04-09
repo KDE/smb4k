@@ -2,7 +2,7 @@
     This class provides a container for the authentication data.
                              -------------------
     begin                : Sa Feb 28 2004
-    copyright            : (C) 2004-2019 by Alexander Reinholdt
+    copyright            : (C) 2004-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -49,9 +49,9 @@ using namespace Smb4KGlobal;
 
 class Q_DECL_EXPORT Smb4KAuthInfo
 {
-  friend class Smb4KAuthInfoPrivate;
+    friend class Smb4KAuthInfoPrivate;
   
-  public:
+public:
     /**
      * Constructor
      * 
@@ -191,7 +191,7 @@ class Q_DECL_EXPORT Smb4KAuthInfo
      */
     QString displayString() const;
 
-  private:
+private:
     /**
      * Pointer to Smb4KAuthInfoPrivate class
      */
