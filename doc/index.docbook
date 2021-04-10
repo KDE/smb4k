@@ -1217,8 +1217,8 @@
         </mediaobject>
       </screenshot>
 
-      <para>In the tree view, the bookmarks are arranged according to the categories they belong to. Bookmarks without a category are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
-      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and category name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stores the correct values at the time you bookmark the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>. The category entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
+      <para>In the tree view, the bookmarks are arranged according to the categories they belong to. Bookmarks without a category are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so you can move bookmarks around with the mouse.</para>
+      <para>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and category name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stores the correct values at the time you bookmark the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network), or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis>instead</emphasis> of the location, but this can be changed in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>. Finally,the category entry helps you to organize your bookmarks. For instance, if you use your notebook at home and also at work, and you do not want to use <link linkend="profiles">profiles</link>, it might be a good idea to create two groups, "Home" and "Work", and categorize the bookmarks accordingly.</para>
       <para>The tree view also offers a popup menu containing the following three actions. They can be used to add categories or to remove groups and bookmarks.</para>
 
       <screenshot>
@@ -1235,7 +1235,7 @@
             <menuchoice><guimenuitem>Add Category</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Add a bookmark category. After you created a category, you can move bookmarks to it.</para>
+            <para>Add a bookmark category. After you create a category, you can move bookmarks to it.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1243,7 +1243,7 @@
             <menuchoice><guimenuitem>Remove</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Remove a selected bookmark or category. In case of a category, all bookmarks stored under that group are also removed.</para>
+            <para>Remove a selected bookmark or category. In the case of a category, all the bookmarks stored in that group are also removed.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1255,7 +1255,7 @@
           </listitem>
         </varlistentry>
       </variablelist>
-      <para>After you finished editing, the changes can be committed by clicking the <guibutton>OK</guibutton> button.</para>
+      <para>After you have finished editing, the changes can be saved by clicking the <guibutton>OK</guibutton> button.</para>
     </sect2>
   </sect1>
 
@@ -1266,8 +1266,8 @@
   <sect1 id="profiles">
     <title>Profiles</title>
     
-    <para>&smb4k; offers the use of different profiles. They are intended for better handling of different network neighborhoods, &eg; if you are using your laptop at home and at work.</para>
-    <para>By default, the use of different profiles is disabled and a default profile is used: one profile for everything. Most users won't have to change anything, because the default behavior satisfies their needs completely. However, for some users this feature might be very useful.</para>
+    <para>&smb4k; offers the option to use different profiles. They are intended to facilitate better handling of different network neighborhoods, &eg;, if you are using your laptop at home and also at work.</para>
+    <para>By default, the use of different profiles is disabled and a default profile is used: one profile for everything. Most users won't have to change this, because the default behavior satisfies their needs completely. However, for some users this feature might be very useful.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -1288,14 +1288,14 @@
           </textobject>
         </mediaobject>
       </screenshot>
-      <para>If you want to rename a profile, just click it and edit the name edit line. Clicking <guibutton>Add</guibutton> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. There is also the possibility to change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
-      <para>In case you enabled the use of the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides the possibility to migrate all relevant settings</para>
+      <para>If you want to rename a profile, just click it and edit the name edit line. Clicking <guibutton>Add</guibutton> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. You may also change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
+      <para>In case you enabled the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides for the migration of all relevant settings.</para>
       <itemizedlist>
         <listitem><para>of a profile that is to be removed to another one</para></listitem>
         <listitem><para>of the default profile to a specific other profile</para></listitem>
         <listitem><para>of all profiles back to the default profile</para></listitem>
       </itemizedlist>
-      <para>The following screenshot shows exemplarily the profile migration assistant after you enabled the use of profiles:</para>
+      <para>The following screenshot illustrates the profile migration assistant after you have enabled the use of profiles:</para>
       <screenshot>
         <screeninfo>Screenshot of the profile migration assistant</screeninfo>
         <mediaobject>
@@ -1307,8 +1307,8 @@
           </textobject>
         </mediaobject>
       </screenshot>
-      <para>Under <guilabel>Old Profile</guilabel> the old profile (<guilabel>&lt;Default Profile&gt;</guilabel> in this case) is listed. Under <guilabel>New Profile</guilabel> you can choose the profile where the settings should be migrated to from a drop-down menu. The first profile in the list is preselected. Clicking the <guibutton>OK</guibutton> button migrates the settings, clicking <guibutton>Cancel</guibutton> cancels the action.</para>
-      <note><para>In order to use the migration assistant when you enable the use of profiles the first time, you need to enable its use at the same time you enable the use of profiles.</para></note>
+      <para>The old profile (<guilabel>&lt;Default Profile&gt;</guilabel> in this case) is listed under <guilabel>Old Profile</guilabel>. Under <guilabel>New Profile</guilabel> you can use a drop-down menu to choose the profile to which the settings should be migrated. The first profile in the list is preselected. Clicking the <guibutton>OK</guibutton> button migrates the settings; clicking <guibutton>Cancel</guibutton> cancels the action.</para>
+      <note><para>In order to use the migration assistant when you first enable the use of profiles, you must enable its use at the same time you enable the use of profiles.</para></note>
     </sect2>
   
 <!-- 
@@ -1317,15 +1317,14 @@
   
     <sect2 id="profiles_activate_profile">
       <title>Activating a Profile</title>
-      <para>By default, the first profile in the list is set active when you enable the use of profiles. The active profile can be changed in the <guimenu>Profiles</guimenu> menu of the main window or the system tray widget or on the <guilabel>Profiles</guilabel> page of the plasmoid.</para>
+      <para>By default, the first profile in the list is set active when you enable the use of profiles. The active profile can be changed in the <guimenu>Profiles</guimenu> menu of the main window, or via the system tray widget, or on the <guilabel>Profiles</guilabel> page of the plasmoid.</para>
       <para>When a profile is activated, several things happen:</para>
       <itemizedlist>
-        <listitem><para>All currently mounted shares are unmounted and are scheduled for remount.</para></listitem>
-        <listitem><para>All shares are remounted that were previously mounted under the activated profile.</para></listitem>
-        <listitem><para>The bookmarks of this profile are loaded.</para></listitem>
-        <listitem><para>The custom options of this profile are loaded.</para></listitem>
+        <listitem><para>All currently mounted shares are unmounted and scheduled for remount.</para></listitem>
+        <listitem><para>All shares that were previously mounted are remounted under the newly activated profile.</para></listitem>
+        <listitem><para>The bookmarks and custom options from the new profile are loaded.</para></listitem>
       </itemizedlist>
-      <para>So, don't be surprised when things change when you selected a different profile ...</para>
+      <para>So don't be surprised when things change after you select a different profile ...</para>
     </sect2>
   </sect1>
 
@@ -1342,7 +1341,7 @@
   
     <sect2 id="notifications_default_behavior">
       <title>Default Behavior</title>
-      <para>Normal events like mounting and unmounting of a share as well as warnings and errors are reported to the user via system notifications. By default, when the user is notified about a normal event, a notification pops up silently. With warnings and errors also a sound is played. The screenshot below shows the notification that pops up after a share was mounted.</para>
+      <para>Normal events like mounting and unmounting of a share as well as warnings and errors are reported to the user via system notifications. By default, when the user is notified about a normal event, a notification pops up silently. With warnings and errors a sound is also played. The screenshot below shows the notification that pops up after a share has been mounted.</para>
       <screenshot>
         <screeninfo>Screenshot of the notification after mounting a share</screeninfo>
         <mediaobject>
@@ -1359,7 +1358,7 @@
 
     <sect2 id="notifications_manage">
       <title>Managing Notifications</title>
-      <para>Notifications can be managed via the &systemsettings;. To modify the behavior of a notification, navigate to the <guibutton>Notifications</guibutton> page. For &plasma; 5.21 and up, then click the <guibutton>Configure</guibutton> button besides the label <guilabel>Applications</guilabel> and choose &smb4k; from the appearing list view. Clicking the <guibutton>Configure Events...</guibutton> opens the following dialog:</para>
+      <para>Notifications can be managed via the &systemsettings;. To modify the behavior of a notification, navigate to the <guibutton>Notifications</guibutton> page. For &plasma; 5.21 and up, next click the <guibutton>Configure</guibutton> button beside the label <guilabel>Applications</guilabel> and choose &smb4k; from the list that appears. Clicking the <guibutton>Configure Events...</guibutton> opens the following dialog:</para>
       <screenshot>
         <screeninfo>Screenshot of the systemsettings notification module</screeninfo>
         <mediaobject>
@@ -1367,7 +1366,7 @@
           <textobject><phrase>Systemsettings notification module</phrase></textobject>
         </mediaobject>
       </screenshot>
-      <para>Here, all available notifications are shown in the list view and can be edited, enabled and disabled according to your liking.</para>
+      <para>Here, all available notifications are shown in the list view and can be edited, enabled, or disabled, any way you like.</para>
     </sect2>
   </sect1>
 
@@ -1401,7 +1400,7 @@ polkit.addRule(function(action, subject) {
         }
 });</programlisting>
       
-      <para>This allows all users in the Unix group <emphasis>wheel</emphasis> to execute the mount and unmount action. You may adjust the group of authorized users to any group you need (&eg; <emphasis>sudo</emphasis> or <emphasis>operator</emphasis>).</para>
+      <para>This allows all users in the Unix group <emphasis>wheel</emphasis> to execute the mount and unmount actions. You may adjust the group of authorized users to any group you prefer to use (&eg; <emphasis>sudo</emphasis> or <emphasis>operator</emphasis>).</para>
     </sect2>
   
 <!--
@@ -1411,7 +1410,7 @@ polkit.addRule(function(action, subject) {
     <sect2 id="special_remarks_mounting_problems_under_bsd">
       <title>Mounting Problems Under BSD</title>
       
-      <para>If mounting of password-protected shares from either a &Samba; or a &Windows; server fails, this might be due to the fact that <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> only uses NTLMv1 authentication and the server does not support it. To fix mounting for a &Samba; server, you can add the following entry to the [global] section of the <filename>smb.conf</filename> file of <emphasis>the server</emphasis>:</para>
+      <para>If mounting of password-protected shares from either a &Samba; or a &Windows; server fails, this might be because <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> only uses NTLMv1 authentication, and the server does not support it. To fix mounting for a &Samba; server, you can add the following entry to the [global] section of the <filename>smb.conf</filename> file of <emphasis>the server</emphasis>:</para>
       
 <programlisting>[global]
 ...
@@ -1429,7 +1428,7 @@ ntlm auth = yes
     <sect2 id="special_remarks_other_desktop_environments">
       <title>Other Desktop Environments Than &plasma;</title>
 
-      <para>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to install the application <application>qt5ct</application> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/">here</ulink>). To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
+      <para>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing some icons. In that case, you might want to install the application <application>qt5ct</application> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/">here</ulink>). To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
 <programlisting>export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
     </sect2>
   </sect1>
@@ -1443,7 +1442,7 @@ ntlm auth = yes
 <chapter id="configuration">
   <title>Configuring &smb4k;</title>
 
-  <para>This section describes the settings that are available to configure &smb4k;. To open the configuration dialog, you have to click the <link linkend="mainwindow_overview"><guimenuitem>Configure &smb4k;...</guimenuitem></link> menu item.</para>
+  <para>This section describes the settings that can be used to configure &smb4k;. To open the configuration dialog, you must click the <link linkend="mainwindow_overview"><guimenuitem>Configure &smb4k;...</guimenuitem></link> menu item.</para>
 
 <!-- 
       Configuring Smb4K : User Interface 
@@ -1452,7 +1451,7 @@ ntlm auth = yes
   <sect1 id="configuration_page_user_interface">
     <title>User Interface</title>
 
-    <para>With the options located here you can change the appearance and behavior of several dialogs and widgets. Please note that if you want to change the appearance of the main window you will find additional options under <guimenu>Settings</guimenu> in the <link linkend="mainwindow_overview">menubar</link>.</para>
+    <para>You can change the appearance and behavior of several dialogs and widgets with the options located here. Please note that if you want to change the appearance of the main window, additional options are available under <guimenu>Settings</guimenu> in the <link linkend="mainwindow_overview">menubar</link>.</para>
     <screenshot>
       <screeninfo>Screenshot of the "User Interface" configuration tab</screeninfo>
       <mediaobject>
@@ -1473,7 +1472,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Tab orientation</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Define the location of the tabs if the dock widgets in the main window are arranged in tabs. The following values can be chosen:</para>
+            <para>Define the location of the tabs if the dock widgets in the main window are arranged as tabs. The following values can be chosen:</para>
             <variablelist>
               <varlistentry>
                 <term>
@@ -1620,7 +1619,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Show tooltips for mounted shares</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>A tooltip will be shown if you move the mouse pointer over an item in the shares view. It contains information about the mounted share such as the share name, UNC address, mount point, owner and group, login (&CIFS; file system, &Linux; only), disk usage, &etc;</para>
+            <para>A tooltip will be shown when you move the mouse pointer over an item in the shares view. It contains information about the mounted share such as the share name, UNC address, mount point, owner and group, login (&CIFS; file system, &Linux; only), disk usage, &etc;</para>
             <para>Default: selected</para>
           </listitem>
         </varlistentry>
@@ -1635,7 +1634,7 @@ ntlm auth = yes
   <sect1 id="configuration_page_network">
     <title>Network</title>
 
-    <para>The options located here influence the network communication. You can modify the browsing and display behavior in the <guibutton>Basic Settings</guibutton> tab, the options passed to the underlying <application>libsmbclient</application> library in the <guibutton>Samba Settings</guibutton> tab and enable the Wake-On-LAN features in the <guibutton>Wake-On-LAN Settings</guibutton> tab.</para>
+    <para>The options located here influence the network communication. You can modify the browsing and display behavior in the <guibutton>Basic Settings</guibutton> tab, change the options passed to the underlying <application>libsmbclient</application> library in the <guibutton>Samba Settings</guibutton> tab, and also enable the Wake-On-LAN features in the <guibutton>Wake-On-LAN Settings</guibutton> tab.</para>
     
     <screenshot>
       <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
@@ -1661,8 +1660,8 @@ ntlm auth = yes
               <menuchoice><guibutton>Use Web Services Dynamic Discovery (WS-Discovery) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The Web Services Dynamic Discovery (WS-Discovery) is used to browse the local network and discover workgroups, domains and hosts. This is useful if your network neighborhood is dominated by servers with modern &Windows; versions. If you use this option, there should be no need to force &Samba;'s client library to use the SMB protocol version 1.0 for searching for workgroups and domains.</para>
-              <note><para>This setting is optional and only appears, if you compiled &smb4k; with WS-Discovery support.</para></note>
+              <para>The Web Services Dynamic Discovery (WS-Discovery) protocol is used to browse the local network and discover workgroups, domains and hosts. This is useful if your network neighborhood is dominated by servers with modern &Windows; versions. If you use this option, there should be no need to force &Samba;'s client library to use the SMB protocol version 1.0 to search for workgroups and domains.</para>
+              <note><para>This setting is optional, and only appears if you compiled &smb4k; with WS-Discovery support.</para></note>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -1671,7 +1670,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Use DNS Service Discovery (DNS-SD) for browsing</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>The DNS Service Discovery (DNS-SD) is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg; named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing. If you use this option, there is no need to force &Samba;'s client library to use the SMB protocol version 1.0 when searching for workgroups and domains.</para>
+              <para>The DNS Service Discovery (DNS-SD) interface is used to browse the local network and discover servers that provide shared SMB resources. The discovered domains correspond to the local DNS domains (&eg;, named LOCAL) and most likely not the ones defined in the network neighborhood. However, this does not influence the browsing. If you use this option, there is no need to force &Samba;'s client library to use the SMB protocol version 1.0 when searching for workgroups and domains.</para>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -1680,7 +1679,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Force SMB protocol version 1.0 for workgroup and domain lookups</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>For a last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer &Samba; and &Windows; versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider switching this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need it.</para>
+              <para>Select this option as a last resort, because the SMB protocol version 1.0 is unsafe and has been disabled in newer &Samba; and &Windows; versions. However, if you have trouble discovering workgroups and domains in your network neighborhood, you might want to consider switching this setting on. If you are using DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and those are working for you, you do not need version 1.0.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -1689,9 +1688,9 @@ ntlm auth = yes
               <menuchoice><guibutton>Set minimal and maximal SMB protocol version</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Set the minimal and maximal SMB protocol version that is used by &Samba;'s client library to browse the network neighborhood. This will overwrite the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovery of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
+              <para>Set the minimal and maximal SMB protocol version that is used by &Samba;'s client library to browse the network neighborhood. This will override the settings in the smb.conf file. Normally, you do not need to use this option, because the right protocol versions should be negotiated between the client and the server while establishing a connection. Please note that this setting might not be appropriate to make the discovery of workgroups and domains work while keeping undisturbed connectivity to servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery) for domain and workgroup lookups instead.</para>
               <para>The settings below for the minimal and maximal SMB protocol version are enabled by checking this checkbox.</para>
-              <para>It is mandatory that the maximal SMB protocol version equals or is greater than the minimal SMB protocol version.</para>
+              <para>The maximal SMB protocol version must be equal to or greater than the minimal SMB protocol version.</para>
               <para>Default: not selected</para>
               <variablelist>
                 <varlistentry>
@@ -1706,7 +1705,7 @@ ntlm auth = yes
                           <menuchoice><guimenuitem>NT1 (Classic CIFS/SMBv1 protocol)</guimenuitem></menuchoice>
                         </term>
                         <listitem>
-                          <para>This is the current up to date version of the protocol. It is used by &Windows; NT and known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
+                          <para>This is the current up to date version of the protocol. It is used by &Windows; NT and it is known as CIFS. It is considered to be unsafe and was disabled in the latest &Samba; and &Windows; version.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
