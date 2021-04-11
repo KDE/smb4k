@@ -27,37 +27,37 @@
 #define SMB4KCUSTOMOPTIONSMANAGER_P_H
 
 // application specific includes
+#include "smb4kcustomoptions.h"
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kglobal.h"
-#include "smb4kcustomoptions.h"
 
 // Qt includes
 #include <QDialog>
 
 class Smb4KCustomOptionsDialog : public QDialog
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     /**
      * Constructor
      */
     explicit Smb4KCustomOptionsDialog(const OptionsPtr &options, QWidget *parent = 0);
-    
+
     /**
      * Destructor
      */
     ~Smb4KCustomOptionsDialog();
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     void slotSetDefaultValues();
     void slotCheckValues();
     void slotOKClicked();
     void slotEnableWOLFeatures(const QString &mac);
     void slotCifsExtensionsSupport(bool support);
     void slotUseClientProtocolVersions(bool use);
-    
-  private:
+
+private:
     void setupView();
     bool checkDefaultValues();
     void setDefaultValues();
@@ -65,17 +65,15 @@ class Smb4KCustomOptionsDialog : public QDialog
     OptionsPtr m_options;
 };
 
-
 class Smb4KCustomOptionsManagerPrivate
 {
-  public:
+public:
     QList<OptionsPtr> options;
 };
 
-
 class Smb4KCustomOptionsManagerStatic
 {
-  public:
+public:
     Smb4KCustomOptionsManager instance;
 };
 

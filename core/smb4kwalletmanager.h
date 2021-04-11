@@ -2,7 +2,7 @@
     This is the wallet manager of Smb4K.
                              -------------------
     begin                : Sa Dez 27 2008
-    copyright            : (C) 2008-2019 by Alexander Reinholdt
+    copyright            : (C) 2008-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -40,7 +40,7 @@ class Smb4KWalletManagerPrivate;
 /**
  * This class manages the access to the digital wallet where the authentication
  * information is stored.
- * 
+ *
  * If the user chooses to no use the wallet, a password dialog is shown every
  * time authentication information is needed.
  *
@@ -49,11 +49,11 @@ class Smb4KWalletManagerPrivate;
 
 class Q_DECL_EXPORT Smb4KWalletManager : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class Smb4KWalletManagerPrivate;
+    friend class Smb4KWalletManagerPrivate;
 
-  public:
+public:
     /**
      * The constructor
      */
@@ -63,7 +63,7 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
      * The destructor
      */
     ~Smb4KWalletManager();
-    
+
     /**
      * This is a static pointer to this class.
      */
@@ -71,7 +71,7 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
 
     /**
      * Read the authentication for a certain network item. This functions
-     * adds the login and password (if present) to the past @p item. A 
+     * adds the login and password (if present) to the past @p item. A
      * pre-defined login name is honored.
      *
      * If you pass an empty item, the default authentication information will
@@ -84,10 +84,10 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
 
     /**
      * This function reads the default authentication information and enters it
-     * into @p authInfo. If no default authentication data is present this 
-     * function does nothing. 
-     * 
-     * Please note that this function does not check if the user disabled the use 
+     * into @p authInfo. If no default authentication data is present this
+     * function does nothing.
+     *
+     * Please note that this function does not check if the user disabled the use
      * of the default login. It is always returned.
      *
      * @param authInfo        The Smb4KAuthInfo object that will be populated
@@ -96,9 +96,9 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
     void readDefaultAuthInfo(Smb4KAuthInfo *authInfo);
 
     /**
-     * Write the authentication information provided by the network item to 
+     * Write the authentication information provided by the network item to
      * the wallet or to the internal list if no wallet should be used.
-     * 
+     *
      * @param networkItem     The network item for that the authentication
      *                        information should be saved
      */
@@ -108,7 +108,7 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
      * This function writes the default authentication information to the
      * wallet. If the wallet is not used, the authentication information is
      * not of type Smb4KAuthInfo::Default or empty, this function does nothing.
-     * 
+     *
      * @param authInfo        The Smb4KAuthInfo object
      */
     void writeDefaultAuthInfo(Smb4KAuthInfo *authInfo);
@@ -134,39 +134,39 @@ class Q_DECL_EXPORT Smb4KWalletManager : public QObject
     bool useWalletSystem() const;
 
     /**
-     * Returns the list of authentication information objects stored in the 
-     * wallet or an empty list if the wallet is not open, no entries are 
+     * Returns the list of authentication information objects stored in the
+     * wallet or an empty list if the wallet is not open, no entries are
      * defined or the wallet system is disabled.
-     * 
+     *
      * @returns a list of all wallet entries.
      */
     QList<Smb4KAuthInfo *> walletEntries();
-    
+
     /**
-     * Writes a list of authentication information objects to the wallet. If 
-     * the wallet system is disabled or the wallet is not open, this function 
+     * Writes a list of authentication information objects to the wallet. If
+     * the wallet system is disabled or the wallet is not open, this function
      * will do nothing.
-     * 
+     *
      * @param entries       The list of authentication information objects
      */
     void writeWalletEntries(const QList<Smb4KAuthInfo *> &entries);
-    
+
     /**
-     * This function returns TRUE if the wallet is used and open and 
+     * This function returns TRUE if the wallet is used and open and
      * FALSE otherwise.
-     * 
+     *
      * @returns TRUE if the wallet is used and open.
      */
     bool walletIsOpen() const;
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * This signal is emitted when the wallet manager was initialized
      * and is ready to process authentication information.
      */
     void initialized();
 
-  private:
+private:
     /**
      * Initialize the wallet manager.
      */

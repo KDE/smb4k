@@ -2,7 +2,7 @@
     This is the new synchronizer of Smb4K.
                              -------------------
     begin                : Fr Feb 04 2011
-    copyright            : (C) 2011-2019 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,8 +30,8 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QString>
 #include <QScopedPointer>
+#include <QString>
 
 // KDE includes
 #include <KCoreAddons/KCompositeJob>
@@ -41,11 +41,11 @@ class Smb4KSynchronizerPrivate;
 
 class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class Smb4KSynchronizerPrivate;
+    friend class Smb4KSynchronizerPrivate;
 
-  public:
+public:
     /**
      * The constructor
      */
@@ -55,7 +55,7 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      * The destructor
      */
     ~Smb4KSynchronizer();
-    
+
     /**
      * This function returns a static pointer to this class.
      *
@@ -81,15 +81,15 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
     bool isRunning();
 
     /**
-     * With this function you can test whether a synchronization job 
+     * With this function you can test whether a synchronization job
      * for a certain share @param share is already running.
-     * 
+     *
      * @returns TRUE if a synchronization process is already running
      */
     bool isRunning(const SharePtr &share);
 
     /**
-     * This function either aborts the synchronization for a certain 
+     * This function either aborts the synchronization for a certain
      * mounted share, if a valid pointer is passed, or aborts all running
      * processes.
      *
@@ -102,7 +102,7 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      */
     void start() override;
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * This signal is emitted when a job is started. The emitted path
      * is the one of the destination.
@@ -118,13 +118,13 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      * @param dest        The destination's URL
      */
     void finished(const QString &dest);
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     /**
      * Invoked by start() function
      */
     void slotStartJobs();
-    
+
     /**
      * Invoked when a job finished
      */
@@ -135,7 +135,7 @@ class Q_DECL_EXPORT Smb4KSynchronizer : public KCompositeJob
      */
     void slotAboutToQuit();
 
-  private:
+private:
     /**
      * Pointer to Smb4KSearchPrivate class
      */

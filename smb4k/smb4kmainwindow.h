@@ -2,7 +2,7 @@
     The main window of Smb4K
                              -------------------
     begin                : Di Jan 1 2008
-    copyright            : (C) 2008-2020 by Alexander Reinholdt
+    copyright            : (C) 2008-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,11 +30,11 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QUrl>
 #include <QActionGroup>
+#include <QDockWidget>
 #include <QLabel>
 #include <QProgressBar>
-#include <QDockWidget>
+#include <QUrl>
 
 // KDE includes
 #include <KXmlGui/KXmlGuiWindow>
@@ -53,9 +53,9 @@ class Smb4KSynchronizationInfo;
 
 class Smb4KMainWindow : public KXmlGuiWindow
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The constructor
      */
@@ -66,18 +66,18 @@ class Smb4KMainWindow : public KXmlGuiWindow
      */
     ~Smb4KMainWindow();
 
-  protected:
+protected:
     /**
      * Reimplemented from KMainWindow.
      */
     bool queryClose() override;
-    
+
     /**
      * Reimplemented from KMainWindow
      */
     bool eventFilter(QObject *obj, QEvent *e) override;
 
-  protected slots:
+protected slots:
     /**
      * Quits the application.
      */
@@ -109,9 +109,9 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * bar accordingly.
      */
     void slotWalletManagerInitialized();
-    
+
     /**
-     * This slot shows a busy bar and a status message according to the action performed by 
+     * This slot shows a busy bar and a status message according to the action performed by
      * the client. It is connected to the Smb4KClient::aboutToStart() signal.
      *
      * @param item          The network item
@@ -119,50 +119,50 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * @param process       The process
      */
     void slotClientAboutToStart(const NetworkItemPtr &item, int process);
-    
+
     /**
-     * this slot shows a status message according to the action that was just finished by the 
+     * this slot shows a status message according to the action that was just finished by the
      * client and hides the status bar if appropriate. It is connected to the Smb4KClient::finished()
      * signal.
-     * 
+     *
      * @param item          The network item
-     * 
+     *
      * @param process       The process
      */
     void slotClientFinished(const NetworkItemPtr &item, int process);
 
     /**
-     * This slot shows a status message according to the action performed by the 
-     * mounter as well as a busy bar. It is connected to the Smb4KMounter::aboutToStart() 
+     * This slot shows a status message according to the action performed by the
+     * mounter as well as a busy bar. It is connected to the Smb4KMounter::aboutToStart()
      * signal.
      * @param process       The process
      */
     void slotMounterAboutToStart(int process);
-    
+
     /**
      * This shows a status message according to the action that was just finished by
-     * the mounter and hides the busy bar if appropriate. It is connected to the 
+     * the mounter and hides the busy bar if appropriate. It is connected to the
      * Smb4KMounter::finished() signal.
      * @param process       The process
      */
     void slotMounterFinished(int process);
-                                                                
+
     /**
-     * This slot gives the visual mount feedback in the status bar. It is 
+     * This slot gives the visual mount feedback in the status bar. It is
      * connected to the Smb4KMounter::mounted() signal.
-     * 
+     *
      * @param share         The share object
      */
     void slotVisualMountFeedback(const SharePtr &share);
-    
+
     /**
-     * This slot gives the visual unmount feedback in the status bar. It is 
+     * This slot gives the visual unmount feedback in the status bar. It is
      * connected to the Smb4KMounter::unmounted() signal.
-     * 
+     *
      * @param share         The share object
      */
     void slotVisualUnmountFeedback(const SharePtr &share);
-                                  
+
     /**
      * This slot shows a message according to the action performed by the synchronizer.
      * It is connected to the Smb4KSynchronizer::aboutToStart() signal.
@@ -189,7 +189,7 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * Enable/disable the "Add Bookmark" action
      */
     void slotEnableBookmarkAction();
-    
+
     /**
      * This slot is connected to the visibilityChanged() signals of the network browser
      * dock widget. It is used to get the tool bars right.
@@ -197,7 +197,7 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * @param visible         If the dock widget is visible.
      */
     void slotNetworkBrowserVisibilityChanged(bool visible);
-    
+
     /**
      * This slot is connected to the visibilityChanged() signals of the shares view
      * dock widget. It is used to get the tool bars right.
@@ -206,7 +206,7 @@ class Smb4KMainWindow : public KXmlGuiWindow
      */
     void slotSharesViewVisibilityChanged(bool visible);
 
-  private:
+private:
     /**
      * Set up the main window actions
      */
@@ -221,7 +221,7 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * Set up the main window's view
      */
     void setupView();
-    
+
     /**
      * Set up menu bar
      */
@@ -241,17 +241,17 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * Saves the settings
      */
     void saveSettings();
-    
+
     /**
      * Set up the mount indicator
      */
     void setupMountIndicator();
-    
+
     /**
      * Setup the dynamic action list
      */
     void setupDynamicActionList(QDockWidget *dock);
-    
+
     /**
      * This is the progress bar in the status bar.
      */
@@ -273,10 +273,10 @@ class Smb4KMainWindow : public KXmlGuiWindow
      * The system tray widget
      */
     Smb4KSystemTray *m_system_tray_widget;
-    
+
     /**
-     * This is the widget (embedded into a dock widget) that has 
-     * the focus. 
+     * This is the widget (embedded into a dock widget) that has
+     * the focus.
      */
     QWidget *m_focusWidget;
 

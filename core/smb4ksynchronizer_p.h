@@ -1,9 +1,9 @@
 /***************************************************************************
-    This file contains private helper classes for the Smb4KSynchronizer 
+    This file contains private helper classes for the Smb4KSynchronizer
     class.
                              -------------------
     begin                : Fr Okt 24 2008
-    copyright            : (C) 2008-2019 by Alexander Reinholdt
+    copyright            : (C) 2008-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -28,26 +28,25 @@
 #define SMB4KSYNCHRONIZER_P_H
 
 // application specific includes
-#include "smb4ksynchronizer.h"
 #include "smb4kglobal.h"
+#include "smb4ksynchronizer.h"
 
 // Qt includes
-#include <QUrl>
 #include <QDialog>
 #include <QPushButton>
+#include <QUrl>
 
 // KDE includes
 #include <KCoreAddons/KJob>
 #include <KCoreAddons/KProcess>
 #include <KIOWidgets/KUrlRequester>
 #include <KJobWidgets/KUiServerJobTracker>
-    
 
 class Smb4KSyncJob : public KJob
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor
      */
@@ -64,7 +63,7 @@ class Smb4KSyncJob : public KJob
     void start() override;
 
     /**
-     * Setup the synchronization process. This function must be 
+     * Setup the synchronization process. This function must be
      * called before start() is run.
      *
      * @param share     The share
@@ -76,16 +75,22 @@ class Smb4KSyncJob : public KJob
      *
      * @returns the source directory.
      */
-    const QUrl &source() { return m_src; }
+    const QUrl &source()
+    {
+        return m_src;
+    }
 
     /**
      * Returns the destination directory.
      *
      * @returns the destination directory.
      */
-    const QUrl &destination() { return m_dest; }
+    const QUrl &destination()
+    {
+        return m_dest;
+    }
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * This signal is emitted when a job is started. The emitted path
      * is the one of the destination.
@@ -101,21 +106,21 @@ class Smb4KSyncJob : public KJob
      * @param dest        The destination's URL
      */
     void finished(const QString &dest);
-     
-  protected:
+
+protected:
     /**
      * Reimplemented from KJob. Kills the internal process and
      * then the job itself.
      */
     bool doKill() override;
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     void slotStartSynchronization();
     void slotReadStandardOutput();
     void slotReadStandardError();
     void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
 
-  private:
+private:
     SharePtr m_share;
     QUrl m_src;
     QUrl m_dest;
@@ -123,12 +128,11 @@ class Smb4KSyncJob : public KJob
     KUiServerJobTracker *m_job_tracker;
 };
 
-
 class Smb4KSynchronizationDialog : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The constructor
      *
@@ -153,16 +157,16 @@ class Smb4KSynchronizationDialog : public QDialog
      */
     const QUrl destination();
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     void slotCancelClicked();
     void slotSynchronizeClicked();
     void slotSwapPathsClicked();
 
-  private:
+private:
     QPushButton *m_swap_button;
     QPushButton *m_synchronize_button;
     QPushButton *m_cancel_button;
-    
+
     /**
      * A pointer to the share object
      */
@@ -179,15 +183,13 @@ class Smb4KSynchronizationDialog : public QDialog
     KUrlRequester *m_destination;
 };
 
-
 class Smb4KSynchronizerPrivate
 {
 };
 
-
 class Smb4KSynchronizerStatic
 {
-  public:
+public:
     Smb4KSynchronizer instance;
 };
 

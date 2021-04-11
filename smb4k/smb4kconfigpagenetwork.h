@@ -2,7 +2,7 @@
     The configuration page for the network settings of Smb4K
                              -------------------
     begin                : Sa Nov 15 2003
-    copyright            : (C) 2003-2020 by Alexander Reinholdt
+    copyright            : (C) 2003-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -38,9 +38,9 @@
 
 class Smb4KConfigPageNetwork : public QTabWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The constructor
      *
@@ -52,14 +52,14 @@ class Smb4KConfigPageNetwork : public QTabWidget
      * The destructor
      */
     ~Smb4KConfigPageNetwork();
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     /**
      * This slot is called when the button for setting the SMB protocol
      * versions is toggled.
      */
     void slotSetProtocolVersionsToggled(bool on);
-    
+
     /**
      * This slot is called when the button for setting the Wake-On-LAN
      * feature is toggled.

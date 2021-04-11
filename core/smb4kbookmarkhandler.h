@@ -30,8 +30,8 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QObject>
 #include <QList>
+#include <QObject>
 #include <QScopedPointer>
 #include <QUrl>
 
@@ -42,7 +42,6 @@ class Smb4KBookmarkDialog;
 class Smb4KBookmarkEditor;
 class Smb4KProfileManager;
 
-
 /**
  * This class belongs the to core classes of Smb4K and manages the
  * bookmarks.
@@ -52,12 +51,12 @@ class Smb4KProfileManager;
 
 class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
 {
-  Q_OBJECT  
-  
-  friend class Smb4KBookmarkHandlerPrivate;
-  friend class Smb4KProfileManager;
+    Q_OBJECT
 
-  public:
+    friend class Smb4KBookmarkHandlerPrivate;
+    friend class Smb4KProfileManager;
+
+public:
     /**
      * The constructor.
      */
@@ -67,59 +66,59 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * The destructor.
      */
     ~Smb4KBookmarkHandler();
-    
+
     /**
      * This function returns a static pointer to this class.
      *
      * @returns a static pointer to the Smb4KSynchronizer class.
      */
     static Smb4KBookmarkHandler *self();
-    
+
     /**
      * This function adds a new bookmark.
      *
      * @param share         The share that is to be bookmarked.
      */
     void addBookmark(const SharePtr &share);
-    
+
     /**
-     * This function adds a new bookmark. The bookmark will be copied 
+     * This function adds a new bookmark. The bookmark will be copied
      * internally, so it is save to clear the bookmark pointer after
      * it was passed to this function.
-     * 
+     *
      * @param bookmark      The bookmark that is to be added.
      */
     void addBookmark(const BookmarkPtr &bookmark);
 
     /**
-     * This function adds several bookmarks at once. It takes a list of 
+     * This function adds several bookmarks at once. It takes a list of
      * shares and converts them internally to bookmark items.
      *
      * @param list          The list of shares that are to be bookmarked
      */
     void addBookmarks(const QList<SharePtr> &list);
-    
+
     /**
      * This function adds several bookmarks at once. It takes a list of
      * Smb4KBookmark items.
-     * 
+     *
      * @param list          The list of bookmarks that are to be bookmarked
-     * 
+     *
      * @param replace       If TRUE the old list of bookmarks is replaced by
      *                      @p list.
      */
     void addBookmarks(const QList<BookmarkPtr> &list, bool replace = false);
-    
+
     /**
      * Remove a bookmark.
-     * 
+     *
      * @param bookmark      The bookmark that is to be removed
      */
     void removeBookmark(const BookmarkPtr &bookmark);
-    
+
     /**
      * This function removes a category and all the bookmarks it contains.
-     * 
+     *
      * @param name          The group name
      */
     void removeCategory(const QString &name);
@@ -131,7 +130,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      *                      bookmark file.
      */
     QList<BookmarkPtr> bookmarksList() const;
-    
+
     /**
      * Get the list of bookmarks belonging to a certain category.
      *
@@ -140,7 +139,7 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      * @returns a list of bookmarks belonging to a certain category
      */
     QList<BookmarkPtr> bookmarksList(const QString &categoryName) const;
-    
+
     /**
      * This function searches for a bookmark using its URL and returns a pointer
      * to it if it is present or NULL.
@@ -168,32 +167,32 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
      *
      * @returns the list of categories
      */
-    QStringList categoryList() const;  
-    
+    QStringList categoryList() const;
+
     /**
-     * Reset the bookmarks by reloading them from the file.              
+     * Reset the bookmarks by reloading them from the file.
      */
     void resetBookmarks();
-    
+
     /**
      * This function checks if the @p share is already bookmarked or not.
      * @param share         The share item
      * @returns TRUE if the share is bookmarked and FALSE otherwise.
      */
     bool isBookmarked(const SharePtr &share);
-    
+
     /**
      * This function opens the bookmark editor.
      */
     void editBookmarks();
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * Signal emitted when the list of bookmarks has been updated.
      */
     void updated();
-    
-  private:
+
+private:
     /**
      * This function reads the list of bookmarks from the bookmarks file.
      */
@@ -205,29 +204,29 @@ class Q_DECL_EXPORT Smb4KBookmarkHandler : public QObject
     void update() const;
 
     /**
-     * This function writes the bookmarks to the disk. 
+     * This function writes the bookmarks to the disk.
      */
     void writeBookmarkList();
 
     /**
      * Migrates one profile to another.
-     * 
+     *
      * This function is meant to be used by the profile manager.
-     * 
+     *
      * @param from        The name of the old profile.
      * @param to          The name of the new profile.
      */
     void migrateProfile(const QString &from, const QString &to);
-    
+
     /**
      * Removes a profile from the list of profiles.
-     * 
+     *
      * This function is meant to be used by the profile manager.
-     * 
+     *
      * @param name        The name of the profile.
      */
     void removeProfile(const QString &name);
-    
+
     /**
      * Pointer to Smb4KBookmarkHandlerPrivate class
      */

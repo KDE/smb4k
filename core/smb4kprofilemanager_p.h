@@ -2,7 +2,7 @@
     Private helper class(es) for the profile manager.
                              -------------------
     begin                : Mi Aug 12 2014
-    copyright            : (C) 2014-2019 by Alexander Reinholdt
+    copyright            : (C) 2014-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,53 +30,50 @@
 #include "smb4kprofilemanager.h"
 
 // Qt includes
+#include <QDialog>
+#include <QPushButton>
 #include <QString>
 #include <QStringList>
 #include <QWidget>
-#include <QDialog>
-#include <QPushButton>
 
 // KDE includes
 #include <KCompletion/KComboBox>
 
-
 class Smb4KProfileMigrationDialog : public QDialog
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     /**
      * Constructor
      */
-    explicit Smb4KProfileMigrationDialog(const QStringList &from,
-                                         const QStringList &to,
-                                         QWidget* parent = 0);
-    
+    explicit Smb4KProfileMigrationDialog(const QStringList &from, const QStringList &to, QWidget *parent = 0);
+
     /**
      * Destructor
      */
     virtual ~Smb4KProfileMigrationDialog();
-    
+
     /**
-     * Returns the name of the profile of which the entries 
+     * Returns the name of the profile of which the entries
      * should be migrated.
-     * 
+     *
      * @returns the name of the profile.
      */
     QString from() const;
-    
+
     /**
      * Returns the name of the profile where the entries should
      * be migrated to.
-     * 
+     *
      * @returns the name of the new profile.
      */
     QString to() const;
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     void slotOkClicked();
-    
-  private:
+
+private:
     void setupView();
     QPushButton *m_ok_button;
     QPushButton *m_cancel_button;
@@ -86,21 +83,18 @@ class Smb4KProfileMigrationDialog : public QDialog
     KComboBox *m_to_box;
 };
 
-
 class Smb4KProfileManagerPrivate
 {
-  public:
+public:
     QString activeProfile;
     QStringList profiles;
     bool useProfiles;
 };
 
-
 class Smb4KProfileManagerStatic
 {
-  public:
+public:
     Smb4KProfileManager instance;
 };
-
 
 #endif

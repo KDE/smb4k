@@ -2,7 +2,7 @@
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
                              -------------------
     begin                : Mi Jun 13 2007
-    copyright            : (C) 2007-2019 by Alexander Reinholdt
+    copyright            : (C) 2007-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,14 +33,13 @@
 // KDE includes
 #include <KNotifications/KStatusNotifierItem>
 
-
 class Smb4KSystemTray : public KStatusNotifierItem
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class Smb4KMainWindow;
+    friend class Smb4KMainWindow;
 
-  public:
+public:
     /**
      * The constructor.
      *
@@ -58,7 +57,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      */
     void loadSettings();
 
-  signals:
+signals:
     /**
      * This signal is emitted when the config dialog has been closed and the
      * settings changed.
@@ -67,7 +66,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
      */
     void settingsChanged(const QString &dialogName);
 
-  protected slots:
+protected slots:
     /**
      * This slot opens the manual mount dialog.
      *
@@ -93,7 +92,7 @@ class Smb4KSystemTray : public KStatusNotifierItem
     /**
      * Set the status of the system tray icon. This slot checks the global
      * list of mounted shares and the global list of workgroups. If neither of
-     * them contains any item, the icon is set to passive state until one of 
+     * them contains any item, the icon is set to passive state until one of
      * the lists is populated.
      */
     void slotSetStatus();

@@ -1,8 +1,8 @@
 /***************************************************************************
     smb4ktooltip  -  Provides tooltips for Smb4K
                              -------------------
-    begin                : Mi Mai 2020 
-    copyright            : (C) 2020 by Alexander Reinholdt
+    begin                : Mi Mai 2020
+    copyright            : (C) 2020-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,9 +30,9 @@
 #include <smb4kglobal.h>
 
 // Qt includes
+#include <QHBoxLayout>
 #include <QPoint>
 #include <QWindow>
-#include <QHBoxLayout>
 
 // KDE includes
 #include <KWidgetsAddons/KToolTipWidget>
@@ -42,72 +42,69 @@ class Smb4KBasicNetworkItem;
 
 class Smb4KToolTip : public KToolTipWidget
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     /**
      * The constructor
      */
     Smb4KToolTip(QWidget *parent = nullptr);
-    
+
     /**
      * The destructor
      */
     ~Smb4KToolTip();
-    
+
     /**
-     * This enumeration determines the kind of tooltip 
+     * This enumeration determines the kind of tooltip
      * this is to be shown.
-     * 
+     *
      * @enum NetworkItem  Tooltip reflecting a remote network item
      * @enum MountedShare Tooltip reflecting a mounted share
      */
-    enum Type {
-      NetworkItem,
-      MountedShare,
-      Unknown };
-    
+    enum Type { NetworkItem, MountedShare, Unknown };
+
     /**
-     * Set up the tooltip. 
+     * Set up the tooltip.
      */
     void setupToolTip(Type type, NetworkItemPtr item);
-    
+
     /**
      * Show the tooltip
      */
     void show(const QPoint &pos, QWindow *transientParent);
-    
+
     /**
      * Update the tooltip
      */
     void update();
-    
-  private:
+
+private:
     /**
      * Setup the contents widget for a remote network item
      */
     void setupNetworkItemContents();
-    
+
     /**
      * Setup the contents widget for a mounted share
      */
     void setupMountedShareContents();
-    
+
     /**
      * The network item
      */
     NetworkItemPtr m_item;
-    
+
     /**
      * The type
      */
     Type m_type;
-    
+
     /**
      * The contents widget for the tooltip
      */
     QWidget *m_contentsWidget;
-    
+
     /**
      * The main layout
      */
@@ -115,4 +112,3 @@ class Smb4KToolTip : public KToolTipWidget
 };
 
 #endif
-

@@ -2,7 +2,7 @@
     Smb4K's container class for information about a share.
                              -------------------
     begin                : Mo Jan 28 2008
-    copyright            : (C) 2008-2019 by Alexander Reinholdt
+    copyright            : (C) 2008-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,11 +30,11 @@
 #include "smb4kbasicnetworkitem.h"
 
 // Qt includes
+#include <QHostAddress>
+#include <QScopedPointer>
 #include <QString>
 #include <QStringList>
 #include <QtGlobal>
-#include <QScopedPointer>
-#include <QHostAddress>
 
 // KDE includes
 #include <KCoreAddons/KUser>
@@ -45,9 +45,9 @@ class Smb4KSharePrivate;
 
 class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
 {
-  friend class Smb4KSharePrivate;
-  
-  public:
+    friend class Smb4KSharePrivate;
+
+public:
     /**
      * This constructor takes the host name @p hostName and the name of the
      * shared resource @p shareName. All other information has to be set by the
@@ -63,7 +63,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     Smb4KShare(const QString &hostName, const QString &shareName);
 
     /**
-     * This constructor takes the URL @p url as only argument. All other 
+     * This constructor takes the URL @p url as only argument. All other
      * information has to be set by the other functions this class provides.
      *
      * @param url           The URL
@@ -116,26 +116,26 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the host name
      */
     QString hostName() const;
-    
+
     /**
-     * In case of a 'homes' share, this function returns the URL of the user's 
+     * In case of a 'homes' share, this function returns the URL of the user's
      * home repository.
-     * 
+     *
      * If the share is not a 'homes' share or no user name for the homes share
      * has been defined, this function returns an empty string.
-     * 
+     *
      * @returns the user's home repository's URL.
      */
     QUrl homeUrl() const;
-    
+
     /**
      * Returns the display string. Prefer this over all other alternatives in your
      * GUI.
-     * 
+     *
      * @param showHomesShare  Show the name of the users home share instead of 'homes'
-     *                        in case this is a homes share. Setting this argument on a 
+     *                        in case this is a homes share. Setting this argument on a
      *                        non-homes share does nothing.
-     * 
+     *
      * @returns the display string.
      */
     QString displayString(bool showHomeShare = false) const;
@@ -154,10 +154,10 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the workgroup name
      */
     QString workgroupName() const;
-    
+
     /**
      * Set the type of the share as reported by the server.
-     * 
+     *
      * @param type          The type of the string
      */
     void setShareType(Smb4KGlobal::ShareType type);
@@ -186,7 +186,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @param ip              The host's IP address
      */
     void setHostIpAddress(const QString &ip);
-    
+
     /**
      * Set the IP address of the host where the share is located. @p ip will only be accepted
      * if it is compatible with either IPv4 or IPv6.
@@ -203,10 +203,10 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the IP address of the host or an empty string.
      */
     QString hostIpAddress() const;
-    
+
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
-     * 
+     *
      * @returns TRUE if the host's IP address is set and FALSE otherwise.
      */
     bool hasHostIpAddress() const;
@@ -303,7 +303,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the owner.
      */
     KUser user() const;
-    
+
     /**
      * Set the group that owns this share.
      * @param group            The owning GID
@@ -318,7 +318,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     KUserGroup group() const;
 
     /**
-     * Sets the value of the total disk space that is available on the share. If 
+     * Sets the value of the total disk space that is available on the share. If
      * the disk usage could not be determined, @p size has to be set to 0.
      *
      * @param total           The total disk space that is available on the share
@@ -344,7 +344,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
     QString totalDiskSpaceString() const;
 
     /**
-     * Sets the value of the free disk space that is available on the share. If 
+     * Sets the value of the free disk space that is available on the share. If
      * the free disk space could not be determined, @p size has to be set to 0.
      *
      * @param free            The free disk space that is available on the share
@@ -358,7 +358,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the free disk space or 0.
      */
     qulonglong freeDiskSpace() const;
-    
+
     /**
      * Returns the free disk space in a human readable form with value and unit
      * (e.g. 10 KiB, 25 MiB, etc.) even if the free disk space was not set or could
@@ -368,9 +368,9 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @returns the free disk space in a human readable form.
      */
     QString freeDiskSpaceString() const;
-    
+
     /**
-     * Sets the value of the disk space that is used on the share. If the used 
+     * Sets the value of the disk space that is used on the share. If the used
      * disk space could not be determined, @p size has to be set to 0.
      *
      * @param free            The free disk space that is available on the share
@@ -397,7 +397,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
 
     /**
      * Returns the disk usage in percent.
-     
+
      * @returns the disk usage in percent.
      */
     qreal diskUsage() const;
@@ -435,7 +435,7 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *                        data should be copied.
      */
     void setMountData(Smb4KShare *share);
-    
+
     /**
      * This convenience function resets the mount related data.
      */
@@ -471,36 +471,36 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      * @param authInfo    The authentication information
      */
     void setAuthInfo(Smb4KAuthInfo *authInfo);
-    
+
     /**
      * Set the login for the share. This function will add the login name
      * to the URL of the share.
-     * 
+     *
      * @param login       The login name
      */
     void setLogin(const QString &login);
-    
+
     /**
      * Returns the login.
      *
      * @returns the login.
      */
     QString login() const;
-    
+
     /**
      * Set the password used for authentication.
-     * 
+     *
      * @param passwd              The password
      */
     void setPassword(const QString &passwd);
-    
+
     /**
      * Returns the password.
-     * 
+     *
      * @returns the password.
      */
     QString password() const;
-    
+
     /**
      * Updates the share item if the workgroup name and the UNC of @p share and
      * of this item is equal. Otherwise it does nothing.
@@ -508,10 +508,10 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
      *                        this object
      */
     void update(Smb4KShare *share);
-    
-  private:
+
+private:
     const QScopedPointer<Smb4KSharePrivate> d;
-    
+
     /**
      * Set up the shares icon.
      */

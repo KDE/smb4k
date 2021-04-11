@@ -2,7 +2,7 @@
     smb4kprofilesmenu  -  The menu for the profiles
                              -------------------
     begin                : Do Aug 10 2014
-    copyright            : (C) 2014-2019 by Alexander Reinholdt
+    copyright            : (C) 2014-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,30 +33,29 @@
 // KDE includes
 #include <KWidgetsAddons/KSelectAction>
 
-
 class Smb4KProfilesMenu : public KSelectAction
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     /**
      * Constructor
      */
-    explicit Smb4KProfilesMenu(QObject* parent = 0);
-    
+    explicit Smb4KProfilesMenu(QObject *parent = 0);
+
     /**
      * Destructor
      */
     virtual ~Smb4KProfilesMenu();
-    
+
     /**
-     * Force the menu to be set up again. This should be called if 
+     * Force the menu to be set up again. This should be called if
      * the settings changed and the handling of bookmarks might be
      * affected.
      */
     void refreshMenu();
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     void slotActiveProfileChanged(const QString &newProfile);
     void slotProfilesListChanged(const QStringList &profiles);
     void slotProfileUsageChanged(bool use);

@@ -31,8 +31,8 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QString>
 #include <QScopedPointer>
+#include <QString>
 #include <QUrl>
 
 // forward declarations
@@ -46,15 +46,14 @@ using namespace Smb4KGlobal;
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
-
 class Q_DECL_EXPORT Smb4KAuthInfo
 {
     friend class Smb4KAuthInfoPrivate;
-  
+
 public:
     /**
      * Constructor
-     * 
+     *
      * @param item      The network item
      */
     explicit Smb4KAuthInfo(Smb4KBasicNetworkItem *item);
@@ -75,7 +74,7 @@ public:
      * The destructor
      */
     ~Smb4KAuthInfo();
-    
+
     /**
      * Sets the workgroup name.
      *
@@ -90,7 +89,7 @@ public:
      *                  authentication data is for.
      */
     QString workgroupName() const;
-    
+
     /**
      * Returns the host name.
      *
@@ -107,7 +106,7 @@ public:
 
     /**
      * Sets the username.
-     * 
+     *
      * In case of a 'homes' share, this function will also set the share
      * name to @p username.
      *
@@ -155,7 +154,7 @@ public:
      * @param url             The URL of the network item
      */
     void setUrl(const QUrl &url);
-    
+
     /**
      * Sets the URL of the share.
      *
@@ -183,7 +182,7 @@ public:
      * @returns the IP address
      */
     QString ipAddress() const;
-    
+
     /**
      * Returns the display string. Prefer this over all other alternatives in your
      * GUI.

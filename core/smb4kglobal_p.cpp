@@ -2,7 +2,7 @@
     These are the private helper classes of the Smb4KGlobal namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2020 by Alexander Reinholdt
+    copyright            : (C) 2007-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -32,115 +32,105 @@
 #include <libsmbclient.h>
 
 // Qt includes
-#include <QDir>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QFile>
-#include <QCoreApplication>
-#include <QHostAddress>
 #include <QAbstractSocket>
-#include <QHostInfo>
+#include <QCoreApplication>
+#include <QDir>
 #include <QDirIterator>
-
+#include <QFile>
+#include <QHostAddress>
+#include <QHostInfo>
+#include <QTextCodec>
+#include <QTextStream>
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
-  onlyForeignShares = false;
-  coreInitialized = false;
-  
-#ifdef Q_OS_LINUX
-  allowedMountArguments << "dynperm";
-  allowedMountArguments << "rwpidforward";
-  allowedMountArguments << "hard";
-  allowedMountArguments << "soft";
-  allowedMountArguments << "noacl";
-  allowedMountArguments << "cifsacl";
-  allowedMountArguments << "backupuid";
-  allowedMountArguments << "backupgid";
-  allowedMountArguments << "ignorecase";
-  allowedMountArguments << "nocase";
-  allowedMountArguments << "nobrl";
-  allowedMountArguments << "sfu";
-  allowedMountArguments << "nounix";
-  allowedMountArguments << "nouser_xattr";
-  allowedMountArguments << "fsc";
-  allowedMountArguments << "multiuser";
-  allowedMountArguments << "actimeo";
-  allowedMountArguments << "noposixpaths";
-  allowedMountArguments << "posixpaths";
-#endif
-  
-  //
-  // Create and init the SMB context
-  // 
-  SMBCCTX *smbContext= smbc_new_context();
-  
-  if (smbContext)
-  {
-    smbContext = smbc_init_context(smbContext);
-      
-    if (!smbContext)
-    {
-      smbc_free_context(smbContext, 1);
-    }
-  }
-  
-  //
-  // Read the computer's NetBIOS name and workgroup
-  // 
-  machineNetbiosName = QString::fromUtf8(smbc_getNetbiosName(smbContext)).toUpper();
-  machineWorkgroupName = QString::fromUtf8(smbc_getWorkgroup(smbContext)).toUpper();
-  
-  //
-  // Free the SMB context
-  // 
-  smbc_free_context(smbContext, 1);
-  
-  //
-  // Connections
-  // 
-  connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
-}
+    onlyForeignShares = false;
+    coreInitialized = false;
 
+#ifdef Q_OS_LINUX
+    allowedMountArguments << "dynperm";
+    allowedMountArguments << "rwpidforward";
+    allowedMountArguments << "hard";
+    allowedMountArguments << "soft";
+    allowedMountArguments << "noacl";
+    allowedMountArguments << "cifsacl";
+    allowedMountArguments << "backupuid";
+    allowedMountArguments << "backupgid";
+    allowedMountArguments << "ignorecase";
+    allowedMountArguments << "nocase";
+    allowedMountArguments << "nobrl";
+    allowedMountArguments << "sfu";
+    allowedMountArguments << "nounix";
+    allowedMountArguments << "nouser_xattr";
+    allowedMountArguments << "fsc";
+    allowedMountArguments << "multiuser";
+    allowedMountArguments << "actimeo";
+    allowedMountArguments << "noposixpaths";
+    allowedMountArguments << "posixpaths";
+#endif
+
+    //
+    // Create and init the SMB context
+    //
+    SMBCCTX *smbContext = smbc_new_context();
+
+    if (smbContext) {
+        smbContext = smbc_init_context(smbContext);
+
+        if (!smbContext) {
+            smbc_free_context(smbContext, 1);
+        }
+    }
+
+    //
+    // Read the computer's NetBIOS name and workgroup
+    //
+    machineNetbiosName = QString::fromUtf8(smbc_getNetbiosName(smbContext)).toUpper();
+    machineWorkgroupName = QString::fromUtf8(smbc_getWorkgroup(smbContext)).toUpper();
+
+    //
+    // Free the SMB context
+    //
+    smbc_free_context(smbContext, 1);
+
+    //
+    // Connections
+    //
+    connect(QCoreApplication::instance(), SIGNAL(aboutToQuit()), SLOT(slotAboutToQuit()));
+}
 
 Smb4KGlobalPrivate::~Smb4KGlobalPrivate()
 {
-  // 
-  // Clear the workgroup list
-  // 
-  while (!workgroupsList.isEmpty())
-  {
-    workgroupsList.takeFirst().clear();
-  }
+    //
+    // Clear the workgroup list
+    //
+    while (!workgroupsList.isEmpty()) {
+        workgroupsList.takeFirst().clear();
+    }
 
-  // 
-  // Clear the host list
-  // 
-  while (!hostsList.isEmpty())
-  {
-    hostsList.takeFirst().clear();
-  }
+    //
+    // Clear the host list
+    //
+    while (!hostsList.isEmpty()) {
+        hostsList.takeFirst().clear();
+    }
 
-  // 
-  // Clear the list of mounted shares
-  // 
-  while (!mountedSharesList.isEmpty())
-  {
-    mountedSharesList.takeFirst().clear();
-  }
+    //
+    // Clear the list of mounted shares
+    //
+    while (!mountedSharesList.isEmpty()) {
+        mountedSharesList.takeFirst().clear();
+    }
 
-  // 
-  // Clear the list of shares
-  // 
-  while (!sharesList.isEmpty())
-  {
-    sharesList.takeFirst().clear();
-  }
+    //
+    // Clear the list of shares
+    //
+    while (!sharesList.isEmpty()) {
+        sharesList.takeFirst().clear();
+    }
 }
-
 
 void Smb4KGlobalPrivate::slotAboutToQuit()
 {
-  Smb4KSettings::self()->save();
+    Smb4KSettings::self()->save();
 }
-

@@ -2,7 +2,7 @@
     Private helper classes for the wallet manager of Smb4K.
                              -------------------
     begin                : Mo Dez 31 2012
-    copyright            : (C) 2012-2019 by Alexander Reinholdt
+    copyright            : (C) 2012-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -25,10 +25,10 @@
 
 // application specific includes
 #include "smb4kwalletmanager_p.h"
+#include "smb4kglobal.h"
+#include "smb4khomesshareshandler.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
-#include "smb4khomesshareshandler.h"
-#include "smb4kglobal.h"
 
 // Qt includes
 #include <QDebug>
@@ -39,103 +39,81 @@
 
 using namespace Smb4KGlobal;
 
-
-Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, const QMap<QString,QString> &knownLogins, QWidget* parent)
-: KPasswordDialog(parent, KPasswordDialog::ShowUsernameLine)
+Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, const QMap<QString, QString> &knownLogins, QWidget *parent)
+    : KPasswordDialog(parent, KPasswordDialog::ShowUsernameLine)
 {
-  m_item = networkItem;
-  
-  switch (m_item->type())
-  {
-    case Host:
-    {
-      HostPtr host = m_item.staticCast<Smb4KHost>();
+    m_item = networkItem;
 
-      if (host)
-      {
-        setUsername(host->login());
-        setPassword(host->password());
-        setPrompt(i18n("<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName()));
-      }
+    switch (m_item->type()) {
+    case Host: {
+        HostPtr host = m_item.staticCast<Smb4KHost>();
 
-      break;
+        if (host) {
+            setUsername(host->login());
+            setPassword(host->password());
+            setPrompt(i18n("<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName()));
+        }
+
+        break;
     }
-    case Share:
-    {
-      SharePtr share = m_item.staticCast<Smb4KShare>();
+    case Share: {
+        SharePtr share = m_item.staticCast<Smb4KShare>();
 
-      if (share)
-      {
-        // Enter authentication information into the dialog
-        if (!knownLogins.isEmpty())
-        {
-          setKnownLogins(knownLogins);
-        }
-        else
-        {
-          setUsername(share->login());
-          setPassword(share->password());
+        if (share) {
+            // Enter authentication information into the dialog
+            if (!knownLogins.isEmpty()) {
+                setKnownLogins(knownLogins);
+            } else {
+                setUsername(share->login());
+                setPassword(share->password());
+            }
+
+            if (!share->isHomesShare()) {
+                setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->displayString()));
+            } else {
+                setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->displayString(true)));
+            }
         }
 
-        if (!share->isHomesShare())
-        {
-          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->displayString()));
-        }
-        else
-        {
-          setPrompt(i18n("<qt>Please enter a username and a password for the share <b>%1</b>.</qt>", share->displayString(true)));
-        }
-      }
-
-      break;
+        break;
     }
-    default:
-    {
-      break;
+    default: {
+        break;
     }
-  }
+    }
 
-  connect(this, SIGNAL(gotUsernameAndPassword(QString,QString,bool)), SLOT(slotGotUsernameAndPassword(QString,QString,bool)));
+    connect(this, SIGNAL(gotUsernameAndPassword(QString, QString, bool)), SLOT(slotGotUsernameAndPassword(QString, QString, bool)));
 }
-
 
 Smb4KPasswordDialog::~Smb4KPasswordDialog()
 {
 }
 
-
 void Smb4KPasswordDialog::slotGotUsernameAndPassword(const QString &user, const QString &pass, bool /*keep*/)
 {
-  switch (m_item->type())
-  {
-    case Host:
-    {
-      HostPtr host = m_item.staticCast<Smb4KHost>();
+    switch (m_item->type()) {
+    case Host: {
+        HostPtr host = m_item.staticCast<Smb4KHost>();
 
-      if (host)
-      {
-        host->setLogin(user);
-        host->setPassword(pass);
-      }
+        if (host) {
+            host->setLogin(user);
+            host->setPassword(pass);
+        }
 
-      break;
+        break;
     }
-    case Share:
-    {
-      SharePtr share = m_item.staticCast<Smb4KShare>();
+    case Share: {
+        SharePtr share = m_item.staticCast<Smb4KShare>();
 
-      if (share)
-      {
-        share->setLogin(user);
-        share->setPassword(pass);
-      }
+        if (share) {
+            share->setLogin(user);
+            share->setPassword(pass);
+        }
 
-      break;
+        break;
     }
-    default:
-    {
-      break;
+    default: {
+        break;
     }
-  }
+    }
 }
-

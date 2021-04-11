@@ -2,7 +2,7 @@
     Private helpers for the homes shares handler
                              -------------------
     begin                : Mo Apr 11 2011
-    copyright            : (C) 2011-2019 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,37 +27,36 @@
 #define SMB4KHOMESSHARESHANDLER_P_H
 
 // application specific includes
-#include "smb4khomesshareshandler.h"
 #include "smb4kglobal.h"
+#include "smb4khomesshareshandler.h"
 
 // Qt includes
-#include <QStringList>
 #include <QDialog>
-#include <QPushButton>
 #include <QHostAddress>
+#include <QPushButton>
+#include <QStringList>
 
 // KDE includes
 #include <KCompletion/KComboBox>
 
-
 class Smb4KHomesUsers
 {
-  public:
+public:
     /**
      * Constructor
      */
     Smb4KHomesUsers(const SharePtr &share, const QStringList &users);
-    
+
     /**
      * Copy constructor
      */
     Smb4KHomesUsers(const Smb4KHomesUsers &users);
-    
+
     /**
      * Empty constructor
      */
     Smb4KHomesUsers();
-    
+
     /**
      * Destructor
      */
@@ -67,7 +66,7 @@ class Smb4KHomesUsers
      * Workgroup name
      */
     QString workgroupName() const;
-    
+
     /**
      * Set workgroup name
      */
@@ -77,7 +76,7 @@ class Smb4KHomesUsers
      * Host name
      */
     QString hostName() const;
-    
+
     /**
      * Set host name
      */
@@ -87,7 +86,7 @@ class Smb4KHomesUsers
      * Share name
      */
     QString shareName() const;
-    
+
     /**
      * Set share name
      */
@@ -97,33 +96,33 @@ class Smb4KHomesUsers
      * IP address
      */
     QString hostIP() const;
-    
+
     /**
      * Set IP address
      */
     void setHostIP(const QString &ip);
-    
+
     /**
      * User list
      */
     QStringList users() const;
-    
+
     /**
      * Set user list
      */
     void setUsers(const QStringList &users);
-    
+
     /**
      * Profile
      */
     QString profile() const;
-    
+
     /**
      * Set profile
      */
     void setProfile(const QString &profile);
-    
-  private:
+
+private:
     QString m_workgroup_name;
     QString m_host_name;
     QString m_share_name;
@@ -132,38 +131,40 @@ class Smb4KHomesUsers
     QString m_profile;
 };
 
-
 class Smb4KHomesUserDialog : public QDialog
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     /**
      * Constructor
      */
     explicit Smb4KHomesUserDialog(const SharePtr &share, QWidget *parent = 0);
-    
+
     /**
      * Destructor
      */
     ~Smb4KHomesUserDialog();
-    
+
     /**
      * Set the user names
      */
     void setUserNames(const QStringList &users);
-    
+
     /**
      * Get the user names
      */
     QStringList userNames();
-    
+
     /**
      * Get the user name to use
      */
-    QString login() { return m_user_combo->currentText(); }
-    
-  protected Q_SLOTS:
+    QString login()
+    {
+        return m_user_combo->currentText();
+    }
+
+protected Q_SLOTS:
     /**
      * Is connected to the textChanged() signal of the combo box
      * in the "Specify User" dialog.
@@ -178,19 +179,19 @@ class Smb4KHomesUserDialog : public QDialog
      * entries from the combo box.
      */
     void slotClearClicked();
-    
+
     /**
      * This slot is called when the "OK" button is clicked.
      */
     void slotOkClicked();
-    
+
     /**
      * This slot is used to add the input text to the completion object
      * of the input combo box.
      */
     void slotHomesUserEntered();
-    
-  private:
+
+private:
     void setupView();
     QPushButton *m_clear_button;
     QPushButton *m_ok_button;
@@ -199,17 +200,15 @@ class Smb4KHomesUserDialog : public QDialog
     SharePtr m_share;
 };
 
-
 class Smb4KHomesSharesHandlerPrivate
 {
-  public:
+public:
     QList<Smb4KHomesUsers *> homesUsers;
 };
 
-
 class Smb4KHomesSharesHandlerStatic
 {
-  public:
+public:
     Smb4KHomesSharesHandler instance;
 };
 

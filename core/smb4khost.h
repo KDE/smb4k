@@ -2,7 +2,7 @@
     Smb4K's container class for information about a host.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2019 by Alexander Reinholdt
+    copyright            : (C) 2008-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,14 +30,13 @@
 #include "smb4kbasicnetworkitem.h"
 
 // Qt includes
-#include <QString>
-#include <QScopedPointer>
 #include <QHostAddress>
+#include <QScopedPointer>
+#include <QString>
 
 // forward declarations
 class Smb4KAuthInfo;
 class Smb4KHostPrivate;
-
 
 /**
  * This class is a container that carries information about a host found in
@@ -48,9 +47,9 @@ class Smb4KHostPrivate;
 
 class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
 {
-  friend class Smb4KHostPrivate;
-  
-  public:
+    friend class Smb4KHostPrivate;
+
+public:
     /**
      * The default constructor. It takes the name of the host as only argument.
      * You have to set all other information with the other functions provided
@@ -91,7 +90,7 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      *
      * @returns the host's name.
      */
-    QString hostName() const; 
+    QString hostName() const;
 
     /**
      * Set the workgroup where this host is located.
@@ -114,7 +113,7 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @param ip                  The IP address of this host.
      */
     void setIpAddress(const QString &ip);
-    
+
     /**
      * Set the IP address of this host. @p ip will only be accepted
      * if it is compatible with either IPv4 or IPv6.
@@ -131,10 +130,10 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @returns the host's IP address or an empty string.
      */
     QString ipAddress() const;
-    
+
     /**
      * Returns TRUE if the host's IP address is set and FALSE otherwise.
-     * 
+     *
      * @returns TRUE if the host's IP address is known.
      */
     bool hasIpAddress() const;
@@ -176,7 +175,7 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @param authInfo    The authentication information
      */
     void setAuthInfo(Smb4KAuthInfo *authInfo);
-    
+
     /**
      * Set the login name for the host.
      *
@@ -190,30 +189,30 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
      * @returns the login name.
      */
     QString login() const;
-    
+
     /**
      * Set the password used for authentication.
-     * 
+     *
      * @param passwd              The password
      */
     void setPassword(const QString &passwd);
-    
+
     /**
      * Returns the password.
-     * 
+     *
      * @returns the password.
      */
     QString password() const;
-    
+
     /**
      * Updates the host item if the workgroup and host name of @p host and
      * of this item is equal. Otherwise it does nothing.
      * @param host            The share object that is used to update
      *                        this object
      */
-    void update(Smb4KHost *host);    
+    void update(Smb4KHost *host);
 
-  private:
+private:
     const QScopedPointer<Smb4KHostPrivate> d;
 };
 

@@ -2,7 +2,7 @@
     The configuration page for the synchronization options
                              -------------------
     begin                : So Nov 20 2005
-    copyright            : (C) 2005-2019 by Alexander Reinholdt
+    copyright            : (C) 2005-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -38,9 +38,9 @@
 
 class Smb4KConfigPageSynchronization : public QTabWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The constructor.
      *
@@ -52,8 +52,8 @@ class Smb4KConfigPageSynchronization : public QTabWidget
      * The destructor
      */
     ~Smb4KConfigPageSynchronization();
-    
-  protected slots:
+
+protected slots:
     /**
      * This slot is invoked if the "Archive mode" checkbox has been
      * toggled.
@@ -80,25 +80,25 @@ class Smb4KConfigPageSynchronization : public QTabWidget
      *                      checked and FALSE otherwise.
      */
     void slotBackupToggled(bool checked);
-    
+
     /**
      * This slot is called when the compression checkbox has been toggled.
-     * It enables/disables all other compression settings according to the 
+     * It enables/disables all other compression settings according to the
      * state of the compression button.
-     * 
+     *
      * @param checked       TRUE if checked and FALSE otherwise
      */
     void slotCompressToggled(bool checked);
-    
+
     /**
      * This slot is called when the 'keep partially transferred files' checkbox
      * has been toggled. It enables/disables the dependent settings according
      * to the state of the checkbox.
-     * 
+     *
      * @param checked       TRUE if checked and FALSE otherwise
      */
     void slotKeepPartialToggled(bool checked);
-    
+
     /**
      * This slot is called if the '-F' shortcut has been toggled.
      * It unchecks the '-F -F' shortcut.

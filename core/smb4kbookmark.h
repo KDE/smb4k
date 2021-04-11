@@ -2,7 +2,7 @@
     This is the bookmark container for Smb4K (next generation).
                              -------------------
     begin                : So Jun 8 2008
-    copyright            : (C) 2008-2020 by Alexander Reinholdt
+    copyright            : (C) 2008-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,11 +30,10 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QString>
-#include <QScopedPointer>
-#include <QUrl>
 #include <QIcon>
-
+#include <QScopedPointer>
+#include <QString>
+#include <QUrl>
 
 // forward declarations
 class Smb4KShare;
@@ -49,9 +48,9 @@ class Smb4KBookmarkPrivate;
 
 class Q_DECL_EXPORT Smb4KBookmark
 {
-  friend class Smb4KBookmarkPrivate;
-  
-  public:
+    friend class Smb4KBookmarkPrivate;
+
+public:
     /**
      * The constructor.
      *
@@ -176,14 +175,14 @@ class Q_DECL_EXPORT Smb4KBookmark
      * @returns the login.
      */
     QString login() const;
-    
+
     /**
      * Sets the URL of the share after some checks are passed.
      *
      * @param url             The URL of the network item
      */
     void setUrl(const QUrl &url);
-    
+
     /**
      * Sets the URL of the share.
      *
@@ -211,23 +210,23 @@ class Q_DECL_EXPORT Smb4KBookmark
      * @returns the category name
      */
     QString categoryName() const;
-    
+
     /**
-     * Sets the profile this bookmark belongs to. The profile is meant 
+     * Sets the profile this bookmark belongs to. The profile is meant
      * to distinguish between several network environments, like home
      * and work, and is not an alternative to the categories.
-     * 
+     *
      * @param profile         The profile name
      */
     void setProfile(const QString &profile);
-    
+
     /**
      * Returns the name of the profile this bookmark belongs to.
-     * 
+     *
      * @returns the profile name
      */
     QString profile() const;
-    
+
     /**
      * This function sets the icon of the bookmark.
      *
@@ -243,7 +242,7 @@ class Q_DECL_EXPORT Smb4KBookmark
      * @returns the network item's icon.
      */
     QIcon icon() const;
-    
+
     /**
      * Returns the display string. Prefer this over all other alternatives in your
      * GUI.
@@ -251,7 +250,7 @@ class Q_DECL_EXPORT Smb4KBookmark
      */
     QString displayString() const;
 
-  private:
+private:
     const QScopedPointer<Smb4KBookmarkPrivate> d;
 };
 

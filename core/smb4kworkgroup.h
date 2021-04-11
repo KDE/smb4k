@@ -2,7 +2,7 @@
     Smb4K's container class for information about a workgroup.
                              -------------------
     begin                : Sa Jan 26 2008
-    copyright            : (C) 2008-2020 by Alexander Reinholdt
+    copyright            : (C) 2008-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,10 +30,9 @@
 #include "smb4kbasicnetworkitem.h"
 
 // Qt includes
-#include <QString>
-#include <QScopedPointer>
 #include <QHostAddress>
-
+#include <QScopedPointer>
+#include <QString>
 
 // forward declarations
 class Smb4KWorkgroupPrivate;
@@ -48,9 +47,9 @@ class Smb4KWorkgroupPrivate;
 
 class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
 {
-  friend class Smb4KWorkgroupPrivate;
-  
-  public:
+    friend class Smb4KWorkgroupPrivate;
+
+public:
     /**
      * The default constructor. It takes the name of the workgroup as only
      * argument. You have to set all other information by the other functions
@@ -106,11 +105,11 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * @returns the name of the master browser.
      */
     QString masterBrowserName() const;
-    
+
     /**
-     * Returns TRUE if there is a master browser and FALSE otherwise. No master 
+     * Returns TRUE if there is a master browser and FALSE otherwise. No master
      * browser might be defined, if the DNS-SD method is used.
-     * 
+     *
      * @returns TRUE if there is a master browser.
      */
     bool hasMasterBrowser() const;
@@ -122,11 +121,11 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * @param ip              The master browser's IP address
      */
     void setMasterBrowserIpAddress(const QString &ip);
-    
+
     /**
      * Set the IP address of the master browser. @p address will only be accepted
      * if it is compatible with either IPv4 or IPv6.
-     * 
+     *
      * @param address         The master browser's IP address
      */
     void setMasterBrowserIpAddress(const QHostAddress &address);
@@ -139,9 +138,9 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      * @returns the IP address of the master browser or an empty string.
      */
     QString masterBrowserIpAddress() const;
-    
+
     /**
-     * Returns TRUE if the workgroup/domain master browsers IP address is set and 
+     * Returns TRUE if the workgroup/domain master browsers IP address is set and
      * FALSE otherwise.
      *
      * @returns TRUE if the master browsers IP address is known.
@@ -156,7 +155,7 @@ class Q_DECL_EXPORT Smb4KWorkgroup : public Smb4KBasicNetworkItem
      */
     void update(Smb4KWorkgroup *workgroup);
 
-  private:
+private:
     const QScopedPointer<Smb4KWorkgroupPrivate> d;
 };
 

@@ -2,7 +2,7 @@
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2020 by Alexander Reinholdt
+    copyright            : (C) 2007-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,8 +30,8 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QTreeWidgetItem>
 #include <QTreeWidget>
+#include <QTreeWidgetItem>
 
 // forward declarations
 class Smb4KNetworkBrowser;
@@ -45,7 +45,7 @@ class Smb4KNetworkBrowser;
 
 class Smb4KNetworkBrowserItem : public QTreeWidgetItem
 {
-  public:
+public:
     /**
      * The constructor for toplevel items.
      *
@@ -70,13 +70,10 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
     /**
      * Columns of the item.
      */
-    enum Columns{ Network = 0,
-                  Type = 1,
-                  IP = 2,
-                  Comment = 3 };
+    enum Columns { Network = 0, Type = 1, IP = 2, Comment = 3 };
 
     /**
-     * This function is provided for convenience. It returns a pointer to 
+     * This function is provided for convenience. It returns a pointer to
      * the Smb4KWorkgroup object if it is present or NULL if it is not.
      *
      * @returns a pointer to the workgroup item or NULL.
@@ -84,7 +81,7 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
     WorkgroupPtr workgroupItem();
 
     /**
-     * This function is provided for convenience. It returns a pointer to 
+     * This function is provided for convenience. It returns a pointer to
      * the Smb4KHost object if it is present or NULL if it is not.
      *
      * @returns a pointer to the host item or NULL.
@@ -92,27 +89,27 @@ class Smb4KNetworkBrowserItem : public QTreeWidgetItem
     HostPtr hostItem();
 
     /**
-     * This function is provided for convenience. It returns a pointer to 
+     * This function is provided for convenience. It returns a pointer to
      * the Smb4KShare object if it is present or NULL if it is not.
      *
      * @returns a pointer to the share item or NULL.
      */
     SharePtr shareItem();
-    
+
     /**
      * This function returns the encapsulated network item.
-     * 
+     *
      * @returns a pointer to the encapsulated Smb4KBasicNetworkItem object
      * or NULL if there is no item defined (this should never happen).
      */
     const NetworkItemPtr &networkItem();
-    
+
     /**
      * This function updates the internal network item.
      */
     void update();
-    
-  private:
+
+private:
     /**
      * The network item
      */

@@ -1,9 +1,9 @@
 /***************************************************************************
-    This configuration page takes care of all settings concerning the 
+    This configuration page takes care of all settings concerning the
     user interface
                              -------------------
     begin                : Mi Aug 30 2006
-    copyright            : (C) 2006-2019 by Alexander Reinholdt
+    copyright            : (C) 2006-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,7 +30,6 @@
 // Qt includes
 #include <QTabWidget>
 
-
 /**
  * The configuration page for the user interface of Smb4K.
  *
@@ -39,9 +38,9 @@
 
 class Smb4KConfigPageUserInterface : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The constructor
      *

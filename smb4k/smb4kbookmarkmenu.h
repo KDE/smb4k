@@ -2,7 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
                              -------------------
     begin                : Sat Apr 02 2011
-    copyright            : (C) 2011-2020 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -41,18 +41,16 @@
 // forward declarations
 class Smb4KBookmark;
 
-
 class Smb4KBookmarkMenu : public KActionMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Enumeration
      */
-    enum Type { MainWindow,
-                SystemTray };
-    
+    enum Type { MainWindow, SystemTray };
+
     /**
      * Constructor
      */
@@ -64,44 +62,44 @@ class Smb4KBookmarkMenu : public KActionMenu
     ~Smb4KBookmarkMenu();
 
     /**
-     * Force the menu to be set up again. This should be called if 
+     * Force the menu to be set up again. This should be called if
      * the settings changed and the handling of bookmarks might be
      * affected.
      */
     void refreshMenu();
-    
+
     /**
      * Enable/disable the 'Add Bookmark' action
      */
     void setBookmarkActionEnabled(bool enable);
-    
-  Q_SIGNALS:
+
+Q_SIGNALS:
     /**
      * This signal is emitted when the 'Add Bookmark' is triggered.
      */
     void addBookmark();
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     /**
      * Called when the edit action is triggered
      */
     void slotEditActionTriggered(bool checked);
-    
+
     /**
      * Called when the add action is triggered
      */
     void slotAddActionTriggered(bool checked);
-    
+
     /**
      * Called when the toplevel mount action is triggered
      */
     void slotToplevelMountActionTriggered(bool checked);
-    
+
     /**
      * Called when a category action is triggered
      */
     void slotCategoryActionTriggered(QAction *action);
-    
+
     /**
      * Called when a bookmark action is triggered
      */
@@ -111,18 +109,18 @@ class Smb4KBookmarkMenu : public KActionMenu
      * Called when the list bookmarks has been updated
      */
     void slotBookmarksUpdated();
-    
+
     /**
      * Called when a bookmark was unmounted
      */
     void slotEnableBookmark(const SharePtr &share);
 
-  private:
+private:
     /**
      * Set up the menu
      */
     void setupMenu();
-    
+
     /**
      * Type
      */
@@ -132,7 +130,7 @@ class Smb4KBookmarkMenu : public KActionMenu
      * Widget that should be used as parent
      */
     QWidget *m_parent_widget;
-    
+
     /**
      * The actions
      */

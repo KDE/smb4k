@@ -2,7 +2,7 @@
     Private helper class(es) for the hardware interface
                              -------------------
     begin                : Die Jul 14 2015
-    copyright            : (C) 2015-2017 by Alexander Reinholdt
+    copyright            : (C) 2015-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,13 +30,13 @@
 #include "smb4khardwareinterface.h"
 
 // Qt includes
-#include <QStringList>
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
+#include <QStringList>
 
 class Smb4KHardwareInterfacePrivate
 {
-  public:
+public:
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
     QStringList mountPoints;
 #endif
@@ -46,12 +46,10 @@ class Smb4KHardwareInterfacePrivate
     QStringList udis;
 };
 
-
 class Smb4KHardwareInterfaceStatic
 {
-  public:
+public:
     Smb4KHardwareInterface instance;
 };
 
 #endif
-

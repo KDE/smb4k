@@ -2,7 +2,7 @@
     The item for Smb4K's shares view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2020 by Alexander Reinholdt
+    copyright            : (C) 2006-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -46,7 +46,7 @@ class Smb4KSharesView;
 
 class Smb4KSharesViewItem : public QListWidgetItem
 {
-  public:
+public:
     /**
      * The constructor.
      *
@@ -60,26 +60,29 @@ class Smb4KSharesViewItem : public QListWidgetItem
      * The destructor
      */
     ~Smb4KSharesViewItem();
-    
+
     /**
      * This function returns the encapsulated Smb4KShare item.
-     * 
+     *
      * @returns the encapsulated Smb4KShare item.
      */
-    const SharePtr &shareItem() { return m_share; }
+    const SharePtr &shareItem()
+    {
+        return m_share;
+    }
 
     /**
      * This function updates the encapsulated Smb4KShare object.
      */
     void update();
-    
+
     /**
      * This function modifies the alignment according to the @p mode used in
      * the parent list widget.
      */
     void setItemAlignment(QListView::ViewMode mode);
-    
-  private:
+
+private:
     /**
      * The Smb4KShare item
      */
@@ -87,4 +90,3 @@ class Smb4KSharesViewItem : public QListWidgetItem
 };
 
 #endif
-

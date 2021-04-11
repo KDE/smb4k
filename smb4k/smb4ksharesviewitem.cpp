@@ -2,7 +2,7 @@
     The item for Smb4K's shares view.
                              -------------------
     begin                : Di Dez 5 2006
-    copyright            : (C) 2006-2020 by Alexander Reinholdt
+    copyright            : (C) 2006-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -25,51 +25,43 @@
 
 // application specific includes
 #include "smb4ksharesviewitem.h"
-#include "smb4ksharesview.h"
 #include "core/smb4kshare.h"
-
+#include "smb4ksharesview.h"
 
 Smb4KSharesViewItem::Smb4KSharesViewItem(Smb4KSharesView *parent, const SharePtr &share)
-: QListWidgetItem(parent), m_share(share)
+    : QListWidgetItem(parent)
+    , m_share(share)
 {
-  setFlags(flags() | Qt::ItemIsDropEnabled);
-  setItemAlignment(parent->viewMode());
+    setFlags(flags() | Qt::ItemIsDropEnabled);
+    setItemAlignment(parent->viewMode());
 
-  setText(m_share->displayString());
-  setIcon(m_share->icon());
+    setText(m_share->displayString());
+    setIcon(m_share->icon());
 }
-
 
 Smb4KSharesViewItem::~Smb4KSharesViewItem()
 {
 }
 
-
 void Smb4KSharesViewItem::update()
 {
-  setText(m_share->displayString());
-  setIcon(m_share->icon());
+    setText(m_share->displayString());
+    setIcon(m_share->icon());
 }
-
 
 void Smb4KSharesViewItem::setItemAlignment(QListView::ViewMode mode)
 {
-  switch (mode)
-  {
-    case QListView::IconMode:
-    {
-      setTextAlignment(Qt::AlignHCenter|Qt::AlignTop);
-      break;
+    switch (mode) {
+    case QListView::IconMode: {
+        setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
+        break;
     }
-    case QListView::ListMode:
-    {
-      setTextAlignment(Qt::AlignAbsolute|Qt::AlignVCenter);
-      break;
+    case QListView::ListMode: {
+        setTextAlignment(Qt::AlignAbsolute | Qt::AlignVCenter);
+        break;
     }
-    default:
-    {
-      break;
+    default: {
+        break;
     }
-  }
+    }
 }
-

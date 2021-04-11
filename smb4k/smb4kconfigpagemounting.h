@@ -2,7 +2,7 @@
     The configuration page for the mount options
                              -------------------
     begin                : So Mär 22 2015
-    copyright            : (C) 2015-2020 by Alexander Reinholdt
+    copyright            : (C) 2015-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -31,27 +31,27 @@
 
 /**
  * This configuration page contains the mount options
- * 
+ *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  * @since 2.0.0
  */
 
 class Smb4KConfigPageMounting : public QTabWidget
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     /**
      * The constructor
      */
-    explicit Smb4KConfigPageMounting(QWidget* parent = 0);
-    
+    explicit Smb4KConfigPageMounting(QWidget *parent = 0);
+
     /**
      * The destructor
      */
     virtual ~Smb4KConfigPageMounting();
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     /**
      * Sets the new general user ID.
      *
@@ -65,33 +65,33 @@ class Smb4KConfigPageMounting : public QTabWidget
      * @param action              The action that represents the new group.
      */
     void slotNewGroupTriggered(QAction *action);
-    
+
     /**
      * Enable / disable the options that are only necessary when the servers
      * do not support the CIFS Unix extensions.
-     * 
+     *
      * @param checked             TRUE if the button is checked
      */
     void slotCIFSUnixExtensionsSupport(bool checked);
-    
+
     /**
      * This slot is activated when the additional CIFS options are to be
      * edited (Linux only).
      */
     void slotAdditionalCIFSOptions();
-    
+
     /**
      * This slot is activated when the setting of the character set usage is changed
      * (BSD only).
      */
     void slotCharacterSets(bool on);
-    
+
     /**
      * This slot is activated when the "Remount shares" check box is toggled
      */
     void slotRemountSharesToggled(bool on);
-    
-  private:
+
+private:
     /**
      * Set up the widget
      */

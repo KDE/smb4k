@@ -36,9 +36,9 @@ using namespace KAuth;
 
 class Smb4KMountHelper : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public slots:
+public slots:
     /**
      * Mounts a CIFS/SMBFS share.
      */

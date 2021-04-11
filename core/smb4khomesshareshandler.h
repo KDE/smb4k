@@ -2,7 +2,7 @@
     This class handles the homes shares
                              -------------------
     begin                : Do Aug 10 2006
-    copyright            : (C) 2006-2019 by Alexander Reinholdt
+    copyright            : (C) 2006-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -30,20 +30,18 @@
 #include "smb4kglobal.h"
 
 // Qt includes
+#include <QDialog>
+#include <QList>
 #include <QObject>
+#include <QScopedPointer>
 #include <QString>
 #include <QStringList>
-#include <QList>
-#include <QScopedPointer>
-#include <QDialog>
-
 
 // forward declarations
 class Smb4KAuthInfo;
 class Smb4KHomesUsers;
 class Smb4KHomesSharesHandlerPrivate;
 class Smb4KProfileManager;
-
 
 /**
  * This class belongs to the core of Smb4K and takes care of the
@@ -54,12 +52,12 @@ class Smb4KProfileManager;
 
 class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class Smb4KHomesSharesHandlerPrivate;
-  friend class Smb4KProfileManager;
+    friend class Smb4KHomesSharesHandlerPrivate;
+    friend class Smb4KProfileManager;
 
-  public:
+public:
     /**
      * The constructor
      */
@@ -69,7 +67,7 @@ class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
      * The destructor
      */
     ~Smb4KHomesSharesHandler();
-    
+
     /**
      * Returns a static pointer to this class.
      */
@@ -77,7 +75,7 @@ class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
 
     /**
      * This function will open a dialog where the user has to define a
-     * user name to access a 'homes' share. You also can define if the 
+     * user name to access a 'homes' share. You also can define if the
      * user name should be overwritten in case one has already been set
      * (default is TRUE).
      *
@@ -85,79 +83,79 @@ class Q_DECL_EXPORT Smb4KHomesSharesHandler : public QObject
      * is cleared.
      *
      * @param share       The share that is representing the homes share
-     * 
+     *
      * @param overwrite   Overwrite user name or not
      *
      * @returns TRUE if user has been chosen and FALSE otherwise.
      */
     bool specifyUser(const SharePtr &share, bool overwrite = true);
-    
+
     /**
      * Return the list of users defined for a certain homes share.
-     * 
+     *
      * @param share       The share
-     * 
+     *
      * @returns a list of users
      */
     QStringList homesUsers(const SharePtr &share);
-    
-  protected Q_SLOTS:
+
+protected Q_SLOTS:
     /**
      * Called when the application goes down
      */
     void slotAboutToQuit();
-    
+
     /**
      * This slot is called if the active profile changed.
-     * 
+     *
      * @param activeProfile   The name of the active profile
      */
     void slotActiveProfileChanged(const QString &activeProfile);
-    
-  private:
+
+private:
     /**
      * Load the host and user names into a map.
      */
     const QList<Smb4KHomesUsers *> readUserNames(bool readAll);
 
     /**
-     * This function writes the homes user entries to the disk. If @p listOnly 
-     * is set to TRUE, only the list that was passed will be written to the 
-     * file replacing the existing homes user entries. If it is FALSE (the 
-     * default), the list will be merged with the existing homes user entries. 
+     * This function writes the homes user entries to the disk. If @p listOnly
+     * is set to TRUE, only the list that was passed will be written to the
+     * file replacing the existing homes user entries. If it is FALSE (the
+     * default), the list will be merged with the existing homes user entries.
      *
-     * @param list          The (new) list of homes user entries that is to be 
+     * @param list          The (new) list of homes user entries that is to be
      *                      written.
      * @param listOnly      If TRUE only the passed list will be written to
      *                      the file.
      */
     void writeUserNames(const QList<Smb4KHomesUsers *> &list, bool listOnly = false);
-    
+
     /**
      * Find the homes user for a specific share
      */
     const QStringList findHomesUsers(const SharePtr &share);
-    
+
     /**
      * Add user to a homes share
      */
     void addHomesUsers(const SharePtr &share, const QStringList &users);
-    
+
     /**
      * Migrates one profile to another.
-     * 
+     *
      * This function is meant to be used by the profile manager.
-     * 
+     *
      * @param from        The name of the old profile.
      * @param to          The name of the new profile.
      */
     void migrateProfile(const QString &from, const QString &to);
-    
+
     /**
      * Removes a profile from the list of profiles.
-     * 
+     *
      * This function is meant to be used by the profile manager.
-     * 
+     *
      * @param name        The name of the profile.
      */
     void removeProfile(const QString &name);

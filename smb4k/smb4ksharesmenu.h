@@ -2,7 +2,7 @@
     smb4ksharesmenu  -  Shares menu
                              -------------------
     begin                : Mon Sep 05 2011
-    copyright            : (C) 2011-2019 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -42,9 +42,9 @@ class Smb4KShare;
 
 class Smb4KSharesMenu : public KActionMenu
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Constructor
      */
@@ -60,7 +60,7 @@ class Smb4KSharesMenu : public KActionMenu
      */
     void refreshMenu();
 
-  protected slots:
+protected slots:
     /**
      * This slot is connected to the Smb4KMounter::mountedSharesListChanged()
      * signal. It refreshes the menu.
@@ -79,7 +79,7 @@ class Smb4KSharesMenu : public KActionMenu
      */
     void slotShareAction(QAction *action);
 
-  private:
+private:
     /**
      * Setup the menu
      */

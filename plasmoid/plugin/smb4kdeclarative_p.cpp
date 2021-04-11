@@ -2,7 +2,7 @@
     This class provides helper classes for Smb4KDeclarative
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2017 by Alexander Reinholdt
+    copyright            : (C) 2013-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -25,4 +25,3 @@
 
 // application specific includes
 #include "smb4kdeclarative_p.h"
-

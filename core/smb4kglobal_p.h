@@ -2,7 +2,7 @@
     These are the private helper classes of the Smb4KGlobal namespace.
                              -------------------
     begin                : Di Jul 24 2007
-    copyright            : (C) 2007-2020 by Alexander Reinholdt
+    copyright            : (C) 2007-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,16 +27,16 @@
 #define SMB4KGLOBAL_P_H
 
 // application specific includes
-#include "smb4kworkgroup.h"
 #include "smb4khost.h"
 #include "smb4kshare.h"
+#include "smb4kworkgroup.h"
 
 // Qt includes
+#include <QFileSystemWatcher>
 #include <QList>
 #include <QMap>
 #include <QObject>
 #include <QSharedPointer>
-#include <QFileSystemWatcher>
 
 /**
  * This class is a private helper for the Smb4KGlobal namespace.
@@ -46,9 +46,9 @@
 
 class Smb4KGlobalPrivate : public QObject
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     /**
      * Constructor
      */
@@ -78,7 +78,7 @@ class Smb4KGlobalPrivate : public QObject
      * This is the global list of shares.
      */
     QList<QSharedPointer<Smb4KShare>> sharesList;
-    
+
     /**
      * Boolean that is TRUE when only foreign shares
      * are in the list of mounted shares
@@ -90,13 +90,13 @@ class Smb4KGlobalPrivate : public QObject
      * been initialized
      */
     bool coreInitialized;
-    
+
     /**
      * Boolean that determines if the core classes should set
      * a busy cursor when they are doing something or not.
      */
     bool modifyCursor;
-    
+
 #ifdef Q_OS_LINUX
     /**
      * This list contains all allowed arguments for the mount.cifs binary and
@@ -104,18 +104,18 @@ class Smb4KGlobalPrivate : public QObject
      */
     QStringList allowedMountArguments;
 #endif
-    
+
     /**
      * The machine's NetBIOS name
      */
     QString machineNetbiosName;
-    
+
     /**
      * The machine's workgroup name
      */
     QString machineWorkgroupName;
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     /**
      * This slot does last things before the application quits
      */

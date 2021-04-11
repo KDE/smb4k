@@ -1,9 +1,9 @@
 /***************************************************************************
-    This class derives from QObject and encapsulates a profile item/name. 
+    This class derives from QObject and encapsulates a profile item/name.
     It is for use with QtQuick.
                              -------------------
     begin                : So 23 Nov 2014
-    copyright            : (C) 2014-2019 by Alexander Reinholdt
+    copyright            : (C) 2014-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,50 +27,43 @@
 // application specific includes
 #include "smb4kprofileobject.h"
 
-
 class Smb4KProfileObjectPrivate
 {
-  public:
+public:
     QString profileName;
     bool activeProfile;
 };
 
-
-Smb4KProfileObject::Smb4KProfileObject(QObject* parent)
-: QObject(parent), d(new Smb4KProfileObjectPrivate)
+Smb4KProfileObject::Smb4KProfileObject(QObject *parent)
+    : QObject(parent)
+    , d(new Smb4KProfileObjectPrivate)
 {
-  d->profileName = QString();
-  d->activeProfile = false;
+    d->profileName = QString();
+    d->activeProfile = false;
 }
-
 
 Smb4KProfileObject::~Smb4KProfileObject()
 {
 }
 
-
 QString Smb4KProfileObject::profileName() const
 {
-  return d->profileName;
+    return d->profileName;
 }
 
-
-void Smb4KProfileObject::setProfileName(const QString& profileName)
+void Smb4KProfileObject::setProfileName(const QString &profileName)
 {
-  d->profileName = profileName;
-  emit changed();
+    d->profileName = profileName;
+    emit changed();
 }
-
 
 bool Smb4KProfileObject::isActiveProfile() const
 {
-  return d->activeProfile;
+    return d->activeProfile;
 }
-
 
 void Smb4KProfileObject::setActiveProfile(bool active)
 {
-  d->activeProfile = active;
-  emit changed();
+    d->activeProfile = active;
+    emit changed();
 }
-

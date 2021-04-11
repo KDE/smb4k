@@ -2,7 +2,7 @@
     Private helper classes for the wallet manager of Smb4K.
                              -------------------
     begin                : Mo Dez 31 2012
-    copyright            : (C) 2012-2019 by Alexander Reinholdt
+    copyright            : (C) 2012-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,44 +27,37 @@
 #define SMB4KWALLETMANAGER_P_H
 
 // application specific includes
-#include "smb4kwalletmanager.h"
 #include "smb4kbasicnetworkitem.h"
+#include "smb4kwalletmanager.h"
 
 // KDE includes
 #include <KWallet/KWallet>
 #include <KWidgetsAddons/KPasswordDialog>
 
-
 class Smb4KPasswordDialog : public KPasswordDialog
 {
-  Q_OBJECT
-  
-  public:
-    Smb4KPasswordDialog(const NetworkItemPtr &networkItem,
-                        const QMap<QString,QString> &knownLogins,
-                        QWidget *parent = 0);
+    Q_OBJECT
+
+public:
+    Smb4KPasswordDialog(const NetworkItemPtr &networkItem, const QMap<QString, QString> &knownLogins, QWidget *parent = 0);
     virtual ~Smb4KPasswordDialog();
 
-  protected Q_SLOTS:
-    void slotGotUsernameAndPassword(const QString &user,
-                                    const QString &pass,
-                                    bool keep);
+protected Q_SLOTS:
+    void slotGotUsernameAndPassword(const QString &user, const QString &pass, bool keep);
 
-  private:
+private:
     NetworkItemPtr m_item;
 };
 
-
 class Smb4KWalletManagerPrivate
 {
-  public:
+public:
     KWallet::Wallet *wallet;
 };
 
-
 class Smb4KWalletManagerStatic
 {
-  public:
+public:
     Smb4KWalletManager instance;
 };
 

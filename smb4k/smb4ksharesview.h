@@ -2,7 +2,7 @@
     This is the shares view of Smb4K.
                              -------------------
     begin                : Mo Dez 4 2006
-    copyright            : (C) 2006-2020 by Alexander Reinholdt
+    copyright            : (C) 2006-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,14 +27,13 @@
 #define SMB4KSHARESVIEW_H
 
 // Qt includes
-#include <QTimer>
-#include <QMimeData>
 #include <QListWidget>
+#include <QMimeData>
+#include <QTimer>
 
 // forward declarations
 class Smb4KSharesViewItem;
 class Smb4KToolTip;
-
 
 /**
  * This widget class provides the shares view of Smb4K.
@@ -44,9 +43,9 @@ class Smb4KToolTip;
 
 class Smb4KSharesView : public QListWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The constructor.
      *
@@ -58,21 +57,21 @@ class Smb4KSharesView : public QListWidget
      * The destructor.
      */
     ~Smb4KSharesView();
-    
+
     /**
      * Set the view mode.
-     * 
+     *
      * @param mode          The view mode
      * @param iconSize      The size of the icons
      */
     void setViewMode(ViewMode mode, int iconSize);
-    
+
     /**
      * The tooltip
      */
     Smb4KToolTip *toolTip();
 
-  signals:
+signals:
     /**
      * This signal is emitted when something has been dropped onto
      * @p item and the drop event was accepted.
@@ -83,7 +82,7 @@ class Smb4KSharesView : public QListWidget
      */
     void acceptedDropEvent(Smb4KSharesViewItem *item, QDropEvent *e);
 
-  protected:
+protected:
     /**
      * Reimplemented from QListWidget.
      */
@@ -96,11 +95,11 @@ class Smb4KSharesView : public QListWidget
      * @param e             The mouse event object
      */
     void mousePressEvent(QMouseEvent *e) override;
-    
+
     /**
      * Reimplemented from QAbstractItemView. This function handles
      * mouse move events.
-     * 
+     *
      * @param e             The mouse event object
      */
     void mouseMoveEvent(QMouseEvent *e) override;
@@ -141,7 +140,7 @@ class Smb4KSharesView : public QListWidget
      */
     void startDrag(Qt::DropActions supported) override;
 
-  private:
+private:
     /**
      * The tool top widget
      */

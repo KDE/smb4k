@@ -2,7 +2,7 @@
     This class provides helper classes for Smb4KDeclarative
                              -------------------
     begin                : Mo 02 Sep 2013
-    copyright            : (C) 2013-2017 by Alexander Reinholdt
+    copyright            : (C) 2013-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,13 +27,13 @@
 #define SMB4KDECLARATIVE_P_H
 
 // application specific includes
-#include "smb4knetworkobject.h"
 #include "smb4kbookmarkobject.h"
+#include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
 
 class Smb4KDeclarativePrivate
 {
-  public:
+public:
     QList<Smb4KNetworkObject *> workgroupObjects;
     QList<Smb4KNetworkObject *> hostObjects;
     QList<Smb4KNetworkObject *> shareObjects;

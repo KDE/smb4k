@@ -1,9 +1,9 @@
 /***************************************************************************
-    These are the private helper classes of the Smb4KNotification 
+    These are the private helper classes of the Smb4KNotification
     namespace.
                              -------------------
     begin                : So Jun 22 2014
-    copyright            : (C) 2014-2019 by Alexander Reinholdt
+    copyright            : (C) 2014-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -34,21 +34,20 @@
 // KDE includes
 #include <KNotifications/KNotification>
 
-
 class Smb4KNotifier : public KNotification
 {
-  Q_OBJECT
-  
-  public:
+    Q_OBJECT
+
+public:
     Smb4KNotifier(const QString &event);
     ~Smb4KNotifier();
     void setMountpoint(const QUrl &mountpoint);
     QUrl mountpoint() const;
 
-  public Q_SLOTS:
+public Q_SLOTS:
     void slotOpenShare();
-    
-  private:
+
+private:
     QUrl m_mountpoint;
 };
 

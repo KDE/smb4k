@@ -2,7 +2,7 @@
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
                              -------------------
     begin                : Mo Jan 8 2007
-    copyright            : (C) 2007-2020 by Alexander Reinholdt
+    copyright            : (C) 2007-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -35,15 +35,15 @@ class Smb4KToolTip;
 
 /**
  * This is the network neighborhood browser widget.
- * 
+ *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  */
 
 class Smb4KNetworkBrowser : public QTreeWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The constructor
      *
@@ -59,17 +59,14 @@ class Smb4KNetworkBrowser : public QTreeWidget
     /**
      * Enumeration for the columns in the list view.
      */
-    enum Columns{ Network = 0,
-                  Type = 1,
-                  IP = 2,
-                  Comment = 3 };
-                  
+    enum Columns { Network = 0, Type = 1, IP = 2, Comment = 3 };
+
     /**
      * The tooltip
      */
     Smb4KToolTip *toolTip();
 
-  protected:
+protected:
     /**
      * Reimplemented from QWidget.
      */
@@ -82,16 +79,16 @@ class Smb4KNetworkBrowser : public QTreeWidget
      * @param e             The mouse event object
      */
     void mousePressEvent(QMouseEvent *e) override;
-    
+
     /**
      * Reimplemented from QAbstractItemView. This function handles
      * mouse move events.
-     * 
+     *
      * @param e             The mouse event object
      */
     void mouseMoveEvent(QMouseEvent *e) override;
 
-  protected slots:
+protected slots:
     /**
      * This slot is called when the user activated an item. It is used
      * to open the item if it is expandable.
@@ -103,10 +100,10 @@ class Smb4KNetworkBrowser : public QTreeWidget
     /**
      * Take care that only shares are selected when the user marks multiple
      * shares.
-     */    
+     */
     void slotItemSelectionChanged();
 
-  private:
+private:
     /**
      * The tool top widget
      */

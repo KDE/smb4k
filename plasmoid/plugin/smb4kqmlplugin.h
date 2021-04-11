@@ -2,7 +2,7 @@
     smb4kqmlplugin - The QML plugin for use with Plasma/QtQuick
                              -------------------
     begin                : Di Feb 21 2012
-    copyright            : (C) 2012-2019 by Alexander Reinholdt
+    copyright            : (C) 2012-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -27,15 +27,15 @@
 #define SMB4KQMLPLUGIN_H
 
 // Qt includes
-#include <QtPlugin>
 #include <QQmlExtensionPlugin>
+#include <QtPlugin>
 
 class Smb4KQMLPlugin : public QQmlExtensionPlugin
 {
-  Q_OBJECT
-  Q_PLUGIN_METADATA(IID "org.kde.smb4k.smb4kqmlplugin")
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.smb4k.smb4kqmlplugin")
 
-  public:
+public:
     void registerTypes(const char *uri) override;
 };
 

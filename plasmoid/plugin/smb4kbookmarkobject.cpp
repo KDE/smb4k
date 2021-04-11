@@ -3,7 +3,7 @@
     is for use with QtQuick.
                              -------------------
     begin                : Fr Mai 11 2013
-    copyright            : (C) 2013-2020 by Alexander Reinholdt
+    copyright            : (C) 2013-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -33,10 +33,9 @@
 // KDE includes
 #include <KIconThemes/KIconLoader>
 
-
 class Smb4KBookmarkObjectPrivate
 {
-  public:
+public:
     QString workgroup;
     QUrl url;
     QString label;
@@ -47,160 +46,136 @@ class Smb4KBookmarkObjectPrivate
     QHostAddress hostIP;
 };
 
-
-Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark* bookmark, QObject* parent)
-: QObject(parent), d(new Smb4KBookmarkObjectPrivate)
+Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark *bookmark, QObject *parent)
+    : QObject(parent)
+    , d(new Smb4KBookmarkObjectPrivate)
 {
-  d->workgroup  = bookmark->workgroupName();
-  d->url        = bookmark->url();
-  d->label      = bookmark->label();
-  d->category   = bookmark->categoryName();
-  d->login      = bookmark->login();
-  d->isCategory = false;
-  d->isMounted  = false;
-  d->hostIP.setAddress(bookmark->hostIpAddress());
+    d->workgroup = bookmark->workgroupName();
+    d->url = bookmark->url();
+    d->label = bookmark->label();
+    d->category = bookmark->categoryName();
+    d->login = bookmark->login();
+    d->isCategory = false;
+    d->isMounted = false;
+    d->hostIP.setAddress(bookmark->hostIpAddress());
 }
 
-
-Smb4KBookmarkObject::Smb4KBookmarkObject(const QString& categoryName, QObject* parent)
-: QObject(parent), d(new Smb4KBookmarkObjectPrivate)
+Smb4KBookmarkObject::Smb4KBookmarkObject(const QString &categoryName, QObject *parent)
+    : QObject(parent)
+    , d(new Smb4KBookmarkObjectPrivate)
 {
-  d->category   = categoryName;
-  d->isCategory = true;
-  d->isMounted  = false;
+    d->category = categoryName;
+    d->isCategory = true;
+    d->isMounted = false;
 }
 
-
-
-Smb4KBookmarkObject::Smb4KBookmarkObject(QObject* parent)
-: QObject(parent), d(new Smb4KBookmarkObjectPrivate)
+Smb4KBookmarkObject::Smb4KBookmarkObject(QObject *parent)
+    : QObject(parent)
+    , d(new Smb4KBookmarkObjectPrivate)
 {
-  d->isCategory = false;
-  d->isMounted  = false;
+    d->isCategory = false;
+    d->isMounted = false;
 }
-
 
 Smb4KBookmarkObject::~Smb4KBookmarkObject()
 {
 }
 
-
 QString Smb4KBookmarkObject::workgroupName() const
 {
-  return d->workgroup;
+    return d->workgroup;
 }
 
-
-void Smb4KBookmarkObject::setWorkgroupName(const QString& name)
+void Smb4KBookmarkObject::setWorkgroupName(const QString &name)
 {
-  d->workgroup = name;
-  emit changed();
+    d->workgroup = name;
+    emit changed();
 }
-
 
 QString Smb4KBookmarkObject::hostName() const
 {
-  return d->url.host().toUpper();
+    return d->url.host().toUpper();
 }
-
 
 QString Smb4KBookmarkObject::shareName() const
 {
-  return d->url.path().remove('/');
+    return d->url.path().remove('/');
 }
-
 
 QString Smb4KBookmarkObject::label() const
 {
-  return d->label;
+    return d->label;
 }
 
-
-void Smb4KBookmarkObject::setLabel(const QString& label)
+void Smb4KBookmarkObject::setLabel(const QString &label)
 {
-  d->label = label;
-  emit changed();
+    d->label = label;
+    emit changed();
 }
-
 
 QUrl Smb4KBookmarkObject::url() const
 {
-  return d->url;
+    return d->url;
 }
 
-
-void Smb4KBookmarkObject::setUrl(const QUrl& url)
+void Smb4KBookmarkObject::setUrl(const QUrl &url)
 {
-  d->url = url;
-  emit changed();
+    d->url = url;
+    emit changed();
 }
-
 
 QString Smb4KBookmarkObject::categoryName() const
 {
-  return d->category;
+    return d->category;
 }
 
-
-void Smb4KBookmarkObject::setCategoryName(const QString& name)
+void Smb4KBookmarkObject::setCategoryName(const QString &name)
 {
-  d->category = name;
-  emit changed();
+    d->category = name;
+    emit changed();
 }
-
 
 bool Smb4KBookmarkObject::isCategory() const
 {
-  return d->isCategory;
+    return d->isCategory;
 }
-
 
 void Smb4KBookmarkObject::setCategory(bool category)
 {
-  d->isCategory = category;
-  emit changed();
+    d->isCategory = category;
+    emit changed();
 }
-
 
 bool Smb4KBookmarkObject::isMounted() const
 {
-  return d->isMounted;
+    return d->isMounted;
 }
-
 
 void Smb4KBookmarkObject::setMounted(bool mounted)
 {
-  d->isMounted = mounted;
-  emit changed();
+    d->isMounted = mounted;
+    emit changed();
 }
-
 
 QString Smb4KBookmarkObject::login() const
 {
-  return d->login;
+    return d->login;
 }
 
-
-void Smb4KBookmarkObject::setLogin(const QString& name)
+void Smb4KBookmarkObject::setLogin(const QString &name)
 {
-  d->login = name;
-  emit changed();
+    d->login = name;
+    emit changed();
 }
-
 
 QString Smb4KBookmarkObject::hostIP() const
 {
-  return d->hostIP.toString();
+    return d->hostIP.toString();
 }
 
-
-void Smb4KBookmarkObject::setHostIP(const QString& ip)
+void Smb4KBookmarkObject::setHostIP(const QString &ip)
 {
-  if (d->hostIP.setAddress(ip))
-  {
-    emit changed();
-  }
+    if (d->hostIP.setAddress(ip)) {
+        emit changed();
+    }
 }
-
-
-

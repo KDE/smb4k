@@ -43,110 +43,110 @@ class Smb4KSettings;
 
 class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * The constructor
      * @param parent        The parent widget
      * @param args          The argument list
      */
     Smb4KConfigDialog(QWidget *parent, const QList<QVariant> &args);
-    
+
     /**
      * The destructor
      */
     ~Smb4KConfigDialog();
 
-  protected slots:
+protected slots:
     /**
-     * Reimplemented from KConfigDialog. Used to do things that 
+     * Reimplemented from KConfigDialog. Used to do things that
      * KConfigDialog::updateSettings() does not do.
      */
     void updateSettings() override;
-    
+
     /**
      * Reimplemented from KConfigDialog. Used to do things before
      * the dialog is shown.
      */
     void updateWidgets() override;
-    
+
     /**
      * Reimplemented from QDialog. Used to reset things after the dialog was
      * closed via the 'Cancel' button.
      */
     void reject() override;
-    
+
     /**
      * This slot is connected to the "Load" button of the "Wallet Entries" tab
      * of the "Authentication" configuration page. It loads the authentication
      * information and puts it into the list view.
      */
     void slotLoadAuthenticationInformation();
-    
+
     /**
      * This slot is connected to the "Save" button of the "Wallet Entries" tab
      * of the "Authentication" configuration page. It saves the authentication
      * information.
      */
     void slotSaveAuthenticationInformation();
-    
+
     /**
      * This slot is connected to the Smb4KAuthOptions::setDefaultLogin() signal.
      * It defines the default login.
      */
     void slotSetDefaultLogin();
-    
+
     /**
      * Enable/disable the "Apply" button if settings that are not managed by
      * KConfig XT have changed.
      */
     void slotEnableApplyButton();
-    
+
     /**
      * This slot is used to check the settings of the different pages.
-     * 
+     *
      * @param current     the current dialog page
      * @param before      the previous dialog page
      */
     void slotCheckPage(KPageWidgetItem *current, KPageWidgetItem *before);
-    
-  private:
+
+private:
     /**
      * "User Interface" page
      */
     KPageWidgetItem *m_user_interface;
-    
+
     /**
      * "Network" page
      */
     KPageWidgetItem *m_network;
-    
+
     /**
      * "Authentication" page
      */
     KPageWidgetItem *m_authentication;
-    
+
     /**
      * "Mounting" page
      */
     KPageWidgetItem *m_mounting;
-    
+
     /**
      * "Synchronization" page
      */
     KPageWidgetItem *m_synchronization;
-    
+
     /**
      * "Custom Options" page
      */
     KPageWidgetItem *m_custom_options;
-    
+
     /**
      * "Profiles" page
      */
     KPageWidgetItem *m_profiles;
-    
+
     /**
      * Set up the config dialog.
      */
@@ -161,30 +161,30 @@ class Q_DECL_EXPORT Smb4KConfigDialog : public KConfigDialog
      * Save the custom Samba options
      */
     void saveCustomOptions();
-    
+
     /**
      * Takes care that the changes made to the profiles are propagated
      * to the core classes via the profiles manager.
      */
     void propagateProfilesChanges();
-    
+
     /**
      * Checks the settings in the Network page.
-     * 
+     *
      * @returns TRUE if everything is OK and FALSE otherwise.
      */
     bool checkNetworkPage();
-    
+
     /**
      * Checks the settings in the Mounting page.
-     * 
+     *
      * @returns TRUE if everything is OK and FALSE otherwise.
      */
     bool checkMountingPage();
-    
+
     /**
      * Checks the settings in the Synchronization page.
-     * 
+     *
      * @returns TRUE if everything is OK and FALSE otherwise.
      */
     bool checkSynchronizationPage();

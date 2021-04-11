@@ -2,7 +2,7 @@
     Private classes for the bookmark handler
                              -------------------
     begin                : Sun Mar 20 2011
-    copyright            : (C) 2011-2020 by Alexander Reinholdt
+    copyright            : (C) 2011-2021 by Alexander Reinholdt
     email                : alexander.reinholdt@kdemail.net
  ***************************************************************************/
 
@@ -25,1286 +25,1148 @@
 
 // application specific includes
 #include "smb4kbookmarkhandler_p.h"
-#include "smb4ksettings.h"
 #include "smb4kbookmark.h"
+#include "smb4ksettings.h"
 
 // Qt includes
-#include <QEvent>
-#include <QTimer>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QGridLayout>
-#include <QLabel>
-#include <QHeaderView>
-#include <QTreeWidgetItemIterator>
-#include <QPushButton>
-#include <QMenu>
-#include <QInputDialog>
 #include <QDialogButtonBox>
-#include <QDropEvent>
-#include <QDragMoveEvent>
 #include <QDragEnterEvent>
 #include <QDragLeaveEvent>
+#include <QDragMoveEvent>
+#include <QDropEvent>
+#include <QEvent>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QInputDialog>
+#include <QLabel>
+#include <QMenu>
+#include <QPushButton>
+#include <QTimer>
+#include <QTreeWidgetItemIterator>
+#include <QVBoxLayout>
 #include <QWindow>
 
 // KDE includes
 #define TRANSLATION_DOMAIN "smb4k-core"
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KConfigGui/KWindowConfig>
 #include <KCompletion/KComboBox>
 #include <KCompletion/KLineEdit>
-
+#include <KConfigGui/KWindowConfig>
+#include <KI18n/KLocalizedString>
+#include <KIconThemes/KIconLoader>
 
 Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks, const QStringList &categories, QWidget *parent)
-: QDialog(parent)
+    : QDialog(parent)
 {
-  //
-  // Set the window title
-  // 
-  setWindowTitle(i18n("Add Bookmarks"));
+    //
+    // Set the window title
+    //
+    setWindowTitle(i18n("Add Bookmarks"));
 
-  //
-  // Setup the view
-  // 
-  setupView();
-  
-  //
-  // Load the list of bookmarks and categories
-  // 
-  loadLists(bookmarks, categories);
+    //
+    // Setup the view
+    //
+    setupView();
 
-  //
-  // Set the dialog size
-  // 
-  create();
+    //
+    // Load the list of bookmarks and categories
+    //
+    loadLists(bookmarks, categories);
 
-  KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
-  QSize dialogSize;
-  
-  if (group.exists())
-  {
-    KWindowConfig::restoreWindowSize(windowHandle(), group);
-    dialogSize = windowHandle()->size();
-  }
-  else
-  {
-    dialogSize = sizeHint();
-  }
-  
-  resize(dialogSize); // workaround for QTBUG-40584
+    //
+    // Set the dialog size
+    //
+    create();
 
-  //
-  // Fill the completion objects
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  
-  if (group.hasKey("GroupCompletion"))
-  {
-    // For backward compatibility (since Smb4K 3.0.72).
-    categoryCombo->completionObject()->setItems(group.readEntry("GroupCompletion", m_categories));
-    group.deleteEntry("GroupCompletion");
-  }
-  else
-  {
-    categoryCombo->completionObject()->setItems(group.readEntry("CategoryCompletion", m_categories));
-  }
+    KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
+    QSize dialogSize;
 
-  KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-  labelEdit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
+    if (group.exists()) {
+        KWindowConfig::restoreWindowSize(windowHandle(), group);
+        dialogSize = windowHandle()->size();
+    } else {
+        dialogSize = sizeHint();
+    }
 
-  //
-  // Connections
-  // 
-  connect(KIconLoader::global(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)));
+    resize(dialogSize); // workaround for QTBUG-40584
+
+    //
+    // Fill the completion objects
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+
+    if (group.hasKey("GroupCompletion")) {
+        // For backward compatibility (since Smb4K 3.0.72).
+        categoryCombo->completionObject()->setItems(group.readEntry("GroupCompletion", m_categories));
+        group.deleteEntry("GroupCompletion");
+    } else {
+        categoryCombo->completionObject()->setItems(group.readEntry("CategoryCompletion", m_categories));
+    }
+
+    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    labelEdit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
+
+    //
+    // Connections
+    //
+    connect(KIconLoader::global(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)));
 }
-
 
 Smb4KBookmarkDialog::~Smb4KBookmarkDialog()
 {
-  while (!m_bookmarks.isEmpty())
-  {
-    m_bookmarks.takeFirst().clear();
-  }
+    while (!m_bookmarks.isEmpty()) {
+        m_bookmarks.takeFirst().clear();
+    }
 }
-
 
 const QList<BookmarkPtr> &Smb4KBookmarkDialog::bookmarks()
 {
-  return m_bookmarks;
+    return m_bookmarks;
 }
-
 
 void Smb4KBookmarkDialog::setupView()
 {
-  QVBoxLayout *layout = new QVBoxLayout(this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
 
-  QWidget *description = new QWidget(this);
-  QHBoxLayout *descriptionLayout = new QHBoxLayout(description);
-  descriptionLayout->setContentsMargins(0, 0, 0, 0);
+    QWidget *description = new QWidget(this);
+    QHBoxLayout *descriptionLayout = new QHBoxLayout(description);
+    descriptionLayout->setContentsMargins(0, 0, 0, 0);
 
-  QLabel *pixmap = new QLabel(description);
-  QPixmap sync_pix = KDE::icon("bookmark-new").pixmap(KIconLoader::SizeHuge);
-  pixmap->setPixmap(sync_pix);
-  pixmap->setAlignment(Qt::AlignBottom);
+    QLabel *pixmap = new QLabel(description);
+    QPixmap sync_pix = KDE::icon("bookmark-new").pixmap(KIconLoader::SizeHuge);
+    pixmap->setPixmap(sync_pix);
+    pixmap->setAlignment(Qt::AlignBottom);
 
-  QLabel *label = new QLabel(i18n("All listed shares will be bookmarked. To edit the label "
-                                  "or group, click the respective bookmark entry."), description);
-  label->setWordWrap(true);
-  label->setAlignment(Qt::AlignBottom);
+    QLabel *label = new QLabel(i18n("All listed shares will be bookmarked. To edit the label "
+                                    "or group, click the respective bookmark entry."),
+                               description);
+    label->setWordWrap(true);
+    label->setAlignment(Qt::AlignBottom);
 
-  descriptionLayout->addWidget(pixmap, 0);
-  descriptionLayout->addWidget(label, Qt::AlignBottom);
+    descriptionLayout->addWidget(pixmap, 0);
+    descriptionLayout->addWidget(label, Qt::AlignBottom);
 
-  QListWidget *listWidget = new QListWidget(this);
-  listWidget->setObjectName("BookmarksListWidget");
-  listWidget->setSortingEnabled(true);
-  listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-  int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
-  listWidget->setIconSize(QSize(iconSize, iconSize));
+    QListWidget *listWidget = new QListWidget(this);
+    listWidget->setObjectName("BookmarksListWidget");
+    listWidget->setSortingEnabled(true);
+    listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
+    listWidget->setIconSize(QSize(iconSize, iconSize));
 
-  QWidget *editorWidgets = new QWidget(this);
-  editorWidgets->setObjectName("EditorWidgets");
-  editorWidgets->setEnabled(false);
+    QWidget *editorWidgets = new QWidget(this);
+    editorWidgets->setObjectName("EditorWidgets");
+    editorWidgets->setEnabled(false);
 
-  QGridLayout *editorWidgetsLayout = new QGridLayout(editorWidgets);
-  editorWidgetsLayout->setContentsMargins(0, 0, 0, 0);
+    QGridLayout *editorWidgetsLayout = new QGridLayout(editorWidgets);
+    editorWidgetsLayout->setContentsMargins(0, 0, 0, 0);
 
-  //
-  // The label editor
-  // 
-  QLabel *labelLabel = new QLabel(i18n("Label:"), editorWidgets);
-  KLineEdit *labelEdit = new KLineEdit(editorWidgets);
-  labelEdit->setObjectName("LabelEdit");
-  labelEdit->setClearButtonEnabled(true);
+    //
+    // The label editor
+    //
+    QLabel *labelLabel = new QLabel(i18n("Label:"), editorWidgets);
+    KLineEdit *labelEdit = new KLineEdit(editorWidgets);
+    labelEdit->setObjectName("LabelEdit");
+    labelEdit->setClearButtonEnabled(true);
 
-  //
-  // The category editor
-  // 
-  QLabel *categoryLabel = new QLabel(i18n("Category:"), editorWidgets);
-  KComboBox *categoryCombo = new KComboBox(true, editorWidgets);
-  categoryCombo->setObjectName("CategoryCombo");
+    //
+    // The category editor
+    //
+    QLabel *categoryLabel = new QLabel(i18n("Category:"), editorWidgets);
+    KComboBox *categoryCombo = new KComboBox(true, editorWidgets);
+    categoryCombo->setObjectName("CategoryCombo");
 
-  editorWidgetsLayout->addWidget(labelLabel, 0, 0);
-  editorWidgetsLayout->addWidget(labelEdit, 0, 1);
-  editorWidgetsLayout->addWidget(categoryLabel, 1, 0);
-  editorWidgetsLayout->addWidget(categoryCombo, 1, 1);
-  
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
-  QPushButton *okButton = buttonBox->addButton(QDialogButtonBox::Ok);
-  QPushButton *cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
-  
-  okButton->setShortcut(Qt::CTRL|Qt::Key_Return);
-  cancelButton->setShortcut(Qt::Key_Escape);
-  
-  okButton->setDefault(true);
+    editorWidgetsLayout->addWidget(labelLabel, 0, 0);
+    editorWidgetsLayout->addWidget(labelEdit, 0, 1);
+    editorWidgetsLayout->addWidget(categoryLabel, 1, 0);
+    editorWidgetsLayout->addWidget(categoryCombo, 1, 1);
 
-  layout->addWidget(description, 0);
-  layout->addWidget(listWidget, 0);
-  layout->addWidget(editorWidgets, 0);
-  layout->addWidget(buttonBox, 0);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+    QPushButton *okButton = buttonBox->addButton(QDialogButtonBox::Ok);
+    QPushButton *cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
 
-  //
-  // Connections
-  // 
-  connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotBookmarkClicked(QListWidgetItem*)));
-  connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
-  connect(categoryCombo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotCategoryEdited()));
-  connect(okButton, SIGNAL(clicked()), this, SLOT(slotDialogAccepted()));
-  connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+    okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+    cancelButton->setShortcut(Qt::Key_Escape);
+
+    okButton->setDefault(true);
+
+    layout->addWidget(description, 0);
+    layout->addWidget(listWidget, 0);
+    layout->addWidget(editorWidgets, 0);
+    layout->addWidget(buttonBox, 0);
+
+    //
+    // Connections
+    //
+    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(slotBookmarkClicked(QListWidgetItem *)));
+    connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
+    connect(categoryCombo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotCategoryEdited()));
+    connect(okButton, SIGNAL(clicked()), this, SLOT(slotDialogAccepted()));
+    connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
-
 
 void Smb4KBookmarkDialog::loadLists(const QList<BookmarkPtr> &bookmarks, const QStringList &categories)
 {
-  //
-  // Get the category combo box
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
-  
-  // 
-  // Copy the bookmarks to the internal list and add them to 
-  // the list widget afterwards.
-  // 
-  for (const BookmarkPtr &b : bookmarks)
-  {
-    QListWidgetItem *item = new QListWidgetItem(b->icon(), b->displayString(), listWidget);
-    item->setData(Qt::UserRole, static_cast<QUrl>(b->url()));
-    
-    m_bookmarks << b;
-  }
+    //
+    // Get the category combo box
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
 
-  //
-  // Copy the categories
-  // 
-  m_categories = categories;
-  
-  //
-  // Add the categories to the combo box
-  // 
-  categoryCombo->addItems(m_categories);
+    //
+    // Copy the bookmarks to the internal list and add them to
+    // the list widget afterwards.
+    //
+    for (const BookmarkPtr &b : bookmarks) {
+        QListWidgetItem *item = new QListWidgetItem(b->icon(), b->displayString(), listWidget);
+        item->setData(Qt::UserRole, static_cast<QUrl>(b->url()));
+
+        m_bookmarks << b;
+    }
+
+    //
+    // Copy the categories
+    //
+    m_categories = categories;
+
+    //
+    // Add the categories to the combo box
+    //
+    categoryCombo->addItems(m_categories);
 }
-
 
 BookmarkPtr Smb4KBookmarkDialog::findBookmark(const QUrl &url)
 {
-  BookmarkPtr bookmark;
-  
-  for (const BookmarkPtr &b : m_bookmarks)
-  {
-    if (b->url() == url)
-    {
-      bookmark = b;
-      break;
-    }
-    else
-    {
-      continue;
-    }
-  }
+    BookmarkPtr bookmark;
 
-  return bookmark;
+    for (const BookmarkPtr &b : m_bookmarks) {
+        if (b->url() == url) {
+            bookmark = b;
+            break;
+        } else {
+            continue;
+        }
+    }
+
+    return bookmark;
 }
-
 
 void Smb4KBookmarkDialog::slotBookmarkClicked(QListWidgetItem *bookmarkItem)
 {
-  //
-  // Get the widgets
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-  QWidget *editorWidgets = findChild<QWidget *>("EditorWidgets");
+    //
+    // Get the widgets
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    QWidget *editorWidgets = findChild<QWidget *>("EditorWidgets");
 
-  //
-  // Modify the widgets
-  // 
-  if (bookmarkItem)
-  {
-    // Enable the editor widgets if necessary
-    if (!editorWidgets->isEnabled())
-    {
-      editorWidgets->setEnabled(true);
-    }
+    //
+    // Modify the widgets
+    //
+    if (bookmarkItem) {
+        // Enable the editor widgets if necessary
+        if (!editorWidgets->isEnabled()) {
+            editorWidgets->setEnabled(true);
+        }
 
-    QUrl url = bookmarkItem->data(Qt::UserRole).toUrl();
-    BookmarkPtr bookmark = findBookmark(url);
-    
+        QUrl url = bookmarkItem->data(Qt::UserRole).toUrl();
+        BookmarkPtr bookmark = findBookmark(url);
 
-    if (bookmark)
-    {
-      labelEdit->setText(bookmark->label());
-      categoryCombo->setCurrentItem(bookmark->categoryName());
+        if (bookmark) {
+            labelEdit->setText(bookmark->label());
+            categoryCombo->setCurrentItem(bookmark->categoryName());
+        } else {
+            labelEdit->clear();
+            categoryCombo->clearEditText();
+            editorWidgets->setEnabled(false);
+        }
+    } else {
+        labelEdit->clear();
+        categoryCombo->clearEditText();
+        editorWidgets->setEnabled(false);
     }
-    else
-    {
-      labelEdit->clear();
-      categoryCombo->clearEditText();
-      editorWidgets->setEnabled(false);
-    }
-  }
-  else
-  {
-    labelEdit->clear();
-    categoryCombo->clearEditText();
-    editorWidgets->setEnabled(false);
-  }
 }
-
 
 void Smb4KBookmarkDialog::slotLabelEdited()
 {
-  //
-  // Get the label line edit
-  // 
-  KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-  QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
-  
-  // 
-  // Set the label
-  // 
-  QUrl url = listWidget->currentItem()->data(Qt::UserRole).toUrl();
-  BookmarkPtr bookmark = findBookmark(url);
+    //
+    // Get the label line edit
+    //
+    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
 
-  if (bookmark)
-  {
-    bookmark->setLabel(labelEdit->userText());
-  }
+    //
+    // Set the label
+    //
+    QUrl url = listWidget->currentItem()->data(Qt::UserRole).toUrl();
+    BookmarkPtr bookmark = findBookmark(url);
 
-  // 
-  // Add label to completion object
-  // 
-  KCompletion *completion = labelEdit->completionObject();
+    if (bookmark) {
+        bookmark->setLabel(labelEdit->userText());
+    }
 
-  if (!labelEdit->userText().isEmpty())
-  {
-    completion->addItem(labelEdit->userText());
-  }
+    //
+    // Add label to completion object
+    //
+    KCompletion *completion = labelEdit->completionObject();
+
+    if (!labelEdit->userText().isEmpty()) {
+        completion->addItem(labelEdit->userText());
+    }
 }
-
 
 void Smb4KBookmarkDialog::slotCategoryEdited()
 {
-  //
-  // Get the category combo box
-  //
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
-  
-  //
-  // Get the bookmark
-  // 
-  QUrl url = listWidget->currentItem()->data(Qt::UserRole).toUrl();
-  BookmarkPtr bookmark = findBookmark(url);
+    //
+    // Get the category combo box
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
 
-  //
-  // Set the category name
-  // 
-  if (bookmark)
-  {
-    bookmark->setCategoryName(categoryCombo->currentText());
-  }
+    //
+    // Get the bookmark
+    //
+    QUrl url = listWidget->currentItem()->data(Qt::UserRole).toUrl();
+    BookmarkPtr bookmark = findBookmark(url);
 
-  // 
-  // Add the category name to the combo box
-  // 
-  if (categoryCombo->findText(categoryCombo->currentText()) == -1)
-  {
-    categoryCombo->addItem(categoryCombo->currentText());
-  }
+    //
+    // Set the category name
+    //
+    if (bookmark) {
+        bookmark->setCategoryName(categoryCombo->currentText());
+    }
 
-  // Add group to completion object
-  KCompletion *completion = categoryCombo->completionObject();
+    //
+    // Add the category name to the combo box
+    //
+    if (categoryCombo->findText(categoryCombo->currentText()) == -1) {
+        categoryCombo->addItem(categoryCombo->currentText());
+    }
 
-  if (!categoryCombo->currentText().isEmpty())
-  {
-    completion->addItem(categoryCombo->currentText());
-  }
+    // Add group to completion object
+    KCompletion *completion = categoryCombo->completionObject();
+
+    if (!categoryCombo->currentText().isEmpty()) {
+        completion->addItem(categoryCombo->currentText());
+    }
 }
-
 
 void Smb4KBookmarkDialog::slotDialogAccepted()
 {
-  //
-  // Get the widgets
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-  
-  KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
-  KWindowConfig::saveWindowSize(windowHandle(), group);
-  group.writeEntry("LabelCompletion", labelEdit->completionObject()->items());
-  group.writeEntry("CategoryCompletion", categoryCombo->completionObject()->items());
-  
-  accept();
-}
+    //
+    // Get the widgets
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
 
+    KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
+    KWindowConfig::saveWindowSize(windowHandle(), group);
+    group.writeEntry("LabelCompletion", labelEdit->completionObject()->items());
+    group.writeEntry("CategoryCompletion", categoryCombo->completionObject()->items());
+
+    accept();
+}
 
 void Smb4KBookmarkDialog::slotIconSizeChanged(int group)
 {
-  //
-  // Get the list widget
-  // 
-  QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
-  
-  //
-  // Change the icon size
-  // 
-  switch (group)
-  {
-    case KIconLoader::Small:
-    {
-      int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
-      listWidget->setIconSize(QSize(iconSize, iconSize));
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-}
+    //
+    // Get the list widget
+    //
+    QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
 
+    //
+    // Change the icon size
+    //
+    switch (group) {
+    case KIconLoader::Small: {
+        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
+        listWidget->setIconSize(QSize(iconSize, iconSize));
+        break;
+    }
+    default: {
+        break;
+    }
+    }
+}
 
 Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QWidget *parent)
-: QDialog(parent), m_bookmarks(bookmarks)
+    : QDialog(parent)
+    , m_bookmarks(bookmarks)
 {
-  //
-  // Set the window title
-  // 
-  setWindowTitle(i18n("Edit Bookmarks"));
-  
-  //
-  // Setup the view
-  // 
-  setupView();
-  
-  //
-  // Load the bookmarks into the editor
-  // 
-  loadBookmarks();
+    //
+    // Set the window title
+    //
+    setWindowTitle(i18n("Edit Bookmarks"));
 
-  //
-  // Set the dialog size
-  // 
-  create();
+    //
+    // Setup the view
+    //
+    setupView();
 
-  KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
-  QSize dialogSize;
-  
-  if (group.exists())
-  {
-    KWindowConfig::restoreWindowSize(windowHandle(), group);
-    dialogSize = windowHandle()->size();
-  }
-  else
-  {
-    dialogSize = sizeHint();
-  }
-  
-  resize(dialogSize); // workaround for QTBUG-40584
-  
-  //
-  // Fill the completion objects
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-  KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
-  KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
-  KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
-  
-  if (group.hasKey("GroupCompletion"))
-  {
-    // For backward compatibility (since Smb4K 3.0.72).
-    categoryCombo->completionObject()->setItems(group.readEntry("GroupCompletion", m_categories));
-    group.deleteEntry("GroupCompletion");
-  }
-  else
-  {
-    categoryCombo->completionObject()->setItems(group.readEntry("CategoryCompletion", m_categories));
-  }
-  
-  labelEdit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
-  ipEdit->completionObject()->setItems(group.readEntry("IPCompletion", QStringList()));
-  loginEdit->completionObject()->setItems(group.readEntry("LoginCompletion", QStringList()));
-  workgroupEdit->completionObject()->setItems(group.readEntry("WorkgroupCompletion", QStringList()));
-  
-  //
-  // Connections
-  // 
-  connect(KIconLoader::global(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)));
+    //
+    // Load the bookmarks into the editor
+    //
+    loadBookmarks();
+
+    //
+    // Set the dialog size
+    //
+    create();
+
+    KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
+    QSize dialogSize;
+
+    if (group.exists()) {
+        KWindowConfig::restoreWindowSize(windowHandle(), group);
+        dialogSize = windowHandle()->size();
+    } else {
+        dialogSize = sizeHint();
+    }
+
+    resize(dialogSize); // workaround for QTBUG-40584
+
+    //
+    // Fill the completion objects
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
+    KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
+    KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
+
+    if (group.hasKey("GroupCompletion")) {
+        // For backward compatibility (since Smb4K 3.0.72).
+        categoryCombo->completionObject()->setItems(group.readEntry("GroupCompletion", m_categories));
+        group.deleteEntry("GroupCompletion");
+    } else {
+        categoryCombo->completionObject()->setItems(group.readEntry("CategoryCompletion", m_categories));
+    }
+
+    labelEdit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
+    ipEdit->completionObject()->setItems(group.readEntry("IPCompletion", QStringList()));
+    loginEdit->completionObject()->setItems(group.readEntry("LoginCompletion", QStringList()));
+    workgroupEdit->completionObject()->setItems(group.readEntry("WorkgroupCompletion", QStringList()));
+
+    //
+    // Connections
+    //
+    connect(KIconLoader::global(), SIGNAL(iconChanged(int)), SLOT(slotIconSizeChanged(int)));
 }
-
 
 Smb4KBookmarkEditor::~Smb4KBookmarkEditor()
 {
-  while (!m_bookmarks.isEmpty())
-  {
-    m_bookmarks.takeFirst().clear();
-  }
+    while (!m_bookmarks.isEmpty()) {
+        m_bookmarks.takeFirst().clear();
+    }
 }
-
 
 bool Smb4KBookmarkEditor::eventFilter(QObject *obj, QEvent *e)
 {
-  //
-  // Get the widget
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  
-  if (obj == treeWidget->viewport())
-  {
-    switch (e->type())
-    {
-      case QEvent::DragEnter:
-      {
-        QDragEnterEvent *ev = static_cast<QDragEnterEvent *>(e);
-        
-        if (ev->source() == treeWidget->viewport())
-        {
-          e->accept();
-        }
-        else
-        {
-          e->ignore();
-        }
-        break;
-      }
-      case QEvent::DragLeave:
-      {
-        e->ignore();
-        break;
-      }
-      case QEvent::Drop:
-      {
-        QTimer::singleShot(50, this, SLOT(slotAdjust()));
-        break;
-      }
-      default:
-      {
-        break;
-      }
-    }
-  }
-  
-  return QDialog::eventFilter(obj, e);
-}
+    //
+    // Get the widget
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
 
+    if (obj == treeWidget->viewport()) {
+        switch (e->type()) {
+        case QEvent::DragEnter: {
+            QDragEnterEvent *ev = static_cast<QDragEnterEvent *>(e);
+
+            if (ev->source() == treeWidget->viewport()) {
+                e->accept();
+            } else {
+                e->ignore();
+            }
+            break;
+        }
+        case QEvent::DragLeave: {
+            e->ignore();
+            break;
+        }
+        case QEvent::Drop: {
+            QTimer::singleShot(50, this, SLOT(slotAdjust()));
+            break;
+        }
+        default: {
+            break;
+        }
+        }
+    }
+
+    return QDialog::eventFilter(obj, e);
+}
 
 void Smb4KBookmarkEditor::setupView()
 {
-  QVBoxLayout *layout = new QVBoxLayout(this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
 
-  QTreeWidget *treeWidget = new QTreeWidget(this);
-  treeWidget->setObjectName("BookmarksTreeWidget");
-  treeWidget->setColumnCount(2);
-  treeWidget->hideColumn((treeWidget->columnCount() - 1)); // for sorting purposes
-  treeWidget->headerItem()->setHidden(true);
-  treeWidget->setRootIsDecorated(true);
-  treeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-  treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
-  treeWidget->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
-  treeWidget->setDragDropMode(QTreeWidget::InternalMove);
-  int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
-  treeWidget->setIconSize(QSize(iconSize, iconSize));
-  treeWidget->viewport()->installEventFilter(this);
+    QTreeWidget *treeWidget = new QTreeWidget(this);
+    treeWidget->setObjectName("BookmarksTreeWidget");
+    treeWidget->setColumnCount(2);
+    treeWidget->hideColumn((treeWidget->columnCount() - 1)); // for sorting purposes
+    treeWidget->headerItem()->setHidden(true);
+    treeWidget->setRootIsDecorated(true);
+    treeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    treeWidget->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    treeWidget->setDragDropMode(QTreeWidget::InternalMove);
+    int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
+    treeWidget->setIconSize(QSize(iconSize, iconSize));
+    treeWidget->viewport()->installEventFilter(this);
 
-  QAction *addCategoryAction = new QAction(KDE::icon("bookmark-add-folder"), i18n("Add Category"), treeWidget);
-  QAction *deleteAction = new QAction(KDE::icon("edit-delete"), i18n("Remove"), treeWidget);
-  deleteAction->setObjectName("DeleteAction");
-  QAction *clearAction = new QAction(KDE::icon("edit-clear"), i18n("Clear"), treeWidget);
-  
-  KActionMenu *actionMenu = new KActionMenu(treeWidget);
-  actionMenu->setObjectName("ActionMenu");
-  actionMenu->addAction(addCategoryAction);
-  actionMenu->addAction(deleteAction);
-  actionMenu->addAction(clearAction);
+    QAction *addCategoryAction = new QAction(KDE::icon("bookmark-add-folder"), i18n("Add Category"), treeWidget);
+    QAction *deleteAction = new QAction(KDE::icon("edit-delete"), i18n("Remove"), treeWidget);
+    deleteAction->setObjectName("DeleteAction");
+    QAction *clearAction = new QAction(KDE::icon("edit-clear"), i18n("Clear"), treeWidget);
 
-  //
-  // The editor widgets
-  // 
-  QWidget *editorWidgets = new QWidget(this);
-  editorWidgets->setObjectName("EditorWidgets");
-  editorWidgets->setEnabled(false);
+    KActionMenu *actionMenu = new KActionMenu(treeWidget);
+    actionMenu->setObjectName("ActionMenu");
+    actionMenu->addAction(addCategoryAction);
+    actionMenu->addAction(deleteAction);
+    actionMenu->addAction(clearAction);
 
-  QGridLayout *editorsLayout = new QGridLayout(editorWidgets);
-  editorsLayout->setContentsMargins(0, 0, 0, 0);
+    //
+    // The editor widgets
+    //
+    QWidget *editorWidgets = new QWidget(this);
+    editorWidgets->setObjectName("EditorWidgets");
+    editorWidgets->setEnabled(false);
 
-  //
-  // The label line edit
-  // 
-  QLabel *labelLabel = new QLabel(i18n("Label:"), editorWidgets);
-  KLineEdit *labelEdit = new KLineEdit(editorWidgets);
-  labelEdit->setObjectName("LabelEdit");
-  labelEdit->setClearButtonEnabled(true);
+    QGridLayout *editorsLayout = new QGridLayout(editorWidgets);
+    editorsLayout->setContentsMargins(0, 0, 0, 0);
 
-  QLabel *loginLabel = new QLabel(i18n("Login:"), editorWidgets);
-  KLineEdit *loginEdit = new KLineEdit(editorWidgets);
-  loginEdit->setObjectName("LoginEdit");
-  loginEdit->setClearButtonEnabled(true);
-  
-  //
-  // The workgroup/domain edit line
-  // 
-  QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), editorWidgets);
-  KLineEdit *workgroupEdit = new KLineEdit(editorWidgets);
-  workgroupEdit->setObjectName("WorkgroupEdit");
-  workgroupEdit->setClearButtonEnabled(true);
+    //
+    // The label line edit
+    //
+    QLabel *labelLabel = new QLabel(i18n("Label:"), editorWidgets);
+    KLineEdit *labelEdit = new KLineEdit(editorWidgets);
+    labelEdit->setObjectName("LabelEdit");
+    labelEdit->setClearButtonEnabled(true);
 
-  //
-  // The IP address line edit
-  // 
-  QLabel *ipLabel = new QLabel(i18n("IP Address:"), editorWidgets);
-  KLineEdit *ipEdit = new KLineEdit(editorWidgets);
-  ipEdit->setObjectName("IpEdit");
-  ipEdit->setClearButtonEnabled(true);
-  
-  //
-  // The category combo box
-  // 
-  QLabel *categoryLabel = new QLabel(i18n("Category:"), editorWidgets);
-  KComboBox *categoryCombo = new KComboBox(true, editorWidgets);
-  categoryCombo->setObjectName("CategoryCombo");
-  categoryCombo->setDuplicatesEnabled(false);
+    QLabel *loginLabel = new QLabel(i18n("Login:"), editorWidgets);
+    KLineEdit *loginEdit = new KLineEdit(editorWidgets);
+    loginEdit->setObjectName("LoginEdit");
+    loginEdit->setClearButtonEnabled(true);
 
-  editorsLayout->addWidget(labelLabel, 0, 0);
-  editorsLayout->addWidget(labelEdit, 0, 1);
-  editorsLayout->addWidget(loginLabel, 1, 0);
-  editorsLayout->addWidget(loginEdit, 1, 1);
-  editorsLayout->addWidget(workgroupLabel, 2, 0);
-  editorsLayout->addWidget(workgroupEdit, 2, 1);
-  editorsLayout->addWidget(ipLabel, 3, 0);
-  editorsLayout->addWidget(ipEdit, 3, 1);
-  editorsLayout->addWidget(categoryLabel, 4, 0);
-  editorsLayout->addWidget(categoryCombo, 4, 1);
-  
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
-  QPushButton *okButton = buttonBox->addButton(QDialogButtonBox::Ok);
-  QPushButton *cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
-  
-  okButton->setShortcut(Qt::CTRL|Qt::Key_Return);
-  cancelButton->setShortcut(Qt::Key_Escape);
+    //
+    // The workgroup/domain edit line
+    //
+    QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), editorWidgets);
+    KLineEdit *workgroupEdit = new KLineEdit(editorWidgets);
+    workgroupEdit->setObjectName("WorkgroupEdit");
+    workgroupEdit->setClearButtonEnabled(true);
 
-  okButton->setDefault(true);
+    //
+    // The IP address line edit
+    //
+    QLabel *ipLabel = new QLabel(i18n("IP Address:"), editorWidgets);
+    KLineEdit *ipEdit = new KLineEdit(editorWidgets);
+    ipEdit->setObjectName("IpEdit");
+    ipEdit->setClearButtonEnabled(true);
 
-  layout->addWidget(treeWidget);
-  layout->addWidget(editorWidgets);
-  layout->addWidget(buttonBox);
+    //
+    // The category combo box
+    //
+    QLabel *categoryLabel = new QLabel(i18n("Category:"), editorWidgets);
+    KComboBox *categoryCombo = new KComboBox(true, editorWidgets);
+    categoryCombo->setObjectName("CategoryCombo");
+    categoryCombo->setDuplicatesEnabled(false);
 
-  //
-  // Connections
-  // 
-  connect(treeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(slotItemClicked(QTreeWidgetItem*,int)));
-  connect(treeWidget, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
-  connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
-  connect(ipEdit, SIGNAL(editingFinished()), this, SLOT(slotIpEdited()));
-  connect(workgroupEdit, SIGNAL(editingFinished()), this, SLOT(slotWorkgroupNameEdited()));
-  connect(loginEdit, SIGNAL(editingFinished()), this, SLOT(slotLoginEdited()));
-  connect(categoryCombo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotCategoryEdited()));
-  connect(addCategoryAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCategoryTriggered(bool)));
-  connect(deleteAction, SIGNAL(triggered(bool)), this, SLOT(slotDeleteTriggered(bool)));
-  connect(clearAction, SIGNAL(triggered(bool)), this, SLOT(slotClearTriggered(bool)));
-  connect(okButton, SIGNAL(clicked()), this, SLOT(slotDialogAccepted()));
-  connect(cancelButton, SIGNAL(clicked()), this, SLOT(slotDialogRejected()));
+    editorsLayout->addWidget(labelLabel, 0, 0);
+    editorsLayout->addWidget(labelEdit, 0, 1);
+    editorsLayout->addWidget(loginLabel, 1, 0);
+    editorsLayout->addWidget(loginEdit, 1, 1);
+    editorsLayout->addWidget(workgroupLabel, 2, 0);
+    editorsLayout->addWidget(workgroupEdit, 2, 1);
+    editorsLayout->addWidget(ipLabel, 3, 0);
+    editorsLayout->addWidget(ipEdit, 3, 1);
+    editorsLayout->addWidget(categoryLabel, 4, 0);
+    editorsLayout->addWidget(categoryCombo, 4, 1);
+
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
+    QPushButton *okButton = buttonBox->addButton(QDialogButtonBox::Ok);
+    QPushButton *cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
+
+    okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+    cancelButton->setShortcut(Qt::Key_Escape);
+
+    okButton->setDefault(true);
+
+    layout->addWidget(treeWidget);
+    layout->addWidget(editorWidgets);
+    layout->addWidget(buttonBox);
+
+    //
+    // Connections
+    //
+    connect(treeWidget, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(slotItemClicked(QTreeWidgetItem *, int)));
+    connect(treeWidget, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
+    connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
+    connect(ipEdit, SIGNAL(editingFinished()), this, SLOT(slotIpEdited()));
+    connect(workgroupEdit, SIGNAL(editingFinished()), this, SLOT(slotWorkgroupNameEdited()));
+    connect(loginEdit, SIGNAL(editingFinished()), this, SLOT(slotLoginEdited()));
+    connect(categoryCombo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotCategoryEdited()));
+    connect(addCategoryAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCategoryTriggered(bool)));
+    connect(deleteAction, SIGNAL(triggered(bool)), this, SLOT(slotDeleteTriggered(bool)));
+    connect(clearAction, SIGNAL(triggered(bool)), this, SLOT(slotClearTriggered(bool)));
+    connect(okButton, SIGNAL(clicked()), this, SLOT(slotDialogAccepted()));
+    connect(cancelButton, SIGNAL(clicked()), this, SLOT(slotDialogRejected()));
 }
-
 
 void Smb4KBookmarkEditor::loadBookmarks()
 {
-  //
-  // Get the widgets
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  
-  //
-  // Clear the tree widget and the group combo box
-  //
-  treeWidget->clear();
-  categoryCombo->clear();
-    
-  // 
-  // Copy the groups into the internal list
-  // 
-  m_categories.clear();
-  
-  for (const BookmarkPtr &bookmark : m_bookmarks)
-  {
-    if (!m_categories.contains(bookmark->categoryName()))
-    {
-      m_categories << bookmark->categoryName();
-    }
-  }
-  
-  //
-  // Insert the groups into the tree widget
-  // 
-  for (const QString &category : m_categories)
-  {
-    if (!category.isEmpty())
-    {
-      QTreeWidgetItem *categoryItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-      categoryItem->setIcon(0, KDE::icon("folder-bookmark"));
-      categoryItem->setText(0, category);
-      categoryItem->setText((treeWidget->columnCount() - 1), QString("00_%1").arg(category));
-      categoryItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled);
-      treeWidget->addTopLevelItem(categoryItem);
-    }
-  }
-  
-  // 
-  // Insert the bookmarks info the tree widget
-  // 
-  for (const BookmarkPtr &bookmark : m_bookmarks)
-  {
-    QTreeWidgetItem *bookmarkItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-    bookmarkItem->setData(0, QTreeWidgetItem::UserType, static_cast<QUrl>(bookmark->url()));
-    bookmarkItem->setIcon(0, bookmark->icon());
-    bookmarkItem->setText(0, bookmark->displayString());
-    bookmarkItem->setText((treeWidget->columnCount() - 1), QString("01_%1").arg(bookmark->url().toString(QUrl::RemoveUserInfo|QUrl::RemovePort)));
-    bookmarkItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDragEnabled);
-    
-    if (!bookmark->categoryName().isEmpty())
-    {
-      QList<QTreeWidgetItem *> items = treeWidget->findItems(bookmark->categoryName(), Qt::MatchFixedString|Qt::MatchCaseSensitive, 0);
-      
-      if (!items.isEmpty())
-      {
-        items.first()->addChild(bookmarkItem);
-        items.first()->setExpanded(true);
-      }
-    }
-    else
-    {
-      treeWidget->addTopLevelItem(bookmarkItem);
-    }
-  }
+    //
+    // Get the widgets
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
 
-  // 
-  // Sort
-  // 
-  for (int i = 0; i < treeWidget->topLevelItemCount(); ++i)
-  {
-    treeWidget->topLevelItem(i)->sortChildren((treeWidget->columnCount() - 1), Qt::AscendingOrder);
-  }
-  
-  treeWidget->sortItems((treeWidget->columnCount() - 1), Qt::AscendingOrder);
-  
-  //
-  // Check that an empty group entry is also present. If it is not there,
-  // add it now and insert the groups to the group combo box afterwards.
-  // 
-  if (!m_categories.contains("") && !m_categories.contains(QString()))
-  {
-    m_categories << "";
-  }
-  
-  categoryCombo->addItems(m_categories);
-  categoryCombo->setCurrentItem("");
+    //
+    // Clear the tree widget and the group combo box
+    //
+    treeWidget->clear();
+    categoryCombo->clear();
+
+    //
+    // Copy the groups into the internal list
+    //
+    m_categories.clear();
+
+    for (const BookmarkPtr &bookmark : m_bookmarks) {
+        if (!m_categories.contains(bookmark->categoryName())) {
+            m_categories << bookmark->categoryName();
+        }
+    }
+
+    //
+    // Insert the groups into the tree widget
+    //
+    for (const QString &category : m_categories) {
+        if (!category.isEmpty()) {
+            QTreeWidgetItem *categoryItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
+            categoryItem->setIcon(0, KDE::icon("folder-bookmark"));
+            categoryItem->setText(0, category);
+            categoryItem->setText((treeWidget->columnCount() - 1), QString("00_%1").arg(category));
+            categoryItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsDropEnabled);
+            treeWidget->addTopLevelItem(categoryItem);
+        }
+    }
+
+    //
+    // Insert the bookmarks info the tree widget
+    //
+    for (const BookmarkPtr &bookmark : m_bookmarks) {
+        QTreeWidgetItem *bookmarkItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
+        bookmarkItem->setData(0, QTreeWidgetItem::UserType, static_cast<QUrl>(bookmark->url()));
+        bookmarkItem->setIcon(0, bookmark->icon());
+        bookmarkItem->setText(0, bookmark->displayString());
+        bookmarkItem->setText((treeWidget->columnCount() - 1), QString("01_%1").arg(bookmark->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort)));
+        bookmarkItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsDragEnabled);
+
+        if (!bookmark->categoryName().isEmpty()) {
+            QList<QTreeWidgetItem *> items = treeWidget->findItems(bookmark->categoryName(), Qt::MatchFixedString | Qt::MatchCaseSensitive, 0);
+
+            if (!items.isEmpty()) {
+                items.first()->addChild(bookmarkItem);
+                items.first()->setExpanded(true);
+            }
+        } else {
+            treeWidget->addTopLevelItem(bookmarkItem);
+        }
+    }
+
+    //
+    // Sort
+    //
+    for (int i = 0; i < treeWidget->topLevelItemCount(); ++i) {
+        treeWidget->topLevelItem(i)->sortChildren((treeWidget->columnCount() - 1), Qt::AscendingOrder);
+    }
+
+    treeWidget->sortItems((treeWidget->columnCount() - 1), Qt::AscendingOrder);
+
+    //
+    // Check that an empty group entry is also present. If it is not there,
+    // add it now and insert the groups to the group combo box afterwards.
+    //
+    if (!m_categories.contains("") && !m_categories.contains(QString())) {
+        m_categories << "";
+    }
+
+    categoryCombo->addItems(m_categories);
+    categoryCombo->setCurrentItem("");
 }
-
 
 QList<BookmarkPtr> Smb4KBookmarkEditor::editedBookmarks()
 {
-  return m_bookmarks;
+    return m_bookmarks;
 }
-
-
 
 BookmarkPtr Smb4KBookmarkEditor::findBookmark(const QUrl &url)
 {
-  BookmarkPtr bookmark;
+    BookmarkPtr bookmark;
 
-  for (const BookmarkPtr &b : m_bookmarks)
-  {
-    if (b->url() == url)
-    {
-      bookmark = b;
-      break;
+    for (const BookmarkPtr &b : m_bookmarks) {
+        if (b->url() == url) {
+            bookmark = b;
+            break;
+        } else {
+            continue;
+        }
     }
-    else
-    {
-      continue;
-    }
-  }
 
-  return bookmark;
+    return bookmark;
 }
-
 
 void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
 {
-  //
-  // Get the widgets
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  QWidget *editorWidgets = findChild<QWidget *>("EditorWidgets");
-  KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-  KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
-  KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
-  KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
-  
-  //
-  // Process the item
-  // 
-  if (item)
-  {
-    if (treeWidget->indexOfTopLevelItem(item) != -1)
-    {
-      // This is a top-level item, i.e. it is either a bookmark without
-      // group or a group entry.
-      // Bookmarks have an URL stored, group folders not.
-      if (!item->data(0, QTreeWidgetItem::UserType).toUrl().isEmpty())
-      {
-        BookmarkPtr bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
+    //
+    // Get the widgets
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    QWidget *editorWidgets = findChild<QWidget *>("EditorWidgets");
+    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
+    KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
+    KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
 
-        if (bookmark)
-        {
-          labelEdit->setText(bookmark->label());
-          loginEdit->setText(bookmark->login());
-          ipEdit->setText(bookmark->hostIpAddress());
-          workgroupEdit->setText(bookmark->workgroupName());
-          categoryCombo->setCurrentItem(bookmark->categoryName());
-          editorWidgets->setEnabled(true);
+    //
+    // Process the item
+    //
+    if (item) {
+        if (treeWidget->indexOfTopLevelItem(item) != -1) {
+            // This is a top-level item, i.e. it is either a bookmark without
+            // group or a group entry.
+            // Bookmarks have an URL stored, group folders not.
+            if (!item->data(0, QTreeWidgetItem::UserType).toUrl().isEmpty()) {
+                BookmarkPtr bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
+
+                if (bookmark) {
+                    labelEdit->setText(bookmark->label());
+                    loginEdit->setText(bookmark->login());
+                    ipEdit->setText(bookmark->hostIpAddress());
+                    workgroupEdit->setText(bookmark->workgroupName());
+                    categoryCombo->setCurrentItem(bookmark->categoryName());
+                    editorWidgets->setEnabled(true);
+                } else {
+                    labelEdit->clear();
+                    loginEdit->clear();
+                    ipEdit->clear();
+                    workgroupEdit->clear();
+                    categoryCombo->clearEditText();
+                    editorWidgets->setEnabled(false);
+                }
+            } else {
+                labelEdit->clear();
+                loginEdit->clear();
+                ipEdit->clear();
+                workgroupEdit->clear();
+                categoryCombo->clearEditText();
+                editorWidgets->setEnabled(false);
+            }
+        } else {
+            // This can only be a bookmark.
+            BookmarkPtr bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
+
+            if (bookmark) {
+                labelEdit->setText(bookmark->label());
+                loginEdit->setText(bookmark->login());
+                ipEdit->setText(bookmark->hostIpAddress());
+                workgroupEdit->setText(bookmark->workgroupName());
+                categoryCombo->setCurrentItem(bookmark->categoryName());
+                editorWidgets->setEnabled(true);
+            } else {
+                labelEdit->clear();
+                loginEdit->clear();
+                ipEdit->clear();
+                workgroupEdit->clear();
+                categoryCombo->clearEditText();
+                editorWidgets->setEnabled(false);
+            }
         }
-        else
-        {
-          labelEdit->clear();
-          loginEdit->clear();
-          ipEdit->clear();
-          workgroupEdit->clear();
-          categoryCombo->clearEditText();
-          editorWidgets->setEnabled(false);
-        }
-      }
-      else
-      {
+    } else {
         labelEdit->clear();
         loginEdit->clear();
         ipEdit->clear();
         workgroupEdit->clear();
         categoryCombo->clearEditText();
         editorWidgets->setEnabled(false);
-      }
     }
-    else
-    {
-      // This can only be a bookmark.
-      BookmarkPtr bookmark = findBookmark(item->data(0, QTreeWidgetItem::UserType).toUrl());
-
-      if (bookmark)
-      {
-        labelEdit->setText(bookmark->label());
-        loginEdit->setText(bookmark->login());
-        ipEdit->setText(bookmark->hostIpAddress());
-        workgroupEdit->setText(bookmark->workgroupName());
-        categoryCombo->setCurrentItem(bookmark->categoryName());
-        editorWidgets->setEnabled(true);
-      }
-      else
-      {
-        labelEdit->clear();
-        loginEdit->clear();
-        ipEdit->clear();
-        workgroupEdit->clear();
-        categoryCombo->clearEditText();
-        editorWidgets->setEnabled(false);
-      }
-    }
-  }
-  else
-  {
-    labelEdit->clear();
-    loginEdit->clear();
-    ipEdit->clear();
-    workgroupEdit->clear();
-    categoryCombo->clearEditText();
-    editorWidgets->setEnabled(false);
-  }
 }
-
 
 void Smb4KBookmarkEditor::slotContextMenuRequested(const QPoint &pos)
 {
-  //
-  // Get the widgets
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  QAction *deleteAction = findChild<QAction *>("DeleteAction");
-  KActionMenu *actionMenu = findChild<KActionMenu *>("ActionMenu");
-  
-  //
-  // Open the context menu
-  // 
-  QTreeWidgetItem *item = treeWidget->itemAt(pos);
-  deleteAction->setEnabled((item));
-  actionMenu->menu()->popup(treeWidget->viewport()->mapToGlobal(pos));  
-}
+    //
+    // Get the widgets
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    QAction *deleteAction = findChild<QAction *>("DeleteAction");
+    KActionMenu *actionMenu = findChild<KActionMenu *>("ActionMenu");
 
+    //
+    // Open the context menu
+    //
+    QTreeWidgetItem *item = treeWidget->itemAt(pos);
+    deleteAction->setEnabled((item));
+    actionMenu->menu()->popup(treeWidget->viewport()->mapToGlobal(pos));
+}
 
 void Smb4KBookmarkEditor::slotLabelEdited()
 {
-  //
-  // Get the widgets
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-  
-  //
-  // Find the bookmark
-  // 
-  QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
+    //
+    // Get the widgets
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
 
-  BookmarkPtr bookmark = findBookmark(url);
+    //
+    // Find the bookmark
+    //
+    QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  // 
-  // Set the label
-  // 
-  if (bookmark)
-  {
-    bookmark->setLabel(labelEdit->userText());
-  }
+    BookmarkPtr bookmark = findBookmark(url);
 
-  // 
-  // Add the label to the completion object
-  // 
-  KCompletion *completion = labelEdit->completionObject();
+    //
+    // Set the label
+    //
+    if (bookmark) {
+        bookmark->setLabel(labelEdit->userText());
+    }
 
-  if (!labelEdit->userText().isEmpty())
-  {
-    completion->addItem(labelEdit->userText());
-  }
+    //
+    // Add the label to the completion object
+    //
+    KCompletion *completion = labelEdit->completionObject();
+
+    if (!labelEdit->userText().isEmpty()) {
+        completion->addItem(labelEdit->userText());
+    }
 }
-
 
 void Smb4KBookmarkEditor::slotLoginEdited()
 {
-  //
-  // Get the widgets
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
-  
-  //
-  // Find the bookmark
-  // 
-  QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
+    //
+    // Get the widgets
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
 
-  BookmarkPtr bookmark = findBookmark(url);
+    //
+    // Find the bookmark
+    //
+    QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  //
-  // Set the login
-  // 
-  if (bookmark)
-  {
-    bookmark->setLogin(loginEdit->userText());
-  }
+    BookmarkPtr bookmark = findBookmark(url);
 
-  // 
-  // Add the login to the completion object
-  // 
-  KCompletion *completion = loginEdit->completionObject();
+    //
+    // Set the login
+    //
+    if (bookmark) {
+        bookmark->setLogin(loginEdit->userText());
+    }
 
-  if (!loginEdit->userText().isEmpty())
-  {
-    completion->addItem(loginEdit->userText());
-  }
+    //
+    // Add the login to the completion object
+    //
+    KCompletion *completion = loginEdit->completionObject();
+
+    if (!loginEdit->userText().isEmpty()) {
+        completion->addItem(loginEdit->userText());
+    }
 }
-
 
 void Smb4KBookmarkEditor::slotIpEdited()
 {
-  //
-  // Get the widgets
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
-  
-  //
-  // Find the bookmark
-  // 
-  QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
+    //
+    // Get the widgets
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
 
-  BookmarkPtr bookmark = findBookmark(url);
+    //
+    // Find the bookmark
+    //
+    QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
 
-  //
-  // Set the IP address
-  // 
-  if (bookmark)
-  {
-    bookmark->setHostIpAddress(ipEdit->userText());
-  }
+    BookmarkPtr bookmark = findBookmark(url);
 
-  // 
-  // Add the IP address to the completion object
-  // 
-  KCompletion *completion = ipEdit->completionObject();
+    //
+    // Set the IP address
+    //
+    if (bookmark) {
+        bookmark->setHostIpAddress(ipEdit->userText());
+    }
 
-  if (!ipEdit->userText().isEmpty())
-  {
-    completion->addItem(ipEdit->userText());
-  }
+    //
+    // Add the IP address to the completion object
+    //
+    KCompletion *completion = ipEdit->completionObject();
+
+    if (!ipEdit->userText().isEmpty()) {
+        completion->addItem(ipEdit->userText());
+    }
 }
-
 
 void Smb4KBookmarkEditor::slotWorkgroupNameEdited()
 {
-  //
-  // Get the widgets
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
-  
-  //
-  // Find the bookmark
-  // 
-  QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
+    //
+    // Get the widgets
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
 
-  BookmarkPtr bookmark = findBookmark(url);
-  
-  //
-  // Set the workgroup name
-  // 
-  if (bookmark)
-  {
-    bookmark->setWorkgroupName(workgroupEdit->userText());
-  }
-  
-  //
-  // Add the workgroup name to the completion object
-  // 
-  KCompletion *completion = workgroupEdit->completionObject();
-  
-  if (!workgroupEdit->userText().isEmpty())
-  {
-    completion->addItem(workgroupEdit->userText());
-  }
+    //
+    // Find the bookmark
+    //
+    QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
+
+    BookmarkPtr bookmark = findBookmark(url);
+
+    //
+    // Set the workgroup name
+    //
+    if (bookmark) {
+        bookmark->setWorkgroupName(workgroupEdit->userText());
+    }
+
+    //
+    // Add the workgroup name to the completion object
+    //
+    KCompletion *completion = workgroupEdit->completionObject();
+
+    if (!workgroupEdit->userText().isEmpty()) {
+        completion->addItem(workgroupEdit->userText());
+    }
 }
-
 
 void Smb4KBookmarkEditor::slotCategoryEdited()
 {
-  //
-  // Get the widgets
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  
-  //
-  // Get the URL of the current item
-  //
-  QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
-  
-  //
-  // Return here, if the current item is a group
-  //
-  if (url.isEmpty())
-  {
-    return;
-  }
-  
-  //
-  // Find the bookmark
-  //
-  BookmarkPtr bookmark = findBookmark(url);
-  
-  //
-  // Set the category
-  // 
-  if (bookmark)
-  {
-    bookmark->setCategoryName(categoryCombo->currentText());
-  }
-  
-  //
-  // Reload the bookmarks (The current item is cleared by this!)
-  //
-  loadBookmarks();
-  
-  //
-  // Reset the current item
-  // 
-  QTreeWidgetItemIterator it(treeWidget);
-  
-  while (*it)
-  {
-    if ((*it)->data(0, QTreeWidgetItem::UserType).toUrl() == url)
-    {
-      treeWidget->setCurrentItem(*it);
-      slotItemClicked(*it, 0);
-      break;
+    //
+    // Get the widgets
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+
+    //
+    // Get the URL of the current item
+    //
+    QUrl url = treeWidget->currentItem()->data(0, QTreeWidgetItem::UserType).toUrl();
+
+    //
+    // Return here, if the current item is a group
+    //
+    if (url.isEmpty()) {
+        return;
     }
-    
-    ++it;
-  }
 
-  // 
-  // Add the category to the completion object
-  // 
-  KCompletion *completion = categoryCombo->completionObject();
+    //
+    // Find the bookmark
+    //
+    BookmarkPtr bookmark = findBookmark(url);
 
-  if (!categoryCombo->currentText().isEmpty())
-  {
-    completion->addItem(categoryCombo->currentText());
-  }
+    //
+    // Set the category
+    //
+    if (bookmark) {
+        bookmark->setCategoryName(categoryCombo->currentText());
+    }
+
+    //
+    // Reload the bookmarks (The current item is cleared by this!)
+    //
+    loadBookmarks();
+
+    //
+    // Reset the current item
+    //
+    QTreeWidgetItemIterator it(treeWidget);
+
+    while (*it) {
+        if ((*it)->data(0, QTreeWidgetItem::UserType).toUrl() == url) {
+            treeWidget->setCurrentItem(*it);
+            slotItemClicked(*it, 0);
+            break;
+        }
+
+        ++it;
+    }
+
+    //
+    // Add the category to the completion object
+    //
+    KCompletion *completion = categoryCombo->completionObject();
+
+    if (!categoryCombo->currentText().isEmpty()) {
+        completion->addItem(categoryCombo->currentText());
+    }
 }
-
 
 void Smb4KBookmarkEditor::slotAddCategoryTriggered(bool /*checked*/)
 {
-  //
-  // Get the widgets
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  
-  //
-  // Process the category
-  // 
-  bool ok = false;
-  
-  QString categoryName = QInputDialog::getText(this, i18n("Add Category"), i18n("Category name:"), QLineEdit::Normal, QString(), &ok);
+    //
+    // Get the widgets
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
 
-  if (ok && !categoryName.isEmpty() && treeWidget->findItems(categoryName, Qt::MatchFixedString|Qt::MatchCaseSensitive, 0).isEmpty())
-  {
-    // Create a new category item and add it to the widget
-    QTreeWidgetItem *categoryItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-    categoryItem->setIcon(0, KDE::icon("folder-bookmark"));
-    categoryItem->setText(0, categoryName);
-    categoryItem->setText((treeWidget->columnCount() - 1), QString("00_%1").arg(categoryName));
-    categoryItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable|Qt::ItemIsEnabled|Qt::ItemIsDropEnabled) ;
-    treeWidget->addTopLevelItem(categoryItem);
-    treeWidget->sortItems((treeWidget->columnCount() - 1), Qt::AscendingOrder);
+    //
+    // Process the category
+    //
+    bool ok = false;
 
-    // Add the group to the combo box
-    categoryCombo->addItem(categoryName);
-    categoryCombo->completionObject()->addItem(categoryName);
-  }
+    QString categoryName = QInputDialog::getText(this, i18n("Add Category"), i18n("Category name:"), QLineEdit::Normal, QString(), &ok);
+
+    if (ok && !categoryName.isEmpty() && treeWidget->findItems(categoryName, Qt::MatchFixedString | Qt::MatchCaseSensitive, 0).isEmpty()) {
+        // Create a new category item and add it to the widget
+        QTreeWidgetItem *categoryItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
+        categoryItem->setIcon(0, KDE::icon("folder-bookmark"));
+        categoryItem->setText(0, categoryName);
+        categoryItem->setText((treeWidget->columnCount() - 1), QString("00_%1").arg(categoryName));
+        categoryItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsDropEnabled);
+        treeWidget->addTopLevelItem(categoryItem);
+        treeWidget->sortItems((treeWidget->columnCount() - 1), Qt::AscendingOrder);
+
+        // Add the group to the combo box
+        categoryCombo->addItem(categoryName);
+        categoryCombo->completionObject()->addItem(categoryName);
+    }
 }
-
 
 void Smb4KBookmarkEditor::slotDeleteTriggered(bool /*checked*/)
 {
-  //
-  // Get the widget
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  
-  //
-  // Remove the bookmarks from the view and the internal list
-  //
-  QList<QTreeWidgetItem *> selected = treeWidget->selectedItems();
-  
-  while (!selected.isEmpty())
-  {
-    QTreeWidgetItem *item = selected.takeFirst();    
-    QUrl url = item->data(0, QTreeWidgetItem::UserType).toUrl();
-    
-    QMutableListIterator<BookmarkPtr> it(m_bookmarks);
-    
-    while (it.hasNext())
-    {
-      BookmarkPtr bookmark = it.next();
-      
-      if (bookmark->url() == url)
-      {
-        it.remove();
-        break;
-      }
-    }
-    
-    delete item;
-  }
-}
+    //
+    // Get the widget
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
 
+    //
+    // Remove the bookmarks from the view and the internal list
+    //
+    QList<QTreeWidgetItem *> selected = treeWidget->selectedItems();
+
+    while (!selected.isEmpty()) {
+        QTreeWidgetItem *item = selected.takeFirst();
+        QUrl url = item->data(0, QTreeWidgetItem::UserType).toUrl();
+
+        QMutableListIterator<BookmarkPtr> it(m_bookmarks);
+
+        while (it.hasNext()) {
+            BookmarkPtr bookmark = it.next();
+
+            if (bookmark->url() == url) {
+                it.remove();
+                break;
+            }
+        }
+
+        delete item;
+    }
+}
 
 void Smb4KBookmarkEditor::slotClearTriggered(bool /*checked*/)
 {
-  //
-  // Get the widget
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  
-  //
-  // Clear the widget and the lists
-  // 
-  treeWidget->clear();
-  m_bookmarks.clear();
-  m_categories.clear();
-}
+    //
+    // Get the widget
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
 
+    //
+    // Clear the widget and the lists
+    //
+    treeWidget->clear();
+    m_bookmarks.clear();
+    m_categories.clear();
+}
 
 void Smb4KBookmarkEditor::slotDialogAccepted()
 {
-  //
-  // Get the widgets
-  // 
-  KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-  KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-  KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
-  KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
-  KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
-  
-  //
-  // Write the dialog properties to the config file
-  // 
-  KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
-  KWindowConfig::saveWindowSize(windowHandle(), group);
-  group.writeEntry("LabelCompletion", labelEdit->completionObject()->items());
-  group.writeEntry("LoginCompletion", loginEdit->completionObject()->items());
-  group.writeEntry("IPCompletion", ipEdit->completionObject()->items());
-  group.writeEntry("CategoryCompletion", categoryCombo->completionObject()->items());
-  group.writeEntry("WorkgroupCompletion", workgroupEdit->completionObject()->items());
-  
-  //
-  // Accept the dialog
-  // 
-  accept();
-}
+    //
+    // Get the widgets
+    //
+    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
+    KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
+    KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
 
+    //
+    // Write the dialog properties to the config file
+    //
+    KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
+    KWindowConfig::saveWindowSize(windowHandle(), group);
+    group.writeEntry("LabelCompletion", labelEdit->completionObject()->items());
+    group.writeEntry("LoginCompletion", loginEdit->completionObject()->items());
+    group.writeEntry("IPCompletion", ipEdit->completionObject()->items());
+    group.writeEntry("CategoryCompletion", categoryCombo->completionObject()->items());
+    group.writeEntry("WorkgroupCompletion", workgroupEdit->completionObject()->items());
+
+    //
+    // Accept the dialog
+    //
+    accept();
+}
 
 void Smb4KBookmarkEditor::slotDialogRejected()
 {
-  //
-  // Reject the dialog
-  // 
-  reject();
+    //
+    // Reject the dialog
+    //
+    reject();
 }
-
-
 
 void Smb4KBookmarkEditor::slotIconSizeChanged(int group)
 {
-  //
-  // Get the widget
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  
-  //
-  // Change the icon size
-  // 
-  switch (group)
-  {
-    case KIconLoader::Small:
-    {
-      int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
-      treeWidget->setIconSize(QSize(iconSize, iconSize));
-      break;
-    }
-    default:
-    {
-      break;
-    }
-  }
-}
+    //
+    // Get the widget
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
 
+    //
+    // Change the icon size
+    //
+    switch (group) {
+    case KIconLoader::Small: {
+        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
+        treeWidget->setIconSize(QSize(iconSize, iconSize));
+        break;
+    }
+    default: {
+        break;
+    }
+    }
+}
 
 void Smb4KBookmarkEditor::slotAdjust()
 {
-  //
-  // Get the widget
-  // 
-  QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-  
-  // 
-  // Do the necessary adjustments
-  // 
-  QTreeWidgetItemIterator it(treeWidget);
-  
-  while (*it)
-  {
-    if (!(*it)->parent())
-    {
-      if ((*it)->data(0, QTreeWidgetItem::UserType).toUrl().isEmpty())
-      {
-        if ((*it)->childCount() == 0)
-        {
-          delete *it;
+    //
+    // Get the widget
+    //
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+
+    //
+    // Do the necessary adjustments
+    //
+    QTreeWidgetItemIterator it(treeWidget);
+
+    while (*it) {
+        if (!(*it)->parent()) {
+            if ((*it)->data(0, QTreeWidgetItem::UserType).toUrl().isEmpty()) {
+                if ((*it)->childCount() == 0) {
+                    delete *it;
+                }
+            } else {
+                BookmarkPtr bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
+
+                if (bookmark) {
+                    bookmark->setCategoryName("");
+                }
+            }
+        } else {
+            BookmarkPtr bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
+
+            if (bookmark) {
+                bookmark->setCategoryName((*it)->parent()->text(0));
+            }
         }
-      }
-      else
-      {
-        BookmarkPtr bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
-      
-        if (bookmark)
-        {
-          bookmark->setCategoryName("");
-        }
-      }
+        ++it;
     }
-    else
-    {
-      BookmarkPtr bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
-      
-      if (bookmark)
-      {
-        bookmark->setCategoryName((*it)->parent()->text(0));
-      }
-    }
-    ++it;
-  }
 }
-
-
