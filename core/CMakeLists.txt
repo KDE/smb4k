@@ -64,7 +64,7 @@ target_link_libraries(smb4kcore
   Qt5::Qml
   KF5::ConfigCore
   KF5::ConfigGui
-  ${AUTHLIB}
+  KF5::AuthCore
   KF5::IconThemes
   KF5::I18n
   KF5::Completion
