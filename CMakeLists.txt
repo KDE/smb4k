@@ -29,17 +29,8 @@ endif()
 #
 # Minimum required versions of Qt5 and KF5
 #
-set(QT_MIN_VERSION "5.9.0")
-set(KF5_MIN_VERSION "5.44.0")
-
-#
-# Adjustments
-#
-if(KF5_VERSION VERSION_GREATER "5.55.0")
-    set(AUTHLIB KF5::AuthCore)
-else()
-    set(AUTHLIB KF5::Auth)
-endif()
+set(QT_MIN_VERSION "5.14.0")
+set(KF5_MIN_VERSION "5.80.0")
 
 #
 # Options for building Smb4K
@@ -63,8 +54,18 @@ include(FeatureSummary)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
 include(CheckSymbolExists)
+include(KDEClangFormat)
 
+#
+# Version
+# 
 ecm_setup_version(${VERSION} VARIABLE_PREFIX SMB4K VERSION_HEADER smb4k_version.h)
+
+#
+# Source code formatting
+# 
+file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 # Qt5 modules
 find_package(Qt5Core ${QT_MIN_VERSION} REQUIRED)
