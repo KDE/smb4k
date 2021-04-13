@@ -1,9 +1,9 @@
 image: kdeneon/plasma:user
 
 before_script:
-    - apt update
-    - apt full-upgrade
-    - apt install -y cmake g++ extra-cmake-modules gettext qt5-qmake qtbase5-dev qtdeclarative5-dev libkf5auth-dev libkf5completion-dev libkf5config-dev libkf5coreaddons-dev libkf5configwidgets-dev libkf5dbusaddons-dev libkf5doctools-dev libkf5i18n-dev libkf5iconthemes-dev libkf5jobwidgets-dev libkf5kio-dev libkf5notifications-dev libkf5solid-dev libkf5wallet-dev libkf5widgetsaddons-dev libkf5windowsystem-dev libkf5xmlgui-dev libkf5crash-dev libkf5dnssd-dev libkdsoap-dev libsmbclient-dev
+    - sudo apt update
+    - sudo apt full-upgrade
+    - sudo apt install -y cmake g++ extra-cmake-modules gettext qt5-qmake qtbase5-dev qtdeclarative5-dev libkf5auth-dev libkf5completion-dev libkf5config-dev libkf5coreaddons-dev libkf5configwidgets-dev libkf5dbusaddons-dev libkf5doctools-dev libkf5i18n-dev libkf5iconthemes-dev libkf5jobwidgets-dev libkf5kio-dev libkf5notifications-dev libkf5solid-dev libkf5wallet-dev libkf5widgetsaddons-dev libkf5windowsystem-dev libkf5xmlgui-dev libkf5crash-dev libkf5dnssd-dev libkdsoap-dev libsmbclient-dev
 
 stages:
     - build
