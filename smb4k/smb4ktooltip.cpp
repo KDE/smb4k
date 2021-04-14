@@ -36,11 +36,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QLayoutItem>
-#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
-#include <QDesktopWidget>
-#else
 #include <QScreen>
-#endif
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -134,19 +130,6 @@ void Smb4KToolTip::show(const QPoint &pos, QWindow *transientParent)
     int testWidth = m_contentsWidget->width() + cursor().pos().x() + layout()->contentsMargins().left() + layout()->contentsMargins().right() + 5;
     int testHeight = m_contentsWidget->height() + cursor().pos().y() + layout()->contentsMargins().top() + layout()->contentsMargins().bottom() + 5;
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
-    if (QApplication::desktop()->screenGeometry(pos).width() < testWidth) {
-        tooltipPos.setX(pos.x() - m_contentsWidget->width() - layout()->contentsMargins().left() - layout()->contentsMargins().right() - 5);
-    } else {
-        tooltipPos.setX(pos.x() + 5);
-    }
-
-    if (QApplication::desktop()->screenGeometry(pos).height() < testHeight) {
-        tooltipPos.setY(pos.y() - m_contentsWidget->height() - layout()->contentsMargins().top() - layout()->contentsMargins().bottom() - 5);
-    } else {
-        tooltipPos.setY(pos.y() + 5);
-    }
-#else
     if (QApplication::screenAt(pos)->virtualSize().width() < testWidth) {
         tooltipPos.setX(pos.x() - m_contentsWidget->width() - layout()->contentsMargins().left() - layout()->contentsMargins().right() - 5);
     } else {
@@ -158,7 +141,6 @@ void Smb4KToolTip::show(const QPoint &pos, QWindow *transientParent)
     } else {
         tooltipPos.setY(pos.y() + 5);
     }
-#endif
 
     showAt(tooltipPos, m_contentsWidget, transientParent);
 }

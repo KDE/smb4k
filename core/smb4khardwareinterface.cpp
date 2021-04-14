@@ -143,12 +143,7 @@ void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
     for (const QNetworkInterface &interface : qAsConst(interfaces)) {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-        if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning)
-#else
-        if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning)
-#endif
-        {
+        if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning) {
             online = true;
             break;
         }

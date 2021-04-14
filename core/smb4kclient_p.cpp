@@ -174,13 +174,7 @@ QHostAddress Smb4KClientBaseJob::lookupIpAddress(const QString &name)
         // IPv4 address over the IPv6 address.
         for (const QHostAddress &addr : addresses) {
             // We only use global addresses.
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-            if (addr.isGlobal())
-#else
-            if (!addr.isLoopback() && !addr.isMulticast())
-#endif
-
-            {
+            if (addr.isGlobal()) {
                 if (addr.protocol() == QAbstractSocket::IPv4Protocol) {
                     ipAddress = addr;
                     break;
@@ -199,12 +193,7 @@ QHostAddress Smb4KClientBaseJob::lookupIpAddress(const QString &name)
             // IPv4 address over the IPv6 address.
             for (const QHostAddress &addr : hostInfo.addresses()) {
                 // We only use global addresses.
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-                if (addr.isGlobal())
-#else
-                if (!addr.isLoopback() && !addr.isMulticast())
-#endif
-                {
+                if (addr.isGlobal()) {
                     if (addr.protocol() == QAbstractSocket::IPv4Protocol) {
                         ipAddress = addr;
                         break;

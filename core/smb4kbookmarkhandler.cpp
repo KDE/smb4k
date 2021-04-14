@@ -579,5 +579,3 @@ void Smb4KBookmarkHandler::removeProfile(const QString &name)
     // Write the new list to the file.
     writeBookmarkList();
 }
-
-
