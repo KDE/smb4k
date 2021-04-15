@@ -128,7 +128,7 @@ void Smb4KClient::lookupDomains()
                     }
 
                     // 16 times the MAC address
-                    QStringList parts = wakeOnLanEntries.at(i)->macAddress().split(':', QString::SkipEmptyParts);
+                    QStringList parts = wakeOnLanEntries.at(i)->macAddress().split(':', Qt::SkipEmptyParts);
 
                     for (int j = 0; j < 16; ++j) {
                         for (int k = 0; k < parts.size(); ++k) {

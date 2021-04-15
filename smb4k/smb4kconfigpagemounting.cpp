@@ -829,7 +829,7 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
                 // by Heiner Markert (aka CVE-2014-2581).
                 QStringList allowedArgs = allowedMountArguments();
                 QStringList deniedArgs;
-                QStringList list = options.split(',', QString::SkipEmptyParts);
+                QStringList list = options.split(',', Qt::SkipEmptyParts);
                 QMutableStringListIterator it(list);
 
                 while (it.hasNext()) {

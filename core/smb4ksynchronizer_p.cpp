@@ -436,7 +436,7 @@ void Smb4KSyncJob::slotStartSynchronization()
 
 void Smb4KSyncJob::slotReadStandardOutput()
 {
-    QStringList stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).split('\n', QString::SkipEmptyParts);
+    QStringList stdOut = QString::fromUtf8(m_process->readAllStandardOutput(), -1).split('\n', Qt::SkipEmptyParts);
 
     for (int i = 0; i < stdOut.size(); ++i) {
         if (stdOut.at(i)[0].isSpace()) {

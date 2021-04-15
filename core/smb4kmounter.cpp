@@ -376,7 +376,7 @@ void Smb4KMounter::import(bool checkInaccessible)
 
             QUrl url = QUrl::fromLocalFile(share->path());
             KIO::StatJob *job = KIO::stat(url, KIO::HideProgressInfo);
-            job->setDetails(0);
+            job->setDetails(KIO::StatNoDetails);
             connect(job, SIGNAL(result(KJob *)), this, SLOT(slotStatResult(KJob *)));
 
             // Do not use addSubJob(), because that would confuse isRunning(), etc.
@@ -473,7 +473,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
                 }
 
                 // 16 times the MAC address
-                QStringList parts = options->macAddress().split(':', QString::SkipEmptyParts);
+                QStringList parts = options->macAddress().split(':', Qt::SkipEmptyParts);
 
                 for (int j = 0; j < 16; ++j) {
                     for (int k = 0; k < parts.size(); ++k) {
@@ -1363,7 +1363,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
         // This is, among others, the proper fix to the security issue reported
         // by Heiner Markert (aka CVE-2014-2581).
         QStringList allowedArgs = allowedMountArguments();
-        QStringList list = Smb4KMountSettings::customCIFSOptions().split(',', QString::SkipEmptyParts);
+        QStringList list = Smb4KMountSettings::customCIFSOptions().split(',', Qt::SkipEmptyParts);
         QMutableStringListIterator it(list);
 
         while (it.hasNext()) {

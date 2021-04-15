@@ -121,37 +121,37 @@ Smb4KDeclarative::~Smb4KDeclarative()
 
 QQmlListProperty<Smb4KNetworkObject> Smb4KDeclarative::workgroups()
 {
-    return QQmlListProperty<Smb4KNetworkObject>(this, d->workgroupObjects);
+    return QQmlListProperty<Smb4KNetworkObject>(this, &d->workgroupObjects);
 }
 
 QQmlListProperty<Smb4KNetworkObject> Smb4KDeclarative::hosts()
 {
-    return QQmlListProperty<Smb4KNetworkObject>(this, d->hostObjects);
+    return QQmlListProperty<Smb4KNetworkObject>(this, &d->hostObjects);
 }
 
 QQmlListProperty<Smb4KNetworkObject> Smb4KDeclarative::shares()
 {
-    return QQmlListProperty<Smb4KNetworkObject>(this, d->shareObjects);
+    return QQmlListProperty<Smb4KNetworkObject>(this, &d->shareObjects);
 }
 
 QQmlListProperty<Smb4KNetworkObject> Smb4KDeclarative::mountedShares()
 {
-    return QQmlListProperty<Smb4KNetworkObject>(this, d->mountedObjects);
+    return QQmlListProperty<Smb4KNetworkObject>(this, &d->mountedObjects);
 }
 
 QQmlListProperty<Smb4KBookmarkObject> Smb4KDeclarative::bookmarks()
 {
-    return QQmlListProperty<Smb4KBookmarkObject>(this, d->bookmarkObjects);
+    return QQmlListProperty<Smb4KBookmarkObject>(this, &d->bookmarkObjects);
 }
 
 QQmlListProperty<Smb4KBookmarkObject> Smb4KDeclarative::bookmarkCategories()
 {
-    return QQmlListProperty<Smb4KBookmarkObject>(this, d->bookmarkCategoryObjects);
+    return QQmlListProperty<Smb4KBookmarkObject>(this, &d->bookmarkCategoryObjects);
 }
 
 QQmlListProperty<Smb4KProfileObject> Smb4KDeclarative::profiles()
 {
-    return QQmlListProperty<Smb4KProfileObject>(this, d->profileObjects);
+    return QQmlListProperty<Smb4KProfileObject>(this, &d->profileObjects);
 }
 
 void Smb4KDeclarative::lookup(Smb4KNetworkObject *object)
