@@ -3,13 +3,6 @@ include:
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-linux.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-freebsd.yml
 
-build-linux:
-  stage: build
-  extends: .linux
-  variables:
-    SMB4K_WITH_WS_DISCOVERY: "OFF" 
-    SMB4K_INSTALL_PLASMOID: "ON"
-
 #build:
 #    image: kdeneon/plasma:user
 #    before_script:
