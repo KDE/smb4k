@@ -7,7 +7,8 @@ build-linux:
   stage: build
   extends: .linux
   variables:
-    configure-commands: "-DSMB4K_WITH_WS_DISCOVERY=OFF -DSMB4K_INSTALL_PLASMOID=ON"
+    SMB4K_WITH_WS_DISCOVERY: OFF 
+    SMB4K_INSTALL_PLASMOID: ON
 
 #build:
 #    image: kdeneon/plasma:user
