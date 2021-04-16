@@ -3,6 +3,9 @@ include:
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-linux.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-freebsd.yml
 
+kf5-qt5:
+  "cmake-options": "-DSMB4K_WITH_WS_DISCOVERY=OFF -DSMB4K_INSTALL_PLASMOID=ON"
+
 #build:
 #    image: kdeneon/plasma:user
 #    before_script:
