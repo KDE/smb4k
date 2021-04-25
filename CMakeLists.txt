@@ -117,8 +117,11 @@ endif()
 
 # Find KDSoap client
 if (SMB4K_WITH_WS_DISCOVERY)
-  find_package(KDSoap 1.9.0 REQUIRED)
-  find_package(KDSoapWSDiscoveryClient 0.2 REQUIRED)
+    message(STATUS "Building with WS-Discovery support (-DSMB4K_WITH_WS_DISCOVERY=OFF to disable)")
+    find_package(KDSoap 1.9.0 REQUIRED)
+    find_package(KDSoapWSDiscoveryClient 0.2 REQUIRED)
+elseif(NOT SMB4K_WITH_WS_DISCOVERY)
+    message(STATUS "Not building with WS-Discovery support (-DSMB4K_WITH_WS_DISCOVERY=ON to enable)")
 endif(SMB4K_WITH_WS_DISCOVERY)
 
 #
