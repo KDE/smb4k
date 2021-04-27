@@ -66,8 +66,8 @@ Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
     connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroupsListChanged()));
     connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotHostsListChanged()));
     connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotSharesListChanged()));
-    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SIGNAL(busy()));
-    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SIGNAL(idle()));
+    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SIGNAL(busy()));
+    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr,int)), this, SIGNAL(idle()));
 
     connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotMountedSharesListChanged()));
     connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SIGNAL(busy()));
@@ -203,7 +203,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
     if (url.isValid()) {
         switch (type) {
         case Smb4KNetworkObject::Workgroup: {
-            for (Smb4KNetworkObject *obj : d->workgroupObjects) {
+            for (Smb4KNetworkObject *obj : qAsConst(d->workgroupObjects)) {
                 if (url == obj->url()) {
                     object = obj;
                     break;
@@ -214,7 +214,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
             break;
         }
         case Smb4KNetworkObject::Host: {
-            for (Smb4KNetworkObject *obj : d->hostObjects) {
+            for (Smb4KNetworkObject *obj : qAsConst(d->hostObjects)) {
                 if (url == obj->url()) {
                     object = obj;
                     break;
@@ -225,7 +225,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
             break;
         }
         case Smb4KNetworkObject::Share: {
-            for (Smb4KNetworkObject *obj : d->shareObjects) {
+            for (Smb4KNetworkObject *obj : qAsConst(d->shareObjects)) {
                 if (url == obj->url()) {
                     object = obj;
                     break;
@@ -301,7 +301,7 @@ Smb4KNetworkObject *Smb4KDeclarative::findMountedShare(const QUrl &url, bool exa
     Smb4KNetworkObject *object = 0;
 
     if (url.isValid()) {
-        for (Smb4KNetworkObject *obj : d->mountedObjects) {
+        for (Smb4KNetworkObject *obj : qAsConst(d->mountedObjects)) {
             if (url.matches(obj->url(), QUrl::None)) {
                 object = obj;
                 break;
@@ -357,7 +357,7 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject *object)
 
         // Now add the share.
         if (!shares.isEmpty()) {
-            for (const SharePtr &p : shares) {
+            for (const SharePtr &p : qAsConst(shares)) {
                 qDebug() << p->url();
             }
 
@@ -453,7 +453,7 @@ QString Smb4KDeclarative::activeProfile() const
 {
     QString activeProfile;
 
-    for (Smb4KProfileObject *profile : d->profileObjects) {
+    for (Smb4KProfileObject *profile : qAsConst(d->profileObjects)) {
         if (profile->isActiveProfile()) {
             activeProfile = profile->profileName();
             break;
@@ -579,12 +579,15 @@ void Smb4KDeclarative::slotBookmarksListChanged()
         delete d->bookmarkCategoryObjects.takeFirst();
     }
 
-    for (const BookmarkPtr &bookmark : Smb4KBookmarkHandler::self()->bookmarksList()) {
+    QList<BookmarkPtr> bookmarksList = Smb4KBookmarkHandler::self()->bookmarksList();
+    QStringList categoriesList = Smb4KBookmarkHandler::self()->categoryList();
+    
+    for (const BookmarkPtr &bookmark : qAsConst(bookmarksList)) {
         d->bookmarkObjects << new Smb4KBookmarkObject(bookmark.data());
     }
-
-    for (const QString &group : Smb4KBookmarkHandler::self()->categoryList()) {
-        d->bookmarkCategoryObjects << new Smb4KBookmarkObject(group);
+    
+    for (const QString &category : qAsConst(categoriesList)) {
+        d->bookmarkCategoryObjects << new Smb4KBookmarkObject(category);
     }
 
     emit bookmarksListChanged();
@@ -614,7 +617,7 @@ void Smb4KDeclarative::slotProfilesListChanged(const QStringList &profiles)
 
 void Smb4KDeclarative::slotActiveProfileChanged(const QString &activeProfile)
 {
-    for (Smb4KProfileObject *profile : d->profileObjects) {
+    for (Smb4KProfileObject *profile : qAsConst(d->profileObjects)) {
         if (QString::compare(profile->profileName(), activeProfile) == 0) {
             profile->setActiveProfile(true);
         } else {

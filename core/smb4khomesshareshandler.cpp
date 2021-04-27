@@ -179,7 +179,7 @@ const QList<Smb4KHomesUsers *> Smb4KHomesSharesHandler::readUserNames(bool allUs
                                             }
                                         }
 
-                                        users->setUsers(u);
+                                        users->setUserList(u);
                                     }
 
                                     continue;
@@ -249,24 +249,17 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
             xmlWriter.writeStartElement("homes_shares");
             xmlWriter.writeAttribute("version", "1.0");
 
-            for (Smb4KHomesUsers *users : allUsers) {
+            for (Smb4KHomesUsers *users : qAsConst(allUsers)) {
                 xmlWriter.writeStartElement("homes");
-
-                // FIXME: Remove this block with Smb4K > 2.0 and use the commented line below.
-                // This block was introduced for migration, because the default profile
-                // (i.e. use of no profiles) was not empty but named "Default"...
-                if (!Smb4KProfileManager::self()->useProfiles()) {
-                    xmlWriter.writeAttribute("profile", Smb4KSettings::self()->activeProfile());
-                } else {
-                    xmlWriter.writeAttribute("profile", users->profile());
-                }
-                // xmlWriter.writeAttribute("profile", users->profile());
+                xmlWriter.writeAttribute("profile", users->profile());
                 xmlWriter.writeTextElement("host", users->hostName());
                 xmlWriter.writeTextElement("workgroup", users->workgroupName());
                 xmlWriter.writeTextElement("ip", users->hostIP());
                 xmlWriter.writeStartElement("users");
+                
+                QStringList userList = users->userList();
 
-                for (const QString &user : users->users()) {
+                for (const QString &user : qAsConst(userList)) {
                     xmlWriter.writeTextElement("user", user);
                 }
 
@@ -292,7 +285,7 @@ const QStringList Smb4KHomesSharesHandler::findHomesUsers(const SharePtr &share)
 {
     Q_ASSERT(share);
 
-    QStringList users;
+    QStringList userList;
 
     if (!d->homesUsers.isEmpty()) {
         for (int i = 0; i < d->homesUsers.size(); ++i) {
@@ -300,7 +293,7 @@ const QStringList Smb4KHomesSharesHandler::findHomesUsers(const SharePtr &share)
                 && QString::compare(share->shareName(), d->homesUsers.at(i)->shareName(), Qt::CaseInsensitive) == 0
                 && ((d->homesUsers.at(i)->workgroupName().isEmpty() || share->workgroupName().isEmpty())
                     || QString::compare(share->workgroupName(), d->homesUsers.at(i)->workgroupName(), Qt::CaseInsensitive) == 0)) {
-                users = d->homesUsers.at(i)->users();
+                userList = d->homesUsers.at(i)->userList();
                 break;
             } else {
                 continue;
@@ -308,7 +301,7 @@ const QStringList Smb4KHomesSharesHandler::findHomesUsers(const SharePtr &share)
         }
     }
 
-    return users;
+    return userList;
 }
 
 void Smb4KHomesSharesHandler::addHomesUsers(const SharePtr &share, const QStringList &users)
@@ -323,7 +316,7 @@ void Smb4KHomesSharesHandler::addHomesUsers(const SharePtr &share, const QString
                 && QString::compare(share->shareName(), d->homesUsers.at(i)->shareName(), Qt::CaseInsensitive) == 0
                 && ((d->homesUsers.at(i)->workgroupName().isEmpty() || share->workgroupName().isEmpty())
                     || QString::compare(share->workgroupName(), d->homesUsers.at(i)->workgroupName(), Qt::CaseInsensitive) == 0)) {
-                d->homesUsers[i]->setUsers(users);
+                d->homesUsers[i]->setUserList(users);
                 found = true;
                 break;
             } else {

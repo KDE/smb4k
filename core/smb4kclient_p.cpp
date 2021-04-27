@@ -172,7 +172,7 @@ QHostAddress Smb4KClientBaseJob::lookupIpAddress(const QString &name)
 
         // Get the IP address for the host. For the time being, prefer the
         // IPv4 address over the IPv6 address.
-        for (const QHostAddress &addr : addresses) {
+        for (const QHostAddress &addr : qAsConst(addresses)) {
             // We only use global addresses.
             if (addr.isGlobal()) {
                 if (addr.protocol() == QAbstractSocket::IPv4Protocol) {
@@ -189,9 +189,11 @@ QHostAddress Smb4KClientBaseJob::lookupIpAddress(const QString &name)
         QHostInfo hostInfo = QHostInfo::fromName(name);
 
         if (hostInfo.error() == QHostInfo::NoError) {
+            QList<QHostAddress> addresses = hostInfo.addresses();
+            
             // Get the IP address for the host. For the time being, prefer the
-            // IPv4 address over the IPv6 address.
-            for (const QHostAddress &addr : hostInfo.addresses()) {
+            // IPv4 address over the IPv6 address.            
+            for (const QHostAddress &addr : qAsConst(addresses)) {
                 // We only use global addresses.
                 if (addr.isGlobal()) {
                     if (addr.protocol() == QAbstractSocket::IPv4Protocol) {
@@ -1964,7 +1966,7 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
     //
     QListWidget *listWidget = new QListWidget(this);
     listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    connect(listWidget, SIGNAL(itemActivated(QListWidgetItem *)), SLOT(slotItemActivated(QListWidgetItem *)));
+    connect(listWidget, SIGNAL(itemActivated(QListWidgetItem*)), SLOT(slotItemActivated(QListWidgetItem*)));
 
     layout->addWidget(listWidget, 0);
 
@@ -2172,7 +2174,7 @@ void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
         // Find the file item, make it the current one and emit the requestPreview()
         // signal.
         //
-        for (const FilePtr &f : m_listing) {
+        for (const FilePtr &f : qAsConst(m_listing)) {
             if (item->data(Qt::UserRole).toUrl().matches(f->url(), QUrl::None)) {
                 m_currentItem = f;
                 emit requestPreview(m_currentItem);

@@ -144,7 +144,7 @@ void Smb4KWalletManager::readAuthInfo(const NetworkItemPtr &networkItem)
             // Now loop through the stored credentials and make a case insensitive comparison
             // with the URL of the network item.
             //
-            for (const QString &entry : entryList) {
+            for (const QString &entry : qAsConst(entryList)) {
                 if (networkItem->type() == Host) {
                     if (QString::compare(entry, networkItem->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort), Qt::CaseInsensitive) == 0
                         || QString::compare(entry,
@@ -480,12 +480,12 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
                 //
                 // Get the known logins
                 //
-                QStringList users = Smb4KHomesSharesHandler::self()->homesUsers(share);
+                QStringList userList = Smb4KHomesSharesHandler::self()->homesUsers(share);
 
                 //
                 // Read the authentication information for all known logins
                 //
-                for (const QString &user : users) {
+                for (const QString &user : qAsConst(userList)) {
                     //
                     // Create a temp share
                     //
@@ -569,7 +569,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::walletEntries()
         //
         // Process the entries
         //
-        for (const QString &entry : entryList) {
+        for (const QString &entry : qAsConst(entryList)) {
             //
             // Create a auth info object
             //
@@ -624,7 +624,7 @@ void Smb4KWalletManager::writeWalletEntries(const QList<Smb4KAuthInfo *> &entrie
         //
         QStringList entryList = d->wallet->entryList();
 
-        for (const QString &entry : entryList) {
+        for (const QString &entry : qAsConst(entryList)) {
             d->wallet->removeEntry(entry);
         }
 

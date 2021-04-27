@@ -150,7 +150,7 @@ void Smb4KCustomOptionsManager::clearRemounts(bool force)
     // Remove the remount flag and, if there are nomore options defined,
     // also the options object. Write everything to the file afterwards.
     //
-    for (const OptionsPtr &options : d->options) {
+    for (const OptionsPtr &options : qAsConst(d->options)) {
         if (options->type() == Share) {
             if (options->remount() == Smb4KCustomOptions::RemountOnce) {
                 options->setRemount(Smb4KCustomOptions::UndefinedRemount);
@@ -185,7 +185,7 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
     //
     // Get the list of remounts
     //
-    for (const OptionsPtr &options : optionsList) {
+    for (const OptionsPtr &options : qAsConst(optionsList)) {
         if (options->remount() != Smb4KCustomOptions::UndefinedRemount) {
             remounts << options;
         }
@@ -213,7 +213,7 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkI
     // Only do something if the list of options is not empty.
     //
     if (!optionsList.isEmpty()) {
-        for (const OptionsPtr &opt : optionsList) {
+        for (const OptionsPtr &opt : qAsConst(optionsList)) {
             //
             // If we want to have an exact match, skip all options that do not match
             //
@@ -294,7 +294,7 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const QUrl &url)
         //
         // Get the options
         //
-        for (const OptionsPtr &o : optionsList) {
+        for (const OptionsPtr &o : qAsConst(optionsList)) {
             if (o->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)
                 == url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
                 options = o;
@@ -828,7 +828,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
             xmlWriter.writeStartElement("custom_options");
             xmlWriter.writeAttribute("version", "3.0");
 
-            for (const OptionsPtr &options : d->options) {
+            for (const OptionsPtr &options : qAsConst(d->options)) {
                 if (options->hasOptions()) {
                     xmlWriter.writeStartElement("options");
                     xmlWriter.writeAttribute("type", options->type() == Host ? "host" : "share");
@@ -876,7 +876,7 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOn
     //
     // Get this list of options
     //
-    for (const OptionsPtr &options : d->options) {
+    for (const OptionsPtr &options : qAsConst(d->options)) {
         if (Smb4KSettings::useProfiles() && options->profile() != Smb4KProfileManager::self()->activeProfile()) {
             continue;
         }
@@ -995,7 +995,7 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
         // the settings
         //
         if (options->type() == Host) {
-            for (const OptionsPtr &o : d->options) {
+            for (const OptionsPtr &o : qAsConst(d->options)) {
                 if (o->type() == Share && o->hostName() == options->hostName() && o->workgroupName() == options->workgroupName()) {
                     o->setIpAddress(options->ipAddress());
                     o->setUseUser(options->useUser());
@@ -1066,7 +1066,7 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::wakeOnLanEntries() const
     //
     // Get the Wake-On-LAN entries
     //
-    for (const OptionsPtr &options : d->options) {
+    for (const OptionsPtr &options : qAsConst(d->options)) {
         if (!options->macAddress().isEmpty() && (options->wolSendBeforeNetworkScan() || options->wolSendBeforeMount())) {
             optionsList << options;
         }
@@ -1093,7 +1093,7 @@ void Smb4KCustomOptionsManager::migrateProfile(const QString &from, const QStrin
     //
     // Replace the old with the new profile
     //
-    for (const OptionsPtr &options : d->options) {
+    for (const OptionsPtr &options : qAsConst(d->options)) {
         if (options->profile() == from) {
             options->setProfile(to);
         }

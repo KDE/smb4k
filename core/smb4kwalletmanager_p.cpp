@@ -82,7 +82,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, cons
     }
     }
 
-    connect(this, SIGNAL(gotUsernameAndPassword(QString, QString, bool)), SLOT(slotGotUsernameAndPassword(QString, QString, bool)));
+    connect(this, SIGNAL(gotUsernameAndPassword(QString,QString,bool)), SLOT(slotGotUsernameAndPassword(QString,QString,bool)));
 }
 
 Smb4KPasswordDialog::~Smb4KPasswordDialog()

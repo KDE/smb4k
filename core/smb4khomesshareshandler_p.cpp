@@ -48,20 +48,20 @@
 
 Smb4KHomesUsers::Smb4KHomesUsers(const SharePtr &s, const QStringList &u)
 {
-    m_workgroup_name = s->workgroupName();
-    m_host_name = s->hostName();
-    m_share_name = s->shareName();
-    m_host_ip.setAddress(s->hostIpAddress());
-    m_users = u;
+    m_workgroupName = s->workgroupName();
+    m_hostName = s->hostName();
+    m_shareName = s->shareName();
+    m_hostIp.setAddress(s->hostIpAddress());
+    m_userList = u;
 }
 
 Smb4KHomesUsers::Smb4KHomesUsers(const Smb4KHomesUsers &u)
 {
-    m_workgroup_name = u.workgroupName();
-    m_host_name = u.hostName();
-    m_share_name = u.shareName();
-    m_host_ip.setAddress(u.hostIP());
-    m_users = u.users();
+    m_workgroupName = u.workgroupName();
+    m_hostName = u.hostName();
+    m_shareName = u.shareName();
+    m_hostIp.setAddress(u.hostIP());
+    m_userList = u.userList();
     m_profile = u.profile();
 }
 
@@ -75,52 +75,52 @@ Smb4KHomesUsers::~Smb4KHomesUsers()
 
 QString Smb4KHomesUsers::workgroupName() const
 {
-    return m_workgroup_name;
+    return m_workgroupName;
 }
 
 void Smb4KHomesUsers::setWorkgroupName(const QString &name)
 {
-    m_workgroup_name = name;
+    m_workgroupName = name;
 }
 
 QString Smb4KHomesUsers::hostName() const
 {
-    return m_host_name;
+    return m_hostName;
 }
 
 void Smb4KHomesUsers::setHostName(const QString &name)
 {
-    m_host_name = name;
+    m_hostName = name;
 }
 
 QString Smb4KHomesUsers::shareName() const
 {
-    return m_share_name;
+    return m_shareName;
 }
 
 void Smb4KHomesUsers::setShareName(const QString &name)
 {
-    m_share_name = name;
+    m_shareName = name;
 }
 
 QString Smb4KHomesUsers::hostIP() const
 {
-    return m_host_ip.toString();
+    return m_hostIp.toString();
 }
 
 void Smb4KHomesUsers::setHostIP(const QString &ip)
 {
-    m_host_ip.setAddress(ip);
+    m_hostIp.setAddress(ip);
 }
 
-QStringList Smb4KHomesUsers::users() const
+QStringList Smb4KHomesUsers::userList() const
 {
-    return m_users;
+    return m_userList;
 }
 
-void Smb4KHomesUsers::setUsers(const QStringList &users)
+void Smb4KHomesUsers::setUserList(const QStringList &users)
 {
-    m_users = users;
+    m_userList = users;
 }
 
 QString Smb4KHomesUsers::profile() const

@@ -68,7 +68,7 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser(QWidget *parent)
     //
     // Connections
     //
-    connect(this, SIGNAL(itemActivated(QTreeWidgetItem *, int)), this, SLOT(slotItemActivated(QTreeWidgetItem *, int)));
+    connect(this, SIGNAL(itemActivated(QTreeWidgetItem*,int)), this, SLOT(slotItemActivated(QTreeWidgetItem*,int)));
     connect(this, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
 }
 

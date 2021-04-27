@@ -68,7 +68,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     optionsListWidget->setSelectionMode(QListWidget::SingleSelection);
     optionsListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
-    connect(optionsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), SLOT(slotEditCustomItem(QListWidgetItem *)));
+    connect(optionsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)), SLOT(slotEditCustomItem(QListWidgetItem*)));
     connect(optionsListWidget, SIGNAL(itemSelectionChanged()), SLOT(slotItemSelectionChanged()));
     connect(optionsListWidget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(slotCustomContextMenuRequested(QPoint)));
 
@@ -181,7 +181,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalClientProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : minimalClientProtocolVersionChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(minimalClientProtocolVersionChoices)) {
         minimalClientProtocolVersion->addItem(c.label);
     }
 
@@ -194,7 +194,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : maximalClientProtocolVersionChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(maximalClientProtocolVersionChoices)) {
         maximalClientProtocolVersion->addItem(c.label);
     }
 
@@ -331,7 +331,7 @@ void Smb4KConfigPageCustomOptions::setupMountingTab()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : writeAccessChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : qAsConst(writeAccessChoices)) {
         writeAccess->addItem(wa.label);
     }
 
@@ -372,7 +372,7 @@ void Smb4KConfigPageCustomOptions::setupMountingTab()
 
     QList<KUser> allUsers = KUser::allUsers();
 
-    for (const KUser &u : allUsers) {
+    for (const KUser &u : qAsConst(allUsers)) {
         userId->addItem(QString("%1 (%2)").arg(u.loginName(), u.userId().toString()));
     }
 
@@ -388,7 +388,7 @@ void Smb4KConfigPageCustomOptions::setupMountingTab()
 
     QList<KUserGroup> allGroups = KUserGroup::allGroups();
 
-    for (const KUserGroup &g : allGroups) {
+    for (const KUserGroup &g : qAsConst(allGroups)) {
         groupId->addItem(QString("%1 (%2)").arg(g.name(), g.groupId().toString()));
     }
 
@@ -445,7 +445,7 @@ void Smb4KConfigPageCustomOptions::setupMountingTab()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : smbProtocolChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(smbProtocolChoices)) {
         mountProtocolVersion->addItem(c.label);
     }
 
@@ -461,7 +461,7 @@ void Smb4KConfigPageCustomOptions::setupMountingTab()
 
     QList<KConfigSkeleton::ItemEnum::Choice> securityModeChoices = Smb4KMountSettings::self()->securityModeItem()->choices();
 
-    for (const KConfigSkeleton::ItemEnum::Choice &c : securityModeChoices) {
+    for (const KConfigSkeleton::ItemEnum::Choice &c : qAsConst(securityModeChoices)) {
         securityMode->addItem(c.label);
     }
 
@@ -594,7 +594,7 @@ void Smb4KConfigPageCustomOptions::insertCustomOptions(const QList<OptionsPtr> &
         }
 
         // Display the new options
-        for (const OptionsPtr &o : m_optionsList) {
+        for (const OptionsPtr &o : qAsConst(m_optionsList)) {
             switch (o->type()) {
             case Host: {
                 QListWidgetItem *item = new QListWidgetItem(KDE::icon("network-server"), o->displayString(), optionsListWidget, Host);
@@ -925,7 +925,7 @@ void Smb4KConfigPageCustomOptions::clearEditors()
 
 void Smb4KConfigPageCustomOptions::setCurrentOptions(const QString &url)
 {
-    for (const OptionsPtr &o : m_optionsList) {
+    for (const OptionsPtr &o : qAsConst(m_optionsList)) {
         if (url == o->url().toString()) {
             m_currentOptions = o;
             break;
@@ -1525,7 +1525,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     // the settings
     //
     if (m_currentOptions->type() == Host) {
-        for (const OptionsPtr &o : m_optionsList) {
+        for (const OptionsPtr &o : qAsConst(m_optionsList)) {
             if (o->type() == Share && o->hostName() == m_currentOptions->hostName() && o->workgroupName() == m_currentOptions->workgroupName()) {
                 o->setIpAddress(m_currentOptions->ipAddress());
                 o->setUseUser(m_currentOptions->useUser());
@@ -1608,14 +1608,15 @@ void Smb4KConfigPageCustomOptions::slotCustomContextMenuRequested(const QPoint &
 
     if (optionsListWidget) {
         QListWidgetItem *item = optionsListWidget->itemAt(pos);
+        QList<QAction *> actionsList = optionsListWidget->actions();
 
-        for (QAction *a : optionsListWidget->actions()) {
-            if (a->objectName() == "edit_action") {
-                a->setEnabled(item != 0);
-            } else if (a->objectName() == "remove_action") {
-                a->setEnabled(item != 0);
-            } else if (a->objectName() == "clear_action") {
-                a->setEnabled(optionsListWidget->count() != 0);
+        for (QAction *action : qAsConst(actionsList)) {
+            if (action->objectName() == "edit_action") {
+                action->setEnabled(item != 0);
+            } else if (action->objectName() == "remove_action") {
+                action->setEnabled(item != 0);
+            } else if (action->objectName() == "clear_action") {
+                action->setEnabled(optionsListWidget->count() != 0);
             }
         }
 

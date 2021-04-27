@@ -203,7 +203,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : writeAccessChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : qAsConst(writeAccessChoices)) {
         writeAccess->addItem(wa.label);
     }
 
@@ -253,7 +253,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QList<KUser> allUsers = KUser::allUsers();
 
-    for (const KUser &u : allUsers) {
+    for (const KUser &u : qAsConst(allUsers)) {
         userId->addItem(QString("%1 (%2)").arg(u.loginName(), u.userId().toString()));
     }
 
@@ -272,7 +272,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QList<KUserGroup> allGroups = KUserGroup::allGroups();
 
-    for (const KUserGroup &g : allGroups) {
+    for (const KUserGroup &g : qAsConst(allGroups)) {
         groupId->addItem(QString("%1 (%2)").arg(g.name(), g.groupId().toString()));
     }
 
@@ -338,7 +338,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : smbProtocolChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(smbProtocolChoices)) {
         mountProtocol->addItem(c.label);
     }
 
@@ -357,7 +357,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QList<KConfigSkeleton::ItemEnum::Choice> securityModeChoices = Smb4KMountSettings::self()->securityModeItem()->choices();
 
-    for (const KConfigSkeleton::ItemEnum::Choice &c : securityModeChoices) {
+    for (const KConfigSkeleton::ItemEnum::Choice &c : qAsConst(securityModeChoices)) {
         securityMode->addItem(c.label);
     }
 
@@ -397,7 +397,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalClientProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : minimalClientProtocolVersionChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(minimalClientProtocolVersionChoices)) {
         minimalClientProtocolVersion->addItem(c.label);
     }
 
@@ -410,7 +410,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : maximalClientProtocolVersionChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(maximalClientProtocolVersionChoices)) {
         maximalClientProtocolVersion->addItem(c.label);
     }
 
@@ -1953,7 +1953,9 @@ void Smb4KCustomOptionsDialog::slotCheckValues()
     QDialogButtonBox *buttonBox = findChild<QDialogButtonBox *>();
 
     if (buttonBox) {
-        for (QAbstractButton *b : buttonBox->buttons()) {
+        QList<QAbstractButton *> buttons = buttonBox->buttons();
+        
+        for (QAbstractButton *b : qAsConst(buttons)) {
             if (buttonBox->buttonRole(b) == QDialogButtonBox::ResetRole) {
                 b->setEnabled(!checkDefaultValues());
                 break;

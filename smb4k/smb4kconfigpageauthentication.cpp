@@ -225,7 +225,7 @@ void Smb4KConfigPageAuthentication::insertWalletEntries(const QList<Smb4KAuthInf
     // Insert the authentication information entries into the
     // list widget
     //
-    for (Smb4KAuthInfo *authInfo : m_entriesList) {
+    for (Smb4KAuthInfo *authInfo : qAsConst(m_entriesList)) {
         switch (authInfo->type()) {
         case UnknownNetworkItem: {
             (void)new QListWidgetItem(KDE::icon("dialog-password"), i18n("Default Login"), walletEntriesWidget);
@@ -370,7 +370,7 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
     //
     // Connect signals
     //
-    connect(detailsWidget, SIGNAL(cellChanged(int, int)), this, SLOT(slotDetailsChanged(int, int)));
+    connect(detailsWidget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));
 
     //
     // Enable the details box
@@ -442,7 +442,7 @@ void Smb4KConfigPageAuthentication::slotItemSelectionChanged()
     // details into the details widget
     //
     if (walletEntriesWidget->currentItem()) {
-        for (Smb4KAuthInfo *authInfo : m_entriesList) {
+        for (Smb4KAuthInfo *authInfo : qAsConst(m_entriesList)) {
             if (walletEntriesWidget->currentItem()->text() == authInfo->displayString()
                 || (walletEntriesWidget->currentItem()->text() == i18n("Default Login") && authInfo->type() == UnknownNetworkItem)) {
                 loadDetails(authInfo);
@@ -466,7 +466,7 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
     //
     // Find the right authentication information and pass the modifications
     //
-    for (Smb4KAuthInfo *authInfo : m_entriesList) {
+    for (Smb4KAuthInfo *authInfo : qAsConst(m_entriesList)) {
         if (QString::compare(detailsWidget->item(0, 1)->text(), authInfo->displayString()) == 0
             || (QString::compare(detailsWidget->item(0, 1)->text(), i18n("Default Login")) == 0 && authInfo->type() == UnknownNetworkItem)) {
             switch (authInfo->type()) {

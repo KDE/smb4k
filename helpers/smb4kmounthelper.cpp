@@ -188,7 +188,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     bool mountPointOk = false;
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
 
-    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints) {
+    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints)) {
 #if defined(Q_OS_LINUX)
         if (QString::compare(args["mh_mountpoint"].toString(), mountPoint->mountPoint()) == 0
             && QString::compare(mountPoint->mountType(), "cifs", Qt::CaseInsensitive) == 0)

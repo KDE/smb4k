@@ -499,7 +499,7 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
     //
     QPointer<Smb4KPreviewDialog> dlg = 0;
 
-    for (Smb4KPreviewDialog *p : d->previewDialogs) {
+    for (Smb4KPreviewDialog *p : qAsConst(d->previewDialogs)) {
         if (share == p->share()) {
             dlg = p;
         }
@@ -516,11 +516,11 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
         // Connections
         //
         connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
-        connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog *)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog *)));
+        connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog*)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog*)));
         connect(dlg, SIGNAL(requestAbort()), this, SLOT(slotAbort()));
         connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
-        connect(this, SIGNAL(aboutToStart(NetworkItemPtr, int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr, int)));
-        connect(this, SIGNAL(finished(NetworkItemPtr, int)), dlg, SLOT(slotFinished(NetworkItemPtr, int)));
+        connect(this, SIGNAL(aboutToStart(NetworkItemPtr,int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr,int)));
+        connect(this, SIGNAL(finished(NetworkItemPtr,int)), dlg, SLOT(slotFinished(NetworkItemPtr,int)));
     }
 
     //
@@ -548,7 +548,7 @@ void Smb4KClient::openPrintDialog(const SharePtr &share)
     //
     QPointer<Smb4KPrintDialog> dlg = 0;
 
-    for (Smb4KPrintDialog *p : d->printDialogs) {
+    for (Smb4KPrintDialog *p : qAsConst(d->printDialogs)) {
         if (share == p->share()) {
             dlg = p;
         }
@@ -563,8 +563,8 @@ void Smb4KClient::openPrintDialog(const SharePtr &share)
         dlg = new Smb4KPrintDialog(share, QApplication::activeWindow());
         d->printDialogs << dlg;
 
-        connect(dlg, SIGNAL(printFile(SharePtr, KFileItem, int)), this, SLOT(slotStartPrinting(SharePtr, KFileItem, int)));
-        connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog *)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog *)));
+        connect(dlg, SIGNAL(printFile(SharePtr,KFileItem,int)), this, SLOT(slotStartPrinting(SharePtr,KFileItem,int)));
+        connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog*)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog*)));
     }
 
     //
@@ -639,10 +639,12 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
     //
     // Collect the workgroups found while scanning
     //
-    for (const WorkgroupPtr &newWorkgroup : job->workgroups()) {
+    QList<WorkgroupPtr> discoveredWorkgroups = job->workgroups();
+    
+    for (const WorkgroupPtr &newWorkgroup : qAsConst(discoveredWorkgroups)) {
         bool foundWorkgroup = false;
 
-        for (const WorkgroupPtr &workgroup : d->tempWorkgroupList) {
+        for (const WorkgroupPtr &workgroup : qAsConst(d->tempWorkgroupList)) {
             if (workgroup->workgroupName() == newWorkgroup->workgroupName()) {
                 foundWorkgroup = true;
                 break;
@@ -731,10 +733,12 @@ void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
     //
     // Collect the hosts found while scanning
     //
-    for (const HostPtr &newHost : job->hosts()) {
+    QList<HostPtr> discoveredHosts = job->hosts();
+    
+    for (const HostPtr &newHost : qAsConst(discoveredHosts)) {
         bool foundHost = false;
 
-        for (const HostPtr &host : d->tempHostList) {
+        for (const HostPtr &host : qAsConst(d->tempHostList)) {
             if (host->workgroupName() == newHost->workgroupName() && host->hostName() == newHost->hostName()) {
                 foundHost = true;
                 break;
@@ -782,7 +786,7 @@ void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
         }
 
         // Add new hosts and update existing ones
-        for (const HostPtr &host : d->tempHostList) {
+        for (const HostPtr &host : qAsConst(d->tempHostList)) {
             if (host->hostName() == workgroup->masterBrowserName()) {
                 host->setIsMasterBrowser(true);
             } else {
@@ -815,6 +819,11 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
     // Get the host pointer
     //
     HostPtr host = job->networkItem().staticCast<Smb4KHost>();
+    
+    //
+    // Copy the list of discovered shares
+    // 
+    QList<SharePtr> discoveredShares = job->shares();
 
     //
     // Remove obsolete shares
@@ -827,7 +836,7 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
 
         bool foundShare = false;
 
-        for (const SharePtr &s : job->shares()) {
+        for (const SharePtr &s : qAsConst(discoveredShares)) {
             if (s->workgroupName() == share->workgroupName() && s->url().matches(share->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
                 foundShare = true;
                 break;
@@ -842,7 +851,7 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
     //
     // Add new shares and update existing ones
     //
-    for (const SharePtr &share : job->shares()) {
+    for (const SharePtr &share : qAsConst(discoveredShares)) {
         // Process only those shares that the user wants to see
         if (share->isHidden() && !Smb4KSettings::detectHiddenShares()) {
             continue;
@@ -865,9 +874,17 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
 
 void Smb4KClient::processFiles(Smb4KClientBaseJob *job)
 {
+    //
+    // Copy the list of discovered files and directories
+    // 
+    QList<FilePtr> discoveredFiles = job->files();
+    
+    //
+    // Process the list of discovered directories
+    // 
     QList<FilePtr> list;
 
-    for (const FilePtr &file : job->files()) {
+    for (const FilePtr &file : qAsConst(discoveredFiles)) {
         if (file->isHidden() && !Smb4KSettings::previewHiddenItems()) {
             continue;
         }

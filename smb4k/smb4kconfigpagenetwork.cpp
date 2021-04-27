@@ -84,7 +84,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : minimalProtocolVersionChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(minimalProtocolVersionChoices)) {
         minimalProtocolVersion->addItem(c.label);
     }
 
@@ -97,7 +97,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : maximalProtocolVersionChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(maximalProtocolVersionChoices)) {
         maximalProtocolVersion->addItem(c.label);
     }
 
@@ -224,7 +224,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> encryptionLevelChoices = Smb4KSettings::self()->encryptionLevelItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : encryptionLevelChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(encryptionLevelChoices)) {
         encryptionLevel->addItem(c.label);
     }
 

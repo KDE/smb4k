@@ -171,7 +171,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : writeAccessChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &wa : qAsConst(writeAccessChoices)) {
         writeAccess->addItem(wa.label);
     }
 
@@ -187,7 +187,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> charsetChoices = Smb4KMountSettings::self()->clientCharsetItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : charsetChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(charsetChoices)) {
         characterSet->addItem(c.label);
     }
 
@@ -243,7 +243,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KUser> allUsers = KUser::allUsers();
 
-    for (const KUser &u : allUsers) {
+    for (const KUser &u : qAsConst(allUsers)) {
         QAction *userAction = userMenu->addAction(QString("%1 (%2)").arg(u.loginName()).arg(u.userId().nativeId()));
         userAction->setData(u.userId().nativeId());
     }
@@ -279,7 +279,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KUserGroup> groupList = KUserGroup::allGroups();
 
-    for (const KUserGroup &g : groupList) {
+    for (const KUserGroup &g : qAsConst(groupList)) {
         QAction *groupAction = groupMenu->addAction(QString("%1 (%2)").arg(g.name()).arg(g.groupId().nativeId()));
         groupAction->setData(g.groupId().nativeId());
     }
@@ -384,7 +384,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : smbProtocolChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(smbProtocolChoices)) {
         smbProtocol->addItem(c.label);
     }
 
@@ -400,7 +400,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> cacheModeChoices = Smb4KMountSettings::self()->cacheModeItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : cacheModeChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(cacheModeChoices)) {
         cacheMode->addItem(c.label);
     }
 
@@ -416,7 +416,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     QList<KConfigSkeleton::ItemEnum::Choice> securityModeChoices = Smb4KMountSettings::self()->securityModeItem()->choices();
 
-    for (const KConfigSkeleton::ItemEnum::Choice &c : securityModeChoices) {
+    for (const KConfigSkeleton::ItemEnum::Choice &c : qAsConst(securityModeChoices)) {
         securityMode->addItem(c.label);
     }
 
@@ -462,8 +462,8 @@ void Smb4KConfigPageMounting::setupWidget()
     //
     // Connections
     //
-    connect(userMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotNewUserTriggered(QAction *)));
-    connect(groupMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotNewGroupTriggered(QAction *)));
+    connect(userMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewUserTriggered(QAction*)));
+    connect(groupMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewGroupTriggered(QAction*)));
     connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCIFSUnixExtensionsSupport(bool)));
     connect(additionalOptionsEdit, SIGNAL(toggled(bool)), this, SLOT(slotAdditionalCIFSOptions()));
     connect(remountShares, SIGNAL(toggled(bool)), this, SLOT(slotRemountSharesToggled(bool)));

@@ -86,9 +86,9 @@ Smb4KSharesViewDockWidget::Smb4KSharesViewDockWidget(const QString &title, QWidg
     // Connections
     //
     connect(m_sharesView, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
-    connect(m_sharesView, SIGNAL(itemActivated(QListWidgetItem *)), this, SLOT(slotItemActivated(QListWidgetItem *)));
+    connect(m_sharesView, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(slotItemActivated(QListWidgetItem*)));
     connect(m_sharesView, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
-    connect(m_sharesView, SIGNAL(acceptedDropEvent(Smb4KSharesViewItem *, QDropEvent *)), this, SLOT(slotDropEvent(Smb4KSharesViewItem *, QDropEvent *)));
+    connect(m_sharesView, SIGNAL(acceptedDropEvent(Smb4KSharesViewItem*,QDropEvent*)), this, SLOT(slotDropEvent(Smb4KSharesViewItem*,QDropEvent*)));
 
     connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
@@ -134,7 +134,7 @@ void Smb4KSharesViewDockWidget::loadSettings()
         } else if (selectedItems.size() > 1) {
             int foreign = 0;
 
-            for (QListWidgetItem *selectedItem : selectedItems) {
+            for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
                 Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
                 if (item && item->shareItem()->isForeign()) {
@@ -172,7 +172,7 @@ void Smb4KSharesViewDockWidget::setupActions()
 
     QActionGroup *viewModesGroup = new QActionGroup(this);
     viewModesGroup->setExclusive(true);
-    connect(viewModesGroup, SIGNAL(triggered(QAction *)), this, SLOT(slotViewModeChanged(QAction *)));
+    connect(viewModesGroup, SIGNAL(triggered(QAction*)), this, SLOT(slotViewModeChanged(QAction*)));
 
     QAction *iconViewAction = new QAction(KDE::icon("view-list-icons"), i18n("Icon View"), this);
     iconViewAction->setObjectName("icon_view_action");
@@ -282,8 +282,10 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     // Plug the actions into the context menu
     //
-    for (QAction *a : m_actionCollection->actions()) {
-        m_contextMenu->addAction(a);
+    QList<QAction *> actionsList = m_actionCollection->actions();
+    
+    for (QAction *action : qAsConst(actionsList)) {
+        m_contextMenu->addAction(action);
     }
 }
 
@@ -328,7 +330,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
         int inaccessible = 0;
         int foreign = 0;
 
-        for (QListWidgetItem *selectedItem : selectedItems) {
+        for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
             Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
             if (item) {
@@ -488,7 +490,7 @@ void Smb4KSharesViewDockWidget::slotUnmountActionTriggered(bool /*checked*/)
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
     QList<SharePtr> shares;
 
-    for (QListWidgetItem *selectedItem : selectedItems) {
+    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item) {
@@ -509,7 +511,7 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool /*checked*/)
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
     QList<SharePtr> shares;
 
-    for (QListWidgetItem *selectedItem : selectedItems) {
+    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
         shares << item->shareItem();
     }
@@ -521,7 +523,7 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool /*checked*/)
 {
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
-    for (QListWidgetItem *selectedItem : selectedItems) {
+    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(item->shareItem())) {
@@ -534,7 +536,7 @@ void Smb4KSharesViewDockWidget::slotKonsoleActionTriggered(bool /*checked*/)
 {
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
-    for (QListWidgetItem *selectedItem : selectedItems) {
+    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item && !item->shareItem()->isInaccessible()) {
@@ -547,7 +549,7 @@ void Smb4KSharesViewDockWidget::slotFileManagerActionTriggered(bool /*checked*/)
 {
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
-    for (QListWidgetItem *selectedItem : selectedItems) {
+    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
         if (item && !item->shareItem()->isInaccessible()) {

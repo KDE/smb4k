@@ -42,12 +42,12 @@ public slots:
     /**
      * Mounts a CIFS/SMBFS share.
      */
-    ActionReply mount(const QVariantMap &args);
+    KAuth::ActionReply mount(const QVariantMap &args);
 
     /**
      * Unmounts a CIFS/SMBFS share.
      */
-    ActionReply unmount(const QVariantMap &args);
+    KAuth::ActionReply unmount(const QVariantMap &args);
 };
 
 #endif

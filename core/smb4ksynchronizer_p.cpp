@@ -408,7 +408,7 @@ void Smb4KSyncJob::slotStartSynchronization()
     // The job tracker
     //
     m_job_tracker->registerJob(this);
-    connect(this, SIGNAL(result(KJob *)), m_job_tracker, SLOT(unregisterJob(KJob *)));
+    connect(this, SIGNAL(result(KJob*)), m_job_tracker, SLOT(unregisterJob(KJob*)));
 
     //
     // The process
@@ -420,7 +420,7 @@ void Smb4KSyncJob::slotStartSynchronization()
 
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(slotReadStandardOutput()));
     connect(m_process, SIGNAL(readyReadStandardError()), SLOT(slotReadStandardError()));
-    connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(slotProcessFinished(int, QProcess::ExitStatus)));
+    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
 
     // Start the synchronization process
     emit aboutToStart(m_dest.path());

@@ -69,8 +69,8 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QWidget *parentWidget, QObject *p
     connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), SLOT(slotBookmarksUpdated()));
     connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
-    connect(m_actions, SIGNAL(triggered(QAction *)), SLOT(slotCategoryActionTriggered(QAction *)));
-    connect(m_bookmarks, SIGNAL(triggered(QAction *)), SLOT(slotBookmarkActionTriggered(QAction *)));
+    connect(m_actions, SIGNAL(triggered(QAction*)), SLOT(slotCategoryActionTriggered(QAction*)));
+    connect(m_bookmarks, SIGNAL(triggered(QAction*)), SLOT(slotBookmarkActionTriggered(QAction*)));
 }
 
 Smb4KBookmarkMenu::~Smb4KBookmarkMenu()
@@ -184,11 +184,11 @@ void Smb4KBookmarkMenu::setupMenu()
         QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList();
         int mountedBookmarks = 0;
 
-        for (const BookmarkPtr &bookmark : bookmarks) {
+        for (const BookmarkPtr &bookmark : qAsConst(bookmarks)) {
             QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
 
             if (!mountedShares.isEmpty()) {
-                for (const SharePtr &share : mountedShares) {
+                for (const SharePtr &share : qAsConst(mountedShares)) {
                     if (!share->isForeign()) {
                         mountedBookmarks++;
                         break;
@@ -208,7 +208,7 @@ void Smb4KBookmarkMenu::setupMenu()
     //
     // Now add the categories and their bookmarks
     //
-    for (const QString &category : allCategories) {
+    for (const QString &category : qAsConst(allCategories)) {
         if (!category.isEmpty()) {
             // Category menu entry
             KActionMenu *bookmarkCategoryMenu = new KActionMenu(category, menu());
@@ -236,7 +236,7 @@ void Smb4KBookmarkMenu::setupMenu()
             QStringList sortedBookmarks;
             int mountedBookmarks = 0;
 
-            for (const BookmarkPtr &bookmark : bookmarks) {
+            for (const BookmarkPtr &bookmark : qAsConst(bookmarks)) {
                 QAction *bookmarkAction = 0;
 
                 if (Smb4KSettings::showCustomBookmarkLabel() && !bookmark->label().isEmpty()) {
@@ -266,7 +266,7 @@ void Smb4KBookmarkMenu::setupMenu()
                 QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
 
                 if (!mountedShares.isEmpty()) {
-                    for (const SharePtr &share : mountedShares) {
+                    for (const SharePtr &share : qAsConst(mountedShares)) {
                         if (!share->isForeign()) {
                             bookmarkAction->setEnabled(false);
                             mountedBookmarks++;
@@ -285,8 +285,8 @@ void Smb4KBookmarkMenu::setupMenu()
             // Insert the sorted bookmarks into the category menu
             QList<QAction *> actions = m_bookmarks->actions();
 
-            for (const QString &b : sortedBookmarks) {
-                for (QAction *a : actions) {
+            for (const QString &b : qAsConst(sortedBookmarks)) {
+                for (QAction *a : qAsConst(actions)) {
                     if (a->text() == b) {
                         bookmarkCategoryMenu->addAction(a);
                         break;
@@ -303,7 +303,7 @@ void Smb4KBookmarkMenu::setupMenu()
     QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList("");
     QStringList sortedBookmarks;
 
-    for (const BookmarkPtr &bookmark : bookmarks) {
+    for (const BookmarkPtr &bookmark : qAsConst(bookmarks)) {
         QAction *bookmarkAction = 0;
 
         if (Smb4KSettings::showCustomBookmarkLabel() && !bookmark->label().isEmpty()) {
@@ -333,7 +333,7 @@ void Smb4KBookmarkMenu::setupMenu()
         QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
 
         if (!mountedShares.isEmpty()) {
-            for (const SharePtr &share : mountedShares) {
+            for (const SharePtr &share : qAsConst(mountedShares)) {
                 if (!share->isForeign()) {
                     qDebug() << "Disabling bookmark" << share->url().toDisplayString();
                     bookmarkAction->setEnabled(false);
@@ -347,8 +347,8 @@ void Smb4KBookmarkMenu::setupMenu()
 
     QList<QAction *> actions = m_bookmarks->actions();
 
-    for (const QString &b : sortedBookmarks) {
-        for (QAction *a : actions) {
+    for (const QString &b : qAsConst(sortedBookmarks)) {
+        for (QAction *a : qAsConst(actions)) {
             if (a->data().toMap().value("text").toString() == b) {
                 addAction(a);
                 break;
@@ -380,7 +380,7 @@ void Smb4KBookmarkMenu::slotToplevelMountActionTriggered(bool /*checked*/)
     QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList();
     QList<SharePtr> mounts;
 
-    for (const BookmarkPtr &bookmark : bookmarks) {
+    for (const BookmarkPtr &bookmark : qAsConst(bookmarks)) {
         // FIXME: Check if the bookmarked share has already been mounted.
         SharePtr share = SharePtr(new Smb4KShare());
         share->setHostName(bookmark->hostName());
@@ -407,7 +407,7 @@ void Smb4KBookmarkMenu::slotCategoryActionTriggered(QAction *action)
         QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(action->data().toMap().value("category").toString());
         QList<SharePtr> mounts;
 
-        for (const BookmarkPtr &bookmark : bookmarks) {
+        for (const BookmarkPtr &bookmark : qAsConst(bookmarks)) {
             // FIXME: Check if the bookmarked share has already been mounted.
             SharePtr share = SharePtr(new Smb4KShare());
             share->setHostName(bookmark->hostName());
@@ -460,7 +460,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
         QList<QAction *> actions = m_bookmarks->actions();
         QString bookmarkCategory;
 
-        for (QAction *a : actions) {
+        for (QAction *a : qAsConst(actions)) {
             QUrl bookmarkUrl = a->data().toMap().value("url").toUrl();
 
             if (share->url().matches(bookmarkUrl, QUrl::RemoveUserInfo | QUrl::RemovePort)) {
@@ -476,7 +476,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
         //
         bool allMounted = true;
 
-        for (QAction *a : actions) {
+        for (QAction *a : qAsConst(actions)) {
             if (a->data().toMap().value("category").toString() == bookmarkCategory && a->isEnabled()) {
                 allMounted = false;
                 break;
@@ -485,7 +485,7 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
 
         QList<QAction *> allActions = m_actions->actions();
 
-        for (QAction *a : allActions) {
+        for (QAction *a : qAsConst(allActions)) {
             if (a->data().toMap().value("type").toString() == "toplevel_mount" && bookmarkCategory.isEmpty()) {
                 a->setEnabled(!allMounted);
                 break;

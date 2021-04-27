@@ -62,7 +62,7 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> tabOrientationChoices = Smb4KSettings::self()->mainWindowTabOrientationItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &to : tabOrientationChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &to : qAsConst(tabOrientationChoices)) {
         tabOrientation->addItem(to.label);
     }
 
@@ -124,7 +124,7 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> sharesViewModeChoices = Smb4KSettings::self()->sharesViewModeItem()->choices();
 
-    for (const KCoreConfigSkeleton::ItemEnum::Choice &vm : sharesViewModeChoices) {
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &vm : qAsConst(sharesViewModeChoices)) {
         viewMode->addItem(vm.label);
     }
 

@@ -197,7 +197,7 @@ void Smb4KBookmarkDialog::setupView()
     //
     // Connections
     //
-    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(slotBookmarkClicked(QListWidgetItem *)));
+    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotBookmarkClicked(QListWidgetItem*)));
     connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
     connect(categoryCombo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotCategoryEdited()));
     connect(okButton, SIGNAL(clicked()), this, SLOT(slotDialogAccepted()));
@@ -238,7 +238,7 @@ BookmarkPtr Smb4KBookmarkDialog::findBookmark(const QUrl &url)
 {
     BookmarkPtr bookmark;
 
-    for (const BookmarkPtr &b : m_bookmarks) {
+    for (const BookmarkPtr &b : qAsConst(m_bookmarks)) {
         if (b->url() == url) {
             bookmark = b;
             break;
@@ -598,7 +598,7 @@ void Smb4KBookmarkEditor::setupView()
     //
     // Connections
     //
-    connect(treeWidget, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(slotItemClicked(QTreeWidgetItem *, int)));
+    connect(treeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(slotItemClicked(QTreeWidgetItem*,int)));
     connect(treeWidget, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
     connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
     connect(ipEdit, SIGNAL(editingFinished()), this, SLOT(slotIpEdited()));
@@ -631,7 +631,7 @@ void Smb4KBookmarkEditor::loadBookmarks()
     //
     m_categories.clear();
 
-    for (const BookmarkPtr &bookmark : m_bookmarks) {
+    for (const BookmarkPtr &bookmark : qAsConst(m_bookmarks)) {
         if (!m_categories.contains(bookmark->categoryName())) {
             m_categories << bookmark->categoryName();
         }
@@ -640,7 +640,7 @@ void Smb4KBookmarkEditor::loadBookmarks()
     //
     // Insert the groups into the tree widget
     //
-    for (const QString &category : m_categories) {
+    for (const QString &category : qAsConst(m_categories)) {
         if (!category.isEmpty()) {
             QTreeWidgetItem *categoryItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
             categoryItem->setIcon(0, KDE::icon("folder-bookmark"));
@@ -654,7 +654,7 @@ void Smb4KBookmarkEditor::loadBookmarks()
     //
     // Insert the bookmarks info the tree widget
     //
-    for (const BookmarkPtr &bookmark : m_bookmarks) {
+    for (const BookmarkPtr &bookmark : qAsConst(m_bookmarks)) {
         QTreeWidgetItem *bookmarkItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
         bookmarkItem->setData(0, QTreeWidgetItem::UserType, static_cast<QUrl>(bookmark->url()));
         bookmarkItem->setIcon(0, bookmark->icon());
@@ -704,7 +704,7 @@ BookmarkPtr Smb4KBookmarkEditor::findBookmark(const QUrl &url)
 {
     BookmarkPtr bookmark;
 
-    for (const BookmarkPtr &b : m_bookmarks) {
+    for (const BookmarkPtr &b : qAsConst(m_bookmarks)) {
         if (b->url() == url) {
             bookmark = b;
             break;

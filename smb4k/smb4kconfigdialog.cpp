@@ -155,7 +155,7 @@ void Smb4KConfigDialog::setupDialog()
     connect(auth_options, SIGNAL(setDefaultLogin()), this, SLOT(slotSetDefaultLogin()));
     connect(auth_options, SIGNAL(walletEntriesModified()), this, SLOT(slotEnableApplyButton()));
 
-    connect(this, SIGNAL(currentPageChanged(KPageWidgetItem *, KPageWidgetItem *)), this, SLOT(slotCheckPage(KPageWidgetItem *, KPageWidgetItem *)));
+    connect(this, SIGNAL(currentPageChanged(KPageWidgetItem*,KPageWidgetItem*)), this, SLOT(slotCheckPage(KPageWidgetItem*,KPageWidgetItem*)));
 
     //
     // Dialog size
@@ -621,7 +621,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
         QList<Smb4KAuthInfo *> oldWalletEntries = Smb4KWalletManager::self()->walletEntries();
         QList<Smb4KAuthInfo *> newWalletEntries = authenticationPage->getWalletEntries();
 
-        for (Smb4KAuthInfo *oldEntry : oldWalletEntries) {
+        for (Smb4KAuthInfo *oldEntry : qAsConst(oldWalletEntries)) {
             for (Smb4KAuthInfo *newEntry : newWalletEntries) {
                 if (QString::compare(oldEntry->url().toString(QUrl::RemovePort), newEntry->url().toString(QUrl::RemovePort), Qt::CaseInsensitive)
                         == 0 /* leave the user info here */

@@ -205,8 +205,8 @@ void Smb4KMainWindow::setupStatusBar()
     //
     // Connections
     //
-    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr, int)));
-    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SLOT(slotClientFinished(NetworkItemPtr, int)));
+    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SLOT(slotClientAboutToStart(NetworkItemPtr,int)));
+    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr,int)), this, SLOT(slotClientFinished(NetworkItemPtr,int)));
 
     connect(Smb4KWalletManager::self(), SIGNAL(initialized()), this, SLOT(slotWalletManagerInitialized()));
 
@@ -513,15 +513,15 @@ void Smb4KMainWindow::setupDynamicActionList(QDockWidget *dock)
         // Prepare the dynamic action list for the main window
         //
         QList<QAction *> dynamicList;
-        KActionCollection *dockActionCollection = nullptr;
+        QList<QAction *> actionsList;
 
         if (dock->objectName() == "NetworkBrowserDockWidget") {
-            dockActionCollection = static_cast<Smb4KNetworkBrowserDockWidget *>(dock)->actionCollection();
+            actionsList = static_cast<Smb4KNetworkBrowserDockWidget *>(dock)->actionCollection()->actions();
         } else if (dock->objectName() == "SharesViewDockWidget") {
-            dockActionCollection = static_cast<Smb4KSharesViewDockWidget *>(dock)->actionCollection();
+            actionsList = static_cast<Smb4KSharesViewDockWidget *>(dock)->actionCollection()->actions();
         }
 
-        for (QAction *action : dockActionCollection->actions()) {
+        for(QAction *action : qAsConst(actionsList)) {
             if (action->objectName() == "bookmark_action") {
                 if (bookmarkMenu) {
                     bookmarkMenu->setBookmarkActionEnabled(action->isEnabled());

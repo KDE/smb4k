@@ -105,12 +105,12 @@ public:
     /**
      * User list
      */
-    QStringList users() const;
+    QStringList userList() const;
 
     /**
      * Set user list
      */
-    void setUsers(const QStringList &users);
+    void setUserList(const QStringList &users);
 
     /**
      * Profile
@@ -123,11 +123,11 @@ public:
     void setProfile(const QString &profile);
 
 private:
-    QString m_workgroup_name;
-    QString m_host_name;
-    QString m_share_name;
-    QHostAddress m_host_ip;
-    QStringList m_users;
+    QString m_workgroupName;
+    QString m_hostName;
+    QString m_shareName;
+    QHostAddress m_hostIp;
+    QStringList m_userList;
     QString m_profile;
 };
 

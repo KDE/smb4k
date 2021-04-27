@@ -96,7 +96,7 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
     //
     // Connections
     //
-    connect(Smb4KProfileManager::self(), SIGNAL(migratedProfile(QString, QString)), this, SLOT(slotProfileMigrated(QString, QString)));
+    connect(Smb4KProfileManager::self(), SIGNAL(migratedProfile(QString,QString)), this, SLOT(slotProfileMigrated(QString,QString)));
     connect(Smb4KProfileManager::self(), SIGNAL(aboutToChangeProfile()), this, SLOT(slotAboutToChangeProfile()));
     connect(Smb4KProfileManager::self(), SIGNAL(activeProfileChanged(QString)), this, SLOT(slotActiveProfileChanged(QString)));
 
@@ -235,7 +235,9 @@ void Smb4KMounter::import(bool checkInaccessible)
             share->setMounted(true);
 
             // Get all mount options
-            for (const QString &option : mountPoint->mountOptions()) {
+            QStringList mountOptions = mountPoint->mountOptions();
+            
+            for (const QString &option : qAsConst(mountOptions)) {
                 if (option.startsWith(QLatin1String("domain=")) || option.startsWith(QLatin1String("workgroup="))) {
                     share->setWorkgroupName(option.section('=', 1, 1).trimmed());
                 } else if (option.startsWith(QLatin1String("addr="))) {
@@ -377,7 +379,7 @@ void Smb4KMounter::import(bool checkInaccessible)
             QUrl url = QUrl::fromLocalFile(share->path());
             KIO::StatJob *job = KIO::stat(url, KIO::HideProgressInfo);
             job->setDetails(KIO::StatNoDetails);
-            connect(job, SIGNAL(result(KJob *)), this, SLOT(slotStatResult(KJob *)));
+            connect(job, SIGNAL(result(KJob*)), this, SLOT(slotStatResult(KJob*)));
 
             // Do not use addSubJob(), because that would confuse isRunning(), etc.
 

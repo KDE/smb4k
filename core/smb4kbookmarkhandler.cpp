@@ -299,7 +299,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
             xmlWriter.writeStartElement("bookmarks");
             xmlWriter.writeAttribute("version", "3.0");
 
-            for (const BookmarkPtr &bookmark : d->bookmarks) {
+            for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
                 if (!bookmark->url().isValid()) {
                     Smb4KNotification::invalidURLPassed();
                     continue;
@@ -415,11 +415,11 @@ void Smb4KBookmarkHandler::readBookmarkList()
 
 BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
 {
-    // Find the bookmark:
     BookmarkPtr bookmark;
+    QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
 
-    if (!url.isEmpty() && url.isValid() && !bookmarksList().isEmpty()) {
-        for (const BookmarkPtr &b : bookmarksList()) {
+    if (!url.isEmpty() && url.isValid() && !temporalBookmarkList.isEmpty()) {
+        for (const BookmarkPtr &b : qAsConst(temporalBookmarkList)) {
             // NOTE: Since also user provided URLs can be bookmarked, we cannot use
             // QUrl::matches() here, because it does not allow for case insensitive
             // comparison.
@@ -438,10 +438,10 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
 
 BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
 {
-    // Find the bookmark:
     BookmarkPtr bookmark;
+    QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
 
-    for (const BookmarkPtr &b : bookmarksList()) {
+    for (const BookmarkPtr &b : qAsConst(temporalBookmarkList)) {
         if (QString::compare(b->label().toUpper(), label.toUpper()) == 0) {
             bookmark = b;
             break;
@@ -453,14 +453,14 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
 
 QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
 {
-    // Update the bookmarks:
+    // Update the bookmarks
     update();
 
-    // Get this list of the bookmarks
+    // Get the list of the bookmarks
     if (Smb4KSettings::useProfiles()) {
         QList<BookmarkPtr> bookmarks;
 
-        for (const BookmarkPtr &bookmark : d->bookmarks) {
+        for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
             if (bookmark->profile() == Smb4KSettings::activeProfile()) {
                 bookmarks << bookmark;
             }
@@ -469,15 +469,16 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
         return bookmarks;
     }
 
-    // Return the list of bookmarks:
+    // Return the list of bookmarks
     return d->bookmarks;
 }
 
 QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &categoryName) const
 {
     QList<BookmarkPtr> bookmarks;
+    QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
 
-    for (const BookmarkPtr &bookmark : bookmarksList()) {
+    for (const BookmarkPtr &bookmark : qAsConst(temporalBookmarkList)) {
         if (categoryName == bookmark->categoryName()) {
             bookmarks << bookmark;
         }
@@ -489,8 +490,9 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &categoryNa
 QStringList Smb4KBookmarkHandler::categoryList() const
 {
     QStringList categories;
+    QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
 
-    for (const BookmarkPtr &b : bookmarksList()) {
+    for (const BookmarkPtr &b : qAsConst(temporalBookmarkList)) {
         if (!categories.contains(b->categoryName())) {
             categories << b->categoryName();
         }
@@ -539,8 +541,7 @@ void Smb4KBookmarkHandler::editBookmarks()
 
 void Smb4KBookmarkHandler::update() const
 {
-    // Get new IP addresses.
-    for (const BookmarkPtr &bookmark : d->bookmarks) {
+    for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
         HostPtr host = findHost(bookmark->hostName(), bookmark->workgroupName());
 
         if (host) {
@@ -554,7 +555,7 @@ void Smb4KBookmarkHandler::update() const
 void Smb4KBookmarkHandler::migrateProfile(const QString &from, const QString &to)
 {
     // Replace the old profile name with the new one.
-    for (const BookmarkPtr &bookmark : d->bookmarks) {
+    for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
         if (QString::compare(bookmark->profile(), from, Qt::CaseSensitive) == 0) {
             bookmark->setProfile(to);
         }
