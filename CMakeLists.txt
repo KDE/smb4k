@@ -131,9 +131,8 @@ endif(SMB4K_WITH_WS_DISCOVERY)
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
   set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS ON)
 endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
-if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
-   add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x060000)
-endif()
+
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055000)
 
 #
 # Make sure that all libraries, plugins, etc. are installed
