@@ -754,7 +754,7 @@ void Smb4KCustomOptionsDialog::setupView()
   QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
   QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
 
-#ifdef USE_SMC_PROTOCOL  
+#ifdef USE_SMBC_PROTOCOL
   // Minimal and maximal client protocol versions
   QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), commonSambaOptionsBox);
   useClientProtocolVersions->setObjectName("UseClientProtocolVersions");
@@ -923,7 +923,7 @@ void Smb4KCustomOptionsDialog::setupView()
     useDirectoryMode->setChecked(m_options->useDirectoryMode());
     directoryMode->setText(m_options->directoryMode());
     
-#ifdef USE_SMC_PROTOCOL
+#ifdef USE_SMBC_PROTOCOL
     // Client protocol versions
     useClientProtocolVersions->setChecked(m_options->useClientProtocolVersions());
     
@@ -960,7 +960,9 @@ void Smb4KCustomOptionsDialog::setupView()
   // 
   wakeOnLanTab->setEnabled((m_options->type() == Host && Smb4KSettings::enableWakeOnLAN()));
   slotEnableWOLFeatures(macAddress->text());
+#ifdef USE_SMBC_PROTOCOL
   slotUseClientProtocolVersions(useClientProtocolVersions->isChecked());
+#endif
 }
 #else
 //
