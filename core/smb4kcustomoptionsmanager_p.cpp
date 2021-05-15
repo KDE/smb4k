@@ -398,7 +398,7 @@ void Smb4KCustomOptionsDialog::setupView()
   QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
   QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
   
-#ifdef USE_SMC_PROTOCOL
+#ifdef USE_SMBC_PROTOCOL
   // Minimal and maximal client protocol versions
   QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), commonMountSettingsTab);
   useClientProtocolVersions->setObjectName("UseClientProtocolVersions");
