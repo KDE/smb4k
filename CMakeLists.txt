@@ -111,7 +111,7 @@ set(CMAKE_REQUIRED_INCLUDES ${LIBSMBCLIENT_INCLUDE_DIRS})
 check_symbol_exists(smbc_setOptionProtocols libsmbclient.h HAVE_SMBC_PROTOCOL)
 
 if (NOT HAVE_SMBC_PROTOCOL)
-  message(FATAL_ERROR "The function smbc_setOptionProtocols() is missing in Samba's client library's header file.")
+  message(WARNING "The function smbc_setOptionProtocols() is missing in Samba's client library's header file. The ability to set protocol versions for Samba's client library will be disabled.")
 endif()
 
 # Find KDSoap client

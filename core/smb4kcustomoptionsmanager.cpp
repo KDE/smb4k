@@ -925,6 +925,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                       {
                         options->setDirectoryMode(xmlReader.readElementText());
                       }
+#ifdef USE_SMBC_PROTOCOL
                       else if (xmlReader.name() == "use_client_protocol_versions")
                       {
                         bool ok = false;
@@ -955,6 +956,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                           options->setMaximalClientProtocolVersion(maximalClientProtocolVersion);
                         }
                       }
+#endif
 #if defined(Q_OS_LINUX)
                       else if (xmlReader.name() == "cifs_unix_extensions_support")
                       {

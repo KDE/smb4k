@@ -468,7 +468,8 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * @returns the profile name
      */
     QString profile() const;
-    
+   
+#ifdef USE_SMBC_PROTOCOL
     /**
      * Set whether the client minimal and maximal protocol versions should
      * be set/used.
@@ -512,6 +513,7 @@ class Q_DECL_EXPORT Smb4KCustomOptions
      * @returns the maximal client protocol version to use.
      */
     int maximalClientProtocolVersion() const;
+#endif
     
     /**
      * Set whether the SMB port should be used.

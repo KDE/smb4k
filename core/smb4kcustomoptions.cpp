@@ -70,9 +70,11 @@ class Smb4KCustomOptionsPrivate
     int writeAccess;
 #endif
     QString profile;
+#ifdef USE_SMBC_PROTOCOL
     bool useClientProtocolVersions;
     int minimalClientProtocolVersion;
     int maximalClientProtocolVersion;
+#endif
     bool useSmbPort;
     int smbPort;
     bool useKerberos;
@@ -108,9 +110,11 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
   d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
   d->writeAccess = Smb4KMountSettings::writeAccess();
 #endif
+#ifdef USE_SMBC_PROTOCOL
   d->useClientProtocolVersions = Smb4KSettings::useClientProtocolVersions();
   d->minimalClientProtocolVersion = Smb4KSettings::minimalClientProtocolVersion();
   d->maximalClientProtocolVersion = Smb4KSettings::maximalClientProtocolVersion();
+#endif
   d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
   d->smbPort = host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort();
   d->useKerberos = Smb4KSettings::useKerberos();
@@ -145,9 +149,11 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
   d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
   d->writeAccess = Smb4KMountSettings::writeAccess();
 #endif
+#ifdef USE_SMBC_PROTOCOL
   d->useClientProtocolVersions = Smb4KSettings::useClientProtocolVersions();
   d->minimalClientProtocolVersion = Smb4KSettings::minimalClientProtocolVersion();
   d->maximalClientProtocolVersion = Smb4KSettings::maximalClientProtocolVersion();
+#endif
   d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
   d->smbPort = Smb4KSettings::remoteSmbPort();
   d->useKerberos = Smb4KSettings::useKerberos();
@@ -188,9 +194,11 @@ Smb4KCustomOptions::Smb4KCustomOptions()
   d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
   d->writeAccess = Smb4KMountSettings::writeAccess();
 #endif
+#ifdef USE_SMBC_PROTOCOL
   d->useClientProtocolVersions = Smb4KSettings::useClientProtocolVersions();
   d->minimalClientProtocolVersion = Smb4KSettings::minimalClientProtocolVersion();
   d->maximalClientProtocolVersion = Smb4KSettings::maximalClientProtocolVersion();
+#endif
   d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
   d->smbPort = Smb4KSettings::remoteSmbPort();
   d->useKerberos = Smb4KSettings::useKerberos();
@@ -624,6 +632,7 @@ QString Smb4KCustomOptions::profile() const
   return d->profile;
 }
 
+#ifdef USE_SMBC_PROTOCOL
 void Smb4KCustomOptions::setUseClientProtocolVersions(bool use)
 {
   d->useClientProtocolVersions = use;
@@ -658,6 +667,7 @@ int Smb4KCustomOptions::maximalClientProtocolVersion() const
 {
   return d->maximalClientProtocolVersion;
 }
+#endif
 
 
 void Smb4KCustomOptions::setUseSmbPort(bool use)
@@ -814,12 +824,14 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
   entries.insert("write_access", QString("%1").arg(d->writeAccess));
 #endif
  
+#ifdef USE_SMBC_PROTOCOL
   //
   // Client protocol versions
   // 
   entries.insert("use_client_protocol_versions", QString("%1").arg(d->useClientProtocolVersions));
   entries.insert("minimal_client_protocol_version", QString("%1").arg(d->minimalClientProtocolVersion));
   entries.insert("maximal_client_protocol_version", QString("%1").arg(d->maximalClientProtocolVersion));
+#endif
   
   // 
   // SMB port used by the client 
@@ -961,6 +973,7 @@ bool Smb4KCustomOptions::hasOptions(bool withoutRemountOnce) const
   }
 #endif
 
+#ifdef USE_SMBC_PROTOCOL
   // Use client protocol versions
   if (d->useClientProtocolVersions != Smb4KSettings::useClientProtocolVersions())
   {
@@ -978,6 +991,7 @@ bool Smb4KCustomOptions::hasOptions(bool withoutRemountOnce) const
   {
     return true;
   }
+#endif
 
   // Use SMB port
   if (d->useSmbPort != Smb4KSettings::useRemoteSmbPort())
@@ -1043,9 +1057,11 @@ void Smb4KCustomOptions::update(Smb4KCustomOptions *options)
     d->useWriteAccess = options->useWriteAccess();
     d->writeAccess = options->writeAccess();
 #endif
+#ifdef USE_SMBC_PROTOCOL
     d->useClientProtocolVersions = options->useClientProtocolVersions();
     d->minimalClientProtocolVersion = options->minimalClientProtocolVersion();
     d->maximalClientProtocolVersion = options->maximalClientProtocolVersion();
+#endif
     d->profile = options->profile();
     d->useSmbPort = options->useSmbPort();
     d->smbPort = options->smbPort();

@@ -168,6 +168,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QW
   QGroupBox *commonSambaOptionsBox = new QGroupBox(i18n("Common Options"), sambaTab);
   QGridLayout *commonSambaOptionsBoxLayout = new QGridLayout(commonSambaOptionsBox);
   
+#ifdef USE_SMBC_PROTOCOL
   // Minimal and maximal client protocol versions
   QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), commonSambaOptionsBox);
   useClientProtocolVersions->setObjectName("UseClientProtocolVersions");
@@ -208,6 +209,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent) : QW
   commonSambaOptionsBoxLayout->addWidget(minimalClientProtocolVersion, 1, 1);
   commonSambaOptionsBoxLayout->addWidget(maximalClientProtocolVersionLabel, 2, 0);
   commonSambaOptionsBoxLayout->addWidget(maximalClientProtocolVersion, 2, 1);
+#endif
   
   // SMB port
   QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
@@ -865,6 +867,7 @@ void Smb4KConfigPageCustomOptions::clearEditors()
   }
 #endif
   
+#ifdef USE_SMBC_PROTOCOL
   //
   // Client protocol versions
   // 
@@ -896,6 +899,7 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     QString maximalClientProtocolVersionString = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices().value(Smb4KSettings::maximalClientProtocolVersion()).label;
     maximalClientProtocolVersion->setCurrentText(maximalClientProtocolVersionString);
   }
+#endif
   
   //
   // SMB port
@@ -1201,6 +1205,7 @@ void Smb4KConfigPageCustomOptions::populateEditors()
   }
 #endif
 
+#ifdef USE_SMBC_PROTOCOL
   //
   // Client protocol versions
   // 
@@ -1230,6 +1235,7 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     maximalClientProtocolVersion->setCurrentText(maximalClientProtocolVersionString);
     connect(maximalClientProtocolVersion, SIGNAL(currentIndexChanged(int)), this, SLOT(slotEntryChanged()));
   }
+#endif
 
   //
   // SMB port
@@ -1313,7 +1319,9 @@ void Smb4KConfigPageCustomOptions::populateEditors()
 #if defined(Q_OS_LINUX)
   slotCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
 #endif
+#ifdef USE_SMBC_PROTOCOL
   slotUseClientProtocolVersions(useClientProtocolVersions->isChecked());
+#endif
   slotEnableWOLFeatures(m_currentOptions->macAddress());
 }
 
@@ -1548,6 +1556,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
   }
 #endif
 
+#ifdef USE_SMBC_PROTOCOL
   //
   // Client protocol versions
   // 
@@ -1589,6 +1598,7 @@ void Smb4KConfigPageCustomOptions::commitChanges()
       }
     }
   }
+#endif
   
   //
   // SMB port
@@ -1678,9 +1688,11 @@ void Smb4KConfigPageCustomOptions::commitChanges()
         o->setUseWriteAccess(m_currentOptions->useWriteAccess());
         o->setWriteAccess(m_currentOptions->writeAccess());
 #endif
+#ifdef USE_SMBC_PROTOCOL
         o->setUseClientProtocolVersions(m_currentOptions->useClientProtocolVersions());
         o->setMinimalClientProtocolVersion(m_currentOptions->minimalClientProtocolVersion());
         o->setMaximalClientProtocolVersion(m_currentOptions->maximalClientProtocolVersion());
+#endif
         o->setUseSmbPort(m_currentOptions->useSmbPort());
         o->setSmbPort(m_currentOptions->smbPort());
         o->setUseKerberos(m_currentOptions->useKerberos());
@@ -1959,6 +1971,7 @@ void Smb4KConfigPageCustomOptions::slotCifsUnixExtensionsSupport(bool on)
 }
 
 
+#ifdef USE_SMBC_PROTOCOL
 void Smb4KConfigPageCustomOptions::slotUseClientProtocolVersions(bool use)
 {
   //
@@ -1995,5 +2008,6 @@ void Smb4KConfigPageCustomOptions::slotUseClientProtocolVersions(bool use)
     maximalClientProtocolVersion->setEnabled(use);
   }
 }
+#endif
 
 

@@ -168,11 +168,13 @@ class Smb4KConfigPageCustomOptions : public QWidget
      * not supported / supported.
      */
     void slotCifsUnixExtensionsSupport(bool on);
-    
+
+#ifdef USE_SMBC_PROTOCOL
     /**
      * Enabled / disables the settings of the client protocol version widgets.
      */
     void slotUseClientProtocolVersions(bool use);
+#endif
     
   private:
     void setupMountingTab();

@@ -54,11 +54,13 @@ class Smb4KConfigPageNetwork : public QTabWidget
     ~Smb4KConfigPageNetwork();
     
   protected Q_SLOTS:
+#ifdef USE_SMBC_PROTOCOL
     /**
      * This slot is called when the button for setting the SMB protocol
      * versions is toggled.
      */
     void slotSetProtocolVersionsToggled(bool on);
+#endif
     
     /**
      * This slot is called when the button for setting the Wake-On-LAN

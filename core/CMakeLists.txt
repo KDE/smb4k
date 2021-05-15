@@ -86,6 +86,9 @@ if (SMB4K_WITH_WS_DISCOVERY)
   target_link_libraries(smb4kcore KDSoap::WSDiscoveryClient)
 endif(SMB4K_WITH_WS_DISCOVERY)
 
+if (HAVE_SMBC_PROTOCOL)
+  target_compile_definitions(smb4kcore PRIVATE USE_SMBC_PROTOCOL=${HAVE_SMBC_PROTOCOL})
+endif(HAVE_SMBC_PROTOCOL)
 
 ########### install files ###############
 

@@ -67,6 +67,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   QCheckBox *useDnsServiceDiscovery = new QCheckBox(Smb4KSettings::self()->useDnsServiceDiscoveryItem()->label(), browseSettingsBox);
   useDnsServiceDiscovery->setObjectName("kcfg_UseDnsServiceDiscovery");
   
+#ifdef USE_SMBC_DISCOVERY
   // Force SMBv1 protocol for browsing
   QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), browseSettingsBox);
   forceSmb1Protocol->setObjectName("kcfg_ForceSmb1Protocol");
@@ -105,24 +106,29 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
 
   minimalProtocolVersionLabel->setBuddy(minimalProtocolVersion);
   maximalProtocolVersionLabel->setBuddy(maximalProtocolVersion);
+#endif
   
 #ifdef USE_WS_DISCOVERY
   browseSettingsBoxLayout->addWidget(useWsDiscovery, 0, 0, 1, 2);
   browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 1, 0, 1, 2);
+#ifdef USE_SMBC_PROTOCOL
   browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 2, 0, 1, 2);
   browseSettingsBoxLayout->addWidget(useClientProtocolVersions, 3, 0, 1, 2);
   browseSettingsBoxLayout->addWidget(minimalProtocolVersionLabel, 4, 0);
   browseSettingsBoxLayout->addWidget(minimalProtocolVersion, 4, 1);
   browseSettingsBoxLayout->addWidget(maximalProtocolVersionLabel, 5, 0);
   browseSettingsBoxLayout->addWidget(maximalProtocolVersion, 5, 1);
+#endif
 #else
   browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 0, 0, 1, 2);
+#ifdef USE_SMBC_PROTOCOL
   browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 1, 0, 1, 2);
   browseSettingsBoxLayout->addWidget(useClientProtocolVersions, 2, 0, 1, 2);
   browseSettingsBoxLayout->addWidget(minimalProtocolVersionLabel, 3, 0);
   browseSettingsBoxLayout->addWidget(minimalProtocolVersion, 3, 1);
   browseSettingsBoxLayout->addWidget(maximalProtocolVersionLabel, 4, 0);
   browseSettingsBoxLayout->addWidget(maximalProtocolVersion, 4, 1);
+#endif
 #endif
   
   //
@@ -299,13 +305,17 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent) : QTabWidget(par
   //
   // Connections
   // 
+#ifdef USE_SMBC_PROTOCOL
   connect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotSetProtocolVersionsToggled(bool)));
+#endif
   connect(enableWakeOnLan, SIGNAL(toggled(bool)), this, SLOT(slotEnableWakeOnLanFeatureToggled(bool)));
   
   //
   // Set the correct states to the widgets
   // 
+#ifdef USE_SMBC_PROTOCOL
   slotSetProtocolVersionsToggled(Smb4KSettings::useClientProtocolVersions());
+#endif
   slotEnableWakeOnLanFeatureToggled(Smb4KSettings::enableWakeOnLAN());
 }
 
@@ -315,6 +325,7 @@ Smb4KConfigPageNetwork::~Smb4KConfigPageNetwork()
 }
 
 
+#ifdef USE_SMBC_PROTOCOL
 void Smb4KConfigPageNetwork::slotSetProtocolVersionsToggled(bool on)
 {
   //
@@ -333,6 +344,7 @@ void Smb4KConfigPageNetwork::slotSetProtocolVersionsToggled(bool on)
   maximalProtocolVersionLabel->setEnabled(on);
   maximalProtocolVersion->setEnabled(on);
 }
+#endif
 
 
 void Smb4KConfigPageNetwork::slotEnableWakeOnLanFeatureToggled(bool on)

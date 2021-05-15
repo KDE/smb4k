@@ -43,6 +43,10 @@ if (SMB4K_WITH_WS_DISCOVERY)
   target_compile_definitions(smb4kconfigdialog PRIVATE USE_WS_DISCOVERY=${SMB4K_WITH_WS_DISCOVERY})
 endif(SMB4K_WITH_WS_DISCOVERY)
 
+if (HAVE_SMBC_PROTOCOL)
+  target_compile_definitions(smb4kconfigdialog PRIVATE USE_SMBC_PROTOCOL=${HAVE_SMBC_PROTOCOL})
+endif(HAVE_SMBC_PROTOCOL)
+
 ########### Main Application #########################
 
 set(smb4k_SRCS

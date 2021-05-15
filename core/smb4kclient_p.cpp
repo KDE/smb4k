@@ -668,6 +668,7 @@ void Smb4KClientJob::initClientLibrary()
         smbc_setOptionBrowseMaxLmbCount(m_context, 0 /* all master browsers */);
     }
   
+#ifdef USE_SMBC_PROTOCOL
     //
     // Set the protocol version if desired
     //
@@ -756,6 +757,7 @@ void Smb4KClientJob::initClientLibrary()
             smbc_setOptionProtocols(m_context, NULL, NULL);
         }
     }
+#endif
   
     //
     // Set the encryption level
