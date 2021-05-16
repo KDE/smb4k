@@ -1,3 +1,52 @@
+Smb4K 3.1.0 (2021-05-xx):
+
+See the summery of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
+
+- Raise minimum requirements to Qt version >= 5.9.0 and KF5 version
+  >=5.44.0.
+- Implement DNS-SD to look up servers that provide SMB resources.
+- Implement WS-Discovery to look up domains, workgroups and servers.
+  Since this is optional, add a new CMake option SMB4K_WITH_WS_DISCOVERY.
+- Introduce the possibility to force the SMB v1 protocol for workgroup
+  and domain lookups, if Samba's client library supports it. This option
+  is disabled by default.
+- Add support for setting the minimal and maximal SMB protocol version
+  that are used when connection to servers, if Samba's client library 
+  supports it. These options are disabled by default.
+- Improved the way shares are bookmarked in the mount dialog.
+- Improve handling of bookmarks. Among other things, add the possibility
+  to edit the workgroup in the bookmark editor. This may be useful in the
+  case you bookmarked a share through the mount dialog and misspelled the
+  workgroup/domain.
+- Improve handling of custom options. Make the custom options dialog and
+  the custom options config page more robust regarding the handling of
+  the options. In this context, change the way the settings are stored in
+  custom_options.xml file. This is INCOMPATIBLE with earlier versions of
+  Smb4K!
+- Add more arguments for the 'vers' option and change the default according
+  to the docs of mount.cifs/mount.smb3 version 6.11.
+- Fix notification regarding unmounted shares and improved mounter code.
+- Add support for the SMB3 file system under Linux.
+- Fix missing Wayland icon.
+- Do not hard code the mainwindow's size.
+- Use high DPI pixmaps in the application.
+- Improve tooltips by using KTooltipWidget class.
+- Don't require Plasma if the plasmoid is not to be installed.
+- Improve GUI layout throughout the whole application.
+- Align position of the mounted emblem with KDE.
+- Port away from bearer management classes, because they are deprecated in
+  Qt 5.15 and will be removed in Qt 6. Use QNetworkInterface instead to
+  determine the connection state.
+- Simplify the error reporting of the client.
+- Do not read global options from smb.conf anymore. Use an SMB context
+  to retrieve the required information.
+- Rename CMake option INSTALL_PLASMOID to SMB4K_INSTALL_PLASMOID.
+- Remove ability to install core header files. Thus, the CMake option
+  INSTALL_HEADER_FILES does not exist anymore.
+- Several more bug fixes, code clean ups and improvements.
+- Updated handbook.
+
 Smb4K 3.0.7 (2020-11-06):
 
 See the summery of changes below. For a full list of changes, please
