@@ -34,7 +34,7 @@
 // Qt includes
 #include <QDebug>
 #include <QDirIterator>
-#include <QMutex>
+#include <QRecursiveMutex>
 #include <QStandardPaths>
 #include <QUrl>
 
@@ -45,7 +45,7 @@
 #include <kio_version.h>
 
 Q_GLOBAL_STATIC(Smb4KGlobalPrivate, p);
-QMutex mutex(QMutex::Recursive /* needed to avoid dead-locks */);
+QRecursiveMutex mutex;
 
 void Smb4KGlobal::initCore(bool modifyCursor, bool initClasses)
 {
