@@ -39,8 +39,6 @@
 #include <QPointer>
 #include <QTest>
 
-// KDE includes
-
 using namespace Smb4KGlobal;
 
 Q_GLOBAL_STATIC(Smb4KWalletManagerStatic, p);
@@ -49,7 +47,7 @@ Smb4KWalletManager::Smb4KWalletManager(QObject *parent)
     : QObject(parent)
     , d(new Smb4KWalletManagerPrivate)
 {
-    d->wallet = 0;
+    d->wallet = nullptr;
 }
 
 Smb4KWalletManager::~Smb4KWalletManager()
@@ -74,8 +72,8 @@ void Smb4KWalletManager::init()
             d->wallet = KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), QApplication::activeWindow() ? QApplication::activeWindow()->winId() : 0);
 
             //
-            // Check if the walled was opened successfully and set the
-            // right folder, if it was
+            // Check if the wallet was opened successfully. Set the
+            // right folder in case it was.
             //
             if (d->wallet) {
                 if (d->wallet->isOpen()) {
@@ -90,7 +88,7 @@ void Smb4KWalletManager::init()
                 }
             } else {
                 delete d->wallet;
-                d->wallet = 0;
+                d->wallet = nullptr;
 
                 Smb4KNotification::openingWalletFailed(KWallet::Wallet::NetworkWallet());
             }
@@ -108,7 +106,7 @@ void Smb4KWalletManager::init()
             // Delete the wallet and set it to 0.
             //
             delete d->wallet;
-            d->wallet = 0;
+            d->wallet = nullptr;
         }
     }
 
