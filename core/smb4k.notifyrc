@@ -72,6 +72,7 @@ Version=1
 
 [Context/Notification]
 Name=Notification
+Name[ar]=إخطار
 Name[bs]=Obavještenje
 Name[ca]=Notificació
 Name[ca@valencia]=Notificació
@@ -142,6 +143,7 @@ Comment[zh_TW]=使用者被通知某些動作
 
 [Context/Warning]
 Name=Warning
+Name[ar]=تحذير
 Name[bs]=Upozorenje
 Name[ca]=Avís
 Name[ca@valencia]=Avís
@@ -213,6 +215,7 @@ Comment[zh_TW]=警告已顯示給使用者
 
 [Context/Error]
 Name=Error
+Name[ar]=خطأ
 Name[bs]=Greška
 Name[ca]=Error
 Name[ca@valencia]=Error
@@ -1035,6 +1038,7 @@ Action=Popup|Sound
 
 [Event/unmountingFailed]
 Name=Unmounting failed
+Name[ar]=فشلت إزالة الضّمّ
 Name[bs]=Demontiranje neuspješno
 Name[ca]=Ha fallat el desmuntatge
 Name[ca@valencia]=Ha fallat el desmuntatge
@@ -1242,6 +1246,7 @@ Action=Popup|Sound
 
 [Event/commandNotFound]
 Name=Command not found
+Name[ar]=لم يُعثر على الأمر
 Name[bs]=Naredba nije nađena
 Name[ca]=No s'ha trobat l'ordre
 Name[ca@valencia]=No s'ha trobat l'ordre
@@ -1647,6 +1652,7 @@ Action=Popup|Sound
 
 [Event/processError]
 Name=Process error
+Name[ar]=خطأ في العمليّة
 Name[bs]=Greška u procesu
 Name[ca]=Error de procés
 Name[ca@valencia]=Error de procés
