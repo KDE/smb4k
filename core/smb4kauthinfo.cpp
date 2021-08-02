@@ -39,7 +39,6 @@ class Smb4KAuthInfoPrivate
 {
 public:
     QUrl url;
-    QString workgroup;
     NetworkItem type;
     bool homesShare;
     QHostAddress ip;
@@ -56,7 +55,6 @@ Smb4KAuthInfo::Smb4KAuthInfo(Smb4KBasicNetworkItem *item)
 
         if (host) {
             d->url = host->url();
-            d->workgroup = host->workgroupName();
             d->homesShare = false;
             d->ip.setAddress(host->ipAddress());
         }
@@ -68,7 +66,6 @@ Smb4KAuthInfo::Smb4KAuthInfo(Smb4KBasicNetworkItem *item)
 
         if (share) {
             d->url = !share->isHomesShare() ? share->homeUrl() : share->url();
-            d->workgroup = share->workgroupName();
             d->homesShare = share->isHomesShare();
             d->ip.setAddress(share->hostIpAddress());
         }
@@ -87,7 +84,6 @@ Smb4KAuthInfo::Smb4KAuthInfo()
     d->type = UnknownNetworkItem;
     d->homesShare = false;
     d->url.clear();
-    d->workgroup.clear();
     d->ip.clear();
 }
 
@@ -99,16 +95,6 @@ Smb4KAuthInfo::Smb4KAuthInfo(const Smb4KAuthInfo &i)
 
 Smb4KAuthInfo::~Smb4KAuthInfo()
 {
-}
-
-void Smb4KAuthInfo::setWorkgroupName(const QString &workgroup)
-{
-    d->workgroup = workgroup;
-}
-
-QString Smb4KAuthInfo::workgroupName() const
-{
-    return d->workgroup;
 }
 
 void Smb4KAuthInfo::setUrl(const QUrl &url)
@@ -137,20 +123,6 @@ void Smb4KAuthInfo::setUrl(const QString &url)
 QUrl Smb4KAuthInfo::url() const
 {
     return d->url;
-}
-
-QString Smb4KAuthInfo::hostName() const
-{
-    return d->url.host().toUpper();
-}
-
-QString Smb4KAuthInfo::shareName() const
-{
-    if (d->url.path().startsWith('/')) {
-        return d->url.path().remove(0, 1);
-    }
-
-    return d->url.path();
 }
 
 void Smb4KAuthInfo::setUserName(const QString &username)
@@ -187,21 +159,34 @@ bool Smb4KAuthInfo::isHomesShare() const
     return d->homesShare;
 }
 
-void Smb4KAuthInfo::setIpAddress(const QString &ip)
-{
-    d->ip.setAddress(ip);
-}
-
-QString Smb4KAuthInfo::ipAddress() const
-{
-    return d->ip.toString();
-}
-
 QString Smb4KAuthInfo::displayString() const
 {
+    //
+    // Host name
+    // 
+    QString hostName = d->url.host().toUpper();
+    
+    //
+    // Return only the host name if the network item
+    // has type Smb4Global:Host
+    // 
     if (d->type == Host) {
-        return hostName();
+        return hostName;
+    }
+    
+    //
+    // Share name
+    // 
+    QString shareName;
+    
+    if (d->url.path().startsWith('/')) {
+        shareName = d->url.path().remove(0, 1);
     }
 
-    return i18n("%1 on %2", shareName(), hostName());
+    shareName = d->url.path();
+    
+    //
+    // Return the full display string
+    // 
+    return i18n("%1 on %2", shareName, hostName);
 }

@@ -307,7 +307,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
                 //
                 // Get the authentication data
                 //
-                Smb4KWalletManager::self()->readAuthInfo(masterBrowser);
+                Smb4KWalletManager::self()->readLoginCredentials(masterBrowser);
 
                 //
                 // Copy the authentication data
@@ -330,7 +330,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         //
         // Get the authentication data
         //
-        Smb4KWalletManager::self()->readAuthInfo(host);
+        Smb4KWalletManager::self()->readLoginCredentials(host);
 
         //
         // Copy the authentication data
@@ -351,7 +351,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         //
         // Get the authentication data
         //
-        Smb4KWalletManager::self()->readAuthInfo(share);
+        Smb4KWalletManager::self()->readLoginCredentials(share);
 
         //
         // Copy the authentication data
@@ -382,7 +382,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         //
         // Get the authentication data
         //
-        Smb4KWalletManager::self()->readAuthInfo(share);
+        Smb4KWalletManager::self()->readLoginCredentials(share);
 
         //
         // Copy the authentication data

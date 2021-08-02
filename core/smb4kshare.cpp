@@ -476,16 +476,6 @@ int Smb4KShare::port() const
     return pUrl->port();
 }
 
-void Smb4KShare::setAuthInfo(Smb4KAuthInfo *authInfo)
-{
-    // Avoid that the login is overwritten with an empty
-    // string if we have a homes share.
-    if (!isHomesShare() || !authInfo->userName().isEmpty()) {
-        pUrl->setUserName(authInfo->userName());
-        pUrl->setPassword(authInfo->password());
-    }
-}
-
 void Smb4KShare::setLogin(const QString &login)
 {
     // Avoid that the login is overwritten with an empty

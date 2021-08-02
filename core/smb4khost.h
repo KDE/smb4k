@@ -168,15 +168,6 @@ public:
     int port() const;
 
     /**
-     * Set the authentication information for the host. This function will add
-     * the authentication information to the URL of the host. Any previous
-     * user information including the login will be overwritten.
-     *
-     * @param authInfo    The authentication information
-     */
-    void setAuthInfo(Smb4KAuthInfo *authInfo);
-
-    /**
      * Set the login name for the host.
      *
      * @param login               The login name

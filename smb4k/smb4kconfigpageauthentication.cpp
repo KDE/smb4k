@@ -198,7 +198,7 @@ Smb4KConfigPageAuthentication::~Smb4KConfigPageAuthentication()
 {
 }
 
-void Smb4KConfigPageAuthentication::insertWalletEntries(const QList<Smb4KAuthInfo *> &list)
+void Smb4KConfigPageAuthentication::insertLoginCredentials(const QList<Smb4KAuthInfo *> &list)
 {
     //
     // Insert the list of authentication information
@@ -313,10 +313,6 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
         entry->setFlags(entry->flags() & Qt::ItemIsEditable);
         entry->setForeground(palette().text());
 
-        QTableWidgetItem *workgroup_label = new QTableWidgetItem(i18n("Workgroup"));
-        workgroup_label->setFlags(workgroup_label->flags() & Qt::ItemIsEditable);
-        workgroup_label->setForeground(palette().text());
-
         QTableWidgetItem *login_label = new QTableWidgetItem(i18n("Login"));
         login_label->setFlags(login_label->flags() & Qt::ItemIsEditable);
         login_label->setForeground(palette().text());
@@ -327,12 +323,10 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
 
         detailsWidget->setItem(0, 0, entry_label);
         detailsWidget->setItem(0, 1, entry);
-        detailsWidget->setItem(1, 0, workgroup_label);
-        detailsWidget->setItem(1, 1, new QTableWidgetItem(authInfo->workgroupName()));
-        detailsWidget->setItem(2, 0, login_label);
-        detailsWidget->setItem(2, 1, new QTableWidgetItem(authInfo->userName()));
-        detailsWidget->setItem(3, 0, password_label);
-        detailsWidget->setItem(3, 1, new QTableWidgetItem(authInfo->password()));
+        detailsWidget->setItem(1, 0, login_label);
+        detailsWidget->setItem(1, 1, new QTableWidgetItem(authInfo->userName()));
+        detailsWidget->setItem(2, 0, password_label);
+        detailsWidget->setItem(2, 1, new QTableWidgetItem(authInfo->password()));
 
         break;
     }
@@ -474,17 +468,12 @@ void Smb4KConfigPageAuthentication::slotDetailsChanged(int row, int column)
             case Share: {
                 if (column == 1) {
                     switch (row) {
-                    case 1: // Workgroup
-                    {
-                        authInfo->setWorkgroupName(detailsWidget->item(row, column)->text());
-                        break;
-                    }
-                    case 2: // Login
+                    case 1: // Login
                     {
                         authInfo->setUserName(detailsWidget->item(row, column)->text());
                         break;
                     }
-                    case 3: // Password
+                    case 2: // Password
                     {
                         authInfo->setPassword(detailsWidget->item(row, column)->text());
                         break;

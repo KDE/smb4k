@@ -158,12 +158,6 @@ int Smb4KHost::port() const
     return pUrl->port();
 }
 
-void Smb4KHost::setAuthInfo(Smb4KAuthInfo *authInfo)
-{
-    pUrl->setUserName(authInfo->userName());
-    pUrl->setPassword(authInfo->password());
-}
-
 void Smb4KHost::update(Smb4KHost *host)
 {
     if (QString::compare(workgroupName(), host->workgroupName()) == 0 && QString::compare(hostName(), host->hostName()) == 0) {

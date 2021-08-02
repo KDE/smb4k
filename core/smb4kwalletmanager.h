@@ -38,10 +38,10 @@ class Smb4KAuthInfo;
 class Smb4KWalletManagerPrivate;
 
 /**
- * This class manages the access to the digital wallet where the authentication
- * information is stored.
+ * This class manages the access to the digital wallet where the login 
+ * credentials are stored.
  *
- * If the user chooses to no use the wallet, a password dialog is shown every
+ * If the user chooses to not use the wallet, a password dialog is shown every
  * time authentication information is needed.
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
@@ -70,48 +70,56 @@ public:
     static Smb4KWalletManager *self();
 
     /**
-     * Read the authentication for a certain network item. This functions
-     * adds the login and password (if present) to the past @p item. A
-     * pre-defined login name is honored.
-     *
-     * If you pass an empty item, the default authentication information will
-     * be set or none at all, depending on the settings the user chose.
-     *
-     * @param networkItem     The network item for that the authentication
-     *                        information should be acquired
+     * Read the login credentials for the given @p networkItem object.
+     * 
+     * @param networkItem   The NetworkItemPtr object
      */
-    void readAuthInfo(const NetworkItemPtr &networkItem);
+    void readLoginCredentials(const NetworkItemPtr &networkItem);
+    
+    /**
+     * Read the login credentials for the given URL in the @p authInfo object.
+     * 
+     * To get the default login credetials, pass an Smb4KAuthInfo object with
+     * type Smb4KGlobal::UnknownNetworkItem to this function.
+     * 
+     * @param authInfo      The Smb4KAuthInfo object
+     */
+    void readLoginCredentials(Smb4KAuthInfo *authInfo);
 
     /**
-     * This function reads the default authentication information and enters it
-     * into @p authInfo. If no default authentication data is present this
-     * function does nothing.
-     *
-     * Please note that this function does not check if the user disabled the use
-     * of the default login. It is always returned.
-     *
-     * @param authInfo        The Smb4KAuthInfo object that will be populated
-     *                        with the default authentication information.
+     * Write the login credentials stored in the @p networkItem object to the 
+     * wallet.
+     * 
+     * @param networkItem   The NetworkItemPtr object that holds the credentials
      */
-    void readDefaultAuthInfo(Smb4KAuthInfo *authInfo);
-
+    void writeLoginCredentials(const NetworkItemPtr &networkItem);
+    
     /**
-     * Write the authentication information provided by the network item to
-     * the wallet or to the internal list if no wallet should be used.
-     *
-     * @param networkItem     The network item for that the authentication
-     *                        information should be saved
+     * Write the login credentials stored in the @p authInfo object to the wallet.
+     * 
+     * If the wallet system is disabled, this function will do nothing.
+     * 
+     * @param authInfo      The Smb4KAuthInfo object that holds the credentials
      */
-    void writeAuthInfo(const NetworkItemPtr &networkItem);
-
+    void writeLoginCredentials(Smb4KAuthInfo *authInfo);
+    
     /**
-     * This function writes the default authentication information to the
-     * wallet. If the wallet is not used, the authentication information is
-     * not of type Smb4KAuthInfo::Default or empty, this function does nothing.
-     *
-     * @param authInfo        The Smb4KAuthInfo object
+     * Write login credentials stored in the list @p list to the wallet.
+     * 
+     * If the wallet system is disabled, this function will do nothing.
+     * 
+     * @param list          The login credentials list
      */
-    void writeDefaultAuthInfo(Smb4KAuthInfo *authInfo);
+    void writeLoginCredentialsList(const QList<Smb4KAuthInfo *> &list);
+    
+    /**
+     * Returns the list of login credentials stored in the wallet or an empty 
+     * list if the wallet is not open, no entries are defined or the wallet 
+     * system is disabled.
+     *
+     * @returns a list of all login credentials
+     */
+    QList<Smb4KAuthInfo *> loginCredentialsList();
 
     /**
      * Show the password dialog. This function takes an Smb4KBasicNetworkItem
@@ -133,32 +141,6 @@ public:
      */
     bool useWalletSystem() const;
 
-    /**
-     * Returns the list of authentication information objects stored in the
-     * wallet or an empty list if the wallet is not open, no entries are
-     * defined or the wallet system is disabled.
-     *
-     * @returns a list of all wallet entries.
-     */
-    QList<Smb4KAuthInfo *> walletEntries();
-
-    /**
-     * Writes a list of authentication information objects to the wallet. If
-     * the wallet system is disabled or the wallet is not open, this function
-     * will do nothing.
-     *
-     * @param entries       The list of authentication information objects
-     */
-    void writeWalletEntries(const QList<Smb4KAuthInfo *> &entries);
-
-    /**
-     * This function returns TRUE if the wallet is used and open and
-     * FALSE otherwise.
-     *
-     * @returns TRUE if the wallet is used and open.
-     */
-    bool walletIsOpen() const;
-
 Q_SIGNALS:
     /**
      * This signal is emitted when the wallet manager was initialized
@@ -168,9 +150,24 @@ Q_SIGNALS:
 
 private:
     /**
-     * Initialize the wallet manager.
+     * Initialize the wallet manager
      */
-    void init();
+    bool init();
+    
+    /**
+     * Read credentials form the wallet
+     */
+    bool read(Smb4KAuthInfo *authInfo);
+    
+    /**
+     * Write credentials to the wallet
+     */
+    void write(Smb4KAuthInfo *authInfo);
+    
+    /**
+     * Remove all credentials from the wallet
+     */
+    void clear();
 
     /**
      * Pointer to the Smb4KWalletManagerPrivate class

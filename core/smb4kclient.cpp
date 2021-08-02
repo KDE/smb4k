@@ -558,7 +558,7 @@ void Smb4KClient::openPrintDialog(const SharePtr &share)
     // If there was no print dialog present, create a new one
     //
     if (!dlg) {
-        Smb4KWalletManager::self()->readAuthInfo(share);
+        Smb4KWalletManager::self()->readLoginCredentials(share);
 
         dlg = new Smb4KPrintDialog(share, QApplication::activeWindow());
         d->printDialogs << dlg;

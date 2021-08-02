@@ -551,7 +551,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         //
         // Get the authentication information
         //
-        Smb4KWalletManager::self()->readAuthInfo(share);
+        Smb4KWalletManager::self()->readLoginCredentials(share);
 
         //
         // Mount arguments

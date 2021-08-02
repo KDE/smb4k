@@ -470,7 +470,7 @@ public:
      *
      * @param authInfo    The authentication information
      */
-    void setAuthInfo(Smb4KAuthInfo *authInfo);
+    SMB4K_DEPRECATED void setAuthInfo(Smb4KAuthInfo *authInfo);
 
     /**
      * Set the login for the share. This function will add the login name

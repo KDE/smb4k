@@ -76,35 +76,6 @@ public:
     ~Smb4KAuthInfo();
 
     /**
-     * Sets the workgroup name.
-     *
-     * @param workgroup The name of the workgroup
-     */
-    void setWorkgroupName(const QString &workgroup);
-
-    /**
-     * Returns the name of the workgroup.
-     *
-     * @returns         The workgroup of the server/share for which this
-     *                  authentication data is for.
-     */
-    QString workgroupName() const;
-
-    /**
-     * Returns the host name.
-     *
-     * @returns the host name.
-     */
-    QString hostName() const;
-
-    /**
-     * Returns the share name.
-     *
-     * @returns the share name.
-     */
-    QString shareName() const;
-
-    /**
      * Sets the username.
      *
      * In case of a 'homes' share, this function will also set the share
@@ -168,20 +139,6 @@ public:
      * @returns the URL
      */
     QUrl url() const;
-
-    /**
-     * Sets the IP address for this authentication information object
-     *
-     * @param ip          The IP address
-     */
-    void setIpAddress(const QString &ip);
-
-    /**
-     * Returns the IP address
-     *
-     * @returns the IP address
-     */
-    QString ipAddress() const;
 
     /**
      * Returns the display string. Prefer this over all other alternatives in your

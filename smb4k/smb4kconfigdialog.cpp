@@ -536,7 +536,7 @@ void Smb4KConfigDialog::slotLoadAuthenticationInformation()
     //
     // Insert and display the wallet entries
     //
-    authenticationPage->insertWalletEntries(Smb4KWalletManager::self()->walletEntries());
+    authenticationPage->insertLoginCredentials(Smb4KWalletManager::self()->loginCredentialsList());
 }
 
 void Smb4KConfigDialog::slotSaveAuthenticationInformation()
@@ -549,8 +549,8 @@ void Smb4KConfigDialog::slotSaveAuthenticationInformation()
     //
     // Save the authentication information to the wallet
     //
-    if (authenticationPage->walletEntriesDisplayed()) {
-        Smb4KWalletManager::self()->writeWalletEntries(authenticationPage->getWalletEntries());
+    if (authenticationPage->loginCredentialsDisplayed()) {
+        Smb4KWalletManager::self()->writeLoginCredentialsList(authenticationPage->getLoginCredentials());
     }
 }
 
@@ -569,7 +569,7 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
     //
     // Read the default authentication information
     //
-    Smb4KWalletManager::self()->readDefaultAuthInfo(&authInfo);
+    Smb4KWalletManager::self()->readLoginCredentials(&authInfo);
 
     //
     // Show the password dialog to enter or modify the default authentication
@@ -587,12 +587,12 @@ void Smb4KConfigDialog::slotSetDefaultLogin()
         authInfo.setUserName(dlg->username());
         authInfo.setPassword(dlg->password());
 
-        Smb4KWalletManager::self()->writeDefaultAuthInfo(&authInfo);
+        Smb4KWalletManager::self()->writeLoginCredentials(&authInfo);
 
         //
         // Reload the list of authentication information
         //
-        if (authenticationPage->walletEntriesDisplayed()) {
+        if (authenticationPage->loginCredentialsDisplayed()) {
             slotLoadAuthenticationInformation();
         }
     } else {
@@ -617,15 +617,14 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     //
     Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
 
-    if (authenticationPage->walletEntriesMaybeChanged()) {
-        QList<Smb4KAuthInfo *> oldWalletEntries = Smb4KWalletManager::self()->walletEntries();
-        QList<Smb4KAuthInfo *> newWalletEntries = authenticationPage->getWalletEntries();
+    if (authenticationPage->loginCredentialsMaybeChanged()) {
+        QList<Smb4KAuthInfo *> oldLoginCredentials = Smb4KWalletManager::self()->loginCredentialsList();
+        QList<Smb4KAuthInfo *> newLoginCredentials = authenticationPage->getLoginCredentials();
 
-        for (Smb4KAuthInfo *oldEntry : qAsConst(oldWalletEntries)) {
-            for (Smb4KAuthInfo *newEntry : newWalletEntries) {
+        for (Smb4KAuthInfo *oldEntry : qAsConst(oldLoginCredentials)) {
+            for (Smb4KAuthInfo *newEntry : qAsConst(newLoginCredentials)) {
                 if (QString::compare(oldEntry->url().toString(QUrl::RemovePort), newEntry->url().toString(QUrl::RemovePort), Qt::CaseInsensitive)
-                        == 0 /* leave the user info here */
-                    && QString::compare(oldEntry->workgroupName(), newEntry->workgroupName(), Qt::CaseInsensitive) == 0) {
+                        == 0 /* leave the user info here */) {
                     enable = true;
                     break;
                 }

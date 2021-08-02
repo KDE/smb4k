@@ -64,14 +64,14 @@ public:
      *
      * @param entries       The list of entries
      */
-    void insertWalletEntries(const QList<Smb4KAuthInfo *> &entries);
+    void insertLoginCredentials(const QList<Smb4KAuthInfo *> &entries);
 
     /**
      * Get the - maybe modified - entries.
      *
      * @returns the list of entries.
      */
-    const QList<Smb4KAuthInfo *> &getWalletEntries()
+    const QList<Smb4KAuthInfo *> &getLoginCredentials()
     {
         return m_entriesList;
     }
@@ -81,7 +81,7 @@ public:
      *
      * @returns TRUE if the wallet entries are displayed
      */
-    bool walletEntriesDisplayed()
+    bool loginCredentialsDisplayed()
     {
         return m_entries_displayed;
     }
@@ -92,7 +92,7 @@ public:
      *
      * @returns TRUE if the wallet entries might have changed.
      */
-    bool walletEntriesMaybeChanged()
+    bool loginCredentialsMaybeChanged()
     {
         return m_maybe_changed;
     }
