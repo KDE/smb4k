@@ -181,9 +181,9 @@ QString Smb4KAuthInfo::displayString() const
     
     if (d->url.path().startsWith('/')) {
         shareName = d->url.path().remove(0, 1);
+    } else {
+        shareName = d->url.path();
     }
-
-    shareName = d->url.path();
     
     //
     // Return the full display string
