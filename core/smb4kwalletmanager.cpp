@@ -360,6 +360,11 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
             // 
             if (!d->wallet->hasEntry(itemUrlString)) {
                 //
+                // Clear the item url string
+                //
+                itemUrlString.clear();
+
+                //
                 // Get all keys of the saved login credentials
                 // 
                 QStringList walletEntries = d->wallet->entryList();
