@@ -352,18 +352,14 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
             //
             // Get the string representation of the URL
             // 
-            QString itemUrlString = authInfo->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort);
+            QString itemUrlString;
+            QString testString = authInfo->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort);
             
             //
             // Check if an entry exists for the given URL. If not, try to
             // get the correct string / key by a case insensitive comparision.
             // 
             if (!d->wallet->hasEntry(itemUrlString)) {
-                //
-                // Clear the item url string
-                //
-                itemUrlString.clear();
-
                 //
                 // Get all keys of the saved login credentials
                 // 
@@ -373,11 +369,13 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
                 // Find the correct key for these login credentials
                 // 
                 for (const QString &entry : qAsConst(walletEntries)) {
-                    if (QString::compare(entry, itemUrlString, Qt::CaseInsensitive) == 0) {
+                    if (QString::compare(entry, testString, Qt::CaseInsensitive) == 0) {
                         itemUrlString = entry;
                         break;
                     }
                 }
+            } else {
+                itemUrlString = testString;
             }
             
             //
