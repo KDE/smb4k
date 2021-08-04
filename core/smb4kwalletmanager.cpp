@@ -359,7 +359,7 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
             // Check if an entry exists for the given URL. If not, try to
             // get the correct string / key by a case insensitive comparision.
             // 
-            if (!d->wallet->hasEntry(itemUrlString)) {
+            if (!d->wallet->hasEntry(testString)) {
                 //
                 // Get all keys of the saved login credentials
                 // 
