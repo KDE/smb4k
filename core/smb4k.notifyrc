@@ -833,7 +833,7 @@ Action=Popup|Sound
 [Event/bookmarkLabelInUse]
 Name=Bookmark label in use
 Name[bs]=Oznaka zabilješke u upotrebi
-Name[ca]=L'etiqueta per a l'adreça d'interès s'està emprant
+Name[ca]=L'etiqueta de l'adreça d'interès s'està emprant
 Name[ca@valencia]=L'etiqueta per a l'adreça d'interés s'està emprant
 Name[da]=Bogmærke-etiketten er i brug
 Name[de]=Beschriftung des Lesezeichens wird bereits verwendet
@@ -1316,7 +1316,7 @@ Action=Popup|Sound
 [Event/cannotBookmarkPrinter]
 Name=Cannot bookmark printer
 Name[bs]=Ne može zabilježiti printer
-Name[ca]=No s'ha pogut afegir una adreça d'interès per a la impressora
+Name[ca]=No s'ha pogut afegir l'adreça d'interès de la impressora
 Name[ca@valencia]=No s'ha pogut afegir una adreça d'interés per a la impressora
 Name[da]=Kan ikke sætte bogmærke ved printer
 Name[de]=Lesezeichen für Drucker kann nicht angelegt werden
