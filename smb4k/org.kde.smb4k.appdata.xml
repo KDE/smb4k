@@ -442,7 +442,7 @@
       <li>Special handling of homes shares</li>
       <li xml:lang="bs">Posebno korištenje početnih razmjena</li>
       <li xml:lang="ca">Gestió especial de les comparticions personals</li>
-      <li xml:lang="ca-valencia">Gestió especial per a les comparticions personals</li>
+      <li xml:lang="ca-valencia">Gestió especial de les comparticions personals</li>
       <li xml:lang="de">Besondere Behandlung freigegebener persönlicher Ordner</li>
       <li xml:lang="el">Ειδικός χειρισμός πόρων περιοχών χρηστών</li>
       <li xml:lang="en-GB">Special handling of homes shares</li>
@@ -498,7 +498,7 @@
       <li>System tray widget</li>
       <li xml:lang="bs">Kontrola za poslužavnik sistema</li>
       <li xml:lang="ca">Un giny de la safata del sistema</li>
-      <li xml:lang="ca-valencia">Un giny per a la safata del sistema</li>
+      <li xml:lang="ca-valencia">Un giny de la safata del sistema</li>
       <li xml:lang="de">Symbol im Systemabschnitt der Kontrollleiste</li>
       <li xml:lang="el">Γραφικό συστατικό πλαισίου συστήματος</li>
       <li xml:lang="en-GB">System tray widget</li>
@@ -526,7 +526,7 @@
       <li xml:lang="zh-TW">系統匣小工具</li>
       <li>Support of advanced mount options</li>
       <li xml:lang="ca">Implementació de les opcions avançades de muntatge</li>
-      <li xml:lang="ca-valencia">Implementació per a les opcions avançades de muntatge</li>
+      <li xml:lang="ca-valencia">Implementació de les opcions avançades de muntatge</li>
       <li xml:lang="cs">Podpora pokročilých možností připojení</li>
       <li xml:lang="de">Unterstützung der erweiterten Einstellungen zum Einhängen</li>
       <li xml:lang="el">Υποστήριξη προηγμένων επιλογών προσάρτησης</li>
@@ -554,7 +554,7 @@
       <li>Support of printer shares</li>
       <li xml:lang="bs">Podrška za razmjene štampača</li>
       <li xml:lang="ca">Implementació de les impressores compartides</li>
-      <li xml:lang="ca-valencia">Implementació per a les impressores compartides</li>
+      <li xml:lang="ca-valencia">Implementació de les impressores compartides</li>
       <li xml:lang="de">Unterstützung für Drucker-Freigaben</li>
       <li xml:lang="el">Υποστήριξη κοινών πόρων εκτυπωτών</li>
       <li xml:lang="en-GB">Support of printer shares</li>
@@ -582,7 +582,7 @@
       <li xml:lang="zh-TW">印表機分享的支援</li>
       <li>KWallet support</li>
       <li xml:lang="bs">KWallet podrška</li>
-      <li xml:lang="ca">Implementació per al KWallet</li>
+      <li xml:lang="ca">Implementació del KWallet</li>
       <li xml:lang="ca-valencia">Implementació per al KWallet</li>
       <li xml:lang="cs">Podpora KWallet</li>
       <li xml:lang="de">Unterstützung für KWallet</li>
