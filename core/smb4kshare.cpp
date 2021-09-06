@@ -57,25 +57,6 @@ public:
     Smb4KGlobal::ShareType shareType;
 };
 
-Smb4KShare::Smb4KShare(const QString &host, const QString &name)
-    : Smb4KBasicNetworkItem(Share)
-    , d(new Smb4KSharePrivate)
-{
-    d->inaccessible = false;
-    d->foreign = false;
-    d->filesystem = QString();
-    d->user = KUser(KUser::UseRealUserID);
-    d->group = KUserGroup(KUser::UseRealUserID);
-    d->totalSpace = -1;
-    d->freeSpace = -1;
-    d->usedSpace = -1;
-    d->mounted = false;
-    d->shareType = FileShare;
-    setHostName(host);
-    setShareName(name);
-    setShareIcon();
-}
-
 Smb4KShare::Smb4KShare(const QUrl &url)
     : Smb4KBasicNetworkItem(Share)
     , d(new Smb4KSharePrivate)

@@ -49,38 +49,21 @@ class Q_DECL_EXPORT Smb4KShare : public Smb4KBasicNetworkItem
 
 public:
     /**
-     * This constructor takes the host name @p hostName and the name of the
-     * shared resource @p shareName. All other information has to be set by the
-     * other functions this class provides.
-     *
-     * This constructor will also assemble the UNC from the provided arguments.
-     *
-     * @param hostName      The name of the host where the share is
-     *                      located.
-     *
-     * @param shareName     The name of the share.
-     */
-    Smb4KShare(const QString &hostName, const QString &shareName);
-
-    /**
-     * This constructor takes the URL @p url as only argument. All other
-     * information has to be set by the other functions this class provides.
+     * This constructor takes the URL @p url as argument.
      *
      * @param url           The URL
      */
     explicit Smb4KShare(const QUrl &url);
 
     /**
-     * This is the copy constructor. It takes another Smb4KShare item and copies all
-     * its values.
+     * This is the copy constructor.
      *
      * @param share         The Smb4KShare item that is to be copied
      */
     Smb4KShare(const Smb4KShare &share);
 
     /**
-     * The empty constructor. You need to set all information by the functions that
-     * are provided with this class.
+     * The empty constructor.
      */
     Smb4KShare();
 
