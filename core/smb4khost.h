@@ -51,25 +51,21 @@ class Q_DECL_EXPORT Smb4KHost : public Smb4KBasicNetworkItem
 
 public:
     /**
-     * The default constructor. It takes the name of the host as only argument.
-     * You have to set all other information with the other functions provided
-     * by this class.
+     * This constructor takes the URL @p url as argument.
      *
-     * @param name                The name of the host
+     * @param url           The URL
      */
-    explicit Smb4KHost(const QString &name);
+    explicit Smb4KHost(const QUrl &url);
 
     /**
-     * The copy constructor. This constructor takes a Smb4KHost item as argument
-     * and copies its values.
+     * The copy constructor.
      *
      * @param host                The Smb4KHost object that is to be copied.
      */
     Smb4KHost(const Smb4KHost &host);
 
     /**
-     * The empty constructor. It does not take any argument and you have to set
-     * all information by the other functions provided by this class.
+     * The empty constructor.
      */
     Smb4KHost();
 

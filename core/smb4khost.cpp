@@ -43,13 +43,13 @@ public:
     bool isMaster;
 };
 
-Smb4KHost::Smb4KHost(const QString &name)
+Smb4KHost::Smb4KHost(const QUrl &url)
     : Smb4KBasicNetworkItem(Host)
     , d(new Smb4KHostPrivate)
 {
     d->isMaster = false;
     *pIcon = KDE::icon("network-server");
-    setHostName(name);
+    *pUrl = url;
 }
 
 Smb4KHost::Smb4KHost(const Smb4KHost &h)
