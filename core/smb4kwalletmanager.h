@@ -38,7 +38,7 @@ class Smb4KAuthInfo;
 class Smb4KWalletManagerPrivate;
 
 /**
- * This class manages the access to the digital wallet where the login 
+ * This class manages the access to the digital wallet where the login
  * credentials are stored.
  *
  * If the user chooses to not use the wallet, a password dialog is shown every
@@ -71,50 +71,50 @@ public:
 
     /**
      * Read the login credentials for the given @p networkItem object.
-     * 
+     *
      * @param networkItem   The NetworkItemPtr object
      */
     void readLoginCredentials(const NetworkItemPtr &networkItem);
-    
+
     /**
      * Read the login credentials for the given URL in the @p authInfo object.
-     * 
+     *
      * To get the default login credetials, pass an Smb4KAuthInfo object with
      * type Smb4KGlobal::UnknownNetworkItem to this function.
-     * 
+     *
      * @param authInfo      The Smb4KAuthInfo object
      */
     void readLoginCredentials(Smb4KAuthInfo *authInfo);
 
     /**
-     * Write the login credentials stored in the @p networkItem object to the 
+     * Write the login credentials stored in the @p networkItem object to the
      * wallet.
-     * 
+     *
      * @param networkItem   The NetworkItemPtr object that holds the credentials
      */
     void writeLoginCredentials(const NetworkItemPtr &networkItem);
-    
+
     /**
      * Write the login credentials stored in the @p authInfo object to the wallet.
-     * 
+     *
      * If the wallet system is disabled, this function will do nothing.
-     * 
+     *
      * @param authInfo      The Smb4KAuthInfo object that holds the credentials
      */
     void writeLoginCredentials(Smb4KAuthInfo *authInfo);
-    
+
     /**
      * Write login credentials stored in the list @p list to the wallet.
-     * 
+     *
      * If the wallet system is disabled, this function will do nothing.
-     * 
+     *
      * @param list          The login credentials list
      */
     void writeLoginCredentialsList(const QList<Smb4KAuthInfo *> &list);
-    
+
     /**
-     * Returns the list of login credentials stored in the wallet or an empty 
-     * list if the wallet is not open, no entries are defined or the wallet 
+     * Returns the list of login credentials stored in the wallet or an empty
+     * list if the wallet is not open, no entries are defined or the wallet
      * system is disabled.
      *
      * @returns a list of all login credentials
@@ -153,17 +153,17 @@ private:
      * Initialize the wallet manager
      */
     bool init();
-    
+
     /**
      * Read credentials form the wallet
      */
     bool read(Smb4KAuthInfo *authInfo);
-    
+
     /**
      * Write credentials to the wallet
      */
     void write(Smb4KAuthInfo *authInfo);
-    
+
     /**
      * Remove all credentials from the wallet
      */

@@ -66,8 +66,8 @@ Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
     connect(Smb4KClient::self(), SIGNAL(workgroups()), this, SLOT(slotWorkgroupsListChanged()));
     connect(Smb4KClient::self(), SIGNAL(hosts(WorkgroupPtr)), this, SLOT(slotHostsListChanged()));
     connect(Smb4KClient::self(), SIGNAL(shares(HostPtr)), this, SLOT(slotSharesListChanged()));
-    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr,int)), this, SIGNAL(busy()));
-    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr,int)), this, SIGNAL(idle()));
+    connect(Smb4KClient::self(), SIGNAL(aboutToStart(NetworkItemPtr, int)), this, SIGNAL(busy()));
+    connect(Smb4KClient::self(), SIGNAL(finished(NetworkItemPtr, int)), this, SIGNAL(idle()));
 
     connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), this, SLOT(slotMountedSharesListChanged()));
     connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SIGNAL(busy()));
@@ -581,11 +581,11 @@ void Smb4KDeclarative::slotBookmarksListChanged()
 
     QList<BookmarkPtr> bookmarksList = Smb4KBookmarkHandler::self()->bookmarksList();
     QStringList categoriesList = Smb4KBookmarkHandler::self()->categoryList();
-    
+
     for (const BookmarkPtr &bookmark : qAsConst(bookmarksList)) {
         d->bookmarkObjects << new Smb4KBookmarkObject(bookmark.data());
     }
-    
+
     for (const QString &category : qAsConst(categoriesList)) {
         d->bookmarkCategoryObjects << new Smb4KBookmarkObject(category);
     }

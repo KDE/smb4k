@@ -197,7 +197,7 @@ void Smb4KBookmarkDialog::setupView()
     //
     // Connections
     //
-    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotBookmarkClicked(QListWidgetItem*)));
+    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(slotBookmarkClicked(QListWidgetItem *)));
     connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
     connect(categoryCombo->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotCategoryEdited()));
     connect(okButton, SIGNAL(clicked()), this, SLOT(slotDialogAccepted()));
@@ -598,7 +598,7 @@ void Smb4KBookmarkEditor::setupView()
     //
     // Connections
     //
-    connect(treeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(slotItemClicked(QTreeWidgetItem*,int)));
+    connect(treeWidget, SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(slotItemClicked(QTreeWidgetItem *, int)));
     connect(treeWidget, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
     connect(labelEdit, SIGNAL(editingFinished()), this, SLOT(slotLabelEdited()));
     connect(ipEdit, SIGNAL(editingFinished()), this, SLOT(slotIpEdited()));

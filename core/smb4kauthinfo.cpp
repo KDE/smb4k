@@ -163,30 +163,30 @@ QString Smb4KAuthInfo::displayString() const
 {
     //
     // Host name
-    // 
+    //
     QString hostName = d->url.host().toUpper();
-    
+
     //
     // Return only the host name if the network item
     // has type Smb4Global:Host
-    // 
+    //
     if (d->type == Host) {
         return hostName;
     }
-    
+
     //
     // Share name
-    // 
+    //
     QString shareName;
-    
+
     if (d->url.path().startsWith('/')) {
         shareName = d->url.path().remove(0, 1);
     } else {
         shareName = d->url.path();
     }
-    
+
     //
     // Return the full display string
-    // 
+    //
     return i18n("%1 on %2", shareName, hostName);
 }

@@ -1954,7 +1954,7 @@ void Smb4KCustomOptionsDialog::slotCheckValues()
 
     if (buttonBox) {
         QList<QAbstractButton *> buttons = buttonBox->buttons();
-        
+
         for (QAbstractButton *b : qAsConst(buttons)) {
             if (buttonBox->buttonRole(b) == QDialogButtonBox::ResetRole) {
                 b->setEnabled(!checkDefaultValues());

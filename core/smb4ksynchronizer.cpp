@@ -70,7 +70,7 @@ void Smb4KSynchronizer::synchronize(const SharePtr &share)
         job->setObjectName(QString("SyncJob_%1").arg(share->canonicalPath()));
         job->setupSynchronization(share);
 
-        connect(job, SIGNAL(result(KJob*)), SLOT(slotJobFinished(KJob*)));
+        connect(job, SIGNAL(result(KJob *)), SLOT(slotJobFinished(KJob *)));
         connect(job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)));
         connect(job, SIGNAL(finished(QString)), SIGNAL(finished(QString)));
 

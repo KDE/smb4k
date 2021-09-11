@@ -364,7 +364,7 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
     //
     // Connect signals
     //
-    connect(detailsWidget, SIGNAL(cellChanged(int,int)), this, SLOT(slotDetailsChanged(int,int)));
+    connect(detailsWidget, SIGNAL(cellChanged(int, int)), this, SLOT(slotDetailsChanged(int, int)));
 
     //
     // Enable the details box

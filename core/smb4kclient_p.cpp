@@ -190,9 +190,9 @@ QHostAddress Smb4KClientBaseJob::lookupIpAddress(const QString &name)
 
         if (hostInfo.error() == QHostInfo::NoError) {
             QList<QHostAddress> addresses = hostInfo.addresses();
-            
+
             // Get the IP address for the host. For the time being, prefer the
-            // IPv4 address over the IPv6 address.            
+            // IPv4 address over the IPv6 address.
             for (const QHostAddress &addr : qAsConst(addresses)) {
                 // We only use global addresses.
                 if (addr.isGlobal()) {
@@ -1966,7 +1966,7 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
     //
     QListWidget *listWidget = new QListWidget(this);
     listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    connect(listWidget, SIGNAL(itemActivated(QListWidgetItem*)), SLOT(slotItemActivated(QListWidgetItem*)));
+    connect(listWidget, SIGNAL(itemActivated(QListWidgetItem *)), SLOT(slotItemActivated(QListWidgetItem *)));
 
     layout->addWidget(listWidget, 0);
 

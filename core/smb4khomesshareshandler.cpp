@@ -256,7 +256,7 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
                 xmlWriter.writeTextElement("workgroup", users->workgroupName());
                 xmlWriter.writeTextElement("ip", users->hostIP());
                 xmlWriter.writeStartElement("users");
-                
+
                 QStringList userList = users->userList();
 
                 for (const QString &user : qAsConst(userList)) {

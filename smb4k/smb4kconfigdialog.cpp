@@ -155,7 +155,7 @@ void Smb4KConfigDialog::setupDialog()
     connect(auth_options, SIGNAL(setDefaultLogin()), this, SLOT(slotSetDefaultLogin()));
     connect(auth_options, SIGNAL(walletEntriesModified()), this, SLOT(slotEnableApplyButton()));
 
-    connect(this, SIGNAL(currentPageChanged(KPageWidgetItem*,KPageWidgetItem*)), this, SLOT(slotCheckPage(KPageWidgetItem*,KPageWidgetItem*)));
+    connect(this, SIGNAL(currentPageChanged(KPageWidgetItem *, KPageWidgetItem *)), this, SLOT(slotCheckPage(KPageWidgetItem *, KPageWidgetItem *)));
 
     //
     // Dialog size
@@ -624,7 +624,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
         for (Smb4KAuthInfo *oldEntry : qAsConst(oldLoginCredentials)) {
             for (Smb4KAuthInfo *newEntry : qAsConst(newLoginCredentials)) {
                 if (QString::compare(oldEntry->url().toString(QUrl::RemovePort), newEntry->url().toString(QUrl::RemovePort), Qt::CaseInsensitive)
-                        == 0 /* leave the user info here */) {
+                    == 0 /* leave the user info here */) {
                     enable = true;
                     break;
                 }

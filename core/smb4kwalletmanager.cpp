@@ -59,62 +59,62 @@ Smb4KWalletManager *Smb4KWalletManager::self()
     return &p->instance;
 }
 
-void Smb4KWalletManager::readLoginCredentials(const NetworkItemPtr& networkItem)
+void Smb4KWalletManager::readLoginCredentials(const NetworkItemPtr &networkItem)
 {
     if (networkItem) {
         if (networkItem->type() == Host || networkItem->type() == Share) {
             Smb4KAuthInfo authInfo;
-            
+
             if (networkItem->type() == Share) {
                 SharePtr share = networkItem.staticCast<Smb4KShare>();
-                
+
                 if (share->isHomesShare()) {
                     authInfo.setUrl(share->homeUrl());
                 } else {
                     authInfo.setUrl(share->url());
                 }
-                
+
                 //
                 // Read the credentials for the share. Fall back to the URL of the
                 // host, if no credentials for the share could be found.
-                // 
+                //
                 if (!read(&authInfo)) {
                     authInfo.setUrl(share->url().adjusted(QUrl::RemovePath | QUrl::StripTrailingSlash));
-                    (void) read(&authInfo);
+                    (void)read(&authInfo);
                 }
             } else {
                 authInfo.setUrl(networkItem->url());
-                (void) read(&authInfo);
+                (void)read(&authInfo);
             }
-            
+
             QUrl url = networkItem->url();
-            
+
             url.setUserName(authInfo.userName());
             url.setPassword(authInfo.password());
-            
+
             networkItem->setUrl(url);
         }
     }
 }
 
-void Smb4KWalletManager::readLoginCredentials(Smb4KAuthInfo* authInfo)
+void Smb4KWalletManager::readLoginCredentials(Smb4KAuthInfo *authInfo)
 {
     if (authInfo) {
         if (authInfo->type() == Host || authInfo->type() == Share) {
-            (void) read(authInfo);
+            (void)read(authInfo);
         }
     }
 }
 
-void Smb4KWalletManager::writeLoginCredentials(const NetworkItemPtr& networkItem)
+void Smb4KWalletManager::writeLoginCredentials(const NetworkItemPtr &networkItem)
 {
     if (networkItem) {
         if (networkItem->type() == Host || networkItem->type() == Share) {
             Smb4KAuthInfo authInfo;
-            
+
             if (networkItem->type() == Share) {
                 SharePtr share = networkItem.staticCast<Smb4KShare>();
-                
+
                 if (share->isHomesShare()) {
                     authInfo.setUrl(share->homeUrl());
                 } else {
@@ -129,7 +129,7 @@ void Smb4KWalletManager::writeLoginCredentials(const NetworkItemPtr& networkItem
     }
 }
 
-void Smb4KWalletManager::writeLoginCredentials(Smb4KAuthInfo* authInfo)
+void Smb4KWalletManager::writeLoginCredentials(Smb4KAuthInfo *authInfo)
 {
     if (authInfo) {
         if (authInfo->type() == Host || authInfo->type() == Share) {
@@ -138,16 +138,16 @@ void Smb4KWalletManager::writeLoginCredentials(Smb4KAuthInfo* authInfo)
     }
 }
 
-void Smb4KWalletManager::writeLoginCredentialsList(const QList<Smb4KAuthInfo *>& list)
+void Smb4KWalletManager::writeLoginCredentialsList(const QList<Smb4KAuthInfo *> &list)
 {
     //
     // For the sake of simplicity, clear all wallet entries
-    // 
+    //
     clear();
 
     //
     // Write the new list to the wallet
-    // 
+    //
     for (Smb4KAuthInfo *authInfo : list) {
         write(authInfo);
     }
@@ -156,19 +156,19 @@ void Smb4KWalletManager::writeLoginCredentialsList(const QList<Smb4KAuthInfo *>&
 QList<Smb4KAuthInfo *> Smb4KWalletManager::loginCredentialsList()
 {
     QList<Smb4KAuthInfo *> entries;
-    
+
     if (init()) {
         bool ok = false;
         QMap<QString, QMap<QString, QString>> allWalletEntries = d->wallet->mapList(&ok);
-        
+
         if (ok) {
             QMapIterator<QString, QMap<QString, QString>> it(allWalletEntries);
-            
+
             while (it.hasNext()) {
                 it.next();
-                
+
                 Smb4KAuthInfo *authInfo = new Smb4KAuthInfo();
-                
+
                 if (it.key() == QStringLiteral("DEFAULT_LOGIN")) {
                     authInfo->setUserName(it.value().value("Login"));
                     authInfo->setPassword(it.value().value("Password"));
@@ -178,7 +178,7 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::loginCredentialsList()
                     authInfo->setUserName(it.value().value("Login"));
                     authInfo->setPassword(it.value().value("Password"));
                 }
-                
+
                 entries << authInfo;
             }
         }
@@ -267,9 +267,9 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
         //
         QPointer<Smb4KPasswordDialog> dlg = new Smb4KPasswordDialog(networkItem, knownLogins, QApplication::activeWindow());
 
-        // 
+        //
         // On closure, write the login credentials to the wallet
-        // 
+        //
         if (dlg->exec() == Smb4KPasswordDialog::Accepted) {
             writeLoginCredentials(networkItem);
             success = true;
@@ -336,38 +336,37 @@ bool Smb4KWalletManager::init()
             d->wallet = nullptr;
         }
     }
-    
+
     emit initialized();
-    
+
     return (d->wallet && d->wallet->isOpen());
 }
 
-
-bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
+bool Smb4KWalletManager::read(Smb4KAuthInfo *authInfo)
 {
     bool success = false;
-    
+
     if (init()) {
         if (authInfo->type() != Smb4KGlobal::UnknownNetworkItem) {
             //
             // Get the string representation of the URL
-            // 
+            //
             QString itemUrlString;
             QString testString = authInfo->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort);
-            
+
             //
             // Check if an entry exists for the given URL. If not, try to
             // get the correct string / key by a case insensitive comparision.
-            // 
+            //
             if (!d->wallet->hasEntry(testString)) {
                 //
                 // Get all keys of the saved login credentials
-                // 
+                //
                 QStringList walletEntries = d->wallet->entryList();
-            
+
                 //
                 // Find the correct key for these login credentials
-                // 
+                //
                 for (const QString &entry : qAsConst(walletEntries)) {
                     if (QString::compare(entry, testString, Qt::CaseInsensitive) == 0) {
                         itemUrlString = entry;
@@ -377,14 +376,14 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
             } else {
                 itemUrlString = testString;
             }
-            
+
             //
-            // Read the login credentials from the wallet. Use the default login 
+            // Read the login credentials from the wallet. Use the default login
             // as fallback.
-            // 
+            //
             if (!itemUrlString.isEmpty()) {
                 QMap<QString, QString> credentials;
-                
+
                 if (d->wallet->readMap(itemUrlString, credentials) == 0) {
                     authInfo->setUserName(credentials.value("Login"));
                     authInfo->setPassword(credentials.value("Password"));
@@ -393,7 +392,7 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
             } else {
                 if (Smb4KSettings::useDefaultLogin()) {
                     QMap<QString, QString> credentials;
-                
+
                     if (d->wallet->readMap("DEFAULT_LOGIN", credentials) == 0) {
                         authInfo->setUserName(credentials.value("Login"));
                         authInfo->setPassword(credentials.value("Password"));
@@ -404,7 +403,7 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
         } else {
             if (Smb4KSettings::useDefaultLogin()) {
                 QMap<QString, QString> credentials;
-                
+
                 if (d->wallet->readMap("DEFAULT_LOGIN", credentials) == 0) {
                     authInfo->setUserName(credentials.value("Login"));
                     authInfo->setPassword(credentials.value("Password"));
@@ -413,24 +412,24 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo* authInfo)
             }
         }
     }
-    
+
     return success;
 }
 
-void Smb4KWalletManager::write(Smb4KAuthInfo* authInfo)
+void Smb4KWalletManager::write(Smb4KAuthInfo *authInfo)
 {
     if (init()) {
         //
         // Get the key for the wallet entry
-        // 
+        //
         QString key;
-        
+
         if (authInfo->type() != UnknownNetworkItem) {
             key = authInfo->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort);
         } else {
             key = QStringLiteral("DEFAULT_LOGIN");
         }
-        
+
         //
         // Write the credentials to the wallet.
         //
@@ -453,17 +452,14 @@ void Smb4KWalletManager::clear()
         // Get the list of wallet entries
         //
         QStringList entryList = d->wallet->entryList();
-        
+
         //
         // Remove all wallet entries
-        // 
+        //
         for (const QString &entry : qAsConst(entryList)) {
             d->wallet->removeEntry(entry);
         }
-        
+
         d->wallet->sync();
     }
 }
-
-
-

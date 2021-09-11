@@ -516,11 +516,11 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
         // Connections
         //
         connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
-        connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog*)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog*)));
+        connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog *)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog *)));
         connect(dlg, SIGNAL(requestAbort()), this, SLOT(slotAbort()));
         connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
-        connect(this, SIGNAL(aboutToStart(NetworkItemPtr,int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr,int)));
-        connect(this, SIGNAL(finished(NetworkItemPtr,int)), dlg, SLOT(slotFinished(NetworkItemPtr,int)));
+        connect(this, SIGNAL(aboutToStart(NetworkItemPtr, int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr, int)));
+        connect(this, SIGNAL(finished(NetworkItemPtr, int)), dlg, SLOT(slotFinished(NetworkItemPtr, int)));
     }
 
     //
@@ -563,8 +563,8 @@ void Smb4KClient::openPrintDialog(const SharePtr &share)
         dlg = new Smb4KPrintDialog(share, QApplication::activeWindow());
         d->printDialogs << dlg;
 
-        connect(dlg, SIGNAL(printFile(SharePtr,KFileItem,int)), this, SLOT(slotStartPrinting(SharePtr,KFileItem,int)));
-        connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog*)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog*)));
+        connect(dlg, SIGNAL(printFile(SharePtr, KFileItem, int)), this, SLOT(slotStartPrinting(SharePtr, KFileItem, int)));
+        connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog *)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog *)));
     }
 
     //
@@ -640,7 +640,7 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
     // Collect the workgroups found while scanning
     //
     QList<WorkgroupPtr> discoveredWorkgroups = job->workgroups();
-    
+
     for (const WorkgroupPtr &newWorkgroup : qAsConst(discoveredWorkgroups)) {
         bool foundWorkgroup = false;
 
@@ -734,7 +734,7 @@ void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
     // Collect the hosts found while scanning
     //
     QList<HostPtr> discoveredHosts = job->hosts();
-    
+
     for (const HostPtr &newHost : qAsConst(discoveredHosts)) {
         bool foundHost = false;
 
@@ -819,10 +819,10 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
     // Get the host pointer
     //
     HostPtr host = job->networkItem().staticCast<Smb4KHost>();
-    
+
     //
     // Copy the list of discovered shares
-    // 
+    //
     QList<SharePtr> discoveredShares = job->shares();
 
     //
@@ -876,12 +876,12 @@ void Smb4KClient::processFiles(Smb4KClientBaseJob *job)
 {
     //
     // Copy the list of discovered files and directories
-    // 
+    //
     QList<FilePtr> discoveredFiles = job->files();
-    
+
     //
     // Process the list of discovered directories
-    // 
+    //
     QList<FilePtr> list;
 
     for (const FilePtr &file : qAsConst(discoveredFiles)) {

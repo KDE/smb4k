@@ -68,7 +68,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     optionsListWidget->setSelectionMode(QListWidget::SingleSelection);
     optionsListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
-    connect(optionsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)), SLOT(slotEditCustomItem(QListWidgetItem*)));
+    connect(optionsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), SLOT(slotEditCustomItem(QListWidgetItem *)));
     connect(optionsListWidget, SIGNAL(itemSelectionChanged()), SLOT(slotItemSelectionChanged()));
     connect(optionsListWidget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(slotCustomContextMenuRequested(QPoint)));
 

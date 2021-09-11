@@ -73,7 +73,7 @@ Smb4KSharesMenu::Smb4KSharesMenu(QWidget *parentWidget, QObject *parent)
     //
     // Connections
     //
-    connect(m_actions, SIGNAL(triggered(QAction*)), SLOT(slotShareAction(QAction*)));
+    connect(m_actions, SIGNAL(triggered(QAction *)), SLOT(slotShareAction(QAction *)));
     connect(Smb4KMounter::self(), SIGNAL(mountedSharesListChanged()), SLOT(slotMountedSharesListChanged()));
 }
 
@@ -223,7 +223,7 @@ void Smb4KSharesMenu::setupMenu()
 
     for (const QString &name : qAsConst(displayNames)) {
         QList<QAction *> actionsList = m_menus->actions();
-        
+
         for (QAction *action : qAsConst(actionsList)) {
             if (action->data().toMap().value("text").toString() == name) {
                 addAction(action);

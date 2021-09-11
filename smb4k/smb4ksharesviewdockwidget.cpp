@@ -86,9 +86,9 @@ Smb4KSharesViewDockWidget::Smb4KSharesViewDockWidget(const QString &title, QWidg
     // Connections
     //
     connect(m_sharesView, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenuRequested(QPoint)));
-    connect(m_sharesView, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(slotItemActivated(QListWidgetItem*)));
+    connect(m_sharesView, SIGNAL(itemActivated(QListWidgetItem *)), this, SLOT(slotItemActivated(QListWidgetItem *)));
     connect(m_sharesView, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
-    connect(m_sharesView, SIGNAL(acceptedDropEvent(Smb4KSharesViewItem*,QDropEvent*)), this, SLOT(slotDropEvent(Smb4KSharesViewItem*,QDropEvent*)));
+    connect(m_sharesView, SIGNAL(acceptedDropEvent(Smb4KSharesViewItem *, QDropEvent *)), this, SLOT(slotDropEvent(Smb4KSharesViewItem *, QDropEvent *)));
 
     connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
@@ -172,7 +172,7 @@ void Smb4KSharesViewDockWidget::setupActions()
 
     QActionGroup *viewModesGroup = new QActionGroup(this);
     viewModesGroup->setExclusive(true);
-    connect(viewModesGroup, SIGNAL(triggered(QAction*)), this, SLOT(slotViewModeChanged(QAction*)));
+    connect(viewModesGroup, SIGNAL(triggered(QAction *)), this, SLOT(slotViewModeChanged(QAction *)));
 
     QAction *iconViewAction = new QAction(KDE::icon("view-list-icons"), i18n("Icon View"), this);
     iconViewAction->setObjectName("icon_view_action");
@@ -283,7 +283,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     // Plug the actions into the context menu
     //
     QList<QAction *> actionsList = m_actionCollection->actions();
-    
+
     for (QAction *action : qAsConst(actionsList)) {
         m_contextMenu->addAction(action);
     }

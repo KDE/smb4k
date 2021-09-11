@@ -57,7 +57,7 @@ public:
      *
      * @param name            The name of the workgroup or domain.
      */
-    explicit Smb4KWorkgroup(const QString &name);
+    SMB4K_DEPRECATED explicit Smb4KWorkgroup(const QString &name);
 
     /**
      * The copy constructor. This constructor takes another Smb4KWorkgroup item

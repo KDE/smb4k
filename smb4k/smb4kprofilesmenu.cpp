@@ -101,7 +101,7 @@ void Smb4KProfilesMenu::slotProfilesListChanged(const QStringList & /*profiles*/
 void Smb4KProfilesMenu::slotProfileUsageChanged(bool use)
 {
     QList<QAction *> actionList = actions();
-    
+
     for (QAction *action : qAsConst(actionList)) {
         if (action) {
             action->setEnabled(use);

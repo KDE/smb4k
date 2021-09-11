@@ -69,8 +69,8 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QWidget *parentWidget, QObject *p
     connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), SLOT(slotBookmarksUpdated()));
     connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
-    connect(m_actions, SIGNAL(triggered(QAction*)), SLOT(slotCategoryActionTriggered(QAction*)));
-    connect(m_bookmarks, SIGNAL(triggered(QAction*)), SLOT(slotBookmarkActionTriggered(QAction*)));
+    connect(m_actions, SIGNAL(triggered(QAction *)), SLOT(slotCategoryActionTriggered(QAction *)));
+    connect(m_bookmarks, SIGNAL(triggered(QAction *)), SLOT(slotBookmarkActionTriggered(QAction *)));
 }
 
 Smb4KBookmarkMenu::~Smb4KBookmarkMenu()
