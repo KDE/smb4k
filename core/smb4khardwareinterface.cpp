@@ -52,38 +52,53 @@ Q_GLOBAL_STATIC(Smb4KHardwareInterfaceStatic, p);
 Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
 : QObject(parent), d(new Smb4KHardwareInterfacePrivate)
 {
-  //
-  // Initialize some members
-  // 
-  d->systemOnline = false;
-  d->fileDescriptor.setFileDescriptor(-1);
-  
-  //
-  // Set up the DBUS interface
-  // 
-  d->dbusInterface.reset(new QDBusInterface("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", QDBusConnection::systemBus(), this));
-  
-  if (!d->dbusInterface->isValid())
-  {
-    d->dbusInterface.reset(new QDBusInterface("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager", "org.freedesktop.ConsoleKit.Manager", QDBusConnection::systemBus(), this));
-  }
-  
-  //
-  // Connections
-  // 
-  connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
-  connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
+    //
+    // Initialize some members
+    //
+    d->systemOnline = false;
+    d->fileDescriptor.setFileDescriptor(-1);
 
-  //
-  // Check the online state
-  // 
-  checkOnlineState(false);
-  
-  // 
-  // Start the timer to continously check the online state
-  // and, under FreeBSD, additionally the mounted shares.
-  // 
-  startTimer(1000);
+    //
+    // Set up the DBUS interface
+    //
+    d->dbusInterface.reset(
+        new QDBusInterface("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", QDBusConnection::systemBus(), this));
+
+    if (!d->dbusInterface->isValid()) {
+        d->dbusInterface.reset(new QDBusInterface("org.freedesktop.ConsoleKit",
+                                                  "/org/freedesktop/ConsoleKit/Manager",
+                                                  "org.freedesktop.ConsoleKit.Manager",
+                                                  QDBusConnection::systemBus(),
+                                                  this));
+    }
+
+    //
+    // Get the initial list of udis for network shares
+    //
+    QList<Solid::Device> allDevices = Solid::Device::allDevices();
+
+    for (const Solid::Device &device : qAsConst(allDevices)) {
+        if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare)) {
+            d->udis << device.udi();
+        }
+    }
+
+    //
+    // Connections
+    //
+    connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
+    connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)), this, SLOT(slotDeviceRemoved(QString)));
+
+    //
+    // Check the online state
+    //
+    checkOnlineState(false);
+
+    //
+    // Start the timer to continously check the online state
+    // and, under FreeBSD, additionally the mounted shares.
+    //
+    startTimer(1000);
 }
 
 
