@@ -73,6 +73,17 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     }
 
     //
+    // Get the initial list of udis for network shares
+    //
+    QList<Solid::Device> allDevices = Solid::Device::allDevices();
+
+    for (const Solid::Device &device : qAsConst(allDevices)) {
+        if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare)) {
+            d->udis << device.udi();
+        }
+    }
+
+    //
     // Connections
     //
     connect(Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(QString)), this, SLOT(slotDeviceAdded(QString)));
