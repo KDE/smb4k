@@ -182,36 +182,40 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent * /*e*/)
     // Thus, we check here whether shares have been mounted or unmounted.
     // This is a hack and should be removed as soon as possible.
     //
-    // Get the list of UIDs of the network devices
-    //
-    QList<Solid::Device> allDevices = Solid::Device::allDevices();
-    QStringList networkUdis;
+    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
+    QStringList mountPointList, alreadyMounted;
 
-    for (const Solid::Device &device : qAsConst(allDevices)) {
-        if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare)) {
-            networkUdis << device.udi();
+    for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints) {
+        if (mountPoint->mountType() == "smbfs") {
+            mountPointList.append(mountPoint->mountPoint());
         }
     }
 
-    //
-    // Check if a network share was unmounted
-    //
-    for (const QString &udi : qAsConst(d->udis)) {
-        if (!networkUdis.contains(udi)) {
-            emit networkShareRemoved();
-            d->udis.removeOne(udi);
+    QMutableStringListIterator it(mountPointList);
+
+    while (it.hasNext()) {
+        QString mp = it.next();
+        int index = -1;
+
+        if ((index = d->mountPoints.indexOf(mp)) != -1) {
+            d->mountPoints.removeAt(index);
+            alreadyMounted.append(mp);
+            it.remove();
         }
     }
 
-    //
-    // Check if a network share was mounted
-    //
-    for (const QString &udi : qAsConst(networkUdis)) {
-        if (!d->udis.contains(udi)) {
-            d->udis << udi;
-            emit networkShareAdded();
-        }
+    if (!d->mountPoints.isEmpty()) {
+        emit networkShareRemoved();
     }
+
+    if (!mountPointList.isEmpty()) {
+        emit networkShareAdded();
+    }
+
+    d->mountPoints.clear();
+    d->mountPoints.append(alreadyMounted);
+    d->mountPoints.append(mountPointList);
+
 #endif
 }
 
