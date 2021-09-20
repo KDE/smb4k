@@ -58,11 +58,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
     for (const QNetworkInterface &interface : qAsConst(interfaces)) {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
         if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
-#else
-        if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning && !online)
-#endif
         {
             online = true;
             break;
@@ -125,9 +121,17 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     proc.start();
 
     if (proc.waitForStarted(-1)) {
-        bool userKill = false;
+        int timeout = 0;
 
         while (!proc.waitForFinished(10)) {
+            // We want to be able to terminate the process from outside.
+            // Thus, we implement a loop that checks periodically, if we
+            // need to kill the process.
+            if (HelperSupport::isStopped() || timeout == 5000) {
+                proc.kill();
+                break;
+            }
+            
             // Check if there is a password prompt. If there is one, pass
             // the password to it.
             QByteArray out = proc.readAllStandardError();
@@ -136,23 +140,11 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
                 proc.write(args["mh_url"].toUrl().password().toUtf8().data());
                 proc.write("\r");
             }
-
-            // We want to be able to terminate the process from outside.
-            // Thus, we implement a loop that checks periodically, if we
-            // need to kill the process.
-            if (HelperSupport::isStopped()) {
-                proc.kill();
-                userKill = true;
-            }
+            
+            timeout += 10;
         }
 
-        if (proc.exitStatus() == KProcess::CrashExit) {
-            if (!userKill) {
-                reply.setType(ActionReply::HelperErrorType);
-                reply.setErrorDescription(i18n("The mount process crashed."));
-            }
-        } else {
-            // Check if there is output on stderr.
+        if (proc.exitStatus() == KProcess::NormalExit) {
             QString stdErr = QString::fromUtf8(proc.readAllStandardError());
             reply.addData("mh_error_message", stdErr.trimmed());
         }
@@ -237,11 +229,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
     for (const QNetworkInterface &interface : qAsConst(interfaces)) {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
         if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
-#else
-        if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning && !online)
-#endif
         {
             online = true;
             break;
@@ -255,23 +243,18 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
             // We want to be able to terminate the process from outside.
             // Thus, we implement a loop that checks periodically, if we
             // need to kill the process.
-            bool userKill = false;
-
+            int timeout = 0;
+            
             while (!proc.waitForFinished(10)) {
-                if (HelperSupport::isStopped()) {
+                if (HelperSupport::isStopped() || timeout == 5000) {
                     proc.kill();
-                    userKill = true;
                     break;
                 }
+                
+                timeout += 10;
             }
 
-            if (proc.exitStatus() == KProcess::CrashExit) {
-                if (!userKill) {
-                    reply.setType(ActionReply::HelperErrorType);
-                    reply.setErrorDescription(i18n("The unmount process crashed."));
-                }
-            } else {
-                // Check if there is output on stderr.
+            if (proc.exitStatus() == KProcess::NormalExit) {
                 QString stdErr = QString::fromUtf8(proc.readAllStandardError());
                 reply.addData("mh_error_message", stdErr.trimmed());
             }
