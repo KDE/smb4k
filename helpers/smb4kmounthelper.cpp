@@ -33,6 +33,8 @@
 #include <QNetworkInterface>
 #include <QProcessEnvironment>
 #include <QUrl>
+#include <QEventLoop>
+#include <QTimer>
 
 // KDE includes
 #include <KAuth/KAuthHelperSupport>
@@ -123,7 +125,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     if (proc.waitForStarted(-1)) {
         int timeout = 0;
 
-        while (!proc.waitForFinished(10)) {
+        while (proc.state() != KProcess::NotRunning) {
             // We want to be able to terminate the process from outside.
             // Thus, we implement a loop that checks periodically, if we
             // need to kill the process.
@@ -142,6 +144,10 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
             }
             
             timeout += 10;
+            
+            QEventLoop loop;
+            QTimer::singleShot(10, &loop, SLOT(quit()));
+            loop.exec();
         }
 
         if (proc.exitStatus() == KProcess::NormalExit) {
@@ -245,13 +251,17 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
             // need to kill the process.
             int timeout = 0;
             
-            while (!proc.waitForFinished(10)) {
+            while (proc.state() != KProcess::NotRunning) {
                 if (HelperSupport::isStopped() || timeout == 5000) {
                     proc.kill();
                     break;
                 }
                 
                 timeout += 10;
+
+                QEventLoop loop;
+                QTimer::singleShot(10, &loop, SLOT(quit()));
+                loop.exec();
             }
 
             if (proc.exitStatus() == KProcess::NormalExit) {
