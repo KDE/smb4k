@@ -91,7 +91,7 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
 
     addAction("shares_menu", new Smb4KSharesMenu(associatedWidget()));
     addAction("bookmarks_menu", new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, associatedWidget()));
-    addAction("profiles_menu", new Smb4KProfilesMenu());
+    addAction("profiles_menu", new Smb4KProfilesMenu(associatedWidget()));
     addAction("mount_action", mountAction);
     addAction("config_action", KStandardAction::preferences(this, SLOT(slotConfigDialog()), this));
 
