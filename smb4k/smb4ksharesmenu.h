@@ -48,7 +48,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KSharesMenu(QWidget *parentWidget = 0, QObject *parent = 0);
+    explicit Smb4KSharesMenu(QObject *parent = 0);
 
     /**
      * Destructor
@@ -84,11 +84,6 @@ private:
      * Setup the menu
      */
     void setupMenu();
-
-    /**
-     * Parent widget
-     */
-    QWidget *m_parent_widget;
 
     /**
      * Share menus

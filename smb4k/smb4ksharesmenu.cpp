@@ -51,9 +51,8 @@
 
 using namespace Smb4KGlobal;
 
-Smb4KSharesMenu::Smb4KSharesMenu(QWidget *parentWidget, QObject *parent)
+Smb4KSharesMenu::Smb4KSharesMenu(QObject *parent)
     : KActionMenu(KDE::icon("folder-network", QStringList("emblem-mounted")), i18n("Mounted Shares"), parent)
-    , m_parent_widget(parentWidget)
 {
     //
     // Set up action group for the shares menus

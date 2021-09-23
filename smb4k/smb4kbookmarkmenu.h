@@ -54,7 +54,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KBookmarkMenu(int type, QWidget *parentWidget = 0, QObject *parent = 0);
+    explicit Smb4KBookmarkMenu(int type, QObject *parent = 0);
 
     /**
      * Destructor

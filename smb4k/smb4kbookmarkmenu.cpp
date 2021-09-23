@@ -43,10 +43,9 @@
 
 using namespace Smb4KGlobal;
 
-Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QWidget *parentWidget, QObject *parent)
+Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     : KActionMenu(KDE::icon("folder-favorites"), i18n("Bookmarks"), parent)
     , m_type(type)
-    , m_parent_widget(parentWidget)
 {
     //
     // Set up the action group for the actions

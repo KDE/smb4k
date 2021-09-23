@@ -158,7 +158,7 @@ void Smb4KMainWindow::setupActions()
     //
     // Bookmarks menu and action
     //
-    Smb4KBookmarkMenu *bookmarksMenu = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this, this);
+    Smb4KBookmarkMenu *bookmarksMenu = new Smb4KBookmarkMenu(Smb4KBookmarkMenu::MainWindow, this);
     QAction *addBookmarkAction = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), actionCollection());
     addBookmarkAction->setEnabled(false);
     actionCollection()->addAction("bookmarks_menu", bookmarksMenu);
