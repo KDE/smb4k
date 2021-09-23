@@ -89,9 +89,9 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
     QAction *mountAction = new QAction(KDE::icon("view-form", QStringList("emblem-mounted")), i18n("&Open Mount Dialog"), this);
     connect(mountAction, SIGNAL(triggered(bool)), SLOT(slotMountDialog()));
 
-    addAction("shares_menu", new Smb4KSharesMenu(associatedWidget()));
-    addAction("bookmarks_menu", new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, associatedWidget()));
-    addAction("profiles_menu", new Smb4KProfilesMenu(associatedWidget()));
+    addAction("shares_menu", new Smb4KSharesMenu(this));
+    addAction("bookmarks_menu", new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, this));
+    addAction("profiles_menu", new Smb4KProfilesMenu(this));
     addAction("mount_action", mountAction);
     addAction("config_action", KStandardAction::preferences(this, SLOT(slotConfigDialog()), this));
 
