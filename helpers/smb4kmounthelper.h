@@ -36,18 +36,18 @@ using namespace KAuth;
 
 class Smb4KMountHelper : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public slots:
+public slots:
     /**
      * Mounts a CIFS/SMBFS share.
      */
-    ActionReply mount(const QVariantMap &args);
+    KAuth::ActionReply mount(const QVariantMap &args);
 
     /**
      * Unmounts a CIFS/SMBFS share.
      */
-    ActionReply unmount(const QVariantMap &args);
+    KAuth::ActionReply unmount(const QVariantMap &args);
 };
 
 #endif
