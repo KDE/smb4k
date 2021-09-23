@@ -60,7 +60,11 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
     for (const QNetworkInterface &interface : qAsConst(interfaces)) {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
         if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
+#else
+        if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning && !online)
+#endif
         {
             online = true;
             break;
@@ -235,7 +239,11 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
     for (const QNetworkInterface &interface : qAsConst(interfaces)) {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
         if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
+#else
+        if (interface.isValid() && !(interface.flags() & QNetworkInterface::IsLoopBack) && interface.flags() & QNetworkInterface::IsRunning && !online)
+#endif
         {
             online = true;
             break;
