@@ -29,12 +29,12 @@
 
 // Qt includes
 #include <QDebug>
+#include <QEventLoop>
 #include <QLatin1String>
 #include <QNetworkInterface>
 #include <QProcessEnvironment>
-#include <QUrl>
-#include <QEventLoop>
 #include <QTimer>
+#include <QUrl>
 
 // KDE includes
 #include <KAuth/KAuthHelperSupport>
@@ -60,8 +60,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
     for (const QNetworkInterface &interface : qAsConst(interfaces)) {
-        if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
-        {
+        if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online) {
             online = true;
             break;
         }
@@ -133,7 +132,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
                 proc.kill();
                 break;
             }
-            
+
             // Check if there is a password prompt. If there is one, pass
             // the password to it.
             QByteArray out = proc.readAllStandardError();
@@ -142,9 +141,9 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
                 proc.write(args["mh_url"].toUrl().password().toUtf8().data());
                 proc.write("\r");
             }
-            
+
             timeout += 10;
-            
+
             QEventLoop loop;
             QTimer::singleShot(10, &loop, SLOT(quit()));
             loop.exec();
@@ -187,14 +186,8 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
 
     for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints)) {
-#if defined(Q_OS_LINUX)
-        if (QString::compare(args["mh_mountpoint"].toString(), mountPoint->mountPoint()) == 0
-            && QString::compare(mountPoint->mountType(), "cifs", Qt::CaseInsensitive) == 0)
-#else
-        if (QString::compare(args["mh_mountpoint"].toString(), mountPoint->mountPoint()) == 0
-            && QString::compare(mountPoint->mountType(), "smbfs", Qt::CaseInsensitive) == 0)
-#endif
-        {
+        if (args["mh_mountpoint"].toString() == mountPoint->mountPoint()
+            && (mountPoint->mountType() == "cifs" || mountPoint->mountType() == "smb3" || mountPoint->mountType() == "smbfs")) {
             mountPointOk = true;
             break;
         }
@@ -235,8 +228,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
 
     for (const QNetworkInterface &interface : qAsConst(interfaces)) {
-        if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online)
-        {
+        if (interface.isValid() && interface.type() != QNetworkInterface::Loopback && interface.flags() & QNetworkInterface::IsRunning && !online) {
             online = true;
             break;
         }
@@ -250,13 +242,13 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
             // Thus, we implement a loop that checks periodically, if we
             // need to kill the process.
             int timeout = 0;
-            
+
             while (proc.state() != KProcess::NotRunning) {
                 if (HelperSupport::isStopped() || timeout == 5000) {
                     proc.kill();
                     break;
                 }
-                
+
                 timeout += 10;
 
                 QEventLoop loop;
