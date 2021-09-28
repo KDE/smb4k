@@ -1,6 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2017-2019 Alexander Reinholdt
-    <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2019 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
