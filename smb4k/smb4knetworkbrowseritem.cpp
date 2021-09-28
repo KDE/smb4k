@@ -1,7 +1,6 @@
 /*
     smb4knetworkbrowseritem  -  Smb4K's network browser list item.
-    -------------------
-    begin                : Mo Jan 8 2007
+
     SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

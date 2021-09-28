@@ -1,7 +1,6 @@
 /*
     Smb4K's container class for information about a directory or file.
-    -------------------
-    begin                : Sa Nov 10 2018
+
     SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

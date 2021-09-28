@@ -1,7 +1,6 @@
 /*
     This class handles the homes shares
-    -------------------
-    begin                : Do Aug 10 2006
+
     SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 */
 

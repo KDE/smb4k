@@ -1,7 +1,6 @@
 /*
     This is the wallet manager of Smb4K.
-    -------------------
-    begin                : Sa Dez 27 2008
+
     SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

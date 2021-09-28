@@ -1,7 +1,6 @@
 /*
     The helper that mounts and unmounts shares.
-    -------------------
-    begin                : Sa Okt 16 2010
+
     SPDX-FileCopyrightText: 2010-2020 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

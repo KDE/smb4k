@@ -1,7 +1,6 @@
 /*
     The network neighborhood browser dock widget
-    -------------------
-    begin                : Sat Apr 28 2018
+
     SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

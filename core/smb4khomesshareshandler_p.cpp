@@ -1,7 +1,6 @@
 /*
     Private helpers for the homes shares handler
-    -------------------
-    begin                : Mo Apr 11 2011
+
     SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 */
 

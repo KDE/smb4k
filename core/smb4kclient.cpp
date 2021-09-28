@@ -1,7 +1,6 @@
 /*
     This class provides the interface to the libsmbclient library.
-    -------------------
-    begin                : Sa Oct 20 2018
+
     SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

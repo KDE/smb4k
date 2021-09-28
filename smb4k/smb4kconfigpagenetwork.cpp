@@ -1,8 +1,7 @@
 /*
     smb4knetworkoptions  -  The configuration page for the network
     settings of Smb4K
-    -------------------
-    begin                : Sa Nov 15 2003
+
     SPDX-FileCopyrightText: 2003-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

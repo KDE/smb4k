@@ -1,7 +1,6 @@
 /*
     smb4kprofilesmenu  -  The menu for the profiles
-    -------------------
-    begin                : Do Aug 10 2014
+
     SPDX-FileCopyrightText: 2014-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

@@ -1,7 +1,6 @@
 /*
     These are the private helper classes of the Smb4KGlobal namespace.
-    -------------------
-    begin                : Di Jul 24 2007
+
     SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

@@ -1,8 +1,7 @@
 /*
     This configuration page takes care of all settings concerning the
     user interface
-    -------------------
-    begin                : Mi Aug 30 2006
+
     SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

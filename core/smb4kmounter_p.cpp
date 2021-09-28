@@ -1,7 +1,6 @@
 /*
     This file contains private helper classes for the Smb4KMounter class.
-    -------------------
-    begin                : Do Jul 19 2007
+
     SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

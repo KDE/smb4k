@@ -1,7 +1,6 @@
 /*
     This is the shares view of Smb4K.
-    -------------------
-    begin                : Mo Dez 4 2006
+
     SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

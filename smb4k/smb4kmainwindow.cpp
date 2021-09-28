@@ -1,7 +1,6 @@
 /*
     The main window of Smb4K
-    -------------------
-    begin                : Di Jan 1 2008
+
     SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

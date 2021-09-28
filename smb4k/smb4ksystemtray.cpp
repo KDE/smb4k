@@ -1,7 +1,6 @@
 /*
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
-    -------------------
-    begin                : Mi Jun 13 2007
+
     SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

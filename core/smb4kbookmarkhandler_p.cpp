@@ -1,7 +1,6 @@
 /*
     Private classes for the bookmark handler
-    -------------------
-    begin                : Sun Mar 20 2011
+
     SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 */
 

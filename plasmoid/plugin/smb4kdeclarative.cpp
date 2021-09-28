@@ -1,7 +1,6 @@
 /*
     This class provides the interface for Plasma and QtQuick
-    -------------------
-    begin                : Mo 02 Sep 2013
+
     SPDX-FileCopyrightText: 2013-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */

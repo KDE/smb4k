@@ -1,8 +1,7 @@
 /*
     This class derives from QObject and encapsulates a bookmark item. It
     is for use with QtQuick.
-    -------------------
-    begin                : Fr Mai 11 2013
+
     SPDX-FileCopyrightText: 2013-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
