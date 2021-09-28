@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: smb4k
+Upstream-Contact: Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+Source: https://invent.kde.org/network/smb4k/
+
+Files: data/*
+Copyright: Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+License: GPL-2.0-or-later
+
