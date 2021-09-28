@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: 2015 Raymond Wooninck <tittiatcoke@gmail.com>
+
 ecm_install_icons( ICONS
                    128-apps-smb4k.png
                    64-apps-smb4k.png

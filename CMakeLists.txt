@@ -1,3 +1,7 @@
+
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: 2019 Pino Toscano <pino@kde.org>
+# SPDX-FileCopyrightText: 2009-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 #
 # Project
 #
