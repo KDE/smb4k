@@ -2,8 +2,7 @@
     Private helper classes for Smb4KCustomOptionsManagerPrivate class
     -------------------
     begin                : Fr 29 Apr 2011
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

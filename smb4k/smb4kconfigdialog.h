@@ -2,8 +2,7 @@
     The configuration dialog of Smb4K
     -------------------
     begin                : Sa Apr 14 2007
-    SPDX-FileCopyrightText: 2004-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2004-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

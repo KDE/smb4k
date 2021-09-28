@@ -2,8 +2,7 @@
     Private helper class(es) for the profile manager.
     -------------------
     begin                : Mi Aug 12 2014
-    SPDX-FileCopyrightText: 2014-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2014-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

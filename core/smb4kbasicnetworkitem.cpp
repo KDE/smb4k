@@ -3,8 +3,7 @@
     Smb4K.
     -------------------
     begin                : Do Apr 2 2009
-    SPDX-FileCopyrightText: 2009-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2009-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

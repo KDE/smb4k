@@ -2,8 +2,7 @@
     The configuration page for the synchronization options
     -------------------
     begin                : So Nov 20 2005
-    SPDX-FileCopyrightText: 2005-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2005-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

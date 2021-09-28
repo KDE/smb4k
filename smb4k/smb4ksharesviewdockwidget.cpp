@@ -2,8 +2,7 @@
     The network search widget dock widget
     -------------------
     begin                : Fri Mai 04 2018
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

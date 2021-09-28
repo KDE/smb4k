@@ -2,8 +2,7 @@
     The item for Smb4K's shares view.
     -------------------
     begin                : Di Dez 5 2006
-    SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

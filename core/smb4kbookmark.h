@@ -2,8 +2,7 @@
     This is the bookmark container for Smb4K (next generation).
     -------------------
     begin                : So Jun 8 2008
-    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

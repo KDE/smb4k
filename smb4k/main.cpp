@@ -2,8 +2,7 @@
     Main file of the Smb4K program.
     -------------------
     begin                : Sam Mär  1 14:57:21 CET 2003
-    SPDX-FileCopyrightText: 2003-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2003-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

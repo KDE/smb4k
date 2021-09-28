@@ -2,8 +2,7 @@
     smb4kbookmarkmenu  -  Bookmark menu
     -------------------
     begin                : Sat Apr 02 2011
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

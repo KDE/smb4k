@@ -3,8 +3,7 @@
     It is for use with QtQuick.
     -------------------
     begin                : Fr Mär 02 2012
-    SPDX-FileCopyrightText: 2012-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2012-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

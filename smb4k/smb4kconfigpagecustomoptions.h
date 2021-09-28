@@ -2,8 +2,7 @@
     The configuration page for the custom options
     -------------------
     begin                : Sa Jan 19 2013
-    SPDX-FileCopyrightText: 2013-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2013-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

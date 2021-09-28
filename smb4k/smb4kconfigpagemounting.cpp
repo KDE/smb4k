@@ -2,8 +2,7 @@
     The configuration page for the mount options
     -------------------
     begin                : So Mär 22 2015
-    SPDX-FileCopyrightText: 2015-2021 Alexander Reinholdt
-    email                : alexander.reinholdt@kdemail.net
+    SPDX-FileCopyrightText: 2015-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
