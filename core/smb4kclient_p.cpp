@@ -31,7 +31,6 @@
 #include <QPushButton>
 #include <QSpinBox>
 #include <QTemporaryDir>
-#include <QTest>
 #include <QTextDocument>
 #include <QToolBar>
 #include <QVBoxLayout>

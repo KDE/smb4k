@@ -33,7 +33,6 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
-#include <QTest>
 #include <QTextCodec>
 #include <QTextStream>
 #include <QTimer>
@@ -474,7 +473,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
                 int i = 0;
 
                 while (i++ < stop) {
-                    QTest::qWait(250);
+                    wait(250);
                 }
 
                 emit finished(WakeUp);

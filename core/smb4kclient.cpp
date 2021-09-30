@@ -21,9 +21,9 @@
 // Qt includes
 #include <QApplication>
 #include <QHostAddress>
-#include <QTest>
 #include <QTimer>
 #include <QUdpSocket>
+#include <QPointer>
 
 using namespace Smb4KGlobal;
 
@@ -129,7 +129,7 @@ void Smb4KClient::lookupDomains()
             int i = 0;
 
             while (i++ < stop) {
-                QTest::qWait(250);
+                wait(250);
             }
 
             emit finished(item, WakeUp);
@@ -416,14 +416,14 @@ void Smb4KClient::search(const QString &item)
     lookupDomains();
 
     while (isRunning()) {
-        QTest::qWait(50);
+        wait(50);
     }
 
     for (const WorkgroupPtr &workgroup : workgroupsList()) {
         lookupDomainMembers(workgroup);
 
         while (isRunning()) {
-            QTest::qWait(50);
+            wait(50);
         }
     }
 
@@ -431,7 +431,7 @@ void Smb4KClient::search(const QString &item)
         lookupShares(host);
 
         while (isRunning()) {
-            QTest::qWait(50);
+            wait(50);
         }
     }
 

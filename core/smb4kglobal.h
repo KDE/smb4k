@@ -463,6 +463,8 @@ Q_DECL_EXPORT bool modifyCursor();
 /**
  * This list contains all allowed arguments for the mount.cifs binary and
  * is only present under the Linux operating system.
+ *
+ * @returns the list of allowed mount arguments
  */
 Q_DECL_EXPORT QStringList allowedMountArguments();
 #endif
@@ -483,9 +485,17 @@ Q_DECL_EXPORT const QString findUmountExecutable();
 
 /**
  * This function returns the directory where data is to be placed.
+ *
  * @returns the data location
  */
 Q_DECL_EXPORT const QString dataLocation();
+
+/**
+ * Wait the given @p time until proceeding. This wait function is non-blocking.
+ *
+ * @param time          The waiting time in msec
+ */
+Q_DECL_EXPORT void wait(int time);
 };
 
 #endif

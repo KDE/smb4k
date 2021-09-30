@@ -11,11 +11,9 @@
 
 // Qt includes
 #include <QDebug>
-#include <QEventLoop>
 #include <QLatin1String>
 #include <QNetworkInterface>
 #include <QProcessEnvironment>
-#include <QTimer>
 #include <QUrl>
 
 // KDE includes
@@ -126,9 +124,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
 
             timeout += 10;
 
-            QEventLoop loop;
-            QTimer::singleShot(10, &loop, SLOT(quit()));
-            loop.exec();
+            wait(10);
         }
 
         if (proc.exitStatus() == KProcess::NormalExit) {
@@ -233,9 +229,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
 
                 timeout += 10;
 
-                QEventLoop loop;
-                QTimer::singleShot(10, &loop, SLOT(quit()));
-                loop.exec();
+                wait(10);
             }
 
             if (proc.exitStatus() == KProcess::NormalExit) {

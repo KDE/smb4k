@@ -16,7 +16,6 @@
 // Qt includes
 #include <QApplication>
 #include <QPointer>
-#include <QTest>
 
 Q_GLOBAL_STATIC(Smb4KProfileManagerStatic, p);
 

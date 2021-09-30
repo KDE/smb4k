@@ -17,7 +17,6 @@
 #include <QDebug>
 #include <QNetworkInterface>
 #include <QString>
-#include <QTest>
 #include <QTimer>
 
 // KDE includes

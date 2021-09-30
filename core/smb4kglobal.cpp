@@ -19,6 +19,8 @@
 #include <QRecursiveMutex>
 #include <QStandardPaths>
 #include <QUrl>
+#include <QEventLoop>
+#include <QTimer>
 
 // KDE includes
 #include <KCoreAddons/KShell>
@@ -829,3 +831,11 @@ const QString Smb4KGlobal::dataLocation()
 {
     return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QDir::separator() + "smb4k";
 }
+
+void Smb4KGlobal::wait(int time)
+{
+    QEventLoop loop;
+    QTimer::singleShot(10, &loop, SLOT(quit()));
+    loop.exec();
+}
+

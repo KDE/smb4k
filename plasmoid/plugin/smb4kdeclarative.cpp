@@ -26,7 +26,6 @@
 
 // Qt includes
 #include <QDebug>
-#include <QTest>
 
 // KDE includes
 #include <KConfigWidgets/KConfigDialog>

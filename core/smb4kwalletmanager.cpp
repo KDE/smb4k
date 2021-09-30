@@ -19,7 +19,6 @@
 // Qt includes
 #include <QApplication>
 #include <QPointer>
-#include <QTest>
 
 using namespace Smb4KGlobal;
 
