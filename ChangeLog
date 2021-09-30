@@ -1,10 +1,21 @@
+Smb4K 3.1.1 (2021-09-28):
+
+See the summery of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
+
+- Detect all network shares on startup in Smb4KHardwareInterface, so that 
+  removing of shares that were already present when Smb4K started works
+  again.
+- Implement non-blocking wait and automatic process termination in the 
+  mount helper (BUG 430627 and partly BUG #442187).
+
 Smb4K 3.1.0 (2021-05-26):
 
 See the summery of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Raise minimum requirements to Qt version >= 5.9.0 and KF5 version
-  >= 5.44.0.
+  >=5.44.0.
 - Implement DNS-SD to look up servers that provide SMB resources.
 - Implement WS-Discovery to look up domains, workgroups and servers.
   Since this is optional, add a new CMake option SMB4K_WITH_WS_DISCOVERY.
