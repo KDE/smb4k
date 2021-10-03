@@ -35,6 +35,7 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QWindow>
+#include <QUuid>
 
 // KDE includes
 #include <KConfigGui/KWindowConfig>
