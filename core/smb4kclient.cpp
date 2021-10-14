@@ -829,23 +829,32 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
 void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
 {
     //
-    // Collect the hosts found while scanning
-    // 
-    for (const HostPtr &newHost : job->hosts())
-    {
+    // Collect the hosts found while scanning. Always prefer
+    // insertion of hosts with a real workgroup/domain over
+    // the ones with the DNS-SD domain (e.g. LOCAL).
+    //
+    QList<HostPtr> discoveredHosts = job->hosts();
+
+    for (const HostPtr &newHost : qAsConst(discoveredHosts)) {
         bool foundHost = false;
-            
-        for (const HostPtr &host : d->tempHostList)
-        {
-            if (host->workgroupName() == newHost->workgroupName() && host->hostName() == newHost->hostName())
-            {
-                foundHost = true;
+
+        QMutableListIterator<HostPtr> it(d->tempHostList);
+
+        while (it.hasNext()) {
+            HostPtr host = static_cast<HostPtr>(it.next());
+
+            if (newHost->url().matches(host->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
+                if (newHost->workgroupName() == host->workgroupName()) {
+                    foundHost = true;
+                } else if (host->dnsDiscovered()) {
+                    it.remove();
+                }
+
                 break;
             }
         }
-            
-        if (!foundHost)
-        {
+
+        if (!foundHost) {
             d->tempHostList << newHost;
         }
     }
