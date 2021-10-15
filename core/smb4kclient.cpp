@@ -21,9 +21,9 @@
 // Qt includes
 #include <QApplication>
 #include <QHostAddress>
+#include <QPointer>
 #include <QTimer>
 #include <QUdpSocket>
-#include <QPointer>
 
 using namespace Smb4KGlobal;
 

@@ -33,9 +33,9 @@
 #include <QTemporaryDir>
 #include <QTextDocument>
 #include <QToolBar>
+#include <QUuid>
 #include <QVBoxLayout>
 #include <QWindow>
-#include <QUuid>
 
 // KDE includes
 #include <KConfigGui/KWindowConfig>

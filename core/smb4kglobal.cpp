@@ -16,11 +16,11 @@
 // Qt includes
 #include <QDebug>
 #include <QDirIterator>
+#include <QEventLoop>
 #include <QRecursiveMutex>
 #include <QStandardPaths>
-#include <QUrl>
-#include <QEventLoop>
 #include <QTimer>
+#include <QUrl>
 
 // KDE includes
 #include <KCoreAddons/KShell>
@@ -838,4 +838,3 @@ void Smb4KGlobal::wait(int time)
     QTimer::singleShot(time, &loop, SLOT(quit()));
     loop.exec();
 }
-
