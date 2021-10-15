@@ -94,14 +94,6 @@ public:
     Smb4KGlobal::NetworkItem type() const;
 
     /**
-     * If the item is a homes share, this function returns TRUE. In
-     * all other cases, this function returns FALSE.
-     *
-     * @returns TRUE if the item is a homes share.
-     */
-    bool isHomesShare() const;
-
-    /**
      * Sets the URL of the share after some checks are passed.
      *
      * @param url             The URL of the network item

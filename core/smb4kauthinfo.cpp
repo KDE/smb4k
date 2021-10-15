@@ -22,7 +22,6 @@ class Smb4KAuthInfoPrivate
 public:
     QUrl url;
     NetworkItem type;
-    bool homesShare;
     QHostAddress ip;
 };
 
@@ -37,7 +36,6 @@ Smb4KAuthInfo::Smb4KAuthInfo(Smb4KBasicNetworkItem *item)
 
         if (host) {
             d->url = host->url();
-            d->homesShare = false;
             d->ip.setAddress(host->ipAddress());
         }
 
@@ -48,7 +46,6 @@ Smb4KAuthInfo::Smb4KAuthInfo(Smb4KBasicNetworkItem *item)
 
         if (share) {
             d->url = !share->isHomesShare() ? share->homeUrl() : share->url();
-            d->homesShare = share->isHomesShare();
             d->ip.setAddress(share->hostIpAddress());
         }
 
@@ -64,7 +61,6 @@ Smb4KAuthInfo::Smb4KAuthInfo()
     : d(new Smb4KAuthInfoPrivate)
 {
     d->type = UnknownNetworkItem;
-    d->homesShare = false;
     d->url.clear();
     d->ip.clear();
 }
@@ -84,15 +80,21 @@ void Smb4KAuthInfo::setUrl(const QUrl &url)
     d->url = url;
     d->url.setScheme("smb");
 
-    // Set the type.
-    if (!d->url.path().isEmpty() && d->url.path().length() > 1 && !d->url.path().endsWith('/')) {
+    //
+    // Set the type
+    //
+    if (!d->url.path().remove('/').isEmpty()) {
         d->type = Share;
+
+        //
+        // Fix 'homes' URLs
+        //
+        if (d->url.path().remove('/') == "homes" && !d->url.userName().isEmpty()) {
+            d->url.setPath(d->url.userName());
+        }
     } else {
         d->type = Host;
     }
-
-    // Determine whether this is a homes share.
-    d->homesShare = (QString::compare(d->url.path().remove('/'), "homes", Qt::CaseSensitive) == 0);
 }
 
 void Smb4KAuthInfo::setUrl(const QString &url)
@@ -111,7 +113,7 @@ void Smb4KAuthInfo::setUserName(const QString &username)
 {
     d->url.setUserName(username);
 
-    if (d->homesShare) {
+    if (d->url.path().remove('/') == "homes") {
         d->url.setPath(username);
     }
 }
@@ -136,11 +138,6 @@ Smb4KGlobal::NetworkItem Smb4KAuthInfo::type() const
     return d->type;
 }
 
-bool Smb4KAuthInfo::isHomesShare() const
-{
-    return d->homesShare;
-}
-
 QString Smb4KAuthInfo::displayString() const
 {
     //
@@ -159,13 +156,7 @@ QString Smb4KAuthInfo::displayString() const
     //
     // Share name
     //
-    QString shareName;
-
-    if (d->url.path().startsWith('/')) {
-        shareName = d->url.path().remove(0, 1);
-    } else {
-        shareName = d->url.path();
-    }
+    QString shareName = d->url.path().remove('/');
 
     //
     // Return the full display string
