@@ -2036,11 +2036,11 @@ void Smb4KMounter::slotTriggerImport()
     // Wait a bit so that the mount or unmount process can finish and
     // then start importing the shares, if no jobs are running anymore
     //
-    while (isRunning()) {
-        wait(TIMEOUT);
-    }
-
-    import(true);
+    QTimer::singleShot(TIMEOUT, this, [&]() {
+        if (!isRunning()) {
+            import(true);
+        }
+    });
 }
 
 void Smb4KMounter::slotConfigChanged()
