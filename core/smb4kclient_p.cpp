@@ -856,13 +856,14 @@ void Smb4KClientJob::doLookups()
   
     if (!directory)
     {
-        if (!Smb4KSettings::useDnsServiceDiscovery() && !((*pNetworkItem)->type() == Network || (*pNetworkItem)->type() == Workgroup))
+        if (!(*pNetworkItem)->dnsDiscovered() && !((*pNetworkItem)->type() == Network || (*pNetworkItem)->type() == Workgroup))
         {
             int errorCode = errno;
       
             switch (errorCode)
             {
                 case EACCES:
+                case EPERM:
                 {
                     setError(AccessDeniedError);
                     setErrorText(strerror(errorCode));
