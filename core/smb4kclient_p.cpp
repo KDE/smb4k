@@ -712,18 +712,19 @@ void Smb4KClientJob::doLookups()
     // Open the directory
     //
     // If we use DNS-SD, the workgroup/domain name will most likely be unknown
-    // for Samba and the followin function fails. Since we do not want the lookup
+    // for Samba and the following function fails. Since we do not want the lookup
     // to stop here in that case, do not throw an error when using DNS-SD and
     // Network and Workgroup (parent) items.
     //
     SMBCFILE *directory = openDirectory(m_context, (*pNetworkItem)->url().toString().toUtf8().data());
 
     if (!directory) {
-        if (!Smb4KSettings::useDnsServiceDiscovery() && !((*pNetworkItem)->type() == Network || (*pNetworkItem)->type() == Workgroup)) {
+        if (!(*pNetworkItem)->dnsDiscovered() && !((*pNetworkItem)->type() == Network || (*pNetworkItem)->type() == Workgroup)) {
             int errorCode = errno;
 
             switch (errorCode) {
-            case EACCES: {
+            case EACCES:
+            case EPERM: {
                 setError(AccessDeniedError);
                 setErrorText(strerror(errorCode));
                 break;
