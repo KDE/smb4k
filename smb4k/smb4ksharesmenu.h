@@ -44,8 +44,18 @@ public:
 
 protected slots:
     /**
-     * This slot is connected to the Smb4KMounter::mountedSharesListChanged()
-     * signal. It refreshes the menu.
+     * This slot is invokes when a share was mounted
+     */
+    void slotShareMounted(const SharePtr &share);
+
+    /**
+     * This slot is invoked when a share was unmounted
+     */
+    void slotShareUnmounted(const SharePtr &share);
+
+    /**
+     * This slot is invoked when the modifictions of the
+     * mounted shares list are finished.
      */
     void slotMountedSharesListChanged();
 
@@ -63,9 +73,14 @@ protected slots:
 
 private:
     /**
-     * Setup the menu
+     * Add a share to the menu
      */
-    void setupMenu();
+    void addShareToMenu(const SharePtr &share);
+
+    /**
+     * Remove a share from the menu
+     */
+    void removeShareFromMenu(const SharePtr &share);
 
     /**
      * Share menus
@@ -76,6 +91,16 @@ private:
      * Share actions
      */
     QActionGroup *m_actions;
+
+    /**
+     * The Unmount All action
+     */
+    QAction *m_unmountAll;
+
+    /**
+     * The separator action
+     */
+    QAction *m_separator;
 };
 
 #endif
