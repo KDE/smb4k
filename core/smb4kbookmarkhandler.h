@@ -170,6 +170,20 @@ public:
 
 Q_SIGNALS:
     /**
+     * This signal is emitted when a bookmark was added.
+     *
+     * @param bookmark      The bookmark that was added
+     */
+    void bookmarkAdded(const BookmarkPtr &bookmark);
+
+    /**
+     * This signal is emitted when a bookmark was removed.
+     *
+     * @param bookmark      The bookmark that was removed
+     */
+    void bookmarkRemoved(const BookmarkPtr &bookmark);
+
+    /**
      * Signal emitted when the list of bookmarks has been updated.
      */
     void updated();

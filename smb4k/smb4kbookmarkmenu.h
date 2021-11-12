@@ -73,19 +73,24 @@ protected Q_SLOTS:
     void slotAddActionTriggered(bool checked);
 
     /**
-     * Called when the toplevel mount action is triggered
+     * Called when a mount action was triggered
      */
-    void slotToplevelMountActionTriggered(bool checked);
-
-    /**
-     * Called when a category action is triggered
-     */
-    void slotCategoryActionTriggered(QAction *action);
+    void slotMountActionTriggered(QAction *action);
 
     /**
      * Called when a bookmark action is triggered
      */
     void slotBookmarkActionTriggered(QAction *action);
+
+    /**
+     * Called when a bookmark was added
+     */
+    void slotBookmarkAdded(const BookmarkPtr &bookmark);
+
+    /**
+     * Called when a bookmark was removed
+     */
+    void slotBookmarkRemoved(const BookmarkPtr &bookmark);
 
     /**
      * Called when the list bookmarks has been updated
@@ -99,9 +104,14 @@ protected Q_SLOTS:
 
 private:
     /**
-     * Set up the menu
+     * Add a bookmark to the menu
      */
-    void setupMenu();
+    void addBookmarkToMenu(const BookmarkPtr &bookmark);
+
+    /**
+     * Remove a bookmark from the menu
+     */
+    void removeBookmarkFromMenu(const BookmarkPtr &bookmark);
 
     /**
      * Type
@@ -109,19 +119,39 @@ private:
     int m_type;
 
     /**
-     * Widget that should be used as parent
-     */
-    QWidget *m_parent_widget;
-
-    /**
      * The actions
      */
-    QActionGroup *m_actions;
+    QActionGroup *m_mountActions;
+
+    /**
+     * The categories
+     */
+    QActionGroup *m_categories;
 
     /**
      * The bookmarks
      */
     QActionGroup *m_bookmarks;
+
+    /**
+     * The 'Edit Bookmarks' action
+     */
+    QAction *m_editBookmarks;
+
+    /**
+     * The "Add Bookmark" action
+     */
+    QAction *m_addBookmark;
+
+    /**
+     * The toplevel "Mount All Bookmarks" action
+     */
+    QAction *m_toplevelMount;
+
+    /**
+     * The separator between the actions and the bookmarks
+     */
+    QAction *m_separator;
 };
 
 #endif

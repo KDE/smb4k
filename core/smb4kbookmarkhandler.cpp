@@ -182,6 +182,8 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
 
 void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool replace)
 {
+    qDebug() << "FIXME: Make Smb4KBookmarkHandler::addBookmarks() smarter";
+
     //
     // Process the incoming list.
     // In case the internal list should be replaced, clear the internal
@@ -192,12 +194,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
 
         while (it.hasNext()) {
             BookmarkPtr bookmark = it.next();
-
-            if (Smb4KSettings::useProfiles() && bookmark->profile() != Smb4KProfileManager::self()->activeProfile()) {
-                continue;
-            }
-
-            it.remove();
+            removeBookmark(bookmark);
         }
     }
 
@@ -220,6 +217,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
 
         if (!existingBookmark) {
             d->bookmarks << bookmark;
+            emit bookmarkAdded(bookmark);
         }
     }
 
@@ -240,7 +238,9 @@ void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
                                     Qt::CaseInsensitive)
                     == 0
                 && QString::compare(bookmark->categoryName(), d->bookmarks.at(i)->categoryName(), Qt::CaseInsensitive) == 0) {
-                d->bookmarks.takeAt(i).clear();
+                BookmarkPtr bookmark = d->bookmarks.takeAt(i);
+                emit bookmarkRemoved(bookmark);
+                bookmark.clear();
                 break;
             }
         }
@@ -256,10 +256,11 @@ void Smb4KBookmarkHandler::removeCategory(const QString &name)
     QMutableListIterator<BookmarkPtr> it(d->bookmarks);
 
     while (it.hasNext()) {
-        const BookmarkPtr &b = it.next();
+        const BookmarkPtr &bookmark = it.next();
 
-        if ((!Smb4KSettings::useProfiles() || Smb4KSettings::activeProfile() == b->profile())
-            || QString::compare(b->categoryName(), name, Qt::CaseInsensitive) == 0) {
+        if ((!Smb4KSettings::useProfiles() || Smb4KSettings::activeProfile() == bookmark->profile())
+            || QString::compare(bookmark->categoryName(), name, Qt::CaseInsensitive) == 0) {
+            emit bookmarkRemoved(bookmark);
             it.remove();
         }
     }
