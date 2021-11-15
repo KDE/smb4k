@@ -112,6 +112,12 @@ private:
      * Remove a bookmark from the menu
      */
     void removeBookmarkFromMenu(const BookmarkPtr &bookmark);
+    
+    /**
+     * Enables or disables the mount actions according to the status
+     * of the bookmarks in their respective category.
+     */
+    void adjustMountActions();
 
     /**
      * Type
