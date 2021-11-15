@@ -110,7 +110,7 @@ void Smb4KSharesMenu::refreshMenu()
     menu()->update();
 
     //
-    // Work around a display glitch were the first mounted
+    // Work around a display glitch where the first mounted
     // share might not be shown (BUG 442187)
     //
     menu()->adjustSize();
@@ -251,17 +251,6 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr& share)
             addAction(shareMenu);
         }
     }
-
-    //
-    // Make sure the correct menu entries are shown
-    //
-    menu()->update();
-
-    //
-    // Work around a display glitch were the first mounted
-    // share might not be shown (BUG 442187)
-    //
-    menu()->adjustSize();
 }
 
 void Smb4KSharesMenu::removeShareFromMenu(const SharePtr& share)
@@ -279,11 +268,6 @@ void Smb4KSharesMenu::removeShareFromMenu(const SharePtr& share)
             break;
         }
     }
-
-    //
-    // Make sure the correct menu entries are shown
-    //
-    menu()->update();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -319,6 +303,17 @@ void Smb4KSharesMenu::slotMountedSharesListChanged()
     // Make the separator visible, if necessary
     //
     m_separator->setVisible(!m_menus->actions().isEmpty());
+
+    //
+    // Make sure the correct menu entries are shown
+    //
+    menu()->update();
+
+    //
+    // Work around a display glitch where the first mounted
+    // share might not be shown (BUG 442187)
+    //
+    menu()->adjustSize();
 }
 
 void Smb4KSharesMenu::slotShareAction(QAction *action)

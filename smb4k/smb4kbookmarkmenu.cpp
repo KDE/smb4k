@@ -328,17 +328,6 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr& bookmark)
             addAction(bookmarkAction);
         }
     }
-
-    //
-    // Make sure the correct menu entries are shown
-    //
-    bookmarkMenu->menu()->update();
-
-    //
-    // Work around a display glitch where the first mounted
-    // share might not be shown (BUG 442187)
-    //
-    bookmarkMenu->menu()->adjustSize();
 }
 
 void Smb4KBookmarkMenu::removeBookmarkFromMenu(const BookmarkPtr& bookmark)
@@ -376,11 +365,6 @@ void Smb4KBookmarkMenu::removeBookmarkFromMenu(const BookmarkPtr& bookmark)
             break;
         }
     }
-
-    //
-    // Make sure the correct menu entries are shown
-    //
-    bookmarkMenu->menu()->update();
 }
 
 void Smb4KBookmarkMenu::adjustMountActions()
@@ -551,6 +535,17 @@ void Smb4KBookmarkMenu::slotBookmarksUpdated()
     // Adjust mount actions
     // 
     adjustMountActions();
+
+    //
+    // Make sure the correct menu entries are shown
+    //
+    menu()->update();
+
+    //
+    // Work around a display glitch where the first mounted
+    // share might not be shown (BUG 442187)
+    //
+    menu()->adjustSize();
 }
 
 void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
