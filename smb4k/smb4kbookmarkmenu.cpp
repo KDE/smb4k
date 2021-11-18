@@ -18,6 +18,7 @@
 #include <QDebug>
 #include <QLatin1String>
 #include <QMenu>
+#include <QEventLoop>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -363,6 +364,18 @@ void Smb4KBookmarkMenu::removeBookmarkFromMenu(const BookmarkPtr& bookmark)
             bookmarkMenu->removeAction(bookmarkAction);
             delete bookmarkAction;
             break;
+        }
+    }
+
+    //
+    // Remove the category, if necessary
+    //
+    if (!bookmark->categoryName().isEmpty()) {
+        QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(bookmark->categoryName());
+
+        if (bookmarks.isEmpty()) {
+            removeAction(bookmarkMenu);
+            delete bookmarkMenu;
         }
     }
 }
