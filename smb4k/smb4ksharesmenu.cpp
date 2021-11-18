@@ -110,13 +110,13 @@ void Smb4KSharesMenu::refreshMenu()
     menu()->update();
 
     //
-    // Work around a display glitch where the first mounted
-    // share might not be shown (BUG 442187)
+    // Work around a display glitch were the first bookmark
+    // might not be shown (see also BUG 442187)
     //
-    menu()->adjustSize();
+    QCoreApplication::processEvents();
 }
 
-void Smb4KSharesMenu::addShareToMenu(const SharePtr& share)
+void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
 {
     //
     // For sorting purposes, get the display strings of all
@@ -253,7 +253,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr& share)
     }
 }
 
-void Smb4KSharesMenu::removeShareFromMenu(const SharePtr& share)
+void Smb4KSharesMenu::removeShareFromMenu(const SharePtr &share)
 {
     //
     // Remove the share from the action group and the menu and delete
@@ -274,12 +274,12 @@ void Smb4KSharesMenu::removeShareFromMenu(const SharePtr& share)
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
 
-void Smb4KSharesMenu::slotShareMounted(const SharePtr& share)
+void Smb4KSharesMenu::slotShareMounted(const SharePtr &share)
 {
     addShareToMenu(share);
 }
 
-void Smb4KSharesMenu::slotShareUnmounted(const SharePtr& share)
+void Smb4KSharesMenu::slotShareUnmounted(const SharePtr &share)
 {
     removeShareFromMenu(share);
 }
@@ -310,10 +310,10 @@ void Smb4KSharesMenu::slotMountedSharesListChanged()
     menu()->update();
 
     //
-    // Work around a display glitch where the first mounted
-    // share might not be shown (BUG 442187)
+    // Work around a display glitch were the first bookmark
+    // might not be shown (see also BUG 442187)
     //
-    menu()->adjustSize();
+    QCoreApplication::processEvents();
 }
 
 void Smb4KSharesMenu::slotShareAction(QAction *action)
