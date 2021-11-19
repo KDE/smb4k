@@ -182,8 +182,6 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
 
 void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool replace)
 {
-    qDebug() << "FIXME: Make Smb4KBookmarkHandler::addBookmarks() smarter";
-
     //
     // Process the incoming list.
     // In case the internal list should be replaced, clear the internal
