@@ -113,6 +113,7 @@ void Smb4KSharesMenu::refreshMenu()
     // Work around a display glitch were the first bookmark
     // might not be shown (see also BUG 442187)
     //
+    menu()->adjustSize();
     QCoreApplication::processEvents();
 }
 
@@ -313,6 +314,7 @@ void Smb4KSharesMenu::slotMountedSharesListChanged()
     // Work around a display glitch were the first bookmark
     // might not be shown (see also BUG 442187)
     //
+    menu()->adjustSize();
     QCoreApplication::processEvents();
 }
 
