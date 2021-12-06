@@ -16,7 +16,6 @@
 
 // Qt includes
 #include <QDebug>
-#include <QEventLoop>
 #include <QLatin1String>
 #include <QMenu>
 
