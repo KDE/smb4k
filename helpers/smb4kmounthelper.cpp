@@ -108,7 +108,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
             // We want to be able to terminate the process from outside.
             // Thus, we implement a loop that checks periodically, if we
             // need to kill the process.
-            if (HelperSupport::isStopped() || timeout == 5000) {
+            if (HelperSupport::isStopped() || timeout == 30000) {
                 proc.kill();
                 break;
             }
@@ -222,7 +222,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
             int timeout = 0;
 
             while (proc.state() != KProcess::NotRunning) {
-                if (HelperSupport::isStopped() || timeout == 5000) {
+                if (HelperSupport::isStopped() || timeout == 30000) {
                     proc.kill();
                     break;
                 }
