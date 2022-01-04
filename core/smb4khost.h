@@ -146,18 +146,18 @@ public:
     int port() const;
 
     /**
-     * Set the login name for the host.
+     * Set the user name for the host.
      *
-     * @param login               The login name
+     * @param name          The login name
      */
-    void setLogin(const QString &login);
+    void setUserName(const QString &name);
 
     /**
-     * Returns the login name.
+     * Returns the user name.
      *
-     * @returns the login name.
+     * @returns the user name.
      */
-    QString login() const;
+    QString userName() const;
 
     /**
      * Set the password used for authentication.

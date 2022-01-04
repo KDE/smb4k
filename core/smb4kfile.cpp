@@ -87,12 +87,12 @@ QString Smb4KFile::shareName() const
     return pUrl->path().section('/', 1, 1);
 }
 
-void Smb4KFile::setLogin(const QString &name)
+void Smb4KFile::setUserName(const QString &name)
 {
     pUrl->setUserName(name);
 }
 
-QString Smb4KFile::login() const
+QString Smb4KFile::userName() const
 {
     return pUrl->userName();
 }

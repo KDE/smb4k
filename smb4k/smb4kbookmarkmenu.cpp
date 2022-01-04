@@ -486,7 +486,7 @@ void Smb4KBookmarkMenu::slotMountActionTriggered(QAction *action)
         share->setShareName(bookmark->shareName());
         share->setWorkgroupName(bookmark->workgroupName());
         share->setHostIpAddress(bookmark->hostIpAddress());
-        share->setLogin(bookmark->login());
+        share->setUserName(bookmark->userName());
         mounts << share;
     }
 
@@ -517,7 +517,7 @@ void Smb4KBookmarkMenu::slotBookmarkActionTriggered(QAction *action)
         share->setShareName(bookmark->shareName());
         share->setWorkgroupName(bookmark->workgroupName());
         share->setHostIpAddress(bookmark->hostIpAddress());
-        share->setLogin(bookmark->login());
+        share->setUserName(bookmark->userName());
         Smb4KMounter::self()->mountShare(share);
         share.clear();
     }

@@ -58,12 +58,12 @@ public:
     ~Smb4KAuthInfo();
 
     /**
-     * Sets the username.
+     * Sets the user name.
      *
      * In case of a 'homes' share, this function will also set the share
      * name to @p username.
      *
-     * @param username  The login for the server/share
+     * @param username  The user name for the server/share
      */
     void setUserName(const QString &username);
 

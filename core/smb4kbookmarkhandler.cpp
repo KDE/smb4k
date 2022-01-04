@@ -278,7 +278,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
             xmlWriter.setAutoFormatting(true);
             xmlWriter.writeStartDocument();
             xmlWriter.writeStartElement("bookmarks");
-            xmlWriter.writeAttribute("version", "3.0");
+            xmlWriter.writeAttribute("version", "3.1");
 
             for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
                 if (!bookmark->url().isValid()) {
@@ -291,8 +291,7 @@ void Smb4KBookmarkHandler::writeBookmarkList()
                 xmlWriter.writeAttribute("category", bookmark->categoryName());
 
                 xmlWriter.writeTextElement("workgroup", bookmark->workgroupName());
-                xmlWriter.writeTextElement("url", bookmark->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort));
-                xmlWriter.writeTextElement("login", bookmark->login());
+                xmlWriter.writeTextElement("url", bookmark->url().toString(QUrl::RemovePassword | QUrl::RemovePort));
                 xmlWriter.writeTextElement("ip", bookmark->hostIpAddress());
                 xmlWriter.writeTextElement("label", bookmark->label());
 
@@ -331,7 +330,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
             xmlReader.readNext();
 
             if (xmlReader.isStartElement()) {
-                if (xmlReader.name() == "bookmarks" && (xmlReader.attributes().value("version") != "2.0" && xmlReader.attributes().value("version") != "3.0")) {
+                if (xmlReader.name() == "bookmarks" && (xmlReader.attributes().value("version") != "3.0" && xmlReader.attributes().value("version") != "3.1")) {
                     xmlReader.raiseError(i18n("The format of %1 is not supported.", xmlFile.fileName()));
                     break;
                 } else {
@@ -343,6 +342,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
 
                         if (xmlReader.attributes().hasAttribute("group")) {
                             // For backward compatibility (since Smb4K 3.0.72)
+                            // TODO: Remove with Smb4K >> 3.1
                             bookmark->setCategoryName(xmlReader.attributes().value("group").toString());
                         } else {
                             bookmark->setCategoryName(xmlReader.attributes().value("category").toString());
@@ -357,7 +357,9 @@ void Smb4KBookmarkHandler::readBookmarkList()
                                 } else if (xmlReader.name() == "url") {
                                     bookmark->setUrl(QUrl(xmlReader.readElementText()));
                                 } else if (xmlReader.name() == "login") {
-                                    bookmark->setLogin(xmlReader.readElementText());
+                                    // For backward compatibility (since Smb4K 3.1.71)
+                                    // TODO: Remove with Smb4K >> 3.2
+                                    bookmark->setUserName(xmlReader.readElementText());
                                 } else if (xmlReader.name() == "ip") {
                                     bookmark->setHostIpAddress(xmlReader.readElementText());
                                 } else if (xmlReader.name() == "label") {

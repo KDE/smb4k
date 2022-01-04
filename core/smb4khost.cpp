@@ -110,12 +110,12 @@ bool Smb4KHost::isMasterBrowser() const
     return d->isMaster;
 }
 
-void Smb4KHost::setLogin(const QString &login)
+void Smb4KHost::setUserName(const QString &name)
 {
-    pUrl->setUserName(login);
+    pUrl->setUserName(name);
 }
 
-QString Smb4KHost::login() const
+QString Smb4KHost::userName() const
 {
     return pUrl->userName();
 }

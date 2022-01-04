@@ -589,11 +589,11 @@ void Smb4KClient::processErrors(Smb4KClientBaseJob *job)
             share->setWorkgroupName(file->workgroupName());
             share->setHostName(file->hostName());
             share->setShareName(file->shareName());
-            share->setLogin(file->login());
+            share->setUserName(file->userName());
             share->setPassword(file->password());
 
             if (Smb4KWalletManager::self()->showPasswordDialog(share)) {
-                file->setLogin(share->login());
+                file->setUserName(share->userName());
                 file->setPassword(share->password());
 
                 lookupFiles(file);

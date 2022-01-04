@@ -224,13 +224,13 @@ void Smb4KMounter::import(bool checkInaccessible)
                 } else if (option.startsWith(QLatin1String("addr="))) {
                     share->setHostIpAddress(option.section('=', 1, 1).trimmed());
                 } else if (option.startsWith(QLatin1String("username=")) || option.startsWith(QLatin1String("user="))) {
-                    share->setLogin(option.section('=', 1, 1).trimmed());
+                    share->setUserName(option.section('=', 1, 1).trimmed());
                 }
             }
 
             // Work around empty usernames
-            if (share->login().isEmpty()) {
-                share->setLogin("guest");
+            if (share->userName().isEmpty()) {
+                share->setUserName("guest");
             }
 
             d->importedShares << share;
@@ -492,7 +492,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         if (!share->isHomesShare()) {
             mountpoint += (Smb4KMountSettings::forceLowerCaseSubdirs() ? share->shareName().toLower() : share->shareName());
         } else {
-            mountpoint += (Smb4KMountSettings::forceLowerCaseSubdirs() ? share->login().toLower() : share->login());
+            mountpoint += (Smb4KMountSettings::forceLowerCaseSubdirs() ? share->userName().toLower() : share->userName());
         }
 
         // Get the permissions that should be used for creating the
@@ -1000,8 +1000,8 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
     //
     // User name (login)
     //
-    if (!share->login().isEmpty()) {
-        argumentsList << QString("username=%1").arg(share->login());
+    if (!share->userName().isEmpty()) {
+        argumentsList << QString("username=%1").arg(share->userName());
     } else {
         argumentsList << "guest";
     }
@@ -1545,9 +1545,9 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
     //
     // User name (login)
     //
-    if (!share->login().isEmpty()) {
+    if (!share->userName().isEmpty()) {
         argumentsList << "-U";
-        argumentsList << share->login();
+        argumentsList << share->userName();
     } else {
         argumentsList << "-N";
     }

@@ -438,19 +438,18 @@ public:
     SMB4K_DEPRECATED void setAuthInfo(Smb4KAuthInfo *authInfo);
 
     /**
-     * Set the login for the share. This function will add the login name
-     * to the URL of the share.
+     * Set the user name for the share.
      *
-     * @param login       The login name
+     * @param name              The user name
      */
-    void setLogin(const QString &login);
+    void setUserName(const QString &name);
 
     /**
-     * Returns the login.
+     * Returns the user name.
      *
-     * @returns the login.
+     * @returns the user name.
      */
-    QString login() const;
+    QString userName() const;
 
     /**
      * Set the password used for authentication.

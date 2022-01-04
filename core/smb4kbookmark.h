@@ -133,7 +133,7 @@ public:
     /**
      * Set the (optional) bookmark label.
      *
-     * @param label           The bookmark's label
+     * @param label         The bookmark's label
      */
     void setLabel(const QString &label);
 
@@ -145,18 +145,18 @@ public:
     QString label() const;
 
     /**
-     * Sets the login that is used to mount this share.
+     * Sets the user name that is used to mount this share.
      *
-     * @param login           The login
+     * @param name          The user name
      */
-    void setLogin(const QString &login);
+    void setUserName(const QString &name);
 
     /**
-     * Returns the login that is used to mount this share.
+     * Returns the user name that is used to mount this share.
      *
-     * @returns the login.
+     * @returns the user name.
      */
-    QString login() const;
+    QString userName() const;
 
     /**
      * Sets the URL of the share after some checks are passed.

@@ -76,18 +76,18 @@ bool Smb4KHomesSharesHandler::specifyUser(const SharePtr &share, bool overwrite)
         dlg->setUserNames(users);
 
         if (dlg->exec() == QDialog::Accepted) {
-            QString login = dlg->login();
+            QString userName = dlg->userName();
             users = dlg->userNames();
             addHomesUsers(share, users);
 
-            if (!login.isEmpty()) {
+            if (!userName.isEmpty()) {
                 // If the login names do not match, clear the password.
-                if (!share->login().isEmpty() && QString::compare(share->login(), login) != 0) {
+                if (!share->userName().isEmpty() && QString::compare(share->userName(), userName) != 0) {
                     share->setPassword(QString());
                 }
 
                 // Set the login name.
-                share->setLogin(login);
+                share->setUserName(userName);
                 success = true;
             }
 

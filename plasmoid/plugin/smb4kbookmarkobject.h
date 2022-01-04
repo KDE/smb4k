@@ -45,7 +45,7 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
     Q_PROPERTY(bool isMounted READ isMounted WRITE setMounted NOTIFY changed)
     Q_PROPERTY(QString hostName READ hostName CONSTANT)
     Q_PROPERTY(QString shareName READ shareName CONSTANT)
-    Q_PROPERTY(QString login READ login WRITE setLogin NOTIFY changed)
+    Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY changed)
     Q_PROPERTY(QString hostIP READ hostIP WRITE setHostIP NOTIFY changed)
 
 public:
@@ -172,18 +172,18 @@ public:
     void setMounted(bool mounted);
 
     /**
-     * Returns the login for the bookmarked share.
+     * Returns the user name for the bookmarked share.
      *
-     * @returns the login name
+     * @returns the user name
      */
-    QString login() const;
+    QString userName() const;
 
     /**
-     * Set the login for the bookmarked share.
+     * Set the user name for the bookmarked share.
      *
-     * @param name      The login name
+     * @param name      The user name
      */
-    void setLogin(const QString &name);
+    void setUserName(const QString &name);
 
     /**
      * Returns the IP address of the host

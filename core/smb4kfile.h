@@ -91,18 +91,18 @@ public:
     QString shareName() const;
 
     /**
-     * Set the login name for the share where this file or directory is located to @p name.
+     * Set the user name for the share where this file or directory is located to @p name.
      *
-     * @param name          The login name
+     * @param name          The user name
      */
-    void setLogin(const QString &name);
+    void setUserName(const QString &name);
 
     /**
-     * Return the login name for the share where this file or directory is located.
+     * Return the user name for the share where this file or directory is located.
      *
-     * @returns the login name
+     * @returns the user name
      */
-    QString login() const;
+    QString userName() const;
 
     /**
      * Set the password for the share where this file or directory is located to @p pass.

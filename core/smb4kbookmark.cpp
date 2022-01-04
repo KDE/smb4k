@@ -131,12 +131,12 @@ QString Smb4KBookmark::label() const
     return d->label;
 }
 
-void Smb4KBookmark::setLogin(const QString &login)
+void Smb4KBookmark::setUserName(const QString &name)
 {
-    d->url.setUserName(login);
+    d->url.setUserName(name);
 }
 
-QString Smb4KBookmark::login() const
+QString Smb4KBookmark::userName() const
 {
     return d->url.userName();
 }

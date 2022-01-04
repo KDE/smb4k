@@ -31,7 +31,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, cons
         HostPtr host = m_item.staticCast<Smb4KHost>();
 
         if (host) {
-            setUsername(host->login());
+            setUsername(host->userName());
             setPassword(host->password());
             setPrompt(i18n("<qt>Please enter a username and a password for the host <b>%1</b>.</qt>", host->hostName()));
         }
@@ -46,7 +46,7 @@ Smb4KPasswordDialog::Smb4KPasswordDialog(const NetworkItemPtr &networkItem, cons
             if (!knownLogins.isEmpty()) {
                 setKnownLogins(knownLogins);
             } else {
-                setUsername(share->login());
+                setUsername(share->userName());
                 setPassword(share->password());
             }
 
@@ -78,7 +78,7 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword(const QString &user, const 
         HostPtr host = m_item.staticCast<Smb4KHost>();
 
         if (host) {
-            host->setLogin(user);
+            host->setUserName(user);
             host->setPassword(pass);
         }
 
@@ -88,7 +88,7 @@ void Smb4KPasswordDialog::slotGotUsernameAndPassword(const QString &user, const 
         SharePtr share = m_item.staticCast<Smb4KShare>();
 
         if (share) {
-            share->setLogin(user);
+            share->setUserName(user);
             share->setPassword(pass);
         }
 

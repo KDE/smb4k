@@ -141,7 +141,7 @@ public:
     /**
      * Get the user name to use
      */
-    QString login()
+    QString userName()
     {
         return m_user_combo->currentText();
     }

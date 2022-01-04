@@ -36,7 +36,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark *bookmark, QObject *paren
     d->url = bookmark->url();
     d->label = bookmark->label();
     d->category = bookmark->categoryName();
-    d->login = bookmark->login();
+    d->login = bookmark->userName();
     d->isCategory = false;
     d->isMounted = false;
     d->hostIP.setAddress(bookmark->hostIpAddress());
@@ -139,12 +139,12 @@ void Smb4KBookmarkObject::setMounted(bool mounted)
     emit changed();
 }
 
-QString Smb4KBookmarkObject::login() const
+QString Smb4KBookmarkObject::userName() const
 {
     return d->login;
 }
 
-void Smb4KBookmarkObject::setLogin(const QString &name)
+void Smb4KBookmarkObject::setUserName(const QString &name)
 {
     d->login = name;
     emit changed();

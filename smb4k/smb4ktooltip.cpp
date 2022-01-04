@@ -389,7 +389,7 @@ void Smb4KToolTip::setupMountedShareContents()
     //
     if (!m_contentsWidget->layout()->isEmpty()) {
         m_contentsWidget->findChild<QLabel *>("IconLabel")->setPixmap(share->icon().pixmap(KIconLoader::SizeEnormous));
-        m_contentsWidget->findChild<QLabel *>("LoginString")->setText(!share->login().isEmpty() ? share->login() : i18n("unknown"));
+        m_contentsWidget->findChild<QLabel *>("LoginString")->setText(!share->userName().isEmpty() ? share->userName() : i18n("unknown"));
 
         QString sizeIndication;
 
@@ -461,7 +461,7 @@ void Smb4KToolTip::setupMountedShareContents()
 
     descriptionLayout->addWidget(loginLabel, 4, 0, Qt::AlignRight);
 
-    QLabel *loginString = new QLabel(!share->login().isEmpty() ? share->login() : i18n("unknown"), m_contentsWidget);
+    QLabel *loginString = new QLabel(!share->userName().isEmpty() ? share->userName() : i18n("unknown"), m_contentsWidget);
     loginString->setObjectName("LoginString");
     loginString->setForegroundRole(QPalette::ToolTipText);
 

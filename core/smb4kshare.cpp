@@ -439,16 +439,16 @@ int Smb4KShare::port() const
     return pUrl->port();
 }
 
-void Smb4KShare::setLogin(const QString &login)
+void Smb4KShare::setUserName(const QString &name)
 {
     // Avoid that the login is overwritten with an empty
     // string if we have a homes share.
-    if (!isHomesShare() || !login.isEmpty()) {
-        pUrl->setUserName(login);
+    if (!isHomesShare() || !name.isEmpty()) {
+        pUrl->setUserName(name);
     }
 }
 
-QString Smb4KShare::login() const
+QString Smb4KShare::userName() const
 {
     return pUrl->userName();
 }

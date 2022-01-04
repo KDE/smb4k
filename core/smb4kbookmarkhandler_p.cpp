@@ -724,7 +724,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
 
                 if (bookmark) {
                     labelEdit->setText(bookmark->label());
-                    loginEdit->setText(bookmark->login());
+                    loginEdit->setText(bookmark->userName());
                     ipEdit->setText(bookmark->hostIpAddress());
                     workgroupEdit->setText(bookmark->workgroupName());
                     categoryCombo->setCurrentItem(bookmark->categoryName());
@@ -751,7 +751,7 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
 
             if (bookmark) {
                 labelEdit->setText(bookmark->label());
-                loginEdit->setText(bookmark->login());
+                loginEdit->setText(bookmark->userName());
                 ipEdit->setText(bookmark->hostIpAddress());
                 workgroupEdit->setText(bookmark->workgroupName());
                 categoryCombo->setCurrentItem(bookmark->categoryName());
@@ -843,7 +843,7 @@ void Smb4KBookmarkEditor::slotLoginEdited()
     // Set the login
     //
     if (bookmark) {
-        bookmark->setLogin(loginEdit->userText());
+        bookmark->setUserName(loginEdit->userText());
     }
 
     //

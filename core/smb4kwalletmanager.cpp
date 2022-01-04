@@ -214,7 +214,7 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
                     //
                     // Set the login
                     //
-                    tempShare->setLogin(user);
+                    tempShare->setUserName(user);
 
                     //
                     // Read the authentication information
@@ -224,7 +224,7 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
                     //
                     // Save the authentication data in the map
                     //
-                    knownLogins.insert(tempShare->login(), tempShare->password());
+                    knownLogins.insert(tempShare->userName(), tempShare->password());
 
                     //
                     // Clear the temp share

@@ -295,7 +295,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
                 // Copy the authentication data
                 //
                 if (masterBrowser->hasUserInfo()) {
-                    qstrncpy(username, masterBrowser->login().toUtf8().data(), maxLenUsername);
+                    qstrncpy(username, masterBrowser->userName().toUtf8().data(), maxLenUsername);
                     qstrncpy(password, masterBrowser->password().toUtf8().data(), maxLenPassword);
                 }
             }
@@ -318,7 +318,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         // Copy the authentication data
         //
         if (host->hasUserInfo()) {
-            qstrncpy(username, host->login().toUtf8().data(), maxLenUsername);
+            qstrncpy(username, host->userName().toUtf8().data(), maxLenUsername);
             qstrncpy(password, host->password().toUtf8().data(), maxLenPassword);
         }
 
@@ -339,7 +339,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         // Copy the authentication data
         //
         if (share->hasUserInfo()) {
-            qstrncpy(username, share->login().toUtf8().data(), maxLenUsername);
+            qstrncpy(username, share->userName().toUtf8().data(), maxLenUsername);
             qstrncpy(password, share->password().toUtf8().data(), maxLenPassword);
         }
 
@@ -358,7 +358,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         share->setWorkgroupName(file->workgroupName());
         share->setHostName(file->hostName());
         share->setShareName(file->shareName());
-        share->setLogin(file->login());
+        share->setUserName(file->userName());
         share->setPassword(file->password());
 
         //
@@ -370,7 +370,7 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         // Copy the authentication data
         //
         if (share->hasUserInfo()) {
-            qstrncpy(username, share->login().toUtf8().data(), maxLenUsername);
+            qstrncpy(username, share->userName().toUtf8().data(), maxLenUsername);
             qstrncpy(password, share->password().toUtf8().data(), maxLenPassword);
         }
 
@@ -875,7 +875,7 @@ void Smb4KClientJob::doLookups()
             //
             // Set the authentication data
             //
-            share->setLogin((*pNetworkItem)->url().userName());
+            share->setUserName((*pNetworkItem)->url().userName());
             share->setPassword((*pNetworkItem)->url().password());
 
             //
@@ -931,7 +931,7 @@ void Smb4KClientJob::doLookups()
             //
             // Set the authentication data
             //
-            share->setLogin((*pNetworkItem)->url().userName());
+            share->setUserName((*pNetworkItem)->url().userName());
             share->setPassword((*pNetworkItem)->url().password());
 
             //
@@ -987,7 +987,7 @@ void Smb4KClientJob::doLookups()
             //
             // Set the authentication data
             //
-            share->setLogin((*pNetworkItem)->url().userName());
+            share->setUserName((*pNetworkItem)->url().userName());
             share->setPassword((*pNetworkItem)->url().password());
 
             //
@@ -1035,7 +1035,7 @@ void Smb4KClientJob::doLookups()
                 //
                 // Set the authentication data
                 //
-                dir->setLogin((*pNetworkItem)->url().userName());
+                dir->setUserName((*pNetworkItem)->url().userName());
                 dir->setPassword((*pNetworkItem)->url().password());
 
                 //
@@ -1083,7 +1083,7 @@ void Smb4KClientJob::doLookups()
             //
             // Set the authentication data
             //
-            dir->setLogin((*pNetworkItem)->url().userName());
+            dir->setUserName((*pNetworkItem)->url().userName());
             dir->setPassword((*pNetworkItem)->url().password());
 
             //
@@ -2126,7 +2126,7 @@ void Smb4KPreviewDialog::slotUrlActivated(const QUrl &url)
     // box only returns sanitized URLs, i.e. without password, etc.
     //
     QUrl u = url;
-    u.setUserName(m_share->login());
+    u.setUserName(m_share->userName());
     u.setPassword(m_share->password());
 
     //
