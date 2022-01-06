@@ -524,7 +524,7 @@ void Smb4KBookmarkEditor::setupView()
     labelEdit->setObjectName("LabelEdit");
     labelEdit->setClearButtonEnabled(true);
 
-    QLabel *loginLabel = new QLabel(i18n("Login:"), editorWidgets);
+    QLabel *loginLabel = new QLabel(i18n("Username:"), editorWidgets);
     KLineEdit *loginEdit = new KLineEdit(editorWidgets);
     loginEdit->setObjectName("LoginEdit");
     loginEdit->setClearButtonEnabled(true);

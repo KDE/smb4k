@@ -456,7 +456,7 @@ void Smb4KToolTip::setupMountedShareContents()
     descriptionLayout->addWidget(mountpointString, 3, 1);
 
     // Login
-    QLabel *loginLabel = new QLabel(i18n("Login:"), m_contentsWidget);
+    QLabel *loginLabel = new QLabel(i18n("Username:"), m_contentsWidget);
     loginLabel->setForegroundRole(QPalette::ToolTipText);
 
     descriptionLayout->addWidget(loginLabel, 4, 0, Qt::AlignRight);

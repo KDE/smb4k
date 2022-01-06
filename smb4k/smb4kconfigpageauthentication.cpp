@@ -295,7 +295,7 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
         entry->setFlags(entry->flags() & Qt::ItemIsEditable);
         entry->setForeground(palette().text());
 
-        QTableWidgetItem *login_label = new QTableWidgetItem(i18n("Login"));
+        QTableWidgetItem *login_label = new QTableWidgetItem(i18n("Username"));
         login_label->setFlags(login_label->flags() & Qt::ItemIsEditable);
         login_label->setForeground(palette().text());
 
@@ -324,7 +324,7 @@ void Smb4KConfigPageAuthentication::loadDetails(Smb4KAuthInfo *authInfo)
         entry->setFlags(entry->flags() & Qt::ItemIsEditable);
         entry->setForeground(palette().text());
 
-        QTableWidgetItem *login_label = new QTableWidgetItem(i18n("Login"));
+        QTableWidgetItem *login_label = new QTableWidgetItem(i18n("Username"));
         login_label->setFlags(login_label->flags() & Qt::ItemIsEditable);
         login_label->setForeground(palette().text());
 
