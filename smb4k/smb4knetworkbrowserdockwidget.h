@@ -1,7 +1,7 @@
 /*
     The network neighborhood browser dock widget
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -197,12 +197,6 @@ protected Q_SLOTS:
      * @param process             The process
      */
     void slotMounterFinished(int process);
-
-    /**
-     * This slot is called if the icon size was changed.
-     * @param group               The icon group
-     */
-    void slotIconSizeChanged(int group);
 
     /**
      * This slot is called when the search toolbar is to be shown

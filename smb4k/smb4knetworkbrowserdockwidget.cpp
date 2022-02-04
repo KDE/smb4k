@@ -1,7 +1,7 @@
 /*
     The network neighborhood browser dock widget
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -102,8 +102,6 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString &titl
     connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SLOT(slotMounterAboutToStart(int)));
     connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SLOT(slotMounterFinished(int)));
-
-    connect(KIconLoader::global(), SIGNAL(iconChanged(int)), this, SLOT(slotIconSizeChanged(int)));
 }
 
 Smb4KNetworkBrowserDockWidget::~Smb4KNetworkBrowserDockWidget()
@@ -253,7 +251,7 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
     //
     // Load icon size
     //
-    int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
+    int iconSize = Smb4KSettings::networkBrowserIconSize();
     m_networkBrowser->setIconSize(QSize(iconSize, iconSize));
 
     //
@@ -1085,20 +1083,6 @@ void Smb4KNetworkBrowserDockWidget::slotMounterFinished(int process)
             break;
         }
         }
-    }
-}
-
-void Smb4KNetworkBrowserDockWidget::slotIconSizeChanged(int group)
-{
-    switch (group) {
-    case KIconLoader::Small: {
-        int icon_size = KIconLoader::global()->currentSize(KIconLoader::Small);
-        m_networkBrowser->setIconSize(QSize(icon_size, icon_size));
-        break;
-    }
-    default: {
-        break;
-    }
     }
 }
 
