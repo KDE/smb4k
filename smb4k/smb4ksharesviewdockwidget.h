@@ -1,7 +1,7 @@
 /*
     The network search widget dock widget
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -157,13 +157,6 @@ protected Q_SLOTS:
      * @param checked             TRUE if the action is checked and FALSE otherwise.
      */
     void slotFileManagerActionTriggered(bool checked);
-
-    /**
-     * This slot is called if the icon size was changed.
-     *
-     * @param group               The icon group
-     */
-    void slotIconSizeChanged(int group);
 
 private:
     /**

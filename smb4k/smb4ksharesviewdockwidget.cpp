@@ -1,7 +1,7 @@
 /*
     The network search widget dock widget
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -75,8 +75,6 @@ Smb4KSharesViewDockWidget::Smb4KSharesViewDockWidget(const QString &title, QWidg
     connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), this, SLOT(slotShareMounted(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(updated(SharePtr)), this, SLOT(slotShareUpdated(SharePtr)));
-
-    connect(KIconLoader::global(), SIGNAL(iconChanged(int)), this, SLOT(slotIconSizeChanged(int)));
 }
 
 Smb4KSharesViewDockWidget::~Smb4KSharesViewDockWidget()
@@ -90,13 +88,11 @@ void Smb4KSharesViewDockWidget::loadSettings()
     //
     switch (Smb4KSettings::sharesViewMode()) {
     case Smb4KSettings::EnumSharesViewMode::IconView: {
-        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Desktop);
-        m_sharesView->setViewMode(Smb4KSharesView::IconMode, iconSize);
+        m_sharesView->setViewMode(Smb4KSharesView::IconMode, Smb4KSettings::sharesViewIconSizeIconView());
         break;
     }
     case Smb4KSettings::EnumSharesViewMode::ListView: {
-        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
-        m_sharesView->setViewMode(Smb4KSharesView::ListMode, iconSize);
+        m_sharesView->setViewMode(Smb4KSharesView::ListMode, Smb4KSettings::sharesViewIconSizeListView());
         break;
     }
     default: {
@@ -537,19 +533,5 @@ void Smb4KSharesViewDockWidget::slotFileManagerActionTriggered(bool /*checked*/)
         if (item && !item->shareItem()->isInaccessible()) {
             openShare(item->shareItem(), FileManager);
         }
-    }
-}
-
-void Smb4KSharesViewDockWidget::slotIconSizeChanged(int group)
-{
-    //
-    // Change the icon size depending of the view mode
-    //
-    if (group == KIconLoader::Desktop && Smb4KSettings::sharesViewMode() == Smb4KSettings::EnumSharesViewMode::IconView) {
-        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Desktop);
-        m_sharesView->setIconSize(QSize(iconSize, iconSize));
-    } else if (group == KIconLoader::Small && Smb4KSettings::sharesViewMode() == Smb4KSettings::EnumSharesViewMode::ListView) {
-        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
-        m_sharesView->setIconSize(QSize(iconSize, iconSize));
     }
 }

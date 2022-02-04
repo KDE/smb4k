@@ -1,7 +1,7 @@
 /*
     This is the shares view of Smb4K.
 
-    SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -33,6 +33,7 @@ Smb4KSharesView::Smb4KSharesView(QWidget *parent)
     setDropIndicatorShown(true);
     setUniformItemSizes(true);
     setWrapping(true);
+    setTextElideMode(Qt::ElideNone);
 
     m_toolTip = new Smb4KToolTip(this);
 
