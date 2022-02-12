@@ -276,6 +276,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Bağlanmış paylaşımın dosyalarına, dosya yöneticisi veya uç birim üzerinden erişim</li>
       <li xml:lang="uk">Доступ до файлів змонтованого спільного ресурсу за допомогою програми для керування файлами або термінала.</li>
       <li xml:lang="x-test">xxAccess to the files of a mounted share using a file manager or terminalxx</li>
+      <li xml:lang="zh-CN">使用文件管理器或终端访问已挂载的共享</li>
       <li xml:lang="zh-TW">使用檔案管理員或終端機存取已掛載分享的檔案</li>
       <li>Auto-detection of external mounts and unmounts</li>
       <li xml:lang="bs">Auto-detekcija vanjskih namještanja i razmještanja</li>
@@ -305,6 +306,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Harici bağlamaların otomatik algılanması ve ayırılması</li>
       <li xml:lang="uk">Автоматичне виявлення зовнішніх дій з монтування або демонтування.</li>
       <li xml:lang="x-test">xxAuto-detection of external mounts and unmountsxx</li>
+      <li xml:lang="zh-CN">自动检测外部挂载和卸载</li>
       <li xml:lang="zh-TW">自動偵測外部掛載與解除掛載</li>
       <li>Remounting of previously used shares on program start</li>
       <li xml:lang="bs">Ponovno namještanje prethodno korištenih razmjena na početak programa</li>
@@ -334,6 +336,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Program başlangıcında, daha önce kullanılmış paylaşımları yeniden bağlama</li>
       <li xml:lang="uk">Повторне монтування раніше використаних спільних ресурсів під час запуску програми.</li>
       <li xml:lang="x-test">xxRemounting of previously used shares on program startxx</li>
+      <li xml:lang="zh-CN">启动时重新挂载最近使用的共享</li>
       <li xml:lang="zh-TW">在程式啟動時重新掛載先前使用過的分享</li>
       <li>Miscellaneous infos about remote network items and mounted shares</li>
       <li xml:lang="bs">Raznovrsne informacije o udaljenim mrežnim stavkama i namještenim razmjenama</li>
@@ -363,6 +366,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Uzak ağ ögeleri ve bağlı paylaşımlar hakkında çeşitli bilgiler</li>
       <li xml:lang="uk">Показ різноманітних відомостей щодо віддалених елементів мережі та змонтованих спільних ресурсів.</li>
       <li xml:lang="x-test">xxMiscellaneous infos about remote network items and mounted sharesxx</li>
+      <li xml:lang="zh-CN">有关远程网络文件和挂载共享的杂项信息</li>
       <li xml:lang="zh-TW">關於遠端網路項目與已掛載的分享的其他資訊</li>
       <li>Network search</li>
       <li xml:lang="bs">Pretraga mreže</li>
@@ -486,6 +490,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Ev paylaşımlarına özel işlemler</li>
       <li xml:lang="uk">Особливі інструменти роботи з домашніми спільними ресурсами.</li>
       <li xml:lang="x-test">xxSpecial handling of homes sharesxx</li>
+      <li xml:lang="zh-CN">对家庭共享特殊处理</li>
       <li xml:lang="zh-TW">家目錄分享的特別處理</li>
       <li>Ability to bookmark favorite shares</li>
       <li xml:lang="bs">Sposobnost bilježenja omiljenih razmjena</li>
@@ -515,6 +520,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Favori yer imi paylaşımları yeteneği</li>
       <li xml:lang="uk">Можливість створення закладок для потрібних вам спільних ресурсів.</li>
       <li xml:lang="x-test">xxAbility to bookmark favorite sharesxx</li>
+      <li xml:lang="zh-CN">可以收藏共享</li>
       <li xml:lang="zh-TW">將最愛的分享加入書籤的能力</li>
       <li>System tray widget</li>
       <li xml:lang="bs">Kontrola za poslužavnik sistema</li>
@@ -664,6 +670,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Uzak paylaşımın yerel bir kopya ile eşitlenmesi veya tam tesi</li>
       <li xml:lang="uk">Синхронізація віддаленого спільного ресурсу з локальною копією і навпаки.</li>
       <li xml:lang="x-test">xxSynchronization of a remote share with a local copy and vice versaxx</li>
+      <li xml:lang="zh-CN">远程共享与本地副本同步，反之亦然。</li>
       <li xml:lang="zh-TW">將遠端分享與本機複本同步的能力，反過來也可以</li>
       <li>Ability to define custom options for individual servers and shares</li>
       <li xml:lang="bs">Sposobnost definisanja prilagođenih opcija za individualne servere i razmjene</li>
@@ -693,6 +700,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Kişisel sunucular ve paylaşımlar için özel seçenekleri tanımlama yeteneği</li>
       <li xml:lang="uk">Можливість визначення нетипових параметрів для окремих серверів та спільних ресурсів.</li>
       <li xml:lang="x-test">xxAbility to define custom options for individual servers and sharesxx</li>
+      <li xml:lang="zh-CN">可为独立服务器和共享确定自定义选项</li>
       <li xml:lang="zh-TW">為每個伺服器與分享定義自訂選項的能力</li>
       <li>Laptop support through the Solid hardware device framework</li>
       <li xml:lang="bs">Laptop podrška preko čvrstog hardver uređajnog okruženja</li>
@@ -722,6 +730,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="tr">Katı donanım aygıt altyapısı aracılığıyla diz üstü bilgisayar desteği</li>
       <li xml:lang="uk">Підтримка ноутбуків за допомогою оболонки для роботи з пристроями Solid.</li>
       <li xml:lang="x-test">xxLaptop support through the Solid hardware device frameworkxx</li>
+      <li xml:lang="zh-CN">通过坚实的硬件设备框架提供笔记本支持</li>
       <li xml:lang="zh-TW">透過 Solid 硬體裝置框架支援筆記型電腦</li>
       <li>Wake-On-LAN capabilities</li>
       <li xml:lang="bs">Wake-On-LAN mogućnosti</li>
@@ -841,6 +850,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="tr">Windows'un hakim olduğu bir ağ ortamında çalışıyorsanız, sağlanan Windows paylaşımlarına kolayca erişebilmek için bu uygulamayı kurmak isteyebilirsiniz.</p>
     <p xml:lang="uk">Якщо ви працюєте у середовищі з переважним використанням Windows, вам варто встановити цю програму для полегшення доступу до спільних ресурсів Windows.</p>
     <p xml:lang="x-test">xxIf you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.xx</p>
+    <p xml:lang="zh-CN">如果您在 Windows 域中工作，您可能想要安装此应用程序，以便能够轻松访问其提供的Windows共享。</p>
     <p xml:lang="zh-TW">若您正在 Windows 主導的網路環境下工作，您可能會想要安裝這個應用程式來讓存取提供的 Windows 分享更簡單。</p>
   </description>
   <screenshots>
