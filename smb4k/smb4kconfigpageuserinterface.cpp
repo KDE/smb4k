@@ -2,7 +2,7 @@
     This configuration page takes care of all settings concerning the
     user interface
 
-    SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -13,11 +13,9 @@
 // Qt includes
 #include <QButtonGroup>
 #include <QCheckBox>
-#include <QGridLayout>
-#include <QGroupBox>
 #include <QLabel>
 #include <QRadioButton>
-#include <QVBoxLayout>
+#include <QFormLayout>
 
 // KDE includes
 #include <KCompletion/KComboBox>
@@ -29,17 +27,17 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
     //
     // Layout
     //
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    QFormLayout *layout = new QFormLayout(this);
 
     //
     // Main Window settings
     //
-    QGroupBox *mainWindowBox = new QGroupBox(i18n("Main Window"), this);
-    QGridLayout *mainWindowBoxLayout = new QGridLayout(mainWindowBox);
+    QLabel *mainWindowSection = new QLabel(i18n("Main Window"), this);
+    layout->addRow(mainWindowSection);
 
-    QLabel *tabOrientationLabel = new QLabel(Smb4KSettings::self()->mainWindowTabOrientationItem()->label(), mainWindowBox);
+    QLabel *tabOrientationLabel = new QLabel(Smb4KSettings::self()->mainWindowTabOrientationItem()->label(), this);
 
-    KComboBox *tabOrientation = new KComboBox(mainWindowBox);
+    KComboBox *tabOrientation = new KComboBox(this);
     tabOrientation->setObjectName("kcfg_MainWindowTabOrientation");
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> tabOrientationChoices = Smb4KSettings::self()->mainWindowTabOrientationItem()->choices();
@@ -48,60 +46,62 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
         tabOrientation->addItem(to.label);
     }
 
-    tabOrientationLabel->setBuddy(tabOrientation);
+    layout->addRow(tabOrientationLabel, tabOrientation);
 
-    mainWindowBoxLayout->addWidget(tabOrientationLabel, 0, 0);
-    mainWindowBoxLayout->addWidget(tabOrientation, 0, 1);
-
-    QCheckBox *showBookmarkLabel = new QCheckBox(Smb4KSettings::self()->showCustomBookmarkLabelItem()->label(), mainWindowBox);
+    QCheckBox *showBookmarkLabel = new QCheckBox(Smb4KSettings::self()->showCustomBookmarkLabelItem()->label(), this);
     showBookmarkLabel->setObjectName("kcfg_ShowCustomBookmarkLabel");
 
-    mainWindowBoxLayout->addWidget(showBookmarkLabel, 1, 0, 1, 2);
-
-    layout->addWidget(mainWindowBox, 0);
+    layout->addRow(i18n("Behavior:"), showBookmarkLabel);
 
     //
     // Network Neighborhood settings
     //
-    QGroupBox *networkNeighhoodBox = new QGroupBox(i18n("Network Neighborhood"), this);
-    QGridLayout *networkNeighhoodBoxLayout = new QGridLayout(networkNeighhoodBox);
+    QLabel *networkNeighborhoodSection = new QLabel(i18n("Network Neighborhood"), this);
+    layout->addRow(networkNeighborhoodSection);
 
-    QCheckBox *autoExpand = new QCheckBox(Smb4KSettings::self()->autoExpandNetworkItemsItem()->label(), networkNeighhoodBox);
+    QLabel *iconSizeNetworkNeighborhoodLabel = new QLabel(Smb4KSettings::self()->networkBrowserIconSizeItem()->label(), this);
+    QSlider *iconSizeNetworkNeighborhood = new QSlider(Qt::Horizontal, this);
+    iconSizeNetworkNeighborhood->setObjectName("kcfg_NetworkBrowserIconSize");
+    iconSizeNetworkNeighborhood->setPageStep(16);
+    iconSizeNetworkNeighborhood->setSingleStep(16);
+    iconSizeNetworkNeighborhood->setTickPosition(QSlider::TicksBelow);
+
+    layout->addRow(iconSizeNetworkNeighborhoodLabel, iconSizeNetworkNeighborhood);
+
+    QCheckBox *autoExpand = new QCheckBox(Smb4KSettings::self()->autoExpandNetworkItemsItem()->label(), this);
     autoExpand->setObjectName("kcfg_AutoExpandNetworkItems");
 
-    networkNeighhoodBoxLayout->addWidget(autoExpand, 0, 0);
+    layout->addRow(i18n("Behavior:"), autoExpand);
 
-    QCheckBox *showType = new QCheckBox(Smb4KSettings::self()->showTypeItem()->label(), networkNeighhoodBox);
+    QCheckBox *showType = new QCheckBox(Smb4KSettings::self()->showTypeItem()->label(), this);
     showType->setObjectName("kcfg_ShowType");
 
-    networkNeighhoodBoxLayout->addWidget(showType, 0, 1);
+    layout->addRow(QString(), showType);
 
-    QCheckBox *showIpAddress = new QCheckBox(Smb4KSettings::self()->showIPAddressItem()->label(), networkNeighhoodBox);
+    QCheckBox *showIpAddress = new QCheckBox(Smb4KSettings::self()->showIPAddressItem()->label(), this);
     showIpAddress->setObjectName("kcfg_ShowIPAddress");
 
-    networkNeighhoodBoxLayout->addWidget(showIpAddress, 1, 0);
+    layout->addRow(QString(), showIpAddress);
 
-    QCheckBox *showComment = new QCheckBox(Smb4KSettings::self()->showCommentItem()->label(), networkNeighhoodBox);
+    QCheckBox *showComment = new QCheckBox(Smb4KSettings::self()->showCommentItem()->label(), this);
     showComment->setObjectName("kcfg_ShowComment");
 
-    networkNeighhoodBoxLayout->addWidget(showComment, 1, 1);
+    layout->addRow(QString(), showComment);
 
-    QCheckBox *showNetworkTooltip = new QCheckBox(Smb4KSettings::self()->showNetworkItemToolTipItem()->label(), networkNeighhoodBox);
+    QCheckBox *showNetworkTooltip = new QCheckBox(Smb4KSettings::self()->showNetworkItemToolTipItem()->label(), this);
     showNetworkTooltip->setObjectName("kcfg_ShowNetworkItemToolTip");
 
-    networkNeighhoodBoxLayout->addWidget(showNetworkTooltip, 2, 0, 1, 2);
-
-    layout->addWidget(networkNeighhoodBox, 0);
+    layout->addRow(QString(), showNetworkTooltip);
 
     //
     // Shares View settings
     //
-    QGroupBox *sharesViewBox = new QGroupBox(i18n("Shares View"), this);
-    QGridLayout *sharesViewBoxLayout = new QGridLayout(sharesViewBox);
+    QLabel *sharesViewSection = new QLabel(i18n("Shares View"), this);
+    layout->addRow(sharesViewSection);
 
-    QLabel *viewModeLabel = new QLabel(Smb4KSettings::self()->sharesViewModeItem()->label(), sharesViewBox);
+    QLabel *viewModeLabel = new QLabel(Smb4KSettings::self()->sharesViewModeItem()->label(), this);
 
-    KComboBox *viewMode = new KComboBox(sharesViewBox);
+    KComboBox *viewMode = new KComboBox(this);
     viewMode->setObjectName("kcfg_SharesViewMode");
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> sharesViewModeChoices = Smb4KSettings::self()->sharesViewModeItem()->choices();
@@ -110,18 +110,30 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
         viewMode->addItem(vm.label);
     }
 
-    viewModeLabel->setBuddy(viewMode);
+    layout->addRow(viewModeLabel, viewMode);
 
-    sharesViewBoxLayout->addWidget(viewModeLabel, 0, 0);
-    sharesViewBoxLayout->addWidget(viewMode, 0, 1);
+    QLabel *iconSizeSharesViewIconViewLabel = new QLabel(Smb4KSettings::self()->sharesViewIconSizeIconViewItem()->label(), this);
+    QSlider *iconSizeSharesViewIconView = new QSlider(Qt::Horizontal, this);
+    iconSizeSharesViewIconView->setObjectName("kcfg_SharesViewIconSizeIconView");
+    iconSizeSharesViewIconView->setPageStep(16);
+    iconSizeSharesViewIconView->setSingleStep(16);
+    iconSizeSharesViewIconView->setTickPosition(QSlider::TicksBelow);
 
-    QCheckBox *showShareTooltip = new QCheckBox(Smb4KSettings::self()->showShareToolTipItem()->label(), sharesViewBox);
+    layout->addRow(iconSizeSharesViewIconViewLabel, iconSizeSharesViewIconView);
+
+    QLabel *iconSizeSharesViewListViewLabel = new QLabel(Smb4KSettings::self()->sharesViewIconSizeListViewItem()->label(), this);
+    QSlider *iconSizeSharesViewListView = new QSlider(Qt::Horizontal, this);
+    iconSizeSharesViewListView->setObjectName("kcfg_SharesViewIconSizeListView");
+    iconSizeSharesViewListView->setPageStep(16);
+    iconSizeSharesViewListView->setSingleStep(16);
+    iconSizeSharesViewListView->setTickPosition(QSlider::TicksBelow);
+
+    layout->addRow(iconSizeSharesViewListViewLabel, iconSizeSharesViewListView);
+
+    QCheckBox *showShareTooltip = new QCheckBox(Smb4KSettings::self()->showShareToolTipItem()->label(), this);
     showShareTooltip->setObjectName("kcfg_ShowShareToolTip");
 
-    sharesViewBoxLayout->addWidget(showShareTooltip, 1, 0, 1, 2);
-
-    layout->addWidget(sharesViewBox, 0);
-    layout->addStretch(100);
+    layout->addRow(i18n("Behavior:"), showShareTooltip);
 }
 
 Smb4KConfigPageUserInterface::~Smb4KConfigPageUserInterface()

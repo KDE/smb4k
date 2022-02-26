@@ -2,7 +2,7 @@
     This configuration page takes care of all settings concerning the
     user interface
 
-    SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -10,7 +10,7 @@
 #define SMB4KCONFIGPAGEUSERINTERFACE_H
 
 // Qt includes
-#include <QTabWidget>
+#include <QWidget>
 
 /**
  * The configuration page for the user interface of Smb4K.
