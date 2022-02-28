@@ -1,7 +1,7 @@
 /*
     The configuration page for the authentication settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -13,7 +13,7 @@
 
 // Qt includes
 #include <QList>
-#include <QListWidget>
+#include <QWidget>
 
 /**
  * This is the configuration tab for the authentication settings
@@ -53,20 +53,14 @@ public:
      *
      * @returns the list of entries.
      */
-    const QList<Smb4KAuthInfo *> &getLoginCredentials()
-    {
-        return m_entriesList;
-    }
+    const QList<Smb4KAuthInfo *> &getLoginCredentials();
 
     /**
      * Returns TRUE if the wallet entries are displayed and FALSE otherwise.
      *
      * @returns TRUE if the wallet entries are displayed
      */
-    bool loginCredentialsDisplayed()
-    {
-        return m_entries_displayed;
-    }
+    bool loginCredentialsDisplayed();
 
     /**
      * Returns TRUE in the case the wallet entries might have changed. You need
@@ -74,10 +68,7 @@ public:
      *
      * @returns TRUE if the wallet entries might have changed.
      */
-    bool loginCredentialsMaybeChanged()
-    {
-        return m_maybe_changed;
-    }
+    bool loginCredentialsMaybeChanged();
 
 signals:
     /**

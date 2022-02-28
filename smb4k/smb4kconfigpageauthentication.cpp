@@ -1,7 +1,7 @@
 /*
     The configuration page for the authentication settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -12,13 +12,15 @@
 // Qt includes
 #include <QAction>
 #include <QCheckBox>
+#include <QFormLayout>
 #include <QGridLayout>
-#include <QGroupBox>
 #include <QHeaderView>
+#include <QListWidget>
 #include <QListWidgetItem>
 #include <QMouseEvent>
 #include <QPushButton>
 #include <QTableWidget>
+#include <QLabel>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -34,36 +36,31 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     //
     // Layout
     //
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    QFormLayout *layout = new QFormLayout(this);
 
     //
-    // Settings group box
+    // Settings
     //
-    QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
-    QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
-
-    // Wallet usage
-    QCheckBox *useWallet = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(), settingsBox);
+    QCheckBox *useWallet = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(), this);
     useWallet->setObjectName("kcfg_UseWallet");
 
     connect(useWallet, SIGNAL(toggled(bool)), this, SLOT(slotKWalletButtonToggled(bool)));
 
-    settingsBoxLayout->addWidget(useWallet, 0);
+    layout->addRow(i18n("Behavior:"), useWallet);
 
-    // Default login
-    QCheckBox *defaultAuth = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), settingsBox);
+    QCheckBox *defaultAuth = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), this);
     defaultAuth->setObjectName("kcfg_UseDefaultLogin");
 
     connect(defaultAuth, SIGNAL(toggled(bool)), this, SLOT(slotDefaultLoginToggled(bool)));
 
-    settingsBoxLayout->addWidget(defaultAuth, 0);
-
-    layout->addWidget(settingsBox, 0);
+    layout->addRow(QString(), defaultAuth);
 
     //
-    // Wallet Entries group box
+    // Wallet entries widget
     //
-    QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
+    layout->addRow(new QLabel(i18n("Wallet Entries:")));
+
+    QWidget *walletEntriesBox = new QWidget(this);
     QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
     walletEntriesBoxLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -73,6 +70,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     QWidget *walletEntriesEditor = new QWidget(walletEntriesBox);
     walletEntriesEditor->setObjectName("WalletEntriesEditor");
     QGridLayout *walletEntriesEditorLayout = new QGridLayout(walletEntriesEditor);
+    walletEntriesEditorLayout->setMargin(0);
 
     //
     // The list view
@@ -83,6 +81,22 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     walletEntriesWidget->setSelectionMode(QListWidget::SingleSelection);
     walletEntriesWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
     walletEntriesWidget->viewport()->installEventFilter(this);
+
+//     // Add action
+//     QAction *addAction = new QAction(KDE::icon("list-add"), i18n("Add"), walletEntriesWidget);
+//     addAction->setObjectName("AddAction");
+//     addAction->setEnabled(false);
+//     // FIXME: Connection
+//     qDebug() << "Make add action work";
+//     walletEntriesWidget->addAction(addAction);
+//
+//     // Add Default action
+//     QAction *addDefaultAction = new QAction(KDE::icon("list-add"), i18n("Add Default"), walletEntriesWidget);
+//     addDefaultAction->setObjectName("AddDefaultAction");
+//     addDefaultAction->setEnabled(false);
+//     // FIXME: Connection
+//     qDebug() << "Make add default action work";
+//     walletEntriesWidget->addAction(addDefaultAction);
 
     // Edit action
     QAction *editAction = new QAction(KDE::icon("edit-rename"), i18n("Edit"), walletEntriesWidget);
@@ -157,12 +171,12 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
 
     detailsBoxLayout->addWidget(detailsWidget, 0);
 
-    walletEntriesEditorLayout->addWidget(detailsBox, 5, 1);
-    walletEntriesEditorLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Fixed, QSizePolicy::MinimumExpanding), 6, 1);
+    walletEntriesEditorLayout->addWidget(detailsBox, 3, 1);
+    walletEntriesEditorLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Fixed, QSizePolicy::MinimumExpanding), 4, 1);
 
     walletEntriesBoxLayout->addWidget(walletEntriesEditor, 0);
 
-    layout->addWidget(walletEntriesBox, 0);
+    layout->addRow(walletEntriesBox);
 
     //
     // Adjustments
@@ -235,6 +249,21 @@ void Smb4KConfigPageAuthentication::insertLoginCredentials(const QList<Smb4KAuth
     //
     findChild<QPushButton *>("SaveButton")->setEnabled(walletEntriesWidget->count() != 0);
     findChild<QAction *>("ClearAction")->setEnabled(walletEntriesWidget->count() != 0);
+}
+
+const QList<Smb4KAuthInfo *> &Smb4KConfigPageAuthentication::getLoginCredentials()
+{
+    return m_entriesList;
+}
+
+bool Smb4KConfigPageAuthentication::loginCredentialsDisplayed()
+{
+    return m_entries_displayed;
+}
+
+bool Smb4KConfigPageAuthentication::loginCredentialsMaybeChanged()
+{
+    return m_maybe_changed;
 }
 
 bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
