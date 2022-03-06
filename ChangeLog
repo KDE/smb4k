@@ -1,3 +1,16 @@
+Smb4K 3.1.2 (2022-03-xx):
+
+See the summery of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
+
+- Since for slow (un)mounting processes, the process might be killed before
+  it finishes, the timeout is extended to 30 sec instead of 5 sec. The 
+  timeout is only supposed to be used to kill hanging processes and not 
+  working ones that are slow. Backported from master.
+- Fix error handling in the client. Backported from master.
+- Only add a host once. Especially when DNS-SD discovery was used, a host
+  might have appeared twice. Backported from master.
+
 Smb4K 3.1.1 (2021-09-28):
 
 See the summery of changes below. For a full list of changes, please
