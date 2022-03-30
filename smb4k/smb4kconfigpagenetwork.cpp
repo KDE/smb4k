@@ -2,7 +2,7 @@
     smb4knetworkoptions  -  The configuration page for the network
     settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -12,11 +12,10 @@
 
 // Qt includes
 #include <QCheckBox>
-#include <QGridLayout>
-#include <QGroupBox>
 #include <QLabel>
 #include <QSpinBox>
-#include <QVBoxLayout>
+#include <QFormLayout>
+#include <QGridLayout>
 
 // KDE includes
 #include <KCompletion/KComboBox>
@@ -28,40 +27,53 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     : QTabWidget(parent)
 {
     //
-    // Basic Samba Settings
+    // Basic Settings
     //
     QWidget *basicTab = new QWidget(this);
-    QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
+    QFormLayout *basicTabLayout = new QFormLayout(basicTab);
 
     //
-    // Browse Settings group box
+    // Browse Settings
     //
-    QGroupBox *browseSettingsBox = new QGroupBox(i18n("Browse Settings"), basicTab);
-    QGridLayout *browseSettingsBoxLayout = new QGridLayout(browseSettingsBox);
-
 #ifdef USE_WS_DISCOVERY
     // Use WS-Discovery
-    QCheckBox *useWsDiscovery = new QCheckBox(Smb4KSettings::self()->useWsDiscoveryItem()->label(), browseSettingsBox);
+    QCheckBox *useWsDiscovery = new QCheckBox(Smb4KSettings::self()->useWsDiscoveryItem()->label(), basicTab);
     useWsDiscovery->setObjectName("kcfg_UseWsDiscovery");
+
+    basicTabLayout->addRow(i18n("Browse Settings:"), useWsDiscovery);
 #endif
 
     // Use DNS-SD
-    QCheckBox *useDnsServiceDiscovery = new QCheckBox(Smb4KSettings::self()->useDnsServiceDiscoveryItem()->label(), browseSettingsBox);
+    QCheckBox *useDnsServiceDiscovery = new QCheckBox(Smb4KSettings::self()->useDnsServiceDiscoveryItem()->label(), basicTab);
     useDnsServiceDiscovery->setObjectName("kcfg_UseDnsServiceDiscovery");
 
+#ifdef USE_WS_DISCOVERY
+    basicTabLayout->addRow(QString(), useDnsServiceDiscovery);
+#else
+    basicTabLayout->addRow(i18n("Browse Settings:"), useDnsServiceDiscovery);
+#endif
+
     // Force SMBv1 protocol for browsing
-    QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), browseSettingsBox);
+    QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), basicTab);
     forceSmb1Protocol->setObjectName("kcfg_ForceSmb1Protocol");
 
+    basicTabLayout->addRow(QString(), forceSmb1Protocol);
+
     // Set client protocol versions
-    QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), browseSettingsBox);
+    QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), basicTab);
     useClientProtocolVersions->setObjectName("kcfg_UseClientProtocolVersions");
 
-    QLabel *minimalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), browseSettingsBox);
+    basicTabLayout->addRow(QString(), useClientProtocolVersions);
+
+    QWidget *versionsWidget = new QWidget(basicTab);
+    QGridLayout *versionsLayout = new QGridLayout(versionsWidget);
+    versionsLayout->setMargin(0);
+
+    QLabel *minimalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), versionsWidget);
     minimalProtocolVersionLabel->setIndent(25);
     minimalProtocolVersionLabel->setObjectName("MinimalProtocolVersionLabel");
 
-    KComboBox *minimalProtocolVersion = new KComboBox(browseSettingsBox);
+    KComboBox *minimalProtocolVersion = new KComboBox(versionsWidget);
     minimalProtocolVersion->setObjectName("kcfg_MinimalClientProtocolVersion");
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
@@ -70,11 +82,14 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
         minimalProtocolVersion->addItem(c.label);
     }
 
-    QLabel *maximalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), browseSettingsBox);
+    versionsLayout->addWidget(minimalProtocolVersionLabel, 0, 0);
+    versionsLayout->addWidget(minimalProtocolVersion, 0, 1);
+
+    QLabel *maximalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), versionsWidget);
     maximalProtocolVersionLabel->setIndent(25);
     maximalProtocolVersionLabel->setObjectName("MaximalProtocolVersionLabel");
 
-    KComboBox *maximalProtocolVersion = new KComboBox(browseSettingsBox);
+    KComboBox *maximalProtocolVersion = new KComboBox(versionsWidget);
     maximalProtocolVersion->setObjectName("kcfg_MaximalClientProtocolVersion");
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
@@ -83,50 +98,28 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
         maximalProtocolVersion->addItem(c.label);
     }
 
-    minimalProtocolVersionLabel->setBuddy(minimalProtocolVersion);
-    maximalProtocolVersionLabel->setBuddy(maximalProtocolVersion);
+    versionsLayout->addWidget(maximalProtocolVersionLabel, 1, 0);
+    versionsLayout->addWidget(maximalProtocolVersion, 1, 1);
 
-#ifdef USE_WS_DISCOVERY
-    browseSettingsBoxLayout->addWidget(useWsDiscovery, 0, 0, 1, 2);
-    browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 1, 0, 1, 2);
-    browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 2, 0, 1, 2);
-    browseSettingsBoxLayout->addWidget(useClientProtocolVersions, 3, 0, 1, 2);
-    browseSettingsBoxLayout->addWidget(minimalProtocolVersionLabel, 4, 0);
-    browseSettingsBoxLayout->addWidget(minimalProtocolVersion, 4, 1);
-    browseSettingsBoxLayout->addWidget(maximalProtocolVersionLabel, 5, 0);
-    browseSettingsBoxLayout->addWidget(maximalProtocolVersion, 5, 1);
-#else
-    browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery, 0, 0, 1, 2);
-    browseSettingsBoxLayout->addWidget(forceSmb1Protocol, 1, 0, 1, 2);
-    browseSettingsBoxLayout->addWidget(useClientProtocolVersions, 2, 0, 1, 2);
-    browseSettingsBoxLayout->addWidget(minimalProtocolVersionLabel, 3, 0);
-    browseSettingsBoxLayout->addWidget(minimalProtocolVersion, 3, 1);
-    browseSettingsBoxLayout->addWidget(maximalProtocolVersionLabel, 4, 0);
-    browseSettingsBoxLayout->addWidget(maximalProtocolVersion, 4, 1);
-#endif
+    basicTabLayout->addRow(QString(), versionsWidget);
 
     //
-    // Behavior group box
+    // Behavior
     //
-    QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), basicTab);
-    QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
-
-    QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behaviorBox);
+    QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), basicTab);
     detectPrinters->setObjectName("kcfg_DetectPrinterShares");
 
-    QCheckBox *detectHiddenShares = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), behaviorBox);
+    basicTabLayout->addRow(i18n("Behavior:"), detectPrinters);
+
+    QCheckBox *detectHiddenShares = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), basicTab);
     detectHiddenShares->setObjectName("kcfg_DetectHiddenShares");
 
-    QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behaviorBox);
+    basicTabLayout->addRow(QString(), detectHiddenShares);
+
+    QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), basicTab);
     previewHiddenItems->setObjectName("kcfg_PreviewHiddenItems");
 
-    behaviorBoxLayout->addWidget(detectPrinters, 0, 0);
-    behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1);
-    behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0);
-
-    basicTabLayout->addWidget(browseSettingsBox, 0);
-    basicTabLayout->addWidget(behaviorBox, 0);
-    basicTabLayout->addStretch(100);
+    basicTabLayout->addRow(QString(), previewHiddenItems);
 
     addTab(basicTab, i18n("Basic Settings"));
 
@@ -134,74 +127,84 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     // Samba Settings
     //
     QWidget *sambaTab = new QWidget(this);
-    QVBoxLayout *sambaTabLayout = new QVBoxLayout(sambaTab);
+    QFormLayout *sambaTabLayout = new QFormLayout(sambaTab);
 
-    //
-    // Basic Settings group box
-    //
-    QGroupBox *basicSettingsBox = new QGroupBox(i18n("Common Settings"), sambaTab);
-    QGridLayout *basicSettingsBoxLayout = new QGridLayout(basicSettingsBox);
+    QWidget *commonSettingsWidget = new QWidget(sambaTab);
+    QGridLayout *commonSettingsWidgetLayout = new QGridLayout(commonSettingsWidget);
+    commonSettingsWidgetLayout->setMargin(0);
 
-    QLabel *nebiosNameLabel = new QLabel(Smb4KSettings::self()->netBIOSNameItem()->label(), basicSettingsBox);
-    KLineEdit *netbiosName = new KLineEdit(basicSettingsBox);
+    QLabel *netbiosNameLabel = new QLabel(commonSettingsWidget);
+    netbiosNameLabel->setText(Smb4KSettings::self()->netBIOSNameItem()->label());
+
+    KLineEdit *netbiosName = new KLineEdit(commonSettingsWidget);
     netbiosName->setObjectName("kcfg_NetBIOSName");
     netbiosName->setClearButtonEnabled(true);
-    nebiosNameLabel->setBuddy(netbiosName);
 
-    QLabel *domainLabel = new QLabel(Smb4KSettings::self()->domainNameItem()->label(), basicSettingsBox);
-    KLineEdit *domain = new KLineEdit(basicSettingsBox);
+    commonSettingsWidgetLayout->addWidget(netbiosNameLabel, 0, 0);
+    commonSettingsWidgetLayout->addWidget(netbiosName, 0, 1);
+
+    QLabel *domainLabel = new QLabel(commonSettingsWidget);
+    domainLabel->setText(Smb4KSettings::self()->domainNameItem()->label());
+
+    KLineEdit *domain = new KLineEdit(commonSettingsWidget);
     domain->setObjectName("kcfg_DomainName");
     domain->setClearButtonEnabled(true);
-    domainLabel->setBuddy(domain);
 
-    QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), basicSettingsBox);
+    commonSettingsWidgetLayout->addWidget(domainLabel, 1, 0);
+    commonSettingsWidgetLayout->addWidget(domain, 1, 1);
+
+    sambaTabLayout->addRow(i18n("Common Settings:"), commonSettingsWidget);
+
+    QWidget *remoteSmbPortWidget = new QWidget(sambaTab);
+    QHBoxLayout *remoteSmbPortWidgetLayout = new QHBoxLayout(remoteSmbPortWidget);
+    remoteSmbPortWidgetLayout->setMargin(0);
+
+    QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), sambaTab);
     useRemoteSmbPort->setObjectName("kcfg_UseRemoteSmbPort");
 
-    QSpinBox *remoteSmbPort = new QSpinBox(basicSettingsBox);
+    QSpinBox *remoteSmbPort = new QSpinBox(sambaTab);
     remoteSmbPort->setObjectName("kcfg_RemoteSmbPort");
     //   remoteSmbPort->setSliderEnabled(true);
 
-    QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), basicSettingsBox);
+    remoteSmbPortWidgetLayout->addWidget(useRemoteSmbPort);
+    remoteSmbPortWidgetLayout->addWidget(remoteSmbPort);
+
+    sambaTabLayout->addRow(QString(), remoteSmbPortWidget);
+
+    QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), sambaTab);
     largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
 
-    basicSettingsBoxLayout->addWidget(nebiosNameLabel, 0, 0);
-    basicSettingsBoxLayout->addWidget(netbiosName, 0, 1);
-    basicSettingsBoxLayout->addWidget(domainLabel, 1, 0);
-    basicSettingsBoxLayout->addWidget(domain, 1, 1);
-    basicSettingsBoxLayout->addWidget(useRemoteSmbPort, 2, 0);
-    basicSettingsBoxLayout->addWidget(remoteSmbPort, 2, 1);
-    basicSettingsBoxLayout->addWidget(largeNetworkNeighborhood, 3, 0, 1, 2);
+    sambaTabLayout->addRow(QString(), largeNetworkNeighborhood);
 
     //
-    // Authentication group box
+    // Authentication
     //
-    QGroupBox *authenticationBox = new QGroupBox(i18n("Authentication"), sambaTab);
-    QGridLayout *authenticationBoxLayout = new QGridLayout(authenticationBox);
-
-    QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), authenticationBox);
+    QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), sambaTab);
     masterBrowsersRequireAuth->setObjectName("kcfg_MasterBrowsersRequireAuth");
 
-    QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
+    sambaTabLayout->addRow(i18n("Authentication:"), masterBrowsersRequireAuth);
+
+    QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), sambaTab);
     useKerberos->setObjectName("kcfg_UseKerberos");
 
-    QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), authenticationBox);
+    sambaTabLayout->addRow(QString(), useKerberos);
+
+    QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), sambaTab);
     useCCache->setObjectName("kcfg_UseWinbindCCache");
 
-    authenticationBoxLayout->addWidget(masterBrowsersRequireAuth, 0, 0);
-    authenticationBoxLayout->addWidget(useKerberos, 0, 1);
-    authenticationBoxLayout->addWidget(useCCache, 1, 0);
+    sambaTabLayout->addRow(QString(), useCCache);
 
     //
-    // Security group box
+    // Security
     //
-    QGroupBox *securityBox = new QGroupBox(i18n("Security"), sambaTab);
-    QGridLayout *securityBoxLayout = new QGridLayout(securityBox);
+    QWidget *encryptionWidget = new QWidget(sambaTab);
+    QHBoxLayout *encryptionWidgetLayout = new QHBoxLayout(encryptionWidget);
+    encryptionWidgetLayout->setMargin(0);
 
-    // Encryption level
-    QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), securityBox);
+    QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), sambaTab);
     useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
 
-    KComboBox *encryptionLevel = new KComboBox(securityBox);
+    KComboBox *encryptionLevel = new KComboBox(sambaTab);
     encryptionLevel->setObjectName("kcfg_EncryptionLevel");
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> encryptionLevelChoices = Smb4KSettings::self()->encryptionLevelItem()->choices();
@@ -210,13 +213,10 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
         encryptionLevel->addItem(c.label);
     }
 
-    securityBoxLayout->addWidget(useEncryptionLevel, 0, 0);
-    securityBoxLayout->addWidget(encryptionLevel, 0, 1);
+    encryptionWidgetLayout->addWidget(useEncryptionLevel);
+    encryptionWidgetLayout->addWidget(encryptionLevel);
 
-    sambaTabLayout->addWidget(basicSettingsBox, 0);
-    sambaTabLayout->addWidget(authenticationBox, 0);
-    sambaTabLayout->addWidget(securityBox, 0);
-    sambaTabLayout->addStretch(100);
+    sambaTabLayout->addRow(i18n("Security:"), encryptionWidget);
 
     addTab(sambaTab, i18n("Samba Settings"));
 
@@ -224,30 +224,32 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     // Wake-On-LAN tab
     //
     QWidget *wakeOnLanTab = new QWidget(this);
-    QVBoxLayout *wakeOnLanTabLayout = new QVBoxLayout(wakeOnLanTab);
+    QFormLayout *wakeOnLanTabLayout = new QFormLayout(wakeOnLanTab);
 
     //
-    // Wake-On-LAN group box
+    // Wake-On-LAN
     //
-    QGroupBox *wakeOnLanBox = new QGroupBox(i18n("Wake-On-LAN"), wakeOnLanTab);
-    QGridLayout *wakeOnLanBoxLayout = new QGridLayout(wakeOnLanBox);
-
-    QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), wakeOnLanBox);
+    QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), wakeOnLanTab);
     enableWakeOnLan->setObjectName("kcfg_EnableWakeOnLAN");
 
-    QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), wakeOnLanBox);
+    wakeOnLanTabLayout->addRow(enableWakeOnLan);
+
+    QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), wakeOnLanTab);
     wakeOnLanWaitingTimeLabel->setIndent(25);
     wakeOnLanWaitingTimeLabel->setObjectName("WakeOnLanWaitingTimeLabel");
 
-    QSpinBox *wakeOnLanWaitingTime = new QSpinBox(wakeOnLanBox);
+    QSpinBox *wakeOnLanWaitingTime = new QSpinBox(wakeOnLanTab);
     wakeOnLanWaitingTime->setObjectName("kcfg_WakeOnLANWaitingTime");
     wakeOnLanWaitingTime->setSuffix(i18n(" s"));
     wakeOnLanWaitingTime->setSingleStep(1);
     //   wakeOnLanWaitingTime->setSliderEnabled(true);
 
-    wakeOnLanWaitingTimeLabel->setBuddy(wakeOnLanWaitingTime);
+    wakeOnLanTabLayout->addRow(wakeOnLanWaitingTimeLabel, wakeOnLanWaitingTime);
 
-    QFrame *wakeOnLanNote = new QFrame(wakeOnLanBox);
+    //
+    // Wake-On_LAN note
+    //
+    QFrame *wakeOnLanNote = new QFrame(wakeOnLanTab);
     QGridLayout *wakeOnLanNoteLayout = new QGridLayout(wakeOnLanNote);
     wakeOnLanNoteLayout->setContentsMargins(5, 5, 5, 5);
 
@@ -265,13 +267,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     wakeOnLanNoteLayout->addWidget(message, 0, 1, Qt::AlignVCenter);
     wakeOnLanNoteLayout->setColumnStretch(1, 1);
 
-    wakeOnLanBoxLayout->addWidget(enableWakeOnLan, 0, 0, 1, 2);
-    wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTimeLabel, 1, 0);
-    wakeOnLanBoxLayout->addWidget(wakeOnLanWaitingTime, 1, 1);
-    wakeOnLanBoxLayout->addWidget(wakeOnLanNote, 2, 0, 1, 2);
-
-    wakeOnLanTabLayout->addWidget(wakeOnLanBox, 0);
-    wakeOnLanTabLayout->addStretch(100);
+    wakeOnLanTabLayout->addRow(wakeOnLanNote);
 
     addTab(wakeOnLanTab, i18n("Wake-On-LAN Settings"));
 
