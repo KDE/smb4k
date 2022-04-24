@@ -124,12 +124,14 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     addTab(basicTab, i18n("Basic Settings"));
 
     //
-    // Samba Settings
+    // Advanced Settings
     //
-    QWidget *sambaTab = new QWidget(this);
-    QFormLayout *sambaTabLayout = new QFormLayout(sambaTab);
+    QWidget *advancedTab = new QWidget(this);
+    QFormLayout *advancedTabLayout = new QFormLayout(advancedTab);
+    
+    advancedTabLayout->addRow(new QLabel(i18n("Samba"), advancedTab));
 
-    QWidget *commonSettingsWidget = new QWidget(sambaTab);
+    QWidget *commonSettingsWidget = new QWidget(advancedTab);
     QGridLayout *commonSettingsWidgetLayout = new QGridLayout(commonSettingsWidget);
     commonSettingsWidgetLayout->setMargin(0);
 
@@ -153,58 +155,58 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     commonSettingsWidgetLayout->addWidget(domainLabel, 1, 0);
     commonSettingsWidgetLayout->addWidget(domain, 1, 1);
 
-    sambaTabLayout->addRow(i18n("Common Settings:"), commonSettingsWidget);
+    advancedTabLayout->addRow(i18n("Common Settings:"), commonSettingsWidget);
 
-    QWidget *remoteSmbPortWidget = new QWidget(sambaTab);
+    QWidget *remoteSmbPortWidget = new QWidget(advancedTab);
     QHBoxLayout *remoteSmbPortWidgetLayout = new QHBoxLayout(remoteSmbPortWidget);
     remoteSmbPortWidgetLayout->setMargin(0);
 
-    QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), sambaTab);
+    QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), advancedTab);
     useRemoteSmbPort->setObjectName("kcfg_UseRemoteSmbPort");
 
-    QSpinBox *remoteSmbPort = new QSpinBox(sambaTab);
+    QSpinBox *remoteSmbPort = new QSpinBox(advancedTab);
     remoteSmbPort->setObjectName("kcfg_RemoteSmbPort");
     //   remoteSmbPort->setSliderEnabled(true);
 
     remoteSmbPortWidgetLayout->addWidget(useRemoteSmbPort);
     remoteSmbPortWidgetLayout->addWidget(remoteSmbPort);
 
-    sambaTabLayout->addRow(QString(), remoteSmbPortWidget);
+    advancedTabLayout->addRow(QString(), remoteSmbPortWidget);
 
-    QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), sambaTab);
+    QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), advancedTab);
     largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
 
-    sambaTabLayout->addRow(QString(), largeNetworkNeighborhood);
+    advancedTabLayout->addRow(QString(), largeNetworkNeighborhood);
 
     //
     // Authentication
     //
-    QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), sambaTab);
+    QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), advancedTab);
     masterBrowsersRequireAuth->setObjectName("kcfg_MasterBrowsersRequireAuth");
 
-    sambaTabLayout->addRow(i18n("Authentication:"), masterBrowsersRequireAuth);
+    advancedTabLayout->addRow(i18n("Authentication:"), masterBrowsersRequireAuth);
 
-    QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), sambaTab);
+    QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), advancedTab);
     useKerberos->setObjectName("kcfg_UseKerberos");
 
-    sambaTabLayout->addRow(QString(), useKerberos);
+    advancedTabLayout->addRow(QString(), useKerberos);
 
-    QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), sambaTab);
+    QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), advancedTab);
     useCCache->setObjectName("kcfg_UseWinbindCCache");
 
-    sambaTabLayout->addRow(QString(), useCCache);
+    advancedTabLayout->addRow(QString(), useCCache);
 
     //
     // Security
     //
-    QWidget *encryptionWidget = new QWidget(sambaTab);
+    QWidget *encryptionWidget = new QWidget(advancedTab);
     QHBoxLayout *encryptionWidgetLayout = new QHBoxLayout(encryptionWidget);
     encryptionWidgetLayout->setMargin(0);
 
-    QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), sambaTab);
+    QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), advancedTab);
     useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
 
-    KComboBox *encryptionLevel = new KComboBox(sambaTab);
+    KComboBox *encryptionLevel = new KComboBox(advancedTab);
     encryptionLevel->setObjectName("kcfg_EncryptionLevel");
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> encryptionLevelChoices = Smb4KSettings::self()->encryptionLevelItem()->choices();
@@ -216,42 +218,38 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     encryptionWidgetLayout->addWidget(useEncryptionLevel);
     encryptionWidgetLayout->addWidget(encryptionLevel);
 
-    sambaTabLayout->addRow(i18n("Security:"), encryptionWidget);
-
-    addTab(sambaTab, i18n("Samba Settings"));
-
-    //
-    // Wake-On-LAN tab
-    //
-    QWidget *wakeOnLanTab = new QWidget(this);
-    QFormLayout *wakeOnLanTabLayout = new QFormLayout(wakeOnLanTab);
-
-    //
-    // Wake-On-LAN
-    //
-    QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), wakeOnLanTab);
+    advancedTabLayout->addRow(i18n("Security:"), encryptionWidget);
+    
+    advancedTabLayout->addRow(new QLabel(i18n("Wake-On-LAN"), advancedTab));
+    
+    QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), advancedTab);
     enableWakeOnLan->setObjectName("kcfg_EnableWakeOnLAN");
 
-    wakeOnLanTabLayout->addRow(enableWakeOnLan);
-
-    QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), wakeOnLanTab);
+    advancedTabLayout->addRow(i18n("Behavior:"), enableWakeOnLan);
+    
+    QWidget *waitingTimeWidget = new QWidget(advancedTab);
+    QGridLayout *waitingTimeWidgetLayout = new QGridLayout(waitingTimeWidget);
+    waitingTimeWidgetLayout->setMargin(0);
+    
+    QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), advancedTab);
     wakeOnLanWaitingTimeLabel->setIndent(25);
     wakeOnLanWaitingTimeLabel->setObjectName("WakeOnLanWaitingTimeLabel");
-
-    QSpinBox *wakeOnLanWaitingTime = new QSpinBox(wakeOnLanTab);
+    
+    QSpinBox *wakeOnLanWaitingTime = new QSpinBox(advancedTab);
     wakeOnLanWaitingTime->setObjectName("kcfg_WakeOnLANWaitingTime");
     wakeOnLanWaitingTime->setSuffix(i18n(" s"));
     wakeOnLanWaitingTime->setSingleStep(1);
     //   wakeOnLanWaitingTime->setSliderEnabled(true);
+    
+    waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTimeLabel, 0, 0);
+    waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTime, 0, 1);
 
-    wakeOnLanTabLayout->addRow(wakeOnLanWaitingTimeLabel, wakeOnLanWaitingTime);
-
-    //
-    // Wake-On_LAN note
-    //
-    QFrame *wakeOnLanNote = new QFrame(wakeOnLanTab);
+    advancedTabLayout->addRow(QString(), waitingTimeWidget);
+    
+    QFrame *wakeOnLanNote = new QFrame(advancedTab);
     QGridLayout *wakeOnLanNoteLayout = new QGridLayout(wakeOnLanNote);
     wakeOnLanNoteLayout->setContentsMargins(5, 5, 5, 5);
+    wakeOnLanNoteLayout->setMargin(0);
 
     QLabel *importantPixmap = new QLabel(wakeOnLanNote);
     importantPixmap->setPixmap(KIconLoader::global()->loadIcon("emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium));
@@ -266,10 +264,10 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     wakeOnLanNoteLayout->addWidget(importantPixmap, 0, 0, Qt::AlignVCenter);
     wakeOnLanNoteLayout->addWidget(message, 0, 1, Qt::AlignVCenter);
     wakeOnLanNoteLayout->setColumnStretch(1, 1);
-
-    wakeOnLanTabLayout->addRow(wakeOnLanNote);
-
-    addTab(wakeOnLanTab, i18n("Wake-On-LAN Settings"));
+    
+    advancedTabLayout->addRow(wakeOnLanNote);
+    
+    addTab(advancedTab, i18n("Advanced Settings"));
 
     //
     // Connections
