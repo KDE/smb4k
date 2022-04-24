@@ -1,7 +1,7 @@
 /*
     The core class that mounts the shares.
 
-    SPDX-FileCopyrightText: 2003-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -1021,11 +1021,11 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
     }
 
     if (setNetbiosNames) {
-        // The client's NetBIOS name
-        if (!Smb4KSettings::netBIOSName().isEmpty()) {
-            argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(Smb4KSettings::netBIOSName()));
-        } else if (!machineNetbiosName().isEmpty()) {
+        // The client's NetBIOS name. If that is empty, fall back to the local host name.
+        if (!machineNetbiosName().isEmpty()) {
             argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(machineNetbiosName()));
+        } else {
+            argumentsList << QString("netbiosname=%1").arg(KShell::quoteArg(QHostInfo::localHostName()));
         }
 
         // The server's NetBIOS name
