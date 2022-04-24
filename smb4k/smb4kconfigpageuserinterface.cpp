@@ -52,6 +52,7 @@ Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
     showBookmarkLabel->setObjectName("kcfg_ShowCustomBookmarkLabel");
 
     layout->addRow(i18n("Behavior:"), showBookmarkLabel);
+    layout->addRow(new QWidget());
 
     //
     // Network Neighborhood settings

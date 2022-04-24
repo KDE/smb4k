@@ -1,7 +1,7 @@
 /*
     Private classes for the SMB client
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -147,8 +147,7 @@ QHostAddress Smb4KClientBaseJob::lookupIpAddress(const QString &name)
     // If the IP address is not to be determined for the local machine, we can use QHostInfo to
     // determine it. Otherwise we need to use QNetworkInterface for it.
     //
-    if (name.toUpper() == QHostInfo::localHostName().toUpper() || name.toUpper() == machineNetbiosName().toUpper()
-        || name.toUpper() == Smb4KSettings::netBIOSName().toUpper()) {
+    if (name.toUpper() == QHostInfo::localHostName().toUpper() || name.toUpper() == machineNetbiosName().toUpper()) {
         // FIXME: Do we need to honor 'interfaces' here?
         QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
 

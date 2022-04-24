@@ -131,32 +131,6 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     
     advancedTabLayout->addRow(new QLabel(i18n("Samba"), advancedTab));
 
-    QWidget *commonSettingsWidget = new QWidget(advancedTab);
-    QGridLayout *commonSettingsWidgetLayout = new QGridLayout(commonSettingsWidget);
-    commonSettingsWidgetLayout->setMargin(0);
-
-    QLabel *netbiosNameLabel = new QLabel(commonSettingsWidget);
-    netbiosNameLabel->setText(Smb4KSettings::self()->netBIOSNameItem()->label());
-
-    KLineEdit *netbiosName = new KLineEdit(commonSettingsWidget);
-    netbiosName->setObjectName("kcfg_NetBIOSName");
-    netbiosName->setClearButtonEnabled(true);
-
-    commonSettingsWidgetLayout->addWidget(netbiosNameLabel, 0, 0);
-    commonSettingsWidgetLayout->addWidget(netbiosName, 0, 1);
-
-    QLabel *domainLabel = new QLabel(commonSettingsWidget);
-    domainLabel->setText(Smb4KSettings::self()->domainNameItem()->label());
-
-    KLineEdit *domain = new KLineEdit(commonSettingsWidget);
-    domain->setObjectName("kcfg_DomainName");
-    domain->setClearButtonEnabled(true);
-
-    commonSettingsWidgetLayout->addWidget(domainLabel, 1, 0);
-    commonSettingsWidgetLayout->addWidget(domain, 1, 1);
-
-    advancedTabLayout->addRow(i18n("Common Settings:"), commonSettingsWidget);
-
     QWidget *remoteSmbPortWidget = new QWidget(advancedTab);
     QHBoxLayout *remoteSmbPortWidgetLayout = new QHBoxLayout(remoteSmbPortWidget);
     remoteSmbPortWidgetLayout->setMargin(0);
@@ -171,7 +145,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     remoteSmbPortWidgetLayout->addWidget(useRemoteSmbPort);
     remoteSmbPortWidgetLayout->addWidget(remoteSmbPort);
 
-    advancedTabLayout->addRow(QString(), remoteSmbPortWidget);
+    advancedTabLayout->addRow(i18n("Common Settings:"), remoteSmbPortWidget);
 
     QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), advancedTab);
     largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
