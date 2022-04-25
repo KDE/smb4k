@@ -129,8 +129,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     QWidget *advancedTab = new QWidget(this);
     QFormLayout *advancedTabLayout = new QFormLayout(advancedTab);
     
-    advancedTabLayout->addRow(new QLabel(i18n("Samba"), advancedTab));
-
+    // Samba    
     QWidget *remoteSmbPortWidget = new QWidget(advancedTab);
     QHBoxLayout *remoteSmbPortWidgetLayout = new QHBoxLayout(remoteSmbPortWidget);
     remoteSmbPortWidgetLayout->setMargin(0);
@@ -145,20 +144,17 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     remoteSmbPortWidgetLayout->addWidget(useRemoteSmbPort);
     remoteSmbPortWidgetLayout->addWidget(remoteSmbPort);
 
-    advancedTabLayout->addRow(i18n("Common Settings:"), remoteSmbPortWidget);
+    advancedTabLayout->addRow(i18n("Samba:"), remoteSmbPortWidget);
 
     QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), advancedTab);
     largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
 
     advancedTabLayout->addRow(QString(), largeNetworkNeighborhood);
 
-    //
-    // Authentication
-    //
     QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), advancedTab);
     masterBrowsersRequireAuth->setObjectName("kcfg_MasterBrowsersRequireAuth");
 
-    advancedTabLayout->addRow(i18n("Authentication:"), masterBrowsersRequireAuth);
+    advancedTabLayout->addRow(QString(), masterBrowsersRequireAuth);
 
     QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), advancedTab);
     useKerberos->setObjectName("kcfg_UseKerberos");
@@ -170,9 +166,6 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     advancedTabLayout->addRow(QString(), useCCache);
 
-    //
-    // Security
-    //
     QWidget *encryptionWidget = new QWidget(advancedTab);
     QHBoxLayout *encryptionWidgetLayout = new QHBoxLayout(encryptionWidget);
     encryptionWidgetLayout->setMargin(0);
@@ -192,14 +185,12 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     encryptionWidgetLayout->addWidget(useEncryptionLevel);
     encryptionWidgetLayout->addWidget(encryptionLevel);
 
-    advancedTabLayout->addRow(i18n("Security:"), encryptionWidget);
-    
-    advancedTabLayout->addRow(new QLabel(i18n("Wake-On-LAN"), advancedTab));
+    advancedTabLayout->addRow(QString(), encryptionWidget);
     
     QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), advancedTab);
     enableWakeOnLan->setObjectName("kcfg_EnableWakeOnLAN");
 
-    advancedTabLayout->addRow(i18n("Behavior:"), enableWakeOnLan);
+    advancedTabLayout->addRow(i18n("Wake-On-LAN:"), enableWakeOnLan);
     
     QWidget *waitingTimeWidget = new QWidget(advancedTab);
     QGridLayout *waitingTimeWidgetLayout = new QGridLayout(waitingTimeWidget);
@@ -239,7 +230,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     wakeOnLanNoteLayout->addWidget(message, 0, 1, Qt::AlignVCenter);
     wakeOnLanNoteLayout->setColumnStretch(1, 1);
     
-    advancedTabLayout->addRow(wakeOnLanNote);
+    advancedTabLayout->addRow(QString(), wakeOnLanNote);
     
     addTab(advancedTab, i18n("Advanced Settings"));
 
