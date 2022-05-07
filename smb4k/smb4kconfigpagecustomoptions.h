@@ -142,7 +142,7 @@ protected Q_SLOTS:
     void slotEntryChanged();
 
     /**
-     * Enable the options for sending Wake-On-LAN magic packages, if the MAC
+     * Enable the options for sending Wake-On-LAN magic packets, if the MAC
      * address was entered correctly.
      */
     void slotEnableWOLFeatures(const QString &mac_address);

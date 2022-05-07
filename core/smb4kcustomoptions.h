@@ -553,39 +553,39 @@ public:
     QString macAddress() const;
 
     /**
-     * Set whether a magic WOL package should be send to the host that this
+     * Set whether a magic WOL packet should be send to the host that this
      * network item represents or where this network item is located before scanning
      * the entire network.
      *
-     * @param send              Boolean that determines if a magic WOL package
+     * @param send              Boolean that determines if a magic WOL packet
      *                          is to be sent.
      */
     void setWOLSendBeforeNetworkScan(bool send);
 
     /**
-     * Send a magic WOL package to the host that this network item represents
+     * Send a magic WOL packet to the host that this network item represents
      * or where this network item is located before scanning the entire network.
      *
-     * @returns TRUE if a magic WOL package should be send on first network
+     * @returns TRUE if a magic WOL packet should be send on first network
      * scan.
      */
     bool wolSendBeforeNetworkScan() const;
 
     /**
-     * Set whether a magic WOL package should be send to the host that this
+     * Set whether a magic WOL packet should be send to the host that this
      * network item represents or where this network item is located before a
      * mount attempt.
      *
-     * @param send              Boolean that determines if a magic WOL package
+     * @param send              Boolean that determines if a magic WOL packet
      *                          is to be sent.
      */
     void setWOLSendBeforeMount(bool send);
 
     /**
-     * Send a magic WOL package to the host that this network item represents
+     * Send a magic WOL packet to the host that this network item represents
      * or where this network item is located before a mount attempt.
      *
-     * @returns TRUE if a magic WOL package should be send on first network
+     * @returns TRUE if a magic WOL packet should be send on first network
      * scan.
      */
     bool wolSendBeforeMount() const;

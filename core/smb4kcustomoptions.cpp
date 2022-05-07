@@ -861,12 +861,12 @@ bool Smb4KCustomOptions::hasOptions(bool withoutRemountOnce) const
         return true;
     }
 
-    // Send WOL packages before first scan
+    // Send WOL packets before first scan
     if (d->wakeOnLanBeforeFirstScan) {
         return true;
     }
 
-    // Send WOL packages before mount
+    // Send WOL packets before mount
     if (d->wakeOnLanBeforeMount) {
         return true;
     }

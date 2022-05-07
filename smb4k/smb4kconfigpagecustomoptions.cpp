@@ -248,17 +248,17 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
     QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
 
-    // Send magic package before network scan
-    QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);
-    sendPackageBeforeScan->setObjectName("SendPackageBeforeScan");
+    // Send magic packet before network scan
+    QCheckBox *sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), wakeOnLANActionsBox);
+    sendPacketBeforeScan->setObjectName("SendPacketBeforeScan");
 
-    wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeScan, 0);
+    wakeOnLANActionsBoxLayout->addWidget(sendPacketBeforeScan, 0);
 
-    // Send magic package before mount
-    QCheckBox *sendPackageBeforeMount = new QCheckBox(i18n("Send magic package before mounting a share"), wakeOnLanTab);
-    sendPackageBeforeMount->setObjectName("SendPackageBeforeMount");
+    // Send magic packet before mount
+    QCheckBox *sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), wakeOnLanTab);
+    sendPacketBeforeMount->setObjectName("SendPacketBeforeMount");
 
-    wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeMount, 0);
+    wakeOnLANActionsBoxLayout->addWidget(sendPacketBeforeMount, 0);
 
     wakeOnLanTabLayout->addWidget(wakeOnLANActionsBox, 0);
     wakeOnLanTabLayout->addStretch(100);
@@ -876,23 +876,23 @@ void Smb4KConfigPageCustomOptions::clearEditors()
     }
 
     //
-    // Wake-On-Lan: send package before scan
+    // Wake-On-Lan: send packet before scan
     //
-    QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
+    QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
 
-    if (sendPackageBeforeScan) {
-        disconnect(sendPackageBeforeScan, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-        sendPackageBeforeScan->setChecked(false);
+    if (sendPacketBeforeScan) {
+        disconnect(sendPacketBeforeScan, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+        sendPacketBeforeScan->setChecked(false);
     }
 
     //
-    // Wake-On-Lan: Send package before mount
+    // Wake-On-Lan: Send packet before mount
     //
-    QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
+    QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
 
-    if (sendPackageBeforeMount) {
-        disconnect(sendPackageBeforeMount, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
-        sendPackageBeforeMount->setChecked(false);
+    if (sendPacketBeforeMount) {
+        disconnect(sendPacketBeforeMount, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+        sendPacketBeforeMount->setChecked(false);
     }
 
     //
@@ -1177,23 +1177,23 @@ void Smb4KConfigPageCustomOptions::populateEditors()
     }
 
     //
-    // Wake-On-Lan: Send package before scan
+    // Wake-On-Lan: Send packet before scan
     //
-    QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
+    QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
 
-    if (sendPackageBeforeScan) {
-        sendPackageBeforeScan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
-        connect(sendPackageBeforeScan, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+    if (sendPacketBeforeScan) {
+        sendPacketBeforeScan->setChecked(m_currentOptions->wolSendBeforeNetworkScan());
+        connect(sendPacketBeforeScan, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     }
 
     //
-    // Wake-On-Lan: Send package before mount
+    // Wake-On-Lan: Send packet before mount
     //
-    QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
+    QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
 
-    if (sendPackageBeforeMount) {
-        sendPackageBeforeMount->setChecked(m_currentOptions->wolSendBeforeMount());
-        connect(sendPackageBeforeMount, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
+    if (sendPacketBeforeMount) {
+        sendPacketBeforeMount->setChecked(m_currentOptions->wolSendBeforeMount());
+        connect(sendPacketBeforeMount, SIGNAL(toggled(bool)), this, SLOT(slotEntryChanged()));
     }
 
     //
@@ -1484,21 +1484,21 @@ void Smb4KConfigPageCustomOptions::commitChanges()
     }
 
     //
-    // Wake-On-Lan: Send package before scan
+    // Wake-On-Lan: Send packet before scan
     //
-    QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
+    QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
 
-    if (sendPackageBeforeScan) {
-        m_currentOptions->setWOLSendBeforeNetworkScan(sendPackageBeforeScan->isChecked());
+    if (sendPacketBeforeScan) {
+        m_currentOptions->setWOLSendBeforeNetworkScan(sendPacketBeforeScan->isChecked());
     }
 
     //
-    // Wake-On-Lan: Send package before mount
+    // Wake-On-Lan: Send packet before mount
     //
-    QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
+    QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
 
-    if (sendPackageBeforeMount) {
-        m_currentOptions->setWOLSendBeforeMount(sendPackageBeforeMount->isChecked());
+    if (sendPacketBeforeMount) {
+        m_currentOptions->setWOLSendBeforeMount(sendPacketBeforeMount->isChecked());
     }
 
     //
@@ -1684,21 +1684,21 @@ void Smb4KConfigPageCustomOptions::slotEnableWOLFeatures(const QString &mac_addr
     QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
 
     //
-    // Wake-On_lan: send package before scan
+    // Wake-On_lan: send packet before scan
     //
-    QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
+    QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
 
-    if (sendPackageBeforeScan) {
-        sendPackageBeforeScan->setEnabled(exp.exactMatch(mac_address));
+    if (sendPacketBeforeScan) {
+        sendPacketBeforeScan->setEnabled(exp.exactMatch(mac_address));
     }
 
     //
-    // Wake-On-Lan: send package before mount
+    // Wake-On-Lan: send packet before mount
     //
-    QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
+    QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
 
-    if (sendPackageBeforeMount) {
-        sendPackageBeforeMount->setEnabled(exp.exactMatch(mac_address));
+    if (sendPacketBeforeMount) {
+        sendPacketBeforeMount->setEnabled(exp.exactMatch(mac_address));
     }
 }
 

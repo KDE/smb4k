@@ -80,7 +80,7 @@ void Smb4KClient::abort()
 void Smb4KClient::lookupDomains()
 {
     //
-    // Send Wakeup-On-LAN packages
+    // Send Wakeup-On-LAN packets
     //
     if (Smb4KSettings::enableWakeOnLAN()) {
         QList<OptionsPtr> wakeOnLanEntries = Smb4KCustomOptionsManager::self()->wakeOnLanEntries();

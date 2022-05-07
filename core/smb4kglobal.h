@@ -56,7 +56,7 @@ namespace Smb4KGlobal
  * @enum LookupDomainMembers    Look up those servers that belong to a domain/workgroup
  * @enum LookupShares           Look up shares on a server
  * @enum LookupFiles            Look up files and directories within a share
- * @enum WakeUp                 Send magic Wake-On-LAN packages
+ * @enum WakeUp                 Send magic Wake-On-LAN packets
  * @enum PrintFile              Print a file
  * @enum NetworkSearch          Network search
  * @enum MountShare             Mount a share

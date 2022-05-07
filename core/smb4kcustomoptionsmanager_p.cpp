@@ -483,21 +483,21 @@ void Smb4KCustomOptionsDialog::setupView()
     QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
     QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
 
-    // Send magic package before network scan
-    QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);
-    sendPackageBeforeScan->setObjectName("SendPackageBeforeScan");
+    // Send magic packet before network scan
+    QCheckBox *sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), wakeOnLANActionsBox);
+    sendPacketBeforeScan->setObjectName("SendPacketBeforeScan");
 
-    connect(sendPackageBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+    connect(sendPacketBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
-    wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeScan, 0);
+    wakeOnLANActionsBoxLayout->addWidget(sendPacketBeforeScan, 0);
 
-    // Send magic package before mount
-    QCheckBox *sendPackageBeforeMount = new QCheckBox(i18n("Send magic package before mounting a share"), wakeOnLanTab);
-    sendPackageBeforeMount->setObjectName("SendPackageBeforeMount");
+    // Send magic packet before mount
+    QCheckBox *sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), wakeOnLanTab);
+    sendPacketBeforeMount->setObjectName("SendPacketBeforeMount");
 
-    connect(sendPackageBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+    connect(sendPacketBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
-    wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeMount, 0);
+    wakeOnLANActionsBoxLayout->addWidget(sendPacketBeforeMount, 0);
 
     wakeOnLanTabLayout->addWidget(wakeOnLANActionsBox, 0);
     wakeOnLanTabLayout->addStretch(100);
@@ -575,11 +575,11 @@ void Smb4KCustomOptionsDialog::setupView()
         // MAC address
         macAddress->setText(m_options->macAddress());
 
-        // Send magic package before scan
-        sendPackageBeforeScan->setChecked(m_options->wolSendBeforeNetworkScan());
+        // Send magic packet before scan
+        sendPacketBeforeScan->setChecked(m_options->wolSendBeforeNetworkScan());
 
-        // Send magic package before mount
-        sendPackageBeforeMount->setChecked(m_options->wolSendBeforeMount());
+        // Send magic packet before mount
+        sendPacketBeforeMount->setChecked(m_options->wolSendBeforeMount());
     } else {
         setDefaultValues();
     }
@@ -827,21 +827,21 @@ void Smb4KCustomOptionsDialog::setupView()
     QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
     QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
 
-    // Send magic package before network scan
-    QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);
-    sendPackageBeforeScan->setObjectName("SendPackageBeforeScan");
+    // Send magic packet before network scan
+    QCheckBox *sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), wakeOnLANActionsBox);
+    sendPacketBeforeScan->setObjectName("SendPacketBeforeScan");
 
-    connect(sendPackageBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+    connect(sendPacketBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
-    wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeScan, 0);
+    wakeOnLANActionsBoxLayout->addWidget(sendPacketBeforeScan, 0);
 
-    // Send magic package before mount
-    QCheckBox *sendPackageBeforeMount = new QCheckBox(i18n("Send magic package before mounting a share"), wakeOnLanTab);
-    sendPackageBeforeMount->setObjectName("SendPackageBeforeMount");
+    // Send magic packet before mount
+    QCheckBox *sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), wakeOnLanTab);
+    sendPacketBeforeMount->setObjectName("SendPacketBeforeMount");
 
-    connect(sendPackageBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+    connect(sendPacketBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
-    wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeMount, 0);
+    wakeOnLANActionsBoxLayout->addWidget(sendPacketBeforeMount, 0);
 
     wakeOnLanTabLayout->addWidget(wakeOnLANActionsBox, 0);
     wakeOnLanTabLayout->addStretch(100);
@@ -893,11 +893,11 @@ void Smb4KCustomOptionsDialog::setupView()
         // MAC address
         macAddress->setText(m_options->macAddress());
 
-        // Send magic package before scan
-        sendPackageBeforeScan->setChecked(m_options->wolSendBeforeNetworkScan());
+        // Send magic packet before scan
+        sendPacketBeforeScan->setChecked(m_options->wolSendBeforeNetworkScan());
 
-        // Send magic package before mount
-        sendPackageBeforeMount->setChecked(m_options->wolSendBeforeMount());
+        // Send magic packet before mount
+        sendPacketBeforeMount->setChecked(m_options->wolSendBeforeMount());
     } else {
         setDefaultValues();
     }
@@ -1052,21 +1052,21 @@ void Smb4KCustomOptionsDialog::setupView()
     QGroupBox *wakeOnLANActionsBox = new QGroupBox(i18n("Actions"), wakeOnLanTab);
     QVBoxLayout *wakeOnLANActionsBoxLayout = new QVBoxLayout(wakeOnLANActionsBox);
 
-    // Send magic package before network scan
-    QCheckBox *sendPackageBeforeScan = new QCheckBox(i18n("Send magic package before scanning the network neighborhood"), wakeOnLANActionsBox);
-    sendPackageBeforeScan->setObjectName("SendPackageBeforeScan");
+    // Send magic packet before network scan
+    QCheckBox *sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), wakeOnLANActionsBox);
+    sendPacketBeforeScan->setObjectName("SendPacketBeforeScan");
 
-    connect(sendPackageBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+    connect(sendPacketBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
-    wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeScan, 0);
+    wakeOnLANActionsBoxLayout->addWidget(sendPacketBeforeScan, 0);
 
-    // Send magic package before mount
-    QCheckBox *sendPackageBeforeMount = new QCheckBox(i18n("Send magic package before mounting a share"), wakeOnLanTab);
-    sendPackageBeforeMount->setObjectName("SendPackageBeforeMount");
+    // Send magic packet before mount
+    QCheckBox *sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), wakeOnLanTab);
+    sendPacketBeforeMount->setObjectName("SendPacketBeforeMount");
 
-    connect(sendPackageBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
+    connect(sendPacketBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
-    wakeOnLANActionsBoxLayout->addWidget(sendPackageBeforeMount, 0);
+    wakeOnLANActionsBoxLayout->addWidget(sendPacketBeforeMount, 0);
 
     wakeOnLanTabLayout->addWidget(wakeOnLANActionsBox, 0);
     wakeOnLanTabLayout->addStretch(100);
@@ -1098,11 +1098,11 @@ void Smb4KCustomOptionsDialog::setupView()
         // MAC address
         macAddress->setText(m_options->macAddress());
 
-        // Send magic package before scan
-        sendPackageBeforeScan->setChecked(m_options->wolSendBeforeNetworkScan());
+        // Send magic packet before scan
+        sendPacketBeforeScan->setChecked(m_options->wolSendBeforeNetworkScan());
 
-        // Send magic package before mount
-        sendPackageBeforeMount->setChecked(m_options->wolSendBeforeMount());
+        // Send magic packet before mount
+        sendPacketBeforeMount->setChecked(m_options->wolSendBeforeMount());
     } else {
         setDefaultValues();
     }
@@ -1392,18 +1392,18 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
             }
         }
 
-        QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
+        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
 
-        if (sendPackageBeforeScan) {
-            if (sendPackageBeforeScan->isChecked()) {
+        if (sendPacketBeforeScan) {
+            if (sendPacketBeforeScan->isChecked()) {
                 return false;
             }
         }
 
-        QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
+        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
 
-        if (sendPackageBeforeMount) {
-            if (sendPackageBeforeMount->isChecked()) {
+        if (sendPacketBeforeMount) {
+            if (sendPacketBeforeMount->isChecked()) {
                 return false;
             }
         }
@@ -1638,16 +1638,16 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
             macAddress->setInputMask("HH:HH:HH:HH:HH:HH;_");
         }
 
-        QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
+        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
 
-        if (sendPackageBeforeScan) {
-            sendPackageBeforeScan->setChecked(false);
+        if (sendPacketBeforeScan) {
+            sendPacketBeforeScan->setChecked(false);
         }
 
-        QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
+        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
 
-        if (sendPackageBeforeMount) {
-            sendPackageBeforeMount->setChecked(false);
+        if (sendPacketBeforeMount) {
+            sendPacketBeforeMount->setChecked(false);
         }
     }
 }
@@ -1908,16 +1908,16 @@ void Smb4KCustomOptionsDialog::saveValues()
             m_options->setMACAddress(macAddress->text());
         }
 
-        QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
+        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
 
-        if (sendPackageBeforeScan) {
-            m_options->setWOLSendBeforeNetworkScan(sendPackageBeforeScan->isChecked());
+        if (sendPacketBeforeScan) {
+            m_options->setWOLSendBeforeNetworkScan(sendPacketBeforeScan->isChecked());
         }
 
-        QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
+        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
 
-        if (sendPackageBeforeMount) {
-            m_options->setWOLSendBeforeMount(sendPackageBeforeMount->isChecked());
+        if (sendPacketBeforeMount) {
+            m_options->setWOLSendBeforeMount(sendPacketBeforeMount->isChecked());
         }
     }
 
@@ -1956,16 +1956,16 @@ void Smb4KCustomOptionsDialog::slotEnableWOLFeatures(const QString &mac)
 {
     QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
 
-    QCheckBox *sendPackageBeforeScan = findChild<QCheckBox *>("SendPackageBeforeScan");
+    QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
 
-    if (sendPackageBeforeScan) {
-        sendPackageBeforeScan->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
+    if (sendPacketBeforeScan) {
+        sendPacketBeforeScan->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
     }
 
-    QCheckBox *sendPackageBeforeMount = findChild<QCheckBox *>("SendPackageBeforeMount");
+    QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
 
-    if (sendPackageBeforeMount) {
-        sendPackageBeforeMount->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
+    if (sendPacketBeforeMount) {
+        sendPacketBeforeMount->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
     }
 }
 
