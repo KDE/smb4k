@@ -21,6 +21,8 @@
 #include <KCrash/KCrash>
 #include <KDBusAddons/KDBusService>
 #include <KI18n/KLocalizedString>
+#include <KWindowSystem/KWindowSystem>
+#include <kwindowsystem_version.h>
 
 #include <smb4k_version.h>
 
@@ -154,6 +156,17 @@ int main(int argc, char **argv)
 
     // Unique application
     const KDBusService service(KDBusService::Unique);
+
+    QObject::connect(&service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &/*args*/, const QString &/*workingDir*/){
+        if (mainWindow->isVisible()) {
+#if KWINDOWSYSTEM_VERSION >= QT_VERSION_CHECK(5, 91, 0)
+            KWindowSystem::updateStartupId(mainWindow->windowHandle());
+            KWindowSystem::activateWindow(mainWindow->windowHandle());
+#endif
+        } else {
+            mainWindow->setVisible(true);
+        }
+    });
 
     // Use a crash handler
     KCrash::setDrKonqiEnabled(true);

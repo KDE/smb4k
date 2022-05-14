@@ -40,6 +40,7 @@ target_link_libraries(smb4kconfigdialog
   KF5::ConfigGui
   KF5::KIOCore
   KF5::KIOWidgets
+  KF5::WindowSystem
   smb4kcore)
   
 if (SMB4K_WITH_WS_DISCOVERY)
