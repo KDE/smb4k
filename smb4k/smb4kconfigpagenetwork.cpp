@@ -16,6 +16,7 @@
 // #include <QFormLayout>
 #include <QGroupBox>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QGridLayout>
 
 // KDE includes
@@ -152,111 +153,111 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     remoteSmbPort->setObjectName("kcfg_RemoteSmbPort");
     //   remoteSmbPort->setSliderEnabled(true);
 
-    sambaBoxLayout->addWidget(remoteSmbPort, 0, 1);
+    sambaBoxLayout->addWidget(remoteSmbPort, 0,  1);
+
+    QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), sambaBox);
+    useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
+
+    sambaBoxLayout->addWidget(useEncryptionLevel, 1, 0);
+
+    KComboBox *encryptionLevel = new KComboBox(sambaBox);
+    encryptionLevel->setObjectName("kcfg_EncryptionLevel");
+
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> encryptionLevelChoices = Smb4KSettings::self()->encryptionLevelItem()->choices();
+
+    for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(encryptionLevelChoices)) {
+        encryptionLevel->addItem(c.label);
+    }
+
+    sambaBoxLayout->addWidget(encryptionLevel, 1, 1);
 
     QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), sambaBox);
     largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
 
-    sambaBoxLayout->addWidget(largeNetworkNeighborhood, 1, 0, 1, 2);
+    sambaBoxLayout->addWidget(largeNetworkNeighborhood, 2, 0, 1, 2);
 
     QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), sambaBox);
     masterBrowsersRequireAuth->setObjectName("kcfg_MasterBrowsersRequireAuth");
 
-    sambaBoxLayout->addWidget(masterBrowsersRequireAuth, 2, 0, 1, 2);
-//
-//     QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), advancedTab);
-//     useKerberos->setObjectName("kcfg_UseKerberos");
-//
-//     advancedTabLayout->addRow(QString(), useKerberos);
-//
-//     QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), advancedTab);
-//     useCCache->setObjectName("kcfg_UseWinbindCCache");
-//
-//     advancedTabLayout->addRow(QString(), useCCache);
-//
-//     QWidget *encryptionWidget = new QWidget(advancedTab);
-//     QHBoxLayout *encryptionWidgetLayout = new QHBoxLayout(encryptionWidget);
-//     encryptionWidgetLayout->setMargin(0);
-//
-//     QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), advancedTab);
-//     useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
-//
-//     KComboBox *encryptionLevel = new KComboBox(advancedTab);
-//     encryptionLevel->setObjectName("kcfg_EncryptionLevel");
-//
-//     QList<KCoreConfigSkeleton::ItemEnum::Choice> encryptionLevelChoices = Smb4KSettings::self()->encryptionLevelItem()->choices();
-//
-//     for (const KCoreConfigSkeleton::ItemEnum::Choice &c : qAsConst(encryptionLevelChoices)) {
-//         encryptionLevel->addItem(c.label);
-//     }
-//
-//     encryptionWidgetLayout->addWidget(useEncryptionLevel);
-//     encryptionWidgetLayout->addWidget(encryptionLevel);
-//
-//     advancedTabLayout->addRow(QString(), encryptionWidget);
-//
-//     QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), advancedTab);
-//     enableWakeOnLan->setObjectName("kcfg_EnableWakeOnLAN");
+    sambaBoxLayout->addWidget(masterBrowsersRequireAuth, 3, 0, 1, 2);
+
+    QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), sambaBox);
+    useKerberos->setObjectName("kcfg_UseKerberos");
+
+    sambaBoxLayout->addWidget(useKerberos, 4, 0, 1, 2);
+
+    QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), sambaBox);
+    useCCache->setObjectName("kcfg_UseWinbindCCache");
+
+    sambaBoxLayout->addWidget(useCCache, 5, 0, 1, 2);
 
     advancedTabLayout->addWidget(sambaBox);
 
-//     advancedTabLayout->addRow(i18n("Wake-On-LAN:"), enableWakeOnLan);
-//
-//     QWidget *waitingTimeWidget = new QWidget(advancedTab);
-//     QGridLayout *waitingTimeWidgetLayout = new QGridLayout(waitingTimeWidget);
-//     waitingTimeWidgetLayout->setMargin(0);
-//
-//     QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), advancedTab);
-//     wakeOnLanWaitingTimeLabel->setIndent(25);
-//     wakeOnLanWaitingTimeLabel->setObjectName("WakeOnLanWaitingTimeLabel");
-//
-//     QSpinBox *wakeOnLanWaitingTime = new QSpinBox(advancedTab);
-//     wakeOnLanWaitingTime->setObjectName("kcfg_WakeOnLANWaitingTime");
-//     wakeOnLanWaitingTime->setSuffix(i18n(" s"));
-//     wakeOnLanWaitingTime->setSingleStep(1);
-//     //   wakeOnLanWaitingTime->setSliderEnabled(true);
-//
-//     waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTimeLabel, 0, 0);
-//     waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTime, 0, 1);
-//
-//     advancedTabLayout->addRow(QString(), waitingTimeWidget);
-//
-//     QFrame *wakeOnLanNote = new QFrame(advancedTab);
-//     QGridLayout *wakeOnLanNoteLayout = new QGridLayout(wakeOnLanNote);
-//     wakeOnLanNoteLayout->setContentsMargins(5, 5, 5, 5);
-//     wakeOnLanNoteLayout->setMargin(0);
-//
-//     QLabel *importantPixmap = new QLabel(wakeOnLanNote);
-//     importantPixmap->setPixmap(KIconLoader::global()->loadIcon("emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium));
-//     importantPixmap->adjustSize();
-//
-//     QLabel *message = new QLabel(wakeOnLanNote);
-//     message->setText(i18n("<qt>Define the hosts that should be woken up via the custom options dialog.</qt>"));
-//     message->setTextFormat(Qt::AutoText);
-//     message->setWordWrap(true);
-//     message->setAlignment(Qt::AlignJustify);
-//
-//     wakeOnLanNoteLayout->addWidget(importantPixmap, 0, 0, Qt::AlignVCenter);
-//     wakeOnLanNoteLayout->addWidget(message, 0, 1, Qt::AlignVCenter);
-//     wakeOnLanNoteLayout->setColumnStretch(1, 1);
-//
-//     advancedTabLayout->addRow(QString(), wakeOnLanNote);
+    QGroupBox *wakeOnLanBox = new QGroupBox(i18n("Wake-On-LAN"), advancedTab);
+    QVBoxLayout *wakeOnLanBoxLayout = new QVBoxLayout(wakeOnLanBox);
 
+    QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), wakeOnLanBox);
+    enableWakeOnLan->setObjectName("kcfg_EnableWakeOnLAN");
+
+    wakeOnLanBoxLayout->addWidget(enableWakeOnLan);
+
+    QWidget *waitingTimeWidget = new QWidget(wakeOnLanBox);
+    QHBoxLayout *waitingTimeWidgetLayout = new QHBoxLayout(waitingTimeWidget);
+    waitingTimeWidgetLayout->setMargin(0);
+
+    QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), waitingTimeWidget);
+    wakeOnLanWaitingTimeLabel->setIndent(25);
+    wakeOnLanWaitingTimeLabel->setObjectName("WakeOnLanWaitingTimeLabel");
+
+    waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTimeLabel);
+
+    QSpinBox *wakeOnLanWaitingTime = new QSpinBox(waitingTimeWidget);
+    wakeOnLanWaitingTime->setObjectName("kcfg_WakeOnLANWaitingTime");
+    wakeOnLanWaitingTime->setSuffix(i18n(" s"));
+    wakeOnLanWaitingTime->setSingleStep(1);
+    //   wakeOnLanWaitingTime->setSliderEnabled(true);
+
+    waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTime);
+
+    wakeOnLanBoxLayout->addWidget(waitingTimeWidget);
+
+    QFrame *wakeOnLanNote = new QFrame(wakeOnLanBox);
+    QGridLayout *wakeOnLanNoteLayout = new QGridLayout(wakeOnLanNote);
+    wakeOnLanNoteLayout->setContentsMargins(5, 5, 5, 5);
+    wakeOnLanNoteLayout->setMargin(0);
+
+    QLabel *importantPixmap = new QLabel(wakeOnLanNote);
+    importantPixmap->setPixmap(KIconLoader::global()->loadIcon("emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium));
+    importantPixmap->adjustSize();
+
+    QLabel *message = new QLabel(wakeOnLanNote);
+    message->setText(i18n("<qt>Define the hosts that should be woken up via the custom options dialog.</qt>"));
+    message->setTextFormat(Qt::AutoText);
+    message->setWordWrap(true);
+    message->setAlignment(Qt::AlignJustify);
+
+    wakeOnLanNoteLayout->addWidget(importantPixmap, 0, 0, Qt::AlignVCenter);
+    wakeOnLanNoteLayout->addWidget(message, 0, 1, Qt::AlignVCenter);
+    wakeOnLanNoteLayout->setColumnStretch(1, 1);
+
+    wakeOnLanBoxLayout->addWidget(wakeOnLanNote);
+
+    advancedTabLayout->addWidget(wakeOnLanBox);
     advancedTabLayout->addStretch(100);
 
     addTab(advancedTab, i18n("Advanced Settings"));
-//
-//     //
-//     // Connections
-//     //
-//     connect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotSetProtocolVersionsToggled(bool)));
-//     connect(enableWakeOnLan, SIGNAL(toggled(bool)), this, SLOT(slotEnableWakeOnLanFeatureToggled(bool)));
-//
-//     //
-//     // Set the correct states to the widgets
-//     //
-//     slotSetProtocolVersionsToggled(Smb4KSettings::useClientProtocolVersions());
-//     slotEnableWakeOnLanFeatureToggled(Smb4KSettings::enableWakeOnLAN());
+
+    //
+    // Connections
+    //
+    connect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotSetProtocolVersionsToggled(bool)));
+    connect(enableWakeOnLan, SIGNAL(toggled(bool)), this, SLOT(slotEnableWakeOnLanFeatureToggled(bool)));
+
+    //
+    // Set the correct states to the widgets
+    //
+    slotSetProtocolVersionsToggled(Smb4KSettings::useClientProtocolVersions());
+    slotEnableWakeOnLanFeatureToggled(Smb4KSettings::enableWakeOnLAN());
 }
 
 Smb4KConfigPageNetwork::~Smb4KConfigPageNetwork()
