@@ -8,10 +8,11 @@ include:
 #  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-linux.yml
 #  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-freebsd.yml
 
-before_script:
+
+job:
   - tags:
     - freebsd
-  - script: 
+  - before_script: 
     - pkg update
     - pkg install samba413
 
