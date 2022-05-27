@@ -3,10 +3,11 @@
 
 include:
   - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux.yml
-#  - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/freebsd.yml
+  - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/freebsd.yml
 
 #  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-before.yml
 #  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-linux.yml
 #  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-freebsd.yml
 
-
+before_script:
+  - if [[ $(uname -o) == "FreeBSD" ]] ; then pkg update && pkg install samba413 ; fi
