@@ -12,15 +12,15 @@
 // Qt includes
 #include <QAction>
 #include <QCheckBox>
-#include <QFormLayout>
 #include <QGridLayout>
+#include <QGroupBox>
 #include <QHeaderView>
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QMouseEvent>
 #include <QPushButton>
 #include <QTableWidget>
-#include <QLabel>
+#include <QVBoxLayout>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -36,33 +36,35 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     //
     // Layout
     //
-    QFormLayout *layout = new QFormLayout(this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
 
     //
     // Settings
     //
-    QCheckBox *useWallet = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(), this);
+    QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
+    QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
+
+    QCheckBox *useWallet = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(), settingsBox);
     useWallet->setObjectName("kcfg_UseWallet");
 
     connect(useWallet, SIGNAL(toggled(bool)), this, SLOT(slotKWalletButtonToggled(bool)));
 
-    layout->addRow(i18n("Behavior:"), useWallet);
+    settingsBoxLayout->addWidget(useWallet);
 
-    QCheckBox *defaultAuth = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), this);
+    QCheckBox *defaultAuth = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), settingsBox);
     defaultAuth->setObjectName("kcfg_UseDefaultLogin");
 
     connect(defaultAuth, SIGNAL(toggled(bool)), this, SLOT(slotDefaultLoginToggled(bool)));
 
-    layout->addRow(QString(), defaultAuth);
+    settingsBoxLayout->addWidget(defaultAuth);
+
+    layout->addWidget(settingsBox);
 
     //
     // Wallet entries widget
     //
-    layout->addRow(new QLabel(i18n("Wallet Entries:")));
-
-    QWidget *walletEntriesBox = new QWidget(this);
+    QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
     QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
-    walletEntriesBoxLayout->setContentsMargins(0, 0, 0, 0);
 
     //
     // Wallet Entries editor
@@ -82,21 +84,21 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     walletEntriesWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
     walletEntriesWidget->viewport()->installEventFilter(this);
 
-//     // Add action
-//     QAction *addAction = new QAction(KDE::icon("list-add"), i18n("Add"), walletEntriesWidget);
-//     addAction->setObjectName("AddAction");
-//     addAction->setEnabled(false);
-//     // FIXME: Connection
-//     qDebug() << "Make add action work";
-//     walletEntriesWidget->addAction(addAction);
-//
-//     // Add Default action
-//     QAction *addDefaultAction = new QAction(KDE::icon("list-add"), i18n("Add Default"), walletEntriesWidget);
-//     addDefaultAction->setObjectName("AddDefaultAction");
-//     addDefaultAction->setEnabled(false);
-//     // FIXME: Connection
-//     qDebug() << "Make add default action work";
-//     walletEntriesWidget->addAction(addDefaultAction);
+    //     // Add action
+    //     QAction *addAction = new QAction(KDE::icon("list-add"), i18n("Add"), walletEntriesWidget);
+    //     addAction->setObjectName("AddAction");
+    //     addAction->setEnabled(false);
+    //     // FIXME: Connection
+    //     qDebug() << "Make add action work";
+    //     walletEntriesWidget->addAction(addAction);
+    //
+    //     // Add Default action
+    //     QAction *addDefaultAction = new QAction(KDE::icon("list-add"), i18n("Add Default"), walletEntriesWidget);
+    //     addDefaultAction->setObjectName("AddDefaultAction");
+    //     addDefaultAction->setEnabled(false);
+    //     // FIXME: Connection
+    //     qDebug() << "Make add default action work";
+    //     walletEntriesWidget->addAction(addDefaultAction);
 
     // Edit action
     QAction *editAction = new QAction(KDE::icon("edit-rename"), i18n("Edit"), walletEntriesWidget);
@@ -176,7 +178,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
 
     walletEntriesBoxLayout->addWidget(walletEntriesEditor, 0);
 
-    layout->addRow(walletEntriesBox);
+    layout->addWidget(walletEntriesBox);
 
     //
     // Adjustments
