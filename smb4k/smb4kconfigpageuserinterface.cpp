@@ -13,9 +13,9 @@
 // Qt includes
 #include <QButtonGroup>
 #include <QCheckBox>
+#include <QFormLayout>
 #include <QLabel>
 #include <QRadioButton>
-#include <QFormLayout>
 
 // KDE includes
 #include <KCompletion/KComboBox>

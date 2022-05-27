@@ -11,12 +11,12 @@
 
 // Qt includes
 #include <QCheckBox>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QHBoxLayout>
 #include <QLabel>
 #include <QSpinBox>
-#include <QGroupBox>
 #include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QGridLayout>
 
 // KDE includes
 #include <KCompletion/KComboBox>
@@ -153,7 +153,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     remoteSmbPort->setObjectName("kcfg_RemoteSmbPort");
     //   remoteSmbPort->setSliderEnabled(true);
 
-    sambaBoxLayout->addWidget(remoteSmbPort, 0,  1);
+    sambaBoxLayout->addWidget(remoteSmbPort, 0, 1);
 
     QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), sambaBox);
     useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
@@ -220,7 +220,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTime);
 
     wakeOnLanBoxLayout->addWidget(waitingTimeWidget);
-    
+
     KMessageWidget *wakeOnLanNote = new KMessageWidget(wakeOnLanBox);
     wakeOnLanNote->setText(i18n("Define the hosts that should be woken up via the custom options dialog."));
     wakeOnLanNote->setMessageType(KMessageWidget::Information);

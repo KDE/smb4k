@@ -12,9 +12,9 @@
 
 // Qt includes
 #include <QCheckBox>
+#include <QGroupBox>
 #include <QLabel>
 #include <QVBoxLayout>
-#include <QGroupBox>
 
 // KDE includes
 #include <KCompletion/KLineEdit>
@@ -33,17 +33,17 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     //
     QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
     QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
-    
+
     QCheckBox *useProfiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settingsBox);
     useProfiles->setObjectName("kcfg_UseProfiles");
-    
+
     settingsBoxLayout->addWidget(useProfiles);
 
     QCheckBox *useAssistant = new QCheckBox(Smb4KSettings::self()->useMigrationAssistantItem()->label(), settingsBox);
     useAssistant->setObjectName("kcfg_UseMigrationAssistant");
 
     settingsBoxLayout->addWidget(useAssistant);
-    
+
     layout->addWidget(settingsBox);
 
     //
@@ -57,12 +57,12 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     m_profiles->setEnabled(Smb4KSettings::self()->useProfiles());
 
     profilesBoxLayout->addWidget(m_profiles);
-    
+
     layout->addWidget(profilesBox);
 
     //
     // Connections
-    // 
+    //
     connect(useProfiles, SIGNAL(stateChanged(int)), this, SLOT(slotEnableWidget(int)));
     connect(m_profiles, SIGNAL(removed(QString)), this, SLOT(slotProfileRemoved(QString)));
     connect(m_profiles->lineEdit(), SIGNAL(editingFinished()), this, SLOT(slotProfileChanged()));
