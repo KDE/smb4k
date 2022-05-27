@@ -24,4 +24,5 @@ Dependencies:
     'frameworks/kwindowsystem': '@stable'
     'frameworks/kxmlgui': '@stable'
     'frameworks/kdnssd': '@stable'
+    'frameworks/plasma': '@stable'
 
