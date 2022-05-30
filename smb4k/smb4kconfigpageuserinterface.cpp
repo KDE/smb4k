@@ -12,6 +12,7 @@
 
 // Qt includes
 #include <QCheckBox>
+#include <QFormLayout>
 #include <QLabel>
 #include <QRadioButton>
 #include <QGroupBox>

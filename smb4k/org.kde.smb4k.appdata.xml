@@ -42,7 +42,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="zh-TW">Smb4K</name>
   <summary>Discover and mount SAMBA and Windows shares over the network</summary>
   <summary xml:lang="ca">Descobreix i munta les comparticions SAMBA i Windows sobre la xarxa</summary>
-  <summary xml:lang="ca-valencia">Descobreix i munta les comparticions SAMBA i Windows sobre la xarxa</summary>
+  <summary xml:lang="ca-valencia">Descobreix i munta les comparticions SAMBA i Windows sobre la ret</summary>
   <summary xml:lang="de">Samba- und Windows-Freigaben im Netzwerk suchen und einhängen</summary>
   <summary xml:lang="el">Ανακαλύψτε και προσαρτήστε κοινούς πόρους SAMBA και Windows στο δίκτυο</summary>
   <summary xml:lang="en-GB">Discover and mount SAMBA and Windows shares over the network</summary>
@@ -67,7 +67,7 @@ SPDX-License-Identifier: CC0-1.0
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks 5 del KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
-    <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks 5 de KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
+    <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de ret i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks 5 de KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de ret per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben. Es basiert auf den KDE Frameworks 5 und der Samba-Bibliothek libsmbclient.Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
     <p xml:lang="el">Το Smb4K είναι ένας προηγμένος περιηγητής τοπικού δικτύου και το εργαλείο προσάρτησης κοινών πόρων. Βασίζεται στο KDE Frameworks 5 και στη βιβλιοθήκη πελάτη της Samba (libsmbclient). Σαρώνει το τοπικό σας δίκτυο για όλες τις διαθέσιμες ομάδες εργασίας, εξυπηρετητές και κοινούς πόρους και μπορεί να προσαρτά όλους τους επιθυμητούς κοινούς πόρους στο σύστημα αρχείων του υπολογιστή σας.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighbourhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighbourhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
@@ -341,7 +341,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Miscellaneous infos about remote network items and mounted shares</li>
       <li xml:lang="bs">Raznovrsne informacije o udaljenim mrežnim stavkama i namještenim razmjenama</li>
       <li xml:lang="ca">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
-      <li xml:lang="ca-valencia">Informacions diverses sobre elements de xarxa remots i les comparticions muntades</li>
+      <li xml:lang="ca-valencia">Informacions diverses sobre elements de ret remots i les comparticions muntades</li>
       <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingehängte Freigaben</li>
       <li xml:lang="el">Διάφορες πληροφορίες για απομακρυσμένα δικτυακά αντικείμενα και προσαρτημένους κοινούς πόρους</li>
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
@@ -371,7 +371,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Network search</li>
       <li xml:lang="bs">Pretraga mreže</li>
       <li xml:lang="ca">Cerca a la xarxa</li>
-      <li xml:lang="ca-valencia">Busca a la xarxa</li>
+      <li xml:lang="ca-valencia">Busca a la ret</li>
       <li xml:lang="cs">Prohledání sítě</li>
       <li xml:lang="da">Netværkssøgning</li>
       <li xml:lang="de">Netzwerksuche</li>
@@ -794,7 +794,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="zh-TW">以 Plasmoid 提供桌面整合</li>
       <li>Profiles for different network neighborhood setups</li>
       <li xml:lang="ca">Perfils per a diferents configuracions del veïnatge de xarxa</li>
-      <li xml:lang="ca-valencia">Perfils per a diferents configuracions del veïnatge de xarxa</li>
+      <li xml:lang="ca-valencia">Perfils per a diferents configuracions del veïnatge de ret</li>
       <li xml:lang="de">Profile für verschiedene Einstellungen der Netzwerkumgebung</li>
       <li xml:lang="el">Προφίλ για ρυθμίσεις διαφορετικών τοπικών δικτύων</li>
       <li xml:lang="en-GB">Profiles for different network neighbourhood setups</li>
@@ -825,7 +825,7 @@ SPDX-License-Identifier: CC0-1.0
     </p>
     <p xml:lang="bs">Ako radite sa Windows dominiranim mrežnim okruženjem, možda ćete željeti instalirati aplikaciju kako biste lako pristupili omogućenim Windows razmjenama.</p>
     <p xml:lang="ca">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
-    <p xml:lang="ca-valencia">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar esta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
+    <p xml:lang="ca-valencia">Si esteu treballant en un entorn de ret dominat per Windows, és possible que vulgueu instalar esta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="de">Wenn Sie in einer Windows-dominierten Netzwerkumgebung arbeiten, sollten Sie diese Anwendung installieren, um leicht auf die vorhandenen Windows-Freigaben zuzugreifen.</p>
     <p xml:lang="el">Αν εργάζεστε σε ένα περιβάλλον δικτύου υπό την κυριαρχία των Windows, θα θέλατε να εγκαταστήσετε την εφαρμογή αυτή για να μπορείτε να έχετε άνετηπρόσβαση στους κοινούς πόρους που παρέχουν τα Windows.</p>
     <p xml:lang="en-GB">If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.</p>

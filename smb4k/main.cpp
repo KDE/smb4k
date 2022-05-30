@@ -157,7 +157,7 @@ int main(int argc, char **argv)
     // Unique application
     const KDBusService service(KDBusService::Unique);
 
-    QObject::connect(&service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &/*args*/, const QString &/*workingDir*/){
+    QObject::connect(&service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList & /*args*/, const QString & /*workingDir*/) {
         if (mainWindow->isVisible()) {
 #if KWINDOWSYSTEM_VERSION >= QT_VERSION_CHECK(5, 91, 0)
             KWindowSystem::updateStartupId(mainWindow->windowHandle());

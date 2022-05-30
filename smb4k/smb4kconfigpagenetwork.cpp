@@ -11,19 +11,19 @@
 
 // Qt includes
 #include <QCheckBox>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QHBoxLayout>
 #include <QLabel>
 #include <QSpinBox>
-// #include <QFormLayout>
-#include <QGroupBox>
 #include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QGridLayout>
 
 // KDE includes
 #include <KCompletion/KComboBox>
 #include <KCompletion/KLineEdit>
 #include <KI18n/KLocalizedString>
 #include <KIconThemes/KIconLoader>
+#include <KWidgetsAddons/KMessageWidget>
 
 Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     : QTabWidget(parent)
@@ -153,7 +153,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     remoteSmbPort->setObjectName("kcfg_RemoteSmbPort");
     //   remoteSmbPort->setSliderEnabled(true);
 
-    sambaBoxLayout->addWidget(remoteSmbPort, 0,  1);
+    sambaBoxLayout->addWidget(remoteSmbPort, 0, 1);
 
     QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), sambaBox);
     useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
@@ -221,24 +221,11 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     wakeOnLanBoxLayout->addWidget(waitingTimeWidget);
 
-    QFrame *wakeOnLanNote = new QFrame(wakeOnLanBox);
-    QGridLayout *wakeOnLanNoteLayout = new QGridLayout(wakeOnLanNote);
-    wakeOnLanNoteLayout->setContentsMargins(5, 5, 5, 5);
-    wakeOnLanNoteLayout->setMargin(0);
-
-    QLabel *importantPixmap = new QLabel(wakeOnLanNote);
-    importantPixmap->setPixmap(KIconLoader::global()->loadIcon("emblem-important", KIconLoader::Desktop, KIconLoader::SizeMedium));
-    importantPixmap->adjustSize();
-
-    QLabel *message = new QLabel(wakeOnLanNote);
-    message->setText(i18n("<qt>Define the hosts that should be woken up via the custom options dialog.</qt>"));
-    message->setTextFormat(Qt::AutoText);
-    message->setWordWrap(true);
-    message->setAlignment(Qt::AlignJustify);
-
-    wakeOnLanNoteLayout->addWidget(importantPixmap, 0, 0, Qt::AlignVCenter);
-    wakeOnLanNoteLayout->addWidget(message, 0, 1, Qt::AlignVCenter);
-    wakeOnLanNoteLayout->setColumnStretch(1, 1);
+    KMessageWidget *wakeOnLanNote = new KMessageWidget(wakeOnLanBox);
+    wakeOnLanNote->setText(i18n("Define the hosts that should be woken up via the custom options dialog."));
+    wakeOnLanNote->setMessageType(KMessageWidget::Information);
+    wakeOnLanNote->setCloseButtonVisible(false);
+    wakeOnLanNote->setIcon(KDE::icon("emblem-information"));
 
     wakeOnLanBoxLayout->addWidget(wakeOnLanNote);
 

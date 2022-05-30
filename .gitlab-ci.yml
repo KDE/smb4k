@@ -1,19 +1,10 @@
-# SPDX-FileCopyrightText: 2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2021-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 # SPDX-License-Identifier: CC0-1.0
 
 include:
-  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-before.yml
-  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-linux.yml
-  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-freebsd.yml
+  - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux.yml
+#  - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/freebsd.yml
 
-#build:
-#    image: kdeneon/plasma:user
-#    before_script:
-#        - sudo apt update
-#        - sudo apt -y install cmake g++ extra-cmake-modules gettext qt5-qmake qtbase5-dev qtdeclarative5-dev libkf5auth-dev libkf5completion-dev libkf5config-dev libkf5coreaddons-dev libkf5configwidgets-dev libkf5dbusaddons-dev libkf5doctools-dev libkf5i18n-dev libkf5iconthemes-dev libkf5jobwidgets-dev libkf5kio-dev libkf5notifications-dev libkf5solid-dev libkf5wallet-dev libkf5widgetsaddons-dev libkf5windowsystem-dev libkf5xmlgui-dev libkf5crash-dev libkf5dnssd-dev libkdsoap-dev libsmbclient-dev libkf5plasma-dev
-#    stage: build
-#    script:
-#        - mkdir build
-#        - cd build
-#        - cmake -DCMAKE_BUILD_TYPE=Debug -DSMB4K_WITH_WS_DISCOVERY=OFF -DSMB4K_INSTALL_PLASMOID=ON ..
-#        - make
+#  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-before.yml
+#  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-linux.yml
+#  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-applications-freebsd.yml
