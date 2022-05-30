@@ -12,10 +12,10 @@
 
 // Qt includes
 #include <QCheckBox>
-#include <QFormLayout>
+#include <QGridLayout>
+#include <QGroupBox>
 #include <QLabel>
 #include <QRadioButton>
-#include <QGroupBox>
 #include <QVBoxLayout>
 
 // KDE includes
