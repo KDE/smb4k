@@ -645,7 +645,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Synchronization of a remote share with a local copy and vice versa</li>
       <li xml:lang="bs">Sinhronizacija udaljenih razmjena sa lokalnom kopijom i obrnuto</li>
       <li xml:lang="ca">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
-      <li xml:lang="ca-valencia">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
+      <li xml:lang="ca-valencia">Sincronisació d'una compartició remota amb una còpia local i viceversa</li>
       <li xml:lang="de">Abgleich einer entfernten Freigabe mit einer lokalen Kopie und umgekehrt</li>
       <li xml:lang="el">Συγχρονισμός απομακρυσμένου πόρου με τοπικό αντίγραφο και αντίστροφα</li>
       <li xml:lang="en-GB">Synchronisation of a remote share with a local copy and vice versa</li>
@@ -675,7 +675,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Ability to define custom options for individual servers and shares</li>
       <li xml:lang="bs">Sposobnost definisanja prilagođenih opcija za individualne servere i razmjene</li>
       <li xml:lang="ca">La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</li>
-      <li xml:lang="ca-valencia">La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</li>
+      <li xml:lang="ca-valencia">La capacitat per a definir opcions personalisades individuals per a servidors i comparticions</li>
       <li xml:lang="de">Fähigkeit zur Definition von benutzerdefinierten Einstellungen für einzelne Server und Freigaben.</li>
       <li xml:lang="el">Δυνατότητα καθορισμού προσαρμοσμένων επιλογών για ξεχωριστούς εξυπηρετητές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Ability to define custom options for individual servers and shares</li>
