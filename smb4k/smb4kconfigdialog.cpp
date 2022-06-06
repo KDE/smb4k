@@ -29,6 +29,7 @@
 #endif
 
 // Qt includes
+#include <KLineEdit>
 #include <QCheckBox>
 #include <QList>
 #include <QPair>
@@ -37,11 +38,10 @@
 #include <QScrollArea>
 #include <QShowEvent>
 #include <QSize>
+#include <QSpinBox>
 #include <QStandardPaths>
 #include <QTreeWidget>
 #include <QWindow>
-#include <KLineEdit>
-#include <QSpinBox>
 
 // KDE includes
 #include <KConfigGui/KWindowConfig>

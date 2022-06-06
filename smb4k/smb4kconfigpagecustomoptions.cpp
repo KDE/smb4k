@@ -12,11 +12,11 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QVBoxLayout>
+#include <QDialogButtonBox>
 #include <QMenu>
 #include <QMouseEvent>
-#include <QDialogButtonBox>
 #include <QPushButton>
+#include <QVBoxLayout>
 
 // KDE includes
 #include <KI18n/KLocalizedString>
@@ -149,7 +149,6 @@ bool Smb4KConfigPageCustomOptions::customSettingsMaybeChanged()
     return m_maybe_changed;
 }
 
-
 void Smb4KConfigPageCustomOptions::insertCustomOptions()
 {
     //
@@ -230,8 +229,7 @@ void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
             if (messageWidget) {
                 messageWidget->setText(i18n("The item %1 was removed, because all custom options were reset.", item->text()));
 
-                if (!messageWidget->isVisible())
-                {
+                if (!messageWidget->isVisible()) {
                     messageWidget->setVisible(true);
                 }
             }
@@ -348,4 +346,3 @@ void Smb4KConfigPageCustomOptions::slotEnableResetButton()
         }
     }
 }
-

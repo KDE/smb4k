@@ -933,7 +933,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
     }
 }
 
-bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr& options, bool write)
+bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr &options, bool write)
 {
     bool hasOptions = options->hasOptions(true);
 
@@ -958,7 +958,6 @@ bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr& option
 
     return hasOptions;
 }
-
 
 void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool write)
 {

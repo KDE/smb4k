@@ -12,8 +12,8 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QWidget>
 #include <QListWidget>
+#include <QWidget>
 
 /**
  * This configuration page contains the custom options
