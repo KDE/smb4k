@@ -929,23 +929,36 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
         }
         }
 
-        if (options) {
-            QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, QApplication::activeWindow());
-
-            if (dlg->exec() == QDialog::Accepted) {
-                if (options->hasOptions()) {
-                    addCustomOptions(options, true);
-                } else {
-                    removeCustomOptions(options, true);
-                }
-            } else {
-                resetCustomOptions();
-            }
-
-            delete dlg;
-        }
+        openCustomOptionsDialog(options);
     }
 }
+
+bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr& options, bool write)
+{
+    bool hasOptions = options->hasOptions(true);
+
+    if (options) {
+        QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, QApplication::activeWindow());
+
+        if (dlg->exec() == QDialog::Accepted) {
+            hasOptions = options->hasOptions();
+
+            if (hasOptions) {
+                addCustomOptions(options, write);
+            } else {
+                removeCustomOptions(options, write);
+            }
+        } else {
+            qDebug() << "FIXME: When operating on a list with uncommitted changes, this reset function might cause problems.";
+            resetCustomOptions();
+        }
+
+        delete dlg;
+    }
+
+    return hasOptions;
+}
+
 
 void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool write)
 {

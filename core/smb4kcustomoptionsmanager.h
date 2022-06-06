@@ -138,13 +138,22 @@ public:
     QList<OptionsPtr> customOptions(bool withoutRemountOnce = false);
 
     /**
-     * This function opens the custom options dialog.
+     * This function opens the custom options dialog for a network item.
      *
-     * @param item                The network item - either host or share
-     *
-     * @param parent              The parent widget
+     * @param item                The network item
      */
     void openCustomOptionsDialog(const NetworkItemPtr &item);
+
+    /**
+     * This function opens a custom options dialog for an options pointer.
+     *
+     * @param options           The custom options object
+     *
+     * @param write             Write the options to the file
+     *
+     * @returns TRUE if there are custom options defined, otherwise FALSE.
+     */
+    bool openCustomOptionsDialog(const OptionsPtr &options, bool write = true);
 
     /**
      * This function adds custom options for a single network item to the list
