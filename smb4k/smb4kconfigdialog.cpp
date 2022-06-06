@@ -40,6 +40,8 @@
 #include <QStandardPaths>
 #include <QTreeWidget>
 #include <QWindow>
+#include <KLineEdit>
+#include <QSpinBox>
 
 // KDE includes
 #include <KConfigGui/KWindowConfig>
@@ -153,37 +155,13 @@ void Smb4KConfigDialog::setupDialog()
 void Smb4KConfigDialog::loadCustomOptions()
 {
     if (m_custom_options) {
-        QList<OptionsPtr> optionsList = Smb4KCustomOptionsManager::self()->customOptions(true);
-        m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions(optionsList);
+        m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions();
     }
 }
 
 void Smb4KConfigDialog::saveCustomOptions()
 {
-    if (m_custom_options) {
-        QList<OptionsPtr> optionsList = Smb4KCustomOptionsManager::self()->customOptions(true);
-        QList<OptionsPtr> editedOptionsList = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->getCustomOptions();
-
-        while (!optionsList.isEmpty()) {
-            OptionsPtr options = optionsList.takeFirst();
-            bool foundOptions = false;
-
-            for (const OptionsPtr &editedOptions : qAsConst(editedOptionsList)) {
-                if (editedOptions->url().matches(options->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
-                    // We do not need to update the custom options, because we are
-                    // using QSharedPointers.
-                    foundOptions = true;
-                    break;
-                }
-            }
-
-            if (!foundOptions) {
-                Smb4KCustomOptionsManager::self()->removeCustomOptions(options);
-            }
-        }
-
-        Smb4KCustomOptionsManager::self()->saveCustomOptions();
-    }
+    Smb4KCustomOptionsManager::self()->saveCustomOptions();
 }
 
 void Smb4KConfigDialog::propagateProfilesChanges()

@@ -12,19 +12,8 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QCheckBox>
-#include <QEvent>
-#include <QGroupBox>
-#include <QListWidget>
-#include <QSpinBox>
-#include <QTabWidget>
 #include <QWidget>
-
-// KDE includes
-#include <KCompletion/KComboBox>
-#include <KCompletion/KLineEdit>
-#include <KWidgetsAddons/KActionMenu>
-#include <KXmlGui/KActionCollection>
+#include <QListWidget>
 
 /**
  * This configuration page contains the custom options
@@ -50,18 +39,8 @@ public:
 
     /**
      * This function inserts a list of custom option items into the list widget.
-     *
-     * @param list              The list with Smb4KSambaOptions objects
      */
-    void insertCustomOptions(const QList<OptionsPtr> &list);
-
-    /**
-     * This function returns the list of custom option items that are currently
-     * in the list widget.
-     *
-     * @returns the list of custom option items.
-     */
-    const QList<OptionsPtr> getCustomOptions();
+    void insertCustomOptions();
 
     /**
      * Returns TRUE if there may be changed custom settings. You must check if
@@ -69,10 +48,7 @@ public:
      *
      * @returns TRUE if custom settings may have changed.
      */
-    bool customSettingsMaybeChanged()
-    {
-        return m_maybe_changed;
-    }
+    bool customSettingsMaybeChanged();
 
 protected:
     /**
@@ -99,12 +75,6 @@ protected Q_SLOTS:
     void slotEditCustomItem(QListWidgetItem *item);
 
     /**
-     * This slot is invoked when the selection in the custom list widget
-     * changed.
-     */
-    void slotItemSelectionChanged();
-
-    /**
      * This slot is invoked when the custom context menu for the custom
      * options widget is requested.
      *
@@ -113,60 +83,40 @@ protected Q_SLOTS:
     void slotCustomContextMenuRequested(const QPoint &pos);
 
     /**
-     * This slot is connected to the "Edit" action found in the context menu.
-     * It is called when this action is triggered.
+     * This slot is called when a custom options is to be edited.
      *
      * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
     void slotEditActionTriggered(bool);
 
     /**
-     * This slot is connected to the "Remove" action found in the context menu.
-     * It is called when this action is triggered.
+     * This slot is called when a custom option is to be removed.
      *
      * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
     void slotRemoveActionTriggered(bool);
 
     /**
-     * This slot is connected to the "Clear List" action found in the context
-     * menu. It is called when this action is triggered.
+     * This slot is called when the list of custom options is to be cleared.
      *
      * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
     void slotClearActionTriggered(bool);
 
     /**
-     * This slot is called when a value was changed.
+     * This slot is called when the actions performed on the custom options
+     * are to be reset.
+     *
+     * @param checked         TRUE if the action is checked and FALSE otherwise.
      */
-    void slotEntryChanged();
+    void slotResetActionTriggered(bool);
 
     /**
-     * Enable the options for sending Wake-On-LAN magic packets, if the MAC
-     * address was entered correctly.
+     * This slot is called when the reset button is to be enabled/disabled.
      */
-    void slotEnableWOLFeatures(const QString &mac_address);
-
-    /**
-     * Enables / disables the settings use when the CIFS Unix extensions are
-     * not supported / supported.
-     */
-    void slotCifsUnixExtensionsSupport(bool on);
-
-    /**
-     * Enabled / disables the settings of the client protocol version widgets.
-     */
-    void slotUseClientProtocolVersions(bool use);
+    void slotEnableResetButton();
 
 private:
-    void setupMountingTab();
-    void clearEditors();
-    void setCurrentOptions(const QString &url);
-    void populateEditors();
-    void commitChanges();
-
-    QList<OptionsPtr> m_optionsList;
-    OptionsPtr m_currentOptions;
     bool m_maybe_changed;
 };
 
