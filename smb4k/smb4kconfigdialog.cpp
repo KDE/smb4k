@@ -1,7 +1,7 @@
 /*
     The configuration dialog of Smb4K
 
-    SPDX-FileCopyrightText: 2004-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -29,6 +29,7 @@
 #endif
 
 // Qt includes
+#include <KLineEdit>
 #include <QCheckBox>
 #include <QList>
 #include <QPair>
@@ -37,6 +38,7 @@
 #include <QScrollArea>
 #include <QShowEvent>
 #include <QSize>
+#include <QSpinBox>
 #include <QStandardPaths>
 #include <QTreeWidget>
 #include <QWindow>
@@ -153,37 +155,13 @@ void Smb4KConfigDialog::setupDialog()
 void Smb4KConfigDialog::loadCustomOptions()
 {
     if (m_custom_options) {
-        QList<OptionsPtr> optionsList = Smb4KCustomOptionsManager::self()->customOptions(true);
-        m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions(optionsList);
+        m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions();
     }
 }
 
 void Smb4KConfigDialog::saveCustomOptions()
 {
-    if (m_custom_options) {
-        QList<OptionsPtr> optionsList = Smb4KCustomOptionsManager::self()->customOptions(true);
-        QList<OptionsPtr> editedOptionsList = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->getCustomOptions();
-
-        while (!optionsList.isEmpty()) {
-            OptionsPtr options = optionsList.takeFirst();
-            bool foundOptions = false;
-
-            for (const OptionsPtr &editedOptions : qAsConst(editedOptionsList)) {
-                if (editedOptions->url().matches(options->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
-                    // We do not need to update the custom options, because we are
-                    // using QSharedPointers.
-                    foundOptions = true;
-                    break;
-                }
-            }
-
-            if (!foundOptions) {
-                Smb4KCustomOptionsManager::self()->removeCustomOptions(options);
-            }
-        }
-
-        Smb4KCustomOptionsManager::self()->saveCustomOptions();
-    }
+    Smb4KCustomOptionsManager::self()->saveCustomOptions();
 }
 
 void Smb4KConfigDialog::propagateProfilesChanges()

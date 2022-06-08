@@ -285,7 +285,7 @@ QString Smb4KShare::fileSystemString() const
 {
     if (!path().isEmpty() && d->filesystem.isEmpty()) {
         KMountPoint::Ptr mp = KMountPoint::currentMountPoints().findByPath(path());
-        
+
         if (mp) {
             d->filesystem = mp->mountType().toUpper();
         }
