@@ -12,9 +12,11 @@
 // Qt includes
 #include <QCheckBox>
 #include <QFormLayout>
+#include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QSpinBox>
+#include <QVBoxLayout>
 
 // KDE includes
 #include <KCompletion/KLineEdit>
@@ -28,48 +30,72 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     // 'Basic Settings' tab
     //
     QWidget *basicTab = new QWidget(this);
-    QFormLayout *basicTabLayout = new QFormLayout(basicTab);
+    QVBoxLayout *basicTabLayout = new QVBoxLayout(basicTab);
 
-    // Default destination (rsync)
-    KUrlRequester *rsyncPrefix = new KUrlRequester(basicTab);
+    // Synchronization Directory
+    QGroupBox *synchronizationDirectoryBox = new QGroupBox(i18n("Synchronization Directory"), basicTab);
+    QVBoxLayout *synchronizationDirectoryBoxLayout = new QVBoxLayout(synchronizationDirectoryBox);
+
+    QWidget *rsyncPrefixWidget = new QWidget(synchronizationDirectoryBox);
+    QHBoxLayout *rsyncPrefixWidgetLayout = new QHBoxLayout(rsyncPrefixWidget);
+    rsyncPrefixWidgetLayout->setMargin(0);
+
+    QLabel *rsyncPrefixLabel = new QLabel(rsyncPrefixWidget);
+    rsyncPrefixLabel->setText(Smb4KSettings::self()->rsyncPrefixItem()->label());
+    rsyncPrefixWidgetLayout->addWidget(rsyncPrefixLabel);
+
+    KUrlRequester *rsyncPrefix = new KUrlRequester(rsyncPrefixWidget);
     rsyncPrefix->setMode(KFile::Directory | KFile::LocalOnly);
     rsyncPrefix->setObjectName("kcfg_RsyncPrefix");
+    rsyncPrefixWidgetLayout->addWidget(rsyncPrefix);
 
-    basicTabLayout->addRow(Smb4KSettings::self()->rsyncPrefixItem()->label(), rsyncPrefix);
+    rsyncPrefixLabel->setBuddy(rsyncPrefix);
+
+    synchronizationDirectoryBoxLayout->addWidget(rsyncPrefixWidget);
+
+    basicTabLayout->addWidget(synchronizationDirectoryBox);
 
     // Behavior
-    QCheckBox *archiveMode = new QCheckBox(Smb4KSettings::self()->archiveModeItem()->label(), basicTab);
+    QGroupBox *behaviorBox = new QGroupBox(i18n("Behavior"), basicTab);
+    QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
+
+    QCheckBox *archiveMode = new QCheckBox(Smb4KSettings::self()->archiveModeItem()->label(), behaviorBox);
     archiveMode->setObjectName("kcfg_ArchiveMode");
 
-    basicTabLayout->addRow(i18n("Behavior:"), archiveMode);
+    behaviorBoxLayout->addWidget(archiveMode, 0, 0);
 
-    QCheckBox *recurseDirs = new QCheckBox(Smb4KSettings::self()->recurseIntoDirectoriesItem()->label(), basicTab);
-    recurseDirs->setObjectName("kcfg_RecurseIntoDirectories");
+    QCheckBox *recurseDirectories = new QCheckBox(Smb4KSettings::self()->recurseIntoDirectoriesItem()->label(), behaviorBox);
+    recurseDirectories->setObjectName("kcfg_RecurseIntoDirectories");
 
-    basicTabLayout->addRow(QString(), recurseDirs);
+    behaviorBoxLayout->addWidget(recurseDirectories, 0, 1);
 
-    QCheckBox *relativePaths = new QCheckBox(Smb4KSettings::self()->relativePathNamesItem()->label(), basicTab);
+    QCheckBox *relativePaths = new QCheckBox(Smb4KSettings::self()->relativePathNamesItem()->label(), behaviorBox);
     relativePaths->setObjectName("kcfg_RelativePathNames");
 
-    basicTabLayout->addRow(QString(), relativePaths);
+    behaviorBoxLayout->addWidget(relativePaths, 1, 0);
 
-    QCheckBox *noImpliedDirs = new QCheckBox(Smb4KSettings::self()->noImpliedDirectoriesItem()->label(), basicTab);
+    QCheckBox *noImpliedDirs = new QCheckBox(Smb4KSettings::self()->noImpliedDirectoriesItem()->label(), behaviorBox);
     noImpliedDirs->setObjectName("kcfg_NoImpliedDirectories");
 
-    basicTabLayout->addRow(QString(), noImpliedDirs);
+    behaviorBoxLayout->addWidget(noImpliedDirs, 1, 1);
 
-    QCheckBox *transferDirs = new QCheckBox(Smb4KSettings::self()->transferDirectoriesItem()->label(), basicTab);
+    QCheckBox *transferDirs = new QCheckBox(Smb4KSettings::self()->transferDirectoriesItem()->label(), behaviorBox);
     transferDirs->setObjectName("kcfg_TransferDirectories");
 
-    basicTabLayout->addRow(QString(), transferDirs);
+    behaviorBoxLayout->addWidget(transferDirs, 2, 0);
 
-    // Backup
-    QCheckBox *makeBackups = new QCheckBox(Smb4KSettings::self()->makeBackupsItem()->label(), basicTab);
+    basicTabLayout->addWidget(behaviorBox);
+
+    // Backups
+    QGroupBox *backupsBox = new QGroupBox(i18n("Backups"), basicTab);
+    QVBoxLayout *backupsBoxLayout = new QVBoxLayout(backupsBox);
+
+    QCheckBox *makeBackups = new QCheckBox(Smb4KSettings::self()->makeBackupsItem()->label(), backupsBox);
     makeBackups->setObjectName("kcfg_MakeBackups");
 
-    basicTabLayout->addRow(i18n("Backups:"), makeBackups);
+    backupsBoxLayout->addWidget(makeBackups);
 
-    QWidget *backupSuffixWidget = new QWidget(basicTab);
+    QWidget *backupSuffixWidget = new QWidget(backupsBox);
     QHBoxLayout *backupSuffixLayout = new QHBoxLayout(backupSuffixWidget);
     backupSuffixLayout->setMargin(0);
 
@@ -82,9 +108,9 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     backupSuffixLayout->addWidget(backupSuffixButton);
     backupSuffixLayout->addWidget(backupSuffix);
 
-    basicTabLayout->addRow(QString(), backupSuffixWidget);
+    backupsBoxLayout->addWidget(backupSuffixWidget);
 
-    QWidget *backupDirWidget = new QWidget(basicTab);
+    QWidget *backupDirWidget = new QWidget(backupsBox);
     QHBoxLayout *backupDirLayout = new QHBoxLayout(backupDirWidget);
     backupDirLayout->setMargin(0);
 
@@ -97,7 +123,10 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     backupDirLayout->addWidget(backupDirButton);
     backupDirLayout->addWidget(backupDir);
 
-    basicTabLayout->addRow(QString(), backupDirWidget);
+    backupsBoxLayout->addWidget(backupDirWidget);
+
+    basicTabLayout->addWidget(backupsBox);
+    basicTabLayout->addStretch(100);
 
     addTab(basicTab, i18n("Basic Settings"));
 
@@ -105,228 +134,229 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     // 'File Handling' tab
     //
     QWidget *fileHandlingTab = new QWidget(this);
-    QFormLayout *fileHandlingTabLayout = new QFormLayout(fileHandlingTab);
+    QVBoxLayout *fileHandlingTabLayout = new QVBoxLayout(fileHandlingTab);
 
     // General
-    QCheckBox *updateTarget = new QCheckBox(Smb4KSettings::self()->updateTargetItem()->label(), fileHandlingTab);
+    QGroupBox *generalBox = new QGroupBox(i18n("General"), fileHandlingTab);
+    QGridLayout *generalBoxLayout = new QGridLayout(generalBox);
+
+    QCheckBox *updateTarget = new QCheckBox(Smb4KSettings::self()->updateTargetItem()->label(), generalBox);
     updateTarget->setObjectName("kcfg_UpdateTarget");
 
-    fileHandlingTabLayout->addRow(i18n("General:"), updateTarget);
+    generalBoxLayout->addWidget(updateTarget, 0, 0);
 
-    QCheckBox *updateInPlace = new QCheckBox(Smb4KSettings::self()->updateInPlaceItem()->label(), fileHandlingTab);
+    QCheckBox *updateInPlace = new QCheckBox(Smb4KSettings::self()->updateInPlaceItem()->label(), generalBox);
     updateInPlace->setObjectName("kcfg_UpdateInPlace");
 
-    fileHandlingTabLayout->addRow(QString(), updateInPlace);
+    generalBoxLayout->addWidget(updateInPlace, 0, 1);
 
-    QCheckBox *sparseFiles = new QCheckBox(Smb4KSettings::self()->efficientSparseFileHandlingItem()->label(), fileHandlingTab);
+    QCheckBox *sparseFiles = new QCheckBox(Smb4KSettings::self()->efficientSparseFileHandlingItem()->label(), generalBox);
     sparseFiles->setObjectName("kcfg_EfficientSparseFileHandling");
 
-    fileHandlingTabLayout->addRow(QString(), sparseFiles);
+    generalBoxLayout->addWidget(sparseFiles, 1, 0);
 
-    QCheckBox *copyFilesWhole = new QCheckBox(Smb4KSettings::self()->copyFilesWholeItem()->label(), fileHandlingTab);
+    QCheckBox *copyFilesWhole = new QCheckBox(Smb4KSettings::self()->copyFilesWholeItem()->label(), generalBox);
     copyFilesWhole->setObjectName("kcfg_CopyFilesWhole");
 
-    fileHandlingTabLayout->addRow(QString(), copyFilesWhole);
+    generalBoxLayout->addWidget(copyFilesWhole, 1, 1);
 
-    QCheckBox *updateExisting = new QCheckBox(Smb4KSettings::self()->updateExistingItem()->label(), fileHandlingTab);
+    QCheckBox *updateExisting = new QCheckBox(Smb4KSettings::self()->updateExistingItem()->label(), generalBox);
     updateExisting->setObjectName("kcfg_UpdateExisting");
 
-    fileHandlingTabLayout->addRow(QString(), updateExisting);
+    generalBoxLayout->addWidget(updateExisting, 2, 0);
 
-    QCheckBox *ignoreExisting = new QCheckBox(Smb4KSettings::self()->ignoreExistingItem()->label(), fileHandlingTab);
+    QCheckBox *ignoreExisting = new QCheckBox(Smb4KSettings::self()->ignoreExistingItem()->label(), generalBox);
     ignoreExisting->setObjectName("kcfg_IgnoreExisting");
 
-    fileHandlingTabLayout->addRow(QString(), ignoreExisting);
+    generalBoxLayout->addWidget(ignoreExisting, 2, 1);
+
+    fileHandlingTabLayout->addWidget(generalBox);
 
     // Links
-    QCheckBox *preserveLinks = new QCheckBox(Smb4KSettings::self()->preserveSymlinksItem()->label(), fileHandlingTab);
+    QGroupBox *linksBox = new QGroupBox(i18n("Links"), fileHandlingTab);
+    QGridLayout *linksBoxLayout = new QGridLayout(linksBox);
+
+    QCheckBox *preserveLinks = new QCheckBox(Smb4KSettings::self()->preserveSymlinksItem()->label(), linksBox);
     preserveLinks->setObjectName("kcfg_PreserveSymlinks");
 
-    fileHandlingTabLayout->addRow(i18n("Links:"), preserveLinks);
+    linksBoxLayout->addWidget(preserveLinks, 0, 0);
 
-    QCheckBox *transformLinks = new QCheckBox(Smb4KSettings::self()->transformSymlinksItem()->label(), fileHandlingTab);
+    QCheckBox *transformLinks = new QCheckBox(Smb4KSettings::self()->transformSymlinksItem()->label(), linksBox);
     transformLinks->setObjectName("kcfg_TransformSymlinks");
 
-    fileHandlingTabLayout->addRow(QString(), transformLinks);
+    linksBoxLayout->addWidget(transformLinks, 0, 1);
 
-    QCheckBox *transformUnsafe = new QCheckBox(Smb4KSettings::self()->transformUnsafeSymlinksItem()->label(), fileHandlingTab);
+    QCheckBox *transformUnsafe = new QCheckBox(Smb4KSettings::self()->transformUnsafeSymlinksItem()->label(), linksBox);
     transformUnsafe->setObjectName("kcfg_TransformUnsafeSymlinks");
 
-    fileHandlingTabLayout->addRow(QString(), transformUnsafe);
+    linksBoxLayout->addWidget(transformUnsafe, 1, 0);
 
-    QCheckBox *ignoreUnsafe = new QCheckBox(Smb4KSettings::self()->ignoreUnsafeSymlinksItem()->label(), fileHandlingTab);
+    QCheckBox *ignoreUnsafe = new QCheckBox(Smb4KSettings::self()->ignoreUnsafeSymlinksItem()->label(), linksBox);
     ignoreUnsafe->setObjectName("kcfg_IgnoreUnsafeSymlinks");
 
-    fileHandlingTabLayout->addRow(QString(), ignoreUnsafe);
+    linksBoxLayout->addWidget(ignoreUnsafe, 1, 1);
 
-    QCheckBox *mungeLinks = new QCheckBox(Smb4KSettings::self()->mungeSymlinksItem()->label(), fileHandlingTab);
+    QCheckBox *mungeLinks = new QCheckBox(Smb4KSettings::self()->mungeSymlinksItem()->label(), linksBox);
     mungeLinks->setObjectName("kcfg_MungeSymlinks");
 
-    fileHandlingTabLayout->addRow(QString(), mungeLinks);
+    linksBoxLayout->addWidget(mungeLinks, 2, 0);
 
-    QCheckBox *preserveHlinks = new QCheckBox(Smb4KSettings::self()->preserveHardLinksItem()->label(), fileHandlingTab);
-    preserveHlinks->setObjectName("kcfg_PreserveHardLinks");
+    QCheckBox *preserveHardLinks = new QCheckBox(Smb4KSettings::self()->preserveHardLinksItem()->label(), linksBox);
+    preserveHardLinks->setObjectName("kcfg_PreserveHardLinks");
 
-    fileHandlingTabLayout->addRow(QString(), preserveHlinks);
+    linksBoxLayout->addWidget(preserveHardLinks, 2, 1);
 
-    QCheckBox *copyDirLinks = new QCheckBox(Smb4KSettings::self()->copyDirectorySymlinksItem()->label(), fileHandlingTab);
+    QCheckBox *copyDirLinks = new QCheckBox(Smb4KSettings::self()->copyDirectorySymlinksItem()->label(), linksBox);
+    ;
     copyDirLinks->setObjectName("kcfg_CopyDirectorySymlinks");
 
-    fileHandlingTabLayout->addRow(QString(), copyDirLinks);
+    linksBoxLayout->addWidget(copyDirLinks, 3, 0);
 
-    QCheckBox *keepDirLinks = new QCheckBox(Smb4KSettings::self()->keepDirectorySymlinksItem()->label(), fileHandlingTab);
+    QCheckBox *keepDirLinks = new QCheckBox(Smb4KSettings::self()->keepDirectorySymlinksItem()->label(), linksBox);
     keepDirLinks->setObjectName("kcfg_KeepDirectorySymlinks");
 
-    fileHandlingTabLayout->addRow(QString(), keepDirLinks);
+    linksBoxLayout->addWidget(keepDirLinks, 3, 1);
 
-    addTab(fileHandlingTab, i18n("File Handling"));
+    fileHandlingTabLayout->addWidget(linksBox);
 
-    //
-    // 'File Attributes and Ownership' tab
-    //
-    QWidget *fileAttributesTab = new QWidget(this);
-    QFormLayout *fileAttributesTabLayout = new QFormLayout(fileAttributesTab);
+    // File Attributes and Ownership
+    QGroupBox *attributesOwnershipBox = new QGroupBox(i18n("File Attributes && Ownership"), fileHandlingTab);
+    QGridLayout *attributesOwnershipBoxLayout = new QGridLayout(attributesOwnershipBox);
 
-    // Permissions & Attributes
-    QCheckBox *preservePerms = new QCheckBox(Smb4KSettings::self()->preservePermissionsItem()->label(), fileAttributesTab);
-    preservePerms->setObjectName("kcfg_PreservePermissions");
+    QCheckBox *preservePermissions = new QCheckBox(Smb4KSettings::self()->preservePermissionsItem()->label(), attributesOwnershipBox);
+    preservePermissions->setObjectName("kcfg_PreservePermissions");
 
-    fileAttributesTabLayout->addRow(i18n("File Attributes:"), preservePerms);
+    attributesOwnershipBoxLayout->addWidget(preservePermissions, 0, 0);
 
-    QCheckBox *preserveDevices = new QCheckBox(Smb4KSettings::self()->preserveDevicesAndSpecialsItem()->label(), fileAttributesTab);
+    QCheckBox *preserveDevices = new QCheckBox(Smb4KSettings::self()->preserveDevicesAndSpecialsItem()->label(), attributesOwnershipBox);
     preserveDevices->setObjectName("kcfg_PreserveDevicesAndSpecials");
 
-    fileAttributesTabLayout->addRow(QString(), preserveDevices);
+    attributesOwnershipBoxLayout->addWidget(preserveDevices, 0, 1);
 
-    QCheckBox *preserveTimes = new QCheckBox(Smb4KSettings::self()->preserveTimesItem()->label(), fileAttributesTab);
+    QCheckBox *preserveTimes = new QCheckBox(Smb4KSettings::self()->preserveTimesItem()->label(), attributesOwnershipBox);
     preserveTimes->setObjectName("kcfg_PreserveTimes");
 
-    fileAttributesTabLayout->addRow(QString(), preserveTimes);
+    attributesOwnershipBoxLayout->addWidget(preserveTimes, 1, 0);
 
-    QCheckBox *omitDirTimes = new QCheckBox(Smb4KSettings::self()->omitDirectoryTimesItem()->label(), fileAttributesTab);
-    omitDirTimes->setObjectName("kcfg_OmitDirectoryTimes");
+    QCheckBox *omitDirectoriesTimes = new QCheckBox(Smb4KSettings::self()->omitDirectoryTimesItem()->label(), attributesOwnershipBox);
+    omitDirectoriesTimes->setObjectName("kcfg_OmitDirectoryTimes");
 
-    fileAttributesTabLayout->addRow(QString(), omitDirTimes);
+    attributesOwnershipBoxLayout->addWidget(omitDirectoriesTimes, 1, 1);
 
-    QCheckBox *preserveOwner = new QCheckBox(Smb4KSettings::self()->preserveOwnerItem()->label(), fileAttributesTab);
+    QCheckBox *preserveOwner = new QCheckBox(Smb4KSettings::self()->preserveOwnerItem()->label(), attributesOwnershipBox);
     preserveOwner->setObjectName("kcfg_PreserveOwner");
 
-    fileAttributesTabLayout->addRow(i18n("Ownership:"), preserveOwner);
+    attributesOwnershipBoxLayout->addWidget(preserveOwner, 2, 0);
 
-    QCheckBox *preserveGroup = new QCheckBox(Smb4KSettings::self()->preserveGroupItem()->label(), fileAttributesTab);
+    QCheckBox *preserveGroup = new QCheckBox(Smb4KSettings::self()->preserveGroupItem()->label(), attributesOwnershipBox);
     preserveGroup->setObjectName("kcfg_PreserveGroup");
 
-    fileAttributesTabLayout->addRow(QString(), preserveGroup);
+    attributesOwnershipBoxLayout->addWidget(preserveGroup, 2, 1);
 
-    addTab(fileAttributesTab, i18n("File Attributes and Ownership"));
+    fileHandlingTabLayout->addWidget(attributesOwnershipBox);
+    fileHandlingTabLayout->addStretch(100);
+
+    addTab(fileHandlingTab, i18n("File Handling"));
 
     //
     // 'File Transfer' tab
     //
     QWidget *transferTab = new QWidget(this);
-    QFormLayout *transferTabLayout = new QFormLayout(transferTab);
+    QVBoxLayout *transferTabLayout = new QVBoxLayout(transferTab);
 
     // Compression
-    QCheckBox *compressData = new QCheckBox(Smb4KSettings::self()->compressDataItem()->label(), transferTab);
+    QGroupBox *compressionBox = new QGroupBox(i18n("Compression"), transferTab);
+    QGridLayout *compressionBoxLayout = new QGridLayout(compressionBox);
+
+    QCheckBox *compressData = new QCheckBox(Smb4KSettings::self()->compressDataItem()->label(), compressionBox);
     compressData->setObjectName("kcfg_CompressData");
 
-    transferTabLayout->addRow(i18n("Compression:"), compressData);
+    compressionBoxLayout->addWidget(compressData, 0, 0, 1, 2);
 
-    QWidget *compressionLevelWidget = new QWidget(transferTab);
-    QHBoxLayout *compressionLevelWidgetLayout = new QHBoxLayout(compressionLevelWidget);
-    compressionLevelWidgetLayout->setMargin(0);
-
-    QCheckBox *compressionLevelButton = new QCheckBox(Smb4KSettings::self()->useCompressionLevelItem()->label(), compressionLevelWidget);
+    QCheckBox *compressionLevelButton = new QCheckBox(Smb4KSettings::self()->useCompressionLevelItem()->label(), compressionBox);
     compressionLevelButton->setObjectName("kcfg_UseCompressionLevel");
-    QSpinBox *compressionLevel = new QSpinBox(compressionLevelWidget);
+
+    compressionBoxLayout->addWidget(compressionLevelButton, 1, 0);
+
+    QSpinBox *compressionLevel = new QSpinBox(compressionBox);
     compressionLevel->setObjectName("kcfg_CompressionLevel");
 
-    compressionLevelWidgetLayout->addWidget(compressionLevelButton);
-    compressionLevelWidgetLayout->addWidget(compressionLevel);
+    compressionBoxLayout->addWidget(compressionLevel, 1, 1);
 
-    transferTabLayout->addRow(QString(), compressionLevelWidget);
-
-    QWidget *skipCompressionWidget = new QWidget(transferTab);
-    QBoxLayout *skipCompressionWidgetLayout = new QHBoxLayout(skipCompressionWidget);
-    skipCompressionWidgetLayout->setMargin(0);
-
-    QCheckBox *skipCompressionButton = new QCheckBox(Smb4KSettings::self()->useSkipCompressionItem()->label(), skipCompressionWidget);
+    QCheckBox *skipCompressionButton = new QCheckBox(Smb4KSettings::self()->useSkipCompressionItem()->label(), compressionBox);
     skipCompressionButton->setObjectName("kcfg_UseSkipCompression");
-    KLineEdit *skipCompression = new KLineEdit(skipCompressionWidget);
+
+    compressionBoxLayout->addWidget(skipCompressionButton, 2, 0);
+
+    KLineEdit *skipCompression = new KLineEdit(compressionBox);
     skipCompression->setObjectName("kcfg_SkipCompression");
     skipCompression->setClearButtonEnabled(true);
 
-    skipCompressionWidgetLayout->addWidget(skipCompressionButton);
-    skipCompressionWidgetLayout->addWidget(skipCompression);
+    compressionBoxLayout->addWidget(skipCompression, 2, 1);
 
-    transferTabLayout->addRow(QString(), skipCompressionWidget);
+    transferTabLayout->addWidget(compressionBox);
 
     // Files
-    QWidget *minTransferSizeWidget = new QWidget(transferTab);
-    QHBoxLayout *minTransferSizeWidgetLayout = new QHBoxLayout(minTransferSizeWidget);
-    minTransferSizeWidgetLayout->setMargin(0);
+    QGroupBox *filesBox = new QGroupBox(i18n("Files"), transferTab);
+    QGridLayout *filesBoxLayout = new QGridLayout(filesBox);
 
-    QCheckBox *minTransferSizeButton = new QCheckBox(Smb4KSettings::self()->useMinimalTransferSizeItem()->label(), minTransferSizeWidget);
+    QCheckBox *minTransferSizeButton = new QCheckBox(Smb4KSettings::self()->useMinimalTransferSizeItem()->label(), filesBox);
     minTransferSizeButton->setObjectName("kcfg_UseMinimalTransferSize");
-    QSpinBox *minTransferSize = new QSpinBox(minTransferSizeWidget);
+
+    filesBoxLayout->addWidget(minTransferSizeButton, 0, 0);
+
+    QSpinBox *minTransferSize = new QSpinBox(filesBox);
     minTransferSize->setObjectName("kcfg_MinimalTransferSize");
     minTransferSize->setSuffix(i18n(" KiB"));
 
-    minTransferSizeWidgetLayout->addWidget(minTransferSizeButton);
-    minTransferSizeWidgetLayout->addWidget(minTransferSize);
+    filesBoxLayout->addWidget(minTransferSize, 0, 1);
 
-    transferTabLayout->addRow(i18n("Files:"), minTransferSizeWidget);
-
-    QWidget *maxTransferSizeWidget = new QWidget(transferTab);
-    QHBoxLayout *maxTransferSizeWidgetLayout = new QHBoxLayout(maxTransferSizeWidget);
-    maxTransferSizeWidgetLayout->setMargin(0);
-
-    QCheckBox *maxTransferSizeButton = new QCheckBox(Smb4KSettings::self()->useMaximalTransferSizeItem()->label(), maxTransferSizeWidget);
+    QCheckBox *maxTransferSizeButton = new QCheckBox(Smb4KSettings::self()->useMaximalTransferSizeItem()->label(), filesBox);
     maxTransferSizeButton->setObjectName("kcfg_UseMaximalTransferSize");
-    QSpinBox *maxTransferSize = new QSpinBox(maxTransferSizeWidget);
+
+    filesBoxLayout->addWidget(maxTransferSizeButton, 1, 0);
+
+    QSpinBox *maxTransferSize = new QSpinBox(filesBox);
     maxTransferSize->setObjectName("kcfg_MaximalTransferSize");
     maxTransferSize->setSuffix(i18n(" KiB"));
 
-    maxTransferSizeWidgetLayout->addWidget(maxTransferSizeButton);
-    maxTransferSizeWidgetLayout->addWidget(maxTransferSize);
+    filesBoxLayout->addWidget(maxTransferSize, 1, 1);
 
-    transferTabLayout->addRow(QString(), maxTransferSizeWidget);
-
-    QCheckBox *keepPartial = new QCheckBox(Smb4KSettings::self()->keepPartialItem()->label(), transferTab);
+    QCheckBox *keepPartial = new QCheckBox(Smb4KSettings::self()->keepPartialItem()->label(), filesBox);
     keepPartial->setObjectName("kcfg_KeepPartial");
 
-    transferTabLayout->addRow(QString(), keepPartial);
+    filesBoxLayout->addWidget(keepPartial, 2, 0, 1, 2);
 
-    QWidget *partialDirWidget = new QWidget(transferTab);
-    QHBoxLayout *partialDirWidgetLayout = new QHBoxLayout(partialDirWidget);
-    partialDirWidgetLayout->setMargin(0);
-
-    QCheckBox *partialDirButton = new QCheckBox(Smb4KSettings::self()->usePartialDirectoryItem()->label(), partialDirWidget);
+    QCheckBox *partialDirButton = new QCheckBox(Smb4KSettings::self()->usePartialDirectoryItem()->label(), filesBox);
     partialDirButton->setObjectName("kcfg_UsePartialDirectory");
-    KUrlRequester *partialDir = new KUrlRequester(partialDirWidget);
+
+    filesBoxLayout->addWidget(partialDirButton, 3, 0);
+
+    KUrlRequester *partialDir = new KUrlRequester(filesBox);
     partialDir->setObjectName("kcfg_PartialDirectory");
     partialDir->setMode(KFile::Directory | KFile::LocalOnly);
 
-    partialDirWidgetLayout->addWidget(partialDirButton);
-    partialDirWidgetLayout->addWidget(partialDir);
+    filesBoxLayout->addWidget(partialDir, 3, 1);
 
-    transferTabLayout->addRow(QString(), partialDirWidget);
+    transferTabLayout->addWidget(filesBox);
 
     // Miscellaneous
-    QWidget *bandwidthLimitWidget = new QWidget(transferTab);
-    QHBoxLayout *bandwidthLimitWidgetLayout = new QHBoxLayout(bandwidthLimitWidget);
-    bandwidthLimitWidgetLayout->setMargin(0);
+    QGroupBox *miscellaneousBox = new QGroupBox(transferTab);
+    QGridLayout *miscellaneousBoxLayout = new QGridLayout(miscellaneousBox);
 
-    QCheckBox *bandwidthLimitButton = new QCheckBox(Smb4KSettings::self()->useBandwidthLimitItem()->label(), bandwidthLimitWidget);
+    QCheckBox *bandwidthLimitButton = new QCheckBox(Smb4KSettings::self()->useBandwidthLimitItem()->label(), miscellaneousBox);
     bandwidthLimitButton->setObjectName("kcfg_UseBandwidthLimit");
-    QSpinBox *bandwidthLimit = new QSpinBox(transferTab);
+
+    miscellaneousBoxLayout->addWidget(bandwidthLimitButton, 0, 0);
+
+    QSpinBox *bandwidthLimit = new QSpinBox(miscellaneousBox);
     bandwidthLimit->setObjectName("kcfg_BandwidthLimit");
     bandwidthLimit->setSuffix(i18n(" KiB/s"));
 
-    bandwidthLimitWidgetLayout->addWidget(bandwidthLimitButton);
-    bandwidthLimitWidgetLayout->addWidget(bandwidthLimit);
+    miscellaneousBoxLayout->addWidget(bandwidthLimit, 0, 1);
 
-    transferTabLayout->addRow(i18n("Miscellaneous:"), bandwidthLimitWidget);
+    transferTabLayout->addWidget(miscellaneousBox);
+    transferTabLayout->addStretch(100);
 
     addTab(transferTab, i18n("File Transfer"));
 
@@ -334,63 +364,70 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     // 'File Deletion' tab
     //
     QWidget *deleteTab = new QWidget(this);
-    QFormLayout *deleteTabLayout = new QFormLayout(deleteTab);
+    QVBoxLayout *deleteTabLayout = new QVBoxLayout(deleteTab);
 
     // Files and Directories
-    QCheckBox *removeSource = new QCheckBox(Smb4KSettings::self()->removeSourceFilesItem()->label(), deleteTab);
+    QGroupBox *filesAndDirectoriesBox = new QGroupBox(i18n("Files && Directories"), deleteTab);
+    QGridLayout *filesAndDirectoriesBoxLayout = new QGridLayout(filesAndDirectoriesBox);    
+    
+    QCheckBox *removeSource = new QCheckBox(Smb4KSettings::self()->removeSourceFilesItem()->label(), filesAndDirectoriesBox);
     removeSource->setObjectName("kcfg_RemoveSourceFiles");
 
-    deleteTabLayout->addRow(i18n("Files && Directories:"), removeSource);
-
-    QCheckBox *deleteExtraneous = new QCheckBox(Smb4KSettings::self()->deleteExtraneousItem()->label(), deleteTab);
+    filesAndDirectoriesBoxLayout->addWidget(removeSource, 0, 0);
+    
+    QCheckBox *deleteExtraneous = new QCheckBox(Smb4KSettings::self()->deleteExtraneousItem()->label(), filesAndDirectoriesBox);
     deleteExtraneous->setObjectName("kcfg_DeleteExtraneous");
 
-    deleteTabLayout->addRow(QString(), deleteExtraneous);
+    filesAndDirectoriesBoxLayout->addWidget(deleteExtraneous, 0, 1);
 
-    QCheckBox *deleteBefore = new QCheckBox(Smb4KSettings::self()->deleteBeforeItem()->label(), deleteTab);
+    QCheckBox *deleteBefore = new QCheckBox(Smb4KSettings::self()->deleteBeforeItem()->label(), filesAndDirectoriesBox);
     deleteBefore->setObjectName("kcfg_DeleteBefore");
 
-    deleteTabLayout->addRow(QString(), deleteBefore);
+    filesAndDirectoriesBoxLayout->addWidget(deleteBefore, 1, 0);
 
-    QCheckBox *deleteAfter = new QCheckBox(Smb4KSettings::self()->deleteAfterItem()->label(), deleteTab);
+    QCheckBox *deleteAfter = new QCheckBox(Smb4KSettings::self()->deleteAfterItem()->label(), filesAndDirectoriesBox);
     deleteAfter->setObjectName("kcfg_DeleteAfter");
 
-    deleteTabLayout->addRow(QString(), deleteAfter);
+    filesAndDirectoriesBoxLayout->addWidget(deleteAfter, 1, 1);
 
-    QCheckBox *deleteDuring = new QCheckBox(Smb4KSettings::self()->deleteDuringItem()->label(), deleteTab);
+    QCheckBox *deleteDuring = new QCheckBox(Smb4KSettings::self()->deleteDuringItem()->label(), filesAndDirectoriesBox);
     deleteDuring->setObjectName("kcfg_DeleteDuring");
 
-    deleteTabLayout->addRow(QString(), deleteDuring);
+    filesAndDirectoriesBoxLayout->addWidget(deleteDuring, 2, 0);
 
-    QCheckBox *deleteExcluded = new QCheckBox(Smb4KSettings::self()->deleteExcludedItem()->label(), deleteTab);
+    QCheckBox *deleteExcluded = new QCheckBox(Smb4KSettings::self()->deleteExcludedItem()->label(), filesAndDirectoriesBox);
     deleteExcluded->setObjectName("kcfg_DeleteExcluded");
 
-    deleteTabLayout->addRow(QString(), deleteExcluded);
+    filesAndDirectoriesBoxLayout->addWidget(deleteExcluded, 2, 1);
 
-    QCheckBox *ignoreIOErrors = new QCheckBox(Smb4KSettings::self()->ignoreErrorsItem()->label(), deleteTab);
-    ignoreIOErrors->setObjectName("kcfg_IgnoreErrors");
+    QCheckBox *ignoreIoErrors = new QCheckBox(Smb4KSettings::self()->ignoreErrorsItem()->label(), filesAndDirectoriesBox);
+    ignoreIoErrors->setObjectName("kcfg_IgnoreErrors");
 
-    deleteTabLayout->addRow(QString(), ignoreIOErrors);
+    filesAndDirectoriesBoxLayout->addWidget(ignoreIoErrors, 3, 0);
 
-    QCheckBox *forceDirDeletion = new QCheckBox(Smb4KSettings::self()->forceDirectoryDeletionItem()->label(), deleteTab);
+    QCheckBox *forceDirDeletion = new QCheckBox(Smb4KSettings::self()->forceDirectoryDeletionItem()->label(), filesAndDirectoriesBox);
     forceDirDeletion->setObjectName("kcfg_ForceDirectoryDeletion");
 
-    deleteTabLayout->addRow(QString(), forceDirDeletion);
+    filesAndDirectoriesBoxLayout->addWidget(forceDirDeletion, 3, 1);
+    
+    deleteTabLayout->addWidget(filesAndDirectoriesBox);
 
     // Restrictions
-    QWidget *maximumDeleteWidget = new QWidget(deleteTab);
-    QHBoxLayout *maximumDeleteWidgetLayout = new QHBoxLayout(maximumDeleteWidget);
-    maximumDeleteWidgetLayout->setMargin(0);
-
-    QCheckBox *maximumDeleteButton = new QCheckBox(Smb4KSettings::self()->useMaximumDeleteItem()->label(), maximumDeleteWidget);
+    QGroupBox *restrictionsBox = new QGroupBox(i18n("Restrictions"), deleteTab);
+    QGridLayout *restrictionsBoxLayout = new QGridLayout(restrictionsBox);
+    
+    QCheckBox *maximumDeleteButton = new QCheckBox(Smb4KSettings::self()->useMaximumDeleteItem()->label(), restrictionsBox);
     maximumDeleteButton->setObjectName("kcfg_UseMaximumDelete");
-    QSpinBox *maximumDelete = new QSpinBox(maximumDeleteWidget);
+    
+    restrictionsBoxLayout->addWidget(maximumDeleteButton, 0, 0);
+    
+    QSpinBox *maximumDelete = new QSpinBox(restrictionsBox);
     maximumDelete->setObjectName("kcfg_MaximumDeleteValue");
+    
+    restrictionsBoxLayout->addWidget(maximumDelete, 0, 1);
 
-    maximumDeleteWidgetLayout->addWidget(maximumDeleteButton);
-    maximumDeleteWidgetLayout->addWidget(maximumDelete);
-
-    deleteTabLayout->addRow(i18n("Restrictions:"), maximumDeleteWidget);
+    deleteTabLayout->addWidget(restrictionsBox);
+    deleteTabLayout->addStretch(100);
 
     addTab(deleteTab, i18n("File Deletion"));
 
@@ -398,153 +435,155 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     // 'Filter' tab
     //
     QWidget *filterTab = new QWidget(this);
-    QFormLayout *filterTabLayout = new QFormLayout(filterTab);
+    QVBoxLayout *filterTabLayout = new QVBoxLayout(filterTab);
 
     // General
-    QCheckBox *cvsExclude = new QCheckBox(Smb4KSettings::self()->useCVSExcludeItem()->label(), filterTab);
+    QGroupBox *generalFilteringBox = new QGroupBox(i18n("General Filtering Settings"), filterTab);
+    QGridLayout *generalFilteringBoxLayout = new QGridLayout(generalFilteringBox);
+    
+    QCheckBox *cvsExclude = new QCheckBox(Smb4KSettings::self()->useCVSExcludeItem()->label(), generalFilteringBox);
     cvsExclude->setObjectName("kcfg_UseCVSExclude");
-
-    filterTabLayout->addRow(i18n("General:"), cvsExclude);
-
-    QWidget *excludePatternWidget = new QWidget(filterTab);
-    QHBoxLayout *excludePatternWidgetLayout = new QHBoxLayout(excludePatternWidget);
-    excludePatternWidgetLayout->setMargin(0);
-
-    QCheckBox *excludePatternButton = new QCheckBox(Smb4KSettings::self()->useExcludePatternItem()->label(), excludePatternWidget);
+    
+    generalFilteringBoxLayout->addWidget(cvsExclude, 0, 0, 1, 2);
+    
+    QCheckBox *excludePatternButton = new QCheckBox(Smb4KSettings::self()->useExcludePatternItem()->label(), generalFilteringBox);
     excludePatternButton->setObjectName("kcfg_UseExcludePattern");
-    KLineEdit *excludePattern = new KLineEdit(excludePatternWidget);
+    
+    generalFilteringBoxLayout->addWidget(excludePatternButton, 1, 0);
+    
+    KLineEdit *excludePattern = new KLineEdit(generalFilteringBox);
     excludePattern->setObjectName("kcfg_ExcludePattern");
     excludePattern->setClearButtonEnabled(true);
+    
+    generalFilteringBoxLayout->addWidget(excludePattern, 1, 1);
 
-    excludePatternWidgetLayout->addWidget(excludePatternButton);
-    excludePatternWidgetLayout->addWidget(excludePattern);
-
-    filterTabLayout->addRow(QString(), excludePatternWidget);
-
-    QWidget *excludeFromWidget = new QWidget(filterTab);
-    QHBoxLayout *excludeFromWidgetLayout = new QHBoxLayout(excludeFromWidget);
-    excludeFromWidgetLayout->setMargin(0);
-
-    QCheckBox *excludeFromButton = new QCheckBox(Smb4KSettings::self()->useExcludeFromItem()->label(), excludeFromWidget);
+    QCheckBox *excludeFromButton = new QCheckBox(Smb4KSettings::self()->useExcludeFromItem()->label(), generalFilteringBox);
     excludeFromButton->setObjectName("kcfg_UseExcludeFrom");
-    KUrlRequester *excludeFrom = new KUrlRequester(excludeFromWidget);
+    
+    generalFilteringBoxLayout->addWidget(excludeFromButton, 2, 0);
+    
+    KUrlRequester *excludeFrom = new KUrlRequester(generalFilteringBox);
     excludeFrom->setObjectName("kcfg_ExcludeFrom");
     excludeFrom->setMode(KFile::File | KFile::LocalOnly);
+    
+    generalFilteringBoxLayout->addWidget(excludeFrom, 2, 1);
 
-    excludeFromWidgetLayout->addWidget(excludeFromButton);
-    excludeFromWidgetLayout->addWidget(excludeFrom);
-
-    filterTabLayout->addRow(QString(), excludeFromWidget);
-
-    QWidget *includePatternWidget = new QWidget(filterTab);
-    QHBoxLayout *includePatternWidgetLayout = new QHBoxLayout(includePatternWidget);
-    includePatternWidgetLayout->setMargin(0);
-
-    QCheckBox *includePatternButton = new QCheckBox(Smb4KSettings::self()->useIncludePatternItem()->label(), includePatternWidget);
+    QCheckBox *includePatternButton = new QCheckBox(Smb4KSettings::self()->useIncludePatternItem()->label(), generalFilteringBox);
     includePatternButton->setObjectName("kcfg_UseIncludePattern");
-    KLineEdit *includePattern = new KLineEdit(includePatternWidget);
+    
+    generalFilteringBoxLayout->addWidget(includePatternButton, 3, 0);
+    
+    KLineEdit *includePattern = new KLineEdit(generalFilteringBox);
     includePattern->setObjectName("kcfg_IncludePattern");
     includePattern->setClearButtonEnabled(true);
+    
+    generalFilteringBoxLayout->addWidget(includePattern, 3, 1);
 
-    includePatternWidgetLayout->addWidget(includePatternButton);
-    includePatternWidgetLayout->addWidget(includePattern);
-
-    filterTabLayout->addRow(QString(), includePatternWidget);
-
-    QWidget *includeFromWidget = new QWidget(filterTab);
-    QHBoxLayout *includeFromWidgetLayout = new QHBoxLayout(includeFromWidget);
-    includeFromWidgetLayout->setMargin(0);
-
-    QCheckBox *includeFromButton = new QCheckBox(Smb4KSettings::self()->useIncludeFromItem()->label(), includeFromWidget);
+    QCheckBox *includeFromButton = new QCheckBox(Smb4KSettings::self()->useIncludeFromItem()->label(), generalFilteringBox);
     includeFromButton->setObjectName("kcfg_UseIncludeFrom");
-    KUrlRequester *includeFrom = new KUrlRequester(includeFromWidget);
+    
+    generalFilteringBoxLayout->addWidget(includeFromButton, 4, 0);
+    
+    KUrlRequester *includeFrom = new KUrlRequester(generalFilteringBox);
     includeFrom->setObjectName("kcfg_IncludeFrom");
     includeFrom->setMode(KFile::File | KFile::LocalOnly);
-
-    includeFromWidgetLayout->addWidget(includeFromButton);
-    includeFromWidgetLayout->addWidget(includeFrom);
-
-    filterTabLayout->addRow(QString(), includeFromWidget);
+    
+    generalFilteringBoxLayout->addWidget(includeFrom, 4, 1);
+    
+    filterTabLayout->addWidget(generalFilteringBox);
 
     // Filter rules
-    QCheckBox *useFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFilterRuleItem()->label(), filterTab);
+    QGroupBox *filterRulesBox = new QGroupBox(i18n("Filter Rules"), filterTab);
+    QGridLayout *filterRulesBoxLayout = new QGridLayout(filterRulesBox);
+    
+    QCheckBox *useFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFilterRuleItem()->label(), filterRulesBox);
     useFFilterRule->setObjectName("kcfg_UseFFilterRule");
+    
+    filterRulesBoxLayout->addWidget(useFFilterRule, 0, 0, 1, 2);
 
-    filterTabLayout->addRow(i18n("Special filter rules:"), useFFilterRule);
-
-    QCheckBox *useFFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFFilterRuleItem()->label(), filterTab);
+    QCheckBox *useFFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFFilterRuleItem()->label(), filterRulesBox);
     useFFFilterRule->setObjectName("kcfg_UseFFFilterRule");
+    
+    filterRulesBoxLayout->addWidget(useFFFilterRule, 1, 0, 1, 2);
 
-    filterTabLayout->addRow(QString(), useFFFilterRule);
+    QLabel *customFilterRulesLabel = new QLabel(Smb4KSettings::self()->customFilteringRulesItem()->label(), filterRulesBox);
+    
+    filterRulesBoxLayout->addWidget(customFilterRulesLabel, 2, 0);
+    
+    KLineEdit *customFilterRules = new KLineEdit(filterTab);
+    customFilterRules->setObjectName("kcfg_CustomFilteringRules");
+    customFilterRules->setClearButtonEnabled(true);
 
-    KLineEdit *customRules = new KLineEdit(filterTab);
-    customRules->setObjectName("kcfg_CustomFilteringRules");
-    customRules->setClearButtonEnabled(true);
-
-    filterTabLayout->addRow(Smb4KSettings::self()->customFilteringRulesItem()->label(), customRules);
+    filterRulesBoxLayout->addWidget(customFilterRules, 2, 1);
+    
+    filterTabLayout->addWidget(filterRulesBox);
+    filterTabLayout->addStretch(100);
 
     addTab(filterTab, i18n("Filtering"));
 
     //
     // 'Miscellaneous' tab
     //
-    QWidget *miscTab = new QWidget(this);
-    QFormLayout *miscTabLayout = new QFormLayout(miscTab);
+    QWidget *miscellaneousTab = new QWidget(this);
+    QVBoxLayout *miscellaneousTabLayout = new QVBoxLayout(miscellaneousTab);
 
     // Checksums
-    QWidget *blockSizeWidget = new QWidget(miscTab);
-    QHBoxLayout *blockSizeWidgetLayout = new QHBoxLayout(blockSizeWidget);
-    blockSizeWidgetLayout->setMargin(0);
-
-    QCheckBox *blockSizeButton = new QCheckBox(Smb4KSettings::self()->useBlockSizeItem()->label(), miscTab);
+    QGroupBox *checksumsBox = new QGroupBox(i18n("Checksums"), miscellaneousTab);
+    QGridLayout *checksumsBoxLayout = new QGridLayout(checksumsBox);
+    
+    QCheckBox *blockSizeButton = new QCheckBox(Smb4KSettings::self()->useBlockSizeItem()->label(), checksumsBox);
     blockSizeButton->setObjectName("kcfg_UseBlockSize");
-    QSpinBox *blockSize = new QSpinBox(miscTab);
+    
+    checksumsBoxLayout->addWidget(blockSizeButton, 0, 0);
+
+    QSpinBox *blockSize = new QSpinBox(checksumsBox);
     blockSize->setObjectName("kcfg_BlockSize");
+    
+    checksumsBoxLayout->addWidget(blockSize, 0, 1);
 
-    blockSizeWidgetLayout->addWidget(blockSizeButton);
-    blockSizeWidgetLayout->addWidget(blockSize);
-
-    miscTabLayout->addRow(i18n("Checksums:"), blockSizeWidget);
-
-    QWidget *checksumSeedWidget = new QWidget(miscTab);
-    QHBoxLayout *checksumSeedWidgetLayout = new QHBoxLayout(checksumSeedWidget);
-    checksumSeedWidgetLayout->setMargin(0);
-
-    QCheckBox *checksumSeedButton = new QCheckBox(Smb4KSettings::self()->useChecksumSeedItem()->label(), checksumSeedWidget);
+    QCheckBox *checksumSeedButton = new QCheckBox(Smb4KSettings::self()->useChecksumSeedItem()->label(), checksumsBox);
     checksumSeedButton->setObjectName("kcfg_UseChecksumSeed");
-    QSpinBox *checksumSeed = new QSpinBox(checksumSeedWidget);
+    
+    checksumsBoxLayout->addWidget(checksumSeedButton, 1, 0);
+    
+    QSpinBox *checksumSeed = new QSpinBox(checksumsBox);
     checksumSeed->setObjectName("kcfg_ChecksumSeed");
+    
+    checksumsBoxLayout->addWidget(checksumSeed, 1, 1);
 
-    checksumSeedWidgetLayout->addWidget(checksumSeedButton);
-    checksumSeedWidgetLayout->addWidget(checksumSeed);
-
-    miscTabLayout->addRow(QString(), checksumSeedWidget);
-
-    QCheckBox *useChecksum = new QCheckBox(Smb4KSettings::self()->useChecksumItem()->label(), miscTab);
+    QCheckBox *useChecksum = new QCheckBox(Smb4KSettings::self()->useChecksumItem()->label(), checksumsBox);
     useChecksum->setObjectName("kcfg_UseChecksum");
-
-    miscTabLayout->addRow(QString(), useChecksum);
+    
+    checksumsBoxLayout->addWidget(useChecksum, 2, 0, 1, 2);
+    
+    miscellaneousTabLayout->addWidget(checksumsBox);
 
     // Miscellaneous
-    QCheckBox *oneFilesystem = new QCheckBox(Smb4KSettings::self()->oneFileSystemItem()->label(), miscTab);
+    QGroupBox *miscellaneousBox2 = new QGroupBox(i18n("Miscellaneous"), miscellaneousTab);
+    QGridLayout *miscellaneousBox2Layout = new QGridLayout(miscellaneousBox2);
+    
+    QCheckBox *oneFilesystem = new QCheckBox(Smb4KSettings::self()->oneFileSystemItem()->label(), miscellaneousBox2);
     oneFilesystem->setObjectName("kcfg_OneFileSystem");
+    
+    miscellaneousBox2Layout->addWidget(oneFilesystem, 0, 0);
 
-    miscTabLayout->addRow(i18n("Miscellaneous:"), oneFilesystem);
-
-    QCheckBox *delayUpdates = new QCheckBox(Smb4KSettings::self()->delayUpdatesItem()->label(), miscTab);
+    QCheckBox *delayUpdates = new QCheckBox(Smb4KSettings::self()->delayUpdatesItem()->label(), miscellaneousBox2);
     delayUpdates->setObjectName("kcfg_DelayUpdates");
 
-    miscTabLayout->addRow(QString(), delayUpdates);
-
-    addTab(miscTab, i18n("Miscellaneous"));
+    miscellaneousBox2Layout->addWidget(delayUpdates, 0, 1);
+    
+    miscellaneousTabLayout->addWidget(miscellaneousBox2);
+    miscellaneousTabLayout->addStretch(100);
+    
+    addTab(miscellaneousTab, i18n("Miscellaneous"));
 
     //
     // Connections
     //
     connect(archiveMode, SIGNAL(toggled(bool)), this, SLOT(slotArchiveToggled(bool)));
-    connect(recurseDirs, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
+    connect(recurseDirectories, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
     connect(preserveLinks, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
-    connect(preservePerms, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
+    connect(preservePermissions, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
     connect(preserveTimes, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
     connect(preserveGroup, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
     connect(preserveOwner, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
