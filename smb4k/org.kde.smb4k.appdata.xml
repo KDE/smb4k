@@ -67,7 +67,7 @@ SPDX-License-Identifier: CC0-1.0
       Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.
     </p>
     <p xml:lang="ca">El Smb4K és un explorador avançat del veïnatge de xarxa i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks 5 del KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de xarxa per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
-    <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de ret i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks 5 de KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de ret per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fichers local.</p>
+    <p xml:lang="ca-valencia">Smb4K és un explorador avançat del veïnatge de ret i una utilitat per a muntar les comparticions Samba. Està basat en els Frameworks 5 de KDE i la biblioteca del client Samba (libsmbclient). Explora el vostre veïnatge de ret per a tots els grups de treball disponibles, servidors i comparticions, i pot muntar totes les comparticions desitjades al vostre sistema de fitxers local.</p>
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben. Es basiert auf den KDE Frameworks 5 und der Samba-Bibliothek libsmbclient.Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
     <p xml:lang="el">Το Smb4K είναι ένας προηγμένος περιηγητής τοπικού δικτύου και το εργαλείο προσάρτησης κοινών πόρων. Βασίζεται στο KDE Frameworks 5 και στη βιβλιοθήκη πελάτη της Samba (libsmbclient). Σαρώνει το τοπικό σας δίκτυο για όλες τις διαθέσιμες ομάδες εργασίας, εξυπηρετητές και κοινούς πόρους και μπορεί να προσαρτά όλους τους επιθυμητούς κοινούς πόρους στο σύστημα αρχείων του υπολογιστή σας.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighbourhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighbourhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
@@ -191,7 +191,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
       <li xml:lang="bs">Podrška za CIFS (Linux) i SMBFS (FreeBSD) sistem datoteka</li>
       <li xml:lang="ca">Implementació dels sistemes de fitxers CIFS (Linux) i SMBFS (FreeBSD)</li>
-      <li xml:lang="ca-valencia">Implementació dels sistemes de fichers CIFS (Linux) i SMBFS (FreeBSD)</li>
+      <li xml:lang="ca-valencia">Implementació dels sistemes de fitxers CIFS (Linux) i SMBFS (FreeBSD)</li>
       <li xml:lang="de">Unterstützung für CIFS-Dateisysteme unter Linux und SMBFS-Dateisysteme unter FreeBSD</li>
       <li xml:lang="el">Υποστηρίζει τα συστήματα αρχείων CIFS (Linux) και SMBFS (FreeBSD)</li>
       <li xml:lang="en-GB">Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
@@ -251,7 +251,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Access to the files of a mounted share using a file manager or terminal</li>
       <li xml:lang="bs">Pristup datotekama namještene razmjene koristeći upravitelj datotekom ili terminal</li>
       <li xml:lang="ca">Accés als fitxers d'una compartició muntada emprant un gestor de fitxers o terminal</li>
-      <li xml:lang="ca-valencia">Accés als fichers d'una compartició muntada emprant un gestor de fichers o terminal</li>
+      <li xml:lang="ca-valencia">Accés als fitxers d'una compartició muntada emprant un gestor de fitxers o terminal</li>
       <li xml:lang="de">Zugriff auf die Dateien einer eingehängten Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
       <li xml:lang="el">Παρέχει πρόσβαση στα αρχεία ενός προσαρτημένου κοινού πόρου με χρήση του διαχειριστή αρχείων ή του τερματικού</li>
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
