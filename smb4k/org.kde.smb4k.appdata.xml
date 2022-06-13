@@ -645,7 +645,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Synchronization of a remote share with a local copy and vice versa</li>
       <li xml:lang="bs">Sinhronizacija udaljenih razmjena sa lokalnom kopijom i obrnuto</li>
       <li xml:lang="ca">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
-      <li xml:lang="ca-valencia">Sincronisació d'una compartició remota amb una còpia local i viceversa</li>
+      <li xml:lang="ca-valencia">Sincronització d'una compartició remota amb una còpia local i viceversa</li>
       <li xml:lang="de">Abgleich einer entfernten Freigabe mit einer lokalen Kopie und umgekehrt</li>
       <li xml:lang="el">Συγχρονισμός απομακρυσμένου πόρου με τοπικό αντίγραφο και αντίστροφα</li>
       <li xml:lang="en-GB">Synchronisation of a remote share with a local copy and vice versa</li>
@@ -675,7 +675,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Ability to define custom options for individual servers and shares</li>
       <li xml:lang="bs">Sposobnost definisanja prilagođenih opcija za individualne servere i razmjene</li>
       <li xml:lang="ca">La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</li>
-      <li xml:lang="ca-valencia">La capacitat per a definir opcions personalisades individuals per a servidors i comparticions</li>
+      <li xml:lang="ca-valencia">La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</li>
       <li xml:lang="de">Fähigkeit zur Definition von benutzerdefinierten Einstellungen für einzelne Server und Freigaben.</li>
       <li xml:lang="el">Δυνατότητα καθορισμού προσαρμοσμένων επιλογών για ξεχωριστούς εξυπηρετητές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Ability to define custom options for individual servers and shares</li>
@@ -825,7 +825,7 @@ SPDX-License-Identifier: CC0-1.0
     </p>
     <p xml:lang="bs">Ako radite sa Windows dominiranim mrežnim okruženjem, možda ćete željeti instalirati aplikaciju kako biste lako pristupili omogućenim Windows razmjenama.</p>
     <p xml:lang="ca">Si esteu treballant en un entorn de xarxa dominat per Windows, és possible que vulgueu instal·lar aquesta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
-    <p xml:lang="ca-valencia">Si esteu treballant en un entorn de ret dominat per Windows, és possible que vulgueu instalar esta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
+    <p xml:lang="ca-valencia">Si esteu treballant en un entorn de ret dominat per Windows, és possible que vulgueu instal·lar esta aplicació per a poder accedir amb facilitat a les comparticions proporcionades per Windows.</p>
     <p xml:lang="de">Wenn Sie in einer Windows-dominierten Netzwerkumgebung arbeiten, sollten Sie diese Anwendung installieren, um leicht auf die vorhandenen Windows-Freigaben zuzugreifen.</p>
     <p xml:lang="el">Αν εργάζεστε σε ένα περιβάλλον δικτύου υπό την κυριαρχία των Windows, θα θέλατε να εγκαταστήσετε την εφαρμογή αυτή για να μπορείτε να έχετε άνετηπρόσβαση στους κοινούς πόρους που παρέχουν τα Windows.</p>
     <p xml:lang="en-GB">If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.</p>
