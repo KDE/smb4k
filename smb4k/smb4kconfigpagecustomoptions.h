@@ -75,41 +75,33 @@ protected Q_SLOTS:
     void slotEditCustomItem(QListWidgetItem *item);
 
     /**
-     * This slot is invoked when the custom context menu for the custom
-     * options widget is requested.
-     *
-     * @param pos             The position where the context menu was requested.
-     */
-    void slotCustomContextMenuRequested(const QPoint &pos);
-
-    /**
      * This slot is called when a custom options is to be edited.
      *
-     * @param checked         TRUE if the action is checked and FALSE otherwise.
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
      */
-    void slotEditActionTriggered(bool);
+    void slotEditButtonClicked(bool checked);
 
     /**
      * This slot is called when a custom option is to be removed.
      *
-     * @param checked         TRUE if the action is checked and FALSE otherwise.
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
      */
-    void slotRemoveActionTriggered(bool);
+    void slotRemoveButtonClicked(bool checked);
 
     /**
      * This slot is called when the list of custom options is to be cleared.
      *
-     * @param checked         TRUE if the action is checked and FALSE otherwise.
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
      */
-    void slotClearActionTriggered(bool);
+    void slotClearButtonClicked(bool checked);
 
     /**
      * This slot is called when the actions performed on the custom options
      * are to be reset.
      *
-     * @param checked         TRUE if the action is checked and FALSE otherwise.
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
      */
-    void slotResetActionTriggered(bool);
+    void slotResetButtonClicked(bool checked);
 
     /**
      * This slot is called when the reset button is to be enabled/disabled.

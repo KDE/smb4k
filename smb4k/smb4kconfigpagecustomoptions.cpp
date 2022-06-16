@@ -21,7 +21,6 @@
 // KDE includes
 #include <KI18n/KLocalizedString>
 #include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KActionMenu>
 #include <KWidgetsAddons/KMessageWidget>
 
 using namespace Smb4KGlobal;
@@ -53,33 +52,6 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     optionsListWidget->viewport()->installEventFilter(this);
 
     connect(optionsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), SLOT(slotEditCustomItem(QListWidgetItem *)));
-    connect(optionsListWidget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(slotCustomContextMenuRequested(QPoint)));
-
-    QAction *editAction = new QAction(KDE::icon("edit-rename"), i18n("Edit"), optionsListWidget);
-    editAction->setObjectName("edit_action");
-    editAction->setEnabled(false);
-
-    QAction *removeAction = new QAction(KDE::icon("edit-delete"), i18n("Remove"), optionsListWidget);
-    removeAction->setObjectName("remove_action");
-    removeAction->setEnabled(false);
-
-    QAction *clearAction = new QAction(KDE::icon("edit-clear-list"), i18n("Clear List"), optionsListWidget);
-    clearAction->setObjectName("clear_action");
-    clearAction->setEnabled(!Smb4KCustomOptionsManager::self()->customOptions(true).isEmpty());
-
-    optionsListWidget->addAction(editAction);
-    optionsListWidget->addAction(removeAction);
-    optionsListWidget->addAction(clearAction);
-
-    KActionMenu *actionMenu = new KActionMenu(optionsListWidget);
-    actionMenu->setObjectName("ActionMenu");
-    actionMenu->addAction(editAction);
-    actionMenu->addAction(removeAction);
-    actionMenu->addAction(clearAction);
-
-    connect(editAction, SIGNAL(triggered(bool)), SLOT(slotEditActionTriggered(bool)));
-    connect(removeAction, SIGNAL(triggered(bool)), SLOT(slotRemoveActionTriggered(bool)));
-    connect(clearAction, SIGNAL(triggered(bool)), SLOT(slotClearActionTriggered(bool)));
 
     leftWidgetLayout->addWidget(optionsListWidget);
 
@@ -118,14 +90,14 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     removeButton->setEnabled(false);
 
     QPushButton *clearButton = buttonBox->addButton(i18n("Clear List"), QDialogButtonBox::ActionRole);
-    clearButton->setIcon(KDE::icon("edit-clear-list"));
+    clearButton->setIcon(KDE::icon("edit-clear"));
     clearButton->setObjectName("clear_button");
     clearButton->setEnabled(!Smb4KCustomOptionsManager::self()->customOptions(true).isEmpty());
 
-    connect(resetButton, SIGNAL(clicked(bool)), SLOT(slotResetActionTriggered(bool)));
-    connect(editButton, SIGNAL(clicked(bool)), SLOT(slotEditActionTriggered(bool)));
-    connect(removeButton, SIGNAL(clicked(bool)), SLOT(slotRemoveActionTriggered(bool)));
-    connect(clearButton, SIGNAL(clicked(bool)), SLOT(slotClearActionTriggered(bool)));
+    connect(resetButton, SIGNAL(clicked(bool)), SLOT(slotResetButtonClicked(bool)));
+    connect(editButton, SIGNAL(clicked(bool)), SLOT(slotEditButtonClicked(bool)));
+    connect(removeButton, SIGNAL(clicked(bool)), SLOT(slotRemoveButtonClicked(bool)));
+    connect(clearButton, SIGNAL(clicked(bool)), SLOT(slotClearButtonClicked(bool)));
 
     layout->addWidget(buttonBox);
 
@@ -197,13 +169,8 @@ bool Smb4KConfigPageCustomOptions::eventFilter(QObject *obj, QEvent *e)
                 QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(e);
                 QPoint pos = optionsListWidget->viewport()->mapFromGlobal(mouseEvent->globalPos());
                 QListWidgetItem *item = optionsListWidget->itemAt(pos);
-
-                // Edit action and button
-                findChild<QAction *>("edit_action")->setEnabled(item != nullptr);
+                
                 findChild<QPushButton *>("edit_button")->setEnabled(item != nullptr);
-
-                // Remove action and button
-                findChild<QAction *>("remove_action")->setEnabled(item != nullptr);
                 findChild<QPushButton *>("remove_button")->setEnabled(item != nullptr);
 
                 if (!item) {
@@ -239,21 +206,10 @@ void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
     }
 }
 
-void Smb4KConfigPageCustomOptions::slotCustomContextMenuRequested(const QPoint &pos)
+void Smb4KConfigPageCustomOptions::slotEditButtonClicked(bool checked)
 {
-    QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
-
-    if (optionsListWidget) {
-        KActionMenu *actionMenu = optionsListWidget->findChild<KActionMenu *>("ActionMenu");
-
-        if (actionMenu) {
-            actionMenu->menu()->popup(optionsListWidget->viewport()->mapToGlobal(pos));
-        }
-    }
-}
-
-void Smb4KConfigPageCustomOptions::slotEditActionTriggered(bool /*checked*/)
-{
+    Q_UNUSED(checked);
+    
     QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
 
     if (optionsListWidget) {
@@ -263,8 +219,10 @@ void Smb4KConfigPageCustomOptions::slotEditActionTriggered(bool /*checked*/)
     }
 }
 
-void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
+void Smb4KConfigPageCustomOptions::slotRemoveButtonClicked(bool checked)
 {
+    Q_UNUSED(checked);
+    
     QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
 
     if (optionsListWidget) {
@@ -285,12 +243,13 @@ void Smb4KConfigPageCustomOptions::slotRemoveActionTriggered(bool /*checked*/)
         }
     }
 
-    findChild<QAction *>("clear_action")->setEnabled(optionsListWidget->count() != 0);
     findChild<QPushButton *>("clear_button")->setEnabled(optionsListWidget->count() != 0);
 }
 
-void Smb4KConfigPageCustomOptions::slotClearActionTriggered(bool /*checked*/)
+void Smb4KConfigPageCustomOptions::slotClearButtonClicked(bool checked)
 {
+    Q_UNUSED(checked);
+    
     QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
 
     if (optionsListWidget) {
@@ -314,12 +273,13 @@ void Smb4KConfigPageCustomOptions::slotClearActionTriggered(bool /*checked*/)
         emit customSettingsModified();
     }
 
-    findChild<QAction *>("clear_action")->setEnabled(optionsListWidget->count() != 0);
     findChild<QPushButton *>("clear_button")->setEnabled(optionsListWidget->count() != 0);
 }
 
-void Smb4KConfigPageCustomOptions::slotResetActionTriggered(bool)
+void Smb4KConfigPageCustomOptions::slotResetButtonClicked(bool checked)
 {
+    Q_UNUSED(checked);
+    
     QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
 
     if (optionsListWidget) {
@@ -330,7 +290,6 @@ void Smb4KConfigPageCustomOptions::slotResetActionTriggered(bool)
     m_maybe_changed = false;
     emit customSettingsModified();
 
-    findChild<QAction *>("clear_action")->setEnabled(optionsListWidget->count() != 0);
     findChild<QPushButton *>("clear_button")->setEnabled(optionsListWidget->count() != 0);
 }
 
