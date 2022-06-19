@@ -118,48 +118,54 @@ protected slots:
     void slotDefaultLoginToggled(bool checked);
 
     /**
-     * This slot is connected to the KListWidget::itemSelectionChanged() signal.
-     * It unmarks and enables/disables the "Show details" checkbox and clears the
-     * the details widget.
-     */
-    void slotItemSelectionChanged();
-
-    /**
-     * This slot is connected to the QTableWidget::cellChanged() signal and commits
-     * changes the user applied to the entries to the internal list and enables the
-     * "Undo" action.
+     * This slot is called when the wallet entries are to be loaded.
      *
-     * @param row             The row of the cell that was changed
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
+     */
+    void slotLoadButtonClicked(bool checked);
+
+    /**
+     * This slot is called when the list of all wallet entries is to be saved.
      *
-     * @param column          The column of the cell that was changed
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
      */
-    void slotDetailsChanged(int row, int column);
+    void slotSaveButtonClicked(bool checked);
 
     /**
-     * This slot is called when the edit action is clicked.
-     */
-    void slotEditClicked();
-
-    /**
-     * This slot is connected to the "Remove" button
-     */
-    void slotRemoveClicked();
-
-    /**
-     * This slot is connected to the "Clear" button
-     */
-    void slotClearClicked();
-
-    /**
-     * This slot is connected to the "Save" button and resets all actions.
+     * This slot is called when a wallet entry is to be edited.
      *
-     * @param checked         TRUE if the action is checked
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
      */
-    void slotSaveClicked(bool checked);
+    void slotEditButtonClicked(bool checked);
+
+    /**
+     * This slot is called when a wallet entry is to be removed.
+     *
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
+     */
+    void slotRemoveButtonClicked(bool checked);
+
+    /**
+     * This slot is called when the list of all wallet entries is to be cleared.
+     *
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
+     */
+    void slotClearButtonClicked(bool checked);
+
+    /**
+     * This slot is called when the actions performed on the custom options
+     * are to be reset.
+     *
+     * @param checked         TRUE if the button is checked and FALSE otherwise.
+     */
+    void slotResetButtonClicked(bool checked);
+
+    /**
+     * This slot is called when the reset button is to be enabled/disabled.
+     */
+    void slotEnableResetButton();
 
 private:
-    void loadDetails(Smb4KAuthInfo *authInfo);
-    void clearDetails();
     QList<Smb4KAuthInfo *> m_entriesList;
     bool m_entries_displayed;
     bool m_maybe_changed;
