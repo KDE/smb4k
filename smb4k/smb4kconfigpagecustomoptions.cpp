@@ -169,7 +169,7 @@ bool Smb4KConfigPageCustomOptions::eventFilter(QObject *obj, QEvent *e)
                 QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(e);
                 QPoint pos = optionsListWidget->viewport()->mapFromGlobal(mouseEvent->globalPos());
                 QListWidgetItem *item = optionsListWidget->itemAt(pos);
-                
+
                 findChild<QPushButton *>("edit_button")->setEnabled(item != nullptr);
                 findChild<QPushButton *>("remove_button")->setEnabled(item != nullptr);
 
@@ -209,7 +209,7 @@ void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
 void Smb4KConfigPageCustomOptions::slotEditButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
-    
+
     QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
 
     if (optionsListWidget) {
@@ -222,7 +222,7 @@ void Smb4KConfigPageCustomOptions::slotEditButtonClicked(bool checked)
 void Smb4KConfigPageCustomOptions::slotRemoveButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
-    
+
     QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
 
     if (optionsListWidget) {
@@ -249,7 +249,7 @@ void Smb4KConfigPageCustomOptions::slotRemoveButtonClicked(bool checked)
 void Smb4KConfigPageCustomOptions::slotClearButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
-    
+
     QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
 
     if (optionsListWidget) {
@@ -279,7 +279,7 @@ void Smb4KConfigPageCustomOptions::slotClearButtonClicked(bool checked)
 void Smb4KConfigPageCustomOptions::slotResetButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
-    
+
     QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
 
     if (optionsListWidget) {

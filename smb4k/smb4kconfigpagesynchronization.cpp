@@ -368,13 +368,13 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     // Files and Directories
     QGroupBox *filesAndDirectoriesBox = new QGroupBox(i18n("Files && Directories"), deleteTab);
-    QGridLayout *filesAndDirectoriesBoxLayout = new QGridLayout(filesAndDirectoriesBox);    
-    
+    QGridLayout *filesAndDirectoriesBoxLayout = new QGridLayout(filesAndDirectoriesBox);
+
     QCheckBox *removeSource = new QCheckBox(Smb4KSettings::self()->removeSourceFilesItem()->label(), filesAndDirectoriesBox);
     removeSource->setObjectName("kcfg_RemoveSourceFiles");
 
     filesAndDirectoriesBoxLayout->addWidget(removeSource, 0, 0);
-    
+
     QCheckBox *deleteExtraneous = new QCheckBox(Smb4KSettings::self()->deleteExtraneousItem()->label(), filesAndDirectoriesBox);
     deleteExtraneous->setObjectName("kcfg_DeleteExtraneous");
 
@@ -409,21 +409,21 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     forceDirDeletion->setObjectName("kcfg_ForceDirectoryDeletion");
 
     filesAndDirectoriesBoxLayout->addWidget(forceDirDeletion, 3, 1);
-    
+
     deleteTabLayout->addWidget(filesAndDirectoriesBox);
 
     // Restrictions
     QGroupBox *restrictionsBox = new QGroupBox(i18n("Restrictions"), deleteTab);
     QGridLayout *restrictionsBoxLayout = new QGridLayout(restrictionsBox);
-    
+
     QCheckBox *maximumDeleteButton = new QCheckBox(Smb4KSettings::self()->useMaximumDeleteItem()->label(), restrictionsBox);
     maximumDeleteButton->setObjectName("kcfg_UseMaximumDelete");
-    
+
     restrictionsBoxLayout->addWidget(maximumDeleteButton, 0, 0);
-    
+
     QSpinBox *maximumDelete = new QSpinBox(restrictionsBox);
     maximumDelete->setObjectName("kcfg_MaximumDeleteValue");
-    
+
     restrictionsBoxLayout->addWidget(maximumDelete, 0, 1);
 
     deleteTabLayout->addWidget(restrictionsBox);
@@ -440,82 +440,82 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     // General
     QGroupBox *generalFilteringBox = new QGroupBox(i18n("General Filtering Settings"), filterTab);
     QGridLayout *generalFilteringBoxLayout = new QGridLayout(generalFilteringBox);
-    
+
     QCheckBox *cvsExclude = new QCheckBox(Smb4KSettings::self()->useCVSExcludeItem()->label(), generalFilteringBox);
     cvsExclude->setObjectName("kcfg_UseCVSExclude");
-    
+
     generalFilteringBoxLayout->addWidget(cvsExclude, 0, 0, 1, 2);
-    
+
     QCheckBox *excludePatternButton = new QCheckBox(Smb4KSettings::self()->useExcludePatternItem()->label(), generalFilteringBox);
     excludePatternButton->setObjectName("kcfg_UseExcludePattern");
-    
+
     generalFilteringBoxLayout->addWidget(excludePatternButton, 1, 0);
-    
+
     KLineEdit *excludePattern = new KLineEdit(generalFilteringBox);
     excludePattern->setObjectName("kcfg_ExcludePattern");
     excludePattern->setClearButtonEnabled(true);
-    
+
     generalFilteringBoxLayout->addWidget(excludePattern, 1, 1);
 
     QCheckBox *excludeFromButton = new QCheckBox(Smb4KSettings::self()->useExcludeFromItem()->label(), generalFilteringBox);
     excludeFromButton->setObjectName("kcfg_UseExcludeFrom");
-    
+
     generalFilteringBoxLayout->addWidget(excludeFromButton, 2, 0);
-    
+
     KUrlRequester *excludeFrom = new KUrlRequester(generalFilteringBox);
     excludeFrom->setObjectName("kcfg_ExcludeFrom");
     excludeFrom->setMode(KFile::File | KFile::LocalOnly);
-    
+
     generalFilteringBoxLayout->addWidget(excludeFrom, 2, 1);
 
     QCheckBox *includePatternButton = new QCheckBox(Smb4KSettings::self()->useIncludePatternItem()->label(), generalFilteringBox);
     includePatternButton->setObjectName("kcfg_UseIncludePattern");
-    
+
     generalFilteringBoxLayout->addWidget(includePatternButton, 3, 0);
-    
+
     KLineEdit *includePattern = new KLineEdit(generalFilteringBox);
     includePattern->setObjectName("kcfg_IncludePattern");
     includePattern->setClearButtonEnabled(true);
-    
+
     generalFilteringBoxLayout->addWidget(includePattern, 3, 1);
 
     QCheckBox *includeFromButton = new QCheckBox(Smb4KSettings::self()->useIncludeFromItem()->label(), generalFilteringBox);
     includeFromButton->setObjectName("kcfg_UseIncludeFrom");
-    
+
     generalFilteringBoxLayout->addWidget(includeFromButton, 4, 0);
-    
+
     KUrlRequester *includeFrom = new KUrlRequester(generalFilteringBox);
     includeFrom->setObjectName("kcfg_IncludeFrom");
     includeFrom->setMode(KFile::File | KFile::LocalOnly);
-    
+
     generalFilteringBoxLayout->addWidget(includeFrom, 4, 1);
-    
+
     filterTabLayout->addWidget(generalFilteringBox);
 
     // Filter rules
     QGroupBox *filterRulesBox = new QGroupBox(i18n("Filter Rules"), filterTab);
     QGridLayout *filterRulesBoxLayout = new QGridLayout(filterRulesBox);
-    
+
     QCheckBox *useFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFilterRuleItem()->label(), filterRulesBox);
     useFFilterRule->setObjectName("kcfg_UseFFilterRule");
-    
+
     filterRulesBoxLayout->addWidget(useFFilterRule, 0, 0, 1, 2);
 
     QCheckBox *useFFFilterRule = new QCheckBox(Smb4KSettings::self()->useFFFilterRuleItem()->label(), filterRulesBox);
     useFFFilterRule->setObjectName("kcfg_UseFFFilterRule");
-    
+
     filterRulesBoxLayout->addWidget(useFFFilterRule, 1, 0, 1, 2);
 
     QLabel *customFilterRulesLabel = new QLabel(Smb4KSettings::self()->customFilteringRulesItem()->label(), filterRulesBox);
-    
+
     filterRulesBoxLayout->addWidget(customFilterRulesLabel, 2, 0);
-    
+
     KLineEdit *customFilterRules = new KLineEdit(filterTab);
     customFilterRules->setObjectName("kcfg_CustomFilteringRules");
     customFilterRules->setClearButtonEnabled(true);
 
     filterRulesBoxLayout->addWidget(customFilterRules, 2, 1);
-    
+
     filterTabLayout->addWidget(filterRulesBox);
     filterTabLayout->addStretch(100);
 
@@ -530,51 +530,51 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     // Checksums
     QGroupBox *checksumsBox = new QGroupBox(i18n("Checksums"), miscellaneousTab);
     QGridLayout *checksumsBoxLayout = new QGridLayout(checksumsBox);
-    
+
     QCheckBox *blockSizeButton = new QCheckBox(Smb4KSettings::self()->useBlockSizeItem()->label(), checksumsBox);
     blockSizeButton->setObjectName("kcfg_UseBlockSize");
-    
+
     checksumsBoxLayout->addWidget(blockSizeButton, 0, 0);
 
     QSpinBox *blockSize = new QSpinBox(checksumsBox);
     blockSize->setObjectName("kcfg_BlockSize");
-    
+
     checksumsBoxLayout->addWidget(blockSize, 0, 1);
 
     QCheckBox *checksumSeedButton = new QCheckBox(Smb4KSettings::self()->useChecksumSeedItem()->label(), checksumsBox);
     checksumSeedButton->setObjectName("kcfg_UseChecksumSeed");
-    
+
     checksumsBoxLayout->addWidget(checksumSeedButton, 1, 0);
-    
+
     QSpinBox *checksumSeed = new QSpinBox(checksumsBox);
     checksumSeed->setObjectName("kcfg_ChecksumSeed");
-    
+
     checksumsBoxLayout->addWidget(checksumSeed, 1, 1);
 
     QCheckBox *useChecksum = new QCheckBox(Smb4KSettings::self()->useChecksumItem()->label(), checksumsBox);
     useChecksum->setObjectName("kcfg_UseChecksum");
-    
+
     checksumsBoxLayout->addWidget(useChecksum, 2, 0, 1, 2);
-    
+
     miscellaneousTabLayout->addWidget(checksumsBox);
 
     // Miscellaneous
     QGroupBox *miscellaneousBox2 = new QGroupBox(i18n("Miscellaneous"), miscellaneousTab);
     QGridLayout *miscellaneousBox2Layout = new QGridLayout(miscellaneousBox2);
-    
+
     QCheckBox *oneFilesystem = new QCheckBox(Smb4KSettings::self()->oneFileSystemItem()->label(), miscellaneousBox2);
     oneFilesystem->setObjectName("kcfg_OneFileSystem");
-    
+
     miscellaneousBox2Layout->addWidget(oneFilesystem, 0, 0);
 
     QCheckBox *delayUpdates = new QCheckBox(Smb4KSettings::self()->delayUpdatesItem()->label(), miscellaneousBox2);
     delayUpdates->setObjectName("kcfg_DelayUpdates");
 
     miscellaneousBox2Layout->addWidget(delayUpdates, 0, 1);
-    
+
     miscellaneousTabLayout->addWidget(miscellaneousBox2);
     miscellaneousTabLayout->addStretch(100);
-    
+
     addTab(miscellaneousTab, i18n("Miscellaneous"));
 
     //
