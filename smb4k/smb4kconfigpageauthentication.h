@@ -15,6 +15,9 @@
 #include <QList>
 #include <QWidget>
 
+// Forward declarations
+class QListWidgetItem;
+
 /**
  * This is the configuration tab for the authentication settings
  * of Smb4K.
@@ -164,6 +167,13 @@ protected slots:
      * This slot is called when the reset button is to be enabled/disabled.
      */
     void slotEnableResetButton();
+
+    /**
+     * This slot is called when an wallet item in the list view is double clicked.
+     *
+     * @param item          The item that was double clicked.
+     */
+    void slotWalletItemDoubleClicked(QListWidgetItem *item);
 
 private:
     QList<Smb4KAuthInfo *> m_entriesList;

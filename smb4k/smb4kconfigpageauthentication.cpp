@@ -8,6 +8,7 @@
 // application specific includes
 #include "smb4kconfigpageauthentication.h"
 #include "core/smb4ksettings.h"
+#include "core/smb4kwalletmanager.h"
 
 // Qt includes
 #include <QCheckBox>
@@ -201,11 +202,13 @@ void Smb4KConfigPageAuthentication::insertLoginCredentials(const QList<Smb4KAuth
     for (Smb4KAuthInfo *authInfo : qAsConst(m_entriesList)) {
         switch (authInfo->type()) {
         case UnknownNetworkItem: {
-            (void)new QListWidgetItem(KDE::icon("dialog-password"), i18n("Default Login"), walletEntriesWidget);
+            QListWidgetItem *item = new QListWidgetItem(KDE::icon("dialog-password"), i18n("Default Login"), walletEntriesWidget);
+            item->setData(Qt::UserRole, authInfo->url());
             break;
         }
         default: {
-            (void)new QListWidgetItem(KDE::icon("dialog-password"), authInfo->displayString(), walletEntriesWidget);
+            QListWidgetItem *item = new QListWidgetItem(KDE::icon("dialog-password"), authInfo->displayString(), walletEntriesWidget);
+            item->setData(Qt::UserRole, authInfo->url());
             break;
         }
         }
@@ -343,14 +346,18 @@ void Smb4KConfigPageAuthentication::slotEditButtonClicked(bool checked)
     if (walletEntriesWidget->currentItem()) {
         Smb4KAuthInfo *authInfo = nullptr;
 
-        for (Smb4KAuthInfo *entry : qAsConst(m_entriesList)) {
-            if (walletEntriesWidget->currentItem()->text() == entry->displayString()
-                || (walletEntriesWidget->currentItem()->text() == i18n("Default Login") && entry->type() == UnknownNetworkItem)) {
-                dlg.setPrompt(i18n("Set the username and password for wallet entry %1.", entry->displayString()));
-                dlg.setUsername(entry->userName());
-                dlg.setPassword(entry->password());
+        for (Smb4KAuthInfo *walletEntry : qAsConst(m_entriesList)) {
+            // The following check also finds the default login, because it has an empty URL.
+            if (walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == walletEntry->url()) {
+                if (walletEntry->type() != Smb4KGlobal::UnknownNetworkItem) {
+                    dlg.setPrompt(i18n("Set the username and password for wallet entry %1.", walletEntry->displayString()));
+                } else {
+                    dlg.setPrompt(i18n("Set the username and password for the default login."));
+                }
+                dlg.setUsername(walletEntry->userName());
+                dlg.setPassword(walletEntry->password());
 
-                authInfo = entry;
+                authInfo = walletEntry;
 
                 break;
             }
@@ -381,9 +388,8 @@ void Smb4KConfigPageAuthentication::slotRemoveButtonClicked(bool checked)
     // Remove the appropriate entry from the list of authentication information
     //
     for (int i = 0; i < m_entriesList.size(); ++i) {
-        if (QString::compare(walletEntriesWidget->currentItem()->text(), m_entriesList.at(i)->displayString()) == 0
-            || (QString::compare(walletEntriesWidget->currentItem()->text(), i18n("Default Login")) == 0
-                && m_entriesList.at(i)->type() == UnknownNetworkItem)) {
+        // The following check also finds the default login, because it has an empty URL.
+        if (walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == m_entriesList.at(i)->url()) {
             switch (m_entriesList.at(i)->type()) {
             case UnknownNetworkItem: {
                 QCheckBox *useDefaultLogin = findChild<QCheckBox *>("kcfg_UseDefaultLogin");
@@ -483,4 +489,11 @@ void Smb4KConfigPageAuthentication::slotEnableResetButton()
             resetButton->setEnabled(m_maybe_changed);
         }
     }
+}
+
+void Smb4KConfigPageAuthentication::slotWalletItemDoubleClicked(QListWidgetItem *item)
+{
+    Q_UNUSED(item);
+
+    slotEditButtonClicked(false);
 }
