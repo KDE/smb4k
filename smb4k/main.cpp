@@ -1,7 +1,7 @@
 /*
     Main file of the Smb4K program.
 
-    SPDX-FileCopyrightText: 2003-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -16,8 +16,6 @@
 
 // KDE includes
 #include <KCoreAddons/KAboutData>
-#include <KCoreAddons/Kdelibs4ConfigMigrator>
-#include <KCoreAddons/Kdelibs4Migration>
 #include <KCrash/KCrash>
 #include <KDBusAddons/KDBusService>
 #include <KI18n/KLocalizedString>
@@ -30,73 +28,6 @@ using namespace Smb4KGlobal;
 
 int main(int argc, char **argv)
 {
-    // Migrate KDE4 configuration and XML files
-    QStringList configFiles;
-    configFiles << QLatin1String("smb4krc");
-
-    Kdelibs4ConfigMigrator migrator(QLatin1String("smb4k"));
-    migrator.setConfigFiles(configFiles);
-
-    if (migrator.migrate()) {
-        Kdelibs4Migration migration;
-
-        if (migration.kdeHomeFound()) {
-            //
-            // NOTE: We need the 'smb4k' subdirectory, since no QApplication
-            // is running at this point.
-            //
-
-            // New location
-            QString path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QDir::separator() + "smb4k";
-
-            // XML files
-            QString bookmarks = migration.locateLocal("data", "smb4k/bookmarks.xml");
-            QString options = migration.locateLocal("data", "smb4k/custom_options.xml");
-            QString homes = migration.locateLocal("data", "smb4k/homes_shares.xml");
-
-            // Copy the files if they don't already exist
-            if (!bookmarks.isEmpty() && QFile().exists(bookmarks)) {
-                if (!QDir().exists(path)) {
-                    QDir().mkpath(path);
-                } else {
-                    // Do nothing
-                }
-
-                QFile(bookmarks).copy(path + QDir::separator() + "bookmarks.xml");
-            } else {
-                // Do nothing
-            }
-
-            if (!options.isEmpty() && QFile().exists(options)) {
-                if (!QDir().exists(path)) {
-                    QDir().mkpath(path);
-                } else {
-                    // Do nothing
-                }
-
-                QFile(options).copy(path + QDir::separator() + "custom_options.xml");
-            } else {
-                // Do nothing
-            }
-
-            if (!homes.isEmpty() && QFile().exists(homes)) {
-                if (!QDir().exists(path)) {
-                    QDir().mkpath(path);
-                } else {
-                    // Do nothing
-                }
-
-                QFile(homes).copy(path + QDir::separator() + "homes_shares.xml");
-            } else {
-                // Do nothing
-            }
-        } else {
-            // Do nothing
-        }
-    } else {
-        // Do nothing
-    }
-
     // Set attributes
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
