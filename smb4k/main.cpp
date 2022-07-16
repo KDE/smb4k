@@ -35,8 +35,6 @@
 // KDE includes
 #include <KI18n/KLocalizedString>
 #include <KCoreAddons/KAboutData>
-#include <KCoreAddons/Kdelibs4ConfigMigrator>
-#include <KCoreAddons/Kdelibs4Migration>
 #include <KDBusAddons/KDBusService>
 #include <KCrash/KCrash>
 
