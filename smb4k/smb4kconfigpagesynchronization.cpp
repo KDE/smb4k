@@ -604,6 +604,153 @@ Smb4KConfigPageSynchronization::~Smb4KConfigPageSynchronization()
 {
 }
 
+bool Smb4KConfigPageSynchronization::checkSettings()
+{
+    for (int i = 0; i < count(); i++) {
+        // Synchronization prefix
+        KUrlRequester *synchronizationPrefix = widget(i)->findChild<KUrlRequester *>("kcfg_RsyncPrefix");
+
+        if (synchronizationPrefix) {
+            if (!synchronizationPrefix->url().isValid()) {
+                setCurrentIndex(i);
+                synchronizationPrefix->setFocus();
+                return false;
+            }
+        }
+
+        // Backups
+        QCheckBox *makeBackups = widget(i)->findChild<QCheckBox *>("kcfg_MakeBackups");
+        QCheckBox *useBackupSuffix = widget(i)->findChild<QCheckBox *>("kcfg_UseBackupSuffix");
+        KLineEdit *backupSuffix = widget(i)->findChild<KLineEdit *>("kcfg_BackupSuffix");
+        QCheckBox *useBackupDir = widget(i)->findChild<QCheckBox *>("kcfg_UseBackupDirectory");
+        KUrlRequester *backupDir = widget(i)->findChild<KUrlRequester *>("kcfg_BackupDirectory");
+
+        if (makeBackups && makeBackups->isChecked()) {
+            if (useBackupSuffix && backupSuffix) {
+                if (useBackupSuffix->isChecked() && backupSuffix->text().trimmed().isEmpty()) {
+                    setCurrentIndex(i);
+                    backupSuffix->setFocus();
+                    return false;
+                }
+            }
+
+            if (useBackupDir && backupDir) {
+                if (useBackupDir->isChecked() && !backupDir->url().isValid()) {
+                    setCurrentIndex(i);
+                    backupDir->setFocus();
+                    return false;
+                }
+            }
+        }
+
+        // Minimal transfer size
+        QCheckBox *useMinTransferSize = widget(i)->findChild<QCheckBox *>("kcfg_UseMinimalTransferSize");
+        QSpinBox *minTransferSize = widget(i)->findChild<QSpinBox *>("kcfg_MinimalTransferSize");
+
+        if (useMinTransferSize && minTransferSize) {
+            if (useMinTransferSize->isChecked() && minTransferSize->value() == 0) {
+                setCurrentIndex(i);
+                minTransferSize->setFocus();
+                return false;
+            }
+        }
+
+        // Maximal transfer size
+        QCheckBox *useMaxTransferSize = widget(i)->findChild<QCheckBox *>("kcfg_UseMaximalTransferSize");
+        QSpinBox *maxTransferSize = widget(i)->findChild<QSpinBox *>("kcfg_MaximalTransferSize");
+
+        if (useMaxTransferSize && maxTransferSize) {
+            if (useMaxTransferSize->isChecked() && maxTransferSize->value() == 0) {
+                setCurrentIndex(i);
+                maxTransferSize->setFocus();
+                return false;
+            }
+        }
+
+        // Partial directory
+        QCheckBox *usePartialDirectory = widget(i)->findChild<QCheckBox *>("kcfg_UsePartialDirectory");
+        KUrlRequester *partialDirectory = widget(i)->findChild<KUrlRequester *>("kcfg_PartialDirectory");
+
+        if (usePartialDirectory && partialDirectory) {
+            if (usePartialDirectory->isChecked() && !partialDirectory->url().isValid()) {
+                setCurrentIndex(i);
+                partialDirectory->setFocus();
+                return false;
+            }
+        }
+
+        // Exclude exclude
+        QCheckBox *useExcludePattern = widget(i)->findChild<QCheckBox *>("kcfg_UseExcludePattern");
+        KLineEdit *excludePattern = widget(i)->findChild<KLineEdit *>("kcfg_ExcludePattern");
+
+        if (useExcludePattern && excludePattern) {
+            if (useExcludePattern->isChecked() && excludePattern->text().trimmed().isEmpty()) {
+                setCurrentIndex(i);
+                excludePattern->setFocus();
+                return false;
+            }
+        }
+
+        // Read exclude pattern from file
+        QCheckBox *useExcludeFrom = widget(i)->findChild<QCheckBox *>("kcfg_UseExcludeFrom");
+        KUrlRequester *excludeFrom = widget(i)->findChild<KUrlRequester *>("kcfg_ExcludeFrom");
+
+        if (useExcludeFrom && excludeFrom) {
+            if (useExcludeFrom->isChecked() && !excludeFrom->url().isValid()) {
+                setCurrentIndex(i);
+                excludeFrom->setFocus();
+                return false;
+            }
+        }
+
+        // Exclude exclude
+        QCheckBox *useIncludePattern = widget(i)->findChild<QCheckBox *>("kcfg_UseIncludePattern");
+        KLineEdit *includePattern = widget(i)->findChild<KLineEdit *>("kcfg_IncludePattern");
+
+        if (useIncludePattern && includePattern) {
+            if (useIncludePattern->isChecked() && includePattern->text().trimmed().isEmpty()) {
+                setCurrentIndex(i);
+                includePattern->setFocus();
+                return false;
+            }
+        }
+
+        // Read exclude pattern from file
+        QCheckBox *useIncludeFrom = widget(i)->findChild<QCheckBox *>("kcfg_UseIncludeFrom");
+        KUrlRequester *includeFrom = widget(i)->findChild<KUrlRequester *>("kcfg_IncludeFrom");
+
+        if (useIncludeFrom && includeFrom) {
+            if (useIncludeFrom->isChecked() && !includeFrom->url().isValid()) {
+                setCurrentIndex(i);
+                includeFrom->setFocus();
+                return false;
+            }
+        }
+
+        // Block size
+        QCheckBox *useFixedBlocksize = widget(i)->findChild<QCheckBox *>("kcfg_UseBlockSize");
+        QSpinBox *fixedBlocksize = widget(i)->findChild<QSpinBox *>("kcfg_BlockSize");
+
+        if (useFixedBlocksize && fixedBlocksize) {
+            if (useFixedBlocksize->isChecked() && fixedBlocksize->value() == 0) {
+                setCurrentIndex(i);
+                fixedBlocksize->setFocus();
+                return false;
+            }
+        }
+
+        // NOTE: There is no need to check the following settings, because they may be empty or 0:
+        // - kcfg_UseCompressionLevel & kcfg_CompressionLevel
+        // - kcfg_UseSkipCompression & kcfg_SkipCompression
+        // - kcfg_UseBandwidthLimit & kcfg_BandwidthLimit
+        // - kcfg_UseMaximumDelete & kcfg_MaximumDeleteValue
+        // - kcfg_CustomFilteringRules
+        // - kcfg_UseChecksumSeed & kcfg_ChecksumSeed
+    }
+    
+    return true;
+}
+
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////

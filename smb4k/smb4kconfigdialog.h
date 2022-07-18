@@ -14,6 +14,9 @@
 // KDE includes
 #include <KConfigWidgets/KConfigDialog>
 
+// application specific includes
+#include "core/smb4kglobal.h"
+
 // forward declarations
 class Smb4KSettings;
 
@@ -58,26 +61,6 @@ protected slots:
      * closed via the 'Cancel' button.
      */
     void reject() override;
-
-    /**
-     * This slot is connected to the "Load" button of the "Wallet Entries" tab
-     * of the "Authentication" configuration page. It loads the authentication
-     * information and puts it into the list view.
-     */
-    void slotLoadAuthenticationInformation();
-
-    /**
-     * This slot is connected to the "Save" button of the "Wallet Entries" tab
-     * of the "Authentication" configuration page. It saves the authentication
-     * information.
-     */
-    void slotSaveAuthenticationInformation();
-
-    /**
-     * This slot is connected to the Smb4KAuthOptions::setDefaultLogin() signal.
-     * It defines the default login.
-     */
-    void slotSetDefaultLogin();
 
     /**
      * Enable/disable the "Apply" button if settings that are not managed by
@@ -135,50 +118,21 @@ private:
     void setupDialog();
 
     /**
-     * Load the custom Samba options
-     */
-    void loadCustomOptions();
-
-    /**
-     * Save the custom Samba options
-     */
-    void saveCustomOptions();
-
-    /**
      * Takes care that the changes made to the profiles are propagated
      * to the core classes via the profiles manager.
      */
     void propagateProfilesChanges();
 
     /**
-     * Checks the settings in the Network page.
-     *
-     * @returns TRUE if everything is OK and FALSE otherwise.
-     */
-    bool checkNetworkPage();
-
-    /**
-     * Checks the settings in the Mounting page.
-     *
-     * @returns TRUE if everything is OK and FALSE otherwise.
-     */
-    bool checkMountingPage();
-
-    /**
-     * Checks the settings in the Synchronization page.
-     *
-     * @returns TRUE if everything is OK and FALSE otherwise.
-     */
-    bool checkSynchronizationPage();
-
-    /**
      * Checks that mandatory needed input is provided for settings that
      * need it. This function will report all missing input to the user
      * via a message box.
+     * 
+     * @param page          The page to check
      *
      * @returns TRUE if the check passed and FALSE if it failed.
      */
-    bool checkSettings();
+    bool checkSettings(KPageWidgetItem *page = nullptr);
 };
 
 #endif

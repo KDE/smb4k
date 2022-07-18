@@ -7,13 +7,8 @@
 
 // application specific includes
 #include "smb4kconfigdialog.h"
-#include "core/smb4kauthinfo.h"
-#include "core/smb4kcustomoptions.h"
-#include "core/smb4kcustomoptionsmanager.h"
-#include "core/smb4kglobal.h"
 #include "core/smb4kprofilemanager.h"
 #include "core/smb4ksettings.h"
-#include "core/smb4kwalletmanager.h"
 #include "smb4kconfigpageauthentication.h"
 #include "smb4kconfigpagecustomoptions.h"
 #include "smb4kconfigpagemounting.h"
@@ -33,14 +28,11 @@
 #include <QCheckBox>
 #include <QList>
 #include <QPair>
-#include <QPointer>
 #include <QRadioButton>
 #include <QScrollArea>
-#include <QShowEvent>
 #include <QSize>
 #include <QSpinBox>
 #include <QStandardPaths>
-#include <QTreeWidget>
 #include <QWindow>
 
 // KDE includes
@@ -49,7 +41,6 @@
 #include <KI18n/KLocalizedString>
 #include <KIOWidgets/KUrlRequester>
 #include <KWidgetsAddons/KMessageBox>
-#include <KWidgetsAddons/KPasswordDialog>
 
 using namespace Smb4KGlobal;
 
@@ -133,12 +124,7 @@ void Smb4KConfigDialog::setupDialog()
     // Connections
     //
     connect(custom_options, SIGNAL(customSettingsModified()), this, SLOT(slotEnableApplyButton()));
-
-    connect(auth_options, SIGNAL(loadWalletEntries()), this, SLOT(slotLoadAuthenticationInformation()));
-    connect(auth_options, SIGNAL(saveWalletEntries()), this, SLOT(slotSaveAuthenticationInformation()));
-    connect(auth_options, SIGNAL(setDefaultLogin()), this, SLOT(slotSetDefaultLogin()));
     connect(auth_options, SIGNAL(walletEntriesModified()), this, SLOT(slotEnableApplyButton()));
-
     connect(this, SIGNAL(currentPageChanged(KPageWidgetItem *, KPageWidgetItem *)), this, SLOT(slotCheckPage(KPageWidgetItem *, KPageWidgetItem *)));
 
     //
@@ -152,305 +138,64 @@ void Smb4KConfigDialog::setupDialog()
     resize(windowHandle()->size()); // workaround for QTBUG-40584
 }
 
-void Smb4KConfigDialog::loadCustomOptions()
-{
-    if (m_custom_options) {
-        m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>()->insertCustomOptions();
-    }
-}
-
-void Smb4KConfigDialog::saveCustomOptions()
-{
-    Smb4KCustomOptionsManager::self()->saveCustomOptions();
-}
-
 void Smb4KConfigDialog::propagateProfilesChanges()
 {
-    Smb4KConfigPageProfiles *profiles_page = m_profiles->widget()->findChild<Smb4KConfigPageProfiles *>();
+    Smb4KConfigPageProfiles *profilesPage = m_profiles->widget()->findChild<Smb4KConfigPageProfiles *>();
 
-    if (profiles_page) {
+    if (profilesPage) {
         // Remove the profiles.
-        QStringList removed_profiles = profiles_page->removedProfiles();
+        QStringList removedProfiles = profilesPage->removedProfiles();
 
-        if (!removed_profiles.isEmpty()) {
-            Smb4KProfileManager::self()->removeProfiles(removed_profiles);
-            profiles_page->clearRemovedProfiles();
+        if (!removedProfiles.isEmpty()) {
+            Smb4KProfileManager::self()->removeProfiles(removedProfiles);
+            profilesPage->clearRemovedProfiles();
         }
 
         // Rename the profiles.
-        QList<QPair<QString, QString>> renamed_profiles = profiles_page->renamedProfiles();
+        QList<QPair<QString, QString>> renamedProfiles = profilesPage->renamedProfiles();
 
-        if (!renamed_profiles.isEmpty()) {
-            Smb4KProfileManager::self()->migrateProfiles(renamed_profiles);
-            profiles_page->clearRenamedProfiles();
+        if (!renamedProfiles.isEmpty()) {
+            Smb4KProfileManager::self()->migrateProfiles(renamedProfiles);
+            profilesPage->clearRenamedProfiles();
         }
 
         // Finally reload the custom options.
-        if (!removed_profiles.isEmpty() || !renamed_profiles.isEmpty()) {
-            loadCustomOptions();
+        if (!removedProfiles.isEmpty() || !renamedProfiles.isEmpty()) {
+            Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+
+            if (customOptionsPage) {
+                customOptionsPage->loadCustomOptions();
+            }
         }
     }
 }
 
-bool Smb4KConfigDialog::checkNetworkPage()
+bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
 {
-    QRadioButton *query_custom_master = m_network->widget()->findChild<QRadioButton *>("kcfg_QueryCustomMaster");
-    KLineEdit *custom_master_input = m_network->widget()->findChild<KLineEdit *>("kcfg_CustomMasterBrowser");
-
-    QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
-
-    if ((query_custom_master && query_custom_master->isChecked()) && (custom_master_input && custom_master_input->text().trimmed().isEmpty())) {
-        KMessageBox::sorry(this, msg);
-        setCurrentPage(m_network);
-        custom_master_input->setFocus();
-        return false;
-    }
-
-    QRadioButton *scan_bcast_areas = m_network->widget()->findChild<QRadioButton *>("kcfg_ScanBroadcastAreas");
-    KLineEdit *bcast_areas_input = m_network->widget()->findChild<KLineEdit *>("kcfg_BroadcastAreas");
-
-    if ((scan_bcast_areas && scan_bcast_areas->isChecked()) && (bcast_areas_input && bcast_areas_input->text().trimmed().isEmpty())) {
-        KMessageBox::sorry(this, msg);
-        setCurrentPage(m_network);
-        bcast_areas_input->setFocus();
-        return false;
-    }
-
-    return true;
-}
-
-bool Smb4KConfigDialog::checkMountingPage()
-{
-    KUrlRequester *mount_prefix = m_mounting->widget()->findChild<KUrlRequester *>("kcfg_MountPrefix");
-
-    QString msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
-
-    if (mount_prefix && mount_prefix->url().path().trimmed().isEmpty()) {
-        KMessageBox::sorry(this, msg);
-        setCurrentPage(m_mounting);
-        mount_prefix->setFocus();
-        return false;
-    }
-
-    KLineEdit *file_mask = m_mounting->widget()->findChild<KLineEdit *>("kcfg_FileMask");
-
-    msg = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
-
-    if (file_mask && file_mask->text().trimmed().isEmpty()) {
-        KMessageBox::sorry(this, msg);
-        setCurrentPage(m_mounting);
-        file_mask->setFocus();
-        return false;
-    }
-
-    KLineEdit *directory_mask = m_mounting->widget()->findChild<KLineEdit *>("kcfg_DirectoryMask");
-
-    if (directory_mask && directory_mask->text().trimmed().isEmpty()) {
-        KMessageBox::sorry(this, msg);
-        setCurrentPage(m_mounting);
-        directory_mask->setFocus();
-        return false;
-    }
-
-    return true;
-}
-
-bool Smb4KConfigDialog::checkSynchronizationPage()
-{
-    //
-    // Get the config page
-    // Since the config page is embedded into a scroll area, use findChild() here.
-    //
-    Smb4KConfigPageSynchronization *configPage = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-
-    if (configPage) {
-        //
-        // The error message
-        //
-        QString errorMessage = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
-
-        // Find the tab number and the url requester
-        for (int i = 0; i < configPage->count(); i++) {
-            // Synchronization prefix
-            KUrlRequester *syncPrefix = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_RsyncPrefix");
-
-            if (syncPrefix && (!syncPrefix->url().isValid() || syncPrefix->url().path().trimmed().isEmpty())) {
+    QString errorMessage = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
+    
+    if (!page || page == m_mounting) {
+        Smb4KConfigPageMounting *mountingPage = m_mounting->widget()->findChild<Smb4KConfigPageMounting *>();
+    
+        if (mountingPage) {
+            if (!mountingPage->checkSettings()) {
                 KMessageBox::sorry(this, errorMessage);
-                setCurrentPage(m_synchronization);
-                configPage->setCurrentIndex(i);
-                syncPrefix->setFocus();
+                setCurrentPage(m_mounting);
                 return false;
             }
-
-            // Backups
-            QCheckBox *makeBackups = configPage->widget(i)->findChild<QCheckBox *>("kcfg_MakeBackups");
-            QCheckBox *useBackupSuffix = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseBackupSuffix");
-            KLineEdit *backupSuffix = configPage->widget(i)->findChild<KLineEdit *>("kcfg_BackupSuffix");
-            QCheckBox *useBackupDir = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseBackupDirectory");
-            KUrlRequester *backupDir = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_BackupDirectory");
-
-            if (makeBackups && makeBackups->isChecked()) {
-                if (useBackupSuffix && useBackupSuffix->isChecked()) {
-                    if (backupSuffix && backupSuffix->text().trimmed().isEmpty()) {
-                        KMessageBox::sorry(this, errorMessage);
-                        setCurrentPage(m_synchronization);
-                        configPage->setCurrentIndex(i);
-                        backupSuffix->setFocus();
-                        return false;
-                    }
-                }
-
-                if (useBackupDir && useBackupDir->isChecked()) {
-                    if (backupDir && (!backupDir->url().isValid() || backupDir->url().path().trimmed().isEmpty())) {
-                        KMessageBox::sorry(this, errorMessage);
-                        setCurrentPage(m_synchronization);
-                        configPage->setCurrentIndex(i);
-                        backupDir->setFocus();
-                        return false;
-                    }
-                }
-            }
-
-            // Minimal transfer size
-            QCheckBox *useMinTransferSize = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseMinimalTransferSize");
-            QSpinBox *minTransferSize = configPage->widget(i)->findChild<QSpinBox *>("kcfg_MinimalTransferSize");
-
-            if (useMinTransferSize && useMinTransferSize->isChecked()) {
-                if (minTransferSize && minTransferSize->value() == 0) {
-                    KMessageBox::sorry(this, errorMessage);
-                    setCurrentPage(m_synchronization);
-                    configPage->setCurrentIndex(i);
-                    minTransferSize->setFocus();
-                    return false;
-                }
-            }
-
-            // Maximal transfer size
-            QCheckBox *useMaxTransferSize = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseMaximalTransferSize");
-            QSpinBox *maxTransferSize = configPage->widget(i)->findChild<QSpinBox *>("kcfg_MaximalTransferSize");
-
-            if (useMaxTransferSize && useMaxTransferSize->isChecked()) {
-                if (maxTransferSize && maxTransferSize->value() == 0) {
-                    KMessageBox::sorry(this, errorMessage);
-                    setCurrentPage(m_synchronization);
-                    configPage->setCurrentIndex(i);
-                    maxTransferSize->setFocus();
-                    return false;
-                }
-            }
-
-            // Partial directory
-            QCheckBox *usePartialDirectory = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UsePartialDirectory");
-            KUrlRequester *partialDirectory = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_PartialDirectory");
-
-            if (usePartialDirectory && usePartialDirectory->isChecked()) {
-                if (partialDirectory && (!partialDirectory->url().isValid() || partialDirectory->url().path().trimmed().isEmpty())) {
-                    KMessageBox::sorry(this, errorMessage);
-                    setCurrentPage(m_synchronization);
-                    configPage->setCurrentIndex(i);
-                    partialDirectory->setFocus();
-                    return false;
-                }
-            }
-
-            // Exclude exclude
-            QCheckBox *useExcludePattern = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseExcludePattern");
-            KLineEdit *excludePattern = configPage->widget(i)->findChild<KLineEdit *>("kcfg_ExcludePattern");
-
-            if (useExcludePattern && useExcludePattern->isChecked()) {
-                if (excludePattern && excludePattern->text().trimmed().isEmpty()) {
-                    KMessageBox::sorry(this, errorMessage);
-                    setCurrentPage(m_synchronization);
-                    configPage->setCurrentIndex(i);
-                    excludePattern->setFocus();
-                    return false;
-                }
-            }
-
-            // Read exclude pattern from file
-            QCheckBox *useExcludeFrom = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseExcludeFrom");
-            KUrlRequester *excludeFrom = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_ExcludeFrom");
-
-            if (useExcludeFrom && useExcludeFrom->isChecked()) {
-                if (excludeFrom && (!excludeFrom->url().isValid() || excludeFrom->url().path().trimmed().isEmpty())) {
-                    KMessageBox::sorry(this, errorMessage);
-                    setCurrentPage(m_synchronization);
-                    configPage->setCurrentIndex(i);
-                    excludeFrom->setFocus();
-                    return false;
-                }
-            }
-
-            // Exclude exclude
-            QCheckBox *useIncludePattern = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseIncludePattern");
-            KLineEdit *includePattern = configPage->widget(i)->findChild<KLineEdit *>("kcfg_IncludePattern");
-
-            if (useIncludePattern && useIncludePattern->isChecked()) {
-                if (includePattern && includePattern->text().trimmed().isEmpty()) {
-                    KMessageBox::sorry(this, errorMessage);
-                    setCurrentPage(m_synchronization);
-                    configPage->setCurrentIndex(i);
-                    includePattern->setFocus();
-                    return false;
-                }
-            }
-
-            // Read exclude pattern from file
-            QCheckBox *useIncludeFrom = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseIncludeFrom");
-            KUrlRequester *includeFrom = configPage->widget(i)->findChild<KUrlRequester *>("kcfg_IncludeFrom");
-
-            if (useIncludeFrom && useIncludeFrom->isChecked()) {
-                if (includeFrom && (!includeFrom->url().isValid() || includeFrom->url().path().trimmed().isEmpty())) {
-                    KMessageBox::sorry(this, errorMessage);
-                    setCurrentPage(m_synchronization);
-                    configPage->setCurrentIndex(i);
-                    includeFrom->setFocus();
-                    return false;
-                }
-            }
-
-            // Block size
-            QCheckBox *useFixedBlocksize = configPage->widget(i)->findChild<QCheckBox *>("kcfg_UseBlockSize");
-            QSpinBox *fixedBlocksize = configPage->widget(i)->findChild<QSpinBox *>("kcfg_BlockSize");
-
-            if (useFixedBlocksize && useFixedBlocksize->isChecked()) {
-                if (fixedBlocksize && fixedBlocksize->value() == 0) {
-                    KMessageBox::sorry(this, errorMessage);
-                    setCurrentPage(m_synchronization);
-                    configPage->setCurrentIndex(i);
-                    fixedBlocksize->setFocus();
-                    return false;
-                }
-            }
-
-            // NOTE: The is no need to check the following settings, because they may be empty or 0:
-            // - kcfg_UseCompressionLevel & kcfg_CompressionLevel
-            // - kcfg_UseSkipCompression & kcfg_SkipCompression
-            // - kcfg_UseBandwidthLimit & kcfg_BandwidthLimit
-            // - kcfg_UseMaximumDelete & kcfg_MaximumDeleteValue
-            // - kcfg_CustomFilteringRules
-            // - kcfg_UseChecksumSeed & kcfg_ChecksumSeed
         }
     }
 
-    return true;
-}
-
-bool Smb4KConfigDialog::checkSettings()
-{
-    // Check Network page
-    if (!checkNetworkPage()) {
-        return false;
-    }
-
-    // Check Mounting page
-    if (!checkMountingPage()) {
-        return false;
-    }
-
-    // Check Synchronization page
-    if (!checkSynchronizationPage()) {
-        return false;
+    if (!page || page == m_synchronization) {
+        Smb4KConfigPageSynchronization *synchronizationPage = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
+        
+        if (synchronizationPage) {
+            if (!synchronizationPage->checkSettings()) {
+                KMessageBox::sorry(this, errorMessage);
+                setCurrentPage(m_synchronization);
+                return false;                
+            }
+        }
     }
 
     return true;
@@ -462,8 +207,18 @@ bool Smb4KConfigDialog::checkSettings()
 
 void Smb4KConfigDialog::updateSettings()
 {
-    saveCustomOptions();
-    slotSaveAuthenticationInformation();
+    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+
+    if (customOptionsPage) {
+        customOptionsPage->saveCustomOptions();
+    }
+
+    Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
+
+    if (authenticationPage) {
+        authenticationPage->saveLoginCredentials();
+    }
+
     propagateProfilesChanges();
     (void)checkSettings();
 
@@ -475,94 +230,24 @@ void Smb4KConfigDialog::updateSettings()
 
 void Smb4KConfigDialog::updateWidgets()
 {
-    loadCustomOptions();
+    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+
+    if (customOptionsPage) {
+        customOptionsPage->loadCustomOptions();
+    }
 
     KConfigDialog::updateWidgets();
 }
 
 void Smb4KConfigDialog::reject()
 {
-    Smb4KCustomOptionsManager::self()->resetCustomOptions();
+    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+
+    if (customOptionsPage) {
+        customOptionsPage->resetCustomOptions();
+    }
+
     QDialog::reject();
-}
-
-void Smb4KConfigDialog::slotLoadAuthenticationInformation()
-{
-    //
-    // Get the Authentication config page
-    //
-    Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
-
-    //
-    // Insert and display the wallet entries
-    //
-    authenticationPage->insertLoginCredentials(Smb4KWalletManager::self()->loginCredentialsList());
-}
-
-void Smb4KConfigDialog::slotSaveAuthenticationInformation()
-{
-    //
-    // Get the Authentication config page
-    //
-    Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
-
-    //
-    // Save the authentication information to the wallet
-    //
-    if (authenticationPage->loginCredentialsDisplayed()) {
-        Smb4KWalletManager::self()->writeLoginCredentialsList(authenticationPage->getLoginCredentials());
-    }
-}
-
-void Smb4KConfigDialog::slotSetDefaultLogin()
-{
-    //
-    // Get the Authentication config page
-    //
-    Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
-
-    //
-    // Create an authentication object for the default authentication information
-    //
-    Smb4KAuthInfo authInfo;
-
-    //
-    // Read the default authentication information
-    //
-    Smb4KWalletManager::self()->readLoginCredentials(&authInfo);
-
-    //
-    // Show the password dialog to enter or modify the default authentication
-    // information.
-    //
-    QPointer<KPasswordDialog> dlg = new KPasswordDialog(this, KPasswordDialog::ShowUsernameLine);
-    dlg->setPrompt(i18n("Enter the default login information."));
-    dlg->setUsername(authInfo.userName());
-    dlg->setPassword(authInfo.password());
-
-    if (dlg->exec() == KPasswordDialog::Accepted) {
-        //
-        // Save the authentication information to the wallet
-        //
-        authInfo.setUserName(dlg->username());
-        authInfo.setPassword(dlg->password());
-
-        Smb4KWalletManager::self()->writeLoginCredentials(&authInfo);
-
-        //
-        // Reload the list of authentication information
-        //
-        if (authenticationPage->loginCredentialsDisplayed()) {
-            slotLoadAuthenticationInformation();
-        }
-    } else {
-        //
-        // Discard the password dialog and reset the checkbox
-        //
-        authenticationPage->findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
-    }
-
-    delete dlg;
 }
 
 void Smb4KConfigDialog::slotEnableApplyButton()
@@ -577,23 +262,8 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     //
     Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
 
-    if (authenticationPage->loginCredentialsMaybeChanged()) {
-        QList<Smb4KAuthInfo *> oldLoginCredentials = Smb4KWalletManager::self()->loginCredentialsList();
-        QList<Smb4KAuthInfo *> newLoginCredentials = authenticationPage->getLoginCredentials();
-
-        for (Smb4KAuthInfo *oldEntry : qAsConst(oldLoginCredentials)) {
-            for (Smb4KAuthInfo *newEntry : qAsConst(newLoginCredentials)) {
-                if (QString::compare(oldEntry->url().toString(QUrl::RemovePort), newEntry->url().toString(QUrl::RemovePort), Qt::CaseInsensitive)
-                    == 0 /* leave the user info here */) {
-                    enable = true;
-                    break;
-                }
-            }
-
-            if (enable) {
-                break;
-            }
-        }
+    if (authenticationPage) {
+        enable = authenticationPage->loginCredentialsChanged();
     }
 
     //
@@ -612,15 +282,10 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     }
 }
 
-void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem * /*current*/, KPageWidgetItem *before)
+void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem *current, KPageWidgetItem *before)
 {
-    if (before == m_network) {
-        (void)checkNetworkPage();
-    } else if (before == m_mounting) {
-        (void)checkMountingPage();
-    } else if (before == m_synchronization) {
-        (void)checkSynchronizationPage();
-    }
+    Q_UNUSED(current);
+    checkSettings(before);
 }
 
 #include "smb4kconfigdialog.moc"

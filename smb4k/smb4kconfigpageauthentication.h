@@ -43,52 +43,32 @@ public:
     virtual ~Smb4KConfigPageAuthentication();
 
     /**
-     * Insert the list of authentication information entries into the internal
-     * list of wallet entries. This function will not display the entries. You
-     * need to call displayWalletEntries() for this.
-     *
-     * @param entries       The list of entries
+     * Load the login credentials.
      */
-    void insertLoginCredentials(const QList<Smb4KAuthInfo *> &entries);
+    void loadLoginCredentials();
 
     /**
-     * Get the - maybe modified - entries.
-     *
-     * @returns the list of entries.
+     * Save the login credentials.
      */
-    const QList<Smb4KAuthInfo *> &getLoginCredentials();
+    void saveLoginCredentials();
 
     /**
-     * Returns TRUE if the wallet entries are displayed and FALSE otherwise.
+     * Returns TRUE if the wallet entries are loaded and FALSE otherwise.
      *
-     * @returns TRUE if the wallet entries are displayed
+     * @returns TRUE if the wallet entries are loaded
      */
-    bool loginCredentialsDisplayed();
+    bool loginCredentialsLoaded();
 
     /**
-     * Returns TRUE in the case the wallet entries might have changed. You need
-     * to check this outside this widget, whether a change indeed occurred.
+     * This functions checks the entries in this widget against the ones in
+     * the wallet and returns the result. If the login credentials were not
+     * loaded, this function will always return FALSE.
      *
-     * @returns TRUE if the wallet entries might have changed.
+     * @returns TRUE if the wallet entries have changed and FALSE otherwise.
      */
-    bool loginCredentialsMaybeChanged();
+    bool loginCredentialsChanged();
 
 signals:
-    /**
-     * Emitted when the "Load" button is clicked.
-     */
-    void loadWalletEntries();
-
-    /**
-     * Emitted when the "Save" button is clicked.
-     */
-    void saveWalletEntries();
-
-    /**
-     * Emitted when the default login should be (re-)defined.
-     */
-    void setDefaultLogin();
-
     /**
      * This signal is emitted every time the wallet entries potentially were
      * modified by the user. When this signal is emitted, it does not necessarily
@@ -177,8 +157,7 @@ protected slots:
 
 private:
     QList<Smb4KAuthInfo *> m_entriesList;
-    bool m_entries_displayed;
-    bool m_maybe_changed;
+    bool m_entries_loaded;
 };
 
 #endif

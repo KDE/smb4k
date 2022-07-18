@@ -38,9 +38,19 @@ public:
     virtual ~Smb4KConfigPageCustomOptions();
 
     /**
-     * This function inserts a list of custom option items into the list widget.
+     * This function loads the list of custom options.
      */
-    void insertCustomOptions();
+    void loadCustomOptions();
+
+    /**
+     * This function saves the list of custom options.
+     */
+    void saveCustomOptions();
+
+    /**
+     * This function resets the custom options.
+     */
+    void resetCustomOptions();
 
     /**
      * Returns TRUE if there may be changed custom settings. You must check if

@@ -104,7 +104,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     //
     // Load custom options
     //
-    insertCustomOptions();
+    loadCustomOptions();
 
     //
     // Connection to enable/disable the reset button
@@ -121,7 +121,7 @@ bool Smb4KConfigPageCustomOptions::customSettingsMaybeChanged()
     return m_maybe_changed;
 }
 
-void Smb4KConfigPageCustomOptions::insertCustomOptions()
+void Smb4KConfigPageCustomOptions::loadCustomOptions()
 {
     //
     // Get the list widget and display the new options
@@ -157,6 +157,16 @@ void Smb4KConfigPageCustomOptions::insertCustomOptions()
 
         optionsListWidget->sortItems(Qt::AscendingOrder);
     }
+}
+
+void Smb4KConfigPageCustomOptions::saveCustomOptions()
+{
+    Smb4KCustomOptionsManager::self()->saveCustomOptions();
+}
+
+void Smb4KConfigPageCustomOptions::resetCustomOptions()
+{
+    Smb4KCustomOptionsManager::self()->resetCustomOptions();
 }
 
 bool Smb4KConfigPageCustomOptions::eventFilter(QObject *obj, QEvent *e)
@@ -284,7 +294,7 @@ void Smb4KConfigPageCustomOptions::slotResetButtonClicked(bool checked)
 
     if (optionsListWidget) {
         Smb4KCustomOptionsManager::self()->resetCustomOptions();
-        insertCustomOptions();
+        loadCustomOptions();
     }
 
     m_maybe_changed = false;

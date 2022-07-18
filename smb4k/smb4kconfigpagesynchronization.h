@@ -34,6 +34,14 @@ public:
      * The destructor
      */
     ~Smb4KConfigPageSynchronization();
+    
+    /**
+     * Check the settings for problems. Returns TRUE if none were 
+     * found and FALSE otherwise.
+     *
+     * @returns TRUE if all settings are okay.
+     */
+    bool checkSettings();
 
 protected slots:
     /**
