@@ -24,14 +24,10 @@
 #endif
 
 // Qt includes
-#include <KLineEdit>
-#include <QCheckBox>
 #include <QList>
 #include <QPair>
-#include <QRadioButton>
 #include <QScrollArea>
 #include <QSize>
-#include <QSpinBox>
 #include <QStandardPaths>
 #include <QWindow>
 
