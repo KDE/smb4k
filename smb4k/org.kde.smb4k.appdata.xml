@@ -60,6 +60,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="pt-BR">Descubra e monte compartilhamentos SAMBA e Windows pela rede</summary>
   <summary xml:lang="sl">Odkrijte in priklopite skupno rabo mrežnih diskov SAMBA in Windows</summary>
   <summary xml:lang="sv">Upptäck och montera delade SAMBA- och Windows-resurser via nätverket</summary>
+  <summary xml:lang="tr">SAMBA ve Windows paylaşımlarını ağ üzerinden keşfedin ve bağlayın</summary>
   <summary xml:lang="uk">Виявлення і монтування спільних ресурсів SAMBA і Windows у мережі</summary>
   <summary xml:lang="x-test">xxDiscover and mount SAMBA and Windows shares over the networkxx</summary>
   <description>
@@ -88,7 +89,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="sk">Smb4K je pokročilý prehliadač siete a nástroj na pripájanie Samba zdieľaní pre softvérovú kompiláciu KDE. Prehľadá vašu sieť, nájde všetky dostupné pracovné skupiny, servery a zdieľania a môže pripojiť všetky želané zdieľania do vášho miestneho súborového systému.</p>
     <p xml:lang="sl">Smb4K je napredni brskalnik sosedstva omrežja in pomožni program Samba za priklop skupnih diskov. Temelji na ogrodju KDE Frameworks 5 in knjižnici odjemalcev Samba (libsmbclient). Pregleduje sosedstvo omrežja za vsem, kar je na voljo delovnih skupin, strežnikov in delov diskov in kar lahko priklopite v vaš lokalni sistem datotek.</p>
     <p xml:lang="sv">Smb4K är en avancerad bläddrare för nätverksgrannskapet och verktyg för montering av delade Samba-kataloger. Den är baserad på KDE:s ramverk 5 och Sambas klientbibliotek (libsmbclient). Den söker igenom ditt nätverksgrannskap för att hitta alla tillgängliga arbetsgrupper, servrar och delade kataloger, och kan montera alla delade kataloger som önskas i det lokala filsystemet.</p>
-    <p xml:lang="tr">Smb4K, gelişmiş bir ağ komşuları tarayıcısı ve samba paylaşım bağlama programıdır. KDE Çatıları 5 ve Samba istemci kütüphanesi (libsmbclient) temellidir. Tüm ulaşılabilir çalışma grupları, sunucular ve paylaşımlar sizin ağ komşularınızı tarar, gerekli paylaşımları yerel dosya sisteminize bağlar.</p>
+    <p xml:lang="tr">Smb4K, gelişmiş bir ağ komşuları tarayıcısı ve samba paylaşım bağlama programıdır. KDE Frameworks 5 ve Samba istemci kitaplığı (libsmbclient) temellidir. Tüm ulaşılabilir çalışma grupları, sunucular ve paylaşımlar sizin ağ komşularınızı tarar, gerekli paylaşımları yerel dosya sisteminize bağlar.</p>
     <p xml:lang="uk">Smb4K програма з розширеними можливостями для перегляду мережевого середовища та монтування спільних ресурсів Samba. Програму засновано на KDE Frameworks 5 та клієнтській бібліотеці Samba (libsmbclient). Програма сканує мережеве оточення і шукає доступні робочі групи, сервери і спільні ресурси. Вона може монтувати усі бажані спільні ресурси у вашій локальній файловій системі.</p>
     <p xml:lang="x-test">xxSmb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.xx</p>
     <p xml:lang="zh-CN">Smb4K 是一个高级的网络邻居浏览器和 Samba 共享挂载工具。它基于 KDE 框架 5 和 Samba 客户端库 (libsmbclient)。它会扫描您的网络邻居，发现所有可用的工作组，服务器和共享，并挂载所有想要共享的内容到您的文件系统。</p>
@@ -117,7 +118,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="sk">Smb4K používa programy softvérového balíka Samba. Jeho cieľom je poskytnúť program, ktorý sa ľahko používa a obsahuje toľko funkcií, ako je len možné.</p>
     <p xml:lang="sl">Smb4K temelji na knjižnici odjemalcev Samba. Namen je zagotoviti program, ki je enostaven za uporabo in ima čim več funkcij.</p>
     <p xml:lang="sv">Smb4K är baserat på Sambas klientbibliotek. Dess syfte är att tillhandahålla ett program som är enkelt att använda och har så många funktioner som möjligt.</p>
-    <p xml:lang="tr">Smb4K, Samba istemci kütüphanesi temellidir. Amacı, kullanımı kolay ve mümkün olduğunca çok özelliğe sahip bir program sunmaktır.</p>
+    <p xml:lang="tr">Smb4K, Samba istemci kitaplığı temellidir. Amacı, kullanımı kolay ve mümkün olduğunca çok özelliğe sahip bir program sunmaktır.</p>
     <p xml:lang="uk">Smb4K засновано на клієнтській бібліотеці Samba. Її призначено для спрощення користування системою, вона має якомога ширший спектр можливостей.</p>
     <p xml:lang="x-test">xxSmb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.xx</p>
     <p xml:lang="zh-CN">Smb4K 基于 Samba 的客户端库。它的目标是易于使用且功能丰富。</p>
@@ -243,7 +244,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Pripájanie a odpájanie zdieľaní</li>
       <li xml:lang="sl">Priklapljanje in odklapljanje skupnih diskov</li>
       <li xml:lang="sv">Montera och avmontera delade resurser</li>
-      <li xml:lang="tr">Paylaşımları bağlama ve ayırma</li>
+      <li xml:lang="tr">Paylaşımları bağlama ve bağlantılarını kesme</li>
       <li xml:lang="uk">Монтування і демонтування спільних ресурсів.</li>
       <li xml:lang="x-test">xxMounting and unmounting of sharesxx</li>
       <li xml:lang="zh-CN">挂载和卸载共享</li>
@@ -273,7 +274,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Prístup k súborom pripojených zdieľaní pomocou správcu súborov alebo terminálu</li>
       <li xml:lang="sl">Dostop do datotek diskov skupne rabe s pomočjo upravitelja datotek ali terminala</li>
       <li xml:lang="sv">Åtkomst av filer på en monterad delad resurs med en filhanterare eller terminal</li>
-      <li xml:lang="tr">Bağlanmış paylaşımın dosyalarına, dosya yöneticisi veya uç birim üzerinden erişim</li>
+      <li xml:lang="tr">Bağlanmış paylaşımın dosyalarına, dosya yöneticisi veya uçbirim üzerinden erişim</li>
       <li xml:lang="uk">Доступ до файлів змонтованого спільного ресурсу за допомогою програми для керування файлами або термінала.</li>
       <li xml:lang="x-test">xxAccess to the files of a mounted share using a file manager or terminalxx</li>
       <li xml:lang="zh-CN">使用文件管理器或终端访问已挂载的共享</li>
@@ -303,7 +304,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Automatická detekcia externých pripojení a odpojení</li>
       <li xml:lang="sl">Samodejno zaznavanje zunanjih priklopov in odklopov</li>
       <li xml:lang="sv">Automatiskt detektion av externa monteringar och avmonteringar</li>
-      <li xml:lang="tr">Harici bağlamaların otomatik algılanması ve ayırılması</li>
+      <li xml:lang="tr">Dış bağlamaların otomatik algılanması ve bağlantılarının kesilmesi</li>
       <li xml:lang="uk">Автоматичне виявлення зовнішніх дій з монтування або демонтування.</li>
       <li xml:lang="x-test">xxAuto-detection of external mounts and unmountsxx</li>
       <li xml:lang="zh-CN">自动检测外部挂载和卸载</li>
@@ -424,7 +425,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Náhľad obsahu vzdialeného zdieľania</li>
       <li xml:lang="sl">Predogled vsebine oddaljenega skupnega diska</li>
       <li xml:lang="sv">Förhandsgranskning av innehållet i en delad resurs</li>
-      <li xml:lang="tr">Bir uzak paylaşımın içeriklerinin ön izlemesi</li>
+      <li xml:lang="tr">Bir uzak paylaşımın içeriğinin önizlemesi</li>
       <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
       <li xml:lang="x-test">xxPreview of the contents of a remote sharexx</li>
       <li xml:lang="zh-CN">远程共享内容的预览</li>
@@ -457,7 +458,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Štandardné prihlásenie</li>
       <li xml:lang="sl">Privzeta prijava</li>
       <li xml:lang="sv">Standardinloggning</li>
-      <li xml:lang="tr">Varsayılan giriş</li>
+      <li xml:lang="tr">Öntanımlı giriş</li>
       <li xml:lang="uk">Типова реєстрація.</li>
       <li xml:lang="x-test">xxDefault loginxx</li>
       <li xml:lang="zh-CN">默认登录</li>
@@ -517,7 +518,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Podpora záložiek zdieľaní</li>
       <li xml:lang="sl">Zmožnost zaznamovanj priljubljenih skupnih diskov</li>
       <li xml:lang="sv">Möjlighet att lägga till bokmärken för favoritresurser</li>
-      <li xml:lang="tr">Favori yer imi paylaşımları yeteneği</li>
+      <li xml:lang="tr">Sık kullanılan paylaşımları yer imlerine ekleme olanağı</li>
       <li xml:lang="uk">Можливість створення закладок для потрібних вам спільних ресурсів.</li>
       <li xml:lang="x-test">xxAbility to bookmark favorite sharesxx</li>
       <li xml:lang="zh-CN">可以收藏共享</li>
@@ -547,7 +548,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Widget v systémovej lište</li>
       <li xml:lang="sl">Gradnik v sistemskem pladnju</li>
       <li xml:lang="sv">Grafisk komponent i systembrickan</li>
-      <li xml:lang="tr">Sistem çekmecesi programcığı</li>
+      <li xml:lang="tr">Sistem tepsisi araç takımı</li>
       <li xml:lang="uk">Віджет системного лотка.</li>
       <li xml:lang="x-test">xxSystem tray widgetxx</li>
       <li xml:lang="zh-CN">系统托盘小部件</li>
@@ -667,7 +668,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Synchronizácia vzdialených zdieľaní s miestnou kópiou a naopak</li>
       <li xml:lang="sl">Usklajevanje oddaljenega skupnega diska z lokalno kopijo in obratno</li>
       <li xml:lang="sv">Synkronisering av delade fjärresurser med en lokal kopia och tvärtom</li>
-      <li xml:lang="tr">Uzak paylaşımın yerel bir kopya ile eşitlenmesi veya tam tesi</li>
+      <li xml:lang="tr">Uzak paylaşımın yerel bir kopya ile eşitlenmesi veya tam tersi</li>
       <li xml:lang="uk">Синхронізація віддаленого спільного ресурсу з локальною копією і навпаки.</li>
       <li xml:lang="x-test">xxSynchronization of a remote share with a local copy and vice versaxx</li>
       <li xml:lang="zh-CN">远程共享与本地副本同步，反之亦然。</li>
@@ -727,7 +728,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="sk">Podpora laptopov cez framework hardvérových zariadení Solid</li>
       <li xml:lang="sl">Podpora prenosnikom prek okvira strojne opreme Solid</li>
       <li xml:lang="sv">Stöd för bärbara datorer via Solid-ramverket för hårdvaruenheter</li>
-      <li xml:lang="tr">Katı donanım aygıt altyapısı aracılığıyla diz üstü bilgisayar desteği</li>
+      <li xml:lang="tr">Katı donanım aygıt altyapısı aracılığıyla dizüstü bilgisayar desteği</li>
       <li xml:lang="uk">Підтримка ноутбуків за допомогою оболонки для роботи з пристроями Solid.</li>
       <li xml:lang="x-test">xxLaptop support through the Solid hardware device frameworkxx</li>
       <li xml:lang="zh-CN">通过坚实的硬件设备框架提供笔记本支持</li>
@@ -847,7 +848,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="sk">Ak pracujete vo Windows sieťovom prostredí, možno budete chcieť nainštalovať túto aplikáciu, aby ste mali možnosť jednoducho pristupovať ku zdieľaniam Windows.</p>
     <p xml:lang="sl">Če delate v omrežnem okolju, kjer dominira Windows, boste morda želeli namestiti to aplikacijo, da boste lahko enostavno dostopali do sistema skupnih diskov Windows.</p>
     <p xml:lang="sv">Om du arbetar i en Windows-dominerad nätverksmiljö, kan du vilja installera detta program för att enkelt kunna komma åt de delade Windows-kataloger som tillhandahålls.</p>
-    <p xml:lang="tr">Windows'un hakim olduğu bir ağ ortamında çalışıyorsanız, sağlanan Windows paylaşımlarına kolayca erişebilmek için bu uygulamayı kurmak isteyebilirsiniz.</p>
+    <p xml:lang="tr">Windows'un hakim olduğu bir ağ ortamında çalışıyorsanız sağlanan Windows paylaşımlarına kolayca erişebilmek için bu uygulamayı kurmak isteyebilirsiniz.</p>
     <p xml:lang="uk">Якщо ви працюєте у середовищі з переважним використанням Windows, вам варто встановити цю програму для полегшення доступу до спільних ресурсів Windows.</p>
     <p xml:lang="x-test">xxIf you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.xx</p>
     <p xml:lang="zh-CN">如果您在 Windows 域中工作，您可能想要安装此应用程序，以便能够轻松访问其提供的Windows共享。</p>
@@ -915,7 +916,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="sk">Plazmoid</caption>
       <caption xml:lang="sl">Plasmoid</caption>
       <caption xml:lang="sv">Plasmoiden</caption>
-      <caption xml:lang="tr">plasmoid</caption>
+      <caption xml:lang="tr">Plasmoid</caption>
       <caption xml:lang="uk">Плазмоїд.</caption>
       <caption xml:lang="x-test">xxThe plasmoidxx</caption>
       <caption xml:lang="zh-CN">Plasma 桌面部件</caption>
