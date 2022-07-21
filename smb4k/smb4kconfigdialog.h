@@ -118,12 +118,6 @@ private:
     void setupDialog();
 
     /**
-     * Takes care that the changes made to the profiles are propagated
-     * to the core classes via the profiles manager.
-     */
-    void propagateProfilesChanges();
-
-    /**
      * Checks that mandatory needed input is provided for settings that
      * need it. This function will report all missing input to the user
      * via a message box.

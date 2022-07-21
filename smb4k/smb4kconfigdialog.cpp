@@ -7,7 +7,6 @@
 
 // application specific includes
 #include "smb4kconfigdialog.h"
-#include "core/smb4kprofilemanager.h"
 #include "core/smb4ksettings.h"
 #include "smb4kconfigpageauthentication.h"
 #include "smb4kconfigpagecustomoptions.h"
@@ -54,10 +53,7 @@ Smb4KConfigDialog::~Smb4KConfigDialog()
 
 void Smb4KConfigDialog::setupDialog()
 {
-    // FIXME: I guess, normally we would not need to close destructively,
-    // but at the moment there are issues with the KURLRequester in file
-    // mode. To work around those, we are closing the dialog destructively.
-    // Maybe we can remove this if we moved to KDE4.
+    // Close destructively
     setAttribute(Qt::WA_DeleteOnClose, true);
 
     // Add the pages:
@@ -134,38 +130,6 @@ void Smb4KConfigDialog::setupDialog()
     resize(windowHandle()->size()); // workaround for QTBUG-40584
 }
 
-void Smb4KConfigDialog::propagateProfilesChanges()
-{
-    Smb4KConfigPageProfiles *profilesPage = m_profiles->widget()->findChild<Smb4KConfigPageProfiles *>();
-
-    if (profilesPage) {
-        // Remove the profiles.
-        QStringList removedProfiles = profilesPage->removedProfiles();
-
-        if (!removedProfiles.isEmpty()) {
-            Smb4KProfileManager::self()->removeProfiles(removedProfiles);
-            profilesPage->clearRemovedProfiles();
-        }
-
-        // Rename the profiles.
-        QList<QPair<QString, QString>> renamedProfiles = profilesPage->renamedProfiles();
-
-        if (!renamedProfiles.isEmpty()) {
-            Smb4KProfileManager::self()->migrateProfiles(renamedProfiles);
-            profilesPage->clearRenamedProfiles();
-        }
-
-        // Finally reload the custom options.
-        if (!removedProfiles.isEmpty() || !renamedProfiles.isEmpty()) {
-            Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
-
-            if (customOptionsPage) {
-                customOptionsPage->loadCustomOptions();
-            }
-        }
-    }
-}
-
 bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
 {
     QString errorMessage = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
@@ -215,7 +179,22 @@ void Smb4KConfigDialog::updateSettings()
         authenticationPage->saveLoginCredentials();
     }
 
-    propagateProfilesChanges();
+    Smb4KConfigPageProfiles *profilesPage = m_profiles->widget()->findChild<Smb4KConfigPageProfiles *>();
+
+    if (profilesPage) {
+        profilesPage->applyChanges();
+        
+        // 
+        // Finally reload the custom options.
+        // FIXME: Since we close destructively, do we really need this?
+        // 
+        Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+
+        if (customOptionsPage) {
+            customOptionsPage->loadCustomOptions();
+        }
+    }
+    
     (void)checkSettings();
 
     KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");

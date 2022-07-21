@@ -32,30 +32,9 @@ public:
     virtual ~Smb4KConfigPageProfiles();
 
     /**
-     * This function returns a list of pairs that contains the
-     * renamed profiles. The first entry of the pair is the old name
-     * of the profile and the second entry is the new name.
-     *
-     * @returns a list of name pairs
+     * Apply the changes made to the list of profiles
      */
-    QList<QPair<QString, QString>> renamedProfiles() const;
-
-    /**
-     * Clear the list of renamed profiles.
-     */
-    void clearRenamedProfiles();
-
-    /**
-     * This function returns the list of removed profiles.
-     *
-     * @returns the removed profiles
-     */
-    QStringList removedProfiles() const;
-
-    /**
-     * Clear the list of removed profiles.
-     */
-    void clearRemovedProfiles();
+    void applyChanges();
 
 protected Q_SLOTS:
     void slotEnableWidget(int state);

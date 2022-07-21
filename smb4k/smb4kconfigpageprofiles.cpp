@@ -72,24 +72,19 @@ Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
 {
 }
 
-QList<QPair<QString, QString>> Smb4KConfigPageProfiles::renamedProfiles() const
+void Smb4KConfigPageProfiles::applyChanges()
 {
-    return m_renamed;
-}
+    // Remove the profiles
+    if (!m_removed.isEmpty()) {
+        Smb4KProfileManager::self()->removeProfiles(m_removed);
+        m_removed.clear();
+    }
 
-void Smb4KConfigPageProfiles::clearRenamedProfiles()
-{
-    m_renamed.clear();
-}
-
-QStringList Smb4KConfigPageProfiles::removedProfiles() const
-{
-    return m_removed;
-}
-
-void Smb4KConfigPageProfiles::clearRemovedProfiles()
-{
-    m_removed.clear();
+    // Rename the profiles
+    if (!m_renamed.isEmpty()) {
+        Smb4KProfileManager::self()->migrateProfiles(m_renamed);
+        m_renamed.clear();
+    }
 }
 
 void Smb4KConfigPageProfiles::slotEnableWidget(int state)
