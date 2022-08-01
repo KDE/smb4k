@@ -106,6 +106,11 @@ void Smb4KWalletManager::writeLoginCredentials(const NetworkItemPtr &networkItem
             }
 
             write(&authInfo);
+        } else if (networkItem->type() == UnknownNetworkItem) {
+            Smb4KAuthInfo authInfo;
+            authInfo.setUserName(networkItem->url().userName());
+            authInfo.setPassword(networkItem->url().password());
+            write(&authInfo);
         }
     }
 }
@@ -113,7 +118,7 @@ void Smb4KWalletManager::writeLoginCredentials(const NetworkItemPtr &networkItem
 void Smb4KWalletManager::writeLoginCredentials(Smb4KAuthInfo *authInfo)
 {
     if (authInfo) {
-        if (authInfo->type() == Host || authInfo->type() == Share) {
+        if (authInfo->type() == Host || authInfo->type() == Share || authInfo->type() == UnknownNetworkItem) {
             write(authInfo);
         }
     }
@@ -372,6 +377,7 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo *authInfo)
                 }
             } else {
                 if (Smb4KSettings::useDefaultLogin()) {
+                    
                     QMap<QString, QString> credentials;
 
                     if (d->wallet->readMap("DEFAULT_LOGIN", credentials) == 0) {
