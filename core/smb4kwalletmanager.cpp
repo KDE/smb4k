@@ -272,6 +272,18 @@ bool Smb4KWalletManager::useWalletSystem() const
     return (KWallet::Wallet::isEnabled() && Smb4KSettings::useWallet());
 }
 
+bool Smb4KWalletManager::hasDefaultCredentials()
+{
+    if (init()) {
+        if (d->wallet->hasEntry("DEFAULT_LOGIN")) {
+            return true;
+        }
+    }
+        
+    return false;
+}
+
+
 bool Smb4KWalletManager::init()
 {
     if (useWalletSystem()) {
