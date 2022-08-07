@@ -232,6 +232,8 @@ void Smb4KConfigPageAuthentication::saveLoginCredentials()
     if (loginCredentialsChanged()) {
         Smb4KWalletManager::self()->writeLoginCredentialsList(m_entriesList);
     }
+    
+    slotEnableResetButton();
 }
 
 bool Smb4KConfigPageAuthentication::loginCredentialsLoaded()
@@ -244,19 +246,22 @@ bool Smb4KConfigPageAuthentication::loginCredentialsChanged()
     bool changed = false;
 
     if (m_entries_loaded) {
-        QList<Smb4KAuthInfo *> oldLoginCredentials = Smb4KWalletManager::self()->loginCredentialsList();
+        QList<Smb4KAuthInfo *> savedLoginCredentials = Smb4KWalletManager::self()->loginCredentialsList();
 
-        for (Smb4KAuthInfo *oldEntry : qAsConst(oldLoginCredentials)) {
-            for (Smb4KAuthInfo *newEntry : qAsConst(m_entriesList)) {
-                if (QString::compare(oldEntry->url().toString(QUrl::RemovePort), newEntry->url().toString(QUrl::RemovePort), Qt::CaseInsensitive)
-                    == 0 /* leave the user info here */) {
-                    changed = true;
+        if (savedLoginCredentials.size() != m_entriesList.size()) {
+            changed = true;
+        } else {
+            for (Smb4KAuthInfo *oldEntry : qAsConst(savedLoginCredentials)) {
+                for (Smb4KAuthInfo *newEntry : qAsConst(m_entriesList)) {
+                    if (oldEntry->url().matches(newEntry->url(), QUrl::RemoveUserInfo | QUrl::RemovePort)) {
+                        changed = (oldEntry->url().userInfo() != newEntry->url().userInfo());
+                        break;
+                    }
+                }
+
+                if (changed) {
                     break;
                 }
-            }
-
-            if (changed) {
-                break;
             }
         }
     }
@@ -308,41 +313,26 @@ void Smb4KConfigPageAuthentication::slotKWalletButtonToggled(bool checked)
 void Smb4KConfigPageAuthentication::slotDefaultLoginToggled(bool checked)
 {
     if (checked && !Smb4KSettings::useDefaultLogin()) {
-        //
-        // Read the default authentication information
-        //
-        Smb4KAuthInfo authInfo;
-        Smb4KWalletManager::self()->readLoginCredentials(&authInfo);
+        if (!Smb4KWalletManager::self()->hasDefaultCredentials()) {
+            Smb4KAuthInfo authInfo;
+            // If there are no default credentials, we do not need to read them.
+            KPasswordDialog dlg(this, KPasswordDialog::ShowUsernameLine);
+            dlg.setPrompt(i18n("Enter the default login information."));
+            dlg.setUsername(authInfo.userName());
+            dlg.setPassword(authInfo.password());
 
-        //
-        // Show the password dialog to enter or modify the default authentication
-        // information.
-        //
-        KPasswordDialog dlg(this, KPasswordDialog::ShowUsernameLine);
-        dlg.setPrompt(i18n("Enter the default login information."));
-        dlg.setUsername(authInfo.userName());
-        dlg.setPassword(authInfo.password());
+            if (dlg.exec() == KPasswordDialog::Accepted) {
+                authInfo.setUserName(dlg.username());
+                authInfo.setPassword(dlg.password());
 
-        if (dlg.exec() == KPasswordDialog::Accepted) {
-            //
-            // Save the authentication information to the wallet
-            //
-            authInfo.setUserName(dlg.username());
-            authInfo.setPassword(dlg.password());
+                Smb4KWalletManager::self()->writeLoginCredentials(&authInfo);
 
-            Smb4KWalletManager::self()->writeLoginCredentials(&authInfo);
-
-            //
-            // Reload the list of authentication information
-            //
-            if (m_entries_loaded) {
-                loadLoginCredentials();
+                if (m_entries_loaded) {
+                    loadLoginCredentials();
+                }
+            } else {
+                findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
             }
-        } else {
-            //
-            // Discard the password dialog and reset the checkbox
-            //
-            findChild<QCheckBox *>("kcfg_UseDefaultLogin")->setChecked(false);
         }
     }
 }
@@ -364,7 +354,7 @@ void Smb4KConfigPageAuthentication::slotSaveButtonClicked(bool checked)
     Q_UNUSED(checked);
 
     if (m_entries_loaded) {
-        Smb4KWalletManager::self()->writeLoginCredentialsList(m_entriesList);
+        saveLoginCredentials();
     }
 
     //
