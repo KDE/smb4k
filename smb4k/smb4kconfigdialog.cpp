@@ -186,7 +186,6 @@ void Smb4KConfigDialog::updateSettings()
         
         // 
         // Finally reload the custom options.
-        // FIXME: Since we close destructively, do we really need this?
         // 
         Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
@@ -245,11 +244,14 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     // Check the custom options
     //
     Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
-
-    if (!enable && customOptionsPage && customOptionsPage->customSettingsMaybeChanged()) {
-        enable = true;
+    
+    if (!enable && customOptionsPage) {
+        enable = customOptionsPage->customSettingsMaybeChanged();
     }
 
+    //
+    // Enable/disable the apply button
+    // 
     QPushButton *applyButton = buttonBox()->button(QDialogButtonBox::Apply);
 
     if (applyButton) {
