@@ -231,9 +231,11 @@ void Smb4KConfigPageAuthentication::saveLoginCredentials()
 {
     if (loginCredentialsChanged()) {
         Smb4KWalletManager::self()->writeLoginCredentialsList(m_entriesList);
+        
+        // Do not emit walletEntriesModified() signal, because we do not 
+        // want to enable/disable the "Apply" button as well.
+        slotEnableResetButton();
     }
-    
-    slotEnableResetButton();
 }
 
 bool Smb4KConfigPageAuthentication::loginCredentialsLoaded()
