@@ -529,7 +529,7 @@
       <li xml:lang="sv">Grafisk komponent i systembrickan</li>
       <li xml:lang="uk">Віджет системного лотка.</li>
       <li xml:lang="x-test">xxSystem tray widgetxx</li>
-      <li xml:lang="zh-CN">系统托盘小部件</li>
+      <li xml:lang="zh-CN">系统托盘挂件</li>
       <li xml:lang="zh-TW">系統匣小工具</li>
       <li>Support of advanced mount options</li>
       <li xml:lang="ca">Implementació de les opcions avançades de muntatge</li>
@@ -760,7 +760,7 @@
       <li xml:lang="sv">Plasmoid för integrering med skrivbordssökning</li>
       <li xml:lang="uk">Плазмоїд для інтеграції зі стільницею.</li>
       <li xml:lang="x-test">xxPlasmoid for desktop integrationxx</li>
-      <li xml:lang="zh-CN">Plasma 桌面部件集成</li>
+      <li xml:lang="zh-CN">Plasma 小程序桌面集成</li>
       <li xml:lang="zh-TW">以 Plasmoid 提供桌面整合</li>
       <li>Profiles for different network neighborhood setups</li>
       <li xml:lang="ca">Perfils per a diferents configuracions del veïnatge de xarxa</li>
@@ -884,7 +884,7 @@
       <caption xml:lang="sv">Plasmoiden</caption>
       <caption xml:lang="uk">Плазмоїд.</caption>
       <caption xml:lang="x-test">xxThe plasmoidxx</caption>
-      <caption xml:lang="zh-CN">Plasma 桌面部件</caption>
+      <caption xml:lang="zh-CN">Plasma 小程序</caption>
       <caption xml:lang="zh-TW">Plasmoid 元件</caption>
       <image>https://cdn.kde.org/screenshots/smb4k/screenshot_smb4k_plasmoid_1.png</image>
     </screenshot>
