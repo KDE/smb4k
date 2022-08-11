@@ -139,7 +139,7 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
     
         if (mountingPage) {
             if (!mountingPage->checkSettings()) {
-                KMessageBox::sorry(this, errorMessage);
+                KMessageBox::error(this, errorMessage);
                 setCurrentPage(m_mounting);
                 return false;
             }
@@ -151,7 +151,7 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
         
         if (synchronizationPage) {
             if (!synchronizationPage->checkSettings()) {
-                KMessageBox::sorry(this, errorMessage);
+                KMessageBox::error(this, errorMessage);
                 setCurrentPage(m_synchronization);
                 return false;                
             }

@@ -864,7 +864,7 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
                         "<qt>The following %1 entries are going to be removed from the additional options: %2. Please read the handbook for details.</qt>",
                         deniedArgs.size(),
                         deniedArgs.join(", "));
-                    KMessageBox::sorry(this, msg);
+                    KMessageBox::information(this, msg);
                 }
 
                 cifsOptions->setText(list.join(",").trimmed());
