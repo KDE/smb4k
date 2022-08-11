@@ -1386,6 +1386,7 @@ Action=Popup|Sound
 
 [Event/fileNotFound]
 Name=File not found
+Name[ar]=الملف غير موجود
 Name[bs]=Datoteka nije pronađena.
 Name[ca]=No s'ha trobat el fitxer
 Name[ca@valencia]=No s'ha trobat el fitxer
@@ -1805,6 +1806,7 @@ Action=Popup|Sound
 
 [Event/invalidURL]
 Name=Invalid URL
+Name[ar]=المسار غير صالح
 Name[bs]=Pogrešan URL
 Name[ca]=URL no vàlid
 Name[ca@valencia]=URL no vàlid
