@@ -133,16 +133,6 @@ void Smb4KNotification::bookmarkLabelInUse(Smb4KBookmark *bookmark)
     }
 }
 
-void Smb4KNotification::sambaConfigFileMissing()
-{
-    Smb4KNotifier *notification = new Smb4KNotifier("sambaConfigFileMissing");
-    notification->setText(
-        i18n("The configuration file for the Samba suite <b>smb.conf</b> is missing. This is not "
-             "a fatal error, but you should consider creating one."));
-    notification->setPixmap(KIconLoader::global()->loadIcon("dialog-warning", KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
-    notification->sendEvent();
-}
-
 //
 // Errors
 //

@@ -96,12 +96,6 @@ Q_DECL_EXPORT void bookmarkExists(Smb4KBookmark *bookmark);
 Q_DECL_EXPORT void bookmarkLabelInUse(Smb4KBookmark *bookmark);
 
 /**
- * This warning is shown if the configuration file for the Samba suite
- * (smb.conf) could not be loaded.
- */
-Q_DECL_EXPORT void sambaConfigFileMissing();
-
-/**
  * This error message is shown if the mounting of a share failed.
  *
  * @param share     The share that was to be mounted
