@@ -21,8 +21,10 @@
 
 // KDE includes
 #include <Solid/Device>
+#include <Solid/DeviceInterface>
 #include <Solid/DeviceNotifier>
 #include <Solid/NetworkShare>
+#include <Solid/solid_version.h>
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 #include <KIOCore/KMountPoint>
 #endif
@@ -59,7 +61,14 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     QList<Solid::Device> allDevices = Solid::Device::allDevices();
 
     for (const Solid::Device &device : qAsConst(allDevices)) {
-        if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare)) {
+        const Solid::DeviceInterface *iface = device.asDeviceInterface(Solid::DeviceInterface::NetworkShare);
+        const Solid::NetworkShare *networkShare = qobject_cast<const Solid::NetworkShare *>(iface);
+
+#if (SOLID_VERSION < QT_VERSION_CHECK(5, 98, 0))
+        if (networkShare && networkShare->type() == Solid::NetworkShare::Cifs) {
+#else
+        if (networkShare && (networkShare->type() == Solid::NetworkShare::Cifs || networkShare->type() == Solid::NetworkShare::Smb3)) {
+#endif
             d->udis << device.udi();
         }
     }
@@ -202,16 +211,16 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent * /*e*/)
 
 void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
 {
-    //
-    // Create a device from the UDI
-    //
     Solid::Device device(udi);
 
-    //
-    // Check if the device is a network device and emit the networkShareAdded()
-    // signal if it is.
-    //
-    if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare)) {
+    const Solid::DeviceInterface *iface = device.asDeviceInterface(Solid::DeviceInterface::NetworkShare);
+    const Solid::NetworkShare *networkShare = qobject_cast<const Solid::NetworkShare *>(iface);
+
+#if (SOLID_VERSION < QT_VERSION_CHECK(5, 98, 0))
+    if (networkShare && networkShare->type() == Solid::NetworkShare::Cifs) {
+#else
+    if (networkShare && (networkShare->type() == Solid::NetworkShare::Cifs || networkShare->type() == Solid::NetworkShare::Smb3)) {
+#endif
         d->udis << udi;
         emit networkShareAdded();
     }
@@ -219,19 +228,7 @@ void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
 
 void Smb4KHardwareInterface::slotDeviceRemoved(const QString &udi)
 {
-    //
-    // Create a device from the UDI
-    //
-    Solid::Device device(udi);
-
-    //
-    // Check if the device is a network device and emit the networkShareRemoved()
-    // signal if it is.
-    //
-    // NOTE:For some reason, the device has no valid type. Thus, we need the check
-    // in the second part of the if statement for now.
-    //
-    if (device.isDeviceInterface(Solid::DeviceInterface::NetworkShare) || d->udis.contains(udi)) {
+    if (d->udis.contains(udi)) {
         emit networkShareRemoved();
         d->udis.removeOne(udi);
     }
