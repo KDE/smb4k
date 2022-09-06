@@ -58,6 +58,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="pl">Wykrywaj i podpinaj zasoby SAMBY oraz Windowsa w sieci</summary>
   <summary xml:lang="pt">Descubra e monte partilhas de SAMBA e do Windows na rede</summary>
   <summary xml:lang="pt-BR">Descubra e monte compartilhamentos SAMBA e Windows pela rede</summary>
+  <summary xml:lang="ru">Обнаружение и подключение общих ресурсов SAMBA и Windows по сети</summary>
   <summary xml:lang="sl">Odkrijte in priklopite skupno rabo mrežnih diskov SAMBA in Windows</summary>
   <summary xml:lang="sv">Upptäck och montera delade SAMBA- och Windows-resurser via nätverket</summary>
   <summary xml:lang="tr">SAMBA ve Windows paylaşımlarını ağ üzerinden keşfedin ve bağlayın</summary>
@@ -240,7 +241,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="pl">Podpinanie i odpinanie udziałów</li>
       <li xml:lang="pt">Montagem e desmontagem de partilhas</li>
       <li xml:lang="pt-BR">Montagem e desmontagem de compartilhamentos</li>
-      <li xml:lang="ru">Подключение и отключение общих папок;</li>
+      <li xml:lang="ru">Подключение и отключение общих ресурсов;</li>
       <li xml:lang="sk">Pripájanie a odpájanie zdieľaní</li>
       <li xml:lang="sl">Priklapljanje in odklapljanje skupnih diskov</li>
       <li xml:lang="sv">Montera och avmontera delade resurser</li>
@@ -270,7 +271,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="pl">Dostęp do plików podpiętego udziału przy użyciu programu do zarządzania plikami lub terminalu</li>
       <li xml:lang="pt">Aceder aos ficheiros de uma partilha montada com um gestor de ficheiros ou terminal</li>
       <li xml:lang="pt-BR">Acessar aos arquivos de um compartilhamento montado com um gerenciador de arquivos ou terminal</li>
-      <li xml:lang="ru">Доступ к файлам, расположенным в общих папках, через диспетчер файлов или терминал;</li>
+      <li xml:lang="ru">Доступ к файлам, расположенным в общих сетевых ресурсах, через диспетчер файлов или терминал;</li>
       <li xml:lang="sk">Prístup k súborom pripojených zdieľaní pomocou správcu súborov alebo terminálu</li>
       <li xml:lang="sl">Dostop do datotek diskov skupne rabe s pomočjo upravitelja datotek ali terminala</li>
       <li xml:lang="sv">Åtkomst av filer på en monterad delad resurs med en filhanterare eller terminal</li>
@@ -330,7 +331,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="pl">Podpinanie poprzednio podpiętych udziałów przy starcie</li>
       <li xml:lang="pt">Voltar a montar as partilhas usadas anteriormente ao iniciar o programa</li>
       <li xml:lang="pt-BR">Remontar os compartilhamentos usados anteriormente ao iniciar o programa</li>
-      <li xml:lang="ru">Повторное подключение при запуске программы использованных прежде общих папок;</li>
+      <li xml:lang="ru">Повторное подключение при запуске программы использованных прежде общих ресурсов;</li>
       <li xml:lang="sk">Znovupripojenie predtým použitých zdieľaní pri spustení programu</li>
       <li xml:lang="sl">Ponovno priklapljanje že prej priklopljenih skupnih diskov ob zagonu programa</li>
       <li xml:lang="sv">Montering av tidigare använda delade resurser igen vid programstart</li>
@@ -360,7 +361,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="pl">Różne informacje o elementach w zdalnej sieci i podpiętych udziałach</li>
       <li xml:lang="pt">Diversas informações acerca dos itens de rede remotos e das partilhas montadas</li>
       <li xml:lang="pt-BR">Diversas informações sobre os itens de rede remotos e dos compartilhamentos montados</li>
-      <li xml:lang="ru">Просмотр различной информации о объектах в сети о и подключённых общих папках;</li>
+      <li xml:lang="ru">Просмотр различной информации о объектах в сети о и подключённых общих ресурсах;</li>
       <li xml:lang="sk">Rôzne informácie o vzdialených sieťových položkách a pripojených zdieľaniach</li>
       <li xml:lang="sl">Razne informacije o oddaljenih omrežnih predmetih in priklopljenih skupnih diskih</li>
       <li xml:lang="sv">Diverse information om fjärrobjekt i nätverket och monterade delade resurser</li>
@@ -514,7 +515,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="pl">Możliwość nadania zakładki ulubionym udziałom</li>
       <li xml:lang="pt">A capacidade de marcar as partilhas como favoritos</li>
       <li xml:lang="pt-BR">Capacidade de marcar os compartilhamentos como favoritos</li>
-      <li xml:lang="ru">Возможность добавления выбранных общих папок в закладки;</li>
+      <li xml:lang="ru">Возможность добавления выбранных общих сетевых ресурсов в закладки;</li>
       <li xml:lang="sk">Podpora záložiek zdieľaní</li>
       <li xml:lang="sl">Zmožnost zaznamovanj priljubljenih skupnih diskov</li>
       <li xml:lang="sv">Möjlighet att lägga till bokmärken för favoritresurser</li>
@@ -664,7 +665,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="pl">Synchronizacja zdalnego udziału z lokalną kopią i na odwrót</li>
       <li xml:lang="pt">Sincronização de uma partilha remota com uma cópia local e vice-versa</li>
       <li xml:lang="pt-BR">Sincronização de um compartilhamento remoto com uma cópia local e vice-versa</li>
-      <li xml:lang="ru">Двухсторонняя синхронизация между общими папками и их копиями на компьютере;</li>
+      <li xml:lang="ru">Двухсторонняя синхронизация между общими ресурсами и их копиями на компьютере;</li>
       <li xml:lang="sk">Synchronizácia vzdialených zdieľaní s miestnou kópiou a naopak</li>
       <li xml:lang="sl">Usklajevanje oddaljenega skupnega diska z lokalno kopijo in obratno</li>
       <li xml:lang="sv">Synkronisering av delade fjärresurser med en lokal kopia och tvärtom</li>
