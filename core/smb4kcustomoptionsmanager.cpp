@@ -935,28 +935,27 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
 
 bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr &options, bool write)
 {
-    bool hasOptions = options->hasOptions(true);
-
     if (options) {
         QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, QApplication::activeWindow());
 
         if (dlg->exec() == QDialog::Accepted) {
-            hasOptions = options->hasOptions();
-
-            if (hasOptions) {
+            if (options->hasOptions()) {
+                // FIXME: Only write custom options if they are changed.
                 addCustomOptions(options, write);
             } else {
                 removeCustomOptions(options, write);
             }
         } else {
-            qDebug() << "FIXME: When operating on a list with uncommitted changes, this reset function might cause problems.";
+            // FIXME: When operating on a list with uncommitted changes, this reset function might cause problems.
             resetCustomOptions();
         }
 
         delete dlg;
+        
+        return options->hasOptions();
     }
 
-    return hasOptions;
+    return false;
 }
 
 void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool write)
@@ -990,6 +989,8 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
         //
         if (options->type() == Host) {
             for (const OptionsPtr &o : qAsConst(d->options)) {
+                // FIXME: Use the URL instead of the host name and workgroup name here.
+                // Also, check if we need to check for the profile as well...
                 if (o->type() == Share && o->hostName() == options->hostName() && o->workgroupName() == options->workgroupName()) {
                     o->setIpAddress(options->ipAddress());
                     o->setUseUser(options->useUser());
