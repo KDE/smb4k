@@ -48,37 +48,36 @@ Smb4KConfigPageMounting::~Smb4KConfigPageMounting()
 bool Smb4KConfigPageMounting::checkSettings()
 {
     KUrlRequester *mountPrefix = findChild<KUrlRequester *>("kcfg_MountPrefix");
-    
+
     if (mountPrefix) {
         if (!mountPrefix->url().isValid()) {
             mountPrefix->setFocus();
             return false;
         }
     }
-    
+
     QCheckBox *useFileMode = findChild<QCheckBox *>("kcfg_UseFileMode");
     KLineEdit *fileMode = findChild<KLineEdit *>("kcfg_FileMode");
-    
+
     if (useFileMode && fileMode) {
         if (useFileMode->isChecked() && fileMode->text().trimmed().isEmpty()) {
             fileMode->setFocus();
             return false;
         }
     }
-    
+
     QCheckBox *useDirectoryMode = findChild<QCheckBox *>("kcfg_UseDirectoryMode");
     KLineEdit *directoryMode = findChild<KLineEdit *>("kcfg_DirectoryMode");
-    
+
     if (useDirectoryMode && directoryMode) {
         if (useDirectoryMode->isChecked() && directoryMode->text().trimmed().isEmpty()) {
             directoryMode->setFocus();
-            return false;            
+            return false;
         }
     }
 
     return true;
 }
-
 
 #if defined(Q_OS_LINUX)
 //

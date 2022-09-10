@@ -122,11 +122,11 @@ public:
      * @returns TRUE if the wallet system can be/is used.
      */
     bool useWalletSystem() const;
-    
+
     /**
      * This function returns TRUE if the wallet contains already default
      * credentials.
-     * 
+     *
      * @returns TRUE if the wallet contains a default credentials entry.
      */
     bool hasDefaultCredentials();

@@ -32,9 +32,9 @@ public:
      * The destructor
      */
     virtual ~Smb4KConfigPageMounting();
-    
+
     /**
-     * Check the settings for problems. Returns TRUE if none were 
+     * Check the settings for problems. Returns TRUE if none were
      * found and FALSE otherwise.
      *
      * @returns TRUE if all settings are okay.

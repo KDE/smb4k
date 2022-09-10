@@ -133,10 +133,10 @@ void Smb4KConfigDialog::setupDialog()
 bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
 {
     QString errorMessage = i18n("<qt>An incorrect setting has been found. You are now taken to the corresponding configuration page to fix it.</qt>");
-    
+
     if (!page || page == m_mounting) {
         Smb4KConfigPageMounting *mountingPage = m_mounting->widget()->findChild<Smb4KConfigPageMounting *>();
-    
+
         if (mountingPage) {
             if (!mountingPage->checkSettings()) {
                 KMessageBox::error(this, errorMessage);
@@ -148,12 +148,12 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
 
     if (!page || page == m_synchronization) {
         Smb4KConfigPageSynchronization *synchronizationPage = m_synchronization->widget()->findChild<Smb4KConfigPageSynchronization *>();
-        
+
         if (synchronizationPage) {
             if (!synchronizationPage->checkSettings()) {
                 KMessageBox::error(this, errorMessage);
                 setCurrentPage(m_synchronization);
-                return false;                
+                return false;
             }
         }
     }
@@ -183,17 +183,17 @@ void Smb4KConfigDialog::updateSettings()
 
     if (profilesPage) {
         profilesPage->applyChanges();
-        
-        // 
+
+        //
         // Finally reload the custom options.
-        // 
+        //
         Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
         if (customOptionsPage) {
             customOptionsPage->loadCustomOptions();
         }
     }
-    
+
     (void)checkSettings();
 
     KConfigGroup group(Smb4KSettings::self()->config(), "ConfigDialog");
@@ -244,14 +244,14 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     // Check the custom options
     //
     Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
-    
+
     if (!enable && customOptionsPage) {
         enable = customOptionsPage->customSettingsMaybeChanged();
     }
 
     //
     // Enable/disable the apply button
-    // 
+    //
     QPushButton *applyButton = buttonBox()->button(QDialogButtonBox::Apply);
 
     if (applyButton) {

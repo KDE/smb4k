@@ -81,7 +81,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     walletEntriesWidget->setSelectionMode(QListWidget::SingleSelection);
     walletEntriesWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
     walletEntriesWidget->viewport()->installEventFilter(this);
-    
+
     connect(walletEntriesWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), SLOT(slotWalletItemDoubleClicked(QListWidgetItem *)));
 
     walletEntriesEditorLayout->addWidget(walletEntriesWidget);
@@ -231,8 +231,8 @@ void Smb4KConfigPageAuthentication::saveLoginCredentials()
 {
     if (loginCredentialsChanged()) {
         Smb4KWalletManager::self()->writeLoginCredentialsList(m_entriesList);
-        
-        // Do not emit walletEntriesModified() signal, because we do not 
+
+        // Do not emit walletEntriesModified() signal, because we do not
         // want to enable/disable the "Apply" button as well.
         slotEnableResetButton();
     }

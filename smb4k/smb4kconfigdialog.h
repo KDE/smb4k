@@ -121,7 +121,7 @@ private:
      * Checks that mandatory needed input is provided for settings that
      * need it. This function will report all missing input to the user
      * via a message box.
-     * 
+     *
      * @param page          The page to check
      *
      * @returns TRUE if the check passed and FALSE if it failed.

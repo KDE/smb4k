@@ -951,7 +951,7 @@ bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr &option
         }
 
         delete dlg;
-        
+
         return options->hasOptions();
     }
 

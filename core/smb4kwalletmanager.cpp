@@ -279,10 +279,9 @@ bool Smb4KWalletManager::hasDefaultCredentials()
             return true;
         }
     }
-        
+
     return false;
 }
-
 
 bool Smb4KWalletManager::init()
 {
@@ -389,7 +388,6 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo *authInfo)
                 }
             } else {
                 if (Smb4KSettings::useDefaultLogin()) {
-                    
                     QMap<QString, QString> credentials;
 
                     if (d->wallet->readMap("DEFAULT_LOGIN", credentials) == 0) {

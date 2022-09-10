@@ -163,10 +163,10 @@ void Smb4KConfigPageCustomOptions::saveCustomOptions()
 {
     if (customSettingsMaybeChanged()) {
         Smb4KCustomOptionsManager::self()->saveCustomOptions();
-        
+
         m_maybe_changed = false;
-        
-        // Do not emit walletEntriesModified() signal, because we do not 
+
+        // Do not emit walletEntriesModified() signal, because we do not
         // want to enable/disable the "Apply" button as well.
         slotEnableResetButton();
     }
@@ -221,7 +221,7 @@ void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
 
             delete item;
         }
-        
+
         m_maybe_changed = true;
         emit customSettingsModified();
     }

@@ -747,7 +747,7 @@ bool Smb4KConfigPageSynchronization::checkSettings()
         // - kcfg_CustomFilteringRules
         // - kcfg_UseChecksumSeed & kcfg_ChecksumSeed
     }
-    
+
     return true;
 }
 
