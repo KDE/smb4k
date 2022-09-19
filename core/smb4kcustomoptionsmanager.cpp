@@ -181,79 +181,31 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
 
 OptionsPtr Smb4KCustomOptionsManager::findOptions(const NetworkItemPtr &networkItem, bool exactMatch)
 {
-    //
-    // The options that are to be returned
-    //
     OptionsPtr options;
 
-    //
-    // Get the list of options
-    //
-    QList<OptionsPtr> optionsList = customOptions(false);
+    if (exactMatch) {
+        options = findOptions(networkItem->url());
+    } else {
+        if (networkItem->type() == Host) {
+            options = findOptions(networkItem->url());
+        } else if (networkItem->type() == Share) {
+            options = findOptions(networkItem->url());
 
-    //
-    // Only do something if the list of options is not empty.
-    //
-    if (!optionsList.isEmpty()) {
-        for (const OptionsPtr &opt : qAsConst(optionsList)) {
-            //
-            // If we want to have an exact match, skip all options that do not match
-            //
-            if (exactMatch) {
-                if (networkItem->type() != opt->type()
-                    || QString::compare(networkItem->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash),
-                                        opt->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash),
-                                        Qt::CaseInsensitive)
-                        != 0) {
-                    continue;
-                }
-            }
+            // Get the host's custom options, if needed
+            if (!options) {
+                OptionsPtr shareOptions = OptionsPtr(new Smb4KCustomOptions(networkItem.data()));
 
-            //
-            // Now assign the options
-            //
-            if (networkItem->type() == Host && opt->type() == Host) {
-                HostPtr host = networkItem.staticCast<Smb4KHost>();
+                QUrl hostUrl = networkItem->url().adjusted(QUrl::RemovePath);
+                OptionsPtr hostOptions = findOptions(hostUrl);
 
-                if (host) {
-                    if (QString::compare(host->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash),
-                                         opt->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash),
-                                         Qt::CaseInsensitive)
-                            == 0
-                        || (host->url().isEmpty() && host->ipAddress() == opt->ipAddress())) {
-                        options = opt;
-                        break;
-                    }
-                }
-            } else if (networkItem->type() == Share) {
-                SharePtr share = networkItem.staticCast<Smb4KShare>();
-
-                if (share) {
-                    if (opt->type() == Share
-                        && QString::compare(share->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash),
-                                            opt->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash),
-                                            Qt::CaseInsensitive)
-                            == 0) {
-                        // Since this is the exact match, break here
-                        options = opt;
-                        break;
-                    } else if (opt->type() == Host
-                               && QString::compare(share->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::RemovePath | QUrl::StripTrailingSlash),
-                                                   opt->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::RemovePath | QUrl::StripTrailingSlash),
-                                                   Qt::CaseInsensitive)
-                                   == 0) {
-                        // These options belong to the host. Do not break here,
-                        // because there might still be an exact match
-                        options = opt;
-                    }
+                if (hostOptions) {
+                    shareOptions->update(hostOptions.data());
+                    options = shareOptions;
                 }
             }
         }
     }
 
-    //
-    // Return the options
-    //
     return options;
 }
 
@@ -329,9 +281,9 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                         // Initialize the options
                         //
                         if (QString::compare(xmlReader.attributes().value("type").toString(), "host", Qt::CaseInsensitive) == 0) {
-                            options->setHost(new Smb4KHost());
+                            options->setNetworkItem(new Smb4KHost());
                         } else {
-                            options->setShare(new Smb4KShare());
+                            options->setNetworkItem(new Smb4KShare());
                         }
 
                         while (!(xmlReader.isEndElement() && xmlReader.name() == "options")) {
@@ -551,9 +503,9 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                         // Initialize the options
                         //
                         if (QString::compare(xmlReader.attributes().value("type").toString(), "host", Qt::CaseInsensitive) == 0) {
-                            options->setHost(new Smb4KHost());
+                            options->setNetworkItem(new Smb4KHost());
                         } else {
-                            options->setShare(new Smb4KShare());
+                            options->setNetworkItem(new Smb4KShare());
                         }
 
                         while (!(xmlReader.isEndElement() && xmlReader.name() == "options")) {
@@ -848,7 +800,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
     }
 }
 
-QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOnce)
+QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOnce) const
 {
     //
     // Options list
@@ -881,15 +833,11 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
 
         switch (item->type()) {
         case Host: {
-            HostPtr host = item.staticCast<Smb4KHost>();
+            options = findOptions(item);
 
-            if (host) {
-                options = findOptions(host);
-
-                if (!options) {
-                    options = OptionsPtr(new Smb4KCustomOptions(host.data()));
-                    options->setProfile(Smb4KProfileManager::self()->activeProfile());
-                }
+            if (!options) {
+                options = OptionsPtr(new Smb4KCustomOptions(item.data()));
+                options->setProfile(Smb4KProfileManager::self()->activeProfile());
             }
 
             break;
@@ -914,11 +862,6 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
                     if (share->isHomesShare()) {
                         options->setUrl(share->homeUrl());
                     }
-                } else {
-                    // In case the custom options object for the host has been
-                    // returned, change its internal network item, otherwise we
-                    // will change the host's custom options...
-                    options->setShare(share.data());
                 }
             }
 
@@ -961,20 +904,11 @@ bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr &option
 void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool write)
 {
     if (options) {
-        //
-        // Check if options for the URL already exist
-        //
         OptionsPtr knownOptions = findOptions(options->url());
 
         if (knownOptions) {
-            //
-            // Update the options
-            //
             knownOptions->update(options.data());
         } else {
-            //
-            // Add the options
-            //
             if (options->profile().isEmpty()) {
                 options->setProfile(Smb4KProfileManager::self()->activeProfile());
             }
@@ -988,9 +922,10 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
         // the settings
         //
         if (options->type() == Host) {
-            for (const OptionsPtr &o : qAsConst(d->options)) {
-                // FIXME: Use the URL instead of the host name and workgroup name here.
-                // Also, check if we need to check for the profile as well...
+            QList<OptionsPtr> allOptions = customOptions(true);
+
+            for (const OptionsPtr &o : qAsConst(allOptions)) {
+                // FIXME: Can we remove the check of the workgroup?
                 if (o->type() == Share && o->hostName() == options->hostName() && o->workgroupName() == options->workgroupName()) {
                     o->setIpAddress(options->ipAddress());
                     o->setUseUser(options->useUser());
@@ -1022,9 +957,6 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
             }
         }
 
-        //
-        // Write the custom options to the file, if desired
-        //
         if (write) {
             writeCustomOptions();
         }
@@ -1057,19 +989,14 @@ void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options, b
 QList<OptionsPtr> Smb4KCustomOptionsManager::wakeOnLanEntries() const
 {
     QList<OptionsPtr> optionsList;
+    QList<OptionsPtr> allOptions = customOptions();
 
-    //
-    // Get the Wake-On-LAN entries
-    //
-    for (const OptionsPtr &options : qAsConst(d->options)) {
+    for (const OptionsPtr &options : qAsConst(allOptions)) {
         if (!options->macAddress().isEmpty() && (options->wolSendBeforeNetworkScan() || options->wolSendBeforeMount())) {
             optionsList << options;
         }
     }
 
-    //
-    // Return them
-    //
     return optionsList;
 }
 

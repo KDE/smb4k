@@ -1,13 +1,15 @@
 /*
     This class carries custom options
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // application specific includes
 #include "smb4kcustomoptions.h"
+#include "smb4khost.h"
 #include "smb4ksettings.h"
+#include "smb4kshare.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
@@ -60,27 +62,21 @@ public:
     QString mac;
     bool wakeOnLanBeforeFirstScan;
     bool wakeOnLanBeforeMount;
+    bool changed;
 };
 
-Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
+Smb4KCustomOptions::Smb4KCustomOptions(Smb4KBasicNetworkItem *networkItem)
     : d(new Smb4KCustomOptionsPrivate)
 {
-    d->workgroup = host->workgroupName();
-    d->url = host->url();
-    d->type = Host;
+    d->type = networkItem->type();
+    d->url = networkItem->url();
     d->remount = UndefinedRemount;
-    d->useUser = Smb4KMountSettings::useUserId();
-    d->user = KUser((K_UID)Smb4KMountSettings::userId().toInt());
-    d->useGroup = Smb4KMountSettings::useGroupId();
-    d->group = KUserGroup((K_GID)Smb4KMountSettings::groupId().toInt());
     d->useFileMode = Smb4KMountSettings::useFileMode();
     d->fileMode = Smb4KMountSettings::fileMode();
     d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
     d->directoryMode = Smb4KMountSettings::directoryMode();
 #if defined(Q_OS_LINUX)
     d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
-    d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
-    d->fileSystemPort = Smb4KMountSettings::remoteFileSystemPort();
     d->useMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
     d->mountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
     d->useSecurityMode = Smb4KMountSettings::useSecurityMode();
@@ -88,52 +84,58 @@ Smb4KCustomOptions::Smb4KCustomOptions(Smb4KHost *host)
     d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
     d->writeAccess = Smb4KMountSettings::writeAccess();
 #endif
-    d->useClientProtocolVersions = Smb4KSettings::useClientProtocolVersions();
-    d->minimalClientProtocolVersion = Smb4KSettings::minimalClientProtocolVersion();
-    d->maximalClientProtocolVersion = Smb4KSettings::maximalClientProtocolVersion();
-    d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
-    d->smbPort = host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort();
-    d->useKerberos = Smb4KSettings::useKerberos();
-    d->ip.setAddress(host->ipAddress());
-    d->wakeOnLanBeforeFirstScan = false;
-    d->wakeOnLanBeforeMount = false;
-}
 
-Smb4KCustomOptions::Smb4KCustomOptions(Smb4KShare *share)
-    : d(new Smb4KCustomOptionsPrivate)
-{
-    d->url = share->url();
-    d->workgroup = share->workgroupName();
-    d->type = Share;
-    d->remount = UndefinedRemount;
-    d->useUser = Smb4KMountSettings::useUserId();
-    d->user = share->user();
-    d->useGroup = Smb4KMountSettings::useGroupId();
-    d->group = share->group();
-    d->useFileMode = Smb4KMountSettings::useFileMode();
-    d->fileMode = Smb4KMountSettings::fileMode();
-    d->useDirectoryMode = Smb4KMountSettings::useDirectoryMode();
-    d->directoryMode = Smb4KMountSettings::directoryMode();
+    switch (d->type) {
+    case Host: {
+        Smb4KHost *host = static_cast<Smb4KHost *>(networkItem);
+
+        if (host) {
+            d->workgroup = host->workgroupName();
+            d->ip.setAddress(host->ipAddress());
+            d->useUser = Smb4KMountSettings::useUserId();
+            d->user = KUser((K_UID)Smb4KMountSettings::userId().toInt());
+            d->useGroup = Smb4KMountSettings::useGroupId();
+            d->group = KUserGroup((K_GID)Smb4KMountSettings::groupId().toInt());
+            d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
+            d->smbPort = host->port() != -1 ? host->port() : Smb4KSettings::remoteSmbPort();
 #if defined(Q_OS_LINUX)
-    d->cifsUnixExtensionsSupport = Smb4KMountSettings::cifsUnixExtensionsSupport();
-    d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
-    d->fileSystemPort = share->port() != -1 ? share->port() : Smb4KMountSettings::remoteFileSystemPort();
-    d->useMountProtocolVersion = Smb4KMountSettings::useSmbProtocolVersion();
-    d->mountProtocolVersion = Smb4KMountSettings::smbProtocolVersion();
-    d->useSecurityMode = Smb4KMountSettings::useSecurityMode();
-    d->securityMode = Smb4KMountSettings::securityMode();
-    d->useWriteAccess = Smb4KMountSettings::useWriteAccess();
-    d->writeAccess = Smb4KMountSettings::writeAccess();
+            d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
+            d->fileSystemPort = Smb4KMountSettings::remoteFileSystemPort();
 #endif
+        }
+        break;
+    }
+    case Share: {
+        Smb4KShare *share = static_cast<Smb4KShare *>(networkItem);
+
+        if (share) {
+            d->workgroup = share->workgroupName();
+            d->ip.setAddress(share->hostIpAddress());
+            d->useUser = Smb4KMountSettings::useUserId();
+            d->user = share->user();
+            d->useGroup = Smb4KMountSettings::useGroupId();
+            d->group = share->group();
+            d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
+            d->smbPort = Smb4KSettings::remoteSmbPort();
+#if defined(Q_OS_LINUX)
+            d->useFileSystemPort = Smb4KMountSettings::useRemoteFileSystemPort();
+            d->fileSystemPort = share->port() != -1 ? share->port() : Smb4KMountSettings::remoteFileSystemPort();
+#endif
+        }
+        break;
+    }
+    default: {
+        break;
+    }
+    }
+
     d->useClientProtocolVersions = Smb4KSettings::useClientProtocolVersions();
     d->minimalClientProtocolVersion = Smb4KSettings::minimalClientProtocolVersion();
     d->maximalClientProtocolVersion = Smb4KSettings::maximalClientProtocolVersion();
-    d->useSmbPort = Smb4KSettings::useRemoteSmbPort();
-    d->smbPort = Smb4KSettings::remoteSmbPort();
     d->useKerberos = Smb4KSettings::useKerberos();
-    d->ip.setAddress(share->hostIpAddress());
     d->wakeOnLanBeforeFirstScan = false;
     d->wakeOnLanBeforeMount = false;
+    d->changed = false;
 }
 
 Smb4KCustomOptions::Smb4KCustomOptions(const Smb4KCustomOptions &o)
@@ -174,60 +176,35 @@ Smb4KCustomOptions::Smb4KCustomOptions()
     d->useKerberos = Smb4KSettings::useKerberos();
     d->wakeOnLanBeforeFirstScan = false;
     d->wakeOnLanBeforeMount = false;
+    d->changed = false;
 }
 
 Smb4KCustomOptions::~Smb4KCustomOptions()
 {
 }
 
-void Smb4KCustomOptions::setHost(Smb4KHost *host)
+void Smb4KCustomOptions::setNetworkItem(Smb4KBasicNetworkItem *networkItem)
 {
-    //
-    // Set all variables that can be extracted from the host item
-    //
-    if (host) {
-        switch (d->type) {
-        case UnknownNetworkItem: {
-            d->workgroup = host->workgroupName();
-            d->url = host->url();
-            d->type = Host;
-            d->smbPort = host->port() != -1 ? host->port() : d->smbPort;
-            d->ip.setAddress(host->ipAddress());
-            break;
-        }
-        default: {
-            break;
-        }
-        }
-    }
-}
+    if (networkItem && d->type == UnknownNetworkItem) {
+        d->type = networkItem->type();
+        d->url = networkItem->url();
 
-void Smb4KCustomOptions::setShare(Smb4KShare *share)
-{
-    //
-    // Set all variables that can be extracted from the share item
-    //
-    if (share) {
         switch (d->type) {
-        case UnknownNetworkItem: {
-            d->url = share->url();
-            d->workgroup = share->workgroupName();
-            d->type = Share;
-#if defined(Q_OS_LINUX)
-            d->fileSystemPort = share->port() != -1 ? share->port() : d->fileSystemPort;
-#endif
-            d->user = share->user();
-            d->group = share->group();
-            d->ip.setAddress(share->hostIpAddress());
+        case Host: {
+            Smb4KHost *host = static_cast<Smb4KHost *>(networkItem);
+
+            if (host) {
+                d->workgroup = host->workgroupName();
+                d->smbPort = host->port() != -1 ? host->port() : d->smbPort;
+                d->ip.setAddress(host->ipAddress());
+            }
             break;
         }
-        case Host: {
-            if (QString::compare(d->url.toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::RemovePath),
-                                 share->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::RemovePath),
-                                 Qt::CaseInsensitive)
-                == 0) {
-                d->url = share->url();
-                d->type = Share;
+        case Share: {
+            Smb4KShare *share = static_cast<Smb4KShare *>(networkItem);
+
+            if (share) {
+                d->workgroup = share->workgroupName();
 #if defined(Q_OS_LINUX)
                 d->fileSystemPort = share->port() != -1 ? share->port() : d->fileSystemPort;
 #endif
@@ -241,6 +218,8 @@ void Smb4KCustomOptions::setShare(Smb4KShare *share)
             break;
         }
         }
+        
+        d->changed = true;
     }
 }
 

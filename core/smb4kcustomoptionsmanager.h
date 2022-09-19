@@ -97,8 +97,8 @@ public:
      * Find custom options for the network item @p networkItem.
      *
      * If the network item represents a share and custom options for it are not
-     * defined, but for the host that provides the share, the options for the host
-     * are returned. If neither is in the list, NULL is returned.
+     * defined, but for the host that provides the share, options filled with the
+     * host's options are returned. If neither is in the list, NULL is returned.
      *
      * If you set @p exactMatch to TRUE, NULL will be returned if the URL is not found.
      * Except in some special cases, you should not set @p exactMatch to true,
@@ -106,7 +106,7 @@ public:
      * stored in a host-type custom options object are ignored then.
      *
      * @param networkItem         The network item
-     * @param exaxtMatch          If TRUE, only exact matches are returned
+     * @param exactMatch          If TRUE, only exact matches are returned
      *
      * @returns the custom options for the network item
      */
@@ -135,7 +135,7 @@ public:
      *
      * @returns the list of custom options objects.
      */
-    QList<OptionsPtr> customOptions(bool withoutRemountOnce = false);
+    QList<OptionsPtr> customOptions(bool withoutRemountOnce = false) const;
 
     /**
      * This function opens the custom options dialog for a network item.

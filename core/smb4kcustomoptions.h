@@ -1,7 +1,7 @@
 /*
     This class carries custom options
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -9,9 +9,8 @@
 #define SMB4KCUSTOMOPTIONS_H
 
 // application specific includes
+#include "smb4kbasicnetworkitem.h"
 #include "smb4kglobal.h"
-#include "smb4khost.h"
-#include "smb4kshare.h"
 
 // Qt includes
 #include <QScopedPointer>
@@ -39,14 +38,9 @@ class Q_DECL_EXPORT Smb4KCustomOptions
 
 public:
     /**
-     * Constructor for a host
+     * Constructor fora network item
      */
-    explicit Smb4KCustomOptions(Smb4KHost *host);
-
-    /**
-     * Constructor for a share
-     */
-    explicit Smb4KCustomOptions(Smb4KShare *share);
+    explicit Smb4KCustomOptions(Smb4KBasicNetworkItem *networkItem);
 
     /**
      * Copy constructor
@@ -64,22 +58,12 @@ public:
     ~Smb4KCustomOptions();
 
     /**
-     * Sets the host object. If you already set a network item before,
+     * Set the network item. If you already set a network item before,
      * this function will do nothing.
      *
-     * @param host          The host object
+     * @param networkItem   The network item
      */
-    void setHost(Smb4KHost *host);
-
-    /**
-     * Sets the share object. If you already set a host item before,
-     * you can overwrite it with this function if the host names and
-     * workgroup names match. This way you can propagate options that
-     * were defined for a host to one of its shares.
-     *
-     * @param share         The host object
-     */
-    void setShare(Smb4KShare *share);
+    void setNetworkItem(Smb4KBasicNetworkItem *networkItem);
 
     /**
      * Returns the type of the network item for that the options
