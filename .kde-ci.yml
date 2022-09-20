@@ -25,5 +25,4 @@ Dependencies:
     'frameworks/kxmlgui': '@stable'
     'frameworks/kdnssd': '@stable'
     'frameworks/plasma-framework': '@stable'
-    'libraries/libsmbclient': '@stable'
 
