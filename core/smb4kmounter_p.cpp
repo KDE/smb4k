@@ -1,7 +1,7 @@
 /*
     This file contains private helper classes for the Smb4KMounter class.
 
-    SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -15,6 +15,7 @@
 #include "smb4khomesshareshandler.h"
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
+#include "smb4kshare.h"
 
 // Qt includes
 #include <QDialogButtonBox>
