@@ -59,7 +59,7 @@ public:
     bool useSmbPort;
     int smbPort;
     bool useKerberos;
-    QString mac;
+    QString macAddress;
     bool wakeOnLanBeforeFirstScan;
     bool wakeOnLanBeforeMount;
     bool changed;
@@ -230,7 +230,10 @@ Smb4KGlobal::NetworkItem Smb4KCustomOptions::type() const
 
 void Smb4KCustomOptions::setWorkgroupName(const QString &workgroup)
 {
-    d->workgroup = workgroup;
+    if (d->workgroup == workgroup) {
+        d->workgroup = workgroup;
+        d->changed = true;
+    }
 }
 
 QString Smb4KCustomOptions::workgroupName() const
@@ -240,7 +243,10 @@ QString Smb4KCustomOptions::workgroupName() const
 
 void Smb4KCustomOptions::setUrl(const QUrl &url)
 {
-    d->url = url;
+    if (d->url.matches(url, QUrl::None)) {
+        d->url = url;
+        d->changed = true;
+    }
 }
 
 QUrl Smb4KCustomOptions::url() const
@@ -264,7 +270,10 @@ QString Smb4KCustomOptions::shareName() const
 
 void Smb4KCustomOptions::setIpAddress(const QString &ip)
 {
-    d->ip.setAddress(ip);
+    if (d->ip.toString() == ip) {
+        d->ip.setAddress(ip);
+        d->changed = true;
+    }
 }
 
 QString Smb4KCustomOptions::ipAddress() const
@@ -302,7 +311,10 @@ void Smb4KCustomOptions::setRemount(int remount)
 {
     switch (d->type) {
     case Share: {
-        d->remount = remount;
+        if (d->remount != remount) {
+            d->remount = remount;
+            d->changed = true;
+        }
         break;
     }
     default: {
@@ -319,7 +331,10 @@ int Smb4KCustomOptions::remount() const
 
 void Smb4KCustomOptions::setUseUser(bool use)
 {
-    d->useUser = use;
+    if (d->useUser != use) {
+        d->useUser = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useUser() const
@@ -329,7 +344,10 @@ bool Smb4KCustomOptions::useUser() const
 
 void Smb4KCustomOptions::setUser(const KUser &user)
 {
-    d->user = user;
+    if (d->user != user) {
+        d->user = user;
+        d->changed = true;
+    }
 }
 
 KUser Smb4KCustomOptions::user() const
@@ -339,7 +357,10 @@ KUser Smb4KCustomOptions::user() const
 
 void Smb4KCustomOptions::setUseGroup(bool use)
 {
-    d->useGroup = use;
+    if (d->useGroup != use) {
+        d->useGroup = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useGroup() const
@@ -349,7 +370,10 @@ bool Smb4KCustomOptions::useGroup() const
 
 void Smb4KCustomOptions::setGroup(const KUserGroup &group)
 {
-    d->group = group;
+    if (d->group != group) {
+        d->group = group;
+        d->changed = true;
+    }
 }
 
 KUserGroup Smb4KCustomOptions::group() const
@@ -359,7 +383,10 @@ KUserGroup Smb4KCustomOptions::group() const
 
 void Smb4KCustomOptions::setUseFileMode(bool use)
 {
-    d->useFileMode = use;
+    if (d->useFileMode != use) {
+        d->useFileMode = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useFileMode() const
@@ -369,7 +396,10 @@ bool Smb4KCustomOptions::useFileMode() const
 
 void Smb4KCustomOptions::setFileMode(const QString &mode)
 {
-    d->fileMode = mode;
+    if (d->fileMode != mode) {
+        d->fileMode = mode;
+        d->changed = true;
+    }
 }
 
 QString Smb4KCustomOptions::fileMode() const
@@ -379,7 +409,10 @@ QString Smb4KCustomOptions::fileMode() const
 
 void Smb4KCustomOptions::setUseDirectoryMode(bool use)
 {
-    d->useDirectoryMode = use;
+    if (d->useDirectoryMode != use) {
+        d->useDirectoryMode = use;
+        d->changed = use;
+    }
 }
 
 bool Smb4KCustomOptions::useDirectoryMode() const
@@ -389,7 +422,10 @@ bool Smb4KCustomOptions::useDirectoryMode() const
 
 void Smb4KCustomOptions::setDirectoryMode(const QString &mode)
 {
-    d->directoryMode = mode;
+    if (d->directoryMode != mode) {
+        d->directoryMode = mode;
+        d->changed = true;
+    }
 }
 
 QString Smb4KCustomOptions::directoryMode() const
@@ -400,7 +436,10 @@ QString Smb4KCustomOptions::directoryMode() const
 #if defined(Q_OS_LINUX)
 void Smb4KCustomOptions::setCifsUnixExtensionsSupport(bool support)
 {
-    d->cifsUnixExtensionsSupport = support;
+    if (d->cifsUnixExtensionsSupport != support) {
+        d->cifsUnixExtensionsSupport = support;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::cifsUnixExtensionsSupport() const
@@ -410,7 +449,10 @@ bool Smb4KCustomOptions::cifsUnixExtensionsSupport() const
 
 void Smb4KCustomOptions::setUseFileSystemPort(bool use)
 {
-    d->useFileSystemPort = use;
+    if (d->useFileSystemPort != use) {
+        d->useFileSystemPort = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useFileSystemPort() const
@@ -420,16 +462,19 @@ bool Smb4KCustomOptions::useFileSystemPort() const
 
 void Smb4KCustomOptions::setFileSystemPort(int port)
 {
-    d->fileSystemPort = port;
-
-    switch (d->type) {
-    case Share: {
-        d->url.setPort(port);
-        break;
-    }
-    default: {
-        break;
-    }
+    if (d->fileSystemPort != port) {
+        d->fileSystemPort = port;
+        d->changed = true;
+        
+        switch (d->type) {
+        case Share: {
+            d->url.setPort(port);
+            break;
+        }
+        default: {
+            break;
+        }
+        }
     }
 }
 
@@ -440,7 +485,10 @@ int Smb4KCustomOptions::fileSystemPort() const
 
 void Smb4KCustomOptions::setUseMountProtocolVersion(bool use)
 {
-    d->useMountProtocolVersion = use;
+    if (d->useMountProtocolVersion != use) {
+        d->useMountProtocolVersion = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useMountProtocolVersion() const
@@ -450,7 +498,10 @@ bool Smb4KCustomOptions::useMountProtocolVersion() const
 
 void Smb4KCustomOptions::setMountProtocolVersion(int version)
 {
-    d->mountProtocolVersion = version;
+    if (d->mountProtocolVersion != version) {
+        d->mountProtocolVersion = version;
+        d->changed = true;
+    }
 }
 
 int Smb4KCustomOptions::mountProtocolVersion() const
@@ -460,7 +511,10 @@ int Smb4KCustomOptions::mountProtocolVersion() const
 
 void Smb4KCustomOptions::setUseSecurityMode(bool use)
 {
-    d->useSecurityMode = use;
+    if (d->useSecurityMode != use) {
+        d->useSecurityMode = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useSecurityMode() const
@@ -470,7 +524,10 @@ bool Smb4KCustomOptions::useSecurityMode() const
 
 void Smb4KCustomOptions::setSecurityMode(int mode)
 {
-    d->securityMode = mode;
+    if (d->securityMode != mode) {
+        d->securityMode = mode;
+        d->changed = true;
+    }
 }
 
 int Smb4KCustomOptions::securityMode() const
@@ -480,7 +537,10 @@ int Smb4KCustomOptions::securityMode() const
 
 void Smb4KCustomOptions::setUseWriteAccess(bool use)
 {
-    d->useWriteAccess = use;
+    if (d->useWriteAccess != use) {
+        d->useWriteAccess = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useWriteAccess() const
@@ -490,7 +550,10 @@ bool Smb4KCustomOptions::useWriteAccess() const
 
 void Smb4KCustomOptions::setWriteAccess(int access)
 {
-    d->writeAccess = access;
+    if (d->writeAccess != access) {
+        d->writeAccess = access;
+        d->changed = true;
+    }
 }
 
 int Smb4KCustomOptions::writeAccess() const
@@ -501,7 +564,10 @@ int Smb4KCustomOptions::writeAccess() const
 
 void Smb4KCustomOptions::setProfile(const QString &profile)
 {
-    d->profile = profile;
+    if (d->profile != profile) {
+        d->profile = profile;
+        d->changed = true;
+    }
 }
 
 QString Smb4KCustomOptions::profile() const
@@ -511,7 +577,10 @@ QString Smb4KCustomOptions::profile() const
 
 void Smb4KCustomOptions::setUseClientProtocolVersions(bool use)
 {
-    d->useClientProtocolVersions = use;
+    if (d->useClientProtocolVersions != use) {
+        d->useClientProtocolVersions = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useClientProtocolVersions() const
@@ -521,7 +590,10 @@ bool Smb4KCustomOptions::useClientProtocolVersions() const
 
 void Smb4KCustomOptions::setMinimalClientProtocolVersion(int version)
 {
-    d->minimalClientProtocolVersion = version;
+    if (d->minimalClientProtocolVersion != version) {
+        d->minimalClientProtocolVersion = version;
+        d->changed = true;
+    }
 }
 
 int Smb4KCustomOptions::minimalClientProtocolVersion() const
@@ -531,7 +603,10 @@ int Smb4KCustomOptions::minimalClientProtocolVersion() const
 
 void Smb4KCustomOptions::setMaximalClientProtocolVersion(int version)
 {
-    d->maximalClientProtocolVersion = version;
+    if (d->maximalClientProtocolVersion != version) {
+        d->maximalClientProtocolVersion = version;
+        d->changed = true;
+    }
 }
 
 int Smb4KCustomOptions::maximalClientProtocolVersion() const
@@ -541,7 +616,10 @@ int Smb4KCustomOptions::maximalClientProtocolVersion() const
 
 void Smb4KCustomOptions::setUseSmbPort(bool use)
 {
-    d->useSmbPort = use;
+    if (d->useSmbPort != use) {
+        d->useSmbPort = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useSmbPort() const
@@ -551,16 +629,19 @@ bool Smb4KCustomOptions::useSmbPort() const
 
 void Smb4KCustomOptions::setSmbPort(int port)
 {
-    d->smbPort = port;
+    if (d->smbPort != port) {
+        d->smbPort = port;
+        d->changed = true;
 
-    switch (d->type) {
-    case Host: {
-        d->url.setPort(port);
-        break;
-    }
-    default: {
-        break;
-    }
+        switch (d->type) {
+        case Host: {
+            d->url.setPort(port);
+            break;
+        }
+        default: {
+            break;
+        }
+        }
     }
 }
 
@@ -571,7 +652,10 @@ int Smb4KCustomOptions::smbPort() const
 
 void Smb4KCustomOptions::setUseKerberos(bool use)
 {
-    d->useKerberos = use;
+    if (d->useKerberos != use) {
+        d->useKerberos = use;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::useKerberos() const
@@ -583,19 +667,23 @@ void Smb4KCustomOptions::setMACAddress(const QString &macAddress)
 {
     QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
 
-    if (exp.exactMatch(macAddress)) {
-        d->mac = macAddress;
+    if (d->macAddress != macAddress && exp.exactMatch(macAddress)) {
+        d->macAddress = macAddress;
+        d->changed = true;
     }
 }
 
 QString Smb4KCustomOptions::macAddress() const
 {
-    return d->mac;
+    return d->macAddress;
 }
 
 void Smb4KCustomOptions::setWOLSendBeforeNetworkScan(bool send)
 {
-    d->wakeOnLanBeforeFirstScan = send;
+    if (d->wakeOnLanBeforeFirstScan != send) {
+        d->wakeOnLanBeforeFirstScan = send;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::wolSendBeforeNetworkScan() const
@@ -605,7 +693,10 @@ bool Smb4KCustomOptions::wolSendBeforeNetworkScan() const
 
 void Smb4KCustomOptions::setWOLSendBeforeMount(bool send)
 {
-    d->wakeOnLanBeforeMount = send;
+    if (d->wakeOnLanBeforeMount != send) {
+        d->wakeOnLanBeforeMount = send;
+        d->changed = true;
+    }
 }
 
 bool Smb4KCustomOptions::wolSendBeforeMount() const
@@ -698,7 +789,7 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
     //
     // MAC address
     //
-    entries.insert("mac_address", d->mac);
+    entries.insert("mac_address", d->macAddress);
 
     //
     // Wake-On_LAN settings
@@ -836,7 +927,7 @@ bool Smb4KCustomOptions::hasOptions(bool withoutRemountOnce) const
     }
 
     // MAC address
-    if (!d->mac.isEmpty()) {
+    if (!d->macAddress.isEmpty()) {
         return true;
     }
 
@@ -883,7 +974,17 @@ void Smb4KCustomOptions::update(Smb4KCustomOptions *options)
     d->useSmbPort = options->useSmbPort();
     d->smbPort = options->smbPort();
     d->useKerberos = options->useKerberos();
-    d->mac = options->macAddress();
+    d->macAddress = options->macAddress();
     d->wakeOnLanBeforeFirstScan = options->wolSendBeforeNetworkScan();
     d->wakeOnLanBeforeMount = options->wolSendBeforeMount();
+}
+
+void Smb4KCustomOptions::setChanged(bool changed)
+{
+    d->changed = changed;
+}
+
+bool Smb4KCustomOptions::changed() const
+{
+    return d->changed;
 }
