@@ -1,0 +1,131 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Shinjo Park <kde@peremen.name>, 2014, 2015, 2018, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2019-05-18 15:35+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 18.12.3\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">%1에 있음</font>"
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr "뒤로 가기"
+
+#: package/contents/ui/BookmarksPage.qml:41
+msgid "Edit bookmarks"
+msgstr "책갈피 편집"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr "설정 대화 상자"
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr "네트워크 환경"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+msgid "Bookmark"
+msgstr "책갈피"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "재탐색"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "중지"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr "한 단계 위로 이동"
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+msgid "Open the mount dialog"
+msgstr "마운트 대화 상자 열기"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr "마운트된 공유"
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "책갈피"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr "프로필"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr "설정"
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr "(활성)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr "동기화"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr "마운트 해제"
+
+#: package/contents/ui/SharesViewPage.qml:34
+msgid "Unmount all shares"
+msgstr "모든 공유 마운트 해제"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "책갈피 편집"
+
+#~ msgid "OK"
+#~ msgstr "확인"
+
+#~ msgid "Cancel"
+#~ msgstr "취소"
+
+#~ msgid "Clear"
+#~ msgstr "지우기"
+
+#~ msgid "Label:"
+#~ msgstr "이름표:"
+
+#~ msgid "Login:"
+#~ msgstr "로그인:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP 주소:"
+
+#~ msgid "Group Name:"
+#~ msgstr "그룹 이름:"
+
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "최상위 단계 책갈피"
+
+#~ msgid "Delete Bookmark"
+#~ msgstr "책갈피 삭제"
+
+#~ msgid "Back"
+#~ msgstr "뒤로"
+
+#~ msgid "Edit"
+#~ msgstr "편집"
+
+#~ msgid "Up"
+#~ msgstr "위로"

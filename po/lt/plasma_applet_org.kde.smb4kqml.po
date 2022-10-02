@@ -1,0 +1,126 @@
+# Lithuanian translations for l package.
+# Copyright (C) 2014 This_file_is_part_of_KDE
+# This file is distributed under the same license as the l package.
+#
+# Automatically generated, 2014.
+# Liudas Ališauskas <liudas@aksioma.lt>, 2014.
+# Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: l 10n\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2017-09-04 09:41+0200\n"
+"Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
+"Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Lokalize 2.0\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr ""
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr ""
+
+#: package/contents/ui/BookmarksPage.qml:41
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Edit bookmarks"
+msgstr "Žymelės"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr ""
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr ""
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Bookmark"
+msgstr "Žymelės"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "Nuskaityti dar kartą"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "Nutraukti"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr ""
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+#, fuzzy
+#| msgid "Mount Dialog"
+msgid "Open the mount dialog"
+msgstr "Prijungimo dialogas"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr ""
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "Žymelės"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr ""
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr ""
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr ""
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr ""
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr "Atjungti"
+
+#: package/contents/ui/SharesViewPage.qml:34
+msgid "Unmount all shares"
+msgstr ""
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Žymelės"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "Žymelės"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Delete Bookmark"
+#~ msgstr "Žymelės"
+
+#~ msgid "Back"
+#~ msgstr "Atgal"
+
+#~ msgid "Edit"
+#~ msgstr "Keisti"
+
+#~ msgid "Up"
+#~ msgstr "Aukštyn"

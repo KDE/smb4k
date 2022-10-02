@@ -1,0 +1,1414 @@
+# Translation of smb4k into esperanto.
+# Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"PO-Revision-Date: 2009-11-15 12:06+0100\n"
+"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: pology\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:136
+#, kde-format
+msgid "The mount process could not be started."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:179
+#, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr ""
+
+#: helpers/smb4kmounthelper.cpp:241
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr ""
+
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:45
+#, kde-format
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr ""
+
+#: smb4k/main.cpp:47
+#, kde-format
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr ""
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr ""
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Developer"
+msgstr "Kreinto"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr ""
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Donator"
+msgstr ""
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Dosiero"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Reto"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr ""
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "&Legosignoj"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "A&gordo"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Ĉefa ilobreto"
+
+#: smb4k/smb4kbookmarkmenu.cpp:29
+#, kde-format
+msgid "Bookmarks"
+msgstr "Legosignoj"
+
+#: smb4k/smb4kbookmarkmenu.cpp:50
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Redakti legosignojn"
+
+#: smb4k/smb4kbookmarkmenu.cpp:59 smb4k/smb4kmainwindow.cpp:144
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:196
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "Aldoni &legosignon"
+
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:241
+#, fuzzy, kde-format
+#| msgid "&Edit Bookmarks"
+msgid "Mount All Bookmarks"
+msgstr "&Redakti legosignojn"
+
+#: smb4k/smb4kconfigdialog.cpp:107
+#, kde-format
+msgid "User Interface"
+msgstr "Uzant-interfaco"
+
+#: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
+#, kde-format
+msgid "Network"
+msgstr "Reto"
+
+#: smb4k/smb4kconfigdialog.cpp:109
+#, kde-format
+msgid "Mounting"
+msgstr ""
+
+#: smb4k/smb4kconfigdialog.cpp:110
+#, kde-format
+msgid "Authentication"
+msgstr "Aŭtentigo"
+
+#: smb4k/smb4kconfigdialog.cpp:111
+#, kde-format
+msgid "Synchronization"
+msgstr "Sinkronigado"
+
+#: smb4k/smb4kconfigdialog.cpp:112
+#, kde-format
+msgid "Custom Options"
+msgstr ""
+
+#: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kprofilesmenu.cpp:22
+#, kde-format
+msgid "Profiles"
+msgstr ""
+
+#: smb4k/smb4kconfigdialog.cpp:135
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:34
+#, kde-format
+msgid "Settings"
+msgstr "Agordo"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:64
+#, kde-format
+msgid "Wallet Entries"
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:97
+#, kde-format
+msgid "Load"
+msgstr "Ŝargi"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#, kde-format
+msgid "Save"
+msgstr "Konservi"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagecustomoptions.cpp:82
+#, kde-format
+msgid "Edit"
+msgstr "Redakti"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagecustomoptions.cpp:87
+#, kde-format
+msgid "Remove"
+msgstr "Forigi"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:136
+#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#, fuzzy, kde-format
+#| msgid "&Clear"
+msgid "Clear"
+msgstr "&Forigi"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:201
+#, kde-format
+msgid "Default Login"
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#, kde-format
+msgid "Enter the default login information."
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:401
+#, kde-format
+msgid "Set the username and password for wallet entry %1."
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:403
+#, kde-format
+msgid "Set the username and password for the default login."
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:92
+#, kde-format
+msgid "Clear List"
+msgstr "Forigi la liston"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:215
+#, kde-format
+msgid "The item %1 was removed, because all custom options were reset."
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
+#, kde-format
+msgid "Directories"
+msgstr "Dosierujoj"
+
+#: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
+#: smb4k/smb4kconfigpagenetwork.cpp:112
+#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#, kde-format
+msgid "Behavior"
+msgstr "Konduto"
+
+#: smb4k/smb4kconfigpagemounting.cpp:139 smb4k/smb4kconfigpagemounting.cpp:544
+#, kde-format
+msgid " min"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
+#: smb4k/smb4kconfigpagenetwork.cpp:133
+#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#, fuzzy, kde-format
+#| msgid "Settings"
+msgid "Basic Settings"
+msgstr "Agordo"
+
+#: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
+#, kde-format
+msgid "Common Options"
+msgstr "Ĝeneralaj opcioj"
+
+#: smb4k/smb4kconfigpagemounting.cpp:228
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
+#, kde-format
+msgid "Choose a different user"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
+#, kde-format
+msgid "Choose a different group"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:336
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Common Mount Settings"
+msgstr "Ĝeneralaj opcioj"
+
+#: smb4k/smb4kconfigpagemounting.cpp:344
+#, kde-format
+msgid "Advanced Options"
+msgstr "Pliaj opcioj"
+
+#: smb4k/smb4kconfigpagemounting.cpp:457
+#, fuzzy, kde-format
+#| msgid "Additional options:"
+msgid "Edit the additional CIFS options."
+msgstr "Kromaj opcioj:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:470
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Advanced Mount Settings"
+msgstr "Plia agordo"
+
+#: smb4k/smb4kconfigpagemounting.cpp:681
+#, kde-format
+msgid "Character Sets"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:729
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Mount Settings"
+msgstr "Ĝeneralaj opcioj"
+
+#: smb4k/smb4kconfigpagemounting.cpp:833
+#, fuzzy, kde-format
+#| msgid "Additional options:"
+msgid "Additional CIFS Options"
+msgstr "Kromaj opcioj:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:834
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:862
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:40
+#, fuzzy, kde-format
+#| msgid "Settings"
+msgid "Browse Settings"
+msgstr "Agordo"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:144
+#, fuzzy, kde-format
+#| msgid "Samba"
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:196
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "Wake-On-LAN"
+msgstr "Ĝeneralaj Agordoj"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:216
+#, kde-format
+msgid " s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:225
+#, kde-format
+msgid "Define the hosts that should be woken up via the custom options dialog."
+msgstr ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:235
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Advanced Settings"
+msgstr "Plia agordo"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#, fuzzy, kde-format
+#| msgid "Synchronize"
+msgid "Synchronization Directory"
+msgstr "Sinkronigu"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#, fuzzy, kde-format
+#| msgid "Backup"
+msgid "Backups"
+msgstr "Sekurkopio"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#, kde-format
+msgid "General"
+msgstr "Ĝeneralo"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#, fuzzy, kde-format
+msgid "Links"
+msgstr "Linio"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#, kde-format
+msgid "File Handling"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#, kde-format
+msgid "Compression"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#, fuzzy, kde-format
+#| msgid "File"
+msgid "Files"
+msgstr "Dosiero"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:310
+#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#, kde-format
+msgid " KiB"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#, kde-format
+msgid " KiB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#, kde-format
+msgid "File Transfer"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#, fuzzy, kde-format
+#| msgid "Directories"
+msgid "Files && Directories"
+msgstr "Dosierujoj"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#, fuzzy, kde-format
+#| msgid "Authentication"
+msgid "Restrictions"
+msgstr "Aŭtentigo"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#, kde-format
+msgid "File Deletion"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#, kde-format
+msgid "General Filtering Settings"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#, kde-format
+msgid "Filter Rules"
+msgstr "Filtroreguloj"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#, kde-format
+msgid "Filtering"
+msgstr "Filtrado"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#, kde-format
+msgid "Checksums"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:562
+#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#, fuzzy, kde-format
+#| msgid "Miscellaneous Settings"
+msgid "Miscellaneous"
+msgstr "Diversa agordo"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#, kde-format
+msgid "Main Window"
+msgstr ""
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:216
+#, kde-format
+msgid "Network Neighborhood"
+msgstr ""
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#, fuzzy, kde-format
+#| msgid "Share"
+msgid "Shares View"
+msgstr "Komunigi"
+
+#: smb4k/smb4kmainwindow.cpp:134
+#, kde-format
+msgid "Dock Widgets"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:239 smb4k/smb4ksharesmenu.cpp:37
+#, kde-format
+msgid "Mounted Shares"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:399
+#, kde-format
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:401
+#, kde-format
+msgid "Docking"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:465
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:468
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: smb4k/smb4kmainwindow.cpp:629
+#, kde-format
+msgid "The wallet is used."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:632
+#, kde-format
+msgid "The password dialog is used."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:642
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:647
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:652
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:660 smb4k/smb4kmainwindow.cpp:668
+#, kde-format
+msgid "Looking for files and directories in %1..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:685
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:690
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:694
+#, fuzzy, kde-format
+#| msgid "Search"
+msgid "Searching..."
+msgstr "Serĉi"
+
+#: smb4k/smb4kmainwindow.cpp:712 smb4k/smb4kmainwindow.cpp:749
+#: smb4k/smb4kmainwindow.cpp:861
+#, kde-format
+msgid "Done."
+msgstr "Farita."
+
+#: smb4k/smb4kmainwindow.cpp:722
+#, fuzzy, kde-format
+#| msgid "Mount point:"
+msgid "Mounting..."
+msgstr "Surmetingo:"
+
+#: smb4k/smb4kmainwindow.cpp:726
+#, fuzzy, kde-format
+#| msgid "Unmount"
+msgid "Unmounting..."
+msgstr "Malkroĉu"
+
+#: smb4k/smb4kmainwindow.cpp:730
+#, kde-format
+msgid "Waking up host..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:760
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:793
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:849
+#, fuzzy, kde-format
+#| msgid "Synchronize"
+msgid "Synchronizing %1"
+msgstr "Sinkronigu"
+
+#: smb4k/smb4knetworkbrowser.cpp:43
+#, kde-format
+msgid "Type"
+msgstr "Tipo"
+
+#: smb4k/smb4knetworkbrowser.cpp:44
+#, kde-format
+msgid "IP Address"
+msgstr "IP-adreso"
+
+#: smb4k/smb4knetworkbrowser.cpp:45
+#, kde-format
+msgid "Comment"
+msgstr "Komento"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:472
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:484
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr ""
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#, kde-format
+msgid "&Abort"
+msgstr "&Haltigu"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#, kde-format
+msgid "&Search"
+msgstr "&Serĉi"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr ""
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
+#, kde-format
+msgid "Au&thentication"
+msgstr ""
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:191
+#, kde-format
+msgid "&Custom Options"
+msgstr ""
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#, kde-format
+msgid "Pre&view"
+msgstr "&Antaŭrigardu"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#, kde-format
+msgid "&Print File"
+msgstr ""
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:225
+#, kde-format
+msgid "&Mount"
+msgstr "&Kroĉi"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:184
+#, kde-format
+msgid "&Unmount"
+msgstr "&Malkroĉi"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:393
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#, kde-format
+msgid "Scan Compute&r"
+msgstr ""
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#, kde-format
+msgid "Close"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#, fuzzy, kde-format
+#| msgid "Search Results"
+msgid "Search string"
+msgstr "Serĉrezultoj"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#, kde-format
+msgid "Search"
+msgstr "Serĉi"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#, kde-format
+msgid "Stop"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#, kde-format
+msgid "Item Down"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#, kde-format
+msgid "Item Up"
+msgstr ""
+
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:190
+#, kde-format
+msgid "U&nmount All"
+msgstr ""
+
+#: smb4k/smb4ksharesmenu.cpp:158
+#, kde-format
+msgid "Unmount"
+msgstr "Malkroĉu"
+
+#: smb4k/smb4ksharesmenu.cpp:177
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Aldoni legosignon"
+
+#: smb4k/smb4ksharesmenu.cpp:190
+#, kde-format
+msgid "Synchronize"
+msgstr "Sinkronigu"
+
+#: smb4k/smb4ksharesmenu.cpp:209
+#, kde-format
+msgid "Open with Konsole"
+msgstr ""
+
+#: smb4k/smb4ksharesmenu.cpp:223
+#, kde-format
+msgid "Open with File Manager"
+msgstr ""
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#, kde-format
+msgid "View Modes"
+msgstr ""
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:155
+#, fuzzy, kde-format
+#| msgid "View"
+msgid "Icon View"
+msgstr "Vido"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:161
+#, fuzzy, kde-format
+#| msgid "View"
+msgid "List View"
+msgstr "Vido"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:202
+#, kde-format
+msgid "S&ynchronize"
+msgstr ""
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:208
+#, kde-format
+msgid "Open with Konso&le"
+msgstr ""
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr ""
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:366
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "yes"
+msgstr "jes"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "no"
+msgstr "ne"
+
+#: smb4k/smb4ktooltip.cpp:210
+#, kde-format
+msgid "Type:"
+msgstr "Tipo:"
+
+#: smb4k/smb4ktooltip.cpp:225
+#, kde-format
+msgid "Workgroup"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:228
+#, kde-format
+msgid "Master Browser:"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:256
+#, fuzzy, kde-format
+#| msgid "Host:"
+msgid "Host"
+msgstr "Gastigo:"
+
+#: smb4k/smb4ktooltip.cpp:259 smb4k/smb4ktooltip.cpp:303
+#, kde-format
+msgid "Comment:"
+msgstr "Komento:"
+
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:345
+#, kde-format
+msgid "IP Address:"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:283
+#, kde-format
+msgid "Workgroup:"
+msgstr "Laborgrupo:"
+
+#: smb4k/smb4ktooltip.cpp:300
+#, fuzzy, kde-format
+#| msgid "Share"
+msgid "Share (%1)"
+msgstr "Komunigi"
+
+#: smb4k/smb4ktooltip.cpp:315
+#, fuzzy, kde-format
+#| msgid "Mount"
+msgid "Mounted:"
+msgstr "Kroĉu"
+
+#: smb4k/smb4ktooltip.cpp:334
+#, fuzzy, kde-format
+#| msgid "Host:"
+msgid "Host:"
+msgstr "Gastigo:"
+
+#: smb4k/smb4ktooltip.cpp:357 smb4k/smb4ktooltip.cpp:437
+#, fuzzy, kde-format
+#| msgid "Actions"
+msgid "Location:"
+msgstr "Agoj"
+
+#: smb4k/smb4ktooltip.cpp:392 smb4k/smb4ktooltip.cpp:399
+#: smb4k/smb4ktooltip.cpp:464 smb4k/smb4ktooltip.cpp:476
+#: smb4k/smb4ktooltip.cpp:477 smb4k/smb4ktooltip.cpp:506
+#, kde-format
+msgid "unknown"
+msgstr "nekonata"
+
+#: smb4k/smb4ktooltip.cpp:397 smb4k/smb4ktooltip.cpp:504
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:448
+#, fuzzy, kde-format
+#| msgid "Mount point:"
+msgid "Mountpoint:"
+msgstr "Surmetingo:"
+
+#: smb4k/smb4ktooltip.cpp:459
+#, fuzzy, kde-format
+#| msgid "User:"
+msgid "Username:"
+msgstr "Uzanto:"
+
+#: smb4k/smb4ktooltip.cpp:471
+#, kde-format
+msgid "Owner:"
+msgstr "Posedanto:"
+
+#: smb4k/smb4ktooltip.cpp:485
+#, fuzzy, kde-format
+#| msgid "File system:"
+msgid "File system:"
+msgstr "Dosiersistemo:"
+
+#: smb4k/smb4ktooltip.cpp:496
+#, kde-format
+msgid "Size:"
+msgstr ""
+
+#, fuzzy
+#~| msgid "User Interface"
+#~ msgid "Username"
+#~ msgstr "Uzant-interfaco"
+
+#~ msgid "Password"
+#~ msgstr "Pasvorto"
+
+#, fuzzy
+#~| msgid "Behavior"
+#~ msgid "Behavior:"
+#~ msgstr "Konduto"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgid "General:"
+#~ msgstr "Ĝeneralo"
+
+#, fuzzy
+#~| msgid "Owner:"
+#~ msgid "Ownership:"
+#~ msgstr "Posedanto:"
+
+#, fuzzy
+#~| msgid "Miscellaneous Settings"
+#~ msgid "Miscellaneous:"
+#~ msgstr "Diversa agordo"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "Identification"
+#~ msgstr "Agoj"
+
+#, fuzzy
+#~| msgid "Network"
+#~ msgid "Network Item"
+#~ msgstr "Reto"
+
+#, fuzzy
+#~| msgid "IP address:"
+#~ msgid "MAC Address"
+#~ msgstr "IP-adreso:"
+
+#, fuzzy
+#~| msgid "IP address:"
+#~ msgid "MAC Address:"
+#~ msgstr "IP-adreso:"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Actions"
+#~ msgstr "Opcioj"
+
+#, fuzzy
+#~| msgid "General Settings"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Ĝeneralaj Agordoj"
+
+#, fuzzy
+#~| msgid "Bookmark Editor"
+#~ msgid "Always remount this share"
+#~ msgstr "Legosigna modifilo"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Browse Settings:"
+#~ msgstr "Agordo"
+
+#, fuzzy
+#~| msgid "Common Options"
+#~ msgid "Common Settings:"
+#~ msgstr "Ĝeneralaj opcioj"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Authentication:"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "Security"
+#~ msgid "Security:"
+#~ msgstr "Sekureco"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Samba Settings"
+#~ msgstr "Agordo"
+
+#~ msgid "Login"
+#~ msgstr "Ensaluti"
+
+#, fuzzy
+#~ msgid "Login:"
+#~ msgstr "Aliĝu"
+
+#, fuzzy
+#~| msgid "Protocol:"
+#~ msgid "Protocols"
+#~ msgstr "Protokolo:"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "Location"
+#~ msgstr "Agoj"
+
+#~ msgid "Owner"
+#~ msgstr "Posedanto"
+
+#~ msgid "Undo"
+#~ msgstr "Malfari"
+
+#, fuzzy
+#~| msgid "Unmount"
+#~ msgid "Remounting"
+#~ msgstr "Malkroĉu"
+
+#~ msgid "Columns"
+#~ msgstr "Kolumnoj"
+
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Diversa agordo"
+
+#, fuzzy
+#~| msgid "Search Toolbar"
+#~ msgid "Network Toolbar"
+#~ msgstr "Serĉa ilobreto"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Serĉa ilobreto"
+
+#, fuzzy
+#~| msgid "Search Toolbar"
+#~ msgid "Shares Toolbar"
+#~ msgstr "Serĉa ilobreto"
+
+#, fuzzy
+#~| msgid "Main Toolbar"
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Ĉefa ilobreto"
+
+#~ msgid "Abort"
+#~ msgstr "Ĉesigi"
+
+#~ msgid "&Clear"
+#~ msgstr "&Forigi"
+
+#~ msgid " Bytes"
+#~ msgstr " bitokoj"
+
+#, fuzzy
+#~| msgid "IP Address"
+#~ msgid "UNC Address:"
+#~ msgstr "IP-adreso"
+
+#, fuzzy
+#~| msgid "File System"
+#~ msgid "Filesystem Port:"
+#~ msgstr "Dosiersistemo"
+
+#~ msgid "User ID:"
+#~ msgstr "Identigilo de uzanto:"
+
+#, fuzzy
+#~| msgid "IP address:"
+#~ msgid "MAC address:"
+#~ msgstr "IP-adreso:"
+
+#~ msgid "General Options"
+#~ msgstr "Ĝeneralaj opcioj"
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "&Redakti legosignojn"
+
+#, fuzzy
+#~| msgid "Workgroup:"
+#~ msgid "Add Group"
+#~ msgstr "Laborgrupo:"
+
+#, fuzzy
+#~| msgid "Label"
+#~ msgid "Label:"
+#~ msgstr "Etikedo"
+
+#, fuzzy
+#~| msgid "Workgroup:"
+#~ msgid "Group:"
+#~ msgstr "Laborgrupo:"
+
+#, fuzzy
+#~| msgid "Workgroup:"
+#~ msgid "Group name:"
+#~ msgstr "Laborgrupo:"
+
+#~ msgid "Copying"
+#~ msgstr "Kopiante"
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#, fuzzy
+#~| msgid "Smb4KNetworkBrowserPart"
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "Open With"
+#~ msgstr "Malfermu per"
+
+#, fuzzy
+#~| msgid "Share"
+#~ msgid "Server"
+#~ msgstr "Komunigi"
+
+#~ msgid "File System"
+#~ msgstr "Dosiersistemo"
+
+#~ msgid "Free"
+#~ msgstr "Libera"
+
+#~ msgid "Total"
+#~ msgstr "Sumo"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Show notifications"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "File system:"
+#~ msgid "Show the file system"
+#~ msgstr "Dosiersistemo:"
+
+#, fuzzy
+#~| msgid "Mount point:"
+#~ msgid "Mount prefix:"
+#~ msgstr "Surmetingo:"
+
+#~ msgid "Domain:"
+#~ msgstr "Retregiono:"
+
+#, fuzzy
+#~| msgid "Port"
+#~ msgid "SMB port:"
+#~ msgstr "Pordo"
+
+#, fuzzy
+#~| msgid "File System"
+#~ msgid "File system port:"
+#~ msgstr "Dosiersistemo"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "none"
+#~ msgid "None"
+#~ msgstr "nenio"
+
+#, fuzzy
+#~| msgid "off"
+#~ msgid "Off"
+#~ msgstr "malŝaltita"
+
+#~ msgid "Required"
+#~ msgstr "Postulita"
+
+#~ msgid "default"
+#~ msgstr "norma"
+
+#, fuzzy
+#~| msgid "File:"
+#~ msgid "File mask:"
+#~ msgstr "Dosiero:"
+
+#, fuzzy
+#~| msgid "Directories"
+#~ msgid "Directory mask:"
+#~ msgstr "Dosierujoj"
+
+#, fuzzy
+#~| msgid "Protocol:"
+#~ msgid "Protocol hint:"
+#~ msgstr "Protokolo:"
+
+#, fuzzy
+#~| msgid "automatic"
+#~ msgid "Automatic detection"
+#~ msgstr "aŭtomata"
+
+#, fuzzy
+#~| msgid "IP address:"
+#~ msgid "Broadcast address:"
+#~ msgstr "IP-adreso:"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLM protocol"
+#~ msgstr "Protokolo"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "Protokolo"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "Protokolo"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "Aŭtentigo"
+
+#, fuzzy
+#~| msgid "Filter Rules"
+#~ msgid "Custom filter rules:"
+#~ msgstr "Filtroreguloj"
+
+#, fuzzy
+#~| msgid "Backup"
+#~ msgid "Backup suffix:"
+#~ msgstr "Sekurkopio"
+
+#, fuzzy
+#~| msgid "Backup"
+#~ msgid "Backup suffix"
+#~ msgstr "Sekurkopio"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Legosignoj"
+
+#, fuzzy
+#~| msgid "Port"
+#~ msgid "SMB Port:"
+#~ msgstr "Pordo"
+
+#~ msgid "Preview"
+#~ msgstr "Antaŭrigardo"
+
+#~ msgid "Reload"
+#~ msgstr "Reŝargi"
+
+#~ msgid "Back"
+#~ msgstr "Reen"
+
+#~ msgid "Forward"
+#~ msgstr "Antaŭen"
+
+#~ msgid "Up"
+#~ msgstr "Supren"
+
+#~ msgid "Printer"
+#~ msgstr "Presilo"
+
+#~ msgid "File:"
+#~ msgstr "Dosiero:"
+
+#~ msgid "Copies:"
+#~ msgstr "Kopioj:"
+
+#, fuzzy
+#~| msgid "Synchronize"
+#~ msgid "Synchronizing"
+#~ msgstr "Sinkronigu"
+
+#, fuzzy
+#~| msgid "&Unmount"
+#~ msgid "Unmount All"
+#~ msgstr "&Malkroĉi"
+
+#~ msgid "Mount"
+#~ msgstr "Kroĉu"
+
+#~ msgid "Advanced"
+#~ msgstr "Plie"
+
+#, fuzzy
+#~| msgid "IP Address"
+#~ msgid "UNC Address"
+#~ msgstr "IP-adreso"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#, fuzzy
+#~| msgid "User ID:"
+#~ msgid "User ID"
+#~ msgstr "Identigilo de uzanto:"
+
+#, fuzzy
+#~| msgid "Port"
+#~ msgid "SMB Port"
+#~ msgstr "Pordo"
+
+#, fuzzy
+#~| msgid "File System"
+#~ msgid "File System Port"
+#~ msgstr "Dosiersistemo"
+
+#~ msgid "A&dd"
+#~ msgstr "Al&doni"
+
+#~ msgid "automatic"
+#~ msgstr "aŭtomata"
+
+#~ msgid "Bookmark Editor"
+#~ msgstr "Legosigna modifilo"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Printing"
+#~ msgstr "Presilo"
+
+#~ msgid "Transfer rate:"
+#~ msgstr "Transigrapideco:"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "NoSuchAction"
+#~ msgstr "Agoj"
+
+#, fuzzy
+#~ msgid "List"
+#~ msgstr "Linio"
+
+#~ msgid "Total:"
+#~ msgstr "Sumo:"
+
+#~ msgid "Usage:"
+#~ msgstr "Uzado:"
+
+#~ msgid "Smb4KSearchDialogPart"
+#~ msgstr "Smb4KSearchDialogPart"
+
+#, fuzzy
+#~| msgid "System &Tray"
+#~ msgid "System Tray"
+#~ msgstr "&Taskopleto"
+
+#~ msgid "on"
+#~ msgstr "ŝaltita"
+
+#, fuzzy
+#~| msgid "Preview"
+#~ msgid "The preview"
+#~ msgstr "Antaŭrigardo"
+
+#, fuzzy
+#~| msgid "User ID:"
+#~ msgid "The user ID"
+#~ msgstr "Identigilo de uzanto:"
+
+#~ msgid "Name:"
+#~ msgstr "Nomo:"
+
+#~ msgid "UID"
+#~ msgstr "UID"
+
+#~ msgid "GID"
+#~ msgstr "G-no"
+
+#~ msgid "Delete"
+#~ msgstr "Forigi"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"

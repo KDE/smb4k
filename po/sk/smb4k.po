@@ -1,0 +1,1286 @@
+# translation of smb4k.po to Slovak
+# Michal Sulek <reloadshot@atlas.sk>, 2004, 2005.
+# Roman Paholík <wizzardsk@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2019, 2022.
+# Ferdinand Galko <galko.ferdinand@gmail.com>, 2014.
+# Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"PO-Revision-Date: 2022-04-07 18:24+0200\n"
+"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
+"Language-Team: Slovak <kde-sk@linux.sk>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 21.12.3\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Roman Paholík"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "wizzardsk@gmail.com"
+
+#: helpers/smb4kmounthelper.cpp:136
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "Proces pripojenia nie je možné spustiť."
+
+#: helpers/smb4kmounthelper.cpp:179
+#, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr "Bod pripojenia %1 je neplatný."
+
+#: helpers/smb4kmounthelper.cpp:241
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr "Proces odpojenia nie je možné spustiť."
+
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:45
+#, kde-format
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr ""
+"Pokročilý prehliadač sieťového okolia a nástroj na pripojenie zdieľaní Samba"
+
+#: smb4k/main.cpp:47
+#, fuzzy, kde-format
+#| msgid "© 2003-2021 Alexander Reinholdt"
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2021 Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Developer"
+msgstr "Vývojár"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr "Wolfgang Geisendörfer"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Donator"
+msgstr "Donátor"
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Súbor"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "Si&eť"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "Zdieľ&ania"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "&Záložky"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "&Nastavenia"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Hlavný panel nástrojov"
+
+#: smb4k/smb4kbookmarkmenu.cpp:29
+#, kde-format
+msgid "Bookmarks"
+msgstr "Záložky"
+
+#: smb4k/smb4kbookmarkmenu.cpp:50
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Upraviť záložky"
+
+#: smb4k/smb4kbookmarkmenu.cpp:59 smb4k/smb4kmainwindow.cpp:144
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:196
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "Prid&ať záložku"
+
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "Pripojiť všetky záložky"
+
+#: smb4k/smb4kconfigdialog.cpp:107
+#, kde-format
+msgid "User Interface"
+msgstr "Užívateľské rozhranie"
+
+#: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
+#, kde-format
+msgid "Network"
+msgstr "Sieť"
+
+#: smb4k/smb4kconfigdialog.cpp:109
+#, kde-format
+msgid "Mounting"
+msgstr "Pripájanie"
+
+#: smb4k/smb4kconfigdialog.cpp:110
+#, kde-format
+msgid "Authentication"
+msgstr "Autentifikácia"
+
+#: smb4k/smb4kconfigdialog.cpp:111
+#, kde-format
+msgid "Synchronization"
+msgstr "Synchronizácia"
+
+#: smb4k/smb4kconfigdialog.cpp:112
+#, kde-format
+msgid "Custom Options"
+msgstr "Vlastné voľby"
+
+#: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kprofilesmenu.cpp:22
+#, kde-format
+msgid "Profiles"
+msgstr "Profily"
+
+#: smb4k/smb4kconfigdialog.cpp:135
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+"<qt>Našlo sa nesprávne nastavenie. Budete presmerovaný na dialóg na jeho "
+"opravu.</qt>"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:34
+#, kde-format
+msgid "Settings"
+msgstr "Nastavenia"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:64
+#, fuzzy, kde-format
+#| msgid "Wallet Entries:"
+msgid "Wallet Entries"
+msgstr "Položky peňaženky:"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:97
+#, kde-format
+msgid "Load"
+msgstr "Načítať"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#, kde-format
+msgid "Save"
+msgstr "Uložiť"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagecustomoptions.cpp:82
+#, kde-format
+msgid "Edit"
+msgstr "Upraviť"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagecustomoptions.cpp:87
+#, kde-format
+msgid "Remove"
+msgstr "Odstrániť"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:136
+#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#, kde-format
+msgid "Clear"
+msgstr "Vyčistiť"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:201
+#, kde-format
+msgid "Default Login"
+msgstr "Štandardné prihlásenie"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#, kde-format
+msgid "Enter the default login information."
+msgstr "Zadajte predvolené informácie prihlásenia."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:401
+#, kde-format
+msgid "Set the username and password for wallet entry %1."
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:403
+#, kde-format
+msgid "Set the username and password for the default login."
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:92
+#, kde-format
+msgid "Clear List"
+msgstr "Vyčistiť zoznam"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:215
+#, kde-format
+msgid "The item %1 was removed, because all custom options were reset."
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
+#, kde-format
+msgid "Directories"
+msgstr "Priečinky"
+
+#: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
+#: smb4k/smb4kconfigpagenetwork.cpp:112
+#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#, kde-format
+msgid "Behavior"
+msgstr "Správanie"
+
+#: smb4k/smb4kconfigpagemounting.cpp:139 smb4k/smb4kconfigpagemounting.cpp:544
+#, kde-format
+msgid " min"
+msgstr " min"
+
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
+#: smb4k/smb4kconfigpagenetwork.cpp:133
+#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#, kde-format
+msgid "Basic Settings"
+msgstr "Základné nastavenie"
+
+#: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
+#, kde-format
+msgid "Common Options"
+msgstr "Obvyklé možnosti"
+
+#: smb4k/smb4kconfigpagemounting.cpp:228
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr "Podpora unixových rozšírení CIFS"
+
+#: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
+#, kde-format
+msgid "Choose a different user"
+msgstr "Vybrať iného používateľa"
+
+#: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
+#, kde-format
+msgid "Choose a different group"
+msgstr "Vybrať inú skupinu"
+
+#: smb4k/smb4kconfigpagemounting.cpp:336
+#, kde-format
+msgid "Common Mount Settings"
+msgstr "Obvyklé možnosti pripojenia"
+
+#: smb4k/smb4kconfigpagemounting.cpp:344
+#, kde-format
+msgid "Advanced Options"
+msgstr "Pokročilé voľby"
+
+#: smb4k/smb4kconfigpagemounting.cpp:457
+#, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "Upraviť dodatočné voľby CIFS."
+
+#: smb4k/smb4kconfigpagemounting.cpp:470
+#, kde-format
+msgid "Advanced Mount Settings"
+msgstr "Pokročilé nastavenia pripojenia"
+
+#: smb4k/smb4kconfigpagemounting.cpp:681
+#, kde-format
+msgid "Character Sets"
+msgstr "Znakové sady"
+
+#: smb4k/smb4kconfigpagemounting.cpp:729
+#, kde-format
+msgid "Mount Settings"
+msgstr "Voľby pripojenia"
+
+#: smb4k/smb4kconfigpagemounting.cpp:833
+#, kde-format
+msgid "Additional CIFS Options"
+msgstr "Ďalšie voľby CIFS:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:834
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr "<qt>Zadajte žiadané voľby ako zoznam oddelený čiarkou:</qt>"
+
+#: smb4k/smb4kconfigpagemounting.cpp:862
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+"<qt>Nasledovná položka bude odstránená z dodatočných volieb: %2. Prosím, "
+"prečítajte si príručku kvôli podrobnostiam.</qt>"
+msgstr[1] ""
+"<qt>Nasledovné %1 položky budú odstránené z dodatočných volieb: %2. Prosím, "
+"prečítajte si príručku kvôli podrobnostiam.</qt>"
+msgstr[2] ""
+"<qt>Nasledovných %1 položiek bude odstránených z dodatočných volieb: %2. "
+"Prosím, prečítajte si príručku kvôli podrobnostiam.</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:40
+#, kde-format
+msgid "Browse Settings"
+msgstr "Prehliadať nastavenia"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:144
+#, fuzzy, kde-format
+#| msgid "Samba"
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:196
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:216
+#, kde-format
+msgid " s"
+msgstr " s"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:225
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
+msgid "Define the hosts that should be woken up via the custom options dialog."
+msgstr ""
+"<qt>Definovať hostiteľov, ktorí sa majú prebudiť cez dialóg vlastných volieb."
+"</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:235
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
+msgid "Advanced Settings"
+msgstr "Pokročilé nastavenia pripojenia"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#, fuzzy, kde-format
+#| msgid "Synchronization"
+msgid "Synchronization Directory"
+msgstr "Synchronizácia"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#, fuzzy, kde-format
+#| msgid "Backup"
+msgid "Backups"
+msgstr "Zálohovať"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#, kde-format
+msgid "General"
+msgstr "Všeobecné"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#, fuzzy, kde-format
+#| msgid "Links"
+msgid "Links"
+msgstr "Odkazy"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#, kde-format
+msgid "File Handling"
+msgstr "Spracovanie súborov"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#, fuzzy, kde-format
+#| msgid "Compression"
+msgid "Compression"
+msgstr "Kompresia"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#, fuzzy, kde-format
+#| msgid "Files"
+msgid "Files"
+msgstr "Súbory"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:310
+#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#, kde-format
+msgid " KiB"
+msgstr " KiB"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#, kde-format
+msgid " KiB/s"
+msgstr " KiB/s"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#, kde-format
+msgid "File Transfer"
+msgstr "Prenos súboru"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#, fuzzy, kde-format
+#| msgid "Files && Directories"
+msgid "Files && Directories"
+msgstr "Súbory && adresáre"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#, fuzzy, kde-format
+#| msgid "Restrictions"
+msgid "Restrictions"
+msgstr "Obmedzenia"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#, kde-format
+msgid "File Deletion"
+msgstr "Vymazanie súboru"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "General Filtering Settings"
+msgstr "Všeobecné nastavenia"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#, kde-format
+msgid "Filter Rules"
+msgstr "Pravidlá filtra"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#, kde-format
+msgid "Filtering"
+msgstr "Filtrovanie"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#, fuzzy, kde-format
+#| msgid "Checksums"
+msgid "Checksums"
+msgstr "Kontrolné súčty"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:562
+#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#, kde-format
+msgid "Miscellaneous"
+msgstr "Rôzne"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#, kde-format
+msgid "Main Window"
+msgstr "Hlavné okno"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:216
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Sieťové okolie"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#, kde-format
+msgid "Shares View"
+msgstr "Pohľad zdieľaní"
+
+#: smb4k/smb4kmainwindow.cpp:134
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Dokovať prvky"
+
+#: smb4k/smb4kmainwindow.cpp:239 smb4k/smb4ksharesmenu.cpp:37
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Pripojené zdieľania"
+
+#: smb4k/smb4kmainwindow.cpp:399
+#, kde-format
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<qt>Po zatvorení hlavného okna zostane Smb4K bežať v systémovej lište.<br>Ak "
+"chcete aplikáciu ukončiť, použite položku <i>Koniec</i> z ponuky <i>Súbor</"
+"i>.</qt>"
+
+#: smb4k/smb4kmainwindow.cpp:401
+#, kde-format
+msgid "Docking"
+msgstr "Plávajúce okná"
+
+#: smb4k/smb4kmainwindow.cpp:465
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr "Práve nie sú pripojené žiadne zdieľania."
+
+#: smb4k/smb4kmainwindow.cpp:468
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "Aktuálne je pripojené %1 zdieľanie."
+msgstr[1] "Aktuálne sú pripojené %1 zdieľania."
+msgstr[2] "Aktuálne je pripojených %1 zdieľaní."
+
+#: smb4k/smb4kmainwindow.cpp:629
+#, kde-format
+msgid "The wallet is used."
+msgstr "Peňaženka sa používa."
+
+#: smb4k/smb4kmainwindow.cpp:632
+#, kde-format
+msgid "The password dialog is used."
+msgstr "Používa sa režim dialógu hesla."
+
+#: smb4k/smb4kmainwindow.cpp:642
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Hľadanie pracovných skupín a domén..."
+
+#: smb4k/smb4kmainwindow.cpp:647
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Hľadanie hostiteľov v doméne %1..."
+
+#: smb4k/smb4kmainwindow.cpp:652
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "Hľadám zdieľanie poskytované hostiteľom %1..."
+
+#: smb4k/smb4kmainwindow.cpp:660 smb4k/smb4kmainwindow.cpp:668
+#, kde-format
+msgid "Looking for files and directories in %1..."
+msgstr "Hľadanie súborov a adresárov v %1..."
+
+#: smb4k/smb4kmainwindow.cpp:685
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr "Prebúdzam vzdialených hostiteľov..."
+
+#: smb4k/smb4kmainwindow.cpp:690
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Posielam súbor na tlačiareň %1..."
+
+#: smb4k/smb4kmainwindow.cpp:694
+#, kde-format
+msgid "Searching..."
+msgstr "Hľadá sa..."
+
+#: smb4k/smb4kmainwindow.cpp:712 smb4k/smb4kmainwindow.cpp:749
+#: smb4k/smb4kmainwindow.cpp:861
+#, kde-format
+msgid "Done."
+msgstr "Hotovo."
+
+#: smb4k/smb4kmainwindow.cpp:722
+#, kde-format
+msgid "Mounting..."
+msgstr "Pripájanie..."
+
+#: smb4k/smb4kmainwindow.cpp:726
+#, kde-format
+msgid "Unmounting..."
+msgstr "Odpájam..."
+
+#: smb4k/smb4kmainwindow.cpp:730
+#, kde-format
+msgid "Waking up host..."
+msgstr "Prebúdzam hostiteľa..."
+
+#: smb4k/smb4kmainwindow.cpp:760
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "%1 bol úspešne pripojený."
+
+#: smb4k/smb4kmainwindow.cpp:793
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "%1 bol úspešne odpojený."
+
+#: smb4k/smb4kmainwindow.cpp:849
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "Synchronizujem %1"
+
+#: smb4k/smb4knetworkbrowser.cpp:43
+#, kde-format
+msgid "Type"
+msgstr "Typ"
+
+#: smb4k/smb4knetworkbrowser.cpp:44
+#, kde-format
+msgid "IP Address"
+msgstr "IP adresa"
+
+#: smb4k/smb4knetworkbrowser.cpp:45
+#, kde-format
+msgid "Comment"
+msgstr "Poznámka"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:472
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:484
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "Prehľadať sieť"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#, kde-format
+msgid "&Abort"
+msgstr "P&rerušiť"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#, kde-format
+msgid "&Search"
+msgstr "&Hľadať"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "Otvoriť dialóg pripojenia"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
+#, kde-format
+msgid "Au&thentication"
+msgstr "Au&tentifikácia"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:191
+#, kde-format
+msgid "&Custom Options"
+msgstr "Vlastné voľby"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#, kde-format
+msgid "Pre&view"
+msgstr "&Náhľad"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#, kde-format
+msgid "&Print File"
+msgstr "Vytlačiť súbor"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:225
+#, kde-format
+msgid "&Mount"
+msgstr "&Pripojiť"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:184
+#, kde-format
+msgid "&Unmount"
+msgstr "&Odpojiť"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:393
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Prehľadať počítač"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Prehľadať pracovnú skupinu"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#, kde-format
+msgid "Close"
+msgstr "Zavrieť"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#, kde-format
+msgid "Search string"
+msgstr "Vyhľadávaný reťazec"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#, kde-format
+msgid "Search"
+msgstr "Hľadať"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#, kde-format
+msgid "Stop"
+msgstr "Zastaviť"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#, kde-format
+msgid "Item Down"
+msgstr "Položka dolu"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#, kde-format
+msgid "Item Up"
+msgstr "Položka hore"
+
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:190
+#, kde-format
+msgid "U&nmount All"
+msgstr "Odpojiť všetko"
+
+#: smb4k/smb4ksharesmenu.cpp:158
+#, kde-format
+msgid "Unmount"
+msgstr "Odpojiť"
+
+#: smb4k/smb4ksharesmenu.cpp:177
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Pridať záložku"
+
+#: smb4k/smb4ksharesmenu.cpp:190
+#, kde-format
+msgid "Synchronize"
+msgstr "Synchronizovať"
+
+#: smb4k/smb4ksharesmenu.cpp:209
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Otvoriť s Konsole"
+
+#: smb4k/smb4ksharesmenu.cpp:223
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Otvoriť v správcovi súborov"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#, kde-format
+msgid "View Modes"
+msgstr "Režimy zobrazenia"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:155
+#, kde-format
+msgid "Icon View"
+msgstr "Zobrazenie ikon"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:161
+#, kde-format
+msgid "List View"
+msgstr "Pohľad zoznamu"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:202
+#, kde-format
+msgid "S&ynchronize"
+msgstr "Synchronizovať"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:208
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Otvoriť s Konsole"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Otvoriť v správcovi súborov"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:366
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+"<qt>Nie je žiadne aktívne pripojenie na zdieľanie <b>%1</b>! Nič sem "
+"nemôžete pridať.</qt>"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "yes"
+msgstr "áno"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "no"
+msgstr "nie"
+
+#: smb4k/smb4ktooltip.cpp:210
+#, kde-format
+msgid "Type:"
+msgstr "Typ:"
+
+#: smb4k/smb4ktooltip.cpp:225
+#, kde-format
+msgid "Workgroup"
+msgstr "Pracovná skupina"
+
+#: smb4k/smb4ktooltip.cpp:228
+#, kde-format
+msgid "Master Browser:"
+msgstr "Hlavný prehliadač:"
+
+#: smb4k/smb4ktooltip.cpp:256
+#, kde-format
+msgid "Host"
+msgstr "Hostiteľ"
+
+#: smb4k/smb4ktooltip.cpp:259 smb4k/smb4ktooltip.cpp:303
+#, kde-format
+msgid "Comment:"
+msgstr "Poznámka:"
+
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:345
+#, kde-format
+msgid "IP Address:"
+msgstr "IP adresa:"
+
+#: smb4k/smb4ktooltip.cpp:283
+#, kde-format
+msgid "Workgroup:"
+msgstr "Pracovná skupina:"
+
+#: smb4k/smb4ktooltip.cpp:300
+#, kde-format
+msgid "Share (%1)"
+msgstr "Zdieľať (%1)"
+
+#: smb4k/smb4ktooltip.cpp:315
+#, kde-format
+msgid "Mounted:"
+msgstr "Pripojené:"
+
+#: smb4k/smb4ktooltip.cpp:334
+#, kde-format
+msgid "Host:"
+msgstr "Hostiteľ:"
+
+#: smb4k/smb4ktooltip.cpp:357 smb4k/smb4ktooltip.cpp:437
+#, kde-format
+msgid "Location:"
+msgstr "Umiestnenie:"
+
+#: smb4k/smb4ktooltip.cpp:392 smb4k/smb4ktooltip.cpp:399
+#: smb4k/smb4ktooltip.cpp:464 smb4k/smb4ktooltip.cpp:476
+#: smb4k/smb4ktooltip.cpp:477 smb4k/smb4ktooltip.cpp:506
+#, kde-format
+msgid "unknown"
+msgstr "neznáme"
+
+#: smb4k/smb4ktooltip.cpp:397 smb4k/smb4ktooltip.cpp:504
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 voľných z %2 (%3 použitých)"
+
+#: smb4k/smb4ktooltip.cpp:448
+#, kde-format
+msgid "Mountpoint:"
+msgstr "Bod pripojenia:"
+
+#: smb4k/smb4ktooltip.cpp:459
+#, kde-format
+msgid "Username:"
+msgstr "Užívateľské meno:"
+
+#: smb4k/smb4ktooltip.cpp:471
+#, kde-format
+msgid "Owner:"
+msgstr "Vlastník:"
+
+#: smb4k/smb4ktooltip.cpp:485
+#, kde-format
+msgid "File system:"
+msgstr "Súborový systém:"
+
+#: smb4k/smb4ktooltip.cpp:496
+#, kde-format
+msgid "Size:"
+msgstr "Veľkosť:"
+
+#~ msgid ""
+#~ "The login information that was stored by Smb4K will be loaded from the "
+#~ "wallet."
+#~ msgstr ""
+#~ "Prihlasovacie informácie, ktoré uložil Smb4K, sa načítajú z peňaženky."
+
+#~ msgid "All modifications you applied are saved to the wallet."
+#~ msgstr "Všetky vami vykonané zmeny sa uložili do peňaženky."
+
+#~ msgid "Details"
+#~ msgstr "Podrobnosti"
+
+#~ msgid "Entry"
+#~ msgstr "Položka"
+
+#~ msgid "Username"
+#~ msgstr "Používateľské meno"
+
+#~ msgid "Password"
+#~ msgstr "Heslo"
+
+#~ msgid "Behavior:"
+#~ msgstr "Správanie:"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgid "General:"
+#~ msgstr "Všeobecné"
+
+#, fuzzy
+#~| msgid "Owner:"
+#~ msgid "Ownership:"
+#~ msgstr "Vlastník:"
+
+#, fuzzy
+#~| msgid "Miscellaneous"
+#~ msgid "Miscellaneous:"
+#~ msgstr "Rôzne"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Špeciálne pravidlá filtra:"
+
+#~ msgid "Identification"
+#~ msgstr "Identifikácia"
+
+#~ msgid "Network Item"
+#~ msgstr "Sieťová položka"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC adresa"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC adresa:"
+
+#~ msgid "Actions"
+#~ msgstr "Akcie"
+
+#, fuzzy
+#~| msgid "Send magic package before scanning the network neighborhood"
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Poslať magický balík pred prehľadaním sieťového okolia"
+
+#, fuzzy
+#~| msgid "Send magic package before mounting a share"
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Poslať magický balík pred pripojeným zdieľania"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Nastavenia Wake-On-LAN"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Vždy znovu pripojiť toto zdieľanie"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Tento server podporuje unixové rozšírenia CIFS"
+
+#~ msgid "Browse Settings:"
+#~ msgstr "Prehliadať nastavenia:"
+
+#~ msgid "Profiles:"
+#~ msgstr "Profily:"
+
+#~ msgid "Common Settings:"
+#~ msgstr "Spoločné nastavenia:"
+
+#~ msgid "Authentication:"
+#~ msgstr "Overenie:"
+
+#~ msgid "Security:"
+#~ msgstr "Zabezpečenie:"
+
+#~ msgid "Samba Settings"
+#~ msgstr "Nastavenia Samba"
+
+#~ msgid "Default Destination"
+#~ msgstr "Predvolený cieľ"
+
+#~ msgid "Permissions, etc."
+#~ msgstr "Oprávnenia atď."
+
+#~ msgid "Login"
+#~ msgstr "Prihlásenie"
+
+#~ msgid "Login:"
+#~ msgstr "Prihlásenie:"
+
+#~ msgid "The mount process crashed."
+#~ msgstr "Proces pripojenia spadol."
+
+#~ msgid "The unmount process crashed."
+#~ msgstr "Proces odpojenia spadol."
+
+#, fuzzy
+#~| msgid "Protocol Hint:"
+#~ msgid "Protocols"
+#~ msgstr "Pomoc protokolu:"
+
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 z %2 voľných (%3 použitých)"
+
+#~ msgid "Location"
+#~ msgstr "Umiestnenie"
+
+#, fuzzy
+#~| msgid "Save the entries to the wallet."
+#~ msgid "The selected entry is removed from the wallet."
+#~ msgstr "Uložiť položky do peňaženky."
+
+#, fuzzy
+#~| msgid "Load the entries stored in the wallet."
+#~ msgid "All entries are removed from the wallet."
+#~ msgstr "Načítať položky uložené v peňaženke."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Označenie tohto check boxu zobrazí podrobnosti vybraných prihlasovacích "
+#~ "informácií."
+
+#~ msgid "Password Storage"
+#~ msgstr "Úložisko hesiel:"
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Zobraziť podrobnosti vybranej položky."
+
+#~ msgid "Undo"
+#~ msgstr "Späť"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Remounting"
+#~ msgstr "Pripájanie"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
+
+#~ msgid "Columns"
+#~ msgstr "Stĺpce"
+
+#~ msgid "Tooltips"
+#~ msgstr "Nástrojové tipy"
+
+#, fuzzy
+#~| msgid "View Modes"
+#~ msgid "View Mode"
+#~ msgstr "Režimy zobrazenia"
+
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Rôzne nastavenia"
+
+#~ msgid "Shares"
+#~ msgstr "Zdieľania"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Lišta nástrojov siete"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Panel nástrojov pre hľadanie"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Lišta nástrojov zdieľaní"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Alternatívny hlavný panel nástrojov"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Programy nástrojov"
+
+#~ msgid "Network Search"
+#~ msgstr "Prehľadávanie siete"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Sem zadajte hľadaný reťazec."
+
+#~ msgid "Abort"
+#~ msgstr "Prerušiť"
+
+#~ msgid "&Clear"
+#~ msgstr "V&yčistiť"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Hľadanie nevrátilo žiadne výsledky."
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr "Bajtov"
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Získavam náhľad z %1..."
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodické prehľadávanie"
+
+#~ msgid "Browse List"
+#~ msgstr "Zoznam prehliadania"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC adresa:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Port súborového systému:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Prístup na zápis:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Bezpečnostný režim:"
+
+#~ msgid "User ID:"
+#~ msgstr "ID užívateľa:"
+
+#~ msgid "Group ID:"
+#~ msgstr "ID skupiny:"
+
+#~ msgid "General Options"
+#~ msgstr "Všeobecné nastavenia"
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "&Upraviť záložky"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "Group:"
+#~ msgstr "ID skupiny:"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "Group name:"
+#~ msgstr "ID skupiny:"
+
+#~ msgid "Copying"
+#~ msgstr "Kopírujem"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Mazanie && prenos súborov"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "Nie je možné vytvoriť sieťový prehliadač."
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Nie je možné vytvoriť dialóg hľadania."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "Nie je možné vytvoriť pohľad zdieľaní."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "Prehliadač sieťového okolia KPart zo Smb4K"
+
+#, fuzzy
+#~| msgid "\\u00A9 2007-2015, Alexander Reinholdt"
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2015, Alexander Reinholdt"
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Prebúdzam vzdialené servery..."
+
+#~ msgid "Search item:"
+#~ msgstr "Hľadať položku:"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "Sieťové hľadanie KPart zo Smb4K"
+
+#~ msgid "Open With"
+#~ msgstr "Otvoriť s"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "Pohľad zdieľaní KPart zo Smb4K"
+
+#~ msgid "&Shares"
+#~ msgstr "Zdieľania"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Pokročilý prehliadač sieťového okolia"
+
+#~ msgid "Checks"
+#~ msgstr "Kontroly"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Hľadám viac informácií o hostiteľovi %1..."
+
+#, fuzzy
+#~| msgid "Mounting share %1..."
+#~ msgid "Mounting share..."
+#~ msgstr "Pripájam zdieľanie %1..."
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Operating system"
+#~ msgstr "Operačný systém"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "Peňaženka sa nepoužíva"
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Pripojenie %1 zlyhalo."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Odpojenie %1 zlyhalo."
+
+#~ msgid "View"
+#~ msgstr "Zobraziť"
+
+#~ msgid "Settings for the list view:"
+#~ msgstr "Nastavenie pre pohľad zoznamu:"
+
+#~ msgid "File System"
+#~ msgstr "Súborový systém"
+
+#~ msgid "Free"
+#~ msgstr "Voľné"
+
+#~ msgid "Used"
+#~ msgstr "Použité"
+
+#~ msgid "Total"
+#~ msgstr "Celkom"
+
+#~ msgid "Usage"
+#~ msgstr "Použitie"
+
+#~ msgid "net"
+#~ msgstr "sieť"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Vzdialené porty"

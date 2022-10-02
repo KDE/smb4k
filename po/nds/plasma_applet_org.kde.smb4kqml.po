@@ -1,0 +1,124 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Manfred Wiese <m.j.wiese@web.de>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2014-03-17 10:10+0100\n"
+"Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
+"Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
+"Language: nds\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">op %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr ""
+
+#: package/contents/ui/BookmarksPage.qml:41
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Edit bookmarks"
+msgstr "Leestekens"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr ""
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr "Nettwarkümgeven"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Bookmark"
+msgstr "Leestekens"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "Nieg dörkieken"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "Afbreken"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr ""
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+#, fuzzy
+#| msgid "Mount Dialog"
+msgid "Open the mount dialog"
+msgstr "In-/Afhangen-Dialoog"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr "Inhangt Freegaven"
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "Leestekens"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr ""
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr ""
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr ""
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr ""
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr ""
+
+#: package/contents/ui/SharesViewPage.qml:34
+#, fuzzy
+#| msgid "Unmount All"
+msgid "Unmount all shares"
+msgstr "Allens afhangen"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Leestekens"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "Leestekens"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Delete Bookmark"
+#~ msgstr "Leestekens"
+
+#~ msgid "Back"
+#~ msgstr "Torüch"
+
+#~ msgid "Edit"
+#~ msgstr "Bewerken"
+
+#~ msgid "Up"
+#~ msgstr "Na baven"

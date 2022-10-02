@@ -1,0 +1,2437 @@
+# translation of smb4k.po to Icelandic
+# This file is distributed under the same license as the smb4k package.
+# Copyright (C) 2005 Free Software Foundation.
+#
+# Arnar Leosson <leosson@frisurf.no>, 2005.
+# Sveinn í Felli <sveinki@nett.is>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"PO-Revision-Date: 2011-06-20 06:00+0000\n"
+"Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
+"Language-Team: Icelandic <kde-isl@molar.is>\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+"\n"
+"\n"
+"\n"
+
+#, fuzzy, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Sveinn í Felli"
+
+#, fuzzy, kde-format
+#| msgid "Show Share tab"
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Sýna sameignaflipa"
+
+#: helpers/smb4kmounthelper.cpp:136
+#, fuzzy, kde-format
+msgid "The mount process could not be started."
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#: helpers/smb4kmounthelper.cpp:179
+#, fuzzy, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr "Sýna tengipunkt í stað nafns á sameign"
+
+#: helpers/smb4kmounthelper.cpp:241
+#, fuzzy, kde-format
+msgid "The unmount process could not be started."
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:45
+#, fuzzy, kde-format
+#| msgid "The network browser KPart of Smb4K"
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr "KPart netvafri Smb4K"
+
+#: smb4k/main.cpp:47
+#, fuzzy, kde-format
+#| msgid "\\u00A9 2007-2010, Alexander Reinholdt"
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "\\u00A9 2007-2010, Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr ""
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Developer"
+msgstr "Forritari"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr ""
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Donator"
+msgstr ""
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, fuzzy, kde-format
+msgid "&File"
+msgstr "Skrá:"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Net"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "S&ameignir"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, fuzzy, kde-format
+msgid "&Bookmarks"
+msgstr "Bókamerki"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, fuzzy, kde-format
+msgid "&Settings"
+msgstr "Almennir valkostir"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, fuzzy, kde-format
+msgid "Main Toolbar"
+msgstr "Sameignasýn"
+
+#: smb4k/smb4kbookmarkmenu.cpp:29
+#, kde-format
+msgid "Bookmarks"
+msgstr "Bókamerki"
+
+#: smb4k/smb4kbookmarkmenu.cpp:50
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Sýsla með bókamerki"
+
+#: smb4k/smb4kbookmarkmenu.cpp:59 smb4k/smb4kmainwindow.cpp:144
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:196
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "&Bæta við bókamerki"
+
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:241
+#, fuzzy, kde-format
+msgid "Mount All Bookmarks"
+msgstr "&Sýsla með bókamerki"
+
+#: smb4k/smb4kconfigdialog.cpp:107
+#, fuzzy, kde-format
+msgid "User Interface"
+msgstr "Notandaviðmót"
+
+#: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
+#, kde-format
+msgid "Network"
+msgstr "Netkerfi"
+
+#: smb4k/smb4kconfigdialog.cpp:109
+#, kde-format
+msgid "Mounting"
+msgstr "Tengi"
+
+#: smb4k/smb4kconfigdialog.cpp:110
+#, kde-format
+msgid "Authentication"
+msgstr "Auðkenning"
+
+#: smb4k/smb4kconfigdialog.cpp:111
+#, kde-format
+msgid "Synchronization"
+msgstr "Samræming"
+
+#: smb4k/smb4kconfigdialog.cpp:112
+#, kde-format
+msgid "Custom Options"
+msgstr "Sérsniðnir valkostir"
+
+#: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kprofilesmenu.cpp:22
+#, kde-format
+msgid "Profiles"
+msgstr ""
+
+#: smb4k/smb4kconfigdialog.cpp:135
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:34
+#, fuzzy, kde-format
+msgid "Settings"
+msgstr "Almennir valkostir"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:64
+#, fuzzy, kde-format
+#| msgid "Remove Entries"
+msgid "Wallet Entries"
+msgstr "Fjarlægja færslur"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:97
+#, kde-format
+msgid "Load"
+msgstr "Hlaða inn"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#, fuzzy, kde-format
+#| msgid "Share"
+msgid "Save"
+msgstr "Sameign"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagecustomoptions.cpp:82
+#, kde-format
+msgid "Edit"
+msgstr "Breyta"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagecustomoptions.cpp:87
+#, kde-format
+msgid "Remove"
+msgstr "Fjarlægja"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:136
+#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#, fuzzy, kde-format
+msgid "Clear"
+msgstr "Hr&einsa"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:201
+#, kde-format
+msgid "Default Login"
+msgstr "Sjálfgefin innskráning"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#, kde-format
+msgid "Enter the default login information."
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:401
+#, fuzzy, kde-format
+msgid "Set the username and password for wallet entry %1."
+msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:403
+#, fuzzy, kde-format
+msgid "Set the username and password for the default login."
+msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:92
+#, kde-format
+msgid "Clear List"
+msgstr "Hreinsa lista"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:215
+#, kde-format
+msgid "The item %1 was removed, because all custom options were reset."
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
+#, kde-format
+msgid "Directories"
+msgstr "Möppur"
+
+#: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
+#: smb4k/smb4kconfigpagenetwork.cpp:112
+#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#, kde-format
+msgid "Behavior"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:139 smb4k/smb4kconfigpagemounting.cpp:544
+#, kde-format
+msgid " min"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
+#: smb4k/smb4kconfigpagenetwork.cpp:133
+#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#, fuzzy, kde-format
+msgid "Basic Settings"
+msgstr "Almennir valkostir"
+
+#: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
+#, kde-format
+msgid "Common Options"
+msgstr "Algengar stillingar"
+
+#: smb4k/smb4kconfigpagemounting.cpp:228
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
+#, kde-format
+msgid "Choose a different user"
+msgstr "Veldu annan notanda"
+
+#: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
+#, kde-format
+msgid "Choose a different group"
+msgstr "Veldu annan hóp"
+
+#: smb4k/smb4kconfigpagemounting.cpp:336
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Common Mount Settings"
+msgstr "Algengar stillingar"
+
+#: smb4k/smb4kconfigpagemounting.cpp:344
+#, kde-format
+msgid "Advanced Options"
+msgstr "Ítarlegri valkostir"
+
+#: smb4k/smb4kconfigpagemounting.cpp:457
+#, fuzzy, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "Viðbótarvalkostir:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:470
+#, fuzzy, kde-format
+#| msgid "Advanced Options"
+msgid "Advanced Mount Settings"
+msgstr "Ítarlegri valkostir"
+
+#: smb4k/smb4kconfigpagemounting.cpp:681
+#, fuzzy, kde-format
+#| msgid "Client character set:"
+msgid "Character Sets"
+msgstr "Stafatafla biðlara:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:729
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Mount Settings"
+msgstr "Algengar stillingar"
+
+#: smb4k/smb4kconfigpagemounting.cpp:833
+#, fuzzy, kde-format
+msgid "Additional CIFS Options"
+msgstr "Viðbótarvalkostir:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:834
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:862
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:40
+#, fuzzy, kde-format
+msgid "Browse Settings"
+msgstr "Almennir valkostir"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:144
+#, fuzzy, kde-format
+#| msgid "Samba"
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:196
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "Wake-On-LAN"
+msgstr "Almennar stillingar"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:216
+#, kde-format
+msgid " s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:225
+#, kde-format
+msgid "Define the hosts that should be woken up via the custom options dialog."
+msgstr ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:235
+#, fuzzy, kde-format
+#| msgid "Advanced Options"
+msgid "Advanced Settings"
+msgstr "Ítarlegri valkostir"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#, fuzzy, kde-format
+msgid "Synchronization Directory"
+msgstr "Samræming"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#, fuzzy, kde-format
+#| msgid "Backup"
+msgid "Backups"
+msgstr "Öryggisafritun"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#, kde-format
+msgid "General"
+msgstr "Almennt"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#, fuzzy, kde-format
+#| msgid "Links"
+msgid "Links"
+msgstr "Tenglar"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#, fuzzy, kde-format
+#| msgid "File Deletion"
+msgid "File Handling"
+msgstr "Eyðing skráa"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#, kde-format
+msgid "Compression"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#, fuzzy, kde-format
+msgid "Files"
+msgstr "Skrá:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:310
+#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#, kde-format
+msgid " KiB"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#, kde-format
+msgid " KiB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#, kde-format
+msgid "File Transfer"
+msgstr "Skráarflutningur"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#, fuzzy, kde-format
+#| msgid "Hidden Files && Directories"
+msgid "Files && Directories"
+msgstr "Faldar skrár og möppur"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#, fuzzy, kde-format
+#| msgid "Restrictions"
+msgid "Restrictions"
+msgstr "Takmarkanir"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#, kde-format
+msgid "File Deletion"
+msgstr "Eyðing skráa"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#, kde-format
+msgid "General Filtering Settings"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#, kde-format
+msgid "Filter Rules"
+msgstr "Síureglur"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#, kde-format
+msgid "Filtering"
+msgstr "Síun"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#, fuzzy, kde-format
+#| msgid "Checksums"
+msgid "Checksums"
+msgstr "Gátsummur"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:562
+#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "Miscellaneous"
+msgstr "Almennar stillingar"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#, kde-format
+msgid "Main Window"
+msgstr ""
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:216
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Netumhverfi"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#, fuzzy, kde-format
+msgid "Shares View"
+msgstr "Sameignasýn"
+
+#: smb4k/smb4kmainwindow.cpp:134
+#, fuzzy, kde-format
+msgid "Dock Widgets"
+msgstr "flipahluta"
+
+#: smb4k/smb4kmainwindow.cpp:239 smb4k/smb4ksharesmenu.cpp:37
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Tengdar sameignir"
+
+#: smb4k/smb4kmainwindow.cpp:399
+#, fuzzy, kde-format
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"Smb4K mun keyra áfram í kerfisbakkanum. Notaðu 'Skrá->Hætta' til að hætta í "
+"forritinu."
+
+#: smb4k/smb4kmainwindow.cpp:401
+#, fuzzy, kde-format
+msgid "Docking"
+msgstr "Spjal&dhlutar"
+
+#: smb4k/smb4kmainwindow.cpp:465
+#, fuzzy, kde-format
+msgid "There are currently no shares mounted."
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#: smb4k/smb4kmainwindow.cpp:468
+#, fuzzy, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "Ekki tókst að útbúa möppuna %1."
+msgstr[1] "Ekki tókst að útbúa möppuna %1."
+
+#: smb4k/smb4kmainwindow.cpp:629
+#, fuzzy, kde-format
+#| msgid "The wallet \"%1\" could not be opened."
+msgid "The wallet is used."
+msgstr "Ekki tókst að opna veskið \"%1\"."
+
+#: smb4k/smb4kmainwindow.cpp:632
+#, fuzzy, kde-format
+#| msgid "The wallet \"%1\" could not be opened."
+msgid "The password dialog is used."
+msgstr "Ekki tókst að opna veskið \"%1\"."
+
+#: smb4k/smb4kmainwindow.cpp:642
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Leita að vinnuhópum og lénum..."
+
+#: smb4k/smb4kmainwindow.cpp:647
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Leita að miðlurum á léninu %1..."
+
+#: smb4k/smb4kmainwindow.cpp:652
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "Leita að sameignum sem boðið er upp á af miðlaranum %1..."
+
+#: smb4k/smb4kmainwindow.cpp:660 smb4k/smb4kmainwindow.cpp:668
+#, fuzzy, kde-format
+#| msgid "Looking for hosts in domain %1..."
+msgid "Looking for files and directories in %1..."
+msgstr "Leita að miðlurum á léninu %1..."
+
+#: smb4k/smb4kmainwindow.cpp:685
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:690
+#, fuzzy, kde-format
+#| msgid "Sending file to printer..."
+msgid "Sending file to printer %1..."
+msgstr "Sendi skrá á prentara..."
+
+#: smb4k/smb4kmainwindow.cpp:694
+#, fuzzy, kde-format
+#| msgid "Searching for host..."
+msgid "Searching..."
+msgstr "Leita eftir miðlara..."
+
+#: smb4k/smb4kmainwindow.cpp:712 smb4k/smb4kmainwindow.cpp:749
+#: smb4k/smb4kmainwindow.cpp:861
+#, kde-format
+msgid "Done."
+msgstr "Lokið."
+
+#: smb4k/smb4kmainwindow.cpp:722
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Mounting..."
+msgstr "Tengi"
+
+#: smb4k/smb4kmainwindow.cpp:726
+#, fuzzy, kde-format
+#| msgid "Unmounting share %1..."
+msgid "Unmounting..."
+msgstr "Aftengi sameignina %1..."
+
+#: smb4k/smb4kmainwindow.cpp:730
+#, fuzzy, kde-format
+#| msgid "Looking for hosts in domain %1..."
+msgid "Waking up host..."
+msgstr "Leita að miðlurum á léninu %1..."
+
+#: smb4k/smb4kmainwindow.cpp:760
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:793
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:849
+#, fuzzy, kde-format
+#| msgid "Synchronizing data..."
+msgid "Synchronizing %1"
+msgstr "Samræmi gögn..."
+
+#: smb4k/smb4knetworkbrowser.cpp:43
+#, kde-format
+msgid "Type"
+msgstr "Tegund"
+
+#: smb4k/smb4knetworkbrowser.cpp:44
+#, kde-format
+msgid "IP Address"
+msgstr "IP vistfang"
+
+#: smb4k/smb4knetworkbrowser.cpp:45
+#, kde-format
+msgid "Comment"
+msgstr "Athugasemd"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:472
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:484
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "&Skanna net"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#, kde-format
+msgid "&Abort"
+msgstr "Hætt&a við"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#, kde-format
+msgid "&Search"
+msgstr "&Leita"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "&Opna tengingarglugga"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
+#, kde-format
+msgid "Au&thentication"
+msgstr "Auð&kenning"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:191
+#, kde-format
+msgid "&Custom Options"
+msgstr "Sérsniðnir &valkostir"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#, kde-format
+msgid "Pre&view"
+msgstr "For&sýna"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#, kde-format
+msgid "&Print File"
+msgstr "&Prenta skrá"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:225
+#, kde-format
+msgid "&Mount"
+msgstr "&Tengja"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:184
+#, kde-format
+msgid "&Unmount"
+msgstr "&Aftengja"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:393
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "&Skanna vél"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "&Skanna vinnuhóp"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#, kde-format
+msgid "Close"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#, fuzzy, kde-format
+msgid "Search string"
+msgstr "Leitarniðurstaða"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#, kde-format
+msgid "Search"
+msgstr "Leit"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#, kde-format
+msgid "Stop"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Item Down"
+msgstr "Atriði"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Item Up"
+msgstr "Atriði"
+
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:190
+#, kde-format
+msgid "U&nmount All"
+msgstr "Afte&ngja allt"
+
+#: smb4k/smb4ksharesmenu.cpp:158
+#, fuzzy, kde-format
+#| msgid "&Unmount"
+msgid "Unmount"
+msgstr "&Aftengja"
+
+#: smb4k/smb4ksharesmenu.cpp:177
+#, fuzzy, kde-format
+msgid "Add Bookmark"
+msgstr "&Sýsla með bókamerki"
+
+#: smb4k/smb4ksharesmenu.cpp:190
+#, fuzzy, kde-format
+msgid "Synchronize"
+msgstr "Samr&æma"
+
+#: smb4k/smb4ksharesmenu.cpp:209
+#, fuzzy, kde-format
+#| msgid "Open with Konso&le"
+msgid "Open with Konsole"
+msgstr "Opna með Konso&le skjáhermi"
+
+#: smb4k/smb4ksharesmenu.cpp:223
+#, fuzzy, kde-format
+#| msgid "Open with F&ile Manager"
+msgid "Open with File Manager"
+msgstr "Opna í s&kráastjóra"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#, kde-format
+msgid "View Modes"
+msgstr ""
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:155
+#, fuzzy, kde-format
+msgid "Icon View"
+msgstr "Táknmyndasýn"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:161
+#, fuzzy, kde-format
+msgid "List View"
+msgstr "Sameignasýn"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:202
+#, kde-format
+msgid "S&ynchronize"
+msgstr "Samr&æma"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:208
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Opna með Konso&le skjáhermi"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Opna í s&kráastjóra"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:366
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "yes"
+msgstr "já"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "no"
+msgstr "nei"
+
+#: smb4k/smb4ktooltip.cpp:210
+#, fuzzy, kde-format
+#| msgid "Type"
+msgid "Type:"
+msgstr "Tegund"
+
+#: smb4k/smb4ktooltip.cpp:225
+#, fuzzy, kde-format
+msgid "Workgroup"
+msgstr "Vinnuhópur:"
+
+#: smb4k/smb4ktooltip.cpp:228
+#, fuzzy, kde-format
+#| msgid "Master browser:"
+msgid "Master Browser:"
+msgstr "Stjórnandi:"
+
+#: smb4k/smb4ktooltip.cpp:256
+#, kde-format
+msgid "Host"
+msgstr "Vél"
+
+#: smb4k/smb4ktooltip.cpp:259 smb4k/smb4ktooltip.cpp:303
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgid "Comment:"
+msgstr "Athugasemd"
+
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:345
+#, kde-format
+msgid "IP Address:"
+msgstr "IP vistfang:"
+
+#: smb4k/smb4ktooltip.cpp:283
+#, kde-format
+msgid "Workgroup:"
+msgstr "Vinnuhópur:"
+
+#: smb4k/smb4ktooltip.cpp:300
+#, fuzzy, kde-format
+#| msgid "Share"
+msgid "Share (%1)"
+msgstr "Sameign"
+
+#: smb4k/smb4ktooltip.cpp:315
+#, fuzzy, kde-format
+#| msgid "Mounted:"
+msgid "Mounted:"
+msgstr "Tengt:"
+
+#: smb4k/smb4ktooltip.cpp:334
+#, fuzzy, kde-format
+#| msgid "Host"
+msgid "Host:"
+msgstr "Vél"
+
+#: smb4k/smb4ktooltip.cpp:357 smb4k/smb4ktooltip.cpp:437
+#, fuzzy, kde-format
+msgid "Location:"
+msgstr "Aðgerðir"
+
+#: smb4k/smb4ktooltip.cpp:392 smb4k/smb4ktooltip.cpp:399
+#: smb4k/smb4ktooltip.cpp:464 smb4k/smb4ktooltip.cpp:476
+#: smb4k/smb4ktooltip.cpp:477 smb4k/smb4ktooltip.cpp:506
+#, kde-format
+msgid "unknown"
+msgstr "óþekkt"
+
+#: smb4k/smb4ktooltip.cpp:397 smb4k/smb4ktooltip.cpp:504
+#, fuzzy, kde-format
+#| msgid "%1 %2 out of %3 %4 (%5\\% used)"
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 %2 af %3 %4 (%5\\% notað)"
+
+#: smb4k/smb4ktooltip.cpp:448
+#, fuzzy, kde-format
+#| msgid "Mount point:"
+msgid "Mountpoint:"
+msgstr "Tengipunktur:"
+
+#: smb4k/smb4ktooltip.cpp:459
+#, fuzzy, kde-format
+#| msgid "User:"
+msgid "Username:"
+msgstr "Notandi:"
+
+#: smb4k/smb4ktooltip.cpp:471
+#, fuzzy, kde-format
+#| msgid "Owner"
+msgid "Owner:"
+msgstr "Eigandi"
+
+#: smb4k/smb4ktooltip.cpp:485
+#, fuzzy, kde-format
+#| msgid "File system:"
+msgid "File system:"
+msgstr "Skráarkerfi:"
+
+#: smb4k/smb4ktooltip.cpp:496
+#, fuzzy, kde-format
+#| msgid "Size:"
+msgid "Size:"
+msgstr "Stærð:"
+
+#, fuzzy
+#~| msgid "Show Share tab"
+#~ msgid "Details"
+#~ msgstr "Sýna sameignaflipa"
+
+#, fuzzy
+#~ msgid "Entry"
+#~ msgstr "Umhverfi"
+
+#, fuzzy
+#~ msgid "Username"
+#~ msgstr "Notandaviðmót"
+
+#, fuzzy
+#~| msgid "Password:"
+#~ msgid "Password"
+#~ msgstr "Lykilorð:"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgid "General:"
+#~ msgstr "Almennt"
+
+#, fuzzy
+#~| msgid "Owner"
+#~ msgid "Ownership:"
+#~ msgstr "Eigandi"
+
+#, fuzzy
+#~| msgid "General Settings"
+#~ msgid "Miscellaneous:"
+#~ msgstr "Almennar stillingar"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Sértækar síureglur:"
+
+#, fuzzy
+#~| msgid "Notifications"
+#~ msgid "Identification"
+#~ msgstr "Kerfistilkynningar"
+
+#, fuzzy
+#~| msgid "Network"
+#~ msgid "Network Item"
+#~ msgstr "Netkerfi"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "MAC Address"
+#~ msgstr "IP vistfang:"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "MAC Address:"
+#~ msgstr "IP vistfang:"
+
+#, fuzzy
+#~ msgid "Actions"
+#~ msgstr "Aðgerðir"
+
+#, fuzzy
+#~| msgid "General Settings"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Almennar stillingar"
+
+#, fuzzy
+#~| msgid "Remote Shares"
+#~ msgid "Always remount this share"
+#~ msgstr "Fjartengdar sameignir"
+
+#, fuzzy
+#~ msgid "Browse Settings:"
+#~ msgstr "Almennir valkostir"
+
+#, fuzzy
+#~| msgid "Common Options"
+#~ msgid "Common Settings:"
+#~ msgstr "Algengar stillingar"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Authentication:"
+#~ msgstr "Auðkenning"
+
+#, fuzzy
+#~ msgid "Samba Settings"
+#~ msgstr "Almennir valkostir"
+
+#~ msgid "Default Destination"
+#~ msgstr "Sjálfgefin staðsetning"
+
+#, fuzzy
+#~| msgid "File Permissions, etc."
+#~ msgid "Permissions, etc."
+#~ msgstr "Skráarheimildir o.s.frv."
+
+#~ msgid "Login"
+#~ msgstr "Innskráning"
+
+#, fuzzy
+#~ msgid "Login:"
+#~ msgstr "Tenglar"
+
+#, fuzzy
+#~ msgid "The mount process crashed."
+#~ msgstr "Forskeyti tengingar:"
+
+#, fuzzy
+#~ msgid "Protocols"
+#~ msgstr "Samskiptareglu vísbending"
+
+#, fuzzy
+#~| msgid "%1 %2 out of %3 %4 (%5\\% used)"
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 %2 af %3 %4 (%5\\% notað)"
+
+#, fuzzy
+#~ msgid "Location"
+#~ msgstr "Aðgerðir"
+
+#, fuzzy
+#~ msgid "The selected entry is removed from the wallet."
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#, fuzzy
+#~ msgid "All entries are removed from the wallet."
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#~ msgid "Password Storage"
+#~ msgstr "Geymsla lykilorðs"
+
+#, fuzzy
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Sýna IP vistfang"
+
+#, fuzzy
+#~ msgid "Undo"
+#~ msgstr "Afturkalla"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Remounting"
+#~ msgstr "Tengi"
+
+#~ msgid "Columns"
+#~ msgstr "Dálkar"
+
+#~ msgid "Tooltips"
+#~ msgstr "Vísbendingar"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Sýn"
+
+#, fuzzy
+#~| msgid "General Settings"
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Almennar stillingar"
+
+#~ msgid "Shares"
+#~ msgstr "Sameignir"
+
+#, fuzzy
+#~ msgid "Network Toolbar"
+#~ msgstr "Netleit"
+
+#, fuzzy
+#~ msgid "Search Toolbar"
+#~ msgstr "Netleit"
+
+#, fuzzy
+#~ msgid "Shares Toolbar"
+#~ msgstr "Sameignasýn"
+
+#, fuzzy
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Sameignasýn"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Hjálparforrit"
+
+#~ msgid "Network Search"
+#~ msgstr "Netleit"
+
+#, fuzzy
+#~ msgid "Enter the search string here."
+#~ msgstr "Sláðu inn vél hér"
+
+#, fuzzy
+#~ msgid "Abort"
+#~ msgstr "Hætt&a við"
+
+#, fuzzy
+#~ msgid "&Clear"
+#~ msgstr "Hr&einsa"
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " Bæti"
+
+#, fuzzy
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Undirbý forsýn..."
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "Browse List"
+#~ msgstr "Flakklisti"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "UNC Address:"
+#~ msgstr "IP vistfang:"
+
+#, fuzzy
+#~ msgid "Filesystem Port:"
+#~ msgstr "Skráarkerfi:"
+
+#, fuzzy
+#~ msgid "User ID:"
+#~ msgstr "Notandi:"
+
+#, fuzzy
+#~ msgid "Group ID:"
+#~ msgstr "Hópur:"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "MAC address:"
+#~ msgstr "IP vistfang:"
+
+#~ msgid "General Options"
+#~ msgstr "Almennir valkostir"
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "&Sýsla með bókamerki"
+
+#, fuzzy
+#~ msgid "Add Group"
+#~ msgstr "Bæta við hópi"
+
+#, fuzzy
+#~ msgid "Label:"
+#~ msgstr "Merki:"
+
+#, fuzzy
+#~ msgid "Group:"
+#~ msgstr "Hópur:"
+
+#, fuzzy
+#~ msgid "Group name:"
+#~ msgstr "Hópur:"
+
+#~ msgid "Copying"
+#~ msgstr "Afrita"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Skráareyðing og sending"
+
+#, fuzzy
+#~ msgid "The network browser could not be created."
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "The shares view could not be created."
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#, fuzzy
+#~| msgid "The network browser KPart of Smb4K"
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "KPart netvafri Smb4K"
+
+#, fuzzy
+#~| msgid "\\u00A9 2007-2010, Alexander Reinholdt"
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2010, Alexander Reinholdt"
+
+#, fuzzy
+#~ msgid "Search item:"
+#~ msgstr "Leit"
+
+#, fuzzy
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "netvafri"
+
+#, fuzzy
+#~| msgid "Open with Konso&le"
+#~ msgid "Open With"
+#~ msgstr "Opna með Konso&le skjáhermi"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "KPart sameignasýn Smb4K"
+
+#, fuzzy
+#~ msgid "&Shares"
+#~ msgstr "Sameignir"
+
+#, fuzzy
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~ msgid "Checks"
+#~ msgstr "Gátsummur"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Leita að meiri upplýsingum um miðlarann %1..."
+
+#, fuzzy
+#~| msgid "Mounting share %1..."
+#~ msgid "Mounting share..."
+#~ msgstr "Tengi sameignina %1..."
+
+#, fuzzy
+#~| msgid "WINS server"
+#~ msgid "Server"
+#~ msgstr "WINS þjónn"
+
+#, fuzzy
+#~| msgid "Operating system:"
+#~ msgid "Operating system"
+#~ msgstr "Stýrikerfi:"
+
+#, fuzzy
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~| msgid "Unmounting all shares..."
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Aftengi allar sameignir..."
+
+#~ msgid "File System"
+#~ msgstr "Skráarkerfi"
+
+#~ msgid "Free"
+#~ msgstr "Laust"
+
+#~ msgid "Used"
+#~ msgstr "Notað"
+
+#~ msgid "Total"
+#~ msgstr "Samtals"
+
+#~ msgid "Usage"
+#~ msgstr "Notkun"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Fjarlægar gáttir"
+
+#~ msgid "Hardware"
+#~ msgstr "Vélbúnaður"
+
+#, fuzzy
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr "Setja skrár sem eru sendar að hluta í"
+
+#, fuzzy
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Tenging og aftenging"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Fjartengdar sameignir"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Forskoðunargluggi"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Show notifications"
+#~ msgstr "Auðkenning"
+
+#, fuzzy
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#~ msgid "Show printer shares"
+#~ msgstr "Sýna prentara sameignir"
+
+#, fuzzy
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Sýna faldar sameignir"
+
+#, fuzzy
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Sýna faldar sameignir"
+
+#, fuzzy
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Sýna faldar sameignir"
+
+#, fuzzy
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "Show the type of the share"
+#~ msgstr "Sýna faldar sameignir"
+
+#, fuzzy
+#~ msgid "Show the IP address of the server"
+#~ msgstr "Sýna IP vistfang"
+
+#, fuzzy
+#~ msgid "Show the comment"
+#~ msgstr "Sýna athugasemdir"
+
+#, fuzzy
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "Sýna vísbendingar með upplýsingum um nethlut"
+
+#, fuzzy
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr "Sýna vísbendingar með upplýsingum um nethlut"
+
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Sýna tengipunkt í stað nafns á sameign"
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "Sýna allar sameignir sem eru tengdar kerfinu"
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Sýna vísbendingar með upplýsingar um sameign"
+
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr "Sýna vísbendingar með ýmsar upplýsingar um sameign."
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Sýna notanda og hóp"
+
+#~ msgid "Show the login name"
+#~ msgstr "Sýna innskráningarnafn"
+
+#~ msgid "Show the file system"
+#~ msgstr "Sýna skráarkerfi"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr "Sýna skráarkerfið sem notað var við tengingu sameignar."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Sýna laust diskpláss"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "Sýna laust diskpláss sem eftir er á sameign."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Sýna notað diskpláss"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "Sýna það diskpláss sem þegar hefur verið notað á sameign."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Sýna heildardiskpláss"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "Sýna heildardiskpláss á sameign."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Sýna disknotkun"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr "Sýna það diskpláss sem notað er á sameign (í prósentum.)"
+
+#~ msgid "Preview hidden files and directories"
+#~ msgstr "Forskoða faldar skrár og möppur"
+
+#, fuzzy
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Spyrja stjórnvafra (master browser) um flakklistann"
+
+#, fuzzy
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#, fuzzy
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Gerfi stjórnandi:"
+
+#, fuzzy
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#, fuzzy
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Útvörpunarvistfang:"
+
+#, fuzzy
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr "Villa kom upp þegar reynt var að nálgast flakklistann."
+
+#, fuzzy
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr "Netnágrenni"
+
+#~ msgid "Mount prefix:"
+#~ msgstr "Forskeyti tengingar:"
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "Þvinga möppur sem eru búnar til að vera í lágstöfum"
+
+#, fuzzy
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr "Þvinga möppur sem eru búnar til að vera í lágstöfum"
+
+#, fuzzy
+#~ msgid "Unmount all personal shares on exit"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr "Endurtengja við ræsingu sameignir sem hafa verið notaðar nýlega"
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "Leyfa aftengingu af sameignum sem aðrir notendur eiga"
+
+#, fuzzy
+#~| msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr "Leyfa aftengingu af sameignum sem aðrir notendur eiga"
+
+#, fuzzy
+#~ msgid "Save logins in a wallet"
+#~ msgstr "Geyma innskráningarupplýsingar í veskinu"
+
+#, fuzzy
+#~ msgid "Use a default login"
+#~ msgstr "Nota sjálfgefna innskráningu"
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS nafn:"
+
+#~ msgid "Domain:"
+#~ msgstr "Lén:"
+
+#~ msgid "Socket options:"
+#~ msgstr "Sökkul valkostir:"
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS svið:"
+
+#~ msgid "SMB port:"
+#~ msgstr "SMB gátt:"
+
+#~ msgid "File system port:"
+#~ msgstr "Skráarkerfisgátt:"
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Reyna auðkenningu með Kerberos"
+
+#, fuzzy
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Sama auðkenni og á vél"
+
+#, fuzzy
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#, fuzzy
+#~| msgid "Signing State"
+#~ msgid "Signing state:"
+#~ msgstr "Staða auðkenningar"
+
+#~ msgid "None"
+#~ msgstr "Ekkert"
+
+#~ msgid "On"
+#~ msgstr "Á"
+
+#~ msgid "Off"
+#~ msgstr "Af"
+
+#~ msgid "Required"
+#~ msgstr "Nauðsynlegt"
+
+#~ msgid "default"
+#~ msgstr "sjálfgefið"
+
+#~ msgid "iso8859-1"
+#~ msgstr "iso8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "iso8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "iso8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "iso8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "iso8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "iso8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "iso8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "iso8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "iso8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "iso8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "iso8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "iso8859-15"
+
+#~ msgid "utf8"
+#~ msgstr "utf8"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "koi8-u"
+#~ msgstr "koi8-u"
+
+#~ msgid "koi8-ru"
+#~ msgstr "koi8-ru"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "gb2312"
+#~ msgstr "gb2312"
+
+#~ msgid "big5"
+#~ msgstr "big5"
+
+#~ msgid "euc-jp"
+#~ msgstr "euc-jp"
+
+#~ msgid "euc-kr"
+#~ msgstr "euc-kr"
+
+#~ msgid "tis-620"
+#~ msgstr "tis-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Stafatafla miðlara:"
+
+#~ msgid "cp437"
+#~ msgstr "cp437"
+
+#~ msgid "cp720"
+#~ msgstr "cp720"
+
+#~ msgid "cp737"
+#~ msgstr "cp737"
+
+#~ msgid "cp775"
+#~ msgstr "cp775"
+
+#~ msgid "cp850"
+#~ msgstr "cp850"
+
+#~ msgid "cp852"
+#~ msgstr "cp852"
+
+#~ msgid "cp855"
+#~ msgstr "cp855"
+
+#~ msgid "cp857"
+#~ msgstr "cp857"
+
+#~ msgid "cp858"
+#~ msgstr "cp858"
+
+#~ msgid "cp860"
+#~ msgstr "cp860"
+
+#~ msgid "cp861"
+#~ msgstr "cp861"
+
+#~ msgid "cp862"
+#~ msgstr "cp862"
+
+#~ msgid "cp863"
+#~ msgstr "cp863"
+
+#~ msgid "cp864"
+#~ msgstr "cp864"
+
+#~ msgid "cp865"
+#~ msgstr "cp865"
+
+#~ msgid "cp866"
+#~ msgstr "cp866"
+
+#~ msgid "cp869"
+#~ msgstr "cp869"
+
+#~ msgid "cp874"
+#~ msgstr "cp874"
+
+#~ msgid "cp932"
+#~ msgstr "cp932"
+
+#~ msgid "cp936"
+#~ msgstr "cp936"
+
+#~ msgid "cp949"
+#~ msgstr "cp949"
+
+#~ msgid "cp950"
+#~ msgstr "cp950"
+
+#~ msgid "cp1250"
+#~ msgstr "cp1250"
+
+#~ msgid "cp1252"
+#~ msgstr "cp1252"
+
+#~ msgid "cp1253"
+#~ msgstr "cp1253"
+
+#~ msgid "cp1254"
+#~ msgstr "cp1254"
+
+#~ msgid "cp1255"
+#~ msgstr "cp1255"
+
+#~ msgid "cp1256"
+#~ msgstr "cp1256"
+
+#~ msgid "cp1257"
+#~ msgstr "cp1257"
+
+#~ msgid "cp1258"
+#~ msgstr "cp1258"
+
+#~ msgid "unicode"
+#~ msgstr "unicode"
+
+#~ msgid "File mask:"
+#~ msgstr "Skráarmöskvi:"
+
+#~ msgid "Directory mask:"
+#~ msgstr "Möppumöskvi:"
+
+#, fuzzy
+#~| msgid "Write Access"
+#~ msgid "Write access:"
+#~ msgstr "Skrifaðgangur"
+
+#~ msgid "read-write"
+#~ msgstr "lesa-skrifa"
+
+#~ msgid "read-only"
+#~ msgstr "bara-lesa"
+
+#, fuzzy
+#~ msgid "Do permission checks"
+#~ msgstr "Heimildir"
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Vísbending samskiptamáta:"
+
+#, fuzzy
+#~ msgid "Automatic detection"
+#~ msgstr "Auðkenning"
+
+#, fuzzy
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "Stýrikerfi:"
+
+#, fuzzy
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "Stýrikerfi:"
+
+#, fuzzy
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "Virk mappa (LDAP/Kerberos)"
+
+#, fuzzy
+#~ msgid "Name resolve order:"
+#~ msgstr "Leysiröð:"
+
+#~ msgid "Buffer size:"
+#~ msgstr "Stærð biðminnis:"
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Útvörpunarvistfang:"
+
+#, fuzzy
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr "Reyna að nota UDP gátt 137 til að senda og móttaka UDP gögn"
+
+#, fuzzy
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#, fuzzy
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLM protocol"
+#~ msgstr "Samskiptaregla"
+
+#, fuzzy
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "Samskiptaregla"
+
+#, fuzzy
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "Samskiptaregla"
+
+#, fuzzy
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#~ msgid "Archive mode"
+#~ msgstr "Safnskráahamur"
+
+#~ msgid "Recurse into subdirectories"
+#~ msgstr "Fara endurkvæmt í undirmöppur"
+
+#~ msgid "Recurse into directories (-r, --recursive)."
+#~ msgstr "Fara endurkvæmt í möppur (-r, --recursive)."
+
+#~ msgid "Update files"
+#~ msgstr "Uppfæra skrár"
+
+#, fuzzy
+#~ msgid "Update files in place"
+#~ msgstr "Uppfæra áfangaskrár"
+
+#~ msgid "Use relative path names"
+#~ msgstr "Nota afstæð slóðaheiti"
+
+#~ msgid "Do not send implied directories"
+#~ msgstr "Ekki senda óbeinar möppur"
+
+#~ msgid "Transfer directories without recursing"
+#~ msgstr "Senda möppur án þess að fara endurkvæmt niður í þær"
+
+#~ msgid "Compress data during transfer"
+#~ msgstr "Þjappa gögnum við sendingu"
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Varðveita tákntengla"
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Umbreyta tákntenglum"
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Bara umbreyta óöruggum tákntenglum"
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Hunsa óörugga tákntengla"
+
+#~ msgid "Preserve hard links"
+#~ msgstr "Varðveita fasta tengla"
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Halda möpputákntenglum"
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Varðveita heimildir"
+
+#~ msgid "Preserve group"
+#~ msgstr "Varðveita hóp"
+
+#~ msgid "Preserve owner"
+#~ msgstr "Varðveita eiganda"
+
+#~ msgid "Preserve device and special files"
+#~ msgstr "Varðveita tæki og sérskrár"
+
+#~ msgid "Preserve times"
+#~ msgstr "Varðveita tíma"
+
+#~ msgid "Omit directories when preserving times"
+#~ msgstr "Sleppa möppum þegar tími er varðveittur"
+
+#, fuzzy
+#~ msgid "Delete extraneous files"
+#~ msgstr "Eyða einnig undanskildum skrám frá áfangastað"
+
+#, fuzzy
+#~ msgid "Delete files before transfer"
+#~ msgstr "Eyða skrám á áfangastað áður en sent er"
+
+#, fuzzy
+#~ msgid "Delete files after transfer"
+#~ msgstr "Eyða skrám á áfangastað eftir sendingu"
+
+#, fuzzy
+#~ msgid "Delete files during transfer"
+#~ msgstr "Eyða skrám á áfangastað meðan sent er"
+
+#, fuzzy
+#~ msgid "Also delete excluded files"
+#~ msgstr "Eyða einnig undanskildum skrám frá áfangastað"
+
+#~ msgid "Delete even if I/O errors occur"
+#~ msgstr "Eyða jafnvel þótt inn/út villa eigi sér stað"
+
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Þvinga eyðingu af ófyrndum möppum"
+
+#, fuzzy
+#~| msgid "Don't delete more than this many files:"
+#~ msgid "Do not delete more than this many files:"
+#~ msgstr "Ekki eyða fleiri en þetta skrám:"
+
+#, fuzzy
+#~ msgid "Do not transfer any file smaller than:"
+#~ msgstr "Ekki senda skrár minni en"
+
+#, fuzzy
+#~ msgid "Do not transfer any file larger than:"
+#~ msgstr "Ekki senda skrár stærri en"
+
+#~ msgid "Keep partially transferred files"
+#~ msgstr "Halda skrám sem eru sendar að hluta"
+
+#, fuzzy
+#~ msgid "Put partially transferred files into:"
+#~ msgstr "Setja skrár sem eru sendar að hluta í"
+
+#~ msgid "Auto-ignore files in the same way CVS does"
+#~ msgstr "Hunda skrár sjálfkrafa á sama hátt og CVS gerir"
+
+#~ msgid "Exclude files matching this pattern:"
+#~ msgstr "Undanskilja skrár sem passa við mynstrið:"
+
+#, fuzzy
+#~ msgid "Read exclude patterns from:"
+#~ msgstr "Lesa undanskilningsmynstur frá"
+
+#, fuzzy
+#~| msgid "Don't exclude files matching this pattern:"
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Ekki undanskilja skrár sem passa við mynstrið:"
+
+#, fuzzy
+#~ msgid "Read include patterns from:"
+#~ msgstr "Lesa taka með mynstur frá"
+
+#, fuzzy
+#~ msgid "Custom filter rules:"
+#~ msgstr "Síureglur"
+
+#, fuzzy
+#~ msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+#~ msgstr "Nota \"--filter='- .rsync-filter'\" síuregluna"
+
+#, fuzzy
+#~ msgid "Use --filter='exclude .rsync-filter' filter rule"
+#~ msgstr "Nota \"--filter='- .rsync-filter'\" síuregluna"
+
+#~ msgid "Handle sparse files efficiently"
+#~ msgstr "Höndla dreifðar skrár á skilvirkan hátt"
+
+#~ msgid "Copy files whole (no rsync algorithm)"
+#~ msgstr "Afrita skrár heilar (engin rsync algrími)"
+
+#, fuzzy
+#~ msgid "Do not cross file system boundaries"
+#~ msgstr "Ekki fara yfir skil skráarkerfis"
+
+#~ msgid "Only update files that already exist"
+#~ msgstr "Bara uppfæra skrár sem finnast fyrir"
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Hunsa skrár sem finnast fyrir"
+
+#, fuzzy
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Eyða skrám á áfangastað eftir sendingu"
+
+#~ msgid "Make backups"
+#~ msgstr "Búa til öryggisafrit"
+
+#~ msgid "Backup suffix:"
+#~ msgstr "Viðskeyti öryggisafrits:"
+
+#~ msgid "Backup suffix"
+#~ msgstr "Viðskeyti öryggisafrits"
+
+#~ msgid "Backup directory:"
+#~ msgstr "Afritunarmappa:"
+
+#~ msgid "Backup directory"
+#~ msgstr "Afritunarmappa"
+
+#~ msgid "Force fixed checksum block size:"
+#~ msgstr "Þvinga fasta blokkastærð gátsummu:"
+
+#~ msgid "The block size"
+#~ msgstr "Blokkarstærð"
+
+#~ msgid "Set block/file checksum seed:"
+#~ msgstr "Setja blokkar/skráar gátsummu sendingu:"
+
+#, fuzzy
+#~ msgid "The checksum seed"
+#~ msgstr "Setja blokkar/skráar gátsummu sendingu:"
+
+#, fuzzy
+#~ msgid "Skip files based on checksum"
+#~ msgstr "Sleppa byggt á gátsummu"
+
+#, fuzzy
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#, fuzzy
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#, fuzzy
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#, fuzzy
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#, fuzzy
+#~| msgid "The net command '%1' is not supported by Smb4K."
+#~ msgid "The format of %1 is not supported."
+#~ msgstr "Netskipunin '%1' er ekki studd af Smb4K."
+
+#, fuzzy
+#~ msgid "Add Bookmarks"
+#~ msgstr "&Sýsla með bókamerki"
+
+#, fuzzy
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Bókamerki"
+
+#, fuzzy
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "SMB Port:"
+#~ msgstr "Fjarlæg SMB gátt:"
+
+#~ msgid "Specify User"
+#~ msgstr "Tilgreina notanda"
+
+#, fuzzy
+#~| msgid "Please specify a user name."
+#~ msgid "Please specify a username."
+#~ msgstr "Vinsamlega tilgreindu notandanafn."
+
+#, fuzzy
+#~| msgid "Mount Share"
+#~ msgid "Foreign Share"
+#~ msgstr "Tengja sameign"
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Aftengi sameignina %1..."
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Aftengi sameignina %1..."
+
+#~ msgid "Mount Share"
+#~ msgstr "Tengja sameign"
+
+#, fuzzy
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Inntakið á sameigninni er rangt. Það verður að vera í sniðinu //VÉL/"
+#~ "SAMEIGN."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Bæta þessari sameign við bókamerki"
+
+#, fuzzy
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "Open"
+#~ msgstr "Opna"
+
+#, fuzzy
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "Ekki tókst að útbúa möppuna %1."
+#~ msgstr[1] "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "Ekki tókst að útbúa möppuna %1."
+#~ msgstr[1] "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#~ "the file to PDF or Postscript and try again.</p>"
+#~ msgstr ""
+#~ "Það er ekki stuðningur við Mime tegundina \"%1\". Vinsamlega umbreyttu "
+#~ "skránni í PostScript eða PDF."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr "Útvörpunarvistfang:"
+
+#, fuzzy
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr "Útvörpunarvistfang:"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Undirbý forsýn..."
+
+#, fuzzy
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "Undirbý forsýn..."
+
+#, fuzzy
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~ "is owned by the user <b>%3</b>.</p>"
+#~ msgstr "Þú hefur ekki heimildir til að aftengja þessa sameign."
+
+#, fuzzy
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr "Ekki tókst að finna skipunina %1."
+
+#, fuzzy
+#~ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#~ msgstr "Það er ekki hægt að setja bókamerki á prentara."
+
+#, fuzzy
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "Ekki tókst að finna skipunina %1."
+
+#, fuzzy
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~| msgid "The permission was denied. "
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code:<tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr "Aðgangi var hafnað. "
+
+#, fuzzy
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#~ msgid "Preview"
+#~ msgstr "Forsýn"
+
+#, fuzzy
+#~ msgid "Reload"
+#~ msgstr "Tilbúin."
+
+#, fuzzy
+#~ msgid "Back"
+#~ msgstr "Afrita"
+
+#, fuzzy
+#~ msgid "Forward"
+#~ msgstr "Áfram"
+
+#~ msgid "Up"
+#~ msgstr "Upp"
+
+#~ msgid "Print File"
+#~ msgstr "Prenta skrá"
+
+#~ msgid "Printer"
+#~ msgstr "Prentari"
+
+#~ msgid "File:"
+#~ msgstr "Skrá:"
+
+#~ msgid "Copies:"
+#~ msgstr "Afrit:"
+
+#~ msgid "Disk"
+#~ msgstr "Diskur"
+
+#, fuzzy
+#~| msgid "Synchronizing data..."
+#~ msgid "Synchronizing"
+#~ msgstr "Samræmi gögn..."
+
+#, fuzzy
+#~| msgid "Source:"
+#~ msgid "Source"
+#~ msgstr "Upphaf:"
+
+#, fuzzy
+#~| msgid "Destination:"
+#~ msgid "Destination"
+#~ msgstr "Áfangastaður:"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Slóðir diskminnis"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Upphaf og áfangastaður diskminnis"
+
+#~ msgid "Source:"
+#~ msgstr "Upphaf:"
+
+#~ msgid "Destination:"
+#~ msgstr "Áfangastaður:"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#, fuzzy
+#~| msgid "&Open Mount Dialog"
+#~ msgid "Mount Dialog"
+#~ msgstr "&Opna tengingarglugga"
+
+#, fuzzy
+#~| msgid "U&nmount All"
+#~ msgid "Unmount All"
+#~ msgstr "Afte&ngja allt"
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Aftengi sameignina %1..."
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "IP address:"
+#~ msgstr "IP vistfang:"
+
+#, fuzzy
+#~ msgid "Mount"
+#~ msgstr "&Tengja"
+
+#, fuzzy
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr "Ekki tókst að finna möppuna %1."
+
+#~ msgid "Advanced"
+#~ msgstr "Nánar"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr "Þú hefur ekki heimildir til að aftengja þessa sameign."
+
+#, fuzzy
+#~| msgid "&Force Unmounting"
+#~ msgid "Force Unmounting"
+#~ msgstr "Þvinga a&ftengingu"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr "(c) 2003-2006, Alexander Reinholdt og Smb4K teymið"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "Þvinga a&ftengingu"
+
+#, fuzzy
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#~ msgid "UNC Address"
+#~ msgstr "UNC vistfang"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "Notandaauðkenni (UID)"
+
+#~ msgid "Group ID"
+#~ msgstr "Hópauðkenni (GID)"
+
+#~ msgid "SMB Port"
+#~ msgstr "SMB gátt"
+
+#~ msgid "File System Port"
+#~ msgstr "Skráarkerfisgátt"
+
+#~ msgid "Automatic"
+#~ msgstr "Sjálfvirkt"
+
+#~ msgid "A&dd"
+#~ msgstr "Bæta &við"

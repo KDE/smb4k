@@ -1,0 +1,4594 @@
+# translation of smb4k.po to
+# translation of smb4k.po to Karoly Barcza
+# translation of hu.po to Karoly Barcza
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Barcza Károly <kbarcza@blackpanther.hu>, 2004.
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2011, 2012, 2015.
+# Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"PO-Revision-Date: 2015-09-07 11:14+0200\n"
+"Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kiszel Kristóf,Úr Balázs"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ulysses@kubuntu.org,urbalazs@gmail.com"
+
+#: helpers/smb4kmounthelper.cpp:136
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "A csatolási folyamat nem indítható el."
+
+#: helpers/smb4kmounthelper.cpp:179
+#, fuzzy, kde-format
+#| msgid "The mountpoint is invalid."
+msgid "The mountpoint %1 is invalid."
+msgstr "A csatolási pont érvénytelen."
+
+#: helpers/smb4kmounthelper.cpp:241
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr "A lecsatolási folyamat nem indítható el."
+
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:45
+#, fuzzy, kde-format
+#| msgid ""
+#| "The advanced network neighborhood browser and Samba share mounting "
+#| "utility for KDE."
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr ""
+"Speciális hálózatimappa-böngésző és Samba megosztás csatoló segédprogram a "
+"KDE-hez."
+
+#: smb4k/main.cpp:47
+#, fuzzy, kde-format
+#| msgid "\\u00A9 2003-2015 Alexander Reinholdt"
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "\\u00A9 Alexander Reinholdt, 2003-2015."
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Developer"
+msgstr "Fejlesztő"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr ""
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Donator"
+msgstr ""
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Fájl"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Hálózat"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "Me&gosztások"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "&Könyvjelzők"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "&Beállítások"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Fő eszköztár"
+
+#: smb4k/smb4kbookmarkmenu.cpp:29
+#, kde-format
+msgid "Bookmarks"
+msgstr "Könyvjelzők"
+
+#: smb4k/smb4kbookmarkmenu.cpp:50
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "Könyvjelzők szerkesztés&e"
+
+#: smb4k/smb4kbookmarkmenu.cpp:59 smb4k/smb4kmainwindow.cpp:144
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:196
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "Kö&nyvjelző hozzáadása"
+
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "Az összes könyvjelző csatolása"
+
+#: smb4k/smb4kconfigdialog.cpp:107
+#, kde-format
+msgid "User Interface"
+msgstr "Felhasználói felület"
+
+#: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
+#, kde-format
+msgid "Network"
+msgstr "Hálózat"
+
+#: smb4k/smb4kconfigdialog.cpp:109
+#, kde-format
+msgid "Mounting"
+msgstr "Csatolás"
+
+#: smb4k/smb4kconfigdialog.cpp:110
+#, kde-format
+msgid "Authentication"
+msgstr "Hitelesítés"
+
+#: smb4k/smb4kconfigdialog.cpp:111
+#, kde-format
+msgid "Synchronization"
+msgstr "Szinkronizálás"
+
+#: smb4k/smb4kconfigdialog.cpp:112
+#, kde-format
+msgid "Custom Options"
+msgstr "Egyéni beállítások"
+
+#: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kprofilesmenu.cpp:22
+#, kde-format
+msgid "Profiles"
+msgstr "Profilok"
+
+#: smb4k/smb4kconfigdialog.cpp:135
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:34
+#, kde-format
+msgid "Settings"
+msgstr "Beállítások"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:64
+#, fuzzy, kde-format
+#| msgid "Wallet Entries"
+msgid "Wallet Entries"
+msgstr "A jelszótároló bejegyzései"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:97
+#, kde-format
+msgid "Load"
+msgstr "Betöltés"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#, kde-format
+msgid "Save"
+msgstr "Mentés"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagecustomoptions.cpp:82
+#, kde-format
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagecustomoptions.cpp:87
+#, kde-format
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:136
+#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#, fuzzy, kde-format
+#| msgid "&Clear"
+msgid "Clear"
+msgstr "&Törlés"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:201
+#, kde-format
+msgid "Default Login"
+msgstr "Alapértelmezett belépés"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#, kde-format
+msgid "Enter the default login information."
+msgstr "Adja meg az alapértelmezett bejelentkezési információkat."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:401
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+msgid "Set the username and password for wallet entry %1."
+msgstr ""
+"<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> géphez.</qt>"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:403
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+msgid "Set the username and password for the default login."
+msgstr ""
+"<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> géphez.</qt>"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:92
+#, kde-format
+msgid "Clear List"
+msgstr "Lista törlése"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:215
+#, kde-format
+msgid "The item %1 was removed, because all custom options were reset."
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
+#, kde-format
+msgid "Directories"
+msgstr "Mappák"
+
+#: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
+#: smb4k/smb4kconfigpagenetwork.cpp:112
+#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#, kde-format
+msgid "Behavior"
+msgstr "Működés"
+
+#: smb4k/smb4kconfigpagemounting.cpp:139 smb4k/smb4kconfigpagemounting.cpp:544
+#, kde-format
+msgid " min"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
+#: smb4k/smb4kconfigpagenetwork.cpp:133
+#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#, fuzzy, kde-format
+#| msgid "Settings"
+msgid "Basic Settings"
+msgstr "Beállítások"
+
+#: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
+#, kde-format
+msgid "Common Options"
+msgstr "Közös beállítások"
+
+#: smb4k/smb4kconfigpagemounting.cpp:228
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
+#, kde-format
+msgid "Choose a different user"
+msgstr "Válasszon másik felhasználót"
+
+#: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
+#, kde-format
+msgid "Choose a different group"
+msgstr "Válasszon másik csoportot"
+
+#: smb4k/smb4kconfigpagemounting.cpp:336
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Common Mount Settings"
+msgstr "Közös beállítások"
+
+#: smb4k/smb4kconfigpagemounting.cpp:344
+#, kde-format
+msgid "Advanced Options"
+msgstr "Speciális beállítások"
+
+#: smb4k/smb4kconfigpagemounting.cpp:457
+#, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "További CIFS beállítások szerkesztése."
+
+#: smb4k/smb4kconfigpagemounting.cpp:470
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Advanced Mount Settings"
+msgstr "Speciális beállítások"
+
+#: smb4k/smb4kconfigpagemounting.cpp:681
+#, fuzzy, kde-format
+#| msgid "Client character set:"
+msgid "Character Sets"
+msgstr "Kliensoldali karakterkészlet:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:729
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Mount Settings"
+msgstr "Közös beállítások"
+
+#: smb4k/smb4kconfigpagemounting.cpp:833
+#, kde-format
+msgid "Additional CIFS Options"
+msgstr "További CIFS beállítások"
+
+#: smb4k/smb4kconfigpagemounting.cpp:834
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:862
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:40
+#, fuzzy, kde-format
+#| msgid "Settings"
+msgid "Browse Settings"
+msgstr "Beállítások"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:144
+#, fuzzy, kde-format
+#| msgid "Samba"
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:196
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:216
+#, kde-format
+msgid " s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:225
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
+msgid "Define the hosts that should be woken up via the custom options dialog."
+msgstr ""
+"<qt>Határozza meg azokat a gépeket, amelyek felébreszthetők az egyéni "
+"beállítások párbeszédablakon keresztül.</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:235
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Advanced Settings"
+msgstr "Speciális beállítások"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#, fuzzy, kde-format
+#| msgid "Synchronization prefix:"
+msgid "Synchronization Directory"
+msgstr "Szinkronizációs előtag:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#, fuzzy, kde-format
+#| msgid "Backup"
+msgid "Backups"
+msgstr "Biztonsági mentés"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#, kde-format
+msgid "General"
+msgstr "Általános"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#, fuzzy, kde-format
+#| msgid "Links"
+msgid "Links"
+msgstr "Hivatkozások"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#, fuzzy, kde-format
+#| msgid "File Deletion"
+msgid "File Handling"
+msgstr "Fájltörlés"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#, kde-format
+msgid "Compression"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#, fuzzy, kde-format
+#| msgid "File"
+msgid "Files"
+msgstr "Fájl"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:310
+#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#, kde-format
+msgid " KiB"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#, kde-format
+msgid " KiB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#, kde-format
+msgid "File Transfer"
+msgstr "Fájlátvitel"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#, fuzzy, kde-format
+#| msgid "Hidden Files && Directories"
+msgid "Files && Directories"
+msgstr "Rejtett fájlok és mappák"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#, fuzzy, kde-format
+#| msgid "Restrictions"
+msgid "Restrictions"
+msgstr "Korlátozások"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#, kde-format
+msgid "File Deletion"
+msgstr "Fájltörlés"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "General Filtering Settings"
+msgstr "Általános beállítások"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#, kde-format
+msgid "Filter Rules"
+msgstr "Szűrési szabályok"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#, kde-format
+msgid "Filtering"
+msgstr "Szűrés"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#, fuzzy, kde-format
+#| msgid "Checksums"
+msgid "Checksums"
+msgstr "Ellenőrzőösszegek"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:562
+#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#, fuzzy, kde-format
+#| msgid "Miscellaneous Settings"
+msgid "Miscellaneous"
+msgstr "Egyéb beállítások"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#, kde-format
+msgid "Main Window"
+msgstr ""
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:216
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Hálózati mappa"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#, kde-format
+msgid "Shares View"
+msgstr "Megosztások nézet"
+
+#: smb4k/smb4kmainwindow.cpp:134
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Widgetek dokkolása"
+
+#: smb4k/smb4kmainwindow.cpp:239 smb4k/smb4ksharesmenu.cpp:37
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Csatolt megosztások"
+
+#: smb4k/smb4kmainwindow.cpp:399
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Closing the main window will keep Smb4K running in the system tray. "
+#| "Use 'Quit' from the 'File' menu to quit the application.</p>"
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<p>A főablak bezárása után az Smb4K tovább fut a paneltálcán. Használja a "
+"„Fájl” menü „Kilépés” pontját az alkalmazás bezáráshoz.</p>"
+
+#: smb4k/smb4kmainwindow.cpp:401
+#, kde-format
+msgid "Docking"
+msgstr "Dokkolás"
+
+#: smb4k/smb4kmainwindow.cpp:465
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr "Nincsenek csatolt megosztások."
+
+#: smb4k/smb4kmainwindow.cpp:468
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "%1 csatolt megosztás van."
+msgstr[1] "%1 csatolt megosztás van."
+
+#: smb4k/smb4kmainwindow.cpp:629
+#, fuzzy, kde-format
+#| msgid "The wallet is in use."
+msgid "The wallet is used."
+msgstr "A jelszótároló használatban van."
+
+#: smb4k/smb4kmainwindow.cpp:632
+#, fuzzy, kde-format
+#| msgid "The password dialog mode is used."
+msgid "The password dialog is used."
+msgstr "A jelszóablak mód van használva."
+
+#: smb4k/smb4kmainwindow.cpp:642
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Munkacsoportok és tartományok keresése…"
+
+#: smb4k/smb4kmainwindow.cpp:647
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Gépek keresése a(z) %1 tartományban…"
+
+#: smb4k/smb4kmainwindow.cpp:652
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "A(z) %1 gép által nyújtott megosztások keresése…"
+
+#: smb4k/smb4kmainwindow.cpp:660 smb4k/smb4kmainwindow.cpp:668
+#, fuzzy, kde-format
+#| msgid "Looking for hosts in domain %1..."
+msgid "Looking for files and directories in %1..."
+msgstr "Gépek keresése a(z) %1 tartományban…"
+
+#: smb4k/smb4kmainwindow.cpp:685
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr "Távoli gépek felébresztése…"
+
+#: smb4k/smb4kmainwindow.cpp:690
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Fájl küldése a(z) %1 nyomtatóra…"
+
+#: smb4k/smb4kmainwindow.cpp:694
+#, fuzzy, kde-format
+msgid "Searching..."
+msgstr "Keresés a hálózaton:"
+
+#: smb4k/smb4kmainwindow.cpp:712 smb4k/smb4kmainwindow.cpp:749
+#: smb4k/smb4kmainwindow.cpp:861
+#, kde-format
+msgid "Done."
+msgstr "Kész."
+
+#: smb4k/smb4kmainwindow.cpp:722
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Mounting..."
+msgstr "Csatolás"
+
+#: smb4k/smb4kmainwindow.cpp:726
+#, fuzzy, kde-format
+#| msgid "Unmounting share %1..."
+msgid "Unmounting..."
+msgstr "%1 megosztás leválasztása…"
+
+#: smb4k/smb4kmainwindow.cpp:730
+#, fuzzy, kde-format
+#| msgid "Waking up host %1..."
+msgid "Waking up host..."
+msgstr "%1 gép felébresztése…"
+
+#: smb4k/smb4kmainwindow.cpp:760
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "%1 sikeresen csatolva."
+
+#: smb4k/smb4kmainwindow.cpp:793
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "%1 sikeresen leválasztva."
+
+#: smb4k/smb4kmainwindow.cpp:849
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "%1 szinkronizálása"
+
+#: smb4k/smb4knetworkbrowser.cpp:43
+#, kde-format
+msgid "Type"
+msgstr "Típus"
+
+#: smb4k/smb4knetworkbrowser.cpp:44
+#, kde-format
+msgid "IP Address"
+msgstr "IP-cím"
+
+#: smb4k/smb4knetworkbrowser.cpp:45
+#, kde-format
+msgid "Comment"
+msgstr "Megjegyzés"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:472
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:484
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "Hálózat &pásztázása"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#, kde-format
+msgid "&Abort"
+msgstr "&Megszakítás"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#, kde-format
+msgid "&Search"
+msgstr "Kere&sés"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "Csat&olási párbeszédablak megnyitása"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
+#, kde-format
+msgid "Au&thentication"
+msgstr "H&itelesítés"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:191
+#, kde-format
+msgid "&Custom Options"
+msgstr "&Egyéni beállítások"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#, kde-format
+msgid "Pre&view"
+msgstr "Elő&nézet"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#, kde-format
+msgid "&Print File"
+msgstr "Fájl &nyomtatása"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:225
+#, kde-format
+msgid "&Mount"
+msgstr "&Csatolás"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:184
+#, kde-format
+msgid "&Unmount"
+msgstr "&Leválasztás"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:393
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Számí&tógép pásztázása"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Munkacsopo&rt pásztázása"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#, kde-format
+msgid "Close"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#, fuzzy, kde-format
+msgid "Search string"
+msgstr "Kiszolgáló:"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#, kde-format
+msgid "Search"
+msgstr "Keresés"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#, kde-format
+msgid "Stop"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Item Down"
+msgstr "Elem"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Item Up"
+msgstr "Elem"
+
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:190
+#, kde-format
+msgid "U&nmount All"
+msgstr "Az összes l&eválasztása"
+
+#: smb4k/smb4ksharesmenu.cpp:158
+#, kde-format
+msgid "Unmount"
+msgstr "Leválasztás"
+
+#: smb4k/smb4ksharesmenu.cpp:177
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Könyvjelző hozzáadása"
+
+#: smb4k/smb4ksharesmenu.cpp:190
+#, kde-format
+msgid "Synchronize"
+msgstr "Szinkronizálás"
+
+#: smb4k/smb4ksharesmenu.cpp:209
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Megnyitás a Konsole-lal"
+
+#: smb4k/smb4ksharesmenu.cpp:223
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Megnyitás fájlkezelővel"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#, kde-format
+msgid "View Modes"
+msgstr ""
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:155
+#, kde-format
+msgid "Icon View"
+msgstr "Ikonnézet"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:161
+#, kde-format
+msgid "List View"
+msgstr "Listanézet"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:202
+#, kde-format
+msgid "S&ynchronize"
+msgstr "Sz&inkronizálás"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:208
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Megnyitás Konso&le-lal"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Megny&itás fájlkezelővel"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:366
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "yes"
+msgstr "igen"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "no"
+msgstr "nem"
+
+#: smb4k/smb4ktooltip.cpp:210
+#, kde-format
+msgid "Type:"
+msgstr "Típus:"
+
+#: smb4k/smb4ktooltip.cpp:225
+#, kde-format
+msgid "Workgroup"
+msgstr "Munkacsoport"
+
+#: smb4k/smb4ktooltip.cpp:228
+#, fuzzy, kde-format
+#| msgid "Master browser"
+msgid "Master Browser:"
+msgstr "Főtallózó"
+
+#: smb4k/smb4ktooltip.cpp:256
+#, kde-format
+msgid "Host"
+msgstr "Gép"
+
+#: smb4k/smb4ktooltip.cpp:259 smb4k/smb4ktooltip.cpp:303
+#, fuzzy, kde-format
+msgid "Comment:"
+msgstr "Megjegyzés"
+
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:345
+#, kde-format
+msgid "IP Address:"
+msgstr "IP-cím:"
+
+#: smb4k/smb4ktooltip.cpp:283
+#, kde-format
+msgid "Workgroup:"
+msgstr "Munkacsoport:"
+
+#: smb4k/smb4ktooltip.cpp:300
+#, kde-format
+msgid "Share (%1)"
+msgstr "Megosztás (%1)"
+
+#: smb4k/smb4ktooltip.cpp:315
+#, fuzzy, kde-format
+#| msgid "Mounted"
+msgid "Mounted:"
+msgstr "Csatolva"
+
+#: smb4k/smb4ktooltip.cpp:334
+#, kde-format
+msgid "Host:"
+msgstr "Gép:"
+
+#: smb4k/smb4ktooltip.cpp:357 smb4k/smb4ktooltip.cpp:437
+#, fuzzy, kde-format
+msgid "Location:"
+msgstr "Műveletek"
+
+#: smb4k/smb4ktooltip.cpp:392 smb4k/smb4ktooltip.cpp:399
+#: smb4k/smb4ktooltip.cpp:464 smb4k/smb4ktooltip.cpp:476
+#: smb4k/smb4ktooltip.cpp:477 smb4k/smb4ktooltip.cpp:506
+#, kde-format
+msgid "unknown"
+msgstr "ismeretlen"
+
+#: smb4k/smb4ktooltip.cpp:397 smb4k/smb4ktooltip.cpp:504
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 / %2 szabad (%3 használt)"
+
+#: smb4k/smb4ktooltip.cpp:448
+#, fuzzy, kde-format
+#| msgid "Mountpoint"
+msgid "Mountpoint:"
+msgstr "Csatolási pont"
+
+#: smb4k/smb4ktooltip.cpp:459
+#, fuzzy, kde-format
+#| msgid "User:"
+msgid "Username:"
+msgstr "Felhasználó:"
+
+#: smb4k/smb4ktooltip.cpp:471
+#, fuzzy, kde-format
+#| msgid "Owner"
+msgid "Owner:"
+msgstr "Tulajdonos"
+
+#: smb4k/smb4ktooltip.cpp:485
+#, fuzzy, kde-format
+#| msgid "File system"
+msgid "File system:"
+msgstr "Fájlrendszer"
+
+#: smb4k/smb4ktooltip.cpp:496
+#, fuzzy, kde-format
+#| msgid "Size"
+msgid "Size:"
+msgstr "Méret"
+
+#, fuzzy
+#~| msgid ""
+#~| "The login information that was stored by Smb4K will be loaded from the "
+#~| "wallet. If you chose to not use the wallet, pressing this button will "
+#~| "have no effect."
+#~ msgid ""
+#~ "The login information that was stored by Smb4K will be loaded from the "
+#~ "wallet."
+#~ msgstr ""
+#~ "Az Smb4K által tárolt adatok betöltésre kerülnek a jelszótárolóból. A "
+#~ "gomb megnyomása semmilyen hatást nem vált ki, ha nem használja a "
+#~ "jelszótárolót."
+
+#~ msgid "All modifications you applied are saved to the wallet."
+#~ msgstr "Az összes alkalmazott módosítás mentésre került a jelszótárolóba."
+
+#, fuzzy
+#~| msgid "Show details"
+#~ msgid "Details"
+#~ msgstr "Részletek megjelenítése"
+
+#~ msgid "Entry"
+#~ msgstr "Bejegyzés"
+
+#, fuzzy
+#~| msgid "User Interface"
+#~ msgid "Username"
+#~ msgstr "Felhasználói felület"
+
+#~ msgid "Password"
+#~ msgstr "Jelszó"
+
+#, fuzzy
+#~| msgid "Behavior"
+#~ msgid "Behavior:"
+#~ msgstr "Működés"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgid "General:"
+#~ msgstr "Általános"
+
+#, fuzzy
+#~| msgid "Owner"
+#~ msgid "Ownership:"
+#~ msgstr "Tulajdonos"
+
+#, fuzzy
+#~| msgid "Miscellaneous Settings"
+#~ msgid "Miscellaneous:"
+#~ msgstr "Egyéb beállítások"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Speciális szűrési szabályok:"
+
+#, fuzzy
+#~| msgid "Notifications"
+#~ msgid "Identification"
+#~ msgstr "Értesítések"
+
+#, fuzzy
+#~| msgid "Network"
+#~ msgid "Network Item"
+#~ msgstr "Hálózat"
+
+#, fuzzy
+#~| msgid "MAC Address:"
+#~ msgid "MAC Address"
+#~ msgstr "MAC-cím:"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC-cím:"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Actions"
+#~ msgstr "Beállítások"
+
+#, fuzzy
+#~| msgid "Send magic package before scanning the network neighborhood"
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Varázscsomag küldése a hálózati mappa vizsgálata előtt"
+
+#, fuzzy
+#~| msgid "Send magic package before mounting a share"
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Varázscsomag küldése a megosztás csatolása előtt"
+
+#, fuzzy
+#~| msgid "Wake-On-LAN"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Wake-On-LAN"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Mindig csatolja újra ezt a megosztást"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Browse Settings:"
+#~ msgstr "Beállítások"
+
+#, fuzzy
+#~| msgid "Profiles"
+#~ msgid "Profiles:"
+#~ msgstr "Profilok"
+
+#, fuzzy
+#~| msgid "Common Options"
+#~ msgid "Common Settings:"
+#~ msgstr "Közös beállítások"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Authentication:"
+#~ msgstr "Hitelesítés"
+
+#, fuzzy
+#~| msgid "Security"
+#~ msgid "Security:"
+#~ msgstr "Biztonság"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Samba Settings"
+#~ msgstr "Beállítások"
+
+#~ msgid "Default Destination"
+#~ msgstr "Alapértelmezett cél"
+
+#, fuzzy
+#~| msgid "File Permissions, etc."
+#~ msgid "Permissions, etc."
+#~ msgstr "Fájljogosultságok, stb."
+
+#~ msgid "Login"
+#~ msgstr "Bejelentkezés"
+
+#~ msgid "Login:"
+#~ msgstr "Belépés:"
+
+#~ msgid "The mount process crashed."
+#~ msgstr "A csatolási folyamat összeomlott."
+
+#~ msgid "The unmount process crashed."
+#~ msgstr "A lecsatolási folyamat összeomlott."
+
+#, fuzzy
+#~ msgid "Protocols"
+#~ msgstr "Protokoll"
+
+#, fuzzy
+#~| msgid "%1 free of %2 (%3 used)"
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 / %2 szabad (%3 használt)"
+
+#, fuzzy
+#~ msgid "Location"
+#~ msgstr "Műveletek"
+
+#, fuzzy
+#~| msgid "Save the entries to the wallet."
+#~ msgid "The selected entry is removed from the wallet."
+#~ msgstr "Bejegyzések mentése a jelszótárolóba."
+
+#, fuzzy
+#~| msgid "Load the entries stored in the wallet."
+#~ msgid "All entries are removed from the wallet."
+#~ msgstr "Bejegyzések betöltése a jelszótárolóból."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "A jelölőnégyzet kijelölése megjeleníti a kijelölt bejelentkezési "
+#~ "információk részleteit."
+
+#~ msgid "Password Storage"
+#~ msgstr "Jelszótároló"
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "A kiválasztott bejegyzés részleteinek megjelenítése."
+
+#~ msgid "Undo"
+#~ msgstr "Visszavonás"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Remounting"
+#~ msgstr "Csatolás"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
+
+#~ msgid "Columns"
+#~ msgstr "Oszlopok"
+
+#~ msgid "Tooltips"
+#~ msgstr "Buboréksúgók"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Nézet"
+
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Egyéb beállítások"
+
+#~ msgid "Shares"
+#~ msgstr "Megosztások"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Hálózati eszköztár"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Keresési eszköztár"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Megosztások eszköztár"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Alternatív fő eszköztár"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Segédprogramok"
+
+#~ msgid "Network Search"
+#~ msgstr "Hálózati keresés"
+
+#~ msgid "Searching for \"%1\"..."
+#~ msgstr "„%1” keresése…"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Adja meg a keresett szöveget itt."
+
+#~ msgid "Abort"
+#~ msgstr "Megszakítás"
+
+#~ msgid "&Clear"
+#~ msgstr "&Törlés"
+
+#~ msgid "The search returned no results."
+#~ msgstr "A keresés nem adott vissza eredményt."
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " bájt"
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Előnézet lekérése innen: %1…"
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodikus keresés"
+
+#~ msgid "Browse List"
+#~ msgstr "Tallózólista"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-cím:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Fájlrendszer port:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Írási hozzáférés:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Biztonsági mód:"
+
+#~ msgid "User ID:"
+#~ msgstr "Felhasználóazonosító:"
+
+#~ msgid "Group ID:"
+#~ msgstr "Csoportazonosító:"
+
+#~ msgid "MAC address:"
+#~ msgstr "MAC-cím:"
+
+#~ msgid "General Options"
+#~ msgstr "Általános beállítások"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Könyvjelzők szerkesztése"
+
+#~ msgid "Add Group"
+#~ msgstr "Csoport hozzáadása"
+
+#~ msgid "Label:"
+#~ msgstr "Címke:"
+
+#~ msgid "Group:"
+#~ msgstr "Csoport:"
+
+#~ msgid "Group name:"
+#~ msgstr "Csoportnév:"
+
+#~ msgid "Copying"
+#~ msgstr "Másolás"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Fájltörlés és átvitel"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "Nem sikerült létrehozni a hálózatböngészőt."
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Nem sikerült létrehozni a keresési párbeszédablakot."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "Nem sikerült létrehozni a megosztások nézetet."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "Az Smb4k hálózati szomszédságböngésző KPartja"
+
+#, fuzzy
+#~| msgid "\\u00A9 2007-2015, Alexander Reinholdt"
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "\\u00A9 Alexander Reinholdt, 2007-2015."
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Távoli kiszolgálók felébresztése…"
+
+#~ msgid "Search item:"
+#~ msgstr "Keresett elem:"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "Az Smb4K hálózatkereső KPartja"
+
+#~ msgid "Search Results"
+#~ msgstr "Keresési eredmények"
+
+#~ msgid "Open With"
+#~ msgstr "Megnyitás ezzel"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "Az Smb4K megosztásnézet KPartja"
+
+#~ msgid "&Shares"
+#~ msgstr "&Megosztások"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Speciális hálózatimappa-böngésző"
+
+#~ msgid "Checks"
+#~ msgstr "Ellenőrzések"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "További információk keresése a(z) %1 gépről…"
+
+#, fuzzy
+#~| msgid "Mounting share %1..."
+#~ msgid "Mounting share..."
+#~ msgstr "%1 megosztás csatolása…"
+
+#~ msgid "Server"
+#~ msgstr "Kiszolgáló"
+
+#~ msgid "Operating system"
+#~ msgstr "Operációs rendszer"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "A jelszótároló nincs használatban."
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "%1 csatolása meghiúsult."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "%1 leválasztása meghiúsult."
+
+#~ msgid "Settings for the list view:"
+#~ msgstr "A listanézet beállításai:"
+
+#~ msgid "File System"
+#~ msgstr "Fájlrendszer"
+
+#~ msgid "Free"
+#~ msgstr "Szabad"
+
+#~ msgid "Used"
+#~ msgstr "Használt"
+
+#~ msgid "Total"
+#~ msgstr "Összes"
+
+#~ msgid "Usage"
+#~ msgstr "Használat"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protokolljavaslat:"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Távoli portok"
+
+#~ msgid "Laptop Support"
+#~ msgstr "Laptop támogatás"
+
+#~ msgid "Hardware"
+#~ msgstr "Hardver"
+
+#~ msgid ""
+#~ "<qt>Smb4K only detects changes in state of your hardware. If you are "
+#~ "performing a software suspend or the like, you should unmount the shares "
+#~ "manually.</qt>"
+#~ msgstr ""
+#~ "<qt>Az Smb4K csak a harver állapotában bekövetkezett változásokat ismeri "
+#~ "fel. Ha szoftveres felfüggesztést vagy hasonlót hajt végre, kézzel kell "
+#~ "lecsatolnia a megosztásokat.</qt>"
+
+#~ msgid ""
+#~ "The custom master browser that is to be queried has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A lekérdezni kívánt egyéni főtallózó nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The broadcast areas that are to be scanned have not been filled in.\n"
+#~ "Please enter them now."
+#~ msgstr ""
+#~ "A pásztázni kívánt szórási területek nincsenek kitöltve.\n"
+#~ "Kérjük adja meg őket most."
+
+#~ msgid ""
+#~ "The mount prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A csatolási előtag nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The file mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A fájlmaszk nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The directory mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A mappamaszk nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The synchronization prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A szinkronizációs előtag nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A részlegesen átvitt fájlok tárolására szolgáló mappa nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The exclude pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A szinkronizáció kizárási mintája nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The file from which the exclude pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A szinkronizáció kizárási mintáját tartalmazó fájl nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The include pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A szinkronizáció befoglalási mintája nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The file from which the include pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A szinkronizáció befoglalási mintáját tartalmazó fájl nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The backup suffix for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A szinkronizáció biztonsági mentés utótagja nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "The backup directory for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "A szinkronizáció biztonsági másolat mappája nincs kitöltve.\n"
+#~ "Kérjük adja meg most."
+
+#~ msgid ""
+#~ "<qt>Due to security concerns, the cruid option cannot be defined here and "
+#~ "will now be removed.</qt>"
+#~ msgstr ""
+#~ "<qt>Biztonsági aggodalmak miatt a cruid lehetőséget nem lehet itt "
+#~ "meghatározni és most el lesz távolítva.</qt>"
+
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Csatolás és leválasztás"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Távoli megosztások"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Párbeszédablak előnézete"
+
+#~ msgid "The password dialog mode is used and logins are not remembered."
+#~ msgstr ""
+#~ "A jelszóablak mód van használva, a bejelentkezések nincsenek megjegyezve."
+
+#~ msgid "Show custom bookmark label if available"
+#~ msgstr "Egyéni könyvjelzőcímke megjelenítése, ha elérhető"
+
+#~ msgid ""
+#~ "Do not show the name of the share that is represented by the bookmark but "
+#~ "the custom label that was defined in the bookmark editor."
+#~ msgstr ""
+#~ "Csak a könyvjelzőszerkesztőben definiált egyéni címkék jelenjenek meg a "
+#~ "megosztás neve helyett."
+
+#~ msgid "Start docked"
+#~ msgstr "Indítás dokkolva"
+
+#~ msgid ""
+#~ "Start the application docked to the system tray, i.e. only the system "
+#~ "tray widget is shown and the main window is hidden. You can bring the "
+#~ "main window up by clicking on the system tray widget or by choosing "
+#~ "\"Restore\" from its popup menu."
+#~ msgstr ""
+#~ "Az alkalmazás rejtett főablakkal indul, csak a paneltálcaikon jelenik "
+#~ "meg. A főablakot erre az ikonra kattintva vagy a felugró menü "
+#~ "„Visszaállítás” menüpontjára kattintva hívhatja elő."
+
+#~ msgid "Show notifications"
+#~ msgstr "Értesítések megjelenítése"
+
+#~ msgid ""
+#~ "Notify the user about actions that were performed, e.g. the mounting or "
+#~ "unmounting of a share. If you do not want to be disturbed too often, you "
+#~ "might want to switch this option off. Warnings and error messages are not "
+#~ "affected by this option."
+#~ msgstr ""
+#~ "A felhasználó értesítése a végrehajtott műveletekről mint például egy "
+#~ "megosztás csatolása vagy leválasztása. Kikapcsolhatja ezt a beállítást ha "
+#~ "az értesítések túlságosan zavarják. A figyelmeztetéseket és "
+#~ "hibaüzeneteket nem érinti ez a beállítás."
+
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Csatolt megosztások megjelenítése ikonnézetben"
+
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr "A csatolt megosztások ikonnézetben jelennek meg."
+
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Csatolt megosztások megjelenítése listanézetben"
+
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "A csatolt megosztások listanézetben jelennek meg."
+
+#~ msgid "Show printer shares"
+#~ msgstr "Megosztott nyomtatók megjelenítése"
+
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "A megosztott nyomtatók megjelennek a hálózatböngészőben."
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Rejtett megosztások megjelenítése"
+
+#~ msgid ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgstr ""
+#~ "A rejtett megosztások megjelennek a hálózatböngészőben egy $ jellel a "
+#~ "megosztás neve után, például Zene$ vagy IPC$."
+
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Rejtett IPC$ megosztások megjelenítése"
+
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr "A rejtett IPC$ megosztások megjelennek a hálózatböngészőben."
+
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Rejtett ADMIN$ megosztások megjelenítése"
+
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr "A rejtett ADMIN$ megosztások megjelennek a hálózatböngészőben."
+
+#~ msgid "Show the type of the share"
+#~ msgstr "Megosztás típusának megjelenítése"
+
+#~ msgid ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+#~ msgstr ""
+#~ "A megosztás típusa megjelenik egy külön  oszlopban a hálózatböngészőben. "
+#~ "Lehet lemez, nyomtató vagy IPC."
+
+#~ msgid "Show the IP address of the server"
+#~ msgstr "A kiszolgáló IP-címének megjelenítése"
+
+#~ msgid ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+#~ msgstr ""
+#~ "A kiszolgáló IP-címe megjelenik egy külön oszlopban a hálózatböngészőben."
+
+#~ msgid "Show the comment"
+#~ msgstr "Megjegyzés megjelenítése"
+
+#~ msgid ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+#~ msgstr ""
+#~ "A kiszolgálót vagy megosztást leíró megjegyzés megjelenik egy külön "
+#~ "oszlopban a hálózatböngészőben."
+
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "A hálózati elem jellemzőinek megjelenítése buboréksúgóban"
+
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr ""
+#~ "A buboréksúgó különböző információkat jelenít meg az aktuális hálózati "
+#~ "elemről."
+
+#~ msgid "Automatically expand domains and hosts"
+#~ msgstr "Tartományok és gépek automatikus kibontása"
+
+#~ msgid ""
+#~ "Automatically expand domain and host items when a list of associated "
+#~ "network items (domain members or shares) is added or updated. Please note "
+#~ "that a domain or host item will always be expanded when you execute it."
+#~ msgstr ""
+#~ "Automatikusan kibontja a tartományokat és gépeket a hozzárendelt hálózati "
+#~ "elemek (tartománytagok vagy megosztások) hozzáadásakor vagy "
+#~ "frissítésekor. Megjegyzés: a tartomány vagy gép mindig kibontásra kerül "
+#~ "ennek végrehajtásakor."
+
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Csatolási pont megjelenítése a megosztás neve helyett"
+
+#~ msgid ""
+#~ "A share is normally displayed with its name in the shares view. Choosing "
+#~ "this feature will cause the exchange of the share name by the mount point."
+#~ msgstr ""
+#~ "A megosztások általában a nevükkel jelennek meg a megosztásnézetben. "
+#~ "Ezzel a beállítással a csatolási pontra cserélheti a megosztás nevét."
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "Az összes csatolt megosztás megjelenítése"
+
+#~ msgid ""
+#~ "You will not only see the shares that were mounted and are owned by you, "
+#~ "but also all other mounts using the SMBFS and CIFS file system that are "
+#~ "present on the system."
+#~ msgstr ""
+#~ "Nem csak azokat a megosztásokat látja, amelyeket Ön csatolt vagy Ön a "
+#~ "tulajdonosuk, hanem az SMBFS és CIFS fájlrendszerek használatával csatolt "
+#~ "összes egyéb megosztást."
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Buboréksúgó megjelenítése a megosztás jellemzőivel"
+
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr ""
+#~ "A buboréksúgó különböző információkat jelenít meg az aktuális "
+#~ "megosztásról."
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Tulajdonos és csoport megjelenítése"
+
+#~ msgid "Show the UID and GID that own all files on the mounted file system."
+#~ msgstr ""
+#~ "A csatolt fájlrendszeren lévő fájlokhoz tartozó felhasználó- és "
+#~ "csoportazonosító megjelenítése."
+
+#~ msgid "Show the login name"
+#~ msgstr "Bejelentkezési név megjelenítése"
+
+#~ msgid ""
+#~ "Show the login name that was used to authenticate to the server. The "
+#~ "column will only contain an entry if the share was mounted with the CIFS "
+#~ "file system."
+#~ msgstr ""
+#~ "Megjeleníti a hitelesítéshez használt bejelentkezési nevet. Az oszlop "
+#~ "csak egy bejegyzést tartalmaz, ha a megosztást CIFS fájlrendszerrel "
+#~ "csatolta."
+
+#~ msgid "Show the file system"
+#~ msgstr "Fájlrendszer megjelenítése"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr "A megosztás csatolásához használt fájlrendszer megjelenítése."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Szabad lemezterület megjelenítése"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "A megosztáson lévő szabad lemezterület megjelenítése."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Használt lemezterület megjelenítése"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "A megosztáson használt lemezterület megjelenítése."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Teljes lemezterület megjelenítése"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "A megosztás teljes lemezterületének megjelenítése."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Lemezhasználat megjelenítése"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr "A megosztáson használt lemezterület megjelenítése százalékban."
+
+#~ msgid "Preview hidden files and directories"
+#~ msgstr "Rejtett fájlok és mappák előnézete"
+
+#~ msgid ""
+#~ "Display hidden files and directories in the preview dialog. The hidden "
+#~ "files and directories are those whose names begin with a period.  They "
+#~ "are usually needed for very specific purposes (storing the configuration "
+#~ "information for an application, etc.). Since they are not of any "
+#~ "importance for your regular work, you normally do not need to enable this "
+#~ "feature."
+#~ msgstr ""
+#~ "Megjeleníti a rejtett fájlokat és mappákat egy előnézeti "
+#~ "párbeszédablakban. A rejtett fájlok és mappák azok, amelyek neve ponttal "
+#~ "kezdődik. Általában különleges okokból szükségesek, például egy "
+#~ "alkalmazás beállításainak tárolására. Mivel az Ön munkája szempontjából "
+#~ "nem fontosak, nincs szükség a beállítás bekapcsolására."
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Elérhető munkacsoportok és tartományok keresése a hálózaton"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Ez a kezdeti böngészési lista alapértelmezett letöltési metódusa. "
+#~ "Felfedezi az összes munkacsoportot és tartományt a hálózat összes "
+#~ "főtallózójának keresésével."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Az aktuális munkacsoport főtallózójának lekérdezése"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Ez a metódus a kezdeti böngészési lista elkészítéséhez lekérdezi a "
+#~ "munkacsoport vagy tartomány főtallózóját."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Egyéni főtallózó lekérdezése:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Ez a metódus egy egyéni főtallózó lekérdezésével tölti le a kezdeti "
+#~ "böngészési listát."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "A lekérdezendő egyéni főtallózó"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr "Adja meg a lekérdezendő főtallózó nevét vagy IP-címét."
+
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Broadcast területek pásztázása:"
+
+#~ msgid ""
+#~ "This method will scan the given broadcast areas and look for all "
+#~ "registered hosts."
+#~ msgstr ""
+#~ "Ez a metódus a megadott broadcast területeket pásztázza regisztrált "
+#~ "gépeket keresve."
+
+#~ msgid "A custom list of broadcast addresses"
+#~ msgstr "Broadcast címek egyéni listája"
+
+#~ msgid ""
+#~ "Enter a comma-separated list of broadcast addresses here (e.g. "
+#~ "192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in "
+#~ "the respective broadcast areas."
+#~ msgstr ""
+#~ "Adja meg a broadcast címek listáját vesszővel elválasztva (például "
+#~ "192.168.0.255, 192.168.1.255). Ezeken a címeken lesznek keresve az ismert "
+#~ "gépek a broadcast területeken."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "A főtallózó böngészési listájának letöltéséhez hitelesítés szükséges"
+
+#~ msgid ""
+#~ "The master browsers in your network neighborhood require a login to "
+#~ "return the browse list. This setting is rarely needed and might even "
+#~ "cause a master browser to return an empty browse list. It will not have "
+#~ "any effect when you let Smb4K scan broadcast areas."
+#~ msgstr ""
+#~ "A böngészési lista letöltéséhez bejelentkezés szükséges a hálózati "
+#~ "főtallózóba. Erre a beállításra ritkán van szükség és akár üres "
+#~ "böngészési lista letöltését is eredményezheti. Nincs hatása, ha az Smb4K "
+#~ "pásztázza a broadcast területeket."
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Hálózat pásztázása rendszeresen"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Rendszeresen pásztázza a hálózatot elérhető munkacsoportokat, gépeket és "
+#~ "megosztásokat keresve."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Keresési időköz:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Ez adja meg az új munkacsoportok, gépek és megosztások keresése közötti "
+#~ "időt percekben."
+
+#~ msgid "Waiting time:"
+#~ msgstr "Várakozási idő:"
+
+#~ msgid "Mount prefix:"
+#~ msgstr "Csatolási előtag:"
+
+#~ msgid ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+#~ msgstr ""
+#~ "Ez adja meg hol hozza létre az Smb4K a csatolási pontokat, és hová "
+#~ "csatolja a távoli megosztásokat."
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "Kisbetűs alkönyvtárak létrehozásának kényszerítése"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "Az Smb4K által a csatolási pont alá létrehozott összes mappa neve "
+#~ "kisbetűs lesz."
+
+#~ msgid "Unmount all personal shares on exit"
+#~ msgstr "Személyes megosztások leválasztása kilépéskor"
+
+#~ msgid ""
+#~ "Unmount all shares that belong to you when the program exits. Shares that "
+#~ "are owned by other users are ignored."
+#~ msgstr ""
+#~ "Leválasztja az Önhöz tartozó összes megosztást amikor a program kilép, de "
+#~ "figyelmen kívül hagyja más felhasználók megosztásait."
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr "Nemrég használt megosztások újra csatolása a program indulásakor"
+
+#~ msgid ""
+#~ "Remount all your shares that were mounted when you exited the program. If "
+#~ "a remount fails, Smb4K will retry the next time it is started. Shares "
+#~ "that were mounted by other users are ignored."
+#~ msgstr ""
+#~ "Újra csatolja azokat a megosztásokat amelyek csatolva voltak a program "
+#~ "bezárásakor. Ha nem sikerül az újra csatolás, az Smb4K a következő "
+#~ "indításkor próbálkozik újra. A más felhasználók által csatolt "
+#~ "megosztásokat figyelmen kívül hagyja a program."
+
+#~ msgid "Number of remount attempts:"
+#~ msgstr "Újracsatolási kísérletek száma:"
+
+#~ msgid ""
+#~ "Set the number of attempts that are made to remount shares before Smb4K "
+#~ "gives up."
+#~ msgstr ""
+#~ "A kísérletek számának beállítása a megosztások újracsatolásához, mielőtt "
+#~ "a Smb4K feladja."
+
+#~ msgid "Interval between remount attempts:"
+#~ msgstr "Újracsatolási kísérletek közötti időköz:"
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "Más felhasználók megosztásainak leválasztásának engedélyezése"
+
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "Lehetővé teszi más felhasználók megosztásainak leválasztását. Gondolja "
+#~ "át, hogy biztosan szüksége van-e a beállítás bekapcsolására."
+
+#~ msgid "Force the unmounting of inaccessible shares"
+#~ msgstr "Nem elérhető megosztások leválasztásának kényszerítése"
+
+#~ msgid ""
+#~ "Force the unmounting of inaccessible shares (Linux only). In case a share "
+#~ "is inaccessible, a lazy unmount is performed. Before the actual unmount "
+#~ "is performed, a warning dialog is shown asking to approve the unmount."
+#~ msgstr ""
+#~ "Kényszeríti a nem elérhető megosztások lecsatolását (csak Linuxon). Ha "
+#~ "egy megosztás nem érhető el, egy lusta leválasztás kerül végrehajtásra. A "
+#~ "tényleges leválasztás előtt egy megerősítést kérő figyelmeztetés jelenik "
+#~ "meg"
+
+#~ msgid "Interval between checks:"
+#~ msgstr "Ellenőrzési időköz:"
+
+#~ msgid ""
+#~ "This is the time in milliseconds that elapses until Smb4K checks again "
+#~ "for new mounts and unmounts. The lower limit is 500 ms, the upper one "
+#~ "300000 ms. Please note that the smaller the interval gets the higher is "
+#~ "your system load."
+#~ msgstr ""
+#~ "Ez az új csatolások és leválasztások keresése közötti időköz "
+#~ "milliszekundumban megadva. Az alsó határ 500 ms, a felső 300000 ms. "
+#~ "Megjegyzés: az alacsonyabb keresési időköz nagyobb rendszerterhelést okoz."
+
+#~ msgid "Save logins in a wallet"
+#~ msgstr "Bejelentkezések mentése jelszótárolóba"
+
+#~ msgid ""
+#~ "Use a wallet to store the login. The username and password are stored "
+#~ "encrypted on your hard drive. If this setting is disabled, the login is "
+#~ "not stored permanently but only temporarily."
+#~ msgstr ""
+#~ "Jelszótároló használata a bejelentkezési adatok tárolására. A "
+#~ "felhasználónév és jelszó titkosítva tárolódik a merevlemezen. A "
+#~ "bejelentkezési adatok csak átmenetileg tárolódnak a beállítás "
+#~ "kikapcsolása esetén."
+
+#~ msgid "Remember logins during program run"
+#~ msgstr "Bejelentkezési adatok megjegyzése a program futása során"
+
+#~ msgid ""
+#~ "If you decide to store your logins temporarily, Smb4K will remember them "
+#~ "only until the program exits. If you disable this setting, you will have "
+#~ "to provide the login every time it is needed."
+#~ msgstr ""
+#~ "Ha csak átmenetileg szeretné tárolni a bejelentkezési adatokat, az Smb4K "
+#~ "megjegyzi azokat a program bezárásáig. Ha kikapcsolja ezt a beállítást, "
+#~ "minden egyes alkalommal meg kell adnia a bejelentkezési adatokat."
+
+#~ msgid "Use a default login"
+#~ msgstr "Alapértelmezett bejelentkezési adatok használata"
+
+#~ msgid ""
+#~ "Enable the usage of a default login. The provided data is used by default "
+#~ "to authenticate to a remote server. This is very useful e.g. if you are "
+#~ "working in an Active Directory environment or an NT domain."
+#~ msgstr ""
+#~ "Engedélyezi az alapértelmezett bejelentkezési adatok használatát. Az "
+#~ "Smb4K a megadott adatokat használja hitelesítésre a távoli kiszolgálón. "
+#~ "Ez Active Directory vagy NT tartomány használata esetén hasznos például."
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS név:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Ez a számítógép Smb4K által használt NetBIOS neve, amely alapértelmezés "
+#~ "szerint az smb.conf fájlban lehet definiált név vagy a gépnév."
+
+#~ msgid "Domain:"
+#~ msgstr "Tartomány:"
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "Ez a munkacsoport vagy tartomány melyben a számítógépnek lennie kell. "
+#~ "Alapértelmezés szerint ez az smb.conf fájlban definiált munkacsoport."
+
+#~ msgid "Socket options:"
+#~ msgstr "Socketbeállítások:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Ezek az nmblookup és smbclient által használt TCP socketbeállítások. A "
+#~ "socketbeállításokat az operációs rendszer hálózati rétege verzérli, "
+#~ "lehetővé téve a kapcsolat hangolását. További inofmációkért lásd az smb."
+#~ "conf kézikönyvoldalát."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS címtartomány:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Ez az nmblookup és smbclient NetBIOS címtartománya. Mindenképp be kell "
+#~ "állítani, hacsak a hálózat összes gépén nincs beállítva ez az érték."
+
+#~ msgid "SMB port:"
+#~ msgstr "SMB port:"
+
+#~ msgid ""
+#~ "This is the port that is used for connecting to remote servers with the "
+#~ "client programs net, smbclient and smbtree. The default value is 139 "
+#~ "(NetBIOS). This setting is not used for mounting."
+#~ msgstr ""
+#~ "Ez a net, smbclient és smbtree programok által a távoli kiszolgálóhoz "
+#~ "kapcsolódásra használt port, alapértelmezett értéke 139 (NetBIOS). Ez a "
+#~ "beállítás nincs használva csatolásnál."
+
+#~ msgid "File system port:"
+#~ msgstr "Fájlrendszer port:"
+
+#~ msgid ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+#~ msgstr ""
+#~ "Ez a port kizárólag távoli kiszolgálók megosztásainak csatolására "
+#~ "szolgál, az alapértelmezett érték 445 (CIFS fájlrendszer)."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Hitelesítés megkísérlése Kerberosszal"
+
+#~ msgid ""
+#~ "Try to authenticate with Kerberos. This is only useful in an Active "
+#~ "Directory environment. The setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "A hitelesítést Kerberosszal kísérli meg. Ez csak Active Directory "
+#~ "környezetben hasznos, a beállítás érinti smbclient és smbtree parancsokat."
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Hitelesítés a helyi számítógép azonosítójával"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient, and smbtree command."
+#~ msgstr ""
+#~ "A távoli kiszolgálóhoz címzett lekérdezéseket a helyi kiszolgáló "
+#~ "azonosítójával végzi. A beállítás érinti a net, smbclient és smbtree "
+#~ "parancsokat."
+
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Winbind ccache használata a hitelesítéshez"
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects smbclient "
+#~ "and smbtree command."
+#~ msgstr ""
+#~ "Winbind ccache-t használ a hitelesítéshez. A beállítás érinti az "
+#~ "smbclient és smbtree parancsokat."
+
+#~ msgid "Signing state:"
+#~ msgstr "Aláírási állapot:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Beállítja az aláírás állapotát. A beállítás érinti az smbclient és "
+#~ "smbtree parancsokat."
+
+#~ msgid "None"
+#~ msgstr "Nincs"
+
+#~ msgid "On"
+#~ msgstr "Be"
+
+#~ msgid "Off"
+#~ msgstr "Ki"
+
+#~ msgid "Required"
+#~ msgstr "Kötelező"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "SMB átvitel titkosítása"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the smbclient and smbtree command."
+#~ msgstr ""
+#~ "Titkosítja az SMB átvitelt (csak UNIX kiterjesztéssel rendelkező "
+#~ "kiszolgálókon). A beállítás érinti az smbclient és smbtree parancsokat."
+
+#~ msgid ""
+#~ "This is the character set that is used by the client side (i.e. your "
+#~ "side) either to convert local path names to and from Unicode (CIFS, "
+#~ "Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you "
+#~ "keep the default setting, Smb4K will try to automatically determine the "
+#~ "charset by looking up the \"unix charset\" option in the smb.conf."
+#~ msgstr ""
+#~ "Ez az elérési utak Unicode-ra és Unicode-ról konvertálásához (CIFS, "
+#~ "Linux) vagy a karakterkészlet-fordítások kódlapjához (SMBFS, FreeBSD) "
+#~ "használt kliensoldali karakterkészlet. Az alapértelmezett beállításon "
+#~ "hagyva az Smb4K megpróbálja automatikusan felismerni a karakterkészletet "
+#~ "az smb.conf „unix charset” bejegyzése alapján."
+
+#~ msgid "default"
+#~ msgstr "alapértelmezés"
+
+#~ msgid "iso8859-1"
+#~ msgstr "ISO-8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "ISO-8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "ISO-8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "ISO-8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "ISO-8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "ISO-8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "ISO-8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "ISO-8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "ISO-8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "ISO-8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "ISO-8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "ISO-8859-15"
+
+#~ msgid "utf8"
+#~ msgstr "UTF-8"
+
+#~ msgid "koi8-r"
+#~ msgstr "KOI8-R"
+
+#~ msgid "koi8-u"
+#~ msgstr "KOI8-U"
+
+#~ msgid "koi8-ru"
+#~ msgstr "KOI8-RU"
+
+#~ msgid "cp1251"
+#~ msgstr "CP-1251"
+
+#~ msgid "gb2312"
+#~ msgstr "GB-2312"
+
+#~ msgid "big5"
+#~ msgstr "BIG-5"
+
+#~ msgid "euc-jp"
+#~ msgstr "EUC-JP"
+
+#~ msgid "euc-kr"
+#~ msgstr "EUC-KR"
+
+#~ msgid "tis-620"
+#~ msgstr "TIS-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Kiszolgáló oldali kódlap:"
+
+#~ msgid ""
+#~ "This is the codepage that is used by the server. The setting is only "
+#~ "available with the SMBFS file system. If you keep the default setting, "
+#~ "Smb4K will try to automatically determine the codepage by looking up the "
+#~ "\"dos charset\" option in the smb.conf file."
+#~ msgstr ""
+#~ "Ez a kiszolgáló által használt kódlap. A beállítás csak SMBFS "
+#~ "fájlrendszernél érhető el.  Az alapértelmezett beállításon hagyva az "
+#~ "Smb4K megpróbálja automatikusan felismerni a kódlapot az smb.conf „dos "
+#~ "charset” bejegyzése alapján."
+
+#~ msgid "cp437"
+#~ msgstr "CP-437"
+
+#~ msgid "cp720"
+#~ msgstr "CP-720"
+
+#~ msgid "cp737"
+#~ msgstr "CP-737"
+
+#~ msgid "cp775"
+#~ msgstr "CP-775"
+
+#~ msgid "cp850"
+#~ msgstr "CP-850"
+
+#~ msgid "cp852"
+#~ msgstr "CP-852"
+
+#~ msgid "cp855"
+#~ msgstr "CP-1255"
+
+#~ msgid "cp857"
+#~ msgstr "CP-1257"
+
+#~ msgid "cp858"
+#~ msgstr "CP-858"
+
+#~ msgid "cp860"
+#~ msgstr "CP-860"
+
+#~ msgid "cp861"
+#~ msgstr "CP-861"
+
+#~ msgid "cp862"
+#~ msgstr "CP-862"
+
+#~ msgid "cp863"
+#~ msgstr "CP-863"
+
+#~ msgid "cp864"
+#~ msgstr "CP-864"
+
+#~ msgid "cp865"
+#~ msgstr "CP-865"
+
+#~ msgid "cp866"
+#~ msgstr "CP-866"
+
+#~ msgid "cp869"
+#~ msgstr "CP-869"
+
+#~ msgid "cp874"
+#~ msgstr "CP-874"
+
+#~ msgid "cp932"
+#~ msgstr "CP-932"
+
+#~ msgid "cp936"
+#~ msgstr "CP-936"
+
+#~ msgid "cp949"
+#~ msgstr "CP-949"
+
+#~ msgid "cp950"
+#~ msgstr "CP-950"
+
+#~ msgid "cp1250"
+#~ msgstr "CP-1250"
+
+#~ msgid "cp1252"
+#~ msgstr "CP-1252"
+
+#~ msgid "cp1253"
+#~ msgstr "CP-1253"
+
+#~ msgid "cp1254"
+#~ msgstr "CP-1254"
+
+#~ msgid "cp1255"
+#~ msgstr "CP-1255"
+
+#~ msgid "cp1256"
+#~ msgstr "CP-1256"
+
+#~ msgid "cp1257"
+#~ msgstr "CP-1257"
+
+#~ msgid "cp1258"
+#~ msgstr "CP-1258"
+
+#~ msgid "unicode"
+#~ msgstr "Unicode"
+
+#~ msgid ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Ez a szám lesz a csatolt megosztás fájljainak és mappáinak "
+#~ "felhasználóazonosítója. Ha CIFS fájlrendszert használ és a távoli "
+#~ "kiszolgáló támogatja a CIFS Unix kiterjesztéseit, ez a beállítás "
+#~ "figyelmen kívül lesz hagyva."
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Ez a szám lesz a csatolt megosztás fájljainak és mappáinak "
+#~ "csoportazonosítója. Ha CIFS fájlrendszert használ és a távoli kiszolgáló "
+#~ "támogatja a CIFS Unix kiterjesztéseit, ez a beállítás figyelmen kívül "
+#~ "lesz hagyva."
+
+#~ msgid "File mask:"
+#~ msgstr "Fájlmaszk:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating files. It must be defined "
+#~ "in octal. In case the CIFS file system is used, this setting only takes "
+#~ "effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Ez a fájlok létrehozásához használt maszk, oktális formában kell megadni. "
+#~ "CIFS fájlrendszer használata esetén csak akkor van hatása a beállításnak, "
+#~ "ha a kiszolgáló nem támogatja a CIFS Unix kiterjesztéseit."
+
+#~ msgid "Directory mask:"
+#~ msgstr "Könyvtármaszk:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating directories. It must be "
+#~ "defined in octal. In case the CIFS file system is used, this setting only "
+#~ "takes effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Ez a mappák létrehozásához használt maszk, oktális formában kell megadni "
+#~ "CIFS fájlrendszer használata esetén csak akkor van hatása a beállításnak, "
+#~ "ha a kiszolgáló nem támogatja a CIFS Unix kiterjesztéseit."
+
+#~ msgid "Write access:"
+#~ msgstr "Írási hozzáférés:"
+
+#~ msgid ""
+#~ "Here you can choose if the shares should be mounted in read-write or read-"
+#~ "only mode."
+#~ msgstr ""
+#~ "Itt választhatja ki, hogy a megosztások írható-olvasható vagy csak "
+#~ "olvasható módon legyenek-e csatolva."
+
+#~ msgid "read-write"
+#~ msgstr "írható és olvasható"
+
+#~ msgid "read-only"
+#~ msgstr "csak olvasható"
+
+#~ msgid "Do permission checks"
+#~ msgstr "Jogosultságellenőrzés"
+
+#~ msgid ""
+#~ "The client side (i.e. your side) will check if you have the right UID/GID "
+#~ "to manipulate a file or directory. You might want to switch this feature "
+#~ "off if the server(s) support the CIFS Unix Extensions and you are not "
+#~ "allowed to access the files and directories. This setting does not affect "
+#~ "the normal ACL check."
+#~ msgstr ""
+#~ "A kliens oldal ellenőrzi, hogy megfelelő felhasználó- és "
+#~ "csoportazonosítóval rendelkezik-e a fájlok vagy mappák manipulálásához. "
+#~ "Amennyiben a kiszolgáló támogatja a CIFS Unix kiterjesztéseit és nincs "
+#~ "engedélye a fájlokhoz és mappákhoz hozzáférésre, kikapcsolhatja ezt a "
+#~ "szolgáltatást. Ez a beállítás nem érinti a normál ACL ellenőrzést."
+
+#~ msgid "Attempt to set UID and GID"
+#~ msgstr "UID és GID beállításának megkísérlése"
+
+#~ msgid "Use server inode numbers"
+#~ msgstr "A kiszolgáló inode számainak használata"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Ne használjon zárolást"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Ne használjon zárolást. Ne indítsa a lockd démont."
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Protokolljavaslat:"
+
+#~ msgid "Automatic detection"
+#~ msgstr "Automatikus felismerés"
+
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "RPC: modern operációs rendszerek"
+
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "RAP: régebbi operációs rendszerek"
+
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "ADS: aktív könyvtárkörnyezet (LDAP/Kerberos)"
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Névfeloldási sorrend:"
+
+#~ msgid "Buffer size:"
+#~ msgstr "Bufferméret:"
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Broadcast cím:"
+
+#~ msgid "Security mode:"
+#~ msgstr "Biztonsági mód:"
+
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Kerberos 5 hitelesítés"
+
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Kerberos 5 hitelesítés és csomagaláírás"
+
+#~ msgid "NTLM protocol"
+#~ msgstr "NTLM protokoll"
+
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "NTLM protokoll és csomagaláírás"
+
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "NTLMv2 protokoll"
+
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "NTLMv2 protokoll és csomagaláírás"
+
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "NTLMSSP protokoll"
+
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "NTLMSSP protokoll és csomagaláírás"
+
+#~ msgid "Archive mode"
+#~ msgstr "Archiváló mód"
+
+#~ msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+#~ msgstr ""
+#~ "Archiváló mód használata (-a, --archive). Ez a -rlptgoD rövid formája."
+
+#~ msgid "Recurse into subdirectories"
+#~ msgstr "Alkönyvtárakban is keres"
+
+#~ msgid "Recurse into directories (-r, --recursive)."
+#~ msgstr "Alkönyvtárakban is keres (-r, --recursive)"
+
+#~ msgid "Update files"
+#~ msgstr "Fájlok frissítése"
+
+#~ msgid ""
+#~ "Update files in the destination directory that are older than in the "
+#~ "source directory (-u, --update)."
+#~ msgstr ""
+#~ "A célmappában lévő, a forrásfájlnál régebbi fájlok frissítése (-u, --"
+#~ "update)."
+
+#~ msgid "Update files in place"
+#~ msgstr "Fájlok frissítése helyben"
+
+#~ msgid "Use relative path names"
+#~ msgstr "Relatív elérési utak használata"
+
+#~ msgid "Compress data during transfer"
+#~ msgstr "Adatok tömörítése az átvitel során"
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Szimbolikus linkek megőrzése"
+
+#~ msgid "Copy symlinks as symlinks (-l, --links)."
+#~ msgstr "Szimbolikus linkek másolása szimbolikus linkként (-l ,--links)."
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Szimbolikus linkek átalakítása"
+
+#~ msgid ""
+#~ "Transform symlinks into the items they are pointing to (-L, --copy-links)."
+#~ msgstr ""
+#~ "Szimbolikus linkek átalakítása a hivatkozott elemre (-L, --copy-links)."
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Csak a nem biztonságos szimbolikus linkek átalakítása"
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Nem biztonságos szimbolikus linkek kihagyása"
+
+#~ msgid "Preserve hard links"
+#~ msgstr "Hard linkek megőrzése"
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Könyvtárak szimbolikus linkjeinek megőrzése"
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Jogosultságok megőrzése"
+
+#~ msgid ""
+#~ "Preserve permissions (-p, --perms). The permissions of the destination "
+#~ "file will be same as the source file. For what happens if this option is "
+#~ "switched off, please read rsync's manual page."
+#~ msgstr ""
+#~ "Jogosultságok megőrzése (-p, --perms). A célfájl jogosultságai meg fognak "
+#~ "egyezni a forrásfájléval. Hogy mi történik a beállítás kikapcsolása "
+#~ "esetén, lásd az rsync kézikönyvoldalát."
+
+#~ msgid "Preserve group"
+#~ msgstr "Csoport megőrzése"
+
+#~ msgid ""
+#~ "Preserve the group (-g, --group). The group of the destination file will "
+#~ "be set to the same value as the source file."
+#~ msgstr ""
+#~ "A csoport megőrzése (-g, --group). A célfájl csoportja ugyanarra az "
+#~ "értékre lesz beállítva mint a forrásfájl."
+
+#~ msgid "Preserve owner"
+#~ msgstr "Tulajdonos megőrzése"
+
+#~ msgid "Preserve device and special files"
+#~ msgstr "Eszközfájlok és speciális fájlok megőrzése"
+
+#~ msgid "Preserve times"
+#~ msgstr "Idők megőrzése"
+
+#~ msgid ""
+#~ "Preserve times (-t, --times). The modification times are transferred "
+#~ "along with the files. For what happens if this option is switched off, "
+#~ "please read rsync's manual page."
+#~ msgstr ""
+#~ "Idők megőrzése (-t, --times). A módosítási idők átvitelre kerülnek a "
+#~ "fájlokkal együtt. Hogy mi történik a beállítás kikapcsolása esetén, lásd "
+#~ "az rsync kézikönyvoldalát."
+
+#~ msgid "Remove synchronized source files"
+#~ msgstr "Szinkronizált forrásfájlok törlése"
+
+#~ msgid "Delete extraneous files"
+#~ msgstr "Idegen fájlok törlése"
+
+#~ msgid "Delete files before transfer"
+#~ msgstr "Fájlok törlése átvitel előtt"
+
+#~ msgid "Delete files after transfer"
+#~ msgstr "Fájlok törlése átvitel után"
+
+#~ msgid ""
+#~ "Delete files on the receiving side after the transfer has completed (--"
+#~ "delete-after, --del)."
+#~ msgstr ""
+#~ "Fájlok törlése a fogadó oldalon az átvitel befejeződése után (--delete-"
+#~ "after, --del)."
+
+#~ msgid "Delete files during transfer"
+#~ msgstr "Fájlok törlése átvitel közben"
+
+#~ msgid "Also delete excluded files"
+#~ msgstr "Kihagyott fájlok törlése"
+
+#~ msgid "Delete even if I/O errors occur"
+#~ msgstr "Törlés I/O-hiba esetén is"
+
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Nem üres mappák törlésének kényszerítése"
+
+#~ msgid "Custom filter rules:"
+#~ msgstr "Egyéni szűrési szabályok:"
+
+#~ msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+#~ msgstr "A --filter='dir-merge /.rsync-filter' szűrési szabály használata"
+
+#~ msgid "Use --filter='exclude .rsync-filter' filter rule"
+#~ msgstr "A --filter='exclude .rsync-filter' szűrőszabály használata"
+
+#~ msgid "Only update files that already exist"
+#~ msgstr "Csak azokat a fájlokat frissítse, amelyek már léteznek"
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Létező fájlok figyelmen kívül hagyása"
+
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Frissítések késleltetése az átvitel befejezésééig"
+
+#~ msgid "Make backups"
+#~ msgstr "Biztonsági mentések készítése"
+
+#~ msgid "Backup suffix:"
+#~ msgstr "A biztonsági mentések utótagja:"
+
+#~ msgid "Backup suffix"
+#~ msgstr "A biztonsági mentések utótagja"
+
+#~ msgid "Backup directory:"
+#~ msgstr "A biztonsági mentés mappája:"
+
+#~ msgid "Store backups in this directory (--backup-dir=DIR)."
+#~ msgstr ""
+#~ "A biztonsági mentések tárolása ebben a mappábamban (--backup-dir=DIR)."
+
+#~ msgid "Backup directory"
+#~ msgstr "A biztonsági mentés mappája"
+
+#~ msgid "The block size"
+#~ msgstr "Blokkméret"
+
+#~ msgid "The checksum seed"
+#~ msgstr "Az ellenőrzőösszeg forrása"
+
+#~ msgid "Skip files based on checksum"
+#~ msgstr "Fájlok kihagyása ellenőrzőösszeg alapján"
+
+#~ msgid ""
+#~ "Skip files based on a checksum and not based on modification time and "
+#~ "size (-c, --checksum). For further information on how this feature works "
+#~ "read rsync's manual page."
+#~ msgstr ""
+#~ "A fájlokat a módosítási idő és méret helyett az ellenőrzőösszeg alapján "
+#~ "hagyja ki (-c, --checksum). További információkért lásd az rsync "
+#~ "kézikönyvét."
+
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr "Az összes megosztás leválasztása a felfüggesztés gomb megnyomásakor"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware sleep button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Leválasztja az összes csatolt megosztást a hardveres felfüggesztés gomb "
+#~ "megnyomásakor. A megosztások automatikusan újra csatolódnak a számítógép "
+#~ "felébredésekor."
+
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "AZ összes megosztás leválasztása a fedél lecsukásakor"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the lid of the laptop is closed. The "
+#~ "shares will automatically be remounted after the computer wakes up again."
+#~ msgstr ""
+#~ "Leválasztja az összes csatolt megosztást a fedél lecsukásakor. A "
+#~ "megosztások automatikusan újra csatolódnak a számítógép felébredésekor."
+
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr "Az összes megosztás leválasztása a bekapcsoló gomb megnyomásakor"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware power button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Leválasztja az összes csatolt megosztást a hardveres bekapcsoló gomb "
+#~ "megnyomásakor. A megosztások automatikusan újra csatolódnak a számítógép "
+#~ "felébredésekor."
+
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr ""
+#~ "Az összes megosztás leválasztása a hálózati kapcsolat megszakadásakor"
+
+#~ msgid ""
+#~ "Unmount all mounted shares when the user disconnects from the network or "
+#~ "the connection is lost due to a different reason. Using this option in "
+#~ "combination with sleep and/or hibernation might lead to unwanted side "
+#~ "effects. In this case you should unmount the shares manually before you "
+#~ "suspend the computer."
+#~ msgstr ""
+#~ "Leválasztja az összes csatolt megosztást a hálózati kapcsolat bontásakor "
+#~ "vagy megszakadásakor. A beállítás használata felfüggesztéssel vagy "
+#~ "hibernálással együtt használva nem kívánt mellékhatásokat okozhat. "
+#~ "Ilyenkor kézzel kell leválasztania a megosztásokat a számítógép "
+#~ "felfüggesztése előtt."
+
+#~ msgid "The format of %1 is not supported."
+#~ msgstr "%1 formátuma nem támogatott."
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Könyvjelzők hozzáadása"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Az összes listázott megosztás könyvjelzőzve lesz. A címke vagy csoport "
+#~ "módosításához kattintson a megfelelő könyvjelző bejegyzésre."
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Könyvjelzők törlése"
+
+#~ msgid ""
+#~ "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Egyéni beállítások megadása a(z) <b>%1</b> géphez és az általa "
+#~ "biztosított megosztásokhoz.</p>"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Egyéni beállítások meghatározása a(z) <b>%2</b> gép <b>%1</b> "
+#~ "megosztásához.</p>"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB port:"
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 nem 1.0-s verziójú fájl."
+
+#~ msgid "Specify User"
+#~ msgstr "Adja meg a felhasználót"
+
+#~ msgid "Please specify a username."
+#~ msgstr "Adjon meg egy felhasználónevet."
+
+#~ msgid ""
+#~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#~ "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>A(z) <b>%1</b> megosztás csatolva van a <br><b>%2</b> helyre, a "
+#~ "tulajdonosa <b>%3</b>.</p><p>Biztosan leválasztja?</p></qt>"
+
+#~ msgid "Foreign Share"
+#~ msgstr "Külső megosztás"
+
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Megosztások újracsatolása. Kérem várjon."
+
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Megosztások leválasztása. Kérem várjon."
+
+#~ msgid "Mount Share"
+#~ msgstr "Megosztás csatolása"
+
+#~ msgid ""
+#~ "Enter the location (UNC address) and optionally the IP address and "
+#~ "workgroup to mount a share."
+#~ msgstr ""
+#~ "Adja meg a helyet (UNC-cím) és opcionálisan az IP-címet és munkacsoportot "
+#~ "a megosztás csatolásához."
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Az UNC-cím (Uniform Naming Convention) írja le a megosztás helyét. Ennek "
+#~ "szintaxisa a következő: //[[FELHASZNÁLÓNÉV@]GÉPNÉV/MEGOSZTÁS. A "
+#~ "felhasználónév opcionális."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "Az IP-cím (Internet Protocol) azonosítja a gépet a hálózaton és jelzi "
+#~ "merre van. Két érvényes formája van, az IPv4-ként ismert (például "
+#~ "192.168.2.11) és az IPv6 (például "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "A munkacsoport vagy tartomány azonosítja azt a számítógép hálózatot, ahol "
+#~ "a gép található."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Megosztás hozzáadása a könyvjelzőkhöz"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Ha bejelöli ezt a jelölőnégyzetet, a megosztás bekerül a könyvjelzők közé "
+#~ "és elérheti a főablak „Könyvjelzők” menüjéből."
+
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "<p>A(z) <b>%1</b> megosztás csatolva ide: <b>%2</b>.</p>"
+
+#~ msgid "Open"
+#~ msgstr "Megnyitás"
+
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr "<p>A(z) <b>%1</b> megosztás leválasztva innen: <b>%2</b>.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "<p>%1 / %2 megosztás csatolva.</p>"
+#~ msgstr[1] "<p>%1 / %2 megosztás csatolva.</p>"
+
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "<p>Az összes megosztás csatolva.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "<p>%1 / %2 megosztás lecsatolva.</p>"
+#~ msgstr[1] "<p>%1 / %2 megosztás lecsatolva.</p>"
+
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "<p>Az összes megosztás lecsatolva.</p>"
+
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "<p>Nem sikerült megnyitni a(z) <b>%1</b> jelszótárolót.</p>"
+
+#~ msgid ""
+#~ "<p>The logins stored in the wallet could not be accessed. There is either "
+#~ "no wallet available or it could not be opened.</p>"
+#~ msgstr ""
+#~ "<p>A jelszótárolóban tárolt bejelentkezési adatokhoz nem lehet "
+#~ "hozzáférni, vagy nincs elérhető jelszótároló, vagy nem nyitható meg.</p>"
+
+#~ msgid ""
+#~ "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#~ "the file to PDF or Postscript and try again.</p>"
+#~ msgstr ""
+#~ "<p>A(z) <b>%1</b> MIME-típus nem nyomtatható. Konvertálja PDF vagy "
+#~ "Postscript  formátumba, és próbálkozzon újból.</p>"
+
+#~ msgid ""
+#~ "<p>The bookmark for share <b>%1</b> already exists and will be skipped."
+#~ msgstr ""
+#~ "<p>A(z) <b>%1</b> megosztás könyvjelzője már létezik, ezért ki lesz "
+#~ "hagyva."
+
+#~ msgid ""
+#~ "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+#~ "being used and will automatically be renamed.</p>"
+#~ msgstr ""
+#~ "<p>A(z) <b>%2</b> megosztás könyvjelzőjének <b>%1</b> címkéje már "
+#~ "használatban van, ezért automatikusan át lesz nevezve.</p>"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Az egyéni főtallózó bejegyzése üres. Az Smb4K helyette megpróbálja "
+#~ "lekérdezni a munkacsoport vagy tartomány jelenlegi főtallózóját."
+
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült lekérni az elérhető tartományok listáját:</p><p><tt>%1</"
+#~ "tt></p>"
+
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "<p>Nem sikerült lekérni az elérhető tartományok listáját.</p>"
+
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült pásztázni a megadott területeket:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr "<p>Nem sikerült pásztázni a megadott területeket.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült lekérni a(z) <b>%1</b> tartományhoz tartozó kiszolgálók "
+#~ "listáját.</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült lekérni a(z) <b>%1</b> tartományhoz tartozó kiszolgálók "
+#~ "listáját.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült lekérni a(z) <b>%1</b> megosztásainak listáját:</p><p><tt>"
+#~ "%2</tt></p>"
+
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr "<p>Nem sikerült lekérni a(z) <b>%1</b> megosztásainak listáját.</p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Nem sikerült lekérni <b>%1</b> előnézetét:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "<p>Nem sikerült lekérni <b>%1</b> előnézetét.</p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr "<p>Nem sikerült csatolni a(z) <b>%1</b> megosztást.</p>"
+
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
+#~ "helyről:</p><p><tt>%3</tt></p>"
+
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült leválasztani a(z) <b>%1</b> megosztást a(z) <b>%2</b> "
+#~ "helyről.</p>"
+
+#~ msgid ""
+#~ "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~ "is owned by the user <b>%3</b>.</p>"
+#~ msgstr ""
+#~ "<p>Nincs engedélye a(z) <b>%1</b> megosztás leválasztására a(z) <b>%2</b> "
+#~ "helyről, a megosztás tulajdonosa: <b>%3</b>.</p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült nyomtatni a(z) <b>%1</b> nyomtatón:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "<p>Nem sikerült nyomtatni a(z) <b>%1</b> nyomtatón.</p>"
+
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült <b>%1</b> és <b>%2</b> szinkronizációja:</p><p><tt>%3</"
+#~ "tt></p>"
+
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "<p>Nem sikerült <b>%1</b> és <b>%2</b> szinkronizációja.</p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült a(z) <b>%1</b> elem keresése a hálózati mappában:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült a(z) <b>%1</b> elem keresése a hálózati mappában.</p>"
+
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr ""
+#~ "<p>A(z) <b>%1</b> parancs nem található. Kérjük ellenőrizze a telepítést."
+#~ "</p>"
+
+#~ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#~ msgstr ""
+#~ "<p>A(z) <b>%1</b> megosztás egy nyomtató, nem adható a könyvjelzőkhöz.</p>"
+
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "<p>A(z) <b>%1</b> fájl nem található.</p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült megnyitni a(z) <b>%1</b> fájlt:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Nem sikerült megnyitni a(z) <b>%1</b> fájlt.</p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Nem sikerült olvasni a(z) <b>%1</b> fájlból:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Nem sikerült olvasni a(z) <b>%1</b> fájlból.</p>"
+
+#~ msgid ""
+#~ "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#~ msgstr "<p>A következő mappa nem hozható létre:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Nem sikerült elindítani a folyamatot (hibakód: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>A folyamat összeomlott (hibakód: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>A folyamat túllépte az időkorlátot (hibakód: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Nem lehet írni a folyamatba (hibakód: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Nem lehet olvasni a folyamatból (hibakód: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process reported an unknown error.</p>"
+#~ msgstr "<p>A folyamat ismeretlen hibát jelentett.</p>"
+
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>A(z) <b>%1</b> rendszerhívás nem sikerült:</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code:<tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr ""
+#~ "<p>Egy művelet rendszergazdai jogokkal való végrehajtása nem sikerült "
+#~ "(hibakód: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr ""
+#~ "<p>Egy művelet rendszergazdai jogokkal való végrehajtása nem sikerült.</p>"
+
+#~ msgid "<p>The URL that was passed is invalid.</p>"
+#~ msgstr "<p>Az átadott URL érvénytelen.</p>"
+
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "<p>Nincsenek szórási területek meghatározva.</p>"
+
+#~ msgid "Preview"
+#~ msgstr "Előnézet"
+
+#~ msgid "The preview is displayed here."
+#~ msgstr "Az előnézet itt jelenik meg."
+
+#~ msgid "Reload"
+#~ msgstr "Újratöltés"
+
+#~ msgid "Back"
+#~ msgstr "Vissza"
+
+#~ msgid "Forward"
+#~ msgstr "Előre"
+
+#~ msgid "Up"
+#~ msgstr "Fel"
+
+#~ msgid ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+#~ msgstr ""
+#~ "Itt jelenik meg az aktuális UNC-cím. A korábban meglátogatott helyek "
+#~ "közül is választhat a fentebb megjelenő legördülő menüben."
+
+#~ msgid "Print File"
+#~ msgstr "Fájl nyomtatása"
+
+#~ msgid "Printer"
+#~ msgstr "Nyomtató"
+
+#~ msgid "File:"
+#~ msgstr "Fájl:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Ez a távoli nyomtatón kinyomtatni kívánt fájl. Jelenleg csak néhány MIME-"
+#~ "típus támogatott, például a PDF, Postscript, sima szöveg és képek. Ha a "
+#~ "fájl MIME-típusa nem támogatott, át kell konvertálnia azt."
+
+#~ msgid "Copies:"
+#~ msgstr "Másolatok:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Ez a nyomtatni kívánt másolatok száma."
+
+#~ msgid "Disk"
+#~ msgstr "Lemez"
+
+#~ msgid "Synchronizing"
+#~ msgstr "Szinkronizálás"
+
+#~ msgid "Source"
+#~ msgstr "Forrás"
+
+#~ msgid "Destination"
+#~ msgstr "Cél"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "A cél szinkronizálása a forrással"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Elérési utak cseréje"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Forrás és cél cseréje"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Adja meg a forrás- és célmappát a szinkronizációhoz."
+
+#~ msgid "Source:"
+#~ msgstr "Forrás:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Ez a forrásmappa. A benne található adatok kerülnek írásra a célmappába."
+
+#~ msgid "Destination:"
+#~ msgstr "Cél:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Ez a célmappa, amely frissítve lesz a forráskönyvtárból származó "
+#~ "adatokkal."
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> megosztáshoz."
+#~ "</qt>"
+
+#~ msgid "Rescan"
+#~ msgstr "Újraolvasás"
+
+#~ msgid "Mount Dialog"
+#~ msgstr "Csatolási párbeszédablak"
+
+#~ msgid "<font size=\"-1\">on %1</font>"
+#~ msgstr "<font size=\"-1\">ezen: %1</font>"
+
+#~ msgid "Unmount All"
+#~ msgstr "Összes leválasztása"
+
+#~ msgid "NTLM password hashing"
+#~ msgstr "NTLM jelszóhasítás"
+
+#~ msgid "NTLMv2 password hashing"
+#~ msgstr "NTLMv2 jelszóhasítás"
+
+#~ msgid "NTLMv2 password hashing encapsulated in Raw NTLMSSP message"
+#~ msgstr "NTLMv2 jelszóhasítás beágyazva a Raw NTLMSSP üzenetbe"
+
+#~ msgid ""
+#~ "NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet "
+#~ "signing"
+#~ msgstr ""
+#~ "NTLMv2 jelszóhasítás beágyazva a Raw NTLMSSP üzenetbe és csomagaláírás"
+
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Megosztások újracsatolásának kísérlete. Kérem várjon."
+
+#~ msgid "Use default security mode"
+#~ msgstr "Alapértelmezett biztonsági mód használata"
+
+#~ msgid "IP address:"
+#~ msgstr "IP-cím:"
+
+#~ msgid "Mount"
+#~ msgstr "Csatolás"
+
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr "<p>Néhány szükséges program nem található:</p><p><tt>%1</tt></p>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr ""
+#~ "Valóban ki akarod kényszeríteni a leválasztását ennek a megosztásnak ?"
+
+#, fuzzy
+#~ msgid "Force Unmounting"
+#~ msgstr "Leválasztás (Force): "
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of all inaccessible "
+#~ "shares?</p></qt>"
+#~ msgstr ""
+#~ "Valóban ki akarod kényszeríteni a leválasztását ennek a megosztásnak ?"
+
+#, fuzzy
+#~ msgid "&Force Unmounting"
+#~ msgstr "Leválasztás (Force): "
+
+#, fuzzy
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "Adja meg a bejelentkezési adatokat a következőhöz: %1"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "UNC Address"
+#~ msgstr "IP-cím:"
+
+#, fuzzy
+#~ msgid "User ID"
+#~ msgstr "Felhasználó:"
+
+#, fuzzy
+#~ msgid "Group ID"
+#~ msgstr "Csoport:"
+
+#, fuzzy
+#~ msgid "SMB Port"
+#~ msgstr "Távoli SMB port:"
+
+#, fuzzy
+#~ msgid "File System Port"
+#~ msgstr "Fájlrendszer"
+
+#, fuzzy
+#~ msgid "Automatic"
+#~ msgstr "Auto"
+
+#~ msgid "A&dd"
+#~ msgstr "&Hozzáadás"
+
+#, fuzzy
+#~ msgid "automatic"
+#~ msgstr "Auto"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The format of the UNC address you entered is not correct. It must "
+#~ "have the form //[USER@]HOST/SHARE."
+#~ msgstr ""
+#~ "A megosztás formátuma nem megfelelő.  A következő formában kell lennie: //"
+#~ "HOSZT/SHARE"
+
+#, fuzzy
+#~ msgid "M&ount Manually"
+#~ msgstr "M&anuális csatolás"
+
+#~ msgid "Share"
+#~ msgstr "Megosztás"
+
+#~ msgid "Bookmark Editor"
+#~ msgstr "Könyvjelzőszerkesztő"
+
+#~ msgid "Bookmark"
+#~ msgstr "Könyvjelző"
+
+#, fuzzy
+#~| msgid "Print File"
+#~ msgid "Printing"
+#~ msgstr "Fájl Nyomtatása"
+
+#, fuzzy
+#~| msgid "Converting file to Postscript..."
+#~ msgid "Converting File to PostScript"
+#~ msgstr "A fájl konvertálása PostScript-be.."
+
+#, fuzzy
+#~| msgid "Print File"
+#~ msgid "Input File"
+#~ msgstr "Fájl Nyomtatása"
+
+#, fuzzy
+#~ msgid "Files transferred:"
+#~ msgstr "Fájl maszk:"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "NoSuchAction"
+#~ msgstr "Műveletek"
+
+#, fuzzy
+#~| msgid "The permission was denied. "
+#~ msgid ""
+#~ "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</"
+#~ "p>"
+#~ msgstr "A hozzáférés megtagadva."
+
+#, fuzzy
+#~| msgid "The permission was denied. "
+#~ msgid "The authentication action was denied."
+#~ msgstr "A hozzáférés megtagadva."
+
+#, fuzzy
+#~| msgid "The permission was denied. "
+#~ msgid "The authentication was denied."
+#~ msgstr "A hozzáférés megtagadva."
+
+#, fuzzy
+#~ msgid "The directory <b>%1</b> could not be created."
+#~ msgstr "A könyvtár (%1) létrehozása nem sikerült."
+
+#, fuzzy
+#~ msgid "List"
+#~ msgstr "Megosztások Megtekintése"
+
+#, fuzzy
+#~ msgid "A system call failed."
+#~ msgstr "Az alábbiak keresése %1 sikertelen:"
+
+#~ msgid "Share:"
+#~ msgstr "Megosztás"
+
+#~ msgid "Free:"
+#~ msgstr "Szabad: "
+
+#~ msgid "Used:"
+#~ msgstr "Használt:"
+
+#~ msgid "Total:"
+#~ msgstr "Összes:"
+
+#~ msgid "Usage:"
+#~ msgstr "Használat:"
+
+#, fuzzy
+#~ msgid "Pseudo master browser:"
+#~ msgstr "Pseudo-Master:"
+
+#, fuzzy
+#~| msgid "Italian translation"
+#~ msgid "Invalid action"
+#~ msgstr "Olasz fordítás"
+
+#, fuzzy
+#~ msgid "Smb4KSearchDialogPart"
+#~ msgstr "Keresés..."
+
+#~ msgid "Remove Entries"
+#~ msgstr "Bejegyzés eltávolítása"
+
+#~ msgid "Super User"
+#~ msgstr "Rendszergazda"
+
+#, fuzzy
+#~ msgid "Writing to the <b>sudoers</b> file failed."
+#~ msgstr "Fájl Nyomtatása"
+
+#, fuzzy
+#~| msgid "Try to authenticate with Kerberos"
+#~ msgid "Username to authenticate with"
+#~ msgstr "Hitelesítés megkisérlése Kerberos-al."
+
+#, fuzzy
+#~ msgid "The UNC of the remote share"
+#~ msgstr "IP-cím megjelenítése"
+
+#, fuzzy
+#~ msgid "The mountpoint for the remote share"
+#~ msgstr "Csatolási pont helyett megosztási név látszik."
+
+#, fuzzy
+#~ msgid "Aborting."
+#~ msgstr "Művelet megszakítása..."
+
+#, fuzzy
+#~| msgid "Could not find file %1!"
+#~ msgid "Could not find umount binary."
+#~ msgstr "A(z) %1 fájl nem található"
+
+#, fuzzy
+#~| msgid "An error occurred."
+#~ msgid "An error occurred:"
+#~ msgstr "Hiba történt"
+
+#, fuzzy
+#~ msgid "The lock file could not be created."
+#~ msgstr "A könyvtár (%1) létrehozása nem sikerült."
+
+#, fuzzy
+#~ msgid "The sudoers file is currently being edited."
+#~ msgstr "A könyvtár (%1) létrehozása nem sikerült."
+
+#, fuzzy
+#~| msgid "Could not read from file %1!"
+#~ msgid "Could not read from sudoers file."
+#~ msgstr "Nem sikerült a %1 fájlból olvasni!"
+
+#, fuzzy
+#~| msgid "Could not read from file %1!"
+#~ msgid "Could not write to sudoers file."
+#~ msgstr "Nem sikerült a %1 fájlból olvasni!"
+
+#, fuzzy
+#~ msgid "The mountpoint of the share"
+#~ msgstr "Csatolási pont helyett megosztási név látszik."
+
+#, fuzzy
+#~ msgid "The PID of the process that is to be killed"
+#~ msgstr "A %1 fájl beolvasása nem sikerült."
+
+#, fuzzy
+#~| msgid "Could not find file %1!"
+#~ msgid "Could not find kill binary."
+#~ msgstr "A(z) %1 fájl nem található"
+
+#~ msgid "Use super user privileges to mount and unmount shares"
+#~ msgstr ""
+#~ "Rendszergazdai jogok szükségesek a megosztás csatoláshoz és leválasztáshoz"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Detailed information cannot be provided "
+#~ "because there was no error message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Read the error message under \"Details\" "
+#~ "to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid "<qt>This feature has not been enabled.</qt>"
+#~ msgstr "Ez a funkció még nem használható"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Read the error message under "
+#~ "\"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid "<qt>The file \"%1\" could not be found.</qt>"
+#~ msgstr "'%1' nevű fájl nem létezik."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>Either your PATH environment variable is not set properly or there "
+#~ "are the following programs missing on your system:</p><p>%1</p><p>Please "
+#~ "correct this and restart Smb4K.</p></qt>"
+#~ msgstr ""
+#~ "Valamelyik változtatható PATH-od nem jól van beállítva vagy az alábbi "
+#~ "programok hiányoznak a rendszerből:\n"
+#~ "%1\n"
+#~ "Kérem javítsa ki ezt és inítsa újra az Smb4K-t."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid "<qt>The file \"%1\" could not be opened.</qt>"
+#~ msgstr "'%1' nevű fájl nem létezik."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt></p>The synchronization could not be finished successfully.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The synchronization could not be finished successfully.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Read the error message under \"Details"
+#~ "\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The share could not be unmounted, because the mount point string was "
+#~ "empty.</qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of arguments for the \"net\" command could not be assembled."
+#~ "</qt>"
+#~ msgstr "A lemez használata sikertelen."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Read the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>You previously chose to use \"%1\", but now it is missing on your "
+#~ "system. Smb4K will disable this feature.</qt>"
+#~ msgstr ""
+#~ "%1 előzőleg lett kiválasztva, de most nem taláható a rendszerben. Az "
+#~ "Smb4K kikapcsolta ezt a funkciót!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The wallet \"%1\" could not be opened. KWallet support will be "
+#~ "disabled for this session.</qt>"
+#~ msgstr ""
+#~ "A Wallet megnyitása sikertelen. A KWallet támogatás ki lesz kapcsolva"
+
+#, fuzzy
+#~ msgid "System Tray"
+#~ msgstr "Dokkolás a tálcába"
+
+#, fuzzy
+#~ msgid "Main Window && System Tray"
+#~ msgstr "Dokkolás a tálcába"
+
+#, fuzzy
+#~ msgid "none"
+#~ msgstr "Nincs"
+
+#, fuzzy
+#~ msgid "on"
+#~ msgstr "Nincs"
+
+#, fuzzy
+#~| msgid "Preview"
+#~ msgid "The preview"
+#~ msgstr "Előnézet"
+
+#, fuzzy
+#~ msgid "The source directory"
+#~ msgstr "Aktív könyvtár"
+
+#, fuzzy
+#~ msgid "The workgroup where the host is located"
+#~ msgstr "A könyvtár (%1) létrehozása nem sikerült."
+
+#, fuzzy
+#~ msgid "The UNC address of the host"
+#~ msgstr "IP-cím megjelenítése"
+
+#, fuzzy
+#~ msgid "The port used for communicating with servers"
+#~ msgstr "Unicode használata a szerverrel való kommunikácóhoz. "
+
+#, fuzzy
+#~ msgid "The user ID"
+#~ msgstr "Felhasználó:"
+
+#, fuzzy
+#~ msgid "The group ID"
+#~ msgstr "Csoport:"
+
+#, fuzzy
+#~| msgid "Show IP address"
+#~ msgid "The IPv4 or IPv6 address"
+#~ msgstr "IP-cím megjelenítése"
+
+#, fuzzy
+#~| msgid "Bookmark Editor"
+#~ msgid "Bookmark this share"
+#~ msgstr "Könyvjelzőszerkesztő"
+
+#, fuzzy
+#~ msgid "Try to authenticate with Kerberos (Active Directory)"
+#~ msgstr "Hitelesítés megkisérlése Kerberos-al."
+
+#, fuzzy
+#~ msgid "Port"
+#~ msgstr "&Megszakít"
+
+#, fuzzy
+#~ msgid "[Shares] The mount prefix is empty."
+#~ msgstr "Csatolt megosztások:"
+
+#, fuzzy
+#~ msgid "[Samba] The file mask is empty."
+#~ msgstr "Csatolt megosztások:"
+
+#, fuzzy
+#~ msgid "[Synchronization] The rsync prefix is empty."
+#~ msgstr "Csatolt megosztások:"
+
+#, fuzzy
+#~ msgid "There are currently %1 shares mounted."
+#~ msgstr "A könyvtár (%1) létrehozása nem sikerült."
+
+#~ msgid "Catalan translation"
+#~ msgstr "Katalan Fordítás"
+
+#~ msgid "Polish translation"
+#~ msgstr "Lengyel Fordítás"
+
+#~ msgid "Chinese Simplified translation"
+#~ msgstr "Hagoymányos Kínai fordítás"
+
+#~ msgid "Russian translation"
+#~ msgstr "Orosz fordítás"
+
+#~ msgid "Swedish translation and intensive testing"
+#~ msgstr "Az alapos tesztelésért és a Swéd fordításért."
+
+#~ msgid "Brazilian Portuguese translation"
+#~ msgstr "Portugál fordítás"
+
+#~ msgid "Ukrainian translation"
+#~ msgstr "Ukrán fordítás"
+
+#~ msgid "Hungarian translation"
+#~ msgstr "Magyar fordítás"
+
+#~ msgid "Spanish translation"
+#~ msgstr "Spanyol fordítás"
+
+#~ msgid "Slovak translation"
+#~ msgstr "Szlovák fordítás"
+
+#~ msgid "French translation"
+#~ msgstr "Francia fordítás"
+
+#~ msgid "Japanese translation"
+#~ msgstr "Japán Fordítás"
+
+#~ msgid "Bulgarian translation"
+#~ msgstr "Bulgár fordítás"
+
+#~ msgid "Norwegian translations"
+#~ msgstr "Norvég fordítás"
+
+#~ msgid "Czech translation"
+#~ msgstr "Cseh fordítás"
+
+#~ msgid "Turkish translation"
+#~ msgstr "Török fordítás"
+
+#~ msgid "Chinese Traditional translation"
+#~ msgstr "Hagyományos Kínai fordítás"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Icelandic translation"
+
+#~ msgid "Danish translation"
+#~ msgstr "Dán fordítás"
+
+#~ msgid "Dutch translation"
+#~ msgstr "Holland fordítás"
+
+#~ msgid "Testing of Smb4K under FreeBSD"
+#~ msgstr "Smb4K tesztelése FreeBSD alatt"
+
+#, fuzzy
+#~| msgid "This share has already been mounted."
+#~ msgid "The share was successfully mounted."
+#~ msgstr "Már csatolva van ez a megosztás"
+
+#, fuzzy
+#~| msgid "This share has already been mounted."
+#~ msgid "The share was successfully unmounted."
+#~ msgstr "Már csatolva van ez a megosztás"
+
+#~ msgid "The access was denied. "
+#~ msgstr "A hozzáférés megtagadva."
+
+#, fuzzy
+#~ msgid "The password is not correct. "
+#~ msgstr "A megadott jelszó helytelen."
+
+#~ msgid "An authentication error occurred. "
+#~ msgstr "Ismeretlen hiba történt a hitelesítéskor"
+
+#~ msgid "The logon failed. "
+#~ msgstr "A bejelntkezés sikertelen."
+
+#, fuzzy
+#~ msgid "Please enter authentication data for server %1."
+#~ msgstr "Adja meg a bejelentkezési adatokat a következőhöz: %1"
+
+#, fuzzy
+#~ msgid "Scan Network"
+#~ msgstr "Hálózat"
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "Smb4K beállítása"
+
+#~ msgid "Samba Browser"
+#~ msgstr "Samba-böngésző"
+
+#, fuzzy
+#~ msgid "Search Dialog"
+#~ msgstr "Keresés..."
+
+#~ msgid "You haven't specified a file."
+#~ msgstr "Már létező fájlt adott meg."
+
+#, fuzzy
+#~ msgid "Querying master browser for workgroups and domains..."
+#~ msgstr "Böngésző lista lekérése a kiszolgálóról"
+
+#, fuzzy
+#~ msgid "Scanning broadcast areas for workgroups and domains..."
+#~ msgstr "Böngésző lista lekérése a kiszolgálóról"
+
+#, fuzzy
+#~ msgid "Looking for workgroup members..."
+#~ msgstr "Böngésző lista lekérése a kiszolgálóról"
+
+#, fuzzy
+#~ msgid "Querying host for list of shares..."
+#~ msgstr "Hiba történt a megosztások listázása közben!"
+
+#, fuzzy
+#~ msgid "Querying host for additional information..."
+#~ msgstr "Információk behozatala.."
+
+#, fuzzy
+#~ msgid "Generating preview..."
+#~ msgstr "Előnézet behozatala..."
+
+#, fuzzy
+#~ msgid "Buffer size exceeded"
+#~ msgstr "Az átmeneti tároló mérete:"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Some file permissions could not be determined.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message.</qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Some file permissions could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The file \"%1\" is currently being edited by user %2. To avoid any "
+#~ "problems, access to this file is denied at the moment. Please try again "
+#~ "later.</qt>"
+#~ msgstr ""
+#~ "A '%1' fájlt már '%2' felhasználó szerkeszti. Próbálja meg később "
+#~ "elvégezni a műveletet."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The temporary file \"%1\" could not be created.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message.</qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The temporary file \"%1\" could not be created.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid "<qt>The directory \"%1\" could not be found.</qt>"
+#~ msgstr "'%1' nevű könyvtár nem létezik."
+
+#, fuzzy
+#~ msgid "<qt>The file \"%1\" could not be closed.</qt>"
+#~ msgstr "'%1' nevű fájl nem létezik."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The file \"%1\" could not be closed.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of supplementary group IDs could not be determined.</qt>"
+#~ msgstr "A lemez használata sikertelen."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of supplementary group IDs could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#~ msgid "Use the following program to gain super user privileges:"
+#~ msgstr "A program használatához adminisztrátori jogok szülségesek:"
+
+#~ msgid "sudo"
+#~ msgstr "sudo"
+
+#, fuzzy
+#~ msgid "super"
+#~ msgstr "Felhasználó"
+
+#~ msgid "Programs"
+#~ msgstr "Programok"
+
+#~ msgid "Network Browser"
+#~ msgstr "Hálózat Böngésző"
+
+#, fuzzy
+#~ msgid "Port:"
+#~ msgstr "Nyomtató:"
+
+#~ msgid "Caching time of directory listings:"
+#~ msgstr "Caching time of directory listings:"
+
+#, fuzzy
+#~ msgid "Use large file support"
+#~ msgstr "A fájlrendszer nem támogatja fájlok letöltését"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>NOTE: You might need to enable support for either <i>sudo</i> or "
+#~ "<i>super</i> in the Super User page.</qt>"
+#~ msgstr ""
+#~ "MEGJEGYZÉS: If you choose the CIFS file system, you might need to enable "
+#~ "support for either <i>super</i> or <i>sudo</i> in the Super User tab."
+
+#, fuzzy
+#~ msgid "User && Group"
+#~ msgstr "Felhasználó és Csoport"
+
+#, fuzzy
+#~ msgid "Charset && Codepage"
+#~ msgstr "Beviteli/megjelenítési kódlap"
+
+#~ msgid "Permissions"
+#~ msgstr "Engedélyek"
+
+#, fuzzy
+#~ msgid "Allow dragging of shares"
+#~ msgstr "Megosztott nyomtatók megjelenítése"
+
+#, fuzzy
+#~ msgid "Drag && Drop"
+#~ msgstr "Felhasználó és Csoport"
+
+#, fuzzy
+#~ msgid "auto"
+#~ msgstr "Auto"
+
+#, fuzzy
+#~ msgid "Open with &Konqueror"
+#~ msgstr "Konqueror"
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr "Karoly Barcza (http://www.blackpanther.hu)"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr "translator@vgroup.hu, kbarcza@blackpanther.hu"
+
+#, fuzzy
+#~ msgid "Remove &All"
+#~ msgstr "Mindet eltávolítja"
+
+#, fuzzy
+#~ msgid ""
+#~ "Up to KDE 3.3.x, KIO and Konqueror cannot handle CIFS shares. Konqueror "
+#~ "will hang if you try to access it.\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "A KDE 3.3.2 -es verziójáig a KIO és a Konqueror nem tudta kezelni a CIFS "
+#~ "megosztásokat. A Konqueror lehet, hogy nem fog válaszolni ha egy ilyen "
+#~ "megosztást kíván megnyitni."
+
+#, fuzzy
+#~ msgid "Show the comment of a share"
+#~ msgstr "A rejtett megosztások megjelenítése"
+
+#, fuzzy
+#~ msgid "Show the mount point of a share instead of its name"
+#~ msgstr "Csatolási pont helyett megosztási név látszik."
+
+#, fuzzy
+#~ msgid "Allow the dragging of share icons"
+#~ msgstr "Megosztott nyomtatók megjelenítése"
+
+#, fuzzy
+#~ msgid "Force the subdirectories created by Smb4K to be lowercase"
+#~ msgstr "Főkönyvtárak létrehozásának kényszerítése"
+
+#, fuzzy
+#~ msgid "Allow the unmounting of shares owned by other users"
+#~ msgstr "Minden megosztást leválszthat bármilyen felhasználó."
+
+#, fuzzy
+#~ msgid "Use a wallet to store authentication data"
+#~ msgstr "Adja meg a bejelentkezési adatokat a következőhöz: %1"
+
+#, fuzzy
+#~ msgid "The socket options"
+#~ msgstr "Socket opciók:"
+
+#, fuzzy
+#~ msgid "The NetBIOS scope"
+#~ msgstr "NetBIOS név:"
+
+#, fuzzy
+#~ msgid "The remote SMB port"
+#~ msgstr "Távoli SMB port:"
+
+#, fuzzy
+#~ msgid "Use machine account for login"
+#~ msgstr "Alapértelmezett login használata"
+
+#, fuzzy
+#~ msgid "Long file support"
+#~ msgstr "A fájlrendszer nem támogatja fájlok letöltését"
+
+#, fuzzy
+#~ msgid "Prefix for synchronization"
+#~ msgstr "Az alapértelmezett Login"
+
+#, fuzzy
+#~ msgid "The program that should be used to gain super user privileges"
+#~ msgstr "A program használatához adminisztrátori jogok szülségesek:"
+
+#, fuzzy
+#~ msgid "Use super user privileges to unmount inaccessible shares"
+#~ msgstr ""
+#~ "Rendszergazdai jogok szükségesek a megosztás csatoláshoz és leválasztáshoz"
+
+#, fuzzy
+#~ msgid ""
+#~ "The browse list could not be retrieved.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid "The file \"%1\" could not be read."
+#~ msgstr "A %1 fájl beolvasása nem sikerült."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" could not be read.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Nem lehet lecsatolni ezt a megosztást! A csatolásipont üres!"
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses are not supported with this search method. Please choose "
+#~ "\"Use nmblookup\" in the configuration dialog and try again."
+#~ msgstr ""
+#~ "A keresési mód amit kiválasztott (smbclient) nem tudja kezelni az IP "
+#~ "címeket helyesen. Kérem válassza az nmblookup -ot a beállításoknál és "
+#~ "próbálja újra."
+
+#, fuzzy
+#~ msgid "Shares Vie&w"
+#~ msgstr "Megosztások Megtekintése"
+
+#, fuzzy
+#~ msgid "List Vie&w"
+#~ msgstr "Megosztások Megtekintése"
+
+#, fuzzy
+#~ msgid "Jump to shares view"
+#~ msgstr "Megosztások Megtekintése"
+
+#, fuzzy
+#~ msgid "Jump to network browser"
+#~ msgstr "Hálózat Böngésző"
+
+#, fuzzy
+#~ msgid "Jump to search dialog"
+#~ msgstr "Keresés..."
+
+#~ msgid "Docking in System Tray"
+#~ msgstr "Dokkolás a tálcába"
+
+#~ msgid "Exiting..."
+#~ msgstr "Kilépés..."
+
+#, fuzzy
+#~ msgid "Querying current master browser..."
+#~ msgstr "Böngésző lista lekérése a kiszolgálóról"
+
+#, fuzzy
+#~ msgid "Querying master browser %1..."
+#~ msgstr "Böngésző lista lekérése a kiszolgálóról"
+
+#, fuzzy
+#~ msgid "Scanning broadcast areas..."
+#~ msgstr "Broadcast-cím:"
+
+#~ msgid "Opening workgroup..."
+#~ msgstr "Munkacsoport megnyitása...."
+
+#, fuzzy
+#~ msgid "If no wallet is used, remember authentication data during run time"
+#~ msgstr "Ha nem használja a wallet-et jegyezze meg a jelszavakat."
+
+#~ msgid "Use default login"
+#~ msgstr "Alapértelmezett login használata"
+
+#~ msgid "Show IPC$ shares"
+#~ msgstr "Az IPC$ megosztások megjelenítése"
+
+#~ msgid "Show ADMIN$ shares"
+#~ msgstr "Az ADMIN$ megosztások megjelenítése"
+
+#~ msgid "Show type"
+#~ msgstr "Típusok megjelenítése"
+
+#, fuzzy
+#~ msgid ""
+#~ "Smb4K uses \"nmblookup\" by default to search for remote hosts. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use \"smbclient"
+#~ "\"."
+#~ msgstr ""
+#~ "Smb4K uses <i>nmblookup</i> by default to do network searches. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use "
+#~ "<i>smbclient</i>."
+
+#~ msgid "Use nmblookup (recommended)"
+#~ msgstr "Az nmblookup használata (alapértelmezett)"
+
+#, fuzzy
+#~ msgid ""
+#~ "NOTE: You might need to enable support for either \"super\" or \"sudo\" "
+#~ "in the Super User page."
+#~ msgstr ""
+#~ "MEGJEGYZÉS: If you choose the CIFS file system, you might need to enable "
+#~ "support for either <i>super</i> or <i>sudo</i> in the Super User tab."
+
+#, fuzzy
+#~ msgid "Use large file system support"
+#~ msgstr "A fájlrendszer nem támogatja fájlok letöltését"
+
+#, fuzzy
+#~ msgid "Custom"
+#~ msgstr "Auto"
+
+#, fuzzy
+#~ msgid "The default user name for authentication"
+#~ msgstr "Ez a kiszolgáló hitelesítést igényel."
+
+#, fuzzy
+#~ msgid "The default password for authentication"
+#~ msgstr "Ez a kiszolgáló hitelesítést igényel."
+
+#, fuzzy
+#~ msgid "Querying %1..."
+#~ msgstr "Keresés a hálózaton:"
+
+#, fuzzy
+#~ msgid "Retrieving browse list from current master browser..."
+#~ msgstr "Előnézet behozatala..."
+
+#, fuzzy
+#~ msgid "Querying %1 to compose browse list..."
+#~ msgstr "Böngésző lista lekérése a kiszolgálóról"
+
+#, fuzzy
+#~ msgid "Scanning network to retrieve browse list..."
+#~ msgstr "Böngésző lista keresése a hálózaton"
+
+#~ msgid "Show shares as list instead of as icons"
+#~ msgstr "Megosztási lista helyett ikonok látszanak"
+
+#~ msgid ""
+#~ "Smb4K is an SMB/CIFS share browser for KDE.\n"
+#~ "It uses Samba to access the local network neighborhood."
+#~ msgstr ""
+#~ "Smb4K egy SMB/CIFS megosztás böngésző a KDE-hez.\n"
+#~ "Használhatod a Sambat a helyi hálozatod eléréséhez."
+
+#, fuzzy
+#~ msgid "Scan netwo&rk"
+#~ msgstr "Hálózat"
+
+#, fuzzy
+#~ msgid "&Custom options"
+#~ msgstr "Samba Opciók"
+
+#, fuzzy
+#~ msgid "Broadcast addresses for IP scan:"
+#~ msgstr "Broadcast-cím:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Smb4K uses <i>nmblookup</i> by default to do network searches. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use "
+#~ "<i>smbclient</i>."
+#~ msgstr ""
+#~ "Smb4K uses <i>nmblookup</i> by default to do network searches. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use "
+#~ "<i>smbclient</i>."
+
+#~ msgid ""
+#~ "Use super user privileges to force the unmounting of (broken) shares\n"
+#~ "(Requires Linux kernel 2.4.11 or later)"
+#~ msgstr ""
+#~ "Használja a rendszergazdai jogokat a (halott) megosztások "
+#~ "leválasztásához.\n"
+#~ "(2.4.11 vagy nagyobb kernel szükséges)"
+
+#~ msgid "Samba Options"
+#~ msgstr "Samba Opciók"
+
+#~ msgid "Super User Privileges"
+#~ msgstr "Rendszergazdai jogok"
+
+#~ msgid ""
+#~ "You forgot to enter the host you want to query to retrieve the browse "
+#~ "list.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "You forgot to enter the host you want to query to retrieve the browse "
+#~ "list.\n"
+#~ "Meg akarod adni most ?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You forgot to enter the broadcast address(es) for the IP scan.\n"
+#~ "Do you want to enter them now?"
+#~ msgstr ""
+#~ "Nem adtad meg az alapértelmezett jelszót.\n"
+#~ "Meg akarod adni most ?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You forgot to enter the mount prefix.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Nem adtad meg az alapértelmezett fiókot.\n"
+#~ "Meg akarod adni most ?"
+
+#, fuzzy
+#~ msgid "Preserve owner (root only)"
+#~ msgstr "Engedélyek"
+
+#~ msgid "Domain (workgroup):"
+#~ msgstr "Domén (Munkacsoport):"
+
+#~ msgid "Scope (Read manual page):"
+#~ msgstr "Scope( elöször olvassad el a kézikönyvet):"
+
+#~ msgid "Active Directory"
+#~ msgstr "Aktív könyvtár"
+
+#, fuzzy
+#~ msgid "Linux charset:"
+#~ msgstr "Linux karakterkészlet:"
+
+#, fuzzy
+#~ msgid "Use unicode when communicating with the server"
+#~ msgstr "Unicode használata a szerverrel való kommunikácóhoz. "
+
+#~ msgid "Use default network read size"
+#~ msgstr "Alapértelmezett hálózat olvasási mérete."
+
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#, fuzzy
+#~ msgid "Active Directory (LDAP/Kerberos)"
+#~ msgstr "Aktív könyvtár (LDAP/Kerberos) "
+
+#~ msgid "DCE-RPC"
+#~ msgstr "DCE-RPC"
+
+#, fuzzy
+#~ msgid "RAP (older systems)"
+#~ msgstr "RAP (régebbi rendszerek)"
+
+#, fuzzy
+#~ msgid "Resolve order:"
+#~ msgstr "Rendezési mód:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The lock file '%1' is a symbolic link.\n"
+#~ "It looks like someone is trying to exploit your system. Please inform "
+#~ "your system administrator. Smb4K will not perform any action on a system "
+#~ "file as long as this problem is not solved."
+#~ msgstr ""
+#~ "Ez a lock fájl (%1) egy szimbólikus link. Since this might indicate that "
+#~ "someone trys to exploit your system, please inform your system "
+#~ "administrator. No action has been performed."
+
+#, fuzzy
+#~ msgid "The user IDs present on the system"
+#~ msgstr "Minden csatolt megosztás látszik"
+
+#~ msgid "This login will be used, if none has been defined for a share."
+#~ msgstr "Ez a login használatban van, vagy nincs beállítva a megosztáshoz."
+
+#~ msgid ""
+#~ "You forgot to enter the default login and password.\n"
+#~ "Do you want to enter them now?"
+#~ msgstr ""
+#~ "Nem adtad meg az alapértelmezett fiókot és jelszavat.\n"
+#~ "Meg akarod adni most ?"
+
+#~ msgid ""
+#~ "You forgot to enter the default login.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Nem adtad meg az alapértelmezett fiókot.\n"
+#~ "Meg akarod adni most ?"
+
+#~ msgid ""
+#~ "You forgot to enter the default password.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Nem adtad meg az alapértelmezett jelszót.\n"
+#~ "Meg akarod adni most ?"
+
+#~ msgid "Printer:"
+#~ msgstr "Nyomtató:"
+
+#~ msgid "Copies"
+#~ msgstr "Példányszám"
+
+#, fuzzy
+#~ msgid "The kernel (%1) does not support this operation."
+#~ msgstr "Ez a kernelverzió (%1) nem támogatja ezt a műveletet!"
+
+#~ msgid "Smb4K - The SMB/CIFS Share Browser"
+#~ msgstr "Smb4K - Az SMB/CIFS megosztás böngésző"
+
+#, fuzzy
+#~ msgid "Jump to Search Dialog (Alternative)"
+#~ msgstr "Keresés..."
+
+#~ msgid "Browse list retrieval"
+#~ msgstr "Böngésző lista visszatöltés"
+
+#~ msgid "Version"
+#~ msgstr "Verzió"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Kliens:"
+
+#~ msgid "Mounted &Shares"
+#~ msgstr "Megosztások Csatolva"
+
+#, fuzzy
+#~ msgid "Range Scan"
+#~ msgstr "Újbóli keresés"
+
+#, fuzzy
+#~ msgid ""
+#~ "You forgot to enter the IP address ranges you want to scan to retrieve "
+#~ "the browse list.\n"
+#~ "Do you want to enter them now?"
+#~ msgstr ""
+#~ "You forgot to enter the host you want to query to retrieve the browse "
+#~ "list.\n"
+#~ "Meg akarod adni most ?"
+
+#~ msgid "Set the UID to:"
+#~ msgstr "Set the UID to:"
+
+#~ msgid "Set the GID to:"
+#~ msgstr "Set the GID to:"
+
+#~ msgid "An error occurred while trying to get the list of workgroup members."
+#~ msgstr "Hiba történt a munkacsoport tagjainak betöltése közben!"
+
+#~ msgid "An error occurred while trying to get the preview."
+#~ msgstr "Hiba történt az előnézet betöltése közben!"
+
+#~ msgid "An error occurred while trying to mount the share."
+#~ msgstr "Hiba történt a megosztás csatolása közben!"
+
+#~ msgid "An error occurred while trying to unmount the share."
+#~ msgstr "Hiba történt a megosztás lecsatolása közben!"
+
+#~ msgid "An error occurred while trying to unmount all shares."
+#~ msgstr "Hiba történt az összes megosztás leválasztása közben!"
+
+#~ msgid "The hostname could not be determined."
+#~ msgstr "A hosztnevet nem lehetett megállapítani."
+
+#~ msgid "The file %1 could not be written successfully."
+#~ msgstr "A %1 fájl írása nem sikerült!"
+
+#~ msgid "An error occurred while trying to print."
+#~ msgstr "Hiba történt a nyomtatás betöltése közben!"
+
+#~ msgid "An error occurred while trying to create a temporary directory."
+#~ msgstr "Hiba történt az ideiglenes könyvtár létrehozása közben."
+
+#~ msgid "An error occurred while trying to create a temporary file."
+#~ msgstr "Hiba történt az ideiglenes fájl létrehozása közben."
+
+#~ msgid "An error occurred while determining file permissions."
+#~ msgstr "Hiba történt a jogosultságok meghatározásakor."
+
+#, fuzzy
+#~ msgid "An error occurred during synchronization."
+#~ msgstr "Hiba történt a nyomtatás betöltése közben!"
+
+#, fuzzy
+#~ msgid "Workgroup/Domain"
+#~ msgstr "Munkacsoport"
+
+#~ msgid ""
+#~ "You forgot to enter the path where Smb4K will mount the shares to.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Nem adtad meg az alapértelmezett elérési utat ahova az Smb4k csatolja a "
+#~ "megosztásokat.\n"
+#~ "Meg akarod adni most ?"
+
+#~ msgid "Mount shares:"
+#~ msgstr "Csatolt megosztások:"
+
+#, fuzzy
+#~ msgid ""
+#~ "(c) 2003, Alexander Reinholdt \n"
+#~ "(c) 2004, Alexander Reinholdt, Franck Babin \n"
+#~ "(c) 2005, Alexander Reinholdt & the Smb4K team"
+#~ msgstr ""
+#~ "(c) 2003, Alexander Reinholdt \n"
+#~ "(c) 2004, Alexander Reinholdt, Franck Babin \n"
+#~ "(c) 2005, The Smb4K team & Hungarian Support: blackPanther OS Team"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentáció"
+
+#~ msgid "This computer is already in the list."
+#~ msgstr "Ez a gép már szerepel a listában."
+
+#~ msgid "This share cannot be added."
+#~ msgstr "A megosztás hozzáadása nem sikerült."
+
+#~ msgid "file to open"
+#~ msgstr "Megnyitandó fájl"
+
+#~ msgid "Show network tab"
+#~ msgstr "Hálózat fül megjelenítése"
+
+#~ msgid "Show Search tab"
+#~ msgstr "Mutasd a keresés fület"
+
+#~ msgid ""
+#~ "As of version 0.5.0, the entries in the super.tab file are stored in a "
+#~ "different format. Smb4K is now going to convert the old ones."
+#~ msgstr ""
+#~ "0.5.0-nál régebbi verzió, az elemek a super.tab fájlban másképpen vannak "
+#~ "tárolva. Az Smb4k most konvertálja a régit."
+
+#~ msgid ""
+#~ "Smb4K is going to modify the entries in the super.tab file in order to "
+#~ "work properly."
+#~ msgstr ""
+#~ "Smb4k módosítani fogja a super.tab bejegyzéseit a helyes működés érdekben."
+
+#~ msgid "Input"
+#~ msgstr "Bemenet"
+
+#~ msgid ""
+#~ "The mimetype (%1) indicates that this is a text file. Printing it, "
+#~ "however, might fail. Do you want to continue?"
+#~ msgstr ""
+#~ "The mimetype (%1) indicates that this is a text file. Printing it, "
+#~ "however, might fail. Do you want to continue?"
+
+#~ msgid "NetBIOS name/IP address:"
+#~ msgstr "NetBIOS név/IP cím:"
+
+#~ msgid "Use authentication when querying the workgroup master browsers"
+#~ msgstr ""
+#~ "Hitelesítés használata a munkacsoport master browser -ének keresésekkor."
+
+#~ msgid "WINS server used by the system:"
+#~ msgstr "Rendszere által használt WINS szerver: "
+
+#~ msgid "OS:"
+#~ msgstr "Op. rendszer:"
+
+#~ msgid "S&earch"
+#~ msgstr "&Keresés"
+
+#~ msgid ""
+#~ "This is the directory under which the shares will be mounted. Adjust it "
+#~ "according to your wishes."
+#~ msgstr ""
+#~ "Ez az alapértelmezett könyvtár ahova az Smb4K a megosztásokat csatolja. "
+
+#~ msgid "<font size=+2><b>Share</b></font>"
+#~ msgstr "<font size=+2><b>Megosztás</b></font>"
+
+#~ msgid "Contents:"
+#~ msgstr "Tartalom:"
+
+#~ msgid "%1 Item   "
+#~ msgstr "%1 elem"
+
+#~ msgid "%1 Items   "
+#~ msgstr "%1 Elemek"
+
+#~ msgid "(%1 Directory, "
+#~ msgstr "(%1 Könyvtár"
+
+#~ msgid "(%1 Directories, "
+#~ msgstr "(%1 Könyvtárak,"
+
+#~ msgid "%1 File)"
+#~ msgstr "%1 Fájl)"
+
+#~ msgid "%1 Files)"
+#~ msgstr "%1 Fáljok)"
+
+#~ msgid "super (recommended)"
+#~ msgstr "szuper (javasolt)"
+
+#, fuzzy
+#~ msgid "Smb4KBookmarkEditor"
+#~ msgstr "Könyvjelzőszerkesztő"
+
+#, fuzzy
+#~ msgid "SMBFS (default)"
+#~ msgstr "alapértelmezés"
+
+#, fuzzy
+#~ msgid ""
+#~ "An error occurred while trying to get additional information from the "
+#~ "host."
+#~ msgstr "Hiba történt a részletes információk betöltése közben!"
+
+#~ msgid "Use authentication for all shares."
+#~ msgstr "Hitelesítés használata az összes megosztáshoz."
+
+#~ msgid "Hosts and Shares"
+#~ msgstr "Kiszolgálók és megosztások"
+
+#, fuzzy
+#~ msgid ""
+#~ "You left the following entries blank:\n"
+#~ "%1\n"
+#~ "Please fill them out."
+#~ msgstr ""
+#~ "You left the following entries blank:\n"
+#~ "%1\n"
+#~ "Please fill them out!"
+
+#~ msgid ""
+#~ "Authentication data for this share is already in the list.\n"
+#~ "Do you want to replace it?"
+#~ msgstr ""
+#~ "A hitelesítési adatok ehhez a megosztáshoz már léteznek a listában.\n"
+#~ "Meg akarod változtatni őket?"
+
+#~ msgid ""
+#~ "You forgot to commit the authentication data you entered last.\n"
+#~ "Do you want to do it now?"
+#~ msgstr ""
+#~ "Nincs szükséged hitelesítéshez adatokra.\n"
+#~ "Meg akarsz adni valamit most?"
+
+#~ msgid "Could not get hostname!"
+#~ msgstr "Nem sikerült információt szerezni!"
+
+#~ msgid "Could not create directory %1!"
+#~ msgstr "%1 könyvtár létrehozása sikertelen!"
+
+#, fuzzy
+#~ msgid "<b>Authentication error!</b>"
+#~ msgstr "Hitelesítés"
+
+#~ msgid "UNKNOWN"
+#~ msgstr "ISMERETLEN"
+
+#~ msgid "Can't add this share! The workgroup is missing."
+#~ msgstr "Megosztás hozzáadása nem sikerült! A munkacsoport hiányzik."
+
+#~ msgid "Mounted network shares"
+#~ msgstr "Hálózati megosztások csatolása"
+
+#~ msgid "You have not enabled this feature!"
+#~ msgstr "Ez a képesség még nincs készen!"
+
+#~ msgid "File mask for remote files:"
+#~ msgstr "Fájl maszk a távoli fájlokhoz:"

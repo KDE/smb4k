@@ -1,0 +1,4409 @@
+# translation of smb4k.po to Icelandic
+# This file is distributed under the same license as the smb4k package.
+# Copyright (C) 2005 Free Software Foundation.
+#
+# Arnar Leosson <leosson@frisurf.no>, 2005.
+# Sveinn í Felli <sveinki@nett.is>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:45+0000\n"
+"PO-Revision-Date: 2011-06-20 06:00+0000\n"
+"Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
+"Language-Team: Icelandic <kde-isl@molar.is>\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+"\n"
+"\n"
+"\n"
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:18
+#, kde-format
+msgid "Tab orientation:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:19
+#, kde-format
+msgid "Set the tab orientation for the tabified dock widgets."
+msgstr ""
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:22
+#, kde-format
+msgid "Top"
+msgstr ""
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:25
+#, kde-format
+msgid "Bottom"
+msgstr ""
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:28
+#, kde-format
+msgid "Left"
+msgstr ""
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:31
+#, kde-format
+msgid "Right"
+msgstr ""
+
+#. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
+#: smb4k.kcfg:37
+#, kde-format
+msgid "Show custom bookmark label if available"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
+#: smb4k.kcfg:38
+#, kde-format
+msgid ""
+"Do not show the name of the share that is represented by the bookmark but "
+"the custom label that was defined in the bookmark editor."
+msgstr ""
+
+#. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
+#: smb4k.kcfg:42
+#, kde-format
+msgid "Start docked"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
+#: smb4k.kcfg:43
+#, kde-format
+msgid ""
+"Start the application docked to the system tray, i.e. only the system tray "
+"widget is shown and the main window is hidden. You can bring the main window "
+"up by clicking on the system tray widget or by choosing \"Restore\" from its "
+"popup menu."
+msgstr ""
+
+#. i18n: ectx: label, entry (ShowType), group (UserInterface)
+#: smb4k.kcfg:47
+#, fuzzy, kde-format
+msgid "Show the type of the share"
+msgstr "Sýna faldar sameignir"
+
+#. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
+#: smb4k.kcfg:48
+#, fuzzy, kde-format
+msgid ""
+"The type of a share will be displayed in a separate column in the network "
+"neighborhood browser. It can either be Disk, Print or IPC."
+msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
+#: smb4k.kcfg:52
+#, fuzzy, kde-format
+msgid "Show the IP address of the server"
+msgstr "Sýna IP vistfang"
+
+#. i18n: ectx: whatsthis, entry (ShowIPAddress), group (UserInterface)
+#: smb4k.kcfg:53
+#, fuzzy, kde-format
+msgid ""
+"The IP address of the server will be displayed in a separate column in the "
+"network neighborhood browser."
+msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#. i18n: ectx: label, entry (ShowComment), group (UserInterface)
+#: smb4k.kcfg:57
+#, fuzzy, kde-format
+msgid "Show the comment"
+msgstr "Sýna athugasemdir"
+
+#. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
+#: smb4k.kcfg:58
+#, fuzzy, kde-format
+msgid ""
+"The comment describing the server or share will be displayed in a separate "
+"column in the network neighborhood browser."
+msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
+#: smb4k.kcfg:62
+#, fuzzy, kde-format
+msgid "Show tooltips for network items"
+msgstr "Sýna vísbendingar með upplýsingum um nethlut"
+
+#. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
+#: smb4k.kcfg:63
+#, fuzzy, kde-format
+msgid "The tooltip shows various information about the current network item."
+msgstr "Sýna vísbendingar með upplýsingum um nethlut"
+
+#. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
+#: smb4k.kcfg:67
+#, kde-format
+msgid "Automatically expand domains and hosts"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
+#: smb4k.kcfg:68
+#, kde-format
+msgid ""
+"Automatically expand domain and host items when a list of associated network "
+"items (domain members or shares) is added or updated. Please note that a "
+"domain or host item will always be expanded when you execute it."
+msgstr ""
+
+#. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
+#: smb4k.kcfg:72
+#, fuzzy, kde-format
+#| msgid "Show a tooltip with information about the share"
+msgid "Show tooltips for mounted shares"
+msgstr "Sýna vísbendingar með upplýsingar um sameign"
+
+#. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
+#: smb4k.kcfg:73
+#, kde-format
+msgid "The tooltip shows various information about the current share."
+msgstr "Sýna vísbendingar með ýmsar upplýsingar um sameign."
+
+#. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
+#: smb4k.kcfg:77
+#, fuzzy, kde-format
+#| msgid "File mask:"
+msgid "View mode:"
+msgstr "Skráarmöskvi:"
+
+#. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
+#: smb4k.kcfg:78
+#, kde-format
+msgid ""
+"This setting determines the view mode of the shares view. There are two "
+"modes: the icon view and the list view."
+msgstr ""
+
+#. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
+#: smb4k.kcfg:81
+#, fuzzy, kde-format
+msgid "Icon View"
+msgstr "Táknmyndasýn"
+
+#. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
+#: smb4k.kcfg:84
+#, fuzzy, kde-format
+msgid "List View"
+msgstr "Sameignasýn"
+
+#. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
+#: smb4k.kcfg:90
+#, kde-format
+msgid "Icon size for the icon view:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
+#: smb4k.kcfg:91
+#, kde-format
+msgid "Set the icon size for the icon view mode of the shares view."
+msgstr ""
+
+#. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
+#: smb4k.kcfg:97
+#, kde-format
+msgid "Icon size for the list view:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
+#: smb4k.kcfg:98
+#, fuzzy, kde-format
+#| msgid "Show the mount point instead of the share name"
+msgid "Set the icon size for the list view mode of the shares view."
+msgstr "Sýna tengipunkt í stað nafns á sameign"
+
+#. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
+#: smb4k.kcfg:104
+#, fuzzy, kde-format
+msgid "Icon size:"
+msgstr "Táknmyndasýn"
+
+#. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
+#: smb4k.kcfg:105
+#, fuzzy, kde-format
+msgid "Set the icon size for the network neighborhood browser."
+msgstr "Netnágrenni"
+
+#. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
+#: smb4k.kcfg:116
+#, kde-format
+msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
+#: smb4k.kcfg:117
+#, kde-format
+msgid ""
+"The Web Services Dynamic Discovery (WS-Discovery) is used to browse the "
+"local network and discover workgroups, domains and hosts. This is useful, if "
+"your network neighborhood is dominated by servers with modern Windows "
+"versions. If you use this option, there should be no need to force Samba's "
+"client library to use the SMB protocol version 1.0 for searching for "
+"workgroups and domains."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
+#: smb4k.kcfg:121
+#, kde-format
+msgid "Use DNS Service Discovery (DNS-SD) for browsing"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseDnsServiceDiscovery), group (Network)
+#: smb4k.kcfg:122
+#, kde-format
+msgid ""
+"The DNS Service Discovery (DNS-SD) is used to browse the local network and "
+"discover servers that provide shared SMB resources. The discovered domains "
+"correspond to the local DNS domains (e. g. named LOCAL) and most likely not "
+"the ones defined in the network neighborhood. However, this does not "
+"influence the browsing. If you use this option, there is no need to force "
+"Samba's client library to use the SMB protocol version 1.0 for searching for "
+"workgroups and domains."
+msgstr ""
+
+#. i18n: ectx: label, entry (ForceSmb1Protocol), group (Network)
+#: smb4k.kcfg:126
+#, fuzzy, kde-format
+#| msgid "Looking for workgroups and domains..."
+msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
+msgstr "Leita að vinnuhópum og lénum..."
+
+#. i18n: ectx: whatsthis, entry (ForceSmb1Protocol), group (Network)
+#: smb4k.kcfg:127
+#, kde-format
+msgid ""
+"Smb4K will force Samba's client library to use the SMB protocol version 1.0 "
+"for browsing workgroups and domains. You should use this option only as last "
+"resort, because the SMB protocol version 1.0 is unsafe and has been disabled "
+"in newer Samba and Windows versions. However, if you have trouble "
+"discovering workgroups and domains in your network neighborhood, you might "
+"want to consider to switch this setting on. If you are using DNS Service "
+"Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and "
+"those are working for you, you do not need it."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
+#: smb4k.kcfg:131
+#, fuzzy, kde-format
+#| msgid "Protocol hint:"
+msgid "Set minimal and maximal SMB protocol version"
+msgstr "Vísbending samskiptamáta:"
+
+#. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
+#: smb4k.kcfg:132
+#, kde-format
+msgid ""
+"Smb4K will set the minimal and maximal SMB protocol version that is used by "
+"Samba's client library to browse the network neighborhood. This will "
+"overwrite the settings in the smb.conf file. Normally, you do not need to "
+"use this option, because the right protocol versions should be negotiated "
+"between the client and the server while establishing a connection. Please "
+"note that this setting might not be appropriate to make the discovering of "
+"workgroups and domains work while keeping undisturbed connectivity to "
+"servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic "
+"Discovery (WS-Discovery) for domain and workgroup lookups instead."
+msgstr ""
+
+#. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:136
+#, fuzzy, kde-format
+#| msgid "Protocol hint:"
+msgid "Minimal SMB protocol version:"
+msgstr "Vísbending samskiptamáta:"
+
+#. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:137
+#, kde-format
+msgid ""
+"This setting controls the minimum protocol version that Samba's client "
+"library will attempt to use."
+msgstr ""
+
+#. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
+#. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:140 smb4k.kcfg:156
+#, kde-format
+msgid "NT1 (Classic CIFS/SMBv1 protocol)"
+msgstr ""
+
+#. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
+#. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:143 smb4k.kcfg:159
+#, kde-format
+msgid "SMB2 (Windows Vista and above)"
+msgstr ""
+
+#. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
+#. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:146 smb4k.kcfg:162
+#, kde-format
+msgid "SMB3 (Windows 8 and above)"
+msgstr ""
+
+#. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:152
+#, fuzzy, kde-format
+#| msgid "Protocol hint:"
+msgid "Maximal SMB protocol version:"
+msgstr "Vísbending samskiptamáta:"
+
+#. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:153
+#, kde-format
+msgid ""
+"This setting controls the maximum protocol version that Samba's client "
+"library will attempt to use."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
+#: smb4k.kcfg:168
+#, fuzzy, kde-format
+#| msgid "SMB port:"
+msgid "Set the SMB port to:"
+msgstr "SMB gátt:"
+
+#. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
+#. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
+#: smb4k.kcfg:169 smb4k.kcfg:173
+#, kde-format
+msgid ""
+"This is the port that is used for connecting to remote servers with the "
+"client programs net, smbclient and smbtree. The default value is 139 "
+"(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+msgstr ""
+
+#. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
+#: smb4k.kcfg:179
+#, kde-format
+msgid "This computer is on a large network neighborhood"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (LargeNetworkNeighborhood), group (Network)
+#: smb4k.kcfg:180
+#, kde-format
+msgid ""
+"In case your computer is on a large network neighborhood, discovering all "
+"workgroups, hosts and shares might take a long time, since in the default "
+"configuration all local master browsers are queried. Enabling this setting "
+"limits the number of used local master browsers to three. This can reduced "
+"the time consumption on large network neighborhoods considerably."
+msgstr ""
+
+#. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
+#: smb4k.kcfg:184
+#, fuzzy, kde-format
+msgid "Master browsers require authentication"
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
+#: smb4k.kcfg:185
+#, fuzzy, kde-format
+msgid ""
+"The master browsers in your network neighborhood require a login to return "
+"the browse list. This setting is rarely needed."
+msgstr "Villa kom upp þegar reynt var að nálgast flakklistann."
+
+#. i18n: ectx: label, entry (UseKerberos), group (Network)
+#: smb4k.kcfg:189
+#, fuzzy, kde-format
+msgid "Use Kerberos for authentication"
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
+#: smb4k.kcfg:190
+#, kde-format
+msgid ""
+"Use Kerberos for authentication. This is only useful in an Active Directory "
+"environment."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
+#: smb4k.kcfg:194
+#, fuzzy, kde-format
+msgid "Use Winbind ccache for authentication"
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
+#: smb4k.kcfg:195
+#, fuzzy, kde-format
+msgid "Use the Winbind ccache for authentication."
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
+#: smb4k.kcfg:199
+#, kde-format
+msgid "Set the encryption level to:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
+#. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
+#: smb4k.kcfg:200 smb4k.kcfg:204
+#, kde-format
+msgid "Set the level of encryption that is used for making connections."
+msgstr ""
+
+#. i18n: ectx: label, entry (EncryptionLevel), group (Network)
+#: smb4k.kcfg:207
+#, kde-format
+msgid "None"
+msgstr "Ekkert"
+
+#. i18n: ectx: label, entry (EncryptionLevel), group (Network)
+#: smb4k.kcfg:210
+#, fuzzy, kde-format
+#| msgid "Required"
+msgid "Request"
+msgstr "Nauðsynlegt"
+
+#. i18n: ectx: label, entry (EncryptionLevel), group (Network)
+#: smb4k.kcfg:213
+#, fuzzy, kde-format
+#| msgid "Required"
+msgid "Require"
+msgstr "Nauðsynlegt"
+
+#. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
+#: smb4k.kcfg:219
+#, kde-format
+msgid "Preview hidden files and directories"
+msgstr "Forskoða faldar skrár og möppur"
+
+#. i18n: ectx: whatsthis, entry (PreviewHiddenItems), group (Network)
+#: smb4k.kcfg:220
+#, kde-format
+msgid ""
+"Preview hidden files and directories. The hidden files and directories are "
+"those whose names begin with a period. They are usually needed for very "
+"specific purposes (storing the configuration information for an application, "
+"etc.). Since they are not of any importance for your regular work, you "
+"normally do not need to enable this feature."
+msgstr ""
+
+#. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
+#: smb4k.kcfg:224
+#, fuzzy, kde-format
+#| msgid "Show printer shares"
+msgid "Detect printer shares"
+msgstr "Sýna prentara sameignir"
+
+#. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
+#: smb4k.kcfg:225
+#, fuzzy, kde-format
+msgid "Printer shares are detected."
+msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
+#: smb4k.kcfg:229
+#, fuzzy, kde-format
+#| msgid "Show hidden shares"
+msgid "Detect hidden shares"
+msgstr "Sýna faldar sameignir"
+
+#. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
+#: smb4k.kcfg:230
+#, fuzzy, kde-format
+msgid ""
+"Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
+"Musik$ or IPC$."
+msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
+#: smb4k.kcfg:234
+#, kde-format
+msgid "Enable Wake-On-LAN features"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
+#: smb4k.kcfg:235
+#, kde-format
+msgid ""
+"Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
+"computer to be turned on or woken up by a network message. Smb4K uses a "
+"magic packet send via a UDP socket to wake up remote servers. If you want to "
+"take advantage of the Wake-On-LAN feature, you need to enable this option."
+msgstr ""
+
+#. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
+#: smb4k.kcfg:239
+#, kde-format
+msgid "Waiting time:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
+#: smb4k.kcfg:240
+#, kde-format
+msgid ""
+"This is the waiting time in seconds between the sending of the magic Wake-On-"
+"LAN packets and the scanning of the network neighborhood or the mounting of "
+"a share."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseWallet), group (Authentication)
+#: smb4k.kcfg:251
+#, fuzzy, kde-format
+msgid "Save logins in a wallet"
+msgstr "Geyma innskráningarupplýsingar í veskinu"
+
+#. i18n: ectx: whatsthis, entry (UseWallet), group (Authentication)
+#: smb4k.kcfg:252
+#, kde-format
+msgid ""
+"Use a wallet to store the login. The username and password are stored "
+"encrypted on your hard drive. If this setting is disabled, the login is not "
+"stored permanently but only temporarily."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
+#: smb4k.kcfg:256
+#, fuzzy, kde-format
+msgid "Use a default login"
+msgstr "Nota sjálfgefna innskráningu"
+
+#. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
+#: smb4k.kcfg:257
+#, kde-format
+msgid ""
+"Enable the usage of a default login. The provided data is used by default to "
+"authenticate to a remote server. This is very useful e.g. if you are working "
+"in an Active Directory environment or an NT domain."
+msgstr ""
+
+#. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
+#: smb4k.kcfg:269
+#, fuzzy, kde-format
+msgid "Synchronization prefix:"
+msgstr "Samræming"
+
+#. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
+#: smb4k.kcfg:270
+#, kde-format
+msgid ""
+"Under this prefix the destination directory for the synchronization will be "
+"created. However, if you want to store the data of a particular share "
+"elsewhere, you will be able to choose a different path before the actual "
+"synchronization begins."
+msgstr ""
+
+#. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
+#: smb4k.kcfg:274
+#, kde-format
+msgid "Archive mode"
+msgstr "Safnskráahamur"
+
+#. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
+#: smb4k.kcfg:275
+#, kde-format
+msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+msgstr ""
+
+#. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
+#: smb4k.kcfg:279
+#, kde-format
+msgid "Recurse into subdirectories"
+msgstr "Fara endurkvæmt í undirmöppur"
+
+#. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
+#: smb4k.kcfg:280
+#, kde-format
+msgid "Recurse into directories (-r, --recursive)."
+msgstr "Fara endurkvæmt í möppur (-r, --recursive)."
+
+#. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
+#: smb4k.kcfg:284
+#, kde-format
+msgid "Update files"
+msgstr "Uppfæra skrár"
+
+#. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
+#: smb4k.kcfg:285
+#, kde-format
+msgid ""
+"Update files in the destination directory that are older than in the source "
+"directory (-u, --update)."
+msgstr ""
+
+#. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
+#: smb4k.kcfg:289
+#, fuzzy, kde-format
+msgid "Update files in place"
+msgstr "Uppfæra áfangaskrár"
+
+#. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
+#: smb4k.kcfg:290
+#, kde-format
+msgid ""
+"Update destination files in-place (--inplace). By default, rsync first "
+"creates a new copy of a file and moves it into place after its transfer "
+"finished. If you enable this feature, no copy will be created but the "
+"destination file will immediately be overwritten instead. An exception to "
+"this is if you combine this option with --backup."
+msgstr ""
+
+#. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
+#: smb4k.kcfg:294
+#, kde-format
+msgid "Use relative path names"
+msgstr "Nota afstæð slóðaheiti"
+
+#. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
+#: smb4k.kcfg:295
+#, kde-format
+msgid ""
+"Use relative paths (-R, --relative). This means that the full path names "
+"specified on the command line are sent to the server rather than just the "
+"last parts of the file names."
+msgstr ""
+
+#. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
+#: smb4k.kcfg:299
+#, kde-format
+msgid "Do not send implied directories"
+msgstr "Ekki senda óbeinar möppur"
+
+#. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
+#: smb4k.kcfg:300
+#, kde-format
+msgid ""
+"Do not send implied directories with --relative (--no-implied-dirs). This "
+"means that the corresponding path elements on the destination system are "
+"left unchanged if they exist, and any missing implied directories are "
+"created with default attributes. This even allows these implied path "
+"elements to have big differences, such as being a symlink to a directory on "
+"one side of the transfer, and a real directory on the other side."
+msgstr ""
+
+#. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
+#: smb4k.kcfg:304
+#, kde-format
+msgid "Transfer directories without recursing"
+msgstr "Senda möppur án þess að fara endurkvæmt niður í þær"
+
+#. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
+#: smb4k.kcfg:305
+#, kde-format
+msgid ""
+"Transfer directories without recursing (-d, --dirs). This means that all top-"
+"level subdirectories are transferred but without their contents."
+msgstr ""
+
+#. i18n: ectx: label, entry (CompressData), group (Synchronization)
+#: smb4k.kcfg:310
+#, kde-format
+msgid "Compress data during transfer"
+msgstr "Þjappa gögnum við sendingu"
+
+#. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
+#: smb4k.kcfg:311
+#, kde-format
+msgid ""
+"Compress data during transfer (-z, --compress). This significantly reduces "
+"the amount of data that is being transferred. You may want to use this "
+"option, if you have a slow connection."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
+#: smb4k.kcfg:315
+#, kde-format
+msgid "Set compression level:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
+#: smb4k.kcfg:316
+#, kde-format
+msgid ""
+"Explicitly set the compression level to use (--compress-level=NUM). If NUM "
+"is non-zero, the --compress argument is implied."
+msgstr ""
+
+#. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
+#: smb4k.kcfg:320
+#, kde-format
+msgid "The value for the UseCompressionLevel config entry"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
+#: smb4k.kcfg:327
+#, kde-format
+msgid "Skip compression for following file suffixes:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
+#: smb4k.kcfg:328
+#, kde-format
+msgid ""
+"Overwrite the list of file suffixes that will not be compressed (--skip-"
+"compress=LIST). The LIST should be one or more file suffixes (without the "
+"dot) separated by slashes. You may specify an empty string to indicate that "
+"no file should be skipped. The default list of suffixes will be replaced by "
+"this list. For further details, see the manual page of rsync."
+msgstr ""
+
+#. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
+#: smb4k.kcfg:332
+#, kde-format
+msgid "The value(s) for the UseSkipCompression config entry"
+msgstr ""
+
+#. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
+#: smb4k.kcfg:337
+#, kde-format
+msgid "Preserve symlinks"
+msgstr "Varðveita tákntengla"
+
+#. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
+#: smb4k.kcfg:338
+#, kde-format
+msgid "Copy symlinks as symlinks (-l, --links)."
+msgstr ""
+
+#. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
+#: smb4k.kcfg:342
+#, kde-format
+msgid "Transform symlinks"
+msgstr "Umbreyta tákntenglum"
+
+#. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
+#: smb4k.kcfg:343
+#, kde-format
+msgid ""
+"Transform symlinks into the items they are pointing to (-L, --copy-links)."
+msgstr ""
+
+#. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
+#: smb4k.kcfg:347
+#, fuzzy, kde-format
+#| msgid "Only transform unsafe symlinks"
+msgid "Transform unsafe symlinks"
+msgstr "Bara umbreyta óöruggum tákntenglum"
+
+#. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
+#: smb4k.kcfg:348
+#, kde-format
+msgid ""
+"Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
+"links). This means that only those symlinks are transformed that point to "
+"items that are outside the copied tree. Absolute symlinks are treated the "
+"same way. This option has no additional effect if --copy-links has also been "
+"specified."
+msgstr ""
+
+#. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
+#: smb4k.kcfg:352
+#, kde-format
+msgid "Ignore unsafe symlinks"
+msgstr "Hunsa óörugga tákntengla"
+
+#. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
+#: smb4k.kcfg:353
+#, kde-format
+msgid ""
+"Ignore symlinks that point outside the copied tree (--safe-links). All "
+"absolute symlinks are also ignored. If you use this option in conjunction "
+"with --relative you might get unexpected results."
+msgstr ""
+
+#. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
+#: smb4k.kcfg:357
+#, fuzzy, kde-format
+#| msgid "Ignore unsafe symlinks"
+msgid "Munge symlinks"
+msgstr "Hunsa óörugga tákntengla"
+
+#. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
+#: smb4k.kcfg:358
+#, kde-format
+msgid ""
+"This option tells rsync to (1) modify all symlinks on the receiving side in "
+"a way that makes them unusable but recoverable, or (2) to unmunge symlinks "
+"on the sending side that had been stored in a munged state (--munge-links). "
+"This is useful if you do not quite trust the source of the data to not try "
+"to slip in a symlink to an unexpected place. For more details, see the "
+"manual page of rsync."
+msgstr ""
+
+#. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
+#: smb4k.kcfg:362
+#, kde-format
+msgid "Preserve hard links"
+msgstr "Varðveita fasta tengla"
+
+#. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
+#: smb4k.kcfg:363
+#, kde-format
+msgid ""
+"Preserve hard links (-H, --hard-links). This options causes rsync to "
+"preserve the hard links that are found during the transfer. Without it, hard "
+"links are treated as though they were separate files."
+msgstr ""
+
+#. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
+#: smb4k.kcfg:367
+#, fuzzy, kde-format
+#| msgid "Keep directory symlinks"
+msgid "Copy directory symlinks"
+msgstr "Halda möpputákntenglum"
+
+#. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
+#: smb4k.kcfg:368
+#, kde-format
+msgid ""
+"Treat symlinks to directories on the sending side as though they were real "
+"ones (-k, --copy-dirlinks). This is useful if you do not want symlinks to "
+"non-directories to be affected, as they would be using --copy-links. Without "
+"this option, if the sending side has replaced a directory with a symlink to "
+"a directory, the receiving side will delete anything that is in the way of "
+"the new symlink, including a directory hierarchy (as long as --force or --"
+"delete is in effect). For more details, see the manual page of rsync."
+msgstr ""
+
+#. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
+#: smb4k.kcfg:372
+#, kde-format
+msgid "Keep directory symlinks"
+msgstr "Halda möpputákntenglum"
+
+#. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
+#: smb4k.kcfg:373
+#, kde-format
+msgid ""
+"Treat symlinks to directories on the receiving side as though they were real "
+"ones (-K, --keep-dirlinks). This only works if the symlink matches a real "
+"directory from the sending side. Without this option, the receiver's symlink "
+"will be deleted and replaced with a real directory."
+msgstr ""
+
+#. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
+#: smb4k.kcfg:377
+#, kde-format
+msgid "Preserve permissions"
+msgstr "Varðveita heimildir"
+
+#. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
+#: smb4k.kcfg:378
+#, kde-format
+msgid ""
+"Preserve permissions (-p, --perms). The permissions of the destination file "
+"will be same as the source file. For what happens if this option is switched "
+"off, please read rsync's manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
+#: smb4k.kcfg:382
+#, kde-format
+msgid "Preserve group"
+msgstr "Varðveita hóp"
+
+#. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
+#: smb4k.kcfg:383
+#, kde-format
+msgid ""
+"Preserve the group (-g, --group). The group of the destination file will be "
+"set to the same value as the source file."
+msgstr ""
+
+#. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
+#: smb4k.kcfg:387
+#, kde-format
+msgid "Preserve owner"
+msgstr "Varðveita eiganda"
+
+#. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
+#: smb4k.kcfg:388
+#, kde-format
+msgid ""
+"Preserve the owner (-o, --owner). The owner of the destination file will be "
+"set to the same value as the source file, but only if the receiving rsync is "
+"run as the super user. Without this option, the owner is set to the invoking "
+"user on the receiving side."
+msgstr ""
+
+#. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
+#: smb4k.kcfg:392
+#, kde-format
+msgid "Preserve device and special files"
+msgstr "Varðveita tæki og sérskrár"
+
+#. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
+#: smb4k.kcfg:393
+#, kde-format
+msgid ""
+"Preserve device and special files (-D, --devices --specials). This option "
+"causes rsync to transfer character and block devices as well as special "
+"files such as named sockets and fifos. It works only partially if rsync is "
+"not run as super user and the --super option is not specified."
+msgstr ""
+
+#. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
+#: smb4k.kcfg:397
+#, kde-format
+msgid "Preserve times"
+msgstr "Varðveita tíma"
+
+#. i18n: ectx: whatsthis, entry (PreserveTimes), group (Synchronization)
+#: smb4k.kcfg:398
+#, kde-format
+msgid ""
+"Preserve times (-t, --times). The modification times are transferred along "
+"with the files. For what happens if this option is switched off, please read "
+"rsync's manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
+#: smb4k.kcfg:402
+#, kde-format
+msgid "Omit directories when preserving times"
+msgstr "Sleppa möppum þegar tími er varðveittur"
+
+#. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
+#: smb4k.kcfg:403
+#, kde-format
+msgid ""
+"Omit directories when preserving times (-O, --omit-dir-times). This means "
+"that directories are omitted when modification times are being preserved. "
+"Thus, this feature only works in conjunction with --times."
+msgstr ""
+
+#. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
+#: smb4k.kcfg:407
+#, kde-format
+msgid "Remove synchronized source files"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
+#: smb4k.kcfg:408
+#, kde-format
+msgid ""
+"Remove all synchronized source files (--remove-source-files). This tells "
+"rsync to remove from the sending side the non-directory items that are a "
+"part of the transfer and have been successfully duplicated on the receiving "
+"side."
+msgstr ""
+
+#. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
+#: smb4k.kcfg:412
+#, fuzzy, kde-format
+msgid "Delete extraneous files"
+msgstr "Eyða einnig undanskildum skrám frá áfangastað"
+
+#. i18n: ectx: whatsthis, entry (DeleteExtraneous), group (Synchronization)
+#: smb4k.kcfg:413
+#, kde-format
+msgid ""
+"Delete extraneous files from destination (--delete). This tells rsync to "
+"delete all files from the receiving side that are not present on the sending "
+"side, but only for the directories that are being synchronized."
+msgstr ""
+
+#. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
+#: smb4k.kcfg:417
+#, fuzzy, kde-format
+msgid "Delete files before transfer"
+msgstr "Eyða skrám á áfangastað áður en sent er"
+
+#. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
+#: smb4k.kcfg:418
+#, kde-format
+msgid ""
+"Delete files on the receiving side before the transfer starts (--delete-"
+"before). This is the default behavior if --delete or --delete-excluded is "
+"specified without one of the --delete-WHEN options."
+msgstr ""
+
+#. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
+#: smb4k.kcfg:422
+#, fuzzy, kde-format
+msgid "Delete files after transfer"
+msgstr "Eyða skrám á áfangastað eftir sendingu"
+
+#. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
+#: smb4k.kcfg:423
+#, kde-format
+msgid ""
+"Delete files on the receiving side after the transfer has completed (--"
+"delete-after, --del)."
+msgstr ""
+
+#. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
+#: smb4k.kcfg:427
+#, fuzzy, kde-format
+msgid "Delete files during transfer"
+msgstr "Eyða skrám á áfangastað meðan sent er"
+
+#. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
+#: smb4k.kcfg:428
+#, kde-format
+msgid ""
+"Delete files on the receiving side during the transfer (--delete-during). "
+"This method is faster than --delete-before or --delete-after, but it is only "
+"supported with rsync 2.6.4 or later."
+msgstr ""
+
+#. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
+#: smb4k.kcfg:432
+#, fuzzy, kde-format
+msgid "Delete excluded files"
+msgstr "Eyða einnig undanskildum skrám frá áfangastað"
+
+#. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
+#: smb4k.kcfg:433
+#, kde-format
+msgid ""
+"Also delete excluded files from destination directory (--delete-excluded). "
+"In addition to deleting the files on the receiving side that are not on the "
+"sending side, this tells rsync to also delete any files on the receiving "
+"side that are excluded. Refer to rsync's manual page for further information."
+msgstr ""
+
+#. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
+#: smb4k.kcfg:437
+#, kde-format
+msgid "Delete even if I/O errors occur"
+msgstr "Eyða jafnvel þótt inn/út villa eigi sér stað"
+
+#. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
+#: smb4k.kcfg:438
+#, kde-format
+msgid ""
+"Delete even if I/O errors occur (--ignore-errors). This option has to be "
+"specified in conjunction with --delete to take effect."
+msgstr ""
+
+#. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
+#: smb4k.kcfg:442
+#, kde-format
+msgid "Force deletion of non-void directories"
+msgstr "Þvinga eyðingu af ófyrndum möppum"
+
+#. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
+#: smb4k.kcfg:443
+#, kde-format
+msgid ""
+"Force deletion of directories even if they are not empty (--force). This "
+"option tells rsync to delete a non-empty directory when it is to be replaced "
+"by a non-directory. This is only relevant if deletions are not active."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
+#: smb4k.kcfg:447
+#, fuzzy, kde-format
+#| msgid "Don't delete more than this many files:"
+msgid "Do not delete more than this many files:"
+msgstr "Ekki eyða fleiri en þetta skrám:"
+
+#. i18n: ectx: whatsthis, entry (UseMaximumDelete), group (Synchronization)
+#: smb4k.kcfg:448
+#, kde-format
+msgid ""
+"Only delete as many files as defined here (--max-delete=NUM). This tells "
+"rsync not to delete more than NUM files or directories (NUM must be non-"
+"zero). This is useful when mirroring very large trees to prevent disasters."
+msgstr ""
+
+#. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
+#: smb4k.kcfg:452
+#, kde-format
+msgid "Value for DeleteMaximum config entry"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
+#: smb4k.kcfg:458
+#, fuzzy, kde-format
+msgid "Do not transfer any file smaller than:"
+msgstr "Ekki senda skrár minni en"
+
+#. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
+#: smb4k.kcfg:459
+#, kde-format
+msgid ""
+"This option causes rsync to not transfer any file that is smaller than the "
+"specified size (--min-size=SIZE)."
+msgstr ""
+
+#. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
+#: smb4k.kcfg:463
+#, kde-format
+msgid "Value for MinimalTransferSize config entry"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
+#: smb4k.kcfg:469
+#, fuzzy, kde-format
+msgid "Do not transfer any file larger than:"
+msgstr "Ekki senda skrár stærri en"
+
+#. i18n: ectx: whatsthis, entry (UseMaximalTransferSize), group (Synchronization)
+#: smb4k.kcfg:470
+#, kde-format
+msgid ""
+"This option causes rsync to not transfer any file that is larger than the "
+"specified size (--max-size=SIZE)."
+msgstr ""
+
+#. i18n: ectx: label, entry (MaximalTransferSize), group (Synchronization)
+#: smb4k.kcfg:474
+#, kde-format
+msgid "Value for MaximalTransferSize config entry"
+msgstr ""
+
+#. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
+#: smb4k.kcfg:480
+#, kde-format
+msgid "Keep partially transferred files"
+msgstr "Halda skrám sem eru sendar að hluta"
+
+#. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
+#: smb4k.kcfg:481
+#, kde-format
+msgid ""
+"Keep partially transferred files (--partial). The default behavior is that "
+"any partially transferred file is deleted if the transfer is interrupted."
+msgstr ""
+
+#. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
+#: smb4k.kcfg:485
+#, fuzzy, kde-format
+msgid "Put partially transferred files into:"
+msgstr "Setja skrár sem eru sendar að hluta í"
+
+#. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
+#: smb4k.kcfg:486
+#, kde-format
+msgid ""
+"Put a partially transferred file into this directory (--partial-dir=DIR). "
+"This is a better way than the --partial option to keep partial files, "
+"because the partially transferred file is kept in a different directory and "
+"the destination file is not overwritten."
+msgstr ""
+
+#. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
+#: smb4k.kcfg:490
+#, kde-format
+msgid "The data for the UsePartialDirectory option"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
+#: smb4k.kcfg:495
+#, kde-format
+msgid "Auto-ignore files in the same way CVS does"
+msgstr "Hunda skrár sjálfkrafa á sama hátt og CVS gerir"
+
+#. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
+#: smb4k.kcfg:496
+#, kde-format
+msgid ""
+"Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+"useful shorthand for excluding a broad range of files that you often do not "
+"want to transfer between systems. This option uses the same algorithm that "
+"CVS uses to determine if a file should be ignored."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
+#: smb4k.kcfg:500
+#, kde-format
+msgid "Exclude files matching this pattern:"
+msgstr "Undanskilja skrár sem passa við mynstrið:"
+
+#. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
+#: smb4k.kcfg:501
+#, kde-format
+msgid ""
+"Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+"special filter rule. For further information on filter rules see rsync's "
+"manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
+#: smb4k.kcfg:505
+#, kde-format
+msgid "Pattern that is used for file exclusion"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
+#: smb4k.kcfg:510
+#, fuzzy, kde-format
+msgid "Read exclude patterns from:"
+msgstr "Lesa undanskilningsmynstur frá"
+
+#. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
+#: smb4k.kcfg:511
+#, kde-format
+msgid ""
+"Read exclude patterns from a file (--exclude-from=FILE). This option is "
+"similar to the --exclude=PATTERN option except that the exclude patterns are "
+"read from a file. This is a special filter rule. For further information on "
+"filter rules see rsync's manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
+#: smb4k.kcfg:515
+#, kde-format
+msgid "The file from which the exclude patterns are read"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
+#: smb4k.kcfg:520
+#, fuzzy, kde-format
+#| msgid "Exclude files matching this pattern:"
+msgid "Include files matching this pattern:"
+msgstr "Undanskilja skrár sem passa við mynstrið:"
+
+#. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
+#: smb4k.kcfg:521
+#, kde-format
+msgid ""
+"Do not exclude files matching a certain pattern (--include=PATTERN). This is "
+"a special filter rule. For further information on filter rules see rsync's "
+"manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
+#: smb4k.kcfg:525
+#, kde-format
+msgid "Pattern that is used for file inclusion"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
+#: smb4k.kcfg:530
+#, fuzzy, kde-format
+msgid "Read include patterns from:"
+msgstr "Lesa taka með mynstur frá"
+
+#. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
+#: smb4k.kcfg:531
+#, kde-format
+msgid ""
+"Read include patterns from a file (--include-from=FILE). This option is "
+"similar to the --include=PATTERN option except that the include patterns are "
+"read from a file. This is a special filter rule. For further information on "
+"filter rules see rsync's manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
+#: smb4k.kcfg:535
+#, kde-format
+msgid "The file from which the include patterns are read"
+msgstr ""
+
+#. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
+#: smb4k.kcfg:540
+#, fuzzy, kde-format
+msgid "Custom filter rules:"
+msgstr "Síureglur"
+
+#. i18n: ectx: whatsthis, entry (CustomFilteringRules), group (Synchronization)
+#: smb4k.kcfg:541
+#, kde-format
+msgid ""
+"Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
+"to add rules to selectively exclude certain files from the list of files to "
+"be transferred. These rules will be added to the rsync command as they are. "
+"Thus, each rule has to start with the --filter=... argument."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
+#: smb4k.kcfg:545
+#, fuzzy, kde-format
+msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+msgstr "Nota \"--filter='- .rsync-filter'\" síuregluna"
+
+#. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
+#: smb4k.kcfg:546
+#, kde-format
+msgid ""
+"This filter rule tells rsync to look for per-directory .rsync-filter files "
+"that have been sprinkled through the hierarchy and use their rules to filter "
+"the files in the transfer. It has no effect, if you also choose to use the --"
+"filter='exclude .rsync-filter' rule."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
+#: smb4k.kcfg:550
+#, fuzzy, kde-format
+msgid "Use --filter='exclude .rsync-filter' filter rule"
+msgstr "Nota \"--filter='- .rsync-filter'\" síuregluna"
+
+#. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
+#: smb4k.kcfg:551
+#, kde-format
+msgid ""
+"This rule filters out the .rsync-filter files from the transfer. These files "
+"normally contain filter rules that can be activated by choosing the --"
+"filter='dir-merge /.rsync-filter' rule and deselecting this one."
+msgstr ""
+
+#. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
+#: smb4k.kcfg:555
+#, kde-format
+msgid "Handle sparse files efficiently"
+msgstr "Höndla dreifðar skrár á skilvirkan hátt"
+
+#. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
+#: smb4k.kcfg:556
+#, kde-format
+msgid ""
+"Handle sparse files efficiently (-S, --sparse) so that they take up less "
+"space on the destination. This option conflicts with --inplace. For further "
+"information read rsync's manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
+#: smb4k.kcfg:560
+#, kde-format
+msgid "Copy files whole (no rsync algorithm)"
+msgstr "Afrita skrár heilar (engin rsync algrími)"
+
+#. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
+#: smb4k.kcfg:561
+#, kde-format
+msgid ""
+"Copy files whole (-W, --whole-file). With this option the incremental rsync "
+"algorithm is not used and the whole file is sent as-is instead."
+msgstr ""
+
+#. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
+#: smb4k.kcfg:565
+#, fuzzy, kde-format
+msgid "Do not cross file system boundaries"
+msgstr "Ekki fara yfir skil skráarkerfis"
+
+#. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
+#: smb4k.kcfg:566
+#, kde-format
+msgid ""
+"Do not cross file system boundaries (-x, --one-file-system). This tells "
+"rsync to avoid crossing a filesystem boundary when recursing. For further "
+"information on this option, read the manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
+#: smb4k.kcfg:570
+#, kde-format
+msgid "Only update files that already exist"
+msgstr "Bara uppfæra skrár sem finnast fyrir"
+
+#. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
+#: smb4k.kcfg:571
+#, kde-format
+msgid ""
+"Skip creating new files on the receiving side (--existing). This tells rsync "
+"to skip creating files (including directories) that do not exist yet on the "
+"destination. If this option is combined with the --ignore-existing option, "
+"no files will be updated (which can be useful if all you want to do is to "
+"delete extraneous files)."
+msgstr ""
+
+#. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
+#: smb4k.kcfg:575
+#, kde-format
+msgid "Ignore files that already exist"
+msgstr "Hunsa skrár sem finnast fyrir"
+
+#. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
+#: smb4k.kcfg:576
+#, kde-format
+msgid ""
+"Skip updating files that already exist on the receiving side (--ignore-"
+"existing). Existing directories are not ignored."
+msgstr ""
+
+#. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
+#: smb4k.kcfg:580
+#, fuzzy, kde-format
+msgid "Delay updates until the end of transfer"
+msgstr "Eyða skrám á áfangastað eftir sendingu"
+
+#. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
+#: smb4k.kcfg:581
+#, kde-format
+msgid ""
+"Delay updates until the end of the transfer (--delay-updates). This option "
+"puts the temporary file from each updated file into a holding directory "
+"until the end of the transfer, at which time all the files are renamed and "
+"copied into place in rapid succession."
+msgstr ""
+
+#. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
+#: smb4k.kcfg:585
+#, kde-format
+msgid "Make backups"
+msgstr "Búa til öryggisafrit"
+
+#. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
+#: smb4k.kcfg:586
+#, kde-format
+msgid ""
+"Make backups (-b, --backup). With this option, preexisting destination files "
+"are renamed as each file is transferred or deleted. You can control where "
+"the backup file goes and what (if any) suffix gets appended using the --"
+"backup-dir=DIR and --suffix=SUFFIX options."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
+#: smb4k.kcfg:590
+#, kde-format
+msgid "Backup suffix:"
+msgstr "Viðskeyti öryggisafrits:"
+
+#. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
+#: smb4k.kcfg:591
+#, kde-format
+msgid "Use this suffix for backups (--suffix=SUFFIX)."
+msgstr ""
+
+#. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
+#: smb4k.kcfg:595
+#, kde-format
+msgid "Backup suffix"
+msgstr "Viðskeyti öryggisafrits"
+
+#. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
+#: smb4k.kcfg:600
+#, kde-format
+msgid "Backup directory:"
+msgstr "Afritunarmappa:"
+
+#. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
+#: smb4k.kcfg:601
+#, kde-format
+msgid "Store backups in this directory (--backup-dir=DIR)."
+msgstr ""
+
+#. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
+#: smb4k.kcfg:605
+#, kde-format
+msgid "Backup directory"
+msgstr "Afritunarmappa"
+
+#. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
+#: smb4k.kcfg:610
+#, kde-format
+msgid "Force fixed checksum block size:"
+msgstr "Þvinga fasta blokkastærð gátsummu:"
+
+#. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
+#: smb4k.kcfg:611
+#, kde-format
+msgid ""
+"Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
+"block size used in the rsync algorithm to a fixed value."
+msgstr ""
+
+#. i18n: ectx: label, entry (BlockSize), group (Synchronization)
+#: smb4k.kcfg:615
+#, kde-format
+msgid "The block size"
+msgstr "Blokkarstærð"
+
+#. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
+#: smb4k.kcfg:621
+#, kde-format
+msgid "Set block/file checksum seed:"
+msgstr "Setja blokkar/skráar gátsummu sendingu:"
+
+#. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
+#: smb4k.kcfg:622
+#, kde-format
+msgid ""
+"Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+"seed to this integer. This 4 byte checksum seed is included in each block "
+"and file MD4 checksum calculation. By default the checksum seed is generated "
+"by the server and defaults to the current time."
+msgstr ""
+
+#. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
+#: smb4k.kcfg:626
+#, kde-format
+msgid "The value for the UseChecksumSeed config option"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
+#: smb4k.kcfg:632
+#, fuzzy, kde-format
+msgid "Skip files based on checksum"
+msgstr "Sleppa byggt á gátsummu"
+
+#. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
+#: smb4k.kcfg:633
+#, kde-format
+msgid ""
+"Skip files based on a checksum and not based on modification time and size (-"
+"c, --checksum). For further information on how this feature works read "
+"rsync's manual page."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
+#: smb4k.kcfg:637
+#, kde-format
+msgid "Set bandwidth limit:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
+#: smb4k.kcfg:638
+#, kde-format
+msgid ""
+"Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
+msgstr ""
+
+#. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
+#: smb4k.kcfg:642
+#, kde-format
+msgid "The value for the UseBandwidthLimit config option"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseProfiles), group (Profiles)
+#: smb4k.kcfg:654
+#, fuzzy, kde-format
+#| msgid "Update files"
+msgid "Use profiles"
+msgstr "Uppfæra skrár"
+
+#. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
+#: smb4k.kcfg:655
+#, kde-format
+msgid ""
+"Make Smb4K use profiles. This enables you to define different bookmarks and "
+"custom options for each profile. This is especially useful if you are using "
+"a laptop in different network neighborhoods, e. g. at home and at work."
+msgstr ""
+
+#. i18n: ectx: label, entry (ProfilesList), group (Profiles)
+#: smb4k.kcfg:659
+#, kde-format
+msgid "Profiles"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
+#: smb4k.kcfg:660
+#, kde-format
+msgid "The list of profiles."
+msgstr ""
+
+#: smb4k.kcfg:667
+#, kde-format
+msgctxt "default profile name for use at home"
+msgid "Home"
+msgstr ""
+
+#: smb4k.kcfg:668
+#, fuzzy, kde-format
+msgctxt "default profile name for use at work"
+msgid "Work"
+msgstr "Vinnuhópur:"
+
+#. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
+#: smb4k.kcfg:669
+#, fuzzy, kde-format
+#| msgid "Archive mode"
+msgid "Active profile"
+msgstr "Safnskráahamur"
+
+#. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
+#: smb4k.kcfg:670
+#, fuzzy, kde-format
+msgid "This is the currently active profile."
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
+#: smb4k.kcfg:674
+#, kde-format
+msgid "Use profile migration assistant"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
+#: smb4k.kcfg:675
+#, kde-format
+msgid ""
+"Use the profile migration assistant when profiles are removed or the use of "
+"profiles is enabled or disabled. The profile migration assistant allows you "
+"to migrate all settings that were saved for a certain profile to a different "
+"one."
+msgstr ""
+
+#: smb4kauthinfo.cpp:164 smb4kbookmark.cpp:193 smb4kcustomoptions.cpp:299
+#: smb4kshare.cpp:163 smb4kshare.cpp:166
+#, kde-format
+msgid "%1 on %2"
+msgstr ""
+
+#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#, fuzzy, kde-format
+#| msgid "The net command '%1' is not supported by Smb4K."
+msgid "The format of %1 is not supported."
+msgstr "Netskipunin '%1' er ekki studd af Smb4K."
+
+#: smb4kbookmarkhandler_p.cpp:46
+#, fuzzy, kde-format
+msgid "Add Bookmarks"
+msgstr "&Sýsla með bókamerki"
+
+#: smb4kbookmarkhandler_p.cpp:122
+#, kde-format
+msgid ""
+"All listed shares will be bookmarked. To edit the label or group, click the "
+"respective bookmark entry."
+msgstr ""
+
+#. i18n("Add this share to the bookmarks"));
+#: smb4kbookmarkhandler_p.cpp:148 smb4kbookmarkhandler_p.cpp:522
+#: smb4kmounter_p.cpp:188
+#, fuzzy, kde-format
+msgid "Label:"
+msgstr "Merki:"
+
+#: smb4kbookmarkhandler_p.cpp:156 smb4kbookmarkhandler_p.cpp:551
+#: smb4kmounter_p.cpp:198
+#, kde-format
+msgid "Category:"
+msgstr ""
+
+#: smb4kbookmarkhandler_p.cpp:380
+#, fuzzy, kde-format
+#| msgid "&Edit Bookmarks"
+msgid "Edit Bookmarks"
+msgstr "&Sýsla með bókamerki"
+
+#: smb4kbookmarkhandler_p.cpp:498 smb4kbookmarkhandler_p.cpp:998
+#, kde-format
+msgid "Add Category"
+msgstr ""
+
+#: smb4kbookmarkhandler_p.cpp:499
+#, kde-format
+msgid "Remove"
+msgstr "Fjarlægja"
+
+#: smb4kbookmarkhandler_p.cpp:501
+#, fuzzy, kde-format
+msgid "Clear"
+msgstr "Hr&einsa"
+
+#: smb4kbookmarkhandler_p.cpp:527
+#, fuzzy, kde-format
+#| msgid "User:"
+msgid "Username:"
+msgstr "Notandi:"
+
+#: smb4kbookmarkhandler_p.cpp:535 smb4kmounter_p.cpp:155
+#, kde-format
+msgid "Workgroup:"
+msgstr "Vinnuhópur:"
+
+#: smb4kbookmarkhandler_p.cpp:543 smb4kclient_p.cpp:2330 smb4kmounter_p.cpp:142
+#, kde-format
+msgid "IP Address:"
+msgstr "IP vistfang:"
+
+#: smb4kbookmarkhandler_p.cpp:998
+#, kde-format
+msgid "Category name:"
+msgstr ""
+
+#: smb4kclient_p.cpp:1255
+#, fuzzy, kde-format
+msgid "The file %1 could not be read"
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#: smb4kclient_p.cpp:1272
+#, fuzzy, kde-format
+msgid "The file %1 could not be printed to %2"
+msgstr "Ekki tókst að finna skipunina %1."
+
+#: smb4kclient_p.cpp:1933
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Forsýn"
+
+#: smb4kclient_p.cpp:1969
+#, fuzzy, kde-format
+msgid "Reload"
+msgstr "Tilbúin."
+
+#: smb4kclient_p.cpp:1971
+#, fuzzy, kde-format
+msgid "Abort"
+msgstr "Hætt&a við"
+
+#: smb4kclient_p.cpp:1983
+#, kde-format
+msgid "Up"
+msgstr "Upp"
+
+#: smb4kclient_p.cpp:2303
+#, kde-format
+msgid "Print File"
+msgstr "Prenta skrá"
+
+#: smb4kclient_p.cpp:2319
+#, kde-format
+msgid "Information"
+msgstr ""
+
+#: smb4kclient_p.cpp:2323
+#, fuzzy, kde-format
+#| msgid "Printer"
+msgid "Printer:"
+msgstr "Prentari"
+
+#: smb4kclient_p.cpp:2337
+#, kde-format
+msgid "Domain:"
+msgstr "Lén:"
+
+#: smb4kclient_p.cpp:2348
+#, fuzzy, kde-format
+#| msgid "Advanced Options"
+msgid "File and Settings"
+msgstr "Ítarlegri valkostir"
+
+#: smb4kclient_p.cpp:2352
+#, kde-format
+msgid "File:"
+msgstr "Skrá:"
+
+#: smb4kclient_p.cpp:2357
+#, kde-format
+msgid ""
+"This is the file you want to print on the remote printer. Currently only a "
+"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
+"If the file's mimetype is not supported, you need to convert it."
+msgstr ""
+
+#: smb4kclient_p.cpp:2366
+#, kde-format
+msgid "Copies:"
+msgstr "Afrit:"
+
+#: smb4kclient_p.cpp:2370
+#, kde-format
+msgid "This is the number of copies you want to print."
+msgstr ""
+
+#: smb4kclient_p.cpp:2381
+#, fuzzy, kde-format
+#| msgid "Printer"
+msgid "Print"
+msgstr "Prentari"
+
+#: smb4kcustomoptionsmanager_p.cpp:47
+#, kde-format
+msgid "Custom Options"
+msgstr "Sérsniðnir valkostir"
+
+#: smb4kcustomoptionsmanager_p.cpp:70
+#, fuzzy, kde-format
+msgid ""
+"<p>Define custom options for host <b>%1</b> and all the shares it provides.</"
+"p>"
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#: smb4kcustomoptionsmanager_p.cpp:74
+#, fuzzy, kde-format
+msgid "<p>Define custom options for share <b>%1</b>.</p>"
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
+#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
+#: smb4kcustomoptionsmanager_p.cpp:935
+#, kde-format
+msgid "Common Options"
+msgstr "Algengar stillingar"
+
+#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
+#, fuzzy, kde-format
+#| msgid "Remote Shares"
+msgid "Always remount this share"
+msgstr "Fjartengdar sameignir"
+
+#: smb4kcustomoptionsmanager_p.cpp:218
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr ""
+
+#: smb4kcustomoptionsmanager_p.cpp:221
+#, kde-format
+msgid "This server supports the CIFS Unix extensions"
+msgstr ""
+
+#: smb4kcustomoptionsmanager_p.cpp:300
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Common Mount Settings"
+msgstr "Algengar stillingar"
+
+#: smb4kcustomoptionsmanager_p.cpp:311
+#, kde-format
+msgid "Advanced Options"
+msgstr "Ítarlegri valkostir"
+
+#: smb4kcustomoptionsmanager_p.cpp:355
+#, fuzzy, kde-format
+#| msgid "Advanced Options"
+msgid "Advanced Mount Settings"
+msgstr "Ítarlegri valkostir"
+
+#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
+#: smb4kcustomoptionsmanager_p.cpp:1002
+#, kde-format
+msgid "Authentication"
+msgstr "Auðkenning"
+
+#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
+#, fuzzy, kde-format
+#| msgid "Browse List"
+msgid "Browse Settings"
+msgstr "Flakklisti"
+
+#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
+#: smb4kcustomoptionsmanager_p.cpp:1030
+#, fuzzy, kde-format
+#| msgid "IP Address:"
+msgid "MAC Address"
+msgstr "IP vistfang:"
+
+#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
+#: smb4kcustomoptionsmanager_p.cpp:1034
+#, fuzzy, kde-format
+#| msgid "IP Address:"
+msgid "MAC Address:"
+msgstr "IP vistfang:"
+
+#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
+#: smb4kcustomoptionsmanager_p.cpp:1052
+#, fuzzy, kde-format
+msgid "Actions"
+msgstr "Aðgerðir"
+
+#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
+#: smb4kcustomoptionsmanager_p.cpp:1056
+#, fuzzy, kde-format
+msgid "Send magic packet before scanning the network neighborhood"
+msgstr "Netnágrenni"
+
+#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
+#: smb4kcustomoptionsmanager_p.cpp:1064
+#, kde-format
+msgid "Send magic packet before mounting a share"
+msgstr ""
+
+#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "Wake-On-LAN Settings"
+msgstr "Almennar stillingar"
+
+#: smb4kcustomoptionsmanager_p.cpp:699
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Mount Settings"
+msgstr "Tengi"
+
+#: smb4kcustomoptionsmanager_p.cpp:1016
+#, kde-format
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4kcustomoptionsmanager_p.cpp:1074
+#, kde-format
+msgid "Wake-On-LAN"
+msgstr ""
+
+#: smb4khomesshareshandler.cpp:128
+#, kde-format
+msgid "%1 is not a version 1.0 file."
+msgstr ""
+
+#: smb4khomesshareshandler_p.cpp:125
+#, kde-format
+msgid "Specify User"
+msgstr "Tilgreina notanda"
+
+#: smb4khomesshareshandler_p.cpp:173
+#, fuzzy, kde-format
+#| msgid "Please specify a user name."
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr "Vinsamlega tilgreindu notandanafn."
+
+#: smb4khomesshareshandler_p.cpp:187
+#, kde-format
+msgid "User:"
+msgstr "Notandi:"
+
+#: smb4khomesshareshandler_p.cpp:197
+#, kde-format
+msgid "Clear List"
+msgstr "Hreinsa lista"
+
+#: smb4kmounter.cpp:680
+#, kde-format
+msgid ""
+"<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
+"%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+msgstr ""
+
+#: smb4kmounter.cpp:685
+#, fuzzy, kde-format
+#| msgid "Mount Share"
+msgid "Foreign Share"
+msgstr "Tengja sameign"
+
+#: smb4kmounter_p.cpp:48
+#, kde-format
+msgid "Mount Share"
+msgstr "Tengja sameign"
+
+#: smb4kmounter_p.cpp:119
+#, kde-format
+msgid ""
+"Enter the location and optionally the IP address and workgroup to mount a "
+"share."
+msgstr ""
+
+#: smb4kmounter_p.cpp:129
+#, fuzzy, kde-format
+#| msgid "Notifications"
+msgid "Location:"
+msgstr "Kerfistilkynningar"
+
+#: smb4kmounter_p.cpp:133
+#, kde-format
+msgid ""
+"The location of the share is provided by the Uniform Resource Locator (URL). "
+"It generally has the following syntax: [smb:]//[USER:PASSWORD@]HOST[:PORT]/"
+"SHARE. The scheme, username, password and port are optional. You should omit "
+"to enter the password here, because it is shown in cleartext."
+msgstr ""
+
+#: smb4kmounter_p.cpp:146
+#, kde-format
+msgid ""
+"The Internet Protocol (IP) address identifies the host in the network and "
+"indicates where it is. It has two valid formats, the one known as IP version "
+"4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+msgstr ""
+
+#: smb4kmounter_p.cpp:159
+#, kde-format
+msgid ""
+"The workgroup or domain identifies the peer-to-peer computer network the "
+"host is located in."
+msgstr ""
+
+#: smb4kmounter_p.cpp:181
+#, kde-format
+msgid "Add this share to the bookmarks"
+msgstr "Bæta þessari sameign við bókamerki"
+
+#: smb4kmounter_p.cpp:184
+#, kde-format
+msgid ""
+"If you tick this checkbox, the share will be bookmarked and you can access "
+"it e.g. through the \"Bookmarks\" menu entry in the main window."
+msgstr ""
+
+#: smb4kmounter_p.cpp:193
+#, kde-format
+msgid ""
+"Add a label describing your bookmark. It is then shown instead of the "
+"location."
+msgstr ""
+
+#: smb4kmounter_p.cpp:203
+#, kde-format
+msgid ""
+"Assign a category to your bookmark. This way you can organize your bookmarks."
+msgstr ""
+
+#: smb4kmounter_p.cpp:226
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgctxt "Bookmark this share. Show input widgets in the dialog for this."
+msgid "Bookmark >>"
+msgstr "Bókamerki"
+
+#. i18n: ectx: label, entry (UseUserId), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
+#, fuzzy, kde-format
+msgid "User ID:"
+msgstr "Notandi:"
+
+#. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
+#. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_bsd.kcfg:17
+#, kde-format
+msgid ""
+"This is the user ID (a number) that the files and directories of the mounted "
+"share will have."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseGroupId), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:21 smb4kmountsettings_linux.kcfg:26
+#, fuzzy, kde-format
+msgid "Group ID:"
+msgstr "Hópur:"
+
+#. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
+#. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_bsd.kcfg:26
+#, kde-format
+msgid ""
+"This is the group ID (a number) that the files and directories of the "
+"mounted share will have."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseFileMode), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:30 smb4kmountsettings_linux.kcfg:35
+#, fuzzy, kde-format
+#| msgid "File mask:"
+msgid "File mode:"
+msgstr "Skráarmöskvi:"
+
+#. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_bsd.kcfg:35
+#, kde-format
+msgid ""
+"This is the file mode that will be used for creating files. It must be "
+"defined in octal."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:39 smb4kmountsettings_linux.kcfg:44
+#, fuzzy, kde-format
+#| msgid "Directory mask:"
+msgid "Directory mode:"
+msgstr "Möppumöskvi:"
+
+#. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_bsd.kcfg:44
+#, kde-format
+msgid ""
+"This is the directory mode that will be used for creating directories. It "
+"must be defined in octal."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseCharacterSets), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:48
+#, fuzzy, kde-format
+#| msgid "Client character set:"
+msgid "Use character sets"
+msgstr "Stafatafla biðlara:"
+
+#. i18n: ectx: whatsthis, entry (UseCharacterSets), group (Mounting)
+#. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:49 smb4kmountsettings_bsd.kcfg:54
+#, kde-format
+msgid ""
+"This is the character set that is used by the client side (i.e. your side) "
+"for codepage to charset translations. If you keep the default setting, Smb4K "
+"will try to automatically determine the charset by looking up the \"unix "
+"charset\" option in the smb.conf."
+msgstr ""
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#. i18n: ectx: label, entry (UseClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:53 smb4kmountsettings_linux.kcfg:64
+#, kde-format
+msgid "Client character set:"
+msgstr "Stafatafla biðlara:"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:57 smb4kmountsettings_bsd.kcfg:133
+#: smb4kmountsettings_linux.kcfg:72
+#, kde-format
+msgid "default"
+msgstr "sjálfgefið"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:60 smb4kmountsettings_linux.kcfg:75
+#, kde-format
+msgid "iso8859-1"
+msgstr "iso8859-1"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:63 smb4kmountsettings_linux.kcfg:78
+#, kde-format
+msgid "iso8859-2"
+msgstr "iso8859-2"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:66 smb4kmountsettings_linux.kcfg:81
+#, kde-format
+msgid "iso8859-3"
+msgstr "iso8859-3"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:69 smb4kmountsettings_linux.kcfg:84
+#, kde-format
+msgid "iso8859-4"
+msgstr "iso8859-4"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:72 smb4kmountsettings_linux.kcfg:87
+#, kde-format
+msgid "iso8859-5"
+msgstr "iso8859-5"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:75 smb4kmountsettings_linux.kcfg:90
+#, kde-format
+msgid "iso8859-6"
+msgstr "iso8859-6"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:78 smb4kmountsettings_linux.kcfg:93
+#, kde-format
+msgid "iso8859-7"
+msgstr "iso8859-7"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:81 smb4kmountsettings_linux.kcfg:96
+#, kde-format
+msgid "iso8859-8"
+msgstr "iso8859-8"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:84 smb4kmountsettings_linux.kcfg:99
+#, kde-format
+msgid "iso8859-9"
+msgstr "iso8859-9"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:87 smb4kmountsettings_linux.kcfg:102
+#, kde-format
+msgid "iso8859-13"
+msgstr "iso8859-13"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:90 smb4kmountsettings_linux.kcfg:105
+#, kde-format
+msgid "iso8859-14"
+msgstr "iso8859-14"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:93 smb4kmountsettings_linux.kcfg:108
+#, kde-format
+msgid "iso8859-15"
+msgstr "iso8859-15"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:96 smb4kmountsettings_linux.kcfg:111
+#, kde-format
+msgid "utf8"
+msgstr "utf8"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:99 smb4kmountsettings_linux.kcfg:114
+#, kde-format
+msgid "koi8-r"
+msgstr "koi8-r"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:102 smb4kmountsettings_linux.kcfg:117
+#, kde-format
+msgid "koi8-u"
+msgstr "koi8-u"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:105 smb4kmountsettings_linux.kcfg:120
+#, kde-format
+msgid "koi8-ru"
+msgstr "koi8-ru"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:108 smb4kmountsettings_bsd.kcfg:205
+#: smb4kmountsettings_linux.kcfg:123
+#, kde-format
+msgid "cp1251"
+msgstr "cp1251"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:111 smb4kmountsettings_linux.kcfg:126
+#, kde-format
+msgid "gb2312"
+msgstr "gb2312"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:114 smb4kmountsettings_linux.kcfg:129
+#, kde-format
+msgid "big5"
+msgstr "big5"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:117 smb4kmountsettings_linux.kcfg:132
+#, kde-format
+msgid "euc-jp"
+msgstr "euc-jp"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:120 smb4kmountsettings_linux.kcfg:135
+#, kde-format
+msgid "euc-kr"
+msgstr "euc-kr"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:123 smb4kmountsettings_linux.kcfg:138
+#, kde-format
+msgid "tis-620"
+msgstr "tis-620"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:129
+#, fuzzy, kde-format
+#| msgid "Client character set:"
+msgid "Server character set:"
+msgstr "Stafatafla biðlara:"
+
+#. i18n: ectx: whatsthis, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:130
+#, kde-format
+msgid ""
+"This is the character set that is used by the server. If you keep the "
+"default setting, Smb4K will try to automatically determine the codepage by "
+"looking up the \"dos charset\" option in the smb.conf file."
+msgstr ""
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:136
+#, kde-format
+msgid "cp437"
+msgstr "cp437"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:139
+#, kde-format
+msgid "cp720"
+msgstr "cp720"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:142
+#, kde-format
+msgid "cp737"
+msgstr "cp737"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:145
+#, kde-format
+msgid "cp775"
+msgstr "cp775"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:148
+#, kde-format
+msgid "cp850"
+msgstr "cp850"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:151
+#, kde-format
+msgid "cp852"
+msgstr "cp852"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:154
+#, kde-format
+msgid "cp855"
+msgstr "cp855"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:157
+#, kde-format
+msgid "cp857"
+msgstr "cp857"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:160
+#, kde-format
+msgid "cp858"
+msgstr "cp858"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:163
+#, kde-format
+msgid "cp860"
+msgstr "cp860"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:166
+#, kde-format
+msgid "cp861"
+msgstr "cp861"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:169
+#, kde-format
+msgid "cp862"
+msgstr "cp862"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:172
+#, kde-format
+msgid "cp863"
+msgstr "cp863"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:175
+#, kde-format
+msgid "cp864"
+msgstr "cp864"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:178
+#, kde-format
+msgid "cp865"
+msgstr "cp865"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:181
+#, kde-format
+msgid "cp866"
+msgstr "cp866"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:184
+#, kde-format
+msgid "cp869"
+msgstr "cp869"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:187
+#, kde-format
+msgid "cp874"
+msgstr "cp874"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:190
+#, kde-format
+msgid "cp932"
+msgstr "cp932"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:193
+#, kde-format
+msgid "cp936"
+msgstr "cp936"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:196
+#, kde-format
+msgid "cp949"
+msgstr "cp949"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:199
+#, kde-format
+msgid "cp950"
+msgstr "cp950"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:202
+#, kde-format
+msgid "cp1250"
+msgstr "cp1250"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:208
+#, kde-format
+msgid "cp1252"
+msgstr "cp1252"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:211
+#, kde-format
+msgid "cp1253"
+msgstr "cp1253"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:214
+#, kde-format
+msgid "cp1254"
+msgstr "cp1254"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:217
+#, kde-format
+msgid "cp1255"
+msgstr "cp1255"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:220
+#, kde-format
+msgid "cp1256"
+msgstr "cp1256"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:223
+#, kde-format
+msgid "cp1257"
+msgstr "cp1257"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:226
+#, kde-format
+msgid "cp1258"
+msgstr "cp1258"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:229
+#, kde-format
+msgid "unicode"
+msgstr "unicode"
+
+#. i18n: ectx: label, entry (MountPrefix), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:235 smb4kmountsettings_linux.kcfg:294
+#, kde-format
+msgid "Mount prefix:"
+msgstr "Forskeyti tengingar:"
+
+#. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:295
+#, kde-format
+msgid ""
+"This is the prefix where Smb4K will create the mount points and mount the "
+"remote shares."
+msgstr ""
+
+#. i18n: ectx: label, entry (ForceLowerCaseSubdirs), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:299
+#, kde-format
+msgid "Force generated subdirectories to be lower case"
+msgstr "Þvinga möppur sem eru búnar til að vera í lágstöfum"
+
+#. i18n: ectx: whatsthis, entry (ForceLowerCaseSubdirs), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:300
+#, fuzzy, kde-format
+msgid ""
+"All names of the subdirectories created by Smb4K below the mount prefix will "
+"be lowercase."
+msgstr "Þvinga möppur sem eru búnar til að vera í lágstöfum"
+
+#. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:245 smb4kmountsettings_linux.kcfg:304
+#, fuzzy, kde-format
+msgid "Unmount all personal shares on exit"
+msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:305
+#, kde-format
+msgid ""
+"Unmount all shares that belong to you when the program exits. Shares that "
+"are owned by other users are ignored."
+msgstr ""
+
+#. i18n: ectx: label, entry (RemountShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:309
+#, fuzzy, kde-format
+#| msgid "Remote Shares"
+msgid "Remount shares"
+msgstr "Fjartengdar sameignir"
+
+#. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:310
+#, kde-format
+msgid ""
+"Remount all your shares that were mounted when you exited the program or "
+"changed a profile. If the remounting of a share fails, Smb4K will retry the "
+"next time it is started. Shares that were mounted by other users are "
+"ignored. Please note that this setting does not affect the automatic "
+"remounting of shares when your computer woke up from a sleep state."
+msgstr ""
+
+#. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:255 smb4kmountsettings_linux.kcfg:314
+#, kde-format
+msgid "Number of remount attempts:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:315
+#, kde-format
+msgid ""
+"Set the number of attempts that are made to remount shares before Smb4K "
+"gives up."
+msgstr ""
+
+#. i18n: ectx: label, entry (RemountInterval), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:262 smb4kmountsettings_linux.kcfg:321
+#, kde-format
+msgid "Interval between remount attempts:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:322
+#, kde-format
+msgid "Set the time that elapses between attempts to remount shares."
+msgstr ""
+
+#. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:269 smb4kmountsettings_linux.kcfg:328
+#, kde-format
+msgid "Allow the unmounting of shares that are owned by other users"
+msgstr "Leyfa aftengingu af sameignum sem aðrir notendur eiga"
+
+#. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:329
+#, fuzzy, kde-format
+#| msgid "Allow the unmounting of shares that are owned by other users"
+msgid ""
+"Allow the unmounting of shares that were mounted by other users. Please "
+"think before you enable this option."
+msgstr "Leyfa aftengingu af sameignum sem aðrir notendur eiga"
+
+#. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:333
+#, kde-format
+msgid "Force the unmounting of inaccessible shares"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:334
+#, kde-format
+msgid ""
+"Force the unmounting of inaccessible shares (Linux only). In case a share is "
+"inaccessible, a lazy unmount is performed. Before the actual unmount is "
+"performed, a warning dialog is shown asking to approve the unmount."
+msgstr ""
+
+#. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:279 smb4kmountsettings_linux.kcfg:338
+#, fuzzy, kde-format
+#| msgid "Show all shares that are mounted on the system"
+msgid "Detect all shares that are mounted on the system"
+msgstr "Sýna allar sameignir sem eru tengdar kerfinu"
+
+#. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:339
+#, kde-format
+msgid ""
+"You will not only see the shares that were mounted and are owned by you, but "
+"also all other mounts using the SMBFS and CIFS file system that are present "
+"on the system."
+msgstr ""
+
+#. i18n: ectx: label, entry (CifsUnixExtensionsSupport), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:12
+#, kde-format
+msgid "All or most of the servers support the CIFS Unix extensions"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (CifsUnixExtensionsSupport), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:13
+#, kde-format
+msgid ""
+"Most versions of Samba support the CIFS Unix or POSIX extensions. For these "
+"servers, some options are not needed, because the right values are "
+"negotiated during the mount process. For other servers, you might want to "
+"uncheck this option, so that predefined values can be passed to the server. "
+"Please note that if your computer is located in a Windows dominated network "
+"neighborhood with only a few Samba servers, you can safely uncheck this "
+"option and define custom options for the Samba servers."
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
+#. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:18 smb4kmountsettings_linux.kcfg:22
+#, kde-format
+msgid ""
+"This is the user ID (a number) that the files and directories of the mounted "
+"share will have. If you are using the CIFS filesystem under Linux and the "
+"remote server supports the CIFS Unix Extensions, this setting will be "
+"ignored unless the assignment of the user ID is forced."
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
+#. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:27 smb4kmountsettings_linux.kcfg:31
+#, kde-format
+msgid ""
+"This is the group ID (a number) that the files and directories of the "
+"mounted share will have. If you are using the CIFS filesystem under Linux "
+"and the remote server supports the CIFS Unix Extensions, this setting will "
+"be ignored unless the assignment of the group ID is forced."
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:36
+#, kde-format
+msgid ""
+"This is the file mode that will be used for creating files. It must be "
+"defined in octal. In case the CIFS file system is used, this setting only "
+"takes effect if the server does not support the CIFS Unix Extensions."
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:40
+#, kde-format
+msgid ""
+"This is the filemode that will be used for creating files. It must be "
+"defined in octal. In case the CIFS file system is used, this setting only "
+"takes effect if the server does not support the CIFS Unix Extensions."
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:45 smb4kmountsettings_linux.kcfg:49
+#, kde-format
+msgid ""
+"This is the directory mode that will be used for creating directories. It "
+"must be defined in octal. In case the CIFS file system is used, this setting "
+"only takes effect if the server does not support the CIFS Unix Extensions."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:53
+#, kde-format
+msgid "File system port:"
+msgstr "Skráarkerfisgátt:"
+
+#. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
+#. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:54 smb4kmountsettings_linux.kcfg:58
+#, kde-format
+msgid ""
+"This is the port that is exclusively used to mount shares from remote "
+"servers. The default value is 445 (CIFS file system)."
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseClientCharset), group (Mounting)
+#. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:65 smb4kmountsettings_linux.kcfg:69
+#, kde-format
+msgid ""
+"This is the character set that is used by the client side (i.e. your side) "
+"either to convert local path names to and from Unicode (CIFS, Linux) or for "
+"codepage to charset translations (SMBFS, FreeBSD). If you keep the default "
+"setting, Smb4K will try to automatically determine the charset by looking up "
+"the \"unix charset\" option in the smb.conf."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseWriteAccess), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:144
+#, fuzzy, kde-format
+#| msgid "Write Access"
+msgid "Write access:"
+msgstr "Skrifaðgangur"
+
+#. i18n: ectx: whatsthis, entry (UseWriteAccess), group (Mounting)
+#. i18n: ectx: whatsthis, entry (WriteAccess), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:145 smb4kmountsettings_linux.kcfg:149
+#, kde-format
+msgid ""
+"Here you can choose if the shares should be mounted in read-write or read-"
+"only mode."
+msgstr ""
+
+#. i18n: ectx: label, entry (WriteAccess), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:152
+#, kde-format
+msgid "read-write"
+msgstr "lesa-skrifa"
+
+#. i18n: ectx: label, entry (WriteAccess), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:155
+#, kde-format
+msgid "read-only"
+msgstr "bara-lesa"
+
+#. i18n: ectx: label, entry (ForceUID), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:161
+#, kde-format
+msgid "Definitely assign the UID"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (ForceUID), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:162
+#, kde-format
+msgid ""
+"Instruct the client (i.e. your side) to ignore any user ID (UID) provided by "
+"the server for files and directories and to always assign the owner to be "
+"the value of the transmitted UID."
+msgstr ""
+
+#. i18n: ectx: label, entry (ForceGID), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:166
+#, kde-format
+msgid "Definitely assign the GID"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (ForceGID), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:167
+#, kde-format
+msgid ""
+"Instruct the client (i.e. your side) to ignore any group ID (GID) provided "
+"by the server for files and directories and to always assign the owner to be "
+"the value of the transmitted GID."
+msgstr ""
+
+#. i18n: ectx: label, entry (PermissionChecks), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:171
+#, fuzzy, kde-format
+msgid "Do permission checks"
+msgstr "Heimildir"
+
+#. i18n: ectx: whatsthis, entry (PermissionChecks), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:172
+#, kde-format
+msgid ""
+"The client side (i.e. your side) will check if you have the right UID/GID to "
+"manipulate a file or directory. You might want to switch this feature off if "
+"the server(s) support the CIFS Unix Extensions and you are not allowed to "
+"access the files and directories. This setting does not affect the normal "
+"ACL check."
+msgstr ""
+
+#. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:176
+#, kde-format
+msgid "Attempt to set UID and GID"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (ClientControlsIDs), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:177
+#, kde-format
+msgid ""
+"In case the server supports the CIFS Unix Extensions, the client side (i.e. "
+"your side) attempts to set the effective UID and GID of the current process "
+"on newly created files, directories and devices. If this feature is turned "
+"off, the server will set the UID and GID to the default for the share. It is "
+"recommended that you read the manual page of mount.cifs before you change "
+"this setting."
+msgstr ""
+
+#. i18n: ectx: label, entry (ServerInodeNumbers), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:181
+#, kde-format
+msgid "Use server inode numbers"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (ServerInodeNumbers), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:182
+#, kde-format
+msgid ""
+"Use inode numbers (unique persistent file identifiers) returned by the "
+"server instead of automatically generating temporary inode numbers on the "
+"client side."
+msgstr ""
+
+#. i18n: ectx: label, entry (NoLocking), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:186
+#, kde-format
+msgid "Do not use locking"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:187
+#, kde-format
+msgid "Do not use locking. Do not start lockd."
+msgstr ""
+
+#. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:191
+#, kde-format
+msgid "Translate reserved characters"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (TranslateReservedChars), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:192
+#, kde-format
+msgid ""
+"Translate six of the seven reserved characters (including the colon, "
+"question mark, pipe, asterisk, greater than and less than characters but not "
+"the backslash) to remap range (above 0xF000). This allows you to open files "
+"that were created with such characters. This has no effect if the server "
+"does not support Unicode."
+msgstr ""
+
+#. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:196
+#, fuzzy, kde-format
+#| msgid "Protocol hint:"
+msgid "SMB protocol version:"
+msgstr "Vísbending samskiptamáta:"
+
+#. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
+#. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:197 smb4kmountsettings_linux.kcfg:201
+#, kde-format
+msgid "Define which version of the SMB protocol is to be used."
+msgstr ""
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:204
+#, kde-format
+msgid "1.0 (Classic CIFS/SMBv1 protocol)"
+msgstr ""
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:207
+#, kde-format
+msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
+msgstr ""
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:210
+#, kde-format
+msgid "2.1 (Windows 7/Windows Server 2008R2)"
+msgstr ""
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:213
+#, kde-format
+msgid "3.0 (Windows 8/Windows Server 2012)"
+msgstr ""
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:216
+#, kde-format
+msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
+msgstr ""
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:219
+#, kde-format
+msgid "3.1.1 (Windows Server 2016)"
+msgstr ""
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:222
+#, kde-format
+msgid "3 (Version 3.0 and above)"
+msgstr ""
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:225
+#, kde-format
+msgid "default (Negotiate the highest version)"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:231
+#, fuzzy, kde-format
+#| msgid "Archive mode"
+msgid "Cache mode:"
+msgstr "Safnskráahamur"
+
+#. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:232 smb4kmountsettings_linux.kcfg:236
+#, kde-format
+msgid ""
+"Define how read and write requests are handled. In case you choose to not "
+"cache file data at all, the client never utilizes the cache for normal reads "
+"and writes. It always accesses the server directly to satisfy a read or "
+"write request. If you choose to follow the CIFS/SMB2 protocol strictly, the "
+"cache is only trusted if the client holds an oplock. If the client does not "
+"hold an oplock, then the client bypasses the cache and accesses the server "
+"directly to satisfy a read or write request. Choosing to allow loose caching "
+"semantics can sometimes provide better performance on the expense of cache "
+"coherency. This option might cause data corruption, if several clients "
+"access the same set of files on the server at the same time. Because of "
+"this, the strict cache mode is recommended."
+msgstr ""
+
+#. i18n: ectx: label, entry (CacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:239
+#, kde-format
+msgid "Do not cache file data at all"
+msgstr ""
+
+#. i18n: ectx: label, entry (CacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:242
+#, kde-format
+msgid "Follow the CIFS/SMB2 protocol strictly"
+msgstr ""
+
+#. i18n: ectx: label, entry (CacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:245
+#, kde-format
+msgid "Allow loose caching semantics"
+msgstr ""
+
+#. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:251
+#, kde-format
+msgid "Security mode:"
+msgstr ""
+
+#. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:252 smb4kmountsettings_linux.kcfg:256
+#, kde-format
+msgid ""
+"Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
+"module 1.40 or later is required."
+msgstr ""
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:259
+#, kde-format
+msgid "Connect as a null user (no name)"
+msgstr ""
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:262
+#, fuzzy, kde-format
+msgid "Kerberos 5 authentication"
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:265
+#, fuzzy, kde-format
+msgid "Kerberos 5 authentication and packet signing"
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:268
+#, fuzzy, kde-format
+#| msgid "Protocol"
+msgid "NTLM protocol"
+msgstr "Samskiptaregla"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:271
+#, fuzzy, kde-format
+msgid "NTLM protocol and packet signing"
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:274
+#, fuzzy, kde-format
+#| msgid "Protocol"
+msgid "NTLMv2 protocol"
+msgstr "Samskiptaregla"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:277
+#, fuzzy, kde-format
+msgid "NTLMv2 protocol and packet signing"
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:280
+#, fuzzy, kde-format
+#| msgid "Protocol"
+msgid "NTLMSSP protocol"
+msgstr "Samskiptaregla"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:283
+#, fuzzy, kde-format
+msgid "NTLMSSP protocol and packet signing"
+msgstr "Stjórnflakkarinn krefst auðkenna"
+
+#. i18n: ectx: label, entry (CustomCIFSOptions), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:289
+#, fuzzy, kde-format
+msgid "Additional options:"
+msgstr "Viðbótarvalkostir:"
+
+#. i18n: ectx: whatsthis, entry (CustomCIFSOptions), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:290
+#, kde-format
+msgid ""
+"Here you can enter advanced options for the CIFS file system in a comma-"
+"separated list (refer to the manual page of mount.cifs to learn more). The "
+"list will be added AS IS to the \"-o\" argument of mount.cifs. Please do not "
+"enter options that have already been defined in the configuration dialog."
+msgstr ""
+
+#: smb4knotification.cpp:39
+#, fuzzy, kde-format
+msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#: smb4knotification.cpp:42
+#, fuzzy, kde-format
+msgid "Open"
+msgstr "Opna"
+
+#: smb4knotification.cpp:54
+#, fuzzy, kde-format
+msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+msgstr "Ekki tókst að útbúa möppuna %1."
+
+#: smb4knotification.cpp:64
+#, fuzzy, kde-format
+msgid "<p>%1 share has been mounted.</p>"
+msgid_plural "<p>%1 shares have been mounted.</p>"
+msgstr[0] "Ekki tókst að útbúa möppuna %1."
+msgstr[1] "Ekki tókst að útbúa möppuna %1."
+
+#: smb4knotification.cpp:73
+#, fuzzy, kde-format
+msgid "<p>%1 share has been unmounted.</p>"
+msgid_plural "<p>%1 shares have been unmounted.</p>"
+msgstr[0] "Ekki tókst að útbúa möppuna %1."
+msgstr[1] "Ekki tókst að útbúa möppuna %1."
+
+#: smb4knotification.cpp:86
+#, fuzzy, kde-format
+msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:95
+#, kde-format
+msgid ""
+"<p>The credentials stored in the wallet could not be accessed. There is "
+"either no wallet available or it could not be opened.</p>"
+msgstr ""
+
+#: smb4knotification.cpp:105
+#, fuzzy, kde-format
+msgid ""
+"<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
+"file to PDF or Postscript and try again.</p>"
+msgstr ""
+"Það er ekki stuðningur við Mime tegundina \"%1\". Vinsamlega umbreyttu "
+"skránni í PostScript eða PDF."
+
+#: smb4knotification.cpp:116
+#, fuzzy, kde-format
+msgid ""
+"<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
+msgstr "Það er ekki hægt að setja bókamerki á prentara."
+
+#: smb4knotification.cpp:127
+#, kde-format
+msgid ""
+"<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+"being used and will automatically be renamed.</p>"
+msgstr ""
+
+#: smb4knotification.cpp:145
+#, fuzzy, kde-format
+msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:147
+#, fuzzy, kde-format
+msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:163
+#, fuzzy, kde-format
+msgid ""
+"<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
+"p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:165
+#, fuzzy, kde-format
+msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:182
+#, fuzzy, kde-format
+msgid ""
+"<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+"owned by the user <b>%3</b>.</p>"
+msgstr "Þú hefur ekki heimildir til að aftengja þessa sameign."
+
+#: smb4knotification.cpp:197
+#, fuzzy, kde-format
+msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:199
+#, fuzzy, kde-format
+msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:211
+#, fuzzy, kde-format
+msgid ""
+"<p>The command <b>%1</b> could not be found. Please check your installation."
+"</p>"
+msgstr "Ekki tókst að finna skipunina %1."
+
+#: smb4knotification.cpp:220
+#, fuzzy, kde-format
+msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+msgstr "Það er ekki hægt að setja bókamerki á prentara."
+
+#: smb4knotification.cpp:229
+#, fuzzy, kde-format
+msgid "<p>The file <b>%1</b> could not be found.</p>"
+msgstr "Ekki tókst að finna skipunina %1."
+
+#: smb4knotification.cpp:239
+#, fuzzy, kde-format
+msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:241
+#, fuzzy, kde-format
+msgid "<p>Opening the file <b>%1</b> failed.</p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:255 smb4knotification.cpp:258
+#, fuzzy, kde-format
+msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:260
+#, fuzzy, kde-format
+msgid "<p>Reading from file <b>%1</b> failed.</p>"
+msgstr "Prenta skrá"
+
+#: smb4knotification.cpp:273
+#, fuzzy, kde-format
+msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+msgstr "Ekki tókst að finna möppuna %1."
+
+#: smb4knotification.cpp:284
+#, fuzzy, kde-format
+#| msgid "The permission was denied. "
+msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+msgstr "Aðgangi var hafnað. "
+
+#: smb4knotification.cpp:288
+#, fuzzy, kde-format
+#| msgid "The permission was denied. "
+msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+msgstr "Aðgangi var hafnað. "
+
+#: smb4knotification.cpp:292
+#, fuzzy, kde-format
+#| msgid "The permission was denied. "
+msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+msgstr "Aðgangi var hafnað. "
+
+#: smb4knotification.cpp:296
+#, fuzzy, kde-format
+#| msgid "The permission was denied. "
+msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+msgstr "Aðgangi var hafnað. "
+
+#: smb4knotification.cpp:300
+#, fuzzy, kde-format
+#| msgid "The permission was denied. "
+msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+msgstr "Aðgangi var hafnað. "
+
+#: smb4knotification.cpp:305
+#, kde-format
+msgid "<p>The process reported an unknown error.</p>"
+msgstr ""
+
+#: smb4knotification.cpp:363
+#, fuzzy, kde-format
+#| msgid "The permission was denied. "
+msgid ""
+"<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
+"</p>"
+msgstr "Aðgangi var hafnað. "
+
+#: smb4knotification.cpp:365
+#, fuzzy, kde-format
+msgid "<p>Executing an action with root privileges failed.</p>"
+msgstr "Reyni aftur að opna miðlara..."
+
+#: smb4knotification.cpp:377
+#, kde-format
+msgid "<p>The URL that was passed is invalid.</p>"
+msgstr ""
+
+#: smb4knotification.cpp:385
+#, kde-format
+msgid ""
+"The network communication failed with the following error message: <s>%1</s>"
+msgstr ""
+
+#: smb4kprofilemanager_p.cpp:35
+#, kde-format
+msgid "Profile Migration Assistant"
+msgstr ""
+
+#: smb4kprofilemanager_p.cpp:83
+#, kde-format
+msgid "Migrate all relevant settings of one profile to another."
+msgstr ""
+
+#: smb4kprofilemanager_p.cpp:100
+#, kde-format
+msgid "Old Profile:"
+msgstr ""
+
+#: smb4kprofilemanager_p.cpp:106 smb4kprofilemanager_p.cpp:123
+#: smb4kprofilemanager_p.cpp:151 smb4kprofilemanager_p.cpp:160
+#, fuzzy, kde-format
+#| msgid "Default Login"
+msgid "<Default Profile>"
+msgstr "Sjálfgefin innskráning"
+
+#: smb4kprofilemanager_p.cpp:109
+#, fuzzy, kde-format
+#| msgid "Update files"
+msgid "<All Profiles>"
+msgstr "Uppfæra skrár"
+
+#: smb4kprofilemanager_p.cpp:117
+#, fuzzy, kde-format
+#| msgid "Update files"
+msgid "New Profile:"
+msgstr "Uppfæra skrár"
+
+#: smb4kshare.cpp:196
+#, kde-format
+msgid "Disk"
+msgstr "Diskur"
+
+#: smb4kshare.cpp:200
+#, kde-format
+msgid "Printer"
+msgstr "Prentari"
+
+#: smb4kshare.cpp:204
+#, kde-format
+msgid "IPC"
+msgstr ""
+
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#, fuzzy, kde-format
+#| msgid "Synchronizing data..."
+msgid "Synchronizing"
+msgstr "Samræmi gögn..."
+
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#, fuzzy, kde-format
+#| msgid "Source:"
+msgid "Source"
+msgstr "Upphaf:"
+
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#, fuzzy, kde-format
+#| msgid "Destination:"
+msgid "Destination"
+msgstr "Áfangastaður:"
+
+#: smb4ksynchronizer_p.cpp:552
+#, kde-format
+msgid "Synchronization"
+msgstr "Samræming"
+
+#: smb4ksynchronizer_p.cpp:555
+#, kde-format
+msgid "Swap Paths"
+msgstr "Slóðir diskminnis"
+
+#: smb4ksynchronizer_p.cpp:556
+#, kde-format
+msgid "Swap source and destination"
+msgstr "Upphaf og áfangastaður diskminnis"
+
+#: smb4ksynchronizer_p.cpp:557
+#, fuzzy, kde-format
+msgid "Synchronize"
+msgstr "Samr&æma"
+
+#: smb4ksynchronizer_p.cpp:558
+#, kde-format
+msgid "Synchronize the destination with the source"
+msgstr ""
+
+#: smb4ksynchronizer_p.cpp:572
+#, kde-format
+msgid ""
+"Please provide the source and destination directory for the synchronization."
+msgstr ""
+
+#: smb4ksynchronizer_p.cpp:581
+#, kde-format
+msgid "Source:"
+msgstr "Upphaf:"
+
+#: smb4ksynchronizer_p.cpp:589
+#, kde-format
+msgid ""
+"This is the source directory. The data that it contains is to be written to "
+"the destination directory."
+msgstr ""
+
+#: smb4ksynchronizer_p.cpp:592
+#, kde-format
+msgid "Destination:"
+msgstr "Áfangastaður:"
+
+#: smb4ksynchronizer_p.cpp:600
+#, kde-format
+msgid ""
+"This is the destination directory. It will be updated with the data from the "
+"source directory."
+msgstr ""
+
+#: smb4kwalletmanager_p.cpp:36
+#, fuzzy, kde-format
+msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#: smb4kwalletmanager_p.cpp:54 smb4kwalletmanager_p.cpp:56
+#, fuzzy, kde-format
+msgid ""
+"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS nafn:"
+
+#, fuzzy
+#~ msgid "Login:"
+#~ msgstr "Tenglar"
+
+#, fuzzy
+#~ msgid "Group:"
+#~ msgstr "Hópur:"
+
+#, fuzzy
+#~ msgid "Add Group"
+#~ msgstr "Bæta við hópi"
+
+#, fuzzy
+#~ msgid "Group name:"
+#~ msgstr "Hópur:"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown error"
+#~ msgstr "óþekkt"
+
+#, fuzzy
+#~| msgid "File Permissions, etc."
+#~ msgid "Permission denied"
+#~ msgstr "Skráarheimildir o.s.frv."
+
+#, fuzzy
+#~| msgid "Operating system:"
+#~ msgid "Operation not permitted"
+#~ msgstr "Stýrikerfi:"
+
+#, fuzzy
+#~ msgid "The workgroup or server could not be found"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "The print job could not be set up (step 1)"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "The print job could not be set up (step 2)"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Retrieving the list of hosts belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Retrieving the list of hosts belonging to domain <b>%1</b> failed.</p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Undirbý forsýn..."
+
+#, fuzzy
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "Undirbý forsýn..."
+
+#, fuzzy
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr "Reyni aftur að opna miðlara..."
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Remounting"
+#~ msgstr "Tengi"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "UNC Address:"
+#~ msgstr "IP vistfang:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Inntakið á sameigninni er rangt. Það verður að vera í sniðinu //VÉL/"
+#~ "SAMEIGN."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Reyna auðkenningu með Kerberos"
+
+#, fuzzy
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#~ msgid "Socket options:"
+#~ msgstr "Sökkul valkostir:"
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS svið:"
+
+#, fuzzy
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Sama auðkenni og á vél"
+
+#, fuzzy
+#~| msgid "Signing State"
+#~ msgid "Signing state:"
+#~ msgstr "Staða auðkenningar"
+
+#~ msgid "On"
+#~ msgstr "Á"
+
+#~ msgid "Off"
+#~ msgstr "Af"
+
+#~ msgid "Required"
+#~ msgstr "Nauðsynlegt"
+
+#~ msgid "Directory mask:"
+#~ msgstr "Möppumöskvi:"
+
+#~ msgid "unknown"
+#~ msgstr "óþekkt"
+
+#, fuzzy
+#~ msgid "File"
+#~ msgstr "Skrá:"
+
+#, fuzzy
+#~ msgid "Options"
+#~ msgstr "Aðgerðir"
+
+#, fuzzy
+#~ msgid "Options >>"
+#~ msgstr "Aðgerðir"
+
+#, fuzzy
+#~ msgid "Options <<"
+#~ msgstr "Aðgerðir"
+
+#, fuzzy
+#~ msgid "Name resolve order:"
+#~ msgstr "Leysiröð:"
+
+#~ msgid "Buffer size:"
+#~ msgstr "Stærð biðminnis:"
+
+#, fuzzy
+#~ msgid "The workgroup could not be found"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "Back"
+#~ msgstr "Afrita"
+
+#, fuzzy
+#~ msgid "Forward"
+#~ msgstr "Áfram"
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Útvörpunarvistfang:"
+
+#, fuzzy
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr "Reyna að nota UDP gátt 137 til að senda og móttaka UDP gögn"
+
+#, fuzzy
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~| msgid "nmblookup"
+#~ msgid "Use nmblookup command"
+#~ msgstr "nmblookup"
+
+#, fuzzy
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Spyrja stjórnvafra (master browser) um flakklistann"
+
+#, fuzzy
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#, fuzzy
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Gerfi stjórnandi:"
+
+#, fuzzy
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Stafatafla miðlara:"
+
+#~ msgid "General"
+#~ msgstr "Almennt"
+
+#, fuzzy
+#~ msgid "SMB Port:"
+#~ msgstr "Fjarlæg SMB gátt:"
+
+#, fuzzy
+#~ msgid "Filesystem Port:"
+#~ msgstr "Skráarkerfi:"
+
+#, fuzzy
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~| msgid "Don't exclude files matching this pattern:"
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Ekki undanskilja skrár sem passa við mynstrið:"
+
+#, fuzzy
+#~ msgid "The checksum seed"
+#~ msgstr "Setja blokkar/skráar gátsummu sendingu:"
+
+#, fuzzy
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Bókamerki"
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr "Útvörpunarvistfang:"
+
+#, fuzzy
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr "Útvörpunarvistfang:"
+
+#, fuzzy
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "Ekki tókst að útbúa möppuna %1."
+#~ msgstr[1] "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "Ekki tókst að útbúa möppuna %1."
+#~ msgstr[1] "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Aftengi sameignina %1..."
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Aftengi sameignina %1..."
+
+#, fuzzy
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Sýna notanda og hóp"
+
+#~ msgid "Show the login name"
+#~ msgstr "Sýna innskráningarnafn"
+
+#~ msgid "Show the file system"
+#~ msgstr "Sýna skráarkerfi"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr "Sýna skráarkerfið sem notað var við tengingu sameignar."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Sýna laust diskpláss"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "Sýna laust diskpláss sem eftir er á sameign."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Sýna notað diskpláss"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "Sýna það diskpláss sem þegar hefur verið notað á sameign."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Sýna heildardiskpláss"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "Sýna heildardiskpláss á sameign."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Sýna disknotkun"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr "Sýna það diskpláss sem notað er á sameign (í prósentum.)"
+
+#, fuzzy
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Útvörpunarvistfang:"
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Vísbending samskiptamáta:"
+
+#, fuzzy
+#~ msgid "Automatic detection"
+#~ msgstr "Auðkenning"
+
+#, fuzzy
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "Stýrikerfi:"
+
+#, fuzzy
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "Stýrikerfi:"
+
+#, fuzzy
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "Virk mappa (LDAP/Kerberos)"
+
+#, fuzzy
+#~ msgid "Protocol Hint:"
+#~ msgstr "Samskiptareglu vísbending"
+
+#, fuzzy
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Prenta skrá"
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr "Endurtengja við ræsingu sameignir sem hafa verið notaðar nýlega"
+
+#, fuzzy
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#, fuzzy
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#, fuzzy
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#, fuzzy
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr "Aftengja allar sameignir fyrir %1 þegar hætt er"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Show notifications"
+#~ msgstr "Auðkenning"
+
+#, fuzzy
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Sýna faldar sameignir"
+
+#, fuzzy
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Sýna faldar sameignir"
+
+#, fuzzy
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr "Sýna sameignir sem lista í stað táknmynda"
+
+#, fuzzy
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Sveinn í Felli"
+
+#, fuzzy
+#~| msgid "Show Share tab"
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "Sýna sameignaflipa"
+
+#, fuzzy
+#~ msgid "The mount process crashed."
+#~ msgstr "Forskeyti tengingar:"
+
+#, fuzzy
+#~ msgid "The mountpoint is invalid."
+#~ msgstr "Sýna tengipunkt í stað nafns á sameign"
+
+#, fuzzy
+#~ msgid "The unmount process could not be started."
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#~ msgid "Network"
+#~ msgstr "Netkerfi"
+
+#~ msgid "Type"
+#~ msgstr "Tegund"
+
+#~ msgid "IP Address"
+#~ msgstr "IP vistfang"
+
+#~ msgid "Comment"
+#~ msgstr "Athugasemd"
+
+#~ msgid "Scan Netwo&rk"
+#~ msgstr "&Skanna net"
+
+#~ msgid "&Abort"
+#~ msgstr "Hætt&a við"
+
+#~ msgid "&Open Mount Dialog"
+#~ msgstr "&Opna tengingarglugga"
+
+#~ msgid "Au&thentication"
+#~ msgstr "Auð&kenning"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Sérsniðnir &valkostir"
+
+#~ msgid "Add &Bookmark"
+#~ msgstr "&Bæta við bókamerki"
+
+#~ msgid "Pre&view"
+#~ msgstr "For&sýna"
+
+#~ msgid "&Print File"
+#~ msgstr "&Prenta skrá"
+
+#~ msgid "&Mount"
+#~ msgstr "&Tengja"
+
+#~ msgid "&Unmount"
+#~ msgstr "&Aftengja"
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network browser KPart of Smb4K"
+#~ msgstr "KPart netvafri Smb4K"
+
+#, fuzzy
+#~| msgid "\\u00A9 2007-2010, Alexander Reinholdt"
+#~ msgid "\\u00A9 2007-2014, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2010, Alexander Reinholdt"
+
+#~ msgid "Scan Compute&r"
+#~ msgstr "&Skanna vél"
+
+#~ msgid "Scan Wo&rkgroup"
+#~ msgstr "&Skanna vinnuhóp"
+
+#~ msgid "Looking for hosts in domain %1..."
+#~ msgstr "Leita að miðlurum á léninu %1..."
+
+#~ msgid "Looking for shares provided by host %1..."
+#~ msgstr "Leita að sameignum sem boðið er upp á af miðlaranum %1..."
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Leita að meiri upplýsingum um miðlarann %1..."
+
+#~ msgid "Done."
+#~ msgstr "Lokið."
+
+#~ msgid "&Network"
+#~ msgstr "&Net"
+
+#~ msgid "Password Storage"
+#~ msgstr "Geymsla lykilorðs"
+
+#~ msgid "Load"
+#~ msgstr "Hlaða inn"
+
+#, fuzzy
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#, fuzzy
+#~| msgid "Share"
+#~ msgid "Save"
+#~ msgstr "Sameign"
+
+#, fuzzy
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#, fuzzy
+#~| msgid "Show Share tab"
+#~ msgid "Show details"
+#~ msgstr "Sýna sameignaflipa"
+
+#, fuzzy
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Sýna IP vistfang"
+
+#~ msgid "Edit"
+#~ msgstr "Breyta"
+
+#, fuzzy
+#~ msgid "Undo"
+#~ msgstr "Afturkalla"
+
+#, fuzzy
+#~| msgid "Remove Entries"
+#~ msgid "Wallet Entries"
+#~ msgstr "Fjarlægja færslur"
+
+#, fuzzy
+#~ msgid "Entry"
+#~ msgstr "Umhverfi"
+
+#~ msgid "Login"
+#~ msgstr "Innskráning"
+
+#, fuzzy
+#~| msgid "Password:"
+#~ msgid "Password"
+#~ msgstr "Lykilorð:"
+
+#, fuzzy
+#~ msgid "User Interface"
+#~ msgstr "Notandaviðmót"
+
+#~ msgid "Shares"
+#~ msgstr "Sameignir"
+
+#, fuzzy
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr "Setja skrár sem eru sendar að hluta í"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "MAC address:"
+#~ msgstr "IP vistfang:"
+
+#~ msgid "Hardware"
+#~ msgstr "Vélbúnaður"
+
+#~ msgid "Default Destination"
+#~ msgstr "Sjálfgefin staðsetning"
+
+#~ msgid "Links"
+#~ msgstr "Tenglar"
+
+#~ msgid "Copying"
+#~ msgstr "Afrita"
+
+#~ msgid "File Deletion"
+#~ msgstr "Eyðing skráa"
+
+#~ msgid "Restrictions"
+#~ msgstr "Takmarkanir"
+
+#~ msgid "File Transfer"
+#~ msgstr "Skráarflutningur"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Skráareyðing og sending"
+
+#~ msgid "Filter Rules"
+#~ msgstr "Síureglur"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Sértækar síureglur:"
+
+#~ msgid "Filtering"
+#~ msgstr "Síun"
+
+#~ msgid "Backup"
+#~ msgstr "Öryggisafritun"
+
+#~ msgid "Checksums"
+#~ msgstr "Gátsummur"
+
+#~ msgid "General Options"
+#~ msgstr "Almennir valkostir"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Fjarlægar gáttir"
+
+#~ msgid "Choose a different user"
+#~ msgstr "Veldu annan notanda"
+
+#~ msgid "Choose a different group"
+#~ msgstr "Veldu annan hóp"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " Bæti"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Hjálparforrit"
+
+#~ msgid "Directories"
+#~ msgstr "Möppur"
+
+#, fuzzy
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Tenging og aftenging"
+
+#, fuzzy
+#~ msgid "Checks"
+#~ msgstr "Gátsummur"
+
+#~ msgid "Columns"
+#~ msgstr "Dálkar"
+
+#~ msgid "Tooltips"
+#~ msgstr "Vísbendingar"
+
+#~ msgid "Network Neighborhood"
+#~ msgstr "Netumhverfi"
+
+#~ msgid "View"
+#~ msgstr "Sýn"
+
+#~ msgid "Mounted Shares"
+#~ msgstr "Tengdar sameignir"
+
+#~ msgid "Hidden Files && Directories"
+#~ msgstr "Faldar skrár og möppur"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Forskoðunargluggi"
+
+#, fuzzy
+#~| msgid "\\u00A9 2007-2010, Alexander Reinholdt"
+#~ msgid "\\u00A9 2003-2014 Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2010, Alexander Reinholdt"
+
+#~ msgid "Smb4K"
+#~ msgstr "Smb4K"
+
+#~ msgid "Developer"
+#~ msgstr "Forritari"
+
+#, fuzzy
+#~ msgid "Search item:"
+#~ msgstr "Leit"
+
+#, fuzzy
+#~ msgid "Enter the search string here."
+#~ msgstr "Sláðu inn vél hér"
+
+#~ msgid "&Search"
+#~ msgstr "&Leita"
+
+#, fuzzy
+#~ msgid "Search Results"
+#~ msgstr "Leitarniðurstaða"
+
+#, fuzzy
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "netvafri"
+
+#, fuzzy
+#~| msgid "Searching for host..."
+#~ msgid "Searching for \"%1\"..."
+#~ msgstr "Leita eftir miðlara..."
+
+#~ msgid "Search"
+#~ msgstr "Leit"
+
+#~ msgid "Item"
+#~ msgstr "Atriði"
+
+#~ msgid "File System"
+#~ msgstr "Skráarkerfi"
+
+#~ msgid "Owner"
+#~ msgstr "Eigandi"
+
+#~ msgid "Free"
+#~ msgstr "Laust"
+
+#~ msgid "Used"
+#~ msgstr "Notað"
+
+#~ msgid "Total"
+#~ msgstr "Samtals"
+
+#~ msgid "Usage"
+#~ msgstr "Notkun"
+
+#~ msgid "U&nmount All"
+#~ msgstr "Afte&ngja allt"
+
+#~ msgid "S&ynchronize"
+#~ msgstr "Samr&æma"
+
+#, fuzzy
+#~| msgid "Open with Konso&le"
+#~ msgid "Open With"
+#~ msgstr "Opna með Konso&le skjáhermi"
+
+#~ msgid "Open with Konso&le"
+#~ msgstr "Opna með Konso&le skjáhermi"
+
+#~ msgid "Open with F&ile Manager"
+#~ msgstr "Opna í s&kráastjóra"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "KPart sameignasýn Smb4K"
+
+#~ msgid "Mounting share %1..."
+#~ msgstr "Tengi sameignina %1..."
+
+#~ msgid "Unmounting share %1..."
+#~ msgstr "Aftengi sameignina %1..."
+
+#, fuzzy
+#~ msgid "&Shares"
+#~ msgstr "Sameignir"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "Skrá:"
+
+#~ msgid "Sh&ares"
+#~ msgstr "S&ameignir"
+
+#, fuzzy
+#~ msgid "&Bookmarks"
+#~ msgstr "Bókamerki"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Almennir valkostir"
+
+#, fuzzy
+#~ msgid "Network Toolbar"
+#~ msgstr "Netleit"
+
+#, fuzzy
+#~ msgid "Search Toolbar"
+#~ msgstr "Netleit"
+
+#, fuzzy
+#~ msgid "Shares Toolbar"
+#~ msgstr "Sameignasýn"
+
+#, fuzzy
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Sameignasýn"
+
+#, fuzzy
+#~ msgid "Main Toolbar"
+#~ msgstr "Sameignasýn"
+
+#~ msgid "&Edit Bookmarks"
+#~ msgstr "&Sýsla með bókamerki"
+
+#, fuzzy
+#~ msgid "Mount All Bookmarks"
+#~ msgstr "&Sýsla með bókamerki"
+
+#, fuzzy
+#~ msgid "Dock Widgets"
+#~ msgstr "flipahluta"
+
+#, fuzzy
+#~ msgid "Shares View"
+#~ msgstr "Sameignasýn"
+
+#~ msgid "Network Search"
+#~ msgstr "Netleit"
+
+#, fuzzy
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>Closing the main window will keep Smb4K running in the system tray. "
+#~ "Use 'Quit' from the 'File' menu to quit the application.</p>"
+#~ msgstr ""
+#~ "Smb4K mun keyra áfram í kerfisbakkanum. Notaðu 'Skrá->Hætta' til að hætta "
+#~ "í forritinu."
+
+#, fuzzy
+#~ msgid "Docking"
+#~ msgstr "Spjal&dhlutar"
+
+#, fuzzy
+#~ msgid "There are currently no shares mounted."
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~| msgid "The wallet \"%1\" could not be opened."
+#~ msgid "The wallet is not in use."
+#~ msgstr "Ekki tókst að opna veskið \"%1\"."
+
+#, fuzzy
+#~| msgid "Looking for hosts in domain %1..."
+#~ msgid "Waking up host %1..."
+#~ msgstr "Leita að miðlurum á léninu %1..."
+
+#, fuzzy
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Prenta skrá"
+
+#, fuzzy
+#~| msgid "Unmounting all shares..."
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Aftengi allar sameignir..."
+
+#, fuzzy
+#~| msgid "Sending file to printer..."
+#~ msgid "Sending file to printer %1..."
+#~ msgstr "Sendi skrá á prentara..."
+
+#, fuzzy
+#~| msgid "Synchronizing data..."
+#~ msgid "Synchronizing %1"
+#~ msgstr "Samræmi gögn..."
+
+#, fuzzy
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Undirbý forsýn..."
+
+#, fuzzy
+#~| msgid "&Unmount"
+#~ msgid "Unmount"
+#~ msgstr "&Aftengja"
+
+#, fuzzy
+#~ msgid "Add Bookmark"
+#~ msgstr "&Sýsla með bókamerki"
+
+#, fuzzy
+#~| msgid "Open with Konso&le"
+#~ msgid "Open with Konsole"
+#~ msgstr "Opna með Konso&le skjáhermi"
+
+#, fuzzy
+#~| msgid "Open with F&ile Manager"
+#~ msgid "Open with File Manager"
+#~ msgstr "Opna í s&kráastjóra"
+
+#, fuzzy
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Netnágrenni"
+
+#~ msgid "yes"
+#~ msgstr "já"
+
+#~ msgid "no"
+#~ msgstr "nei"
+
+#, fuzzy
+#~| msgid "%1 %2 out of %3 %4 (%5\\% used)"
+#~ msgid "%1 free of %2 (%3 used)"
+#~ msgstr "%1 %2 af %3 %4 (%5\\% notað)"
+
+#, fuzzy
+#~| msgid "Master browser:"
+#~ msgid "Master browser"
+#~ msgstr "Stjórnandi:"
+
+#~ msgid "Host"
+#~ msgstr "Vél"
+
+#, fuzzy
+#~| msgid "WINS server"
+#~ msgid "Server"
+#~ msgstr "WINS þjónn"
+
+#, fuzzy
+#~| msgid "Share"
+#~ msgid "Share (%1)"
+#~ msgstr "Sameign"
+
+#, fuzzy
+#~| msgid "Mounted:"
+#~ msgid "Mounted"
+#~ msgstr "Tengt:"
+
+#, fuzzy
+#~| msgid "Mount point:"
+#~ msgid "Mountpoint"
+#~ msgstr "Tengipunktur:"
+
+#, fuzzy
+#~| msgid "File system:"
+#~ msgid "File system"
+#~ msgstr "Skráarkerfi:"
+
+#, fuzzy
+#~| msgid "Size:"
+#~ msgid "Size"
+#~ msgstr "Stærð:"
+
+#, fuzzy
+#~| msgid "&Open Mount Dialog"
+#~ msgid "Mount Dialog"
+#~ msgstr "&Opna tengingarglugga"
+
+#, fuzzy
+#~| msgid "U&nmount All"
+#~ msgid "Unmount All"
+#~ msgstr "Afte&ngja allt"
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Aftengi sameignina %1..."
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "IP address:"
+#~ msgstr "IP vistfang:"
+
+#, fuzzy
+#~ msgid "Mount"
+#~ msgstr "&Tengja"
+
+#~ msgid "Advanced"
+#~ msgstr "Nánar"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr "Þú hefur ekki heimildir til að aftengja þessa sameign."
+
+#, fuzzy
+#~| msgid "&Force Unmounting"
+#~ msgid "Force Unmounting"
+#~ msgstr "Þvinga a&ftengingu"
+
+#, fuzzy
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr "(c) 2003-2006, Alexander Reinholdt og Smb4K teymið"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "Þvinga a&ftengingu"
+
+#, fuzzy
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#~ msgid "UNC Address"
+#~ msgstr "UNC vistfang"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "Notandaauðkenni (UID)"
+
+#~ msgid "Group ID"
+#~ msgstr "Hópauðkenni (GID)"
+
+#~ msgid "SMB Port"
+#~ msgstr "SMB gátt"
+
+#~ msgid "File System Port"
+#~ msgstr "Skráarkerfisgátt"
+
+#~ msgid "Automatic"
+#~ msgstr "Sjálfvirkt"
+
+#~ msgid "A&dd"
+#~ msgstr "Bæta &við"
