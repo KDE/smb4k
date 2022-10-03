@@ -1,0 +1,109 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Volkan Gezer <volkangezer@gmail.com>, 2020.
+# Emir SARI <emir_sari@icloud.com>, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma_applet_org.kde.smb4kqml\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2022-07-19 18:07+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.04.2\n"
+"X-POOTLE-MTIME: 1497614325.000000\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">%1 üzerinde</font>"
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr "Geri git"
+
+#: package/contents/ui/BookmarksPage.qml:41
+msgid "Edit bookmarks"
+msgstr "Yer imlerini düzenle"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr "Yapılandırma İletişim Kutusu"
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr "Ağ Komşuları"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+msgid "Bookmark"
+msgstr "Yer İmi"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "Yeniden Tara"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "İptal"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr "Bir düzey yukarı çık"
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+msgid "Open the mount dialog"
+msgstr "Bağlama penceresini aç"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr "Bağlı Paylaşımlar"
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "Yer İmleri"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr "Profiller"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr "(etkin)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr "Eşitle"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr "Bağlantıyı kes"
+
+#: package/contents/ui/SharesViewPage.qml:34
+msgid "Unmount all shares"
+msgstr "Tüm paylaşımların bağlantısını kes"
+
+#, fuzzy
+#~| msgid "Edit bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Yer imlerini düzenle"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "Yer İmleri"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Delete Bookmark"
+#~ msgstr "Yer İmleri"

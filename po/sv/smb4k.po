@@ -1,0 +1,5625 @@
+# translation of smb4k.po to svenska
+# Alexander Reinholdt <alexander.reinholdt@web.de>, 2003.
+# Marc Hansen <marcgie@mail.berlios.de>, 2003, 2004, 2005.
+# Marc Hansen <marcgie@berlios.de>, 2005.
+# Leslie Jensen <leslie@eskk.nu>, 2008.
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2009, 2010.
+# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: sv\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"PO-Revision-Date: 2022-08-03 09:15+0200\n"
+"Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
+"Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.08.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Stefan Asserhäll"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "stefan.asserhall@bredband.net"
+
+#: helpers/smb4kmounthelper.cpp:136
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "Monteringsprocessen kunde inte startas."
+
+#: helpers/smb4kmounthelper.cpp:179
+#, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr "Monteringsplatsen %1 är ogiltig."
+
+#: helpers/smb4kmounthelper.cpp:241
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr "Avmonteringsprocessen kunde inte startas."
+
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:45
+#, kde-format
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr ""
+"Avancerad bläddrare i nätverksgrannskap och verktyg för montering av delade "
+"Samba-resurser"
+
+#: smb4k/main.cpp:47
+#, kde-format
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Developer"
+msgstr "Utvecklare"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr "Wolfgang Geisendörfer"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Donator"
+msgstr "Bidragsgivare"
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Arkiv"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Nätverk"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "&Delade resurser"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "&Bokmärken"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "In&ställningar"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Huvudverktygsrad"
+
+#: smb4k/smb4kbookmarkmenu.cpp:29
+#, kde-format
+msgid "Bookmarks"
+msgstr "Bokmärken"
+
+#: smb4k/smb4kbookmarkmenu.cpp:50
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Ordna bokmärken"
+
+#: smb4k/smb4kbookmarkmenu.cpp:59 smb4k/smb4kmainwindow.cpp:144
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:196
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "Lägg till &bokmärke"
+
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "Montera alla bokmärken"
+
+#: smb4k/smb4kconfigdialog.cpp:107
+#, kde-format
+msgid "User Interface"
+msgstr "Användargränssnitt"
+
+#: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
+#, kde-format
+msgid "Network"
+msgstr "Nätverk"
+
+#: smb4k/smb4kconfigdialog.cpp:109
+#, kde-format
+msgid "Mounting"
+msgstr "Montering"
+
+#: smb4k/smb4kconfigdialog.cpp:110
+#, kde-format
+msgid "Authentication"
+msgstr "Behörighetskontroll"
+
+#: smb4k/smb4kconfigdialog.cpp:111
+#, kde-format
+msgid "Synchronization"
+msgstr "Synkronisering"
+
+#: smb4k/smb4kconfigdialog.cpp:112
+#, kde-format
+msgid "Custom Options"
+msgstr "Anpassade alternativ"
+
+#: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kprofilesmenu.cpp:22
+#, kde-format
+msgid "Profiles"
+msgstr "Profiler"
+
+#: smb4k/smb4kconfigdialog.cpp:135
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+"<qt>En felaktig inställning har hittats. Nu visas motsvarande "
+"inställningssida för att du ska kunna rätta den.</qt>"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:34
+#, kde-format
+msgid "Settings"
+msgstr "Inställningar"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:64
+#, kde-format
+msgid "Wallet Entries"
+msgstr "Poster i plånboken"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:97
+#, kde-format
+msgid "Load"
+msgstr "Läs in"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#, kde-format
+msgid "Save"
+msgstr "Spara"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagecustomoptions.cpp:82
+#, kde-format
+msgid "Edit"
+msgstr "Redigera"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagecustomoptions.cpp:87
+#, kde-format
+msgid "Remove"
+msgstr "Ta bort"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:136
+#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#, kde-format
+msgid "Clear"
+msgstr "Rensa"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:201
+#, kde-format
+msgid "Default Login"
+msgstr "Standardinloggning"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#, kde-format
+msgid "Enter the default login information."
+msgstr "Ange den normala inloggningsinformationen."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:401
+#, kde-format
+msgid "Set the username and password for wallet entry %1."
+msgstr "Ange ett användarnamn och lösenord för plånbokspost %1."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:403
+#, kde-format
+msgid "Set the username and password for the default login."
+msgstr "Ange ett användarnamn och lösenord för standardinloggning."
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr "Allt är bra."
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:92
+#, kde-format
+msgid "Clear List"
+msgstr "Rensa lista"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:215
+#, kde-format
+msgid "The item %1 was removed, because all custom options were reset."
+msgstr "Objektet %1 togs bort, eftersom alla egna alternativ återställdes."
+
+#: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
+#, kde-format
+msgid "Directories"
+msgstr "Kataloger"
+
+#: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
+#: smb4k/smb4kconfigpagenetwork.cpp:112
+#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#, kde-format
+msgid "Behavior"
+msgstr "Beteende"
+
+#: smb4k/smb4kconfigpagemounting.cpp:139 smb4k/smb4kconfigpagemounting.cpp:544
+#, kde-format
+msgid " min"
+msgstr " min"
+
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
+#: smb4k/smb4kconfigpagenetwork.cpp:133
+#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#, kde-format
+msgid "Basic Settings"
+msgstr "Grundinställningar"
+
+#: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
+#, kde-format
+msgid "Common Options"
+msgstr "Vanliga alternativ"
+
+#: smb4k/smb4kconfigpagemounting.cpp:228
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr "Stöd för CIFS Unix-utökning"
+
+#: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
+#, kde-format
+msgid "Choose a different user"
+msgstr "Välj en annan användare"
+
+#: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
+#, kde-format
+msgid "Choose a different group"
+msgstr "Välj en annan grupp"
+
+#: smb4k/smb4kconfigpagemounting.cpp:336
+#, kde-format
+msgid "Common Mount Settings"
+msgstr "Vanliga monteringsinställningar"
+
+#: smb4k/smb4kconfigpagemounting.cpp:344
+#, kde-format
+msgid "Advanced Options"
+msgstr "Avancerade alternativ"
+
+#: smb4k/smb4kconfigpagemounting.cpp:457
+#, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "Redigera ytterligare CIFS-alternativ."
+
+#: smb4k/smb4kconfigpagemounting.cpp:470
+#, kde-format
+msgid "Advanced Mount Settings"
+msgstr "Avancerade monteringsinställningar"
+
+#: smb4k/smb4kconfigpagemounting.cpp:681
+#, kde-format
+msgid "Character Sets"
+msgstr "Teckenuppsättningar"
+
+#: smb4k/smb4kconfigpagemounting.cpp:729
+#, kde-format
+msgid "Mount Settings"
+msgstr "Monteringsinställningar"
+
+#: smb4k/smb4kconfigpagemounting.cpp:833
+#, kde-format
+msgid "Additional CIFS Options"
+msgstr "Ytterligare CIFS-alternativ"
+
+#: smb4k/smb4kconfigpagemounting.cpp:834
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr ""
+"<qt>Skriv in önskade alternativ som en lista åtskild med kommatecken:</qt>"
+
+#: smb4k/smb4kconfigpagemounting.cpp:862
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+"<qt>Följande post kommer att tas bort från de ytterligare alternativen: %2. "
+"Läs handboken för detaljerad information.</qt>"
+msgstr[1] ""
+"<qt>Följande %1 poster kommer att tas bort från de ytterligare alternativen: "
+"%2. Läs handboken för detaljerad information.</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:40
+#, kde-format
+msgid "Browse Settings"
+msgstr "Bläddringsinställningar"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:144
+#, kde-format
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:196
+#, kde-format
+msgid "Wake-On-LAN"
+msgstr "Väckning av lokalt nätverk"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:216
+#, kde-format
+msgid " s"
+msgstr " s"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:225
+#, kde-format
+msgid "Define the hosts that should be woken up via the custom options dialog."
+msgstr ""
+"Definiera värddatorerna som ska väckas via dialogrutan för anpassade "
+"alternativ."
+
+#: smb4k/smb4kconfigpagenetwork.cpp:235
+#, kde-format
+msgid "Advanced Settings"
+msgstr "Avancerade inställningar"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#, kde-format
+msgid "Synchronization Directory"
+msgstr "Synkroniseringskatalog"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#, kde-format
+msgid "Backups"
+msgstr "Säkerhetskopior"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#, kde-format
+msgid "General"
+msgstr "Allmänt"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#, kde-format
+msgid "Links"
+msgstr "Länkar"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr "Filegenskaper och ägare"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#, kde-format
+msgid "File Handling"
+msgstr "Filhantering"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#, kde-format
+msgid "Compression"
+msgstr "Komprimering"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#, kde-format
+msgid "Files"
+msgstr "Filer"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:310
+#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#, kde-format
+msgid " KiB"
+msgstr " KiB"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#, kde-format
+msgid " KiB/s"
+msgstr " KiB/s"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#, kde-format
+msgid "File Transfer"
+msgstr "Filöverföring"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#, kde-format
+msgid "Files && Directories"
+msgstr "Filer och kataloger"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#, kde-format
+msgid "Restrictions"
+msgstr "Begränsningar"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#, kde-format
+msgid "File Deletion"
+msgstr "Radera filer"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#, kde-format
+msgid "General Filtering Settings"
+msgstr "Allmänna filtreringsinställningar"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#, kde-format
+msgid "Filter Rules"
+msgstr "Filterregler"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#, kde-format
+msgid "Filtering"
+msgstr "Filtrera"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#, kde-format
+msgid "Checksums"
+msgstr "Checksummor"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:562
+#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#, kde-format
+msgid "Miscellaneous"
+msgstr "Diverse"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#, kde-format
+msgid "Main Window"
+msgstr "Huvudfönster"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:216
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Nätverksgrannskap"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#, kde-format
+msgid "Shares View"
+msgstr "Resursvisning"
+
+#: smb4k/smb4kmainwindow.cpp:134
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Dockningskomponenter"
+
+#: smb4k/smb4kmainwindow.cpp:239 smb4k/smb4ksharesmenu.cpp:37
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Monterade resurser"
+
+#: smb4k/smb4kmainwindow.cpp:399
+#, kde-format
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<qt>Smb4k fortsätter att vara aktivt i systembrickan efter att huvudfönstret "
+"har stängts.<br>Använd <i>Avsluta</i> från menyn <i>Arkiv</i> för att "
+"avsluta programmet.</qt>"
+
+#: smb4k/smb4kmainwindow.cpp:401
+#, kde-format
+msgid "Docking"
+msgstr "Dockning"
+
+#: smb4k/smb4kmainwindow.cpp:465
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr "För närvarande är inga delade resurser monterade."
+
+#: smb4k/smb4kmainwindow.cpp:468
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "För närvarande är %1 delad resurs monterad."
+msgstr[1] "För närvarande är %1 delade resurser monterade."
+
+#: smb4k/smb4kmainwindow.cpp:629
+#, kde-format
+msgid "The wallet is used."
+msgstr "Plånboken används."
+
+#: smb4k/smb4kmainwindow.cpp:632
+#, kde-format
+msgid "The password dialog is used."
+msgstr "Lösenordsdialogrutan används."
+
+#: smb4k/smb4kmainwindow.cpp:642
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Söker arbetsgrupper och domäner..."
+
+#: smb4k/smb4kmainwindow.cpp:647
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Söker värddatorer i domänen %1..."
+
+#: smb4k/smb4kmainwindow.cpp:652
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "Söker efter delade resurser som tillhandahålls av värddatorn %1..."
+
+#: smb4k/smb4kmainwindow.cpp:660 smb4k/smb4kmainwindow.cpp:668
+#, kde-format
+msgid "Looking for files and directories in %1..."
+msgstr "Söker efter filer och kataloger i %1..."
+
+#: smb4k/smb4kmainwindow.cpp:685
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr "Väcker fjärrdatorer..."
+
+#: smb4k/smb4kmainwindow.cpp:690
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Skickar fil till skrivaren %1..."
+
+#: smb4k/smb4kmainwindow.cpp:694
+#, kde-format
+msgid "Searching..."
+msgstr "Söker..."
+
+#: smb4k/smb4kmainwindow.cpp:712 smb4k/smb4kmainwindow.cpp:749
+#: smb4k/smb4kmainwindow.cpp:861
+#, kde-format
+msgid "Done."
+msgstr "Klar."
+
+#: smb4k/smb4kmainwindow.cpp:722
+#, kde-format
+msgid "Mounting..."
+msgstr "Monterar ..."
+
+#: smb4k/smb4kmainwindow.cpp:726
+#, kde-format
+msgid "Unmounting..."
+msgstr "Avmonterar ..."
+
+#: smb4k/smb4kmainwindow.cpp:730
+#, kde-format
+msgid "Waking up host..."
+msgstr "Väcker värddator ..."
+
+#: smb4k/smb4kmainwindow.cpp:760
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "%1 har monterats med lyckat resultat."
+
+#: smb4k/smb4kmainwindow.cpp:793
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "%1 har avmonterats med lyckat resultat."
+
+#: smb4k/smb4kmainwindow.cpp:849
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "Synkroniserar %1"
+
+#: smb4k/smb4knetworkbrowser.cpp:43
+#, kde-format
+msgid "Type"
+msgstr "Typ"
+
+#: smb4k/smb4knetworkbrowser.cpp:44
+#, kde-format
+msgid "IP Address"
+msgstr "IP-adress"
+
+#: smb4k/smb4knetworkbrowser.cpp:45
+#, kde-format
+msgid "Comment"
+msgstr "Kommentar"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:472
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:484
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "Läs av nätverket"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#, kde-format
+msgid "&Abort"
+msgstr "&Avbryt"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#, kde-format
+msgid "&Search"
+msgstr "&Sök"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "Ö&ppna monteringsdialogruta"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
+#, kde-format
+msgid "Au&thentication"
+msgstr "Behörighe&tskontroll"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:191
+#, kde-format
+msgid "&Custom Options"
+msgstr "&Anpassade alternativ"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#, kde-format
+msgid "Pre&view"
+msgstr "F&örhandsgranska"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#, kde-format
+msgid "&Print File"
+msgstr "Sk&riv ut filen"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:225
+#, kde-format
+msgid "&Mount"
+msgstr "&Montera"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:184
+#, kde-format
+msgid "&Unmount"
+msgstr "&Avmontera"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:393
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Läs av &datorn"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Läs av arbets&grupp"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#, kde-format
+msgid "Close"
+msgstr "Stäng"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#, kde-format
+msgid "Search string"
+msgstr "Söksträng"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#, kde-format
+msgid "Search"
+msgstr "Sök"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#, kde-format
+msgid "Stop"
+msgstr "Stoppa"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#, kde-format
+msgid "Item Down"
+msgstr "Objekt neråt"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#, kde-format
+msgid "Item Up"
+msgstr "Objekt uppåt"
+
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:190
+#, kde-format
+msgid "U&nmount All"
+msgstr "A&vmontera alla"
+
+#: smb4k/smb4ksharesmenu.cpp:158
+#, kde-format
+msgid "Unmount"
+msgstr "Avmontera"
+
+#: smb4k/smb4ksharesmenu.cpp:177
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Lägg till bokmärke"
+
+#: smb4k/smb4ksharesmenu.cpp:190
+#, kde-format
+msgid "Synchronize"
+msgstr "Synkronisera"
+
+#: smb4k/smb4ksharesmenu.cpp:209
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Öppna i Konsole"
+
+#: smb4k/smb4ksharesmenu.cpp:223
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Öppna i filhanterare"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#, kde-format
+msgid "View Modes"
+msgstr "Visningslägen"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:155
+#, kde-format
+msgid "Icon View"
+msgstr "Ikonvy"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:161
+#, kde-format
+msgid "List View"
+msgstr "Listvy"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:202
+#, kde-format
+msgid "S&ynchronize"
+msgstr "S&ynkronisera"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:208
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Öppna i Konso&le"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Öppna i f&ilhanterare"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:366
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+"<qt>Det finns ingen aktiv anslutning för den delade resursen <b>%1</b>. Det "
+"går inte att släppa några filer här.</qt>"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "yes"
+msgstr "ja"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "no"
+msgstr "nej"
+
+#: smb4k/smb4ktooltip.cpp:210
+#, kde-format
+msgid "Type:"
+msgstr "Typ:"
+
+#: smb4k/smb4ktooltip.cpp:225
+#, kde-format
+msgid "Workgroup"
+msgstr "Arbetsgrupp"
+
+#: smb4k/smb4ktooltip.cpp:228
+#, kde-format
+msgid "Master Browser:"
+msgstr "Huvudbläddrare:"
+
+#: smb4k/smb4ktooltip.cpp:256
+#, kde-format
+msgid "Host"
+msgstr "Värddator"
+
+#: smb4k/smb4ktooltip.cpp:259 smb4k/smb4ktooltip.cpp:303
+#, kde-format
+msgid "Comment:"
+msgstr "Kommentar:"
+
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:345
+#, kde-format
+msgid "IP Address:"
+msgstr "IP-adress:"
+
+#: smb4k/smb4ktooltip.cpp:283
+#, kde-format
+msgid "Workgroup:"
+msgstr "Arbetsgrupp:"
+
+#: smb4k/smb4ktooltip.cpp:300
+#, kde-format
+msgid "Share (%1)"
+msgstr "Delad resurs (%1)"
+
+#: smb4k/smb4ktooltip.cpp:315
+#, kde-format
+msgid "Mounted:"
+msgstr "Monterad:"
+
+#: smb4k/smb4ktooltip.cpp:334
+#, kde-format
+msgid "Host:"
+msgstr "Värddator:"
+
+#: smb4k/smb4ktooltip.cpp:357 smb4k/smb4ktooltip.cpp:437
+#, kde-format
+msgid "Location:"
+msgstr "Plats:"
+
+#: smb4k/smb4ktooltip.cpp:392 smb4k/smb4ktooltip.cpp:399
+#: smb4k/smb4ktooltip.cpp:464 smb4k/smb4ktooltip.cpp:476
+#: smb4k/smb4ktooltip.cpp:477 smb4k/smb4ktooltip.cpp:506
+#, kde-format
+msgid "unknown"
+msgstr "okänd"
+
+#: smb4k/smb4ktooltip.cpp:397 smb4k/smb4ktooltip.cpp:504
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 ledigt av %2 (%3 använt)"
+
+#: smb4k/smb4ktooltip.cpp:448
+#, kde-format
+msgid "Mountpoint:"
+msgstr "Monteringsplats:"
+
+#: smb4k/smb4ktooltip.cpp:459
+#, kde-format
+msgid "Username:"
+msgstr "Användarnamn:"
+
+#: smb4k/smb4ktooltip.cpp:471
+#, kde-format
+msgid "Owner:"
+msgstr "Ägare:"
+
+#: smb4k/smb4ktooltip.cpp:485
+#, kde-format
+msgid "File system:"
+msgstr "Filsystem:"
+
+#: smb4k/smb4ktooltip.cpp:496
+#, kde-format
+msgid "Size:"
+msgstr "Storlek:"
+
+#~ msgid ""
+#~ "The login information that was stored by Smb4K will be loaded from the "
+#~ "wallet."
+#~ msgstr ""
+#~ "Inloggningsinformationen som lagrades av Smb4K kommer att läsas in från "
+#~ "plånboken."
+
+#~ msgid "All modifications you applied are saved to the wallet."
+#~ msgstr "Alla ändringar du har utfört sparas i plånboken."
+
+#~ msgid "Details"
+#~ msgstr "Detaljinformation"
+
+#~ msgid "Entry"
+#~ msgstr "Post"
+
+#~ msgid "Username"
+#~ msgstr "Användarnamn"
+
+#~ msgid "Password"
+#~ msgstr "Lösenord"
+
+#~ msgid "Behavior:"
+#~ msgstr "Beteende:"
+
+#~ msgid "General:"
+#~ msgstr "Allmänt:"
+
+#~ msgid "File Attributes:"
+#~ msgstr "Filegenskaper:"
+
+#~ msgid "Ownership:"
+#~ msgstr "Ägare:"
+
+#~ msgid "Miscellaneous:"
+#~ msgstr "Diverse:"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Speciella filterregler"
+
+#~ msgid "Identification"
+#~ msgstr "Identifiering"
+
+#~ msgid "Network Item"
+#~ msgstr "Nätverksobjekt"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC-adress"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC-adress:"
+
+#~ msgid "Actions"
+#~ msgstr "Händelser"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Skicka magiskt paket innan sökning av nätverksgrannskapet"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Skicka magiskt paket innan en delad resurs monteras"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Inställningar av väckning av lokalt nätverk"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Återmontera alltid resursen"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Servern stöder CIFS Unix-utökningar"
+
+#~ msgid "Browse Settings:"
+#~ msgstr "Bläddringsinställningar:"
+
+#~ msgid "Profiles:"
+#~ msgstr "Profiler:"
+
+#~ msgid "Common Settings:"
+#~ msgstr "Vanliga inställningar:"
+
+#~ msgid "Authentication:"
+#~ msgstr "Behörighetskontroll:"
+
+#~ msgid "Security:"
+#~ msgstr "Säkerhet:"
+
+#~ msgid "Samba Settings"
+#~ msgstr "Inställningar av Samba"
+
+#~ msgid "Default Destination"
+#~ msgstr "Standardmål"
+
+#~ msgid "Permissions, etc."
+#~ msgstr "Rättigheter, etc."
+
+#~ msgid "Login"
+#~ msgstr "Användarnamn"
+
+#~ msgid "Login:"
+#~ msgstr "Användarnamn:"
+
+#~ msgid "The mount process crashed."
+#~ msgstr "Monteringsprocessen kraschade."
+
+#~ msgid "The unmount process crashed."
+#~ msgstr "Avmonteringsprocessen kraschade."
+
+#~ msgid "Protocols"
+#~ msgstr "Protokoll"
+
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 av %2 ledigt (%3 använt)"
+
+#~ msgid "Location"
+#~ msgstr "Plats"
+
+#~ msgid "Owner"
+#~ msgstr "Ägare"
+
+#~ msgid "The selected entry is removed from the wallet."
+#~ msgstr "Den valda posten tas bort från plånboken."
+
+#~ msgid "All entries are removed from the wallet."
+#~ msgstr "Alla poster tas bort från plånboken."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Markeras kryssrutan visas detaljer om den valda inloggningsinformationen "
+#~ "nedan."
+
+#~ msgid "Password Storage"
+#~ msgstr "Lösenords förvaring"
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Visa detaljinformation om den markerade posten."
+
+#~ msgid "Undo"
+#~ msgstr "Ångra"
+
+#~ msgid "Remounting"
+#~ msgstr "Ommontering"
+
+#~ msgid "UNC:"
+#~ msgstr "UNC:"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
+
+#~ msgid "Columns"
+#~ msgstr "Kolumner"
+
+#~ msgid "Tooltips"
+#~ msgstr "Verktygstips"
+
+#~ msgid "View Mode"
+#~ msgstr "Visningsläge"
+
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Diverse inställningar"
+
+#~ msgid "Shares"
+#~ msgstr "Delade resurser"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Verktygsrad för nätverk"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Sökverktygsrad"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Verktygsrad för delade resurser"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Alternativ huvudverktygsrad"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Hjälpprogram"
+
+#~ msgid "Network Search"
+#~ msgstr "Nätverkssökning"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Skriv in söksträng här."
+
+#~ msgid "Abort"
+#~ msgstr "Avbryt"
+
+#~ msgid "&Clear"
+#~ msgstr "&Rensa"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Sökningen returnerade inga resultat."
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Hämtar förhandsgranskning från %1..."
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodisk avsökning"
+
+#~ msgid "Browse List"
+#~ msgstr "Bläddra i lista"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-adress:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Filsystem-port:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Skrivrättighet:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Säkerhetsläge:"
+
+#~ msgid "User ID:"
+#~ msgstr "Användar ID:"
+
+#~ msgid "Group ID:"
+#~ msgstr "Grupp ID:"
+
+#~ msgid "MAC address:"
+#~ msgstr "MAC-adress:"
+
+#~ msgid "General Options"
+#~ msgstr "Allmänna inställningar"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Redigera bokmärken"
+
+#~ msgid "Add Group"
+#~ msgstr "Lägg till grupp"
+
+#~ msgid "Label:"
+#~ msgstr "Beteckning:"
+
+#~ msgid "Group:"
+#~ msgstr "Grupp:"
+
+#~ msgid "Group name:"
+#~ msgstr "Gruppnamn:"
+
+#~ msgid "Copying"
+#~ msgstr "Kopiera"
+
+#~ msgid " kB"
+#~ msgstr " kB"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Filborttagning och överföring"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "Nätverksbläddraren kunde inte skapas."
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Sökdialogrutan kunde inte skapas."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "Vyn för delade resurser kunde inte skapas."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "Delprogrammet för bläddring i nätverksgrannskapet i Smb4K"
+
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "© 2007-2015, Alexander Reinholdt"
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Väcker fjärrservrar..."
+
+#~ msgid "Search item:"
+#~ msgstr "Sökbegrepp:"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "Delprogrammet för nätverkssökning i Smb4K"
+
+#~ msgid "Search Results"
+#~ msgstr "Sökresultat"
+
+#~ msgid "Open With"
+#~ msgstr "Öppna med"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesListViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "Delprogrammet för visning av delade resurser i Smb4K"
+
+#~ msgid "&Shares"
+#~ msgstr "&Delade resurser"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Avancerad bläddrare för nätverksgrannskapet"
+
+#~ msgid "Checks"
+#~ msgstr "Kontroller"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Söker efter mer information om värddatorn %1..."
+
+#~ msgid "Mounting share..."
+#~ msgstr "Monterar delad resurs ..."
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Operating system"
+#~ msgstr "Operativsystem"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "Plånboken används inte."
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Montering av %1 misslyckades."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Avmontering av %1 misslyckades."
+
+#~ msgid "View"
+#~ msgstr "Visa"
+
+#~ msgid "Settings for the list view:"
+#~ msgstr "Inställningar för listvyn:"
+
+#~ msgid "File System"
+#~ msgstr "Filsystem"
+
+#~ msgid "Free"
+#~ msgstr "Ledig"
+
+#~ msgid "Used"
+#~ msgstr "Använt"
+
+#~ msgid "Total"
+#~ msgstr "Totalt"
+
+#~ msgid "Usage"
+#~ msgstr "Användning:"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protokolltips:"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Fjärrportar"
+
+#~ msgid "Laptop Support"
+#~ msgstr "Stöd för bärbara datorer"
+
+#~ msgid "Hardware"
+#~ msgstr "Hårdvara"
+
+#~ msgid ""
+#~ "<qt>Smb4K only detects changes in state of your hardware. If you are "
+#~ "performing a software suspend or the like, you should unmount the shares "
+#~ "manually.</qt>"
+#~ msgstr ""
+#~ "<qt>Smb4K detekterar bara tillståndsändringar i datorns hårdvara. Om du "
+#~ "aktiverar viloläge eller liknande via programvara, måste du avmontera "
+#~ "delade kataloger manuellt.</qt>"
+
+#~ msgid ""
+#~ "The custom master browser that is to be queried has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Den särskilda huvudbläddraren som ska tillfrågas har inte angivits.\n"
+#~ "Ange den nu."
+
+#~ msgid ""
+#~ "The broadcast areas that are to be scanned have not been filled in.\n"
+#~ "Please enter them now."
+#~ msgstr ""
+#~ "Utsändningsområden som ska sökas igenom har inte angivits.\n"
+#~ "Ange dem nu."
+
+#~ msgid ""
+#~ "The mount prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Monteringsprefixet har inte angivits.\n"
+#~ "Ange det nu."
+
+#~ msgid ""
+#~ "The file mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Filmasken har inte angivits.\n"
+#~ "Ange den nu."
+
+#~ msgid ""
+#~ "The directory mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Katalogmasken har inte angivits.\n"
+#~ "Ange den nu."
+
+#~ msgid ""
+#~ "The synchronization prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Synkroniseringsprefixet har inte angivits.\n"
+#~ "Ange det nu."
+
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Katalogen där delvis överförda filer ska lagras\n"
+#~ "har inte angivits.\n"
+#~ "Ange den nu."
+
+#~ msgid ""
+#~ "The exclude pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Undantagsmönstret för synkronisering har inte angivits.\n"
+#~ "Ange det nu."
+
+#~ msgid ""
+#~ "The file from which the exclude pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Filen som undantagsmönstret för synkronisering ska läsas från\n"
+#~ "har inte angivits.\n"
+#~ "Ange den nu."
+
+#~ msgid ""
+#~ "The include pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Mönster att inkludera för synkronisering har inte angivits.\n"
+#~ "Ange det nu."
+
+#~ msgid ""
+#~ "The file from which the include pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Filen som mönstret att inkludera för synkronisering ska läsas från\n"
+#~ "har inte angivits.\n"
+#~ "Ange den nu."
+
+#~ msgid ""
+#~ "The backup suffix for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Suffixet vid säkerhetskopiering för synkronisering har inte angivits.\n"
+#~ "Ange det nu."
+
+#~ msgid ""
+#~ "The backup directory for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Katalogen för säkerhetskopiering har inte angivits.\n"
+#~ "Ange den nu."
+
+#~ msgid ""
+#~ "<qt>Due to security concerns, the cruid option cannot be defined here and "
+#~ "will now be removed.</qt>"
+#~ msgstr ""
+#~ "<qt>På grund av säkerhetshänsyn kan inte alternativet cruid definieras "
+#~ "här och kommer nu att tas bort.</qt>"
+
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Montera och avmontera"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Fjärr kataloger"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Förhandsgranskningsdialog"
+
+#~ msgid "The password dialog mode is used and logins are not remembered."
+#~ msgstr ""
+#~ "Lösenordsdialogrutan används men inloggningsinformation sparas inte."
+
+#~ msgid "Show custom bookmark label if available"
+#~ msgstr "Visa anpassad bokmärkesbeteckning om tillgänglig"
+
+#~ msgid ""
+#~ "Do not show the name of the share that is represented by the bookmark but "
+#~ "the custom label that was defined in the bookmark editor."
+#~ msgstr ""
+#~ "Visa inte namnet på den delade resursen som representeras av bokmärket, "
+#~ "utan den anpassade beteckningen som angavs i bokmärkeseditorn."
+
+#~ msgid "Start docked"
+#~ msgstr "Starta inbäddad"
+
+#~ msgid ""
+#~ "Start the application docked to the system tray, i.e. only the system "
+#~ "tray widget is shown and the main window is hidden. You can bring the "
+#~ "main window up by clicking on the system tray widget or by choosing "
+#~ "\"Restore\" from its popup menu."
+#~ msgstr ""
+#~ "Starta programmet inbäddad i systembrickan. Det innebär att endast "
+#~ "manicken i systembrickan visas och huvudfönstret är döljd. Huvudfönstret "
+#~ "öppnas genom att klicka på systembrickan eller genom att välja \"Återställ"
+#~ "\" från dennas popup meny."
+
+#~ msgid "Show notifications"
+#~ msgstr "Visa underrättelser"
+
+#~ msgid ""
+#~ "Notify the user about actions that were performed, e.g. the mounting or "
+#~ "unmounting of a share. If you do not want to be disturbed too often, you "
+#~ "might want to switch this option off. Warnings and error messages are not "
+#~ "affected by this option."
+#~ msgstr ""
+#~ "Underrätta användaren om åtgärder som utfördes, t.ex. montering eller "
+#~ "avmontering av en delad katalog. Om du inte vill bli störd alltför ofta, "
+#~ "bör du nog stänga av alternativet. Varningar och felmeddelanden påverkas "
+#~ "inte av det här alternativet."
+
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Visa delade resurser som ikoner"
+
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr "De monterade delade resurserna kommer att visas med en ikonvy."
+
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Visa delade resurser som lista"
+
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "De monterade delade resurserna kommer att visas med en listvy."
+
+#~ msgid "Show printer shares"
+#~ msgstr "Visa delade skrivarresurser"
+
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "Delade skrivare visas i nätverksbläddraren."
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Visa dolda resurser"
+
+#~ msgid ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgstr ""
+#~ "Dolda resurser visas i nätverksbläddraren. Dem visas med ett $-tecken, ex."
+#~ "vis Musik$ or IPC$."
+
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Visa dolda IPC$ resurser"
+
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr "Dolda IPC$ resurser visas i nätverksbläddraren."
+
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Visa dolda ADMIN$ resurser"
+
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr "Dolda ADMIN$ resurser visas i nätverksbläddraren."
+
+#~ msgid "Show the type of the share"
+#~ msgstr "Visa typ av resurs"
+
+#~ msgid ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+#~ msgstr ""
+#~ "Resurstypen visas i en separat kolulmn i nätverksbläddraren. Det kan vara "
+#~ "antigen en disk, printer eller IPC."
+
+#~ msgid "Show the IP address of the server"
+#~ msgstr "Visa serverns IP-adress"
+
+#~ msgid ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+#~ msgstr "Serverns IP-adress visas i en separat kolulmn i nätverksbläddraren."
+
+#~ msgid "Show the comment"
+#~ msgstr "Visa kommentar"
+
+#~ msgid ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+#~ msgstr ""
+#~ "Kommentaren som beskriver servern eller den delade resursen visas i en "
+#~ "separat kolumn i nätverksbläddraren."
+
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "Visa verktygstips med information om nätverksposten"
+
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr "Verktygstipset visar blandat information om nätverksposten."
+
+#~ msgid "Automatically expand domains and hosts"
+#~ msgstr "Expandera domäner och värddatorer automatiskt"
+
+#~ msgid ""
+#~ "Automatically expand domain and host items when a list of associated "
+#~ "network items (domain members or shares) is added or updated. Please note "
+#~ "that a domain or host item will always be expanded when you execute it."
+#~ msgstr ""
+#~ "Expandera domäner och värddatorer automatiskt när en lista med "
+#~ "tillhörande objekt (domänmedlemmar eller delade resurser) läggs till "
+#~ "eller uppdateras. Observera att en domän eller ett värddatorobjekt alltid "
+#~ "kommer att expanderas när det körs."
+
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Visa monteringsplats istället för resursnamn"
+
+#~ msgid ""
+#~ "A share is normally displayed with its name in the shares view. Choosing "
+#~ "this feature will cause the exchange of the share name by the mount point."
+#~ msgstr ""
+#~ "Resursen visas normalt med dets namn. Väljs denna funktion orsaker detta "
+#~ "byte av visning av namnet till visning av vart den är monterad."
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "Visa alla resurser som är monterade i systemet"
+
+#~ msgid ""
+#~ "You will not only see the shares that were mounted and are owned by you, "
+#~ "but also all other mounts using the SMBFS and CIFS file system that are "
+#~ "present on the system."
+#~ msgstr ""
+#~ "Man ser inte bara de resurser som monterades och ägs av en själv, utan "
+#~ "även alla andra resurser som använder SMBFS och CIFS filsystem och som "
+#~ "finns på gällande system."
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Visa verktygstips med information om den delade resursen"
+
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr "Verktygstipset visar diverse information om den delade resursen."
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Visa användare och grupp"
+
+#~ msgid "Show the UID and GID that own all files on the mounted file system."
+#~ msgstr ""
+#~ "Visa användar-id och grupp-id som äger alla filer i det monterade "
+#~ "filsystemet."
+
+#~ msgid "Show the login name"
+#~ msgstr "Vissa inloggningsnamn"
+
+#~ msgid ""
+#~ "Show the login name that was used to authenticate to the server. The "
+#~ "column will only contain an entry if the share was mounted with the CIFS "
+#~ "file system."
+#~ msgstr ""
+#~ "Visa inloggningsnamnet som användes för att kontrollera behörighet på "
+#~ "servern. Kolumnen innehåller endast information om den delade resursen "
+#~ "monterades med CIFS-filsystemet."
+
+#~ msgid "Show the file system"
+#~ msgstr "Visa filsystem"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr ""
+#~ "Visa det filsystem som användes för att montera den delade resursen."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Visa ledigt diskutrymme"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "Visa det fria diskutrymme som finns kvar på den delade resursen."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Visa använt diskutrymme"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "Visa det diskutrymme som redan används på den delade resursen."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Visa totalt diskutrymme"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "Visa det sammanlagda diskutrymmet på den delade resursen."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Visa diskanvändning"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr ""
+#~ "Visa det diskutrymme som används på den delade resursen (i procent)."
+
+#~ msgid "Preview hidden files and directories"
+#~ msgstr "Förhandsgranska dolda filer och kataloger"
+
+#~ msgid ""
+#~ "Display hidden files and directories in the preview dialog. The hidden "
+#~ "files and directories are those whose names begin with a period.  They "
+#~ "are usually needed for very specific purposes (storing the configuration "
+#~ "information for an application, etc.). Since they are not of any "
+#~ "importance for your regular work, you normally do not need to enable this "
+#~ "feature."
+#~ msgstr ""
+#~ "Visa dolda filer och kataloger i dialogen för förhandsgranskning. Namnen "
+#~ "på dolda filer och kataloger börjar med en punkt och används normalt för "
+#~ "väldigt specifika ändamål (för att lagra inställningsinformation för "
+#~ "program, etc.). Eftersom de inte är viktiga för normal användning, "
+#~ "behöver denna funktion oftast inte aktiveras."
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Sök i mina nätverkersplatser efter arbetsgrupper och domäner"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Detta är standardmetoden för att hämta den första bläddringslistan. Den "
+#~ "upptäcker alla arbetsgrupper och domäner genom att söka efter alla kända "
+#~ "huvudbläddrare i nätverksgrannskapet."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Fråga nuvarande arbetsgrupps huvudbläddrare"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Denna metod frågar den nuvarande huvudbläddraren i arbetsgruppen eller "
+#~ "domänen efter den första bläddringslistan."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Fråga en särskild huvudbläddrare"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Denna metod frågar en särskild huvudbläddrare efter den första "
+#~ "bläddringslistan."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "En särskild huvudbläddrare som ska frågas"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Skriv in namn eller IP-adress på den huvudbläddrare, som ska bli "
+#~ "tillfrågad om att sammanställa den första bläddringslistan, här."
+
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Sök följande utsändningsområden:"
+
+#~ msgid ""
+#~ "This method will scan the given broadcast areas and look for all "
+#~ "registered hosts."
+#~ msgstr ""
+#~ "Denna metod söker igenom angivna utsändningsområden och letar efter alla "
+#~ "registrerade värddatorer."
+
+#~ msgid "A custom list of broadcast addresses"
+#~ msgstr "Anpassad lista med utsändningsadresser"
+
+#~ msgid ""
+#~ "Enter a comma-separated list of broadcast addresses here (e.g. "
+#~ "192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in "
+#~ "the respective broadcast areas."
+#~ msgstr ""
+#~ "Skriv in komma separerad lista över utsändningsadresser här (t.ex. "
+#~ "192.168.0.255, 192.168.1.255). Listan används för att hitta alla kända "
+#~ "värddatorer i respektive adressutrymme."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "Huvudbläddrarna kräver behörighetskontroll för att returnera "
+#~ "bläddringslistan"
+
+#~ msgid ""
+#~ "The master browsers in your network neighborhood require a login to "
+#~ "return the browse list. This setting is rarely needed and might even "
+#~ "cause a master browser to return an empty browse list. It will not have "
+#~ "any effect when you let Smb4K scan broadcast areas."
+#~ msgstr ""
+#~ "Huvudbläddrarna i nätverksgrannskapet kräver ett användarnamn för att "
+#~ "returnera bläddringslistan. Inställningen behövs sällan och kan till och "
+#~ "med göra att en huvudbläddrare returnerar en tom bläddringslista. Den har "
+#~ "ingen effekt när du låter Smb4K söka efter utsändningsområden."
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Avsök nätverksgrannskapet periodiskt"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Avsök nätverksgrannskapet periodiskt efter alla tillgängliga "
+#~ "arbetsgrupper, värddatorer och delade resurser."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Intervall mellan avsökningar:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Det här är tiden i minuter som går innan Smb4K åter avsöker "
+#~ "nätverksgrannskapet efter nya arbetsgrupper, värddatorer och delade "
+#~ "resurser."
+
+#~ msgid "Enable Wake-On-LAN features"
+#~ msgstr "Aktivera funktion för att väckas av lokalt nätverk"
+
+#~ msgid ""
+#~ "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#~ "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#~ "magic package send via a UDP socket to wake up remote servers. If you "
+#~ "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#~ "this option."
+#~ msgstr ""
+#~ "Väckning av lokalt nätverk (WOL) är en nätverksstandard för datorer med "
+#~ "Ethernet, som låter en dator sättas på eller väckas av ett "
+#~ "nätverksmeddelande. Smb4K använder ett magiskt paket som skickas via ett "
+#~ "UDP-uttag för att väcka fjärrservrar. Om du vill dra nytta av funktionen "
+#~ "för att väckas av lokalt nätverk, måste det här alternativet aktiveras."
+
+#~ msgid "Waiting time:"
+#~ msgstr "Väntetid:"
+
+#~ msgid ""
+#~ "This is the waiting time in seconds between the sending of the magic Wake-"
+#~ "On-LAN packages and the scanning of the network neighborhood or the "
+#~ "mounting of a share."
+#~ msgstr ""
+#~ "Det här är väntetiden i sekunder mellan att det magiska paketet för att "
+#~ "väckas av lokalt nätverk skickas, och sökningen av nätverksgrannskapet "
+#~ "eller montering av en delad resurs."
+
+#~ msgid "Mount prefix:"
+#~ msgstr "Prefix för montering:"
+
+#~ msgid ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+#~ msgstr ""
+#~ "Detta är det prefix där Smb4K skapar monteringspunkter och monterar "
+#~ "delade resurser."
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "Tvingande gemener på skapade underkataloger"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "Alla underkatalogernas namn som Smb4K skapar under monteringsprefixet "
+#~ "kommer att skrivas med gemener."
+
+#~ msgid "Unmount all personal shares on exit"
+#~ msgstr "Avmontera alla användarens delade resurser vid avslutning"
+
+#~ msgid ""
+#~ "Unmount all shares that belong to you when the program exits. Shares that "
+#~ "are owned by other users are ignored."
+#~ msgstr ""
+#~ "Återmontera alla dina delade resurser som fortfarande var monterade när "
+#~ "programmet avslutas. Delade resurser monterade av andra användare berörs "
+#~ "inte."
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr "Montera nyligen använda resurser vid program start"
+
+#~ msgid ""
+#~ "Remount all your shares that were mounted when you exited the program. If "
+#~ "a remount fails, Smb4K will retry the next time it is started. Shares "
+#~ "that were mounted by other users are ignored."
+#~ msgstr ""
+#~ "Återmontera alla dina delade resurser som fortfarande var monterade när "
+#~ "du avslutade programmet. Om en återmontering misslyckas, kommer Smb4K "
+#~ "försöka igen vid nästa start. Delade resurser monterade av andra "
+#~ "användare berörs inte."
+
+#~ msgid "Number of remount attempts:"
+#~ msgstr "Antal försök att montera igen:"
+
+#~ msgid ""
+#~ "Set the number of attempts that are made to remount shares before Smb4K "
+#~ "gives up."
+#~ msgstr ""
+#~ "Anger antal försök som görs att montera delade resurser igen innan Smb4K "
+#~ "ger upp."
+
+#~ msgid "Interval between remount attempts:"
+#~ msgstr "Intervall mellan försök att montera:"
+
+#~ msgid "Set the time that elapses between attempts to remount shares."
+#~ msgstr "Ange tiden som ska gå mellan försök att montera delade resurser."
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "Tillåt avmontering av resurser, som ägs av andra användare"
+
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "Tillåt avmontering av delade resurser, som monterades av andra användare. "
+#~ "Tänk efter innan detta alternativ aktiveras."
+
+#~ msgid "Force the unmounting of inaccessible shares"
+#~ msgstr "Tvinga avmontering av oåtkomliga delade resurser"
+
+#~ msgid ""
+#~ "Force the unmounting of inaccessible shares (Linux only). In case a share "
+#~ "is inaccessible, a lazy unmount is performed. Before the actual unmount "
+#~ "is performed, a warning dialog is shown asking to approve the unmount."
+#~ msgstr ""
+#~ "Tvinga avmontering av oåtkomliga delade resurser (bara på Linux). Om en "
+#~ "delad resurs inte är tillgänglig, utförs en lat avmontering. Innan den "
+#~ "verkliga avmonteringen sker, visas en varningsdialogruta som ber om "
+#~ "tillåtelse att utföra avmonteringen."
+
+#~ msgid "Interval between checks:"
+#~ msgstr "Kontrollinterval"
+
+#~ msgid ""
+#~ "This is the time in milliseconds that elapses until Smb4K checks again "
+#~ "for new mounts and unmounts. The lower limit is 500 ms, the upper one "
+#~ "300000 ms. Please note that the smaller the interval gets the higher is "
+#~ "your system load."
+#~ msgstr ""
+#~ "Det här är tiden i millisekunder som går innan Smb4K åter kontrollerar "
+#~ "nya monteringar och avmonteringar. Lägsta gräns är 500 ms, högsta är "
+#~ "300000 ms. Observera att ju kortare intervallet blir desto högre blir "
+#~ "systembelastningen."
+
+#~ msgid "Save logins in a wallet"
+#~ msgstr "Spara användarnamn och lösenord i en plånbok"
+
+#~ msgid ""
+#~ "Use a wallet to store the login. The username and password are stored "
+#~ "encrypted on your hard drive. If this setting is disabled, the login is "
+#~ "not stored permanently but only temporarily."
+#~ msgstr ""
+#~ "Använd en plånbok för att lagra inloggningsinformation. Användarnamn och "
+#~ "lösenord lagras krypterad på hårddisken. Om denna inställning inte är "
+#~ "aktiv lagras inloggningsinformationen endast temporärt."
+
+#~ msgid "Remember logins during program run"
+#~ msgstr "Kom ihåg användarnamn och lösenord medan programmet kör"
+
+#~ msgid ""
+#~ "If you decide to store your logins temporarily, Smb4K will remember them "
+#~ "only until the program exits. If you disable this setting, you will have "
+#~ "to provide the login every time it is needed."
+#~ msgstr ""
+#~ "Om du valde att endast spara användarnamn och lösenord tillfälligt, "
+#~ "kommer Smb4K att lagra dem till programmet avslutas. Om detta alternativ "
+#~ "inaktiveras måste inloggningsinformation anges varje gång den behövs."
+
+#~ msgid "Use a default login"
+#~ msgstr "Använd standardanvändare"
+
+#~ msgid ""
+#~ "Enable the usage of a default login. The provided data is used by default "
+#~ "to authenticate to a remote server. This is very useful e.g. if you are "
+#~ "working in an Active Directory environment or an NT domain."
+#~ msgstr ""
+#~ "Aktivera användandet av en standardinloggning. Informationen som lämnas, "
+#~ "används som standard för att kontrollera behörighet på en fjärrserver. "
+#~ "Det är mycket användbart om man arbetar i en miljö med aktiva kataloger "
+#~ "eller en NT-domän."
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS namn:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Detta är det NetBIOS namn som används av Smb4K för denna dator. Som "
+#~ "standard är det antigen NetBIOS namnet som angetts i smb.conf eller "
+#~ "värdnamnet."
+
+#~ msgid "Domain:"
+#~ msgstr "Domän:"
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "Detta är den arbetsgrupp eller domän som denna dator borde vara eller är "
+#~ "med i. Som standard är det arbetsgruppen, som angivits i smb.conf filen."
+
+#~ msgid "Socket options:"
+#~ msgstr "Uttagsinställningar:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Detta är de TCP uttagsinställningar som används av nmblookup och "
+#~ "smbclient. Uttagsinställningar är de parametrar i operativsystemets "
+#~ "nätverksskikt som tillåter fininställning av förbindelsen. Läs "
+#~ "instruktionerna i mansidan för smb.conf för ytterligare information."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS ram:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Detta ställer in NetBIOS omfattning som nmblookup och smbclient arbetar "
+#~ "med. Det bör inte ställas in om inte alla datorer i nätverksgrannskapet "
+#~ "ställer in värdet."
+
+#~ msgid "SMB port:"
+#~ msgstr "SMB-port:"
+
+#~ msgid ""
+#~ "This is the port that is used for connecting to remote servers with the "
+#~ "client programs net, smbclient and smbtree. The default value is 139 "
+#~ "(NetBIOS). This setting is not used for mounting."
+#~ msgstr ""
+#~ "Detta är porten som används för att ansluta till fjärrservrar med "
+#~ "klientprogrammen net, smbclient och smbtree. Standardvärdet är 139 "
+#~ "(NetBIOS). Inställningen används inte för montering."
+
+#~ msgid "File system port:"
+#~ msgstr "Filsystem-port:"
+
+#~ msgid ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+#~ msgstr ""
+#~ "Detta är porten som enbart används för att montera delade resurser från "
+#~ "fjärrservrar. Standardvärdet är 445 (CIFS-filsystem)."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Försök att använda Kerberos för authentisering"
+
+#~ msgid ""
+#~ "Try to authenticate with Kerberos. This is only useful in an Active "
+#~ "Directory environment. The setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Försök att använda Kerberos för behörighetskontroll. Det är endast "
+#~ "användbart i en miljö med aktiva kataloger. Inställningen påverkar "
+#~ "kommandona smbmount och smbtree."
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Behörighetskontroll med konto på lokal dator"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient, and smbtree command."
+#~ msgstr ""
+#~ "Gör förfrågningar till fjärrservern med användning av systemkontot på den "
+#~ "lokala servern. Denna inställning påverkar kommandona smbclient och "
+#~ "smbtree."
+
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Använd Winbind ccache för behörighetskontroll"
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects smbclient "
+#~ "and smbtree command."
+#~ msgstr ""
+#~ "Använd Winbind ccache för behörighetskontroll. Inställningen påverkar "
+#~ "kommandona smbclient och smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Signeringstillstånd:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Ange signeringstillstånd. Inställningen påverkar kommandona smbclient och "
+#~ "smbtree."
+
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "On"
+#~ msgstr "På"
+
+#~ msgid "Off"
+#~ msgstr "Av"
+
+#~ msgid "Required"
+#~ msgstr "Obligatorisk"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Kryptera SMB-överföring"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the smbclient and smbtree command."
+#~ msgstr ""
+#~ "Kryptera SMB-överföring (bara utökade Unix-servrar). Inställningen "
+#~ "påverkar kommandona smbclient och smbtree."
+
+#~ msgid ""
+#~ "This is the character set that is used by the client side (i.e. your "
+#~ "side) either to convert local path names to and from Unicode (CIFS, "
+#~ "Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you "
+#~ "keep the default setting, Smb4K will try to automatically determine the "
+#~ "charset by looking up the \"unix charset\" option in the smb.conf."
+#~ msgstr ""
+#~ "Detta är den teckenuppsättning klienten använder (dvs. din sida) antigen "
+#~ "för att omvandla lokala sökvägar till och från Unicode (CIFS, Linux) "
+#~ "eller omvandling från kodsida till teckenuppsättning (SMBFS, FreeBSD). Om "
+#~ "du behåller standardinställningen försöker Smb4K automatiskt bestämma "
+#~ "teckenuppsättning genom att läsa alternativet \"unix charset\" i filen "
+#~ "smb.conf."
+
+#~ msgid "default"
+#~ msgstr "grundinställning"
+
+#~ msgid "iso8859-1"
+#~ msgstr "ISO 8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "ISO 8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "ISO 8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "ISO 8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "ISO 8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "ISO 8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "ISO 8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "ISO 8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "ISO 8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "ISO 8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "ISO 8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "ISO 8859-15"
+
+#~ msgid "utf8"
+#~ msgstr "UTF8"
+
+#~ msgid "koi8-r"
+#~ msgstr "KOI8-R"
+
+#~ msgid "koi8-u"
+#~ msgstr "KOI8-U"
+
+#~ msgid "koi8-ru"
+#~ msgstr "KOI8-RU"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "gb2312"
+#~ msgstr "GB2312"
+
+#~ msgid "big5"
+#~ msgstr "BIG5"
+
+#~ msgid "euc-jp"
+#~ msgstr "EUC-JP"
+
+#~ msgid "euc-kr"
+#~ msgstr "EUC-KR"
+
+#~ msgid "tis-620"
+#~ msgstr "TIS-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Serverns kodsida:"
+
+#~ msgid ""
+#~ "This is the codepage that is used by the server. The setting is only "
+#~ "available with the SMBFS file system. If you keep the default setting, "
+#~ "Smb4K will try to automatically determine the codepage by looking up the "
+#~ "\"dos charset\" option in the smb.conf file."
+#~ msgstr ""
+#~ "Detta är kodsidan som servern använder. Inställningen är endast "
+#~ "tillgänglig med SMBFS-filsystemet. Om standardinställningen behålls, "
+#~ "kommer Smb4K automatiskt att försöka bestämma kodsida genom att läsa "
+#~ "alternativet \"dos charset\" i filen smb.conf."
+
+#~ msgid "cp437"
+#~ msgstr "cp437"
+
+#~ msgid "cp720"
+#~ msgstr "cp720"
+
+#~ msgid "cp737"
+#~ msgstr "cp737"
+
+#~ msgid "cp775"
+#~ msgstr "cp775"
+
+#~ msgid "cp850"
+#~ msgstr "cp850"
+
+#~ msgid "cp852"
+#~ msgstr "cp852"
+
+#~ msgid "cp855"
+#~ msgstr "cp855"
+
+#~ msgid "cp857"
+#~ msgstr "cp857"
+
+#~ msgid "cp858"
+#~ msgstr "cp858"
+
+#~ msgid "cp860"
+#~ msgstr "cp860"
+
+#~ msgid "cp861"
+#~ msgstr "cp861"
+
+#~ msgid "cp862"
+#~ msgstr "cp862"
+
+#~ msgid "cp863"
+#~ msgstr "cp863"
+
+#~ msgid "cp864"
+#~ msgstr "cp864"
+
+#~ msgid "cp865"
+#~ msgstr "cp865"
+
+#~ msgid "cp866"
+#~ msgstr "cp866"
+
+#~ msgid "cp869"
+#~ msgstr "cp869"
+
+#~ msgid "cp874"
+#~ msgstr "cp874"
+
+#~ msgid "cp932"
+#~ msgstr "cp932"
+
+#~ msgid "cp936"
+#~ msgstr "cp936"
+
+#~ msgid "cp949"
+#~ msgstr "cp949"
+
+#~ msgid "cp950"
+#~ msgstr "cp950"
+
+#~ msgid "cp1250"
+#~ msgstr "cp1250"
+
+#~ msgid "cp1252"
+#~ msgstr "cp1252"
+
+#~ msgid "cp1253"
+#~ msgstr "cp1253"
+
+#~ msgid "cp1254"
+#~ msgstr "cp1254"
+
+#~ msgid "cp1255"
+#~ msgstr "cp1255"
+
+#~ msgid "cp1256"
+#~ msgstr "cp1256"
+
+#~ msgid "cp1257"
+#~ msgstr "cp1257"
+
+#~ msgid "cp1258"
+#~ msgstr "cp1258"
+
+#~ msgid "unicode"
+#~ msgstr "Unicode"
+
+#~ msgid ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Här skriver man in det användar-id (ett nummer) som filer och kataloger "
+#~ "på den monterade resursen kommer att ha. Om man använder CIFS-filsystemet "
+#~ "och fjärrservern stödjer CIFS Unix-utökningar, kommer denna inställning "
+#~ "inte att användas."
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Här skriver man in det grupp ID (ett nummer) som filer och kataloger på "
+#~ "den monterade resursen kommer att ha. Om man använder CIFS-filsystemet "
+#~ "och fjärrservern stödjer CIFS Unix-utökningar, kommer denna inställning "
+#~ "inte att användas."
+
+#~ msgid "File mask:"
+#~ msgstr "Filmask"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating files. It must be defined "
+#~ "in octal. In case the CIFS file system is used, this setting only takes "
+#~ "effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Här skriver man in masken som används för att skapa filer. Denna måste "
+#~ "definieras oktalt. Om CIFS filsystemet används, kommer inställningen "
+#~ "endast att användas om servern inte stödjer CIFS Unix-utökningar."
+
+#~ msgid "Directory mask:"
+#~ msgstr "Katalogmask:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating directories. It must be "
+#~ "defined in octal. In case the CIFS file system is used, this setting only "
+#~ "takes effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Här skriver man in masken som används för att skapa kataloger. Denna "
+#~ "måste definieras oktalt. Om CIFS filsystemet används, kommer "
+#~ "inställningen endast att användas om servern inte stöder CIFS Unix-"
+#~ "utökningar."
+
+#~ msgid "Write access:"
+#~ msgstr "Skrivrättigheter"
+
+#~ msgid ""
+#~ "Here you can choose if the shares should be mounted in read-write or read-"
+#~ "only mode."
+#~ msgstr ""
+#~ "Här kan du välja om resurserna ska monteras med skriv- och läsrättigheter "
+#~ "eller endast läsrättigheter."
+
+#~ msgid "read-write"
+#~ msgstr "läs- och skrivbara"
+
+#~ msgid "read-only"
+#~ msgstr "läsbara"
+
+#~ msgid "Do permission checks"
+#~ msgstr "Kontrollera rättigheter"
+
+#~ msgid ""
+#~ "The client side (i.e. your side) will check if you have the right UID/GID "
+#~ "to manipulate a file or directory. You might want to switch this feature "
+#~ "off if the server(s) support the CIFS Unix Extensions and you are not "
+#~ "allowed to access the files and directories. This setting does not affect "
+#~ "the normal ACL check."
+#~ msgstr ""
+#~ "Klientsidan (dvs. din sida) kontrollerar om du har rätt användar-id och "
+#~ "grupp-id för att ändra en fil eller katalog. Om servern stöder CIFS Unix-"
+#~ "utökningar och man inte får komma åt filer och kataloger bör man "
+#~ "inaktivera denna inställning. Inställningen påverkar inte den normala ACL-"
+#~ "kontrollen."
+
+#~ msgid "Attempt to set UID and GID"
+#~ msgstr "Försök ställa in användar-id och grupp-id"
+
+#~ msgid ""
+#~ "In case the server supports the CIFS Unix Extensions, the client side (i."
+#~ "e. your side) attempts to set the effective UID and GID of the current "
+#~ "process on newly created files, directories and devices. If this feature "
+#~ "is turned off, the default UID and GID defined for the share will be "
+#~ "used. It is recommended that you read the manual page of mount.cifs "
+#~ "before you change this setting."
+#~ msgstr ""
+#~ "Om servern stödjer CIFS Unix-utökningar kommer klientsidan (dvs. din "
+#~ "sida) att försöka ställa in användar-id och grupp-id som används av den "
+#~ "nuvarande processen för nyskapade filer, kataloger och enheter. Om "
+#~ "inställningen inte används, kommer användar-id och grupp-id som är "
+#~ "definierade som standard för resursen att användas. Det rekommenderas att "
+#~ "läsa mansidan för mount.sifs innan inställningen ändras."
+
+#~ msgid "Use server inode numbers"
+#~ msgstr "Använd serverns inod-nummer"
+
+#~ msgid ""
+#~ "Use inode numbers (unique persistent file identifiers) returned by the "
+#~ "server instead of automatically generating temporary inode numbers on the "
+#~ "client side."
+#~ msgstr ""
+#~ "Använd inod-nummer (unika och beständiga filidentifieringar) som "
+#~ "returneras av servern, istället för automatiskt genererade tillfälliga "
+#~ "inod-nummer på klientsidan."
+
+#~ msgid "Do not cache inode data"
+#~ msgstr "Spara inte inod-data"
+
+#~ msgid ""
+#~ "Directly read from and write to files opened on the share. In some cases "
+#~ "this can provide better performance than the default behavior which "
+#~ "caches reads and writes."
+#~ msgstr ""
+#~ "Läs från och skriv direkt till filer som är öppna på den delade resursen. "
+#~ "Detta kan i vissa fall ge bättre prestanda än standardinställningen, som "
+#~ "cachar skrivningar och läsningar."
+
+#~ msgid "Translate reserved characters"
+#~ msgstr "Översätt reserverade tecken"
+
+#~ msgid ""
+#~ "Translate six of the seven reserved characters (including the colon, "
+#~ "question mark, pipe, asterisk, greater than and less than characters but "
+#~ "not the backslash) to remap range (above 0xF000). This allows you to open "
+#~ "files that were created with such characters. This has no effect if the "
+#~ "server does not support Unicode."
+#~ msgstr ""
+#~ "Översätt sex av de sju reserverade tecken (inklusive tecknen kolon, "
+#~ "frågetecken, lodrätt streck, asterisk, större än och mindre än, men inte "
+#~ "omvänt snedstreck) till omkodningsområdet (ovanför 0xF000). Det tillåter "
+#~ "att man öppnar filer skapade med dessa tecken. Inställningen har ingen "
+#~ "effekt om servern inte har stöd för Unicode."
+
+#~ msgid "Do not use locking"
+#~ msgstr "Använd inte låsning"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Använd inte låsning. Starta inte lockd."
+
+#~ msgid ""
+#~ "Here you can enter advanced options for the CIFS file system in a comma-"
+#~ "separated list (refer to the manual page of mount.cifs to learn more). "
+#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
+#~ "do not enter options that have already been defined in the configuration "
+#~ "dialog."
+#~ msgstr ""
+#~ "Här kan man skriva in advancerade inställningar för CIFS filsystemet i en "
+#~ "kommaseparerad lista (Läs mansidan för mount.cifs för ytterligare "
+#~ "information) Listan läggs till som den är till \"-o\" parametern i mount."
+#~ "cifs. Lägg inte till inställningar i konfigurationsdialogen som redan har "
+#~ "definierats."
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Protokolltips:"
+
+#~ msgid ""
+#~ "Here you can choose the protocol that will be used by the net command for "
+#~ "the communication with remote servers if appropriate. In most cases the "
+#~ "automatic detection will work fine and you should not need to change the "
+#~ "default setting. However, if you experience problems, use the RPC "
+#~ "protocol for newer operating systems (Windows NT4 and above) and the RAP "
+#~ "protocol for older ones (Windows 98/NT3 and below). Functions that need "
+#~ "the ADS protocol (for Active Directory environments) have not been "
+#~ "implemented yet, so you can ignore that one for now."
+#~ msgstr ""
+#~ "Välj om lämpligt det protokoll som kommandot net ska använda för att "
+#~ "kommunicera med fjärrservrar. I de flesta fall fungerar den automatiska "
+#~ "inställningen bra och det finns inget behov av att ändra "
+#~ "standardinställningen. Men, om problem uppstår, använd RPC-protokollet "
+#~ "för nyare operativsystem (Windows NT4 och senare) och RAP för de äldre "
+#~ "(Windows 98/NT3 och tidigare). Funktioner för ADS-protokollet (för "
+#~ "miljöer med aktiva kataloger) tillämpas för närvarande inte, så man kan "
+#~ "bortse från denna inställning så länge."
+
+#~ msgid "Automatic detection"
+#~ msgstr "Upptäck automatiskt"
+
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "RPC: moderna operativsystem"
+
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "RAP: äldre operativsystem"
+
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "ADS: Miljö med aktiva kataloger (LDAP/Kerberos)"
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Namnupplösningsföljd:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Detta val används för att bestämma vilka namntjänster och i vilken "
+#~ "ordningsföljd dem används för att göra namnuppslag på datornamn och IP-"
+#~ "adresser. Det behövs en lista, separerad av mellanslag, på upp till fyra "
+#~ "olika namnuppslagsmöjligheter. Dessa är lmhost, host, wins, bcast. Läs "
+#~ "mansidan för smbclient för ytterligare information."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Bufferstorlek:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Detta val ändrar överförings- eller sändbufferns storlek när en fil "
+#~ "hämtas eller läggs på servern. Standardinställningen är 65520 bytes. Det "
+#~ "har observerats att, om detta värde minskas har det medfört att "
+#~ "filöverföringar till Windows 9x värddatorer har snabbats upp."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Utsändningsadress:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Förfrågningar utförda med nmblookup, sänds till den givna "
+#~ "utsändningsadressen. Utan detta val är standardinställningen att skicka "
+#~ "förfrågningar till den utsändningsadress som används av det "
+#~ "nätverksgränssnitt som upptäckts automatisk eller som har angivits med "
+#~ "parametern \"interfaces\" i filen smb.conf."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Försök att använda UDP-port 137 för att skicka och mottaga UDP-datagram"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Försök och knyt an till UDP port 137 för att sända och ta emot UDP "
+#~ "datagram. Orsaken till att denna inställning finns, är en bugg i Windows "
+#~ "95, som bortser ifrån ursprungsporten som det frågande paketet kommer "
+#~ "ifrån och endast svarar till UDP port 137. Olyckligtvis krävs det "
+#~ "administratorrättigheter på dem flesta Unix system för att knyta an till "
+#~ "denna port. Läs vänligen mansidan för nmblookup för ytterligare "
+#~ "information."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Skicka begäran som utsändning"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Låt smbtree fråga nätverksnoder genom att skicka en begäran som "
+#~ "utsändning istället för att fråga den lokala huvudbläddraren."
+
+#~ msgid "Security mode:"
+#~ msgstr "Säkerhetsläge:"
+
+#~ msgid ""
+#~ "Security mode for mount.cifs. To be able to use this mode, the CIFS "
+#~ "kernel module 1.40 or later is required."
+#~ msgstr ""
+#~ "Säkerhetsläge för CIFS montering. För att kunna använda läget, krävs CIFS-"
+#~ "modul för kärnan 1.40 eller senare."
+
+#~ msgid "Connect as a null user (no name)"
+#~ msgstr "Anslut som en tom användare (inget namn)"
+
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Kerberos 5 behörighetskontroll"
+
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Kerberos 5 behörighetskontroll och paketsignering"
+
+#~ msgid "NTLM protocol"
+#~ msgstr "NTLM-protokoll"
+
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "NTLM-protokoll och paketsignering"
+
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "NTLMv2-protokoll"
+
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "NTLMv2-protokoll och paketsignering"
+
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "NTLMSSP-protokoll"
+
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "NTLMSSP-protokoll och paketsignering"
+
+#~ msgid ""
+#~ "Under this prefix the destination directory for the synchronization will "
+#~ "be created. However, if you want to store the data of a particular share "
+#~ "elsewhere, you will be able to choose a different path before the actual "
+#~ "synchronization begins."
+#~ msgstr ""
+#~ "Målkatalogen för synkronisering kommer att skapas i detta prefix. Om du "
+#~ "dock vill lagra data för en särskild delad katalog någon annanstans, "
+#~ "kommer du att kunna välja en annan sökväg innan själva synkroniseringen "
+#~ "börjar."
+
+#~ msgid "Archive mode"
+#~ msgstr "Arkivering"
+
+#~ msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+#~ msgstr "Använd arkivering (-a, --archive). Detta är kortformen av -rlptgoD."
+
+#~ msgid "Recurse into subdirectories"
+#~ msgstr "Gå in i underkataloger"
+
+#~ msgid "Recurse into directories (-r, --recursive)."
+#~ msgstr "Gå in i kataloger (-r, --recursive)."
+
+#~ msgid "Update files"
+#~ msgstr "Uppdatera filer"
+
+#~ msgid ""
+#~ "Update files in the destination directory that are older than in the "
+#~ "source directory (-u, --update)."
+#~ msgstr ""
+#~ "Uppdatera filer i målkatalogen som är äldre än dem i källkatalogen (-u, --"
+#~ "update)."
+
+#~ msgid "Update files in place"
+#~ msgstr "Uppdatera filer på plats"
+
+#~ msgid ""
+#~ "Update destination files in-place (--inplace). By default, rsync first "
+#~ "creates a new copy of a file and moves it into place after its transfer "
+#~ "finished. If you enable this feature, no copy will be created but the "
+#~ "destination file will immediately be overwritten instead. An exception to "
+#~ "this is if you combine this option with --backup."
+#~ msgstr ""
+#~ "Skriv över målfilerna (--inplace). Som standard skapar rsync först en ny "
+#~ "kopia av filen och flyttar den till målfilen efter att kopieringen är "
+#~ "avslutat. Om denna inställning aktiveras skapas ingen kopia utan målfilen "
+#~ "skrivs över direkt. Undantaget är om man använder inställningen med valet "
+#~ "--backup."
+
+#~ msgid "Use relative path names"
+#~ msgstr "Använd relativa sökvägar"
+
+#~ msgid ""
+#~ "Use relative paths (-R, --relative). This means that the full path names "
+#~ "specified on the command line are sent to the server rather than just the "
+#~ "last parts of the file names."
+#~ msgstr ""
+#~ "Använd relativa sökvägar (-R, --relative). Det innebär att fullständiga "
+#~ "sökvägar som angivits på kommandoraden skickas till servern istället för "
+#~ "bara de sista delarna av filnamnen."
+
+#~ msgid "Do not send implied directories"
+#~ msgstr "Skicka inte tillhörande kataloger"
+
+#~ msgid ""
+#~ "Do not send implied directories with --relative (--no-implied-dirs). This "
+#~ "means that the corresponding path elements on the destination system are "
+#~ "left unchanged if they exist, and any missing implied directories are "
+#~ "created with default attributes. This even allows these implied path "
+#~ "elements to have big differences, such as being a symlink to a directory "
+#~ "on one side of the transfer, and a real directory on the other side."
+#~ msgstr ""
+#~ "Skicka inte tillhörande kataloger med --relative (--no-implied-dirs). Det "
+#~ "innebär att de delar av sökvägen som överensstämmer med dem på det "
+#~ "mottagande systemet inte ändras om de redan finns, och de tillhörande "
+#~ "kataloger som saknas, skapas med standardegenskaper. Det tillåter stora "
+#~ "skillnader även i dessa delar av sökvägen, som till exempel att ett "
+#~ "symbolisk länk till en katalog på den ena sidan av överföringen är en "
+#~ "riktig katalog på den andra sidan."
+
+#~ msgid "Transfer directories without recursing"
+#~ msgstr "Överför utan att läsa ner i kataloger"
+
+#~ msgid ""
+#~ "Transfer directories without recursing (-d, --dirs). This means that all "
+#~ "top-level subdirectories are transferred but without their contents."
+#~ msgstr ""
+#~ "Överför utan tillhörande kataloger  (-d, --dirs). Det innebär att alla "
+#~ "underkataloger som finns i högsta nivån överförs men utan innehållet."
+
+#~ msgid "Compress data during transfer"
+#~ msgstr "Komprimera data under överföringen"
+
+#~ msgid ""
+#~ "Compress data during transfer (-z, --compress). This significantly "
+#~ "reduces the amount of data that is being transferred. You may want to use "
+#~ "this option, if you have a slow connection."
+#~ msgstr ""
+#~ "Komprimera data under överföring (-z, --compress). Detta reducerar "
+#~ "märkbart den mängd data som förs över. Har man en långsam uppkoppling kan "
+#~ "man med fördel använda denna inställning."
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Bevara symboliska länkar"
+
+#~ msgid "Copy symlinks as symlinks (-l, --links)."
+#~ msgstr "Kopiera symboliska länkar som symboliska länkar (-l, --links)."
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Omvandla symboliska länkar"
+
+#~ msgid ""
+#~ "Transform symlinks into the items they are pointing to (-L, --copy-links)."
+#~ msgstr "Omvandla symboliska länkar till det de pekar på (-L, --copy-links)."
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Omvandla endast osäkra symboliska länkar"
+
+#~ msgid ""
+#~ "Transform unsafe symlinks into the items they are pointing to (--copy-"
+#~ "unsafe-links). This means that only those symlinks are transformed that "
+#~ "point to items that are outside the copied tree. Absolute symlinks are "
+#~ "treated the same way. This option has no additional effect if --copy-"
+#~ "links has also been specified."
+#~ msgstr ""
+#~ "Omvandla osäkra symboliska länkar till det de pekar på (--copy-unsafe-"
+#~ "links). Det innebär att endast de symboliska länkar som pekar utanför den "
+#~ "trädstruktur som kopieras, omvandlas. Absoluta symboliska länkar hanteras "
+#~ "på samma sätt. Inställningen har ingen ytterligare effekt om --copy-links "
+#~ "också har angivits."
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Ignorera osäkra symboliska länkar"
+
+#~ msgid ""
+#~ "Ignore symlinks that point outside the copied tree (--safe-links). All "
+#~ "absolute symlinks are also ignored. If you use this option in conjunction "
+#~ "with --relative you might get unexpected results."
+#~ msgstr ""
+#~ "Hoppa över symboliska länkar som pekar utanför den kopierade "
+#~ "trädstrukturen (--safe-links). Det hoppar också över absoluta symboliska "
+#~ "länkar. Om det används tillsammans med --relative kan oönskade resultat "
+#~ "förekomma."
+
+#~ msgid "Preserve hard links"
+#~ msgstr "Bevara hårda länkar"
+
+#~ msgid ""
+#~ "Preserve hard links (-H, --hard-links). This options causes rsync to "
+#~ "preserve the hard links that are found during the transfer. Without it, "
+#~ "hard links are treated as though they were separate files."
+#~ msgstr ""
+#~ "Bevara hårda länkar (-H, --hard-links). Detta gör att rsync bevarar de "
+#~ "hårda länkar den stöter på under överföringen. Utan denna inställning, "
+#~ "behandlas länkarna som om de vore separata filer."
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Behåll symboliska kataloglänkar"
+
+#~ msgid ""
+#~ "Treat symlinked directories on the receiving side as though they were "
+#~ "real ones (-K, --keep-dirlinks). This only works if the symlink matches a "
+#~ "real directory from the sending side. Without this option, the receiver's "
+#~ "symlink will be deleted and replaced with a real directory."
+#~ msgstr ""
+#~ "Behandla symboliska kataloglänkar på den mottagande sidan som om de vore "
+#~ "riktiga (-K, --keep-dirlinks). Det fungerar endast om länken matchar en "
+#~ "riktig katalog på den sändande sidan. Utan detta val kommer mottagarens "
+#~ "länk att skrivas över med en riktig katalog."
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Bevara rättigheter"
+
+#~ msgid ""
+#~ "Preserve permissions (-p, --perms). The permissions of the destination "
+#~ "file will be same as the source file. For what happens if this option is "
+#~ "switched off, please read rsync's manual page."
+#~ msgstr ""
+#~ "Bevara rättigheter (-p, --perms). Målfilens rättigheter kommer att vara "
+#~ "samma som källfilens. Mansidan för rsync talar om vad som händer om inte "
+#~ "denna inställning inte används."
+
+#~ msgid "Preserve group"
+#~ msgstr "Bevara grupp"
+
+#~ msgid ""
+#~ "Preserve the group (-g, --group). The group of the destination file will "
+#~ "be set to the same value as the source file."
+#~ msgstr ""
+#~ "Bevara grupptillhörighet (-g, --group). Målfilens grupptillhörighet "
+#~ "kommer att vara samma som källfilens."
+
+#~ msgid "Preserve owner"
+#~ msgstr "Bevara ägare"
+
+#~ msgid ""
+#~ "Preserve the owner (-o, --owner). The owner of the destination file will "
+#~ "be set to the same value as the source file, but only if the receiving "
+#~ "rsync is run as the super user. Without this option, the owner is set to "
+#~ "the invoking user on the receiving side."
+#~ msgstr ""
+#~ "Bevara ägaren (-o, --owner). Ägaren av målfilen kommer att sättas till "
+#~ "samma som källfilen, men endast om mottagande rsync körs som "
+#~ "administratör. Utan detta val kommer ägaren bli den som skriver filen på "
+#~ "mottagarsidan."
+
+#~ msgid "Preserve device and special files"
+#~ msgstr "Bevara enheter och speciella filer"
+
+#~ msgid ""
+#~ "Preserve device and special files (-D, --devices --specials). This option "
+#~ "causes rsync to transfer character and block devices as well as special "
+#~ "files such as named sockets and fifos. It works only partially if rsync "
+#~ "is not run as super user and the --super option is not specified."
+#~ msgstr ""
+#~ "Bevara enheter och speciella filer (-D, --devices --specials). Detta val "
+#~ "gör att rsync flyttar tecken och blockenheter och även namngivna uttag "
+#~ "och FIFO:n. Fungerar endast delvis om inte rsync körs som administratör "
+#~ "och valet --super inte angivits."
+
+#~ msgid "Preserve times"
+#~ msgstr "Bevara tidsstämpeln"
+
+#~ msgid ""
+#~ "Preserve times (-t, --times). The modification times are transferred "
+#~ "along with the files. For what happens if this option is switched off, "
+#~ "please read rsync's manual page."
+#~ msgstr ""
+#~ "Bevara tidsstämpeln (-t, --times). Ändringstiderna flyttas tillsammans "
+#~ "med filerna. Mansidan för rsync talar om vad som händer om inte denna "
+#~ "inställning inte används."
+
+#~ msgid "Omit directories when preserving times"
+#~ msgstr "Undanhåll kataloger när tidsstämpeln bevaras"
+
+#~ msgid ""
+#~ "Omit directories when preserving times (-O, --omit-dir-times). This means "
+#~ "that directories are omitted when modification times are being preserved. "
+#~ "Thus, this feature only works in conjunction with --times."
+#~ msgstr ""
+#~ "Hoppa över kataloger när tidsstämplen bevaras (-O, --omit-dir-times). "
+#~ "Detta innebär att kataloger utelämnas när tidsstämplen sparas. Men, denna "
+#~ "inställning fungerar endast tillsammans med --times."
+
+#~ msgid "Remove synchronized source files"
+#~ msgstr "Ta bort synkroniserade källfiler"
+
+#~ msgid ""
+#~ "Remove all synchronized source files (--remove-source-files). This tells "
+#~ "rsync to remove from the sending side the non-directory items that are a "
+#~ "part of the transfer and have been successfully duplicated on the "
+#~ "receiving side."
+#~ msgstr ""
+#~ "Ta bort alla källfiler som har synkroniserats (--remove-source-files). "
+#~ "Detta talar om för rsync att ta bort de icke katalog poster som är en del "
+#~ "av överföringen och där kopieringen till den mottagande sidan har lyckats."
+
+#~ msgid "Delete extraneous files"
+#~ msgstr "Ta bort irrelevanta filer"
+
+#~ msgid ""
+#~ "Delete extraneous files from destination (--delete). This tells rsync to "
+#~ "delete all files from the receiving side that are not present on the "
+#~ "sending side, but only for the directories that are being synchronized."
+#~ msgstr ""
+#~ "Ta bort betydelselösa filer från målet (--delete). Detta talar om för "
+#~ "rsync att ta bort alla filer från mottagarsidan som inte finns på den "
+#~ "sändande sidan, dock endast för de kataloter som har synkroniserats."
+
+#~ msgid "Delete files before transfer"
+#~ msgstr "Ta bort filer innan överföring"
+
+#~ msgid ""
+#~ "Delete files on the receiving side before the transfer starts (--delete-"
+#~ "before). This is the default behavior if --delete or --delete-excluded is "
+#~ "specified without one of the --delete-WHEN options."
+#~ msgstr ""
+#~ "Ta bort filer på mottagarsidan innan överföringen påbörjas. (--delete-"
+#~ "before). Detta är standardinställningen, om --delete or --delete-excluded "
+#~ "har angivits utan en av --delete-WHEN valen."
+
+#~ msgid "Delete files after transfer"
+#~ msgstr "Ta bort filer efter överföring"
+
+#~ msgid ""
+#~ "Delete files on the receiving side after the transfer has completed (--"
+#~ "delete-after, --del)."
+#~ msgstr ""
+#~ "Ta bort filer på mottagarsidan efter att överföringen har fullförts (--"
+#~ "delete-after, --del)."
+
+#~ msgid "Delete files during transfer"
+#~ msgstr "Ta bort filer under överföring"
+
+#~ msgid ""
+#~ "Delete files on the receiving side during the transfer (--delete-during). "
+#~ "This method is faster than --delete-before or --delete-after, but it is "
+#~ "only supported with rsync 2.6.4 or later."
+#~ msgstr ""
+#~ "Ta bort filer på mottagarsidan under överföringen (--delete-during). "
+#~ "Denna metod är snabbare än --delete-before eller --delete-after, fungerar "
+#~ "endast med rsync 2.6.4 eller senare version."
+
+#~ msgid "Also delete excluded files"
+#~ msgstr "Ta även bort uteslutna filer"
+
+#~ msgid ""
+#~ "Also delete excluded files from destination directory (--delete-"
+#~ "excluded). In addition to deleting the files on the receiving side that "
+#~ "are not on the sending side, this tells rsync to also delete any files on "
+#~ "the receiving side that are excluded. Refer to rsync's manual page for "
+#~ "further information."
+#~ msgstr ""
+#~ "Ta även bort uteslutna filer från målkatalogen(--delete-excluded). "
+#~ "Tillsammans med att ta bort de filer på mottagarsidan som inte finns på "
+#~ "den sändande sidan, talar detta om för rsync att även ta bort de filer på "
+#~ "mottagarsidan som uteslutits. Läs rsyncs mansida för ytterligare "
+#~ "information."
+
+#~ msgid "Delete even if I/O errors occur"
+#~ msgstr "Ta bort även om I/O fel uppstår"
+
+#~ msgid ""
+#~ "Delete even if I/O errors occur (--ignore-errors). This option has to be "
+#~ "specified in conjunction with --delete to take effect."
+#~ msgstr ""
+#~ "Ta bort även om I/O fel förekommer (--ignore-errors). Denna inställning "
+#~ "måste användas tillsammans med --delete för att fungera."
+
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Tvinga borttagning av ogiltiga kataloger"
+
+#~ msgid ""
+#~ "Force deletion of directories even if they are not empty (--force). This "
+#~ "option tells rsync to delete a non-empty directory when it is to be "
+#~ "replaced by a non-directory. This is only relevant if deletions are not "
+#~ "active."
+#~ msgstr ""
+#~ "Tvinga borttagning av kataloger även när de inte är tomma (--force). "
+#~ "Detta talar om för rsync att ta bort kataloger som inte är tomma när de "
+#~ "ska ersättas med annat än en katalog. Det är endast relevant om "
+#~ "borttagningar inte är aktiva."
+
+#~ msgid "Do not delete more than this many files:"
+#~ msgstr "Ta inte bort mer än så här många filer:"
+
+#~ msgid ""
+#~ "Only delete as many files as defined here (--max-delete=NUM). This tells "
+#~ "rsync not to delete more than NUM files or directories (NUM must be non-"
+#~ "zero). This is useful when mirroring very large trees to prevent "
+#~ "disasters."
+#~ msgstr ""
+#~ "Ta endast bort så många filer som definierats här (--max-delete=NUM). "
+#~ "Detta talar om för rsync att inte ta bort flera än NUM filer eller "
+#~ "kataloger (NUM måste vara större än noll). Detta är användbart när mycket "
+#~ "stora träd speglas för att unvika missöden."
+
+#~ msgid "Value for DeleteMaximum config entry"
+#~ msgstr "Värde för DeleteMaximum konfigurationsinställning"
+
+#~ msgid "Do not transfer any file smaller than:"
+#~ msgstr "Överför inte några filer mindre än:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is smaller than "
+#~ "the specified size (--min-size=SIZE)."
+#~ msgstr ""
+#~ "Detta gör att rsync inte överför någon fil som är mindre än den angivna "
+#~ "storleken (--min-size=SIZE)."
+
+#~ msgid "Value for MinimalTransferSize config entry"
+#~ msgstr "Värde för MinimalTransferSize konfigurationsinställning"
+
+#~ msgid "Do not transfer any file larger than:"
+#~ msgstr "Överför inte några filer större än:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is larger than the "
+#~ "specified size (--max-size=SIZE)."
+#~ msgstr ""
+#~ "Detta gör att rsync inte överför någon fil som är större än den angivna "
+#~ "storleken (--max-size=SIZE)."
+
+#~ msgid "Value for MaximalTransferSize config entry"
+#~ msgstr "Värde för inställningsalternativet MaximalTransferSize"
+
+#~ msgid "Keep partially transferred files"
+#~ msgstr "Behåll delvis överförda filer"
+
+#~ msgid ""
+#~ "Keep partially transferred files (--partial). The default behavior is "
+#~ "that any partially transferred file is deleted if the transfer is "
+#~ "interrupted."
+#~ msgstr ""
+#~ "Behåll delvis överförda filer (--partial). Standardbeteendet är att ta "
+#~ "bort delvis överförda filer om överföringen avbryts."
+
+#~ msgid "Put partially transferred files into:"
+#~ msgstr "Placera delvis överförda filer i:"
+
+#~ msgid ""
+#~ "Put a partially transferred file into this directory (--partial-dir=DIR). "
+#~ "This is a better way than the --partial option to keep partial files, "
+#~ "because the partially transferred file is kept in a different directory "
+#~ "and the destination file is not overwritten."
+#~ msgstr ""
+#~ "Placera en delvis överförd fil i denna katalog (--partial-dir=KAT). Det "
+#~ "är ett bättre sätt en väljaren --partial för att behålla partiella filer, "
+#~ "eftersom den delvis överförda filen behålls i en annan katalog, och "
+#~ "målfilen skrivs inte över."
+
+#~ msgid "The data for the UsePartialDirectory option"
+#~ msgstr "Data för alternativet UsePartialDirectory"
+
+#~ msgid "Auto-ignore files in the same way CVS does"
+#~ msgstr "Ignorera automatiskt filer på samma sätt som CVS"
+
+#~ msgid ""
+#~ "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+#~ "useful shorthand for excluding a broad range of files that you often do "
+#~ "not want to transfer between systems. This option uses the same algorithm "
+#~ "that CVS uses to determine if a file should be ignored."
+#~ msgstr ""
+#~ "Ignorera filer automatiskt på samma sätt som CVS gör (-C, --cvs-exclude). "
+#~ "Det är en användbar snabbmetod för att undanta ett stort antal filer som "
+#~ "du ofta inte vill överföra mellan system. Alternativet använder samma "
+#~ "algoritm som CVS för att bestämma om en fil ska ignoreras."
+
+#~ msgid "Exclude files matching this pattern:"
+#~ msgstr "Uteslut filer som motsvarar följande mönster:"
+
+#~ msgid ""
+#~ "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+#~ "special filter rule. For further information on filter rules see rsync's "
+#~ "manual page."
+#~ msgstr ""
+#~ "Uteslut filer som motsvarar ett visst mönster (--exclude=MÖNSTER). Detta "
+#~ "är en särskild filterregel. För ytterligare information om filterregler, "
+#~ "se manualsidan för rsync."
+
+#~ msgid "Pattern that is used for file exclusion"
+#~ msgstr "Mönster som används för att undanta filer"
+
+#~ msgid "Read exclude patterns from:"
+#~ msgstr "Läs mönster att utesluta från:"
+
+#~ msgid ""
+#~ "Read exclude patterns from a file (--exclude-from=FILE). This option is "
+#~ "similar to the --exclude=PATTERN option except that the exclude patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Läs mönster att utesluta från en fil (--exclude-from=FIL). Väljaren "
+#~ "liknar --exclude=MÖNSTER, utom att mönstren att undanta läses från en "
+#~ "fil. Detta är en särskild filterregel. För ytterligare information om "
+#~ "filterregler, se manualsidan för rsync."
+
+#~ msgid "The file from which the exclude patterns are read"
+#~ msgstr "Filen som undantagsmönster läses från"
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Uteslut inte filer som motsvarar följande mönster:"
+
+#~ msgid ""
+#~ "Do not exclude files matching a certain pattern (--include=PATTERN). This "
+#~ "is a special filter rule. For further information on filter rules see "
+#~ "rsync's manual page."
+#~ msgstr ""
+#~ "Uteslut inte filer som motsvarar ett visst mönster (--include=MÖNSTER). "
+#~ "Detta är en särskild filterregel. För ytterligare information om "
+#~ "filterregler, se manualsidan för rsync."
+
+#~ msgid "Pattern that is used for file inclusion"
+#~ msgstr "Mönster som används för att inkludera filer"
+
+#~ msgid "Read include patterns from:"
+#~ msgstr "Läs mönster att inkludera från:"
+
+#~ msgid ""
+#~ "Read include patterns from a file (--include-from=FILE). This option is "
+#~ "similar to the --include=PATTERN option except that the include patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Läs mönster att inkludera från en fil (--include-from=FIL). Väljaren "
+#~ "liknar --include=MÖNSTER, utom att mönstren att inkludera läses från en "
+#~ "fil. Detta är en särskild filterregel. För ytterligare information om "
+#~ "filterregler, se manualsidan för rsync."
+
+#~ msgid "The file from which the include patterns are read"
+#~ msgstr "Filen som inkluderingsmönster läses från"
+
+#~ msgid "Custom filter rules:"
+#~ msgstr "Anpassade filterregler:"
+
+#~ msgid ""
+#~ "Add custom file-filtering rules (-f, --filter=RULE). This option allows "
+#~ "you to add rules to selectively exclude certain files from the list of "
+#~ "files to be transferred. These rules will be added to the rsync command "
+#~ "as they are. Thus, each rule has to start with the --filter=... argument."
+#~ msgstr ""
+#~ "Lägg till anpassade filterregler (-f, --filter=REGEL). Väljaren låter dig "
+#~ "lägga till regler för att selektivt undanta vissa filer från listan med "
+#~ "filer att överföra. Reglerna läggs till i rsync-kommandot som de är. "
+#~ "Därmed måste varje regel börja med väljaren --filter=..."
+
+#~ msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+#~ msgstr "Använd --filter='dir-merge /.rsync-filter' filterregel"
+
+#~ msgid ""
+#~ "This filter rule tells rsync to look for per-directory .rsync-filter "
+#~ "files that have been sprinkled through the hierarchy and use their rules "
+#~ "to filter the files in the transfer. It has no effect, if you also choose "
+#~ "to use the --filter='exclude .rsync-filter' rule."
+#~ msgstr ""
+#~ "Denna filterregel talar om för rsync att leta efter .rsync-filterfiler "
+#~ "per katalog som har spridits ut i hierarkin, och använda deras regler för "
+#~ "att filtrera filerna i överföringen. Den har ingen effekt om du också "
+#~ "väljer att använda regeln --filter='exclude .rsync-filter'."
+
+#~ msgid "Use --filter='exclude .rsync-filter' filter rule"
+#~ msgstr "Använd --filter='exclude .rsync-filter' filterregel"
+
+#~ msgid ""
+#~ "This rule filters out the .rsync-filter files from the transfer. These "
+#~ "files normally contain filter rules that can be activated by choosing the "
+#~ "--filter='dir-merge /.rsync-filter' rule and deselecting this one."
+#~ msgstr ""
+#~ "Denna regel filtrerar bort .rsync-filterfilerna från överföringen. Dessa "
+#~ "filer innehåller normalt filterregler som kan aktiveras genom att markera "
+#~ "regeln --filter='dir-merge /.rsync-filter', och avmarkera denna."
+
+#~ msgid "Handle sparse files efficiently"
+#~ msgstr "Hantera glesa filer effektivt"
+
+#~ msgid ""
+#~ "Handle sparse files efficiently (-S, --sparse) so that they take up less "
+#~ "space on the destination. This option conflicts with --inplace. For "
+#~ "further information read rsync's manual page."
+#~ msgstr ""
+#~ "Hantera glesa filer effektivt (-S, --sparse), så att de tar upp mindre "
+#~ "utrymme i målkatalogen. Alternativet ger konflikt med --inplace. För "
+#~ "ytterligare information, läs manualsidan för rsync."
+
+#~ msgid "Copy files whole (no rsync algorithm)"
+#~ msgstr "Kopiera hela filer (ingen rsync algoritm)"
+
+#~ msgid ""
+#~ "Copy files whole (-W, --whole-file). With this option the incremental "
+#~ "rsync algorithm is not used and the whole file is sent as-is instead."
+#~ msgstr ""
+#~ "Kopiera hela filer (-W, --whole-file). Den inkrementella rsync-algoritmen "
+#~ "används inte med den här väljaren, och hela filen skickas som den är "
+#~ "istället."
+
+#~ msgid "Do not cross file system boundaries"
+#~ msgstr "Korsa inte filsystemets gränser"
+
+#~ msgid ""
+#~ "Do not cross file system boundaries (-x, --one-file-system). This tells "
+#~ "rsync to avoid crossing a filesystem boundary when recursing. For further "
+#~ "information on this option, read the manual page."
+#~ msgstr ""
+#~ "Korsa inte filsystemets gränser (-x, --one-file-system). Detta talar om "
+#~ "för rsync att undvika att korsa filsystemets gräns vid rekursion. För "
+#~ "ytterligare information om väljaren, läs manualsidan."
+
+#~ msgid "Only update files that already exist"
+#~ msgstr "Uppdatera endast extsterande filer"
+
+#~ msgid ""
+#~ "Skip creating new files on the receiving side (--existing). This tells "
+#~ "rsync to skip creating files (including directories) that do not exist "
+#~ "yet on the destination. If this option is combined with the --ignore-"
+#~ "existing option, no files will be updated (which can be useful if all you "
+#~ "want to do is to delete extraneous files)."
+#~ msgstr ""
+#~ "Hoppa över att skapa nya filer på mottagarsidan (--existing). Detta talar "
+#~ "om för rsync att hoppa över att skapa filer (inklusive kataloger) som "
+#~ "inte redan finns i målkatalogen. Om väljaren kombineras med väljaren --"
+#~ "ignore-existing, uppdateras inga filer (vilket kan vara användbart om "
+#~ "allt du vill göra är att ta bort onödiga filer)."
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Ignorera extsterande filer"
+
+#~ msgid ""
+#~ "Skip updating files that already exist on the receiving side (--ignore-"
+#~ "existing). Existing directories are not ignored."
+#~ msgstr ""
+#~ "Hoppa över uppdatering av filer som redan finns på mottagarsidan (--"
+#~ "ignore-existing). Befintliga kataloger ignoreras inte."
+
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Vänta med uppdatering tills slutet av överföringen"
+
+#~ msgid ""
+#~ "Delay updates until the end of the transfer (--delay-updates). This "
+#~ "option puts the temporary file from each updated file into a holding "
+#~ "directory until the end of the transfer, at which time all the files are "
+#~ "renamed and copied into place in rapid succession."
+#~ msgstr ""
+#~ "Vänta med uppdatering tills slutet av överföringen (--delay-updates). "
+#~ "Väljaren placerar den tillfälliga filen för varje uppdaterad fil i en "
+#~ "väntekatalog till överföringens slut, då namnen på alla filer ändras och "
+#~ "de kopieras på plats i snabb följd."
+
+#~ msgid "Make backups"
+#~ msgstr "Säkerhetskopiera"
+
+#~ msgid ""
+#~ "Make backups (-b, --backup). With this option, preexisting destination "
+#~ "files are renamed as each file is transferred or deleted. You can control "
+#~ "where the backup file goes and what (if any) suffix gets appended using "
+#~ "the --backup-dir=DIR and --suffix=SUFFIX options."
+#~ msgstr ""
+#~ "Säkerhetskopiera (-b, --backup). Med denna väljare, byts namn på "
+#~ "befintliga målfiler när varje fil överförs eller tas bort. Du kan styra "
+#~ "var de säkerhetskopierade filerna hamnar, och vilken (om någon) ändelse "
+#~ "som läggs till med väljarna --backup-dir=KAT och --suffix=ÄNDELSE."
+
+#~ msgid "Backup suffix:"
+#~ msgstr "Ändelse för säkerhetskopia:"
+
+#~ msgid "Use this suffix for backups (--suffix=SUFFIX)."
+#~ msgstr "Använd denna ändelse för säkerhetskopior (--suffix=ÄNDELSE)"
+
+#~ msgid "Backup suffix"
+#~ msgstr "Ändelse för säkerhetskopia"
+
+#~ msgid "Backup directory:"
+#~ msgstr "Säkerhetskopieringskatalog"
+
+#~ msgid "Store backups in this directory (--backup-dir=DIR)."
+#~ msgstr "Lagra säkerhetskopior i denna katalog (--backup-dir=KAT)."
+
+#~ msgid "Backup directory"
+#~ msgstr "Säkerhetskopieringskatalog"
+
+#~ msgid "Force fixed checksum block size:"
+#~ msgstr "Tvinga fast blockstorlek för checksumma:"
+
+#~ msgid ""
+#~ "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces "
+#~ "the block size used in the rsync algorithm to a fixed value."
+#~ msgstr ""
+#~ "Tvinga fast blockstorlek för checksumma (-B, --block-size=STORLEK). Detta "
+#~ "tvingar att blockstorleken som används i rsync-algoritmen till ett fast "
+#~ "värde."
+
+#~ msgid "The block size"
+#~ msgstr "Blockstorlek"
+
+#~ msgid "Set block/file checksum seed:"
+#~ msgstr "Ange frö för block- och filchecksumma:"
+
+#~ msgid ""
+#~ "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+#~ "seed to this integer. This 4 byte checksum seed is included in each block "
+#~ "and file MD4 checksum calculation. By default the checksum seed is "
+#~ "generated by the server and defaults to the current time."
+#~ msgstr ""
+#~ "Ange frö för block- och filchecksumma (--checksum-seed=NUM). Ställ in frö "
+#~ "för MD4-checksumman till detta heltal. Detta 4-byte långa frö för "
+#~ "checksumman inkluderas i varje beräkning av MD4 block- och filchecksumma. "
+#~ "Normalt skapas fröet för checksumman av servern, och standardvärdet är "
+#~ "aktuell tid."
+
+#~ msgid "The checksum seed"
+#~ msgstr "Checksummans frö"
+
+#~ msgid "Skip files based on checksum"
+#~ msgstr "Hoppa över filer baserad på checksumma"
+
+#~ msgid ""
+#~ "Skip files based on a checksum and not based on modification time and "
+#~ "size (-c, --checksum). For further information on how this feature works "
+#~ "read rsync's manual page."
+#~ msgstr ""
+#~ "Hoppa över filer baserad på en checksumma och inte baserat på ändringstid "
+#~ "och storlek (-c, --checksum). För ytterligare information om hur väljaren "
+#~ "fungerar, läs manualsidan för rsync."
+
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr "Avmontera alla delade resurser när viloknappen trycks ner"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware sleep button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Avmontera alla delade resurser när datorns viloknapp trycks ner. De "
+#~ "delade resurserna monteras automatiskt igen när datorn vaknar."
+
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "Avmontera alla delade resurser när locket stängs"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the lid of the laptop is closed. The "
+#~ "shares will automatically be remounted after the computer wakes up again."
+#~ msgstr ""
+#~ "Avmontera alla delade resurser när datorns lock stängs. De delade "
+#~ "resurserna monteras automatiskt igen när datorn vaknar."
+
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr "Avmontera alla delade resurser när strömknappen trycks ner"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware power button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Avmontera alla delade resurser när datorns strömknapp trycks ner. De "
+#~ "delade resurserna monteras automatiskt igen när datorn vaknar."
+
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr "Avmontera alla delade resurser när nätverket kopplas bort"
+
+#~ msgid ""
+#~ "Unmount all mounted shares when the user disconnects from the network or "
+#~ "the connection is lost due to a different reason. Using this option in "
+#~ "combination with sleep and/or hibernation might lead to unwanted side "
+#~ "effects. In this case you should unmount the shares manually before you "
+#~ "suspend the computer."
+#~ msgstr ""
+#~ "Avmontera alla monterade resurser när användaren kopplar bort nätverket, "
+#~ "eller anslutningen går förlorad på grund av någon annan orsak. Att "
+#~ "använda detta alternativ tillsammans med viloläge och/eller dvala kan "
+#~ "leda till oönskade sidoeffekter. I detta fall måste du avmontera de "
+#~ "delade resurserna manuellt innan datorn placeras i viloläge."
+
+#~ msgid "The format of %1 is not supported."
+#~ msgstr "Formatet på %1 stöds inte."
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Lägg till bokmärken"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Alla listade delade resurser kommer att få bokmärken. För att redigera "
+#~ "beteckningen eller gruppen, klicka på respektive bokmärkespost."
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Rensa bokmärken"
+
+#~ msgid ""
+#~ "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Definiera anpassade alternativ för värddatorn <b>%1</b> och alla "
+#~ "delade kataloger den tillhandahåller.</p>"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Definiera anpassade alternativ för den delade katalogen <b>%1</b> på "
+#~ "värddatorn <b>%2</b>.</p>"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB-port:"
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 är inte en fil med version 1.0."
+
+#~ msgid "Specify User"
+#~ msgstr "Definiera användaren"
+
+#~ msgid "Please specify a username."
+#~ msgstr "Ange ett användarnamn."
+
+#~ msgid ""
+#~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#~ "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Den delade resursen <b>%1</b> är monterad som <br><b>%2</b> och "
+#~ "ägs av användaren <b>%3</b>.</p><p>Vill du verkligen avmontera den?</p></"
+#~ "qt>"
+
+#~ msgid "Foreign Share"
+#~ msgstr "Främmande delad resurs"
+
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Monterar delade resurser igen. Vänta."
+
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Avmonterar delade resurser. Vänta..."
+
+#~ msgid "Mount Share"
+#~ msgstr "Montera delade resurser"
+
+#~ msgid ""
+#~ "Enter the location (UNC address) and optionally the IP address and "
+#~ "workgroup to mount a share."
+#~ msgstr ""
+#~ "Ange plats (UNC-adress) och valfritt IP-adress och arbetsgrupp för att "
+#~ "montera en delad resurs."
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "UNC-adressen (Uniform Naming Convention) beskriver den delade resursens "
+#~ "plats. Den har följande syntax: //[ANVÄNDARE@]VÄRDDATOR/DELAD_RESURS. "
+#~ "Användarnamnet är valfritt."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "Internet protokoll-adressen (IP) identifierar värddatorn i nätverket och "
+#~ "anger var den finns. Den har två giltiga format, ett känt som IP version "
+#~ "4 (t.ex. 192.168.2.11) och version 6 formatet (t.ex. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "Arbetsgruppen eller domänen identifierar det icke-hierarkiska "
+#~ "datornätverk som värddatorn är placerad i."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Lägg till denna resurs som bokmärke"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Om du markerar den här kryssrutan, läggs ett bokmärke till för den delade "
+#~ "resursen, och du kan t.ex. komma åt den via menyalternativet \"Bokmärken"
+#~ "\" i huvudfönstret."
+
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "<p>Den delade katalogen <b>%1</b> har monterats som <b>%2</b>.</p>"
+
+#~ msgid "Open"
+#~ msgstr "Öppna"
+
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Den delade katalogen <b>%1</b> har avmonterats från <b>%2</b>.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "<p>%1 delad katalog av %2 har monterats.</p>"
+#~ msgstr[1] "<p>%1 delade kataloger av %2 har monterats.</p>"
+
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "<p>Alla delade kataloger har monterats.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "<p>%1 delad katalog av %2 har avmonterats.</p>"
+#~ msgstr[1] "<p>%1 delade kataloger av %2 har avmonterats.</p>"
+
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "<p>Alla delade kataloger har avmonterats.</p>"
+
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "<p>Misslyckades öppna plånboken <b>%1</b>.</p>"
+
+#~ msgid ""
+#~ "<p>The logins stored in the wallet could not be accessed. There is either "
+#~ "no wallet available or it could not be opened.</p>"
+#~ msgstr ""
+#~ "<p>Inloggningsinformationen lagrad i plånboken kunde inte kommas åt. "
+#~ "Antingen finns ingen plånbok tillgänglig, eller kunde den inte öppnas.</p>"
+
+#~ msgid ""
+#~ "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#~ "the file to PDF or Postscript and try again.</p>"
+#~ msgstr ""
+#~ "<p>Mimetypen <b>%1</b> stöds inte för utskrift. Konvertera filen till "
+#~ "Postscript eller PDF och försök igen.</p>"
+
+#~ msgid ""
+#~ "<p>The bookmark for share <b>%1</b> already exists and will be skipped."
+#~ msgstr ""
+#~ "<p>Bokmärket för den delade resursen <b>%1</b> finns redan och kommer att "
+#~ "hoppas över."
+
+#~ msgid ""
+#~ "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+#~ "being used and will automatically be renamed.</p>"
+#~ msgstr ""
+#~ "<p>Beteckningen <b>%1</b> för bokmärket för den delade katalogen <b>%2</"
+#~ "b> används redan, och kommer automatiskt att döpas om.</p>"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Värdet för den särskilda huvudwebbläsaren är tomt. Smb4K kommer att "
+#~ "försöka fråga den nuvarande huvudwebbläsaren om din arbetsgrupp eller "
+#~ "domän istället."
+
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades hämta listan med tillgängliga domäner:</p><p><tt>%1</tt></"
+#~ "p>"
+
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "<p>Misslyckades hämta listan med tillgängliga domäner.</p>"
+
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Sökning av definierade utsändningsområden misslyckades:</p><p><tt>%1</"
+#~ "tt></p>"
+
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr "<p>Sökning av definierade utsändningsområden misslyckades.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades hämta listan med servrar som hör till domänen <b>%1</b>.</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Misslyckades hämta listan med servrar som hör till domänen <b>%1</b>.</"
+#~ "p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades hämta listan med delade kataloger från <b>%1</b>:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Misslyckades hämta listan med delade kataloger från <b>%1</b>.</p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades hämta förhandsgranskning av <b>%1</b>:</p><p><tt>%2</tt></"
+#~ "p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "<p>Misslyckades hämta förhandsgranskning av <b>%1</b>.</p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades montera den delade katalogen <b>%1</b>:</p><p><tt>%2</"
+#~ "tt></p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr "<p>Misslyckades montera den delade katalogen <b>%1</b>.</p>"
+
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades avmontera den delade katalogen <b>%1</b> från <b>%2</b>:</"
+#~ "p><p><tt>%3</tt></p>"
+
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Avmontering av den delade katalogen <b>%1</b> från <b>%2</b> "
+#~ "misslyckades.</p>"
+
+#~ msgid ""
+#~ "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~ "is owned by the user <b>%3</b>.</p>"
+#~ msgstr ""
+#~ "<p>Du har inte tillåtelse att avmontera den delade resursen <b>%1</b> "
+#~ "från <b>%2</b>. Den ägs av användaren <b>%3</b>.</p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades skriva ut på skrivaren <b>%1</b>:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "<p>Misslyckades skriva ut på skrivaren <b>%1</b>.</p>"
+
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades synkronisera <b>%1</b> med <b>%2</b>:</p><p><tt>%3</tt></"
+#~ "p>"
+
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "<p>Misslyckades synkronisera <b>%1</b> med <b>%2</b>.</p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Misslyckades söka i nätverksgrannskapet efter sökbegreppet <b>%1</b>:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr ""
+#~ "<p>Misslyckades söka i nätverksgrannskapet efter sökbegreppet <b>%1</b>.</"
+#~ "p>"
+
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr ""
+#~ "<p>Kommandot <b>%1</b> kunde inte hittas. Kontrollera installationen.</p>"
+
+#~ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#~ msgstr ""
+#~ "<p>Den delade resursen <b>%1</b> är en skrivare och kan inte vara ett "
+#~ "bokmärke.</p>"
+
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "<p>Filen <b>%1</b> kunde inte hittas.</p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Misslyckades öppna filen <b>%1</b>:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Misslyckades öppna filen <b>%1</b>.</p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Misslyckades läsa från filen <b>%1</b>:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Misslyckades läsa från filen <b>%1</b>.</p>"
+
+#~ msgid ""
+#~ "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#~ msgstr "<p>Följande katalog kunde inte skapas:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Processen misslyckades starta (felkod: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Processen kraschade (felkod: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Processen överskred tidsgräns (felkod: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Kunde inte skriva till processen (felkod: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Kunde inte läsa från processen (felkod: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process reported an unknown error.</p>"
+#~ msgstr "<p>Processen rapporterade ett okänt fel.</p>"
+
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Systemanropet <b>%1</b> misslyckades:</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code:<tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr ""
+#~ "<p>Misslyckades utföra en åtgärd med rättigheter som systemadministratör "
+#~ "(felkod: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr ""
+#~ "<p>Misslyckades utföra en åtgärd med rättigheter som systemadministratör."
+#~ "</p>"
+
+#~ msgid "<p>The URL that was passed is invalid.</p>"
+#~ msgstr "<qt>Webbadressen du matade in är ogiltig.</qt>"
+
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "<p>Det finns inga utsändningsområden definierade.</p>"
+
+#~ msgid "Preview"
+#~ msgstr "Förhandsgranskning"
+
+#~ msgid "The preview is displayed here."
+#~ msgstr "Förhandsgranskningen visas här."
+
+#~ msgid "Reload"
+#~ msgstr "Uppdatera"
+
+#~ msgid "Back"
+#~ msgstr "Tillbaka"
+
+#~ msgid "Forward"
+#~ msgstr "Vidarbefordra"
+
+#~ msgid "Up"
+#~ msgstr "Upp:"
+
+#~ msgid ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+#~ msgstr ""
+#~ "Den aktuella UNC-adressen visas här. Du kan också välja en av de tidigare "
+#~ "besökta platserna i kombinationsmenyn, som därefter visas i vyn ovanför."
+
+#~ msgid "Print File"
+#~ msgstr "Skriv ut filen"
+
+#~ msgid "Options"
+#~ msgstr "Alternativ"
+
+#~ msgid "Printer"
+#~ msgstr "Skrivare"
+
+#~ msgid "File:"
+#~ msgstr "Fil:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Det här är filen du vill skriva ut på fjärrskrivaren. För närvarande "
+#~ "stöds bara ett fåtal Mime-typer, som PDF, Postscript, enkel text och "
+#~ "bilder. Om filens Mime-typ inte stöds, måste du konvertera den."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopior:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Det här är antalet kopior du vill skriva ut."
+
+#~ msgid "Disk"
+#~ msgstr "Disk"
+
+#~ msgid "Synchronizing"
+#~ msgstr "Synkroniserar"
+
+#~ msgid "Source"
+#~ msgstr "Källa"
+
+#~ msgid "Destination"
+#~ msgstr "Mål"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Synkronisera målet med källan"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Byt sökvägar"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Byt källa och mål"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Ange käll- och målkatalog för synkronisering."
+
+#~ msgid "Source:"
+#~ msgstr "Källa:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Det här är källkatalogen. Data den innehåller ska skrivas till "
+#~ "målkatalogen."
+
+#~ msgid "Destination:"
+#~ msgstr "Mål:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Det här är målkatalogen. Den kommer att uppdateras med data från "
+#~ "källkatalogen."
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1</"
+#~ "b>.</qt>"
+
+#~ msgid "Rescan"
+#~ msgstr "Avsök igen"
+
+#~ msgid "Mount Dialog"
+#~ msgstr "Monteringsdialogruta"
+
+#~ msgid "<font size=\"-1\">on %1</font>"
+#~ msgstr "<font size=\"-1\">på %1</font>"
+
+#~ msgid "Unmount All"
+#~ msgstr "Avmontera alla"
+
+#~ msgid "NTLM password hashing"
+#~ msgstr "NTLM-lösenordskondensat"
+
+#~ msgid "NTLMv2 password hashing"
+#~ msgstr "NTLMv2 lösenordskodning"
+
+#~ msgid "NTLMv2 password hashing encapsulated in Raw NTLMSSP message"
+#~ msgstr "NTLMv2 lösenordskondensat inkapslat i obehandlat NTLMSSP-meddelande"
+
+#~ msgid ""
+#~ "NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet "
+#~ "signing"
+#~ msgstr ""
+#~ "NTLMv2 lösenordskondensat inkapslat i obehandlat NTLMSSP-meddelande, och "
+#~ "tvinga paketsignering"
+
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Försöker montera delade resurser igen. Vänta."
+
+#~ msgid "Use default security mode"
+#~ msgstr "Använd standardsäkerhetsläge"
+
+#~ msgid "IP address:"
+#~ msgstr "IP-adress:"
+
+#~ msgid "Mount"
+#~ msgstr "Montera"
+
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Vissa nödvändiga program kunde inte hittas:</p><p><tt>%1</tt></p>"
+
+#~ msgid "Advanced"
+#~ msgstr "Advancerad"
+
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Vill du verkligen tvinga att den delade resursen <b>%1</b> "
+#~ "avmonteras från <b>%2</b>?</p></qt>"
+
+#~ msgid "Force Unmounting"
+#~ msgstr "Tvinga avmontering"
+
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of all inaccessible "
+#~ "shares?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Vill du verkligen tvinga att alla delade resurser som inte går att "
+#~ "komma åt avmonteras?</p></qt>"
+
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr ""
+#~ "© 2003-2011, Alexander Reinholdt\n"
+#~ "© 2004-2007, Massimo Callegari"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "&Tvinga avmontering"
+
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "<qt>Ange ett användarnamn och ett lösenord nedan.</qt>"
+
+#~ msgid "Signing State"
+#~ msgstr "Signeringstillstånd"
+
+#~ msgid "Use NTLM password hashing (default)"
+#~ msgstr "Använd NTLM lösenordskodning (förval)"
+
+#~ msgid "Lookup all workgroups, hosts and shares periodically."
+#~ msgstr ""
+#~ "Slå upp alla arbetsgrupper, värddatorer och delade resurser periodiskt."
+
+#~ msgid "UNC Address"
+#~ msgstr "UNC-adress"
+
+#~ msgid "Write Access"
+#~ msgstr "Skrivrättighet"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "Användar-id"
+
+#~ msgid "Group ID"
+#~ msgstr "Grupp-id"
+
+#~ msgid "SMB Port"
+#~ msgstr "SMB-port"
+
+#~ msgid "File System Port"
+#~ msgstr "Filsystem-port"
+
+#~ msgid "Automatic"
+#~ msgstr "Automatisk"
+
+#~ msgid "Massimo Callegari"
+#~ msgstr "Massimo Callegari"
+
+#~ msgid "A&dd"
+#~ msgstr "&Lägg till"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "host. It has the following syntax: //HOST."
+#~ msgstr ""
+#~ "UNC-adressen (Uniform Naming Convention) beskriver den delade resursens "
+#~ "plats. Den har följande syntax: //VÄRDDATOR."
+
+#~ msgid "automatic"
+#~ msgstr "automatisk"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //HOST/SHARE"
+#~ msgstr ""
+#~ "UNC-adressen (Uniform Naming Convention) beskriver den delade resursens "
+#~ "plats. Den har följande syntax: //VÄRDDATOR/DELAD_KATALOG."
+
+#~ msgid "%1 has an unsupported format version."
+#~ msgstr "%1 har en formatversion som inte stöds."
+
+#~ msgid ""
+#~ "<qt>The format of the UNC address you entered is not correct. It must "
+#~ "have the form //[USER@]HOST/SHARE."
+#~ msgstr ""
+#~ "<qt>Formatet för UNC-adressen som du matade in är inte riktigt. Det måste "
+#~ "ha formen //[ANVÄNDARE@]VÄRDDATOR/DELAD_RESURS."
+
+#~ msgid "M&ount Manually"
+#~ msgstr "M&ontera manuellt"
+
+#~ msgid "Share"
+#~ msgstr "Delad resurs"
+
+#~ msgid "Bookmark Editor"
+#~ msgstr "Bokmärkeseditor"
+
+#~ msgid "Bookmark"
+#~ msgstr "Bokmärke"
+
+#~ msgid "Printing"
+#~ msgstr "Skriver ut"
+
+#~ msgid "Converting File to PostScript"
+#~ msgstr "Konverterar fil till Postscript"
+
+#~ msgid "Input File"
+#~ msgstr "Indatafil"
+
+#~ msgid "Output File"
+#~ msgstr "Utdatafil"
+
+#~ msgid "Acquiring Preview"
+#~ msgstr "Hämtar förhandsgranskning"
+
+#~ msgid "This is the view where the contents of the share is displayed."
+#~ msgstr "Det här är vyn där den delade resursens innehåll visas."
+
+#~ msgid "The file is invalid."
+#~ msgstr "Filen är ogiltig."
+
+#~ msgid "The file that is currently transferred is shown here."
+#~ msgstr "Filen som för närvarande överförs visas här."
+
+#~ msgid "The progress of the current file transfer is shown here."
+#~ msgstr "Den pågående filöverföringens förlopp visas här."
+
+#~ msgid "The overall progress of the synchronization is shown here."
+#~ msgstr "Synkroniseringens totala förlopp visas här."
+
+#~ msgid "Files transferred:"
+#~ msgstr "Överförda filer:"
+
+#~ msgid "Transfer rate:"
+#~ msgstr "Överföringshastighet:"
+
+#~ msgid ""
+#~ "This is the path where Smb4K will store the files and directories during "
+#~ "synchronization. If you plan to synchronize only with one remote share, "
+#~ "then you can put the data directly in this directory. If you want to "
+#~ "synchronize with several remote shares, then you should create a "
+#~ "subdirectory for each share and choose the appropriate one in the "
+#~ "synchronization dialog."
+#~ msgstr ""
+#~ "Detta är sökvägen där Smb4K sparar filer och kataloger under "
+#~ "synkronisering. Om man endast planerar att synkronisera med en delad "
+#~ "resurs, kan man lägga data direkt i denna katalog. Om man vill "
+#~ "synkronisera med ett flertal delade resurser, bör man skapa en "
+#~ "underkatalog för varje resurs och välja den som passar i dialogrutan för "
+#~ "synkronisering."
+
+#~ msgid "NoSuchAction"
+#~ msgstr "Åtgärden finns inte"
+
+#~| msgid ""
+#~| "The execution of the unmount action failed (error code: <tt>%1</tt>)"
+#~ msgid ""
+#~ "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Misslyckades utföra avmonteringsåtgärd (felkod: <tt>%1</tt>).</p>"
+
+#~ msgid "The authentication action was denied."
+#~ msgstr "Behörighetsåtgärden nekades."
+
+#~ msgid "The authentication was denied."
+#~ msgstr "Behörighet nekades."
+
+#~ msgid "Error Message"
+#~ msgstr "Felmeddelande"
+
+#~ msgid "The directory <b>%1</b> could not be created."
+#~ msgstr "Katalogen <b>%1</b> kunde inte skapas."
+
+#~ msgid "List"
+#~ msgstr "Lista"
+
+#~ msgid "A system call failed."
+#~ msgstr "Ett systemanrop misslyckades."
+
+#~ msgid "The following error message was reported:"
+#~ msgstr "Följande felmeddelande rapporterades:"
+
+#~ msgid "\\u00A9 2007-2009, Alexander Reinholdt"
+#~ msgstr "© 2007-2009, Alexander Reinholdt"
+
+#~ msgid "Share:"
+#~ msgstr "Delad resurs:"
+
+#~ msgid "Free:"
+#~ msgstr "Ledig:"
+
+#~ msgid "Used:"
+#~ msgstr "Använt:"
+
+#~ msgid "Total:"
+#~ msgstr "Totalt:"
+
+#~ msgid "Usage:"
+#~ msgstr "Användning:"
+
+#~ msgid "This share is inaccessible."
+#~ msgstr "Denna resurs är inte tillgänglig."
+
+#~ msgid "Pseudo master browser:"
+#~ msgstr "Pseudo-huvudbläddrare:"
+
+#~ msgid "No responder"
+#~ msgstr "Ingen svarare"
+
+#~ msgid "Invalid action"
+#~ msgstr "Ogiltig åtgärd"
+
+#~ msgid "Authorization denied"
+#~ msgstr "Behörighet nekades"
+
+#~ msgid "Helper busy"
+#~ msgstr "Hjälpprogram upptaget"
+
+#~ msgid "DBus error"
+#~ msgstr "D-Busfel"
+
+#~ msgid ""
+#~ "<qt>If you experience problems due to insufficient privileges when "
+#~ "mounting shares, you should enable the appropriate settings in the "
+#~ "<b>Super User</b> configuration page.</qt>"
+#~ msgstr ""
+#~ "<qt>Om du upplever problem på grund av otillräckliga rättigheter när "
+#~ "delade kataloger monteras, måste du aktivera lämpliga inställningar på "
+#~ "sidan <b>Administratör</b>.</qt>"
+
+#~ msgid "Smb4KSearchDialogPart"
+#~ msgstr "Smb4KSearchDialogPart"
+
+#~ msgid "The search dialog KPart of Smb4K"
+#~ msgstr "Delprogrammet med sökdialogruta i Smb4K"
+
+#~ msgid "Remove Entries"
+#~ msgstr "Radera text"
+
+#~ msgid "Remove entries from the configuration file"
+#~ msgstr "Ta bort text från konfigurationsfilen"
+
+#~ msgid ""
+#~ "All entries that were written by Smb4K will be removed from /etc/sudoers. "
+#~ "Additionally, all your choices under \"Actions\" will be cleared."
+#~ msgstr ""
+#~ "Alla poster som har skrivits av Smb4K kommer att tas bort från /etc/"
+#~ "sudoers. Dessutom kommer alla dina val under \"Actions\" också att rensas."
+
+#~ msgid ""
+#~ "<b>smb4k_kill</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr "<b>smb4k_kill</b> kräver administratörsrättigheter. Ange lösenord."
+
+#~ msgid ""
+#~ "<b>smb4k_mount</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr "<b>smb4k_mount</b> kräver administratörsrättigheter. Ange lösenord."
+
+#~ msgid ""
+#~ "<b>smb4k_umount</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr ""
+#~ "<b>smb4k_umount</b> kräver administratörsrättigheter. Ange lösenord."
+
+#~ msgid ""
+#~ "The program <b>sudo</b> could not be found. Smb4K will continue without "
+#~ "using it."
+#~ msgstr ""
+#~ "Programmet <b>sudo</b> kunde inte hittas. Smb4K kommer att fortsätta utan "
+#~ "att använda det."
+
+#~ msgid ""
+#~ "The program <b>kdesudo</b> could not be found. Smb4K will continue with "
+#~ "using <b>sudo</b> instead."
+#~ msgstr ""
+#~ "Programmet <b>kdesudo</b> kunde inte hittas. Smb4K kommer att fortsätta "
+#~ "med att använda <b>sudo</b> istället."
+
+#~ msgid "Writing to the <b>sudoers</b> file failed."
+#~ msgstr "Misslyckades skriva till filen <b>sudoers</b>."
+
+#~ msgid "This program mounts SMBFS/CIFS shares."
+#~ msgstr "Programmet monterar SMBFS/CIFS delade kataloger."
+
+#~ msgid "(C) 2010, Alexander Reinholdt"
+#~ msgstr "© 2010, Alexander Reinholdt"
+
+#~ msgid "smb4k_mount"
+#~ msgstr "smb4k_mount"
+
+#~ msgid "A comma-separated list of mount options"
+#~ msgstr "En lista med monteringsalternativ åtskilda av kommatecken"
+
+#~ msgid "The local (<cs1>) and the server's (<cs2>) character set"
+#~ msgstr "Den lokala (<cs1>) och serverns (<cs2>) teckenuppsättning"
+
+#~ msgid ""
+#~ "Do not use NetBIOS name resolver and connect directly to <host>, which "
+#~ "can be either a valid DNS name or an IP address"
+#~ msgstr ""
+#~ "Använd inte NetBIOS namnupplösning och anslut direkt till <host>, vilket "
+#~ "antingen kan vara ett giltigt domännamn eller en IP-adress."
+
+#~ msgid "Use <locale> for lower/upper case conversion routines"
+#~ msgstr ""
+#~ "Använd <locale> för konverteringsrutiner för små och stora bokstäver"
+
+#~ msgid "Assign access rights to the newly created connection"
+#~ msgstr "Tilldela åtkomsträttigheter till den nyskapade anslutningen"
+
+#~ msgid "Do not ask for a password"
+#~ msgstr "Fråga inte efter ett lösenord"
+
+#~ msgid "Assign owner/group attributes to the newly created connection"
+#~ msgstr "Tilldela ägar- och gruppegenskaper till den nyskapade anslutningen"
+
+#~ msgid ""
+#~ "How many retries should be done before the SMB requester decides to drop "
+#~ "the connection"
+#~ msgstr ""
+#~ "Hur många försök ska göras innan SMB-begäran bestämmer sig för att släppa "
+#~ "anslutningen"
+
+#~ msgid "Timeout in seconds for each request"
+#~ msgstr "Tidsgräns i sekunder för varje begäran"
+
+#~ msgid "Username to authenticate with"
+#~ msgstr "Användarnamn för behörighetskontroll"
+
+#~ msgid ""
+#~ "This option specifies the workgroup to be used in the authentication "
+#~ "request"
+#~ msgstr "Alternativet anger arbetsgrupp att användas för behörighetsbegäran"
+
+#~ msgid "Set a case option which affects name representation"
+#~ msgstr "Ställ in skiftlägesalternativ som påverkar namnrepresentation"
+
+#~ msgid "Specify permissions that should be assigned to files"
+#~ msgstr "Anger rättigheter som ska tilldelas till filer"
+
+#~ msgid "Specify permissions that should be assigned to directories"
+#~ msgstr "Anger rättigheter som ska tilldelas till kataloger"
+
+#~ msgid "User ID assigned to files"
+#~ msgstr "Användar-id som tilldelas till filer"
+
+#~ msgid "Group ID assigned to files"
+#~ msgstr "Grupp-id som tilldelas till filer"
+
+#~ msgid "For further information see the manual page of mount_smbfs."
+#~ msgstr "För ytterligare information se manualsidan för mount_smbfs."
+
+#~ msgid "The UNC of the remote share"
+#~ msgstr "Den delade resursens UNC-adress"
+
+#~ msgid "The mountpoint for the remote share"
+#~ msgstr "Den delade katalogens monteringsplats"
+
+#~ msgid "Aborting."
+#~ msgstr "Avbryter."
+
+#~ msgid "Could not find umount binary."
+#~ msgstr "Kunde inte hitta binärfil för umount."
+
+#~ msgid "The internal process crashed with exit code "
+#~ msgstr "Den interna processen kraschade med avslutningskod "
+
+#~ msgid "An error occurred:"
+#~ msgstr "Ett fel uppstod:"
+
+#~ msgid "This program writes to the sudoers file."
+#~ msgstr "Programmet skriver till filen sudoers."
+
+#~ msgid "(C) 2008-2010, Alexander Reinholdt"
+#~ msgstr "© 2008-2010, Alexander Reinholdt"
+
+#~ msgid "smb4k_sudowriter"
+#~ msgstr "smb4k_sudowriter"
+
+#~ msgid "Add an user to the sudoers file"
+#~ msgstr "Lägg till en användare i filen sudoers"
+
+#~ msgid "Remove an user from the sudoers file"
+#~ msgstr "Ta bort en användare från filen sudoers"
+
+#~ msgid "No valid arguments provided."
+#~ msgstr "Inga giltiga väljare angivna."
+
+#~ msgid "The lock file could not be created."
+#~ msgstr "Låsfilen kunde inte skapas."
+
+#~ msgid "The sudoers file is currently being edited."
+#~ msgstr "Filen sudoers redigeras för närvarande."
+
+#~ msgid "An invalid username has been provided."
+#~ msgstr "Ett ogiltigt användarnamn har angivits."
+
+#~ msgid "The sudoers file was not found."
+#~ msgstr "Filen sudoers hittades inte."
+
+#~ msgid "The sudoers file is irregular."
+#~ msgstr "Filen sudoers är inte standardmässig."
+
+#~ msgid "Cannot access sudoers file."
+#~ msgstr "Kan inte komma åt filen sudoers."
+
+#~ msgid "Could not read from sudoers file."
+#~ msgstr "Kan inte läsa från filen sudoers."
+
+#~ msgid "Could not set file permissions for sudoers file."
+#~ msgstr "Kan inte ställa in rättigheter för filen sudoers."
+
+#~ msgid ""
+#~ "Could not find utility programs (smb4k_kill, smb4k_umount, smb4k_mount)."
+#~ msgstr ""
+#~ "Kan inte hitta hjälpprogram (smb4k_kill, smb4k_umount, smb4k_mount)."
+
+#~ msgid "Wrong format of Smb4K section in sudoers file detected."
+#~ msgstr "Felaktigt format för sektionen Smb4K i filen sudoers detekterat."
+
+#~ msgid "Please correct this manually."
+#~ msgstr "Rätta det för hand."
+
+#~ msgid "Could not compile Smb4K section for sudoers file."
+#~ msgstr "Kan inte sammanställa sektionen Smb4K för filen sudoers."
+
+#~ msgid "Could not write to sudoers file."
+#~ msgstr "Kan inte skriva i filen sudoers."
+
+#~ msgid "This program umounts SMBFS/CIFS shares."
+#~ msgstr "Programmet avmonterar SMBFS/CIFS delade kataloger."
+
+#~ msgid "smb4k_umount"
+#~ msgstr "smb4k_umount"
+
+#~ msgid "Perform a lazy unmount"
+#~ msgstr "Utför en lat avmontering"
+
+#~ msgid "The mountpoint of the share"
+#~ msgstr "Den delade katalogens monteringsplats"
+
+#~ msgid "Invalid mountpoint specified."
+#~ msgstr "Ogiltig monteringsplats angiven."
+
+#~ msgid "This program kills processes invoked by Smb4K."
+#~ msgstr "Programmet dödar processer som startas av Smb4K."
+
+#~ msgid "smb4k_kill"
+#~ msgstr "smb4k_kill"
+
+#~ msgid "The PID of the process that is to be killed"
+#~ msgstr "Process-id för processen som ska dödas"
+
+#~ msgid "Could not find kill binary."
+#~ msgstr "Kunde inte hitta binärfil för kill."
+
+#~ msgid ""
+#~ "Unmount a share under Linux by force. This even works if the file system "
+#~ "is \"busy\", because it is immediately detached from the file system "
+#~ "hierarchy and all references to it are cleaned up later when it is not "
+#~ "busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of "
+#~ "this feature. Use with care. Note, that you will need the root password "
+#~ "to write the necessary changes to the configuration file."
+#~ msgstr "Tvinga avmontering av en delad resurs i Linux."
+
+#~ msgid "Use super user privileges to mount and unmount shares"
+#~ msgstr ""
+#~ "Använd administratörsrättigheter för att montera och avmontera delade "
+#~ "resurser"
+
+#~ msgid ""
+#~ "Use super user privileges for mounting and unmounting remote shares. This "
+#~ "feature is only needed, if you are not allowed to do this as normal user. "
+#~ "Note, that you will need the root password to write the necessary changes "
+#~ "to the configuration file."
+#~ msgstr ""
+#~ "Använd administratörsrättigheter för att montera och avmontera "
+#~ "fjärresurser. Funktionen behövs bara om du inte tillåts göra det som "
+#~ "vanlig användare. Observera att du behöver systemadministratörens "
+#~ "lösenord för att skriva in nödvändiga ändringar i inställningsfilen."
+
+#~ msgid "Do not modify sudo's configuration file"
+#~ msgstr "Ändra inte konfigurationsfilen för sudo"
+
+#~ msgid ""
+#~ "Do not modify the configuration file of the program sudo. You might want "
+#~ "to enable this feature, if you are already allowed to execute arbitrary "
+#~ "programs with super user privileges without the need of giving a "
+#~ "password. Please note that during mounting the PASSWD environment "
+#~ "variable is evaluated, so you have to make sure that it is preserved when "
+#~ "sudo is run. This can be accomplished e.g. by setting the 'env_keep' "
+#~ "option in the sudoers file. See the sudoers manual page for further "
+#~ "information."
+#~ msgstr ""
+#~ "Ändra inte konfigurationsfilen för programmet sudo. Det kan vara värt att "
+#~ "aktivera den här funktionen om du redan har tillåtelse att köra "
+#~ "godtyckliga program med administratörsrättigheter utan att behöva ange "
+#~ "ett lösenord. Observera att miljövariabeln PASSWD utvärderas vid "
+#~ "montering, så du måste försäkra dig om att den bevaras när sudo körs. Det "
+#~ "kan t.ex. åstadkommas genom att ange alternativet 'env_keep' i filen "
+#~ "sudoers. Se manualsidan för filen sudoers för ytterligare information."
+
+#~ msgid "Use kdesudo instead of sudo"
+#~ msgstr "Använd kdesudo istället för sudo"
+
+#~ msgid ""
+#~ "Use the graphical frontend kdesudo instead of sudo itself. To enable this "
+#~ "option, kdesudo must be installed on your computer. This option enables "
+#~ "you to provide a password each time it is needed. You should enable this "
+#~ "feature, if you are allowed to execute arbitrary programs with super user "
+#~ "privileges but need to provide a password."
+#~ msgstr ""
+#~ "Använd det grafiska gränssnittet kdesudo istället för sudo självt. För "
+#~ "att aktivera alternativet måste kdesudo vara installerat på datorn. "
+#~ "Alternativet låter dig tillhandahålla ett lösenord varje gång det behövs. "
+#~ "Du bör aktivera funktionen om du tillåts att köra godtyckliga program "
+#~ "med  systemadministratörsrättigheter, men behöver tillhandahålla ett "
+#~ "lösenord."
+
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Detailed information cannot be provided "
+#~ "because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Namnet på datorn kunde inte avgöras genom att använda "
+#~ "systemanropet gethostname().</p><p>Detaljerad information kan inte "
+#~ "tillhandahållas eftersom inget felmeddelande gavs.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Read the error message under \"Details\" "
+#~ "to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Namnet på datorn kunde inte avgöras genom att använda "
+#~ "systemanropet gethostname().</p><p>Läs felmeddelandet under "
+#~ "\"Detaljinformation\" för att ta reda på mer.</p></qt>"
+
+#~ msgid "<qt>This feature has not been enabled.</qt>"
+#~ msgstr "<qt>Den här funktionen är inte aktiverad.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ett fel uppstod vid tolkning av XML-filen \"%1\".</p><p>Detaljerad "
+#~ "information kan inte tillhandahållas eftersom inget felmeddelande gavs.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ett fel uppstod vid tolkning av XML-filen \"%1\".</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ett okänt fel uppstod.</p><p>Detaljerad information kan inte "
+#~ "tillhandahållas eftersom inget felmeddelande gavs.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Read the error message under "
+#~ "\"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ett okänt fel uppstod.</p><p>Läs felmeddelandet under "
+#~ "\"Detaljinformation\" för att ta reda på mer.</p></qt>"
+
+#~ msgid "<qt>The process exited unexpectedly.</qt>"
+#~ msgstr "<qt>Processen avslutades oväntat.</qt>"
+
+#~ msgid "<qt>The file \"%1\" could not be found.</qt>"
+#~ msgstr "<qt>Filen %1 kunde inte hittas.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>Either your PATH environment variable is not set properly or there "
+#~ "are the following programs missing on your system:</p><p>%1</p><p>Please "
+#~ "correct this and restart Smb4K.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Antingen är miljövariabeln PATH inte riktig inställd, eller saknas "
+#~ "följande program på datorn:</p><p>%1</p><p>Rätta detta och starta om "
+#~ "Smb4k.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ett fel uppstod vid skrivning till filen sudoers.</p><p>Detaljerad "
+#~ "information kan inte tillhandahållas eftersom inget felmeddelande gavs.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ett fel uppstod vid skrivning till filen sudoers.</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Den tillfälliga filen kunde inte skapas.</p><p>Detaljerad "
+#~ "information kan inte tillhandahållas eftersom inget felmeddelande gavs.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Den tillfälliga filen kunde inte skapas.</p><p>Läs felmeddelandet "
+#~ "under \"Detaljinformation\" för att ta reda på mer.</p></qt>"
+
+#~ msgid "<qt>The file \"%1\" could not be opened.</qt>"
+#~ msgstr "<qt>Filen \"%1\" kunde inte öppnas.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Filen \"%1\" kunde inte öppnas.</p><p>Läs felmeddelandet under "
+#~ "\"Detaljinformation\" för att ta reda på mer.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Den delade resursen %1 kunde inte avmonteras.</p><p>Detaljerad "
+#~ "information kan inte tillhandahållas eftersom inget felmeddelande gavs.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Den delade resursen %1 kunde inte avmonteras.</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Filen \"%1\" kunde inte skrivas ut.</p><p>Detaljerad information "
+#~ "kan inte tillhandahållas eftersom inget felmeddelande gavs.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Filen \"%1\" kunde inte skrivas ut.</p><p>Läs felmeddelandet under "
+#~ "\"Detaljinformation\" för att ta reda på mer.</p></qt>"
+
+#~ msgid ""
+#~ "<qt></p>The synchronization could not be finished successfully.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Synkronisering kunde inte slutföras med lyckat resultat.</"
+#~ "p><p>Detaljerad information kan inte tillhandahållas eftersom inget "
+#~ "felmeddelande gavs.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The synchronization could not be finished successfully.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Synkronisering kunde inte slutföras med lyckat resultat.</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Sökningen kunde inte slutföras med lyckat resultat.</"
+#~ "p><p>Detaljerad information kan inte tillhandahållas eftersom inget "
+#~ "felmeddelande gavs.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Sökningen kunde inte slutföras med lyckat resultat.</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid "Another user is currently editing the sudoers file."
+#~ msgstr "En annan användare redigerar för närvarande filen sudoers."
+
+#~ msgid "FATAL: Could not restore initial permissions of sudoers file."
+#~ msgstr ""
+#~ "ALLVARLIGT FEL: Kunde inte återställa ursprungliga rättigheter för filen "
+#~ "sudoers."
+
+#~ msgid "Please inform your system administrator."
+#~ msgstr "Informera systemadministratören."
+
+#~ msgid "The Smb4K section does not conform with the required format."
+#~ msgstr "Sektionen Smb4K följer inte formatet som krävs."
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över registrerade IP-adresser inom angivna "
+#~ "utsändningsområden kunde inte hämtas.</p><p>Detaljerad information kan "
+#~ "inte tillhandahållas eftersom inget felmeddelande gavs.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Read the error message under \"Details"
+#~ "\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över registrerade IP-adresser inom angivna "
+#~ "utsändningsområden kunde inte hämtas.</p><p>Läs felmeddelandet under "
+#~ "\"Detaljinformation\" för att ta reda på mer.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över servrar kunde inte hämtas.</p><p>Detaljerad "
+#~ "information kan inte tillhandahållas eftersom inget felmeddelande gavs.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över servrar kunde inte hämtas.</p><p>Läs felmeddelandet "
+#~ "under \"Detaljinformation\" för att ta reda på mer.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över delade resurser kunde inte hämtas.</p><p>Detaljerad "
+#~ "information kan inte tillhandahållas eftersom inget felmeddelande gavs.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över delade resurser kunde inte hämtas.</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Förhandsgranskningen kunde inte kompileras.</p><p>Detaljerad "
+#~ "information kan inte tillhandahållas eftersom inget felmeddelande gavs.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Förhandsgranskningen kunde inte kompileras.</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Den delade resursen %1 kunde inte monteras.</p><p>Detaljerad "
+#~ "information kan inte tillhandahållas eftersom inget felmeddelande gavs.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Den delade resursen %1 kunde inte monteras.</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt>The share could not be unmounted, because the mount point string was "
+#~ "empty.</qt>"
+#~ msgstr ""
+#~ "<qt>Den delade resursen kunde inte avmonteras, eftersom strängen för "
+#~ "monteringsplatsen är tom.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över monterade delade resurser kunde inte importeras.</"
+#~ "p><p>Detaljerad information kan inte tillhandahållas eftersom inget "
+#~ "felmeddelande gavs.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över monterade delade resurser kunde inte importeras.</"
+#~ "p><p>Läs felmeddelandet under \"Detaljinformation\" för att ta reda på "
+#~ "mer.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>The list of arguments for the \"net\" command could not be assembled."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Väljarlistan för kommandot \"net\" kunde inte sammanställas.</qt>"
+
+#~ msgid ""
+#~ "<qt>The label \"%1\" is used more than once. It will automatically be "
+#~ "renamed for bookmark \"%2\" to avoid confusion.</qt>"
+#~ msgstr ""
+#~ "<qt>Beteckningen \"%1\" används mer än en gång. Den kommer automatiskt "
+#~ "att ges ett annat namn för bokmärket \"%2\" för att undvika förvirring.</"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över arbetsgrupper och domäner kunde inte hämtas.</"
+#~ "p><p>Detaljerad information kan inte tillhandahållas eftersom inget "
+#~ "felmeddelande gavs.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Read the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listan över arbetsgrupper och domäner kunde inte hämtas.</p><p>Läs "
+#~ "felmeddelandet under \"Detaljinformation\" för att ta reda på mer.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt>You previously chose to use \"%1\", but now it is missing on your "
+#~ "system. Smb4K will disable this feature.</qt>"
+#~ msgstr ""
+#~ "<qt>Du har tidigare valt att använda \"%1\", men nu saknas det på "
+#~ "systemet. Smb4K kommer att inaktivera funktionen.</qt>"
+
+#~ msgid ""
+#~ "<qt>The wallet \"%1\" could not be opened. KWallet support will be "
+#~ "disabled for this session.</qt>"
+#~ msgstr ""
+#~ "<qt>Plånboken \"%1\" kunde inte öppnas. Stöd för plånbok kommer att "
+#~ "inaktiveras för den här sessionen.</qt>"
+
+#~ msgid "System Tray"
+#~ msgstr "Systembrickan"
+
+#~ msgid "Main Window && System Tray"
+#~ msgstr "Huvudfönster och systembricka"
+
+#~ msgid "Embed application into the system tray"
+#~ msgstr "Lägg till programet i systembrickan"
+
+#~ msgid ""
+#~ "Embed the application into the system tray. The system tray widget "
+#~ "provides a popup menu with several commonly used tasks, so you do not "
+#~ "need to bring up the main window every time. If this setting is chosen, "
+#~ "you have to use \"Quit\" from the \"File\" menu or the system tray widget "
+#~ "to exit the application."
+#~ msgstr ""
+#~ "Inbädda programmet i systembrickan. Manicken i systembrickan "
+#~ "tillhandahåller en popup meny med flera ofta använda uppgifter, så att "
+#~ "man inte behöver öppna huvudfönstret varje gång. Om denna inställning "
+#~ "används måste man använda \"Avsluta\" i \"Arkiv\" menyn eller manicken i "
+#~ "systembrickan för att avsluta programmet."
+
+#~ msgid "on"
+#~ msgstr "på"
+
+#~| msgid "Preview"
+#~ msgid "The preview"
+#~ msgstr "Förhandsgranskningen"
+
+#~ msgid "The current UNC address"
+#~ msgstr "Den aktuella UNC-adressen"
+
+#~| msgid "Backup directory"
+#~ msgid "The source directory"
+#~ msgstr "Källkatalogen"
+
+#~| msgid "Recurse into directories"
+#~ msgid "The destination directory"
+#~ msgstr "Målkatalogen"
+
+#~| msgid "Keep partially transferred files"
+#~ msgid "The currently transferred file"
+#~ msgstr "Filen som för närvarande överförs"
+
+#~| msgid "Delay updates until the end of transfer"
+#~ msgid "The progress of the current file transfer"
+#~ msgstr "Den pågående filöverföringens förlopp"
+
+#~ msgid "The overall progress"
+#~ msgstr "Totalförlopp"
+
+#~ msgid "The IP of the host where the share is located"
+#~ msgstr "Värddatorns IP-adress där den delade resursen finns"
+
+#~| msgid "The network browser could not be created."
+#~ msgid "The workgroup where the host is located"
+#~ msgstr "Arbetsgruppen där värddatorn finns"
+
+#~| msgid ""
+#~| "The address of the share\n"
+#~| "in UNC syntax"
+#~ msgid "The UNC address of the host"
+#~ msgstr "Värddatorns UNC-adress"
+
+#~ msgid "The port used for communicating with servers"
+#~ msgstr "Porten som används vid kommunikation med servrar"
+
+#~| msgid "The file system that is used for mounting remote shares"
+#~ msgid "The port used for mounting shares"
+#~ msgstr "Porten som används för att montera delade resurser"
+
+#~| msgid "Write access:"
+#~ msgid "The write access"
+#~ msgstr "Skrivrättigheten"
+
+#~| msgid "User ID"
+#~ msgid "The user ID"
+#~ msgstr "Användar-identifikationen"
+
+#~| msgid "Group ID"
+#~ msgid "The group ID"
+#~ msgstr "Grupp-identifikationen"
+
+#~ msgid "The number of copies"
+#~ msgstr "Antal kopior"
+
+#~ msgid "The IPv4 or IPv6 address"
+#~ msgstr "IPv4 eller IPv6-adressen"
+
+#~ msgid "The workgroup name"
+#~ msgstr "Arbetsgruppens namn"
+
+#~ msgid "Bookmark this share"
+#~ msgstr "Lägg till bokmärke för den delade katalogen"
+
+#~ msgid "Name:"
+#~ msgstr "Namn:"
+
+#~ msgid "Try to authenticate with Kerberos (Active Directory)"
+#~ msgstr ""
+#~ "Försök att använda Kerberos för behörighetskontroll (aktiva kataloger)"
+
+#~ msgid "UID"
+#~ msgstr "Användar-id"
+
+#~ msgid "GID"
+#~ msgstr "Grupp-id"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "[Network] The custom master browser has not been entered."
+#~ msgstr "[Nätverk] Den egna huvudbläddraren har inte angivits."
+
+#~ msgid "[Network] The broadcast areas have not been entered."
+#~ msgstr "[Nätverk] Utsändningsområden har inte angivits."
+
+#~ msgid "[Shares] The mount prefix is empty."
+#~ msgstr "[Delade resurser] Monteringsprefix är tomt."
+
+#~ msgid "[Samba] The file mask is empty."
+#~ msgstr "[Samba] Filmask är tom."
+
+#~ msgid "[Samba] The directory mask is empty."
+#~ msgstr "[Samba] Katalogmask är tom."
+
+#~ msgid "[Synchronization] The rsync prefix is empty."
+#~ msgstr "[Synkronisering] Rsync-prefix är tomt."
+
+#~ msgid "[Synchronization] The exclude patterns have not been entered."
+#~ msgstr "[Synkronisering] Undantagsmönster har inte angivits."
+
+#~ msgid "[Synchronization] The path of the exclude file is empty."
+#~ msgstr "[Synkronisering] Sökvägen till filen med undantag är tom."
+
+#~ msgid "[Synchronization] The include patterns have not been entered."
+#~ msgstr "[Synkronisering] Ingående mönster har inte angivits."
+
+#~ msgid "[Synchronization] The path of the include file is empty."
+#~ msgstr "[Synkronisering] Sökvägen till filen med ingående mönster är tom."
+
+#~ msgid "[Synchronization] The backup suffix has not been defined."
+#~ msgstr ""
+#~ "[Synkronisering] Filändelse för säkerhetskopia har inte definierats."
+
+#~ msgid "[Synchronization] The backup directory is empty."
+#~ msgstr "[Synkronisering] Katalogen för säkerhetskopiering är tom."
+
+#~ msgid ""
+#~ "<qt>The configuration could not be written, because one setting is "
+#~ "incomplete:<ul>%2</ul>Please correct this issue.</qt>"
+#~ msgid_plural ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+#~ msgstr[0] ""
+#~ "<qt>Inställningen kunde inte skrivas, eftersom ett alternativ är "
+#~ "ofullständigt:<ul>%2</ul>Rätta problemet.</qt>"
+#~ msgstr[1] ""
+#~ "<qt>Inställningen kunde inte skrivas, eftersom %1 alternativ är "
+#~ "ofullständiga:<ul>%2</ul>Rätta problemet.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>Smb4K now uses a different configuration system. Thus, your old "
+#~ "settings are obsolete and you have to reconfigure the application.</"
+#~ "p><p>To ensure a clean transition, the current configuration file will be "
+#~ "removed.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Smb4K använder nu en annan inställningsmetod. Därför är dina gamla "
+#~ "inställningar föråldrade och du måste ställa in programmet på nytt.</"
+#~ "p><p>För att säkerställa en ren övergång, kommer nuvarande "
+#~ "inställningsfil att tas bort.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>Support for the program 'super' has been terminated. You have to "
+#~ "reconfigure Smb4K.</qt>"
+#~ msgstr ""
+#~ "<qt>Stöd för programmet 'super' har tagits bort. Du måste ändra "
+#~ "inställningarna för Smb4K.</qt>"
+
+#~ msgid "[Authentication] The default username has not been entered."
+#~ msgstr "[Behörighet] Standardanvändarnamnet har inte angivits."
+
+#~ msgid "This username is used by default to authenticate to a remote server."
+#~ msgstr ""
+#~ "Detta användarnamn används normalt för behörighetskontroll mot "
+#~ "fjärrserver."
+
+#~ msgid ""
+#~ "This password is used by default to authenticate to a remote server. It "
+#~ "may be empty."
+#~ msgstr ""
+#~ "Detta lösenord används som standard för kontroll av behörighet på "
+#~ "fjärrserver. Det kan vara tomt."
+
+#~ msgid "There are currently %1 shares mounted."
+#~ msgstr "För närvarande är %1 delade kataloger monterade."
+
+#~ msgid "Delete"
+#~ msgstr "Ta bort"
+
+#~ msgid "Leopold Palomo Avellaneda"
+#~ msgstr "Leopold Palomo Avellaneda"
+
+#~ msgid "Catalan translation"
+#~ msgstr "Katalansk översättning"
+
+#~ msgid "Radoslaw Zawartko"
+#~ msgstr "Radoslaw Zawartko"
+
+#~ msgid "Polish translation"
+#~ msgstr "Polsk översättning"
+
+#~ msgid "Nick Chen"
+#~ msgstr "Nick Chen"
+
+#~ msgid "Chinese Simplified translation"
+#~ msgstr "Kinesisk förenklad översättning"
+
+#~ msgid "Stanislav Yudin"
+#~ msgstr "Stanislav Yudin"
+
+#~ msgid "Russian translation"
+#~ msgstr "Rysk översättning"
+
+#~ msgid "Marc Hansen"
+#~ msgstr "Marc Hansen"
+
+#~ msgid "Swedish translation and intensive testing"
+#~ msgstr "Svensk översättning och test"
+
+#~ msgid "Giovanni Degani"
+#~ msgstr "Giovanni Degani"
+
+#~ msgid "Brazilian Portuguese translation"
+#~ msgstr "Brasiliansk portugisisk översättning"
+
+#~ msgid "Ivan Petrouchtchak"
+#~ msgstr "Ivan Petrouchtchak"
+
+#~ msgid "Ukrainian translation"
+#~ msgstr "Ukrainsk översättning"
+
+#~ msgid "Karoly Barcza"
+#~ msgstr "Karoly Barcza"
+
+#~ msgid "Hungarian translation"
+#~ msgstr "Ungersk översättning"
+
+#~ msgid "Quique"
+#~ msgstr "Quique"
+
+#~ msgid "Spanish translation"
+#~ msgstr "Spansk översättning"
+
+#~ msgid "Michal Šulek"
+#~ msgstr "Michal Šulek"
+
+#~ msgid "Slovak translation"
+#~ msgstr "Slovakisk översättning"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"
+
+#~ msgid "French translation"
+#~ msgstr "Fransk översättning"
+
+#~ msgid "Toyohiro Asukai"
+#~ msgstr "Toyohiro Asukai"
+
+#~ msgid "Japanese translation"
+#~ msgstr "Japansk översättning"
+
+#~ msgid "Atanas Mavrov"
+#~ msgstr "Atanas Mavrov"
+
+#~ msgid "Bulgarian translation"
+#~ msgstr "Bulgarisk översättning"
+
+#~ msgid "Isidoro Russo"
+#~ msgstr "Isidoro Russo"
+
+#~ msgid "Nils Kristian Tomren"
+#~ msgstr "Nils Kristian Tomren"
+
+#~ msgid "Norwegian translations"
+#~ msgstr "Norsk översättning"
+
+#~ msgid "Alois Nešpor"
+#~ msgstr "Alois Nešpor"
+
+#~ msgid "Czech translation"
+#~ msgstr "Czech översättning"
+
+#~ msgid "Martín Carr"
+#~ msgstr "Martín Carr"
+
+#~ msgid "Görkem Çetin"
+#~ msgstr "Görkem Çetin"
+
+#~ msgid "Turkish translation"
+#~ msgstr "Turkisk översättning"
+
+#~ msgid "Jack Liu"
+#~ msgstr "Jack Liu"
+
+#~ msgid "Chinese Traditional translation"
+#~ msgstr "Kinesisk traditionell översättning"
+
+#~ msgid "Arnar Leósson"
+#~ msgstr "Arnar Leósson"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Isländska översättning"
+
+#~ msgid "Michael Brinkloev"
+#~ msgstr "Michael Brinkloev"
+
+#~ msgid "Danish translation"
+#~ msgstr "Dansk översättning"
+
+#~ msgid "Joop Beris"
+#~ msgstr "Joop Beris"
+
+#~ msgid "Dutch translation"
+#~ msgstr "Hollöndsk översättning"
+
+#~ msgid "Lamarque V. Souza"
+#~ msgstr "Lamarque V. Souza"
+
+#~ msgid "Serdar Soytetir"
+#~ msgstr "Serdar Soytetir"
+
+#~ msgid "Wei-Lun Chao"
+#~ msgstr "Wei-Lun Chao"
+
+#~ msgid "Rashid N. Achilov"
+#~ msgstr "Rashid N. Achilov"
+
+#~ msgid "Testing of Smb4K under FreeBSD"
+#~ msgstr "Test av Smb4k med FreeBSD"
+
+#~ msgid "Jerzy Trzeciak"
+#~ msgstr "Jerzy Trzeciak"
+
+#~ msgid "The share was successfully mounted."
+#~ msgstr "Den delade katalogen monterades med lyckat resultat."
+
+#~ msgid "The share was successfully unmounted."
+#~ msgstr "Den delade katalogen avmonterades med lyckat resultat."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+#~ msgstr ""
+#~ "Konfigurationen kunne inte sparas då %1 inställningar är ofullständiga:\n"
+#~ "%1 Rätta vänligen felen."
+
+#~ msgid "The access was denied. "
+#~ msgstr "Ej ingripande."
+
+#, fuzzy
+#~ msgid "The password is not correct. "
+#~ msgstr "Fel lösenord."
+
+#~ msgid "The logon failed. "
+#~ msgstr "Login mislykades."
+
+#, fuzzy
+#~ msgid "Please enter authentication data for server %1."
+#~ msgstr "Använd autentisiering för %1."
+
+#~ msgid "Scan Network"
+#~ msgstr "Sök i nätverket"
+
+#~ msgid "Samba Browser"
+#~ msgstr "Samba Browser"
+
+#, fuzzy
+#~ msgid "Search Dialog"
+#~ msgstr "Söker..."
+
+#~ msgid "The path to the program \"grep\""
+#~ msgstr "Sökvägen till programmet \"grep\""
+
+#~ msgid "The path to the program \"awk\""
+#~ msgstr "Sökvägen till programmet \"awk\""
+
+#~ msgid "The path to the program \"sed\""
+#~ msgstr "Sökvägen till programmet \"sed\""
+
+#~ msgid "The path to the program \"xargs\""
+#~ msgstr "Sökvägen till programmet \"xargs\""
+
+#~ msgid "The path to the program \"rmdir\""
+#~ msgstr "Sökvägen till programmet \"rmdir\""
+
+#~ msgid "The path to the program \"nmblookup\""
+#~ msgstr "Sökvägen till programmet \"nmblookup\""
+
+#~ msgid "The path to the program \"smbclient\""
+#~ msgstr "Sökvägen till programmet \"smbclient\""
+
+#~ msgid "The path to the program \"smbspool\""
+#~ msgstr "Sökvägen till programmet \"smbspool\""
+
+#, fuzzy
+#~ msgid "The path to the program \"smbtree\""
+#~ msgstr "Sökvägen till programmet \"sed\""
+
+#~ msgid "The path to the program \"net\""
+#~ msgstr "Sökvägen till programmet \"net\""
+
+#~ msgid "The path to the program \"mount.cifs\""
+#~ msgstr "Sökvägen till programmet \"mount.cifs\""
+
+#~ msgid "The path to the program \"umount.cifs\""
+#~ msgstr "Sökvägen till programmet \"umount.cifs\""
+
+#~ msgid "The path to the program \"smbmount\""
+#~ msgstr "Sökvägen till programmet \"smbmount\""
+
+#~ msgid "The path to the program \"smbumount\""
+#~ msgstr "Sökvägen till programmet \"smbumount\""
+
+#~ msgid "The path to the program \"mount\""
+#~ msgstr "Sökvägen till programmet \"mount\""
+
+#~ msgid "The path to the program \"mount_smbfs\" (FreeBSD only)"
+#~ msgstr "Sökvägen till programmet \"mount_smbfs\" (Endast FreeBSD)"
+
+#~ msgid "The path to the program \"smbutil\" (FreeBSD only)"
+#~ msgstr "Sökvägen till programmet \"smbutil\" (Endast FreeBSD)"
+
+#~ msgid "The path to the program \"umount\""
+#~ msgstr "Sökvägen till programmet \"umount\""
+
+#~ msgid "The path to the program \"smb4k_mount\""
+#~ msgstr "Sökvägen till programmet \"smb4k_mount\""
+
+#~ msgid "The path to the program \"smb4k_umount\""
+#~ msgstr "Sökvägen till programmet \"smb4k_umount\""
+
+#~ msgid "The path to the program \"smb4k_kill\""
+#~ msgstr "Sökvägen till programmet \"smb4k_kill\""
+
+#, fuzzy
+#~ msgid "The path to the program \"smb4k_sudowriter\""
+#~ msgstr "Sökvägen till programmet \"smb4k_umount\""
+
+#, fuzzy
+#~ msgid "The path to the program \"kdesu\" (optional)"
+#~ msgstr "Sökvägen till programmet \"sudo\" (valfri)"
+
+#~ msgid "The path to the program \"sudo\" (optional)"
+#~ msgstr "Sökvägen till programmet \"sudo\" (valfri)"
+
+#~ msgid "The path to the program \"dvips\" (optional)"
+#~ msgstr "Sökvägen till programmet. \"dvips\" (valfri)"
+
+#~ msgid "The path to the program \"enscript\" (optional)"
+#~ msgstr "Sökvägen till programmet. \"enscript\" (valfri)"
+
+#~ msgid "The path to the program \"rsync\" (optional)"
+#~ msgstr "Sökvägen till programmet. \"rsync\" (valfri)"
+
+#~ msgid "The path to the program \"konsole\" (optional)"
+#~ msgstr "Sökvägen till programmet. \"konsole\" (valfri)"
+
+#~ msgid "You haven't specified a file."
+#~ msgstr "Du har inte uppget filnamn."
+
+#, fuzzy
+#~ msgid "Querying master browser for workgroups and domains..."
+#~ msgstr "Söker arbetsgrupper och domäner"
+
+#, fuzzy
+#~ msgid "Scanning broadcast areas for workgroups and domains..."
+#~ msgstr "Söker arbetsgrupper och domäner"
+
+#, fuzzy
+#~ msgid "Looking for workgroup members..."
+#~ msgstr "Söker arbetsgrupper och domäner"
+
+#, fuzzy
+#~ msgid "Querying host for list of shares..."
+#~ msgstr "Försöker ta emot lista på utdelade resurser..."
+
+#, fuzzy
+#~ msgid "Querying host for additional information..."
+#~ msgstr "Tar emot ytterligare Information..."
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr ""
+#~ "_:Översättare \n"
+#~ "Leslie JensenMarc Hansen"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr ""
+#~ "_:Översättarens mailadress:\n"
+#~ "lesjen@mail.berlios.de"
+
+#~ msgid "Network Browser"
+#~ msgstr "Nätverksbläddrare"
+
+#~ msgid "Shares Vie&w"
+#~ msgstr "Visa &utdelade resurser"
+
+#~ msgid "List Vie&w"
+#~ msgstr "&Visa fillistning"
+
+#~ msgid "Jump to shares view"
+#~ msgstr "Utdelade resurser"
+
+#~ msgid "Jump to network browser"
+#~ msgstr "Nätverksbläddrare"
+
+#~ msgid "Jump to search dialog"
+#~ msgstr "Sökdialog"
+
+#~ msgid "Docking in System Tray"
+#~ msgstr "Docka i systembrickan"
+
+#~ msgid "Exiting..."
+#~ msgstr "Avslutar..."
+
+#~ msgid "Querying current master browser..."
+#~ msgstr "Fråga nuvarande masterbrowser..."
+
+#~ msgid "Querying master browser %1..."
+#~ msgstr "Fråga masterbrowser %1..."
+
+#~ msgid "Scanning broadcast areas..."
+#~ msgstr "Läser broadcastadress:"
+
+#~ msgid "Opening workgroup..."
+#~ msgstr "Öppnar arbetsgrupp..."
+
+#~ msgid "Retrieving list of shares..."
+#~ msgstr "Tar emot lista på utdelade resurser..."
+
+#~ msgid "Use the following program to gain super user privileges:"
+#~ msgstr "Använd följande program för att få administratörsrättigheter:"
+
+#, fuzzy
+#~ msgid ""
+#~ "NOTE: You might need to enable support for either \"super\" or \"sudo\" "
+#~ "in the Super User page."
+#~ msgstr ""
+#~ "OBS: Om du använder CIFS filsystemed, du behöver <i>super<i> eller "
+#~ "<i>sudo<i> i filen \"super.tab\"."
+
+#~ msgid "Charset and Codepage"
+#~ msgstr "Teckenuppsättning och landsinställning."
+
+#~ msgid "Permissions"
+#~ msgstr "Rättigheter"
+
+#~ msgid "Advanced SMBFS Options"
+#~ msgstr "Avancerade SMBFS inställningar"
+
+#~ msgid "Use large file system support"
+#~ msgstr "Använd stöd för stora filsystemer"
+
+#~ msgid "Caching time of directory listings:"
+#~ msgstr "Cachetid för listning av kataloger:"
+
+#~ msgid "Kerberos:"
+#~ msgstr "Kerberos:"
+
+#~ msgid "Port:"
+#~ msgstr "Port:"
+
+#~ msgid "Custom"
+#~ msgstr "Anpassat"
+
+#~ msgid "Rsync prefix:"
+#~ msgstr "Rsync prefix:"
+
+#~ msgid "Skip files that are newer in target directory"
+#~ msgstr "Hoppa över nyare filer i målkatalogen"
+
+#~ msgid ""
+#~ "The rules defined below will be added to the \"rsync\" command as they "
+#~ "are. Thus, you have to start with the --filter=... argument."
+#~ msgstr ""
+#~ "Reglerna som är definierade nedan läggs till \"rsync\" kommandot som dem "
+#~ "är. Men, du måste börja med --filter=... argumentet"
+
+#~ msgid ""
+#~ "Smb4K uses \"nmblookup\" by default to search for remote hosts. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use \"smbclient"
+#~ "\"."
+#~ msgstr ""
+#~ "Sm4k använder <i> nmblookup </i> som grundinställing för att söka efter "
+#~ "fjärrvärdar. Denna metod är mycket tillförlitlig, men misslyckas ibland "
+#~ "om dina nätverksplatser är konfiguerat på ett ovanligt sätt.Försök i så "
+#~ "fall att använda <i> smbclient</i>."
+
+#~ msgid "Use nmblookup (recommended)"
+#~ msgstr "Använd nmblookup (rekommenderat)"
+
+#~ msgid "Show IPC$ shares"
+#~ msgstr "Visa IPC$-resurser"
+
+#~ msgid "Show ADMIN$ shares"
+#~ msgstr "Visa ADMIN$-resurser"
+
+#~ msgid "Show tooltip with information about a network item"
+#~ msgstr "Visa verktygstips med information om en nätverkspost"
+
+#~ msgid "Drag and Drop"
+#~ msgstr "Dra och släpp"
+
+#~ msgid "Allow dropping of files and directories onto shares"
+#~ msgstr "Tillåt att släppa filer och kataloger på utdelade resurser"
+
+#~ msgid "Allow dragging of shares"
+#~ msgstr "Tillåt att dra utdelade resurser"
+
+#~ msgid "Show tooltip with information about a share"
+#~ msgstr "Visa verktygstips med information om en utdelat resurs"
+
+#~ msgid "Show owner and group (SMBFS only)"
+#~ msgstr "Visa ägare och grupp (endast SMBFS)"
+
+#~ msgid "Show login (CIFS only)"
+#~ msgstr "Visa login (endast CIFS)"
+
+#~ msgid "[Samba] The UID is empty.\n"
+#~ msgstr "[Samba] UID har inte angivits.\n"
+
+#~ msgid "[Samba] The GID is empty.\n"
+#~ msgstr "[Samba] GID har inte angivits.\n"
+
+#~ msgid "Smb4KConfigDialog"
+#~ msgstr "Smb4Kkonfigurationsdialog"
+
+#~ msgid "If no wallet is used, remember authentication data during run time"
+#~ msgstr ""
+#~ "Om ingen plånbook används, komihåg autentisieringsdata sålänge programmet "
+#~ "körs"
+
+#~ msgid "Remove &All"
+#~ msgstr "Radera &allt"
+
+#~ msgid "Smb4KSharesIconViewPart"
+#~ msgstr "Smb4KSharesIconViewPart"
+
+#~ msgid ""
+#~ "Smb4K is an advanced network neighborhood browser and a\n"
+#~ "front end to the programs of the Samba software suite."
+#~ msgstr ""
+#~ "Smb4K är en avancerad bläddrare för mina nätverksplatser\n"
+#~ "och GUI til programmen från Samba."
+
+#~ msgid "The path to the program \"smb4k_cat\""
+#~ msgstr "Sökvägen till programmet \"smb4k_cat\""
+
+#~ msgid "The path to the program \"smb4k_mv\""
+#~ msgstr "Sökvägen till programmet \"smb4k_mv\""
+
+#~ msgid "The path to the program \"super\" (optional)"
+#~ msgstr "Sökvägen till programmet \"super\" (valfri)"
+
+#~ msgid "Embed application into system tray"
+#~ msgstr "Inbädda programmet i systembrickan"
+
+#~ msgid "How the shares should be displayed"
+#~ msgstr "Hur skall dem utdelade resurserna visas"
+
+#~ msgid ""
+#~ "Choose the kind of view you prefer for displaying the mounted shares. "
+#~ "There is an icon view or a list view available."
+#~ msgstr ""
+#~ "Välj önskad visningssätt för munterade resurser. Det finns ikoner eller "
+#~ "lista att välja från."
+
+#~ msgid "Show the comment of a share"
+#~ msgstr "Visa resursens kommentar"
+
+#~ msgid "Show the mount point of a share instead of its name"
+#~ msgstr "Visa vart resursen är monterat istället för dets namn"
+
+#~ msgid "Allow the dropping of files and directories onto share icons"
+#~ msgstr "Tillåt att släppa filer och kataloger på resursikoner"
+
+#~ msgid ""
+#~ "This setting allows you to drop files or whole directories onto the share "
+#~ "icons, which will cause them to be copied."
+#~ msgstr ""
+#~ "Denna inställning tillåter att släppa filer eller hela kataloger på en "
+#~ "resursikon, vilket medför att dessa kopieras."
+
+#~ msgid "Allow the dragging of share icons"
+#~ msgstr "Tillåt att dra resursikoner"
+
+#~ msgid ""
+#~ "This setting allows you to drag a share item out of Smb4K and onto the "
+#~ "desktop or into a file manager. Only enable it if you think you "
+#~ "absolutely need it and read the handbook before you mark this checkbox."
+#~ msgstr ""
+#~ "Denna inställning tillåter att man drar en utdelad resurs ut ur Smb4K och "
+#~ "ut på skrivbordet eller till en filhanterare. Aktivera endast detta om "
+#~ "det är absolut nödvändigt och läs handboken innan detta val markeras."
+
+#~ msgid "Show hidden files and directories when previewing a share"
+#~ msgstr ""
+#~ "Visa dolda filer och kataloger vid förhandsgranskning av en utdelad "
+#~ "resurs."
+
+#~ msgid ""
+#~ "Show the UID and GID that own all files on the mounted file system. At "
+#~ "the moment the column will only contain an entry if the share was mounted "
+#~ "with the SMBFS file system."
+#~ msgstr ""
+#~ "Visa det UID och GID som äger alla filer på det monterade filsystemet. "
+#~ "Just nu innehåller kolumnen endast information om den utdelade resursen "
+#~ "monterades med SMBFS filsystem."
+
+#~ msgid "Method how to retrieve the browse list"
+#~ msgstr "Metod för att hämta in bläddringslistan"
+
+#~ msgid ""
+#~ "Choose the method how to compile the initial browse list. There are four "
+#~ "options available: The first one is the default one and employs "
+#~ "\"nmblookup -M -- -\" to discover all workgroups, domains, and their "
+#~ "master browsers on your network neighborhood. The second one instructs "
+#~ "Smb4K to query the current master browser of your workgroup or domain to "
+#~ "retrieve the browse list. The third is similar to the second one except "
+#~ "that you can define the master browser that should be queried. If you "
+#~ "choose the last option, the provided list of broadcast areas will be "
+#~ "scanned using \"nmblookup -B x.x.x.x -- '*'\"."
+#~ msgstr ""
+#~ "Välj den metod som önskas för att sammanställa en bläddringslista. Det "
+#~ "finns fyra valmöjligheter. Första är standardvalet och den använder "
+#~ "\"nmblookup -M -- -\" för att upptäcka alla arbetsgrupper, domäner och "
+#~ "deras Master Browsers i dina nätverksplatser. Andra valet beordrar Smb4K "
+#~ "att fråga nuvarande Master Browser i arbetsgruppen eller domänen efter "
+#~ "bläddringslistan. Tredje valet liknar det andra på så sätt att här kan "
+#~ "man definiera vilken Master Browser som ska frågas. Om man väljer den "
+#~ "sista valmöjligheten, kommer tillhandahållna listan på broadcast området "
+#~ "att läsas med \"nmblookup -B x.x.x.x -- '*'\"."
+
+#~ msgid "Method for searching for remote hosts"
+#~ msgstr "Metod för att hitta fjärrvärdar"
+
+#~ msgid ""
+#~ "Smb4K is able to search for remote hosts either using nmblookup or "
+#~ "smbclient. The nmblookup method is very reliable and works well. However, "
+#~ "if your network is configured uncommonly and you experience problems when "
+#~ "searching, you should try the smbclient method. But please note that you "
+#~ "lose the ability to search for IP addresses in that case."
+#~ msgstr ""
+#~ "Smb4K kan söka efter fjärrvärdar antigen genom att använda nmblookup "
+#~ "eller smbclient. Nmblookup metoden är mycket tillförlitlig og fungerar "
+#~ "bra. Men, om du har en ovanlig nätverkskonfiguration och du upplever "
+#~ "problem med sökningen, prova då smbclient metoden. Uppmärksamma vänligen "
+#~ "att möjligheten att söka efter IP-adresser i så fall går forlorat."
+
+#~ msgid "The mount prefix"
+#~ msgstr "Monteringsprefix"
+
+#~ msgid "Force the subdirectories created by Smb4K to be lowercase"
+#~ msgstr ""
+#~ "Tvinga namnen på de underkataloger som Smb4K har skapat till gemener."
+
+#~ msgid "Unmount all shares that belong to you when the program exits."
+#~ msgstr "Avmontera alla utdelade resurser som du äger vid avslut."
+
+#~ msgid "Allow the unmounting of shares owned by other users"
+#~ msgstr "Tillåt avmontering av utdelade resurser, som ägs av andra användare"
+
+#~ msgid "Interval between checks for new and inaccessible shares"
+#~ msgstr "Interval emellan kontroll av nya och oåtkommliga resurser"
+
+#~ msgid "Use a wallet to store authentication data"
+#~ msgstr "Använd en plånbok för att lagra autentisieringsinformation"
+
+#~ msgid "Remember passwords if no wallet is used"
+#~ msgstr "Komm ihåg lösenord om plånboken inte används"
+
+#~ msgid "The NetBIOS name of this computer"
+#~ msgstr "Denna dators NetBIOS namn"
+
+#~ msgid "The name of the workgroup/domain this computer is in"
+#~ msgstr "Namnet på den arbetsgrupp/domän som denna dator är med i."
+
+#~ msgid "The socket options"
+#~ msgstr "Socketinställningar"
+
+#~ msgid "The NetBIOS scope"
+#~ msgstr "NetBIOS omfång"
+
+#~ msgid "The remote SMB port"
+#~ msgstr "SMB fjärr porten"
+
+#~ msgid "Use machine account for login"
+#~ msgstr "Använd systemkontot för inlogning"
+
+#~ msgid ""
+#~ "This is the file system that will be used to mount the remote shares. The "
+#~ "Common Internet File System (CIFS) is supported by Windows 2000 and above "
+#~ "as well as by Samba. It offers many improvements and advancements "
+#~ "compared to the Server Message Block File System (SMBFS) which is used by "
+#~ "Windows 9x and below."
+#~ msgstr ""
+#~ "Detta är det filsystem som används för att montera utdelade resurser. "
+#~ "Common Internet File System (CIFS) stöds av Windows 2000 och senare "
+#~ "versioner, och av Samba. Det erbjuder många förbättringar och framsteg "
+#~ "jämnfört med Server Message Block File System (SMBFS) som används av "
+#~ "Windows 9x och lägre versioner."
+
+#~ msgid "The charset used by the client"
+#~ msgstr "Teckenuppsättning som klienten använder"
+
+#~ msgid "The codepage used by the server"
+#~ msgstr "Serverns landsinställning"
+
+#~ msgid "The group ID that is to be used for mounting"
+#~ msgstr "Det grupp ID som ska användas vid montering"
+
+#~ msgid "The file mask for a share"
+#~ msgstr "Filmask för en utdelad resurs"
+
+#~ msgid "The directory mask for a share"
+#~ msgstr "Katalogmask för en utdelad resurs"
+
+#~ msgid "The write access granted for the share"
+#~ msgstr "Tilldela skrivrättigheter till resursen"
+
+#~ msgid "Set UID and GID"
+#~ msgstr "Sätt UID och GID"
+
+#~ msgid "Advanced custom options for the CIFS file system"
+#~ msgstr "Advancerade inställningar för CIFS filsystemet"
+
+#~ msgid "Determines how long directory listings are cached"
+#~ msgstr "Bestämmer hur länge kataloglistningar cachas"
+
+#~ msgid ""
+#~ "This setting determines how long a directory listing is cached in "
+#~ "milliseconds. A high value means it takes longer until changes on the "
+#~ "server are noticed on the client side (i.e. your side), but it can also "
+#~ "give you an increase in performance on large directories, especially on "
+#~ "long distances. You need Linux kernel 2.4.2 or later to take advantage of "
+#~ "this setting."
+#~ msgstr ""
+#~ "Denna inställning bestämmer hur länge kataloglistningar cachas i "
+#~ "millisekunder. Ett högt värde innebär att det tar längre tid innan "
+#~ "ändringar på servern uppmärksammas av klientsidan ( ex.vis din sida), men "
+#~ "det kan också ge prestandaförbättringar då det gäller kataloger med "
+#~ "mycket innehåll, speciellt över långa avstånd. Linux kärna 2.4.2 eller "
+#~ "senare behövs för att kunna dra nytta av denna inställning."
+
+#~ msgid "Unicode support"
+#~ msgstr "Stöd för Unicode"
+
+#~ msgid ""
+#~ "Use Unicode when communicating with the server. This will give you better "
+#~ "support for non-ASCII character sets with the SMBFS file system."
+#~ msgstr ""
+#~ "Använd Unicode vid kommunikation med servern. Detta ger bättre stöd för "
+#~ "icke-ASCII teckensnitt när SMBFS filsystemet används."
+
+#~ msgid "Long file support"
+#~ msgstr "Stöd för stora filer"
+
+#~ msgid ""
+#~ "Large file system support (LFS) enables you to read and write files "
+#~ "bigger than 2 GB on shares that were mounted with the SMBFS file system."
+#~ msgstr ""
+#~ "Stöd för stora filer (LFS) möjliggör läsning och skrivning a filer som "
+#~ "överstiger 2Gb på utdelade resurser som monterats med SMBFS filsystem."
+
+#~ msgid "The protocol that is used with the net command"
+#~ msgstr "Använd detta protokoll med kommandot net"
+
+#~ msgid "Name resolve order used by smbclient"
+#~ msgstr "Ordningsföljd som smbclient använder för namnupplösning"
+
+#~ msgid "Transmit/send buffer size used by smbclient"
+#~ msgstr "Överföring/sänd buffer som smbclient använder."
+
+#~ msgid "Set the signing state for smbclient."
+#~ msgstr "Ställ in status på signering för smbclient."
+
+#~ msgid "The broadcast address used by nmblookup"
+#~ msgstr "Broadcast adress som nmblookup använder"
+
+#~ msgid "Use UDP port 137 with nmblookup"
+#~ msgstr "Använd UDP port 137 med nmblookup"
+
+#~ msgid "Prefix for synchronization"
+#~ msgstr "Synkroniseringsprefix"
+
+#~ msgid "Use archive mode"
+#~ msgstr "Använd arkivering"
+
+#~ msgid "Skip files that are newer in the target directory"
+#~ msgstr "Hoppa över filer i målkatalogen som är nyare"
+
+#~ msgid "Don't send implied directories with --relative"
+#~ msgstr "Skicka inte tillhörande kataloger med --relative"
+
+#~ msgid "Preserve owner (super user only)"
+#~ msgstr "Bevara ägaren (Endast administrator)"
+
+#~ msgid "Also delete excluded files from destination directory"
+#~ msgstr "Ta även bort uteslutna filer från målkatalogen"
+
+#~ msgid "Only delete a maximum number of files"
+#~ msgstr "Ta endast bort maximalt antal filer"
+
+#~ msgid "Don't transfer any file smaller than SIZE"
+#~ msgstr "Överför inte filer mindre än SIZE"
+
+#~ msgid "The directory where to put a partially transferred file into."
+#~ msgstr "Katalogen där delvis överförda filer sparas."
+
+#, fuzzy
+#~ msgid "The program that should be used to gain super user privileges"
+#~ msgstr "Använd följande Program, att få \"super användare\" privileges:"
+
+#, fuzzy
+#~ msgid "Use super user privileges to unmount inaccessible shares"
+#~ msgstr ""
+#~ "Använd superanvändareprivilegier för att montera och avmontera kataloger"
+
+#, fuzzy
+#~ msgid "Buffer size exceeded"
+#~ msgstr "Buffertstorlek:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The browse list could not be retrieved.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid ""
+#~ "Some file permissions could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" could not be read.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" is currently being edited by user %2. To avoid any "
+#~ "problems, access to this file is denied at the moment. Please try again "
+#~ "later."
+#~ msgstr ""
+#~ "En annan användare (%2) öppnade just systemfilerna %1. Försök igen senare."
+
+#, fuzzy
+#~ msgid "The file \"%1\" could not be written."
+#~ msgstr "Filen %1 kann inte läst."
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses are not supported with this search method. Please choose "
+#~ "\"Use nmblookup\" in the configuration dialog and try again."
+#~ msgstr ""
+#~ "Sökmetoden (smbclient) som du valde kan inte hantera IP-adresserna "
+#~ "korrekt. Välj \"Använd nmblookup\" under konfiguration dialog och försök "
+#~ "igen."
+
+#, fuzzy
+#~ msgid ""
+#~ "The temporary file \"%1\" could not be created.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#~ msgid "The file \"%1\" could not be closed."
+#~ msgstr "Filen \"%1\" kan inte stängas."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" could not be closed.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid "The list of supplementary group IDs could not be determined."
+#~ msgstr "Hårtdisk usage kann inte hittas."
+
+#, fuzzy
+#~ msgid ""
+#~ "The list of supplementary group IDs could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr "Detta katalogen kann inte avmonteras. Katalogtext är tom."
+
+#, fuzzy
+#~ msgid ""
+#~ "Up to KDE 3.3.x, KIO and Konqueror cannot handle CIFS shares. Konqueror "
+#~ "will hang if you try to access it.\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "Minst till version 3.3.2 från KDE och KIO. Det är inte mögligt att "
+#~ "hantera CIFS-Kataloger. Konqueror misslyckades, om du använder det.\n"
+#~ " Vill du fortsätter?"

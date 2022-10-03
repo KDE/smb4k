@@ -1,0 +1,117 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma_applet_smb4k-qml\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2018-06-25 15:30+0100\n"
+"Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
+"Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">em %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr "Recuar"
+
+#: package/contents/ui/BookmarksPage.qml:41
+msgid "Edit bookmarks"
+msgstr "Editar os favoritos"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr "Janela de Configuração"
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr "Vizinhança na Rede"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+msgid "Bookmark"
+msgstr "Favorito"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "Pesquisar de Novo"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "Interromper"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr "Subir"
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+msgid "Open the mount dialog"
+msgstr "Abrir a janela de montagem"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr "Partilhas Montadas"
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "Favoritos"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr "Perfis"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr "Configuração"
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr "(activo)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr "Sincronizar"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr "Desmontar"
+
+#: package/contents/ui/SharesViewPage.qml:34
+msgid "Unmount all shares"
+msgstr "Desmontar todas as partilhas"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Editar os Favoritos"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+#~ msgid "Clear"
+#~ msgstr "Limpar"
+
+#~ msgid "Label:"
+#~ msgstr "Nome:"
+
+#~ msgid "Login:"
+#~ msgstr "Utilizador:"
+
+#~ msgid "IP Address:"
+#~ msgstr "Endereço IP:"
+
+#~ msgid "Group Name:"
+#~ msgstr "Nome do Grupo:"
+
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "Favoritos de Topo"
+
+#~ msgid "Delete Bookmark"
+#~ msgstr "Apagar o Favorito"

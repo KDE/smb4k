@@ -1,0 +1,115 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Martin Schlander <mschlander@opensuse.org>, 2014, 2015.
+# scootergrisen, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma_applet_org.kde.smb4kqml\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2017-11-06 15:20+0200\n"
+"Last-Translator: scootergrisen\n"
+"Language-Team: Danish\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">på %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr "Få tilbage"
+
+#: package/contents/ui/BookmarksPage.qml:41
+msgid "Edit bookmarks"
+msgstr "Redigér bogmærker"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr ""
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr "Netværksnabolag"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+msgid "Bookmark"
+msgstr "Bogmærke"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "Genscan"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "Afbryd"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr "Gå ét niveau op"
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+msgid "Open the mount dialog"
+msgstr "Åbn monteringsdialogen"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr "Monterede ressourcer"
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "Bogmærker"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr "Profiler"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr ""
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr "(aktiv)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr "Synkronisér"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr "Afmontér"
+
+#: package/contents/ui/SharesViewPage.qml:34
+msgid "Unmount all shares"
+msgstr "Afmontér alle ressourcer"
+
+#, fuzzy
+#~| msgid "Edit bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Redigér bogmærker"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "Bogmærker"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Delete Bookmark"
+#~ msgstr "Bogmærker"
+
+#~ msgid "Back"
+#~ msgstr "Tilbage"
+
+#~ msgid "Edit"
+#~ msgstr "Redigér"
+
+#~ msgid "Up"
+#~ msgstr "Op"

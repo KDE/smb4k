@@ -1,0 +1,130 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Eloy Cuadra <ecuadra@eloihr.net>, 2014, 2018.
+# Raul Gonzalez <raulgf83@gmail.com>, 2015.
+# Javier Vinal <fjvinal@gmail.com>, 2017, 2018, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2019-06-09 23:02+0200\n"
+"Last-Translator: Javier Vinal <fjvinal@gmail.com>\n"
+"Language-Team: Spanish <kde-l10n-es@kde.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 19.04.2\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">en %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr "Atrás"
+
+#: package/contents/ui/BookmarksPage.qml:41
+msgid "Edit bookmarks"
+msgstr "Editar marcadores"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr "Diálogo de configuración"
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr "Entorno de red"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+msgid "Bookmark"
+msgstr "Marcador"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "Volver a explorar"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "Interrumpir"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr "Subir un nivel"
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+msgid "Open the mount dialog"
+msgstr "Abrir el diálogo de montaje"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr "Recursos compartidos montados"
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr "Perfiles"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr "Configuración"
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr "(activo)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr "Sincronizar"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr "Desmontar"
+
+#: package/contents/ui/SharesViewPage.qml:34
+msgid "Unmount all shares"
+msgstr "Desmontar todos los recursos compartidos"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Editar marcadores"
+
+#~ msgid "OK"
+#~ msgstr "Aceptar"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+#~ msgid "Clear"
+#~ msgstr "Despejar"
+
+#~ msgid "Label:"
+#~ msgstr "Etiqueta:"
+
+#~ msgid "Login:"
+#~ msgstr "Inicio de sesión:"
+
+#~ msgid "IP Address:"
+#~ msgstr "Dirección IP:"
+
+#~ msgid "Group Name:"
+#~ msgstr "Nombre del grupo:"
+
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "Marcadores del nivel superior"
+
+#~ msgid "Delete Bookmark"
+#~ msgstr "Borrar marcador"
+
+#~ msgid "Add Group"
+#~ msgstr "Añadir grupo"
+
+#~ msgid "Ok"
+#~ msgstr "Aceptar"

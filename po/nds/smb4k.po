@@ -1,0 +1,2478 @@
+# translation of smb4k.po to Low Saxon
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Manfred Wiese <m.j.wiese@web.de>, 2009, 2010, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"PO-Revision-Date: 2011-10-19 22:13+0200\n"
+"Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
+"Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
+"Language: nds\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Manfred Wiese"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "m.j.wiese@web.de"
+
+#: helpers/smb4kmounthelper.cpp:136
+#, fuzzy, kde-format
+#| msgid "The lock file could not be created."
+msgid "The mount process could not be started."
+msgstr "Slottdatei lett sik nich opstellen."
+
+#: helpers/smb4kmounthelper.cpp:179
+#, fuzzy, kde-format
+#| msgid "The mountpoint is invalid."
+msgid "The mountpoint %1 is invalid."
+msgstr "De Inhangsteed is leeg."
+
+#: helpers/smb4kmounthelper.cpp:241
+#, fuzzy, kde-format
+#| msgid "The lock file could not be created."
+msgid "The unmount process could not be started."
+msgstr "Slottdatei lett sik nich opstellen."
+
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:45
+#, fuzzy, kde-format
+#| msgid "The advanced network neighborhood browser for KDE."
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr "Verwiedert Nettwarkkieker för KDE"
+
+#: smb4k/main.cpp:47
+#, fuzzy, kde-format
+#| msgid "\\u00A9 2003-2011 Alexander Reinholdt"
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "\\u00A9 2003-2011: Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Developer"
+msgstr "Schriever"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr ""
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Donator"
+msgstr ""
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Datei"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Nettwark"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "&Freegaven"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "&Leestekens"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "&Instellen"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Hööft-Warktüüchbalken"
+
+#: smb4k/smb4kbookmarkmenu.cpp:29
+#, kde-format
+msgid "Bookmarks"
+msgstr "Leestekens"
+
+#: smb4k/smb4kbookmarkmenu.cpp:50
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Leestekens bewerken"
+
+#: smb4k/smb4kbookmarkmenu.cpp:59 smb4k/smb4kmainwindow.cpp:144
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:196
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "&Leesteken tofögen"
+
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "All Leestekens inhangen"
+
+#: smb4k/smb4kconfigdialog.cpp:107
+#, kde-format
+msgid "User Interface"
+msgstr "Böversiet"
+
+#: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
+#, kde-format
+msgid "Network"
+msgstr "Nettwark"
+
+#: smb4k/smb4kconfigdialog.cpp:109
+#, kde-format
+msgid "Mounting"
+msgstr "Inhangen"
+
+#: smb4k/smb4kconfigdialog.cpp:110
+#, kde-format
+msgid "Authentication"
+msgstr "Identiteetprööv"
+
+#: smb4k/smb4kconfigdialog.cpp:111
+#, kde-format
+msgid "Synchronization"
+msgstr "Synkroniseren"
+
+#: smb4k/smb4kconfigdialog.cpp:112
+#, kde-format
+msgid "Custom Options"
+msgstr "Egen Optschonen"
+
+#: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kprofilesmenu.cpp:22
+#, kde-format
+msgid "Profiles"
+msgstr ""
+
+#: smb4k/smb4kconfigdialog.cpp:135
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:34
+#, fuzzy, kde-format
+#| msgid "&Settings"
+msgid "Settings"
+msgstr "&Instellen"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:64
+#, fuzzy, kde-format
+#| msgid "Remove Entries"
+msgid "Wallet Entries"
+msgstr "Indrääg wegmaken"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:97
+#, kde-format
+msgid "Load"
+msgstr "Laden"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#, kde-format
+msgid "Save"
+msgstr "Sekern"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagecustomoptions.cpp:82
+#, kde-format
+msgid "Edit"
+msgstr "Bewerken"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagecustomoptions.cpp:87
+#, kde-format
+msgid "Remove"
+msgstr "Wegmaken"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:136
+#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#, fuzzy, kde-format
+#| msgid "&Clear"
+msgid "Clear"
+msgstr "&Leddig maken"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:201
+#, kde-format
+msgid "Default Login"
+msgstr "Standardanmellen"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#, kde-format
+msgid "Enter the default login information."
+msgstr ""
+
+#: smb4k/smb4kconfigpageauthentication.cpp:401
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+msgid "Set the username and password for wallet entry %1."
+msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:403
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+msgid "Set the username and password for the default login."
+msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:92
+#, kde-format
+msgid "Clear List"
+msgstr "List leddig maken"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:215
+#, kde-format
+msgid "The item %1 was removed, because all custom options were reset."
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
+#, kde-format
+msgid "Directories"
+msgstr "Ornern"
+
+#: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
+#: smb4k/smb4kconfigpagenetwork.cpp:112
+#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#, kde-format
+msgid "Behavior"
+msgstr "Bedregen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:139 smb4k/smb4kconfigpagemounting.cpp:544
+#, kde-format
+msgid " min"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
+#: smb4k/smb4kconfigpagenetwork.cpp:133
+#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#, fuzzy, kde-format
+#| msgid "&Settings"
+msgid "Basic Settings"
+msgstr "&Instellen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
+#, kde-format
+msgid "Common Options"
+msgstr "Allmeen Optschonen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:228
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
+#, kde-format
+msgid "Choose a different user"
+msgstr "Söök en anner Bruker ut."
+
+#: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
+#, kde-format
+msgid "Choose a different group"
+msgstr "Söök en anner Koppel ut."
+
+#: smb4k/smb4kconfigpagemounting.cpp:336
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Common Mount Settings"
+msgstr "Allmeen Optschonen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:344
+#, kde-format
+msgid "Advanced Options"
+msgstr "Verwiedert Optschonen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:457
+#, fuzzy, kde-format
+#| msgid "Additional options:"
+msgid "Edit the additional CIFS options."
+msgstr "Anner Optschonen:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:470
+#, fuzzy, kde-format
+#| msgid "Advanced Options"
+msgid "Advanced Mount Settings"
+msgstr "Verwiedert Optschonen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:681
+#, kde-format
+msgid "Character Sets"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:729
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Mount Settings"
+msgstr "Allmeen Optschonen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:833
+#, fuzzy, kde-format
+#| msgid "Additional options:"
+msgid "Additional CIFS Options"
+msgstr "Anner Optschonen:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:834
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:862
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:40
+#, fuzzy, kde-format
+#| msgid "&Settings"
+msgid "Browse Settings"
+msgstr "&Instellen"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:144
+#, fuzzy, kde-format
+#| msgid "Samba"
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:196
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "Wake-On-LAN"
+msgstr "Allgemeen Instellen"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:216
+#, kde-format
+msgid " s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:225
+#, kde-format
+msgid "Define the hosts that should be woken up via the custom options dialog."
+msgstr ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:235
+#, fuzzy, kde-format
+#| msgid "Advanced Options"
+msgid "Advanced Settings"
+msgstr "Verwiedert Optschonen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#, fuzzy, kde-format
+#| msgid "Synchronization"
+msgid "Synchronization Directory"
+msgstr "Synkroniseren"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#, fuzzy, kde-format
+#| msgid "Backup"
+msgid "Backups"
+msgstr "Sekerheitkopie"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#, kde-format
+msgid "General"
+msgstr "Allmeen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#, fuzzy, kde-format
+#| msgid "Links"
+msgid "Links"
+msgstr "Links"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#, fuzzy, kde-format
+#| msgid "File Deletion"
+msgid "File Handling"
+msgstr "Dateien wegdoon"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#, kde-format
+msgid "Compression"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#, fuzzy, kde-format
+#| msgid "File"
+msgid "Files"
+msgstr "Datei"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:310
+#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#, kde-format
+msgid " KiB"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#, kde-format
+msgid " KiB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#, kde-format
+msgid "File Transfer"
+msgstr "Dateiöverdregen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#, fuzzy, kde-format
+#| msgid "Hidden Files && Directories"
+msgid "Files && Directories"
+msgstr "Versteken Dateien un Ornern"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#, fuzzy, kde-format
+#| msgid "Destination:"
+msgid "Restrictions"
+msgstr "Teel:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#, kde-format
+msgid "File Deletion"
+msgstr "Dateien wegdoon"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#, kde-format
+msgid "General Filtering Settings"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#, kde-format
+msgid "Filter Rules"
+msgstr "Filterregeln"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#, kde-format
+msgid "Filtering"
+msgstr "Filtern"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#, fuzzy, kde-format
+#| msgid "Checksums"
+msgid "Checksums"
+msgstr "Pröövsummen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:562
+#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "Miscellaneous"
+msgstr "Allgemeen Instellen"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#, kde-format
+msgid "Main Window"
+msgstr "Hööftfinster"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:216
+#, kde-format
+msgid "Network Neighborhood"
+msgstr ""
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#, kde-format
+msgid "Shares View"
+msgstr "Freegavenansicht"
+
+#: smb4k/smb4kmainwindow.cpp:134
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Stüerelementen andocken"
+
+#: smb4k/smb4kmainwindow.cpp:239 smb4k/smb4ksharesmenu.cpp:37
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Inhangt Freegaven"
+
+#: smb4k/smb4kmainwindow.cpp:399
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Closing the main window will keep Smb4K running in the system tray. "
+#| "Use 'Quit' from the 'File' menu to quit the application.</p>"
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<p>Smb4K löppt ok na't Tomaken vun't Hööftfinster in den Systeemafsnitt "
+"wieder. Bruuk \"Verlaten\" in't Menü \"Datei\", wenn Du dat Programm "
+"verlaten wullt.</p>"
+
+#: smb4k/smb4kmainwindow.cpp:401
+#, kde-format
+msgid "Docking"
+msgstr "Andocken"
+
+#: smb4k/smb4kmainwindow.cpp:465
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:468
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: smb4k/smb4kmainwindow.cpp:629
+#, fuzzy, kde-format
+#| msgid "The wallet is in use."
+msgid "The wallet is used."
+msgstr "De Knipp is in Bruuk."
+
+#: smb4k/smb4kmainwindow.cpp:632
+#, fuzzy, kde-format
+#| msgid "Password dialog mode is used and logins are remembered."
+msgid "The password dialog is used."
+msgstr "De Passwoortdialoog warrt bruukt, un de Anmelldaten warrt wohrt."
+
+#: smb4k/smb4kmainwindow.cpp:642
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:647
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:652
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:660 smb4k/smb4kmainwindow.cpp:668
+#, fuzzy, kde-format
+#| msgid "Preview hidden files and directories"
+msgid "Looking for files and directories in %1..."
+msgstr "Vöransicht för versteken Dateien un Ornern"
+
+#: smb4k/smb4kmainwindow.cpp:685
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:690
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Datei warrt na Drucker %1 sendt...."
+
+#: smb4k/smb4kmainwindow.cpp:694
+#, fuzzy, kde-format
+#| msgid "Searching for \"%1\"..."
+msgid "Searching..."
+msgstr "\"%1\" warrt söcht..."
+
+#: smb4k/smb4kmainwindow.cpp:712 smb4k/smb4kmainwindow.cpp:749
+#: smb4k/smb4kmainwindow.cpp:861
+#, kde-format
+msgid "Done."
+msgstr "Fardig."
+
+#: smb4k/smb4kmainwindow.cpp:722
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Mounting..."
+msgstr "Inhangen"
+
+#: smb4k/smb4kmainwindow.cpp:726
+#, fuzzy, kde-format
+#| msgid "Unmounting share %1..."
+msgid "Unmounting..."
+msgstr "Freegaav %1 warrt afhangt..."
+
+#: smb4k/smb4kmainwindow.cpp:730
+#, kde-format
+msgid "Waking up host..."
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:760
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "\"%1\" wöör mit Spood inhangt."
+
+#: smb4k/smb4kmainwindow.cpp:793
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "\"%1\" wöör mit Spood afhangt."
+
+#: smb4k/smb4kmainwindow.cpp:849
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "%1 warrt synkroniseert"
+
+#: smb4k/smb4knetworkbrowser.cpp:43
+#, kde-format
+msgid "Type"
+msgstr "Typ"
+
+#: smb4k/smb4knetworkbrowser.cpp:44
+#, kde-format
+msgid "IP Address"
+msgstr "IP-Adress"
+
+#: smb4k/smb4knetworkbrowser.cpp:45
+#, kde-format
+msgid "Comment"
+msgstr "Kommentar"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:472
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:484
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "&Nettwark dörkieken"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#, kde-format
+msgid "&Abort"
+msgstr "&Afbreken"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#, kde-format
+msgid "&Search"
+msgstr "&Söken"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "Inhangdialoog &opmaken"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
+#, kde-format
+msgid "Au&thentication"
+msgstr "&Identiteetprööv"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:191
+#, kde-format
+msgid "&Custom Options"
+msgstr "Egen Opts&chonen"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#, kde-format
+msgid "Pre&view"
+msgstr "&Vöransicht"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#, kde-format
+msgid "&Print File"
+msgstr "&Datei drucken"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:225
+#, kde-format
+msgid "&Mount"
+msgstr "&Inhangen"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:184
+#, kde-format
+msgid "&Unmount"
+msgstr "&Afhangen"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:393
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Reekner dö&rkieken"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Arbeidkoppel dö&rkieken"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#, kde-format
+msgid "Close"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#, fuzzy, kde-format
+#| msgid "Server string:"
+msgid "Search string"
+msgstr "Serverbeteker:"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#, kde-format
+msgid "Search"
+msgstr "Söken"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#, kde-format
+msgid "Stop"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Item Down"
+msgstr "Indrag"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Item Up"
+msgstr "Indrag"
+
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:190
+#, kde-format
+msgid "U&nmount All"
+msgstr "All afha&ngen"
+
+#: smb4k/smb4ksharesmenu.cpp:158
+#, kde-format
+msgid "Unmount"
+msgstr "Afhangen"
+
+#: smb4k/smb4ksharesmenu.cpp:177
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Leesteken tofögen"
+
+#: smb4k/smb4ksharesmenu.cpp:190
+#, kde-format
+msgid "Synchronize"
+msgstr "Synkroniseren"
+
+#: smb4k/smb4ksharesmenu.cpp:209
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Mit Konsool opmaken"
+
+#: smb4k/smb4ksharesmenu.cpp:223
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Mit Dateipleger opmaken"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#, kde-format
+msgid "View Modes"
+msgstr ""
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:155
+#, kde-format
+msgid "Icon View"
+msgstr "Lüttbildansicht"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:161
+#, kde-format
+msgid "List View"
+msgstr "Listansicht"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:202
+#, kde-format
+msgid "S&ynchronize"
+msgstr "S&ynkroniseren"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:208
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Mit Konsoo&l opmaken"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Mit Date&ipleger opmaken"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:366
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "yes"
+msgstr "Jo"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "no"
+msgstr "Nee"
+
+#: smb4k/smb4ktooltip.cpp:210
+#, kde-format
+msgid "Type:"
+msgstr "Typ:"
+
+#: smb4k/smb4ktooltip.cpp:225
+#, kde-format
+msgid "Workgroup"
+msgstr "Arbeidkoppel"
+
+#: smb4k/smb4ktooltip.cpp:228
+#, kde-format
+msgid "Master Browser:"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:256
+#, kde-format
+msgid "Host"
+msgstr "Reekner"
+
+#: smb4k/smb4ktooltip.cpp:259 smb4k/smb4ktooltip.cpp:303
+#, kde-format
+msgid "Comment:"
+msgstr "Kommentar:"
+
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:345
+#, kde-format
+msgid "IP Address:"
+msgstr "IP-Adress:"
+
+#: smb4k/smb4ktooltip.cpp:283
+#, kde-format
+msgid "Workgroup:"
+msgstr "Arbeidkoppel:"
+
+#: smb4k/smb4ktooltip.cpp:300
+#, fuzzy, kde-format
+#| msgid "Shares"
+msgid "Share (%1)"
+msgstr "Freegaven"
+
+#: smb4k/smb4ktooltip.cpp:315
+#, fuzzy, kde-format
+#| msgid "Mounted"
+msgid "Mounted:"
+msgstr "Inhangt"
+
+#: smb4k/smb4ktooltip.cpp:334
+#, fuzzy, kde-format
+#| msgid "Host"
+msgid "Host:"
+msgstr "Reekner"
+
+#: smb4k/smb4ktooltip.cpp:357 smb4k/smb4ktooltip.cpp:437
+#, fuzzy, kde-format
+#| msgid "Actions"
+msgid "Location:"
+msgstr "Akschonen"
+
+#: smb4k/smb4ktooltip.cpp:392 smb4k/smb4ktooltip.cpp:399
+#: smb4k/smb4ktooltip.cpp:464 smb4k/smb4ktooltip.cpp:476
+#: smb4k/smb4ktooltip.cpp:477 smb4k/smb4ktooltip.cpp:506
+#, kde-format
+msgid "unknown"
+msgstr "nich begäng"
+
+#: smb4k/smb4ktooltip.cpp:397 smb4k/smb4ktooltip.cpp:504
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 free vun %2 (%3 bruukt)"
+
+#: smb4k/smb4ktooltip.cpp:448
+#, fuzzy, kde-format
+#| msgid "Mountpoint"
+msgid "Mountpoint:"
+msgstr "Inhangsteed"
+
+#: smb4k/smb4ktooltip.cpp:459
+#, fuzzy, kde-format
+#| msgid "User:"
+msgid "Username:"
+msgstr "Bruker:"
+
+#: smb4k/smb4ktooltip.cpp:471
+#, kde-format
+msgid "Owner:"
+msgstr "Eegner:"
+
+#: smb4k/smb4ktooltip.cpp:485
+#, fuzzy, kde-format
+#| msgid "File system"
+msgid "File system:"
+msgstr "Dateisysteem"
+
+#: smb4k/smb4ktooltip.cpp:496
+#, fuzzy, kde-format
+#| msgid "Size"
+msgid "Size:"
+msgstr "Grött"
+
+#, fuzzy
+#~| msgid "Show details"
+#~ msgid "Details"
+#~ msgstr "Enkelheiten wiesen"
+
+#~ msgid "Entry"
+#~ msgstr "Indrag"
+
+#, fuzzy
+#~| msgid "User Interface"
+#~ msgid "Username"
+#~ msgstr "Böversiet"
+
+#~ msgid "Password"
+#~ msgstr "Passwoort"
+
+#, fuzzy
+#~| msgid "Behavior"
+#~ msgid "Behavior:"
+#~ msgstr "Bedregen"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgid "General:"
+#~ msgstr "Allmeen"
+
+#, fuzzy
+#~| msgid "Owner:"
+#~ msgid "Ownership:"
+#~ msgstr "Eegner:"
+
+#, fuzzy
+#~| msgid "General Settings"
+#~ msgid "Miscellaneous:"
+#~ msgstr "Allgemeen Instellen"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Besünner Filterregeln:"
+
+#, fuzzy
+#~| msgid "Notifications"
+#~ msgid "Identification"
+#~ msgstr "Bescheden"
+
+#, fuzzy
+#~| msgid "Network"
+#~ msgid "Network Item"
+#~ msgstr "Nettwark"
+
+#, fuzzy
+#~| msgid "IP address:"
+#~ msgid "MAC Address"
+#~ msgstr "IP-Adress:"
+
+#, fuzzy
+#~| msgid "IP address:"
+#~ msgid "MAC Address:"
+#~ msgstr "IP-Adress:"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Actions"
+#~ msgstr "Optschonen"
+
+#, fuzzy
+#~| msgid "General Settings"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Allgemeen Instellen"
+
+#, fuzzy
+#~| msgid "Bookmark Editor"
+#~ msgid "Always remount this share"
+#~ msgstr "Leesteken-Editor"
+
+#, fuzzy
+#~| msgid "&Settings"
+#~ msgid "Browse Settings:"
+#~ msgstr "&Instellen"
+
+#, fuzzy
+#~| msgid "Common Options"
+#~ msgid "Common Settings:"
+#~ msgstr "Allmeen Optschonen"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Authentication:"
+#~ msgstr "Identiteetprööv"
+
+#, fuzzy
+#~| msgid "Security"
+#~ msgid "Security:"
+#~ msgstr "Sekerheit"
+
+#, fuzzy
+#~| msgid "&Settings"
+#~ msgid "Samba Settings"
+#~ msgstr "&Instellen"
+
+#~ msgid "Default Destination"
+#~ msgstr "Standardteel"
+
+#, fuzzy
+#~| msgid "File Permissions, etc."
+#~ msgid "Permissions, etc."
+#~ msgstr "Dateiverlöven use."
+
+#~ msgid "Login"
+#~ msgstr "Anmellen"
+
+#~ msgid "Login:"
+#~ msgstr "Brukernaam:"
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "The mount process crashed."
+#~ msgstr "Den Server sien IP-Adress wiesen"
+
+#, fuzzy
+#~| msgid "Protocol:"
+#~ msgid "Protocols"
+#~ msgstr "Protokoll:"
+
+#, fuzzy
+#~| msgid "%1 free of %2 (%3 used)"
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 free vun %2 (%3 bruukt)"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "Location"
+#~ msgstr "Akschonen"
+
+#~ msgid "Owner"
+#~ msgstr "Eegner"
+
+#~ msgid "Password Storage"
+#~ msgstr "Passwoort sekern"
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Den Server sien IP-Adress wiesen"
+
+#~ msgid "Undo"
+#~ msgstr "Torüchnehmen"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Remounting"
+#~ msgstr "Inhangen"
+
+#~ msgid "Columns"
+#~ msgstr "Striepen"
+
+#~ msgid "Tooltips"
+#~ msgstr "Kortinformatschonen"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Ansicht"
+
+#, fuzzy
+#~| msgid "General Settings"
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Allgemeen Instellen"
+
+#~ msgid "Shares"
+#~ msgstr "Freegaven"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Nettwark-Warktüüchbalken"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Söök-Warktüüchbalken"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Feegaven-Warktüüchbalken"
+
+#, fuzzy
+#~| msgid "Main Toolbar"
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Hööft-Warktüüchbalken"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Hülpprogrammen"
+
+#~ msgid "Network Search"
+#~ msgstr "Nettwarksöök"
+
+#~ msgid "Abort"
+#~ msgstr "Afbreken"
+
+#~ msgid "&Clear"
+#~ msgstr "&Leddig maken"
+
+#~ msgid "The search returned no results."
+#~ msgstr "De Söök hett keen Resultaten funnen."
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "UNC Address:"
+#~ msgstr "IP-Adress:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Dateisysteemport:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Schrieftogriep:"
+
+#, fuzzy
+#~| msgid "Security"
+#~ msgid "Security Mode:"
+#~ msgstr "Sekerheit"
+
+#~ msgid "User ID:"
+#~ msgstr "Bruker-Nummer:"
+
+#~ msgid "Group ID:"
+#~ msgstr "Koppel-Nummer:"
+
+#, fuzzy
+#~| msgid "IP address:"
+#~ msgid "MAC address:"
+#~ msgstr "IP-Adress:"
+
+#~ msgid "General Options"
+#~ msgstr "Allmeen Optschonen"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Leestekens bewerken"
+
+#~ msgid "Add Group"
+#~ msgstr "Koppel tofögen"
+
+#~ msgid "Group:"
+#~ msgstr "Koppel:"
+
+#~ msgid "Group name:"
+#~ msgstr "Koppelnaam:"
+
+#~ msgid "Copying"
+#~ msgstr "Koperen"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Dateien wegdoon un överdregen"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "De Nettwarkkieker lett sik nich opstellen."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#, fuzzy
+#~| msgid "The search dialog KPart of Smb4K"
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "De Söökdialoog-Komponent vun Smb4K"
+
+#, fuzzy
+#~| msgid "\\u00A9 2007-2011, Alexander Reinholdt"
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2011: Alexander Reinholdt"
+
+#~ msgid "Search item:"
+#~ msgstr "Söökwoort:"
+
+#, fuzzy
+#~| msgid "Smb4KNetworkBrowserPart"
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#, fuzzy
+#~| msgid "The search dialog KPart of Smb4K"
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "De Söökdialoog-Komponent vun Smb4K"
+
+#~ msgid "Search Results"
+#~ msgstr "Söökresultaten"
+
+#, fuzzy
+#~| msgid "Open with Konsole"
+#~ msgid "Open With"
+#~ msgstr "Mit Konsool opmaken"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "&Shares"
+#~ msgstr "&Freegaven"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Verwiedert Nettwarkkieker"
+
+#~ msgid "Checks"
+#~ msgstr "Kiekvörgäng"
+
+#, fuzzy
+#~| msgid "Mounting share %1..."
+#~ msgid "Mounting share..."
+#~ msgstr "Freegaav \"%1\" warrt inhangt..."
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Operating system"
+#~ msgstr "Bedriefsysteem"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "De Knipp is nich in Bruuk."
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Afhangen vun \"%1\" fehlslaan."
+
+#~ msgid "File System"
+#~ msgstr "Dateisysteem"
+
+#~ msgid "Free"
+#~ msgstr "Free"
+
+#~ msgid "Used"
+#~ msgstr "Bruukt"
+
+#~ msgid "Total"
+#~ msgstr "Tosamen"
+
+#~ msgid "Usage"
+#~ msgstr "Bruuk"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Feern Porten"
+
+#~ msgid "Laptop Support"
+#~ msgstr "Klappreekner-Ünnerstütten"
+
+#~ msgid "Hardware"
+#~ msgstr "Reedschap"
+
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "In- un Afhangen"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Feern Freegaven"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Vöransicht-Dialoog"
+
+#, fuzzy
+#~| msgid "Password dialog mode is used and logins are not remembered."
+#~ msgid "The password dialog mode is used and logins are not remembered."
+#~ msgstr ""
+#~ "De Passwoortdialoog warrt bruukt, un de Anmelldaten warrt nich wohrt."
+
+#~ msgid "Start docked"
+#~ msgstr "Andockt starten"
+
+#~ msgid "Show notifications"
+#~ msgstr "Bescheden wiesen"
+
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Inhangt Freegaven as Lüttbildansicht wiesen"
+
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr "De inhangt Freegaven as Lüttbildansicht wiest."
+
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Inhangt Freegaven as Listenansicht wiesen"
+
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "De inhangt Freegaven as Listenansicht wiest."
+
+#~ msgid "Show printer shares"
+#~ msgstr "Druckerfreegaven wiesen"
+
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "Druckerfreegaven warrt in'n Nettwarkkieker wiest."
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Versteken Freegaven wiesen"
+
+#~ msgid ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgstr ""
+#~ "Versteken Freegaven warrt in'n Nettwarkkieker wiest. Versteken Freegaven "
+#~ "hebbt en $-Teken an't Enn, a.B.: Musik$ oder IPC$."
+
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Versteken IPC$-Freegaven wiesen"
+
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr "Versteken IPC$-Freegaven warrt in'n Nettwarkkieker wiest."
+
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Versteken ADMIN$-Freegaven wiesen"
+
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr "Versteken ADMIN$-Freegaven warrt in'n Nettwarkkieker wiest."
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "Show the type of the share"
+#~ msgstr "Den Server sien IP-Adress wiesen"
+
+#, fuzzy
+#~| msgid ""
+#~| "Hidden shares will be displayed in the network browser. Hidden shares "
+#~| "are ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgid ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+#~ msgstr ""
+#~ "Versteken Freegaven warrt in'n Nettwarkkieker wiest. Versteken Freegaven "
+#~ "hebbt en $-Teken an't Enn, a.B.: Musik$ oder IPC$."
+
+#~ msgid "Show the IP address of the server"
+#~ msgstr "Den Server sien IP-Adress wiesen"
+
+#, fuzzy
+#~| msgid "Printer shares will be displayed in the network browser."
+#~ msgid ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+#~ msgstr "Druckerfreegaven warrt in'n Nettwarkkieker wiest."
+
+#~ msgid "Show the comment"
+#~ msgstr "Kommentar wiesen"
+
+#, fuzzy
+#~| msgid "Printer shares will be displayed in the network browser."
+#~ msgid ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+#~ msgstr "Druckerfreegaven warrt in'n Nettwarkkieker wiest."
+
+#, fuzzy
+#~| msgid "Show a tooltip with information about the share"
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "Kortinformatschonen över de Freegaven wiesen"
+
+#, fuzzy
+#~| msgid "Show a tooltip with information about the share"
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr "Kortinformatschonen över de Freegaven wiesen"
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Den Server sien IP-Adress wiesen"
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "All inhangt Freegaven binnen dat Systeem wiesen"
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Kortinformatschonen över de Freegaven wiesen"
+
+#, fuzzy
+#~| msgid "Show a tooltip with information about the share"
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr "Kortinformatschonen över de Freegaven wiesen"
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Eegner un Koppel wiesen"
+
+#, fuzzy
+#~| msgid "Show the login"
+#~ msgid "Show the login name"
+#~ msgstr "Brukernaam wiesen"
+
+#~ msgid "Show the file system"
+#~ msgstr "Dateisysteem wiesen"
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Free Platz op de Fastplaat wiesen"
+
+#, fuzzy
+#~| msgid "Show the free disk space"
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "Free Platz op de Fastplaat wiesen"
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Bruukt Platz op de Fastplaat wiesen"
+
+#, fuzzy
+#~| msgid "Show all shares that are mounted on the system"
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "All inhangt Freegaven binnen dat Systeem wiesen"
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Heel Platz op de Fastplaat wiesen"
+
+#, fuzzy
+#~| msgid "Show the total disk space"
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "Heel Platz op de Fastplaat wiesen"
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Plaatbruuk wiesen"
+
+#, fuzzy
+#~| msgid "The advanced network neighborhood browser for KDE."
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Verwiedert Nettwarkkieker för KDE"
+
+#, fuzzy
+#~| msgid "The file is invalid."
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "De Datei is leeg."
+
+#, fuzzy
+#~| msgid "Broadcast address:"
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Rundroop-Adress:"
+
+#, fuzzy
+#~| msgid "The advanced network neighborhood browser for KDE."
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Verwiedert Nettwarkkieker för KDE"
+
+#, fuzzy
+#~| msgid "The advanced network neighborhood browser for KDE."
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr "Verwiedert Nettwarkkieker för KDE"
+
+#, fuzzy
+#~| msgid "Mount Share"
+#~ msgid "Mount prefix:"
+#~ msgstr "Freegaven inhangen"
+
+#, fuzzy
+#~| msgid "Show all shares that are mounted on the system"
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "All inhangt Freegaven binnen dat Systeem wiesen"
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "Force the unmounting of inaccessible shares"
+#~ msgstr "Den Server sien IP-Adress wiesen"
+
+#~ msgid "Use a default login"
+#~ msgstr "En Standardanmellen bruken"
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS-Naam:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domään:"
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS-Rebeet:"
+
+#~ msgid "SMB port:"
+#~ msgstr "SMB-Port:"
+
+#~ msgid "File system port:"
+#~ msgstr "Dateisysteemport:"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Identiteetprööv"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Identiteetprööv"
+
+#~ msgid "None"
+#~ msgstr "Keen"
+
+#~ msgid "On"
+#~ msgstr "An"
+
+#~ msgid "Off"
+#~ msgstr "Ut"
+
+#~ msgid "Required"
+#~ msgstr "Nödig"
+
+#~ msgid "default"
+#~ msgstr "Standard"
+
+#~ msgid "iso8859-1"
+#~ msgstr "ISO-8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "ISO-8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "ISO-8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "ISO-8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "ISO-8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "ISO-8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "ISO-8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "ISO-8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "ISO-8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "ISO-8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "ISO-8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "ISO-88159-5"
+
+#~ msgid "utf8"
+#~ msgstr "UTF-8"
+
+#~ msgid "koi8-r"
+#~ msgstr "KOI8-R"
+
+#~ msgid "koi8-u"
+#~ msgstr "KOI8-U"
+
+#~ msgid "koi8-ru"
+#~ msgstr "KOI8-RU"
+
+#~ msgid "cp1251"
+#~ msgstr "CP1251"
+
+#~ msgid "gb2312"
+#~ msgstr "GB2312"
+
+#~ msgid "big5"
+#~ msgstr "BIG5"
+
+#~ msgid "euc-jp"
+#~ msgstr "EUC-JP"
+
+#~ msgid "euc-kr"
+#~ msgstr "EUC-KR"
+
+#~ msgid "tis-620"
+#~ msgstr "TIS-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Server-Tekentabell:"
+
+#~ msgid "cp437"
+#~ msgstr "CP437"
+
+#~ msgid "cp720"
+#~ msgstr "CP720"
+
+#~ msgid "cp737"
+#~ msgstr "CP737"
+
+#~ msgid "cp775"
+#~ msgstr "CP775"
+
+#~ msgid "cp850"
+#~ msgstr "CP850"
+
+#~ msgid "cp852"
+#~ msgstr "CP852"
+
+#~ msgid "cp855"
+#~ msgstr "CP855"
+
+#~ msgid "cp857"
+#~ msgstr "CP857"
+
+#~ msgid "cp858"
+#~ msgstr "CP858"
+
+#~ msgid "cp860"
+#~ msgstr "CP860"
+
+#~ msgid "cp861"
+#~ msgstr "CP861"
+
+#~ msgid "cp862"
+#~ msgstr "CP862"
+
+#~ msgid "cp863"
+#~ msgstr "CP863"
+
+#~ msgid "cp864"
+#~ msgstr "CP864"
+
+#~ msgid "cp865"
+#~ msgstr "CP865"
+
+#~ msgid "cp866"
+#~ msgstr "CP866"
+
+#~ msgid "cp869"
+#~ msgstr "CP869"
+
+#~ msgid "cp874"
+#~ msgstr "CP874"
+
+#~ msgid "cp932"
+#~ msgstr "CP932"
+
+#~ msgid "cp936"
+#~ msgstr "CP936"
+
+#~ msgid "cp949"
+#~ msgstr "CP949"
+
+#~ msgid "cp950"
+#~ msgstr "CP950"
+
+#~ msgid "cp1250"
+#~ msgstr "CP1250"
+
+#~ msgid "cp1252"
+#~ msgstr "CP1252"
+
+#~ msgid "cp1253"
+#~ msgstr "CP1253"
+
+#~ msgid "cp1254"
+#~ msgstr "CP1254"
+
+#~ msgid "cp1255"
+#~ msgstr "CP1255"
+
+#~ msgid "cp1256"
+#~ msgstr "CP1256"
+
+#~ msgid "cp1257"
+#~ msgstr "CP1257"
+
+#~ msgid "cp1258"
+#~ msgstr "CP1258"
+
+#~ msgid "unicode"
+#~ msgstr "Unicode"
+
+#~ msgid "File mask:"
+#~ msgstr "Dateimuster:"
+
+#~ msgid "Directory mask:"
+#~ msgstr "Ornermuster:"
+
+#, fuzzy
+#~| msgid "Write Access:"
+#~ msgid "Write access:"
+#~ msgstr "Schrieftogriep:"
+
+#~ msgid "read-write"
+#~ msgstr "lees- un schriefbor"
+
+#~ msgid "read-only"
+#~ msgstr "bloots-leesbor"
+
+#~ msgid "Do permission checks"
+#~ msgstr "Verlöven pröven"
+
+#, fuzzy
+#~| msgid "Protocol:"
+#~ msgid "Protocol hint:"
+#~ msgstr "Protokoll:"
+
+#~ msgid "Automatic detection"
+#~ msgstr "Automaatsch rutfinnen"
+
+#, fuzzy
+#~| msgid "Operating system"
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "Bedriefsysteem"
+
+#, fuzzy
+#~| msgid "Operating system"
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "Bedriefsysteem"
+
+#~ msgid "Buffer size:"
+#~ msgstr "Puffergrött:"
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Rundroop-Adress:"
+
+#, fuzzy
+#~| msgid "Security"
+#~ msgid "Security mode:"
+#~ msgstr "Sekerheit"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Kerberos-Identiteetprööv bruken"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Kerberos-Identiteetprööv bruken"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLM protocol"
+#~ msgstr "Protokoll"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "Kerberos-Identiteetprööv bruken"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "Protokoll"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "Kerberos-Identiteetprööv bruken"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "Protokoll"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "Kerberos-Identiteetprööv bruken"
+
+#~ msgid "Archive mode"
+#~ msgstr "Archivbedrief"
+
+#~ msgid "Update files"
+#~ msgstr "Dateien opfrischen"
+
+#, fuzzy
+#~| msgid "Update files"
+#~ msgid "Update files in place"
+#~ msgstr "Dateien opfrischen"
+
+#~ msgid "Use relative path names"
+#~ msgstr "Relatiev Paddnaams bruken"
+
+#, fuzzy
+#~| msgid "Delete files during transfer"
+#~ msgid "Compress data during transfer"
+#~ msgstr "Dateien bi't Överdregen wegmaken"
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Symboolsch Links wohren"
+
+#~ msgid "Copy symlinks as symlinks (-l, --links)."
+#~ msgstr "Symboolsch Links as \"Symlinks\" koperen (-l, --links)."
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Symboolsch Links ümwanneln"
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Bloots nich sekere symboolsch Links ümwanneln"
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Nich sekere symboolsch Links övergahn"
+
+#, fuzzy
+#~| msgid "Preserve symlinks"
+#~ msgid "Preserve hard links"
+#~ msgstr "Symboolsch Links wohren"
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Orner-Symlinks wohren"
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Verlöven wohren"
+
+#~ msgid "Preserve group"
+#~ msgstr "Koppel wohren"
+
+#~ msgid "Preserve owner"
+#~ msgstr "Eegner wohren"
+
+#~ msgid "Preserve times"
+#~ msgstr "Tieden wohren"
+
+#~ msgid "Remove synchronized source files"
+#~ msgstr "Synkroniseert Borndateien wegmaken"
+
+#, fuzzy
+#~| msgid "Also delete excluded files"
+#~ msgid "Delete extraneous files"
+#~ msgstr "Utslaten Dateien wegmaken"
+
+#~ msgid "Delete files before transfer"
+#~ msgstr "Dateien ehr't Överdregen wegmaken"
+
+#~ msgid "Delete files after transfer"
+#~ msgstr "Dateien na't Överdregen wegmaken"
+
+#~ msgid "Delete files during transfer"
+#~ msgstr "Dateien bi't Överdregen wegmaken"
+
+#~ msgid "Also delete excluded files"
+#~ msgstr "Utslaten Dateien wegmaken"
+
+#, fuzzy
+#~| msgid "Preview hidden files and directories"
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Vöransicht för versteken Dateien un Ornern"
+
+#, fuzzy
+#~| msgid "Ignore files that already exist"
+#~ msgid "Auto-ignore files in the same way CVS does"
+#~ msgstr "Al vörhannen Dateien övergahn"
+
+#, fuzzy
+#~| msgid "Special filter rules:"
+#~ msgid "Custom filter rules:"
+#~ msgstr "Besünner Filterregeln:"
+
+#, fuzzy
+#~| msgid "Ignore files that already exist"
+#~ msgid "Only update files that already exist"
+#~ msgstr "Al vörhannen Dateien övergahn"
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Al vörhannen Dateien övergahn"
+
+#, fuzzy
+#~| msgid "Delete files before transfer"
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Dateien ehr't Överdregen wegmaken"
+
+#~ msgid "Make backups"
+#~ msgstr "Sekerheitkopien opstellen"
+
+#~ msgid "Backup suffix:"
+#~ msgstr "Sekerheitkopie-Prefix:"
+
+#~ msgid "Backup suffix"
+#~ msgstr "Sekerheitkopie-Suffix"
+
+#~ msgid "Backup directory:"
+#~ msgstr "Sekerheitkopie-Orner:"
+
+#~ msgid "Backup directory"
+#~ msgstr "Sekerheitkopie-Orner"
+
+#~ msgid "The block size"
+#~ msgstr "De Blockgrött"
+
+#, fuzzy
+#~| msgid "The checksum seed"
+#~ msgid "Set block/file checksum seed:"
+#~ msgstr "De Pröövsumm-Startweert"
+
+#~ msgid "The checksum seed"
+#~ msgstr "De Pröövsumm-Startweert"
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Leestekens tofögen"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Leestekens wegdoon"
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr "\"%1\" wöör mit Spood afhangt."
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB-Port:"
+
+#~ msgid "Specify User"
+#~ msgstr "Bruker angeven"
+
+#~ msgid "Please specify a username."
+#~ msgstr "Bitte en Brukernaam angeven."
+
+#, fuzzy
+#~| msgid "Remote Shares"
+#~ msgid "Foreign Share"
+#~ msgstr "Feern Freegaven"
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Freegaav %1 warrt afhangt..."
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Freegaav %1 warrt afhangt..."
+
+#~ msgid "Mount Share"
+#~ msgstr "Freegaven inhangen"
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Disse Freegaav de Leestekens tofögen"
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "\"%1\" wöör mit Spood afhangt."
+
+#~ msgid "Open"
+#~ msgstr "Opmaken"
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr "\"%1\" wöör mit Spood afhangt."
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "\"%1\" wöör mit Spood afhangt."
+#~ msgstr[1] "\"%1\" wöör mit Spood afhangt."
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "\"%1\" wöör mit Spood afhangt."
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "\"%1\" wöör mit Spood afhangt."
+#~ msgstr[1] "\"%1\" wöör mit Spood afhangt."
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "\"%1\" wöör mit Spood afhangt."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#, fuzzy
+#~| msgid "The lock file could not be created."
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr "Slottdatei lett sik nich opstellen."
+
+#, fuzzy
+#~| msgid "The lock file could not be created."
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "Slottdatei lett sik nich opstellen."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
+
+#~ msgid "Preview"
+#~ msgstr "Vöransicht"
+
+#~ msgid "Reload"
+#~ msgstr "Nieg laden"
+
+#~ msgid "Back"
+#~ msgstr "Torüch"
+
+#~ msgid "Forward"
+#~ msgstr "Vörut"
+
+#~ msgid "Up"
+#~ msgstr "Na baven"
+
+#~ msgid "Print File"
+#~ msgstr "Datei drucken"
+
+#~ msgid "Printer"
+#~ msgstr "Drucker"
+
+#~ msgid "File:"
+#~ msgstr "Datei:"
+
+#~ msgid "Copies:"
+#~ msgstr "Kopien:"
+
+#~ msgid "Disk"
+#~ msgstr "Fastplaat"
+
+#, fuzzy
+#~| msgid "Synchronizing %1"
+#~ msgid "Synchronizing"
+#~ msgstr "%1 warrt synkroniseert"
+
+#~ msgid "Source"
+#~ msgstr "Born"
+
+#~ msgid "Destination"
+#~ msgstr "Teel"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Teel mit Born synkroniseren"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Born un Teel tuschen"
+
+#~ msgid "Source:"
+#~ msgstr "Born:"
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
+
+#, fuzzy
+#~| msgid "&Open Mount Dialog"
+#~ msgid "Mount Dialog"
+#~ msgstr "Inhangdialoog &opmaken"
+
+#, fuzzy
+#~| msgid "U&nmount All"
+#~ msgid "Unmount All"
+#~ msgstr "All afha&ngen"
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Freegaav %1 warrt afhangt..."
+
+#~ msgid "IP address:"
+#~ msgstr "IP-Adress:"
+
+#~ msgid "Mount"
+#~ msgstr "Inhangen"
+
+#, fuzzy
+#~| msgid "One or more utility programs could not be found."
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr "Een oder mehr Hülpprogrammen nich opdeckt."
+
+#~ msgid "Advanced"
+#~ msgstr "Verwiedert"
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#~ msgid "Force Unmounting"
+#~ msgstr "Afhangen verdwingen"
+
+#, fuzzy
+#~| msgid ""
+#~| "\\u00A9 2003-2009 Alexander Reinholdt\n"
+#~| "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr ""
+#~ "\\u00A9 2003-2009:  Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007: Massimo Callegari"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "&Afhangen verdwingen"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "UNC Address"
+#~ msgstr "IP-Adress:"
+
+#~ msgid "Write Access"
+#~ msgstr "Schrieftogriep"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "Bruker-ID"
+
+#~ msgid "Group ID"
+#~ msgstr "Koppel-ID"
+
+#~ msgid "SMB Port"
+#~ msgstr "SMB-Port"
+
+#~ msgid "File System Port"
+#~ msgstr "Dateisysteemport"
+
+#~ msgid "Automatic"
+#~ msgstr "Automaatsch"
+
+#~ msgid "Massimo Callegari"
+#~ msgstr "Massimo Callegari"
+
+#~ msgid "A&dd"
+#~ msgstr "&Tofögen"
+
+#~ msgid "automatic"
+#~ msgstr "automaatsch"
+
+#~ msgid "M&ount Manually"
+#~ msgstr "Vun Hand inhangen"
+
+#~ msgid "Bookmark Editor"
+#~ msgstr "Leesteken-Editor"
+
+#~ msgid "Bookmark"
+#~ msgstr "Leesteken"
+
+#, fuzzy
+#~| msgid "Print File"
+#~ msgid "Printing"
+#~ msgstr "Datei drucken"
+
+#, fuzzy
+#~| msgid "Print File"
+#~ msgid "Input File"
+#~ msgstr "Datei drucken"
+
+#~ msgid "The file is invalid."
+#~ msgstr "De Datei is leeg."
+
+#~ msgid "Files transferred:"
+#~ msgstr "Överdragen Dateien:"
+
+#~ msgid "Transfer rate:"
+#~ msgstr "Överdreeggauheit::"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "NoSuchAction"
+#~ msgstr "Akschonen"
+
+#, fuzzy
+#~| msgid "The lock file could not be created."
+#~ msgid "The directory <b>%1</b> could not be created."
+#~ msgstr "Slottdatei lett sik nich opstellen."
+
+#, fuzzy
+#~| msgid "Links"
+#~ msgid "List"
+#~ msgstr "Links"
+
+#~ msgid "\\u00A9 2007-2009, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2009: Alexander Reinholdt"
+
+#~ msgid "Free:"
+#~ msgstr "Free:"
+
+#~ msgid "Used:"
+#~ msgstr "Bruukt:"
+
+#~ msgid "Total:"
+#~ msgstr "Tosamen:"
+
+#~ msgid "Usage:"
+#~ msgstr "Bruuk:"
+
+#~ msgid "This share is inaccessible."
+#~ msgstr "Keen Togriep op disse Freegaav."
+
+#~ msgid "Smb4KSearchDialogPart"
+#~ msgstr "Söökdialoog-Komponent vun Smb4K"
+
+#~ msgid "Remove Entries"
+#~ msgstr "Indrääg wegmaken"
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "Writing to the <b>sudoers</b> file failed."
+#~ msgstr "Inhangen vun \"%1\" fehlslaan."
+
+#, fuzzy
+#~ msgid "(C) 2010, Alexander Reinholdt"
+#~ msgstr "© 2008: Alexander Reinholdt"
+
+#, fuzzy
+#~| msgid "smb4k_sudowriter"
+#~ msgid "smb4k_mount"
+#~ msgstr "smb4k_sudowriter"
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "The UNC of the remote share"
+#~ msgstr "Den Server sien IP-Adress wiesen"
+
+#~ msgid "Aborting."
+#~ msgstr "Afbrook."
+
+#, fuzzy
+#~ msgid "(C) 2008-2010, Alexander Reinholdt"
+#~ msgstr "© 2008: Alexander Reinholdt"
+
+#~ msgid "smb4k_sudowriter"
+#~ msgstr "smb4k_sudowriter"
+
+#, fuzzy
+#~| msgid "No arguments given."
+#~ msgid "No valid arguments provided."
+#~ msgstr "Keen Argumenten angeven."
+
+#~ msgid "The lock file could not be created."
+#~ msgstr "Slottdatei lett sik nich opstellen."
+
+#, fuzzy
+#~| msgid "The lock file could not be created."
+#~ msgid "The sudoers file is currently being edited."
+#~ msgstr "Slottdatei lett sik nich opstellen."
+
+#~ msgid "An invalid username has been provided."
+#~ msgstr "Leeg Brukernaam ingeven."
+
+#, fuzzy
+#~| msgid "smb4k_sudowriter"
+#~ msgid "smb4k_umount"
+#~ msgstr "smb4k_sudowriter"
+
+#~ msgid "System Tray"
+#~ msgstr "Systeemafsnitt"
+
+#~ msgid "Embed application into the system tray"
+#~ msgstr "Programm na Systeemafsnitt inbedden"
+
+#~ msgid "on"
+#~ msgstr "an"
+
+#, fuzzy
+#~| msgid "Preview"
+#~ msgid "The preview"
+#~ msgstr "Vöransicht"
+
+#, fuzzy
+#~| msgid "Backup directory"
+#~ msgid "The source directory"
+#~ msgstr "Sekerheitkopie-Orner"
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "The UNC address of the host"
+#~ msgstr "Den Server sien IP-Adress wiesen"
+
+#, fuzzy
+#~| msgid "Write Access"
+#~ msgid "The write access"
+#~ msgstr "Schrieftogriep"
+
+#, fuzzy
+#~| msgid "User ID:"
+#~ msgid "The user ID"
+#~ msgstr "Bruker-ID:"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "The group ID"
+#~ msgstr "Koppel-ID:"
+
+#~ msgid "Name:"
+#~ msgstr "Naam:"
+
+#~ msgid "UID"
+#~ msgstr "UID"
+
+#~ msgid "GID"
+#~ msgstr "GID"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "Delete"
+#~ msgstr "Wegdoon"
+
+#~ msgid "Dutch translation"
+#~ msgstr "Nedderlannsch Översetten"
+
+#~ msgid "Serdar Soytetir"
+#~ msgstr "Serdar Soytetir"
+
+#~ msgid "Wei-Lun Chao"
+#~ msgstr "Wei-Lun Chao"
+
+#~ msgid "Rashid N. Achilov"
+#~ msgstr "Rashid N. Achilov"
+
+#~ msgid "Jerzy Trzeciak"
+#~ msgstr "Jerzy Trzeciak"

@@ -373,7 +373,7 @@ SPDX-License-Identifier: CC0-1.0
       <li>Network search</li>
       <li xml:lang="bs">Pretraga mreže</li>
       <li xml:lang="ca">Cerca a la xarxa</li>
-      <li xml:lang="ca-valencia">Busca a la xarxa</li>
+      <li xml:lang="ca-valencia">Busca en la xarxa</li>
       <li xml:lang="cs">Prohledání sítě</li>
       <li xml:lang="da">Netværkssøgning</li>
       <li xml:lang="de">Netzwerksuche</li>
@@ -871,7 +871,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fi">Pääikkuna</caption>
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal</caption>
-      <caption xml:lang="id">Window utama</caption>
+      <caption xml:lang="id">Jendela utama</caption>
       <caption xml:lang="it">La finestra principale</caption>
       <caption xml:lang="ko">주 창</caption>
       <caption xml:lang="nds">Dat Hööftfinster</caption>

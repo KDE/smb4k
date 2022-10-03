@@ -1,0 +1,126 @@
+# Translation of plasma_applet_org.kde.smb4kqml.po to Catalan
+# Copyright (C) 2014-2021 This_file_is_part_of_KDE
+# This file is distributed under the license LGPL version 2.1 or
+# version 3 or later versions approved by the membership of KDE e.V.
+#
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2017, 2018, 2019, 2021.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2021-10-24 17:42+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Accelerator-Marker: &\n"
+"X-Generator: Lokalize 20.12.0\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">a %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr "Retrocedeix"
+
+#: package/contents/ui/BookmarksPage.qml:41
+msgid "Edit bookmarks"
+msgstr "Edita les adreces d'interès"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr "Diàleg de configuració"
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr "Veïnatge de xarxa"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+msgid "Bookmark"
+msgstr "Adreça d'interès"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "Torna a escanejar"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "Interromp"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr "Ves un nivell amunt"
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+msgid "Open the mount dialog"
+msgstr "Obre el diàleg de muntatge"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr "Comparticions muntades"
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "Adreces d'interès"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr "Perfils"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr "Configuració"
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr "(actiu)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr "Sincronitza"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr "Desmunta"
+
+#: package/contents/ui/SharesViewPage.qml:34
+msgid "Unmount all shares"
+msgstr "Desmunta totes les comparticions"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Edita les adreces d'interès"
+
+#~ msgid "OK"
+#~ msgstr "D'acord"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancel·la"
+
+#~ msgid "Clear"
+#~ msgstr "Neteja"
+
+#~ msgid "Label:"
+#~ msgstr "Etiqueta:"
+
+#~ msgid "Login:"
+#~ msgstr "Usuari:"
+
+#~ msgid "IP Address:"
+#~ msgstr "Adreça IP:"
+
+#~ msgid "Group Name:"
+#~ msgstr "Nom del grup:"
+
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "Adreces d'interès de nivell superior"
+
+#~ msgid "Delete Bookmark"
+#~ msgstr "Suprimeix l'adreça d'interès"

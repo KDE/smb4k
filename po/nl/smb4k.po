@@ -1,0 +1,4293 @@
+# translation of nl.po to Dutch
+# translation of nl.po to
+# translation of nl.po to
+# translation of smb4k2.po to
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Joop Beris <jberis@risse.nl>, 2005, 2006.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2012.
+# Freek de Kruijf <f.de.kruijf@gmail.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: nl\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"PO-Revision-Date: 2022-07-09 11:29+0200\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 22.04.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Freek de Kruijf - t/m 2022"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "freekdekruijf@kde.nl"
+
+#: helpers/smb4kmounthelper.cpp:136
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "Het aankoppelproces kon niet gestart worden."
+
+#: helpers/smb4kmounthelper.cpp:179
+#, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr "Het aankoppelpunt %1 is ongeldig."
+
+#: helpers/smb4kmounthelper.cpp:241
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr "Het afkoppelproces kon niet worden gestart."
+
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:45
+#, kde-format
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr ""
+"De geavanceerde browser voor de netwerkomgeving en hulpprogramma van voor "
+"het aankoppelen een Samba share."
+
+#: smb4k/main.cpp:47
+#, kde-format
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:56
+#, kde-format
+msgid "Developer"
+msgstr "Ontwikkelaar"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr "Wolfgang Geisendörfer"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "Donator"
+msgstr "Donateur"
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Bestand"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Netwerk"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "Ged&eelde mappen"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "Bladwij&zers"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "&Instellingen"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Hoofdwerkbalk"
+
+#: smb4k/smb4kbookmarkmenu.cpp:29
+#, kde-format
+msgid "Bookmarks"
+msgstr "Bladwijzers"
+
+#: smb4k/smb4kbookmarkmenu.cpp:50
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Bladwijzers bewerken"
+
+#: smb4k/smb4kbookmarkmenu.cpp:59 smb4k/smb4kmainwindow.cpp:144
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
+#: smb4k/smb4ksharesviewdockwidget.cpp:196
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "&Bladwijzer toevoegen"
+
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "Alle bladwijzers aankoppelen"
+
+#: smb4k/smb4kconfigdialog.cpp:107
+#, kde-format
+msgid "User Interface"
+msgstr "Gebruikersinterface"
+
+#: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
+#, kde-format
+msgid "Network"
+msgstr "Netwerk"
+
+#: smb4k/smb4kconfigdialog.cpp:109
+#, kde-format
+msgid "Mounting"
+msgstr "Aankoppelen"
+
+#: smb4k/smb4kconfigdialog.cpp:110
+#, kde-format
+msgid "Authentication"
+msgstr "Authenticatie"
+
+#: smb4k/smb4kconfigdialog.cpp:111
+#, kde-format
+msgid "Synchronization"
+msgstr "Synchronisatie"
+
+#: smb4k/smb4kconfigdialog.cpp:112
+#, kde-format
+msgid "Custom Options"
+msgstr "Custom Opties"
+
+#: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kprofilesmenu.cpp:22
+#, kde-format
+msgid "Profiles"
+msgstr "Profielen"
+
+#: smb4k/smb4kconfigdialog.cpp:135
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+"<qt>Er is een onjuiste instelling gevonden. U wordt nu naar de "
+"overeenkomende configuratiepagina gebracht om het te repareren.</qt>"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:42
+#: smb4k/smb4kconfigpageprofiles.cpp:34
+#, kde-format
+msgid "Settings"
+msgstr "Instellingen"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:64
+#, kde-format
+msgid "Wallet Entries"
+msgstr "Items in portefeuille"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:97
+#, kde-format
+msgid "Load"
+msgstr "Laden"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#, kde-format
+msgid "Save"
+msgstr "Opslaan"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagecustomoptions.cpp:82
+#, kde-format
+msgid "Edit"
+msgstr "Bewerken"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagecustomoptions.cpp:87
+#, kde-format
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:136
+#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#, kde-format
+msgid "Clear"
+msgstr "Wissen"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:201
+#, kde-format
+msgid "Default Login"
+msgstr "Standaard Login"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#, kde-format
+msgid "Enter the default login information."
+msgstr "Voer de standaard aanmeldinformatie in."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:401
+#, kde-format
+msgid "Set the username and password for wallet entry %1."
+msgstr ""
+"De gebruikersnaam en wachtwoord instellen voor toegang tot item %1 in "
+"portefeuille."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:403
+#, kde-format
+msgid "Set the username and password for the default login."
+msgstr ""
+"De gebruikersnaam en wachtwoord instellen voor de standaard aanmelding."
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr "Alles in orde."
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:92
+#, kde-format
+msgid "Clear List"
+msgstr "Lijst wissen"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:215
+#, kde-format
+msgid "The item %1 was removed, because all custom options were reset."
+msgstr "Het item %1 is verwijderd, omdat alle aangepaste opties zijn gereset."
+
+#: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
+#, kde-format
+msgid "Directories"
+msgstr "Directories"
+
+#: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
+#: smb4k/smb4kconfigpagenetwork.cpp:112
+#: smb4k/smb4kconfigpagesynchronization.cpp:59
+#, kde-format
+msgid "Behavior"
+msgstr "Gedrag"
+
+#: smb4k/smb4kconfigpagemounting.cpp:139 smb4k/smb4kconfigpagemounting.cpp:544
+#, kde-format
+msgid " min"
+msgstr " min"
+
+#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
+#: smb4k/smb4kconfigpagenetwork.cpp:133
+#: smb4k/smb4kconfigpagesynchronization.cpp:131
+#, kde-format
+msgid "Basic Settings"
+msgstr "Basisinstellingen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
+#, kde-format
+msgid "Common Options"
+msgstr "Algemene opties"
+
+#: smb4k/smb4kconfigpagemounting.cpp:228
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr "CIFS ondersteuning van Unix-extensies"
+
+#: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
+#, kde-format
+msgid "Choose a different user"
+msgstr "Een andere gebruiker kiezen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
+#, kde-format
+msgid "Choose a different group"
+msgstr "Een andere groep kiezen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:336
+#, kde-format
+msgid "Common Mount Settings"
+msgstr "Algemene instellingen voor aankoppelen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:344
+#, kde-format
+msgid "Advanced Options"
+msgstr "Geavanceerde opties"
+
+#: smb4k/smb4kconfigpagemounting.cpp:457
+#, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "De extra CIFS-opties bewerken."
+
+#: smb4k/smb4kconfigpagemounting.cpp:470
+#, kde-format
+msgid "Advanced Mount Settings"
+msgstr "Geavanceerde instellingen voor aankoppelen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:681
+#, kde-format
+msgid "Character Sets"
+msgstr "Tekensets"
+
+#: smb4k/smb4kconfigpagemounting.cpp:729
+#, kde-format
+msgid "Mount Settings"
+msgstr "Instellingen voor aankoppelen"
+
+#: smb4k/smb4kconfigpagemounting.cpp:833
+#, kde-format
+msgid "Additional CIFS Options"
+msgstr "Extra CIFS-opties"
+
+#: smb4k/smb4kconfigpagemounting.cpp:834
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr "<qt>Voer de gewenste opties in als een kommagescheiden lijst:</qt>"
+
+#: smb4k/smb4kconfigpagemounting.cpp:862
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+"<qt>Het volgende item zal verwijderd worden uit de extra opties: %2. Lees "
+"het handboek voor details.</qt>"
+msgstr[1] ""
+"<qt>De volgende %1 items zullen verwijderd worden uit de extra opties: %2. "
+"Lees het handboek voor details.</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:40
+#, kde-format
+msgid "Browse Settings"
+msgstr "Browse-instellingen"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:144
+#, kde-format
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:196
+#, kde-format
+msgid "Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:216
+#, kde-format
+msgid " s"
+msgstr " s"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:225
+#, kde-format
+msgid "Define the hosts that should be woken up via the custom options dialog."
+msgstr ""
+"Definieer de hosts die gewekt moeten worden via de dialoog voor aangepaste "
+"opties."
+
+#: smb4k/smb4kconfigpagenetwork.cpp:235
+#, kde-format
+msgid "Advanced Settings"
+msgstr "Geavanceerde instellingen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:36
+#, kde-format
+msgid "Synchronization Directory"
+msgstr "Synchronisatiemap"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:90
+#, kde-format
+msgid "Backups"
+msgstr "Back-ups"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:140
+#, kde-format
+msgid "General"
+msgstr "Algemeen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:176
+#, kde-format
+msgid "Links"
+msgstr "Koppelingen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:223
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr "Attributen van bestand && eigendom"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#, kde-format
+msgid "File Handling"
+msgstr "Behandeling van bestanden"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#, kde-format
+msgid "Compression"
+msgstr "Compressie"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#, kde-format
+msgid "Files"
+msgstr "Bestanden"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:310
+#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#, kde-format
+msgid " KiB"
+msgstr " KiB"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#, kde-format
+msgid " KiB/s"
+msgstr " KiB/s"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#, kde-format
+msgid "File Transfer"
+msgstr "Bestand Overbrengen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#, kde-format
+msgid "Files && Directories"
+msgstr "Bestanden && mappen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#, kde-format
+msgid "Restrictions"
+msgstr "Restricties"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#, kde-format
+msgid "File Deletion"
+msgstr "Bestand Verwijderen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#, kde-format
+msgid "General Filtering Settings"
+msgstr "Algemene filterinstellingen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#, kde-format
+msgid "Filter Rules"
+msgstr "Filterregels"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#, kde-format
+msgid "Filtering"
+msgstr "Filtering"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#, kde-format
+msgid "Checksums"
+msgstr "Controlesommen"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:562
+#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#, kde-format
+msgid "Miscellaneous"
+msgstr "Overig"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:36
+#, kde-format
+msgid "Main Window"
+msgstr "Hoofdvenster"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:216
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Netwerkomgeving"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:106
+#, kde-format
+msgid "Shares View"
+msgstr "Gedeelde Mappen Weergave"
+
+#: smb4k/smb4kmainwindow.cpp:134
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Vastzetwidgets"
+
+#: smb4k/smb4kmainwindow.cpp:239 smb4k/smb4ksharesmenu.cpp:37
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Aangekoppelde gedeelde mappen"
+
+#: smb4k/smb4kmainwindow.cpp:399
+#, kde-format
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<qt>Als u het hoofdvenster van Smb4K afsluit, blijft het programma actief in "
+"het systeemvak.<br>Gebruik <i>Afsluiten</i> uit het menu <i>Bestand</i> om "
+"het programma af te sluiten.</qt>"
+
+#: smb4k/smb4kmainwindow.cpp:401
+#, kde-format
+msgid "Docking"
+msgstr "Naar systeemvak"
+
+#: smb4k/smb4kmainwindow.cpp:465
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr "Er zijn nu geen gedeelde mappen aangekoppeld."
+
+#: smb4k/smb4kmainwindow.cpp:468
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "Er is nu %1 gedeelde map aangekoppeld."
+msgstr[1] "Er zijn nu %1 gedeelde mappen aangekoppeld."
+
+#: smb4k/smb4kmainwindow.cpp:629
+#, kde-format
+msgid "The wallet is used."
+msgstr "De portefeuille is in gebruik."
+
+#: smb4k/smb4kmainwindow.cpp:632
+#, kde-format
+msgid "The password dialog is used."
+msgstr "Het wachtwoordvenster wordt gebruikt."
+
+#: smb4k/smb4kmainwindow.cpp:642
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Zoeken naar werkgroepen en domeinen..."
+
+#: smb4k/smb4kmainwindow.cpp:647
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Zoeken naar hosts in domein %1..."
+
+#: smb4k/smb4kmainwindow.cpp:652
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "Zoeken naar door host %1 geleverde gedeelde mappen..."
+
+#: smb4k/smb4kmainwindow.cpp:660 smb4k/smb4kmainwindow.cpp:668
+#, kde-format
+msgid "Looking for files and directories in %1..."
+msgstr "Zoeken naar bestanden en mappen in %1..."
+
+#: smb4k/smb4kmainwindow.cpp:685
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr "Bezig met hosts op afstand wakker te maken..."
+
+#: smb4k/smb4kmainwindow.cpp:690
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Bezig bestand naar printer %1 te zenden..."
+
+#: smb4k/smb4kmainwindow.cpp:694
+#, kde-format
+msgid "Searching..."
+msgstr "Bezig met zoeken..."
+
+#: smb4k/smb4kmainwindow.cpp:712 smb4k/smb4kmainwindow.cpp:749
+#: smb4k/smb4kmainwindow.cpp:861
+#, kde-format
+msgid "Done."
+msgstr "Gereed."
+
+#: smb4k/smb4kmainwindow.cpp:722
+#, kde-format
+msgid "Mounting..."
+msgstr "Aankoppelen..."
+
+#: smb4k/smb4kmainwindow.cpp:726
+#, kde-format
+msgid "Unmounting..."
+msgstr "Afkoppelen..."
+
+#: smb4k/smb4kmainwindow.cpp:730
+#, kde-format
+msgid "Waking up host..."
+msgstr "Host wakker maken..."
+
+#: smb4k/smb4kmainwindow.cpp:760
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "%1 is met succes aangekoppeld."
+
+#: smb4k/smb4kmainwindow.cpp:793
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "%1 is met succes afgekoppeld."
+
+#: smb4k/smb4kmainwindow.cpp:849
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "Bezig %1 te synchroniseren"
+
+#: smb4k/smb4knetworkbrowser.cpp:43
+#, kde-format
+msgid "Type"
+msgstr "Type"
+
+#: smb4k/smb4knetworkbrowser.cpp:44
+#, kde-format
+msgid "IP Address"
+msgstr "IP Adres"
+
+#: smb4k/smb4knetworkbrowser.cpp:45
+#, kde-format
+msgid "Comment"
+msgstr "Opmerking"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:472
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:484
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "Scan Netwe&rk"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#, kde-format
+msgid "&Abort"
+msgstr "&Afbreken"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#, kde-format
+msgid "&Search"
+msgstr "&Zoek"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "Dialoog voor aankoppelen &openen"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
+#, kde-format
+msgid "Au&thentication"
+msgstr "Au&thenticatie"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:191
+#, kde-format
+msgid "&Custom Options"
+msgstr "&Aangepaste opties"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
+#, kde-format
+msgid "Pre&view"
+msgstr "Pre&view"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
+#, kde-format
+msgid "&Print File"
+msgstr "Bestand a&fdrukken"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:225
+#, kde-format
+msgid "&Mount"
+msgstr "&Koppelen"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:184
+#, kde-format
+msgid "&Unmount"
+msgstr "&Afkoppelen"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:393
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Scan Compute&r"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Scan We&rkgroep"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#, kde-format
+msgid "Close"
+msgstr "Sluiten"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#, kde-format
+msgid "Search string"
+msgstr "Zoekterm"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#, kde-format
+msgid "Search"
+msgstr "Zoek"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#, kde-format
+msgid "Stop"
+msgstr "Stoppen"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#, kde-format
+msgid "Item Down"
+msgstr "Item omlaag verplaatsen"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#, kde-format
+msgid "Item Up"
+msgstr "Item omhoog verplaatsen"
+
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:190
+#, kde-format
+msgid "U&nmount All"
+msgstr "A&lles Afkoppelen"
+
+#: smb4k/smb4ksharesmenu.cpp:158
+#, kde-format
+msgid "Unmount"
+msgstr "Afkoppelen"
+
+#: smb4k/smb4ksharesmenu.cpp:177
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Bladwijzer toevoegen"
+
+#: smb4k/smb4ksharesmenu.cpp:190
+#, kde-format
+msgid "Synchronize"
+msgstr "Synchroniseren"
+
+#: smb4k/smb4ksharesmenu.cpp:209
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Openen met Konsole"
+
+#: smb4k/smb4ksharesmenu.cpp:223
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Openen met bestandsbeheerder"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:149
+#, kde-format
+msgid "View Modes"
+msgstr "Weergavemodi"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:155
+#, kde-format
+msgid "Icon View"
+msgstr "Pictogramweergave"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:161
+#, kde-format
+msgid "List View"
+msgstr "Lijstweergave"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:202
+#, kde-format
+msgid "S&ynchronize"
+msgstr "S&ynchronizeren"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:208
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Openen met Konso&le"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Openen met b&estandsbeheerder"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:366
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+"<qt>Er is geen actieve verbinding naar de share <b>%1</b>! U kunt hier geen "
+"bestanden laten vallen.</qt>"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "yes"
+msgstr "ja"
+
+#: smb4k/smb4ktooltip.cpp:167 smb4k/smb4ktooltip.cpp:323
+#, kde-format
+msgid "no"
+msgstr "nee"
+
+#: smb4k/smb4ktooltip.cpp:210
+#, kde-format
+msgid "Type:"
+msgstr "Type:"
+
+#: smb4k/smb4ktooltip.cpp:225
+#, kde-format
+msgid "Workgroup"
+msgstr "Werkgroep"
+
+#: smb4k/smb4ktooltip.cpp:228
+#, kde-format
+msgid "Master Browser:"
+msgstr "Hoofdbrowser:"
+
+#: smb4k/smb4ktooltip.cpp:256
+#, kde-format
+msgid "Host"
+msgstr "Host"
+
+#: smb4k/smb4ktooltip.cpp:259 smb4k/smb4ktooltip.cpp:303
+#, kde-format
+msgid "Comment:"
+msgstr "Opmerking:"
+
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:345
+#, kde-format
+msgid "IP Address:"
+msgstr "IP Adres:"
+
+#: smb4k/smb4ktooltip.cpp:283
+#, kde-format
+msgid "Workgroup:"
+msgstr "Werkgroep:"
+
+#: smb4k/smb4ktooltip.cpp:300
+#, kde-format
+msgid "Share (%1)"
+msgstr "Share (%1)"
+
+#: smb4k/smb4ktooltip.cpp:315
+#, kde-format
+msgid "Mounted:"
+msgstr "Aangekoppeld:"
+
+#: smb4k/smb4ktooltip.cpp:334
+#, kde-format
+msgid "Host:"
+msgstr "Host:"
+
+#: smb4k/smb4ktooltip.cpp:357 smb4k/smb4ktooltip.cpp:437
+#, kde-format
+msgid "Location:"
+msgstr "Locatie:"
+
+#: smb4k/smb4ktooltip.cpp:392 smb4k/smb4ktooltip.cpp:399
+#: smb4k/smb4ktooltip.cpp:464 smb4k/smb4ktooltip.cpp:476
+#: smb4k/smb4ktooltip.cpp:477 smb4k/smb4ktooltip.cpp:506
+#, kde-format
+msgid "unknown"
+msgstr "onbekend"
+
+#: smb4k/smb4ktooltip.cpp:397 smb4k/smb4ktooltip.cpp:504
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 vrij uit %2 (%3 gebruikt)"
+
+#: smb4k/smb4ktooltip.cpp:448
+#, kde-format
+msgid "Mountpoint:"
+msgstr "Aankoppelpunt:"
+
+#: smb4k/smb4ktooltip.cpp:459
+#, kde-format
+msgid "Username:"
+msgstr "Gebruikersnaam:"
+
+#: smb4k/smb4ktooltip.cpp:471
+#, kde-format
+msgid "Owner:"
+msgstr "Eigenaar:"
+
+#: smb4k/smb4ktooltip.cpp:485
+#, kde-format
+msgid "File system:"
+msgstr "Bestandssysteem:"
+
+#: smb4k/smb4ktooltip.cpp:496
+#, kde-format
+msgid "Size:"
+msgstr "Grootte:"
+
+#~ msgid ""
+#~ "The login information that was stored by Smb4K will be loaded from the "
+#~ "wallet."
+#~ msgstr ""
+#~ "De aanmeldinformatie die door Smb4K was opgeslagen zal uit de "
+#~ "portefeuille worden geladen."
+
+#~ msgid "All modifications you applied are saved to the wallet."
+#~ msgstr ""
+#~ "Alle door u toegepaste wijzigingen zijn in de portefeuille opgeslagen."
+
+#~ msgid "Details"
+#~ msgstr "Details"
+
+#~ msgid "Entry"
+#~ msgstr "Item"
+
+#~ msgid "Username"
+#~ msgstr "Gebruikersnaam"
+
+#~ msgid "Password"
+#~ msgstr "Wachtwoord"
+
+#~ msgid "Behavior:"
+#~ msgstr "Gedrag:"
+
+#~ msgid "General:"
+#~ msgstr "Algemeen:"
+
+#~ msgid "File Attributes:"
+#~ msgstr "Attributen van bestand:"
+
+#~ msgid "Ownership:"
+#~ msgstr "Eigendom:"
+
+#~ msgid "Miscellaneous:"
+#~ msgstr "Diversen:"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Speciale filterregels:"
+
+#~ msgid "Identification"
+#~ msgstr "Identificatie"
+
+#~ msgid "Network Item"
+#~ msgstr "Netwerkitem"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC-adres"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC-adres:"
+
+#~ msgid "Actions"
+#~ msgstr "Acties"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Stuur magic-pakket alvorens de netwerkomgeving te scannen"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Stuur magic-pakket alvorens een share aan te koppelen"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Instellingen Wake-On-LAN"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Deze share (gedeelde mappen) altijd opnieuw aankoppelen"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Deze server ondersteunt CIFS Unix-extensies"
+
+#~ msgid "Browse Settings:"
+#~ msgstr "Browse-instellingen:"
+
+#~ msgid "Profiles:"
+#~ msgstr "Profielen:"
+
+#~ msgid "Common Settings:"
+#~ msgstr "Algemene instellingen:"
+
+#~ msgid "Authentication:"
+#~ msgstr "Authenticatie:"
+
+#~ msgid "Security:"
+#~ msgstr "Beveiliging:"
+
+#~ msgid "Samba Settings"
+#~ msgstr "Samba-instellingen"
+
+#~ msgid "Default Destination"
+#~ msgstr "Standaard bestemming"
+
+#~ msgid "Permissions, etc."
+#~ msgstr "Rechten, etc."
+
+#~ msgid "Login"
+#~ msgstr "Aanmelden"
+
+#~ msgid "Login:"
+#~ msgstr "Aanmelden:"
+
+#~ msgid "The mount process crashed."
+#~ msgstr "Het aankoppelproces is gecrasht."
+
+#~ msgid "The unmount process crashed."
+#~ msgstr "Het afkoppelproces is gecrasht."
+
+#~ msgid "Protocols"
+#~ msgstr "Protocollen"
+
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 van %2 is vrij (%3 gebruikt)"
+
+#~ msgid "Location"
+#~ msgstr "Locatie"
+
+#~ msgid "Owner"
+#~ msgstr "Eigenaar"
+
+#~ msgid "The selected entry is removed from the wallet."
+#~ msgstr "Het geselecteerde item is uit de portefeuille verwijderd."
+
+#~ msgid "All entries are removed from the wallet."
+#~ msgstr "Alle items zijn uit de portefeuille verwijderd."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Dit keuzevakje activeren zal de details van de geselecteerde "
+#~ "aanmeldinformatie onderstaand tonen."
+
+#~ msgid "Password Storage"
+#~ msgstr "Wachtwoordopslag"
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Details van het geselecteerde item tonen."
+
+#~ msgid "Undo"
+#~ msgstr "Ongedaan maken"
+
+#~ msgid "Remounting"
+#~ msgstr "Wordt opnieuw aangekoppeld"
+
+#~ msgid "UNC:"
+#~ msgstr "UNC:"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
+
+#~ msgid "Columns"
+#~ msgstr "Kolommen"
+
+#~ msgid "Tooltips"
+#~ msgstr "Tooltips"
+
+#~ msgid "View Mode"
+#~ msgstr "Weergavemodus"
+
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Diverse instellingen"
+
+#~ msgid "Shares"
+#~ msgstr "Gedeelde Mappen"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Netwerkbalk"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Zoekbalk"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Gedeelde-mappen-balk"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Alternatieve hoofdwerkbalk"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Hulpprogramma's"
+
+#~ msgid "Network Search"
+#~ msgstr "Netwerk Doorzoeken"
+
+#~ msgid "Searching for \"%1\"..."
+#~ msgstr "Zoeken naar \"%1\"..."
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Hier de zoektekst invoeren."
+
+#~ msgid "Abort"
+#~ msgstr "Afbreken"
+
+#~ msgid "&Clear"
+#~ msgstr "&Wissen"
+
+#~ msgid "The search returned no results."
+#~ msgstr "De zoekopdracht gaf geen resultaten."
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Bezig met voorbeeld ophalen uit %1..."
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodiek scannen"
+
+#~ msgid "Browse List"
+#~ msgstr "Browse lijst"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-adres:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Poort voor bestandssysteem:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Schrijftoegang:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Beveiligingsmodus:"
+
+#~ msgid "User ID:"
+#~ msgstr "Gebruiker ID:"
+
+#~ msgid "Group ID:"
+#~ msgstr "Groep ID:"
+
+#~ msgid "MAC address:"
+#~ msgstr "MAC-adres:"
+
+#~ msgid "General Options"
+#~ msgstr "Algemene Opties"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Bladwijzers bewerken"
+
+#~ msgid "Add Group"
+#~ msgstr "Groep toevoegen"
+
+#~ msgid "Label:"
+#~ msgstr "Label:"
+
+#~ msgid "Group:"
+#~ msgstr "Groep:"
+
+#~ msgid "Group name:"
+#~ msgstr "Groepsnaam:"
+
+#~ msgid "Copying"
+#~ msgstr "Bezig met kopieren"
+
+#~ msgid " kB"
+#~ msgstr " kB"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Bestand verwijderen && overbrengen"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "De netwerkbrowser kon niet worden gemaakt."
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "De zoekdialoog kon niet worden gemaakt."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "Het weergeven van de gedeelde mappen kon niet worden aangemaakt."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "De netwerkburenbrowser KPart van Smb4K"
+
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "© 2007-2015, Alexander Reinholdt"
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Bezig met servers op afstand wakker te maken..."
+
+#~ msgid "Search item:"
+#~ msgstr "Zoekitem:"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "Het netwerkzoeken KPart van Smb4K"
+
+#~ msgid "Search Results"
+#~ msgstr "Zoekresultaten"
+
+#~ msgid "Open With"
+#~ msgstr "Openen met"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4kGedeeldeMappenWeergaveOnderdeel"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "De gedeelde mappen weergave KPart van Smb4k"
+
+#~ msgid "&Shares"
+#~ msgstr "&Gedeelde bronnen"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Geavanceerde browser voor de netwerkomgeving"
+
+#~ msgid "Checks"
+#~ msgstr "Controles:"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Zoeken naar meer informatie over host %1..."
+
+#~ msgid "Mounting share..."
+#~ msgstr "Gedeelde map aankoppelen..."
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Operating system"
+#~ msgstr "Besturingssysteem"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "De portefeuille is niet in gebruik."
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Aankoppelen van %1 is mislukt."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Afkoppelen van %1 is mislukt."
+
+#~ msgid "View"
+#~ msgstr "Beeld"
+
+#~ msgid "Settings for the list view:"
+#~ msgstr "Instellingen voor de lijstweergave:"
+
+#~ msgid "File System"
+#~ msgstr "Bestandssysteem"
+
+#~ msgid "Free"
+#~ msgstr "Vrij"
+
+#~ msgid "Used"
+#~ msgstr "Gebruikt"
+
+#~ msgid "Total"
+#~ msgstr "Totaal"
+
+#~ msgid "Usage"
+#~ msgstr "Gebruik"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protocolhint:"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Poorten op afstand"
+
+#~ msgid "Laptop Support"
+#~ msgstr "Ondersteuning voor laptop"
+
+#~ msgid "Hardware"
+#~ msgstr "Hardware"
+
+#~ msgid ""
+#~ "<qt>Smb4K only detects changes in state of your hardware. If you are "
+#~ "performing a software suspend or the like, you should unmount the shares "
+#~ "manually.</qt>"
+#~ msgstr ""
+#~ "<qt>Smb4K detecteert alleen wijzigingen in de status van uw hardware. Als "
+#~ "u een software onderbreking doet of zoiets, dan zou u de gedeelde mappen "
+#~ "handmatig moeten afkoppelen.</qt>"
+
+#~ msgid ""
+#~ "The custom master browser that is to be queried has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "De eigen hoofdbrowser die afgevraagd moet worden is niet ingevuld.\n"
+#~ "Gaarne nu invoeren."
+
+#~ msgid ""
+#~ "The broadcast areas that are to be scanned have not been filled in.\n"
+#~ "Please enter them now."
+#~ msgstr ""
+#~ "De broadcast-gebeiden die gescand moeten worden zijn niet ingevuld.\n"
+#~ "Voer ze nu in."
+
+#~ msgid ""
+#~ "The mount prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "De prefix voor aankoppelen is niet ingevuld.\n"
+#~ "Voer deze nu in."
+
+#~ msgid ""
+#~ "The file mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Het bestandsmasker is niet ingevuld.\n"
+#~ "Voer deze nu in."
+
+#~ msgid ""
+#~ "The directory mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Het mapmasker is niet ingevuld.\n"
+#~ "Voer deze nu in."
+
+#~ msgid ""
+#~ "The synchronization prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Het voorvoegsel voor synchronisatie is niet ingevoerd.\n"
+#~ "Gaarne nu invullen."
+
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "De map waar gedeeltelijk overgebrachte bestanden in\n"
+#~ "zouden moeten worden opgeslagen is niet ingevuld.\n"
+#~ "Gaarne nu invullen."
+
+#~ msgid ""
+#~ "The exclude pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Het patroon voor synchronisatie is niet ingevoeld.\n"
+#~ "Gaarne nu invullen."
+
+#~ msgid ""
+#~ "The file from which the exclude pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Het bestand waar vanuit het patroon voor uitsluiten voor synchronisatie\n"
+#~ "gelezen moet worden is niet ingevuld.\n"
+#~ "Gaarne nu invoeren."
+
+#~ msgid ""
+#~ "The include pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Het patroon voor insluiten voor synchronisatie is niet ingevoerd.\n"
+#~ "Gaarne nu invullen."
+
+#~ msgid ""
+#~ "The file from which the include pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Het bestand waar vanuit het patroon voor insluiten voor synchronisatie\n"
+#~ "gelezen moet worden is niet ingevuld.\n"
+#~ "Gaarne nu invoeren."
+
+#~ msgid ""
+#~ "The backup suffix for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Het achtervoegsel reservekopie voor synchronisatie is niet ingevuld.\n"
+#~ "Gaarne nu invullen."
+
+#~ msgid ""
+#~ "The backup directory for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "De map voor de reservekopie voor synchronisatie is niet ingevuld.\n"
+#~ "Gaarne nu invullen."
+
+#~ msgid ""
+#~ "<qt>Due to security concerns, the cruid option cannot be defined here and "
+#~ "will now be removed.</qt>"
+#~ msgstr ""
+#~ "<qt>Om redenen van beveiliging, kan de optie cruid hier niet gedefinieerd "
+#~ "worden en zal nu verwijderd worden.</qt>"
+
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Aankoppelen && afkoppelen"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Gedeelde mappen op andere computers"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Preview Dialoogvenster"
+
+#~ msgid "The password dialog mode is used and logins are not remembered."
+#~ msgstr ""
+#~ "De modus voor de wachtwoorddialoog wordt gebruikt en aanmeldingen worden "
+#~ "niet onthouden."
+
+#~ msgid "Show custom bookmark label if available"
+#~ msgstr "Eigen bladwijzerlabel tonen, indien beschikbaar"
+
+#~ msgid "Start docked"
+#~ msgstr "Verankerd opstarten"
+
+#~ msgid "Show notifications"
+#~ msgstr "Meldingen tonen"
+
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Gedeelde mappen als pictogrammen tonen"
+
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr ""
+#~ "De aangekoppelde gedeelde mappen zullen als pictogrammen worden getoond."
+
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Aangekoppelde gedeelde mappen zullen in een lijst worden getoond"
+
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr ""
+#~ "De aangekoppelde gedeelde mappen zullen in een lijst worden getoond."
+
+#~ msgid "Show printer shares"
+#~ msgstr "Toon gedeelde printers"
+
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "Gedeelde printers zullen in de netwerkbrowser getoond worden."
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Toon verborgen gedeelde mappen."
+
+#~ msgid ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgstr ""
+#~ "Verborgen gedeelde mappen zullen worden getoond in de netwerkbrowser. "
+#~ "Verborgen gedeelde mappen eindigen op een $-teken. Muziek$ of IPC$."
+
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Verborgen gedeelde IPC$-mappen tonen."
+
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr ""
+#~ "Verborgen gedeelde IPC$-mappen zullen worden getoond in de netwerkbrowser."
+
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Verborgen gedeelde ADMIN$-mappen tonen."
+
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr ""
+#~ "Verborgen gedeelde ADMIN$-mappen zullen worden getoond in de "
+#~ "netwerkbrowser."
+
+#~ msgid "Show the type of the share"
+#~ msgstr "Het type van de gedeelde map tonen."
+
+#~ msgid ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+#~ msgstr ""
+#~ "Het type van een gedeelde map zal worden getoond in een aparte kolom in "
+#~ "de netwerkbrowser. Het kan Schijf, Printer of IPC zijn."
+
+#~ msgid "Show the IP address of the server"
+#~ msgstr "Het IP-adres van de server tonen"
+
+#~ msgid ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+#~ msgstr ""
+#~ "Het IP-adres van de server zal worden getoond in een aparte kolom in de "
+#~ "netwerkbrowser."
+
+#~ msgid "Show the comment"
+#~ msgstr "Opmerking tonen"
+
+#~ msgid ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+#~ msgstr ""
+#~ "De opmerking, die de server of gedeelde map beschrijft, zal worden "
+#~ "getoond in een aparte kolom in de netwerkbrowser."
+
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "Een tekstballon met informatie over het netwerk-item tonen"
+
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr ""
+#~ "De tekstballon toont allerlei informatie over het huidige netwerk-item."
+
+#~ msgid "Automatically expand domains and hosts"
+#~ msgstr "Domeinen en hosts automatisch uitvouwen"
+
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Het koppelpunt in plaats van de naam van de gedeelde map tonen"
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "Toon alle gekoppelde gedeelde mappen op dit systeem"
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Een tekstballon met informatie over de gedeelde map tonen"
+
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr ""
+#~ "De tekstballon toont allerlei informatie over de huidige gedeelde map."
+
+#~ msgid "Show the owner and group"
+#~ msgstr "De gebruiker en groep tonen"
+
+#~ msgid "Show the UID and GID that own all files on the mounted file system."
+#~ msgstr ""
+#~ "De UID en GID tonen die eigenaar is van alle bestanden op het "
+#~ "aangekoppelde bestandssysteem."
+
+#~ msgid "Show the login name"
+#~ msgstr "De aanmeldnaam tonen"
+
+#~ msgid "Show the file system"
+#~ msgstr "Het bestandssysteem tonen"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr ""
+#~ "Het bestandssysteem tonen dat is gebruikt voor het aankoppelen van de "
+#~ "share."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Vrije ruimte op schijf tonen"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "De vrije ruimte op schijf op de share tonen."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Gebruikte ruimte op schijf tonen"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "De reeds gebruikte ruimte op schijf op de share tonen."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "De totale ruimte op schijf tonen"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "De totale ruimte op schijf tonen van de share."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Het schijfgebruik tonen"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr "De gebruikte ruimte op de share tonen (als percentage)."
+
+#~ msgid "Preview hidden files and directories"
+#~ msgstr "Voorbeeldweergave verborgen bestanden en mappen"
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Scan de netwerkomgeving voor beschikbare werkgroepen en domeinen"
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Raadpleeg de huidige master browser"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Deze methode bevraagt de huidige hoofdbrowser om werkgroep of domein om "
+#~ "de initiële browselijst op te halen."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Raadpleeg deze eigen masterbrowser:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Deze methode bevraagt een eigen hoofdbrowser om de initiële browselijst "
+#~ "op te halen."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "Een eigen hoofdbrowser die afgevraagd moet worden"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Voer de naam of IP-adres van een hoofdbrowser hier in die afgevraagd moet "
+#~ "worden om de initiële browselijst te compileren."
+
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Deze broadcastgebieden scannen:"
+
+#~ msgid ""
+#~ "This method will scan the given broadcast areas and look for all "
+#~ "registered hosts."
+#~ msgstr ""
+#~ "Deze methode zal de gegeven broadcastgebieden scannen en zoeken naar alle "
+#~ "geregistreerde hosts."
+
+#~ msgid "A custom list of broadcast addresses"
+#~ msgstr "Een eigen lijst met broadcast-adressen"
+
+#~ msgid ""
+#~ "Enter a comma-separated list of broadcast addresses here (e.g. "
+#~ "192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in "
+#~ "the respective broadcast areas."
+#~ msgstr ""
+#~ "Voer een komma-gescheiden lijst met broadcast-adressen hier in (bijv. "
+#~ "192.168.0.255, 192.168.1.255). Het wordt gebruikt om te scannen naar alle "
+#~ "bekende hosts in de respectievelijke broadcast-gebieden."
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "De netwerkomgeving periodiek scannen"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "De netwerkomgeving periodiek scannen voor alle beschikbare werkgroepen, "
+#~ "hosts en gedeelde mappen."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Interval tussen scans:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Dit is de tijd in minuten die verstrijkt totdat Smb4K het netwerkbuurt "
+#~ "opnieuw scant op nieuwe werkgroepen, hosts en shares."
+
+#~ msgid "Mount prefix:"
+#~ msgstr "Koppel voorvoegsel:"
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "Maak gegenereerde subdirectories altijd lower case"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "Alle namen van submappen aangemaakt door Smb4K onder de prefix van de "
+#~ "aankoppeling zullen in kleine letters zijn."
+
+#~ msgid "Unmount all personal shares on exit"
+#~ msgstr "Alle persoonlijke gedeelde mappen afkoppelen bij afsluiten"
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr ""
+#~ "Koppel recent gebruikte gedeelde mappen opnieuw tijdens het laden van het "
+#~ "programma"
+
+#~ msgid "Number of remount attempts:"
+#~ msgstr "Aantal pogingen om opnieuw aan te koppelen:"
+
+#~ msgid "Interval between remount attempts:"
+#~ msgstr "Interval tussen tussen pogingen om opnieuw aan te koppelen:"
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "Sta het afkoppelen van gedeelde mappen van andere gebruikers toe"
+
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "Sta het afkoppelen van gedeelde mappen toe die door andere gebruikers "
+#~ "zijn aangekoppeld. Wel even nadenken voordat u deze optie inschakelt."
+
+#~ msgid "Force the unmounting of inaccessible shares"
+#~ msgstr "Afkoppelen van ontoegankelijke gedeelde mappen forceren"
+
+#~ msgid "Interval between checks:"
+#~ msgstr "Interval tussen controles:"
+
+#~ msgid "Save logins in a wallet"
+#~ msgstr "Sla de informatie voor aanmelden op in een portefeuille"
+
+#~ msgid "Use a default login"
+#~ msgstr "Gebruik een standaard aanmelding"
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS naam:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domein:"
+
+#~ msgid "Socket options:"
+#~ msgstr "Socket opties:"
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS-bereik:"
+
+#~ msgid "SMB port:"
+#~ msgstr "SMB-poort:"
+
+#~ msgid "File system port:"
+#~ msgstr "Poort voor bestandssysteem:"
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Probeer aan te melden met Kerberos"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Aanmelden met lokaal account"
+
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Winbind ccache voor authenticatie gebruiken"
+
+#~ msgid "Signing state:"
+#~ msgstr "Status van ondertekening:"
+
+#~ msgid "None"
+#~ msgstr "Geen"
+
+#~ msgid "On"
+#~ msgstr "Aan"
+
+#~ msgid "Off"
+#~ msgstr "Uit"
+
+#~ msgid "Required"
+#~ msgstr "Vereist"
+
+#~ msgid "default"
+#~ msgstr "standaard"
+
+#~ msgid "iso8859-1"
+#~ msgstr "iso8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "iso8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "iso8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "iso8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "iso8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "iso8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "iso8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "iso8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "iso8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "iso8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "iso8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "iso8859-15"
+
+#~ msgid "utf8"
+#~ msgstr "utf8"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "koi8-u"
+#~ msgstr "koi8-u"
+
+#~ msgid "koi8-ru"
+#~ msgstr "koi8-ru"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "gb2312"
+#~ msgstr "gb2312"
+
+#~ msgid "big5"
+#~ msgstr "big5"
+
+#~ msgid "tis-620"
+#~ msgstr "tis-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Server codepage:"
+
+#~ msgid "cp437"
+#~ msgstr "cp437"
+
+#~ msgid "cp720"
+#~ msgstr "cp720"
+
+#~ msgid "cp737"
+#~ msgstr "cp737"
+
+#~ msgid "cp775"
+#~ msgstr "cp775"
+
+#~ msgid "cp850"
+#~ msgstr "cp850"
+
+#~ msgid "cp852"
+#~ msgstr "cp852"
+
+#~ msgid "cp855"
+#~ msgstr "cp855"
+
+#~ msgid "cp857"
+#~ msgstr "cp857"
+
+#~ msgid "cp858"
+#~ msgstr "cp858"
+
+#~ msgid "cp860"
+#~ msgstr "cp860"
+
+#~ msgid "cp861"
+#~ msgstr "cp861"
+
+#~ msgid "cp862"
+#~ msgstr "cp862"
+
+#~ msgid "cp863"
+#~ msgstr "cp863"
+
+#~ msgid "cp864"
+#~ msgstr "cp864"
+
+#~ msgid "cp865"
+#~ msgstr "cp865"
+
+#~ msgid "cp866"
+#~ msgstr "cp866"
+
+#~ msgid "cp869"
+#~ msgstr "cp869"
+
+#~ msgid "cp874"
+#~ msgstr "cp874"
+
+#~ msgid "cp932"
+#~ msgstr "cp932"
+
+#~ msgid "cp936"
+#~ msgstr "cp936"
+
+#~ msgid "cp949"
+#~ msgstr "cp949"
+
+#~ msgid "cp950"
+#~ msgstr "cp950"
+
+#~ msgid "cp1250"
+#~ msgstr "cp1250"
+
+#~ msgid "cp1252"
+#~ msgstr "cp1252"
+
+#~ msgid "cp1253"
+#~ msgstr "cp1253"
+
+#~ msgid "cp1254"
+#~ msgstr "cp1254"
+
+#~ msgid "cp1255"
+#~ msgstr "cp1255"
+
+#~ msgid "cp1256"
+#~ msgstr "cp1256"
+
+#~ msgid "cp1257"
+#~ msgstr "cp1257"
+
+#~ msgid "cp1258"
+#~ msgstr "cp1258"
+
+#~ msgid "unicode"
+#~ msgstr "unicode"
+
+#~ msgid "File mask:"
+#~ msgstr "Bestandsmasker:"
+
+#~ msgid "Directory mask:"
+#~ msgstr "Directory masker:"
+
+#~ msgid "Write access:"
+#~ msgstr "Schrijf toegang:"
+
+#~ msgid "read-write"
+#~ msgstr "lezen en schrijven"
+
+#~ msgid "read-only"
+#~ msgstr "alleen lezen"
+
+#~ msgid "Do permission checks"
+#~ msgstr "Toegangsrechten controleren"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Geen vergrendeling gebruiken. lockd niet starten."
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Protocolhint:"
+
+#~ msgid "Automatic detection"
+#~ msgstr "Automatische detectie"
+
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "RPC: moderne besturingssystemen"
+
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "RAP: oudere besturingssystemen"
+
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "ADS: Active Directory omgeving (LDAP/Kerberos)"
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Volgorde van naam opzoeken:"
+
+#~ msgid "Buffer size:"
+#~ msgstr "Buffer grootte:"
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Broadcast adres:"
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Probeer te binden aan UDP poort 137 voor het verzenden en ontvangen van "
+#~ "UDP datagrammen"
+
+#~ msgid "Security mode:"
+#~ msgstr "Beveiligingsmodus:"
+
+#~ msgid "Connect as a null user (no name)"
+#~ msgstr "Als een nul-gebruiker (geen naam) verbinden"
+
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Authenticatie met Kerberos 5"
+
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Kerberos 5 authenticatie en ondertekenen van pakketten"
+
+#~ msgid "NTLM protocol"
+#~ msgstr "NTLM-protocol"
+
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "NTLM-protocol en ondertekenen van pakketten"
+
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "NTLMv2-protocol"
+
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "NTLMv2-protocol en ondertekenen van pakketten"
+
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "NTLMSSP-protocol"
+
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "NTLMSSP-protocol en ondertekenen van pakketten"
+
+#~ msgid "Archive mode"
+#~ msgstr "Archiefmodus"
+
+#~ msgid "Recurse into subdirectories"
+#~ msgstr "Volg mappenstructuur"
+
+#~ msgid "Recurse into directories (-r, --recursive)."
+#~ msgstr "Volg mappenstructuur (-r, --recursive)."
+
+#~ msgid "Update files"
+#~ msgstr "Bestanden bijwerken"
+
+#~ msgid ""
+#~ "Update files in the destination directory that are older than in the "
+#~ "source directory (-u, --update)."
+#~ msgstr ""
+#~ "Werkt bestanden bij in de bestemmingsmap die ouder zijn dan in de bronmap "
+#~ "(-u, --update)."
+
+#~ msgid "Update files in place"
+#~ msgstr "In bestanden bijwerken"
+
+#~ msgid "Use relative path names"
+#~ msgstr "Relatieve padnamen gebruiken"
+
+#~ msgid ""
+#~ "Use relative paths (-R, --relative). This means that the full path names "
+#~ "specified on the command line are sent to the server rather than just the "
+#~ "last parts of the file names."
+#~ msgstr ""
+#~ "Relatieve padnamen gebruiken (-R, --relative). Dit betekent dat de "
+#~ "volledige padnamen gespecificeerdop de opdrachtregel verzonden worden "
+#~ "naar de server in plaats van gewoon het laatste deel van de bestandsnamen."
+
+#~ msgid "Do not send implied directories"
+#~ msgstr "Zend geen impliciete mappen"
+
+#~ msgid "Transfer directories without recursing"
+#~ msgstr "Ga niet dieper in mappenstructuur"
+
+#~ msgid "Compress data during transfer"
+#~ msgstr "Comprimeer gegevens tijdens overdracht"
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Behoud symlinks"
+
+#~ msgid "Copy symlinks as symlinks (-l, --links)."
+#~ msgstr ""
+#~ "Symbolische koppelingen als symbolische koppelingen kopiëren (-l, --"
+#~ "links)."
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Zet symlinks om"
+
+#~ msgid ""
+#~ "Transform symlinks into the items they are pointing to (-L, --copy-links)."
+#~ msgstr ""
+#~ "Transformeer symbolische koppelingen in de items waarnaar ze verwijzen (-"
+#~ "L, --copy-links)."
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Alleen onveilige symbolische koppelingen omvormen"
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Onveilige symbolische koppelingen negeren"
+
+#~ msgid "Preserve hard links"
+#~ msgstr "Behoud hard links"
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Behoud folder symlinks"
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Behoud permissies"
+
+#~ msgid "Preserve group"
+#~ msgstr "Behoud groep"
+
+#~ msgid "Preserve owner"
+#~ msgstr "Eigenaar behouden"
+
+#~ msgid "Preserve device and special files"
+#~ msgstr "Apparaat en speciale bestanden behouden"
+
+#~ msgid "Preserve times"
+#~ msgstr "Behoud tijden"
+
+#~ msgid "Omit directories when preserving times"
+#~ msgstr "Negeer mappen indien tijden behouden dienen te worden"
+
+#~ msgid "Delete extraneous files"
+#~ msgstr "Overbodige bestanden verwijderen"
+
+#~ msgid "Delete files before transfer"
+#~ msgstr "Bestanden verwijderen voor overdracht"
+
+#~ msgid "Delete files after transfer"
+#~ msgstr "Bestanden verwijderen na overdracht"
+
+#~ msgid "Delete files during transfer"
+#~ msgstr "Bestanden verwijderen gedurende overdracht"
+
+#~ msgid "Also delete excluded files"
+#~ msgstr "Verwijder ook uitgesloten bestanden"
+
+#~ msgid "Delete even if I/O errors occur"
+#~ msgstr "Verwijder bestand(en) zelfs als er een I/O fout optreedt"
+
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Forceer het verwijderen van niet-lege mappen"
+
+#~ msgid "Do not delete more than this many files:"
+#~ msgstr "Verwijder niet meer dan zoveel bestanden:"
+
+#~ msgid "Do not transfer any file smaller than:"
+#~ msgstr "Breng geen bestanden over kleiner dan:"
+
+#~ msgid "Do not transfer any file larger than:"
+#~ msgstr "Breng geen bestanden over groter dan:"
+
+#~ msgid "Keep partially transferred files"
+#~ msgstr "Bewaar gedeeltelijk overgebrachte bestanden"
+
+#~ msgid "Put partially transferred files into:"
+#~ msgstr "Zet gedeeltelijk overgebrachte bestanden in:"
+
+#~ msgid "Auto-ignore files in the same way CVS does"
+#~ msgstr "Negeer bestanden automatisch, op de manier zoals CVS dat doet"
+
+#~ msgid "Exclude files matching this pattern:"
+#~ msgstr "Negeer bestanden die aan dit patroon voldoen:"
+
+#~ msgid "Read exclude patterns from:"
+#~ msgstr "Lees uitsluitpatronen van:"
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Geen bestanden uitsluiten die aan dit patroon voldoen:"
+
+#~ msgid "Read include patterns from:"
+#~ msgstr "Lees insluitpatronen van:"
+
+#~ msgid "The file from which the include patterns are read"
+#~ msgstr "Het bestand waaruit het patroon voor invoegen wordt gelezen"
+
+#~ msgid "Custom filter rules:"
+#~ msgstr "Eigen filterregels:"
+
+#~ msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+#~ msgstr "Gebruik --filter='dir-merge /.rsync-filter' filterregels"
+
+#~ msgid "Use --filter='exclude .rsync-filter' filter rule"
+#~ msgstr "Gebruik --filter='exclude .rsync-filter' filterregels"
+
+#~ msgid "Handle sparse files efficiently"
+#~ msgstr "Ga efficiënt met sparse files om"
+
+#~ msgid "Copy files whole (no rsync algorithm)"
+#~ msgstr "Kopieer bestanden in hun geheel (geen rsync algoritme)"
+
+#~ msgid ""
+#~ "Copy files whole (-W, --whole-file). With this option the incremental "
+#~ "rsync algorithm is not used and the whole file is sent as-is instead."
+#~ msgstr ""
+#~ "Kopieer bestanden in hun geheel (-W, --whole-file). Met deze optie wordt "
+#~ "het incrementele rsync-algoritme niet gebruikt en wordt het gehele "
+#~ "bestand zoals het is in plaats daarvan verzonden."
+
+#~ msgid "Do not cross file system boundaries"
+#~ msgstr "Blijf binnen het huidige bestandssysteem"
+
+#~ msgid "Only update files that already exist"
+#~ msgstr "Werk alleen bestanden bij die reeds bestaan"
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Negeer reeds bestaande bestanden"
+
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Bijwerken van bestanden uitstellen tot het einde van de overdracht"
+
+#~ msgid "Make backups"
+#~ msgstr "Maak backups"
+
+#~ msgid "Backup suffix:"
+#~ msgstr "Backup achtervoegsel:"
+
+#~ msgid "Use this suffix for backups (--suffix=SUFFIX)."
+#~ msgstr "Dit achtervoegsel gebruiken voor backups (--suffix=SUFFIX)."
+
+#~ msgid "Backup suffix"
+#~ msgstr "Achtervoegsel van reservekopieën"
+
+#~ msgid "Backup directory:"
+#~ msgstr "Backup Folder:"
+
+#~ msgid "Store backups in this directory (--backup-dir=DIR)."
+#~ msgstr "Backups opslaan in deze map (--backup-dir=DIR)."
+
+#~ msgid "Backup directory"
+#~ msgstr "Map voor reservekopie"
+
+#~ msgid "Force fixed checksum block size:"
+#~ msgstr "Forceer vaste checksum block grootte:"
+
+#~ msgid "The block size"
+#~ msgstr "De blokgrootte"
+
+#~ msgid "Set block/file checksum seed:"
+#~ msgstr "Stel block/bestand checksum seed in:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "De controlesomseed"
+
+#~ msgid "Skip files based on checksum"
+#~ msgstr "Bestanden overslaan op basis van controlesommen"
+
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr "Koppel alle gedeelde mappen af wanneer de slaapknop wordt ingedrukt"
+
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "Ontkoppel alle gedeelde mappen wanneer het deksel wordt gesloten"
+
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr ""
+#~ "Koppel alle gedeelde mappen af wanneer de aan-/uitknop wordt ingedrukt"
+
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr ""
+#~ "Ontkoppel alle gedeelde mappen wanneer de netwerkverbinding wordt "
+#~ "verbroken"
+
+#~ msgid "The format of %1 is not supported."
+#~ msgstr "Het formaat van %1 wordt niet ondersteund."
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Bladwijzers toevoegen"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Alle in de lijst getoonde gedeelde mappen zullen met bladwijzer worden "
+#~ "opgeslagen. Klik op het betrokken bladwijzeritem om het label of de groep "
+#~ "te bewerken."
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Bladwijzers wissen"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Definieer eigen opties voor gedeelde map <b>%1</b> op host <b>%2</b>.</"
+#~ "p>"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB-poort:"
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 is geen versie 1.0 bestand."
+
+#~ msgid "Specify User"
+#~ msgstr "Geef Gebruiker Op"
+
+#~ msgid "Please specify a username."
+#~ msgstr "Geef alstublieft een gebruikersnaam op."
+
+#~ msgid ""
+#~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#~ "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De gedeelde map <b>%1</b> is aangekoppeld op <br><b>%2</b> en de "
+#~ "eigenaar is <b>%3</b>.</p><p>Wilt u het afkoppelen?</p></qt>"
+
+#~ msgid "Foreign Share"
+#~ msgstr "Foreign Share"
+
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Gedeelde mappen worden opnieuw aangekoppeld. Even geduld."
+
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Gedeelde mappen afkoppelen. Even geduld."
+
+#~ msgid "Mount Share"
+#~ msgstr "Koppel Gedeelde Map"
+
+#~ msgid ""
+#~ "Enter the location (UNC address) and optionally the IP address and "
+#~ "workgroup to mount a share."
+#~ msgstr ""
+#~ "Voer de locatie (UNC-adres) en optioneel het IP-adres en de werkgroep om "
+#~ "een gedeelde map aan te koppelen."
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Het Uniform Naming Convention (UNC)-adres  beschrijft de locatie van de "
+#~ "gedeelde map. De syntax voor de gedeelde map is verkeerd. De syntaxis "
+#~ "hiervan is als volgt: //[UGEBRUIKER@]HOST/GEDEELDE-MAP. De gebruikersnaam "
+#~ "is optioneel."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "Het Internet Protocol (IP)-adres identificeert de host in het netwerk en "
+#~ "geeft aan waar het zich bevindt. Het heeft twee geldige vormen, de een "
+#~ "bekend als IP versie 4 (bijv. 192.168.2.11) en de ander als versie 6 "
+#~ "(bijv. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "De werkgroep of het domein identificeert het peer-to-peer-netwerk waarin "
+#~ "de host zich bevindt."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Voeg een bladwijzer toe voor deze gedeelde map"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Als u dit keuzevakje aanklikt, zal de gedeelde map als een bladwijzer "
+#~ "worden opgeslagen en kunt u het benaderen via het menu \"Bladwijzers\" in "
+#~ "het hoofdvenster."
+
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "<p>De gedeelde map <b>%1</b> is aangekoppeld op <b>%2</b>.</p>"
+
+#~ msgid "Open"
+#~ msgstr "Openen"
+
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr "<p>De gedeelde map <b>%1</b> is afgekoppeld van <b>%2</b>.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "<p>%1 gedeelde map uit %2 is aangekoppeld.</p>"
+#~ msgstr[1] "<p>%1 gedeelde mappen uit %2 zijn aangekoppeld.</p>"
+
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "<p>Alle gedeelde mappen zijn aangekoppeld.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "<p>%1 gedeelde map uit %2 is afgekoppeld.</p>"
+#~ msgstr[1] "<p>%1 gedeelde mappen uit %2 zijn afgekoppeld.</p>"
+
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "<p>Alle gedeelde mappen zijn afgekoppeld.</p>"
+
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "<p>Openen van de portefeuille <b>%1</b> is mislukt.</p>"
+
+#~ msgid ""
+#~ "<p>The logins stored in the wallet could not be accessed. There is either "
+#~ "no wallet available or it could not be opened.</p>"
+#~ msgstr ""
+#~ "<p>De toegang tot de aanmeldingen opgeslagen in de portefeuille lukte "
+#~ "niet. Er is ofwel geen portefeuille beschikbaar of deze kon niet worden "
+#~ "geopend.</p>"
+
+#~ msgid ""
+#~ "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#~ "the file to PDF or Postscript and try again.</p>"
+#~ msgstr ""
+#~ "<p>Het mimetype <b>%1</b> wordt niet ondersteund voor printen. Converteer "
+#~ "het bestand a.u.b. naar PDF of Postscript en probeer het opnieuw.</p>"
+
+#~ msgid ""
+#~ "<p>The bookmark for share <b>%1</b> already exists and will be skipped."
+#~ msgstr ""
+#~ "<p>De bladwijzer voor de gedeelde map <b>%1</b> bestaat al en zal worden "
+#~ "overgeslagen.</p>"
+
+#~ msgid ""
+#~ "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+#~ "being used and will automatically be renamed.</p>"
+#~ msgstr ""
+#~ "<p>Het label <b>%1</b> van de bladwijzer voor de gedeelde map <b>%2</b> "
+#~ "wordt al gebruikt en zal automatisch een andere naam krijgen.</p>"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Het item voor de eigen hoofdbrowser is leeg. Smb4K gaat in plaats daarvan "
+#~ "proberen om de huidige hoofdbrowser van uw werkgroep of domein af te "
+#~ "vragen."
+
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Ophalen van de lijst van beschikbare domeinen is mislukt:</p><p><tt>"
+#~ "%1</tt></p>"
+
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "<p>Ophalen van de lijst van beschikbare domeinen is mislukt.</p>"
+
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Scannen van de gedefinieerde broadcast-area(s) is mislukt:</p><p><tt>"
+#~ "%1</tt></p>"
+
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr "<p>Scannen van de gedefinieerde broadcast-area(s) is mislukt.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Ophalen van de lijst van servers behorende bij domein <b>%1</b> is "
+#~ "mislukt.</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Ophalen van de lijst van servers behorende bij domein <b>%1</b> is "
+#~ "mislukt.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Ophalen van de lijst van gedeelde mappen uit <b>%1</b> is mislukt:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Ophalen van de lijst van gedeelde mappen uit <b>%1</b> is mislukt:</p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Ophalen van het voorbeeld van <b>%1</b> is mislukt:</p><p><tt>%2</tt></"
+#~ "p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "<p>Ophalen van het voorbeeld van <b>%1</b> is mislukt:</p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Aankoppelen van de gedeelde map <b>%1</b> is mislukt:</p><p><tt>%2</"
+#~ "tt></p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr "<p>Aankoppelen van de gedeelde map <b>%1</b> is mislukt:</p>"
+
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt:</"
+#~ "p><p><tt>%3</tt></p>"
+
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> is mislukt:</p>"
+
+#~ msgid ""
+#~ "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~ "is owned by the user <b>%3</b>.</p>"
+#~ msgstr ""
+#~ "<p>U heeft geen toestemming om deze gedeelde map <b>%1</b> af te koppelen "
+#~ "van <b>%2</b>. De eigenaar hiervan is <b>%3</b>.</p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Afdrukken op de printer <b>%1</b> is mislukt:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "<p>Afdrukken op de printer <b>%1</b> is mislukt:</p>"
+
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr ""
+#~ "<p>Synchroniseren van <b>%1</b> met <b>%2</b> is mislukt:</p><p><tt>%3</"
+#~ "tt></p>"
+
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "<p>Synchroniseren van <b>%1</b> met <b>%2</b> is mislukt:</p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Zoeken in de netwerkomgeving naar het zoekitem <b>%1</b> is mislukt:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr ""
+#~ "<p>Zoeken in de netwerkomgeving naar het zoekitem <b>%1</b> is mislukt:</"
+#~ "p>"
+
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr ""
+#~ "<p>Het commando<b>%1</b> is niet gevonden. Controleer uw installatie.</p>"
+
+#~ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#~ msgstr ""
+#~ "<p>De gedeelde map <b>%1</b> is een printer en er kan geen bladwijzer van "
+#~ "worden gemaakt.</p>"
+
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "<p>Het bestand <b>%1</b> is niet gevonden.</p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Het bestand <b>%1</b> openen is mislukt:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Het bestand <b>%1</b> openen is mislukt:</p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Lezen van bestand <b>%1</b> is mislukt:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Lezen van bestand <b>%1</b> is mislukt:</p>"
+
+#~ msgid ""
+#~ "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>De volgende map kon niet worden aangemaakt:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#~ msgstr ""
+#~ "<p>Het starten van het proces is mislukt (foutcode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Het proces is gecrasht (foutcode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#~ msgstr ""
+#~ "<p>De tijdslimiet van het process liep af (foutcode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Kon niet schrijven naar het proces (foutcode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Kon niet lezen van het proces (foutcode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process reported an unknown error.</p>"
+#~ msgstr "<p>Het proces rapporteerde een onbekend fout.</p>"
+
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>De systeemaanroep <b>%1</b> is mislukt:</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code:<tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr ""
+#~ "<p>Een actie met root-privileges uitvoeren is mislukt (foutcode:<tt>%1</"
+#~ "tt>).</p>"
+
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr "<p>Een actie met root-privileges uitvoeren is mislukt.</p>"
+
+#~ msgid "<p>The URL that was passed is invalid.</p>"
+#~ msgstr "<p>Het doorgegeven URL-adres is ongeldig.</p>"
+
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "<p>Er zijn geen broadcast-gebieden gedefinieerd.</p>"
+
+#~ msgid "Preview"
+#~ msgstr "Preview"
+
+#~ msgid "The preview is displayed here."
+#~ msgstr "Het voorbeeld wordt hier getoond."
+
+#~ msgid "Reload"
+#~ msgstr "Herladen"
+
+#~ msgid "Back"
+#~ msgstr "Terug"
+
+#~ msgid "Forward"
+#~ msgstr "Doorsturen"
+
+#~ msgid "Up"
+#~ msgstr "Omhoog"
+
+#~ msgid ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+#~ msgstr ""
+#~ "Het huidige UNC-adres wordt hier getoond. U kunt ook een van de eerder "
+#~ "bezochte locaties uit het afrolmenu kiezen die dan wordt getoond in het "
+#~ "bovenstaande overzicht."
+
+#~ msgid "Print File"
+#~ msgstr "Bestand Afdrukken"
+
+#~ msgid "Printer"
+#~ msgstr "Printer"
+
+#~ msgid "File:"
+#~ msgstr "Bestand:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Dit is het bestand dat u op de printer op afstand wilt afdrukken. Op dit "
+#~ "moment worden slechts een paar mimetypes ondersteund, zoals PDF, "
+#~ "Postscript, platte tekst en afbeeldingen. Als het mimetype van het "
+#~ "bestand niet wordt ondersteund, dan is het nodig deze te converteren."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopieën:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Dit is het aantal kopieën dat u wilt afdrukken."
+
+#~ msgid "Disk"
+#~ msgstr "Schijf"
+
+#~ msgid "Synchronizing"
+#~ msgstr "Bezig met synchroniseren"
+
+#~ msgid "Source"
+#~ msgstr "Bron"
+
+#~ msgid "Destination"
+#~ msgstr "Bestemming"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Synchroniseer de bestemming met de bron"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Wissel Paden Om"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Wissel bron en bestemming om"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Bied de bron- en bestemmingsmap aan voor de synchronisatie."
+
+#~ msgid "Source:"
+#~ msgstr "Bron:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Dit is de bronmap. De gegevens die het bevat moeten in de bestemmingsmap "
+#~ "worden geschreven."
+
+#~ msgid "Destination:"
+#~ msgstr "Bestemming:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Dit is de bestemmingsmap. Deze zal worden bijgewerkt met de gegevens uit "
+#~ "de bronmap."
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Gaarne een gebruikersnaam en een wachtwoord voor de gedeelde map <b>"
+#~ "%1</b> invoeren.</qt>"
+
+#~ msgid "Rescan"
+#~ msgstr "Opnieuw scannen"
+
+#~ msgid "Mount Dialog"
+#~ msgstr "Dialoog voor aankoppelen"
+
+#~ msgid "<font size=\"-1\">on %1</font>"
+#~ msgstr "<font size=\"-1\">op %1</font>"
+
+#~ msgid "Unmount All"
+#~ msgstr "Alles afkoppelen"
+
+#~ msgid "NTLMv2 password hashing"
+#~ msgstr "NTLMv2 wachtwoord-hashing"
+
+#~ msgid "NTLMv2 password hashing encapsulated in Raw NTLMSSP message"
+#~ msgstr "NTLMv2 wachtwoord-hashing ingekapseld in raw NTLMSSP-bericht"
+
+#~ msgid ""
+#~ "NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet "
+#~ "signing"
+#~ msgstr ""
+#~ "NTLMv2 wachtwoord-hashing ingekapseld in raw NTLMSSP-bericht en "
+#~ "ondertekenen van pakketten"
+
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr ""
+#~ "Aankoppelen van gedeelde mappen wordt opnieuw geprobeerd. Even geduld."
+
+#~ msgid "Use default security mode"
+#~ msgstr "Gebruik standaard beveiligingsmodus"
+
+#~ msgid "IP address:"
+#~ msgstr "IP Adres:"
+
+#~ msgid "Mount"
+#~ msgstr "Aankoppelen"
+
+#, fuzzy
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr "Het programma %1 is niet gevonden."
+
+#~ msgid "Advanced"
+#~ msgstr "Geavanceerd"
+
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Wilt u het afkoppelen van de gedeelde map <b>%1</b> van <b>%2</b> "
+#~ "forceren?</p></qt>"
+
+#~ msgid "Force Unmounting"
+#~ msgstr "Afkoppelen forceren"
+
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of all inaccessible "
+#~ "shares?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Wilt u het afkoppelen van alle ontoegankelijke gedeelde mappen "
+#~ "forceren?</p></qt>"
+
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "&Forceer Afkoppelen"
+
+#, fuzzy
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "Geef a.u.b. uw authenticatie gegevens op voor %1."
+
+#~ msgid "Signing State"
+#~ msgstr "Status van ondertekening"
+
+#~ msgid "UNC Address"
+#~ msgstr "UNC-adres"
+
+#~ msgid "Write Access"
+#~ msgstr "Scrhijf toegang"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "Gebruikers-id"
+
+#~ msgid "Group ID"
+#~ msgstr "Groep-ID"
+
+#~ msgid "SMB Port"
+#~ msgstr "SMB-poort"
+
+#~ msgid "File System Port"
+#~ msgstr "Poort voor bestandssysteem"
+
+#~ msgid "Automatic"
+#~ msgstr "Automatisch"
+
+#, fuzzy
+#~ msgid "A&dd"
+#~ msgstr "Toevoegen"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "host. It has the following syntax: //HOST."
+#~ msgstr ""
+#~ "Het Uniform Naming Convention (UNC)-adres  beschrijft de locatie van de "
+#~ "host. De vorm hiervan is: //HOST."
+
+#~ msgid "automatic"
+#~ msgstr "automatisch"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //HOST/SHARE"
+#~ msgstr ""
+#~ "Het Uniform Naming Convention (UNC)-adres  beschrijft de locatie van de "
+#~ "gedeelde map. De vorm hiervan is: //HOST/GEDEELDE_MAP."
+
+#~ msgid ""
+#~ "<qt>The format of the UNC address you entered is not correct. It must "
+#~ "have the form //[USER@]HOST/SHARE."
+#~ msgstr ""
+#~ "<qt>De vorm van het ingevoerde UNC-adres is onjuist. Het moet de vorm //"
+#~ "[GEBRUIKER@]HOST/GEDEELDEMAP hebben."
+
+#~ msgid "M&ount Manually"
+#~ msgstr "Handmatig aank&oppelen"
+
+#~ msgid "Share"
+#~ msgstr "Delen"
+
+#~ msgid "Bookmark Editor"
+#~ msgstr "Bladwijzer Editor"
+
+#~ msgid "Bookmark"
+#~ msgstr "Bladwijzer"
+
+#, fuzzy
+#~| msgid "Print File"
+#~ msgid "Printing"
+#~ msgstr "Bestand Afdrukken"
+
+#, fuzzy
+#~| msgid "Print File"
+#~ msgid "Input File"
+#~ msgstr "Bestand Afdrukken"
+
+#~ msgid "This is the view where the contents of the share is displayed."
+#~ msgstr ""
+#~ "Dit is de weergave waar de inhoud van de gedeelte map wordt getoond."
+
+#~ msgid "The file is invalid."
+#~ msgstr "Het bestand is ongeldig."
+
+#~ msgid "The file that is currently transferred is shown here."
+#~ msgstr "Het bestand dat nu wordt overgebracht wordt hier getoond."
+
+#~ msgid "The progress of the current file transfer is shown here."
+#~ msgstr "De voortgang van de huidige bestandsoverdracht wordt hier getoond."
+
+#~ msgid "The overall progress of the synchronization is shown here."
+#~ msgstr "De volledige voortgang van de synchronisatie wordt hier getoond."
+
+#~ msgid "Files transferred:"
+#~ msgstr "Bestanden overgezet:"
+
+#~ msgid "Transfer rate:"
+#~ msgstr "Overdracht snelheid:"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "NoSuchAction"
+#~ msgstr "Acties"
+
+#, fuzzy
+#~| msgid "The permission was denied. "
+#~ msgid ""
+#~ "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</"
+#~ "p>"
+#~ msgstr "De permissie is geweigerd."
+
+#, fuzzy
+#~| msgid "The permission was denied. "
+#~ msgid "The authentication action was denied."
+#~ msgstr "De permissie is geweigerd."
+
+#, fuzzy
+#~| msgid "The permission was denied. "
+#~ msgid "The authentication was denied."
+#~ msgstr "De permissie is geweigerd."
+
+#, fuzzy
+#~ msgid "The directory <b>%1</b> could not be created."
+#~ msgstr "De directory '%1' kon niet worden gemaakt."
+
+#, fuzzy
+#~| msgid "Links"
+#~ msgid "List"
+#~ msgstr "Links"
+
+#, fuzzy
+#~ msgid "A system call failed."
+#~ msgstr "Het zoeken naar %1 is mislukt."
+
+#~ msgid "\\u00A9 2007-2009, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2009, Alexander Reinholdt"
+
+#~ msgid "Share:"
+#~ msgstr "Gedeelde Map:"
+
+#~ msgid "Free:"
+#~ msgstr "Vrij:"
+
+#~ msgid "Used:"
+#~ msgstr "Gebruikt:"
+
+#~ msgid "Total:"
+#~ msgstr "Totaal:"
+
+#~ msgid "Usage:"
+#~ msgstr "Gebruik:"
+
+#~ msgid "This share is inaccessible."
+#~ msgstr "Deze gedeelde map is niet ontoegankelijk."
+
+#~ msgid "Pseudo master browser:"
+#~ msgstr "Pseudo-Master Browser:"
+
+#, fuzzy
+#~| msgid "Italian translation"
+#~ msgid "Invalid action"
+#~ msgstr "Italiaanse vertaling"
+
+#, fuzzy
+#~ msgid "Smb4KSearchDialogPart"
+#~ msgstr "Zoek Venster"
+
+#~ msgid "Remove Entries"
+#~ msgstr "Verwijder Items"
+
+#~ msgid "Super User"
+#~ msgstr "Super User"
+
+#, fuzzy
+#~| msgid "Printing file..."
+#~ msgid "Writing to the <b>sudoers</b> file failed."
+#~ msgstr "Bestand wordt afgedrukt..."
+
+#, fuzzy
+#~ msgid "(C) 2010, Alexander Reinholdt"
+#~ msgstr "(c) 2003-2006, Alexander Reinholdt & het Smb4K team"
+
+#, fuzzy
+#~| msgid "Try to authenticate with Kerberos"
+#~ msgid "Username to authenticate with"
+#~ msgstr "Probeer aan te melden met Kerberos"
+
+#, fuzzy
+#~ msgid "The UNC of the remote share"
+#~ msgstr "Toon IP adres"
+
+#, fuzzy
+#~ msgid "The mountpoint for the remote share"
+#~ msgstr "Toon koppelpunt i.p.v. gedeelde map naam"
+
+#, fuzzy
+#~ msgid "Aborting."
+#~ msgstr "Bezig met afbreken..."
+
+#, fuzzy
+#~| msgid "An authentication error occurred. "
+#~ msgid "An error occurred:"
+#~ msgstr "Er is een authenticatie probleem opgetreden."
+
+#, fuzzy
+#~ msgid "(C) 2008-2010, Alexander Reinholdt"
+#~ msgstr "(c) 2003-2006, Alexander Reinholdt & het Smb4K team"
+
+#, fuzzy
+#~ msgid "The lock file could not be created."
+#~ msgstr "De directory '%1' kon niet worden gemaakt."
+
+#, fuzzy
+#~ msgid "The sudoers file is currently being edited."
+#~ msgstr "De directory '%1' kon niet worden gemaakt."
+
+#, fuzzy
+#~ msgid "The mountpoint of the share"
+#~ msgstr "Toon koppelpunt i.p.v. gedeelde map naam"
+
+#, fuzzy
+#~ msgid "The PID of the process that is to be killed"
+#~ msgstr "Het bestand '%1' kon niet worden opgeslagen."
+
+#~ msgid "Use super user privileges to mount and unmount shares"
+#~ msgstr ""
+#~ "Gebruik super user privileges voor het koppelen en ontkoppelen van "
+#~ "gedeelde mappen"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Detailed information cannot be provided "
+#~ "because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "De naam van uw computer kon niet worden bepaald met behulp van de "
+#~ "systeemaanvraag 'gethostname()'.\n"
+#~ "Er is geen extra informatie beschikvaar omdat er geen foutmelding werd "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Read the error message under \"Details\" "
+#~ "to find out more.</p></qt>"
+#~ msgstr ""
+#~ "De naam van uw computer kon niet worden achterhaald met behulp van de "
+#~ "systeemaanvraag 'gethostname()'.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid "<qt>This feature has not been enabled.</qt>"
+#~ msgstr "Deze functie is niet ingeschakeld."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "Er is een onbekende fout opgetreden.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding is "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "Er is een onbekende fout opgetreden.\n"
+#~ "Lees de foutmelding onder \"Details\" voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "Er is een onbekende fout opgetreden.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding is "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Read the error message under "
+#~ "\"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "Er is een onbekende fout opgetreden.\n"
+#~ "Lees de foutmelding onder \"Details\" voor meer informatie."
+
+#, fuzzy
+#~ msgid "<qt>The file \"%1\" could not be found.</qt>"
+#~ msgstr "Het bestand \"%1\" is niet gevonden"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>Either your PATH environment variable is not set properly or there "
+#~ "are the following programs missing on your system:</p><p>%1</p><p>Please "
+#~ "correct this and restart Smb4K.</p></qt>"
+#~ msgstr ""
+#~ "Uw PATH omgevingsvariabele is niet correct ingesteld of de volgende "
+#~ "programma's ontbreken op uw systeem:\n"
+#~ "%1\n"
+#~ "Pas dit a.u.b. aan en start Smb4K opnieuw."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "Er is een onbekende fout opgetreden.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding is "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "Er is een onbekende fout opgetreden.\n"
+#~ "Lees de foutmelding onder \"Details\" voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "De tijdelijke map '%1' kon niet worden aangemaakt.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "De tijdelijke map '%1' kon niet worden aangemaakt.\n"
+#~ "Zie het foutbericht onder 'Details voor meer informatie."
+
+#, fuzzy
+#~ msgid "<qt>The file \"%1\" could not be opened.</qt>"
+#~ msgstr "Het bestand %1 kon niet worden geopend."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "Het bestand '%1' kon niet worden afgedrukt.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "De gedeelde map '%1' kon niet worden ontkoppeld.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "De gedeelde map '%1' kon niet worden ontkoppeld.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "Het bestand '%1' kon niet worden afgedrukt.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "Het bestand '%1' kon niet worden afgedrukt.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt></p>The synchronization could not be finished successfully.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "De synchronisatie is mislukt.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding "
+#~ "geretourneerd werd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The synchronization could not be finished successfully.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "De synchronisatie is mislukt.\n"
+#~ "Kijk onder \"Details\" voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "De synchronisatie is mislukt.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding "
+#~ "geretourneerd werd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "De synchronisatie is mislukt.\n"
+#~ "Kijk onder \"Details\" voor meer informatie."
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De lijst met geregistreerde IP-adressen binnen het gegeven "
+#~ "broadcastgebied kon niet worden opgehaald.</p><p>Er is geen extra "
+#~ "informatie beschikbaar omdat er geen foutmelding geretourneerd werd.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Read the error message under \"Details"
+#~ "\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De lijst met geregistreerde IP-adressen binnen het gegeven "
+#~ "broadcastgebied kon niet worden opgehaald.</p><p>Zie het foutbericht "
+#~ "onder \"Details\" voor meer informatie.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>De lijst met servers kon niet worden opgehaald.</p><p>Er is geen "
+#~ "extra informatie beschikbaar omdat er geen foutmelding geretourneerd werd."
+#~ "</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De lijst met servers kon niet worden opgehaald.</p><p>Zie het "
+#~ "foutbericht onder \"Details\" voor meer informatie.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>De lijst met gedeelde mappen kon niet worden opgehaald.</p><p>Er "
+#~ "is geen extra informatie beschikbaar omdat er geen foutmelding "
+#~ "geretourneerd werd.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De lijst met gedeelde mappen kon niet worden opgehaald.</p><p>Zie "
+#~ "het foutbericht onder \"Details\" voor meer informatie.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De voorbeeldweergave kon niet worden samengesteld.</p><p>Er is "
+#~ "geen extra informatie beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De voorbeeldweergave kon niet worden samengesteld</p><p>Zie het "
+#~ "foutbericht onder \"Details\" voor meer informatie.</p></qt>"
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt><p>The share \"%1\" could not be mounted.</p><p>Detailed information "
+#~| "cannot be provided because there was no error message.</p></qt>"
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De gedeelde map '%1' kon niet worden gekoppeld.</p><p>Er is geen "
+#~ "extra informatie beschikbaar omdat er geen foutmelding werd geretourneerd."
+#~ "</p></qt>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "De gedeelde map '%1' kon niet worden gekoppeld.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The share could not be unmounted, because the mount point string was "
+#~ "empty.</qt>"
+#~ msgstr ""
+#~ "De gedeelde map kon niet worden ontkoppeld omdat de koppelpunt string "
+#~ "leeg is."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "De lijst van gekoppelde SMBFS en CIFS gedeelde mappen kon niet worden "
+#~ "geimporteerd.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "De lijst met gekoppelde SMBFS en CIFS gedeelde mappen kon niet worden "
+#~ "geimporteerd.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of arguments for the \"net\" command could not be assembled."
+#~ "</qt>"
+#~ msgstr ""
+#~ "De lijst met argumenten voor het 'net' commando kon niet worden "
+#~ "samengesteld.\n"
+#~ "Op dit moment is de lijst: %1"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De lijst met werkgroepen en domeinen kon niet worden opgehaald.</"
+#~ "p><p>Extra informatie is niet beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Read the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>De lijst met werkgroepen en domeinen kon niet worden opgehaald.</"
+#~ "p><p>Zie het foutbericht onder \"Details\" voor meer informatie.</p></qt>"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>You previously chose to use \"%1\", but now it is missing on your "
+#~ "system. Smb4K will disable this feature.</qt>"
+#~ msgstr ""
+#~ "U heeft er eerder voor gekozen om '%1' te gebruiken, maar dit ontbreekt "
+#~ "nu op uw systeem. Smb4K zal deze functie uitschakelen."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The wallet \"%1\" could not be opened. KWallet support will be "
+#~ "disabled for this session.</qt>"
+#~ msgstr ""
+#~ "Het openen van wallet %1 is mislukt. KWallet ondersteuning wordt "
+#~ "uitgeschakeld."
+
+#, fuzzy
+#~ msgid "System Tray"
+#~ msgstr "Systeemvaken naar de Systeem Tray"
+
+#, fuzzy
+#~ msgid "Main Window && System Tray"
+#~ msgstr "Minimaliseren naar de Systeem Tray"
+
+#, fuzzy
+#~ msgid "none"
+#~ msgstr "geen"
+
+#, fuzzy
+#~ msgid "on"
+#~ msgstr "Aanen"
+
+#, fuzzy
+#~| msgid "Preview"
+#~ msgid "The preview"
+#~ msgstr "Preview"
+
+#, fuzzy
+#~ msgid "The source directory"
+#~ msgstr "Backup Folder:"
+
+#, fuzzy
+#~| msgid "Recurse into directories"
+#~ msgid "The destination directory"
+#~ msgstr "Volg mappenstructuur"
+
+#, fuzzy
+#~| msgid "Keep partially transferred files"
+#~ msgid "The currently transferred file"
+#~ msgstr "Bewaar gedeeltelijk overgebrachte bestanden"
+
+#, fuzzy
+#~ msgid "The progress of the current file transfer"
+#~ msgstr "Verwijder bestanden op bestemming na overdracht"
+
+#, fuzzy
+#~ msgid "The workgroup where the host is located"
+#~ msgstr "De directory '%1' kon niet worden gemaakt."
+
+#, fuzzy
+#~ msgid "The UNC address of the host"
+#~ msgstr "Toon IP adres"
+
+#, fuzzy
+#~ msgid "The port used for communicating with servers"
+#~ msgstr "Gebruik unicode om te communiceren met de server"
+
+#, fuzzy
+#~| msgid "Write access:"
+#~ msgid "The write access"
+#~ msgstr "Schrijf toegang:"
+
+#, fuzzy
+#~| msgid "User ID:"
+#~ msgid "The user ID"
+#~ msgstr "Gebruiker ID:"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "The group ID"
+#~ msgstr "Groep ID:"
+
+#, fuzzy
+#~| msgid "Show IP address"
+#~ msgid "The IPv4 or IPv6 address"
+#~ msgstr "Toon IP adres"
+
+#, fuzzy
+#~| msgid "Bookmark Editor"
+#~ msgid "Bookmark this share"
+#~ msgstr "Bladwijzer Editor"
+
+#, fuzzy
+#~ msgid "Name:"
+#~ msgstr "Naam"
+
+#~ msgid "Try to authenticate with Kerberos (Active Directory)"
+#~ msgstr "Probeer aan te melden met Kerberos (Active Directory)"
+
+#~ msgid "UID"
+#~ msgstr "UID"
+
+#~ msgid "GID"
+#~ msgstr "GID"
+
+#~ msgid "Port"
+#~ msgstr "Poort"
+
+#, fuzzy
+#~ msgid "[Shares] The mount prefix is empty."
+#~ msgstr "Koppel voorvoegsel:"
+
+#, fuzzy
+#~ msgid "[Samba] The file mask is empty."
+#~ msgstr "Koppel voorvoegsel:"
+
+#, fuzzy
+#~ msgid "[Synchronization] The rsync prefix is empty."
+#~ msgstr "Koppel voorvoegsel:"
+
+#, fuzzy
+#~ msgid "[Synchronization] The path of the exclude file is empty."
+#~ msgstr "Zet gedeeltelijk overgebrachte bestanden in"
+
+#, fuzzy
+#~ msgid "[Synchronization] The path of the include file is empty."
+#~ msgstr "Zet gedeeltelijk overgebrachte bestanden in"
+
+#, fuzzy
+#~ msgid "There are currently %1 shares mounted."
+#~ msgstr "De directory '%1' kon niet worden gemaakt."
+
+#~ msgid "Catalan translation"
+#~ msgstr "Catalaanse vertaling"
+
+#~ msgid "Polish translation"
+#~ msgstr "Poolse vertaling"
+
+#~ msgid "Chinese Simplified translation"
+#~ msgstr "Chinese (Vereenvoudigd) vertaling"
+
+#~ msgid "Russian translation"
+#~ msgstr "Russische vertaling"
+
+#~ msgid "Swedish translation and intensive testing"
+#~ msgstr "Zweedse vertaling en intensief testen"
+
+#~ msgid "Brazilian Portuguese translation"
+#~ msgstr "Braziliaans Portugese vertaling"
+
+#~ msgid "Ukrainian translation"
+#~ msgstr "Oekraïnse vertaling"
+
+#~ msgid "Hungarian translation"
+#~ msgstr "Hongaarse vertaling"
+
+#~ msgid "Spanish translation"
+#~ msgstr "Spaanse vertaling"
+
+#~ msgid "Slovak translation"
+#~ msgstr "Slovaakse vertaling"
+
+#~ msgid "French translation"
+#~ msgstr "Franse vertaling"
+
+#~ msgid "Japanese translation"
+#~ msgstr "Japanse vertaling"
+
+#~ msgid "Bulgarian translation"
+#~ msgstr "Bulgaarse vertaling"
+
+#~ msgid "Norwegian translations"
+#~ msgstr "Noorse vertaling"
+
+#~ msgid "Czech translation"
+#~ msgstr "Tjechische vertaling"
+
+#~ msgid "Turkish translation"
+#~ msgstr "Turkse vertaling"
+
+#~ msgid "Chinese Traditional translation"
+#~ msgstr "Chinese (Traditioneel) vertaling"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Ijslandse vertaling"
+
+#~ msgid "Danish translation"
+#~ msgstr "Deense vertaling"
+
+#~ msgid "Dutch translation"
+#~ msgstr "Nederlandse vertaling"
+
+#~ msgid "Testing of Smb4K under FreeBSD"
+#~ msgstr "Testen van Smb4K onder FreeBSD"
+
+#~ msgid "Don't cross file system boundaries"
+#~ msgstr "Blijf binnen het huidige filesystem"
+
+#~ msgid "The access was denied. "
+#~ msgstr "De toegang is geweigerd."
+
+#~ msgid "The password is not correct. "
+#~ msgstr "Het wachtwoord is onjuist. "
+
+#~ msgid "The logon failed. "
+#~ msgstr "Het inloggen is mislukt."
+
+#, fuzzy
+#~ msgid "Please enter authentication data for server %1."
+#~ msgstr "Geef a.u.b. uw authenticatie gegevens op voor %1."
+
+#~ msgid "Scan Network"
+#~ msgstr "Scan Netwerk"
+
+#~ msgid "Samba Browser"
+#~ msgstr "Samba Browser"
+
+#~ msgid "Search Dialog"
+#~ msgstr "Zoek Venster"
+
+#~ msgid "You haven't specified a file."
+#~ msgstr "U heeft geen bestand opgegeven."
+
+#, fuzzy
+#~ msgid "Querying master browser for workgroups and domains..."
+#~ msgstr "Raadpleeg de huidige master browser"
+
+#, fuzzy
+#~ msgid "Scanning broadcast areas for workgroups and domains..."
+#~ msgstr "Raadpleeg de huidige master browser"
+
+#, fuzzy
+#~ msgid "Looking for workgroup members..."
+#~ msgstr "Raadpleeg de huidige master browser"
+
+#, fuzzy
+#~ msgid "Querying host for list of shares..."
+#~ msgstr "Bezig met proberen opnieuw host te openen..."
+
+#, fuzzy
+#~ msgid "Querying host for additional information..."
+#~ msgstr "Bezig met ophalen van informatie..."
+
+#, fuzzy
+#~ msgid "Generating preview..."
+#~ msgstr "Bezig met ophalen van preview..."
+
+#, fuzzy
+#~ msgid "Buffer size exceeded"
+#~ msgstr "Buffer grootte:"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Some file permissions could not be determined.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message.</qt>"
+#~ msgstr ""
+#~ "Sommige bestandspermissies konden niet worden bepaald.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Some file permissions could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Sommige bestandspermissies konden niet worden bepaald.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The file \"%1\" is currently being edited by user %2. To avoid any "
+#~ "problems, access to this file is denied at the moment. Please try again "
+#~ "later.</qt>"
+#~ msgstr ""
+#~ "Het bestand '%1' is momenteel in gebruik door gebruiker %2. Om problemen "
+#~ "te voorkomen, is het op dit moment niet toegestaan om toegang te krijgen "
+#~ "tot dit bestand. Probeer het a.u.b. later nog eens."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The temporary file \"%1\" could not be created.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message.</qt>"
+#~ msgstr ""
+#~ "Het tijdelijke bestand '%1' kon niet worden aangemaakt.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The temporary file \"%1\" could not be created.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Het tijdelijke bestand '%1' kon niet gemaakt worden. \n"
+#~ "Lees de foutmelding bij 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid "<qt>The directory \"%1\" could not be found.</qt>"
+#~ msgstr "De map %1 is niet gevonden."
+
+#, fuzzy
+#~ msgid "<qt>The file \"%1\" could not be closed.</qt>"
+#~ msgstr "Het bestand %1 kon niet worden geopend."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The file \"%1\" could not be closed.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Het bestand '%1' kon niet worden afgedrukt.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of supplementary group IDs could not be determined.</qt>"
+#~ msgstr ""
+#~ "De lijst met servers kon niet worden opgehaald.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of supplementary group IDs could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "De lijst met servers kon niet worden opgehaald.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#~ msgid "Use the following program to gain super user privileges:"
+#~ msgstr "Gebruik het volgende programma om super user privileges te krijgen:"
+
+#, fuzzy
+#~ msgid "super"
+#~ msgstr "Gebruiker:"
+
+#~ msgid "Programs"
+#~ msgstr "Programma's"
+
+#~ msgid "Network Browser"
+#~ msgstr "Netwerk Browser"
+
+#~ msgid "Port:"
+#~ msgstr "Poort:"
+
+#~ msgid "Caching time of directory listings:"
+#~ msgstr "Cache duur van directory overzichten:"
+
+#, fuzzy
+#~ msgid "Use large file support"
+#~ msgstr "Gebruik ondersteuning voor grote bestandssystemen"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>NOTE: You might need to enable support for either <i>sudo</i> or "
+#~ "<i>super</i> in the Super User page.</qt>"
+#~ msgstr ""
+#~ "LET OP: U moet mogelijk ondersteuning voor <i>super</i> of <i>sudo</i> "
+#~ "inschakelen op de Super User tab."
+
+#, fuzzy
+#~ msgid "User && Group"
+#~ msgstr "Gebruiker en Groep"
+
+#, fuzzy
+#~ msgid "Charset && Codepage"
+#~ msgstr "Karakterset en Codepage"
+
+#~ msgid "Permissions"
+#~ msgstr "Permissies"
+
+#~ msgid "Allow dropping of files and directories onto shares"
+#~ msgstr "Sta het neerzetten van bestanden en mappen op gedeelde mappen toe"
+
+#~ msgid "Allow dragging of shares"
+#~ msgstr "Sta het slepen van gedeelde mappen toe"
+
+#, fuzzy
+#~ msgid "Drag && Drop"
+#~ msgstr "Slepen en neerzetten"
+
+#~ msgid "auto"
+#~ msgstr "auto"
+
+#, fuzzy
+#~ msgid "Open with &Konqueror"
+#~ msgstr "&Konqueror"
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Joop Beris"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "jberis@risse.nl"
+
+#, fuzzy
+#~ msgid "Remove &All"
+#~ msgstr "Alles Verwijderen"
+
+#~ msgid ""
+#~ "Up to KDE 3.3.x, KIO and Konqueror cannot handle CIFS shares. Konqueror "
+#~ "will hang if you try to access it.\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "Tenminste tot KDE 3.3.x kunnen KIO en Konqueror niet omgaan met CIFS "
+#~ "gedeelde mappen. Konqueror zal niet meer reageren als u probeert toegang "
+#~ "te krijgen tot zo'n gedeelde map.\n"
+#~ "Wilt u doorgaan?"
+
+#, fuzzy
+#~ msgid "Show the comment of a share"
+#~ msgstr "Toon verborgen gedeelde mappen."
+
+#, fuzzy
+#~ msgid "Show the mount point of a share instead of its name"
+#~ msgstr "Toon koppelpunt i.p.v. gedeelde map naam"
+
+#, fuzzy
+#~ msgid "Allow the dropping of files and directories onto share icons"
+#~ msgstr "Sta het neerzetten van bestanden en mappen op gedeelde mappen toe"
+
+#, fuzzy
+#~ msgid "Allow the dragging of share icons"
+#~ msgstr "Sta het slepen van gedeelde mappen toe"
+
+#, fuzzy
+#~ msgid "Show hidden files and directories when previewing a share"
+#~ msgstr "Sta het neerzetten van bestanden en mappen op gedeelde mappen toe"
+
+#, fuzzy
+#~ msgid "Force the subdirectories created by Smb4K to be lowercase"
+#~ msgstr "Maak gegenereerde subdirectories altijd lower case"
+
+#, fuzzy
+#~ msgid "Allow the unmounting of shares owned by other users"
+#~ msgstr "Sta het ontkoppelen van gedeelde mappen van andere gebruikers toe"
+
+#, fuzzy
+#~ msgid "Use a wallet to store authentication data"
+#~ msgstr "Geef a.u.b. uw authenticatie gegevens op voor %1."
+
+#, fuzzy
+#~ msgid "The NetBIOS name of this computer"
+#~ msgstr "NetBIOS naam:"
+
+#, fuzzy
+#~ msgid "The socket options"
+#~ msgstr "Socket opties:"
+
+#, fuzzy
+#~ msgid "The NetBIOS scope"
+#~ msgstr "NetBIOS naam:"
+
+#, fuzzy
+#~ msgid "The remote SMB port"
+#~ msgstr "Remote SMB poort:"
+
+#, fuzzy
+#~ msgid "Use machine account for login"
+#~ msgstr "Gebruik standaard aanmelding"
+
+#, fuzzy
+#~ msgid "Unicode support"
+#~ msgstr "Gebruik ondersteuning voor grote bestandssystemen"
+
+#, fuzzy
+#~ msgid "Long file support"
+#~ msgstr "Gebruik ondersteuning voor grote bestandssystemen"
+
+#, fuzzy
+#~ msgid "Name resolve order used by smbclient"
+#~ msgstr "Resolve volgorde:"
+
+#, fuzzy
+#~ msgid "Prefix for synchronization"
+#~ msgstr "Standaard Bestemming"
+
+#, fuzzy
+#~ msgid "Use archive mode"
+#~ msgstr "Archiefmodus"
+
+#, fuzzy
+#~ msgid "Skip files that are newer in the target directory"
+#~ msgstr "Sla bestanden over die nieuwer zijn op doel locatie"
+
+#, fuzzy
+#~ msgid "Don't send implied directories with --relative"
+#~ msgstr "Zend geen geïmpliceerde mappen over met -R"
+
+#, fuzzy
+#~ msgid "Preserve owner (super user only)"
+#~ msgstr "Behoud eigenaar (alleen root)"
+
+#, fuzzy
+#~ msgid "Also delete excluded files from destination directory"
+#~ msgstr "Verwijder ook genegeerde bestanden op bestemming"
+
+#, fuzzy
+#~ msgid "Don't transfer any file smaller than SIZE"
+#~ msgstr "Breng geen bestanden over kleiner dan"
+
+#, fuzzy
+#~ msgid "The directory where to put a partially transferred file into."
+#~ msgstr "Zet gedeeltelijk overgebrachte bestanden in"
+
+#, fuzzy
+#~ msgid "Exclude files that match a certain pattern"
+#~ msgstr "Negeer bestanden die aan dit patroon voldoen:"
+
+#, fuzzy
+#~ msgid "Read exclude patterns from a file"
+#~ msgstr "Lees \"exlude\" patronen van"
+
+#, fuzzy
+#~ msgid "Do not exclude files matching a certain pattern"
+#~ msgstr "Negeer bestanden die aan dit patroon voldoen:"
+
+#, fuzzy
+#~ msgid "Read include patterns from a file"
+#~ msgstr "Lees \"include\" patronen van"
+
+#, fuzzy
+#~ msgid "Use -FF filter rule"
+#~ msgstr "Filter regels"
+
+#, fuzzy
+#~ msgid "Delay updates until the end of the transfer"
+#~ msgstr "Verwijder bestanden op bestemming na overdracht"
+
+#, fuzzy
+#~ msgid "Force a fixed checksum block-size"
+#~ msgstr "Forceer vaste checksum block grootte:"
+
+#, fuzzy
+#~ msgid "Set block/file checksum seed"
+#~ msgstr "Stel block/bestand checksum seed in:"
+
+#, fuzzy
+#~ msgid "Skip files based on a checksum"
+#~ msgstr "Overslaan op basis van checksum"
+
+#, fuzzy
+#~ msgid "The program that should be used to gain super user privileges"
+#~ msgstr "Gebruik het volgende programma om super user privileges te krijgen:"
+
+#, fuzzy
+#~ msgid "Use super user privileges to unmount inaccessible shares"
+#~ msgstr ""
+#~ "Gebruik super user privileges voor het koppelen en ontkoppelen van "
+#~ "gedeelde mappen"
+
+#~ msgid ""
+#~ "The browse list could not be retrieved.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message."
+#~ msgstr ""
+#~ "De browser lijst kon niet worden opgehaald.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding "
+#~ "geretourneerd werd."
+
+#, fuzzy
+#~ msgid ""
+#~ "The browse list could not be retrieved.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr ""
+#~ "De browser lijst kon niet worden opgehaald.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#, fuzzy
+#~ msgid "The file \"%1\" could not be read."
+#~ msgstr "Het bestand '%1' kon niet worden gelezen."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" could not be read.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr ""
+#~ "Het bestand '%1' kon niet worden afgedrukt.\n"
+#~ "Zie het foutbericht onder 'Details' voor meer informatie."
+
+#~ msgid ""
+#~ "IP addresses are not supported with this search method. Please choose "
+#~ "\"Use nmblookup\" in the configuration dialog and try again."
+#~ msgstr ""
+#~ "IP adressen worden niet ondersteund voor deze zoekmethode. Kies a.u.b. "
+#~ "voor \"Gebruik nmblookup\" in het configuratievenster en probeer het "
+#~ "opnieuw."
+
+#, fuzzy
+#~ msgid "Shares Vie&w"
+#~ msgstr "Gedeelde Mappen Weergave"
+
+#, fuzzy
+#~ msgid "List Vie&w"
+#~ msgstr "Gedeelde Mappen Weergave"
+
+#, fuzzy
+#~ msgid "Jump to shares view"
+#~ msgstr "Ga naar Gedeelde Mappen Weergave"
+
+#, fuzzy
+#~ msgid "Jump to network browser"
+#~ msgstr "Ga naar Netwerk Browser"
+
+#, fuzzy
+#~ msgid "Jump to search dialog"
+#~ msgstr "Ga naar Zoek Venster"
+
+#~ msgid "Docking in System Tray"
+#~ msgstr "Minimaliseren naar de Systeem Tray"
+
+#~ msgid "Exiting..."
+#~ msgstr "Bezig met afsluiten..."
+
+#, fuzzy
+#~ msgid "Querying current master browser..."
+#~ msgstr "Raadpleeg de huidige master browser"
+
+#, fuzzy
+#~ msgid "Querying master browser %1..."
+#~ msgstr "Raadpleeg de huidige master browser"
+
+#, fuzzy
+#~ msgid "Scanning broadcast areas..."
+#~ msgstr "Broadcast adres:"
+
+#~ msgid "Opening workgroup..."
+#~ msgstr "Bezig met openen werkgroep..."
+
+#, fuzzy
+#~ msgid "If no wallet is used, remember authentication data during run time"
+#~ msgstr ""
+#~ "Onthoud wachtwoorden tijdens de duur van het programma als de wallet niet "
+#~ "gebruikt wordt"
+
+#~ msgid "Use default login"
+#~ msgstr "Gebruik standaard aanmelding"
+
+#~ msgid "Show IPC$ shares"
+#~ msgstr "Toon IPC$ gedeelde mappen"
+
+#~ msgid "Show ADMIN$ shares"
+#~ msgstr "Toon ADMIN$ gedeelde mappen"
+
+#~ msgid "Show type"
+#~ msgstr "Toon type"
+
+#~ msgid "Show tooltip with information about a network item"
+#~ msgstr "Toon tooltip met informatie over een netwerk item"
+
+#~ msgid "Show tooltip with information about a share"
+#~ msgstr "Toon tooltip met informatie over een gedeelde map"
+
+#, fuzzy
+#~ msgid ""
+#~ "Smb4K uses \"nmblookup\" by default to search for remote hosts. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use \"smbclient"
+#~ "\"."
+#~ msgstr ""
+#~ "Smb4K gebruikt standaard <i>nmblookup</i> om het netwerk te doorzoeken. "
+#~ "Deze methode is zeer betrouwbaar, maar kan soms mislukken als uw "
+#~ "netwerkomgeving op een ongebruikelijke manier is ingericht. In dat geval "
+#~ "kunt u beter <i>smbclient</i> gebruiken."
+
+#~ msgid "Use nmblookup (recommended)"
+#~ msgstr "Gebruik nmblookup (aanbevolen)"
+
+#~ msgid "Rsync prefix:"
+#~ msgstr "Rsync voorvoegsel:"
+
+#~ msgid "Skip files that are newer in target directory"
+#~ msgstr "Sla bestanden over die nieuwer zijn op doel locatie"
+
+#, fuzzy
+#~ msgid ""
+#~ "The rules defined below will be added to the \"rsync\" command as they "
+#~ "are. Thus, you have to start with the --filter=... argument."
+#~ msgstr ""
+#~ "De regels zoals hierboven gedefinieerd zullen aan het <i>rsync</i> "
+#~ "commando worden toegevoegd zoals weergegeven. Daarom dient u de regels te "
+#~ "beginnen met het '-filter=' argument. Het is verstandig om eerst de "
+#~ "handleiding van rsync te lezen."
+
+#, fuzzy
+#~ msgid ""
+#~ "NOTE: You might need to enable support for either \"super\" or \"sudo\" "
+#~ "in the Super User page."
+#~ msgstr ""
+#~ "LET OP: U moet mogelijk ondersteuning voor <i>super</i> of <i>sudo</i> "
+#~ "inschakelen op de Super User tab."
+
+#, fuzzy
+#~ msgid "Use large file system support"
+#~ msgstr "Gebruik ondersteuning voor grote bestandssystemen"
+
+#~ msgid "Kerberos:"
+#~ msgstr "Kerberos:"
+
+#~ msgid "Custom"
+#~ msgstr "Custom"
+
+#, fuzzy
+#~ msgid "The default password for authentication"
+#~ msgstr "Geef a.u.b. uw authenticatie gegevens op voor %1."
+
+#, fuzzy
+#~ msgid "Querying %1..."
+#~ msgstr "Bezig met doorzoeken van het netwerk..."
+
+#, fuzzy
+#~ msgid "Querying %1 to compose browse list..."
+#~ msgstr "Raadpleeg de huidige master browser"
+
+#~ msgid "Show shares as list instead of as icons"
+#~ msgstr "Toon gedeelde mappen als lijst i.p.v. als iconen"
+
+#~ msgid ""
+#~ "Smb4K is an SMB/CIFS share browser for KDE.\n"
+#~ "It uses Samba to access the local network neighborhood."
+#~ msgstr ""
+#~ "Smb4K is een SMB/CIFS gedeelde map browser voor KDE.\n"
+#~ "Het gebruikt Samba om toegang te krijgen tot de lokale netwerkomgeving."
+
+#, fuzzy
+#~ msgid "0 / 0"
+#~ msgstr "0 van 0"
+
+#, fuzzy
+#~ msgid "Scan netwo&rk"
+#~ msgstr "Scan Netwe&rk"
+
+#, fuzzy
+#~ msgid "&Custom options"
+#~ msgstr "&Custom Opties"
+
+#~ msgid "Broadcast addresses for IP scan:"
+#~ msgstr "Broadcast adressen voor IP scan:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Smb4K uses <i>nmblookup</i> by default to do network searches. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use "
+#~ "<i>smbclient</i>."
+#~ msgstr ""
+#~ "Smb4K gebruikt standaard <i>nmblookup</i> om het netwerk te doorzoeken. "
+#~ "Deze methode is zeer betrouwbaar, maar kan soms mislukken als uw "
+#~ "netwerkomgeving op een ongebruikelijke manier is ingericht. In dat geval "
+#~ "kunt u beter <i>smbclient</i> gebruiken."
+
+#~ msgid ""
+#~ "Use super user privileges to force the unmounting of (broken) shares\n"
+#~ "(Requires Linux kernel 2.4.11 or later)"
+#~ msgstr ""
+#~ "Gebruik super user privileges voor het geforceerd ontkoppelen van "
+#~ "(defecte) gedeelde mappen\n"
+#~ "(Linux kernel 2.4.11 of hoger vereist)"
+
+#~ msgid "Samba Options"
+#~ msgstr "Samba Opties"
+
+#~ msgid "Super User Privileges"
+#~ msgstr "Super User Privileges"
+
+#~ msgid ""
+#~ "You forgot to enter the host you want to query to retrieve the browse "
+#~ "list.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "U heeft geen host opgegeven voor het ophalen van de browselijst.\n"
+#~ "Wilt u dit nu doen?"
+
+#~ msgid ""
+#~ "You forgot to enter the broadcast address(es) for the IP scan.\n"
+#~ "Do you want to enter them now?"
+#~ msgstr ""
+#~ "U heeft geen broadcast adres(sen) voor de IP scan opgegeven.\n"
+#~ "Wilt u dit nu doen?"
+
+#~ msgid ""
+#~ "You forgot to enter the mount prefix.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "U heeft geen koppel voorvoegsel opgegeven.\n"
+#~ "Wilt u dit nu doen?"
+
+#~ msgid "Use relative path names (-R)"
+#~ msgstr "Gebruik relatieve mapnamen (-R)"
+
+#, fuzzy
+#~ msgid "Don't send implied directories with -R"
+#~ msgstr "Zend geen geïmpliceerde mappen over met -R"
+
+#~ msgid "Only transform unsafe links"
+#~ msgstr "Zet alleen onveilige links om"
+
+#~ msgid "Ignore symlinks that point outside the tree"
+#~ msgstr "Negeer symlinks die verwijzen naar locaties buiten de tree"
+
+#~ msgid "Preserve owner (root only)"
+#~ msgstr "Behoud eigenaar (alleen root)"
+
+#~ msgid "Preserve devices (root only)"
+#~ msgstr "Behoud apparaten (alleen root)"
+
+#~ msgid "Remove sent files/symlinks from source"
+#~ msgstr "Verwijder overgezette bestanden/symlinks van bron"
+
+#~ msgid "Delete files that don't exist in source"
+#~ msgstr "Verwijder bestanden die zich niet op de bronlocatie bevinden"
+
+#~ msgid "Delete files on destination before transfer"
+#~ msgstr "Verwijder bestanden op bestemming voor overdracht"
+
+#~ msgid "Delete files on destination after transfer"
+#~ msgstr "Verwijder bestanden op bestemming na overdracht"
+
+#~ msgid "Delete files on destination during transfer"
+#~ msgstr "Verwijder bestanden op bestemming gedurende overdracht"
+
+#, fuzzy
+#~ msgid "Also delete excluded files on destination"
+#~ msgstr "Verwijder ook genegeerde bestanden op bestemming"
+
+#, fuzzy
+#~ msgid "Don't transfer any file smaller than"
+#~ msgstr "Breng geen bestanden over kleiner dan"
+
+#, fuzzy
+#~ msgid "Don't transfer any file larger than"
+#~ msgstr "Breng geen bestanden over groter dan"
+
+#, fuzzy
+#~ msgid "Put a partially transferred file into"
+#~ msgstr "Zet gedeeltelijk overgebrachte bestanden in"
+
+#, fuzzy
+#~ msgid "Read exclude patterns from"
+#~ msgstr "Lees \"exlude\" patronen van"
+
+#, fuzzy
+#~ msgid "Read include patterns from"
+#~ msgstr "Lees \"include\" patronen van"
+
+#, fuzzy
+#~ msgid ""
+#~ "The rules defined above will be added to the <i>rsync</i> command as they "
+#~ "are. Thus, you have to start with the '--filter=' argument. You should "
+#~ "also read rsync's manual page first."
+#~ msgstr ""
+#~ "De regels zoals hierboven gedefinieerd zullen aan het <i>rsync</i> "
+#~ "commando worden toegevoegd zoals weergegeven. Daarom dient u de regels te "
+#~ "beginnen met het '-filter=' argument. Het is verstandig om eerst de "
+#~ "handleiding van rsync te lezen."
+
+#~ msgid "Use \"--filter=': /.rsync-filter'\" filter rule"
+#~ msgstr "Gebruik \"-filter='- .rsync-filter'\" filter regel"
+
+#, fuzzy
+#~ msgid "Use \"--filter='- .rsync-filter'\" filter rule"
+#~ msgstr "Gebruik \"-filter='- .rsync-filter'\" filter regel"
+
+#~ msgid "Put all updated files into place at end"
+#~ msgstr "Zet alle bijgewerkte bestanden op hun plaats op het einde"
+
+#~ msgid "Skip based on checksum"
+#~ msgstr "Overslaan op basis van checksum"
+
+#~ msgid "Domain (workgroup):"
+#~ msgstr "Domein (werkgroep):"
+
+#~ msgid "Scope (Read manual page):"
+#~ msgstr "Scope: (Lees eerst handleiding pagina):"
+
+#~ msgid "Active Directory"
+#~ msgstr "Active Directory"
+
+#, fuzzy
+#~ msgid "Linux charset:"
+#~ msgstr "Linux karakterset:"
+
+#, fuzzy
+#~ msgid "Use unicode when communicating with the server"
+#~ msgstr "Gebruik unicode om te communiceren met de server"
+
+#~ msgid "Use default network read size"
+#~ msgstr "Gebruik standaard netwerk read size"
+
+#~ msgid "Auto"
+#~ msgstr "Automatisch"
+
+#, fuzzy
+#~ msgid "Active Directory (LDAP/Kerberos)"
+#~ msgstr "Active Directory (LDAP/Kerberos)"
+
+#~ msgid "DCE-RPC"
+#~ msgstr "DCE-RPC"
+
+#~ msgid "RAP (older systems)"
+#~ msgstr "RAP (oudere systemen)"
+
+#, fuzzy
+#~ msgid "Resolve order:"
+#~ msgstr "Resolve volgorde:"
+
+#~ msgid ""
+#~ "The lock file '%1' is a symbolic link.\n"
+#~ "It looks like someone is trying to exploit your system. Please inform "
+#~ "your system administrator. Smb4K will not perform any action on a system "
+#~ "file as long as this problem is not solved."
+#~ msgstr ""
+#~ "Het lock bestand '%1' is een symbolische link.\n"
+#~ "Het lijkt erop dat iemand misbruik wil maken van uw systeem. Waarschuw uw "
+#~ "systeembeheerder. Smb4K zal geen acties uitvoeren op systeembestanden "
+#~ "totdat dit probleem is opgelost."
+
+#, fuzzy
+#~ msgid "The user IDs present on the system"
+#~ msgstr "Toon alle gekoppelde gedeelde mappen op dit systeem"
+
+#~ msgid "This login will be used, if none has been defined for a share."
+#~ msgstr ""
+#~ "Deze aanmelding wordt gebruikt als er geen is opgegeven voor een gedeelde "
+#~ "map."
+
+#~ msgid ""
+#~ "You forgot to enter the default login and password.\n"
+#~ "Do you want to enter them now?"
+#~ msgstr ""
+#~ "U heeft geen standaard gebruiksnaam en wachtwoord opgegeven.\n"
+#~ "Wilt u dit nu doen?"
+
+#~ msgid ""
+#~ "You forgot to enter the default login.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "U heeft geen standaard gebruikersnaam opgegeven.\n"
+#~ "Wilt u dit nu doen?"
+
+#~ msgid ""
+#~ "You forgot to enter the default password.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "U heeft geen standaard wachtwoord opgegeven.\n"
+#~ "Wilt u dit nu doen?"
+
+#~ msgid "Printer:"
+#~ msgstr "Printer:"
+
+#~ msgid "Copies"
+#~ msgstr "Kopieën"
+
+#~ msgid "Preparing Synchronization ..."
+#~ msgstr "Voorbereiden van Synchronisatie ..."
+
+#~ msgid "%1 of %2"
+#~ msgstr "%1 van %2"
+
+#, fuzzy
+#~ msgid "Preserve device files (super user only)"
+#~ msgstr "Behoud apparaten (alleen root)"
+
+#~ msgid ""
+#~ "The disk usage could not be determined.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message."
+#~ msgstr ""
+#~ "Het schijfruimtegebruik kon niet worden bepaald.\n"
+#~ "Er is geen extra informatie beschikbaar omdat er geen foutmelding werd "
+#~ "geretourneerd."
+
+#~ msgid ""
+#~ "The disk usage could not be determined.\n"
+#~ "Read the error message under 'Details' to find out more."
+#~ msgstr ""
+#~ "Het schijfruimtegebruik kon niet worden bepaald.\n"
+#~ "Lees het foutbericht onder 'Details' voor meer informatie."
+
+#~ msgid "Smb4K - The SMB/CIFS Share Browser"
+#~ msgstr "Smb4K - De SMB/CIFS Share Browser"
+
+#~ msgid "Jump to Search Dialog (Alternative)"
+#~ msgstr "Ga naar Zoek Venster (Alternatief)"
+
+#~ msgid "Browse list retrieval"
+#~ msgstr "Browse lijst ophalen"
+
+#~ msgid "Version"
+#~ msgstr "Versie"
+
+#~ msgid "Master"
+#~ msgstr "Master"
+
+#~ msgid "IP Scan"
+#~ msgstr "IP Scan"
+
+#~ msgid "Mounted &Shares"
+#~ msgstr "Gekoppelde &Gedeelde Mappen"
+
+#~ msgid "The kernel (%1) does not support this operation."
+#~ msgstr "De kernel (%1) ondersteund deze operatie niet."
+
+#~ msgid "This share went offline!"
+#~ msgstr "Deze gedeelde map is niet meer beschikbaar!"

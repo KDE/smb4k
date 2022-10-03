@@ -1,0 +1,3891 @@
+# Translation of smb4k-core.po to Ukrainian
+# Copyright (C) 2004-2021 This_file_is_part_of_KDE
+# This file is distributed under the license LGPL version 2.1 or
+# version 3 or later versions approved by the membership of KDE e.V.
+#
+# Ivan Petrouchtchak <ivanpetrouchtchak@yahoo.com>, 2004, 2005, 2006, 2007.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k-core\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-27 00:45+0000\n"
+"PO-Revision-Date: 2022-05-20 08:38+0300\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.12.0\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:18
+#, kde-format
+msgid "Tab orientation:"
+msgstr "Розташування вкладок:"
+
+#. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:19
+#, kde-format
+msgid "Set the tab orientation for the tabified dock widgets."
+msgstr ""
+"Встановити розташування вкладок для віджетів-вкладок на бічних панелях."
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:22
+#, kde-format
+msgid "Top"
+msgstr "Вгорі"
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:25
+#, kde-format
+msgid "Bottom"
+msgstr "Внизу"
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:28
+#, kde-format
+msgid "Left"
+msgstr "Ліворуч"
+
+#. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
+#: smb4k.kcfg:31
+#, kde-format
+msgid "Right"
+msgstr "Праворуч"
+
+#. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
+#: smb4k.kcfg:37
+#, kde-format
+msgid "Show custom bookmark label if available"
+msgstr "Показувати нетипову мітку закладки, якщо таку вказано"
+
+#. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
+#: smb4k.kcfg:38
+#, kde-format
+msgid ""
+"Do not show the name of the share that is represented by the bookmark but "
+"the custom label that was defined in the bookmark editor."
+msgstr ""
+"Не показувати назву спільного ресурсу, що визначається закладкою. Замість "
+"неї показувати нетипову мітку, яку було визначено у редакторі закладок."
+
+#. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
+#: smb4k.kcfg:42
+#, kde-format
+msgid "Start docked"
+msgstr "Запускати в системний лоток"
+
+#. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
+#: smb4k.kcfg:43
+#, kde-format
+msgid ""
+"Start the application docked to the system tray, i.e. only the system tray "
+"widget is shown and the main window is hidden. You can bring the main window "
+"up by clicking on the system tray widget or by choosing \"Restore\" from its "
+"popup menu."
+msgstr ""
+"Запускати програму згорнутою у системний лоток. Буде показано лише віджет "
+"системного лотка — головне вікно буде приховано. Відкрити головне вікно "
+"програми можна буде наведенням вказівника миші на віджет піктограми "
+"системного лотка з наступним клацанням лівою кнопкою миші і вибором пункту "
+"«Відновити» з контекстного меню."
+
+#. i18n: ectx: label, entry (ShowType), group (UserInterface)
+#: smb4k.kcfg:47
+#, kde-format
+msgid "Show the type of the share"
+msgstr "Показувати тип спільного ресурсу"
+
+#. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
+#: smb4k.kcfg:48
+#, kde-format
+msgid ""
+"The type of a share will be displayed in a separate column in the network "
+"neighborhood browser. It can either be Disk, Print or IPC."
+msgstr ""
+"Визначає, чи слід показувати тип спільного ресурсу у окремому стовпчику "
+"навігатора мережевим оточенням. Типом спільного ресурсу може бути «Диск», "
+"«Принтер» чи «IPC»."
+
+#. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
+#: smb4k.kcfg:52
+#, kde-format
+msgid "Show the IP address of the server"
+msgstr "Показувати адресу IP сервера"
+
+#. i18n: ectx: whatsthis, entry (ShowIPAddress), group (UserInterface)
+#: smb4k.kcfg:53
+#, kde-format
+msgid ""
+"The IP address of the server will be displayed in a separate column in the "
+"network neighborhood browser."
+msgstr ""
+"Визначає, чи слід показувати адресу IP сервера у окремому стовпчику "
+"навігатора мережевим оточенням."
+
+#. i18n: ectx: label, entry (ShowComment), group (UserInterface)
+#: smb4k.kcfg:57
+#, kde-format
+msgid "Show the comment"
+msgstr "Показувати коментар"
+
+#. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
+#: smb4k.kcfg:58
+#, kde-format
+msgid ""
+"The comment describing the server or share will be displayed in a separate "
+"column in the network neighborhood browser."
+msgstr ""
+"Визначає, чи слід показувати коментар з описом сервера або спільного ресурсу "
+"у окремому стовпчику навігатора мережевим оточенням."
+
+#. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
+#: smb4k.kcfg:62
+#, kde-format
+msgid "Show tooltips for network items"
+msgstr "Показувати підказки для записів мережі"
+
+#. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
+#: smb4k.kcfg:63
+#, kde-format
+msgid "The tooltip shows various information about the current network item."
+msgstr ""
+"Визначає, чи слід показувати підказку з різноманітними відомостями щодо "
+"поточного пункту списку ресурсів мережі."
+
+#. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
+#: smb4k.kcfg:67
+#, kde-format
+msgid "Automatically expand domains and hosts"
+msgstr "Автоматично розгортати пункти доменів і вузлів"
+
+#. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
+#: smb4k.kcfg:68
+#, kde-format
+msgid ""
+"Automatically expand domain and host items when a list of associated network "
+"items (domain members or shares) is added or updated. Please note that a "
+"domain or host item will always be expanded when you execute it."
+msgstr ""
+"Автоматично розгортати пункти доменів і вузлів у разі додавання або "
+"оновлення відповідного списку елементів мережі (учасників домену або "
+"спільних ресурсів). Будь ласка, зауважте, що пункт домену або вузла завжди "
+"буде розгорнуто, якщо ви виконуватимете з ним дії."
+
+#. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
+#: smb4k.kcfg:72
+#, kde-format
+msgid "Show tooltips for mounted shares"
+msgstr "Показувати підказки для змонтованих спільних ресурсів"
+
+#. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
+#: smb4k.kcfg:73
+#, kde-format
+msgid "The tooltip shows various information about the current share."
+msgstr ""
+"Визначає, чи слід показувати підказку з відомостями щодо спільного ресурсу."
+
+#. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
+#: smb4k.kcfg:77
+#, kde-format
+msgid "View mode:"
+msgstr "Режим перегляду:"
+
+#. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
+#: smb4k.kcfg:78
+#, kde-format
+msgid ""
+"This setting determines the view mode of the shares view. There are two "
+"modes: the icon view and the list view."
+msgstr ""
+"За допомогою цього параметра можна визначити режим перегляду спільних "
+"ресурсів. Передбачено два режими: перегляд піктограмами і перегляд списком."
+
+#. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
+#: smb4k.kcfg:81
+#, kde-format
+msgid "Icon View"
+msgstr "Перегляд піктограмами"
+
+#. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
+#: smb4k.kcfg:84
+#, kde-format
+msgid "List View"
+msgstr "Перегляд списком"
+
+#. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
+#: smb4k.kcfg:90
+#, kde-format
+msgid "Icon size for the icon view:"
+msgstr "Розмір піктограм на панелі піктограм:"
+
+#. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
+#: smb4k.kcfg:91
+#, kde-format
+msgid "Set the icon size for the icon view mode of the shares view."
+msgstr ""
+"Встановити розмір піктограм для режиму перегляду спільних ресурсів з "
+"піктограмами."
+
+#. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
+#: smb4k.kcfg:97
+#, kde-format
+msgid "Icon size for the list view:"
+msgstr "Розмір піктограм на панелі списку:"
+
+#. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
+#: smb4k.kcfg:98
+#, kde-format
+msgid "Set the icon size for the list view mode of the shares view."
+msgstr ""
+"Встановити розмір піктограм для режиму перегляду спільних ресурсів списком."
+
+#. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
+#: smb4k.kcfg:104
+#, kde-format
+msgid "Icon size:"
+msgstr "Розмір піктограм:"
+
+#. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
+#: smb4k.kcfg:105
+#, kde-format
+msgid "Set the icon size for the network neighborhood browser."
+msgstr "Встановити розмір піктограм для навігатора мережевим оточенням."
+
+#. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
+#: smb4k.kcfg:116
+#, kde-format
+msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
+msgstr ""
+"Скористатися для навігації динамічним виявленням вебслужб (WS-Discovery)"
+
+#. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
+#: smb4k.kcfg:117
+#, kde-format
+msgid ""
+"The Web Services Dynamic Discovery (WS-Discovery) is used to browse the "
+"local network and discover workgroups, domains and hosts. This is useful, if "
+"your network neighborhood is dominated by servers with modern Windows "
+"versions. If you use this option, there should be no need to force Samba's "
+"client library to use the SMB protocol version 1.0 for searching for "
+"workgroups and domains."
+msgstr ""
+"Динамічне виявлення вебслужб (WS-Discovery) використовується для навігації "
+"локальною мережею та виявлення робочих груп, доменів та вузлів. Це корисно, "
+"якщо у вашому мережевому оточенні домінують сервери із сучасними версіями "
+"Windows. Якщо ви скористаєтеся цим варіантом, потреби у примусовому "
+"використанні у клієнтській бібліотеці Samba версії протоколу SMB 1.0 для "
+"пошуку робочих груп і доменів не буде."
+
+#. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
+#: smb4k.kcfg:121
+#, kde-format
+msgid "Use DNS Service Discovery (DNS-SD) for browsing"
+msgstr "Скористатися виявленням служб DNS (DNS-SD) для навігації"
+
+#. i18n: ectx: whatsthis, entry (UseDnsServiceDiscovery), group (Network)
+#: smb4k.kcfg:122
+#, kde-format
+msgid ""
+"The DNS Service Discovery (DNS-SD) is used to browse the local network and "
+"discover servers that provide shared SMB resources. The discovered domains "
+"correspond to the local DNS domains (e. g. named LOCAL) and most likely not "
+"the ones defined in the network neighborhood. However, this does not "
+"influence the browsing. If you use this option, there is no need to force "
+"Samba's client library to use the SMB protocol version 1.0 for searching for "
+"workgroups and domains."
+msgstr ""
+"Виявлення служб DNS (DNS-SD) використовується для навігації локальною "
+"мережею і виявлення серверів, які надають спільні ресурси SMB. Виявлені "
+"домени відповідатимуть доменам DNS-SD (наприклад LOCAL) і, найімовірніше, не "
+"тим доменам, які визначено у мережевому оточенні. Втім, це не стосується "
+"навігації. Якщо ви хочете скористатися цим варіантом, не слід примушувати "
+"клієнтську бібліотеку Samba використовувати для пошуку робочих груп та "
+"доменів протокол SMB версії 1.0."
+
+#. i18n: ectx: label, entry (ForceSmb1Protocol), group (Network)
+#: smb4k.kcfg:126
+#, kde-format
+msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
+msgstr ""
+"Примусово використовувати протокол SMB версії 1.0 для пошуку робочих груп і "
+"доменів"
+
+#. i18n: ectx: whatsthis, entry (ForceSmb1Protocol), group (Network)
+#: smb4k.kcfg:127
+#, kde-format
+msgid ""
+"Smb4K will force Samba's client library to use the SMB protocol version 1.0 "
+"for browsing workgroups and domains. You should use this option only as last "
+"resort, because the SMB protocol version 1.0 is unsafe and has been disabled "
+"in newer Samba and Windows versions. However, if you have trouble "
+"discovering workgroups and domains in your network neighborhood, you might "
+"want to consider to switch this setting on. If you are using DNS Service "
+"Discovery (DNS-SD) or Web Services Dynamic Discovery (WS-Discovery), and "
+"those are working for you, you do not need it."
+msgstr ""
+"Smb4K накаже клієнтській бібліотеці Samba використовувати для навігації "
+"робочими групами і доменами версію 1.0 протоколу SMB. Вам слід користуватися "
+"цим варіантом лише як останнім виходом, оскільки протокол SMB версії 1.0 не "
+"є безпечним — його вимкнено у новіших версіях Samba та Windows. Якщо у вас "
+"виникають проблеми із виявленням робочих груп і доменів у вашому мережевому "
+"оточення, вам варто спробувати увімкнути цей параметр. Втім, це "
+"стосуватиметься лише пошуків за допомогою клієнтської бібліотеки Samba. Якщо "
+"ви користуєтеся виявленням служб DNS (DNS-SD) або динамічним виявленням "
+"вебслужб (WS-Discovery), цей пункт вам не потрібен."
+
+#. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
+#: smb4k.kcfg:131
+#, kde-format
+msgid "Set minimal and maximal SMB protocol version"
+msgstr "Встановити мінімальну та максимальну версію протоколу SMB"
+
+#. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
+#: smb4k.kcfg:132
+#, kde-format
+msgid ""
+"Smb4K will set the minimal and maximal SMB protocol version that is used by "
+"Samba's client library to browse the network neighborhood. This will "
+"overwrite the settings in the smb.conf file. Normally, you do not need to "
+"use this option, because the right protocol versions should be negotiated "
+"between the client and the server while establishing a connection. Please "
+"note that this setting might not be appropriate to make the discovering of "
+"workgroups and domains work while keeping undisturbed connectivity to "
+"servers. Use DNS Service Discovery (DNS-SD) or Web Services Dynamic "
+"Discovery (WS-Discovery) for domain and workgroup lookups instead."
+msgstr ""
+"Smb4K встановить мінімальні і максимальні вимоги до версії протоколу SMB, "
+"який використовуватиметься у клієнтській бібліотеці Samba для навігації "
+"мережевим середовищем. Вказані параметри перевизначать параметри з файла smb."
+"conf. Зазвичай, потреби у використанні цього параметра немає, оскільки "
+"належні версії протоколів може бути узгоджено під час встановлення з'єднання "
+"між клієнтом і сервером. Будь ласка, зауважте, що використання цього "
+"параметра може виявитися несумісним із виконанням пошуку комп'ютерів у "
+"робочих групах та роботою у домені без втрати можливості з'єднання з "
+"серверами. Для пошуків у доменах та робочих групах скористайтеся DNS Service "
+"Discovery (DNS-SD) або Web Services Dynamic Discovery (WS-Discovery)."
+
+#. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:136
+#, kde-format
+msgid "Minimal SMB protocol version:"
+msgstr "Мінімальна версія протоколу SMB:"
+
+#. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:137
+#, kde-format
+msgid ""
+"This setting controls the minimum protocol version that Samba's client "
+"library will attempt to use."
+msgstr ""
+"Цей параметр визначає мінімальну версію протоколу, яку може використовувати "
+"клієнтська бібліотека Samba."
+
+#. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
+#. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:140 smb4k.kcfg:156
+#, kde-format
+msgid "NT1 (Classic CIFS/SMBv1 protocol)"
+msgstr "NT1 (класичний протокол CIFS/SMBv1)"
+
+#. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
+#. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:143 smb4k.kcfg:159
+#, kde-format
+msgid "SMB2 (Windows Vista and above)"
+msgstr "SMB2 (Windows Vista і новіші версії)"
+
+#. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
+#. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:146 smb4k.kcfg:162
+#, kde-format
+msgid "SMB3 (Windows 8 and above)"
+msgstr "SMB3 (Windows 8 і новіші версії)"
+
+#. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:152
+#, kde-format
+msgid "Maximal SMB protocol version:"
+msgstr "Максимальна версія протоколу SMB:"
+
+#. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
+#: smb4k.kcfg:153
+#, kde-format
+msgid ""
+"This setting controls the maximum protocol version that Samba's client "
+"library will attempt to use."
+msgstr ""
+"Цей параметр визначає максимальну версію протоколу, яку може використовувати "
+"клієнтська бібліотека Samba."
+
+#. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
+#: smb4k.kcfg:168
+#, kde-format
+msgid "Set the SMB port to:"
+msgstr "Встановити порт SMB:"
+
+#. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
+#. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
+#: smb4k.kcfg:169 smb4k.kcfg:173
+#, kde-format
+msgid ""
+"This is the port that is used for connecting to remote servers with the "
+"client programs net, smbclient and smbtree. The default value is 139 "
+"(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+msgstr ""
+"Це порт, який буде використано для встановлення з’єднань з віддаленими "
+"серверами за допомогою клієнтських програм net, smbclient і smbtree. Типовим "
+"портом є 139 (NetBIOS). Значення цього параметра також використовується для "
+"монтування у FreeBSD."
+
+#. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
+#: smb4k.kcfg:179
+#, kde-format
+msgid "This computer is on a large network neighborhood"
+msgstr "Цей комп'ютер перебуває у великому мережевому середовищі"
+
+#. i18n: ectx: whatsthis, entry (LargeNetworkNeighborhood), group (Network)
+#: smb4k.kcfg:180
+#, kde-format
+msgid ""
+"In case your computer is on a large network neighborhood, discovering all "
+"workgroups, hosts and shares might take a long time, since in the default "
+"configuration all local master browsers are queried. Enabling this setting "
+"limits the number of used local master browsers to three. This can reduced "
+"the time consumption on large network neighborhoods considerably."
+msgstr ""
+"Якщо ваш комп'ютер є частиною великої локальної мережі, визначення усіх "
+"робочих груп, вузлів та спільних ресурсів може бути доволі тривалою справою, "
+"оскільки за типових налаштувань доведеться виконати опитування усіх "
+"локальних головних навігаторів. Позначення цього пункту обмежить кількість "
+"використаних локальних головних навігаторів до трьох. Таким чином можна "
+"значно зменшити тривалість початкової обробки даних для великих локальних "
+"мереж."
+
+#. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
+#: smb4k.kcfg:184
+#, kde-format
+msgid "Master browsers require authentication"
+msgstr "Користування головними навігаторами потребує розпізнавання"
+
+#. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
+#: smb4k.kcfg:185
+#, kde-format
+msgid ""
+"The master browsers in your network neighborhood require a login to return "
+"the browse list. This setting is rarely needed."
+msgstr ""
+"Визначає, чи повертатимуть головні навігатори у мережевому оточенні вашого "
+"комп’ютера дані щодо списку навігації лише у відповідь на введення імені "
+"користувача. Позначення цього пункту потрібне лише у рідкісних випадках."
+
+#. i18n: ectx: label, entry (UseKerberos), group (Network)
+#: smb4k.kcfg:189
+#, kde-format
+msgid "Use Kerberos for authentication"
+msgstr "Використовувати для розпізнавання Kerberos 5"
+
+#. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
+#: smb4k.kcfg:190
+#, kde-format
+msgid ""
+"Use Kerberos for authentication. This is only useful in an Active Directory "
+"environment."
+msgstr ""
+"Використовувати для розпізнавання Kerberos. Позначення цього пункту буде "
+"корисним лише у середовищах Active Directory."
+
+#. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
+#: smb4k.kcfg:194
+#, kde-format
+msgid "Use Winbind ccache for authentication"
+msgstr "Використовувати ccache Winbind для розпізнавання"
+
+#. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
+#: smb4k.kcfg:195
+#, kde-format
+msgid "Use the Winbind ccache for authentication."
+msgstr "Використовувати ccache Winbind для розпізнавання"
+
+#. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
+#: smb4k.kcfg:199
+#, kde-format
+msgid "Set the encryption level to:"
+msgstr "Встановити рівень шифрування:"
+
+#. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
+#. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
+#: smb4k.kcfg:200 smb4k.kcfg:204
+#, kde-format
+msgid "Set the level of encryption that is used for making connections."
+msgstr ""
+"Встановити рівень шифрування, який використовуватиметься для створення "
+"з'єднань."
+
+#. i18n: ectx: label, entry (EncryptionLevel), group (Network)
+#: smb4k.kcfg:207
+#, kde-format
+msgid "None"
+msgstr "Немає"
+
+#. i18n: ectx: label, entry (EncryptionLevel), group (Network)
+#: smb4k.kcfg:210
+#, kde-format
+msgid "Request"
+msgstr "За запитом"
+
+#. i18n: ectx: label, entry (EncryptionLevel), group (Network)
+#: smb4k.kcfg:213
+#, kde-format
+msgid "Require"
+msgstr "Обов’язкове"
+
+#. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
+#: smb4k.kcfg:219
+#, kde-format
+msgid "Preview hidden files and directories"
+msgstr "Перегляд прихованих файлів і каталогів"
+
+#. i18n: ectx: whatsthis, entry (PreviewHiddenItems), group (Network)
+#: smb4k.kcfg:220
+#, kde-format
+msgid ""
+"Preview hidden files and directories. The hidden files and directories are "
+"those whose names begin with a period. They are usually needed for very "
+"specific purposes (storing the configuration information for an application, "
+"etc.). Since they are not of any importance for your regular work, you "
+"normally do not need to enable this feature."
+msgstr ""
+"Визначає, чи слід показувати попередній перегляд вмісту прихованих файлів і "
+"каталогів. Назви прихованих файлів і каталогів починаються з крапки і "
+"зазвичай використовуються для спеціальних потреб (зберігання налаштувань "
+"програми тощо). Оскільки такі файли, зазвичай, не потрібні для виконання "
+"типових завдань, вам не варто без потреби позначати цей пункт."
+
+#. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
+#: smb4k.kcfg:224
+#, kde-format
+msgid "Detect printer shares"
+msgstr "Виявляти спільні принтери"
+
+#. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
+#: smb4k.kcfg:225
+#, kde-format
+msgid "Printer shares are detected."
+msgstr "Виявлено спільні ресурси принтерів."
+
+#. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
+#: smb4k.kcfg:229
+#, kde-format
+msgid "Detect hidden shares"
+msgstr "Виявляти приховані спільні ресурси"
+
+#. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
+#: smb4k.kcfg:230
+#, kde-format
+msgid ""
+"Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
+"Musik$ or IPC$."
+msgstr ""
+"Виявлено приховані спільні ресурси. Назви прихованих спільних ресурсів "
+"завершуються символом $, наприклад Musik$ або IPC$."
+
+#. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
+#: smb4k.kcfg:234
+#, kde-format
+msgid "Enable Wake-On-LAN features"
+msgstr "Увімкнути можливості Wake-On-LAN"
+
+#. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
+#: smb4k.kcfg:235
+#, kde-format
+msgid ""
+"Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
+"computer to be turned on or woken up by a network message. Smb4K uses a "
+"magic packet send via a UDP socket to wake up remote servers. If you want to "
+"take advantage of the Wake-On-LAN feature, you need to enable this option."
+msgstr ""
+"Wake-on-LAN (WOL) — стандарт щодо комп’ютерних мереж ethernet, який "
+"уможливлює вмикання або пробудження комп’ютера за допомогою повідомлення, "
+"надісланого мережею. У Smb4K пакет, надісланий за допомогою сокета UDP, "
+"використовується для пробудження віддалених серверів. Якщо ви хочете "
+"скористатися перевагами можливостей Wake-On-LAN, вам слід позначити цей "
+"пункт."
+
+#. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
+#: smb4k.kcfg:239
+#, kde-format
+msgid "Waiting time:"
+msgstr "Час очікування:"
+
+#. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
+#: smb4k.kcfg:240
+#, kde-format
+msgid ""
+"This is the waiting time in seconds between the sending of the magic Wake-On-"
+"LAN packets and the scanning of the network neighborhood or the mounting of "
+"a share."
+msgstr ""
+"Час очікування у секундах між надсиланням контрольних пакетів Wake-On-LAN і "
+"скануванням мережевого оточення або монтуванням спільного ресурсу."
+
+#. i18n: ectx: label, entry (UseWallet), group (Authentication)
+#: smb4k.kcfg:251
+#, kde-format
+msgid "Save logins in a wallet"
+msgstr "Зберігати реєстраційні дані у торбинці"
+
+#. i18n: ectx: whatsthis, entry (UseWallet), group (Authentication)
+#: smb4k.kcfg:252
+#, kde-format
+msgid ""
+"Use a wallet to store the login. The username and password are stored "
+"encrypted on your hard drive. If this setting is disabled, the login is not "
+"stored permanently but only temporarily."
+msgstr ""
+"Визначає, чи слід використовувати для зберігання реєстраційних даних "
+"торбинку системи. Якщо ви позначите цей пункт програма зберігатиме "
+"зашифровані дані щодо користувача та пароля. Якщо пункт не буде позначено, "
+"програма зберігатиме реєстраційні дані лише тимчасово."
+
+#. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
+#: smb4k.kcfg:256
+#, kde-format
+msgid "Use a default login"
+msgstr "Використовувати типовий вхід"
+
+#. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
+#: smb4k.kcfg:257
+#, kde-format
+msgid ""
+"Enable the usage of a default login. The provided data is used by default to "
+"authenticate to a remote server. This is very useful e.g. if you are working "
+"in an Active Directory environment or an NT domain."
+msgstr ""
+"Якщо буде позначено цей пункт, програма використовуватиме типові "
+"реєстраційні дані. Вказані нижче реєстраційні дані буде типово використано "
+"для реєстрації на віддаленому сервері. Позначення пункту буде корисним, якщо "
+"ви, наприклад працюєте у середовищі Active Directory або домені NT."
+
+#. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
+#: smb4k.kcfg:269
+#, kde-format
+msgid "Synchronization prefix:"
+msgstr "Префікс синхронізації:"
+
+#. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
+#: smb4k.kcfg:270
+#, kde-format
+msgid ""
+"Under this prefix the destination directory for the synchronization will be "
+"created. However, if you want to store the data of a particular share "
+"elsewhere, you will be able to choose a different path before the actual "
+"synchronization begins."
+msgstr ""
+"У цьому каталозі буде створено каталог призначення для синхронізації. Але, "
+"якщо ви бажаєте зберігати дані на певному спільному ресурсі у іншому місці, "
+"ви зможете вибрати інший каталог до того, як буде розпочато справжню "
+"синхронізацію."
+
+#. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
+#: smb4k.kcfg:274
+#, kde-format
+msgid "Archive mode"
+msgstr "Режим архівування"
+
+#. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
+#: smb4k.kcfg:275
+#, kde-format
+msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+msgstr ""
+"Визначає, чи слід використовувати режим архівування (-a, --archive). "
+"Скорочена форма -rlptgoD."
+
+#. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
+#: smb4k.kcfg:279
+#, kde-format
+msgid "Recurse into subdirectories"
+msgstr "Рекурсивно заходити в каталоги"
+
+#. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
+#: smb4k.kcfg:280
+#, kde-format
+msgid "Recurse into directories (-r, --recursive)."
+msgstr "Визначає, чи слід рекурсивно заходити в каталоги (-r, --recursive)."
+
+#. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
+#: smb4k.kcfg:284
+#, kde-format
+msgid "Update files"
+msgstr "Оновлювати файли"
+
+#. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
+#: smb4k.kcfg:285
+#, kde-format
+msgid ""
+"Update files in the destination directory that are older than in the source "
+"directory (-u, --update)."
+msgstr ""
+"Визначає, чи слід оновлювати ті файли у каталозі призначення, часова мітка "
+"яких є старішою за часову мітку відповідного файла у каталозі джерела (-u, --"
+"update)."
+
+#. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
+#: smb4k.kcfg:289
+#, kde-format
+msgid "Update files in place"
+msgstr "Оновлювати файли на місці"
+
+#. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
+#: smb4k.kcfg:290
+#, kde-format
+msgid ""
+"Update destination files in-place (--inplace). By default, rsync first "
+"creates a new copy of a file and moves it into place after its transfer "
+"finished. If you enable this feature, no copy will be created but the "
+"destination file will immediately be overwritten instead. An exception to "
+"this is if you combine this option with --backup."
+msgstr ""
+"Визначає, чи слід оновлювати файли призначення на місці (--inplace). Типово, "
+"rsync спочатку створює нову копію файла і пересуває її на місце після "
+"завершення перенесення. Якщо пункт буде позначено, програма не створюватиме "
+"копій, а негайно перезаписуватиме файл призначення. Винятком з цього правила "
+"є випадок, коли використовуватиметься ще і параметр --backup."
+
+#. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
+#: smb4k.kcfg:294
+#, kde-format
+msgid "Use relative path names"
+msgstr "Використовувати відносні назви шляхів"
+
+#. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
+#: smb4k.kcfg:295
+#, kde-format
+msgid ""
+"Use relative paths (-R, --relative). This means that the full path names "
+"specified on the command line are sent to the server rather than just the "
+"last parts of the file names."
+msgstr ""
+"Визначає, чи слід використовувати відносні шляхи (-R, --relative). Це "
+"означає, що адреси, вказані у командному рядку, буде надіслано на сервер "
+"повністю, замість надсилання лише останньої частини з назвами файлів."
+
+#. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
+#: smb4k.kcfg:299
+#, kde-format
+msgid "Do not send implied directories"
+msgstr "Не надсилати потенційні каталоги"
+
+#. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
+#: smb4k.kcfg:300
+#, kde-format
+msgid ""
+"Do not send implied directories with --relative (--no-implied-dirs). This "
+"means that the corresponding path elements on the destination system are "
+"left unchanged if they exist, and any missing implied directories are "
+"created with default attributes. This even allows these implied path "
+"elements to have big differences, such as being a symlink to a directory on "
+"one side of the transfer, and a real directory on the other side."
+msgstr ""
+"Якщо буде позначено цей пункт, програма не надсилатиме потенційних каталогів "
+"за допомогою аргументів параметра --relative (--no-implied-dirs). Це "
+"означає, що відповідні елементи шляху у системі призначення залишаться "
+"незмінними, якщо вони існують. Всі відсутні потенційні каталоги буде "
+"створено з типовими атрибутами. Використання цього пункту дозволить таким "
+"каталогам бути дуже різними елементами, зокрема символічним посиланням на "
+"каталог на одній зі сторін перенесення і справжнім каталогом на іншій "
+"стороні."
+
+#. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
+#: smb4k.kcfg:304
+#, kde-format
+msgid "Transfer directories without recursing"
+msgstr "Переносити каталоги нерекурсивно"
+
+#. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
+#: smb4k.kcfg:305
+#, kde-format
+msgid ""
+"Transfer directories without recursing (-d, --dirs). This means that all top-"
+"level subdirectories are transferred but without their contents."
+msgstr ""
+"Переносити каталоги без рекурсивного входження до них (-d, --dirs). Це "
+"означає, що буде передано дані лише підкаталогів верхнього рівня, без "
+"їхнього вмісту."
+
+#. i18n: ectx: label, entry (CompressData), group (Synchronization)
+#: smb4k.kcfg:310
+#, kde-format
+msgid "Compress data during transfer"
+msgstr "Стискати дані під час перенесення"
+
+#. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
+#: smb4k.kcfg:311
+#, kde-format
+msgid ""
+"Compress data during transfer (-z, --compress). This significantly reduces "
+"the amount of data that is being transferred. You may want to use this "
+"option, if you have a slow connection."
+msgstr ""
+"Стискати дані під час передавання (-z, --compress). Значно зменшує обсяг "
+"даних, які слід передати. Цим пунктом можна скористатися за умов повільного "
+"з’єднання."
+
+#. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
+#: smb4k.kcfg:315
+#, kde-format
+msgid "Set compression level:"
+msgstr "Встановити рівень стиснення:"
+
+#. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
+#: smb4k.kcfg:316
+#, kde-format
+msgid ""
+"Explicitly set the compression level to use (--compress-level=NUM). If NUM "
+"is non-zero, the --compress argument is implied."
+msgstr ""
+"Явним чином встановити рівень стискання (--compress-level=ЧИСЛО). Якщо "
+"вказано ненульове ЧИСЛО, неявним чином буде додано аргумент --compress."
+
+#. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
+#: smb4k.kcfg:320
+#, kde-format
+msgid "The value for the UseCompressionLevel config entry"
+msgstr "Значення для запису налаштувань UseCompressionLevel"
+
+#. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
+#: smb4k.kcfg:327
+#, kde-format
+msgid "Skip compression for following file suffixes:"
+msgstr "Не стискати файли з такими суфіксами назв:"
+
+#. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
+#: smb4k.kcfg:328
+#, kde-format
+msgid ""
+"Overwrite the list of file suffixes that will not be compressed (--skip-"
+"compress=LIST). The LIST should be one or more file suffixes (without the "
+"dot) separated by slashes. You may specify an empty string to indicate that "
+"no file should be skipped. The default list of suffixes will be replaced by "
+"this list. For further details, see the manual page of rsync."
+msgstr ""
+"Перезаписати список суфіксів назв файлів, які не будуть стискатися (--skip-"
+"compress=СПИСОК). Значенням параметра СПИСОК має бути список з одного або "
+"декількох суфіксів назв файлів (без крапки), відокремлених символами похилої "
+"риски. Ви можете вказати порожній рядок, щоб вказати, що не слід пропускати "
+"жодних файлів. Вказаним списком буде замінено типовий список. Щоб дізнатися "
+"більше, скористайтеся сторінкою підручника щодо rsync."
+
+#. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
+#: smb4k.kcfg:332
+#, kde-format
+msgid "The value(s) for the UseSkipCompression config entry"
+msgstr "Значення для запису налаштувань UseSkipCompression"
+
+#. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
+#: smb4k.kcfg:337
+#, kde-format
+msgid "Preserve symlinks"
+msgstr "Зберігати символьні посилання"
+
+#. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
+#: smb4k.kcfg:338
+#, kde-format
+msgid "Copy symlinks as symlinks (-l, --links)."
+msgstr "Копіювати символічні посилання як символічні посилання (-l, --links)."
+
+#. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
+#: smb4k.kcfg:342
+#, kde-format
+msgid "Transform symlinks"
+msgstr "Перетворювати символічні посилання"
+
+#. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
+#: smb4k.kcfg:343
+#, kde-format
+msgid ""
+"Transform symlinks into the items they are pointing to (-L, --copy-links)."
+msgstr ""
+"Перетворювати символічні посилання на елементи, на які ці посилання вказують "
+"(-L, --copy-links)."
+
+#. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
+#: smb4k.kcfg:347
+#, kde-format
+msgid "Transform unsafe symlinks"
+msgstr "Перетворювати небезпечні посилання"
+
+#. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
+#: smb4k.kcfg:348
+#, kde-format
+msgid ""
+"Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
+"links). This means that only those symlinks are transformed that point to "
+"items that are outside the copied tree. Absolute symlinks are treated the "
+"same way. This option has no additional effect if --copy-links has also been "
+"specified."
+msgstr ""
+"Перетворювати небезпечні символічні посилання на елементи, на які вони "
+"вказують (--copy-unsafe-links). Це означає, що перетворення буде застосовано "
+"лише до тих символічних посилань, які вказують на елементи, розташовані поза "
+"деревом каталогів, які копіюються. Подібній же обробці підлягатимуть "
+"абсолютні символічні посилання. Позначення пункту не призведе до видимих "
+"наслідків, якщо вказано параметр --copy-links."
+
+#. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
+#: smb4k.kcfg:352
+#, kde-format
+msgid "Ignore unsafe symlinks"
+msgstr "Ігнорувати небезпечні символічні посилання"
+
+#. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
+#: smb4k.kcfg:353
+#, kde-format
+msgid ""
+"Ignore symlinks that point outside the copied tree (--safe-links). All "
+"absolute symlinks are also ignored. If you use this option in conjunction "
+"with --relative you might get unexpected results."
+msgstr ""
+"Ігнорувати символічні посилання, які вказують на елементи, розташовані поза "
+"деревом каталогів, які копіюються (--safe-links). Буде проігноровано також і "
+"всі абсолютні символічні посилання. Використання цього параметра разом з "
+"параметром --relative може призвести до несподіваних наслідків."
+
+#. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
+#: smb4k.kcfg:357
+#, kde-format
+msgid "Munge symlinks"
+msgstr "Псувати символічні посилання"
+
+#. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
+#: smb4k.kcfg:358
+#, kde-format
+msgid ""
+"This option tells rsync to (1) modify all symlinks on the receiving side in "
+"a way that makes them unusable but recoverable, or (2) to unmunge symlinks "
+"on the sending side that had been stored in a munged state (--munge-links). "
+"This is useful if you do not quite trust the source of the data to not try "
+"to slip in a symlink to an unexpected place. For more details, see the "
+"manual page of rsync."
+msgstr ""
+"За допомогою цього параметра можна вказати програмі, що (1) слід змінювати "
+"усі символічні посилання на боці отримання даних так, щоб зробити їх "
+"непридатними до використання або придатними до відновлення або (2) слід "
+"скасовувати псування символічних посилань на боці надсилання так, щоб вони "
+"зберігалися у незіпсованому стані (--munge-links). Це корисно, якщо ви не "
+"дуже довіряєте джерелу даних і не хочете, щоб символічні посилання раптом "
+"вели у якесь неочікуване місце. Докладніші відомості можна знайти на "
+"сторінці підручника щодо rsync."
+
+#. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
+#: smb4k.kcfg:362
+#, kde-format
+msgid "Preserve hard links"
+msgstr "Зберігати жорсткі посилання"
+
+#. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
+#: smb4k.kcfg:363
+#, kde-format
+msgid ""
+"Preserve hard links (-H, --hard-links). This options causes rsync to "
+"preserve the hard links that are found during the transfer. Without it, hard "
+"links are treated as though they were separate files."
+msgstr ""
+"Зберігати жорсткі посилання (-H, --hard-links). У разі використання цього "
+"параметра rsync зберігатиме жорсткі посилання, які буде знайдено під час "
+"передавання даних. Якщо параметр не буде використано, жорсткі посилання "
+"вважатимуться окремими файлами."
+
+#. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
+#: smb4k.kcfg:367
+#, kde-format
+msgid "Copy directory symlinks"
+msgstr "Копіювати символічні посилання на каталоги"
+
+#. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
+#: smb4k.kcfg:368
+#, kde-format
+msgid ""
+"Treat symlinks to directories on the sending side as though they were real "
+"ones (-k, --copy-dirlinks). This is useful if you do not want symlinks to "
+"non-directories to be affected, as they would be using --copy-links. Without "
+"this option, if the sending side has replaced a directory with a symlink to "
+"a directory, the receiving side will delete anything that is in the way of "
+"the new symlink, including a directory hierarchy (as long as --force or --"
+"delete is in effect). For more details, see the manual page of rsync."
+msgstr ""
+"Обробляти символічні посилання на боці надсилання даних так, наче вони є "
+"справжніми каталогами (-k, --copy-dirlinks). Корисно, якщо ви хочете, щоб "
+"обробка не стосувалася посилань на звичайні файли (як це могло б статися, "
+"якщо використано --copy-links). Без цього параметра, якщо на боці надсилання "
+"каталог було замінено символічним посиланням на каталог, на боці отримання "
+"буде вилучено усе, що ховається за новим символічним посиланням, включно з "
+"ієрархією каталогів (якщо використовується --force або --delete). "
+"Докладніший опис можна знайти на сторінці підручника щодо rsync."
+
+#. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
+#: smb4k.kcfg:372
+#, kde-format
+msgid "Keep directory symlinks"
+msgstr "Зберігати символічні посилання на каталоги"
+
+#. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
+#: smb4k.kcfg:373
+#, kde-format
+msgid ""
+"Treat symlinks to directories on the receiving side as though they were real "
+"ones (-K, --keep-dirlinks). This only works if the symlink matches a real "
+"directory from the sending side. Without this option, the receiver's symlink "
+"will be deleted and replaced with a real directory."
+msgstr ""
+"Обробляти символічні посилання на каталоги на стороні отримання даних так, "
+"наче ці посилання є справжніми каталогами (-K, --keep-dirlinks). Цей "
+"параметр працюватиме, лише якщо символічне посилання відповідає справжньому "
+"каталогу на стороні надсилання. Якщо параметр не буде використано, "
+"символічне посилання на стороні отримання даних буде вилучено і замінено "
+"справжнім каталогом."
+
+#. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
+#: smb4k.kcfg:377
+#, kde-format
+msgid "Preserve permissions"
+msgstr "Зберігати права доступу"
+
+#. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
+#: smb4k.kcfg:378
+#, kde-format
+msgid ""
+"Preserve permissions (-p, --perms). The permissions of the destination file "
+"will be same as the source file. For what happens if this option is switched "
+"off, please read rsync's manual page."
+msgstr ""
+"Зберігати права доступу (-p, --perms). Права доступу до файла призначення "
+"збігатимуться з правами доступу до файла джерела. Щоб дізнатися про те, що "
+"станеться, якщо ви не позначатимете цей пункт, ознайомтеся зі сторінкою "
+"довідки (man) rsync."
+
+#. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
+#: smb4k.kcfg:382
+#, kde-format
+msgid "Preserve group"
+msgstr "Зберігати групу"
+
+#. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
+#: smb4k.kcfg:383
+#, kde-format
+msgid ""
+"Preserve the group (-g, --group). The group of the destination file will be "
+"set to the same value as the source file."
+msgstr ""
+"Зберігати групу (-g, --group). Параметр належності файла групі користувачів "
+"буде однаковим для файла джерела і призначення."
+
+#. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
+#: smb4k.kcfg:387
+#, kde-format
+msgid "Preserve owner"
+msgstr "Зберігати власника"
+
+#. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
+#: smb4k.kcfg:388
+#, kde-format
+msgid ""
+"Preserve the owner (-o, --owner). The owner of the destination file will be "
+"set to the same value as the source file, but only if the receiving rsync is "
+"run as the super user. Without this option, the owner is set to the invoking "
+"user on the receiving side."
+msgstr ""
+"Зберігати власника (-o, --owner). Для параметра власника файла призначення "
+"буде встановлено те саме значення, що і для файла джерела, але лише якщо "
+"rsync було запущено від імені суперкористувача (адміністратора). Якщо "
+"параметр не буде використано, значення параметра власника буде визначено за "
+"параметрами облікового запису користувача, який запустив програму на стороні "
+"отримання даних."
+
+#. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
+#: smb4k.kcfg:392
+#, kde-format
+msgid "Preserve device and special files"
+msgstr "Зберігати файли пристроїв та особливі файли"
+
+#. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
+#: smb4k.kcfg:393
+#, kde-format
+msgid ""
+"Preserve device and special files (-D, --devices --specials). This option "
+"causes rsync to transfer character and block devices as well as special "
+"files such as named sockets and fifos. It works only partially if rsync is "
+"not run as super user and the --super option is not specified."
+msgstr ""
+"Зберігати файли пристроїв та спеціальні файли (-D, --devices --specials). "
+"Позначення цього пункту призведе до того, що rsync передаватиме символьні і "
+"блокові пристрої, а також спеціальні файли як іменовані сокети і fifo. Дія "
+"відповідного параметра буде лише частковою, якщо rsync запущено не від імені "
+"суперкористувача і якщо не вказано параметр --super."
+
+#. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
+#: smb4k.kcfg:397
+#, kde-format
+msgid "Preserve times"
+msgstr "Зберігати час"
+
+#. i18n: ectx: whatsthis, entry (PreserveTimes), group (Synchronization)
+#: smb4k.kcfg:398
+#, kde-format
+msgid ""
+"Preserve times (-t, --times). The modification times are transferred along "
+"with the files. For what happens if this option is switched off, please read "
+"rsync's manual page."
+msgstr ""
+"Зберігати часові мітки (-t, --times). Дані про час зміни файлів буде "
+"передано разом з самими файлами. Щоб дізнатися про те, що станеться, якщо ви "
+"не позначатимете цей пункт, ознайомтеся зі сторінкою довідки (man) rsync."
+
+#. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
+#: smb4k.kcfg:402
+#, kde-format
+msgid "Omit directories when preserving times"
+msgstr "Пропускати каталоги, коли зберігається час"
+
+#. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
+#: smb4k.kcfg:403
+#, kde-format
+msgid ""
+"Omit directories when preserving times (-O, --omit-dir-times). This means "
+"that directories are omitted when modification times are being preserved. "
+"Thus, this feature only works in conjunction with --times."
+msgstr ""
+"Пропускати каталоги у разі використання параметра збереження часових міток (-"
+"O, --omit-dir-times). Це означає, що часові мітки каталогів не "
+"зберігатимуться. Відповідні параметри працюватимуть, лише якщо вказано "
+"параметр --times."
+
+#. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
+#: smb4k.kcfg:407
+#, kde-format
+msgid "Remove synchronized source files"
+msgstr "Вилучати синхронізовані файли джерела"
+
+#. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
+#: smb4k.kcfg:408
+#, kde-format
+msgid ""
+"Remove all synchronized source files (--remove-source-files). This tells "
+"rsync to remove from the sending side the non-directory items that are a "
+"part of the transfer and have been successfully duplicated on the receiving "
+"side."
+msgstr ""
+"Вилучати всі синхронізовані файли джерела (--remove-source-files). У разі "
+"використання цього параметра rsync вилучатиме на стороні надсилання даних "
+"всі елементи, які не є каталогами і які успішно дубльовано на стороні "
+"отримання даних."
+
+#. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
+#: smb4k.kcfg:412
+#, kde-format
+msgid "Delete extraneous files"
+msgstr "Вилучати зайві файли"
+
+#. i18n: ectx: whatsthis, entry (DeleteExtraneous), group (Synchronization)
+#: smb4k.kcfg:413
+#, kde-format
+msgid ""
+"Delete extraneous files from destination (--delete). This tells rsync to "
+"delete all files from the receiving side that are not present on the sending "
+"side, but only for the directories that are being synchronized."
+msgstr ""
+"Вилучати зайві файли з каталогів призначення (--delete). У разі використання "
+"цього параметра rsync вилучить всі файли на стороні отримання даних, яких "
+"немає на стороні надсилання даних, але лише у каталогах, які синхронізує "
+"програма."
+
+#. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
+#: smb4k.kcfg:417
+#, kde-format
+msgid "Delete files before transfer"
+msgstr "Вилучати файли до перенесення"
+
+#. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
+#: smb4k.kcfg:418
+#, kde-format
+msgid ""
+"Delete files on the receiving side before the transfer starts (--delete-"
+"before). This is the default behavior if --delete or --delete-excluded is "
+"specified without one of the --delete-WHEN options."
+msgstr ""
+"Вилучати файли на стороні отримання даних до того, як розпочнеться "
+"перенесення даних (--delete-before). Така поведінка програми є типовою, якщо "
+"вказано параметр --delete або --delete-excluded і не вказано жодного з "
+"параметрів --delete-УМОВА."
+
+#. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
+#: smb4k.kcfg:422
+#, kde-format
+msgid "Delete files after transfer"
+msgstr "Вилучати файли після перенесення"
+
+#. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
+#: smb4k.kcfg:423
+#, kde-format
+msgid ""
+"Delete files on the receiving side after the transfer has completed (--"
+"delete-after, --del)."
+msgstr ""
+"Вилучати файли з каталогу джерела після завершення перенесення (--delete-"
+"after, --del)."
+
+#. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
+#: smb4k.kcfg:427
+#, kde-format
+msgid "Delete files during transfer"
+msgstr "Вилучати файли під час перенесення"
+
+#. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
+#: smb4k.kcfg:428
+#, kde-format
+msgid ""
+"Delete files on the receiving side during the transfer (--delete-during). "
+"This method is faster than --delete-before or --delete-after, but it is only "
+"supported with rsync 2.6.4 or later."
+msgstr ""
+"Вилучати файли на стороні отримання даних під час перенесення даних (--"
+"delete-during). Цей спосіб швидший за --delete-before або --delete-after, "
+"але підтримується лише версією rsync 2.6.4 і пізнішими версіями програми."
+
+#. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
+#: smb4k.kcfg:432
+#, kde-format
+msgid "Delete excluded files"
+msgstr "Вилучати виключені файли"
+
+#. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
+#: smb4k.kcfg:433
+#, kde-format
+msgid ""
+"Also delete excluded files from destination directory (--delete-excluded). "
+"In addition to deleting the files on the receiving side that are not on the "
+"sending side, this tells rsync to also delete any files on the receiving "
+"side that are excluded. Refer to rsync's manual page for further information."
+msgstr ""
+"Вилучати з каталогу призначення і виключені файли (--delete-excluded). Окрім "
+"вилучення тих файлів на стороні призначення, яких немає на стороні "
+"надсилання, rsync вилучить і всі файли на стороні призначення, які потрапили "
+"до списку виключень. Щоб дізнатися про те, що станеться, якщо ви не "
+"позначатимете цей пункт, ознайомтеся зі сторінкою довідки (man) rsync."
+
+#. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
+#: smb4k.kcfg:437
+#, kde-format
+msgid "Delete even if I/O errors occur"
+msgstr "Вилучати, навіть якщо станеться помилка В/В"
+
+#. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
+#: smb4k.kcfg:438
+#, kde-format
+msgid ""
+"Delete even if I/O errors occur (--ignore-errors). This option has to be "
+"specified in conjunction with --delete to take effect."
+msgstr ""
+"Вилучати файли, навіть якщо станеться помилка вводу-виводу (--ignore-"
+"errors). Щоб досягти бажаних результатів, цей пункт слід використовувати "
+"разом з параметром --delete."
+
+#. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
+#: smb4k.kcfg:442
+#, kde-format
+msgid "Force deletion of non-void directories"
+msgstr "Примусове вилучення непорожніх каталогів"
+
+#. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
+#: smb4k.kcfg:443
+#, kde-format
+msgid ""
+"Force deletion of directories even if they are not empty (--force). This "
+"option tells rsync to delete a non-empty directory when it is to be replaced "
+"by a non-directory. This is only relevant if deletions are not active."
+msgstr ""
+"Наказати програмі примусово вилучати каталоги, навіть якщо вони не є "
+"порожніми (--force). У разі використання цього параметра rsync вилучатиме "
+"непорожні каталоги, якщо їх слід замінити елементами, які не є каталогами. "
+"Цей параметр матиме значення, лише якщо не визначено параметрів вилучення "
+"вмісту."
+
+#. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
+#: smb4k.kcfg:447
+#, kde-format
+msgid "Do not delete more than this many files:"
+msgstr "Вилучати не більше файлів, ніж:"
+
+#. i18n: ectx: whatsthis, entry (UseMaximumDelete), group (Synchronization)
+#: smb4k.kcfg:448
+#, kde-format
+msgid ""
+"Only delete as many files as defined here (--max-delete=NUM). This tells "
+"rsync not to delete more than NUM files or directories (NUM must be non-"
+"zero). This is useful when mirroring very large trees to prevent disasters."
+msgstr ""
+"Вилучати не більше файлів, ніж вказано у цьому пункті (--max-delete=ЧИСЛО). "
+"У разі використання цього параметра rsync не вилучатиме більше, ніж "
+"визначено значенням ЧИСЛО. файлів або каталогів (значення ЧИСЛО має бути "
+"ненульовим). Цей параметр буде корисним під час створення дзеркальних копій "
+"дуже великих ієрархій каталогів (за його допомогою можна запобігти "
+"катастрофам)."
+
+#. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
+#: smb4k.kcfg:452
+#, kde-format
+msgid "Value for DeleteMaximum config entry"
+msgstr "Значення запису налаштування DeleteMaximum"
+
+#. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
+#: smb4k.kcfg:458
+#, kde-format
+msgid "Do not transfer any file smaller than:"
+msgstr "Не переносити файли менші, ніж:"
+
+#. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
+#: smb4k.kcfg:459
+#, kde-format
+msgid ""
+"This option causes rsync to not transfer any file that is smaller than the "
+"specified size (--min-size=SIZE)."
+msgstr ""
+"За допомогою цього пункту можна наказати rsync не переносити файли з "
+"розміром, меншим за вказаний (--min-size=РОЗМІР)."
+
+#. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
+#: smb4k.kcfg:463
+#, kde-format
+msgid "Value for MinimalTransferSize config entry"
+msgstr "Значення запису налаштування MinimalTransferSize"
+
+#. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
+#: smb4k.kcfg:469
+#, kde-format
+msgid "Do not transfer any file larger than:"
+msgstr "Не переносити файли більші, ніж:"
+
+#. i18n: ectx: whatsthis, entry (UseMaximalTransferSize), group (Synchronization)
+#: smb4k.kcfg:470
+#, kde-format
+msgid ""
+"This option causes rsync to not transfer any file that is larger than the "
+"specified size (--max-size=SIZE)."
+msgstr ""
+"За допомогою цього пункту можна наказати rsync не переносити файли з "
+"розміром, більшим за вказаний (--max-size=РОЗМІР)."
+
+#. i18n: ectx: label, entry (MaximalTransferSize), group (Synchronization)
+#: smb4k.kcfg:474
+#, kde-format
+msgid "Value for MaximalTransferSize config entry"
+msgstr "Значення запису налаштування MaximalTransferSize"
+
+#. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
+#: smb4k.kcfg:480
+#, kde-format
+msgid "Keep partially transferred files"
+msgstr "Зберігати файли, які частково перенесено"
+
+#. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
+#: smb4k.kcfg:481
+#, kde-format
+msgid ""
+"Keep partially transferred files (--partial). The default behavior is that "
+"any partially transferred file is deleted if the transfer is interrupted."
+msgstr ""
+"Зберігати частково перенесені файли (--partial). Типовою є поведінка "
+"програми, за якої у разі переривання перенесення всі частково перенесені "
+"файли вилучатимуться."
+
+#. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
+#: smb4k.kcfg:485
+#, kde-format
+msgid "Put partially transferred files into:"
+msgstr "Зберігати частково перенесені файли у:"
+
+#. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
+#: smb4k.kcfg:486
+#, kde-format
+msgid ""
+"Put a partially transferred file into this directory (--partial-dir=DIR). "
+"This is a better way than the --partial option to keep partial files, "
+"because the partially transferred file is kept in a different directory and "
+"the destination file is not overwritten."
+msgstr ""
+"Зберігати частково перенесені файли у вказаному каталозі (--partial-"
+"dir=КАТАЛОГ). Використання цього параметра є кращим способом обробки даних, "
+"ніж використання параметра --partial для збереження частково перенесених "
+"файлів, оскільки частково перенесений файл зберігатиметься у іншому "
+"каталозі, отже файл призначення не буде перезаписано."
+
+#. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
+#: smb4k.kcfg:490
+#, kde-format
+msgid "The data for the UsePartialDirectory option"
+msgstr "Дані для параметра UsePartialDirectory"
+
+#. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
+#: smb4k.kcfg:495
+#, kde-format
+msgid "Auto-ignore files in the same way CVS does"
+msgstr "Автоматично ігнорувати файли, подібно до CVS"
+
+#. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
+#: smb4k.kcfg:496
+#, kde-format
+msgid ""
+"Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+"useful shorthand for excluding a broad range of files that you often do not "
+"want to transfer between systems. This option uses the same algorithm that "
+"CVS uses to determine if a file should be ignored."
+msgstr ""
+"Автоматично ігнорувати файли у спосіб, у який це робить CVS (-C, --cvs-"
+"exclude). Використання цього параметра буде корисним для виключення широкого "
+"діапазону файлів, які зазвичай не потрібно переносити між системами. Під час "
+"роботи з цим параметром програма використовуватиме той самий алгоритм, який "
+"допомагає CVS визначати файли, які слід ігнорувати."
+
+#. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
+#: smb4k.kcfg:500
+#, kde-format
+msgid "Exclude files matching this pattern:"
+msgstr "Виключати файли згідно з цим шаблоном:"
+
+#. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
+#: smb4k.kcfg:501
+#, kde-format
+msgid ""
+"Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+"special filter rule. For further information on filter rules see rsync's "
+"manual page."
+msgstr ""
+"Виключати файли, які відповідають певному шаблону (--exclude=PATTERN). Це "
+"особливе правило фільтрування. Докладніші відомості щодо правил фільтрування "
+"можна отримати зі сторінки довідки (man) rsync."
+
+#. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
+#: smb4k.kcfg:505
+#, kde-format
+msgid "Pattern that is used for file exclusion"
+msgstr "Шаблон, який буде використано для виключення файлів"
+
+#. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
+#: smb4k.kcfg:510
+#, kde-format
+msgid "Read exclude patterns from:"
+msgstr "Прочитати шаблони виключення з:"
+
+#. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
+#: smb4k.kcfg:511
+#, kde-format
+msgid ""
+"Read exclude patterns from a file (--exclude-from=FILE). This option is "
+"similar to the --exclude=PATTERN option except that the exclude patterns are "
+"read from a file. This is a special filter rule. For further information on "
+"filter rules see rsync's manual page."
+msgstr ""
+"Прочитати шаблони виключення з файла (--exclude-from=ФАЙЛ). Цей параметр "
+"подібний до параметра --exclude=ШАБЛОН, але шаблони виключення буде "
+"прочитано з файла. Це особливе правило фільтрування. Докладніші відомості "
+"щодо правил фільтрування можна отримати зі сторінки довідки (man) rsync."
+
+#. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
+#: smb4k.kcfg:515
+#, kde-format
+msgid "The file from which the exclude patterns are read"
+msgstr "Файл, з якого буде прочитано шаблони виключення"
+
+#. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
+#: smb4k.kcfg:520
+#, kde-format
+msgid "Include files matching this pattern:"
+msgstr "Включати файли згідно з цим шаблоном:"
+
+#. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
+#: smb4k.kcfg:521
+#, kde-format
+msgid ""
+"Do not exclude files matching a certain pattern (--include=PATTERN). This is "
+"a special filter rule. For further information on filter rules see rsync's "
+"manual page."
+msgstr ""
+"Не виключати файли, які відповідають певному шаблону (--include=PATTERN). Це "
+"особливе правило фільтрування. Докладніші відомості щодо правил фільтрування "
+"можна отримати зі сторінки довідки (man) rsync."
+
+#. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
+#: smb4k.kcfg:525
+#, kde-format
+msgid "Pattern that is used for file inclusion"
+msgstr "Шаблон, який буде використано для включення файлів"
+
+#. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
+#: smb4k.kcfg:530
+#, kde-format
+msgid "Read include patterns from:"
+msgstr "Прочитати шаблони включення з:"
+
+#. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
+#: smb4k.kcfg:531
+#, kde-format
+msgid ""
+"Read include patterns from a file (--include-from=FILE). This option is "
+"similar to the --include=PATTERN option except that the include patterns are "
+"read from a file. This is a special filter rule. For further information on "
+"filter rules see rsync's manual page."
+msgstr ""
+"Прочитати шаблони включення з файла (--include-from=ФАЙЛ). Цей параметр "
+"подібний до параметра --include=ШАБЛОН, але шаблони включення буде прочитано "
+"з файла. Це особливе правило фільтрування. Докладніші відомості щодо правил "
+"фільтрування можна отримати зі сторінки довідки (man) rsync."
+
+#. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
+#: smb4k.kcfg:535
+#, kde-format
+msgid "The file from which the include patterns are read"
+msgstr "Файл, з якого буде прочитано шаблони включення"
+
+#. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
+#: smb4k.kcfg:540
+#, kde-format
+msgid "Custom filter rules:"
+msgstr "Нетипові правила фільтрування:"
+
+#. i18n: ectx: whatsthis, entry (CustomFilteringRules), group (Synchronization)
+#: smb4k.kcfg:541
+#, kde-format
+msgid ""
+"Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
+"to add rules to selectively exclude certain files from the list of files to "
+"be transferred. These rules will be added to the rsync command as they are. "
+"Thus, each rule has to start with the --filter=... argument."
+msgstr ""
+"Додати нетипові правила фільтрування (-f, --filter=ПРАВИЛО). За допомогою "
+"цього пункту ви зможете додати правила, за якими зі списку файлів для "
+"перенесення буде вибірково виключено певні файли. Ці правила буде без "
+"обробки додано у команду rsync. Отже, всі правила маю починатися з параметра "
+"--filter=...."
+
+#. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
+#: smb4k.kcfg:545
+#, kde-format
+msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+msgstr ""
+"Використовувати правило фільтрування «--filter='dir-merge /.rsync-filter'»"
+
+#. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
+#: smb4k.kcfg:546
+#, kde-format
+msgid ""
+"This filter rule tells rsync to look for per-directory .rsync-filter files "
+"that have been sprinkled through the hierarchy and use their rules to filter "
+"the files in the transfer. It has no effect, if you also choose to use the --"
+"filter='exclude .rsync-filter' rule."
+msgstr ""
+"У разі використання цього правила фільтрування rsync шукатиме у кожному з "
+"каталогів файли .rsync-filter, розкидані ієрархією каталогів, і "
+"використовуватиме визначені у них правила для фільтрування списку файлів для "
+"перенесення. Позначення пункту буде проігноровано, якщо ви використовуватиме "
+"правило  --filter='exclude .rsync-filter'."
+
+#. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
+#: smb4k.kcfg:550
+#, kde-format
+msgid "Use --filter='exclude .rsync-filter' filter rule"
+msgstr ""
+"Використовувати правило фільтрування «--filter='exclude .rsync-filter'»"
+
+#. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
+#: smb4k.kcfg:551
+#, kde-format
+msgid ""
+"This rule filters out the .rsync-filter files from the transfer. These files "
+"normally contain filter rules that can be activated by choosing the --"
+"filter='dir-merge /.rsync-filter' rule and deselecting this one."
+msgstr ""
+"За допомогою цього правила можна виключити з перенесення всі файли .rsync-"
+"filter. У таких файлах зазвичай містяться правила, які можна задіяти "
+"позначенням пункту --filter='dir-merge /.rsync-filter' і зняттям позначки з "
+"цього пункту."
+
+#. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
+#: smb4k.kcfg:555
+#, kde-format
+msgid "Handle sparse files efficiently"
+msgstr "Ефективно обробляти розпорошені файли"
+
+#. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
+#: smb4k.kcfg:556
+#, kde-format
+msgid ""
+"Handle sparse files efficiently (-S, --sparse) so that they take up less "
+"space on the destination. This option conflicts with --inplace. For further "
+"information read rsync's manual page."
+msgstr ""
+"Ефективно обробляти розпорошені каталогами файли (-S, --sparse) так, щоб "
+"вони займали менше місця у каталогах призначення. Цей пункт не можна "
+"використовувати разом з параметром --inplace. Докладніші відомості можна "
+"отримати зі сторінки довідки (man) rsync."
+
+#. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
+#: smb4k.kcfg:560
+#, kde-format
+msgid "Copy files whole (no rsync algorithm)"
+msgstr "Копіювати файли цілими (без алгоритму rsync)"
+
+#. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
+#: smb4k.kcfg:561
+#, kde-format
+msgid ""
+"Copy files whole (-W, --whole-file). With this option the incremental rsync "
+"algorithm is not used and the whole file is sent as-is instead."
+msgstr ""
+"Копіювати файли цілком (-W, --whole-file). У разі використання цього "
+"параметра алгоритм нарощувального копіювання rsync буде вимкнено, замість "
+"цього файли надсилатимуться цілком."
+
+#. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
+#: smb4k.kcfg:565
+#, kde-format
+msgid "Do not cross file system boundaries"
+msgstr "Не перетинати межі файлових систем"
+
+#. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
+#: smb4k.kcfg:566
+#, kde-format
+msgid ""
+"Do not cross file system boundaries (-x, --one-file-system). This tells "
+"rsync to avoid crossing a filesystem boundary when recursing. For further "
+"information on this option, read the manual page."
+msgstr ""
+"Не перетинати межі файлових систем (-x, --one-file-system). За допомогою "
+"позначення цього пункту можна наказати rsync уникати перетинання меж "
+"файлових систем під час рекурсивного перегляду каталогів. Докладніше про цей "
+"параметр можна дізнатися зі сторінки довідника (man)."
+
+#. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
+#: smb4k.kcfg:570
+#, kde-format
+msgid "Only update files that already exist"
+msgstr "Оновлювати лише файли, які вже існують"
+
+#. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
+#: smb4k.kcfg:571
+#, kde-format
+msgid ""
+"Skip creating new files on the receiving side (--existing). This tells rsync "
+"to skip creating files (including directories) that do not exist yet on the "
+"destination. If this option is combined with the --ignore-existing option, "
+"no files will be updated (which can be useful if all you want to do is to "
+"delete extraneous files)."
+msgstr ""
+"Пропускати створення файлів на стороні отримання (--existing). За допомогою "
+"цього параметра можна наказати rsync пропустити етап створення файлів (і "
+"каталогів), яких ще немає на стороні призначення. Якщо поєднати цей параметр "
+"з параметром --ignore-existing, файли не оновлюватимуться взагалі (корисно, "
+"якщо вам потрібно просто вилучити зайві файли)."
+
+#. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
+#: smb4k.kcfg:575
+#, kde-format
+msgid "Ignore files that already exist"
+msgstr "Ігнорувати файли, які вже існують"
+
+#. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
+#: smb4k.kcfg:576
+#, kde-format
+msgid ""
+"Skip updating files that already exist on the receiving side (--ignore-"
+"existing). Existing directories are not ignored."
+msgstr ""
+"Пропустити оновлення файлів, які вже існують на стороні отримання даних (--"
+"ignore-existing). Програма не буде ігнорувати існуючі каталоги."
+
+#. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
+#: smb4k.kcfg:580
+#, kde-format
+msgid "Delay updates until the end of transfer"
+msgstr "Затримувати оновлення до завершення перенесення"
+
+#. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
+#: smb4k.kcfg:581
+#, kde-format
+msgid ""
+"Delay updates until the end of the transfer (--delay-updates). This option "
+"puts the temporary file from each updated file into a holding directory "
+"until the end of the transfer, at which time all the files are renamed and "
+"copied into place in rapid succession."
+msgstr ""
+"Затримувати оновлення до завершення перенесення (--delay-updates). У разі "
+"використання цього параметра програма зберігатиму тимчасовий файл для "
+"кожного з файлів, які слід оновити у каталозі аж до завершення перенесення, "
+"а потім всі перенесені файли буде послідовно перейменовано і скопійовано на "
+"місце."
+
+#. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
+#: smb4k.kcfg:585
+#, kde-format
+msgid "Make backups"
+msgstr "Створювати резервні копії"
+
+#. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
+#: smb4k.kcfg:586
+#, kde-format
+msgid ""
+"Make backups (-b, --backup). With this option, preexisting destination files "
+"are renamed as each file is transferred or deleted. You can control where "
+"the backup file goes and what (if any) suffix gets appended using the --"
+"backup-dir=DIR and --suffix=SUFFIX options."
+msgstr ""
+"Створювати резервні копії (-b, --backup). У разі використання цього "
+"параметра програма перейменовуватиме початкові файли у каталогах "
+"призначення, які згодом буде оновлено або вилучено. Керувати місцем "
+"зберігання початкових файлів та додаванням до їхніх назв суфікса (якщо такий "
+"слід додавати) можна за допомогою параметрів the --backup-dir=КАТАЛОГ і --"
+"suffix=СУФІКС."
+
+#. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
+#: smb4k.kcfg:590
+#, kde-format
+msgid "Backup suffix:"
+msgstr "Суфікс резервних копій:"
+
+#. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
+#: smb4k.kcfg:591
+#, kde-format
+msgid "Use this suffix for backups (--suffix=SUFFIX)."
+msgstr "Використовувати для резервних копій вказаний суфікс (--suffix=СУФІКС)."
+
+#. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
+#: smb4k.kcfg:595
+#, kde-format
+msgid "Backup suffix"
+msgstr "Суфікс резервних копій"
+
+#. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
+#: smb4k.kcfg:600
+#, kde-format
+msgid "Backup directory:"
+msgstr "Каталог резервних копій:"
+
+#. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
+#: smb4k.kcfg:601
+#, kde-format
+msgid "Store backups in this directory (--backup-dir=DIR)."
+msgstr "Зберігати резервні копії у цьому каталозі (--backup-dir=КАТАЛОГ)."
+
+#. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
+#: smb4k.kcfg:605
+#, kde-format
+msgid "Backup directory"
+msgstr "Каталог резервних копій"
+
+#. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
+#: smb4k.kcfg:610
+#, kde-format
+msgid "Force fixed checksum block size:"
+msgstr "Фіксований розмір блоків контрольної суми:"
+
+#. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
+#: smb4k.kcfg:611
+#, kde-format
+msgid ""
+"Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
+"block size used in the rsync algorithm to a fixed value."
+msgstr ""
+"Примусово використовувати вказаний розмір блоку контрольної суми (-B, --"
+"block-size=РОЗМІР). За допомогою цього пункту можна визначити фіксований "
+"розмір блоку, який буде використано у алгоритмі синхронізації rsync."
+
+#. i18n: ectx: label, entry (BlockSize), group (Synchronization)
+#: smb4k.kcfg:615
+#, kde-format
+msgid "The block size"
+msgstr "Розмір блоку"
+
+#. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
+#: smb4k.kcfg:621
+#, kde-format
+msgid "Set block/file checksum seed:"
+msgstr "Вказати початкове число контрольної суми блоків/файлів:"
+
+#. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
+#: smb4k.kcfg:622
+#, kde-format
+msgid ""
+"Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+"seed to this integer. This 4 byte checksum seed is included in each block "
+"and file MD4 checksum calculation. By default the checksum seed is generated "
+"by the server and defaults to the current time."
+msgstr ""
+"Вказати початкове число контрольної суми блоків/файлів (--checksum-"
+"seed=ЧИСЛО). Встановити початкове число контрольної суми MD4. Це початкове "
+"число контрольної суми, що має складатися з 4 байтів, буде використано під "
+"ас обчислення всіх контрольних сум MD4 для блоків і файлів. Типово, "
+"початкове число контрольної суми буде створено сервером на основі даних про "
+"поточний час."
+
+#. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
+#: smb4k.kcfg:626
+#, kde-format
+msgid "The value for the UseChecksumSeed config option"
+msgstr "Значення параметра налаштувань UseChecksumSeed"
+
+#. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
+#: smb4k.kcfg:632
+#, kde-format
+msgid "Skip files based on checksum"
+msgstr "Пропускати файли на основі контрольної суми"
+
+#. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
+#: smb4k.kcfg:633
+#, kde-format
+msgid ""
+"Skip files based on a checksum and not based on modification time and size (-"
+"c, --checksum). For further information on how this feature works read "
+"rsync's manual page."
+msgstr ""
+"Пропускати файли на основі обчислень контрольної суми, а не часової мітки "
+"зміни файла або розміру (-c, --checksum). Докладніше про роботу цього "
+"параметра можна дізнатися зі сторінки довідника (man) rsync."
+
+#. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
+#: smb4k.kcfg:637
+#, kde-format
+msgid "Set bandwidth limit:"
+msgstr "Встановити обмеження каналу:"
+
+#. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
+#: smb4k.kcfg:638
+#, kde-format
+msgid ""
+"Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
+msgstr ""
+"Встановити максимальну швидкість передавання даних у кілобайтах на секунду "
+"(--bwlimit=ШВИДКІСТЬ)."
+
+#. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
+#: smb4k.kcfg:642
+#, kde-format
+msgid "The value for the UseBandwidthLimit config option"
+msgstr "Значення параметра налаштувань UseBandwidthLimit"
+
+#. i18n: ectx: label, entry (UseProfiles), group (Profiles)
+#: smb4k.kcfg:654
+#, kde-format
+msgid "Use profiles"
+msgstr "Використовувати профілі"
+
+#. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
+#: smb4k.kcfg:655
+#, kde-format
+msgid ""
+"Make Smb4K use profiles. This enables you to define different bookmarks and "
+"custom options for each profile. This is especially useful if you are using "
+"a laptop in different network neighborhoods, e. g. at home and at work."
+msgstr ""
+"Використовувати у Smb4K профілі. За допомогою профілю ви можете визначити "
+"окремі закладки та нетипові параметри у кожному з профілів. Це особливо "
+"корисно, якщо ви користуєтеся ноутбуком у різних мережевих середовищах, "
+"наприклад вдома і на роботі."
+
+#. i18n: ectx: label, entry (ProfilesList), group (Profiles)
+#: smb4k.kcfg:659
+#, kde-format
+msgid "Profiles"
+msgstr "Профілі"
+
+#. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
+#: smb4k.kcfg:660
+#, kde-format
+msgid "The list of profiles."
+msgstr "Список профілів."
+
+#: smb4k.kcfg:667
+#, kde-format
+msgctxt "default profile name for use at home"
+msgid "Home"
+msgstr "Домашній"
+
+#: smb4k.kcfg:668
+#, kde-format
+msgctxt "default profile name for use at work"
+msgid "Work"
+msgstr "Робочий"
+
+#. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
+#: smb4k.kcfg:669
+#, kde-format
+msgid "Active profile"
+msgstr "Активний профіль"
+
+#. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
+#: smb4k.kcfg:670
+#, kde-format
+msgid "This is the currently active profile."
+msgstr "Це поточний активний профіль."
+
+#. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
+#: smb4k.kcfg:674
+#, kde-format
+msgid "Use profile migration assistant"
+msgstr "Використання помічника перенесення профілів"
+
+#. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
+#: smb4k.kcfg:675
+#, kde-format
+msgid ""
+"Use the profile migration assistant when profiles are removed or the use of "
+"profiles is enabled or disabled. The profile migration assistant allows you "
+"to migrate all settings that were saved for a certain profile to a different "
+"one."
+msgstr ""
+"Використовувати помічник перенесення профілів під час вилучення профілів або "
+"вмикання чи вимикання використання профілів. За допомогою помічника "
+"перенесення профілів ви зможете перенести усі параметри, які було збережено "
+"для певного профілю, до іншого профілю."
+
+#: smb4kauthinfo.cpp:164 smb4kbookmark.cpp:193 smb4kcustomoptions.cpp:299
+#: smb4kshare.cpp:163 smb4kshare.cpp:166
+#, kde-format
+msgid "%1 on %2"
+msgstr "%1 на %2"
+
+#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#, kde-format
+msgid "The format of %1 is not supported."
+msgstr "Формат %1 не підтримується."
+
+#: smb4kbookmarkhandler_p.cpp:46
+#, kde-format
+msgid "Add Bookmarks"
+msgstr "Додати закладки"
+
+#: smb4kbookmarkhandler_p.cpp:122
+#, kde-format
+msgid ""
+"All listed shares will be bookmarked. To edit the label or group, click the "
+"respective bookmark entry."
+msgstr ""
+"Програма створить закладки для всіх спільних ресурсів зі списку. Щоб змінити "
+"мітку або групу, натисніть відповідний пункт закладки."
+
+#. i18n("Add this share to the bookmarks"));
+#: smb4kbookmarkhandler_p.cpp:148 smb4kbookmarkhandler_p.cpp:522
+#: smb4kmounter_p.cpp:188
+#, kde-format
+msgid "Label:"
+msgstr "Мітка:"
+
+#: smb4kbookmarkhandler_p.cpp:156 smb4kbookmarkhandler_p.cpp:551
+#: smb4kmounter_p.cpp:198
+#, kde-format
+msgid "Category:"
+msgstr "Категорія:"
+
+#: smb4kbookmarkhandler_p.cpp:380
+#, kde-format
+msgid "Edit Bookmarks"
+msgstr "Редагувати закладки"
+
+#: smb4kbookmarkhandler_p.cpp:498 smb4kbookmarkhandler_p.cpp:998
+#, kde-format
+msgid "Add Category"
+msgstr "Додати категорію"
+
+#: smb4kbookmarkhandler_p.cpp:499
+#, kde-format
+msgid "Remove"
+msgstr "Вилучити"
+
+#: smb4kbookmarkhandler_p.cpp:501
+#, kde-format
+msgid "Clear"
+msgstr "Спорожнити"
+
+#: smb4kbookmarkhandler_p.cpp:527
+#, kde-format
+msgid "Username:"
+msgstr "Користувач:"
+
+#: smb4kbookmarkhandler_p.cpp:535 smb4kmounter_p.cpp:155
+#, kde-format
+msgid "Workgroup:"
+msgstr "Робоча група:"
+
+#: smb4kbookmarkhandler_p.cpp:543 smb4kclient_p.cpp:2330 smb4kmounter_p.cpp:142
+#, kde-format
+msgid "IP Address:"
+msgstr "Адреса IP:"
+
+#: smb4kbookmarkhandler_p.cpp:998
+#, kde-format
+msgid "Category name:"
+msgstr "Назва категорії:"
+
+#: smb4kclient_p.cpp:1255
+#, kde-format
+msgid "The file %1 could not be read"
+msgstr "Не вдалося прочитати файл %1"
+
+#: smb4kclient_p.cpp:1272
+#, kde-format
+msgid "The file %1 could not be printed to %2"
+msgstr "Не вдалося надрукувати файл %1 на %2"
+
+#: smb4kclient_p.cpp:1933
+#, kde-format
+msgid "Preview of %1"
+msgstr "Попередній перегляд %1"
+
+#: smb4kclient_p.cpp:1969
+#, kde-format
+msgid "Reload"
+msgstr "Перезавантажити"
+
+#: smb4kclient_p.cpp:1971
+#, kde-format
+msgid "Abort"
+msgstr "Перервати"
+
+#: smb4kclient_p.cpp:1983
+#, kde-format
+msgid "Up"
+msgstr "Вгору"
+
+#: smb4kclient_p.cpp:2303
+#, kde-format
+msgid "Print File"
+msgstr "Надрукувати файл"
+
+#: smb4kclient_p.cpp:2319
+#, kde-format
+msgid "Information"
+msgstr "Відомості"
+
+#: smb4kclient_p.cpp:2323
+#, kde-format
+msgid "Printer:"
+msgstr "Принтер:"
+
+#: smb4kclient_p.cpp:2337
+#, kde-format
+msgid "Domain:"
+msgstr "Домен:"
+
+#: smb4kclient_p.cpp:2348
+#, kde-format
+msgid "File and Settings"
+msgstr "Файл і параметри"
+
+#: smb4kclient_p.cpp:2352
+#, kde-format
+msgid "File:"
+msgstr "Файл:"
+
+#: smb4kclient_p.cpp:2357
+#, kde-format
+msgid ""
+"This is the file you want to print on the remote printer. Currently only a "
+"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
+"If the file's mimetype is not supported, you need to convert it."
+msgstr ""
+"Це файл, який ви бажаєте надрукувати на віддаленому принтері. У поточній "
+"версії передбачено підтримку декількох типів MIME, зокрема PDF, Postscript, "
+"звичайного тексту та зображень. Якщо підтримки потрібного вам типу MIME не "
+"передбачено, вам слід спочатку перетворити дані у формат, який підтримується "
+"програмою."
+
+#: smb4kclient_p.cpp:2366
+#, kde-format
+msgid "Copies:"
+msgstr "Копій:"
+
+#: smb4kclient_p.cpp:2370
+#, kde-format
+msgid "This is the number of copies you want to print."
+msgstr "Це кількість копій, які ви бажаєте надрукувати"
+
+#: smb4kclient_p.cpp:2381
+#, kde-format
+msgid "Print"
+msgstr "Друк"
+
+#: smb4kcustomoptionsmanager_p.cpp:47
+#, kde-format
+msgid "Custom Options"
+msgstr "Нетипові параметри"
+
+#: smb4kcustomoptionsmanager_p.cpp:70
+#, kde-format
+msgid ""
+"<p>Define custom options for host <b>%1</b> and all the shares it provides.</"
+"p>"
+msgstr ""
+"<p>Визначте нетипові параметри для вузла <b>%1</b> та всіх його спільних "
+"ресурсів.</p>"
+
+#: smb4kcustomoptionsmanager_p.cpp:74
+#, kde-format
+msgid "<p>Define custom options for share <b>%1</b>.</p>"
+msgstr "<p>Визначте нетипові параметри спільного ресурсу <b>%1</b>.</p>"
+
+#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
+#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
+#: smb4kcustomoptionsmanager_p.cpp:935
+#, kde-format
+msgid "Common Options"
+msgstr "Загальні параметри"
+
+#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
+#, kde-format
+msgid "Always remount this share"
+msgstr "Завжди повторно монтувати цей спільний ресурс"
+
+#: smb4kcustomoptionsmanager_p.cpp:218
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr "Підтримка розширень UNIX CIFS"
+
+#: smb4kcustomoptionsmanager_p.cpp:221
+#, kde-format
+msgid "This server supports the CIFS Unix extensions"
+msgstr "На цьому сервері передбачено підтримку розширень UNIX CIFS"
+
+#: smb4kcustomoptionsmanager_p.cpp:300
+#, kde-format
+msgid "Common Mount Settings"
+msgstr "Загальні параметри монтування"
+
+#: smb4kcustomoptionsmanager_p.cpp:311
+#, kde-format
+msgid "Advanced Options"
+msgstr "Додаткові параметри"
+
+#: smb4kcustomoptionsmanager_p.cpp:355
+#, kde-format
+msgid "Advanced Mount Settings"
+msgstr "Додаткові параметри монтування"
+
+#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
+#: smb4kcustomoptionsmanager_p.cpp:1002
+#, kde-format
+msgid "Authentication"
+msgstr "Розпізнавання"
+
+#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
+#, kde-format
+msgid "Browse Settings"
+msgstr "Параметри навігації"
+
+#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
+#: smb4kcustomoptionsmanager_p.cpp:1030
+#, kde-format
+msgid "MAC Address"
+msgstr "MAC-адреса"
+
+#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
+#: smb4kcustomoptionsmanager_p.cpp:1034
+#, kde-format
+msgid "MAC Address:"
+msgstr "MAC-адреса:"
+
+#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
+#: smb4kcustomoptionsmanager_p.cpp:1052
+#, kde-format
+msgid "Actions"
+msgstr "Дії"
+
+#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
+#: smb4kcustomoptionsmanager_p.cpp:1056
+#, kde-format
+msgid "Send magic packet before scanning the network neighborhood"
+msgstr "Надіслати контрольний пакет до сканування мережевого оточення"
+
+#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
+#: smb4kcustomoptionsmanager_p.cpp:1064
+#, kde-format
+msgid "Send magic packet before mounting a share"
+msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
+
+#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
+#, kde-format
+msgid "Wake-On-LAN Settings"
+msgstr "Параметри Wake-On-LAN"
+
+#: smb4kcustomoptionsmanager_p.cpp:699
+#, kde-format
+msgid "Mount Settings"
+msgstr "Параметри монтування"
+
+#: smb4kcustomoptionsmanager_p.cpp:1016
+#, kde-format
+msgid "Samba"
+msgstr "Samba"
+
+#: smb4kcustomoptionsmanager_p.cpp:1074
+#, kde-format
+msgid "Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4khomesshareshandler.cpp:128
+#, kde-format
+msgid "%1 is not a version 1.0 file."
+msgstr "%1 не є файлом у форматі версії 1.0."
+
+#: smb4khomesshareshandler_p.cpp:125
+#, kde-format
+msgid "Specify User"
+msgstr "Вказати користувача"
+
+#: smb4khomesshareshandler_p.cpp:173
+#, kde-format
+msgid "Please specify a username for share<br><b>%1</b>."
+msgstr "Будь ласка, вкажіть ім’я користувача спільного ресурсу<br><b>%1</b>."
+
+#: smb4khomesshareshandler_p.cpp:187
+#, kde-format
+msgid "User:"
+msgstr "Користувач:"
+
+#: smb4khomesshareshandler_p.cpp:197
+#, kde-format
+msgid "Clear List"
+msgstr "Спорожнити список"
+
+#: smb4kmounter.cpp:680
+#, kde-format
+msgid ""
+"<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
+"%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+msgstr ""
+"<qt><p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він належить "
+"користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p></qt>"
+
+#: smb4kmounter.cpp:685
+#, kde-format
+msgid "Foreign Share"
+msgstr "Сторонній ресурс"
+
+#: smb4kmounter_p.cpp:48
+#, kde-format
+msgid "Mount Share"
+msgstr "Змонтувати спільний ресурс"
+
+#: smb4kmounter_p.cpp:119
+#, kde-format
+msgid ""
+"Enter the location and optionally the IP address and workgroup to mount a "
+"share."
+msgstr ""
+"Вкажіть розташування, а також, якщо хочете, IP-адресу та робочу групу для "
+"монтування спільного ресурсу."
+
+#: smb4kmounter_p.cpp:129
+#, kde-format
+msgid "Location:"
+msgstr "Розташування:"
+
+#: smb4kmounter_p.cpp:133
+#, kde-format
+msgid ""
+"The location of the share is provided by the Uniform Resource Locator (URL). "
+"It generally has the following syntax: [smb:]//[USER:PASSWORD@]HOST[:PORT]/"
+"SHARE. The scheme, username, password and port are optional. You should omit "
+"to enter the password here, because it is shown in cleartext."
+msgstr ""
+"Розташування спільного ресурсу визначається універсальною адресою ресурсу "
+"(URL). Загалом, формат запису адреси є таким: [smb:]//[КОРИСТУВАЧ:"
+"ПАРОЛЬ@]ВУЗОЛ[:ПОРТ]/СПІЛЬНИЙ_РЕСУРС. Тип адреси, ім'я користувача, пароль і "
+"порт можна не вказувати. Не варто явним чином вказувати у адресі пароль, "
+"оскільки його може побачити зловмисник."
+
+#: smb4kmounter_p.cpp:146
+#, kde-format
+msgid ""
+"The Internet Protocol (IP) address identifies the host in the network and "
+"indicates where it is. It has two valid formats, the one known as IP version "
+"4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+msgstr ""
+"Адреса за протоколом інтернету (Internet Protocol або IP) визначає вузол "
+"мережі і позначає його розташування. Чинними є два формати, перший відомий "
+"під назвою IP версії 4 (приклад: 192.168.2.11), другий — версії 6 (приклад: "
+"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#: smb4kmounter_p.cpp:159
+#, kde-format
+msgid ""
+"The workgroup or domain identifies the peer-to-peer computer network the "
+"host is located in."
+msgstr ""
+"Робоча група або домен визначають мережу безпосереднього зв’язку, у якій "
+"працює вузол."
+
+#: smb4kmounter_p.cpp:181
+#, kde-format
+msgid "Add this share to the bookmarks"
+msgstr "Додати цей спільний ресурс до закладок"
+
+#: smb4kmounter_p.cpp:184
+#, kde-format
+msgid ""
+"If you tick this checkbox, the share will be bookmarked and you can access "
+"it e.g. through the \"Bookmarks\" menu entry in the main window."
+msgstr ""
+"Якщо ви позначите цей пункт, програма створить закладку для цього спільного "
+"ресурсу. Пізніше ви зможете отримати до нього доступ за допомогою пункту "
+"головного меню «Закладки»."
+
+#: smb4kmounter_p.cpp:193
+#, kde-format
+msgid ""
+"Add a label describing your bookmark. It is then shown instead of the "
+"location."
+msgstr ""
+"Додайте мітку із описом закладки. Цю мітку буде показано замість адреси "
+"закладки."
+
+#: smb4kmounter_p.cpp:203
+#, kde-format
+msgid ""
+"Assign a category to your bookmark. This way you can organize your bookmarks."
+msgstr ""
+"Пов'яжіть закладку із категорією. У такий спосіб простіше впорядкувати ваші "
+"закладки."
+
+#: smb4kmounter_p.cpp:226
+#, kde-format
+msgctxt "Bookmark this share. Show input widgets in the dialog for this."
+msgid "Bookmark >>"
+msgstr "Закладка >>"
+
+#. i18n: ectx: label, entry (UseUserId), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
+#, kde-format
+msgid "User ID:"
+msgstr "Код користувача:"
+
+#. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
+#. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:13 smb4kmountsettings_bsd.kcfg:17
+#, kde-format
+msgid ""
+"This is the user ID (a number) that the files and directories of the mounted "
+"share will have."
+msgstr ""
+"Це ідентифікатор (номер) користувача, який використовуватиметься для доступу "
+"до файлів та каталогів спільного ресурсу."
+
+#. i18n: ectx: label, entry (UseGroupId), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:21 smb4kmountsettings_linux.kcfg:26
+#, kde-format
+msgid "Group ID:"
+msgstr "Код групи:"
+
+#. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
+#. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:22 smb4kmountsettings_bsd.kcfg:26
+#, kde-format
+msgid ""
+"This is the group ID (a number) that the files and directories of the "
+"mounted share will have."
+msgstr ""
+"Це ідентифікатор (номер) групи, яка використовуватиметься для доступу до "
+"файлів та каталогів спільного ресурсу."
+
+#. i18n: ectx: label, entry (UseFileMode), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:30 smb4kmountsettings_linux.kcfg:35
+#, kde-format
+msgid "File mode:"
+msgstr "Режим доступу до файлів:"
+
+#. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:31 smb4kmountsettings_bsd.kcfg:35
+#, kde-format
+msgid ""
+"This is the file mode that will be used for creating files. It must be "
+"defined in octal."
+msgstr ""
+"Це режим доступу до файлів, який буде використано для створення файлів. Слід "
+"вказувати у вісімковому форматі."
+
+#. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:39 smb4kmountsettings_linux.kcfg:44
+#, kde-format
+msgid "Directory mode:"
+msgstr "Режим доступу до каталогів:"
+
+#. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:40 smb4kmountsettings_bsd.kcfg:44
+#, kde-format
+msgid ""
+"This is the directory mode that will be used for creating directories. It "
+"must be defined in octal."
+msgstr ""
+"Це режим доступу до каталогів, який буде використано для створення "
+"каталогів. Слід вказувати у вісімковому форматі."
+
+#. i18n: ectx: label, entry (UseCharacterSets), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:48
+#, kde-format
+msgid "Use character sets"
+msgstr "Використовувати набори символів"
+
+#. i18n: ectx: whatsthis, entry (UseCharacterSets), group (Mounting)
+#. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:49 smb4kmountsettings_bsd.kcfg:54
+#, kde-format
+msgid ""
+"This is the character set that is used by the client side (i.e. your side) "
+"for codepage to charset translations. If you keep the default setting, Smb4K "
+"will try to automatically determine the charset by looking up the \"unix "
+"charset\" option in the smb.conf."
+msgstr ""
+"Цей пункт визначає набір символів (кодування), яке використовується на "
+"клієнтській стороні (тобто у вашій системі) для перетворень символів кодових "
+"таблиць. Якщо ви не змінюватимете типового значення, Smb4K спробує визначити "
+"набір символів на основі значення параметра «unix charset» з файла smb.conf."
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#. i18n: ectx: label, entry (UseClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:53 smb4kmountsettings_linux.kcfg:64
+#, kde-format
+msgid "Client character set:"
+msgstr "Набір символів клієнта:"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:57 smb4kmountsettings_bsd.kcfg:133
+#: smb4kmountsettings_linux.kcfg:72
+#, kde-format
+msgid "default"
+msgstr "типове"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:60 smb4kmountsettings_linux.kcfg:75
+#, kde-format
+msgid "iso8859-1"
+msgstr "iso8859-1"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:63 smb4kmountsettings_linux.kcfg:78
+#, kde-format
+msgid "iso8859-2"
+msgstr "iso8859-2"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:66 smb4kmountsettings_linux.kcfg:81
+#, kde-format
+msgid "iso8859-3"
+msgstr "iso8859-3"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:69 smb4kmountsettings_linux.kcfg:84
+#, kde-format
+msgid "iso8859-4"
+msgstr "iso8859-4"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:72 smb4kmountsettings_linux.kcfg:87
+#, kde-format
+msgid "iso8859-5"
+msgstr "iso8859-5"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:75 smb4kmountsettings_linux.kcfg:90
+#, kde-format
+msgid "iso8859-6"
+msgstr "iso8859-6"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:78 smb4kmountsettings_linux.kcfg:93
+#, kde-format
+msgid "iso8859-7"
+msgstr "iso8859-7"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:81 smb4kmountsettings_linux.kcfg:96
+#, kde-format
+msgid "iso8859-8"
+msgstr "iso8859-8"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:84 smb4kmountsettings_linux.kcfg:99
+#, kde-format
+msgid "iso8859-9"
+msgstr "iso8859-9"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:87 smb4kmountsettings_linux.kcfg:102
+#, kde-format
+msgid "iso8859-13"
+msgstr "iso8859-13"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:90 smb4kmountsettings_linux.kcfg:105
+#, kde-format
+msgid "iso8859-14"
+msgstr "iso8859-14"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:93 smb4kmountsettings_linux.kcfg:108
+#, kde-format
+msgid "iso8859-15"
+msgstr "iso8859-15"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:96 smb4kmountsettings_linux.kcfg:111
+#, kde-format
+msgid "utf8"
+msgstr "utf8"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:99 smb4kmountsettings_linux.kcfg:114
+#, kde-format
+msgid "koi8-r"
+msgstr "koi8-r"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:102 smb4kmountsettings_linux.kcfg:117
+#, kde-format
+msgid "koi8-u"
+msgstr "koi8-u"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:105 smb4kmountsettings_linux.kcfg:120
+#, kde-format
+msgid "koi8-ru"
+msgstr "koi8-ru"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:108 smb4kmountsettings_bsd.kcfg:205
+#: smb4kmountsettings_linux.kcfg:123
+#, kde-format
+msgid "cp1251"
+msgstr "cp1251"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:111 smb4kmountsettings_linux.kcfg:126
+#, kde-format
+msgid "gb2312"
+msgstr "gb2312"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:114 smb4kmountsettings_linux.kcfg:129
+#, kde-format
+msgid "big5"
+msgstr "big5"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:117 smb4kmountsettings_linux.kcfg:132
+#, kde-format
+msgid "euc-jp"
+msgstr "euc-jp"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:120 smb4kmountsettings_linux.kcfg:135
+#, kde-format
+msgid "euc-kr"
+msgstr "euc-kr"
+
+#. i18n: ectx: label, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:123 smb4kmountsettings_linux.kcfg:138
+#, kde-format
+msgid "tis-620"
+msgstr "tis-620"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:129
+#, kde-format
+msgid "Server character set:"
+msgstr "Набір символів сервера:"
+
+#. i18n: ectx: whatsthis, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:130
+#, kde-format
+msgid ""
+"This is the character set that is used by the server. If you keep the "
+"default setting, Smb4K will try to automatically determine the codepage by "
+"looking up the \"dos charset\" option in the smb.conf file."
+msgstr ""
+"Цей пункт визначає набір символів, який використовується на сервері. Якщо ви "
+"не змінюватимете типового значення, Smb4K спробує визначити кодову сторінку "
+"у автоматичному режимі на основі значення параметра «dos charset» з файла "
+"smb.conf."
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:136
+#, kde-format
+msgid "cp437"
+msgstr "cp437"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:139
+#, kde-format
+msgid "cp720"
+msgstr "cp720"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:142
+#, kde-format
+msgid "cp737"
+msgstr "cp737"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:145
+#, kde-format
+msgid "cp775"
+msgstr "cp775"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:148
+#, kde-format
+msgid "cp850"
+msgstr "cp850"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:151
+#, kde-format
+msgid "cp852"
+msgstr "cp852"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:154
+#, kde-format
+msgid "cp855"
+msgstr "cp855"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:157
+#, kde-format
+msgid "cp857"
+msgstr "cp857"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:160
+#, kde-format
+msgid "cp858"
+msgstr "cp858"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:163
+#, kde-format
+msgid "cp860"
+msgstr "cp860"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:166
+#, kde-format
+msgid "cp861"
+msgstr "cp861"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:169
+#, kde-format
+msgid "cp862"
+msgstr "cp862"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:172
+#, kde-format
+msgid "cp863"
+msgstr "cp863"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:175
+#, kde-format
+msgid "cp864"
+msgstr "cp864"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:178
+#, kde-format
+msgid "cp865"
+msgstr "cp865"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:181
+#, kde-format
+msgid "cp866"
+msgstr "cp866"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:184
+#, kde-format
+msgid "cp869"
+msgstr "cp869"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:187
+#, kde-format
+msgid "cp874"
+msgstr "cp874"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:190
+#, kde-format
+msgid "cp932"
+msgstr "cp932"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:193
+#, kde-format
+msgid "cp936"
+msgstr "cp936"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:196
+#, kde-format
+msgid "cp949"
+msgstr "cp949"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:199
+#, kde-format
+msgid "cp950"
+msgstr "cp950"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:202
+#, kde-format
+msgid "cp1250"
+msgstr "cp1250"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:208
+#, kde-format
+msgid "cp1252"
+msgstr "cp1252"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:211
+#, kde-format
+msgid "cp1253"
+msgstr "cp1253"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:214
+#, kde-format
+msgid "cp1254"
+msgstr "cp1254"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:217
+#, kde-format
+msgid "cp1255"
+msgstr "cp1255"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:220
+#, kde-format
+msgid "cp1256"
+msgstr "cp1256"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:223
+#, kde-format
+msgid "cp1257"
+msgstr "cp1257"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:226
+#, kde-format
+msgid "cp1258"
+msgstr "cp1258"
+
+#. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:229
+#, kde-format
+msgid "unicode"
+msgstr "unicode"
+
+#. i18n: ectx: label, entry (MountPrefix), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:235 smb4kmountsettings_linux.kcfg:294
+#, kde-format
+msgid "Mount prefix:"
+msgstr "Префікс монтування:"
+
+#. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:295
+#, kde-format
+msgid ""
+"This is the prefix where Smb4K will create the mount points and mount the "
+"remote shares."
+msgstr ""
+"Визначає префікс монтування, де Smb4K створюватиме точки монтування і "
+"монтуватиме віддалені спільні ресурси."
+
+#. i18n: ectx: label, entry (ForceLowerCaseSubdirs), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:299
+#, kde-format
+msgid "Force generated subdirectories to be lower case"
+msgstr "Примусово створювати назви новостворених підтек у нижньому регістрі"
+
+#. i18n: ectx: whatsthis, entry (ForceLowerCaseSubdirs), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:300
+#, kde-format
+msgid ""
+"All names of the subdirectories created by Smb4K below the mount prefix will "
+"be lowercase."
+msgstr ""
+"Визначає, чи слід переводити назви всіх підтек, створених Smb4K у теці "
+"префіксу, у нижній регістр (записувати малими літерами)."
+
+#. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:245 smb4kmountsettings_linux.kcfg:304
+#, kde-format
+msgid "Unmount all personal shares on exit"
+msgstr "Під час виходу демонтувати всі особисті спільні ресурси"
+
+#. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:305
+#, kde-format
+msgid ""
+"Unmount all shares that belong to you when the program exits. Shares that "
+"are owned by other users are ignored."
+msgstr ""
+"Визначає, чи слід під час завершення роботи програми демонтувати всі спільні "
+"ресурси, які належать лише вашому користувачеві. Спільні ресурси інших "
+"користувачів буде пропущено."
+
+#. i18n: ectx: label, entry (RemountShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:309
+#, kde-format
+msgid "Remount shares"
+msgstr "Повторно змонтувати спільні ресурси"
+
+#. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:310
+#, kde-format
+msgid ""
+"Remount all your shares that were mounted when you exited the program or "
+"changed a profile. If the remounting of a share fails, Smb4K will retry the "
+"next time it is started. Shares that were mounted by other users are "
+"ignored. Please note that this setting does not affect the automatic "
+"remounting of shares when your computer woke up from a sleep state."
+msgstr ""
+"Визначає, чи слід повторно монтувати всі ваші спільні ресурси, які було "
+"змонтовано на час завершення роботи програми або зміни профілю. Якщо "
+"повторне монтування зазнає невдачі, Smb4K спробує виконати його під час "
+"наступного запуску програми. Позначення цього пункту не стосуватиметься "
+"спільних ресурсів, змонтованих іншими користувачами. Будь ласка, зауважте, "
+"що цей параметр не впливає на автоматичне повторне монтування спільних "
+"ресурсів під час пробудження системи зі стану присипляння."
+
+#. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:255 smb4kmountsettings_linux.kcfg:314
+#, kde-format
+msgid "Number of remount attempts:"
+msgstr "Кількість спроб повторного монтування:"
+
+#. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:315
+#, kde-format
+msgid ""
+"Set the number of attempts that are made to remount shares before Smb4K "
+"gives up."
+msgstr ""
+"Встановіть кількість спроб повторного монтування спільних ресурсів, після "
+"виконання якої Smb4K має припинити спроби."
+
+#. i18n: ectx: label, entry (RemountInterval), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:262 smb4kmountsettings_linux.kcfg:321
+#, kde-format
+msgid "Interval between remount attempts:"
+msgstr "Інтервал між спробами повторного монтування:"
+
+#. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:322
+#, kde-format
+msgid "Set the time that elapses between attempts to remount shares."
+msgstr ""
+"Встановіть час між послідовними спробами повторного монтування спільних "
+"ресурсів."
+
+#. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:269 smb4kmountsettings_linux.kcfg:328
+#, kde-format
+msgid "Allow the unmounting of shares that are owned by other users"
+msgstr ""
+"Дозволяти демонтування спільних ресурсів, які належать іншим користувачам"
+
+#. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:329
+#, kde-format
+msgid ""
+"Allow the unmounting of shares that were mounted by other users. Please "
+"think before you enable this option."
+msgstr ""
+"Визначає, чи слід дозволяти програмі демонтувати спільні ресурси, які було "
+"змонтовано іншими користувачами. Будь ласка, двічі подумайте, перш ніж "
+"позначати цей пункт."
+
+#. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:333
+#, kde-format
+msgid "Force the unmounting of inaccessible shares"
+msgstr "Виконувати демонтування недоступних ресурсів у примусовому режимі"
+
+#. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:334
+#, kde-format
+msgid ""
+"Force the unmounting of inaccessible shares (Linux only). In case a share is "
+"inaccessible, a lazy unmount is performed. Before the actual unmount is "
+"performed, a warning dialog is shown asking to approve the unmount."
+msgstr ""
+"Виконати демонтування недоступних спільних ресурсів у примусовому режимі "
+"(лише Linux). Якщо спільний ресурс недоступний, буде виконано відкладене "
+"демонтування. Перед виконанням демонтування програма покаже діалогове вікно "
+"з пропозицією підтвердити демонтування."
+
+#. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:279 smb4kmountsettings_linux.kcfg:338
+#, kde-format
+msgid "Detect all shares that are mounted on the system"
+msgstr "Виявляти усі спільні ресурси, які змонтовано у системі"
+
+#. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
+#: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:339
+#, kde-format
+msgid ""
+"You will not only see the shares that were mounted and are owned by you, but "
+"also all other mounts using the SMBFS and CIFS file system that are present "
+"on the system."
+msgstr ""
+"У разі позначення цього пункту ви бачитимете не лише список спільних "
+"ресурсів, які було змонтовано вами і які належать вам, але і всі інші "
+"змонтовані за допомогою SMBFS і CIFS файлові системи."
+
+#. i18n: ectx: label, entry (CifsUnixExtensionsSupport), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:12
+#, kde-format
+msgid "All or most of the servers support the CIFS Unix extensions"
+msgstr ""
+"На усіх або більшості серверів передбачено підтримку розширень UNIX CIFS"
+
+#. i18n: ectx: whatsthis, entry (CifsUnixExtensionsSupport), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:13
+#, kde-format
+msgid ""
+"Most versions of Samba support the CIFS Unix or POSIX extensions. For these "
+"servers, some options are not needed, because the right values are "
+"negotiated during the mount process. For other servers, you might want to "
+"uncheck this option, so that predefined values can be passed to the server. "
+"Please note that if your computer is located in a Windows dominated network "
+"neighborhood with only a few Samba servers, you can safely uncheck this "
+"option and define custom options for the Samba servers."
+msgstr ""
+"У більшості версій Samba передбачено підтримку розширень UNIX або POSIX "
+"CIFS. Для роботи з відповідними серверами у наданні деяких параметрів просто "
+"немає потреби, оскільки належні налаштування визначаються під час процедури "
+"узгодження у процесі монтування. Для серверів, де такої підтримки не "
+"передбачено, варто зняти позначку з цього пункту, щоб програма надіслала "
+"попередньо визначені значення параметрів серверу. Будь ласка, зауважте, що "
+"якщо ваш комп'ютер перебуває у середовищі, де переважна кількість "
+"комп'ютерів працює під керуванням Windows і є лише декілька серверів few "
+"Samba, ви можете сміливо знімати позначку з цього пункту і визначати "
+"нетипові параметри для серверів Samba."
+
+#. i18n: ectx: whatsthis, entry (UseUserId), group (Mounting)
+#. i18n: ectx: whatsthis, entry (UserId), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:18 smb4kmountsettings_linux.kcfg:22
+#, kde-format
+msgid ""
+"This is the user ID (a number) that the files and directories of the mounted "
+"share will have. If you are using the CIFS filesystem under Linux and the "
+"remote server supports the CIFS Unix Extensions, this setting will be "
+"ignored unless the assignment of the user ID is forced."
+msgstr ""
+"Це ідентифікатор (номер) користувача, який використовуватиметься для доступу "
+"до файлів та каталогів спільного ресурсу. Якщо ви користуєтеся файловою "
+"системою CIFS у Linux, не встановлено примусового призначення ідентифікатора "
+"користувача, а віддалений сервер підтримує CIFS Unix Extensions, значення "
+"цього пункту буде проігноровано."
+
+#. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
+#. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:27 smb4kmountsettings_linux.kcfg:31
+#, kde-format
+msgid ""
+"This is the group ID (a number) that the files and directories of the "
+"mounted share will have. If you are using the CIFS filesystem under Linux "
+"and the remote server supports the CIFS Unix Extensions, this setting will "
+"be ignored unless the assignment of the group ID is forced."
+msgstr ""
+"Це ідентифікатор (номер) групи, який використовуватиметься для доступу до "
+"файлів та каталогів спільного ресурсу. Якщо ви користуєтеся файловою "
+"системою CIFS у Linux, не встановлено примусового призначення ідентифікатора "
+"групи, а віддалений сервер підтримує CIFS Unix Extensions, значення цього "
+"пункту буде проігноровано."
+
+#. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:36
+#, kde-format
+msgid ""
+"This is the file mode that will be used for creating files. It must be "
+"defined in octal. In case the CIFS file system is used, this setting only "
+"takes effect if the server does not support the CIFS Unix Extensions."
+msgstr ""
+"Це режим доступу до файлів, який буде використано для створення файлів. "
+"Маску слід вказувати у вісімковій формі запису. Якщо ви користуєтеся "
+"файловою системою CIFS, значення, вказане у цьому пункті, буде використано "
+"лише для серверів, які не підтримують CIFS Unix Extensions."
+
+#. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:40
+#, kde-format
+msgid ""
+"This is the filemode that will be used for creating files. It must be "
+"defined in octal. In case the CIFS file system is used, this setting only "
+"takes effect if the server does not support the CIFS Unix Extensions."
+msgstr ""
+"Це режим доступу до файлів, який буде використано для створення файлів. "
+"Маску слід вказувати у вісімковій формі запису. Якщо ви користуєтеся "
+"файловою системою CIFS, значення, вказане у цьому пункті, буде використано "
+"лише для серверів, які не підтримують CIFS Unix Extensions."
+
+#. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:45 smb4kmountsettings_linux.kcfg:49
+#, kde-format
+msgid ""
+"This is the directory mode that will be used for creating directories. It "
+"must be defined in octal. In case the CIFS file system is used, this setting "
+"only takes effect if the server does not support the CIFS Unix Extensions."
+msgstr ""
+"Це режим доступу до каталогів, який буде використано для створення "
+"каталогів. Маску слід вказувати у вісімковій формі запису. Якщо ви "
+"користуєтеся файловою системою CIFS, значення, вказане у цьому пункті, буде "
+"використано лише для серверів, які не підтримують CIFS Unix Extensions."
+
+#. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:53
+#, kde-format
+msgid "File system port:"
+msgstr "Порт файлової системи:"
+
+#. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
+#. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:54 smb4kmountsettings_linux.kcfg:58
+#, kde-format
+msgid ""
+"This is the port that is exclusively used to mount shares from remote "
+"servers. The default value is 445 (CIFS file system)."
+msgstr ""
+"Визначає єдиний порт, який використовуватиметься для монтування спільних "
+"ресурсів з віддалених серверів. Типовим портом є 445 (файлова система CIFS)."
+
+#. i18n: ectx: whatsthis, entry (UseClientCharset), group (Mounting)
+#. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:65 smb4kmountsettings_linux.kcfg:69
+#, kde-format
+msgid ""
+"This is the character set that is used by the client side (i.e. your side) "
+"either to convert local path names to and from Unicode (CIFS, Linux) or for "
+"codepage to charset translations (SMBFS, FreeBSD). If you keep the default "
+"setting, Smb4K will try to automatically determine the charset by looking up "
+"the \"unix charset\" option in the smb.conf."
+msgstr ""
+"Цей пункт визначає набір символів (кодування), яке використовується на "
+"клієнтській стороні (тобто у вашій системі) для перетворення локальних адрес "
+"у та з кодування Unicode (CIFS, Linux) або перетворень символів кодових "
+"таблиць (SMBFS, FreeBSD). Якщо ви не змінюватимете типового значення, Smb4K "
+"спробує визначити набір символів на основі значення параметра «unix charset» "
+"з файла smb.conf."
+
+#. i18n: ectx: label, entry (UseWriteAccess), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:144
+#, kde-format
+msgid "Write access:"
+msgstr "Доступ для запису:"
+
+#. i18n: ectx: whatsthis, entry (UseWriteAccess), group (Mounting)
+#. i18n: ectx: whatsthis, entry (WriteAccess), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:145 smb4kmountsettings_linux.kcfg:149
+#, kde-format
+msgid ""
+"Here you can choose if the shares should be mounted in read-write or read-"
+"only mode."
+msgstr ""
+"Тут ви можете визначити режим, у якому слід монтувати спільні ресурси: режим "
+"читання і запису чи режим лише читання."
+
+#. i18n: ectx: label, entry (WriteAccess), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:152
+#, kde-format
+msgid "read-write"
+msgstr "читання-запис"
+
+#. i18n: ectx: label, entry (WriteAccess), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:155
+#, kde-format
+msgid "read-only"
+msgstr "лише читання"
+
+#. i18n: ectx: label, entry (ForceUID), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:161
+#, kde-format
+msgid "Definitely assign the UID"
+msgstr "Призначати вказаний UID"
+
+#. i18n: ectx: whatsthis, entry (ForceUID), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:162
+#, kde-format
+msgid ""
+"Instruct the client (i.e. your side) to ignore any user ID (UID) provided by "
+"the server for files and directories and to always assign the owner to be "
+"the value of the transmitted UID."
+msgstr ""
+"Наказати клієнтській частині (на боці вашого комп’ютера) ігнорувати усі "
+"ідентифікатори користувачів (UID), які надаються сервером для файлів і "
+"каталогів і завжди призначати для параметра власника значення UID "
+"користувача, якому передаються дані."
+
+#. i18n: ectx: label, entry (ForceGID), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:166
+#, kde-format
+msgid "Definitely assign the GID"
+msgstr "Призначати вказаний GID"
+
+#. i18n: ectx: whatsthis, entry (ForceGID), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:167
+#, kde-format
+msgid ""
+"Instruct the client (i.e. your side) to ignore any group ID (GID) provided "
+"by the server for files and directories and to always assign the owner to be "
+"the value of the transmitted GID."
+msgstr ""
+"Наказати клієнтській частині (на боці вашого комп’ютера) ігнорувати усі "
+"ідентифікатори груп (GID), які надаються сервером для файлів і каталогів і "
+"завжди призначати для параметра власника значення GID користувача, якому "
+"передаються дані."
+
+#. i18n: ectx: label, entry (PermissionChecks), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:171
+#, kde-format
+msgid "Do permission checks"
+msgstr "Виконувати перевірку прав доступу"
+
+#. i18n: ectx: whatsthis, entry (PermissionChecks), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:172
+#, kde-format
+msgid ""
+"The client side (i.e. your side) will check if you have the right UID/GID to "
+"manipulate a file or directory. You might want to switch this feature off if "
+"the server(s) support the CIFS Unix Extensions and you are not allowed to "
+"access the files and directories. This setting does not affect the normal "
+"ACL check."
+msgstr ""
+"Визначає, чи слід виконувати перевірки належного UID/GID для виконання дій "
+"над файлами або каталогами на клієнтській стороні (вашому комп’ютері). Якщо "
+"сервер підтримує CIFS Unix Extensions, а ви не можете отримати доступ до "
+"файлів і каталогів, вам слід зняти позначку з цього пункту. Позначення цього "
+"пункту не скасовуватиме звичайної перевірки за списком керування доступом "
+"(ACL)."
+
+#. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:176
+#, kde-format
+msgid "Attempt to set UID and GID"
+msgstr "Намагатися встановити UID і GID"
+
+#. i18n: ectx: whatsthis, entry (ClientControlsIDs), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:177
+#, kde-format
+msgid ""
+"In case the server supports the CIFS Unix Extensions, the client side (i.e. "
+"your side) attempts to set the effective UID and GID of the current process "
+"on newly created files, directories and devices. If this feature is turned "
+"off, the server will set the UID and GID to the default for the share. It is "
+"recommended that you read the manual page of mount.cifs before you change "
+"this setting."
+msgstr ""
+"У разі позначення цього пункту, якщо сервер підтримує CIFS Unix Extensions, "
+"клієнтська сторона (ваш комп’ютер) намагатиметься встановити UID і GID "
+"поточного процесу для створених у системі файлів, каталогів та пристроїв "
+"Якщо цей пункт не буде позначено, сервер призначить типові UID і GID для "
+"спільного ресурсу. Перш ніж позначати або знімати позначку з цього пункту, "
+"вам слід ознайомитися з вмістом сторінки довідки (man) mount.cifs."
+
+#. i18n: ectx: label, entry (ServerInodeNumbers), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:181
+#, kde-format
+msgid "Use server inode numbers"
+msgstr "Використовувати номери inode з сервера"
+
+#. i18n: ectx: whatsthis, entry (ServerInodeNumbers), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:182
+#, kde-format
+msgid ""
+"Use inode numbers (unique persistent file identifiers) returned by the "
+"server instead of automatically generating temporary inode numbers on the "
+"client side."
+msgstr ""
+"Визначає, чи слід використовувати номери inode (унікальні сталі "
+"ідентифікатори файлів), повернені сервером, замість автоматично створених "
+"тимчасових номерів inode, визначених на стороні клієнта (вашого комп’ютера)."
+
+#. i18n: ectx: label, entry (NoLocking), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:186
+#, kde-format
+msgid "Do not use locking"
+msgstr "Не використовувати блокування"
+
+#. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:187
+#, kde-format
+msgid "Do not use locking. Do not start lockd."
+msgstr "Не використовувати блокування. Не запускати lockd."
+
+#. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:191
+#, kde-format
+msgid "Translate reserved characters"
+msgstr "Переносити зарезервовані символи"
+
+#. i18n: ectx: whatsthis, entry (TranslateReservedChars), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:192
+#, kde-format
+msgid ""
+"Translate six of the seven reserved characters (including the colon, "
+"question mark, pipe, asterisk, greater than and less than characters but not "
+"the backslash) to remap range (above 0xF000). This allows you to open files "
+"that were created with such characters. This has no effect if the server "
+"does not support Unicode."
+msgstr ""
+"Переносити шість з семи зарезервованих символів (зокрема двокрапку, знак "
+"питання, символ вертикальної риски, зірочку та символи знаків «більше» та "
+"«менше», але не зворотну риску) до вищого діапазону (за 0xF000). Якщо ви "
+"позначите цей пункт, ви зможете відкривати файли, назви яких містять ці "
+"символи. Позначення пункту не матиме наслідків для серверів, які не "
+"підтримують Unicode."
+
+#. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:196
+#, kde-format
+msgid "SMB protocol version:"
+msgstr "Версія протоколу SMB:"
+
+#. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
+#. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:197 smb4kmountsettings_linux.kcfg:201
+#, kde-format
+msgid "Define which version of the SMB protocol is to be used."
+msgstr "Визначення версії протоколу SMB, якою слід користуватися."
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:204
+#, kde-format
+msgid "1.0 (Classic CIFS/SMBv1 protocol)"
+msgstr "1.0 (класичний протокол CIFS/SMBv1)"
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:207
+#, kde-format
+msgid "2.0 (Windows Vista SP1/Windows Server 2008)"
+msgstr "2.0 (Windows Vista SP1/Windows Server 2008)"
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:210
+#, kde-format
+msgid "2.1 (Windows 7/Windows Server 2008R2)"
+msgstr "2.1 (Windows 7/Windows Server 2008R2)"
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:213
+#, kde-format
+msgid "3.0 (Windows 8/Windows Server 2012)"
+msgstr "3.0 (Windows 8/Windows Server 2012)"
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:216
+#, kde-format
+msgid "3.0.2 (Windows 8.1/Windows Server 2012R2)"
+msgstr "3.0.2 (Windows 8.1/Windows Server 2012R2)"
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:219
+#, kde-format
+msgid "3.1.1 (Windows Server 2016)"
+msgstr "3.1.1 (Windows Server 2016)"
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:222
+#, kde-format
+msgid "3 (Version 3.0 and above)"
+msgstr "3 (версія 3.0 і новіші)"
+
+#. i18n: ectx: label, entry (SmbProtocolVersion), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:225
+#, kde-format
+msgid "default (Negotiate the highest version)"
+msgstr "типовий (узгодити найновішу версію)"
+
+#. i18n: ectx: label, entry (UseCacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:231
+#, kde-format
+msgid "Cache mode:"
+msgstr "Режим роботи кешу:"
+
+#. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:232 smb4kmountsettings_linux.kcfg:236
+#, kde-format
+msgid ""
+"Define how read and write requests are handled. In case you choose to not "
+"cache file data at all, the client never utilizes the cache for normal reads "
+"and writes. It always accesses the server directly to satisfy a read or "
+"write request. If you choose to follow the CIFS/SMB2 protocol strictly, the "
+"cache is only trusted if the client holds an oplock. If the client does not "
+"hold an oplock, then the client bypasses the cache and accesses the server "
+"directly to satisfy a read or write request. Choosing to allow loose caching "
+"semantics can sometimes provide better performance on the expense of cache "
+"coherency. This option might cause data corruption, if several clients "
+"access the same set of files on the server at the same time. Because of "
+"this, the strict cache mode is recommended."
+msgstr ""
+"Визначення способу обробки запитів на читання-запис. Якщо ви накажете "
+"програмі взагалі не використовувати кешування файлових даних, кеш не "
+"використовуватиметься клієнтською частиною для виконання звичайних завдань "
+"із читання чи запису даних. Для виконання таких запитів система завжди "
+"намагатиметься отримати доступ безпосередньо до сервера з даними. Якщо ви "
+"виберете варіант із строгим дотримання протоколу CIFS/SMB2, система "
+"використовуватиме дані з кешу лише тоді, коли клієнтська частина зв’язку "
+"отримуватиме сигнал про блокування даних на час виконання операції. Якщо "
+"такого блокування не буде, клієнтська частина не використовуватиме дані з "
+"кешу і намагатиметься отримати безпосередній доступ до сервера для виконання "
+"дій із читання чи запису. Варіант з розширеною семантикою кешування іноді "
+"може забезпечити вищу швидкодію за рахунок можливої втрати синхронізації "
+"кешу. Така втрата синхронізації може призвести до пошкодження даних, якщо до "
+"одного набору файлів одночасно отримує доступ декілька клієнтів. Через "
+"перелічені вище обставини ми рекомендуємо використовувати режим строгого "
+"дотримання протоколу під час кешування."
+
+#. i18n: ectx: label, entry (CacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:239
+#, kde-format
+msgid "Do not cache file data at all"
+msgstr "Взагалі не кешувати файлові дані"
+
+#. i18n: ectx: label, entry (CacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:242
+#, kde-format
+msgid "Follow the CIFS/SMB2 protocol strictly"
+msgstr "Строго дотримуватися протоколу CIFS/SMB2"
+
+#. i18n: ectx: label, entry (CacheMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:245
+#, kde-format
+msgid "Allow loose caching semantics"
+msgstr "Дозволити розширену семантику кешування"
+
+#. i18n: ectx: label, entry (UseSecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:251
+#, kde-format
+msgid "Security mode:"
+msgstr "Режим безпеки:"
+
+#. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
+#. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:252 smb4kmountsettings_linux.kcfg:256
+#, kde-format
+msgid ""
+"Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
+"module 1.40 or later is required."
+msgstr ""
+"Режим безпеки для mount.cifs. Щоб можна було користуватися цим режимом, "
+"потрібен CIFS-модуль ядра версії 1.40 або пізнішої."
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:259
+#, kde-format
+msgid "Connect as a null user (no name)"
+msgstr "З’єднатися з порожнім записом користувача (без імені)"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:262
+#, kde-format
+msgid "Kerberos 5 authentication"
+msgstr "Розпізнавання Kerberos 5"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:265
+#, kde-format
+msgid "Kerberos 5 authentication and packet signing"
+msgstr "Розпізнавання Kerberos 5 та підписування пакетів"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:268
+#, kde-format
+msgid "NTLM protocol"
+msgstr "Протокол NTLM"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:271
+#, kde-format
+msgid "NTLM protocol and packet signing"
+msgstr "Протокол NTLM з підписуванням пакетів"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:274
+#, kde-format
+msgid "NTLMv2 protocol"
+msgstr "Протокол NTLMv2"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:277
+#, kde-format
+msgid "NTLMv2 protocol and packet signing"
+msgstr "Протокол NTLMv2 та підписування пакетів"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:280
+#, kde-format
+msgid "NTLMSSP protocol"
+msgstr "Протокол NTLMSSP"
+
+#. i18n: ectx: label, entry (SecurityMode), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:283
+#, kde-format
+msgid "NTLMSSP protocol and packet signing"
+msgstr "Протокол NTLMSSP з підписуванням пакетів"
+
+#. i18n: ectx: label, entry (CustomCIFSOptions), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:289
+#, kde-format
+msgid "Additional options:"
+msgstr "Додаткові параметри:"
+
+#. i18n: ectx: whatsthis, entry (CustomCIFSOptions), group (Mounting)
+#: smb4kmountsettings_linux.kcfg:290
+#, kde-format
+msgid ""
+"Here you can enter advanced options for the CIFS file system in a comma-"
+"separated list (refer to the manual page of mount.cifs to learn more). The "
+"list will be added AS IS to the \"-o\" argument of mount.cifs. Please do not "
+"enter options that have already been defined in the configuration dialog."
+msgstr ""
+"Тут ви можете вказати додаткові параметри файлової системи CIFS як список "
+"відокремлених комами значень (щоб дізнатися більше, зверніться до сторінки "
+"довідки (man) mount.cifs). Список параметрів буде додано БЕЗ ПЕРЕВІРКИ до "
+"параметра «-o» mount.cifs. Будь ласка, не вписуйте у це поле параметрів, які "
+"вже було вказано у діалоговому вікні налаштування."
+
+#: smb4knotification.cpp:39
+#, kde-format
+msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+msgstr "<p>Спільний ресурс <b>%1</b> змонтовано у <b>%2</b>.</p>"
+
+#: smb4knotification.cpp:42
+#, kde-format
+msgid "Open"
+msgstr "Відкрити"
+
+#: smb4knotification.cpp:54
+#, kde-format
+msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+msgstr "<p>Спільний ресурс <b>%1</b> демонтовано з <b>%2</b>.</p>"
+
+#: smb4knotification.cpp:64
+#, kde-format
+msgid "<p>%1 share has been mounted.</p>"
+msgid_plural "<p>%1 shares have been mounted.</p>"
+msgstr[0] "<p>Було змонтовано %1 спільний ресурс.</p>"
+msgstr[1] "<p>Було змонтовано %1 спільних ресурси.</p>"
+msgstr[2] "<p>Було змонтовано %1 спільних ресурсів.</p>"
+msgstr[3] "<p>Було змонтовано один спільний ресурс.</p>"
+
+#: smb4knotification.cpp:73
+#, kde-format
+msgid "<p>%1 share has been unmounted.</p>"
+msgid_plural "<p>%1 shares have been unmounted.</p>"
+msgstr[0] "<p>Було демонтовано %1 спільний ресурс.</p>"
+msgstr[1] "<p>Було демонтовано %1 спільних ресурси.</p>"
+msgstr[2] "<p>Було демонтовано %1 спільних ресурсів.</p>"
+msgstr[3] "<p>Було демонтовано один спільний ресурс.</p>"
+
+#: smb4knotification.cpp:86
+#, kde-format
+msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+msgstr "<p>Спроба відкриття торбинки <b>%1</b> зазнала невдачі.</p>"
+
+#: smb4knotification.cpp:95
+#, kde-format
+msgid ""
+"<p>The credentials stored in the wallet could not be accessed. There is "
+"either no wallet available or it could not be opened.</p>"
+msgstr ""
+"<p>Не вдалося отримати доступ до реєстраційних даних, що зберігаються у "
+"торбинці. Торбинка або недоступна, або програмі не вдалося її відкрити.</p>"
+
+#: smb4knotification.cpp:105
+#, kde-format
+msgid ""
+"<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
+"file to PDF or Postscript and try again.</p>"
+msgstr ""
+"<p>Друк даних з файлів типу MIME <b>%1</b> не підтримується. Будь ласка, "
+"перетворіть дані файла у формат PostScript або PDF.</p>"
+
+#: smb4knotification.cpp:116
+#, kde-format
+msgid ""
+"<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
+msgstr ""
+"<p>Закладку для спільного ресурсу <b>%1</b> вже створено, її буде пропущено."
+"</p>"
+
+#: smb4knotification.cpp:127
+#, kde-format
+msgid ""
+"<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+"being used and will automatically be renamed.</p>"
+msgstr ""
+"<p>Мітку <b>%1</b> закладки для спільного ресурсу <b>%2</b> вже використано. "
+"Мітку закладки буде змінено автоматично.</p>"
+
+#: smb4knotification.cpp:145
+#, kde-format
+msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgstr ""
+"<p>Спроба монтування спільного ресурсу <b>%1</b> зазнала невдачі:</p><p><tt>"
+"%2</tt></p>"
+
+#: smb4knotification.cpp:147
+#, kde-format
+msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+msgstr "<p>Спроба монтування спільного ресурсу <b>%1</b> зазнала невдачі.</p>"
+
+#: smb4knotification.cpp:163
+#, kde-format
+msgid ""
+"<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
+"p>"
+msgstr ""
+"<p>Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>%2</"
+"b> зазнала невдачі:</p><p><tt>%3</tt></p>"
+
+#: smb4knotification.cpp:165
+#, kde-format
+msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+msgstr ""
+"<p>Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>%2</"
+"b> зазнала невдачі.</p>"
+
+#: smb4knotification.cpp:182
+#, kde-format
+msgid ""
+"<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
+"owned by the user <b>%3</b>.</p>"
+msgstr ""
+"<p>У вас немає прав доступу до демонтування спільного ресурсу <b>%1</b> з "
+"точки монтування <b>%2</b>. Цей ресурс належить користувачеві <b>%3</b>.</p>"
+
+#: smb4knotification.cpp:197
+#, kde-format
+msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+msgstr ""
+"<p>Спроба синхронізації <b>%1</b> з <b>%2</b> зазнала невдачі:</p><p><tt>%3</"
+"tt></p>"
+
+#: smb4knotification.cpp:199
+#, kde-format
+msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+msgstr "<p>Спроба синхронізації <b>%1</b> з <b>%2</b> зазнала невдачі.</p>"
+
+#: smb4knotification.cpp:211
+#, kde-format
+msgid ""
+"<p>The command <b>%1</b> could not be found. Please check your installation."
+"</p>"
+msgstr ""
+"<p>Не вдалося знайти програму <b>%1</b>. Будь ласка, перевірте, чи "
+"встановлено всі потрібні компоненти.</p>"
+
+#: smb4knotification.cpp:220
+#, kde-format
+msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+msgstr ""
+"<p>Спільний ресурс <b>%1</b> є принтером, не можна створювати закладки для "
+"принтерів.</p>"
+
+#: smb4knotification.cpp:229
+#, kde-format
+msgid "<p>The file <b>%1</b> could not be found.</p>"
+msgstr "<p>Не вдалося знайти файл <b>%1</b>.</p>"
+
+#: smb4knotification.cpp:239
+#, kde-format
+msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgstr ""
+"<p>Спроба відкрити файл <b>%1</b> зазнала невдачі:</p><p><tt>%2</tt></p>"
+
+#: smb4knotification.cpp:241
+#, kde-format
+msgid "<p>Opening the file <b>%1</b> failed.</p>"
+msgstr "<p>Спроба відкрити файл <b>%1</b> зазнала невдачі.</p>"
+
+#: smb4knotification.cpp:255 smb4knotification.cpp:258
+#, kde-format
+msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+msgstr ""
+"<p>Спроба читання даних з файла <b>%1</b> зазнала невдачі:</p><p><tt>%2</"
+"tt></p>"
+
+#: smb4knotification.cpp:260
+#, kde-format
+msgid "<p>Reading from file <b>%1</b> failed.</p>"
+msgstr "<p>Спроба читання даних з файла <b>%1</b> зазнала невдачі.</p>"
+
+#: smb4knotification.cpp:273
+#, kde-format
+msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+msgstr "<p>Не вдалося створити такий каталог:</p><p><tt>%1</tt></p>"
+
+#: smb4knotification.cpp:284
+#, kde-format
+msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+msgstr ""
+"<p>Спроба запуску процесу була невдалою (код помилки: <tt>%1</tt>).</p>"
+
+#: smb4knotification.cpp:288
+#, kde-format
+msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+msgstr "<p>Процес аварійно завершив роботу (код помилки: <tt>%1</tt>).</p>"
+
+#: smb4knotification.cpp:292
+#, kde-format
+msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+msgstr ""
+"<p>Перевищено час очікування даних від процесу (код помилки: <tt>%1</tt>).</"
+"p>"
+
+#: smb4knotification.cpp:296
+#, kde-format
+msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+msgstr ""
+"<p>Не вдалося виконати запис до процесу (код помилки: <tt>%1</tt>).</p>"
+
+#: smb4knotification.cpp:300
+#, kde-format
+msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+msgstr "<p>Не вдалося прочитати дані з процесу (код помилки: <tt>%1</tt>).</p>"
+
+#: smb4knotification.cpp:305
+#, kde-format
+msgid "<p>The process reported an unknown error.</p>"
+msgstr "<p>Процес повідомив про невідому помилку.</p>"
+
+#: smb4knotification.cpp:363
+#, kde-format
+msgid ""
+"<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
+"</p>"
+msgstr ""
+"<p>Спроба виконання дії з правами доступу root зазнала невдачі (код помилки: "
+"<tt>%1</tt>).</p>"
+
+#: smb4knotification.cpp:365
+#, kde-format
+msgid "<p>Executing an action with root privileges failed.</p>"
+msgstr "<p>Спроба виконання дії з правами доступу root зазнала невдачі.</p>"
+
+#: smb4knotification.cpp:377
+#, kde-format
+msgid "<p>The URL that was passed is invalid.</p>"
+msgstr "<qt>Вами передано некоректну адресу URL.</qt>"
+
+#: smb4knotification.cpp:385
+#, kde-format
+msgid ""
+"The network communication failed with the following error message: <s>%1</s>"
+msgstr ""
+"Спроба обміну даними мережею зазнала невдачі. Повідомлення про помилку: <s>"
+"%1</s>"
+
+#: smb4kprofilemanager_p.cpp:35
+#, kde-format
+msgid "Profile Migration Assistant"
+msgstr "Помічник перенесення профілів"
+
+#: smb4kprofilemanager_p.cpp:83
+#, kde-format
+msgid "Migrate all relevant settings of one profile to another."
+msgstr "Перенести усі відповідні параметри одного профілю до іншого."
+
+#: smb4kprofilemanager_p.cpp:100
+#, kde-format
+msgid "Old Profile:"
+msgstr "Старий профіль:"
+
+#: smb4kprofilemanager_p.cpp:106 smb4kprofilemanager_p.cpp:123
+#: smb4kprofilemanager_p.cpp:151 smb4kprofilemanager_p.cpp:160
+#, kde-format
+msgid "<Default Profile>"
+msgstr "<Типовий профіль>"
+
+#: smb4kprofilemanager_p.cpp:109
+#, kde-format
+msgid "<All Profiles>"
+msgstr "<Усі профілі>"
+
+#: smb4kprofilemanager_p.cpp:117
+#, kde-format
+msgid "New Profile:"
+msgstr "Новий профіль:"
+
+#: smb4kshare.cpp:196
+#, kde-format
+msgid "Disk"
+msgstr "Диск"
+
+#: smb4kshare.cpp:200
+#, kde-format
+msgid "Printer"
+msgstr "Принтер"
+
+#: smb4kshare.cpp:204
+#, kde-format
+msgid "IPC"
+msgstr "IPC"
+
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#, kde-format
+msgid "Synchronizing"
+msgstr "Синхронізація"
+
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#, kde-format
+msgid "Source"
+msgstr "Джерело"
+
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#, kde-format
+msgid "Destination"
+msgstr "Призначення"
+
+#: smb4ksynchronizer_p.cpp:552
+#, kde-format
+msgid "Synchronization"
+msgstr "Синхронізація"
+
+#: smb4ksynchronizer_p.cpp:555
+#, kde-format
+msgid "Swap Paths"
+msgstr "Поміняти адреси місцями"
+
+#: smb4ksynchronizer_p.cpp:556
+#, kde-format
+msgid "Swap source and destination"
+msgstr "Джерело і місце призначення свопінгу"
+
+#: smb4ksynchronizer_p.cpp:557
+#, kde-format
+msgid "Synchronize"
+msgstr "Синхронізувати"
+
+#: smb4ksynchronizer_p.cpp:558
+#, kde-format
+msgid "Synchronize the destination with the source"
+msgstr "Синхронізувати місце призначення з джерелом"
+
+#: smb4ksynchronizer_p.cpp:572
+#, kde-format
+msgid ""
+"Please provide the source and destination directory for the synchronization."
+msgstr ""
+"Будь ласка, вкажіть початковий каталог та каталог призначення для "
+"синхронізації."
+
+#: smb4ksynchronizer_p.cpp:581
+#, kde-format
+msgid "Source:"
+msgstr "Джерело:"
+
+#: smb4ksynchronizer_p.cpp:589
+#, kde-format
+msgid ""
+"This is the source directory. The data that it contains is to be written to "
+"the destination directory."
+msgstr ""
+"Каталог початкових даних. Дані, які у ньому містяться, буде синхронізовано "
+"каталог призначення."
+
+#: smb4ksynchronizer_p.cpp:592
+#, kde-format
+msgid "Destination:"
+msgstr "Призначення:"
+
+#: smb4ksynchronizer_p.cpp:600
+#, kde-format
+msgid ""
+"This is the destination directory. It will be updated with the data from the "
+"source directory."
+msgstr ""
+"Каталог призначення даних. Дані у цьому каталозі буде оновлено за даними з "
+"каталогу джерела."
+
+#: smb4kwalletmanager_p.cpp:36
+#, kde-format
+msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+msgstr ""
+"<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до вузла <b>"
+"%1</b>.</qt>"
+
+#: smb4kwalletmanager_p.cpp:54 smb4kwalletmanager_p.cpp:56
+#, kde-format
+msgid ""
+"<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+msgstr ""
+"<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до спільного "
+"ресурсу <b>%1</b>.</qt>"
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Не вистачає файла налаштувань для комплекту програм Samba, <b>smb.conf</"
+#~ "b>. Ця помилка не є критичною, але вам варто створити відповідний файл "
+#~ "для продовження ефективної роботи."
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "Назва NetBIOS:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Це назва NetBIOS вашого комп’ютера, яку буде використано Smb4K. Типово, "
+#~ "цією назвою є або назва NetBIOS, визначена у файлі smb.conf, або назва "
+#~ "вузла."
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "Це робоча група або домен, до якого має належати комп’ютер. Типовою є "
+#~ "робоча група, визначена у файлі smb.conf."
+
+#~ msgid "Login:"
+#~ msgstr "Користувач:"
+
+#~ msgid "Group:"
+#~ msgstr "Група:"
+
+#~ msgid "Add Group"
+#~ msgstr "Додати групу"
+
+#~ msgid "Group name:"
+#~ msgstr "Назва групи:"

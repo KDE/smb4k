@@ -1,0 +1,137 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2014, 2017, 2018, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"PO-Revision-Date: 2019-04-27 13:00+0200\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 18.12.3\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:59
+#: package/contents/ui/SharesViewItemDelegate.qml:59
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">op %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:32
+msgid "Go back"
+msgstr "Ga terug"
+
+#: package/contents/ui/BookmarksPage.qml:41
+msgid "Edit bookmarks"
+msgstr "Bladwijzers bewerken"
+
+#: package/contents/ui/ConfigurationPage.qml:21
+msgid "Configuration Dialog"
+msgstr "Configuratiedialoog"
+
+#: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
+msgid "Network Neighborhood"
+msgstr "Netwerkomgeving"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:92
+#: package/contents/ui/SharesViewItemDelegate.qml:76
+msgid "Bookmark"
+msgstr "Bladwijzer"
+
+#: package/contents/ui/NetworkBrowserPage.qml:38
+msgid "Rescan"
+msgstr "Opnieuw scannen"
+
+#: package/contents/ui/NetworkBrowserPage.qml:47
+msgid "Abort"
+msgstr "Afbreken"
+
+#: package/contents/ui/NetworkBrowserPage.qml:56
+msgid "Go one level up"
+msgstr "Eén niveau omhoog"
+
+#: package/contents/ui/NetworkBrowserPage.qml:65
+msgid "Open the mount dialog"
+msgstr "Dialoog voor aankoppelen openen"
+
+#: package/contents/ui/PopupDialog.qml:39
+msgid "Mounted Shares"
+msgstr "Aangekoppelde gedeelde mappen"
+
+#: package/contents/ui/PopupDialog.qml:46
+msgid "Bookmarks"
+msgstr "Bladwijzers"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Profiles"
+msgstr "Profielen"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: package/contents/ui/ProfileItemDelegate.qml:52
+msgid "(active)"
+msgstr "(actief)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:97
+msgid "Synchronize"
+msgstr "Synchroniseren"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:118
+msgid "Unmount"
+msgstr "Afkoppelen"
+
+#: package/contents/ui/SharesViewPage.qml:34
+msgid "Unmount all shares"
+msgstr "Alle shares afkoppelen bij afsluiten"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Bladwijzers bewerken"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuleren"
+
+#~ msgid "Clear"
+#~ msgstr "Wissen"
+
+#~ msgid "Label:"
+#~ msgstr "Label:"
+
+#~ msgid "Login:"
+#~ msgstr "Aanmelden:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP-adres:"
+
+#~ msgid "Group Name:"
+#~ msgstr "Groepsnaam:"
+
+#~ msgid "Toplevel Bookmarks"
+#~ msgstr "Bovenste bladwijzers"
+
+#~ msgid "Delete Bookmark"
+#~ msgstr "Bladwijzer verwijderen"
+
+#~ msgid "Add Group"
+#~ msgstr "Groep toevoegen"
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "Back"
+#~ msgstr "Terug"
+
+#~ msgid "Edit"
+#~ msgstr "Bewerken"
+
+#~ msgid "Up"
+#~ msgstr "Omhoog"
