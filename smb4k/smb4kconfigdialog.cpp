@@ -246,7 +246,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
     if (!enable && customOptionsPage) {
-        enable = customOptionsPage->customSettingsMaybeChanged();
+        enable = customOptionsPage->customSettingsChanged();
     }
 
     //

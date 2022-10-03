@@ -58,7 +58,7 @@ public:
      *
      * @returns TRUE if custom settings may have changed.
      */
-    bool customSettingsMaybeChanged();
+    bool customSettingsChanged();
 
 protected:
     /**
@@ -119,7 +119,7 @@ protected Q_SLOTS:
     void slotEnableResetButton();
 
 private:
-    bool m_maybe_changed;
+    bool m_customOptionsChanged;
 };
 
 #endif
