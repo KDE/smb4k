@@ -10,8 +10,8 @@
 #define SMB4KNETWORKOBJECT_H
 
 // application specific includes
-#include "core/smb4kglobal.h"
 #include "core/smb4kbasicnetworkitem.h"
+#include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QIcon>

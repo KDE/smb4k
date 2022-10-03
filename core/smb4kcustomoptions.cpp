@@ -218,7 +218,7 @@ void Smb4KCustomOptions::setNetworkItem(Smb4KBasicNetworkItem *networkItem)
             break;
         }
         }
-        
+
         d->changed = true;
     }
 }
@@ -465,7 +465,7 @@ void Smb4KCustomOptions::setFileSystemPort(int port)
     if (d->fileSystemPort != port) {
         d->fileSystemPort = port;
         d->changed = true;
-        
+
         switch (d->type) {
         case Share: {
             d->url.setPort(port);

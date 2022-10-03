@@ -602,17 +602,17 @@ public:
      * @param options             The options that are used to update this object
      */
     void update(Smb4KCustomOptions *options);
-    
+
     /**
      * (Re-)Set if the custom options were changed.
-     * 
+     *
      * @param changed           Set the options as changed
      */
     void setChanged(bool changed);
-    
+
     /**
      * Return if the custom options were changed.
-     * 
+     *
      * @return TRUE if the custom options were changed.
      */
     bool changed() const;
