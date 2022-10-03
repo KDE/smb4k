@@ -519,57 +519,67 @@ void Smb4KCustomOptionsManager::readCustomOptions()
 
 void Smb4KCustomOptionsManager::writeCustomOptions()
 {
-    //
-    // Set the XML file
-    //
     QFile xmlFile(dataLocation() + QDir::separator() + "custom_options.xml");
 
-    //
-    // Write the options to the file
-    //
-    if (!d->options.isEmpty()) {
-        if (xmlFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            QXmlStreamWriter xmlWriter(&xmlFile);
-            xmlWriter.setAutoFormatting(true);
-            xmlWriter.writeStartDocument();
-            xmlWriter.writeStartElement("custom_options");
-            xmlWriter.writeAttribute("version", "3.0");
+    if (d->options.isEmpty()) {
+        xmlFile.remove();
+        return;
+    }
 
-            for (const OptionsPtr &options : qAsConst(d->options)) {
-                if (options->hasOptions()) {
-                    xmlWriter.writeStartElement("options");
-                    xmlWriter.writeAttribute("type", options->type() == Host ? "host" : "share");
-                    xmlWriter.writeAttribute("profile", options->profile());
+    bool write = false;
 
-                    xmlWriter.writeTextElement("workgroup", options->workgroupName());
-                    xmlWriter.writeTextElement("url", options->url().toDisplayString());
-                    xmlWriter.writeTextElement("ip", options->ipAddress());
+    for (const OptionsPtr &options : qAsConst(d->options)) {
+        if (options->changed()) {
+            write = true;
+            break;
+        }
+    }
 
-                    xmlWriter.writeStartElement("custom");
+    if (!write) {
+        return;
+    }
 
-                    QMap<QString, QString> map = options->customOptions();
-                    QMapIterator<QString, QString> it(map);
+    if (xmlFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QXmlStreamWriter xmlWriter(&xmlFile);
+        xmlWriter.setAutoFormatting(true);
+        xmlWriter.writeStartDocument();
+        xmlWriter.writeStartElement("custom_options");
+        xmlWriter.writeAttribute("version", "3.0");
 
-                    while (it.hasNext()) {
-                        it.next();
+        for (const OptionsPtr &options : qAsConst(d->options)) {
+            if (options->hasOptions()) {
+                xmlWriter.writeStartElement("options");
+                xmlWriter.writeAttribute("type", options->type() == Host ? "host" : "share");
+                xmlWriter.writeAttribute("profile", options->profile());
 
-                        if (!it.value().isEmpty()) {
-                            xmlWriter.writeTextElement(it.key(), it.value());
-                        }
+                xmlWriter.writeTextElement("workgroup", options->workgroupName());
+                xmlWriter.writeTextElement("url", options->url().toDisplayString());
+                xmlWriter.writeTextElement("ip", options->ipAddress());
+
+                xmlWriter.writeStartElement("custom");
+
+                QMap<QString, QString> map = options->customOptions();
+                QMapIterator<QString, QString> i(map);
+
+                while (i.hasNext()) {
+                    i.next();
+
+                    if (!i.value().isEmpty()) {
+                        xmlWriter.writeTextElement(i.key(), i.value());
                     }
-
-                    xmlWriter.writeEndElement();
-                    xmlWriter.writeEndElement();
                 }
+
+                xmlWriter.writeEndElement();
+                xmlWriter.writeEndElement();
             }
 
-            xmlWriter.writeEndDocument();
-            xmlFile.close();
-        } else {
-            Smb4KNotification::openingFileFailed(xmlFile);
+            options->setChanged(false);
         }
+
+        xmlWriter.writeEndDocument();
+        xmlFile.close();
     } else {
-        xmlFile.remove();
+        Smb4KNotification::openingFileFailed(xmlFile);
     }
 }
 
@@ -645,7 +655,7 @@ void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &it
         }
         }
 
-        openCustomOptionsDialog(options);
+        openCustomOptionsDialog(options, true);
     }
 }
 
@@ -656,7 +666,6 @@ bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr &option
 
         if (dlg->exec() == QDialog::Accepted) {
             if (options->hasOptions()) {
-                // FIXME: Only write custom options if they are changed.
                 addCustomOptions(options, write);
             } else {
                 removeCustomOptions(options, write);
