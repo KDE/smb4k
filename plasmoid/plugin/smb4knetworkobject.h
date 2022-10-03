@@ -11,9 +11,7 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
-#include "core/smb4khost.h"
-#include "core/smb4kshare.h"
-#include "core/smb4kworkgroup.h"
+#include "core/smb4kbasicnetworkitem.h"
 
 // Qt includes
 #include <QIcon>
@@ -70,19 +68,9 @@ public:
     Q_ENUM(NetworkItem)
 
     /**
-     * Constructor for a workgroup.
+     * Constructor with a network item.
      */
-    explicit Smb4KNetworkObject(Smb4KWorkgroup *workgroup, QObject *parent = 0);
-
-    /**
-     * Constructor for a host.
-     */
-    explicit Smb4KNetworkObject(Smb4KHost *host, QObject *parent = 0);
-
-    /**
-     * Constructor for a share.
-     */
-    explicit Smb4KNetworkObject(Smb4KShare *share, QObject *parent = 0);
+    explicit Smb4KNetworkObject(Smb4KBasicNetworkItem *networkItem, QObject *parent = 0);
 
     /**
      * Empty constructor

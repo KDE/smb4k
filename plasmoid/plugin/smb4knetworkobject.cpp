@@ -9,6 +9,9 @@
 // application specific includes
 #include "smb4knetworkobject.h"
 #include "core/smb4kglobal.h"
+#include "core/smb4khost.h"
+#include "core/smb4kshare.h"
+#include "core/smb4kworkgroup.h"
 
 // Qt includes
 #include <QDebug>
@@ -30,46 +33,77 @@ public:
     bool inaccessible;
 };
 
-Smb4KNetworkObject::Smb4KNetworkObject(Smb4KWorkgroup *workgroup, QObject *parent)
+Smb4KNetworkObject::Smb4KNetworkObject(Smb4KBasicNetworkItem *networkItem, QObject *parent)
     : QObject(parent)
     , d(new Smb4KNetworkObjectPrivate)
 {
-    d->workgroup = workgroup->workgroupName();
-    d->url = workgroup->url();
-    d->mounted = false;
-    d->inaccessible = false;
-    d->printer = false;
-    d->isMaster = false;
-    setType(Workgroup);
-}
+    switch (networkItem->type()) {
+    case Smb4KGlobal::Workgroup: {
+        Smb4KWorkgroup *workgroup = static_cast<Smb4KWorkgroup *>(networkItem);
 
-Smb4KNetworkObject::Smb4KNetworkObject(Smb4KHost *host, QObject *parent)
-    : QObject(parent)
-    , d(new Smb4KNetworkObjectPrivate)
-{
-    d->workgroup = host->workgroupName();
-    d->url = host->url();
-    d->comment = host->comment();
-    d->mounted = false;
-    d->inaccessible = false;
-    d->printer = false;
-    d->isMaster = host->isMasterBrowser();
-    setType(Host);
-}
+        if (workgroup) {
+            d->workgroup = workgroup->workgroupName();
+            d->url = workgroup->url();
+            d->mounted = false;
+            d->inaccessible = false;
+            d->printer = false;
+            d->isMaster = false;
+            setType(Workgroup);
+        }
 
-Smb4KNetworkObject::Smb4KNetworkObject(Smb4KShare *share, QObject *parent)
-    : QObject(parent)
-    , d(new Smb4KNetworkObjectPrivate)
-{
-    d->workgroup = share->workgroupName();
-    d->url = share->url();
-    d->comment = share->comment();
-    d->mounted = share->isMounted();
-    d->inaccessible = share->isInaccessible();
-    d->printer = share->isPrinter();
-    d->isMaster = false;
-    d->mountpoint = QUrl::fromLocalFile(share->path());
-    setType(Share);
+        break;
+    }
+    case Smb4KGlobal::Host: {
+        Smb4KHost *host = static_cast<Smb4KHost *>(networkItem);
+
+        if (host) {
+            d->workgroup = host->workgroupName();
+            d->url = host->url();
+            d->comment = host->comment();
+            d->mounted = false;
+            d->inaccessible = false;
+            d->printer = false;
+            d->isMaster = host->isMasterBrowser();
+            setType(Host);
+        }
+
+        break;
+    }
+    case Smb4KGlobal::Share: {
+        Smb4KShare *share = static_cast<Smb4KShare *>(networkItem);
+
+        if (share) {
+            d->workgroup = share->workgroupName();
+            d->url = share->url();
+            d->comment = share->comment();
+            d->mounted = share->isMounted();
+            d->inaccessible = share->isInaccessible();
+            d->printer = share->isPrinter();
+            d->isMaster = false;
+            d->mountpoint = QUrl::fromLocalFile(share->path());
+            setType(Share);
+        }
+
+        break;
+    }
+    default: {
+        if (networkItem->url().toString() == "smb://") {
+            d->url = networkItem->url();
+            d->mounted = false;
+            d->inaccessible = false;
+            d->printer = false;
+            d->isMaster = false;
+            setType(Network);
+        } else {
+            d->mounted = false;
+            d->inaccessible = false;
+            d->printer = false;
+            d->isMaster = false;
+            setType(Unknown);
+        }
+        break;
+    }
+    }
 }
 
 Smb4KNetworkObject::Smb4KNetworkObject(QObject *parent)
