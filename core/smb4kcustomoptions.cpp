@@ -230,7 +230,7 @@ Smb4KGlobal::NetworkItem Smb4KCustomOptions::type() const
 
 void Smb4KCustomOptions::setWorkgroupName(const QString &workgroup)
 {
-    if (d->workgroup == workgroup) {
+    if (d->workgroup != workgroup) {
         d->workgroup = workgroup;
         d->changed = true;
     }
@@ -243,7 +243,7 @@ QString Smb4KCustomOptions::workgroupName() const
 
 void Smb4KCustomOptions::setUrl(const QUrl &url)
 {
-    if (d->url.matches(url, QUrl::None)) {
+    if (!d->url.matches(url, QUrl::None)) {
         d->url = url;
         d->changed = true;
     }
@@ -270,7 +270,7 @@ QString Smb4KCustomOptions::shareName() const
 
 void Smb4KCustomOptions::setIpAddress(const QString &ip)
 {
-    if (d->ip.toString() == ip) {
+    if (d->ip.toString() != ip) {
         d->ip.setAddress(ip);
         d->changed = true;
     }
