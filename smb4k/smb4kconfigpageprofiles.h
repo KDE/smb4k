@@ -24,7 +24,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KConfigPageProfiles(QWidget *parent = 0);
+    explicit Smb4KConfigPageProfiles(QWidget *parent = nullptr);
 
     /**
      * Destructor

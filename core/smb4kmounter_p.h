@@ -34,7 +34,7 @@ public:
      *
      * @param parent      The parent widget
      */
-    explicit Smb4KMountDialog(const SharePtr &share, const BookmarkPtr &bookmark, QWidget *parent = 0);
+    explicit Smb4KMountDialog(const SharePtr &share, const BookmarkPtr &bookmark, QWidget *parent = nullptr);
 
     /**
      * The destructor.

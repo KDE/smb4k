@@ -26,7 +26,7 @@ public:
     /**
      * The constructor
      */
-    explicit Smb4KConfigPageMounting(QWidget *parent = 0);
+    explicit Smb4KConfigPageMounting(QWidget *parent = nullptr);
 
     /**
      * The destructor

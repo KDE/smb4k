@@ -19,6 +19,7 @@
 // Qt includes
 #include <QDebug>
 #include <QMenu>
+#include <QPointer>
 
 // KDE specific includes
 #include <KConfigWidgets/KConfigDialog>
@@ -154,7 +155,7 @@ void Smb4KSystemTray::slotConfigDialog()
     KPluginFactory *configFactory = loader.factory();
 
     if (configFactory) {
-        KConfigDialog *dlg = 0;
+        QPointer<KConfigDialog> dlg = nullptr;
 
         if (associatedWidget()) {
             dlg = configFactory->create<KConfigDialog>(associatedWidget());

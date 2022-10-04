@@ -39,7 +39,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KProfileManager(QObject *parent = 0);
+    explicit Smb4KProfileManager(QObject *parent = nullptr);
 
     /**
      * Destructor

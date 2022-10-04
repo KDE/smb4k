@@ -38,7 +38,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KCustomOptionsManager(QObject *parent = 0);
+    explicit Smb4KCustomOptionsManager(QObject *parent = nullptr);
 
     /**
      * Destructor

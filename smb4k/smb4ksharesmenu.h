@@ -30,7 +30,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KSharesMenu(QObject *parent = 0);
+    explicit Smb4KSharesMenu(QObject *parent = nullptr);
 
     /**
      * Destructor

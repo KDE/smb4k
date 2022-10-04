@@ -38,7 +38,7 @@ public:
      * The constructor
      * @param parent        The parent of this item
      */
-    explicit Smb4KProfileObject(QObject *parent = 0);
+    explicit Smb4KProfileObject(QObject *parent = nullptr);
 
     /**
      * The destructor

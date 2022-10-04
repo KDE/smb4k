@@ -30,7 +30,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KConfigPageCustomOptions(QWidget *parent = 0);
+    explicit Smb4KConfigPageCustomOptions(QWidget *parent = nullptr);
 
     /**
      * Destructor

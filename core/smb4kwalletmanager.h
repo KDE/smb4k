@@ -39,7 +39,7 @@ public:
     /**
      * The constructor
      */
-    explicit Smb4KWalletManager(QObject *parent = 0);
+    explicit Smb4KWalletManager(QObject *parent = nullptr);
 
     /**
      * The destructor

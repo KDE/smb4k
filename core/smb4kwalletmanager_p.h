@@ -21,7 +21,7 @@ class Smb4KPasswordDialog : public KPasswordDialog
     Q_OBJECT
 
 public:
-    Smb4KPasswordDialog(const NetworkItemPtr &networkItem, const QMap<QString, QString> &knownLogins, QWidget *parent = 0);
+    Smb4KPasswordDialog(const NetworkItemPtr &networkItem, const QMap<QString, QString> &knownLogins, QWidget *parent = nullptr);
     virtual ~Smb4KPasswordDialog();
 
 protected Q_SLOTS:

@@ -48,7 +48,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KDeclarative(QObject *parent = 0);
+    explicit Smb4KDeclarative(QObject *parent = nullptr);
 
     /**
      * Destructor
@@ -127,7 +127,7 @@ public:
      *
      * @param object      The network object
      */
-    Q_INVOKABLE void lookup(Smb4KNetworkObject *object = 0);
+    Q_INVOKABLE void lookup(Smb4KNetworkObject *object = nullptr);
 
     /**
      * This function takes a QUrl object, looks up the respective network object

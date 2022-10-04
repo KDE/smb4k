@@ -279,7 +279,7 @@ void Smb4KDeclarative::unmountAll()
 
 Smb4KNetworkObject *Smb4KDeclarative::findMountedShare(const QUrl &url, bool exactMatch)
 {
-    Smb4KNetworkObject *object = 0;
+    Smb4KNetworkObject *object = nullptr;
 
     if (url.isValid()) {
         for (Smb4KNetworkObject *obj : qAsConst(d->mountedObjects)) {

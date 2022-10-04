@@ -34,7 +34,7 @@ public:
     /**
      * The constructor
      */
-    explicit Smb4KHardwareInterface(QObject *parent = 0);
+    explicit Smb4KHardwareInterface(QObject *parent = nullptr);
 
     /**
      * The destructor

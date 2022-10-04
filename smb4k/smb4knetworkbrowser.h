@@ -31,7 +31,7 @@ public:
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KNetworkBrowser(QWidget *parent = 0);
+    explicit Smb4KNetworkBrowser(QWidget *parent = nullptr);
 
     /**
      * The destructor

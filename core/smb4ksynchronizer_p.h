@@ -32,7 +32,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KSyncJob(QObject *parent = 0);
+    explicit Smb4KSyncJob(QObject *parent = nullptr);
 
     /**
      * Destructor
@@ -122,7 +122,7 @@ public:
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KSynchronizationDialog(const SharePtr &share, QWidget *parent = 0);
+    explicit Smb4KSynchronizationDialog(const SharePtr &share, QWidget *parent = nullptr);
 
     /**
      * The destructor

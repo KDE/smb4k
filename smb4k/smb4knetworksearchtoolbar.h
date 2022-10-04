@@ -24,7 +24,7 @@ public:
     /**
      * Constructor
      */
-    Smb4KNetworkSearchToolBar(QWidget *parent = 0);
+    Smb4KNetworkSearchToolBar(QWidget *parent = nullptr);
 
     /**
      * Destructor

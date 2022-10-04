@@ -253,7 +253,7 @@ public:
     /**
      * Constructor
      */
-    Smb4KPreviewDialog(const SharePtr &share, QWidget *parent = 0);
+    Smb4KPreviewDialog(const SharePtr &share, QWidget *parent = nullptr);
 
     /**
      * Destructor
@@ -349,7 +349,7 @@ public:
     /**
      * Constructor
      */
-    Smb4KPrintDialog(const SharePtr &share, QWidget *parent = 0);
+    Smb4KPrintDialog(const SharePtr &share, QWidget *parent = nullptr);
 
     /**
      * Destructor

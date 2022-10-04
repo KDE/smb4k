@@ -121,7 +121,7 @@ public:
      *
      * @param parent      The parent of this dialog.
      */
-    explicit Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QWidget *parent = 0);
+    explicit Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QWidget *parent = nullptr);
 
     /**
      * The destructor.

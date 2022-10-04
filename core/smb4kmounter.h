@@ -50,7 +50,7 @@ public:
     /**
      * The constructor.
      */
-    explicit Smb4KMounter(QObject *parent = 0);
+    explicit Smb4KMounter(QObject *parent = nullptr);
 
     /**
      * The destructor.

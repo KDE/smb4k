@@ -24,7 +24,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KCustomOptionsDialog(const OptionsPtr &options, QWidget *parent = 0);
+    explicit Smb4KCustomOptionsDialog(const OptionsPtr &options, QWidget *parent = nullptr);
 
     /**
      * Destructor

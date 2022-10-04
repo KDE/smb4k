@@ -33,7 +33,7 @@ public:
     /**
      * The constructor
      */
-    explicit Smb4KClient(QObject *parent = 0);
+    explicit Smb4KClient(QObject *parent = nullptr);
 
     /**
      * The destructor

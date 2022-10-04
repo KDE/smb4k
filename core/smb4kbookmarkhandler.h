@@ -42,7 +42,7 @@ public:
     /**
      * The constructor.
      */
-    explicit Smb4KBookmarkHandler(QObject *parent = 0);
+    explicit Smb4KBookmarkHandler(QObject *parent = nullptr);
 
     /**
      * The destructor.

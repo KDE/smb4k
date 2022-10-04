@@ -121,7 +121,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KHomesUserDialog(const SharePtr &share, QWidget *parent = 0);
+    explicit Smb4KHomesUserDialog(const SharePtr &share, QWidget *parent = nullptr);
 
     /**
      * Destructor

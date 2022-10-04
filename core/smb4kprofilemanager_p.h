@@ -29,7 +29,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KProfileMigrationDialog(const QStringList &from, const QStringList &to, QWidget *parent = 0);
+    explicit Smb4KProfileMigrationDialog(const QStringList &from, const QStringList &to, QWidget *parent = nullptr);
 
     /**
      * Destructor

@@ -63,7 +63,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
     pixmap->setPixmap(preferencesPixmap);
     pixmap->setAlignment(Qt::AlignCenter);
 
-    QLabel *description = 0;
+    QLabel *description = nullptr;
 
     switch (m_options->type()) {
     case Host: {

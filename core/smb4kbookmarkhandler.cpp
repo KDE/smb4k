@@ -59,7 +59,7 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
     //
     // Init the bookmark editor
     //
-    d->editor = 0;
+    d->editor = nullptr;
 }
 
 Smb4KBookmarkHandler::~Smb4KBookmarkHandler()
@@ -519,7 +519,7 @@ void Smb4KBookmarkHandler::editBookmarks()
     // Delete the editor after use
     //
     delete d->editor;
-    d->editor = 0;
+    d->editor = nullptr;
 }
 
 void Smb4KBookmarkHandler::update() const

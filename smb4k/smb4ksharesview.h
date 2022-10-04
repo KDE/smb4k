@@ -33,7 +33,7 @@ public:
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KSharesView(QWidget *parent = 0);
+    explicit Smb4KSharesView(QWidget *parent = nullptr);
 
     /**
      * The destructor.

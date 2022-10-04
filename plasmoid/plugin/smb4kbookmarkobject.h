@@ -52,17 +52,17 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KBookmarkObject(Smb4KBookmark *bookmark, QObject *parent = 0);
+    explicit Smb4KBookmarkObject(Smb4KBookmark *bookmark, QObject *parent = nullptr);
 
     /**
      * Constructor for a bookmark group
      */
-    explicit Smb4KBookmarkObject(const QString &categoryName, QObject *parent = 0);
+    explicit Smb4KBookmarkObject(const QString &categoryName, QObject *parent = nullptr);
 
     /**
      * Empty constructor
      */
-    explicit Smb4KBookmarkObject(QObject *parent = 0);
+    explicit Smb4KBookmarkObject(QObject *parent = nullptr);
 
     /**
      * Destructor

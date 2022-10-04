@@ -479,7 +479,7 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
     // First, check if a preview dialog has already been set up for this share
     // and reuse it, if possible.
     //
-    QPointer<Smb4KPreviewDialog> dlg = 0;
+    QPointer<Smb4KPreviewDialog> dlg = nullptr;
 
     for (Smb4KPreviewDialog *p : qAsConst(d->previewDialogs)) {
         if (share == p->share()) {
@@ -528,7 +528,7 @@ void Smb4KClient::openPrintDialog(const SharePtr &share)
     // First, check if a print dialog has already been set up for this share
     // and reuse it, if possible.
     //
-    QPointer<Smb4KPrintDialog> dlg = 0;
+    QPointer<Smb4KPrintDialog> dlg = nullptr;
 
     for (Smb4KPrintDialog *p : qAsConst(d->printDialogs)) {
         if (share == p->share()) {

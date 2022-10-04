@@ -70,12 +70,12 @@ public:
     /**
      * Constructor with a network item.
      */
-    explicit Smb4KNetworkObject(Smb4KBasicNetworkItem *networkItem, QObject *parent = 0);
+    explicit Smb4KNetworkObject(Smb4KBasicNetworkItem *networkItem, QObject *parent = nullptr);
 
     /**
      * Empty constructor
      */
-    explicit Smb4KNetworkObject(QObject *parent = 0);
+    explicit Smb4KNetworkObject(QObject *parent = nullptr);
 
     /**
      * Destructor

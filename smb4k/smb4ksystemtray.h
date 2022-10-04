@@ -27,7 +27,7 @@ public:
      *
      * @param parent        The parent widget of the system tray window
      */
-    explicit Smb4KSystemTray(QWidget *parent = 0);
+    explicit Smb4KSystemTray(QWidget *parent = nullptr);
 
     /**
      * The destructor.

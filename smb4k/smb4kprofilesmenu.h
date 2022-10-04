@@ -23,7 +23,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KProfilesMenu(QObject *parent = 0);
+    explicit Smb4KProfilesMenu(QObject *parent = nullptr);
 
     /**
      * Destructor

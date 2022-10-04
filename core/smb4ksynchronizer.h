@@ -31,7 +31,7 @@ public:
     /**
      * The constructor
      */
-    explicit Smb4KSynchronizer(QObject *parent = 0);
+    explicit Smb4KSynchronizer(QObject *parent = nullptr);
 
     /**
      * The destructor

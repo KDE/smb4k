@@ -30,7 +30,7 @@ public:
     /**
      * Constructor
      */
-    Smb4KNetworkBrowserDockWidget(const QString &title, QWidget *parent = 0);
+    Smb4KNetworkBrowserDockWidget(const QString &title, QWidget *parent = nullptr);
 
     /**
      * Destructor

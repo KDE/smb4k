@@ -28,7 +28,7 @@ public:
      *
      * @param parent        The parent widget
      */
-    explicit Smb4KConfigPageNetwork(QWidget *parent = 0);
+    explicit Smb4KConfigPageNetwork(QWidget *parent = nullptr);
 
     /**
      * The destructor

@@ -43,7 +43,7 @@ public:
     /**
      * The constructor
      */
-    explicit Smb4KHomesSharesHandler(QObject *parent = 0);
+    explicit Smb4KHomesSharesHandler(QObject *parent = nullptr);
 
     /**
      * The destructor
