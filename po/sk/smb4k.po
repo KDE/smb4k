@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"POT-Creation-Date: 2022-10-05 00:46+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -43,7 +43,7 @@ msgstr "Bod pripojenia %1 je neplatný."
 msgid "The unmount process could not be started."
 msgstr "Proces odpojenia nie je možné spustiť."
 
-#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -670,7 +670,7 @@ msgstr "P&rerušiť"
 msgid "&Search"
 msgstr "&Hľadať"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Otvoriť dialóg pripojenia"
