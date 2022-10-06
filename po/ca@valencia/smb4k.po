@@ -87,7 +87,7 @@ msgstr "Donant"
 #: smb4k/smb4k_shell.rc:4
 #, kde-format
 msgid "&File"
-msgstr "&Fitxer"
+msgstr "Fi&txer"
 
 #. i18n: ectx: Menu (network)
 #: smb4k/smb4k_shell.rc:9
@@ -490,7 +490,7 @@ msgstr "Sumes de verificació"
 #: smb4k/smb4kconfigpagesynchronization.cpp:578
 #, kde-format
 msgid "Miscellaneous"
-msgstr "Miscelànea"
+msgstr "Miscel·lània"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
@@ -660,7 +660,7 @@ msgstr "Bu&sca"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr "&Obri el diàleg de muntatge"
+msgstr "O&bri el diàleg de muntatge"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:180
 #, kde-format
