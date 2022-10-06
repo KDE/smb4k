@@ -150,7 +150,7 @@ void Smb4KNetworkObject::setType(NetworkItem type)
         break;
     }
     }
-    emit changed();
+    Q_EMIT changed();
 }
 
 QString Smb4KNetworkObject::workgroupName() const
@@ -161,7 +161,7 @@ QString Smb4KNetworkObject::workgroupName() const
 void Smb4KNetworkObject::setWorkgroupName(const QString &name)
 {
     d->workgroup = name;
-    emit changed();
+    Q_EMIT changed();
 }
 
 QString Smb4KNetworkObject::hostName() const
@@ -172,7 +172,7 @@ QString Smb4KNetworkObject::hostName() const
 void Smb4KNetworkObject::setHostName(const QString &name)
 {
     d->url.setHost(name);
-    emit changed();
+    Q_EMIT changed();
 }
 
 bool Smb4KNetworkObject::isMasterBrowser() const
@@ -184,7 +184,7 @@ void Smb4KNetworkObject::setMasterBrowser(bool master)
 {
     if (type() == Host) {
         d->isMaster = master;
-        emit changed();
+        Q_EMIT changed();
     }
 }
 
@@ -209,7 +209,7 @@ QString Smb4KNetworkObject::shareName() const
 void Smb4KNetworkObject::setShareName(const QString &name)
 {
     d->url.setPath(name);
-    emit changed();
+    Q_EMIT changed();
 }
 
 QString Smb4KNetworkObject::name() const
@@ -245,7 +245,7 @@ QString Smb4KNetworkObject::comment() const
 void Smb4KNetworkObject::setComment(const QString &comment)
 {
     d->comment = comment;
-    emit changed();
+    Q_EMIT changed();
 }
 
 QUrl Smb4KNetworkObject::url() const
@@ -281,7 +281,7 @@ QUrl Smb4KNetworkObject::parentUrl() const
 void Smb4KNetworkObject::setUrl(const QUrl &url)
 {
     d->url = url;
-    emit changed();
+    Q_EMIT changed();
 }
 
 bool Smb4KNetworkObject::isMounted() const
@@ -292,7 +292,7 @@ bool Smb4KNetworkObject::isMounted() const
 void Smb4KNetworkObject::setMounted(bool mounted)
 {
     d->mounted = mounted;
-    emit changed();
+    Q_EMIT changed();
 }
 
 void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
@@ -350,7 +350,7 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
         d->type = Network;
     }
 
-    emit changed();
+    Q_EMIT changed();
 }
 
 bool Smb4KNetworkObject::isPrinter() const
@@ -361,7 +361,7 @@ bool Smb4KNetworkObject::isPrinter() const
 void Smb4KNetworkObject::setPrinter(bool printer)
 {
     d->printer = printer;
-    emit changed();
+    Q_EMIT changed();
 }
 
 QUrl Smb4KNetworkObject::mountpoint() const
@@ -372,7 +372,7 @@ QUrl Smb4KNetworkObject::mountpoint() const
 void Smb4KNetworkObject::setMountpoint(const QUrl &mountpoint)
 {
     d->mountpoint = mountpoint;
-    emit changed();
+    Q_EMIT changed();
 }
 
 bool Smb4KNetworkObject::isInaccessible() const

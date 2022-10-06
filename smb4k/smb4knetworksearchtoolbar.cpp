@@ -180,7 +180,7 @@ void Smb4KNetworkSearchToolBar::clearSearch()
     //
     // Emit the clearSearchResults() signal
     //
-    emit clearSearchResults();
+    Q_EMIT clearSearchResults();
 }
 
 void Smb4KNetworkSearchToolBar::setSearchResults(const QList<SharePtr> &list)
@@ -266,7 +266,7 @@ void Smb4KNetworkSearchToolBar::slotReturnKeyPressed()
         //
         // Emit the search signal
         //
-        emit search(comboBox->currentText());
+        Q_EMIT search(comboBox->currentText());
     }
 }
 
@@ -293,13 +293,13 @@ void Smb4KNetworkSearchToolBar::slotSearchActionTriggered()
             //
             // Emit the search signal
             //
-            emit search(comboBox->currentText());
+            Q_EMIT search(comboBox->currentText());
         }
     } else {
         //
         // Emit the abort signal
         //
-        emit abort();
+        Q_EMIT abort();
     }
 }
 
@@ -313,12 +313,12 @@ void Smb4KNetworkSearchToolBar::slotCloseButtonPressed()
     //
     // Emit the abort signal
     //
-    emit abort();
+    Q_EMIT abort();
 
     //
     // Emit the close signal
     //
-    emit closeSearchBar();
+    Q_EMIT closeSearchBar();
 }
 
 void Smb4KNetworkSearchToolBar::slotDownActionTriggered()
@@ -332,7 +332,7 @@ void Smb4KNetworkSearchToolBar::slotDownActionTriggered()
         //
         // Emit the jumpToResult() signal
         //
-        emit jumpToResult(url);
+        Q_EMIT jumpToResult(url);
     }
 }
 
@@ -347,7 +347,7 @@ void Smb4KNetworkSearchToolBar::slotUpActionTriggered()
         //
         // Emit the jumpToResult() signal
         //
-        emit jumpToResult(url);
+        Q_EMIT jumpToResult(url);
     }
 }
 

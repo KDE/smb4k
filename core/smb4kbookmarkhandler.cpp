@@ -215,7 +215,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
 
         if (!existingBookmark) {
             d->bookmarks << bookmark;
-            emit bookmarkAdded(bookmark);
+            Q_EMIT bookmarkAdded(bookmark);
         }
     }
 
@@ -223,7 +223,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
     // Save the bookmark list and emit the updated() signal
     //
     writeBookmarkList();
-    emit updated();
+    Q_EMIT updated();
 }
 
 void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
@@ -237,7 +237,7 @@ void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
                     == 0
                 && QString::compare(bookmark->categoryName(), d->bookmarks.at(i)->categoryName(), Qt::CaseInsensitive) == 0) {
                 BookmarkPtr bookmark = d->bookmarks.takeAt(i);
-                emit bookmarkRemoved(bookmark);
+                Q_EMIT bookmarkRemoved(bookmark);
                 bookmark.clear();
                 break;
             }
@@ -245,7 +245,7 @@ void Smb4KBookmarkHandler::removeBookmark(const BookmarkPtr &bookmark)
 
         // Write the list to the bookmarks file.
         writeBookmarkList();
-        emit updated();
+        Q_EMIT updated();
     }
 }
 
@@ -258,14 +258,14 @@ void Smb4KBookmarkHandler::removeCategory(const QString &name)
 
         if ((!Smb4KSettings::useProfiles() || Smb4KSettings::activeProfile() == bookmark->profile())
             || QString::compare(bookmark->categoryName(), name, Qt::CaseInsensitive) == 0) {
-            emit bookmarkRemoved(bookmark);
+            Q_EMIT bookmarkRemoved(bookmark);
             it.remove();
         }
     }
 
     // Write the list to the bookmarks file.
     writeBookmarkList();
-    emit updated();
+    Q_EMIT updated();
 }
 
 void Smb4KBookmarkHandler::writeBookmarkList()
@@ -393,7 +393,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
         }
     }
 
-    emit updated();
+    Q_EMIT updated();
 }
 
 BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)

@@ -179,7 +179,7 @@ void Smb4KConfigPageAuthentication::loadLoginCredentials()
     //
     // Reset the changed flag, since we are (re)loading the information
     //
-    emit walletEntriesModified();
+    Q_EMIT walletEntriesModified();
 
     //
     // Get the list widget
@@ -380,7 +380,7 @@ void Smb4KConfigPageAuthentication::slotSaveButtonClicked(bool checked)
     // Tell the program that the authentication information may be changed
     // and emit the appropriate signal
     //
-    emit walletEntriesModified();
+    Q_EMIT walletEntriesModified();
 }
 
 void Smb4KConfigPageAuthentication::slotEditButtonClicked(bool checked)
@@ -416,7 +416,7 @@ void Smb4KConfigPageAuthentication::slotEditButtonClicked(bool checked)
                 authInfo->setUserName(dlg.username());
                 authInfo->setPassword(dlg.password());
 
-                emit walletEntriesModified();
+                Q_EMIT walletEntriesModified();
             }
         }
     }
@@ -469,7 +469,7 @@ void Smb4KConfigPageAuthentication::slotRemoveButtonClicked(bool checked)
     // Tell the program that the authentication information may be changed
     // and emit the appropriate signal
     //
-    emit walletEntriesModified();
+    Q_EMIT walletEntriesModified();
 }
 
 void Smb4KConfigPageAuthentication::slotClearButtonClicked(bool checked)
@@ -509,7 +509,7 @@ void Smb4KConfigPageAuthentication::slotClearButtonClicked(bool checked)
     // Tell the program that the authentication information may be changed
     // and emit the appropriate signal
     //
-    emit walletEntriesModified();
+    Q_EMIT walletEntriesModified();
 }
 
 void Smb4KConfigPageAuthentication::slotResetButtonClicked(bool checked)
@@ -520,7 +520,7 @@ void Smb4KConfigPageAuthentication::slotResetButtonClicked(bool checked)
         loadLoginCredentials();
     }
 
-    emit walletEntriesModified();
+    Q_EMIT walletEntriesModified();
 
     findChild<QPushButton *>("clear_button")->setEnabled((findChild<QListWidget *>("WalletEntriesWidget")->count() != 0));
 }

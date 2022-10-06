@@ -302,7 +302,7 @@ void Smb4KMounter::import(bool checkInaccessible)
             // Remove the share from the global list and notify the program
             //
             removeMountedShare(share);
-            emit unmounted(unmountedShare);
+            Q_EMIT unmounted(unmountedShare);
 
             //
             // Report the unmounted share to the user if it is a single one
@@ -330,7 +330,7 @@ void Smb4KMounter::import(bool checkInaccessible)
         //
         // Tell the program the list of mounted shares changed
         //
-        emit mountedSharesListChanged();
+        Q_EMIT mountedSharesListChanged();
     } else {
         //
         // Reset the number of newly unmounted shares
@@ -435,7 +435,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
             OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(KIO::upUrl(share->url()));
 
             if (options && options->wolSendBeforeMount()) {
-                emit aboutToStart(WakeUp);
+                Q_EMIT aboutToStart(WakeUp);
 
                 QUdpSocket *socket = new QUdpSocket(this);
                 QHostAddress addr;
@@ -476,7 +476,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
                     wait(250);
                 }
 
-                emit finished(WakeUp);
+                Q_EMIT finished(WakeUp);
             }
         }
 
@@ -546,7 +546,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         //
         // Emit the aboutToStart() signal
         //
-        emit aboutToStart(MountShare);
+        Q_EMIT aboutToStart(MountShare);
 
         //
         // Create the mount action
@@ -627,7 +627,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         //
         // Emit the finished() signal
         //
-        emit finished(MountShare);
+        Q_EMIT finished(MountShare);
     }
 }
 
@@ -722,7 +722,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
         //
         // Emit the aboutToStart() signal
         //
-        emit aboutToStart(UnmountShare);
+        Q_EMIT aboutToStart(UnmountShare);
 
         //
         // Create the unmount action
@@ -783,7 +783,7 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
         //
         // Emit the finished() signal
         //
-        emit finished(UnmountShare);
+        Q_EMIT finished(UnmountShare);
     }
 }
 
@@ -928,7 +928,7 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
         if (d->checkTimeout >= 2500 && d->importedShares.isEmpty()) {
             for (const SharePtr &share : mountedSharesList()) {
                 check(share);
-                emit updated(share);
+                Q_EMIT updated(share);
             }
 
             d->checkTimeout = 0;
@@ -1923,7 +1923,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
             SharePtr updatedShare = findShareByPath(importedShare->path());
 
             if (updatedShare) {
-                emit updated(updatedShare);
+                Q_EMIT updated(updatedShare);
             }
 
             importedShare.clear();
@@ -1951,7 +1951,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
                 // Tell the program and the user that the share was mounted. Also, reset the
                 // counter of newly mounted shares, if necessary.
                 d->newlyMounted += 1;
-                emit mounted(importedShare);
+                Q_EMIT mounted(importedShare);
 
                 if (!isRunning() && d->firstImportDone && d->importedShares.isEmpty() && d->newlyMounted == 1) {
                     Smb4KNotification::shareMounted(importedShare);
@@ -1967,7 +1967,7 @@ void Smb4KMounter::slotStatResult(KJob *job)
                     }
                 });
 
-                emit mountedSharesListChanged();
+                Q_EMIT mountedSharesListChanged();
             } else {
                 importedShare.clear();
             }

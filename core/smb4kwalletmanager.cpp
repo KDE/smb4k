@@ -334,7 +334,7 @@ bool Smb4KWalletManager::init()
         }
     }
 
-    emit initialized();
+    Q_EMIT initialized();
 
     return (d->wallet && d->wallet->isOpen());
 }

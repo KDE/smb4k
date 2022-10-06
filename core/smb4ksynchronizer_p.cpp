@@ -405,10 +405,10 @@ void Smb4KSyncJob::slotStartSynchronization()
     connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(slotProcessFinished(int, QProcess::ExitStatus)));
 
     // Start the synchronization process
-    emit aboutToStart(m_dest.path());
+    Q_EMIT aboutToStart(m_dest.path());
 
     // Send description to the GUI
-    emit description(this, i18n("Synchronizing"), qMakePair(i18n("Source"), source), qMakePair(i18n("Destination"), destination));
+    Q_EMIT description(this, i18n("Synchronizing"), qMakePair(i18n("Source"), source), qMakePair(i18n("Destination"), destination));
 
     // Dummy to show 0 %
     emitPercent(0, 100);
@@ -497,7 +497,7 @@ void Smb4KSyncJob::slotReadStandardOutput()
             dest_url.setPath(QDir::cleanPath(dest_url.path() + '/' + file));
 
             // Send description to the GUI
-            emit description(this, i18n("Synchronizing"), qMakePair(i18n("Source"), src_url.path()), qMakePair(i18n("Destination"), dest_url.path()));
+            Q_EMIT description(this, i18n("Synchronizing"), qMakePair(i18n("Source"), src_url.path()), qMakePair(i18n("Destination"), dest_url.path()));
         }
     }
 }
@@ -542,7 +542,7 @@ void Smb4KSyncJob::slotProcessFinished(int, QProcess::ExitStatus status)
 
     // Finish job
     emitResult();
-    emit finished(m_dest.path());
+    Q_EMIT finished(m_dest.path());
 }
 
 Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(const SharePtr &share, QWidget *parent)

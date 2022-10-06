@@ -154,7 +154,7 @@ void Smb4KHardwareInterface::checkOnlineState(bool emitSignal)
         d->systemOnline = online;
 
         if (emitSignal) {
-            emit onlineStateChanged(d->systemOnline);
+            Q_EMIT onlineStateChanged(d->systemOnline);
         }
     }
 }
@@ -195,11 +195,11 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent * /*e*/)
     }
 
     if (!d->mountPoints.isEmpty()) {
-        emit networkShareRemoved();
+        Q_EMIT networkShareRemoved();
     }
 
     if (!mountPointList.isEmpty()) {
-        emit networkShareAdded();
+        Q_EMIT networkShareAdded();
     }
 
     d->mountPoints.clear();
@@ -222,14 +222,14 @@ void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
     if (networkShare && (networkShare->type() == Solid::NetworkShare::Cifs || networkShare->type() == Solid::NetworkShare::Smb3)) {
 #endif
         d->udis << udi;
-        emit networkShareAdded();
+        Q_EMIT networkShareAdded();
     }
 }
 
 void Smb4KHardwareInterface::slotDeviceRemoved(const QString &udi)
 {
     if (d->udis.contains(udi)) {
-        emit networkShareRemoved();
+        Q_EMIT networkShareRemoved();
         d->udis.removeOne(udi);
     }
 }

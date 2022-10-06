@@ -456,7 +456,7 @@ void Smb4KBookmarkMenu::slotEditActionTriggered(bool /*checked*/)
 
 void Smb4KBookmarkMenu::slotAddActionTriggered(bool /*checked*/)
 {
-    emit addBookmark();
+    Q_EMIT addBookmark();
 }
 
 void Smb4KBookmarkMenu::slotMountActionTriggered(QAction *action)

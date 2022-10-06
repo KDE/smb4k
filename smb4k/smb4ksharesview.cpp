@@ -136,7 +136,7 @@ void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
     if (!item && !selectedItems().isEmpty()) {
         clearSelection();
         setCurrentItem(0);
-        emit itemPressed(currentItem());
+        Q_EMIT itemPressed(currentItem());
     }
 
     QListWidget::mousePressEvent(e);
@@ -196,7 +196,7 @@ void Smb4KSharesView::dropEvent(QDropEvent *e)
             e->ignore();
         } else {
             e->acceptProposedAction();
-            emit acceptedDropEvent(item, e);
+            Q_EMIT acceptedDropEvent(item, e);
             e->accept();
         }
     } else {

@@ -36,7 +36,7 @@ QString Smb4KProfileObject::profileName() const
 void Smb4KProfileObject::setProfileName(const QString &profileName)
 {
     d->profileName = profileName;
-    emit changed();
+    Q_EMIT changed();
 }
 
 bool Smb4KProfileObject::isActiveProfile() const
@@ -47,5 +47,5 @@ bool Smb4KProfileObject::isActiveProfile() const
 void Smb4KProfileObject::setActiveProfile(bool active)
 {
     d->activeProfile = active;
-    emit changed();
+    Q_EMIT changed();
 }

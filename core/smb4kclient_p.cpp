@@ -2071,7 +2071,7 @@ void Smb4KPreviewDialog::slotClosingDialog()
     //
     // Emit the aboutToClose() signal
     //
-    emit aboutToClose(this);
+    Q_EMIT aboutToClose(this);
 
     //
     // Close the dialog
@@ -2084,9 +2084,9 @@ void Smb4KPreviewDialog::slotReloadActionTriggered()
     KDualAction *reloadAction = findChild<KDualAction *>();
 
     if (reloadAction->isActive()) {
-        emit requestAbort();
+        Q_EMIT requestAbort();
     } else {
-        emit requestPreview(m_currentItem);
+        Q_EMIT requestPreview(m_currentItem);
     }
 }
 
@@ -2115,7 +2115,7 @@ void Smb4KPreviewDialog::slotUpActionTriggered()
     //
     // Emit the requestPreview() signal
     //
-    emit requestPreview(m_currentItem);
+    Q_EMIT requestPreview(m_currentItem);
 }
 
 void Smb4KPreviewDialog::slotUrlActivated(const QUrl &url)
@@ -2143,7 +2143,7 @@ void Smb4KPreviewDialog::slotUrlActivated(const QUrl &url)
     //
     // Emit the requestPreview() signal
     //
-    emit requestPreview(m_currentItem);
+    Q_EMIT requestPreview(m_currentItem);
 }
 
 void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
@@ -2159,7 +2159,7 @@ void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
         for (const FilePtr &f : qAsConst(m_listing)) {
             if (item->data(Qt::UserRole).toUrl().matches(f->url(), QUrl::None)) {
                 m_currentItem = f;
-                emit requestPreview(m_currentItem);
+                Q_EMIT requestPreview(m_currentItem);
                 break;
             }
         }
@@ -2168,7 +2168,7 @@ void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
 
 void Smb4KPreviewDialog::slotInitializePreview()
 {
-    emit requestPreview(m_currentItem);
+    Q_EMIT requestPreview(m_currentItem);
 }
 
 void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr> &list)
@@ -2489,12 +2489,12 @@ void Smb4KPrintDialog::slotPrintButtonClicked()
         // Emit the printFile() signal
         //
         QSpinBox *copies = findChild<QSpinBox *>();
-        emit printFile(m_share, m_fileItem, copies->value());
+        Q_EMIT printFile(m_share, m_fileItem, copies->value());
 
         //
         // Emit the aboutToClose() signal
         //
-        emit aboutToClose(this);
+        Q_EMIT aboutToClose(this);
 
         //
         // Close the print dialog
@@ -2513,7 +2513,7 @@ void Smb4KPrintDialog::slotCancelButtonClicked()
     //
     // Emit the aboutToClose() signal
     //
-    emit aboutToClose(this);
+    Q_EMIT aboutToClose(this);
 
     //
     // Reject the dialog

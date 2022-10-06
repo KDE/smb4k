@@ -223,7 +223,7 @@ void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
         }
 
         m_customOptionsChanged = options->changed();
-        emit customSettingsModified();
+        Q_EMIT customSettingsModified();
     }
 }
 
@@ -258,7 +258,7 @@ void Smb4KConfigPageCustomOptions::slotRemoveButtonClicked(bool checked)
 
             delete item;
             m_customOptionsChanged = true;
-            emit customSettingsModified();
+            Q_EMIT customSettingsModified();
         }
     }
 
@@ -289,7 +289,7 @@ void Smb4KConfigPageCustomOptions::slotClearButtonClicked(bool checked)
         }
 
         m_customOptionsChanged = true;
-        emit customSettingsModified();
+        Q_EMIT customSettingsModified();
     }
 
     findChild<QPushButton *>("clear_button")->setEnabled(optionsListWidget->count() != 0);
@@ -307,7 +307,7 @@ void Smb4KConfigPageCustomOptions::slotResetButtonClicked(bool checked)
     }
 
     m_customOptionsChanged = false;
-    emit customSettingsModified();
+    Q_EMIT customSettingsModified();
 
     findChild<QPushButton *>("clear_button")->setEnabled(optionsListWidget->count() != 0);
 }

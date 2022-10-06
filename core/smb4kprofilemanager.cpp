@@ -62,12 +62,12 @@ void Smb4KProfileManager::setActiveProfile(const QString &name)
 
     if (d->useProfiles) {
         if (name != d->activeProfile) {
-            emit aboutToChangeProfile();
+            Q_EMIT aboutToChangeProfile();
             change = true;
         }
     } else {
         if (!d->activeProfile.isEmpty()) {
-            emit aboutToChangeProfile();
+            Q_EMIT aboutToChangeProfile();
             change = true;
         }
     }
@@ -78,7 +78,7 @@ void Smb4KProfileManager::setActiveProfile(const QString &name)
     if (change) {
         d->activeProfile = d->useProfiles ? name : QString();
         Smb4KSettings::setActiveProfile(d->activeProfile);
-        emit activeProfileChanged(d->activeProfile);
+        Q_EMIT activeProfileChanged(d->activeProfile);
     }
 }
 
@@ -125,7 +125,7 @@ void Smb4KProfileManager::migrateProfiles(const QList<QPair<QString, QString>> &
                 Smb4KBookmarkHandler::self()->migrateProfile(from, to);
                 Smb4KCustomOptionsManager::self()->migrateProfile(from, to);
                 Smb4KHomesSharesHandler::self()->migrateProfile(from, to);
-                emit migratedProfile(from, to);
+                Q_EMIT migratedProfile(from, to);
 
                 // In case the active profile was modified, rename it according
                 // the value passed.
@@ -138,13 +138,13 @@ void Smb4KProfileManager::migrateProfiles(const QList<QPair<QString, QString>> &
                     Smb4KBookmarkHandler::self()->migrateProfile(d->profiles.at(j), to);
                     Smb4KCustomOptionsManager::self()->migrateProfile(d->profiles.at(j), to);
                     Smb4KHomesSharesHandler::self()->migrateProfile(d->profiles.at(j), to);
-                    emit migratedProfile(d->profiles.at(i), to);
+                    Q_EMIT migratedProfile(d->profiles.at(i), to);
                 }
             }
         }
 
         Smb4KSettings::setProfilesList(d->profiles);
-        emit profilesListChanged(d->profiles);
+        Q_EMIT profilesListChanged(d->profiles);
     }
 }
 
@@ -191,7 +191,7 @@ void Smb4KProfileManager::removeProfiles(const QStringList &list)
             Smb4KBookmarkHandler::self()->removeProfile(name);
             Smb4KCustomOptionsManager::self()->removeProfile(name);
             Smb4KHomesSharesHandler::self()->removeProfile(name);
-            emit removedProfile(name);
+            Q_EMIT removedProfile(name);
 
             // Set a new active profile if the user removed the current one.
             if (QString::compare(name, d->activeProfile, Qt::CaseSensitive) == 0) {
@@ -200,7 +200,7 @@ void Smb4KProfileManager::removeProfiles(const QStringList &list)
         }
 
         Smb4KSettings::setProfilesList(d->profiles);
-        emit profilesListChanged(d->profiles);
+        Q_EMIT profilesListChanged(d->profiles);
     }
 }
 
@@ -213,7 +213,7 @@ void Smb4KProfileManager::slotConfigChanged()
     //
     if (d->useProfiles != Smb4KSettings::useProfiles()) {
         d->useProfiles = Smb4KSettings::useProfiles();
-        emit profileUsageChanged(d->useProfiles);
+        Q_EMIT profileUsageChanged(d->useProfiles);
         usageChanged = true;
     }
 
@@ -222,7 +222,7 @@ void Smb4KProfileManager::slotConfigChanged()
     //
     if (d->profiles != Smb4KSettings::profilesList()) {
         d->profiles = Smb4KSettings::profilesList();
-        emit profilesListChanged(d->profiles);
+        Q_EMIT profilesListChanged(d->profiles);
     }
 
     //

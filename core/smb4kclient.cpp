@@ -87,7 +87,7 @@ void Smb4KClient::lookupDomains()
 
         if (!wakeOnLanEntries.isEmpty()) {
             NetworkItemPtr item = NetworkItemPtr(new Smb4KBasicNetworkItem());
-            emit aboutToStart(item, WakeUp);
+            Q_EMIT aboutToStart(item, WakeUp);
 
             QUdpSocket *socket = new QUdpSocket(this);
 
@@ -132,7 +132,7 @@ void Smb4KClient::lookupDomains()
                 wait(250);
             }
 
-            emit finished(item, WakeUp);
+            Q_EMIT finished(item, WakeUp);
             item.clear();
         }
     }
@@ -142,7 +142,7 @@ void Smb4KClient::lookupDomains()
     //
     NetworkItemPtr networkItem = NetworkItemPtr(new Smb4KBasicNetworkItem(Network));
     networkItem->setUrl(QUrl("smb://"));
-    emit aboutToStart(networkItem, LookupDomains);
+    Q_EMIT aboutToStart(networkItem, LookupDomains);
 
     //
     // Set the busy cursor
@@ -223,7 +223,7 @@ void Smb4KClient::lookupDomainMembers(const WorkgroupPtr &workgroup)
     //
     // Emit the aboutToStart() signal
     //
-    emit aboutToStart(workgroup, LookupDomainMembers);
+    Q_EMIT aboutToStart(workgroup, LookupDomainMembers);
 
     //
     // Set the busy cursor
@@ -299,7 +299,7 @@ void Smb4KClient::lookupShares(const HostPtr &host)
     //
     // Emit the aboutToStart() signal
     //
-    emit aboutToStart(host, LookupShares);
+    Q_EMIT aboutToStart(host, LookupShares);
 
     //
     // Create the job
@@ -335,7 +335,7 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
         //
         // Emit the aboutToStart() signal
         //
-        emit aboutToStart(item, LookupFiles);
+        Q_EMIT aboutToStart(item, LookupFiles);
 
         //
         // Create the job
@@ -368,7 +368,7 @@ void Smb4KClient::printFile(const SharePtr &share, const KFileItem &fileItem, in
     //
     // Emit the aboutToStart() signal
     //
-    emit aboutToStart(share, PrintFile);
+    Q_EMIT aboutToStart(share, PrintFile);
 
     //
     // Create the job
@@ -407,7 +407,7 @@ void Smb4KClient::search(const QString &item)
     //
     // Emit the aboutToStart() signal
     //
-    emit aboutToStart(networkItem, NetworkSearch);
+    Q_EMIT aboutToStart(networkItem, NetworkSearch);
 
     //
     // Before doing the search, lookup all domains, servers and shares in the
@@ -449,12 +449,12 @@ void Smb4KClient::search(const QString &item)
     //
     // Emit the search results
     //
-    emit searchResults(results);
+    Q_EMIT searchResults(results);
 
     //
     // Emit the finished() signal
     //
-    emit finished(networkItem, NetworkSearch);
+    Q_EMIT finished(networkItem, NetworkSearch);
 }
 
 void Smb4KClient::openPreviewDialog(const SharePtr &share)
@@ -706,7 +706,7 @@ void Smb4KClient::processWorkgroups(Smb4KClientBaseJob *job)
             d->tempWorkgroupList.takeFirst().clear();
         }
 
-        emit workgroups();
+        Q_EMIT workgroups();
     }
 }
 
@@ -798,7 +798,7 @@ void Smb4KClient::processHosts(Smb4KClientBaseJob *job)
             d->tempHostList.takeFirst().clear();
         }
 
-        emit hosts(workgroup);
+        Q_EMIT hosts(workgroup);
     }
 }
 
@@ -862,7 +862,7 @@ void Smb4KClient::processShares(Smb4KClientBaseJob *job)
         }
     }
 
-    emit shares(host);
+    Q_EMIT shares(host);
 }
 
 void Smb4KClient::processFiles(Smb4KClientBaseJob *job)
@@ -885,7 +885,7 @@ void Smb4KClient::processFiles(Smb4KClientBaseJob *job)
         list << file;
     }
 
-    emit files(list);
+    Q_EMIT files(list);
 }
 
 void Smb4KClient::slotStartJobs()
@@ -962,7 +962,7 @@ void Smb4KClient::slotResult(KJob *job)
     // Emit the finished signal when all subjobs finished
     //
     if (!hasSubjobs()) {
-        emit finished(networkItem, process);
+        Q_EMIT finished(networkItem, process);
     }
 
     //

@@ -504,7 +504,7 @@ void Smb4KDeclarative::slotWorkgroupsListChanged()
         d->workgroupObjects << new Smb4KNetworkObject(workgroup.data());
     }
 
-    emit workgroupsListChanged();
+    Q_EMIT workgroupsListChanged();
 }
 
 void Smb4KDeclarative::slotHostsListChanged()
@@ -518,7 +518,7 @@ void Smb4KDeclarative::slotHostsListChanged()
         d->hostObjects << new Smb4KNetworkObject(host.data());
     }
 
-    emit hostsListChanged();
+    Q_EMIT hostsListChanged();
 }
 
 void Smb4KDeclarative::slotSharesListChanged()
@@ -532,7 +532,7 @@ void Smb4KDeclarative::slotSharesListChanged()
         d->shareObjects << new Smb4KNetworkObject(share.data());
     }
 
-    emit sharesListChanged();
+    Q_EMIT sharesListChanged();
 }
 
 void Smb4KDeclarative::slotMountedSharesListChanged()
@@ -546,7 +546,7 @@ void Smb4KDeclarative::slotMountedSharesListChanged()
         d->mountedObjects << new Smb4KNetworkObject(mountedShare.data());
     }
 
-    emit mountedSharesListChanged();
+    Q_EMIT mountedSharesListChanged();
 }
 
 void Smb4KDeclarative::slotBookmarksListChanged()
@@ -571,7 +571,7 @@ void Smb4KDeclarative::slotBookmarksListChanged()
         d->bookmarkCategoryObjects << new Smb4KBookmarkObject(category);
     }
 
-    emit bookmarksListChanged();
+    Q_EMIT bookmarksListChanged();
 }
 
 void Smb4KDeclarative::slotProfilesListChanged(const QStringList &profiles)
@@ -593,7 +593,7 @@ void Smb4KDeclarative::slotProfilesListChanged(const QStringList &profiles)
         d->profileObjects << profile;
     }
 
-    emit profilesListChanged();
+    Q_EMIT profilesListChanged();
 }
 
 void Smb4KDeclarative::slotActiveProfileChanged(const QString &activeProfile)
@@ -606,10 +606,10 @@ void Smb4KDeclarative::slotActiveProfileChanged(const QString &activeProfile)
         }
     }
 
-    emit activeProfileChanged();
+    Q_EMIT activeProfileChanged();
 }
 
 void Smb4KDeclarative::slotProfileUsageChanged(bool /*use*/)
 {
-    emit profileUsageChanged();
+    Q_EMIT profileUsageChanged();
 }
