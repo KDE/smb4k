@@ -39,8 +39,8 @@ class Q_DECL_EXPORT Smb4KNetworkObject : public QObject
     Q_PROPERTY(NetworkItem type READ type WRITE setType NOTIFY changed)
     Q_PROPERTY(NetworkItem parentType READ parentType CONSTANT)
     Q_PROPERTY(QString workgroupName READ workgroupName WRITE setWorkgroupName NOTIFY changed)
-    Q_PROPERTY(QString hostName READ hostName WRITE setHostName NOTIFY changed)
-    Q_PROPERTY(QString shareName READ shareName WRITE setShareName NOTIFY changed)
+    Q_PROPERTY(QString hostName READ hostName CONSTANT)
+    Q_PROPERTY(QString shareName READ shareName CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString comment READ comment WRITE setComment NOTIFY changed)
     Q_PROPERTY(QUrl url READ url WRITE setUrl NOTIFY changed)
@@ -129,13 +129,6 @@ public:
     QString hostName() const;
 
     /**
-     * Set the host name for this network item.
-     *
-     * @param name        The host name
-     */
-    void setHostName(const QString &name);
-
-    /**
      * Returns TRUE if this network object represents a master browser
      * and FALSE otherwise.
      * @returns TRUE if the network object is a master browser
@@ -159,13 +152,6 @@ public:
      * @returns the share name or an empty string
      */
     QString shareName() const;
-
-    /**
-     * Set the share name for this network item.
-     *
-     * @param name        The share name
-     */
-    void setShareName(const QString &name);
 
     /**
      * This is a convenience function that returns the name of the

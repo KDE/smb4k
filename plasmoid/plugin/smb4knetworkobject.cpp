@@ -134,23 +134,25 @@ Smb4KNetworkObject::NetworkItem Smb4KNetworkObject::parentType() const
 
 void Smb4KNetworkObject::setType(NetworkItem type)
 {
-    d->type = type;
+    if (d->type != type) {
+        d->type = type;
 
-    switch (type) {
-    case Host: {
-        d->parentType = Workgroup;
-        break;
+        switch (type) {
+        case Host: {
+            d->parentType = Workgroup;
+            break;
+        }
+        case Share: {
+            d->parentType = Host;
+            break;
+        }
+        default: {
+            d->parentType = Network;
+            break;
+        }
+        }
+        Q_EMIT changed();
     }
-    case Share: {
-        d->parentType = Host;
-        break;
-    }
-    default: {
-        d->parentType = Network;
-        break;
-    }
-    }
-    Q_EMIT changed();
 }
 
 QString Smb4KNetworkObject::workgroupName() const
@@ -160,19 +162,15 @@ QString Smb4KNetworkObject::workgroupName() const
 
 void Smb4KNetworkObject::setWorkgroupName(const QString &name)
 {
-    d->workgroup = name;
-    Q_EMIT changed();
+    if (d->workgroup != name) {
+        d->workgroup = name;
+        Q_EMIT changed();
+    }
 }
 
 QString Smb4KNetworkObject::hostName() const
 {
     return d->url.host().toUpper();
-}
-
-void Smb4KNetworkObject::setHostName(const QString &name)
-{
-    d->url.setHost(name);
-    Q_EMIT changed();
 }
 
 bool Smb4KNetworkObject::isMasterBrowser() const
@@ -182,7 +180,7 @@ bool Smb4KNetworkObject::isMasterBrowser() const
 
 void Smb4KNetworkObject::setMasterBrowser(bool master)
 {
-    if (type() == Host) {
+    if (type() == Host && d->isMaster != master) {
         d->isMaster = master;
         Q_EMIT changed();
     }
@@ -190,26 +188,7 @@ void Smb4KNetworkObject::setMasterBrowser(bool master)
 
 QString Smb4KNetworkObject::shareName() const
 {
-    // Since users might come up with very weird share names,
-    // we are careful and do not use QString::remove("/"), but
-    // only remove preceding and trailing slashes.
-    QString share_name = d->url.path();
-
-    if (share_name.startsWith('/')) {
-        share_name.remove(0, 1);
-    }
-
-    if (share_name.endsWith('/')) {
-        share_name.remove(share_name.size() - 1, 1);
-    }
-
-    return share_name;
-}
-
-void Smb4KNetworkObject::setShareName(const QString &name)
-{
-    d->url.setPath(name);
-    Q_EMIT changed();
+    return d->url.path().remove('/');
 }
 
 QString Smb4KNetworkObject::name() const
@@ -244,8 +223,10 @@ QString Smb4KNetworkObject::comment() const
 
 void Smb4KNetworkObject::setComment(const QString &comment)
 {
-    d->comment = comment;
-    Q_EMIT changed();
+    if (d->comment != comment) {
+        d->comment = comment;
+        Q_EMIT changed();
+    }
 }
 
 QUrl Smb4KNetworkObject::url() const
@@ -255,33 +236,18 @@ QUrl Smb4KNetworkObject::url() const
 
 QUrl Smb4KNetworkObject::parentUrl() const
 {
-    // Do not use QUrl::upUrl() here, because it produces
-    // an URL like this: smb://HOST/Share/../ and we do not
-    // want that.
-    QUrl parent_url;
-    parent_url.setUrl("smb://");
+    QUrl moveUp("..");
+    QUrl parentUrl = d->url;
 
-    switch (d->type) {
-    case Host: {
-        parent_url.setHost(d->workgroup);
-        break;
-    }
-    case Share: {
-        parent_url.setHost(d->url.host());
-        break;
-    }
-    default: {
-        break;
-    }
-    }
-
-    return parent_url;
+    return parentUrl.resolved(moveUp);
 }
 
 void Smb4KNetworkObject::setUrl(const QUrl &url)
 {
-    d->url = url;
-    Q_EMIT changed();
+    if (!d->url.matches(url, QUrl::None)) {
+        d->url = url;
+        Q_EMIT changed();
+    }
 }
 
 bool Smb4KNetworkObject::isMounted() const
@@ -291,8 +257,10 @@ bool Smb4KNetworkObject::isMounted() const
 
 void Smb4KNetworkObject::setMounted(bool mounted)
 {
-    d->mounted = mounted;
-    Q_EMIT changed();
+    if (d->mounted != mounted) {
+        d->mounted = mounted;
+        Q_EMIT changed();
+    }
 }
 
 void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
@@ -360,8 +328,10 @@ bool Smb4KNetworkObject::isPrinter() const
 
 void Smb4KNetworkObject::setPrinter(bool printer)
 {
-    d->printer = printer;
-    Q_EMIT changed();
+    if (d->printer != printer) {
+        d->printer = printer;
+        Q_EMIT changed();
+    }
 }
 
 QUrl Smb4KNetworkObject::mountpoint() const
@@ -371,8 +341,10 @@ QUrl Smb4KNetworkObject::mountpoint() const
 
 void Smb4KNetworkObject::setMountpoint(const QUrl &mountpoint)
 {
-    d->mountpoint = mountpoint;
-    Q_EMIT changed();
+    if (!d->mountpoint.matches(mountpoint, QUrl::None)) {
+        d->mountpoint = mountpoint;
+        Q_EMIT changed();
+    }
 }
 
 bool Smb4KNetworkObject::isInaccessible() const
@@ -382,5 +354,8 @@ bool Smb4KNetworkObject::isInaccessible() const
 
 void Smb4KNetworkObject::setInaccessible(bool inaccessible)
 {
-    d->inaccessible = inaccessible;
+    if (d->inaccessible != inaccessible) {
+        d->inaccessible = inaccessible;
+        Q_EMIT changed();
+    }
 }
