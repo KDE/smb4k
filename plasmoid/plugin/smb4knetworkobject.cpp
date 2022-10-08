@@ -424,6 +424,7 @@ bool Smb4KNetworkObject::isInaccessible() const
 void Smb4KNetworkObject::setInaccessible(bool inaccessible)
 {
   d->inaccessible = inaccessible;
+  emit changed();
 }
 
 
