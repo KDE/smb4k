@@ -3751,25 +3751,3 @@ msgstr "<qt>ホスト %1 のユーザ名とパスワードを入力してくだ�
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>共有 %1 のユーザ名とパスワードを入力してください。</qt>"
-
-#~ msgid "NetBIOS name:"
-#~ msgstr "NetBIOS 名:"
-
-#~ msgid ""
-#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
-#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
-#~ "file or the host name."
-#~ msgstr ""
-#~ "これは Smb4K によって使用されるこのコンピュータの NetBIOS 名です。デフォル"
-#~ "トによって、smb.conf ファイルまたはホスト名に定義されているどちらか一方の "
-#~ "NetBIOS 名です。"
-
-#~ msgid ""
-#~ "This is the workgroup or domain this computer is or should be in. By "
-#~ "default, it is the workgroup that is defined in the smb.conf file."
-#~ msgstr ""
-#~ "このコンピュータが所属するワークグループまたはドメインです。デフォルト値"
-#~ "は、smb.conf ファイルに定義されているワークグループです。"
-
-#~ msgid "Login:"
-#~ msgstr "ログイン:"
