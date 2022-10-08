@@ -222,7 +222,7 @@ void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
             delete item;
         }
 
-        m_customOptionsChanged = options->changed();
+        m_customOptionsChanged = options->isChanged();
         Q_EMIT customSettingsModified();
     }
 }

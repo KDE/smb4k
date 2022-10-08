@@ -615,7 +615,7 @@ public:
      *
      * @return TRUE if the custom options were changed.
      */
-    bool changed() const;
+    bool isChanged() const;
 
 private:
     const QScopedPointer<Smb4KCustomOptionsPrivate> d;

@@ -529,7 +529,7 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
     bool write = false;
 
     for (const OptionsPtr &options : qAsConst(d->options)) {
-        if (options->changed()) {
+        if (options->isChanged()) {
             write = true;
             break;
         }

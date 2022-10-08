@@ -984,7 +984,7 @@ void Smb4KCustomOptions::setChanged(bool changed)
     d->changed = changed;
 }
 
-bool Smb4KCustomOptions::changed() const
+bool Smb4KCustomOptions::isChanged() const
 {
     return d->changed;
 }
