@@ -46,7 +46,7 @@ class Q_DECL_EXPORT Smb4KBookmarkObject : public QObject
     Q_PROPERTY(QString hostName READ hostName CONSTANT)
     Q_PROPERTY(QString shareName READ shareName CONSTANT)
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY changed)
-    Q_PROPERTY(QString hostIP READ hostIP WRITE setHostIP NOTIFY changed)
+    Q_PROPERTY(QString hostIpAddress READ hostIpAddress WRITE setHostIpAddress NOTIFY changed)
 
 public:
     /**
@@ -190,14 +190,14 @@ public:
      *
      * @returns the IP address of the host
      */
-    QString hostIP() const;
+    QString hostIpAddress() const;
 
     /**
      * Set the IP address of the host
      *
      * @param ip        The IP address
      */
-    void setHostIP(const QString &ip);
+    void setHostIpAddress(const QString &ip);
 
 Q_SIGNALS:
     /**

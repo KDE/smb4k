@@ -25,7 +25,7 @@ public:
     QString login;
     bool isCategory;
     bool isMounted;
-    QHostAddress hostIP;
+    QHostAddress hostIp;
 };
 
 Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark *bookmark, QObject *parent)
@@ -39,7 +39,7 @@ Smb4KBookmarkObject::Smb4KBookmarkObject(Smb4KBookmark *bookmark, QObject *paren
     d->login = bookmark->userName();
     d->isCategory = false;
     d->isMounted = false;
-    d->hostIP.setAddress(bookmark->hostIpAddress());
+    d->hostIp.setAddress(bookmark->hostIpAddress());
 }
 
 Smb4KBookmarkObject::Smb4KBookmarkObject(const QString &categoryName, QObject *parent)
@@ -70,8 +70,10 @@ QString Smb4KBookmarkObject::workgroupName() const
 
 void Smb4KBookmarkObject::setWorkgroupName(const QString &name)
 {
-    d->workgroup = name;
-    Q_EMIT changed();
+    if (d->workgroup != name) {
+        d->workgroup = name;
+        Q_EMIT changed();
+    }
 }
 
 QString Smb4KBookmarkObject::hostName() const
@@ -91,8 +93,10 @@ QString Smb4KBookmarkObject::label() const
 
 void Smb4KBookmarkObject::setLabel(const QString &label)
 {
-    d->label = label;
-    Q_EMIT changed();
+    if (d->label != label) {
+        d->label = label;
+        Q_EMIT changed();
+    }
 }
 
 QUrl Smb4KBookmarkObject::url() const
@@ -102,8 +106,10 @@ QUrl Smb4KBookmarkObject::url() const
 
 void Smb4KBookmarkObject::setUrl(const QUrl &url)
 {
-    d->url = url;
-    Q_EMIT changed();
+    if (!d->url.matches(url, QUrl::None)) {
+        d->url = url;
+        Q_EMIT changed();
+    }
 }
 
 QString Smb4KBookmarkObject::categoryName() const
@@ -113,8 +119,10 @@ QString Smb4KBookmarkObject::categoryName() const
 
 void Smb4KBookmarkObject::setCategoryName(const QString &name)
 {
-    d->category = name;
-    Q_EMIT changed();
+    if (d->category != name) {
+        d->category = name;
+        Q_EMIT changed();
+    }
 }
 
 bool Smb4KBookmarkObject::isCategory() const
@@ -124,8 +132,10 @@ bool Smb4KBookmarkObject::isCategory() const
 
 void Smb4KBookmarkObject::setCategory(bool category)
 {
-    d->isCategory = category;
-    Q_EMIT changed();
+    if (d->isCategory != category) {
+        d->isCategory = category;
+        Q_EMIT changed();
+    }
 }
 
 bool Smb4KBookmarkObject::isMounted() const
@@ -135,8 +145,10 @@ bool Smb4KBookmarkObject::isMounted() const
 
 void Smb4KBookmarkObject::setMounted(bool mounted)
 {
-    d->isMounted = mounted;
-    Q_EMIT changed();
+    if (d->isMounted != mounted) {
+        d->isMounted = mounted;
+        Q_EMIT changed();
+    }
 }
 
 QString Smb4KBookmarkObject::userName() const
@@ -146,18 +158,21 @@ QString Smb4KBookmarkObject::userName() const
 
 void Smb4KBookmarkObject::setUserName(const QString &name)
 {
-    d->login = name;
-    Q_EMIT changed();
+    if (d->login != name) {
+        d->login = name;
+        Q_EMIT changed();
+    }
 }
 
-QString Smb4KBookmarkObject::hostIP() const
+QString Smb4KBookmarkObject::hostIpAddress() const
 {
-    return d->hostIP.toString();
+    return d->hostIp.toString();
 }
 
-void Smb4KBookmarkObject::setHostIP(const QString &ip)
+void Smb4KBookmarkObject::setHostIpAddress(const QString &ip)
 {
-    if (d->hostIP.setAddress(ip)) {
+    if (d->hostIp.toString() != ip) {
+        d->hostIp.setAddress(ip);
         Q_EMIT changed();
     }
 }
