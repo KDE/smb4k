@@ -638,7 +638,8 @@ void Smb4KSyncJob::slotReadStandardError()
   //
   // Report an error if the process was not terminated
   // 
-  if (!(stdErr.contains("rsync error") && stdErr.contains("(code 20)")))
+  if (!(stdErr.contains("rsync error") && stdErr.contains("(code 20)"))
+      || !(stdErr.contains("rsync error") && stdErr.contains("(code 19)")))
   {
     Smb4KNotification::synchronizationFailed(m_src, m_dest, stdErr);
   }
