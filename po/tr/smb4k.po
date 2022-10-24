@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-05 00:46+0000\n"
-"PO-Revision-Date: 2022-07-19 18:12+0300\n"
+"PO-Revision-Date: 2022-10-18 06:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 22.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -872,7 +872,7 @@ msgstr "bilinmeyen"
 #: smb4k/smb4ktooltip.cpp:397 smb4k/smb4ktooltip.cpp:504
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
-msgstr "%2 alanın %1 kadarı boş (%3% kullanılıyor)"
+msgstr "%1/%2 boş (%3 kullanılıyor)"
 
 #: smb4k/smb4ktooltip.cpp:448
 #, kde-format

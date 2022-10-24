@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-11 00:45+0000\n"
+"POT-Creation-Date: 2022-10-05 00:46+0000\n"
 "PO-Revision-Date: 2006-04-12 21:04+0200\n"
 "Last-Translator: Nils Kristian Tomren <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "The unmount process could not be started."
 msgstr ""
 
-#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:55
+#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -638,7 +638,7 @@ msgstr "&Avbryt"
 msgid "&Search"
 msgstr "&Søk"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr ""

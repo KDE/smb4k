@@ -7510,7 +7510,7 @@ ntlm auth = yes
 >--checksum-seed=NÚM</option
 ></para>
               <para
->Estableix la llavor de la suma de verificació MD4 al nombre sencer NÚM. Aquesta llavor de la suma de verificació de 4 bytes s'inclourà en el càlcul de cada bloc i fitxer de suma de verificació MD4. De manera predeterminada, la llavor de la suma de verificació és generada pel servidor i de manera predeterminada al temps actual -valor de time()-. Aquesta opció s'utilitza per a establir una llavor de suma de verificació específica, el qual és útil per a les aplicacions que volen blocs i fitxers de suma de verificació repetibles, o en el cas que l'usuari vulgui obtenir una llavor de suma de verificació més aleatòria. Cal tenir en compte que establir NÚM a 0, fa que el rsync utilitzi el valor predeterminat de time() per a la llavor de la suma de verificació.</para>
+>Estableix la llavor de la suma de verificació MD4 al nombre enter NÚM. Aquesta llavor de la suma de verificació de 4 bytes s'inclourà en el càlcul de cada bloc i fitxer de suma de verificació MD4. De manera predeterminada, la llavor de la suma de verificació és generada pel servidor i de manera predeterminada al temps actual -valor de time()-. Aquesta opció s'utilitza per a establir una llavor de suma de verificació específica, el qual és útil per a les aplicacions que volen blocs i fitxers de suma de verificació repetibles, o en el cas que l'usuari vulgui obtenir una llavor de suma de verificació més aleatòria. Cal tenir en compte que establir NÚM a 0, fa que el rsync utilitzi el valor predeterminat de time() per a la llavor de la suma de verificació.</para>
               <para
 >Omissió: no seleccionada; NRE: 0</para>
             </listitem>
