@@ -1,7 +1,7 @@
 /*
     This class provides a container for the authentication data.
 
-    SPDX-FileCopyrightText: 2004-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -99,13 +99,6 @@ public:
      * @param url             The URL of the network item
      */
     void setUrl(const QUrl &url);
-
-    /**
-     * Sets the URL of the share.
-     *
-     * @param url             The URL of the network item
-     */
-    void setUrl(const QString &url);
 
     /**
      * Returns the URL of the network item

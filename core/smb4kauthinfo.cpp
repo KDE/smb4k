@@ -1,7 +1,7 @@
 /*
     This class provides a container for the authentication data.
 
-    SPDX-FileCopyrightText: 2004-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -78,30 +78,23 @@ Smb4KAuthInfo::~Smb4KAuthInfo()
 void Smb4KAuthInfo::setUrl(const QUrl &url)
 {
     d->url = url;
-    d->url.setScheme("smb");
+    d->url.setScheme(QStringLiteral("smb"));
 
     //
     // Set the type
     //
-    if (!d->url.path().remove('/').isEmpty()) {
+    if (!d->url.path().remove(QStringLiteral("/")).isEmpty()) {
         d->type = Share;
 
         //
         // Fix 'homes' URLs
         //
-        if (d->url.path().remove('/') == "homes" && !d->url.userName().isEmpty()) {
+        if (d->url.path().remove(QStringLiteral("/")) == QStringLiteral("homes") && !d->url.userName().isEmpty()) {
             d->url.setPath(d->url.userName());
         }
     } else {
         d->type = Host;
     }
-}
-
-void Smb4KAuthInfo::setUrl(const QString &url)
-{
-    QUrl tempUrl(url, QUrl::TolerantMode);
-    tempUrl.setScheme("smb");
-    setUrl(tempUrl);
 }
 
 QUrl Smb4KAuthInfo::url() const
@@ -113,7 +106,7 @@ void Smb4KAuthInfo::setUserName(const QString &username)
 {
     d->url.setUserName(username);
 
-    if (d->url.path().remove('/') == "homes") {
+    if (d->url.path().remove(QStringLiteral("/")) == QStringLiteral("homes")) {
         d->url.setPath(username);
     }
 }
@@ -156,7 +149,7 @@ QString Smb4KAuthInfo::displayString() const
     //
     // Share name
     //
-    QString shareName = d->url.path().remove('/');
+    QString shareName = d->url.path().remove(QStringLiteral("/"));
 
     //
     // Return the full display string
