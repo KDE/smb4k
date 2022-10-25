@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a directory or file.
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -33,7 +33,7 @@ Smb4KFile::Smb4KFile(const QUrl &url, Smb4KGlobal::NetworkItem type)
     *pUrl = url;
 
     if (type == Directory) {
-        *pIcon = KDE::icon("folder");
+        *pIcon = KDE::icon(QStringLiteral("folder"));
     } else {
         *pIcon = KDE::icon(KIO::iconNameForUrl(url));
     }
@@ -84,7 +84,7 @@ bool Smb4KFile::hasHostIpAddress() const
 
 QString Smb4KFile::shareName() const
 {
-    return pUrl->path().section('/', 1, 1);
+    return pUrl->path().section(QStringLiteral("/"), 1, 1);
 }
 
 void Smb4KFile::setUserName(const QString &name)
@@ -135,5 +135,5 @@ QString Smb4KFile::name() const
 
 bool Smb4KFile::isHidden() const
 {
-    return name().startsWith('.');
+    return name().startsWith(QStringLiteral("."));
 }
