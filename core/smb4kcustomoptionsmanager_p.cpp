@@ -1,7 +1,7 @@
 /*
     Private helper classes for Smb4KCustomOptionsManagerPrivate class
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -59,7 +59,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
     headerLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *pixmap = new QLabel(header);
-    QPixmap preferencesPixmap = KDE::icon("preferences-system-network").pixmap(KIconLoader::SizeHuge);
+    QPixmap preferencesPixmap = KDE::icon(QStringLiteral("preferences-system-network")).pixmap(KIconLoader::SizeHuge);
     pixmap->setPixmap(preferencesPixmap);
     pixmap->setAlignment(Qt::AlignCenter);
 
@@ -170,7 +170,7 @@ void Smb4KCustomOptionsDialog::setupView()
     QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
 
     QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), commonBox);
-    remountAlways->setObjectName("RemountAlways");
+    remountAlways->setObjectName(QStringLiteral("RemountAlways"));
     remountAlways->setEnabled(m_options->type() == Share);
     connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
@@ -178,10 +178,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Write access
     QCheckBox *useWriteAccess = new QCheckBox(Smb4KMountSettings::self()->useWriteAccessItem()->label(), commonBox);
-    useWriteAccess->setObjectName("UseWriteAccess");
+    useWriteAccess->setObjectName(QStringLiteral("UseWriteAccess"));
 
     KComboBox *writeAccess = new KComboBox(commonBox);
-    writeAccess->setObjectName("WriteAccess");
+    writeAccess->setObjectName(QStringLiteral("WriteAccess"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
 
@@ -197,10 +197,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Remote file system port
     QCheckBox *useFilesystemPort = new QCheckBox(Smb4KMountSettings::self()->useRemoteFileSystemPortItem()->label(), commonBox);
-    useFilesystemPort->setObjectName("UseFilesystemPort");
+    useFilesystemPort->setObjectName(QStringLiteral("UseFilesystemPort"));
 
     QSpinBox *filesystemPort = new QSpinBox(commonBox);
-    filesystemPort->setObjectName("FileSystemPort");
+    filesystemPort->setObjectName(QStringLiteral("FileSystemPort"));
     filesystemPort->setMinimum(Smb4KMountSettings::self()->remoteFileSystemPortItem()->minValue().toInt());
     filesystemPort->setMaximum(Smb4KMountSettings::self()->remoteFileSystemPortItem()->maxValue().toInt());
 
@@ -219,7 +219,7 @@ void Smb4KCustomOptionsDialog::setupView()
     QGridLayout *extensionsSupportBoxLayout = new QGridLayout(extensionsSupportBox);
 
     QCheckBox *cifsExtensionsSupport = new QCheckBox(i18n("This server supports the CIFS Unix extensions"), extensionsSupportBox);
-    cifsExtensionsSupport->setObjectName("CifsExtensionsSupport");
+    cifsExtensionsSupport->setObjectName(QStringLiteral("CifsExtensionsSupport"));
 
     connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
     connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), SLOT(slotCifsExtensionsSupport(bool)));
@@ -228,15 +228,15 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // User Id
     QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), extensionsSupportBox);
-    useUserId->setObjectName("UseUserId");
+    useUserId->setObjectName(QStringLiteral("UseUserId"));
 
     KComboBox *userId = new KComboBox(extensionsSupportBox);
-    userId->setObjectName("UserId");
+    userId->setObjectName(QStringLiteral("UserId"));
 
     QList<KUser> allUsers = KUser::allUsers();
 
     for (const KUser &u : qAsConst(allUsers)) {
-        userId->addItem(QString("%1 (%2)").arg(u.loginName(), u.userId().toString()));
+        userId->addItem(u.loginName() + QStringLiteral(" (") + u.userId().toString() + QStringLiteral(")"));
     }
 
     connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -247,15 +247,15 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Group Id
     QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), extensionsSupportBox);
-    useGroupId->setObjectName("UseGroupId");
+    useGroupId->setObjectName(QStringLiteral("UseGroupId"));
 
     KComboBox *groupId = new KComboBox(extensionsSupportBox);
-    groupId->setObjectName("GroupId");
+    groupId->setObjectName(QStringLiteral("GroupId"));
 
     QList<KUserGroup> allGroups = KUserGroup::allGroups();
 
     for (const KUserGroup &g : qAsConst(allGroups)) {
-        groupId->addItem(QString("%1 (%2)").arg(g.name(), g.groupId().toString()));
+        groupId->addItem(g.name() + QStringLiteral(" (") + g.groupId().toString() + QStringLiteral(")"));
     }
 
     connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -266,10 +266,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // File mode
     QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), extensionsSupportBox);
-    useFileMode->setObjectName("UseFileMode");
+    useFileMode->setObjectName(QStringLiteral("UseFileMode"));
 
     KLineEdit *fileMode = new KLineEdit(extensionsSupportBox);
-    fileMode->setObjectName("FileMode");
+    fileMode->setObjectName(QStringLiteral("FileMode"));
     fileMode->setClearButtonEnabled(true);
     fileMode->setAlignment(Qt::AlignRight);
 
@@ -281,10 +281,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Directory mode
     QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), extensionsSupportBox);
-    useDirectoryMode->setObjectName("UseDirectoryMode");
+    useDirectoryMode->setObjectName(QStringLiteral("UseDirectoryMode"));
 
     KLineEdit *directoryMode = new KLineEdit(extensionsSupportBox);
-    directoryMode->setObjectName("DirectoryMode");
+    directoryMode->setObjectName(QStringLiteral("DirectoryMode"));
     directoryMode->setClearButtonEnabled(true);
     directoryMode->setAlignment(Qt::AlignRight);
 
@@ -313,10 +313,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // SMB protocol version
     QCheckBox *useMountProtocol = new QCheckBox(Smb4KMountSettings::self()->useSmbProtocolVersionItem()->label(), advancedOptionsBox);
-    useMountProtocol->setObjectName("UseMountProtocolVersion");
+    useMountProtocol->setObjectName(QStringLiteral("UseMountProtocolVersion"));
 
     KComboBox *mountProtocol = new KComboBox(advancedOptionsBox);
-    mountProtocol->setObjectName("MountProtocolVersion");
+    mountProtocol->setObjectName(QStringLiteral("MountProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
 
@@ -332,10 +332,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Security mode
     QCheckBox *useSecurityMode = new QCheckBox(Smb4KMountSettings::self()->useSecurityModeItem()->label(), advancedOptionsBox);
-    useSecurityMode->setObjectName("UseSecurityMode");
+    useSecurityMode->setObjectName(QStringLiteral("UseSecurityMode"));
 
     KComboBox *securityMode = new KComboBox(advancedOptionsBox);
-    securityMode->setObjectName("SecurityMode");
+    securityMode->setObjectName(QStringLiteral("SecurityMode"));
 
     QList<KConfigSkeleton::ItemEnum::Choice> securityModeChoices = Smb4KMountSettings::self()->securityModeItem()->choices();
 
@@ -368,14 +368,14 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Minimal and maximal client protocol versions
     QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), commonMountSettingsTab);
-    useClientProtocolVersions->setObjectName("UseClientProtocolVersions");
+    useClientProtocolVersions->setObjectName(QStringLiteral("UseClientProtocolVersions"));
 
     QLabel *minimalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), commonMountSettingsTab);
     minimalClientProtocolVersionLabel->setIndent(25);
-    minimalClientProtocolVersionLabel->setObjectName("MinimalClientProtocolVersionLabel");
+    minimalClientProtocolVersionLabel->setObjectName(QStringLiteral("MinimalClientProtocolVersionLabel"));
 
     KComboBox *minimalClientProtocolVersion = new KComboBox(commonSambaOptionsBox);
-    minimalClientProtocolVersion->setObjectName("MinimalClientProtocolVersion");
+    minimalClientProtocolVersion->setObjectName(QStringLiteral("MinimalClientProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalClientProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
 
@@ -385,10 +385,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QLabel *maximalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), commonMountSettingsTab);
     maximalClientProtocolVersionLabel->setIndent(25);
-    maximalClientProtocolVersionLabel->setObjectName("MaximalClientProtocolVersionLabel");
+    maximalClientProtocolVersionLabel->setObjectName(QStringLiteral("MaximalClientProtocolVersionLabel"));
 
     KComboBox *maximalClientProtocolVersion = new KComboBox(commonMountSettingsTab);
-    maximalClientProtocolVersion->setObjectName("MaximalClientProtocolVersion");
+    maximalClientProtocolVersion->setObjectName(QStringLiteral("MaximalClientProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
 
@@ -412,10 +412,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // SMB port
     QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
-    useSmbPort->setObjectName("UseSmbPort");
+    useSmbPort->setObjectName(QStringLiteral("UseSmbPort"));
 
     QSpinBox *smbPort = new QSpinBox(commonSambaOptionsBox);
-    smbPort->setObjectName("SmbPort");
+    smbPort->setObjectName(QStringLiteral("SmbPort"));
     smbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
     smbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
 
@@ -435,7 +435,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Kerberos
     QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
-    useKerberos->setObjectName("UseKerberos");
+    useKerberos->setObjectName(QStringLiteral("UseKerberos"));
 
     connect(useKerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
@@ -464,9 +464,9 @@ void Smb4KCustomOptionsDialog::setupView()
     // MAC address
     QLabel *macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressBox);
     KLineEdit *macAddress = new KLineEdit(macAddressBox);
-    macAddress->setObjectName("MACAddress");
+    macAddress->setObjectName(QStringLiteral("MACAddress"));
     macAddress->setClearButtonEnabled(true);
-    macAddress->setInputMask("HH:HH:HH:HH:HH:HH;_"); // MAC address, see QLineEdit doc
+    macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
     macAddressLabel->setBuddy(macAddress);
 
     connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotCheckValues()));
@@ -485,7 +485,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Send magic packet before network scan
     QCheckBox *sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), wakeOnLANActionsBox);
-    sendPacketBeforeScan->setObjectName("SendPacketBeforeScan");
+    sendPacketBeforeScan->setObjectName(QStringLiteral("SendPacketBeforeScan"));
 
     connect(sendPacketBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
@@ -493,7 +493,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Send magic packet before mount
     QCheckBox *sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), wakeOnLanTab);
-    sendPacketBeforeMount->setObjectName("SendPacketBeforeMount");
+    sendPacketBeforeMount->setObjectName(QStringLiteral("SendPacketBeforeMount"));
 
     connect(sendPacketBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
@@ -518,11 +518,11 @@ void Smb4KCustomOptionsDialog::setupView()
 
         // User information
         useUserId->setChecked(m_options->useUser());
-        userId->setCurrentText(QString("%1 (%2)").arg(m_options->user().loginName(), m_options->user().userId().toString()));
+        userId->setCurrentText(m_options->user().loginName() + QStringLiteral(" (") + m_options->user().userId().toString() + QStringLiteral(")"));
 
         // Group information
         useGroupId->setChecked(m_options->useGroup());
-        groupId->setCurrentText(QString("%1 (%2)").arg(m_options->group().name(), m_options->group().groupId().toString()));
+        groupId->setCurrentText(m_options->group().name() + QStringLiteral(" (") + m_options->group().groupId().toString() + QStringLiteral(")"));
 
         // File mode
         useFileMode->setChecked(m_options->useFileMode());
@@ -1122,7 +1122,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     // Always remount the share
     //
     if (m_options->type() == Share) {
-        QCheckBox *remountAlways = findChild<QCheckBox *>("RemountAlways");
+        QCheckBox *remountAlways = findChild<QCheckBox *>(QStringLiteral("RemountAlways"));
 
         if (remountAlways) {
             if (remountAlways->isChecked()) {
@@ -1134,7 +1134,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // User Id
     //
-    QCheckBox *useUserId = findChild<QCheckBox *>("UseUserId");
+    QCheckBox *useUserId = findChild<QCheckBox *>(QStringLiteral("UseUserId"));
 
     if (useUserId) {
         if (useUserId->isChecked() != Smb4KMountSettings::useUserId()) {
@@ -1142,7 +1142,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KComboBox *userId = findChild<KComboBox *>("UserId");
+    KComboBox *userId = findChild<KComboBox *>(QStringLiteral("UserId"));
 
     if (userId) {
         bool ok = false;
@@ -1152,7 +1152,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
             KUser defaultUserId(uid);
 
             if (defaultUserId.isValid()) {
-                QString defaultUserIdString = QString("%1 (%2)").arg(defaultUserId.loginName(), defaultUserId.userId().toString());
+                QString defaultUserIdString = defaultUserId.loginName() + QStringLiteral(" (") + defaultUserId.userId().toString() + QStringLiteral(")");
 
                 if (userId->currentText() != defaultUserIdString) {
                     return false;
@@ -1164,7 +1164,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // Group Id
     //
-    QCheckBox *useGroupId = findChild<QCheckBox *>("UseGroupId");
+    QCheckBox *useGroupId = findChild<QCheckBox *>(QStringLiteral("UseGroupId"));
 
     if (useGroupId) {
         if (useGroupId->isChecked() != Smb4KMountSettings::useGroupId()) {
@@ -1172,7 +1172,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KComboBox *groupId = findChild<KComboBox *>("GroupId");
+    KComboBox *groupId = findChild<KComboBox *>(QStringLiteral("GroupId"));
 
     if (groupId) {
         bool ok = false;
@@ -1182,7 +1182,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
             KUserGroup defaultGroupId(gid);
 
             if (defaultGroupId.isValid()) {
-                QString defaultGroupIdString = QString("%1 (%2)").arg(defaultGroupId.name(), defaultGroupId.groupId().toString());
+                QString defaultGroupIdString = defaultGroupId.name() + QStringLiteral(" (") + defaultGroupId.groupId().toString() + QStringLiteral(")");
 
                 if (groupId->currentText() != defaultGroupIdString) {
                     return false;
@@ -1194,7 +1194,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // File mode
     //
-    QCheckBox *useFileMode = findChild<QCheckBox *>("UseFileMode");
+    QCheckBox *useFileMode = findChild<QCheckBox *>(QStringLiteral("UseFileMode"));
 
     if (useFileMode) {
         if (useFileMode->isChecked() != Smb4KMountSettings::useFileMode()) {
@@ -1202,7 +1202,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
+    KLineEdit *fileMode = findChild<KLineEdit *>(QStringLiteral("FileMode"));
 
     if (fileMode) {
         if (fileMode->text() != Smb4KMountSettings::fileMode()) {
@@ -1213,7 +1213,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // Directory mode
     //
-    QCheckBox *useDirectoryMode = findChild<QCheckBox *>("UseDirectoryMode");
+    QCheckBox *useDirectoryMode = findChild<QCheckBox *>(QStringLiteral("UseDirectoryMode"));
 
     if (useDirectoryMode) {
         if (useDirectoryMode->isChecked() != Smb4KMountSettings::useDirectoryMode()) {
@@ -1221,7 +1221,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
+    KLineEdit *directoryMode = findChild<KLineEdit *>(QStringLiteral("DirectoryMode"));
 
     if (directoryMode) {
         if (directoryMode->text() != Smb4KMountSettings::directoryMode()) {
@@ -1233,7 +1233,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // CIFS Unix extensions support
     //
-    QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+    QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>(QStringLiteral("CifsExtensionsSupport"));
 
     if (cifsExtensionsSupport) {
         if (cifsExtensionsSupport->isChecked() != Smb4KMountSettings::cifsUnixExtensionsSupport()) {
@@ -1244,7 +1244,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // Filesystem port
     //
-    QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
+    QCheckBox *useFilesystemPort = findChild<QCheckBox *>(QStringLiteral("UseFilesystemPort"));
 
     if (useFilesystemPort) {
         if (useFilesystemPort->isChecked() != Smb4KMountSettings::useRemoteFileSystemPort()) {
@@ -1252,7 +1252,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
+    QSpinBox *filesystemPort = findChild<QSpinBox *>(QStringLiteral("FileSystemPort"));
 
     if (filesystemPort) {
         if (filesystemPort->value() != Smb4KMountSettings::remoteFileSystemPort()) {
@@ -1263,7 +1263,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // Write access
     //
-    QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
+    QCheckBox *useWriteAccess = findChild<QCheckBox *>(QStringLiteral("UseWriteAccess"));
 
     if (useWriteAccess) {
         if (useWriteAccess->isChecked() != Smb4KMountSettings::useWriteAccess()) {
@@ -1271,7 +1271,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
+    KComboBox *writeAccess = findChild<KComboBox *>(QStringLiteral("WriteAccess"));
 
     if (writeAccess) {
         if (writeAccess->currentText() != Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::writeAccess()).label) {
@@ -1282,7 +1282,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // SMB mount protocol version
     //
-    QCheckBox *useMountProtocol = findChild<QCheckBox *>("UseMountProtocolVersion");
+    QCheckBox *useMountProtocol = findChild<QCheckBox *>(QStringLiteral("UseMountProtocolVersion"));
 
     if (useMountProtocol) {
         if (useMountProtocol->isChecked() != Smb4KMountSettings::useSmbProtocolVersion()) {
@@ -1290,7 +1290,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KComboBox *mountProtocol = findChild<KComboBox *>("MountProtocolVersion");
+    KComboBox *mountProtocol = findChild<KComboBox *>(QStringLiteral("MountProtocolVersion"));
 
     if (mountProtocol) {
         if (mountProtocol->currentText()
@@ -1302,7 +1302,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // Security mode
     //
-    QCheckBox *useSecurityMode = findChild<QCheckBox *>("UseSecurityMode");
+    QCheckBox *useSecurityMode = findChild<QCheckBox *>(QStringLiteral("UseSecurityMode"));
 
     if (useSecurityMode) {
         if (useSecurityMode->isChecked() != Smb4KMountSettings::useSecurityMode()) {
@@ -1310,7 +1310,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
+    KComboBox *securityMode = findChild<KComboBox *>(QStringLiteral("SecurityMode"));
 
     if (securityMode) {
         if (securityMode->currentText() != Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::securityMode()).label) {
@@ -1322,7 +1322,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // Client protocol versions
     //
-    QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>("UseClientProtocolVersions");
+    QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>(QStringLiteral("UseClientProtocolVersions"));
 
     if (useClientProtocolVersions) {
         if (useClientProtocolVersions->isChecked() != Smb4KSettings::useClientProtocolVersions()) {
@@ -1330,7 +1330,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>("MinimalClientProtocolVersion");
+    KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>(QStringLiteral("MinimalClientProtocolVersion"));
 
     if (minimalClientProtocolVersion) {
         if (minimalClientProtocolVersion->currentText()
@@ -1339,7 +1339,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>("MaximalClientProtocolVersion");
+    KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>(QStringLiteral("MaximalClientProtocolVersion"));
 
     if (maximalClientProtocolVersion) {
         if (maximalClientProtocolVersion->currentText()
@@ -1351,7 +1351,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // SMB port
     //
-    QCheckBox *useSmbPort = findChild<QCheckBox *>("UseSmbPort");
+    QCheckBox *useSmbPort = findChild<QCheckBox *>(QStringLiteral("UseSmbPort"));
 
     if (useSmbPort) {
         if (useSmbPort->isChecked() != Smb4KSettings::useRemoteSmbPort()) {
@@ -1359,7 +1359,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         }
     }
 
-    QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
+    QSpinBox *smbPort = findChild<QSpinBox *>(QStringLiteral("SmbPort"));
 
     if (smbPort) {
         if (smbPort->value() != Smb4KSettings::remoteSmbPort()) {
@@ -1370,7 +1370,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     //
     // Kerberos
     //
-    QCheckBox *useKerberos = findChild<QCheckBox *>("UseKerberos");
+    QCheckBox *useKerberos = findChild<QCheckBox *>(QStringLiteral("UseKerberos"));
 
     if (useKerberos) {
         if (useKerberos->isChecked() != Smb4KSettings::useKerberos()) {
@@ -1382,17 +1382,17 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
     // MAC address & Wake-On-LAN features
     //
     if (m_options->type() == Host && Smb4KSettings::enableWakeOnLAN()) {
-        KLineEdit *macAddress = findChild<KLineEdit *>("MACAddress");
+        KLineEdit *macAddress = findChild<KLineEdit *>(QStringLiteral("MACAddress"));
 
         if (macAddress) {
-            QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
+            QRegExp exp(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
             if (exp.exactMatch(macAddress->text())) {
                 return false;
             }
         }
 
-        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
+        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeScan"));
 
         if (sendPacketBeforeScan) {
             if (sendPacketBeforeScan->isChecked()) {
@@ -1400,7 +1400,7 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
             }
         }
 
-        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
+        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeMount"));
 
         if (sendPacketBeforeMount) {
             if (sendPacketBeforeMount->isChecked()) {
@@ -1418,7 +1418,7 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     // Always remount the share
     //
     if (m_options->type() == Share) {
-        QCheckBox *remountAlways = findChild<QCheckBox *>("RemountAlways");
+        QCheckBox *remountAlways = findChild<QCheckBox *>(QStringLiteral("RemountAlways"));
 
         if (remountAlways) {
             remountAlways->setChecked(false);
@@ -1428,13 +1428,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // User Id
     //
-    QCheckBox *useUserId = findChild<QCheckBox *>("UseUserId");
+    QCheckBox *useUserId = findChild<QCheckBox *>(QStringLiteral("UseUserId"));
 
     if (useUserId) {
         useUserId->setChecked(Smb4KMountSettings::useUserId());
     }
 
-    KComboBox *userId = findChild<KComboBox *>("UserId");
+    KComboBox *userId = findChild<KComboBox *>(QStringLiteral("UserId"));
 
     if (userId) {
         bool ok = false;
@@ -1444,7 +1444,7 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
             KUser defaultUserId(uid);
 
             if (defaultUserId.isValid()) {
-                userId->setCurrentText(QString("%1 (%2)").arg(defaultUserId.loginName(), defaultUserId.userId().toString()));
+                userId->setCurrentText(defaultUserId.loginName() + QStringLiteral(" (") + defaultUserId.userId().toString() + QStringLiteral(")"));
             }
         }
     }
@@ -1452,13 +1452,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // Group Id
     //
-    QCheckBox *useGroupId = findChild<QCheckBox *>("UseGroupId");
+    QCheckBox *useGroupId = findChild<QCheckBox *>(QStringLiteral("UseGroupId"));
 
     if (useGroupId) {
         useGroupId->setChecked(Smb4KMountSettings::useGroupId());
     }
 
-    KComboBox *groupId = findChild<KComboBox *>("GroupId");
+    KComboBox *groupId = findChild<KComboBox *>(QStringLiteral("GroupId"));
 
     if (groupId) {
         bool ok = false;
@@ -1468,7 +1468,7 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
             KUserGroup defaultGroupId(gid);
 
             if (defaultGroupId.isValid()) {
-                groupId->setCurrentText(QString("%1 (%2)").arg(defaultGroupId.name(), defaultGroupId.groupId().toString()));
+                groupId->setCurrentText(defaultGroupId.name() + QStringLiteral(" (") + defaultGroupId.groupId().toString() + QStringLiteral(")"));
             }
         }
     }
@@ -1476,13 +1476,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // File mask
     //
-    QCheckBox *useFileMode = findChild<QCheckBox *>("UseFileMode");
+    QCheckBox *useFileMode = findChild<QCheckBox *>(QStringLiteral("UseFileMode"));
 
     if (useFileMode) {
         useFileMode->setChecked(Smb4KMountSettings::useFileMode());
     }
 
-    KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
+    KLineEdit *fileMode = findChild<KLineEdit *>(QStringLiteral("FileMode"));
 
     if (fileMode) {
         fileMode->setText(Smb4KMountSettings::fileMode());
@@ -1491,13 +1491,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // Directory mode
     //
-    QCheckBox *useDirectoryMode = findChild<QCheckBox *>("UseDirectoryMode");
+    QCheckBox *useDirectoryMode = findChild<QCheckBox *>(QStringLiteral("UseDirectoryMode"));
 
     if (useDirectoryMode) {
         useDirectoryMode->setChecked(Smb4KMountSettings::useDirectoryMode());
     }
 
-    KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
+    KLineEdit *directoryMode = findChild<KLineEdit *>(QStringLiteral("DirectoryMode"));
 
     if (directoryMode) {
         directoryMode->setText(Smb4KMountSettings::directoryMode());
@@ -1507,7 +1507,7 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // CIFS Unix extensions support
     //
-    QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+    QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>(QStringLiteral("CifsExtensionsSupport"));
 
     if (cifsExtensionsSupport) {
         cifsExtensionsSupport->setChecked(Smb4KMountSettings::cifsUnixExtensionsSupport());
@@ -1516,13 +1516,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // Filesystem port
     //
-    QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
+    QCheckBox *useFilesystemPort = findChild<QCheckBox *>(QStringLiteral("UseFilesystemPort"));
 
     if (useFilesystemPort) {
         useFilesystemPort->setChecked(Smb4KMountSettings::useRemoteFileSystemPort());
     }
 
-    QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
+    QSpinBox *filesystemPort = findChild<QSpinBox *>(QStringLiteral("FileSystemPort"));
 
     if (filesystemPort) {
         filesystemPort->setValue(Smb4KMountSettings::remoteFileSystemPort());
@@ -1531,13 +1531,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // Write access
     //
-    QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
+    QCheckBox *useWriteAccess = findChild<QCheckBox *>(QStringLiteral("UseWriteAccess"));
 
     if (useWriteAccess) {
         useWriteAccess->setChecked(Smb4KMountSettings::useWriteAccess());
     }
 
-    KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
+    KComboBox *writeAccess = findChild<KComboBox *>(QStringLiteral("WriteAccess"));
 
     if (writeAccess) {
         QString writeAccessString = Smb4KMountSettings::self()->writeAccessItem()->choices().value(Smb4KMountSettings::writeAccess()).label;
@@ -1547,13 +1547,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // SMB mount protocol version
     //
-    QCheckBox *useMountProtocol = findChild<QCheckBox *>("UseMountProtocolVersion");
+    QCheckBox *useMountProtocol = findChild<QCheckBox *>(QStringLiteral("UseMountProtocolVersion"));
 
     if (useMountProtocol) {
         useMountProtocol->setChecked(Smb4KMountSettings::useSmbProtocolVersion());
     }
 
-    KComboBox *mountProtocol = findChild<KComboBox *>("MountProtocolVersion");
+    KComboBox *mountProtocol = findChild<KComboBox *>(QStringLiteral("MountProtocolVersion"));
 
     if (mountProtocol) {
         QString mountProtocolVersionString =
@@ -1564,13 +1564,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // Security mode
     //
-    QCheckBox *useSecurityMode = findChild<QCheckBox *>("UseSecurityMode");
+    QCheckBox *useSecurityMode = findChild<QCheckBox *>(QStringLiteral("UseSecurityMode"));
 
     if (useSecurityMode) {
         useSecurityMode->setChecked(Smb4KMountSettings::useSecurityMode());
     }
 
-    KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
+    KComboBox *securityMode = findChild<KComboBox *>(QStringLiteral("SecurityMode"));
 
     if (securityMode) {
         QString securityModeString = Smb4KMountSettings::self()->securityModeItem()->choices().value(Smb4KMountSettings::securityMode()).label;
@@ -1581,13 +1581,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // Client protocol versions
     //
-    QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>("UseClientProtocolVersions");
+    QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>(QStringLiteral("UseClientProtocolVersions"));
 
     if (useClientProtocolVersions) {
         useClientProtocolVersions->setChecked(Smb4KSettings::useClientProtocolVersions());
     }
 
-    KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>("MinimalClientProtocolVersion");
+    KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>(QStringLiteral("MinimalClientProtocolVersion"));
 
     if (minimalClientProtocolVersion) {
         QString minimalClientProtocolVersionString =
@@ -1595,7 +1595,7 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
         minimalClientProtocolVersion->setCurrentText(minimalClientProtocolVersionString);
     }
 
-    KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>("MaximalClientProtocolVersion");
+    KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>(QStringLiteral("MaximalClientProtocolVersion"));
 
     if (maximalClientProtocolVersion) {
         QString maximalClientProtocolVersionString =
@@ -1606,13 +1606,13 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // SMB port
     //
-    QCheckBox *useSmbPort = findChild<QCheckBox *>("UseSmbPort");
+    QCheckBox *useSmbPort = findChild<QCheckBox *>(QStringLiteral("UseSmbPort"));
 
     if (useSmbPort) {
         useSmbPort->setChecked(Smb4KSettings::useRemoteSmbPort());
     }
 
-    QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
+    QSpinBox *smbPort = findChild<QSpinBox *>(QStringLiteral("SmbPort"));
 
     if (smbPort) {
         smbPort->setValue(Smb4KSettings::remoteSmbPort());
@@ -1621,7 +1621,7 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     //
     // Kerberos
     //
-    QCheckBox *useKerberos = findChild<QCheckBox *>("UseKerberos");
+    QCheckBox *useKerberos = findChild<QCheckBox *>(QStringLiteral("UseKerberos"));
 
     if (useKerberos) {
         useKerberos->setChecked(Smb4KSettings::useKerberos());
@@ -1631,20 +1631,20 @@ void Smb4KCustomOptionsDialog::setDefaultValues()
     // MAC address & Wake-On-LAN features
     //
     if (m_options->type() == Host) {
-        KLineEdit *macAddress = findChild<KLineEdit *>("MACAddress");
+        KLineEdit *macAddress = findChild<KLineEdit *>(QStringLiteral("MACAddress"));
 
         if (macAddress) {
             macAddress->clear();
-            macAddress->setInputMask("HH:HH:HH:HH:HH:HH;_");
+            macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_"));
         }
 
-        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
+        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeScan"));
 
         if (sendPacketBeforeScan) {
             sendPacketBeforeScan->setChecked(false);
         }
 
-        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
+        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeMount"));
 
         if (sendPacketBeforeMount) {
             sendPacketBeforeMount->setChecked(false);
@@ -1658,7 +1658,7 @@ void Smb4KCustomOptionsDialog::saveValues()
     // Always remount the share
     //
     if (m_options->type() == Share) {
-        QCheckBox *remountAlways = findChild<QCheckBox *>("RemountAlways");
+        QCheckBox *remountAlways = findChild<QCheckBox *>(QStringLiteral("RemountAlways"));
 
         if (remountAlways) {
             if (remountAlways->isChecked()) {
@@ -1672,16 +1672,16 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // User Id
     //
-    QCheckBox *useUserId = findChild<QCheckBox *>("UseUserId");
+    QCheckBox *useUserId = findChild<QCheckBox *>(QStringLiteral("UseUserId"));
 
     if (useUserId) {
         m_options->setUseUser(useUserId->isChecked());
     }
 
-    KComboBox *userId = findChild<KComboBox *>("UserId");
+    KComboBox *userId = findChild<KComboBox *>(QStringLiteral("UserId"));
 
     if (userId) {
-        QString selectedUserIdString = userId->currentText().section("(", 1, 1).section(")", 0, 0).trimmed();
+        QString selectedUserIdString = userId->currentText().section(QStringLiteral("("), 1, 1).section(QStringLiteral(")"), 0, 0).trimmed();
 
         bool ok = false;
         K_UID uid = (K_UID)selectedUserIdString.toInt(&ok);
@@ -1698,16 +1698,16 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // Group Id
     //
-    QCheckBox *useGroupId = findChild<QCheckBox *>("UseGroupId");
+    QCheckBox *useGroupId = findChild<QCheckBox *>(QStringLiteral("UseGroupId"));
 
     if (useGroupId) {
         m_options->setUseGroup(useGroupId->isChecked());
     }
 
-    KComboBox *groupId = findChild<KComboBox *>("GroupId");
+    KComboBox *groupId = findChild<KComboBox *>(QStringLiteral("GroupId"));
 
     if (groupId) {
-        QString selectedGroupIdString = groupId->currentText().section("(", 1, 1).section(")", 0, 0).trimmed();
+        QString selectedGroupIdString = groupId->currentText().section(QStringLiteral("("), 1, 1).section(QStringLiteral(")"), 0, 0).trimmed();
 
         bool ok = false;
         K_GID gid = (K_GID)selectedGroupIdString.toInt(&ok);
@@ -1724,13 +1724,13 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // File mode
     //
-    QCheckBox *useFileMode = findChild<QCheckBox *>("UseFileMode");
+    QCheckBox *useFileMode = findChild<QCheckBox *>(QStringLiteral("UseFileMode"));
 
     if (useFileMode) {
         m_options->setUseFileMode(useFileMode->isChecked());
     }
 
-    KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
+    KLineEdit *fileMode = findChild<KLineEdit *>(QStringLiteral("FileMode"));
 
     if (fileMode) {
         m_options->setFileMode(fileMode->text());
@@ -1739,13 +1739,13 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // Directory mode
     //
-    QCheckBox *useDirectoryMode = findChild<QCheckBox *>("UseDirectoryMode");
+    QCheckBox *useDirectoryMode = findChild<QCheckBox *>(QStringLiteral("UseDirectoryMode"));
 
     if (useDirectoryMode) {
         m_options->setUseDirectoryMode(useDirectoryMode->isChecked());
     }
 
-    KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
+    KLineEdit *directoryMode = findChild<KLineEdit *>(QStringLiteral("DirectoryMode"));
 
     if (directoryMode) {
         m_options->setDirectoryMode(directoryMode->text());
@@ -1755,7 +1755,7 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // CIFS Unix extensions support
     //
-    QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>("CifsExtensionsSupport");
+    QCheckBox *cifsExtensionsSupport = findChild<QCheckBox *>(QStringLiteral("CifsExtensionsSupport"));
 
     if (cifsExtensionsSupport) {
         m_options->setCifsUnixExtensionsSupport(cifsExtensionsSupport->isChecked());
@@ -1764,13 +1764,13 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // Filesystem port
     //
-    QCheckBox *useFilesystemPort = findChild<QCheckBox *>("UseFilesystemPort");
+    QCheckBox *useFilesystemPort = findChild<QCheckBox *>(QStringLiteral("UseFilesystemPort"));
 
     if (useFilesystemPort) {
         m_options->setUseFileSystemPort(useFilesystemPort->isChecked());
     }
 
-    QSpinBox *filesystemPort = findChild<QSpinBox *>("FileSystemPort");
+    QSpinBox *filesystemPort = findChild<QSpinBox *>(QStringLiteral("FileSystemPort"));
 
     if (filesystemPort) {
         m_options->setFileSystemPort(filesystemPort->value());
@@ -1779,13 +1779,13 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // Write access
     //
-    QCheckBox *useWriteAccess = findChild<QCheckBox *>("UseWriteAccess");
+    QCheckBox *useWriteAccess = findChild<QCheckBox *>(QStringLiteral("UseWriteAccess"));
 
     if (useWriteAccess) {
         m_options->setUseWriteAccess(useWriteAccess->isChecked());
     }
 
-    KComboBox *writeAccess = findChild<KComboBox *>("WriteAccess");
+    KComboBox *writeAccess = findChild<KComboBox *>(QStringLiteral("WriteAccess"));
 
     if (writeAccess) {
         QList<KCoreConfigSkeleton::ItemEnum::Choice> writeAccessChoices = Smb4KMountSettings::self()->writeAccessItem()->choices();
@@ -1801,13 +1801,13 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // SMB mount protocol version
     //
-    QCheckBox *useMountProtocol = findChild<QCheckBox *>("UseMountProtocolVersion");
+    QCheckBox *useMountProtocol = findChild<QCheckBox *>(QStringLiteral("UseMountProtocolVersion"));
 
     if (useMountProtocol) {
         m_options->setUseMountProtocolVersion(useMountProtocol->isChecked());
     }
 
-    KComboBox *mountProtocol = findChild<KComboBox *>("MountProtocolVersion");
+    KComboBox *mountProtocol = findChild<KComboBox *>(QStringLiteral("MountProtocolVersion"));
 
     if (mountProtocol) {
         QList<KCoreConfigSkeleton::ItemEnum::Choice> smbProtocolVersionChoices = Smb4KMountSettings::self()->smbProtocolVersionItem()->choices();
@@ -1823,13 +1823,13 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // Security mode
     //
-    QCheckBox *useSecurityMode = findChild<QCheckBox *>("UseSecurityMode");
+    QCheckBox *useSecurityMode = findChild<QCheckBox *>(QStringLiteral("UseSecurityMode"));
 
     if (useSecurityMode) {
         m_options->setUseSecurityMode(useSecurityMode->isChecked());
     }
 
-    KComboBox *securityMode = findChild<KComboBox *>("SecurityMode");
+    KComboBox *securityMode = findChild<KComboBox *>(QStringLiteral("SecurityMode"));
 
     if (securityMode) {
         QList<KCoreConfigSkeleton::ItemEnum::Choice> securityModeChoices = Smb4KMountSettings::self()->securityModeItem()->choices();
@@ -1846,13 +1846,13 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // Client protocol versions
     //
-    QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>("UseClientProtocolVersions");
+    QCheckBox *useClientProtocolVersions = findChild<QCheckBox *>(QStringLiteral("UseClientProtocolVersions"));
 
     if (useClientProtocolVersions) {
         m_options->setUseClientProtocolVersions(useClientProtocolVersions->isChecked());
     }
 
-    KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>("MinimalClientProtocolVersion");
+    KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>(QStringLiteral("MinimalClientProtocolVersion"));
 
     if (minimalClientProtocolVersion) {
         QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalClientProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
@@ -1865,7 +1865,7 @@ void Smb4KCustomOptionsDialog::saveValues()
         }
     }
 
-    KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>("MaximalClientProtocolVersion");
+    KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>(QStringLiteral("MaximalClientProtocolVersion"));
 
     if (maximalClientProtocolVersion) {
         QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
@@ -1881,20 +1881,20 @@ void Smb4KCustomOptionsDialog::saveValues()
     //
     // SMB port
     //
-    QCheckBox *useSmbPort = findChild<QCheckBox *>("UseSmbPort");
+    QCheckBox *useSmbPort = findChild<QCheckBox *>(QStringLiteral("UseSmbPort"));
 
     if (useSmbPort) {
         m_options->setUseSmbPort(useSmbPort->isChecked());
     }
 
-    QSpinBox *smbPort = findChild<QSpinBox *>("SmbPort");
+    QSpinBox *smbPort = findChild<QSpinBox *>(QStringLiteral("SmbPort"));
 
     if (smbPort) {
         m_options->setSmbPort(smbPort->value());
     }
 
     // Kerberos
-    QCheckBox *useKerberos = findChild<QCheckBox *>("UseKerberos");
+    QCheckBox *useKerberos = findChild<QCheckBox *>(QStringLiteral("UseKerberos"));
 
     if (useKerberos) {
         m_options->setUseKerberos(useKerberos->isChecked());
@@ -1902,19 +1902,19 @@ void Smb4KCustomOptionsDialog::saveValues()
 
     // MAC address & Wake-On-LAN features
     if (m_options->type() == Host) {
-        KLineEdit *macAddress = findChild<KLineEdit *>("MACAddress");
+        KLineEdit *macAddress = findChild<KLineEdit *>(QStringLiteral("MACAddress"));
 
         if (macAddress) {
             m_options->setMACAddress(macAddress->text());
         }
 
-        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
+        QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeScan"));
 
         if (sendPacketBeforeScan) {
             m_options->setWOLSendBeforeNetworkScan(sendPacketBeforeScan->isChecked());
         }
 
-        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
+        QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeMount"));
 
         if (sendPacketBeforeMount) {
             m_options->setWOLSendBeforeMount(sendPacketBeforeMount->isChecked());
@@ -1954,15 +1954,15 @@ void Smb4KCustomOptionsDialog::slotOKClicked()
 
 void Smb4KCustomOptionsDialog::slotEnableWOLFeatures(const QString &mac)
 {
-    QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
+    QRegExp exp(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
-    QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>("SendPacketBeforeScan");
+    QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeScan"));
 
     if (sendPacketBeforeScan) {
         sendPacketBeforeScan->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
     }
 
-    QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>("SendPacketBeforeMount");
+    QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeMount"));
 
     if (sendPacketBeforeMount) {
         sendPacketBeforeMount->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
@@ -1975,13 +1975,13 @@ void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
     //
     // User id
     //
-    QCheckBox *useUserId = findChild<QCheckBox *>("UseUserId");
+    QCheckBox *useUserId = findChild<QCheckBox *>(QStringLiteral("UseUserId"));
 
     if (useUserId) {
         useUserId->setEnabled(!support);
     }
 
-    KComboBox *userId = findChild<KComboBox *>("UserId");
+    KComboBox *userId = findChild<KComboBox *>(QStringLiteral("UserId"));
 
     if (userId) {
         userId->setEnabled(!support);
@@ -1990,13 +1990,13 @@ void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
     //
     // Group id
     //
-    QCheckBox *useGroupId = findChild<QCheckBox *>("UseGroupId");
+    QCheckBox *useGroupId = findChild<QCheckBox *>(QStringLiteral("UseGroupId"));
 
     if (useGroupId) {
         useGroupId->setEnabled(!support);
     }
 
-    KComboBox *groupId = findChild<KComboBox *>("GroupId");
+    KComboBox *groupId = findChild<KComboBox *>(QStringLiteral("GroupId"));
 
     if (groupId) {
         groupId->setEnabled(!support);
@@ -2005,13 +2005,13 @@ void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
     //
     // File mode
     //
-    QCheckBox *useFileMode = findChild<QCheckBox *>("UseFileMode");
+    QCheckBox *useFileMode = findChild<QCheckBox *>(QStringLiteral("UseFileMode"));
 
     if (useFileMode) {
         useFileMode->setEnabled(!support);
     }
 
-    KLineEdit *fileMode = findChild<KLineEdit *>("FileMode");
+    KLineEdit *fileMode = findChild<KLineEdit *>(QStringLiteral("FileMode"));
 
     if (fileMode) {
         fileMode->setEnabled(!support);
@@ -2020,13 +2020,13 @@ void Smb4KCustomOptionsDialog::slotCifsExtensionsSupport(bool support)
     //
     // Directory mode
     //
-    QCheckBox *useDirectoryMode = findChild<QCheckBox *>("UseDirectoryMode");
+    QCheckBox *useDirectoryMode = findChild<QCheckBox *>(QStringLiteral("UseDirectoryMode"));
 
     if (useDirectoryMode) {
         useDirectoryMode->setEnabled(!support);
     }
 
-    KLineEdit *directoryMode = findChild<KLineEdit *>("DirectoryMode");
+    KLineEdit *directoryMode = findChild<KLineEdit *>(QStringLiteral("DirectoryMode"));
 
     if (directoryMode) {
         directoryMode->setEnabled(!support);
@@ -2041,13 +2041,13 @@ void Smb4KCustomOptionsDialog::slotUseClientProtocolVersions(bool use)
     //
     // Minimal client protocol version
     //
-    QLabel *minimalClientProtocolVersionLabel = findChild<QLabel *>("MinimalClientProtocolVersionLabel");
+    QLabel *minimalClientProtocolVersionLabel = findChild<QLabel *>(QStringLiteral("MinimalClientProtocolVersionLabel"));
 
     if (minimalClientProtocolVersionLabel) {
         minimalClientProtocolVersionLabel->setEnabled(use);
     }
 
-    KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>("MinimalClientProtocolVersion");
+    KComboBox *minimalClientProtocolVersion = findChild<KComboBox *>(QStringLiteral("MinimalClientProtocolVersion"));
 
     if (minimalClientProtocolVersion) {
         minimalClientProtocolVersion->setEnabled(use);
@@ -2056,13 +2056,13 @@ void Smb4KCustomOptionsDialog::slotUseClientProtocolVersions(bool use)
     //
     // Maximal client protocol version
     //
-    QLabel *maximalClientProtocolVersionLabel = findChild<QLabel *>("MaximalClientProtocolVersionLabel");
+    QLabel *maximalClientProtocolVersionLabel = findChild<QLabel *>(QStringLiteral("MaximalClientProtocolVersionLabel"));
 
     if (maximalClientProtocolVersionLabel) {
         maximalClientProtocolVersionLabel->setEnabled(use);
     }
 
-    KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>("MaximalClientProtocolVersion");
+    KComboBox *maximalClientProtocolVersion = findChild<KComboBox *>(QStringLiteral("MaximalClientProtocolVersion"));
 
     if (maximalClientProtocolVersion) {
         maximalClientProtocolVersion->setEnabled(use);
