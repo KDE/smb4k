@@ -392,7 +392,7 @@ void Smb4KClientJob::initClientLibrary()
         int errorCode = errno;
 
         setError(ClientError);
-        setErrorText(strerror(errorCode));
+        setErrorText(QString::fromUtf8(strerror(errorCode)));
 
         emitResult();
         return;
@@ -407,7 +407,7 @@ void Smb4KClientJob::initClientLibrary()
         int errorCode = errno;
 
         setError(ClientError);
-        setErrorText(strerror(errorCode));
+        setErrorText(QString::fromUtf8(strerror(errorCode)));
 
         smbc_free_context(m_context, 1);
 
@@ -591,15 +591,15 @@ void Smb4KClientJob::initClientLibrary()
         if (minimal != -1 && maximal != -1) {
             switch (minimal) {
             case Smb4KSettings::EnumMinimalClientProtocolVersion::NT1: {
-                minimalClientProtocolVersionString = "NT1";
+                minimalClientProtocolVersionString = QStringLiteral("NT1");
                 break;
             }
             case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB2: {
-                minimalClientProtocolVersionString = "SMB2";
+                minimalClientProtocolVersionString = QStringLiteral("SMB2");
                 break;
             }
             case Smb4KSettings::EnumMinimalClientProtocolVersion::SMB3: {
-                minimalClientProtocolVersionString = "SMB3";
+                minimalClientProtocolVersionString = QStringLiteral("SMB3");
                 break;
             }
             default: {
@@ -609,15 +609,15 @@ void Smb4KClientJob::initClientLibrary()
 
             switch (Smb4KSettings::maximalClientProtocolVersion()) {
             case Smb4KSettings::EnumMaximalClientProtocolVersion::NT1: {
-                maximalClientProtocolVersionString = "NT1";
+                maximalClientProtocolVersionString = QStringLiteral("NT1");
                 break;
             }
             case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB2: {
-                maximalClientProtocolVersionString = "SMB2";
+                maximalClientProtocolVersionString = QStringLiteral("SMB2");
                 break;
             }
             case Smb4KSettings::EnumMaximalClientProtocolVersion::SMB3: {
-                maximalClientProtocolVersionString = "SMB3";
+                maximalClientProtocolVersionString = QStringLiteral("SMB3");
                 break;
             }
             default: {
@@ -627,9 +627,9 @@ void Smb4KClientJob::initClientLibrary()
         }
 
         if (!minimalClientProtocolVersionString.isEmpty() && !maximalClientProtocolVersionString.isEmpty()) {
-            smbc_setOptionProtocols(m_context, minimalClientProtocolVersionString.toLatin1(), maximalClientProtocolVersionString.toLatin1());
+            smbc_setOptionProtocols(m_context, minimalClientProtocolVersionString.toLatin1().data(), maximalClientProtocolVersionString.toLatin1().data());
         } else {
-            smbc_setOptionProtocols(m_context, NULL, NULL);
+            smbc_setOptionProtocols(m_context, nullptr, nullptr);
         }
     }
 
@@ -703,7 +703,7 @@ void Smb4KClientJob::doLookups()
     if (!openDirectory) {
         int errorCode = errno;
         setError(ClientError);
-        setErrorText(strerror(errorCode));
+        setErrorText(QString::fromUtf8(strerror(errorCode)));
         return;
     }
 
@@ -725,19 +725,19 @@ void Smb4KClientJob::doLookups()
             case EACCES:
             case EPERM: {
                 setError(AccessDeniedError);
-                setErrorText(strerror(errorCode));
+                setErrorText(QString::fromUtf8(strerror(errorCode)));
                 break;
             }
             case ENOENT: {
                 if ((*pNetworkItem)->type() != Network) {
                     setError(ClientError);
-                    setErrorText(strerror(errorCode));
+                    setErrorText(QString::fromUtf8(strerror(errorCode)));
                 }
                 break;
             }
             default: {
                 setError(ClientError);
-                setErrorText(strerror(errorCode));
+                setErrorText(QString::fromUtf8(strerror(errorCode)));
                 break;
             }
             }
@@ -755,7 +755,7 @@ void Smb4KClientJob::doLookups()
     if (!readDirectory) {
         int errorCode = errno;
         setError(ClientError);
-        setErrorText(strerror(errorCode));
+        setErrorText(QString::fromUtf8(strerror(errorCode)));
         return;
     }
 
@@ -1014,7 +1014,7 @@ void Smb4KClientJob::doLookups()
             //
             QString name = QString::fromUtf8(directoryEntry->name);
 
-            if (name != "." && name != "..") {
+            if (name != QStringLiteral(".") && name != QStringLiteral("..")) {
                 //
                 // Create the URL for the discovered item
                 //
@@ -1126,7 +1126,7 @@ void Smb4KClientJob::doLookups()
         int errorCode = errno;
 
         setError(ClientError);
-        setErrorText(strerror(errorCode));
+        setErrorText(QString::fromUtf8(strerror(errorCode)));
         return;
     }
 
@@ -1153,21 +1153,21 @@ void Smb4KClientJob::doPrinting()
     //
     // Check if we can directly print the file
     //
-    if (m_fileItem.mimetype() == "application/postscript" || m_fileItem.mimetype() == "application/pdf"
-        || m_fileItem.mimetype().startsWith(QLatin1String("image"))) {
+    if (m_fileItem.mimetype() == QStringLiteral("application/postscript") || m_fileItem.mimetype() == QStringLiteral("application/pdf")
+        || m_fileItem.mimetype().startsWith(QStringLiteral("image"))) {
         //
         // Set the URL to the incoming file
         //
         fileUrl = m_fileItem.url();
-    } else if (m_fileItem.mimetype() == "application/x-shellscript" || m_fileItem.mimetype().startsWith(QLatin1String("text"))
-               || m_fileItem.mimetype().startsWith(QLatin1String("message"))) {
+    } else if (m_fileItem.mimetype() == QStringLiteral("application/x-shellscript") || m_fileItem.mimetype().startsWith(QStringLiteral("text"))
+               || m_fileItem.mimetype().startsWith(QStringLiteral("message"))) {
         //
         // Set a printer object
         //
         QPrinter printer(QPrinter::HighResolution);
-        printer.setCreator("Smb4K");
+        printer.setCreator(QStringLiteral("Smb4K"));
         printer.setOutputFormat(QPrinter::PdfFormat);
-        printer.setOutputFileName(QString("%1/smb4k_print.pdf").arg(tempDir.path()));
+        printer.setOutputFileName(tempDir.path() + QDir::separator() + QStringLiteral("smb4k_print.pdf"));
 
         //
         // Open the file that is to be printed and read it
@@ -1191,10 +1191,10 @@ void Smb4KClientJob::doPrinting()
         //
         QTextDocument doc;
 
-        if (m_fileItem.mimetype().endsWith(QLatin1String("html"))) {
-            doc.setHtml(contents.join(" "));
+        if (m_fileItem.mimetype().endsWith(QStringLiteral("html"))) {
+            doc.setHtml(contents.join(QStringLiteral(" ")));
         } else {
-            doc.setPlainText(contents.join("\n"));
+            doc.setPlainText(contents.join(QStringLiteral("\n")));
         }
 
         doc.print(&printer);
@@ -1203,7 +1203,7 @@ void Smb4KClientJob::doPrinting()
         // Set the URL to the converted file
         //
         fileUrl.setUrl(printer.outputFileName());
-        fileUrl.setScheme("file");
+        fileUrl.setScheme(QStringLiteral("file"));
     } else {
         Smb4KNotification::mimetypeNotSupported(m_fileItem.mimetype());
         return;
@@ -1217,7 +1217,7 @@ void Smb4KClientJob::doPrinting()
     if (!openPrinter) {
         int errorCode = errno;
         setError(ClientError);
-        setErrorText(strerror(errorCode));
+        setErrorText(QString::fromUtf8(strerror(errorCode)));
         return;
     }
 
@@ -1232,12 +1232,12 @@ void Smb4KClientJob::doPrinting()
         switch (errorCode) {
         case EACCES: {
             setError(AccessDeniedError);
-            setErrorText(strerror(errorCode));
+            setErrorText(QString::fromUtf8(strerror(errorCode)));
             break;
         }
         default: {
             setError(ClientError);
-            setErrorText(strerror(errorCode));
+            setErrorText(QString::fromUtf8(strerror(errorCode)));
             break;
         }
         }
@@ -1525,7 +1525,7 @@ void Smb4KWsDiscoveryJob::slotStartJob()
     //
     // Define the type
     //
-    KDQName type("wsdp:Device");
+    KDQName type(QStringLiteral("wsdp:Device"));
     type.setNameSpace(QStringLiteral("http://schemas.xmlsoap.org/ws/2006/02/devprof"));
 
     //
@@ -1578,15 +1578,21 @@ void Smb4KWsDiscoveryJob::slotProbeMatchReceived(const WSDiscoveryTargetService 
                     KDSoapValueList childValues = response.childValues();
 
                     for (const KDSoapValue &value : qAsConst(childValues)) {
-                        QString entry =
-                            value.childValues().child("Relationship").childValues().child("Host").childValues().child("Computer").value().toString();
+                        QString entry = value.childValues()
+                                            .child(QStringLiteral("Relationship"))
+                                            .childValues()
+                                            .child(QStringLiteral("Host"))
+                                            .childValues()
+                                            .child(QStringLiteral("Computer"))
+                                            .value()
+                                            .toString();
 
                         switch (*pProcess) {
                         case LookupDomains: {
                             //
                             // Get the name of the workgroup or domain
                             //
-                            QString workgroupName = entry.section(":", 1, -1);
+                            QString workgroupName = entry.section(QStringLiteral(":"), 1, -1);
 
                             //
                             // Work around an empty workgroup/domain name. Use the "LOCAL" domain from
@@ -1635,7 +1641,7 @@ void Smb4KWsDiscoveryJob::slotProbeMatchReceived(const WSDiscoveryTargetService 
                             //
                             // Get the workgroup name
                             //
-                            QString workgroupName = entry.section(":", 1, -1);
+                            QString workgroupName = entry.section(QStringLiteral(":"), 1, -1);
 
                             //
                             // Work around an empty workgroup/domain name. Use the "LOCAL" domain from
@@ -1651,10 +1657,10 @@ void Smb4KWsDiscoveryJob::slotProbeMatchReceived(const WSDiscoveryTargetService 
                             //
                             QString hostName;
 
-                            if (entry.contains('/')) {
-                                hostName = entry.section('/', 0, 0);
-                            } else if (entry.contains('\\')) {
-                                hostName = entry.section('\\', 0, 0);
+                            if (entry.contains(QStringLiteral("/"))) {
+                                hostName = entry.section(QStringLiteral("/"), 0, 0);
+                            } else if (entry.contains(QStringLiteral("\\"))) {
+                                hostName = entry.section(QStringLiteral("\\"), 0, 0);
                             }
 
                             //
@@ -1766,14 +1772,21 @@ void Smb4KWsDiscoveryJob::slotResolveMatchReceived(const WSDiscoveryTargetServic
                 KDSoapValueList childValues = response.childValues();
 
                 for (const KDSoapValue &value : qAsConst(childValues)) {
-                    QString entry = value.childValues().child("Relationship").childValues().child("Host").childValues().child("Computer").value().toString();
+                    QString entry = value.childValues()
+                                        .child(QStringLiteral("Relationship"))
+                                        .childValues()
+                                        .child(QStringLiteral("Host"))
+                                        .childValues()
+                                        .child(QStringLiteral("Computer"))
+                                        .value()
+                                        .toString();
 
                     switch (*pProcess) {
                     case LookupDomains: {
                         //
                         // Get the name of the workgroup or domain
                         //
-                        QString workgroupName = entry.section(":", 1, -1);
+                        QString workgroupName = entry.section(QStringLiteral(":"), 1, -1);
 
                         //
                         // Work around an empty workgroup/domain name. Use the "LOCAL" domain from
@@ -1822,7 +1835,7 @@ void Smb4KWsDiscoveryJob::slotResolveMatchReceived(const WSDiscoveryTargetServic
                         //
                         // Get the workgroup name
                         //
-                        QString workgroupName = entry.section(":", 1, -1);
+                        QString workgroupName = entry.section(QStringLiteral(":"), 1, -1);
 
                         //
                         // Work around an empty workgroup/domain name. Use the "LOCAL" domain from
@@ -1838,10 +1851,10 @@ void Smb4KWsDiscoveryJob::slotResolveMatchReceived(const WSDiscoveryTargetServic
                         //
                         QString hostName;
 
-                        if (entry.contains('/')) {
-                            hostName = entry.section('/', 0, 0);
-                        } else if (entry.contains('\\')) {
-                            hostName = entry.section('\\', 0, 0);
+                        if (entry.contains(QStringLiteral("/"))) {
+                            hostName = entry.section(QStringLiteral("/"), 0, 0);
+                        } else if (entry.contains(QStringLiteral("\\"))) {
+                            hostName = entry.section(QStringLiteral("\\"), 0, 0);
                         }
 
                         //
@@ -1965,11 +1978,11 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
     // Reload / cancel action
     //
     KDualAction *reloadAction = new KDualAction(toolBar);
-    reloadAction->setObjectName("reload_action");
+    reloadAction->setObjectName(QStringLiteral("reload_action"));
     reloadAction->setInactiveText(i18n("Reload"));
-    reloadAction->setInactiveIcon(KDE::icon("view-refresh"));
+    reloadAction->setInactiveIcon(KDE::icon(QStringLiteral("view-refresh")));
     reloadAction->setActiveText(i18n("Abort"));
-    reloadAction->setActiveIcon(KDE::icon("process-stop"));
+    reloadAction->setActiveIcon(KDE::icon(QStringLiteral("process-stop")));
     reloadAction->setActive(false);
     reloadAction->setAutoToggle(false);
 
@@ -1980,8 +1993,8 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
     //
     // Up action
     //
-    QAction *upAction = toolBar->addAction(KDE::icon("go-up"), i18n("Up"), this, SLOT(slotUpActionTriggered()));
-    upAction->setObjectName("up_action");
+    QAction *upAction = toolBar->addAction(KDE::icon(QStringLiteral("go-up")), i18n("Up"), this, SLOT(slotUpActionTriggered()));
+    upAction->setObjectName(QStringLiteral("up_action"));
     upAction->setEnabled(false);
 
     toolBar->addSeparator();
@@ -2102,7 +2115,7 @@ void Smb4KPreviewDialog::slotUpActionTriggered()
     // item. Also, disable the "Up" action, if necessary.
     //
     if (m_share->url().matches(u, QUrl::StripTrailingSlash)) {
-        findChild<QAction *>("up_action")->setEnabled(false);
+        findChild<QAction *>(QStringLiteral("up_action"))->setEnabled(false);
         m_currentItem = m_share;
     } else if (m_share->url().path().length() < u.path().length()) {
         FilePtr file = FilePtr(new Smb4KFile(u, Directory));
@@ -2227,7 +2240,7 @@ void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr> &list)
         //
         // Enable / disable the "Up" action
         //
-        findChild<QAction *>("up_action")->setEnabled(!m_share->url().matches(m_currentItem->url(), QUrl::StripTrailingSlash));
+        findChild<QAction *>(QStringLiteral("up_action"))->setEnabled(!m_share->url().matches(m_currentItem->url(), QUrl::StripTrailingSlash));
     }
 }
 
@@ -2379,12 +2392,12 @@ Smb4KPrintDialog::Smb4KPrintDialog(const SharePtr &share, QWidget *parent)
     //
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
     QPushButton *printButton = buttonBox->addButton(i18n("Print"), QDialogButtonBox::ActionRole);
-    printButton->setObjectName("print_button");
+    printButton->setObjectName(QStringLiteral("print_button"));
     printButton->setShortcut(Qt::CTRL | Qt::Key_P);
     connect(printButton, SIGNAL(clicked(bool)), this, SLOT(slotPrintButtonClicked()));
 
     QPushButton *cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
-    cancelButton->setObjectName("cancel_button");
+    cancelButton->setObjectName(QStringLiteral("cancel_button"));
     cancelButton->setShortcut(Qt::Key_Escape);
     cancelButton->setDefault(true);
     connect(cancelButton, SIGNAL(clicked(bool)), this, SLOT(slotCancelButtonClicked()));
@@ -2451,11 +2464,11 @@ void Smb4KPrintDialog::slotUrlChanged()
     //
     // Apply the settings to the buttons of the dialog's button box
     //
-    QPushButton *printButton = findChild<QPushButton *>("print_button");
+    QPushButton *printButton = findChild<QPushButton *>(QStringLiteral("print_button"));
     printButton->setEnabled(fileItem.url().isValid() && fileItem.isFile());
     printButton->setDefault(fileItem.url().isValid() && fileItem.isFile());
 
-    QPushButton *cancelButton = findChild<QPushButton *>("cancel_button");
+    QPushButton *cancelButton = findChild<QPushButton *>(QStringLiteral("cancel_button"));
     cancelButton->setDefault(!fileItem.url().isValid() || !fileItem.isFile());
 }
 
@@ -2472,9 +2485,9 @@ void Smb4KPrintDialog::slotPrintButtonClicked()
         // Check if the mime type is supported or if the file can be
         // converted into a supported mimetype
         //
-        if (m_fileItem.mimetype() != "application/postscript" && m_fileItem.mimetype() != "application/pdf"
-            && m_fileItem.mimetype() != "application/x-shellscript" && !m_fileItem.mimetype().startsWith(QLatin1String("text"))
-            && !m_fileItem.mimetype().startsWith(QLatin1String("message")) && !m_fileItem.mimetype().startsWith(QLatin1String("image"))) {
+        if (m_fileItem.mimetype() != QStringLiteral("application/postscript") && m_fileItem.mimetype() != QStringLiteral("application/pdf")
+            && m_fileItem.mimetype() != QStringLiteral("application/x-shellscript") && !m_fileItem.mimetype().startsWith(QStringLiteral("text"))
+            && !m_fileItem.mimetype().startsWith(QStringLiteral("message")) && !m_fileItem.mimetype().startsWith(QStringLiteral("image"))) {
             Smb4KNotification::mimetypeNotSupported(m_fileItem.mimetype());
             return;
         }
