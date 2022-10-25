@@ -261,7 +261,7 @@ QString Smb4KCustomOptions::hostName() const
 
 QString Smb4KCustomOptions::shareName() const
 {
-    if (d->url.path().startsWith('/')) {
+    if (d->url.path().startsWith(QStringLiteral("/"))) {
         return d->url.path().remove(0, 1);
     }
 
@@ -665,7 +665,7 @@ bool Smb4KCustomOptions::useKerberos() const
 
 void Smb4KCustomOptions::setMACAddress(const QString &macAddress)
 {
-    QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
+    QRegExp exp(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
     if (d->macAddress != macAddress && exp.exactMatch(macAddress)) {
         d->macAddress = macAddress;
@@ -711,91 +711,91 @@ QMap<QString, QString> Smb4KCustomOptions::customOptions() const
     //
     // Remounting
     //
-    entries.insert("remount", QString("%1").arg(d->remount));
+    entries.insert(QStringLiteral("remount"), QString::number(d->remount));
 
     //
     // User
     //
-    entries.insert("use_user", QString("%1").arg(d->useUser));
-    entries.insert("uid", d->user.userId().toString());
+    entries.insert(QStringLiteral("use_user"), QString::number(d->useUser));
+    entries.insert(QStringLiteral("uid"), d->user.userId().toString());
 
     //
     // Group
     //
-    entries.insert("use_group", QString("%1").arg(d->useGroup));
-    entries.insert("gid", d->group.groupId().toString());
+    entries.insert(QStringLiteral("use_group"), QString::number(d->useGroup));
+    entries.insert(QStringLiteral("gid"), d->group.groupId().toString());
 
     //
     // File mode
     //
-    entries.insert("use_file_mode", QString("%1").arg(d->useFileMode));
-    entries.insert("file_mode", d->fileMode);
+    entries.insert(QStringLiteral("use_file_mode"), QString::number(d->useFileMode));
+    entries.insert(QStringLiteral("file_mode"), d->fileMode);
 
     //
     // Directory mode
     //
-    entries.insert("use_directory_mode", QString("%1").arg(d->useDirectoryMode));
-    entries.insert("directory_mode", d->directoryMode);
+    entries.insert(QStringLiteral("use_directory_mode"), QString::number(d->useDirectoryMode));
+    entries.insert(QStringLiteral("directory_mode"), d->directoryMode);
 
 #if defined(Q_OS_LINUX)
     //
     // Unix CIFS extensions supported
     //
-    entries.insert("cifs_unix_extensions_support", QString("%1").arg(d->cifsUnixExtensionsSupport));
+    entries.insert(QStringLiteral("cifs_unix_extensions_support"), QString::number(d->cifsUnixExtensionsSupport));
 
     //
     // File system port
     //
-    entries.insert("use_filesystem_port", QString("%1").arg(d->useFileSystemPort));
-    entries.insert("filesystem_port", QString("%1").arg(fileSystemPort()));
+    entries.insert(QStringLiteral("use_filesystem_port"), QString::number(d->useFileSystemPort));
+    entries.insert(QStringLiteral("filesystem_port"), QString::number(fileSystemPort()));
 
     //
     // Mount protocol version
     //
-    entries.insert("use_smb_mount_protocol_version", QString("%1").arg(d->useMountProtocolVersion));
-    entries.insert("smb_mount_protocol_version", QString("%1").arg(d->mountProtocolVersion));
+    entries.insert(QStringLiteral("use_smb_mount_protocol_version"), QString::number(d->useMountProtocolVersion));
+    entries.insert(QStringLiteral("smb_mount_protocol_version"), QString::number(d->mountProtocolVersion));
 
     //
     // Security mode
     //
-    entries.insert("use_security_mode", QString("%1").arg(d->useSecurityMode));
-    entries.insert("security_mode", QString("%1").arg(d->securityMode));
+    entries.insert(QStringLiteral("use_security_mode"), QString::number(d->useSecurityMode));
+    entries.insert(QStringLiteral("security_mode"), QString::number(d->securityMode));
 
     //
     // Write access
     //
-    entries.insert("use_write_access", QString("%1").arg(d->useWriteAccess));
-    entries.insert("write_access", QString("%1").arg(d->writeAccess));
+    entries.insert(QStringLiteral("use_write_access"), QString::number(d->useWriteAccess));
+    entries.insert(QStringLiteral("write_access"), QString::number(d->writeAccess));
 #endif
 
     //
     // Client protocol versions
     //
-    entries.insert("use_client_protocol_versions", QString("%1").arg(d->useClientProtocolVersions));
-    entries.insert("minimal_client_protocol_version", QString("%1").arg(d->minimalClientProtocolVersion));
-    entries.insert("maximal_client_protocol_version", QString("%1").arg(d->maximalClientProtocolVersion));
+    entries.insert(QStringLiteral("use_client_protocol_versions"), QString::number(d->useClientProtocolVersions));
+    entries.insert(QStringLiteral("minimal_client_protocol_version"), QString::number(d->minimalClientProtocolVersion));
+    entries.insert(QStringLiteral("maximal_client_protocol_version"), QString::number(d->maximalClientProtocolVersion));
 
     //
     // SMB port used by the client
     //
-    entries.insert("use_smb_port", QString("%1").arg(d->useSmbPort));
-    entries.insert("smb_port", QString("%1").arg(smbPort()));
+    entries.insert(QStringLiteral("use_smb_port"), QString::number(d->useSmbPort));
+    entries.insert(QStringLiteral("smb_port"), QString::number(smbPort()));
 
     //
     // Usage of Kerberos
     //
-    entries.insert("kerberos", QString("%1").arg(d->useKerberos));
+    entries.insert(QStringLiteral("kerberos"), QString::number(d->useKerberos));
 
     //
     // MAC address
     //
-    entries.insert("mac_address", d->macAddress);
+    entries.insert(QStringLiteral("mac_address"), d->macAddress);
 
     //
     // Wake-On_LAN settings
     //
-    entries.insert("wol_send_before_first_scan", QString("%1").arg(d->wakeOnLanBeforeFirstScan));
-    entries.insert("wol_send_before_mount", QString("%1").arg(d->wakeOnLanBeforeMount));
+    entries.insert(QStringLiteral("wol_send_before_first_scan"), QString::number(d->wakeOnLanBeforeFirstScan));
+    entries.insert(QStringLiteral("wol_send_before_mount"), QString::number(d->wakeOnLanBeforeMount));
 
     return entries;
 }
