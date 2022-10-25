@@ -1,7 +1,7 @@
 /*
     This class handles the bookmarks.
 
-    SPDX-FileCopyrightText: 2004-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

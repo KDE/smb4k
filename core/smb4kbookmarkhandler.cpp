@@ -1,7 +1,7 @@
 /*
     This class handles the bookmarks.
 
-    SPDX-FileCopyrightText: 2004-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -205,7 +205,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
         //
         if (!bookmark->label().isEmpty() && findBookmarkByLabel(bookmark->label())) {
             Smb4KNotification::bookmarkLabelInUse(bookmark.data());
-            bookmark->setLabel(QString("%1 (1)").arg(bookmark->label()));
+            bookmark->setLabel(bookmark->label() + QStringLiteral(" (1)"));
         }
 
         //
@@ -270,15 +270,15 @@ void Smb4KBookmarkHandler::removeCategory(const QString &name)
 
 void Smb4KBookmarkHandler::writeBookmarkList()
 {
-    QFile xmlFile(dataLocation() + QDir::separator() + "bookmarks.xml");
+    QFile xmlFile(dataLocation() + QDir::separator() + QStringLiteral("bookmarks.xml"));
 
     if (!d->bookmarks.isEmpty()) {
         if (xmlFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QXmlStreamWriter xmlWriter(&xmlFile);
             xmlWriter.setAutoFormatting(true);
             xmlWriter.writeStartDocument();
-            xmlWriter.writeStartElement("bookmarks");
-            xmlWriter.writeAttribute("version", "3.1");
+            xmlWriter.writeStartElement(QStringLiteral("bookmarks"));
+            xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("3.1"));
 
             for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
                 if (!bookmark->url().isValid()) {
@@ -286,14 +286,14 @@ void Smb4KBookmarkHandler::writeBookmarkList()
                     continue;
                 }
 
-                xmlWriter.writeStartElement("bookmark");
-                xmlWriter.writeAttribute("profile", bookmark->profile());
-                xmlWriter.writeAttribute("category", bookmark->categoryName());
+                xmlWriter.writeStartElement(QStringLiteral("bookmark"));
+                xmlWriter.writeAttribute(QStringLiteral("profile"), bookmark->profile());
+                xmlWriter.writeAttribute(QStringLiteral("category"), bookmark->categoryName());
 
-                xmlWriter.writeTextElement("workgroup", bookmark->workgroupName());
-                xmlWriter.writeTextElement("url", bookmark->url().toString(QUrl::RemovePassword | QUrl::RemovePort));
-                xmlWriter.writeTextElement("ip", bookmark->hostIpAddress());
-                xmlWriter.writeTextElement("label", bookmark->label());
+                xmlWriter.writeTextElement(QStringLiteral("workgroup"), bookmark->workgroupName());
+                xmlWriter.writeTextElement(QStringLiteral("url"), bookmark->url().toString(QUrl::RemovePassword | QUrl::RemovePort));
+                xmlWriter.writeTextElement(QStringLiteral("ip"), bookmark->hostIpAddress());
+                xmlWriter.writeTextElement(QStringLiteral("label"), bookmark->label());
 
                 xmlWriter.writeEndElement();
             }
@@ -321,7 +321,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
     //
     // Locate the XML file and read the bookmarks
     //
-    QFile xmlFile(dataLocation() + QDir::separator() + "bookmarks.xml");
+    QFile xmlFile(dataLocation() + QDir::separator() + QStringLiteral("bookmarks.xml"));
 
     if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QXmlStreamReader xmlReader(&xmlFile);
@@ -330,39 +330,41 @@ void Smb4KBookmarkHandler::readBookmarkList()
             xmlReader.readNext();
 
             if (xmlReader.isStartElement()) {
-                if (xmlReader.name() == "bookmarks" && (xmlReader.attributes().value("version") != "3.0" && xmlReader.attributes().value("version") != "3.1")) {
+                if (xmlReader.name() == QStringLiteral("bookmarks")
+                    && (xmlReader.attributes().value(QStringLiteral("version")) != QStringLiteral("3.0")
+                        && xmlReader.attributes().value(QStringLiteral("version")) != QStringLiteral("3.1"))) {
                     xmlReader.raiseError(i18n("The format of %1 is not supported.", xmlFile.fileName()));
                     break;
                 } else {
-                    if (xmlReader.name() == "bookmark") {
-                        QString profile = xmlReader.attributes().value("profile").toString();
+                    if (xmlReader.name() == QStringLiteral("bookmark")) {
+                        QString profile = xmlReader.attributes().value(QStringLiteral("profile")).toString();
 
                         BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark());
                         bookmark->setProfile(profile);
 
-                        if (xmlReader.attributes().hasAttribute("group")) {
+                        if (xmlReader.attributes().hasAttribute(QStringLiteral("group"))) {
                             // For backward compatibility (since Smb4K 3.0.72)
                             // TODO: Remove with Smb4K >> 3.1
-                            bookmark->setCategoryName(xmlReader.attributes().value("group").toString());
+                            bookmark->setCategoryName(xmlReader.attributes().value(QStringLiteral("group")).toString());
                         } else {
-                            bookmark->setCategoryName(xmlReader.attributes().value("category").toString());
+                            bookmark->setCategoryName(xmlReader.attributes().value(QStringLiteral("category")).toString());
                         }
 
-                        while (!(xmlReader.isEndElement() && xmlReader.name() == "bookmark")) {
+                        while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("bookmark"))) {
                             xmlReader.readNext();
 
                             if (xmlReader.isStartElement()) {
-                                if (xmlReader.name() == "workgroup") {
+                                if (xmlReader.name() == QStringLiteral("workgroup")) {
                                     bookmark->setWorkgroupName(xmlReader.readElementText());
-                                } else if (xmlReader.name() == "url") {
+                                } else if (xmlReader.name() == QStringLiteral("url")) {
                                     bookmark->setUrl(QUrl(xmlReader.readElementText()));
-                                } else if (xmlReader.name() == "login") {
+                                } else if (xmlReader.name() == QStringLiteral("login")) {
                                     // For backward compatibility (since Smb4K 3.1.71)
                                     // TODO: Remove with Smb4K >> 3.2
                                     bookmark->setUserName(xmlReader.readElementText());
-                                } else if (xmlReader.name() == "ip") {
+                                } else if (xmlReader.name() == QStringLiteral("ip")) {
                                     bookmark->setHostIpAddress(xmlReader.readElementText());
-                                } else if (xmlReader.name() == "label") {
+                                } else if (xmlReader.name() == QStringLiteral("label")) {
                                     bookmark->setLabel(xmlReader.readElementText());
                                 }
 
