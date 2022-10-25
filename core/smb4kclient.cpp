@@ -1,7 +1,7 @@
 /*
     This class provides the interface to the libsmbclient library.
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -98,7 +98,7 @@ void Smb4KClient::lookupDomains()
                     if (wakeOnLanEntries.at(i)->hasIpAddress()) {
                         addr.setAddress(wakeOnLanEntries.at(i)->ipAddress());
                     } else {
-                        addr.setAddress("255.255.255.255");
+                        addr.setAddress(QStringLiteral("255.255.255.255"));
                     }
 
                     // Construct magic sequence
@@ -110,11 +110,12 @@ void Smb4KClient::lookupDomains()
                     }
 
                     // 16 times the MAC address
-                    QStringList parts = wakeOnLanEntries.at(i)->macAddress().split(':', Qt::SkipEmptyParts);
+                    QStringList parts = wakeOnLanEntries.at(i)->macAddress().split(QStringLiteral(":"), Qt::SkipEmptyParts);
 
                     for (int j = 0; j < 16; ++j) {
                         for (int k = 0; k < parts.size(); ++k) {
-                            sequence.append(QChar(QString("0x%1").arg(parts.at(k)).toInt(0, 16)).toLatin1());
+                            QString item = QStringLiteral("0x") + parts.at(k);
+                            sequence.append(QChar(item.toInt(nullptr, 16)).toLatin1());
                         }
                     }
 
@@ -141,7 +142,7 @@ void Smb4KClient::lookupDomains()
     // Emit the aboutToStart() signal
     //
     NetworkItemPtr networkItem = NetworkItemPtr(new Smb4KBasicNetworkItem(Network));
-    networkItem->setUrl(QUrl("smb://"));
+    networkItem->setUrl(QUrl(QStringLiteral("smb://")));
     Q_EMIT aboutToStart(networkItem, LookupDomains);
 
     //
