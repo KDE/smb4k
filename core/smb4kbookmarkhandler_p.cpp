@@ -1,7 +1,7 @@
 /*
     Private classes for the bookmark handler
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -75,7 +75,7 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks, co
     //
     // Fill the completion objects
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
 
     if (group.hasKey("GroupCompletion")) {
         // For backward compatibility (since Smb4K 3.0.72).
@@ -85,7 +85,7 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks, co
         categoryCombo->completionObject()->setItems(group.readEntry("CategoryCompletion", m_categories));
     }
 
-    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    KLineEdit *labelEdit = findChild<KLineEdit *>(QStringLiteral("LabelEdit"));
     labelEdit->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
 
     //
@@ -115,7 +115,7 @@ void Smb4KBookmarkDialog::setupView()
     descriptionLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *pixmap = new QLabel(description);
-    QPixmap sync_pix = KDE::icon("bookmark-new").pixmap(KIconLoader::SizeHuge);
+    QPixmap sync_pix = KDE::icon(QStringLiteral("bookmark-new")).pixmap(KIconLoader::SizeHuge);
     pixmap->setPixmap(sync_pix);
     pixmap->setAlignment(Qt::AlignBottom);
 
@@ -129,14 +129,14 @@ void Smb4KBookmarkDialog::setupView()
     descriptionLayout->addWidget(label, Qt::AlignBottom);
 
     QListWidget *listWidget = new QListWidget(this);
-    listWidget->setObjectName("BookmarksListWidget");
+    listWidget->setObjectName(QStringLiteral("BookmarksListWidget"));
     listWidget->setSortingEnabled(true);
     listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
     listWidget->setIconSize(QSize(iconSize, iconSize));
 
     QWidget *editorWidgets = new QWidget(this);
-    editorWidgets->setObjectName("EditorWidgets");
+    editorWidgets->setObjectName(QStringLiteral("EditorWidgets"));
     editorWidgets->setEnabled(false);
 
     QGridLayout *editorWidgetsLayout = new QGridLayout(editorWidgets);
@@ -147,7 +147,7 @@ void Smb4KBookmarkDialog::setupView()
     //
     QLabel *labelLabel = new QLabel(i18n("Label:"), editorWidgets);
     KLineEdit *labelEdit = new KLineEdit(editorWidgets);
-    labelEdit->setObjectName("LabelEdit");
+    labelEdit->setObjectName(QStringLiteral("LabelEdit"));
     labelEdit->setClearButtonEnabled(true);
 
     //
@@ -155,7 +155,7 @@ void Smb4KBookmarkDialog::setupView()
     //
     QLabel *categoryLabel = new QLabel(i18n("Category:"), editorWidgets);
     KComboBox *categoryCombo = new KComboBox(true, editorWidgets);
-    categoryCombo->setObjectName("CategoryCombo");
+    categoryCombo->setObjectName(QStringLiteral("CategoryCombo"));
 
     editorWidgetsLayout->addWidget(labelLabel, 0, 0);
     editorWidgetsLayout->addWidget(labelEdit, 0, 1);
@@ -191,8 +191,8 @@ void Smb4KBookmarkDialog::loadLists(const QList<BookmarkPtr> &bookmarks, const Q
     //
     // Get the category combo box
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    QListWidget *listWidget = findChild<QListWidget *>(QStringLiteral("BookmarksListWidget"));
 
     //
     // Copy the bookmarks to the internal list and add them to
@@ -237,9 +237,9 @@ void Smb4KBookmarkDialog::slotBookmarkClicked(QListWidgetItem *bookmarkItem)
     //
     // Get the widgets
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-    QWidget *editorWidgets = findChild<QWidget *>("EditorWidgets");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    KLineEdit *labelEdit = findChild<KLineEdit *>(QStringLiteral("LabelEdit"));
+    QWidget *editorWidgets = findChild<QWidget *>(QStringLiteral("EditorWidgets"));
 
     //
     // Modify the widgets
@@ -273,8 +273,8 @@ void Smb4KBookmarkDialog::slotLabelEdited()
     //
     // Get the label line edit
     //
-    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-    QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
+    KLineEdit *labelEdit = findChild<KLineEdit *>(QStringLiteral("LabelEdit"));
+    QListWidget *listWidget = findChild<QListWidget *>(QStringLiteral("BookmarksListWidget"));
 
     //
     // Set the label
@@ -301,8 +301,8 @@ void Smb4KBookmarkDialog::slotCategoryEdited()
     //
     // Get the category combo box
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    QListWidget *listWidget = findChild<QListWidget *>(QStringLiteral("BookmarksListWidget"));
 
     //
     // Get the bookmark
@@ -337,8 +337,8 @@ void Smb4KBookmarkDialog::slotDialogAccepted()
     //
     // Get the widgets
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    KLineEdit *labelEdit = findChild<KLineEdit *>(QStringLiteral("LabelEdit"));
 
     KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkDialog");
     KWindowConfig::saveWindowSize(windowHandle(), group);
@@ -353,7 +353,7 @@ void Smb4KBookmarkDialog::slotIconSizeChanged(int group)
     //
     // Get the list widget
     //
-    QListWidget *listWidget = findChild<QListWidget *>("BookmarksListWidget");
+    QListWidget *listWidget = findChild<QListWidget *>(QStringLiteral("BookmarksListWidget"));
 
     //
     // Change the icon size
@@ -409,11 +409,11 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(const QList<BookmarkPtr> &bookmarks, QW
     //
     // Fill the completion objects
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-    KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
-    KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
-    KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    KLineEdit *labelEdit = findChild<KLineEdit *>(QStringLiteral("LabelEdit"));
+    KLineEdit *ipEdit = findChild<KLineEdit *>(QStringLiteral("IpEdit"));
+    KLineEdit *loginEdit = findChild<KLineEdit *>(QStringLiteral("LoginEdit"));
+    KLineEdit *workgroupEdit = findChild<KLineEdit *>(QStringLiteral("WorkgroupEdit"));
 
     if (group.hasKey("GroupCompletion")) {
         // For backward compatibility (since Smb4K 3.0.72).
@@ -446,7 +446,7 @@ bool Smb4KBookmarkEditor::eventFilter(QObject *obj, QEvent *e)
     //
     // Get the widget
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
 
     if (obj == treeWidget->viewport()) {
         switch (e->type()) {
@@ -482,7 +482,7 @@ void Smb4KBookmarkEditor::setupView()
     QVBoxLayout *layout = new QVBoxLayout(this);
 
     QTreeWidget *treeWidget = new QTreeWidget(this);
-    treeWidget->setObjectName("BookmarksTreeWidget");
+    treeWidget->setObjectName(QStringLiteral("BookmarksTreeWidget"));
     treeWidget->setColumnCount(2);
     treeWidget->hideColumn((treeWidget->columnCount() - 1)); // for sorting purposes
     treeWidget->headerItem()->setHidden(true);
@@ -495,13 +495,13 @@ void Smb4KBookmarkEditor::setupView()
     treeWidget->setIconSize(QSize(iconSize, iconSize));
     treeWidget->viewport()->installEventFilter(this);
 
-    QAction *addCategoryAction = new QAction(KDE::icon("bookmark-add-folder"), i18n("Add Category"), treeWidget);
-    QAction *deleteAction = new QAction(KDE::icon("edit-delete"), i18n("Remove"), treeWidget);
-    deleteAction->setObjectName("DeleteAction");
-    QAction *clearAction = new QAction(KDE::icon("edit-clear"), i18n("Clear"), treeWidget);
+    QAction *addCategoryAction = new QAction(KDE::icon(QStringLiteral("bookmark-add-folder")), i18n("Add Category"), treeWidget);
+    QAction *deleteAction = new QAction(KDE::icon(QStringLiteral("edit-delete")), i18n("Remove"), treeWidget);
+    deleteAction->setObjectName(QStringLiteral("DeleteAction"));
+    QAction *clearAction = new QAction(KDE::icon(QStringLiteral("edit-clear")), i18n("Clear"), treeWidget);
 
     KActionMenu *actionMenu = new KActionMenu(treeWidget);
-    actionMenu->setObjectName("ActionMenu");
+    actionMenu->setObjectName(QStringLiteral("ActionMenu"));
     actionMenu->addAction(addCategoryAction);
     actionMenu->addAction(deleteAction);
     actionMenu->addAction(clearAction);
@@ -510,7 +510,7 @@ void Smb4KBookmarkEditor::setupView()
     // The editor widgets
     //
     QWidget *editorWidgets = new QWidget(this);
-    editorWidgets->setObjectName("EditorWidgets");
+    editorWidgets->setObjectName(QStringLiteral("EditorWidgets"));
     editorWidgets->setEnabled(false);
 
     QGridLayout *editorsLayout = new QGridLayout(editorWidgets);
@@ -521,12 +521,12 @@ void Smb4KBookmarkEditor::setupView()
     //
     QLabel *labelLabel = new QLabel(i18n("Label:"), editorWidgets);
     KLineEdit *labelEdit = new KLineEdit(editorWidgets);
-    labelEdit->setObjectName("LabelEdit");
+    labelEdit->setObjectName(QStringLiteral("LabelEdit"));
     labelEdit->setClearButtonEnabled(true);
 
     QLabel *loginLabel = new QLabel(i18n("Username:"), editorWidgets);
     KLineEdit *loginEdit = new KLineEdit(editorWidgets);
-    loginEdit->setObjectName("LoginEdit");
+    loginEdit->setObjectName(QStringLiteral("LoginEdit"));
     loginEdit->setClearButtonEnabled(true);
 
     //
@@ -534,7 +534,7 @@ void Smb4KBookmarkEditor::setupView()
     //
     QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), editorWidgets);
     KLineEdit *workgroupEdit = new KLineEdit(editorWidgets);
-    workgroupEdit->setObjectName("WorkgroupEdit");
+    workgroupEdit->setObjectName(QStringLiteral("WorkgroupEdit"));
     workgroupEdit->setClearButtonEnabled(true);
 
     //
@@ -542,7 +542,7 @@ void Smb4KBookmarkEditor::setupView()
     //
     QLabel *ipLabel = new QLabel(i18n("IP Address:"), editorWidgets);
     KLineEdit *ipEdit = new KLineEdit(editorWidgets);
-    ipEdit->setObjectName("IpEdit");
+    ipEdit->setObjectName(QStringLiteral("IpEdit"));
     ipEdit->setClearButtonEnabled(true);
 
     //
@@ -550,7 +550,7 @@ void Smb4KBookmarkEditor::setupView()
     //
     QLabel *categoryLabel = new QLabel(i18n("Category:"), editorWidgets);
     KComboBox *categoryCombo = new KComboBox(true, editorWidgets);
-    categoryCombo->setObjectName("CategoryCombo");
+    categoryCombo->setObjectName(QStringLiteral("CategoryCombo"));
     categoryCombo->setDuplicatesEnabled(false);
 
     editorsLayout->addWidget(labelLabel, 0, 0);
@@ -599,8 +599,8 @@ void Smb4KBookmarkEditor::loadBookmarks()
     //
     // Get the widgets
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
 
     //
     // Clear the tree widget and the group combo box
@@ -625,9 +625,9 @@ void Smb4KBookmarkEditor::loadBookmarks()
     for (const QString &category : qAsConst(m_categories)) {
         if (!category.isEmpty()) {
             QTreeWidgetItem *categoryItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-            categoryItem->setIcon(0, KDE::icon("folder-bookmark"));
+            categoryItem->setIcon(0, KDE::icon(QStringLiteral("folder-bookmark")));
             categoryItem->setText(0, category);
-            categoryItem->setText((treeWidget->columnCount() - 1), QString("00_%1").arg(category));
+            categoryItem->setText((treeWidget->columnCount() - 1), QStringLiteral("00_") + category);
             categoryItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsDropEnabled);
             treeWidget->addTopLevelItem(categoryItem);
         }
@@ -641,7 +641,7 @@ void Smb4KBookmarkEditor::loadBookmarks()
         bookmarkItem->setData(0, QTreeWidgetItem::UserType, static_cast<QUrl>(bookmark->url()));
         bookmarkItem->setIcon(0, bookmark->icon());
         bookmarkItem->setText(0, bookmark->displayString());
-        bookmarkItem->setText((treeWidget->columnCount() - 1), QString("01_%1").arg(bookmark->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort)));
+        bookmarkItem->setText((treeWidget->columnCount() - 1), QStringLiteral("01_") + bookmark->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort));
         bookmarkItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsDragEnabled);
 
         if (!bookmark->categoryName().isEmpty()) {
@@ -669,12 +669,12 @@ void Smb4KBookmarkEditor::loadBookmarks()
     // Check that an empty group entry is also present. If it is not there,
     // add it now and insert the groups to the group combo box afterwards.
     //
-    if (!m_categories.contains("") && !m_categories.contains(QString())) {
-        m_categories << "";
+    if (!m_categories.contains(QStringLiteral("")) && !m_categories.contains(QString())) {
+        m_categories << QStringLiteral("");
     }
 
     categoryCombo->addItems(m_categories);
-    categoryCombo->setCurrentItem("");
+    categoryCombo->setCurrentItem(QStringLiteral(""));
 }
 
 QList<BookmarkPtr> Smb4KBookmarkEditor::editedBookmarks()
@@ -703,13 +703,13 @@ void Smb4KBookmarkEditor::slotItemClicked(QTreeWidgetItem *item, int /*col*/)
     //
     // Get the widgets
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-    QWidget *editorWidgets = findChild<QWidget *>("EditorWidgets");
-    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-    KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
-    KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
-    KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
+    QWidget *editorWidgets = findChild<QWidget *>(QStringLiteral("EditorWidgets"));
+    KLineEdit *labelEdit = findChild<KLineEdit *>(QStringLiteral("LabelEdit"));
+    KLineEdit *ipEdit = findChild<KLineEdit *>(QStringLiteral("IpEdit"));
+    KLineEdit *loginEdit = findChild<KLineEdit *>(QStringLiteral("LoginEdit"));
+    KLineEdit *workgroupEdit = findChild<KLineEdit *>(QStringLiteral("WorkgroupEdit"));
 
     //
     // Process the item
@@ -780,9 +780,9 @@ void Smb4KBookmarkEditor::slotContextMenuRequested(const QPoint &pos)
     //
     // Get the widgets
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-    QAction *deleteAction = findChild<QAction *>("DeleteAction");
-    KActionMenu *actionMenu = findChild<KActionMenu *>("ActionMenu");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
+    QAction *deleteAction = findChild<QAction *>(QStringLiteral("DeleteAction"));
+    KActionMenu *actionMenu = findChild<KActionMenu *>(QStringLiteral("ActionMenu"));
 
     //
     // Open the context menu
@@ -797,8 +797,8 @@ void Smb4KBookmarkEditor::slotLabelEdited()
     //
     // Get the widgets
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
+    KLineEdit *labelEdit = findChild<KLineEdit *>(QStringLiteral("LabelEdit"));
 
     //
     // Find the bookmark
@@ -829,8 +829,8 @@ void Smb4KBookmarkEditor::slotLoginEdited()
     //
     // Get the widgets
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-    KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
+    KLineEdit *loginEdit = findChild<KLineEdit *>(QStringLiteral("LoginEdit"));
 
     //
     // Find the bookmark
@@ -861,8 +861,8 @@ void Smb4KBookmarkEditor::slotIpEdited()
     //
     // Get the widgets
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-    KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
+    KLineEdit *ipEdit = findChild<KLineEdit *>(QStringLiteral("IpEdit"));
 
     //
     // Find the bookmark
@@ -893,8 +893,8 @@ void Smb4KBookmarkEditor::slotWorkgroupNameEdited()
     //
     // Get the widgets
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
-    KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
+    KLineEdit *workgroupEdit = findChild<KLineEdit *>(QStringLiteral("WorkgroupEdit"));
 
     //
     // Find the bookmark
@@ -925,8 +925,8 @@ void Smb4KBookmarkEditor::slotCategoryEdited()
     //
     // Get the widgets
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
 
     //
     // Get the URL of the current item
@@ -987,8 +987,8 @@ void Smb4KBookmarkEditor::slotAddCategoryTriggered(bool /*checked*/)
     //
     // Get the widgets
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
 
     //
     // Process the category
@@ -1000,9 +1000,9 @@ void Smb4KBookmarkEditor::slotAddCategoryTriggered(bool /*checked*/)
     if (ok && !categoryName.isEmpty() && treeWidget->findItems(categoryName, Qt::MatchFixedString | Qt::MatchCaseSensitive, 0).isEmpty()) {
         // Create a new category item and add it to the widget
         QTreeWidgetItem *categoryItem = new QTreeWidgetItem(QTreeWidgetItem::UserType);
-        categoryItem->setIcon(0, KDE::icon("folder-bookmark"));
+        categoryItem->setIcon(0, KDE::icon(QStringLiteral("folder-bookmark")));
         categoryItem->setText(0, categoryName);
-        categoryItem->setText((treeWidget->columnCount() - 1), QString("00_%1").arg(categoryName));
+        categoryItem->setText((treeWidget->columnCount() - 1), QStringLiteral("00_") + categoryName);
         categoryItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsDropEnabled);
         treeWidget->addTopLevelItem(categoryItem);
         treeWidget->sortItems((treeWidget->columnCount() - 1), Qt::AscendingOrder);
@@ -1018,7 +1018,7 @@ void Smb4KBookmarkEditor::slotDeleteTriggered(bool /*checked*/)
     //
     // Get the widget
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
 
     //
     // Remove the bookmarks from the view and the internal list
@@ -1049,7 +1049,7 @@ void Smb4KBookmarkEditor::slotClearTriggered(bool /*checked*/)
     //
     // Get the widget
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
 
     //
     // Clear the widget and the lists
@@ -1064,11 +1064,11 @@ void Smb4KBookmarkEditor::slotDialogAccepted()
     //
     // Get the widgets
     //
-    KComboBox *categoryCombo = findChild<KComboBox *>("CategoryCombo");
-    KLineEdit *labelEdit = findChild<KLineEdit *>("LabelEdit");
-    KLineEdit *ipEdit = findChild<KLineEdit *>("IpEdit");
-    KLineEdit *loginEdit = findChild<KLineEdit *>("LoginEdit");
-    KLineEdit *workgroupEdit = findChild<KLineEdit *>("WorkgroupEdit");
+    KComboBox *categoryCombo = findChild<KComboBox *>(QStringLiteral("CategoryCombo"));
+    KLineEdit *labelEdit = findChild<KLineEdit *>(QStringLiteral("LabelEdit"));
+    KLineEdit *ipEdit = findChild<KLineEdit *>(QStringLiteral("IpEdit"));
+    KLineEdit *loginEdit = findChild<KLineEdit *>(QStringLiteral("LoginEdit"));
+    KLineEdit *workgroupEdit = findChild<KLineEdit *>(QStringLiteral("WorkgroupEdit"));
 
     //
     // Write the dialog properties to the config file
@@ -1100,7 +1100,7 @@ void Smb4KBookmarkEditor::slotIconSizeChanged(int group)
     //
     // Get the widget
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
 
     //
     // Change the icon size
@@ -1122,7 +1122,7 @@ void Smb4KBookmarkEditor::slotAdjust()
     //
     // Get the widget
     //
-    QTreeWidget *treeWidget = findChild<QTreeWidget *>("BookmarksTreeWidget");
+    QTreeWidget *treeWidget = findChild<QTreeWidget *>(QStringLiteral("BookmarksTreeWidget"));
 
     //
     // Do the necessary adjustments
@@ -1139,7 +1139,7 @@ void Smb4KBookmarkEditor::slotAdjust()
                 BookmarkPtr bookmark = findBookmark((*it)->data(0, QTreeWidgetItem::UserType).toUrl());
 
                 if (bookmark) {
-                    bookmark->setCategoryName("");
+                    bookmark->setCategoryName(QStringLiteral(""));
                 }
             }
         } else {
