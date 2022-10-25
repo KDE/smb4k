@@ -2,7 +2,7 @@
     This class provides the basic network item for the core library of
     Smb4K.
 
-    SPDX-FileCopyrightText: 2009-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2009-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

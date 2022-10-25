@@ -2,7 +2,7 @@
     This class provides the basic network item for the core library of
     Smb4K.
 
-    SPDX-FileCopyrightText: 2009-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2009-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -112,7 +112,7 @@ void Smb4KBasicNetworkItem::setUrl(const QUrl &url)
         //
         // Check that the share name is present
         //
-        if (url.path().isEmpty() || (url.path().size() == 1 && url.path().endsWith('/'))) {
+        if (url.path().isEmpty() || (url.path().size() == 1 && url.path().endsWith(QStringLiteral("/")))) {
             return;
         }
 
@@ -123,17 +123,8 @@ void Smb4KBasicNetworkItem::setUrl(const QUrl &url)
     }
     }
 
-    //
-    // Set the URL
-    //
     d->url = url;
-
-    //
-    // Force the scheme
-    //
-    if (d->url.scheme() != "smb") {
-        d->url.setScheme("smb");
-    }
+    d->url.setScheme(QStringLiteral("smb"));
 }
 
 QUrl Smb4KBasicNetworkItem::url() const
