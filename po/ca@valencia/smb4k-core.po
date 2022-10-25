@@ -1562,9 +1562,9 @@ msgid ""
 msgstr ""
 "Afig regles personalitzades per al filtratge de fitxers (-f, --"
 "filter=REGLA). Esta opció permet afegir regles per a excloure selectivament "
-"determinats fitxers de la llista de fitxers a transferir. Estes regles "
-"s'afegiran a l'ordre «rsync» tal com estiguen. Per tant, cada regla haurà de "
-"començar amb l'argument --filter=..."
+"determinats fitxers de la llista de fitxers que es transferiran. Estes "
+"regles s'afegiran a l'ordre «rsync» tal com estiguen. Per tant, cada regla "
+"haurà de començar amb l'argument --filter=..."
 
 # skip-rule: t-apo_fim
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
