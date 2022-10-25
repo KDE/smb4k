@@ -1,7 +1,7 @@
 /*
     This is the bookmark container for Smb4K (next generation).
 
-    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -45,7 +45,7 @@ Smb4KBookmark::Smb4KBookmark(Smb4KShare *share, const QString &label)
     d->workgroup = share->workgroupName();
     d->type = share->shareType();
     d->label = label;
-    d->icon = KDE::icon("folder-network");
+    d->icon = KDE::icon(QStringLiteral("folder-network"));
     d->ip.setAddress(share->hostIpAddress());
 }
 
@@ -59,7 +59,7 @@ Smb4KBookmark::Smb4KBookmark()
     : d(new Smb4KBookmarkPrivate)
 {
     d->type = FileShare;
-    d->icon = KDE::icon("folder-network");
+    d->icon = KDE::icon(QStringLiteral("folder-network"));
 }
 
 Smb4KBookmark::~Smb4KBookmark()
@@ -79,7 +79,7 @@ QString Smb4KBookmark::workgroupName() const
 void Smb4KBookmark::setHostName(const QString &host)
 {
     d->url.setHost(host);
-    d->url.setScheme("smb");
+    d->url.setScheme(QStringLiteral("smb"));
 }
 
 QString Smb4KBookmark::hostName() const
@@ -94,7 +94,7 @@ void Smb4KBookmark::setShareName(const QString &share)
 
 QString Smb4KBookmark::shareName() const
 {
-    if (d->url.path().startsWith('/')) {
+    if (d->url.path().startsWith(QStringLiteral("/"))) {
         return d->url.path().remove(0, 1);
     }
 
@@ -144,13 +144,7 @@ QString Smb4KBookmark::userName() const
 void Smb4KBookmark::setUrl(const QUrl &url)
 {
     d->url = url;
-    d->url.setScheme("smb");
-}
-
-void Smb4KBookmark::setUrl(const QString &url)
-{
-    d->url.setUrl(url, QUrl::TolerantMode);
-    d->url.setScheme("smb");
+    d->url.setScheme(QStringLiteral("smb"));
 }
 
 QUrl Smb4KBookmark::url() const
