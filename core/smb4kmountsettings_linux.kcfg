@@ -293,7 +293,7 @@
     <entry name="MountPrefix" type="Url">
       <label>Mount prefix:</label>
       <whatsthis>This is the prefix where Smb4K will create the mount points and mount the remote shares.</whatsthis>
-      <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/smb4k/")</default>
+      <default code="true">QUrl::fromLocalFile(QDir::homePath()+QStringLiteral("/smb4k/"))</default>
     </entry>
     <entry name="ForceLowerCaseSubdirs" type="Bool">
       <label>Force generated subdirectories to be lower case</label>

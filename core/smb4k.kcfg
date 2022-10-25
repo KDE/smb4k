@@ -268,7 +268,7 @@
         <entry name="RsyncPrefix" type="Url">
             <label>Synchronization prefix:</label>
             <whatsthis>Under this prefix the destination directory for the synchronization will be created. However, if you want to store the data of a particular share elsewhere, you will be able to choose a different path before the actual synchronization begins.</whatsthis>
-            <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/smb4k_sync/")</default>
+            <default code="true">QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/smb4k_sync/"))</default>
         </entry>
         <entry name="ArchiveMode" type="Bool">
             <label>Archive mode</label>
@@ -514,7 +514,7 @@
         <entry name="ExcludeFrom" type="Url">
             <label>The file from which the exclude patterns are read</label>
             <whatsthis></whatsthis>
-            <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/exclude.txt")</default>
+            <default code="true">QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/exclude.txt"))</default>
         </entry>
         <entry name="UseIncludePattern" type="Bool">
             <label>Include files matching this pattern:</label>
@@ -534,7 +534,7 @@
         <entry name="IncludeFrom" type="Url">
             <label>The file from which the include patterns are read</label>
             <whatsthis></whatsthis>
-            <default code="true">QUrl::fromLocalFile(QDir::homePath()+"/include.txt")</default>
+            <default code="true">QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/include.txt"))</default>
         </entry>
         <entry name="CustomFilteringRules" type="String">
             <label>Custom filter rules:</label>
