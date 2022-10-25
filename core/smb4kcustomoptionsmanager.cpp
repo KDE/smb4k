@@ -219,7 +219,7 @@ OptionsPtr Smb4KCustomOptionsManager::findOptions(const QUrl &url)
     //
     // Search the options for the given URL
     //
-    if (url.isValid() && url.scheme() == "smb") {
+    if (url.isValid() && url.scheme() == QStringLiteral("smb")) {
         //
         // Get the relevant options
         //
@@ -255,7 +255,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
     //
     // Set the XML file
     //
-    QFile xmlFile(dataLocation() + QDir::separator() + "custom_options.xml");
+    QFile xmlFile(dataLocation() + QDir::separator() + QStringLiteral("custom_options.xml"));
 
     if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QXmlStreamReader xmlReader(&xmlFile);
@@ -264,97 +264,98 @@ void Smb4KCustomOptionsManager::readCustomOptions()
             xmlReader.readNext();
 
             if (xmlReader.isStartElement()) {
-                if (xmlReader.name() == "custom_options" && xmlReader.attributes().value("version") != "3.0") {
+                if (xmlReader.name() == QStringLiteral("custom_options") && xmlReader.attributes().value(QStringLiteral("version")) != QStringLiteral("3.0")) {
                     xmlReader.raiseError(i18n("The format of %1 is not supported.", xmlFile.fileName()));
                     break;
                 } else {
-                    if (xmlReader.name() == "options") {
+                    if (xmlReader.name() == QStringLiteral("options")) {
                         OptionsPtr options = OptionsPtr(new Smb4KCustomOptions());
-                        options->setProfile(xmlReader.attributes().value("profile").toString());
+                        options->setProfile(xmlReader.attributes().value(QStringLiteral("profile")).toString());
 
                         //
                         // Initialize the options
                         //
-                        if (QString::compare(xmlReader.attributes().value("type").toString(), "host", Qt::CaseInsensitive) == 0) {
+                        if (QString::compare(xmlReader.attributes().value(QStringLiteral("type")).toString(), QStringLiteral("host"), Qt::CaseInsensitive)
+                            == 0) {
                             options->setNetworkItem(new Smb4KHost());
                         } else {
                             options->setNetworkItem(new Smb4KShare());
                         }
 
-                        while (!(xmlReader.isEndElement() && xmlReader.name() == "options")) {
+                        while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("options"))) {
                             xmlReader.readNext();
 
                             if (xmlReader.isStartElement()) {
-                                if (xmlReader.name() == "workgroup") {
+                                if (xmlReader.name() == QStringLiteral("workgroup")) {
                                     options->setWorkgroupName(xmlReader.readElementText());
-                                } else if (xmlReader.name() == "url") {
+                                } else if (xmlReader.name() == QStringLiteral("url")) {
                                     QUrl url(xmlReader.readElementText());
                                     options->setUrl(url);
-                                } else if (xmlReader.name() == "ip") {
+                                } else if (xmlReader.name() == QStringLiteral("ip")) {
                                     options->setIpAddress(xmlReader.readElementText());
-                                } else if (xmlReader.name() == "custom") {
-                                    while (!(xmlReader.isEndElement() && xmlReader.name() == "custom")) {
+                                } else if (xmlReader.name() == QStringLiteral("custom")) {
+                                    while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("custom"))) {
                                         xmlReader.readNext();
 
                                         if (xmlReader.isStartElement()) {
-                                            if (xmlReader.name() == "smb_port") {
+                                            if (xmlReader.name() == QStringLiteral("smb_port")) {
                                                 bool ok = false;
                                                 int portNumber = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setSmbPort(portNumber);
                                                 }
-                                            } else if (xmlReader.name() == "use_smb_port") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_smb_port")) {
                                                 bool ok = false;
                                                 bool useSmbPort = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseSmbPort(useSmbPort);
                                                 }
-                                            } else if (xmlReader.name() == "kerberos") {
+                                            } else if (xmlReader.name() == QStringLiteral("kerberos")) {
                                                 bool ok = false;
                                                 bool useKerberos = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseKerberos(useKerberos);
                                                 }
-                                            } else if (xmlReader.name() == "mac_address") {
+                                            } else if (xmlReader.name() == QStringLiteral("mac_address")) {
                                                 QString macAddress = xmlReader.readElementText();
 
-                                                QRegExp exp("..\\:..\\:..\\:..\\:..\\:..");
+                                                QRegExp exp(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
                                                 if (exp.exactMatch(macAddress)) {
                                                     options->setMACAddress(macAddress);
                                                 }
-                                            } else if (xmlReader.name() == "wol_send_before_first_scan") {
+                                            } else if (xmlReader.name() == QStringLiteral("wol_send_before_first_scan")) {
                                                 bool ok = false;
                                                 bool send = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setWOLSendBeforeNetworkScan(send);
                                                 }
-                                            } else if (xmlReader.name() == "wol_send_before_mount") {
+                                            } else if (xmlReader.name() == QStringLiteral("wol_send_before_mount")) {
                                                 bool ok = false;
                                                 bool send = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setWOLSendBeforeMount(send);
                                                 }
-                                            } else if (xmlReader.name() == "remount") {
+                                            } else if (xmlReader.name() == QStringLiteral("remount")) {
                                                 bool ok = false;
                                                 int remount = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setRemount(remount);
                                                 }
-                                            } else if (xmlReader.name() == "use_user") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_user")) {
                                                 bool ok = false;
                                                 bool useUser = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseUser(useUser);
                                                 }
-                                            } else if (xmlReader.name() == "uid") {
+                                            } else if (xmlReader.name() == QStringLiteral("uid")) {
                                                 bool ok = false;
                                                 int uid = xmlReader.readElementText().toInt(&ok);
 
@@ -365,14 +366,14 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                                                         options->setUser(user);
                                                     }
                                                 }
-                                            } else if (xmlReader.name() == "use_group") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_group")) {
                                                 bool ok = false;
                                                 bool useGroup = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseGroup(useGroup);
                                                 }
-                                            } else if (xmlReader.name() == "gid") {
+                                            } else if (xmlReader.name() == QStringLiteral("gid")) {
                                                 bool ok = false;
                                                 int gid = xmlReader.readElementText().toInt(&ok);
 
@@ -383,39 +384,39 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                                                         options->setGroup(group);
                                                     }
                                                 }
-                                            } else if (xmlReader.name() == "use_file_mode") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_file_mode")) {
                                                 bool ok = false;
                                                 bool useFileMode = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseFileMode(useFileMode);
                                                 }
-                                            } else if (xmlReader.name() == "file_mode") {
+                                            } else if (xmlReader.name() == QStringLiteral("file_mode")) {
                                                 options->setFileMode(xmlReader.readElementText());
-                                            } else if (xmlReader.name() == "use_directory_mode") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_directory_mode")) {
                                                 bool ok = false;
                                                 bool useDirectoryMode = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseDirectoryMode(useDirectoryMode);
                                                 }
-                                            } else if (xmlReader.name() == "directory_mode") {
+                                            } else if (xmlReader.name() == QStringLiteral("directory_mode")) {
                                                 options->setDirectoryMode(xmlReader.readElementText());
-                                            } else if (xmlReader.name() == "use_client_protocol_versions") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_client_protocol_versions")) {
                                                 bool ok = false;
                                                 bool useClientProtocolVersions = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseClientProtocolVersions(useClientProtocolVersions);
                                                 }
-                                            } else if (xmlReader.name() == "minimal_client_protocol_version") {
+                                            } else if (xmlReader.name() == QStringLiteral("minimal_client_protocol_version")) {
                                                 bool ok = false;
                                                 int minimalClientProtocolVersion = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setMinimalClientProtocolVersion(minimalClientProtocolVersion);
                                                 }
-                                            } else if (xmlReader.name() == "maximal_client_protocol_version") {
+                                            } else if (xmlReader.name() == QStringLiteral("maximal_client_protocol_version")) {
                                                 bool ok = false;
                                                 int maximalClientProtocolVersion = xmlReader.readElementText().toInt(&ok);
 
@@ -424,63 +425,63 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                                                 }
                                             }
 #if defined(Q_OS_LINUX)
-                                            else if (xmlReader.name() == "cifs_unix_extensions_support") {
+                                            else if (xmlReader.name() == QStringLiteral("cifs_unix_extensions_support")) {
                                                 bool ok = false;
                                                 bool cifsUnixExtensionsSupported = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setCifsUnixExtensionsSupport(cifsUnixExtensionsSupported);
                                                 }
-                                            } else if (xmlReader.name() == "use_filesystem_port") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_filesystem_port")) {
                                                 bool ok = false;
                                                 bool useFilesystemPort = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseFileSystemPort(useFilesystemPort);
                                                 }
-                                            } else if (xmlReader.name() == "filesystem_port") {
+                                            } else if (xmlReader.name() == QStringLiteral("filesystem_port")) {
                                                 bool ok = false;
                                                 int portNumber = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setFileSystemPort(portNumber);
                                                 }
-                                            } else if (xmlReader.name() == "use_smb_mount_protocol_version") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_smb_mount_protocol_version")) {
                                                 bool ok = false;
                                                 bool useMountProtocolVersion = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseMountProtocolVersion(useMountProtocolVersion);
                                                 }
-                                            } else if (xmlReader.name() == "smb_mount_protocol_version") {
+                                            } else if (xmlReader.name() == QStringLiteral("smb_mount_protocol_version")) {
                                                 bool ok = false;
                                                 int mountProtocolVersion = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setMountProtocolVersion(mountProtocolVersion);
                                                 }
-                                            } else if (xmlReader.name() == "use_security_mode") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_security_mode")) {
                                                 bool ok = false;
                                                 bool useSecurityMode = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseSecurityMode(useSecurityMode);
                                                 }
-                                            } else if (xmlReader.name() == "security_mode") {
+                                            } else if (xmlReader.name() == QStringLiteral("security_mode")) {
                                                 bool ok = false;
                                                 int securityMode = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setSecurityMode(securityMode);
                                                 }
-                                            } else if (xmlReader.name() == "use_write_access") {
+                                            } else if (xmlReader.name() == QStringLiteral("use_write_access")) {
                                                 bool ok = false;
                                                 bool useWriteAccess = xmlReader.readElementText().toInt(&ok);
 
                                                 if (ok) {
                                                     options->setUseWriteAccess(useWriteAccess);
                                                 }
-                                            } else if (xmlReader.name() == "write_access") {
+                                            } else if (xmlReader.name() == QStringLiteral("write_access")) {
                                                 bool ok = false;
                                                 int writeAccess = xmlReader.readElementText().toInt(&ok);
 
@@ -519,7 +520,7 @@ void Smb4KCustomOptionsManager::readCustomOptions()
 
 void Smb4KCustomOptionsManager::writeCustomOptions()
 {
-    QFile xmlFile(dataLocation() + QDir::separator() + "custom_options.xml");
+    QFile xmlFile(dataLocation() + QDir::separator() + QStringLiteral("custom_options.xml"));
 
     if (d->options.isEmpty()) {
         xmlFile.remove();
@@ -543,20 +544,20 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
         QXmlStreamWriter xmlWriter(&xmlFile);
         xmlWriter.setAutoFormatting(true);
         xmlWriter.writeStartDocument();
-        xmlWriter.writeStartElement("custom_options");
-        xmlWriter.writeAttribute("version", "3.0");
+        xmlWriter.writeStartElement(QStringLiteral("custom_options"));
+        xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("3.0"));
 
         for (const OptionsPtr &options : qAsConst(d->options)) {
             if (options->hasOptions()) {
-                xmlWriter.writeStartElement("options");
-                xmlWriter.writeAttribute("type", options->type() == Host ? "host" : "share");
-                xmlWriter.writeAttribute("profile", options->profile());
+                xmlWriter.writeStartElement(QStringLiteral("options"));
+                xmlWriter.writeAttribute(QStringLiteral("type"), options->type() == Host ? QStringLiteral("host") : QStringLiteral("share"));
+                xmlWriter.writeAttribute(QStringLiteral("profile"), options->profile());
 
-                xmlWriter.writeTextElement("workgroup", options->workgroupName());
-                xmlWriter.writeTextElement("url", options->url().toDisplayString());
-                xmlWriter.writeTextElement("ip", options->ipAddress());
+                xmlWriter.writeTextElement(QStringLiteral("workgroup"), options->workgroupName());
+                xmlWriter.writeTextElement(QStringLiteral("url"), options->url().toDisplayString());
+                xmlWriter.writeTextElement(QStringLiteral("ip"), options->ipAddress());
 
-                xmlWriter.writeStartElement("custom");
+                xmlWriter.writeStartElement(QStringLiteral("custom"));
 
                 QMap<QString, QString> map = options->customOptions();
                 QMapIterator<QString, QString> i(map);
