@@ -1,7 +1,7 @@
 /*
     Private helpers for the homes shares handler
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -166,7 +166,7 @@ void Smb4KHomesUserDialog::setupView()
     descriptionLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *pixmap = new QLabel(description);
-    QPixmap user_pix = KDE::icon("user-identity").pixmap(KIconLoader::SizeHuge);
+    QPixmap user_pix = KDE::icon(QStringLiteral("user-identity")).pixmap(KIconLoader::SizeHuge);
     pixmap->setPixmap(user_pix);
     pixmap->setAlignment(Qt::AlignBottom);
 
@@ -195,7 +195,7 @@ void Smb4KHomesUserDialog::setupView()
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
     m_clear_button = buttonBox->addButton(i18n("Clear List"), QDialogButtonBox::ActionRole);
-    m_clear_button->setIcon(KDE::icon("edit-clear"));
+    m_clear_button->setIcon(KDE::icon(QStringLiteral("edit-clear")));
     m_clear_button->setEnabled(false);
     m_ok_button = buttonBox->addButton(QDialogButtonBox::Ok);
     m_ok_button->setEnabled(false);
@@ -223,7 +223,7 @@ void Smb4KHomesUserDialog::setUserNames(const QStringList &users)
 {
     if (!users.isEmpty()) {
         m_user_combo->addItems(users);
-        m_user_combo->setCurrentItem("");
+        m_user_combo->setCurrentItem(QStringLiteral(""));
         m_clear_button->setEnabled(true);
     }
 }
