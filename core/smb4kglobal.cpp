@@ -1,7 +1,7 @@
 /*
     This is the global namespace for Smb4K.
 
-    SPDX-FileCopyrightText: 2005-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2005-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -754,7 +754,7 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
         break;
     }
     case Konsole: {
-        QString konsole = QStandardPaths::findExecutable("konsole");
+        QString konsole = QStandardPaths::findExecutable(QStringLiteral("konsole"));
 
         if (!konsole.isEmpty()) {
             KIO::CommandLauncherJob *job = new KIO::CommandLauncherJob(konsole);
@@ -762,7 +762,7 @@ void Smb4KGlobal::openShare(SharePtr share, OpenWith openWith)
             job->setAutoDelete(true);
             job->start();
         } else {
-            Smb4KNotification::commandNotFound("konsole");
+            Smb4KNotification::commandNotFound(QStringLiteral("konsole"));
         }
 
         break;
@@ -798,17 +798,17 @@ QStringList Smb4KGlobal::allowedMountArguments()
 const QString Smb4KGlobal::findMountExecutable()
 {
     QStringList paths;
-    paths << "/bin";
-    paths << "/sbin";
-    paths << "/usr/bin";
-    paths << "/usr/sbin";
-    paths << "/usr/local/bin";
-    paths << "/usr/local/sbin";
+    paths << QStringLiteral("/bin");
+    paths << QStringLiteral("/sbin");
+    paths << QStringLiteral("/usr/bin");
+    paths << QStringLiteral("/usr/sbin");
+    paths << QStringLiteral("/usr/local/bin");
+    paths << QStringLiteral("/usr/local/sbin");
 
 #if defined(Q_OS_LINUX)
-    return QStandardPaths::findExecutable("mount.cifs", paths);
+    return QStandardPaths::findExecutable(QStringLiteral("mount.cifs"), paths);
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
-    return QStandardPaths::findExecutable("mount_smbfs", paths);
+    return QStandardPaths::findExecutable(QStringLiteral("mount_smbfs"), paths);
 #else
     return QString();
 #endif
@@ -817,19 +817,19 @@ const QString Smb4KGlobal::findMountExecutable()
 const QString Smb4KGlobal::findUmountExecutable()
 {
     QStringList paths;
-    paths << "/bin";
-    paths << "/sbin";
-    paths << "/usr/bin";
-    paths << "/usr/sbin";
-    paths << "/usr/local/bin";
-    paths << "/usr/local/sbin";
+    paths << QStringLiteral("/bin");
+    paths << QStringLiteral("/sbin");
+    paths << QStringLiteral("/usr/bin");
+    paths << QStringLiteral("/usr/sbin");
+    paths << QStringLiteral("/usr/local/bin");
+    paths << QStringLiteral("/usr/local/sbin");
 
-    return QStandardPaths::findExecutable("umount", paths);
+    return QStandardPaths::findExecutable(QStringLiteral("umount"), paths);
 }
 
 const QString Smb4KGlobal::dataLocation()
 {
-    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QDir::separator() + "smb4k";
+    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QDir::separator() + QStringLiteral("smb4k");
 }
 
 void Smb4KGlobal::wait(int time)
