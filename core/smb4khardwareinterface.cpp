@@ -1,7 +1,7 @@
 /*
     Provides an interface to the computer's hardware
 
-    SPDX-FileCopyrightText: 2015-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2015-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -44,13 +44,16 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
     //
     // Set up the DBUS interface
     //
-    d->dbusInterface.reset(
-        new QDBusInterface("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", QDBusConnection::systemBus(), this));
+    d->dbusInterface.reset(new QDBusInterface(QStringLiteral("org.freedesktop.login1"),
+                                              QStringLiteral("/org/freedesktop/login1"),
+                                              QStringLiteral("org.freedesktop.login1.Manager"),
+                                              QDBusConnection::systemBus(),
+                                              this));
 
     if (!d->dbusInterface->isValid()) {
-        d->dbusInterface.reset(new QDBusInterface("org.freedesktop.ConsoleKit",
-                                                  "/org/freedesktop/ConsoleKit/Manager",
-                                                  "org.freedesktop.ConsoleKit.Manager",
+        d->dbusInterface.reset(new QDBusInterface(QStringLiteral("org.freedesktop.ConsoleKit"),
+                                                  QStringLiteral("/org/freedesktop/ConsoleKit/Manager"),
+                                                  QStringLiteral("org.freedesktop.ConsoleKit.Manager"),
                                                   QDBusConnection::systemBus(),
                                                   this));
     }
