@@ -1,7 +1,7 @@
 /*
     These are the private helper classes of the Smb4KGlobal namespace.
 
-    SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -30,25 +30,25 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
     coreInitialized = false;
 
 #ifdef Q_OS_LINUX
-    allowedMountArguments << "dynperm";
-    allowedMountArguments << "rwpidforward";
-    allowedMountArguments << "hard";
-    allowedMountArguments << "soft";
-    allowedMountArguments << "noacl";
-    allowedMountArguments << "cifsacl";
-    allowedMountArguments << "backupuid";
-    allowedMountArguments << "backupgid";
-    allowedMountArguments << "ignorecase";
-    allowedMountArguments << "nocase";
-    allowedMountArguments << "nobrl";
-    allowedMountArguments << "sfu";
-    allowedMountArguments << "nounix";
-    allowedMountArguments << "nouser_xattr";
-    allowedMountArguments << "fsc";
-    allowedMountArguments << "multiuser";
-    allowedMountArguments << "actimeo";
-    allowedMountArguments << "noposixpaths";
-    allowedMountArguments << "posixpaths";
+    allowedMountArguments << QStringLiteral("dynperm");
+    allowedMountArguments << QStringLiteral("rwpidforward");
+    allowedMountArguments << QStringLiteral("hard");
+    allowedMountArguments << QStringLiteral("soft");
+    allowedMountArguments << QStringLiteral("noacl");
+    allowedMountArguments << QStringLiteral("cifsacl");
+    allowedMountArguments << QStringLiteral("backupuid");
+    allowedMountArguments << QStringLiteral("backupgid");
+    allowedMountArguments << QStringLiteral("ignorecase");
+    allowedMountArguments << QStringLiteral("nocase");
+    allowedMountArguments << QStringLiteral("nobrl");
+    allowedMountArguments << QStringLiteral("sfu");
+    allowedMountArguments << QStringLiteral("nounix");
+    allowedMountArguments << QStringLiteral("nouser_xattr");
+    allowedMountArguments << QStringLiteral("fsc");
+    allowedMountArguments << QStringLiteral("multiuser");
+    allowedMountArguments << QStringLiteral("actimeo");
+    allowedMountArguments << QStringLiteral("noposixpaths");
+    allowedMountArguments << QStringLiteral("posixpaths");
 #endif
 
     //
