@@ -1,7 +1,7 @@
 /*
     This class handles the homes shares
 
-    SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -115,7 +115,7 @@ const QList<Smb4KHomesUsers *> Smb4KHomesSharesHandler::readUserNames(bool allUs
     QList<Smb4KHomesUsers *> list;
 
     // Locate the XML file.
-    QFile xmlFile(dataLocation() + QDir::separator() + "homes_shares.xml");
+    QFile xmlFile(dataLocation() + QDir::separator() + QStringLiteral("homes_shares.xml"));
 
     if (xmlFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QXmlStreamReader xmlReader(&xmlFile);
@@ -124,39 +124,35 @@ const QList<Smb4KHomesUsers *> Smb4KHomesSharesHandler::readUserNames(bool allUs
             xmlReader.readNext();
 
             if (xmlReader.isStartElement()) {
-                if (xmlReader.name() == "homes_shares" && xmlReader.attributes().value("version") != "1.0") {
+                if (xmlReader.name() == QStringLiteral("homes_shares") && xmlReader.attributes().value(QStringLiteral("version")) != QStringLiteral("1.0")) {
                     xmlReader.raiseError(i18n("%1 is not a version 1.0 file.", xmlFile.fileName()));
                     break;
                 } else {
-                    if (xmlReader.name() == "homes") {
-                        QString profile = xmlReader.attributes().value("profile").toString();
+                    if (xmlReader.name() == QStringLiteral("homes")) {
+                        QString profile = xmlReader.attributes().value(QStringLiteral("profile")).toString();
 
-                        // FIXME: Remove the last check in the if statement with Smb4K > 2.0.
-                        // It was introduced for migration, because the default profile
-                        // (e.g. use of no profiles) was not empty but named "Default"...
-                        if (allUsers || QString::compare(profile, Smb4KProfileManager::self()->activeProfile(), Qt::CaseSensitive) == 0
-                            || (!Smb4KProfileManager::self()->useProfiles() && QString::compare(profile, "Default", Qt::CaseSensitive) == 0)) {
+                        if (allUsers || profile == Smb4KProfileManager::self()->activeProfile()) {
                             Smb4KHomesUsers *users = new Smb4KHomesUsers();
                             users->setProfile(profile);
                             users->setShareName(xmlReader.name().toString());
 
-                            while (!(xmlReader.isEndElement() && xmlReader.name() == "homes")) {
+                            while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("homes"))) {
                                 xmlReader.readNext();
 
                                 if (xmlReader.isStartElement()) {
-                                    if (xmlReader.name() == "host") {
+                                    if (xmlReader.name() == QStringLiteral("host")) {
                                         users->setHostName(xmlReader.readElementText());
-                                    } else if (xmlReader.name() == "workgroup") {
+                                    } else if (xmlReader.name() == QStringLiteral("workgroup")) {
                                         users->setWorkgroupName(xmlReader.readElementText());
-                                    } else if (xmlReader.name() == "ip") {
+                                    } else if (xmlReader.name() == QStringLiteral("ip")) {
                                         users->setHostIP(xmlReader.readElementText());
-                                    } else if (xmlReader.name() == "users") {
+                                    } else if (xmlReader.name() == QStringLiteral("users")) {
                                         QStringList u;
 
-                                        while (!(xmlReader.isEndElement() && xmlReader.name() == "users")) {
+                                        while (!(xmlReader.isEndElement() && xmlReader.name() == QStringLiteral("users"))) {
                                             xmlReader.readNext();
 
-                                            if (xmlReader.isStartElement() && xmlReader.name() == "user") {
+                                            if (xmlReader.isStartElement() && xmlReader.name() == QStringLiteral("user")) {
                                                 u << xmlReader.readElementText();
                                             }
                                         }
@@ -221,28 +217,28 @@ void Smb4KHomesSharesHandler::writeUserNames(const QList<Smb4KHomesUsers *> &lis
         allUsers << new Smb4KHomesUsers(*users);
     }
 
-    QFile xmlFile(dataLocation() + QDir::separator() + "homes_shares.xml");
+    QFile xmlFile(dataLocation() + QDir::separator() + QStringLiteral("homes_shares.xml"));
 
     if (!allUsers.isEmpty()) {
         if (xmlFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QXmlStreamWriter xmlWriter(&xmlFile);
             xmlWriter.setAutoFormatting(true);
             xmlWriter.writeStartDocument();
-            xmlWriter.writeStartElement("homes_shares");
-            xmlWriter.writeAttribute("version", "1.0");
+            xmlWriter.writeStartElement(QStringLiteral("homes_shares"));
+            xmlWriter.writeAttribute(QStringLiteral("version"), QStringLiteral("1.0"));
 
             for (Smb4KHomesUsers *users : qAsConst(allUsers)) {
-                xmlWriter.writeStartElement("homes");
-                xmlWriter.writeAttribute("profile", users->profile());
-                xmlWriter.writeTextElement("host", users->hostName());
-                xmlWriter.writeTextElement("workgroup", users->workgroupName());
-                xmlWriter.writeTextElement("ip", users->hostIP());
-                xmlWriter.writeStartElement("users");
+                xmlWriter.writeStartElement(QStringLiteral("homes"));
+                xmlWriter.writeAttribute(QStringLiteral("profile"), users->profile());
+                xmlWriter.writeTextElement(QStringLiteral("host"), users->hostName());
+                xmlWriter.writeTextElement(QStringLiteral("workgroup"), users->workgroupName());
+                xmlWriter.writeTextElement(QStringLiteral("ip"), users->hostIP());
+                xmlWriter.writeStartElement(QStringLiteral("users"));
 
                 QStringList userList = users->userList();
 
                 for (const QString &user : qAsConst(userList)) {
-                    xmlWriter.writeTextElement("user", user);
+                    xmlWriter.writeTextElement(QStringLiteral("user"), user);
                 }
 
                 xmlWriter.writeEndElement();
