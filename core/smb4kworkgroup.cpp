@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a workgroup.
 
-    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -32,13 +32,13 @@ Smb4KWorkgroup::Smb4KWorkgroup(const QString &name)
     //
     // Set the URL of the workgroup
     //
-    pUrl->setScheme("smb");
+    pUrl->setScheme(QStringLiteral("smb"));
     pUrl->setHost(name);
 
     //
     // Set the icon
     //
-    *pIcon = KDE::icon("network-workgroup");
+    *pIcon = KDE::icon(QStringLiteral("network-workgroup"));
 }
 
 Smb4KWorkgroup::Smb4KWorkgroup(const Smb4KWorkgroup &w)
@@ -53,7 +53,7 @@ Smb4KWorkgroup::Smb4KWorkgroup(const Smb4KWorkgroup &w)
     // Set the icon if necessary
     //
     if (pIcon->isNull()) {
-        *pIcon = KDE::icon("network-workgroup");
+        *pIcon = KDE::icon(QStringLiteral("network-workgroup"));
     }
 }
 
@@ -64,12 +64,12 @@ Smb4KWorkgroup::Smb4KWorkgroup()
     //
     // Set the URL
     //
-    pUrl->setScheme("smb");
+    pUrl->setScheme(QStringLiteral("smb"));
 
     //
     // Set the icon
     //
-    *pIcon = KDE::icon("network-workgroup");
+    *pIcon = KDE::icon(QStringLiteral("network-workgroup"));
 }
 
 Smb4KWorkgroup::~Smb4KWorkgroup()
@@ -79,7 +79,7 @@ Smb4KWorkgroup::~Smb4KWorkgroup()
 void Smb4KWorkgroup::setWorkgroupName(const QString &name)
 {
     pUrl->setHost(name);
-    pUrl->setScheme("smb");
+    pUrl->setScheme(QStringLiteral("smb"));
 }
 
 QString Smb4KWorkgroup::workgroupName() const
@@ -90,7 +90,7 @@ QString Smb4KWorkgroup::workgroupName() const
 void Smb4KWorkgroup::setMasterBrowserName(const QString &name)
 {
     d->masterURL.setHost(name);
-    d->masterURL.setScheme("smb");
+    d->masterURL.setScheme(QStringLiteral("smb"));
 }
 
 QString Smb4KWorkgroup::masterBrowserName() const
