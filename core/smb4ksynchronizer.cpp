@@ -1,7 +1,7 @@
 /*
     This is the new synchronizer of Smb4K.
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -49,7 +49,7 @@ void Smb4KSynchronizer::synchronize(const SharePtr &share)
         // Create a new job, add it to the subjobs and register it
         // with the job tracker.
         Smb4KSyncJob *job = new Smb4KSyncJob(this);
-        job->setObjectName(QString("SyncJob_%1").arg(share->canonicalPath()));
+        job->setObjectName(QStringLiteral("SyncJob_") + share->canonicalPath());
         job->setupSynchronization(share);
 
         connect(job, SIGNAL(result(KJob *)), SLOT(slotJobFinished(KJob *)));
@@ -71,12 +71,12 @@ bool Smb4KSynchronizer::isRunning(const SharePtr &share)
 {
     bool running = false;
 
-    for (int i = 0; i < subjobs().size(); ++i) {
-        if (QString::compare(QString("SyncJob_%1").arg(share->canonicalPath()), subjobs().at(i)->objectName()) == 0) {
+    QListIterator<KJob *> it(subjobs());
+
+    while (it.hasNext()) {
+        if (it.next()->objectName() == QStringLiteral("SyncJob_") + share->canonicalPath()) {
             running = true;
             break;
-        } else {
-            continue;
         }
     }
 
@@ -86,8 +86,12 @@ bool Smb4KSynchronizer::isRunning(const SharePtr &share)
 void Smb4KSynchronizer::abort(const SharePtr &share)
 {
     if (share && !share.isNull()) {
-        for (KJob *job : subjobs()) {
-            if (QString("SyncJob_%1").arg(share->canonicalPath()) == job->objectName()) {
+        QListIterator<KJob *> it(subjobs());
+
+        while (it.hasNext()) {
+            KJob *job = it.next();
+
+            if (QStringLiteral("SyncJob_") + share->canonicalPath() == job->objectName()) {
                 job->kill(KJob::EmitResult);
                 break;
             }
