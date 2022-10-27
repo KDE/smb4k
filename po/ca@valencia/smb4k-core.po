@@ -1005,7 +1005,7 @@ msgstr ""
 #: smb4k.kcfg:367
 #, kde-format
 msgid "Copy directory symlinks"
-msgstr "Copia els enllaços simbòlics a directoris"
+msgstr "Copia els enllaços simbòlics cap a directoris"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:368
@@ -1019,8 +1019,8 @@ msgid ""
 "the new symlink, including a directory hierarchy (as long as --force or --"
 "delete is in effect). For more details, see the manual page of rsync."
 msgstr ""
-"Tracta els enllaços simbòlics a directoris a la banda de l'enviament com si "
-"foren reals (-k, --copy-dirlinks). Açò és útil si no voleu que es vegen "
+"Tracta els enllaços simbòlics cap a directoris a la banda de l'enviament com "
+"si foren reals (-k, --copy-dirlinks). Açò és útil si no voleu que es vegen "
 "afectats els enllaços simbòlics a no directoris, com si s'utilitza --copy-"
 "links. Sense esta opció, si la banda de l'enviament ha substituït un "
 "directori per un enllaç simbòlic a un directori, la banda de la recepció "
@@ -1032,7 +1032,7 @@ msgstr ""
 #: smb4k.kcfg:372
 #, kde-format
 msgid "Keep directory symlinks"
-msgstr "Mantín els enllaços simbòlics a directoris"
+msgstr "Mantín els enllaços simbòlics cap a directoris"
 
 # skip-rule: barb-link
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
@@ -1044,11 +1044,11 @@ msgid ""
 "directory from the sending side. Without this option, the receiver's symlink "
 "will be deleted and replaced with a real directory."
 msgstr ""
-"Tracta els enllaços simbòlics a directoris a la banda de la recepció com si "
-"foren reals (-K, --keep-dirlinks). Açò només funciona si l'enllaç simbòlic "
-"coincidix amb un directori real des de la banda de l'enviament. Sense esta "
-"opció, els enllaços simbòlics del receptor s'eliminaran i se substituiran "
-"amb un directori real."
+"Tracta els enllaços simbòlics cap a directoris a la banda de la recepció com "
+"si foren reals (-K, --keep-dirlinks). Açò només funciona si l'enllaç "
+"simbòlic coincidix amb un directori real des de la banda de l'enviament. "
+"Sense esta opció, els enllaços simbòlics del receptor s'eliminaran i se "
+"substituiran amb un directori real."
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
 #: smb4k.kcfg:377
