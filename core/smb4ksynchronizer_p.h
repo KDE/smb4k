@@ -2,7 +2,7 @@
     This file contains private helper classes for the Smb4KSynchronizer
     class.
 
-    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -59,7 +59,7 @@ public:
      */
     const QUrl &source()
     {
-        return m_src;
+        return m_sourceUrl;
     }
 
     /**
@@ -69,7 +69,7 @@ public:
      */
     const QUrl &destination()
     {
-        return m_dest;
+        return m_destinationUrl;
     }
 
 Q_SIGNALS:
@@ -104,8 +104,8 @@ protected Q_SLOTS:
 
 private:
     SharePtr m_share;
-    QUrl m_src;
-    QUrl m_dest;
+    QUrl m_sourceUrl;
+    QUrl m_destinationUrl;
     KProcess *m_process;
     KUiServerJobTracker *m_job_tracker;
 };
