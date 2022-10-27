@@ -74,11 +74,11 @@ Smb4KMountDialog::Smb4KMountDialog(const SharePtr &share, const BookmarkPtr &boo
     //
     // Get the widgets
     //
-    KLineEdit *locationInput = findChild<KLineEdit *>("LocationInput");
-    KLineEdit *ipInput = findChild<KLineEdit *>("IpInput");
-    KLineEdit *workgroupInput = findChild<KLineEdit *>("WorkgroupInput");
-    KLineEdit *labelInput = findChild<KLineEdit *>("LabelInput");
-    KComboBox *categoryInput = findChild<KComboBox *>("CategoryInput");
+    KLineEdit *locationInput = findChild<KLineEdit *>(QStringLiteral("LocationInput"));
+    KLineEdit *ipInput = findChild<KLineEdit *>(QStringLiteral("IpInput"));
+    KLineEdit *workgroupInput = findChild<KLineEdit *>(QStringLiteral("WorkgroupInput"));
+    KLineEdit *labelInput = findChild<KLineEdit *>(QStringLiteral("LabelInput"));
+    KComboBox *categoryInput = findChild<KComboBox *>(QStringLiteral("CategoryInput"));
 
     //
     // Fill the completion objects
@@ -112,7 +112,7 @@ void Smb4KMountDialog::setupView()
     QHBoxLayout *descriptionLayout = new QHBoxLayout(description);
 
     QLabel *pixmap = new QLabel(description);
-    QPixmap mount_pix = KDE::icon("view-form", QStringList("emblem-mounted")).pixmap(KIconLoader::SizeHuge);
+    QPixmap mount_pix = KDE::icon(QStringLiteral("view-form"), QStringList(QStringLiteral("emblem-mounted"))).pixmap(KIconLoader::SizeHuge);
     pixmap->setPixmap(mount_pix);
     pixmap->setAlignment(Qt::AlignBottom);
 
@@ -128,7 +128,7 @@ void Smb4KMountDialog::setupView()
 
     QLabel *locationLabel = new QLabel(i18n("Location:"), editWidget);
     KLineEdit *locationInput = new KLineEdit(editWidget);
-    locationInput->setObjectName("LocationInput");
+    locationInput->setObjectName(QStringLiteral("LocationInput"));
     locationInput->setWhatsThis(
         i18n("The location of the share is provided by the Uniform Resource Locator (URL). It generally has the following syntax: "
              "[smb:]//[USER:PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are optional. You should omit to enter the password here, "
@@ -141,7 +141,7 @@ void Smb4KMountDialog::setupView()
 
     QLabel *ipLabel = new QLabel(i18n("IP Address:"), editWidget);
     KLineEdit *ipInput = new KLineEdit(editWidget);
-    ipInput->setObjectName("IpInput");
+    ipInput->setObjectName(QStringLiteral("IpInput"));
     ipInput->setWhatsThis(
         i18n("The Internet Protocol (IP) address identifies the "
              "host in the network and indicates where it is. It has two valid formats, the one "
@@ -154,7 +154,7 @@ void Smb4KMountDialog::setupView()
 
     QLabel *workgroupLabel = new QLabel(i18n("Workgroup:"), editWidget);
     KLineEdit *workgroupInput = new KLineEdit(editWidget);
-    workgroupInput->setObjectName("WorkgroupInput");
+    workgroupInput->setObjectName(QStringLiteral("WorkgroupInput"));
     workgroupInput->setWhatsThis(
         i18n("The workgroup or domain identifies the "
              "peer-to-peer computer network the host is located in."));
@@ -174,32 +174,32 @@ void Smb4KMountDialog::setupView()
     // Widget for the bookmark settings
     //
     QWidget *bookmarkWidget = new QWidget(this);
-    bookmarkWidget->setObjectName("BookmarkWidget");
+    bookmarkWidget->setObjectName(QStringLiteral("BookmarkWidget"));
     bookmarkWidget->setVisible(false);
     QGridLayout *bookmarkWidgetLayout = new QGridLayout(bookmarkWidget);
 
     QCheckBox *addBookmark = new QCheckBox(i18n("Add this share to the bookmarks"), bookmarkWidget);
-    addBookmark->setObjectName("AddBookmark");
+    addBookmark->setObjectName(QStringLiteral("AddBookmark"));
     addBookmark->setWhatsThis(
         i18n("If you tick this checkbox, the share will be bookmarked "
              "and you can access it e.g. through the \"Bookmarks\" menu entry in the main window."));
     //   m_bookmark->setToolTip(i18n("Add this share to the bookmarks"));
 
     QLabel *labelLabel = new QLabel(i18n("Label:"), bookmarkWidget);
-    labelLabel->setObjectName("LabelLabel");
+    labelLabel->setObjectName(QStringLiteral("LabelLabel"));
     labelLabel->setEnabled(false);
     KLineEdit *labelInput = new KLineEdit(bookmarkWidget);
-    labelInput->setObjectName("LabelInput");
+    labelInput->setObjectName(QStringLiteral("LabelInput"));
     labelInput->setWhatsThis(i18n("Add a label describing your bookmark. It is then shown instead of the location."));
     labelInput->setCompletionMode(KCompletion::CompletionPopupAuto);
     labelInput->setClearButtonEnabled(true);
     labelInput->setEnabled(false);
 
     QLabel *categoryLabel = new QLabel(i18n("Category:"), bookmarkWidget);
-    categoryLabel->setObjectName("CategoryLabel");
+    categoryLabel->setObjectName(QStringLiteral("CategoryLabel"));
     categoryLabel->setEnabled(false);
     KComboBox *categoryInput = new KComboBox(true, bookmarkWidget);
-    categoryInput->setObjectName("CategoryInput");
+    categoryInput->setObjectName(QStringLiteral("CategoryInput"));
     categoryInput->setWhatsThis(i18n("Assign a category to your bookmark. This way you can organize your bookmarks."));
     categoryInput->setCompletionMode(KCompletion::CompletionPopupAuto);
     categoryInput->lineEdit()->setClearButtonEnabled(true);
@@ -207,7 +207,7 @@ void Smb4KMountDialog::setupView()
 
     m_categories = Smb4KBookmarkHandler::self()->categoryList();
     categoryInput->addItems(m_categories);
-    categoryInput->setCurrentItem("");
+    categoryInput->setCurrentItem(QStringLiteral(""));
 
     bookmarkWidgetLayout->addWidget(addBookmark, 0, 0, 1, 2);
     bookmarkWidgetLayout->addWidget(labelLabel, 1, 0);
@@ -220,11 +220,11 @@ void Smb4KMountDialog::setupView()
     //
     QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
     QPushButton *okButton = buttonBox->addButton(QDialogButtonBox::Ok);
-    okButton->setObjectName("OkButton");
+    okButton->setObjectName(QStringLiteral("OkButton"));
     QPushButton *cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
     QPushButton *bookmarkButton =
         buttonBox->addButton(i18nc("Bookmark this share. Show input widgets in the dialog for this.", "Bookmark >>"), QDialogButtonBox::ActionRole);
-    bookmarkButton->setObjectName("BookmarkButton");
+    bookmarkButton->setObjectName(QStringLiteral("BookmarkButton"));
 
     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
     cancelButton->setShortcut(Qt::Key_Escape);
@@ -256,7 +256,7 @@ bool Smb4KMountDialog::bookmarkShare()
     //
     // Get the widget
     //
-    QCheckBox *addBookmark = findChild<QCheckBox *>("AddBookmark");
+    QCheckBox *addBookmark = findChild<QCheckBox *>(QStringLiteral("AddBookmark"));
 
     //
     // Return the state
@@ -279,15 +279,15 @@ bool Smb4KMountDialog::validUserInput(const QString &input)
     //
     // Take care of a Windows-like UNC addresses
     //
-    if (userInput.startsWith(QLatin1String("\\"))) {
-        userInput.replace("\\", "/");
+    if (userInput.startsWith(QStringLiteral("\\"))) {
+        userInput.replace(QStringLiteral("\\"), QStringLiteral("/"));
     }
 
     //
     // Set the URL and adjust the scheme
     //
     QUrl smbUrl = QUrl::fromUserInput(userInput);
-    smbUrl.setScheme("smb");
+    smbUrl.setScheme(QStringLiteral("smb"));
 
     //
     // Check that the URL of the share is valid
@@ -322,8 +322,8 @@ void Smb4KMountDialog::slotChangeInputValue(const QString &_test)
     //
     // Find the button
     //
-    QPushButton *okButton = findChild<QPushButton *>("OkButton");
-    QPushButton *bookmarkButton = findChild<QPushButton *>("BookmarkButton");
+    QPushButton *okButton = findChild<QPushButton *>(QStringLiteral("OkButton"));
+    QPushButton *bookmarkButton = findChild<QPushButton *>(QStringLiteral("BookmarkButton"));
 
     //
     // Enable/disable the buttons
@@ -338,12 +338,12 @@ void Smb4KMountDialog::slotOkClicked()
     //
     // Get widgets
     //
-    KLineEdit *locationInput = findChild<KLineEdit *>("LocationInput");
-    KLineEdit *ipInput = findChild<KLineEdit *>("IpInput");
-    KLineEdit *workgroupInput = findChild<KLineEdit *>("WorkgroupInput");
-    QWidget *bookmarkWidget = findChild<QWidget *>("BookmarkWidget");
-    KLineEdit *labelInput = findChild<KLineEdit *>("LabelInput");
-    KComboBox *categoryInput = findChild<KComboBox *>("CategoryInput");
+    KLineEdit *locationInput = findChild<KLineEdit *>(QStringLiteral("LocationInput"));
+    KLineEdit *ipInput = findChild<KLineEdit *>(QStringLiteral("IpInput"));
+    KLineEdit *workgroupInput = findChild<KLineEdit *>(QStringLiteral("WorkgroupInput"));
+    QWidget *bookmarkWidget = findChild<QWidget *>(QStringLiteral("BookmarkWidget"));
+    KLineEdit *labelInput = findChild<KLineEdit *>(QStringLiteral("LabelInput"));
+    KComboBox *categoryInput = findChild<KComboBox *>(QStringLiteral("CategoryInput"));
 
     //
     // Process the location input
@@ -361,15 +361,15 @@ void Smb4KMountDialog::slotOkClicked()
             //
             // Take care of a Windows-like UNC addresses
             //
-            if (userInput.startsWith(QLatin1String("\\"))) {
-                userInput.replace("\\", "/");
+            if (userInput.startsWith(QStringLiteral("\\"))) {
+                userInput.replace(QStringLiteral("\\"), QStringLiteral("/"));
             }
 
             //
             // Set the URL and adjust the scheme
             //
             QUrl smbUrl = QUrl::fromUserInput(userInput);
-            smbUrl.setScheme("smb");
+            smbUrl.setScheme(QStringLiteral("smb"));
 
             //
             // Set the URL of the share
@@ -427,7 +427,7 @@ void Smb4KMountDialog::slotBookmarkButtonClicked()
     //
     // Get the widget
     //
-    QWidget *bookmarkWidget = findChild<QWidget *>("BookmarkWidget");
+    QWidget *bookmarkWidget = findChild<QWidget *>(QStringLiteral("BookmarkWidget"));
 
     //
     // Open / close the widget
@@ -447,14 +447,14 @@ void Smb4KMountDialog::slotShareNameEntered()
     //
     // Get the widget
     //
-    KLineEdit *locationInput = findChild<KLineEdit *>("LocationInput");
+    KLineEdit *locationInput = findChild<KLineEdit *>(QStringLiteral("LocationInput"));
 
     //
     // Add the completion item
     //
     KCompletion *completion = locationInput->completionObject();
     QUrl url(locationInput->userText());
-    url.setScheme("smb");
+    url.setScheme(QStringLiteral("smb"));
 
     if (url.isValid() && !url.isEmpty()) {
         completion->addItem(locationInput->userText());
@@ -466,7 +466,7 @@ void Smb4KMountDialog::slotIpEntered()
     //
     // Get the widget
     //
-    KLineEdit *ipInput = findChild<KLineEdit *>("IpInput");
+    KLineEdit *ipInput = findChild<KLineEdit *>(QStringLiteral("IpInput"));
 
     //
     // Add the completion item
@@ -483,7 +483,7 @@ void Smb4KMountDialog::slotWorkgroupEntered()
     //
     // Get the widget
     //
-    KLineEdit *workgroupInput = findChild<KLineEdit *>("WorkgroupInput");
+    KLineEdit *workgroupInput = findChild<KLineEdit *>(QStringLiteral("WorkgroupInput"));
 
     //
     // Add the completion item
@@ -500,7 +500,7 @@ void Smb4KMountDialog::slotLabelEntered()
     //
     // Get the widget
     //
-    KLineEdit *labelInput = findChild<KLineEdit *>("LabelInput");
+    KLineEdit *labelInput = findChild<KLineEdit *>(QStringLiteral("LabelInput"));
 
     //
     // Add the completion item
@@ -517,7 +517,7 @@ void Smb4KMountDialog::slotCategoryEntered()
     //
     // Get the widget
     //
-    KComboBox *categoryInput = findChild<KComboBox *>("CategoryInput");
+    KComboBox *categoryInput = findChild<KComboBox *>(QStringLiteral("CategoryInput"));
 
     //
     // Add the completion item
@@ -534,10 +534,10 @@ void Smb4KMountDialog::slotAddBookmarkClicked(bool on)
     //
     // Get the widgets
     //
-    QLabel *labelLabel = findChild<QLabel *>("LabelLabel");
-    KLineEdit *labelInput = findChild<KLineEdit *>("LabelInput");
-    QLabel *categoryLabel = findChild<QLabel *>("CategoryLabel");
-    KComboBox *categoryInput = findChild<KComboBox *>("CategoryInput");
+    QLabel *labelLabel = findChild<QLabel *>(QStringLiteral("LabelLabel"));
+    KLineEdit *labelInput = findChild<KLineEdit *>(QStringLiteral("LabelInput"));
+    QLabel *categoryLabel = findChild<QLabel *>(QStringLiteral("CategoryLabel"));
+    KComboBox *categoryInput = findChild<KComboBox *>(QStringLiteral("CategoryInput"));
 
     //
     // Enable / disable the widgets
