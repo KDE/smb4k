@@ -2,7 +2,7 @@
     These are the private helper classes of the Smb4KNotification
     namespace.
 
-    SPDX-FileCopyrightText: 2014-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -11,12 +11,11 @@
 
 // KDE includes
 #include <KIO/OpenUrlJob>
-#include <kio_version.h>
 
 Smb4KNotifier::Smb4KNotifier(const QString &event)
     : KNotification(event, KNotification::CloseOnTimeout)
 {
-    if (event == "shareMounted") {
+    if (event == QStringLiteral("shareMounted")) {
         connect(this, SIGNAL(activated(uint)), SLOT(slotOpenShare()));
     }
 }
@@ -37,7 +36,7 @@ QUrl Smb4KNotifier::mountpoint() const
 
 void Smb4KNotifier::slotOpenShare()
 {
-    KIO::OpenUrlJob *job = new KIO::OpenUrlJob(m_mountpoint, "inode/directory");
+    KIO::OpenUrlJob *job = new KIO::OpenUrlJob(m_mountpoint, QStringLiteral("inode/directory"));
     job->setFollowRedirections(false);
     job->setAutoDelete(true);
     job->start();
