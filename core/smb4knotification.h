@@ -1,7 +1,7 @@
 /*
     This class provides notifications for Smb4K
 
-    SPDX-FileCopyrightText: 2010-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2010-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
