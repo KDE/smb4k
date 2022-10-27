@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a share.
 
-    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -106,7 +106,7 @@ Smb4KShare::Smb4KShare()
     //
     // Set the URL
     //
-    pUrl->setScheme("smb");
+    pUrl->setScheme(QStringLiteral("smb"));
 
     //
     // Set the icon
@@ -120,24 +120,24 @@ Smb4KShare::~Smb4KShare()
 
 void Smb4KShare::setShareName(const QString &name)
 {
-    if (name.startsWith('/')) {
+    if (name.startsWith(QStringLiteral("/"))) {
         pUrl->setPath(name.trimmed());
     } else {
-        pUrl->setPath('/' + name.trimmed());
+        pUrl->setPath(QStringLiteral("/") + name.trimmed());
     }
 
-    pUrl->setScheme("smb");
+    pUrl->setScheme(QStringLiteral("smb"));
 }
 
 QString Smb4KShare::shareName() const
 {
-    return pUrl->path().remove('/');
+    return pUrl->path().remove(QStringLiteral("/"));
 }
 
 void Smb4KShare::setHostName(const QString &hostName)
 {
     pUrl->setHost(hostName.trimmed());
-    pUrl->setScheme("smb");
+    pUrl->setScheme(QStringLiteral("smb"));
 }
 
 QString Smb4KShare::hostName() const
@@ -151,7 +151,7 @@ QUrl Smb4KShare::homeUrl() const
 
     if (isHomesShare() && !pUrl->userName().isEmpty()) {
         u = *pUrl;
-        u.setPath('/' + pUrl->userName(), QUrl::TolerantMode);
+        u.setPath(QStringLiteral("/") + pUrl->userName(), QUrl::TolerantMode);
     }
 
     return u;
@@ -160,7 +160,7 @@ QUrl Smb4KShare::homeUrl() const
 QString Smb4KShare::displayString(bool showHomesShare) const
 {
     if (showHomesShare && isHomesShare()) {
-        return i18n("%1 on %2", homeUrl().path().remove('/'), hostName());
+        return i18n("%1 on %2", homeUrl().path().remove(QStringLiteral("/")), hostName());
     }
 
     return i18n("%1 on %2", shareName(), hostName());
@@ -236,7 +236,7 @@ bool Smb4KShare::hasHostIpAddress() const
 
 bool Smb4KShare::isHidden() const
 {
-    return pUrl->path().endsWith('$');
+    return pUrl->path().endsWith(QStringLiteral("$"));
 }
 
 bool Smb4KShare::isPrinter() const
@@ -386,7 +386,7 @@ qreal Smb4KShare::diskUsage() const
 
 QString Smb4KShare::diskUsageString() const
 {
-    return QString("%1 %").arg(diskUsage(), 0, 'f', 1);
+    return QString::number(diskUsage(), 'f', 1) + QStringLiteral(" %");
 }
 
 void Smb4KShare::setMountData(Smb4KShare *share)
@@ -429,7 +429,7 @@ void Smb4KShare::resetMountData()
 
 bool Smb4KShare::isHomesShare() const
 {
-    return pUrl->path().endsWith(QLatin1String("homes"));
+    return pUrl->path().endsWith(QStringLiteral("homes"));
 }
 
 void Smb4KShare::setPort(int port)
@@ -477,22 +477,22 @@ void Smb4KShare::setShareIcon()
         QStringList overlays;
 
         if (isMounted()) {
-            overlays << "emblem-mounted";
+            overlays << QStringLiteral("emblem-mounted");
         } else {
-            overlays << "";
+            overlays << QStringLiteral("");
         }
 
         if (isForeign()) {
-            overlays << "emblem-warning";
+            overlays << QStringLiteral("emblem-warning");
         }
 
         if (!isInaccessible()) {
-            *pIcon = KDE::icon("folder-network", overlays);
+            *pIcon = KDE::icon(QStringLiteral("folder-network"), overlays);
         } else {
-            *pIcon = KDE::icon("folder-locked", overlays);
+            *pIcon = KDE::icon(QStringLiteral("folder-locked"), overlays);
         }
     } else {
-        *pIcon = KDE::icon("printer");
+        *pIcon = KDE::icon(QStringLiteral("printer"));
     }
 }
 
