@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a host.
 
-    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -30,7 +30,7 @@ Smb4KHost::Smb4KHost(const QUrl &url)
     , d(new Smb4KHostPrivate)
 {
     d->isMaster = false;
-    *pIcon = KDE::icon("network-server");
+    *pIcon = KDE::icon(QStringLiteral("network-server"));
     *pUrl = url;
 }
 
@@ -41,7 +41,7 @@ Smb4KHost::Smb4KHost(const Smb4KHost &h)
     *d = *h.d;
 
     if (pIcon->isNull()) {
-        *pIcon = KDE::icon("network-server");
+        *pIcon = KDE::icon(QStringLiteral("network-server"));
     }
 }
 
@@ -50,7 +50,7 @@ Smb4KHost::Smb4KHost()
     , d(new Smb4KHostPrivate)
 {
     d->isMaster = false;
-    *pIcon = KDE::icon("network-server");
+    *pIcon = KDE::icon(QStringLiteral("network-server"));
 }
 
 Smb4KHost::~Smb4KHost()
@@ -60,7 +60,7 @@ Smb4KHost::~Smb4KHost()
 void Smb4KHost::setHostName(const QString &name)
 {
     pUrl->setHost(name);
-    pUrl->setScheme("smb");
+    pUrl->setScheme(QStringLiteral("smb"));
 }
 
 QString Smb4KHost::hostName() const
