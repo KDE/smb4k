@@ -1,7 +1,7 @@
 /*
     The helper that mounts and unmounts shares.
 
-    SPDX-FileCopyrightText: 2010-2020 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2010-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -11,7 +11,6 @@
 
 // Qt includes
 #include <QDebug>
-#include <QLatin1String>
 #include <QNetworkInterface>
 #include <QProcessEnvironment>
 #include <QUrl>
@@ -59,7 +58,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     //
     // Check the mount executable
     //
-    if (mount != args["mh_command"].toString()) {
+    if (mount != args[QStringLiteral("mh_command")].toString()) {
         // Something weird is going on, bail out.
         reply.setType(ActionReply::HelperErrorType);
         return reply;
@@ -71,9 +70,9 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     QStringList command;
 #if defined(Q_OS_LINUX)
     command << mount;
-    command << args["mh_url"].toUrl().toString(QUrl::RemoveScheme | QUrl::RemoveUserInfo | QUrl::RemovePort);
-    command << args["mh_mountpoint"].toString();
-    command << args["mh_options"].toStringList();
+    command << args[QStringLiteral("mh_url")].toUrl().toString(QUrl::RemoveScheme | QUrl::RemoveUserInfo | QUrl::RemovePort);
+    command << args[QStringLiteral("mh_mountpoint")].toString();
+    command << args[QStringLiteral("mh_options")].toStringList();
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
     command << mount;
     command << args["mh_options"].toStringList();
@@ -88,14 +87,14 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
     proc.setOutputChannelMode(KProcess::SeparateChannels);
     proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
 #if defined(Q_OS_LINUX)
-    proc.setEnv("PASSWD", args["mh_url"].toUrl().password().toUtf8().data(), true);
+    proc.setEnv(QStringLiteral("PASSWD"), args[QStringLiteral("mh_url")].toUrl().password(), true);
 #endif
     // We need this to avoid a translated password prompt.
-    proc.setEnv("LANG", "C");
+    proc.setEnv(QStringLiteral("LANG"), QStringLiteral("C"));
     // If the location of a Kerberos ticket is passed, it needs to
     // be passed to the process environment here.
-    if (args.contains("mh_krb5ticket")) {
-        proc.setEnv("KRB5CCNAME", args["mh_krb5ticket"].toString());
+    if (args.contains(QStringLiteral("mh_krb5ticket"))) {
+        proc.setEnv(QStringLiteral("KRB5CCNAME"), args[QStringLiteral("mh_krb5ticket")].toString());
     }
 
     proc.setProgram(command);
@@ -118,7 +117,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
             QByteArray out = proc.readAllStandardError();
 
             if (out.startsWith("Password")) {
-                proc.write(args["mh_url"].toUrl().password().toUtf8().data());
+                proc.write(args[QStringLiteral("mh_url")].toUrl().password().toUtf8().data());
                 proc.write("\r");
             }
 
@@ -129,7 +128,7 @@ KAuth::ActionReply Smb4KMountHelper::mount(const QVariantMap &args)
 
         if (proc.exitStatus() == KProcess::NormalExit) {
             QString stdErr = QString::fromUtf8(proc.readAllStandardError());
-            reply.addData("mh_error_message", stdErr.trimmed());
+            reply.addData(QStringLiteral("mh_error_message"), stdErr.trimmed());
         }
     } else {
         reply.setType(ActionReply::HelperErrorType);
@@ -151,7 +150,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     //
     // Check the mount executable
     //
-    if (umount != args["mh_command"].toString()) {
+    if (umount != args[QStringLiteral("mh_command")].toString()) {
         // Something weird is going on, bail out.
         reply.setType(ActionReply::HelperErrorType);
         return reply;
@@ -164,8 +163,9 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
 
     for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : qAsConst(mountPoints)) {
-        if (args["mh_mountpoint"].toString() == mountPoint->mountPoint()
-            && (mountPoint->mountType() == "cifs" || mountPoint->mountType() == "smb3" || mountPoint->mountType() == "smbfs")) {
+        if (args[QStringLiteral("mh_mountpoint")].toString() == mountPoint->mountPoint()
+            && (mountPoint->mountType() == QStringLiteral("cifs") || mountPoint->mountType() == QStringLiteral("smb3")
+                || mountPoint->mountType() == QStringLiteral("smbfs"))) {
             mountPointOk = true;
             break;
         }
@@ -176,7 +176,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     //
     if (!mountPointOk) {
         reply.setType(ActionReply::HelperErrorType);
-        reply.setErrorDescription(i18n("The mountpoint %1 is invalid.", args["mh_mountpoint"].toString()));
+        reply.setErrorDescription(i18n("The mountpoint %1 is invalid.", args[QStringLiteral("mh_mountpoint")].toString()));
     }
 
     //
@@ -184,8 +184,8 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
     //
     QStringList command;
     command << umount;
-    command << args["mh_options"].toStringList();
-    command << args["mh_mountpoint"].toString();
+    command << args[QStringLiteral("mh_options")].toStringList();
+    command << args[QStringLiteral("mh_mountpoint")].toString();
 
     //
     // The process
@@ -234,7 +234,7 @@ KAuth::ActionReply Smb4KMountHelper::unmount(const QVariantMap &args)
 
             if (proc.exitStatus() == KProcess::NormalExit) {
                 QString stdErr = QString::fromUtf8(proc.readAllStandardError());
-                reply.addData("mh_error_message", stdErr.trimmed());
+                reply.addData(QStringLiteral("mh_error_message"), stdErr.trimmed());
             }
         } else {
             reply.setType(ActionReply::HelperErrorType);

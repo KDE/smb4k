@@ -1,7 +1,7 @@
 /*
     The helper that mounts and unmounts shares.
 
-    SPDX-FileCopyrightText: 2010-2020 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2010-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -20,7 +20,7 @@ class Smb4KMountHelper : public QObject
 {
     Q_OBJECT
 
-public slots:
+public Q_SLOTS:
     /**
      * Mounts a CIFS/SMBFS share.
      */
