@@ -1,7 +1,7 @@
 /*
     This is the wallet manager of Smb4K.
 
-    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -156,13 +156,13 @@ QList<Smb4KAuthInfo *> Smb4KWalletManager::loginCredentialsList()
                 Smb4KAuthInfo *authInfo = new Smb4KAuthInfo();
 
                 if (it.key() == QStringLiteral("DEFAULT_LOGIN")) {
-                    authInfo->setUserName(it.value().value("Login"));
-                    authInfo->setPassword(it.value().value("Password"));
+                    authInfo->setUserName(it.value().value(QStringLiteral("Login")));
+                    authInfo->setPassword(it.value().value(QStringLiteral("Password")));
                 } else {
                     QUrl url(it.key(), QUrl::TolerantMode);
                     authInfo->setUrl(url);
-                    authInfo->setUserName(it.value().value("Login"));
-                    authInfo->setPassword(it.value().value("Password"));
+                    authInfo->setUserName(it.value().value(QStringLiteral("Login")));
+                    authInfo->setPassword(it.value().value(QStringLiteral("Password")));
                 }
 
                 entries << authInfo;
@@ -275,7 +275,7 @@ bool Smb4KWalletManager::useWalletSystem() const
 bool Smb4KWalletManager::hasDefaultCredentials()
 {
     if (init()) {
-        if (d->wallet->hasEntry("DEFAULT_LOGIN")) {
+        if (d->wallet->hasEntry(QStringLiteral("DEFAULT_LOGIN"))) {
             return true;
         }
     }
@@ -301,11 +301,11 @@ bool Smb4KWalletManager::init()
             //
             if (d->wallet) {
                 if (d->wallet->isOpen()) {
-                    if (!d->wallet->hasFolder("Smb4K")) {
-                        d->wallet->createFolder("Smb4K");
-                        d->wallet->setFolder("Smb4K");
+                    if (!d->wallet->hasFolder(QStringLiteral("Smb4K"))) {
+                        d->wallet->createFolder(QStringLiteral("Smb4K"));
+                        d->wallet->setFolder(QStringLiteral("Smb4K"));
                     } else {
-                        d->wallet->setFolder("Smb4K");
+                        d->wallet->setFolder(QStringLiteral("Smb4K"));
                     }
                 } else {
                     Smb4KNotification::credentialsNotAccessible();
@@ -382,17 +382,17 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo *authInfo)
                 QMap<QString, QString> credentials;
 
                 if (d->wallet->readMap(itemUrlString, credentials) == 0) {
-                    authInfo->setUserName(credentials.value("Login"));
-                    authInfo->setPassword(credentials.value("Password"));
+                    authInfo->setUserName(credentials.value(QStringLiteral("Login")));
+                    authInfo->setPassword(credentials.value(QStringLiteral("Password")));
                     success = true;
                 }
             } else {
                 if (Smb4KSettings::useDefaultLogin()) {
                     QMap<QString, QString> credentials;
 
-                    if (d->wallet->readMap("DEFAULT_LOGIN", credentials) == 0) {
-                        authInfo->setUserName(credentials.value("Login"));
-                        authInfo->setPassword(credentials.value("Password"));
+                    if (d->wallet->readMap(QStringLiteral("DEFAULT_LOGIN"), credentials) == 0) {
+                        authInfo->setUserName(credentials.value(QStringLiteral("Login")));
+                        authInfo->setPassword(credentials.value(QStringLiteral("Password")));
                         success = true;
                     }
                 }
@@ -401,9 +401,9 @@ bool Smb4KWalletManager::read(Smb4KAuthInfo *authInfo)
             if (Smb4KSettings::useDefaultLogin()) {
                 QMap<QString, QString> credentials;
 
-                if (d->wallet->readMap("DEFAULT_LOGIN", credentials) == 0) {
-                    authInfo->setUserName(credentials.value("Login"));
-                    authInfo->setPassword(credentials.value("Password"));
+                if (d->wallet->readMap(QStringLiteral("DEFAULT_LOGIN"), credentials) == 0) {
+                    authInfo->setUserName(credentials.value(QStringLiteral("Login")));
+                    authInfo->setPassword(credentials.value(QStringLiteral("Password")));
                     success = true;
                 }
             }
@@ -432,8 +432,8 @@ void Smb4KWalletManager::write(Smb4KAuthInfo *authInfo)
         //
         if (!authInfo->userName().isEmpty() /* allow empty passwords */) {
             QMap<QString, QString> credentials;
-            credentials.insert("Login", authInfo->userName());
-            credentials.insert("Password", authInfo->password());
+            credentials.insert(QStringLiteral("Login"), authInfo->userName());
+            credentials.insert(QStringLiteral("Password"), authInfo->password());
 
             if (d->wallet->writeMap(key, credentials) == 0) {
                 d->wallet->sync();
