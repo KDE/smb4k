@@ -1,7 +1,7 @@
 /*
     Private helper class(es) for the profile manager.
 
-    SPDX-FileCopyrightText: 2014-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -76,7 +76,7 @@ void Smb4KProfileMigrationDialog::setupView()
     descriptionLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *pixmap = new QLabel(description);
-    QPixmap pix = KDE::icon("format-list-unordered").pixmap(KIconLoader::SizeHuge);
+    QPixmap pix = KDE::icon(QStringLiteral("format-list-unordered")).pixmap(KIconLoader::SizeHuge);
     pixmap->setPixmap(pix);
     pixmap->setAlignment(Qt::AlignBottom);
 
