@@ -135,7 +135,7 @@ void Smb4KSharesView::mousePressEvent(QMouseEvent *e)
 
     if (!item && !selectedItems().isEmpty()) {
         clearSelection();
-        setCurrentItem(0);
+        setCurrentItem(nullptr);
         Q_EMIT itemPressed(currentItem());
     }
 
@@ -244,7 +244,7 @@ void Smb4KSharesView::startDrag(Qt::DropActions supported)
             Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(list.first());
             pixmap = item->icon().pixmap(KIconLoader::SizeMedium);
         } else {
-            pixmap = KDE::icon("document-multiple").pixmap(KIconLoader::SizeMedium);
+            pixmap = KDE::icon(QStringLiteral("document-multiple")).pixmap(KIconLoader::SizeMedium);
         }
 
         drag->setPixmap(pixmap);

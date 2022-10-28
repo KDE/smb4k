@@ -1,7 +1,7 @@
 /*
     This is the shares view of Smb4K.
 
-    SPDX-FileCopyrightText: 2006-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2006-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -53,7 +53,7 @@ public:
      */
     Smb4KToolTip *toolTip();
 
-signals:
+Q_SIGNALS:
     /**
      * This signal is emitted when something has been dropped onto
      * @p item and the drop event was accepted.
