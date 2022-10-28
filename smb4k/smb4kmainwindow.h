@@ -1,7 +1,7 @@
 /*
     The main window of Smb4K
 
-    SPDX-FileCopyrightText: 2008-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -59,7 +59,7 @@ protected:
      */
     bool eventFilter(QObject *obj, QEvent *e) override;
 
-protected slots:
+protected Q_SLOTS:
     /**
      * Quits the application.
      */
