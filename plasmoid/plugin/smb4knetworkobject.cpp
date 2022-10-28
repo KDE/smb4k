@@ -2,7 +2,7 @@
     This class derives from QObject and encapsulates the network items.
     It is for use with QtQuick.
 
-    SPDX-FileCopyrightText: 2012-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2012-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -87,7 +87,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KBasicNetworkItem *networkItem, QObje
         break;
     }
     default: {
-        if (networkItem->url().toString() == "smb://") {
+        if (networkItem->url().toString() == QStringLiteral("smb://")) {
             d->url = networkItem->url();
             d->mounted = false;
             d->inaccessible = false;
@@ -110,7 +110,7 @@ Smb4KNetworkObject::Smb4KNetworkObject(QObject *parent)
     : QObject(parent)
     , d(new Smb4KNetworkObjectPrivate)
 {
-    d->url.setUrl("smb://", QUrl::TolerantMode);
+    d->url.setUrl(QStringLiteral("smb://"), QUrl::TolerantMode);
     d->mounted = false;
     d->inaccessible = false;
     d->printer = false;
@@ -188,7 +188,7 @@ void Smb4KNetworkObject::setMasterBrowser(bool master)
 
 QString Smb4KNetworkObject::shareName() const
 {
-    return d->url.path().remove('/');
+    return d->url.path().remove(QStringLiteral("/"));
 }
 
 QString Smb4KNetworkObject::name() const
@@ -236,7 +236,7 @@ QUrl Smb4KNetworkObject::url() const
 
 QUrl Smb4KNetworkObject::parentUrl() const
 {
-    QUrl moveUp("..");
+    QUrl moveUp(QStringLiteral(".."));
     QUrl parentUrl = d->url;
 
     return parentUrl.resolved(moveUp);
@@ -311,7 +311,7 @@ void Smb4KNetworkObject::update(Smb4KBasicNetworkItem *networkItem)
                 d->inaccessible = share->isInaccessible();
                 d->printer = share->isPrinter();
                 d->mountpoint.setUrl(share->path(), QUrl::TolerantMode);
-                d->mountpoint.setScheme("file");
+                d->mountpoint.setScheme(QStringLiteral("file"));
             }
         }
     } else {
