@@ -114,26 +114,26 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     // Rescan and abort dual action
     //
     KDualAction *rescanAbortAction = new KDualAction(this);
-    rescanAbortAction->setInactiveIcon(KDE::icon("view-refresh"));
+    rescanAbortAction->setInactiveIcon(KDE::icon(QStringLiteral("view-refresh")));
     rescanAbortAction->setInactiveText(i18n("Scan Netwo&rk"));
-    rescanAbortAction->setActiveIcon(KDE::icon("process-stop"));
+    rescanAbortAction->setActiveIcon(KDE::icon(QStringLiteral("process-stop")));
     rescanAbortAction->setActiveText(i18n("&Abort"));
     rescanAbortAction->setAutoToggle(false);
     rescanAbortAction->setEnabled(true);
 
     connect(rescanAbortAction, SIGNAL(triggered(bool)), this, SLOT(slotRescanAbortActionTriggered(bool)));
 
-    m_actionCollection->addAction("rescan_abort_action", rescanAbortAction);
+    m_actionCollection->addAction(QStringLiteral("rescan_abort_action"), rescanAbortAction);
     m_actionCollection->setDefaultShortcut(rescanAbortAction, QKeySequence::Refresh);
 
     //
     // Search action
     //
-    QAction *searchAction = new QAction(KDE::icon("search"), i18n("&Search"), this);
+    QAction *searchAction = new QAction(KDE::icon(QStringLiteral("search")), i18n("&Search"), this);
 
     connect(searchAction, SIGNAL(triggered(bool)), this, SLOT(slotShowSearchToolBar()));
 
-    m_actionCollection->addAction("search_action", searchAction);
+    m_actionCollection->addAction(QStringLiteral("search_action"), searchAction);
     m_actionCollection->setDefaultShortcut(searchAction, QKeySequence::Find);
 
     //
@@ -142,28 +142,29 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     QAction *separator1 = new QAction(this);
     separator1->setSeparator(true);
 
-    m_actionCollection->addAction("network_separator1", separator1);
+    m_actionCollection->addAction(QStringLiteral("network_separator1"), separator1);
 
     //
     // Bookmark action
     //
-    QAction *bookmarkAction = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), this);
+    QAction *bookmarkAction = new QAction(KDE::icon(QStringLiteral("bookmark-new")), i18n("Add &Bookmark"), this);
     bookmarkAction->setEnabled(false);
 
     connect(bookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)));
 
-    m_actionCollection->addAction("bookmark_action", bookmarkAction);
+    m_actionCollection->addAction(QStringLiteral("bookmark_action"), bookmarkAction);
     m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL + Qt::Key_B));
 
     //
     // Mount dialog action
     //
-    QAction *manualAction = new QAction(KDE::icon("view-form", QStringList("emblem-mounted")), i18n("&Open Mount Dialog"), this);
+    QAction *manualAction =
+        new QAction(KDE::icon(QStringLiteral("view-form"), QStringList(QStringLiteral("emblem-mounted"))), i18n("&Open Mount Dialog"), this);
     manualAction->setEnabled(true);
 
     connect(manualAction, SIGNAL(triggered(bool)), this, SLOT(slotMountManually(bool)));
 
-    m_actionCollection->addAction("mount_manually_action", manualAction);
+    m_actionCollection->addAction(QStringLiteral("mount_manually_action"), manualAction);
     m_actionCollection->setDefaultShortcut(manualAction, QKeySequence(Qt::CTRL + Qt::Key_O));
 
     //
@@ -172,58 +173,58 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     QAction *separator2 = new QAction(this);
     separator2->setSeparator(true);
 
-    m_actionCollection->addAction("network_separator2", separator2);
+    m_actionCollection->addAction(QStringLiteral("network_separator2"), separator2);
 
     //
     // Authentication action
     //
-    QAction *authAction = new QAction(KDE::icon("dialog-password"), i18n("Au&thentication"), this);
+    QAction *authAction = new QAction(KDE::icon(QStringLiteral("dialog-password")), i18n("Au&thentication"), this);
     authAction->setEnabled(false);
 
     connect(authAction, SIGNAL(triggered(bool)), this, SLOT(slotAuthentication(bool)));
 
-    m_actionCollection->addAction("authentication_action", authAction);
+    m_actionCollection->addAction(QStringLiteral("authentication_action"), authAction);
     m_actionCollection->setDefaultShortcut(authAction, QKeySequence(Qt::CTRL + Qt::Key_T));
 
     //
     // Custom options action
     //
-    QAction *customAction = new QAction(KDE::icon("preferences-system-network"), i18n("&Custom Options"), this);
+    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("&Custom Options"), this);
     customAction->setEnabled(false);
 
     connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotCustomOptions(bool)));
 
-    m_actionCollection->addAction("custom_action", customAction);
+    m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
     m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL + Qt::Key_C));
 
     //
     // Preview action
     //
-    QAction *previewAction = new QAction(KDE::icon("view-list-icons"), i18n("Pre&view"), this);
+    QAction *previewAction = new QAction(KDE::icon(QStringLiteral("view-list-icons")), i18n("Pre&view"), this);
     previewAction->setEnabled(false);
 
     connect(previewAction, SIGNAL(triggered(bool)), this, SLOT(slotPreview(bool)));
 
-    m_actionCollection->addAction("preview_action", previewAction);
+    m_actionCollection->addAction(QStringLiteral("preview_action"), previewAction);
     m_actionCollection->setDefaultShortcut(previewAction, QKeySequence(Qt::CTRL + Qt::Key_V));
 
     //
     // Print action
     //
-    QAction *printAction = new QAction(KDE::icon("printer"), i18n("&Print File"), this);
+    QAction *printAction = new QAction(KDE::icon(QStringLiteral("printer")), i18n("&Print File"), this);
     printAction->setEnabled(false);
 
     connect(printAction, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)));
 
-    m_actionCollection->addAction("print_action", printAction);
+    m_actionCollection->addAction(QStringLiteral("print_action"), printAction);
     m_actionCollection->setDefaultShortcut(printAction, QKeySequence(Qt::CTRL + Qt::Key_P));
 
     //
     // Mount/unmount action
     //
     KDualAction *mountAction = new KDualAction(this);
-    KGuiItem mountItem(i18n("&Mount"), KDE::icon("media-mount"));
-    KGuiItem unmountItem(i18n("&Unmount"), KDE::icon("media-eject"));
+    KGuiItem mountItem(i18n("&Mount"), KDE::icon(QStringLiteral("media-mount")));
+    KGuiItem unmountItem(i18n("&Unmount"), KDE::icon(QStringLiteral("media-eject")));
     mountAction->setActiveGuiItem(mountItem);
     mountAction->setInactiveGuiItem(unmountItem);
     mountAction->setActive(true);
@@ -233,7 +234,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     connect(mountAction, SIGNAL(triggered(bool)), this, SLOT(slotMountActionTriggered(bool)));
     connect(mountAction, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
 
-    m_actionCollection->addAction("mount_action", mountAction);
+    m_actionCollection->addAction(QStringLiteral("mount_action"), mountAction);
     m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(Qt::CTRL + Qt::Key_M));
 
     //
@@ -390,41 +391,41 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
                 //
                 // Adjust the actions
                 //
-                qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Compute&r"));
-                m_actionCollection->action("bookmark_action")->setEnabled(false);
-                m_actionCollection->action("authentication_action")->setEnabled(true);
-                m_actionCollection->action("custom_action")->setEnabled(true);
-                m_actionCollection->action("preview_action")->setEnabled(false);
-                m_actionCollection->action("print_action")->setEnabled(false);
-                static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(true);
-                m_actionCollection->action("mount_action")->setEnabled(false);
+                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Compute&r"));
+                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(true);
+                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
+                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
+                static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
                 break;
             }
             case Share: {
                 //
                 // Adjust the actions
                 //
-                qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Compute&r"));
-                m_actionCollection->action("bookmark_action")->setEnabled(!browserItem->shareItem()->isPrinter());
-                m_actionCollection->action("authentication_action")->setEnabled(true);
-                m_actionCollection->action("custom_action")->setEnabled(!browserItem->shareItem()->isPrinter());
-                m_actionCollection->action("preview_action")->setEnabled(!browserItem->shareItem()->isPrinter());
-                m_actionCollection->action("print_action")->setEnabled(browserItem->shareItem()->isPrinter());
+                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Compute&r"));
+                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(!browserItem->shareItem()->isPrinter());
+                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(true);
+                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(!browserItem->shareItem()->isPrinter());
+                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(!browserItem->shareItem()->isPrinter());
+                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(browserItem->shareItem()->isPrinter());
 
                 if (!browserItem->shareItem()->isPrinter()) {
                     if (!browserItem->shareItem()->isMounted() || (browserItem->shareItem()->isMounted() && browserItem->shareItem()->isForeign())) {
-                        static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(true);
-                        m_actionCollection->action("mount_action")->setEnabled(true);
+                        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
                     } else if (browserItem->shareItem()->isMounted() && !browserItem->shareItem()->isForeign()) {
-                        static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(false);
-                        m_actionCollection->action("mount_action")->setEnabled(true);
+                        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(false);
+                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
                     } else {
-                        static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(true);
-                        m_actionCollection->action("mount_action")->setEnabled(false);
+                        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
                     }
                 } else {
-                    static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(true);
-                    m_actionCollection->action("mount_action")->setEnabled(true);
+                    static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                    m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
                 }
                 break;
             }
@@ -432,14 +433,14 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
                 //
                 // Adjust the actions
                 //
-                qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Wo&rkgroup"));
-                m_actionCollection->action("bookmark_action")->setEnabled(false);
-                m_actionCollection->action("authentication_action")->setEnabled(false);
-                m_actionCollection->action("custom_action")->setEnabled(false);
-                m_actionCollection->action("preview_action")->setEnabled(false);
-                m_actionCollection->action("print_action")->setEnabled(false);
-                static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(true);
-                m_actionCollection->action("mount_action")->setEnabled(false);
+                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Wo&rkgroup"));
+                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
+                static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
                 break;
             }
             }
@@ -469,26 +470,26 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
         //
         // Adjust the actions
         //
-        qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Netwo&rk"));
-        m_actionCollection->action("bookmark_action")->setEnabled(true);
-        m_actionCollection->action("authentication_action")->setEnabled(false);
-        m_actionCollection->action("custom_action")->setEnabled(false);
-        m_actionCollection->action("preview_action")->setEnabled(true);
-        m_actionCollection->action("print_action")->setEnabled(false);
-        static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(unmountedShares == items.size());
-        m_actionCollection->action("mount_action")->setEnabled(true);
+        qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Netwo&rk"));
+        m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
+        m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(false);
+        m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(false);
+        m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(true);
+        m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
+        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(unmountedShares == items.size());
+        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
     } else {
         //
         // Adjust the actions
         //
-        qobject_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"))->setInactiveText(i18n("Scan Netwo&rk"));
-        m_actionCollection->action("bookmark_action")->setEnabled(false);
-        m_actionCollection->action("authentication_action")->setEnabled(false);
-        m_actionCollection->action("custom_action")->setEnabled(false);
-        m_actionCollection->action("preview_action")->setEnabled(false);
-        m_actionCollection->action("print_action")->setEnabled(false);
-        static_cast<KDualAction *>(m_actionCollection->action("mount_action"))->setActive(true);
-        m_actionCollection->action("mount_action")->setEnabled(false);
+        qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Netwo&rk"));
+        m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
+        m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(false);
+        m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(false);
+        m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(false);
+        m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
+        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
     }
 }
 
@@ -497,7 +498,7 @@ void Smb4KNetworkBrowserDockWidget::slotClientAboutToStart(const NetworkItemPtr 
     //
     // Get the rescan/abort action
     //
-    KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"));
+    KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")));
 
     //
     // Make adjustments
@@ -520,7 +521,7 @@ void Smb4KNetworkBrowserDockWidget::slotClientFinished(const NetworkItemPtr & /*
     //
     // Get the rescan/abort action
     //
-    KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"));
+    KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")));
 
     //
     // Make adjustments
@@ -784,7 +785,7 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
     //
     // Get the Rescan/Abort action
     //
-    KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action("rescan_abort_action"));
+    KDualAction *rescanAbortAction = static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")));
 
     //
     // Get the selected items
@@ -996,7 +997,7 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionChanged(bool active)
     //
     // Get the mount action
     //
-    KDualAction *mountAction = static_cast<KDualAction *>(m_actionCollection->action("mount_action"));
+    KDualAction *mountAction = static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")));
 
     //
     // Change the shortcuts depending on the value of the 'active' argument
@@ -1064,7 +1065,7 @@ void Smb4KNetworkBrowserDockWidget::slotMounterFinished(int process)
     //
     // Get the mount/unmount action
     //
-    KDualAction *mountAction = static_cast<KDualAction *>(m_actionCollection->action("mount_action"));
+    KDualAction *mountAction = static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")));
 
     //
     // Make adjustments
