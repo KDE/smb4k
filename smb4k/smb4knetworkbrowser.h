@@ -1,7 +1,7 @@
 /*
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
 
-    SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -70,7 +70,7 @@ protected:
      */
     void mouseMoveEvent(QMouseEvent *e) override;
 
-protected slots:
+protected Q_SLOTS:
     /**
      * This slot is called when the user activated an item. It is used
      * to open the item if it is expandable.
