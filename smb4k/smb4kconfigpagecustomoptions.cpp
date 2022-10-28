@@ -46,7 +46,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     // The list widget
     //
     QListWidget *optionsListWidget = new QListWidget(leftWidget);
-    optionsListWidget->setObjectName("OptionsListWidget");
+    optionsListWidget->setObjectName(QStringLiteral("OptionsListWidget"));
     optionsListWidget->setSelectionMode(QListWidget::SingleSelection);
     optionsListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     optionsListWidget->viewport()->installEventFilter(this);
@@ -61,7 +61,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     KMessageWidget *messageWidget = new KMessageWidget(leftWidget);
     messageWidget->setCloseButtonVisible(true);
     messageWidget->setMessageType(KMessageWidget::Information);
-    messageWidget->setIcon(KDE::icon("emblem-information"));
+    messageWidget->setIcon(KDE::icon(QStringLiteral("emblem-information")));
     messageWidget->setText(i18n("All fine."));
     messageWidget->setWordWrap(true);
     messageWidget->setVisible(false);
@@ -77,21 +77,21 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
 
     QPushButton *resetButton = buttonBox->addButton(QDialogButtonBox::Reset);
     resetButton->setEnabled(false);
-    resetButton->setObjectName("reset_button");
+    resetButton->setObjectName(QStringLiteral("reset_button"));
 
     QPushButton *editButton = buttonBox->addButton(i18n("Edit"), QDialogButtonBox::ActionRole);
-    editButton->setIcon(KDE::icon("edit-rename"));
-    editButton->setObjectName("edit_button");
+    editButton->setIcon(KDE::icon(QStringLiteral("edit-rename")));
+    editButton->setObjectName(QStringLiteral("edit_button"));
     editButton->setEnabled(false);
 
     QPushButton *removeButton = buttonBox->addButton(i18n("Remove"), QDialogButtonBox::ActionRole);
-    removeButton->setIcon(KDE::icon("edit-delete"));
-    removeButton->setObjectName("remove_button");
+    removeButton->setIcon(KDE::icon(QStringLiteral("edit-delete")));
+    removeButton->setObjectName(QStringLiteral("remove_button"));
     removeButton->setEnabled(false);
 
     QPushButton *clearButton = buttonBox->addButton(i18n("Clear List"), QDialogButtonBox::ActionRole);
-    clearButton->setIcon(KDE::icon("edit-clear"));
-    clearButton->setObjectName("clear_button");
+    clearButton->setIcon(KDE::icon(QStringLiteral("edit-clear")));
+    clearButton->setObjectName(QStringLiteral("clear_button"));
     clearButton->setEnabled(!Smb4KCustomOptionsManager::self()->customOptions(true).isEmpty());
 
     connect(resetButton, SIGNAL(clicked(bool)), SLOT(slotResetButtonClicked(bool)));
@@ -126,7 +126,7 @@ void Smb4KConfigPageCustomOptions::loadCustomOptions()
     //
     // Get the list widget and display the new options
     //
-    QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
+    QListWidget *optionsListWidget = findChild<QListWidget *>(QStringLiteral("OptionsListWidget"));
 
     if (optionsListWidget) {
         // Clear the list widget
@@ -140,12 +140,12 @@ void Smb4KConfigPageCustomOptions::loadCustomOptions()
         for (const OptionsPtr &option : qAsConst(customOptions)) {
             switch (option->type()) {
             case Host: {
-                QListWidgetItem *item = new QListWidgetItem(KDE::icon("network-server"), option->displayString(), optionsListWidget, Host);
+                QListWidgetItem *item = new QListWidgetItem(KDE::icon(QStringLiteral("network-server")), option->displayString(), optionsListWidget, Host);
                 item->setData(Qt::UserRole, option->url());
                 break;
             }
             case Share: {
-                QListWidgetItem *item = new QListWidgetItem(KDE::icon("folder-network"), option->displayString(), optionsListWidget, Share);
+                QListWidgetItem *item = new QListWidgetItem(KDE::icon(QStringLiteral("folder-network")), option->displayString(), optionsListWidget, Share);
                 item->setData(Qt::UserRole, option->url());
                 break;
             }
@@ -179,7 +179,7 @@ void Smb4KConfigPageCustomOptions::resetCustomOptions()
 
 bool Smb4KConfigPageCustomOptions::eventFilter(QObject *obj, QEvent *e)
 {
-    QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
+    QListWidget *optionsListWidget = findChild<QListWidget *>(QStringLiteral("OptionsListWidget"));
 
     if (optionsListWidget) {
         if (obj == optionsListWidget->viewport()) {
@@ -188,8 +188,8 @@ bool Smb4KConfigPageCustomOptions::eventFilter(QObject *obj, QEvent *e)
                 QPoint pos = optionsListWidget->viewport()->mapFromGlobal(mouseEvent->globalPos());
                 QListWidgetItem *item = optionsListWidget->itemAt(pos);
 
-                findChild<QPushButton *>("edit_button")->setEnabled(item != nullptr);
-                findChild<QPushButton *>("remove_button")->setEnabled(item != nullptr);
+                findChild<QPushButton *>(QStringLiteral("edit_button"))->setEnabled(item != nullptr);
+                findChild<QPushButton *>(QStringLiteral("remove_button"))->setEnabled(item != nullptr);
 
                 if (!item) {
                     optionsListWidget->clearSelection();
@@ -231,7 +231,7 @@ void Smb4KConfigPageCustomOptions::slotEditButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
+    QListWidget *optionsListWidget = findChild<QListWidget *>(QStringLiteral("OptionsListWidget"));
 
     if (optionsListWidget) {
         slotEditCustomItem(optionsListWidget->currentItem());
@@ -242,7 +242,7 @@ void Smb4KConfigPageCustomOptions::slotRemoveButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
+    QListWidget *optionsListWidget = findChild<QListWidget *>(QStringLiteral("OptionsListWidget"));
 
     if (optionsListWidget) {
         QListWidgetItem *item = optionsListWidget->currentItem();
@@ -262,14 +262,14 @@ void Smb4KConfigPageCustomOptions::slotRemoveButtonClicked(bool checked)
         }
     }
 
-    findChild<QPushButton *>("clear_button")->setEnabled(optionsListWidget->count() != 0);
+    findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled(optionsListWidget->count() != 0);
 }
 
 void Smb4KConfigPageCustomOptions::slotClearButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
+    QListWidget *optionsListWidget = findChild<QListWidget *>(QStringLiteral("OptionsListWidget"));
 
     if (optionsListWidget) {
         while (optionsListWidget->count() != 0) {
@@ -292,14 +292,14 @@ void Smb4KConfigPageCustomOptions::slotClearButtonClicked(bool checked)
         Q_EMIT customSettingsModified();
     }
 
-    findChild<QPushButton *>("clear_button")->setEnabled(optionsListWidget->count() != 0);
+    findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled(optionsListWidget->count() != 0);
 }
 
 void Smb4KConfigPageCustomOptions::slotResetButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    QListWidget *optionsListWidget = findChild<QListWidget *>("OptionsListWidget");
+    QListWidget *optionsListWidget = findChild<QListWidget *>(QStringLiteral("OptionsListWidget"));
 
     if (optionsListWidget) {
         Smb4KCustomOptionsManager::self()->resetCustomOptions();
@@ -309,7 +309,7 @@ void Smb4KConfigPageCustomOptions::slotResetButtonClicked(bool checked)
     m_customOptionsChanged = false;
     Q_EMIT customSettingsModified();
 
-    findChild<QPushButton *>("clear_button")->setEnabled(optionsListWidget->count() != 0);
+    findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled(optionsListWidget->count() != 0);
 }
 
 void Smb4KConfigPageCustomOptions::slotEnableResetButton()
