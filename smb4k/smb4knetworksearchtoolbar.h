@@ -1,7 +1,7 @@
 /*
     This class provides the network search toolbar.
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 

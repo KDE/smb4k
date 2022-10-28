@@ -1,7 +1,7 @@
 /*
     This class provides the network search toolbar.
 
-    SPDX-FileCopyrightText: 2018-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -36,8 +36,8 @@ Smb4KNetworkSearchToolBar::Smb4KNetworkSearchToolBar(QWidget *parent)
     // The Close action
     //
     QAction *closeAction = new QAction(this);
-    closeAction->setObjectName("CloseAction");
-    closeAction->setIcon(KDE::icon("window-close"));
+    closeAction->setObjectName(QStringLiteral("CloseAction"));
+    closeAction->setIcon(KDE::icon(QStringLiteral("window-close")));
     closeAction->setText(i18n("Close"));
 
     connect(closeAction, SIGNAL(triggered(bool)), this, SLOT(slotCloseButtonPressed()));
@@ -48,7 +48,7 @@ Smb4KNetworkSearchToolBar::Smb4KNetworkSearchToolBar(QWidget *parent)
     // The search combo box
     //
     KComboBox *comboBox = new KComboBox(true, this);
-    comboBox->setObjectName("SearchCombo");
+    comboBox->setObjectName(QStringLiteral("SearchCombo"));
     comboBox->lineEdit()->setPlaceholderText(i18n("Search string"));
     comboBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     comboBox->setCompletionMode(KCompletion::CompletionPopupAuto);
@@ -62,10 +62,10 @@ Smb4KNetworkSearchToolBar::Smb4KNetworkSearchToolBar(QWidget *parent)
     // The search dual action
     //
     KDualAction *searchAction = new KDualAction(this);
-    searchAction->setObjectName("SearchAction");
-    searchAction->setInactiveIcon(KDE::icon("search"));
+    searchAction->setObjectName(QStringLiteral("SearchAction"));
+    searchAction->setInactiveIcon(KDE::icon(QStringLiteral("search")));
     searchAction->setInactiveText(i18n("Search"));
-    searchAction->setActiveIcon(KDE::icon("process-stop"));
+    searchAction->setActiveIcon(KDE::icon(QStringLiteral("process-stop")));
     searchAction->setActiveText(i18n("Stop"));
     searchAction->setAutoToggle(false);
 
@@ -77,8 +77,8 @@ Smb4KNetworkSearchToolBar::Smb4KNetworkSearchToolBar(QWidget *parent)
     // Go one item down action
     //
     QAction *downAction = new QAction(this);
-    downAction->setObjectName("DownAction");
-    downAction->setIcon(KDE::icon("go-down-search"));
+    downAction->setObjectName(QStringLiteral("DownAction"));
+    downAction->setIcon(KDE::icon(QStringLiteral("go-down-search")));
     downAction->setText(i18n("Item Down"));
     downAction->setEnabled(false);
 
@@ -90,8 +90,8 @@ Smb4KNetworkSearchToolBar::Smb4KNetworkSearchToolBar(QWidget *parent)
     // Go one item up action
     //
     QAction *upAction = new QAction(this);
-    upAction->setObjectName("UpAction");
-    upAction->setIcon(KDE::icon("go-up-search"));
+    upAction->setObjectName(QStringLiteral("UpAction"));
+    upAction->setIcon(KDE::icon(QStringLiteral("go-up-search")));
     upAction->setText(i18n("Item Up"));
     upAction->setEnabled(false);
 
@@ -103,8 +103,8 @@ Smb4KNetworkSearchToolBar::Smb4KNetworkSearchToolBar(QWidget *parent)
      * Clear the search
      */
     QAction *clearAction = new QAction(this);
-    clearAction->setObjectName("ClearAction");
-    clearAction->setIcon(KDE::icon("edit-clear-all"));
+    clearAction->setObjectName(QStringLiteral("ClearAction"));
+    clearAction->setIcon(KDE::icon(QStringLiteral("edit-clear-all")));
     clearAction->setText(i18n("Clear"));
     clearAction->setEnabled(false);
 
@@ -122,7 +122,7 @@ void Smb4KNetworkSearchToolBar::prepareInput()
     //
     // Get the search combo box
     //
-    KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+    KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
 
     //
     // Set the keyboard focus to the lineedit
@@ -135,13 +135,13 @@ void Smb4KNetworkSearchToolBar::setActiveState(bool active)
     //
     // Get the search dual action and set the active state
     //
-    KDualAction *searchAction = findChild<KDualAction *>("SearchAction");
+    KDualAction *searchAction = findChild<KDualAction *>(QStringLiteral("SearchAction"));
     searchAction->setActive(active);
 
     //
     // Get the search combo box and disable/enable it
     //
-    KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+    KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
     comboBox->setEnabled(!active);
 }
 
@@ -155,26 +155,26 @@ void Smb4KNetworkSearchToolBar::clearSearch()
     //
     // Clear the combo box
     //
-    KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+    KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
     comboBox->clear();
     comboBox->clearEditText();
 
     //
     // Get the down action and disable it
     //
-    QAction *downAction = findChild<QAction *>("DownAction");
+    QAction *downAction = findChild<QAction *>(QStringLiteral("DownAction"));
     downAction->setEnabled(!m_searchResults.isEmpty());
 
     //
     // Get the up action and disable it
     //
-    QAction *upAction = findChild<QAction *>("UpAction");
+    QAction *upAction = findChild<QAction *>(QStringLiteral("UpAction"));
     upAction->setEnabled(!m_searchResults.isEmpty());
 
     //
     // Get the clear action and disable it
     //
-    QAction *clearAction = findChild<QAction *>("ClearAction");
+    QAction *clearAction = findChild<QAction *>(QStringLiteral("ClearAction"));
     clearAction->setEnabled(!m_searchResults.isEmpty());
 
     //
@@ -205,19 +205,19 @@ void Smb4KNetworkSearchToolBar::setSearchResults(const QList<SharePtr> &list)
     //
     // Get the down action and enable it
     //
-    QAction *downAction = findChild<QAction *>("DownAction");
+    QAction *downAction = findChild<QAction *>(QStringLiteral("DownAction"));
     downAction->setEnabled(!m_searchResults.isEmpty());
 
     //
     // Get the up action and enable it
     //
-    QAction *upAction = findChild<QAction *>("UpAction");
+    QAction *upAction = findChild<QAction *>(QStringLiteral("UpAction"));
     upAction->setEnabled(!m_searchResults.isEmpty());
 
     //
     // Get the clear action and enable it
     //
-    QAction *clearAction = findChild<QAction *>("ClearAction");
+    QAction *clearAction = findChild<QAction *>(QStringLiteral("ClearAction"));
     clearAction->setEnabled(!m_searchResults.isEmpty());
 }
 
@@ -226,7 +226,7 @@ void Smb4KNetworkSearchToolBar::setCompletionStrings(const QStringList &strings)
     //
     // Get the input combo box
     //
-    KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+    KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
 
     //
     // Set the completion strings
@@ -239,7 +239,7 @@ QStringList Smb4KNetworkSearchToolBar::completionStrings() const
     //
     // Get the input combo box
     //
-    KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+    KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
 
     //
     // Return the completion strings
@@ -252,7 +252,7 @@ void Smb4KNetworkSearchToolBar::slotReturnKeyPressed()
     //
     // Get the input combo box
     //
-    KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+    KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
 
     //
     // Initialize a search if the line edit is not empty
@@ -275,14 +275,14 @@ void Smb4KNetworkSearchToolBar::slotSearchActionTriggered()
     //
     // Get the search dual action
     //
-    KDualAction *searchAction = findChild<KDualAction *>("SearchAction");
+    KDualAction *searchAction = findChild<KDualAction *>(QStringLiteral("SearchAction"));
 
     //
     // Initialize a search if the action is in active state and abort
     // the search if it is in inactive state
     //
     if (!searchAction->isActive()) {
-        KComboBox *comboBox = findChild<KComboBox *>("SearchCombo");
+        KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
 
         if (!comboBox->currentText().isEmpty()) {
             //
