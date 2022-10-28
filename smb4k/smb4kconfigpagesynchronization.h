@@ -43,7 +43,7 @@ public:
      */
     bool checkSettings();
 
-protected slots:
+protected Q_SLOTS:
     /**
      * This slot is invoked if the "Archive mode" checkbox has been
      * toggled.
