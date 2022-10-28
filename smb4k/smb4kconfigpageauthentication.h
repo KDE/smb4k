@@ -68,7 +68,7 @@ public:
      */
     bool loginCredentialsChanged();
 
-signals:
+Q_SIGNALS:
     /**
      * This signal is emitted every time the wallet entries potentially were
      * modified by the user. When this signal is emitted, it does not necessarily
@@ -83,7 +83,7 @@ protected:
      */
     bool eventFilter(QObject *object, QEvent *event) override;
 
-protected slots:
+protected Q_SLOTS:
     /**
      * This slot is called when the "Use wallet" check box is toggled.
      *
