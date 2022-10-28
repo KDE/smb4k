@@ -1,7 +1,7 @@
 /*
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
 
-    SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -39,7 +39,7 @@ public:
      */
     void loadSettings();
 
-signals:
+Q_SIGNALS:
     /**
      * This signal is emitted when the config dialog has been closed and the
      * settings changed.
@@ -48,7 +48,7 @@ signals:
      */
     void settingsChanged(const QString &dialogName);
 
-protected slots:
+protected Q_SLOTS:
     /**
      * This slot opens the manual mount dialog.
      *

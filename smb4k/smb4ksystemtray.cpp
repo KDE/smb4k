@@ -1,7 +1,7 @@
 /*
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
 
-    SPDX-FileCopyrightText: 2007-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -35,14 +35,14 @@
 using namespace Smb4KGlobal;
 
 Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
-    : KStatusNotifierItem("smb4k_systemtray", parent)
+    : KStatusNotifierItem(QStringLiteral("smb4k_systemtray"), parent)
 {
     //
     // Set the icon for the system tray
     //
     QString iconName;
 
-    if (KIconLoader::global()->hasIcon("network-workgroup-symbolic")) {
+    if (KIconLoader::global()->hasIcon(QStringLiteral("network-workgroup-symbolic"))) {
         iconName = QStringLiteral("network-workgroup-symbolic");
     } else {
         iconName = QStringLiteral("network-workgroup");
@@ -69,24 +69,24 @@ Smb4KSystemTray::Smb4KSystemTray(QWidget *parent)
     //
     // Add the actions to the action collection
     //
-    QAction *mountAction = new QAction(KDE::icon("view-form", QStringList("emblem-mounted")), i18n("&Open Mount Dialog"), this);
+    QAction *mountAction = new QAction(KDE::icon(QStringLiteral("view-form"), QStringList(QStringLiteral("emblem-mounted"))), i18n("&Open Mount Dialog"), this);
     connect(mountAction, SIGNAL(triggered(bool)), SLOT(slotMountDialog()));
 
-    addAction("shares_menu", new Smb4KSharesMenu(this));
-    addAction("bookmarks_menu", new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, this));
-    addAction("profiles_menu", new Smb4KProfilesMenu(this));
-    addAction("mount_action", mountAction);
-    addAction("config_action", KStandardAction::preferences(this, SLOT(slotConfigDialog()), this));
+    addAction(QStringLiteral("shares_menu"), new Smb4KSharesMenu(this));
+    addAction(QStringLiteral("bookmarks_menu"), new Smb4KBookmarkMenu(Smb4KBookmarkMenu::SystemTray, this));
+    addAction(QStringLiteral("profiles_menu"), new Smb4KProfilesMenu(this));
+    addAction(QStringLiteral("mount_action"), mountAction);
+    addAction(QStringLiteral("config_action"), KStandardAction::preferences(this, SLOT(slotConfigDialog()), this));
 
     //
     // Set up the menu
     //
-    contextMenu()->addAction(action("shares_menu"));
-    contextMenu()->addAction(action("bookmarks_menu"));
-    contextMenu()->addAction(action("profiles_menu"));
+    contextMenu()->addAction(action(QStringLiteral("shares_menu")));
+    contextMenu()->addAction(action(QStringLiteral("bookmarks_menu")));
+    contextMenu()->addAction(action(QStringLiteral("profiles_menu")));
     contextMenu()->addSeparator();
-    contextMenu()->addAction(action("mount_action"));
-    contextMenu()->addAction(action("config_action"));
+    contextMenu()->addAction(action(QStringLiteral("mount_action")));
+    contextMenu()->addAction(action(QStringLiteral("config_action")));
 
     //
     // Connections
@@ -104,7 +104,7 @@ void Smb4KSystemTray::loadSettings()
     //
     // Adjust the bookmarks menu
     //
-    Smb4KBookmarkMenu *bookmarkMenu = static_cast<Smb4KBookmarkMenu *>(action("bookmarks_menu"));
+    Smb4KBookmarkMenu *bookmarkMenu = static_cast<Smb4KBookmarkMenu *>(action(QStringLiteral("bookmarks_menu")));
 
     if (bookmarkMenu) {
         bookmarkMenu->refreshMenu();
@@ -113,7 +113,7 @@ void Smb4KSystemTray::loadSettings()
     //
     // Adjust the shares menu
     //
-    Smb4KSharesMenu *sharesMenu = static_cast<Smb4KSharesMenu *>(action("shares_menu"));
+    Smb4KSharesMenu *sharesMenu = static_cast<Smb4KSharesMenu *>(action(QStringLiteral("shares_menu")));
 
     if (sharesMenu) {
         sharesMenu->refreshMenu();
@@ -122,7 +122,7 @@ void Smb4KSystemTray::loadSettings()
     //
     // Adjust the profiles menu
     //
-    Smb4KProfilesMenu *profilesMenu = static_cast<Smb4KProfilesMenu *>(action("profiles_menu"));
+    Smb4KProfilesMenu *profilesMenu = static_cast<Smb4KProfilesMenu *>(action(QStringLiteral("profiles_menu")));
 
     if (profilesMenu) {
         profilesMenu->refreshMenu();
@@ -143,15 +143,15 @@ void Smb4KSystemTray::slotConfigDialog()
     //
     // Check if the configuration dialog exists and try to show it.
     //
-    if (KConfigDialog::exists("ConfigDialog")) {
-        KConfigDialog::showDialog("ConfigDialog");
+    if (KConfigDialog::exists(QStringLiteral("ConfigDialog"))) {
+        KConfigDialog::showDialog(QStringLiteral("ConfigDialog"));
         return;
     }
 
     //
     // If the dialog does not exist, load and show it:
     //
-    KPluginLoader loader("smb4kconfigdialog");
+    KPluginLoader loader(QStringLiteral("smb4kconfigdialog"));
     KPluginFactory *configFactory = loader.factory();
 
     if (configFactory) {
@@ -159,20 +159,20 @@ void Smb4KSystemTray::slotConfigDialog()
 
         if (associatedWidget()) {
             dlg = configFactory->create<KConfigDialog>(associatedWidget());
-            dlg->setObjectName("ConfigDialog");
+            dlg->setObjectName(QStringLiteral("ConfigDialog"));
         } else {
             dlg = configFactory->create<KConfigDialog>(contextMenu());
-            dlg->setObjectName("ConfigDialog");
+            dlg->setObjectName(QStringLiteral("ConfigDialog"));
         }
 
         if (dlg) {
-            dlg->setObjectName("ConfigDialog");
+            dlg->setObjectName(QStringLiteral("ConfigDialog"));
             connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
             connect(dlg, SIGNAL(settingsChanged(QString)), this, SIGNAL(settingsChanged(QString)), Qt::UniqueConnection);
             dlg->show();
         }
     } else {
-        KMessageBox::error(0, "<qt>" + loader.errorString() + "</qt>");
+        KMessageBox::error(nullptr, loader.errorString());
         return;
     }
 }
