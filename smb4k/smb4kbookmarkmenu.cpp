@@ -1,7 +1,7 @@
 /*
     smb4kbookmarkmenu  -  Bookmark menu
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -16,7 +16,6 @@
 
 // Qt includes
 #include <QDebug>
-#include <QLatin1String>
 #include <QMenu>
 
 // KDE includes
@@ -26,7 +25,7 @@
 using namespace Smb4KGlobal;
 
 Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
-    : KActionMenu(KDE::icon("folder-favorites"), i18n("Bookmarks"), parent)
+    : KActionMenu(KDE::icon(QStringLiteral("folder-favorites")), i18n("Bookmarks"), parent)
     , m_type(type)
 {
     //
@@ -47,7 +46,7 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     //
     // Add the 'Edit Bookmarks' action
     //
-    m_editBookmarks = new QAction(KDE::icon("bookmarks-organize"), i18n("&Edit Bookmarks"), menu());
+    m_editBookmarks = new QAction(KDE::icon(QStringLiteral("bookmarks-organize")), i18n("&Edit Bookmarks"), menu());
     m_editBookmarks->setEnabled(!Smb4KBookmarkHandler::self()->bookmarksList().isEmpty());
     connect(m_editBookmarks, SIGNAL(triggered(bool)), SLOT(slotEditActionTriggered(bool)));
     addAction(m_editBookmarks);
@@ -56,7 +55,7 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     // Add the "Add Bookmark" action, if necessary
     //
     if (m_type == MainWindow) {
-        m_addBookmark = new QAction(KDE::icon("bookmark-new"), i18n("Add &Bookmark"), menu());
+        m_addBookmark = new QAction(KDE::icon(QStringLiteral("bookmark-new")), i18n("Add &Bookmark"), menu());
         m_addBookmark->setEnabled(false);
         connect(m_addBookmark, SIGNAL(triggered(bool)), SLOT(slotAddActionTriggered(bool)));
         addAction(m_addBookmark);
@@ -70,7 +69,7 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     // Show it if there are no (non-empty) categories defined and additionally
     // enable it, if not all bookmarks are already mounted.
     //
-    m_toplevelMount = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), menu());
+    m_toplevelMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount All Bookmarks"), menu());
     m_toplevelMount->setVisible(false);
     m_toplevelMount->setEnabled(false);
     addAction(m_toplevelMount);
@@ -214,7 +213,7 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr &bookmark)
         // Now find the appropriate category menu
         //
         for (QAction *category : qAsConst(allCategoryActions)) {
-            if (category->data().toMap().value("category").toString() == bookmark->categoryName()) {
+            if (category->data().toMap().value(QStringLiteral("category")).toString() == bookmark->categoryName()) {
                 bookmarkMenu = static_cast<KActionMenu *>(category);
                 break;
             }
@@ -228,9 +227,9 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr &bookmark)
             // The category submenu
             //
             bookmarkMenu = new KActionMenu(bookmark->categoryName(), menu());
-            bookmarkMenu->setIcon(KDE::icon("folder-favorites"));
+            bookmarkMenu->setIcon(KDE::icon(QStringLiteral("folder-favorites")));
             QMap<QString, QVariant> categoryInfo;
-            categoryInfo["category"] = bookmark->categoryName();
+            categoryInfo[QStringLiteral("category")] = bookmark->categoryName();
             bookmarkMenu->setData(categoryInfo);
             addAction(bookmarkMenu);
             m_categories->addAction(bookmarkMenu);
@@ -238,10 +237,10 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr &bookmark)
             //
             // The "Mount All Bookmarks" action for this category
             //
-            QAction *bookmarkCategoryMount = new QAction(KDE::icon("media-mount"), i18n("Mount All Bookmarks"), bookmarkMenu->menu());
+            QAction *bookmarkCategoryMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount All Bookmarks"), bookmarkMenu->menu());
             QMap<QString, QVariant> categoryMountInfo;
-            categoryMountInfo["type"] = "category_mount";
-            categoryMountInfo["category"] = bookmark->categoryName();
+            categoryMountInfo[QStringLiteral("type")] = QStringLiteral("category_mount");
+            categoryMountInfo[QStringLiteral("category")] = bookmark->categoryName();
             bookmarkCategoryMount->setData(categoryMountInfo);
             bookmarkMenu->addAction(bookmarkCategoryMount);
             m_mountActions->addAction(bookmarkCategoryMount);
@@ -262,8 +261,8 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr &bookmark)
     QStringList displayNames;
 
     for (QAction *entry : m_bookmarks->actions()) {
-        if (entry->data().toMap().value("category").toString() == bookmark->categoryName()) {
-            displayNames << entry->data().toMap().value("text").toString();
+        if (entry->data().toMap().value(QStringLiteral("category")).toString() == bookmark->categoryName()) {
+            displayNames << entry->data().toMap().value(QStringLiteral("text")).toString();
         }
     }
 
@@ -293,9 +292,9 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr &bookmark)
     bookmarkAction->setText(displayName);
 
     QMap<QString, QVariant> bookmarkInfo;
-    bookmarkInfo["category"] = bookmark->categoryName();
-    bookmarkInfo["url"] = bookmark->url();
-    bookmarkInfo["text"] = displayName;
+    bookmarkInfo[QStringLiteral("category")] = bookmark->categoryName();
+    bookmarkInfo[QStringLiteral("url")] = bookmark->url();
+    bookmarkInfo[QStringLiteral("text")] = displayName;
 
     bookmarkAction->setData(bookmarkInfo);
     m_bookmarks->addAction(bookmarkAction);
@@ -323,7 +322,7 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr &bookmark)
             QString displayStringBefore = displayNames.at(index + 1);
 
             for (QAction *action : bookmarkMenu->menu()->actions()) {
-                if (action->data().toMap().value("text").toString() == displayStringBefore) {
+                if (action->data().toMap().value(QStringLiteral("text")).toString() == displayStringBefore) {
                     insertAction(action, bookmarkAction);
                     break;
                 }
@@ -348,7 +347,7 @@ void Smb4KBookmarkMenu::removeBookmarkFromMenu(const BookmarkPtr &bookmark)
 
     if (!bookmark->categoryName().isEmpty()) {
         for (QAction *action : qAsConst(allCategories)) {
-            if (action->data().toMap().value("category").toString() == bookmark->categoryName()) {
+            if (action->data().toMap().value(QStringLiteral("category")).toString() == bookmark->categoryName()) {
                 bookmarkMenu = static_cast<KActionMenu *>(action);
                 break;
             }
@@ -361,7 +360,7 @@ void Smb4KBookmarkMenu::removeBookmarkFromMenu(const BookmarkPtr &bookmark)
     // Now remove the bookmark
     //
     for (int i = 0; i < m_bookmarks->actions().size(); ++i) {
-        QUrl bookmarkUrl = m_bookmarks->actions().at(i)->data().toMap().value("url").toUrl();
+        QUrl bookmarkUrl = m_bookmarks->actions().at(i)->data().toMap().value(QStringLiteral("url")).toUrl();
         if (bookmark->url().matches(bookmarkUrl, QUrl::RemoveUserInfo | QUrl::RemovePort)) {
             QAction *bookmarkAction = m_bookmarks->actions().takeAt(i);
             bookmarkMenu->removeAction(bookmarkAction);
@@ -434,7 +433,8 @@ void Smb4KBookmarkMenu::adjustMountActions()
             }
 
             for (QAction *action : allMountActions) {
-                if (action->data().toMap().value("categrory").toString() == category && action->data().toMap().value("type") == "category_mount") {
+                if (action->data().toMap().value(QStringLiteral("categrory")).toString() == category
+                    && action->data().toMap().value(QStringLiteral("type")) == QStringLiteral("category_mount")) {
                     action->setEnabled(bookmarks.size() != mountedBookmarks);
                     break;
                 }
@@ -470,9 +470,9 @@ void Smb4KBookmarkMenu::slotMountActionTriggered(QAction *action)
     // Get the bookmarks
     //
     if (action == m_toplevelMount) {
-        bookmarks = Smb4KBookmarkHandler::self()->bookmarksList("");
+        bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(QStringLiteral(""));
     } else {
-        bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(action->data().toMap().value("category").toString());
+        bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(action->data().toMap().value(QStringLiteral("category")).toString());
     }
 
     //
@@ -506,8 +506,8 @@ void Smb4KBookmarkMenu::slotMountActionTriggered(QAction *action)
 void Smb4KBookmarkMenu::slotBookmarkActionTriggered(QAction *action)
 {
     QMap<QString, QVariant> info = action->data().toMap();
-    QString bookmarkCategory = info.value("category").toString();
-    QUrl url = info.value("url").toUrl();
+    QString bookmarkCategory = info.value(QStringLiteral("category")).toString();
+    QUrl url = info.value(QStringLiteral("url")).toUrl();
 
     BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(url);
 
@@ -575,11 +575,11 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
         QString bookmarkCategory;
 
         for (QAction *a : qAsConst(actions)) {
-            QUrl bookmarkUrl = a->data().toMap().value("url").toUrl();
+            QUrl bookmarkUrl = a->data().toMap().value(QStringLiteral("url")).toUrl();
 
             if (share->url().matches(bookmarkUrl, QUrl::RemoveUserInfo | QUrl::RemovePort)) {
                 a->setEnabled(!share->isMounted());
-                bookmarkCategory = a->data().toMap().value("category").toString();
+                bookmarkCategory = a->data().toMap().value(QStringLiteral("category")).toString();
                 break;
             }
         }
