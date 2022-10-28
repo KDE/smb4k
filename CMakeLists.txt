@@ -1,7 +1,7 @@
 
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Pino Toscano <pino@kde.org>
-# SPDX-FileCopyrightText: 2009-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2009-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 #
 # Project
 #
@@ -19,7 +19,7 @@ set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 #
 # Minimum required CMake version
 #
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
 #
 # CMake policies
@@ -33,6 +33,9 @@ endif()
 #
 # Minimum required versions of Qt5 and KF5
 #
+# set(QT_MIN_VERSION "5.15.2")
+# set(KF5_MIN_VERSION "5.98.0")
+
 set(QT_MIN_VERSION "5.14.0")
 set(KF5_MIN_VERSION "5.80.0")
 
