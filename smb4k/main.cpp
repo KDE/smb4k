@@ -76,7 +76,7 @@ int main(int argc, char **argv)
     app.setQuitOnLastWindowClosed(false);
 
     // Program icon
-    app.setWindowIcon(QIcon::fromTheme(QLatin1String("smb4k")));
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("smb4k")));
 
     // Launch the main window
     Smb4KMainWindow *mainWindow = new Smb4KMainWindow();
