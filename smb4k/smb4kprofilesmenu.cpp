@@ -1,7 +1,7 @@
 /*
     smb4kprofilesmenu  -  The menu for the profiles
 
-    SPDX-FileCopyrightText: 2014-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -19,7 +19,7 @@
 #include <KIconThemes/KIconLoader>
 
 Smb4KProfilesMenu::Smb4KProfilesMenu(QObject *parent)
-    : KSelectAction(KDE::icon("format-list-unordered"), i18n("Profiles"), parent)
+    : KSelectAction(KDE::icon(QStringLiteral("format-list-unordered")), i18n("Profiles"), parent)
 {
     QStringList profiles = Smb4KProfileManager::self()->profilesList();
     slotProfilesListChanged(profiles);
