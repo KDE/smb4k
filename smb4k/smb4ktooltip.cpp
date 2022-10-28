@@ -1,7 +1,7 @@
 /*
     smb4ktooltip  -  Provides tooltips for Smb4K
 
-    SPDX-FileCopyrightText: 2020-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2020-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -136,37 +136,40 @@ void Smb4KToolTip::setupNetworkItemContents()
         switch (m_item->type()) {
         case Workgroup: {
             WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
-            QLabel *masterBrowserName = m_contentsWidget->findChild<QLabel *>("MasterBrowserName");
+            QLabel *masterBrowserName = m_contentsWidget->findChild<QLabel *>(QStringLiteral("MasterBrowserName"));
 
             if (workgroup->hasMasterBrowser()) {
                 if (workgroup->hasMasterBrowserIpAddress()) {
-                    masterBrowserName->setText(workgroup->masterBrowserName() + " (" + workgroup->masterBrowserIpAddress() + ')');
+                    masterBrowserName->setText(workgroup->masterBrowserName() + QStringLiteral(" (") + workgroup->masterBrowserIpAddress()
+                                               + QStringLiteral(")"));
                 } else {
                     masterBrowserName->setText(workgroup->masterBrowserName());
                 }
             } else {
-                masterBrowserName->setText("-");
+                masterBrowserName->setText(QStringLiteral("-"));
             }
             break;
         }
         case Host: {
             HostPtr host = m_item.staticCast<Smb4KHost>();
-            m_contentsWidget->findChild<QLabel *>("CommentString")->setText(!host->comment().isEmpty() ? host->comment() : "-");
-            m_contentsWidget->findChild<QLabel *>("IPAddressString")->setText(host->hasIpAddress() ? host->ipAddress() : "-");
+            m_contentsWidget->findChild<QLabel *>(QStringLiteral("CommentString"))->setText(!host->comment().isEmpty() ? host->comment() : QStringLiteral("-"));
+            m_contentsWidget->findChild<QLabel *>(QStringLiteral("IPAddressString"))->setText(host->hasIpAddress() ? host->ipAddress() : QStringLiteral("-"));
             break;
         }
         case Share: {
             SharePtr share = m_item.staticCast<Smb4KShare>();
 
-            m_contentsWidget->findChild<QLabel *>("CommentString")->setText(!share->comment().isEmpty() ? share->comment() : "-");
-            m_contentsWidget->findChild<QLabel *>("IPAddressString")->setText(share->hasHostIpAddress() ? share->hostIpAddress() : "-");
+            m_contentsWidget->findChild<QLabel *>(QStringLiteral("CommentString"))
+                ->setText(!share->comment().isEmpty() ? share->comment() : QStringLiteral("-"));
+            m_contentsWidget->findChild<QLabel *>(QStringLiteral("IPAddressString"))
+                ->setText(share->hasHostIpAddress() ? share->hostIpAddress() : QStringLiteral("-"));
 
-            QLabel *mountedState = m_contentsWidget->findChild<QLabel *>("MountedState");
+            QLabel *mountedState = m_contentsWidget->findChild<QLabel *>(QStringLiteral("MountedState"));
 
             if (!share->isPrinter()) {
                 mountedState->setText(share->isMounted() ? i18n("yes") : i18n("no"));
             } else {
-                mountedState->setText("-");
+                mountedState->setText(QStringLiteral("-"));
             }
             break;
         }
@@ -231,17 +234,17 @@ void Smb4KToolTip::setupNetworkItemContents()
         descriptionLayout->addWidget(masterBrowserLabel, 3, 0, Qt::AlignRight);
 
         QLabel *masterBrowserName = new QLabel(m_contentsWidget);
-        masterBrowserName->setObjectName("MasterBrowserName");
+        masterBrowserName->setObjectName(QStringLiteral("MasterBrowserName"));
         masterBrowserName->setForegroundRole(QPalette::ToolTipText);
 
         if (workgroup->hasMasterBrowser()) {
             if (workgroup->hasMasterBrowserIpAddress()) {
-                masterBrowserName->setText(workgroup->masterBrowserName() + " (" + workgroup->masterBrowserIpAddress() + ')');
+                masterBrowserName->setText(workgroup->masterBrowserName() + QStringLiteral(" (") + workgroup->masterBrowserIpAddress() + QStringLiteral(")"));
             } else {
                 masterBrowserName->setText(workgroup->masterBrowserName());
             }
         } else {
-            masterBrowserName->setText("-");
+            masterBrowserName->setText(QStringLiteral("-"));
         }
 
         descriptionLayout->addWidget(masterBrowserName, 3, 1);
@@ -261,8 +264,8 @@ void Smb4KToolTip::setupNetworkItemContents()
 
         descriptionLayout->addWidget(commentLabel, 3, 0, Qt::AlignRight);
 
-        QLabel *commentString = new QLabel(!host->comment().isEmpty() ? host->comment() : "-", m_contentsWidget);
-        commentString->setObjectName("CommentString");
+        QLabel *commentString = new QLabel(!host->comment().isEmpty() ? host->comment() : QStringLiteral("-"), m_contentsWidget);
+        commentString->setObjectName(QStringLiteral("CommentString"));
         commentString->setForegroundRole(QPalette::ToolTipText);
 
         descriptionLayout->addWidget(commentString, 3, 1);
@@ -273,8 +276,8 @@ void Smb4KToolTip::setupNetworkItemContents()
 
         descriptionLayout->addWidget(ipAddressLabel, 4, 0, Qt::AlignRight);
 
-        QLabel *ipAddress = new QLabel(host->hasIpAddress() ? host->ipAddress() : "-", m_contentsWidget);
-        ipAddress->setObjectName("IPAddressString");
+        QLabel *ipAddress = new QLabel(host->hasIpAddress() ? host->ipAddress() : QStringLiteral("-"), m_contentsWidget);
+        ipAddress->setObjectName(QStringLiteral("IPAddressString"));
         ipAddress->setForegroundRole(QPalette::ToolTipText);
 
         descriptionLayout->addWidget(ipAddress, 4, 1);
@@ -305,8 +308,8 @@ void Smb4KToolTip::setupNetworkItemContents()
 
         descriptionLayout->addWidget(commentLabel, 3, 0, Qt::AlignRight);
 
-        QLabel *commentString = new QLabel(!share->comment().isEmpty() ? share->comment() : "-", m_contentsWidget);
-        commentString->setObjectName("CommentString");
+        QLabel *commentString = new QLabel(!share->comment().isEmpty() ? share->comment() : QStringLiteral("-"), m_contentsWidget);
+        commentString->setObjectName(QStringLiteral("CommentString"));
         commentString->setForegroundRole(QPalette::ToolTipText);
 
         descriptionLayout->addWidget(commentString, 3, 1);
@@ -322,10 +325,10 @@ void Smb4KToolTip::setupNetworkItemContents()
         if (!share->isPrinter()) {
             mountedState = new QLabel(share->isMounted() ? i18n("yes") : i18n("no"), m_contentsWidget);
         } else {
-            mountedState = new QLabel("-", m_contentsWidget);
+            mountedState = new QLabel(QStringLiteral("-"), m_contentsWidget);
         }
 
-        mountedState->setObjectName("MountedState");
+        mountedState->setObjectName(QStringLiteral("MountedState"));
         mountedState->setForegroundRole(QPalette::ToolTipText);
 
         descriptionLayout->addWidget(mountedState, 4, 1);
@@ -347,8 +350,8 @@ void Smb4KToolTip::setupNetworkItemContents()
 
         descriptionLayout->addWidget(ipAddressLabel, 6, 0, Qt::AlignRight);
 
-        QLabel *ipAddressString = new QLabel(share->hasHostIpAddress() ? share->hostIpAddress() : "-", m_contentsWidget);
-        ipAddressString->setObjectName("IPAddressString");
+        QLabel *ipAddressString = new QLabel(share->hasHostIpAddress() ? share->hostIpAddress() : QStringLiteral("-"), m_contentsWidget);
+        ipAddressString->setObjectName(QStringLiteral("IPAddressString"));
         ipAddressString->setForegroundRole(QPalette::ToolTipText);
 
         descriptionLayout->addWidget(ipAddressString, 6, 1);
@@ -388,8 +391,8 @@ void Smb4KToolTip::setupMountedShareContents()
     // Update the contents, if possible
     //
     if (!m_contentsWidget->layout()->isEmpty()) {
-        m_contentsWidget->findChild<QLabel *>("IconLabel")->setPixmap(share->icon().pixmap(KIconLoader::SizeEnormous));
-        m_contentsWidget->findChild<QLabel *>("LoginString")->setText(!share->userName().isEmpty() ? share->userName() : i18n("unknown"));
+        m_contentsWidget->findChild<QLabel *>(QStringLiteral("IconLabel"))->setPixmap(share->icon().pixmap(KIconLoader::SizeEnormous));
+        m_contentsWidget->findChild<QLabel *>(QStringLiteral("LoginString"))->setText(!share->userName().isEmpty() ? share->userName() : i18n("unknown"));
 
         QString sizeIndication;
 
@@ -399,7 +402,7 @@ void Smb4KToolTip::setupMountedShareContents()
             sizeIndication = i18n("unknown");
         }
 
-        m_contentsWidget->findChild<QLabel *>("SizeString")->setText(sizeIndication);
+        m_contentsWidget->findChild<QLabel *>(QStringLiteral("SizeString"))->setText(sizeIndication);
 
         return;
     }
@@ -411,7 +414,7 @@ void Smb4KToolTip::setupMountedShareContents()
     // Icon
     QLabel *iconLabel = new QLabel(m_contentsWidget);
     iconLabel->setPixmap(share->icon().pixmap(KIconLoader::SizeEnormous));
-    iconLabel->setObjectName("IconLabel");
+    iconLabel->setObjectName(QStringLiteral("IconLabel"));
     m_mainLayout->addWidget(iconLabel, Qt::AlignHCenter);
 
     // Header
@@ -462,7 +465,7 @@ void Smb4KToolTip::setupMountedShareContents()
     descriptionLayout->addWidget(loginLabel, 4, 0, Qt::AlignRight);
 
     QLabel *loginString = new QLabel(!share->userName().isEmpty() ? share->userName() : i18n("unknown"), m_contentsWidget);
-    loginString->setObjectName("LoginString");
+    loginString->setObjectName(QStringLiteral("LoginString"));
     loginString->setForegroundRole(QPalette::ToolTipText);
 
     descriptionLayout->addWidget(loginString, 4, 1);
@@ -476,7 +479,7 @@ void Smb4KToolTip::setupMountedShareContents()
     QString owner(!share->user().loginName().isEmpty() ? share->user().loginName() : i18n("unknown"));
     QString group(!share->group().name().isEmpty() ? share->group().name() : i18n("unknown"));
 
-    QLabel *ownerString = new QLabel(QString("%1 - %2").arg(owner, group), m_contentsWidget);
+    QLabel *ownerString = new QLabel(owner + QStringLiteral(" - ") + group, m_contentsWidget);
     ownerString->setForegroundRole(QPalette::ToolTipText);
 
     descriptionLayout->addWidget(ownerString, 5, 1);
@@ -507,7 +510,7 @@ void Smb4KToolTip::setupMountedShareContents()
     }
 
     QLabel *sizeString = new QLabel(sizeIndication, m_contentsWidget);
-    sizeString->setObjectName("SizeString");
+    sizeString->setObjectName(QStringLiteral("SizeString"));
     sizeString->setForegroundRole(QPalette::ToolTipText);
 
     descriptionLayout->addWidget(sizeString, 7, 1);
