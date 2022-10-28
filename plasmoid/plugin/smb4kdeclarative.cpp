@@ -1,7 +1,7 @@
 /*
     This class provides the interface for Plasma and QtQuick
 
-    SPDX-FileCopyrightText: 2013-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2013-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -472,22 +472,22 @@ void Smb4KDeclarative::openConfigurationDialog()
     //
     // Check if the configuration dialog exists and try to show it.
     //
-    if (KConfigDialog::exists("Smb4KConfigDialog")) {
-        KConfigDialog::showDialog("Smb4KConfigDialog");
+    if (KConfigDialog::exists(QStringLiteral("Smb4KConfigDialog"))) {
+        KConfigDialog::showDialog(QStringLiteral("Smb4KConfigDialog"));
         return;
     }
 
     //
     // If the dialog does not exist, load and show it:
     //
-    KPluginLoader loader("smb4kconfigdialog", this);
+    KPluginLoader loader(QStringLiteral("smb4kconfigdialog"), this);
     KPluginFactory *configFactory = loader.factory();
 
     if (configFactory) {
         KConfigDialog *dlg = configFactory->create<KConfigDialog>();
 
         if (dlg) {
-            dlg->setObjectName("Smb4KConfigDialog");
+            dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
             dlg->show();
         }
     }

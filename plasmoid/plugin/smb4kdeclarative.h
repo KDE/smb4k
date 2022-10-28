@@ -1,7 +1,7 @@
 /*
     This class provides the interface for Plasma and QtQuick
 
-    SPDX-FileCopyrightText: 2013-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2013-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -40,7 +40,7 @@ class Q_DECL_EXPORT Smb4KDeclarative : public QObject
     Q_PROPERTY(QQmlListProperty<Smb4KBookmarkObject> bookmarkCategories READ bookmarkCategories NOTIFY bookmarksListChanged)
     Q_PROPERTY(QQmlListProperty<Smb4KProfileObject> profiles READ profiles NOTIFY profilesListChanged)
     Q_PROPERTY(QString activeProfile READ activeProfile WRITE setActiveProfile NOTIFY activeProfileChanged)
-    Q_PROPERTY(bool profileUsage READ profileUsage NOTIFY profileUsageChanged);
+    Q_PROPERTY(bool profileUsage READ profileUsage NOTIFY profileUsageChanged)
 
     friend class Smb4KDeclarativePrivate;
 
