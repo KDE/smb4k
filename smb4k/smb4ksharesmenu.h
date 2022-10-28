@@ -1,7 +1,7 @@
 /*
     smb4ksharesmenu  -  Shares menu
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -42,7 +42,7 @@ public:
      */
     void refreshMenu();
 
-protected slots:
+protected Q_SLOTS:
     /**
      * This slot is invokes when a share was mounted
      */

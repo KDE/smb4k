@@ -1,7 +1,7 @@
 /*
     smb4ksharesmenu  -  Shares menu
 
-    SPDX-FileCopyrightText: 2011-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -34,7 +34,7 @@
 using namespace Smb4KGlobal;
 
 Smb4KSharesMenu::Smb4KSharesMenu(QObject *parent)
-    : KActionMenu(KDE::icon("folder-network", QStringList("emblem-mounted")), i18n("Mounted Shares"), parent)
+    : KActionMenu(KDE::icon(QStringLiteral("folder-network"), QStringList(QStringLiteral("emblem-mounted"))), i18n("Mounted Shares"), parent)
 {
     //
     // Set up action group for the shares menus
@@ -49,7 +49,7 @@ Smb4KSharesMenu::Smb4KSharesMenu(QObject *parent)
     //
     // Add the Unmount All action
     //
-    m_unmountAll = new QAction(KDE::icon("system-run"), i18n("U&nmount All"), menu());
+    m_unmountAll = new QAction(KDE::icon(QStringLiteral("system-run")), i18n("U&nmount All"), menu());
     m_unmountAll->setEnabled(false);
     connect(m_unmountAll, SIGNAL(triggered(bool)), SLOT(slotUnmountAllShares()));
     addAction(m_unmountAll);
@@ -126,7 +126,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     QStringList displayNames;
 
     for (QAction *entry : m_menus->actions()) {
-        displayNames << entry->data().toMap().value("text").toString();
+        displayNames << entry->data().toMap().value(QStringLiteral("text")).toString();
     }
 
     //
@@ -146,8 +146,8 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     shareMenu->setIcon(share->icon());
 
     QMap<QString, QVariant> data;
-    data["text"] = share->displayString();
-    data["mountpoint"] = share->path();
+    data[QStringLiteral("text")] = share->displayString();
+    data[QStringLiteral("mountpoint")] = share->path();
 
     shareMenu->setData(data);
     m_menus->addAction(shareMenu);
@@ -155,11 +155,11 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     //
     // Add the unmount action to the menu
     //
-    QAction *unmount = new QAction(KDE::icon("media-eject"), i18n("Unmount"), shareMenu->menu());
+    QAction *unmount = new QAction(KDE::icon(QStringLiteral("media-eject")), i18n("Unmount"), shareMenu->menu());
 
     QMap<QString, QVariant> unmountData;
-    unmountData["type"] = "unmount";
-    unmountData["mountpoint"] = share->path();
+    unmountData[QStringLiteral("type")] = QStringLiteral("unmount");
+    unmountData[QStringLiteral("mountpoint")] = share->path();
 
     unmount->setData(unmountData);
     unmount->setEnabled(!share->isForeign() || Smb4KMountSettings::unmountForeignShares());
@@ -174,11 +174,11 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     //
     // Add the bookmark action to the menu
     //
-    QAction *addBookmark = new QAction(KDE::icon("bookmark-new"), i18n("Add Bookmark"), shareMenu->menu());
+    QAction *addBookmark = new QAction(KDE::icon(QStringLiteral("bookmark-new")), i18n("Add Bookmark"), shareMenu->menu());
 
     QMap<QString, QVariant> bookmarkData;
-    bookmarkData["type"] = "bookmark";
-    bookmarkData["mountpoint"] = share->path();
+    bookmarkData[QStringLiteral("type")] = QStringLiteral("bookmark");
+    bookmarkData[QStringLiteral("mountpoint")] = share->path();
 
     addBookmark->setData(bookmarkData);
     shareMenu->addAction(addBookmark);
@@ -187,14 +187,14 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     //
     // Add the synchronization action to the menu
     //
-    QAction *synchronize = new QAction(KDE::icon("folder-sync"), i18n("Synchronize"), shareMenu->menu());
+    QAction *synchronize = new QAction(KDE::icon(QStringLiteral("folder-sync")), i18n("Synchronize"), shareMenu->menu());
 
     QMap<QString, QVariant> syncData;
-    syncData["type"] = "sync";
-    syncData["mountpoint"] = share->path();
+    syncData[QStringLiteral("type")] = QStringLiteral("sync");
+    syncData[QStringLiteral("mountpoint")] = share->path();
 
     synchronize->setData(syncData);
-    synchronize->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty() && !share->isInaccessible());
+    synchronize->setEnabled(!QStandardPaths::findExecutable(QStringLiteral("rsync")).isEmpty() && !share->isInaccessible());
     shareMenu->addAction(synchronize);
     m_actions->addAction(synchronize);
 
@@ -206,25 +206,25 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     //
     // Add the Open with Konsole action to the menu
     //
-    QAction *konsole = new QAction(KDE::icon("utilities-terminal"), i18n("Open with Konsole"), shareMenu->menu());
+    QAction *konsole = new QAction(KDE::icon(QStringLiteral("utilities-terminal")), i18n("Open with Konsole"), shareMenu->menu());
 
     QMap<QString, QVariant> konsoleData;
-    konsoleData["type"] = "konsole";
-    konsoleData["mountpoint"] = share->path();
+    konsoleData[QStringLiteral("type")] = QStringLiteral("konsole");
+    konsoleData[QStringLiteral("mountpoint")] = share->path();
 
     konsole->setData(konsoleData);
-    konsole->setEnabled(!QStandardPaths::findExecutable("konsole").isEmpty() && !share->isInaccessible());
+    konsole->setEnabled(!QStandardPaths::findExecutable(QStringLiteral("konsole")).isEmpty() && !share->isInaccessible());
     shareMenu->addAction(konsole);
     m_actions->addAction(konsole);
 
     //
     // Add the Open with Filemanager action to the menu
     //
-    QAction *filemanager = new QAction(KDE::icon("system-file-manager"), i18n("Open with File Manager"), shareMenu->menu());
+    QAction *filemanager = new QAction(KDE::icon(QStringLiteral("system-file-manager")), i18n("Open with File Manager"), shareMenu->menu());
 
     QMap<QString, QVariant> fileManagerData;
-    fileManagerData["type"] = "filemanager";
-    fileManagerData["mountpoint"] = share->path();
+    fileManagerData[QStringLiteral("type")] = QStringLiteral("filemanager");
+    fileManagerData[QStringLiteral("mountpoint")] = share->path();
 
     filemanager->setData(fileManagerData);
     filemanager->setEnabled(!share->isInaccessible());
@@ -243,7 +243,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
             QString displayStringBefore = displayNames.at(index + 1);
 
             for (QAction *action : m_menus->actions()) {
-                if (action->data().toMap().value("text").toString() == displayStringBefore) {
+                if (action->data().toMap().value(QStringLiteral("text")).toString() == displayStringBefore) {
                     insertAction(action, shareMenu);
                     break;
                 }
@@ -262,7 +262,7 @@ void Smb4KSharesMenu::removeShareFromMenu(const SharePtr &share)
     // are delete with their parent.
     //
     for (int i = 0; i < m_menus->actions().size(); ++i) {
-        if (m_menus->actions().at(i)->data().toMap().value("mountpoint").toString() == share->path()) {
+        if (m_menus->actions().at(i)->data().toMap().value(QStringLiteral("mountpoint")).toString() == share->path()) {
             QAction *menuAction = m_menus->actions().takeAt(i);
             removeAction(menuAction);
             delete menuAction;
@@ -328,25 +328,25 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
     //
     // Check that we have a share related action
     //
-    if (action->data().toMap().contains("type")) {
-        share = findShareByPath(action->data().toMap().value("mountpoint").toString());
+    if (action->data().toMap().contains(QStringLiteral("type"))) {
+        share = findShareByPath(action->data().toMap().value(QStringLiteral("mountpoint")).toString());
     }
 
     //
     // Now process the action
     //
     if (share) {
-        QString type = action->data().toMap().value("type").toString();
+        QString type = action->data().toMap().value(QStringLiteral("type")).toString();
 
-        if (type == "unmount") {
+        if (type == QStringLiteral("unmount")) {
             Smb4KMounter::self()->unmountShare(share, false);
-        } else if (type == "bookmark") {
+        } else if (type == QStringLiteral("bookmark")) {
             Smb4KBookmarkHandler::self()->addBookmark(share);
-        } else if (type == "sync") {
+        } else if (type == QStringLiteral("sync")) {
             Smb4KSynchronizer::self()->synchronize(share);
-        } else if (type == "konsole") {
+        } else if (type == QStringLiteral("konsole")) {
             openShare(share, Smb4KGlobal::Konsole);
-        } else if (type == "filemanager") {
+        } else if (type == QStringLiteral("filemanager")) {
             openShare(share, Smb4KGlobal::FileManager);
         }
     }
