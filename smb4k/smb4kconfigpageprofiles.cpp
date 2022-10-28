@@ -35,12 +35,12 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
 
     QCheckBox *useProfiles = new QCheckBox(Smb4KSettings::self()->useProfilesItem()->label(), settingsBox);
-    useProfiles->setObjectName("kcfg_UseProfiles");
+    useProfiles->setObjectName(QStringLiteral("kcfg_UseProfiles"));
 
     settingsBoxLayout->addWidget(useProfiles);
 
     QCheckBox *useAssistant = new QCheckBox(Smb4KSettings::self()->useMigrationAssistantItem()->label(), settingsBox);
-    useAssistant->setObjectName("kcfg_UseMigrationAssistant");
+    useAssistant->setObjectName(QStringLiteral("kcfg_UseMigrationAssistant"));
 
     settingsBoxLayout->addWidget(useAssistant);
 
@@ -53,7 +53,7 @@ Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     QVBoxLayout *profilesBoxLayout = new QVBoxLayout(profilesBox);
 
     m_profiles = new KEditListWidget(profilesBox);
-    m_profiles->setObjectName("kcfg_ProfilesList");
+    m_profiles->setObjectName(QStringLiteral("kcfg_ProfilesList"));
     m_profiles->setEnabled(Smb4KSettings::self()->useProfiles());
 
     profilesBoxLayout->addWidget(m_profiles);
