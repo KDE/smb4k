@@ -43,7 +43,7 @@ public:
      */
     ~Smb4KConfigDialog();
 
-protected slots:
+protected Q_SLOTS:
     /**
      * Reimplemented from KConfigDialog. Used to do things that
      * KConfigDialog::updateSettings() does not do.

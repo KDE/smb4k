@@ -42,7 +42,7 @@ using namespace Smb4KGlobal;
 K_PLUGIN_FACTORY(Smb4KConfigDialogFactory, registerPlugin<Smb4KConfigDialog>();)
 
 Smb4KConfigDialog::Smb4KConfigDialog(QWidget *parent, const QList<QVariant> & /*args*/)
-    : KConfigDialog(parent, "ConfigDialog", Smb4KSettings::self())
+    : KConfigDialog(parent, QStringLiteral("ConfigDialog"), Smb4KSettings::self())
 {
     setupDialog();
 }
@@ -87,7 +87,7 @@ void Smb4KConfigDialog::setupDialog()
     rsync_area->setWidgetResizable(true);
     rsync_area->setFrameStyle(QFrame::NoFrame);
 
-    rsync_options->setEnabled(!QStandardPaths::findExecutable("rsync").isEmpty());
+    rsync_options->setEnabled(!QStandardPaths::findExecutable(QStringLiteral("rsync")).isEmpty());
 
     Smb4KConfigPageCustomOptions *custom_options = new Smb4KConfigPageCustomOptions(this);
     QScrollArea *custom_area = new QScrollArea(this);
@@ -104,13 +104,13 @@ void Smb4KConfigDialog::setupDialog()
     //
     // Pages to the configuration dialog
     //
-    m_user_interface = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), "preferences-desktop");
-    m_network = addPage(network_area, Smb4KSettings::self(), i18n("Network"), "network-workgroup");
-    m_mounting = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), "media-mount");
-    m_authentication = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), "dialog-password");
-    m_synchronization = addPage(rsync_area, Smb4KSettings::self(), i18n("Synchronization"), "folder-sync");
-    m_custom_options = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Options"), "preferences-system-network");
-    m_profiles = addPage(profiles_area, Smb4KSettings::self(), i18n("Profiles"), "format-list-unordered");
+    m_user_interface = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), QStringLiteral("preferences-desktop"));
+    m_network = addPage(network_area, Smb4KSettings::self(), i18n("Network"), QStringLiteral("network-workgroup"));
+    m_mounting = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
+    m_authentication = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), QStringLiteral("dialog-password"));
+    m_synchronization = addPage(rsync_area, Smb4KSettings::self(), i18n("Synchronization"), QStringLiteral("folder-sync"));
+    m_custom_options = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Options"), QStringLiteral("preferences-system-network"));
+    m_profiles = addPage(profiles_area, Smb4KSettings::self(), i18n("Profiles"), QStringLiteral("format-list-unordered"));
 
     //
     // Connections
