@@ -43,26 +43,26 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 #ifdef USE_WS_DISCOVERY
     // Use WS-Discovery
     QCheckBox *useWsDiscovery = new QCheckBox(Smb4KSettings::self()->useWsDiscoveryItem()->label(), browseSettingsBox);
-    useWsDiscovery->setObjectName("kcfg_UseWsDiscovery");
+    useWsDiscovery->setObjectName(QStringLiteral("kcfg_UseWsDiscovery"));
 
     browseSettingsBoxLayout->addWidget(useWsDiscovery);
 #endif
 
     // Use DNS-SD
     QCheckBox *useDnsServiceDiscovery = new QCheckBox(Smb4KSettings::self()->useDnsServiceDiscoveryItem()->label(), browseSettingsBox);
-    useDnsServiceDiscovery->setObjectName("kcfg_UseDnsServiceDiscovery");
+    useDnsServiceDiscovery->setObjectName(QStringLiteral("kcfg_UseDnsServiceDiscovery"));
 
     browseSettingsBoxLayout->addWidget(useDnsServiceDiscovery);
 
     // Force SMBv1 protocol for browsing
     QCheckBox *forceSmb1Protocol = new QCheckBox(Smb4KSettings::self()->forceSmb1ProtocolItem()->label(), browseSettingsBox);
-    forceSmb1Protocol->setObjectName("kcfg_ForceSmb1Protocol");
+    forceSmb1Protocol->setObjectName(QStringLiteral("kcfg_ForceSmb1Protocol"));
 
     browseSettingsBoxLayout->addWidget(forceSmb1Protocol);
 
     // Set client protocol versions
     QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), browseSettingsBox);
-    useClientProtocolVersions->setObjectName("kcfg_UseClientProtocolVersions");
+    useClientProtocolVersions->setObjectName(QStringLiteral("kcfg_UseClientProtocolVersions"));
 
     browseSettingsBoxLayout->addWidget(useClientProtocolVersions);
 
@@ -72,10 +72,10 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     QLabel *minimalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), versionsWidget);
     minimalProtocolVersionLabel->setIndent(25);
-    minimalProtocolVersionLabel->setObjectName("MinimalProtocolVersionLabel");
+    minimalProtocolVersionLabel->setObjectName(QStringLiteral("MinimalProtocolVersionLabel"));
 
     KComboBox *minimalProtocolVersion = new KComboBox(versionsWidget);
-    minimalProtocolVersion->setObjectName("kcfg_MinimalClientProtocolVersion");
+    minimalProtocolVersion->setObjectName(QStringLiteral("kcfg_MinimalClientProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
 
@@ -88,10 +88,10 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     QLabel *maximalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), versionsWidget);
     maximalProtocolVersionLabel->setIndent(25);
-    maximalProtocolVersionLabel->setObjectName("MaximalProtocolVersionLabel");
+    maximalProtocolVersionLabel->setObjectName(QStringLiteral("MaximalProtocolVersionLabel"));
 
     KComboBox *maximalProtocolVersion = new KComboBox(versionsWidget);
-    maximalProtocolVersion->setObjectName("kcfg_MaximalClientProtocolVersion");
+    maximalProtocolVersion->setObjectName(QStringLiteral("kcfg_MaximalClientProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
 
@@ -113,17 +113,17 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
 
     QCheckBox *detectPrinters = new QCheckBox(Smb4KSettings::self()->detectPrinterSharesItem()->label(), behaviorBox);
-    detectPrinters->setObjectName("kcfg_DetectPrinterShares");
+    detectPrinters->setObjectName(QStringLiteral("kcfg_DetectPrinterShares"));
 
     behaviorBoxLayout->addWidget(detectPrinters, 0, 0);
 
     QCheckBox *detectHiddenShares = new QCheckBox(Smb4KSettings::self()->detectHiddenSharesItem()->label(), behaviorBox);
-    detectHiddenShares->setObjectName("kcfg_DetectHiddenShares");
+    detectHiddenShares->setObjectName(QStringLiteral("kcfg_DetectHiddenShares"));
 
     behaviorBoxLayout->addWidget(detectHiddenShares, 0, 1);
 
     QCheckBox *previewHiddenItems = new QCheckBox(Smb4KSettings::self()->previewHiddenItemsItem()->label(), behaviorBox);
-    previewHiddenItems->setObjectName("kcfg_PreviewHiddenItems");
+    previewHiddenItems->setObjectName(QStringLiteral("kcfg_PreviewHiddenItems"));
 
     behaviorBoxLayout->addWidget(previewHiddenItems, 1, 0);
 
@@ -145,23 +145,23 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     QGridLayout *sambaBoxLayout = new QGridLayout(sambaBox);
 
     QCheckBox *useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), sambaBox);
-    useRemoteSmbPort->setObjectName("kcfg_UseRemoteSmbPort");
+    useRemoteSmbPort->setObjectName(QStringLiteral("kcfg_UseRemoteSmbPort"));
 
     sambaBoxLayout->addWidget(useRemoteSmbPort, 0, 0);
 
     QSpinBox *remoteSmbPort = new QSpinBox(sambaBox);
-    remoteSmbPort->setObjectName("kcfg_RemoteSmbPort");
+    remoteSmbPort->setObjectName(QStringLiteral("kcfg_RemoteSmbPort"));
     //   remoteSmbPort->setSliderEnabled(true);
 
     sambaBoxLayout->addWidget(remoteSmbPort, 0, 1);
 
     QCheckBox *useEncryptionLevel = new QCheckBox(Smb4KSettings::self()->useEncryptionLevelItem()->label(), sambaBox);
-    useEncryptionLevel->setObjectName("kcfg_UseEncryptionLevel");
+    useEncryptionLevel->setObjectName(QStringLiteral("kcfg_UseEncryptionLevel"));
 
     sambaBoxLayout->addWidget(useEncryptionLevel, 1, 0);
 
     KComboBox *encryptionLevel = new KComboBox(sambaBox);
-    encryptionLevel->setObjectName("kcfg_EncryptionLevel");
+    encryptionLevel->setObjectName(QStringLiteral("kcfg_EncryptionLevel"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> encryptionLevelChoices = Smb4KSettings::self()->encryptionLevelItem()->choices();
 
@@ -172,22 +172,22 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     sambaBoxLayout->addWidget(encryptionLevel, 1, 1);
 
     QCheckBox *largeNetworkNeighborhood = new QCheckBox(Smb4KSettings::self()->largeNetworkNeighborhoodItem()->label(), sambaBox);
-    largeNetworkNeighborhood->setObjectName("kcfg_LargeNetworkNeighborhood");
+    largeNetworkNeighborhood->setObjectName(QStringLiteral("kcfg_LargeNetworkNeighborhood"));
 
     sambaBoxLayout->addWidget(largeNetworkNeighborhood, 2, 0, 1, 2);
 
     QCheckBox *masterBrowsersRequireAuth = new QCheckBox(Smb4KSettings::self()->masterBrowsersRequireAuthItem()->label(), sambaBox);
-    masterBrowsersRequireAuth->setObjectName("kcfg_MasterBrowsersRequireAuth");
+    masterBrowsersRequireAuth->setObjectName(QStringLiteral("kcfg_MasterBrowsersRequireAuth"));
 
     sambaBoxLayout->addWidget(masterBrowsersRequireAuth, 3, 0, 1, 2);
 
     QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), sambaBox);
-    useKerberos->setObjectName("kcfg_UseKerberos");
+    useKerberos->setObjectName(QStringLiteral("kcfg_UseKerberos"));
 
     sambaBoxLayout->addWidget(useKerberos, 4, 0, 1, 2);
 
     QCheckBox *useCCache = new QCheckBox(Smb4KSettings::self()->useWinbindCCacheItem()->label(), sambaBox);
-    useCCache->setObjectName("kcfg_UseWinbindCCache");
+    useCCache->setObjectName(QStringLiteral("kcfg_UseWinbindCCache"));
 
     sambaBoxLayout->addWidget(useCCache, 5, 0, 1, 2);
 
@@ -197,7 +197,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     QVBoxLayout *wakeOnLanBoxLayout = new QVBoxLayout(wakeOnLanBox);
 
     QCheckBox *enableWakeOnLan = new QCheckBox(Smb4KSettings::self()->enableWakeOnLANItem()->label(), wakeOnLanBox);
-    enableWakeOnLan->setObjectName("kcfg_EnableWakeOnLAN");
+    enableWakeOnLan->setObjectName(QStringLiteral("kcfg_EnableWakeOnLAN"));
 
     wakeOnLanBoxLayout->addWidget(enableWakeOnLan);
 
@@ -207,12 +207,12 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), waitingTimeWidget);
     wakeOnLanWaitingTimeLabel->setIndent(25);
-    wakeOnLanWaitingTimeLabel->setObjectName("WakeOnLanWaitingTimeLabel");
+    wakeOnLanWaitingTimeLabel->setObjectName(QStringLiteral("WakeOnLanWaitingTimeLabel"));
 
     waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTimeLabel);
 
     QSpinBox *wakeOnLanWaitingTime = new QSpinBox(waitingTimeWidget);
-    wakeOnLanWaitingTime->setObjectName("kcfg_WakeOnLANWaitingTime");
+    wakeOnLanWaitingTime->setObjectName(QStringLiteral("kcfg_WakeOnLANWaitingTime"));
     wakeOnLanWaitingTime->setSuffix(i18n(" s"));
     wakeOnLanWaitingTime->setSingleStep(1);
     //   wakeOnLanWaitingTime->setSliderEnabled(true);
@@ -225,7 +225,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     wakeOnLanNote->setText(i18n("Define the hosts that should be woken up via the custom options dialog."));
     wakeOnLanNote->setMessageType(KMessageWidget::Information);
     wakeOnLanNote->setCloseButtonVisible(false);
-    wakeOnLanNote->setIcon(KDE::icon("emblem-information"));
+    wakeOnLanNote->setIcon(KDE::icon(QStringLiteral("emblem-information")));
 
     wakeOnLanBoxLayout->addWidget(wakeOnLanNote);
 
@@ -256,10 +256,10 @@ void Smb4KConfigPageNetwork::slotSetProtocolVersionsToggled(bool on)
     //
     // Get the widgets
     //
-    QLabel *minimalProtocolVersionLabel = findChild<QLabel *>("MinimalProtocolVersionLabel");
-    KComboBox *minimalProtocolVersion = findChild<KComboBox *>("kcfg_MinimalClientProtocolVersion");
-    QLabel *maximalProtocolVersionLabel = findChild<QLabel *>("MaximalProtocolVersionLabel");
-    KComboBox *maximalProtocolVersion = findChild<KComboBox *>("kcfg_MaximalClientProtocolVersion");
+    QLabel *minimalProtocolVersionLabel = findChild<QLabel *>(QStringLiteral("MinimalProtocolVersionLabel"));
+    KComboBox *minimalProtocolVersion = findChild<KComboBox *>(QStringLiteral("kcfg_MinimalClientProtocolVersion"));
+    QLabel *maximalProtocolVersionLabel = findChild<QLabel *>(QStringLiteral("MaximalProtocolVersionLabel"));
+    KComboBox *maximalProtocolVersion = findChild<KComboBox *>(QStringLiteral("kcfg_MaximalClientProtocolVersion"));
 
     //
     // Enable / disable widgets
@@ -275,8 +275,8 @@ void Smb4KConfigPageNetwork::slotEnableWakeOnLanFeatureToggled(bool on)
     //
     // Get the widgets
     //
-    QLabel *wakeOnLanWaitingTimeLabel = findChild<QLabel *>("WakeOnLanWaitingTimeLabel");
-    QSpinBox *wakeOnLanWaitingTime = findChild<QSpinBox *>("kcfg_WakeOnLANWaitingTime");
+    QLabel *wakeOnLanWaitingTimeLabel = findChild<QLabel *>(QStringLiteral("WakeOnLanWaitingTimeLabel"));
+    QSpinBox *wakeOnLanWaitingTime = findChild<QSpinBox *>(QStringLiteral("kcfg_WakeOnLANWaitingTime"));
 
     //
     // Enable / disable widgets
