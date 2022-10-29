@@ -179,7 +179,7 @@ void Smb4KHardwareInterface::timerEvent(QTimerEvent * /*e*/)
     QStringList mountPointList, alreadyMounted;
 
     for (const QExplicitlySharedDataPointer<KMountPoint> &mountPoint : mountPoints) {
-        if (mountPoint->mountType() == "smbfs") {
+        if (mountPoint->mountType() == QStringLiteral("smbfs")) {
             mountPointList.append(mountPoint->mountPoint());
         }
     }
