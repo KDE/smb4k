@@ -641,7 +641,7 @@ void Smb4KConfigPageMounting::setupWidget()
     QList<KUserGroup> groupList = KUserGroup::allGroups();
 
     for (const KUserGroup &g : groupList) {
-        QAction *groupAction = groupMenu->addAction(g.name() + QStringLiteral(" (") + g.groupId().toString()+ QStringLiteral(")"));
+        QAction *groupAction = groupMenu->addAction(g.name() + QStringLiteral(" (") + g.groupId().toString() + QStringLiteral(")"));
         groupAction->setData(g.groupId().nativeId());
     }
 

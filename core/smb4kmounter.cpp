@@ -1512,7 +1512,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
 
         if (!clientCharset.isEmpty() && !serverCharset.isEmpty()) {
             argumentsList << QStringLiteral("-E");
-            argumentsList << clientCharset + QStringLiteral(":") +  serverCharset;
+            argumentsList << clientCharset + QStringLiteral(":") + serverCharset;
         }
     }
 
