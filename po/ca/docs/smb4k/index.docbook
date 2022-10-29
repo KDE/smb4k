@@ -6735,7 +6735,7 @@ ntlm auth = yes
 >1</manvolnum
 ></citerefentry
 ></ulink
-> que ometi els directoris quan es preserven els temps de modificació (vegeu <option
+> que ometi els directoris quan mantinguin l'hora de modificació (vegeu <option
 >--times</option
 >).</para>
               <para
