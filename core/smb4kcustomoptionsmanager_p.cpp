@@ -619,7 +619,7 @@ void Smb4KCustomOptionsDialog::setupView()
     QGridLayout *commonBoxLayout = new QGridLayout(commonBox);
 
     QCheckBox *remountAlways = new QCheckBox(i18n("Always remount this share"), commonBox);
-    remountAlways->setObjectName("RemountAlways");
+    remountAlways->setObjectName(QStringLiteral("RemountAlways"));
     remountAlways->setEnabled(m_options->type() == Share);
     connect(remountAlways, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
@@ -627,15 +627,15 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // User Id
     QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), commonBox);
-    useUserId->setObjectName("UseUserId");
+    useUserId->setObjectName(QStringLiteral("UseUserId"));
 
     KComboBox *userId = new KComboBox(commonBox);
-    userId->setObjectName("UserId");
+    userId->setObjectName(QStringLiteral("UserId"));
 
     QList<KUser> allUsers = KUser::allUsers();
 
     for (const KUser &u : allUsers) {
-        userId->addItem(QString("%1 (%2)").arg(u.loginName(), u.userId().toString()));
+        userId->addItem(u.loginName() + QStringLiteral(" (") + u.userId().toString() + QStringLiteral(")"));
     }
 
     connect(useUserId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -646,15 +646,15 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Group Id
     QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), commonBox);
-    useGroupId->setObjectName("UseGroupId");
+    useGroupId->setObjectName(QStringLiteral("UseGroupId"));
 
     KComboBox *groupId = new KComboBox(commonBox);
-    groupId->setObjectName("GroupId");
+    groupId->setObjectName(QStringLiteral("GroupId"));
 
     QList<KUserGroup> allGroups = KUserGroup::allGroups();
 
     for (const KUserGroup &g : allGroups) {
-        groupId->addItem(QString("%1 (%2)").arg(g.name(), g.groupId().toString()));
+        groupId->addItem(g.name() + QStringLiteral(" (") + g.groupId().toString() + QStringLiteral(")"));
     }
 
     connect(useGroupId, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
@@ -665,10 +665,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // File mode
     QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), commonBox);
-    useFileMode->setObjectName("UseFileMode");
+    useFileMode->setObjectName(QStringLiteral("UseFileMode"));
 
     KLineEdit *fileMode = new KLineEdit(commonBox);
-    fileMode->setObjectName("FileMode");
+    fileMode->setObjectName(QStringLiteral("FileMode"));
     fileMode->setClearButtonEnabled(true);
     fileMode->setAlignment(Qt::AlignRight);
 
@@ -680,10 +680,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Directory mode
     QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), commonBox);
-    useDirectoryMode->setObjectName("UseDirectoryMode");
+    useDirectoryMode->setObjectName(QStringLiteral("UseDirectoryMode"));
 
     KLineEdit *directoryMode = new KLineEdit(commonBox);
-    directoryMode->setObjectName("DirectoryMode");
+    directoryMode->setObjectName(QStringLiteral("DirectoryMode"));
     directoryMode->setClearButtonEnabled(true);
     directoryMode->setAlignment(Qt::AlignRight);
 
@@ -712,14 +712,14 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Minimal and maximal client protocol versions
     QCheckBox *useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), commonSambaOptionsBox);
-    useClientProtocolVersions->setObjectName("UseClientProtocolVersions");
+    useClientProtocolVersions->setObjectName(QStringLiteral("UseClientProtocolVersions"));
 
     QLabel *minimalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), commonSambaOptionsBox);
     minimalClientProtocolVersionLabel->setIndent(25);
-    minimalClientProtocolVersionLabel->setObjectName("MinimalProtocolVersionLabel");
+    minimalClientProtocolVersionLabel->setObjectName(QStringLiteral("MinimalProtocolVersionLabel"));
 
     KComboBox *minimalClientProtocolVersion = new KComboBox(commonSambaOptionsBox);
-    minimalClientProtocolVersion->setObjectName("MinimalClientProtocolVersion");
+    minimalClientProtocolVersion->setObjectName(QStringLiteral("MinimalClientProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalClientProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
 
@@ -729,10 +729,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     QLabel *maximalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), commonSambaOptionsBox);
     maximalClientProtocolVersionLabel->setIndent(25);
-    maximalClientProtocolVersionLabel->setObjectName("MaximalProtocolVersionLabel");
+    maximalClientProtocolVersionLabel->setObjectName(QStringLiteral("MaximalProtocolVersionLabel"));
 
     KComboBox *maximalClientProtocolVersion = new KComboBox(commonSambaOptionsBox);
-    maximalClientProtocolVersion->setObjectName("MaximalClientProtocolVersion");
+    maximalClientProtocolVersion->setObjectName(QStringLiteral("MaximalClientProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
 
@@ -756,10 +756,10 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // SMB port
     QCheckBox *useSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), commonSambaOptionsBox);
-    useSmbPort->setObjectName("UseSmbPort");
+    useSmbPort->setObjectName(QStringLiteral("UseSmbPort"));
 
     QSpinBox *smbPort = new QSpinBox(commonSambaOptionsBox);
-    smbPort->setObjectName("SmbPort");
+    smbPort->setObjectName(QStringLiteral("SmbPort"));
     smbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
     smbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
 
@@ -779,7 +779,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Kerberos
     QCheckBox *useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), authenticationBox);
-    useKerberos->setObjectName("UseKerberos");
+    useKerberos->setObjectName(QStringLiteral("UseKerberos"));
 
     connect(useKerberos, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
@@ -808,9 +808,9 @@ void Smb4KCustomOptionsDialog::setupView()
     // MAC address
     QLabel *macAddressLabel = new QLabel(i18n("MAC Address:"), macAddressBox);
     KLineEdit *macAddress = new KLineEdit(macAddressBox);
-    macAddress->setObjectName("MACAddress");
+    macAddress->setObjectName(QStringLiteral("MACAddress"));
     macAddress->setClearButtonEnabled(true);
-    macAddress->setInputMask("HH:HH:HH:HH:HH:HH;_"); // MAC address, see QLineEdit doc
+    macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
     macAddressLabel->setBuddy(macAddress);
 
     connect(macAddress, SIGNAL(textEdited(QString)), SLOT(slotCheckValues()));
@@ -829,7 +829,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Send magic packet before network scan
     QCheckBox *sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), wakeOnLANActionsBox);
-    sendPacketBeforeScan->setObjectName("SendPacketBeforeScan");
+    sendPacketBeforeScan->setObjectName(QStringLiteral("SendPacketBeforeScan"));
 
     connect(sendPacketBeforeScan, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
@@ -837,7 +837,7 @@ void Smb4KCustomOptionsDialog::setupView()
 
     // Send magic packet before mount
     QCheckBox *sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), wakeOnLanTab);
-    sendPacketBeforeMount->setObjectName("SendPacketBeforeMount");
+    sendPacketBeforeMount->setObjectName(QStringLiteral("SendPacketBeforeMount"));
 
     connect(sendPacketBeforeMount, SIGNAL(toggled(bool)), SLOT(slotCheckValues()));
 
@@ -858,11 +858,11 @@ void Smb4KCustomOptionsDialog::setupView()
 
         // User information
         useUserId->setChecked(m_options->useUser());
-        userId->setCurrentText(QString("%1 (%2)").arg(m_options->user().loginName(), m_options->user().userId().toString()));
+        userId->setCurrentText(m_options->user().loginName() + QStringLiteral(" (") + m_options->user().userId().toString() + QStringLiteral(")"));
 
         // Group information
         useGroupId->setChecked(m_options->useGroup());
-        groupId->setCurrentText(QString("%1 (%2)").arg(m_options->group().name(), m_options->group().groupId().toString()));
+        groupId->setCurrentText(m_options->group().name() + QStringLiteral(" (") + m_options->group().groupId().toString() + QStringLiteral(")"));
 
         // File mode
         useFileMode->setChecked(m_options->useFileMode());
