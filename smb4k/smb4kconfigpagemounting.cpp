@@ -505,12 +505,12 @@ void Smb4KConfigPageMounting::setupWidget()
     QLabel *prefixLabel = new QLabel(Smb4KMountSettings::self()->mountPrefixItem()->label(), directoryBox);
     KUrlRequester *prefix = new KUrlRequester(directoryBox);
     prefix->setMode(KFile::Directory | KFile::LocalOnly);
-    prefix->setObjectName("kcfg_MountPrefix");
+    prefix->setObjectName(QStringLiteral("kcfg_MountPrefix"));
 
     prefixLabel->setBuddy(prefix);
 
     QCheckBox *lowercaseSubdirs = new QCheckBox(Smb4KMountSettings::self()->forceLowerCaseSubdirsItem()->label(), directoryBox);
-    lowercaseSubdirs->setObjectName("kcfg_ForceLowerCaseSubdirs");
+    lowercaseSubdirs->setObjectName(QStringLiteral("kcfg_ForceLowerCaseSubdirs"));
 
     directoryBoxLayout->addWidget(prefixLabel, 0, 0);
     directoryBoxLayout->addWidget(prefix, 0, 1);
@@ -525,33 +525,33 @@ void Smb4KConfigPageMounting::setupWidget()
     QGridLayout *behaviorBoxLayout = new QGridLayout(behaviorBox);
 
     QCheckBox *remountShares = new QCheckBox(Smb4KMountSettings::self()->remountSharesItem()->label(), behaviorBox);
-    remountShares->setObjectName("kcfg_RemountShares");
+    remountShares->setObjectName(QStringLiteral("kcfg_RemountShares"));
 
     QLabel *remountAttemptsLabel = new QLabel(Smb4KMountSettings::self()->remountAttemptsItem()->label(), behaviorBox);
-    remountAttemptsLabel->setObjectName("RemountAttemptsLabel");
+    remountAttemptsLabel->setObjectName(QStringLiteral("RemountAttemptsLabel"));
     remountAttemptsLabel->setIndent(25);
 
     QSpinBox *remountAttempts = new QSpinBox(behaviorBox);
-    remountAttempts->setObjectName("kcfg_RemountAttempts");
+    remountAttempts->setObjectName(QStringLiteral("kcfg_RemountAttempts"));
     remountAttemptsLabel->setBuddy(remountAttempts);
 
     QLabel *remountIntervalLabel = new QLabel(Smb4KMountSettings::self()->remountIntervalItem()->label(), behaviorBox);
-    remountIntervalLabel->setObjectName("RemountIntervalLabel");
+    remountIntervalLabel->setObjectName(QStringLiteral("RemountIntervalLabel"));
     remountIntervalLabel->setIndent(25);
 
     QSpinBox *remountInterval = new QSpinBox(behaviorBox);
-    remountInterval->setObjectName("kcfg_RemountInterval");
+    remountInterval->setObjectName(QStringLiteral("kcfg_RemountInterval"));
     remountInterval->setSuffix(i18n(" min"));
     remountIntervalLabel->setBuddy(remountInterval);
 
     QCheckBox *unmountAllShares = new QCheckBox(Smb4KMountSettings::self()->unmountSharesOnExitItem()->label(), behaviorBox);
-    unmountAllShares->setObjectName("kcfg_UnmountSharesOnExit");
+    unmountAllShares->setObjectName(QStringLiteral("kcfg_UnmountSharesOnExit"));
 
     QCheckBox *unmountForeignShares = new QCheckBox(Smb4KMountSettings::self()->unmountForeignSharesItem()->label(), behaviorBox);
-    unmountForeignShares->setObjectName("kcfg_UnmountForeignShares");
+    unmountForeignShares->setObjectName(QStringLiteral("kcfg_UnmountForeignShares"));
 
     QCheckBox *detectAllShares = new QCheckBox(Smb4KMountSettings::self()->detectAllSharesItem()->label(), behaviorBox);
-    detectAllShares->setObjectName("kcfg_DetectAllShares");
+    detectAllShares->setObjectName(QStringLiteral("kcfg_DetectAllShares"));
 
     behaviorBoxLayout->addWidget(remountShares, 0, 0, 1, 2);
     behaviorBoxLayout->addWidget(remountAttemptsLabel, 1, 0);
@@ -581,21 +581,21 @@ void Smb4KConfigPageMounting::setupWidget()
 
     // User information
     QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), commonOptionsBox);
-    useUserId->setObjectName("kcfg_UseUserId");
+    useUserId->setObjectName(QStringLiteral("kcfg_UseUserId"));
 
     QWidget *userIdInputWidget = new QWidget(commonOptionsBox);
-    userIdInputWidget->setObjectName("UserIdInputWidget");
+    userIdInputWidget->setObjectName(QStringLiteral("UserIdInputWidget"));
 
     QGridLayout *userLayout = new QGridLayout(userIdInputWidget);
     userLayout->setContentsMargins(0, 0, 0, 0);
 
     KLineEdit *userId = new KLineEdit(userIdInputWidget);
-    userId->setObjectName("kcfg_UserId");
+    userId->setObjectName(QStringLiteral("kcfg_UserId"));
     userId->setAlignment(Qt::AlignRight);
     userId->setReadOnly(true);
 
     QToolButton *userChooser = new QToolButton(userIdInputWidget);
-    userChooser->setIcon(KDE::icon("edit-find-user"));
+    userChooser->setIcon(KDE::icon(QStringLiteral("edit-find-user")));
     userChooser->setToolTip(i18n("Choose a different user"));
     userChooser->setPopupMode(QToolButton::InstantPopup);
 
@@ -605,7 +605,7 @@ void Smb4KConfigPageMounting::setupWidget()
     QList<KUser> allUsers = KUser::allUsers();
 
     for (const KUser &u : allUsers) {
-        QAction *userAction = userMenu->addAction(QString("%1 (%2)").arg(u.loginName()).arg(u.userId().nativeId()));
+        QAction *userAction = userMenu->addAction(u.loginName() + QStringLiteral(" (") + u.userId().toString() + QStringLiteral(")"));
         userAction->setData(u.userId().nativeId());
     }
 
@@ -617,21 +617,21 @@ void Smb4KConfigPageMounting::setupWidget()
 
     // Group information
     QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), commonOptionsBox);
-    useGroupId->setObjectName("kcfg_UseGroupId");
+    useGroupId->setObjectName(QStringLiteral("kcfg_UseGroupId"));
 
     QWidget *groupIdInputWidget = new QWidget(commonOptionsBox);
-    groupIdInputWidget->setObjectName("GroupIdInputWidget");
+    groupIdInputWidget->setObjectName(QStringLiteral("GroupIdInputWidget"));
 
     QGridLayout *groupLayout = new QGridLayout(groupIdInputWidget);
     groupLayout->setContentsMargins(0, 0, 0, 0);
 
     KLineEdit *groupId = new KLineEdit(groupIdInputWidget);
-    groupId->setObjectName("kcfg_GroupId");
+    groupId->setObjectName(QStringLiteral("kcfg_GroupId"));
     groupId->setAlignment(Qt::AlignRight);
     groupId->setReadOnly(true);
 
     QToolButton *groupChooser = new QToolButton(groupIdInputWidget);
-    groupChooser->setIcon(KDE::icon("edit-find-user"));
+    groupChooser->setIcon(KDE::icon(QStringLiteral("edit-find-user")));
     groupChooser->setToolTip(i18n("Choose a different group"));
     groupChooser->setPopupMode(QToolButton::InstantPopup);
 
@@ -641,7 +641,7 @@ void Smb4KConfigPageMounting::setupWidget()
     QList<KUserGroup> groupList = KUserGroup::allGroups();
 
     for (const KUserGroup &g : groupList) {
-        QAction *groupAction = groupMenu->addAction(QString("%1 (%2)").arg(g.name()).arg(g.groupId().nativeId()));
+        QAction *groupAction = groupMenu->addAction(g.name() + QStringLiteral(" (") + g.groupId().toString()+ QStringLiteral(")"));
         groupAction->setData(g.groupId().nativeId());
     }
 
@@ -653,10 +653,10 @@ void Smb4KConfigPageMounting::setupWidget()
 
     // File mask
     QCheckBox *useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), commonOptionsBox);
-    useFileMode->setObjectName("kcfg_UseFileMode");
+    useFileMode->setObjectName(QStringLiteral("kcfg_UseFileMode"));
 
     KLineEdit *fileMode = new KLineEdit(commonOptionsBox);
-    fileMode->setObjectName("kcfg_FileMode");
+    fileMode->setObjectName(QStringLiteral("kcfg_FileMode"));
     fileMode->setClearButtonEnabled(true);
     fileMode->setAlignment(Qt::AlignRight);
 
@@ -665,10 +665,10 @@ void Smb4KConfigPageMounting::setupWidget()
 
     // Directory mask
     QCheckBox *useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), commonOptionsBox);
-    useDirectoryMode->setObjectName("kcfg_UseDirectoryMode");
+    useDirectoryMode->setObjectName(QStringLiteral("kcfg_UseDirectoryMode"));
 
     KLineEdit *directoryMode = new KLineEdit(commonOptionsBox);
-    directoryMode->setObjectName("kcfg_DirectoryMode");
+    directoryMode->setObjectName(QStringLiteral("kcfg_DirectoryMode"));
     directoryMode->setClearButtonEnabled(true);
     directoryMode->setAlignment(Qt::AlignRight);
 
@@ -683,14 +683,14 @@ void Smb4KConfigPageMounting::setupWidget()
 
     // Client character set
     QCheckBox *useCharacterSets = new QCheckBox(Smb4KMountSettings::self()->useCharacterSetsItem()->label(), characterSetsBox);
-    useCharacterSets->setObjectName("kcfg_UseCharacterSets");
+    useCharacterSets->setObjectName(QStringLiteral("kcfg_UseCharacterSets"));
 
     QLabel *clientCharacterSetLabel = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), characterSetsBox);
     clientCharacterSetLabel->setIndent(25);
-    clientCharacterSetLabel->setObjectName("ClientCharacterSetLabel");
+    clientCharacterSetLabel->setObjectName(QStringLiteral("ClientCharacterSetLabel"));
 
     KComboBox *clientCharacterSet = new KComboBox(characterSetsBox);
-    clientCharacterSet->setObjectName("kcfg_ClientCharset");
+    clientCharacterSet->setObjectName(QStringLiteral("kcfg_ClientCharset"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> charsetChoices = Smb4KMountSettings::self()->clientCharsetItem()->choices();
 
@@ -703,10 +703,10 @@ void Smb4KConfigPageMounting::setupWidget()
     // Server character set
     QLabel *serverCharacterSetLabel = new QLabel(Smb4KMountSettings::self()->serverCodepageItem()->label(), characterSetsBox);
     serverCharacterSetLabel->setIndent(25);
-    serverCharacterSetLabel->setObjectName("ServerCodepageLabel");
+    serverCharacterSetLabel->setObjectName(QStringLiteral("ServerCodepageLabel"));
 
     KComboBox *serverCharacterSet = new KComboBox(characterSetsBox);
-    serverCharacterSet->setObjectName("kcfg_ServerCodepage");
+    serverCharacterSet->setObjectName(QStringLiteral("kcfg_ServerCodepage"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> codepageChoices = Smb4KMountSettings::self()->serverCodepageItem()->choices();
 
