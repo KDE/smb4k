@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:45+0000\n"
+"POT-Creation-Date: 2022-10-29 00:47+0000\n"
 "PO-Revision-Date: 2019-05-14 22:35+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -1674,13 +1674,13 @@ msgid ""
 "one."
 msgstr ""
 
-#: smb4kauthinfo.cpp:164 smb4kbookmark.cpp:193 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:187 smb4kcustomoptions.cpp:299
 #: smb4kshare.cpp:163 smb4kshare.cpp:166
 #, kde-format
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:336 smb4kcustomoptionsmanager.cpp:268
 #, fuzzy, kde-format
 #| msgid "The net command '%1' is not supported by Smb4K."
 msgid "The format of %1 is not supported."
@@ -1743,7 +1743,7 @@ msgstr "使用者："
 msgid "Workgroup:"
 msgstr "工作群組："
 
-#: smb4kbookmarkhandler_p.cpp:543 smb4kclient_p.cpp:2330 smb4kmounter_p.cpp:142
+#: smb4kbookmarkhandler_p.cpp:543 smb4kclient_p.cpp:2343 smb4kmounter_p.cpp:142
 #, kde-format
 msgid "IP Address:"
 msgstr "IP 位址："
@@ -1763,59 +1763,59 @@ msgstr "找不到命令 %1。"
 msgid "The file %1 could not be printed to %2"
 msgstr "找不到命令 %1。"
 
-#: smb4kclient_p.cpp:1933
+#: smb4kclient_p.cpp:1946
 #, fuzzy, kde-format
 #| msgid "Preview"
 msgid "Preview of %1"
 msgstr "預覽"
 
-#: smb4kclient_p.cpp:1969
+#: smb4kclient_p.cpp:1982
 #, fuzzy, kde-format
 msgid "Reload"
 msgstr "就緒。"
 
-#: smb4kclient_p.cpp:1971
+#: smb4kclient_p.cpp:1984
 #, fuzzy, kde-format
 msgid "Abort"
 msgstr "放棄(&A)"
 
-#: smb4kclient_p.cpp:1983
+#: smb4kclient_p.cpp:1996
 #, kde-format
 msgid "Up"
 msgstr "向上"
 
-#: smb4kclient_p.cpp:2303
+#: smb4kclient_p.cpp:2316
 #, kde-format
 msgid "Print File"
 msgstr "列印檔案"
 
-#: smb4kclient_p.cpp:2319
+#: smb4kclient_p.cpp:2332
 #, kde-format
 msgid "Information"
 msgstr ""
 
-#: smb4kclient_p.cpp:2323
+#: smb4kclient_p.cpp:2336
 #, fuzzy, kde-format
 #| msgid "Printer"
 msgid "Printer:"
 msgstr "印表機"
 
-#: smb4kclient_p.cpp:2337
+#: smb4kclient_p.cpp:2350
 #, fuzzy, kde-format
 msgid "Domain:"
 msgstr "位置："
 
-#: smb4kclient_p.cpp:2348
+#: smb4kclient_p.cpp:2361
 #, kde-format
 msgid "File and Settings"
 msgstr ""
 
-#: smb4kclient_p.cpp:2352
+#: smb4kclient_p.cpp:2365
 #, kde-format
 msgid "File:"
 msgstr "檔案："
 
-#: smb4kclient_p.cpp:2357
+#: smb4kclient_p.cpp:2370
 #, kde-format
 msgid ""
 "This is the file you want to print on the remote printer. Currently only a "
@@ -1823,17 +1823,17 @@ msgid ""
 "If the file's mimetype is not supported, you need to convert it."
 msgstr ""
 
-#: smb4kclient_p.cpp:2366
+#: smb4kclient_p.cpp:2379
 #, kde-format
 msgid "Copies:"
 msgstr "份數："
 
-#: smb4kclient_p.cpp:2370
+#: smb4kclient_p.cpp:2383
 #, kde-format
 msgid "This is the number of copies you want to print."
 msgstr ""
 
-#: smb4kclient_p.cpp:2381
+#: smb4kclient_p.cpp:2394
 #, fuzzy, kde-format
 #| msgid "Printer"
 msgid "Print"
@@ -1984,14 +1984,14 @@ msgstr "使用者："
 msgid "Clear List"
 msgstr ""
 
-#: smb4kmounter.cpp:680
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
 "%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
 msgstr ""
 
-#: smb4kmounter.cpp:685
+#: smb4kmounter.cpp:688
 #, fuzzy, kde-format
 #| msgid "Mount Share"
 msgid "Foreign Share"
@@ -3062,177 +3062,177 @@ msgstr ""
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "目錄 %1 無法建立。"
 
-#: smb4knotification.cpp:42
+#: smb4knotification.cpp:45
 #, fuzzy, kde-format
 msgid "Open"
 msgstr "&Konqueror"
 
-#: smb4knotification.cpp:54
+#: smb4knotification.cpp:57
 #, fuzzy, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "目錄 %1 無法建立。"
 
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:70
 #, fuzzy, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "目錄 %1 無法建立。"
 
-#: smb4knotification.cpp:73
+#: smb4knotification.cpp:82
 #, fuzzy, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "目錄 %1 無法建立。"
 
-#: smb4knotification.cpp:86
+#: smb4knotification.cpp:98
 #, fuzzy, kde-format
 msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:95
+#: smb4knotification.cpp:107
 #, kde-format
 msgid ""
 "<p>The credentials stored in the wallet could not be accessed. There is "
 "either no wallet available or it could not be opened.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:105
+#: smb4knotification.cpp:117
 #, fuzzy, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
 "file to PDF or Postscript and try again.</p>"
 msgstr "不支援 MIME 類型 \"%1\"。請把檔案轉換成 PostScript 或者 PDF。"
 
-#: smb4knotification.cpp:116
+#: smb4knotification.cpp:128
 #, fuzzy, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "不能將印表機加入書籤！"
 
-#: smb4knotification.cpp:127
+#: smb4knotification.cpp:139
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
 "being used and will automatically be renamed.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:145
+#: smb4knotification.cpp:157
 #, fuzzy, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:147
+#: smb4knotification.cpp:159
 #, fuzzy, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:163
+#: smb4knotification.cpp:175
 #, fuzzy, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
 "p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:165
+#: smb4knotification.cpp:177
 #, fuzzy, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:182
+#: smb4knotification.cpp:194
 #, fuzzy, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
 "owned by the user <b>%3</b>.</p>"
 msgstr "您不允許卸載此共享。"
 
-#: smb4knotification.cpp:197
+#: smb4knotification.cpp:209
 #, fuzzy, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:199
+#: smb4knotification.cpp:211
 #, fuzzy, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:211
+#: smb4knotification.cpp:223
 #, fuzzy, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "找不到命令 %1。"
 
-#: smb4knotification.cpp:220
+#: smb4knotification.cpp:232
 #, fuzzy, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr "不能將印表機加入書籤！"
 
-#: smb4knotification.cpp:229
+#: smb4knotification.cpp:241
 #, fuzzy, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "找不到命令 %1。"
 
-#: smb4knotification.cpp:239
+#: smb4knotification.cpp:251
 #, fuzzy, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:241
+#: smb4knotification.cpp:253
 #, fuzzy, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:255 smb4knotification.cpp:258
+#: smb4knotification.cpp:267 smb4knotification.cpp:270
 #, fuzzy, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:260
+#: smb4knotification.cpp:272
 #, fuzzy, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "列印檔案"
 
-#: smb4knotification.cpp:273
+#: smb4knotification.cpp:285
 #, fuzzy, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "目錄 %1 無法找到。"
 
-#: smb4knotification.cpp:284
+#: smb4knotification.cpp:296
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "權限不足"
 
-#: smb4knotification.cpp:288
+#: smb4knotification.cpp:300
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "權限不足"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:304
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "權限不足"
 
-#: smb4knotification.cpp:296
+#: smb4knotification.cpp:308
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "權限不足"
 
-#: smb4knotification.cpp:300
+#: smb4knotification.cpp:312
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "權限不足"
 
-#: smb4knotification.cpp:305
+#: smb4knotification.cpp:317
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:363
+#: smb4knotification.cpp:375
 #, fuzzy, kde-format
 #| msgid "The permission was denied. "
 msgid ""
@@ -3240,17 +3240,17 @@ msgid ""
 "</p>"
 msgstr "權限不足"
 
-#: smb4knotification.cpp:365
+#: smb4knotification.cpp:377
 #, fuzzy, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "重試開啟主機…"
 
-#: smb4knotification.cpp:377
+#: smb4knotification.cpp:389
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr ""
 
-#: smb4knotification.cpp:385
+#: smb4knotification.cpp:397
 #, kde-format
 msgid ""
 "The network communication failed with the following error message: <s>%1</s>"
@@ -3303,73 +3303,73 @@ msgstr "印表機"
 msgid "IPC"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:501
 #, fuzzy, kde-format
 #| msgid "Synchronizing data..."
 msgid "Synchronizing"
 msgstr "同步資料…"
 
-#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:501
 #, fuzzy, kde-format
 #| msgid "Source:"
 msgid "Source"
 msgstr "來源："
 
-#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:501
 #, fuzzy, kde-format
 #| msgid "Destination:"
 msgid "Destination"
 msgstr "目的："
 
-#: smb4ksynchronizer_p.cpp:552
+#: smb4ksynchronizer_p.cpp:554
 #, kde-format
 msgid "Synchronization"
 msgstr "同步化"
 
-#: smb4ksynchronizer_p.cpp:555
+#: smb4ksynchronizer_p.cpp:557
 #, kde-format
 msgid "Swap Paths"
 msgstr "交換路徑"
 
-#: smb4ksynchronizer_p.cpp:556
+#: smb4ksynchronizer_p.cpp:558
 #, kde-format
 msgid "Swap source and destination"
 msgstr "交換來源和目的"
 
-#: smb4ksynchronizer_p.cpp:557
+#: smb4ksynchronizer_p.cpp:559
 #, fuzzy, kde-format
 msgid "Synchronize"
 msgstr "同步(&Y)"
 
-#: smb4ksynchronizer_p.cpp:558
+#: smb4ksynchronizer_p.cpp:560
 #, kde-format
 msgid "Synchronize the destination with the source"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:572
+#: smb4ksynchronizer_p.cpp:574
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization."
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:581
+#: smb4ksynchronizer_p.cpp:584
 #, kde-format
 msgid "Source:"
 msgstr "來源："
 
-#: smb4ksynchronizer_p.cpp:589
+#: smb4ksynchronizer_p.cpp:592
 #, kde-format
 msgid ""
 "This is the source directory. The data that it contains is to be written to "
 "the destination directory."
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:592
+#: smb4ksynchronizer_p.cpp:595
 #, kde-format
 msgid "Destination:"
 msgstr "目的："
 
-#: smb4ksynchronizer_p.cpp:600
+#: smb4ksynchronizer_p.cpp:603
 #, kde-format
 msgid ""
 "This is the destination directory. It will be updated with the data from the "

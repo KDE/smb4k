@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-27 00:45+0000\n"
+"POT-Creation-Date: 2022-10-29 00:47+0000\n"
 "PO-Revision-Date: 2022-09-05 09:16+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -1943,13 +1943,13 @@ msgstr ""
 "или отключении поддержки профилей. Мастер переноса профилей позволяет "
 "перенести все сохранённые параметры из одного профиля в другой."
 
-#: smb4kauthinfo.cpp:164 smb4kbookmark.cpp:193 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:187 smb4kcustomoptions.cpp:299
 #: smb4kshare.cpp:163 smb4kshare.cpp:166
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 на %2"
 
-#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:336 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Формат файла %1 не поддерживается."
@@ -2012,7 +2012,7 @@ msgstr "Имя пользователя:"
 msgid "Workgroup:"
 msgstr "Рабочая группа:"
 
-#: smb4kbookmarkhandler_p.cpp:543 smb4kclient_p.cpp:2330 smb4kmounter_p.cpp:142
+#: smb4kbookmarkhandler_p.cpp:543 smb4kclient_p.cpp:2343 smb4kmounter_p.cpp:142
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-адрес:"
@@ -2032,57 +2032,57 @@ msgstr "Не удалось прочитать файл «%1»"
 msgid "The file %1 could not be printed to %2"
 msgstr "Не удалось вывести файл «%1» на печать на %2"
 
-#: smb4kclient_p.cpp:1933
+#: smb4kclient_p.cpp:1946
 #, kde-format
 msgid "Preview of %1"
 msgstr "Предварительный просмотр %1"
 
-#: smb4kclient_p.cpp:1969
+#: smb4kclient_p.cpp:1982
 #, kde-format
 msgid "Reload"
 msgstr "Обновить"
 
-#: smb4kclient_p.cpp:1971
+#: smb4kclient_p.cpp:1984
 #, kde-format
 msgid "Abort"
 msgstr "Остановить"
 
-#: smb4kclient_p.cpp:1983
+#: smb4kclient_p.cpp:1996
 #, kde-format
 msgid "Up"
 msgstr "Вверх"
 
-#: smb4kclient_p.cpp:2303
+#: smb4kclient_p.cpp:2316
 #, kde-format
 msgid "Print File"
 msgstr "Печать файла"
 
-#: smb4kclient_p.cpp:2319
+#: smb4kclient_p.cpp:2332
 #, kde-format
 msgid "Information"
 msgstr "Сведения"
 
-#: smb4kclient_p.cpp:2323
+#: smb4kclient_p.cpp:2336
 #, kde-format
 msgid "Printer:"
 msgstr "Принтер:"
 
-#: smb4kclient_p.cpp:2337
+#: smb4kclient_p.cpp:2350
 #, kde-format
 msgid "Domain:"
 msgstr "Домен:"
 
-#: smb4kclient_p.cpp:2348
+#: smb4kclient_p.cpp:2361
 #, kde-format
 msgid "File and Settings"
 msgstr "Файл и параметры"
 
-#: smb4kclient_p.cpp:2352
+#: smb4kclient_p.cpp:2365
 #, kde-format
 msgid "File:"
 msgstr "Файл:"
 
-#: smb4kclient_p.cpp:2357
+#: smb4kclient_p.cpp:2370
 #, kde-format
 msgid ""
 "This is the file you want to print on the remote printer. Currently only a "
@@ -2094,17 +2094,17 @@ msgstr ""
 "простые текстовые файлы и изображения. Если тип MIME файла не "
 "поддерживается, то следует преобразовать его в другой формат."
 
-#: smb4kclient_p.cpp:2366
+#: smb4kclient_p.cpp:2379
 #, kde-format
 msgid "Copies:"
 msgstr "Число копий:"
 
-#: smb4kclient_p.cpp:2370
+#: smb4kclient_p.cpp:2383
 #, kde-format
 msgid "This is the number of copies you want to print."
 msgstr "Желаемое число копий, которые будут напечатаны на принтере."
 
-#: smb4kclient_p.cpp:2381
+#: smb4kclient_p.cpp:2394
 #, kde-format
 msgid "Print"
 msgstr "Печать"
@@ -2251,7 +2251,7 @@ msgstr "Пользователь:"
 msgid "Clear List"
 msgstr "Очистить список"
 
-#: smb4kmounter.cpp:680
+#: smb4kmounter.cpp:683
 #, kde-format
 msgid ""
 "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
@@ -2261,7 +2261,7 @@ msgstr ""
 "является пользователь <b>%3</b>.</p>Отключить этот общий сетевой ресурс?<p></"
 "p>"
 
-#: smb4kmounter.cpp:685
+#: smb4kmounter.cpp:688
 #, kde-format
 msgid "Foreign Share"
 msgstr "Общий сетевой ресурс подключён другим пользователем"
@@ -3465,18 +3465,18 @@ msgstr ""
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Общий ресурс <b>%1</b> подключён к <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:42
+#: smb4knotification.cpp:45
 #, kde-format
 msgid "Open"
 msgstr "Открыть"
 
-#: smb4knotification.cpp:54
+#: smb4knotification.cpp:57
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>Общий ресурс <b>%1</b> отключён от <b>%2</b>.</p>"
 
 # BUGME: "all shares [of what set of shares?]" - those that the user has requested to mount? --aspotashev
-#: smb4knotification.cpp:64
+#: smb4knotification.cpp:70
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
@@ -3486,7 +3486,7 @@ msgstr[2] "<p>Подключены %1 общих ресурсов.</p>"
 msgstr[3] "<p>Подключён один общий ресурс.</p>"
 
 # BUGME: "all shares [of what set of shares?]" - those that the user has requested to unmount? --aspotashev
-#: smb4knotification.cpp:73
+#: smb4knotification.cpp:82
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
@@ -3495,12 +3495,12 @@ msgstr[1] "<p>Отключены %1 общих ресурса.</p>"
 msgstr[2] "<p>Отключены %1 общих ресурсов.</p>"
 msgstr[3] "<p>Отключён один общий ресурс.</p>"
 
-#: smb4knotification.cpp:86
+#: smb4knotification.cpp:98
 #, kde-format
 msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
 msgstr "<p>Не удалось открыть бумажник <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:95
+#: smb4knotification.cpp:107
 #, kde-format
 msgid ""
 "<p>The credentials stored in the wallet could not be accessed. There is "
@@ -3509,7 +3509,7 @@ msgstr ""
 "<p>Имя пользователя и пароль, хранящиеся в бумажнике, недоступны. Либо "
 "бумажник не существует, либо не удалось его открыть.</p>"
 
-#: smb4knotification.cpp:105
+#: smb4knotification.cpp:117
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3518,7 +3518,7 @@ msgstr ""
 "<p>Не поддерживается печать файлов, имеющих тип MIME <b>%1</b>. Преобразуйте "
 "файл в формат PDF или PostScript и повторите попытку.</p>"
 
-#: smb4knotification.cpp:116
+#: smb4knotification.cpp:128
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
@@ -3526,7 +3526,7 @@ msgstr ""
 "<p>Для общего ресурса <b>%1</b> уже существует закладка, поэтому новая "
 "создана не будет.</p>"
 
-#: smb4knotification.cpp:127
+#: smb4knotification.cpp:139
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3535,17 +3535,17 @@ msgstr ""
 "<p>Название закладки <b>%1</b> уже использовано для общего ресурса <b>%2</"
 "b>, поэтому закладка будет автоматически переименована.</p>"
 
-#: smb4knotification.cpp:145
+#: smb4knotification.cpp:157
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Не удалось подключить общий ресурс <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:147
+#: smb4knotification.cpp:159
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>Не удалось подключить общий ресурс <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:163
+#: smb4knotification.cpp:175
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3554,13 +3554,13 @@ msgstr ""
 "<p>Не удалось отключить общий ресурс <b>%1</b> от <b>%2</b>:</p><p><tt>%3</"
 "tt></p>"
 
-#: smb4knotification.cpp:165
+#: smb4knotification.cpp:177
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p>Не удалось отключить общий ресурс <b>%1</b> от <b>%2</b>.</p>"
 
 # BUGME: what is owned? Is that the mount point? --aspotashev
-#: smb4knotification.cpp:182
+#: smb4knotification.cpp:194
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3569,18 +3569,18 @@ msgstr ""
 "<p>Недостаточно прав для отключения общего ресурса <b>%1</b> от <b>%2</b>. "
 "Владелец точки подключения — пользователь <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:197
+#: smb4knotification.cpp:209
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>Не удалось синхронизировать <b>%1</b> с <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:199
+#: smb4knotification.cpp:211
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>Не удалось синхронизировать <b>%1</b> с <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:211
+#: smb4knotification.cpp:223
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
@@ -3589,76 +3589,76 @@ msgstr ""
 "<p>Не удалось найти команду <b>%1</b>. Проверьте правильность установки "
 "программного обеспечения.</p>"
 
-#: smb4knotification.cpp:220
+#: smb4knotification.cpp:232
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>Невозможно создать закладку для общего ресурса <b>%1</b>, потому что он "
 "является принтером.</p>"
 
-#: smb4knotification.cpp:229
+#: smb4knotification.cpp:241
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>Не удалось найти файл <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:239
+#: smb4knotification.cpp:251
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Не удалось открыть файл <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:241
+#: smb4knotification.cpp:253
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>Не удалось открыть файл <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:255 smb4knotification.cpp:258
+#: smb4knotification.cpp:267 smb4knotification.cpp:270
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Не удалось прочитать из файла <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:260
+#: smb4knotification.cpp:272
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>Не удалось прочитать из файла <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:273
+#: smb4knotification.cpp:285
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>Не удалось создать следующий каталог:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:284
+#: smb4knotification.cpp:296
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Не удалось запустить процесс (код ошибки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:288
+#: smb4knotification.cpp:300
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Процесс аварийно завершился (код ошибки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:292
+#: smb4knotification.cpp:304
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>Истекло время ожидания ответа от процесса (код ошибки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:296
+#: smb4knotification.cpp:308
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Не удалось записать данные в процесс (код ошибки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:300
+#: smb4knotification.cpp:312
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>Не удалось прочитать данные из процесса (код ошибки: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:305
+#: smb4knotification.cpp:317
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>Процесс сообщил о неизвестной ошибке.</p>"
 
-#: smb4knotification.cpp:363
+#: smb4knotification.cpp:375
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3667,17 +3667,17 @@ msgstr ""
 "<p>Не удалось выполнить действие с привилегиями администратора (код ошибки: "
 "<tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:365
+#: smb4knotification.cpp:377
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>Не удалось выполнить действие с привилегиями администратора.</p>"
 
-#: smb4knotification.cpp:377
+#: smb4knotification.cpp:389
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>Указан недопустимый адрес URL.</p>"
 
-#: smb4knotification.cpp:385
+#: smb4knotification.cpp:397
 #, kde-format
 msgid ""
 "The network communication failed with the following error message: <s>%1</s>"
@@ -3729,58 +3729,58 @@ msgstr "Принтер"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:501
 #, kde-format
 msgid "Synchronizing"
 msgstr "Синхронизация"
 
-#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:501
 #, kde-format
 msgid "Source"
 msgstr "Откуда"
 
-#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:500
+#: smb4ksynchronizer_p.cpp:411 smb4ksynchronizer_p.cpp:501
 #, kde-format
 msgid "Destination"
 msgstr "Куда"
 
-#: smb4ksynchronizer_p.cpp:552
+#: smb4ksynchronizer_p.cpp:554
 #, kde-format
 msgid "Synchronization"
 msgstr "Синхронизация"
 
-#: smb4ksynchronizer_p.cpp:555
+#: smb4ksynchronizer_p.cpp:557
 #, kde-format
 msgid "Swap Paths"
 msgstr "Поменять пути местами"
 
-#: smb4ksynchronizer_p.cpp:556
+#: smb4ksynchronizer_p.cpp:558
 #, kde-format
 msgid "Swap source and destination"
 msgstr "Поменять местами путь источника и назначения"
 
-#: smb4ksynchronizer_p.cpp:557
+#: smb4ksynchronizer_p.cpp:559
 #, kde-format
 msgid "Synchronize"
 msgstr "Синхронизировать"
 
-#: smb4ksynchronizer_p.cpp:558
+#: smb4ksynchronizer_p.cpp:560
 #, kde-format
 msgid "Synchronize the destination with the source"
 msgstr "Синхронизировать каталог назначения с каталогом источника"
 
-#: smb4ksynchronizer_p.cpp:572
+#: smb4ksynchronizer_p.cpp:574
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization."
 msgstr "Укажите каталог назначения и каталог источника для синхронизации."
 
-#: smb4ksynchronizer_p.cpp:581
+#: smb4ksynchronizer_p.cpp:584
 #, kde-format
 msgid "Source:"
 msgstr "Откуда:"
 
-#: smb4ksynchronizer_p.cpp:589
+#: smb4ksynchronizer_p.cpp:592
 #, kde-format
 msgid ""
 "This is the source directory. The data that it contains is to be written to "
@@ -3789,12 +3789,12 @@ msgstr ""
 "Это каталог источника. Данные из этого каталога будут скопированы в каталог "
 "назначения."
 
-#: smb4ksynchronizer_p.cpp:592
+#: smb4ksynchronizer_p.cpp:595
 #, kde-format
 msgid "Destination:"
 msgstr "Куда:"
 
-#: smb4ksynchronizer_p.cpp:600
+#: smb4ksynchronizer_p.cpp:603
 #, kde-format
 msgid ""
 "This is the destination directory. It will be updated with the data from the "
