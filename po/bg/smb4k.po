@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:47+0000\n"
+"POT-Creation-Date: 2022-10-30 00:46+0000\n"
 "PO-Revision-Date: 2011-07-19 21:17+0300\n"
 "Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -781,104 +781,104 @@ msgid ""
 "any files here.</qt>"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:170 smb4k/smb4ktooltip.cpp:326
+#: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
 msgid "yes"
 msgstr "да"
 
-#: smb4k/smb4ktooltip.cpp:170 smb4k/smb4ktooltip.cpp:326
+#: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
 msgid "no"
 msgstr "не"
 
-#: smb4k/smb4ktooltip.cpp:213
+#: smb4k/smb4ktooltip.cpp:177
 #, fuzzy, kde-format
 msgid "Type:"
 msgstr "Вид"
 
-#: smb4k/smb4ktooltip.cpp:228
+#: smb4k/smb4ktooltip.cpp:184
 #, kde-format
 msgid "Workgroup"
 msgstr "Работна група"
 
-#: smb4k/smb4ktooltip.cpp:231
+#: smb4k/smb4ktooltip.cpp:188
 #, fuzzy, kde-format
 msgid "Master Browser:"
 msgstr "Заявка към този главен компютър:"
 
-#: smb4k/smb4ktooltip.cpp:259
+#: smb4k/smb4ktooltip.cpp:205
 #, kde-format
 msgid "Host"
 msgstr "Хост"
 
-#: smb4k/smb4ktooltip.cpp:262 smb4k/smb4ktooltip.cpp:306
+#: smb4k/smb4ktooltip.cpp:209 smb4k/smb4ktooltip.cpp:227
 #, fuzzy, kde-format
 msgid "Comment:"
 msgstr "Коментар"
 
-#: smb4k/smb4ktooltip.cpp:274 smb4k/smb4ktooltip.cpp:348
+#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-адрес:"
 
-#: smb4k/smb4ktooltip.cpp:286
+#: smb4k/smb4ktooltip.cpp:216
 #, kde-format
 msgid "Workgroup:"
 msgstr "Работна група:"
 
-#: smb4k/smb4ktooltip.cpp:303
+#: smb4k/smb4ktooltip.cpp:223
 #, kde-format
 msgid "Share (%1)"
 msgstr "Ресурс (%1)"
 
-#: smb4k/smb4ktooltip.cpp:318
+#: smb4k/smb4ktooltip.cpp:231
 #, fuzzy, kde-format
 msgid "Mounted:"
 msgstr "Монтирано"
 
-#: smb4k/smb4ktooltip.cpp:337
+#: smb4k/smb4ktooltip.cpp:240
 #, fuzzy, kde-format
 msgid "Host:"
 msgstr "Хост"
 
-#: smb4k/smb4ktooltip.cpp:360 smb4k/smb4ktooltip.cpp:440
+#: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, fuzzy, kde-format
 msgid "Location:"
 msgstr "Ограничения"
 
-#: smb4k/smb4ktooltip.cpp:395 smb4k/smb4ktooltip.cpp:402
-#: smb4k/smb4ktooltip.cpp:467 smb4k/smb4ktooltip.cpp:479
-#: smb4k/smb4ktooltip.cpp:480 smb4k/smb4ktooltip.cpp:509
+#: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
+#: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
+#: smb4k/smb4ktooltip.cpp:311 smb4k/smb4ktooltip.cpp:324
 #, kde-format
 msgid "unknown"
 msgstr "непознато"
 
-#: smb4k/smb4ktooltip.cpp:400 smb4k/smb4ktooltip.cpp:507
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:322
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:451
+#: smb4k/smb4ktooltip.cpp:304
 #, fuzzy, kde-format
 msgid "Mountpoint:"
 msgstr "Точка на монтиране"
 
-#: smb4k/smb4ktooltip.cpp:462
+#: smb4k/smb4ktooltip.cpp:308
 #, fuzzy, kde-format
 msgid "Username:"
 msgstr "Потребител:"
 
-#: smb4k/smb4ktooltip.cpp:474
+#: smb4k/smb4ktooltip.cpp:314
 #, fuzzy, kde-format
 msgid "Owner:"
 msgstr "Собственик"
 
-#: smb4k/smb4ktooltip.cpp:488
+#: smb4k/smb4ktooltip.cpp:317
 #, fuzzy, kde-format
 msgid "File system:"
 msgstr "Файлова система"
 
-#: smb4k/smb4ktooltip.cpp:499
+#: smb4k/smb4ktooltip.cpp:329
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "Размер"

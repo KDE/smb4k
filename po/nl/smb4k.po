@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-29 00:47+0000\n"
+"POT-Creation-Date: 2022-10-30 00:46+0000\n"
 "PO-Revision-Date: 2022-07-09 11:29+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -804,104 +804,104 @@ msgstr ""
 "<qt>Er is geen actieve verbinding naar de share <b>%1</b>! U kunt hier geen "
 "bestanden laten vallen.</qt>"
 
-#: smb4k/smb4ktooltip.cpp:170 smb4k/smb4ktooltip.cpp:326
+#: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
 msgid "yes"
 msgstr "ja"
 
-#: smb4k/smb4ktooltip.cpp:170 smb4k/smb4ktooltip.cpp:326
+#: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
 msgid "no"
 msgstr "nee"
 
-#: smb4k/smb4ktooltip.cpp:213
+#: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "Type:"
 msgstr "Type:"
 
-#: smb4k/smb4ktooltip.cpp:228
+#: smb4k/smb4ktooltip.cpp:184
 #, kde-format
 msgid "Workgroup"
 msgstr "Werkgroep"
 
-#: smb4k/smb4ktooltip.cpp:231
+#: smb4k/smb4ktooltip.cpp:188
 #, kde-format
 msgid "Master Browser:"
 msgstr "Hoofdbrowser:"
 
-#: smb4k/smb4ktooltip.cpp:259
+#: smb4k/smb4ktooltip.cpp:205
 #, kde-format
 msgid "Host"
 msgstr "Host"
 
-#: smb4k/smb4ktooltip.cpp:262 smb4k/smb4ktooltip.cpp:306
+#: smb4k/smb4ktooltip.cpp:209 smb4k/smb4ktooltip.cpp:227
 #, kde-format
 msgid "Comment:"
 msgstr "Opmerking:"
 
-#: smb4k/smb4ktooltip.cpp:274 smb4k/smb4ktooltip.cpp:348
+#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "IP Adres:"
 
-#: smb4k/smb4ktooltip.cpp:286
+#: smb4k/smb4ktooltip.cpp:216
 #, kde-format
 msgid "Workgroup:"
 msgstr "Werkgroep:"
 
-#: smb4k/smb4ktooltip.cpp:303
+#: smb4k/smb4ktooltip.cpp:223
 #, kde-format
 msgid "Share (%1)"
 msgstr "Share (%1)"
 
-#: smb4k/smb4ktooltip.cpp:318
+#: smb4k/smb4ktooltip.cpp:231
 #, kde-format
 msgid "Mounted:"
 msgstr "Aangekoppeld:"
 
-#: smb4k/smb4ktooltip.cpp:337
+#: smb4k/smb4ktooltip.cpp:240
 #, kde-format
 msgid "Host:"
 msgstr "Host:"
 
-#: smb4k/smb4ktooltip.cpp:360 smb4k/smb4ktooltip.cpp:440
+#: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, kde-format
 msgid "Location:"
 msgstr "Locatie:"
 
-#: smb4k/smb4ktooltip.cpp:395 smb4k/smb4ktooltip.cpp:402
-#: smb4k/smb4ktooltip.cpp:467 smb4k/smb4ktooltip.cpp:479
-#: smb4k/smb4ktooltip.cpp:480 smb4k/smb4ktooltip.cpp:509
+#: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
+#: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
+#: smb4k/smb4ktooltip.cpp:311 smb4k/smb4ktooltip.cpp:324
 #, kde-format
 msgid "unknown"
 msgstr "onbekend"
 
-#: smb4k/smb4ktooltip.cpp:400 smb4k/smb4ktooltip.cpp:507
+#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:322
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
 msgstr "%1 vrij uit %2 (%3 gebruikt)"
 
-#: smb4k/smb4ktooltip.cpp:451
+#: smb4k/smb4ktooltip.cpp:304
 #, kde-format
 msgid "Mountpoint:"
 msgstr "Aankoppelpunt:"
 
-#: smb4k/smb4ktooltip.cpp:462
+#: smb4k/smb4ktooltip.cpp:308
 #, kde-format
 msgid "Username:"
 msgstr "Gebruikersnaam:"
 
-#: smb4k/smb4ktooltip.cpp:474
+#: smb4k/smb4ktooltip.cpp:314
 #, kde-format
 msgid "Owner:"
 msgstr "Eigenaar:"
 
-#: smb4k/smb4ktooltip.cpp:488
+#: smb4k/smb4ktooltip.cpp:317
 #, kde-format
 msgid "File system:"
 msgstr "Bestandssysteem:"
 
-#: smb4k/smb4ktooltip.cpp:499
+#: smb4k/smb4ktooltip.cpp:329
 #, kde-format
 msgid "Size:"
 msgstr "Grootte:"
