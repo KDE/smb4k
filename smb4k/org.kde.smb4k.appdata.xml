@@ -24,6 +24,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="gl">Smb4K</name>
   <name xml:lang="ia">Smb4K</name>
   <name xml:lang="id">Smb4K</name>
+  <name xml:lang="ie">Smb4K</name>
   <name xml:lang="it">Smb4K</name>
   <name xml:lang="ko">Smb4K</name>
   <name xml:lang="nds">Smb4K</name>
@@ -143,6 +144,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
+    <p xml:lang="ie">Caracteristicas:</p>
     <p xml:lang="it">Funzionalità:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nds">Markmalen:</p>
@@ -204,6 +206,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
       <li xml:lang="id">Dukungan sistem file CIFS (Linux) dan SMBFS (FreeBSD)</li>
+      <li xml:lang="ie">Supporte del sistemas de files CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="it">Supporto dei file system CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="ko">CIFS(리눅스) 및 SMBFS(FreeBSD) 파일 시스템 지원</li>
       <li xml:lang="nds">Ünnerstütt dat CIFS- (op Linux) un SMBFS-Dateisysteem (op FreeBSD)</li>
@@ -234,6 +237,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Montage et démontage des partages</li>
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
       <li xml:lang="id">Pengaitan dan pelepaskaitan berbagi</li>
+      <li xml:lang="ie">Montage e demontage de partites</li>
       <li xml:lang="it">Montaggio e smontaggio delle condivisioni</li>
       <li xml:lang="ko">공유 마운트 및 마운트 해제</li>
       <li xml:lang="nds">Freegaven in- un uthangen</li>
@@ -386,6 +390,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Recherche sur le réseau</li>
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
       <li xml:lang="id">Pencarian jaringan</li>
+      <li xml:lang="ie">Sercha in li rete</li>
       <li xml:lang="it">Ricerca in rete</li>
       <li xml:lang="ko">네트워크 검색</li>
       <li xml:lang="nds">Nettwarksöök</li>
@@ -628,6 +633,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge de KWallet</li>
       <li xml:lang="gl">Compatibilidade con KWallet.</li>
       <li xml:lang="id">Dukungan KWallet</li>
+      <li xml:lang="ie">Supporte de KWallet</li>
       <li xml:lang="it">Supporto a KWallet</li>
       <li xml:lang="ko">KWallet 지원</li>
       <li xml:lang="nds">KWallet-Ünnerstütten</li>
@@ -872,6 +878,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal</caption>
       <caption xml:lang="id">Jendela utama</caption>
+      <caption xml:lang="ie">Li fenestre principal</caption>
       <caption xml:lang="it">La finestra principale</caption>
       <caption xml:lang="ko">주 창</caption>
       <caption xml:lang="nds">Dat Hööftfinster</caption>
@@ -906,6 +913,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O plasmoide</caption>
       <caption xml:lang="id">Plasmoid</caption>
+      <caption xml:lang="ie">Li plasmoid</caption>
       <caption xml:lang="it">Il plasmoide</caption>
       <caption xml:lang="ko">Plasmoid</caption>
       <caption xml:lang="nds">Dat Plasma-Lüttprogramm</caption>
