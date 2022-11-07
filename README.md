@@ -1,6 +1,6 @@
 Smb4K README
 ============
-Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5, Samba's client library libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system. It is released under the terms of the [GNU General Public License, version 2 (GPL v2+)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
+Smb4K is an advanced network neighborhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5, Samba's client library (libsmbclient) and, optionally, the KDSoap WS-Discovery client. It scans your network neighborhood for all available workgroups, servers and shares and can mount all desired shares to your local file system. It is released under the terms of the [GNU General Public License, version 2 (GPL v2+)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
 
 Linux, FreeBSD and its derivatives (e. g. GhostBSD), NetBSD and DragonFly BSD are officially supported.
 
