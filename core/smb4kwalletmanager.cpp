@@ -214,7 +214,7 @@ bool Smb4KWalletManager::showPasswordDialog(const NetworkItemPtr &networkItem)
                     //
                     // Create a temp share
                     //
-                    SharePtr tempShare = share;
+                    SharePtr tempShare = SharePtr(new Smb4KShare(*share.data()));
 
                     //
                     // Set the login
