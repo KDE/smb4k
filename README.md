@@ -45,9 +45,9 @@ Smb4K officially supports Linux, FreeBSD and its derivatives (e. g. GhostBSD), N
 Requirements
 ------------
 To compile Smb4K, you need:
-- CMake (version >= 3.2, https://www.cmake.org)
+- CMake (version >= 3.16, https://www.cmake.org)
 - GNU Compiler Collection (version >= 5.0, https://gcc.gnu.org)
-  or clang/LLVM (version >= 3.0, https://clang.llvm.org)
+  or clang/LLVM (version >= 3.3, https://clang.llvm.org)
 
 Smb4K build depends on:
 - Qt (version >= 5.14, https://www.qt.io): QtCore, QtGui, QtWidgets, 
@@ -155,8 +155,7 @@ You are strongly encouraged to commit a bug report to out [bug tracker](https://
 
 Copyright
 ---------
-Smb4K is released under the terms of the GNU General Public License (GPL),
-version 2. A copy of the license is available in the file COPYING.
+Smb4K is released under the terms of the [GNU General Public License (GPL), version 2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html). A copy of the license is available in the file COPYING.
 
 
 Latest Version
