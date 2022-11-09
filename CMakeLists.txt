@@ -80,7 +80,6 @@ find_package(Qt5Gui ${QT_MIN_VERSION} REQUIRED)
 find_package(Qt5Network ${QT_MIN_VERSION} REQUIRED)
 find_package(Qt5PrintSupport ${QT_MIN_VERSION} REQUIRED)
 find_package(Qt5Qml ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt5Test ${QT_MIN_VERSION} REQUIRED)
 find_package(Qt5Widgets ${QT_MIN_VERSION} REQUIRED)
 
 # KF5 modules

@@ -67,7 +67,6 @@ target_link_libraries(smb4kcore
   Qt5::Core
   Qt5::Widgets
   Qt5::Gui
-  Qt5::Test
   Qt5::PrintSupport
   Qt5::Network
   Qt5::Qml

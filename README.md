@@ -51,7 +51,7 @@ To compile Smb4K, you need:
 
 Smb4K build depends on:
 - Qt (version >= 5.14, https://www.qt.io): QtCore, QtGui, QtWidgets, 
-  QtTest, QtNetwork, QtPrintSupport, QtQml
+  QtNetwork, QtPrintSupport, QtQml
 - KDE Frameworks 5 (KF5, version >= 5.80.0, https://www.kde.org): ECM, 
   KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, 
   KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, 
