@@ -87,6 +87,11 @@ target_link_libraries(smb4kcore
   KF5::XmlGui
   KF5::DNSSD
   ${LIBSMBCLIENT_LIBRARIES})
+    
+#
+# KI18N Translation Domain for library
+#
+add_definitions(-DTRANSLATION_DOMAIN=\"smb4k-core\")
 
 install(TARGETS smb4kcore DESTINATION ${KDE_INSTALL_LIBDIR})
 

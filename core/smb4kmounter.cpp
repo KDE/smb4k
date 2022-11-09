@@ -39,7 +39,6 @@
 #include <QUdpSocket>
 
 // KDE includes
-#define TRANSLATION_DOMAIN "smb4k-core"
 #include <KAuth/KAuthExecuteJob>
 #include <KCoreAddons/KShell>
 #include <KCoreAddons/KUser>

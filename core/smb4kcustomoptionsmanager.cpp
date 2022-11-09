@@ -31,7 +31,6 @@
 #include <QXmlStreamWriter>
 
 // KDE includes
-#define TRANSLATION_DOMAIN "smb4k-core"
 #include <KI18n/KLocalizedString>
 
 using namespace Smb4KGlobal;

@@ -24,7 +24,6 @@
 #include <QWindow>
 
 // KDE includes
-#define TRANSLATION_DOMAIN "smb4k-core"
 #include <KCompletion/KLineEdit>
 #include <KConfigGui/KWindowConfig>
 #include <KI18n/KLocalizedString>

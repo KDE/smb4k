@@ -15,7 +15,6 @@
 #include "smb4kworkgroup.h"
 
 // KDE includes
-#define TRANSLATION_DOMAIN "smb4k-core"
 #include "kiconthemes_version.h"
 #include <KAuth/KAuthActionReply>
 #include <KI18n/KLocalizedString>

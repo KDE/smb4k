@@ -14,7 +14,6 @@
 #include <QUrl>
 
 // KDE includes
-#define TRANSLATION_DOMAIN "smb4k-core"
 #include "kiconthemes_version.h"
 #include <KI18n/KLocalizedString>
 #include <KIOCore/KIO/Global>
