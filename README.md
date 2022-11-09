@@ -57,7 +57,7 @@ Smb4K build depends on:
   KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, 
   KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem,
   KCrash, KDNSSD
-- libsmbclient
+- libsmbclient (version >= 4.10.0, https://www.samba.org)
 
 If you would like to enable WS-Discovery support, you additionally need
 (see also below for required build option):
