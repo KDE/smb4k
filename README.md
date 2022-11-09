@@ -8,7 +8,7 @@ Linux, FreeBSD and its derivatives (e. g. GhostBSD), NetBSD and DragonFly BSD ar
 Features
 --------
 - Scanning for (active) workgroups, hosts, and shares
-- Support of the CIFS (Linux®) and SMBFS (FreeBSD) file system
+- Support of the CIFS and SMB3 file system under Linux® as well as the SMBFS file system under FreeBSD®
 - Mounting and unmounting of shares
 - Access to the files of a mounted share using a file manager or terminal
 - Auto-detection of external mounts and unmounts
