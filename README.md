@@ -150,7 +150,7 @@ forums.
 
 Bugs
 ----
-You are strongly encouraged to commit a bug report to out [bug tracker](https://bugs.kde.org/enter_bug.cgi?product=Smb4k&format=guided), if you find a problem.
+You are strongly encouraged to commit a bug report to our [bug tracker](https://bugs.kde.org/enter_bug.cgi?product=Smb4k&format=guided), if you find a problem.
 
 
 Copyright
