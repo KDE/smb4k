@@ -429,15 +429,6 @@ public:
     int port() const;
 
     /**
-     * Set the authentication information for the share. This function will add
-     * the authentication information to the URL of the share. Any previous
-     * user information including the login will be overwritten.
-     *
-     * @param authInfo    The authentication information
-     */
-    SMB4K_DEPRECATED void setAuthInfo(Smb4KAuthInfo *authInfo);
-
-    /**
      * Set the user name for the share.
      *
      * @param name              The user name
