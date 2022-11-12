@@ -7,15 +7,15 @@ Linux, FreeBSD and its derivatives (e. g. GhostBSD), NetBSD and DragonFly BSD ar
 
 Features
 --------
-- Scanning for (active) workgroups, hosts, and shares
-- Support of the CIFS and SMB3 file system under Linux® as well as the SMBFS file system under FreeBSD®
+- Scanning for (active) workgroups, hosts, and shares using Samba's client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)
+- Support of the CIFS and SMB3 file system under Linux® as well as the SMBFS file system under BSD
 - Mounting and unmounting of shares
 - Access to the files of a mounted share using a file manager or terminal
 - Auto-detection of external mounts and unmounts
 - Remounting of previously used shares on program start
 - Miscellaneous infos about remote network items and mounted shares
 - Network search
-- Preview of the contents of a share
+- Preview of the contents of a remote share
 - Default login
 - Special handling of homes shares
 - Ability to bookmark favorite shares
@@ -25,12 +25,10 @@ Features
 - KWallet support
 - Synchronization of a remote share with a local copy and vice versa
 - Ability to define custom options for individual servers and shares
-- Hardware support through the Solid device integration framework, the KDBusAddons 
-  convenience classes and the Qt Network module
+- Hardware support through the Solid device integration framework, the KDBusAddons convenience classes and the Qt Network module
 - Wake-On-LAN capabilities
 - Plasmoid for desktop integration
 - Profiles for different network neighborhood setups
-
 
 Translations
 ------------
