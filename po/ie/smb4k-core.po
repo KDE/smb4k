@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-10 00:46+0000\n"
-"PO-Revision-Date: 2022-11-01 11:13+0700\n"
+"PO-Revision-Date: 2022-11-10 12:52+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
 "Language: ie\n"
@@ -157,7 +157,7 @@ msgstr ""
 #: smb4k.kcfg:72
 #, fuzzy, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr "Monstrar information de icones. Dimension:"
+msgstr "Null partites es montet actualmen."
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:73
@@ -374,7 +374,7 @@ msgstr ""
 #: smb4k.kcfg:179
 #, fuzzy, kde-format
 msgid "This computer is on a large network neighborhood"
-msgstr "Computator de rete (cliente)"
+msgstr "Avansat navigator de vicinitá del rete"
 
 #. i18n: ectx: whatsthis, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:180
@@ -403,9 +403,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:189
-#, fuzzy, kde-format
+#, kde-format
 msgid "Use Kerberos for authentication"
-msgstr "Autentication de Kerberos 5"
+msgstr "Usar li autentication de Kerberos"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:190
@@ -448,15 +448,15 @@ msgstr "Necú"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:210
-#, fuzzy, kde-format
+#, kde-format
 msgid "Request"
-msgstr "Demande de acuplation por aparate:"
+msgstr "Demandar"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:213
-#, fuzzy, kde-format
+#, kde-format
 msgid "Require"
-msgstr "Ne besonar confirmation"
+msgstr "Besonar"
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
 #: smb4k.kcfg:219
@@ -479,7 +479,7 @@ msgstr ""
 #: smb4k.kcfg:224
 #, fuzzy, kde-format
 msgid "Detect printer shares"
-msgstr "Remonter li partites"
+msgstr "Printator:"
 
 #. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
 #: smb4k.kcfg:225
@@ -505,7 +505,7 @@ msgstr ""
 #: smb4k.kcfg:234
 #, fuzzy, kde-format
 msgid "Enable Wake-On-LAN features"
-msgstr "Ne successat activar li functiones de accessibilitá de mus"
+msgstr "Wake-On-LAN"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
@@ -637,7 +637,7 @@ msgstr ""
 #: smb4k.kcfg:294
 #, fuzzy, kde-format
 msgid "Use relative path names"
-msgstr "Usar relativ rutes de tracks"
+msgstr "Relativ rute"
 
 #. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
 #: smb4k.kcfg:295
@@ -650,9 +650,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
 #: smb4k.kcfg:299
-#, kde-format
+#, fuzzy, kde-format
 msgid "Do not send implied directories"
-msgstr ""
+msgstr "Ne inviar"
 
 #. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
 #: smb4k.kcfg:300
@@ -740,9 +740,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
 #: smb4k.kcfg:337
-#, fuzzy, kde-format
+#, kde-format
 msgid "Preserve symlinks"
-msgstr "Preservar paragrafes"
+msgstr "Preservar sim. ligamentes"
 
 #. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
 #: smb4k.kcfg:338
@@ -896,7 +896,7 @@ msgstr ""
 #: smb4k.kcfg:387
 #, fuzzy, kde-format
 msgid "Preserve owner"
-msgstr "Possessor"
+msgstr "Possessor:"
 
 #. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
 #: smb4k.kcfg:388
@@ -912,7 +912,7 @@ msgstr ""
 #: smb4k.kcfg:392
 #, fuzzy, kde-format
 msgid "Preserve device and special files"
-msgstr "Inviar files a ti-ci aparate"
+msgstr "Special files (Socketes, Files de aparate, ...)"
 
 #. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
 #: smb4k.kcfg:393
@@ -1191,7 +1191,7 @@ msgstr ""
 #: smb4k.kcfg:500
 #, fuzzy, kde-format
 msgid "Exclude files matching this pattern:"
-msgstr "Selecter elementes in ti-ci fenestre que corresponde a un mustre"
+msgstr "Selecter omni quel corresponde a ti mustre:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
 #: smb4k.kcfg:501
@@ -1234,7 +1234,7 @@ msgstr ""
 #: smb4k.kcfg:520
 #, fuzzy, kde-format
 msgid "Include files matching this pattern:"
-msgstr "Selecter elementes in ti-ci fenestre que corresponde a un mustre"
+msgstr "Includer _files:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
 #: smb4k.kcfg:521
@@ -1277,7 +1277,7 @@ msgstr ""
 #: smb4k.kcfg:540
 #, fuzzy, kde-format
 msgid "Custom filter rules:"
-msgstr "Regules at"
+msgstr "Regules de filtre"
 
 #. i18n: ectx: whatsthis, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:541
@@ -1610,12 +1610,12 @@ msgstr ""
 #: smb4kshare.cpp:162 smb4kshare.cpp:165
 #, fuzzy, kde-format
 msgid "%1 on %2"
-msgstr "%1 ex %2"
+msgstr "%1 a %2"
 
 #: smb4kbookmarkhandler.cpp:335 smb4kcustomoptionsmanager.cpp:267
 #, fuzzy, kde-format
 msgid "The format of %1 is not supported."
-msgstr "EXIF es ínsuportat por ti-ci formate de file"
+msgstr "Formate de %1"
 
 #: smb4kbookmarkhandler_p.cpp:45
 #, kde-format
@@ -1735,7 +1735,7 @@ msgstr "Dominia:"
 #: smb4kclient_p.cpp:2361
 #, fuzzy, kde-format
 msgid "File and Settings"
-msgstr "Parametres de Gerente de files"
+msgstr "Configurar li parametres del gerente de files"
 
 #: smb4kclient_p.cpp:2365
 #, kde-format
@@ -1792,32 +1792,32 @@ msgstr "null optiones"
 #: smb4kcustomoptionsmanager_p.cpp:171 smb4kcustomoptionsmanager_p.cpp:620
 #, fuzzy, kde-format
 msgid "Always remount this share"
-msgstr "Partir"
+msgstr "Remonter li partites"
 
 #: smb4kcustomoptionsmanager_p.cpp:217
-#, kde-format
+#, fuzzy, kde-format
 msgid "CIFS Unix Extensions Support"
-msgstr ""
+msgstr "Supporte de extensiones Unix de CIFS"
 
 #: smb4kcustomoptionsmanager_p.cpp:220
-#, kde-format
+#, fuzzy, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "Supporte de extensiones Unix de CIFS"
 
 #: smb4kcustomoptionsmanager_p.cpp:299
 #, fuzzy, kde-format
 msgid "Common Mount Settings"
-msgstr "Comun"
+msgstr "Parametres de montage"
 
 #: smb4kcustomoptionsmanager_p.cpp:310
 #, fuzzy, kde-format
 msgid "Advanced Options"
-msgstr "Optiones avansat"
+msgstr "Parametres avansat"
 
 #: smb4kcustomoptionsmanager_p.cpp:354
 #, fuzzy, kde-format
 msgid "Advanced Mount Settings"
-msgstr "Avansat parametres"
+msgstr "Parametres de montage"
 
 #: smb4kcustomoptionsmanager_p.cpp:432 smb4kcustomoptionsmanager_p.cpp:776
 #: smb4kcustomoptionsmanager_p.cpp:1001
@@ -1828,7 +1828,7 @@ msgstr "Autentication"
 #: smb4kcustomoptionsmanager_p.cpp:446 smb4kcustomoptionsmanager_p.cpp:790
 #, fuzzy, kde-format
 msgid "Browse Settings"
-msgstr "&Trovar..."
+msgstr "_Trovar..."
 
 #: smb4kcustomoptionsmanager_p.cpp:460 smb4kcustomoptionsmanager_p.cpp:804
 #: smb4kcustomoptionsmanager_p.cpp:1029
@@ -1863,12 +1863,12 @@ msgstr ""
 #: smb4kcustomoptionsmanager_p.cpp:504 smb4kcustomoptionsmanager_p.cpp:848
 #, fuzzy, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Lin_gues de provisor:"
+msgstr "Wake-On-LAN"
 
 #: smb4kcustomoptionsmanager_p.cpp:698
 #, fuzzy, kde-format
 msgid "Mount Settings"
-msgstr "_Montar"
+msgstr "Parametres de montage"
 
 #: smb4kcustomoptionsmanager_p.cpp:1015
 #, kde-format
@@ -1878,7 +1878,7 @@ msgstr "Samba"
 #: smb4kcustomoptionsmanager_p.cpp:1073
 #, fuzzy, kde-format
 msgid "Wake-On-LAN"
-msgstr "Lin_gues de provisor:"
+msgstr "Wake-On-LAN"
 
 #: smb4khomesshareshandler.cpp:128
 #, fuzzy, kde-format
@@ -1888,7 +1888,7 @@ msgstr "Nov version: %1"
 #: smb4khomesshareshandler_p.cpp:124
 #, fuzzy, kde-format
 msgid "Specify User"
-msgstr "Usator:"
+msgstr "Usator"
 
 #: smb4khomesshareshandler_p.cpp:172
 #, kde-format
@@ -1962,7 +1962,7 @@ msgstr ""
 #: smb4kmounter_p.cpp:180
 #, fuzzy, kde-format
 msgid "Add this share to the bookmarks"
-msgstr "Adjunter marca-págines"
+msgstr "Adjunter a marca-págines"
 
 #: smb4kmounter_p.cpp:183
 #, kde-format
@@ -1992,7 +1992,7 @@ msgstr "Marcar >>"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
-#, fuzzy, kde-format
+#, kde-format
 msgid "User ID:"
 msgstr "ID de usator:"
 
@@ -2007,7 +2007,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseGroupId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:21 smb4kmountsettings_linux.kcfg:26
-#, fuzzy, kde-format
+#, kde-format
 msgid "Group ID:"
 msgstr "ID de gruppe:"
 
@@ -2421,7 +2421,7 @@ msgstr "unicode"
 #: smb4kmountsettings_bsd.kcfg:235 smb4kmountsettings_linux.kcfg:294
 #, fuzzy, kde-format
 msgid "Mount prefix:"
-msgstr "Monter"
+msgstr "&Monter"
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:295
@@ -2447,9 +2447,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:245 smb4kmountsettings_linux.kcfg:304
-#, kde-format
+#, fuzzy, kde-format
 msgid "Unmount all personal shares on exit"
-msgstr ""
+msgstr "Demonter omni partites"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:305
@@ -2518,9 +2518,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:333
-#, kde-format
+#, fuzzy, kde-format
 msgid "Force the unmounting of inaccessible shares"
-msgstr ""
+msgstr "Montage e demontage de partites"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:334
@@ -2619,7 +2619,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:53
 #, fuzzy, kde-format
 msgid "File system port:"
-msgstr "Portu:"
+msgstr "portu:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
 #. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
@@ -3047,9 +3047,11 @@ msgstr ""
 "tt></p>"
 
 #: smb4knotification.cpp:176
-#, kde-format
+#, fuzzy, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr ""
+"<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>%3</"
+"tt></p>"
 
 #: smb4knotification.cpp:193
 #, kde-format
@@ -3059,9 +3061,11 @@ msgid ""
 msgstr ""
 
 #: smb4knotification.cpp:208
-#, kde-format
+#, fuzzy, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
+"<p>Demontage del partite <b>%1</b> de <b>%2</b> ne successat:</p><p><tt>%3</"
+"tt></p>"
 
 #: smb4knotification.cpp:210
 #, fuzzy, kde-format
@@ -3081,9 +3085,9 @@ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 
 #: smb4knotification.cpp:240
-#, kde-format
+#, fuzzy, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
-msgstr ""
+msgstr "<p>Li file XML ne contenet un tag <b>%1</b>.</p>"
 
 #: smb4knotification.cpp:250
 #, kde-format
@@ -3091,9 +3095,9 @@ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 
 #: smb4knotification.cpp:252
-#, kde-format
+#, fuzzy, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
-msgstr ""
+msgstr "<p>Li file XML ne contenet un tag <b>%1</b>.</p>"
 
 #: smb4knotification.cpp:266 smb4knotification.cpp:269
 #, kde-format
@@ -3210,9 +3214,9 @@ msgid "IPC"
 msgstr "IPC"
 
 #: smb4ksynchronizer_p.cpp:410 smb4ksynchronizer_p.cpp:500
-#, kde-format
+#, fuzzy, kde-format
 msgid "Synchronizing"
-msgstr ""
+msgstr "Sincronisation de %1"
 
 #: smb4ksynchronizer_p.cpp:410 smb4ksynchronizer_p.cpp:500
 #, kde-format

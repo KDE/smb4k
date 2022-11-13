@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-30 00:46+0000\n"
-"PO-Revision-Date: 2022-11-01 11:29+0700\n"
+"PO-Revision-Date: 2022-11-10 12:50+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
 "Language: ie\n"
@@ -29,19 +29,19 @@ msgid "Your emails"
 msgstr "mistresssilvara@hotmail.com"
 
 #: helpers/smb4kmounthelper.cpp:135
-#, fuzzy, kde-format
+#, kde-format
 msgid "The mount process could not be started."
-msgstr "Largore del columne \"Startat\" de processu"
+msgstr "Li processu de montage ne posset esser lansat."
 
 #: helpers/smb4kmounthelper.cpp:179
-#, fuzzy, kde-format
+#, kde-format
 msgid "The mountpoint %1 is invalid."
-msgstr "Punctu de montage:"
+msgstr "Li punctu de montage %1 es ínvalid."
 
 #: helpers/smb4kmounthelper.cpp:241
-#, fuzzy, kde-format
+#, kde-format
 msgid "The unmount process could not be started."
-msgstr "Monstrar li columne \"Startat\" de processu"
+msgstr "Li processu de demontage ne posset esser lansat."
 
 #: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
@@ -120,16 +120,16 @@ msgid "Bookmarks"
 msgstr "Marca-págines"
 
 #: smb4k/smb4kbookmarkmenu.cpp:49
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Edit Bookmarks"
-msgstr "_Modificar marca-págines"
+msgstr "&Modificar marca-págines"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:198
-#, fuzzy, kde-format
+#, kde-format
 msgid "Add &Bookmark"
-msgstr "Adjuncter un marca-págine…"
+msgstr "&Adjuncter un marca-págine"
 
 #: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
 #, kde-format
@@ -191,7 +191,7 @@ msgid "Wallet Entries"
 msgstr "porta-papere de KWallet"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:97
-#, fuzzy, kde-format
+#, kde-format
 msgid "Load"
 msgstr "Cargar"
 
@@ -202,9 +202,9 @@ msgstr "Gardar"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
-#, fuzzy, kde-format
+#, kde-format
 msgid "Edit"
-msgstr "_Modificar"
+msgstr "Modificar"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
@@ -273,9 +273,9 @@ msgstr " min"
 #: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:568
 #: smb4k/smb4kconfigpagenetwork.cpp:133
 #: smb4k/smb4kconfigpagesynchronization.cpp:131
-#, fuzzy, kde-format
+#, kde-format
 msgid "Basic Settings"
-msgstr "_Basic"
+msgstr "Basic parametres"
 
 #: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
 #, fuzzy, kde-format
@@ -288,14 +288,14 @@ msgid "CIFS Unix Extensions Support"
 msgstr "Supporte de extensiones Unix de CIFS"
 
 #: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
-#, fuzzy, kde-format
+#, kde-format
 msgid "Choose a different user"
-msgstr "Lansar quam un altri usator"
+msgstr "Selecter un altri usator"
 
 #: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
-#, fuzzy, kde-format
+#, kde-format
 msgid "Choose a different group"
-msgstr "Selecte un different nómine"
+msgstr "Selecter un altri gruppe"
 
 #: smb4k/smb4kconfigpagemounting.cpp:336
 #, fuzzy, kde-format
@@ -323,14 +323,14 @@ msgid "Character Sets"
 msgstr "Codificationes de caracteres"
 
 #: smb4k/smb4kconfigpagemounting.cpp:729
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mount Settings"
-msgstr "&Monter"
+msgstr "Parametres de montage"
 
 #: smb4k/smb4kconfigpagemounting.cpp:833
-#, fuzzy, kde-format
+#, kde-format
 msgid "Additional CIFS Options"
-msgstr "Monstrar additional criteries"
+msgstr "Additional parametres de CIFS"
 
 #: smb4k/smb4kconfigpagemounting.cpp:834
 #, kde-format
@@ -359,14 +359,14 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "Lin_gues de provisor:"
+msgstr "Wake-On-LAN"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
-#, fuzzy, kde-format
+#, kde-format
 msgid " s"
-msgstr "\"%s\""
+msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, kde-format
@@ -399,9 +399,9 @@ msgid "Links"
 msgstr "Ligamentes"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:223
-#, fuzzy, kde-format
+#, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Possessor"
+msgstr "Atributes e possession de files"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:259
 #, fuzzy, kde-format
@@ -445,9 +445,9 @@ msgid "Restrictions"
 msgstr "Restrictiones"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:432
-#, fuzzy, kde-format
+#, kde-format
 msgid "File Deletion"
-msgstr "Deletion"
+msgstr "Remotion de files"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:441
 #, fuzzy, kde-format
@@ -601,9 +601,9 @@ msgid "%1 has been unmounted successfully."
 msgstr "%s esset installat successosi"
 
 #: smb4k/smb4kmainwindow.cpp:850
-#, fuzzy, kde-format
+#, kde-format
 msgid "Synchronizing %1"
-msgstr "== %1 =="
+msgstr "Sincronisation de %1"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -770,9 +770,9 @@ msgid "Open with Konso&le"
 msgstr "Aperter per Konso&le"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:213
-#, fuzzy, kde-format
+#, kde-format
 msgid "Open with F&ile Manager"
-msgstr "F&ile"
+msgstr "Aperter per li gerente de f&iles"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:371
 #, kde-format
@@ -780,6 +780,8 @@ msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
 "any files here.</qt>"
 msgstr ""
+"<qt>Hay null activ conexiones al partite <b>%1</b>! On ne posse far cader "
+"files ci.</qt>"
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
