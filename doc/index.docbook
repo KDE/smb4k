@@ -7,6 +7,7 @@
   <!-- Entities for use with "older" KF5 versions (before May 2018) -->
   <!-- FIXME: Can we only include these if needed?                  -->
   <!ENTITY CIFS "<acronym>CIFS</acronym>">
+  <!ENTITY SMB3 "<acronym>SMB3</acronym>">
   <!ENTITY Samba "<application>Samba</application>">
   <!ENTITY solid "<application>Solid</application>">
   <!ENTITY kdbusaddons "<application>KDBusAddons</application>">
@@ -30,12 +31,12 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
   </authorgroup>
   <copyright>
-    <year>2005-2021</year>
+    <year>2005-2022</year>
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
   <date>2021-03-30</date>
-  <releaseinfo>&smb4k; 3.1.0</releaseinfo><!--FIXME change releaseinfo number-->
+  <releaseinfo>&smb4k; 3.2.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and &Samba; share mounting utility.</para>
   </abstract>
@@ -53,12 +54,12 @@
 <chapter id="introduction" >
   <title>Introduction</title>
 
-  <para>This handbook describes &smb4k; 3.1.x and to some extent earlier versions.</para>
+  <para>This handbook describes &smb4k; 3.2 and to some extent earlier versions.</para>
   <para>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org">Samba</ulink> share mounting utility. It provides many handy features that ease your life in a &Windows;-dominated network environment:</para>
 
   <itemizedlist>
     <listitem><para>Scanning for (active) workgroups, hosts, and shares using &Samba;'s client library, DNS Service Discovery (DNS-SD) and, optionally, Web Services Dynamic Discovery (WS-Discovery)</para></listitem>
-    <listitem><para>Support of the &CIFS; (&Linux;) and SMBFS (BSD) file system</para></listitem>
+    <listitem><para>Support of the &CIFS; and &SMB3; file system under &Linux; as well as the SMBFS file system under BSD</para></listitem>
     <listitem><para>Mounting and unmounting of shares</para></listitem>
     <listitem><para>Access to the files of a mounted share using a file manager or terminal</para></listitem>
     <listitem><para>Auto-detection of external mounts and unmounts</para></listitem>
