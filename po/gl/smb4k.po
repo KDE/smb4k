@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:46+0000\n"
+"POT-Creation-Date: 2022-11-15 00:46+0000\n"
 "PO-Revision-Date: 2019-10-19 22:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -535,7 +535,7 @@ msgstr "Trebellos acoplábeis"
 msgid "Mounted Shares"
 msgstr "Comparticións montadas"
 
-#: smb4k/smb4kmainwindow.cpp:400
+#: smb4k/smb4kmainwindow.cpp:402
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Closing the main window will keep Smb4K running in the system tray. "
@@ -547,100 +547,100 @@ msgstr ""
 "<qt>Se pecha a xanela principal, Smb4K seguirá a executarse na área de "
 "notificación. Use o menú <i>Ficheiro → Saír</i> para saír da aplicación.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:402
+#: smb4k/smb4kmainwindow.cpp:404
 #, kde-format
 msgid "Docking"
 msgstr "Ancoraxe"
 
-#: smb4k/smb4kmainwindow.cpp:466
+#: smb4k/smb4kmainwindow.cpp:468
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Non hai comparticións montadas actualmente."
 
-#: smb4k/smb4kmainwindow.cpp:469
+#: smb4k/smb4kmainwindow.cpp:471
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Hai %1 compartición montada actualmente."
 msgstr[1] "Hai %1 comparticións montadas actualmente."
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:632
 #, kde-format
 msgid "The wallet is used."
 msgstr "A carteira úsase."
 
-#: smb4k/smb4kmainwindow.cpp:633
+#: smb4k/smb4kmainwindow.cpp:635
 #, kde-format
 msgid "The password dialog is used."
 msgstr "O diálogo de contrasinal úsase."
 
-#: smb4k/smb4kmainwindow.cpp:643
+#: smb4k/smb4kmainwindow.cpp:645
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "A buscar grupos de traballo e dominios…"
 
-#: smb4k/smb4kmainwindow.cpp:648
+#: smb4k/smb4kmainwindow.cpp:650
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "A buscar as máquinas do dominio %1…"
 
-#: smb4k/smb4kmainwindow.cpp:653
+#: smb4k/smb4kmainwindow.cpp:655
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "A buscar as comparticións fornecidas pola máquina %1…"
 
-#: smb4k/smb4kmainwindow.cpp:661 smb4k/smb4kmainwindow.cpp:669
+#: smb4k/smb4kmainwindow.cpp:663 smb4k/smb4kmainwindow.cpp:671
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Buscando ficheiros e directorios en %1…"
 
-#: smb4k/smb4kmainwindow.cpp:686
+#: smb4k/smb4kmainwindow.cpp:688
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Espertando os servidores remotos…"
 
-#: smb4k/smb4kmainwindow.cpp:691
+#: smb4k/smb4kmainwindow.cpp:693
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "A enviar o ficheiro á impresora %1…"
 
-#: smb4k/smb4kmainwindow.cpp:695
+#: smb4k/smb4kmainwindow.cpp:697
 #, kde-format
 msgid "Searching..."
 msgstr "Buscando…"
 
-#: smb4k/smb4kmainwindow.cpp:713 smb4k/smb4kmainwindow.cpp:750
-#: smb4k/smb4kmainwindow.cpp:862
+#: smb4k/smb4kmainwindow.cpp:715 smb4k/smb4kmainwindow.cpp:752
+#: smb4k/smb4kmainwindow.cpp:864
 #, kde-format
 msgid "Done."
 msgstr "Feito."
 
-#: smb4k/smb4kmainwindow.cpp:723
+#: smb4k/smb4kmainwindow.cpp:725
 #, kde-format
 msgid "Mounting..."
 msgstr "Montando…"
 
-#: smb4k/smb4kmainwindow.cpp:727
+#: smb4k/smb4kmainwindow.cpp:729
 #, kde-format
 msgid "Unmounting..."
 msgstr "Desmontando…"
 
-#: smb4k/smb4kmainwindow.cpp:731
+#: smb4k/smb4kmainwindow.cpp:733
 #, kde-format
 msgid "Waking up host..."
 msgstr "Espertando o servidor…"
 
-#: smb4k/smb4kmainwindow.cpp:761
+#: smb4k/smb4kmainwindow.cpp:763
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 montouse correctamente."
 
-#: smb4k/smb4kmainwindow.cpp:794
+#: smb4k/smb4kmainwindow.cpp:796
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 desmontouse correctamente."
 
-#: smb4k/smb4kmainwindow.cpp:850
+#: smb4k/smb4kmainwindow.cpp:852
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Sincronizando %1"
