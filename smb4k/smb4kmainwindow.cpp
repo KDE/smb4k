@@ -268,7 +268,7 @@ void Smb4KMainWindow::setupView()
         for (int i = 1; i < docks.size(); ++i) {
             tabifyDockWidget(docks.at(i - 1), docks.at(i));
         }
-        
+
         configGroup.writeEntry(QStringLiteral("FirstStartup"), true);
     }
 }
