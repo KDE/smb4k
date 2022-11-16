@@ -125,7 +125,7 @@ Smb4KNetworkBrowserItem::~Smb4KNetworkBrowserItem()
 
 WorkgroupPtr Smb4KNetworkBrowserItem::workgroupItem()
 {
-    if (!m_item || (m_item && m_item->type() != Workgroup)) {
+    if (!m_item || (m_item->type() != Workgroup)) {
         return WorkgroupPtr();
     }
 
@@ -134,7 +134,7 @@ WorkgroupPtr Smb4KNetworkBrowserItem::workgroupItem()
 
 HostPtr Smb4KNetworkBrowserItem::hostItem()
 {
-    if (!m_item || (m_item && m_item->type() != Host)) {
+    if (!m_item || (m_item->type() != Host)) {
         return HostPtr();
     }
 
@@ -143,7 +143,7 @@ HostPtr Smb4KNetworkBrowserItem::hostItem()
 
 SharePtr Smb4KNetworkBrowserItem::shareItem()
 {
-    if (!m_item || (m_item && m_item->type() != Share)) {
+    if (!m_item || (m_item->type() != Share)) {
         return SharePtr();
     }
 
