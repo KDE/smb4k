@@ -11,6 +11,9 @@
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
+  <!ENTITY SMB3 "<acronym
+>SMB3</acronym
+>">
   <!ENTITY Samba "<application
 >Samba</application
 >">
@@ -46,7 +49,7 @@
   </authorgroup>
   <copyright>
     <year
->2005-2021</year>
+>2005-2022</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
@@ -55,7 +58,7 @@
   <date
 >30 de març de 2021</date>
   <releaseinfo
->&smb4k; 3.1.0</releaseinfo
+>&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
   <abstract>
     <para
@@ -80,7 +83,7 @@
 >Introducció</title>
 
   <para
->Aquest manual descriu el &smb4k; 3.1.x i, en alguns aspectes, algunes de les versions anteriors.</para>
+>Aquest manual descriu el &smb4k; 3.2 i, en alguns aspectes, algunes de les versions anteriors.</para>
   <para
 >El &smb4k; és un explorador avançat del veïnatge de xarxa i utilitat de muntatge de les comparticions <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -93,7 +96,7 @@
 ></listitem>
     <listitem
 ><para
->Implementació del sistema de fitxers &CIFS; (&Linux;) i SMBFS (BSD)</para
+>Implementació dels sistemes de fitxers &CIFS; i &SMB3; al &Linux;, així com el sistema de fitxers SMBFS al BSD</para
 ></listitem>
     <listitem
 ><para
