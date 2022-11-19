@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-30 00:46+0000\n"
+"POT-Creation-Date: 2022-11-15 00:46+0000\n"
 "PO-Revision-Date: 2021-12-15 11:16+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail."
 "com>\n"
@@ -510,107 +510,107 @@ msgstr "Dokk skjermelement"
 msgid "Mounted Shares"
 msgstr "Monterte ressursar"
 
-#: smb4k/smb4kmainwindow.cpp:400
+#: smb4k/smb4kmainwindow.cpp:402
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:402
+#: smb4k/smb4kmainwindow.cpp:404
 #, kde-format
 msgid "Docking"
 msgstr "Dokking"
 
-#: smb4k/smb4kmainwindow.cpp:466
+#: smb4k/smb4kmainwindow.cpp:468
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Ingen delte ressursar er monterte."
 
-#: smb4k/smb4kmainwindow.cpp:469
+#: smb4k/smb4kmainwindow.cpp:471
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "%1 delt ressurs er montert."
 msgstr[1] "%1 delte ressursar er monterte."
 
-#: smb4k/smb4kmainwindow.cpp:630
+#: smb4k/smb4kmainwindow.cpp:632
 #, kde-format
 msgid "The wallet is used."
 msgstr "Lommaboka er brukt."
 
-#: smb4k/smb4kmainwindow.cpp:633
+#: smb4k/smb4kmainwindow.cpp:635
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Passordvindauget er brukt."
 
-#: smb4k/smb4kmainwindow.cpp:643
+#: smb4k/smb4kmainwindow.cpp:645
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Leitar etter arbeidsgrupper og domene …"
 
-#: smb4k/smb4kmainwindow.cpp:648
+#: smb4k/smb4kmainwindow.cpp:650
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Leitar etter vertar i domenet %1 …"
 
-#: smb4k/smb4kmainwindow.cpp:653
+#: smb4k/smb4kmainwindow.cpp:655
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Leitar etter delte ressursar frå verten %1 …"
 
-#: smb4k/smb4kmainwindow.cpp:661 smb4k/smb4kmainwindow.cpp:669
+#: smb4k/smb4kmainwindow.cpp:663 smb4k/smb4kmainwindow.cpp:671
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Leitar etter filer og mapper i %1 …"
 
-#: smb4k/smb4kmainwindow.cpp:686
+#: smb4k/smb4kmainwindow.cpp:688
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Vekkjer fjernvertar …"
 
-#: smb4k/smb4kmainwindow.cpp:691
+#: smb4k/smb4kmainwindow.cpp:693
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Sender fil til skrivaren %1 …"
 
-#: smb4k/smb4kmainwindow.cpp:695
+#: smb4k/smb4kmainwindow.cpp:697
 #, kde-format
 msgid "Searching..."
 msgstr "Søkjer …"
 
-#: smb4k/smb4kmainwindow.cpp:713 smb4k/smb4kmainwindow.cpp:750
-#: smb4k/smb4kmainwindow.cpp:862
+#: smb4k/smb4kmainwindow.cpp:715 smb4k/smb4kmainwindow.cpp:752
+#: smb4k/smb4kmainwindow.cpp:864
 #, kde-format
 msgid "Done."
 msgstr "Ferdig."
 
-#: smb4k/smb4kmainwindow.cpp:723
+#: smb4k/smb4kmainwindow.cpp:725
 #, kde-format
 msgid "Mounting..."
 msgstr "Monterer …"
 
-#: smb4k/smb4kmainwindow.cpp:727
+#: smb4k/smb4kmainwindow.cpp:729
 #, kde-format
 msgid "Unmounting..."
 msgstr "Avmonterer …"
 
-#: smb4k/smb4kmainwindow.cpp:731
+#: smb4k/smb4kmainwindow.cpp:733
 #, kde-format
 msgid "Waking up host..."
 msgstr "Vekker vert …"
 
-#: smb4k/smb4kmainwindow.cpp:761
+#: smb4k/smb4kmainwindow.cpp:763
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 er no montert."
 
-#: smb4k/smb4kmainwindow.cpp:794
+#: smb4k/smb4kmainwindow.cpp:796
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 er no avmontert."
 
-#: smb4k/smb4kmainwindow.cpp:850
+#: smb4k/smb4kmainwindow.cpp:852
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Synkroniserer %1"
