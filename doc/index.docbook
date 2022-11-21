@@ -121,7 +121,7 @@
   <sect1 id="mainwindow_overview">
     <title>The Main Window</title>
   
-    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menubar and toolbar are located. Below them you will see the status bar.</para>
+    <para>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel>Network Neighborhood</guilabel>) and the mounted shares view (<guilabel>Mounted Shares</guilabel>) are arranged in a tab widget. Above them the menu bar and tool bar are located. Below them you will see the status bar.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo>Screenshot of the main window</screeninfo>
@@ -131,10 +131,10 @@
       </mediaobject>
     </screenshot>
 
-    <para>The toolbar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link> and <link linkend="shares_view">mounted shares view</link>.</para>
-    <para>The status bar provides some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (network folder icon) and the status of the authentication system (wallet or key icon).</para>
+    <para>The tool bar contains some of the main actions, like <guimenuitem>Configure &smb4k;</guimenuitem> and <guimenuitem>Quit</guimenuitem>. It also dynamically loads the actions of the dock widget that currently has the focus. For additional information, please take a look at the sections discussing the <link linkend="network_neighborhood_browser">network neighborhood browser</link> and <link linkend="shares_view">mounted shares view</link>.</para>
+    <para>The status bar provides some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right side indicate whether shares are mounted (network folder icon) and the status of the authentication system (wallet or key icon).</para>
     <para>If the dock widgets are arranged as tabs, the user gets additional visual feedback. Each time a share is mounted or unmounted, the <guilabel>Mounted Shares</guilabel> tab is highlighted for a few seconds.</para>
-    <para>The main window is highly configurable. You can hide or show all tabbed widgets (<menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>). They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the toolbars can be hidden or shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
+    <para>The main window is highly configurable. You can hide or show all tabbed widgets via <menuchoice><guimenu>Settings</guimenu><guimenuitem>Dock Widgets</guimenuitem></menuchoice>. They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the tool bars can be hidden or shown by toggling the menu entry <menuchoice><guimenu>Settings</guimenu><guimenuitem>Show Statusbar</guimenuitem></menuchoice> and the ones under <menuchoice><guimenu>Settings</guimenu><guimenuitem>Toolbars Shown</guimenuitem></menuchoice>, respectively.</para>
   </sect1>
 
 <!-- 
@@ -144,7 +144,7 @@
   <sect1 id="network_neighborhood_browser">
     <title>The Network Neighborhood Browser</title>
 
-    <para>The interaction with the network neighborhood is done with the <guilabel>Network Neighborhood</guilabel> browser. It contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the control next to the item's name or by executing the item itself.</para>
+    <para>The <guilabel>Network Neighborhood</guilabel> browser contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the control next to the item's name or by executing the item itself.</para>
     <para>In the network tree, the master browser in each workgroup or domain is highlighted by a blue font color, if it was detected (&eg; when using DNS-SD, the master browser of a &Windows; domain is not recognized). Mounted shares are marked with the respective folder icon and an italic font.</para>
 
     <screenshot>
@@ -176,17 +176,17 @@
     <sect2 id="network_neighborhood_browser_searching">
       <title>Searching</title>
       
-      <para>To search the network neighborhood for shares that contain a certain search item, execute the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>F</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action (see also the <link linkend="network_neighborhood_browser_actions_popup_menu">Actions and Popup Menu</link> section below). The search toolbar opens at the bottom of the network neighborhood browser.</para>
+      <para>To search the network neighborhood for shares that contain a certain search item, execute the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>F</keycap></keycombo></shortcut><guimenuitem>Search</guimenuitem></menuchoice> action (see also the <link linkend="network_neighborhood_browser_actions_popup_menu">Actions and Popup Menu</link> section below). The search tool bar opens at the bottom of the network neighborhood browser.</para>
       
       <screenshot>
-        <screeninfo>Screenshot of the network neighborhood browser with visible search toolbar</screeninfo>
+        <screeninfo>Screenshot of the network neighborhood browser with visible search tool bar</screeninfo>
         <mediaobject>
           <imageobject><imagedata fileref="network_neighborhood_browser_searching.png" format="PNG" /></imageobject>
-          <textobject><phrase>The network neighborhood browser with visible search toolbar</phrase></textobject>
+          <textobject><phrase>The network neighborhood browser with visible search tool bar</phrase></textobject>
         </mediaobject>
       </screenshot>
       
-      <para>Enter the search term in the line edit and press the &Enter; key, or click the <guibutton>Search</guibutton> button. &smb4k; starts to search the entire network neighborhood. When the search is finished, all shares matching the search term are highlighted (selected). If you would like to do something with <emphasis>all</emphasis> discovered shares (&eg; mount or preview), you can immediately do this now. Otherwise, you can use the <guibutton>Up</guibutton> and <guibutton>Down</guibutton> buttons to jump to the individual search results. The <guibutton>Clear</guibutton> button can be used to clear the search. To close the search toolbar, press the <guibutton>Close</guibutton> button.</para>
+      <para>Enter the search term in the line edit and press the &Enter; key, or click the <guibutton>Search</guibutton> button. &smb4k; starts to search the entire network neighborhood. When the search is finished, all shares matching the search term are highlighted (selected). If you would like to do something with <emphasis>all</emphasis> discovered shares (&eg; mount or preview), you can do so now. Otherwise, you can use the <guibutton>Up</guibutton> and <guibutton>Down</guibutton> buttons to jump to the individual search results. The <guibutton>Clear</guibutton> button can be used to clear the search. To close the search tool bar, press the <guibutton>Close</guibutton> button.</para>
     </sect2>
 
 <!-- 
@@ -196,7 +196,7 @@
     <sect2 id="network_neighborhood_browser_actions_popup_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>Several actions are defined for the network neighborhood browser. They are present in the menubar under <guimenu>Network</guimenu>, in the toolbar, and in the popup menu. The following actions are available:</para>
+      <para>Several actions are defined for the network neighborhood browser. They are present in the menu bar under <guimenu>Network</guimenu>, in the tool bar, and in the popup menu. The following actions are available:</para>
     
       <variablelist>
         <varlistentry>
@@ -229,7 +229,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Search the network neighborhood for a specified term. Activating this action opens the search toolbar, where you can enter the search term and start the search.</para>
+            <para>Search the network neighborhood for a specified term. Activating this action opens the search tool bar, where you can enter the search term and start the search.</para>
           </listitem>
         </varlistentry>        
         <varlistentry>
@@ -557,7 +557,7 @@
     <sect2 id="shares_view_actions_popup_menu">
       <title>Actions and Popup Menu</title>
 
-      <para>In the shares view, several options are defined. They are present in the menubar under <guimenu>Shares</guimenu>, in the toolbar, and in the popup menu. The following options are available:</para>
+      <para>In the shares view, several options are defined. They are present in the menu bar under <guimenu>Shares</guimenu>, in the tool bar, and in the popup menu. The following options are available:</para>
 
       <variablelist>
         <varlistentry>
@@ -1022,9 +1022,9 @@
       </mediaobject>
     </screenshot>
 
-    <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share, or invoke the print dialog. To go up one level, you need to click the <guibutton>Up</guibutton> button in the toolbar.</para>
+    <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share, or invoke the print dialog. To go up one level, you need to click the <guibutton>Up</guibutton> button in the tool bar.</para>
     <para>For hosts and shares, there are some action buttons to the right of the network's name. For hosts, there is one button with which you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding the share to the bookmarks</link>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the chosen action.</para>
-    <para>Besides the <guibutton>Up</guibutton> button, the toolbar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With these you can do a rescan, abort any running action, or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
+    <para>Besides the <guibutton>Up</guibutton> button, the tool bar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With these you can do a rescan, abort any running action, or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
   </sect2>
 
 <!-- 
@@ -1044,7 +1044,7 @@
     </screenshot>
 
     <para>To the right of the name of the share and its host, three action buttons are arranged. The first is for <link linkend="bookmarks_adding">adding a bookmark</link>, the second is for <link linkend="shares_view_synchronization">synchronization</link>, and the third is for <link linkend="shares_view_unmounting">unmounting the share</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the selected action.</para>
-    <para>The toolbar contains the <guibutton>Unmount All</guibutton> action that lets you unmount all shares at once.</para>
+    <para>The tool bar contains the <guibutton>Unmount All</guibutton> action that lets you unmount all shares at once.</para>
   </sect2>
 
 <!-- 
@@ -1065,7 +1065,7 @@
     </screenshot>
 
     <para>Bookmarked shares can be mounted by left clicking the respective bookmark. Bookmark groups can be entered the same way.</para>
-    <para>To edit or remove the bookmarks, press the <guibutton>Edit</guibutton> action button in the toolbar to open the <link linkend="bookmarks_editor">Bookmark Editor</link>. To get back to the top level, use the <guibutton>Back</guibutton> button.</para>
+    <para>To edit or remove the bookmarks, press the <guibutton>Edit</guibutton> action button in the tool bar to open the <link linkend="bookmarks_editor">Bookmark Editor</link>. To get back to the top level, use the <guibutton>Back</guibutton> button.</para>
   </sect2>
 
 <!-- 
@@ -1198,7 +1198,7 @@
       <para>All the rest of the entries are either category submenus or bookmarks that do not belong to any category. All entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. When you click a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is temporarily disabled.</para>
       <para>The category submenus contain the assigned bookmarks, and in each case a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item is also present. The latter item can be used to mount all bookmarks in that category at once.</para>
       <para>In the system tray widget, there is a similar <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> which, however, does not come with the <guilabel>Add Bookmark</guilabel> entry.</para>
-      <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar manner as in the bookmark menu. The bookmark categories and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the toolbar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a category folder. The <guimenuitem>Edit</guimenuitem> action opens the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
+      <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar manner as in the bookmark menu. The bookmark categories and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the tool bar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a category folder. The <guimenuitem>Edit</guimenuitem> action opens the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
     </sect2>
     
 <!--
@@ -1452,7 +1452,7 @@ ntlm auth = yes
   <sect1 id="configuration_page_user_interface">
     <title>User Interface</title>
 
-    <para>You can change the appearance and behavior of several dialogs and widgets with the options located here. Please note that if you want to change the appearance of the main window, additional options are available under <guimenu>Settings</guimenu> in the <link linkend="mainwindow_overview">menubar</link>.</para>
+    <para>You can change the appearance and behavior of several dialogs and widgets with the options located here. Please note that if you want to change the appearance of the main window, additional options are available under <guimenu>Settings</guimenu> in the <link linkend="mainwindow_overview">menu bar</link>.</para>
     <screenshot>
       <screeninfo>Screenshot of the "User Interface" configuration tab</screeninfo>
       <mediaobject>
@@ -4287,7 +4287,7 @@ ntlm auth = yes
           </menuchoice>
         </term>
         <listitem>
-          <para>Open the search toolbar in the network neighborhood browser.</para>
+          <para>Open the search tool bar in the network neighborhood browser.</para>
         </listitem>
       </varlistentry> 
       <varlistentry>
@@ -4570,7 +4570,7 @@ ntlm auth = yes
           </menuchoice>
         </term>
         <listitem>
-          <para>In this submenu you can enable or disable the toolbars.</para>
+          <para>In this submenu you can enable or disable the tool bars.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
