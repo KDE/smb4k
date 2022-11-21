@@ -11,6 +11,9 @@
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
+  <!ENTITY SMB3 "<acronym
+>SMB3</acronym
+>">
   <!ENTITY Samba "<application
 >Samba</application
 >">
@@ -88,7 +91,7 @@
   </authorgroup>
   <copyright>
     <year
->2005-2021</year>
+>2005-2022</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
@@ -97,7 +100,7 @@
   <date
 >2021-03-30</date>
   <releaseinfo
->&smb4k; 3.1.0</releaseinfo
+>&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
   <abstract>
     <para
@@ -122,7 +125,7 @@
 >Introducción</title>
 
   <para
->Este manual describe &smb4k; 3.1.x y, en alguna medida, versiones anteriores.</para>
+>Este manual describe &smb4k; 3.2.x y, en alguna medida, versiones anteriores.</para>
   <para
 >&smb4k; es un navegador avanzado de entornos de red y una utilidad para el montaje de los recursos compartidos de <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -135,7 +138,7 @@
 ></listitem>
     <listitem
 ><para
->Implementa los sistemas de archivos &CIFS; (&Linux;) y SMBFS (BSD)</para
+>Implementa los sistemas de archivos &CIFS; y &SMB3; bajo &Linux; y el sistema de archivos SMBFS bajo BSD</para
 ></listitem>
     <listitem
 ><para
