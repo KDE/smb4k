@@ -218,7 +218,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible (instead of the <guimenuitem>Scan Network|Workgroup|Computer</guimenuitem> action) when a network scan is running.</para>
+            <para>Abort any running process of the network neighborhood browser. This action is invisible by default and will only be visible when a network scan is running.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -229,7 +229,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Search the network neighborhood for a specified term. Activating this action opens the search tool bar, where you can enter the search term and start the search.</para>
+            <para><link linkend="network_neighborhood_browser_searching">Search the network neighborhood</link> for a specified term. Activating this action opens the search tool bar, where you can enter the search term and start the search.</para>
           </listitem>
         </varlistentry>        
         <varlistentry>
@@ -240,8 +240,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected.</para>
-            <para>Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
+            <para><link linkend="bookmarks_adding">Add a bookmark</link> to the currently selected remote share. This action is disabled if no share is selected.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -307,7 +306,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Mount the selected remote share. By default, and if you clicked anything different than a share with type "Disk" or "IPC", this action is disabled. If you selected a mounted share, this action is replaced by the <guimenuitem>Unmount</guimenuitem> action.</para>
+            <para>Mount the selected remote share. By default, and if you selected anything different than a share with type "Disk" or "IPC", this action is disabled. For a mounted share, this action is replaced with the <guimenuitem>Unmount</guimenuitem> action.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
