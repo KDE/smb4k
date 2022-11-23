@@ -298,13 +298,13 @@
 >Comparticions muntades</guilabel
 > es ressaltarà per uns quants segons.</para>
     <para
->La finestra principal és altament configurable. Podeu ocultar o mostrar tots els ginys amb pestanyes (<menuchoice
+>La finestra principal és altament configurable. Podeu ocultar o mostrar tots els ginys amb pestanyes a través d'<menuchoice
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
 >Acobla els ginys</guimenuitem
 ></menuchoice
->). També es poden arrossegar amb el ratolí i acoblar a diferents àrees de la finestra principal. Fins i tot podeu desacoblar-los de la finestra principal. La barra d'estat i les barres d'eines es poden ocultar o mostrar alternant les entrades de menú <menuchoice
+>. També es poden arrossegar amb el ratolí i acoblar a diferents àrees de la finestra principal. Fins i tot podeu desacoblar-los de la finestra principal. La barra d'estat i les barres d'eines es poden ocultar o mostrar alternant les entrades de menú <menuchoice
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
@@ -328,9 +328,9 @@
 >L'explorador del veïnatge de xarxa</title>
 
     <para
->La interacció amb el veïnatge de xarxa es realitza amb l'explorador del <guilabel
+>L'explorador del <guilabel
 >Veïnatge de xarxa</guilabel
->. Conté tots els elements de la xarxa -&ead;, grups de treball, servidors i comparticions- que el &smb4k; ha pogut trobar. S'organitzen en un arbre de la xarxa, i podeu navegar a través d'ell fent clic al control al costat del nom de l'element o executant l'element mateix.</para>
+> conté tots els elements de la xarxa -&ead;, grups de treball, servidors i comparticions- que el &smb4k; ha pogut trobar. S'organitzen en un arbre de la xarxa, i podeu navegar a través d'ell fent clic al control al costat del nom de l'element o executant l'element mateix.</para>
     <para
 >En l'arbre de la xarxa, l'explorador mestre en cada grup de treball o domini ressaltarà el tipus de lletra en un color blau, si l'ha detectat (&pex;, quan s'utilitza DNS-SD, no es reconeix l'explorador mestre d'un domini de &Windows;). Les comparticions muntades estaran marcades amb la icona de la carpeta respectiva i un tipus de lletra en cursiva.</para>
 
@@ -423,7 +423,7 @@
 >Cerca</guibutton
 >. El &smb4k; començarà a cercar tot el veïnatge de xarxa. Quan es finalitzi la cerca, es ressaltaran totes les comparticions que coincideixin amb el terme de cerca (seleccionades). Si voleu fer quelcom amb <emphasis
 >totes</emphasis
-> les comparticions descobertes (&pex;, muntar o previsualitzar), podeu fer-ho immediatament ara. En cas contrari, podeu utilitzar els botons <guibutton
+> les comparticions descobertes (&pex;, muntar o previsualitzar), podeu fer-ho ara. En cas contrari, podeu utilitzar els botons <guibutton
 >Amunt</guibutton
 > i <guibutton
 >Avall</guibutton

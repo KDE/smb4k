@@ -294,7 +294,7 @@
 >Aangekoppelde gedeelde mappen</guilabel
 > voor een paar seconden op.</para>
     <para
->Het hoofdvenster heeft veel mogelijkheden tot instellen. U kunt alle tabs tonen/verbergen (<menuchoice
+>Het hoofdvenster heeft veel mogelijkheden tot instellen. U kunt alle tabs tonen/verbergen via (<menuchoice
 ><guimenu
 >Instellingen</guimenu
 ><guimenuitem
@@ -324,9 +324,9 @@
 >De browser voor de netwerkomgeving</title>
 
     <para
->De interactie met de netwerkomgeving gebeurt via de browser voor <guilabel
+>De browser voor de <guilabel
 >netwerkomgeving</guilabel
->. Hierin vindt u alle netwerk items &#8212; &ie; werkgroepen, servers, en shares &#8212; die &smb4k; kon vinden. Ze zijn in een netwerkstructuur weergegeven, waardoor u kunt navigeren door op de besturing naast de naam van het item of op het item zelf te klikken.</para>
+>. bevat alle netwerkitems &#8212; &ie; werkgroepen, servers, en shares &#8212; die &smb4k; kon vinden. Ze zijn in een netwerkstructuur weergegeven, waardoor u kunt navigeren door op de besturing naast de naam van het item of op het item zelf te klikken.</para>
     <para
 >In de netwerkstructuur is de top van elke werkgroep blauw gemarkeerd, als het is gedetecteerd (&eg; wanneer DNS-SD wordt gebruikt, de masterbrowser van een &Windows;-domein niet wordt herkend). Aangekoppelde shares zijn met een bijbehorende pictogram en cursief lettertype gemarkeerd.</para>
 
@@ -419,7 +419,7 @@
 >Zoeken</guibutton
 >. &smb4k; begint met zoeken in de gehele netwerkomgeving. Wanneer het zoeken eindigt, worden alle shares die overeenkomen met de zoekterm geactiveerd (geselecteerd). Als u iets wilt doen met <emphasis
 >alle</emphasis
-> ontdekte shares (&eg; aankoppelen of bekijken), dan kunt u dat onmiddellijk nu doen. Anders kunt u de knoppen <guibutton
+> ontdekte shares (&eg; aankoppelen of bekijken), dan kunt u dat nu doen. Anders kunt u de knoppen <guibutton
 >Omhoog</guibutton
 > en <guibutton
 >Omlaag</guibutton
@@ -2025,7 +2025,7 @@
     <para
 >De werkbalk bevat de actie <guibutton
 >Alles afkoppelen</guibutton
-> die all shares in één keer laat afkoppelen.</para>
+> die alle shares in één keer laat afkoppelen.</para>
   </sect2>
 
 <!-- 
