@@ -477,9 +477,7 @@
           </term>
           <listitem>
             <para
->Breekt alle lopende processen van de netwerkomgeving browser af. Standaard is deze knop onzichtbaar en zal alleen zichtbaar zijn (in plaats van de actie <guimenuitem
->Netwerk|Werkgroep|Computer scannen</guimenuitem
->) wanneer een netwerk scan bezig is.</para>
+>Breekt alle lopende processen van de netwerkomgevingsbrowser af. Standaard is deze knop onzichtbaar als een netwerk scan bezig is.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -497,7 +495,9 @@
           </term>
           <listitem>
             <para
->Doorzoek de netwerkomgeving op een gespecificeerde term. Deze actie activeren opent de zoekwerkbalk waar u de zoekterm in kunt voeren en het zoeken starten.</para>
+><link linkend="network_neighborhood_browser_searching"
+>Doorzoek de netwerkomgeving</link
+> op een gespecificeerde term. Deze actie activeren opent de zoekwerkbalk waar u de zoekterm in kunt voeren en het zoeken starten.</para>
           </listitem>
         </varlistentry
 >        
@@ -516,11 +516,9 @@
           </term>
           <listitem>
             <para
->Voeg een bladwijzer toe aan de nu geselecteerde share op afstand. Deze actie is uitgeschakeld als er geen share is geselecteerd.</para>
-            <para
->Lees de sectie <link linkend="bookmarks_adding"
->Bladwijzers toevoegen</link
-> voor meer details.</para>
+><link linkend="bookmarks_adding"
+>Voeg een bladwijzer toe</link
+> aan de nu geselecteerde share op afstand. Deze actie is uitgeschakeld als er geen share is geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -638,7 +636,7 @@
           </term>
           <listitem>
             <para
->Koppelt de geselecteerde externe share aan. Standaard, en ook als u op iets anders dan een share van het type "Disk" of "IPC" hebt geklikt, kunt u deze actie niet selecteren. Als u een aangekoppelde share heeft geselecteerd, dan wordt deze actie vervangen door de actie <guimenuitem
+>Koppelt de geselecteerde externe share aan. Standaard, en ook als u iets anders dan een share van het type "Disk" of "IPC" hebt geselecteerd, kunt u deze actie niet selecteren. Voor een aangekoppelde share wordt deze actie vervangen door de actie <guimenuitem
 >Afkoppelen</guimenuitem
 >.</para>
           </listitem>

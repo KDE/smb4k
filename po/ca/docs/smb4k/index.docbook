@@ -481,9 +481,7 @@
           </term>
           <listitem>
             <para
->Interromp qualsevol procés en execució de l'explorador del veïnatge de xarxa. Aquesta acció és invisible de manera predeterminada i només serà visible (en lloc de l'acció <guimenuitem
->Escaneja la xarxa|el grup de treball|l'ordinador</guimenuitem
->) quan hi ha en funcionament un escaneig de la xarxa.</para>
+>Interromp qualsevol procés en execució de l'explorador del veïnatge de xarxa. Aquesta acció és invisible de manera predeterminada i només serà visible quan hi ha en funcionament un escaneig de la xarxa.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -501,7 +499,9 @@
           </term>
           <listitem>
             <para
->Cerca al veïnatge de xarxa per a un terme especificat. Si activeu aquesta acció, s'obrirà la barra d'eines de cerca a on podreu introduir el terme de cerca i iniciar-la.</para>
+><link linkend="network_neighborhood_browser_searching"
+>Cerca al veïnatge de xarxa</link
+> un terme especificat. Si activeu aquesta acció, s'obrirà la barra d'eines de cerca a on podreu introduir el terme de cerca i iniciar-la.</para>
           </listitem>
         </varlistentry
 >        
@@ -520,11 +520,9 @@
           </term>
           <listitem>
             <para
->Afegeix una adreça d'interès per a la compartició remota seleccionada. Aquesta acció s'inhabilitarà si no se selecciona cap compartició.</para>
-            <para
->Per a més detalls, llegiu la secció <link linkend="bookmarks_adding"
->Afegir adreces d'interès</link
->.</para>
+><link linkend="bookmarks_adding"
+>Afegeix una adreça d'interès</link
+> a la compartició remota seleccionada. Aquesta acció s'inhabilitarà si no se selecciona cap compartició.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -642,7 +640,7 @@
           </term>
           <listitem>
             <para
->Munta la compartició remota seleccionada. De manera predeterminada, i si heu fet clic en res diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada. Si heu seleccionat una compartició muntada, aquesta acció serà substituïda per l'acció <guimenuitem
+>Munta la compartició remota seleccionada. De manera predeterminada, i si heu seleccionat quelcom diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada. Per a una compartició muntada, aquesta acció serà substituïda per l'acció <guimenuitem
 >Desmunta</guimenuitem
 >.</para>
           </listitem>
