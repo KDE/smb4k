@@ -336,13 +336,13 @@
 >Recursos compartidos montados</guilabel
 > se resalta durante unos segundos.</para>
     <para
->La ventana principal es altamente configurable. Se pueden ocultar o mostrar todos los elementos gráficos organizados en pestañas (<menuchoice
+>La ventana principal es altamente configurable. Se pueden ocultar o mostrar todos los elementos gráficos organizados en pestañas a través <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
 >Zona de paneles</guimenuitem
 ></menuchoice
->). También se pueden arrastrar con el ratón y anclarlos en diferentes áreas de la ventana principal. Incluso se pueden desanclar de la ventana principal. La barra de estado y las barras de herramientas se pueden mostrar u ocultar activando/desactivando la opción de menú <menuchoice
+>. También se pueden arrastrar con el ratón y anclarlos en diferentes áreas de la ventana principal. Incluso se pueden desanclar de la ventana principal. La barra de estado y las barras de herramientas se pueden mostrar u ocultar activando/desactivando la opción de menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
@@ -366,9 +366,9 @@
 >El navegador del entorno de red</title>
 
     <para
->La interacción con el entorno de red se realiza con el navegador del <guilabel
+>El navegador del <guilabel
 >entorno de red</guilabel
->. Contiene todos los elementos de la red &#8212; &ie; grupos de trabajo, servidores y recursos compartidos &#8212; que &smb4k; sea capaz de encontrar. Están organizados en un árbol de red, y puede navegar por él, bien haciendo clic en el control que hay al lado del nombre del elemento, o bien ejecutando el propio elemento.</para>
+> contiene todos los elementos de la red &#8212; &ie; grupos de trabajo, servidores y recursos compartidos &#8212; que &smb4k; sea capaz de encontrar. Están organizados en un árbol de red, y puede navegar por él, bien haciendo clic en el control que hay al lado del nombre del elemento, o bien ejecutando el propio elemento.</para>
     <para
 >En el árbol de red, el navegador maestro en cada grupo de trabajo o dominio está resaltado por un color de letra azul, si fue detectado (&eg; cuando se usa DNS-SD, el navegador maestro de un dominio &Windows; no se reconoce). Los recursos compartidos montados están marcados con el icono de carpeta respectivo y un tipo de letra cursiva.</para>
 
@@ -461,7 +461,7 @@
 >Buscar</guibutton
 >. &smb4k; comienza a buscar en todo el entorno de red. Cuando la búsqueda termina, todos los elementos compartidos que cumplen el término de búsqueda aparecerán destacados (seleccionados). Si quisiera hacer algo con <emphasis
 >todos</emphasis
-> los elementos compartidos descubiertos (&eg; montarlo o previsualizarlo), puede hacerlo inmediatamente. Por el contrario, puede usar los botones <guibutton
+> los elementos compartidos descubiertos (&eg; montarlo o previsualizarlo), puede hacerlo ahora. Por el contrario, puede usar los botones <guibutton
 >Arriba</guibutton
 > y <guibutton
 >Abajo</guibutton
@@ -519,9 +519,7 @@
           </term>
           <listitem>
             <para
->Interrumpe cualquier proceso en ejecución del navegador del entorno de red. Esta acción está oculta de manera predeterminada y solo se hará visible (en lugar de la acción <guimenuitem
->Explorar red|grupo de trabajo|equipo</guimenuitem
->) cuando se esté ejecutando una exploración de la red.</para>
+>Interrumpe cualquier proceso en ejecución del navegador del entorno de red. Esta acción está oculta de manera predeterminada y solo se hará visible cuando se esté ejecutando una exploración de la red.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -539,7 +537,9 @@
           </term>
           <listitem>
             <para
->Buscar términos específicos en el entorno de red. Activar esta opción abre la barra de herramientas de búsqueda donde puede introducir el término de búsqueda y comenzar la búsqueda.</para>
+><link linkend="network_neighborhood_browser_searching"
+>Buscar en el entorno de red</link
+> por términos específicos. Activar esta opción abre la barra de herramientas de búsqueda donde puede introducir el término de búsqueda y comenzar la búsqueda.</para>
           </listitem>
         </varlistentry
 >        
@@ -558,11 +558,9 @@
           </term>
           <listitem>
             <para
->Añade un marcador al recurso compartido remoto que esté seleccionado en ese momento. Esta acción está desactivada si no hay ningún recurso compartido seleccionado.</para>
-            <para
->Consulte la sección <link linkend="bookmarks_adding"
->Añadir marcadores</link
-> para más detalles.</para>
+><link linkend="bookmarks_adding"
+>Añadir un marcador</link
+> al recurso compartido remoto que esté seleccionado en ese momento. Esta acción está desactivada si no hay ningún recurso compartido seleccionado.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -680,7 +678,7 @@
           </term>
           <listitem>
             <para
->Monta el recurso compartido remoto seleccionado. De manera predeterminada y si se ha hecho clic sobre cualquier elemento que no sea un recurso compartido con tipo «Disco» o «IPC», esta acción estará desactivada. Si ha seleccionado un recurso compartido montado, esta acción será sustituida por la acción <guimenuitem
+>Monta el recurso compartido remoto seleccionado. De manera predeterminada y si se ha seleccionado cualquier elemento que no sea un recurso compartido con tipo «Disco» o «IPC», esta acción estará desactivada. Para un recurso compartido montado, esta acción será sustituida con la acción <guimenuitem
 >Desmontar</guimenuitem
 >.</para>
           </listitem>
