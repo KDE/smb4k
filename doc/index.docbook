@@ -322,7 +322,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>Although you can interact with the network neighborhood using the keyboard shortcuts mentioned above, in most cases it is more convenient to use the mouse. By right clicking you can open a popup menu. It contains all actions that are available in the network neighborhood browser. Depending on the position where you clicked (on a network item or on the viewport), some of them may be disabled. The screenshot below shows the popup menu opened on a remote share.</para>
+      <para>In the network neighborhood browser you can right click to open the popup menu to access all available actions. Depending on the position where you clicked (on a network item or on the viewport), some of them may be disabled. The screenshot below shows the popup menu opened on a remote share.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the popup menu of the network neighborhood browser</screeninfo>
@@ -344,7 +344,7 @@
     <sect2 id="network_neighborhood_browser_tooltips">
       <title>Tooltips</title>
 
-      <para>For each network item, a tooltip is provided that contains various information like the name of the workgroup and master browser, the name and IP address of the host, the name of the share, &etc;</para>
+      <para>For each network item, a tooltip is provided that contains various information like the name of the workgroup and master browser (if available), the name and IP address of the host, the name of the share, &etc;</para>
       <para>The tooltips can be disabled in the <link linkend="configuration_page_user_interface_network">configuration dialog</link>.</para>
     </sect2>
 
@@ -368,7 +368,7 @@
             <textobject><phrase>The "Mount Share" dialog</phrase></textobject>
           </mediaobject>
         </screenshot>
-        <para>Here you can enter the location of the share as a <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting>, or as a URL in the form <programlisting>[smb:]//[user@]server:port/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend so you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. </para></listitem>
+        <para>Here you can enter the location of the share as a <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention">Uniform Naming Convention (UNC)</ulink> address in the form <programlisting>//[USER@]SERVER/SHARE</programlisting> or <programlisting>\\[USER@]SERVER\SHARE</programlisting> or as an URL in the form <programlisting>[smb:]//[user@]server[:port]/share</programlisting> The <guibutton>OK</guibutton> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, click the <guibutton>Bookmark >></guibutton> button. The dialog will extend so you can tick the <guibutton>Add this share to the bookmarks</guibutton> check box and enter a label and category for the bookmark. </para></listitem>
       </orderedlist>
 
       <para>A share is often password protected. In this case, an <link linkend="network_neighborhood_browser_authentication">authentication dialog</link> will appear and you must enter the correct user name (if not already provided) and password. &smb4k; will proceed with mounting the share unless the wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view">Mounted Shares</link> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (&Linux;) or <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> (BSD) will be displayed.</para>
