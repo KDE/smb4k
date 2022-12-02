@@ -664,7 +664,7 @@
       </variablelist>
 
       <para
->Alhoewel u met behulp van de hierboven beschreven sneltoetsen interactie met de netwerkomgeving kunt hebben, zal het in de meeste gevallen handiger zijn om de muis te gebruiken. Met behulp van de &RMB; kunt u een contextmenu openen. Hierin vindt u alle acties die in de browser voor de netwerkomgeving beschikbaar zijn. Afhankelijk van de locatie waar u klikt (op een netwerk item of op het venster), kunnen sommige daarvan niet selecteer zijn. De schermafdruk hieronder toont een geopend context-menu van een externe share.</para>
+>In de browser voor de netwerkomgeving kunt u rechts klikken om het pop-upmenu te openen voor toegang tot alle beschikbare acties. Afhankelijk van de locatie waar u klikt (op een netwerk item of op het venster), kunnen sommige daarvan niet selecteer zijn. De schermafdruk hieronder toont een geopend context-menu van een externe share.</para>
 
       <screenshot>
         <screeninfo
@@ -690,7 +690,7 @@
 >Tekstballonnen</title>
 
       <para
->Bij elk netwerk-item is een tekstballon beschikbaar met diverse informatie zoals de naam van de werkgroep en de master browser, de naam en IP adres van de server, de naam van de share, &etc;</para>
+>Bij elk netwerk-item is een tekstballon beschikbaar met diverse informatie zoals de naam van de werkgroep en de master browser, (indien beschikbaar) de naam en IP adres van de server, de naam van de share, &etc;</para>
       <para
 >De tekstballonnen kunnen worden uitgeschakeld in de <link linkend="configuration_page_user_interface_network"
 >instellingendialoog</link
