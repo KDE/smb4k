@@ -173,6 +173,7 @@ public:
 
 protected Q_SLOTS:
     void slotStartJob();
+    void slotFinishJob();
 
 private:
     void initClientLibrary();
