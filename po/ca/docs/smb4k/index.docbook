@@ -668,7 +668,7 @@
       </variablelist>
 
       <para
->Encara podreu interactuar amb el veïnatge de xarxa utilitzant les dreceres de teclat esmentades anteriorment, en la majoria dels casos és més còmode utilitzar el ratolí. Fent clic dret obrireu un menú emergent. Aquest contindrà totes les accions que estan disponibles en l'explorador del veïnatge de xarxa. Depenent de la posició on heu fet clic (sobre un element de xarxa o a l'àrea de visualització), algunes podrien estar inhabilitades. La següent captura de pantalla mostra el menú emergent obert sobre una compartició remota.</para>
+>A l'explorador del veïnatge de xarxa podeu fer un clic dret per obrir el menú emergent per accedir a totes les accions disponibles. Depenent de la posició on heu fet clic (sobre un element de xarxa o a l'àrea de visualització), algunes podrien estar inhabilitades. La captura de pantalla següent mostra el menú emergent obert en una compartició remota.</para>
 
       <screenshot>
         <screeninfo
@@ -694,7 +694,7 @@
 >Consells d'eines</title>
 
       <para
->Per a cada element de xarxa es proporciona un consell d'eina que conté informació diversa com el nom del grup de treball i l'explorador mestre, el nom i l'adreça IP del servidor, el nom de la compartició, &etc;</para>
+>Per a cada element de xarxa es proporciona un consell d'eina que conté informació diversa com el nom del grup de treball i l'explorador mestre (si és disponible), el nom i l'adreça IP del servidor, el nom de la compartició, &etc;</para>
       <para
 >Els consells d'eina es poden inhabilitar en el <link linkend="configuration_page_user_interface_network"
 >diàleg de configuració</link
@@ -760,7 +760,7 @@
 > o <programlisting
 >\\[USUARI@]SERVIDOR\COMPARTICIÓ</programlisting
 > o com un URL en la forma <programlisting
->[smb:]//[usuari@]servidor:port/compartició</programlisting
+>[smb:]//[usuari@]servidor[:port]/compartició</programlisting
 > S'habilitarà el botó <guibutton
 >D'acord</guibutton
 > i el podreu prémer per a muntar la compartició. No obstant això, també és aconsellable introduir l'adreça IP i el grup de treball del servidor. Si voleu afegir alhora la compartició a les adreces d'interès, feu clic al botó <guibutton
