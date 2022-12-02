@@ -1324,7 +1324,6 @@ void Smb4KClientJob::slotStartJob()
 
 void Smb4KClientJob::slotFinishJob()
 {
-    qDebug() << "Killing context";
     if (m_context != nullptr) {
         smbc_free_context(m_context, 1);
     }
