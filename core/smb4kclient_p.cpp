@@ -284,13 +284,13 @@ Smb4KClientJob::Smb4KClientJob(QObject* parent)
 
 Smb4KClientJob::~Smb4KClientJob()
 {
-    smbc_free_context(m_context, 1);
 }
 
 
 void Smb4KClientJob::start()
 {
     QTimer::singleShot(50, this, SLOT(slotStartJob()));
+    connect(this, &KJob::result, this, &Smb4KClientJob::slotFinishJob);
 }
 
 
@@ -483,9 +483,6 @@ void Smb4KClientJob::initClientLibrary()
     
         setError(ClientError);
         setErrorText(strerror(errorCode));
-    
-        smbc_free_context(m_context, 1);
-    
         emitResult();
         return;
     }
@@ -1487,11 +1484,6 @@ void Smb4KClientJob::doPrinting()
     // 
     smbc_close_fn closePrinter = smbc_getFunctionClose(m_context);
     closePrinter(m_context, printer);
-  
-    //
-    // Free the context
-    // 
-    smbc_free_context(m_context, 1);
 }
 
 
@@ -1536,6 +1528,13 @@ void Smb4KClientJob::slotStartJob()
     // Emit the result
     // 
     emitResult();
+}
+
+void Smb4KClientJob::slotFinishJob()
+{
+    if (m_context != nullptr) {
+        smbc_free_context(m_context, 1);
+    }
 }
 
 
