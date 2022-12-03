@@ -1,3 +1,12 @@
+Smb4K 3.1.5 (2022-12-xx):
+
+See the summery of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
+
+- Fix arrangement of the dock widgets as tabs on first start. Backported 
+  from master.
+- Fix crash bug(s) in Smb4KClientJob. Backported from master.
+
 Smb4K 3.1.4 (2022-10-30):
 
 See the summery of changes below. For a full list of changes, please
