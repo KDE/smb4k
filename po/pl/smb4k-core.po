@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-10 00:46+0000\n"
+"POT-Creation-Date: 2022-12-03 00:46+0000\n"
 "PO-Revision-Date: 2022-08-21 07:04+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1976,12 +1976,12 @@ msgstr "Adres IP:"
 msgid "Category name:"
 msgstr "Nazwa kategorii:"
 
-#: smb4kclient_p.cpp:1255
+#: smb4kclient_p.cpp:1252
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "Nie można odczytać pliku %1"
 
-#: smb4kclient_p.cpp:1272
+#: smb4kclient_p.cpp:1269
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "Nie można wydrukować pliku %1 na %2"

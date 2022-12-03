@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-10 00:46+0000\n"
+"POT-Creation-Date: 2022-12-03 00:46+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1694,12 +1694,12 @@ msgstr "IP पत्ता :"
 msgid "Category name:"
 msgstr ""
 
-#: smb4kclient_p.cpp:1255
+#: smb4kclient_p.cpp:1252
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr ""
 
-#: smb4kclient_p.cpp:1272
+#: smb4kclient_p.cpp:1269
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr ""

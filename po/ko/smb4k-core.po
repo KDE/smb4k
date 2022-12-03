@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-10 00:46+0000\n"
+"POT-Creation-Date: 2022-12-03 00:46+0000\n"
 "PO-Revision-Date: 2022-07-13 11:14+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1904,12 +1904,12 @@ msgstr "IP 주소:"
 msgid "Category name:"
 msgstr "분류 이름:"
 
-#: smb4kclient_p.cpp:1255
+#: smb4kclient_p.cpp:1252
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "%1 파일에서 읽을 수 없음"
 
-#: smb4kclient_p.cpp:1272
+#: smb4kclient_p.cpp:1269
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "%2에서 %1 파일을 인쇄할 수 없음"
