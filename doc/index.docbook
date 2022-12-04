@@ -475,7 +475,7 @@
       <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
         <title>Mount Settings (BSD only)</title>
         
-        <para>In this tab you can define settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">this page</link>.</para>
+        <para>In this tab you can define settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">this section</link>.</para>
       </sect3>
         
       <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
@@ -545,7 +545,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>You can switch between the two views by selecting either the appropriate entry in the <guimenuitem>View Modes</guimenuitem> submenu from the <link linkend="mainwindow_overview"><guimenu>Shares View</guimenu></link> menu of the main window or in the shares view's <link linkend="shares_view_actions_popup_menu">popup menu</link>.</para>
+      <para>You can switch between the two views by selecting the appropriate entry in the <guimenuitem>View Modes</guimenuitem> submenu of the tool bar, in the menu bar under <link linkend="mainwindow_overview"><guimenu>Shares</guimenu></link> or in the shares view's <link linkend="shares_view_actions_popup_menu">popup menu</link>.</para>
       <para>By default, only your own mounts are displayed. However, you can adjust &smb4k; to show all mounts with the <link linkend="configuration_page_mounting_basic_settings_behavior">respective settings</link>.</para>
     </sect2>
 
@@ -593,7 +593,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Unmount one or multiple selected shares. If no share is selected in the shares view, this button is disabled.</para>
+            <para>Unmount the selected shares. If no share is selected in the shares view, this button is disabled.</para>
             <para>Read the <link linkend="shares_view_unmounting">Unmounting Shares</link> section for more details.</para>
           </listitem>
         </varlistentry>
@@ -617,7 +617,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Add bookmarks to the currently selected mounted shares. This action is disabled if no share is selected.</para>
+            <para>Add bookmarks to the selected shares. This action is disabled if no share is selected.</para>
             <para>Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
           </listitem>
         </varlistentry>
