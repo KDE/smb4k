@@ -689,8 +689,18 @@
     <sect2 id="shares_view_inaccessible_shares">
       <title>Inaccessible Shares</title>
 
-      <para>&smb4k; periodically checks all mounted shares if they are still accessible. If an inaccessible share is encountered, it will be marked with a <link linkend="shares_view_icons">locked folder icon</link> and you will not be able to open or synchronize it anymore. Unmounting and adding a bookmark is still possible.</para>
+      <para>&smb4k; periodically checks all mounted shares if they are still accessible. If an inaccessible share is encountered, it will be marked with a lock symbol and you will not be able to open or synchronize it anymore. Unmounting and adding a bookmark is still possible.</para>
       <note><para>The program might freeze for a short period of time due to an inaccessible share. It will recover afterwards.</para></note>
+    </sect2>
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
+  -->
+    
+    <sect2 id="shares_view_foreign_shares">
+      <title>Shares Owned by Other Users</title>
+      
+      <para>Shares owned by other users are only shown if you adjusted the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_page_mounting_basic_settings_behavior">change this behavior</link>, too.</para>
     </sect2>
 
 <!-- 
@@ -700,23 +710,7 @@
     <sect2 id="shares_view_icons">
       <title>Icons</title>
 
-      <para>Three different icons may be presented to the user:</para>
-      <screenshot>
-        <screeninfo>Screenshot of three different icons</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_icons.png" format="PNG" />
-          </imageobject>
-          <textobject>
-            <phrase>Three different icons</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <itemizedlist>
-        <listitem><para>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open or synchronize it. You will only be able to unmount it or add a bookmark.</para></listitem>
-        <listitem><para>The central icon indicates that the share is online, accessible, and owned by you. You may perform all available actions on it.</para></listitem>
-        <listitem><para>All shares marked with a warning sign like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_page_mounting_basic_settings_behavior">settings</link> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_page_mounting_basic_settings_behavior">change this behavior</link>, too.</para></listitem>
-      </itemizedlist>
+      <para>A mounted share is indicated by a small, corresponding symbol in the lower corner of the folder icon. This changes to a lock for shares that are not accessible. For shares that belong to another user, it is replaced by a warning sign.</para>
     </sect2>
 
 <!-- 
@@ -726,7 +720,7 @@
     <sect2 id="shares_view_drag_and_drop">
       <title>Drag-and-Drop</title>
 
-      <para>&smb4k; supports drag-and-drop in the shares view. To transfer or link data to a share, drag the files and/or folders over the share icon and drop them there. A popup menu will open asking you what you want to do. Choose the appropriate action (copy, move or link).</para>
+      <para>&smb4k; supports drag-and-drop in the shares view. To transfer or link data to a share, drag the files and/or folders over the share icon and drop them there. A popup menu will open asking you what to do. Choose the appropriate action (copy, move or link).</para>
       <screenshot>
         <screeninfo>Screenshot of the shares view after the user dropped a file</screeninfo>
         <mediaobject>
@@ -739,7 +733,7 @@
         </mediaobject>
       </screenshot>
       <para>To avoid the popup menu, press the &Shift; key for moving, the &Ctrl; key for copying and the <keycombo>&Ctrl;&Shift;</keycombo> key combination for linking while dragging and dropping. The transfer will only be successful if the share was mounted with read and write permissions.</para>
-      <para>You can also drag and drop the whole share to the desktop or to another application (&eg; &dolphin;). Again, a popup menu will open asking you, what you want to do. When choosing the appropriate operation, please remember that under most circumstances moving and linking the share might not be a good idea.</para>
+      <para>You can also drag and drop the whole share to the desktop or to another application (&eg; &dolphin;). Again, a popup menu will open asking you, what to do. When choosing the appropriate operation, please remember that under most circumstances moving and linking the share might not be a good idea.</para>
     </sect2>
 
 <!-- 
