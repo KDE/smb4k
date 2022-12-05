@@ -474,22 +474,16 @@ void Smb4KShare::setShareIcon()
     if (!isPrinter()) {
         // Overlays
         QStringList overlays;
-
-        if (isMounted()) {
-            overlays << QStringLiteral("emblem-mounted");
-        } else {
-            overlays << QStringLiteral("");
-        }
-
-        if (isForeign()) {
+        
+        if (isInaccessible()) {
+            overlays << QStringLiteral("emblem-locked");
+        } else if (isForeign()) {
             overlays << QStringLiteral("emblem-warning");
+        } else {
+            overlays << QStringLiteral("emblem-mounted");
         }
 
-        if (!isInaccessible()) {
-            *pIcon = KDE::icon(QStringLiteral("folder-network"), overlays);
-        } else {
-            *pIcon = KDE::icon(QStringLiteral("folder-locked"), overlays);
-        }
+        *pIcon = KDE::icon(QStringLiteral("folder-network"), overlays);
     } else {
         *pIcon = KDE::icon(QStringLiteral("printer"));
     }
