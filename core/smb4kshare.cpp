@@ -479,7 +479,7 @@ void Smb4KShare::setShareIcon()
             overlays << QStringLiteral("emblem-locked");
         } else if (isForeign()) {
             overlays << QStringLiteral("emblem-warning");
-        } else {
+        } else if (isMounted()) {
             overlays << QStringLiteral("emblem-mounted");
         }
 
