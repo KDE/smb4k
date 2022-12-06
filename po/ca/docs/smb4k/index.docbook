@@ -1021,7 +1021,7 @@
         
         <para
 >En aquesta pestanya podreu definir les opcions de configuració relacionades amb el muntatge. Per a obtenir informació sobre totes les altres opcions de configuració, vegeu <link linkend="configuration_page_mounting"
->aquesta pàgina</link
+>aquesta secció</link
 >.</para>
       </sect3>
         
@@ -1124,13 +1124,13 @@
       <para
 >Podeu canviar entre les dues vistes si seleccioneu l'entrada adequada al submenú <guimenuitem
 >Modes de vista</guimenuitem
-> des del menú <link linkend="mainwindow_overview"
+> de la barra d'eines, a la barra del menú <link linkend="mainwindow_overview"
 ><guimenu
->Vista de les comparticions</guimenu
+>Comparticions</guimenu
 ></link
-> de la finestra principal o al <link linkend="shares_view_actions_popup_menu"
+> o en el <link linkend="shares_view_actions_popup_menu"
 >menú emergent</link
-> de la vista de les comparticions.</para>
+> de la vista de comparticions.</para>
       <para
 >De manera predeterminada, només es mostraran les muntades pròpies. Tanmateix, podeu ajustar el &smb4k; perquè mostri totes les muntades amb les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració respectives</link
@@ -1204,7 +1204,7 @@
           </term>
           <listitem>
             <para
->Desmunteu una o múltiples comparticions seleccionades. Si no hi ha seleccionada cap compartició a la vista de comparticions, aquest botó estarà inhabilitat.</para>
+>Desmunta les comparticions seleccionades. Si no hi ha seleccionada cap compartició a la vista de comparticions, aquest botó estarà inhabilitat.</para>
             <para
 >Per a més detalls, llegiu la secció <link linkend="shares_view_unmounting"
 >Desmuntar les comparticions</link
@@ -1248,7 +1248,7 @@
           </term>
           <listitem>
             <para
->Afegeix adreces d'interès per a les comparticions muntades que estan seleccionades. Aquesta acció s'inhabilitarà si no se selecciona cap compartició.</para>
+>Afegeix adreces d'interès per a les comparticions seleccionades. Aquesta acció s'inhabilitarà si no se selecciona cap compartició.</para>
             <para
 >Per a més detalls, llegiu la secció <link linkend="bookmarks_adding"
 >Afegir adreces d'interès</link
