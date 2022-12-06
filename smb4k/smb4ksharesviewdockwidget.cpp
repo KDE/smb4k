@@ -52,6 +52,7 @@
 #include <KWidgetsAddons/KMessageBox>
 #include <KIOWidgets/KIO/DropJob>
 #include <KCoreAddons/KJobUiDelegate>
+#include <KJobWidgets/KJobWidgets>
 
 
 Smb4KSharesViewDockWidget::Smb4KSharesViewDockWidget(const QString& title, QWidget* parent)
@@ -420,7 +421,8 @@ void Smb4KSharesViewDockWidget::slotDropEvent(Smb4KSharesViewItem* item, QDropEv
       if (Smb4KHardwareInterface::self()->isOnline())
       {
         QUrl dest = QUrl::fromLocalFile(item->shareItem()->path());
-        KIO::DropJob *job = drop(e, dest, KIO::DefaultFlags);
+        KIO::DropJob *job = KIO::drop(e, dest, KIO::DefaultFlags);
+        KJobWidgets::setWindow(job, m_sharesView->viewport());
         job->uiDelegate()->setAutoErrorHandlingEnabled(true);
         job->uiDelegate()->setAutoWarningHandlingEnabled(true);
       }
