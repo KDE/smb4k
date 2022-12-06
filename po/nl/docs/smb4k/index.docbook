@@ -1017,7 +1017,7 @@
         
         <para
 >In dit tabblad kunt u instellingen definiëren gerelateerd aan aankoppelen. Voor informatie over alle andere instellingen zie <link linkend="configuration_page_mounting"
->deze pagina</link
+>deze sectie</link
 >.</para>
       </sect3>
         
@@ -1118,13 +1118,13 @@
       </screenshot>
 
       <para
->U kunt tussen de twee weergaven heen en weer schakelen door het gewenste item in het menu <guimenuitem
+>U kunt tussen de twee weergaven heen en weer schakelen door het gewenste item in het submenu van de werkbalk <guimenuitem
 >Weergavemodi</guimenuitem
-> submenu uit het menu <link linkend="mainwindow_overview"
-><guibutton
->Weergave van gedeelde mappen</guibutton
+>, in de menubalk <link linkend="mainwindow_overview"
+><guimenu
+>Gedeelde mappen</guimenu
 ></link
-> van het hoofdvenster of in het <link linkend="shares_view_actions_popup_menu"
+> of in het <link linkend="shares_view_actions_popup_menu"
 >pop-up-menu</link
 > van weergave van de gedeelde mappen</para>
       <para
@@ -1200,7 +1200,7 @@
           </term>
           <listitem>
             <para
->Koppelt een of meerdere geselecteerde shares af. Als u in het venster geen shares heeft geselecteerd dan is deze knop niet te selecteren.</para>
+>Koppelt de geselecteerde gedeelde mappen af. Als u in het venster geen gedeelde mappen hebt geselecteerd dan is deze knop niet te selecteren.</para>
             <para
 >Lees de sectie <link linkend="shares_view_unmounting"
 >Shares afkoppelen</link
@@ -1244,7 +1244,7 @@
           </term>
           <listitem>
             <para
->Voeg bladwijzers toe aan de nu geselecteerde aangekoppelde shares. Deze actie is uitgeschakeld als er geen share is geselecteerd.</para>
+>Voeg bladwijzers toe aan de geselecteerde gedeelde mappen. Deze actie is uitgeschakeld als er geen gedeelde map is geselecteerd.</para>
             <para
 >Lees de sectie <link linkend="bookmarks_adding"
 >Bladwijzers toevoegen</link
