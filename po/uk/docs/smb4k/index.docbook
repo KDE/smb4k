@@ -1379,13 +1379,27 @@
 >Недоступні спільні ресурси</title>
 
       <para
->&smb4k; періодично виконує перевірку доступності всіх змонтованих спільних ресурсів. Якщо програмою буде виявлено недоступні спільні ресурси, їх буде позначено <link linkend="shares_view_icons"
->піктограмою замкненої теки</link
->. Можливість відкриття або синхронізації з такими ресурсами буде вимкнено, але ви зможете демонтувати такі ресурси та створювати для них закладки.</para>
+>&smb4k; періодично виконує перевірку доступності всіх змонтованих спільних ресурсів. Якщо програмою буде виявлено недоступні спільні ресурси, їх буде позначено символом замка. Можливість відкриття або синхронізації з такими ресурсами буде вимкнено, але ви зможете демонтувати такі ресурси та створювати для них закладки.</para>
       <note
 ><para
 >Недоступність спільного ресурсу може викликати тимчасову непрацездатність інтерфейсу програми.</para
 ></note>
+    </sect2>
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
+  -->
+    
+    <sect2 id="shares_view_foreign_shares">
+      <title
+>Спільні ресурси, власником яких є інші користувачі</title>
+      
+      <para
+>Спільне ресурси, які належать іншим користувачам буде показано, лише якщо ви <link linkend="configuration_page_mounting_basic_settings_behavior"
+>налаштували програму</link
+> на їх показ. За типових налаштувань ви не зможете демонтувати такі спільні ресурси, але доступ до їх демонтування можна отримати відповідним <link linkend="configuration_page_mounting_basic_settings_behavior"
+>налаштуванням програми</link
+>.</para>
     </sect2>
 
 <!-- 
@@ -1397,38 +1411,7 @@
 >Піктограми</title>
 
       <para
->Користувачеві може бути показано три різних піктограми:</para>
-      <screenshot>
-        <screeninfo
->Знімок трьох різних піктограм</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_icons.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Три різних піктограми</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <itemizedlist>
-        <listitem
-><para
->За допомогою піктограми, яку розташовано ліворуч, &smb4k; повідомляє користувачеві про те, що спільний ресурс є недоступним. Відкриття або синхронізація з подібними ресурсами за допомогою &smb4k; є неможливою. Ви зможете лише демонтовувати такі ресурси або створювати для них закладки.</para
-></listitem>
-        <listitem
-><para
->Піктограма у центрі позначає те, що комп’ютер зі спільним ресурсом перебуває у мережі, доступ до ресурсу відкрито, а сам ресурс належить вашому користувачеві. Ви можете виконувати з цим ресурсом будь-які з можливих дій.</para
-></listitem>
-        <listitem
-><para
->Всі спільні ресурси, позначені знаком попередження, подібно до наведеного на знімку праворуч, належать іншим користувачам. Такі ресурси буде показано, лише якщо ви <link linkend="configuration_page_mounting_basic_settings_behavior"
->налаштували програму</link
-> на їх показ. За типових налаштувань ви не зможете демонтувати такі спільні ресурси, але доступ до їх демонтування можна отримати відповідним <link linkend="configuration_page_mounting_basic_settings_behavior"
->налаштуванням програми</link
->.</para
-></listitem>
-      </itemizedlist>
+>Змонтований спільний ресурс буде позначено невеличким відповідним символом у нижньому куті піктограми теки. Цей символ буде замінено на замок для спільних ресурсів, які недоступні. Для спільних ресурсів, які належать іншим користувачам, цей символ буде замінено на знак попередження.</para>
     </sect2>
 
 <!-- 
@@ -1471,42 +1454,25 @@
 >Незмонтовані спільні ресурси</title>
 
       <para
->Демонтувати один або декілька спільних ресурсів можна або за допомогою пункту меню <menuchoice
+>One or multiple selected shares may be unmounted by either clicking the <menuchoice
 ><shortcut
 ><keycombo action="simul"
->&Ctrl;<keycap
+>&Ctrl; <keycap
 >U</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
->Демонтувати</guimenuitem
+>Unmount</guimenuitem
 ></menuchoice
->, або натисканням відповідного клавіатурного скорочення. Типово можливість демонтування передбачено лише для спільних ресурсів, власником яких є ваш користувач. Таку поведінку програми можна змінити за допомогою <link linkend="configuration_page_mounting_basic_settings_behavior"
->діалогового вікна налаштування</link
->. Якщо ви увімкнете можливість демонтування спільних ресурсів інших користувачів, перед демонтуванням програма показуватиме вам діалогове вікно з попередженням:</para>
-      <screenshot>
-        <screeninfo
->Знімок вікна з попередженням, яке буде показано, коли демонтуватиметься зовнішній спільний ресурс.</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Попередження про демонтування зовнішнього спільного ресурсу.</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
+> action, or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>configuration dialog</link
+>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount. If you proceed, the share will definitely be unmounted. So, please think twice before you decide to unmount those shares!</para>
       <para
->Якщо ви натиснете кнопку <guibutton
->Так</guibutton
->, спільний ресурс буде демонтовано остаточно. Отже, вам слід бути розважливими під час демонтування спільних ресурсів інших користувачів!</para>
-      <para
->Крім того, у &smb4k; передбачено можливість примусового демонтування спільних ресурсів (лишу у &Linux;). Таке демонтування може бути корисним, якщо спільні ресурси не вдається демонтувати у звичайний спосіб. Щоб увімкнути цю можливість, вам слід змінити <link linkend="configuration_page_mounting_basic_settings_behavior"
->параметри роботи програми</link
-> за допомогою діалогового вікна налаштовування. Після цього &smb4k; виконає <ulink url="man:/umount"
->«ліниве» демонтування</ulink
-> недоступних спільних ресурсів.</para>
+>&smb4k; provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>settings</link
+> in the configuration dialog. &smb4k; will then perform a <ulink url="man:/umount(8)"
+>lazy unmount</ulink
+> on inaccessible shares.</para>
       <para
 >Ви можете демонтувати всі спільні ресурси одразу за допомогою пункту меню <menuchoice
 ><shortcut

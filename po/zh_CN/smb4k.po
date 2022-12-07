@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:46+0000\n"
+"POT-Creation-Date: 2022-12-07 00:47+0000\n"
 "PO-Revision-Date: 2022-12-01 06:53\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -125,7 +125,7 @@ msgstr "编辑书签(&E)"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "添加书签(&B)"
@@ -666,7 +666,7 @@ msgid "&Mount"
 msgstr "挂载(&M)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "&Unmount"
 msgstr "卸载(&U)"
@@ -712,7 +712,7 @@ msgstr "项目下行"
 msgid "Item Up"
 msgstr "项目上行"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "U&nmount All"
 msgstr "全部卸载(&N)"
@@ -742,37 +742,37 @@ msgstr "使用 Konsole 打开"
 msgid "Open with File Manager"
 msgstr "用文件管理器打开"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:151
+#: smb4k/smb4ksharesviewdockwidget.cpp:152
 #, kde-format
 msgid "View Modes"
 msgstr "视图模式"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:157
+#: smb4k/smb4ksharesviewdockwidget.cpp:158
 #, kde-format
 msgid "Icon View"
 msgstr "图标视图"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:163
+#: smb4k/smb4ksharesviewdockwidget.cpp:164
 #, kde-format
 msgid "List View"
 msgstr "列表视图"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "S&ynchronize"
 msgstr "同步(&Y)"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "用 Konso&le 打开"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "用文件管理器打开(&I)"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:371
+#: smb4k/smb4ksharesviewdockwidget.cpp:373
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

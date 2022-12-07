@@ -1363,13 +1363,27 @@
 >Ontoegankelijke shares</title>
 
       <para
->&smb4k; controleert periodiek bij alle aangekoppelde shares of ze nog toegankelijk zijn. Als het een ontoegankelijke share tegenkomt, dan wordt gemarkeerd met een <link linkend="shares_view_icons"
->vergrendelde map-pictogram</link
-> en zal u niet meer in staat zijn om het te openen of te synchroniseren. Afkoppelen en een bladwijzer toevoegen is echter nog steeds mogelijk.</para>
+>&smb4k; controleert periodiek bij alle aangekoppelde shares of ze nog toegankelijk zijn. Als het een ontoegankelijke share tegenkomt, dan wordt deze gemarkeerd met een vergrendelsymbool en zult u niet meer in staat zijn om het te openen of te synchroniseren. Afkoppelen en een bladwijzer toevoegen is echter nog steeds mogelijk.</para>
       <note
 ><para
 >Het programma kan vanwege een ontoegankelijke share voor een korte tijd traag werken. Het zal zich echter daarna weer herstellen.</para
 ></note>
+    </sect2>
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
+  -->
+    
+    <sect2 id="shares_view_foreign_shares">
+      <title
+>Shares met andere gebruikers als eigenaar</title>
+      
+      <para
+>Shares die eigendom zijn van een andere gebruiker worden alleen getoond als u de <link linkend="configuration_page_mounting_basic_settings_behavior"
+>instellingen</link
+> wijzigt. In de standaard configuratie, is het u niet toegestaan om deze shares af te koppelen, maar u kunt ook <link linkend="configuration_page_mounting_basic_settings_behavior"
+>dit gedrag wijzigen</link
+>.</para>
     </sect2>
 
 <!-- 
@@ -1381,38 +1395,7 @@
 >Pictogrammen</title>
 
       <para
->Drie verschillende pictogrammen die de gebruiker te zien kan krijgen:</para>
-      <screenshot>
-        <screeninfo
->Schermafdruk van drie verschillende pictogrammen</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_icons.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Drie verschillende pictogrammen</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <itemizedlist>
-        <listitem
-><para
->Het pictogram aan de linkerkant geeft aan dat deze share niet toegankelijk is. &smb4k; laat het openen of ermee synchroniseren niet toe. U kunt het niet afkoppelen of er een bladwijzer voor maken.</para
-></listitem>
-        <listitem
-><para
->De middelste pictogram geeft aan dat de share online is, toegankelijk, en dat u de eigenaar ervan bent. U mag alle beschikbare acties erop uitvoeren.</para
-></listitem>
-        <listitem
-><para
->Alle met een waarschuwingsteken gemarkeerde shares zoals aan de rechterkant zijn eigendom van een andere gebruiker. U krijgt ze alleen te zien als u de <link linkend="configuration_page_mounting_basic_settings_behavior"
->instellingen</link
-> wijzigt. In de standaard configuratie, is het u niet toegestaan om deze shares af te koppelen, maar u kunt ook <link linkend="configuration_page_mounting_basic_settings_behavior"
->dit gedrag wijzigen</link
->.</para
-></listitem>
-      </itemizedlist>
+>Een aangekoppelde share wordt aangegeven door een klein, overeenkomstig symbool in de lagere hoek van het mappictogram. Dit wijzigt in een slot voor shares die niet toegankelijk zijn. Voor shares behorend bij een andere gebruiker wordt dit vervangen door een waarschuwingsteken.</para>
     </sect2>
 
 <!-- 
@@ -1424,7 +1407,7 @@
 >Slepen en loslaten</title>
 
       <para
->&smb4k; ondersteunt slepen en loslaten in de sharesweergave. Om gegevens te transporteren of een koppeling te maken naar een share, sleep de bestanden en/of mappen boven het sharepictogram en laat ze daar los. Er opent een popup-menu die vraagt wat u wilt doen. Kies de toepasselijke actie (kopiëren, verplaatsen of koppelen).</para>
+>&smb4k; ondersteunt slepen en loslaten in de sharesweergave. Om gegevens te transporteren of een koppeling te maken naar een share, sleep de bestanden en/of mappen boven het sharepictogram en laat ze daar los. Er opent een popup-menu die vraagt wat te doen. Kies de toepasselijke actie (kopiëren, verplaatsen of koppelen).</para>
       <screenshot>
         <screeninfo
 >Schermafdruk van de weergave van shares nadat een bestand is losgelaten</screeninfo>
@@ -1443,7 +1426,7 @@
 >&Ctrl;&Shift;</keycombo
 > voor een koppeling bij slepen en loslaten. De overdracht zal alleen lukken als de gedeelde map aangekoppeld is met lees- en schrijfrechten.</para>
       <para
->U kunt ook de gehele gedeelde map slepen en loslaten naar het bureaublad of naar een andere toepassing (&eg; &dolphin;). Nogmaals, er zal een pop-up-menu verschijnen die u vraagt, wat u wilt doen. Denk er aan dat, bij het kiezen van de toepasselijke bewerking, onder de meeste omstandigheden, verplaatsen en koppelen van de gedeelde map geen goed idee zou kunnen zijn.</para>
+>U kunt ook de gehele gedeelde map slepen en loslaten naar het bureaublad of naar een andere toepassing (&eg; &dolphin;). Nogmaals, er zal een pop-up-menu verschijnen die u vraagt, wat te doen. Denk er aan dat, bij het kiezen van de toepasselijke bewerking, onder de meeste omstandigheden, verplaatsen en koppelen van de gedeelde map geen goed idee zou kunnen zijn.</para>
     </sect2>
 
 <!-- 
@@ -1455,7 +1438,7 @@
 >Shares afkoppelen</title>
 
       <para
->U kunt een of meerdere shares afkoppelen door naar keuze de sneltoets of het menu-item <menuchoice
+>One or multiple selected shares may be unmounted by either clicking the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1463,34 +1446,17 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Afkoppelen</guimenuitem
+>Unmount</guimenuitem
 ></menuchoice
-> in te drukken. Standaard is de mogelijkheid tot het afkoppelen van shares beperkt tot diegene waarvan u de eigenaar bent. Maar, u kunt dit wijzigen door de <link linkend="configuration_page_mounting_basic_settings_behavior"
->instellingen</link
-> in het configuratievenster te wijzigen. Als u de mogelijkheid tot het afkoppelen van shares waarvan anderen gebruikers de eigenaar zijn, heeft ingeschakeld, dan krijgt u een waarschuwing te zien voor het eigenlijke afkoppelen:</para>
-      <screenshot>
-        <screeninfo
->Schermafdruk van het waarschuwingsdialoog die getoond wordt bij afkoppelen van vreemde shares</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->De waarschuwingsdialog die getoond wordt bij afkoppelen van vreemde shares</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
+> action, or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>configuration dialog</link
+>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount. If you proceed, the share will definitely be unmounted. So, please think twice before you decide to unmount those shares!</para>
       <para
->Als u op de knop <guibutton
->Ja</guibutton
-> klikt, dan wordt de share definitief afgekoppeld. Denk er daarom nog een keer over na voordat u beslist om om shares van andere gebruikers af te koppelen!</para>
-      <para
->In &smb4k; is er ook de mogelijkheid aanwezig voor het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
->instellingen</link
-> in het configuratievenster wijzigen. &smb4k; zal daarna een <ulink url="man:/umount"
->langzame afkoppeling</ulink
-> uitvoeren op niet-toegankelijke shares.</para>
+>&smb4k; provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>settings</link
+> in the configuration dialog. &smb4k; will then perform a <ulink url="man:/umount(8)"
+>lazy unmount</ulink
+> on inaccessible shares.</para>
       <para
 >Alle shares kunnen in één keer afgekoppeld worden door te klikken op de actie <menuchoice
 ><shortcut

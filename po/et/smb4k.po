@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:46+0000\n"
+"POT-Creation-Date: 2022-12-07 00:47+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -128,7 +128,7 @@ msgstr "&Muuda järjehoidjaid"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Lisa järjehoidja"
@@ -702,7 +702,7 @@ msgid "&Mount"
 msgstr "Ühe&nda"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "&Unmount"
 msgstr "Lah&uta"
@@ -748,7 +748,7 @@ msgstr "Kirje alla"
 msgid "Item Up"
 msgstr "Kirje üles"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "U&nmount All"
 msgstr "La&huta kõik"
@@ -778,37 +778,37 @@ msgstr "Ava Konsoolis"
 msgid "Open with File Manager"
 msgstr "Ava failihalduris"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:151
+#: smb4k/smb4ksharesviewdockwidget.cpp:152
 #, kde-format
 msgid "View Modes"
 msgstr "Vaaterežiimid"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:157
+#: smb4k/smb4ksharesviewdockwidget.cpp:158
 #, kde-format
 msgid "Icon View"
 msgstr "Ikoonivaade"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:163
+#: smb4k/smb4ksharesviewdockwidget.cpp:164
 #, kde-format
 msgid "List View"
 msgstr "Loendivaade"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "S&ynchronize"
 msgstr "Sünkroon&i"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Ava Konsoo&lis"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Ava &failihalduris"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:371
+#: smb4k/smb4ksharesviewdockwidget.cpp:373
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

@@ -1367,13 +1367,27 @@
 >Comparticions inaccessibles</title>
 
       <para
->El &smb4k; comprova periòdicament totes les comparticions muntades per a veure si encara són accessibles. Si troba que una compartició és inaccessible, la marcarà amb una <link linkend="shares_view_icons"
->icona de carpeta bloquejada</link
-> i ja no la podreu obrir ni sincronitzar. Encara serà possible desmuntar i afegir una adreça d'interès.</para>
+>El &smb4k; comprova periòdicament totes les comparticions muntades per a veure si encara són accessibles. Si troba que una compartició és inaccessible, la marcarà amb un símbol de cadenat i ja no la podreu obrir ni sincronitzar. Encara serà possible desmuntar i afegir una adreça d'interès.</para>
       <note
 ><para
 >El programa es pot congelar durant un curt període de temps a causa d'una compartició inaccessible. Després es recuperarà.</para
 ></note>
+    </sect2>
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
+  -->
+    
+    <sect2 id="shares_view_foreign_shares">
+      <title
+>Comparticions que són propietat d'altres usuaris</title>
+      
+      <para
+>Només es mostraran les comparticions que són propietat d'un altre usuari si heu ajustat les <link linkend="configuration_page_mounting_basic_settings_behavior"
+>opcions de configuració</link
+> per a mostrar-les. A la configuració predeterminada, no tindreu permís per a desmuntar aquestes comparticions, però també podeu <link linkend="configuration_page_mounting_basic_settings_behavior"
+>canviar aquest comportament</link
+>.</para>
     </sect2>
 
 <!-- 
@@ -1385,38 +1399,7 @@
 >Icones</title>
 
       <para
->Es poden presentar a l'usuari tres icones diferents:</para>
-      <screenshot>
-        <screeninfo
->Captura de pantalla de les tres icones</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_icons.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Tres icones diferents</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <itemizedlist>
-        <listitem
-><para
->La icona de l'esquerra indica que aquesta compartició no és accessible. El &smb4k; no permetrà obrir-la ni sincronitzar-la. Només podreu desmuntar-la o afegir-hi una adreça d'interès.</para
-></listitem>
-        <listitem
-><para
->La icona central indica que la compartició es troba en línia, accessible i de propietat. Podeu realitzar sobre seu totes les accions disponibles.</para
-></listitem>
-        <listitem
-><para
->Totes les comparticions marcades amb un signe d'avís, com el que es troba a la dreta, són propietat d'un altre usuari. Només es mostraran si heu ajustat les <link linkend="configuration_page_mounting_basic_settings_behavior"
->opcions de configuració</link
-> per a mostrar-les. A la configuració predeterminada, no tindreu permís per a desmuntar aquestes comparticions, però també podeu <link linkend="configuration_page_mounting_basic_settings_behavior"
->canviar aquest comportament</link
->.</para
-></listitem>
-      </itemizedlist>
+>Una compartició muntada s'indica amb un petit símbol corresponent a la cantonada inferior de la icona de la carpeta. Això canvia a un cadenat a les comparticions que no són accessibles. Per a les comparticions que pertanyen a un altre usuari, se substitueix per un signe d'avís.</para>
     </sect2>
 
 <!-- 
@@ -1459,42 +1442,25 @@
 >Desmuntar les comparticions</title>
 
       <para
->Es poden desmuntar una o múltiples comparticions seleccionades fent clic al botó de l'acció <menuchoice
+>One or multiple selected shares may be unmounted by either clicking the <menuchoice
 ><shortcut
 ><keycombo action="simul"
->&Ctrl;<keycap
+>&Ctrl; <keycap
 >U</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
->Desmunta</guimenuitem
+>Unmount</guimenuitem
 ></menuchoice
-> o prement la drecera del teclat. De manera predeterminada, la possibilitat de desmuntar una compartició està restringida a les que són propietat vostra. Aquest comportament es pot modificar al <link linkend="configuration_page_mounting_basic_settings_behavior"
->diàleg de configuració</link
->. Si heu habilitat el desmuntatge de les comparticions que són propietat d'altres usuaris, se us mostrarà un diàleg d'avís abans del desmuntatge real:</para>
-      <screenshot>
-        <screeninfo
->Captura de pantalla del diàleg d'avís que es mostra quan es desmunta una compartició aliena</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->El diàleg d'avís que es mostra quan es desmunten comparticions alienes</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
+> action, or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>configuration dialog</link
+>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount. If you proceed, the share will definitely be unmounted. So, please think twice before you decide to unmount those shares!</para>
       <para
->Si feu clic al botó <guibutton
->Sí</guibutton
->, la compartició serà definitivament desmuntada. Per tant, penseu-vos-ho dues vegades abans de decidir desmuntar les comparticions que són propietat d'altres usuaris!</para>
-      <para
->El &smb4k; també proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
->opcions de configuració</link
-> al diàleg de configuració. El &smb4k; realitzarà un <ulink url="man:/umount"
->desmuntatge lent</ulink
-> sobre les comparticions inaccessibles.</para>
+>&smb4k; provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>settings</link
+> in the configuration dialog. &smb4k; will then perform a <ulink url="man:/umount(8)"
+>lazy unmount</ulink
+> on inaccessible shares.</para>
       <para
 >Es poden desmuntar totes les comparticions alhora fent clic al botó de l'acció <menuchoice
 ><shortcut

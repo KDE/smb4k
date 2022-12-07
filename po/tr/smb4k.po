@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:46+0000\n"
+"POT-Creation-Date: 2022-12-07 00:47+0000\n"
 "PO-Revision-Date: 2022-11-21 22:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -130,7 +130,7 @@ msgstr "Yer İmlerini Dü&zenle"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Yer İmi &Ekle"
@@ -682,7 +682,7 @@ msgid "&Mount"
 msgstr "&Bağla"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "&Unmount"
 msgstr "&Bağlantıyı Kes"
@@ -728,7 +728,7 @@ msgstr "Öge Aşağı"
 msgid "Item Up"
 msgstr "Öge Yukarı"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "U&nmount All"
 msgstr "&Tümünün Bağlantısını Kes"
@@ -758,37 +758,37 @@ msgstr "Konsole ile Aç"
 msgid "Open with File Manager"
 msgstr "Dosya Yöneticisi ile Aç"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:151
+#: smb4k/smb4ksharesviewdockwidget.cpp:152
 #, kde-format
 msgid "View Modes"
 msgstr "Görünüm Kipleri"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:157
+#: smb4k/smb4ksharesviewdockwidget.cpp:158
 #, kde-format
 msgid "Icon View"
 msgstr "Simge Görünümü"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:163
+#: smb4k/smb4ksharesviewdockwidget.cpp:164
 #, kde-format
 msgid "List View"
 msgstr "Liste Görünümü"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "S&ynchronize"
 msgstr "&Eşzamanla"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "&Konsole ile Aç"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "&Dosya Yöneticisi ile Aç"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:371
+#: smb4k/smb4ksharesviewdockwidget.cpp:373
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
