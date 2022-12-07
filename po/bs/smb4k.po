@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:46+0000\n"
+"POT-Creation-Date: 2022-12-07 00:47+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -135,7 +135,7 @@ msgstr "&Izmijeni zabilješke"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Dodaj &zabilješku"
@@ -729,7 +729,7 @@ msgid "&Mount"
 msgstr "&Montiraj"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "&Unmount"
 msgstr "&Demontirati"
@@ -778,7 +778,7 @@ msgstr "Predmet"
 msgid "Item Up"
 msgstr "Predmet"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "U&nmount All"
 msgstr "&Demontiraj sve"
@@ -808,37 +808,37 @@ msgstr "Otvori sa Konsole"
 msgid "Open with File Manager"
 msgstr "Otvori menadžerom datoteka"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:151
+#: smb4k/smb4ksharesviewdockwidget.cpp:152
 #, kde-format
 msgid "View Modes"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:157
+#: smb4k/smb4ksharesviewdockwidget.cpp:158
 #, kde-format
 msgid "Icon View"
 msgstr "Prikaz ikona"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:163
+#: smb4k/smb4ksharesviewdockwidget.cpp:164
 #, kde-format
 msgid "List View"
 msgstr "Prikaz liste"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "S&ynchronize"
 msgstr "&Sinhronizuj"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Otvori pomoću Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Otvori pomoću menadžera datoteka"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:371
+#: smb4k/smb4ksharesviewdockwidget.cpp:373
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
