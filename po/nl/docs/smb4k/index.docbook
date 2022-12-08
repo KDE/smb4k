@@ -1438,7 +1438,7 @@
 >Shares afkoppelen</title>
 
       <para
->One or multiple selected shares may be unmounted by either clicking the <menuchoice
+>U kunt een of meerdere shares afkoppelen door naar keuze de sneltoets of het menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1446,17 +1446,17 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Unmount</guimenuitem
+>Afkoppelen</guimenuitem
 ></menuchoice
-> action, or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior"
->configuration dialog</link
->. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount. If you proceed, the share will definitely be unmounted. So, please think twice before you decide to unmount those shares!</para>
+> in te drukken. Standaard is de mogelijkheid tot het afkoppelen van shares beperkt tot diegene waarvan u de eigenaar bent. Maar, u kunt dit wijzigen door de <link linkend="configuration_page_mounting_basic_settings_behavior"
+>instellingen</link
+> in het configuratievenster te wijzigen. Als u de mogelijkheid tot het afkoppelen van shares waarvan anderen gebruikers de eigenaar zijn, heeft ingeschakeld, dan krijgt u een waarschuwing te zien voor het eigenlijke afkoppelen. Als u door gaat zal de share definitief afgekoppeld worden. Denk dus twee keer na alvorens u beslist om deze shares af te koppelen!</para>
       <para
->&smb4k; provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior"
->settings</link
-> in the configuration dialog. &smb4k; will then perform a <ulink url="man:/umount(8)"
->lazy unmount</ulink
-> on inaccessible shares.</para>
+>In &smb4k; biedt de mogelijkheid van het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
+>instellingen</link
+> in het configuratievenster wijzigen. &smb4k; zal daarna een <ulink url="man:/umount"
+>langzame afkoppeling</ulink
+> uitvoeren op niet-toegankelijke shares.</para>
       <para
 >Alle shares kunnen in één keer afgekoppeld worden door te klikken op de actie <menuchoice
 ><shortcut

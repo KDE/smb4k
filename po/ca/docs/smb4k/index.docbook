@@ -1442,25 +1442,25 @@
 >Desmuntar les comparticions</title>
 
       <para
->One or multiple selected shares may be unmounted by either clicking the <menuchoice
+>Es poden desmuntar una o múltiples comparticions seleccionades fent clic a l'acció <menuchoice
 ><shortcut
 ><keycombo action="simul"
->&Ctrl; <keycap
+>&Ctrl;<keycap
 >U</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
->Unmount</guimenuitem
+>Desmunta</guimenuitem
 ></menuchoice
-> action, or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior"
->configuration dialog</link
->. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount. If you proceed, the share will definitely be unmounted. So, please think twice before you decide to unmount those shares!</para>
+> o prement la seva drecera de teclat. De manera predeterminada, la possibilitat de desmuntar una compartició està restringida a les que són propietat vostra. Aquest comportament es pot modificar al <link linkend="configuration_page_mounting_basic_settings_behavior"
+>diàleg de configuració</link
+>. Si heu habilitat el desmuntatge de les comparticions que són propietat d'altres usuaris, se us mostrarà un diàleg d'avís abans del desmuntatge real. Si continueu, la compartició es desmuntarà definitivament. Per tant, penseu-ho dues vegades abans de decidir desmuntar aquestes comparticions!</para>
       <para
->&smb4k; provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior"
->settings</link
-> in the configuration dialog. &smb4k; will then perform a <ulink url="man:/umount(8)"
->lazy unmount</ulink
-> on inaccessible shares.</para>
+>El &smb4k; proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
+>opcions de configuració</link
+> al diàleg de configuració. El &smb4k; realitzarà un <ulink url="man:/umount(8)"
+>desmuntatge fluix</ulink
+> de les comparticions inaccessibles.</para>
       <para
 >Es poden desmuntar totes les comparticions alhora fent clic al botó de l'acció <menuchoice
 ><shortcut

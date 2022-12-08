@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:46+0000\n"
+"POT-Creation-Date: 2022-12-07 00:47+0000\n"
 "PO-Revision-Date: 2021-12-15 11:16+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail."
 "com>\n"
@@ -130,7 +130,7 @@ msgstr "&Rediger bokmerke"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Legg til &bokmerke"
@@ -678,7 +678,7 @@ msgid "&Mount"
 msgstr "&Monter"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#: smb4k/smb4ksharesviewdockwidget.cpp:187
 #, kde-format
 msgid "&Unmount"
 msgstr "&Avmonter"
@@ -724,7 +724,7 @@ msgstr ""
 msgid "Item Up"
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:192
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
 #, kde-format
 msgid "U&nmount All"
 msgstr "&Avmonter alle"
@@ -754,37 +754,37 @@ msgstr "Opna med &Konsole"
 msgid "Open with File Manager"
 msgstr "Opna i filhandsamar"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:151
+#: smb4k/smb4ksharesviewdockwidget.cpp:152
 #, kde-format
 msgid "View Modes"
 msgstr "Visingsmodusar"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:157
+#: smb4k/smb4ksharesviewdockwidget.cpp:158
 #, kde-format
 msgid "Icon View"
 msgstr "Ikonvising"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:163
+#: smb4k/smb4ksharesviewdockwidget.cpp:164
 #, kde-format
 msgid "List View"
 msgstr "Listevising"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4ksharesviewdockwidget.cpp:205
 #, kde-format
 msgid "S&ynchronize"
 msgstr "&Synkroniser"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:210
+#: smb4k/smb4ksharesviewdockwidget.cpp:211
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Opna med &Konsole"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Opna med &filhandsamar"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:371
+#: smb4k/smb4ksharesviewdockwidget.cpp:373
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
