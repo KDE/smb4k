@@ -3504,7 +3504,7 @@ msgid ""
 "<p>The credentials stored in the wallet could not be accessed. There is "
 "either no wallet available or it could not be opened.</p>"
 msgstr ""
-"<p>No s'ha pogut accedir a les credencials emmagatzemades a la cartera. No "
+"<p>No s'ha pogut accedir a les credencials emmagatzemades en la cartera. No "
 "hi ha cap cartera disponible o no s'ha pogut obrir.</p>"
 
 #: smb4knotification.cpp:116
