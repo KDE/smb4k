@@ -474,7 +474,7 @@ void Smb4KShare::setShareIcon()
     if (!isPrinter()) {
         // Overlays
         QStringList overlays;
-        
+
         if (isInaccessible()) {
             overlays << QStringLiteral("emblem-locked");
         } else if (isForeign()) {

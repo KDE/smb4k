@@ -15,12 +15,12 @@
 #include "smb4kworkgroup.h"
 
 // KDE includes
-#include "kiconthemes_version.h"
 #include "kauth_version.h"
+#include "kiconthemes_version.h"
 #if KAUTH_VERSION >= QT_VERSION_CHECK(5, 92, 0)
-  #include <KAuth/ActionReply>
+#include <KAuth/ActionReply>
 #else
-  #include <KAuth/KAuthActionReply>
+#include <KAuth/KAuthActionReply>
 #endif
 #include <KI18n/KLocalizedString>
 #include <KIconThemes/KIconLoader>

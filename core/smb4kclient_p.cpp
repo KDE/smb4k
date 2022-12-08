@@ -1329,7 +1329,6 @@ void Smb4KClientJob::slotFinishJob()
     }
 }
 
-
 Smb4KDnsDiscoveryJob::Smb4KDnsDiscoveryJob(QObject *parent)
     : Smb4KClientBaseJob(parent)
 {

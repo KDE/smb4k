@@ -33,8 +33,8 @@
 #include <KI18n/KLocalizedString>
 #include <KIOWidgets/KIO/DropJob>
 #include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KMessageBox>
 #include <KJobWidgets/KJobWidgets>
+#include <KWidgetsAddons/KMessageBox>
 
 Smb4KSharesViewDockWidget::Smb4KSharesViewDockWidget(const QString &title, QWidget *parent)
     : QDockWidget(title, parent)
