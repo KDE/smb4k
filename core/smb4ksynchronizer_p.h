@@ -14,6 +14,7 @@
 #include "smb4ksynchronizer.h"
 
 // Qt includes
+#include <QBuffer>
 #include <QDialog>
 #include <QPushButton>
 #include <QUrl>
@@ -108,6 +109,7 @@ private:
     QUrl m_destinationUrl;
     KProcess *m_process;
     KUiServerJobTracker *m_job_tracker;
+    bool m_terminated;
 };
 
 class Smb4KSynchronizationDialog : public QDialog

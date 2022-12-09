@@ -18,6 +18,7 @@
 #include <QDialogButtonBox>
 #include <QGridLayout>
 #include <QLabel>
+#include <QLocale>
 #include <QPointer>
 #include <QStandardPaths>
 #include <QTimer>
@@ -38,6 +39,8 @@ Smb4KSyncJob::Smb4KSyncJob(QObject *parent)
     , m_process(nullptr)
 {
     setCapabilities(KJob::Killable);
+
+    m_terminated = false;
     m_job_tracker = new KUiServerJobTracker(this);
 }
 
@@ -61,6 +64,7 @@ bool Smb4KSyncJob::doKill()
 {
     if (m_process && m_process->state() != KProcess::NotRunning) {
         m_process->terminate();
+        m_terminated = true;
     }
 
     return KJob::doKill();
@@ -122,6 +126,7 @@ void Smb4KSyncJob::slotStartSynchronization()
     QStringList command;
     command << rsync;
     command << QStringLiteral("--progress");
+    command << QStringLiteral("--info=progress2");
 
     //
     // Basic settings
@@ -395,7 +400,6 @@ void Smb4KSyncJob::slotStartSynchronization()
     // The process
     //
     m_process = new KProcess(this);
-    m_process->setEnv(QStringLiteral("LANG"), QStringLiteral("en_US.UTF-8"));
     m_process->setOutputChannelMode(KProcess::SeparateChannels);
     m_process->setProgram(command);
 
@@ -412,83 +416,73 @@ void Smb4KSyncJob::slotStartSynchronization()
     // Dummy to show 0 %
     emitPercent(0, 100);
 
+    m_terminated = false;
     m_process->start();
 }
 
 void Smb4KSyncJob::slotReadStandardOutput()
 {
-    QStringList stdOut = QString::fromUtf8(m_process->readAllStandardOutput()).split(QStringLiteral("\n"), Qt::SkipEmptyParts);
+    QStringList stdOut = QString::fromUtf8(m_process->readAllStandardOutput()).split(QStringLiteral("\r"), Qt::SkipEmptyParts);
 
-    for (int i = 0; i < stdOut.size(); ++i) {
-        if (stdOut.at(i)[0].isSpace()) {
-            // Get the overall transfer progress
-            if (stdOut.at(i).contains(QStringLiteral(" to-check="))) {
-                QString tmp = stdOut.at(i).section(QStringLiteral(" to-check="), 1, 1).section(QStringLiteral(")"), 0, 0).trimmed();
+    for (const QString &line : stdOut) {
+        if (line.contains("%")) {
+            bool success = true;
+            QString transferInfo = line.trimmed().simplified();
 
-                bool success1 = true;
-                bool success2 = true;
+            // Overall progress
+            QString progressString = transferInfo.section(QStringLiteral(" "), 1, 1).replace(QStringLiteral("%"), QStringLiteral(""));
 
-                qulonglong files = tmp.section(QStringLiteral("/"), 0, 0).trimmed().toLongLong(&success1);
-                qulonglong total = tmp.section(QStringLiteral("/"), 1, 1).trimmed().toLongLong(&success2);
+            if (!progressString.isEmpty()) {
+                qulonglong progress = progressString.toLongLong(&success);
 
-                if (success1 && success2) {
-                    setProcessedAmount(KJob::Files, total - files);
-                    setTotalAmount(KJob::Files, total);
-                    emitPercent(total - files, total);
-                }
-            } else if (stdOut.at(i).contains(QStringLiteral(" to-chk="))) {
-                // Make Smb4K work with rsync >= 3.1.
-                QString tmp = stdOut.at(i).section(QStringLiteral(" to-chk="), 1, 1).section(QStringLiteral(")"), 0, 0).trimmed();
-
-                bool success1 = true;
-                bool success2 = true;
-
-                qulonglong files = tmp.section(QStringLiteral("/"), 0, 0).trimmed().toLongLong(&success1);
-                qulonglong total = tmp.section(QStringLiteral("/"), 1, 1).trimmed().toLongLong(&success2);
-
-                if (success1 && success2) {
-                    setProcessedAmount(KJob::Files, total - files);
-                    setTotalAmount(KJob::Files, total);
-                    emitPercent(total - files, total);
-                }
-            } else if (stdOut.at(i).contains(QStringLiteral(" ir-chk="))) {
-                // Make Smb4K work with rsync >= 3.1.
-                QString tmp = stdOut.at(i).section(QStringLiteral(" ir-chk="), 1, 1).section(QStringLiteral(")"), 0, 0).trimmed();
-
-                bool success1 = true;
-                bool success2 = true;
-
-                qulonglong files = tmp.section(QStringLiteral("/"), 0, 0).trimmed().toLongLong(&success1);
-                qulonglong total = tmp.section(QStringLiteral("/"), 1, 1).trimmed().toLongLong(&success2);
-
-                if (success1 && success2) {
-                    setProcessedAmount(KJob::Files, total - files);
-                    setTotalAmount(KJob::Files, total);
-                    emitPercent(total - files, total);
+                if (success) {
+                    setPercent(progress);
                 }
             }
 
-            // Get transfer rate
-            if (stdOut.at(i).contains(QStringLiteral("/s "), Qt::CaseSensitive)) {
-                bool success = true;
+            // Speed
+            QString speedString = transferInfo.section(QStringLiteral(" "), 2, 2).section(QRegExp(QStringLiteral("../s")), 0, 0);
 
-                double tmp_speed =
-                    stdOut.at(i).section(QRegExp(QStringLiteral("../s")), 0, 0).section(QStringLiteral(" "), -1 - 1).trimmed().toDouble(&success);
+            if (!speedString.isEmpty()) {
+                QLocale locale;
+                double speed = locale.toDouble(speedString, &success);
 
                 if (success) {
                     // MB == 1000000 B and kB == 1000 B per definition!
-                    if (stdOut.at(i).contains(QStringLiteral("MB/s"))) {
-                        tmp_speed *= 1e6;
-                    } else if (stdOut.at(i).contains(QStringLiteral("kB/s"))) {
-                        tmp_speed *= 1e3;
+                    if (transferInfo.contains(QStringLiteral("MB/s"))) {
+                        speed *= 1e6;
+                    } else if (transferInfo.contains(QStringLiteral("kB/s"))) {
+                        speed *= 1e3;
                     }
 
-                    ulong speed = (ulong)tmp_speed;
-                    emitSpeed(speed /* B/s */);
+                    emitSpeed((ulong)speed);
                 }
             }
-        } else if (!stdOut.at(i).contains(QStringLiteral("sending incremental file list"))) {
-            QString file = stdOut.at(i).trimmed();
+
+            // Transfered files
+            QString transferedFilesString = transferInfo.section(QStringLiteral("xfr#"), 1, 1).section(QStringLiteral(","), 0, 0);
+
+            if (!transferedFilesString.isEmpty()) {
+                qulonglong transferedFiles = transferedFilesString.toULongLong(&success);
+
+                if (success) {
+                    setProcessedAmount(KJob::Files, transferedFiles);
+                }
+            }
+
+            // Total amount of files
+            QString totalFilesString = transferInfo.section(QStringLiteral("/"), -1, -1).section(QStringLiteral(")"), 0, 0);
+
+            if (!totalFilesString.isEmpty()) {
+                qulonglong totalFiles = totalFilesString.toULongLong(&success);
+
+                if (success) {
+                    setTotalAmount(KJob::Files, totalFiles);
+                }
+            }
+
+        } else if (!line.contains(QStringLiteral("sending incremental file list"))) {
+            QString file = line.trimmed().remove("\n").section("/", -1, -1);
 
             QUrl sourceUrl = m_sourceUrl;
             sourceUrl.setPath(QDir::cleanPath(sourceUrl.path() + QStringLiteral("/") + file));
@@ -504,23 +498,8 @@ void Smb4KSyncJob::slotReadStandardOutput()
 
 void Smb4KSyncJob::slotReadStandardError()
 {
-    //
-    // Get the error message
-    //
-    QString stdErr = QString::fromUtf8(m_process->readAllStandardError()).trimmed();
-
-    //
-    // Make sure the process is terminated
-    //
-    if (m_process->state() != KProcess::NotRunning) {
-        m_process->terminate();
-    }
-
-    //
-    // Report an error if the process was not terminated
-    //
-    if (!(stdErr.contains(QStringLiteral("rsync error")) && stdErr.contains(QStringLiteral("(code 20)")))
-        || !(stdErr.contains(QStringLiteral("rsync error")) && stdErr.contains(QStringLiteral("(code 19)")))) {
+    if (!m_terminated) {
+        QString stdErr = QString::fromUtf8(m_process->readAllStandardError()).trimmed();
         Smb4KNotification::synchronizationFailed(m_sourceUrl, m_destinationUrl, stdErr);
     }
 }
