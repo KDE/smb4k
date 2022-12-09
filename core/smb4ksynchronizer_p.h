@@ -14,7 +14,6 @@
 #include "smb4ksynchronizer.h"
 
 // Qt includes
-#include <QBuffer>
 #include <QDialog>
 #include <QPushButton>
 #include <QUrl>
