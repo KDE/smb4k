@@ -1,3 +1,12 @@
+Smb4K 3.1.6 (2022-12-xx):
+
+See the summery of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
+
+- Fix position of the drop popup menu under Wayland. Backported from master.
+- Always pass the domain to the mount command if it is not empty and not a 
+  DNS-SD domain (BUG #462798).
+
 Smb4K 3.1.5 (2022-12-04):
 
 See the summery of changes below. For a full list of changes, please
