@@ -1,6 +1,6 @@
 Smb4K 3.1.6 (2022-12-xx):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Fix position of the drop popup menu under Wayland. Backported from master.
@@ -9,7 +9,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 Smb4K 3.1.5 (2022-12-04):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Fix arrangement of the dock widgets as tabs on first start. Backported 
@@ -18,7 +18,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 Smb4K 3.1.4 (2022-10-30):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Silence possible error message when terminating rsync with the stop button.
@@ -28,7 +28,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 Smb4K 3.1.3 (2022-07-13):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Remove KDE4 migration code (BUG #455772).
@@ -36,7 +36,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 Smb4K 3.1.2 (2022-04-02):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Since for slow (un)mounting processes, the process might be killed before
@@ -49,7 +49,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 Smb4K 3.1.1 (2021-09-28):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Detect all network shares on startup in Smb4KHardwareInterface, so that 
@@ -60,7 +60,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 Smb4K 3.1.0 (2021-05-26):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Raise minimum requirements to Qt version >= 5.9.0 and KF5 version
@@ -109,7 +109,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 Smb4K 3.0.7 (2020-11-06):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.0
 
 - Fix enabling / disabling of bookmarks menu according to the mounting state
@@ -119,7 +119,7 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.0
 
 Smb4K 3.0.6 (2020-06-03):
 
-See the summery of changes below. For a full list of changes, please
+See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.0
 
 - Save the mainwindow settings no matter how the application is closed.
