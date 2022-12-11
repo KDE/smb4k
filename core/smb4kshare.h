@@ -286,9 +286,9 @@ public:
      * Sets the value of the total disk space that is available on the share. If
      * the disk usage could not be determined, @p size has to be set to 0.
      *
-     * @param total           The total disk space that is available on the share
+     * @param size           The total disk space
      */
-    void setTotalDiskSpace(qulonglong size);
+    void setTotalDiskSpace(qint64 size);
 
     /**
      * Returns the total disk space that is available on the share or 0 if the
@@ -296,7 +296,7 @@ public:
      *
      * @returns the total disk space or 0.
      */
-    qulonglong totalDiskSpace() const;
+    qint64 totalDiskSpace() const;
 
     /**
      * Returns the total disk space in a human readable form with value and unit
@@ -312,9 +312,9 @@ public:
      * Sets the value of the free disk space that is available on the share. If
      * the free disk space could not be determined, @p size has to be set to 0.
      *
-     * @param free            The free disk space that is available on the share
+     * @param size            The free disk space
      */
-    void setFreeDiskSpace(qulonglong size);
+    void setFreeDiskSpace(qint64 size);
 
     /**
      * Returns the free disk space that is available on the share or 0 if the
@@ -322,7 +322,7 @@ public:
      *
      * @returns the free disk space or 0.
      */
-    qulonglong freeDiskSpace() const;
+    qint64 freeDiskSpace() const;
 
     /**
      * Returns the free disk space in a human readable form with value and unit
@@ -335,20 +335,12 @@ public:
     QString freeDiskSpaceString() const;
 
     /**
-     * Sets the value of the disk space that is used on the share. If the used
-     * disk space could not be determined, @p size has to be set to 0.
-     *
-     * @param free            The free disk space that is available on the share
-     */
-    void setUsedDiskSpace(qulonglong size);
-
-    /**
      * Returns the used disk space that is used on the share or 0 if the
      * used disk space was not set or could not be determined.
      *
      * @returns the used disk space or 0.
      */
-    qulonglong usedDiskSpace() const;
+    qint64 usedDiskSpace() const;
 
     /**
      * Returns the used disk space in a human readable form with value and unit

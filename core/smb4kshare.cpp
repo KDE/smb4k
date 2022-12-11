@@ -30,9 +30,8 @@ public:
     bool foreign;
     KUser user;
     KUserGroup group;
-    qulonglong totalSpace;
-    qulonglong freeSpace;
-    qulonglong usedSpace;
+    qint64 totalSpace;
+    qint64 freeSpace;
     bool mounted;
     QString filesystem;
     Smb4KGlobal::ShareType shareType;
@@ -52,7 +51,6 @@ Smb4KShare::Smb4KShare(const QUrl &url)
     d->group = KUserGroup(KUser::UseRealUserID);
     d->totalSpace = -1;
     d->freeSpace = -1;
-    d->usedSpace = -1;
     d->mounted = false;
     d->shareType = FileShare;
 
@@ -98,7 +96,6 @@ Smb4KShare::Smb4KShare()
     d->group = KUserGroup(KUser::UseRealUserID);
     d->totalSpace = -1;
     d->freeSpace = -1;
-    d->usedSpace = -1;
     d->mounted = false;
     d->shareType = FileShare;
 
@@ -326,61 +323,56 @@ bool Smb4KShare::isMounted() const
     return d->mounted;
 }
 
-void Smb4KShare::setTotalDiskSpace(qulonglong size)
+void Smb4KShare::setTotalDiskSpace(qint64 size)
 {
     d->totalSpace = size;
 }
 
-qulonglong Smb4KShare::totalDiskSpace() const
+qint64 Smb4KShare::totalDiskSpace() const
 {
     return d->totalSpace;
 }
 
 QString Smb4KShare::totalDiskSpaceString() const
 {
-    return KIO::convertSize(d->totalSpace);
+    return KIO::convertSize(static_cast<quint64>(d->totalSpace));
 }
 
-void Smb4KShare::setFreeDiskSpace(qulonglong size)
+void Smb4KShare::setFreeDiskSpace(qint64 size)
 {
     d->freeSpace = size;
 }
 
-qulonglong Smb4KShare::freeDiskSpace() const
+qint64 Smb4KShare::freeDiskSpace() const
 {
     return d->freeSpace;
 }
 
 QString Smb4KShare::freeDiskSpaceString() const
 {
-    return KIO::convertSize(d->freeSpace);
+    return KIO::convertSize(static_cast<quint64>(d->freeSpace));
 }
 
-void Smb4KShare::setUsedDiskSpace(qulonglong size)
+qint64 Smb4KShare::usedDiskSpace() const
 {
-    d->usedSpace = size;
-}
-
-qulonglong Smb4KShare::usedDiskSpace() const
-{
-    return d->usedSpace;
+    return (d->totalSpace - d->freeSpace);
 }
 
 QString Smb4KShare::usedDiskSpaceString() const
 {
-    return KIO::convertSize(d->usedSpace);
+    return KIO::convertSize(static_cast<quint64>(usedDiskSpace()));
 }
 
 qreal Smb4KShare::diskUsage() const
 {
-    qreal used(usedDiskSpace());
-    qreal total(totalDiskSpace());
-
-    if (total > 0) {
-        return used * 100 / total;
+    qreal usage = 0;
+    
+    if (d->totalSpace > 0) {
+      qint64 used = d->totalSpace - d->freeSpace;
+      usage = static_cast<qreal>(used) * 100 / static_cast<qreal>(d->totalSpace);
     }
-
-    return 0;
+    
+    return usage;
 }
 
 QString Smb4KShare::diskUsageString() const
@@ -404,7 +396,6 @@ void Smb4KShare::setMountData(Smb4KShare *share)
         d->group = share->group();
         d->totalSpace = share->totalDiskSpace();
         d->freeSpace = share->freeDiskSpace();
-        d->usedSpace = share->usedDiskSpace();
         d->mounted = share->isMounted();
         d->shareType = share->shareType();
         setShareIcon();
@@ -420,7 +411,6 @@ void Smb4KShare::resetMountData()
     d->group = KUserGroup(KUser::UseRealUserID);
     d->totalSpace = -1;
     d->freeSpace = -1;
-    d->usedSpace = -1;
     d->mounted = false;
     d->shareType = FileShare;
     setShareIcon();

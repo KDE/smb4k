@@ -37,6 +37,7 @@
 #include <QTextStream>
 #include <QTimer>
 #include <QUdpSocket>
+#include <QStorageInfo>
 
 // KDE includes
 #include <kauth_version.h>
@@ -48,7 +49,6 @@
 #include <KCoreAddons/KShell>
 #include <KCoreAddons/KUser>
 #include <KI18n/KLocalizedString>
-#include <KIOCore/KDiskFreeSpaceInfo>
 #include <KIOCore/KIO/Global>
 #include <KIOCore/KIO/StatJob>
 #include <KIOCore/KMountPoint>
@@ -1690,17 +1690,15 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &, bool, bool, QVariantM
 
 void Smb4KMounter::check(const SharePtr &share)
 {
-    // Get the info about the usage, etc.
-    KDiskFreeSpaceInfo spaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(share->path());
-
-    if (spaceInfo.isValid()) {
+    QStorageInfo storageInfo(share->path());
+    
+    if (storageInfo.isValid() && storageInfo.isReady()) {
         // Accessibility
         share->setInaccessible(false);
 
         // Size information
-        share->setFreeDiskSpace(spaceInfo.available());
-        share->setTotalDiskSpace(spaceInfo.size());
-        share->setUsedDiskSpace(spaceInfo.used());
+        share->setFreeDiskSpace(storageInfo.bytesAvailable()); // Bytes available to the user, might be less that bytesFree()
+        share->setTotalDiskSpace(storageInfo.bytesTotal());
 
         // Get the owner an group, if possible.
         QFileInfo fileInfo(share->path());
@@ -1714,7 +1712,6 @@ void Smb4KMounter::check(const SharePtr &share)
             share->setInaccessible(true);
             share->setFreeDiskSpace(0);
             share->setTotalDiskSpace(0);
-            share->setUsedDiskSpace(0);
             share->setUser(KUser(KUser::UseRealUserID));
             share->setGroup(KUserGroup(KUser::UseRealUserID));
         }
@@ -1722,7 +1719,6 @@ void Smb4KMounter::check(const SharePtr &share)
         share->setInaccessible(true);
         share->setFreeDiskSpace(0);
         share->setTotalDiskSpace(0);
-        share->setUsedDiskSpace(0);
         share->setUser(KUser(KUser::UseRealUserID));
         share->setGroup(KUserGroup(KUser::UseRealUserID));
     }
@@ -1888,7 +1884,6 @@ void Smb4KMounter::slotStatResult(KJob *job)
         importedShare->setInaccessible(true);
         importedShare->setFreeDiskSpace(0);
         importedShare->setTotalDiskSpace(0);
-        importedShare->setUsedDiskSpace(0);
         importedShare->setUser(KUser(KUser::UseRealUserID));
         importedShare->setGroup(KUserGroup(KUser::UseRealUserID));
     }
