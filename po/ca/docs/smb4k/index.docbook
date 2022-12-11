@@ -1456,7 +1456,7 @@
 >diàleg de configuració</link
 >. Si heu habilitat el desmuntatge de les comparticions que són propietat d'altres usuaris, se us mostrarà un diàleg d'avís abans del desmuntatge real. Si continueu, la compartició es desmuntarà definitivament. Per tant, penseu-ho dues vegades abans de decidir desmuntar aquestes comparticions!</para>
       <para
->El &smb4k; proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
+>El &smb4k; també proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració</link
 > al diàleg de configuració. El &smb4k; realitzarà un <ulink url="man:/umount(8)"
 >desmuntatge fluix</ulink
@@ -1517,9 +1517,7 @@
       <para
 >En fer clic al botó <guibutton
 >Sincronitza</guibutton
->, s'iniciarà la sincronització. En fer clic al botó <guibutton
->Notificacions</guibutton
-> a la safata del sistema, s'obrirà un diàleg de progrés mostrant els detalls sobre la transferència.</para>
+>, s'iniciarà la sincronització i es mostrarà un diàleg de progrés amb els detalls sobre la transferència.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diàleg de progrés de la sincronització</screeninfo>
@@ -1537,15 +1535,6 @@
 >Es pot cancel·lar la sincronització en qualsevol moment prement el botó <guibutton
 >Atura</guibutton
 > que hi ha a la dreta de la barra de progrés.</para>
-            
-      <note>
-        <para
->El nombre total de fitxers que es mostra al diàleg de progrés correspon al nombre de fitxers presents a la compartició i no necessàriament al nombre total de fitxers que es transferiran.</para>
-        <para
->El progrés es calcula a partir del nombre de fitxers transferits dividit pel nombre total de fitxers presents en la compartició. La seva mida no es considerarà. Això vol dir que un fitxer molt gran serà afegit al progrés així com a un molt petit. A més, a causa de la manera com el <application
->rsync</application
-> mostra el progrés de la transferència, la barra de progrés només s'actualitzarà una vegada finalitzada la transferència d'un altre fitxer.</para>
-      </note>
     </sect2>
 
 <!-- 
@@ -8200,11 +8189,11 @@ ntlm auth = yes
 >Desmunteu una o múltiples comparticions seleccionades. La possibilitat de desmuntar les comparticions està restringida de manera predeterminada a les que són propietat de l'usuari. Tanmateix, podreu canviar aquest comportament canviant les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració</link
 > al diàleg de configuració. Si no hi ha cap compartició seleccionada a la vista de les comparticions, aquest botó restarà inhabilitat.</para>
-            <para
->El &smb4k; també proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
+          <para
+>El &smb4k; proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració</link
 > al diàleg de configuració.</para>
-            <para
+          <para
 >Per a més detalls, llegiu la secció <link linkend="shares_view_unmounting"
 >Desmuntar les comparticions</link
 >.</para>

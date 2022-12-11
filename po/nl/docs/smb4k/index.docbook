@@ -1452,7 +1452,7 @@
 >instellingen</link
 > in het configuratievenster te wijzigen. Als u de mogelijkheid tot het afkoppelen van shares waarvan anderen gebruikers de eigenaar zijn, heeft ingeschakeld, dan krijgt u een waarschuwing te zien voor het eigenlijke afkoppelen. Als u door gaat zal de share definitief afgekoppeld worden. Denk dus twee keer na alvorens u beslist om deze shares af te koppelen!</para>
       <para
->In &smb4k; biedt de mogelijkheid van het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
+>&smb4k; biedt de mogelijkheid om shares geforceerd af te koppelen (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
 > in het configuratievenster wijzigen. &smb4k; zal daarna een <ulink url="man:/umount"
 >langzame afkoppeling</ulink
@@ -1470,7 +1470,7 @@
 ></menuchoice
 >. Afhankelijk van uw instellingen zal deze ook externe en ontoegankelijke shares afkoppelen.</para>
       <para
->Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker een melding daarvan. Als de afkoppeling mislukt, dan krijgt u een foutmelding.</para>
+>Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker een melding daarvan. Als de afkoppeling mislukt krijgt u een foutmelding.</para>
     </sect2>
 
 <!-- 
@@ -1513,9 +1513,7 @@
       <para
 >Door op de knop <guibutton
 >Synchroniseren</guibutton
-> te klikken, start u de synchronisatie. Door met de &LMB; op de knop <guibutton
->Meldingen en taken</guibutton
-> in het systeemvak te klikken, opent u een voortgangsbalk die informatie geeft over de voortgang van de transfer.</para>
+> te klikken, start u de synchronisatie en een voortgangsbalk die informatie geeft over de voortgang van de transfer.</para>
       <screenshot>
         <screeninfo
 >Schermafdruk van de indicator voor voortgang van synchronisatie</screeninfo>
@@ -1531,15 +1529,6 @@
       </screenshot>
       <para
 >U kunt op elk moment de synchronisatie afbreken door op de stopknop te drukken rechts naast de voortgangsbalk.</para>
-            
-      <note>
-        <para
->Het totaal aantal in de voortgangsbalk getoonde bestanden komt overeen met het aantal bestanden op de share en is niet noodzakelijk het totaal aantal verstuurde bestanden.</para>
-        <para
->De voortgang wordt berekent door het aantal verstuurde bestanden te delen door het totaal aantal bestanden op de share. Bestandsgrootte is niet van belang. Dat houdt in dat een zeer groot bestand net zoveel aan de voortgang bijdraagt als een zeer kleine. Omdat de manier waarop <application
->rsync</application
-> de voortgang weergeeft, wordt de voortgangsbalk alleen na het eindigen van het versturen van het bestand bijgewerkt.</para>
-      </note>
     </sect2>
 
 <!-- 
@@ -8190,11 +8179,11 @@ ntlm auth = yes
 >Koppelt een of meerdere geselecteerde shares af. Standaard is de mogelijkheid tot het afkoppelen van shares beperkt tot die waarvan de gebruiker eigenaar is. Maar, u kunt dit wijzigen door de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
 > in het configuratievenster te wijzigen. Als u in het venster geen shares heeft geselecteerd dan is deze knop niet te selecteren.</para>
-            <para
->In &smb4k; is er ook de mogelijkheid aanwezig voor het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
+          <para
+>In &smb4k; biedt de mogelijkheid voor het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
 > in het configuratievenster wijzigen.</para>
-            <para
+          <para
 >Lees de sectie <link linkend="shares_view_unmounting"
 >Shares afkoppelen</link
 > voor meer details.</para>
