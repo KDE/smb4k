@@ -1446,7 +1446,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
     //
     WorkgroupPtr workgroup = findWorkgroup(share->workgroupName());
 
-    if ((workgroup && !workgroup->dnsDiscovered()) && !share->workgroupName().isEmpty()) {
+    if ((workgroup && !workgroup->dnsDiscovered()) || (!workgroup && !share->workgroupName().trimmed().isEmpty())) {
         argumentsList << QStringLiteral("-W");
         argumentsList << KShell::quoteArg(share->workgroupName());
     }
