@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-10 00:45+0000\n"
+"POT-Creation-Date: 2022-12-12 00:47+0000\n"
 "PO-Revision-Date: 2020-10-25 22:18+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -1918,7 +1918,7 @@ msgstr ""
 "konkreetsesse profiili, üle kanda teise profiili."
 
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
-#: smb4kshare.cpp:162 smb4kshare.cpp:165
+#: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 asukohas %2"
@@ -3667,17 +3667,17 @@ msgstr "<kõik profiilid>"
 msgid "New Profile:"
 msgstr "Uus profiil:"
 
-#: smb4kshare.cpp:195
+#: smb4kshare.cpp:192
 #, kde-format
 msgid "Disk"
 msgstr "Ketas"
 
-#: smb4kshare.cpp:199
+#: smb4kshare.cpp:196
 #, kde-format
 msgid "Printer"
 msgstr "Printer"
 
-#: smb4kshare.cpp:203
+#: smb4kshare.cpp:200
 #, kde-format
 msgid "IPC"
 msgstr "IPC"

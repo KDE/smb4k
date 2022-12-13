@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-10 00:45+0000\n"
+"POT-Creation-Date: 2022-12-12 00:47+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1620,7 +1620,7 @@ msgid ""
 msgstr ""
 
 #: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
-#: smb4kshare.cpp:162 smb4kshare.cpp:165
+#: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr ""
@@ -3230,17 +3230,17 @@ msgstr ""
 msgid "New Profile:"
 msgstr ""
 
-#: smb4kshare.cpp:195
+#: smb4kshare.cpp:192
 #, kde-format
 msgid "Disk"
 msgstr "دىسكا"
 
-#: smb4kshare.cpp:199
+#: smb4kshare.cpp:196
 #, kde-format
 msgid "Printer"
 msgstr "پرىنتېر"
 
-#: smb4kshare.cpp:203
+#: smb4kshare.cpp:200
 #, kde-format
 msgid "IPC"
 msgstr ""
