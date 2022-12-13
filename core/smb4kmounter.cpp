@@ -49,7 +49,6 @@
 #include <KCoreAddons/KShell>
 #include <KCoreAddons/KUser>
 #include <KI18n/KLocalizedString>
-#include <KIOCore/KIO/Global>
 #include <KIOCore/KIO/StatJob>
 #include <KIOCore/KMountPoint>
 #include <KWidgetsAddons/KMessageBox>
