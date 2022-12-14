@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-12 00:47+0000\n"
+"POT-Creation-Date: 2022-12-14 00:47+0000\n"
 "PO-Revision-Date: 2011-07-19 21:17+0300\n"
 "Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -1913,14 +1913,14 @@ msgstr "Потребител:"
 msgid "Clear List"
 msgstr "Изчистване на списъка"
 
-#: smb4kmounter.cpp:687
+#: smb4kmounter.cpp:686
 #, kde-format
 msgid ""
 "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
 "%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
 msgstr ""
 
-#: smb4kmounter.cpp:692
+#: smb4kmounter.cpp:691
 #, fuzzy, kde-format
 msgid "Foreign Share"
 msgstr "Монтиране на ресурс"
