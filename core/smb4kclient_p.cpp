@@ -1351,6 +1351,24 @@ Smb4KDnsDiscoveryJob::~Smb4KDnsDiscoveryJob()
 
 void Smb4KDnsDiscoveryJob::start()
 {
+    switch (m_serviceBrowser->isAvailable()) {
+    case KDNSSD::ServiceBrowser::Working: {
+        break;
+    }
+    case KDNSSD::ServiceBrowser::Stopped: {
+        Smb4KNotification::zeroconfError(i18n("The Zeroconf daemon is not running. No servers are discovered using DNS-SD."));
+        break;
+    }
+    case KDNSSD::ServiceBrowser::Unsupported: {
+        Smb4KNotification::zeroconfError(i18n("Zeroconf support is not available in this version of KDE."));
+        break;
+    }
+    default: {
+        Smb4KNotification::zeroconfError(i18n("An unknown error with Zeroconf occurred."));
+        break;
+    }
+    }
+
     QTimer::singleShot(50, this, SLOT(slotStartJob()));
 }
 

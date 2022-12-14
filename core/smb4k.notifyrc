@@ -1877,3 +1877,10 @@ Comment[zh_TW]=網路相關動作無法執行或是執行失敗。
 Contexts=Error
 Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
+
+[Event/zeroconfError]
+Name=Zeroconf error
+Comment=An error with the Zeroconf daemon occurred
+Context=Error
+Sound=Oxygen-Sys-App-Error.ogg
+Action=Popup|Sound

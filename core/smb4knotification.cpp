@@ -398,7 +398,15 @@ void Smb4KNotification::invalidURLPassed()
 void Smb4KNotification::networkCommunicationFailed(const QString &errorMessage)
 {
     Smb4KNotifier *notification = new Smb4KNotifier(QStringLiteral("networkCommunicationFailed"));
-    notification->setText(i18n("The network communication failed with the following error message: <s>%1</s>", errorMessage));
+    notification->setText(i18n("<p>The network communication failed with the following error message: <s>%1</s></p>", errorMessage));
+    notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
+    notification->sendEvent();
+}
+
+void Smb4KNotification::zeroconfError(const QString &errorMessage)
+{
+    Smb4KNotifier *notification = new Smb4KNotifier(QStringLiteral("zeroconfError"));
+    notification->setText(i18n("<p>An error with the Zeroconf service occurred: <s>%1</s></p>", errorMessage));
     notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-error"), KIconLoader::NoGroup, 0, KIconLoader::DefaultState));
     notification->sendEvent();
 }

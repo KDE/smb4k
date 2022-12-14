@@ -180,7 +180,7 @@ Q_DECL_EXPORT void mkdirFailed(const QDir &dir);
 /**
  * This error message is shown if a process threw an error.
  *
- * @param proc_err  The code describing the process error
+ * @param error     The code describing the process error
  */
 Q_DECL_EXPORT void processError(QProcess::ProcessError error);
 
@@ -209,6 +209,14 @@ Q_DECL_EXPORT void invalidURLPassed();
  * @param errorMessage  The error message
  */
 Q_DECL_EXPORT void networkCommunicationFailed(const QString &errorMessage);
+
+/**
+ * This error message is shown when an error with the Zeroconf daemon
+ * (Avahi or mDNS) occurred.
+ *
+ * @param errorMessage  The error message
+ */
+Q_DECL_EXPORT void zeroconfError(const QString &errorMessage);
 };
 
 #endif
