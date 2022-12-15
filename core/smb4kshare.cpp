@@ -366,12 +366,12 @@ QString Smb4KShare::usedDiskSpaceString() const
 qreal Smb4KShare::diskUsage() const
 {
     qreal usage = 0;
-    
+
     if (d->totalSpace > 0) {
-      qint64 used = d->totalSpace - d->freeSpace;
-      usage = static_cast<qreal>(used) * 100 / static_cast<qreal>(d->totalSpace);
+        qint64 used = d->totalSpace - d->freeSpace;
+        usage = static_cast<qreal>(used) * 100 / static_cast<qreal>(d->totalSpace);
     }
-    
+
     return usage;
 }
 
