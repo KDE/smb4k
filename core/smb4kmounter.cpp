@@ -33,11 +33,11 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
+#include <QStorageInfo>
 #include <QTextCodec>
 #include <QTextStream>
 #include <QTimer>
 #include <QUdpSocket>
-#include <QStorageInfo>
 
 // KDE includes
 #include <kauth_version.h>
@@ -683,8 +683,8 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
             } else {
                 if (!silent) {
                     if (KMessageBox::warningYesNo(QApplication::activeWindow(),
-                                                  i18n("<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</b>.</p>"
-                                                       "<p>Do you really want to unmount it?</p></qt>",
+                                                  i18n("<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</b>.</p>"
+                                                       "<p>Do you really want to unmount it?</p>",
                                                        share->displayString(),
                                                        share->path(),
                                                        share->user().loginName()),
@@ -1690,7 +1690,7 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &, bool, bool, QVariantM
 void Smb4KMounter::check(const SharePtr &share)
 {
     QStorageInfo storageInfo(share->path());
-    
+
     if (storageInfo.isValid() && storageInfo.isReady()) {
         // Accessibility
         share->setInaccessible(false);
