@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-14 00:47+0000\n"
+"POT-Creation-Date: 2022-12-15 00:48+0000\n"
 "PO-Revision-Date: 2022-05-20 08:38+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2019,7 +2019,7 @@ msgstr "Користувач:"
 msgid "Workgroup:"
 msgstr "Робоча група:"
 
-#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2342 smb4kmounter_p.cpp:141
+#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
 #, kde-format
 msgid "IP Address:"
 msgstr "Адреса IP:"
@@ -2039,57 +2039,73 @@ msgstr "Не вдалося прочитати файл %1"
 msgid "The file %1 could not be printed to %2"
 msgstr "Не вдалося надрукувати файл %1 на %2"
 
-#: smb4kclient_p.cpp:1945
+#: smb4kclient_p.cpp:1359
+#, kde-format
+msgid ""
+"The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
+msgstr ""
+
+#: smb4kclient_p.cpp:1363
+#, kde-format
+msgid "Zeroconf support is not available in this version of KDE."
+msgstr ""
+
+#: smb4kclient_p.cpp:1367
+#, kde-format
+msgid "An unknown error with Zeroconf occurred."
+msgstr ""
+
+#: smb4kclient_p.cpp:1963
 #, kde-format
 msgid "Preview of %1"
 msgstr "Попередній перегляд %1"
 
-#: smb4kclient_p.cpp:1981
+#: smb4kclient_p.cpp:1999
 #, kde-format
 msgid "Reload"
 msgstr "Перезавантажити"
 
-#: smb4kclient_p.cpp:1983
+#: smb4kclient_p.cpp:2001
 #, kde-format
 msgid "Abort"
 msgstr "Перервати"
 
-#: smb4kclient_p.cpp:1995
+#: smb4kclient_p.cpp:2013
 #, kde-format
 msgid "Up"
 msgstr "Вгору"
 
-#: smb4kclient_p.cpp:2315
+#: smb4kclient_p.cpp:2333
 #, kde-format
 msgid "Print File"
 msgstr "Надрукувати файл"
 
-#: smb4kclient_p.cpp:2331
+#: smb4kclient_p.cpp:2349
 #, kde-format
 msgid "Information"
 msgstr "Відомості"
 
-#: smb4kclient_p.cpp:2335
+#: smb4kclient_p.cpp:2353
 #, kde-format
 msgid "Printer:"
 msgstr "Принтер:"
 
-#: smb4kclient_p.cpp:2349
+#: smb4kclient_p.cpp:2367
 #, kde-format
 msgid "Domain:"
 msgstr "Домен:"
 
-#: smb4kclient_p.cpp:2360
+#: smb4kclient_p.cpp:2378
 #, kde-format
 msgid "File and Settings"
 msgstr "Файл і параметри"
 
-#: smb4kclient_p.cpp:2364
+#: smb4kclient_p.cpp:2382
 #, kde-format
 msgid "File:"
 msgstr "Файл:"
 
-#: smb4kclient_p.cpp:2369
+#: smb4kclient_p.cpp:2387
 #, kde-format
 msgid ""
 "This is the file you want to print on the remote printer. Currently only a "
@@ -2102,17 +2118,17 @@ msgstr ""
 "передбачено, вам слід спочатку перетворити дані у формат, який підтримується "
 "програмою."
 
-#: smb4kclient_p.cpp:2378
+#: smb4kclient_p.cpp:2396
 #, kde-format
 msgid "Copies:"
 msgstr "Копій:"
 
-#: smb4kclient_p.cpp:2382
+#: smb4kclient_p.cpp:2400
 #, kde-format
 msgid "This is the number of copies you want to print."
 msgstr "Це кількість копій, які ви бажаєте надрукувати"
 
-#: smb4kclient_p.cpp:2393
+#: smb4kclient_p.cpp:2411
 #, kde-format
 msgid "Print"
 msgstr "Друк"
@@ -3707,12 +3723,21 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<qt>Вами передано некоректну адресу URL.</qt>"
 
 #: smb4knotification.cpp:401
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The network communication failed with the following error message: <s>%1</"
+#| "s>"
 msgid ""
-"The network communication failed with the following error message: <s>%1</s>"
+"<p>The network communication failed with the following error message: <s>%1</"
+"s></p>"
 msgstr ""
 "Спроба обміну даними мережею зазнала невдачі. Повідомлення про помилку: <s>"
 "%1</s>"
+
+#: smb4knotification.cpp:409
+#, kde-format
+msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
+msgstr ""
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format

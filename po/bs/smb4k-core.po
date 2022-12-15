@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-14 00:47+0000\n"
+"POT-Creation-Date: 2022-12-15 00:48+0000\n"
 "PO-Revision-Date: 2015-02-24 23:17+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -1945,7 +1945,7 @@ msgstr "Korisnik:"
 msgid "Workgroup:"
 msgstr "Radna grupa:"
 
-#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2342 smb4kmounter_p.cpp:141
+#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
 #, kde-format
 msgid "IP Address:"
 msgstr "IP adresa:"
@@ -1967,58 +1967,74 @@ msgstr "<p>Datoteka <b>%1</b> nije pronađena.</p>"
 msgid "The file %1 could not be printed to %2"
 msgstr "<p>Datoteka <b>%1</b> nije pronađena.</p>"
 
-#: smb4kclient_p.cpp:1945
+#: smb4kclient_p.cpp:1359
+#, kde-format
+msgid ""
+"The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
+msgstr ""
+
+#: smb4kclient_p.cpp:1363
+#, kde-format
+msgid "Zeroconf support is not available in this version of KDE."
+msgstr ""
+
+#: smb4kclient_p.cpp:1367
+#, kde-format
+msgid "An unknown error with Zeroconf occurred."
+msgstr ""
+
+#: smb4kclient_p.cpp:1963
 #, kde-format
 msgid "Preview of %1"
 msgstr "Pregled za %1"
 
-#: smb4kclient_p.cpp:1981
+#: smb4kclient_p.cpp:1999
 #, kde-format
 msgid "Reload"
 msgstr "Ponovo učitaj"
 
-#: smb4kclient_p.cpp:1983
+#: smb4kclient_p.cpp:2001
 #, kde-format
 msgid "Abort"
 msgstr "Prekid"
 
-#: smb4kclient_p.cpp:1995
+#: smb4kclient_p.cpp:2013
 #, kde-format
 msgid "Up"
 msgstr "Gore"
 
-#: smb4kclient_p.cpp:2315
+#: smb4kclient_p.cpp:2333
 #, kde-format
 msgid "Print File"
 msgstr "Štampaj datoteku"
 
-#: smb4kclient_p.cpp:2331
+#: smb4kclient_p.cpp:2349
 #, kde-format
 msgid "Information"
 msgstr ""
 
-#: smb4kclient_p.cpp:2335
+#: smb4kclient_p.cpp:2353
 #, fuzzy, kde-format
 #| msgid "Printer"
 msgid "Printer:"
 msgstr "Štampač"
 
-#: smb4kclient_p.cpp:2349
+#: smb4kclient_p.cpp:2367
 #, kde-format
 msgid "Domain:"
 msgstr "Domena:"
 
-#: smb4kclient_p.cpp:2360
+#: smb4kclient_p.cpp:2378
 #, kde-format
 msgid "File and Settings"
 msgstr ""
 
-#: smb4kclient_p.cpp:2364
+#: smb4kclient_p.cpp:2382
 #, kde-format
 msgid "File:"
 msgstr "Datoteka:"
 
-#: smb4kclient_p.cpp:2369
+#: smb4kclient_p.cpp:2387
 #, kde-format
 msgid ""
 "This is the file you want to print on the remote printer. Currently only a "
@@ -2029,17 +2045,17 @@ msgstr ""
 "je par tipova datoteka podržano kao što su PDF, Postscript, plain text i "
 "slike. Ako tip datoteke nije podržan, trebate je pretvoriti u podržani tip."
 
-#: smb4kclient_p.cpp:2378
+#: smb4kclient_p.cpp:2396
 #, kde-format
 msgid "Copies:"
 msgstr "Kopija:"
 
-#: smb4kclient_p.cpp:2382
+#: smb4kclient_p.cpp:2400
 #, kde-format
 msgid "This is the number of copies you want to print."
 msgstr "Ovo je broj kopija koje želite odštampati."
 
-#: smb4kclient_p.cpp:2393
+#: smb4kclient_p.cpp:2411
 #, fuzzy, kde-format
 #| msgid "Printer"
 msgid "Print"
@@ -3627,7 +3643,13 @@ msgstr "<p>URL koji je proslijeđen nije ispravan.</p>"
 #: smb4knotification.cpp:401
 #, kde-format
 msgid ""
-"The network communication failed with the following error message: <s>%1</s>"
+"<p>The network communication failed with the following error message: <s>%1</"
+"s></p>"
+msgstr ""
+
+#: smb4knotification.cpp:409
+#, kde-format
+msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 
 #: smb4kprofilemanager_p.cpp:34

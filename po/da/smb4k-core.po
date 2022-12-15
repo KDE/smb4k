@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-14 00:47+0000\n"
+"POT-Creation-Date: 2022-12-15 00:48+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -1942,7 +1942,7 @@ msgstr "Bruger:"
 msgid "Workgroup:"
 msgstr "Arbejdsgruppe:"
 
-#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2342 smb4kmounter_p.cpp:141
+#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-adresse:"
@@ -1962,59 +1962,76 @@ msgstr "Filen %1 kunne ikke læses."
 msgid "The file %1 could not be printed to %2"
 msgstr "Filen %1 kunne ikke læses."
 
-#: smb4kclient_p.cpp:1945
+#: smb4kclient_p.cpp:1359
+#, kde-format
+msgid ""
+"The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
+msgstr ""
+
+#: smb4kclient_p.cpp:1363
+#, kde-format
+msgid "Zeroconf support is not available in this version of KDE."
+msgstr ""
+
+#: smb4kclient_p.cpp:1367
+#, fuzzy, kde-format
+#| msgid "An authentication error occurred. "
+msgid "An unknown error with Zeroconf occurred."
+msgstr "Der skete en godkendelses fejl."
+
+#: smb4kclient_p.cpp:1963
 #, kde-format
 msgid "Preview of %1"
 msgstr "Forhåndsvisning af %1"
 
-#: smb4kclient_p.cpp:1981
+#: smb4kclient_p.cpp:1999
 #, kde-format
 msgid "Reload"
 msgstr "Genindlæs"
 
-#: smb4kclient_p.cpp:1983
+#: smb4kclient_p.cpp:2001
 #, kde-format
 msgid "Abort"
 msgstr "Afbryd"
 
-#: smb4kclient_p.cpp:1995
+#: smb4kclient_p.cpp:2013
 #, kde-format
 msgid "Up"
 msgstr "Op"
 
-#: smb4kclient_p.cpp:2315
+#: smb4kclient_p.cpp:2333
 #, kde-format
 msgid "Print File"
 msgstr "Udskriv fil"
 
-#: smb4kclient_p.cpp:2331
+#: smb4kclient_p.cpp:2349
 #, fuzzy, kde-format
 #| msgid "Location"
 msgid "Information"
 msgstr "Placering"
 
-#: smb4kclient_p.cpp:2335
+#: smb4kclient_p.cpp:2353
 #, kde-format
 msgid "Printer:"
 msgstr "Printer:"
 
-#: smb4kclient_p.cpp:2349
+#: smb4kclient_p.cpp:2367
 #, kde-format
 msgid "Domain:"
 msgstr "Domæne:"
 
-#: smb4kclient_p.cpp:2360
+#: smb4kclient_p.cpp:2378
 #, fuzzy, kde-format
 #| msgid "Advanced Settings"
 msgid "File and Settings"
 msgstr "Avancerede indstillinger"
 
-#: smb4kclient_p.cpp:2364
+#: smb4kclient_p.cpp:2382
 #, kde-format
 msgid "File:"
 msgstr "Fil:"
 
-#: smb4kclient_p.cpp:2369
+#: smb4kclient_p.cpp:2387
 #, kde-format
 msgid ""
 "This is the file you want to print on the remote printer. Currently only a "
@@ -2025,17 +2042,17 @@ msgstr ""
 "understøttes kun nogle få MIME-typer såsom PDF, Postscript, klartekst og "
 "billeder. Hvis filens MIME-type ikke er understøttet skal du konvertere den."
 
-#: smb4kclient_p.cpp:2378
+#: smb4kclient_p.cpp:2396
 #, kde-format
 msgid "Copies:"
 msgstr "Kopier:"
 
-#: smb4kclient_p.cpp:2382
+#: smb4kclient_p.cpp:2400
 #, kde-format
 msgid "This is the number of copies you want to print."
 msgstr "Dette er antallet af kopier du vil udskrive."
 
-#: smb4kclient_p.cpp:2393
+#: smb4kclient_p.cpp:2411
 #, kde-format
 msgid "Print"
 msgstr "Udskriv"
@@ -3614,9 +3631,20 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>URL'en der blev givet er ugyldig.</p>"
 
 #: smb4knotification.cpp:401
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</"
+#| "p>"
 msgid ""
-"The network communication failed with the following error message: <s>%1</s>"
+"<p>The network communication failed with the following error message: <s>%1</"
+"s></p>"
+msgstr ""
+"<p>Udførsel af afmonteringshandlingen mislykkedes (fejlkoden var: <tt>%1</"
+"tt>).</p>"
+
+#: smb4knotification.cpp:409
+#, kde-format
+msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
 
 #: smb4kprofilemanager_p.cpp:34
@@ -5374,16 +5402,6 @@ msgstr ""
 #~ msgid "NoSuchAction"
 #~ msgstr "IngenSådanHandling"
 
-#~| msgid ""
-#~| "The execution of the unmount action failed. The error code was: <tt>%1</"
-#~| "tt>"
-#~ msgid ""
-#~ "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</"
-#~ "p>"
-#~ msgstr ""
-#~ "<p>Udførsel af afmonteringshandlingen mislykkedes (fejlkoden var: <tt>%1</"
-#~ "tt>).</p>"
-
 #~ msgid "The authentication action was denied."
 #~ msgstr "Autentificeringshandlingen blev afvist."
 
@@ -6443,9 +6461,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "The password is not correct. "
 #~ msgstr "Adgangskoden er ikke korrekt."
-
-#~ msgid "An authentication error occurred. "
-#~ msgstr "Der skete en godkendelses fejl."
 
 #, fuzzy
 #~ msgid "Please enter authentication data for server %1."
