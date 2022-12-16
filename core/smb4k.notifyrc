@@ -1880,7 +1880,21 @@ Action=Popup|Sound
 
 [Event/zeroconfError]
 Name=Zeroconf error
+Name[ca]=Error del Zeroconf
+Name[ca@valencia]=S'ha produït un error de Zeroconf
+Name[nl]=Zeroconf-fout
+Name[pt]=Erro do Zeroconf
+Name[tr]=Zeroconf hatası
+Name[uk]=Помилка Zeroconf
+Name[x-test]=xxZeroconf errorxx
 Comment=An error with the Zeroconf daemon occurred
+Comment[ca]=S'ha produït un error amb el dimoni Zeroconf
+Comment[ca@valencia]=S'ha produït un error amb el dimoni Zeroconf
+Comment[nl]=Er is een fout opgetreden met de daemon Zeroconf
+Comment[pt]=Ocorreu um erro com o serviço do Zeroconf
+Comment[tr]=Zeroconf ardalan süreciyle ilgili bir hata oluştu
+Comment[uk]=Сталася помилка, яку пов'язано із фоновою службою Zeroconf
+Comment[x-test]=xxAn error with the Zeroconf daemon occurredxx
 Context=Error
 Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
