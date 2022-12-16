@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:48+0000\n"
-"PO-Revision-Date: 2022-05-20 08:38+0300\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"POT-Creation-Date: 2022-12-16 00:50+0000\n"
+"PO-Revision-Date: 2022-12-15 09:14+0200\n"
+"Last-Translator: Fracture dept <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -2044,16 +2044,18 @@ msgstr "Не вдалося надрукувати файл %1 на %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"Не запущено фонову службу Zeroconf. За допомогою DNS-SD не виявлено жодного "
+"сервера."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "У цій версії KDE підтримка Zeroconf є недоступною."
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Невідома помилка, яку пов'язано із Zeroconf."
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2276,10 +2278,13 @@ msgid "Clear List"
 msgstr "Спорожнити список"
 
 #: smb4kmounter.cpp:686
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
 msgid ""
-"<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
-"%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+"<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
+"b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 "<qt><p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він належить "
 "користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p></qt>"
@@ -3723,21 +3728,18 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<qt>Вами передано некоректну адресу URL.</qt>"
 
 #: smb4knotification.cpp:401
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"Спроба обміну даними мережею зазнала невдачі. Повідомлення про помилку: <s>"
-"%1</s>"
+"<p>Спроба обміну даними мережею зазнала невдачі. Повідомлення про помилку: "
+"<s>%1</s></p>"
 
 #: smb4knotification.cpp:409
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Сталася помилка, яку пов'язано зі службою Zeroconf: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format

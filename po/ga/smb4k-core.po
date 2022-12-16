@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:48+0000\n"
+"POT-Creation-Date: 2022-12-16 00:50+0000\n"
 "PO-Revision-Date: 2009-12-24 06:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -1971,8 +1971,8 @@ msgstr ""
 #: smb4kmounter.cpp:686
 #, kde-format
 msgid ""
-"<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>"
-"%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+"<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
+"b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
 #: smb4kmounter.cpp:691
