@@ -817,7 +817,7 @@
     <sect2 id="systemtray_location_usage">
       <title>Location and Usage</title>
 
-      <para>When &smb4k; is started, a status icon appears in your system tray. Its status is set to active if workgroups or domains were discovered in your network neighborhood. Otherwise it is set to inactive.</para>
+      <para>When &smb4k; is started, a status icon appears in the system tray. Its status is set to active if workgroups or domains were discovered in your network neighborhood. Otherwise it is set to inactive.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the system tray widget</screeninfo>
@@ -827,7 +827,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>By left clicking the status icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use, and configure &smb4k; without opening the main window.</para>
+      <para>You can minimize or restore the main window by left clicking the status icon. A right click brings up a popup menu that contains several items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use, and configure &smb4k; without opening the main window.</para>
     </sect2>
 
 <!-- 
@@ -882,7 +882,7 @@
             <menuchoice><guimenuitem>Synchronize</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu">this page</link> and <link linkend="shares_view_synchronization">also this page</link>.</para>
+            <para>Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu">actions and popup menu</link> and the <link linkend="shares_view_synchronization">synchronization</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -914,7 +914,7 @@
       </screenshot>
 
       <para>Its layout is as described <link linkend="bookmarks_menu">here</link>, except that the <guimenuitem>Add Bookmark</guimenuitem> menu item is not present.</para>
-      <para>In the <guimenuitem>Profiles</guimenuitem> menu, all <link linkend="profiles">defined</link> profiles are listed:</para>
+      <para>In the <guimenuitem>Profiles</guimenuitem> menu, all <link linkend="profiles">profiles</link> are listed:</para>
 
       <screenshot>
         <screeninfo>Screenshot of the Profiles menu of the system tray widget</screeninfo>
@@ -924,7 +924,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
+      <para>You can activate a profile by clicking it. The profiles can be <link linkend="profiles">managed</link> in the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
       <para>These are the other menu entries:</para>
 
       <variablelist>
@@ -933,7 +933,7 @@
             <menuchoice><guimenuitem>Open Mount Dialog</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for "manual" mounts.</para>
+            <para>Open the <link linkend="network_neighborhood_browser_mounting">dialog</link> for mounting shares by manually providing the URL, IP address and domain or workgroup.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -941,7 +941,7 @@
             <menuchoice><guimenuitem>Configure &smb4k;...</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Open the configuration dialog. See <link linkend="configuration">the configuration section</link> for a full list of available settings.</para>
+            <para>Open the configuration dialog. See the section about <link linkend="configuration">the configuration</link> for a full list of available settings.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
