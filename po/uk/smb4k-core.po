@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-16 00:50+0000\n"
-"PO-Revision-Date: 2022-12-15 09:14+0200\n"
-"Last-Translator: Fracture dept <yurchor@ukr.net>\n"
+"PO-Revision-Date: 2022-12-16 08:36+0200\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -2278,16 +2278,13 @@ msgid "Clear List"
 msgstr "Спорожнити список"
 
 #: smb4kmounter.cpp:686
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він належить "
-"користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p></qt>"
+"<p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він належить "
+"користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p>"
 
 #: smb4kmounter.cpp:691
 #, kde-format

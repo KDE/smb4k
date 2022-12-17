@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-16 00:50+0000\n"
-"PO-Revision-Date: 2022-12-15 10:52+0100\n"
+"PO-Revision-Date: 2022-12-16 11:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2248,16 +2248,13 @@ msgid "Clear List"
 msgstr "Lijst wissen"
 
 #: smb4kmounter.cpp:686
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>De gedeelde map <b>%1</b> is aangekoppeld op <br><b>%2</b> en de "
-"eigenaar is <b>%3</b>.</p><p>Wilt u het afkoppelen?</p></qt>"
+"<p>De gedeelde map <b>%1</b> is aangekoppeld op <br><b>%2</b> en de eigenaar "
+"is <b>%3</b>.</p><p>Wilt u het afkoppelen?</p>"
 
 #: smb4kmounter.cpp:691
 #, kde-format

@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-16 00:50+0000\n"
-"PO-Revision-Date: 2022-11-15 10:04+0100\n"
+"PO-Revision-Date: 2022-12-16 08:52+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -1974,16 +1974,17 @@ msgstr "Datoteke %1 ni bilo mogoče natisniti na %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"Demon Zeroconf ne teče. Ni odkritega nobenega strežnika z uporabo DNS-SD."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "Podpora Zeroconf ni na voljo v tej različici KDE."
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Nastala je neznana napaka z Zeroconf."
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2204,16 +2205,13 @@ msgid "Clear List"
 msgstr "Očisti seznam"
 
 #: smb4kmounter.cpp:686
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 "<qt><p>Mrežni disk <b>%1</b> je priklopljen na<br><b>%2</b> in v lasti "
-"uporabnika <b>%3</b>.</p><p>Ali ga res želite odklopiti?</p></qt>"
+"uporabnika <b>%3</b>.</p><p>Ali ga zares želite odklopiti?</p></qt>"
 
 #: smb4kmounter.cpp:691
 #, kde-format
@@ -3605,20 +3603,18 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>Poslan URL ni veljaven.</p>"
 
 #: smb4knotification.cpp:401
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"Omrežna komunikacija ni uspela z naslednjim sporočilom o napaki: <s>%1</s>"
+"<p>Omrežna komunikacija ni uspela z naslednjim sporočilom o napaki: <s>%1</"
+"s></p>"
 
 #: smb4knotification.cpp:409
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Prišlo je do napake s storitvijo Zeroconf: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
