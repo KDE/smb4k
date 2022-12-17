@@ -167,6 +167,17 @@
       <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up, and presents them in the network neighborhood browser. For this purpose it uses &Samba;'s client library, <ulink url="https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD">DNS Service Discovery (DNS-SD)</ulink> and, optionally, <ulink url="https://en.wikipedia.org/wiki/WS-Discovery">Web Services Dynamic Discovery (WS-Discovery)</ulink>. The way &smb4k; browses the network neighborhood can be adjusted in the <link linkend="configuration_page_network_basic_settings_browse_settings"><guilabel>Network</guilabel> configuration page</link>.</para>
       <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie;, when you execute a network item. Due to the use of DNS-SD, you will most likely find a domain called <emphasis>LOCAL</emphasis> in the network neighborhood browser. This is the default local DNS domain used by services like <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</ulink> and not an actual &Windows; domain. Opening a domain or workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you must open the desired server.</para>
       <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic packet to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan_settings">configuration dialog</link>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+      <note>
+          <para>If you are using DNS Service Discovery and the Zeroconf daemon (Avahi) is not running, &smb4k; shows an error notification:</para>
+          <screenshot>
+              <screeninfo>Error message if the Zeroconf daemon is not running</screeninfo>
+              <mediaobject>
+                  <imageobject><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG" /></imageobject>
+                  <textobject><phrase>The error message if the Zeroconf daemon is not running</phrase></textobject>
+              </mediaobject>
+          </screenshot>
+          <para>In this case, please start the Zeroconf daemon and restart &smb4k;.</para>
+      </note>
     </sect2>
     
 <!--
@@ -458,7 +469,7 @@
       </screenshot>
 
       <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will save the custom settings and close the dialog.</para>
-      <note><para>Under BSD, the dialog contains fewer entries than if you run a different operating system, because several of the options are not supported.</para></note>
+      <para>Please note that under BSD the dialog contains fewer entries than if you run &Linux;, because several of the options are not supported.</para>
 
       <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
         <title>Common Mount Settings (&Linux; only)</title>
