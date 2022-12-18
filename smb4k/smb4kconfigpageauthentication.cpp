@@ -70,7 +70,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     QWidget *walletEntriesEditor = new QWidget(walletEntriesBox);
     walletEntriesEditor->setObjectName(QStringLiteral("WalletEntriesEditor"));
     QHBoxLayout *walletEntriesEditorLayout = new QHBoxLayout(walletEntriesEditor);
-    walletEntriesEditorLayout->setMargin(0);
+    walletEntriesEditorLayout->setContentsMargins(0, 0, 0, 0);
 
     //
     // The list view

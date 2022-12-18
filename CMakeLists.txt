@@ -48,6 +48,10 @@ option(SMB4K_INSTALL_PLASMOID "Install the plasmoid" ON)
 # Build with KDSoap WS Discovery client
 option(SMB4K_WITH_WS_DISCOVERY "Build with WS-Discovery support for browsing" OFF)
 
+# Compile definitions
+# Error out when deprecated functions (in Qt <= 5.15.0) are encountered
+add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x050F00)
+
 #
 # Required packages and includes
 #

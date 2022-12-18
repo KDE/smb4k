@@ -68,7 +68,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     QWidget *versionsWidget = new QWidget(browseSettingsBox);
     QGridLayout *versionsLayout = new QGridLayout(versionsWidget);
-    versionsLayout->setMargin(0);
+    versionsLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *minimalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), versionsWidget);
     minimalProtocolVersionLabel->setIndent(25);
@@ -203,7 +203,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     QWidget *waitingTimeWidget = new QWidget(wakeOnLanBox);
     QHBoxLayout *waitingTimeWidgetLayout = new QHBoxLayout(waitingTimeWidget);
-    waitingTimeWidgetLayout->setMargin(0);
+    waitingTimeWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), waitingTimeWidget);
     wakeOnLanWaitingTimeLabel->setIndent(25);

@@ -38,7 +38,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     QWidget *rsyncPrefixWidget = new QWidget(synchronizationDirectoryBox);
     QHBoxLayout *rsyncPrefixWidgetLayout = new QHBoxLayout(rsyncPrefixWidget);
-    rsyncPrefixWidgetLayout->setMargin(0);
+    rsyncPrefixWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *rsyncPrefixLabel = new QLabel(rsyncPrefixWidget);
     rsyncPrefixLabel->setText(Smb4KSettings::self()->rsyncPrefixItem()->label());
@@ -97,7 +97,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     QWidget *backupSuffixWidget = new QWidget(backupsBox);
     QHBoxLayout *backupSuffixLayout = new QHBoxLayout(backupSuffixWidget);
-    backupSuffixLayout->setMargin(0);
+    backupSuffixLayout->setContentsMargins(0, 0, 0, 0);
 
     QCheckBox *backupSuffixButton = new QCheckBox(Smb4KSettings::self()->useBackupSuffixItem()->label(), backupSuffixWidget);
     backupSuffixButton->setObjectName(QStringLiteral("kcfg_UseBackupSuffix"));
@@ -112,7 +112,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     QWidget *backupDirWidget = new QWidget(backupsBox);
     QHBoxLayout *backupDirLayout = new QHBoxLayout(backupDirWidget);
-    backupDirLayout->setMargin(0);
+    backupDirLayout->setContentsMargins(0, 0, 0, 0);
 
     QCheckBox *backupDirButton = new QCheckBox(Smb4KSettings::self()->useBackupDirectoryItem()->label(), backupDirWidget);
     backupDirButton->setObjectName(QStringLiteral("kcfg_UseBackupDirectory"));

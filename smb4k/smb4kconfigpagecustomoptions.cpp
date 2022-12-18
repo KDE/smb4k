@@ -40,7 +40,7 @@ Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     //
     QWidget *leftWidget = new QWidget(this);
     QVBoxLayout *leftWidgetLayout = new QVBoxLayout(leftWidget);
-    leftWidgetLayout->setMargin(0);
+    leftWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
     //
     // The list widget
