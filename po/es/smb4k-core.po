@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-16 00:50+0000\n"
-"PO-Revision-Date: 2022-05-21 17:47+0200\n"
+"PO-Revision-Date: 2022-12-17 17:42+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2032,16 +2032,18 @@ msgstr "El archivo %1 no se ha podido imprimir a %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"El demonio de Zeroconf no está ejecutando. No se descubrirán servidores "
+"usando DNS-SD."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "Zeroconf no está disponible en esta versión de KDE."
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Ha ocurrido un error desconocido en Zeroconf."
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2267,16 +2269,13 @@ msgid "Clear List"
 msgstr "Borrar lista"
 
 #: smb4kmounter.cpp:686
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>El recurso <b>%1</b> está montado en <br><b>%2</b> y es propiedad del "
-"usuario <b>%3</b>.</p><p>¿Realmente desea desmontarlo?</p></qt>"
+"<p>El recurso <b>%1</b> está montado en <br><b>%2</b> y es propiedad del "
+"usuario <b>%3</b>.</p><p>¿Realmente desea desmontarlo?</p>"
 
 #: smb4kmounter.cpp:691
 #, kde-format
@@ -3701,21 +3700,18 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>El URL pasado no es válido.</p>"
 
 #: smb4knotification.cpp:401
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"La comunicación de red ha fallado con el siguiente mensaje de error: <s>%1</"
-"s>"
+"<p>La comunicación de red ha fallado con el siguiente mensaje de error: <s>"
+"%1</s></p>"
 
 #: smb4knotification.cpp:409
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Ha ocurrido un error con el servicio Zeroconf: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
@@ -3853,29 +3849,3 @@ msgid ""
 msgstr ""
 "<qt>Por favor, introduzca el usuario y contraseña para el recurso compartido "
 "<b>%1</b>.</qt>"
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "El archivo de configuración de la suite Samba <b>smb.conf</b> no existe. "
-#~ "No es un error fatal, pero debería considerar crear uno."
-
-#~ msgid "NetBIOS name:"
-#~ msgstr "Nombre NetBIOS:"
-
-#~ msgid ""
-#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
-#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
-#~ "file or the host name."
-#~ msgstr ""
-#~ "Este es el nombre NetBIOS de este equipo que es utilizado por Smb4K. Por "
-#~ "defecto, es el nombre NetBIOS que se define en el archivo smb.conf o en "
-#~ "el nombre de host."
-
-#~ msgid ""
-#~ "This is the workgroup or domain this computer is or should be in. By "
-#~ "default, it is the workgroup that is defined in the smb.conf file."
-#~ msgstr ""
-#~ "Este es el grupo de trabajo o dominio que el equipo está o debería estar. "
-#~ "Por defecto, es el grupo de trabajo que se define en el archivo smb.conf."

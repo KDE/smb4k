@@ -98,7 +98,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2021-03-30</date>
+>2022-12-17</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -418,6 +418,24 @@
 >. Los servidores que se deben despertar se tienen que definir en el diálogo <link linkend="network_neighborhood_browser_defining_custom_options"
 >Opciones personalizadas</link
 >.</para>
+      <note>
+          <para
+>If you are using DNS Service Discovery and the Zeroconf daemon (Avahi) is not running, &smb4k; shows an error notification:</para>
+          <screenshot>
+              <screeninfo
+>Error message if the Zeroconf daemon is not running</screeninfo>
+              <mediaobject>
+                  <imageobject
+><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG"/></imageobject>
+                  <textobject
+><phrase
+>The error message if the Zeroconf daemon is not running</phrase
+></textobject>
+              </mediaobject>
+          </screenshot>
+          <para
+>In this case, please start the Zeroconf daemon and restart &smb4k;.</para>
+      </note>
     </sect2>
     
 <!--
@@ -706,7 +724,7 @@
       </variablelist>
 
       <para
->Aunque es posible interactuar con el entorno de red utilizando los accesos rápidos de teclado mencionados anteriormente, en la mayoría de los casos es más cómodo utilizar el ratón. Mediante un clic derecho puede abrir un menú emergente. Este menú contiene todas las acciones que están disponibles en el navegador del entorno de red. Dependiendo de la posición en la que haya hecho clic (en un elemento de red o en el puerto de vista), algunas de estas acciones pueden estar desactivadas. La captura siguiente muestra el menú emergente que se ha abierto en un recurso compartido remoto.</para>
+>En el navegador de vecindad de red puede pulsar el botón derecho del ratón para abrir un menú emergente para acceder a todas las opciones disponibles. Dependiendo de la posición en la que haya hecho clic (en un elemento de red o en el puerto de vista), algunas de estas acciones pueden estar desactivadas. La captura siguiente muestra el menú emergente que se ha abierto en un recurso compartido remoto.</para>
 
       <screenshot>
         <screeninfo
@@ -732,7 +750,7 @@
 >Consejos emergentes</title>
 
       <para
->Para cada elemento de red, se proporciona un consejo emergente que contiene información variada, como el nombre del grupo de trabajo y del navegador maestro, el nombre y la dirección IP del servidor, el nombre del recurso compartido, &etc;</para>
+>Para cada elemento de red, se proporciona un consejo emergente que contiene información variada, como el nombre del grupo de trabajo y del navegador maestro (si está disponibles), el nombre y la dirección IP del servidor, el nombre del recurso compartido, &etc;</para>
       <para
 >Los consejos emergentes se pueden desactivar en el <link linkend="configuration_page_user_interface_network"
 >diálogo de configuración</link
@@ -796,9 +814,9 @@
 > en la forma <programlisting
 >//[USER@]SERVER/SHARE</programlisting
 > or <programlisting
->\\[USER@]SERVER\SHARE</programlisting
+>\ \[USER@]SERVER\SHARE</programlisting
 > o como una URL en la forma <programlisting
->[smb:]//[user@]server:port/share</programlisting
+>[smb:]//[user@]server[:port]/share</programlisting
 > El botón <guibutton
 >Aceptar</guibutton
 >se activará y podrá pulsarlo para montar el recurso compartido. Sin embargo, es aconsejable introducir también la dirección IP y el grupo de trabajo del servidor. Si desea añadir el recurso compartido a los marcadores al mismo tiempo, pulse el botón <guibutton
@@ -1026,10 +1044,8 @@
 > está activado si las entradas del diálogo difieren de las preferencias que usted definió en el diálogo de configuración. Pulsándolo, puede reiniciar las entradas del diálogo a los valores predeterminados. El botón <guibutton
 >Aceptar</guibutton
 > estará activado si cambia las preferencias del diálogo. Al pulsarlo salvará las preferencias personalizadas y se cerrará el diálogo.</para>
-      <note
-><para
->En BSD, el diálogo contiene menos entradas que las que aparecen si se ejecuta en sistema operativo diferentes, debido a que varias de las opciones no están soportadas.</para
-></note>
+      <para
+>Please note that under BSD the dialog contains fewer entries than if you run &Linux;, because several of the options are not supported.</para>
 
       <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
         <title
@@ -1058,7 +1074,7 @@
 >Opciones de montaje (solo BSD)</title>
         
         <para
->En esta pestaña puede definir las preferencias relacionadas con el montaje. Para otra información sobra las preferencias acceda <link linkend="configuration_page_mounting"
+>En esta pestaña puede definir las preferencias relacionadas con el montaje.  Para otra información sobra las preferencias acceda <link linkend="configuration_page_mounting "
 >a esta sección</link
 >.</para>
       </sect3>
@@ -1160,9 +1176,9 @@
       </screenshot>
 
       <para
->Se puede cambiar entre las dos vistas seleccionando, bien la entrada apropiada en sub-menú <guimenuitem
+>Se puede cambiar entre las dos vistas seleccionando la entrada apropiada en el sub-menú de la barra de herramientas <guimenuitem
 >Modos de vista</guimenuitem
-> desde el menú <link linkend="mainwindow_overview"
+>, en la barra de menú <link linkend="mainwindow_overview"
 ><guimenu
 >Vistas compartidas</guimenu
 ></link
@@ -1242,7 +1258,7 @@
           </term>
           <listitem>
             <para
->Desmontar uno o más de los recursos compartidos. Si no se selecciona ningún recurso en la vista, este botón no está activado.</para>
+>Desmontar los recursos compartidos. Si no se selecciona ningún recurso en la vista, este botón no está activado.</para>
             <para
 >Lea la sección <link linkend="shares_view_unmounting"
 >Desmontaje derecursos compartidos</link
@@ -1286,7 +1302,7 @@
           </term>
           <listitem>
             <para
->Añade marcadores al recurso compartido montado seleccionado actualmente. Esta acción está desactivada si no hay ningún recurso compartido seleccionado.</para>
+>Añade marcadores al recurso compartido seleccionado. Esta acción está desactivada si no hay ningún recurso compartido seleccionado.</para>
             <para
 >Consulte la sección <link linkend="bookmarks_adding"
 >Añadir marcadores</link
@@ -1405,13 +1421,27 @@
 >Recursos compartidos inaccesibles</title>
 
       <para
->&smb4k; comprueba periódicamente todos los recursos compartidos montados para ver si aún siguen siendo accesibles. Si se encuentra un recurso compartido inaccesible, este se marcará con un <link linkend="shares_view_icons"
->icono de carpeta bloqueada</link
-> y ya no podrá abrirlo ni sincronizarlo. Desmóntelo y añádalo a un marcador si aún es posible.</para>
+>&smb4k; comprueba periódicamente todos los recursos compartidos montados para ver si aún siguen siendo accesibles. Si se encuentra un recurso compartido inaccesible, este se marcará con un símbolo de candado y ya no podrá abrirlo ni sincronizarlo. Desmóntelo y añádalo a un marcador si aún es posible.</para>
       <note
 ><para
 >El programa puede quedar congelado durante un breve periodo de tiempo debido a un recurso compartido inaccesible. Se recuperará después.</para
 ></note>
+    </sect2>
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
+  -->
+    
+    <sect2 id="shares_view_foreign_shares">
+      <title
+>Recursos compartidos propiedad de otros usuarios</title>
+      
+      <para
+>Los recursos compartidos propiedad de otro usuario solo se muestran si se configura las <link linkend="configuration_page_mounting_basic_settings_behavior"
+>preferencias</link
+> para mostrarlos. En la configuración predeterminada, no se le permite desmontar estos recursos compartidos, pero también puede <link linkend="configuration_page_mounting_basic_settings_behavior"
+>cambiar este comportamiento</link
+>.</para>
     </sect2>
 
 <!-- 
@@ -1423,38 +1453,7 @@
 >Iconos</title>
 
       <para
->Se pueden presentar tres iconos distintos al usuario:</para>
-      <screenshot>
-        <screeninfo
->Captura de pantalla de los tres diferentes iconos</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_icons.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Tres iconos diferentes</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <itemizedlist>
-        <listitem
-><para
->El icono de la parte izquierda indica que este recurso compartido no está accesible. &smb4k; no le permitirá abrirlo ni sincronizarlo. Solo podrá desmontarlo o añadir un marcador.</para
-></listitem>
-        <listitem
-><para
->El icono central indica que el recurso compartido está en línea, es accesible y usted es su propietario. Puede realizar cualquier acción disponible sobre él.</para
-></listitem>
-        <listitem
-><para
->Todos los recursos compartidos marcados con un indicador de advertencia como el que se encuentra en la parte derecha, son propiedad de otro usuario. Solo se muestran si se configura las <link linkend="configuration_page_mounting_basic_settings_behavior"
->preferencias</link
-> para mostrarlos. En la configuración predeterminada, no se le permite desmontar estos recursos compartidos, pero también puede <link linkend="configuration_page_mounting_basic_settings_behavior"
->cambiar este comportamiento</link
->.</para
-></listitem>
-      </itemizedlist>
+>Un recurso compartido montado se representa mediante un pequeño símbolo en la esquina inferior del icono de la carpeta. Este símbolo cambia por un candado cuando el recurso no está disponible. En el caso de recursos compartidos propiedad de otros usuarios, el símbolo se remplaza por una señal de advertencia.</para>
     </sect2>
 
 <!-- 
@@ -1466,7 +1465,7 @@
 >Arrastrar y soltar</title>
 
       <para
->&smb4k; implementa arrastrar y soltar en la vista de recursos compartidos. Para transferir o enlazar datos a un recurso compartido, arrastre los archivos o carpetas sobre el icono del recurso compartido y suéltelos ahí. Se abrirá un menú emergente preguntándole lo que quiere hacer. Elija la acción apropiada (copiar, mover o enlazar).</para>
+>&smb4k; implementa arrastrar y soltar en la vista de recursos compartidos. Para transferir o enlazar datos a un recurso compartido, arrastre los archivos o carpetas sobre el icono del recurso compartido y suéltelos ahí. Se abrirá un menú emergente preguntándole que hacer. Elija la acción apropiada (copiar, mover o enlazar).</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla de la vista de recursos compartidos después de que el usuario suelte un archivo</screeninfo>
@@ -1485,7 +1484,7 @@
 >&Ctrl;&Shift;</keycombo
 > para enlazar mientras se arrastra y suelta. La transferencia solo será correcta si el recurso compartido se montó con permisos de lectura y escritura.</para>
       <para
->Usted también puede arrastrar el recurso compartido completo al escritorio o a otra aplicación (&eg; &dolphin;)í. De nuevo, se abrirá un menú emergente preguntándole qué es lo que quiere hacer. Al elegir la operación apropiada recuerde que en la mayoría de las circunstancias, mover y enlazar el recurso compartido podría no ser una buena idea.</para>
+>Usted también puede arrastrar el recurso compartido completo al escritorio o a otra aplicación (&eg; &dolphin;)í. De nuevo, se abrirá un menú emergente preguntándole qué hacer. Al elegir la operación apropiada recuerde que en la mayoría de las circunstancias, mover y enlazar el recurso compartido podría no ser una buena idea.</para>
     </sect2>
 
 <!-- 
@@ -1509,28 +1508,11 @@
 ></menuchoice
 >, o bien pulsando su acceso rápido de teclado. De manera predeterminada, la capacidad para desmontar un recurso compartido está restringida a aquellos recursos que sean de su propiedad. Este comportamiento se puede modificar en el  <link linkend="configuration_page_mounting_basic_settings_behavior"
 >diálogo de configuración</link
->. Si usted activó el desmontaje de recursos compartidos que son propiedad de otros usuarios, se le mostrará un diálogo de advertencia antes de realizar el desmontaje:</para>
-      <screenshot>
-        <screeninfo
->Captura de pantalla del diálogo de advertencia que se muestra cuando se va a desmontar un recurso compartido ajeno</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->El diálogo de advertencia que se muestra al desmontar recursos compartidos ajenos</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
+>. Si usted activó el desmontaje de recursos compartidos que son propiedad de otros usuarios, se le mostrará un diálogo de advertencia antes de realizar el desmontaje. Si continua, el recurso compartido será desmontado definitivamente. ¡Así que piénselo dos veces antes de hacerlo!</para>
       <para
->Si pulsa en el botón <guibutton
->Sí</guibutton
->, el recurso compartido se desmontará definitivamente. Por tanto, ¡piénselo dos veces antes de decidir desmontar recursos compartidos que son propiedad de otros usuarios!</para>
-      <para
->&smb4k; también proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
+>&smb4k; proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
 >preferencias</link
-> en el diálogo de configuración. &smb4k; ejecutará luego un <ulink url="man:/umount"
+> en el diálogo de configuración. &smb4k; ejecutará luego un <ulink url="man:/umount(8)"
 >desmontaje retardado</ulink
 > en los recursos compartidos inaccesibles.</para>
       <para
@@ -1589,9 +1571,7 @@
       <para
 >Al pulsar sobre el botón <guibutton
 >Sincronizar</guibutton
-> se inicia la sincronización. Si hace clic izquierdo sobre el botón <guibutton
->Notificaciones</guibutton
-> de la bandeja del sistema, podrá abrir un diálogo de progreso que muestra detalles sobre la transferencia.</para>
+> se inicia la sincronización y se muestra un diálogo de progreso con los detalles sobre la transferencia.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diálogo de progreso de la sincronización</screeninfo>
@@ -1607,15 +1587,6 @@
       </screenshot>
       <para
 >La sincronización se puede cancelar en cualquier momento pulsando el botón detener situado a la derecha de la barra de progreso.</para>
-            
-      <note>
-        <para
->El número total de archivos que se muestra en diálogo de progreso corresponde al número de archivos presentes en el recurso compartido y no necesariamente al número total de archivos que serán transferidos.</para>
-        <para
->El progreso se calcula tomando el número de archivos transferidos y dividiéndolo por el número total de archivos presentes en el recurso compartido. El tamaño de los archivos no se tiene en cuenta. Esto significa que un archivo muy grande añade al progreso tanto tiempo como uno pequeño. Además, debido a la forma en que <application
->rsync</application
-> muestra el progreso de la transferencia, la barra de progreso solo se actualiza cuando finaliza la transferencia de otro archivo.</para>
-      </note>
     </sect2>
 
 <!-- 
@@ -1690,7 +1661,7 @@
 >Ubicación y uso</title>
 
       <para
->Cuando se inicia &smb4k; un icono de estado aparece en la bandeja del sistema. Su estado pasará a activo si se encontraron grupos de trabajo o dominios en su entorno de red. Si no pasará a inactivo.</para>
+>When &smb4k; is started, a status icon appears in the system tray. Its status is set to active if workgroups or domains were discovered in your network neighborhood. Otherwise it is set to inactive.</para>
 
       <screenshot>
         <screeninfo
@@ -1706,7 +1677,7 @@
       </screenshot>
 
       <para
->Pulsando el icono (de estado) con el botón izquierdo, usted puede minimizar o restaurar la ventana principal. Pulsar con el botón derecho proporciona un menú emergente que contiene varios elementos que le permiten trabajar con recursos compartidos montados, gestionar o montar sus marcadores, seleccionar el perfil que usted quiere usar y configurar &smb4k; abriendo la ventana principal.</para>
+>You can minimize or restore the main window by left clicking the status icon. A right click brings up a popup menu that contains several items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use, and configure &smb4k; without opening the main window.</para>
     </sect2>
 
 <!-- 
@@ -1791,10 +1762,10 @@
           </term>
           <listitem>
             <para
->Sincroniza el recurso compartido montado con una copia local o viceversa. Para una información más amplia consulte  <link linkend="shares_view_actions_popup_menu"
->esta página</link
-> y <link linkend="shares_view_synchronization"
->también esta página</link
+>Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu"
+>actions and popup menu</link
+> and the <link linkend="shares_view_synchronization"
+>synchronization</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1853,11 +1824,11 @@
 >Añadir marcador</guimenuitem
 > no está presente.</para>
       <para
->En el menú <guimenuitem
->Perfiles</guimenuitem
->, están listados todos los perfiles <link linkend="profiles"
->definidos</link
->:</para>
+>In the <guimenuitem
+>Profiles</guimenuitem
+> menu, all <link linkend="profiles"
+>profiles</link
+> are listed:</para>
 
       <screenshot>
         <screeninfo
@@ -1873,10 +1844,10 @@
       </screenshot>
 
       <para
->Usted puede activar un perfil pulsándolo. Los perfiles pueden ser <link linkend="profiles"
->gestionados</link
-> vía el <link linkend="configuration_page_profiles"
->diálogo de configuración</link
+>You can activate a profile by clicking it. The profiles can be <link linkend="profiles"
+>managed</link
+> in the <link linkend="configuration_page_profiles"
+>configuration dialog</link
 >.</para>
       <para
 >Estas son las otras opciones de menú son:</para>
@@ -1891,9 +1862,9 @@
           </term>
           <listitem>
             <para
->Abre el <link linkend="network_neighborhood_browser_mounting"
->diálogo</link
-> para montajes «manuales».</para>
+>Open the <link linkend="network_neighborhood_browser_mounting"
+>dialog</link
+> for mounting shares by manually providing the URL, IP address and domain or workgroup.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1905,9 +1876,9 @@
           </term>
           <listitem>
             <para
->Abre el diálogo de configuración. Consulte <link linkend="configuration"
->la sección de configuración</link
-> para una lista completa de preferencias disponibles.</para>
+>Open the configuration dialog. See the section about <link linkend="configuration"
+>the configuration</link
+> for a full list of available settings.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -3730,7 +3701,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Fuerza el desmontado de recursos compartidos inaccesibles (solo en &Linux;). En caso de que un recurso compartido no esté accesible, se ejecuta un desmontaje vago. Antes de que se haga el desmontaje real, se muestra un diálogo de advertencia pidiendo la aprobación del desmontaje.</para>
+>Fuerza el desmontaje de recursos compartidos inaccesibles (solo en &Linux;). En caso de que un recurso compartido no esté accesible, se ejecuta un desmontaje vago. Antes de que se haga el desmontaje real, se muestra un diálogo de advertencia pidiendo la aprobación del desmontaje.</para>
               <para
 >Predeterminado: no seleccionado</para>
             </listitem>
@@ -8257,11 +8228,11 @@ ntlm auth = yes
 >Desmonta uno o varios recursos compartidos seleccionados. La capacidad de desmontar recursos compartidos está restringida de manera predeterminada a aquellos que sean propiedad del usuario. Sin embargo, puede cambiar este comportamiento modificando las <link linkend="configuration_page_mounting_basic_settings_behavior"
 >preferencias</link
 > en el diálogo de configuración. Si no hay ningún recurso compartido seleccionado en la vista de recursos compartidos, este botón está desactivado.</para>
-            <para
->&smb4k; también proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
+          <para
+>&smb4k; proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
 >preferencias</link
 > en el diálogo de configuración.</para>
-            <para
+          <para
 >Lea la sección <link linkend="shares_view_unmounting"
 >Desmontaje derecursos compartidos</link
 > para más detalles.</para>
