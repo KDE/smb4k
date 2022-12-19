@@ -70,7 +70,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->30 березня 2021 року</date>
+>17 грудня 2022 року</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -392,6 +392,24 @@
 >. Перелік серверів, які слід пробуджувати, має бути визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_options"
 >діалогового вікна нетипових параметрів</link
 >.</para>
+      <note>
+          <para
+>Якщо ви використовуєте виявлення служби DNS і фонову службу Zeroconf (Avahi) не запущено, &smb4k; покаже сповіщення про помилку:</para>
+          <screenshot>
+              <screeninfo
+>Повідомлення про помилку, якщо фонову службу Zeroconf не запущено</screeninfo>
+              <mediaobject>
+                  <imageobject
+><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG"/></imageobject>
+                  <textobject
+><phrase
+>Повідомлення про помилку, якщо фонову службу Zeroconf не запущено</phrase
+></textobject>
+              </mediaobject>
+          </screenshot>
+          <para
+>У цьому випадку, будь ласка, запустіть фонову службу Zeroconf і перезапустіть &smb4k;.</para>
+      </note>
     </sect2>
     
 <!--
@@ -1000,10 +1018,8 @@
 > буде відкрито, лише якщо пункти діалогового вікна відрізнятимуться від типових параметрів, визначених за допомогою діалогового вікна налаштування. Натисканням цієї кнопки ви можете повернути значення параметрів діалогового вікна до типових. Якщо ви внесете до значень параметрів діалогового вікна зміни, буде відкрито доступ до кнопки <guibutton
 >Гаразд</guibutton
 >. Після натискання цієї кнопки зміни буде застосовано, а діалогове вікно закрито.</para>
-      <note
-><para
->У BSD у цьому діалоговому вікні міститиметься менше пунктів, ніж у інших операційних системах, оскільки деякі з параметрів не підтримуються.</para
-></note>
+      <para
+>Будь ласка, зауважте, що у BSD у цьому діалоговому вікні міститиметься менше пунктів, ніж у &Linux;, оскільки підтримки деяких з параметрів не передбачено.</para>
 
       <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
         <title
@@ -1720,11 +1736,11 @@
           </term>
           <listitem>
             <para
->Синхронізувати змонтований спільний ресурс з локальною копією або навпаки. Докладніше про це можна дізнатися <link linkend="shares_view_actions_popup_menu"
->тут</link
-> і <link linkend="shares_view_synchronization"
->тут</link
->.</para>
+>Синхронізувати змонтований спільний ресурс з локальною копією або навпаки. Докладніше про це можна дізнатися з розділів щодо <link linkend="shares_view_actions_popup_menu"
+>дій і контекстного меню</link
+> та <link linkend="shares_view_synchronization"
+>синхронізації</link
+> панелі спільних ресурсів.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1785,8 +1801,8 @@
 >У меню <guimenuitem
 >Профілі</guimenuitem
 > буде наведено список усіх <link linkend="profiles"
->визначених</link
-> профілів:</para>
+>профілів</link
+>:</para>
 
       <screenshot>
         <screeninfo
@@ -1822,7 +1838,7 @@
             <para
 >Відкрити <link linkend="network_neighborhood_browser_mounting"
 >діалогове вікно</link
-> монтування «вручну».</para>
+> для монтування спільних ресурсів за наданими вручну адресою, IP-адресою і доменом або робочою групою.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1834,9 +1850,9 @@
           </term>
           <listitem>
             <para
->Відкрити діалогове вікно налаштування. Повний список можливих параметрів наведено <link linkend="configuration"
->тут</link
->.</para>
+>Відкрити діалогове вікно налаштування. Див. розділ щодо <link linkend="configuration"
+>налаштувань</link
+>, щоб ознайомитися із повним списком доступних параметрів.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
