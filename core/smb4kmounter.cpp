@@ -926,11 +926,6 @@ void Smb4KMounter::timerEvent(QTimerEvent *)
         //
         // Check the size, accessibility, etc. of the shares
         //
-        // FIXME: Hopefully we can replace this with a recursive QFileSystemWatcher
-        // approach in the future. However, using the existing QFileSystemWatcher
-        // and a QDirIterator to add all the subdirectories of a share to the watcher
-        // seems to be too resource consuming...
-        //
         if (d->checkTimeout >= 2500 && d->importedShares.isEmpty()) {
             for (const SharePtr &share : mountedSharesList()) {
                 check(share);
@@ -2014,12 +2009,12 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
         // Unmount all shares
         unmountAllShares(true);
 
-        // Reset some variables.
+        // Reset some variables. 
+        // Don't touch d->firstImportDone here, because that remains true
         d->remountTimeout = 0;
         d->remountAttempts = 0;
-        d->firstImportDone = false;
         d->activeProfile = newProfile;
-
+        
         // Restart the timer
         d->timerId = startTimer(TIMEOUT);
     }
