@@ -1,7 +1,7 @@
 /*
     This class manages the profiles that were defined by the user.
 
-    SPDX-FileCopyrightText: 2014-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2014-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -18,12 +18,6 @@
 #include <QPointer>
 
 Q_GLOBAL_STATIC(Smb4KProfileManagerStatic, p);
-
-//
-// NOTE: Do not invoke writeConfig() here, because this will/might
-// trigger the configChanged() signal which can lead to unwanted
-// effects.
-//
 
 Smb4KProfileManager::Smb4KProfileManager(QObject *parent)
     : QObject(parent)
@@ -53,32 +47,20 @@ Smb4KProfileManager *Smb4KProfileManager::self()
 
 void Smb4KProfileManager::setActiveProfile(const QString &name)
 {
-    //
-    // Check if the active profile is going to be changed. If so,
-    // notify the program so that things can be done before the
-    // profile is actually changed.
-    //
-    bool change = false;
-
     if (d->useProfiles) {
         if (name != d->activeProfile) {
             Q_EMIT aboutToChangeProfile();
-            change = true;
+            d->activeProfile = name;
+            Smb4KSettings::setActiveProfile(d->activeProfile);
+            Q_EMIT activeProfileChanged(d->activeProfile);
         }
     } else {
         if (!d->activeProfile.isEmpty()) {
             Q_EMIT aboutToChangeProfile();
-            change = true;
+            d->activeProfile.clear();
+            Smb4KSettings::setActiveProfile(d->activeProfile);
+            Q_EMIT activeProfileChanged(d->activeProfile);
         }
-    }
-
-    //
-    // Now change the profile
-    //
-    if (change) {
-        d->activeProfile = d->useProfiles ? name : QString();
-        Smb4KSettings::setActiveProfile(d->activeProfile);
-        Q_EMIT activeProfileChanged(d->activeProfile);
     }
 }
 
