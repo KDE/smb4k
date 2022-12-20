@@ -56,7 +56,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->30 de març de 2021</date>
+>17 de desembre de 2022</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -380,6 +380,24 @@
 >. Els servidors que s'han de despertar s'han de definir al diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
 >Opcions personalitzades</link
 >.</para>
+      <note>
+          <para
+>Si esteu utilitzant el descobriment de serveis DNS i el dimoni Zeroconf (Avahi) no s'està executant, el &smb4k; mostrarà una notificació d'error:</para>
+          <screenshot>
+              <screeninfo
+>Missatge d'error si el dimoni Zeroconf no s'està executant</screeninfo>
+              <mediaobject>
+                  <imageobject
+><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG"/></imageobject>
+                  <textobject
+><phrase
+>El missatge d'error si el dimoni Zeroconf no s'està executant</phrase
+></textobject>
+              </mediaobject>
+          </screenshot>
+          <para
+>En aquesta cas, inicieu el dimoni Zeroconf i reinicieu el &smb4k;.</para>
+      </note>
     </sect2>
     
 <!--
@@ -988,10 +1006,8 @@
 > estarà habilitat si les entrades del diàleg es desvien de les opcions de configuració que heu definit al diàleg de configuració. En fer-hi clic, restablireu les entrades del diàleg als valors predeterminats. El botó <guibutton
 >D'acord</guibutton
 > estarà habilitat si heu canviat la configuració al diàleg. En fer-ho, s'entregaran les opcions de configuració personalitzades i es tancarà el diàleg.</para>
-      <note
-><para
->A BSD, el diàleg conté menys entrades que si executeu un sistema operatiu diferent, ja que algunes d'aquestes opcions no estan admeses.</para
-></note>
+      <para
+>Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
 
       <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
         <title
@@ -1625,7 +1641,7 @@
       </screenshot>
 
       <para
->Fent clic esquerre a la icona d'estat, podeu minimitzar o restaurar la finestra principal. Amb un clic dret apareixerà un menú emergent que contindrà diversos elements de menú que permeten treballar amb les comparticions muntades, gestionar o muntar les adreces d'interès, seleccionar el perfil que voleu utilitzar i configurar el &smb4k; sense obrir la finestra principal.</para>
+>Podeu minimitzar o restaurar la finestra principal fent un clic esquerre a la icona d'estat. Amb un clic dret apareixerà un menú emergent que contindrà diversos elements de menú que permeten treballar amb les comparticions muntades, gestionar o muntar les adreces d'interès, seleccionar el perfil que voleu utilitzar i configurar el &smb4k; sense obrir la finestra principal.</para>
     </sect2>
 
 <!-- 
@@ -1710,10 +1726,10 @@
           </term>
           <listitem>
             <para
->Sincronitza la compartició muntada amb una còpia local o viceversa. Per a més informació, llegiu <link linkend="shares_view_actions_popup_menu"
->aquesta pàgina</link
-> i <link linkend="shares_view_synchronization"
->també aquesta altra</link
+>Sincronitza la compartició muntada amb una còpia local o viceversa. Per a més informació, llegiu les seccions sobre les <link linkend="shares_view_actions_popup_menu"
+>accions i menú emergent</link
+> de les vistes de comparticions i la <link linkend="shares_view_synchronization"
+>sincronització</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1774,8 +1790,8 @@
       <para
 >Al menú <guimenuitem
 >Perfils</guimenuitem
->, es llisten tots els perfils <link linkend="profiles"
->definits</link
+>, es llisten tots els <link linkend="profiles"
+>perfils</link
 >:</para>
 
       <screenshot>
@@ -1794,7 +1810,7 @@
       <para
 >Podeu activar un perfil fent-hi clic. Els perfils es poden <link linkend="profiles"
 >gestionar</link
-> mitjançant el <link linkend="configuration_page_profiles"
+> en el <link linkend="configuration_page_profiles"
 >diàleg de configuració</link
 >.</para>
       <para
@@ -1812,7 +1828,7 @@
             <para
 >Obre el <link linkend="network_neighborhood_browser_mounting"
 >diàleg</link
-> per a muntatges «manuals».</para>
+> per a muntar comparticions manualment proporcionant l'URL, l'adreça IP i el domini o grup de treball.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1824,8 +1840,8 @@
           </term>
           <listitem>
             <para
->Obre el diàleg de configuració. Vegeu <link linkend="configuration"
->la secció de la configuració</link
+>Obre el diàleg de configuració. Vegeu la secció de <link linkend="configuration"
+>la configuració</link
 > per a una llista completa de les opcions de configuració disponibles.</para>
           </listitem>
         </varlistentry>

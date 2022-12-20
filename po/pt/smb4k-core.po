@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-16 00:50+0000\n"
-"PO-Revision-Date: 2022-12-15 09:36+0000\n"
+"PO-Revision-Date: 2022-12-18 12:07+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -2259,16 +2259,13 @@ msgid "Clear List"
 msgstr "Limpar a Lista"
 
 #: smb4kmounter.cpp:686
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>A partilha <b>%1</b> está montada em <br><b>%2</b> e pertence ao "
-"utilizador <b>%3</b>.</p><p>Deseja realmente desmontá-la?</p></qt>"
+"<p>A partilha <b>%1</b> está montada em <br><b>%2</b> e pertence ao "
+"utilizador <b>%3</b>.</p><p>Deseja realmente desmontá-la?</p>"
 
 #: smb4kmounter.cpp:691
 #, kde-format

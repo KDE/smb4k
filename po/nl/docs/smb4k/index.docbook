@@ -56,7 +56,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2021-03-30</date>
+>2022-12-17</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -376,6 +376,24 @@
 >. De servers die uit de slaapstand moet komen kunt u opgeven in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_options"
 >Aangepaste opties</link
 >.</para>
+      <note>
+          <para
+>Als u DNS Service Discovery gebruikt en de Zeroconf-daemon (Avahi) is niet actief, dan toont &smb4k; een foutmelding:</para>
+          <screenshot>
+              <screeninfo
+>Foutmelding als de Zeroconf-daemon niet actief is</screeninfo>
+              <mediaobject>
+                  <imageobject
+><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG"/></imageobject>
+                  <textobject
+><phrase
+>De foutmelding als de Zeroconf-daemon niet actief is</phrase
+></textobject>
+              </mediaobject>
+          </screenshot>
+          <para
+>In dat geval, start de Zeroconf-daemon en start &smb4k; opnieuw.</para>
+      </note>
     </sect2>
     
 <!--
@@ -984,10 +1002,8 @@
 > is pas selecteerbaar als de instellingen die u heeft gedaan afwijken van de ingestelde waarden in het configuratievenster. Door erop te klikken, kunt u de instellingen in het dialoogvenster terugzetten naar hun standaardwaarden. De knop <guibutton
 >OK</guibutton
 > is pas selecteerbaar nadat u de waarden in het dialoogvenster heeft gewijzigd. Door erop te klikken slaat u de aangepaste instellingen op en sluit u het dialoogvenster.</para>
-      <note
-><para
->Bij gebruik van BSD, zijn er in het dialoogvenster minder ingangen dan bij een ander besturingssysteem, doordat verschillende mogelijkheden niet worden ondersteund.</para
-></note>
+      <para
+>Merk op dat bij gebruik van BSD er in het dialoogvenster minder ingangen zijn dan als u &Linux; gebruikt, omdat verschillende opties niet worden ondersteund.</para>
 
       <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
         <title
@@ -1603,7 +1619,7 @@
 >Locatie en gebruik</title>
 
       <para
->Wanneer &smb4k; is gestart verschijnt er een statuspictogram in uw systeemvak. Zijn status is op actief gezet als werkgroepen of domeinen ontdekt zijn in uw netwerkomgeving. Anders staat deze op inactief.</para>
+>Wanneer &smb4k; is gestart verschijnt er een statuspictogram in het systeemvak. Zijn status is op actief gezet als werkgroepen of domeinen ontdekt zijn in uw netwerkomgeving. Anders staat deze op inactief.</para>
 
       <screenshot>
         <screeninfo
@@ -1619,7 +1635,7 @@
       </screenshot>
 
       <para
->Door met de &LMB; op het statuspictogram te klikken, kunt u het hoofdvenster minimaliseren of weer openen. Als u met de &RMB; klikt dan opent een contextmenu met verschillende items waarmee u de aangekoppelde shares kunt beheren, uw bladwijzers kunt aankoppelen, het profiel dat u wilt gebruiken selecteren en &smb4k; kunt configureren zonder openen van het hoofdvenster.</para>
+>U kunt het hoofdvenster minimaliseren of weer openen door links te klikken op het statuspictogram. Als u met de &RMB; klikt dan opent een contextmenu met verschillende items waarmee u de aangekoppelde shares kunt beheren, uw bladwijzers kunt aankoppelen, het profiel dat u wilt gebruiken selecteren en &smb4k; kunt configureren zonder openen van het hoofdvenster.</para>
     </sect2>
 
 <!-- 
@@ -1704,11 +1720,11 @@
           </term>
           <listitem>
             <para
->Synchroniseert de aangekoppelde share met een lokale kopie of omgekeerd. Meer informatie daarover kunt u <link linkend="shares_view_actions_popup_menu"
->deze pagina</link
-> en <link linkend="shares_view_synchronization"
->ook deze pagina</link
-> lezen.</para>
+>Synchroniseer de aangekoppelde share met een lokale kopie of omgekeerd. Voor meer informatie lees de secties over <link linkend="shares_view_actions_popup_menu"
+>de acties in de de weergave van shares</link
+> en de <link linkend="shares_view_synchronization"
+>synchronisatie</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1768,9 +1784,9 @@
       <para
 >In het menu <guimenuitem
 >Profielen</guimenuitem
->, worden alle profielen die u heeft <link linkend="profiles"
->gedefinieerd</link
-> opgenoemd:</para>
+> worden alle <link linkend="profiles"
+>profielen</link
+> weergegeven:</para>
 
       <screenshot>
         <screeninfo
@@ -1788,7 +1804,7 @@
       <para
 >U kunt een profiel activeren door er op te klikken. Profielen kunnen <link linkend="profiles"
 >beheerd</link
-> worden via de <link linkend="configuration_page_profiles"
+> worden in de <link linkend="configuration_page_profiles"
 >instellingendialoog</link
 >.</para>
       <para
@@ -1806,7 +1822,7 @@
             <para
 >Open de <link linkend="network_neighborhood_browser_mounting"
 >dialoog</link
-> voor "handmatig" aankoppelen.</para>
+> voor "handmatig" aankoppelen van shares met een URL, IP-adres en domein of werkgroep.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1818,8 +1834,8 @@
           </term>
           <listitem>
             <para
->Open de instellingendialoog. Zie <link linkend="configuration"
->de sectie configuratie</link
+>Open de configuratiedialoog. Zie de sectie over <link linkend="configuration"
+>de configuratie</link
 > voor een volledige lijst met beschikbare instellingen.</para>
           </listitem>
         </varlistentry>
