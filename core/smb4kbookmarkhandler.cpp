@@ -97,7 +97,7 @@ void Smb4KBookmarkHandler::addBookmark(const BookmarkPtr &bookmark)
         BookmarkPtr knownBookmark = findBookmarkByUrl(bookmark->url());
 
         if (knownBookmark) {
-            Smb4KNotification::bookmarkExists(knownBookmark.data());
+            Smb4KNotification::bookmarkExists(knownBookmark);
             return;
         }
 
@@ -146,7 +146,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
         BookmarkPtr knownBookmark = findBookmarkByUrl(share->isHomesShare() ? share->homeUrl() : share->url());
 
         if (knownBookmark) {
-            Smb4KNotification::bookmarkExists(knownBookmark.data());
+            Smb4KNotification::bookmarkExists(knownBookmark);
             continue;
         }
 
@@ -203,7 +203,7 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<BookmarkPtr> &list, bool rep
         // Check if the bookmark label is already in use
         //
         if (!bookmark->label().isEmpty() && findBookmarkByLabel(bookmark->label())) {
-            Smb4KNotification::bookmarkLabelInUse(bookmark.data());
+            Smb4KNotification::bookmarkLabelInUse(bookmark);
             bookmark->setLabel(bookmark->label() + QStringLiteral(" (1)"));
         }
 

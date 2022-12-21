@@ -20,7 +20,6 @@
 #include <QUrl>
 
 // forward declarations
-class Smb4KBookmark;
 class Smb4KNotificationPrivate;
 
 /**
@@ -85,7 +84,7 @@ Q_DECL_EXPORT void mimetypeNotSupported(const QString &mimetype);
  *
  * @param bookmark  The bookmark
  */
-Q_DECL_EXPORT void bookmarkExists(Smb4KBookmark *bookmark);
+Q_DECL_EXPORT void bookmarkExists(const BookmarkPtr &bookmark);
 
 /**
  * Tell the user that the label he/she chose for the bookmark is already
@@ -93,7 +92,7 @@ Q_DECL_EXPORT void bookmarkExists(Smb4KBookmark *bookmark);
  *
  * @param bookmark  The bookmark
  */
-Q_DECL_EXPORT void bookmarkLabelInUse(Smb4KBookmark *bookmark);
+Q_DECL_EXPORT void bookmarkLabelInUse(const BookmarkPtr &bookmark);
 
 /**
  * This error message is shown if the mounting of a share failed.
