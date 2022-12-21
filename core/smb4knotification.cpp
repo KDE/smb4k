@@ -18,16 +18,15 @@
 
 // KDE includes
 #include "kauth_version.h"
-#include "kiconthemes_version.h"
 #if KAUTH_VERSION >= QT_VERSION_CHECK(5, 92, 0)
 #include <KAuth/ActionReply>
 #else
 #include <KAuth/KAuthActionReply>
 #endif
 #include <KI18n/KLocalizedString>
+#include <KIO/OpenUrlJob>
 #include <KIconThemes/KIconLoader>
 #include <KNotifications/KNotification>
-#include <KIO/OpenUrlJob>
 
 using namespace KAuth;
 
@@ -40,8 +39,8 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
     Q_ASSERT(share);
 
     if (share) {
-        QEventLoop loop; 
-        
+        QEventLoop loop;
+
         KNotification *notification = new KNotification(QStringLiteral("shareMounted"), KNotification::CloseOnTimeout);
         notification->setText(i18n("<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>", share->displayString(), share->path()));
         notification->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"),
@@ -57,11 +56,11 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
             job->setAutoDelete(true);
             job->start();
         });
-        
+
         QObject::connect(notification, &KNotification::closed, &loop, &QEventLoop::quit);
-        
+
         notification->sendEvent();
-        
+
         loop.exec();
     }
 }
@@ -142,7 +141,7 @@ void Smb4KNotification::mimetypeNotSupported(const QString &mimetype)
 void Smb4KNotification::bookmarkExists(const BookmarkPtr &bookmark)
 {
     Q_ASSERT(bookmark);
-    
+
     if (bookmark) {
         KNotification *notification = new KNotification(QStringLiteral("bookmarkExists"), KNotification::CloseOnTimeout);
         notification->setText(i18n("<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>", bookmark->displayString()));
@@ -154,7 +153,7 @@ void Smb4KNotification::bookmarkExists(const BookmarkPtr &bookmark)
 void Smb4KNotification::bookmarkLabelInUse(const BookmarkPtr &bookmark)
 {
     Q_ASSERT(bookmark);
-    
+
     if (bookmark) {
         KNotification *notification = new KNotification(QStringLiteral("bookmarkLabelInUse"), KNotification::CloseOnTimeout);
         notification->setText(
@@ -173,7 +172,7 @@ void Smb4KNotification::bookmarkLabelInUse(const BookmarkPtr &bookmark)
 void Smb4KNotification::mountingFailed(const SharePtr &share, const QString &err_msg)
 {
     Q_ASSERT(share);
-    
+
     if (share) {
         QString text;
 
@@ -193,7 +192,7 @@ void Smb4KNotification::mountingFailed(const SharePtr &share, const QString &err
 void Smb4KNotification::unmountingFailed(const SharePtr &share, const QString &err_msg)
 {
     Q_ASSERT(share);
-    
+
     if (share) {
         QString text;
 
@@ -254,7 +253,7 @@ void Smb4KNotification::commandNotFound(const QString &command)
 void Smb4KNotification::cannotBookmarkPrinter(const SharePtr &share)
 {
     Q_ASSERT(share);
-    
+
     if (share && share->isPrinter()) {
         KNotification *notification = new KNotification(QStringLiteral("cannotBookmarkPrinter"), KNotification::CloseOnTimeout);
         notification->setText(i18n("<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>", share->displayString()));

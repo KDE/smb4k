@@ -2009,12 +2009,12 @@ void Smb4KMounter::slotActiveProfileChanged(const QString &newProfile)
         // Unmount all shares
         unmountAllShares(true);
 
-        // Reset some variables. 
+        // Reset some variables.
         // Don't touch d->firstImportDone here, because that remains true
         d->remountTimeout = 0;
         d->remountAttempts = 0;
         d->activeProfile = newProfile;
-        
+
         // Restart the timer
         d->timerId = startTimer(TIMEOUT);
     }
