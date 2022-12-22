@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-16 00:50+0000\n"
+"POT-Creation-Date: 2022-12-22 00:46+0000\n"
 "PO-Revision-Date: 2022-08-21 07:04+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -3422,22 +3422,22 @@ msgstr ""
 "zostanie dodana \"jak jest\" do argumentu \"-o\" mount.cifs. Nie należy "
 "tutaj wstawiać opcji ustawionych już w oknie dialogowym."
 
-#: smb4knotification.cpp:43
+#: smb4knotification.cpp:45
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Zasób <b>%1</b> został podpięty do <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:49
+#: smb4knotification.cpp:51
 #, kde-format
 msgid "Open"
 msgstr "Otwórz"
 
-#: smb4knotification.cpp:61
+#: smb4knotification.cpp:74
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>Zasób <b>%1</b> został odpięty z <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:74
+#: smb4knotification.cpp:87
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
@@ -3445,7 +3445,7 @@ msgstr[0] "<p>%1 zasób został podpięty.</p>"
 msgstr[1] "<p>%1 zasoby zostały podpięte.</p>"
 msgstr[2] "<p>%1 zasobów zostało podpiętych.</p>"
 
-#: smb4knotification.cpp:86
+#: smb4knotification.cpp:99
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
@@ -3453,12 +3453,12 @@ msgstr[0] "<p>%1 zasób został odpięty.</p>"
 msgstr[1] "<p>%1 zasoby zostały odpięte.</p>"
 msgstr[2] "<p>%1 zasobów zostało odpiętych.</p>"
 
-#: smb4knotification.cpp:102
+#: smb4knotification.cpp:115
 #, kde-format
 msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
 msgstr "<p>Nie udało się otwarcie portfela<b>%1</b>.</p>"
 
-#: smb4knotification.cpp:111
+#: smb4knotification.cpp:124
 #, kde-format
 msgid ""
 "<p>The credentials stored in the wallet could not be accessed. There is "
@@ -3467,7 +3467,7 @@ msgstr ""
 "<p>Nie można uzyskać dostępu do danych poufnych przechowywanych w portfelu. "
 "Portfel albo nie istnieje, albo nie może zostać otwarty.</p>"
 
-#: smb4knotification.cpp:121
+#: smb4knotification.cpp:134
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3476,14 +3476,14 @@ msgstr ""
 "<p>Typ mime <b>%1</b> nie jest obsługiwany do drukowania. Proszę "
 "przekształcić plik do PDF lub Postscript i spróbować ponownie.</p>"
 
-#: smb4knotification.cpp:132
+#: smb4knotification.cpp:147
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr ""
 "<p>Zakładka do udostępnienia <b>%1</b> już istnieje i zostanie pominięta.</p>"
 
-#: smb4knotification.cpp:143
+#: smb4knotification.cpp:160
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3492,17 +3492,17 @@ msgstr ""
 "<p>Etykieta <b>%1</b> zakładki do udostępnienia <b>%2</b> jest już używana i "
 "samoczynnie zostanie zmieniona jej nazwa.</p>"
 
-#: smb4knotification.cpp:161
+#: smb4knotification.cpp:180
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Nie udało się podpiąć zasobu <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:163
+#: smb4knotification.cpp:182
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>Nie udało się podpiąć zasobu <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:179
+#: smb4knotification.cpp:200
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3510,12 +3510,12 @@ msgid ""
 msgstr ""
 "<p>Nie udało się odpięcie zasobu <b>%1</b> z <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:181
+#: smb4knotification.cpp:202
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p>Nie udało się odpięcie zasobu <b>%1</b> z <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:198
+#: smb4knotification.cpp:219
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3524,18 +3524,18 @@ msgstr ""
 "<p>Nie masz uprawnień do odpięcia zasobu <b>%1</b> z <b>%2</b>. Należy on do "
 "użytkownika <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:213
+#: smb4knotification.cpp:234
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>Nie udała się zsynchronizować <b>%1</b> z <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:215
+#: smb4knotification.cpp:236
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>Nie udała się zsynchronizować <b>%1</b> z <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:227
+#: smb4knotification.cpp:248
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
@@ -3544,74 +3544,74 @@ msgstr ""
 "<p>Nie można znaleźć polecenia <b>%1</b>. Proszę sprawdzić swoją instalację."
 "</p>"
 
-#: smb4knotification.cpp:236
+#: smb4knotification.cpp:259
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>Zasób <b>%1</b> jest drukarką i nie można mu przypisać zakładki.</p>"
 
-#: smb4knotification.cpp:245
+#: smb4knotification.cpp:268
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>Nie można znaleźć pliku <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:255
+#: smb4knotification.cpp:278
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Nie udało się otworzyć pliku <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:257
+#: smb4knotification.cpp:280
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>Nie udało się otworzyć pliku <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:271 smb4knotification.cpp:274
+#: smb4knotification.cpp:294 smb4knotification.cpp:297
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Nie udało się odczytać pliku <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:276
+#: smb4knotification.cpp:299
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>Nie udało się odczytać pliku <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:289
+#: smb4knotification.cpp:312
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>Nie można utworzyć następującego katalogu:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:300
+#: smb4knotification.cpp:323
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nie udało się uruchomić procesu (kod błędu: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:304
+#: smb4knotification.cpp:327
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Proces uległ usterce (kod błędu: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:308
+#: smb4knotification.cpp:331
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>Przekroczono czas oczekiwania na proces (kod błędu: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:312
+#: smb4knotification.cpp:335
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nie można zapisywać do procesu (kod błędu: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:316
+#: smb4knotification.cpp:339
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nie można czytać z procesu (kod błędu: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:321
+#: smb4knotification.cpp:344
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>Proces zgłosił nieznany błąd.</p>"
 
-#: smb4knotification.cpp:379
+#: smb4knotification.cpp:402
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3620,17 +3620,17 @@ msgstr ""
 "<p>Nie udało się wykonać działania z uprawnieniami administratora (kod "
 "błędu: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:381
+#: smb4knotification.cpp:404
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>Nieudane wykonanie działania z uprawnieniami administratora.</p>"
 
-#: smb4knotification.cpp:393
+#: smb4knotification.cpp:416
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>Podany adres URL jest nieprawidłowy.</p>"
 
-#: smb4knotification.cpp:401
+#: smb4knotification.cpp:424
 #, fuzzy, kde-format
 #| msgid ""
 #| "The network communication failed with the following error message: <s>%1</"
@@ -3640,7 +3640,7 @@ msgid ""
 "s></p>"
 msgstr "Połączenie sieciowe nie udało się i zwraca następujący błąd: <s>%1</s>"
 
-#: smb4knotification.cpp:409
+#: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""

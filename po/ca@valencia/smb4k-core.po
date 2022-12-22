@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-16 00:50+0000\n"
+"POT-Creation-Date: 2022-12-22 00:46+0000\n"
 "PO-Revision-Date: 2022-12-16 09:29+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -3482,41 +3482,41 @@ msgstr ""
 "mount.cifs. No introduïu opcions que ja s'han definit en el diàleg de "
 "configuració."
 
-#: smb4knotification.cpp:43
+#: smb4knotification.cpp:45
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>La compartició <b>%1</b> s'ha muntat a <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:49
+#: smb4knotification.cpp:51
 #, kde-format
 msgid "Open"
 msgstr "Obri"
 
-#: smb4knotification.cpp:61
+#: smb4knotification.cpp:74
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>La compartició <b>%1</b> s'ha desmuntat des de <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:74
+#: smb4knotification.cpp:87
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "<p>S'ha muntat %1 compartició.</p>"
 msgstr[1] "<p>S'han muntat %1 comparticions.</p>"
 
-#: smb4knotification.cpp:86
+#: smb4knotification.cpp:99
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "<p>S'ha desmuntat %1 compartició.</p>"
 msgstr[1] "<p>S'han desmuntat %1 comparticions.</p>"
 
-#: smb4knotification.cpp:102
+#: smb4knotification.cpp:115
 #, kde-format
 msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
 msgstr "<p>No s'ha pogut fer l'obertura de la cartera <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:111
+#: smb4knotification.cpp:124
 #, kde-format
 msgid ""
 "<p>The credentials stored in the wallet could not be accessed. There is "
@@ -3525,7 +3525,7 @@ msgstr ""
 "<p>No s'ha pogut accedir a les credencials emmagatzemades en la cartera. No "
 "hi ha cap cartera disponible o no s'ha pogut obrir.</p>"
 
-#: smb4knotification.cpp:121
+#: smb4knotification.cpp:134
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3534,7 +3534,7 @@ msgstr ""
 "<p>El tipus MIME <b>%1</b> no permet la impressió. Per favor, convertiu el "
 "fitxer a PDF o Postscript i torneu-ho a intentar.</p>"
 
-#: smb4knotification.cpp:132
+#: smb4knotification.cpp:147
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
@@ -3542,7 +3542,7 @@ msgstr ""
 "<p>L'adreça d'interés per a la compartició <b>%1</b> ja existix i serà omesa."
 "</p>"
 
-#: smb4knotification.cpp:143
+#: smb4knotification.cpp:160
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3551,18 +3551,18 @@ msgstr ""
 "<p>L'etiqueta <b>%1</b> de l'adreça d'interés per a la compartició <b>%2</b> "
 "ja s'està utilitzant i es canviarà automàticament el seu nom.</p>"
 
-#: smb4knotification.cpp:161
+#: smb4knotification.cpp:180
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>No s'ha pogut muntar la compartició <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:163
+#: smb4knotification.cpp:182
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>No s'ha pogut muntar la compartició <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:179
+#: smb4knotification.cpp:200
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3571,13 +3571,13 @@ msgstr ""
 "<p>No s'ha pogut desmuntar la compartició <b>%1</b> des de <b>%2</b>:</"
 "p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:181
+#: smb4knotification.cpp:202
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr ""
 "<p>No s'ha pogut desmuntar la compartició <b>%1</b> des de <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:198
+#: smb4knotification.cpp:219
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3586,18 +3586,18 @@ msgstr ""
 "<p>No es permet desmuntar la compartició <b>%1</b> des de <b>%2</b>. És "
 "propietat de l'usuari <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:213
+#: smb4knotification.cpp:234
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
 "<p>No s'ha pogut sincronitzar <b>%1</b> amb <b>%2</b>:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:215
+#: smb4knotification.cpp:236
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>No s'ha pogut sincronitzar <b>%1</b> amb <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:227
+#: smb4knotification.cpp:248
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
@@ -3605,78 +3605,78 @@ msgid ""
 msgstr ""
 "<p>No s'ha pogut trobar l'ordre <b>%1</b>. Comproveu la instal·lació.</p>"
 
-#: smb4knotification.cpp:236
+#: smb4knotification.cpp:259
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>La compartició <b>%1</b> és una impressora i no es pot afegir a les "
 "adreces d'interés.</p>"
 
-#: smb4knotification.cpp:245
+#: smb4knotification.cpp:268
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>No s'ha pogut trobar el fitxer <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:255
+#: smb4knotification.cpp:278
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>No s'ha pogut obrir el fitxer <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:257
+#: smb4knotification.cpp:280
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>No s'ha pogut obrir el fitxer <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:271 smb4knotification.cpp:274
+#: smb4knotification.cpp:294 smb4knotification.cpp:297
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr ""
 "<p>No s'ha pogut llegir des del fitxer <b>%1</b>:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:276
+#: smb4knotification.cpp:299
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>No s'ha pogut llegir des del fitxer <b>%1</b>.</p>"
 
-#: smb4knotification.cpp:289
+#: smb4knotification.cpp:312
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>No s'ha pogut crear el directori següent:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:300
+#: smb4knotification.cpp:323
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>No s'ha pogut iniciar el procés (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:304
+#: smb4knotification.cpp:327
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>El procés ha fallat (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:308
+#: smb4knotification.cpp:331
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>El procés ha excedit el temps límit (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:312
+#: smb4knotification.cpp:335
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>No s'ha pogut escriure en el procés (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:316
+#: smb4knotification.cpp:339
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr ""
 "<p>No s'ha pogut llegir des del procés (codi d'error: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:321
+#: smb4knotification.cpp:344
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>El procés ha informat d'un error desconegut.</p>"
 
-#: smb4knotification.cpp:379
+#: smb4knotification.cpp:402
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3685,17 +3685,17 @@ msgstr ""
 "<p>No s'ha pogut executar una acció amb privilegis de superusuari (codi "
 "d'error:<tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:381
+#: smb4knotification.cpp:404
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>No s'ha pogut executar una acció amb privilegis de superusuari.</p>"
 
-#: smb4knotification.cpp:393
+#: smb4knotification.cpp:416
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>L'URL que s'ha indicat no és vàlid.</p>"
 
-#: smb4knotification.cpp:401
+#: smb4knotification.cpp:424
 #, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
@@ -3704,7 +3704,7 @@ msgstr ""
 "<p>La xarxa de comunicació ha fallat amb el missatge d'error següent:<s>%1</"
 "s></p>"
 
-#: smb4knotification.cpp:409
+#: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr "<p>S'ha produït un error desconegut amb Zeroconf: <s>%1</s></p>"
