@@ -166,7 +166,7 @@
 
       <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up, and presents them in the network neighborhood browser. For this purpose it uses &Samba;'s client library, <ulink url="https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD">DNS Service Discovery (DNS-SD)</ulink> and, optionally, <ulink url="https://en.wikipedia.org/wiki/WS-Discovery">Web Services Dynamic Discovery (WS-Discovery)</ulink>. The way &smb4k; browses the network neighborhood can be adjusted in the <link linkend="configuration_page_network_basic_settings_browse_settings"><guilabel>Network</guilabel> configuration page</link>.</para>
       <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie;, when you execute a network item. Due to the use of DNS-SD, you will most likely find a domain called <emphasis>LOCAL</emphasis> in the network neighborhood browser. This is the default local DNS domain used by services like <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</ulink> and not an actual &Windows; domain. Opening a domain or workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you must open the desired server.</para>
-      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic packet to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan_settings">configuration dialog</link>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic packet to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_advanced_settings_wake_on_lan">configuration dialog</link>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
       <note>
           <para>If you are using DNS Service Discovery and the Zeroconf daemon (Avahi) is not running, &smb4k; shows an error notification:</para>
           <screenshot>
@@ -451,7 +451,7 @@
       <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
       <itemizedlist>
         <listitem><para>define custom mount or browse settings for a single server or share that deviate from the values defined in the configuration dialog,</para></listitem>
-        <listitem><para>define a server that should be awakened prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan_settings">here</link>),</para></listitem>
+        <listitem><para>define a server that should be awakened prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_advanced_settings_wake_on_lan">here</link>),</para></listitem>
         <listitem><para>always mount a particular share on start-up or when the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
       <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server, or to only one.</para>
@@ -1520,6 +1520,15 @@ ntlm auth = yes
       <variablelist>
         <varlistentry>
           <term>
+            <menuchoice><guibutton>Icon size</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Set the icon size in the network neighborhood browser. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+            <para>Default: small icon size</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
             <menuchoice><guibutton>Automatically expand domains and hosts</guibutton></menuchoice>
           </term>
           <listitem>
@@ -1604,6 +1613,24 @@ ntlm auth = yes
         </varlistentry>
         <varlistentry>
           <term>
+            <menuchoice><guibutton>Icon size for the icon view</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Set the icon size in the icon view mode of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+            <para>Default: desktop icon size</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice><guibutton>Icon size for the list view</guibutton></menuchoice>
+          </term>
+          <listitem>
+            <para>Set the icon size in the list view mode of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+            <para>Default: small icon size</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
             <menuchoice><guibutton>Show tooltips for mounted shares</guibutton></menuchoice>
           </term>
           <listitem>
@@ -1622,7 +1649,7 @@ ntlm auth = yes
   <sect1 id="configuration_page_network">
     <title>Network</title>
 
-    <para>The options located here influence the network communication. You can modify the browsing and display behavior in the <guibutton>Basic Settings</guibutton> tab, change the options passed to the underlying <application>libsmbclient</application> library in the <guibutton>Samba Settings</guibutton> tab, and also enable the Wake-On-LAN features in the <guibutton>Wake-On-LAN Settings</guibutton> tab.</para>
+    <para>The options located here influence the network communication. You can modify the browsing and display behavior in the <guibutton>Basic Settings</guibutton> tab and the more advanced options for Samba and the Wake-On-LAN capabilities in the <guibutton>Advanced Settings</guibutton> tab.</para>
     
     <screenshot>
       <screeninfo>Screenshot of the "Network" configuration tab</screeninfo>
@@ -1793,37 +1820,19 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Samba Settings (libsmbclient)
+      Configuring Smb4K : Network : Advanced Settings
 -->
 
-    <sect2 id="configuration_page_network_samba_settings">
-      <title>Samba Settings</title>
+    <sect2 id="configuration_page_network_advanced_settings">
+      <title>Advanced Settings</title>
       
-      <sect3 id="configuration_page_network_samba_settings_common_settings">
-        <title>Common Settings</title>
+      <sect3 id="configuration_page_network_advanced_settings_samba">
+        <title>Samba</title>
 
         <variablelist>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>NetBIOS name</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the NetBIOS name of your computer. The text box should already be filled with the information found in the <filename>smb.conf</filename> configuration file or with the hostname of your computer. Under normal circumstances there is no need to change anything here.</para>
-              <para>Default: NetBIOS name defined in <filename>smb.conf</filename> or the hostname</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Domain</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Set the name of the domain/workgroup your computer is in. The text box should already be filled with the information found in the <filename>smb.conf</filename> configuration file. Under normal circumstances there is no need to change anything here.</para>
-              <para>Default: domain name defined in <filename>smb.conf</filename></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>SMB port</guibutton></menuchoice>
+              <menuchoice><guibutton>Set the SMB port to</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Enabling this setting sets the remote SMB port number to communicate with a remote host to the value defined in the spin box. Under BSD, this is also the port that is used for mounting.</para>
@@ -1833,57 +1842,7 @@ ntlm auth = yes
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>This computer is on a large network neighborhood</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>In the default configuration, all available master browsers are queried when the browse list is compiled. On large network neighborhoods this can be very time consuming. Enabling this setting restricts the query to three master browsers.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    
-      <sect3 id="configuration_page_network_samba_settings_authentication">
-        <title>Authentication</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Master browsers require authentication</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>If the workgroup master browsers require authentication to return the browse list, you need to check this button. This may be the case for example with some NAS devices. This setting is rarely needed and might even cause a master browser to return an empty browse list.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Use Kerberos for authentication</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Use Kerberos for authentication in an Active Directory environment.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Use Winbind ccache for authentication</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Try to use the credentials cached by Winbind.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-      
-      <sect3 id="configuration_page_network_samba_settings_security">
-        <title>Security</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Encryption level</guibutton></menuchoice>
+              <menuchoice><guibutton>Set the encryption level to</guibutton></menuchoice>
             </term>
             <listitem>
               <para>Set the level of encryption that is used to make connections. The following settings can be chosen:</para>
@@ -1916,41 +1875,72 @@ ntlm auth = yes
               <para>Default: <guimenuitem>None</guimenuitem></para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>This computer is on a large network neighborhood</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>In the default configuration, all available master browsers are queried when the browse list is compiled. On large network neighborhoods this can be very time consuming. Enabling this setting restricts the query to three master browsers.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Master browsers require authentication</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>If the workgroup master browsers require authentication to return the browse list, you need to check this button. This may be the case for example with some NAS devices. This setting is rarely needed and might even cause a master browser to return an empty browse list.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use Kerberos for authentication</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Use Kerberos for authentication in an Active Directory environment.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Use Winbind ccache for authentication</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Try to use the credentials cached by Winbind.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>          
         </variablelist>
-      </sect3>     
-    </sect2>
-    
-<!-- 
-      Configuring Smb4K : Network : Wake-On_LAN Settings
--->
+      </sect3>
+      <sect3 id="configuration_page_network_advanced_settings_wake_on_lan">
+        <title>Wake-On-LAN</title>
 
-    <sect2 id="configuration_page_network_wake_on_lan_settings">
-      <title>Wake-On-LAN Settings</title>
+        <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable this setting. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
 
-      <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice><guibutton>Enable Wake-On-LAN features</guibutton></menuchoice>
-          </term>
-          <listitem>
-            <para>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic packet send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
-            <para>Default: not selected</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice><guilabel>Waiting time</guilabel></menuchoice>
-                </term>
-                <listitem>
-                  <para>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packets and the scanning of the network neighborhood or the mounting of a share.</para>
-                  <para>Default: 5 s</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Enable Wake-On-LAN features</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic packet send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
+              <para>Default: not selected</para>
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice><guilabel>Waiting time</guilabel></menuchoice>
+                  </term>
+                  <listitem>
+                    <para>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packets and the scanning of the network neighborhood or the mounting of a share.</para>
+                    <para>Default: 5 s</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
   </sect1>
 
@@ -2321,7 +2311,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
-              <para>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_samba_settings_common_settings"><guibutton>SMB port</guibutton></link> option.</para>
+              <para>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_advanced_settings_samba"><guibutton>SMB port</guibutton></link> option.</para>
               <para>Default: 445</para>
             </listitem>
           </varlistentry>
@@ -4092,7 +4082,7 @@ ntlm auth = yes
     <sect2 id="configuration_page_custom_options_browse_settings">
       <title>Browse Settings</title>
     
-      <para>You can edit various &Samba; settings that are used for browsing. For more information, have a look at the <link linkend="configuration_page_network_samba_settings">&Samba;</link> settings.</para>
+      <para>You can edit various &Samba; settings that are used for browsing. For more information, have a look at the <link linkend="configuration_page_network_advanced_settings">&Samba;</link> settings.</para>
     </sect2>
 
 <!-- 
