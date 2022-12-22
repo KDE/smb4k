@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-16 00:50+0000\n"
+"POT-Creation-Date: 2022-12-22 00:46+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -3390,22 +3390,22 @@ msgstr ""
 "bude pridaný ako je na \"-o\" argument z mount.cifs. Prosím nezadávajte "
 "voľby, ktoré už boli definované v konfiguračnom dialógu."
 
-#: smb4knotification.cpp:43
+#: smb4knotification.cpp:45
 #, kde-format
 msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Zdieľanie <b>%1</b> bolo pripojené k <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:49
+#: smb4knotification.cpp:51
 #, kde-format
 msgid "Open"
 msgstr "Otvoriť"
 
-#: smb4knotification.cpp:61
+#: smb4knotification.cpp:74
 #, kde-format
 msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
 msgstr "<p>Zdieľanie <b>%1</b> bolo odpojené z <b>%2</b>.</p>"
 
-#: smb4knotification.cpp:74
+#: smb4knotification.cpp:87
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
@@ -3413,7 +3413,7 @@ msgstr[0] "<p>%1 zdieľanie bolo pripojené.</p>"
 msgstr[1] "<p>%1 zdieľania boli pripojené.</p>"
 msgstr[2] "<p>%1 zdieľaní bolo pripojených.</p>"
 
-#: smb4knotification.cpp:86
+#: smb4knotification.cpp:99
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
@@ -3421,12 +3421,12 @@ msgstr[0] "<p>%1 zdieľanie bolo odpojené.</p>"
 msgstr[1] "<p>%1 zdieľaní bolo odpojených.</p>"
 msgstr[2] "<p>%1 zdieľaní bolo odpojených.</p>"
 
-#: smb4knotification.cpp:102
+#: smb4knotification.cpp:115
 #, kde-format
 msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
 msgstr "<p>Otvorenie peňaženky <b>%1</b> zlyhalo.</p>"
 
-#: smb4knotification.cpp:111
+#: smb4knotification.cpp:124
 #, kde-format
 msgid ""
 "<p>The credentials stored in the wallet could not be accessed. There is "
@@ -3435,7 +3435,7 @@ msgstr ""
 "<p>Prihlasovacie údaje uložené v peňaženke nie sú prístupné. Buď nie je "
 "žiadna dostupná peňaženka, alebo ju nie je možné otvoriť.</p>"
 
-#: smb4knotification.cpp:121
+#: smb4knotification.cpp:134
 #, kde-format
 msgid ""
 "<p>The mimetype <b>%1</b> is not supported for printing. Please convert the "
@@ -3444,13 +3444,13 @@ msgstr ""
 "<p>Typ MIME <b>%1</b> nie je pre tlač podporovaný. Prosím konvertujte súbor "
 "do PDF alebo Postscript a skúste znovu.</p>"
 
-#: smb4knotification.cpp:132
+#: smb4knotification.cpp:147
 #, kde-format
 msgid ""
 "<p>The bookmark for share <b>%1</b> already exists and will be skipped.</p>"
 msgstr "<p>Záložka pre zdieľanie <b>%1</b> už existuje a bude preskočená.</p>"
 
-#: smb4knotification.cpp:143
+#: smb4knotification.cpp:160
 #, kde-format
 msgid ""
 "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
@@ -3459,17 +3459,17 @@ msgstr ""
 "<p>Popis <b>%1</b> záložky pre zdieľanie <b>%2</b> sa už používa a bude "
 "automaticky premenovaný.</p>"
 
-#: smb4knotification.cpp:161
+#: smb4knotification.cpp:180
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Pripojenie zdieľania <b>%1</b> zlyhalo:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:163
+#: smb4knotification.cpp:182
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
 msgstr "<p>Pripojenie zdieľania <b>%1</b> zlyhalo.</p>"
 
-#: smb4knotification.cpp:179
+#: smb4knotification.cpp:200
 #, kde-format
 msgid ""
 "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</tt></"
@@ -3477,12 +3477,12 @@ msgid ""
 msgstr ""
 "<p>Odpojenie zdieľania <b>%1</b> z <b>%2</b> zlyhalo:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:181
+#: smb4knotification.cpp:202
 #, kde-format
 msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
 msgstr "<p>Odpojenie zdieľania <b>%1</b> z <b>%2</b> zlyhalo.</p>"
 
-#: smb4knotification.cpp:198
+#: smb4knotification.cpp:219
 #, kde-format
 msgid ""
 "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It is "
@@ -3491,90 +3491,90 @@ msgstr ""
 "<p>Nemáte povolené odpojiť zdieľanie <b>%1</b> z <b>%2</b>.  Je vlastnené "
 "iným používateľom <b>%3</b>.</p>"
 
-#: smb4knotification.cpp:213
+#: smb4knotification.cpp:234
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr "<p>Synchronizácia <b>%1</b> s <b>%2</b> zlyhala:</p><p><tt>%3</tt></p>"
 
-#: smb4knotification.cpp:215
+#: smb4knotification.cpp:236
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
 msgstr "<p>Synchronizácia <b>%1</b> s <b>%2</b> zlyhala.</p>"
 
-#: smb4knotification.cpp:227
+#: smb4knotification.cpp:248
 #, kde-format
 msgid ""
 "<p>The command <b>%1</b> could not be found. Please check your installation."
 "</p>"
 msgstr "<p>Príkaz <b>%1</b> nebol nájdený. Prosím, overte inštaláciu.</p>"
 
-#: smb4knotification.cpp:236
+#: smb4knotification.cpp:259
 #, kde-format
 msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
 msgstr ""
 "<p>Zdieľanie <b>%1</b> je tlačiareň a nie je možné ju pridať ako záložku.</p>"
 
-#: smb4knotification.cpp:245
+#: smb4knotification.cpp:268
 #, kde-format
 msgid "<p>The file <b>%1</b> could not be found.</p>"
 msgstr "<p>Súbor <b>%1</b> nie je možné nájsť.</p>"
 
-#: smb4knotification.cpp:255
+#: smb4knotification.cpp:278
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Otvorenie súboru <b>%1</b> zlyhalo.</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:257
+#: smb4knotification.cpp:280
 #, kde-format
 msgid "<p>Opening the file <b>%1</b> failed.</p>"
 msgstr "<p>Otvorenie súboru <b>%1</b> zlyhalo.</p>"
 
-#: smb4knotification.cpp:271 smb4knotification.cpp:274
+#: smb4knotification.cpp:294 smb4knotification.cpp:297
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
 msgstr "<p>Čítanie zo súboru <b>%1</b> zlyhalo:</p><p><tt>%2</tt></p>"
 
-#: smb4knotification.cpp:276
+#: smb4knotification.cpp:299
 #, kde-format
 msgid "<p>Reading from file <b>%1</b> failed.</p>"
 msgstr "<p>Čítanie zo súboru <b>%1</b> zlyhalo.</p>"
 
-#: smb4knotification.cpp:289
+#: smb4knotification.cpp:312
 #, kde-format
 msgid "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
 msgstr "<p>Nasledovný adresár nie je možné vytvoriť:</p><p><tt>%1</tt></p>"
 
-#: smb4knotification.cpp:300
+#: smb4knotification.cpp:323
 #, kde-format
 msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Zlyhalo spustenie procesu (chybový kód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:304
+#: smb4knotification.cpp:327
 #, kde-format
 msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Proces spadol (chybový kód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:308
+#: smb4knotification.cpp:331
 #, kde-format
 msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Vypršal čas procesu (chybový kód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:312
+#: smb4knotification.cpp:335
 #, kde-format
 msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nie je možné zapisovať do procesu (chybový kód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:316
+#: smb4knotification.cpp:339
 #, kde-format
 msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
 msgstr "<p>Nie je možné čítať z procesu (chybový kód: <tt>%1</tt>).</p>"
 
-#: smb4knotification.cpp:321
+#: smb4knotification.cpp:344
 #, kde-format
 msgid "<p>The process reported an unknown error.</p>"
 msgstr "<p>Proces oznámil neznámu chybu.</p>"
 
-#: smb4knotification.cpp:379
+#: smb4knotification.cpp:402
 #, kde-format
 msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
@@ -3583,17 +3583,17 @@ msgstr ""
 "<p>Vykonávanie akcie s administrátorskými právami zlyhalo (chybový kód:<tt>"
 "%1</tt>).</p>"
 
-#: smb4knotification.cpp:381
+#: smb4knotification.cpp:404
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
 msgstr "<p>Spustenia akcie s oprávneniami roota zlyhalo.</p>"
 
-#: smb4knotification.cpp:393
+#: smb4knotification.cpp:416
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p> URL, ktorý bol odovzdaný, je neplatný.</p>"
 
-#: smb4knotification.cpp:401
+#: smb4knotification.cpp:424
 #, fuzzy, kde-format
 #| msgid ""
 #| "The network communication failed with the following error message: <s>%1</"
@@ -3603,7 +3603,7 @@ msgid ""
 "s></p>"
 msgstr "Sieťová komunikácia zlyhala s nasledovnou chybovou správou: <s>%1</s>"
 
-#: smb4knotification.cpp:409
+#: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
