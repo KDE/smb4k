@@ -371,8 +371,8 @@
 >Avahi</ulink
 > en niet een actueel &Windows;-domein. Een domein of werkgroepitem openen toont de servers die er toe behoren. Als u toegang tot de shares van een van de servers wilt, moet u de gewenste server openen.</para>
       <para
->Ook is het mogelijk om voordat u de netwerkomgeving gaat scannen de servers die in slaapstand staan weer in te schakelen (Wake-On-LAN). Als deze mogelijkheid is ingeschakeld, dan zal &smb4k; een speciaal pakket sturen naar elke server die weer wakker gemaakt moet worden en daarna een ingestelde tijd wachten voordat het de werkgroepen en domeinen gaat opvragen. U kunt de Wake-On-LAN inschakelen in het <link linkend="configuration_page_network_wake_on_lan_settings"
->configuratievenster</link
+>Ook is het mogelijk om voordat u de netwerkomgeving gaat scannen de servers die in slaapstand staan weer in te schakelen (Wake-On-LAN). Als deze mogelijkheid is ingeschakeld, dan zal &smb4k; een speciaal pakket sturen naar elke server die weer wakker gemaakt moet worden en daarna een ingestelde tijd wachten voordat het de werkgroepen en domeinen gaat opvragen. U kunt de Wake-On-LAN inschakelen in het <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>configuratiedialoog</link
 >. De servers die uit de slaapstand moet komen kunt u opgeven in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_options"
 >Aangepaste opties</link
 >.</para>
@@ -960,7 +960,7 @@
 ></listitem>
         <listitem
 ><para
->een server definieert die weer moet ontwaken voordat er pogingen tot netwerk-scans of aankoppelen zijn (functie Wake-On-LAN, lees meer <link linkend="configuration_page_network_wake_on_lan_settings"
+>een server definieert die weer moet ontwaken voordat er pogingen tot netwerk-scans of aankoppelen zijn (functie Wake-On-LAN, lees meer <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
 >hier</link
 >),</para
 ></listitem>
@@ -2848,6 +2848,20 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Pictogramgrootte</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Stel de pictogramgrootte in in de netwerkomgevingsbrowser. De grootte kan aangepast worden in stappen van 16 pixels van 16 x 16 pixels tot 128 x 128 pixels.</para>
+            <para
+>Standaard: kleine pictogramgrootte</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Domeinen en hosts automatisch uitvouwen</guibutton
 ></menuchoice>
           </term>
@@ -2974,6 +2988,34 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Pictogramgrootte voor de pictogramweergave</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Set the icon size in the icon view of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+            <para
+>Standaard: pictogramgrootte van bureaublad</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
+>Pictogramgrootte voor de weergave met lijst</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Set the icon size in the list view of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+            <para
+>Standaard: kleine pictogramgrootte</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Tekstballonnen voor aangekoppelde gedeelde mappen tonen</guibutton
 ></menuchoice>
           </term>
@@ -2999,13 +3041,9 @@ ntlm auth = yes
     <para
 >De hier aanwezige opties beïnvloeden de netwerkcommunicatie. U kunt het blader- en weergavegedrag wijzigen in het tabblad <guibutton
 >Basisinstellingen</guibutton
->, wijzig de opties doorgegeven naar de onderliggende <application
->libsmbclient</application
-> in het tabblad <guibutton
->Samba-instellingen</guibutton
-> en schakelt de functies Wake-On-LAN in het tabblad <guibutton
->Wake-On-LAN-instellingen</guibutton
-> in.</para>
+> en de meer geavanceerde opties voor Samba en de mogelijkheden voor Wake-On-LAN in het tabblad <guibutton
+>Geavanceerde instellingen</guibutton
+>.</para>
     
     <screenshot>
       <screeninfo
@@ -3262,59 +3300,23 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Samba Settings (libsmbclient)
+      Configuring Smb4K : Network : Advanced Settings
 -->
 
-    <sect2 id="configuration_page_network_samba_settings">
+    <sect2 id="configuration_page_network_advanced_settings">
       <title
->Samba-instellingen</title>
+>Geavanceerde instellingen</title>
       
-      <sect3 id="configuration_page_network_samba_settings_common_settings">
+      <sect3 id="configuration_page_network_advanced_settings_samba">
         <title
->Algemene instellingen</title>
+>Samba</title>
 
         <variablelist>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->NetBIOS-naam</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Hier stelt u de NetBIOS naam van uw computer in. Het tekstvak zou al gevuld moeten zijn met de informatie gevonden in het configuratiebestand <filename
->smb.conf</filename
->  of met de hostnaam van uw computer. Normaal gesproken hoeft u hier niets te wijzigen.</para>
-              <para
->Standaard: NetBIOS naam gedefinieerd in <filename
->smb.conf</filename
-> of de hostnaam</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Domein</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Hier stelt u de naam van het domein/werkgroep van uw computer in. Het tekstvak zou al gevuld moeten zijn met de informatie gevonden in het configuratiebestand <filename
->smb.conf</filename
->. Normaal gesproken hoeft u hier niets te wijzigen.</para>
-              <para
->Standaard: domein naam gedefinieerd in <filename
->smb.conf</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->SMB-poort</guibutton
+>Stel de SMB-poort in op</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3330,79 +3332,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Deze computer bevindt zich in een grote netwerkomgeving</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->In de standaard configuratie worden alle beschikbare masterbrowsers afgevraagd wanneer de lijst voor browsen is gecompileerd. Op grote netwerkomgevingen kan dit erg veel tijd kosten. Deze instelling inschakelen beperkt het afvragen tot drie masterbrowsers.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    
-      <sect3 id="configuration_page_network_samba_settings_authentication">
-        <title
->Authenticatie</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Master-browsers vereisen authenticatie</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Als de master-browsers authenticatie vereisen voordat ze de browse-lijst terug geven, dat moet u dit inschakelen. Dit kan bijvoorbeeld het geval zijn bij sommige NAS apparaten. Dit is zelden nodig en kan zelfs ervoor zorgen dat de master-browser een lege browse-lijst geeft.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Kerberos voor authenticatie gebruiken</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Kerberos 5 voor authenticatie gebruiken in een omgeving met Active Directory.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Winbind ccache voor authenticatie gebruiken</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Probeer de credentials te gebruiken in de cache van Winbind.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-      
-      <sect3 id="configuration_page_network_samba_settings_security">
-        <title
->Beveiliging</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Versleutelingsniveau</guibutton
+>Het versleutelingsniveau instellen op</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3453,56 +3383,107 @@ ntlm auth = yes
 ></para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Deze computer bevindt zich in een grote netwerkomgeving</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>In de standaard configuratie worden alle beschikbare masterbrowsers afgevraagd wanneer de lijst voor browsen is gecompileerd. Op grote netwerkomgevingen kan dit erg veel tijd kosten. Deze instelling inschakelen beperkt het afvragen tot drie masterbrowsers.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Master-browsers vereisen authenticatie</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Als de master-browsers authenticatie vereisen voordat ze de browse-lijst terug geven, dat moet u dit inschakelen. Dit kan bijvoorbeeld het geval zijn bij sommige NAS apparaten. Dit is zelden nodig en kan zelfs ervoor zorgen dat de master-browser een lege browse-lijst geeft.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Kerberos voor authenticatie gebruiken</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Kerberos 5 voor authenticatie gebruiken in een omgeving met Active Directory.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Winbind ccache voor authenticatie gebruiken</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Probeer de credentials te gebruiken in de cache van Winbind.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry
+>          
         </variablelist>
-      </sect3
->     
-    </sect2>
-    
-<!-- 
-      Configuring Smb4K : Network : Wake-On_LAN Settings
--->
+      </sect3>
+      <sect3 id="configuration_page_network_advanced_settings_wake_on_lan">
+        <title
+>Wake-On-LAN</title>
 
-    <sect2 id="configuration_page_network_wake_on_lan_settings">
-      <title
->Instellingen Wake-On-LAN</title>
-
-      <para
->Om de Wake-On_LAN mogelijkheid van &smb4k; te kunnen gebruiken, moet u dit eerst in deze sectie inschakelen. De hosts die u wilt wakker maken, moet u opgeven in de <link linkend="configuration_page_custom_options"
+        <para
+>Om de Wake-On_LAN mogelijkheid van &smb4k; te kunnen gebruiken, moet u deze instelling inschakelen. De hosts die u wilt wakker maken, moet u opgeven in de <link linkend="configuration_page_custom_options"
 >dialoog voor aangepaste opties</link
 >.</para>
 
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
 ><guibutton
 >Functies voor Wake-On-LAN inschakelen</guibutton
 ></menuchoice>
-          </term>
-          <listitem>
-            <para
+            </term>
+            <listitem>
+              <para
 >Wake-on-LAN (WOL) is een ethernet standaard die een u in staat stelt om een computer aan te zetten of te laten ontwaken met een netwerkbericht. Smb4K gebruikt een magic-pakket verzonden via een UDP-socket om servers op afstand te laten ontwaken. Als u uw voordeel wilt doen met de functie Wake-On-LAN, dan moet u deze optie inschakelen.</para>
-            <para
+              <para
 >Standaard: niet geselecteerd</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice
 ><guilabel
 >Wachttijd</guilabel
 ></menuchoice>
-                </term>
-                <listitem>
-                  <para
+                  </term>
+                  <listitem>
+                    <para
 >Dit is de wachttijd in seconden tussen het verzenden van de pakketten voor 'magic Wake-On-LAN' en het scannen van de netwerkomgeving of het aankoppelen van een share.</para>
-                  <para
+                    <para
 >Standaard: 5 s</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
   </sect1>
 
@@ -3596,10 +3577,6 @@ ntlm auth = yes
             <listitem>
               <para
 >Koppelt all uw shares weer aan die werden aangekoppeld toen u het programma afsloot of van profiel wisselde. Als het weer aankoppelen van een share mislukt, dan zal Smb4K het bij de volgende keer opstarten opnieuw proberen. Door andere aangekoppelde shares worden genegeerd.</para>
-              <note
-><para
->Deze instelling is niet van toepassing op het automatisch opnieuw aankoppelen van uw shares wanneer uw computer uit een slaapstand wakker wordt.</para
-></note>
               <para
 >Standaard: niet geselecteerd</para>
               <variablelist>
@@ -3755,8 +3732,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Standaard: <guimenuitem
->lezen-schrijven</guimenuitem
+>Default: not selected / <guimenuitem
+>read-write</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4049,8 +4026,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Standaard: <guimenuitem
->standaard</guimenuitem
+>Default: not selected / <guimenuitem
+>default</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4075,13 +4052,13 @@ ntlm auth = yes
 >Aangepaste opties</link
 > te gebruiken om individuele poort-nummers voor de problematische hosts in te stellen.</para>
               <para
->Deze optie is alleen beschikbaar onder &Linux;. Onder BSD, stelt u de poort voor het aankoppelen van shares in met de optie <link linkend="configuration_page_network_samba_settings_common_settings"
+>Deze optie is alleen beschikbaar onder &Linux;. Onder BSD, stelt u de poort voor het aankoppelen van shares in met de optie <link linkend="configuration_page_network_advanced_settings_samba"
 ><guibutton
->SMB poort</guibutton
+>SMB-poort</guibutton
 ></link
 >.</para>
               <para
->Standaard: 445</para>
+>Default: not selected / 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4102,7 +4079,11 @@ ntlm auth = yes
             <para
 >De meeste versies van &Samba; ondersteunen de &CIFS; Unix- of POSIX-extensies. Voor deze servers zijn enkele opties niet nodig, omdat de juiste waarden zijn onderhandeld gedurende het aankoppelproces. Voor andere servers zou u kunnen kiezen om deze optie te deactiveren, zodat voorgedefinieerde waarden doorgegeven kunnen worden aan de server. Merk op dat als uw computer zich in een door &Windows; gedomineerde netwerkomgeving bevindt met alleen een paar &Samba;-servers, u deze optie veilig kunt deactiveren en aangepaste opties voor de &Samba;-servers definiëren.</para>
             <para
->Standaard: niet geselecteerd</para>
+>In case you uncheck this option, consider to switch on permission checks under <link linkend="configuration_page_mounting_advanced_mount_settings"
+>Advanced Mount Settings</link
+>.</para>
+            <para
+>Standaard: geselecteerd</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4116,7 +4097,9 @@ ntlm auth = yes
             <para
 >Stelt in wie de eigenaar van de bestanden en mappen in het bestandssysteem is. Standaard wordt uw UID gebruikt. Om de UID te wijzigen, drukt u zoekknop in en kiest in de keuzelijst er een uit.</para>
             <para
->Standaard: uw UID</para>
+>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+            <para
+>Default: selected / your UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4130,7 +4113,9 @@ ntlm auth = yes
             <para
 >Stelt de groep in die eigenaar is van de bestanden en mappen In het bestandssysteem. Standaard wordt uw GID gebruikt. Om de GID te wijzigen druk op de zoekknop en kies er een uit het afrolmenu.</para>
             <para
->Standaard: uw GID</para>
+>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+            <para
+>Default: selected / your GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4160,7 +4145,9 @@ ntlm auth = yes
 ></ulink
 > lezen.</para>
             <para
->Standaard: 0755</para>
+>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+            <para
+>Default: selected / 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4190,7 +4177,9 @@ ntlm auth = yes
 ></ulink
 > lezen.</para>
             <para
->Standaard: 0755</para>
+>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+            <para
+>Default: selected / 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4211,8 +4200,6 @@ ntlm auth = yes
 > is alleen beschikbaar onder &Linux;. De instellingen aanwezig onder BSD zin te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
 >Instellingen voor aankoppelen (BSD only)</link
 >.</para>
-      <para
->De meeste van de opties die u hier kunt definiëren vereisen &Linux; kernel 2.6.15 of later om te werken.</para>
       <variablelist>
         <varlistentry>
           <term>
@@ -4253,7 +4240,7 @@ ntlm auth = yes
             <para
 >Aan de cliënt-kant vind een controle plaats of u de correcte UID en GID heeft voor het manipuleren van bestanden en mappen op de share. Dit is naast de normale ACL controle door de server software op de doelmachine. U wilt wellicht dit onderdeel uitschakelen, als de server(s) de &CIFS; Unix extensies ondersteunen en u daarom geen toegang tot de share heeft.</para>
             <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4337,7 +4324,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Definieer welke versie van het SMB protocol zal worden gebruikt.</para>
+>Define which version of the SMB protocol is to be used. Normally, this option does not need to be enabled because the protocol version is negotiated between the client and the server.</para>
             <para
 >De volgende waarden zijn toegestaan:</para>
             <variablelist>
@@ -4383,10 +4370,8 @@ ntlm auth = yes
 ></citerefentry
 ></ulink
 > het SMBv2.002 protocol zal gebruiken. Dit was initieel geïntroduceerd in Windows Vista Service Pack 1 en Windows Server 2008.</para>
-                  <note>
-                    <para
->Merk op dat de eerste release van Windows Vista een licht verschillend dialect (2.000) gebruikte die niet wordt ondersteund.</para>
-                  </note>
+                  <para
+>Please note that the initial release version of Windows Vista spoke a slightly different dialect (2.000) that is not supported.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4457,10 +4442,54 @@ ntlm auth = yes
 > het SMBv3.1 protocol zal gebruiken, dat is geïntroduceerd in &Windows; Server 2016.</para>
                 </listitem>
               </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3 (Version 3.0 and above)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>The <option
+>vers=3</option
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> to use the SMBv3.0 protocol version and above.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>default (Negotiate the highest version)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>The <option
+>vers=default</option
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> to try to negotiate the highest SMBv2+ version supported by both the client and server.</para>
+                </listitem>
+              </varlistentry>
             </variablelist>
             <para
->Standaard: <guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>Default: not selected / <guibutton
+>default (Negotiate the highest version)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4545,8 +4574,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: <guibutton
->Volg strikt het &CIFS;/SMB2 protocol</guibutton
+>Default: not selected / <guibutton
+>Follow the &CIFS;/SMB2 protocol strictly</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4763,8 +4792,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: <guibutton
->NTLMSSP-protocol</guibutton
+>Default: not selected / <guibutton
+>NTLMSSP protocol</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -7676,8 +7705,8 @@ ntlm auth = yes
 >Browse-instellingen</title>
     
       <para
->U kunt hier verschillende &Samba; instellingen wijzigen die gebruikt worden voor bladeren. Meer informatie kunt u vinden in <link linkend="configuration_page_network_samba_settings"
->Samba</link
+>U kunt hier verschillende &Samba; instellingen wijzigen die gebruikt worden voor bladeren. Meer informatie kunt u vinden in <link linkend="configuration_page_network_advanced_settings"
+>&Samba;</link
 > configuratievenster.</para>
     </sect2>
 
