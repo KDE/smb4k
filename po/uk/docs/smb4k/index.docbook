@@ -3011,7 +3011,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Set the icon size in the icon view of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+>Встановити розмір піктограм у режимі перегляду з піктограмами на панелі спільних ресурсів. Розмір можна змінювати кроками у 16 пікселів від 16 x 16 пікселів до 128 x 128 пікселів.</para>
             <para
 >Типове значення: розмір піктограм на стільниці</para>
           </listitem>
@@ -3025,7 +3025,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Set the icon size in the list view of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+>Встановити розмір піктограм у режимі перегляду списку на панелі спільних ресурсів. Розмір можна змінювати кроками у 16 пікселів від 16 x 16 пікселів до 128 x 128 пікселів.</para>
             <para
 >Типове значення: малий розмір піктограм</para>
           </listitem>
@@ -3750,8 +3750,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected / <guimenuitem
->read-write</guimenuitem
+>Типовий режим: не вибрано / <guimenuitem
+>читання-запис</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4044,8 +4044,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected / <guimenuitem
->default</guimenuitem
+>Типовий варіант: не вибрано / <guimenuitem
+>типовий</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4076,7 +4076,7 @@ ntlm auth = yes
 ></link
 >.</para>
               <para
->Default: not selected / 445</para>
+>Типове значення: не позначено / 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4097,8 +4097,8 @@ ntlm auth = yes
             <para
 >У більшості версій &Samba; передбачено підтримку розширень UNIX або POSIX &CIFS;. Для роботи з відповідними серверами у наданні деяких параметрів просто немає потреби, оскільки належні налаштування визначаються під час процедури узгодження у процесі монтування. Для серверів, де такої підтримки не передбачено, варто зняти позначку з цього пункту, щоб програма надіслала попередньо визначені значення параметрів серверу. Будь ласка, зауважте, що якщо ваш комп'ютер перебуває у середовищі, де переважна кількість комп'ютерів працює під керуванням &Windows; і є лише декілька серверів &Samba;, ви можете сміливо знімати позначку з цього пункту і визначати нетипові параметри для серверів &Samba;.</para>
             <para
->In case you uncheck this option, consider to switch on permission checks under <link linkend="configuration_page_mounting_advanced_mount_settings"
->Advanced Mount Settings</link
+>Якщо цей пункт не буде позначено, варто позначити пункти перевірки прав доступу на сторінці <link linkend="configuration_page_mounting_advanced_mount_settings"
+>додаткових параметрів монтування</link
 >.</para>
             <para
 >Типове значення: позначено</para>
@@ -4115,9 +4115,9 @@ ntlm auth = yes
             <para
 >Визначає власника файлів і каталогів файлової системи. Типово, буде використано код вашого користувача (UID). Щоб змінити значення UID, натисніть кнопку пошуку і оберіть потрібне значення зі спадного меню.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Default: selected / your UID</para>
+>Типове значення: позначено / ваш UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4131,9 +4131,9 @@ ntlm auth = yes
             <para
 >Визначає групу-власника файлів і каталогів файлової системи. Типово, буде використано код вашої групи (GID). Щоб змінити значення GID, натисніть кнопку пошуку і оберіть потрібне значення зі спадного меню.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Default: selected / your GID</para>
+>Типове значення: позначено / ваш GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4163,9 +4163,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Default: selected / 0755</para>
+>Типове значення: позначено / 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4195,9 +4195,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Default: selected / 0755</para>
+>Типове значення: позначено / 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4342,7 +4342,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Define which version of the SMB protocol is to be used. Normally, this option does not need to be enabled because the protocol version is negotiated between the client and the server.</para>
+>Визначити версію протоколу SMB, яку слід використати. Зазвичай, у використанні цього параметра немає потреби, оскільки версію протоколу автоматично узгоджують клієнт і сервер.</para>
             <para
 >Можна використовувати такі значення:</para>
             <variablelist>
@@ -4389,7 +4389,7 @@ ntlm auth = yes
 ></ulink
 > буде наказано використовувати протокол SMBv2.002. Цей протокол було вперше впроваджено у Windows Vista Service Pack 1 та Windows Server 2008.</para>
                   <para
->Please note that the initial release version of Windows Vista spoke a slightly different dialect (2.000) that is not supported.</para>
+>Будь ласка, зауважте, що у початковій версії випуску Windows Vista використовується трохи інший діалект (2.000), підтримки якого не передбачено.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4464,14 +4464,14 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3 (Version 3.0 and above)</guibutton
+>3 (версія 3.0 і новіші)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->The <option
+>Використовується параметр командного рядка <option
 >vers=3</option
-> command line argument is used. This causes <ulink url="man:/mount.cifs"
+> Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4479,21 +4479,21 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> to use the SMBv3.0 protocol version and above.</para>
+> буде наказано використовувати версію протоколу SMBv3.0 або новішу.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
                 <term>
                   <menuchoice
 ><guibutton
->default (Negotiate the highest version)</guibutton
+>типовий (узгодити найновішу версію)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->The <option
+>Використовується параметр командного рядка <option
 >vers=default</option
-> command line argument is used. This causes <ulink url="man:/mount.cifs"
+> Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4501,13 +4501,13 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> to try to negotiate the highest SMBv2+ version supported by both the client and server.</para>
+> буде наказано узгодити найбільшу підтримувану версію SMBv2+ на боці клієнта і сервера.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->default (Negotiate the highest version)</guibutton
+>Типове значення: не вибрано / <guibutton
+>типовий (узгодити найновішу версію)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4592,8 +4592,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->Follow the &CIFS;/SMB2 protocol strictly</guibutton
+>Типове значення: не вибрано / <guibutton
+>Строго дотримуватися протоколу &CIFS;/SMB2</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4810,8 +4810,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->NTLMSSP protocol</guibutton
+>Типове значення: не вибрано / <guilabel
+>Протокол NTLMSSP</guilabel
 ></para>
           </listitem>
         </varlistentry>

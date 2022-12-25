@@ -2877,7 +2877,7 @@ ntlm auth = yes
             <para
 >Estableix la mida de les icones a l'explorador del veïnatge de xarxa. La mida es pot ajustar en passos de 16 píxels des de 16 x 16 a 128 x 128 píxels.</para>
             <para
->Predeterminada: mida petita de les icones</para>
+>Omissió: mida petita de les icones</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -3015,9 +3015,9 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Set the icon size in the icon view of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+>Estableix la mida de les icones en la vista d'icones de la vista de comparticions. La mida es pot ajustar en passos de 16 píxels des de 16 x 16 a 128 x 128 píxels.</para>
             <para
->Predeterminada: mida de les icones d'escriptori</para>
+>Omissió: mida de les icones d'escriptori</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -3029,9 +3029,9 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Set the icon size in the list view of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+>Estableix la mida de les icones en la vista de llista de la vista de comparticions. La mida es pot ajustar en passos de 16 píxels des de 16 x 16 a 128 x 128 píxels.</para>
             <para
->Predeterminada: mida petita de les icones</para>
+>Omissió: mida petita de les icones</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -3754,8 +3754,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected / <guimenuitem
->read-write</guimenuitem
+>Omissió: no seleccionat / <guimenuitem
+>lectura-escriptura</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4048,8 +4048,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected / <guimenuitem
->default</guimenuitem
+>Omissió: no seleccionat / <guimenuitem
+>predeterminat</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4080,7 +4080,7 @@ ntlm auth = yes
 ></link
 >.</para>
               <para
->Default: not selected / 445</para>
+>Omissió: no seleccionat / 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4088,21 +4088,21 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_mounting_cifs_unix_extensions">
         <title
->Admetre les ampliacions &CIFS; d'Unix</title>
+>Admetre les ampliacions Unix del &CIFS;</title>
         <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guibutton
->Tots o la majoria dels servidors admeten les ampliacions &CIFS; d'Unix</guibutton
+>Tots o la majoria dels servidors admeten les ampliacions Unix del &CIFS;</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
 >La majoria de les versions de &Samba; admeten les ampliacions &CIFS; d'Unix o POSIX. Per a aquests servidors, algunes opcions no són necessàries, perquè els valors correctes es negocien durant el procés de muntatge. Per als altres servidors, és possible que vulgueu desmarcar aquestes opcions, de manera que es puguin passar al servidor els valors predefinits. Cal tenir en compte que si l'ordinador està ubicat en un veïnatge de xarxa dominat per &Windows; amb només alguns servidors de &Samba;, podeu desmarcar aquesta opció amb seguretat i definir opcions personalitzades per als servidors de &Samba;.</para>
             <para
->In case you uncheck this option, consider to switch on permission checks under <link linkend="configuration_page_mounting_advanced_mount_settings"
->Advanced Mount Settings</link
+>En el cas que desmarqueu aquesta opció, considereu canviar les comprovacions de a <link linkend="configuration_page_mounting_advanced_mount_settings"
+>Configuració avançada de muntatge</link
 >.</para>
             <para
 >Omissió: seleccionada</para>
@@ -4119,9 +4119,9 @@ ntlm auth = yes
             <para
 >Estableix el propietari dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre UID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Default: selected / your UID</para>
+>Omissió: seleccionat / el vostre ID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4135,9 +4135,9 @@ ntlm auth = yes
             <para
 >Estableix el grup dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre GID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Default: selected / your GID</para>
+>Omissió: seleccionat / el vostre GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4167,9 +4167,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Default: selected / 0755</para>
+>Omissió: seleccionat / 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4199,9 +4199,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Default: selected / 0755</para>
+>Omissió: seleccionat / 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4260,7 +4260,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->El client comprovarà si té l'UID i el GID correcte per a manipular els fitxers i directoris en la compartició. Això es fa a més de la comprovació normal de l'ACL sobre la màquina de destinació, el qual és realitzat pel programari del servidor. És possible que vulgueu desactivar aquesta característica, si el/s servidor/s admeten les extensions &CIFS; d'Unix i, per tant, no podeu accedir a la compartició.</para>
+>El client comprovarà si té l'UID i el GID correcte per a manipular els fitxers i directoris en la compartició. Això es fa a més de la comprovació normal de l'ACL sobre la màquina de destinació, el qual és realitzat pel programari del servidor. És possible que vulgueu desactivar aquesta característica, si el/s servidor/s admeten les ampliacions Unix del &CIFS; i, per tant, no podeu accedir a la compartició.</para>
             <para
 >Omissió: no seleccionada</para>
           </listitem>
@@ -4274,7 +4274,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Si les extensions &CIFS; d'Unix es negocien amb el servidor, la banda del client intentarà establir els UID i GID efectius del procés local sobre els fitxers, directoris i dispositius creats recentment. Si aquesta característica està desactivada, s'utilitzaran els identificadors UID i GID definits per a la compartició. Es recomana llegir la pàgina de manual <ulink url="man:/mount.cifs"
+>Si les ampliacions Unix del &CIFS; es negocien amb el servidor, la banda del client intentarà establir els UID i GID efectius del procés local sobre els fitxers, directoris i dispositius creats recentment. Si aquesta característica està desactivada, s'utilitzaran els identificadors UID i GID definits per a la compartició. Es recomana llegir la pàgina de manual <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4346,7 +4346,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Define which version of the SMB protocol is to be used. Normally, this option does not need to be enabled because the protocol version is negotiated between the client and the server.</para>
+>Defineix quina versió del protocol SMB s'ha d'utilitzar. Normalment, aquesta opció no necessita estar habilitada perquè la versió del protocol es negocia entre el client i el servidor.</para>
             <para
 >Es permeten els següents valors:</para>
             <variablelist>
@@ -4393,7 +4393,7 @@ ntlm auth = yes
 ></ulink
 > utilitzi el protocol SMBv2.002. Aquest es va introduir inicialment en el Windows Vista Service Pack 1 i el Windows Server 2008 de &Microsoft;.</para>
                   <para
->Please note that the initial release version of Windows Vista spoke a slightly different dialect (2.000) that is not supported.</para>
+>Cal tenir en compte que la versió inicial de Windows Vista parlava un dialecte lleugerament diferent (2.000) que no està admès.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4468,14 +4468,14 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3 (Version 3.0 and above)</guibutton
+>3 (Versió 3.0 i superior)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->The <option
+>S'utilitzarà l'argument <option
 >vers=3</option
-> command line argument is used. This causes <ulink url="man:/mount.cifs"
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4483,21 +4483,21 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> to use the SMBv3.0 protocol version and above.</para>
+> utilitzi la versió del protocol SMBv3.0 o superior.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
                 <term>
                   <menuchoice
 ><guibutton
->default (Negotiate the highest version)</guibutton
+>predeterminat (Negocia la versió més alta)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->The <option
+>S'utilitzarà l'argument <option
 >vers=default</option
-> command line argument is used. This causes <ulink url="man:/mount.cifs"
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4505,13 +4505,13 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> to try to negotiate the highest SMBv2+ version supported by both the client and server.</para>
+> intenti negociar la versió SMBv2+ més alta que acceptin tant el client com el servidor.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->default (Negotiate the highest version)</guibutton
+>Omissió: no seleccionat / <guibutton
+>predeterminat (Negocia la versió més alta)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4596,8 +4596,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->Follow the &CIFS;/SMB2 protocol strictly</guibutton
+>Omissió: no seleccionat / <guibutton
+>Segueix estrictament el protocol &CIFS;/SMB2</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4814,8 +4814,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->NTLMSSP protocol</guibutton
+>Omissió: no seleccionat / <guibutton
+>Protocol NTLMSSP</guibutton
 ></para>
           </listitem>
         </varlistentry>

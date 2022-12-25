@@ -2993,7 +2993,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Set the icon size in the icon view of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+>Stel de pictogramgrootte in in de pictogramweergave van de weergave van shares. De grootte kan aangepast worden in stappen van 16 pixels van 16 x 16 pixels tot 128 x 128 pixels.</para>
             <para
 >Standaard: pictogramgrootte van bureaublad</para>
           </listitem>
@@ -3007,7 +3007,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Set the icon size in the list view of the shares view. The size can be adjusted in steps of 16 pixels from 16 x 16 pixels to 128 x 128 pixels.</para>
+>Stel de pictogramgrootte in in de weergave van lijst van de weergave van shares. De grootte kan aangepast worden in stappen van 16 pixels van 16 x 16 pixels tot 128 x 128 pixels.</para>
             <para
 >Standaard: kleine pictogramgrootte</para>
           </listitem>
@@ -3732,8 +3732,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected / <guimenuitem
->read-write</guimenuitem
+>Standaard: niet geselecteerd / <guimenuitem
+>lezen-schrijven</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4026,8 +4026,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected / <guimenuitem
->default</guimenuitem
+>Standaard: niet geselecteerd / <guimenuitem
+>standaard</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4058,7 +4058,7 @@ ntlm auth = yes
 ></link
 >.</para>
               <para
->Default: not selected / 445</para>
+>Standaard: niet geselecteerd / 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4079,8 +4079,8 @@ ntlm auth = yes
             <para
 >De meeste versies van &Samba; ondersteunen de &CIFS; Unix- of POSIX-extensies. Voor deze servers zijn enkele opties niet nodig, omdat de juiste waarden zijn onderhandeld gedurende het aankoppelproces. Voor andere servers zou u kunnen kiezen om deze optie te deactiveren, zodat voorgedefinieerde waarden doorgegeven kunnen worden aan de server. Merk op dat als uw computer zich in een door &Windows; gedomineerde netwerkomgeving bevindt met alleen een paar &Samba;-servers, u deze optie veilig kunt deactiveren en aangepaste opties voor de &Samba;-servers definiëren.</para>
             <para
->In case you uncheck this option, consider to switch on permission checks under <link linkend="configuration_page_mounting_advanced_mount_settings"
->Advanced Mount Settings</link
+>Als u deze optie deactiveert, overweeg om om te schakelen naar controle van rechten onder <link linkend="configuration_page_mounting_advanced_mount_settings"
+>Geavanceerde instellingen van aankoppelen</link
 >.</para>
             <para
 >Standaard: geselecteerd</para>
@@ -4097,9 +4097,9 @@ ntlm auth = yes
             <para
 >Stelt in wie de eigenaar van de bestanden en mappen in het bestandssysteem is. Standaard wordt uw UID gebruikt. Om de UID te wijzigen, drukt u zoekknop in en kiest in de keuzelijst er een uit.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Default: selected / your UID</para>
+>Standaard: geselecteerd / uw UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4113,9 +4113,9 @@ ntlm auth = yes
             <para
 >Stelt de groep in die eigenaar is van de bestanden en mappen In het bestandssysteem. Standaard wordt uw GID gebruikt. Om de GID te wijzigen druk op de zoekknop en kies er een uit het afrolmenu.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Default: selected / your GID</para>
+>Standaard: geselecteerd / uw GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4145,9 +4145,9 @@ ntlm auth = yes
 ></ulink
 > lezen.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Default: selected / 0755</para>
+>Standaard: geselecteerd / 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4177,9 +4177,9 @@ ntlm auth = yes
 ></ulink
 > lezen.</para>
             <para
->In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Default: selected / 0755</para>
+>Standaard: geselecteerd / 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4324,7 +4324,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Define which version of the SMB protocol is to be used. Normally, this option does not need to be enabled because the protocol version is negotiated between the client and the server.</para>
+>Definieer welke versie van het SMB-protocol moet worden gebruikt. Normaal is deze optie niet nodig om ingeschakeld te worden omdat de protocolversie wordt onderhandelt tussen de client en de server.</para>
             <para
 >De volgende waarden zijn toegestaan:</para>
             <variablelist>
@@ -4371,7 +4371,7 @@ ntlm auth = yes
 ></ulink
 > het SMBv2.002 protocol zal gebruiken. Dit was initieel geïntroduceerd in Windows Vista Service Pack 1 en Windows Server 2008.</para>
                   <para
->Please note that the initial release version of Windows Vista spoke a slightly different dialect (2.000) that is not supported.</para>
+>Merk op dat de eerste release van Windows Vista een licht verschillend dialect (2.000) gebruikte die niet wordt ondersteund.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4446,14 +4446,14 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3 (Version 3.0 and above)</guibutton
+>3 (versie 3.0 en hoger)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->The <option
+>De optie <option
 >vers=3</option
-> command line argument is used. This causes <ulink url="man:/mount.cifs"
+> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4461,21 +4461,21 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> to use the SMBv3.0 protocol version and above.</para>
+> het SMBv3.0 protocol en hoger zal gebruiken.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
                 <term>
                   <menuchoice
 ><guibutton
->default (Negotiate the highest version)</guibutton
+>Standaard (onderhandel de hoogste versie)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->The <option
->vers=default</option
-> command line argument is used. This causes <ulink url="man:/mount.cifs"
+>De optie <option
+>vers=standaard</option
+> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4483,13 +4483,13 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> to try to negotiate the highest SMBv2+ version supported by both the client and server.</para>
+> zal proberen de hoogste versie van SMBv2+, die door zowel de client als de server wordt gebruikt, te gebruiken.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->default (Negotiate the highest version)</guibutton
+>Standaard: niet geselecteerd / <guibutton
+>standaard (onderhandel de hoogste versie)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4574,8 +4574,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->Follow the &CIFS;/SMB2 protocol strictly</guibutton
+>Standaard: niet geselecteerd / <guibutton
+>Volg strikt het &CIFS;/SMB2 protocol</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4792,8 +4792,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected / <guibutton
->NTLMSSP protocol</guibutton
+>Standaard: niet geselecteerd / <guibutton
+>NTLMSSP-protocol</guibutton
 ></para>
           </listitem>
         </varlistentry>

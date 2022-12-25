@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-22 00:46+0000\n"
-"PO-Revision-Date: 2022-12-16 09:29+0100\n"
+"PO-Revision-Date: 2022-12-24 12:02+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2161,12 +2161,12 @@ msgstr "Torna a muntar sempre esta compartició"
 #: smb4kcustomoptionsmanager_p.cpp:217
 #, kde-format
 msgid "CIFS Unix Extensions Support"
-msgstr "Admet les ampliacions CIFS de Unix"
+msgstr "Admet les ampliacions Unix de CIFS"
 
 #: smb4kcustomoptionsmanager_p.cpp:220
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr "Este servidor admet les ampliacions CIFS de Unix"
+msgstr "Este servidor admet les ampliacions Unix de CIFS"
 
 #: smb4kcustomoptionsmanager_p.cpp:299
 #, kde-format
@@ -2981,7 +2981,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:12
 #, kde-format
 msgid "All or most of the servers support the CIFS Unix extensions"
-msgstr "Tots o la majoria dels servidors admeten les ampliacions CIFS de Unix"
+msgstr "Tots o la majoria dels servidors admeten les ampliacions Unix de CIFS"
 
 #. i18n: ectx: whatsthis, entry (CifsUnixExtensionsSupport), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:13
@@ -3016,7 +3016,7 @@ msgid ""
 msgstr ""
 "Este és l'ID d'usuari (un número) que tindran els fitxers i directoris de la "
 "compartició muntada. Si esteu utilitzant el sistema de fitxers CIFS davall "
-"Linux i el servidor remot permet les ampliacions CIFS de Unix, esta opció "
+"Linux i el servidor remot permet les ampliacions Unix de CIFS, esta opció "
 "s'ignorarà a menys que es force l'assignació de l'ID d'usuari."
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
@@ -3031,7 +3031,7 @@ msgid ""
 msgstr ""
 "Este és l'ID de grup (un número) que tindran els fitxers i directoris de la "
 "compartició muntada. Si esteu utilitzant el sistema de fitxers CIFS davall "
-"Linux i el servidor remot permet les ampliacions CIFS de Unix, esta opció "
+"Linux i el servidor remot permet les ampliacions Unix de CIFS, esta opció "
 "s'ignorarà a menys que es force l'assignació de l'ID de grup."
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
@@ -3044,8 +3044,8 @@ msgid ""
 msgstr ""
 "Este és el mode de fitxer que s'utilitzarà en crear els fitxers. S'ha de "
 "definir en octal. En cas que s'utilitze el sistema de fitxers CIFS, esta "
-"opció només tindrà efecte si el servidor no permet les ampliacions CIFS de "
-"Unix."
+"opció només tindrà efecte si el servidor no permet les ampliacions Unix de "
+"CIFS."
 
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:40
@@ -3057,8 +3057,8 @@ msgid ""
 msgstr ""
 "Este és el mode de fitxer que s'utilitzarà en crear els fitxers. S'ha de "
 "definir en octal. En cas que s'utilitze el sistema de fitxers CIFS, esta "
-"opció només tindrà efecte si el servidor no permet les ampliacions CIFS de "
-"Unix."
+"opció només tindrà efecte si el servidor no permet les ampliacions Unix de "
+"CIFS."
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -3071,8 +3071,8 @@ msgid ""
 msgstr ""
 "Este és el mode de directori que s'utilitzarà en crear els directoris. S'ha "
 "de definir en octal. En cas que s'utilitze el sistema de fitxers CIFS, esta "
-"opció només tindrà efecte si el servidor no permet les ampliacions CIFS de "
-"Unix."
+"opció només tindrà efecte si el servidor no permet les ampliacions Unix de "
+"CIFS."
 
 #. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:53
@@ -3193,8 +3193,8 @@ msgid ""
 msgstr ""
 "La banda del client (és a dir, a la vostra banda) comprovarà si disposeu de "
 "l'UID/GID correcte per a manipular un fitxer o directori. Potser voldreu "
-"desactivar esta característica si el servidors permet les ampliacions CIFS "
-"de Unix i no teniu permís per a accedir als fitxers i els directoris. Esta "
+"desactivar esta característica si el servidors permet les ampliacions Unix "
+"de CIFS i no teniu permís per a accedir als fitxers i els directoris. Esta "
 "opció no afectarà la comprovació ACL normal."
 
 #. i18n: ectx: label, entry (ClientControlsIDs), group (Mounting)
@@ -3214,7 +3214,7 @@ msgid ""
 "recommended that you read the manual page of mount.cifs before you change "
 "this setting."
 msgstr ""
-"En cas que el servidor permeta les ampliacions CIFS de Unix, la banda del "
+"En cas que el servidor permeta les ampliacions Unix de CIFS, la banda del "
 "client (és a dir, a la vostra banda) intentarà establir l'UID i el GID "
 "efectius del procés actual en els fitxers, directoris i dispositius creats "
 "de nou. Si esta característica es desactiva, el servidor establirà l'UID i "
