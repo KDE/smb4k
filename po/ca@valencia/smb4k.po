@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-07 00:47+0000\n"
-"PO-Revision-Date: 2022-07-09 12:45+0200\n"
+"PO-Revision-Date: 2022-12-24 12:02+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -295,7 +295,7 @@ msgstr "Opcions comunes"
 #: smb4k/smb4kconfigpagemounting.cpp:228
 #, kde-format
 msgid "CIFS Unix Extensions Support"
-msgstr "Admet les ampliacions CIFS de Unix"
+msgstr "Admet les ampliacions Unix de CIFS"
 
 #: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
 #, kde-format
@@ -320,7 +320,7 @@ msgstr "Opcions avançades"
 #: smb4k/smb4kconfigpagemounting.cpp:457
 #, kde-format
 msgid "Edit the additional CIFS options."
-msgstr "Edita les opcions addicionals del CIFS."
+msgstr "Edita les opcions addicionals de CIFS."
 
 #: smb4k/smb4kconfigpagemounting.cpp:470
 #, kde-format
@@ -340,7 +340,7 @@ msgstr "Configuració de muntatge"
 #: smb4k/smb4kconfigpagemounting.cpp:833
 #, kde-format
 msgid "Additional CIFS Options"
-msgstr "Opcions addicionals del CIFS"
+msgstr "Opcions addicionals de CIFS"
 
 #: smb4k/smb4kconfigpagemounting.cpp:834
 #, kde-format

@@ -387,7 +387,7 @@
 >Avahi</ulink
 >, а не справжній домен &Windows;. У відповідь на спробу відкрити домен або робочу групу буде показано сервери, які належать до них. Якщо вам потрібен доступ до спільних ресурсів одного з серверів, вам слід відкрити запис відповідного сервера.</para>
       <para
->Також передбачено можливість пробудження зі стану сну серверів до виконання сканування мережевого оточення (Wake-On-LAN). Якщо буде увімкнено цю можливість, &smb4k; надсилатиме пакети керування на кожен сервер, який слід пробудити, і очікуватиме визначений проміжок часу, перш ніж розпочати пошук у робочих групах і доменах. Параметр пробудження зі стану сну можна увімкнути за допомогою <link linkend="configuration_page_network_wake_on_lan_settings"
+>Також передбачено можливість пробудження зі стану сну серверів до виконання сканування мережевого оточення (Wake-On-LAN). Якщо буде увімкнено цю можливість, &smb4k; надсилатиме пакети керування на кожен сервер, який слід пробудити, і очікуватиме визначений проміжок часу, перш ніж розпочати пошук у робочих групах і доменах. Параметр пробудження зі стану сну можна увімкнути за допомогою <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
 >діалогового вікна налаштування програми</link
 >. Перелік серверів, які слід пробуджувати, має бути визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_options"
 >діалогового вікна нетипових параметрів</link
@@ -976,7 +976,7 @@
 ></listitem>
         <listitem
 ><para
->визначити сервер, який слід пробудити до виконання пошуку ресурсів у мережі або спроб монтування (можливість Wake-On-LAN, див. <link linkend="configuration_page_network_wake_on_lan_settings"
+>визначити сервер, який слід пробудити до виконання пошуку ресурсів у мережі або спроб монтування (можливість Wake-On-LAN, див. <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
 >цей розділ</link
 >),</para
 ></listitem>
@@ -2866,6 +2866,20 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Розмір піктограм</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Встановити розмір піктограм для навігатора мережевим оточенням. Розмір можна змінювати кроками у 16 пікселів від 16 x 16 пікселів до 128 x 128 пікселів.</para>
+            <para
+>Типове значення: малий розмір піктограм</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Автоматично розгортати пункти доменів і вузлів</guibutton
 ></menuchoice>
           </term>
@@ -2992,6 +3006,34 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Розмір піктограм на панелі піктограм</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Встановити розмір піктограм у режимі перегляду з піктограмами на панелі спільних ресурсів. Розмір можна змінювати кроками у 16 пікселів від 16 x 16 пікселів до 128 x 128 пікселів.</para>
+            <para
+>Типове значення: розмір піктограм на стільниці</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
+>Розмір піктограм на панелі списку</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Встановити розмір піктограм у режимі перегляду списку на панелі спільних ресурсів. Розмір можна змінювати кроками у 16 пікселів від 16 x 16 пікселів до 128 x 128 пікселів.</para>
+            <para
+>Типове значення: малий розмір піктограм</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Показувати підказки для змонтованих спільних ресурсів</guibutton
 ></menuchoice>
           </term>
@@ -3017,12 +3059,8 @@ ntlm auth = yes
     <para
 >Параметри, пункти яких наведено на цій сторінці, стосуються обміну даними мережею. Ви можете змінити поведінку під час навігації і показу даних за допомогою вкладки <guibutton
 >Основні параметри</guibutton
->, параметрів, які буде передано до базової бібліотеки <application
->libsmbclient</application
-> за допомогою вкладки <guibutton
->Параметри Samba</guibutton
-> і увімкнути можливості пробудження систем за допомогою мережі (Wake-On-LAN) за допомогою вкладки <guibutton
->Параметри Wake-On-LAN</guibutton
+> і додаткових параметрів для можливостей Samba і Wake-On-LAN на вкладці <guibutton
+>Додаткові параметри</guibutton
 >.</para>
     
     <screenshot>
@@ -3280,59 +3318,23 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Samba Settings (libsmbclient)
+      Configuring Smb4K : Network : Advanced Settings
 -->
 
-    <sect2 id="configuration_page_network_samba_settings">
+    <sect2 id="configuration_page_network_advanced_settings">
       <title
->Параметри Samba</title>
+>Додаткові параметри</title>
       
-      <sect3 id="configuration_page_network_samba_settings_common_settings">
+      <sect3 id="configuration_page_network_advanced_settings_samba">
         <title
->Загальні параметри</title>
+>Samba</title>
 
         <variablelist>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Назва NetBIOS</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Визначає назву NetBIOS вашого комп’ютера. У полі для введення тексту буде вказано відомості, взяті з файла налаштувань <filename
->smb.conf</filename
->, або назву вузла вашого комп’ютера. Зазвичай, потреби у зміні вказаних програмою даних не повинно виникнути.</para>
-              <para
->Типове значення: назва NetBIOS, визначена у <filename
->smb.conf</filename
->, або назва вузла</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Домен</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Визначає назву домену/робочої групи, до якої належить ваш комп’ютер. У полі для введення тексту буде вказано відомості, взяті з файла налаштувань <filename
->smb.conf</filename
->. Зазвичай, потреби у зміні вказаних програмою даних не повинно виникнути.</para>
-              <para
->Типове значення: назва домену, визначена у <filename
->smb.conf</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Порт SMB</guibutton
+>Встановити порт SMB</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3348,79 +3350,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Цей комп'ютер перебуває у великому мережевому середовищі</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->За типових налаштувань під час створення списку навігації буде опитано усі доступні основні засоби перегляду. У середовищах, де комп'ютерів дуже багато, таке опитування може бути дуже тривалим. Якщо позначити цей пункт, опитування буде обмежено трьома основними засобами перегляду.</para>
-              <para
->Типове значення: не позначено</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    
-      <sect3 id="configuration_page_network_samba_settings_authentication">
-        <title
->Розпізнавання</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Користування головними навігаторами потребує розпізнавання</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Якщо для отримання списку перегляду з головних навігаторів робочої групи потрібно пройти розпізнавання, вам слід позначити цей пункт. Подібне розпізнавання може знадобитися, наприклад для деяких пристроїв NAS. Потреба у позначенні цього пункту виникає не часто. Його позначення може навіть призвести до того, що головний навігатор поверне порожній список перегляду.</para>
-              <para
->Типове значення: не позначено</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Використовувати для розпізнавання Kerberos 5</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Використовувати Kerberos для розпізнавання у середовищі Active Directory.</para>
-              <para
->Типове значення: не позначено</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Використовувати ccache Winbind для розпізнавання</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Спробувати скористатися реєстраційними даними, які зберігаються у кеші Winbind.</para>
-              <para
->Типове значення: не позначено</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-      
-      <sect3 id="configuration_page_network_samba_settings_security">
-        <title
->Безпека</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Рівень шифрування</guibutton
+>Встановити рівень шифрування</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3471,56 +3401,107 @@ ntlm auth = yes
 ></para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Цей комп'ютер перебуває у великому мережевому середовищі</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>За типових налаштувань під час створення списку навігації буде опитано усі доступні основні засоби перегляду. У середовищах, де комп'ютерів дуже багато, таке опитування може бути дуже тривалим. Якщо позначити цей пункт, опитування буде обмежено трьома основними засобами перегляду.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Користування головними навігаторами потребує розпізнавання</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Якщо для отримання списку перегляду з головних навігаторів робочої групи потрібно пройти розпізнавання, вам слід позначити цей пункт. Подібне розпізнавання може знадобитися, наприклад для деяких пристроїв NAS. Потреба у позначенні цього пункту виникає не часто. Його позначення може навіть призвести до того, що головний навігатор поверне порожній список перегляду.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Використовувати для розпізнавання Kerberos 5</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Використовувати Kerberos для розпізнавання у середовищі Active Directory.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Використовувати ccache Winbind для розпізнавання</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Спробувати скористатися реєстраційними даними, які зберігаються у кеші Winbind.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry
+>          
         </variablelist>
-      </sect3
->     
-    </sect2>
-    
-<!-- 
-      Configuring Smb4K : Network : Wake-On_LAN Settings
--->
+      </sect3>
+      <sect3 id="configuration_page_network_advanced_settings_wake_on_lan">
+        <title
+>Пробудження з LAN</title>
 
-    <sect2 id="configuration_page_network_wake_on_lan_settings">
-      <title
->Параметри Wake-On-LAN</title>
-
-      <para
->Щоб мати змогу скористатися можливостями Wake-On-LAN у &smb4k;, вам слід позначити відповідний пункт у цьому розділі. Вузли, які слід пробуджувати, має бути визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_options"
+        <para
+>Щоб мати змогу скористатися можливостями Wake-On-LAN у &smb4k;, вам слід позначити цей пункт. Вузли, які слід пробуджувати, має бути визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_options"
 >діалогового вікна нетипових параметрів</link
 >.</para>
 
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
 ><guibutton
 >Увімкнути можливості Wake-On-LAN</guibutton
 ></menuchoice>
-          </term>
-          <listitem>
-            <para
+            </term>
+            <listitem>
+              <para
 >Увімкнути можливості Wake-on-LAN (WOL). Wake-on-LAN (WOL) — стандарт щодо комп’ютерних мереж ethernet, який уможливлює вмикання або пробудження комп’ютера за допомогою повідомлення, надісланого мережею. У Smb4K пакунок, надісланий за допомогою сокета UDP, використовується для пробудження віддалених серверів. Якщо ви хочете скористатися перевагами можливостей Wake-On-LAN, вам слід позначити цей пункт.</para>
-            <para
+              <para
 >Типове значення: не позначено</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice
 ><guilabel
 >Час очікування</guilabel
 ></menuchoice>
-                </term>
-                <listitem>
-                  <para
+                  </term>
+                  <listitem>
+                    <para
 >Час очікування у секундах між надсиланням контрольних пакунків Wake-On-LAN і скануванням мережевого оточення або монтуванням спільного ресурсу.</para>
-                  <para
+                    <para
 >Типове значення: 5 с</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
   </sect1>
 
@@ -3614,10 +3595,6 @@ ntlm auth = yes
             <listitem>
               <para
 >Визначає, чи слід повторно монтувати всі ваші спільні ресурси, які було змонтовано на час завершення роботи програми або зміни профілю. Якщо спроба повторного монтування зазнає невдачі, Smb4K спробує виконати його під час наступного запуску програми. Позначення цього пункту не стосуватиметься спільних ресурсів, змонтованих іншими користувачами.</para>
-              <note
-><para
->Позначення цього пункту не стосуватиметься спільних ресурсів, змонтованих іншими користувачами. Будь ласка, зауважте, що цей параметр не впливає на автоматичне повторне монтування спільних ресурсів під час пробудження системи зі стану присипляння.</para
-></note>
               <para
 >Типове значення: не позначено</para>
               <variablelist>
@@ -3773,7 +3750,7 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Типовий режим: <guimenuitem
+>Типовий режим: не вибрано / <guimenuitem
 >читання-запис</guimenuitem
 ></para>
             </listitem>
@@ -4067,7 +4044,7 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Типовий варіант: <guimenuitem
+>Типовий варіант: не вибрано / <guimenuitem
 >типовий</guimenuitem
 ></para>
             </listitem>
@@ -4093,13 +4070,13 @@ ntlm auth = yes
 >Нетипові параметри</link
 > для визначення номерів окремих портів для проблемних вузлів.</para>
               <para
->Цим пунктом можна скористатися лише у &Linux;. У BSD порт для монтування спільних ресурсів завжди встановлено у значення <link linkend="configuration_page_network_samba_settings_common_settings"
+>Цим пунктом можна скористатися лише у &Linux;. У BSD порт для монтування спільних ресурсів завжди встановлено у значення <link linkend="configuration_page_network_advanced_settings_samba"
 ><guibutton
 >SMB-порт</guibutton
 ></link
 >.</para>
               <para
->Типове значення: 445</para>
+>Типове значення: не позначено / 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4120,7 +4097,11 @@ ntlm auth = yes
             <para
 >У більшості версій &Samba; передбачено підтримку розширень UNIX або POSIX &CIFS;. Для роботи з відповідними серверами у наданні деяких параметрів просто немає потреби, оскільки належні налаштування визначаються під час процедури узгодження у процесі монтування. Для серверів, де такої підтримки не передбачено, варто зняти позначку з цього пункту, щоб програма надіслала попередньо визначені значення параметрів серверу. Будь ласка, зауважте, що якщо ваш комп'ютер перебуває у середовищі, де переважна кількість комп'ютерів працює під керуванням &Windows; і є лише декілька серверів &Samba;, ви можете сміливо знімати позначку з цього пункту і визначати нетипові параметри для серверів &Samba;.</para>
             <para
->Типове значення: не позначено</para>
+>Якщо цей пункт не буде позначено, варто позначити пункти перевірки прав доступу на сторінці <link linkend="configuration_page_mounting_advanced_mount_settings"
+>додаткових параметрів монтування</link
+>.</para>
+            <para
+>Типове значення: позначено</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4134,7 +4115,9 @@ ntlm auth = yes
             <para
 >Визначає власника файлів і каталогів файлової системи. Типово, буде використано код вашого користувача (UID). Щоб змінити значення UID, натисніть кнопку пошуку і оберіть потрібне значення зі спадного меню.</para>
             <para
->Типове значення: ваш код користувача (UID)</para>
+>Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
+            <para
+>Типове значення: позначено / ваш UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4148,7 +4131,9 @@ ntlm auth = yes
             <para
 >Визначає групу-власника файлів і каталогів файлової системи. Типово, буде використано код вашої групи (GID). Щоб змінити значення GID, натисніть кнопку пошуку і оберіть потрібне значення зі спадного меню.</para>
             <para
->Типове значення: ваш код групи (GID)</para>
+>Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
+            <para
+>Типове значення: позначено / ваш GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4178,7 +4163,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->Типове значення: 0755</para>
+>Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
+            <para
+>Типове значення: позначено / 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4208,7 +4195,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->Типове значення: 0755</para>
+>Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
+            <para
+>Типове значення: позначено / 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4229,8 +4218,6 @@ ntlm auth = yes
 > можна буде скористатися лише у &Linux;. Опис параметрів, якими можна скористатися у BSD, наведено у розділі <link linkend="configuration_page_mounting_mount_settings"
 >Параметри монтування (лише BSD)</link
 >.</para>
-      <para
->Щоб мати змогу визначати більшість з цих параметрів, вам слід встановити у системі ядро &Linux; версії 2.6.15 або пізнішої.</para>
       <variablelist>
         <varlistentry>
           <term>
@@ -4271,7 +4258,7 @@ ntlm auth = yes
             <para
 >Під час перевірок на стороні клієнта програма визначатиме, чи має ваш користувач значення UID і GID, які дозволяють йому працювати з файлами і каталогами спільного ресурсу. Ця перевірка є додатковою до звичайної перевірки ACL на віддаленому комп’ютері, яку виконує програмне забезпечення сервера. Вам варто зняти позначку з цього пункту, якщо сервери підтримують додатки Unix CIFS, а отже система закриває для вас доступ до спільного ресурсу.</para>
             <para
->Типове значення: позначено</para>
+>Типове значення: не позначено</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4355,7 +4342,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Визначення версії протоколу SMB, якою слід користуватися.</para>
+>Визначити версію протоколу SMB, яку слід використати. Зазвичай, у використанні цього параметра немає потреби, оскільки версію протоколу автоматично узгоджують клієнт і сервер.</para>
             <para
 >Можна використовувати такі значення:</para>
             <variablelist>
@@ -4401,10 +4388,8 @@ ntlm auth = yes
 ></citerefentry
 ></ulink
 > буде наказано використовувати протокол SMBv2.002. Цей протокол було вперше впроваджено у Windows Vista Service Pack 1 та Windows Server 2008.</para>
-                  <note>
-                    <para
->Зауважте, що у початковій версії випуску Windows Vista використовується трохи інший діалект (2.000), підтримки якого не передбачено.</para>
-                  </note>
+                  <para
+>Будь ласка, зауважте, що у початковій версії випуску Windows Vista використовується трохи інший діалект (2.000), підтримки якого не передбачено.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4475,10 +4460,54 @@ ntlm auth = yes
 > буде наказано використовувати протокол SMBv3.1.1., який було впроваджено у &Windows; Server 2016.</para>
                 </listitem>
               </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3 (версія 3.0 і новіші)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Використовується параметр командного рядка <option
+>vers=3</option
+> Таким чином, <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> буде наказано використовувати версію протоколу SMBv3.0 або новішу.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>типовий (узгодити найновішу версію)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Використовується параметр командного рядка <option
+>vers=default</option
+> Таким чином, <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> буде наказано узгодити найбільшу підтримувану версію SMBv2+ на боці клієнта і сервера.</para>
+                </listitem>
+              </varlistentry>
             </variablelist>
             <para
->Типове значення: <guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>Типове значення: не вибрано / <guibutton
+>типовий (узгодити найновішу версію)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4563,8 +4592,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Типове значення: <guibutton
->Строго дотримуватися протоколу CIFS/SMB2</guibutton
+>Типове значення: не вибрано / <guibutton
+>Строго дотримуватися протоколу &CIFS;/SMB2</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4781,7 +4810,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Типове значення: <guilabel
+>Типове значення: не вибрано / <guilabel
 >Протокол NTLMSSP</guilabel
 ></para>
           </listitem>
@@ -7684,7 +7713,7 @@ ntlm auth = yes
 >Параметри навігації</title>
     
       <para
->Тут ви можете редагувати різноманітні параметри &Samba;, які використовуються для навігації. Докладніший опис можна знайти в <link linkend="configuration_page_network_samba_settings"
+>Тут ви можете редагувати різноманітні параметри &Samba;, які використовуються для навігації. Докладніший опис можна знайти в <link linkend="configuration_page_network_advanced_settings"
 >описі сторінки налаштовування &Samba;</link
 >.</para>
     </sect2>
