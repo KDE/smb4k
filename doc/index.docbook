@@ -2489,10 +2489,19 @@ ntlm auth = yes
               </varlistentry>
               <varlistentry>
                 <term>
+                  <menuchoice><guibutton>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton></menuchoice>
+                </term>
+                <listitem>
+                  <para>The <option>vers=3.0.2</option> or <option>vers=3.11</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in &Windows; Server 2016.</para>
+                </listitem>
+              </varlistentry>
+              
+              <varlistentry>
+                <term>
                   <menuchoice><guibutton>3.1.1 (Windows Server 2016)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3.1.1</option> or <option>vers=3.11</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in &Windows; Server 2016.</para>
+                  <para>The <option>vers=3.1.1</option> or <option>vers=3.02</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0.2 protocol that was introduced in Microsoft Windows 8.1 and Windows Server 2012R2.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
