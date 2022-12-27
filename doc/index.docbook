@@ -2467,8 +2467,8 @@ ntlm auth = yes
                   <menuchoice><guibutton>2.0 (Windows Vista SP1/Windows Server 2008)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=2.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.002 protocol. This was initially introduced in Windows Vista Service Pack 1, and Windows Server 2008.</para>
-                  <para>Please note that the initial release version of Windows Vista spoke a slightly different dialect (2.000) that is not supported.</para>
+                  <para>The <option>vers=2.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.002 protocol. This was initially introduced in &Microsoft; &Windows; Vista Service Pack 1 and &Windows; Server 2008.</para>
+                  <para>Please note that the initial release version of &Microsoft; &Windows; Vista spoke a slightly different dialect (2.000) that is not supported.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2492,7 +2492,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3.0.2</option> or <option>vers=3.11</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in &Windows; Server 2016.</para>
+                  <para>The <option>vers=3.0.2</option> or <option>vers=3.02</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0.2 protocol that was introduced in &Microsoft; &Windows; 8.1 and &Windows; Server 2012R2.</para>
                 </listitem>
               </varlistentry>
               
@@ -2501,7 +2501,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>3.1.1 (Windows Server 2016)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3.1.1</option> or <option>vers=3.02</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0.2 protocol that was introduced in Microsoft Windows 8.1 and Windows Server 2012R2.</para>
+                  <para>The <option>vers=3.1.1</option> or <option>vers=3.11</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in &Microsoft; &Windows; Server 2016.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -3232,7 +3232,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Save logins in a wallet</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>The login names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
+            <para>The user names and passwords are stored in a subfolder named <filename role="directory">Smb4K</filename> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
             <para>Default: selected</para>
           </listitem>
         </varlistentry>
@@ -3263,9 +3263,9 @@ ntlm auth = yes
     <sect2 id="configuration_page_authentication_wallet_entries">
       <title>Wallet Entries</title>
       
-      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, they have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Details</guibutton> button on the right. As alternative you can just right click the entry and choose the <guimenuitem>Edit</guimenuitem> item in the popup menu. The details are then shown and can be modified.</para>
-      <para>An entry can be removed by choosing the <guimenuitem>Remove</guimenuitem> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
-      <para>After you finished editing, the changes can be committed to the wallet by pressing <guibutton>Save</guibutton>.</para>
+      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, they have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Edit</guibutton> button on the right. As alternative you can just double click the entry. A password dialog is shown and the user name and password can be modified.</para>
+      <para>An entry can be removed by selecting it and clicking the <guimenuitem>Remove</guimenuitem> button. All wallet entries can be removed at once by clicking the <guimenuitem>Clear</guimenuitem> button.</para>
+      <para>After you finished editing, the changes can be committed to the wallet by clicking <guibutton>Save</guibutton>.</para>
     </sect2>
   </sect1>
 
