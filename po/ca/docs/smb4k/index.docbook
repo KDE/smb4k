@@ -4444,13 +4444,13 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
 >S'utilitzarà l'argument <option
->vers=3.1.1</option
+>vers=3.0.2</option
 > o <option
 >vers=3.11</option
 > de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
@@ -4462,6 +4462,31 @@ ntlm auth = yes
 ></citerefentry
 ></ulink
 > utilitzi el protocol SMBv3.1.1 que es va introduir inicialment en el &Windows; Server 2016 de &Microsoft;.</para>
+                </listitem>
+              </varlistentry>
+              
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3.1.1 (Windows Server 2016)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>S'utilitzarà l'argument <option
+>vers=3.1.1</option
+> o <option
+>vers=3.02</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> utilitzi el protocol SMBv3.0.2 que es va introduir inicialment en el Windows 8.1 i el Windows Server 2012R2 de &Microsoft;.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>

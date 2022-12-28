@@ -4422,13 +4422,13 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
 >De optie <option
->vers=3.1</option
+>vers=3.0.2</option
 > of <option
 >vers=3.11</option
 > als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
@@ -4439,7 +4439,32 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> het SMBv3.1 protocol zal gebruiken, dat is geïntroduceerd in &Windows; Server 2016.</para>
+> het SMBv3.1.1 protocol zal gebruiken, dat is geïntroduceerd in &Windows; Server 2016.</para>
+                </listitem>
+              </varlistentry>
+              
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3.1.1 (Windows Server 2016)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>De optie <option
+>vers=3.1.1</option
+> of <option
+>vers=3.02</option
+> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> het SMBv3.0.2 protocol zal gebruiken, dat is geïntroduceerd in Microsoft Windows 8.1 en Windows Server 2012R2.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
