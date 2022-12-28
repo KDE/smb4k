@@ -3320,7 +3320,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>-a</option>/<option>--archive</option>, same as <option>-rlptgoD</option> (no <option>-A</option>, <option>-X</option>, <option>-U</option>, <option>-N</option>, <option>-H</option>)</para>
-              <para>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option>-a</option> does not preserve hardlinks, because finding multiply-linked files is expensive. You must separately specify <option>-H</option>.</para>
+              <para>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option>-a</option> does not preserve hardlinks (<option>-H</option>), access control lists (ACLs, <option>-A</option>), extended attributes (xattrs, <option>-X</option>), access (use) times (<option>-U</option>) nor crtimes (<option>-N</option>). You must separately specify these options. The only exception to the above equivalence is when <option>--files-from</option> is specified, in which case <option>-r</option> is not implied.</para>
               <para>In case you do not want to run <application>rsync</application> in archive mode, choose the appropriate arguments in the settings yourself.</para>
               <para>Default: selected</para>
             </listitem>
@@ -3498,7 +3498,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-l</option>/<option>--links</option></para>
               <para>Copy symlinks as symlinks.</para>
-              <para>Default: selected</para>
+              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3586,7 +3586,47 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-p</option>/<option>--perms</option></para>
               <para>This option causes the receiving side to set the destination permissions to be the same as the source permissions.</para>
-              <para>Default: selected</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preserve access control lists (ACLs)</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-A</option>/<option>--acls</option></para>
+              <para>Preserve access control lists. This option causes rsync to update the destination ACLs to be the same as the source ACLs. The option also implies --perms. The source and destination systems must have compatible ACL entries for this option to work properly.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preserve extended attributes</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-X</option>/<option>--xattrs</option></para>
+              <para>Preserve extended attributes. This option causes rsync to update the destination extended attributes to be the same as the source ones.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preserve access times</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-U</option>/<option>--atimes</option></para>
+              <para>Preserve access times. This tells rsync to set the access (use) times of the destination files to the same value as the source files.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preserve create times</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-N</option>/<option>--crtimes</option></para>
+              <para>Preserve create times. This tells rsync to set the create times (newness) of the destination files to the same value as the source files.</para>
+              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3596,7 +3636,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-o</option>/<option>--owner</option></para>
               <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the owner of the destination file to be the same as the one of the source file. By default, the preservation is done by name, but may fall back to using the ID number in some circumstances (see the <option>--numeric-ids</option> option for a full discussion). This option has no effect if the receiving <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is not run as the super user and <option>--super</option> is not specified.</para>
-              <para>Default: selected</para>
+              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3606,7 +3646,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-g</option>/<option>--group</option></para>
               <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the group of the destination file to be the same as the on of the source file. If the receiving program is not running as the super-user (or with the <option>--no-super</option> option), only groups that the receiver is a member of will be preserved.</para>
-              <para>Default: selected</para>
+              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3616,7 +3656,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-D</option>/<option>--devices --specials</option></para>
               <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to transfer character and block device files as well as special files (such as named sockets and fifos) to the remote system. This option has no effect if the receiving side is not run as the super user and <option>--super</option> is not specified.</para>
-              <para>Default: selected</para>
+              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3626,7 +3666,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-t</option>/<option>--times</option></para>
               <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to transfer modification times along with the files and update them on the remote system.</para>
-              <para>Default: selected</para>
+              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
