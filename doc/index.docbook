@@ -2106,7 +2106,7 @@ ntlm auth = yes
                   </listitem>
                 </varlistentry>
               </variablelist>
-              <para>Default: not selected / <guimenuitem>read-write</guimenuitem></para>
+              <para>Default: not selected; <guimenuitem>read-write</guimenuitem></para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2301,7 +2301,7 @@ ntlm auth = yes
                   </listitem>
                 </varlistentry>
               </variablelist>
-              <para>Default: not selected / <guimenuitem>default</guimenuitem></para>
+              <para>Default: not selected; <guimenuitem>default</guimenuitem></para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2311,7 +2311,7 @@ ntlm auth = yes
             <listitem>
               <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
               <para>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_advanced_settings_samba"><guibutton>SMB port</guibutton></link> option.</para>
-              <para>Default: not selected / 445</para>
+              <para>Default: not selected; port 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -2337,7 +2337,7 @@ ntlm auth = yes
           <listitem>
             <para>Sets the owner of the files and directories on the file system. By default, your UID is used. To change the UID, press the search button and choose one from the drop down menu.</para>
             <para>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
-            <para>Default: selected / your UID</para>
+            <para>Default: selected; your UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2347,7 +2347,7 @@ ntlm auth = yes
           <listitem>
             <para>Sets the group that owns the files and directories on the file system. By default, your GID is used. To change the GID, press the search button and choose one from the drop down menu.</para>
             <para>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
-            <para>Default: selected / your GID</para>
+            <para>Default: selected; your GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2355,9 +2355,9 @@ ntlm auth = yes
               <menuchoice><guibutton>File mode</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+            <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount(8)"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask(2)"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
             <para>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
-            <para>Default: selected / 0755</para>
+            <para>Default: selected; 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2365,9 +2365,9 @@ ntlm auth = yes
             <menuchoice><guibutton>Directory mode</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+            <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount(8)"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask(2)"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
             <para>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
-            <para>Default: selected / 0755</para>
+            <para>Default: selected; 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2521,7 +2521,7 @@ ntlm auth = yes
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: not selected / <guibutton>default (Negotiate the highest version)</guibutton></para>
+            <para>Default: not selected; <guibutton>default (Negotiate the highest version)</guibutton></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2557,7 +2557,7 @@ ntlm auth = yes
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: not selected / <guibutton>Follow the &CIFS;/SMB2 protocol strictly</guibutton></para>
+            <para>Default: not selected; <guibutton>Follow the &CIFS;/SMB2 protocol strictly</guibutton></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2641,7 +2641,7 @@ ntlm auth = yes
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: not selected / <guibutton>NTLMSSP protocol</guibutton></para>
+            <para>Default: not selected; <guibutton>NTLMSSP protocol</guibutton></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2692,7 +2692,7 @@ ntlm auth = yes
               <menuchoice><guibutton>File mode</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode, you should read the <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+              <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode, you should read the <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask(2)"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
               <para>Default: 0755</para>
             </listitem>
           </varlistentry>
@@ -2701,7 +2701,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Directory mode</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
+              <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask(2)"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
               <para>Default: 0755</para>
             </listitem>
           </varlistentry>
@@ -3263,8 +3263,8 @@ ntlm auth = yes
     <sect2 id="configuration_page_authentication_wallet_entries">
       <title>Wallet Entries</title>
       
-      <para>In this editor you can modify or remove existing wallet entries. Before you can edit them, they have to be loaded from the wallet by pressing the <guibutton>Load</guibutton> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton>Edit</guibutton> button on the right. As alternative you can just double click the entry. A password dialog is shown and the user name and password can be modified.</para>
-      <para>An entry can be removed by selecting it and clicking the <guimenuitem>Remove</guimenuitem> button. All wallet entries can be removed at once by clicking the <guimenuitem>Clear</guimenuitem> button.</para>
+      <para>In the editor you can change or delete existing wallet entries. However, before you can edit them, they have to be loaded from the digital wallet by pressing the <guibutton>Load</guibutton> button. The wallet entries then appear in the list view. An entry can be edited either by selecting it and clicking the <guibutton>Edit</guibutton> button or by double-clicking. A password dialog with the stored user name and password is shown and you can modify the credentials.</para>
+      <para>An entry can be removed by selecting it and clicking the <guibutton>Remove</guibutton> button. All wallet entries can be removed at once by clicking the <guibutton>Clear</guibutton> button. With the <guibutton>Reset</guibutton> button you can restore the initial state.</para>
       <para>After you finished editing, the changes can be committed to the wallet by clicking <guibutton>Save</guibutton>.</para>
     </sect2>
   </sect1>
@@ -3294,7 +3294,7 @@ ntlm auth = yes
       <title>Basic Settings</title>
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
-        <title>Default Destination</title>
+        <title>Synchronization Directory</title>
 
         <variablelist>
           <varlistentry>
@@ -3319,8 +3319,9 @@ ntlm auth = yes
               <menuchoice><guibutton>Archive mode</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Option: <option>-a</option>/<option>--archive</option>, same as <option>-rlptgoD</option> (no <option>-H</option>)</para>
+              <para>Option: <option>-a</option>/<option>--archive</option>, same as <option>-rlptgoD</option> (no <option>-A</option>, <option>-X</option>, <option>-U</option>, <option>-N</option>, <option>-H</option>)</para>
               <para>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option>-a</option> does not preserve hardlinks, because finding multiply-linked files is expensive. You must separately specify <option>-H</option>.</para>
+              <para>In case you do not want to run <application>rsync</application> in archive mode, choose the appropriate arguments in the settings yourself.</para>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -3331,7 +3332,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-r</option>/<option>--recursive</option></para>
               <para>Recurse into subdirectories.</para>
-              <para>Default: selected</para>
+              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3428,7 +3429,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-u</option>/<option>--update</option></para>
               <para>This forces <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to skip any files that exist on the destination and have a modification time that is newer than the one of the source file. (If an existing destination file has a modification time equal to the source file's, it will be updated if the sizes are different.)</para>
-              <para>Default: selected</para>
+              <para>Default: not selected</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3535,7 +3536,7 @@ ntlm auth = yes
               <menuchoice><guibutton>Munge symlinks</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Option: <option>-H</option>/<option>--munge-links</option></para>
+              <para>Option: <option>--munge-links</option></para>
               <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to (1) modify all symlinks on the receiving side in a way that makes them unusable but recoverable, or (2) to unmunge symlinks on the sending side that had been stored in a munged state. This is useful if you do not quite trust the source of the data to not try to slip in a symlink to an unexpected place. For further information on this argument, please see the manual page of <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
               <para>Default: not selected</para>
             </listitem>
