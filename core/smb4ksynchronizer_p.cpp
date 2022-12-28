@@ -133,36 +133,10 @@ void Smb4KSyncJob::slotStartSynchronization()
     //
     if (Smb4KSettings::archiveMode()) {
         command << QStringLiteral("--archive");
-    } else {
-        if (Smb4KSettings::recurseIntoDirectories()) {
-            command << QStringLiteral("--recursive");
-        }
-
-        if (Smb4KSettings::preserveSymlinks()) {
-            command << QStringLiteral("--links");
-        }
-
-        if (Smb4KSettings::preservePermissions()) {
-            command << QStringLiteral("--perms");
-        }
-
-        if (Smb4KSettings::preserveTimes()) {
-            command << QStringLiteral("--times");
-        }
-
-        if (Smb4KSettings::preserveGroup()) {
-            command << QStringLiteral("--group");
-        }
-
-        if (Smb4KSettings::preserveOwner()) {
-            command << QStringLiteral("--owner");
-        }
-
-        if (Smb4KSettings::preserveDevicesAndSpecials()) {
-            // Alias -D
-            command << QStringLiteral("--devices");
-            command << QStringLiteral("--specials");
-        }
+    }
+    
+    if (Smb4KSettings::recurseIntoDirectories()) {
+        command << QStringLiteral("--recursive");
     }
 
     if (Smb4KSettings::relativePathNames()) {
@@ -215,6 +189,10 @@ void Smb4KSyncJob::slotStartSynchronization()
     if (Smb4KSettings::ignoreExisting()) {
         command << QStringLiteral("--ignore-existing");
     }
+    
+    if (Smb4KSettings::preserveSymlinks()) {
+        command << QStringLiteral("--links");
+    }
 
     if (Smb4KSettings::transformSymlinks()) {
         command << QStringLiteral("--copy-links");
@@ -242,6 +220,44 @@ void Smb4KSyncJob::slotStartSynchronization()
 
     if (Smb4KSettings::keepDirectorySymlinks()) {
         command << QStringLiteral("--keep-dirlinks");
+    }
+    
+    if (Smb4KSettings::preservePermissions()) {
+        command << QStringLiteral("--perms");
+    }
+    
+    if (Smb4KSettings::preserveACLs()) {
+        command << QStringLiteral("--acls");
+    }
+    
+    if (Smb4KSettings::preserveExtendedAttributes()) {
+        command << QStringLiteral("--xattrs");
+    }
+    
+    if (Smb4KSettings::preserveAccessTimes()) {
+        command << QStringLiteral("--atimes");
+    }
+    
+    if (Smb4KSettings::preserveCreateTimes()) {
+        command << QStringLiteral("--crtimes");
+    }
+    
+    if (Smb4KSettings::preserveOwner()) {
+        command << QStringLiteral("--owner");
+    }
+    
+    if (Smb4KSettings::preserveGroup()) {
+        command << QStringLiteral("--group");
+    }
+    
+    if (Smb4KSettings::preserveDevicesAndSpecials()) {
+        // Alias -D
+        command << QStringLiteral("--devices");
+        command << QStringLiteral("--specials");
+    }
+    
+    if (Smb4KSettings::preserveTimes()) {
+        command << QStringLiteral("--times");
     }
 
     if (Smb4KSettings::omitDirectoryTimes()) {

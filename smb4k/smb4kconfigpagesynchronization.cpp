@@ -227,31 +227,51 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     preservePermissions->setObjectName(QStringLiteral("kcfg_PreservePermissions"));
 
     attributesOwnershipBoxLayout->addWidget(preservePermissions, 0, 0);
+    
+    QCheckBox *preserveACLs = new QCheckBox(Smb4KSettings::self()->preserveACLsItem()->label(), attributesOwnershipBox);
+    preserveACLs->setObjectName(QStringLiteral("kcfg_PreserveACLs"));
+    
+    attributesOwnershipBoxLayout->addWidget(preserveACLs, 0, 1);
+    
+    QCheckBox *preserveExtendedArrtibutes = new QCheckBox(Smb4KSettings::self()->preserveExtendedAttributesItem()->label(), attributesOwnershipBox);
+    preserveExtendedArrtibutes->setObjectName(QStringLiteral("kcfg_PreserveExtendedAttributes"));
+    
+    attributesOwnershipBoxLayout->addWidget(preserveExtendedArrtibutes, 1, 0);
+    
+    QCheckBox *preserveAccessTimes = new QCheckBox(Smb4KSettings::self()->preserveAccessTimesItem()->label(), attributesOwnershipBox);
+    preserveAccessTimes->setObjectName(QStringLiteral("kcfg_PreserveAccessTimes"));
+    
+    attributesOwnershipBoxLayout->addWidget(preserveAccessTimes, 1, 1);
+    
+    QCheckBox *preserveCreateTimes = new QCheckBox(Smb4KSettings::self()->preserveCreateTimesItem()->label(), attributesOwnershipBox);
+    preserveCreateTimes->setObjectName(QStringLiteral("kcfg_PreserveCreateTimes"));
+    
+    attributesOwnershipBoxLayout->addWidget(preserveCreateTimes, 2, 0);
 
     QCheckBox *preserveDevices = new QCheckBox(Smb4KSettings::self()->preserveDevicesAndSpecialsItem()->label(), attributesOwnershipBox);
     preserveDevices->setObjectName(QStringLiteral("kcfg_PreserveDevicesAndSpecials"));
 
-    attributesOwnershipBoxLayout->addWidget(preserveDevices, 0, 1);
+    attributesOwnershipBoxLayout->addWidget(preserveDevices, 2, 1);
 
     QCheckBox *preserveTimes = new QCheckBox(Smb4KSettings::self()->preserveTimesItem()->label(), attributesOwnershipBox);
     preserveTimes->setObjectName(QStringLiteral("kcfg_PreserveTimes"));
 
-    attributesOwnershipBoxLayout->addWidget(preserveTimes, 1, 0);
+    attributesOwnershipBoxLayout->addWidget(preserveTimes, 3, 0);
 
     QCheckBox *omitDirectoriesTimes = new QCheckBox(Smb4KSettings::self()->omitDirectoryTimesItem()->label(), attributesOwnershipBox);
     omitDirectoriesTimes->setObjectName(QStringLiteral("kcfg_OmitDirectoryTimes"));
 
-    attributesOwnershipBoxLayout->addWidget(omitDirectoriesTimes, 1, 1);
+    attributesOwnershipBoxLayout->addWidget(omitDirectoriesTimes, 3, 1);
 
     QCheckBox *preserveOwner = new QCheckBox(Smb4KSettings::self()->preserveOwnerItem()->label(), attributesOwnershipBox);
     preserveOwner->setObjectName(QStringLiteral("kcfg_PreserveOwner"));
 
-    attributesOwnershipBoxLayout->addWidget(preserveOwner, 2, 0);
+    attributesOwnershipBoxLayout->addWidget(preserveOwner, 4, 0);
 
     QCheckBox *preserveGroup = new QCheckBox(Smb4KSettings::self()->preserveGroupItem()->label(), attributesOwnershipBox);
     preserveGroup->setObjectName(QStringLiteral("kcfg_PreserveGroup"));
 
-    attributesOwnershipBoxLayout->addWidget(preserveGroup, 2, 1);
+    attributesOwnershipBoxLayout->addWidget(preserveGroup, 4, 1);
 
     fileHandlingTabLayout->addWidget(attributesOwnershipBox);
     fileHandlingTabLayout->addStretch(100);
@@ -580,21 +600,12 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     //
     // Connections
     //
-    connect(archiveMode, SIGNAL(toggled(bool)), this, SLOT(slotArchiveToggled(bool)));
-    connect(recurseDirectories, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
-    connect(preserveLinks, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
-    connect(preservePermissions, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
-    connect(preserveTimes, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
-    connect(preserveGroup, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
-    connect(preserveOwner, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
-    connect(preserveDevices, SIGNAL(toggled(bool)), this, SLOT(slotUncheckArchive(bool)));
     connect(useFFilterRule, SIGNAL(toggled(bool)), this, SLOT(slotFFilterRuleToggled(bool)));
     connect(useFFFilterRule, SIGNAL(toggled(bool)), this, SLOT(slotFFFilterRuleToggled(bool)));
     connect(makeBackups, SIGNAL(toggled(bool)), this, SLOT(slotBackupToggled(bool)));
     connect(compressData, SIGNAL(toggled(bool)), this, SLOT(slotCompressToggled(bool)));
     connect(keepPartial, SIGNAL(toggled(bool)), this, SLOT(slotKeepPartialToggled(bool)));
 
-    slotArchiveToggled(Smb4KSettings::archiveMode());
     slotBackupToggled(Smb4KSettings::makeBackups());
     slotCompressToggled(Smb4KSettings::compressData());
     slotKeepPartialToggled(Smb4KSettings::keepPartial());
@@ -754,26 +765,6 @@ bool Smb4KConfigPageSynchronization::checkSettings()
 /////////////////////////////////////////////////////////////////////////////
 // SLOT IMPLEMENTATIONS
 /////////////////////////////////////////////////////////////////////////////
-
-void Smb4KConfigPageSynchronization::slotArchiveToggled(bool checked)
-{
-    if (checked) {
-        findChild<QCheckBox *>(QStringLiteral("kcfg_RecurseIntoDirectories"))->setChecked(checked);
-        findChild<QCheckBox *>(QStringLiteral("kcfg_PreserveSymlinks"))->setChecked(checked);
-        findChild<QCheckBox *>(QStringLiteral("kcfg_PreservePermissions"))->setChecked(checked);
-        findChild<QCheckBox *>(QStringLiteral("kcfg_PreserveTimes"))->setChecked(checked);
-        findChild<QCheckBox *>(QStringLiteral("kcfg_PreserveGroup"))->setChecked(checked);
-        findChild<QCheckBox *>(QStringLiteral("kcfg_PreserveOwner"))->setChecked(checked);
-        findChild<QCheckBox *>(QStringLiteral("kcfg_PreserveDevicesAndSpecials"))->setChecked(checked);
-    }
-}
-
-void Smb4KConfigPageSynchronization::slotUncheckArchive(bool checked)
-{
-    if (!checked) {
-        findChild<QCheckBox *>(QStringLiteral("kcfg_ArchiveMode"))->setChecked(checked);
-    }
-}
 
 void Smb4KConfigPageSynchronization::slotBackupToggled(bool checked)
 {

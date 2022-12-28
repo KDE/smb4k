@@ -45,23 +45,6 @@ public:
 
 protected Q_SLOTS:
     /**
-     * This slot is invoked if the "Archive mode" checkbox has been
-     * toggled.
-     *
-     * @param checked       Is TRUE if the checkbox is checked and FALSE otherwise.
-     */
-    void slotArchiveToggled(bool checked);
-
-    /**
-     * This slot is invoked if the --archive option has to be switched
-     * off.
-     *
-     * @param checked       Is FALSE if one of the connected checkboxes is unchecked
-     *                      and TRUE otherwise.
-     */
-    void slotUncheckArchive(bool checked);
-
-    /**
      * This slot is called, when the backup checkbox has been toggled.
      * It enables/disables all other backup options according to the
      * state the backup button is in.
