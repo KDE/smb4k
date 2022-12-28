@@ -4440,13 +4440,13 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
 >Використовується параметр командного рядка <option
->vers=3.1.1</option
+>vers=3.0.2</option
 > або <option
 >vers=3.11</option
 >. Таким чином, <ulink url="man:/mount.cifs"
@@ -4457,7 +4457,32 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> буде наказано використовувати протокол SMBv3.1.1., який було впроваджено у &Windows; Server 2016.</para>
+> буде наказано використовувати протокол SMBv3.1.1, який було впроваджено у &Windows; Server 2016.</para>
+                </listitem>
+              </varlistentry>
+              
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3.1.1 (Windows Server 2016)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Використовується параметр командного рядка <option
+>vers=3.1.1</option
+> або <option
+>vers=3.02</option
+>. Таким чином, <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> буде наказано використовувати протокол SMBv3.0.2., який було впроваджено у Microsoft Windows 8.1 та Windows Server 2012R2.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
