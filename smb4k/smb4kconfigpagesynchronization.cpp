@@ -218,65 +218,78 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     linksBoxLayout->addWidget(keepDirLinks, 3, 1);
 
     fileHandlingTabLayout->addWidget(linksBox);
-
-    // File Attributes and Ownership
-    QGroupBox *attributesOwnershipBox = new QGroupBox(i18n("File Attributes && Ownership"), fileHandlingTab);
-    QGridLayout *attributesOwnershipBoxLayout = new QGridLayout(attributesOwnershipBox);
-
-    QCheckBox *preservePermissions = new QCheckBox(Smb4KSettings::self()->preservePermissionsItem()->label(), attributesOwnershipBox);
-    preservePermissions->setObjectName(QStringLiteral("kcfg_PreservePermissions"));
-
-    attributesOwnershipBoxLayout->addWidget(preservePermissions, 0, 0);
-    
-    QCheckBox *preserveACLs = new QCheckBox(Smb4KSettings::self()->preserveACLsItem()->label(), attributesOwnershipBox);
-    preserveACLs->setObjectName(QStringLiteral("kcfg_PreserveACLs"));
-    
-    attributesOwnershipBoxLayout->addWidget(preserveACLs, 0, 1);
-    
-    QCheckBox *preserveExtendedArrtibutes = new QCheckBox(Smb4KSettings::self()->preserveExtendedAttributesItem()->label(), attributesOwnershipBox);
-    preserveExtendedArrtibutes->setObjectName(QStringLiteral("kcfg_PreserveExtendedAttributes"));
-    
-    attributesOwnershipBoxLayout->addWidget(preserveExtendedArrtibutes, 1, 0);
-    
-    QCheckBox *preserveAccessTimes = new QCheckBox(Smb4KSettings::self()->preserveAccessTimesItem()->label(), attributesOwnershipBox);
-    preserveAccessTimes->setObjectName(QStringLiteral("kcfg_PreserveAccessTimes"));
-    
-    attributesOwnershipBoxLayout->addWidget(preserveAccessTimes, 1, 1);
-    
-    QCheckBox *preserveCreateTimes = new QCheckBox(Smb4KSettings::self()->preserveCreateTimesItem()->label(), attributesOwnershipBox);
-    preserveCreateTimes->setObjectName(QStringLiteral("kcfg_PreserveCreateTimes"));
-    
-    attributesOwnershipBoxLayout->addWidget(preserveCreateTimes, 2, 0);
-
-    QCheckBox *preserveDevices = new QCheckBox(Smb4KSettings::self()->preserveDevicesAndSpecialsItem()->label(), attributesOwnershipBox);
-    preserveDevices->setObjectName(QStringLiteral("kcfg_PreserveDevicesAndSpecials"));
-
-    attributesOwnershipBoxLayout->addWidget(preserveDevices, 2, 1);
-
-    QCheckBox *preserveTimes = new QCheckBox(Smb4KSettings::self()->preserveTimesItem()->label(), attributesOwnershipBox);
-    preserveTimes->setObjectName(QStringLiteral("kcfg_PreserveTimes"));
-
-    attributesOwnershipBoxLayout->addWidget(preserveTimes, 3, 0);
-
-    QCheckBox *omitDirectoriesTimes = new QCheckBox(Smb4KSettings::self()->omitDirectoryTimesItem()->label(), attributesOwnershipBox);
-    omitDirectoriesTimes->setObjectName(QStringLiteral("kcfg_OmitDirectoryTimes"));
-
-    attributesOwnershipBoxLayout->addWidget(omitDirectoriesTimes, 3, 1);
-
-    QCheckBox *preserveOwner = new QCheckBox(Smb4KSettings::self()->preserveOwnerItem()->label(), attributesOwnershipBox);
-    preserveOwner->setObjectName(QStringLiteral("kcfg_PreserveOwner"));
-
-    attributesOwnershipBoxLayout->addWidget(preserveOwner, 4, 0);
-
-    QCheckBox *preserveGroup = new QCheckBox(Smb4KSettings::self()->preserveGroupItem()->label(), attributesOwnershipBox);
-    preserveGroup->setObjectName(QStringLiteral("kcfg_PreserveGroup"));
-
-    attributesOwnershipBoxLayout->addWidget(preserveGroup, 4, 1);
-
-    fileHandlingTabLayout->addWidget(attributesOwnershipBox);
     fileHandlingTabLayout->addStretch(100);
 
     addTab(fileHandlingTab, i18n("File Handling"));
+    
+    // 
+    // 'File Attributes and Ownership' tab
+    // 
+    QWidget *attributesAndOwnershipTab = new QWidget(this);
+    QVBoxLayout *attributesAndOwnershipTabLayout = new QVBoxLayout(attributesAndOwnershipTab);
+    
+    QGroupBox *attributesBox = new QGroupBox(i18n("File Attributes"), attributesAndOwnershipTab);
+    QGridLayout *attributesBoxLayout = new QGridLayout(attributesBox);
+
+    QCheckBox *preservePermissions = new QCheckBox(Smb4KSettings::self()->preservePermissionsItem()->label(), attributesBox);
+    preservePermissions->setObjectName(QStringLiteral("kcfg_PreservePermissions"));
+
+    attributesBoxLayout->addWidget(preservePermissions, 0, 0);
+    
+    QCheckBox *preserveACLs = new QCheckBox(Smb4KSettings::self()->preserveACLsItem()->label(), attributesBox);
+    preserveACLs->setObjectName(QStringLiteral("kcfg_PreserveACLs"));
+    
+    attributesBoxLayout->addWidget(preserveACLs, 0, 1);
+    
+    QCheckBox *preserveExtendedArrtibutes = new QCheckBox(Smb4KSettings::self()->preserveExtendedAttributesItem()->label(), attributesBox);
+    preserveExtendedArrtibutes->setObjectName(QStringLiteral("kcfg_PreserveExtendedAttributes"));
+    
+    attributesBoxLayout->addWidget(preserveExtendedArrtibutes, 1, 0);
+    
+    QCheckBox *preserveAccessTimes = new QCheckBox(Smb4KSettings::self()->preserveAccessTimesItem()->label(), attributesBox);
+    preserveAccessTimes->setObjectName(QStringLiteral("kcfg_PreserveAccessTimes"));
+    
+    attributesBoxLayout->addWidget(preserveAccessTimes, 1, 1);
+    
+    QCheckBox *preserveCreateTimes = new QCheckBox(Smb4KSettings::self()->preserveCreateTimesItem()->label(), attributesBox);
+    preserveCreateTimes->setObjectName(QStringLiteral("kcfg_PreserveCreateTimes"));
+    
+    attributesBoxLayout->addWidget(preserveCreateTimes, 2, 0);
+
+    QCheckBox *preserveDevices = new QCheckBox(Smb4KSettings::self()->preserveDevicesAndSpecialsItem()->label(), attributesBox);
+    preserveDevices->setObjectName(QStringLiteral("kcfg_PreserveDevicesAndSpecials"));
+
+    attributesBoxLayout->addWidget(preserveDevices, 2, 1);
+
+    QCheckBox *preserveTimes = new QCheckBox(Smb4KSettings::self()->preserveTimesItem()->label(), attributesBox);
+    preserveTimes->setObjectName(QStringLiteral("kcfg_PreserveTimes"));
+
+    attributesBoxLayout->addWidget(preserveTimes, 3, 0);
+
+    QCheckBox *omitDirectoriesTimes = new QCheckBox(Smb4KSettings::self()->omitDirectoryTimesItem()->label(), attributesBox);
+    omitDirectoriesTimes->setObjectName(QStringLiteral("kcfg_OmitDirectoryTimes"));
+
+    attributesBoxLayout->addWidget(omitDirectoriesTimes, 3, 1);
+    
+    attributesAndOwnershipTabLayout->addWidget(attributesBox);
+
+    QGroupBox *ownershipBox = new QGroupBox(i18n("Ownership"), attributesAndOwnershipTab);
+    QGridLayout *ownershipBoxLayout = new QGridLayout(ownershipBox);    
+    
+    QCheckBox *preserveOwner = new QCheckBox(Smb4KSettings::self()->preserveOwnerItem()->label(), ownershipBox);
+    preserveOwner->setObjectName(QStringLiteral("kcfg_PreserveOwner"));
+
+    ownershipBoxLayout->addWidget(preserveOwner, 1, 0);
+
+    QCheckBox *preserveGroup = new QCheckBox(Smb4KSettings::self()->preserveGroupItem()->label(), ownershipBox);
+    preserveGroup->setObjectName(QStringLiteral("kcfg_PreserveGroup"));
+
+    ownershipBoxLayout->addWidget(preserveGroup, 1, 1);
+
+    attributesAndOwnershipTabLayout->addWidget(ownershipBox);
+    attributesAndOwnershipTabLayout->addStretch(100);
+    
+    addTab(attributesAndOwnershipTab, i18n("File Attributes && Ownership"));
 
     //
     // 'File Transfer' tab
@@ -327,7 +340,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     QSpinBox *minTransferSize = new QSpinBox(filesBox);
     minTransferSize->setObjectName(QStringLiteral("kcfg_MinimalTransferSize"));
-    minTransferSize->setSuffix(i18n(" KiB"));
+    minTransferSize->setSuffix(i18n(" kB"));
 
     filesBoxLayout->addWidget(minTransferSize, 0, 1);
 
@@ -338,7 +351,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     QSpinBox *maxTransferSize = new QSpinBox(filesBox);
     maxTransferSize->setObjectName(QStringLiteral("kcfg_MaximalTransferSize"));
-    maxTransferSize->setSuffix(i18n(" KiB"));
+    maxTransferSize->setSuffix(i18n(" kB"));
 
     filesBoxLayout->addWidget(maxTransferSize, 1, 1);
 
@@ -360,8 +373,8 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     transferTabLayout->addWidget(filesBox);
 
-    // Miscellaneous
-    QGroupBox *miscellaneousBox = new QGroupBox(transferTab);
+    // Restrictions
+    QGroupBox *miscellaneousBox = new QGroupBox(i18n("Miscellaneous"), transferTab);
     QGridLayout *miscellaneousBoxLayout = new QGridLayout(miscellaneousBox);
 
     QCheckBox *bandwidthLimitButton = new QCheckBox(Smb4KSettings::self()->useBandwidthLimitItem()->label(), miscellaneousBox);
@@ -371,7 +384,7 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
 
     QSpinBox *bandwidthLimit = new QSpinBox(miscellaneousBox);
     bandwidthLimit->setObjectName(QStringLiteral("kcfg_BandwidthLimit"));
-    bandwidthLimit->setSuffix(i18n(" KiB/s"));
+    bandwidthLimit->setSuffix(i18n(" kB/s"));
 
     miscellaneousBoxLayout->addWidget(bandwidthLimit, 0, 1);
 
