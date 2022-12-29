@@ -3320,7 +3320,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>-a</option>/<option>--archive</option>, same as <option>-rlptgoD</option> (no <option>-A</option>, <option>-X</option>, <option>-U</option>, <option>-N</option>, <option>-H</option>)</para>
-              <para>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option>-a</option> does not preserve hardlinks (<option>-H</option>), access control lists (ACLs, <option>-A</option>), extended attributes (xattrs, <option>-X</option>), access (use) times (<option>-U</option>) nor crtimes (<option>-N</option>). You must separately specify these options. The only exception to the above equivalence is when <option>--files-from</option> is specified, in which case <option>-r</option> is not implied.</para>
+              <para>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option>-a</option> does not preserve hardlinks (<option>-H</option>), access control lists (ACLs, <option>-A</option>), extended attributes (xattrs, <option>-X</option>), access (use) times (<option>-U</option>) nor create times (<option>-N</option>). You must separately specify these options. The only exception to the above equivalence is when <option>--files-from</option> is specified, in which case <option>-r</option> is not implied.</para>
               <para>In case you do not want to run <application>rsync</application> in archive mode, choose the appropriate arguments in the settings yourself.</para>
               <para>Default: selected</para>
             </listitem>
@@ -3370,8 +3370,7 @@ ntlm auth = yes
       </sect3>
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
-        <title>Backup</title>
-
+        <title>Backups</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -3574,10 +3573,12 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+    </sect2>
 
-      <sect3 id="configuration_page_synchronization_file_handling_perms">
-        <title>Permissions, &etc;</title>
-
+    <sect2 id="configuration_page_synchronization_attributes_ownership">
+      <title>File Attributes &amp; Ownership</title>
+      <sect3 id="configuration_page_synchronization_attributes_ownership_attributes">
+        <title>File Attributes</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -3631,26 +3632,6 @@ ntlm auth = yes
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Preserve owner</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-o</option>/<option>--owner</option></para>
-              <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the owner of the destination file to be the same as the one of the source file. By default, the preservation is done by name, but may fall back to using the ID number in some circumstances (see the <option>--numeric-ids</option> option for a full discussion). This option has no effect if the receiving <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is not run as the super user and <option>--super</option> is not specified.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice><guibutton>Preserve group</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-g</option>/<option>--group</option></para>
-              <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the group of the destination file to be the same as the on of the source file. If the receiving program is not running as the super-user (or with the <option>--no-super</option> option), only groups that the receiver is a member of will be preserved.</para>
-              <para>Default: not selected</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
               <menuchoice><guibutton>Preserve device and special files</guibutton></menuchoice>
             </term>
             <listitem>
@@ -3681,6 +3662,32 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+      
+      <sect3 id="configuration_page_synchronization_attributes_ownership_ownership">
+        <title>Ownership</title>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preserve owner</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-o</option>/<option>--owner</option></para>
+              <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the owner of the destination file to be the same as the one of the source file. By default, the preservation is done by name, but may fall back to using the ID number in some circumstances (see the <option>--numeric-ids</option> option for a full discussion). This option has no effect if the receiving <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> is not run as the super user and <option>--super</option> is not specified.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Preserve group</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-g</option>/<option>--group</option></para>
+              <para>This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the group of the destination file to be the same as the on of the source file. If the receiving program is not running as the super-user (or with the <option>--no-super</option> option), only groups that the receiver is a member of will be preserved.</para>
+              <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
 
 <!-- 
@@ -3689,10 +3696,8 @@ ntlm auth = yes
 
     <sect2 id="configuration_page_synchronization_file_transfer">
       <title>File Transfer</title>
-
       <sect3 id="configuration_page_synchronization_file_transfer_compression">
         <title>Compression</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -3709,7 +3714,9 @@ ntlm auth = yes
               <menuchoice><guibutton>Set compression level</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Explicitly set the compression level to use (--compress-level=NUM). If NUM is non-zero, the --compress argument is implied.</para>
+              <para>Option: <option>--compress-level=NUM</option></para>
+              <para>Explicitly set the compression level to use. If NUM is non-zero, the <option>--compress</option> argument is implied.</para>
+              <para>Default: not selected; NUM: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3717,7 +3724,9 @@ ntlm auth = yes
               <menuchoice><guibutton>Skip compression for following file suffixes</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Overwrite the list of file suffixes that will not be compressed (--skip-compress=LIST). The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manual page of rsync.</para>
+              <para>Option: <option>--skip-compress=LIST</option></para>
+              <para>Overwrite the list of file suffixes that will not be compressed. The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manual page of rsync.</para>
+              <para>Default: not selected; LIST: empty</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3725,7 +3734,6 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_file_transfer_files">
         <title>Files</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -3772,7 +3780,6 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
         <title>Miscellaneous</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -3781,7 +3788,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>--bwlimit=RATE</option></para>
               <para>Set the maximum data transfer rate in kilobytes per second.</para>
-              <para>Default: not selected; RATE: 0 KiB/s</para>
+              <para>Default: not selected; RATE: 0 kB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
