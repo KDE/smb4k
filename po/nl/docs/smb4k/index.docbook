@@ -3732,8 +3732,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Standaard: niet geselecteerd / <guimenuitem
->lezen-schrijven</guimenuitem
+>Default: not selected; <guimenuitem
+>read-write</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4026,8 +4026,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Standaard: niet geselecteerd / <guimenuitem
->standaard</guimenuitem
+>Default: not selected; <guimenuitem
+>default</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4058,7 +4058,7 @@ ntlm auth = yes
 ></link
 >.</para>
               <para
->Standaard: niet geselecteerd / 445</para>
+>Default: not selected; port 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4099,7 +4099,7 @@ ntlm auth = yes
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd / uw UID</para>
+>Default: selected; your UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4115,7 +4115,7 @@ ntlm auth = yes
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd / uw GID</para>
+>Default: selected; your GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4127,7 +4127,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus (file_mode), moet u de manpagina's <ulink url="man:/mount"
+>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4135,7 +4135,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> en <ulink url="man:/umask"
+> and <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4143,11 +4143,11 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> lezen.</para>
+> manual pages.</para>
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd / 0755</para>
+>Default: selected; 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4159,7 +4159,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over het mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount"
+>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4167,7 +4167,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> en <ulink url="man:/umask"
+> and <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4175,11 +4175,11 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> lezen.</para>
+> manual pages.</para>
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd / 0755</para>
+>Default: selected; 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4369,9 +4369,9 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> het SMBv2.002 protocol zal gebruiken. Dit was initieel geïntroduceerd in Windows Vista Service Pack 1 en Windows Server 2008.</para>
+> het SMBv2.002 protocol zal gebruiken. Dit was initieel geïntroduceerd in &Microsoft; &Windows; Vista Service Pack 1 en &Windows; Server 2008.</para>
                   <para
->Merk op dat de eerste release van Windows Vista een licht verschillend dialect (2.000) gebruikte die niet wordt ondersteund.</para>
+>Merk op dat de eerste release van &Microsoft; &Windows; Vista een licht verschillend dialect (2.000) gebruikte die niet wordt ondersteund.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4430,7 +4430,7 @@ ntlm auth = yes
 >De optie <option
 >vers=3.0.2</option
 > of <option
->vers=3.11</option
+>vers=3.02</option
 > als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4439,7 +4439,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> het SMBv3.1.1 protocol zal gebruiken, dat is geïntroduceerd in &Windows; Server 2016.</para>
+> het SMBv3.0.2 protocol zal gebruiken, dat is geïntroduceerd in &Microsoft; &Windows; 8.1 en &Windows; Server 2012R2.</para>
                 </listitem>
               </varlistentry>
               
@@ -4455,7 +4455,7 @@ ntlm auth = yes
 >De optie <option
 >vers=3.1.1</option
 > of <option
->vers=3.02</option
+>vers=3.11</option
 > als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4464,7 +4464,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> het SMBv3.0.2 protocol zal gebruiken, dat is geïntroduceerd in Microsoft Windows 8.1 en Windows Server 2012R2.</para>
+> het SMBv3.1.1 protocol zal gebruiken, dat is geïntroduceerd in &Microsoft; &Windows; Server 2016.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4513,8 +4513,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: niet geselecteerd / <guibutton
->standaard (onderhandel de hoogste versie)</guibutton
+>Default: not selected; <guibutton
+>default (Negotiate the highest version)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4599,8 +4599,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: niet geselecteerd / <guibutton
->Volg strikt het &CIFS;/SMB2 protocol</guibutton
+>Default: not selected; <guibutton
+>Follow the &CIFS;/SMB2 protocol strictly</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4817,8 +4817,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: niet geselecteerd / <guibutton
->NTLMSSP-protocol</guibutton
+>Default: not selected; <guibutton
+>NTLMSSP protocol</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4908,7 +4908,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus, moet u de manpagina's <ulink url="man:/mount_smbfs"
+>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode, you should read the <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4916,7 +4916,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> en <ulink url="man:/umask"
+> and <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4924,7 +4924,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> lezen.</para>
+> manual pages.</para>
               <para
 >Standaard: 0755</para>
             </listitem>
@@ -4938,7 +4938,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount_smbfs"
+>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4946,7 +4946,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> en <ulink url="man:/umask"
+> and <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4954,7 +4954,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> lezen.</para>
+> manual pages.</para>
               <para
 >Standaard: 0755</para>
             </listitem>
@@ -5749,7 +5749,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->De login namen en wachtwoorden worden opgeslagen in een submap van de huidige netwerk portefeuille genaamd <filename role="directory"
+>De gebruikersnamen en wachtwoorden worden opgeslagen in een submap van de huidige netwerk portefeuille genaamd <filename role="directory"
 >Smb4K</filename
 > (standaard: "kdewallet"). Het voordeel van deze methode is, dat de authenticatie data permanent en versleuteld op uw harde schijf is opgeslagen. U hoeft het maar een keer op te geven en de volgende keer dat het nodig is, zal &smb4k; het in de portefeuille opzoeken. Als u deze optie uitschakelt, dan zal de authenticatie data helemaal niet worden opgeslagen.</para>
             <para
@@ -5796,21 +5796,21 @@ ntlm auth = yes
 >Items in portefeuille</title>
       
       <para
->In deze bewerker kunt u items in de portefeuille wijzigen en verwijderen. Voordat u ze kunt bewerken, moeten ze geladen worden uit de portefeuille door op de knop <guibutton
->Laden</guibutton
-> te drukken. De lijst met items verschijnt dan in de linker lijstweergave. Een item kan bewerkt worden door het te selecteren en te klikken op de knop <guibutton
->Details</guibutton
-> rechtsonder. Als alternatief kunt u gewoon op het item rechts klikken en het item <guimenuitem
->Bewerken</guimenuitem
-> in het verschijnende menu kiezen. De details worden dan getoond en kunnen gewijzigd worden.</para>
+>In the editor you can change or delete existing wallet entries. However, before you can edit them, they have to be loaded from the digital wallet by pressing the <guibutton
+>Load</guibutton
+> button. The wallet entries then appear in the list view. An entry can be edited either by selecting it and clicking the <guibutton
+>Edit</guibutton
+> button or by double-clicking. A password dialog with the stored user name and password is shown and you can modify the credentials.</para>
       <para
->Een item kan verwijderd worden door <guimenuitem
->Verwijderen</guimenuitem
-> te selecteren in het verschijnende menu. U kunt alle items in de portefeuille in een keer verwijderen door het item <guimenuitem
->Lijst wissen</guimenuitem
-> te selecteren.</para>
+>An entry can be removed by selecting it and clicking the <guibutton
+>Remove</guibutton
+> button. All wallet entries can be removed at once by clicking the <guibutton
+>Clear</guibutton
+> button. With the <guibutton
+>Reset</guibutton
+> button you can restore the initial state.</para>
       <para
->Als u klaar bent met bewerken, kunt u de wijzigingen in de portefeuille vastleggen door te drukken op de knop <guibutton
+>Als u klaar bent met bewerken, kunt u de wijzigingen in de portefeuille vastleggen door te klikken op <guibutton
 >Opslaan</guibutton
 >.</para>
     </sect2>
@@ -5868,7 +5868,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Standaard bestemming</title>
+>Synchronization Directory</title>
 
         <variablelist>
           <varlistentry>
@@ -5918,13 +5918,21 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Optie: <option
+>Option: <option
 >-a</option
 >/<option
 >--archive</option
->, hetzelfde als <option
+>, same as <option
 >-rlptgoD</option
 > (no <option
+>-A</option
+>, <option
+>-X</option
+>, <option
+>-U</option
+>, <option
+>-N</option
+>, <option
 >-H</option
 >)</para>
               <para
@@ -5933,6 +5941,10 @@ ntlm auth = yes
 > geen hardlinks bewaart, omdat het opzoeken van meervoudig verknoopte bestanden tijdrovend is. U moet <option
 >-H</option
 > separaat opgeven.</para>
+              <para
+>In case you do not want to run <application
+>rsync</application
+> in archive mode, choose the appropriate arguments in the settings yourself.</para>
               <para
 >Standaard: geselecteerd</para>
             </listitem>
@@ -5954,7 +5966,7 @@ ntlm auth = yes
               <para
 >Volg mappenstructuur.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6190,7 +6202,7 @@ ntlm auth = yes
 ></ulink
 > om alle bestanden in de doelmachine over te slaan die een wijzigingstijd hebben die nieuwer is dan die in in de bronmachine. (als een bestaand doelbestand een wijzigingstijd heeft die gelijk is aan die van het bronbestand, dan wordt het bijgewerkt als de grootte verschillend is.)</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6456,9 +6468,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Optie: <option
->-H</option
->/<option
+>Option: <option
 >--munge-links</option
 ></para>
               <para
