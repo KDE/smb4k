@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:47+0000\n"
+"POT-Creation-Date: 2022-12-29 00:52+0000\n"
 "PO-Revision-Date: 2022-07-27 20:09+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -417,74 +417,74 @@ msgstr "Estekak"
 msgid "File Attributes && Ownership"
 msgstr "Fitxategi-atributuak eta jabetza"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
 msgid "File Handling"
 msgstr "Fitxategiak manipulatzea"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#: smb4k/smb4kconfigpagesynchronization.cpp:288
 #, kde-format
 msgid "Compression"
 msgstr "Konprimatzea"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#: smb4k/smb4kconfigpagesynchronization.cpp:320
 #, kde-format
 msgid "Files"
 msgstr "Fitxategiak"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:310
-#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#: smb4k/smb4kconfigpagesynchronization.cpp:330
+#: smb4k/smb4kconfigpagesynchronization.cpp:341
 #, kde-format
 msgid " KiB"
 msgstr " KiB"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#: smb4k/smb4kconfigpagesynchronization.cpp:374
 #, kde-format
 msgid " KiB/s"
 msgstr " KiB/s"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#: smb4k/smb4kconfigpagesynchronization.cpp:381
 #, kde-format
 msgid "File Transfer"
 msgstr "Fitxategi-transferentzia"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#: smb4k/smb4kconfigpagesynchronization.cpp:390
 #, kde-format
 msgid "Files && Directories"
 msgstr "Fitxategiak eta direktorioak"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#: smb4k/smb4kconfigpagesynchronization.cpp:436
 #, kde-format
 msgid "Restrictions"
 msgstr "Murrizketak"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#: smb4k/smb4kconfigpagesynchronization.cpp:452
 #, kde-format
 msgid "File Deletion"
 msgstr "Fitxategi ezabatzea"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#: smb4k/smb4kconfigpagesynchronization.cpp:461
 #, kde-format
 msgid "General Filtering Settings"
 msgstr "Iragazteko ezarpen orokorrak"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#: smb4k/smb4kconfigpagesynchronization.cpp:516
 #, kde-format
 msgid "Filter Rules"
 msgstr "Iragazte arauak"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#: smb4k/smb4kconfigpagesynchronization.cpp:542
 #, kde-format
 msgid "Filtering"
 msgstr "Iragaztea"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#: smb4k/smb4kconfigpagesynchronization.cpp:551
 #, kde-format
 msgid "Checksums"
 msgstr "Egiaztapen-baturak"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:562
-#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#: smb4k/smb4kconfigpagesynchronization.cpp:582
+#: smb4k/smb4kconfigpagesynchronization.cpp:598
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Beste zenbait"

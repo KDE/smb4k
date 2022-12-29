@@ -3754,8 +3754,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Omissió: no seleccionat / <guimenuitem
->lectura-escriptura</guimenuitem
+>Default: not selected; <guimenuitem
+>read-write</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4048,8 +4048,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Omissió: no seleccionat / <guimenuitem
->predeterminat</guimenuitem
+>Default: not selected; <guimenuitem
+>default</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4080,7 +4080,7 @@ ntlm auth = yes
 ></link
 >.</para>
               <para
->Omissió: no seleccionat / 445</para>
+>Default: not selected; port 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4121,7 +4121,7 @@ ntlm auth = yes
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat / el vostre ID</para>
+>Default: selected; your UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4137,7 +4137,7 @@ ntlm auth = yes
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat / el vostre GID</para>
+>Default: selected; your GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4149,7 +4149,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer (file_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount"
+>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4157,7 +4157,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> i <ulink url="man:/umask"
+> and <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4165,11 +4165,11 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
->.</para>
+> manual pages.</para>
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat / 0755</para>
+>Default: selected; 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4181,7 +4181,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount"
+>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4189,7 +4189,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> i <ulink url="man:/umask"
+> and <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4197,11 +4197,11 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
->.</para>
+> manual pages.</para>
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat / 0755</para>
+>Default: selected; 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4391,9 +4391,9 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilitzi el protocol SMBv2.002. Aquest es va introduir inicialment en el Windows Vista Service Pack 1 i el Windows Server 2008 de &Microsoft;.</para>
+> utilitzi el protocol SMBv2.002. Aquest es va introduir inicialment en el &Windows; Vista Service Pack 1 i el &Windows; Server 2008 de &Microsoft;.</para>
                   <para
->Cal tenir en compte que la versió inicial de Windows Vista parlava un dialecte lleugerament diferent (2.000) que no està admès.</para>
+>Cal tenir en compte que la versió inicial de &Windows; Vista de &Microsoft; parlava un dialecte lleugerament diferent (2.000) que no està admès.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4452,7 +4452,7 @@ ntlm auth = yes
 >S'utilitzarà l'argument <option
 >vers=3.0.2</option
 > o <option
->vers=3.11</option
+>vers=3.02</option
 > de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4461,7 +4461,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilitzi el protocol SMBv3.1.1 que es va introduir inicialment en el &Windows; Server 2016 de &Microsoft;.</para>
+> utilitzi el protocol SMBv3.0.2 que es va introduir inicialment en el &Windows; 8.1 i el &Windows; Server 2012R2 de &Microsoft;.</para>
                 </listitem>
               </varlistentry>
               
@@ -4477,7 +4477,7 @@ ntlm auth = yes
 >S'utilitzarà l'argument <option
 >vers=3.1.1</option
 > o <option
->vers=3.02</option
+>vers=3.1.1</option
 > de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4486,7 +4486,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilitzi el protocol SMBv3.0.2 que es va introduir inicialment en el Windows 8.1 i el Windows Server 2012R2 de &Microsoft;.</para>
+> utilitzi el protocol SMBv3.1.1 que es va introduir inicialment en el &Windows; Server 2016 de &Microsoft;.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4535,8 +4535,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Omissió: no seleccionat / <guibutton
->predeterminat (Negocia la versió més alta)</guibutton
+>Default: not selected; <guibutton
+>default (Negotiate the highest version)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4621,8 +4621,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Omissió: no seleccionat / <guibutton
->Segueix estrictament el protocol &CIFS;/SMB2</guibutton
+>Default: not selected; <guibutton
+>Follow the &CIFS;/SMB2 protocol strictly</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4839,8 +4839,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Omissió: no seleccionat / <guibutton
->Protocol NTLMSSP</guibutton
+>Default: not selected; <guibutton
+>NTLMSSP protocol</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4930,7 +4930,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer, haureu de llegir les pàgines de manual <ulink url="man:/mount_smbfs"
+>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode, you should read the <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4938,7 +4938,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> i <ulink url="man:/umask"
+> and <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4946,7 +4946,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
->.</para>
+> manual pages.</para>
               <para
 >Omissió: 0755</para>
             </listitem>
@@ -4960,7 +4960,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount_smbfs"
+>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4968,7 +4968,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> i <ulink url="man:/umask"
+> and <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4976,7 +4976,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
->.</para>
+> manual pages.</para>
               <para
 >Omissió: 0755</para>
             </listitem>
@@ -5771,7 +5771,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Els noms d'inici de sessió i les contrasenyes s'emmagatzemen en una subcarpeta anomenada <filename role="directory"
+>Els noms d'usuari d'inici de sessió i les contrasenyes s'emmagatzemen en una subcarpeta anomenada <filename role="directory"
 >Smb4K</filename
 > de la cartera de la xarxa actual (predeterminat: «kdewallet»). L'avantatge d'aquest mètode és que les dades d'autenticació s'emmagatzemen permanentment i estan encriptades al disc dur. Només haureu de proporcionar-la una vegada i la pròxima vegada que sigui necessària, el &smb4k; la llegirà a la cartera. Si desmarqueu aquesta opció, les dades d'autenticació no s'emmagatzemaran.</para>
             <para
@@ -5818,21 +5818,21 @@ ntlm auth = yes
 >Entrades de la cartera</title>
       
       <para
->En aquest editor podreu modificar o eliminar les entrades de la cartera existents. Abans de poder-les editar, haureu de carregar-les des de la cartera prement el botó <guibutton
->Carrega</guibutton
->. La llista de les entrades apareixerà a la vista de llista de l'esquerra. Es pot editar una entrada seleccionant-la i marcant el botó <guibutton
->Detalls</guibutton
-> de la dreta. També podeu senzillament fer clic dret sobre l'entrada i triar l'element <guimenuitem
->Edita</guimenuitem
-> al menú emergent. Es mostraran els detalls i es poden modificar.</para>
+>In the editor you can change or delete existing wallet entries. However, before you can edit them, they have to be loaded from the digital wallet by pressing the <guibutton
+>Load</guibutton
+> button. The wallet entries then appear in the list view. An entry can be edited either by selecting it and clicking the <guibutton
+>Edit</guibutton
+> button or by double-clicking. A password dialog with the stored user name and password is shown and you can modify the credentials.</para>
       <para
->Es pot eliminar una entrada seleccionant l'element <guimenuitem
->Elimina</guimenuitem
-> des del menú emergent. Totes les entrades de la cartera es poden eliminar alhora triant l'element <guimenuitem
->Neteja la llista</guimenuitem
->.</para>
+>An entry can be removed by selecting it and clicking the <guibutton
+>Remove</guibutton
+> button. All wallet entries can be removed at once by clicking the <guibutton
+>Clear</guibutton
+> button. With the <guibutton
+>Reset</guibutton
+> button you can restore the initial state.</para>
       <para
->Un cop hàgiu finalitzat l'edició, es podran de cometre els canvis a la cartera prement <guibutton
+>Un cop hàgiu finalitzat l'edició, es podran de cometre els canvis a la cartera fent clic a <guibutton
 >Desa</guibutton
 >.</para>
     </sect2>
@@ -5890,7 +5890,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Destinació predeterminada</title>
+>Synchronization Directory</title>
 
         <variablelist>
           <varlistentry>
@@ -5938,13 +5938,21 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opció: <option
+>Option: <option
 >-a</option
 >/<option
 >--archive</option
->, el mateix que <option
+>, same as <option
 >-rlptgoD</option
 > (no <option
+>-A</option
+>, <option
+>-X</option
+>, <option
+>-U</option
+>, <option
+>-N</option
+>, <option
 >-H</option
 >)</para>
               <para
@@ -5953,6 +5961,10 @@ ntlm auth = yes
 > no conservarà els enllaços durs, ja que trobar fitxers amb múltiples enllaços és costós. Haureu d'especificar per separat l'argument <option
 >-H</option
 >.</para>
+              <para
+>In case you do not want to run <application
+>rsync</application
+> in archive mode, choose the appropriate arguments in the settings yourself.</para>
               <para
 >Omissió: seleccionada</para>
             </listitem>
@@ -5974,7 +5986,7 @@ ntlm auth = yes
               <para
 >Recursiu en els subdirectoris.</para>
               <para
->Omissió: seleccionada</para>
+>Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6210,7 +6222,7 @@ ntlm auth = yes
 ></ulink
 > ometi qualsevol fitxer que existeixi a la destinació i que tingui un temps de modificació més recent que el del fitxer d'origen. (Si un fitxer de destinació existent té un temps de modificació igual que el del fitxer d'origen, s'actualitzarà si les mides són diferents).</para>
               <para
->Omissió: seleccionada</para>
+>Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6476,9 +6488,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opció: <option
->-H</option
->/<option
+>Option: <option
 >--munge-links</option
 ></para>
               <para

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:47+0000\n"
+"POT-Creation-Date: 2022-12-29 00:52+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -424,80 +424,80 @@ msgstr "Σύνδεσμοι"
 msgid "File Attributes && Ownership"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:259
+#: smb4k/smb4kconfigpagesynchronization.cpp:279
 #, kde-format
 msgid "File Handling"
 msgstr "Χειρισμός αρχείων"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#: smb4k/smb4kconfigpagesynchronization.cpp:288
 #, fuzzy, kde-format
 #| msgid "Compression"
 msgid "Compression"
 msgstr "Συμπίεση"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:300
+#: smb4k/smb4kconfigpagesynchronization.cpp:320
 #, fuzzy, kde-format
 #| msgid "Files"
 msgid "Files"
 msgstr "Αρχεία"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:310
-#: smb4k/smb4kconfigpagesynchronization.cpp:321
+#: smb4k/smb4kconfigpagesynchronization.cpp:330
+#: smb4k/smb4kconfigpagesynchronization.cpp:341
 #, kde-format
 msgid " KiB"
 msgstr "KiB"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:354
+#: smb4k/smb4kconfigpagesynchronization.cpp:374
 #, kde-format
 msgid " KiB/s"
 msgstr "KiB/s"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:361
+#: smb4k/smb4kconfigpagesynchronization.cpp:381
 #, kde-format
 msgid "File Transfer"
 msgstr "Μεταφορά αρχείου"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:370
+#: smb4k/smb4kconfigpagesynchronization.cpp:390
 #, fuzzy, kde-format
 #| msgid "Files && Directories"
 msgid "Files && Directories"
 msgstr "Αρχεία && κατάλογοι"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:416
+#: smb4k/smb4kconfigpagesynchronization.cpp:436
 #, fuzzy, kde-format
 #| msgid "Restrictions"
 msgid "Restrictions"
 msgstr "Περιορισμοί"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:432
+#: smb4k/smb4kconfigpagesynchronization.cpp:452
 #, kde-format
 msgid "File Deletion"
 msgstr "Διαγραφή αρχείου"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:441
+#: smb4k/smb4kconfigpagesynchronization.cpp:461
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "General Filtering Settings"
 msgstr "Γενικές ρυθμίσεις"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:496
+#: smb4k/smb4kconfigpagesynchronization.cpp:516
 #, kde-format
 msgid "Filter Rules"
 msgstr "Κανόνες φιλτραρίσματος"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:522
+#: smb4k/smb4kconfigpagesynchronization.cpp:542
 #, kde-format
 msgid "Filtering"
 msgstr "Φιλτράρισμα"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:531
+#: smb4k/smb4kconfigpagesynchronization.cpp:551
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
 msgstr "Αθροίσματα ελέγχου"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:562
-#: smb4k/smb4kconfigpagesynchronization.cpp:578
+#: smb4k/smb4kconfigpagesynchronization.cpp:582
+#: smb4k/smb4kconfigpagesynchronization.cpp:598
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Διάφορα"
