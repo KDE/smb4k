@@ -280,11 +280,11 @@ void Smb4KSyncJob::slotStartSynchronization()
     }
 
     if (Smb4KSettings::self()->useMaximalTransferSize()) {
-        command << QStringLiteral("--max-size=") + QString::number(Smb4KSettings::self()->maximalTransferSize()) + QStringLiteral("K");
+        command << QStringLiteral("--max-size=") + QString::number(Smb4KSettings::self()->maximalTransferSize()) + QStringLiteral("kB");
     }
 
     if (Smb4KSettings::self()->useMinimalTransferSize()) {
-        command << QStringLiteral("--min-size=") + QString::number(Smb4KSettings::self()->minimalTransferSize()) + QStringLiteral("K");
+        command << QStringLiteral("--min-size=") + QString::number(Smb4KSettings::self()->minimalTransferSize()) + QStringLiteral("kB");
     }
 
     if (Smb4KSettings::keepPartial()) {
@@ -296,7 +296,7 @@ void Smb4KSyncJob::slotStartSynchronization()
     }
 
     if (Smb4KSettings::useBandwidthLimit()) {
-        command << QStringLiteral("--bwlimit=") + QString::number(Smb4KSettings::bandwidthLimit()) + QStringLiteral("K");
+        command << QStringLiteral("--bwlimit=") + QString::number(Smb4KSettings::bandwidthLimit()) + QStringLiteral("kB");
     }
 
     //
