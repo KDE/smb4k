@@ -156,6 +156,17 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL + Qt::Key_B));
 
     //
+    // Add custom options action
+    //
+    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("Add &Custom Options"), this);
+    customAction->setEnabled(false);
+
+    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomOptions(bool)));
+
+    m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
+    m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL + Qt::Key_C));
+
+    //
     // Mount dialog action
     //
     QAction *manualAction =
@@ -185,17 +196,6 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
 
     m_actionCollection->addAction(QStringLiteral("authentication_action"), authAction);
     m_actionCollection->setDefaultShortcut(authAction, QKeySequence(Qt::CTRL + Qt::Key_T));
-
-    //
-    // Custom options action
-    //
-    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("&Custom Options"), this);
-    customAction->setEnabled(false);
-
-    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotCustomOptions(bool)));
-
-    m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
-    m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL + Qt::Key_C));
 
     //
     // Preview action
@@ -373,79 +373,9 @@ void Smb4KNetworkBrowserDockWidget::slotItemActivated(QTreeWidgetItem *item, int
 
 void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
 {
-    //
-    // Get the selected item
-    //
-    QList<QTreeWidgetItem *> items = m_networkBrowser->selectedItems();
+    QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
 
-    //
-    // Enable/disable and/or adjust the actions depending of the number
-    // of selected items and their type
-    //
-    if (items.size() == 1) {
-        Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>(items.first());
-
-        if (browserItem) {
-            switch (browserItem->type()) {
-            case Host: {
-                //
-                // Adjust the actions
-                //
-                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Compute&r"));
-                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
-                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(true);
-                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
-                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(false);
-                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
-                static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
-                m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
-                break;
-            }
-            case Share: {
-                //
-                // Adjust the actions
-                //
-                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Compute&r"));
-                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(!browserItem->shareItem()->isPrinter());
-                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(true);
-                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(!browserItem->shareItem()->isPrinter());
-                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(!browserItem->shareItem()->isPrinter());
-                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(browserItem->shareItem()->isPrinter());
-
-                if (!browserItem->shareItem()->isPrinter()) {
-                    if (!browserItem->shareItem()->isMounted() || (browserItem->shareItem()->isMounted() && browserItem->shareItem()->isForeign())) {
-                        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
-                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
-                    } else if (browserItem->shareItem()->isMounted() && !browserItem->shareItem()->isForeign()) {
-                        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(false);
-                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
-                    } else {
-                        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
-                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
-                    }
-                } else {
-                    static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
-                    m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
-                }
-                break;
-            }
-            default: {
-                //
-                // Adjust the actions
-                //
-                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Wo&rkgroup"));
-                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
-                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(false);
-                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(false);
-                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(false);
-                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
-                static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
-                m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
-                break;
-            }
-            }
-        }
-    } else if (items.size() > 1) {
+    if (selectedItems.size() > 1) {
         //
         // In this case there are only shares selected, because all other items
         // are automatically deselected in extended selection mode.
@@ -454,41 +384,95 @@ void Smb4KNetworkBrowserDockWidget::slotItemSelectionChanged()
         // the number of unmounted shares. If that is identical with the items.size(),
         // it will mount the items, otherwise it will unmount them.
         //
-        int unmountedShares = items.size();
+        // The print action will be enabled when at least one printer was marked.
+        //
+        int unmountedShares = selectedItems.size();
+        int printerShares = 0;
 
-        for (QTreeWidgetItem *item : qAsConst(items)) {
-            Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>(item);
+        for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+            Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
-            if (browserItem && browserItem->shareItem()->isMounted() && !browserItem->shareItem()->isForeign()) {
-                //
-                // Subtract shares mounted by the user
-                //
-                unmountedShares--;
+            if (item) {
+                if (item->shareItem()->isMounted() && !item->shareItem()->isForeign()) {
+                    unmountedShares--;
+                }
+
+                if (item->shareItem()->isPrinter()) {
+                    printerShares++;
+                }
             }
         }
 
-        //
-        // Adjust the actions
-        //
         qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Netwo&rk"));
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
-        m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(false);
-        m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(false);
+        m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(true);
+        m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
         m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(true);
-        m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
-        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(unmountedShares == items.size());
+        m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(printerShares != 0);
+        qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(unmountedShares == selectedItems.size());
         m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
+    } else if (selectedItems.size() == 1) {
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItems.first());
+
+        if (item) {
+            switch (item->type()) {
+            case Host: {
+                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Compute&r"));
+                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(true);
+                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
+                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
+                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
+                break;
+            }
+            case Share: {
+                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Compute&r"));
+                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(!item->shareItem()->isPrinter());
+                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(true);
+                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(!item->shareItem()->isPrinter());
+                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(!item->shareItem()->isPrinter());
+                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(item->shareItem()->isPrinter());
+
+                if (!item->shareItem()->isPrinter()) {
+                    if (!item->shareItem()->isMounted() || item->shareItem()->isForeign()) {
+                        qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
+                    } else if (item->shareItem()->isMounted() && !item->shareItem()->isForeign()) {
+                        qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(false);
+                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(true);
+                    } else {
+                        qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                        m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
+                    }
+                } else {
+                    qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                    m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
+                }
+                break;
+            }
+            default: {
+                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Wo&rkgroup"));
+                m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(false);
+                m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
+                qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+                m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
+                break;
+            }
+            }
+        }
     } else {
-        //
-        // Adjust the actions
-        //
         qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("rescan_abort_action")))->setInactiveText(i18n("Scan Netwo&rk"));
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
         m_actionCollection->action(QStringLiteral("authentication_action"))->setEnabled(false);
         m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(false);
         m_actionCollection->action(QStringLiteral("preview_action"))->setEnabled(false);
         m_actionCollection->action(QStringLiteral("print_action"))->setEnabled(false);
-        static_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
+        qobject_cast<KDualAction *>(m_actionCollection->action(QStringLiteral("mount_action")))->setActive(true);
         m_actionCollection->action(QStringLiteral("mount_action"))->setEnabled(false);
     }
 }
@@ -780,8 +764,10 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr &host)
     }
 }
 
-void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checked*/)
+void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool checked)
 {
+    Q_UNUSED(checked);
+
     //
     // Get the Rescan/Abort action
     //
@@ -837,21 +823,22 @@ void Smb4KNetworkBrowserDockWidget::slotRescanAbortActionTriggered(bool /*checke
     }
 }
 
-void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool /*checked*/)
+void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool checked)
 {
-    QList<QTreeWidgetItem *> items = m_networkBrowser->selectedItems();
+    Q_UNUSED(checked);
+
+    QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
     QList<SharePtr> shares;
 
-    if (!items.isEmpty()) {
-        for (int i = 0; i < items.size(); ++i) {
-            Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(items.at(i));
+    if (!selectedItems.isEmpty()) {
+        for (QTreeWidgetItem *selectedItem : selectedItems) {
+            Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
             if (item && item->type() == Share && !item->shareItem()->isPrinter()) {
                 shares << item->shareItem();
             }
         }
     } else {
-        // No selected items. Just return.
         return;
     }
 
@@ -860,128 +847,30 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool /*checked*/)
     }
 }
 
-void Smb4KNetworkBrowserDockWidget::slotMountManually(bool /*checked*/)
+void Smb4KNetworkBrowserDockWidget::slotMountManually(bool checked)
 {
+    Q_UNUSED(checked);
+
     Smb4KMounter::self()->openMountDialog();
 }
 
-void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool /*checked*/)
+void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool checked)
 {
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(m_networkBrowser->currentItem());
+    Q_UNUSED(checked);
 
-    if (item) {
-        switch (item->type()) {
-        case Host: {
-            Smb4KWalletManager::self()->showPasswordDialog(item->hostItem());
-            break;
-        }
-        case Share: {
-            Smb4KWalletManager::self()->showPasswordDialog(item->shareItem());
-            break;
-        }
-        default: {
-            break;
-        }
-        }
-    }
-}
-
-void Smb4KNetworkBrowserDockWidget::slotCustomOptions(bool /*checked*/)
-{
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(m_networkBrowser->currentItem());
-
-    if (item) {
-        switch (item->type()) {
-        case Host: {
-            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->hostItem());
-            break;
-        }
-        case Share: {
-            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->shareItem());
-            break;
-        }
-        default: {
-            break;
-        }
-        }
-    }
-}
-
-void Smb4KNetworkBrowserDockWidget::slotPreview(bool /*checked*/)
-{
-    QList<QTreeWidgetItem *> items = m_networkBrowser->selectedItems();
-
-    if (!items.isEmpty()) {
-        for (int i = 0; i < items.size(); ++i) {
-            Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(items.at(i));
-
-            if (item && item->type() == Share && !item->shareItem()->isPrinter()) {
-                Smb4KClient::self()->openPreviewDialog(item->shareItem());
-            }
-        }
-    }
-}
-
-void Smb4KNetworkBrowserDockWidget::slotPrint(bool /*checked*/)
-{
-    Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(m_networkBrowser->currentItem());
-
-    if (item && item->shareItem()->isPrinter()) {
-        Smb4KClient::self()->openPrintDialog(item->shareItem());
-    }
-}
-
-void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool /*checked*/)
-{
-    //
-    // Get the selected items
-    //
     QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
 
-    if (selectedItems.size() > 1) {
-        //
-        // In the case of multiple selected network items, selectedItems()
-        // only contains shares. Thus, we do not need to test for the type.
-        // For deciding what the mount action is supposed to do, i.e. mount
-        // the (remaining) selected unmounted shares or unmounting all selected
-        // mounted shares, we use the number of unmounted shares. If that is
-        // greater than 0, we mount all shares that need to be mounted, otherwise
-        // we unmount all selected shares.
-        //
-        QList<SharePtr> unmounted, mounted;
+    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
-        for (QTreeWidgetItem *item : qAsConst(selectedItems)) {
-            Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>(item);
-
-            if (browserItem && browserItem->shareItem()->isMounted()) {
-                mounted << browserItem->shareItem();
-            } else if (browserItem && !browserItem->shareItem()->isMounted()) {
-                unmounted << browserItem->shareItem();
+        if (item) {
+            switch (item->type()) {
+            case Host: {
+                Smb4KWalletManager::self()->showPasswordDialog(item->hostItem());
+                break;
             }
-        }
-
-        if (!unmounted.empty()) {
-            // Mount the (remaining) unmounted shares.
-            Smb4KMounter::self()->mountShares(unmounted);
-        } else {
-            // Unmount all shares.
-            Smb4KMounter::self()->unmountShares(mounted, m_networkBrowser);
-        }
-    } else {
-        //
-        // If only one network item is selected, we need to test for the type
-        // of the item. Only in case of a share we need to do something.
-        //
-        Smb4KNetworkBrowserItem *browserItem = static_cast<Smb4KNetworkBrowserItem *>(selectedItems.first());
-
-        if (browserItem) {
-            switch (browserItem->type()) {
             case Share: {
-                if (!browserItem->shareItem()->isMounted()) {
-                    Smb4KMounter::self()->mountShare(browserItem->shareItem());
-                } else {
-                    Smb4KMounter::self()->unmountShare(browserItem->shareItem(), false);
-                }
+                Smb4KWalletManager::self()->showPasswordDialog(item->shareItem());
                 break;
             }
             default: {
@@ -989,6 +878,89 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool /*checked*/)
             }
             }
         }
+    }
+}
+
+void Smb4KNetworkBrowserDockWidget::slotAddCustomOptions(bool checked)
+{
+    Q_UNUSED(checked);
+
+    QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
+
+    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
+
+        if (item) {
+            switch (item->type()) {
+            case Host: {
+                Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->hostItem());
+                break;
+            }
+            case Share: {
+                Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->shareItem());
+                break;
+            }
+            default: {
+                break;
+            }
+            }
+        }
+    }
+}
+
+void Smb4KNetworkBrowserDockWidget::slotPreview(bool checked)
+{
+    Q_UNUSED(checked);
+
+    QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
+
+    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
+
+        if (item && item->type() == Share && !item->shareItem()->isPrinter()) {
+            Smb4KClient::self()->openPreviewDialog(item->shareItem());
+        }
+    }
+}
+
+void Smb4KNetworkBrowserDockWidget::slotPrint(bool checked)
+{
+    Q_UNUSED(checked);
+
+    QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
+
+    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
+
+        if (item && item->shareItem()->isPrinter()) {
+            Smb4KClient::self()->openPrintDialog(item->shareItem());
+        }
+    }
+}
+
+void Smb4KNetworkBrowserDockWidget::slotMountActionTriggered(bool checked)
+{
+    Q_UNUSED(checked);
+
+    QList<QTreeWidgetItem *> selectedItems = m_networkBrowser->selectedItems();
+    QList<SharePtr> unmountedShares, mountedShares;
+
+    for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
+        Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
+
+        if (item && item->type() == Share && !item->shareItem()->isPrinter()) {
+            if (item->shareItem()->isMounted()) {
+                mountedShares << item->shareItem();
+            } else {
+                unmountedShares << item->shareItem();
+            }
+        }
+    }
+
+    if (!mountedShares.isEmpty()) {
+        Smb4KMounter::self()->unmountShares(mountedShares);
+    } else {
+        Smb4KMounter::self()->mountShares(unmountedShares);
     }
 }
 
