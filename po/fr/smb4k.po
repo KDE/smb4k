@@ -467,7 +467,8 @@ msgstr "Fichiers"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:343
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
-#, kde-format
+#, fuzzy, kde-format
+#| msgid " kB"
 msgid " kB"
 msgstr "Kio"
 

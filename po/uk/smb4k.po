@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-30 00:52+0000\n"
-"PO-Revision-Date: 2022-07-09 08:18+0300\n"
+"PO-Revision-Date: 2022-12-30 08:57+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -427,16 +427,14 @@ msgid "File Handling"
 msgstr "Обробка файлів"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
-#, fuzzy, kde-format
-#| msgid "File Attributes:"
+#, kde-format
 msgid "File Attributes"
-msgstr "Атрибути файла:"
+msgstr "Атрибути файла"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Ownership:"
+#, kde-format
 msgid "Ownership"
-msgstr "Власність:"
+msgstr "Власність"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -457,7 +455,7 @@ msgstr "Файли"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " кБ"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:595
@@ -469,7 +467,7 @@ msgstr "Інше"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " кБ/с"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
