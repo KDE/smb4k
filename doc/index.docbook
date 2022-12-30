@@ -3321,7 +3321,7 @@ ntlm auth = yes
             <listitem>
               <para>Option: <option>-a</option>/<option>--archive</option>, same as <option>-rlptgoD</option> (no <option>-A</option>, <option>-X</option>, <option>-U</option>, <option>-N</option>, <option>-H</option>)</para>
               <para>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option>-a</option> does not preserve hardlinks (<option>-H</option>), access control lists (ACLs, <option>-A</option>), extended attributes (xattrs, <option>-X</option>), access (use) times (<option>-U</option>) nor create times (<option>-N</option>). You must separately specify these options. The only exception to the above equivalence is when <option>--files-from</option> is specified, in which case <option>-r</option> is not implied.</para>
-              <para>In case you do not want to run <application>rsync</application> in archive mode, choose the appropriate arguments in the settings yourself.</para>
+              <para>In case you do not want to run <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> in archive mode, choose the appropriate arguments in the settings yourself.</para>
               <para>Default: selected</para>
             </listitem>
           </varlistentry>
@@ -3400,7 +3400,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>--backup-dir=DIR</option></para>
-              <para>In combination with the <option>--backup</option> option, this tells rsync to store all backups in the specified folder. This is very useful for incremental backups. You can additionally specify a backup suffix using the <option>--suffix</option> option (otherwise the files backed up in the specified folder will keep  their original filenames).</para>
+              <para>In combination with the <option>--backup</option> option, this tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to store all backups in the specified folder. This is very useful for incremental backups. You can additionally specify a backup suffix using the <option>--suffix</option> option (otherwise the files backed up in the specified folder will keep  their original filenames).</para>
               <para>This option is only available if you ticked the <guilabel>Make backups</guilabel> option above.</para>
               <para>Default: not selected; DIR: <envar>$HOME</envar></para>
             </listitem>
@@ -3596,7 +3596,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>-A</option>/<option>--acls</option></para>
-              <para>Preserve access control lists. This option causes rsync to update the destination ACLs to be the same as the source ACLs. The option also implies --perms. The source and destination systems must have compatible ACL entries for this option to work properly.</para>
+              <para>Preserve access control lists. This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to update the destination ACLs to be the same as the source ACLs. The option also implies --perms. The source and destination systems must have compatible ACL entries for this option to work properly.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -3606,7 +3606,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>-X</option>/<option>--xattrs</option></para>
-              <para>Preserve extended attributes. This option causes rsync to update the destination extended attributes to be the same as the source ones.</para>
+              <para>Preserve extended attributes. This option causes <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to update the destination extended attributes to be the same as the source ones.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -3616,7 +3616,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>-U</option>/<option>--atimes</option></para>
-              <para>Preserve access times. This tells rsync to set the access (use) times of the destination files to the same value as the source files.</para>
+              <para>Preserve access times. This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the access (use) times of the destination files to the same value as the source files.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -3626,7 +3626,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>-N</option>/<option>--crtimes</option></para>
-              <para>Preserve create times. This tells rsync to set the create times (newness) of the destination files to the same value as the source files.</para>
+              <para>Preserve create times. This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to set the create times (newness) of the destination files to the same value as the source files.</para>
               <para>Default: not selected</para>
             </listitem>
           </varlistentry>
@@ -3725,7 +3725,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>--skip-compress=LIST</option></para>
-              <para>Overwrite the list of file suffixes that will not be compressed. The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manual page of rsync.</para>
+              <para>Overwrite the list of file suffixes that will not be compressed. The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the <ulink url="man:/rsync"><citerefentry><refentrytitle>manual page of rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink>.</para>
               <para>Default: not selected; LIST: empty</para>
             </listitem>
           </varlistentry>
@@ -4060,8 +4060,7 @@ ntlm auth = yes
       </sect3>
 
       <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
-        <title>General</title>
-
+        <title>Miscellaneous</title>
         <variablelist>
           <varlistentry>
             <term>
