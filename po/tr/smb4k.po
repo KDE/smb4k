@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:52+0000\n"
+"POT-Creation-Date: 2022-12-30 00:52+0000\n"
 "PO-Revision-Date: 2022-11-21 22:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -411,80 +411,93 @@ msgstr "Bağlantılar"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:223
 #, kde-format
-msgid "File Attributes && Ownership"
-msgstr "Dosya Öznitelikleri ve Sahiplik"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:279
-#, kde-format
 msgid "File Handling"
 msgstr "Dosya Kullanımı"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:288
+#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#, fuzzy, kde-format
+#| msgid "File Attributes && Ownership"
+msgid "File Attributes"
+msgstr "Dosya Öznitelikleri ve Sahiplik"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#, fuzzy, kde-format
+#| msgid "Owner:"
+msgid "Ownership"
+msgstr "Sahip:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr "Dosya Öznitelikleri ve Sahiplik"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
 msgid "Compression"
 msgstr "Sıkıştırma"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:320
+#: smb4k/smb4kconfigpagesynchronization.cpp:333
 #, kde-format
 msgid "Files"
 msgstr "Dosyalar"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:330
-#: smb4k/smb4kconfigpagesynchronization.cpp:341
+#: smb4k/smb4kconfigpagesynchronization.cpp:343
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
-msgid " KiB"
-msgstr " KB"
+msgid " kB"
+msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:374
+#: smb4k/smb4kconfigpagesynchronization.cpp:377
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, kde-format
-msgid " KiB/s"
-msgstr " KB/sn"
+msgid "Miscellaneous"
+msgstr "Çeşitli"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:381
+#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#, kde-format
+msgid " kB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
 msgid "File Transfer"
 msgstr "Dosya Aktarımı"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:390
+#: smb4k/smb4kconfigpagesynchronization.cpp:403
 #, kde-format
 msgid "Files && Directories"
 msgstr "Dosyalar ve Dizinler"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:436
+#: smb4k/smb4kconfigpagesynchronization.cpp:449
 #, kde-format
 msgid "Restrictions"
 msgstr "Kısıtlamalar"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:452
+#: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
 msgid "File Deletion"
 msgstr "Dosya Silme"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:461
+#: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
 msgstr "Genel Süzme Ayarları"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:516
+#: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
 msgid "Filter Rules"
 msgstr "Süzme Kuralları"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:542
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "Süzme"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:551
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, kde-format
 msgid "Checksums"
 msgstr "Sağlama Toplamları"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:582
-#: smb4k/smb4kconfigpagesynchronization.cpp:598
-#, kde-format
-msgid "Miscellaneous"
-msgstr "Çeşitli"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
@@ -898,3 +911,9 @@ msgstr "Dosya Sistemi:"
 #, kde-format
 msgid "Size:"
 msgstr "Boyut:"
+
+#~ msgid " KiB"
+#~ msgstr " KB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KB/sn"

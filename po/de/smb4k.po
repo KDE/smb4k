@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:52+0000\n"
+"POT-Creation-Date: 2022-12-30 00:52+0000\n"
 "PO-Revision-Date: 2022-11-09 23:31+0100\n"
 "Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -414,80 +414,93 @@ msgstr "Verknüpfungen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:223
 #, kde-format
-msgid "File Attributes && Ownership"
-msgstr "Dateiattribute && -besitzer"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:279
-#, kde-format
 msgid "File Handling"
 msgstr "Dateiverarbeitung"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:288
+#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#, fuzzy, kde-format
+#| msgid "File Attributes && Ownership"
+msgid "File Attributes"
+msgstr "Dateiattribute && -besitzer"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#, fuzzy, kde-format
+#| msgid "Owner:"
+msgid "Ownership"
+msgstr "Eigentümer:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr "Dateiattribute && -besitzer"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
 msgid "Compression"
 msgstr "Komprimierung"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:320
+#: smb4k/smb4kconfigpagesynchronization.cpp:333
 #, kde-format
 msgid "Files"
 msgstr "Dateien"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:330
-#: smb4k/smb4kconfigpagesynchronization.cpp:341
+#: smb4k/smb4kconfigpagesynchronization.cpp:343
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
-msgid " KiB"
-msgstr " KiB"
+msgid " kB"
+msgstr " kB"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:374
+#: smb4k/smb4kconfigpagesynchronization.cpp:377
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, kde-format
-msgid " KiB/s"
-msgstr " KiB/s"
+msgid "Miscellaneous"
+msgstr "Verschiedenes"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:381
+#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#, kde-format
+msgid " kB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
 msgid "File Transfer"
 msgstr "Dateiübertragung"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:390
+#: smb4k/smb4kconfigpagesynchronization.cpp:403
 #, kde-format
 msgid "Files && Directories"
 msgstr "Dateien && Ordner"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:436
+#: smb4k/smb4kconfigpagesynchronization.cpp:449
 #, kde-format
 msgid "Restrictions"
 msgstr "Beschränkungen"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:452
+#: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
 msgid "File Deletion"
 msgstr "Löschen von Dateien"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:461
+#: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
 msgstr "Allgemeine Filter-Einstellungen"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:516
+#: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
 msgid "Filter Rules"
 msgstr "Filterregeln"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:542
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "Filterung"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:551
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, kde-format
 msgid "Checksums"
 msgstr "Prüfsummen"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:582
-#: smb4k/smb4kconfigpagesynchronization.cpp:598
-#, kde-format
-msgid "Miscellaneous"
-msgstr "Verschiedenes"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
@@ -902,6 +915,12 @@ msgstr "Dateisystem:"
 msgid "Size:"
 msgstr "Größe:"
 
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -932,11 +951,6 @@ msgstr "Größe:"
 #~| msgid "General"
 #~ msgid "General:"
 #~ msgstr "Allgemein"
-
-#, fuzzy
-#~| msgid "Owner:"
-#~ msgid "Ownership:"
-#~ msgstr "Eigentümer:"
 
 #, fuzzy
 #~| msgid "Miscellaneous"
@@ -1175,9 +1189,6 @@ msgstr "Größe:"
 
 #~ msgid "Copying"
 #~ msgstr "Kopieren"
-
-#~ msgid " kB"
-#~ msgstr " kB"
 
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Löschen && Übertragen von Dateien"

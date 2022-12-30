@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:52+0000\n"
+"POT-Creation-Date: 2022-12-30 00:52+0000\n"
 "PO-Revision-Date: 2017-09-04 09:51+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -419,84 +419,96 @@ msgstr "Saitai"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:223
 #, kde-format
-msgid "File Attributes && Ownership"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:279
-#, kde-format
 msgid "File Handling"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:288
+#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#, kde-format
+msgid "File Attributes"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#, fuzzy, kde-format
+#| msgid "Owner"
+msgid "Ownership"
+msgstr "Savininkas"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
 msgid "Compression"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:320
+#: smb4k/smb4kconfigpagesynchronization.cpp:333
 #, fuzzy, kde-format
 #| msgid "&File"
 msgid "Files"
 msgstr "&Failas"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:330
-#: smb4k/smb4kconfigpagesynchronization.cpp:341
+#: smb4k/smb4kconfigpagesynchronization.cpp:343
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
-msgid " KiB"
+msgid " kB"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:374
+#: smb4k/smb4kconfigpagesynchronization.cpp:377
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#, fuzzy, kde-format
+#| msgid "General Settings"
+msgid "Miscellaneous"
+msgstr "Bendrosios nuostatos"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
-msgid " KiB/s"
+msgid " kB/s"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:381
+#: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
 msgid "File Transfer"
 msgstr "Failų siuntimai"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:390
+#: smb4k/smb4kconfigpagesynchronization.cpp:403
 #, fuzzy, kde-format
 #| msgid "Directories"
 msgid "Files && Directories"
 msgstr "Aplankai"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:436
+#: smb4k/smb4kconfigpagesynchronization.cpp:449
 #, fuzzy, kde-format
 #| msgid "Authentication"
 msgid "Restrictions"
 msgstr "Autentikacija"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:452
+#: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
 msgid "File Deletion"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:461
+#: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:516
+#: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
 msgid "Filter Rules"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:542
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "Filtravimas"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:551
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, kde-format
 msgid "Checksums"
 msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:582
-#: smb4k/smb4kconfigpagesynchronization.cpp:598
-#, fuzzy, kde-format
-#| msgid "General Settings"
-msgid "Miscellaneous"
-msgstr "Bendrosios nuostatos"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
@@ -949,11 +961,6 @@ msgstr "Dydis"
 #~| msgid "General"
 #~ msgid "General:"
 #~ msgstr "Bendri"
-
-#, fuzzy
-#~| msgid "Owner"
-#~ msgid "Ownership:"
-#~ msgstr "Savininkas"
 
 #, fuzzy
 #~| msgid "General Settings"

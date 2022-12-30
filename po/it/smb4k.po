@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:52+0000\n"
+"POT-Creation-Date: 2022-12-30 00:52+0000\n"
 "PO-Revision-Date: 2022-11-06 16:57+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -414,80 +414,93 @@ msgstr "Collegamenti"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:223
 #, kde-format
-msgid "File Attributes && Ownership"
-msgstr "Attributi del file &e proprietà"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:279
-#, kde-format
 msgid "File Handling"
 msgstr "Gestione dei file"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:288
+#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#, fuzzy, kde-format
+#| msgid "File Attributes:"
+msgid "File Attributes"
+msgstr "Attributi del file:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#, fuzzy, kde-format
+#| msgid "Ownership:"
+msgid "Ownership"
+msgstr "Proprietà:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr "Attributi del file &e proprietà"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
 msgid "Compression"
 msgstr "Compressione"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:320
+#: smb4k/smb4kconfigpagesynchronization.cpp:333
 #, kde-format
 msgid "Files"
 msgstr "File"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:330
-#: smb4k/smb4kconfigpagesynchronization.cpp:341
+#: smb4k/smb4kconfigpagesynchronization.cpp:343
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
-msgid " KiB"
-msgstr " KiB"
+msgid " kB"
+msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:374
+#: smb4k/smb4kconfigpagesynchronization.cpp:377
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, kde-format
-msgid " KiB/s"
-msgstr " KiB/s"
+msgid "Miscellaneous"
+msgstr "Varie"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:381
+#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#, kde-format
+msgid " kB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
 msgid "File Transfer"
 msgstr "Trasferimento file"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:390
+#: smb4k/smb4kconfigpagesynchronization.cpp:403
 #, kde-format
 msgid "Files && Directories"
 msgstr "File e cartelle"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:436
+#: smb4k/smb4kconfigpagesynchronization.cpp:449
 #, kde-format
 msgid "Restrictions"
 msgstr "Restrizioni"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:452
+#: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
 msgid "File Deletion"
 msgstr "Eliminazione del file"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:461
+#: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
 msgstr "Impostazioni generali di filtraggio"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:516
+#: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
 msgid "Filter Rules"
 msgstr "Regole di filtraggio"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:542
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "Filtraggio"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:551
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, kde-format
 msgid "Checksums"
 msgstr "Codici di controllo"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:582
-#: smb4k/smb4kconfigpagesynchronization.cpp:598
-#, kde-format
-msgid "Miscellaneous"
-msgstr "Varie"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
@@ -902,6 +915,12 @@ msgstr "File system:"
 msgid "Size:"
 msgstr "Dimensione:"
 
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -929,12 +948,6 @@ msgstr "Dimensione:"
 
 #~ msgid "General:"
 #~ msgstr "Generale:"
-
-#~ msgid "File Attributes:"
-#~ msgstr "Attributi del file:"
-
-#~ msgid "Ownership:"
-#~ msgstr "Proprietà:"
 
 #~ msgid "Miscellaneous:"
 #~ msgstr "Varie:"
