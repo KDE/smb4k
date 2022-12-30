@@ -8,6 +8,7 @@
 // application specific includes
 #include "smb4ksharesviewdockwidget.h"
 #include "core/smb4kbookmarkhandler.h"
+#include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4khardwareinterface.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4ksettings.h"
@@ -181,84 +182,98 @@ void Smb4KSharesViewDockWidget::setupActions()
     }
     }
 
+    m_actionCollection->addAction(QStringLiteral("shares_view_modes"), viewModesMenu);
+
+    //
+    // First separator
+    //
+    QAction *separator1 = new QAction(this);
+    separator1->setSeparator(true);
+
+    m_actionCollection->addAction(QStringLiteral("shares_separator1"), separator1);
+
     //
     // The Unmount action
     //
     QAction *unmountAction = new QAction(KDE::icon(QStringLiteral("media-eject")), i18n("&Unmount"), this);
+    unmountAction->setEnabled(false);
     connect(unmountAction, SIGNAL(triggered(bool)), this, SLOT(slotUnmountActionTriggered(bool)));
+
+    m_actionCollection->addAction(QStringLiteral("unmount_action"), unmountAction);
+    m_actionCollection->setDefaultShortcut(unmountAction, QKeySequence(Qt::CTRL + Qt::Key_U));
 
     //
     // The Unmount All action
     //
     QAction *unmountAllAction = new QAction(KDE::icon(QStringLiteral("system-run")), i18n("U&nmount All"), this);
+    unmountAllAction->setEnabled(false);
     connect(unmountAllAction, SIGNAL(triggered(bool)), this, SLOT(slotUnmountAllActionTriggered(bool)));
+
+    m_actionCollection->addAction(QStringLiteral("unmount_all_action"), unmountAllAction);
+    m_actionCollection->setDefaultShortcut(unmountAllAction, QKeySequence(Qt::CTRL + Qt::Key_N));
+
+    //
+    // Second separator
+    //
+    QAction *separator2 = new QAction(this);
+    separator2->setSeparator(true);
+
+    m_actionCollection->addAction(QStringLiteral("shares_separator2"), separator2);
 
     //
     // The Add Bookmark action
     //
     QAction *bookmarkAction = new QAction(KDE::icon(QStringLiteral("bookmark-new")), i18n("Add &Bookmark"), this);
+    bookmarkAction->setEnabled(false);
     connect(bookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotBookmarkActionTriggered(bool)));
+
+    m_actionCollection->addAction(QStringLiteral("bookmark_action"), bookmarkAction);
+    m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL + Qt::Key_B));
+
+    //
+    // Add custom options action
+    //
+    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("Add &Custom Options"), this);
+    customAction->setEnabled(false);
+    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomOptionsTriggered(bool)));
+
+    m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
+    m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL + Qt::Key_C));
 
     //
     // The Synchronize action
     //
     QAction *synchronizeAction = new QAction(KDE::icon(QStringLiteral("folder-sync")), i18n("S&ynchronize"), this);
+    synchronizeAction->setEnabled(false);
     connect(synchronizeAction, SIGNAL(triggered(bool)), this, SLOT(slotSynchronizeActionTriggered(bool)));
+
+    m_actionCollection->addAction(QStringLiteral("synchronize_action"), synchronizeAction);
+    m_actionCollection->setDefaultShortcut(synchronizeAction, QKeySequence(Qt::CTRL + Qt::Key_Y));
+
+    //
+    // Third separator
+    //
+    QAction *separator3 = new QAction(this);
+    separator3->setSeparator(true);
+
+    m_actionCollection->addAction(QStringLiteral("shares_separator3"), separator3);
 
     //
     // The Open with Konsole action
     //
     QAction *konsoleAction = new QAction(KDE::icon(QStringLiteral("utilities-terminal")), i18n("Open with Konso&le"), this);
+    konsoleAction->setEnabled(false);
     connect(konsoleAction, SIGNAL(triggered(bool)), this, SLOT(slotKonsoleActionTriggered(bool)));
 
+    m_actionCollection->addAction(QStringLiteral("konsole_action"), konsoleAction);
+    m_actionCollection->setDefaultShortcut(konsoleAction, QKeySequence(Qt::CTRL + Qt::Key_L));
+
     QAction *filemanagerAction = new QAction(KDE::icon(QStringLiteral("system-file-manager")), i18n("Open with F&ile Manager"), this);
+    filemanagerAction->setEnabled(false);
     connect(filemanagerAction, SIGNAL(triggered(bool)), this, SLOT(slotFileManagerActionTriggered(bool)));
 
-    //
-    // Three separators
-    //
-    QAction *separator1 = new QAction(this);
-    separator1->setSeparator(true);
-
-    QAction *separator2 = new QAction(this);
-    separator2->setSeparator(true);
-
-    QAction *separator3 = new QAction(this);
-    separator3->setSeparator(true);
-
-    //
-    // Add the actions
-    //
-    m_actionCollection->addAction(QStringLiteral("shares_view_modes"), viewModesMenu);
-    m_actionCollection->addAction(QStringLiteral("shares_separator1"), separator1);
-    m_actionCollection->addAction(QStringLiteral("unmount_action"), unmountAction);
-    m_actionCollection->addAction(QStringLiteral("unmount_all_action"), unmountAllAction);
-    m_actionCollection->addAction(QStringLiteral("shares_separator2"), separator2);
-    m_actionCollection->addAction(QStringLiteral("bookmark_action"), bookmarkAction);
-    m_actionCollection->addAction(QStringLiteral("synchronize_action"), synchronizeAction);
-    m_actionCollection->addAction(QStringLiteral("shares_separator3"), separator3);
-    m_actionCollection->addAction(QStringLiteral("konsole_action"), konsoleAction);
     m_actionCollection->addAction(QStringLiteral("filemanager_action"), filemanagerAction);
-
-    //
-    // Set the shortcuts
-    //
-    m_actionCollection->setDefaultShortcut(unmountAction, QKeySequence(Qt::CTRL + Qt::Key_U));
-    m_actionCollection->setDefaultShortcut(unmountAllAction, QKeySequence(Qt::CTRL + Qt::Key_N));
-    m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL + Qt::Key_B));
-    m_actionCollection->setDefaultShortcut(synchronizeAction, QKeySequence(Qt::CTRL + Qt::Key_Y));
-    m_actionCollection->setDefaultShortcut(konsoleAction, QKeySequence(Qt::CTRL + Qt::Key_L));
     m_actionCollection->setDefaultShortcut(filemanagerAction, QKeySequence(Qt::CTRL + Qt::Key_I));
-
-    //
-    // Disable all actions
-    //
-    unmountAction->setEnabled(false);
-    unmountAllAction->setEnabled(false);
-    bookmarkAction->setEnabled(false);
-    synchronizeAction->setEnabled(false);
-    konsoleAction->setEnabled(false);
-    filemanagerAction->setEnabled(false);
 
     //
     // Plug the actions into the context menu
@@ -297,6 +312,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
         m_actionCollection->action(QStringLiteral("unmount_action"))
             ->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
+        m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
 
         if (!item->shareItem()->isInaccessible()) {
             m_actionCollection->action(QStringLiteral("synchronize_action"))
@@ -337,6 +353,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
         m_actionCollection->action(QStringLiteral("unmount_action"))
             ->setEnabled(((selectedItems.size() > foreign) || Smb4KMountSettings::unmountForeignShares()));
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(true);
+        m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(true);
 
         if (selectedItems.size() > inaccessible) {
             m_actionCollection->action(QStringLiteral("synchronize_action"))
@@ -351,6 +368,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
     } else {
         m_actionCollection->action(QStringLiteral("unmount_action"))->setEnabled(false);
         m_actionCollection->action(QStringLiteral("bookmark_action"))->setEnabled(false);
+        m_actionCollection->action(QStringLiteral("custom_action"))->setEnabled(false);
         m_actionCollection->action(QStringLiteral("synchronize_action"))->setEnabled(false);
         m_actionCollection->action(QStringLiteral("konsole_action"))->setEnabled(false);
         m_actionCollection->action(QStringLiteral("filemanager_action"))->setEnabled(false);
@@ -470,8 +488,10 @@ void Smb4KSharesViewDockWidget::slotShareUpdated(const SharePtr &share)
     }
 }
 
-void Smb4KSharesViewDockWidget::slotUnmountActionTriggered(bool /*checked*/)
+void Smb4KSharesViewDockWidget::slotUnmountActionTriggered(bool checked)
 {
+    Q_UNUSED(checked);
+
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
     QList<SharePtr> shares;
 
@@ -486,13 +506,17 @@ void Smb4KSharesViewDockWidget::slotUnmountActionTriggered(bool /*checked*/)
     Smb4KMounter::self()->unmountShares(shares, false);
 }
 
-void Smb4KSharesViewDockWidget::slotUnmountAllActionTriggered(bool /*checked*/)
+void Smb4KSharesViewDockWidget::slotUnmountAllActionTriggered(bool checked)
 {
+    Q_UNUSED(checked);
+
     Smb4KMounter::self()->unmountAllShares(false);
 }
 
-void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool /*checked*/)
+void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool checked)
 {
+    Q_UNUSED(checked);
+
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
     QList<SharePtr> shares;
 
@@ -504,8 +528,25 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool /*checked*/)
     Smb4KBookmarkHandler::self()->addBookmarks(shares);
 }
 
-void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool /*checked*/)
+void Smb4KSharesViewDockWidget::slotAddCustomOptionsTriggered(bool checked)
 {
+    Q_UNUSED(checked);
+
+    QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
+
+    for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
+        Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
+
+        if (item) {
+            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->shareItem());
+        }
+    }
+}
+
+void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool checked)
+{
+    Q_UNUSED(checked);
+
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
     for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
@@ -517,8 +558,10 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool /*checked*/)
     }
 }
 
-void Smb4KSharesViewDockWidget::slotKonsoleActionTriggered(bool /*checked*/)
+void Smb4KSharesViewDockWidget::slotKonsoleActionTriggered(bool checked)
 {
+    Q_UNUSED(checked);
+
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
     for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
@@ -530,8 +573,10 @@ void Smb4KSharesViewDockWidget::slotKonsoleActionTriggered(bool /*checked*/)
     }
 }
 
-void Smb4KSharesViewDockWidget::slotFileManagerActionTriggered(bool /*checked*/)
+void Smb4KSharesViewDockWidget::slotFileManagerActionTriggered(bool checked)
 {
+    Q_UNUSED(checked);
+
     QList<QListWidgetItem *> selectedItems = m_sharesView->selectedItems();
 
     for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {

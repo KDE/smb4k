@@ -137,6 +137,14 @@ protected Q_SLOTS:
     void slotBookmarkActionTriggered(bool checked);
 
     /**
+     * Provide custom options for a server or share. This slot is connected
+     * to the 'Add Custom Options' action.
+     *
+     * @param checked             Is TRUE if the action is checked (not used here).
+     */
+    void slotAddCustomOptionsTriggered(bool checked);
+
+    /**
      * This slot is connected to the 'Synchronize' action. The selected items will be
      * synchronized with a local copy (or vice versa) if you activate it.
      *
