@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:52+0000\n"
-"PO-Revision-Date: 2022-12-16 11:17+0100\n"
+"PO-Revision-Date: 2022-12-29 12:46+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1057,7 +1057,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Lijst met toegangscontrole behouden (ACL's)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1068,66 +1068,60 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Lijsten met toegangscontrole behouden. Deze optie laat rsync de ACL's van de "
+"bestemming bijwerken om hetzelfde te zijn als de ACL's van de bron. De optie "
+"impliceert ook --perms. De bron- en bestemmingssystemen moeten compatibele "
+"ACL items hebben om deze optie juist te laten werken."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Behoud tijden"
+msgstr "Uitgebreide attributen behouden"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Handhaaf de groep (-g, --group). De groep van het bestemmingsbestand zal "
-"hetzelfde zijn als van het bronbestand."
+"Uitgebreide attributen behouden. Deze optie laat rsync de uitgebreide "
+"attributen van de bestemming bijwerken om hetzelfde te zijn als die van de "
+"bron."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Behoud tijden"
+msgstr "Toegangstijden behouden"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Handhaaf de groep (-g, --group). De groep van het bestemmingsbestand zal "
-"hetzelfde zijn als van het bronbestand."
+"Toegangstijden behouden. Dit vertelt rsync om set de toegangstijden "
+"(gebruik) van de bestemmingsbestanden hetzelfde in te stellen als de "
+"bronbestanden."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Behoud tijden"
+msgstr "Aanmaaktijden behouden"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Handhaaf de groep (-g, --group). De groep van het bestemmingsbestand zal "
-"hetzelfde zijn als van het bronbestand."
+"Aanmaaktijden behouden. Dit vertelt rsync om de aanmaaktijden (nieuwheid) "
+"van de bestemmingsbestanden hetzelfde in te stellen als de bronbestanden."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:52+0000\n"
+"POT-Creation-Date: 2022-12-30 00:52+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -407,82 +407,94 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:223
 #, kde-format
-msgid "File Attributes && Ownership"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:279
-#, kde-format
 msgid "File Handling"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:288
+#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#, kde-format
+msgid "File Attributes"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#, fuzzy, kde-format
+#| msgid "Owner"
+msgid "Ownership"
+msgstr "मालक"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
 msgid "Compression"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:320
+#: smb4k/smb4kconfigpagesynchronization.cpp:333
 #, fuzzy, kde-format
 #| msgid "File"
 msgid "Files"
 msgstr "फाईल"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:330
-#: smb4k/smb4kconfigpagesynchronization.cpp:341
+#: smb4k/smb4kconfigpagesynchronization.cpp:343
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
-msgid " KiB"
+msgid " kB"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:374
-#, kde-format
-msgid " KiB/s"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:381
-#, kde-format
-msgid "File Transfer"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:390
-#, kde-format
-msgid "Files && Directories"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:436
-#, fuzzy, kde-format
-msgid "Restrictions"
-msgstr "लक्ष्य :"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:452
-#, kde-format
-msgid "File Deletion"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:461
-#, kde-format
-msgid "General Filtering Settings"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:516
-#, kde-format
-msgid "Filter Rules"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:542
-#, kde-format
-msgid "Filtering"
-msgstr "गाळणी"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:551
-#, kde-format
-msgid "Checksums"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:582
-#: smb4k/smb4kconfigpagesynchronization.cpp:598
+#: smb4k/smb4kconfigpagesynchronization.cpp:377
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Miscellaneous"
 msgstr "सामान्य संयोजना"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#, kde-format
+msgid " kB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:394
+#, kde-format
+msgid "File Transfer"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:403
+#, kde-format
+msgid "Files && Directories"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:449
+#, fuzzy, kde-format
+msgid "Restrictions"
+msgstr "लक्ष्य :"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:465
+#, kde-format
+msgid "File Deletion"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:474
+#, kde-format
+msgid "General Filtering Settings"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:529
+#, kde-format
+msgid "Filter Rules"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#, kde-format
+msgid "Filtering"
+msgstr "गाळणी"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#, kde-format
+msgid "Checksums"
+msgstr ""
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
@@ -929,11 +941,6 @@ msgstr "आकार"
 #, fuzzy
 #~ msgid "General:"
 #~ msgstr "सामान्य"
-
-#, fuzzy
-#~| msgid "Owner"
-#~ msgid "Ownership:"
-#~ msgstr "मालक"
 
 #, fuzzy
 #~| msgid "General Settings"

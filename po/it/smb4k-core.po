@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:52+0000\n"
-"PO-Revision-Date: 2022-05-21 18:02+0200\n"
+"PO-Revision-Date: 2022-12-17 15:30+0100\n"
 "Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 22.12.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -2103,16 +2103,18 @@ msgstr "Impossibile stampare il file %1 su %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"Il demone di Zeroconf non è in esecuzione. Nessun server viene rilevato con "
+"DNS-SD."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "Il supporto per Zeroconf non è disponibile in questa versione di KDE."
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Si è verificato un errore sconosciuto con Zeroconf."
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2334,16 +2336,13 @@ msgid "Clear List"
 msgstr "Svuota l'elenco"
 
 #: smb4kmounter.cpp:686
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>La condivisione <b>%1</b> è montata in <br><b>%2</b> e di proprietà "
-"dell'utente <b>%3</b>.</p><p>Sei sicuro di volerla smontare?</p></qt>"
+"<p>La condivisione <b>%1</b> è montata in <br><b>%2</b> e di proprietà "
+"dell'utente <b>%3</b>.</p><p>Sei sicuro di volerla smontare?</p>"
 
 #: smb4kmounter.cpp:691
 #, kde-format
@@ -3760,21 +3759,18 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>L'URL inserito non è valido.</p>"
 
 #: smb4knotification.cpp:424
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"La comunicazione di rete non è riuscita con il seguente messaggio di errore: "
-"<s>%1</s>"
+"<p>La comunicazione di rete non è riuscita con il seguente messaggio di "
+"errore: <s>%1</s></p>"
 
 #: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Si è verificato un errore col servizio Zeroconf: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format

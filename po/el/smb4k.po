@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:52+0000\n"
+"POT-Creation-Date: 2022-12-30 00:52+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -421,86 +421,98 @@ msgstr "Σύνδεσμοι"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:223
 #, kde-format
-msgid "File Attributes && Ownership"
-msgstr ""
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:279
-#, kde-format
 msgid "File Handling"
 msgstr "Χειρισμός αρχείων"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:288
+#: smb4k/smb4kconfigpagesynchronization.cpp:231
+#, kde-format
+msgid "File Attributes"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:276
+#, fuzzy, kde-format
+#| msgid "Owner:"
+msgid "Ownership"
+msgstr "Κάτοχος:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:292
+#, kde-format
+msgid "File Attributes && Ownership"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, fuzzy, kde-format
 #| msgid "Compression"
 msgid "Compression"
 msgstr "Συμπίεση"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:320
+#: smb4k/smb4kconfigpagesynchronization.cpp:333
 #, fuzzy, kde-format
 #| msgid "Files"
 msgid "Files"
 msgstr "Αρχεία"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:330
-#: smb4k/smb4kconfigpagesynchronization.cpp:341
+#: smb4k/smb4kconfigpagesynchronization.cpp:343
+#: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
-msgid " KiB"
-msgstr "KiB"
+msgid " kB"
+msgstr " kB"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:374
+#: smb4k/smb4kconfigpagesynchronization.cpp:377
+#: smb4k/smb4kconfigpagesynchronization.cpp:595
+#: smb4k/smb4kconfigpagesynchronization.cpp:611
 #, kde-format
-msgid " KiB/s"
-msgstr "KiB/s"
+msgid "Miscellaneous"
+msgstr "Διάφορα"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:381
+#: smb4k/smb4kconfigpagesynchronization.cpp:387
+#, kde-format
+msgid " kB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
 msgid "File Transfer"
 msgstr "Μεταφορά αρχείου"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:390
+#: smb4k/smb4kconfigpagesynchronization.cpp:403
 #, fuzzy, kde-format
 #| msgid "Files && Directories"
 msgid "Files && Directories"
 msgstr "Αρχεία && κατάλογοι"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:436
+#: smb4k/smb4kconfigpagesynchronization.cpp:449
 #, fuzzy, kde-format
 #| msgid "Restrictions"
 msgid "Restrictions"
 msgstr "Περιορισμοί"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:452
+#: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
 msgid "File Deletion"
 msgstr "Διαγραφή αρχείου"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:461
+#: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "General Filtering Settings"
 msgstr "Γενικές ρυθμίσεις"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:516
+#: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
 msgid "Filter Rules"
 msgstr "Κανόνες φιλτραρίσματος"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:542
+#: smb4k/smb4kconfigpagesynchronization.cpp:555
 #, kde-format
 msgid "Filtering"
 msgstr "Φιλτράρισμα"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:551
+#: smb4k/smb4kconfigpagesynchronization.cpp:564
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
 msgstr "Αθροίσματα ελέγχου"
-
-#: smb4k/smb4kconfigpagesynchronization.cpp:582
-#: smb4k/smb4kconfigpagesynchronization.cpp:598
-#, kde-format
-msgid "Miscellaneous"
-msgstr "Διάφορα"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
@@ -916,6 +928,12 @@ msgstr "Σύστημα αρχείων:"
 msgid "Size:"
 msgstr "Μέγεθος:"
 
+#~ msgid " KiB"
+#~ msgstr "KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr "KiB/s"
+
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -949,11 +967,6 @@ msgstr "Μέγεθος:"
 #~| msgid "General"
 #~ msgid "General:"
 #~ msgstr "Γενικά"
-
-#, fuzzy
-#~| msgid "Owner:"
-#~ msgid "Ownership:"
-#~ msgstr "Κάτοχος:"
 
 #, fuzzy
 #~| msgid "Miscellaneous"
@@ -1186,9 +1199,6 @@ msgstr "Μέγεθος:"
 
 #~ msgid "Copying"
 #~ msgstr "Αντιγραφή"
-
-#~ msgid " kB"
-#~ msgstr " kB"
 
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Διαγραφή αρχείου && μεταφορά"
