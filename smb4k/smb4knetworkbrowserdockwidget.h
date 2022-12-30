@@ -142,10 +142,11 @@ protected Q_SLOTS:
 
     /**
      * Provide custom options for a server or share. This slot is connected
-     * to the 'Custom Options' action.
+     * to the 'Add Custom Options' action.
+     *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotCustomOptions(bool checked);
+    void slotAddCustomOptions(bool checked);
 
     /**
      * Preview a share. This slot is connected to the 'Preview' action.
