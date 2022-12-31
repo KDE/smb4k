@@ -437,24 +437,24 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
 
 QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
 {
-    // Update the bookmarks
+    QList<BookmarkPtr> bookmarks;
+
     update();
 
-    // Get the list of the bookmarks
     if (Smb4KSettings::useProfiles()) {
-        QList<BookmarkPtr> bookmarks;
-
         for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
+            qDebug() << "Bookmark's profile:" << bookmark->profile();
+            qDebug() << "Active profile:" << Smb4KSettings::activeProfile();
+
             if (bookmark->profile() == Smb4KSettings::activeProfile()) {
                 bookmarks << bookmark;
             }
         }
-
-        return bookmarks;
+    } else {
+        bookmarks = d->bookmarks;
     }
 
-    // Return the list of bookmarks
-    return d->bookmarks;
+    return bookmarks;
 }
 
 QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &categoryName) const
