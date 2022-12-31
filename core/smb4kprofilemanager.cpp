@@ -62,6 +62,8 @@ void Smb4KProfileManager::setActiveProfile(const QString &name)
             Q_EMIT activeProfileChanged(d->activeProfile);
         }
     }
+
+    Smb4KSettings::self()->save();
 }
 
 QString Smb4KProfileManager::activeProfile() const
