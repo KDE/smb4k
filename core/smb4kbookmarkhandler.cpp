@@ -443,9 +443,6 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
 
     if (Smb4KSettings::useProfiles()) {
         for (const BookmarkPtr &bookmark : qAsConst(d->bookmarks)) {
-            qDebug() << "Bookmark's profile:" << bookmark->profile();
-            qDebug() << "Active profile:" << Smb4KSettings::activeProfile();
-
             if (bookmark->profile() == Smb4KSettings::activeProfile()) {
                 bookmarks << bookmark;
             }
