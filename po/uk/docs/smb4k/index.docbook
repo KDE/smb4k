@@ -4076,7 +4076,7 @@ ntlm auth = yes
 ></link
 >.</para>
               <para
->Типове значення: не позначено / 445</para>
+>Типове значення: не позначено / порт 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4145,7 +4145,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Встановлює параметри прав доступу, які буде застосовано до файлів. Чотирицифрове значення слід вказувати у вісімковій системі числення. Докладніше про режим доступу до файлів (file_mode) можна дізнатися зі сторінок довідника (man) <ulink url="man:/mount"
+>Встановлює параметри прав доступу, які буде застосовано до файлів. Чотирицифрове значення слід вказувати у вісімковій системі числення. Докладніше про режим доступу до файлів (file_mode) можна дізнатися зі сторінок довідника (man) <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4153,7 +4153,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> і <ulink url="man:/umask"
+> і <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4165,7 +4165,7 @@ ntlm auth = yes
             <para
 >Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Типове значення: позначено / 0755</para>
+>Типове значення: позначено; 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4177,7 +4177,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Встановлює параметри прав доступу, які буде застосовано до каталогів. Чотирицифрове значення слід вказувати у вісімковій системі числення. Докладніше про режим доступу до каталогів (dir_mode) можна дізнатися зі сторінок довідника (man) <ulink url="man:/mount"
+>Встановлює параметри прав доступу, які буде застосовано до каталогів. Чотирицифрове значення слід вказувати у вісімковій системі числення. Докладніше про режим доступу до каталогів (dir_mode) можна дізнатися зі сторінок довідника (man) <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4185,7 +4185,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> і <ulink url="man:/umask"
+> і <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4197,7 +4197,7 @@ ntlm auth = yes
             <para
 >Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Типове значення: позначено / 0755</para>
+>Типове значення: позначено; 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4934,7 +4934,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> та <ulink url="man:/umask"
+> та <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4942,7 +4942,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
->.</para>
+></para>
               <para
 >Типове значення: 0755</para>
             </listitem>
@@ -4964,7 +4964,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> та <ulink url="man:/umask"
+> та <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -5820,11 +5820,13 @@ ntlm auth = yes
 >Змінити</guibutton
 > праворуч. Альтернативою є просте подвійне клацання на записі. Буде показано діалогове вікно введення пароля, і ви зможете змінити ім'я користувача і пароль.</para>
       <para
->Щоб вилучити запис, позначте його і натисніть кнопку <guimenuitem
->Вилучити</guimenuitem
->. Ви можете вилучити всі пункти списку одразу натисканням кнопки <guimenuitem
->Спорожнити</guimenuitem
->.</para>
+>Щоб вилучити запис, позначте його і натисніть кнопку <guibutton
+>Вилучити</guibutton
+>. Ви можете вилучити всі пункти списку одразу натисканням кнопки <guibutton
+>Спорожнити</guibutton
+>. За допомогою кнопки <guibutton
+>Скинути</guibutton
+> ви зможете відновити початковий стан.</para>
       <para
 >Щоб зміни було внесено до торбинки, після завершення редагування натисніть кнопку <guibutton
 >Зберегти</guibutton
@@ -5884,7 +5886,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Типове місце призначення</title>
+>Каталог синхронізації</title>
 
         <variablelist>
           <varlistentry>
@@ -5941,14 +5943,44 @@ ntlm auth = yes
 >, те саме, що і <option
 >-rlptgoD</option
 > (без <option
+>-A</option
+>, <option
+>-X</option
+>, <option
+>-U</option
+>, <option
+>-N</option
+>, <option
 >-H</option
 >)</para>
               <para
->Вмикає режим архівування. Позначення цього пункту є найшвидшим способом вказати програмі, що слід виконувати рекурсивний перегляд каталогів і зберігати майже всі параметри. Зауважте, що за використання параметра <option
+>Увімкнути режим архівування. Це швидкий спосіб повідомити програмі, що ви хочете рекурсії та збереження майже усього. Зауважте, що <option
 >-a</option
-> жорсткі посилання збережено не буде, оскільки пошук багатозв’язних файлів сильно навантажує системи. Для збереження жорстких посилань вам слід окремо вказати параметр <option
+> не зберігає жорсткі посилання (<option
 >-H</option
->.</para>
+>), списки керування доступом (ACL, <option
+>-A</option
+>), розширені атрибути (xattr, <option
+>-X</option
+>), записи часу доступу (використання) (<option
+>-U</option
+>), а також записи часу створення (<option
+>-N</option
+>). Вам слід вказати ці параметри окремо. Єдиним виключенням з наведеного вище правила є визначення <option
+>--files-from</option
+>. Якщо використано цей параметр, <option
+>-r</option
+> не буде встановлено неявним чином.</para>
+              <para
+>Якщо ви не хочете запускати <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> у режимі архіву, власноруч виберіть відповідні аргументи у параметрах.</para>
               <para
 >Типове значення: позначено</para>
             </listitem>
@@ -5970,7 +6002,7 @@ ntlm auth = yes
               <para
 >Рекурсивно заходити в каталоги.</para>
               <para
->Типове значення: позначено</para>
+>Типове значення: не позначено</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6060,8 +6092,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title
->Резервування</title>
-
+>Резервні копії</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6150,7 +6181,15 @@ ntlm auth = yes
               <para
 >Разом з параметром <option
 >--backup</option
->, за допомогою цього параметра можна наказати rsync зберігати всі резервні копії у вказаній теці. Подібна стратегія буде корисною, якщо ви користуєтеся нарощувальним резервним копіюванням. Крім того, ви можете вказати суфікс назв файлів резервних копій за допомогою параметра <option
+>, за допомогою цього параметра можна наказати <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> зберігати всі резервні копії у вказаній теці. Подібна стратегія буде корисною, якщо ви користуєтеся нарощувальним резервним копіюванням. Крім того, ви можете вказати суфікс назв файлів резервних копій за допомогою параметра <option
 >--suffix</option
 > (якщо ви цього не зробите, файли резервних копій матимуть ті самі назви, що і початкові файли).</para>
               <para
@@ -6206,7 +6245,7 @@ ntlm auth = yes
 ></ulink
 > пропускати всі файли у каталозі призначення, які позначено часом зміни, новішим за час зміни файла джерела. Якщо існуючий файл призначення матиме часову позначку зміни, рівну часовій позначці зміни файла джерела, його буде оновлено за умови відмінності у розмірах файлів.</para>
               <para
->Типове значення: позначено</para>
+>Типове значення: не позначено</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6394,7 +6433,7 @@ ntlm auth = yes
               <para
 >Копіювати символічні посилання як символічні посилання.</para>
               <para
->Типове значення: позначено</para>
+>Типове значення: не позначено</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6473,8 +6512,6 @@ ntlm auth = yes
             <listitem>
               <para
 >Параметр: <option
->-H</option
->/<option
 >--munge-links</option
 ></para>
               <para
@@ -6582,11 +6619,14 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+    </sect2>
 
-      <sect3 id="configuration_page_synchronization_file_handling_perms">
+    <sect2 id="configuration_page_synchronization_attributes_ownership">
+      <title
+>Атрибути файлів та права власності на них</title>
+      <sect3 id="configuration_page_synchronization_attributes_ownership_attributes">
         <title
->Права доступу до файлів тощо.</title>
-
+>Атрибути файла</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6605,9 +6645,216 @@ ntlm auth = yes
               <para
 >Якщо буде позначено цей пункт, програма встановлюватиме на стороні отримання даних права доступу до елементів структури каталогів тотожні до прав доступу до елементів структури каталогів на стороні джерела.</para>
               <para
->Типове значення: позначено</para>
+>Типове значення: не позначено</para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Зберігати списки керування доступом (ACL)</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Параметр: <option
+>-A</option
+>/<option
+>--acls</option
+></para>
+              <para
+>Зберігати списки керування доступом. Використання цього параметра призводить до того, що r<ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> оновлює ACL призначення так, щоб вони збігалися із ACL джерела. Цей параметр також неявним чином встановлює --perms. Щоб цей параметр спрацював належним чином, системи джерела і призначення повинні мати сумісні записи ACL.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Зберігати розширені атрибути</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Параметр: <option
+>-X</option
+>/<option
+>--xattrs</option
+></para>
+              <para
+>Зберігати розширені атрибути. Використання цього параметра наказує <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> оновлювати розширені атрибути призначення так, щоб вони були такими самими, що і розширені атрибути джерела.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Зберігати час доступу</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Параметр: <option
+>-U</option
+>/<option
+>--atimes</option
+></para>
+              <para
+>Зберігати час доступу. Наказує <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> встановити часи доступу (використання) для файлів призначення такі самі, як для файлів джерела.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Зберігати час створення</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Параметр: <option
+>-N</option
+>/<option
+>--crtimes</option
+></para>
+              <para
+>Зберігати час створення. Наказує <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> встановити часи створення (новизни) для файлів призначення такі самі, як для файлів джерела.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Зберігати файли пристроїв та особливі файли</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Параметр: <option
+>-D</option
+>/<option
+>--devices --specials</option
+></para>
+              <para
+>За допомогою цього пункту можна наказати <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> переносити файли символьних і блокових пристроїв, а також спеціальні файли (зокрема іменовані сокети та черги fifo) на віддалену систему. Позначення цього пункту не вплине на перенесення файлів, якщо програму на стороні отримання даних не запущено від імені суперкористувача і не вказано параметра <option
+>--super</option
+>.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Зберігати час</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Параметр: <option
+>-t</option
+>/<option
+>--times</option
+></para>
+              <para
+>За допомогою цього пункту можна наказати <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> переносити дані про час зміни файла разом з самим файлом і оновлювати ці дані на віддаленій системі.</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Пропускати каталоги, коли зберігається час</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Параметр: <option
+>-O</option
+>/<option
+>--omit-dir-times</option
+></para>
+              <para
+>За допомогою цього пункту можна наказати <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> не зберігати час зміни каталогів (див. параметр <option
+>--times</option
+>).</para>
+              <para
+>Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+      
+      <sect3 id="configuration_page_synchronization_attributes_ownership_ownership">
+        <title
+>Власність</title>
+        <variablelist>
           <varlistentry>
             <term>
               <menuchoice
@@ -6645,7 +6892,7 @@ ntlm auth = yes
 >--super</option
 >.</para>
               <para
->Типове значення: позначено</para>
+>Типове значення: не позначено</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6675,94 +6922,6 @@ ntlm auth = yes
 >--no-super</option
 >), ви зможете визначити лише групи, учасником яких є ваш користувач.</para>
               <para
->Типове значення: позначено</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Зберігати файли пристроїв та особливі файли</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Параметр: <option
->-D</option
->/<option
->--devices --specials</option
-></para>
-              <para
->За допомогою цього пункту можна наказати <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> переносити файли символьних і блокових пристроїв, а також спеціальні файли (зокрема іменовані сокети та черги fifo) на віддалену систему. Позначення цього пункту не вплине на перенесення файлів, якщо програму на стороні отримання даних не запущено від імені суперкористувача і не вказано параметра <option
->--super</option
->.</para>
-              <para
->Типове значення: позначено</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Зберігати час</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Параметр: <option
->-t</option
->/<option
->--times</option
-></para>
-              <para
->За допомогою цього пункту можна наказати <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> переносити дані про час зміни файла разом з самим файлом і оновлювати ці дані на віддаленій системі.</para>
-              <para
->Типове значення: позначено</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Пропускати каталоги, коли зберігається час</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Параметр: <option
->-O</option
->/<option
->--omit-dir-times</option
-></para>
-              <para
->За допомогою цього пункту можна наказати <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> не зберігати час зміни каталогів (див. параметр <option
->--times</option
->).</para>
-              <para
 >Типове значення: не позначено</para>
             </listitem>
           </varlistentry>
@@ -6777,11 +6936,9 @@ ntlm auth = yes
     <sect2 id="configuration_page_synchronization_file_transfer">
       <title
 >Перенесення файлів</title>
-
       <sect3 id="configuration_page_synchronization_file_transfer_compression">
         <title
 >Стиснення</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6812,7 +6969,15 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Явним чином встановити рівень стискання (--compress-level=ЧИСЛО). Якщо вказано ненульове ЧИСЛО, неявним чином буде додано аргумент --compress.</para>
+>Параметр: <option
+>--compress-level=ЧИСЛО</option
+></para>
+              <para
+>Явним чином встановити рівень стискання. Якщо вказано ненульове ЧИСЛО, неявним чином буде додано аргумент <option
+>--compress</option
+>.</para>
+              <para
+>Типове значення: не позначено, ЧИСЛО=0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6824,7 +6989,21 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Перезаписати список суфіксів назв файлів, які не будуть стискатися (--skip-compress=СПИСОК). Значенням параметра СПИСОК має бути список з одного або декількох суфіксів назв файлів (без крапки), відокремлених символами похилої риски. Ви можете вказати порожній рядок, щоб вказати, що не слід пропускати жодних файлів. Вказаним списком буде замінено типовий список. Щоб дізнатися більше, скористайтеся сторінкою підручника щодо rsync.</para>
+>Параметр: <option
+>--skip-compress=СПИСОК</option
+></para>
+              <para
+>Перезаписати список суфіксів назв файлів, які не будуть стискатися. Значенням параметра СПИСОК має бути список з одного або декількох суфіксів назв файлів (без крапки), відокремлених символами похилої риски. Ви можете вказати порожній рядок, щоб вказати, що не слід пропускати жодних файлів. Вказаним списком буде замінено типовий список. Щоб дізнатися більше, скористайтеся <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>сторінкою підручника щодо rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>.</para>
+              <para
+>Типове значення: не позначено; СПИСОК: порожній рядок</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6833,7 +7012,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_files">
         <title
 >Файли</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6961,7 +7139,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
         <title
 >Різне</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6978,7 +7155,7 @@ ntlm auth = yes
               <para
 >Встановити максимальну швидкість передавання даних у кілобайтах на секунду.</para>
               <para
->Типове значення: не позначено; ШВИДКІСТЬ: 0 КіБ/с</para>
+>Типове значення: не позначено; ШВИДКІСТЬ: 0 кБ/с</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7562,8 +7739,7 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
         <title
->Загальне</title>
-
+>Різне</title>
         <variablelist>
           <varlistentry>
             <term>

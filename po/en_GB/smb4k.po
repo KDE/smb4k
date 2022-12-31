@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:52+0000\n"
+"POT-Creation-Date: 2022-12-31 00:51+0000\n"
 "PO-Revision-Date: 2022-07-22 15:31+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -127,7 +127,7 @@ msgstr "&Edit Bookmarks"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Add &Bookmark"
@@ -644,8 +644,8 @@ msgid "Comment"
 msgstr "Comment"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:118
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:473
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:485
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:406
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:469
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Scan Netwo&rk"
@@ -660,20 +660,22 @@ msgstr "&Abort"
 msgid "&Search"
 msgstr "&Search"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#, fuzzy, kde-format
+#| msgid "&Custom Options"
+msgid "Add &Custom Options"
+msgstr "&Custom Options"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Open Mount Dialogue"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&thentication"
-
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
-#, kde-format
-msgid "&Custom Options"
-msgstr "&Custom Options"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -691,18 +693,18 @@ msgid "&Mount"
 msgstr "&Mount"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "&Unmount"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:394
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:420
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:431
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Scan Compute&r"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:436
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Scan Wo&rkgroup"
@@ -737,7 +739,7 @@ msgstr "Item Down"
 msgid "Item Up"
 msgstr "Item Up"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "U&nmount All"
@@ -767,37 +769,37 @@ msgstr "Open with Konsole"
 msgid "Open with File Manager"
 msgstr "Open with File Manager"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:152
+#: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
 msgid "View Modes"
 msgstr "View Modes"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:158
+#: smb4k/smb4ksharesviewdockwidget.cpp:159
 #, kde-format
 msgid "Icon View"
 msgstr "Icon View"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:164
+#: smb4k/smb4ksharesviewdockwidget.cpp:165
 #, kde-format
 msgid "List View"
 msgstr "List View"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:205
+#: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&ynchronise"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Open with Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Open with F&ile Manager"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:373
+#: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

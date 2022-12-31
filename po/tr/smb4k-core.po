@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:52+0000\n"
-"PO-Revision-Date: 2022-12-16 19:33+0300\n"
+"PO-Revision-Date: 2022-12-31 00:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1039,7 +1039,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Erişim denetim listelerini koru (ACL'ler)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1050,66 +1050,58 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Erişim denetim listelerini koru. Bu seçenek, rsync'in hedef erişim denetim "
+"listelerini kaynak olanlarıyla aynı biçimde güncellemesini sağlar. Bu "
+"seçenek ayrıca --perms ima eder. Bunun düzgünce çalışması için kaynak ve "
+"hedef sistemlerde uyumlu erişim denetim listeleri olmalıdır."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Zamanları koru"
+msgstr "Genişletilmiş öznitelikleri koru"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Grup koru (-g, --group). Hedef dosyanın grubu kaynak dosya olarak "
-"ayarlanacaktır."
+"Genişletilmiş öznitelikleri koru. Bu seçenek, rsync'in hedef öznitelikleri "
+"kaynak olanlarıyla aynı biçimde güncellemesini sağlar."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Zamanları koru"
+msgstr "Erişim zamanlarını koru"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Grup koru (-g, --group). Hedef dosyanın grubu kaynak dosya olarak "
-"ayarlanacaktır."
+"Erişim zamanlarını koru. Bu seçenek, rsync'e hedef dosyaların erişim "
+"(kullanım) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını söyler."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Zamanları koru"
+msgstr "Oluşturma zamanlarını koru"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Grup koru (-g, --group). Hedef dosyanın grubu kaynak dosya olarak "
-"ayarlanacaktır."
+"Oluşturma zamanlarını koru. Bu seçenek, rsync'e hedef dosyaların oluşturma "
+"(yenilik) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını söyler."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402

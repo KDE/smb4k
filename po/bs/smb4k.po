@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:52+0000\n"
+"POT-Creation-Date: 2022-12-31 00:51+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -135,7 +135,7 @@ msgstr "&Izmijeni zabilješke"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Dodaj &zabilješku"
@@ -694,8 +694,8 @@ msgid "Comment"
 msgstr "Komentar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:118
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:473
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:485
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:406
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:469
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Skeniraj mrežu"
@@ -710,20 +710,22 @@ msgstr "Pre&kini"
 msgid "&Search"
 msgstr "&Traži"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#, fuzzy, kde-format
+#| msgid "&Custom Options"
+msgid "Add &Custom Options"
+msgstr "&Uobilajene opcije"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Otvori montirajući dijalog"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Au&thentication"
 msgstr "&Proes prepoznavanja"
-
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
-#, kde-format
-msgid "&Custom Options"
-msgstr "&Uobilajene opcije"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -741,18 +743,18 @@ msgid "&Mount"
 msgstr "&Montiraj"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "&Demontirati"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:394
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:420
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:431
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Skeniraj Compjute&r"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:436
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Skeniraj  Ra&rdnugrupu"
@@ -790,7 +792,7 @@ msgstr "Predmet"
 msgid "Item Up"
 msgstr "Predmet"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "&Demontiraj sve"
@@ -820,37 +822,37 @@ msgstr "Otvori sa Konsole"
 msgid "Open with File Manager"
 msgstr "Otvori menadžerom datoteka"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:152
+#: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
 msgid "View Modes"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:158
+#: smb4k/smb4ksharesviewdockwidget.cpp:159
 #, kde-format
 msgid "Icon View"
 msgstr "Prikaz ikona"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:164
+#: smb4k/smb4ksharesviewdockwidget.cpp:165
 #, kde-format
 msgid "List View"
 msgstr "Prikaz liste"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:205
+#: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "&Sinhronizuj"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Otvori pomoću Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Otvori pomoću menadžera datoteka"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:373
+#: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

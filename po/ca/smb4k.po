@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:52+0000\n"
+"POT-Creation-Date: 2022-12-31 00:51+0000\n"
 "PO-Revision-Date: 2022-12-30 05:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -131,7 +131,7 @@ msgstr "&Edita les adreces d'interès"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "A&fegeix una adreça d'interès"
@@ -652,8 +652,8 @@ msgid "Comment"
 msgstr "Comentari"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:118
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:473
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:485
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:406
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:469
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Escaneja la xa&rxa"
@@ -668,20 +668,22 @@ msgstr "&Interromp"
 msgid "&Search"
 msgstr "&Cerca"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#, fuzzy, kde-format
+#| msgid "&Custom Options"
+msgid "Add &Custom Options"
+msgstr "Op&cions personalitzades"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Obre el diàleg de muntatge"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&tenticació"
-
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
-#, kde-format
-msgid "&Custom Options"
-msgstr "Op&cions personalitzades"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -699,18 +701,18 @@ msgid "&Mount"
 msgstr "&Munta"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "Desm&unta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:394
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:420
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:431
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Escaneja els o&rdinadors"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:436
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Escaneja els g&rups de treball"
@@ -745,7 +747,7 @@ msgstr "Element avall"
 msgid "Item Up"
 msgstr "Element amunt"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "Desmu&nta-ho tot"
@@ -775,37 +777,37 @@ msgstr "Obre amb el Konsole"
 msgid "Open with File Manager"
 msgstr "Obre amb el gestor de fitxers"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:152
+#: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
 msgid "View Modes"
 msgstr "Modes de vista"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:158
+#: smb4k/smb4ksharesviewdockwidget.cpp:159
 #, kde-format
 msgid "Icon View"
 msgstr "Vista d'icones"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:164
+#: smb4k/smb4ksharesviewdockwidget.cpp:165
 #, kde-format
 msgid "List View"
 msgstr "Vista de llista"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:205
+#: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&incronitza"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Obre amb el Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Obre amb el gestor de f&itxers"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:373
+#: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

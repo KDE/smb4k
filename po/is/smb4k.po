@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-30 00:52+0000\n"
+"POT-Creation-Date: 2022-12-31 00:51+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -133,7 +133,7 @@ msgstr "&Sýsla með bókamerki"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Bæta við bókamerki"
@@ -667,8 +667,8 @@ msgid "Comment"
 msgstr "Athugasemd"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:118
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:473
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:485
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:406
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:469
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "&Skanna net"
@@ -683,20 +683,22 @@ msgstr "Hætt&a við"
 msgid "&Search"
 msgstr "&Leita"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#, fuzzy, kde-format
+#| msgid "&Custom Options"
+msgid "Add &Custom Options"
+msgstr "Sérsniðnir &valkostir"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Opna tengingarglugga"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Au&thentication"
 msgstr "Auð&kenning"
-
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
-#, kde-format
-msgid "&Custom Options"
-msgstr "Sérsniðnir &valkostir"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -714,18 +716,18 @@ msgid "&Mount"
 msgstr "&Tengja"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:187
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "&Aftengja"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:394
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:420
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:431
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "&Skanna vél"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:436
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "&Skanna vinnuhóp"
@@ -762,7 +764,7 @@ msgstr "Atriði"
 msgid "Item Up"
 msgstr "Atriði"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:193
+#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "Afte&ngja allt"
@@ -795,37 +797,37 @@ msgstr "Opna með Konso&le skjáhermi"
 msgid "Open with File Manager"
 msgstr "Opna í s&kráastjóra"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:152
+#: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
 msgid "View Modes"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:158
+#: smb4k/smb4ksharesviewdockwidget.cpp:159
 #, fuzzy, kde-format
 msgid "Icon View"
 msgstr "Táknmyndasýn"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:164
+#: smb4k/smb4ksharesviewdockwidget.cpp:165
 #, fuzzy, kde-format
 msgid "List View"
 msgstr "Sameignasýn"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:205
+#: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "Samr&æma"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:211
+#: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Opna með Konso&le skjáhermi"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Opna í s&kráastjóra"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:373
+#: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
