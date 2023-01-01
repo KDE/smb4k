@@ -192,8 +192,7 @@ msgid "Settings"
 msgstr "Configuración"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:64
-#, fuzzy, kde-format
-#| msgid "Wallet Entries"
+#, kde-format
 msgid "Wallet Entries"
 msgstr "Entradas da carteira"
 
@@ -372,14 +371,12 @@ msgid "Browse Settings"
 msgstr "Configuración básica"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Espertar na rede"
 
@@ -422,8 +419,7 @@ msgid "General"
 msgstr "Xeral"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Ligazóns"
 
@@ -449,20 +445,19 @@ msgid "File Attributes && Ownership"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
-#, fuzzy, kde-format
-#| msgid "Compression"
+#, kde-format
 msgid "Compression"
 msgstr "Compresión"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:333
-#, fuzzy, kde-format
-#| msgid "Files"
+#, kde-format
 msgid "Files"
 msgstr "Ficheiros"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:343
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
-#, kde-format
+#, fuzzy, kde-format
+#| msgid " kB"
 msgid " kB"
 msgstr " kB"
 
@@ -484,14 +479,12 @@ msgid "File Transfer"
 msgstr "Transferencia de ficheiros"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:403
-#, fuzzy, kde-format
-#| msgid "Files && Directories"
+#, kde-format
 msgid "Files && Directories"
 msgstr "Ficheiros e directorios"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Restricións"
 
@@ -517,8 +510,7 @@ msgid "Filtering"
 msgstr "Filtrado"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:564
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Sumas de comprobación"
 

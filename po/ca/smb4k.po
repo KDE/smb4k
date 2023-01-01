@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-31 00:51+0000\n"
-"PO-Revision-Date: 2022-12-30 05:42+0100\n"
+"PO-Revision-Date: 2022-12-31 06:36+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -670,10 +670,9 @@ msgstr "&Cerca"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "&Custom Options"
+#, kde-format
 msgid "Add &Custom Options"
-msgstr "Op&cions personalitzades"
+msgstr "Afegeix op&cions personalitzades"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format

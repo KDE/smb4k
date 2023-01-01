@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:52+0000\n"
-"PO-Revision-Date: 2022-12-24 12:02+0100\n"
+"PO-Revision-Date: 2022-12-29 06:27+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1072,7 +1072,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Conserva les llistes de control d'accés (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1083,66 +1083,61 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Conserva les llistes de control d'accés. Esta opció fa que «rsync» "
+"actualitze les ACL de destinació perquè siguen les mateixes que les ACL "
+"d'origen. L'opció també implica --perms. Els sistemes d'origen i de "
+"destinació cal que tinguen les entrades ACL compatibles perquè esta opció "
+"funcione adequadament."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Conserva les hores"
+msgstr "Conserva els atributs ampliats"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Conserva el grup (-g, --group). El grup del fitxer de destinació s'establirà "
-"amb el mateix valor que el del fitxer d'origen."
+"Conserva els atributs ampliats. Esta opció fa que «rsync» actualitze els "
+"atributs ampliats de destí perquè siguen els mateixos que els d'origen."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Conserva les hores"
+msgstr "Conserva les hores d'accés"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Conserva el grup (-g, --group). El grup del fitxer de destinació s'establirà "
-"amb el mateix valor que el del fitxer d'origen."
+"Conserva les hores d'accés. Açò fa que «rsync» establisca les hores d'accés "
+"(ús) dels fitxers de destinació amb els mateixos valors que els dels fitxers "
+"d'origen."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Conserva les hores"
+msgstr "Conserva les hores de creació"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Conserva el grup (-g, --group). El grup del fitxer de destinació s'establirà "
-"amb el mateix valor que el del fitxer d'origen."
+"Conserva les hores de creació. Açò fa que «rsync» establisca les hores de "
+"creació (novetat) dels fitxers de destinació amb els mateixos valors que els "
+"dels fitxers d'origen."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402

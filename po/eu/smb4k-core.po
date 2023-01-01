@@ -1,18 +1,18 @@
 # Translation for smb4k-core.po to Euskara/Basque (eu).
-# Copyright (C) 2020-2022, This file is copyright:
+# Copyright (C) 2020-2023 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:52+0000\n"
-"PO-Revision-Date: 2022-12-17 10:41+0100\n"
+"PO-Revision-Date: 2023-01-01 00:28+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
-"Language-Team: Basque\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1053,7 +1053,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Mantendu sarbide kontrolerako zerrendak (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1064,66 +1064,61 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Mantendu sarbide kontrolerako zerrendak. Aukera honek «rsync»ek helburuko "
+"ACLak eguneratzea eragiten du sorburuko ACLen berdinak izan daitezen. "
+"Aukerak «--perms» ere berekin dakar. Sorburuko eta helburuko sistemek ACL "
+"sarrera bateragarriak izan behar dituzte aukera hau behar bezala ibili "
+"dadin.."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Mantendu denborak"
+msgstr "Mantendu atributu hedatuak"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Mantendu taldea (-g, --group). Jomuga-fitxategiko taldea sorburu-"
-"fitxategikoaren balio berdinera ezarriko da."
+"Mantendu atributu hedatuak. Aukera honek «rsync»ek helburuko atributu "
+"hedatuak eguneratzea eragiten du sorburukoen berdinak izan daitezen."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Mantendu denborak"
+msgstr "Mantendu sarbide orduak"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Mantendu taldea (-g, --group). Jomuga-fitxategiko taldea sorburu-"
-"fitxategikoaren balio berdinera ezarriko da."
+"Mantendu sarbide orduak. Horrek «rsync»eri helburuko fitxategien sarbide "
+"(erabilera) orduak sorburuko fitxategien balio berdinera ezartzeko esaten "
+"dio."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Mantendu denborak"
+msgstr "Mantendu sortze orduak"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Mantendu taldea (-g, --group). Jomuga-fitxategiko taldea sorburu-"
-"fitxategikoaren balio berdinera ezarriko da."
+"Mantendu sortze orduak. Horrek «rsync»eri helburuko fitxategien sortze "
+"orduak (berritasuna) sorburuko fitxategien balio berdinera ezartzeko esaten "
+"dio."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402

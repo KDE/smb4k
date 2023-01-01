@@ -3754,8 +3754,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected; <guimenuitem
->read-write</guimenuitem
+>Omissió: no seleccionat; <guimenuitem
+>lectura-escriptura</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4048,8 +4048,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected; <guimenuitem
->default</guimenuitem
+>Omissió: no seleccionat; <guimenuitem
+>predeterminat</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4080,7 +4080,7 @@ ntlm auth = yes
 ></link
 >.</para>
               <para
->Default: not selected; port 445</para>
+>Omissió: no seleccionat; 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4121,7 +4121,7 @@ ntlm auth = yes
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Default: selected; your UID</para>
+>Omissió: seleccionat; el vostre ID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4137,7 +4137,7 @@ ntlm auth = yes
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Default: selected; your GID</para>
+>Omissió: seleccionat; el vostre GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4149,7 +4149,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount(8)"
+>Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer (file_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4157,7 +4157,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> and <ulink url="man:/umask(2)"
+> i <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4165,11 +4165,11 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> manual pages.</para>
+>.</para>
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Default: selected; 0755</para>
+>Omissió: seleccionat; 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4181,7 +4181,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount(8)"
+>Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4189,7 +4189,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> and <ulink url="man:/umask(2)"
+> i <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4197,11 +4197,11 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> manual pages.</para>
+>.</para>
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Default: selected; 0755</para>
+>Omissió: seleccionat; 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4535,8 +4535,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected; <guibutton
->default (Negotiate the highest version)</guibutton
+>Omissió: no seleccionat; <guibutton
+>predeterminat (Negocia la versió més alta)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4621,8 +4621,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected; <guibutton
->Follow the &CIFS;/SMB2 protocol strictly</guibutton
+>Omissió: no seleccionat; <guibutton
+>Segueix estrictament el protocol &CIFS;/SMB2</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4839,8 +4839,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected; <guibutton
->NTLMSSP protocol</guibutton
+>Omissió: no seleccionat; <guibutton
+>Protocol NTLMSSP</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4930,7 +4930,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode, you should read the <ulink url="man:/mount_smbfs"
+>Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer, haureu de llegir les pàgines de manual <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4938,7 +4938,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> and <ulink url="man:/umask(2)"
+> i <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4946,7 +4946,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> manual pages.</para>
+>.</para>
               <para
 >Omissió: 0755</para>
             </listitem>
@@ -4960,7 +4960,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount_smbfs"
+>Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4968,7 +4968,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> and <ulink url="man:/umask(2)"
+> i <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4976,7 +4976,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> manual pages.</para>
+>.</para>
               <para
 >Omissió: 0755</para>
             </listitem>
@@ -5818,19 +5818,19 @@ ntlm auth = yes
 >Entrades de la cartera</title>
       
       <para
->In the editor you can change or delete existing wallet entries. However, before you can edit them, they have to be loaded from the digital wallet by pressing the <guibutton
->Load</guibutton
-> button. The wallet entries then appear in the list view. An entry can be edited either by selecting it and clicking the <guibutton
->Edit</guibutton
-> button or by double-clicking. A password dialog with the stored user name and password is shown and you can modify the credentials.</para>
+>En aquest editor podreu canviar o suprimir les entrades existents de la cartera. Abans de poder-les editar, haureu de carregar-les des de la cartera digital prement el botó <guibutton
+>Carrega</guibutton
+>. Llavors apareixerà la llista de les entrades a la vista de la llista. Es pot editar una entrada seleccionant-la i marcant el botó <guibutton
+>Edita</guibutton
+> de la dreta o fent-hi doble clic. Es mostrarà un diàleg de contrasenya amb el nom d'usuari i la contrasenya i podreu modificar les credencials.</para>
       <para
->An entry can be removed by selecting it and clicking the <guibutton
->Remove</guibutton
-> button. All wallet entries can be removed at once by clicking the <guibutton
->Clear</guibutton
-> button. With the <guibutton
->Reset</guibutton
-> button you can restore the initial state.</para>
+>Es pot eliminar una entrada seleccionant-la i fent clic al botó <guibutton
+>Elimina</guibutton
+>. Totes les entrades de la cartera es poden eliminar alhora fent clic al botó <guibutton
+>Neteja</guibutton
+>. Amb el botó <guibutton
+>Reinicia</guibutton
+> podeu restaurar l'estat inicial.</para>
       <para
 >Un cop hàgiu finalitzat l'edició, es podran de cometre els canvis a la cartera fent clic a <guibutton
 >Desa</guibutton
@@ -5890,7 +5890,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Synchronization Directory</title>
+>Directori de sincronització</title>
 
         <variablelist>
           <varlistentry>
@@ -5938,15 +5938,15 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Option: <option
+>Opció: <option
 >-a</option
 >/<option
 >--archive</option
->, same as <option
+>, el mateix que <option
 >-rlptgoD</option
 > (no <option
 >-A</option
->, <option
+>), <option
 >-X</option
 >, <option
 >-U</option
@@ -5956,15 +5956,33 @@ ntlm auth = yes
 >-H</option
 >)</para>
               <para
->Alterna el mode de l'arxiu. Aquesta és una forma ràpida de dir que voleu recursivitat i conservar-ho gairebé tot. Cal tenir en compte que <option
+>Activa el mode d'arxiu. Aquesta és una forma ràpida de dir que voleu recursivitat i que voleu conservar gairebé tot. Tingueu en compte que <option
 >-a</option
-> no conservarà els enllaços durs, ja que trobar fitxers amb múltiples enllaços és costós. Haureu d'especificar per separat l'argument <option
+> no preserva els enllaços durs (<option
 >-H</option
+>), les llistes de control d'accés (ACL, <option
+>-A</option
+>), atributs ampliats (xattrs, <option
+>-X</option
+>), hores d'accés (<option
+>-U</option
+>) ni hores de creació (<option
+>-N</option
+>). Heu d'especificar aquestes opcions per separat. L'única excepció a l'equivalència anterior és quan s'especifica <option
+>--files-from</option
+>, en aquest cas no s'implica <option
+>-r</option
 >.</para>
               <para
->In case you do not want to run <application
->rsync</application
-> in archive mode, choose the appropriate arguments in the settings yourself.</para>
+>En cas que no vulgueu executar el <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> en el mode d'arxiu, trieu els arguments adequats en els paràmetres.</para>
               <para
 >Omissió: seleccionada</para>
             </listitem>
@@ -6076,8 +6094,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title
->Còpia de seguretat</title>
-
+>Còpies de seguretat</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6166,7 +6183,15 @@ ntlm auth = yes
               <para
 >En combinació amb l'opció <option
 >--backup</option
->, això li indica al rsync que emmagatzemi totes les còpies de seguretat a la carpeta especificada. És molt útil per a les còpies de seguretat incrementals. També podeu especificar un sufix per a la còpia de seguretat amb l'opció <option
+>, això li indica al <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> que emmagatzemi totes les còpies de seguretat a la carpeta especificada. És molt útil per a les còpies de seguretat incrementals. També podeu especificar un sufix per a la còpia de seguretat amb l'opció <option
 >--suffix</option
 > (en cas contrari, els fitxers per als quals es crea la còpia de seguretat a la carpeta especificada conservaran els noms de fitxer originals).</para>
               <para
@@ -6410,7 +6435,7 @@ ntlm auth = yes
               <para
 >Copia els enllaços simbòlics com a enllaços simbòlics.</para>
               <para
->Omissió: seleccionada</para>
+>Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6488,7 +6513,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Option: <option
+>Opció: <option
 >--munge-links</option
 ></para>
               <para
@@ -6596,11 +6621,14 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+    </sect2>
 
-      <sect3 id="configuration_page_synchronization_file_handling_perms">
+    <sect2 id="configuration_page_synchronization_attributes_ownership">
+      <title
+>Atributs dels fitxers i propietat</title>
+      <sect3 id="configuration_page_synchronization_attributes_ownership_attributes">
         <title
->Permisos, &etc;</title>
-
+>Atributs dels fitxers</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6619,9 +6647,216 @@ ntlm auth = yes
               <para
 >Aquesta opció fa que la banda de la recepció estableixi els permisos en la destinació com els de l'origen.</para>
               <para
->Omissió: seleccionada</para>
+>Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Conserva les llistes de control d'accés (ACL)</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-A</option
+>/<option
+>--acls</option
+></para>
+              <para
+>Conserva les llistes de control d'accés. Aquesta opció fa que el <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> actualitzi les ACL de destinació perquè siguin les mateixes que les ACL d'origen. L'opció també implica --perms. Els sistemes d'origen i de destinació cal que tinguin les entrades ACL compatibles perquè aquesta opció funcioni adequadament.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Conserva els atributs ampliats</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-X</option
+>/<option
+>--xattrs</option
+></para>
+              <para
+>Conserva els atributs ampliats. Aquesta opció fa que el <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> actualitzi els atributs ampliats de destí perquè siguin els mateixos que els d'origen.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Conserva les hores d'accés</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-U</option
+>/<option
+>--atimes</option
+></para>
+              <para
+>Conserva les hores d'accés. Això fa que el <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> estableixi les hores d'accés (ús) dels fitxers de destinació amb els mateixos valors que els dels fitxers d'origen.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Conserva les hores de creació</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-N</option
+>/<option
+>--crtimes</option
+></para>
+              <para
+>Conserva les hores de creació. Això fa que el <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> estableixi les hores de creació (novetat) dels fitxers de destinació amb els mateixos valors que els dels fitxers d'origen.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Conserva els dispositius i fitxers especials</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-D</option
+>/<option
+>--devices --specials</option
+></para>
+              <para
+>Aquesta opció farà que el <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> transfereixi els caràcters i els fitxers de dispositiu de blocs, així com els fitxers especials (com ara els sòcols i fifo) al sistema remot. Aquesta opció no tindrà efecte si la banda de la recepció no s'executa com a superusuari i no s'especifica <option
+>--super</option
+>.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Conserva les hores</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-t</option
+>/<option
+>--times</option
+></para>
+              <para
+>Li indica al <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> que transfereixi els temps de modificació juntament amb els fitxers i que ho actualitzi en el sistema remot.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Omet els directoris en conservar les hores</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-O</option
+>/<option
+>--omit-dir-times</option
+></para>
+              <para
+>Li indica al <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> que ometi els directoris quan mantinguin l'hora de modificació (vegeu <option
+>--times</option
+>).</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+      
+      <sect3 id="configuration_page_synchronization_attributes_ownership_ownership">
+        <title
+>Propietat</title>
+        <variablelist>
           <varlistentry>
             <term>
               <menuchoice
@@ -6659,7 +6894,7 @@ ntlm auth = yes
 >--super</option
 >.</para>
               <para
->Omissió: seleccionada</para>
+>Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6689,94 +6924,6 @@ ntlm auth = yes
 >--no-super</option
 >), només es conservaran els grups als quals sigui membre el receptor.</para>
               <para
->Omissió: seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Conserva els dispositius i fitxers especials</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-D</option
->/<option
->--devices --specials</option
-></para>
-              <para
->Aquesta opció farà que el <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> transfereixi els caràcters i els fitxers de dispositiu de blocs, així com els fitxers especials (com ara els sòcols i fifo) al sistema remot. Aquesta opció no tindrà efecte si la banda de la recepció no s'executa com a superusuari i no s'especifica <option
->--super</option
->.</para>
-              <para
->Omissió: seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Conserva les hores</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-t</option
->/<option
->--times</option
-></para>
-              <para
->Li indica al <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> que transfereixi els temps de modificació juntament amb els fitxers i que ho actualitzi en el sistema remot.</para>
-              <para
->Omissió: seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Omet els directoris en conservar les hores</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-O</option
->/<option
->--omit-dir-times</option
-></para>
-              <para
->Li indica al <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> que ometi els directoris quan mantinguin l'hora de modificació (vegeu <option
->--times</option
->).</para>
-              <para
 >Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
@@ -6791,11 +6938,9 @@ ntlm auth = yes
     <sect2 id="configuration_page_synchronization_file_transfer">
       <title
 >Transferència de fitxers</title>
-
       <sect3 id="configuration_page_synchronization_file_transfer_compression">
         <title
 >Compressió</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6826,7 +6971,15 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Estableix explícitament el nivell de compressió a utilitzar (--compress-level=NÚM). Si NÚM no és zero, l'argument --compress és implícit.</para>
+>Opció: <option
+>--compress-level=NUM</option
+></para>
+              <para
+>Estableix explícitament el nivell de compressió a utilitzar. Si NÚM no és zero, l'argument <option
+>--compress</option
+> és implícit.</para>
+              <para
+>Omissió: no seleccionada; NRE: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6838,7 +6991,21 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Sobreescriu la llista de sufixos de fitxers que no es comprimiran (--skip-compress=LLISTA). La LLISTA hauria de ser un o més sufixos de fitxers (sense el punt) separats per barres. Es pot especificar una cadena buida per a indicar que no s'ha d'ometre cap fitxer. La llista predeterminada de sufixos se substituirà per aquesta llista. Per als detalls addicionals, vegeu la pàgina del manual del «rsync».</para>
+>Opció: <option
+>--skip-compress=LIST</option
+></para>
+              <para
+>Sobreescriu la llista de sufixos de fitxers que no es comprimiran. La LLISTA hauria de ser un o més sufixos de fitxers (sense el punt) separats per barres. Es pot especificar una cadena buida per a indicar que no s'ha d'ometre cap fitxer. La llista predeterminada de sufixos se substituirà amb aquesta llista. Per als detalls addicionals, vegeu la <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>pàgina del manual del «rsync»</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>.</para>
+              <para
+>Omissió: no seleccionada; LLISTA: buida</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6847,7 +7014,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_files">
         <title
 >Fitxers</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6975,7 +7141,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
         <title
 >Miscel·lània</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6992,7 +7157,7 @@ ntlm auth = yes
               <para
 >Estableix la velocitat màxima de transferència de dades en kilobytes per segon.</para>
               <para
->Omissió: no seleccionada; VELOCITAT: 0 KiB/s</para>
+>Omissió: no seleccionada; VELOCITAT: 0 kB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7578,8 +7743,7 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
         <title
->General</title>
-
+>Miscel·lània</title>
         <variablelist>
           <varlistentry>
             <term>
