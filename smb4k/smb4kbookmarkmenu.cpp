@@ -66,37 +66,39 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     //
     // Add the toplevel "Mount All Bookmarks" action.
     //
-    // Show it if there are no (non-empty) categories defined and additionally
-    // enable it, if not all bookmarks are already mounted.
-    //
-    m_toplevelMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount All Bookmarks"), menu());
+    QString toplevelMountText;
+    QStringList allCategories = Smb4KBookmarkHandler::self()->categoryList();
+
+    if (allCategories.isEmpty() || (allCategories.size() == 1 && allCategories.first().isEmpty())) {
+        toplevelMountText = i18n("Mount All Bookmarks");
+    } else {
+        toplevelMountText = i18n("Mount Bookmarks");
+    }
+
+    m_toplevelMount = new QAction(KDE::icon(QStringLiteral("media-mount")), toplevelMountText, menu());
     m_toplevelMount->setVisible(false);
     m_toplevelMount->setEnabled(false);
     addAction(m_toplevelMount);
     m_mountActions->addAction(m_toplevelMount);
 
-    QStringList allCategories = Smb4KBookmarkHandler::self()->categoryList();
+    QList<BookmarkPtr> toplevelBookmarks = Smb4KBookmarkHandler::self()->bookmarksList("");
 
-    if (allCategories.isEmpty() || (allCategories.size() == 1 && allCategories.first().isEmpty())) {
+    if (!toplevelBookmarks.isEmpty()) {
         m_toplevelMount->setVisible(true);
-
-        QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList();
         int mountedBookmarks = 0;
 
-        for (const BookmarkPtr &bookmark : qAsConst(bookmarks)) {
+        for (const BookmarkPtr &bookmark : qAsConst(toplevelBookmarks)) {
             QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
 
-            if (!mountedShares.isEmpty()) {
-                for (const SharePtr &share : qAsConst(mountedShares)) {
-                    if (!share->isForeign()) {
-                        mountedBookmarks++;
-                        break;
-                    }
+            for (const SharePtr &share : qAsConst(mountedShares)) {
+                if (!share->isForeign()) {
+                    mountedBookmarks++;
+                    break;
                 }
             }
         }
 
-        m_toplevelMount->setEnabled(mountedBookmarks != bookmarks.size());
+        m_toplevelMount->setEnabled(mountedBookmarks != toplevelBookmarks.size());
     }
 
     //

@@ -8,6 +8,7 @@
 // application specific includes
 #include "smb4ksharesmenu.h"
 #include "core/smb4kbookmarkhandler.h"
+#include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4kshare.h"
@@ -185,6 +186,19 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     m_actions->addAction(addBookmark);
 
     //
+    // Add the custom options action to the menau
+    //
+    QAction *addCustomOptions = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("Add &Custom Options"), shareMenu->menu());
+
+    QMap<QString, QVariant> customOptionsData;
+    customOptionsData[QStringLiteral("type")] = QStringLiteral("options");
+    customOptionsData[QStringLiteral("mountpoint")] = share->path();
+
+    addCustomOptions->setData(customOptionsData);
+    shareMenu->addAction(addCustomOptions);
+    m_actions->addAction(addCustomOptions);
+
+    //
     // Add the synchronization action to the menu
     //
     QAction *synchronize = new QAction(KDE::icon(QStringLiteral("folder-sync")), i18n("Synchronize"), shareMenu->menu());
@@ -342,6 +356,8 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
             Smb4KMounter::self()->unmountShare(share, false);
         } else if (type == QStringLiteral("bookmark")) {
             Smb4KBookmarkHandler::self()->addBookmark(share);
+        } else if (type == QStringLiteral("options")) {
+            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(share);
         } else if (type == QStringLiteral("sync")) {
             Smb4KSynchronizer::self()->synchronize(share);
         } else if (type == QStringLiteral("konsole")) {
