@@ -473,9 +473,9 @@ QStringList Smb4KBookmarkHandler::categoryList() const
     QStringList categories;
     QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
 
-    for (const BookmarkPtr &b : qAsConst(temporalBookmarkList)) {
-        if (!categories.contains(b->categoryName())) {
-            categories << b->categoryName();
+    for (const BookmarkPtr &bookmark : qAsConst(temporalBookmarkList)) {
+        if (!categories.contains(bookmark->categoryName())) {
+            categories << bookmark->categoryName();
         }
     }
 

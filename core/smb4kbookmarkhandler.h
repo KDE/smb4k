@@ -145,7 +145,7 @@ public:
     BookmarkPtr findBookmarkByLabel(const QString &label);
 
     /**
-     * Returns the sorted list of bookmark categories.
+     * Returns the sorted list of all bookmark categories.
      *
      * @returns the list of categories
      */
