@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:52+0000\n"
-"PO-Revision-Date: 2022-12-31 00:02+0300\n"
+"PO-Revision-Date: 2022-12-31 18:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1200,7 +1200,7 @@ msgstr ""
 #: smb4k.kcfg:427
 #, kde-format
 msgid "Remove synchronized source files"
-msgstr "Eşzamanlandırılmış kaynak dosyaları kaldır"
+msgstr "Eşzamanlanmış kaynak dosyaları kaldır"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
 #: smb4k.kcfg:428
@@ -1211,10 +1211,9 @@ msgid ""
 "part of the transfer and have been successfully duplicated on the receiving "
 "side."
 msgstr ""
-"Eşzamanlandırılmış bütün kaynak dosyaları kaldır (--remove-source-files). "
-"Bu, rsync uygulamasına alıcı tarafta başarılı şekilde çoğaltılmış ve "
-"aktarımın bir kısmı olan dizin olmayan ögeleri gönderen taraftan kaldırması "
-"söyler."
+"Eşzamanlanmış bütün kaynak dosyaları kaldır (--remove-source-files). Bu, "
+"rsync uygulamasına alıcı tarafta başarılı şekilde çoğaltılmış ve aktarımın "
+"bir kısmı olan dizin olmayan ögeleri gönderen taraftan kaldırması söyler."
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
 #: smb4k.kcfg:432
@@ -1231,8 +1230,8 @@ msgid ""
 "side, but only for the directories that are being synchronized."
 msgstr ""
 "Hedeften fazlalık dosyaları sil (--delete). Bu, gönderici tarafta olmayan "
-"tüm dosyaların, alıcı taraftan silinmesini söyler, fakat sadece "
-"eşzamanlandırılmış dizinler içindir."
+"tüm dosyaların, alıcı taraftan silinmesini söyler; ancak yalnızca "
+"eşzamanlanmış dizinler içindir."
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
 #: smb4k.kcfg:437
@@ -3592,13 +3591,13 @@ msgstr ""
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
 msgstr ""
-"<p><b>%1</b> ile <b>%2</b> eşzamanlandırması başarısız oldu:</p><p><tt>%3</"
-"tt></p>"
+"<p><b>%1</b> ile <b>%2</b> eşzamanlaması başarısız oldu:</p><p><tt>%3</tt></"
+"p>"
 
 #: smb4knotification.cpp:236
 #, kde-format
 msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
-msgstr "<p><b>%1</b> ile <b>%2</b> eşzamanlandırması başarısız oldu.</p>"
+msgstr "<p><b>%1</b> ile <b>%2</b> eşzamanlaması başarısız oldu.</p>"
 
 #: smb4knotification.cpp:248
 #, kde-format
@@ -3679,13 +3678,13 @@ msgid ""
 "<p>Executing an action with root privileges failed (error code: <tt>%1</tt>)."
 "</p>"
 msgstr ""
-"<p>Bir işlemi root hakları ile yürütme başarısız oldu (hata kodu:<tt>%1</"
-"tt>).</p>"
+"<p>Eylemi yönetici ayrıcalıklarıyla yürütme başarısız oldu (hata kodu:<tt>"
+"%1</tt>).</p>"
 
 #: smb4knotification.cpp:404
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
-msgstr "<p>Bir eylemi root hakları ile yürütme başarısız oldu.</p>"
+msgstr "<p>Eylemi yönetici ayrıcalıklarıyla yürütme başarısız oldu.</p>"
 
 #: smb4knotification.cpp:416
 #, kde-format
@@ -3790,7 +3789,7 @@ msgstr "Eşzamanla"
 #: smb4ksynchronizer_p.cpp:554
 #, kde-format
 msgid "Synchronize the destination with the source"
-msgstr "Hedefi kaynak ile eşzamanlandır"
+msgstr "Hedefi kaynak ile eşzamanla"
 
 #: smb4ksynchronizer_p.cpp:568
 #, kde-format

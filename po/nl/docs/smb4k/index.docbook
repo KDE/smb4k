@@ -3732,8 +3732,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected; <guimenuitem
->read-write</guimenuitem
+>Standaard: niet geselecteerd; <guimenuitem
+>lezen-schrijven</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4026,8 +4026,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Default: not selected; <guimenuitem
->default</guimenuitem
+>Standaard: niet geselecteerd; <guimenuitem
+>standaard</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4058,7 +4058,7 @@ ntlm auth = yes
 ></link
 >.</para>
               <para
->Default: not selected; port 445</para>
+>Standaard: niet geselecteerd; poort 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4099,7 +4099,7 @@ ntlm auth = yes
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Default: selected; your UID</para>
+>Standaard: geselecteerd; uw UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4115,7 +4115,7 @@ ntlm auth = yes
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Default: selected; your GID</para>
+>Standaard: geselecteerd; uw GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4127,7 +4127,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount(8)"
+>Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus (file_mode), moet u de manpagina's <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4135,7 +4135,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> and <ulink url="man:/umask(2)"
+> en <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4143,11 +4143,11 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> manual pages.</para>
+> lezen.</para>
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Default: selected; 0755</para>
+>Standaard: geselecteerd; 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4159,7 +4159,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount(8)"
+>Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over het mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4167,7 +4167,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> and <ulink url="man:/umask(2)"
+> en <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4175,11 +4175,11 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> manual pages.</para>
+> lezen.</para>
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Default: selected; 0755</para>
+>Standaard: geselecteerd; 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4513,8 +4513,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected; <guibutton
->default (Negotiate the highest version)</guibutton
+>Standaard: niet geselecteerd; <guibutton
+>standaard (onderhandel de hoogste versie)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4599,8 +4599,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected; <guibutton
->Follow the &CIFS;/SMB2 protocol strictly</guibutton
+>Standaard: niet geselecteerd; <guibutton
+>Volg strikt het &CIFS;/SMB2 protocol</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4817,8 +4817,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Default: not selected; <guibutton
->NTLMSSP protocol</guibutton
+>Standaard: niet geselecteerd; <guibutton
+>NTLMSSP-protocol</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4908,7 +4908,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode, you should read the <ulink url="man:/mount_smbfs"
+>Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus, moet u de manpagina's <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4916,7 +4916,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> and <ulink url="man:/umask(2)"
+> en <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4924,7 +4924,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> manual pages.</para>
+> lezen.</para>
               <para
 >Standaard: 0755</para>
             </listitem>
@@ -4938,7 +4938,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount_smbfs"
+>Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4946,7 +4946,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> and <ulink url="man:/umask(2)"
+> en <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4954,7 +4954,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> manual pages.</para>
+> lezen.</para>
               <para
 >Standaard: 0755</para>
             </listitem>
@@ -5796,19 +5796,19 @@ ntlm auth = yes
 >Items in portefeuille</title>
       
       <para
->In the editor you can change or delete existing wallet entries. However, before you can edit them, they have to be loaded from the digital wallet by pressing the <guibutton
->Load</guibutton
-> button. The wallet entries then appear in the list view. An entry can be edited either by selecting it and clicking the <guibutton
->Edit</guibutton
-> button or by double-clicking. A password dialog with the stored user name and password is shown and you can modify the credentials.</para>
+>In de bewerker kunt u items in de portefeuille wijzigen en verwijderen. Echter voordat u ze kunt bewerken, moeten ze geladen worden uit de digitale portefeuille door op de knop <guibutton
+>Laden</guibutton
+> te drukken. De portefeuille-items verschijnen dan in de lijstweergave. Een item kan bewerkt worden door het te selecteren en te klikken op de knop <guibutton
+>Bewerken</guibutton
+> of u kunt er op dubbelklikken. Er verschijnt een wachtwoorddialoog met de gebruikersnaam en het wachtwoord wordt getoond en u kunt ze wijzigen.</para>
       <para
->An entry can be removed by selecting it and clicking the <guibutton
->Remove</guibutton
-> button. All wallet entries can be removed at once by clicking the <guibutton
->Clear</guibutton
-> button. With the <guibutton
+>Een item kan verwijderd worden door het te selecteren en te klikken op de knop <guibutton
+>Verwijderen</guibutton
+>. Alle items in de portefeuille kunnen in een keer worden verwijderd door op de knop <guibutton
+>Wissen</guibutton
+> te klikken.Met de knop <guibutton
 >Reset</guibutton
-> button you can restore the initial state.</para>
+> kunt u de initiële status herstellen.</para>
       <para
 >Als u klaar bent met bewerken, kunt u de wijzigingen in de portefeuille vastleggen door te klikken op <guibutton
 >Opslaan</guibutton
@@ -5868,7 +5868,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Synchronization Directory</title>
+>Synchronisatiemap</title>
 
         <variablelist>
           <varlistentry>
@@ -5918,11 +5918,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Option: <option
+>Optie: <option
 >-a</option
 >/<option
 >--archive</option
->, same as <option
+>, hetzelfde als <option
 >-rlptgoD</option
 > (no <option
 >-A</option
@@ -5936,15 +5936,33 @@ ntlm auth = yes
 >-H</option
 >)</para>
               <para
->Schakelt de archiefmodus in. Dit is een snelle manier om te zeggen dat u de mappenstructuur wilt en zal bijna alles bewaren. Merk op dat <option
+>Schakel de modus archiveren aan. Dit is een snelle manier van zeggen dat u recursie wilt en bijna alles wilt behouden. Merk op dat <option
 >-a</option
-> geen hardlinks bewaart, omdat het opzoeken van meervoudig verknoopte bestanden tijdrovend is. U moet <option
+> geen harde koppelingen behoudt (<option
 >-H</option
-> separaat opgeven.</para>
+>), toegangscontrolelijsten (ACL's, <option
+>-A</option
+>), uitgebreide attributen (xattrs, <option
+>-X</option
+>), toegangstijden (gebruik) (<option
+>-U</option
+>) noch aanmaaktijden (<option
+>-N</option
+>). U moet deze opties apart specificeren. De enige uitzondering op het bovenstaande is wanneer <option
+>--files-from</option
+> is gespecificeerd, in welk geval <option
+>-r</option
+> is niet impliciet.</para>
               <para
->In case you do not want to run <application
->rsync</application
-> in archive mode, choose the appropriate arguments in the settings yourself.</para>
+>In het geval dat u <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> niet in modus archiveren wilt uitvoeren, kies de van toepassing zijnde argumenten in de instellingen zelf.</para>
               <para
 >Standaard: geselecteerd</para>
             </listitem>
@@ -6056,8 +6074,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title
->Reservekopie</title>
-
+>Back-ups</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6146,7 +6163,15 @@ ntlm auth = yes
               <para
 >In combinatie met de optie <option
 >--backup</option
-> zorgt dit ervoor dat rsync alle backups in de opgegeven map opslaat. Dit is erg handig bij incrementele backups. U kunt daarnaast met behulp van de optie <option
+> zorgt dit ervoor dat <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> alle backups in de opgegeven map opslaat. Dit is erg handig bij incrementele backups. U kunt daarnaast met behulp van de optie <option
 >--suffix</option
 > voor de backups een achtervoegsel opgegeven (anders houden de backup-bestanden in de opgegeven map hun originele bestandsnamen).</para>
               <para
@@ -6390,7 +6415,7 @@ ntlm auth = yes
               <para
 >Kopieert symbolische koppeling als symbolische koppeling.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6468,7 +6493,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Option: <option
+>Optie: <option
 >--munge-links</option
 ></para>
               <para
@@ -6576,11 +6601,14 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+    </sect2>
 
-      <sect3 id="configuration_page_synchronization_file_handling_perms">
+    <sect2 id="configuration_page_synchronization_attributes_ownership">
+      <title
+>Attributen van bestand &amp; eigendom</title>
+      <sect3 id="configuration_page_synchronization_attributes_ownership_attributes">
         <title
->Rechten, &etc;</title>
-
+>Bestandsattributen</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6599,25 +6627,25 @@ ntlm auth = yes
               <para
 >Dit zorgt ervoor dat aan de ontvangende zijde de permissies hetzelfde zijn als bij de verzendende zijde.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Eigenaar behouden</guibutton
+>Lijst met toegangscontrole behouden (ACL's)</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
 >Optie: <option
->-o</option
+>-A</option
 >/<option
->--owner</option
+>--acls</option
 ></para>
               <para
->Dit zorgt ervoor dat <ulink url="man:/rsync"
+>Lijsten met toegangscontrole behouden. Deze optie laat <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -6625,39 +6653,27 @@ ntlm auth = yes
 >1</manvolnum
 ></citerefentry
 ></ulink
-> het doelbestand dezelfde eigenaar geeft als die van het bronbestand. Standaard, wordt daarvoor de naam gebruikt, maar kan in bepaalde gevallen terugvallen op het ID-nummer (lees de beschrijving van de optie <option
->--numeric-ids</option
-> voor een complete beschrijving). Deze optie heeft geen effect als de ontvangende <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> niet met super user-rechten is opgestart en <option
->--super</option
-> niet is opgegeven.</para>
+> de ACL's van de bestemming bijwerken om hetzelfde te zijn als de ACL's van de bron. De optie impliceert ook --perms. De bron- en bestemmingssystemen moeten compatibele ACL-items hebben om deze optie juist te laten werken.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Behoud groep</guibutton
+>Uitgebreide attributen behouden</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
 >Optie: <option
->-g</option
+>-X</option
 >/<option
->--group</option
+>--xattrs</option
 ></para>
               <para
->Dit zorgt ervoor dat <ulink url="man:/rsync"
+>Uitgebreide attributen behouden. Deze optie laat <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -6665,11 +6681,65 @@ ntlm auth = yes
 >1</manvolnum
 ></citerefentry
 ></ulink
-> het doelbestand dezelfde groep geeft als van het bronbestand. Als de ontvangende programma niet als super-user (of met de <option
->--no-super</option
-> optie) werkt,dan worden alleen de groepen waarvan de ontvanger lid is, worden bewaard.</para>
+> de uitgebreide attributen van de bestemming bijwerken om hetzelfde te zijn als die van de bron.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Toegangstijden behouden</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-U</option
+>/<option
+>--atimes</option
+></para>
+              <para
+>Toegangstijden behouden. Dit vertelt <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> om set de toegangstijden (gebruik) van de bestemmingsbestanden hetzelfde in te stellen als de bronbestanden.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Aanmaaktijden behouden</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-N</option
+>/<option
+>--crtimes</option
+></para>
+              <para
+>Aanmaaktijden behouden. Dit vertelt <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> om de aanmaaktijden (nieuwheid) van de bestemmingsbestanden hetzelfde in te stellen als de bronbestanden.</para>
+              <para
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6707,7 +6777,7 @@ ntlm auth = yes
 >--super</option
 > niet is opgegeven.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6735,7 +6805,7 @@ ntlm auth = yes
 ></ulink
 > om tijden van wijziging mee te zenden met de bestanden en ze op het systeem op afstand bij te werken.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6770,6 +6840,83 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+      
+      <sect3 id="configuration_page_synchronization_attributes_ownership_ownership">
+        <title
+>Eigendom</title>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Eigenaar behouden</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-o</option
+>/<option
+>--owner</option
+></para>
+              <para
+>Dit zorgt ervoor dat <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> het doelbestand dezelfde eigenaar geeft als die van het bronbestand. Standaard, wordt daarvoor de naam gebruikt, maar kan in bepaalde gevallen terugvallen op het ID-nummer (lees de beschrijving van de optie <option
+>--numeric-ids</option
+> voor een complete beschrijving). Deze optie heeft geen effect als de ontvangende <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> niet met super user-rechten is opgestart en <option
+>--super</option
+> niet is opgegeven.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Behoud groep</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-g</option
+>/<option
+>--group</option
+></para>
+              <para
+>Dit zorgt ervoor dat <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> het doelbestand dezelfde groep geeft als van het bronbestand. Als de ontvangende programma niet als super-user (of met de <option
+>--no-super</option
+> optie) werkt,dan worden alleen de groepen waarvan de ontvanger lid is, worden bewaard.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
 
 <!-- 
@@ -6779,11 +6926,9 @@ ntlm auth = yes
     <sect2 id="configuration_page_synchronization_file_transfer">
       <title
 >Bestandsoverdracht</title>
-
       <sect3 id="configuration_page_synchronization_file_transfer_compression">
         <title
 >Compressie</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6814,7 +6959,13 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Stel expliciet het te gebruiken compressieniveau in (--compress-level=NUM). Als NUM ongelijk nul is, is het argument --compress impliciet.</para>
+>Optie: <option
+>--compress-level=NUM</option
+></para>
+              <para
+>Stel expliciet het te gebruiken compressieniveau in. Als NUM ongelijk nul is, is het argument --compress impliciet.</para>
+              <para
+>Standaard: niet geselecteerd: NUM: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6826,7 +6977,21 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Overschrijf de lijst met achtervoegsel van bestanden die niet gecomprimeerd zullen worden (--skip-compress=LIJST). De LIJST zou een of meer achtervoegsels van bestanden moeten zijn (zonder de punt) gescheiden door slashes. U kunt een lege tekenreeks specificeren om aan te geven dat geen bestand overgeslagen mag worden. De standaard lijst met achtervoegsels zal vervangen worden door deze lijst. Voor verdere details, zie de manpagina van rsync.</para>
+>Optie: <option
+>--skip-compress=LIST</option
+></para>
+              <para
+>Overschrijf de lijst met achtervoegsel van bestanden die niet gecomprimeerd zullen worden. De LIJST zou een of meer achtervoegsels van bestanden moeten zijn (zonder de punt) gescheiden door slashes. U kunt een lege tekenreeks specificeren om aan te geven dat geen bestand overgeslagen mag worden. De standaard lijst met achtervoegsels zal vervangen worden door deze lijst. Voor verdere details, zie de <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>manpagina van rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>.</para>
+              <para
+>Standaard: niet geselecteerd; LIJST: leeg</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6835,7 +7000,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_files">
         <title
 >Bestanden</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6963,7 +7127,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
         <title
 >Diversen</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6980,7 +7143,7 @@ ntlm auth = yes
               <para
 >De maximale overdrachtssnelheid in kilobytes per seconde instellen.</para>
               <para
->Standaard: niet geselecteerd: RATE: 0 KiB/s</para>
+>Standaard: niet geselecteerd: SNELHEID: 0 kB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7566,8 +7729,7 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
         <title
->Algemeen</title>
-
+>Diversen</title>
         <variablelist>
           <varlistentry>
             <term>
