@@ -66,25 +66,13 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     //
     // Add the toplevel "Mount All Bookmarks" action.
     //
-    QString toplevelMountText;
-    QStringList allCategories = Smb4KBookmarkHandler::self()->categoryList();
-
-    if (allCategories.isEmpty() || (allCategories.size() == 1 && allCategories.first().isEmpty())) {
-        toplevelMountText = i18n("Mount All Bookmarks");
-    } else {
-        toplevelMountText = i18n("Mount Bookmarks");
-    }
-
-    m_toplevelMount = new QAction(KDE::icon(QStringLiteral("media-mount")), toplevelMountText, menu());
-    m_toplevelMount->setVisible(false);
-    m_toplevelMount->setEnabled(false);
+    m_toplevelMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount All Bookmarks"), menu());
     addAction(m_toplevelMount);
     m_mountActions->addAction(m_toplevelMount);
 
-    QList<BookmarkPtr> toplevelBookmarks = Smb4KBookmarkHandler::self()->bookmarksList("");
+    QList<BookmarkPtr> toplevelBookmarks = Smb4KBookmarkHandler::self()->bookmarksList(QStringLiteral(""));
 
     if (!toplevelBookmarks.isEmpty()) {
-        m_toplevelMount->setVisible(true);
         int mountedBookmarks = 0;
 
         for (const BookmarkPtr &bookmark : qAsConst(toplevelBookmarks)) {
@@ -386,18 +374,33 @@ void Smb4KBookmarkMenu::removeBookmarkFromMenu(const BookmarkPtr &bookmark)
 
 void Smb4KBookmarkMenu::adjustMountActions()
 {
-    //
-    // Enable and show the mount action(s)
-    //
-    QStringList allCategories = Smb4KBookmarkHandler::self()->categoryList();
+    QList<BookmarkPtr> toplevelBookmarks = Smb4KBookmarkHandler::self()->bookmarksList(QStringLiteral(""));
 
-    if (allCategories.isEmpty() || (allCategories.size() == 1 && allCategories.first().isEmpty())) {
-        m_toplevelMount->setVisible(true);
-
-        QList<BookmarkPtr> allBookmarks = Smb4KBookmarkHandler::self()->bookmarksList();
+    if (!toplevelBookmarks.isEmpty()) {
         int mountedBookmarks = 0;
 
-        for (const BookmarkPtr &bookmark : qAsConst(allBookmarks)) {
+        for (const BookmarkPtr &bookmark : qAsConst(toplevelBookmarks)) {
+            QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
+
+            for (const SharePtr &share : qAsConst(mountedShares)) {
+                if (!share->isForeign()) {
+                    mountedBookmarks++;
+                    break;
+                }
+            }
+        }
+
+        m_toplevelMount->setEnabled(mountedBookmarks != toplevelBookmarks.size());
+    }
+    
+    QList<QAction *> allMountActions = m_mountActions->actions();
+    QStringList allCategories = Smb4KBookmarkHandler::self()->categoryList();
+    int mountedBookmarks = 0;
+
+    for (const QString &category : qAsConst(allCategories)) {
+        QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(category);
+
+        for (const BookmarkPtr &bookmark : bookmarks) {
             QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
 
             if (!mountedShares.isEmpty()) {
@@ -410,40 +413,15 @@ void Smb4KBookmarkMenu::adjustMountActions()
             }
         }
 
-        m_toplevelMount->setEnabled(mountedBookmarks != allBookmarks.size());
-    } else {
-        m_toplevelMount->setVisible(false);
-        m_toplevelMount->setEnabled(false);
-
-        QList<QAction *> allMountActions = m_mountActions->actions();
-        int mountedBookmarks = 0;
-
-        for (const QString &category : qAsConst(allCategories)) {
-            QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarksList(category);
-
-            for (const BookmarkPtr &bookmark : bookmarks) {
-                QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
-
-                if (!mountedShares.isEmpty()) {
-                    for (const SharePtr &share : qAsConst(mountedShares)) {
-                        if (!share->isForeign()) {
-                            mountedBookmarks++;
-                            break;
-                        }
-                    }
-                }
+        for (QAction *action : allMountActions) {
+            if (action->data().toMap().value(QStringLiteral("categrory")).toString() == category
+                && action->data().toMap().value(QStringLiteral("type")) == QStringLiteral("category_mount")) {
+                action->setEnabled(bookmarks.size() != mountedBookmarks);
+                break;
             }
-
-            for (QAction *action : allMountActions) {
-                if (action->data().toMap().value(QStringLiteral("categrory")).toString() == category
-                    && action->data().toMap().value(QStringLiteral("type")) == QStringLiteral("category_mount")) {
-                    action->setEnabled(bookmarks.size() != mountedBookmarks);
-                    break;
-                }
-            }
-
-            mountedBookmarks = 0;
         }
+
+        mountedBookmarks = 0;
     }
 }
 
