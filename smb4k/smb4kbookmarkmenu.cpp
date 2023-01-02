@@ -70,25 +70,6 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     addAction(m_toplevelMount);
     m_mountActions->addAction(m_toplevelMount);
 
-    QList<BookmarkPtr> toplevelBookmarks = Smb4KBookmarkHandler::self()->bookmarksList(QStringLiteral(""));
-
-    if (!toplevelBookmarks.isEmpty()) {
-        int mountedBookmarks = 0;
-
-        for (const BookmarkPtr &bookmark : qAsConst(toplevelBookmarks)) {
-            QList<SharePtr> mountedShares = findShareByUrl(bookmark->url());
-
-            for (const SharePtr &share : qAsConst(mountedShares)) {
-                if (!share->isForeign()) {
-                    mountedBookmarks++;
-                    break;
-                }
-            }
-        }
-
-        m_toplevelMount->setEnabled(mountedBookmarks != toplevelBookmarks.size());
-    }
-
     //
     // Add a separator
     //
