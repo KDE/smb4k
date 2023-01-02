@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:51+0000\n"
+"POT-Creation-Date: 2023-01-02 01:01+0000\n"
 "PO-Revision-Date: 2022-08-03 09:15+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -135,9 +135,15 @@ msgstr "&Ordna bokmärken"
 msgid "Add &Bookmark"
 msgstr "Lägg till &bokmärke"
 
-#: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
 #, kde-format
 msgid "Mount All Bookmarks"
+msgstr "Montera alla bokmärken"
+
+#: smb4k/smb4kbookmarkmenu.cpp:75
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Montera alla bokmärken"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -521,7 +527,7 @@ msgstr "Resursvisning"
 msgid "Dock Widgets"
 msgstr "Dockningskomponenter"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:37
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Monterade resurser"
@@ -666,7 +672,7 @@ msgstr "&Avbryt"
 msgid "&Search"
 msgstr "&Sök"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
@@ -745,32 +751,32 @@ msgstr "Objekt neråt"
 msgid "Item Up"
 msgstr "Objekt uppåt"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "A&vmontera alla"
 
-#: smb4k/smb4ksharesmenu.cpp:158
+#: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
 msgid "Unmount"
 msgstr "Avmontera"
 
-#: smb4k/smb4ksharesmenu.cpp:177
+#: smb4k/smb4ksharesmenu.cpp:178
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Lägg till bokmärke"
 
-#: smb4k/smb4ksharesmenu.cpp:190
+#: smb4k/smb4ksharesmenu.cpp:204
 #, kde-format
 msgid "Synchronize"
 msgstr "Synkronisera"
 
-#: smb4k/smb4ksharesmenu.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Öppna i Konsole"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Öppna i filhanterare"

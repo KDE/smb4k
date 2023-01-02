@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:51+0000\n"
+"POT-Creation-Date: 2023-01-02 01:01+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -133,9 +133,15 @@ msgstr "&Επεξεργασία σελιδοδεικτών"
 msgid "Add &Bookmark"
 msgstr "Προσθήκη &σελιδοδείκτη"
 
-#: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
 #, kde-format
 msgid "Mount All Bookmarks"
+msgstr "Προσάρτηση όλων των σελιδοδεικτών"
+
+#: smb4k/smb4kbookmarkmenu.cpp:75
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Προσάρτηση όλων των σελιδοδεικτών"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -534,7 +540,7 @@ msgstr "Προβολή κοινών πόρων"
 msgid "Dock Widgets"
 msgstr "Προσάρτηση γραφικών συστατικών"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:37
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Προσαρτημένοι κοινοί πόροι"
@@ -679,7 +685,7 @@ msgstr "Εγκ&ατάλειψη"
 msgid "&Search"
 msgstr "Αναζήτη&ση"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
@@ -758,32 +764,32 @@ msgstr "Αντικείμενο κάτω"
 msgid "Item Up"
 msgstr "Αντικείμενο πάνω"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "Αποπ&ροσάρτηση όλων"
 
-#: smb4k/smb4ksharesmenu.cpp:158
+#: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
 msgid "Unmount"
 msgstr "Αποπροσάρτηση"
 
-#: smb4k/smb4ksharesmenu.cpp:177
+#: smb4k/smb4ksharesmenu.cpp:178
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Προσθήκη σελιδοδείκτη"
 
-#: smb4k/smb4ksharesmenu.cpp:190
+#: smb4k/smb4ksharesmenu.cpp:204
 #, kde-format
 msgid "Synchronize"
 msgstr "Συγχρονισμός"
 
-#: smb4k/smb4ksharesmenu.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Άνοιγμα με την κονσόλα"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Άνοιγμα με το διαχειριστή αρχείων"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:51+0000\n"
+"POT-Creation-Date: 2023-01-02 01:01+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -142,9 +142,15 @@ msgstr "Könyvjelzők szerkesztés&e"
 msgid "Add &Bookmark"
 msgstr "Kö&nyvjelző hozzáadása"
 
-#: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
 #, kde-format
 msgid "Mount All Bookmarks"
+msgstr "Az összes könyvjelző csatolása"
+
+#: smb4k/smb4kbookmarkmenu.cpp:75
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Az összes könyvjelző csatolása"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -550,7 +556,7 @@ msgstr "Megosztások nézet"
 msgid "Dock Widgets"
 msgstr "Widgetek dokkolása"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:37
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Csatolt megosztások"
@@ -703,7 +709,7 @@ msgstr "&Megszakítás"
 msgid "&Search"
 msgstr "Kere&sés"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
@@ -784,32 +790,32 @@ msgstr "Elem"
 msgid "Item Up"
 msgstr "Elem"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "Az összes l&eválasztása"
 
-#: smb4k/smb4ksharesmenu.cpp:158
+#: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
 msgid "Unmount"
 msgstr "Leválasztás"
 
-#: smb4k/smb4ksharesmenu.cpp:177
+#: smb4k/smb4ksharesmenu.cpp:178
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Könyvjelző hozzáadása"
 
-#: smb4k/smb4ksharesmenu.cpp:190
+#: smb4k/smb4ksharesmenu.cpp:204
 #, kde-format
 msgid "Synchronize"
 msgstr "Szinkronizálás"
 
-#: smb4k/smb4ksharesmenu.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Megnyitás a Konsole-lal"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Megnyitás fájlkezelővel"

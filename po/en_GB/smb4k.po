@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:51+0000\n"
+"POT-Creation-Date: 2023-01-02 01:01+0000\n"
 "PO-Revision-Date: 2022-12-31 16:02+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -132,9 +132,15 @@ msgstr "&Edit Bookmarks"
 msgid "Add &Bookmark"
 msgstr "Add &Bookmark"
 
-#: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
 #, kde-format
 msgid "Mount All Bookmarks"
+msgstr "Mount All Bookmarks"
+
+#: smb4k/smb4kbookmarkmenu.cpp:75
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Mount All Bookmarks"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -514,7 +520,7 @@ msgstr "Shares View"
 msgid "Dock Widgets"
 msgstr "Dock Widgets"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:37
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Mounted Shares"
@@ -658,7 +664,7 @@ msgstr "&Abort"
 msgid "&Search"
 msgstr "&Search"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, kde-format
 msgid "Add &Custom Options"
@@ -736,32 +742,32 @@ msgstr "Item Down"
 msgid "Item Up"
 msgstr "Item Up"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "U&nmount All"
 
-#: smb4k/smb4ksharesmenu.cpp:158
+#: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
 msgid "Unmount"
 msgstr "Unmount"
 
-#: smb4k/smb4ksharesmenu.cpp:177
+#: smb4k/smb4ksharesmenu.cpp:178
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Add Bookmark"
 
-#: smb4k/smb4ksharesmenu.cpp:190
+#: smb4k/smb4ksharesmenu.cpp:204
 #, kde-format
 msgid "Synchronize"
 msgstr "Synchronise"
 
-#: smb4k/smb4ksharesmenu.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Open with Konsole"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Open with File Manager"

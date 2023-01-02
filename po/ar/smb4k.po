@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:51+0000\n"
+"POT-Creation-Date: 2023-01-02 01:01+0000\n"
 "PO-Revision-Date: 2022-08-10 23:29+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
@@ -131,10 +131,16 @@ msgstr "حرّر العلامات"
 msgid "Add &Bookmark"
 msgstr "أضف علامة"
 
-#: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
 #, kde-format
 msgid "Mount All Bookmarks"
 msgstr ""
+
+#: smb4k/smb4kbookmarkmenu.cpp:75
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgid "Mount Bookmarks"
+msgstr "العلامات"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -511,7 +517,7 @@ msgstr ""
 msgid "Dock Widgets"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:37
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr ""
@@ -657,7 +663,7 @@ msgstr "أ&جهض"
 msgid "&Search"
 msgstr "ا&بحث"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
@@ -736,32 +742,32 @@ msgstr "العنصر للأعلى"
 msgid "Item Up"
 msgstr "العنصر للأسفل"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "فك ضم ال&جميع"
 
-#: smb4k/smb4ksharesmenu.cpp:158
+#: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
 msgid "Unmount"
 msgstr "فك الضم"
 
-#: smb4k/smb4ksharesmenu.cpp:177
+#: smb4k/smb4ksharesmenu.cpp:178
 #, kde-format
 msgid "Add Bookmark"
 msgstr "أضف علامة"
 
-#: smb4k/smb4ksharesmenu.cpp:190
+#: smb4k/smb4ksharesmenu.cpp:204
 #, kde-format
 msgid "Synchronize"
 msgstr "زامِن"
 
-#: smb4k/smb4ksharesmenu.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
 msgstr "افتح بكونسول"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
 msgid "Open with File Manager"
 msgstr "افتح بمدير الملفات"

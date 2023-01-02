@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:51+0000\n"
+"POT-Creation-Date: 2023-01-02 01:01+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -139,10 +139,16 @@ msgstr "ブックマークを編集(&E)"
 msgid "Add &Bookmark"
 msgstr "ブックマークを追加(&B)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
 #, fuzzy, kde-format
 #| msgid "Add Bookmarks"
 msgid "Mount All Bookmarks"
+msgstr "ブックマークを追加(&B)"
+
+#: smb4k/smb4kbookmarkmenu.cpp:75
+#, fuzzy, kde-format
+#| msgid "Add Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "ブックマークを追加(&B)"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -530,7 +536,7 @@ msgstr "共有表示"
 msgid "Dock Widgets"
 msgstr "ドック・ウィジェット"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:37
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "マウントされた共有"
@@ -685,7 +691,7 @@ msgstr "中断(&A)"
 msgid "&Search"
 msgstr "検索(&S)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
@@ -765,35 +771,35 @@ msgstr ""
 msgid "Item Up"
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "すべてアンマウント(&N)"
 
-#: smb4k/smb4ksharesmenu.cpp:158
+#: smb4k/smb4ksharesmenu.cpp:159
 #, fuzzy, kde-format
 #| msgid "&Unmount"
 msgid "Unmount"
 msgstr "アンマウント(&U)"
 
-#: smb4k/smb4ksharesmenu.cpp:177
+#: smb4k/smb4ksharesmenu.cpp:178
 #, fuzzy, kde-format
 #| msgid "Add Bookmarks"
 msgid "Add Bookmark"
 msgstr "ブックマークを追加(&B)"
 
-#: smb4k/smb4ksharesmenu.cpp:190
+#: smb4k/smb4ksharesmenu.cpp:204
 #, kde-format
 msgid "Synchronize"
 msgstr "同期"
 
-#: smb4k/smb4ksharesmenu.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:223
 #, fuzzy, kde-format
 #| msgid "Open with Konso&le"
 msgid "Open with Konsole"
 msgstr "Konsole で開く(&L)"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:237
 #, fuzzy, kde-format
 #| msgid "Open with F&ile Manager"
 msgid "Open with File Manager"

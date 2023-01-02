@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:51+0000\n"
+"POT-Creation-Date: 2023-01-02 01:01+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -130,10 +130,16 @@ msgstr "ओळखचिन्हे संपादित करा"
 msgid "Add &Bookmark"
 msgstr "ओळखचिन्ह जोडा"
 
-#: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
 #, kde-format
 msgid "Mount All Bookmarks"
 msgstr ""
+
+#: smb4k/smb4kbookmarkmenu.cpp:75
+#, fuzzy, kde-format
+#| msgid "Edit Bookmarks"
+msgid "Mount Bookmarks"
+msgstr "ओळखचिन्हे संपादित करा"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -517,7 +523,7 @@ msgstr "दृश्य"
 msgid "Dock Widgets"
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:37
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr ""
@@ -660,7 +666,7 @@ msgstr ""
 msgid "&Search"
 msgstr "शोध (&S)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "Common Options"
@@ -742,32 +748,32 @@ msgstr "घटक"
 msgid "Item Up"
 msgstr "घटक"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:158
+#: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
 msgid "Unmount"
 msgstr "अनमाऊंट करा"
 
-#: smb4k/smb4ksharesmenu.cpp:177
+#: smb4k/smb4ksharesmenu.cpp:178
 #, kde-format
 msgid "Add Bookmark"
 msgstr "ओळखचिन्ह जोडा"
 
-#: smb4k/smb4ksharesmenu.cpp:190
+#: smb4k/smb4ksharesmenu.cpp:204
 #, kde-format
 msgid "Synchronize"
 msgstr "सिंक्रोनाईझ"
 
-#: smb4k/smb4ksharesmenu.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
 msgstr ""
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
 msgid "Open with File Manager"
 msgstr "फाईल व्यवस्थापकात उघडा"
@@ -1069,9 +1075,6 @@ msgstr "आकार"
 
 #~ msgid "General Options"
 #~ msgstr "सामान्य पर्याय"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "ओळखचिन्हे संपादित करा"
 
 #, fuzzy
 #~ msgid "Add Group"

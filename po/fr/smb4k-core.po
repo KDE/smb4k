@@ -16,13 +16,13 @@
 # Simon Depiets <sdepiets@gmail.com>, 2018.
 # Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
 #
-# Xavier BESNARD <xavier.besnard]neuf.fr>, 2022.
+# Xavier BESNARD <xavier.besnard]neuf.fr>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-29 00:52+0000\n"
-"PO-Revision-Date: 2022-12-31 15:18+0100\n"
+"PO-Revision-Date: 2023-01-01 11:17+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -1112,6 +1112,12 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Préserver les listes de contrôle d’accès. Cette option permet à rsync de "
+"mettre à jour les listes de contrôle de la destination afin qu'elles soient "
+"identiques à celles de la source. L’option implique également « --perms ». "
+"Les systèmes source et de destination doivent avoir des entrées pour les "
+"listes de contrôle d'accès compatibles pour que cette option fonctionne "
+"correctement."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
@@ -1121,56 +1127,48 @@ msgstr "Préserver les attributs étendus"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Préserve le groupe (-g, --group). Le groupe du fichier de destination sera "
-"associé à la même valeur que le fichier source."
+"Préserver les attributs étendus. Cette option permet à rsync de mettre à "
+"jour les attributs étendus de la destination afin qu'ils soient identiques à "
+"ceux de la source."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Préserver les dates"
+msgstr "Préserver les dates d'accès"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Préserve le groupe (-g, --group). Le groupe du fichier de destination sera "
-"associé à la même valeur que le fichier source."
+"Préserver les temps d'accès. Cette option permet à rsync de définir les "
+"dates d'accès (utilisation) de la destination afin qu'elles soient "
+"identiques à celles de la source."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Préserver les dates"
+msgstr "Préserver les temps de création"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Préserve le groupe (-g, --group). Le groupe du fichier de destination sera "
-"associé à la même valeur que le fichier source."
+"Préserver les temps de création. Ceci indique à rsync de définir les temps "
+"de création (nouveauté) des fichiers de destination afin qu'ils soient "
+"identiques à ceux de la source."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402

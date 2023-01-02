@@ -15,13 +15,13 @@
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019.
 # Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
 #
-# Xavier BESNARD <xavier.besnard]neuf.fr>, 2022.
+# Xavier BESNARD <xavier.besnard]neuf.fr>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-31 00:51+0000\n"
-"PO-Revision-Date: 2022-12-31 15:17+0100\n"
+"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"PO-Revision-Date: 2023-01-01 11:14+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -151,9 +151,15 @@ msgstr "&Modifier des signets"
 msgid "Add &Bookmark"
 msgstr "&Ajouter un signet"
 
-#: smb4k/smb4kbookmarkmenu.cpp:72 smb4k/smb4kbookmarkmenu.cpp:240
+#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
 #, kde-format
 msgid "Mount All Bookmarks"
+msgstr "Monter tous les signets"
+
+#: smb4k/smb4kbookmarkmenu.cpp:75
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Monter tous les signets"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -542,7 +548,7 @@ msgstr "Vue des partages"
 msgid "Dock Widgets"
 msgstr "Composants graphiques intégrés"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:37
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Partages montés"
@@ -687,12 +693,11 @@ msgstr "&Annuler"
 msgid "&Search"
 msgstr "&Chercher"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "&Custom Options"
+#, kde-format
 msgid "Add &Custom Options"
-msgstr "Options personnalis&ées"
+msgstr "Ajouter des options &personnalisées"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -766,32 +771,32 @@ msgstr "Déplacer l'élément vers le bas"
 msgid "Item Up"
 msgstr "Déplacer l'élément vers le haut"
 
-#: smb4k/smb4ksharesmenu.cpp:52 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "To&ut libérer"
 
-#: smb4k/smb4ksharesmenu.cpp:158
+#: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
 msgid "Unmount"
 msgstr "Libérer"
 
-#: smb4k/smb4ksharesmenu.cpp:177
+#: smb4k/smb4ksharesmenu.cpp:178
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Ajouter un signet"
 
-#: smb4k/smb4ksharesmenu.cpp:190
+#: smb4k/smb4ksharesmenu.cpp:204
 #, kde-format
 msgid "Synchronize"
 msgstr "Synchroniser"
 
-#: smb4k/smb4ksharesmenu.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Ouvrir avec Konsole"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Ouvrir avec un gestionnaire de fichiers"
