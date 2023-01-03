@@ -66,7 +66,7 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     //
     // Add the toplevel "Mount All Bookmarks" action.
     //
-    m_toplevelMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount All Bookmarks"), menu());
+    m_toplevelMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount Bookmarks"), menu());
     addAction(m_toplevelMount);
     m_mountActions->addAction(m_toplevelMount);
 
@@ -208,7 +208,7 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr &bookmark)
             //
             // The "Mount All Bookmarks" action for this category
             //
-            QAction *bookmarkCategoryMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount All Bookmarks"), bookmarkMenu->menu());
+            QAction *bookmarkCategoryMount = new QAction(KDE::icon(QStringLiteral("media-mount")), i18n("Mount Bookmarks"), bookmarkMenu->menu());
             QMap<QString, QVariant> categoryMountInfo;
             categoryMountInfo[QStringLiteral("type")] = QStringLiteral("category_mount");
             categoryMountInfo[QStringLiteral("category")] = bookmark->categoryName();
@@ -371,7 +371,11 @@ void Smb4KBookmarkMenu::adjustMountActions()
             }
         }
 
+        m_toplevelMount->setVisible(true);
         m_toplevelMount->setEnabled(mountedBookmarks != toplevelBookmarks.size());
+    } else {
+        m_toplevelMount->setVisible(false);
+        m_toplevelMount->setEnabled(false);
     }
     
     QList<QAction *> allMountActions = m_mountActions->actions();
