@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2022-07-13 11:15+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -130,15 +130,9 @@ msgstr "책갈피 편집(&E)"
 msgid "Add &Bookmark"
 msgstr "책갈피 추가(&B)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
 msgid "Mount All Bookmarks"
-msgstr "모든 책갈피 마운트"
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
-msgid "Mount Bookmarks"
 msgstr "모든 책갈피 마운트"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -908,6 +902,11 @@ msgstr "파일 시스템:"
 #, kde-format
 msgid "Size:"
 msgstr "크기:"
+
+#, fuzzy
+#~| msgid "Mount All Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "모든 책갈피 마운트"
 
 #~ msgid " KiB"
 #~ msgstr " KiB"

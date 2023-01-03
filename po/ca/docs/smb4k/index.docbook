@@ -540,7 +540,27 @@
             <para
 ><link linkend="bookmarks_adding"
 >Afegeix una adreça d'interès</link
-> a la compartició remota seleccionada. Aquesta acció s'inhabilitarà si no se selecciona cap compartició.</para>
+> a les comparticions remotes seleccionades. Aquesta acció s'inhabilitarà si no hi ha cap compartició seleccionada.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Afegeix opcions personalitzades</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
+>Opcions personalitzades</link
+> a on podeu establir diverses opcions personalitzades per a cada servidor i compartició seleccionada. Si no s'ha seleccionat cap element ni cap grup de treball, aquesta acció estarà inhabilitada.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -580,27 +600,7 @@
             <para
 >Obre el <link linkend="network_neighborhood_browser_authentication"
 >diàleg d'autenticació</link
->. Pot proporcionar el nom d'usuari i la contrasenya per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o si heu seleccionat un grup de treball, aquesta acció estarà inhabilitada.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenuitem
->Opcions personalitzades</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem>
-            <para
->Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
->Opcions personalitzades</link
->. Podeu establir diverses opcions personalitzades per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o un grup de treball, aquesta acció estarà inhabilitada.</para>
+> a on es pot proporcionar el nom d'usuari i la contrasenya per a cada servidor i compartició seleccionada. Si no s'ha seleccionat cap element ni cap grup de treball, aquesta acció estarà inhabilitada.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -620,7 +620,7 @@
             <para
 >Ofereix una <link linkend="network_neighborhood_browser_previewing"
 >vista prèvia</link
-> del contingut de la compartició remota seleccionada. Aquesta acció només s'habilita si se selecciona una compartició. Les impressores compartides no es poden previsualitzar.</para>
+> del contingut de les comparticions remotes seleccionades. Aquesta acció només s'habilita si s'han seleccionat comparticions. Les impressores compartides no es poden previsualitzar.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -640,7 +640,7 @@
             <para
 ><link linkend="network_neighborhood_browser_printing"
 >Imprimeix</link
-> un fitxer en una impressora remota. Aquesta funció només està disponible si s'ha seleccionat una impressora compartida.</para>
+> un fitxer en una impressora remota. Aquesta funció només està disponible si s'ha seleccionat com a mínim una impressora compartida.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -658,9 +658,7 @@
           </term>
           <listitem>
             <para
->Munta la compartició remota seleccionada. De manera predeterminada, i si heu seleccionat quelcom diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada. Per a una compartició muntada, aquesta acció serà substituïda per l'acció <guimenuitem
->Desmunta</guimenuitem
->.</para>
+>Munta les comparticions remotes seleccionades. Aquesta acció és visible només si s'han seleccionat comparticions que encara no estan muntades. De manera predeterminada, i si heu seleccionat quelcom diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -678,9 +676,9 @@
           </term>
           <listitem>
             <para
->Desmunta la compartició seleccionada. De manera predeterminada, aquesta acció és invisible i només serà visible en lloc de l'acció <guimenuitem
+>Desmunta les comparticions seleccionades. De manera predeterminada, aquesta acció és invisible, i només serà visible en lloc de l'acció <guimenuitem
 >Munta</guimenuitem
-> quan la compartició ja es trobi muntada.</para>
+> quan al menys una compartició muntada estigui seleccionada.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -725,7 +723,7 @@
 
     <sect2 id="network_neighborhood_browser_mounting">
       <title
->Muntar una compartició</title>
+>Muntar comparticions</title>
 
       <para
 >Hi ha tres opcions disponibles per a muntar una compartició remota:</para>
@@ -737,7 +735,7 @@
 ></listitem>
         <listitem
 ><para
->Seleccioneu la compartició remota i feu clic sobre l'entrada de menú <guimenuitem
+>Seleccioneu les comparticions remotes i feu clic sobre l'entrada de menú <guimenuitem
 >Munta</guimenuitem
 >. De manera alternativa, també podeu prémer la drecera de teclat <keycombo action="simul"
 >&Ctrl; <keycap
@@ -747,7 +745,7 @@
 ></listitem>
         <listitem
 ><para
->Si el &smb4k; no ha pogut trobar el servidor on es troba la compartició, podeu prémer l'entrada de menú <menuchoice
+>Premeu l'entrada de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1277,6 +1275,28 @@
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Afegeix opcions personalitzades</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Obre el diàleg d'opcions personalitzades. Vegeu la secció quant al diàleg de les <link linkend="network_neighborhood_browser_defining_custom_options"
+>Opcions personalitzades</link
+> en la secció <link linkend="network_neighborhood_browser"
+>L'explorador del veïnatge de xarxa</link
+> per a més detalls.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
 >Y</keycap
 ></keycombo
 ></shortcut
@@ -1492,7 +1512,31 @@
       <para
 >Després d'un procés de desmuntatge amb èxit, se li notificarà a l'usuari. Si es produeix un error durant el desmuntatge, es mostrarà una notificació amb el missatge d'error retornat.</para>
     </sect2>
-
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Adding Custom Options
+  -->
+    
+    <sect2 id="shares_view_adding_custom_options">
+      <title
+>Definir les opcions personalitzades</title>
+      
+      <para
+>Es poden definir opcions personalitzades per a les comparticions seleccionades. Feu clic a l'acció <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Afegeix opcions personalitzades</guimenuitem
+></menuchoice
+> per a obrir el diàleg d'opcions personalitzades. Per a més detalls, vegeu <link linkend="network_neighborhood_browser_defining_custom_options"
+>aquí</link
+>.</para>
+    </sect2>
+    
 <!-- 
       Using Smb4K : The Mounted Shares View : Synchronization 
   -->

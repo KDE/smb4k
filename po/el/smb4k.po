@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -133,15 +133,9 @@ msgstr "&Επεξεργασία σελιδοδεικτών"
 msgid "Add &Bookmark"
 msgstr "Προσθήκη &σελιδοδείκτη"
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
 msgid "Mount All Bookmarks"
-msgstr "Προσάρτηση όλων των σελιδοδεικτών"
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
-msgid "Mount Bookmarks"
 msgstr "Προσάρτηση όλων των σελιδοδεικτών"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -935,6 +929,11 @@ msgstr "Σύστημα αρχείων:"
 #, kde-format
 msgid "Size:"
 msgstr "Μέγεθος:"
+
+#, fuzzy
+#~| msgid "Mount All Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "Προσάρτηση όλων των σελιδοδεικτών"
 
 #~ msgid " KiB"
 #~ msgstr "KiB"

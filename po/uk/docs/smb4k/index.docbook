@@ -552,7 +552,27 @@
             <para
 ><link linkend="bookmarks_adding"
 >Додати закладку</link
-> на поточному позначеному віддаленому спільному ресурсі. Цей пункт буде вимкнено, якщо не позначено жодного пункту спільного ресурсу.</para>
+> на поточних позначених віддалених спільних ресурсів. Цей пункт буде вимкнено, якщо не позначено жодного пункту спільного ресурсу.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenuitem
+>Додати нетипові параметри</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Відкрити <link linkend="network_neighborhood_browser_defining_custom_options"
+>діалогове вікно нетипових параметрів</link
+>. За допомогою цього вікна ви зможете визначити декілька нетипових параметрів позначеного сервера або спільного ресурсу. Якщо не позначено жодного з пунктів елементів мережі або робочої групи, цей пункт меню буде вимкнено.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -601,26 +621,6 @@
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
->C</keycap
-></keycombo
-> </shortcut
-> <guimenuitem
->Нетипові параметри</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem>
-            <para
->Відкрити <link linkend="network_neighborhood_browser_defining_custom_options"
->діалогове вікно нетипових параметрів</link
->. За допомогою цього вікна ви зможете визначити декілька нетипових параметрів позначеного сервера або спільного ресурсу. Якщо не позначено жодного з пунктів елементів мережі або робочої групи, цей пункт меню буде вимкнено.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
 >V</keycap
 ></keycombo
 > </shortcut
@@ -632,7 +632,7 @@
             <para
 >Відкрити <link linkend="network_neighborhood_browser_previewing"
 >діалогове вікно попереднього перегляду</link
-> вмісту позначеного віддаленого спільного ресурсу. Доступ до цієї дії можна буде отримати, лише позначивши пункт спільного ресурсу. Переглядати спільні ресурси принтерів не можна.</para>
+> вмісту позначених віддалених спільних ресурсів. Доступ до цієї дії можна буде отримати, лише позначивши пункти спільних ресурсів. Переглядати спільні ресурси принтерів не можна.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -652,7 +652,7 @@
             <para
 ><link linkend="network_neighborhood_browser_printing"
 >Надрукувати</link
-> файл на віддаленому принтері. Цим пунктом меню можна буде скористатися, лише якщо позначено спільний ресурс принтера.</para>
+> файл на віддаленому принтері. Цим пунктом меню можна буде скористатися, лише якщо позначено принаймні один спільний ресурс принтера.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -670,9 +670,7 @@
           </term>
           <listitem>
             <para
->Змонтувати позначений віддалений спільний ресурс. Цим пунктом меню не можна буде скористатися, якщо позначено будь-який пункт, окрім пункту спільного ресурсу, що належить до типу «Диск» або «IPC». Якщо ви позначили змонтований спільний ресурс, замість цього пункту ви побачите пункт <guimenuitem
->Демонтувати</guimenuitem
->.</para>
+>Змонтувати позначені віддалені спільні ресурси. Цей пункт буде показано, лише якщо позначені спільні ресурси ще не було змонтовано. Типово, цим пунктом не можна буде скористатися, якщо позначено будь-який пункт, окрім пункту спільного ресурсу, що належить до типу «Диск» або «IPC».</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -690,9 +688,9 @@
           </term>
           <listitem>
             <para
->Демонтувати позначений спільний ресурс. Типово, цей пункт не буде показано. Доступ до нього можна отримати лише після того, як ви скористаєтеся пунктом <guimenuitem
+>Демонтувати позначені спільні ресурси. Типово, цей пункт не буде показано. Доступ до нього можна отримати лише після того, як ви скористаєтеся пунктом <guimenuitem
 >Змонтувати</guimenuitem
->, коли спільний ресурс буде вже змонтовано.</para>
+>, якщо було змонтовано принаймні один спільний ресурс.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -737,7 +735,7 @@
 
     <sect2 id="network_neighborhood_browser_mounting">
       <title
->Монтування спільного ресурсу</title>
+>Монтування спільних ресурсів</title>
 
       <para
 >Щоб змонтувати віддалений спільний ресурс, ви можете скористатися одним з таких способів:</para>
@@ -749,7 +747,7 @@
 ></listitem>
         <listitem
 ><para
->Позначити пункт віддаленого спільного ресурсу і скористатися пунктом меню <guimenuitem
+>Позначити пункти віддалені спільні ресурси і скористатися пунктом меню <guimenuitem
 >Змонтувати</guimenuitem
 >. Крім того, ви можете натиснути клавіатурне скорочення відповідної дії — комбінацію клавіш <keycombo action="simul"
 >&Ctrl; <keycap
@@ -759,7 +757,7 @@
 ></listitem>
         <listitem
 ><para
->Якщо &smb4k; не вдасться знайти сервер, на якому зберігається спільний ресурс, ви можете скористатися пунктом меню <menuchoice
+>Скористайтеся пунктом меню <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1287,6 +1285,28 @@
           <term>
             <menuchoice
 ><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenuitem
+>Додати нетипові параметри</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Відкрити вікно нетипових параметрів для позначених спільних ресурсів. Див. розділ щодо вікна <link linkend="network_neighborhood_browser_defining_custom_options"
+>Нетипові параметри</link
+> у розділі щодо <link linkend="network_neighborhood_browser"
+>Навігатора мережевим середовищем</link
+>, щоб дізнатися більше.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
 > <keycombo action="simul"
 >&Ctrl;<keycap
 >Y</keycap
@@ -1504,7 +1524,31 @@
       <para
 >У разі успіху демонтування користувачеві буде показано відповідне сповіщення. Якщо спроба демонтування зазнає невдачі, буде показано сповіщення з повідомленням про помилку.</para>
     </sect2>
-
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Adding Custom Options
+  -->
+    
+    <sect2 id="shares_view_adding_custom_options">
+      <title
+>Визначення нетипових параметрів</title>
+      
+      <para
+>Для позначених спільних ресурсів можна визначити нетипові параметри. Виберіть пункт <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Додати нетипові параметри</guimenuitem
+></menuchoice
+>, щоб відкрити вікно нетипових параметрів. Щоб дізнатися більше, будь ласка, ознайомтеся з <link linkend="network_neighborhood_browser_defining_custom_options"
+>цим розділом</link
+>.</para>
+    </sect2>
+    
 <!-- 
       Using Smb4K : The Mounted Shares View : Synchronization 
   -->

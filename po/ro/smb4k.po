@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@ase.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -130,16 +130,10 @@ msgstr ""
 msgid "Add &Bookmark"
 msgstr ""
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
 msgid "Mount All Bookmarks"
 msgstr ""
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Edit Bookmarks"
-msgid "Mount Bookmarks"
-msgstr "Editează semne de carte"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -905,6 +899,11 @@ msgstr ""
 #, kde-format
 msgid "Size:"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Edit Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "Editează semne de carte"
 
 #, fuzzy
 #~| msgid "IP Address:"

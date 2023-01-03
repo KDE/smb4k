@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -130,16 +130,10 @@ msgstr "ओळखचिन्हे संपादित करा"
 msgid "Add &Bookmark"
 msgstr "ओळखचिन्ह जोडा"
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
 msgid "Mount All Bookmarks"
 msgstr ""
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Edit Bookmarks"
-msgid "Mount Bookmarks"
-msgstr "ओळखचिन्हे संपादित करा"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -924,6 +918,11 @@ msgstr "फाईल प्रणाली"
 #| msgid "Size"
 msgid "Size:"
 msgstr "आकार"
+
+#, fuzzy
+#~| msgid "Edit Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "ओळखचिन्हे संपादित करा"
 
 #, fuzzy
 #~ msgid "Details"

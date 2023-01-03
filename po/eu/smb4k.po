@@ -1,16 +1,16 @@
 # Translation for smb4k.po to Euskara/Basque (eu).
-# Copyright (C) 2020-2022 This file is copyright:
+# Copyright (C) 2020-2023 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
-"PO-Revision-Date: 2022-12-31 23:53+0100\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"PO-Revision-Date: 2023-01-02 18:37+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -135,15 +135,9 @@ msgstr "&Editatu Laster-markak"
 msgid "Add &Bookmark"
 msgstr "Gehitu &laster-marka"
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
 msgid "Mount All Bookmarks"
-msgstr "Muntatu laster-marka guztiak"
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
-msgid "Mount Bookmarks"
 msgstr "Muntatu laster-marka guztiak"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -918,6 +912,10 @@ msgstr "Fitxategi-sistema:"
 #, kde-format
 msgid "Size:"
 msgstr "Neurria:"
+
+#~| msgid "Mount All Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "Muntatu laster-markak"
 
 #~ msgid " KiB"
 #~ msgstr " KiB"
