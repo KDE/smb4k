@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2022-11-09 23:31+0100\n"
 "Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -133,15 +133,9 @@ msgstr "L&esezeichen bearbeiten"
 msgid "Add &Bookmark"
 msgstr "&Lesezeichen hinzufügen"
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
 msgid "Mount All Bookmarks"
-msgstr "Alle Lesezeichen einhängen"
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
-msgid "Mount Bookmarks"
 msgstr "Alle Lesezeichen einhängen"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -452,7 +446,8 @@ msgstr "Dateien"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:343
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
-#, kde-format
+#, fuzzy, kde-format
+#| msgid " kB"
 msgid " kB"
 msgstr " kB"
 
@@ -922,6 +917,11 @@ msgstr "Dateisystem:"
 #, kde-format
 msgid "Size:"
 msgstr "Größe:"
+
+#, fuzzy
+#~| msgid "Mount All Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "Alle Lesezeichen einhängen"
 
 #~ msgid " KiB"
 #~ msgstr " KiB"

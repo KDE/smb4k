@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -133,15 +133,9 @@ msgstr "&Muuda järjehoidjaid"
 msgid "Add &Bookmark"
 msgstr "&Lisa järjehoidja"
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
 msgid "Mount All Bookmarks"
-msgstr "Ühenda kõik järjehoidjad"
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
-msgid "Mount Bookmarks"
 msgstr "Ühenda kõik järjehoidjad"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -939,6 +933,11 @@ msgstr "Failisüsteem:"
 #, kde-format
 msgid "Size:"
 msgstr "Suurus:"
+
+#, fuzzy
+#~| msgid "Mount All Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "Ühenda kõik järjehoidjad"
 
 #~ msgid " KiB"
 #~ msgstr " KiB"

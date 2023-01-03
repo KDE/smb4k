@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -132,16 +132,10 @@ msgstr " पसंदीदा  क' संपादन करू (&E)"
 msgid "Add &Bookmark"
 msgstr ""
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, fuzzy, kde-format
 #| msgid "Add Bookmarks"
 msgid "Mount All Bookmarks"
-msgstr "पुस्तचिह्न जोडू"
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Add Bookmarks"
-msgid "Mount Bookmarks"
 msgstr "पुस्तचिह्न जोडू"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -939,6 +933,11 @@ msgstr "फाइल सिस्टमः"
 #, kde-format
 msgid "Size:"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Add Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "पुस्तचिह्न जोडू"
 
 #, fuzzy
 #~| msgid "Show details"

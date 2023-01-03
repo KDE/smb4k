@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2011-07-19 21:17+0300\n"
 "Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -131,15 +131,9 @@ msgstr "&Редактиране на отметки"
 msgid "Add &Bookmark"
 msgstr "Добавяне на &отметка"
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
 msgid "Mount All Bookmarks"
-msgstr "Монтиране на всички отметки"
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
-msgid "Mount Bookmarks"
 msgstr "Монтиране на всички отметки"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -900,3 +894,8 @@ msgstr "Файлова система"
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "Размер"
+
+#, fuzzy
+#~| msgid "Mount All Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "Монтиране на всички отметки"

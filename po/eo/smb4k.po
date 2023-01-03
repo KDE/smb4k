@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-02 01:01+0000\n"
+"POT-Creation-Date: 2023-01-03 00:47+0000\n"
 "PO-Revision-Date: 2009-11-15 12:06+0100\n"
 "Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -129,16 +129,10 @@ msgstr "&Redakti legosignojn"
 msgid "Add &Bookmark"
 msgstr "Aldoni &legosignon"
 
-#: smb4k/smb4kbookmarkmenu.cpp:73 smb4k/smb4kbookmarkmenu.cpp:242
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, fuzzy, kde-format
 #| msgid "&Edit Bookmarks"
 msgid "Mount All Bookmarks"
-msgstr "&Redakti legosignojn"
-
-#: smb4k/smb4kbookmarkmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "&Edit Bookmarks"
-msgid "Mount Bookmarks"
 msgstr "&Redakti legosignojn"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -934,6 +928,11 @@ msgstr "Dosiersistemo:"
 #, kde-format
 msgid "Size:"
 msgstr ""
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Mount Bookmarks"
+#~ msgstr "&Redakti legosignojn"
 
 #, fuzzy
 #~| msgid "User Interface"
