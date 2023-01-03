@@ -31,11 +31,11 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
   </authorgroup>
   <copyright>
-    <year>2005-2022</year>
+    <year>2005-2023</year>
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2022-12-17</date>
+  <date>2022-01-03</date>
   <releaseinfo>&smb4k; 3.2.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and &Samba; share mounting utility.</para>
@@ -640,7 +640,7 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the custom options dialog for the selected shares. See the section about the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog in the <link linkend="network_neighborhood_browser">The Network Neighborhood Browser</link> section for more details.</para>
+            <para>Open the custom options dialog for the selected shares. Read the section about the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog for more details.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -907,6 +907,16 @@
           </term>
           <listitem>
             <para>Add the selected share to the bookmarks.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice>
+              <guimenuitem>Add Custom Options</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para>Open the custom options dialog for the selected share. For further information read the section about the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
