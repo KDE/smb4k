@@ -49,14 +49,14 @@
   </authorgroup>
   <copyright>
     <year
->2005-2022</year>
+>2005-2023</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2022-12-17</date>
+>2022-01-03</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -536,7 +536,27 @@
             <para
 ><link linkend="bookmarks_adding"
 >Voeg een bladwijzer toe</link
-> aan de nu geselecteerde share op afstand. Deze actie is uitgeschakeld als er geen share is geselecteerd.</para>
+> aan de geselecteerde shares op afstand. Deze actie is uitgeschakeld als er geen share zijn geselecteerd.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Aangepaste opties toevoegen</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Open het dialoog voor <link linkend="network_neighborhood_browser_defining_custom_options"
+>Aangepaste opties</link
+> waar u verschillende persoonlijke instellingen voor elke geselecteerde server en share kunt aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -576,27 +596,7 @@
             <para
 >Open het <link linkend="network_neighborhood_browser_authentication"
 >dialoog voor authenticatie</link
->. Hier kunt u voor de gekozen server of share de gebruikersnaam en wachtwoord opgeven. U kunt deze knop niet selecteren als u nog geen werkgroep of item heeft geselecteerd.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenuitem
->Aangepaste opties</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem>
-            <para
->Open het dialoog voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
->. U kunt verschillende persoonlijke instellingen voor de geselecteerde server of share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item heeft geselecteerd.</para>
+> waar u voor de gekozen server en share de gebruikersnaam en wachtwoord kunt opgeven. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -616,7 +616,7 @@
             <para
 ><link linkend="network_neighborhood_browser_previewing"
 >Voorbeeld bekijken</link
-> van de inhoud van de geselecteerde gedeelde map op afstand. Deze is alleen ingeschakeld als er een gedeelde map is geselecteerd. Van gedeelde printers kunnen geen voorbeelden worden weergegeven.</para>
+> van de inhoud van de geselecteerde shares op afstand. Deze is alleen ingeschakeld als er shares zijn geselecteerd. Van gedeelde printers kunnen geen voorbeelden worden weergegeven.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -636,7 +636,7 @@
             <para
 ><link linkend="network_neighborhood_browser_printing"
 >Druk</link
-> een bestand af op een printer op afstand. Deze actie is alleen beschikbaar als een gedeelde printer is geselecteerd.</para>
+> een bestand af op een printer op afstand. Deze actie is alleen beschikbaar als minstens één gedeelde printer is geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -654,9 +654,7 @@
           </term>
           <listitem>
             <para
->Koppelt de geselecteerde externe share aan. Standaard, en ook als u iets anders dan een share van het type "Disk" of "IPC" hebt geselecteerd, kunt u deze actie niet selecteren. Voor een aangekoppelde share wordt deze actie vervangen door de actie <guimenuitem
->Afkoppelen</guimenuitem
->.</para>
+>Koppelt de geselecteerde externe shares aan. Deze actie is zichtbaar als alleen shares zijn geselecteerd die niet zijn aangekoppeld. Standaard, en ook als u iets anders dan een share van het type "Schijf" of "IPC" hebt geselecteerd, kunt u deze actie niet selecteren.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -674,9 +672,9 @@
           </term>
           <listitem>
             <para
->Afkoppelen van de geselecteerde share. Deze knop is standaard onzichtbaar en komt pas in de plaats van de knop <guimenuitem
+>Afkoppelen van de geselecteerde shares. Deze knop is standaard onzichtbaar en komt pas in de plaats van de actie <guimenuitem
 >Aankoppelen</guimenuitem
-> als de share aangekoppeld is.</para>
+> als minstens één aangekoppelde share is geselecteerd.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -721,7 +719,7 @@
 
     <sect2 id="network_neighborhood_browser_mounting">
       <title
->Een gedeelde map (share) aankoppelen</title>
+>Shares aankoppelen</title>
 
       <para
 >Er zijn drie opties om een share op afstand aan te koppelen:</para>
@@ -733,7 +731,7 @@
 ></listitem>
         <listitem
 ><para
->Selecteer de externe share en klik op het menuitem <guimenuitem
+>Selecteer de shares op afstand en klik op het menuitem <guimenuitem
 >Aankoppelen</guimenuitem
 >. Als alternatief kunt u ook de sneltoets <keycombo action="simul"
 >&Ctrl; <keycap
@@ -743,7 +741,7 @@
 ></listitem>
         <listitem
 ><para
->Als &smb4k; niet in staat was om de server te vinden waar de share zich bevindt, dan kunt u op het menu-item <menuchoice
+>Druk op het menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -753,7 +751,7 @@
 ><guimenuitem
 >Dialoog voor aankoppelen openen</guimenuitem
 ></menuchoice
-> drukken en een dialoog voor aankoppelen zal worden geopend:</para>
+> en een dialoog voor aankoppelen zal worden geopend:</para>
         <screenshot>
           <screeninfo
 >Schermafdruk van de dialoog voor "Share aankoppelen"</screeninfo>
@@ -1273,6 +1271,26 @@
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Aangepaste opties toevoegen</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Open the custom options dialog for the selected shares. Read the section about the <link linkend="network_neighborhood_browser_defining_custom_options"
+>Custom Options</link
+> dialog for more details.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
 >Y</keycap
 ></keycombo
 ></shortcut
@@ -1488,7 +1506,31 @@
       <para
 >Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker een melding daarvan. Als de afkoppeling mislukt krijgt u een foutmelding.</para>
     </sect2>
-
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Adding Custom Options
+  -->
+    
+    <sect2 id="shares_view_adding_custom_options">
+      <title
+>Aangepaste opties definiëren</title>
+      
+      <para
+>Voor de geselecteerde shares kunnen aangepaste opties gedefinieerd worden. Klik op het actie <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Aangepaste opties toevoegen</guimenuitem
+></menuchoice
+> om de dialoog voor aangepaste opties te openen. Voor meer details zie <link linkend="network_neighborhood_browser_defining_custom_options"
+>hier</link
+>.</para>
+    </sect2>
+    
 <!-- 
       Using Smb4K : The Mounted Shares View : Synchronization 
   -->
@@ -1709,6 +1751,20 @@
           <listitem>
             <para
 >De geselecteerde share aan de bladwijzers toevoegen.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice>
+              <guimenuitem
+>Add Custom Options</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Open the custom options dialog for the selected share. For further information read the section about the <link linkend="network_neighborhood_browser_defining_custom_options"
+>Custom Options</link
+> dialog.</para>
           </listitem>
         </varlistentry>
         <varlistentry>

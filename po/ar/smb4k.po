@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
 "PO-Revision-Date: 2022-08-10 23:29+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
@@ -132,9 +132,10 @@ msgid "Add &Bookmark"
 msgstr "أضف علامة"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
-msgid "Mount All Bookmarks"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgid "Mount Bookmarks"
+msgstr "العلامات"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -904,11 +905,6 @@ msgstr "نظام الملفات:"
 #, kde-format
 msgid "Size:"
 msgstr "الحجم:"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Mount Bookmarks"
-#~ msgstr "العلامات"
 
 #~ msgid " KiB"
 #~ msgstr " ك.بايت"
