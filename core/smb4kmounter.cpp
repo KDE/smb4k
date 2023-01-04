@@ -1219,7 +1219,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
     // Locking
     //
     if (Smb4KMountSettings::noLocking()) {
-        argumentsList << QStringLiteral("nolock");
+        argumentsList << QStringLiteral("nobrl");
     }
 
     //

@@ -2470,10 +2470,10 @@ ntlm auth = yes
         </varlistentry>
         <varlistentry>
           <term>
-            <menuchoice><guibutton>Do not use locking</guibutton></menuchoice>
+            <menuchoice><guibutton>Do not send byte range lock requests</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Do not use locking. Do not start lockd.</para>
+            <para>Do not send byte range lock requests to the server. This is necessary for certain applications that break with cifs style mandatory byte range locks (and most cifs servers do not yet support requesting advisory byte range locks).</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
