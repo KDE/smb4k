@@ -1452,7 +1452,7 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap& map)
   //
   if (Smb4KMountSettings::noLocking())
   {
-    argumentsList << "nolock";
+    argumentsList << "nobrl";
   }
   
   // 
