@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
 "PO-Revision-Date: 2023-01-02 08:55+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -138,8 +138,8 @@ msgstr "&Додати закладку"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
-msgid "Mount All Bookmarks"
-msgstr "Змонтувати всі закладки"
+msgid "Mount Bookmarks"
+msgstr "Змонтувати закладки"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -925,9 +925,8 @@ msgstr "Файлова система:"
 msgid "Size:"
 msgstr "Розмір:"
 
-#~| msgid "Mount All Bookmarks"
-#~ msgid "Mount Bookmarks"
-#~ msgstr "Змонтувати закладки"
+#~ msgid "Mount All Bookmarks"
+#~ msgstr "Змонтувати всі закладки"
 
 #~ msgid " KiB"
 #~ msgstr " КіБ"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -132,9 +132,10 @@ msgid "Add &Bookmark"
 msgstr "خەتكۈش قوش(&B)"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
-msgid "Mount All Bookmarks"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Edit Bookmarks"
+msgid "Mount Bookmarks"
+msgstr "خەتكۈش تەھرىر"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -930,11 +931,6 @@ msgstr "ھۆججەت سىستېمىسى"
 #| msgid "Size"
 msgid "Size:"
 msgstr "چوڭلۇقى"
-
-#, fuzzy
-#~| msgid "Edit Bookmarks"
-#~ msgid "Mount Bookmarks"
-#~ msgstr "خەتكۈش تەھرىر"
 
 #, fuzzy
 #~| msgid "Show details"

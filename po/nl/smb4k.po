@@ -7,13 +7,13 @@
 #
 # Joop Beris <jberis@risse.nl>, 2005, 2006.
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2012.
-# Freek de Kruijf <f.de.kruijf@gmail.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Freek de Kruijf <f.de.kruijf@gmail.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
-"PO-Revision-Date: 2022-12-31 16:26+0100\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"PO-Revision-Date: 2023-01-02 12:16+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -26,7 +26,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - t/m 2022"
+msgstr "Freek de Kruijf - t/m 2023"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -139,8 +139,9 @@ msgid "Add &Bookmark"
 msgstr "&Bladwijzer toevoegen"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
-msgid "Mount All Bookmarks"
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Alle bladwijzers aankoppelen"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -918,9 +919,7 @@ msgstr "Bestandssysteem:"
 msgid "Size:"
 msgstr "Grootte:"
 
-#, fuzzy
-#~| msgid "Mount All Bookmarks"
-#~ msgid "Mount Bookmarks"
+#~ msgid "Mount All Bookmarks"
 #~ msgstr "Alle bladwijzers aankoppelen"
 
 #~ msgid " KiB"

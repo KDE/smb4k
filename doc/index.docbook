@@ -3771,9 +3771,9 @@ ntlm auth = yes
               <menuchoice><guibutton>Do not transfer any file smaller than</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Option: <option>--min-size=NUM</option></para>
+              <para>Option: <option>--min-size=SIZE</option></para>
               <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is smaller than the specified SIZE, which can help in not transferring small, junk files.</para>
-              <para>Default: not selected; NUM: 0 kB</para>
+              <para>Default: not selected; SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3781,9 +3781,9 @@ ntlm auth = yes
               <menuchoice><guibutton>Do not transfer any file larger than</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Option: <option>--max-size=NUM</option></para>
+              <para>Option: <option>--max-size=SIZE</option></para>
               <para>This tells <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> to avoid transferring any file that is larger than the specified SIZE.</para>
-              <para>Default: not selected; NUM: 0 kB</para>
+              <para>Default: not selected; SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3818,7 +3818,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para>Option: <option>--bwlimit=RATE</option></para>
-              <para>Set the maximum data transfer rate in kilobytes per second.</para>
+              <para>Set the maximum data transfer RATE in kilobytes per second.</para>
               <para>Default: not selected; RATE: 0 kB/s</para>
             </listitem>
           </varlistentry>
@@ -4009,19 +4009,6 @@ ntlm auth = yes
         <variablelist>
           <varlistentry>
             <term>
-              <menuchoice><guibutton>Custom filter rules</guibutton></menuchoice>
-            </term>
-            <listitem>
-              <para>Option: <option>-f</option>/<option>--filter=RULE</option></para>
-              <para>You can define one or more filter rules here. Each rule has to be prefixed with the <option>--filter=</option> or <option>-f</option> option string, because the contents of the text box will be passed to the <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command AS IS.</para>
-              <para>This option allows you to add rules to selectively exclude  certain  files  from  the  list of files to be transferred. This is most useful in combination with a recursive transfer.</para>
-              <para>You may use as many <option>--filter</option> options as you like to build up the list of files to exclude.</para>
-              <para>See  the  FILTER  RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on this option.</para>
-              <para>Default: empty</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
               <menuchoice><guibutton>Use --filter='dir-merge /.rsync-filter' filter rule</guibutton></menuchoice>
             </term>
             <listitem>
@@ -4040,6 +4027,19 @@ ntlm auth = yes
               <para>This option filters out the <filename>.rsync-filter</filename> files themselves from the transfer.</para>
               <para>See the FILTER RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on how this option works.</para>
               <para>Default: not selected</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice><guibutton>Custom filter rules</guibutton></menuchoice>
+            </term>
+            <listitem>
+              <para>Option: <option>-f</option>/<option>--filter=RULE</option></para>
+              <para>You can define one or more filter rules here. Each rule has to be prefixed with the <option>--filter=</option> or <option>-f</option> option string, because the contents of the text box will be passed to the <ulink url="man:/rsync"><citerefentry><refentrytitle>rsync</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> command AS IS.</para>
+              <para>This option allows you to add rules to selectively exclude  certain  files  from  the  list of files to be transferred. This is most useful in combination with a recursive transfer.</para>
+              <para>You may use as many <option>--filter</option> options as you like to build up the list of files to exclude.</para>
+              <para>See  the  FILTER  RULES section of the <ulink url="man:/rsync">manual page</ulink> for detailed information on this option.</para>
+              <para>Default: not selected; RULES: empty</para>
             </listitem>
           </varlistentry>
         </variablelist>

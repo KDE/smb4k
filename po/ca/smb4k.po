@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
 "PO-Revision-Date: 2023-01-02 13:20+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -138,8 +138,8 @@ msgstr "A&fegeix una adreça d'interès"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, kde-format
-msgid "Mount All Bookmarks"
-msgstr "Munta totes les adreces d'interès"
+msgid "Mount Bookmarks"
+msgstr "Munta les adreces d'interès"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -917,6 +917,5 @@ msgstr "Sistema de fitxers:"
 msgid "Size:"
 msgstr "Mida:"
 
-#~| msgid "Mount All Bookmarks"
-#~ msgid "Mount Bookmarks"
-#~ msgstr "Munta les adreces d'interès"
+#~ msgid "Mount All Bookmarks"
+#~ msgstr "Munta totes les adreces d'interès"

@@ -1,7 +1,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020.
-# Vit Pelcak <vpelcak@suse.cz>, 2021, 2022.
+# Vit Pelcak <vit@pelcak.org>, 2021, 2022.
 #
 msgid ""
 msgstr ""
@@ -897,10 +897,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Zachovat časy"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
@@ -912,10 +911,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Zachovat časy"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
@@ -927,10 +925,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Zachovat časy"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398

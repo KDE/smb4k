@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
 "PO-Revision-Date: 2022-12-31 16:02+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -133,8 +133,9 @@ msgid "Add &Bookmark"
 msgstr "Add &Bookmark"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
-msgid "Mount All Bookmarks"
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Mount All Bookmarks"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -907,9 +908,7 @@ msgstr "File system:"
 msgid "Size:"
 msgstr "Size:"
 
-#, fuzzy
-#~| msgid "Mount All Bookmarks"
-#~ msgid "Mount Bookmarks"
+#~ msgid "Mount All Bookmarks"
 #~ msgstr "Mount All Bookmarks"
 
 #~ msgid " KiB"
