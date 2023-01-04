@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -145,8 +145,9 @@ msgstr "Добавить &закладку"
 
 # BUGME: add accelerator? split? --aspotashev
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
-msgid "Mount All Bookmarks"
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Подключить все закладки"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -936,9 +937,7 @@ msgid "Size:"
 msgstr "Размер:"
 
 # BUGME: add accelerator? split? --aspotashev
-#, fuzzy
-#~| msgid "Mount All Bookmarks"
-#~ msgid "Mount Bookmarks"
+#~ msgid "Mount All Bookmarks"
 #~ msgstr "Подключить все закладки"
 
 #~ msgid " KiB"

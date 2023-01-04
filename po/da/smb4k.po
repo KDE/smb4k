@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -131,8 +131,9 @@ msgid "Add &Bookmark"
 msgstr "Tilføj &bogmærke"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
-msgid "Mount All Bookmarks"
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "Montér alle bogmærker"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -951,9 +952,7 @@ msgstr "Filsystem"
 msgid "Size:"
 msgstr "Størrelse"
 
-#, fuzzy
-#~| msgid "Mount All Bookmarks"
-#~ msgid "Mount Bookmarks"
+#~ msgid "Mount All Bookmarks"
 #~ msgstr "Montér alle bogmærker"
 
 #, fuzzy

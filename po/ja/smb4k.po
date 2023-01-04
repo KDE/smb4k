@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-03 00:47+0000\n"
+"POT-Creation-Date: 2023-01-04 00:49+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -142,7 +142,7 @@ msgstr "ブックマークを追加(&B)"
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, fuzzy, kde-format
 #| msgid "Add Bookmarks"
-msgid "Mount All Bookmarks"
+msgid "Mount Bookmarks"
 msgstr "ブックマークを追加(&B)"
 
 #: smb4k/smb4kconfigdialog.cpp:107
@@ -949,5 +949,5 @@ msgstr ""
 
 #, fuzzy
 #~| msgid "Add Bookmarks"
-#~ msgid "Mount Bookmarks"
+#~ msgid "Mount All Bookmarks"
 #~ msgstr "ブックマークを追加(&B)"
