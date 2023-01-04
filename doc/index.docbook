@@ -75,7 +75,7 @@
     <listitem><para>Support of printer shares</para></listitem>
     <listitem><para>&kwallet5; support</para></listitem>
     <listitem><para>Synchronization of a remote share with a local copy, and vice versa</para></listitem>
-    <listitem><para>Ability to define custom options for individual servers and shares</para></listitem>
+    <listitem><para>Ability to define custom settings for individual servers and shares</para></listitem>
     <listitem><para>Hardware support through the &solid; device integration framework, the &kdbusaddons; convenience classes and the &Qt; Network module</para></listitem>
     <listitem><para>Wake-On-LAN capabilities</para></listitem>
     <listitem><para>&plasmoid; for desktop integration</para></listitem>
@@ -166,7 +166,7 @@
 
       <para>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up, and presents them in the network neighborhood browser. For this purpose it uses &Samba;'s client library, <ulink url="https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD">DNS Service Discovery (DNS-SD)</ulink> and, optionally, <ulink url="https://en.wikipedia.org/wiki/WS-Discovery">Web Services Dynamic Discovery (WS-Discovery)</ulink>. The way &smb4k; browses the network neighborhood can be adjusted in the <link linkend="configuration_page_network_basic_settings_browse_settings"><guilabel>Network</guilabel> configuration page</link>.</para>
       <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie;, when you execute a network item. Due to the use of DNS-SD, you will most likely find a domain called <emphasis>LOCAL</emphasis> in the network neighborhood browser. This is the default local DNS domain used by services like <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</ulink> and not an actual &Windows; domain. Opening a domain or workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you must open the desired server.</para>
-      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic packet to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_advanced_settings_wake_on_lan">configuration dialog</link>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+      <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic packet to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_advanced_settings_wake_on_lan">configuration dialog</link>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor.</para>
       <note>
           <para>If you are using DNS Service Discovery and the Zeroconf daemon (Avahi) is not running, &smb4k; shows an error notification:</para>
           <screenshot>
@@ -258,11 +258,11 @@
           <term>
             <menuchoice>
               <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
-              <guimenuitem>Add Custom Options</guimenuitem>
+              <guimenuitem>Add Custom Settings</guimenuitem>
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog where you can set several custom options for each selected server and share. If a workgroup or no item is selected, this menu entry is disabled.</para>
+            <para>Open the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor where you can set several custom settings for each selected server and share. If a workgroup or no item is selected, this menu entry is disabled.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -442,28 +442,28 @@
     </sect2>
 
 <!-- 
-      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
   -->
 
-    <sect2 id="network_neighborhood_browser_defining_custom_options">
-      <title>Defining Custom Options</title>
+    <sect2 id="network_neighborhood_browser_defining_custom_settings">
+      <title>Defining Custom Settings</title>
 
-      <para>Use the <guilabel>Custom Options</guilabel> dialog if you want to</para>
+      <para>Use the <guilabel>Custom Settings</guilabel> editor if you want to</para>
       <itemizedlist>
         <listitem><para>define custom mount or browse settings for a single server or share that deviate from the values defined in the configuration dialog,</para></listitem>
         <listitem><para>define a server that should be awakened prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_advanced_settings_wake_on_lan">here</link>),</para></listitem>
         <listitem><para>always mount a particular share on start-up or when the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
-      <para>The dialog is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Custom Options</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server, or to only one.</para>
+      <para>The editor is opened by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> menu entry. Depending on your selection, the settings either apply to all shares of a server, or to only one.</para>
 
       <screenshot>
-        <screeninfo>Screenshot of the custom options dialog for a share</screeninfo>
+        <screeninfo>Screenshot of the custom settings editor for a share</screeninfo>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG" />
+            <imagedata fileref="network_neighborhood_browser_custom_settings_editor.png" format="PNG" />
           </imageobject>
           <textobject>
-            <phrase>The custom options dialog</phrase>
+            <phrase>The custom settings editor</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
@@ -471,31 +471,31 @@
       <para>The <guibutton>Default</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will save the custom settings and close the dialog.</para>
       <para>Please note that under BSD the dialog contains fewer entries than if you run &Linux;, because several of the options are not supported.</para>
 
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_common_mount_settings">
         <title>Common Mount Settings (&Linux; only)</title>
         
         <para>In this tab you can define common settings related to mounting. Checking the <guibutton>Always remount this share</guibutton> button for a selected share leads to it being remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting">this section</link>.</para>
       </sect3>
       
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_advanced_mount_settings">
         <title>Advanced Mount Settings (&Linux; only)</title>
         
         <para>In this tab you can define advanced settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">this section</link>.</para>
       </sect3>
       
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_bsd_mount_settings">
         <title>Mount Settings (BSD only)</title>
         
         <para>In this tab you can define settings related to mounting. For information about all other settings see <link linkend="configuration_page_mounting">this section</link>.</para>
       </sect3>
         
-      <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
+      <sect3 id="network_neighborhood_browser_defining_custom_settings_samba">
         <title>Browse Settings</title>
 
         <para>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information on these settings, please see <link linkend="configuration_page_network">the network configuration page</link>.</para>
       </sect3>
 
-      <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
+      <sect3 id="network_neighborhood_browser_defining_custom_settings_wol">
         <title>Wake-On-LAN Settings</title>
     
         <para>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN packet to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
@@ -636,11 +636,11 @@
           <term>
             <menuchoice>
               <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
-              <guimenuitem>Add Custom Options</guimenuitem>
+              <guimenuitem>Add Custom Settings</guimenuitem>
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the custom options dialog for the selected shares. Read the section about the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog for more details.</para>
+            <para>Open the custom settings editor for the selected shares. Read the section about the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor for more details.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -772,13 +772,13 @@
     </sect2>
     
 <!--
-      Using Smb4K : The Mounted Shares View : Adding Custom Options
+      Using Smb4K : The Mounted Shares View : Adding Custom Settings
   -->
     
-    <sect2 id="shares_view_adding_custom_options">
-      <title>Defining Custom Options</title>
+    <sect2 id="shares_view_adding_custom_settings">
+      <title>Defining Custom Settings</title>
       
-      <para>For the selected shares custom options can be defined. Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Options</guimenuitem></menuchoice> action to open the Custom Options dialog. For more details, please see <link linkend="network_neighborhood_browser_defining_custom_options">here</link>.</para>
+      <para>For the selected shares custom settings can be defined. Click the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> action to open the Custom Settings dialog. For more details, please see <link linkend="network_neighborhood_browser_defining_custom_settings">here</link>.</para>
     </sect2>
     
 <!-- 
@@ -912,11 +912,11 @@
         <varlistentry>
           <term>
             <menuchoice>
-              <guimenuitem>Add Custom Options</guimenuitem>
+              <guimenuitem>Add Custom Settings</guimenuitem>
             </menuchoice>
           </term>
           <listitem>
-            <para>Open the custom options dialog for the selected share. For further information read the section about the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+            <para>Open the custom settings editor for the selected share. For further information read the section about the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1041,7 +1041,7 @@
     </screenshot>
 
     <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share, or invoke the print dialog. To go up one level, you need to click the <guibutton>Up</guibutton> button in the tool bar.</para>
-    <para>For hosts and shares, there are some action buttons to the right of the network's name. For hosts, there is one button with which you can open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding the share to the bookmarks</link>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the chosen action.</para>
+    <para>For hosts and shares, there are some action buttons to the right of the network's name. For hosts, there is one button with which you can open the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding the share to the bookmarks</link>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the chosen action.</para>
     <para>Besides the <guibutton>Up</guibutton> button, the tool bar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With these you can do a rescan, abort any running action, or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
   </sect2>
 
@@ -1341,7 +1341,7 @@
       <itemizedlist>
         <listitem><para>All currently mounted shares are unmounted and scheduled for remount.</para></listitem>
         <listitem><para>All shares that were previously mounted are remounted under the newly activated profile.</para></listitem>
-        <listitem><para>The bookmarks and custom options from the new profile are loaded.</para></listitem>
+        <listitem><para>The bookmarks and custom settings from the new profile are loaded.</para></listitem>
       </itemizedlist>
       <para>So don't be surprised when things change after you select a different profile ...</para>
     </sect2>
@@ -1947,7 +1947,7 @@ ntlm auth = yes
       <sect3 id="configuration_page_network_advanced_settings_wake_on_lan">
         <title>Wake-On-LAN</title>
 
-        <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable this setting. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options">custom options dialog</link>.</para>
+        <para>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable this setting. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_settings">custom settings editor</link>.</para>
 
         <variablelist>
           <varlistentry>
@@ -2340,7 +2340,7 @@ ntlm auth = yes
               <menuchoice><guibutton>File system port</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog to define individual port numbers for the problematic hosts.</para>
+              <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor to define individual port numbers for the problematic hosts.</para>
               <para>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_advanced_settings_samba"><guibutton>SMB port</guibutton></link> option.</para>
               <para>Default: not selected; port 445</para>
             </listitem>
@@ -2356,7 +2356,7 @@ ntlm auth = yes
             <menuchoice><guibutton>All or most of the servers support the &CIFS; Unix extensions</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Most versions of &Samba; support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a &Windows; dominated network neighborhood with only a few &Samba; servers, you can safely uncheck this option and define custom options for the &Samba; servers.</para>
+            <para>Most versions of &Samba; support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a &Windows; dominated network neighborhood with only a few &Samba; servers, you can safely uncheck this option and define custom settings for the &Samba; servers.</para>
             <para>In case you uncheck this option, consider to switch on permission checks under <link linkend="configuration_page_mounting_advanced_mount_settings">Advanced Mount Settings</link>.</para>
             <para>Default: selected</para>
           </listitem>
@@ -4122,81 +4122,81 @@ ntlm auth = yes
 
 
 <!-- 
-      Configuring Smb4K : Custom Options
+      Configuring Smb4K : Custom Settings
 -->
 
-  <sect1 id="configuration_page_custom_options">
-    <title>Custom Options</title>
+  <sect1 id="configuration_page_custom_settings">
+    <title>Custom Settings</title>
 
-    <para>All servers and shares for which you defined custom options are listed here.</para>
+    <para>All servers and shares for which you defined custom settings are listed here.</para>
 
     <screenshot>
-      <screeninfo>Screenshot of the "Custom Options" configuration tab</screeninfo>
+      <screeninfo>Screenshot of the "Custom Settings" configuration tab</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="configuration_page_custom_options.png" format="PNG" /></imageobject>
-        <textobject><phrase>The "Custom Options" configuration tab</phrase></textobject>
+        <imageobject><imagedata fileref="configuration_page_custom_settings.png" format="PNG" /></imageobject>
+        <textobject><phrase>The "Custom Settings" configuration tab</phrase></textobject>
       </mediaobject>
     </screenshot>
 
-    <para>The options defined for a network item can be edited by either double clicking an entry in the list view or by choosing the <guimenuitem>Edit</guimenuitem> item from the popup menu (right click on the selected item). The custom options are then being loaded and can be edited. To remove an entry, right click it and choose the <guimenuitem>Remove</guimenuitem> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
+    <para>The options defined for a network item can be edited by either double clicking an entry in the list view or by clicking the <guimenuitem>Edit</guimenuitem> button. The custom settings editor is shown and the settings can be edited. To remove an entry, right click it and choose the <guimenuitem>Remove</guimenuitem> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem>Clear List</guimenuitem> item.</para>
 
-    <para>The custom options are accessible through the tabs on the right.</para>
+    <para>The custom settings are accessible through the tabs on the right.</para>
     
 <!--
-      Configuring Smb4K : Custom Options : Network Item
+      Configuring Smb4K : Custom Settings : Network Item
 -->
     
-    <sect2 id="configuration_page_custom_options_network_item">
+    <sect2 id="configuration_page_custom_settings_network_item">
       <title>Network Item</title>
       
       <para>This tab mostly serves as resource of information. In the <guilabel>Identification</guilabel> groupbox the workgroup or domain of the network item, its location and IP address are given. The IP address can be edited, in case you might need to adjust it.</para>
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
+      Configuring Smb4K : Custom Settings : Common Mount Settings (Linux only)
 -->
-    <sect2 id="configuration_page_custom_options_common_mount_settings">
+    <sect2 id="configuration_page_custom_settings_common_mount_settings">
       <title>Common Mount Settings (&Linux; only)</title>
       
       <para>Here you can edit common settings used for mounting under &Linux;. Have a look at the <link linkend="configuration_page_mounting">Mounting</link> configuration page to learn more about the present options.</para>
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
+      Configuring Smb4K : Custom Settings : Advanced Mount Settings (Linux only)
 -->
-    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
+    <sect2 id="configuration_page_custom_settings_advanced_mount_settings">
       <title>Advanced Mount Settings (&Linux; only)</title>
       
       <para>Here you can edit advanced settings used for mounting under &Linux;. Have a look at the <link linkend="configuration_page_mounting">Mounting</link> configuration page to learn more about the present options.</para>
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
+      Configuring Smb4K : Custom Settings : Mount Settings (BSD only)
 -->
-    <sect2 id="configuration_page_custom_options_mount_settings">
+    <sect2 id="configuration_page_custom_settings_mount_settings">
       <title>Mount Settings (BSD only)</title>
       
       <para>Here you can edit settings used for mounting under BSD. Have a look at the <link linkend="configuration_page_mounting">Mounting</link> configuration page to learn more about the present options.</para>
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Browse Settings
+      Configuring Smb4K : Custom Settings : Browse Settings
 -->
 
-    <sect2 id="configuration_page_custom_options_browse_settings">
+    <sect2 id="configuration_page_custom_settings_browse_settings">
       <title>Browse Settings</title>
     
       <para>You can edit various &Samba; settings that are used for browsing. For more information, have a look at the <link linkend="configuration_page_network_advanced_settings">&Samba;</link> settings.</para>
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
+      Configuring Smb4K : Custom Settings : Wake-On-LAN Settings
 -->
 
-    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
+    <sect2 id="configuration_page_custom_settings_wake_on_lan_settings">
       <title>Wake-On-LAN Settings</title>
     
-      <para>Here you can edit the Wake-On-LAN options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog.</para>
+      <para>Here you can edit the Wake-On-LAN options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor.</para>
     </sect2>
   </sect1>
 
@@ -4230,7 +4230,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Use profiles</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>Make Smb4K use profiles. This enables you to define different bookmarks and custom options for each profile. This is especially useful if you are using a laptop in different network neighborhoods, &eg; at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_page_profiles_profiles">profiles list</link> will be the active profile.</para>
+            <para>Make Smb4K use profiles. This enables you to define different bookmarks and custom settings for each profile. This is especially useful if you are using a laptop in different network neighborhoods, &eg; at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_page_profiles_profiles">profiles list</link> will be the active profile.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
@@ -4411,11 +4411,11 @@ ntlm auth = yes
           <menuchoice>
             <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
             <guimenu>Network</guimenu>
-            <guimenuitem>Custom Options</guimenuitem>
+            <guimenuitem>Add Custom Settings</guimenuitem>
           </menuchoice>
         </term>
         <listitem>
-          <para>Open the <link linkend="network_neighborhood_browser_defining_custom_options">Custom Options</link> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
+          <para>Open the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
         </listitem>
       </varlistentry>
       <varlistentry>

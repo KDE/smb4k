@@ -24,7 +24,7 @@ Features
 - Support of printer shares
 - KWallet support
 - Synchronization of a remote share with a local copy and vice versa
-- Ability to define custom options for individual servers and shares
+- Ability to define custom settings for individual servers and shares
 - Hardware support through the Solid device integration framework, the KDBusAddons convenience classes and the Qt Network module
 - Wake-On-LAN capabilities
 - Plasmoid for desktop integration
