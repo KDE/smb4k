@@ -233,9 +233,9 @@ void Smb4KSharesViewDockWidget::setupActions()
     //
     // Add custom options action
     //
-    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("Add &Custom Options"), this);
+    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("Add &Custom Settings"), this);
     customAction->setEnabled(false);
-    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomOptionsTriggered(bool)));
+    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomSettingsTriggered(bool)));
 
     m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
     m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL + Qt::Key_C));
@@ -528,7 +528,7 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool checked)
     Smb4KBookmarkHandler::self()->addBookmarks(shares);
 }
 
-void Smb4KSharesViewDockWidget::slotAddCustomOptionsTriggered(bool checked)
+void Smb4KSharesViewDockWidget::slotAddCustomSettingsTriggered(bool checked)
 {
     Q_UNUSED(checked);
 

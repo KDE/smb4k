@@ -158,10 +158,10 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     //
     // Add custom options action
     //
-    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("Add &Custom Options"), this);
+    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("Add &Custom Settings"), this);
     customAction->setEnabled(false);
 
-    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomOptions(bool)));
+    connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomSettings(bool)));
 
     m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
     m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL + Qt::Key_C));
@@ -881,7 +881,7 @@ void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool checked)
     }
 }
 
-void Smb4KNetworkBrowserDockWidget::slotAddCustomOptions(bool checked)
+void Smb4KNetworkBrowserDockWidget::slotAddCustomSettings(bool checked)
 {
     Q_UNUSED(checked);
 

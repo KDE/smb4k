@@ -119,7 +119,7 @@ protected Q_SLOTS:
     void slotEnableResetButton();
 
 private:
-    bool m_customOptionsChanged;
+    bool m_customSettingsChanged;
 };
 
 #endif

@@ -103,9 +103,9 @@ private:
     KPageWidgetItem *m_synchronization;
 
     /**
-     * "Custom Options" page
+     * "Custom Settings" page
      */
-    KPageWidgetItem *m_custom_options;
+    KPageWidgetItem *m_custom_settings;
 
     /**
      * "Profiles" page

@@ -28,7 +28,7 @@ using namespace Smb4KGlobal;
 Smb4KConfigPageCustomOptions::Smb4KConfigPageCustomOptions(QWidget *parent)
     : QWidget(parent)
 {
-    m_customOptionsChanged = false;
+    m_customSettingsChanged = false;
 
     //
     // Layout
@@ -118,7 +118,7 @@ Smb4KConfigPageCustomOptions::~Smb4KConfigPageCustomOptions()
 
 bool Smb4KConfigPageCustomOptions::customSettingsChanged()
 {
-    return m_customOptionsChanged;
+    return m_customSettingsChanged;
 }
 
 void Smb4KConfigPageCustomOptions::loadCustomOptions()
@@ -164,7 +164,7 @@ void Smb4KConfigPageCustomOptions::saveCustomOptions()
     if (customSettingsChanged()) {
         Smb4KCustomOptionsManager::self()->saveCustomOptions();
 
-        m_customOptionsChanged = false;
+        m_customSettingsChanged = false;
 
         // Do not emit walletEntriesModified() signal, because we do not
         // want to enable/disable the "Apply" button as well.
@@ -222,7 +222,7 @@ void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
             delete item;
         }
 
-        m_customOptionsChanged = options->isChanged();
+        m_customSettingsChanged = options->isChanged();
         Q_EMIT customSettingsModified();
     }
 }
@@ -257,7 +257,7 @@ void Smb4KConfigPageCustomOptions::slotRemoveButtonClicked(bool checked)
             }
 
             delete item;
-            m_customOptionsChanged = true;
+            m_customSettingsChanged = true;
             Q_EMIT customSettingsModified();
         }
     }
@@ -288,7 +288,7 @@ void Smb4KConfigPageCustomOptions::slotClearButtonClicked(bool checked)
             }
         }
 
-        m_customOptionsChanged = true;
+        m_customSettingsChanged = true;
         Q_EMIT customSettingsModified();
     }
 
@@ -306,7 +306,7 @@ void Smb4KConfigPageCustomOptions::slotResetButtonClicked(bool checked)
         loadCustomOptions();
     }
 
-    m_customOptionsChanged = false;
+    m_customSettingsChanged = false;
     Q_EMIT customSettingsModified();
 
     findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled(optionsListWidget->count() != 0);
@@ -320,7 +320,7 @@ void Smb4KConfigPageCustomOptions::slotEnableResetButton()
         QPushButton *resetButton = buttonBox->button(QDialogButtonBox::Reset);
 
         if (resetButton) {
-            resetButton->setEnabled(m_customOptionsChanged);
+            resetButton->setEnabled(m_customSettingsChanged);
         }
     }
 }

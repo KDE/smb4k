@@ -138,11 +138,11 @@ protected Q_SLOTS:
 
     /**
      * Provide custom options for a server or share. This slot is connected
-     * to the 'Add Custom Options' action.
+     * to the 'Add Custom Settings' action.
      *
      * @param checked             Is TRUE if the action is checked (not used here).
      */
-    void slotAddCustomOptionsTriggered(bool checked);
+    void slotAddCustomSettingsTriggered(bool checked);
 
     /**
      * This slot is connected to the 'Synchronize' action. The selected items will be

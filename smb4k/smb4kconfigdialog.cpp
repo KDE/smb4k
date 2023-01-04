@@ -109,7 +109,7 @@ void Smb4KConfigDialog::setupDialog()
     m_mounting = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
     m_authentication = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), QStringLiteral("dialog-password"));
     m_synchronization = addPage(rsync_area, Smb4KSettings::self(), i18n("Synchronization"), QStringLiteral("folder-sync"));
-    m_custom_options = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Options"), QStringLiteral("preferences-system-network"));
+    m_custom_settings = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Settings"), QStringLiteral("preferences-system-network"));
     m_profiles = addPage(profiles_area, Smb4KSettings::self(), i18n("Profiles"), QStringLiteral("format-list-unordered"));
 
     //
@@ -167,7 +167,7 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
 
 void Smb4KConfigDialog::updateSettings()
 {
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
     if (customOptionsPage) {
         customOptionsPage->saveCustomOptions();
@@ -187,7 +187,7 @@ void Smb4KConfigDialog::updateSettings()
         //
         // Finally reload the custom options.
         //
-        Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+        Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
         if (customOptionsPage) {
             customOptionsPage->loadCustomOptions();
@@ -204,7 +204,7 @@ void Smb4KConfigDialog::updateSettings()
 
 void Smb4KConfigDialog::updateWidgets()
 {
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
     if (customOptionsPage) {
         customOptionsPage->loadCustomOptions();
@@ -215,7 +215,7 @@ void Smb4KConfigDialog::updateWidgets()
 
 void Smb4KConfigDialog::reject()
 {
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
     if (customOptionsPage) {
         customOptionsPage->resetCustomOptions();
@@ -243,7 +243,7 @@ void Smb4KConfigDialog::slotEnableApplyButton()
     //
     // Check the custom options
     //
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_options->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
     if (!enable && customOptionsPage) {
         enable = customOptionsPage->customSettingsChanged();

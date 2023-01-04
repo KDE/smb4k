@@ -43,7 +43,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
     //
     // Set the title
     //
-    setWindowTitle(i18n("Custom Options"));
+    setWindowTitle(i18n("Custom Settings"));
 
     //
     // Set up the layout

@@ -222,7 +222,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     wakeOnLanBoxLayout->addWidget(waitingTimeWidget);
 
     KMessageWidget *wakeOnLanNote = new KMessageWidget(wakeOnLanBox);
-    wakeOnLanNote->setText(i18n("Define the hosts that should be woken up via the custom options dialog."));
+    wakeOnLanNote->setText(i18n("Define the hosts that should be woken up via the custom settings editor."));
     wakeOnLanNote->setMessageType(KMessageWidget::Information);
     wakeOnLanNote->setCloseButtonVisible(false);
     wakeOnLanNote->setIcon(KDE::icon(QStringLiteral("emblem-information")));
