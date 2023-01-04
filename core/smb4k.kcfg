@@ -556,9 +556,14 @@
             <whatsthis></whatsthis>
             <default code="true">QUrl::fromLocalFile(QDir::homePath() + QStringLiteral("/include.txt"))</default>
         </entry>
-        <entry name="CustomFilteringRules" type="String">
+        <entry name="UseCustomFilteringRules" type="Bool">
             <label>Custom filter rules:</label>
             <whatsthis>Add custom file-filtering rules (-f, --filter=RULE). This option allows you to add rules to selectively exclude certain files from the list of files to be transferred. These rules will be added to the rsync command as they are. Thus, each rule has to start with the --filter=... argument.</whatsthis>
+            <default>false</default>
+        </entry>
+        <entry name="CustomFilteringRules" type="String">
+            <label>Custom filter rules</label>
+            <whatsthis></whatsthis>
             <default></default>
         </entry>
         <entry name="UseFFilterRule" type="Bool">

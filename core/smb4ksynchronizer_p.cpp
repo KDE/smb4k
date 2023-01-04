@@ -361,9 +361,11 @@ void Smb4KSyncJob::slotStartSynchronization()
         command << QStringLiteral("--include-from=") + Smb4KSettings::includeFrom().path();
     }
 
-    if (!Smb4KSettings::customFilteringRules().isEmpty()) {
-        qDebug() << "Do we need to spilt the filtering rules into a list?";
-        command << Smb4KSettings::customFilteringRules();
+    if (Smb4KSettings::useCustomFilteringRules()) {
+        if (!Smb4KSettings::customFilteringRules().isEmpty()) {
+            qDebug() << "Do we need to spilt the filtering rules into a list?";
+            command << Smb4KSettings::customFilteringRules();
+        }
     }
 
     if (Smb4KSettings::useFFilterRule()) {

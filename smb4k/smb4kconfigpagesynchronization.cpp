@@ -538,10 +538,11 @@ Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     useFFFilterRule->setObjectName(QStringLiteral("kcfg_UseFFFilterRule"));
 
     filterRulesBoxLayout->addWidget(useFFFilterRule, 1, 0, 1, 2);
+    
+    QCheckBox *useCustomFilterRules = new QCheckBox(Smb4KSettings::self()->useCustomFilteringRulesItem()->label(), filterRulesBox);
+    useCustomFilterRules->setObjectName(QStringLiteral("kcfg_UseCustomFilteringRules"));
 
-    QLabel *customFilterRulesLabel = new QLabel(Smb4KSettings::self()->customFilteringRulesItem()->label(), filterRulesBox);
-
-    filterRulesBoxLayout->addWidget(customFilterRulesLabel, 2, 0);
+    filterRulesBoxLayout->addWidget(useCustomFilterRules, 2, 0);
 
     KLineEdit *customFilterRules = new KLineEdit(filterTab);
     customFilterRules->setObjectName(QStringLiteral("kcfg_CustomFilteringRules"));
