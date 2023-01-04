@@ -40,7 +40,6 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
     allowedMountArguments << QStringLiteral("backupgid");
     allowedMountArguments << QStringLiteral("ignorecase");
     allowedMountArguments << QStringLiteral("nocase");
-    allowedMountArguments << QStringLiteral("nobrl");
     allowedMountArguments << QStringLiteral("sfu");
     allowedMountArguments << QStringLiteral("nounix");
     allowedMountArguments << QStringLiteral("nouser_xattr");
