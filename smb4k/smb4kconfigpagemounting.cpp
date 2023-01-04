@@ -474,7 +474,7 @@ void Smb4KConfigPageMounting::setupWidget()
   connect(userMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewUserTriggered(QAction*)));
   connect(groupMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotNewGroupTriggered(QAction*)));
   connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCIFSUnixExtensionsSupport(bool)));
-  connect(additionalOptionsEdit, SIGNAL(toggled(bool)), this, SLOT(slotAdditionalCIFSOptions()));
+  connect(additionalOptionsEdit, SIGNAL(clicked(bool)), this, SLOT(slotAdditionalCIFSOptions()));
   connect(remountShares, SIGNAL(toggled(bool)), this, SLOT(slotRemountSharesToggled(bool)));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
