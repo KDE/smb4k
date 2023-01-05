@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2022-11-10 12:50+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -164,8 +164,9 @@ msgstr "Sincronisation"
 
 #: smb4k/smb4kconfigdialog.cpp:112
 #, fuzzy, kde-format
-msgid "Custom Options"
-msgstr "_Personalisat..."
+#| msgid "Mount Settings"
+msgid "Custom Settings"
+msgstr "Parametres de montage"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -371,7 +372,8 @@ msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -438,8 +440,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Diversi"
@@ -479,12 +481,12 @@ msgstr "General parametres:"
 msgid "Filter Rules"
 msgstr "Regules de filtre"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Filtration"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr "Summas de control"
@@ -654,7 +656,7 @@ msgstr "&Serchar"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "_Personalisat..."
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -899,6 +901,10 @@ msgstr "Sistema de files:"
 #, kde-format
 msgid "Size:"
 msgstr "Grandore:"
+
+#, fuzzy
+#~ msgid "Custom Options"
+#~ msgstr "_Personalisat..."
 
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Monstrar omni marca-págines"

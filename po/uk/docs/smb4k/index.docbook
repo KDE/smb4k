@@ -63,14 +63,14 @@
   </authorgroup>
   <copyright>
     <year
->2005-2022</year>
+>2005-2023</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->17 грудня 2022 року</date>
+>3 січня 2023 року</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -1298,8 +1298,6 @@
             <para
 >Відкрити вікно нетипових параметрів для позначених спільних ресурсів. Див. розділ щодо вікна <link linkend="network_neighborhood_browser_defining_custom_options"
 >Нетипові параметри</link
-> у розділі щодо <link linkend="network_neighborhood_browser"
->Навігатора мережевим середовищем</link
 >, щоб дізнатися більше.</para>
           </listitem>
         </varlistentry>
@@ -1769,6 +1767,20 @@
           <listitem>
             <para
 >Додати позначений спільний ресурс до списку закладок.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice>
+              <guimenuitem
+>Додати нетипові параметри</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Відкрити вікно нетипових параметрів для позначених спільних ресурсів. Див. розділ щодо вікна <link linkend="network_neighborhood_browser_defining_custom_options"
+>Нетипові параметри</link
+>, щоб дізнатися більше.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -7066,8 +7078,8 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Параметр: <option
->--min-size=ЧИСЛО</option
+>Option: <option
+>--min-size=SIZE</option
 ></para>
               <para
 >За допомогою цього пункту можна наказати <ulink url="man:/rsync"
@@ -7080,7 +7092,7 @@ ntlm auth = yes
 ></ulink
 > не переносити файли, розмір яких менший за вказане значення РОЗМІР. Таким чином можна уникнути надсилання малих зайвих файлів.</para>
               <para
->Типове значення: не позначено; ЧИСЛО=кБ</para>
+>Default: not selected; SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7092,8 +7104,8 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Параметр: <option
->--max-size=ЧИСЛО</option
+>Option: <option
+>--max-size=SIZE</option
 ></para>
               <para
 >За допомогою цього пункту можна наказати <ulink url="man:/rsync"
@@ -7106,7 +7118,7 @@ ntlm auth = yes
 ></ulink
 > не виконувати перенесення файлів з розміром, більшим за вказаний РОЗМІР.</para>
               <para
->Типове значення: не позначено; ЧИСЛО=кБ</para>
+>Default: not selected; SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7197,7 +7209,7 @@ ntlm auth = yes
 >--bwlimit=ШВИДКІСТЬ</option
 ></para>
               <para
->Встановити максимальну швидкість передавання даних у кілобайтах на секунду.</para>
+>Set the maximum data transfer RATE in kilobytes per second.</para>
               <para
 >Типове значення: не позначено; ШВИДКІСТЬ: 0 кБ/с</para>
             </listitem>
@@ -7609,48 +7621,6 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Нетипові правила фільтрування</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Параметр: <option
->-f</option
->/<option
->--filter=ПРАВИЛО</option
-></para>
-              <para
->Тут ви можете визначити одне або декілька правил фільтрування. Запис кожного правила має починатися з рядка <option
->--filter=</option
-> або <option
->-f</option
->, оскільки вміст цієї панелі буде передано програмі <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> БЕЗ ОБРОБКИ.</para>
-              <para
->За допомогою цього параметра ви зможете додавати правила для вибіркового виключення певних файлів зі списку для перенесення. Вам варто використовувати цей параметр разом з параметром рекурсивного перенесення.</para>
-              <para
->Для побудови списку виключення файлів ви можете використовувати довільну кількість параметрів <option
->--filter</option
->.</para>
-              <para
->Докладний опис цього параметра можна знайти у розділі ПРАВИЛА ФІЛЬТРУВАННЯ (FILTER RULES) <ulink url="man:/rsync"
->сторінки довідника</ulink
->.</para>
-              <para
->Типове значення: порожній рядок</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
 >Використовувати правило фільтрування «--filter='dir-merge /.rsync-filter'»</guibutton
 ></menuchoice>
             </term>
@@ -7699,6 +7669,48 @@ ntlm auth = yes
 >.</para>
               <para
 >Типове значення: не позначено</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Нетипові правила фільтрування</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Параметр: <option
+>-f</option
+>/<option
+>--filter=ПРАВИЛО</option
+></para>
+              <para
+>Тут ви можете визначити одне або декілька правил фільтрування. Запис кожного правила має починатися з рядка <option
+>--filter=</option
+> або <option
+>-f</option
+>, оскільки вміст цієї панелі буде передано програмі <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> БЕЗ ОБРОБКИ.</para>
+              <para
+>За допомогою цього параметра ви зможете додавати правила для вибіркового виключення певних файлів зі списку для перенесення. Вам варто використовувати цей параметр разом з параметром рекурсивного перенесення.</para>
+              <para
+>Для побудови списку виключення файлів ви можете використовувати довільну кількість параметрів <option
+>--filter</option
+>.</para>
+              <para
+>Докладний опис цього параметра можна знайти у розділі ПРАВИЛА ФІЛЬТРУВАННЯ (FILTER RULES) <ulink url="man:/rsync"
+>сторінки довідника</ulink
+>.</para>
+              <para
+>Default: not selected; RULES: empty</para>
             </listitem>
           </varlistentry>
         </variablelist>

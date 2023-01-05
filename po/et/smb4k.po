@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -165,9 +165,10 @@ msgid "Synchronization"
 msgstr "Sünkroonimine"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Kohandatud valikud"
+#, fuzzy, kde-format
+#| msgid "Common Settings"
+msgid "Custom Settings"
+msgstr "Samba üldseadistused"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -389,7 +390,8 @@ msgstr " s"
 #| msgid ""
 #| "<qt>Define the hosts that should be woken up via the custom options "
 #| "dialog.</qt>"
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "<qt>Masinaid, mida tuleb äratada, saab määrata kohandatud valikute dialoogis."
 "</qt>"
@@ -462,8 +464,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Muu"
@@ -506,12 +508,12 @@ msgstr "Üldised seadistused"
 msgid "Filter Rules"
 msgstr "Filtrireeglid"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Filtreerimine"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
@@ -688,7 +690,7 @@ msgstr "Ot&si"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "&Kohandatud valikud"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -935,6 +937,9 @@ msgstr "Failisüsteem:"
 msgid "Size:"
 msgstr "Suurus:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Kohandatud valikud"
+
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Ühenda kõik järjehoidjad"
 
@@ -1029,11 +1034,6 @@ msgstr "Suurus:"
 #~| msgid "Profiles"
 #~ msgid "Profiles:"
 #~ msgstr "Profiilid"
-
-#, fuzzy
-#~| msgid "Common Settings"
-#~ msgid "Common Settings:"
-#~ msgstr "Samba üldseadistused"
 
 #, fuzzy
 #~| msgid "Authentication"

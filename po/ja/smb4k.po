@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -171,9 +171,10 @@ msgid "Synchronization"
 msgstr "同期化"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "カスタムオプション"
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Custom Settings"
+msgstr "共通オプション"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -386,7 +387,8 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -457,8 +459,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Miscellaneous"
@@ -500,12 +502,12 @@ msgstr ""
 msgid "Filter Rules"
 msgstr "フィルタルール"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "フィルタリング"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr "チェックサム"
@@ -689,7 +691,7 @@ msgstr "検索(&S)"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "カスタムオプション(&C)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -946,6 +948,9 @@ msgstr "ファイルシステム:"
 #, kde-format
 msgid "Size:"
 msgstr ""
+
+#~ msgid "Custom Options"
+#~ msgstr "カスタムオプション"
 
 #, fuzzy
 #~| msgid "Add Bookmarks"

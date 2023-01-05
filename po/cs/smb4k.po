@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2022-07-14 14:27+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -133,10 +133,9 @@ msgid "Add &Bookmark"
 msgstr "Přid&at záložku"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Záložky"
+msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -164,9 +163,10 @@ msgid "Synchronization"
 msgstr "Synchronizace"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Vlastní možnosti"
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
+msgid "Custom Settings"
+msgstr "Nastavení připojení"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -373,7 +373,8 @@ msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -438,8 +439,8 @@ msgid " kB"
 msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Různé"
@@ -479,12 +480,12 @@ msgstr "Obecná nastavení filtrování"
 msgid "Filter Rules"
 msgstr "Filtr Pravidel"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Filtrování"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr "Kontrolní součty"
@@ -656,9 +657,10 @@ msgstr "&Hledat"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
-msgid "Add &Custom Options"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
+msgid "Add &Custom Settings"
+msgstr "Pokročilá nastavení připojení"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -900,3 +902,6 @@ msgstr "Souborový systém:"
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
+
+#~ msgid "Custom Options"
+#~ msgstr "Vlastní možnosti"

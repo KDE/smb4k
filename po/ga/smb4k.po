@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2009-12-24 06:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -163,9 +163,10 @@ msgid "Synchronization"
 msgstr "Sioncrónú"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Roghanna Saincheaptha"
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Custom Settings"
+msgstr "Roghanna Coitianta"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -385,7 +386,8 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -456,8 +458,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Miscellaneous"
@@ -500,12 +502,12 @@ msgstr ""
 msgid "Filter Rules"
 msgstr "Rialacha Scagtha"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Scagadh"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr ""
@@ -683,7 +685,7 @@ msgstr "&Cuardach"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Roghanna Saincheaptha"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -937,6 +939,9 @@ msgstr "Córas comhaid"
 msgid "Size:"
 msgstr "Méid"
 
+#~ msgid "Custom Options"
+#~ msgstr "Roghanna Saincheaptha"
+
 #, fuzzy
 #~| msgid "Show details"
 #~ msgid "Details"
@@ -1002,11 +1007,6 @@ msgstr "Méid"
 #~| msgid "&Settings"
 #~ msgid "Browse Settings:"
 #~ msgstr "&Socruithe"
-
-#, fuzzy
-#~| msgid "Common Options"
-#~ msgid "Common Settings:"
-#~ msgstr "Roghanna Coitianta"
 
 #, fuzzy
 #~| msgid "Authentication"

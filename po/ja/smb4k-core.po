@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:52+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1559,13 +1559,13 @@ msgstr ""
 msgid "The file from which the include patterns are read"
 msgstr "インクルードパターンが読まれるファイル"
 
-#. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
+#. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:560
 #, kde-format
 msgid "Custom filter rules:"
 msgstr "カスタムフィルタルール:"
 
-#. i18n: ectx: whatsthis, entry (CustomFilteringRules), group (Synchronization)
+#. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:561
 #, kde-format
 msgid ""
@@ -1579,14 +1579,21 @@ msgstr ""
 "を可能にします。これらの規則は rsync コマンドに追加されます。したがって、個々"
 "の規則は --filter=... 引数で始まる必要があります"
 
-#. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
+#. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
+#, fuzzy, kde-format
+#| msgid "Custom filter rules:"
+msgid "Custom filter rules"
+msgstr "カスタムフィルタルール:"
+
+#. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
+#: smb4k.kcfg:570
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
 msgstr "使用方法 --filter='dir-merge rsync-filter' フィルタ ルール"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:566
+#: smb4k.kcfg:571
 #, kde-format
 msgid ""
 "This filter rule tells rsync to look for per-directory .rsync-filter files "
@@ -1600,13 +1607,13 @@ msgstr ""
 "合、それは有効ではありません。"
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:570
+#: smb4k.kcfg:575
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
 msgstr "使用方法 --filter='exclude rsync-filter' フィルタ ルール"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:571
+#: smb4k.kcfg:576
 #, kde-format
 msgid ""
 "This rule filters out the .rsync-filter files from the transfer. These files "
@@ -1618,13 +1625,13 @@ msgstr ""
 "を選択解除することによって作動できるフィルタ規則を含んでいます。"
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:575
+#: smb4k.kcfg:580
 #, kde-format
 msgid "Handle sparse files efficiently"
 msgstr "まばらなファイルを効率的に扱ってください"
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:576
+#: smb4k.kcfg:581
 #, kde-format
 msgid ""
 "Handle sparse files efficiently (-S, --sparse) so that they take up less "
@@ -1636,13 +1643,13 @@ msgstr ""
 "情報は、rsync のマニュアルのページを参照してください。"
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:580
+#: smb4k.kcfg:585
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
 msgstr "ファイル全体を複写 (rsync アルゴリズムではありません)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:581
+#: smb4k.kcfg:586
 #, kde-format
 msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
@@ -1653,13 +1660,13 @@ msgstr ""
 "になります。"
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:585
+#: smb4k.kcfg:590
 #, kde-format
 msgid "Do not cross file system boundaries"
 msgstr "ファイルシステムをまたがない"
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:586
+#: smb4k.kcfg:591
 #, kde-format
 msgid ""
 "Do not cross file system boundaries (-x, --one-file-system). This tells "
@@ -1671,13 +1678,13 @@ msgstr ""
 "ションの詳細について、マニュアルのページを読んでください。"
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:590
+#: smb4k.kcfg:595
 #, kde-format
 msgid "Only update files that already exist"
 msgstr "既に存在するファイルだけ、更新します"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:591
+#: smb4k.kcfg:596
 #, kde-format
 msgid ""
 "Skip creating new files on the receiving side (--existing). This tells rsync "
@@ -1693,13 +1700,13 @@ msgstr ""
 "とが無関係なファイルを削除することであるならば、有効かもしれませんが)"
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:595
+#: smb4k.kcfg:600
 #, kde-format
 msgid "Ignore files that already exist"
 msgstr "既に存在するファイルを無視します"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:596
+#: smb4k.kcfg:601
 #, kde-format
 msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
@@ -1709,13 +1716,13 @@ msgstr ""
 "既存のディレクトリは無視されません。"
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:600
+#: smb4k.kcfg:605
 #, kde-format
 msgid "Delay updates until the end of transfer"
 msgstr "転送終了まで、アップデートを遅延します "
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:601
+#: smb4k.kcfg:606
 #, kde-format
 msgid ""
 "Delay updates until the end of the transfer (--delay-updates). This option "
@@ -1729,13 +1736,13 @@ msgstr ""
 "るまでその場所に転送されます。"
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:605
+#: smb4k.kcfg:610
 #, kde-format
 msgid "Make backups"
 msgstr "バックアップ作成"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:606
+#: smb4k.kcfg:611
 #, kde-format
 msgid ""
 "Make backups (-b, --backup). With this option, preexisting destination files "
@@ -1749,49 +1756,49 @@ msgstr ""
 "suffix=SUFFIX オプションを使ってコントロールできます。"
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:610
+#: smb4k.kcfg:615
 #, kde-format
 msgid "Backup suffix:"
 msgstr "バックアップ拡張子:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:611
+#: smb4k.kcfg:616
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
 msgstr "この拡張子をバックアップに使用します (--suffix=SUFFIX)."
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
-#: smb4k.kcfg:615
+#: smb4k.kcfg:620
 #, kde-format
 msgid "Backup suffix"
 msgstr "バックアップ拡張子"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:620
+#: smb4k.kcfg:625
 #, kde-format
 msgid "Backup directory:"
 msgstr "バックアップ・ディレクトリ:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:621
+#: smb4k.kcfg:626
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
 msgstr "このディレクトリにバックアップを格納します (--backup-dir=DIR)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
-#: smb4k.kcfg:625
+#: smb4k.kcfg:630
 #, kde-format
 msgid "Backup directory"
 msgstr "バックアップ・ディレクトリ"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:630
+#: smb4k.kcfg:635
 #, kde-format
 msgid "Force fixed checksum block size:"
 msgstr "チェックサムブロック・サイズを固定しました:"
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:631
+#: smb4k.kcfg:636
 #, kde-format
 msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
@@ -1801,19 +1808,19 @@ msgstr ""
 "rsync アルゴリズムにおいて、固定した値を使用したブロックサイズを強制します。"
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
-#: smb4k.kcfg:635
+#: smb4k.kcfg:640
 #, kde-format
 msgid "The block size"
 msgstr "ブロックサイズ"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:641
+#: smb4k.kcfg:646
 #, kde-format
 msgid "Set block/file checksum seed:"
 msgstr "ブロック/ファイル チェックサム 設定:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:642
+#: smb4k.kcfg:647
 #, kde-format
 msgid ""
 "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
@@ -1827,20 +1834,20 @@ msgstr ""
 "サムの種は、サーバとデフォルトでは現在時間によって作成されます。"
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:646
+#: smb4k.kcfg:651
 #, fuzzy, kde-format
 #| msgid "The data for the UsePartialDirectory option"
 msgid "The value for the UseChecksumSeed config option"
 msgstr "UsePartialDirectory オプション用のデータ"
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:652
+#: smb4k.kcfg:657
 #, kde-format
 msgid "Skip files based on checksum"
 msgstr "チェックサムに基づいて、ファイルをスキップ"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:653
+#: smb4k.kcfg:658
 #, kde-format
 msgid ""
 "Skip files based on a checksum and not based on modification time and size (-"
@@ -1852,34 +1859,34 @@ msgstr ""
 "するかは、rsync のマニュアルのページを参照してください。"
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:657
+#: smb4k.kcfg:662
 #, kde-format
 msgid "Set bandwidth limit:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:658
+#: smb4k.kcfg:663
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
 msgstr ""
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:662
+#: smb4k.kcfg:667
 #, fuzzy, kde-format
 #| msgid "The data for the UsePartialDirectory option"
 msgid "The value for the UseBandwidthLimit config option"
 msgstr "UsePartialDirectory オプション用のデータ"
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:674
+#: smb4k.kcfg:679
 #, fuzzy, kde-format
 #| msgid "Update files"
 msgid "Use profiles"
 msgstr "ファイルを更新"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:675
+#: smb4k.kcfg:680
 #, kde-format
 msgid ""
 "Make Smb4K use profiles. This enables you to define different bookmarks and "
@@ -1888,50 +1895,50 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:679
+#: smb4k.kcfg:684
 #, kde-format
 msgid "Profiles"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:680
+#: smb4k.kcfg:685
 #, kde-format
 msgid "The list of profiles."
 msgstr ""
 
-#: smb4k.kcfg:687
+#: smb4k.kcfg:692
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
 msgstr ""
 
-#: smb4k.kcfg:688
+#: smb4k.kcfg:693
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
 msgstr ""
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:689
+#: smb4k.kcfg:694
 #, fuzzy, kde-format
 #| msgid "Archive mode"
 msgid "Active profile"
 msgstr "アーカイブモード"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:690
+#: smb4k.kcfg:695
 #, kde-format
 msgid "This is the currently active profile."
 msgstr ""
 
 #. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:694
+#: smb4k.kcfg:699
 #, kde-format
 msgid "Use profile migration assistant"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:695
+#: smb4k.kcfg:700
 #, kde-format
 msgid ""
 "Use the profile migration assistant when profiles are removed or the use of "
@@ -2125,9 +2132,10 @@ msgid "Print"
 msgstr "プリンタ"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, kde-format
-msgid "Custom Options"
-msgstr "カスタムオプション"
+#, fuzzy, kde-format
+#| msgid "Mount Share"
+msgid "Custom Settings"
+msgstr "共有をマウント"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, fuzzy, kde-format
@@ -3241,14 +3249,18 @@ msgstr ""
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
-msgid "Do not use locking"
-msgstr "ロックを使わない"
+msgid "Do not send byte range lock requests"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
 #, kde-format
-msgid "Do not use locking. Do not start lockd."
-msgstr "ロックを使用しない。ロックデーモンを起動しない"
+msgid ""
+"Do not send byte range lock requests to the server. This is necessary for "
+"certain applications that break with cifs style mandatory byte range locks "
+"(and most cifs servers do not yet support requesting advisory byte range "
+"locks)."
+msgstr ""
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3761,61 +3773,61 @@ msgstr "プリンタ"
 msgid "IPC"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:430 smb4ksynchronizer_p.cpp:510
+#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
 #, fuzzy, kde-format
 #| msgid "Synchronizing %1"
 msgid "Synchronizing"
 msgstr "%1 を同期中"
 
-#: smb4ksynchronizer_p.cpp:430 smb4ksynchronizer_p.cpp:510
+#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
 #, fuzzy, kde-format
 #| msgid "Source:"
 msgid "Source"
 msgstr "元:"
 
-#: smb4ksynchronizer_p.cpp:430 smb4ksynchronizer_p.cpp:510
+#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
 #, fuzzy, kde-format
 #| msgid "Destination:"
 msgid "Destination"
 msgstr "行き先:"
 
-#: smb4ksynchronizer_p.cpp:548
+#: smb4ksynchronizer_p.cpp:550
 #, kde-format
 msgid "Synchronization"
 msgstr "同期化"
 
-#: smb4ksynchronizer_p.cpp:551
+#: smb4ksynchronizer_p.cpp:553
 #, kde-format
 msgid "Swap Paths"
 msgstr "スワップパス"
 
-#: smb4ksynchronizer_p.cpp:552
+#: smb4ksynchronizer_p.cpp:554
 #, kde-format
 msgid "Swap source and destination"
 msgstr "スワップ元とスワップ先"
 
-#: smb4ksynchronizer_p.cpp:553
+#: smb4ksynchronizer_p.cpp:555
 #, kde-format
 msgid "Synchronize"
 msgstr "同期"
 
-#: smb4ksynchronizer_p.cpp:554
+#: smb4ksynchronizer_p.cpp:556
 #, kde-format
 msgid "Synchronize the destination with the source"
 msgstr "送り先とソースと同期します"
 
-#: smb4ksynchronizer_p.cpp:568
+#: smb4ksynchronizer_p.cpp:570
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization."
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:578
+#: smb4ksynchronizer_p.cpp:580
 #, kde-format
 msgid "Source:"
 msgstr "元:"
 
-#: smb4ksynchronizer_p.cpp:586
+#: smb4ksynchronizer_p.cpp:588
 #, kde-format
 msgid ""
 "This is the source directory. The data that it contains is to be written to "
@@ -3824,12 +3836,12 @@ msgstr ""
 "これはソースディレクトリです。データが含まれるところが、目的のディレクトリで"
 "す。"
 
-#: smb4ksynchronizer_p.cpp:589
+#: smb4ksynchronizer_p.cpp:591
 #, kde-format
 msgid "Destination:"
 msgstr "行き先:"
 
-#: smb4ksynchronizer_p.cpp:597
+#: smb4ksynchronizer_p.cpp:599
 #, kde-format
 msgid ""
 "This is the destination directory. It will be updated with the data from the "
@@ -3849,3 +3861,12 @@ msgstr "<qt>ホスト %1 のユーザ名とパスワードを入力してくだ�
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>共有 %1 のユーザ名とパスワードを入力してください。</qt>"
+
+#~ msgid "Custom Options"
+#~ msgstr "カスタムオプション"
+
+#~ msgid "Do not use locking"
+#~ msgstr "ロックを使わない"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "ロックを使用しない。ロックデーモンを起動しない"

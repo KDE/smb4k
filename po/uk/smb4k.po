@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2023-01-02 08:55+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -167,9 +167,10 @@ msgid "Synchronization"
 msgstr "Синхронізація"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Нетипові параметри"
+#, fuzzy, kde-format
+#| msgid "Common Settings:"
+msgid "Custom Settings"
+msgstr "Загальні параметри:"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -390,8 +391,11 @@ msgid " s"
 msgstr " с"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "Визначити вузли, які має бути пробуджено за допомогою діалогового вікна "
 "нетипових параметрів."
@@ -458,8 +462,8 @@ msgid " kB"
 msgstr " кБ"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Інше"
@@ -499,12 +503,12 @@ msgstr "Загальні параметри фільтрування"
 msgid "Filter Rules"
 msgstr "Правила фільтрування"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Фільтрування"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr "Контрольні суми"
@@ -678,8 +682,9 @@ msgstr "&Пошук"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
-msgid "Add &Custom Options"
+#, fuzzy, kde-format
+#| msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Додати не&типові параметри"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -925,6 +930,9 @@ msgstr "Файлова система:"
 msgid "Size:"
 msgstr "Розмір:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Нетипові параметри"
+
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Змонтувати всі закладки"
 
@@ -1002,9 +1010,6 @@ msgstr "Розмір:"
 
 #~ msgid "Profiles:"
 #~ msgstr "Профілі:"
-
-#~ msgid "Common Settings:"
-#~ msgstr "Загальні параметри:"
 
 #~ msgid "Authentication:"
 #~ msgstr "Розпізнавання:"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -165,9 +165,10 @@ msgid "Synchronization"
 msgstr "Συγχρονισμός"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Προσαρμοσμένες επιλογές"
+#, fuzzy, kde-format
+#| msgid "Common Settings"
+msgid "Custom Settings"
+msgstr "Κοινές ρυθμίσεις"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -386,7 +387,8 @@ msgstr " s"
 #| msgid ""
 #| "<qt>Define the hosts that should be woken up via the custom options "
 #| "dialog.</qt>"
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "<qt>Καθορίστε τους υπολογιστές που πρέπει να αφυπνιστούν μέσω του διαλόγου "
 "προσαρμοσμένων επιλογών.</qt>"
@@ -460,8 +462,8 @@ msgid " kB"
 msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Διάφορα"
@@ -504,12 +506,12 @@ msgstr "Γενικές ρυθμίσεις"
 msgid "Filter Rules"
 msgstr "Κανόνες φιλτραρίσματος"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Φιλτράρισμα"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
@@ -684,7 +686,7 @@ msgstr "Αναζήτη&ση"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Προσαρ&μοσμένες επιλογές"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -931,6 +933,9 @@ msgstr "Σύστημα αρχείων:"
 msgid "Size:"
 msgstr "Μέγεθος:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Προσαρμοσμένες επιλογές"
+
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Προσάρτηση όλων των σελιδοδεικτών"
 
@@ -1025,11 +1030,6 @@ msgstr "Μέγεθος:"
 #~| msgid "Profiles"
 #~ msgid "Profiles:"
 #~ msgstr "Προφίλ"
-
-#, fuzzy
-#~| msgid "Common Settings"
-#~ msgid "Common Settings:"
-#~ msgstr "Κοινές ρυθμίσεις"
 
 #, fuzzy
 #~| msgid "Authentication"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -169,9 +169,10 @@ msgid "Synchronization"
 msgstr "Samræming"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Sérsniðnir valkostir"
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Custom Settings"
+msgstr "Algengar stillingar"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -385,7 +386,8 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -455,8 +457,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Miscellaneous"
@@ -499,12 +501,12 @@ msgstr ""
 msgid "Filter Rules"
 msgstr "Síureglur"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Síun"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
@@ -687,7 +689,7 @@ msgstr "&Leita"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Sérsniðnir &valkostir"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -948,6 +950,9 @@ msgstr "Skráarkerfi:"
 msgid "Size:"
 msgstr "Stærð:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Sérsniðnir valkostir"
+
 #, fuzzy
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "&Sýsla með bókamerki"
@@ -1020,11 +1025,6 @@ msgstr "Stærð:"
 #, fuzzy
 #~ msgid "Browse Settings:"
 #~ msgstr "Almennir valkostir"
-
-#, fuzzy
-#~| msgid "Common Options"
-#~ msgid "Common Settings:"
-#~ msgstr "Algengar stillingar"
 
 #, fuzzy
 #~| msgid "Authentication"

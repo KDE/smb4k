@@ -6,13 +6,13 @@
 # Serdar Soytetir <sendirom@gmail.com>, 2006.
 # obsoleteman <tulliana@gmail.com>, 2006-2007,2009,2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2017, 2020.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
-"PO-Revision-Date: 2022-12-31 17:05+0300\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
+"PO-Revision-Date: 2023-01-04 22:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -136,10 +136,9 @@ msgid "Add &Bookmark"
 msgstr "Yer İmi &Ekle"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Tüm Yer İmlerini Bağla"
+msgstr "Yer İmlerini Bağla"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -167,9 +166,10 @@ msgid "Synchronization"
 msgstr "Eşleme"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Özel Seçenekler"
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
+msgid "Custom Settings"
+msgstr "Bağlama Ayarları"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -380,8 +380,11 @@ msgid " s"
 msgstr " sn"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "Özel seçenekler penceresi ile uyandırılması gereken istemcileri tanımlayın."
 
@@ -447,8 +450,8 @@ msgid " kB"
 msgstr "kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Çeşitli"
@@ -488,12 +491,12 @@ msgstr "Genel Süzme Ayarları"
 msgid "Filter Rules"
 msgstr "Süzme Kuralları"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Süzme"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr "Sağlama Toplamları"
@@ -665,8 +668,9 @@ msgstr "&Ara"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
-msgid "Add &Custom Options"
+#, fuzzy, kde-format
+#| msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Öz&el Seçenekler Ekle"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -911,6 +915,9 @@ msgstr "Dosya Sistemi:"
 #, kde-format
 msgid "Size:"
 msgstr "Boyut:"
+
+#~ msgid "Custom Options"
+#~ msgstr "Özel Seçenekler"
 
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Tüm Yer İmlerini Bağla"

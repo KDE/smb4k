@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -168,9 +168,10 @@ msgid "Synchronization"
 msgstr "Synkroniseren"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Egen Optschonen"
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Custom Settings"
+msgstr "Allmeen Optschonen"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -392,7 +393,8 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -464,8 +466,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Miscellaneous"
@@ -508,12 +510,12 @@ msgstr ""
 msgid "Filter Rules"
 msgstr "Filterregeln"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Filtern"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
@@ -697,7 +699,7 @@ msgstr "&Söken"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Egen Opts&chonen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -952,6 +954,9 @@ msgstr "Dateisysteem"
 msgid "Size:"
 msgstr "Grött"
 
+#~ msgid "Custom Options"
+#~ msgstr "Egen Optschonen"
+
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "All Leestekens inhangen"
 
@@ -1028,11 +1033,6 @@ msgstr "Grött"
 #~| msgid "&Settings"
 #~ msgid "Browse Settings:"
 #~ msgstr "&Instellen"
-
-#, fuzzy
-#~| msgid "Common Options"
-#~ msgid "Common Settings:"
-#~ msgstr "Allmeen Optschonen"
 
 #, fuzzy
 #~| msgid "Authentication"
