@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -163,9 +163,10 @@ msgid "Synchronization"
 msgstr "قەدەمداشلاش"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "&Settings"
+msgid "Custom Settings"
+msgstr "تەڭشەك(&S)"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -381,7 +382,8 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -452,8 +454,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Miscellaneous"
@@ -496,12 +498,12 @@ msgstr ""
 msgid "Filter Rules"
 msgstr ""
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "سۈزۈۋاتىدۇ"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr ""
@@ -675,7 +677,7 @@ msgstr "ئىزدە(&S)"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "Advanced Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "ئالىي تاللانما"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -994,11 +996,6 @@ msgstr "چوڭلۇقى"
 #, fuzzy
 #~| msgid "&Settings"
 #~ msgid "Browse Settings:"
-#~ msgstr "تەڭشەك(&S)"
-
-#, fuzzy
-#~| msgid "&Settings"
-#~ msgid "Common Settings:"
 #~ msgstr "تەڭشەك(&S)"
 
 #, fuzzy

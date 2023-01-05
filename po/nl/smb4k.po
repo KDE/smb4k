@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
-"PO-Revision-Date: 2023-01-02 12:16+0100\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
+"PO-Revision-Date: 2023-01-04 15:24+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -139,10 +139,9 @@ msgid "Add &Bookmark"
 msgstr "&Bladwijzer toevoegen"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Alle bladwijzers aankoppelen"
+msgstr "Bladwijzers aankoppelen"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -170,9 +169,10 @@ msgid "Synchronization"
 msgstr "Synchronisatie"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Custom Opties"
+#, fuzzy, kde-format
+#| msgid "Common Settings:"
+msgid "Custom Settings"
+msgstr "Algemene instellingen:"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -386,8 +386,11 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "Definieer de hosts die gewekt moeten worden via de dialoog voor aangepaste "
 "opties."
@@ -454,8 +457,8 @@ msgid " kB"
 msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Overig"
@@ -495,12 +498,12 @@ msgstr "Algemene filterinstellingen"
 msgid "Filter Rules"
 msgstr "Filterregels"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Filtering"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr "Controlesommen"
@@ -672,8 +675,9 @@ msgstr "&Zoek"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
-msgid "Add &Custom Options"
+#, fuzzy, kde-format
+#| msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "&Aangepaste opties toevoegen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -919,6 +923,9 @@ msgstr "Bestandssysteem:"
 msgid "Size:"
 msgstr "Grootte:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Custom Opties"
+
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Alle bladwijzers aankoppelen"
 
@@ -998,9 +1005,6 @@ msgstr "Grootte:"
 
 #~ msgid "Profiles:"
 #~ msgstr "Profielen:"
-
-#~ msgid "Common Settings:"
-#~ msgstr "Algemene instellingen:"
 
 #~ msgid "Authentication:"
 #~ msgstr "Authenticatie:"

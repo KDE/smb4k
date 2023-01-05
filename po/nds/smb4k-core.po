@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-29 00:52+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1579,13 +1579,13 @@ msgstr ""
 msgid "The file from which the include patterns are read"
 msgstr "De Datei, ut de de Inslutmustern inleest warrt"
 
-#. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
+#. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:560
 #, kde-format
 msgid "Custom filter rules:"
 msgstr "Topasst Filterregeln:"
 
-#. i18n: ectx: whatsthis, entry (CustomFilteringRules), group (Synchronization)
+#. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:561
 #, kde-format
 msgid ""
@@ -1599,14 +1599,21 @@ msgstr ""
 "mit Dateien, de överdragen warrt. De Regeln warrt den „rsync“-Befehl "
 "toföögt, as se sünd, se mööt also all mit „--filter=“ anfangen."
 
-#. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
+#. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
+#, fuzzy, kde-format
+#| msgid "Custom filter rules:"
+msgid "Custom filter rules"
+msgstr "Topasst Filterregeln:"
+
+#. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
+#: smb4k.kcfg:570
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
 msgstr "Regel „--filter='dir-merge /.rsync-filter'“ bruken"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:566
+#: smb4k.kcfg:571
 #, kde-format
 msgid ""
 "This filter rule tells rsync to look for per-directory .rsync-filter files "
@@ -1620,13 +1627,13 @@ msgstr ""
 "filter='exclude .rsync-filter'“ mit tosamen bruukst."
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:570
+#: smb4k.kcfg:575
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
 msgstr "Regel „--filter='exclude .rsync-filter'“ bruken"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:571
+#: smb4k.kcfg:576
 #, kde-format
 msgid ""
 "This rule filters out the .rsync-filter files from the transfer. These files "
@@ -1638,13 +1645,13 @@ msgstr ""
 "Regel „--filter='dir-merge /.rsync-filter'“ bruukst un disse utmaakst."
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:575
+#: smb4k.kcfg:580
 #, kde-format
 msgid "Handle sparse files efficiently"
 msgstr "Verdeelt Dateien ökonoomsch hanteren"
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:576
+#: smb4k.kcfg:581
 #, kde-format
 msgid ""
 "Handle sparse files efficiently (-S, --sparse) so that they take up less "
@@ -1656,13 +1663,13 @@ msgstr ""
 "op „rsync“ sien „man“-Siet na, wenn Du mehr weten wullt."
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:580
+#: smb4k.kcfg:585
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
 msgstr "Heel Dateien koperen (RSync-Algoritmus nich bruken)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:581
+#: smb4k.kcfg:586
 #, kde-format
 msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
@@ -1673,13 +1680,13 @@ msgstr ""
 "as se is."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:585
+#: smb4k.kcfg:590
 #, kde-format
 msgid "Do not cross file system boundaries"
 msgstr "Nich över Dateisysteemgrenzen gahn"
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:586
+#: smb4k.kcfg:591
 #, kde-format
 msgid ""
 "Do not cross file system boundaries (-x, --one-file-system). This tells "
@@ -1692,13 +1699,13 @@ msgstr ""
 "„man“-Siet na."
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:590
+#: smb4k.kcfg:595
 #, kde-format
 msgid "Only update files that already exist"
 msgstr "Bloots Dateien opfrischen, de dat al gifft"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:591
+#: smb4k.kcfg:596
 #, kde-format
 msgid ""
 "Skip creating new files on the receiving side (--existing). This tells rsync "
@@ -1714,13 +1721,13 @@ msgstr ""
 "goot wesen kann, wenn Du  bloots Bito-Dateien wegmaken wullt)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:595
+#: smb4k.kcfg:600
 #, kde-format
 msgid "Ignore files that already exist"
 msgstr "Al vörhannen Dateien övergahn"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:596
+#: smb4k.kcfg:601
 #, kde-format
 msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
@@ -1730,13 +1737,13 @@ msgstr ""
 "existing). Vörhannen Ornern warrt nich utlaten."
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:600
+#: smb4k.kcfg:605
 #, kde-format
 msgid "Delay updates until the end of transfer"
 msgstr "Opfrischen na't Enn vun de Överdregen verschuven"
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:601
+#: smb4k.kcfg:606
 #, kde-format
 msgid ""
 "Delay updates until the end of the transfer (--delay-updates). This option "
@@ -1750,13 +1757,13 @@ msgstr ""
 "ümnöömt un kopeert."
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:605
+#: smb4k.kcfg:610
 #, kde-format
 msgid "Make backups"
 msgstr "Sekerheitkopien opstellen"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:606
+#: smb4k.kcfg:611
 #, kde-format
 msgid ""
 "Make backups (-b, --backup). With this option, preexisting destination files "
@@ -1771,49 +1778,49 @@ msgstr ""
 "för de Dateien bruukt warrt."
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:610
+#: smb4k.kcfg:615
 #, kde-format
 msgid "Backup suffix:"
 msgstr "Sekerheitkopie-Nasett:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:611
+#: smb4k.kcfg:616
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
 msgstr "Dissen Nasett för Sekerheitkopien bruken (--suffix=NASETT)"
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
-#: smb4k.kcfg:615
+#: smb4k.kcfg:620
 #, kde-format
 msgid "Backup suffix"
 msgstr "Sekerheitkopie-Nasett"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:620
+#: smb4k.kcfg:625
 #, kde-format
 msgid "Backup directory:"
 msgstr "Sekerheitkopien-Orner:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:621
+#: smb4k.kcfg:626
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
 msgstr "Sekerheitkopien binnen dissen Orner wohren (--backup-dir=ORNER)"
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
-#: smb4k.kcfg:625
+#: smb4k.kcfg:630
 #, kde-format
 msgid "Backup directory"
 msgstr "Sekerheitkopien-Orner"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:630
+#: smb4k.kcfg:635
 #, kde-format
 msgid "Force fixed checksum block size:"
 msgstr "Fastleggt Pröövsumm-Blockgrött verdwingen:"
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:631
+#: smb4k.kcfg:636
 #, kde-format
 msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
@@ -1823,19 +1830,19 @@ msgstr ""
 "dat de Blockgrött för den RSync-Algoritmus en fast Weert hett."
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
-#: smb4k.kcfg:635
+#: smb4k.kcfg:640
 #, kde-format
 msgid "The block size"
 msgstr "De Blockgrött"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:641
+#: smb4k.kcfg:646
 #, kde-format
 msgid "Set block/file checksum seed:"
 msgstr "Block-/Datei-Pröövsummstartweert fastleggen:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:642
+#: smb4k.kcfg:647
 #, kde-format
 msgid ""
 "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
@@ -1850,20 +1857,20 @@ msgstr ""
 "standardwies de aktuelle Tiet."
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:646
+#: smb4k.kcfg:651
 #, fuzzy, kde-format
 #| msgid "The data for the UsePartialDirectory option"
 msgid "The value for the UseChecksumSeed config option"
 msgstr "De Daten för de DeelöverdregenOrnerBruken-Optschoon"
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:652
+#: smb4k.kcfg:657
 #, kde-format
 msgid "Skip files based on checksum"
 msgstr "Dateien na ehr Pröövsumm övergahn"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:653
+#: smb4k.kcfg:658
 #, kde-format
 msgid ""
 "Skip files based on a checksum and not based on modification time and size (-"
@@ -1875,33 +1882,33 @@ msgstr ""
 "wullt."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:657
+#: smb4k.kcfg:662
 #, kde-format
 msgid "Set bandwidth limit:"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:658
+#: smb4k.kcfg:663
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
 msgstr ""
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:662
+#: smb4k.kcfg:667
 #, fuzzy, kde-format
 #| msgid "The data for the UsePartialDirectory option"
 msgid "The value for the UseBandwidthLimit config option"
 msgstr "De Daten för de DeelöverdregenOrnerBruken-Optschoon"
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:674
+#: smb4k.kcfg:679
 #, kde-format
 msgid "Use profiles"
 msgstr "Profilen bruken"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:675
+#: smb4k.kcfg:680
 #, kde-format
 msgid ""
 "Make Smb4K use profiles. This enables you to define different bookmarks and "
@@ -1914,24 +1921,24 @@ msgstr ""
 "bruukst."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:679
+#: smb4k.kcfg:684
 #, kde-format
 msgid "Profiles"
 msgstr "Profilen"
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:680
+#: smb4k.kcfg:685
 #, kde-format
 msgid "The list of profiles."
 msgstr "De List mit Profilen"
 
-#: smb4k.kcfg:687
+#: smb4k.kcfg:692
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
 msgstr ""
 
-#: smb4k.kcfg:688
+#: smb4k.kcfg:693
 #, fuzzy, kde-format
 #| msgid "Workgroup"
 msgctxt "default profile name for use at work"
@@ -1939,25 +1946,25 @@ msgid "Work"
 msgstr "Arbeidkoppel"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:689
+#: smb4k.kcfg:694
 #, kde-format
 msgid "Active profile"
 msgstr "Aktiev Profil"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:690
+#: smb4k.kcfg:695
 #, kde-format
 msgid "This is the currently active profile."
 msgstr "Dat is opstunns dat aktive Profil."
 
 #. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:694
+#: smb4k.kcfg:699
 #, kde-format
 msgid "Use profile migration assistant"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:695
+#: smb4k.kcfg:700
 #, kde-format
 msgid ""
 "Use the profile migration assistant when profiles are removed or the use of "
@@ -2153,9 +2160,10 @@ msgid "Print"
 msgstr "Drucker"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, kde-format
-msgid "Custom Options"
-msgstr "Egen Optschonen"
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Custom Settings"
+msgstr "Inhangen"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, kde-format
@@ -3284,16 +3292,18 @@ msgstr ""
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
-msgid "Do not use locking"
-msgstr "Dateien nich afsluten"
+msgid "Do not send byte range lock requests"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
 #, kde-format
-msgid "Do not use locking. Do not start lockd."
+msgid ""
+"Do not send byte range lock requests to the server. This is necessary for "
+"certain applications that break with cifs style mandatory byte range locks "
+"(and most cifs servers do not yet support requesting advisory byte range "
+"locks)."
 msgstr ""
-"Keen Dateien för't Togriepen afsluten, den tohören Dämoon „lockd“ nich "
-"starten"
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3804,71 +3814,71 @@ msgstr "Drucker"
 msgid "IPC"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:430 smb4ksynchronizer_p.cpp:510
+#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
 #, fuzzy, kde-format
 #| msgid "Synchronizing %1"
 msgid "Synchronizing"
 msgstr "%1 warrt synkroniseert"
 
-#: smb4ksynchronizer_p.cpp:430 smb4ksynchronizer_p.cpp:510
+#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
 #, kde-format
 msgid "Source"
 msgstr "Born"
 
-#: smb4ksynchronizer_p.cpp:430 smb4ksynchronizer_p.cpp:510
+#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
 #, kde-format
 msgid "Destination"
 msgstr "Teel"
 
-#: smb4ksynchronizer_p.cpp:548
+#: smb4ksynchronizer_p.cpp:550
 #, kde-format
 msgid "Synchronization"
 msgstr "Synkroniseren"
 
-#: smb4ksynchronizer_p.cpp:551
+#: smb4ksynchronizer_p.cpp:553
 #, kde-format
 msgid "Swap Paths"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:552
+#: smb4ksynchronizer_p.cpp:554
 #, kde-format
 msgid "Swap source and destination"
 msgstr "Born un Teel tuschen"
 
-#: smb4ksynchronizer_p.cpp:553
+#: smb4ksynchronizer_p.cpp:555
 #, kde-format
 msgid "Synchronize"
 msgstr "Synkroniseren"
 
-#: smb4ksynchronizer_p.cpp:554
+#: smb4ksynchronizer_p.cpp:556
 #, kde-format
 msgid "Synchronize the destination with the source"
 msgstr "Teel mit Born synkroniseren"
 
-#: smb4ksynchronizer_p.cpp:568
+#: smb4ksynchronizer_p.cpp:570
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization."
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:578
+#: smb4ksynchronizer_p.cpp:580
 #, kde-format
 msgid "Source:"
 msgstr "Born:"
 
-#: smb4ksynchronizer_p.cpp:586
+#: smb4ksynchronizer_p.cpp:588
 #, kde-format
 msgid ""
 "This is the source directory. The data that it contains is to be written to "
 "the destination directory."
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:589
+#: smb4ksynchronizer_p.cpp:591
 #, kde-format
 msgid "Destination:"
 msgstr "Teel:"
 
-#: smb4ksynchronizer_p.cpp:597
+#: smb4ksynchronizer_p.cpp:599
 #, kde-format
 msgid ""
 "This is the destination directory. It will be updated with the data from the "
@@ -3885,6 +3895,17 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
+
+#~ msgid "Custom Options"
+#~ msgstr "Egen Optschonen"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Dateien nich afsluten"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr ""
+#~ "Keen Dateien för't Togriepen afsluten, den tohören Dämoon „lockd“ nich "
+#~ "starten"
 
 #~ msgid ""
 #~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "

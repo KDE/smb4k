@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -162,9 +162,10 @@ msgid "Synchronization"
 msgstr "Synkronisering"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Brugervalgte indstillinger"
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Custom Settings"
+msgstr "Fælles indstillinger"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -393,7 +394,8 @@ msgstr ""
 #| msgid ""
 #| "<qt>Define the hosts that should be woken up via the custom options "
 #| "dialog.</qt>"
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "<qt>Definér de værter som skal vækkes via dialogen til brugervalgte "
 "indstillinger.</qt>"
@@ -467,8 +469,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, fuzzy, kde-format
 #| msgid "Miscellaneous Settings"
 msgid "Miscellaneous"
@@ -512,12 +514,12 @@ msgstr "Generelle indstillinger"
 msgid "Filter Rules"
 msgstr "Filterregler"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Filtrering"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
@@ -695,7 +697,7 @@ msgstr "&Søg"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "&Brugervalgte indstillinger"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -952,6 +954,9 @@ msgstr "Filsystem"
 msgid "Size:"
 msgstr "Størrelse"
 
+#~ msgid "Custom Options"
+#~ msgstr "Brugervalgte indstillinger"
+
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Montér alle bogmærker"
 
@@ -1053,11 +1058,6 @@ msgstr "Størrelse"
 #~| msgid "Profiles"
 #~ msgid "Profiles:"
 #~ msgstr "Profiler"
-
-#, fuzzy
-#~| msgid "Common Options"
-#~ msgid "Common Settings:"
-#~ msgstr "Fælles indstillinger"
 
 #, fuzzy
 #~| msgid "Authentication"

@@ -56,7 +56,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2022-01-03</date>
+>2023-01-03</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -160,7 +160,7 @@
 ></listitem>
     <listitem
 ><para
->Vermogen om eigen opties voor individuele servers en shares te definiëren</para
+>Ability to define custom settings for individual servers and shares</para
 ></listitem>
     <listitem
 ><para
@@ -371,11 +371,11 @@
 >Avahi</ulink
 > en niet een actueel &Windows;-domein. Een domein of werkgroepitem openen toont de servers die er toe behoren. Als u toegang tot de shares van een van de servers wilt, moet u de gewenste server openen.</para>
       <para
->Ook is het mogelijk om voordat u de netwerkomgeving gaat scannen de servers die in slaapstand staan weer in te schakelen (Wake-On-LAN). Als deze mogelijkheid is ingeschakeld, dan zal &smb4k; een speciaal pakket sturen naar elke server die weer wakker gemaakt moet worden en daarna een ingestelde tijd wachten voordat het de werkgroepen en domeinen gaat opvragen. U kunt de Wake-On-LAN inschakelen in het <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->configuratiedialoog</link
->. De servers die uit de slaapstand moet komen kunt u opgeven in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
->.</para>
+>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic packet to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>configuration dialog</link
+>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor.</para>
       <note>
           <para
 >Als u DNS Service Discovery gebruikt en de Zeroconf-daemon (Avahi) is niet actief, dan toont &smb4k; een foutmelding:</para>
@@ -549,14 +549,14 @@
 ></keycombo
 ></shortcut
 > <guimenuitem
->Aangepaste opties toevoegen</guimenuitem
+>Add Custom Settings</guimenuitem
 > </menuchoice>
           </term>
           <listitem>
             <para
->Open het dialoog voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
-> waar u verschillende persoonlijke instellingen voor elke geselecteerde server en share kunt aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd.</para>
+>Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor where you can set several custom settings for each selected server and share. If a workgroup or no item is selected, this menu entry is disabled.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -940,17 +940,17 @@
     </sect2>
 
 <!-- 
-      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
   -->
 
-    <sect2 id="network_neighborhood_browser_defining_custom_options">
+    <sect2 id="network_neighborhood_browser_defining_custom_settings">
       <title
->Aangepaste opties definiëren</title>
+>Defining Custom Settings</title>
 
       <para
->Gebruik het dialoogvenster <guilabel
->Custom Opties</guilabel
-> als u wilt</para>
+>Use the <guilabel
+>Custom Settings</guilabel
+> editor if you want to</para>
       <itemizedlist>
         <listitem
 ><para
@@ -968,7 +968,7 @@
 ></listitem>
       </itemizedlist>
       <para
->De dialoog wordt geopend door te klikken op het menu-item <menuchoice
+>The editor is opened by clicking the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -976,20 +976,20 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Aangepaste opties</guimenuitem
+>Add Custom Settings</guimenuitem
 ></menuchoice
->. Afhankelijk van uw selectie worden de instellingen toegepast op alle shares van een server of op slechts één.</para>
+> menu entry. Depending on your selection, the settings either apply to all shares of a server, or to only one.</para>
 
       <screenshot>
         <screeninfo
->Schermafdruk van de dialoog voor aangepaste opties voor een share</screeninfo>
+>Screenshot of the custom settings editor for a share</screeninfo>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG"/>
+            <imagedata fileref="network_neighborhood_browser_custom_settings_editor.png" format="PNG"/>
           </imageobject>
           <textobject>
             <phrase
->De dialoog voor aangepaste opties</phrase>
+>The custom settings editor</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
@@ -1003,7 +1003,7 @@
       <para
 >Merk op dat bij gebruik van BSD er in het dialoogvenster minder ingangen zijn dan als u &Linux; gebruikt, omdat verschillende opties niet worden ondersteund.</para>
 
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_common_mount_settings">
         <title
 >Algemene instellingen voor aankoppelen (alleen &Linux;)</title>
         
@@ -1015,7 +1015,7 @@
 >.</para>
       </sect3>
       
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_advanced_mount_settings">
         <title
 >Geavanceerde instellingen voor aankoppelen (alleen &Linux;)</title>
         
@@ -1025,7 +1025,7 @@
 >.</para>
       </sect3>
       
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_bsd_mount_settings">
         <title
 >Instellingen voor aankoppelen (alleen BSD)</title>
         
@@ -1035,7 +1035,7 @@
 >.</para>
       </sect3>
         
-      <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
+      <sect3 id="network_neighborhood_browser_defining_custom_settings_samba">
         <title
 >Browse-instellingen</title>
 
@@ -1045,7 +1045,7 @@
 >.</para>
       </sect3>
 
-      <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
+      <sect3 id="network_neighborhood_browser_defining_custom_settings_wol">
         <title
 >Instellingen Wake-On-LAN</title>
     
@@ -1275,14 +1275,14 @@
 ></keycombo
 ></shortcut
 > <guimenuitem
->Aangepaste opties toevoegen</guimenuitem
+>Add Custom Settings</guimenuitem
 > </menuchoice>
           </term>
           <listitem>
             <para
->Open the custom options dialog for the selected shares. Read the section about the <link linkend="network_neighborhood_browser_defining_custom_options"
->Custom Options</link
-> dialog for more details.</para>
+>Open the custom settings editor for the selected shares. Read the section about the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor for more details.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1508,15 +1508,15 @@
     </sect2>
     
 <!--
-      Using Smb4K : The Mounted Shares View : Adding Custom Options
+      Using Smb4K : The Mounted Shares View : Adding Custom Settings
   -->
     
-    <sect2 id="shares_view_adding_custom_options">
+    <sect2 id="shares_view_adding_custom_settings">
       <title
->Aangepaste opties definiëren</title>
+>Defining Custom Settings</title>
       
       <para
->Voor de geselecteerde shares kunnen aangepaste opties gedefinieerd worden. Klik op het actie <menuchoice
+>For the selected shares custom settings can be defined. Click the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1524,10 +1524,10 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Aangepaste opties toevoegen</guimenuitem
+>Add Custom Settings</guimenuitem
 ></menuchoice
-> om de dialoog voor aangepaste opties te openen. Voor meer details zie <link linkend="network_neighborhood_browser_defining_custom_options"
->hier</link
+> action to open the Custom Settings dialog. For more details, please see <link linkend="network_neighborhood_browser_defining_custom_settings"
+>here</link
 >.</para>
     </sect2>
     
@@ -1757,14 +1757,14 @@
           <term>
             <menuchoice>
               <guimenuitem
->Add Custom Options</guimenuitem>
+>Add Custom Settings</guimenuitem>
             </menuchoice>
           </term>
           <listitem>
             <para
->Open the custom options dialog for the selected share. For further information read the section about the <link linkend="network_neighborhood_browser_defining_custom_options"
->Custom Options</link
-> dialog.</para>
+>Open the custom settings editor for the selected share. For further information read the section about the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1994,13 +1994,13 @@
 >Omhoog</guibutton
 > klikken.</para>
     <para
->Bij hosts en shares zijn er rechts van de naam van het netwerk nog enkele actieknoppen. Voor hosts, is er een knop waarmee u het dialoog <link linkend="network_neighborhood_browser_defining_custom_options"
->Custom Opties</link
-> kunt openen. Voor shares zijn er extra knoppen voor respectievelijk <link linkend="network_neighborhood_browser_previewing"
->de inhoud van de geselecteerde share bekijken</link
-> en voor <link linkend="bookmarks_adding"
->de share toevoegen aan de bladwijzers</link
->. De actieknoppen zijn standaard transparent en wijzigen tot ondoorzichtig wanneer u de muis er boven heeft. Door met de &LMB; erop te klikken start u de gekozen actie.</para>
+>For hosts and shares, there are some action buttons to the right of the network's name. For hosts, there is one button with which you can open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing"
+>previewing the content of the selected share</link
+> and for <link linkend="bookmarks_adding"
+>adding the share to the bookmarks</link
+>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the chosen action.</para>
     <para
 >Naast de knop <guibutton
 >Omhoog</guibutton
@@ -2568,7 +2568,7 @@
 ></listitem>
         <listitem
 ><para
->De bladwijzers en aangepaste opties van het nieuwe profiel zijn geladen.</para
+>The bookmarks and custom settings from the new profile are loaded.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -3503,8 +3503,8 @@ ntlm auth = yes
 >Wake-On-LAN</title>
 
         <para
->Om de Wake-On_LAN mogelijkheid van &smb4k; te kunnen gebruiken, moet u deze instelling inschakelen. De hosts die u wilt wakker maken, moet u opgeven in de <link linkend="configuration_page_custom_options"
->dialoog voor aangepaste opties</link
+>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable this setting. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>custom settings editor</link
 >.</para>
 
         <variablelist>
@@ -4096,7 +4096,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Hier stelt u het poort-nummer voor bestandssysteem in dat wordt gebruikt door <ulink url="man:/mount.cifs"
+>Sets the file system port number that is used by <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4104,9 +4104,9 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> voor het aankoppelen van een externe share. De standaard poort-nummer (445) zou bij alle moderne besturingssystemen moeten werken. Als u problemen heeft, probeer dan het poort-nummer 139. Als de problemen alleen bij enkele hosts optreden, dan raden wij aan om dit niet te wijzigen en het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
-> te gebruiken om individuele poort-nummers voor de problematische hosts in te stellen.</para>
+> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor to define individual port numbers for the problematic hosts.</para>
               <para
 >Deze optie is alleen beschikbaar onder &Linux;. Onder BSD, stelt u de poort voor het aankoppelen van shares in met de optie <link linkend="configuration_page_network_advanced_settings_samba"
 ><guibutton
@@ -4133,7 +4133,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->De meeste versies van &Samba; ondersteunen de &CIFS; Unix- of POSIX-extensies. Voor deze servers zijn enkele opties niet nodig, omdat de juiste waarden zijn onderhandeld gedurende het aankoppelproces. Voor andere servers zou u kunnen kiezen om deze optie te deactiveren, zodat voorgedefinieerde waarden doorgegeven kunnen worden aan de server. Merk op dat als uw computer zich in een door &Windows; gedomineerde netwerkomgeving bevindt met alleen een paar &Samba;-servers, u deze optie veilig kunt deactiveren en aangepaste opties voor de &Samba;-servers definiëren.</para>
+>Most versions of &Samba; support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a &Windows; dominated network neighborhood with only a few &Samba; servers, you can safely uncheck this option and define custom settings for the &Samba; servers.</para>
             <para
 >Als u deze optie deactiveert, overweeg om om te schakelen naar controle van rechten onder <link linkend="configuration_page_mounting_advanced_mount_settings"
 >Geavanceerde instellingen van aankoppelen</link
@@ -4361,12 +4361,12 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->Vergrendeling niet gebruiken</guibutton
+>Do not send byte range lock requests</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Geen vergrendeling gebruiken. lockd niet starten.</para>
+>Do not send byte range lock requests to the server. This is necessary for certain applications that break with cifs style mandatory byte range locks (and most cifs servers do not yet support requesting advisory byte range locks).</para>
             <para
 >Standaard: niet geselecteerd</para>
           </listitem>
@@ -7066,8 +7066,8 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Optie: <option
->--min-size=NUM</option
+>Option: <option
+>--min-size=SIZE</option
 ></para>
               <para
 >Dit vertelt <ulink url="man:/rsync"
@@ -7080,7 +7080,7 @@ ntlm auth = yes
 ></ulink
 > om te voorkomen dat elk bestand kleiner dan de gespecificeerde SIZE wordt overgebracht, wat kan helpen om geen kleine bestanden met rommel over te brengen.</para>
               <para
->Standaard: niet geselecteerd: NUM: 0 kB</para>
+>Default: not selected; SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7092,8 +7092,8 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Optie: <option
->--max-size=NUM</option
+>Option: <option
+>--max-size=SIZE</option
 ></para>
               <para
 >Dit vertelt <ulink url="man:/rsync"
@@ -7106,7 +7106,7 @@ ntlm auth = yes
 ></ulink
 > om te voorkomen dat elk bestand groter dan de gespecificeerde SIZE wordt overgebracht.</para>
               <para
->Standaard: niet geselecteerd: NUM: 0 kB</para>
+>Default: not selected; SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7197,7 +7197,7 @@ ntlm auth = yes
 >--bwlimit=RATE</option
 ></para>
               <para
->De maximale overdrachtssnelheid in kilobytes per seconde instellen.</para>
+>Set the maximum data transfer RATE in kilobytes per second.</para>
               <para
 >Standaard: niet geselecteerd: SNELHEID: 0 kB/s</para>
             </listitem>
@@ -7609,48 +7609,6 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Eigen filterregels</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Optie: <option
->-f</option
->/<option
->--filter=REGEL</option
-></para>
-              <para
->U kunt hier een of meer filterregels definiëren. Elke regel moet vooraf worden gegaan door de optie-tekst <option
->--filter=</option
-> of <option
->-f</option
->, omdat de inhoud van het tekstvak zal worden doorgegeven aan het commando <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> ZOALS HET IS.</para>
-              <para
->Deze optie staat het toe dat u regels toevoegt om selectief bepaalde bestanden te negeren voor de lijst met te verzenden bestanden. Dit is vooral handig in combinatie met een verzending die de mappenstructuur volgt.</para>
-              <para
->U mag net zoveel keer de optie <option
->--filter</option
-> gebruiken als u wilt bij het maken van de lijst met te negeren bestanden.</para>
-              <para
->Lees de sectie FILTER RULES van de <ulink url="man:/rsync"
->manual page</ulink
-> voor meer informatie over het gebruik van deze optie.</para>
-              <para
->Standaard: leeg</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
 >Gebruik --filter='dir-merge /.rsync-filter' filterregels</guibutton
 ></menuchoice>
             </term>
@@ -7701,6 +7659,48 @@ ntlm auth = yes
 > voor meer informatie over hoe deze optie werkt.</para>
               <para
 >Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Eigen filterregels</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-f</option
+>/<option
+>--filter=REGEL</option
+></para>
+              <para
+>U kunt hier een of meer filterregels definiëren. Elke regel moet vooraf worden gegaan door de optie-tekst <option
+>--filter=</option
+> of <option
+>-f</option
+>, omdat de inhoud van het tekstvak zal worden doorgegeven aan het commando <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> ZOALS HET IS.</para>
+              <para
+>Deze optie staat het toe dat u regels toevoegt om selectief bepaalde bestanden te negeren voor de lijst met te verzenden bestanden. Dit is vooral handig in combinatie met een verzending die de mappenstructuur volgt.</para>
+              <para
+>U mag net zoveel keer de optie <option
+>--filter</option
+> gebruiken als u wilt bij het maken van de lijst met te negeren bestanden.</para>
+              <para
+>Lees de sectie FILTER RULES van de <ulink url="man:/rsync"
+>manual page</ulink
+> voor meer informatie over het gebruik van deze optie.</para>
+              <para
+>Default: not selected; RULES: empty</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7861,46 +7861,46 @@ ntlm auth = yes
 
 
 <!-- 
-      Configuring Smb4K : Custom Options
+      Configuring Smb4K : Custom Settings
 -->
 
-  <sect1 id="configuration_page_custom_options">
+  <sect1 id="configuration_page_custom_settings">
     <title
->Custom Opties</title>
+>Custom Settings</title>
 
     <para
->Alle servers en shares waarvoor u Custom Opties heeft gedefinieerd worden hier opgenoemd.</para>
+>All servers and shares for which you defined custom settings are listed here.</para>
 
     <screenshot>
       <screeninfo
->Schermafdruk van het instellingentabblad voor "Aangepaste opties"</screeninfo>
+>Screenshot of the "Custom Settings" configuration tab</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
->Het instellingentabblad voor "Aangepaste opties"</phrase
+>The "Custom Settings" configuration tab</phrase
 ></textobject>
       </mediaobject>
     </screenshot>
 
     <para
->U kunt de opties die bij een netwerkitem horen bewerken door naar keuze op een item in de lijst te dubbelklikken of door in het contextmenu het item <guimenuitem
->Bewerken</guimenuitem
-> te selecteren (klik op het geselecteerde item met de &RMB;). De aangepaste opties worden dan geladen zodat u ze kunt bewerken. Om een item te verwijderen, klikt u op het geselecteerde item met de &RMB; en kiest in het contextmenu het item <guimenuitem
->Verwijderen</guimenuitem
->. U kunt alle netwerkitems tegelijk verwijderen door het item <guimenuitem
->Lijst wissen</guimenuitem
-> te selecteren.</para>
+>The options defined for a network item can be edited by either double clicking an entry in the list view or by clicking the <guimenuitem
+>Edit</guimenuitem
+> button. The custom settings editor is shown and the settings can be edited. To remove an entry, right click it and choose the <guimenuitem
+>Remove</guimenuitem
+> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem
+>Clear List</guimenuitem
+> item.</para>
 
     <para
->De aangepaste opties zijn toegankelijk via de tabbladen rechts.</para>
+>The custom settings are accessible through the tabs on the right.</para>
     
 <!--
-      Configuring Smb4K : Custom Options : Network Item
+      Configuring Smb4K : Custom Settings : Network Item
 -->
     
-    <sect2 id="configuration_page_custom_options_network_item">
+    <sect2 id="configuration_page_custom_settings_network_item">
       <title
 >Netwerkitem</title>
       
@@ -7911,9 +7911,9 @@ ntlm auth = yes
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
+      Configuring Smb4K : Custom Settings : Common Mount Settings (Linux only)
 -->
-    <sect2 id="configuration_page_custom_options_common_mount_settings">
+    <sect2 id="configuration_page_custom_settings_common_mount_settings">
       <title
 >Algemene instellingen voor aankoppelen (alleen &Linux;)</title>
       
@@ -7924,9 +7924,9 @@ ntlm auth = yes
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
+      Configuring Smb4K : Custom Settings : Advanced Mount Settings (Linux only)
 -->
-    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
+    <sect2 id="configuration_page_custom_settings_advanced_mount_settings">
       <title
 >Geavanceerde instellingen voor aankoppelen (alleen &Linux;)</title>
       
@@ -7937,9 +7937,9 @@ ntlm auth = yes
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
+      Configuring Smb4K : Custom Settings : Mount Settings (BSD only)
 -->
-    <sect2 id="configuration_page_custom_options_mount_settings">
+    <sect2 id="configuration_page_custom_settings_mount_settings">
       <title
 >Instellingen voor aankoppelen (alleen BSD)</title>
       
@@ -7950,10 +7950,10 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Browse Settings
+      Configuring Smb4K : Custom Settings : Browse Settings
 -->
 
-    <sect2 id="configuration_page_custom_options_browse_settings">
+    <sect2 id="configuration_page_custom_settings_browse_settings">
       <title
 >Browse-instellingen</title>
     
@@ -7964,17 +7964,17 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
+      Configuring Smb4K : Custom Settings : Wake-On-LAN Settings
 -->
 
-    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
+    <sect2 id="configuration_page_custom_settings_wake_on_lan_settings">
       <title
 >Instellingen Wake-On-LAN</title>
     
       <para
->Hier kunt u de opties voor Wake-On-LAN bewerken die u eerder in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
-> heeft gedefinieerd.</para>
+>Here you can edit the Wake-On-LAN options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor.</para>
     </sect2>
   </sect1>
 
@@ -8020,9 +8020,9 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Zorgt dat Smb4K profielen gebruikt. Dit geeft u de mogelijkheid dat u voor elk profiel verschillende bladwijzers en aangepaste opties kunt definiëren. Dit is met name handig als u een laptop in meerdere netwerkomgevingen gebruikt, &eg; thuis en op het werk. De eerste keer dat u dit inschakelt, zal de eerste item in de <link linkend="configuration_page_profiles_profiles"
->lijst met profielen</link
-> het actieve profiel worden.</para>
+>Make Smb4K use profiles. This enables you to define different bookmarks and custom settings for each profile. This is especially useful if you are using a laptop in different network neighborhoods, &eg; at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_page_profiles_profiles"
+>profiles list</link
+> will be the active profile.</para>
             <para
 >Standaard: niet geselecteerd</para>
           </listitem>
@@ -8295,18 +8295,18 @@ ntlm auth = yes
 >&Ctrl; <keycap
 >C</keycap
 ></keycombo
-> </shortcut
+></shortcut
 > <guimenu
->Netwerk</guimenu
+>Network</guimenu
 > <guimenuitem
->Aangepaste opties</guimenuitem
+>Add Custom Settings</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
           <para
->Open het dialoog voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
->. U kunt verschillende persoonlijke instellingen voor de geselecteerde server of share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item heeft geselecteerd.</para>
+>Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
         </listitem>
       </varlistentry>
       <varlistentry>

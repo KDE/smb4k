@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2023-01-02 18:37+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -166,9 +166,10 @@ msgid "Synchronization"
 msgstr "Sinkronizatzea"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Norberak finkatutako aukerak"
+#, fuzzy, kde-format
+#| msgid "Common Settings"
+msgid "Custom Settings"
+msgstr "Ezarpen arruntak"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -381,8 +382,11 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "Definitu norberak finkatutako aukeren elkarrizketa-koadroaren bidez esnatu "
 "beharreko ostalariak."
@@ -449,8 +453,8 @@ msgid " kB"
 msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Beste zenbait"
@@ -490,12 +494,12 @@ msgstr "Iragazteko ezarpen orokorrak"
 msgid "Filter Rules"
 msgstr "Iragazte arauak"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Iragaztea"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr "Egiaztapen-baturak"
@@ -666,8 +670,9 @@ msgstr "&Bilatu"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
-msgid "Add &Custom Options"
+#, fuzzy, kde-format
+#| msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Gehitu &neurrira egokitutako aukerak"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -913,6 +918,9 @@ msgstr "Fitxategi-sistema:"
 msgid "Size:"
 msgstr "Neurria:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Norberak finkatutako aukerak"
+
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Muntatu laster-marka guztiak"
 
@@ -1005,11 +1013,6 @@ msgstr "Neurria:"
 #~| msgid "Profiles"
 #~ msgid "Profiles:"
 #~ msgstr "Profilak"
-
-#, fuzzy
-#~| msgid "Common Settings"
-#~ msgid "Common Settings:"
-#~ msgstr "Ezarpen arruntak"
 
 #, fuzzy
 #~| msgid "Authentication"

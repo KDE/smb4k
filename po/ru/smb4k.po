@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -176,9 +176,9 @@ msgid "Synchronization"
 msgstr "Синхронизация"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Особые параметры"
+#, fuzzy, kde-format
+msgid "Custom Settings"
+msgstr "Общие параметры"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -395,8 +395,11 @@ msgid " s"
 msgstr " с"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
-msgid "Define the hosts that should be woken up via the custom options dialog."
+#, fuzzy, kde-format
+#| msgid ""
+#| "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr "Задайте хосты для пробуждения на странице «Особые параметры»."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -462,8 +465,8 @@ msgid " kB"
 msgstr " КБ"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Прочее"
@@ -503,12 +506,12 @@ msgstr "Общие параметры фильтрации"
 msgid "Filter Rules"
 msgstr "Правила фильтрации"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Фильтрация"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
 msgstr "Контрольные суммы"
@@ -686,7 +689,7 @@ msgstr "&Поиск"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Особые &параметры"
 
 # BUGME: ellipsis at the end of this string? --aspotashev
@@ -936,6 +939,9 @@ msgstr "Файловая система:"
 msgid "Size:"
 msgstr "Размер:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Особые параметры"
+
 # BUGME: add accelerator? split? --aspotashev
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Подключить все закладки"
@@ -1023,10 +1029,6 @@ msgstr "Размер:"
 #, fuzzy
 #~ msgid "Profiles:"
 #~ msgstr "Профили"
-
-#, fuzzy
-#~ msgid "Common Settings:"
-#~ msgstr "Общие параметры"
 
 #, fuzzy
 #~ msgid "Authentication:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-04 00:49+0000\n"
+"POT-Creation-Date: 2023-01-05 00:48+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -165,9 +165,10 @@ msgid "Synchronization"
 msgstr "Synchronizácia"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
-msgid "Custom Options"
-msgstr "Vlastné voľby"
+#, fuzzy, kde-format
+#| msgid "Common Settings:"
+msgid "Custom Settings"
+msgstr "Spoločné nastavenia:"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -388,7 +389,8 @@ msgstr " s"
 #| msgid ""
 #| "<qt>Define the hosts that should be woken up via the custom options "
 #| "dialog.</qt>"
-msgid "Define the hosts that should be woken up via the custom options dialog."
+msgid ""
+"Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
 "<qt>Definovať hostiteľov, ktorí sa majú prebudiť cez dialóg vlastných volieb."
 "</qt>"
@@ -462,8 +464,8 @@ msgid " kB"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
-#: smb4k/smb4kconfigpagesynchronization.cpp:595
-#: smb4k/smb4kconfigpagesynchronization.cpp:611
+#: smb4k/smb4kconfigpagesynchronization.cpp:596
+#: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
 msgstr "Rôzne"
@@ -506,12 +508,12 @@ msgstr "Všeobecné nastavenia"
 msgid "Filter Rules"
 msgstr "Pravidlá filtra"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:555
+#: smb4k/smb4kconfigpagesynchronization.cpp:556
 #, kde-format
 msgid "Filtering"
 msgstr "Filtrovanie"
 
-#: smb4k/smb4kconfigpagesynchronization.cpp:564
+#: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, fuzzy, kde-format
 #| msgid "Checksums"
 msgid "Checksums"
@@ -687,7 +689,7 @@ msgstr "&Hľadať"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
-msgid "Add &Custom Options"
+msgid "Add &Custom Settings"
 msgstr "Vlastné voľby"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -933,6 +935,9 @@ msgstr "Súborový systém:"
 msgid "Size:"
 msgstr "Veľkosť:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Vlastné voľby"
+
 #~ msgid "Mount All Bookmarks"
 #~ msgstr "Pripojiť všetky záložky"
 
@@ -1018,9 +1023,6 @@ msgstr "Veľkosť:"
 
 #~ msgid "Profiles:"
 #~ msgstr "Profily:"
-
-#~ msgid "Common Settings:"
-#~ msgstr "Spoločné nastavenia:"
 
 #~ msgid "Authentication:"
 #~ msgstr "Overenie:"
