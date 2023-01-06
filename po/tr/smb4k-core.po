@@ -6,13 +6,13 @@
 # Serdar Soytetir <sendirom@gmail.com>, 2006.
 # obsoleteman <tulliana@gmail.com>, 2006-2007,2009,2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2017, 2020.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-05 00:48+0000\n"
-"PO-Revision-Date: 2022-12-31 18:45+0300\n"
+"PO-Revision-Date: 2023-01-05 22:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1468,7 +1468,7 @@ msgid ""
 msgstr ""
 "CVS uygulamasının yaptığı şekilde dosyaları otomatik yok say (-C, --cvs-"
 "excluded). Bu, sistemler arasında sık sık aktarmak istemediğiniz dosyaların "
-"geniş bir yelpazesini hariç tutmak için kullanışlıdır. Bu seçenek yok "
+"geniş bir erimini dışarıda tutmak için kullanışlıdır. Bu seçenek yok "
 "sayılması gereken dosyayı belirlemek için CVS ile aynı algoritmayı kullanır."
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
@@ -1593,10 +1593,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Özel süzme kuralları:"
+msgstr "Özel süzgeç kuralları"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -2145,10 +2144,9 @@ msgid "Print"
 msgstr "Yazdır"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Bağlama Ayarları"
+msgstr "Özel Ayarlar"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, kde-format
@@ -3142,13 +3140,13 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:152
 #, kde-format
 msgid "read-write"
-msgstr "oku-yaz"
+msgstr "okunur ve yazılır"
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:155
 #, kde-format
 msgid "read-only"
-msgstr "salt oku"
+msgstr "saltokunur"
 
 #. i18n: ectx: label, entry (ForceUID), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:161
@@ -3254,7 +3252,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "Bayt erimi kilit istekleri gönderme"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3265,6 +3263,10 @@ msgid ""
 "(and most cifs servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"Sunucuya bayt erimi kilit istekleri gönderme. Bu, cifs tarzı zorunlu bayt "
+"erimi kilitlerini bozan kimi uygulamalar için gereklidir (ve henüz tavsiye "
+"niteliğinde bayt erimi kilitlerini istemeyi desteklemeyen çoğu cifs "
+"sunucuları için)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3282,11 +3284,11 @@ msgid ""
 "that were created with such characters. This has no effect if the server "
 "does not support Unicode."
 msgstr ""
-"Aralığı yeniden atamak için ayrılmış yedi karakterin altısını çevir (sütun, "
-"soru işareti, boru, yıldız, büyüktür ve küçüktür karakterleri dahil, ters "
-"eğik çizgi hariç) (yukarıdaki 0xF000). Bu bazı karakterler ile oluşturulan "
-"dosyaları açmanıza olanak sağlar. Eğer sunucu Unikod desteklemiyorsa hiçbir "
-"etkisi olmaz."
+"Erimi yeniden eşlemlemek için ayrılmış yedi karakterin altısını çevir "
+"(sütun, soru işareti, boru, yıldız, büyüktür ve küçüktür karakterleri dahil, "
+"ters eğik çizgi hariç) (yukarıdaki 0xF000). Bu bazı karakterler ile "
+"oluşturulan dosyaları açmanıza olanak sağlar. Eğer sunucu Unicode "
+"desteklemiyorsa hiçbir etkisi olmaz."
 
 #. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:196
@@ -3736,12 +3738,12 @@ msgstr "Eski Profil:"
 #: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
 #, kde-format
 msgid "<Default Profile>"
-msgstr "<Default Profile>"
+msgstr "<Öntanımlı Profil>"
 
 #: smb4kprofilemanager_p.cpp:108
 #, kde-format
 msgid "<All Profiles>"
-msgstr "<All Profiles>"
+msgstr "<Tüm Profiller>"
 
 #: smb4kprofilemanager_p.cpp:116
 #, kde-format

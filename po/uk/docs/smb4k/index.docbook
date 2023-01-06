@@ -389,7 +389,7 @@
       <para
 >Також передбачено можливість пробудження зі стану сну серверів до виконання сканування мережевого оточення (Wake-On-LAN). Якщо буде увімкнено цю можливість, &smb4k; надсилатиме пакети керування на кожен сервер, який слід пробудити, і очікуватиме визначений проміжок часу, перш ніж розпочати пошук у робочих групах і доменах. Параметр пробудження зі стану сну можна увімкнути за допомогою <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
 >діалогового вікна налаштування програми</link
->. Перелік серверів, які слід пробуджувати, має бути визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_options"
+>. Перелік серверів, які слід пробуджувати, має бути визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_settings"
 >діалогового вікна нетипових параметрів</link
 >.</para>
       <note>
@@ -570,8 +570,8 @@
           </term>
           <listitem>
             <para
->Відкрити <link linkend="network_neighborhood_browser_defining_custom_options"
->діалогове вікно нетипових параметрів</link
+>Відкрити <link linkend="network_neighborhood_browser_defining_custom_settings"
+>діалогове вікно редактора нетипових параметрів</link
 >. За допомогою цього вікна ви зможете визначити декілька нетипових параметрів позначеного сервера або спільного ресурсу. Якщо не позначено жодного з пунктів елементів мережі або робочої групи, цей пункт меню буде вимкнено.</para>
           </listitem>
         </varlistentry>
@@ -956,10 +956,10 @@
     </sect2>
 
 <!-- 
-      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
   -->
 
-    <sect2 id="network_neighborhood_browser_defining_custom_options">
+    <sect2 id="network_neighborhood_browser_defining_custom_settings">
       <title
 >Визначення нетипових параметрів</title>
 
@@ -984,7 +984,7 @@
 ></listitem>
       </itemizedlist>
       <para
->Це діалогове вікно можна відкрити за допомогою пункту меню <menuchoice
+>Це вікно редактора можна відкрити за допомогою пункту меню <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -992,20 +992,20 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Нетипові параметри</guimenuitem
+>Додати нетипові параметри</guimenuitem
 ></menuchoice
 >. Залежно від вибраного варіанта, параметри буде застосовано до усіх спільних ресурсів сервера або лише до окремого спільного ресурсу.</para>
 
       <screenshot>
         <screeninfo
->Знімок діалогового вікна нетипових параметрів спільного ресурсу</screeninfo>
+>Знімок вікна редактора нетипових параметрів спільного ресурсу</screeninfo>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG"/>
+            <imagedata fileref="network_neighborhood_browser_custom_settings_editor.png" format="PNG"/>
           </imageobject>
           <textobject>
             <phrase
->Діалогове вікно нетипових параметрів</phrase>
+>Вікно редактора нетипових параметрів</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
@@ -1019,7 +1019,7 @@
       <para
 >Будь ласка, зауважте, що у BSD у цьому діалоговому вікні міститиметься менше пунктів, ніж у &Linux;, оскільки підтримки деяких з параметрів не передбачено.</para>
 
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_common_mount_settings">
         <title
 >Загальні параметри монтування (лише &Linux;)</title>
         
@@ -1031,7 +1031,7 @@
 >.</para>
       </sect3>
       
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_advanced_mount_settings">
         <title
 >Додаткові параметри монтування (лише &Linux;)</title>
         
@@ -1041,7 +1041,7 @@
 >.</para>
       </sect3>
       
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
+      <sect3 id="network_neighborhood_browser_custom_settings_editor_bsd_mount_settings">
         <title
 >Параметри монтування (лише BSD)</title>
         
@@ -1051,7 +1051,7 @@
 >.</para>
       </sect3>
         
-      <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
+      <sect3 id="network_neighborhood_browser_defining_custom_settings_samba">
         <title
 >Параметри навігації</title>
 
@@ -1061,7 +1061,7 @@
 >.</para>
       </sect3>
 
-      <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
+      <sect3 id="network_neighborhood_browser_defining_custom_settings_wol">
         <title
 >Параметри Wake-On-LAN</title>
     
@@ -1296,7 +1296,7 @@
           </term>
           <listitem>
             <para
->Відкрити вікно нетипових параметрів для позначених спільних ресурсів. Див. розділ щодо вікна <link linkend="network_neighborhood_browser_defining_custom_options"
+>Відкрити вікно редактора нетипових параметрів для позначених спільних ресурсів. Див. розділ щодо вікна <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Нетипові параметри</link
 >, щоб дізнатися більше.</para>
           </listitem>
@@ -1524,10 +1524,10 @@
     </sect2>
     
 <!--
-      Using Smb4K : The Mounted Shares View : Adding Custom Options
+      Using Smb4K : The Mounted Shares View : Adding Custom Settings
   -->
     
-    <sect2 id="shares_view_adding_custom_options">
+    <sect2 id="shares_view_adding_custom_settings">
       <title
 >Визначення нетипових параметрів</title>
       
@@ -1542,7 +1542,7 @@
 ><guimenuitem
 >Додати нетипові параметри</guimenuitem
 ></menuchoice
->, щоб відкрити вікно нетипових параметрів. Щоб дізнатися більше, будь ласка, ознайомтеся з <link linkend="network_neighborhood_browser_defining_custom_options"
+>, щоб відкрити вікно нетипових параметрів. Щоб дізнатися більше, будь ласка, ознайомтеся з <link linkend="network_neighborhood_browser_defining_custom_settings"
 >цим розділом</link
 >.</para>
     </sect2>
@@ -1778,7 +1778,7 @@
           </term>
           <listitem>
             <para
->Відкрити вікно нетипових параметрів для позначених спільних ресурсів. Див. розділ щодо вікна <link linkend="network_neighborhood_browser_defining_custom_options"
+>Відкрити вікно нетипових параметрів для позначених спільних ресурсів. Див. розділ щодо вікна <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Нетипові параметри</link
 >, щоб дізнатися більше.</para>
           </listitem>
@@ -2010,7 +2010,7 @@
 >Вгору</guibutton
 > на панелі інструментів.</para>
     <para
->Для вузлів та спільних ресурсів праворуч від пункту з назвою запису мережі буде показано кнопки дій. Для вузлів передбачено лише одну кнопку, за допомогою якої можна відкрити діалогове вікно <link linkend="network_neighborhood_browser_defining_custom_options"
+>Для вузлів та спільних ресурсів праворуч від пункту з назвою запису мережі буде показано кнопки дій. Для вузлів передбачено лише одну кнопку, за допомогою якої можна відкрити діалогове вікно <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Нетипові параметри</link
 >. Для спільних ресурсів передбачено додаткові кнопки, за допомогою яких ви можете <link linkend="network_neighborhood_browser_previewing"
 >попередньо переглянути вміст позначеного спільного ресурсу</link
@@ -3521,7 +3521,7 @@ ntlm auth = yes
 >Пробудження з LAN</title>
 
         <para
->Щоб мати змогу скористатися можливостями Wake-On-LAN у &smb4k;, вам слід позначити цей пункт. Вузли, які слід пробуджувати, має бути визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_options"
+>Щоб мати змогу скористатися можливостями Wake-On-LAN у &smb4k;, вам слід позначити цей пункт. Вузли, які слід пробуджувати, має бути визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_settings"
 >діалогового вікна нетипових параметрів</link
 >.</para>
 
@@ -4122,7 +4122,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> для монтування віддаленого спільного ресурсу. У всіх сучасних операційних системах має працювати номер порту (445). Якщо у вас виникають проблеми, спробуйте скористатися портом з номером 139. Якщо проблеми виникають лише під час зв’язку з певними вузлами, рекомендуємо вам не змінювати значення цього параметра, а скористатися діалоговим вікном <link linkend="network_neighborhood_browser_defining_custom_options"
+> для монтування віддаленого спільного ресурсу. У всіх сучасних операційних системах має працювати номер порту (445). Якщо у вас виникають проблеми, спробуйте скористатися портом з номером 139. Якщо проблеми виникають лише під час зв’язку з певними вузлами, рекомендуємо вам не змінювати значення цього параметра, а скористатися діалоговим вікном <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Нетипові параметри</link
 > для визначення номерів окремих портів для проблемних вузлів.</para>
               <para
@@ -4379,12 +4379,12 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->Не використовувати блокування</guibutton
+>Не надсилати запити щодо блокування діапазону байтів</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Не використовувати блокування. Не запускати lockd.</para>
+>Не надсилати на сервер запитів щодо блокування діапазону байтів. Скасування блокування потрібне для деяких програм, які не можуть працювати із обов'язковим блокування діапазону байтів у стилі cifs (а на більшості серверів cifs ще не передбачено підтримки запитів рекомендованих блокувань діапазону байтів).</para>
             <para
 >Типове значення: не позначено</para>
           </listitem>
@@ -7078,8 +7078,8 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Option: <option
->--min-size=SIZE</option
+>Параметр: <option
+>--min-size=РОЗМІР</option
 ></para>
               <para
 >За допомогою цього пункту можна наказати <ulink url="man:/rsync"
@@ -7092,7 +7092,7 @@ ntlm auth = yes
 ></ulink
 > не переносити файли, розмір яких менший за вказане значення РОЗМІР. Таким чином можна уникнути надсилання малих зайвих файлів.</para>
               <para
->Default: not selected; SIZE: 0 kB</para>
+>Типове значення: не позначено; РОЗМІР: 0 кБ</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7104,8 +7104,8 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Option: <option
->--max-size=SIZE</option
+>Параметр: <option
+>--max-size=РОЗМІР</option
 ></para>
               <para
 >За допомогою цього пункту можна наказати <ulink url="man:/rsync"
@@ -7118,7 +7118,7 @@ ntlm auth = yes
 ></ulink
 > не виконувати перенесення файлів з розміром, більшим за вказаний РОЗМІР.</para>
               <para
->Default: not selected; SIZE: 0 kB</para>
+>Типове значення: не позначено; РОЗМІР: 0 кБ</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7209,7 +7209,7 @@ ntlm auth = yes
 >--bwlimit=ШВИДКІСТЬ</option
 ></para>
               <para
->Set the maximum data transfer RATE in kilobytes per second.</para>
+>Встановити максимальну швидкість передавання даних у кілобайтах на секунду.</para>
               <para
 >Типове значення: не позначено; ШВИДКІСТЬ: 0 кБ/с</para>
             </listitem>
@@ -7710,7 +7710,7 @@ ntlm auth = yes
 >сторінки довідника</ulink
 >.</para>
               <para
->Default: not selected; RULES: empty</para>
+>Типове значення: не позначено; ПРАВИЛА: порожній рядок</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7871,10 +7871,10 @@ ntlm auth = yes
 
 
 <!-- 
-      Configuring Smb4K : Custom Options
+      Configuring Smb4K : Custom Settings
 -->
 
-  <sect1 id="configuration_page_custom_options">
+  <sect1 id="configuration_page_custom_settings">
     <title
 >Нетипові параметри</title>
 
@@ -7886,7 +7886,7 @@ ntlm auth = yes
 >Знімок вкладки налаштування «Нетипові параметри»</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
 >Сторінка налаштування «Нетипові параметри»</phrase
@@ -7895,9 +7895,9 @@ ntlm auth = yes
     </screenshot>
 
     <para
->Параметри роботи запису мережі можна змінити або за допомогою подвійного клацання на пункті у списку, або за допомогою пункту <guimenuitem
+>Параметри роботи запису мережі можна змінити або за допомогою подвійного клацання на пункті у списку, або за допомогою кнопки <guimenuitem
 >Редагувати</guimenuitem
-> контекстного меню пункту (викликається клацанням правою кнопкою миші на пункті у списку). Програма завантажить нетипові параметри і надасть вам змогу їх змінити. Щоб вилучити запис зі списку, наведіть на нього вказівник миші і клацніть правою кнопкою миші, потім виберіть пункт <guimenuitem
+>. Програма відкриє вікно редактора нетипових параметрів і надасть вам змогу їх змінити. Щоб вилучити запис зі списку, наведіть на нього вказівник миші і клацніть правою кнопкою миші, потім виберіть пункт <guimenuitem
 >Вилучити</guimenuitem
 > у контекстному меню. Можна вилучити усі записи мережі одночасно. Для цього слід скористатися пунктом <guimenuitem
 >Спорожнити список</guimenuitem
@@ -7907,10 +7907,10 @@ ntlm auth = yes
 >Доступ до нетипових параметрів можна отримати за допомогою вкладок, які розташовано праворуч.</para>
     
 <!--
-      Configuring Smb4K : Custom Options : Network Item
+      Configuring Smb4K : Custom Settings : Network Item
 -->
     
-    <sect2 id="configuration_page_custom_options_network_item">
+    <sect2 id="configuration_page_custom_settings_network_item">
       <title
 >Запис мережі</title>
       
@@ -7921,9 +7921,9 @@ ntlm auth = yes
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
+      Configuring Smb4K : Custom Settings : Common Mount Settings (Linux only)
 -->
-    <sect2 id="configuration_page_custom_options_common_mount_settings">
+    <sect2 id="configuration_page_custom_settings_common_mount_settings">
       <title
 >Загальні параметри монтування (лише &Linux;)</title>
       
@@ -7934,9 +7934,9 @@ ntlm auth = yes
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
+      Configuring Smb4K : Custom Settings : Advanced Mount Settings (Linux only)
 -->
-    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
+    <sect2 id="configuration_page_custom_settings_advanced_mount_settings">
       <title
 >Додаткові параметри монтування (лише &Linux;)</title>
       
@@ -7947,9 +7947,9 @@ ntlm auth = yes
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
+      Configuring Smb4K : Custom Settings : Mount Settings (BSD only)
 -->
-    <sect2 id="configuration_page_custom_options_mount_settings">
+    <sect2 id="configuration_page_custom_settings_mount_settings">
       <title
 >Параметри монтування (лише BSD)</title>
       
@@ -7960,10 +7960,10 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Browse Settings
+      Configuring Smb4K : Custom Settings : Browse Settings
 -->
 
-    <sect2 id="configuration_page_custom_options_browse_settings">
+    <sect2 id="configuration_page_custom_settings_browse_settings">
       <title
 >Параметри навігації</title>
     
@@ -7974,16 +7974,16 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
+      Configuring Smb4K : Custom Settings : Wake-On-LAN Settings
 -->
 
-    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
+    <sect2 id="configuration_page_custom_settings_wake_on_lan_settings">
       <title
 >Параметри Wake-On-LAN</title>
     
       <para
->Тут можна змінити параметри пробудження системи локальною мережею, які раніше було визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_options"
->діалогового вікна нетипових параметрів</link
+>Тут можна змінити параметри пробудження системи локальною мережею, які раніше було визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_settings"
+>діалогового вікна редактора нетипових параметрів</link
 >.</para>
     </sect2>
   </sect1>
@@ -8307,13 +8307,13 @@ ntlm auth = yes
 > <guimenu
 >Мережа</guimenu
 > <guimenuitem
->Нетипові параметри</guimenuitem
+>Додати нетипові параметри</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
           <para
->Відкрити <link linkend="network_neighborhood_browser_defining_custom_options"
->діалогове вікно нетипових параметрів</link
+>Відкрити <link linkend="network_neighborhood_browser_defining_custom_settings"
+>діалогове вікно редактора нетипових параметрів</link
 >. За допомогою цього вікна ви зможете визначити декілька нетипових параметрів позначеного сервера або спільного ресурсу. Якщо не позначено жодного з пунктів елементів мережі або робочої групи, цей пункт меню буде вимкнено.</para>
         </listitem>
       </varlistentry>

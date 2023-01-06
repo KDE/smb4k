@@ -1,16 +1,16 @@
 # Translation of smb4k-core.po to Catalan
-# Copyright (C) 2014-2022 This_file_is_part_of_KDE
+# Copyright (C) 2014-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2016, 2017, 2018, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-05 00:48+0000\n"
-"PO-Revision-Date: 2022-12-29 06:27+0100\n"
+"PO-Revision-Date: 2023-01-05 05:29+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1638,10 +1638,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Regles de filtratge personalitzades:"
+msgstr "Regles de filtratge personalitzades"
 
 # skip-rule: t-apo_fim
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
@@ -2205,10 +2204,9 @@ msgid "Print"
 msgstr "Imprimeix"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Configuració de muntatge"
+msgstr "Configuració personalitzada"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, kde-format
@@ -3320,7 +3318,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "No enviïs sol·licituds de bloqueig d'intervals de bytes"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3331,6 +3329,11 @@ msgid ""
 "(and most cifs servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"No enviïs sol·licituds de bloqueig d'intervals de bytes al servidor. Això és "
+"necessari per a determinades aplicacions que trenquen amb els bloqueigs "
+"d'intervals de bytes obligatoris de l'estil CIFS (i la majoria dels "
+"servidors CIFS encara no permeten sol·licituds d'avís de bloqueig "
+"d'intervals de bytes)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3926,12 +3929,3 @@ msgid ""
 msgstr ""
 "<qt>Introduïu un nom d'usuari i una contrasenya per a la compartició <b>%1</"
 "b>.</qt>"
-
-#~ msgid "Custom Options"
-#~ msgstr "Opcions personalitzades"
-
-#~ msgid "Do not use locking"
-#~ msgstr "No usis el bloqueig"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "No usa el bloqueig. No inicia el «lockd»."

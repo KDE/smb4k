@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-05 00:48+0000\n"
-"PO-Revision-Date: 2023-01-04 22:36+0300\n"
+"PO-Revision-Date: 2023-01-05 22:01+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -166,10 +166,9 @@ msgid "Synchronization"
 msgstr "Eşleme"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Bağlama Ayarları"
+msgstr "Özel Ayarlar"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -380,13 +379,11 @@ msgid " s"
 msgstr " sn"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Özel seçenekler penceresi ile uyandırılması gereken istemcileri tanımlayın."
+"Özel ayarlar düzenleyicisi ile uyandırılması gereken istemcileri tanımlayın."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -668,10 +665,9 @@ msgstr "&Ara"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Add &Custom Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Öz&el Seçenekler Ekle"
+msgstr "Öz&el Ayarlar Ekle"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format

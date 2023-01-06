@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-05 00:48+0000\n"
-"PO-Revision-Date: 2023-01-02 08:55+0200\n"
+"PO-Revision-Date: 2023-01-05 08:30+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -167,10 +167,9 @@ msgid "Synchronization"
 msgstr "Синхронізація"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Common Settings:"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Загальні параметри:"
+msgstr "Нетипові параметри"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -391,14 +390,12 @@ msgid " s"
 msgstr " с"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Визначити вузли, які має бути пробуджено за допомогою діалогового вікна "
-"нетипових параметрів."
+"Визначити вузли, які має бути пробуджено за допомогою редактора нетипових "
+"параметрів."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -682,8 +679,7 @@ msgstr "&Пошук"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Add &Custom Options"
+#, kde-format
 msgid "Add &Custom Settings"
 msgstr "Додати не&типові параметри"
 
