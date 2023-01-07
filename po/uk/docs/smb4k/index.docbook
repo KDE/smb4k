@@ -70,7 +70,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->3 січня 2023 року</date>
+>5 січня 2023 року</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -570,7 +570,7 @@
           </term>
           <listitem>
             <para
->Відкрити <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Відкрити <link linkend="custom_settings"
 >діалогове вікно редактора нетипових параметрів</link
 >. За допомогою цього вікна ви зможете визначити декілька нетипових параметрів позначеного сервера або спільного ресурсу. Якщо не позначено жодного з пунктів елементів мережі або робочої групи, цей пункт меню буде вимкнено.</para>
           </listitem>
@@ -954,7 +954,7 @@
 >кожного разу</emphasis
 >, коли у них виникатиме потреба.</para>
     </sect2>
-
+    
 <!-- 
       Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
   -->
@@ -962,29 +962,9 @@
     <sect2 id="network_neighborhood_browser_defining_custom_settings">
       <title
 >Визначення нетипових параметрів</title>
-
+      
       <para
->За допомогою діалогового вікна <guilabel
->Нетипові параметри</guilabel
-> ви можете:</para>
-      <itemizedlist>
-        <listitem
-><para
->визначити нетипові параметри монтування або навігації, які відрізнятимуться від параметрів, визначених у діалоговому вікні налаштовування програми, для окремого сервера або спільного ресурсу,</para
-></listitem>
-        <listitem
-><para
->визначити сервер, який слід пробудити до виконання пошуку ресурсів у мережі або спроб монтування (можливість Wake-On-LAN, див. <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->цей розділ</link
->),</para
-></listitem>
-        <listitem
-><para
->наказати програмі завжди монтувати певний спільний ресурс під час входу до системи або завантаження відповідного профілю.</para
-></listitem>
-      </itemizedlist>
-      <para
->Це вікно редактора можна відкрити за допомогою пункту меню <menuchoice
+>Ви можете визначити нетипові параметри, які відрізнятимуться від загальних параметрів, для окремих серверів або спільних ресурсів. Для цього слід відкрити вікно редактора нетипових параметрів за допомогою пункту меню <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -994,80 +974,9 @@
 ><guimenuitem
 >Додати нетипові параметри</guimenuitem
 ></menuchoice
->. Залежно від вибраного варіанта, параметри буде застосовано до усіх спільних ресурсів сервера або лише до окремого спільного ресурсу.</para>
-
-      <screenshot>
-        <screeninfo
->Знімок вікна редактора нетипових параметрів спільного ресурсу</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="network_neighborhood_browser_custom_settings_editor.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Вікно редактора нетипових параметрів</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-
-      <para
->Доступ до кнопки <guibutton
->Типові</guibutton
-> буде відкрито, лише якщо пункти діалогового вікна відрізнятимуться від типових параметрів, визначених за допомогою діалогового вікна налаштування. Натисканням цієї кнопки ви можете повернути значення параметрів діалогового вікна до типових. Якщо ви внесете до значень параметрів діалогового вікна зміни, буде відкрито доступ до кнопки <guibutton
->Гаразд</guibutton
->. Після натискання цієї кнопки зміни буде застосовано, а діалогове вікно закрито.</para>
-      <para
->Будь ласка, зауважте, що у BSD у цьому діалоговому вікні міститиметься менше пунктів, ніж у &Linux;, оскільки підтримки деяких з параметрів не передбачено.</para>
-
-      <sect3 id="network_neighborhood_browser_custom_settings_editor_common_mount_settings">
-        <title
->Загальні параметри монтування (лише &Linux;)</title>
-        
-        <para
->За допомогою цієї вкладки ви можете визначити загальні параметри, які пов'язано із монтуванням. Якщо натиснути кнопку <guibutton
->Завжди повторно монтувати цей спільний ресурс</guibutton
-> ресурс повторно монтуватиметься під час кожного запуску програми. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting"
->тут</link
+>. Докладний опис редактора можна знайти у <link linkend="custom_settings"
+>розділі щодо нетипових параметрів</link
 >.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_settings_editor_advanced_mount_settings">
-        <title
->Додаткові параметри монтування (лише &Linux;)</title>
-        
-        <para
->За допомогою цієї вкладки ви можете визначити додаткові параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting"
->тут</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_settings_editor_bsd_mount_settings">
-        <title
->Параметри монтування (лише BSD)</title>
-        
-        <para
->За допомогою цієї вкладки ви можете визначити параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting"
->тут</link
->.</para>
-      </sect3>
-        
-      <sect3 id="network_neighborhood_browser_defining_custom_settings_samba">
-        <title
->Параметри навігації</title>
-
-        <para
->Ви можете визначити мінімальну і максимальну версії протоколу SMB, а також порт SMB, яким слід користуватися. Крім того, ви можете вказати, чи слід використовувати Kerberos для розпізнавання. Докладний опис цих параметрів можна знайти на <link linkend="configuration_page_network"
->сторінці налаштовування мережі</link
->.</para>
-      </sect3>
-
-      <sect3 id="network_neighborhood_browser_defining_custom_settings_wol">
-        <title
->Параметри Wake-On-LAN</title>
-    
-        <para
->Щоб мати змогу скористатися можливістю пробудження спільних ресурсів у локальній мережі, вам слід вказати MAC-адресу потрібного вам сервера. У поточній версії у &smb4k; не передбачено можливості визначення такої MAC-адреси засобами програми, отже, вам доведеться визначити її самостійно. Щойно буде вказано адресу, ви можете визначити, чи слід &smb4k; надсилати контрольний пакет Wake-On-LAN до вказаного вузла перед пошуком ресурсів у мережевому оточенні та/або монтуванням одного зі спільних ресурсів сервера.</para>
-      </sect3>
     </sect2>
 
 <!-- 
@@ -1524,7 +1433,7 @@
     </sect2>
     
 <!--
-      Using Smb4K : The Mounted Shares View : Adding Custom Settings
+      Using Smb4K : The Mounted Shares View : Defining Custom Settings
   -->
     
     <sect2 id="shares_view_adding_custom_settings">
@@ -1542,7 +1451,7 @@
 ><guimenuitem
 >Додати нетипові параметри</guimenuitem
 ></menuchoice
->, щоб відкрити вікно нетипових параметрів. Щоб дізнатися більше, будь ласка, ознайомтеся з <link linkend="network_neighborhood_browser_defining_custom_settings"
+>, щоб відкрити вікно нетипових параметрів. Щоб дізнатися більше, будь ласка, ознайомтеся з <link linkend="custom_settings"
 >цим розділом</link
 >.</para>
     </sect2>
@@ -2450,6 +2359,143 @@
 >Гаразд</guibutton
 >.</para>
     </sect2>
+  </sect1>
+  
+<!--
+      Using Smb4K : Custom Settings
+  -->
+  
+  <sect1 id="custom_settings">
+    <title
+>Нетипові параметри</title>
+    
+    <para
+>Окрім загальних параметрів, які можна визначити за допомогою <link linkend="configuration"
+>вікна налаштовування</link
+>, у &smb4k; передбачено можливість налаштувати окремі параметри для сервера або спільного ресурсу. Отримати доступ до редактора нетипових параметрів на панелях <link linkend="network_neighborhood_browser_actions_popup_menu"
+>навігатора мережевим середовищем</link
+> та <link linkend="shares_view_actions_popup_menu"
+>перегляду спільних ресурсів</link
+> можна за допомогою пункту меню<menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Додати нетипові параметри</guimenuitem
+></menuchoice
+>.</para>
+    
+    <screenshot>
+      <screeninfo
+>Знімок вікна редактора нетипових параметрів спільного ресурсу</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="custom_settings_editor.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase
+>Вікно редактора нетипових параметрів</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>Вам слід скористатися нетиповими параметрами, якщо вам потрібно</para>
+      <itemizedlist>
+        <listitem
+><para
+>визначити нетипові параметри монтування або навігації, які відрізнятимуться від параметрів, визначених у діалоговому вікні налаштовування програми, для окремого сервера або спільного ресурсу,</para
+></listitem>
+        <listitem
+><para
+>визначити сервер, який слід пробудити до виконання пошуку ресурсів у мережі або спроб монтування (можливість Wake-On-LAN, див. <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>цей розділ</link
+>),</para
+></listitem>
+        <listitem
+><para
+>наказати програмі завжди монтувати певний спільний ресурс під час входу до системи або завантаження відповідного профілю.</para
+></listitem>
+      </itemizedlist>
+      
+      <para
+>Окремі параметри можна встановити за допомогою таких розділів або вкладок:</para>
+      
+      <variablelist>
+        <varlistentry>
+          <term
+><guilabel
+>Загальні параметри монтування</guilabel
+> (лише &Linux;) </term>
+          <listitem>
+            <para
+>Тут ви можете визначити загальні параметри, які пов'язано із монтуванням. Якщо натиснути кнопку <guibutton
+>Завжди повторно монтувати цей спільний ресурс</guibutton
+> ресурс повторно монтуватиметься під час кожного запуску програми. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_common_mount_settings"
+>тут</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Додаткові параметри монтування</guilabel
+> (лише &Linux;) </term>
+          <listitem>
+            <para
+>Тут ви можете визначити додаткові параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_advanced_mount_settings"
+>тут</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Параметри монтування</guilabel
+> (лише BSD) </term>
+          <listitem>
+            <para
+>Тут ви можете визначити параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_mount_settings"
+>тут</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Параметри навігації</guilabel>
+          </term>
+          <listitem>
+            <para
+>Ви можете визначити мінімальну і максимальну версії протоколу SMB, а також порт SMB, яким слід користуватися. Крім того, ви можете вказати, чи слід використовувати Kerberos для розпізнавання. Докладний опис цих параметрів можна знайти на <link linkend="configuration_page_network"
+>сторінці налаштовування мережі</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Параметри Wake-On-LAN</guilabel>
+          </term>
+          <listitem>
+            <para
+>Щоб мати змогу скористатися можливістю пробудження спільних ресурсів у локальній мережі, вам слід вказати MAC-адресу потрібного вам сервера. У поточній версії у &smb4k; не передбачено можливості визначення такої MAC-адреси засобами програми, отже, вам доведеться визначити її самостійно. Щойно буде вказано адресу, ви можете визначити, чи слід &smb4k; надсилати контрольний пакет Wake-On-LAN до вказаного вузла перед пошуком ресурсів у мережевому оточенні та/або монтуванням одного зі спільних ресурсів сервера.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      
+      
+      <para
+>Доступ до кнопки <guibutton
+>Типові</guibutton
+> буде відкрито, лише якщо пункти діалогового вікна відрізнятимуться від типових параметрів, визначених за допомогою діалогового вікна налаштування. Натисканням цієї кнопки ви можете повернути значення параметрів діалогового вікна до типових. Якщо ви внесете до значень параметрів діалогового вікна зміни, буде відкрито доступ до кнопки <guibutton
+>Гаразд</guibutton
+>. Після натискання цієї кнопки зміни буде застосовано, а діалогове вікно закрито.</para>
+      <para
+>Будь ласка, зауважте, що у BSD у цьому діалоговому вікні міститиметься менше пунктів, ніж у &Linux;, оскільки підтримки деяких з параметрів не передбачено.</para>
   </sect1>
 
 <!-- 
@@ -7886,7 +7932,7 @@ ntlm auth = yes
 >Знімок вкладки налаштування «Нетипові параметри»</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
 >Сторінка налаштування «Нетипові параметри»</phrase
@@ -7895,97 +7941,21 @@ ntlm auth = yes
     </screenshot>
 
     <para
->Параметри роботи запису мережі можна змінити або за допомогою подвійного клацання на пункті у списку, або за допомогою кнопки <guimenuitem
->Редагувати</guimenuitem
->. Програма відкриє вікно редактора нетипових параметрів і надасть вам змогу їх змінити. Щоб вилучити запис зі списку, наведіть на нього вказівник миші і клацніть правою кнопкою миші, потім виберіть пункт <guimenuitem
->Вилучити</guimenuitem
-> у контекстному меню. Можна вилучити усі записи мережі одночасно. Для цього слід скористатися пунктом <guimenuitem
->Спорожнити список</guimenuitem
+>Параметри роботи запису мережі можна змінити або за допомогою подвійного клацання на пункті у списку, або за допомогою кнопки <guibutton
+>Редагувати</guibutton
+>. Програма відкриє вікно <link linkend="custom_settings"
+>редактора нетипових параметрів</link
+> і надасть вам змогу їх змінити. Щоб вилучити запис зі списку, позначте його і натисніть кнопку <guibutton
+>Вилучити</guibutton
+>. Ви можете вилучити усі записи мережі одразу натисканням кнопки <guibutton
+>Спорожнити список</guibutton
+>. Щоб відновити початковий стан списку, натисніть кнопку <guibutton
+>Скинути</guibutton
 >.</para>
-
     <para
->Доступ до нетипових параметрів можна отримати за допомогою вкладок, які розташовано праворуч.</para>
-    
-<!--
-      Configuring Smb4K : Custom Settings : Network Item
--->
-    
-    <sect2 id="configuration_page_custom_settings_network_item">
-      <title
->Запис мережі</title>
-      
-      <para
->Ця вкладка, здебільшого, слугує джерелом інформації. На панелі <guilabel
->Ідентифікація</guilabel
-> буде показано робочу групу або домен запису мережі, його розташування та IP-адресу. IP-адресу можна редагувати, якщо виникла потреба скоригувати її.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Settings : Common Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_settings_common_mount_settings">
-      <title
->Загальні параметри монтування (лише &Linux;)</title>
-      
-      <para
->Тут ви можете змінити типові параметри, які використовуватимуться для монтування у &Linux;. Докладний опис параметрів можна знайти у розділі щодо сторінки налаштувань <link linkend="configuration_page_mounting"
->Монтування</link
+>Щоб дізнатися більше про редактор нетипових параметрів, зверніться до <link linkend="custom_settings"
+>цього розділу</link
 >.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Settings : Advanced Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_settings_advanced_mount_settings">
-      <title
->Додаткові параметри монтування (лише &Linux;)</title>
-      
-      <para
->Тут ви можете змінити додаткові параметри, які використовуватимуться для монтування. Докладний опис параметрів можна знайти у розділі щодо сторінки налаштувань <link linkend="configuration_page_mounting"
->Монтування</link
->.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Settings : Mount Settings (BSD only)
--->
-    <sect2 id="configuration_page_custom_settings_mount_settings">
-      <title
->Параметри монтування (лише BSD)</title>
-      
-      <para
->Тут ви можете змінити параметри, які використовуватимуться для монтування у BSD. Докладний опис параметрів можна знайти у розділі щодо сторінки налаштувань <link linkend="configuration_page_mounting"
->Монтування</link
->.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Settings : Browse Settings
--->
-
-    <sect2 id="configuration_page_custom_settings_browse_settings">
-      <title
->Параметри навігації</title>
-    
-      <para
->Тут ви можете редагувати різноманітні параметри &Samba;, які використовуються для навігації. Докладніший опис можна знайти в <link linkend="configuration_page_network_advanced_settings"
->описі сторінки налаштовування &Samba;</link
->.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Settings : Wake-On-LAN Settings
--->
-
-    <sect2 id="configuration_page_custom_settings_wake_on_lan_settings">
-      <title
->Параметри Wake-On-LAN</title>
-    
-      <para
->Тут можна змінити параметри пробудження системи локальною мережею, які раніше було визначено за допомогою <link linkend="network_neighborhood_browser_defining_custom_settings"
->діалогового вікна редактора нетипових параметрів</link
->.</para>
-    </sect2>
   </sect1>
 
 <!-- 
