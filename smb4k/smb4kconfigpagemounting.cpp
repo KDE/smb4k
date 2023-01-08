@@ -441,6 +441,7 @@ void Smb4KConfigPageMounting::setupWidget()
 
     // Additional options
     QCheckBox *useAdditionalCifsOptions = new QCheckBox(Smb4KMountSettings::self()->useCustomCifsOptionsItem()->label(), advancedOptionsExtraWidget);
+    useAdditionalCifsOptions->setObjectName(QStringLiteral("kcfg_UseCustomCifsOptions"));
 
     QWidget *additionalOptionsWidget = new QWidget(advancedOptionsExtraWidget);
     QHBoxLayout *additionalOptionsWidgetLayout = new QHBoxLayout(additionalOptionsWidget);
