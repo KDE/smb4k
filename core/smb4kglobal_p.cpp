@@ -30,8 +30,20 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
     coreInitialized = false;
 
 #ifdef Q_OS_LINUX
+    //
+    // 2023-01-08: Updated to mount.cifs, version 7.0
+    // 
+    // The options 'credentials', 'domainauto', 'intr', 'nointr'
+    // and 'snapshot' were not included for various reasons.
+    // 
+    allowedMountArguments << QStringLiteral("idsfromsid");
     allowedMountArguments << QStringLiteral("dynperm");
+    allowedMountArguments << QStringLiteral("nostrictsync");
+    allowedMountArguments << QStringLiteral("handlecache");
+    allowedMountArguments << QStringLiteral("nohandlecache");
+    allowedMountArguments << QStringLiteral("handletimeout");
     allowedMountArguments << QStringLiteral("rwpidforward");
+    allowedMountArguments << QStringLiteral("mapposix");
     allowedMountArguments << QStringLiteral("hard");
     allowedMountArguments << QStringLiteral("soft");
     allowedMountArguments << QStringLiteral("noacl");
@@ -40,9 +52,33 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
     allowedMountArguments << QStringLiteral("backupgid");
     allowedMountArguments << QStringLiteral("ignorecase");
     allowedMountArguments << QStringLiteral("nocase");
+    allowedMountArguments << QStringLiteral("seal");
+    allowedMountArguments << QStringLiteral("rdma");
+    allowedMountArguments << QStringLiteral("resilienthandles");
+    allowedMountArguments << QStringLiteral("noresilienthandles");
+    allowedMountArguments << QStringLiteral("persistenthandles");
+    allowedMountArguments << QStringLiteral("nopersistenthandles");
+    allowedMountArguments << QStringLiteral("forcemandatorylock");
+    allowedMountArguments << QStringLiteral("locallease");
+    allowedMountArguments << QStringLiteral("nolease");
     allowedMountArguments << QStringLiteral("sfu");
+    allowedMountArguments << QStringLiteral("mfsymlinks");
+    allowedMountArguments << QStringLiteral("echo_interval");
+    allowedMountArguments << QStringLiteral("posix");
+    allowedMountArguments << QStringLiteral("unix");
+    allowedMountArguments << QStringLiteral("linux");
+    allowedMountArguments << QStringLiteral("noposix");
     allowedMountArguments << QStringLiteral("nounix");
+    allowedMountArguments << QStringLiteral("nolinux");
     allowedMountArguments << QStringLiteral("nouser_xattr");
+    allowedMountArguments << QStringLiteral("nodfs");
+    allowedMountArguments << QStringLiteral("noautotune");
+    allowedMountArguments << QStringLiteral("nosharesock");
+    allowedMountArguments << QStringLiteral("noblocksend");
+    allowedMountArguments << QStringLiteral("rsize");
+    allowedMountArguments << QStringLiteral("wsize");
+    allowedMountArguments << QStringLiteral("bsize");
+    allowedMountArguments << QStringLiteral("max_credits");
     allowedMountArguments << QStringLiteral("fsc");
     allowedMountArguments << QStringLiteral("multiuser");
     allowedMountArguments << QStringLiteral("actimeo");
