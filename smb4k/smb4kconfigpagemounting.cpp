@@ -440,7 +440,7 @@ void Smb4KConfigPageMounting::setupWidget()
     advancedOptionsExtraWidgetLayout->addWidget(securityMode, 2, 1);
 
     // Additional options
-    QLabel *additionalOptionsLabel = new QLabel(Smb4KMountSettings::self()->customCIFSOptionsItem()->label(), advancedOptionsExtraWidget);
+    QCheckBox *useAdditionalCifsOptions = new QCheckBox(Smb4KMountSettings::self()->useCustomCifsOptionsItem()->label(), advancedOptionsExtraWidget);
 
     QWidget *additionalOptionsWidget = new QWidget(advancedOptionsExtraWidget);
     QHBoxLayout *additionalOptionsWidgetLayout = new QHBoxLayout(additionalOptionsWidget);
@@ -450,7 +450,6 @@ void Smb4KConfigPageMounting::setupWidget()
     additionalOptions->setObjectName(QStringLiteral("kcfg_CustomCIFSOptions"));
     additionalOptions->setReadOnly(true);
     additionalOptions->setClearButtonEnabled(true);
-    additionalOptionsLabel->setBuddy(additionalOptions);
 
     QToolButton *additionalOptionsEdit = new QToolButton(advancedOptionsExtraWidget);
     additionalOptionsEdit->setIcon(KDE::icon(QStringLiteral("document-edit")));
@@ -459,7 +458,7 @@ void Smb4KConfigPageMounting::setupWidget()
     additionalOptionsWidgetLayout->addWidget(additionalOptions, 0);
     additionalOptionsWidgetLayout->addWidget(additionalOptionsEdit, 0);
 
-    advancedOptionsExtraWidgetLayout->addWidget(additionalOptionsLabel, 3, 0);
+    advancedOptionsExtraWidgetLayout->addWidget(useAdditionalCifsOptions, 3, 0);
     advancedOptionsExtraWidgetLayout->addWidget(additionalOptionsWidget, 3, 1);
 
     advancedOptionsLayout->addWidget(advancedOptionsExtraWidget, 4, 0, 1, 2);

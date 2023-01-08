@@ -1340,24 +1340,26 @@ bool Smb4KMounter::fillMountActionArgs(const SharePtr &share, QVariantMap &map)
     //
     // Mount options provided by the user
     //
-    if (!Smb4KMountSettings::customCIFSOptions().isEmpty()) {
-        // SECURITY: Only pass those arguments to mount.cifs that do not pose
-        // a potential security risk and that have not already been defined.
-        //
-        // This is, among others, the proper fix to the security issue reported
-        // by Heiner Markert (aka CVE-2014-2581).
-        QStringList allowedArgs = allowedMountArguments();
-        QStringList list = Smb4KMountSettings::customCIFSOptions().split(QStringLiteral(","), Qt::SkipEmptyParts);
-        QMutableStringListIterator it(list);
+    if (Smb4KMountSettings::useCustomCifsOptions()) {
+        if (!Smb4KMountSettings::customCIFSOptions().isEmpty()) {
+            // SECURITY: Only pass those arguments to mount.cifs that do not pose
+            // a potential security risk and that have not already been defined.
+            //
+            // This is, among others, the proper fix to the security issue reported
+            // by Heiner Markert (aka CVE-2014-2581).
+            QStringList allowedArgs = allowedMountArguments();
+            QStringList list = Smb4KMountSettings::customCIFSOptions().split(QStringLiteral(","), Qt::SkipEmptyParts);
+            QMutableStringListIterator it(list);
 
-        while (it.hasNext()) {
-            QString arg = it.next().section(QStringLiteral("="), 0, 0);
+            while (it.hasNext()) {
+                QString arg = it.next().section(QStringLiteral("="), 0, 0);
 
-            if (!allowedArgs.contains(arg)) {
-                it.remove();
+                if (!allowedArgs.contains(arg)) {
+                    it.remove();
+                }
+
+                argumentsList += list;
             }
-
-            argumentsList += list;
         }
     }
 

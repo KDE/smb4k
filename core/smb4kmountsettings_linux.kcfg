@@ -285,8 +285,12 @@
       </choices>
       <default>Ntlmssp</default>
     </entry>
-    <entry name="CustomCIFSOptions" type="String">
+    <entry name="UseCustomCifsOptions" type="Bool">
       <label>Additional options:</label>
+      <whatsthis>Here you can enter advanced options for the CIFS file system in a comma-separated list (refer to the manual page of mount.cifs to learn more). The list will be added AS IS to the "-o" argument of mount.cifs. Please do not enter options that have already been defined in the configuration dialog.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry name="CustomCIFSOptions" type="String">
       <whatsthis>Here you can enter advanced options for the CIFS file system in a comma-separated list (refer to the manual page of mount.cifs to learn more). The list will be added AS IS to the "-o" argument of mount.cifs. Please do not enter options that have already been defined in the configuration dialog.</whatsthis>
       <default></default>
     </entry>
