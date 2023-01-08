@@ -71,8 +71,9 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 #endif
   
   //
-  // Create and init the SMB context
-  // 
+  // Create and init the SMB context and read the NetBIOS and
+  // workgroup name of this machine.
+  //
   SMBCCTX *smbContext= smbc_new_context();
   
   if (smbContext)
@@ -83,13 +84,12 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
     {
       smbc_free_context(smbContext, 1);
     }
+    else
+    {
+      machineNetbiosName = QString::fromUtf8(smbc_getNetbiosName(smbContext)).toUpper();
+      machineWorkgroupName = QString::fromUtf8(smbc_getWorkgroup(smbContext)).toUpper();
+    }
   }
-  
-  //
-  // Read the computer's NetBIOS name and workgroup
-  // 
-  machineNetbiosName = QString::fromUtf8(smbc_getNetbiosName(smbContext)).toUpper();
-  machineWorkgroupName = QString::fromUtf8(smbc_getWorkgroup(smbContext)).toUpper();
   
   //
   // Free the SMB context
