@@ -2134,7 +2134,7 @@ ntlm auth = yes
     <sect2 id="configuration_page_mounting_common_mount_settings">
       <title>Common Mount Settings (&Linux; only)</title>
       
-      <para>The <guilabel>Common Mount Settings</guilabel> tab is only available under &Linux;. The settings present under BSD can be found in the <link linkend="configuration_page_mounting_mount_settings">Mount Settings (BSD only)</link> section.</para>
+      <para>The <guilabel>Common Mount Settings</guilabel> tab is only available under &Linux; and the listed options refer to the <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> / <ulink url="man:/mount.smb3"><citerefentry><refentrytitle>mount.smb3</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> command. The settings present under BSD can be found in the <link linkend="configuration_page_mounting_mount_settings">Mount Settings (BSD only)</link> section.</para>
 
       <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
         <title>Common Options</title>
@@ -2152,6 +2152,7 @@ ntlm auth = yes
                     <menuchoice><guimenuitem>read-write</guimenuitem></menuchoice>
                   </term>
                   <listitem>
+                    <para>Option: <option>rw</option></para>
                     <para>Mount the share read-write.</para>
                   </listitem>
                 </varlistentry>
@@ -2160,6 +2161,7 @@ ntlm auth = yes
                     <menuchoice><guimenuitem>read-only</guimenuitem></menuchoice>
                   </term>
                   <listitem>
+                    <para>Option: <option>ro</option></para>
                     <para>Mount the share read-only.</para>
                   </listitem>
                 </varlistentry>
@@ -2172,14 +2174,15 @@ ntlm auth = yes
               <menuchoice><guibutton>Client character set</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Sets the character set used by the client side (&ie; your computer).</para>
+              <para>Option: <option>iocharset=CHARSET</option></para>
+              <para>Sets the character set used by the client side (&ie; your computer) to one of the following:</para>
               <variablelist>
                 <varlistentry>
                   <term>
                     <menuchoice><guimenuitem>default</guimenuitem></menuchoice>
                   </term>
                   <listitem>
-                    <para>Default character set used by the client's kernel.</para>
+                    <para>Default character set used by the client's kernel. In this case the <option>iocharset</option> option is omitted from the command line.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -2359,7 +2362,7 @@ ntlm auth = yes
                   </listitem>
                 </varlistentry>
               </variablelist>
-              <para>Default: not selected; <guimenuitem>default</guimenuitem></para>
+              <para>Default: not selected; CHARSET: <guimenuitem>default</guimenuitem></para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2367,9 +2370,9 @@ ntlm auth = yes
               <menuchoice><guibutton>File system port</guibutton></menuchoice>
             </term>
             <listitem>
-              <para>Sets the file system port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor to define individual port numbers for the problematic hosts.</para>
-              <para>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_advanced_settings_samba"><guibutton>SMB port</guibutton></link> option.</para>
-              <para>Default: not selected; port 445</para>
+              <para>Option: <option>port=PORT</option></para>
+              <para>Sets the port number that is used by <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="custom_settings">Custom Settings</link> editor to define individual port numbers for the problematic hosts.</para>
+              <para>Default: not selected; PORT: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -2383,6 +2386,7 @@ ntlm auth = yes
             <menuchoice><guibutton>All or most of the servers support the &CIFS; Unix extensions</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: none</para>
             <para>Most versions of &Samba; support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a &Windows; dominated network neighborhood with only a few &Samba; servers, you can safely uncheck this option and define custom settings for the &Samba; servers.</para>
             <para>In case you uncheck this option, consider to switch on permission checks under <link linkend="configuration_page_mounting_advanced_mount_settings">Advanced Mount Settings</link>.</para>
             <para>Default: selected</para>
@@ -2393,9 +2397,10 @@ ntlm auth = yes
             <menuchoice><guibutton>User ID</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>uid=UID</option></para>
             <para>Sets the owner of the files and directories on the file system. By default, your UID is used. To change the UID, press the search button and choose one from the drop down menu.</para>
             <para>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
-            <para>Default: selected; your UID</para>
+            <para>Default: selected; UID: your UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2403,9 +2408,10 @@ ntlm auth = yes
             <menuchoice><guibutton>Group ID</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>uid=GID</option></para>
             <para>Sets the group that owns the files and directories on the file system. By default, your GID is used. To change the GID, press the search button and choose one from the drop down menu.</para>
             <para>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
-            <para>Default: selected; your GID</para>
+            <para>Default: selected; GID: your GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2413,9 +2419,10 @@ ntlm auth = yes
               <menuchoice><guibutton>File mode</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>file_mode=ARG</option></para>
             <para>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount(8)"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask(2)"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
             <para>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
-            <para>Default: selected; 0755</para>
+            <para>Default: selected; ARG: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2423,9 +2430,10 @@ ntlm auth = yes
             <menuchoice><guibutton>Directory mode</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>dir_mode=ARG</option></para>
             <para>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount(8)"><citerefentry><refentrytitle>mount</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> and <ulink url="man:/umask(2)"><citerefentry><refentrytitle>umask</refentrytitle><manvolnum>2</manvolnum></citerefentry></ulink> manual pages.</para>
             <para>In case the support for the &CIFS; Unix extensions is selected, this setting is disabled.</para>
-            <para>Default: selected; 0755</para>
+            <para>Default: selected; ARG: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2439,13 +2447,14 @@ ntlm auth = yes
     <sect2 id="configuration_page_mounting_advanced_mount_settings">
       <title>Advanced Mount Settings (&Linux; only)</title>
       
-      <para>The <guilabel>Advanced Mount Settings</guilabel> tab is only available under &Linux;. The settings present under BSD can be found in the <link linkend="configuration_page_mounting_mount_settings">Mount Settings (BSD only)</link> section.</para>
+      <para>The <guilabel>Advanced Mount Settings</guilabel> tab is only available under &Linux; and the listed options refer to the <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> / <ulink url="man:/mount.smb3"><citerefentry><refentrytitle>mount.smb3</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> command. The settings present under BSD can be found in the <link linkend="configuration_page_mounting_mount_settings">Mount Settings (BSD only)</link> section.</para>
       <variablelist>
         <varlistentry>
           <term>
             <menuchoice><guibutton>Definitely assign the UID</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>forceuid</option></para>
             <para>Instruct the client (i.e. your side) to ignore any user ID (UID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted UID.</para>
             <para>Default: not selected</para>
           </listitem>
@@ -2455,6 +2464,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Definitely assign the GID</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>forcegid</option></para>
             <para>Instruct the client (i.e. your side) to ignore any group ID (GID) provided by the server for files and directories and to always assign the owner to be the value of the transmitted GID.</para>
             <para>Default: not selected</para>
           </listitem>
@@ -2464,7 +2474,8 @@ ntlm auth = yes
             <menuchoice><guibutton>Do permission checks</guibutton></menuchoice>
           </term>
           <listitem>
-            <para>The client side checks if you have the correct UID and GID to manipulate files and directories on the share. This is in addition to the normal ACL check on the target machine done by the server software. You might want to switch this feature off, if the server(s) support the &CIFS; Unix extensions and you are, hence, not allowed to access the share.</para>
+            <para>Option: <option>perm</option> or <option>noperm</option></para>
+            <para>The client side checks if you have the correct UID and GID to manipulate files and directories on the share. This is in addition to the normal ACL check on the target machine done by the server software. You most definitely want to switch this feature off, if the server(s) support the &CIFS; Unix extensions and you are, hence, not allowed to fully access the share.</para>
             <para>Default: not selected</para>
           </listitem>
         </varlistentry>
@@ -2473,6 +2484,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Attempt to set UID and GID</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>setuids</option> or <option>nosetuids</option></para>
             <para>If the &CIFS; Unix extensions are negotiated with the server the client side will attempt to set the effective UID and GID of the local process on newly created files, directories, and devices. If this feature is turned off, the default UID and GID defined for the share will be used. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.</para>
             <para>Default: not selected</para>
           </listitem>
@@ -2482,6 +2494,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Use server inode numbers</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>serverino</option> or <option>noserverino</option></para>
             <para>Use inode numbers (unique persistent file identifiers) returned by the server instead of automatically generating temporary inode numbers on the client side. This parameter has no effect if the server does not support returning inode numbers or similar. It is recommended that you read the manual page of <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> before you change this setting.</para>
             <para>Default: selected</para>
           </listitem>
@@ -2491,6 +2504,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Translate reserved characters</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>mapchars</option> or <option>nomapchars</option></para>
             <para>Translate six of the seven reserved characters (not backslash, but including the colon, question mark, pipe, asterisk, greater than, and less than characters) to the remap range (above 0xF000), which also allows the client side to recognize files created with such characters by &Windows;’s POSIX emulation. This can also be useful when mounting to most versions of &Samba;. This has no effect if the server does not support Unicode.</para>
             <para>Default: not selected</para>
           </listitem>
@@ -2500,6 +2514,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Do not send byte range lock requests</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>nobrl</option></para>
             <para>Do not send byte range lock requests to the server. This is necessary for certain applications that break with cifs style mandatory byte range locks (and most cifs servers do not yet support requesting advisory byte range locks).</para>
             <para>Default: not selected</para>
           </listitem>
@@ -2509,6 +2524,7 @@ ntlm auth = yes
             <menuchoice><guibutton>SMB protocol version</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>vers=VERS</option></para>
             <para>Define which version of the SMB protocol is to be used. Normally, this option does not need to be enabled because the protocol version is negotiated between the client and the server.</para>
             <para>The following values are allowed:</para>
             <variablelist>
@@ -2517,7 +2533,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>1.0 (Classic &CIFS;/SMBv1 protocol)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=1.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the classic &CIFS;/SMBv1 protocol.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the classic &CIFS;/SMBv1 protocol.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2525,7 +2541,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>2.0 (Windows Vista SP1/Windows Server 2008)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=2.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.002 protocol. This was initially introduced in &Microsoft; &Windows; Vista Service Pack 1 and &Windows; Server 2008.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.002 protocol. This was initially introduced in &Microsoft; &Windows; Vista Service Pack 1 and &Windows; Server 2008.</para>
                   <para>Please note that the initial release version of &Microsoft; &Windows; Vista spoke a slightly different dialect (2.000) that is not supported.</para>
                 </listitem>
               </varlistentry>
@@ -2534,7 +2550,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>2.1 (Windows 7/Windows Server 2008R2)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=2.1</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.1 protocol that was introduced in &Microsoft; &Windows; 7 and &Windows; Server 2008R2.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv2.1 protocol that was introduced in &Microsoft; &Windows; 7 and &Windows; Server 2008R2.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2542,7 +2558,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>3.0 (Windows 8/Windows Server 2012)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3.0</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0 protocol that was introduced in &Microsoft; &Windows; 8 and &Windows; Server 2012.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0 protocol that was introduced in &Microsoft; &Windows; 8 and &Windows; Server 2012.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2550,7 +2566,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3.0.2</option> or <option>vers=3.02</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0.2 protocol that was introduced in &Microsoft; &Windows; 8.1 and &Windows; Server 2012R2.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0.2 protocol that was introduced in &Microsoft; &Windows; 8.1 and &Windows; Server 2012R2.</para>
                 </listitem>
               </varlistentry>
               
@@ -2559,7 +2575,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>3.1.1 (Windows Server 2016)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3.1.1</option> or <option>vers=3.11</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in &Microsoft; &Windows; Server 2016.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.1.1 protocol that was introduced in &Microsoft; &Windows; Server 2016.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2567,7 +2583,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>3 (Version 3.0 and above)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=3</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0 protocol version and above.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to use the SMBv3.0 protocol version and above.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2575,11 +2591,11 @@ ntlm auth = yes
                   <menuchoice><guibutton>default (Negotiate the highest version)</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>vers=default</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to try to negotiate the highest SMBv2+ version supported by both the client and server.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to try to negotiate the highest SMBv2+ version supported by both the client and server.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: not selected; <guibutton>default (Negotiate the highest version)</guibutton></para>
+            <para>Default: not selected; VERS: <guibutton>default (Negotiate the highest version)</guibutton></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2587,6 +2603,7 @@ ntlm auth = yes
             <menuchoice><guibutton>Cache mode</guibutton></menuchoice>
           </term>
           <listitem>
+            <para>Option: <option>cache=ARG</option></para>
             <para>Define how read and write requests are handled. In case you choose to not cache file data at all, the client never utilizes the cache for normal reads and writes. It always accesses the server directly to satisfy a read or write request. If you choose to follow the &CIFS;/SMB2 protocol strictly, the cache is only trusted if the client holds an oplock. If the client does not hold an oplock, then the client bypasses the cache and accesses the server directly to satisfy a read or write request. Choosing to allow loose caching semantics can sometimes provide better performance on the expense of cache coherency. This option might cause data corruption, if several clients access the same set of files on the server at the same time. Because of this, the strict cache mode is recommended.</para>
             <para>The following values are allowed:</para>
             <variablelist>
@@ -2595,7 +2612,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>Do not cache file data at all</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>cache=none</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to not cache file data at all.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to not cache file data at all.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2603,7 +2620,7 @@ ntlm auth = yes
                   <menuchoice><guibutton>Follow the &CIFS;/SMB2 protocol strictly</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>cache=strict</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to follow the &CIFS;/SMB2 protocol strictly.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to follow the &CIFS;/SMB2 protocol strictly.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -2611,11 +2628,11 @@ ntlm auth = yes
                   <menuchoice><guibutton>Allow loose caching semantics</guibutton></menuchoice>
                 </term>
                 <listitem>
-                  <para>The <option>cache=loose</option> command line argument is used. This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to allow loose caching semantics.</para>
+                  <para>This causes <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> to allow loose caching semantics.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
-            <para>Default: not selected; <guibutton>Follow the &CIFS;/SMB2 protocol strictly</guibutton></para>
+            <para>Default: not selected; ARG: <guibutton>Follow the &CIFS;/SMB2 protocol strictly</guibutton></para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2708,7 +2725,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para>Define additional options for use with <ulink url="man:/mount.cifs"><citerefentry><refentrytitle>mount.cifs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink>. Clicking the edit button to the right of the line edit opens an input dialog where the options have to be provided in a comma-separated list. After clicking <guibutton>OK</guibutton> in the input dialog, the options will be checked against a whitelist. All valid entries are accepted and entered into to line edit.</para>
-            <para>Default: empty</para>
+            <para>Default: not selected; empty</para>
           </listitem>
         </varlistentry>
       </variablelist>
