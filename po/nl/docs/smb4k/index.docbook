@@ -554,9 +554,9 @@
           </term>
           <listitem>
             <para
->Open the <link linkend="custom_settings"
->Custom Settings</link
-> editor where you can set several custom settings for each selected server and share. If a workgroup or no item is selected, this menu entry is disabled.</para>
+>Open het dialoog voor <link linkend="custom_settings"
+>Aangepaste instellingen</link
+> waar u verschillende persoonlijke instellingen voor elke geselecteerde server en share kunt aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -948,7 +948,7 @@
 >Aangepaste instellingen definiëren</title>
       
       <para
->For individual servers or shares you can define custom settings that deviate from the global settings. To do so, you can access the custom settings editor by clicking the <menuchoice
+>Voor individuele servers  of shares kunt u aangepaste instellingen definiëren. Om dat te doen kunt de bewerker voor aangepaste instellingen gebruiken door te klikken op het menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -956,11 +956,11 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Add Custom Settings</guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
 ></menuchoice
-> menu item. See the section <link linkend="custom_settings"
->Custom Settings</link
-> for more details.</para>
+>. Voor meer details zie de sectie <link linkend="custom_settings"
+>Aangepaste instellingen</link
+>.</para>
     </sect2>
 
 <!-- 
@@ -1425,7 +1425,7 @@
 >Aangepaste instellingen definiëren</title>
       
       <para
->For the selected shares custom settings can be defined. Click the <menuchoice
+>Voor de geselecteerde shares kunnen aangepaste instellingen gedefinieerd worden. Klik op het actie <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1433,10 +1433,10 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Add Custom Settings</guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
 ></menuchoice
-> action to open the Custom Settings dialog. For more details, please see <link linkend="custom_settings"
->this section</link
+> om de bewerker voor aangepaste opties te openen. Voor meer details zie <link linkend="custom_settings"
+>deze sectie</link
 >.</para>
     </sect2>
     
@@ -2352,13 +2352,13 @@
 >Aangepaste instellingen</title>
     
     <para
->Besides the global settings that can be defined in the <link linkend="configuration"
->configuration dialog</link
->, &smb4k; offers the possibility to configure individual settings per server or share. Both in the <link linkend="network_neighborhood_browser_actions_popup_menu"
->network neighborhood browser</link
-> and in the <link linkend="shares_view_actions_popup_menu"
->shares view</link
->, the editor for the custom settings can be accessed by clicking the <menuchoice
+>Naast de globale instellingen die gedefinieerd kunnen worden in de <link linkend="configuration"
+>configuratiedialoog</link
+>, biedt &smb4k; de mogelijkheid om individuele instellingen per server of share te configureren. Beiden in de <link linkend="network_neighborhood_browser_actions_popup_menu"
+>netwerkomgevingsbrowser</link
+> en in de <link linkend="shares_view_actions_popup_menu"
+>sharesweergave</link
+>, de bewerker voor de aangepaste instellingen kan gebruikt worden door te klikken op de menu-items<menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -2366,9 +2366,9 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Add Custom Settings</guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
 ></menuchoice
-> menu entries.</para>
+>.</para>
     
     <screenshot>
       <screeninfo
@@ -2385,75 +2385,75 @@
     </screenshot>
 
     <para
->Use should use custom settings if you want to</para>
+>U zou aangepaste instellingen moeten gebruiken als u</para>
       <itemizedlist>
         <listitem
 ><para
->aangepast aankoppelen of bladerinstellingen wilt definiëren voor een enkele server of share die afwijkt van waarden die u heeft gedefinieerd in het configuratievenster,</para
+>aangepast aankoppelen of bladerinstellingen wilt definiëren voor een enkele server of share die afwijkt van waarden die u hebt gedefinieerd in het configuratievenster,</para
 ></listitem>
         <listitem
 ><para
->een server definieert die weer moet ontwaken voordat er pogingen tot netwerk-scans of aankoppelen zijn (functie Wake-On-LAN, lees meer <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>een server wilt definiëren die weer moet ontwaken voordat er pogingen tot netwerk-scans of aankoppelen zijn (functie Wake-On-LAN, lees meer <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
 >hier</link
 >),</para
 ></listitem>
         <listitem
 ><para
->altijd bij het opstarten of bij het laden van een bijbehorend profiel een specifieke share aankoppelen.</para
+>altijd bij het opstarten een specifieke share wilt aankoppelen of wanneer het bijbehorend profiel wordt geladen.</para
 ></listitem>
       </itemizedlist>
       
       <para
->Individual settings can be made in the following sections / tabs:</para>
+>Individuele instellingen kunnen gemaakt worden in de volgende secties / tabbladen:</para>
       
       <variablelist>
         <varlistentry>
           <term
 ><guilabel
->Common Mount Settings</guilabel
-> (&Linux; only) </term>
+>Algemene instellingen voor aankoppelen</guilabel
+> (alleen &Linux;) </term>
           <listitem>
             <para
->You can define common settings related to mounting here. Check the <guibutton
->Always remount this share</guibutton
-> button for a selected share if it should be remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting_common_mount_settings"
->this section</link
+>U kunt hier algemene instellingen definiëren gerelateerd aan aankoppelen. Activeer de knop <guibutton
+>Deze share altijd opnieuw aankoppelen</guibutton
+> voor een geselecteerde share als deze opnieuw aangekoppeld moet worden bij elke start van het programma. Voor informatie over alle andere instellingen zie <link linkend="configuration_page_mounting_common_mount_settings"
+>deze sectie</link
 >.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term
 ><guilabel
->Advanced Mount Settings</guilabel
-> (&Linux; only) </term>
+>Geavanceerde instellingen voor aankoppelen</guilabel
+> (alleen &Linux;) </term>
           <listitem>
             <para
->You can define advanced settings related to mounting here. For information about the settings see <link linkend="configuration_page_mounting_advanced_mount_settings"
->this section</link
+>U kunt hier geavanceerde instellingen definiëren gerelateerd aan aankoppelen. Voor informatie over de instellingen zie <link linkend="configuration_page_mounting_advanced_mount_settings"
+>deze sectie</link
 >.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term
 ><guilabel
->Mount Settings</guilabel
-> (BSD only) </term>
+>Instellingen voor aankoppelen</guilabel
+> (alleen BSD) </term>
           <listitem>
             <para
->You can define settings related to mounting here. For information about the settings see <link linkend="configuration_page_mounting_mount_settings"
->this section</link
+>U kunt hier instellingen definiëren gerelateerd aan aankoppelen. Voor informatie over de instellingen zie <link linkend="configuration_page_mounting_mount_settings"
+>deze sectie</link
 >.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <guilabel
->Browse Settings</guilabel>
+>Browse-instellingen</guilabel>
           </term>
           <listitem>
             <para
->You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings, please see <link linkend="configuration_page_network"
->the network configuration page</link
+>U kunt het minimale en maximale SMB-protocolversie, evenals de te gebruiken SMB-poort. Bovendien kunt u beslissen of Kerberos gebruikt zou moeten worden voor authenticatie. Voor gedetailleerde informatie over deze instellingen, kijk op <link linkend="configuration_page_network"
+>de netwerkconfiguratiepagina</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2471,11 +2471,11 @@
       
       
       <para
->The <guibutton
->Defaults</guibutton
-> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton
+>De knop <guibutton
+>Standaarden</guibutton
+> is pas te selecteren als de instellingen die u heeft gedaan afwijken van de ingestelde waarden in het configuratievenster. Door erop te klikken, kunt u de instellingen in het dialoogvenster terugzetten naar hun standaardwaarden. De knop <guibutton
 >OK</guibutton
-> button is enabled if you changed the settings in the dialog. Clicking it will save the custom settings and close the dialog.</para>
+> is pas selecteerbaar nadat u de waarden in het dialoogvenster heeft gewijzigd. Door erop te klikken slaat u de aangepaste instellingen op en sluit u het dialoogvenster.</para>
       <para
 >Merk op dat bij gebruik van BSD er in het dialoogvenster minder ingangen zijn dan als u &Linux; gebruikt, omdat verschillende opties niet worden ondersteund.</para>
   </sect1>
@@ -3170,7 +3170,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_network_basic_settings_browse_settings">
         <title
->Browse Settings</title>
+>Browse-instellingen</title>
         
         <variablelist>
           <varlistentry>
@@ -7931,20 +7931,20 @@ ntlm auth = yes
     </screenshot>
 
     <para
->The options defined for a network item can be edited by either double clicking an entry in the list view or by clicking the <guibutton
->Edit</guibutton
-> button. The <link linkend="custom_settings"
->custom settings editor</link
-> is opened and the settings can be edited. To remove an entry, select it and click the <guibutton
->Remove</guibutton
-> button. All network items may be removed at once by clicking the <guibutton
->Clear List</guibutton
-> button. To reset your changes, click the <guibutton
+>De opties gedefinieerd voor een netwerkitem kunnen bewerkt worden door ofwel op een item in de lijst te dubbelklikken of te klikken op de knop <guimenuitem
+>Bewerken</guimenuitem
+>. De <link linkend="custom_settings"
+>bewerker voor aangepaste instellingen</link
+> wordt dan geopend en de instellingen kunnen worden bewerkt. Om een item te verwijderen, selecteer deze en klik op de knop <guimenuitem
+>Verwijderen</guimenuitem
+>. Alle netwerkitems kunnen kunnen tegelijk worden verwijderd door op de knop <guimenuitem
+>Lijst wissen</guimenuitem
+> te klikken. Om alle wijzigingen te resetten klik op de knop <guibutton
 >Reset</guibutton
-> button.</para>
+>.</para>
     <para
->For further information about the custom settings editor, read this <link linkend="custom_settings"
->section</link
+>Voor verdere informatie over de bewerker voor aangepaste instellingen, lees deze <link linkend="custom_settings"
+>sectie</link
 >.</para>
   </sect1>
 

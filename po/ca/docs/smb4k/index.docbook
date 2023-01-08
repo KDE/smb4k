@@ -49,14 +49,14 @@
   </authorgroup>
   <copyright>
     <year
->2005-2022</year>
+>2005-2023</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->17 de desembre de 2022</date>
+>5 de gener de 2023</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -160,7 +160,7 @@
 ></listitem>
     <listitem
 ><para
->La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</para
+>La capacitat per a definir configuracions personalitzades individuals per a servidors i comparticions</para
 ></listitem>
     <listitem
 ><para
@@ -377,9 +377,9 @@
       <para
 >També hi ha la possibilitat de despertar els servidors en suspensió abans d'escanejar el veïnatge de xarxa (activació per LAN «Wake-On-LAN»). Si aquesta característica està habilitada, el &smb4k; envia un paquet màgic a cada servidor que s'ha de despertar i espera el temps definit fins que comença la cerca dels grups de treball i dominis. L'ajust de l'activació per LAN (Wake-On-LAN) pot activar-se en el <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
 >diàleg de configuració</link
->. Els servidors que s'han de despertar s'han de definir al diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
->Opcions personalitzades</link
->.</para>
+>. Els servidors que s'han de despertar s'han de definir al diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
+> editor.</para>
       <note>
           <para
 >Si esteu utilitzant el descobriment de serveis DNS i el dimoni Zeroconf (Avahi) no s'està executant, el &smb4k; mostrarà una notificació d'error:</para>
@@ -553,14 +553,14 @@
 ></keycombo
 ></shortcut
 > <guimenuitem
->Afegeix opcions personalitzades</guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
 > </menuchoice>
           </term>
           <listitem>
             <para
->Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
->Opcions personalitzades</link
-> a on podeu establir diverses opcions personalitzades per a cada servidor i compartició seleccionada. Si no s'ha seleccionat cap element ni cap grup de treball, aquesta acció estarà inhabilitada.</para>
+>Obre el diàleg <link linkend="custom_settings"
+>Configuracions personalitzades</link
+> a on podeu establir diversos paràmetres personalitzats per a cada servidor i compartició seleccionada. Si no s'ha seleccionat cap element ni cap grup de treball, aquesta acció estarà inhabilitada.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -942,37 +942,17 @@
 >cada vegada</emphasis
 > que sigui necessari.</para>
     </sect2>
-
+    
 <!-- 
-      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
   -->
 
-    <sect2 id="network_neighborhood_browser_defining_custom_options">
+    <sect2 id="network_neighborhood_browser_defining_custom_settings">
       <title
->Definir les opcions personalitzades</title>
-
+>Definir una configuració personalitzada</title>
+      
       <para
->Utilitzeu el diàleg <guilabel
->Opcions personalitzades</guilabel
-> si voleu</para>
-      <itemizedlist>
-        <listitem
-><para
->definir les opcions de configuració personalitzades de muntatge o de l'explorador per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
-></listitem>
-        <listitem
-><para
->definir un servidor que s'haurà d'activar abans de fer els escanejos de la xarxa o dels intents de muntatge (característica Wake-On-LAN, vegeu <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->aquí</link
->),</para
-></listitem>
-        <listitem
-><para
->muntar sempre una compartició en particular a l'inici o quan es carregui el perfil corresponent.</para
-></listitem>
-      </itemizedlist>
-      <para
->El diàleg s'obre fent clic sobre l'entrada de menú <menuchoice
+>Es pot definir una configuració personalitzada per a servidors individuals o comparticions que es desvien de la configuració global. Per fer-ho, podeu accedir a l'editor de configuració personalitzada fent clic a l'element de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -980,82 +960,11 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Opcions personalitzades</guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
 ></menuchoice
->. Depenent de la vostra selecció, les opcions de configuració s'aplicaran a totes les comparticions d'un servidor o només a una.</para>
-
-      <screenshot>
-        <screeninfo
->Captura de pantalla del diàleg «Opcions personalitzades» per a una compartició</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->El diàleg «Opcions personalitzades»</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-
-      <para
->El botó <guibutton
->Per omissió</guibutton
-> estarà habilitat si les entrades del diàleg es desvien de les opcions de configuració que heu definit al diàleg de configuració. En fer-hi clic, restablireu les entrades del diàleg als valors predeterminats. El botó <guibutton
->D'acord</guibutton
-> estarà habilitat si heu canviat la configuració al diàleg. En fer-ho, s'entregaran les opcions de configuració personalitzades i es tancarà el diàleg.</para>
-      <para
->Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
-
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
-        <title
->Configuració comuna del muntatge (només al &Linux;)</title>
-        
-        <para
->En aquesta pestanya podreu definir les opcions de configuració comunes relacionades amb el muntatge. En marcar el botó <guibutton
->Torna a muntar sempre aquesta compartició</guibutton
-> per a una compartició seleccionada, es tornarà a muntar en cada inici del programa. Per a obtenir informació sobre totes les altres opcions de configuració, vegeu <link linkend="configuration_page_mounting"
->aquesta secció</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
-        <title
->Configuració avançada del muntatge (només al &Linux;)</title>
-        
-        <para
->En aquesta pestanya podreu definir les opcions de configuració avançades relacionades amb el muntatge. Per a obtenir informació sobre totes les altres opcions de configuració, vegeu <link linkend="configuration_page_mounting"
->aquesta secció</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
-        <title
->Configuració del muntatge (només al BSD)</title>
-        
-        <para
->En aquesta pestanya podreu definir les opcions de configuració relacionades amb el muntatge. Per a obtenir informació sobre totes les altres opcions de configuració, vegeu <link linkend="configuration_page_mounting"
->aquesta secció</link
->.</para>
-      </sect3>
-        
-      <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
-        <title
->Configuració de la navegació</title>
-
-        <para
->Podeu definir les versions mínima i màxima del protocol SMB, així com el port SMB que s'emprarà. A més, podreu decidir el port SMB i si s'ha d'emprar el Kerberos per a l'autenticació. Per a més informació sobre aquestes opcions de configuració, vegeu <link linkend="configuration_page_network"
->la pàgina de configuració de la xarxa</link
->.</para>
-      </sect3>
-
-      <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
-        <title
->Configuració de l'activació per LAN (Wake-On-LAN)</title>
-    
-        <para
->Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el &smb4k; hauria d'enviar un paquet màgic Wake-On-LAN al servidor seleccionat abans d'examinar el veïnatge de xarxa i/o una de les seves comparticions muntades.</para>
-      </sect3>
+>. Vegeu la secció <link linkend="custom_settings"
+>Configuració personalitzada</link
+> per a més detalls.</para>
     </sect2>
 
 <!-- 
@@ -1279,15 +1188,13 @@
 ></keycombo
 ></shortcut
 > <guimenuitem
->Afegeix opcions personalitzades</guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
 > </menuchoice>
           </term>
           <listitem>
             <para
->Obre el diàleg d'opcions personalitzades. Vegeu la secció quant al diàleg de les <link linkend="network_neighborhood_browser_defining_custom_options"
->Opcions personalitzades</link
-> en la secció <link linkend="network_neighborhood_browser"
->L'explorador del veïnatge de xarxa</link
+>Obre el diàleg de configuració personalitzada. Vegeu la secció quant al diàleg de l'editor de <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
 > per a més detalls.</para>
           </listitem>
         </varlistentry>
@@ -1514,15 +1421,15 @@
     </sect2>
     
 <!--
-      Using Smb4K : The Mounted Shares View : Adding Custom Options
+      Using Smb4K : The Mounted Shares View : Defining Custom Settings
   -->
     
-    <sect2 id="shares_view_adding_custom_options">
+    <sect2 id="shares_view_adding_custom_settings">
       <title
->Definir les opcions personalitzades</title>
+>Definir una configuració personalitzada</title>
       
       <para
->Es poden definir opcions personalitzades per a les comparticions seleccionades. Feu clic a l'acció <menuchoice
+>Es poden definir una configuració personalitzada per a les comparticions seleccionades. Feu clic a l'acció <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1530,9 +1437,9 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Afegeix opcions personalitzades</guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
 ></menuchoice
-> per a obrir el diàleg d'opcions personalitzades. Per a més detalls, vegeu <link linkend="network_neighborhood_browser_defining_custom_options"
+> per a obrir el diàleg de configuració personalitzada. Per a més detalls, vegeu <link linkend="custom_settings"
 >aquí</link
 >.</para>
     </sect2>
@@ -1759,6 +1666,20 @@
           <listitem>
             <para
 >Afegeix la compartició seleccionada a les adreces d'interès.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice>
+              <guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Obre el diàleg de configuració personalitzada per a la compartició seleccionada. Llegiu la secció quant a l'editor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
+> per a més informació.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1992,8 +1913,8 @@
 >Amunt</guibutton
 > que hi ha a la barra d'eines.</para>
     <para
->Per als servidors i les comparticions, a la dreta del nom de la xarxa hi ha alguns botons d'acció. Per als servidors, hi ha un botó amb el qual obrireu el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
->Opcions personalitzades</link
+>Per als servidors i les comparticions, a la dreta del nom de la xarxa hi ha alguns botons d'acció. Per als servidors, hi ha un botó amb el qual obrireu el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
 >. Per a les comparticions, hi ha botons addicionals per a <link linkend="network_neighborhood_browser_previewing"
 >previsualitzar el contingut de la compartició seleccionada</link
 > i per a <link linkend="bookmarks_adding"
@@ -2443,6 +2364,143 @@
 >.</para>
     </sect2>
   </sect1>
+  
+<!--
+      Using Smb4K : Custom Settings
+  -->
+  
+  <sect1 id="custom_settings">
+    <title
+>Configuració personalitzada</title>
+    
+    <para
+>A més de la configuració global que es pot definir al <link linkend="configuration"
+>diàleg de configuració</link
+>, el &smb4k; ofereix la possibilitat de configurar els paràmetres de configuració individuals per servidor o compartició. Ambdós dins de l'<link linkend="network_neighborhood_browser_actions_popup_menu"
+>explorador del veïnatge de xarxa</link
+> i a la <link linkend="shares_view_actions_popup_menu"
+>vista de comparticions</link
+>, es pot accedir a l'editor per a la configuració personalitzada fent clic a les entrades de menú <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
+></menuchoice
+>.</para>
+    
+    <screenshot>
+      <screeninfo
+>Captura de pantalla de l'editor de configuració personalitzada per a una compartició</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="custom_settings_editor.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase
+>L'editor de configuració personalitzada</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para
+>S'hauria d'utilitzar la configuració personalitzada si voleu</para>
+      <itemizedlist>
+        <listitem
+><para
+>definir les opcions de configuració personalitzades de muntatge o de l'explorador per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
+></listitem>
+        <listitem
+><para
+>definir un servidor que s'haurà d'activar abans de fer els escanejos de la xarxa o dels intents de muntatge (característica Wake-On-LAN, vegeu <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>aquí</link
+>),</para
+></listitem>
+        <listitem
+><para
+>muntar sempre una compartició en particular a l'inici o quan es carregui el perfil corresponent.</para
+></listitem>
+      </itemizedlist>
+      
+      <para
+>Es poden fer configuracions individuals en les seccions/pestanyes següents:</para>
+      
+      <variablelist>
+        <varlistentry>
+          <term
+><guilabel
+>Configuració normal de muntatge</guilabel
+> (només al &Linux;) </term>
+          <listitem>
+            <para
+>Aquí podeu definir la configuració comuna relacionada amb el muntatge. Activeu el botó <guibutton
+>Torna a muntar sempre aquesta compartició</guibutton
+> per a una compartició seleccionada si s'hauria de tornar a muntar en cada inici del programa. Per a obtenir informació sobre tots els altres paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
+>aquesta secció</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Configuració avançada del muntatge</guilabel
+> (només al &Linux;) </term>
+          <listitem>
+            <para
+>Aquí podreu definir la configuració avançada relacionada amb el muntatge. Per a informació sobre els paràmetres, vegeu <link linkend="configuration_page_mounting_advanced_mount_settings"
+>aquesta secció</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Configuració del muntatge</guilabel
+> (només al BSD) </term>
+          <listitem>
+            <para
+>Aquí podreu definir la configuració relacionada amb el muntatge. Per a informació sobre els paràmetres, vegeu <link linkend="configuration_page_mounting_mount_settings"
+>aquesta secció</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Configuració de la navegació</guilabel>
+          </term>
+          <listitem>
+            <para
+>Podeu definir les versions mínima i màxima del protocol SMB, així com el port SMB que s'emprarà. A més, podreu decidir el port SMB i si s'ha d'emprar el Kerberos per a l'autenticació. Per a més informació sobre aquestes opcions de configuració, vegeu <link linkend="configuration_page_network"
+>la pàgina de configuració de la xarxa</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Configuració de l'activació per LAN (Wake-On-LAN)</guilabel>
+          </term>
+          <listitem>
+            <para
+>Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el &smb4k; hauria d'enviar un paquet màgic Wake-On-LAN al servidor seleccionat abans d'examinar el veïnatge de xarxa i/o una de les seves comparticions muntades.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      
+      
+      <para
+>El botó <guibutton
+>Predeterminat</guibutton
+> estarà habilitat si les entrades del diàleg es desvien de la configuració que heu definit al diàleg de configuració. En fer-hi clic, restablireu les entrades del diàleg als valors predeterminats. El botó <guibutton
+>D'acord</guibutton
+> estarà habilitat si heu canviat la configuració al diàleg. En fer-ho, es desarà la configuració personalitzada i es tancarà el diàleg.</para>
+      <para
+>Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
+  </sect1>
 
 <!-- 
       Using Smb4K : Profiles 
@@ -2578,7 +2636,7 @@
 ></listitem>
         <listitem
 ><para
->Es carregaran les adreces d'interès i les opcions personalitzades des d'aquest perfil.</para
+>Es carregaran les adreces d'interès i la configuració personalitzada des d'aquest perfil.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -3513,8 +3571,8 @@ ntlm auth = yes
 >Activació per LAN (Wake-On-LAN)</title>
 
         <para
->Per a poder utilitzar la capacitat Wake-On-LAN del &smb4k;, haureu d'habilitar aquesta opció. Els servidors que s'hagin de despertar s'hauran de definir mitjançant el <link linkend="network_neighborhood_browser_defining_custom_options"
->diàleg d'opcions personalitzades</link
+>Per a poder utilitzar la capacitat Wake-On-LAN del &smb4k;, haureu d'habilitar aquesta opció. Els servidors que s'hagin de despertar s'hauran de definir mitjançant l'<link linkend="network_neighborhood_browser_defining_custom_settings"
+>editor de configuració personalitzada</link
 >.</para>
 
         <variablelist>
@@ -4114,8 +4172,8 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> quan es munta una compartició remota. El número de port predeterminat (445) hauria de funcionar per a tots els sistemes operatius moderns. Si experimenteu problemes, proveu establint el número de port a 139. Si els problemes només es produeixen amb alguns servidors, es recomana deixar aquesta opció intacta i utilitzar el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
->Opcions personalitzades</link
+> quan es munta una compartició remota. El número de port predeterminat (445) hauria de funcionar per a tots els sistemes operatius moderns. Si experimenteu problemes, proveu establint el número de port a 139. Si els problemes només es produeixen amb alguns servidors, es recomana deixar aquesta opció intacta i utilitzar el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
 > per a definir individualment els números de port per als servidors problemàtics.</para>
               <para
 >Aquesta opció només estarà disponible al &Linux;. En el BSD, el port per a muntar les comparticions s'estableix amb l'opció <link linkend="configuration_page_network_advanced_settings_samba"
@@ -4143,7 +4201,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->La majoria de les versions de &Samba; admeten les ampliacions &CIFS; d'Unix o POSIX. Per a aquests servidors, algunes opcions no són necessàries, perquè els valors correctes es negocien durant el procés de muntatge. Per als altres servidors, és possible que vulgueu desmarcar aquestes opcions, de manera que es puguin passar al servidor els valors predefinits. Cal tenir en compte que si l'ordinador està ubicat en un veïnatge de xarxa dominat per &Windows; amb només alguns servidors de &Samba;, podeu desmarcar aquesta opció amb seguretat i definir opcions personalitzades per als servidors de &Samba;.</para>
+>La majoria de les versions de &Samba; admeten les ampliacions &CIFS; d'Unix o POSIX. Per a aquests servidors, algunes opcions no són necessàries, perquè els valors correctes es negocien durant el procés de muntatge. Per als altres servidors, és possible que vulgueu desmarcar aquestes opcions, de manera que es puguin passar al servidor els valors predefinits. Cal tenir en compte que si l'ordinador està ubicat en un veïnatge de xarxa dominat per &Windows; amb només alguns servidors de &Samba;, podeu desmarcar aquesta opció amb seguretat i definir una configuració personalitzada per als servidors de &Samba;.</para>
             <para
 >En el cas que desmarqueu aquesta opció, considereu canviar les comprovacions de a <link linkend="configuration_page_mounting_advanced_mount_settings"
 >Configuració avançada de muntatge</link
@@ -4371,12 +4429,12 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->No usis el bloqueig</guibutton
+>No enviïs sol·licituds de bloqueig d'intervals de bytes</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->No utilitza el bloqueig. No inicia el «lockd».</para>
+>No enviïs sol·licituds de bloqueig d'intervals de bytes al servidor. Això és necessari per a determinades aplicacions que trenquen amb els bloqueigs d'intervals de bytes obligatoris de l'estil CIFS (i la majoria dels servidors CIFS encara no permeten sol·licituds d'avís de bloqueig d'intervals de bytes).</para>
             <para
 >Omissió: no seleccionada</para>
           </listitem>
@@ -7069,7 +7127,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Opció: <option
->--min-size=NÚM</option
+>--min-size=MIDA</option
 ></para>
               <para
 >Li indica al <ulink url="man:/rsync"
@@ -7082,7 +7140,7 @@ ntlm auth = yes
 ></ulink
 > que eviti la transferència de qualsevol fitxer que sigui més petit que la MIDA especificada, el qual pot ajudar a no transferir fitxers petits, no desitjats.</para>
               <para
->Omissió: no seleccionada; NÚM: 0 kB</para>
+>Omissió: no seleccionada; MIDA: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7095,7 +7153,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Opció: <option
->--max-size=NÚM</option
+>--max-size=MIDA</option
 ></para>
               <para
 >Li indica al <ulink url="man:/rsync"
@@ -7108,7 +7166,7 @@ ntlm auth = yes
 ></ulink
 > que eviti la transferència de qualsevol fitxer que sigui més gran que la MIDA especificada.</para>
               <para
->Omissió: no seleccionada; NÚM: 0 kB</para>
+>Omissió: no seleccionada; MIDA: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7199,7 +7257,7 @@ ntlm auth = yes
 >--bwlimit=VELOCITAT</option
 ></para>
               <para
->Estableix la velocitat màxima de transferència de dades en kilobytes per segon.</para>
+>Estableix la VELOCITAT màxima de transferència de dades en kilobytes per segon.</para>
               <para
 >Omissió: no seleccionada; VELOCITAT: 0 kB/s</para>
             </listitem>
@@ -7611,48 +7669,6 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Regles de filtratge personalitzades</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-f</option
->/<option
->--filter=REGLA</option
-></para>
-              <para
->Aquí podeu definir una o més regles de filtratge. Cada regla haurà d'estar prefixada amb la cadena d'opció <option
->--filter=</option
-> o <option
->-f</option
-> perquè el contingut del quadre de text sigui passat a l'ordre <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> tal qual.</para>
-              <para
->Aquesta opció permet afegir regles per a excloure selectivament determinats fitxers de la llista de fitxers que es transferiran. Això és molt útil en combinació amb una transferència recursiva.</para>
-              <para
->Podeu utilitzar tantes opcions <option
->--filter</option
-> com vulgueu, a mesura que creeu la llista de fitxers que voleu excloure.</para>
-              <para
->Vegeu la secció «FILTER RULES» (REGLES DE FILTRATGE) de la <ulink url="man:/rsync"
->pàgina del manual</ulink
-> per a obtenir informació detallada sobre com treballa aquesta opció.</para>
-              <para
->Omissió: buida</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
 >Usa la regla de filtratge --filter='dir-merge /.rsync-filter'</guibutton
 ></menuchoice>
             </term>
@@ -7703,6 +7719,48 @@ ntlm auth = yes
 > per a obtenir informació detallada sobre com treballa aquesta opció.</para>
               <para
 >Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Regles de filtratge personalitzades</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-f</option
+>/<option
+>--filter=REGLA</option
+></para>
+              <para
+>Aquí podeu definir una o més regles de filtratge. Cada regla haurà d'estar prefixada amb la cadena d'opció <option
+>--filter=</option
+> o <option
+>-f</option
+> perquè el contingut del quadre de text sigui passat a l'ordre <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> tal qual.</para>
+              <para
+>Aquesta opció permet afegir regles per a excloure selectivament determinats fitxers de la llista de fitxers que es transferiran. Això és molt útil en combinació amb una transferència recursiva.</para>
+              <para
+>Podeu utilitzar tantes opcions <option
+>--filter</option
+> com vulgueu, a mesura que creeu la llista de fitxers que voleu excloure.</para>
+              <para
+>Vegeu la secció «FILTER RULES» (REGLES DE FILTRATGE) de la <ulink url="man:/rsync"
+>pàgina del manual</ulink
+> per a obtenir informació detallada sobre com treballa aquesta opció.</para>
+              <para
+>Omissió: no seleccionada; REGLES: buida</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7863,121 +7921,45 @@ ntlm auth = yes
 
 
 <!-- 
-      Configuring Smb4K : Custom Options
+      Configuring Smb4K : Custom Settings
 -->
 
-  <sect1 id="configuration_page_custom_options">
+  <sect1 id="configuration_page_custom_settings">
     <title
->Opcions personalitzades</title>
+>Configuració personalitzada</title>
 
     <para
->Tots els servidors i comparticions per a les quals heu definit les opcions personalitzades estan llistats aquí.</para>
+>Tots els servidors i comparticions per a les quals heu definit la configuració personalitzada estan llistats aquí.</para>
 
     <screenshot>
       <screeninfo
->Captura de pantalla de la pestanya de configuració «Opcions personalitzades»</screeninfo>
+>Captura de pantalla de la pestanya de configuració «Configuració personalitzada»</screeninfo>
       <mediaobject>
         <imageobject
 ><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
->La pestanya de configuració «Opcions personalitzades»</phrase
+>La pestanya de configuració «Configuració personalitzada»</phrase
 ></textobject>
       </mediaobject>
     </screenshot>
 
     <para
->Les opcions definides per a un element de xarxa es poden editar fent doble clic sobre una entrada a la vista de llista o triant l'element <guimenuitem
+>Les opcions definides per a un element de xarxa es poden editar fent doble clic sobre una entrada a la vista de llista o triant el botó <guimenuitem
 >Edita</guimenuitem
-> des del menú emergent (feu clic dret sobre l'element seleccionat). Les opcions personalitzades es carregaran i es podran editar. Per a eliminar una entrada, feu clic dret i trieu l'element <guimenuitem
+>. S'obrirà l'<link linkend="custom_settings"
+>editor de configuració personalitzada</link
+> i es podrà edita. Per a eliminar una entrada, seleccioneu-lo i feu clic dret i al botó <guimenuitem
 >Elimina</guimenuitem
-> des del menú emergent. Tots els elements de la xarxa es poden eliminar alhora triant l'element <guimenuitem
+>. Tots els elements de la xarxa es poden eliminar alhora triant l'element <guimenuitem
 >Neteja la llista</guimenuitem
+>. Per a reiniciar els canvis, feu clic al botó <guibutton
+></guibutton
 >.</para>
-
     <para
->Les opcions personalitzades són accessibles a través de les pestanyes de la dreta.</para>
-    
-<!--
-      Configuring Smb4K : Custom Options : Network Item
--->
-    
-    <sect2 id="configuration_page_custom_options_network_item">
-      <title
->Element de xarxa</title>
-      
-      <para
->Aquesta pestanya serveix principalment com a recurs d'informació. A la llista desplegable <guilabel
->Identificació</guilabel
-> ofereix el grup de treball o el domini de l'element de xarxa, la seva ubicació i l'adreça IP. Podeu editar l'adreça IP, en cas que us calgui ajustar-la.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_common_mount_settings">
-      <title
->Configuració comuna del muntatge (només al &Linux;)</title>
-      
-      <para
->Aquí podeu editar les opcions de configuració emprades habitualment per al muntatge en el &Linux;. Per a obtenir més informació sobre les opcions actuals, vegeu la pàgina de configuració del <link linkend="configuration_page_mounting"
->Muntatge</link
+>Per a més informació quant a l'editor de configuració personalitzada llegiu aquesta <link linkend="custom_settings"
+>secció</link
 >.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
-      <title
->Configuració avançada del muntatge (només al &Linux;)</title>
-      
-      <para
->Aquí podeu editar les opcions de configuració avançades emprades per al muntatge en el &Linux;. Per a obtenir més informació sobre les opcions actuals, vegeu la pàgina de configuració del <link linkend="configuration_page_mounting"
->Muntatge</link
->.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
--->
-    <sect2 id="configuration_page_custom_options_mount_settings">
-      <title
->Configuració del muntatge (només al BSD)</title>
-      
-      <para
->Aquí podeu editar les opcions de configuració emprades per al muntatge en el BSD. Per a obtenir més informació sobre les opcions actuals, vegeu la pàgina de configuració del <link linkend="configuration_page_mounting"
->Muntatge</link
->.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Options : Browse Settings
--->
-
-    <sect2 id="configuration_page_custom_options_browse_settings">
-      <title
->Configuració de la navegació</title>
-    
-      <para
->Aquí podeu editar diverses opcions de configuració de &Samba; emprades per a navegar. Per a obtenir més informació, vegeu les opcions de configuració de <link linkend="configuration_page_network_advanced_settings"
->&Samba;</link
->.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
--->
-
-    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
-      <title
->Configuració de l'activació per LAN (Wake-On-LAN)</title>
-    
-      <para
->Aquí podeu editar les opcions Capacitats de l'activació per LAN (Wake-On-LAN) que heu definit prèviament a través del diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
->Opcions personalitzades</link
->.</para>
-    </sect2>
   </sect1>
 
 <!-- 
@@ -8022,7 +8004,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Fa que el &smb4k; utilitzi els perfils. Això permet definir diferents adreces d'interès i opcions personalitzades per a cada perfil. Això és especialment útil si esteu utilitzant un ordinador portàtil en diferents veïnatges de la xarxa, &pex;, a casa i a la feina. Quan habiliteu aquesta opció per primera vegada, la primera entrada a la <link linkend="configuration_page_profiles_profiles"
+>Fa que el &smb4k; utilitzi els perfils. Això permet definir diferents adreces d'interès i configuracions personalitzades per a cada perfil. Això és especialment útil si esteu utilitzant un ordinador portàtil en diferents veïnatges de la xarxa, &pex;, a casa i a la feina. Quan habiliteu aquesta opció per primera vegada, la primera entrada a la <link linkend="configuration_page_profiles_profiles"
 >llista de perfils</link
 > serà el perfil actiu.</para>
             <para
@@ -8301,13 +8283,13 @@ ntlm auth = yes
 > <guimenu
 >Xarxa</guimenu
 > <guimenuitem
->Opcions personalitzades</guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
           <para
->Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
->Opcions personalitzades</link
+>Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
 >. Podeu establir diverses opcions personalitzades per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o un grup de treball, aquesta acció estarà inhabilitada.</para>
         </listitem>
       </varlistentry>
