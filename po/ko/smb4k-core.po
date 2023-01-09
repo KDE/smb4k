@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-05 00:48+0000\n"
+"POT-Creation-Date: 2023-01-09 00:55+0000\n"
 "PO-Revision-Date: 2022-07-13 11:14+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2768,13 +2768,13 @@ msgid "unicode"
 msgstr "unicode"
 
 #. i18n: ectx: label, entry (MountPrefix), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:235 smb4kmountsettings_linux.kcfg:294
+#: smb4kmountsettings_bsd.kcfg:235 smb4kmountsettings_linux.kcfg:298
 #, kde-format
 msgid "Mount prefix:"
 msgstr "마운트 접두사:"
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:295
+#: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
 #, kde-format
 msgid ""
 "This is the prefix where Smb4K will create the mount points and mount the "
@@ -2783,13 +2783,13 @@ msgstr ""
 "Smb4K에서 마운트 지점을 생성하고 원격 공유를 마운트할 경로 접두사입니다."
 
 #. i18n: ectx: label, entry (ForceLowerCaseSubdirs), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:299
+#: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:303
 #, kde-format
 msgid "Force generated subdirectories to be lower case"
 msgstr "생성한 디렉터리의 이름을 강제로 소문자로 변환"
 
 #. i18n: ectx: whatsthis, entry (ForceLowerCaseSubdirs), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:300
+#: smb4kmountsettings_bsd.kcfg:241 smb4kmountsettings_linux.kcfg:304
 #, kde-format
 msgid ""
 "All names of the subdirectories created by Smb4K below the mount prefix will "
@@ -2799,13 +2799,13 @@ msgstr ""
 "경합니다."
 
 #. i18n: ectx: label, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:245 smb4kmountsettings_linux.kcfg:304
+#: smb4kmountsettings_bsd.kcfg:245 smb4kmountsettings_linux.kcfg:308
 #, kde-format
 msgid "Unmount all personal shares on exit"
 msgstr "끝낼 때 모든 개인 공유 마운트 해제"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:305
+#: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:309
 #, kde-format
 msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
@@ -2815,13 +2815,13 @@ msgstr ""
 "의 공유는 무시됩니다."
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:309
+#: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:313
 #, kde-format
 msgid "Remount shares"
 msgstr "공유 다시 마운트"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:310
+#: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
 #, kde-format
 msgid ""
 "Remount all your shares that were mounted when you exited the program or "
@@ -2837,13 +2837,13 @@ msgstr ""
 "다."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:255 smb4kmountsettings_linux.kcfg:314
+#: smb4kmountsettings_bsd.kcfg:255 smb4kmountsettings_linux.kcfg:318
 #, kde-format
 msgid "Number of remount attempts:"
 msgstr "마운트 재시도 횟수:"
 
 #. i18n: ectx: whatsthis, entry (RemountAttempts), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:315
+#: smb4kmountsettings_bsd.kcfg:256 smb4kmountsettings_linux.kcfg:319
 #, kde-format
 msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
@@ -2851,25 +2851,25 @@ msgid ""
 msgstr "Smb4K에서 공유 마운트를 재시도할 최대 횟수를 설정합니다."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:262 smb4kmountsettings_linux.kcfg:321
+#: smb4kmountsettings_bsd.kcfg:262 smb4kmountsettings_linux.kcfg:325
 #, kde-format
 msgid "Interval between remount attempts:"
 msgstr "마운트 재시도 시간 간격:"
 
 #. i18n: ectx: whatsthis, entry (RemountInterval), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:322
+#: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
 msgstr "공유 마운트를 재시도할 때 사용할 시간 간격을 설정합니다."
 
 #. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:269 smb4kmountsettings_linux.kcfg:328
+#: smb4kmountsettings_bsd.kcfg:269 smb4kmountsettings_linux.kcfg:332
 #, kde-format
 msgid "Allow the unmounting of shares that are owned by other users"
 msgstr "다른 사용자가 소유한 공유 마운트 해제 허용"
 
 #. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:329
+#: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
 #, kde-format
 msgid ""
 "Allow the unmounting of shares that were mounted by other users. Please "
@@ -2879,13 +2879,13 @@ msgstr ""
 "에 주의 깊게 생각하십시오."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:333
+#: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:337
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
 msgstr "접근할 수 없는 공유 마운트 해제 강제"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:334
+#: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
 #, kde-format
 msgid ""
 "Force the unmounting of inaccessible shares (Linux only). In case a share is "
@@ -2897,13 +2897,13 @@ msgstr ""
 "고 대화 상자를 표시하여 마운트 해제를 확인합니다."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:279 smb4kmountsettings_linux.kcfg:338
+#: smb4kmountsettings_bsd.kcfg:279 smb4kmountsettings_linux.kcfg:342
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
 msgstr "시스템에 있는 모든 마운트된 공유 감지"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
-#: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:339
+#: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
 #, kde-format
 msgid ""
 "You will not only see the shares that were mounted and are owned by you, but "
@@ -3377,14 +3377,15 @@ msgstr "NTLMSSP 프로토콜"
 msgid "NTLMSSP protocol and packet signing"
 msgstr "NTLMSSP 프로토콜과 패킷 서명"
 
-#. i18n: ectx: label, entry (CustomCIFSOptions), group (Mounting)
+#. i18n: ectx: label, entry (UseCustomCifsOptions), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:289
 #, kde-format
 msgid "Additional options:"
 msgstr "추가 옵션:"
 
+#. i18n: ectx: whatsthis, entry (UseCustomCifsOptions), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CustomCIFSOptions), group (Mounting)
-#: smb4kmountsettings_linux.kcfg:290
+#: smb4kmountsettings_linux.kcfg:290 smb4kmountsettings_linux.kcfg:294
 #, kde-format
 msgid ""
 "Here you can enter advanced options for the CIFS file system in a comma-"
