@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-05 00:48+0000\n"
-"PO-Revision-Date: 2022-07-09 12:53+0100\n"
+"PO-Revision-Date: 2023-01-09 18:19+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -159,10 +159,9 @@ msgid "Add &Bookmark"
 msgstr "Adicionar aos &Favoritos"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Montar Todos os Favoritos"
+msgstr "Favoritos de Montagens"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -190,10 +189,9 @@ msgid "Synchronization"
 msgstr "Sincronização"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Configuração das Montagens"
+msgstr "Configuração Personalizada"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -406,14 +404,12 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Defina as máquinas que devem ser activadas com a janela de opções "
-"personalizadas."
+"Defina as máquinas que devem ser activadas com a janela do editor de "
+"configurações personalizadas."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -446,10 +442,9 @@ msgid "File Handling"
 msgstr "Tratamento dos Ficheiros"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
-#, fuzzy, kde-format
-#| msgid "File Attributes && Ownership"
+#, kde-format
 msgid "File Attributes"
-msgstr "Atributos && Donos dos Ficheiros"
+msgstr "Atributos dos Ficheiros"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, kde-format
@@ -487,7 +482,7 @@ msgstr "Diversos"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -696,10 +691,9 @@ msgstr "&Procurar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "&Custom Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Opções &Personalizadas"
+msgstr "Adicionar Opções &Personalizadas"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -943,15 +937,3 @@ msgstr "Sistema de ficheiros:"
 #, kde-format
 msgid "Size:"
 msgstr "Tamanho:"
-
-#~ msgid "Custom Options"
-#~ msgstr "Opções Personalizadas"
-
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Montar Todos os Favoritos"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"

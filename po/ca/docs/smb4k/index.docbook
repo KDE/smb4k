@@ -2436,7 +2436,7 @@
 > (només al &Linux;) </term>
           <listitem>
             <para
->Aquí podeu definir la configuració comuna relacionada amb el muntatge. Activeu el botó <guibutton
+>Aquí podeu definir la configuració normal relacionada amb el muntatge. Activeu el botó <guibutton
 >Torna a muntar sempre aquesta compartició</guibutton
 > per a una compartició seleccionada si s'hauria de tornar a muntar en cada inici del programa. Per a obtenir informació sobre tots els altres paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
 >aquesta secció</link
@@ -3805,13 +3805,29 @@ ntlm auth = yes
   
     <sect2 id="configuration_page_mounting_common_mount_settings">
       <title
->Configuració comuna del muntatge (només al &Linux;)</title>
+>Configuració normal del muntatge (només al &Linux;)</title>
       
       <para
 >La pestanya <guilabel
->Configuració comuna del muntatge</guilabel
-> només està disponible al &Linux;. Les opcions de configuració presents a BSD es poden trobar a la secció <link linkend="configuration_page_mounting_mount_settings"
->Configuració del muntatge (només al BSD)</link
+>Configuració normal de muntatge</guilabel
+> només és disponible al &Linux; i les opcions llistades fan referència a l'ordre <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Les opcions de configuració presents a BSD es poden trobar a la secció <link linkend="configuration_page_mounting_mount_settings"
+>Configuració de muntatge (només BSD)</link
 >.</para>
 
       <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
@@ -3839,6 +3855,10 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
+>Opció: <option
+>rw</option
+></para>
+                    <para
 >Munta la compartició en lectura i escriptura.</para>
                   </listitem>
                 </varlistentry>
@@ -3850,6 +3870,10 @@ ntlm auth = yes
 ></menuchoice>
                   </term>
                   <listitem>
+                    <para
+>Opció: <option
+>ro</option
+></para>
                     <para
 >Munta la compartició només en lectura.</para>
                   </listitem>
@@ -3870,7 +3894,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Estableix el joc de caràcters utilitzat a la banda del client (&ead;, el vostre ordinador).</para>
+>Opció: <option
+>iocharset=CHARSET</option
+></para>
+              <para
+>Estableix el joc de caràcters utilitzat a la banda del client (&ead;, el vostre ordinador) a un dels següents:</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3881,7 +3909,9 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Estableix el joc de caràcters utilitzat pel nucli del client.</para>
+>El joc de caràcters predeterminat utilitzat pel nucli del client. En aquest cas l'opció <option
+>iocharset</option
+> s'omet de la línia d'ordres.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4037,7 +4067,7 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Format de transformació Unicode (o joc de caràcters codificats universals) de 8 bits. L'UTF-8 és emprat per moltes distribucions de &Linux; com a joc de caràcters predeterminat i, a més, és la codificació més comuna per a la World Wide Web.</para>
+>Format de transformació Unicode (o joc de caràcters codificats universals) de 8 bits. L'UTF-8 és emprat per moltes distribucions de &Linux; com a joc de caràcters predeterminat i, a més, és la codificació més normal per a la World Wide Web.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4145,12 +4175,12 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->L'estàndard industrial tailandès 620-2533, comunament conegut com a TIS-620, és el joc de caràcters i la codificació de caràcters més comuna per a l'idioma tailandès.</para>
+>L'estàndard industrial tailandès 620-2533, normalment conegut com a TIS-620, és el joc de caràcters i la codificació de caràcters més habitual per a l'idioma tailandès.</para>
                   </listitem>
                 </varlistentry>
               </variablelist>
               <para
->Omissió: no seleccionat; <guimenuitem
+>Omissió: no seleccionat; CHARSET: <guimenuitem
 >predeterminat</guimenuitem
 ></para>
             </listitem>
@@ -4164,7 +4194,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Estableix el número de port del sistema de fitxers que utilitza <ulink url="man:/mount.cifs"
+>Opció: <option
+>port=PORT</option
+></para>
+              <para
+>Estableix el número de port que utilitza <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4172,17 +4206,11 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> quan es munta una compartició remota. El número de port predeterminat (445) hauria de funcionar per a tots els sistemes operatius moderns. Si experimenteu problemes, proveu establint el número de port a 139. Si els problemes només es produeixen amb alguns servidors, es recomana deixar aquesta opció intacta i utilitzar el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+> quan es munta una compartició remota. El número de port predeterminat (445) hauria de funcionar per a tots els sistemes operatius moderns. Si experimenteu problemes, proveu establint el número de port a 139. Si els problemes només es produeixen amb alguns servidors, es recomana deixar aquesta opció intacta i utilitzar el diàleg <link linkend="custom_settings"
 >Configuració personalitzada</link
 > per a definir individualment els números de port per als servidors problemàtics.</para>
               <para
->Aquesta opció només estarà disponible al &Linux;. En el BSD, el port per a muntar les comparticions s'estableix amb l'opció <link linkend="configuration_page_network_advanced_settings_samba"
-><guibutton
->Port SMB</guibutton
-></link
->.</para>
-              <para
->Omissió: no seleccionat; 445</para>
+>Omissió: no seleccionat; PORT: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4200,6 +4228,8 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Opció: cap</para>
             <para
 >La majoria de les versions de &Samba; admeten les ampliacions &CIFS; d'Unix o POSIX. Per a aquests servidors, algunes opcions no són necessàries, perquè els valors correctes es negocien durant el procés de muntatge. Per als altres servidors, és possible que vulgueu desmarcar aquestes opcions, de manera que es puguin passar al servidor els valors predefinits. Cal tenir en compte que si l'ordinador està ubicat en un veïnatge de xarxa dominat per &Windows; amb només alguns servidors de &Samba;, podeu desmarcar aquesta opció amb seguretat i definir una configuració personalitzada per als servidors de &Samba;.</para>
             <para
@@ -4219,11 +4249,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opció: <option
+>uid=UID</option
+></para>
+            <para
 >Estableix el propietari dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre UID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat; el vostre ID</para>
+>Omissió: seleccionat; UID: el vostre UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4235,11 +4269,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opció: <option
+>uid=GID</option
+></para>
+            <para
 >Estableix el grup dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre GID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat; el vostre GID</para>
+>Omissió: seleccionat; GID: el vostre GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4250,6 +4288,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Opció: <option
+>file_mode=ARG</option
+></para>
             <para
 >Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer (file_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount(8)"
 ><citerefentry
@@ -4271,7 +4313,7 @@ ntlm auth = yes
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat; 0755</para>
+>Omissió: seleccionat; ARG: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4282,6 +4324,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Opció: <option
+>dir_mode=ARG</option
+></para>
             <para
 >Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount(8)"
 ><citerefentry
@@ -4303,7 +4349,7 @@ ntlm auth = yes
             <para
 >En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
             <para
->Omissió: seleccionat; 0755</para>
+>Omissió: seleccionat; ARG: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4320,9 +4366,25 @@ ntlm auth = yes
       
       <para
 >La pestanya <guilabel
->Configuració avançada del muntatge</guilabel
-> només està disponible al &Linux;. Les opcions de configuració presents a BSD es poden trobar a la secció <link linkend="configuration_page_mounting_mount_settings"
->Configuració del muntatge (només al BSD)</link
+>Configuració avançada de muntatge</guilabel
+> només és disponible al &Linux; i les opcions llistades fan referència a l'ordre <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Les opcions de configuració presents a BSD es poden trobar a la secció <link linkend="configuration_page_mounting_mount_settings"
+>Configuració de muntatge (només BSD)</link
 >.</para>
       <variablelist>
         <varlistentry>
@@ -4333,6 +4395,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Opció: <option
+>forceuid</option
+></para>
             <para
 >Demana al client (&ead;, a la vostra banda) que ignori qualsevol ID d'usuari (UID) proporcionat pel servidor per als fitxers i directoris, i que assigni sempre el propietari al valor de l'UID transmès.</para>
             <para
@@ -4348,6 +4414,10 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opció: <option
+>forcegid</option
+></para>
+            <para
 >Demana al client (&ead;, a la vostra banda) que ignori qualsevol ID de grup (GID) proporcionat pel servidor per als fitxers i directoris, i que assigni sempre el propietari al valor del GID transmès.</para>
             <para
 >Omissió: no seleccionada</para>
@@ -4362,7 +4432,13 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->El client comprovarà si té l'UID i el GID correcte per a manipular els fitxers i directoris en la compartició. Això es fa a més de la comprovació normal de l'ACL sobre la màquina de destinació, el qual és realitzat pel programari del servidor. És possible que vulgueu desactivar aquesta característica, si el/s servidor/s admeten les ampliacions Unix del &CIFS; i, per tant, no podeu accedir a la compartició.</para>
+>Opció: <option
+>perm</option
+> or <option
+>noperm</option
+></para>
+            <para
+>El client comprovarà si teniu l'UID i el GID correcte per a manipular els fitxers i directoris en la compartició. Això es fa a més de la comprovació normal de l'ACL sobre la màquina de destinació, el qual és realitzat pel programari del servidor. Segurament voldreu desactivar aquesta característica si el/s servidor/s admeten les ampliacions Unix del &CIFS; i, per tant, no permeten accedir completament a la compartició.</para>
             <para
 >Omissió: no seleccionada</para>
           </listitem>
@@ -4375,6 +4451,12 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Opció: <option
+>setuids</option
+> o <option
+>nosetuids</option
+></para>
             <para
 >Si les ampliacions Unix del &CIFS; es negocien amb el servidor, la banda del client intentarà establir els UID i GID efectius del procés local sobre els fitxers, directoris i dispositius creats recentment. Si aquesta característica està desactivada, s'utilitzaran els identificadors UID i GID definits per a la compartició. Es recomana llegir la pàgina de manual <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -4398,6 +4480,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opció: <option
+>serverino</option
+> o <option
+>noserverino</option
+></para>
+            <para
 >Utilitza els números dels nodes-i (identificadors de fitxer persistents únics) retornats pel servidor en lloc de generar automàticament els nombres temporals del node-i a la banda del client. Aquest paràmetre no tindrà cap efecte si el servidor no admet retornar els números de node-i o similar. Es recomana llegir la pàgina de manual <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4420,6 +4508,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opció: <option
+>mapchars</option
+> o <option
+>nomapchars</option
+></para>
+            <para
 >Tradueix sis dels set caràcters reservats (no la barra inversa, però inclou els dos punts, signe d'interrogació, canonada, asterisc, els caràcters més que i menys que) a l'interval de remapatge (per sobre de 0xF000), el qual també permet que el client reconegui els fitxers creats amb aquests caràcters per a l'emulació POSIX de &Windows;. Això també pot ser útil quan es munta a la majoria de versions de &Samba;. Això no tindrà cap efecte si el servidor no admet Unicode.</para>
             <para
 >Omissió: no seleccionada</para>
@@ -4433,6 +4527,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Opció: <option
+>nobrl</option
+></para>
             <para
 >No enviïs sol·licituds de bloqueig d'intervals de bytes al servidor. Això és necessari per a determinades aplicacions que trenquen amb els bloqueigs d'intervals de bytes obligatoris de l'estil CIFS (i la majoria dels servidors CIFS encara no permeten sol·licituds d'avís de bloqueig d'intervals de bytes).</para>
             <para
@@ -4448,6 +4546,10 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opció: <option
+>vers=VERS</option
+></para>
+            <para
 >Defineix quina versió del protocol SMB s'ha d'utilitzar. Normalment, aquesta opció no necessita estar habilitada perquè la versió del protocol es negocia entre el client i el servidor.</para>
             <para
 >Es permeten els següents valors:</para>
@@ -4461,9 +4563,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->vers=1.0</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4483,9 +4583,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->vers=2.0</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4507,9 +4605,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->vers=2.1</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4529,9 +4625,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->vers=3.0</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4551,11 +4645,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->vers=3.0.2</option
-> o <option
->vers=3.02</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4576,11 +4666,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->vers=3.1.1</option
-> o <option
->vers=3.1.1</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4600,9 +4686,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->vers=3</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4622,9 +4706,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->vers=default</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4637,7 +4719,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Omissió: no seleccionat; <guibutton
+>Omissió: no seleccionat; VERS: <guibutton
 >predeterminat (Negocia la versió més alta)</guibutton
 ></para>
           </listitem>
@@ -4650,6 +4732,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Opció: <option
+>cache=ARG</option
+></para>
             <para
 >Defineix com es gestionen les sol·licituds de lectura i escriptura. En cas que trieu no desar les dades dels fitxers a la memòria cau, el client mai utilitzarà la memòria cau per a les lectures i escriptures normals. Sempre accedirà directament al servidor per a satisfer una sol·licitud de lectura o escriptura. Si trieu seguir directament el protocol &CIFS;/SMB2, la memòria cau només serà confiable si el client ha establert un bloqueig d'operació («oplock»). Si el client no ha establert cap bloqueig d'operació, llavors el client ometrà la memòria cau i accedirà directament al servidor per a la sol·licitud de lectura o escriptura. Triant permetre una semàntica més laxa de la memòria cau, a vegades pot proporcionar un rendiment millor a canvi de la coherència de la memòria cau. Aquesta opció pot provocar corrupció de les dades, si diversos clients accedeixen al mateix conjunt de fitxers en el servidor al mateix temps. Per això, es recomana el mode directe de la memòria cau.</para>
             <para
@@ -4664,9 +4750,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->cache=none</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4686,9 +4770,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->cache=strict</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4696,7 +4778,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> segueixi el protocol &CIFS;/SMB2 de manera directa.</para>
+> segueixi el protocol &CIFS;/SMB2 de manera estricta.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4708,9 +4790,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->S'utilitzarà l'argument <option
->cache=loose</option
-> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
+>Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4723,7 +4803,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Omissió: no seleccionat; <guibutton
+>Omissió: no seleccionat; ARG: <guibutton
 >Segueix estrictament el protocol &CIFS;/SMB2</guibutton
 ></para>
           </listitem>
@@ -4967,7 +5047,7 @@ ntlm auth = yes
 >D'acord</guibutton
 > al diàleg d'entrada, les opcions seran comprovades contra una llista blanca. Totes les entrades vàlides seran acceptades i introduïdes a la línia d'edició.</para>
             <para
->Omissió: buida</para>
+>Omissió: no seleccionada; buida</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4985,7 +5065,7 @@ ntlm auth = yes
 >La pestanya <guilabel
 >Configuració del muntatge</guilabel
 > només està disponible a FreeBSD, NetBSD i DragonFly BSD. Les opcions de configuració presents al &Linux; es poden trobar a les seccions <link linkend="configuration_page_mounting_common_mount_settings"
->Configuració comuna del muntatge (només al &Linux;)</link
+>Configuració normal del muntatge (només al &Linux;)</link
 > i <link linkend="configuration_page_mounting_advanced_mount_settings"
 >Configuració avançada del muntatge (només al &Linux;)</link
 >.</para>
@@ -5280,7 +5360,7 @@ ntlm auth = yes
                         </term>
                         <listitem>
                           <para
->Format de transformació Unicode (o joc de caràcters codificats universals) de 8 bits. L'UTF-8 és emprat per moltes distribucions de &Linux; com a joc de caràcters predeterminat i, a més, és la codificació més comuna per a la World Wide Web.</para>
+>Format de transformació Unicode (o joc de caràcters codificats universals) de 8 bits. L'UTF-8 és emprat per moltes distribucions de &Linux; com a joc de caràcters predeterminat i, a més, és la codificació més normal per a la World Wide Web.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -5388,7 +5468,7 @@ ntlm auth = yes
                         </term>
                         <listitem>
                           <para
->L'estàndard industrial tailandès 620-2533, comunament conegut com a TIS-620, és el joc de caràcters i la codificació de caràcters més comuna per a l'idioma tailandès.</para>
+>L'estàndard industrial tailandès 620-2533, normalment conegut com a TIS-620, és el joc de caràcters i la codificació de caràcters més habitual per a l'idioma tailandès.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -8758,7 +8838,7 @@ ntlm auth = yes
 >El menú Ajuda</title>
 
     <para
->De manera addicional, el &smb4k; té la configuració comuna al &kde; i els elements del menú <guimenu
+>De manera addicional, el &smb4k; té la configuració normal al &kde; i els elements del menú <guimenu
 >Ajuda</guimenu
 >. Per a obtenir més informació, llegiu la secció sobre <ulink url="help:/fundamentals/menus.html#menus-help"
 >El menú Ajuda</ulink

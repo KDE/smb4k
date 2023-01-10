@@ -3787,9 +3787,25 @@ ntlm auth = yes
       
       <para
 >Het tabblad <guilabel
->Algemene instellingen voor aankoppelen</guilabel
-> is alleen beschikbaar onder &Linux;. De instellingen aanwezig onder BSD zijn te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
->Instellingen voor aankoppelen (alleen BSD)</link
+>Gemeenschappelijke instellingen voor aankoppelen</guilabel
+> is alleen beschikbaar onder &Linux; en de getoonde opties verwijzen naar het commando <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. De instellingen aanwezig onder BSD zijn te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
+>Instellingen voor aankoppelen (BSD only)</link
 >.</para>
 
       <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
@@ -3817,6 +3833,10 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
+>Optie: <option
+>rw</option
+></para>
+                    <para
 >De share lezen-schrijven aankoppelen.</para>
                   </listitem>
                 </varlistentry>
@@ -3828,6 +3848,10 @@ ntlm auth = yes
 ></menuchoice>
                   </term>
                   <listitem>
+                    <para
+>Optie: <option
+>ro</option
+></para>
                     <para
 >De share alleen-lezen aankoppelen.</para>
                   </listitem>
@@ -3848,7 +3872,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Stelt de tekensetin die aan de clientkant wordt gebruikt (&ie; uw computer).</para>
+>Optie: <option
+>iocharset=TEKENSET</option
+></para>
+              <para
+>Stelt de tekenset in die aan de clientkant wordt gebruikt (&ie; uw computer) op een van de volgende:</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3859,7 +3887,9 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Standaard tekenset die aan de clientkant wordt gebruikt.</para>
+>Standaard tekenset die aan de clientkant wordt gebruikt. In dit geval wordt optie <option
+>iocharset</option
+> weggelaten uit de opdrachtregel.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4128,7 +4158,7 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Standaard: niet geselecteerd; <guimenuitem
+>Standaard: niet geselecteerd; TEKENSET: <guimenuitem
 >standaard</guimenuitem
 ></para>
             </listitem>
@@ -4142,7 +4172,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Hier stelt u het poort-nummer voor bestandssysteem in dat wordt gebruikt door <ulink url="man:/mount.cifs"
+>Optie: <option
+>port=POORT</option
+></para>
+              <para
+>Hier stelt u het poort-nummer in dat wordt gebruikt door <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4150,17 +4184,11 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> voor het aankoppelen van een externe share. De standaard poort-nummer (445) zou bij alle moderne besturingssystemen moeten werken. Als u problemen heeft, probeer dan het poort-nummer 139. Als de problemen alleen bij enkele hosts optreden, dan raden wij aan om dit niet te wijzigen en de bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+> voor het aankoppelen van een externe share. De standaard poort-nummer (445) zou bij alle moderne besturingssystemen moeten werken. Als u problemen heeft, probeer dan het poort-nummer 139. Als de problemen alleen bij enkele hosts optreden, dan raden wij aan om dit niet te wijzigen en de bewerker voor <link linkend="custom_settings"
 >Aangepaste instellingen</link
 > te gebruiken om individuele poort-nummers voor de problematische hosts in te stellen.</para>
               <para
->Deze optie is alleen beschikbaar onder &Linux;. Onder BSD, stelt u de poort voor het aankoppelen van shares in met de optie <link linkend="configuration_page_network_advanced_settings_samba"
-><guibutton
->SMB-poort</guibutton
-></link
->.</para>
-              <para
->Standaard: niet geselecteerd; poort 445</para>
+>Standaard: niet geselecteerd; POORT: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4178,6 +4206,8 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: geen</para>
             <para
 >De meeste versies van &Samba; ondersteunen de &CIFS; Unix- of POSIX-extensies. Voor deze servers zijn enkele opties niet nodig, omdat de juiste waarden zijn onderhandeld gedurende het aankoppelproces. Voor andere servers zou u kunnen kiezen om deze optie te deactiveren, zodat voorgedefinieerde waarden doorgegeven kunnen worden aan de server. Merk op dat als uw computer zich in een door &Windows; gedomineerde netwerkomgeving bevindt met alleen een paar &Samba;-servers, u deze optie veilig kunt deactiveren en aangepaste instellingen voor de &Samba;-servers definiëren.</para>
             <para
@@ -4197,11 +4227,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>uid=UID</option
+></para>
+            <para
 >Stelt in wie de eigenaar van de bestanden en mappen in het bestandssysteem is. Standaard wordt uw UID gebruikt. Om de UID te wijzigen, drukt u zoekknop in en kiest in de keuzelijst er een uit.</para>
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd; uw UID</para>
+>Standaard: geselecteerd; UID: uw UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4213,11 +4247,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>uid=GID</option
+></para>
+            <para
 >Stelt de groep in die eigenaar is van de bestanden en mappen In het bestandssysteem. Standaard wordt uw GID gebruikt. Om de GID te wijzigen druk op de zoekknop en kies er een uit het afrolmenu.</para>
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd; uw GID</para>
+>Standaard: geselecteerd; GID: uw GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4228,6 +4266,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>file_mode=ARG</option
+></para>
             <para
 >Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus (file_mode), moet u de manpagina's <ulink url="man:/mount(8)"
 ><citerefentry
@@ -4249,7 +4291,7 @@ ntlm auth = yes
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd; 0755</para>
+>Standaard: geselecteerd; ARG: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4260,6 +4302,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>dir_mode=ARG</option
+></para>
             <para
 >Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over het mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount(8)"
 ><citerefentry
@@ -4281,7 +4327,7 @@ ntlm auth = yes
             <para
 >In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
             <para
->Standaard: geselecteerd; 0755</para>
+>Standaard: geselecteerd; ARG: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4299,7 +4345,23 @@ ntlm auth = yes
       <para
 >Het tabblad <guilabel
 >Geavanceerde instellingen voor aankoppelen</guilabel
-> is alleen beschikbaar onder &Linux;. De instellingen aanwezig onder BSD zin te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
+> is alleen beschikbaar onder &Linux; en de getoonde opties verwijzen naar het commando <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. De instellingen aanwezig onder BSD zijn te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
 >Instellingen voor aankoppelen (BSD only)</link
 >.</para>
       <variablelist>
@@ -4311,6 +4373,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>forceuid</option
+></para>
             <para
 >Instrueer de client (d.w.z. uw kant) om elke gebruikers-id (UID) geleverd door de server voor bestanden en mappen te negeren en om altijd als eigenaar de waarde van de overgebrachte UID toe te kennen.</para>
             <para
@@ -4326,6 +4392,10 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>forcegid</option
+></para>
+            <para
 >Instrueer de client (d.w.z. uw kant) om elke groeps-id (GID) geleverd door de server voor bestanden en mappen te negeren en om altijd als eigenaar de waarde van de overgebrachte GID toe te kennen.</para>
             <para
 >Standaard: niet geselecteerd</para>
@@ -4340,7 +4410,13 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Aan de cliënt-kant vind een controle plaats of u de correcte UID en GID heeft voor het manipuleren van bestanden en mappen op de share. Dit is naast de normale ACL controle door de server software op de doelmachine. U wilt wellicht dit onderdeel uitschakelen, als de server(s) de &CIFS; Unix extensies ondersteunen en u daarom geen toegang tot de share heeft.</para>
+>Optie: <option
+>perm</option
+> of <option
+>noperm</option
+></para>
+            <para
+>Aan de cliënt-kant vind een controle plaats of u de correcte UID en GID heeft voor het manipuleren van bestanden en mappen op de share. Dit is naast de normale ACL controle door de server software op de doelmachine. U wilt vrijwel zeker dit onderdeel uitschakelen, als de server(s) de &CIFS; Unix extensies ondersteunen en u daarom geen volledige toegang tot de share heeft.</para>
             <para
 >Standaard: niet geselecteerd</para>
           </listitem>
@@ -4353,6 +4429,12 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>setuids</option
+> of <option
+>nosetuids</option
+></para>
             <para
 >Als over de &CIFS; Unix extensies is onderhandelt met de server dan zal de client-zijde proberen om de UID en GID van het lokale proces op de nieuwe bestanden, mappen en apparaten in te stellen. Als dit onderdeel is uitgeschakeld, dan wordt de standaard voor de share ingestelde UID en GID worden gebruikt. Het wordt aanbevolen om de manpagina's van <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -4376,6 +4458,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>serverino</option
+> of <option
+>noserverino</option
+></para>
+            <para
 >Gebruik de inode-nummers (unique persistent file identifiers) verstuurt door de server in plaats van de automatisch aan de client-zijde gegenereerde tijdelijke inode-nummers. Deze instelling heeft heeft geen effect als de server het versturen van inode-nummers of iets dergelijks niet ondersteund. Het wordt aanbevolen om de manpagina's van <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4398,6 +4486,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>mapchars</option
+> of <option
+>nomapchars</option
+></para>
+            <para
 >Zes van de zeven gereserveerde tekens (de backslash niet, maar wel de dubbele punt, vraagteken, pipe, sterretje, groter-dan en kleiner-dan tekens) vertalen naar de remap range (boven 0xF000), hierdoor kan aan de client kant bestanden worden herkend die dergelijke tekens hebben doordat ze gecreerd zijn via &Windows;’s POSIX emulatie. Dit kan ook handig zijn bij het aankoppelen van de meeste versies van &Samba;. Deze instelling heeft geen effect als de server unicode niet ondersteund. </para>
             <para
 >Standaard: niet geselecteerd</para>
@@ -4411,6 +4505,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>nobrl</option
+></para>
             <para
 >Geen verzoeken voor vergrendelen van byte-reeksen naar de server verzenden. Dit is nodig voor bepaalde toepassingen die breken met de stijl van cifs voor vergrendelen van byte-reeksen (en de meeste servers ondersteunen nog niet verzoeken geadviseerde vergrendeling van byte-reeksen.</para>
             <para
@@ -4426,6 +4524,10 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>vers=VERS</option
+></para>
+            <para
 >Definieer welke versie van het SMB-protocol moet worden gebruikt. Normaal is deze optie niet nodig om ingeschakeld te worden omdat de protocolversie wordt onderhandelt tussen de client en de server.</para>
             <para
 >De volgende waarden zijn toegestaan:</para>
@@ -4439,9 +4541,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=1.0</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4461,9 +4561,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=2.0</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4485,9 +4583,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=2.1</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4507,9 +4603,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=3.0</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4529,11 +4623,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=3.0.2</option
-> of <option
->vers=3.02</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4541,7 +4631,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> het SMBv3.0.2 protocol zal gebruiken, dat is geïntroduceerd in &Microsoft; &Windows; 8.1 en &Windows; Server 2012R2.</para>
+> het SMBv3.0 protocol zal gebruiken, dat is geïntroduceerd in &Microsoft; &Windows; 8 en &Windows; Server 2012.</para>
                 </listitem>
               </varlistentry>
               
@@ -4554,11 +4644,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=3.1.1</option
-> of <option
->vers=3.11</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4566,7 +4652,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> het SMBv3.1.1 protocol zal gebruiken, dat is geïntroduceerd in &Microsoft; &Windows; Server 2016.</para>
+> het SMBv3.0 protocol zal gebruiken, dat is geïntroduceerd in &Microsoft; &Windows; 8 en &Windows; Server 2012.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4578,9 +4664,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=3</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4600,9 +4684,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=standaard</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4615,7 +4697,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: niet geselecteerd; <guibutton
+>Standaard: niet geselecteerd; VERS: <guibutton
 >standaard (onderhandel de hoogste versie)</guibutton
 ></para>
           </listitem>
@@ -4628,6 +4710,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>cache=ARG</option
+></para>
             <para
 >Definieer hoe lees- en schrijfverzoeken behandeld worden. In het geval dat u er voor kiest helemaal geen cache voor bestandsgegevens te hebben, zal de client nooit de cache voor bestandsgegevens gebruiken voor normaal lezen en schrijven. Het zal de server altijd direct benaderen om een lees- of schrijfverzoek uit te voeren. Als u er voor kiest om het &CIFS;/SMB2 protocol strict te volgen, zal de cache alleen vertrouwd worden als de client een oplock bijhoudt. Als de client geen oplock bijhoudt zal de client langs de cache gaan en de server direct benaderen om aan een lees- of schrijfverzoek te voldoen. Het kiezen van een losse semantiek voor de cache kan soms betere prestaties ten koste van coherentie in de cache bieden. Deze optie kan verminking van gegevens veroorzaken, als verschillende clients dezelfde set bestanden op de server op hetzelfde moment benaderen. Daarom wordt de strikte cache-modus aanbevolen.</para>
             <para
@@ -4642,9 +4728,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->cache=none</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4664,9 +4748,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->cache=strict</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4686,9 +4768,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->cache=loose</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4701,7 +4781,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: niet geselecteerd; <guibutton
+>Standaard: niet geselecteerd; ARG: <guibutton
 >Volg strikt het &CIFS;/SMB2 protocol</guibutton
 ></para>
           </listitem>
@@ -4945,7 +5025,7 @@ ntlm auth = yes
 >OK</guibutton
 > in het invoerdialoog, zullen de opties worden gecontroleerd tegen een lijst met toegestane waarden (witte lijst). Alle geldige items worden geaccepteerd en ingevoerd in de regelbewerking.</para>
             <para
->Standaard: leeg</para>
+>Standaard: niet geselecteerd; leeg</para>
           </listitem>
         </varlistentry>
       </variablelist>

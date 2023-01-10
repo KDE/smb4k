@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-09 00:55+0000\n"
-"PO-Revision-Date: 2022-12-18 12:07+0000\n"
+"PO-Revision-Date: 2023-01-09 18:24+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -1073,7 +1073,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Preservar as listas de controlo de acessos (ACL's)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1084,66 +1084,60 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Preservar as listas de controlo de acessos. Esta opção faz com que o 'rsync' "
+"actualize as ACL's para ficarem iguais às ACL's de origem. Esta opção também "
+"implica a --perms. Os sistemas de origem e destino deverão ter itens de "
+"ACL's compatíveis para esta opção funcionar adequadamente."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Preservar as horas"
+msgstr "Preservar os atributos estendidos"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Preserva o grupo (-g, --group). O grupo do ficheiro de destino será definido "
-"com o mesmo valor do ficheiro de origem."
+"Preserva os atributos estendidos. Esta opção faz com que o 'rsync' actualize "
+"os atributos estendidos do destino para ficarem iguais aos de origem."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Preservar as horas"
+msgstr "Preservar as horas de acesso"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Preserva o grupo (-g, --group). O grupo do ficheiro de destino será definido "
-"com o mesmo valor do ficheiro de origem."
+"Preserva as horas de acesso. Isto diz ao 'rsync' para actualizar as horas de "
+"acesso (utilização) dos ficheiros de destino para ficarem iguais às dos "
+"ficheiros de origem."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Preservar as horas"
+msgstr "Preservar as horas de criação"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Preserva o grupo (-g, --group). O grupo do ficheiro de destino será definido "
-"com o mesmo valor do ficheiro de origem."
+"Preserva as horas de criação. Isto diz ao 'rsync' para actualizar as horas "
+"de criação dos ficheiros de destino para ficarem iguais às dos ficheiros de "
+"origem."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402
@@ -1642,10 +1636,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Regras de filtragem personalizadas:"
+msgstr "Regras de filtragem personalizadas"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -2200,10 +2193,9 @@ msgid "Print"
 msgstr "Imprimir"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Configuração das Montagens"
+msgstr "Configuração Personalizada"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, kde-format
@@ -3306,7 +3298,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "Não enviar pedidos de bloqueio de intervalos de 'bytes'"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3317,6 +3309,10 @@ msgid ""
 "(and most cifs servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"Não enviar pedidos de bloqueio de intervalos de 'bytes' para o servidor. "
+"Isto é necessário para certas aplicações que não funcionam com os bloqueios "
+"de 'bytes' obrigatórios do CIFS (até porque a maioria dos servidores de CIFS "
+"não suportam esses bloqueios de intervalos de 'bytes')."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3909,12 +3905,3 @@ msgid ""
 msgstr ""
 "<qt>Indique por favor um nome de utilizador e uma senha para a partilha <b>"
 "%1</b>.</qt>"
-
-#~ msgid "Custom Options"
-#~ msgstr "Opções Personalizadas"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Não usar o bloqueio"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Não usar o bloqueio de ficheiros. Não iniciar o 'lockd'."

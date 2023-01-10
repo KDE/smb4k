@@ -3806,7 +3806,23 @@ ntlm auth = yes
       <para
 >Вкладкою <guilabel
 >Загальні параметри монтування</guilabel
-> можна буде скористатися лише у &Linux;. Опис параметрів, якими можна скористатися у BSD, наведено у розділі <link linkend="configuration_page_mounting_mount_settings"
+> можна буде скористатися лише у &Linux;. Параметри з наведеного нижче списку стосується програми <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Опис параметрів, якими можна скористатися у BSD, наведено у розділі <link linkend="configuration_page_mounting_mount_settings"
 >Параметри монтування (лише BSD)</link
 >.</para>
 
@@ -3835,6 +3851,10 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
+>Параметр: <option
+>rw</option
+></para>
+                    <para
 >Змонтувати спільний ресурс у режимі читання-запису.</para>
                   </listitem>
                 </varlistentry>
@@ -3846,6 +3866,10 @@ ntlm auth = yes
 ></menuchoice>
                   </term>
                   <listitem>
+                    <para
+>Параметр: <option
+>ro</option
+></para>
                     <para
 >Змонтувати спільний ресурс у режимі лише читання.</para>
                   </listitem>
@@ -3866,7 +3890,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Встановлює набір символів, які буде використано на стороні клієнта (тобто вашому комп’ютері)</para>
+>Параметр: <option
+>iocharset=НАБІР_СИМВОЛІВ</option
+></para>
+              <para
+>Встановлює набір символів, які буде використано на стороні клієнта (тобто вашому комп’ютері). Один з таких наборів:</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3877,7 +3905,9 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Типовий набір символів, який використовуватиметься ядром клієнтської частини.</para>
+>Типовий набір символів, який використано у ядрі клієнта. У цьому випадку у рядку команди буде пропущено параметр <option
+>iocharset</option
+>.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4146,7 +4176,7 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Типовий варіант: не вибрано / <guimenuitem
+>Типове значення: не вибрано; CHARSET: <guimenuitem
 >типовий</guimenuitem
 ></para>
             </listitem>
@@ -4160,7 +4190,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Встановлює номер порту системи, який буде використано <ulink url="man:/mount.cifs"
+>Параметр: <option
+>port=ПОРТ</option
+></para>
+              <para
+>Встановлює номер порту, який буде використано <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4168,17 +4202,11 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> для монтування віддаленого спільного ресурсу. У всіх сучасних операційних системах має працювати номер порту (445). Якщо у вас виникають проблеми, спробуйте скористатися портом з номером 139. Якщо проблеми виникають лише під час зв’язку з певними вузлами, рекомендуємо вам не змінювати значення цього параметра, а скористатися діалоговим вікном <link linkend="network_neighborhood_browser_defining_custom_settings"
+> для монтування віддаленого спільного ресурсу. У всіх сучасних операційних системах має працювати номер порту (445). Якщо у вас виникають проблеми, спробуйте скористатися портом з номером 139. Якщо проблеми виникають лише під час зв’язку з певними вузлами, рекомендуємо вам не змінювати значення цього параметра, а скористатися діалоговим вікном <link linkend="custom_settings"
 >Нетипові параметри</link
 > для визначення номерів окремих портів для проблемних вузлів.</para>
               <para
->Цим пунктом можна скористатися лише у &Linux;. У BSD порт для монтування спільних ресурсів завжди встановлено у значення <link linkend="configuration_page_network_advanced_settings_samba"
-><guibutton
->SMB-порт</guibutton
-></link
->.</para>
-              <para
->Типове значення: не позначено / порт 445</para>
+>Типове значення: не позначено / ПОРТ: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4196,6 +4224,8 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Параметр: немає</para>
             <para
 >У більшості версій &Samba; передбачено підтримку розширень UNIX або POSIX &CIFS;. Для роботи з відповідними серверами у наданні деяких параметрів просто немає потреби, оскільки належні налаштування визначаються під час процедури узгодження у процесі монтування. Для серверів, де такої підтримки не передбачено, варто зняти позначку з цього пункту, щоб програма надіслала попередньо визначені значення параметрів серверу. Будь ласка, зауважте, що якщо ваш комп'ютер перебуває у середовищі, де переважна кількість комп'ютерів працює під керуванням &Windows; і є лише декілька серверів &Samba;, ви можете сміливо знімати позначку з цього пункту і визначати нетипові параметри для серверів &Samba;.</para>
             <para
@@ -4215,11 +4245,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Параметр: <option
+>uid=UID</option
+></para>
+            <para
 >Визначає власника файлів і каталогів файлової системи. Типово, буде використано код вашого користувача (UID). Щоб змінити значення UID, натисніть кнопку пошуку і оберіть потрібне значення зі спадного меню.</para>
             <para
 >Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Типове значення: позначено / ваш UID</para>
+>Типове значення: позначено; UID: ваш UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4231,11 +4265,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Параметр: <option
+>uid=GID</option
+></para>
+            <para
 >Визначає групу-власника файлів і каталогів файлової системи. Типово, буде використано код вашої групи (GID). Щоб змінити значення GID, натисніть кнопку пошуку і оберіть потрібне значення зі спадного меню.</para>
             <para
 >Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Типове значення: позначено / ваш GID</para>
+>Типове значення: позначено; GID: ваш GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4246,6 +4284,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Параметр: <option
+>file_mode=АРГУМЕНТ</option
+></para>
             <para
 >Встановлює параметри прав доступу, які буде застосовано до файлів. Чотирицифрове значення слід вказувати у вісімковій системі числення. Докладніше про режим доступу до файлів (file_mode) можна дізнатися зі сторінок довідника (man) <ulink url="man:/mount(8)"
 ><citerefentry
@@ -4267,7 +4309,7 @@ ntlm auth = yes
             <para
 >Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Типове значення: позначено; 0755</para>
+>Типове значення: позначено; АРГУМЕНТ: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4278,6 +4320,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Параметр: <option
+>dir_mode=АРГУМЕНТ</option
+></para>
             <para
 >Встановлює параметри прав доступу, які буде застосовано до каталогів. Чотирицифрове значення слід вказувати у вісімковій системі числення. Докладніше про режим доступу до каталогів (dir_mode) можна дізнатися зі сторінок довідника (man) <ulink url="man:/mount(8)"
 ><citerefentry
@@ -4299,7 +4345,7 @@ ntlm auth = yes
             <para
 >Якщо вибрано підтримку розширень &CIFS; для Unix, цей параметр буде вимкнено.</para>
             <para
->Типове значення: позначено; 0755</para>
+>Типове значення: позначено; АРГУМЕНТ: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4317,7 +4363,23 @@ ntlm auth = yes
       <para
 >Вкладкою <guilabel
 >Додаткові параметри монтування</guilabel
-> можна буде скористатися лише у &Linux;. Опис параметрів, якими можна скористатися у BSD, наведено у розділі <link linkend="configuration_page_mounting_mount_settings"
+> можна буде скористатися лише у &Linux;. Параметри з наведеного нижче списку стосується програми <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Опис параметрів, якими можна скористатися у BSD, наведено у розділі <link linkend="configuration_page_mounting_mount_settings"
 >Параметри монтування (лише BSD)</link
 >.</para>
       <variablelist>
@@ -4329,6 +4391,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Параметр: <option
+>forceuid</option
+></para>
             <para
 >Наказати клієнтській частині (на боці вашого комп’ютера) ігнорувати усі ідентифікатори користувачів (UID), які надаються сервером для файлів і каталогів і завжди призначати для параметра власника значення UID користувача, якому передаються дані.</para>
             <para
@@ -4344,6 +4410,10 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Параметр: <option
+>forcegid</option
+></para>
+            <para
 >Наказати клієнтській частині (на боці вашого комп’ютера) ігнорувати усі ідентифікатори груп (GID), які надаються сервером для файлів і каталогів і завжди призначати для параметра власника значення GID користувача, якому передаються дані.</para>
             <para
 >Типове значення: не позначено</para>
@@ -4358,7 +4428,13 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Під час перевірок на стороні клієнта програма визначатиме, чи має ваш користувач значення UID і GID, які дозволяють йому працювати з файлами і каталогами спільного ресурсу. Ця перевірка є додатковою до звичайної перевірки ACL на віддаленому комп’ютері, яку виконує програмне забезпечення сервера. Вам варто зняти позначку з цього пункту, якщо сервери підтримують додатки Unix CIFS, а отже система закриває для вас доступ до спільного ресурсу.</para>
+>Параметр: <option
+>perm</option
+> або <option
+>noperm</option
+></para>
+            <para
+>Під час перевірок на стороні клієнта програма визначатиме, чи має ваш користувач значення UID і GID, які дозволяють йому працювати з файлами і каталогами спільного ресурсу. Ця перевірка є додатковою до звичайної перевірки ACL на віддаленому комп’ютері, яку виконує програмне забезпечення сервера. Вам, найімовірніше, варто зняти позначку з цього пункту, якщо сервери підтримують додатки Unix CIFS, а отже система закриває для вас повний доступ до спільного ресурсу.</para>
             <para
 >Типове значення: не позначено</para>
           </listitem>
@@ -4371,6 +4447,12 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Параметр: <option
+>setuids</option
+> або <option
+>nosetuids</option
+></para>
             <para
 >Якщо використання додатків Unix CIFS буде узгоджено з сервером, клієнтська частина виконає спробу встановити поточні значення UID і GID локального процесу для створених користувачем файлів, каталогів та пристроїв. Якщо позначку з пункту буде знято, буде використано визначені типові UID і GID. Перш ніж намагатися змінити значення цього параметра, вам варто ознайомитися з вмістом сторінки довідника (man) програми <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -4394,6 +4476,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Параметр: <option
+>serverino</option
+> або <option
+>noserverino</option
+></para>
+            <para
 >Наказати програмі використовувати номери inode (унікальні незмінні ідентифікатори файлів), які було повернуто сервером, а не автоматично створені на клієнтській стороні тимчасові номери inode. Позначення цього параметра не призведе до видимих наслідків, якщо сервер не підтримує роботу з номерами inode тощо. Перш ніж змінювати значення цього параметра, вам варто ознайомитися з вмістом сторінки довідника (man) <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4416,6 +4504,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Параметр: <option
+>mapchars</option
+> або <option
+>nomapchars</option
+></para>
+            <para
 >Переносити шість з семи зарезервованих символів (зокрема двокрапку, знак питання, символ вертикальної риски, зірочку та символи знаків «більше» та «менше», але не зворотну риску) до вищого діапазону (за 0xF000). Якщо ви позначите цей пункт, ви зможете відкривати файли, назви яких містять ці символи за допомогою емуляції POSIX-реалізації &Windows;. Також може бути корисним при монтуванні для більшості версії &Samba;. Позначення пункту не матиме наслідків для серверів, які не підтримують Unicode.</para>
             <para
 >Типове значення: не позначено</para>
@@ -4429,6 +4523,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Параметр: <option
+>nobrl</option
+></para>
             <para
 >Не надсилати на сервер запитів щодо блокування діапазону байтів. Скасування блокування потрібне для деяких програм, які не можуть працювати із обов'язковим блокування діапазону байтів у стилі cifs (а на більшості серверів cifs ще не передбачено підтримки запитів рекомендованих блокувань діапазону байтів).</para>
             <para
@@ -4444,6 +4542,10 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Параметр: <option
+>vers=ВЕРСІЯ</option
+></para>
+            <para
 >Визначити версію протоколу SMB, яку слід використати. Зазвичай, у використанні цього параметра немає потреби, оскільки версію протоколу автоматично узгоджують клієнт і сервер.</para>
             <para
 >Можна використовувати такі значення:</para>
@@ -4457,9 +4559,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->vers=1.0</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mountcifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4479,9 +4579,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->vers=2.0</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mountcifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4503,9 +4601,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->vers=2.1</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mountcifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4525,9 +4621,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->vers=3.0</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4547,11 +4641,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->vers=3.0.2</option
-> або <option
->vers=3.02</option
->. Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mountcifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4559,7 +4649,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> буде наказано використовувати протокол SMBv3.0.2., який було впроваджено у &Microsoft; &Windows; 8.1 та &Windows; Server 2012R2.</para>
+> буде наказано використовувати протокол SMBv3.0.2, який було впроваджено у &Microsoft; &Windows; 8.1 та &Windows; Server 2012R2.</para>
                 </listitem>
               </varlistentry>
               
@@ -4572,11 +4662,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->vers=3.0.2</option
-> або <option
->vers=3.11</option
->. Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4596,9 +4682,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->vers=3</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4618,9 +4702,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->vers=default</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4633,8 +4715,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Типове значення: не вибрано / <guibutton
->типовий (узгодити найновішу версію)</guibutton
+>Типове значення: не вибрано; ВЕРСІЯ: <guibutton
+>типова (узгодити найновішу версію)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4646,6 +4728,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Параметр: <option
+>cache=АРГУМЕНТ</option
+></para>
             <para
 >Визначення способу обробки запитів на читання-запис. Якщо ви накажете програмі взагалі не використовувати кешування файлових даних, кеш не використовуватиметься клієнтською частиною для виконання звичайних завдань із читання чи запису даних. Для виконання таких запитів система завжди намагатиметься отримати доступ безпосередньо до сервера з даними. Якщо ви виберете варіант із строгим дотримання протоколу CIFS/SMB2, система використовуватиме дані з кешу лише тоді, коли клієнтська частина зв’язку отримуватиме сигнал про блокування даних на час виконання операції. Якщо такого блокування не буде, клієнтська частина не використовуватиме дані з кешу і намагатиметься отримати безпосередній доступ до сервера для виконання дій із читання чи запису. Варіант з розширеною семантикою кешування іноді може забезпечити вищу швидкодію за рахунок можливої втрати синхронізації кешу. Така втрата синхронізації може призвести до пошкодження даних, якщо до одного набору файлів одночасно отримує доступ декілька клієнтів. Через перелічені вище обставини ми рекомендуємо використовувати режим строгого дотримання протоколу під час кешування.</para>
             <para
@@ -4660,9 +4746,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->cache=none</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4682,9 +4766,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->cache=strict</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4704,9 +4786,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Використовується параметр командного рядка <option
->cache=loose</option
-> Таким чином, <ulink url="man:/mount.cifs"
+>Таким чином, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4719,7 +4799,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Типове значення: не вибрано / <guibutton
+>Типове значення: не вибрано; АРГУМЕНТ: <guibutton
 >Строго дотримуватися протоколу &CIFS;/SMB2</guibutton
 ></para>
           </listitem>
@@ -4963,7 +5043,7 @@ ntlm auth = yes
 >Гаразд</guibutton
 > у діалоговому вікні введення даних програма виконає перевірку параметрів за «білим» списком. Усі коректні записи буде прийнято і включено до списку.</para>
             <para
->Типове значення: порожній рядок</para>
+>Типове значення: не позначено; порожній рядок</para>
           </listitem>
         </varlistentry>
       </variablelist>
