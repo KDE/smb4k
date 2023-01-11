@@ -163,10 +163,9 @@ msgid "Synchronization"
 msgstr "Synchronizace"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Nastavení připojení"
+msgstr ""
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -657,10 +656,9 @@ msgstr "&Hledat"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Pokročilá nastavení připojení"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -902,6 +900,3 @@ msgstr "Souborový systém:"
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
-
-#~ msgid "Custom Options"
-#~ msgstr "Vlastní možnosti"

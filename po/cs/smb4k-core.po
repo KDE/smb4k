@@ -1847,10 +1847,9 @@ msgid "Print"
 msgstr "Tisknout"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Nastavení připojení"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, kde-format
@@ -3384,6 +3383,3 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
-
-#~ msgid "Custom Options"
-#~ msgstr "Vlastní možnosti"
