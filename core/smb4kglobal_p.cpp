@@ -32,10 +32,10 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 #ifdef Q_OS_LINUX
     //
     // 2023-01-08: Updated to mount.cifs, version 7.0
-    // 
+    //
     // The options 'credentials', 'domainauto', 'intr', 'nointr'
     // and 'snapshot' were not included for various reasons.
-    // 
+    //
     allowedMountArguments << QStringLiteral("idsfromsid");
     allowedMountArguments << QStringLiteral("dynperm");
     allowedMountArguments << QStringLiteral("nostrictsync");

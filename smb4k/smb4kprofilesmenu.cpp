@@ -19,7 +19,7 @@
 #include <KIconThemes/KIconLoader>
 
 Smb4KProfilesMenu::Smb4KProfilesMenu(QObject *parent)
-    : KSelectAction(KDE::icon(QStringLiteral("format-list-unordered")), i18n("Profiles"), parent)
+    : KSelectAction(KDE::icon(QStringLiteral("system-users")), i18n("Profiles"), parent)
 {
     QStringList profiles = Smb4KProfileManager::self()->profilesList();
     slotProfilesListChanged(profiles);

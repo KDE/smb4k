@@ -58,7 +58,7 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
     headerLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *pixmap = new QLabel(header);
-    QPixmap preferencesPixmap = KDE::icon(QStringLiteral("preferences-system-network")).pixmap(KIconLoader::SizeHuge);
+    QPixmap preferencesPixmap = KDE::icon(QStringLiteral("preferences-system-network-share")).pixmap(KIconLoader::SizeHuge);
     pixmap->setPixmap(preferencesPixmap);
     pixmap->setAlignment(Qt::AlignCenter);
 

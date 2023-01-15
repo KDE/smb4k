@@ -75,7 +75,7 @@ void Smb4KProfileMigrationDialog::setupView()
     descriptionLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel *pixmap = new QLabel(description);
-    QPixmap pix = KDE::icon(QStringLiteral("format-list-unordered")).pixmap(KIconLoader::SizeHuge);
+    QPixmap pix = KDE::icon(QStringLiteral("system-users")).pixmap(KIconLoader::SizeHuge);
     pixmap->setPixmap(pix);
     pixmap->setAlignment(Qt::AlignBottom);
 

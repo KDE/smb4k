@@ -377,7 +377,7 @@ void Smb4KBookmarkMenu::adjustMountActions()
         m_toplevelMount->setVisible(false);
         m_toplevelMount->setEnabled(false);
     }
-    
+
     QList<QAction *> allMountActions = m_mountActions->actions();
     QStringList allCategories = Smb4KBookmarkHandler::self()->categoryList();
     int mountedBookmarks = 0;

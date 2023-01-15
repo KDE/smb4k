@@ -188,7 +188,7 @@ void Smb4KSharesMenu::addShareToMenu(const SharePtr &share)
     //
     // Add the custom options action to the menau
     //
-    QAction *addCustomOptions = new QAction(KDE::icon(QStringLiteral("preferences-system-network")), i18n("Add &Custom Settings"), shareMenu->menu());
+    QAction *addCustomOptions = new QAction(KDE::icon(QStringLiteral("preferences-system-network-share")), i18n("Add &Custom Settings"), shareMenu->menu());
 
     QMap<QString, QVariant> customOptionsData;
     customOptionsData[QStringLiteral("type")] = QStringLiteral("options");
