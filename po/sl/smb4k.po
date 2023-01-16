@@ -1,0 +1,997 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the smb4k package.
+#
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-12-07 02:38+0000\n"
+"PO-Revision-Date: 2022-07-10 09:43+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Matjaž Jeran"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "matjaz.jeran@amis.net"
+
+#: helpers/smb4kmounthelper.cpp:163
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "Postopka priklopa ni bilo mogoče začeti."
+
+#: helpers/smb4kmounthelper.cpp:212
+#, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr "Točka priklopa %1 je neveljavna."
+
+#: helpers/smb4kmounthelper.cpp:281
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr "Postopka odklopa ni bilo mogoče začeti."
+
+#: smb4k/main.cpp:59 smb4k/smb4ksystemtray.cpp:77
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:60
+#, kde-format
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr "Napredni omrežni brskalnik in pripomoček Sambe za priklop delov diska"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
+
+#: smb4k/main.cpp:69
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:69
+#, kde-format
+msgid "Developer"
+msgstr "Razvijalec"
+
+#: smb4k/main.cpp:74
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr "Wolfgang Geisendörfer"
+
+#: smb4k/main.cpp:74
+#, kde-format
+msgid "Donator"
+msgstr "Donator"
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "Datoteka"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "Omrežje"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "Deli diska"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "Zaznamki"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "Nastavitve"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Glavna orodna letvica"
+
+#: smb4k/smb4kbookmarkmenu.cpp:48
+#, kde-format
+msgid "Bookmarks"
+msgstr "Zaznamki"
+
+#: smb4k/smb4kbookmarkmenu.cpp:135 smb4k/smb4kbookmarkmenu.cpp:158
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "Uredi zaznamke"
+
+#: smb4k/smb4kbookmarkmenu.cpp:144 smb4k/smb4kmainwindow.cpp:168
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173
+#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "Dodaj zaznamek"
+
+#: smb4k/smb4kbookmarkmenu.cpp:187 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "Priklopi vse zaznamke"
+
+#: smb4k/smb4kconfigdialog.cpp:143
+#, kde-format
+msgid "User Interface"
+msgstr "Uporabniški vmesnik"
+
+#: smb4k/smb4kconfigdialog.cpp:144 smb4k/smb4knetworkbrowser.cpp:60
+#, kde-format
+msgid "Network"
+msgstr "Omrežje"
+
+#: smb4k/smb4kconfigdialog.cpp:145 smb4k/smb4kconfigpagecustomoptions.cpp:576
+#, kde-format
+msgid "Mounting"
+msgstr "Priklapljanje"
+
+#: smb4k/smb4kconfigdialog.cpp:146 smb4k/smb4kconfigpagecustomoptions.cpp:229
+#: smb4k/smb4kconfigpagenetwork.cpp:204
+#, kde-format
+msgid "Authentication"
+msgstr "Overitev"
+
+#: smb4k/smb4kconfigdialog.cpp:147
+#, kde-format
+msgid "Synchronization"
+msgstr "Usklajevanje"
+
+#: smb4k/smb4kconfigdialog.cpp:148
+#, kde-format
+msgid "Custom Options"
+msgstr "Možnosti po meri"
+
+#: smb4k/smb4kconfigdialog.cpp:149 smb4k/smb4kconfigpageprofiles.cpp:61
+#: smb4k/smb4kprofilesmenu.cpp:40
+#, kde-format
+msgid "Profiles"
+msgstr "Profili"
+
+#: smb4k/smb4kconfigdialog.cpp:257 smb4k/smb4kconfigdialog.cpp:288
+#: smb4k/smb4kconfigdialog.cpp:300 smb4k/smb4kconfigdialog.cpp:337
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+"<qt>Najdena je bila napačna nastavitev. Zdaj boste preusmerjeni v ustrezno "
+"stran za nastavitev, da jo popravite.</qt>"
+
+#: smb4k/smb4kconfigdialog.cpp:642
+#, kde-format
+msgid "Enter the default login information."
+msgstr "Vnesite privzete informacije za prijavo."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:60
+#: smb4k/smb4kconfigpageprofiles.cpp:47
+#, kde-format
+msgid "Settings"
+msgstr "Nastavitve"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:84
+#, kde-format
+msgid "Wallet Entries"
+msgstr "Vnosi za listnico"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#: smb4k/smb4kconfigpagecustomoptions.cpp:77
+#, kde-format
+msgid "Edit"
+msgstr "Uredi"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:113
+#: smb4k/smb4kconfigpagecustomoptions.cpp:81
+#, kde-format
+msgid "Remove"
+msgstr "Odstrani"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:120
+#: smb4k/smb4knetworksearchtoolbar.cpp:126
+#, kde-format
+msgid "Clear"
+msgstr "Očisti"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:135
+#, kde-format
+msgid "Load"
+msgstr "Naloži"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:137
+#, kde-format
+msgid ""
+"The login information that was stored by Smb4K will be loaded from the "
+"wallet."
+msgstr "Podatki o prijavi, ki jih je shranil Smb4K, bodo naloženi iz listnice."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:148
+#, kde-format
+msgid "Save"
+msgstr "Shrani"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:150
+#, kde-format
+msgid "All modifications you applied are saved to the wallet."
+msgstr "Vse uveljavljene spremembe, so shranjene v listnici."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:164
+#, kde-format
+msgid "Details"
+msgstr "Podrobnosti"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:237
+#: smb4k/smb4kconfigpageauthentication.cpp:362
+#: smb4k/smb4kconfigpageauthentication.cpp:470
+#: smb4k/smb4kconfigpageauthentication.cpp:497
+#: smb4k/smb4kconfigpageauthentication.cpp:613
+#, kde-format
+msgid "Default Login"
+msgstr "Privzeta prijava"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:358
+#, kde-format
+msgid "Entry"
+msgstr "Vnos"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:330 smb4k/smb4ktooltip.cpp:305
+#, kde-format
+msgid "Workgroup"
+msgstr "Delovna skupina"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:334
+#: smb4k/smb4kconfigpageauthentication.cpp:366
+#, kde-format
+msgid "Login"
+msgstr "Prijava"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:338
+#: smb4k/smb4kconfigpageauthentication.cpp:370
+#, kde-format
+msgid "Password"
+msgstr "Geslo"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:85
+#, kde-format
+msgid "Clear List"
+msgstr "Očisti seznam"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:117
+#, kde-format
+msgid "Identification"
+msgstr "Identifikacija"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:120 smb4k/smb4ktooltip.cpp:370
+#, kde-format
+msgid "Workgroup:"
+msgstr "Delovna skupina:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:130 smb4k/smb4ktooltip.cpp:448
+#: smb4k/smb4ktooltip.cpp:534
+#, kde-format
+msgid "Location:"
+msgstr "Kraj:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:140 smb4k/smb4ktooltip.cpp:358
+#: smb4k/smb4ktooltip.cpp:436
+#, kde-format
+msgid "IP Address:"
+msgstr "IP naslov:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:152
+#, kde-format
+msgid "Network Item"
+msgstr "Predmet mreže"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:168
+#: smb4k/smb4kconfigpagecustomoptions.cpp:321
+#: smb4k/smb4kconfigpagecustomoptions.cpp:506
+#: smb4k/smb4kconfigpagemounting.cpp:164 smb4k/smb4kconfigpagemounting.cpp:572
+#, kde-format
+msgid "Common Options"
+msgstr "Skupne možnosti"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:241
+#: smb4k/smb4kconfigpagenetwork.cpp:57
+#, kde-format
+msgid "Browse Settings"
+msgstr "Brskajte po možnostih"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:253
+#, kde-format
+msgid "MAC Address"
+msgstr "MAC naslov"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:257
+#, kde-format
+msgid "MAC Address:"
+msgstr "MAC naslov:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:270
+#, kde-format
+msgid "Actions"
+msgstr "Dejavnosti"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:274
+#, kde-format
+msgid "Send magic package before scanning the network neighborhood"
+msgstr "Pred pregledovanjem sosedstva omrežja pošlji čarobni paket"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:280
+#, kde-format
+msgid "Send magic package before mounting a share"
+msgstr "Pred priklopom dela diska pošlji čarobni paket"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:288
+#: smb4k/smb4kconfigpagenetwork.cpp:303
+#, kde-format
+msgid "Wake-On-LAN Settings"
+msgstr "Nastavitve Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:324
+#: smb4k/smb4kconfigpagecustomoptions.cpp:509
+#, kde-format
+msgid "Always remount this share"
+msgstr "Vedno ponovno priklopi ta del"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:364
+#: smb4k/smb4kconfigpagemounting.cpp:216
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr "Podpora razširitev CIFS Unix"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:367
+#, kde-format
+msgid "This server supports the CIFS Unix extensions"
+msgstr "Ta strežnik podpira razširitve CIFS Unix"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:433
+#: smb4k/smb4kconfigpagemounting.cpp:326
+#, kde-format
+msgid "Common Mount Settings"
+msgstr "Skupne nastavitve priklopa"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:444
+#: smb4k/smb4kconfigpagemounting.cpp:334
+#, kde-format
+msgid "Advanced Options"
+msgstr "Napredne možnosti"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:484
+#: smb4k/smb4kconfigpagemounting.cpp:463
+#, kde-format
+msgid "Advanced Mount Settings"
+msgstr "Napredne nastavitve priklopa"
+
+#: smb4k/smb4kconfigpagemounting.cpp:83 smb4k/smb4kconfigpagemounting.cpp:495
+#, kde-format
+msgid "Directories"
+msgstr "Imeniki"
+
+#: smb4k/smb4kconfigpagemounting.cpp:105 smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagenetwork.cpp:137
+#: smb4k/smb4kconfigpagesynchronization.cpp:68
+#, kde-format
+msgid "Behavior"
+msgstr "Obnašanje"
+
+#: smb4k/smb4kconfigpagemounting.cpp:125 smb4k/smb4kconfigpagemounting.cpp:537
+#, kde-format
+msgid " min"
+msgstr " min"
+
+#: smb4k/smb4kconfigpagemounting.cpp:153 smb4k/smb4kconfigpagemounting.cpp:561
+#: smb4k/smb4kconfigpagenetwork.cpp:157
+#: smb4k/smb4kconfigpagesynchronization.cpp:116
+#, kde-format
+msgid "Basic Settings"
+msgstr "Osnovne nastavitve"
+
+#: smb4k/smb4kconfigpagemounting.cpp:242 smb4k/smb4kconfigpagemounting.cpp:592
+#, kde-format
+msgid "Choose a different user"
+msgstr "Izberite drugega uporabnika"
+
+#: smb4k/smb4kconfigpagemounting.cpp:279 smb4k/smb4kconfigpagemounting.cpp:629
+#, kde-format
+msgid "Choose a different group"
+msgstr "Izberite drugo skupino"
+
+#: smb4k/smb4kconfigpagemounting.cpp:450
+#, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "Uredi dodatne možnosti CIFS."
+
+#: smb4k/smb4kconfigpagemounting.cpp:676
+#, kde-format
+msgid "Character Sets"
+msgstr "Nabor znakov"
+
+#: smb4k/smb4kconfigpagemounting.cpp:726
+#, kde-format
+msgid "Mount Settings"
+msgstr "Nastavitve priklopa"
+
+#: smb4k/smb4kconfigpagemounting.cpp:845
+#, kde-format
+msgid "Additional CIFS Options"
+msgstr "Dodatne možnosti CIFS"
+
+#: smb4k/smb4kconfigpagemounting.cpp:845
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr "<qt>Vnesite želene možnosti kot seznam, ločen z vejicami:</qt>"
+
+#: smb4k/smb4kconfigpagemounting.cpp:874
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+"<qt>Iz dodatnih možnosti bo odstranjen %1 naslednji vnos: %2. Za podrobnosti "
+"preberite priročnik.</qt>"
+msgstr[1] ""
+"<qt>Naslednja %1 vnosa bosta odstranjena iz dodatnih možnosti: %2. Za "
+"podrobnosti preberite priročnik.</qt>"
+msgstr[2] ""
+"<qt>Naslednji %1 vnosi bodo odstranjeni iz dodatnih možnosti: %2. Za "
+"podrobnosti preberite priročnik.</qt>"
+msgstr[3] ""
+"<qt>Naslednji %1 vnosov bodo odstranjenih iz dodatnih možnosti: %2. Za "
+"podrobnosti preberite priročnik.</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:168
+#, kde-format
+msgid "Common Settings"
+msgstr "Skupne nastavitve"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:223
+#, kde-format
+msgid "Security"
+msgstr "Varnost"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:248
+#, kde-format
+msgid "Samba Settings"
+msgstr "Nastavitve Sambe"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:259
+#, kde-format
+msgid "Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:271
+#, kde-format
+msgid " s"
+msgstr " s"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:286
+#, kde-format
+msgid ""
+"<qt>Define the hosts that should be woken up via the custom options dialog.</"
+"qt>"
+msgstr ""
+"<qt>V pogovornem oknu z možnostmi po meri določite gostitelje, ki jih je "
+"treba prebuditi.</qt>"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:55
+#, kde-format
+msgid "Default Destination"
+msgstr "Privzeti cilj"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:89
+#, kde-format
+msgid "Backup"
+msgstr "Varnostna kopija"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:125
+#: smb4k/smb4kconfigpagesynchronization.cpp:348
+#, kde-format
+msgid "General"
+msgstr "Splošno"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:149
+#, kde-format
+msgid "Links"
+msgstr "Povezave"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:179
+#, kde-format
+msgid "Permissions, etc."
+msgstr "Dovoljenja, itd."
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:207
+#, kde-format
+msgid "File Handling"
+msgstr "Delo z datotekami"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:216
+#, kde-format
+msgid "Compression"
+msgstr "Stiskanje"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:238
+#, kde-format
+msgid "Files"
+msgstr "Datoteke"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:245
+#: smb4k/smb4kconfigpagesynchronization.cpp:250
+#, kde-format
+msgid " KiB"
+msgstr " KiB"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#: smb4k/smb4kconfigpagesynchronization.cpp:440
+#: smb4k/smb4kconfigpagesynchronization.cpp:455
+#, kde-format
+msgid "Miscellaneous"
+msgstr "Razno"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:275
+#, kde-format
+msgid " KiB/s"
+msgstr " KiB/s"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:285
+#, kde-format
+msgid "File Transfer"
+msgstr "Prenos datotek"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:294
+#, kde-format
+msgid "Files && Directories"
+msgstr "Datoteke in imeniki"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:324
+#, kde-format
+msgid "Restrictions"
+msgstr "Omejitve"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:339
+#, kde-format
+msgid "File Deletion"
+msgstr "Brisanje datotek"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:385
+#, kde-format
+msgid "Filter Rules"
+msgstr "Pravila filtriranja"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:393
+#, kde-format
+msgid "Special filter rules:"
+msgstr "Posebna pravila filtra:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:409
+#, kde-format
+msgid "Filtering"
+msgstr "Filtriranje"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:418
+#, kde-format
+msgid "Checksums"
+msgstr "Kontrolne vsote"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:56
+#, kde-format
+msgid "Main Window"
+msgstr "Glavno okno"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:86 smb4k/smb4kmainwindow.cpp:242
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Sosedstvo omrežja"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:119
+#, kde-format
+msgid "Shares View"
+msgstr "Pogled delov diskov"
+
+#: smb4k/smb4kmainwindow.cpp:158
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Zasidraj gradnike"
+
+#: smb4k/smb4kmainwindow.cpp:265 smb4k/smb4ksharesmenu.cpp:56
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Priklopljeni deli"
+
+#: smb4k/smb4kmainwindow.cpp:449
+#, kde-format
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<qt>Ob zaprtju glavnega okna, bo Smb4K nadaljeval svoj tek v sistemskem "
+"pladnju. Uporabite <i>Izhod </i>aplikacijo iz menija <i>Datoteka</i> da "
+"zapustite aplikacijo.</qt>"
+
+#: smb4k/smb4kmainwindow.cpp:451
+#, kde-format
+msgid "Docking"
+msgstr "Sidranje"
+
+#: smb4k/smb4kmainwindow.cpp:528
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr "Trenutno ni nobenega priklopljenega dela."
+
+#: smb4k/smb4kmainwindow.cpp:533
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "Trenutno je priklopljen %1 del."
+msgstr[1] "Trenutno sta priklopljena %1 dela."
+msgstr[2] "Trenutno so priklopljeni %1 deli."
+msgstr[3] "Trenutno je priklopljenih %1 delov."
+
+#: smb4k/smb4kmainwindow.cpp:736
+#, kde-format
+msgid "The wallet is used."
+msgstr "Uporabljena je listnica."
+
+#: smb4k/smb4kmainwindow.cpp:742
+#, kde-format
+msgid "The password dialog is used."
+msgstr "Uporabljen je pogovor za pridobitev gesla."
+
+#: smb4k/smb4kmainwindow.cpp:755
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Pregledovanje za delovnimi skupinami in domenami..."
+
+#: smb4k/smb4kmainwindow.cpp:761
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Pregledovanje za gostitelji in domenami %1..."
+
+#: smb4k/smb4kmainwindow.cpp:767
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "Pregledovanje za deli diskov, ki jih zagotavljajo gostitelji %1..."
+
+#: smb4k/smb4kmainwindow.cpp:778 smb4k/smb4kmainwindow.cpp:789
+#, kde-format
+msgid "Looking for files and directories in %1..."
+msgstr "Pregledovanje za datotekami in imeniki v %1..."
+
+#: smb4k/smb4kmainwindow.cpp:808
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr "Zbujanje oddaljenih gostiteljev..."
+
+#: smb4k/smb4kmainwindow.cpp:814
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Pošiljanje datotek na tiskalnik %1..."
+
+#: smb4k/smb4kmainwindow.cpp:819
+#, kde-format
+msgid "Searching..."
+msgstr "Iskanje..."
+
+#: smb4k/smb4kmainwindow.cpp:841 smb4k/smb4kmainwindow.cpp:887
+#: smb4k/smb4kmainwindow.cpp:1039
+#, kde-format
+msgid "Done."
+msgstr "Dokončano."
+
+#: smb4k/smb4kmainwindow.cpp:854
+#, kde-format
+msgid "Mounting..."
+msgstr "Priklapljanje..."
+
+#: smb4k/smb4kmainwindow.cpp:859
+#, kde-format
+msgid "Unmounting..."
+msgstr "Odklapljanje..."
+
+#: smb4k/smb4kmainwindow.cpp:864
+#, kde-format
+msgid "Waking up host..."
+msgstr "Zbujanje gostitelja..."
+
+#: smb4k/smb4kmainwindow.cpp:901
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "%1 je bil uspešno priklopljen."
+
+#: smb4k/smb4kmainwindow.cpp:947
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "%1 je bil uspešno odklopljen."
+
+#: smb4k/smb4kmainwindow.cpp:1024
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "Usklajevanje %1"
+
+#: smb4k/smb4knetworkbrowser.cpp:61
+#, kde-format
+msgid "Type"
+msgstr "Vrsta"
+
+#: smb4k/smb4knetworkbrowser.cpp:62
+#, kde-format
+msgid "IP Address"
+msgstr "IP naslov"
+
+#: smb4k/smb4knetworkbrowser.cpp:63
+#, kde-format
+msgid "Comment"
+msgstr "Komentar"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:141
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:534
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:548
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "Preišči omrežje"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:143
+#, kde-format
+msgid "&Abort"
+msgstr "Prekliči"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:155
+#, kde-format
+msgid "&Search"
+msgstr "Išči"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:185 smb4k/smb4ksystemtray.cpp:93
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "Odpri pogovor o priklopu"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
+#, kde-format
+msgid "Au&thentication"
+msgstr "Overjanje"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:215
+#, kde-format
+msgid "&Custom Options"
+msgstr "Možnosti po meri"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#, kde-format
+msgid "Pre&view"
+msgstr "Predogled"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:237
+#, kde-format
+msgid "&Print File"
+msgstr "Tiskaj datoteko"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:249
+#, kde-format
+msgid "&Mount"
+msgstr "Priklopi"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:250
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#, kde-format
+msgid "&Unmount"
+msgstr "Odklopi"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:441
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Preišči računalnik"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:493
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Preišči delovno skupino"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:59
+#, kde-format
+msgid "Close"
+msgstr "Zapri"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:70
+#, kde-format
+msgid "Search string"
+msgstr "Išči niz"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:85
+#, kde-format
+msgid "Search"
+msgstr "Išči"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:87
+#, kde-format
+msgid "Stop"
+msgstr "Ustavi"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:100
+#, kde-format
+msgid "Item Down"
+msgstr "Postavka navzdol"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:113
+#, kde-format
+msgid "Item Up"
+msgstr "Postavka navzgor"
+
+#: smb4k/smb4ksharesmenu.cpp:124 smb4k/smb4ksharesviewdockwidget.cpp:231
+#, kde-format
+msgid "U&nmount All"
+msgstr "Odklopi vse"
+
+#: smb4k/smb4ksharesmenu.cpp:161
+#, kde-format
+msgid "Unmount"
+msgstr "Odklopi"
+
+#: smb4k/smb4ksharesmenu.cpp:176
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Dodaj zaznamek"
+
+#: smb4k/smb4ksharesmenu.cpp:187
+#, kde-format
+msgid "Synchronize"
+msgstr "Uskladi"
+
+#: smb4k/smb4ksharesmenu.cpp:202
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Odpri v konzoli"
+
+#: smb4k/smb4ksharesmenu.cpp:214
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Odpri z upravljalnikom datotek"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#, kde-format
+msgid "View Modes"
+msgstr "Načini pogledov"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:192
+#, kde-format
+msgid "Icon View"
+msgstr "Pogled ikon"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#, kde-format
+msgid "List View"
+msgstr "Pogled seznama"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:243
+#, kde-format
+msgid "S&ynchronize"
+msgstr "Uskladi"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Odpri s konzolo"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Odpri z upravljalnikom datotek"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:431
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+"<qt>Ni dejavne povezave z delom <b>%1</b>! Tu ne morete spustiti nobene "
+"datoteke.</qt>"
+
+#: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
+#, kde-format
+msgid "yes"
+msgstr "da"
+
+#: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
+#, kde-format
+msgid "no"
+msgstr "ne"
+
+#: smb4k/smb4ktooltip.cpp:288
+#, kde-format
+msgid "Type:"
+msgstr "Vrsta:"
+
+#: smb4k/smb4ktooltip.cpp:308
+#, kde-format
+msgid "Master Browser:"
+msgstr "Matični brskalnik:"
+
+#: smb4k/smb4ktooltip.cpp:343
+#, kde-format
+msgid "Host"
+msgstr "Gostitelj"
+
+#: smb4k/smb4ktooltip.cpp:346 smb4k/smb4ktooltip.cpp:391
+#, kde-format
+msgid "Comment:"
+msgstr "Komentar:"
+
+#: smb4k/smb4ktooltip.cpp:388
+#, kde-format
+msgid "Share (%1)"
+msgstr "Del (%1)"
+
+#: smb4k/smb4ktooltip.cpp:403
+#, kde-format
+msgid "Mounted:"
+msgstr "Priklopljen:"
+
+#: smb4k/smb4ktooltip.cpp:425
+#, kde-format
+msgid "Host:"
+msgstr "Gostitelj:"
+
+#: smb4k/smb4ktooltip.cpp:486 smb4k/smb4ktooltip.cpp:496
+#: smb4k/smb4ktooltip.cpp:561 smb4k/smb4ktooltip.cpp:573
+#: smb4k/smb4ktooltip.cpp:574 smb4k/smb4ktooltip.cpp:606
+#, kde-format
+msgid "unknown"
+msgstr "neznano"
+
+#: smb4k/smb4ktooltip.cpp:492 smb4k/smb4ktooltip.cpp:602
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 prosto od %2 (%3 porabljeno)"
+
+#: smb4k/smb4ktooltip.cpp:545
+#, kde-format
+msgid "Mountpoint:"
+msgstr "Točka priklopa:"
+
+#: smb4k/smb4ktooltip.cpp:556
+#, kde-format
+msgid "Login:"
+msgstr "Prijava:"
+
+#: smb4k/smb4ktooltip.cpp:568
+#, kde-format
+msgid "Owner:"
+msgstr "Lastnik:"
+
+#: smb4k/smb4ktooltip.cpp:582
+#, kde-format
+msgid "File system:"
+msgstr "Datotečni sistem:"
+
+#: smb4k/smb4ktooltip.cpp:593
+#, kde-format
+msgid "Size:"
+msgstr "Velikost:"

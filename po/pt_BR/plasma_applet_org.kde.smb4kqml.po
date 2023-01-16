@@ -1,0 +1,103 @@
+# Translation of plasma_applet_smb4k-qml.po to Brazilian Portuguese
+# Copyright (C) 2014 This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# André Marcelo Alvarenga <alvarenga@kde.org>, 2014.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2018, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma_applet_smb4k-qml\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-08-30 07:39+0200\n"
+"PO-Revision-Date: 2019-06-11 10:16-0300\n"
+"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 19.04.1\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:72
+#: package/contents/ui/SharesViewItemDelegate.qml:72
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">em %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:46
+msgid "Go back"
+msgstr "Voltar"
+
+#: package/contents/ui/BookmarksPage.qml:55
+msgid "Edit bookmarks"
+msgstr "Editar favoritos"
+
+#: package/contents/ui/ConfigurationPage.qml:35
+msgid "Configuration Dialog"
+msgstr "Diálogo de configuração"
+
+#: package/contents/ui/main.qml:30 package/contents/ui/PopupDialog.qml:46
+msgid "Network Neighborhood"
+msgstr "Vizinhança na rede"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:105
+#: package/contents/ui/SharesViewItemDelegate.qml:89
+msgid "Bookmark"
+msgstr "Favoritos"
+
+#: package/contents/ui/NetworkBrowserPage.qml:51
+msgid "Rescan"
+msgstr "Reanalisar"
+
+#: package/contents/ui/NetworkBrowserPage.qml:60
+msgid "Abort"
+msgstr "Cancelar"
+
+#: package/contents/ui/NetworkBrowserPage.qml:69
+msgid "Go one level up"
+msgstr "Ir um nível acima"
+
+#: package/contents/ui/NetworkBrowserPage.qml:78
+msgid "Open the mount dialog"
+msgstr "Abrir janela de montagem"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Mounted Shares"
+msgstr "Compartilhamentos montados"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Bookmarks"
+msgstr "Favoritos"
+
+#: package/contents/ui/PopupDialog.qml:67
+msgid "Profiles"
+msgstr "Perfis"
+
+#: package/contents/ui/PopupDialog.qml:74
+msgid "Configuration"
+msgstr "Configuração"
+
+#: package/contents/ui/ProfileItemDelegate.qml:65
+msgid "(active)"
+msgstr "(ativo)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:110
+msgid "Synchronize"
+msgstr "Sincronizar"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:131
+msgid "Unmount"
+msgstr "Desmontar"
+
+#: package/contents/ui/SharesViewPage.qml:47
+msgid "Unmount all shares"
+msgstr "Desmontar todos os compartilhamentos"
+
+#~ msgid "Back"
+#~ msgstr "Voltar"
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "Up"
+#~ msgstr "Para cima"

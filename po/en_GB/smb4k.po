@@ -1,0 +1,4766 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Andrew Coles <andrew_coles@yahoo.co.uk>, 2009, 2010.
+# Steve Allewell <steve.allewell@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-12-07 02:38+0000\n"
+"PO-Revision-Date: 2022-07-22 19:40+0100\n"
+"Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
+"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.04.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Steve Allewell"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "steve.allewell@gmail.com"
+
+#: helpers/smb4kmounthelper.cpp:163
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "The mount process could not be started."
+
+#: helpers/smb4kmounthelper.cpp:212
+#, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr "The mountpoint %1 is invalid."
+
+#: helpers/smb4kmounthelper.cpp:281
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr "The unmount process could not be started."
+
+#: smb4k/main.cpp:59 smb4k/smb4ksystemtray.cpp:77
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:60
+#, kde-format
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr ""
+"Advanced network neighbourhood browser and Samba share mounting utility"
+
+#: smb4k/main.cpp:61
+#, kde-format
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
+
+#: smb4k/main.cpp:69
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:69
+#, kde-format
+msgid "Developer"
+msgstr "Developer"
+
+#: smb4k/main.cpp:74
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr "Wolfgang Geisendörfer"
+
+#: smb4k/main.cpp:74
+#, kde-format
+msgid "Donator"
+msgstr "Donator"
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&File"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Network"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "Sh&ares"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "&Bookmarks"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "&Settings"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Main Toolbar"
+
+#: smb4k/smb4kbookmarkmenu.cpp:48
+#, kde-format
+msgid "Bookmarks"
+msgstr "Bookmarks"
+
+#: smb4k/smb4kbookmarkmenu.cpp:135 smb4k/smb4kbookmarkmenu.cpp:158
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Edit Bookmarks"
+
+#: smb4k/smb4kbookmarkmenu.cpp:144 smb4k/smb4kmainwindow.cpp:168
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173
+#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "Add &Bookmark"
+
+#: smb4k/smb4kbookmarkmenu.cpp:187 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "Mount All Bookmarks"
+
+#: smb4k/smb4kconfigdialog.cpp:143
+#, kde-format
+msgid "User Interface"
+msgstr "User Interface"
+
+#: smb4k/smb4kconfigdialog.cpp:144 smb4k/smb4knetworkbrowser.cpp:60
+#, kde-format
+msgid "Network"
+msgstr "Network"
+
+#: smb4k/smb4kconfigdialog.cpp:145 smb4k/smb4kconfigpagecustomoptions.cpp:576
+#, kde-format
+msgid "Mounting"
+msgstr "Mounting"
+
+#: smb4k/smb4kconfigdialog.cpp:146 smb4k/smb4kconfigpagecustomoptions.cpp:229
+#: smb4k/smb4kconfigpagenetwork.cpp:204
+#, kde-format
+msgid "Authentication"
+msgstr "Authentication"
+
+#: smb4k/smb4kconfigdialog.cpp:147
+#, kde-format
+msgid "Synchronization"
+msgstr "Synchronisation"
+
+#: smb4k/smb4kconfigdialog.cpp:148
+#, kde-format
+msgid "Custom Options"
+msgstr "Custom Options"
+
+#: smb4k/smb4kconfigdialog.cpp:149 smb4k/smb4kconfigpageprofiles.cpp:61
+#: smb4k/smb4kprofilesmenu.cpp:40
+#, kde-format
+msgid "Profiles"
+msgstr "Profiles"
+
+#: smb4k/smb4kconfigdialog.cpp:257 smb4k/smb4kconfigdialog.cpp:288
+#: smb4k/smb4kconfigdialog.cpp:300 smb4k/smb4kconfigdialog.cpp:337
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+
+#: smb4k/smb4kconfigdialog.cpp:642
+#, kde-format
+msgid "Enter the default login information."
+msgstr "Enter the default login information."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:60
+#: smb4k/smb4kconfigpageprofiles.cpp:47
+#, kde-format
+msgid "Settings"
+msgstr "Settings"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:84
+#, kde-format
+msgid "Wallet Entries"
+msgstr "Wallet Entries"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#: smb4k/smb4kconfigpagecustomoptions.cpp:77
+#, kde-format
+msgid "Edit"
+msgstr "Edit"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:113
+#: smb4k/smb4kconfigpagecustomoptions.cpp:81
+#, kde-format
+msgid "Remove"
+msgstr "Remove"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:120
+#: smb4k/smb4knetworksearchtoolbar.cpp:126
+#, kde-format
+msgid "Clear"
+msgstr "Clear"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:135
+#, kde-format
+msgid "Load"
+msgstr "Load"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:137
+#, kde-format
+msgid ""
+"The login information that was stored by Smb4K will be loaded from the "
+"wallet."
+msgstr ""
+"The login information that was stored by Smb4K will be loaded from the "
+"wallet."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:148
+#, kde-format
+msgid "Save"
+msgstr "Save"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:150
+#, kde-format
+msgid "All modifications you applied are saved to the wallet."
+msgstr "All modifications you applied are saved to the wallet."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:164
+#, kde-format
+msgid "Details"
+msgstr "Details"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:237
+#: smb4k/smb4kconfigpageauthentication.cpp:362
+#: smb4k/smb4kconfigpageauthentication.cpp:470
+#: smb4k/smb4kconfigpageauthentication.cpp:497
+#: smb4k/smb4kconfigpageauthentication.cpp:613
+#, kde-format
+msgid "Default Login"
+msgstr "Default Login"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:358
+#, kde-format
+msgid "Entry"
+msgstr "Entry"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:330 smb4k/smb4ktooltip.cpp:305
+#, kde-format
+msgid "Workgroup"
+msgstr "Workgroup"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:334
+#: smb4k/smb4kconfigpageauthentication.cpp:366
+#, kde-format
+msgid "Login"
+msgstr "Login"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:338
+#: smb4k/smb4kconfigpageauthentication.cpp:370
+#, kde-format
+msgid "Password"
+msgstr "Password"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:85
+#, kde-format
+msgid "Clear List"
+msgstr "Clear List"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:117
+#, kde-format
+msgid "Identification"
+msgstr "Identification"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:120 smb4k/smb4ktooltip.cpp:370
+#, kde-format
+msgid "Workgroup:"
+msgstr "Workgroup:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:130 smb4k/smb4ktooltip.cpp:448
+#: smb4k/smb4ktooltip.cpp:534
+#, kde-format
+msgid "Location:"
+msgstr "Location:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:140 smb4k/smb4ktooltip.cpp:358
+#: smb4k/smb4ktooltip.cpp:436
+#, kde-format
+msgid "IP Address:"
+msgstr "IP Address:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:152
+#, kde-format
+msgid "Network Item"
+msgstr "Network Item"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:168
+#: smb4k/smb4kconfigpagecustomoptions.cpp:321
+#: smb4k/smb4kconfigpagecustomoptions.cpp:506
+#: smb4k/smb4kconfigpagemounting.cpp:164 smb4k/smb4kconfigpagemounting.cpp:572
+#, kde-format
+msgid "Common Options"
+msgstr "Common Options"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:241
+#: smb4k/smb4kconfigpagenetwork.cpp:57
+#, kde-format
+msgid "Browse Settings"
+msgstr "Browse Settings"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:253
+#, kde-format
+msgid "MAC Address"
+msgstr "MAC Address"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:257
+#, kde-format
+msgid "MAC Address:"
+msgstr "MAC Address:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:270
+#, kde-format
+msgid "Actions"
+msgstr "Actions"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:274
+#, kde-format
+msgid "Send magic package before scanning the network neighborhood"
+msgstr "Send magic packet before scanning the network neighbourhood"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:280
+#, kde-format
+msgid "Send magic package before mounting a share"
+msgstr "Send magic packet before mounting a share"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:288
+#: smb4k/smb4kconfigpagenetwork.cpp:303
+#, kde-format
+msgid "Wake-On-LAN Settings"
+msgstr "Wake-On-LAN Settings"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:324
+#: smb4k/smb4kconfigpagecustomoptions.cpp:509
+#, kde-format
+msgid "Always remount this share"
+msgstr "Always remount this share"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:364
+#: smb4k/smb4kconfigpagemounting.cpp:216
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr "CIFS Unix Extensions Support"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:367
+#, kde-format
+msgid "This server supports the CIFS Unix extensions"
+msgstr "This server supports the CIFS Unix extensions"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:433
+#: smb4k/smb4kconfigpagemounting.cpp:326
+#, kde-format
+msgid "Common Mount Settings"
+msgstr "Common Mount Settings"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:444
+#: smb4k/smb4kconfigpagemounting.cpp:334
+#, kde-format
+msgid "Advanced Options"
+msgstr "Advanced Options"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:484
+#: smb4k/smb4kconfigpagemounting.cpp:463
+#, kde-format
+msgid "Advanced Mount Settings"
+msgstr "Advanced Mount Settings"
+
+#: smb4k/smb4kconfigpagemounting.cpp:83 smb4k/smb4kconfigpagemounting.cpp:495
+#, kde-format
+msgid "Directories"
+msgstr "Directories"
+
+#: smb4k/smb4kconfigpagemounting.cpp:105 smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagenetwork.cpp:137
+#: smb4k/smb4kconfigpagesynchronization.cpp:68
+#, kde-format
+msgid "Behavior"
+msgstr "Behaviour"
+
+#: smb4k/smb4kconfigpagemounting.cpp:125 smb4k/smb4kconfigpagemounting.cpp:537
+#, kde-format
+msgid " min"
+msgstr " min"
+
+#: smb4k/smb4kconfigpagemounting.cpp:153 smb4k/smb4kconfigpagemounting.cpp:561
+#: smb4k/smb4kconfigpagenetwork.cpp:157
+#: smb4k/smb4kconfigpagesynchronization.cpp:116
+#, kde-format
+msgid "Basic Settings"
+msgstr "Basic Settings"
+
+#: smb4k/smb4kconfigpagemounting.cpp:242 smb4k/smb4kconfigpagemounting.cpp:592
+#, kde-format
+msgid "Choose a different user"
+msgstr "Choose a different user"
+
+#: smb4k/smb4kconfigpagemounting.cpp:279 smb4k/smb4kconfigpagemounting.cpp:629
+#, kde-format
+msgid "Choose a different group"
+msgstr "Choose a different group"
+
+#: smb4k/smb4kconfigpagemounting.cpp:450
+#, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "Edit the additional CIFS options."
+
+#: smb4k/smb4kconfigpagemounting.cpp:676
+#, kde-format
+msgid "Character Sets"
+msgstr "Character Sets"
+
+#: smb4k/smb4kconfigpagemounting.cpp:726
+#, kde-format
+msgid "Mount Settings"
+msgstr "Mount Settings"
+
+#: smb4k/smb4kconfigpagemounting.cpp:845
+#, kde-format
+msgid "Additional CIFS Options"
+msgstr "Additional CIFS Options"
+
+#: smb4k/smb4kconfigpagemounting.cpp:845
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr "<qt>Enter the desired options as a comma separated list:</qt>"
+
+#: smb4k/smb4kconfigpagemounting.cpp:874
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgstr[1] ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:168
+#, kde-format
+msgid "Common Settings"
+msgstr "Common Settings"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:223
+#, kde-format
+msgid "Security"
+msgstr "Security"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:248
+#, kde-format
+msgid "Samba Settings"
+msgstr "Samba Settings"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:259
+#, kde-format
+msgid "Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:271
+#, kde-format
+msgid " s"
+msgstr " s"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:286
+#, kde-format
+msgid ""
+"<qt>Define the hosts that should be woken up via the custom options dialog.</"
+"qt>"
+msgstr ""
+"<qt>Define the hosts that should be woken up via the custom options dialogue."
+"</qt>"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:55
+#, kde-format
+msgid "Default Destination"
+msgstr "Default Destination"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:89
+#, kde-format
+msgid "Backup"
+msgstr "Backup"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:125
+#: smb4k/smb4kconfigpagesynchronization.cpp:348
+#, kde-format
+msgid "General"
+msgstr "General"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:149
+#, kde-format
+msgid "Links"
+msgstr "Links"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:179
+#, kde-format
+msgid "Permissions, etc."
+msgstr "Permissions, etc."
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:207
+#, kde-format
+msgid "File Handling"
+msgstr "File Handling"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:216
+#, kde-format
+msgid "Compression"
+msgstr "Compression"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:238
+#, kde-format
+msgid "Files"
+msgstr "Files"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:245
+#: smb4k/smb4kconfigpagesynchronization.cpp:250
+#, kde-format
+msgid " KiB"
+msgstr " KiB"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#: smb4k/smb4kconfigpagesynchronization.cpp:440
+#: smb4k/smb4kconfigpagesynchronization.cpp:455
+#, kde-format
+msgid "Miscellaneous"
+msgstr "Miscellaneous"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:275
+#, kde-format
+msgid " KiB/s"
+msgstr " KiB/s"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:285
+#, kde-format
+msgid "File Transfer"
+msgstr "File Transfer"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:294
+#, kde-format
+msgid "Files && Directories"
+msgstr "Files && Directories"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:324
+#, kde-format
+msgid "Restrictions"
+msgstr "Restrictions"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:339
+#, kde-format
+msgid "File Deletion"
+msgstr "File Deletion"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:385
+#, kde-format
+msgid "Filter Rules"
+msgstr "Filter Rules"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:393
+#, kde-format
+msgid "Special filter rules:"
+msgstr "Special filter rules:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:409
+#, kde-format
+msgid "Filtering"
+msgstr "Filtering"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:418
+#, kde-format
+msgid "Checksums"
+msgstr "Checksums"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:56
+#, kde-format
+msgid "Main Window"
+msgstr "Main Window"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:86 smb4k/smb4kmainwindow.cpp:242
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Network Neighbourhood"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:119
+#, kde-format
+msgid "Shares View"
+msgstr "Shares View"
+
+#: smb4k/smb4kmainwindow.cpp:158
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Dock Widgets"
+
+#: smb4k/smb4kmainwindow.cpp:265 smb4k/smb4ksharesmenu.cpp:56
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Mounted Shares"
+
+#: smb4k/smb4kmainwindow.cpp:449
+#, kde-format
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+
+#: smb4k/smb4kmainwindow.cpp:451
+#, kde-format
+msgid "Docking"
+msgstr "Docking"
+
+#: smb4k/smb4kmainwindow.cpp:528
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr "There are currently no shares mounted."
+
+#: smb4k/smb4kmainwindow.cpp:533
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "There is currently %1 share mounted."
+msgstr[1] "There are currently %1 shares mounted."
+
+#: smb4k/smb4kmainwindow.cpp:736
+#, kde-format
+msgid "The wallet is used."
+msgstr "The wallet is used."
+
+#: smb4k/smb4kmainwindow.cpp:742
+#, kde-format
+msgid "The password dialog is used."
+msgstr "The password dialogue is used."
+
+#: smb4k/smb4kmainwindow.cpp:755
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Looking for workgroups and domains..."
+
+#: smb4k/smb4kmainwindow.cpp:761
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Looking for hosts in domain %1..."
+
+#: smb4k/smb4kmainwindow.cpp:767
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "Looking for shares provided by host %1..."
+
+#: smb4k/smb4kmainwindow.cpp:778 smb4k/smb4kmainwindow.cpp:789
+#, kde-format
+msgid "Looking for files and directories in %1..."
+msgstr "Looking for files and directories in %1..."
+
+#: smb4k/smb4kmainwindow.cpp:808
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr "Waking up remote hosts..."
+
+#: smb4k/smb4kmainwindow.cpp:814
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Sending file to printer %1..."
+
+#: smb4k/smb4kmainwindow.cpp:819
+#, kde-format
+msgid "Searching..."
+msgstr "Searching..."
+
+#: smb4k/smb4kmainwindow.cpp:841 smb4k/smb4kmainwindow.cpp:887
+#: smb4k/smb4kmainwindow.cpp:1039
+#, kde-format
+msgid "Done."
+msgstr "Done."
+
+#: smb4k/smb4kmainwindow.cpp:854
+#, kde-format
+msgid "Mounting..."
+msgstr "Mounting..."
+
+#: smb4k/smb4kmainwindow.cpp:859
+#, kde-format
+msgid "Unmounting..."
+msgstr "Unmounting..."
+
+#: smb4k/smb4kmainwindow.cpp:864
+#, kde-format
+msgid "Waking up host..."
+msgstr "Waking up host..."
+
+#: smb4k/smb4kmainwindow.cpp:901
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "%1 has been mounted successfully."
+
+#: smb4k/smb4kmainwindow.cpp:947
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "%1 has been unmounted successfully."
+
+#: smb4k/smb4kmainwindow.cpp:1024
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "Synchronising %1"
+
+#: smb4k/smb4knetworkbrowser.cpp:61
+#, kde-format
+msgid "Type"
+msgstr "Type"
+
+#: smb4k/smb4knetworkbrowser.cpp:62
+#, kde-format
+msgid "IP Address"
+msgstr "IP Address"
+
+#: smb4k/smb4knetworkbrowser.cpp:63
+#, kde-format
+msgid "Comment"
+msgstr "Comment"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:141
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:534
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:548
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "Scan Netwo&rk"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:143
+#, kde-format
+msgid "&Abort"
+msgstr "&Abort"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:155
+#, kde-format
+msgid "&Search"
+msgstr "&Search"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:185 smb4k/smb4ksystemtray.cpp:93
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "&Open Mount Dialogue"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
+#, kde-format
+msgid "Au&thentication"
+msgstr "Au&thentication"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:215
+#, kde-format
+msgid "&Custom Options"
+msgstr "&Custom Options"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#, kde-format
+msgid "Pre&view"
+msgstr "Pre&view"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:237
+#, kde-format
+msgid "&Print File"
+msgstr "&Print File"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:249
+#, kde-format
+msgid "&Mount"
+msgstr "&Mount"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:250
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#, kde-format
+msgid "&Unmount"
+msgstr "&Unmount"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:441
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Scan Compute&r"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:493
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Scan Wo&rkgroup"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:59
+#, kde-format
+msgid "Close"
+msgstr "Close"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:70
+#, kde-format
+msgid "Search string"
+msgstr "Search string"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:85
+#, kde-format
+msgid "Search"
+msgstr "Search"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:87
+#, kde-format
+msgid "Stop"
+msgstr "Stop"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:100
+#, kde-format
+msgid "Item Down"
+msgstr "Item Down"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:113
+#, kde-format
+msgid "Item Up"
+msgstr "Item Up"
+
+#: smb4k/smb4ksharesmenu.cpp:124 smb4k/smb4ksharesviewdockwidget.cpp:231
+#, kde-format
+msgid "U&nmount All"
+msgstr "U&nmount All"
+
+#: smb4k/smb4ksharesmenu.cpp:161
+#, kde-format
+msgid "Unmount"
+msgstr "Unmount"
+
+#: smb4k/smb4ksharesmenu.cpp:176
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Add Bookmark"
+
+#: smb4k/smb4ksharesmenu.cpp:187
+#, kde-format
+msgid "Synchronize"
+msgstr "Synchronise"
+
+#: smb4k/smb4ksharesmenu.cpp:202
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Open with Konsole"
+
+#: smb4k/smb4ksharesmenu.cpp:214
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Open with File Manager"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#, kde-format
+msgid "View Modes"
+msgstr "View Modes"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:192
+#, kde-format
+msgid "Icon View"
+msgstr "Icon View"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#, kde-format
+msgid "List View"
+msgstr "List View"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:243
+#, kde-format
+msgid "S&ynchronize"
+msgstr "S&ynchronise"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Open with Konso&le"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Open with F&ile Manager"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:431
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+
+#: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
+#, kde-format
+msgid "yes"
+msgstr "yes"
+
+#: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
+#, kde-format
+msgid "no"
+msgstr "no"
+
+#: smb4k/smb4ktooltip.cpp:288
+#, kde-format
+msgid "Type:"
+msgstr "Type:"
+
+#: smb4k/smb4ktooltip.cpp:308
+#, kde-format
+msgid "Master Browser:"
+msgstr "Master Browser:"
+
+#: smb4k/smb4ktooltip.cpp:343
+#, kde-format
+msgid "Host"
+msgstr "Host"
+
+#: smb4k/smb4ktooltip.cpp:346 smb4k/smb4ktooltip.cpp:391
+#, kde-format
+msgid "Comment:"
+msgstr "Comment:"
+
+#: smb4k/smb4ktooltip.cpp:388
+#, kde-format
+msgid "Share (%1)"
+msgstr "Share (%1)"
+
+#: smb4k/smb4ktooltip.cpp:403
+#, kde-format
+msgid "Mounted:"
+msgstr "Mounted:"
+
+#: smb4k/smb4ktooltip.cpp:425
+#, kde-format
+msgid "Host:"
+msgstr "Host:"
+
+#: smb4k/smb4ktooltip.cpp:486 smb4k/smb4ktooltip.cpp:496
+#: smb4k/smb4ktooltip.cpp:561 smb4k/smb4ktooltip.cpp:573
+#: smb4k/smb4ktooltip.cpp:574 smb4k/smb4ktooltip.cpp:606
+#, kde-format
+msgid "unknown"
+msgstr "unknown"
+
+#: smb4k/smb4ktooltip.cpp:492 smb4k/smb4ktooltip.cpp:602
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 free of %2 (%3 used)"
+
+#: smb4k/smb4ktooltip.cpp:545
+#, kde-format
+msgid "Mountpoint:"
+msgstr "Mountpoint:"
+
+#: smb4k/smb4ktooltip.cpp:556
+#, kde-format
+msgid "Login:"
+msgstr "Login:"
+
+#: smb4k/smb4ktooltip.cpp:568
+#, kde-format
+msgid "Owner:"
+msgstr "Owner:"
+
+#: smb4k/smb4ktooltip.cpp:582
+#, kde-format
+msgid "File system:"
+msgstr "File system:"
+
+#: smb4k/smb4ktooltip.cpp:593
+#, kde-format
+msgid "Size:"
+msgstr "Size:"
+
+#~ msgid "The mount process crashed."
+#~ msgstr "The mount process crashed."
+
+#~ msgid "The unmount process crashed."
+#~ msgstr "The unmount process crashed."
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 of %2 free (%3 used)"
+
+#~ msgid "Location"
+#~ msgstr "Location"
+
+#~ msgid "Owner"
+#~ msgstr "Owner"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Network Toolbar"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Search Toolbar"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Shares Toolbar"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Alternative Main Toolbar"
+
+#~ msgid "Shares"
+#~ msgstr "Shares"
+
+#~ msgid "Password Storage"
+#~ msgstr "Password Storage"
+
+#~ msgid "General Settings"
+#~ msgstr "General Settings"
+
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Load the entries stored in the wallet."
+
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Save the entries to the wallet."
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Show the details of the selected entry."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Marking this tick box will show the details of the selected login "
+#~ "information below."
+
+#~ msgid "Undo"
+#~ msgstr "Undo"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC Address:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Filesystem Port:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Write Access:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Security Mode:"
+
+#~ msgid "User ID:"
+#~ msgstr "User ID:"
+
+#~ msgid "Group ID:"
+#~ msgstr "Group ID:"
+
+#~ msgid "MAC address:"
+#~ msgstr "MAC address:"
+
+#~ msgid "Browse List"
+#~ msgstr "Browse List"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodic Scanning"
+
+#~ msgid "General Options"
+#~ msgstr "General Options"
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Utility Programs"
+
+#~ msgid "Copying"
+#~ msgstr "Copying"
+
+#~ msgid " kB"
+#~ msgstr " kB"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "File Deletion && Transfer"
+
+#~ msgid "Columns"
+#~ msgstr "Columns"
+
+#~ msgid "Tooltips"
+#~ msgstr "Tooltips"
+
+#~ msgid "View Mode"
+#~ msgstr "View Mode"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "The network browser could not be created."
+
+#~ msgid "Network Search"
+#~ msgstr "Network Search"
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "The search dialogue could not be created."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "The shares view could not be created."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Retrieving preview from %1..."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "The network neighborhood browser KPart of Smb4K"
+
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "© 2007-2015, Alexander Reinholdt"
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Waking up remote servers..."
+
+#~ msgid "Search item:"
+#~ msgstr "Search item:"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Enter the search string here."
+
+#~ msgid "Abort"
+#~ msgstr "Abort"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "The network search KPart of Smb4K"
+
+#~ msgid "Search Results"
+#~ msgstr "Search Results"
+
+#~ msgid "The search returned no results."
+#~ msgstr "The search returned no results."
+
+#~ msgid "Open With"
+#~ msgstr "Open With"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "The shares view KPart of Smb4K"
+
+#~ msgid "&Shares"
+#~ msgstr "&Shares"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Advanced Network Neighbourhood Browser"
+
+#~ msgid "Checks"
+#~ msgstr "Checks"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Looking for more information about host %1..."
+
+#~ msgid "Mounting share..."
+#~ msgstr "Mounting share..."
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Operating system"
+#~ msgstr "Operating system"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "The wallet is not in use."
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Mounting %1 failed."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Unmounting %1 failed."
+
+#~ msgid "View"
+#~ msgstr "View"
+
+#~ msgid "Settings for the list view:"
+#~ msgstr "Settings for the list view:"
+
+#~ msgid "File System"
+#~ msgstr "File System"
+
+#~ msgid "Free"
+#~ msgstr "Free"
+
+#~ msgid "Used"
+#~ msgstr "Used"
+
+#~ msgid "Total"
+#~ msgstr "Total"
+
+#~ msgid "Usage"
+#~ msgstr "Usage"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protocol Hint:"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Remote Ports"
+
+#~ msgid "Laptop Support"
+#~ msgstr "Laptop Support"
+
+#~ msgid "Hardware"
+#~ msgstr "Hardware"
+
+#~ msgid ""
+#~ "<qt>Smb4K only detects changes in state of your hardware. If you are "
+#~ "performing a software suspend or the like, you should unmount the shares "
+#~ "manually.</qt>"
+#~ msgstr ""
+#~ "<qt>Smb4K only detects changes in state of your hardware. If you are "
+#~ "performing a software suspend or the like, you should unmount the shares "
+#~ "manually.</qt>"
+
+#~ msgid ""
+#~ "The custom master browser that is to be queried has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The custom master browser that is to be queried has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The broadcast areas that are to be scanned have not been filled in.\n"
+#~ "Please enter them now."
+#~ msgstr ""
+#~ "The broadcast areas that are to be scanned have not been filled in.\n"
+#~ "Please enter them now."
+
+#~ msgid ""
+#~ "The mount prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The mount prefix has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The file mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The file mask has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The directory mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The directory mask has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The synchronization prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The synchronisation prefix has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The exclude pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The exclude pattern for synchronisation has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The file from which the exclude pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The file from which the exclude pattern for synchronisation are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The include pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The include pattern for synchronisation has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The file from which the include pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The file from which the include pattern for synchronisation are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The backup suffix for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The backup suffix for synchronisation has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid ""
+#~ "The backup directory for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "The backup directory for synchronisation has not been filled in.\n"
+#~ "Please enter it now."
+
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Mounting && Unmounting"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Remote Shares"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Preview Dialogue"
+
+#~ msgid "The password dialog mode is used and logins are not remembered."
+#~ msgstr "The password dialogue mode is used and logins are not remembered."
+
+#~ msgid "Show custom bookmark label if available"
+#~ msgstr "Show custom bookmark label if available"
+
+#~ msgid ""
+#~ "Do not show the name of the share that is represented by the bookmark but "
+#~ "the custom label that was defined in the bookmark editor."
+#~ msgstr ""
+#~ "Do not show the name of the share that is represented by the bookmark but "
+#~ "the custom label that was defined in the bookmark editor."
+
+#~ msgid "Start docked"
+#~ msgstr "Start docked"
+
+#~ msgid ""
+#~ "Start the application docked to the system tray, i.e. only the system "
+#~ "tray widget is shown and the main window is hidden. You can bring the "
+#~ "main window up by clicking on the system tray widget or by choosing "
+#~ "\"Restore\" from its popup menu."
+#~ msgstr ""
+#~ "Start the application docked to the system tray, i.e. only the system "
+#~ "tray widget is shown and the main window is hidden. You can bring the "
+#~ "main window up by clicking on the system tray widget or by choosing "
+#~ "\"Restore\" from its popup menu."
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Show notifications"
+#~ msgstr "Authentication"
+
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Show mounted shares in an icon view"
+
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr "The mounted shares will be displayed in an icon view."
+
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Show mounted shares in a list view"
+
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "The mounted shares will be displayed in a list view."
+
+#~ msgid "Show printer shares"
+#~ msgstr "Show printer shares"
+
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "Printer shares will be displayed in the network browser."
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Show hidden shares"
+
+#~ msgid ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgstr ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Show hidden IPC$ shares"
+
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr "Hidden IPC$ shares will be displayed in the network browser."
+
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Show hidden ADMIN$ shares"
+
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr "Hidden ADMIN$ shares will be displayed in the network browser."
+
+#~ msgid "Show the type of the share"
+#~ msgstr "Show the type of the share"
+
+#~ msgid ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+#~ msgstr ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+
+#~ msgid "Show the IP address of the server"
+#~ msgstr "Show the IP address of the server"
+
+#~ msgid ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+#~ msgstr ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+
+#~ msgid "Show the comment"
+#~ msgstr "Show the comment"
+
+#~ msgid ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+#~ msgstr ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "Show a tooltip with information about the network item"
+
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr ""
+#~ "The tooltip shows various information about the current network item."
+
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Show the mount point instead of the share name"
+
+#~ msgid ""
+#~ "A share is normally displayed with its name in the shares view. Choosing "
+#~ "this feature will cause the exchange of the share name by the mount point."
+#~ msgstr ""
+#~ "A share is normally displayed with its name in the shares view. Choosing "
+#~ "this feature will cause the exchange of the share name by the mount point."
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "Show all shares that are mounted on the system"
+
+#~ msgid ""
+#~ "You will not only see the shares that were mounted and are owned by you, "
+#~ "but also all other mounts using the SMBFS and CIFS file system that are "
+#~ "present on the system."
+#~ msgstr ""
+#~ "You will not only see the shares that were mounted and are owned by you, "
+#~ "but also all other mounts using the SMBFS and CIFS file system that are "
+#~ "present on the system."
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Show a tooltip with information about the share"
+
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr "The tooltip shows various information about the current share."
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Show the owner and group"
+
+#~ msgid "Show the UID and GID that own all files on the mounted file system."
+#~ msgstr "Show the UID and GID that own all files on the mounted file system."
+
+#~ msgid "Show the login name"
+#~ msgstr "Show the login name"
+
+#~ msgid ""
+#~ "Show the login name that was used to authenticate to the server. The "
+#~ "column will only contain an entry if the share was mounted with the CIFS "
+#~ "file system."
+#~ msgstr ""
+#~ "Show the login name that was used to authenticate to the server. The "
+#~ "column will only contain an entry if the share was mounted with the CIFS "
+#~ "file system."
+
+#~ msgid "Show the file system"
+#~ msgstr "Show the file system"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr "Show the file system that was used for mounting the share."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Show the free disk space"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "Show the free disk space that is left on the share."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Show the used disk space"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "Show the disk space that is already used on the share."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Show the total disk space"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "Show the total disk space of the share."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Show the disk usage"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr "Show the space that is used on the share (as a percentage)."
+
+#~ msgid "Preview hidden files and directories"
+#~ msgstr "Preview hidden files and directories"
+
+#~ msgid ""
+#~ "Display hidden files and directories in the preview dialog. The hidden "
+#~ "files and directories are those whose names begin with a period.  They "
+#~ "are usually needed for very specific purposes (storing the configuration "
+#~ "information for an application, etc.). Since they are not of any "
+#~ "importance for your regular work, you normally do not need to enable this "
+#~ "feature."
+#~ msgstr ""
+#~ "Display hidden files and directories in the preview dialogue. The hidden "
+#~ "files and directories are those whose names begin with a full-stop.  They "
+#~ "are usually needed for very specific purposes (storing the configuration "
+#~ "information for an application, etc.). Since they are not of any "
+#~ "importance for your regular work, you normally do not need to enable this "
+#~ "feature."
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Scan the network neighbourhood for available workgroups and domains"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighbourhood."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Query the current workgroup master browser"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Query this custom master browser:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "A custom master browser that is to be queried"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Scan these broadcast areas:"
+
+#~ msgid ""
+#~ "This method will scan the given broadcast areas and look for all "
+#~ "registered hosts."
+#~ msgstr ""
+#~ "This method will scan the given broadcast areas and look for all "
+#~ "registered hosts."
+
+#~ msgid "A custom list of broadcast addresses"
+#~ msgstr "A custom list of broadcast addresses"
+
+#~ msgid ""
+#~ "Enter a comma-separated list of broadcast addresses here (e.g. "
+#~ "192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in "
+#~ "the respective broadcast areas."
+#~ msgstr ""
+#~ "Enter a comma-separated list of broadcast addresses here (e.g. "
+#~ "192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in "
+#~ "the respective broadcast areas."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "The master browsers require authentication to return the browse list"
+
+#~ msgid ""
+#~ "The master browsers in your network neighborhood require a login to "
+#~ "return the browse list. This setting is rarely needed and might even "
+#~ "cause a master browser to return an empty browse list. It will not have "
+#~ "any effect when you let Smb4K scan broadcast areas."
+#~ msgstr ""
+#~ "The master browsers in your network neighbourhood require a login to "
+#~ "return the browse list. This setting is rarely needed and might even "
+#~ "cause a master browser to return an empty browse list. It will not have "
+#~ "any effect when you let Smb4K scan broadcast areas."
+
+#, fuzzy
+#~| msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Scan the network neighbourhood for available workgroups and domains"
+
+#, fuzzy
+#~| msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr "Scan the network neighbourhood for available workgroups and domains"
+
+#, fuzzy
+#~| msgid "Interval between checks:"
+#~ msgid "Interval between scans:"
+#~ msgstr "Interval between checks:"
+
+#, fuzzy
+#~| msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr "Scan the network neighbourhood for available workgroups and domains"
+
+#~ msgid "Mount prefix:"
+#~ msgstr "Mount prefix:"
+
+#~ msgid ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+#~ msgstr ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "Force generated subdirectories to be lower case"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+
+#~ msgid "Unmount all personal shares on exit"
+#~ msgstr "Unmount all personal shares on exit"
+
+#~ msgid ""
+#~ "Unmount all shares that belong to you when the program exits. Shares that "
+#~ "are owned by other users are ignored."
+#~ msgstr ""
+#~ "Unmount all shares that belong to you when the program exits. Shares that "
+#~ "are owned by other users are ignored."
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr "Remount recently used shares on program start"
+
+#~ msgid ""
+#~ "Remount all your shares that were mounted when you exited the program. If "
+#~ "a remount fails, Smb4K will retry the next time it is started. Shares "
+#~ "that were mounted by other users are ignored."
+#~ msgstr ""
+#~ "Remount all your shares that were mounted when you exited the program. If "
+#~ "a remount fails, Smb4K will retry the next time it is started. Shares "
+#~ "that were mounted by other users are ignored."
+
+#, fuzzy
+#~| msgid "Interval between checks:"
+#~ msgid "Number of remount attempts:"
+#~ msgstr "Interval between checks:"
+
+#, fuzzy
+#~| msgid "Interval between checks:"
+#~ msgid "Interval between remount attempts:"
+#~ msgstr "Interval between checks:"
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "Allow the unmounting of shares that are owned by other users"
+
+#, fuzzy
+#~| msgid ""
+#~| "Allow the unmounting of shares that were mounted by other users. In most "
+#~| "cases you need super user privileges for this. Please think before you "
+#~| "enable this option."
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "Allow the unmounting of shares that were mounted by other users. In most "
+#~ "cases you need super user privileges for this. Please think before you "
+#~ "enable this option."
+
+#, fuzzy
+#~| msgid ""
+#~| "Use super user privileges to force the unmounting of (inaccessible) "
+#~| "shares"
+#~ msgid "Force the unmounting of inaccessible shares"
+#~ msgstr ""
+#~ "Use super user privileges to force the unmounting of (inaccessible) shares"
+
+#~ msgid "Interval between checks:"
+#~ msgstr "Interval between checks:"
+
+#, fuzzy
+#~| msgid ""
+#~| "This is the time that elapses until Smb4K checks again for new mounts "
+#~| "and unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please "
+#~| "note that the smaller the interval gets the higher is your system load."
+#~ msgid ""
+#~ "This is the time in milliseconds that elapses until Smb4K checks again "
+#~ "for new mounts and unmounts. The lower limit is 500 ms, the upper one "
+#~ "300000 ms. Please note that the smaller the interval gets the higher is "
+#~ "your system load."
+#~ msgstr ""
+#~ "This is the time that elapses until Smb4K checks again for new mounts and "
+#~ "unmounts. The lower limit is 500 ms, the upper one 300000 ms. Please note "
+#~ "that the smaller the interval gets the higher is your system load."
+
+#~ msgid "Save logins in a wallet"
+#~ msgstr "Save logins in a wallet"
+
+#~ msgid ""
+#~ "Use a wallet to store the login. The username and password are stored "
+#~ "encrypted on your hard drive. If this setting is disabled, the login is "
+#~ "not stored permanently but only temporarily."
+#~ msgstr ""
+#~ "Use a wallet to store the login. The username and password are stored "
+#~ "encrypted on your hard drive. If this setting is disabled, the login is "
+#~ "not stored permanently but only temporarily."
+
+#~ msgid "Remember logins during program run"
+#~ msgstr "Remember logins during program run"
+
+#~ msgid ""
+#~ "If you decide to store your logins temporarily, Smb4K will remember them "
+#~ "only until the program exits. If you disable this setting, you will have "
+#~ "to provide the login every time it is needed."
+#~ msgstr ""
+#~ "If you decide to store your logins temporarily, Smb4K will remember them "
+#~ "only until the program exits. If you disable this setting, you will have "
+#~ "to provide the login every time it is needed."
+
+#~ msgid "Use a default login"
+#~ msgstr "Use a default login"
+
+#~ msgid ""
+#~ "Enable the usage of a default login. The provided data is used by default "
+#~ "to authenticate to a remote server. This is very useful e.g. if you are "
+#~ "working in an Active Directory environment or an NT domain."
+#~ msgstr ""
+#~ "Enable the usage of a default login. The provided data is used by default "
+#~ "to authenticate to a remote server. This is very useful e.g. if you are "
+#~ "working in an Active Directory environment or an NT domain."
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS name:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+
+#~ msgid "Domain:"
+#~ msgstr "Domain:"
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+
+#~ msgid "Socket options:"
+#~ msgstr "Socket options:"
+
+#, fuzzy
+#~| msgid ""
+#~| "These are the TCP socket options that are used by nmblookup, smbmount "
+#~| "and smbclient. Socket options are controls on the networking layer of "
+#~| "the operating systems which allow the connection to be tuned. See the "
+#~| "manual page of smb.conf for more information."
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "These are the TCP socket options that are used by nmblookup, smbmount and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS scope:"
+
+#, fuzzy
+#~| msgid ""
+#~| "This sets the NetBIOS scope that nmblookup, smbmount and smbclient will "
+#~| "operate under. It should not be set unless every machine on your network "
+#~| "neighborhood sets this value."
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "This sets the NetBIOS scope that nmblookup, smbmount and smbclient will "
+#~ "operate under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+
+#~ msgid "SMB port:"
+#~ msgstr "SMB port:"
+
+#~ msgid ""
+#~ "This is the port that is used for connecting to remote servers with the "
+#~ "client programs net, smbclient and smbtree. The default value is 139 "
+#~ "(NetBIOS). This setting is not used for mounting."
+#~ msgstr ""
+#~ "This is the port that is used for connecting to remote servers with the "
+#~ "client programs net, smbclient and smbtree. The default value is 139 "
+#~ "(NetBIOS). This setting is not used for mounting."
+
+#~ msgid "File system port:"
+#~ msgstr "File system port:"
+
+#~ msgid ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+#~ msgstr ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Try to authenticate with Kerberos"
+
+#~ msgid ""
+#~ "Try to authenticate with Kerberos. This is only useful in an Active "
+#~ "Directory environment. The setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Try to authenticate with Kerberos. This is only useful in an Active "
+#~ "Directory environment. The setting affects the smbclient and smbtree "
+#~ "command."
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Authenticate with local machine account"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient, and smbtree command."
+#~ msgstr ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient, and smbtree command."
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Use Kerberos authentication"
+
+#, fuzzy
+#~| msgid ""
+#~| "Set the signing state. This setting affects the smbclient and smbtree "
+#~| "command."
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects smbclient "
+#~ "and smbtree command."
+#~ msgstr ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+
+#~ msgid "Signing state:"
+#~ msgstr "Signing state:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+
+#~ msgid "None"
+#~ msgstr "None"
+
+#~ msgid "On"
+#~ msgstr "On"
+
+#~ msgid "Off"
+#~ msgstr "Off"
+
+#~ msgid "Required"
+#~ msgstr "Required"
+
+#, fuzzy
+#~| msgid ""
+#~| "Set the signing state. This setting affects the smbclient and smbtree "
+#~| "command."
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the smbclient and smbtree command."
+#~ msgstr ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+
+#~ msgid ""
+#~ "This is the character set that is used by the client side (i.e. your "
+#~ "side) either to convert local path names to and from Unicode (CIFS, "
+#~ "Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you "
+#~ "keep the default setting, Smb4K will try to automatically determine the "
+#~ "charset by looking up the \"unix charset\" option in the smb.conf."
+#~ msgstr ""
+#~ "This is the character set that is used by the client side (i.e. your "
+#~ "side) either to convert local path names to and from Unicode (CIFS, "
+#~ "Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you "
+#~ "keep the default setting, Smb4K will try to automatically determine the "
+#~ "charset by looking up the \"unix charset\" option in the smb.conf."
+
+#~ msgid "default"
+#~ msgstr "default"
+
+#~ msgid "iso8859-1"
+#~ msgstr "iso8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "iso8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "iso8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "iso8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "iso8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "iso8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "iso8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "iso8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "iso8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "iso8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "iso8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "iso8859-15"
+
+#~ msgid "utf8"
+#~ msgstr "utf8"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "koi8-u"
+#~ msgstr "koi8-u"
+
+#~ msgid "koi8-ru"
+#~ msgstr "koi8-ru"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "gb2312"
+#~ msgstr "gb2312"
+
+#~ msgid "big5"
+#~ msgstr "big5"
+
+#~ msgid "euc-jp"
+#~ msgstr "euc-jp"
+
+#~ msgid "euc-kr"
+#~ msgstr "euc-kr"
+
+#~ msgid "tis-620"
+#~ msgstr "tis-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Server codepage:"
+
+#~ msgid ""
+#~ "This is the codepage that is used by the server. The setting is only "
+#~ "available with the SMBFS file system. If you keep the default setting, "
+#~ "Smb4K will try to automatically determine the codepage by looking up the "
+#~ "\"dos charset\" option in the smb.conf file."
+#~ msgstr ""
+#~ "This is the codepage that is used by the server. The setting is only "
+#~ "available with the SMBFS file system. If you keep the default setting, "
+#~ "Smb4K will try to automatically determine the codepage by looking up the "
+#~ "\"dos charset\" option in the smb.conf file."
+
+#~ msgid "cp437"
+#~ msgstr "cp437"
+
+#~ msgid "cp720"
+#~ msgstr "cp720"
+
+#~ msgid "cp737"
+#~ msgstr "cp737"
+
+#~ msgid "cp775"
+#~ msgstr "cp775"
+
+#~ msgid "cp850"
+#~ msgstr "cp850"
+
+#~ msgid "cp852"
+#~ msgstr "cp852"
+
+#~ msgid "cp855"
+#~ msgstr "cp855"
+
+#~ msgid "cp857"
+#~ msgstr "cp857"
+
+#~ msgid "cp858"
+#~ msgstr "cp858"
+
+#~ msgid "cp860"
+#~ msgstr "cp860"
+
+#~ msgid "cp861"
+#~ msgstr "cp861"
+
+#~ msgid "cp862"
+#~ msgstr "cp862"
+
+#~ msgid "cp863"
+#~ msgstr "cp863"
+
+#~ msgid "cp864"
+#~ msgstr "cp864"
+
+#~ msgid "cp865"
+#~ msgstr "cp865"
+
+#~ msgid "cp866"
+#~ msgstr "cp866"
+
+#~ msgid "cp869"
+#~ msgstr "cp869"
+
+#~ msgid "cp874"
+#~ msgstr "cp874"
+
+#~ msgid "cp932"
+#~ msgstr "cp932"
+
+#~ msgid "cp936"
+#~ msgstr "cp936"
+
+#~ msgid "cp949"
+#~ msgstr "cp949"
+
+#~ msgid "cp950"
+#~ msgstr "cp950"
+
+#~ msgid "cp1250"
+#~ msgstr "cp1250"
+
+#~ msgid "cp1252"
+#~ msgstr "cp1252"
+
+#~ msgid "cp1253"
+#~ msgstr "cp1253"
+
+#~ msgid "cp1254"
+#~ msgstr "cp1254"
+
+#~ msgid "cp1255"
+#~ msgstr "cp1255"
+
+#~ msgid "cp1256"
+#~ msgstr "cp1256"
+
+#~ msgid "cp1257"
+#~ msgstr "cp1257"
+
+#~ msgid "cp1258"
+#~ msgstr "cp1258"
+
+#~ msgid "unicode"
+#~ msgstr "unicode"
+
+#~ msgid ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+
+#~ msgid "File mask:"
+#~ msgstr "File mask:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating files. It must be defined "
+#~ "in octal. In case the CIFS file system is used, this setting only takes "
+#~ "effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "This is the mask that will be used for creating files. It must be defined "
+#~ "in octal. In case the CIFS file system is used, this setting only takes "
+#~ "effect if the server does not support the CIFS Unix Extensions."
+
+#~ msgid "Directory mask:"
+#~ msgstr "Directory mask:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating directories. It must be "
+#~ "defined in octal. In case the CIFS file system is used, this setting only "
+#~ "takes effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "This is the mask that will be used for creating directories. It must be "
+#~ "defined in octal. In case the CIFS file system is used, this setting only "
+#~ "takes effect if the server does not support the CIFS Unix Extensions."
+
+#~ msgid "Write access:"
+#~ msgstr "Write access:"
+
+#~ msgid ""
+#~ "Here you can choose if the shares should be mounted in read-write or read-"
+#~ "only mode."
+#~ msgstr ""
+#~ "Here you can choose if the shares should be mounted in read-write or read-"
+#~ "only mode."
+
+#~ msgid "read-write"
+#~ msgstr "read-write"
+
+#~ msgid "read-only"
+#~ msgstr "read-only"
+
+#~ msgid "Do permission checks"
+#~ msgstr "Do permission checks"
+
+#~ msgid ""
+#~ "The client side (i.e. your side) will check if you have the right UID/GID "
+#~ "to manipulate a file or directory. You might want to switch this feature "
+#~ "off if the server(s) support the CIFS Unix Extensions and you are not "
+#~ "allowed to access the files and directories. This setting does not affect "
+#~ "the normal ACL check."
+#~ msgstr ""
+#~ "The client side (i.e. your side) will check if you have the right UID/GID "
+#~ "to manipulate a file or directory. You might want to switch this feature "
+#~ "off if the server(s) support the CIFS Unix Extensions and you are not "
+#~ "allowed to access the files and directories. This setting does not affect "
+#~ "the normal ACL check."
+
+#~ msgid "Attempt to set UID and GID"
+#~ msgstr "Attempt to set UID and GID"
+
+#~ msgid ""
+#~ "In case the server supports the CIFS Unix Extensions, the client side (i."
+#~ "e. your side) attempts to set the effective UID and GID of the current "
+#~ "process on newly created files, directories and devices. If this feature "
+#~ "is turned off, the default UID and GID defined for the share will be "
+#~ "used. It is recommended that you read the manual page of mount.cifs "
+#~ "before you change this setting."
+#~ msgstr ""
+#~ "In case the server supports the CIFS Unix Extensions, the client side (i."
+#~ "e. your side) attempts to set the effective UID and GID of the current "
+#~ "process on newly created files, directories and devices. If this feature "
+#~ "is turned off, the default UID and GID defined for the share will be "
+#~ "used. It is recommended that you read the manual page of mount.cifs "
+#~ "before you change this setting."
+
+#~ msgid "Use server inode numbers"
+#~ msgstr "Use server inode numbers"
+
+#~ msgid ""
+#~ "Use inode numbers (unique persistent file identifiers) returned by the "
+#~ "server instead of automatically generating temporary inode numbers on the "
+#~ "client side."
+#~ msgstr ""
+#~ "Use inode numbers (unique persistent file identifiers) returned by the "
+#~ "server instead of automatically generating temporary inode numbers on the "
+#~ "client side."
+
+#~ msgid "Do not cache inode data"
+#~ msgstr "Do not cache inode data"
+
+#~ msgid ""
+#~ "Directly read from and write to files opened on the share. In some cases "
+#~ "this can provide better performance than the default behavior which "
+#~ "caches reads and writes."
+#~ msgstr ""
+#~ "Directly read from and write to files opened on the share. In some cases "
+#~ "this can provide better performance than the default behaviour which "
+#~ "caches reads and writes."
+
+#~ msgid "Translate reserved characters"
+#~ msgstr "Translate reserved characters"
+
+#~ msgid ""
+#~ "Translate six of the seven reserved characters (including the colon, "
+#~ "question mark, pipe, asterisk, greater than and less than characters but "
+#~ "not the backslash) to remap range (above 0xF000). This allows you to open "
+#~ "files that were created with such characters. This has no effect if the "
+#~ "server does not support Unicode."
+#~ msgstr ""
+#~ "Translate six of the seven reserved characters (including the colon, "
+#~ "question mark, pipe, asterisk, greater than and less than characters but "
+#~ "not the backslash) to remap range (above 0xF000). This allows you to open "
+#~ "files that were created with such characters. This has no effect if the "
+#~ "server does not support Unicode."
+
+#~ msgid "Do not use locking"
+#~ msgstr "Do not use locking"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Do not use locking. Do not start lockd."
+
+#~ msgid ""
+#~ "Here you can enter advanced options for the CIFS file system in a comma-"
+#~ "separated list (refer to the manual page of mount.cifs to learn more). "
+#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
+#~ "do not enter options that have already been defined in the configuration "
+#~ "dialog."
+#~ msgstr ""
+#~ "Here you can enter advanced options for the CIFS file system in a comma-"
+#~ "separated list (refer to the manual page of mount.cifs to learn more). "
+#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
+#~ "do not enter options that have already been defined in the configuration "
+#~ "dialogue."
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Protocol hint:"
+
+#~ msgid ""
+#~ "Here you can choose the protocol that will be used by the net command for "
+#~ "the communication with remote servers if appropriate. In most cases the "
+#~ "automatic detection will work fine and you should not need to change the "
+#~ "default setting. However, if you experience problems, use the RPC "
+#~ "protocol for newer operating systems (Windows NT4 and above) and the RAP "
+#~ "protocol for older ones (Windows 98/NT3 and below). Functions that need "
+#~ "the ADS protocol (for Active Directory environments) have not been "
+#~ "implemented yet, so you can ignore that one for now."
+#~ msgstr ""
+#~ "Here you can choose the protocol that will be used by the net command for "
+#~ "the communication with remote servers if appropriate. In most cases the "
+#~ "automatic detection will work fine and you should not need to change the "
+#~ "default setting. However, if you experience problems, use the RPC "
+#~ "protocol for newer operating systems (Windows NT4 and above) and the RAP "
+#~ "protocol for older ones (Windows 98/NT3 and below). Functions that need "
+#~ "the ADS protocol (for Active Directory environments) have not been "
+#~ "implemented yet, so you can ignore that one for now."
+
+#~ msgid "Automatic detection"
+#~ msgstr "Automatic detection"
+
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "RPC: Modern operating systems"
+
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "RAP: Older operating systems"
+
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "ADS: Active Directory environment (LDAP/Kerberos)"
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Name resolve order:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Buffer size:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Broadcast address:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr "Try and bind to UDP port 137 to send and receive UDP datagrams"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Send requests as broadcasts"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+
+#~ msgid "Security mode:"
+#~ msgstr "Security mode:"
+
+#~ msgid ""
+#~ "Security mode for mount.cifs. To be able to use this mode, the CIFS "
+#~ "kernel module 1.40 or later is required."
+#~ msgstr ""
+#~ "Security mode for mount.cifs. To be able to use this mode, the CIFS "
+#~ "kernel module 1.40 or later is required."
+
+#, fuzzy
+#~| msgid "Attempt to connect as a null user (no name)"
+#~ msgid "Connect as a null user (no name)"
+#~ msgstr "Attempt to connect as a null user (no name)"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Use Kerberos authentication"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication and packet signing"
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Use Kerberos authentication and packet signing"
+
+#, fuzzy
+#~| msgid "Protocol hint:"
+#~ msgid "NTLM protocol"
+#~ msgstr "Protocol hint:"
+
+#, fuzzy
+#~| msgid "Use NTLM password hashing with packet signing"
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "Use NTLM password hashing with packet signing"
+
+#, fuzzy
+#~| msgid "Protocol hint:"
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "Protocol hint:"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing with packet signing"
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "Use NTLMv2 password hashing with packet signing"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "Protocol"
+
+#, fuzzy
+#~| msgid "Use NTLM password hashing with packet signing"
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "Use NTLM password hashing with packet signing"
+
+#~ msgid "Synchronization prefix:"
+#~ msgstr "Synchronisation prefix:"
+
+#~ msgid "Archive mode"
+#~ msgstr "Archive mode"
+
+#~ msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+#~ msgstr "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+
+#~ msgid "Recurse into subdirectories"
+#~ msgstr "Recurse into subdirectories"
+
+#~ msgid "Recurse into directories (-r, --recursive)."
+#~ msgstr "Recurse into directories (-r, --recursive)."
+
+#~ msgid "Update files"
+#~ msgstr "Update files"
+
+#~ msgid ""
+#~ "Update files in the destination directory that are older than in the "
+#~ "source directory (-u, --update)."
+#~ msgstr ""
+#~ "Update files in the destination directory that are older than in the "
+#~ "source directory (-u, --update)."
+
+#~ msgid "Update files in place"
+#~ msgstr "Update files in place"
+
+#~ msgid ""
+#~ "Update destination files in-place (--inplace). By default, rsync first "
+#~ "creates a new copy of a file and moves it into place after its transfer "
+#~ "finished. If you enable this feature, no copy will be created but the "
+#~ "destination file will immediately be overwritten instead. An exception to "
+#~ "this is if you combine this option with --backup."
+#~ msgstr ""
+#~ "Update destination files in-place (--inplace). By default, rsync first "
+#~ "creates a new copy of a file and moves it into place after its transfer "
+#~ "finished. If you enable this feature, no copy will be created but the "
+#~ "destination file will immediately be overwritten instead. An exception to "
+#~ "this is if you combine this option with --backup."
+
+#~ msgid "Use relative path names"
+#~ msgstr "Use relative path names"
+
+#~ msgid ""
+#~ "Use relative paths (-R, --relative). This means that the full path names "
+#~ "specified on the command line are sent to the server rather than just the "
+#~ "last parts of the file names."
+#~ msgstr ""
+#~ "Use relative paths (-R, --relative). This means that the full path names "
+#~ "specified on the command line are sent to the server rather than just the "
+#~ "last parts of the file names."
+
+#~ msgid "Do not send implied directories"
+#~ msgstr "Do not send implied directories"
+
+#~ msgid ""
+#~ "Do not send implied directories with --relative (--no-implied-dirs). This "
+#~ "means that the corresponding path elements on the destination system are "
+#~ "left unchanged if they exist, and any missing implied directories are "
+#~ "created with default attributes. This even allows these implied path "
+#~ "elements to have big differences, such as being a symlink to a directory "
+#~ "on one side of the transfer, and a real directory on the other side."
+#~ msgstr ""
+#~ "Do not send implied directories with --relative (--no-implied-dirs). This "
+#~ "means that the corresponding path elements on the destination system are "
+#~ "left unchanged if they exist, and any missing implied directories are "
+#~ "created with default attributes. This even allows these implied path "
+#~ "elements to have big differences, such as being a symlink to a directory "
+#~ "on one side of the transfer, and a real directory on the other side."
+
+#~ msgid "Transfer directories without recursing"
+#~ msgstr "Transfer directories without recursing"
+
+#~ msgid ""
+#~ "Transfer directories without recursing (-d, --dirs). This means that all "
+#~ "top-level subdirectories are transferred but without their contents."
+#~ msgstr ""
+#~ "Transfer directories without recursing (-d, --dirs). This means that all "
+#~ "top-level subdirectories are transferred but without their contents."
+
+#~ msgid "Compress data during transfer"
+#~ msgstr "Compress data during transfer"
+
+#~ msgid ""
+#~ "Compress data during transfer (-z, --compress). This significantly "
+#~ "reduces the amount of data that is being transferred. You may want to use "
+#~ "this option, if you have a slow connection."
+#~ msgstr ""
+#~ "Compress data during transfer (-z, --compress). This significantly "
+#~ "reduces the amount of data that is being transferred. You may want to use "
+#~ "this option, if you have a slow connection."
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Preserve symlinks"
+
+#~ msgid "Copy symlinks as symlinks (-l, --links)."
+#~ msgstr "Copy symlinks as symlinks (-l, --links)."
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Transform symlinks"
+
+#~ msgid ""
+#~ "Transform symlinks into the items they are pointing to (-L, --copy-links)."
+#~ msgstr ""
+#~ "Transform symlinks into the items they are pointing to (-L, --copy-links)."
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Only transform unsafe symlinks"
+
+#~ msgid ""
+#~ "Transform unsafe symlinks into the items they are pointing to (--copy-"
+#~ "unsafe-links). This means that only those symlinks are transformed that "
+#~ "point to items that are outside the copied tree. Absolute symlinks are "
+#~ "treated the same way. This option has no additional effect if --copy-"
+#~ "links has also been specified."
+#~ msgstr ""
+#~ "Transform unsafe symlinks into the items they are pointing to (--copy-"
+#~ "unsafe-links). This means that only those symlinks are transformed that "
+#~ "point to items that are outside the copied tree. Absolute symlinks are "
+#~ "treated the same way. This option has no additional effect if --copy-"
+#~ "links has also been specified."
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Ignore unsafe symlinks"
+
+#~ msgid ""
+#~ "Ignore symlinks that point outside the copied tree (--safe-links). All "
+#~ "absolute symlinks are also ignored. If you use this option in conjunction "
+#~ "with --relative you might get unexpected results."
+#~ msgstr ""
+#~ "Ignore symlinks that point outside the copied tree (--safe-links). All "
+#~ "absolute symlinks are also ignored. If you use this option in conjunction "
+#~ "with --relative you might get unexpected results."
+
+#~ msgid "Preserve hard links"
+#~ msgstr "Preserve hard links"
+
+#~ msgid ""
+#~ "Preserve hard links (-H, --hard-links). This options causes rsync to "
+#~ "preserve the hard links that are found during the transfer. Without it, "
+#~ "hard links are treated as though they were separate files."
+#~ msgstr ""
+#~ "Preserve hard links (-H, --hard-links). This options causes rsync to "
+#~ "preserve the hard links that are found during the transfer. Without it, "
+#~ "hard links are treated as though they were separate files."
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Keep directory symlinks"
+
+#~ msgid ""
+#~ "Treat symlinked directories on the receiving side as though they were "
+#~ "real ones (-K, --keep-dirlinks). This only works if the symlink matches a "
+#~ "real directory from the sending side. Without this option, the receiver's "
+#~ "symlink will be deleted and replaced with a real directory."
+#~ msgstr ""
+#~ "Treat symlinked directories on the receiving side as though they were "
+#~ "real ones (-K, --keep-dirlinks). This only works if the symlink matches a "
+#~ "real directory from the sending side. Without this option, the receiver's "
+#~ "symlink will be deleted and replaced with a real directory."
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Preserve permissions"
+
+#~ msgid ""
+#~ "Preserve permissions (-p, --perms). The permissions of the destination "
+#~ "file will be same as the source file. For what happens if this option is "
+#~ "switched off, please read rsync's manual page."
+#~ msgstr ""
+#~ "Preserve permissions (-p, --perms). The permissions of the destination "
+#~ "file will be same as the source file. For what happens if this option is "
+#~ "switched off, please read rsync's manual page."
+
+#~ msgid "Preserve group"
+#~ msgstr "Preserve group"
+
+#~ msgid ""
+#~ "Preserve the group (-g, --group). The group of the destination file will "
+#~ "be set to the same value as the source file."
+#~ msgstr ""
+#~ "Preserve the group (-g, --group). The group of the destination file will "
+#~ "be set to the same value as the source file."
+
+#~ msgid "Preserve owner"
+#~ msgstr "Preserve owner"
+
+#~ msgid ""
+#~ "Preserve the owner (-o, --owner). The owner of the destination file will "
+#~ "be set to the same value as the source file, but only if the receiving "
+#~ "rsync is run as the super user. Without this option, the owner is set to "
+#~ "the invoking user on the receiving side."
+#~ msgstr ""
+#~ "Preserve the owner (-o, --owner). The owner of the destination file will "
+#~ "be set to the same value as the source file, but only if the receiving "
+#~ "rsync is run as the super user. Without this option, the owner is set to "
+#~ "the invoking user on the receiving side."
+
+#~ msgid "Preserve device and special files"
+#~ msgstr "Preserve device and special files"
+
+#~ msgid ""
+#~ "Preserve device and special files (-D, --devices --specials). This option "
+#~ "causes rsync to transfer character and block devices as well as special "
+#~ "files such as named sockets and fifos. It works only partially if rsync "
+#~ "is not run as super user and the --super option is not specified."
+#~ msgstr ""
+#~ "Preserve device and special files (-D, --devices --specials). This option "
+#~ "causes rsync to transfer character and block devices as well as special "
+#~ "files such as named sockets and fifos. It works only partially if rsync "
+#~ "is not run as super user and the --super option is not specified."
+
+#~ msgid "Preserve times"
+#~ msgstr "Preserve times"
+
+#~ msgid ""
+#~ "Preserve times (-t, --times). The modification times are transferred "
+#~ "along with the files. For what happens if this option is switched off, "
+#~ "please read rsync's manual page."
+#~ msgstr ""
+#~ "Preserve times (-t, --times). The modification times are transferred "
+#~ "along with the files. For what happens if this option is switched off, "
+#~ "please read rsync's manual page."
+
+#~ msgid "Omit directories when preserving times"
+#~ msgstr "Omit directories when preserving times"
+
+#~ msgid ""
+#~ "Omit directories when preserving times (-O, --omit-dir-times). This means "
+#~ "that directories are omitted when modification times are being preserved. "
+#~ "Thus, this feature only works in conjunction with --times."
+#~ msgstr ""
+#~ "Omit directories when preserving times (-O, --omit-dir-times). This means "
+#~ "that directories are omitted when modification times are being preserved. "
+#~ "Thus, this feature only works in conjunction with --times."
+
+#~ msgid "Remove synchronized source files"
+#~ msgstr "Remove synchronised source files"
+
+#~ msgid ""
+#~ "Remove all synchronized source files (--remove-source-files). This tells "
+#~ "rsync to remove from the sending side the non-directory items that are a "
+#~ "part of the transfer and have been successfully duplicated on the "
+#~ "receiving side."
+#~ msgstr ""
+#~ "Remove all synchronised source files (--remove-source-files). This tells "
+#~ "rsync to remove from the sending side the non-directory items that are a "
+#~ "part of the transfer and have been successfully duplicated on the "
+#~ "receiving side."
+
+#~ msgid "Delete extraneous files"
+#~ msgstr "Delete extraneous files"
+
+#~ msgid ""
+#~ "Delete extraneous files from destination (--delete). This tells rsync to "
+#~ "delete all files from the receiving side that are not present on the "
+#~ "sending side, but only for the directories that are being synchronized."
+#~ msgstr ""
+#~ "Delete extraneous files from destination (--delete). This tells rsync to "
+#~ "delete all files from the receiving side that are not present on the "
+#~ "sending side, but only for the directories that are being synchronised."
+
+#~ msgid "Delete files before transfer"
+#~ msgstr "Delete files before transfer"
+
+#~ msgid ""
+#~ "Delete files on the receiving side before the transfer starts (--delete-"
+#~ "before). This is the default behavior if --delete or --delete-excluded is "
+#~ "specified without one of the --delete-WHEN options."
+#~ msgstr ""
+#~ "Delete files on the receiving side before the transfer starts (--delete-"
+#~ "before). This is the default behaviour if --delete or --delete-excluded "
+#~ "is specified without one of the --delete-WHEN options."
+
+#~ msgid "Delete files after transfer"
+#~ msgstr "Delete files after transfer"
+
+#~ msgid ""
+#~ "Delete files on the receiving side after the transfer has completed (--"
+#~ "delete-after, --del)."
+#~ msgstr ""
+#~ "Delete files on the receiving side after the transfer has completed (--"
+#~ "delete-after, --del)."
+
+#~ msgid "Delete files during transfer"
+#~ msgstr "Delete files during transfer"
+
+#~ msgid ""
+#~ "Delete files on the receiving side during the transfer (--delete-during). "
+#~ "This method is faster than --delete-before or --delete-after, but it is "
+#~ "only supported with rsync 2.6.4 or later."
+#~ msgstr ""
+#~ "Delete files on the receiving side during the transfer (--delete-during). "
+#~ "This method is faster than --delete-before or --delete-after, but it is "
+#~ "only supported with rsync 2.6.4 or later."
+
+#~ msgid "Also delete excluded files"
+#~ msgstr "Also delete excluded files"
+
+#~ msgid ""
+#~ "Also delete excluded files from destination directory (--delete-"
+#~ "excluded). In addition to deleting the files on the receiving side that "
+#~ "are not on the sending side, this tells rsync to also delete any files on "
+#~ "the receiving side that are excluded. Refer to rsync's manual page for "
+#~ "further information."
+#~ msgstr ""
+#~ "Also delete excluded files from destination directory (--delete-"
+#~ "excluded). In addition to deleting the files on the receiving side that "
+#~ "are not on the sending side, this tells rsync to also delete any files on "
+#~ "the receiving side that are excluded. Refer to rsync's manual page for "
+#~ "further information."
+
+#~ msgid "Delete even if I/O errors occur"
+#~ msgstr "Delete even if I/O errors occur"
+
+#~ msgid ""
+#~ "Delete even if I/O errors occur (--ignore-errors). This option has to be "
+#~ "specified in conjunction with --delete to take effect."
+#~ msgstr ""
+#~ "Delete even if I/O errors occur (--ignore-errors). This option has to be "
+#~ "specified in conjunction with --delete to take effect."
+
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Force deletion of non-void directories"
+
+#~ msgid ""
+#~ "Force deletion of directories even if they are not empty (--force). This "
+#~ "option tells rsync to delete a non-empty directory when it is to be "
+#~ "replaced by a non-directory. This is only relevant if deletions are not "
+#~ "active."
+#~ msgstr ""
+#~ "Force deletion of directories even if they are not empty (--force). This "
+#~ "option tells rsync to delete a non-empty directory when it is to be "
+#~ "replaced by a non-directory. This is only relevant if deletions are not "
+#~ "active."
+
+#~ msgid "Do not delete more than this many files:"
+#~ msgstr "Do not delete more than this many files:"
+
+#~ msgid ""
+#~ "Only delete as many files as defined here (--max-delete=NUM). This tells "
+#~ "rsync not to delete more than NUM files or directories (NUM must be non-"
+#~ "zero). This is useful when mirroring very large trees to prevent "
+#~ "disasters."
+#~ msgstr ""
+#~ "Only delete as many files as defined here (--max-delete=NUM). This tells "
+#~ "rsync not to delete more than NUM files or directories (NUM must be non-"
+#~ "zero). This is useful when mirroring very large trees to prevent "
+#~ "disasters."
+
+#~ msgid "Value for DeleteMaximum config entry"
+#~ msgstr "Value for DeleteMaximum config entry"
+
+#~ msgid "Do not transfer any file smaller than:"
+#~ msgstr "Do not transfer any file smaller than:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is smaller than "
+#~ "the specified size (--min-size=SIZE)."
+#~ msgstr ""
+#~ "This option causes rsync to not transfer any file that is smaller than "
+#~ "the specified size (--min-size=SIZE)."
+
+#~ msgid "Value for MinimalTransferSize config entry"
+#~ msgstr "Value for MinimalTransferSize config entry"
+
+#~ msgid "Do not transfer any file larger than:"
+#~ msgstr "Do not transfer any file larger than:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is larger than the "
+#~ "specified size (--max-size=SIZE)."
+#~ msgstr ""
+#~ "This option causes rsync to not transfer any file that is larger than the "
+#~ "specified size (--max-size=SIZE)."
+
+#~ msgid "Value for MaximalTransferSize config entry"
+#~ msgstr "Value for MaximalTransferSize config entry"
+
+#~ msgid "Keep partially transferred files"
+#~ msgstr "Keep partially transferred files"
+
+#~ msgid ""
+#~ "Keep partially transferred files (--partial). The default behavior is "
+#~ "that any partially transferred file is deleted if the transfer is "
+#~ "interrupted."
+#~ msgstr ""
+#~ "Keep partially transferred files (--partial). The default behaviour is "
+#~ "that any partially transferred file is deleted if the transfer is "
+#~ "interrupted."
+
+#~ msgid "Put partially transferred files into:"
+#~ msgstr "Put partially transferred files into:"
+
+#~ msgid ""
+#~ "Put a partially transferred file into this directory (--partial-dir=DIR). "
+#~ "This is a better way than the --partial option to keep partial files, "
+#~ "because the partially transferred file is kept in a different directory "
+#~ "and the destination file is not overwritten."
+#~ msgstr ""
+#~ "Put a partially transferred file into this directory (--partial-dir=DIR). "
+#~ "This is a better way than the --partial option to keep partial files, "
+#~ "because the partially transferred file is kept in a different directory "
+#~ "and the destination file is not overwritten."
+
+#~ msgid "The data for the UsePartialDirectory option"
+#~ msgstr "The data for the UsePartialDirectory option"
+
+#~ msgid "Auto-ignore files in the same way CVS does"
+#~ msgstr "Auto-ignore files in the same way CVS does"
+
+#~ msgid ""
+#~ "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+#~ "useful shorthand for excluding a broad range of files that you often do "
+#~ "not want to transfer between systems. This option uses the same algorithm "
+#~ "that CVS uses to determine if a file should be ignored."
+#~ msgstr ""
+#~ "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+#~ "useful shorthand for excluding a broad range of files that you often do "
+#~ "not want to transfer between systems. This option uses the same algorithm "
+#~ "that CVS uses to determine if a file should be ignored."
+
+#~ msgid "Exclude files matching this pattern:"
+#~ msgstr "Exclude files matching this pattern:"
+
+#~ msgid ""
+#~ "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+#~ "special filter rule. For further information on filter rules see rsync's "
+#~ "manual page."
+#~ msgstr ""
+#~ "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+#~ "special filter rule. For further information on filter rules see rsync's "
+#~ "manual page."
+
+#~ msgid "Pattern that is used for file exclusion"
+#~ msgstr "Pattern that is used for file exclusion"
+
+#~ msgid "Read exclude patterns from:"
+#~ msgstr "Read exclude patterns from:"
+
+#~ msgid ""
+#~ "Read exclude patterns from a file (--exclude-from=FILE). This option is "
+#~ "similar to the --exclude=PATTERN option except that the exclude patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Read exclude patterns from a file (--exclude-from=FILE). This option is "
+#~ "similar to the --exclude=PATTERN option except that the exclude patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+
+#~ msgid "The file from which the exclude patterns are read"
+#~ msgstr "The file from which the exclude patterns are read"
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Do not exclude files matching this pattern:"
+
+#~ msgid ""
+#~ "Do not exclude files matching a certain pattern (--include=PATTERN). This "
+#~ "is a special filter rule. For further information on filter rules see "
+#~ "rsync's manual page."
+#~ msgstr ""
+#~ "Do not exclude files matching a certain pattern (--include=PATTERN). This "
+#~ "is a special filter rule. For further information on filter rules see "
+#~ "rsync's manual page."
+
+#~ msgid "Pattern that is used for file inclusion"
+#~ msgstr "Pattern that is used for file inclusion"
+
+#~ msgid "Read include patterns from:"
+#~ msgstr "Read include patterns from:"
+
+#~ msgid ""
+#~ "Read include patterns from a file (--include-from=FILE). This option is "
+#~ "similar to the --include=PATTERN option except that the include patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Read include patterns from a file (--include-from=FILE). This option is "
+#~ "similar to the --include=PATTERN option except that the include patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+
+#~ msgid "The file from which the include patterns are read"
+#~ msgstr "The file from which the include patterns are read"
+
+#~ msgid "Custom filter rules:"
+#~ msgstr "Custom filter rules:"
+
+#~ msgid ""
+#~ "Add custom file-filtering rules (-f, --filter=RULE). This option allows "
+#~ "you to add rules to selectively exclude certain files from the list of "
+#~ "files to be transferred. These rules will be added to the rsync command "
+#~ "as they are. Thus, each rule has to start with the --filter=... argument."
+#~ msgstr ""
+#~ "Add custom file-filtering rules (-f, --filter=RULE). This option allows "
+#~ "you to add rules to selectively exclude certain files from the list of "
+#~ "files to be transferred. These rules will be added to the rsync command "
+#~ "as they are. Thus, each rule has to start with the --filter=... argument."
+
+#~ msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+#~ msgstr "Use --filter='dir-merge /.rsync-filter' filter rule"
+
+#~ msgid ""
+#~ "This filter rule tells rsync to look for per-directory .rsync-filter "
+#~ "files that have been sprinkled through the hierarchy and use their rules "
+#~ "to filter the files in the transfer. It has no effect, if you also choose "
+#~ "to use the --filter='exclude .rsync-filter' rule."
+#~ msgstr ""
+#~ "This filter rule tells rsync to look for per-directory .rsync-filter "
+#~ "files that have been sprinkled through the hierarchy and use their rules "
+#~ "to filter the files in the transfer. It has no effect, if you also choose "
+#~ "to use the --filter='exclude .rsync-filter' rule."
+
+#~ msgid "Use --filter='exclude .rsync-filter' filter rule"
+#~ msgstr "Use --filter='exclude .rsync-filter' filter rule"
+
+#~ msgid ""
+#~ "This rule filters out the .rsync-filter files from the transfer. These "
+#~ "files normally contain filter rules that can be activated by choosing the "
+#~ "--filter='dir-merge /.rsync-filter' rule and deselecting this one."
+#~ msgstr ""
+#~ "This rule filters out the .rsync-filter files from the transfer. These "
+#~ "files normally contain filter rules that can be activated by choosing the "
+#~ "--filter='dir-merge /.rsync-filter' rule and deselecting this one."
+
+#~ msgid "Handle sparse files efficiently"
+#~ msgstr "Handle sparse files efficiently"
+
+#~ msgid ""
+#~ "Handle sparse files efficiently (-S, --sparse) so that they take up less "
+#~ "space on the destination. This option conflicts with --inplace. For "
+#~ "further information read rsync's manual page."
+#~ msgstr ""
+#~ "Handle sparse files efficiently (-S, --sparse) so that they take up less "
+#~ "space on the destination. This option conflicts with --inplace. For "
+#~ "further information read rsync's manual page."
+
+#~ msgid "Copy files whole (no rsync algorithm)"
+#~ msgstr "Copy files whole (no rsync algorithm)"
+
+#~ msgid ""
+#~ "Copy files whole (-W, --whole-file). With this option the incremental "
+#~ "rsync algorithm is not used and the whole file is sent as-is instead."
+#~ msgstr ""
+#~ "Copy files whole (-W, --whole-file). With this option the incremental "
+#~ "rsync algorithm is not used and the whole file is sent as-is instead."
+
+#~ msgid "Do not cross file system boundaries"
+#~ msgstr "Do not cross file system boundaries"
+
+#~ msgid ""
+#~ "Do not cross file system boundaries (-x, --one-file-system). This tells "
+#~ "rsync to avoid crossing a filesystem boundary when recursing. For further "
+#~ "information on this option, read the manual page."
+#~ msgstr ""
+#~ "Do not cross file system boundaries (-x, --one-file-system). This tells "
+#~ "rsync to avoid crossing a filesystem boundary when recursing. For further "
+#~ "information on this option, read the manual page."
+
+#~ msgid "Only update files that already exist"
+#~ msgstr "Only update files that already exist"
+
+#~ msgid ""
+#~ "Skip creating new files on the receiving side (--existing). This tells "
+#~ "rsync to skip creating files (including directories) that do not exist "
+#~ "yet on the destination. If this option is combined with the --ignore-"
+#~ "existing option, no files will be updated (which can be useful if all you "
+#~ "want to do is to delete extraneous files)."
+#~ msgstr ""
+#~ "Skip creating new files on the receiving side (--existing). This tells "
+#~ "rsync to skip creating files (including directories) that do not exist "
+#~ "yet on the destination. If this option is combined with the --ignore-"
+#~ "existing option, no files will be updated (which can be useful if all you "
+#~ "want to do is to delete extraneous files)."
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Ignore files that already exist"
+
+#~ msgid ""
+#~ "Skip updating files that already exist on the receiving side (--ignore-"
+#~ "existing). Existing directories are not ignored."
+#~ msgstr ""
+#~ "Skip updating files that already exist on the receiving side (--ignore-"
+#~ "existing). Existing directories are not ignored."
+
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Delay updates until the end of transfer"
+
+#~ msgid ""
+#~ "Delay updates until the end of the transfer (--delay-updates). This "
+#~ "option puts the temporary file from each updated file into a holding "
+#~ "directory until the end of the transfer, at which time all the files are "
+#~ "renamed and copied into place in rapid succession."
+#~ msgstr ""
+#~ "Delay updates until the end of the transfer (--delay-updates). This "
+#~ "option puts the temporary file from each updated file into a holding "
+#~ "directory until the end of the transfer, at which time all the files are "
+#~ "renamed and copied into place in rapid succession."
+
+#~ msgid "Make backups"
+#~ msgstr "Make backups"
+
+#~ msgid ""
+#~ "Make backups (-b, --backup). With this option, preexisting destination "
+#~ "files are renamed as each file is transferred or deleted. You can control "
+#~ "where the backup file goes and what (if any) suffix gets appended using "
+#~ "the --backup-dir=DIR and --suffix=SUFFIX options."
+#~ msgstr ""
+#~ "Make backups (-b, --backup). With this option, preexisting destination "
+#~ "files are renamed as each file is transferred or deleted. You can control "
+#~ "where the backup file goes and what (if any) suffix gets appended using "
+#~ "the --backup-dir=DIR and --suffix=SUFFIX options."
+
+#~ msgid "Backup suffix:"
+#~ msgstr "Backup suffix:"
+
+#~ msgid "Use this suffix for backups (--suffix=SUFFIX)."
+#~ msgstr "Use this suffix for backups (--suffix=SUFFIX)."
+
+#~ msgid "Backup suffix"
+#~ msgstr "Backup suffix"
+
+#~ msgid "Backup directory:"
+#~ msgstr "Backup directory:"
+
+#~ msgid "Store backups in this directory (--backup-dir=DIR)."
+#~ msgstr "Store backups in this directory (--backup-dir=DIR)."
+
+#~ msgid "Backup directory"
+#~ msgstr "Backup directory"
+
+#~ msgid "Force fixed checksum block size:"
+#~ msgstr "Force fixed checksum block size:"
+
+#~ msgid ""
+#~ "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces "
+#~ "the block size used in the rsync algorithm to a fixed value."
+#~ msgstr ""
+#~ "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces "
+#~ "the block size used in the rsync algorithm to a fixed value."
+
+#~ msgid "The block size"
+#~ msgstr "The block size"
+
+#~ msgid "Set block/file checksum seed:"
+#~ msgstr "Set block/file checksum seed:"
+
+#~ msgid ""
+#~ "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+#~ "seed to this integer. This 4 byte checksum seed is included in each block "
+#~ "and file MD4 checksum calculation. By default the checksum seed is "
+#~ "generated by the server and defaults to the current time."
+#~ msgstr ""
+#~ "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+#~ "seed to this integer. This 4 byte checksum seed is included in each block "
+#~ "and file MD4 checksum calculation. By default the checksum seed is "
+#~ "generated by the server and defaults to the current time."
+
+#~ msgid "The checksum seed"
+#~ msgstr "The checksum seed"
+
+#~ msgid "Skip files based on checksum"
+#~ msgstr "Skip files based on checksum"
+
+#~ msgid ""
+#~ "Skip files based on a checksum and not based on modification time and "
+#~ "size (-c, --checksum). For further information on how this feature works "
+#~ "read rsync's manual page."
+#~ msgstr ""
+#~ "Skip files based on a checksum and not based on modification time and "
+#~ "size (-c, --checksum). For further information on how this feature works "
+#~ "read rsync's manual page."
+
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr "Unmount all shares when the sleep button is pressed"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware sleep button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Unmount all mounted shares after the hardware sleep button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "Unmount all shares when the lid is closed"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the lid of the laptop is closed. The "
+#~ "shares will automatically be remounted after the computer wakes up again."
+#~ msgstr ""
+#~ "Unmount all mounted shares after the lid of the laptop is closed. The "
+#~ "shares will automatically be remounted after the computer wakes up again."
+
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr "Unmount all shares when the power button is pressed"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware power button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Unmount all mounted shares after the hardware power button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr "Unmount all shares when the network is disconnected"
+
+#~ msgid ""
+#~ "Unmount all mounted shares when the user disconnects from the network or "
+#~ "the connection is lost due to a different reason. Using this option in "
+#~ "combination with sleep and/or hibernation might lead to unwanted side "
+#~ "effects. In this case you should unmount the shares manually before you "
+#~ "suspend the computer."
+#~ msgstr ""
+#~ "Unmount all mounted shares when the user disconnects from the network or "
+#~ "the connection is lost due to a different reason. Using this option in "
+#~ "combination with sleep and/or hibernation might lead to unwanted side "
+#~ "effects. In this case you should unmount the shares manually before you "
+#~ "suspend the computer."
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Add Bookmarks"
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>All checked shares will be bookmarked. To add a descriptive label to "
+#~| "a bookmark, double click the respective field.</qt>"
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "<qt>All ticked shares will be bookmarked. To add a descriptive label to a "
+#~ "bookmark, double click the respective field.</qt>"
+
+#, fuzzy
+#~| msgid "Label"
+#~ msgid "Label:"
+#~ msgstr "Label"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "Group:"
+#~ msgstr "Group ID:"
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "&Edit Bookmarks"
+
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Bookmarks"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "Group name:"
+#~ msgstr "Group ID:"
+
+#, fuzzy
+#~| msgid "The share could not be unmounted."
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr "The share could not be unmounted."
+
+#, fuzzy
+#~| msgid "SMB Port"
+#~ msgid "SMB Port:"
+#~ msgstr "SMB Port"
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 is not a version 1.0 file."
+
+#~ msgid "Specify User"
+#~ msgstr "Specify User"
+
+#~ msgid "Please specify a username."
+#~ msgstr "Please specify a username."
+
+#~ msgid "User:"
+#~ msgstr "User:"
+
+#, fuzzy
+#~| msgid "Mount Share"
+#~ msgid "Foreign Share"
+#~ msgstr "Mount Share"
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Unmounting share %1..."
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Unmounting share %1..."
+
+#~ msgid "Mount Share"
+#~ msgstr "Mount Share"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Add this share to the bookmarks"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "If you tick this tickbox, the share will be bookmarked and you can access "
+#~ "it e.g. through the \"Bookmarks\" menu entry in the main window."
+
+#, fuzzy
+#~| msgid "The share could not be unmounted."
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "The share could not be unmounted."
+
+#, fuzzy
+#~| msgid "On"
+#~ msgid "Open"
+#~ msgstr "On"
+
+#, fuzzy
+#~| msgid "The share could not be unmounted."
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr "The share could not be unmounted."
+
+#, fuzzy
+#~| msgid "The share could not be unmounted."
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "The share could not be unmounted."
+#~ msgstr[1] "The share could not be unmounted."
+
+#, fuzzy
+#~| msgid "The share could not be unmounted."
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "The share could not be unmounted."
+
+#, fuzzy
+#~| msgid "The share could not be unmounted."
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "The share could not be unmounted."
+#~ msgstr[1] "The share could not be unmounted."
+
+#, fuzzy
+#~| msgid "The share could not be unmounted."
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "The share could not be unmounted."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>The mimetype \"%1\" is not supported. Please convert the file to "
+#~| "PostScript or PDF.</qt>"
+#~ msgid ""
+#~ "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#~ "the file to PDF or Postscript and try again.</p>"
+#~ msgstr ""
+#~ "<qt>The mimetype \"%1\" is not supported. Please convert the file to "
+#~ "PostScript or PDF.</qt>"
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Scan these broadcast areas:"
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr "Scan these broadcast areas:"
+
+#, fuzzy
+#~| msgid "Scan these broadcast areas:"
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr "Scan these broadcast areas:"
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>You are not allowed to unmount this share. It is owned by another "
+#~| "user.</qt>"
+#~ msgid ""
+#~ "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~ "is owned by the user <b>%3</b>.</p>"
+#~ msgstr ""
+#~ "<qt>You are not allowed to unmount this share. It is owned by another "
+#~ "user.</qt>"
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "<qt>The command \"%1\" could not be found.</qt>"
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr "<qt>The command \"%1\" could not be found.</qt>"
+
+#, fuzzy
+#~| msgid "<qt>Printers cannot be bookmarked.</qt>"
+#~ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#~ msgstr "<qt>Printers cannot be bookmarked.</qt>"
+
+#, fuzzy
+#~| msgid "<qt>The command \"%1\" could not be found.</qt>"
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "<qt>The command \"%1\" could not be found.</qt>"
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "<qt>The process failed to start (error code: %1).</qt>"
+#~ msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<qt>The process failed to start (error code: %1).</qt>"
+
+#, fuzzy
+#~| msgid "<qt>The process crashed (error code: %1).</qt>"
+#~ msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<qt>The process crashed (error code: %1).</qt>"
+
+#, fuzzy
+#~| msgid "<qt>The process timed out (error code: %1).</qt>"
+#~ msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<qt>The process timed out (error code: %1).</qt>"
+
+#, fuzzy
+#~| msgid "<qt>Could not write to the process (error code: %1).</qt>"
+#~ msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<qt>Could not write to the process (error code: %1).</qt>"
+
+#, fuzzy
+#~| msgid "<qt>Could not read from the process (error code: %1).</qt>"
+#~ msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<qt>Could not read from the process (error code: %1).</qt>"
+
+#, fuzzy
+#~| msgid "<qt>The process reported an unknown error.</qt>"
+#~ msgid "<p>The process reported an unknown error.</p>"
+#~ msgstr "<qt>The process reported an unknown error.</qt>"
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "<qt>The process timed out (error code: %1).</qt>"
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code:<tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr "<qt>The process timed out (error code: %1).</qt>"
+
+#, fuzzy
+#~| msgid "Retrieving preview from %1..."
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr "Retrieving preview from %1..."
+
+#, fuzzy
+#~| msgid "<qt>The UNC address you entered is invalid.</qt>"
+#~ msgid "<p>The URL that was passed is invalid.</p>"
+#~ msgstr "<qt>The UNC address you entered is invalid.</qt>"
+
+#, fuzzy
+#~| msgid "There are currently no shares mounted."
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "There are currently no shares mounted."
+
+#~ msgid "Preview"
+#~ msgstr "Preview"
+
+#~ msgid "Reload"
+#~ msgstr "Reload"
+
+#~ msgid "Back"
+#~ msgstr "Back"
+
+#~ msgid "Forward"
+#~ msgstr "Forwards"
+
+#~ msgid "Up"
+#~ msgstr "Up"
+
+#~ msgid ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+#~ msgstr ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+
+#~ msgid "Print File"
+#~ msgstr "Print File"
+
+#~ msgid "Printer"
+#~ msgstr "Printer"
+
+#~ msgid "File:"
+#~ msgstr "File:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+
+#~ msgid "Copies:"
+#~ msgstr "Copies:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "This is the number of copies you want to print."
+
+#~ msgid "Disk"
+#~ msgstr "Disk"
+
+#, fuzzy
+#~| msgid "Synchronizing %1"
+#~ msgid "Synchronizing"
+#~ msgstr "Synchronising %1"
+
+#, fuzzy
+#~| msgid "Source:"
+#~ msgid "Source"
+#~ msgstr "Source:"
+
+#, fuzzy
+#~| msgid "Destination:"
+#~ msgid "Destination"
+#~ msgstr "Destination:"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Synchronise the destination with the source"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Swap Paths"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Swap source and destination"
+
+#~ msgid "Source:"
+#~ msgstr "Source:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+
+#~ msgid "Destination:"
+#~ msgstr "Destination:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+
+#, fuzzy
+#~| msgid "<qt>Please enter a username and a password for the host %1.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr "<qt>Please enter a username and a password for the host %1.</qt>"
+
+#, fuzzy
+#~| msgid "<qt>Please enter a username and a password for the share %1.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr "<qt>Please enter a username and a password for the share %1.</qt>"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Mount Dialog"
+#~ msgstr "Mounting"
+
+#, fuzzy
+#~| msgid "U&nmount All"
+#~ msgid "Unmount All"
+#~ msgstr "U&nmount All"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing"
+#~ msgid "NTLM password hashing"
+#~ msgstr "Use NTLMv2 password hashing"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing"
+#~ msgid "NTLMv2 password hashing"
+#~ msgstr "Use NTLMv2 password hashing"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing with packet signing"
+#~ msgid "NTLMv2 password hashing encapsulated in Raw NTLMSSP message"
+#~ msgstr "Use NTLMv2 password hashing with packet signing"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing with packet signing"
+#~ msgid ""
+#~ "NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet "
+#~ "signing"
+#~ msgstr "Use NTLMv2 password hashing with packet signing"
+
+#, fuzzy
+#~| msgid "Unmounting share %1..."
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Unmounting share %1..."
+
+#, fuzzy
+#~| msgid "Security mode:"
+#~ msgid "Use default security mode"
+#~ msgstr "Security mode:"
+
+#~ msgid "IP address:"
+#~ msgstr "IP address:"
+
+#~ msgid "Mount"
+#~ msgstr "Mount"
+
+#, fuzzy
+#~| msgid "One or more utility programs could not be found."
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr "One or more utility programs could not be found."
+
+#~ msgid "Advanced"
+#~ msgstr "Advanced"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to force the unmounting of this share?</qt>"
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr "<qt>Do you really want to force the unmounting of this share?</qt>"
+
+#, fuzzy
+#~| msgid "&Force Unmounting"
+#~ msgid "Force Unmounting"
+#~ msgstr "&Force Unmounting"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to force the unmounting of this share?</qt>"
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of all inaccessible "
+#~ "shares?</p></qt>"
+#~ msgstr "<qt>Do you really want to force the unmounting of this share?</qt>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\\u00A9 2003-2009 Alexander Reinholdt\n"
+#~| "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr ""
+#~ "\\u00A9 2003-2009 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "&Force Unmounting"
+
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "<qt>Please enter a username and a password.</qt>"
+
+#~ msgid "Signing State"
+#~ msgstr "Signing State"
+
+#~ msgid "Use NTLM password hashing (default)"
+#~ msgstr "Use NTLM password hashing (default)"
+
+#~ msgid "UNC Address"
+#~ msgstr "UNC Address"
+
+#~ msgid "Write Access"
+#~ msgstr "Write Access"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "User ID"
+
+#~ msgid "Group ID"
+#~ msgstr "Group ID"
+
+#~ msgid "SMB Port"
+#~ msgstr "SMB Port"
+
+#~ msgid "File System Port"
+#~ msgstr "File System Port"
+
+#~ msgid "Automatic"
+#~ msgstr "Automatic"
+
+#~ msgid "Massimo Callegari"
+#~ msgstr "Massimo Callegari"
+
+#~ msgid "A&dd"
+#~ msgstr "A&dd"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "host. It has the following syntax: //HOST."
+#~ msgstr ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "host. It has the following syntax: //HOST."
+
+#~ msgid "automatic"
+#~ msgstr "automatic"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //HOST/SHARE"
+#~ msgstr ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //HOST/SHARE"
+
+#~ msgid ""
+#~ "<qt>The format of the UNC address you entered is not correct. It must "
+#~ "have the form //[USER@]HOST/SHARE."
+#~ msgstr ""
+#~ "<qt>The format of the UNC address you entered is not correct. It must "
+#~ "have the form //[USER@]HOST/SHARE."
+
+#~ msgid "M&ount Manually"
+#~ msgstr "M&ount Manually"
+
+#~ msgid "Share"
+#~ msgstr "Share"
+
+#~ msgid "Bookmark Editor"
+#~ msgstr "Bookmark Editor"
+
+#~ msgid "Bookmark"
+#~ msgstr "Bookmark"
+
+#, fuzzy
+#~| msgid "Print File"
+#~ msgid "Printing"
+#~ msgstr "Print File"
+
+#, fuzzy
+#~| msgid "Print File"
+#~ msgid "Input File"
+#~ msgstr "Print File"
+
+#~ msgid "This is the view where the contents of the share is displayed."
+#~ msgstr "This is the view where the contents of the share is displayed."
+
+#~ msgid "The file is invalid."
+#~ msgstr "The file is invalid."
+
+#~ msgid "The file that is currently transferred is shown here."
+#~ msgstr "The file that is currently transferred is shown here."
+
+#~ msgid "The progress of the current file transfer is shown here."
+#~ msgstr "The progress of the current file transfer is shown here."
+
+#~ msgid "The overall progress of the synchronization is shown here."
+#~ msgstr "The overall progress of the synchronisation is shown here."
+
+#~ msgid "Files transferred:"
+#~ msgstr "Files transferred:"
+
+#~ msgid "Transfer rate:"
+#~ msgstr "Transfer rate:"
+
+#~ msgid ""
+#~ "This is the path where Smb4K will store the files and directories during "
+#~ "synchronization. If you plan to synchronize only with one remote share, "
+#~ "then you can put the data directly in this directory. If you want to "
+#~ "synchronize with several remote shares, then you should create a "
+#~ "subdirectory for each share and choose the appropriate one in the "
+#~ "synchronization dialog."
+#~ msgstr ""
+#~ "This is the path where Smb4K will store the files and directories during "
+#~ "synchronisation. If you plan to synchronise only with one remote share, "
+#~ "then you can put the data directly in this directory. If you want to "
+#~ "synchronise with several remote shares, then you should create a "
+#~ "subdirectory for each share and choose the appropriate one in the "
+#~ "synchronisation dialogue."
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "NoSuchAction"
+#~ msgstr "Actions"
+
+#, fuzzy
+#~| msgid "<qt>The process timed out (error code: %1).</qt>"
+#~ msgid ""
+#~ "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</"
+#~ "p>"
+#~ msgstr "<qt>The process timed out (error code: %1).</qt>"
+
+#, fuzzy
+#~| msgid "<qt>The directory \"%1\" could not be created.</qt>"
+#~ msgid "The directory <b>%1</b> could not be created."
+#~ msgstr "<qt>The directory \"%1\" could not be created.</qt>"
+
+#, fuzzy
+#~| msgid "Links"
+#~ msgid "List"
+#~ msgstr "Links"
+
+#~ msgid "\\u00A9 2007-2009, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2009, Alexander Reinholdt"
+
+#~ msgid "Share:"
+#~ msgstr "Share:"
+
+#~ msgid "Free:"
+#~ msgstr "Free:"
+
+#~ msgid "Used:"
+#~ msgstr "Used:"
+
+#~ msgid "Total:"
+#~ msgstr "Total:"
+
+#~ msgid "Usage:"
+#~ msgstr "Usage:"
+
+#~ msgid "This share is inaccessible."
+#~ msgstr "This share is inaccessible."
+
+#~ msgid "Pseudo master browser:"
+#~ msgstr "Pseudo master browser:"
+
+#, fuzzy
+#~| msgid "Italian translation"
+#~ msgid "Invalid action"
+#~ msgstr "Italian translation"
+
+#~ msgid ""
+#~ "<qt>If you experience problems due to insufficient privileges when "
+#~ "mounting shares, you should enable the appropriate settings in the "
+#~ "<b>Super User</b> configuration page.</qt>"
+#~ msgstr ""
+#~ "<qt>If you experience problems due to insufficient privileges when "
+#~ "mounting shares, you should enable the appropriate settings in the "
+#~ "<b>Super User</b> configuration page.</qt>"
+
+#~ msgid "Smb4KSearchDialogPart"
+#~ msgstr "Smb4KSearchDialoguePart"
+
+#~ msgid "The search dialog KPart of Smb4K"
+#~ msgstr "The search dialogue KPart of Smb4K"
+
+#~ msgid "Remove Entries"
+#~ msgstr "Remove Entries"
+
+#~ msgid "Remove entries from the configuration file"
+#~ msgstr "Remove entries from the configuration file"
+
+#~ msgid ""
+#~ "All entries that were written by Smb4K will be removed from /etc/sudoers. "
+#~ "Additionally, all your choices under \"Actions\" will be cleared."
+#~ msgstr ""
+#~ "All entries that were written by Smb4K will be removed from /etc/sudoers. "
+#~ "Additionally, all your choices under \"Actions\" will be cleared."
+
+#, fuzzy
+#~| msgid "Mounting %1 failed."
+#~ msgid "Writing to the <b>sudoers</b> file failed."
+#~ msgstr "Mounting %1 failed."
+
+#, fuzzy
+#~| msgid "(c) 2008, Alexander Reinholdt"
+#~ msgid "(C) 2010, Alexander Reinholdt"
+#~ msgstr "(c) 2008, Alexander Reinholdt"
+
+#, fuzzy
+#~| msgid "smb4k_sudowriter"
+#~ msgid "smb4k_mount"
+#~ msgstr "smb4k_sudowriter"
+
+#, fuzzy
+#~| msgid "Try to authenticate with Kerberos"
+#~ msgid "Username to authenticate with"
+#~ msgstr "Try to authenticate with Kerberos"
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "The UNC of the remote share"
+#~ msgstr "Show the IP address of the server"
+
+#, fuzzy
+#~| msgid "Show the mount point instead of the share name"
+#~ msgid "The mountpoint for the remote share"
+#~ msgstr "Show the mount point instead of the share name"
+
+#~ msgid "Aborting."
+#~ msgstr "Aborting."
+
+#, fuzzy
+#~| msgid "<qt>The process crashed (error code: %1).</qt>"
+#~ msgid "The internal process crashed with exit code "
+#~ msgstr "<qt>The process crashed (error code: %1).</qt>"
+
+#~ msgid "This program writes to the sudoers file."
+#~ msgstr "This program writes to the sudoers file."
+
+#, fuzzy
+#~| msgid "(c) 2008, Alexander Reinholdt"
+#~ msgid "(C) 2008-2010, Alexander Reinholdt"
+#~ msgstr "(c) 2008, Alexander Reinholdt"
+
+#~ msgid "smb4k_sudowriter"
+#~ msgstr "smb4k_sudowriter"
+
+#~ msgid "Add an user to the sudoers file"
+#~ msgstr "Add an user to the sudoers file"
+
+#~ msgid "Remove an user from the sudoers file"
+#~ msgstr "Remove an user from the sudoers file"
+
+#, fuzzy
+#~| msgid "No arguments given."
+#~ msgid "No valid arguments provided."
+#~ msgstr "No arguments given."
+
+#~ msgid "The lock file could not be created."
+#~ msgstr "The lock file could not be created."
+
+#, fuzzy
+#~| msgid "The sudoers file was not found."
+#~ msgid "The sudoers file is currently being edited."
+#~ msgstr "The sudoers file was not found."
+
+#~ msgid "An invalid username has been provided."
+#~ msgstr "An invalid username has been provided."
+
+#~ msgid "The sudoers file was not found."
+#~ msgstr "The sudoers file was not found."
+
+#~ msgid "The sudoers file is irregular."
+#~ msgstr "The sudoers file is irregular."
+
+#~ msgid "Cannot access sudoers file."
+#~ msgstr "Cannot access sudoers file."
+
+#, fuzzy
+#~| msgid "Cannot access sudoers file."
+#~ msgid "Could not read from sudoers file."
+#~ msgstr "Cannot access sudoers file."
+
+#, fuzzy
+#~| msgid "Cannot access sudoers file."
+#~ msgid "Could not set file permissions for sudoers file."
+#~ msgstr "Cannot access sudoers file."
+
+#, fuzzy
+#~| msgid "Cannot access sudoers file."
+#~ msgid "Could not compile Smb4K section for sudoers file."
+#~ msgstr "Cannot access sudoers file."
+
+#, fuzzy
+#~| msgid "Cannot access sudoers file."
+#~ msgid "Could not write to sudoers file."
+#~ msgstr "Cannot access sudoers file."
+
+#, fuzzy
+#~| msgid "smb4k_sudowriter"
+#~ msgid "smb4k_umount"
+#~ msgstr "smb4k_sudowriter"
+
+#, fuzzy
+#~| msgid "The file is invalid."
+#~ msgid "The PID of the process that is to be killed"
+#~ msgstr "The file is invalid."
+
+#~ msgid ""
+#~ "Unmount a share under Linux by force. This even works if the file system "
+#~ "is \"busy\", because it is immediately detached from the file system "
+#~ "hierarchy and all references to it are cleaned up later when it is not "
+#~ "busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of "
+#~ "this feature. Use with care. Note, that you will need the root password "
+#~ "to write the necessary changes to the configuration file."
+#~ msgstr ""
+#~ "Unmount a share under Linux by force. This even works if the file system "
+#~ "is \"busy\", because it is immediately detached from the file system "
+#~ "hierarchy and all references to it are cleaned up later when it is not "
+#~ "busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of "
+#~ "this feature. Use with care. Note, that you will need the root password "
+#~ "to write the necessary changes to the configuration file."
+
+#~ msgid "Use super user privileges to mount and unmount shares"
+#~ msgstr "Use super user privileges to mount and unmount shares"
+
+#~ msgid ""
+#~ "Use super user privileges for mounting and unmounting remote shares. This "
+#~ "feature is only needed, if you are not allowed to do this as normal user. "
+#~ "Note, that you will need the root password to write the necessary changes "
+#~ "to the configuration file."
+#~ msgstr ""
+#~ "Use super user privileges for mounting and unmounting remote shares. This "
+#~ "feature is only needed, if you are not allowed to do this as normal user. "
+#~ "Note, that you will need the root password to write the necessary changes "
+#~ "to the configuration file."
+
+#, fuzzy
+#~| msgid "Remove entries from the configuration file"
+#~ msgid "Do not modify sudo's configuration file"
+#~ msgstr "Remove entries from the configuration file"
+
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Detailed information cannot be provided "
+#~ "because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Detailed information cannot be provided "
+#~ "because there was no error message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Read the error message under \"Details\" "
+#~ "to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Read the error message under \"Details\" "
+#~ "to find out more.</p></qt>"
+
+#~ msgid "<qt>This feature has not been enabled.</qt>"
+#~ msgstr "<qt>This feature has not been enabled.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Read the error message under "
+#~ "\"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>An unknown error occurred.</p><p>Read the error message under "
+#~ "\"Details\" to find out more.</p></qt>"
+
+#~ msgid "<qt>The process exited unexpectedly.</qt>"
+#~ msgstr "<qt>The process exited unexpectedly.</qt>"
+
+#~ msgid "<qt>The file \"%1\" could not be found.</qt>"
+#~ msgstr "<qt>The file \"%1\" could not be found.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>Either your PATH environment variable is not set properly or there "
+#~ "are the following programs missing on your system:</p><p>%1</p><p>Please "
+#~ "correct this and restart Smb4K.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Either your PATH environment variable is not set properly or there "
+#~ "are the following programs missing on your system:</p><p>%1</p><p>Please "
+#~ "correct this and restart Smb4K.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid "<qt>The file \"%1\" could not be opened.</qt>"
+#~ msgstr "<qt>The file \"%1\" could not be opened.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt></p>The synchronization could not be finished successfully.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt></p>The synchronisation could not be finished successfully.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The synchronization could not be finished successfully.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The synchronisation could not be finished successfully.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid "Another user is currently editing the sudoers file."
+#~ msgstr "Another user is currently editing the sudoers file."
+
+#~ msgid "The Smb4K section does not conform with the required format."
+#~ msgstr "The Smb4K section does not conform with the required format."
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Read the error message under \"Details"
+#~ "\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Read the error message under \"Details"
+#~ "\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>The share could not be unmounted, because the mount point string was "
+#~ "empty.</qt>"
+#~ msgstr ""
+#~ "<qt>The share could not be unmounted, because the mount point string was "
+#~ "empty.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>The list of arguments for the \"net\" command could not be assembled."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>The list of arguments for the \"net\" command could not be assembled."
+#~ "</qt>"
+
+#~ msgid ""
+#~ "<qt>The label \"%1\" is used more than once. It will automatically be "
+#~ "renamed for bookmark \"%2\" to avoid confusion.</qt>"
+#~ msgstr ""
+#~ "<qt>The label \"%1\" is used more than once. It will automatically be "
+#~ "renamed for bookmark \"%2\" to avoid confusion.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Read the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Read the error message under \"Details\" to find out more.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>You previously chose to use \"%1\", but now it is missing on your "
+#~ "system. Smb4K will disable this feature.</qt>"
+#~ msgstr ""
+#~ "<qt>You previously chose to use \"%1\", but now it is missing on your "
+#~ "system. Smb4K will disable this feature.</qt>"
+
+#~ msgid ""
+#~ "<qt>The wallet \"%1\" could not be opened. KWallet support will be "
+#~ "disabled for this session.</qt>"
+#~ msgstr ""
+#~ "<qt>The wallet \"%1\" could not be opened. KWallet support will be "
+#~ "disabled for this session.</qt>"
+
+#~ msgid "System Tray"
+#~ msgstr "System Tray"
+
+#, fuzzy
+#~| msgid "Main Window & System Tray"
+#~ msgid "Main Window && System Tray"
+#~ msgstr "Main Window & System Tray"
+
+#~ msgid "Embed application into the system tray"
+#~ msgstr "Embed application into the system tray"
+
+#~ msgid ""
+#~ "Embed the application into the system tray. The system tray widget "
+#~ "provides a popup menu with several commonly used tasks, so you do not "
+#~ "need to bring up the main window every time. If this setting is chosen, "
+#~ "you have to use \"Quit\" from the \"File\" menu or the system tray widget "
+#~ "to exit the application."
+#~ msgstr ""
+#~ "Embed the application into the system tray. The system tray widget "
+#~ "provides a popup menu with several commonly used tasks, so you do not "
+#~ "need to bring up the main window every time. If this setting is chosen, "
+#~ "you have to use \"Quit\" from the \"File\" menu or the system tray widget "
+#~ "to exit the application."
+
+#~ msgid "on"
+#~ msgstr "on"
+
+#, fuzzy
+#~| msgid "Preview"
+#~ msgid "The preview"
+#~ msgstr "Preview"
+
+#, fuzzy
+#~| msgid "Backup directory"
+#~ msgid "The source directory"
+#~ msgstr "Backup directory"
+
+#, fuzzy
+#~| msgid "Keep partially transferred files"
+#~ msgid "The currently transferred file"
+#~ msgstr "Keep partially transferred files"
+
+#, fuzzy
+#~| msgid "Delay updates until the end of transfer"
+#~ msgid "The progress of the current file transfer"
+#~ msgstr "Delay updates until the end of transfer"
+
+#, fuzzy
+#~| msgid "The network browser could not be created."
+#~ msgid "The workgroup where the host is located"
+#~ msgstr "The network browser could not be created."
+
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "The UNC address of the host"
+#~ msgstr "Show the IP address of the server"
+
+#, fuzzy
+#~| msgid "Write access:"
+#~ msgid "The write access"
+#~ msgstr "Write access:"
+
+#, fuzzy
+#~| msgid "User ID:"
+#~ msgid "The user ID"
+#~ msgstr "User ID:"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "The group ID"
+#~ msgstr "Group ID:"
+
+#, fuzzy
+#~| msgid "Bookmark Editor"
+#~ msgid "Bookmark this share"
+#~ msgstr "Bookmark Editor"
+
+#~ msgid "Name:"
+#~ msgstr "Name:"
+
+#~ msgid "Protocol:"
+#~ msgstr "Protocol:"
+
+#~ msgid "Try to authenticate with Kerberos (Active Directory)"
+#~ msgstr "Try to authenticate with Kerberos (Active Directory)"
+
+#~ msgid "UID"
+#~ msgstr "UID"
+
+#~ msgid "GID"
+#~ msgstr "GID"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "[Network] The custom master browser has not been entered."
+#~ msgstr "[Network] The custom master browser has not been entered."
+
+#~ msgid "[Network] The broadcast areas have not been entered."
+#~ msgstr "[Network] The broadcast areas have not been entered."
+
+#~ msgid "[Shares] The mount prefix is empty."
+#~ msgstr "[Shares] The mount prefix is empty."
+
+#~ msgid "[Samba] The file mask is empty."
+#~ msgstr "[Samba] The file mask is empty."
+
+#~ msgid "[Samba] The directory mask is empty."
+#~ msgstr "[Samba] The directory mask is empty."
+
+#~ msgid "[Synchronization] The rsync prefix is empty."
+#~ msgstr "[Synchronisation] The rsync prefix is empty."
+
+#~ msgid "[Synchronization] The exclude patterns have not been entered."
+#~ msgstr "[Synchronisation] The exclude patterns have not been entered."
+
+#~ msgid "[Synchronization] The path of the exclude file is empty."
+#~ msgstr "[Synchronisation] The path of the exclude file is empty."
+
+#~ msgid "[Synchronization] The include patterns have not been entered."
+#~ msgstr "[Synchronisation] The include patterns have not been entered."
+
+#~ msgid "[Synchronization] The path of the include file is empty."
+#~ msgstr "[Synchronisation] The path of the include file is empty."
+
+#~ msgid "[Synchronization] The backup suffix has not been defined."
+#~ msgstr "[Synchronisation] The backup suffix has not been defined."
+
+#~ msgid "[Synchronization] The backup directory is empty."
+#~ msgstr "[Synchronisation] The backup directory is empty."
+
+#~ msgid ""
+#~ "<qt>The configuration could not be written, because one setting is "
+#~ "incomplete:<ul>%2</ul>Please correct this issue.</qt>"
+#~ msgid_plural ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+#~ msgstr[0] ""
+#~ "<qt>The configuration could not be written, because one setting is "
+#~ "incomplete:<ul>%2</ul>Please correct this issue.</qt>"
+#~ msgstr[1] ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>Smb4K now uses a different configuration system. Thus, your old "
+#~ "settings are obsolete and you have to reconfigure the application.</"
+#~ "p><p>To ensure a clean transition, the current configuration file will be "
+#~ "removed.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Smb4K now uses a different configuration system. Thus, your old "
+#~ "settings are obsolete and you have to reconfigure the application.</"
+#~ "p><p>To ensure a clean transition, the current configuration file will be "
+#~ "removed.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>Support for the program 'super' has been terminated. You have to "
+#~ "reconfigure Smb4K.</qt>"
+#~ msgstr ""
+#~ "<qt>Support for the program 'super' has been terminated. You have to "
+#~ "reconfigure Smb4K.</qt>"
+
+#~ msgid "[Authentication] The default username has not been entered."
+#~ msgstr "[Authentication] The default username has not been entered."
+
+#~ msgid "This username is used by default to authenticate to a remote server."
+#~ msgstr ""
+#~ "This username is used by default to authenticate to a remote server."
+
+#~ msgid ""
+#~ "This password is used by default to authenticate to a remote server. It "
+#~ "may be empty."
+#~ msgstr ""
+#~ "This password is used by default to authenticate to a remote server. It "
+#~ "may be empty."
+
+#, fuzzy
+#~| msgid "The share could not be mounted."
+#~ msgid "There are currently %1 shares mounted."
+#~ msgstr "The share could not be mounted."
+
+#~ msgid "Delete"
+#~ msgstr "Delete"
+
+#~ msgid "Leopold Palomo Avellaneda"
+#~ msgstr "Leopold Palomo Avellaneda"
+
+#~ msgid "Catalan translation"
+#~ msgstr "Catalan translation"
+
+#~ msgid "Radoslaw Zawartko"
+#~ msgstr "Radoslaw Zawartko"
+
+#~ msgid "Polish translation"
+#~ msgstr "Polish translation"
+
+#~ msgid "Nick Chen"
+#~ msgstr "Nick Chen"
+
+#~ msgid "Chinese Simplified translation"
+#~ msgstr "Chinese Simplified translation"
+
+#~ msgid "Stanislav Yudin"
+#~ msgstr "Stanislav Yudin"
+
+#~ msgid "Russian translation"
+#~ msgstr "Russian translation"
+
+#~ msgid "Marc Hansen"
+#~ msgstr "Marc Hansen"
+
+#~ msgid "Swedish translation and intensive testing"
+#~ msgstr "Swedish translation and intensive testing"
+
+#~ msgid "Giovanni Degani"
+#~ msgstr "Giovanni Degani"
+
+#~ msgid "Brazilian Portuguese translation"
+#~ msgstr "Brazilian Portuguese translation"
+
+#~ msgid "Ivan Petrouchtchak"
+#~ msgstr "Ivan Petrouchtchak"
+
+#~ msgid "Ukrainian translation"
+#~ msgstr "Ukrainian translation"
+
+#~ msgid "Karoly Barcza"
+#~ msgstr "Karoly Barcza"
+
+#~ msgid "Hungarian translation"
+#~ msgstr "Hungarian translation"
+
+#~ msgid "Quique"
+#~ msgstr "Quique"
+
+#~ msgid "Spanish translation"
+#~ msgstr "Spanish translation"
+
+#~ msgid "Michal Šulek"
+#~ msgstr "Michal Šulek"
+
+#~ msgid "Slovak translation"
+#~ msgstr "Slovak translation"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"
+
+#~ msgid "French translation"
+#~ msgstr "French translation"
+
+#~ msgid "Toyohiro Asukai"
+#~ msgstr "Toyohiro Asukai"
+
+#~ msgid "Japanese translation"
+#~ msgstr "Japanese translation"
+
+#~ msgid "Atanas Mavrov"
+#~ msgstr "Atanas Mavrov"
+
+#~ msgid "Bulgarian translation"
+#~ msgstr "Bulgarian translation"
+
+#~ msgid "Isidoro Russo"
+#~ msgstr "Isidoro Russo"
+
+#~ msgid "Nils Kristian Tomren"
+#~ msgstr "Nils Kristian Tomren"
+
+#~ msgid "Norwegian translations"
+#~ msgstr "Norwegian translations"
+
+#~ msgid "Alois Nešpor"
+#~ msgstr "Alois Nešpor"
+
+#~ msgid "Czech translation"
+#~ msgstr "Czech translation"
+
+#~ msgid "Martín Carr"
+#~ msgstr "Martín Carr"
+
+#~ msgid "Görkem Çetin"
+#~ msgstr "Görkem Çetin"
+
+#~ msgid "Turkish translation"
+#~ msgstr "Turkish translation"
+
+#~ msgid "Jack Liu"
+#~ msgstr "Jack Liu"
+
+#~ msgid "Chinese Traditional translation"
+#~ msgstr "Chinese Traditional translation"
+
+#~ msgid "Arnar Leósson"
+#~ msgstr "Arnar Leósson"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Icelandic translation"
+
+#~ msgid "Michael Brinkloev"
+#~ msgstr "Michael Brinkloev"
+
+#~ msgid "Danish translation"
+#~ msgstr "Danish translation"
+
+#~ msgid "Joop Beris"
+#~ msgstr "Joop Beris"
+
+#~ msgid "Dutch translation"
+#~ msgstr "Dutch translation"
+
+#~ msgid "Lamarque V. Souza"
+#~ msgstr "Lamarque V. Souza"
+
+#~ msgid "Serdar Soytetir"
+#~ msgstr "Serdar Soytetir"
+
+#~ msgid "Wei-Lun Chao"
+#~ msgstr "Wei-Lun Chao"
+
+#~ msgid "Rashid N. Achilov"
+#~ msgstr "Rashid N. Achilov"
+
+#~ msgid "Testing of Smb4K under FreeBSD"
+#~ msgstr "Testing of Smb4K under FreeBSD"
+
+#~ msgid "Jerzy Trzeciak"
+#~ msgstr "Jerzy Trzeciak"
+
+#~ msgid "The share was successfully mounted."
+#~ msgstr "The share was successfully mounted."
+
+#~ msgid "The share was successfully unmounted."
+#~ msgstr "The share was successfully unmounted."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+#~ msgstr ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"

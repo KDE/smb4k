@@ -1,0 +1,7093 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY smb4k "<application
+>Smb4K</application
+>">
+    <!ENTITY kappname "&smb4k;">
+    <!ENTITY % addindex "IGNORE"
+><!-- do *not* replace kappname -->
+  <!ENTITY % Estonian  "INCLUDE"
+><!-- change language only here -->
+]>
+
+<book id="smb4k" lang="&language;">
+
+<bookinfo>
+<title
+>&smb4k; käsiraamat</title>
+<authorgroup>
+<author
+><firstname
+>Alexander</firstname
+> <othername
+></othername
+> <surname
+>Reinholdt</surname
+> <affiliation
+> <address
+> <email
+>alexander.reinholdt AT kdemail.net</email>
+</address>
+</affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+><surname
+>Laane</surname
+><affiliation
+><address
+><email
+>bald@smail.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+<copyright>
+<year
+>2005-2014</year>
+<holder
+>Alexander Reinholdt</holder>
+</copyright>
+<legalnotice
+>&underFDL;</legalnotice>
+<date
+>2014-03-16</date>
+<releaseinfo
+>5.0.0</releaseinfo>
+<abstract>
+<para
+>&smb4k; on täiustatud võrgunaabruse sirvija ja Samba tarkvarakomplekti programmide kasutajaliides.</para>
+</abstract>
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>Smb4K</keyword>
+<keyword
+>Samba</keyword>
+</keywordset>
+</bookinfo>
+
+<!-- Introduction -->
+
+<chapter id="introduction">
+<title
+>Sissejuhatus</title>
+
+<para
+>Käesolev käsiraamat kirjeldab &smb4k; versiooni 1.1.x ja teataval määral ka varasemaid versioone.</para>
+
+<para
+>&smb4k; on täiustatud võrgunaabruse sirvija ja <ulink url="http://www.samba.org"
+>Samba tarkvarakomplekti</ulink
+> programmide kasutajaliides. See pakub hulgaliselt käepäraseid võimalusi, millega teha elu lihtsamaks võrgukeskkonnas, kus domineerib &Windows;:</para>
+
+<itemizedlist>
+<listitem
+><para
+>(Aktiivsete) töögruppide, masinate ja jagatud ressursside otsimine</para
+></listitem>
+<listitem
+><para
+>CIFS (&Linux;) ja SMBFS (FreeBSD) failisüsteemide toetamine</para
+></listitem>
+<listitem
+><para
+>Jagatud ressursside ühendamine ja lahutamine</para
+></listitem>
+<listitem
+><para
+>Ligipääs ühendatud jagatud ressursi failidele failihalduri või terminali vahendusel</para
+></listitem>
+<listitem
+><para
+>Väliste ühendamiste ja lahutamiste automaatne tuvastamine</para
+></listitem>
+<listitem
+><para
+>Varem kasutatud jagatud ressursside taasühendamine rakenduse käivitamisel</para
+></listitem>
+<listitem
+><para
+>Mitmesugune teave võrguelementide ja ühendatud jagatud ressursside kohta</para
+></listitem>
+<listitem
+><para
+>Võrguotsing</para
+></listitem>
+<listitem
+><para
+>WINS serveri toetamine</para
+></listitem>
+<listitem
+><para
+>Jagatud ressursi sisu eelvaatlus</para
+></listitem>
+<listitem
+><para
+>Mitu meetodit otsida algset töögruppide ja domeenide loendit</para
+></listitem>
+<listitem
+><para
+>Vaikimisi sisselogimine</para
+></listitem>
+<listitem
+><para
+>Välja jagatud kodukataloogide spetsiaalne käitlemine</para
+></listitem>
+<listitem
+><para
+>Lemmikressursside järjehoidjatesse lisamise võimalus</para
+></listitem>
+<listitem
+><para
+>Süsteemisalve vidin</para
+></listitem>
+<listitem
+><para
+>Samba põhjalikumate valikute toetamine</para
+></listitem>
+<listitem
+><para
+>Jagatud printerite toetamine</para
+></listitem>
+<listitem
+><para
+>KWalleti toetamine</para
+></listitem>
+<listitem
+><para
+>Võrguressursi sünkroonimine kohaliku koopiaga ja vastupidi</para
+></listitem>
+<listitem
+><para
+>Võimalus määrata konkreetsetele serveritele ja ressurssidele kohandatud valikuid</para
+></listitem>
+<listitem
+><para
+>Sülearvutite toetus Solidi riistvaraliste seadmete raamistiku vahendusel</para
+></listitem>
+<listitem
+><para
+>Wake-On-LAN võimalused</para
+></listitem>
+<listitem
+><para
+>&plasmoid; töölauaga lõimimiseks</para
+></listitem>
+</itemizedlist>
+
+ <para
+>Kui sul tekib &smb4k; kasutamisel probleeme, külasta palun kõigepealt meie <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/"
+>wikit</ulink
+>. Kui sealt ei leia probleemile lahendust, postita palun abisoov meie <ulink url="https://sourceforge.net/p/smb4k/discussion/help/"
+>abifoorumisse</ulink
+>. Kui avastad vea, anna sellest palun teada meie <ulink url="https://sourceforge.net/p/smb4k/tickets/"
+>vigade jälgimise süsteemis</ulink
+>.</para>
+ <para
+>&smb4k;-ga seotud teemasid saab arutada <ulink url="https://sourceforge.net/p/smb4k/discussion/general/"
+>üldfoorumis</ulink
+>, kuhu me kutsume enda mõtteid avaldama kõiki kasutajaid.</para>
+</chapter>
+
+<!-- Using Smb4K -->
+
+<chapter id="using_smb4k">
+<title
+>&smb4k; kasutamine</title>
+
+<!-- Running Smb4K -->
+
+<sect1 id="running_smb4k">
+<title
+>&smb4k; käivitamine</title>
+
+<para
+>Paigaldamise järel saab &smb4k; käivitada kas K-menüüst või käsurealt, kirjutades sinna</para>
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>smb4k</command
+></userinput
+></screen>
+<para
+>&smb4k; ei tunnista mingeid argumente peale nende, mida kasutavad kõik &kde; programmid.</para>
+<para
+>&smb4k; pakub paremaks lõimimiseks töölauga ka plasmoidi. Selle saab lisada vidinana töölauale või paneelile.</para>
+
+<note
+><para
+>Kui sinu süsteemis puuduvad mõned programmid, mida &smb4k; vajab korralikuks töötamiseks, antakse sellest teada:</para>
+<screenshot id="notification_missing_program">
+<screeninfo
+>Puuduva programmi märguande pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="notification_program_missing.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Puuduva programmi märguanne</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Puuduolevatena teatatud programmid tuleb paigaldada või siis lisada nende asukoht keskkonnamuutujasse <envar
+>PATH</envar
+> oma shelli seadistusfailis (shelli <ulink url="man:/bash"
+><citerefentry
+><refentrytitle
+>bash</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> korral on selleks fail <filename
+>~/.bashrc</filename
+>).</para>
+
+<para
+>Lisaks on soovitatav seadistada Samba enne &smb4k; kasutamist. Selleks võib kasutada tööriista <ulink url="man:/swat"
+><citerefentry
+><refentrytitle
+>swat</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. See kuulub Samba tarkvarakomplekti ja pakub seadistamiseks hõlpsasti kasutatava veebiliidese. Täpsemalt vaata programmi manuaalileheküljelt.</para
+></note>
+</sect1>
+
+<!-- Main Window -->
+
+<sect1 id="mainwindow_overview">
+<title
+>Peaaken</title>
+<para
+>Esimesel käivitamisel näeb &smb4k; peaaken välja umbes nii, nagu allpool näha. Võrgunaabruse sirvija (<guilabel
+>Võrgunaabrus</guilabel
+>), võrguotsingu vidin (<guilabel
+>Võrguotsing</guilabel
+>) ja ühendatud jagatud ressursside vaade (<guilabel
+>Ühendatud jagatud ressursid</guilabel
+>) on paigutatud kaardividinasse. Nende kohal asuvad menüüriba ja tööriistariba. Nende all paikneb olekuriba.</para>
+<screenshot id="mainwindow_overview_screenshot">
+  <screeninfo
+>Peaakna pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="main_window.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Peaaken</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Alates versioonist 1.1.0 kasutab &smb4k; vaikimisi kompaktset ühtset tööriistariba, kuid kasutaja võib mõistagi eelistada mitut tööriistariba. Kui soovid sellist klassikalist välimust, on pakkuda neli tööriistariba, üks iga vidina jaoks: peamine tööriistariba ning <guilabel
+>võrgunaabruse</guilabel
+>, <guilabel
+>ressursivaate</guilabel
+> ja <guilabel
+>võrguotsingu</guilabel
+> vidina tööriistaribad. Ühistööriistariba sisaldab mõningaid tähtsamaid toiminguid, näiteks <guimenuitem
+>&smb4k; seadistamine</guimenuitem
+> ja <guimenuitem
+>Välju</guimenuitem
+>. Samuti laaditakse sellele dünaamiliselt selle dokividina toimingud, mis on parajasti fookuses. Lisateavet ja mõningaid olulisi hoiatusi leiab osadest, mis kõnelevad <link linkend="network_neighborhood_browser"
+>võrgunaabruse sirvijast</link
+>, <link linkend="network_search_dialog"
+>otsingudialoogist</link
+> ja <link linkend="mounted_shares_view"
+>ühendatud jagatud ressursside vaatest</link
+>.</para>
+
+<para
+>Olekuriba annab veidi teavet &smb4k; aktiivse oleku kohta. Kui rakendus töötleb kasutaja soovi (nt. ühendab jagatud ressurssi), on vasakus servas näha tegevuse kirjeldus, samuti on näha edenemisriba ja hõivatuse tähis. Kaks ikooni paremal servas annavad märku, kas leidub ühendatud ressursse (võrgukataloogi ikoon), ja autentimissüsteemi olekust (turvalaeka või võtme ikoon).</para>
+
+<para
+>Kui vidinadokid on korraldatud kaartidena, saab kasutaja muudki visuaalset tagasisidet. Iga kord, kui mõni ressurss ühendatakse või lahutatakse, tõstetakse <guilabel
+>ühendatud jagatud ressursside</guilabel
+> kaart mõneks sekundiks esile.</para>
+
+<para
+>Peaaken on peaaegu igatmoodi seadistatav. Kõigi kaartidena esitatavaid vidinaid saab nähtavale tuua või peita (<menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Vidinadokid</guimenuitem
+></menuchoice
+>). Samuti saab neid hiirega lohistada peaakna mis tahes osasse. Neid võib isegi peaakna küljest lahti haakida. Oleku- ja tööriistaribasid saab nähtavale tuua või peita vastavate menüükirjetega: <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Olekuriba näitamine</guimenuitem
+></menuchoice
+> ning <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Näidatavad tööriistaribad</guimenuitem
+></menuchoice
+>.</para>
+</sect1>
+
+<!-- The network browser -->
+
+<sect1 id="network_neighborhood_browser">
+<title
+>Võrgunaabruse sirvija</title>
+
+<para
+>Suhtlemine võrgunaabrusega käib <guilabel
+>võrgunaabruse</guilabel
+> sirvija vahendusel. See sisaldab kõiki võrguelemente &#8212; töögruppe, servereid ja jagatud ressursse &#8212;, mida &smb4k; oli võimeline leidma. Need on korraldatud võrgupuusse, milles saab liikuda kas klõpsates elemendi nime kõrval olevale [+] märgile või elementi ennast käivitades.</para>
+
+<para
+>Võrgupuus on iga töögrupi või domeeni nimekirjahoidja tõstetud esile sinist värvi fondiga. Ühendatud jagatud ressursse tähistavad aga kataloogiikoonid.</para>
+
+<screenshot>
+  <screeninfo
+>Võrgunaabruse sirvija pilt</screeninfo>
+  <mediaobject>
+  <imageobject>
+  <imagedata fileref="network_neighborhood_browser.png" format="PNG"/>
+  </imageobject>
+  <textobject>
+  <phrase
+>Võrgunaabruse sirvija</phrase>
+  </textobject>
+  </mediaobject>
+</screenshot>
+
+<sect2 id="network_neighborhood_browser_browsing">
+<title
+>Sirvimine</title>
+<para
+>&smb4k; uurib käivitamisel automaatselt võrgunaabruses leiduvaid aktiivseid töögruppe ja domeene ning näitab neid võrgunaabruse sirvijas. Töögrupielemendi avamine näitab sellesse kuuluvaid servereid. Kui soovid ligipääsu mõne serveri jagatud ressurssidele, tuleb avada soovitud server.</para>
+
+<para
+>Uurimisviise on kaks. Üks on traditsiooniline, mille korral algul otsitakse ainult töögruppe ja domeene ning edasine uurimine võetakse ette alles vajaduse korral &#8212; kui käivitad võrguelemendi &#8212;, teise korral aga uuritakse võrgus perioodiliselt <emphasis
+>kõiki</emphasis
+> saadaolevaid võrguelemente, sealhulgas servereid ja jagatud ressursse. Esimene on vaikimisi viis, teise saab aga sisse lülitada <link linkend="configuration_network_periodic_scanning"
+>seadistustedialoogis</link
+>.</para>
+
+<para
+>Sirvimisloendi hankimiseks on olemas <link linkend="configuration_network_browselist"
+>neli viisi</link
+>. Vaikimisi uuritakse võrgunaabrust, et leida kõik saadaolevad nimekirjahoidjad. Teise ja kolmanda viisi korral esitatakse sirvimisloendi hankimiseks päring otse nimekirjahoidjale. Erinevus seisab sellest, et teine viis on dünaamiline, mille korral otsitakse ja kasutatakse sinu töögrupi või domeeni aktiivset nimekirjahoidjat, kolmas viis aga staatiline, mille korral kasutatakse fikseeritud nime või IP-aadressi. Soovitatav on kasutada dünaamilist meetodit. Kuid võib ette tulla olukordi, kus on lausa vajalik kasutada staatilist nime või IP-aadressi. Viimane, neljas viis otsib kõigi registreeritud IP-aadresse määratud levialas. See võib olla abiks muidu kesiselt toimivates võrgunaabrustes.</para>
+
+<para
+>Samuti on võimalik äratada enne võrgunaabruse uurimist üles puhkavad serverid (Wake-On-LAN). Kui see on lubatud, saadab &smb4k; igale äratamist vajavale serverile maagilise paketi ja ootab määratud aja, enne kui hakkab otsima töögruppe ja domeene. Wake-On-LAN-i saab sisse lülitada <link linkend="configuration_network_wake_on_lan"
+>seadistustedialoogis</link
+>. Serverid, mis tuleb äratada, saab kirja panna <link linkend="network_neighborhood_browser_custom"
+>kohandatud valikute</link
+> dialoogis.</para>
+
+<note
+><para
+>Tavalistes oludes ei tohiks võrgunaabruse sirvimine mingeid raskusi tekitada. Kui siiski esineb probleeme, loe palun kõigepealt meie <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/"
+>wikit</ulink
+>, enne kui hakkad mõtlema <ulink url="https://sourceforge.net/p/smb4k/tickets/"
+>veast teatamisele</ulink
+>. Wikis on ära toodud mõned levinumad probleemid ja lahendused.</para
+></note>
+</sect2>
+
+<sect2 id="mainwindow_network_menu">
+<title
+>Toimingud ja kontekstimenüü</title>
+
+<para
+>Võrgunaabruse sirvijas saab kasutada mitmeid toimingud. Need leiab menüüst <guimenu
+>Võrk</guimenu
+>, tööriistaribalt ja kontekstimenüüst. Kasutada saab järgmisi toiminguid:</para>
+  
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycap
+>F5</keycap
+></shortcut
+> <guimenuitem
+>Uuri võrku|töögruppi|arvutit</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kogu võrgunaabruse, esiletõstetud töögrupi või arvuti uurimine uute kirjete leidmiseks. See on vaikimisi alati aktiivne ning muutub ainult siis mittekasutatavaks, kui võrgu-uuring parajasti käib, asendudes käsuga <guimenuitem
+>Katkesta</guimenuitem
+>.</para>
+      <note>
+        <para
+>Alternatiivina saab kasutada vana kiirklahvi <keycombo action="simul"
+>&Ctrl;<keycap
+>R</keycap
+></keycombo
+>.</para>
+      </note>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl; <keycap
+>A</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Katkesta</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Mis tahes toimingu katkestamine, mis parajasti käib võrgunaabruse sirvijas. Vaikimisi ei ole see nupp aktiivne ning muutub aktiivseks ainult siis, kui käib võrgu-uuring, asendades sel juhul käsku <guimenuitem
+>Uuri võrku|töögruppi|arvutit</guimenuitem
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Lisa järjehoidja</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Järjehoidja lisamine parajasti valitud võrguressursile. Seda ei saa kasutada, kui valitud pole ühtegi ressurssi.</para>
+      <para
+>Täpsemalt kõneleb sellest osa <link linkend="mainwindow_add_bookmarks"
+>Järjehoidjate lisamine</link
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl; <keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Ava ühendamisdialoog</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+><link linkend="mainwindow_network_mounting"
+>Dialoogi</link
+> avamine jagatud ressursside "käsitsi" ühendamiseks. Seda võib vaja minna, kui &smb4k; ei suuda leida serverit, millest soovid ühendada konkreetset jagatud ressurssi.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl; <keycap
+>T</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Autentimine</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+><link linkend="mainwindow_network_authentication"
+>Autentimisdialoogi</link
+> avamine, milles saab anda valitud serveri või ressursi kasutajanime ja parooli. Kirje ei ole kasutatav, kui valitud pole ühtegi elementi või töögruppi.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Kohandatud valikud</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+><link linkend="network_neighborhood_browser_custom"
+>Kohandatud valikute</link
+> dialoogi avamine, milles saab valitud serverile või ressursile määrata mitmesuguseid kohandatud valikuid. Kirjet ei saa kasutada, kui valitud pole ühtegi elementi või töögruppi.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl; <keycap
+>V</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Eelvaatlus</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Valitud võrguressursi sisu <link linkend="mainwindow_network_preview"
+>eelvaatlus</link
+>. Nupp on aktiivne ainult siis, kui valitud on mõni jagatud ressurss. Printeriressursside puhul ei ole eelvaatlus võimalik.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl; <keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Trüki fail</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Faili <link linkend="mainwindow_network_printing"
+>trükkimine</link
+> võrguprinteris. Seda kirjet saab kasutada ainult siis, kui valitud on printeriressurss.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>M</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Ühenda</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Valitud võrguressursi ühendamine. Seda kirjet ei saa kasutada, kui tegid klõpsu millelgi muul kui ressursil, mille tüüp on "ketas" või "IPC".</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+<para
+>Kuigi võrguga võib suhelda ka eespool mainitud kiirklahvide abil, on tihtipeale seda mugavam teha hiirega. Paremklõpsuga saab avada kontekstimenüü. See sisaldab kõiki toiminguid, mida saab ette võtta võrgunaabruse sirvijas. Sõltuvalt asukohast, kus klõps tehti (kas võrguelemendi peal või vaates endas), võivad mõned käsud olla mitteaktiivsed. Allolev pilt näitab võrguressursi peal avatud kontekstimenüüd.</para>
+
+<screenshot>
+  <screeninfo
+>Võrgusirvija kontekstimenüü pilt</screeninfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="popup_menu_browser.png" format="PNG"/>
+      </imageobject>
+      <textobject>
+        <phrase
+>Võrgusirvija kontekstimenüü</phrase>
+      </textobject>
+    </mediaobject>
+</screenshot>
+
+<para
+>Kontekstimenüü nimeks on võrguelemendi nimi või lihtsalt <guilabel
+>Võrk</guilabel
+>, kui paremklõps tehti vaates endas.</para>
+</sect2>
+
+<sect2 id="mainwindow_network_tooltips">
+<title
+>Kohtspikrid</title>
+<para
+>Kõigi võrguelementide puhul näidatakse kohtspikreid, milles näeb mitmesugust teavet, näiteks töögrupi ja nimekirjahoidja nime, masina nime ja IP-aadressi, jagatud ressursi nime jne. Kui kohtspikker peab esitama teavet ka serveri kohta, päritakse lisateavet operatsioonisüsteemi ja serveri (nt. Samba) kohta.</para>
+<para
+>Kohtspikreid saab keelata <link linkend="configuration_user_interface_network_tooltips"
+>seadistustedialoogis</link
+>.</para>
+</sect2>
+
+<sect2 id="mainwindow_network_mounting">
+<title
+>Jagatud ressursi ühendamine</title>
+
+<para
+>Võrguressurssi saab ühendada kolmel viisil:</para>
+
+<orderedlist>
+<listitem>
+<para
+>Võrguressurssi tähistava ikooni käivitamine võrgunaabruse sirvijas (sõltuvalt &kde; seadistustest võib see toimuda kas ühe- või kahekordse klõpsuga ikoonile).</para>
+</listitem>
+<listitem>
+<para
+>Võrguressursi valimise järel menüükirje <guimenuitem
+>Ühenda</guimenuitem
+> kasutamine. Alternatiiv on kasutada kiirklahvi <keycombo action="simul"
+>&Ctrl;<keycap
+>M</keycap
+></keycombo
+>.</para>
+</listitem>
+<listitem
+><para
+>Kui &smb4k; ei suuda leida serverit, kus ressurss asub, võib valida menüükirje <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>O</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Ava ühendamisdialoog</guimenuitem
+></menuchoice
+>, millega saab avada ühendamisdialoogi.</para>
+<screenshot>
+<screeninfo
+>Jagatud ressursi ühendamise dialoogi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="dialog_manual_mount.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Jagatud ressursi ühendamise dialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Siin saab sisestada ressursi asukoha kas <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention"
+>ühtse nimede reeglistiku (UNC)</ulink
+> aadressina kujul <screen
+>//[KASUTAJA@]SERVER/RESSURSS</screen
+> või <screen
+>\\[KASUTAJA@]SERVER\RESSURSS</screen
+> või URL-ina kujul <screen
+>[smb:]//[kasutaja@]server:port/ressurss</screen
+> Nupu <guibutton
+>OK</guibutton
+> vajutamisel saabki ressursi ühendada. Soovitatav on siiski sisestada ka serveri IP-aadress ja töögrupp. Kui soovid ühtlasi lisada ressursi järjehoidjatesse, märgi ära kastike <guibutton
+>Jagatud ressursi lisamine järjehoidjatesse</guibutton
+>.</para>
+</listitem>
+</orderedlist>
+
+<para
+>Sageli on ressurss kaitstud parooliga. Sellisel juhul ilmub <link linkend="mainwindow_network_authentication"
+>autentimisdialoog</link
+>, kus tuleb anda korrektne kasutajatunnus (kui seda pole veel antud) ja parool. &smb4k; ühendab ressursi, kui just ei anta valet kasutajanime või parooli. Kui ühendamine on edukas, näidatakse kasutajale vastavat märguannet ja ressurss ilmub nähtavale <link linkend="mounted_shares_view"
+>ühendatud jagatud ressursside vaates</link
+>. Kui ühendamine nurjub, näidatakse veateadet, mille tagastab <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> (&Linux;) või <ulink url="man:/mount_smbfs"
+><citerefentry
+><refentrytitle
+>mount_smbfs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> (FreeBSD).</para>
+
+<para
+>Puhtinformatiivsed ühendamise märguanded võib keelata <link linkend="configuration_user_interface_general_notifications"
+>seadistustedialoogis</link
+>.</para>
+
+<note
+><para
+>&smb4k; standardpaigalduse korral võivad <emphasis
+>FreeBSD</emphasis
+> kasutajad kogeda ressursi ühendamisel mõnikord probleeme. See on tongitud D-Busi ja/või PolKit-1 seadistusfailide valest asukohast. Kuidas niisugusest probleemist üle saada, selgitab osa <link linkend="freebsd_remarks_installation"
+>Märkused FreeBSD kasutajaile: D-Bus ja PolKit-1</link
+>.</para
+></note>
+</sect2>
+
+<sect2 id="mainwindow_network_printing">
+<title
+>Failide trükkimine võrguprinteris</title>
+<para
+>Faili trükkimiseks võrguprinteris tuleb avada trükkimisdialoog kas klõpsuga printeriikoonile või menüükäsuga <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>P</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Trüki fail</guimenuitem
+></menuchoice
+>.</para>
+<screenshot>
+<screeninfo
+>Trükkimisdialoogi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="dialog_print_file.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Trükkimisdialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Sektsioonis <guilabel
+>Printer</guilabel
+> näeb mitmesugust teavet printeri kohta. Real <guilabel
+>Fail</guilabel
+> tuleb määrata faili nimi, mida soovid trükkida. Koopiate arvu saab määrata <guibutton
+>valikute</guibutton
+> all. Trükkimise alustamiseks klõpsa <guibutton
+>Trüki...</guibutton
+></para>
+<para
+>&smb4k; toetab praegu PDF-, PostScript-, pildi- ja tekstifaile. Kui soovid trükkida faili, mille MIME tüüp pole toetatud, ilmub märguanne, mis teatab, et valitud faili MIME tüüp ei ole toetatud. Sel juhul tuleb fail käsitsi teisendada PostScript- või PDF-failiks ja proovida seda uuesti trükkida.</para>
+</sect2>
+
+<sect2 id="mainwindow_network_preview">
+<title
+>Jagatud ressursside eelvaatlus</title>
+<para
+>&smb4k; võimaldab võrguressursside eelvaatlust. Kui valida menüükirje <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>V</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Eelvaatlus</guimenuitem
+></menuchoice
+>, ilmub valitud võrguressursi sisu nähtavale eelvaatlusdialoogis.</para>
+<screenshot>
+<screeninfo
+>Eelvaatlusdialoogi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="dialog_preview.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Eelvaatlusdialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Eelvaatlusdialoog on otsekui lihtne failihaldur. Seal on võimalik liikuda võrguressursi sisus, klõpsates loendivaates kataloogiikoonidele, ning kasutades nuppe <guibutton
+>Üles</guibutton
+>, <guibutton
+>Tagasi</guibutton
+> ja <guibutton
+>Edasi</guibutton
+>. Aktiivset asukohta näitab liitkast paremas servas. Nupu <guibutton
+>Laadi uuesti</guibutton
+> abil saab laadida aktiivse kataloogi sisu uuesti.</para>
+<para
+>Vaikimisi näitab eelvaatlusdialoog ainult neid katalooge ja faile, mis ei ole peidetud. Seda saab muuta <link linkend="configuration_user_interface_preview_hidden"
+>seadistustedialoogis</link
+>. Failiülekanded ja muu selline ei ole võimalik.</para>
+</sect2>
+
+<sect2 id="mainwindow_network_authentication">
+<title
+>Autentimisteabe andmine</title>
+<para
+>Paljud serverid või võrguressursid on kaitstud parooliga. Sellisel juhul ilmub paroolidialoog, mis palub anda sinu kasutajanime ja parooli. Sama juhtub siis, kui valid menüükirje <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>T</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Autentimine</guimenuitem
+></menuchoice
+>.</para>
+<screenshot>
+<screeninfo
+>Autentimisdialoogi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="dialog_authentication.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Autentimisdialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Kui kasutajanimi on juba antud, näitakse seda vastaval väljal. Kui see on vale või pole kasutajanime veel antud, tuleb see siia sisestada. Paroolivälja võib aga tühjaks jätta. Klõpsuga nupule <guibutton
+>OK</guibutton
+> saadetakse andmed teele. Sõltuvalt <link linkend="configuration_authentication"
+>seadistustedialoogis</link
+> langetatud valikust salvestatakse kasutajanimi ja parool alatiseks digitaalsesse turvalaekasse, ajutiselt kuni &smb4k; töö lõpetamiseni või üldse mitte. Viimasel juhul tuleb need anda <emphasis
+>iga kord</emphasis
+>, kui neid vaja läheb.</para>
+</sect2>
+
+<sect2 id="network_neighborhood_browser_custom">
+<title
+>Kohandatud valikute määramine</title>
+<para
+>Kui sul on vaja määrata mõnele serverile või ressursile valikuid, mis erinevad seadistustedialoogis määratud üldistest valikutest, saab seda teha <guilabel
+>kohandatud valikute</guilabel
+> dialoogis. Selle saab avada menüükäsuga <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Kohandatud valikud</guimenuitem
+></menuchoice
+>.</para>
+
+<screenshot>
+  <screeninfo
+>Ressursi kohandatud valikute dialoogi pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="dialog_custom_options.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Kohandatud valikute dialoog</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Siin saab määrata kohandatud Samba võtmeid ning panna paika Wake-On-LAN-i võimaluse kasutamise. Viimase jaoks on vaja lülitada Wake-On-LAN sisse <link linkend="configuration_network_wake_on_lan"
+>seadistustedialoogis</link
+>.</para>
+
+<para
+>Nupp <guibutton
+>Vaikeväärtused</guibutton
+> on kasutatav siis, kui dialoogi kirjed erinevad neist, mis on määratud seadistustedialoogis. Sellele klõpsates saab dialoogi kirjed lähtestada algväärtustele. Klõps nupule <guibutton
+>OK</guibutton
+> on kasutatav siis, kui oled dialoogis midagi muutnud. Sellele klõpsates kehtestatakse kohandatud seadistused ja suletakse dialoog.</para>
+
+<note
+><para
+>FreeBSD korral on dialoogis vähem valikuid kui teistes operatsioonisüsteemides, sest mitmed valikud ei ole lihtsalt toetatud.</para
+></note>
+
+<sect3 id="network_neighborhood_browser_custom_samba">
+  <title
+>Samba</title>
+
+  <para
+>Sõltuvalt langetatud otsusest kehtivad kohandatud valikute dialoogi seadistused kas serveri kõigile jagatud ressurssidele või konkreetsele ressursile. Määrata saab SMB pordi, failisüsteemi pordi (ainult &Linux; korral), kirjutusõiguse, kasutaja ID, grupi ID ja selle, kas autentimiseks kasutatakse Kerberost. Täpsemat teavet konkreetsete seadistuste kohta leiab <link linkend="configuration_samba"
+>siit</link
+>.</para>
+</sect3>
+
+<sect3 id="network_neighborhood_browser_custom_wol">
+  <title
+>Wake-On-LAN</title>
+  
+  <para
+>Wake-On-LAN-i kasutamiseks tuleb anda valitud serveri MAC-aadress. Praegu ei suuda &smb4k; MAC-aadressi määrata, nii et selle pead ise välja uurima. Seejärel saad määrata, kas &smb4k; peab saatma maagilise Wake-ON-LAN-i paketi valitud masinale enne võrgunaabruse uurimist ja/või mõne masina jagatud ressursi ühendamist.</para>
+</sect3>
+
+</sect2>
+
+<sect2 id="mainwindow_network_bookmark">
+<title
+>Järjehoidjate lisamine</title>
+<para
+>Järjehoidja saab lisada, kui valida võrguressurss (ainult neid saabki järjehoidjatesse lisada) ja vajutada kiirklahvi <keycombo action="simul"
+>&Ctrl; <keycap
+>B</keycap
+></keycombo
+> või valida menüükirje <guimenuitem
+>Lisa järjehoidja</guimenuitem
+>. Järjehoidja leiab seejärel menüüst <guimenu
+>Järjehoidjad</guimenu
+>. Täpsemalt kõneleb sellest osa <link linkend="mainwindow_bookmarks"
+>Järjehoidjad</link
+>.</para>
+<para
+>Järjehoidjaid saab kasutada võrguressursside ühendamiseks.</para>
+</sect2>
+</sect1>
+
+<!-- The search dialog -->
+
+<sect1 id="network_search_dialog">
+<title
+>Võrguotsingu dialoog</title>
+<para
+><guilabel
+>Võrguotsingu</guilabel
+> dialoog koosneb liitkastist, kuhu saab sisestada otsingumõiste, ja loendivaatest, kus näidatakse otsingu tulemusi.</para>
+<screenshot>
+<screeninfo
+>Võrguotsingu dialoogi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="network_search_dialog.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Võrguotsingu dialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<sect2 id="network_search_dialog_searching">
+<title
+>Otsimine</title>
+<para
+>&smb4k; otsib võrgunaabrusest jagatud ressursse, mis vastavad otsingustringile või sisaldavad seda. Otsingu alustamiseks kirjuta otsitav mõiste ning vajuta klahvi &Enter; või klõpsa sisestuskasti kõrval ikoonile <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Otsi</guimenuitem
+></menuchoice
+>. Loendivaates näeb kõiki võrguressursse, mis vastavad otsingukriteeriumile. Kui need on juba süsteemis ühendatud, märgitakse see ära. Kui otsing nurjub, näeb veateadet. Uue otsingu alustamine puhastab loendivaate. Kui soovid otsingu katkestada, klõpsa ikoonile <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>A</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Katkesta</guimenuitem
+></menuchoice
+>, mis asub otse ikooni <guimenuitem
+>Otsi</guimenuitem
+> kõrval.</para>
+</sect2>
+
+<sect2 id="network_search_dialog_menu">
+  <title
+>Toimingud ja kontekstimenüü</title>
+
+<para
+>Võrguotsingu puhul saab kasutada mitmeid toiminguid. Need leiab menüüst <guimenu
+>Otsing</guimenu
+>, tööriistaribal, vidinast endast ja kontekstimenüüst. Kasutada saab järgmisi toiminguid:</para>
+
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Otsi</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Võrgu, esiletõstetud töögrupi või arvuti uurimine uute kirjete leidmiseks. See on vaikimisi alati aktiivne ning asendub käsuga <guimenuitem
+>Katkesta</guimenuitem
+>, kui parajasti käib võrgu-uuring.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+> &Ctrl; <keycap
+>A</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Katkesta</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Võrguotsingu katkestamine. Vaikimisi ei ole see nupp aktiivne ning muutub aktiivseks alles siis käsu <guimenuitem
+>Otsi</guimenuitem
+> asemel, kui käib võrgu-uuring.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Puhasta</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kogu võrguotsingu dialoogi puhastamine. See puhastab lisaks loendivaatele ka liitkasti otsingukirjete ajaloo.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>M</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Ühenda</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Võrguressursi ühendamine otsingudialoogist. Alternatiivina võib loendivaates teha võrguressursil topeltklõpsu.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+<para
+>Kontekstimenüü sisaldab kaht neljast toimingust. Alternatiivne toiming <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Otsi</guimenuitem
+></menuchoice
+> või <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>A</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Katkesta</guimenuitem
+></menuchoice
+> asub otse otsingu sisendkasti kõrval (samuti menüüs ja tööriistaribal).</para>
+
+<screenshot>
+  <screeninfo
+>Võrguotsingu kontekstimenüü pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="popup_menu_network_search.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Võrguotsingu kontekstimenüü</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+</sect2>
+
+<sect2 id="network_search_dialog_adding">
+<title
+>Jagatud ressursi ühendamine</title>
+<para
+>Tuvastatud ressursi võib vahetult ühendada kas topeltklõpsuga selle kirjel või seda valides ja kontekstimenüü vahendusel käsku <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>D</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Ühenda</guimenuitem
+></menuchoice
+> andes. Tegelikku otsingut sooritava programmi (käsk <ulink url="man:/smbtree"
+><citerefentry
+><refentrytitle
+>smbtree</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>) puudujääkide tõttu ei suuda &smb4k; eristada printeri- ja tavalisi ressursse. Printeriressursi ühendamine nurjub ning näidatakse veateadet.</para>
+<note>
+  <para
+>Kodukataloogi ressursi ühendamisel palutakse anda kasutajanimi, enne kui selle nimega ressurss ühendatakse. Seepärast ei näidata ka kodukataloogi ressurssi (home) hiljem ühendatuna, sest ühendatakse ainult konkreetse nimega kodukataloog.</para>
+</note>
+</sect2>
+</sect1>
+
+<!-- The shares view -->
+
+<sect1 id="mounted_shares_view">
+<title
+>Ühendatud jagatud ressursside vaade</title>
+<para
+>Jagatud ressursside vaates saab suhelda süsteemis ühendatud jagatud ressurssidega.</para>
+
+<sect2 id="mounted_shares_view_views">
+<title
+>Eri vaated</title>
+<para
+>&smb4k; pakub kaht eri vaadet: ikooni- ja loendivaade. Neid mõlemat näeb allpool piltidel.</para>
+<para
+>Ikoonivaade:</para>
+<screenshot>
+  <screeninfo
+>Jagatud ressursside ikoonivaate pilt</screeninfo>
+  <mediaobject>
+  <imageobject>
+  <imagedata fileref="shares_icon_view.png" format="PNG"/>
+  </imageobject>
+  <textobject>
+  <phrase
+>Jagatud ressursside ikoonivaade</phrase>
+  </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>Loendivaade:</para>
+<screenshot>
+  <screeninfo
+>Jagatud ressursside loendivaate pilt</screeninfo>
+  <mediaobject>
+  <imageobject>
+  <imagedata fileref="shares_list_view.png" format="PNG"/>
+  </imageobject>
+  <textobject>
+  <phrase
+>Jagatud ressursside loendivaade</phrase>
+  </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Vaikimisi vaade on traditsiooniline loendivaade, kus jagatud ressursse kuvatakse ikoonidena oma nime või ühenduskoha kõrval. Loendivaates näidatakse kõiki jagatud ressursse koos oma nime või ühenduskoha, failisusteemi ja kettakasutusega. Vajaduse korral võib <link linkend="configuration_user_interface_shares_view"
+>seadistustedialoogis</link
+> määrata, et kuvatakse rohkemgi teavet.</para>
+
+<para
+>Kahe vaate vahel saab lülituda kas menüükirje <link linkend="mainwindow_overview"
+><guibutton
+>Ressursivaade</guibutton
+></link
+> vahendusel või muutes seadistust <link linkend="configuration_user_interface_shares_view"
+>seadistustedialoogis</link
+>.</para>
+<para
+>Vaikimisi näeb ressursivaates ainult enda ühendatud ressursse. Kuid &smb4k; võib näidata ka teisi ressursse, kui määrata nii <link linkend="configuration_user_interface_shares_mounted_shares"
+>vastava seadistusega</link
+>.</para>
+</sect2>
+
+<sect2 id="mounted_shares_view_menu">
+  <title
+>Toimingud ja kontekstimenüü</title>
+
+<para
+>Jagatud ressursside vaate puhul saab kasutada mitmeid toiminguid. Need leiab menüüst <guimenu
+>Jagatud ressursid</guimenu
+>, tööriistaribalt ja kontekstimenüüst. Kasutada saab järgmisi toiminguid:</para>
+
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>U</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Lahuta</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Ühe või mitme valitud ressursi lahutamine. Pane tähele, et vaikimisi on võimalik lahutada ainult neid ressursse, mille omanik sa ise oled. Seda saab siiski muuta seadistustedialoogi vastavates <link linkend="configuration_shares_mounting"
+>seadistustes</link
+>. Kui ressursivaates pole ühtegi ressurssi valitud, ei ole ka nupp kasutatav.</para>
+      <para
+>&smb4k; pakub ka võimalist jagatud ressursse jõuga lahutada (ainult &Linux;). See võib olla abiks ligipääsmatute ressursside korral, mida ei saa normaalsel moel lahutada. Selle võimaluse pruukimiseks tuleb muuta <link linkend="configuration_shares_mounting"
+>seadistusi</link
+> seadistustedialoogis.</para>
+      <para
+>Täpsemalt kõneleb sellest osa <link linkend="mainwindow_shares_unmounting"
+>Jagatud ressursside lahutamine</link
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Lahuta kõik</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kõigi ressursside lahutamine korraga. Siingi kehtib eelmainitud piirang. Kui ühtegi ressurssi pole ühendatud, ei saa mõistagi nuppu kasutada.</para>
+      <para
+>Täpsemalt kõneleb sellest osa <link linkend="mainwindow_shares_unmounting"
+>Jagatud ressursside lahutamine</link
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Lisa järjehoidja</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Järjehoidja lisamine parajasti valitud ühendatud jagatud ressursile. Seda toimingut ei saa kasutada, kui ühtegi ressurssi pole valitud.</para>
+      <para
+>Täpsemalt kõneleb sellest osa <link linkend="mainwindow_add_bookmarks"
+>Järjehoidjate lisamine</link
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>Y</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Sünkrooni</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Ressursi <link linkend="mainwindow_shares_synchronization"
+>sünkroonimise</link
+> alustamine kohaliku koopiaga või vastupidi. Seda toimingut saab kasutada ainult siis, kui paigaldatud on programm <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>L</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Ava Konsoolis</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Ressursi baaskataloogi avamine Konsoolis. Sellest toimingust on abi, kui soovid käivitada shelliskripte või midagi muud sellist ette võtta.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>I</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Ava failihalduris</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Ressursi sisu avamine vaikimisi failihalduris.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+<para
+>Kontekstimenüü sisaldab kõiki toiminguid, mida saab ette võtta ühendatud jagatud ressursiga.</para>
+<screenshot>
+  <screeninfo
+>Ressursivaate kontekstimenüü pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="popup_menu_shares_view.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Ressursivaate kontekstimenüü</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>Selle saab avada hiire parema nupuga klõpsates.</para>
+</sect2>
+
+<sect2 id="mounted_shares_view_tooltips">
+<title
+>Kohtspikrid</title>
+<para
+>Kohtspikrid pakuvad teavet ressursi nime, ühenduspunkti, kasutaja ja grupi, kasutajanime, failisüsteemi, kettakasutuse ja vaba kettaruumi kohta. Kui ressurss on <link linkend="mounted_shares_view_inaccessible_shares"
+>kättesaamatu</link
+>, märgitakse need väärtused teadmatuks.</para>
+<para
+>Kohtspikrid on vaikimisi lubatud. Neid saab keelata <link linkend="configuration_user_interface_shares_tooltips"
+>seadistustedialoogis</link
+>.</para>
+</sect2>
+
+<sect2 id="mounted_shares_view_inaccessible_shares">
+<title
+>Kättesaamatud ressursid</title>
+<para
+>&smb4k; kontrollib perioodiliselt, kas kõik ühendatud ressursid on ikka endiselt kättesaadavad. Kui peaks ette tulema kättesaamatu ressurss, märgitakse see <link linkend="mounted_shares_view_icons"
+>muutunud ikooniga</link
+> ning seda ei saa enam avada ega sünkroonida. Lahutamine ja järjehoidjatesse lisamine on siiski ikka veel võimalikud.</para>
+<note
+><para
+>Rakendus võib kättesaamatu ressursi peale sattudes mõneks hetkeks hanguda. See möödub kiiresti.</para
+></note>
+</sect2>
+
+<sect2 id="mounted_shares_view_icons">
+<title
+>Ikoonid</title>
+<para
+>Ressursivaates kuvatakse kasutajale kolme laadi ikoone:</para>
+<screenshot>
+  <screeninfo
+>Kolme ikooni pilt</screeninfo>
+  <mediaobject>
+  <imageobject>
+  <imagedata fileref="shares_view_icons.png" format="PNG"/>
+  </imageobject>
+  <textobject>
+  <phrase
+>Kolm ikooni</phrase>
+  </textobject>
+  </mediaobject>
+</screenshot>
+<itemizedlist>
+<listitem
+><para
+>Vasakul asuv ikoon tähistab kättesaamatut ressurssi. &smb4k; ei luba seda avada ega sünkroonida. Seda saab ainult lahutada või järjehoidjatesse lisada.</para
+></listitem>
+<listitem
+><para
+>Keskel asuv ikoon tähistab võrgus olevat kättesaadavat ja sulle kuuluvat ressurssi. Sellega saab ette võtta kõiki võimalikke toiminguid.</para
+></listitem>
+<listitem
+><para
+>Kõik ressursid, mis on tähistatud punase lipuga, nagu näitab paremal asuv ikoon, kuuluvad mõnele teisele kasutajale. Neid näeb ainult siis, kui oled <link linkend="configuration_user_interface_shares_mounted_shares"
+>seadistustedialoogis</link
+> määranud, et neid peab näitama. Vaikimisi seadistuse korral ei ole sul lubatud neid lahutada, kuid sedagi <link linkend="configuration_shares_mounting"
+>saab muuta</link
+>.</para
+></listitem>
+</itemizedlist>
+</sect2>
+
+<sect2 id="mainwindow_shares_dnd">
+<title
+>Lohistamine</title>
+<para
+>&smb4k; toetab ressursivaates lohistamist:</para>
+<para
+>Sa võid lohistada ressursiikooni ressursivaatest töölauale või mõnda muusse rakendusse (nt. &dolphin;). Seejärel võib ilmuda hüpikmenüü, mis pärib, kas soovid ressursi sisu kopeerida, linkida või liigutada. Valikut langetades pea meeles, et enamasti ei ole ressursi liigutamine ja linkimine just kuigi hea mõte. Hüpikmenüüd saab vältida, kui hoida lohistamise ajal all klahv &Ctrl;.</para>
+<para
+>Faile ja katalooge saab üle kanda ühendatud jagatud ressursile, kui lohistada need ressursiikoonile. Vaikimisi liigutatakse andmed ressursile. Nende kopeerimiseks hoia lohistamise ajal all klahvi &Ctrl;. Ülekanne on edukas ainult siis, kui ressurss on ühendatud lugemis- ja kirjutamisõigusega.</para>
+</sect2>
+
+<sect2 id="mainwindow_shares_unmounting">
+<title
+>Jagatud ressursside lahutamine</title>
+<para
+>Ühe või mitu valitud ressurssi võib lahutada kas menüükäsuga <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>U</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Lahuta</guimenuitem
+></menuchoice
+> või vastava kiirklahviga. Vaikimisi saab lahutada ainult ressursse, mis sulle kuuluvad. Seda saab muuta <link linkend="configuration_shares"
+>seadistustedialoogis</link
+>. Kui lubad ressursside lahutamise, mis kuuluvad kellelegi teisele, näidatakse enne tegelikku lahutamist hoiatavat dialoogi.</para>
+<screenshot>
+  <screeninfo
+>Hoiatusdialoog, mida näidatakse, kui lahutad kellegi teise ressursi</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="dialog_warning_unmount_foreign_share.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Hoiatusdialoog, mida näidatakse, kui lahutad kellegi teise ressursi</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>Klõpsuga nupule <guibutton
+>Jah</guibutton
+> lahutatakse ressurss lõplikult. Seepärast mõtle hoolega, enne kui lahutad ressursi, mis kuulub mõnele teisele kasutajale!</para>
+<para
+>Kättesaamatud ressursid lahutatakse vaikimisi "tavalise" lahutamistoiminguga. Kui see peaks nurjuma, saab &smb4k; <link linkend="configuration_shares"
+>seadistada</link
+> sooritama kättesaamatute ressurssidega niinimetatud <ulink url="man:/umount"
+>laiska lahutamist</ulink
+> (ainult &Linux; korral).</para>
+<para
+>Kõiki ressursse saab korraga lahutada, kui valida menüükäsk <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Lahuta kõik</guimenuitem
+></menuchoice
+>. Sõltuvalt seadistustest võib see lahutada ka teiste kasutajate ja kättesaamatud ressursid.</para>
+<para
+>Eduka lahutamise järel antakse sellest kasutajale teada. Selle puhtalt informatiivse märguande saab keelata <link linkend="configuration_user_interface_general_notifications"
+>seadistustedialoogis</link
+>. Kui lahutamine nurjub, näidatakse märguannet veateatega.</para>
+</sect2>
+
+<sect2 id="mainwindow_shares_synchronization">
+<title
+>Sünkroonimine</title>
+<para
+>Menüükäsuga <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Y</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Sünkrooni</guimenuitem
+></menuchoice
+> saab avada sünkroonimisdialoogi. Seal on lähtekohana antud ressursi ühenduspunkt ning allpool sihtkohana asukoht vastavalt <link linkend="configuration_sync_copying_defdest"
+>sünkroonimise prefiksile</link
+>. Andmete uuendamiseks ressursil tuleb sihtkoht ja lähtekoht ära vahetada, mida saab teha klõpsuga nupule <guibutton
+>Vaheta asukohad</guibutton
+>.</para>
+<screenshot>
+<screeninfo
+>Sünkroonimisdialoogi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="dialog_synchronization_input.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Sünkroonimise &URL;'i määramine</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Klõps nupule <guibutton
+>Sünkrooni</guibutton
+> alustab sünkroonimist. Vasakklõpsuga süsteemisalve nupule <guibutton
+>Märguanded</guibutton
+> saab avada edenemisdialoogi, kus näeb mõningaid toimingu üksikasju.</para>
+<screenshot>
+  <screeninfo
+>Sünkroonimise edenemisdialoogi pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="dialog_synchronization_progress.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Edenemisdialoog</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+<para
+>Vaikimisi näitab koondatud versioon faili, mida parajasti üle kantakse, lähte- ja sihtkohta. edastamiskiirust ja üldist edenemist. Rohkem teavet, näiteks edastatud failide arv ja edastamiskiirus graafilises esitusees, saab näha, kui klõpsata edenemisriba kõrval asuvale nupule <guibutton
+>Rohkem</guibutton
+>.</para>
+<para
+>Sünkroonimist saab igal hetkel peatada või katkestada, kui klõpsata dialoogi ülemises parempoolses nurgas asuvale pausi- või peatamisnupule.</para>
+
+<note>
+  <para
+>Edenemisdialoogis näidatav failide koguarv tähistab jagatud ressursil olevate failide arvu ega pruugi kattuda tegelikult edastatavate failide koguarvuga.</para>
+  <para
+>Edenemise arvestamiseks jagatakse edastatud failide arv jagatud ressursil olevate failide koguarvuga. Nende suurust arvesse ei võeta. See tähendab, et väga suur fail annab edenemisse sama palju kui väga väike. Pealegi uuendatakse edenemisriba alles pärast faili edastamist, sest nii on programmil <application
+>rsync</application
+> kombeks.</para>
+</note>
+</sect2>
+
+<sect2 id="mainwindow_shares_konqueror">
+<title
+>Jagatud ressursi avamine</title>
+<para
+>&smb4k; võimaldab ühendatud jagatud ressurssi avada kahel moel:</para>
+<itemizedlist>
+<listitem
+><formalpara
+><title
+>Ressursi avamine Konsooliga</title>
+<para
+>Ühendatud jagatud ressursi saab avada Konsooliga, kui valida menüükäsk <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>L</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Ava Konsooliga</guimenuitem
+></menuchoice
+>. See on abiks, kui soovid näiteks käivitada ressursil shelliskripte või midagi muud sellist ette võtta.</para>
+</formalpara
+></listitem>
+<listitem
+><formalpara
+><title
+>Ressursi avamine vaikimisi failihalduris</title>
+<para
+>Ressursi saab avada vaikimisi failihalduris (nt. &dolphin;), kui klõpsata ressursi ikoonil või valida menüükäsk <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>I</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Ava failihalduris</guimenuitem
+></menuchoice
+>.</para>
+</formalpara
+></listitem>
+</itemizedlist>
+<note
+><para
+>Kui ressurss on märgitud kättesaamatuks, ei saa seda avada.</para
+></note>
+</sect2>
+</sect1>
+
+<!-- Bookmarks -->
+
+<sect1 id="mainwindow_bookmarks">
+<title
+>Järjehoidjad</title>
+
+<sect2 id="mainwindow_add_bookmarks">
+<title
+>Järjehoidjate lisamine</title>
+<para
+>Järjehoidjaid oma lemmikressurssidele saab lisada <link linkend="network_neighborhood_browser"
+>võrgunaabruse sirvijas</link
+> või <link linkend="mounted_shares_view"
+>ressursivaates</link
+>, samuti <link linkend="plasmoid"
+>plasmoidis</link
+>. Peaakna dokitud vidinas tuleb selleks valida üks või rohkem ressurss ja seejärel menüükäsk <menuchoice
+><guimenuitem
+>Lisa järjehoidja</guimenuitem
+></menuchoice
+>. Plasmoidis tuleb klõpsata ressursi kirje kõrval asuvale järjehoidja lisamise ikoonile. Ilmub dialoog, kus saab määrata nime ja soovi korral paigutada järjehoidja mõnda rühma.</para>
+<screenshot>
+<screeninfo
+>Järjehoidja lisamise dialoogi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="dialog_bookmark_addition.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Järjehoidja lisamise dialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Eriti just rühma paigutamine on abiks järjehoidjate korrastamisel. Järjehoidjate menüüs asetatakse kõik ühte rühma kuuluvad järjehoidjad eraldi alammenüüsse rühmanime kirje alla (vaata <link linkend="mainwindow_bookmarks_menu"
+>allpool</link
+>).</para>
+<para
+>Nimi võib olla mis tahes ressurssi kirjeldav tekst. Kui määrad nime, näidatakse menüüs just seda, mitte vaikimisi näidatavat UNC-d. Kui soovid seda muuta, saab seda teha <link linkend="configuration_user_interface_general_bookmarks"
+>seadistustedialoogis</link
+>.</para>
+</sect2>
+
+<sect2 id="mainwindow_bookmarks_menu">
+<title
+>Järjehoidjate kasutamine ja haldamine</title>
+<para
+>Peaaknas saab järjehoidjaid kasutada ja hallata menüü <guilabel
+>Järjehoidjad</guilabel
+> vahendusel.</para>
+
+<screenshot>
+  <screeninfo
+>Järjehoidjate menüü pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="popup_menu_bookmarks.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Järjehoidjate menüü</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Selles menüüs on alati vähemalt kaks kirjet:</para>
+
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Muuda järjehoidjaid</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+><link linkend="mainwindow_bookmarks_editor"
+>Järjehoidjate redaktori</link
+> avamine. Seda käsku ei saa kasutada, kui järjehoidjaid ei ole.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>B</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Lisa järjehoidja</guimenuitem
+> </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Järjehoidja lisamine. Selle käsu kasutamiseks peab olema valitud ressurss.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+<para
+>Kui sa pole rühmi loonud, on ka kolmas kirje:</para>
+
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Ühenda kõik järjehoidjad</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kõigi tipptaseme järjehoidjate ühendamine korraga. Seda ei saa kasutada, kui kõik järjehoidjates olevad ressursid on ühendatud.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+<para
+>Kõik muud kirjed on kas rühmade alammenüüd või ressursid, mis ei kuulu ühtegi rühma. Kirjed on loetletud tähestiku järjekorras ning järjehoidjad võivad olla kuvatud kas UNC-aadressi või kirjeldava nime järgi. Järjehoidjal klõpsates ühendatakse sellele vastav ressurss. Kui järjehoidjates olev ressurss on süsteemis juba ühendatud, ei ole vastav kirje kasutatav.</para>
+<para
+>Iga rühm tekitab endale alammenüü. See sisaldab kõiki rühma kuuluvaid järjehoidjaid ja kirjet <guimenuitem
+>Ühenda kõik järjehoidjad</guimenuitem
+>. Viimasega saab ühendada korraga kõik vastava alammenüü järjehoidjad.</para>
+
+<para
+>Plasmoidil on <link linkend="plasmoid_bookmarks"
+><guilabel
+>järjehoidjate</guilabel
+> kaart</link
+>, kus kõik järjehoidjad on korraldatud samamoodi nagu järjehoidjate menüüs. Seal on näha järjehoidjate rühmad ja järjehoidjad ise. Järjehoidjatesse pandud jagatud ressursse saab ühendada klõpsuga vastavale kirjele. Tööriistaribal on kaks toimingut: <guimenuitem
+>Tagasi</guimenuitem
+> ja <guimenuitem
+>Muuda</guimenuitem
+>. Kui valida <guimenuitem
+>Tagasi</guimenuitem
+>, saab liikuda kõrgemale tasandile, kui oled sisenenud grupi kausta. Toiming <guimenuitem
+>Muuda</guimenuitem
+> avab <link linkend="mainwindow_bookmarks_editor"
+>järjehoidjate redaktori</link
+>.</para>
+</sect2>
+
+<sect2 id="mainwindow_bookmarks_editor">
+<title
+>Järjehoidjate muutmine</title>
+<para
+>Järjehoidjate redaktoris saab järjehoidjaid muuta või eemaldada. Redaktori saab avada peaaknas menüükäsuga <guimenuitem
+>Muuda järjehoidjaid</guimenuitem
+>, plasmoidis kaardil <guilabel
+>Järjehoidjad</guilabel
+> käsuga <guimenuitem
+>Muuda</guimenuitem
+>.</para>
+<screenshot>
+<screeninfo
+>Järjehoidjate redaktori pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="dialog_bookmark_editor.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Järjehoidjate redaktor</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Järjehoidjad on puuvaates korraldatud vastavalt rühmadele, kuhu nad kuuluvad. Järjehoidjad, mis ei kuulu ühtegi rühma, paiknevad tipptasandil. Järjehoidjate ümberkorraldamiseks saab puuvaates neid ka lihtsalt vajalikku kohta lohistada.</para>
+<para
+>Järjehoidja muutmiseks tuleb see esmalt valida. Siis ilmuvad sisestusvidinas nähtavale selle salvestatud nimi, kasutajanimi, IP-aadress ja rühma nimi. Enamasti ei ole mõtet puutuda IP-aadressi ja kasutajanime, sest &smb4k; salvestab korrektsed väärtused, kui sa ressursi järjehoidjatesse lisad. Aga kui näiteks server saab teise IP-aadressi (nt. juhul kui sinu kohtvõrgus kasutatakse DHCP-d) või sinu kasutajanimi on muutunud, tuleb neid muidugi muuta. Nimeväljal saab järjehoidjale anda mõistliku kirjelduse. Andmise korral kasutatakse <emphasis
+>just seda</emphasis
+> UNC-aadressi asemel, kui vastav seadistus on <link linkend="configuration_user_interface_general_bookmarks"
+>seadistustedialoogis</link
+> lubatud. Rühmad aga võimaldavad järjehoidjaid tõhusamalt korraldada. Kui näiteks kasutad sülearvutit nii tööl kui ka kodus, võib olla mõistlik luua rühmad "Kodu" ja "Töö" ning lisada neisse vajalikud järjehoidjad.</para>
+<para
+>Puuvaates saab kasutada ka kontekstimenüüd, mis sisaldab kolme toimingut. Nende saab lisada rühmi või eemaldada rühmi ja järjehoidjaid.</para>
+<screenshot>
+<screeninfo
+>Järjehoidjate redaktori kontekstimenüü pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="popup_menu_bookmark_editor.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Järjehoidjate redaktori kontekstimenüü</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guimenuitem
+>Lisa grupp</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Järjehoidjate rühma lisamine. Kui oled rühma loonud, saad liigutada sellesse järjehoidjaid.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guimenuitem
+>Eemalda</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valitud järjehoidja eemaldamine. Seda ei saa kasutada, kui järjehoidjat pole valitud.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guimenuitem
+>Kõrvalda järjehoidjad</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kõigi järjehoidjate eemaldamine puuvaatest koos kõigi rühmadega.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para
+>Kui oled muutmise lõpetanud, saab muudatused kehtestada klõpsuga nupule <guibutton
+>OK</guibutton
+>.</para>
+</sect2>
+</sect1>
+
+<!-- System tray -->
+
+<sect1 id="systemtray">
+<title
+>Süsteemisalve vidin</title>
+
+<sect2 id="systemtray_location_usage">
+<title
+>Asukoht ja kasutamine</title>
+
+<para
+>&smb4k; käivitamisel ilmub süsteemisalve selle ikoon.</para>
+
+<screenshot>
+  <screeninfo
+>Süsteemisalve vidina pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="system_tray_icon.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Süsteemisalve vidin</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Ikoonil vasakklõpsu tehes saab peaakent minimeerida või taastada. Paremklõps avab kontekstimenüü mitme kirjega, mis lubavad võtta ette toiminguid ühendatud jagatud ressurssidega, hallata või ühendada järjehoidjaid ning seadistada &smb4k;-d, ilma et peaks avama peaakent.</para>
+</sect2>
+
+<sect2 id="systemtray_menus">
+<title
+>Menüüd ja menüükirjed</title>
+
+<para
+><guimenuitem
+>Ühendatud jagatud ressursside</guimenuitem
+> menüüs on näha kõik ühendatud ressursid ja mõned toimingud, mida nendega ette võtta.</para>
+
+<screenshot>
+  <screeninfo
+>Süsteemisalve ikooni kontekstimenüü 1. pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="system_tray_icon_popup_menu1.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Süsteemisalvel ikooni kontekstimenüü 1</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Lahuta kõik</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kõigi ressursside lahutamine korraga. Sõltuvalt <link linkend="configuration_shares_mounting"
+>seadistusest</link
+> üritab &smb4k; lahutada kas ainult need ressursid, mille omanik oled sina ise, või kõik loendis olevad ressursid.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+  
+<para
+>Kõigi ühendatud ressursside korral saab avada alammenüü, mis sisaldab järgnevaid kirjeid. Täpsemalt saab nende kohta lugeda <link linkend="mounted_shares_view_menu"
+>siit</link
+>.</para>
+
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Lahuta</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Ressursi lahutamine.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Lisa järjehoidja</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Valitud ressursi lisamine järjehoidjatesse.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Sünkrooni</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Ühendatud ressursi sünkroonimine kohaliku koopiaga või vastupidi. Täpsemalt räägitakse sellest <link linkend="mounted_shares_view_menu"
+>siin</link
+> ja <link linkend="mainwindow_shares_synchronization"
+>siin</link
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Ava Konsoolis</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Ressursi baaskataloogi avamine Konsoolis.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guimenuitem
+>Ava failihalduris</guimenuitem>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Ressursi sisu avamine vaikimisi failihalduris (nt. &dolphin;).</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+<para
+><guimenuitem
+>Järjehoidjate</guimenuitem
+> menüü sisaldab kõiki sinu järjehoidjaid, mis on korraldatud eelnevalt määratud struktuuri põhjal (loe selle kohta <link linkend="mainwindow_add_bookmarks"
+>siit</link
+> ja <link linkend="mainwindow_bookmarks_editor"
+>siit</link
+>).</para>
+
+<screenshot>
+  <screeninfo
+>Süsteemisalve ikooni kontekstimenüü 2. pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="system_tray_icon_popup_menu2.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Süsteemisalvel ikooni kontekstimenüü 2</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Selle ülesehitus on samasugune nagu kirjeldatud <link linkend="mainwindow_bookmarks_menu"
+>siin</link
+>, ainult et puudub menüükirje <guimenuitem
+>Lisa järjehoidja</guimenuitem
+>.</para>
+
+<para
+>Ülejäänud menüükirjed on järgmised:</para>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guimenuitem
+>Ava ühendamisdialoog</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para
+><link linkend="mainwindow_network_mounting"
+>Dialoogi</link
+> avamine ressursi "käsitsi" ühendamiseks.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guimenuitem
+>&smb4k; seadistamine...</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Seadistustedialoogi avamine. Kõigist seadistustest kõneldakse <link linkend="configuration"
+>siin</link
+>.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guimenuitem
+>Minimeeri | Taasta</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Peaakna peitmine (minimeerimine) või näitamine (taastamine). Kumb käsk näha on, sõltub peaakna parajasti kehtivast olekust.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>Q</keycap
+> </keycombo
+> </shortcut
+> <guimenuitem
+>Välju</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Rakendusest väljumine.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+</sect1>
+
+<!-- The Plasmoid -->
+
+<sect1 id="plasmoid">
+<title
+>Plasmoid</title>
+<para
+>&smb4k; pakub plasmoidi, mida saab lisada vidinana töölauale või paneelile. Sel on kolm kaartidena paigutatud vaadet: <guilabel
+>Võrgunaabrus</guilabel
+>, <guilabel
+>Jagatud ressursid</guilabel
+> ja <guilabel
+>Järjehoidjad</guilabel
+>.</para>
+
+<screenshot>
+  <screeninfo
+>Plasmoid töölaual</screeninfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="plasmoid.png" format="PNG"/>
+      </imageobject>
+      <textobject>
+        <phrase
+>Plasmoidi pilt</phrase>
+      </textobject>
+    </mediaobject>
+</screenshot>
+
+<sect2 id="plasmoid_network_neighborhood">
+<title
+>Võrgunaabruse kaart</title>
+
+<para
+><guilabel
+>Võrgunaabruse</guilabel
+> kaardil on võrguelemendid paigutatud nimekirjana:</para>
+
+<screenshot>
+  <screeninfo
+>Plasmoidi võrgunaabruse kaardi pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="plasmoid_network_neighborhood_tab.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Plasmoidi järjehoidjate kaart</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Klõpsuga kirjele saab kas siseneda tasand allapoole (&eg; klõps töögrupil või domeenil näitab kõiki sellesse kuuluvaid masinaid), ühendada valitud ressursi või välja kutsuda trükkimisdialoogi. Taas tasand kõrgemale liikumiseks tuleb klõpsata tööriistaribal nupule <guibutton
+>Üles</guibutton
+>.</para>
+
+<para
+>Masinate ja ressursside puhul on elemendi nimest paremale paigutatud mõned toimingunupud. Masinate puhul on nuppe üks ja sellega saab avada <link linkend="network_neighborhood_browser_custom"
+>kohandatud valikute</link
+> dialoogi. Jagatud ressursside puhul on veel üks nupp, millega saab <link linkend="mainwindow_add_bookmarks"
+>lisada ressursi järjehoidjatesse</link
+>. Toimingunupud on vaikimisi läbipaistvad ja muutuvad läbipaistmatuks, kui viid nende kohale hiirekursori. Vasakklõpsuga saab vajaliku toimingu käivitada.</para>
+ 
+<para
+>Lisaks juba mainitud nupule <guibutton
+>Üles</guibutton
+> on tööriistaribal veel kolm elementi: <guibutton
+>Uuri uuesti</guibutton
+>, <guibutton
+>Katkesta</guibutton
+> ja <guibutton
+>Ühendamisdialoog</guibutton
+>. Nendega saab sooritada uue uurimise, katkestada mis tahes tegutseva toimingu või avada <link linkend="mainwindow_network_mounting"
+>dialoogi "käsitsi" ühendamiseks</link
+>.</para>
+</sect2>
+
+<sect2 id="plasmoid_mounted_shares">
+<title
+>Plasmoidi ühendatud jagatud ressurside kaart</title>
+
+<para
+><guilabel
+>Ühendatud jagatud ressursside</guilabel
+> kaardil on näha kõik ühendatud ressursid.</para>
+
+<screenshot>
+  <screeninfo
+>Plasmoidi ühendatud jagatud ressursside kaardi pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="plasmoid_mounted_shares_tab.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Plasmoidi järjehoidjate kaart</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Ressursist ja selle masinast paremal asub kaks toimingunuppu. Esimene on mõneldud <link linkend="mainwindow_add_bookmarks"
+>järjehoidja lisamiseks</link
+>, teine ressursi lahutamiseks. Toimingunupud on vaikimisi läbipaistvad ja muutuvad läbipaistmatuks, kui viid nende kohale hiirekursori. Vasakklõpsuga saab vajaliku toimingu käivitada.</para>
+
+<para
+>Tööriistariba sisaldab ainult toimingut <guibutton
+>Lahuta kõik</guibutton
+> ja sellega saab korraga lahutada kõik jagatud ressursid.</para>
+
+</sect2>
+
+<sect2 id="plasmoid_bookmarks">
+<title
+>Järjehoidjate kaart</title>
+
+<para
+><guilabel
+>Järjehoidjate</guilabel
+> kaardil on ära toodud järjehoidjate grupid ja järjehoidjad ise:</para>
+
+<screenshot>
+  <screeninfo
+>Plasmoidi järjehoidjate kaardi pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="plasmoid_bookmarks_tab.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Plasmoidi järjehoidjate kaart</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Järjehoidjatesse pandud jagatud ressursse saab ühendada vasakklõpsuga vastavale järjehoidjale. Sama võttega saab siseneda järjehoidjate gruppi.</para>
+
+<para
+>Järjehoidja muutmiseks või eemaldamiseks vajuta tööriistaribal nuppu <guibutton
+>Muuda</guibutton
+>, mis avab <link linkend="mainwindow_bookmarks_editor"
+>järjehoidjate redaktori</link
+>. Tagasi kõrgemale tasandile pääseb nupuga <guibutton
+>Tagasi</guibutton
+>.</para>
+
+</sect2>
+</sect1>
+
+<!-- Remarks for FreeBSD users -->
+
+<sect1 id="freebsd_remarks">
+<title
+>Märkused FreeBSD kasutajatele</title>
+
+<sect2 id="freebsd_remarks_installation">
+<title
+>D-Bus ja PolKit-1</title>
+<para
+>&smb4k; kasutab &kde; autentimise API-t (KAuth) võrguressursside ühendamiseks. KAuth kasutab D-Busi ja PolKit-1 (või PolicyKiti) õiguste kohandamiseks, mistõttu &smb4k; peab olema õigesti seadistatud. &smb4k; paigaldamisel FreeBSD keskkonnas võib olla vajalik mõningaid asju käsitsi täpsustada (alates tarkvarapaketi <application
+>kdehier4</application
+> versioonist 1.0.10 paistab siiski kõik korras olevat!).</para>
+<itemizedlist>
+<listitem>
+<para
+>Kontrolli, kas fail <filename
+>de.berlios.smb4k.mounthelper.policy</filename
+> on ikka kataloogis <filename class="directory"
+>/usr/local/share/polkit-1/actions/</filename
+>. Kui seda ei ole, tuleb see sinna linkida (või kopeerida): <screen
+><userinput
+><prompt
+>$</prompt
+> <command
+>cd</command
+> <filename class="directory"
+>/usr/local/share/polkit-1/actions/</filename
+></userinput>
+<userinput
+><prompt
+>$</prompt
+> <command
+>sudo ln</command
+> -s \
+<filename
+>/usr/local/kde4/share/polkit-1/actions/de.berlios.smb4k.mounthelper.policy</filename
+> .</userinput
+></screen
+></para>
+</listitem>
+<listitem>
+<para
+>Paigaldamisel asetatakse üsna tõenäoliselt D-Busi failid valesse kohta, nii et need tuleb linkida (või kopeerida) õigesse kohta: <screen
+><userinput
+><prompt
+>$</prompt
+> <command
+>cd</command
+> <filename class="directory"
+>/usr/local/share/dbus-1/system-services</filename
+></userinput>
+<userinput
+><prompt
+>$</prompt
+> <command
+>sudo ln</command
+> -s \
+<filename
+>/usr/local/kde4/share/dbus-1/system-services/de.berlios.smb4k.mounthelper.service</filename
+> .</userinput
+></screen
+></para>
+</listitem>
+</itemizedlist>
+</sect2>
+
+<sect2 id="freebsd_remarks_mounting">
+<title
+>Ühendamine</title>
+<para
+>FreeBSD korral on SMB protokoll teostatud teistmoodi kui muudes *NIX operatsioonisüsteemides, mistõttu ka võrguressursside ühendamine toimib teistmoodi. Peamiseks erinevuseks on sisselogimisteabe edastamise viis ühendamise ajal. Kui &Linux; ja teiste operatsioonidesüsteemide korral, mis kasutavad Samba programmi <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>, saab määrata kasutajanime ja parooli käsu võtmetena või keskkonnamuutujatega <envar
+>USER</envar
+> ja <envar
+>PASSWD</envar
+>, siis FreeBSD-s salvestatakse kogu sisselogimisteave kasutajatunnuste faili <filename
+>~/.nsmbrc</filename
+>. Kui seal teavet pole, ei ole ka võimalik ühendada parooliga kaitstud ressurssi.</para>
+<para
+>&smb4k; kirjutab sisselogimisteabe kasutajatunnuste faili lennult, nii et seda saab kohe kasutada. WINS-serveri korral tuleb silmas pidada nii seda kui ka veel mõningaid globaalseid asju. Kuid teave, mida &smb4k; faili <filename
+>~/.nsmbrc</filename
+> kirjutab, on piiratud. Sinna kirjutatakse ainult võrguressursi nimi, selle töögrupp, kasutajanimi ja krüptitud parool. Kui sul tekib puuduvate kirjete tõttu probleeme, tuleb need ise käsitsi juurde kirjutada.</para>
+</sect2>
+</sect1>
+
+</chapter>
+
+
+<!-- Configuring Smb4K -->
+
+<chapter id="configuration">
+<title
+>&smb4k; seadistamine</title>
+
+<para
+>Selles osas kirjeldatakse &smb4k; seadistamise võimalusi. Seadistustedialoogi avamiseks tuleb valida menüükäsk <link linkend="mainwindow_overview"
+><guimenuitem
+>&smb4k; seadistamine...</guimenuitem
+></link
+></para>
+
+<!-- Configuration: User Interface -->
+
+<sect1 id="configuration_user_interface">
+<title
+>Kasutajaliides</title>
+
+<para
+>Siinsete valikutega saab muuta mitme dialoogi ja vidina välimust ja käitumist. Pane tähele, et kui soovid muuta peaakna välimust, leiab mitmeid võimalusi menüüs <guimenu
+>Seadistused</guimenu
+> otse <link linkend="mainwindow_overview"
+>menüüribal</link
+>.</para>
+
+<screenshot>
+<screeninfo
+>Kasutajaliidese seadistuste kaardi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="configuration_user_interface.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Välimuse seadistuste kaart</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<sect2 id="configuration_user_interface_general">
+<title
+>Üldised seadistused</title>
+
+<sect3 id="configuration_user_interface_general_notifications">
+<title
+>Märguanded</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Märguannete näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kasutaja teavitamine sooritatavatest toimingutest, nt. jagatud ressursi ühendamisest või lahutamisest Kui sa ei soovi, et sind liiga sageli segataks, võib selle valiku välja lülitada. Hoiatusi ja veateateid see valik ei mõjuta. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_user_interface_general_bookmarks">
+<title
+>Järjehoidjad</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Võimaluse korral kohandatud järjehoidjanime näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Näidatakse järjehoidja kohandatud kirjeldust (nime). Seda saab määrata <link linkend="mainwindow_bookmarks_editor"
+>järjehoidjate redaktoris</link
+>. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_user_interface_network">
+<title
+>Võrgunaabrus</title>
+
+<sect3 id="configuration_user_interface_network_behavior">
+<title
+>Käitumine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Domeenide ja masinate automaatne avamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Domeenide ja masinate automaatne avamine, kui nendega seotud võrguelementide (domeeni liikmete või jagatud ressursside) nimekiri lisatakse või seda uuendatakse. Pane tähele, et domeeni- või masinaelement avatakse alati, kui sa teed seda ise. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_user_interface_network_remote_shares">
+<title
+>Võrguressursid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Jagatud printerite näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Jagatud printerite näitamine. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Peidetud ressursside näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Võrgusirvijas näidatakse kõiki peidetud ressursse, välja arvatud need, mille tüüp on ADMIN$ ja IPC$. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Peidetud IPC$ ressursside näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Peidetud IPC$ ressursside näitamine. Seda saab märkida ainult siis, kui märgitud on ka <guibutton
+>Peidetud ressursside näitamine</guibutton
+>. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Peidetud ADMIN$ ressursside näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Peidetud ADMIN$ ressursside näitamine. Seda saab märkida ainult siis, kui märgitud on ka <guibutton
+>Peidetud ressursside näitamine</guibutton
+>. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_user_interface_network_columns">
+<title
+>Veerud</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Jagatud ressursi tüübi näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Näidatakse jagatud ressursi tüüpi (s.t. ketas, printer või IPC). </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Serveri IP-aadressi näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Võrguserverite IP-aadressi näitamine. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kommentaari näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Võrguserveri või -ressursi kommentaari näitamine. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_user_interface_network_tooltips">
+<title
+>Kohtspikrid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Võrguelemendi kohta teavet sisaldava kohtspikri näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kohtspikrit näeb, kui viia hiirekursor võrgunaabruse sirvijas mõne elemendi kohale. See sisaldab teavet võrguelemendi kohta, näiteks töögrupi või domeeni nimi, masinanimi, kommentaar, tüüp jne. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_user_interface_shares">
+<title
+>Ühendatud jagatud ressursid</title>
+   
+<sect3 id="configuration_user_interface_shares_view">
+<title
+>Vaade</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ühendatud jagatud ressursside näitamine ikoonivaatena</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Ühendatud ressursside näitamisel kasutatakse ikoonivaadet. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ühendatud jagatud ressursside näitamine loendivaatena</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Ühendatud ressursside näitamisel kasutatakse loendivaadet. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para
+>Järgmised seadistused käivad konkreetselt loendivaate kohta:</para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Omaniku ja grupi näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Loendivaates ressursi omaniku UID ja GID näitamine. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kasutajanime näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Ühendamisel kasutatava kasutajanime näitamine. Seda näidatakse ainult siis, kui ressurss on ühendatud CIFS-failisüsteemiga. Muul juhul jääb veerg tühjaks. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failisüsteemi näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Ressursi kasutatava failisüsteemi näitamine. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Vaba kettaruumi näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Ressursil saadaoleva vaba kettaruumi näitamine. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kasutatud kettaruumi näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Ressursil kasutusel oleva kettaruumi näitamine. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kogukettaruumi näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kogu kettaruumi näitamine, mida ressursil on pakkuda. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kettakasutuse näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kettakasutuse näitamine protsendina. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_user_interface_shares_mounted_shares">
+<title
+>Ühendatud jagatud ressursid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ühenduspunkti näitamine ressursi nime asemel</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Ressursi nime asemel näidatakse ühenduspunkti. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kõigi süsteemis ühendatud jagatud ressursside näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Näidatakse <emphasis
+>kõiki</emphasis
+> ühendatud ressursse, mis kasutavad kas CIFS- (&Linux;) või SMBFS- (FreeBSD) failisüsteemi. Vaikimisi näidatakse ainult ressursse, mille omanik oled sa ise. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_user_interface_shares_tooltips">
+<title
+>Kohtspikrid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Jagatud ressursi kohta teavet sisaldava kohtspikri näitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kohtspikrit näeb, kui viia hiirekursor ressursivaates mõne elemendi kohale. See sisaldab teavet elemendi kohta, näiteks ressursi nimi, UNC-aadress, ühenduspunkt, omanik ja grupp, kasutajatunnus (CIFS-failisüsteem, ainult &Linux;), kettakasutus jne. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_user_interface_preview">
+<title
+>Eelvaatluse dialoog</title>
+
+<sect3 id="configuration_user_interface_preview_hidden">
+<title
+>Peidetud failid ja kataloogid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Peidetud failide ja kataloogide eelvaatlus</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kõigi failide ja kataloogide, kaasa arvatud peidetute, näitamine ressursi sisu avamisel eelvaatluse dialoogis. Vaikimisi seda ei tehta. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+</sect1>
+
+<!-- Configuration: Network -->
+
+<sect1 id="configuration_network">
+<title
+>Võrk</title>
+
+<para
+><guilabel
+>Võrgu</guilabel
+> seadistuste kaardi valikutega saab muuta sirvimisnimekirja uurimisviisi, panna &smb4k; saatma töögrupi nimekirjahoidjale päringu esitamisel autentimisteavet ning lubada perioodilise võrgu uurimime ja Wake-On-LAN. Kui soovid kohandada Samba programmide käitumist, tuleb pöörduda <link linkend="configuration_samba"
+>Samba</link
+> seadistuste juurde. </para>
+
+<screenshot>
+<screeninfo
+>Võrgu seadistuste kaardi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="configuration_network.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Võrgu seadistuste kaart</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<sect2 id="configuration_network_browselist">
+<title
+>Sirvimisnimekiri</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Võrgunaabruses saadaolevate töögruppide ja domeenide otsimine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>&smb4k; otsib võrgus kõiki saadaolevaid nimekirjahoidjaid, kasutades programmi <ulink url="man:/nmblookup"
+><citerefentry
+><refentrytitle
+>nmblookup</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>. See on vaikimisi meetod ja väga töökindel kõigi võrgunaabruses leiduvate töögruppide ja domeenide leidmiseks. Siiski on sellel mõningaid puudusi, näiteks kehv Unicode'i toetus (nt. täpitähtede täpid võidakse asendada punktidega). </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Päring aktiivse töögrupi nimekirjahoidjas</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Sinu töögrupi või domeeni aktiivsest nimekirjahoidjast päritakse sirvimisnimekirja. Kui mõned võrgunaabruse töögruppide nimed sisaldavad täpitähti või muid erimärke, võib seda meetodit katsetada, sest Unicode on siin toetatud. Vahel võib see aga tulemuseks anda iganenud töögrupi nimekirjahoidjad. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Päring kohandatud nimekirjahoidjas:</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Sirvimisnimekirja hankimiseks esitatakse päring tekstikasti sisestatud nimekirjahoidjale. Selle võib määrata kas NetBIOS-e nime või IP-aadressi järgi. Sellest võimalusest võib olla abi mõnes ebaharilikult seadistatud võrgunaabruses. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Järgmiste levialade uurimine:</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>&smb4k; uurib läbi ja tagastab kõik IP-aadressid, mis on registreeritud määratud levila(de)s. Pane tähele, et see ei ole "tõeline" IP-aadresside otsing, sest selleks kuluks lausa igavik. Levialad tuleb anda komadega eraldatud loendina kujul x.y.z.255: <screen
+>192.168.1.255, 192.168.2.255, 10.0.0.255</screen
+> IP-aadressi/maski paarid (192.168.1.1/24) ei toimi. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="configuration_network_master_authentication">
+<title
+>Autentimine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Nimekirjahoidjad nõuavad sirvimisloendi teatamiseks autentimist</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kui töögrupi nimekirjahoidjad nõuavad sirvimisnimekirja teatamiseks autentimist, tuleb see valik märkida. See võib olla nii näiteks mõne NAS-seadme korral. Muidu läheb seda harva vaja ja see võib isegi panna nimekirjahoidja tagastama tühja sirvimisnimekirja. Sel ei ole aga mingit mõju, kui &smb4k; on määratud uurima levialasid. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="configuration_network_periodic_scanning">
+<title
+>Perioodiline uurimine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Võrgunaabruse perioodiline uurimine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kui soovid lubada võrgunaabruse perioodilise uurimise, tuleb see valik märkida. Sel juhul uuritakse kõiki saadaolevaid võrguelemente, s.t. töögruppe ja domeene, servereid ja ressursse. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Uurimise intervall</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Perioodilise uurimise lubamisel saab siin määrata aja minutites, mis peab mööduma, enne kui alustatakse uut uurimist. </para>
+<para
+>Vaikimisi: 5 min</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="configuration_network_wake_on_lan">
+<title
+>Wake-On-LAN</title>
+
+<para
+>&smb4k; Wake-On-LAN-i võimaluse kasutamiseks tuleb see siin sisse lülitada. Masinad, mida on vaja äratada, tuleb määrata <link linkend="configuration_custom_options"
+>kohandatud valikute dialoogis</link
+>.</para>
+
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guibutton
+>Wake-On-LAN võimaluste lubamine</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Wake-On-LAN (WOL) võimaluse lubamine. Wake-On-LAN on arvutite Ethernet-arvutivõrgu standard, mis võimaldab arvuti sisselülitamist või unerežiimist äratamist võrguteate abil. Smb4K kasutab võrguserverite äratamiseks UDP sokli kaudu saadetavat maagilist paketti. Kui soovid ära kasutada Wake-On-LAN-i võimalusi, tasub see siin sisse lülitada.</para>
+      <para
+>Vaikimisi: märkimata</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guibutton
+>Ooteaeg</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>See on ooteaeg sekundites maagiliste Wake-On-LAN-pakettide saatmise ning võrgunaabruse uurimise või jagatud ressursi ühendamise vahel.</para>
+      <para
+>Vaikimisi: 5 s</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect2>
+</sect1>
+
+<!-- Configuration: Shares -->
+
+<sect1 id="configuration_shares">
+<title
+>Jagatud ressursid</title>
+
+<para
+>Siin saab määrata, kuidas &smb4k; ühendab võrguressursid ning kuidas rakendus käitub käivitamisel ja töö lõpetamisel ühendatud või hiljuti kasutatud ressurssidega. Kui soovid seadistada ühendamisvalikuid, tuleb pöörduda <link linkend="configuration_samba"
+>Samba</link
+> seadistuste poole.</para>
+
+<screenshot>
+<screeninfo
+>Jagatud ressursside seadistuste kaardi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="configuration_shares.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Jagatud ressursside seadistuste kaart</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<sect2 id="configuration_shares_directories">
+<title
+>Kataloogid</title>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ühendamise prefiks</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>See on baaskataloog (ühendamise prefiks), kuhu &smb4k; ühendab võrguressursid. Seda saab muuta &URL;-i sisestajaga (klõpsa kataloogiikooniga nupule) või otseselt, kui sisestada uus asukoht tekstikasti. Tunnustatakse ka asukohamuutujaid, näiteks <envar
+>$HOME</envar
+>. </para>
+<para
+>Vaikimisi: <filename class="directory"
+>$HOME/smb4k/</filename
+> </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Genereeritud alamkataloogid väiketähelistena</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kõik alamkataloogid, mida &smb4k; loob ühendamise prefiksi alla, muudetakse väiketäheliseks. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="configuration_shares_mounting">
+<title
+>Ühendamine ja lahutamine</title>
+
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice
+><guibutton
+>Viimati kasutatud jagatud ressursside taasühendamine rakenduse käivitamisel</guibutton
+></menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kõik ressursid, mis olid ühendatud ajal, mil &smb4k; töö lõpetati, taasühendatakse rakenduse uuel käivitamisel. See mõjutab ainult ressursse, mida oled ise ühendanud.</para>
+      <para
+>Vaikimisi: märkimata</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><guilabel
+>Taasühendamiskatsete arv</guilabel
+></menuchoice>
+    </term>
+    <listitem>
+      <para
+>Katsete arvu määramine, kui palju püütakse jagatud ressursse taasühendada, enne kui Smb4K sellest loobub.</para>
+      <para
+>Vaikimisi: 1</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><guilabel
+>Taasühendamiskatsete intervall</guilabel
+></menuchoice>
+    </term>
+    <listitem>
+      <para
+>Aja määramine, mis jääb jagatud ressursside taasühendamiskatsete vahele.</para>
+      <para
+>Vaikimisi: 5 min</para>
+    </listitem>
+  </varlistentry
+>  
+  <varlistentry>
+    <term>
+      <menuchoice
+><guibutton
+>Kõige isiklike ressursside lahutamine väljumisel</guibutton
+></menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kõik ressursid, mille omanik oled sina ise, lahutatakse rakenduse töö lõpetamisel.</para>
+      <para
+>Vaikimisi: märkimata</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><guibutton
+>Kättesaamatute jagatud ressursside lahutamine jõuga</guibutton
+></menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kättesaamatute jagatud ressursside lahutamine jõuga (ainult &Linux; korral). Kui jagatud ressurss pole kättesaadav, sooritatakse laisk lahutamine. Enne tegelikku lahutamist näidatakse hoiatusdialoogi, millega palutakse lahutamine heaks kiita.</para>
+      <para
+>Vaikimisi: märkimata</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice
+><guibutton
+>Teistele kasutajatele kuuluvate jagatud ressursside lahutamise lubamine</guibutton
+></menuchoice>
+    </term>
+    <listitem>
+      <para
+>Selle valikuga saab lubada ressurside lahutamist, mille on ühendanud teised kasutajad.</para>
+      <para
+>KASUTA SEDA ÄÄRMISE ETTEVAATUSEGA!</para>
+      <para
+>Vaikimisi: märkimata</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+</sect2>
+
+<sect2 id="configuration_shares_checks">
+<title
+>Kontrollid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kontrollide intervall</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>&smb4k; kontrollib ühendatud ja kättesaamatuid ressursse perioodiliselt intervalliga, mille saabki siin määrata. Tavalistes oludes ei ole vaja siin midagi muuta. Aga kui server, millega oled ühendatud, kannatab suure koormuse all, võib intervalli olukorra leevendamiseks suurendada. Selle mõju sinu süsteemi koormusele on väga tilluke, kui sa just ei määra intervalli alla 1000 msek (mis ei ole kindlasti soovitatav).</para>
+<para
+>Vaikimisi: 2500 msek</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+</sect1>
+
+<!-- Configuration: Authentication -->
+
+<sect1 id="configuration_authentication">
+<title
+>Autentimine</title>
+
+<para
+>Siin saab muuta autentimist puudutavaid seadistusi.</para>
+
+<screenshot>
+<screeninfo
+>Autentimise seadistuste kaardi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="configuration_authentication.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Autentimise seadistuste kaart</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<sect2 id="configuration_authentication_general">
+<title
+>Üldised seadistused</title>
+  
+<sect3 id="configuration_authentication_general_storage">
+<title
+>Paroolide salvestamine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Sisselogimisteabe salvestamine turvalaekasse</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kasutajanimed ja paroolid salvestatakse alamkataloogi <filename role="directory"
+>Smb4K</filename
+> aktiivses võrguturvalaekas (vaikimisi "kdewallet"). Selle meetodi eeliseks on asjaolu, et autentimisandmed salvestatakse püsivalt ja krüptitult sinu kõvakettale. Sul tuleb need anda ainult üks kord ja kui neid järgmine kord vaja läheb, loeb &smb4k; need turvalaekast. Kui jätta see valik märkimata, salvestatakse autentimisandmed ajutiselt või ei salvestata neid üldse (vaata allpool). </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Sisselogimisteabe meeldejätmine rakenduse töö ajaks</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kui sa ei soovi, et &smb4k; salvestaks autentimisandmed turvalaekasse, saad määrata, kas need salvestatakse ajutiselt või mitte. Kui see kastike märkimata jätta, unustab &smb4k; otsekohe antud autentimisandmed ning need tuleb anda iga kord, kui neid vaja läheb. Sel valikul ei ole mõju, kui oled otsustanud salvestada paroolid turvalaekasse (vaata eespool). </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_authentication_general_default">
+<title
+>Vaikimisi sisselogimine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Vaikimisi sisselogimisteabe kasutamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Vaikimisi sisselogimisteavet kasutatakse vaikimisi serveris autentimiseks. Kui märgid selle valiku, ilmub paroolidialoog, kus saad määrata vaikimisi logimisteabe.</para>
+<screenshot>
+<screeninfo
+>Vaikimisi sisselogimisteabe sisestamise dialoogi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="dialog_default_login.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Vaikimisi sisselogimisteabe sisestamise dialoog</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Anda tuleb vähemalt kasutajanimi. Tühjad paroolid on toetatud.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_authentication_wallet_entries">
+<title
+>Turvalaeka kirjed</title>
+<para
+><guilabel
+>Turvalaeka kirjete</guilabel
+> kaart sisaldab redaktorit, mille abil saab muuta või eemaldada olemasolevaid turvalaeka kirjeid.</para>
+<screenshot>
+<screeninfo
+>Turvalaeka kirjete redaktori pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="configuration_wallet_entries.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Turvalaeka kirjete redaktor</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+<para
+>Enne kui hakata turvalaeka kirjeid muutma, tuleb need turvalaekast laadida klõpsuga nupule <guibutton
+>Laadi</guibutton
+>. Vasakul ilmub nähtavale kirjete loend. Kirjet saab muuta, kui see valida ja märkida kastike <guibutton
+>Üksikasjade näitamine</guibutton
+>. Üksikasju näeb paremal, kus neid saab ka muuta.</para>
+<para
+>Kirje saab eemaldada, kui teha sellel paremklõps ja valida kontekstimenüüst <guimenuitem
+>Eemalda</guimenuitem
+>. Kõik turvalaeka kirjed saab korraga eemaldada, kui valida <guimenuitem
+>Puhasta nimekiri</guimenuitem
+>.</para>
+<para
+>Muudatusi saab tühistada, kui valida kas turvalaeka kirjete või üksikasjade vidina kontekstimenüüst käsk <guimenuitem
+>Võta tagasi</guimenuitem
+>.</para>
+<para
+>Kui oled muutmise lõpetanud, saab muudatused turvalaekasse sisse kanda klõpsuga nupule <guibutton
+>Salvesta</guibutton
+>.</para>
+</sect2>
+</sect1>
+
+<!-- Configuration: Samba -->
+
+<sect1 id="configuration_samba">
+<title
+>Samba</title>
+
+<para
+>Siin saab vahetult mõjutada käsureaargumente, mis edastatakse Samba programmidele, samuti hallata konkreetsetele ressurssidele määratud kohandatud seadistusi. Palun arvesta, et need seadistused toimivad ainult &smb4k; raames ja et ühtegi muudatust ei rakendata seadistusfailile <filename
+>smb.conf</filename
+>. Täpsema teabe hankimiseks tasuks uurida Samba manuaalilehekülgi.</para>
+
+<screenshot>
+<screeninfo
+>Samba seadistuste kaardi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="configuration_samba.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Samba seadistuste kaart</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<sect2 id="configuration_samba_general">
+<title
+>Üldised seadistused</title>
+   
+<sect3 id="configuration_samba_general_general">
+<title
+>Üldised valikud</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>NetBIOS-e nimi</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Arvuti NetBIOS-e nime määramine. Tekstikast peaks juba sisaldama teavet, mida pakub seadistusfail <filename
+>smb.conf</filename
+>, või sinu arvuti masinanime. Tavaliselt ei ole põhjust siin midagi muuta. </para>
+<para
+>Vaikimisi: NetBIOS-e nimi, nagu selle määrab <filename
+>smb.conf</filename
+>, või masinanimi. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Domeen</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Domeeni/töögrupi määramine, millesse sinu arvuti kuulub. Tekstikastis peaks juba olema teave, mida pakub seadistusfail  <filename
+>smb.conf</filename
+>. Tavaliselt ei ole põhjust siin midagi muuta. </para>
+<para
+>Vaikimisi: domeeninimi, nagu selle määrab <filename
+>smb.conf</filename
+>. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Sokli valikud</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>TCP sokli valikute määramine. Sellest kõneleb täpsemalt <ulink url="man:/smb.conf"
+><citerefentry
+><refentrytitle
+>smb.conf</refentrytitle
+><manvolnum
+>5</manvolnum
+></citerefentry
+></ulink
+> manuaalilehekülg. </para>
+<para
+>Vaikimisi: sokli valikud, nagu selle määrab <filename
+>smb.conf</filename
+>. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>NetBIOS-e skoop</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>NetBIOS-e skoobi määramine. Enne siia millegi kirjutamist on äärmiselt soovitatav lugeda <ulink url="man:/smb.conf"
+><citerefentry
+><refentrytitle
+>smb.conf</refentrytitle
+><manvolnum
+>5</manvolnum
+></citerefentry
+></ulink
+> manuaalilehekülge. </para>
+<para
+>Vaikimisi: NetBIOS-e skoop, nagu selle määrab <filename
+>smb.conf</filename
+>. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_samba_general_ports">
+<title
+>Võrgupordid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>SMB port</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>SMB võrgupordi numbri määramine, mida kasutavad <ulink url="man:/net"
+><citerefentry
+><refentrytitle
+>net</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> ja <ulink url="man:/smbclient"
+><citerefentry
+><refentrytitle
+>smbclient</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> võrgumasinaga suhtlemisel. FreeBSD korral on see ühtlasi ühendamiseks kasutatav port.</para>
+<para
+>Kui sa ei kasuta just tulemüüri või kohandatud võrguseadistust, ei ole siin vaja midagi muuta.</para>
+<para
+>Vaikimisi: 139 </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failisüsteemi port</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Failisüsteemi pordi numbri määramine, mida kasutab <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> võrguressursi ühendamisel. Vaikimisi pordinumber (445) peaks toimima kõigis moodsates operatsioonisüsteemides. Kui esineb probleeme, võib proovida porti 139. Kui probleeme on ainult mõne masinaga, on soovitatav jätta siin pordinumber globaalselt määramata ning kasutada <link linkend="network_neighborhood_browser_custom"
+>kohandatud valikute</link
+> dialoogi, et määrata pordinumber konkreetselt problemaatilistele masinatele. </para>
+<para
+>See valik on kasutatav ainult &Linux; keskkonnas. FreeBSD korral määrab pordi ressursside ühendamiseks ära <guibutton
+>SMB port</guibutton
+>.</para>
+<para
+>Vaikimisi: 445 </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_samba_general_authentication">
+<title
+>Autentimine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Autentimise üritamine Kerberosega</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kerberose kasutamine autentimiseks Active Directory keskkonnas. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Autentimine kohaliku masina kontoga</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Päringud võrguserverisse tehakse kohaliku serveri kontot kasutades. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Winbindi ccache autentimise kasutamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kasutajatunnuste kasutamine, mille on puhverdanud Winbind. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_samba_general_security">
+<title
+>Turvalisus</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Allkirjastamise olek</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kliendi allkirjastamise oleku määramine. Seda seadistust kasutavad <ulink url="man:/smbclient"
+><citerefentry
+><refentrytitle
+>smbclient</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> ja <ulink url="man:/smbtree"
+><citerefentry
+><refentrytitle
+>smbtree</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>. </para>
+<para
+>Kasutada saab järgmisi võimalusi: </para>
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>Puudub</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kliendi allkirjastamise olekut ei määrata.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>Sees</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kliendi allkirjastamise olekuks määratakse <emphasis
+>sees</emphasis
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>Väljas</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kliendi allkirjastamise olekuks määratakse <emphasis
+>väljas</emphasis
+>.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>Nõutav</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Kliendi allkirjastamise olekuks määratakse <emphasis
+>nõutav</emphasis
+>.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+<para
+>Vaikimisi: puudub </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>SMB transpordi krüptimine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>See nõuab, et võrguserver toetaks &UNIX; laiendusi. Sellega soovitakse ühenduse krüptimist. See on uus võimalus alates Samba versioonist 3.2. Kui krüptimise üle peetavad läbirääkimised tulemusi ei anna, ühendumine nurjub. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_samba_mounting">
+<title
+>Ühendamine</title
+>   
+   
+<sect3 id="configuration_samba_mounting_common">
+<title
+>Üldised valikud</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kasutaja ID</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Failisüsteemi failide ja kataloogide omaniku määramine. Vaikimisi kasutatakse sinu UID-d. UID muutmiseks vajuta otsingunuppu ja vali rippmenüüst vajalik UID. </para>
+<para
+>Vaikimisi: sinu UID </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Grupi ID</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Failisüsteemi faile ja katalooge omava grupi määramine. Vaikimisi kasutatakse sinu GID-d. GID muutmiseks vajuta otsingunuppu ja vali rippmenüüst vajalik GID. </para>
+<para
+>Vaikimisi: sinu GID </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failimask</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Failidele kehtestatavate õiguste määramine. Väärtus on kaheksandsüsteemis ja peab koosnema 4 arvust. Failimaskist (fmask) kõnelevad lähemalt <ulink url="man:/mount"
+><citerefentry
+><refentrytitle
+>mount</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> ja <ulink url="man:/umask"
+><citerefentry
+><refentrytitle
+>umask</refentrytitle
+><manvolnum
+>2</manvolnum
+></citerefentry
+></ulink
+> manuaalileheküljed. </para>
+<para
+>Vaikimisi: 0755 </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kataloogi mask</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kataloogidele kehtestatavate õiguste määramine Väärtus on kaheksandsüsteemis ja peab koosnema 4 arvust. Kagaloogimaskist (dmask) kõnelevad lähemalt <ulink url="man:/mount"
+><citerefentry
+><refentrytitle
+>mount</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> ja <ulink url="man:/umask"
+><citerefentry
+><refentrytitle
+>umask</refentrytitle
+><manvolnum
+>2</manvolnum
+></citerefentry
+></ulink
+> manuaalileheküljed. </para>
+<para
+>Vaikimisi: 0755 </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kirjutamisõigus</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Siin saab määrata, kas ressursid ühendatakse vaikimisi <emphasis
+>kirjutamisõigusega</emphasis
+> või <emphasis
+>kirjutuskaitstult</emphasis
+>. See ei sõltu ülal määratud faili- ja kataloogimaski seadistusest. </para>
+<para
+>Vaikimisi: kirjutamisõigusega </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kliendi kooditabel</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Siin saab määrata kliendi poolel (s.t sinu arvutis) kasutatava kodeeringu. </para>
+<para
+>Vaikimisi: vaikimisi </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Serveri kooditabel</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Siin saab määrata võrguserveri kasutatava kodeeringu.</para
+> 
+<para
+>Seda saab määrata ainult FreeBSD korral.</para>
+<para
+>Vaikimisi: vaikimisi </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_samba_mounting_advanced">
+<title
+>Muud valikud</title>
+<para
+><emphasis
+>(Seda vidinat ei saa kasutada FreeBSD korral.)</emphasis
+></para>
+<para
+>Enamik valikuid, mida siin saab langetada, nõuab &Linux; kernelit 2.6.15 või uuemat.</para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Õiguste kontrollimine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kliendi poolel kontrollitakse, kas sinu UID ja GID ikka annavad õiguse käidelda ressursi faile ja katalooge. See on lisaks tavalisele pääsuõiguste (ACL) kontrollile sihtmasinas, mille sooritab serveri tarkvara. Seda ei pruugi kasutada, kui server toetab CIFS-i Unixi laiendusi ja sul ei ole seepärast õigust ressursile ligi pääseda. </para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Üritatakse määrata UID ja GID</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kui serveriga peetakse läbirääkimisi CIFS-i Unixi laiendite üle, üritatakse kliendi poolel määrata kohaliku protsessi vajalik UID ja GID vastselt loodavatele failidele, kataloogidele ja seadmetele. Kui see valik on märkimata, kasutatakse vaikimisi ressursil määratud UID-d ja GID-i. Soovitatav on enne selle valiku muutmist lugeda <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> manuaalilehekülge. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Serveri inode-numbrite kasutamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Inode-numbrite (failide unikaalsed püsivad identifikaatorid) kasutamine, mida tagastab server, kliendi poolel automaatselt genereeritavate ajutiste inode-numbrite asemel. Sel valikul pole mõju, kui server ei toeta inode-numbrite või muu sarnase saatmist. Soovitatav on enne selle valiku muutmist lugeda <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> manuaalilehekülge. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Inode-andmeid ei puhverdata</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Jagatud ressursil avatud failide inode-andmeid ei puhverdata. Mõnikord tagab see parema jõudluse kui vaikimisi käitumine, mille korral lugemised ja kirjutamised puhverdatakse. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Reserveeritud märkide transleerimine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Seitsmest reserveeritud märgist kuue (välja arvatud längkriips, kuid kaasa arvatud koolon, küsimärk, püstkriips (toru), tärn, suurema kui ja vähema kui märgid) transleerimine ümberseostamise vahemikku (ülalpool 0xF000), mis võimaldab ka kliendi poolel tunnistada faile, mis on loodud niisuguseid märke kasutades &Windows; POSIX-i emulaatoriga. Sellest võib abi olla ka enamiku Samba versioonide ühendamisel. Sel pole mingit mõju, kui server ei toeta Unicode'i. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Lukustamist ei kasutata</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Lukustamist ei kasutata. Ei käivitata lockd. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Turberežiim</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Turberežiim. Selle valiku kasutamiseks on vajalik CIFS-i kerneli moodul 1.40 või uuem.</para>
+<para
+>Lubatud väärtused on:</para>
+<variablelist>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>Ühendumine nullkasutajana (nimeta)</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=none</option
+>. See sunnib <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> proovima ühenduda nullkasutajana (nimeta).</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>Kerberos 5 autentimine</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=krb5</option
+>. See sunnib <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> kasutama Kerberos 5 autentimist.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>Kerberos 5 autentimine ja pakettide allkirjastamine</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=krb5i</option
+>. See sunnib <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> kasutama Kerberos 5 autentimist ja jõuga pakette allkirjastama.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>NTLM protokoll</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=ntlm</option
+>. See sunnib <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> kasutama NTLM parooli räsimist. &Linux; kerneli versioonini 3.8 on see vaikimisi valik.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>NTLM protokoll ja pakettide allkirjastamine</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=ntlmi</option
+>. See sunnib <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> kasutama NTLM parooli räsimist ja jõuga pakette allkirjastama.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>NTLMv2 protokoll</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=ntlmv2</option
+>. See sunnib <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> kasutama NTLMv2 parooli räsimist.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+	<guibutton
+>NTLMv2 protokoll ja pakettide allkirjastamine</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=ntlmv2i</option
+>. See sunnib <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> kasutama NTLMv2 parooli räsimist ja jõuga pakette allkirjastama.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guibutton
+>NTLMSSP protokoll</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=ntlmssp</option
+> See sunnib <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> kasutama NTLMv2 parooli räsimist, mis on kapseldatud NTLMSSP toorsõnumisse. Alates &Linux; kerneli versioonist 3.8 on see vaikimisi valik.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>
+      <menuchoice>
+        <guibutton
+>NTLMSSP protokoll ja pakettide allkirjastamine</guibutton>
+      </menuchoice>
+    </term>
+    <listitem>
+      <para
+>Käsureale lisatakse argument <option
+>sec=ntlmssp</option
+> See sunnib <ulink url="man:/mountcifs"
+><citerefentry
+><refentrytitle
+>mount.cifs-i</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> kasutama NTLMv2 parooli räsimist, mis on kapseldatud NTLMSSP toorsõnumisse, ja jõuga pakette allkirjastama.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+<para
+>Vaikimisi: <guilabel
+>NTLMSSP protokoll</guilabel
+> </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Lisavalikud</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Lisavalikute määramine, mida <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> peab kasutama. Need tuleb anda komadega eraldatud loendina ja need ei tohi sisaldada ühtegi valikut, mis on juba seadistustedialoogis määratud, sest see võib tekitada soovimatuid kõrvalmõjusid. Loend lisatakse käsureale argumentidena täpselt sisestatud kujul. Täpsemalt kõneleb argumentidest, mida on võimalik kasutada, <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> manuaalilehekülg. </para>
+<para
+>Vaikimisi: puudub </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_samba_utility_programs">
+<title
+>Tööriistaprogrammid</title>
+  
+<sect3 id="configuration_samba_utility_programs_net">
+<title
+>net</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guilabel
+>Protokolli vihje</guilabel>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Selle valikuga saab anda &smb4k;-le vihje, millist protokolli kasutada käsuga <ulink url="man:/net"
+><citerefentry
+><refentrytitle
+>net</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Et mõnda toimingut kõik protokollid ei võimalda, võidakse teatavate ülesannete täitmisel määrangut ka eirata. </para>
+<para
+>Kui järeleaitamist vajavad ainult üksikud serverid, võiks kaaluda siinse valiku asemel protokolli vihje andmiseks hoopis dialoogi <link linkend="network_neighborhood_browser_custom"
+>Kohandatud valikud</link
+> kasutamist.</para>
+<para
+>Kasutada saab järgmisi võimalusi: </para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guilabel
+>Automaatne tuvastamine</guilabel>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Protokolli määrab käsk <ulink url="man:/net"
+><citerefentry
+><refentrytitle
+>net</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> automaatselt käitusajal. See on vaikimisi valik ja enamasti ei ole põhjust seda muuta. Ent mõnikord võivad tekkida ühenduseprobleemid, sest programmil <ulink url="man:/net"
+><citerefentry
+><refentrytitle
+>net</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> tuleb ette raskusi õige protokolli üle kokkuleppimisel. Peaaegu kõigil juhtudel saab seda parandada, kui määrata protokolli vihjeks RPC protokoll.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>RPC: moodsad operatsioonisüsteemid</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>RPC protokoll, mida kasutavad moodsad &Windows; versioonid (2000/XP/2003) ja Samba. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>RAP: vanemad operatsioonisüsteemid</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>RAP protokoll, mida kasutavad vanemad &Windows; versioonid (95/98/Me). Selle miinuseks on pikkade ressursinimede toetuse puudumine. &smb4k; võib seda siiski varuvariandina kasutada. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>ADS: Active Directory keskkond (LDAP/Kerberos)</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>&smb4k; püüab kasutada ADS protokolli, kui see peaks vajalikuks osutuma. Pane aga palun tähele, et seni pole lisatud käsku, mis ADS protokolli kasutaks, nii et praegu ei avalda see valik tegelikult mõju. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para
+>Vaikimisi: automaatne tuvastamine </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_samba_utility_programs_nmblookup">
+<title
+>nmblookup</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Leviaadress</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Päringu saatmine määratud leviaadressile. Ilma selle valikuta saadab nmblookup vaikimisi päringu nende võrguliideste leviaadressile, mis tuvastatakse automaatselt või on määratud faili <filename
+>smb.conf</filename
+> parameetris <screen
+>interfaces = ...</screen
+> </para>
+<para
+>Vaikimisi: valikud, nagu need määrab <filename
+>smb.conf</filename
+>. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>UDP datagrammide saamiseks ja saatmiseks üritatakse kasutada UDP porti 137</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Selle valiku taga seisab Windows 95 viga, mille tõttu eiratakse soovi avaldava paketi lähteporti ja vastatakse ainult UDP pordile 137. Tavalistes oludes ei ole põhjust seda valikut märkida. Kui aga koged võrku uurides probleeme ja soovid selle valiku sisse lülitada, tasuks eelnevalt lugeda <ulink url="man:/nmblookup"
+><citerefentry
+><refentrytitle
+>nmblookup</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> manuaalilehekülge. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_samba_utility_programs_smbclient">
+<title
+>smbclient</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Nime lahendamise järjekord</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Siin saab määrata, milliseid nimeteenuseid ja millises järjekorras tuleb kasutada masinanimede taga IP-aadresside leidmisel. Valikusse tuleb tühikutega eraldatult kirjutada nimelahenduse valikud. Neiks on: "lmhost", "host", "wins" ja "bcast". Täpsemalt kõneleb sellest <ulink url="man:/smbclient"
+><citerefentry
+><refentrytitle
+>smbclient</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> manuaalilehekülg. </para>
+<para
+>Vaikimisi: valikud, nagu need määrab <filename
+>smb.conf</filename
+>. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Puhvri suurus</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Võimalus muuta vastuvõtmis-saatmispuhvri suurust faili hankimisel või saatmisel võrguserverist või võrguserverisse. </para>
+<para
+>Vaikimisi: 65520 baiti </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_samba_utility_programs_smbtree">
+<title
+>smbtree</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Päringute saatmine levipaketina</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Päringute esitamine võrgusõlmedele, saates neid levipakettidena selle asemel, et esitada päringud kohalikule nimekirjahoidjale. </para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+</sect1>
+
+<!-- Configuration: Synchronization -->
+
+<sect1 id="configuration_sync">
+<title
+>Sünkroonimine</title>
+
+<para
+>Seadistuste kaart sisaldab valikuid, mis mõjutavad käsku <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>, mida kasutatakse võrguressursside sünkroonimiseks kohaliku koopiaga ja vastupidi. See on saadaval ainult siis, kui süsteemi on paigaldatud <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>. Soovitatav on enne sünkroonimise esmakordset kasutamist lugeda <ulink url="man:/rsync"
+>manuaalilehekülge</ulink
+>. Siiski võib öelda, et juba eelnevalt on paika pandud turvalised seadistused. Niisiis ei tee ka ilma ettevalmistuseta alustamine mingit kahju.</para>
+
+<screenshot>
+<screeninfo
+>Sünkroonimise seadistuste kaardi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="configuration_synchronization.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Sünkroonimise seadistuste kaart</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<sect2 id="configuration_sync_copying">
+<title
+>Kopeerimine</title>
+   
+<sect3 id="configuration_sync_copying_defdest">
+<title
+>Vaikimisi sihtkoht</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Sünkroonimise prefiks</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>See on baaskataloog, kuhu &smb4k; salvestab käsuga <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> üle kantud andmed. Seda saab muuta &URL;-i sisestajaga (klõpsa kataloogiikooniga nupule) või otseselt, kui sisestada uus asukoht tekstikasti. Tunnustatakse ka asukohamuutujaid, näiteks $HOME.</para>
+<para
+>Iga sünkroonitava ressursi jaoks luuakse prefiksi alla uus alamkataloog. Kui soovid sünkroonida ressursi sisu mõne muu kataloogiga, tuleb see määrata <link linkend="mainwindow_shares_synchronization"
+>sünkroonimisdialoogis</link
+>.</para>
+<para
+>Vaikimisi: <filename class="directory"
+>$HOME/smb4k_sync/</filename
+> </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_sync_copying_general">
+<title
+>Üldine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Säilitamisrežiim</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-a</option
+>/<option
+>--archive</option
+>, sama mis <option
+>-rlptgoD</option
+> (ilma valikuta <option
+>-H</option
+>)</para>
+<para
+>Säilitamisrežiimi kehtestamine. See on kiire viis teatavaks teha, et soovid rekursiivsust ja säilitada peaaegu kõike. Pane tähele, et <option
+>-a</option
+> ei säilita püsilinke, sest mitmeti lingitud failide leidmine on kulutas. Selleks peab eraldi määrama valiku <option
+>-H</option
+>.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Rekursiivselt alamkataloogides</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Rekursiivne: <option
+>-r</option
+>/<option
+>--recursive</option
+></para>
+<para
+>Rekursiivne liikumine alamkataloogidesse.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failide uuendamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-u</option
+>/<option
+>--update</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> vahele jätma kõik failid, mis on olemas sihtkohas ja mille muutmisaeg on uuem kui ühel lähtefailil. (Kui olemasoleva sihtfaili muutmisaeg on lähtefailiga sama, uuendatakse seda juhul, kui failisuurus erineb.)</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failide uuendamine kohapeal</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--inplace</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> mitte looma failist koopiat ja seda seejärel õigesse kohta liigutama. Selle asemel kirjutab <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> üle olemasoleva faili, mis tähendab, et rsynci algoritm ei hakka täiel määral vähendama võrgukoormust, mida ta muidu võiks teha. Üks erand on selle valiku kombineerimine valikuga <option
+>--backup</option
+>, sest <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> on piisavalt nutikas, et kasutada varundatud faili ülekande baasfailina.</para>
+<para
+>Täpsemalt saab selle kohta lugeda <ulink url="man:/rsync"
+>manuaalileheküljelt</ulink
+>.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Suhtelised asukohanimed</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-R</option
+>/<option
+>--relative</option
+></para>
+<para
+>Suhteliste asukohtade kasutamine See tähendab, et serverisse saadetakse käsureal määratud täielikud asukohad, mitte ainult failinimede viimased osad.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Eeldatud katalooge ei saadeta</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--no-implied-dirs</option
+></para>
+<para
+>See valik mõjutab valiku <option
+>--relative</option
+> käitumist. Kehtestamise korral ei kaasata ülekandesse lähtenimede põhjal eeldatud kataloogide atribuute. See tähendab, et vastavad asukohaelemendid sihtsüsteemis jäävad muutmata, kui nad on olemas, ning kõik puuduvad eeldatavad kataloogid luuakse vaikimisi atribuutidega. See võimaldab eeldatavate asukohaelementide päris suurt erinevust: näiteks võib see ühel pool nimeviit kataloogile, teisel pool aga tegelik kataloog.</para>
+<para
+>Täpsemalt saab selle kohta lugeda <ulink url="man:/rsync"
+>manuaalileheküljelt</ulink
+>.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kataloogide mitterekursiivne edastamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-d</option
+>/<option
+>--dirs</option
+></para>
+<para
+>Saatvale poolele antakse sellega korraldus kaasata kõik kohatavad kataloogid. Erinevalt valikust <option
+>--recursive</option
+> ei kopeerita kataloogide sisu, kui määratud kataloogi nimi pole just "." või ei lõpe kaldkriipsuga (nt. ".", "dir/.", "dir/" jne.). Ilma selle valikuta või valikuta <option
+>--recursive</option
+> jätab <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> vahele kõik kataloogid, mida ta kohtab (ega väljasta ka kõigi nende kohta teadet). Kui määrata nii <option
+>--dirs</option
+> kui ka <option
+>--recursive</option
+>, rakendatakse esimesena <option
+>--recursive</option
+>.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Edastatavate andmete tihendamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-z</option
+>/<option
+>--compress</option
+></para>
+<para
+>Failiandmete tihendamine ülekandel.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_sync_copying_links">
+<title
+>Lingid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Nimeviitade säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-l</option
+>/<option
+>--links</option
+></para>
+<para
+>Nimeviitade kopeerimine nimeviitadena.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Nimeviitade teisendamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-L</option
+>/<option
+>--copy-links</option
+></para>
+<para
+>Nimeviitade kohtamisel kopeeritakse element, millele nad viitavad, mitte nimeviit ise.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ainult ebaturvaliste nimeviitade teisendamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--copy-unsafe-links</option
+></para>
+<para
+>Ainult "ebaturvaliste" nimeviitade teisendamine. See tähendab, et kui kohatakse nimeviita, mis viitab väljapoole kopeeritavat failipuudu, kantakse üle viidatav element, mitte nimeviit ise.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ebaturvaliste nimeviitade eiramine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--safe-links</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> eirama kõiki nimeviitu, mis viitavad väljapoole kopeeritavat failipuud. Eiratakse ka kõiki absoluutseid nimeviitu. Selle kasutamisel koos valikuga <option
+>--relative</option
+> võib saada päris ootamatuid tulemusi.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Püsilinkide säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-H</option
+>/<option
+>--hard-links</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> otsima ülekandel püsilingiga seotud faile ja linkima vastavad failid vastuvõtval poolel. Ilma selle valikuta koheldakse püsilingiga seotud faile kui eraldi faile. </para>
+<para
+>Pane tähele, et <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> suudab püsilinke tuvastada ainult siis, kui üle kantakse lingi mõlemad pooled.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kataloogide nimeviitade säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-K</option
+>/<option
+>--keep-dirlinks</option
+></para>
+<para
+>See sunnib vastuvõtvat poolt kohtlema nimeviita kataloogile tegeliku kataloogina, kuid ainult juhul, kui see vastab saatjalt saadud tegelikule kataloogile. Ilma selle valikuta kustutatakse vastuvõtja nimeviit ja asendatakse tegeliku kataloogiga.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_sync_copying_perms">
+<title
+>Failiõigused ja muu selline</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Õiguste säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-p</option
+>/<option
+>--perms</option
+></para>
+<para
+>See sunnib vastuvõtvat poolt määrama sihtkohale samasugused õigused, nagu on lähtekohas.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Grupi säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-g</option
+>/<option
+>--group</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> määrama sihtfailile sama grupi, nagu on lähtefailil. Kui vastuvõttev programm ei tööta administraatori õigustes (või töötab võtmega <option
+>--no-super</option
+>), säilitatakse ainult grupid, millesse vastuvõtja kuulub.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Omaniku säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-o</option
+>/<option
+>--owner</option
+></para>
+<para
+>See valik sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> määrama sihtfailile sama omaniku, nagu on lähtefailil. Vaikimisi säilitatakse nimi, aga teatavatel puhkudel võidakse varuvariandina säilitada ka ID number (vt. põhjalikumat kirjeldust valiku <option
+>--numeric-ids</option
+> juures). Sel valikul pole mõju, kui vastuvõttev <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> ei tööta administraatori õigustes ja <option
+>--super</option
+> pole määratud.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Seadme- ja erifailide säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-D</option
+>/<option
+>--devices --specials</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> võrgusüsteemi üle kandma sümbol- ja plokkseadmete failid ning erifailid (näiteks nimega soklid ja fifod). Sel valikul pole mõju, kui vastuvõttev pool ei tööta administraatori õigustes ja <option
+>--super</option
+> pole määratud.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Aja säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-t</option
+>/<option
+>--times</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> koos failidega üle kandma muutmisajad ja neid võrgusüsteemi uuendama.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Aja säilitamisel jäetakse välja kataloogid</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-O</option
+>/<option
+>--omit-dir-times</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> välja jätma kataloogid, kui on kästud säilitada muutmisaeg (vt. <option
+>--times</option
+>).</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_sync_filedel">
+<title
+>Failide kustutamine ja edastamine</title>
+
+<sect3 id="configuration_sync_filedel_filedel">
+<title
+>Failide kustutamine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Sünkroonitud lähtefailide eemaldamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--remove-source-files</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> eemaldama saatvalt poolelt failid (s.t. mittekataloogid), mis on ülekande osa ja vastuvõtval poolel edukalt taasloodud.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Üleliigsete failide kustutamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--delete</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> kustutama vastuvõtvalt poolelt üleliigsed failid (need, mida pole saatval poolel), aga ainult sünkroonitavates kataloogides. Sel juhul peab andma <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>-le korralduse saata kogu kataloog (nt. "<filename class="directory"
+>dir</filename
+>" või "<filename class="directory"
+>dir/</filename
+>") ilma kataloogi sisu jaoks metamärke kasutamata (nt.  "<filename class="directory"
+>dir/*</filename
+>"), sest shell avab metamärgi ning <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> saab sel juhul soovi kanda üle konkreetsed failid, mitte nende failide kataloog. Ülekandest välja jäetavad failid jäetakse välja ka kustutamisel, kui ei kasutata just valikut <option
+>-- delete-excluded</option
+> või ei kehtestata reeglit, mille järgi vasteid otsitakse ainult saatval poolel.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failide kustutamine enne edastamist</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--delete-before</option
+></para>
+<para
+>Soovi esitamine kustutada failid vastuvõtval poolel enne ülekande algust. See on vaikimisi käitumine, kui määratud on valik <option
+>--delete</option
+> või <option
+>--delete-excluded</option
+> ilma mõnega valikutest <option
+>--delete-TINGIMUS</option
+>.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failide kustutamine pärast edastamist</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--delete-after</option
+></para>
+<para
+>Soovi avaldamine kustutada failid vastuvõtval poolel pärast ülekande sooritamist.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failide kustutamine edastamise ajal</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--delete-during</option
+></para>
+<para
+>Soovi avaldamine kustutada failid vastuvõtval poolel vastavalt ülekande edenemisele. See on kiirem kui failide kustutamine enne või pärast ülekannet, aga see on toetatud alles <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> versioonist 2.6.4.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ka välistatud failide kustutamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--delete-excluded</option
+></para>
+<para
+>Lisaks nende failide kustutamisele vastuvõtval poolel, mida ei leidu saatval poolel, sunnib see  <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> kustutama vastuvõtval poolel ka kõik failid, mis jäeti ülekandel välja (vt. <option
+>--exclude</option
+>).</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kustutamine isegi I/O tõrgete korral</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--ignore-errors</option
+></para>
+<para
+>Sunnib <option
+>--delete</option
+> jätkama ja faile kustutama isegi siis, kui tekib I/O- ehk sisendi-väljundivigu.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Mittetühjade kataloogide kustutamine jõuga</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--force</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> kustutama mittetühja kataloogi, kui see asendatakse mittekataloogiga. Seda on mõtet kasutada ainult siis, kui kustutamist ei ole määratud (vt. <option
+>--delete</option
+>).</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_sync_filedel_restrict">
+<title
+>Piirangud</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Maksimaalne kustutatavate failide arv</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--max-delete=ARV</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> kustutama mitte rohkem kui ARV faile või katalooge (ARV peab erinema nullist). See on tulus õnnetuste vältimiseks väga suurte puude peegeldamisel.</para>
+<para
+>Vaikimisi: märkimata, ARV: 0 </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_sync_filedel_transfer">
+<title
+>Failiedastus</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ei edastata faile, mis on väiksemad kui</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--min-size=ARV</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> loobuma failide edastamisest, mis on väiksemad määratud SUURUSest. See võib olla abiks väikeste rämpsfailide ülekande vältimisel.</para>
+<para
+>Vaikimisi: märkimata, ARV: 0 kB </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ei edastata faile, mis on suuremad kui</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--max-size=ARV</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> loobuma failide edastamisest, mis on suuremad määratud SUURUSest.</para>
+<para
+>Vaikimisi: märkimata, ARV: 0 kB </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Osaliselt edastatud failide säilitamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--partial</option
+></para>
+<para
+>Vaikimisi kustutab <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> kõik osaliselt edastatud failid, kui ülekanne katkeb. Mõnel juhul võib olla soovitatav säilitada ka osaliselt üle kantud failid. Valik <option
+>--partial</option
+> sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> säilitama osalise faili, mis peaks muutma hilisema ülejäänud osa failist ülekandmise palju kiiremaks.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Osaliselt edastatud failide säilitamiskoht</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--partial-dir=KATALOOG</option
+></para>
+<para
+>See on osaliste failide säilitamiseks parem viis kui <option
+>--partial</option
+>, sest osaliselt edastatud failid säilitatakse määratud KATALOOGis ning sihtfaili ei kirjutata üle. Järgmisel ülekandel kasutab <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> kataloogis leitud faili andmetena, mis aitab kiirendada ülejäänud faili ülekannet, ning kustutab seejärel oma osa täitnud faili. Enne selle valiku kasutamist tasuks lugeda <ulink url="man:/rsync"
+>manuaalilehekülge</ulink
+>.</para>
+<para
+>Vaikimisi: märkimata; KATALOOG: <filename class="directory"
+>$HOME</filename
+> </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_sync_filter">
+<title
+>Filtreerimine</title
+>   
+
+<sect3 id="configuration_sync_filter_general">
+<title
+>Üldine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failide automaatne eiramine CVS-i eeskujul</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-C</option
+>/<option
+>--cvs-exclude</option
+></para>
+<para
+>See on tulus võimalus välistada suur hulk faile, mida sa ei soovi sageli süsteemist süsteemi üle kanda. See kasutab määramiseks, kas faili eirata või mitte, CVS-iga sama algoritmi.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Välistatakse järgmise mustriga sobivad failid</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--exclude=MUSTER</option
+></para>
+<para
+>See on valiku <option
+>--filter</option
+> lihtsustatud vorm, mis vaikimisi kasutab välistamisreeglit ega võimalda tavaliste filtrireeglite täielikku reeglite parsimise süntaksit.</para>
+<para
+>Vaikimisi: märkimata; MUSTER: puudub </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Välistamismustrite hankimine failist</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--exclude-from=FAIL</option
+></para>
+<para
+>See on seotud valikuga <option
+>--exclude</option
+>, kuid siin määratakse FAIL, mis sisaldab välistamismustrit (üks igal real). Tühje ridu failis ja ridu, mille alguses seisab  ';' või '#', eiratakse. Selle valiku toimimiseks tuleb valida olemasolev fail.</para>
+<para
+>Vaikimisi: märkimata; FAIL: <filename
+>$HOME/exclude.txt</filename
+> </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kaasatakse järgmisele mustrile vastavad failid</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--include=MUSTER</option
+></para>
+<para
+>See on valiku <option
+>--filter</option
+> lihtsustatud vorm, mis vaikimisi kasutab kaasamisreeglit ega võimalda tavaliste filtrireeglite täielikku reeglite parsimise süntaksit.</para>
+<para
+>Vaikimisi: märkimata; MUSTER: puudub </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kaasamismustrite hankimine failist</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--include-from=FAIL</option
+></para>
+<para
+>See on seotud valikuga <option
+>--include</option
+>, kuid siin määratakse FAIL, mis sisaldab kaasamismustrit (üks igal real). Tühje ridu failis ja ridu, mille alguses seisab  ';' või '#', eiratakse. Selle valiku toimimiseks tuleb valida olemasolev fail.</para>
+<para
+>Vaikimisi: märkimata; FAIL: <filename
+>$HOME/include.txt</filename
+> </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_sync_filter_rules">
+<title
+>Filtri reeglid</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kohandatud filtrireeglid</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-f</option
+>/<option
+>--filter=REEGEL</option
+></para>
+<para
+>Siin saab määrata ühe või rohkem filtrireegli. Igal reeglil peab olema prefiks <option
+>--filter=</option
+> või <option
+>-f</option
+>, sest tekstikasti sisu edastatakse käsule <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> täpselt kirjapandud kujul.</para>
+<para
+>See valik võimaldab lisada reegleid, et valikuliselt jätta teatavad failid välja ülekantavate failide loendist. Seda on kõige kasulikum tarvitada rekursiivse ülekande korral.</para>
+<para
+>Valikuid <option
+>--filter</option
+> võib olla täpselt nii palju, kui neid vaid vaja läheb.</para>
+<para
+>Täpsemalt kõneleb sellest valikust <ulink url="man:/rsync"
+>manuaalilehekülje</ulink
+> sektsioon FILTER RULES.</para>
+<para
+>Vaikimisi: puudub </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Filtrireegli --filter='dir-merge /.rsync-filter' kasutamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-F</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> otsima igas kataloogis faili <filename
+>.rsync-filter</filename
+>, mida leidub kogu failihierarhias, ja kasutama nende reegleid failide filtreerimiseks ülekandel.</para>
+<para
+>Täpsemalt kõneleb sellest valikust <ulink url="man:/rsync"
+>manuaalilehekülje</ulink
+> sektsioon FILTER RULES.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Filtrireegli --filter='exclude .rsync-filter' kasutamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-FF</option
+></para>
+<para
+>See valik filtreerib ülekandel välja failid <filename
+>.rsync-filter</filename
+>.</para>
+<para
+>Täpsemalt kõneleb sellest valikust <ulink url="man:/rsync"
+>manuaalilehekülje</ulink
+> sektsioon FILTER RULES.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="configuration_sync_advanced">
+<title
+>Muud seadistused</title>
+
+<sect3 id="configuration_sync_advanced_general">
+<title
+>Üldine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Hajusfailide tõhus käitlemine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-S</option
+>/<option
+>--sparse</option
+></para>
+<para
+>Hajusfailide tõhus käitlemine, et nad võtaksid sihtkohas vähem ruumi. See on vastuolus võtmega <option
+>--inplace</option
+>, sest andmete ülekirjutamine ei ole sellisel juhul lihtsalt võimalik.</para>
+<note
+><para
+>Seda valikut ei tohiks kasutada, kui sihtkohaks on &Solaris; "tmpfs" failisüsteem. See kipub valesti käitlema otsinguid üle nullpiirkondade, mis võib tuua kaasa failide riknemise.</para
+></note>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failide kopeerimine tervikuna (rsynci algoritmita)</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-W</option
+>/<option
+>--whole-file</option
+></para>
+<para
+>Selle valiku puhul ei kasutata <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> inkrementalgoritmi ja selle asemel saadetakse kogu fail. Ülekanne võib sel juhul olla kiirem, kui lähte- ja sihtmasina vaheline ribalaius on suurem kui ribalaius süsteemi ja ketta vahel (eriti kui "ketas" on tegelikult võrgufailisüsteem). See on vaikimisi valik, kui nii lähte- kui ka sihtkoht on määratud kohalike asukohtadena.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failisüsteemi piire ei ületata</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-x</option
+>/<option
+>--one-file-system</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> vältima rekursiivsuse korral failisüsteemi piiride ületamist. See ei piira kasutaja võimalust määrata kopeerimiseks elemente paljudest failisüsteemidest, vaid ainult <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> rekursiivsust kõigi kasutaja määratud kataloogide hierarhias, samuti analoogset rekursiivsust vastuvõtval poolel kustutamise ajal. Pea meeles ka seda, et <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> kohtleb "seotud" (bind) ühendatud ressursse samal seadmel sama failisüsteemi osana.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ainult juba olemasolevate failide uuendamine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--existing</option
+>/<option
+>--ignore-non-existing</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> vahele jätma failide uuendamise, mida ei eksisteeri veel sihtkohas. Kui see ühendada valikuga <option
+>--ignore-existing</option
+>, ei uuendata ühtegi faili (mis võib olla abiks, kui soovid kõigest kustutada puuduvaid faile).</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Juba olemasolevate failide eiramine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--ignore-existing</option
+></para>
+<para
+>See sunnib <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> vahele jätma failide uuendamise, mis juba eksisteerivad sihtkohas. Vt. ka <option
+>--ignore-non-existing</option
+>.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Uuendamine alles edastamise lõpul</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--delay-updates</option
+></para>
+<para
+>See asetab iga uuendatava faili kohta ajutise faili kataloogi kuni edastamise lõpuni, mil muudetakse kõigi failide nime ja kopeeritakse need õigesse kohta kiiresti üksteise järel.</para>
+<para
+>Enne selle valiku kasutamist on tungivalt soovitatav lugeda <ulink url="man:/rsync"
+>manuaalilehekülge</ulink
+>.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_sync_advanced_backup">
+<title
+>Varundamine</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Varukoopiate loomine</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-b</option
+>/<option
+>--backups</option
+></para>
+<para
+>Selle valiku kasutamisel muudetakse juba olemasolevate failide nime nende ülekandmisel või kustutamisel. Kasutajal on võimalik määrata, kuhu varukoopia pannakse ja millise sufiksi see saab (kui saab), milleks on mõeldud valikud <option
+>--backup-dir</option
+> ja <option
+>--suffix</option
+>.</para>
+<para
+>Pane tähele, et kui jätta <option
+>--backup-dir</option
+> määramata, siis (1) eeldatakse valikut <option
+>--omit-dir-times</option
+> ning (2) samuti toimib <option
+>--delete</option
+> (ilma valikuta <option
+>--delete-excluded</option
+>) ja <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> lisab "kaitsva" varukoopia sufiksi filtrireegli kõigi olemasolevate välistatute lõppu (nt. <option
+>-f "P *~"</option
+>). See väldib varem varundatud failide kustutamist. Pane tähele, et kui annad oma filtrireeglid, võib olla vajalik lisada enda välistamis/kaitsereegel loendis kuhugi kõrgemale tasandile, et sel oleks suurem prioriteet (nt. kui sinu reeglid määravad lõpus oleva '*' kaasamise või välistamise, ei jõutagi kunagi automaatselt lisatud reeglini).</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Varukoopiate sufiks</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--suffix=SUFIKS</option
+></para>
+<para
+>See võimaldab tühistada vaikimisi varukoopia sufiksi, mis antakse valiku <option
+>--backup</option
+> kasutamisel. Vaikimisi sufiks on <emphasis
+>~</emphasis
+>, kui <option
+>--backup-dir</option
+> on määramata, vastasel juhul on see lihtsalt tühi string.</para>
+<para
+>Seda valikut saab kasutada ainult juhul, kui ülal märkida valik <guilabel
+>Varukoopiate loomine</guilabel
+>.</para>
+<para
+>Vaikimisi: märkimata; SUFIKS: ~ </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Varukoopiate kataloog</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--backup-dir=KATALOOG</option
+></para>
+<para
+>Koos valikuga <option
+>--backup</option
+> sunnib see rsynci salvestama kõik varukoopiad määratud kataloogi. See on äärmiselt kasulik inkrementvarundamise korral. Lisaks võib määrata varukoopia sufiksi valikuga <option
+>--suffix</option
+> (vastasel juhul säilitavad määratud kataloogi salvestatavad varukoopiafailid oma algsed failinimed).</para>
+<para
+>Seda valikut saab kasutada ainult juhul, kui ülal märkida valik <guilabel
+>Varukoopiate loomine</guilabel
+>.</para>
+<para
+>Vaikimisi: märkimata; KATALOOG: <envar
+>$HOME</envar
+> </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="configuration_sync_advanced_checksums">
+<title
+>Kontrollsummad</title>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Fikseeritud kontrollsummaploki suurus</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-B</option
+>/<option
+>--block-size=SUURUS</option
+></para>
+<para
+>See sunnib rsynci algoritmi kasutatavale plokisuurusele peale kindla väärtuse. Tavaliselt valitakse see iga uuendatava faili suuruse põhjal. Täpsemalt kõneleb sellest <ulink url="http://rsync.samba.org/tech_report/"
+>tehniline aruanne</ulink
+>.</para>
+<para
+>Vaikimisi: märkimata; SUURUS: 0 </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Ploki/faili kontrollsumma seeme</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>--checksum-seed=ARV</option
+></para>
+<para
+>MD4 kontrollsumma seemneks määratakse täisarv ARV. Neljabaidine kontrollsumma seeme lisatakse iga ploki ja faili MD4 kontrollsumma arvutamisel. Vaikimisi genereerib kontrollsumma seemne server ja vaikimisi on selleks kehtiv kellaaeg. Selle valikuga saab määrata konkreetse kontrollsumma seemne, mis võib olla kasulik rakenduste korral, mis soovivad korduvat ploki ja faili kontrollsummat, või juhul, kui kasutaja soovib märksa juhuslikumat kontrollsumma seemet. Pane tähele, et kui määrata ARVuks 0, kasutab rsync kontrollsumma seemneks vaikimisi valikut ehk kehtivat kellaaega.</para>
+<para
+>Vaikimisi: märkimata, ARV: 0 </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Failide vahelejätmine kontrollsumma põhjal</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Valik: <option
+>-c</option
+>/<option
+>--checksum</option
+></para>
+<para
+>See sunnib saatvat poolt lisama kontrollsummat kõigile tavalistele failidele ja kasutama selleks 128-bitist MD4 kontrollsummat. Seda tehakse algse failisüsteemi uurimise ajal, kui luuakse kõigi saadaolevate failide loend. Saaja kontrollib seejärel kõigi failide kontrollsummat (kui fail on olemas ja see on sama suurusega nagu saatja fail), et otsustada, millised failid vajavad uuendamist. Uuendatakse faile, milles on kas teine suurus või teine kontrollsumma. Et kõigi failide täielik kontrollsummaga varustamine ja selle kontrollimine ühenduse mõlemal poolel käib lisaks automaatsele failide ülekande ajal toimuvale kontrollsummade kontrollimisele, võib see valik kõike tunduvalt aeglustada.</para>
+<para
+>Vaikimisi: märkimata </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+</sect2>
+</sect1>
+
+
+<!-- Configuration: Laptop Support -->
+
+<sect1 id="configuration_laptop_support">
+<title
+>Sülearvuti toetus</title>
+
+<para
+>Selle kaardi seadistused mõjutavad seda, kuidas käitub &smb4k; siis, kui ta töötab sülearvutis. Eelkõige on need mõeldud selleks, et rakendus töötaks sujuvalt isegi pärast arvuti magamapanekut ning võrguühenduse katkemise ajal või selle taastumise järel. Samuti saab siin aga määrata sedagi, mida võetakse ette, kui sülearvuti lülitatakse välja, ilma et eelnevalt oleks välja logitud.</para>
+  
+<para
+>Palun arvesta, et &smb4k; suudab muutusi riistvara olekus tuvastada ainult riistvaral silma peal hoidva raamistiku <ulink url="http://solid.kde.org"
+>Solid</ulink
+> vahendusel. Seepärast võib näiteks olla vajalik lahutada kõik ressursid käsitsi, kui soovid arvuti magama panna. Samuti tasuks uurida valikuid, mida pakub <link linkend="configuration_shares_mounting"
+>ühendamise ja lahutamise</link
+> seadistuste all kaart <link linkend="configuration_shares"
+>Jagatud ressursid</link
+>.</para>
+
+<sect2 id="configuration_laptop_support_hardware">
+<title
+>Riistvara</title>
+<screenshot>
+<screeninfo
+>Sülearvuti toetuse seadistuste kaardi pilt</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="configuration_laptop_support.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Sülearvuti toetuse seadistuste kaart</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kõigi ressursside lahutamine unenupu vajutamisel</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kõik sulle kuuluvad jagatud ressursid lahutatakse, kui vajutad unenuppu ja sülearvutit ootab ees uneseisund. Pärast operatsioonisüsteemi taasäratamist ühendatakse ressursid uuesti.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kõigi ressursside lahutamine kaane sulgemisel</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kõik sulle kuuluvad jagatud ressursid lahutatakse, kui kaas suletakse ja sülearvutit ootab ees uneseisund. Pärast operatsioonisüsteemi taasäratamist ühendatakse ressursid uuesti.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kõigi ressursside lahutamine toitenupu vajutamisel</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kõik sulle kuuluvad jagatud ressursid lahutatakse, kui vajutad toitenuppu ja sülearvutit ootab ees väljalülitamine. Programmi järgmisel käivitamisel ühendatakse ressursid uuesti.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice>
+<guibutton
+>Kõigi ressursside lahutamine võrguühenduse kadumisel</guibutton>
+</menuchoice>
+</term>
+<listitem>
+<para
+>Kõik sulle kuuluvad jagatud ressursid lahutatakse, kui võrguühendus kaob. Pärast ühenduse taastamist ühendatakse ressursid uuesti.</para>
+<para
+>Vaikimisi: märgitud </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+</sect1>
+
+
+<!-- Configuration: Custom Options -->
+
+<sect1 id="configuration_custom_options">
+<title
+>Kohandatud valikud</title>
+<para
+>Siin on ära toodud kõik serverid ja ressursid, millele oled määranud kohandatud valikuid.</para>
+
+<screenshot>
+  <screeninfo
+>Kohandatud valikute seadistuste kaardi pilt</screeninfo>
+  <mediaobject>
+    <imageobject>
+      <imagedata fileref="configuration_custom_options.png" format="PNG"/>
+    </imageobject>
+    <textobject>
+      <phrase
+>Kohandatud valikute seadistuste kaart</phrase>
+    </textobject>
+  </mediaobject>
+</screenshot>
+
+<para
+>Võrguelemendile määratud valikuid saab muuta kas topeltklõpsuga nimekirjas olevale kirjele või valides <guimenuitem
+>Muuda</guimenuitem
+> kontekstimenüüst (paremklõpsuga valitud elemendile). Seejärel laaditakse kohandatud valikud ja neid saab muuta. Kirje eemaldamiseks tee sellel paremklõps ja vali kontekstimenüüst <guimenuitem
+>Eemalda</guimenuitem
+>. Kõiki võrguelemente saab korraga eemaldada, kui valida <guimenuitem
+>Puhasta nimekiri</guimenuitem
+>. Muudatusi saab tühistada, kui valida kontekstimenüüst <guimenuitem
+>Võta tagasi</guimenuitem
+>.</para>
+
+<para
+>Kohandatud valikud ise on näha paremal redaktorividinas. Sektsioonis <guilabel
+>Üldine</guilabel
+> näeb võrguelemendi UNC-aadressi ja selle muudetavat IP-aadressi. Samuti saab määrata, kas ressurssi taasühendada. Allpool on kohandatud valikud jaotatud kahele kaardile:</para>
+
+<sect2 id="configuration_custom_options_samba">
+  <title
+>Samba</title>
+  
+  <para
+>Siin saab muuta mitmesuguseid Samba seadistusi. Milliseid täpselt, sõltub sinu kasutatavast operatsioonisüsteemist. Täpsemat teavet leiab <link linkend="configuration_samba"
+>Samba</link
+> seadistuskaardi kirjeldusest.</para>
+</sect2>
+
+<sect2 id="configuration_custom_options_wol">
+  <title
+>Wake-On-LAN</title>
+  
+  <para
+>Siin saab muuta valikuid, mis on varem kindlaks määratud <link linkend="network_neighborhood_browser_custom"
+>kohandatud valikute</link
+> dialoogis.</para>
+</sect2>
+
+</sect1>
+</chapter>
+
+<!-- Command Reference -->
+
+<chapter id="commands">
+<title
+>Käskude seletused</title>
+
+<sect1 id="menu_items">
+<title
+>Menüükirjed</title>
+
+<sect2 id="file_menu">
+<title
+>Menüü Fail</title>
+<para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Fail</guimenu
+> <guimenuitem
+>Välju</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>&smb4k; töö lõpetamine. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2 id="network_menu">
+<title
+>Menüü Võrk</title>
+<para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycap
+>F5</keycap
+> </shortcut
+> <guimenu
+>Võrk</guimenu
+> <guimenuitem
+>Uuri võrku|töögruppi|arvutit</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+>Kogu võrgunaabruse, töögrupi või arvuti (taas)uurimine. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>A</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Võrk</guimenu
+> <guimenuitem
+>Katkesta</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Uute töögruppide/domeenide, serverite või ressursside otsimise katkestamine.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>O</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Võrk</guimenu
+> <guimenuitem
+>Ava ühendamisdialoog</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Dialoogi avamine võrguressursi "käsitsi" ühendamiseks.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>T</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Võrk</guimenu
+> <guimenuitem
+>Autentimine</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Autentimisdialoogi avamine, kuhu saab sisestada sisselogimiseks vajaliku teabe.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>C</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Võrk</guimenu
+> <guimenuitem
+>Kohandatud valikud</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Dialoogi avamine, kus saab määrata serveri või ressursi kohandatud valikud.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>V</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Võrk</guimenu
+> <guimenuitem
+>Eelvaatlus</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Eelvaatlusdialoogi avamine, kus näeb valitud ressursi sisu eelvaatlust.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>P</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Võrk</guimenu
+> <guimenuitem
+>Trüki fail</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Trükkimisdialoogi avamine.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>M</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Võrk</guimenu
+> <guimenuitem
+>Ühenda</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Valitud võrguressursi ühendamine.</action>
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2 id="search_menu">
+<title
+>Menüü Otsing</title>
+<para>
+  <variablelist>
+    <varlistentry>
+      <term>
+	<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>S</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Otsing</guimenu
+> <guimenuitem
+>Otsi</guimenuitem
+> </menuchoice>
+      </term>
+      <listitem>
+	<para>
+	  <action
+>Võrgus sisestatud otsingustringi otsimine.</action>
+	</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+	<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>A</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Otsing</guimenu
+> <guimenuitem
+>Katkesta</guimenuitem
+> </menuchoice>
+      </term>
+      <listitem>
+	<para>
+	  <action
+>Võrguotsingu katkestamine.</action>
+	</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+	<menuchoice
+><guimenu
+>Otsing</guimenu
+> <guimenuitem
+>Puhasta</guimenuitem
+> </menuchoice>
+      </term>
+      <listitem>
+	<para>
+	  <action
+>Võrguotsingu vidina, s.t. liitkasti, ajaloo ja loendivaate puhastamine.</action>
+	</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+	<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>D</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Otsing</guimenu
+> <guimenuitem
+>Ühenda</guimenuitem
+> </menuchoice>
+      </term>
+      <listitem>
+	<para>
+	  <action
+>Valitud ressursi ühendamine.</action>
+	</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</para>
+</sect2
+> 
+
+<sect2 id="shares_menu">
+<title
+>Menüü Jagatud ressursid</title>
+<para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>U</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Jagatud ressursid</guimenu
+> <guimenuitem
+>Lahuta</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Valitud ressursi lahutamine.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>N</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Jagatud ressursid</guimenu
+> <guimenuitem
+>Lahuta kõik</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Kõigi ühendatud ressursside lahutamine korrata. Vaikimisi seadistuse korral on see piiratud ainult kasutajale kuuluvate ressurssidega, kuid seda saab muuta <link linkend="configuration_shares_mounting"
+>seadistustedialoogis</link
+>. Täpsemalt kõneleb selles osa <link linkend="mainwindow_shares_unmounting"
+>Jagatud ressursside lahutamine</link
+>.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>Y</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Jagatud ressursid</guimenu
+> <guimenuitem
+>Sünkrooni</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Sünkroonimise käivitamine.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>L</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Jagatud ressursid</guimenu
+> <guimenuitem
+>Ava Konsoolis</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Valitud ressursi baaskataloogi avamine Konsoolis.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>I</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Jagatud ressursid</guimenu
+> <guimenuitem
+>Ava failihalduris</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Valitud ressursi sisu avamine vaikimisi failihalduris (nt. &dolphin;).</action>
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2 id="bookmarks_menu">
+<title
+>Menüü Järjehoidjad</title>
+<para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Järjehoidjad</guimenu
+> <guimenuitem
+>Muuda järjehoidjaid</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Järjehoidjate redaktori avamine.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>B</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Järjehoidjad</guimenu
+> <guimenuitem
+>Lisa järjehoidja</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Valitud ressursi lisamine järjehoidjatesse.</action>
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2 id="settings_menu">
+<title
+>Menüü Seadistused</title>
+<para>
+<variablelist>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Näidatavad tööriistaribad</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Selle alammenüü abil saab tööriistaribasid nähtavale tuua või peita.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Olekuriba näitamine</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Olekuriba näitamine või peitmine.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Vidinadokid</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Vidinadokkide näitamine või peitmine peaaknas.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>Ressursivaade</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Võimalus valida ressursside ikooni- ja loendivaate vahel.</action>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Seadistused</guimenu
+> <guimenuitem
+>&smb4k; seadistamine...</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para>
+<action
+>Seadistustedialoogi avamine.</action>
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</para>
+</sect2>
+
+<sect2 id="help-menu">
+<title
+>Menüü Abi</title>
+<para
+>&smb4k; kasutab tavapäraseid &kde; menüü <guimenu
+>Abi</guimenu
+> kirjeid, millest kõneleb lähemalt &kde; põhialuste käsiraamatu <ulink url="help:/fundamentals/ui.html#menus-help"
+>menüüd Abi</ulink
+> käsitlev osa.</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<!-- Reporting bugs -->
+
+<chapter id="reporting_bugs">
+<title
+>Vigadest teatamine</title>
+
+<para
+>Enne veast teatamist loe palun meie <ulink url="https://sourceforge.net/p/smb4k/wiki/Home/"
+>wikit</ulink
+>. Seal on juttu paljudest levinud probleemidest. Samuti tuleks proovida kasutada &smb4k; <ulink url="https://sourceforge.net/projects/smb4k/files/"
+>uusimat versiooni</ulink
+>. Pole sugugi välistatud, et kohatud probleem on uues versioonis juba lahenduse leidnud.</para>
+<para
+>Veast teatamisel järgi palun järgmisi juhiseid:</para>
+<itemizedlist>
+<listitem
+><para
+>Kirjelda <emphasis
+>üksikasjalikult</emphasis
+>, kuidas jõudsid olukorda, milles probleem ilmnes.</para
+></listitem>
+<listitem
+><para
+>Pane kirja &smb4k; ja &kde; versioon.</para
+></listitem>
+<listitem
+><para
+>Pane kirja oma operatsioonisüsteem (&Linux;, FreeBSD vms.) ja distributsioon, mis sinu arvutis töötab.</para
+></listitem>
+<listitem
+><para
+>Kui veaga kaasnes veadialoog, pane kirja täielik veateade.</para
+></listitem>
+<listitem
+><para
+>Lisa võimalusel täiendavaid andmeid, näiteks tagasijälitus, kui tegu oli krahhiga, või ekraanipilt, kui tegu on graafilist kasutajaliidest puudutava probleemiga jne.</para
+></listitem>
+</itemizedlist>
+<para
+>Soovitatav on veast teada anda meie <ulink url="https://sourceforge.net/p/smb4k/tickets/"
+>vigade käitlemise süsteemis</ulink
+> ja kasutada sealset vormi. Kuid samamoodi võib kasutada dialoogi, mis avaneb menüükäsuga <menuchoice
+><guimenu
+>Abi</guimenu
+><guimenuitem
+>Saada vearaport...</guimenuitem
+></menuchoice
+></para>
+</chapter>
+
+
+<!-- Credits and License -->
+
+<chapter id="credits">
+<title
+>Autorid ja litsents</title>
+
+<para
+>Autoriõigus &copy; 2003 - 2014: Alexander Reinholdt <email
+>alexander.reinholdt@kdemail.net</email
+></para>
+
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@smail.ee</email
+></para
+> 
+&underFDL; &underGPL; <simplesect>
+<title
+>Arendajad</title>
+<itemizedlist>
+<listitem
+><para
+>Alexander Reinholdt <email
+>alexander.reinholdt@kdemail.net</email
+></para
+></listitem>
+</itemizedlist>
+</simplesect>
+
+<simplesect>
+<title
+>Tõlked</title>
+<para
+>Tõlked on valmistanud &kde; tõlkijad.</para>
+</simplesect>
+
+<simplesect>
+<title
+>Erilist tänu väärivad</title>
+<para
+>&smb4k; meeskond soovib tänada kõiki, kes on meile paiku saatnud. Samuti väärib võimsat tänu RAshid N. Achilov <email
+>shelton@sentry.granch.ru</email
+>, kes veenis meid portima &smb4k; FreeBSD peale ja aitas meid selle juures väga oluliselt.</para>
+</simplesect>
+</chapter>
+
+
+<!-- Appendix -->
+
+<appendix id="appendix_installation">
+<title
+>Paigaldamine</title>
+
+<sect1 id="appendix_getting_smb4k">
+<title
+>&smb4k; hankimine</title>
+<para
+>Uusima stabiilse väljalaske leiab aadressilt <ulink url="http://sourceforge.net/projects/smb4k/files/"
+>http://sourceforge.net/projects/smb4k/files/</ulink
+>.</para>
+</sect1>
+
+<sect1 id="appendix_requirements">
+<title
+>Nõuded</title>
+
+<para
+>&smb4k; toetab ametlikult &Linux; (
+>= 2.2.x) ja FreeBSD-d (
+>= 4.10). Samuti võib see töötada teistes Unixi süsteemides.</para>
+<para
+>Kui soovid kompileerida &smb4k; lähtekoodist, peavad olema paigaldatud &kde; SC 4.4 või uuema moodulid kdelibs (kaasa arvatud päisefailid) ja kdebase-runtime. Samuti on nõutav &Qt; versioon 4.7 või uuem.</para>
+<para
+>&smb4k; edukaks kasutamiseks peavad olema paigaldatud Samba tarkvarakomplekt (3.x, soovitatavalt 3.4 või uuem), &GNU; grep, &GNU; awk või midagi sarnast, &GNU; sed ja &GNU; findutils. Kui sul on &Linux;, siis peab olema ka kernelisse kompileeritud <filename class="directory"
+>/proc</filename
+> failisüsteemi toetus.</para>
+<para
+>Täieliku funktsionaalsuse tagamiseks võiks olla paigaldatud ka rsync.</para>
+<para
+>&smb4k; kasutab töötamiseks umbes 20 MB mälu, kuid see võib erineda vastavalt platvormile ja seadistusele.</para>
+<para
+>Lingid kõigile nõutavatele teekidele ja programmidele, samuti &smb4k;-le endale, leiab <ulink url="http://smb4k.sourceforge.net"
+>&smb4k; koduleheküljelt</ulink
+>.</para>
+<para
+>Muudatuste loetelu leiab failist <filename
+>ChangeLog</filename
+>.</para>
+</sect1>
+
+<sect1 id="appendix_compilation">
+<title
+>Kompileerimine ja paigaldamine</title>
+<para
+>Siin on kirjeldatud &smb4k; konfigureerimist, kompileerimist ja paigaldamist.</para>
+<orderedlist>
+<listitem
+><para
+>Paki allalaaditud lähtekoodipakett lahti: <screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>tar</command
+> -xvfj smb4k-x.x.x.tar.bz2</userinput
+></screen
+> (Asenda x.x.x versiooninumbriga)</para
+></listitem>
+<listitem
+><para
+>Loo ehitamiskataloog: <screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>cd</command
+> smb4k-x.x.x</userinput>
+<prompt
+>$</prompt
+> <userinput
+><command
+>mkdir</command
+> build</userinput>
+</screen
+> (Ehituskataloogil võib olla mis tahes nimi)</para
+></listitem>
+<listitem
+><para
+>Liigu ehitamiskataloogi: <screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>cd</command
+> build</userinput
+></screen
+></para
+></listitem>
+<listitem
+><para
+>Konfigureeri lähtekood vähemalt järgmise käsuga: <screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>cmake</command
+> -DCMAKE_INSTALL_PREFIX=`<command
+>kde4-config</command
+> --prefix` -DCMAKE_BUILD_TYPE=Release ..</userinput
+></screen
+> Kui soovid paigaldada ka &smb4k; tuumikpäisefailid, lisa käsureale võti <option
+>-DINSTALL_HEADER_FILES=true</option
+>. Võtmeid on teisigi. Täpsemalt kõneleb neist <ulink url="http://www.cmake.org/HTML/Documentation.html"
+>cmake'i dokumentatsioon</ulink
+></para
+></listitem>
+<listitem
+><para
+>Kompileeri lähtekood: <screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>make</command
+></userinput
+></screen
+></para
+></listitem>
+<listitem
+><para
+>Paigalda rakendus. Anna käsk <screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>sudo</command
+> <command
+>make</command
+> install</userinput
+></screen
+> <filename class="directory"
+>ehitamis</filename
+>kataloogis. Kui soovid, et sul oleks võimalik hiljem eemaldada &smb4k; oma süsteemi takrvarahalduriga, paigalda pakett <application
+>checkinstall</application
+> ja anna hoopis käsk <screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>sudo</command
+> <command
+>checkinstall</command
+></userinput
+></screen
+></para
+></listitem>
+</orderedlist>
+</sect1>
+
+<sect1 id="appendix_debugging">
+<title
+>Lähtekoodi silumine</title>
+<para
+>Kui koged krahhe või muud sellist ja tahad ise lähtekoodi siluda, tuleb see kompileerida silumissümbolitega. See on sarnane osas <link linkend="appendix_compilation"
+>Kompileerimine ja paigaldamine</link
+> kirjeldatuga, ainult et cmake'i käsku tuleb pisut muuta:</para>
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>cmake</command
+> -DCMAKE_INSTALL_PREFIX=`<command
+>kde4-config</command
+> --prefix` -DCMAKE_BUILD_TYPE=Debug ..</userinput
+></screen>
+<para
+>Nüüd kompileeri ja paigalda programm, nagu <link linkend="appendix_compilation"
+>eespool kirjeldatud</link
+>. Kui sa ei soovi kompileeritud programmi paigaldada, vaid ainult siluda, võid ka käivitada &smb4k; otse lähtekoodikataloogist. Liigu alamkataloogi <filename role="directory"
+>smb4k</filename
+> ja anna käsk:</para>
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>./smb4k</command
+> --nofork</userinput
+></screen>
+<para
+>Kui leidsid vea põhjuse, anna sellest meilegi teada. Tagasijälitust või veel enam paika hindame me kõrgelt.</para>
+</sect1>
+</appendix>
+
+</book>

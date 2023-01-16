@@ -1,0 +1,3839 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Marek Laane <bald@smail.ee>, 2011, 2012, 2013, 2014, 2019, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-12-07 02:38+0000\n"
+"PO-Revision-Date: 2020-06-05 22:57+0300\n"
+"Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
+"Language-Team: Estonian <kde-et@lists.linux.ee>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 19.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Marek Laane"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "qiilaq69@gmail.com"
+
+#: helpers/smb4kmounthelper.cpp:163
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "Ühendamisprotsessi käivitamine nurjus."
+
+#: helpers/smb4kmounthelper.cpp:212
+#, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr "Ühenduspunkt %1 on vigane."
+
+#: helpers/smb4kmounthelper.cpp:281
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr "Lahutamisprotsessi käivitamine nurjus."
+
+#: smb4k/main.cpp:59 smb4k/smb4ksystemtray.cpp:77
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:60
+#, kde-format
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr ""
+"Täiustatud võrgunaabruse sirvija ja Samba jagatud ressursside ühendamise "
+"tööriist"
+
+#: smb4k/main.cpp:61
+#, fuzzy, kde-format
+#| msgid "© 2003-2019 Alexander Reinholdt"
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2019: Alexander Reinholdt"
+
+#: smb4k/main.cpp:69
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:69
+#, kde-format
+msgid "Developer"
+msgstr "Arendaja"
+
+#: smb4k/main.cpp:74
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr "Wolfgang Geisendörfer"
+
+#: smb4k/main.cpp:74
+#, kde-format
+msgid "Donator"
+msgstr "Annetaja"
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Fail"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Võrk"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "J&agatud ressursid"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "&Järjehoidjad"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "&Seadistused"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Peamine tööriistariba"
+
+#: smb4k/smb4kbookmarkmenu.cpp:48
+#, kde-format
+msgid "Bookmarks"
+msgstr "Järjehoidjad"
+
+#: smb4k/smb4kbookmarkmenu.cpp:135 smb4k/smb4kbookmarkmenu.cpp:158
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Muuda järjehoidjaid"
+
+#: smb4k/smb4kbookmarkmenu.cpp:144 smb4k/smb4kmainwindow.cpp:168
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173
+#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "&Lisa järjehoidja"
+
+#: smb4k/smb4kbookmarkmenu.cpp:187 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "Ühenda kõik järjehoidjad"
+
+#: smb4k/smb4kconfigdialog.cpp:143
+#, kde-format
+msgid "User Interface"
+msgstr "Kasutajaliides"
+
+#: smb4k/smb4kconfigdialog.cpp:144 smb4k/smb4knetworkbrowser.cpp:60
+#, kde-format
+msgid "Network"
+msgstr "Võrk"
+
+#: smb4k/smb4kconfigdialog.cpp:145 smb4k/smb4kconfigpagecustomoptions.cpp:576
+#, kde-format
+msgid "Mounting"
+msgstr "Ühendamine"
+
+#: smb4k/smb4kconfigdialog.cpp:146 smb4k/smb4kconfigpagecustomoptions.cpp:229
+#: smb4k/smb4kconfigpagenetwork.cpp:204
+#, kde-format
+msgid "Authentication"
+msgstr "Autentimine"
+
+#: smb4k/smb4kconfigdialog.cpp:147
+#, kde-format
+msgid "Synchronization"
+msgstr "Sünkroonimine"
+
+#: smb4k/smb4kconfigdialog.cpp:148
+#, kde-format
+msgid "Custom Options"
+msgstr "Kohandatud valikud"
+
+#: smb4k/smb4kconfigdialog.cpp:149 smb4k/smb4kconfigpageprofiles.cpp:61
+#: smb4k/smb4kprofilesmenu.cpp:40
+#, kde-format
+msgid "Profiles"
+msgstr "Profiilid"
+
+#: smb4k/smb4kconfigdialog.cpp:257 smb4k/smb4kconfigdialog.cpp:288
+#: smb4k/smb4kconfigdialog.cpp:300 smb4k/smb4kconfigdialog.cpp:337
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+"<qt>Leiti väär seadistus. Sind viiakse nüüd seadistuste vastavale "
+"leheküljele, kus saab seda parandada.</qt>"
+
+#: smb4k/smb4kconfigdialog.cpp:642
+#, kde-format
+msgid "Enter the default login information."
+msgstr "Sisesta vaikimisi sisselogimise teave."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:60
+#: smb4k/smb4kconfigpageprofiles.cpp:47
+#, kde-format
+msgid "Settings"
+msgstr "Seadistused"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:84
+#, kde-format
+msgid "Wallet Entries"
+msgstr "Turvalaeka kirjed"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#: smb4k/smb4kconfigpagecustomoptions.cpp:77
+#, kde-format
+msgid "Edit"
+msgstr "Muuda"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:113
+#: smb4k/smb4kconfigpagecustomoptions.cpp:81
+#, kde-format
+msgid "Remove"
+msgstr "Eemalda"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:120
+#: smb4k/smb4knetworksearchtoolbar.cpp:126
+#, kde-format
+msgid "Clear"
+msgstr "Puhasta"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:135
+#, kde-format
+msgid "Load"
+msgstr "Laadi"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:137
+#, kde-format
+msgid ""
+"The login information that was stored by Smb4K will be loaded from the "
+"wallet."
+msgstr "Smb4K salvestatud sisselogimisteave laaditakse turvalaekast."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:148
+#, kde-format
+msgid "Save"
+msgstr "Salvesta"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:150
+#, kde-format
+msgid "All modifications you applied are saved to the wallet."
+msgstr "Kõik rakendatud muudatused salvestatakse turvalaekasse."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:164
+#, kde-format
+msgid "Details"
+msgstr "Üksikasjad"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:237
+#: smb4k/smb4kconfigpageauthentication.cpp:362
+#: smb4k/smb4kconfigpageauthentication.cpp:470
+#: smb4k/smb4kconfigpageauthentication.cpp:497
+#: smb4k/smb4kconfigpageauthentication.cpp:613
+#, kde-format
+msgid "Default Login"
+msgstr "Vaikimisi sisselogimine"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:358
+#, kde-format
+msgid "Entry"
+msgstr "Kirje"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:330 smb4k/smb4ktooltip.cpp:305
+#, kde-format
+msgid "Workgroup"
+msgstr "Töögrupp"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:334
+#: smb4k/smb4kconfigpageauthentication.cpp:366
+#, kde-format
+msgid "Login"
+msgstr "Kasutajanimi"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:338
+#: smb4k/smb4kconfigpageauthentication.cpp:370
+#, kde-format
+msgid "Password"
+msgstr "Parool"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:85
+#, kde-format
+msgid "Clear List"
+msgstr "Puhasta nimekiri"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:117
+#, kde-format
+msgid "Identification"
+msgstr "Identifitseerimine"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:120 smb4k/smb4ktooltip.cpp:370
+#, kde-format
+msgid "Workgroup:"
+msgstr "Töögrupp:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:130 smb4k/smb4ktooltip.cpp:448
+#: smb4k/smb4ktooltip.cpp:534
+#, kde-format
+msgid "Location:"
+msgstr "Asukoht:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:140 smb4k/smb4ktooltip.cpp:358
+#: smb4k/smb4ktooltip.cpp:436
+#, kde-format
+msgid "IP Address:"
+msgstr "IP-aadress:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:152
+#, kde-format
+msgid "Network Item"
+msgstr "Võrguelement"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:168
+#: smb4k/smb4kconfigpagecustomoptions.cpp:321
+#: smb4k/smb4kconfigpagecustomoptions.cpp:506
+#: smb4k/smb4kconfigpagemounting.cpp:164 smb4k/smb4kconfigpagemounting.cpp:572
+#, kde-format
+msgid "Common Options"
+msgstr "Üldised valikud"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:241
+#: smb4k/smb4kconfigpagenetwork.cpp:57
+#, kde-format
+msgid "Browse Settings"
+msgstr "Sirvimisseadistused"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:253
+#, kde-format
+msgid "MAC Address"
+msgstr "MAC-aadress"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:257
+#, kde-format
+msgid "MAC Address:"
+msgstr "MAC-aadress:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:270
+#, kde-format
+msgid "Actions"
+msgstr "Toimingud"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:274
+#, kde-format
+msgid "Send magic package before scanning the network neighborhood"
+msgstr "Maagilise paketi saatmine enne võrgunaabruse uurimist"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:280
+#, kde-format
+msgid "Send magic package before mounting a share"
+msgstr "Maagilise paketi saatmine enne jagatud ressursi ühendamist"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:288
+#: smb4k/smb4kconfigpagenetwork.cpp:303
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN Settings"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:324
+#: smb4k/smb4kconfigpagecustomoptions.cpp:509
+#, kde-format
+msgid "Always remount this share"
+msgstr "See ressurss ühendatakse alati uuesti"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:364
+#: smb4k/smb4kconfigpagemounting.cpp:216
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr "CIFS-i Unixi laienduse toetus"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:367
+#, kde-format
+msgid "This server supports the CIFS Unix extensions"
+msgstr "See server toetab CIFS-i Unixi laiendusi"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:433
+#: smb4k/smb4kconfigpagemounting.cpp:326
+#, kde-format
+msgid "Common Mount Settings"
+msgstr "Ühendamise üldseadistused"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:444
+#: smb4k/smb4kconfigpagemounting.cpp:334
+#, kde-format
+msgid "Advanced Options"
+msgstr "Muud valikud"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:484
+#: smb4k/smb4kconfigpagemounting.cpp:463
+#, kde-format
+msgid "Advanced Mount Settings"
+msgstr "Ühendamise muud seadistused"
+
+#: smb4k/smb4kconfigpagemounting.cpp:83 smb4k/smb4kconfigpagemounting.cpp:495
+#, kde-format
+msgid "Directories"
+msgstr "Kataloogid"
+
+#: smb4k/smb4kconfigpagemounting.cpp:105 smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagenetwork.cpp:137
+#: smb4k/smb4kconfigpagesynchronization.cpp:68
+#, kde-format
+msgid "Behavior"
+msgstr "Käitumine"
+
+#: smb4k/smb4kconfigpagemounting.cpp:125 smb4k/smb4kconfigpagemounting.cpp:537
+#, kde-format
+msgid " min"
+msgstr " min"
+
+#: smb4k/smb4kconfigpagemounting.cpp:153 smb4k/smb4kconfigpagemounting.cpp:561
+#: smb4k/smb4kconfigpagenetwork.cpp:157
+#: smb4k/smb4kconfigpagesynchronization.cpp:116
+#, kde-format
+msgid "Basic Settings"
+msgstr "Põhiseadistused"
+
+#: smb4k/smb4kconfigpagemounting.cpp:242 smb4k/smb4kconfigpagemounting.cpp:592
+#, kde-format
+msgid "Choose a different user"
+msgstr "Teise kasutaja valimine"
+
+#: smb4k/smb4kconfigpagemounting.cpp:279 smb4k/smb4kconfigpagemounting.cpp:629
+#, kde-format
+msgid "Choose a different group"
+msgstr "Teise grupi valimine"
+
+#: smb4k/smb4kconfigpagemounting.cpp:450
+#, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "CIFS-i lisavalikute muutmine."
+
+#: smb4k/smb4kconfigpagemounting.cpp:676
+#, kde-format
+msgid "Character Sets"
+msgstr "Kooditabelid"
+
+#: smb4k/smb4kconfigpagemounting.cpp:726
+#, kde-format
+msgid "Mount Settings"
+msgstr "Ühendamise seadistused"
+
+#: smb4k/smb4kconfigpagemounting.cpp:845
+#, kde-format
+msgid "Additional CIFS Options"
+msgstr "CIFS-i lisavalikud"
+
+#: smb4k/smb4kconfigpagemounting.cpp:845
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr "<qt>Sisesta soovitud valikud komadega eraldatud loendina:</qt>"
+
+#: smb4k/smb4kconfigpagemounting.cpp:874
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+"<qt>Järgmine kirje eemaldatakse lisavalikute seast: %2. Loe üksikasju "
+"käsiraamatust.</qt>"
+msgstr[1] ""
+"<qt>Järgmised %1 kirjet eemaldatakse lisavalikute seast: %2. Loe üksikasju "
+"käsiraamatust.</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:168
+#, kde-format
+msgid "Common Settings"
+msgstr "Samba üldseadistused"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:223
+#, kde-format
+msgid "Security"
+msgstr "Turvalisus"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:248
+#, fuzzy, kde-format
+#| msgid "Basic Samba Settings"
+msgid "Samba Settings"
+msgstr "Samba põhiseadistused"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:259
+#, kde-format
+msgid "Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:271
+#, kde-format
+msgid " s"
+msgstr " s"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:286
+#, kde-format
+msgid ""
+"<qt>Define the hosts that should be woken up via the custom options dialog.</"
+"qt>"
+msgstr ""
+"<qt>Masinaid, mida tuleb äratada, saab määrata kohandatud valikute dialoogis."
+"</qt>"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:55
+#, kde-format
+msgid "Default Destination"
+msgstr "Vaikimisi sihtkoht"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:89
+#, kde-format
+msgid "Backup"
+msgstr "Varundamine"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:125
+#: smb4k/smb4kconfigpagesynchronization.cpp:348
+#, kde-format
+msgid "General"
+msgstr "Üldine"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:149
+#, kde-format
+msgid "Links"
+msgstr "Lingid"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:179
+#, kde-format
+msgid "Permissions, etc."
+msgstr "Õigused ja muu selline"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:207
+#, kde-format
+msgid "File Handling"
+msgstr "Failide käitlemine"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:216
+#, kde-format
+msgid "Compression"
+msgstr "Tihendamine"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:238
+#, kde-format
+msgid "Files"
+msgstr "Failid"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:245
+#: smb4k/smb4kconfigpagesynchronization.cpp:250
+#, kde-format
+msgid " KiB"
+msgstr " KiB"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#: smb4k/smb4kconfigpagesynchronization.cpp:440
+#: smb4k/smb4kconfigpagesynchronization.cpp:455
+#, kde-format
+msgid "Miscellaneous"
+msgstr "Muu"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:275
+#, kde-format
+msgid " KiB/s"
+msgstr " KiB/s"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:285
+#, kde-format
+msgid "File Transfer"
+msgstr "Failiedastus"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:294
+#, kde-format
+msgid "Files && Directories"
+msgstr "Failid ja kataloogid"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:324
+#, kde-format
+msgid "Restrictions"
+msgstr "Piirangud"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:339
+#, kde-format
+msgid "File Deletion"
+msgstr "Failide kustutamine"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:385
+#, kde-format
+msgid "Filter Rules"
+msgstr "Filtrireeglid"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:393
+#, kde-format
+msgid "Special filter rules:"
+msgstr "Erifiltrireeglid:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:409
+#, kde-format
+msgid "Filtering"
+msgstr "Filtreerimine"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:418
+#, kde-format
+msgid "Checksums"
+msgstr "Kontrollsummad"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:56
+#, kde-format
+msgid "Main Window"
+msgstr "Peaaken"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:86 smb4k/smb4kmainwindow.cpp:242
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Võrgunaabrus"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:119
+#, kde-format
+msgid "Shares View"
+msgstr "Ressursivaade"
+
+#: smb4k/smb4kmainwindow.cpp:158
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Vidinadokid"
+
+#: smb4k/smb4kmainwindow.cpp:265 smb4k/smb4ksharesmenu.cpp:56
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Ühendatud jagatud ressursid"
+
+#: smb4k/smb4kmainwindow.cpp:449
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Closing the main window will keep Smb4K running in the system tray. "
+#| "Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<qt>Peaakna sulgemine jätab Smb4K käima paneeli süsteemisalves. Rakenduse "
+"täielikuks sulgemiseks vali menüüst <i>Fail</i> käsk <i>Välju</i>.</qt>"
+
+#: smb4k/smb4kmainwindow.cpp:451
+#, kde-format
+msgid "Docking"
+msgstr "Dokkimine"
+
+#: smb4k/smb4kmainwindow.cpp:528
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr "Praegu ei ole ühendatud ühtegi ressurssi."
+
+#: smb4k/smb4kmainwindow.cpp:533
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "Praegu on ühendatud %1 ressurss."
+msgstr[1] "Praegu on ühendatud %1 ressurssi."
+
+#: smb4k/smb4kmainwindow.cpp:736
+#, kde-format
+msgid "The wallet is used."
+msgstr "Turvalaegas on kasutusel."
+
+#: smb4k/smb4kmainwindow.cpp:742
+#, kde-format
+msgid "The password dialog is used."
+msgstr "Paroolidialoog on kasutusel."
+
+#: smb4k/smb4kmainwindow.cpp:755
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Töögruppide ja domeenide otsimine..."
+
+#: smb4k/smb4kmainwindow.cpp:761
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Masinate otsimine domeenis %1..."
+
+#: smb4k/smb4kmainwindow.cpp:767
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "Masina %1 jagatavate ressursside otsimine..."
+
+#: smb4k/smb4kmainwindow.cpp:778 smb4k/smb4kmainwindow.cpp:789
+#, kde-format
+msgid "Looking for files and directories in %1..."
+msgstr "Failide ja kataloogide otsimine masinas %1 ..."
+
+#: smb4k/smb4kmainwindow.cpp:808
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr "Võrgumasinate äratamine..."
+
+#: smb4k/smb4kmainwindow.cpp:814
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Faili saatmine printerisse %1..."
+
+#: smb4k/smb4kmainwindow.cpp:819
+#, kde-format
+msgid "Searching..."
+msgstr "Otsimine ..."
+
+#: smb4k/smb4kmainwindow.cpp:841 smb4k/smb4kmainwindow.cpp:887
+#: smb4k/smb4kmainwindow.cpp:1039
+#, kde-format
+msgid "Done."
+msgstr "Tehtud."
+
+#: smb4k/smb4kmainwindow.cpp:854
+#, kde-format
+msgid "Mounting..."
+msgstr "Ühendamine ..."
+
+#: smb4k/smb4kmainwindow.cpp:859
+#, kde-format
+msgid "Unmounting..."
+msgstr "Lahutamine ..."
+
+#: smb4k/smb4kmainwindow.cpp:864
+#, kde-format
+msgid "Waking up host..."
+msgstr "Masina äratamine ..."
+
+#: smb4k/smb4kmainwindow.cpp:901
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "%1 on edukalt ühendatud."
+
+#: smb4k/smb4kmainwindow.cpp:947
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "%1 on edukalt lahutatud."
+
+#: smb4k/smb4kmainwindow.cpp:1024
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "%1 sünkroonimine"
+
+#: smb4k/smb4knetworkbrowser.cpp:61
+#, kde-format
+msgid "Type"
+msgstr "Tüüp"
+
+#: smb4k/smb4knetworkbrowser.cpp:62
+#, kde-format
+msgid "IP Address"
+msgstr "IP-aadress"
+
+#: smb4k/smb4knetworkbrowser.cpp:63
+#, kde-format
+msgid "Comment"
+msgstr "Kommentaar"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:141
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:534
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:548
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "Uu&ri võrku "
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:143
+#, kde-format
+msgid "&Abort"
+msgstr "K&atkesta"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:155
+#, kde-format
+msgid "&Search"
+msgstr "Ot&si"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:185 smb4k/smb4ksystemtray.cpp:93
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "&Ava ühendamisdialoog"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
+#, kde-format
+msgid "Au&thentication"
+msgstr "Au&tentimine"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:215
+#, kde-format
+msgid "&Custom Options"
+msgstr "&Kohandatud valikud"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#, kde-format
+msgid "Pre&view"
+msgstr "&Eelvaatlus"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:237
+#, kde-format
+msgid "&Print File"
+msgstr "&Trüki fail"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:249
+#, kde-format
+msgid "&Mount"
+msgstr "Ühe&nda"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:250
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#, kde-format
+msgid "&Unmount"
+msgstr "Lah&uta"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:441
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Uuri ar&vutit"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:493
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Uuri töö&gruppi"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:59
+#, kde-format
+msgid "Close"
+msgstr "Sulge"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:70
+#, kde-format
+msgid "Search string"
+msgstr "Otsi stringi"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:85
+#, kde-format
+msgid "Search"
+msgstr "Otsi"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:87
+#, kde-format
+msgid "Stop"
+msgstr "Peata"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:100
+#, kde-format
+msgid "Item Down"
+msgstr "Kirje alla"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:113
+#, kde-format
+msgid "Item Up"
+msgstr "Kirje üles"
+
+#: smb4k/smb4ksharesmenu.cpp:124 smb4k/smb4ksharesviewdockwidget.cpp:231
+#, kde-format
+msgid "U&nmount All"
+msgstr "La&huta kõik"
+
+#: smb4k/smb4ksharesmenu.cpp:161
+#, kde-format
+msgid "Unmount"
+msgstr "Lahuta"
+
+#: smb4k/smb4ksharesmenu.cpp:176
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Lisa järjehoidja"
+
+#: smb4k/smb4ksharesmenu.cpp:187
+#, kde-format
+msgid "Synchronize"
+msgstr "Sünkrooni"
+
+#: smb4k/smb4ksharesmenu.cpp:202
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Ava Konsoolis"
+
+#: smb4k/smb4ksharesmenu.cpp:214
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Ava failihalduris"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#, kde-format
+msgid "View Modes"
+msgstr "Vaaterežiimid"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:192
+#, kde-format
+msgid "Icon View"
+msgstr "Ikoonivaade"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#, kde-format
+msgid "List View"
+msgstr "Loendivaade"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:243
+#, kde-format
+msgid "S&ynchronize"
+msgstr "Sünkroon&i"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Ava Konsoo&lis"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Ava &failihalduris"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:431
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+"<qt>Pole ühtegi aktiivset ühendust jagatud ressursiga <b>%1</b>! Siia ei saa "
+"faile lohistada.</qt>"
+
+#: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
+#, kde-format
+msgid "yes"
+msgstr "jah"
+
+#: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
+#, kde-format
+msgid "no"
+msgstr "ei"
+
+#: smb4k/smb4ktooltip.cpp:288
+#, kde-format
+msgid "Type:"
+msgstr "Tüüp:"
+
+#: smb4k/smb4ktooltip.cpp:308
+#, kde-format
+msgid "Master Browser:"
+msgstr "Nimekirjahoidja:"
+
+#: smb4k/smb4ktooltip.cpp:343
+#, kde-format
+msgid "Host"
+msgstr "Masin"
+
+#: smb4k/smb4ktooltip.cpp:346 smb4k/smb4ktooltip.cpp:391
+#, kde-format
+msgid "Comment:"
+msgstr "Kommentaar:"
+
+#: smb4k/smb4ktooltip.cpp:388
+#, kde-format
+msgid "Share (%1)"
+msgstr "Jagatud ressurss (%1)"
+
+#: smb4k/smb4ktooltip.cpp:403
+#, kde-format
+msgid "Mounted:"
+msgstr "Ühendatud:"
+
+#: smb4k/smb4ktooltip.cpp:425
+#, kde-format
+msgid "Host:"
+msgstr "Masin:"
+
+#: smb4k/smb4ktooltip.cpp:486 smb4k/smb4ktooltip.cpp:496
+#: smb4k/smb4ktooltip.cpp:561 smb4k/smb4ktooltip.cpp:573
+#: smb4k/smb4ktooltip.cpp:574 smb4k/smb4ktooltip.cpp:606
+#, kde-format
+msgid "unknown"
+msgstr "tundmatu"
+
+#: smb4k/smb4ktooltip.cpp:492 smb4k/smb4ktooltip.cpp:602
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 vaba, kokku %2 (kasutusel %3)"
+
+#: smb4k/smb4ktooltip.cpp:545
+#, kde-format
+msgid "Mountpoint:"
+msgstr "Ühenduspunkt:"
+
+#: smb4k/smb4ktooltip.cpp:556
+#, kde-format
+msgid "Login:"
+msgstr "Kasutajanimi:"
+
+#: smb4k/smb4ktooltip.cpp:568
+#, kde-format
+msgid "Owner:"
+msgstr "Omanik:"
+
+#: smb4k/smb4ktooltip.cpp:582
+#, kde-format
+msgid "File system:"
+msgstr "Failisüsteem:"
+
+#: smb4k/smb4ktooltip.cpp:593
+#, kde-format
+msgid "Size:"
+msgstr "Suurus:"
+
+#~ msgid "The mount process crashed."
+#~ msgstr "Ühendamisprotsessi tabas krahh."
+
+#~ msgid "The unmount process crashed."
+#~ msgstr "Lahutamisprotsessi tabas krahh."
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 vaba, kokku %2 (kasutusel %3)"
+
+#~ msgid "Master browser"
+#~ msgstr "Nimekirjahoidja"
+
+#~ msgid "Mounted"
+#~ msgstr "Ühendatud"
+
+#~ msgid "Location"
+#~ msgstr "Asukoht"
+
+#~ msgid "Mountpoint"
+#~ msgstr "Ühenduspunkt"
+
+#~ msgid "Owner"
+#~ msgstr "Omanik"
+
+#~ msgid "File system"
+#~ msgstr "Failisüsteem"
+
+#~ msgid "Size"
+#~ msgstr "Suurus"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Muud seadistused"
+
+#~ msgid "Protocols"
+#~ msgstr "Protokollid"
+
+#, fuzzy
+#~| msgid "Save the entries to the wallet."
+#~ msgid "The selected entry is removed from the wallet."
+#~ msgstr "Kirjete salvestamine turvalaekasse."
+
+#, fuzzy
+#~| msgid "Load the entries stored in the wallet."
+#~ msgid "All entries are removed from the wallet."
+#~ msgstr "Turvalaekasse salvestatud kirjete laadimine."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Kasti märkimisel näidatakse allpool valitud sisselogimisteabe üksikasju."
+
+#~ msgid "Password Storage"
+#~ msgstr "Paroolide salvestamine"
+
+#~ msgid "General Settings"
+#~ msgstr "Üldised seadistused"
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Valitud kirje üksikasjade näitamine."
+
+#~ msgid "Undo"
+#~ msgstr "Võta tagasi"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Remounting"
+#~ msgstr "Ühendamine"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
+
+#~ msgid "Columns"
+#~ msgstr "Veerud"
+
+#~ msgid "Tooltips"
+#~ msgstr "Kohtspikrid"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Vaade"
+
+#, fuzzy
+#~| msgid "General Settings"
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Üldised seadistused"
+
+#~ msgid "Shares"
+#~ msgstr "Jagatud ressursid"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Võrguriba"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Otsinguriba"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Ressursiriba"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Alternatiivne peamine tööriistariba"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Tööriistaprogrammid"
+
+#~ msgid "Network Search"
+#~ msgstr "Võrguotsing"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Kirjuta siia otsingusõna."
+
+#~ msgid "Abort"
+#~ msgstr "Katkesta"
+
+#~ msgid "&Clear"
+#~ msgstr "&Puhasta"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Otsing ei andnud tulemusi."
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " baiti"
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Eelvaatluse hankimine ressursist %1..."
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Perioodiline uurimine"
+
+#~ msgid "Browse List"
+#~ msgstr "Sirvimisnimekiri"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-aadress:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Failisüsteemi port:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Kirjutamisõigus:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Turberežiim:"
+
+#~ msgid "User ID:"
+#~ msgstr "Kasutaja ID:"
+
+#~ msgid "Group ID:"
+#~ msgstr "Grupi ID:"
+
+#~ msgid "MAC address:"
+#~ msgstr "MAC-aadress:"
+
+#~ msgid "General Options"
+#~ msgstr "Üldised valikud"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Järjehoidjate muutmine"
+
+#~ msgid "Add Group"
+#~ msgstr "Lisa grupp"
+
+#~ msgid "Label:"
+#~ msgstr "Nimi:"
+
+#~ msgid "Group:"
+#~ msgstr "Grupp:"
+
+#~ msgid "Group name:"
+#~ msgstr "Grupi nimi:"
+
+#~ msgid "Copying"
+#~ msgstr "Kopeerimine"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Failide kustutamine ja edastamine"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "Võrgusirvija loomine nurjus."
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Otsingudialoogi loomine nurjus."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "Ressursivaate loomine nurjus."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#, fuzzy
+#~| msgid "The network browser KPart of Smb4K"
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "Smb4K võrgusirvija KPart"
+
+#, fuzzy
+#~| msgid "\\u00A9 2007-2014, Alexander Reinholdt"
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2014: Alexander Reinholdt"
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Võrguserverite äratamine..."
+
+#~ msgid "Search item:"
+#~ msgstr "Otsitav element:"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "Smb4K võrguotsingu KPart"
+
+#~ msgid "Open With"
+#~ msgstr "Ava rakendusega"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "Smb4K jagatud ressursside vaate KPart"
+
+#~ msgid "&Shares"
+#~ msgstr "Ja&gatud ressursid"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Täiustatud võrgunaabruse sirvija"
+
+#~ msgid "Checks"
+#~ msgstr "Kontrollid"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Täpsema teabe hankimine masina %1 kohta..."
+
+#, fuzzy
+#~| msgid "Mounting share %1..."
+#~ msgid "Mounting share..."
+#~ msgstr "Jagatud ressursi %1 ühendamine..."
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Operating system"
+#~ msgstr "Operatsioonisüsteem"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "Turvalaegas pole kasutusel."
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "%1 ühendamine nurjus."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "%1 lahutamine nurjus."
+
+#~ msgid "Settings for the list view:"
+#~ msgstr "Loendivaate seadistused:"
+
+#~ msgid "File System"
+#~ msgstr "Failisüsteem"
+
+#~ msgid "Free"
+#~ msgstr "Vaba"
+
+#~ msgid "Used"
+#~ msgstr "Kasutusel"
+
+#~ msgid "Total"
+#~ msgstr "Kokku"
+
+#~ msgid "Usage"
+#~ msgstr "Kasutus"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Võrgupordid"
+
+#~ msgid "Laptop Support"
+#~ msgstr "Sülearvuti toetus"
+
+#~ msgid "Hardware"
+#~ msgstr "Riistvara"
+
+#~ msgid ""
+#~ "<qt>Smb4K only detects changes in state of your hardware. If you are "
+#~ "performing a software suspend or the like, you should unmount the shares "
+#~ "manually.</qt>"
+#~ msgstr ""
+#~ "<qt>Smb4K tuvastab ainult sinu riistvara oleku muutusi. Kui võtad ette "
+#~ "masina tarkvaralise magamapaneku või midagi muud sarnast, tuleks jagatud "
+#~ "ressursid käsitsi lahutada.</qt>"
+
+#~ msgid ""
+#~ "The custom master browser that is to be queried has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Kohandatud nimekirjahoidja, millele päringuid esitatakse, on veel "
+#~ "määramata.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The broadcast areas that are to be scanned have not been filled in.\n"
+#~ "Please enter them now."
+#~ msgstr ""
+#~ "Uuritavad levialad pole veel määratud.\n"
+#~ "Palun pane need nüüd kirja."
+
+#~ msgid ""
+#~ "The mount prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Ühendamise prefiks pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The file mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Failimask pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The directory mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Kataloogimask pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The synchronization prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Sünkroonimise prefiks pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Kataloogi, kuhu salvestatakse osaliselt edastatud failid,\n"
+#~ "pole veel määratud.`\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The exclude pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Sünkroonimise välistamismustrit pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The file from which the exclude pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Faili, millest lugeda sünkroonimise välistamismuster,\n"
+#~ "pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The include pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Sünkroonimise kaasamismustrit pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The file from which the include pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Faili, millest lugeda sünkroonimise kaasamismuster,\n"
+#~ "pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The backup suffix for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Sünkroonimise varukoopia sufiks pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "The backup directory for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Sünkroonimise varukoopiate kataloog pole veel määratud.\n"
+#~ "Palun pane see nüüd kirja."
+
+#~ msgid ""
+#~ "<qt>Due to security concerns, the cruid option cannot be defined here and "
+#~ "will now be removed.</qt>"
+#~ msgstr ""
+#~ "<qt>Turbekaalutlustel ei saa siin määrata valikut cruid ja see "
+#~ "eemaldatakse nüüd.</qt>"
+
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Ühendamine ja lahutamine"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Võrguressursid"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Eelvaatluse dialoog"
+
+#~ msgid "The password dialog mode is used and logins are not remembered."
+#~ msgstr "Paroolidialoog on kasutusel ja sisselogimisteavet ei jäeta meelde."
+
+#~ msgid "Show custom bookmark label if available"
+#~ msgstr "Võimaluse korral kohandatud järjehoidjanime näitamine"
+
+#~ msgid ""
+#~ "Do not show the name of the share that is represented by the bookmark but "
+#~ "the custom label that was defined in the bookmark editor."
+#~ msgstr ""
+#~ "Järjehoidjate redaktoris määratud kohandatud nime näitamine järjehoidjaga "
+#~ "tähistatud jagatud ressursi nime asemel."
+
+#~ msgid "Start docked"
+#~ msgstr "Käivitamine dokituna"
+
+#~ msgid ""
+#~ "Start the application docked to the system tray, i.e. only the system "
+#~ "tray widget is shown and the main window is hidden. You can bring the "
+#~ "main window up by clicking on the system tray widget or by choosing "
+#~ "\"Restore\" from its popup menu."
+#~ msgstr ""
+#~ "Rakenduse käivitamine dokituna süsteemisalve; s.t. näidatakse ainult "
+#~ "süsteemisalve vidinat, peaaken on peidetud. Peaakna saab nähtavale tuua "
+#~ "süsteemisalve vidinal klõpsates või selle kontekstimenüüst \"Taasta\" "
+#~ "valides."
+
+#~ msgid "Show notifications"
+#~ msgstr "Märguannete näitamine"
+
+#~ msgid ""
+#~ "Notify the user about actions that were performed, e.g. the mounting or "
+#~ "unmounting of a share. If you do not want to be disturbed too often, you "
+#~ "might want to switch this option off. Warnings and error messages are not "
+#~ "affected by this option."
+#~ msgstr ""
+#~ "Kasutaja teavitamine sooritatavatest toimingutest, nt. jagatud ressursi "
+#~ "ühendamisest või lahutamisest. Kui sa ei soovi, et sind liiga sageli "
+#~ "segataks, võib selle valiku välja lülitada. Hoiatusi ja veateateid see "
+#~ "valik ei mõjuta."
+
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Ühendatud jagatud ressursside näitamine ikoonivaatena"
+
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr "Ühendatud jagatud ressursse näidatakse ikoonivaatena."
+
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Ühendatud jagatud ressursside näitamine loendivaatena"
+
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "Ühendatud jagatud ressursse näidatakse loendivaatena."
+
+#~ msgid "Show printer shares"
+#~ msgstr "Jagatud printerite näitamine"
+
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "Võrgusirvijas näidatakse jagatud printereid."
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Peidetud ressursside näitamine"
+
+#~ msgid ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgstr ""
+#~ "Võrgusirvijas näidatakse peidetud ressursse. Peidetud ressurside lõpus "
+#~ "seisab dollarimärk, nt. Muusika$ või IPC$."
+
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Peidetud IPC$ ressursside näitamine"
+
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr "Võrgusirvijas näidatakse peidetud IPC$ ressursse."
+
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Peidetud ADMIN$ ressursside näitamine"
+
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr "Võrgusirvijas näidatakse peidetud ADMIN$ ressursse."
+
+#~ msgid "Show the type of the share"
+#~ msgstr "Jagatud ressursi tüübi näitamine"
+
+#~ msgid ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+#~ msgstr ""
+#~ "Võrgusirvijas näidatakse eraldi veerus jagatud ressursi tüüpi. See võib "
+#~ "olla ketas, printer või IPC."
+
+#~ msgid "Show the IP address of the server"
+#~ msgstr "Serveri IP-aadressi näitamine"
+
+#~ msgid ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+#~ msgstr "Võrgusirvijas näidatakse eraldi veerus serveri IP-aadressi."
+
+#~ msgid "Show the comment"
+#~ msgstr "Kommentaari näitamine"
+
+#~ msgid ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+#~ msgstr ""
+#~ "Võrgusirvijas näidatakse eraldi veerus serverit või jagatud ressurssi "
+#~ "kirjeldavat kommentaari."
+
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "Võrguelemendi kohta teavet sisaldava kohtspikri näitamine"
+
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr "Kohtspikker näitab mitmesugust teavet aktiivse võrguelemendi kohta."
+
+#~ msgid "Automatically expand domains and hosts"
+#~ msgstr "Domeenide ja masinate automaatne avamine"
+
+#~ msgid ""
+#~ "Automatically expand domain and host items when a list of associated "
+#~ "network items (domain members or shares) is added or updated. Please note "
+#~ "that a domain or host item will always be expanded when you execute it."
+#~ msgstr ""
+#~ "Domeenide ja masinate automaatne avamine, kui nendega seotud "
+#~ "võrguelementide (domeeni liikmete või jagatud ressursside) nimekiri "
+#~ "lisatakse või seda uuendatakse. Pane tähele, et domeeni- või "
+#~ "masinaelement avatakse alati, kui sa teed seda ise."
+
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Ühenduspunkti näitamine ressursi nime asemel"
+
+#~ msgid ""
+#~ "A share is normally displayed with its name in the shares view. Choosing "
+#~ "this feature will cause the exchange of the share name by the mount point."
+#~ msgstr ""
+#~ "Tavaliselt näidatakse jagatud ressurssi ressursivaates oma nime all. "
+#~ "Selle valimisel asendatakse nimi ühenduspunktiga."
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "Kõigi süsteemis ühendatud jagatud ressursside näitamine"
+
+#~ msgid ""
+#~ "You will not only see the shares that were mounted and are owned by you, "
+#~ "but also all other mounts using the SMBFS and CIFS file system that are "
+#~ "present on the system."
+#~ msgstr ""
+#~ "Mitte ainult sinu enda ühendatud ja sinu omanduses olevate ressursside, "
+#~ "vaid ka kõigi teiste ühendatud ressursside nägemine süsteemis leiduva "
+#~ "SMBFS ja CIFS failisüsteemi abil."
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Jagatud ressursi kohta teavet sisaldava kohtspikri näitamine"
+
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr ""
+#~ "Kohtspikker näitab mitmesugust teavet aktiivse jagatud ressursi kohta."
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Omaniku ja grupi näitamine"
+
+#~ msgid "Show the UID and GID that own all files on the mounted file system."
+#~ msgstr ""
+#~ "UID ja GID näitamine, kellele kuuluvad kõik ühendatud failisüsteemi "
+#~ "failid."
+
+#~ msgid "Show the login name"
+#~ msgstr "Kasutajanime näitamine"
+
+#~ msgid ""
+#~ "Show the login name that was used to authenticate to the server. The "
+#~ "column will only contain an entry if the share was mounted with the CIFS "
+#~ "file system."
+#~ msgstr ""
+#~ "Serveris autentimisel tarvitatud kasutajanime näitamine. Veerg sisaldab "
+#~ "midagi ainult siis, kui ressurss ühendati CIFS failisüsteemi abil."
+
+#~ msgid "Show the file system"
+#~ msgstr "Failisüsteemi näitamine"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr "Jagatud ressursi ühendamiseks kasutatud failisüsteemi näitamine."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Vaba kettaruumi näitamine"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "Jagatud ressursile jäänud vaba kettaruumi näitamine."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Kasutatud kettaruumi näitamine"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "Jagatud ressursil juba kasutusel kettaruumi näitamine."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Kogukettaruumi näitamine"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "Jagatud ressursi kettaruumi kogumahu näitamine."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Kettakasutuse näitamine"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr "Jagatud ressursil kasutatud ruumi näitamine (protsendina)."
+
+#~ msgid "Preview hidden files and directories"
+#~ msgstr "Peidetud failide ja kataloogide eelvaatlus"
+
+#~ msgid ""
+#~ "Display hidden files and directories in the preview dialog. The hidden "
+#~ "files and directories are those whose names begin with a period.  They "
+#~ "are usually needed for very specific purposes (storing the configuration "
+#~ "information for an application, etc.). Since they are not of any "
+#~ "importance for your regular work, you normally do not need to enable this "
+#~ "feature."
+#~ msgstr ""
+#~ "Peidetud failide ja kataloogide näitamine eelvaatluse dialoogis. Peidetud "
+#~ "failid ja kataloogid on sellised, mille nime alguses seisab punkt. "
+#~ "Tavaliselt on neid vaja väga konkreetseteks ülesanneteks (nt. rakenduse "
+#~ "seadistusteabe salvestamiseks vms.). Et need ei ole normaalse töö korral "
+#~ "vajalikud, siis ei ole seda valikut enamasti mõtet sisse lülitada."
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Võrgunaabruses saadaolevate töögruppide ja domeenide otsimine"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "See on esialgse sirvimisloendi hankimise vaikemeetod. Sellega leitakse "
+#~ "kõik töögrupid ja domeenid, uurides kõiki võrgunaabruses teadaolevaid "
+#~ "nimekirjahoidjaid."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Päring aktiivse töögrupi nimekirjahoidjas"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "See meetod esitab algse sirvimisloendi hankimiseks päringu sinu töögrupi "
+#~ "või domeeni aktiivsele nimekirjahoidjale."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Päring kohandatud nimekirjahoidjas:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "See meetod esitab algse sirvimisloendi hankimiseks päringu kohandatud "
+#~ "nimekirjahoidjale."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "Kohandatud nimekirjahoidja, millele päring esitatakse"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Kirjuta siia nimekirjahoidja nimi või IP-aadress, millele esitatakse "
+#~ "päring algse sirvimisloendi hankimiseks."
+
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Järgmiste levialade uurimine:"
+
+#~ msgid ""
+#~ "This method will scan the given broadcast areas and look for all "
+#~ "registered hosts."
+#~ msgstr ""
+#~ "See meetod uurib määratud levialasid ja otsib neis kõiki registreeritud "
+#~ "masinaid."
+
+#~ msgid "A custom list of broadcast addresses"
+#~ msgstr "Kohandatud levialade aadresside loend"
+
+#~ msgid ""
+#~ "Enter a comma-separated list of broadcast addresses here (e.g. "
+#~ "192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in "
+#~ "the respective broadcast areas."
+#~ msgstr ""
+#~ "Kirjuta siia komadega eraldatult levialade aadressid (nt. 192.168.0.255, "
+#~ "192.168.1.255). Neid kasutatakse kõigi tuntud masinate otsimiseks "
+#~ "määratud levialades."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr "Nimekirjahoidjad nõuavad sirvimisloendi teatamiseks autentimist"
+
+#~ msgid ""
+#~ "The master browsers in your network neighborhood require a login to "
+#~ "return the browse list. This setting is rarely needed and might even "
+#~ "cause a master browser to return an empty browse list. It will not have "
+#~ "any effect when you let Smb4K scan broadcast areas."
+#~ msgstr ""
+#~ "Sinu võrgunaabruse nimekirjahoidjad nõuavad sirvimisloendi tagastamiseks "
+#~ "sisselogimist. Seda läheb harva vaja ja see võib isegi sundida "
+#~ "nimekirjahoidjat tagastama tühja sirvimisloendi. Kui lased Smb4K-l "
+#~ "levialasid uurida, ei avalda see üldse mingit mõju."
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Võrgunaabruse perioodiline uurimine"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Võrgunaabruse perioodiline uurimine kõigi saadaolevate töögruppide, "
+#~ "masinate ja ressurssude leidmiseks."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Uurimise intervall:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Aeg minutites, enne kui Smb4K uurib uuesti läbi võrgunaabruse, et leida "
+#~ "uusi töögruppe, masinaid ja jagatud ressursse."
+
+#~ msgid "Mount prefix:"
+#~ msgstr "Ühendamise prefiks:"
+
+#~ msgid ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+#~ msgstr "Prefiks, kuhu Smb4K loob ühenduspunktid ja ühendab võrguressursid."
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "Genereeritud alamkataloogid väiketähelistena"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "Kõigi alamkataloogide nimed, mida Smb4K loob ühendamise prefiksi alla, "
+#~ "muudetakse väiketäheliseks."
+
+#~ msgid "Unmount all personal shares on exit"
+#~ msgstr "Kõige isiklike ressursside lahutamine väljumisel"
+
+#~ msgid ""
+#~ "Unmount all shares that belong to you when the program exits. Shares that "
+#~ "are owned by other users are ignored."
+#~ msgstr ""
+#~ "Kõik sulle kuuluvad jagatud ressursid lahutatakse rakendusest väljumisel. "
+#~ "See ei puuduta teistele kasutajatele kuuluvaid ressursse."
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr ""
+#~ "Viimati kasutatud jagatud ressursside taasühendamine rakenduse "
+#~ "käivitamisel"
+
+#~ msgid ""
+#~ "Remount all your shares that were mounted when you exited the program. If "
+#~ "a remount fails, Smb4K will retry the next time it is started. Shares "
+#~ "that were mounted by other users are ignored."
+#~ msgstr ""
+#~ "Kõigi enda jagatud ressursside taasühendamine, mis olid ühendatud "
+#~ "rakendusest väljumisel. Kui taasühendamine nurjub, proovib Smb4K uuesti "
+#~ "järgmisel rakenduse käivitamisel. Teiste kasutajate ühendatud ressursse "
+#~ "see ei puuduta."
+
+#~ msgid "Number of remount attempts:"
+#~ msgstr "Taasühendamiskatsete arv:"
+
+#~ msgid ""
+#~ "Set the number of attempts that are made to remount shares before Smb4K "
+#~ "gives up."
+#~ msgstr ""
+#~ "Katsete arvu määramine, kui palju püütakse jagatud ressursse "
+#~ "taasühendada, enne kui Smb4K sellest loobub."
+
+#~ msgid "Interval between remount attempts:"
+#~ msgstr "Taasühendamiskatsete intervall:"
+
+#~ msgid "Set the time that elapses between attempts to remount shares."
+#~ msgstr ""
+#~ "Aja määramine, mis jääb jagatud ressursside taasühendamiskatsete vahele."
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr ""
+#~ "Teistele kasutajatele kuuluvate jagatud ressursside lahutamise lubamine"
+
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "Nende jagatud ressursside lahutamise lubamine, mille on ühendanud teised "
+#~ "kasutajad. Palun mõtle hoolikalt, enne kui selle valiku sisse lülitad."
+
+#~ msgid "Force the unmounting of inaccessible shares"
+#~ msgstr "Kättesaamatute jagatud ressursside lahutamine jõuga"
+
+#~ msgid ""
+#~ "Force the unmounting of inaccessible shares (Linux only). In case a share "
+#~ "is inaccessible, a lazy unmount is performed. Before the actual unmount "
+#~ "is performed, a warning dialog is shown asking to approve the unmount."
+#~ msgstr ""
+#~ "Kättesaamatute jagatud ressursside lahutamine jõuga (ainult Linuxis). Kui "
+#~ "jagatud ressurss pole kättesaadav, sooritatakse laisk lahutamine. Enne "
+#~ "tegelikku lahutamist näidatakse hoiatusdialoogi, millega palutakse "
+#~ "lahutamine heaks kiita."
+
+#~ msgid "Interval between checks:"
+#~ msgstr "Kontrollide intervall:"
+
+#~ msgid ""
+#~ "This is the time in milliseconds that elapses until Smb4K checks again "
+#~ "for new mounts and unmounts. The lower limit is 500 ms, the upper one "
+#~ "300000 ms. Please note that the smaller the interval gets the higher is "
+#~ "your system load."
+#~ msgstr ""
+#~ "Aeg millisekundites kahe Smb4K uute ühendamiste ja lahutamiste "
+#~ "kontrollimise vahel. Alumine piir on 500 ms, ülemine 300000 ms. Palun "
+#~ "arvesta, et väiksem intervall suurendab süsteemi koormust."
+
+#~ msgid "Save logins in a wallet"
+#~ msgstr "Sisselogimisteabe salvestamine turvalaekasse"
+
+#~ msgid ""
+#~ "Use a wallet to store the login. The username and password are stored "
+#~ "encrypted on your hard drive. If this setting is disabled, the login is "
+#~ "not stored permanently but only temporarily."
+#~ msgstr ""
+#~ "Sisselogimisteave salvestatakse turvalaekasse. Sel juhul salvestatakse "
+#~ "kasutajanimi ja parool krüptitult kõvakettale. Märkimata jätmise korral "
+#~ "salvestatakse sisselogimisteave ainult ajutiselt, mitte püsivalt."
+
+#~ msgid "Remember logins during program run"
+#~ msgstr "Sisselogimisteabe meeldejätmine rakenduse töö ajaks"
+
+#~ msgid ""
+#~ "If you decide to store your logins temporarily, Smb4K will remember them "
+#~ "only until the program exits. If you disable this setting, you will have "
+#~ "to provide the login every time it is needed."
+#~ msgstr ""
+#~ "Kui otsustad salvestada sisselogimisteabe ajutiselt, jätab Smb4K selle "
+#~ "meelde ainult seni, kuni sa pole rakendusest väljunud. Märkimata jätmisel "
+#~ "tuleb sisselogimisteave anda iga kord, kui seda vaja läheb."
+
+#~ msgid "Use a default login"
+#~ msgstr "Vaikimisi sisselogimisteabe kasutamine"
+
+#~ msgid ""
+#~ "Enable the usage of a default login. The provided data is used by default "
+#~ "to authenticate to a remote server. This is very useful e.g. if you are "
+#~ "working in an Active Directory environment or an NT domain."
+#~ msgstr ""
+#~ "Siin saab lubada vaikimisi sisselogimisteabe kasutamise. Määratud andmeid "
+#~ "kasutatakse vaikimisi autentimiseks võrguserveris. See on väga tulus "
+#~ "näiteks siis, kui töötad Active Directory keskkonnas või NT domeenis."
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS-e nimi:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Arvuti NetBIOS-e nimi, mida Smb4K kasutab. Vaikimisi on see kas failis "
+#~ "smb.conf määratud NetBIOS-e nimi või masinanimi."
+
+#~ msgid "Domain:"
+#~ msgstr "Domeen:"
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "Töögrupp või domeen, kuhu arvuti kuulub või peaks kuuluma. Vaikimisi on "
+#~ "see failis smb.conf määratud töögrupp."
+
+#~ msgid "Socket options:"
+#~ msgstr "Sokli valikud:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "TCP sokli valikud, mida kasutavad nmblookup ja smbclient. Sokli valikud "
+#~ "on operatsioonisüsteemi võrgukihi juhtimiseks, mis võimaldavad häälestada "
+#~ "ühendust. Täpsemalt kõneleb sellest smb.conf-i manuaalilehekülg."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS-e skoop:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Siin saab määrata NetBIOS-e skoobi, milles tegutsevad nmblookup ja "
+#~ "smbclient. Seda ei tasuks määrata, kui seda ei määra just kõik sinu "
+#~ "võrgunaabruse masinad."
+
+#~ msgid "SMB port:"
+#~ msgstr "SMB port:"
+
+#~ msgid ""
+#~ "This is the port that is used for connecting to remote servers with the "
+#~ "client programs net, smbclient and smbtree. The default value is 139 "
+#~ "(NetBIOS). This setting is not used for mounting."
+#~ msgstr ""
+#~ "Port, mida kasutatakse ühendumiseks võrguserveritega klientprogrammidega "
+#~ "net. smbclient ja smbtree. Vaikeväärtus on 139 (NetBIOS). Seda väärtust "
+#~ "ei kasutata ühendamiseks."
+
+#~ msgid "File system port:"
+#~ msgstr "Failisüsteemi port:"
+
+#~ msgid ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+#~ msgstr ""
+#~ "Port, mida kasutatakse spetsiaalselt võrguserverite jagatud ressursside "
+#~ "ühendamiseks. Vaikeväärtus on 445 (CIFS failisüsteem)."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Autentimise üritamine Kerberosega"
+
+#~ msgid ""
+#~ "Try to authenticate with Kerberos. This is only useful in an Active "
+#~ "Directory environment. The setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Autentimise üritamine Kerberosega. See on mõistlik ainult Active "
+#~ "Directory keskkonnas. See mõjutab käske smbclient ja smbtree."
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Autentimine kohaliku masina kontoga"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient, and smbtree command."
+#~ msgstr ""
+#~ "Päringud võrguserverisse tehakse kohaliku serveri kontot kasutades. See "
+#~ "mõjutab käske net, smbclient ja smbtree."
+
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Winbindi ccache autentimise kasutamine"
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects smbclient "
+#~ "and smbtree command."
+#~ msgstr ""
+#~ "Winbindi ccache kasutamine autentimiseks. See mõjutab käske smbclient ja "
+#~ "smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Allkirjastamise olek:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Allkirjastamise oleku määramine. See mõjutab käske smbclient ja smbtree."
+
+#~ msgid "None"
+#~ msgstr "Puudub"
+
+#~ msgid "On"
+#~ msgstr "Sees"
+
+#~ msgid "Off"
+#~ msgstr "Väljas"
+
+#~ msgid "Required"
+#~ msgstr "Nõutav"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "SMB transpordi krüptimine"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the smbclient and smbtree command."
+#~ msgstr ""
+#~ "SMB transpordi krüptimine (ainult Unixi laiendatud serverites). See "
+#~ "mõjutab käske smbclient ja smbtree."
+
+#~ msgid ""
+#~ "This is the character set that is used by the client side (i.e. your "
+#~ "side) either to convert local path names to and from Unicode (CIFS, "
+#~ "Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you "
+#~ "keep the default setting, Smb4K will try to automatically determine the "
+#~ "charset by looking up the \"unix charset\" option in the smb.conf."
+#~ msgstr ""
+#~ "Kooditabel, mida kasutatakse kliendi (s.t. sinu) poolel kas kohalike "
+#~ "asukohanimede teisendamiseks Unicode'i ja Unicode'ist (CIFS, Linux) või "
+#~ "kooditabelina märgistike vastendamisel (SMBFS, FreeBSD). Kui jätta "
+#~ "kehtima vaikeseadistus, üritab Smb4K automaatselt tuvastada kooditabeli, "
+#~ "uurides faili smb.conf valikut \"unix charset\"."
+
+#~ msgid "default"
+#~ msgstr "vaikimisi"
+
+#~ msgid "iso8859-1"
+#~ msgstr "iso8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "iso8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "iso8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "iso8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "iso8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "iso8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "iso8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "iso8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "iso8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "iso8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "iso8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "iso8859-15"
+
+#~ msgid "utf8"
+#~ msgstr "utf8"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "koi8-u"
+#~ msgstr "koi8-u"
+
+#~ msgid "koi8-ru"
+#~ msgstr "koi8-ru"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "gb2312"
+#~ msgstr "gb2312"
+
+#~ msgid "big5"
+#~ msgstr "big5"
+
+#~ msgid "euc-jp"
+#~ msgstr "euc-jp"
+
+#~ msgid "euc-kr"
+#~ msgstr "euc-kr"
+
+#~ msgid "tis-620"
+#~ msgstr "tis-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Serveri kooditabel:"
+
+#~ msgid ""
+#~ "This is the codepage that is used by the server. The setting is only "
+#~ "available with the SMBFS file system. If you keep the default setting, "
+#~ "Smb4K will try to automatically determine the codepage by looking up the "
+#~ "\"dos charset\" option in the smb.conf file."
+#~ msgstr ""
+#~ "Serveris kasutatav kooditabel. Seda saab kasutada ainult SMBFS "
+#~ "failisüsteemi korral. Kui jätta kehtima vaikeseadistus, üritab Smb4K "
+#~ "kooditabeli automaatselt tuvastada, uurides selleks faili smb.conf "
+#~ "valikut \"dos charset\"."
+
+#~ msgid "cp437"
+#~ msgstr "cp437"
+
+#~ msgid "cp720"
+#~ msgstr "cp720"
+
+#~ msgid "cp737"
+#~ msgstr "cp737"
+
+#~ msgid "cp775"
+#~ msgstr "cp775"
+
+#~ msgid "cp850"
+#~ msgstr "cp850"
+
+#~ msgid "cp852"
+#~ msgstr "cp852"
+
+#~ msgid "cp855"
+#~ msgstr "cp855"
+
+#~ msgid "cp857"
+#~ msgstr "cp857"
+
+#~ msgid "cp858"
+#~ msgstr "cp858"
+
+#~ msgid "cp860"
+#~ msgstr "cp860"
+
+#~ msgid "cp861"
+#~ msgstr "cp861"
+
+#~ msgid "cp862"
+#~ msgstr "cp862"
+
+#~ msgid "cp863"
+#~ msgstr "cp863"
+
+#~ msgid "cp864"
+#~ msgstr "cp864"
+
+#~ msgid "cp865"
+#~ msgstr "cp865"
+
+#~ msgid "cp866"
+#~ msgstr "cp866"
+
+#~ msgid "cp869"
+#~ msgstr "cp869"
+
+#~ msgid "cp874"
+#~ msgstr "cp874"
+
+#~ msgid "cp932"
+#~ msgstr "cp932"
+
+#~ msgid "cp936"
+#~ msgstr "cp936"
+
+#~ msgid "cp949"
+#~ msgstr "cp949"
+
+#~ msgid "cp950"
+#~ msgstr "cp950"
+
+#~ msgid "cp1250"
+#~ msgstr "cp1250"
+
+#~ msgid "cp1252"
+#~ msgstr "cp1252"
+
+#~ msgid "cp1253"
+#~ msgstr "cp1253"
+
+#~ msgid "cp1254"
+#~ msgstr "cp1254"
+
+#~ msgid "cp1255"
+#~ msgstr "cp1255"
+
+#~ msgid "cp1256"
+#~ msgstr "cp1256"
+
+#~ msgid "cp1257"
+#~ msgstr "cp1257"
+
+#~ msgid "cp1258"
+#~ msgstr "cp1258"
+
+#~ msgid "unicode"
+#~ msgstr "unicode"
+
+#~ msgid ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Kasutaja ID (arv), mis antakse ühendatud ressursi failidele ja "
+#~ "kataloogidele. Kui kasutad CIFS failisüsteemi ja võrguserver toetab CIFS-"
+#~ "i Unixi-i laiendusi, seda valikut eiratakse."
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Grupi ID (arv), mis antakse ühendatud ressursi failidele ja "
+#~ "kataloogidele. Kui kasutad CIFS failisüsteemi ja võrguserver toetab CIFS-"
+#~ "i Unixi-i laiendusi, seda valikut eiratakse."
+
+#~ msgid "File mask:"
+#~ msgstr "Failimask:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating files. It must be defined "
+#~ "in octal. In case the CIFS file system is used, this setting only takes "
+#~ "effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Mask, mida kasutatakse failide loomisel. See peab olema määratud "
+#~ "kaheksandsüsteemis. CIFS failisüsteemi kasumisel avaldab see mõju ainult "
+#~ "siis, kui server ei toeta CIFS-i Unixi laiendusi."
+
+#~ msgid "Directory mask:"
+#~ msgstr "Kataloogimask:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating directories. It must be "
+#~ "defined in octal. In case the CIFS file system is used, this setting only "
+#~ "takes effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Mask, mida kasutatakse kataloogide loomisel See peab olema määratud "
+#~ "kaheksandsüsteemis. CIFS failisüsteemi kasumisel avaldab see mõju ainult "
+#~ "siis, kui server ei toeta CIFS-i Unixi laiendusi."
+
+#~ msgid "Write access:"
+#~ msgstr "Kirjutamisõigus:"
+
+#~ msgid ""
+#~ "Here you can choose if the shares should be mounted in read-write or read-"
+#~ "only mode."
+#~ msgstr ""
+#~ "Siin saab valida, kas jagatud ressursid ühendatakse kirjutuskaitstult või "
+#~ "tohib neisse ka \"kirjutada\", see tähendab muutusi teha."
+
+#~ msgid "read-write"
+#~ msgstr "kirjutamisõigusega"
+
+#~ msgid "read-only"
+#~ msgstr "kirjutuskaitstud"
+
+#~ msgid "Do permission checks"
+#~ msgstr "Õiguste kontrollimine"
+
+#~ msgid ""
+#~ "The client side (i.e. your side) will check if you have the right UID/GID "
+#~ "to manipulate a file or directory. You might want to switch this feature "
+#~ "off if the server(s) support the CIFS Unix Extensions and you are not "
+#~ "allowed to access the files and directories. This setting does not affect "
+#~ "the normal ACL check."
+#~ msgstr ""
+#~ "Kliendi (s.t. sinu) poolel kontrollitakse, kas UID/GID ikka lubab faili "
+#~ "või kataloogiga midagi ette võtta. Selle võib märkimata jätta, kui "
+#~ "serverid toetavad CIFS Unixi laiendusi ja sul ei ole lubatud ligi pääseda "
+#~ "failidele ja kataloogidele. See ei mõjuta tavalist pääsuloendikontrolli."
+
+#~ msgid "Attempt to set UID and GID"
+#~ msgstr "Üritatakse määrata UID ja GID"
+
+#~ msgid ""
+#~ "In case the server supports the CIFS Unix Extensions, the client side (i."
+#~ "e. your side) attempts to set the effective UID and GID of the current "
+#~ "process on newly created files, directories and devices. If this feature "
+#~ "is turned off, the default UID and GID defined for the share will be "
+#~ "used. It is recommended that you read the manual page of mount.cifs "
+#~ "before you change this setting."
+#~ msgstr ""
+#~ "Kui server toetab CIFS Unixi laiendusi, püüab kliendi (s.t. sinu) pool "
+#~ "määrata uutele loodud failidele, kataloogidele ja seadmetele aktiivse "
+#~ "protsessi UID-d ja GID-i. Kui see on märkimata, kasutatakse vaikimisi "
+#~ "ressursile määratud UID-d ja GID-i. Enne selle valiku muutmist on "
+#~ "äärmiselt soovitatav tutvuda mount.cifs manuaalileheküljega."
+
+#~ msgid "Use server inode numbers"
+#~ msgstr "Serveri inode-numbrite kasutamine"
+
+#~ msgid ""
+#~ "Use inode numbers (unique persistent file identifiers) returned by the "
+#~ "server instead of automatically generating temporary inode numbers on the "
+#~ "client side."
+#~ msgstr ""
+#~ "Serveri tagastatud inode-numbrite (unikaalsed püsivad "
+#~ "failiidentifikaatorid) kasutamine kliendi poolel automaatselt "
+#~ "genereeritud ajutiste inode-numbrite asemel."
+
+#~ msgid "Do not cache inode data"
+#~ msgstr "Inode-andmeid ei puhverdata"
+
+#~ msgid ""
+#~ "Directly read from and write to files opened on the share. In some cases "
+#~ "this can provide better performance than the default behavior which "
+#~ "caches reads and writes."
+#~ msgstr ""
+#~ "Jagatud ressursil avatud failide otselugemine ja -kirjutamine. Mõnikord "
+#~ "tagab see parema jõudluse kui vaikimisi käitumine, mille korral lugemised "
+#~ "ja kirjutamised puhverdatakse."
+
+#~ msgid "Translate reserved characters"
+#~ msgstr "Reserveeritud märkide transleerimine"
+
+#~ msgid ""
+#~ "Translate six of the seven reserved characters (including the colon, "
+#~ "question mark, pipe, asterisk, greater than and less than characters but "
+#~ "not the backslash) to remap range (above 0xF000). This allows you to open "
+#~ "files that were created with such characters. This has no effect if the "
+#~ "server does not support Unicode."
+#~ msgstr ""
+#~ "Seitsmest reserveeritud märgist kuue (koolon, küsimärk, torumärk, tärn, "
+#~ "suurem kui ja vähem kui märgid, aga mitte kurakaldkriips) transleerimine "
+#~ "vahemiku ümbervastendamiseks (kõrgemal kui 0xF000). See võimaldab avada "
+#~ "faile, mis on loodud niisuguste märkidega. See ei mõju kuidagi, kui "
+#~ "server ei toeta Unicode'i."
+
+#~ msgid "Do not use locking"
+#~ msgstr "Lukustamist ei kasutata"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Lukustamist ei kasutata. Ei käivitata lockd."
+
+#~ msgid ""
+#~ "Here you can enter advanced options for the CIFS file system in a comma-"
+#~ "separated list (refer to the manual page of mount.cifs to learn more). "
+#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
+#~ "do not enter options that have already been defined in the configuration "
+#~ "dialog."
+#~ msgstr ""
+#~ "Siia saab sisestada komadega eraldatult CIFS failisüsteemi muid võtmeid "
+#~ "(täpsemalt kõneleb neist mount.cifs manuaalilehekülg). Kõik antu "
+#~ "lisatakse täpselt sellisel kujul mount.cifs argumendile \"-o\". Palun ära "
+#~ "sisesta siia võtmeid, mis on juba määratud mujal seadistustedialoogis."
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Protokolli vihje:"
+
+#~ msgid ""
+#~ "Here you can choose the protocol that will be used by the net command for "
+#~ "the communication with remote servers if appropriate. In most cases the "
+#~ "automatic detection will work fine and you should not need to change the "
+#~ "default setting. However, if you experience problems, use the RPC "
+#~ "protocol for newer operating systems (Windows NT4 and above) and the RAP "
+#~ "protocol for older ones (Windows 98/NT3 and below). Functions that need "
+#~ "the ADS protocol (for Active Directory environments) have not been "
+#~ "implemented yet, so you can ignore that one for now."
+#~ msgstr ""
+#~ "Siin saab valida, millist protokolli kasutab vajaduse korral "
+#~ "võrguserveritega suhtlemiseks käsk net. Enamasti toimib automaatne "
+#~ "tuvastamine kenasti ja vaikeseadistust pole vaja muuta. Aga kui peaks "
+#~ "tekkima probleeme, kasuta RPC protokolli uuemate operatsioonisüsteemide "
+#~ "(Windows NT4 ja uuemad) ning RAP protokolli vanemate "
+#~ "operatsioonisüsteemide (Windows 98/NT3 ja vanemad) korral. Funktsioonid, "
+#~ "milleks oleks vaja ADS protokolli (Active Directory keskkondadele), ei "
+#~ "ole veel teostatud, nii et seda võib praegu eirata."
+
+#~ msgid "Automatic detection"
+#~ msgstr "Automaatne tuvastamine"
+
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "RPC: moodsad operatsioonisüsteemid"
+
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "RAP: vanemad operatsioonisüsteemid"
+
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "ADS: Active Directory keskkond (LDAP/Kerberos)"
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Nime lahendamise järjekord:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Siin saab määrata, milliseid nimeteenuseid ja millises järjekorras "
+#~ "kasutatakse masinanimede ja IP-aadresside lahendamiseks. Siin tuleb anda "
+#~ "tühikuga eraldatult kuni neli erinevat nimelahendamise võimalust. Need on "
+#~ "järgmised: lmhost, host, wins, bcast. Täpsemalt kõneleb sellest "
+#~ "smbclient'i manuaalilehekülg."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Puhvri suurus:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Siin saab muuta edastus/saatmispuhvri suurust, faili hankimisel serverist "
+#~ "või sinna saatmisel. Vaikimisi on see 65520 baiti. Väiksema väärtuse "
+#~ "määramisel on täheldatud failiedastuse kiirenemist Windows 9x serverite "
+#~ "korral."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Leviaadress:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Päringud nmblookup'i vahendusel saadetakse määratud leviaadressile. Ilma "
+#~ "selle valikuta saadetakse päringud vaikimisi võrguliidese leviaadressile, "
+#~ "mis tuvastatakse automaatselt või on määratud faili smb.conf parameetris "
+#~ "\"interfaces\"."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "UDP datagrammide saamiseks ja saatmiseks üritatakse kasutada UDP porti 137"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "UDP datagrammide saamiseks ja saatmiseks üritatakse kasutada UDP porti "
+#~ "137. Selle valiku taga seisab Windows 95 viga, mille tõttu see eirab "
+#~ "päringupaketi lähteporti ja vastab ainult UDP pordile 137. Paraku on "
+#~ "enamikus Unixi süsteemides selle pordi kasutamiseks vajalikud "
+#~ "administraatori õigused. Täpsemalt kõneleb selles nmblookup'i "
+#~ "manuaalilehekülg."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Päringute saatmine levipaketina"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Võimaldab smbtree'l esitada päringuid võrgusõlmedele, saates neid "
+#~ "levipakettidena selle asemel, et esitada päringud kohalikule "
+#~ "nimekirjahoidjale."
+
+#~ msgid "Security mode:"
+#~ msgstr "Turberežiim:"
+
+#~ msgid ""
+#~ "Security mode for mount.cifs. To be able to use this mode, the CIFS "
+#~ "kernel module 1.40 or later is required."
+#~ msgstr ""
+#~ "mount.cifs-i turberežiim. Selle kasutamiseks on vajalik CIFS-i kerneli "
+#~ "moodul 1.40 või uuem."
+
+#, fuzzy
+#~| msgid "Attempt to connect as a null user (no name)"
+#~ msgid "Connect as a null user (no name)"
+#~ msgstr "Püütakse ühenduda nullkasutajana (nimeta)"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Kerberose autentimise kasutamine"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication and packet signing"
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Kerberose autentimise ja pakettide allkirjastamise kasutamine"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLM protocol"
+#~ msgstr "Protokoll"
+
+#, fuzzy
+#~| msgid "Use NTLM password hashing with packet signing"
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "NTLM parooli räsimine pakettide allkirjastamisel"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "Protokoll"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing with packet signing"
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "NTLMv2 parooli räsimine pakettide allkirjastamisel"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "Protokoll"
+
+#, fuzzy
+#~| msgid "Use NTLM password hashing with packet signing"
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "NTLM parooli räsimine pakettide allkirjastamisel"
+
+#~ msgid "Synchronization prefix:"
+#~ msgstr "Sünkroonimise prefiks:"
+
+#~ msgid ""
+#~ "Under this prefix the destination directory for the synchronization will "
+#~ "be created. However, if you want to store the data of a particular share "
+#~ "elsewhere, you will be able to choose a different path before the actual "
+#~ "synchronization begins."
+#~ msgstr ""
+#~ "Selle prefiksi alla luuakse sihtkataloog sünkroonimiseks. Kui aga soovid "
+#~ "salvestada mõne jagatud ressursi andmed kuhugi mujale, saad valida teise "
+#~ "asukoha enne tegeliku sünkroonimise alustamist."
+
+#~ msgid "Archive mode"
+#~ msgstr "Säilitamisrežiim"
+
+#~ msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+#~ msgstr ""
+#~ "Säilitamisrežiimi (-a, --archive) kasutamine. See on sama, mis -rlptgoD."
+
+#~ msgid "Recurse into subdirectories"
+#~ msgstr "Rekursiivselt alamkataloogides"
+
+#~ msgid "Recurse into directories (-r, --recursive)."
+#~ msgstr "Rekursiivselt alamkataloogides (-r, --recurse)"
+
+#~ msgid "Update files"
+#~ msgstr "Failide uuendamine"
+
+#~ msgid ""
+#~ "Update files in the destination directory that are older than in the "
+#~ "source directory (-u, --update)."
+#~ msgstr ""
+#~ "Sihtkataloogi failide uuendamine, mis on vanemad kui lähtekataloogis (-u, "
+#~ "--update)."
+
+#~ msgid "Update files in place"
+#~ msgstr "Failide uuendamine kohapeal"
+
+#~ msgid ""
+#~ "Update destination files in-place (--inplace). By default, rsync first "
+#~ "creates a new copy of a file and moves it into place after its transfer "
+#~ "finished. If you enable this feature, no copy will be created but the "
+#~ "destination file will immediately be overwritten instead. An exception to "
+#~ "this is if you combine this option with --backup."
+#~ msgstr ""
+#~ "Sihtfailide uuendamine kohapeal (--inplace). Vaikimisi loob rsync "
+#~ "kõigepealt failist koopia ja liigutab selle õigesse kohta pärast edastuse "
+#~ "lõpetamist. Selle valiku sisselülitamisel koopiat ei looda, vaid sihtfail "
+#~ "kirjutatakse otsekohe üle. Erandiks on selle kasutamine koos võtmega --"
+#~ "backup."
+
+#~ msgid "Use relative path names"
+#~ msgstr "Suhtelised asukohanimed"
+
+#~ msgid ""
+#~ "Use relative paths (-R, --relative). This means that the full path names "
+#~ "specified on the command line are sent to the server rather than just the "
+#~ "last parts of the file names."
+#~ msgstr ""
+#~ "Suhteliste asukohtade kasutamine (-R, --relative). See tähendab, et "
+#~ "serverisse saadetakse käsureal määratud täielikud asukohad, mitte ainult "
+#~ "failinimede viimased osad."
+
+#~ msgid "Do not send implied directories"
+#~ msgstr "Eeldatud katalooge ei saadeta"
+
+#~ msgid ""
+#~ "Do not send implied directories with --relative (--no-implied-dirs). This "
+#~ "means that the corresponding path elements on the destination system are "
+#~ "left unchanged if they exist, and any missing implied directories are "
+#~ "created with default attributes. This even allows these implied path "
+#~ "elements to have big differences, such as being a symlink to a directory "
+#~ "on one side of the transfer, and a real directory on the other side."
+#~ msgstr ""
+#~ "Võtme --relative korral ei saadeta eeldatud katalooge (--no-implied-"
+#~ "dirs). See tähendab, et sihtsüsteemi vastavad asukohaelemendid jäetakse "
+#~ "muutmata, kui nad on olemas, ning kõik puuduvad eeldatud kataloogid "
+#~ "luuakse vaikimisi atribuutidega. See võimaldab eeldatud "
+#~ "asukohaelementides isegi suuri erinevusi, näiteks võib see olla edastuse "
+#~ "ühes otsas nimeviit kataloogile, teises otsas aga reaalne kataloog."
+
+#~ msgid "Transfer directories without recursing"
+#~ msgstr "Kataloogide mitterekursiivne edastamine"
+
+#~ msgid ""
+#~ "Transfer directories without recursing (-d, --dirs). This means that all "
+#~ "top-level subdirectories are transferred but without their contents."
+#~ msgstr ""
+#~ "Kataloogide mitterekursiivne edastamine (-d, --dirs). See tähendab, et "
+#~ "edastatakse kõik tipptaseme alamkataloogid, kuid ilma sisuta."
+
+#~ msgid "Compress data during transfer"
+#~ msgstr "Edastatavate andmete tihendamine"
+
+#~ msgid ""
+#~ "Compress data during transfer (-z, --compress). This significantly "
+#~ "reduces the amount of data that is being transferred. You may want to use "
+#~ "this option, if you have a slow connection."
+#~ msgstr ""
+#~ "Edastatavate andmete tihendamine (-z, --compress). See vähendab tunduvalt "
+#~ "edastatavate andmete mahtu. Seda on eriti mõttekas tarvitada aeglase "
+#~ "ühenduse korral."
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Nimeviitade säilitamine"
+
+#~ msgid "Copy symlinks as symlinks (-l, --links)."
+#~ msgstr "Nimeviitade kopeerimine nimeviitadena (-l, --links)."
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Nimeviitade teisendamine"
+
+#~ msgid ""
+#~ "Transform symlinks into the items they are pointing to (-L, --copy-links)."
+#~ msgstr ""
+#~ "Nimeviitade teisendamine elementideks, millele nad viitavad (-L, --copy-"
+#~ "links)."
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Ainult ebaturvaliste nimeviitade teisendamine"
+
+#~ msgid ""
+#~ "Transform unsafe symlinks into the items they are pointing to (--copy-"
+#~ "unsafe-links). This means that only those symlinks are transformed that "
+#~ "point to items that are outside the copied tree. Absolute symlinks are "
+#~ "treated the same way. This option has no additional effect if --copy-"
+#~ "links has also been specified."
+#~ msgstr ""
+#~ "Ebaturvaliste nimeviitade teisendamine elementideks, millele nad viitavad "
+#~ "(--copy-unsafe-links). See tähendab, et teisendatakse ainult need "
+#~ "nimeviidad, mis viitavad väljaspool kopeeritavat puud paiknevatele "
+#~ "elementidele. Samamoodi koheldakse absoluutseid nimeviitu. Sel valikul "
+#~ "pole mõju, kui kasutusel on juba võti --copy-links."
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Ebaturvaliste nimeviitade eiramine"
+
+#~ msgid ""
+#~ "Ignore symlinks that point outside the copied tree (--safe-links). All "
+#~ "absolute symlinks are also ignored. If you use this option in conjunction "
+#~ "with --relative you might get unexpected results."
+#~ msgstr ""
+#~ "Nimeviitade eiramine, mis viitavad väljapoole kopeeritavat puud (--safe-"
+#~ "links). Eiratakse ka kõiki absoluutseid nimeviitu. Selle kasutamisel koos "
+#~ "võtmega --relative võib saada päris ootamatuid tulemusi."
+
+#~ msgid "Preserve hard links"
+#~ msgstr "Püsilinkide säilitamine"
+
+#~ msgid ""
+#~ "Preserve hard links (-H, --hard-links). This options causes rsync to "
+#~ "preserve the hard links that are found during the transfer. Without it, "
+#~ "hard links are treated as though they were separate files."
+#~ msgstr ""
+#~ "Püsilinkide säilitamine (-H, --hard-links). See sunnib rsymci säilitama "
+#~ "edastamise ajal leitud püsilingid. Vastasel juhul käsitletakse püsilinke "
+#~ "eraldi failidena."
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Kataloogide nimeviitade säilitamine"
+
+#~ msgid ""
+#~ "Treat symlinked directories on the receiving side as though they were "
+#~ "real ones (-K, --keep-dirlinks). This only works if the symlink matches a "
+#~ "real directory from the sending side. Without this option, the receiver's "
+#~ "symlink will be deleted and replaced with a real directory."
+#~ msgstr ""
+#~ "Nimeviit-kataloogide käsitlemine vastuvõtval poolel tegelike "
+#~ "kataloogidena (-K. --keep-dirlinks). See toimib ainult siis, kui nimeviit "
+#~ "vastab saatval poolel tegelikule kataloogile. Ilma selle valikuta "
+#~ "kustutakse vastuvõtja nimeviit ja asendatakse tegeliku kataloogiga."
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Õiguste säilitamine"
+
+#~ msgid ""
+#~ "Preserve permissions (-p, --perms). The permissions of the destination "
+#~ "file will be same as the source file. For what happens if this option is "
+#~ "switched off, please read rsync's manual page."
+#~ msgstr ""
+#~ "Õiguste säilitamine (-p. --perms). Sihtfaili õigused on samad lähtefaili "
+#~ "omadega. Selle kohta, mis juhtub siis, kui seda valikut ei kasutata, loe "
+#~ "rsynci manuaalileheküljelt."
+
+#~ msgid "Preserve group"
+#~ msgstr "Grupi säilitamine"
+
+#~ msgid ""
+#~ "Preserve the group (-g, --group). The group of the destination file will "
+#~ "be set to the same value as the source file."
+#~ msgstr ""
+#~ "Grupi säilitamine (-g, --group). Sihtfaili grupiks määratakse sama grupp "
+#~ "nagu lähtefailil."
+
+#~ msgid "Preserve owner"
+#~ msgstr "Omaniku säilitamine"
+
+#~ msgid ""
+#~ "Preserve the owner (-o, --owner). The owner of the destination file will "
+#~ "be set to the same value as the source file, but only if the receiving "
+#~ "rsync is run as the super user. Without this option, the owner is set to "
+#~ "the invoking user on the receiving side."
+#~ msgstr ""
+#~ "Omaniku säilitamine (-o, --owner). Sihtfaili omaniku väärtuseks "
+#~ "määratakse lähtefailiga sama väärtus, aga ainult siis, kui vastuvõttev "
+#~ "rsync töötab administraatori õigustes. Ilma selle valikuta määratakse "
+#~ "omanikuks vastuvõtva poole omanik."
+
+#~ msgid "Preserve device and special files"
+#~ msgstr "Seadme- ja erifailide säilitamine"
+
+#~ msgid ""
+#~ "Preserve device and special files (-D, --devices --specials). This option "
+#~ "causes rsync to transfer character and block devices as well as special "
+#~ "files such as named sockets and fifos. It works only partially if rsync "
+#~ "is not run as super user and the --super option is not specified."
+#~ msgstr ""
+#~ "Seadme- ja erifailide säilitamine (-D. --devices --specials). See sunnib "
+#~ "rsynci edastama nii sümbol- ja plokkseadmeid kui ka erifaile, näiteks "
+#~ "nimega soklid ja fifod. See toimib ainult osaliselt, kui rsync ei tööta "
+#~ "administraatori õigustes ja võti --super pole määratud."
+
+#~ msgid "Preserve times"
+#~ msgstr "Aja säilitamine"
+
+#~ msgid ""
+#~ "Preserve times (-t, --times). The modification times are transferred "
+#~ "along with the files. For what happens if this option is switched off, "
+#~ "please read rsync's manual page."
+#~ msgstr ""
+#~ "Aja säilitamine (-t, --times). Koos failidega edastatakse muutmisajad. "
+#~ "Selle kohta, mis juhtub siis, kui seda valikut ei kasutata, loe palun "
+#~ "rsynci manuaalileheküljelt."
+
+#~ msgid "Omit directories when preserving times"
+#~ msgstr "Aja säilitamisel jäetakse välja kataloogid"
+
+#~ msgid ""
+#~ "Omit directories when preserving times (-O, --omit-dir-times). This means "
+#~ "that directories are omitted when modification times are being preserved. "
+#~ "Thus, this feature only works in conjunction with --times."
+#~ msgstr ""
+#~ "Aja säilitamisel jäetakse välja kataloogid (-O, --omit-dir-times). See "
+#~ "tähendab, et failide muutmisaegade säilitamisel ei arvestata "
+#~ "kataloogidega. Seepärast toimib see ainult koos võtmega --times."
+
+#~ msgid "Remove synchronized source files"
+#~ msgstr "Sünkroonitud lähtefailide eemaldamine"
+
+#~ msgid ""
+#~ "Remove all synchronized source files (--remove-source-files). This tells "
+#~ "rsync to remove from the sending side the non-directory items that are a "
+#~ "part of the transfer and have been successfully duplicated on the "
+#~ "receiving side."
+#~ msgstr ""
+#~ "Kõigi sünkroonitud lähtefailide eemaldamine (--remove-source-files). See "
+#~ "annab rsyncile korralduse eemaldada saatvalt poolelt mittekataloogist "
+#~ "elemendid, mis on edastatud ja vastuvõtval poolel edukalt taasloodud."
+
+#~ msgid "Delete extraneous files"
+#~ msgstr "Üleliigsete failide kustutamine"
+
+#~ msgid ""
+#~ "Delete extraneous files from destination (--delete). This tells rsync to "
+#~ "delete all files from the receiving side that are not present on the "
+#~ "sending side, but only for the directories that are being synchronized."
+#~ msgstr ""
+#~ "Üleliigsete failide kustutamine sihtkohast (--delete). See annab rsyncile "
+#~ "korralduse kustutada vastuvõtval poolel kõik failid, mida ei leidu "
+#~ "saatval poolel, aga ainult kataloogides, mida sünkroonitakse."
+
+#~ msgid "Delete files before transfer"
+#~ msgstr "Failide kustutamine enne edastamist"
+
+#~ msgid ""
+#~ "Delete files on the receiving side before the transfer starts (--delete-"
+#~ "before). This is the default behavior if --delete or --delete-excluded is "
+#~ "specified without one of the --delete-WHEN options."
+#~ msgstr ""
+#~ "Failide kustutamine vastuvõtval poolel enne edastamise algust (--delete-"
+#~ "before). See on vaikimisi käitumine, kui on --delete või --delete-"
+#~ "excluded on määratud ilma mõne --delete-MILLAL valikuta."
+
+#~ msgid "Delete files after transfer"
+#~ msgstr "Failide kustutamine pärast edastamist"
+
+#~ msgid ""
+#~ "Delete files on the receiving side after the transfer has completed (--"
+#~ "delete-after, --del)."
+#~ msgstr ""
+#~ "Failide kustutamine vastuvõtval poolel pärast edastamise lõppu (--delete-"
+#~ "after, --del)."
+
+#~ msgid "Delete files during transfer"
+#~ msgstr "Failide kustutamine edastamise ajal"
+
+#~ msgid ""
+#~ "Delete files on the receiving side during the transfer (--delete-during). "
+#~ "This method is faster than --delete-before or --delete-after, but it is "
+#~ "only supported with rsync 2.6.4 or later."
+#~ msgstr ""
+#~ "Failide kustutamine vastuvõtval poolel edastamise ajal (--delete-during). "
+#~ "See on kiirem kui --delete-before või --delete-after, aga seda toetab "
+#~ "ainult rsync 2.6.4 või uuem."
+
+#~ msgid "Also delete excluded files"
+#~ msgstr "Ka välistatud failide kustutamine"
+
+#~ msgid ""
+#~ "Also delete excluded files from destination directory (--delete-"
+#~ "excluded). In addition to deleting the files on the receiving side that "
+#~ "are not on the sending side, this tells rsync to also delete any files on "
+#~ "the receiving side that are excluded. Refer to rsync's manual page for "
+#~ "further information."
+#~ msgstr ""
+#~ "Ka välistatud failide kustutamine sihtkataloogist (--delete-excluded). "
+#~ "Lisaks nende failide kustutamisele vastuvõtval poolel, mida ei leidu "
+#~ "saatval poolel, annab see rsyncile korralduse kustutada vastuvõtval "
+#~ "poolel ka kõik failid, mis jäeti edastamisel välja. Täpsemalt kõneleb "
+#~ "sellest rsynci manuaalilehekülg."
+
+#~ msgid "Delete even if I/O errors occur"
+#~ msgstr "Kustutamine isegi I/O tõrgete korral"
+
+#~ msgid ""
+#~ "Delete even if I/O errors occur (--ignore-errors). This option has to be "
+#~ "specified in conjunction with --delete to take effect."
+#~ msgstr ""
+#~ "Kustutamine isegi I/O tõrgete korral (--ignore-errors). Seda tuleb "
+#~ "kasutada koos võtmega --delete, muidu ei avalda see mingit mõju."
+
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Mittetühjade kataloogide kustutamine jõuga"
+
+#~ msgid ""
+#~ "Force deletion of directories even if they are not empty (--force). This "
+#~ "option tells rsync to delete a non-empty directory when it is to be "
+#~ "replaced by a non-directory. This is only relevant if deletions are not "
+#~ "active."
+#~ msgstr ""
+#~ "Kataloogide kustutamine isegi siis, kui nad pole tühjad (--force). See "
+#~ "sunnib rsynci kustutama mittetühja kataloogi, kui see asendatakse "
+#~ "mittekataloogiga. Seda on mõtet kasutada ainult siis, kui kustutamist ei "
+#~ "ole määratud."
+
+#~ msgid "Do not delete more than this many files:"
+#~ msgstr "Maksimaalne kustutatavate failide arv:"
+
+#~ msgid ""
+#~ "Only delete as many files as defined here (--max-delete=NUM). This tells "
+#~ "rsync not to delete more than NUM files or directories (NUM must be non-"
+#~ "zero). This is useful when mirroring very large trees to prevent "
+#~ "disasters."
+#~ msgstr ""
+#~ "Kustutatakse maksimaalselt ainult siin määratud arv faile (--max-"
+#~ "delete=ARV). See annab rsyncile korralduse kustutada mitte rohkem kui ARV "
+#~ "faile või katalooge (ARV peab erinema nullist). See on tulus õnnetuste "
+#~ "vältimiseks väga suurte puude peegeldamisel."
+
+#~ msgid "Value for DeleteMaximum config entry"
+#~ msgstr "Seadistuskirje DeleteMaximum väärtus"
+
+#~ msgid "Do not transfer any file smaller than:"
+#~ msgstr "Ei edastata faile, mis on väiksemad kui:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is smaller than "
+#~ "the specified size (--min-size=SIZE)."
+#~ msgstr ""
+#~ "See sunnib rsynci loobuma failide edastamisest, mis on väiksemad määratud "
+#~ "suurusest (--min-size=SUURUS)."
+
+#~ msgid "Value for MinimalTransferSize config entry"
+#~ msgstr "Seadistuskirje MinimalTransferSize väärtus"
+
+#~ msgid "Do not transfer any file larger than:"
+#~ msgstr "Ei edastata faile, mis on suuremad kui:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is larger than the "
+#~ "specified size (--max-size=SIZE)."
+#~ msgstr ""
+#~ "See sunnib rsynci loobuma failide edastamisest, mis on suuremad määratud "
+#~ "suurusest (--max-size=SUURUS)."
+
+#~ msgid "Value for MaximalTransferSize config entry"
+#~ msgstr "Seadistuskirje MaximalTransferSize väärtus"
+
+#~ msgid "Keep partially transferred files"
+#~ msgstr "Osaliselt edastatud failide säilitamine"
+
+#~ msgid ""
+#~ "Keep partially transferred files (--partial). The default behavior is "
+#~ "that any partially transferred file is deleted if the transfer is "
+#~ "interrupted."
+#~ msgstr ""
+#~ "Osaliselt edastatud failide säilitamine (--partial). Vaikimisi "
+#~ "kustutatakse kõik osaliselt edastatud failid, kui edastus katkeb."
+
+#~ msgid "Put partially transferred files into:"
+#~ msgstr "Osaliselt edastatud failide säilitamiskoht:"
+
+#~ msgid ""
+#~ "Put a partially transferred file into this directory (--partial-dir=DIR). "
+#~ "This is a better way than the --partial option to keep partial files, "
+#~ "because the partially transferred file is kept in a different directory "
+#~ "and the destination file is not overwritten."
+#~ msgstr ""
+#~ "Osaliselt edastatud failide säilitamine määratud kataloogis (--partial-"
+#~ "dir=KATALOOG). See on osaliste failide säilitamiseks parem viis kui --"
+#~ "partial, sest osaliselt edastatud failid säilitatakse teises kataloogis "
+#~ "ning sihtfaili ei kirjutata üle."
+
+#~ msgid "The data for the UsePartialDirectory option"
+#~ msgstr "Võtme UsePartialDirectory andmed"
+
+#~ msgid "Auto-ignore files in the same way CVS does"
+#~ msgstr "Failide automaatne eiramine CVS-i eeskujul"
+
+#~ msgid ""
+#~ "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+#~ "useful shorthand for excluding a broad range of files that you often do "
+#~ "not want to transfer between systems. This option uses the same algorithm "
+#~ "that CVS uses to determine if a file should be ignored."
+#~ msgstr ""
+#~ "Failide automaatne eiramine CVS-i eeskujul (-C, --cvs-exclude). See on "
+#~ "tulus võimalus välistada suur hulk faile, mida sa ei soovi sageli "
+#~ "süsteemist süsteemi edastada. See kasutab määramiseks, kas faili eirata "
+#~ "või mitte, CVS-iga sama algoritmi."
+
+#~ msgid "Exclude files matching this pattern:"
+#~ msgstr "Välistatakse järgmise mustriga sobivad failid:"
+
+#~ msgid ""
+#~ "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+#~ "special filter rule. For further information on filter rules see rsync's "
+#~ "manual page."
+#~ msgstr ""
+#~ "Kindlale mustrile vastavate failide väljajätmine (--exclude=MUSTER). See "
+#~ "on eriline filtrireegel. Täpsemalt kõneleb filtrireeglitest rsynci "
+#~ "manuaalilehekülg."
+
+#~ msgid "Pattern that is used for file exclusion"
+#~ msgstr "Failide välistamiseks kasutatav muster"
+
+#~ msgid "Read exclude patterns from:"
+#~ msgstr "Välistamismustrite hankimine failist:"
+
+#~ msgid ""
+#~ "Read exclude patterns from a file (--exclude-from=FILE). This option is "
+#~ "similar to the --exclude=PATTERN option except that the exclude patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Välistamismustrite hankimine failist (--exclude-from=FAIL). See on "
+#~ "sarnane võtmega --exclude=MUSTER, ainult et välistamismustrid loetakse "
+#~ "failist. See on eriline filtrireegel. Täpsemalt kõneleb filtrireeglitest "
+#~ "rsynci manuaalilehekülg."
+
+#~ msgid "The file from which the exclude patterns are read"
+#~ msgstr "Fail, millest loetakse välistamismustrid"
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Kaasatakse järgmisele mustrile vastavad failid:"
+
+#~ msgid ""
+#~ "Do not exclude files matching a certain pattern (--include=PATTERN). This "
+#~ "is a special filter rule. For further information on filter rules see "
+#~ "rsync's manual page."
+#~ msgstr ""
+#~ "Kaasatakse kindlale mustrile vastavad failid (--include=MUSTER). See on "
+#~ "eriline filtrireegel. Täpsemalt kõneleb filtrireeglitest rsynci "
+#~ "manuaalilehekülg."
+
+#~ msgid "Pattern that is used for file inclusion"
+#~ msgstr "Failide kaasamiseks kasutatav muster"
+
+#~ msgid "Read include patterns from:"
+#~ msgstr "Kaasamismustrite hankimine failist:"
+
+#~ msgid ""
+#~ "Read include patterns from a file (--include-from=FILE). This option is "
+#~ "similar to the --include=PATTERN option except that the include patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Kaasamismustrite hankimine failist (--include-from=FAIL). See on sarnane "
+#~ "võtmega --include=MUSTER, ainult et kaasamismustrid loetakse failist. See "
+#~ "on eriline filtrireegel. Täpsemalt kõneleb filtrireeglitest rsynci "
+#~ "manuaalilehekülg."
+
+#~ msgid "The file from which the include patterns are read"
+#~ msgstr "Fail, millest loetakse kaasamismustrid"
+
+#~ msgid "Custom filter rules:"
+#~ msgstr "Kohandatud filtrireeglid:"
+
+#~ msgid ""
+#~ "Add custom file-filtering rules (-f, --filter=RULE). This option allows "
+#~ "you to add rules to selectively exclude certain files from the list of "
+#~ "files to be transferred. These rules will be added to the rsync command "
+#~ "as they are. Thus, each rule has to start with the --filter=... argument."
+#~ msgstr ""
+#~ "Kohandatud failide filtreerimise reeglite lisamine (-f, --filter=REEGEL). "
+#~ "See võimaldab lisada reegleid, millega valikuliselt jäetakse teatavad "
+#~ "failid välja edastatavate failide nimekirjast. Need reeglid lisatakse "
+#~ "rsynci käsule täpselt siin määratud kujul. Seepärast peab iga reegel "
+#~ "algama argumendiga --filter=..."
+
+#~ msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+#~ msgstr "Filtrireegli --filter='dir-merge /.rsync-filter' kasutamine"
+
+#~ msgid ""
+#~ "This filter rule tells rsync to look for per-directory .rsync-filter "
+#~ "files that have been sprinkled through the hierarchy and use their rules "
+#~ "to filter the files in the transfer. It has no effect, if you also choose "
+#~ "to use the --filter='exclude .rsync-filter' rule."
+#~ msgstr ""
+#~ "See filtrireegel annab rsyncile korralduse otsida kataloogiti faile ."
+#~ "rsync-filter, mida leidub kogu hierarhias, ja kasutada nende reegleid "
+#~ "failide filtreerimiseks edastamisel. See ei avalda mõju, kui kasutada "
+#~ "samaaegselt reeglit --filter='exclude .rsync-filter'."
+
+#~ msgid "Use --filter='exclude .rsync-filter' filter rule"
+#~ msgstr "Filtrireegli --filter='exclude .rsync-filter' kasutamine"
+
+#~ msgid ""
+#~ "This rule filters out the .rsync-filter files from the transfer. These "
+#~ "files normally contain filter rules that can be activated by choosing the "
+#~ "--filter='dir-merge /.rsync-filter' rule and deselecting this one."
+#~ msgstr ""
+#~ "See reegel filtreerib edastamisel välja failid -rsync-filter. Need "
+#~ "sisaldavad tavaliselt filtrireegleid, mida saab aktiveerida, kui valida "
+#~ "reegel --filter='dir-merge /.rsync-filter' ja lülitada see valik välja."
+
+#~ msgid "Handle sparse files efficiently"
+#~ msgstr "Hajusfailide tõhus käitlemine"
+
+#~ msgid ""
+#~ "Handle sparse files efficiently (-S, --sparse) so that they take up less "
+#~ "space on the destination. This option conflicts with --inplace. For "
+#~ "further information read rsync's manual page."
+#~ msgstr ""
+#~ "Hajusfailide tõhus käitlemine (-S, --sparse), et nad võtaksid sihtkohas "
+#~ "vähem ruumi. See on vastuolus võtmega --inplace. Täpsemalt kõneleb "
+#~ "sellest rsynci manuaalilehekülg."
+
+#~ msgid "Copy files whole (no rsync algorithm)"
+#~ msgstr "Failide kopeerimine tervikuna (rsynci algoritmita)"
+
+#~ msgid ""
+#~ "Copy files whole (-W, --whole-file). With this option the incremental "
+#~ "rsync algorithm is not used and the whole file is sent as-is instead."
+#~ msgstr ""
+#~ "Failide kopeerimine tervikuna (-W, --whole-file). Selle valiku puhul ei "
+#~ "kasutata rsynci inkrementalgoritmi ja selle asemel saadetakse kogu fail."
+
+#~ msgid "Do not cross file system boundaries"
+#~ msgstr "Failisüsteemi piire ei ületata"
+
+#~ msgid ""
+#~ "Do not cross file system boundaries (-x, --one-file-system). This tells "
+#~ "rsync to avoid crossing a filesystem boundary when recursing. For further "
+#~ "information on this option, read the manual page."
+#~ msgstr ""
+#~ "Failisüsteemi piire ei ületata (-x, --one-file-system). See annab "
+#~ "rsyncile korralduse vältida rekursiivsuse korral failisüsteemi piiride "
+#~ "ületamist. Täpsemalt kõneleb sellest rsynci manuaalilehekülg."
+
+#~ msgid "Only update files that already exist"
+#~ msgstr "Ainult juba olemasolevate failide uuendamine"
+
+#~ msgid ""
+#~ "Skip creating new files on the receiving side (--existing). This tells "
+#~ "rsync to skip creating files (including directories) that do not exist "
+#~ "yet on the destination. If this option is combined with the --ignore-"
+#~ "existing option, no files will be updated (which can be useful if all you "
+#~ "want to do is to delete extraneous files)."
+#~ msgstr ""
+#~ "Uute failide loomise vältimine vastuvõtval poolel (--existing). See annab "
+#~ "rsyncile korralduse vältida failide (kaasa arvatud kataloogide) loomist, "
+#~ "mida sihtkohas veel ei ole. Koos võtmega --ignore-existing kasutamisel ei "
+#~ "uuendata faile üldse (see võib olla kasulik, kui soovid kõigest kustutada "
+#~ "üleliigseid faile)."
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Juba olemasolevate failide eiramine"
+
+#~ msgid ""
+#~ "Skip updating files that already exist on the receiving side (--ignore-"
+#~ "existing). Existing directories are not ignored."
+#~ msgstr ""
+#~ "Jäetakse vahele failide uuendamine, mis on juba olemas vastuvõtval poolel "
+#~ "(--ignore-existing). Olemasolevaid katalooge ei eirata."
+
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Uuendamine alles edastamise lõpul"
+
+#~ msgid ""
+#~ "Delay updates until the end of the transfer (--delay-updates). This "
+#~ "option puts the temporary file from each updated file into a holding "
+#~ "directory until the end of the transfer, at which time all the files are "
+#~ "renamed and copied into place in rapid succession."
+#~ msgstr ""
+#~ "Uuendamise edasilükkamine edastamise lõpuni (--delay-updates). See asetab "
+#~ "iga uuendatava faili kohta ajutise faili kataloogi kuni edastamise "
+#~ "lõpuni, mil muudetakse kõigi failide nime ja kopeeritakse need õigesse "
+#~ "kohta kiiresti üksteise järel."
+
+#~ msgid "Make backups"
+#~ msgstr "Varukoopiate loomine"
+
+#~ msgid ""
+#~ "Make backups (-b, --backup). With this option, preexisting destination "
+#~ "files are renamed as each file is transferred or deleted. You can control "
+#~ "where the backup file goes and what (if any) suffix gets appended using "
+#~ "the --backup-dir=DIR and --suffix=SUFFIX options."
+#~ msgstr ""
+#~ "Varukoopiate loomine (-b, --backup). Selle valiku kasutamisel nimetatakse "
+#~ "eelnevalt olemas olnud sihtfailid ümber sedamööda, kuidas iga fail "
+#~ "edastatakse või kustutatakse. Sa saad määrata, kuhu paigutatakse "
+#~ "varukoopiafail ja millise sufiksi see saab (kui saab), võtmetega --backup-"
+#~ "dir=KATALOOG ja --suffix=SUFIKS. "
+
+#~ msgid "Backup suffix:"
+#~ msgstr "Varukoopiate sufiks:"
+
+#~ msgid "Use this suffix for backups (--suffix=SUFFIX)."
+#~ msgstr "Varukoopiate puhul kasutatav sufiks (--suffix=SUFIKS)."
+
+#~ msgid "Backup suffix"
+#~ msgstr "Varukoopiate sufiks"
+
+#~ msgid "Backup directory:"
+#~ msgstr "Varukoopiate kataloog:"
+
+#~ msgid "Store backups in this directory (--backup-dir=DIR)."
+#~ msgstr ""
+#~ "Varukoopiate salvestamine määratud kataloogi (--backup-dir=KATALOOG)."
+
+#~ msgid "Backup directory"
+#~ msgstr "Varukoopiate kataloog"
+
+#~ msgid "Force fixed checksum block size:"
+#~ msgstr "Fikseeritud kontrollsummaploki suurus:"
+
+#~ msgid ""
+#~ "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces "
+#~ "the block size used in the rsync algorithm to a fixed value."
+#~ msgstr ""
+#~ "Kontrollsummaploki suuruse fikseerimine (-B, --block-size=SUURUS). "
+#~ "Sellega sunnitakse rsynci algoritmis kasutatavale plokile peale kindel "
+#~ "suurus."
+
+#~ msgid "The block size"
+#~ msgstr "Ploki suurus"
+
+#~ msgid "Set block/file checksum seed:"
+#~ msgstr "Ploki/faili kontrollsumma seeme:"
+
+#~ msgid ""
+#~ "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+#~ "seed to this integer. This 4 byte checksum seed is included in each block "
+#~ "and file MD4 checksum calculation. By default the checksum seed is "
+#~ "generated by the server and defaults to the current time."
+#~ msgstr ""
+#~ "Ploki/faili kontrollsumma seemne määramine (--checksum-seed=ARV). MD4 "
+#~ "kontrollsumma seemneks määratakse kindel täisarv. See neljabaidine "
+#~ "kontrollsumma seeme lisatakse iga ploki ja faili MD4 kontrollsumma "
+#~ "arvutamisel. Vaikimisi genereerib kontrollsumma seemne server ja "
+#~ "vaikimisi on selleks hetke kellaaeg."
+
+#~ msgid "The checksum seed"
+#~ msgstr "Kontrollsumma seeme"
+
+#~ msgid "Skip files based on checksum"
+#~ msgstr "Failide vahelejätmine kontrollsumma põhjal"
+
+#~ msgid ""
+#~ "Skip files based on a checksum and not based on modification time and "
+#~ "size (-c, --checksum). For further information on how this feature works "
+#~ "read rsync's manual page."
+#~ msgstr ""
+#~ "Failide vahelejätmine kontrollsumma, mitte muutmisaja ja suuruse põhjal (-"
+#~ "c, --checksum). Täpsemalt kõneleb selle valiku kasutamisest rsynci "
+#~ "manuaalilehekülg."
+
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr "Kõigi ressursside lahutamine unenupu vajutamisel"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware sleep button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Kõigi ühendatud jagatud ressursside lahutamine pärast riistvara unenupu "
+#~ "vajutamist. Ressursid ühendatakse automaatselt uuesti pärast seda, kui "
+#~ "arvuti taas ärkab."
+
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "Kõigi ressursside lahutamine kaane sulgemisel"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the lid of the laptop is closed. The "
+#~ "shares will automatically be remounted after the computer wakes up again."
+#~ msgstr ""
+#~ "Kõigi ühendatud jagatud ressursside lahutamine pärast sülearvtti kaane "
+#~ "sulgemist. Ressursid ühendatakse automaatselt uuesti pärast seda, kui "
+#~ "arvuti taas ärkab."
+
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr "Kõigi ressursside lahutamine toitenupu vajutamisel"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware power button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Kõigi ühendatud jagatud ressursside lahutamine pärast riistvara toitenupu "
+#~ "vajutamist. Ressursid ühendatakse automaatselt uuesti pärast seda, kui "
+#~ "arvuti taas ärkab."
+
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr "Kõigi ressursside lahutamine võrguühenduse kadumisel"
+
+#~ msgid ""
+#~ "Unmount all mounted shares when the user disconnects from the network or "
+#~ "the connection is lost due to a different reason. Using this option in "
+#~ "combination with sleep and/or hibernation might lead to unwanted side "
+#~ "effects. In this case you should unmount the shares manually before you "
+#~ "suspend the computer."
+#~ msgstr ""
+#~ "Kõigi ühendatud jagatud ressursside lahutamine, kui kasutada katkestab "
+#~ "võrguühenduse või kui see mingil muul põhjusel kaob. Selle kasutamine "
+#~ "koos une või talveunega võib kaasa tuua soovimatuid kõrvalmõjusid. Sel "
+#~ "juhul tuleb jagatud ressursid käsitsi lahutada enne arvuti saatmist "
+#~ "passiivsesse olekusse."
+
+#~ msgid "The format of %1 is not supported."
+#~ msgstr "%1 vorming ei ole toetatud."
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Järjehoidjate lisamine"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Kõik loetletud ressursid lisatakse järjehoidjatesse. Nime või grupi "
+#~ "muutmiseks klõpsa vajalikul järjehoidjal."
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Kõrvalda järjehoidjad"
+
+#~ msgid ""
+#~ "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Kohandatud valikute määramine masinale <b>%1</b> ja kõigile jagatud "
+#~ "ressurssidele, mida see pakub.</p>"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Kohandatud valikute määramine jagatud ressursile <b>%1</b> masinas <b>"
+#~ "%2</b>.</p>"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB port:"
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 ei ole versiooni 1.0 fail."
+
+#~ msgid "Specify User"
+#~ msgstr "Kasutaja määramine"
+
+#~ msgid "Please specify a username."
+#~ msgstr "Palun määra kasutajanimi."
+
+#~ msgid "User:"
+#~ msgstr "Kasutaja:"
+
+#~ msgid ""
+#~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#~ "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Jagatud ressurss <b>%1</b> on ühendatud asukohta <br><b>%2</b> ja "
+#~ "selle omanik on kasutaja <b>%3</b>.</p><p>Kas tõesti ressurss lahutada?</"
+#~ "p></qt>"
+
+#~ msgid "Foreign Share"
+#~ msgstr "Võõrressurss"
+
+#, fuzzy
+#~| msgid "Unmounting shares. Please wait."
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Jagatud ressurside lahutamine. Palun oota."
+
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Jagatud ressurside lahutamine. Palun oota."
+
+#~ msgid "Mount Share"
+#~ msgstr "Jagatud ressursi ühendamine"
+
+#~ msgid ""
+#~ "Enter the location (UNC address) and optionally the IP address and "
+#~ "workgroup to mount a share."
+#~ msgstr ""
+#~ "Sisesta jagatud ressursi ühendamiseks asukoht (UNC aadress) ja vajaduse "
+#~ "korral ka IP-aadress ja töögrupp."
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Ühtse nimede reeglistiku (UNC) aaress kirjeldab jagatud ressursi "
+#~ "asukohta. Süntaks on järgmine: //[KASUTAJA@]MASIN/RESSURSS. Kasutajanimi "
+#~ "ei ole kohustuslik."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "Interneti protokolli (IP) aadress identifitseerib masina võrgus ja "
+#~ "näitab, kus see asub. Sel on kaks korrektset vormingut, üks IP "
+#~ "versioonile 4 (nt. 192.168.2.11) ja teine IP versioonile 6 (nt. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "Töögrupp või domeen identifitseerib võrdõigusvõrgu, milles masin asub."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Jagatud ressursi lisamine järjehoidjatesse"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Märkimisel lisatakse jagatud ressurss järjehoidjatesse ja sul on edaspidi "
+#~ "võimalik sellele ligi pääseda näiteks peaaknas menüü Järjehoidjad "
+#~ "vahendusel."
+
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "<p>Ressurss <b>%1</b> on ühendatud asukohta <b>%2</b>.</p>"
+
+#~ msgid "Open"
+#~ msgstr "Ava"
+
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr "<p>Ressurss <b>%1</b> on lahutatud asukohast <b>%2</b>.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "<p>%1 ressurss kokku %2 ressursist on ühendatud.</p>"
+#~ msgstr[1] "<p>%1 ressurssi kokku %2 ressursist on ühendatud.</p>"
+
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "<p>Kõik ressursid on ühendatud.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "<p>%1 ressurss kokku %2 ressursist on lahutatud.</p>"
+#~ msgstr[1] "<p>%1 ressurssi kokku %2 ressursist on lahutatud.</p>"
+
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "<p>Kõik ressursid on lahutatud.</p>"
+
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "<p>Turvalaeka <b>%1</b> avamine nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>The logins stored in the wallet could not be accessed. There is either "
+#~ "no wallet available or it could not be opened.</p>"
+#~ msgstr ""
+#~ "<p>Turvalaekasse salvestatud sisselogimisteabele ei pääse ligi. "
+#~ "Turvalaegas kas puudub või seda ei saa avada.</p>"
+
+#~ msgid ""
+#~ "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#~ "the file to PDF or Postscript and try again.</p>"
+#~ msgstr ""
+#~ "<p>MIME tüüp <b>%1</b> ei ole trükkimiseks toetatud. Palun teisenda fail "
+#~ "PDF-i või PostScripti ja proovi uuesti.</p>"
+
+#~ msgid ""
+#~ "<p>The bookmark for share <b>%1</b> already exists and will be skipped."
+#~ msgstr ""
+#~ "<p>Ressursi <b>%1</b> järjehoidja on juba olemas ja see jäetakse vahele."
+
+#~ msgid ""
+#~ "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+#~ "being used and will automatically be renamed.</p>"
+#~ msgstr ""
+#~ "<p>Ressursi <b>%2</b> järjehoidja nimi <b>%1</b> on juba kasutusel ja "
+#~ "nimetatakse automaatselt ümber.</p>"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Kohandatud nimekirjahoidja kirje on tühi. Smb4K püüab selle asemel "
+#~ "esitada päringu sinu töögrupi või domeeni praegusele nimekirjahoidjale."
+
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Saadaolevate domeenide loendi hankimine nurjus:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "<p>Saadaolevate domeenide loendi hankimine nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr "<p>Määratud levialade uurimine nurjus:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr "<p>Määratud levialade uurimine nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Domeeni <b>%1</b> kuuluvate serverite loendi hankimine nurjus.</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Domeeni <b>%1</b> kuuluvate serverite loendi hankimine nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Ressursside loendi hankimine <b>%1</b> pealt nurjus:</p><p><tt>%2</"
+#~ "tt></p>"
+
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr "<p>Ressursside loendi hankimine <b>%1</b> pealt nurjus.</p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p><b>%1</b> eelvaatluse hankimine nurjus:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "<p><b>%1</b> eelvaatluse hankimine nurjus.</p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Ressursi <b>%1</b> ühendamine nurjus:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr "<p>Ressursi <b>%1</b> ühendamine nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Ressursi <b>%1</b> lahutamine asukohast <b>%2</b> nurjus:</p><p><tt>"
+#~ "%3</tt></p>"
+
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr "<p>Ressursi <b>%1</b> lahutamine asukohast <b>%2</b> nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~ "is owned by the user <b>%3</b>.</p>"
+#~ msgstr ""
+#~ "<p>Sul ei ole lubatud lahutada ressurssi <b>%1</b> asukohast <b>%2</b>. "
+#~ "Selle omanik on kasutaja <b>%3</b>.</p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Trükkimine printeris <b>%1</b> nurjus:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "<p>Trükkimine printeris <b>%1</b> nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr ""
+#~ "<p><b>%1</b> ja <b>%2</b> sünkroonimine nurjus:</p><p><tt>%3</tt></p>"
+
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "<p><b>%1</b> ja <b>%2</b> sünkroonimine nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Võrgunaabrusest elemendi <b>%1</b> otsimine nurjus:</p><p><tt>%2</tt></"
+#~ "p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr "<p>Võrgunaabrusest elemendi <b>%1</b> otsimine nurjus</p>"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>The command <b>%1</b> could not be found. Please check your "
+#~| "installation.</p>"
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr "<p>Käsku <b>%1</b> ei leitud. Palun kontrolli oma paigaldust.</p>"
+
+#~ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#~ msgstr ""
+#~ "<p>Jagatud ressurss <b>%1</b> on printer ja seda ei saa järjehoidjatesse "
+#~ "panna.</p>"
+
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "<p>Faili <b>%1</b> ei leitud.</p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Faili <b>%1</b> avamine nurjus:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Faili <b>%1</b> avamine nurjus.</p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Faili <b>%1</b> lugemine nurjus:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Faili <b>%1</b> lugemine nurjus.</p>"
+
+#~ msgid ""
+#~ "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#~ msgstr "<p>Järgmise kataloogi loomine nurjus:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Protsessi käivitamine nurjus (veakood: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Protsessi tabas krahh (veakood: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Protsess aegus (veakood: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Protsessi kirjutamine nurjus (veakood: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Protsessist lugemine nurjus (veakood: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process reported an unknown error.</p>"
+#~ msgstr "<p>Protsess teatas tundmatust tõrkest.</p>"
+
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Süsteemne väljakutse <b>%1</b> nurjus:</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code:<tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr ""
+#~ "<p>Toimingu käivitamine administraatori õigustes nurjus (veakood:<tt>%1</"
+#~ "tt>).</p>"
+
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr "<p>Toimingu käivitamine administraatori õigustes nurjus.</p>"
+
+#~ msgid "<p>The URL that was passed is invalid.</p>"
+#~ msgstr "<qt>Sisestatud URL on vigane.</qt>"
+
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "<p>Praegu ei ole määratud ühtegi leviala.</p>"
+
+#~ msgid "Preview"
+#~ msgstr "Eelvaatlus"
+
+#~ msgid "The preview is displayed here."
+#~ msgstr "Siin näeb eelvaatlust."
+
+#~ msgid "Reload"
+#~ msgstr "Laadi uuesti"
+
+#~ msgid "Back"
+#~ msgstr "Tagasi"
+
+#~ msgid "Forward"
+#~ msgstr "Edasi"
+
+#~ msgid "Up"
+#~ msgstr "Üles"
+
+#~ msgid ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+#~ msgstr ""
+#~ "Siin näeb aktiivset UNC-aadressi. Rippmenüüst võib valida ka mõne varem "
+#~ "külastatud asukoha, mida siis näidatakse ülalolevas vaates."
+
+#~ msgid "Print File"
+#~ msgstr "Faili trükkimine"
+
+#~ msgid "Printer"
+#~ msgstr "Printer"
+
+#~ msgid "File:"
+#~ msgstr "Fail:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "See on fail, mida soovid trükkida võrguprinteris. Praegu on toetatud "
+#~ "ainult üksikud MIME tüübid, näiteks PDF, PostScript, klaartekst ja "
+#~ "pildid. Kui faili MIME tüüp pole toetatud, tuleb see teisendada."
+
+#~ msgid "Copies:"
+#~ msgstr "Koopiad:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Trükitavate koopiate arv."
+
+#~ msgid "Disk"
+#~ msgstr "Ketas"
+
+#~ msgid "Synchronizing"
+#~ msgstr "Sünkroonimine"
+
+#~ msgid "Source"
+#~ msgstr "Lähtekoht"
+
+#~ msgid "Destination"
+#~ msgstr "Sihtkoht"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Sihtkoha sünkroonimine lähtekohaga"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Vaheta asukohad"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Lähte- ja sihtkoha vahetamine"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Palun määra sünkroonimiseks lähte- ja sihtkataloog."
+
+#~ msgid "Source:"
+#~ msgstr "Lähtekoht:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "See on lähtekataloog. Selles leiduvad andmed kirjutatakse sihtkataloogi."
+
+#~ msgid "Destination:"
+#~ msgstr "Sihtkoht:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr "See on sihtkataloog. Seda uuendatakse lähtekataloogi andmetega."
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool."
+#~ "</qt>"
+
+#, fuzzy
+#~| msgid "&Open Mount Dialog"
+#~ msgid "Mount Dialog"
+#~ msgstr "&Ava ühendamisdialoog"
+
+#, fuzzy
+#~| msgid "U&nmount All"
+#~ msgid "Unmount All"
+#~ msgstr "La&huta kõik"
+
+#, fuzzy
+#~| msgid "Use NTLM password hashing"
+#~ msgid "NTLM password hashing"
+#~ msgstr "NTLM parooli räsimine"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing"
+#~ msgid "NTLMv2 password hashing"
+#~ msgstr "NTLMv2 parooli räsimine"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing with packet signing"
+#~ msgid "NTLMv2 password hashing encapsulated in Raw NTLMSSP message"
+#~ msgstr "NTLMv2 parooli räsimine pakettide allkirjastamisel"
+
+#, fuzzy
+#~| msgid "Use NTLMv2 password hashing with packet signing"
+#~ msgid ""
+#~ "NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet "
+#~ "signing"
+#~ msgstr "NTLMv2 parooli räsimine pakettide allkirjastamisel"
+
+#, fuzzy
+#~| msgid "Unmounting shares. Please wait."
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Jagatud ressurside lahutamine. Palun oota."
+
+#~ msgid "Use default security mode"
+#~ msgstr "Vaikimisi turberežiimi kasutamine"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "IP address:"
+#~ msgstr "IP-aadress:"
+
+#~ msgid "Mount"
+#~ msgstr "Ühenda"
+
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr "<p>Mõningaid nõutud programme ei leitud:</p><p><tt>%1</tt></p>"
+
+#~ msgid "Advanced"
+#~ msgstr "Muu"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to force the unmounting of this share?</qt>"
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr "<qt>Kas tõesti lahutada see ressurss jõuga?</qt>"
+
+#, fuzzy
+#~| msgid "&Force Unmounting"
+#~ msgid "Force Unmounting"
+#~ msgstr "Lahuta &jõuga"
+
+#, fuzzy
+#~| msgid "<qt>Do you really want to force the unmounting of this share?</qt>"
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of all inaccessible "
+#~ "shares?</p></qt>"
+#~ msgstr "<qt>Kas tõesti lahutada see ressurss jõuga?</qt>"
+
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr ""
+#~ "\\u00A9 2003-2011: Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007: Massimo Callegari"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "Lahuta &jõuga"
+
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "<qt>Palun sisesta kasutajanimi ja parool.</qt>"
+
+#~ msgid "Signing State"
+#~ msgstr "Allkirjastamise olek"
+
+#~ msgid "Use NTLM password hashing (default)"
+#~ msgstr "NTLM parooli räsimine (vaikimisi)"
+
+#~ msgid "UNC Address"
+#~ msgstr "UNC-aadress"
+
+#~ msgid "Write Access"
+#~ msgstr "Kirjutamisõigus"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "Kasutaja ID"
+
+#~ msgid "Group ID"
+#~ msgstr "Grupi ID"
+
+#~ msgid "SMB Port"
+#~ msgstr "SMB port"
+
+#~ msgid "File System Port"
+#~ msgstr "Failisüsteemi port"
+
+#~ msgid "Automatic"
+#~ msgstr "Automaatne"
+
+#~ msgid "Massimo Callegari"
+#~ msgstr "Massimo Callegari"
+
+#~ msgid "A&dd"
+#~ msgstr "Lis&a"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "host. It has the following syntax: //HOST."
+#~ msgstr ""
+#~ "Ühtse nimede reeglistiku (UNC) aadress kirjeldab masina asukohta. Süntaks "
+#~ "on järgmine: //MASIN."
+
+#~ msgid "automatic"
+#~ msgstr "automaatne"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //HOST/SHARE"
+#~ msgstr ""
+#~ "Ühtse nimede reeglistiku (UNC) aaress kirjeldab jagatud ressursi "
+#~ "asukohta. Süntaks on järgmine: //MASIN/RESSURSS."
+
+#~ msgid "%1 has an unsupported format version."
+#~ msgstr "%1 vormingu versioon on toetamata."
+
+#~ msgid ""
+#~ "<qt>The format of the UNC address you entered is not correct. It must "
+#~ "have the form //[USER@]HOST/SHARE."
+#~ msgstr ""
+#~ "<qt>Sisestatud UNC-aadressi vorming on vigane. See peab olema kujul //"
+#~ "[KASUTAJA@]MASIN/RESSURSS."
+
+#~ msgid "M&ount Manually"
+#~ msgstr "Üh&enda käsitsi"
+
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Turvalaekasse salvestatud kirjete laadimine."
+
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Kirjete salvestamine turvalaekasse."
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protokolli vihje:"

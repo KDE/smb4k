@@ -1,0 +1,5780 @@
+# Martin Schlander <mschlander@opensuse.org>, 2009, 2010, 2011, 2012, 2013, 2014, 2016.
+# scootergrisen, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-12-07 02:38+0000\n"
+"PO-Revision-Date: 2017-11-06 15:20+0200\n"
+"Last-Translator: scootergrisen\n"
+"Language-Team: Danish\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Martin Schlander"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "mschlander@opensuse.org"
+
+#: helpers/smb4kmounthelper.cpp:163
+#, kde-format
+msgid "The mount process could not be started."
+msgstr "Monteringsprocessen kunne ikke startes."
+
+#: helpers/smb4kmounthelper.cpp:212
+#, kde-format
+msgid "The mountpoint %1 is invalid."
+msgstr "Monteringspunktet %1 er ugyldigt."
+
+#: helpers/smb4kmounthelper.cpp:281
+#, kde-format
+msgid "The unmount process could not be started."
+msgstr "Afmonteringsprocessen kunne ikke startes."
+
+#: smb4k/main.cpp:59 smb4k/smb4ksystemtray.cpp:77
+#, kde-format
+msgid "Smb4K"
+msgstr "Smb4K"
+
+#: smb4k/main.cpp:60
+#, kde-format
+msgid "Advanced network neighborhood browser and Samba share mounting utility"
+msgstr ""
+"Avanceret browser til netværksnabolag og værktøj til montering af Samba-"
+"ressourcer"
+
+#: smb4k/main.cpp:61
+#, fuzzy, kde-format
+#| msgid "© 2003-2017 Alexander Reinholdt"
+msgid "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2017 Alexander Reinholdt"
+
+#: smb4k/main.cpp:69
+#, kde-format
+msgid "Alexander Reinholdt"
+msgstr "Alexander Reinholdt"
+
+#: smb4k/main.cpp:69
+#, kde-format
+msgid "Developer"
+msgstr "Udvikler"
+
+#: smb4k/main.cpp:74
+#, kde-format
+msgid "Wolfgang Geisendörfer"
+msgstr "Wolfgang Geisendörfer"
+
+#: smb4k/main.cpp:74
+#, kde-format
+msgid "Donator"
+msgstr "Donator"
+
+#. i18n: ectx: Menu (file)
+#: smb4k/smb4k_shell.rc:4
+#, kde-format
+msgid "&File"
+msgstr "&Fil"
+
+#. i18n: ectx: Menu (network)
+#: smb4k/smb4k_shell.rc:9
+#, kde-format
+msgid "&Network"
+msgstr "&Netværk"
+
+#. i18n: ectx: Menu (shares)
+#: smb4k/smb4k_shell.rc:12
+#, kde-format
+msgid "Sh&ares"
+msgstr "R&essourcer"
+
+#. i18n: ectx: Menu (bookmarks)
+#: smb4k/smb4k_shell.rc:15
+#, kde-format
+msgid "&Bookmarks"
+msgstr "&Bogmærker"
+
+#. i18n: ectx: Menu (settings)
+#: smb4k/smb4k_shell.rc:17
+#, kde-format
+msgid "&Settings"
+msgstr "&Indstillinger"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: smb4k/smb4k_shell.rc:29
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Hovedværktøjslinje"
+
+#: smb4k/smb4kbookmarkmenu.cpp:48
+#, kde-format
+msgid "Bookmarks"
+msgstr "Bogmærker"
+
+#: smb4k/smb4kbookmarkmenu.cpp:135 smb4k/smb4kbookmarkmenu.cpp:158
+#, kde-format
+msgid "&Edit Bookmarks"
+msgstr "&Redigér bogmærker"
+
+#: smb4k/smb4kbookmarkmenu.cpp:144 smb4k/smb4kmainwindow.cpp:168
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173
+#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#, kde-format
+msgid "Add &Bookmark"
+msgstr "Tilføj &bogmærke"
+
+#: smb4k/smb4kbookmarkmenu.cpp:187 smb4k/smb4kbookmarkmenu.cpp:241
+#, kde-format
+msgid "Mount All Bookmarks"
+msgstr "Montér alle bogmærker"
+
+#: smb4k/smb4kconfigdialog.cpp:143
+#, kde-format
+msgid "User Interface"
+msgstr "Brugerflade"
+
+#: smb4k/smb4kconfigdialog.cpp:144 smb4k/smb4knetworkbrowser.cpp:60
+#, kde-format
+msgid "Network"
+msgstr "Netværk"
+
+#: smb4k/smb4kconfigdialog.cpp:145 smb4k/smb4kconfigpagecustomoptions.cpp:576
+#, kde-format
+msgid "Mounting"
+msgstr "Montering"
+
+#: smb4k/smb4kconfigdialog.cpp:146 smb4k/smb4kconfigpagecustomoptions.cpp:229
+#: smb4k/smb4kconfigpagenetwork.cpp:204
+#, kde-format
+msgid "Authentication"
+msgstr "Autentificering"
+
+#: smb4k/smb4kconfigdialog.cpp:147
+#, kde-format
+msgid "Synchronization"
+msgstr "Synkronisering"
+
+#: smb4k/smb4kconfigdialog.cpp:148
+#, kde-format
+msgid "Custom Options"
+msgstr "Brugervalgte indstillinger"
+
+#: smb4k/smb4kconfigdialog.cpp:149 smb4k/smb4kconfigpageprofiles.cpp:61
+#: smb4k/smb4kprofilesmenu.cpp:40
+#, kde-format
+msgid "Profiles"
+msgstr "Profiler"
+
+#: smb4k/smb4kconfigdialog.cpp:257 smb4k/smb4kconfigdialog.cpp:288
+#: smb4k/smb4kconfigdialog.cpp:300 smb4k/smb4kconfigdialog.cpp:337
+#, kde-format
+msgid ""
+"<qt>An incorrect setting has been found. You are now taken to the "
+"corresponding configuration page to fix it.</qt>"
+msgstr ""
+"<qt>Der er blevet fundet en forkert indstilling. Du bliver nu ført til den "
+"tilsvarende konfigurationsside for at rette den.</qt>"
+
+#: smb4k/smb4kconfigdialog.cpp:642
+#, kde-format
+msgid "Enter the default login information."
+msgstr "Angiv standard login-information."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:60
+#: smb4k/smb4kconfigpageprofiles.cpp:47
+#, kde-format
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:84
+#, kde-format
+msgid "Wallet Entries"
+msgstr "Tegnebogsindgange"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:106
+#: smb4k/smb4kconfigpagecustomoptions.cpp:77
+#, kde-format
+msgid "Edit"
+msgstr "Redigér"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:113
+#: smb4k/smb4kconfigpagecustomoptions.cpp:81
+#, kde-format
+msgid "Remove"
+msgstr "Fjern"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:120
+#: smb4k/smb4knetworksearchtoolbar.cpp:126
+#, fuzzy, kde-format
+#| msgid "&Clear"
+msgid "Clear"
+msgstr "&Ryd"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:135
+#, kde-format
+msgid "Load"
+msgstr "Indlæs"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:137
+#, fuzzy, kde-format
+#| msgid ""
+#| "The login information that was stored by Smb4K will be loaded from the "
+#| "wallet. If you chose to not use the wallet, pressing this button will "
+#| "have no effect."
+msgid ""
+"The login information that was stored by Smb4K will be loaded from the "
+"wallet."
+msgstr ""
+"Login-informationen der blev opbevaret af Smb4K vil blive indlæst fra "
+"tegnebogen. Hvis du valgte ikke at bruge tegnebogen, vil tryk på denne knap "
+"ikke have nogen virkning."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:148
+#, kde-format
+msgid "Save"
+msgstr "Gem"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:150
+#, kde-format
+msgid "All modifications you applied are saved to the wallet."
+msgstr "Alle ændringer du anvendte gemmes i tegnebogen."
+
+#: smb4k/smb4kconfigpageauthentication.cpp:164
+#, fuzzy, kde-format
+#| msgid "Show details"
+msgid "Details"
+msgstr "Vis detaljer"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:237
+#: smb4k/smb4kconfigpageauthentication.cpp:362
+#: smb4k/smb4kconfigpageauthentication.cpp:470
+#: smb4k/smb4kconfigpageauthentication.cpp:497
+#: smb4k/smb4kconfigpageauthentication.cpp:613
+#, kde-format
+msgid "Default Login"
+msgstr "Standard-login"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:358
+#, kde-format
+msgid "Entry"
+msgstr "Indgang"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:330 smb4k/smb4ktooltip.cpp:305
+#, kde-format
+msgid "Workgroup"
+msgstr "Arbejdsgruppe"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:334
+#: smb4k/smb4kconfigpageauthentication.cpp:366
+#, kde-format
+msgid "Login"
+msgstr "Login"
+
+#: smb4k/smb4kconfigpageauthentication.cpp:338
+#: smb4k/smb4kconfigpageauthentication.cpp:370
+#, kde-format
+msgid "Password"
+msgstr "Adgangskode"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:85
+#, kde-format
+msgid "Clear List"
+msgstr "Ryd listen"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:117
+#, fuzzy, kde-format
+#| msgid "Notifications"
+msgid "Identification"
+msgstr "Bekendtgørelser"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:120 smb4k/smb4ktooltip.cpp:370
+#, kde-format
+msgid "Workgroup:"
+msgstr "Arbejdsgruppe:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:130 smb4k/smb4ktooltip.cpp:448
+#: smb4k/smb4ktooltip.cpp:534
+#, fuzzy, kde-format
+#| msgid "Location"
+msgid "Location:"
+msgstr "Placering"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:140 smb4k/smb4ktooltip.cpp:358
+#: smb4k/smb4ktooltip.cpp:436
+#, kde-format
+msgid "IP Address:"
+msgstr "IP-adresse:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:152
+#, fuzzy, kde-format
+#| msgid "Network"
+msgid "Network Item"
+msgstr "Netværk"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:168
+#: smb4k/smb4kconfigpagecustomoptions.cpp:321
+#: smb4k/smb4kconfigpagecustomoptions.cpp:506
+#: smb4k/smb4kconfigpagemounting.cpp:164 smb4k/smb4kconfigpagemounting.cpp:572
+#, kde-format
+msgid "Common Options"
+msgstr "Fælles indstillinger"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:241
+#: smb4k/smb4kconfigpagenetwork.cpp:57
+#, fuzzy, kde-format
+#| msgid "Settings"
+msgid "Browse Settings"
+msgstr "Indstillinger"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:253
+#, fuzzy, kde-format
+#| msgid "MAC Address:"
+msgid "MAC Address"
+msgstr "MAC-adresse:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:257
+#, kde-format
+msgid "MAC Address:"
+msgstr "MAC-adresse:"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:270
+#, kde-format
+msgid "Actions"
+msgstr "Handlinger"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:274
+#, kde-format
+msgid "Send magic package before scanning the network neighborhood"
+msgstr "Send magisk pakke før scanning af netværksnabolaget"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:280
+#, kde-format
+msgid "Send magic package before mounting a share"
+msgstr "Send magisk pakke før montering af en delt ressource"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:288
+#: smb4k/smb4kconfigpagenetwork.cpp:303
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN Settings"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:324
+#: smb4k/smb4kconfigpagecustomoptions.cpp:509
+#, kde-format
+msgid "Always remount this share"
+msgstr "Genmontér altid denne ressource"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:364
+#: smb4k/smb4kconfigpagemounting.cpp:216
+#, kde-format
+msgid "CIFS Unix Extensions Support"
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:367
+#, kde-format
+msgid "This server supports the CIFS Unix extensions"
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:433
+#: smb4k/smb4kconfigpagemounting.cpp:326
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Common Mount Settings"
+msgstr "Fælles indstillinger"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:444
+#: smb4k/smb4kconfigpagemounting.cpp:334
+#, kde-format
+msgid "Advanced Options"
+msgstr "Avancerede indstillinger"
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:484
+#: smb4k/smb4kconfigpagemounting.cpp:463
+#, fuzzy, kde-format
+#| msgid "Advanced Settings"
+msgid "Advanced Mount Settings"
+msgstr "Avancerede indstillinger"
+
+#: smb4k/smb4kconfigpagemounting.cpp:83 smb4k/smb4kconfigpagemounting.cpp:495
+#, kde-format
+msgid "Directories"
+msgstr "Mapper"
+
+#: smb4k/smb4kconfigpagemounting.cpp:105 smb4k/smb4kconfigpagemounting.cpp:517
+#: smb4k/smb4kconfigpagenetwork.cpp:137
+#: smb4k/smb4kconfigpagesynchronization.cpp:68
+#, kde-format
+msgid "Behavior"
+msgstr "Opførsel"
+
+#: smb4k/smb4kconfigpagemounting.cpp:125 smb4k/smb4kconfigpagemounting.cpp:537
+#, kde-format
+msgid " min"
+msgstr ""
+
+#: smb4k/smb4kconfigpagemounting.cpp:153 smb4k/smb4kconfigpagemounting.cpp:561
+#: smb4k/smb4kconfigpagenetwork.cpp:157
+#: smb4k/smb4kconfigpagesynchronization.cpp:116
+#, fuzzy, kde-format
+#| msgid "Settings"
+msgid "Basic Settings"
+msgstr "Indstillinger"
+
+#: smb4k/smb4kconfigpagemounting.cpp:242 smb4k/smb4kconfigpagemounting.cpp:592
+#, kde-format
+msgid "Choose a different user"
+msgstr "Vælg en anden bruger"
+
+#: smb4k/smb4kconfigpagemounting.cpp:279 smb4k/smb4kconfigpagemounting.cpp:629
+#, kde-format
+msgid "Choose a different group"
+msgstr "Vælg en anden gruppe"
+
+#: smb4k/smb4kconfigpagemounting.cpp:450
+#, kde-format
+msgid "Edit the additional CIFS options."
+msgstr "Redigér de yderligere CIFS-tilvalg."
+
+#: smb4k/smb4kconfigpagemounting.cpp:676
+#, fuzzy, kde-format
+#| msgid "Client character set:"
+msgid "Character Sets"
+msgstr "Klientens tegnsæt:"
+
+#: smb4k/smb4kconfigpagemounting.cpp:726
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Mount Settings"
+msgstr "Fælles indstillinger"
+
+#: smb4k/smb4kconfigpagemounting.cpp:845
+#, kde-format
+msgid "Additional CIFS Options"
+msgstr "Yderligere CIFS-tilvalg"
+
+#: smb4k/smb4kconfigpagemounting.cpp:845
+#, kde-format
+msgid "<qt>Enter the desired options as a comma separated list:</qt>"
+msgstr "<qt>Angiv de ønskede tilvalg som en kommasepareret liste:</qt>"
+
+#: smb4k/smb4kconfigpagemounting.cpp:874
+#, kde-format
+msgid ""
+"<qt>The following entry is going to be removed from the additional options: "
+"%2. Please read the handbook for details.</qt>"
+msgid_plural ""
+"<qt>The following %1 entries are going to be removed from the additional "
+"options: %2. Please read the handbook for details.</qt>"
+msgstr[0] ""
+"<qt>Følgende indgang bliver fjernet fra de yderligere tilvalg: %2. Læs "
+"håndbogen for detaljer.</qt>"
+msgstr[1] ""
+"<qt>Følgende %1 indgange bliver fjernet fra de yderligere tilvalg: %2. Læs "
+"håndbogen for detaljer.</qt>"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:168
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Common Settings"
+msgstr "Fælles indstillinger"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:223
+#, kde-format
+msgid "Security"
+msgstr "Sikkerhed"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:248
+#, fuzzy, kde-format
+#| msgid "Samba Options"
+msgid "Samba Settings"
+msgstr "Samba flag"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:259
+#, kde-format
+msgid "Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kconfigpagenetwork.cpp:271
+#, kde-format
+msgid " s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagenetwork.cpp:286
+#, kde-format
+msgid ""
+"<qt>Define the hosts that should be woken up via the custom options dialog.</"
+"qt>"
+msgstr ""
+"<qt>Definér de værter som skal vækkes via dialogen til brugervalgte "
+"indstillinger.</qt>"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:55
+#, kde-format
+msgid "Default Destination"
+msgstr "Standarddestination"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:89
+#, kde-format
+msgid "Backup"
+msgstr "Backup"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:125
+#: smb4k/smb4kconfigpagesynchronization.cpp:348
+#, kde-format
+msgid "General"
+msgstr "Generelt"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:149
+#, kde-format
+msgid "Links"
+msgstr "Links"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:179
+#, fuzzy, kde-format
+#| msgid "File Permissions, etc."
+msgid "Permissions, etc."
+msgstr "Filrettigheder, osv."
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:207
+#, fuzzy, kde-format
+#| msgid "File Deletion"
+msgid "File Handling"
+msgstr "Sletning af filer"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:216
+#, kde-format
+msgid "Compression"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:238
+#, fuzzy, kde-format
+#| msgid "File"
+msgid "Files"
+msgstr "Fil"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:245
+#: smb4k/smb4kconfigpagesynchronization.cpp:250
+#, kde-format
+msgid " KiB"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:268
+#: smb4k/smb4kconfigpagesynchronization.cpp:440
+#: smb4k/smb4kconfigpagesynchronization.cpp:455
+#, fuzzy, kde-format
+#| msgid "Miscellaneous Settings"
+msgid "Miscellaneous"
+msgstr "Diverse indstillinger"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:275
+#, kde-format
+msgid " KiB/s"
+msgstr ""
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:285
+#, kde-format
+msgid "File Transfer"
+msgstr "Filoverførsel"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:294
+#, fuzzy, kde-format
+#| msgid "Hidden Files && Directories"
+msgid "Files && Directories"
+msgstr "Skjulte filer og mapper"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:324
+#, kde-format
+msgid "Restrictions"
+msgstr "Restriktioner"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:339
+#, kde-format
+msgid "File Deletion"
+msgstr "Sletning af filer"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:385
+#, kde-format
+msgid "Filter Rules"
+msgstr "Filterregler"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:393
+#, kde-format
+msgid "Special filter rules:"
+msgstr "Specielle filterregler:"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:409
+#, kde-format
+msgid "Filtering"
+msgstr "Filtrering"
+
+#: smb4k/smb4kconfigpagesynchronization.cpp:418
+#, kde-format
+msgid "Checksums"
+msgstr "Tjeksummer"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:56
+#, kde-format
+msgid "Main Window"
+msgstr "Hovedvindue"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:86 smb4k/smb4kmainwindow.cpp:242
+#, kde-format
+msgid "Network Neighborhood"
+msgstr "Netværksnabolag"
+
+#: smb4k/smb4kconfigpageuserinterface.cpp:119
+#, kde-format
+msgid "Shares View"
+msgstr "Ressourcevisning"
+
+#: smb4k/smb4kmainwindow.cpp:158
+#, kde-format
+msgid "Dock Widgets"
+msgstr "Dok kontroller"
+
+#: smb4k/smb4kmainwindow.cpp:265 smb4k/smb4ksharesmenu.cpp:56
+#, kde-format
+msgid "Mounted Shares"
+msgstr "Monterede ressourcer"
+
+#: smb4k/smb4kmainwindow.cpp:449
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Closing the main window will keep Smb4K running in the system tray. "
+#| "Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgid ""
+"<qt>Closing the main window will keep Smb4K running in the system tray."
+"<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+msgstr ""
+"<qt>Ved lukning af hovedvinduet vil Smb4K stadig køre i statusområdet. Brug "
+"<i>Afslut</i> i menuen <i>Fil</i> for at afslutte programmet.</qt>"
+
+#: smb4k/smb4kmainwindow.cpp:451
+#, kde-format
+msgid "Docking"
+msgstr "Dokning"
+
+#: smb4k/smb4kmainwindow.cpp:528
+#, kde-format
+msgid "There are currently no shares mounted."
+msgstr "Der er aktuelt ingen monterede ressourcer."
+
+#: smb4k/smb4kmainwindow.cpp:533
+#, kde-format
+msgid "There is currently %1 share mounted."
+msgid_plural "There are currently %1 shares mounted."
+msgstr[0] "Der er aktuelt %1 monteret ressource."
+msgstr[1] "Der er aktuelt %1 monterede ressourcer."
+
+#: smb4k/smb4kmainwindow.cpp:736
+#, kde-format
+msgid "The wallet is used."
+msgstr "Tegnebogen er i brug."
+
+#: smb4k/smb4kmainwindow.cpp:742
+#, kde-format
+msgid "The password dialog is used."
+msgstr "Adgangskode-dialog bruges."
+
+#: smb4k/smb4kmainwindow.cpp:755
+#, kde-format
+msgid "Looking for workgroups and domains..."
+msgstr "Leder efter arbejdsgrupper og domæner..."
+
+#: smb4k/smb4kmainwindow.cpp:761
+#, kde-format
+msgid "Looking for hosts in domain %1..."
+msgstr "Leder efter værter på domænet %1..."
+
+#: smb4k/smb4kmainwindow.cpp:767
+#, kde-format
+msgid "Looking for shares provided by host %1..."
+msgstr "Leder efter ressourcer leveret af værten %1..."
+
+#: smb4k/smb4kmainwindow.cpp:778 smb4k/smb4kmainwindow.cpp:789
+#, fuzzy, kde-format
+#| msgid "Looking for hosts in domain %1..."
+msgid "Looking for files and directories in %1..."
+msgstr "Leder efter værter på domænet %1..."
+
+#: smb4k/smb4kmainwindow.cpp:808
+#, kde-format
+msgid "Waking up remote hosts..."
+msgstr "Vækker eksterne værtsmaskiner..."
+
+#: smb4k/smb4kmainwindow.cpp:814
+#, kde-format
+msgid "Sending file to printer %1..."
+msgstr "Sender fil til printeren %1..."
+
+#: smb4k/smb4kmainwindow.cpp:819
+#, fuzzy, kde-format
+msgid "Searching..."
+msgstr "Søger på netværket..."
+
+#: smb4k/smb4kmainwindow.cpp:841 smb4k/smb4kmainwindow.cpp:887
+#: smb4k/smb4kmainwindow.cpp:1039
+#, kde-format
+msgid "Done."
+msgstr "Færdig."
+
+#: smb4k/smb4kmainwindow.cpp:854
+#, kde-format
+msgid "Mounting..."
+msgstr "Montering..."
+
+#: smb4k/smb4kmainwindow.cpp:859
+#, kde-format
+msgid "Unmounting..."
+msgstr "Afmontering..."
+
+#: smb4k/smb4kmainwindow.cpp:864
+#, kde-format
+msgid "Waking up host..."
+msgstr "Vækker ekstern værtsmaskine..."
+
+#: smb4k/smb4kmainwindow.cpp:901
+#, kde-format
+msgid "%1 has been mounted successfully."
+msgstr "%1 er blevet monteret."
+
+#: smb4k/smb4kmainwindow.cpp:947
+#, kde-format
+msgid "%1 has been unmounted successfully."
+msgstr "%1 er blevet afmonteret."
+
+#: smb4k/smb4kmainwindow.cpp:1024
+#, kde-format
+msgid "Synchronizing %1"
+msgstr "Synkroniserer %1"
+
+#: smb4k/smb4knetworkbrowser.cpp:61
+#, kde-format
+msgid "Type"
+msgstr "Type"
+
+#: smb4k/smb4knetworkbrowser.cpp:62
+#, kde-format
+msgid "IP Address"
+msgstr "IP-adresse"
+
+#: smb4k/smb4knetworkbrowser.cpp:63
+#, kde-format
+msgid "Comment"
+msgstr "Kommentar"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:141
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:534
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:548
+#, kde-format
+msgid "Scan Netwo&rk"
+msgstr "Scan netvæ&rk"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:143
+#, kde-format
+msgid "&Abort"
+msgstr "&Afbryd"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:155
+#, kde-format
+msgid "&Search"
+msgstr "&Søg"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:185 smb4k/smb4ksystemtray.cpp:93
+#, kde-format
+msgid "&Open Mount Dialog"
+msgstr "Å&bn monteringsdialogen"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
+#, kde-format
+msgid "Au&thentication"
+msgstr "Au&tentificering"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:215
+#, kde-format
+msgid "&Custom Options"
+msgstr "&Brugervalgte indstillinger"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#, kde-format
+msgid "Pre&view"
+msgstr "Forhånds&visning"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:237
+#, kde-format
+msgid "&Print File"
+msgstr "&Udskriv fil"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:249
+#, kde-format
+msgid "&Mount"
+msgstr "&Montér"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:250
+#: smb4k/smb4ksharesviewdockwidget.cpp:225
+#, kde-format
+msgid "&Unmount"
+msgstr "&Afmontér"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:441
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
+#, kde-format
+msgid "Scan Compute&r"
+msgstr "Scan compute&r"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:493
+#, kde-format
+msgid "Scan Wo&rkgroup"
+msgstr "Scan a&rbejdsgruppe"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:59
+#, kde-format
+msgid "Close"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:70
+#, fuzzy, kde-format
+#| msgid "Server string:"
+msgid "Search string"
+msgstr "Serverstreng:"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:85
+#, kde-format
+msgid "Search"
+msgstr "Søg"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:87
+#, kde-format
+msgid "Stop"
+msgstr ""
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:100
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Item Down"
+msgstr "Element"
+
+#: smb4k/smb4knetworksearchtoolbar.cpp:113
+#, fuzzy, kde-format
+#| msgid "Item"
+msgid "Item Up"
+msgstr "Element"
+
+#: smb4k/smb4ksharesmenu.cpp:124 smb4k/smb4ksharesviewdockwidget.cpp:231
+#, kde-format
+msgid "U&nmount All"
+msgstr "Afmo&ntér alle"
+
+#: smb4k/smb4ksharesmenu.cpp:161
+#, kde-format
+msgid "Unmount"
+msgstr "Afmontér"
+
+#: smb4k/smb4ksharesmenu.cpp:176
+#, kde-format
+msgid "Add Bookmark"
+msgstr "Tilføj bogmærke"
+
+#: smb4k/smb4ksharesmenu.cpp:187
+#, kde-format
+msgid "Synchronize"
+msgstr "Synkronisér"
+
+#: smb4k/smb4ksharesmenu.cpp:202
+#, kde-format
+msgid "Open with Konsole"
+msgstr "Åbn med Konsole"
+
+#: smb4k/smb4ksharesmenu.cpp:214
+#, kde-format
+msgid "Open with File Manager"
+msgstr "Åbn med filhåndtering"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:186
+#, kde-format
+msgid "View Modes"
+msgstr "Visningstilstande"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:192
+#, kde-format
+msgid "Icon View"
+msgstr "Ikonvisning"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#, kde-format
+msgid "List View"
+msgstr "Listevisning"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:243
+#, kde-format
+msgid "S&ynchronize"
+msgstr "S&ynkronisér"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:249
+#, kde-format
+msgid "Open with Konso&le"
+msgstr "Åbn med Konso&le"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#, kde-format
+msgid "Open with F&ile Manager"
+msgstr "Åbn med f&ilhåndtering"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:431
+#, kde-format
+msgid ""
+"<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
+"any files here.</qt>"
+msgstr ""
+"<qt>Der er ingen aktiv forbindelse til den delte ressource <b>%1</b>! Du kan "
+"ikke slippe nogen filer her.</qt>"
+
+#: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
+#, kde-format
+msgid "yes"
+msgstr "ja"
+
+#: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
+#, kde-format
+msgid "no"
+msgstr "nej"
+
+#: smb4k/smb4ktooltip.cpp:288
+#, kde-format
+msgid "Type:"
+msgstr "Type:"
+
+#: smb4k/smb4ktooltip.cpp:308
+#, fuzzy, kde-format
+#| msgid "Master browser"
+msgid "Master Browser:"
+msgstr "Masterbrowser"
+
+#: smb4k/smb4ktooltip.cpp:343
+#, kde-format
+msgid "Host"
+msgstr "Vært"
+
+#: smb4k/smb4ktooltip.cpp:346 smb4k/smb4ktooltip.cpp:391
+#, kde-format
+msgid "Comment:"
+msgstr "Kommentar:"
+
+#: smb4k/smb4ktooltip.cpp:388
+#, kde-format
+msgid "Share (%1)"
+msgstr "Ressource (%1)"
+
+#: smb4k/smb4ktooltip.cpp:403
+#, fuzzy, kde-format
+#| msgid "Mounted"
+msgid "Mounted:"
+msgstr "Monteret"
+
+#: smb4k/smb4ktooltip.cpp:425
+#, fuzzy, kde-format
+#| msgid "Host"
+msgid "Host:"
+msgstr "Vært"
+
+#: smb4k/smb4ktooltip.cpp:486 smb4k/smb4ktooltip.cpp:496
+#: smb4k/smb4ktooltip.cpp:561 smb4k/smb4ktooltip.cpp:573
+#: smb4k/smb4ktooltip.cpp:574 smb4k/smb4ktooltip.cpp:606
+#, kde-format
+msgid "unknown"
+msgstr "ukendt"
+
+#: smb4k/smb4ktooltip.cpp:492 smb4k/smb4ktooltip.cpp:602
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%1 ledig ud af %2 (%3 brugt)"
+
+#: smb4k/smb4ktooltip.cpp:545
+#, fuzzy, kde-format
+#| msgid "Mountpoint"
+msgid "Mountpoint:"
+msgstr "Monteringspunkt"
+
+#: smb4k/smb4ktooltip.cpp:556
+#, kde-format
+msgid "Login:"
+msgstr "Login:"
+
+#: smb4k/smb4ktooltip.cpp:568
+#, kde-format
+msgid "Owner:"
+msgstr "Ejer:"
+
+#: smb4k/smb4ktooltip.cpp:582
+#, fuzzy, kde-format
+#| msgid "File system"
+msgid "File system:"
+msgstr "Filsystem"
+
+#: smb4k/smb4ktooltip.cpp:593
+#, fuzzy, kde-format
+#| msgid "Size"
+msgid "Size:"
+msgstr "Størrelse"
+
+#~ msgid "The mount process crashed."
+#~ msgstr "Monteringsprocessen brød sammen."
+
+#~ msgid "The unmount process crashed."
+#~ msgstr "Afmonteringsprocessen brød sammen."
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 ledig ud af %2 (%3 brugt)"
+
+#~ msgid "Location"
+#~ msgstr "Placering"
+
+#~ msgid "Owner"
+#~ msgstr "Ejer"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Netværkværktøjslinje"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Søgeværktøjslinje"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Ressource-værktøjslinje"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Alternativ hovedværktøjslinje"
+
+#~ msgid "Shares"
+#~ msgstr "Ressourcer"
+
+#~ msgid "Password Storage"
+#~ msgstr "Adgangskodeopbevaring"
+
+#~ msgid "General Settings"
+#~ msgstr "Generelle indstillinger"
+
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Indlæs indgange opbevaret i tegnebogen."
+
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Gem indgangene i tegnebogen."
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Vis detaljerne for den valgte indgang."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Markering af dette afkrydsningsfelt vil vise detaljerne for den valgte "
+#~ "login-information nedenfor."
+
+#~ msgid "Undo"
+#~ msgstr "Fortryd"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-adresse:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Filsystem-port:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Skriveadgang:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Sikkerhedstilstand:"
+
+#~ msgid "User ID:"
+#~ msgstr "Bruger-id:"
+
+#~ msgid "Group ID:"
+#~ msgstr "Gruppe-id:"
+
+#~ msgid "MAC address:"
+#~ msgstr "MAC-adresse:"
+
+#~ msgid "Browse List"
+#~ msgstr "Gennemse listen"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodisk scanning"
+
+#~ msgid "General Options"
+#~ msgstr "Generelle indstillinger"
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " bytes"
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Værktøjsprogrammer"
+
+#~ msgid "Copying"
+#~ msgstr "Kopiering"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Sletning og overførsel af filer"
+
+#~ msgid "Columns"
+#~ msgstr "Kolonner"
+
+#~ msgid "Tooltips"
+#~ msgstr "Værktøjstips"
+
+#~ msgid "View Mode"
+#~ msgstr "Visningstilstand"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "Netværksbrowseren kunne ikke oprettes."
+
+#~ msgid "Network Search"
+#~ msgstr "Netværkssøgning"
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Søgedialogen kunne ikke oprettes."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "Ressourcevisningen kunne ikke oprettes."
+
+#~ msgid "Searching for \"%1\"..."
+#~ msgstr "Søger efter \"%1\"..."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Henter forhåndsvisning fra %1..."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "Smb4K's KPart til netværksnabolag-browser"
+
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "© 2007-2015, Alexander Reinholdt"
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Vækker eksterne servere..."
+
+#~ msgid "Search item:"
+#~ msgstr "Søgeelement:"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Angiv søgestrengen her."
+
+#~ msgid "Abort"
+#~ msgstr "Afbryd"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "Smb4K's KPart til netværkssøgning"
+
+#~ msgid "Search Results"
+#~ msgstr "Søgeresultater"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Søgningen gav ingen resultater."
+
+#~ msgid "Open With"
+#~ msgstr "Åbn med"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "KPart til visning af ressourcer til Smb4K"
+
+#~ msgid "&Shares"
+#~ msgstr "&Ressourcer"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Den avancerede browser til netværksnabolag"
+
+#~ msgid "Checks"
+#~ msgstr "Tjek"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Leder efter mere information om værten %1..."
+
+#~ msgid "Mounting share..."
+#~ msgstr "Monterer ressource..."
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Operating system"
+#~ msgstr "Operativsystem"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "Tegnebogen er ikke i brug."
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Montering af %1 mislykkedes."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Afmontering af %1 mislykkedes."
+
+#~ msgid "View"
+#~ msgstr "Vis"
+
+#~ msgid "Settings for the list view:"
+#~ msgstr "Indstillinger for listevisningen:"
+
+#~ msgid "File System"
+#~ msgstr "Filsystem"
+
+#~ msgid "Free"
+#~ msgstr "Ledig"
+
+#~ msgid "Used"
+#~ msgstr "Brugt"
+
+#~ msgid "Total"
+#~ msgstr "I alt"
+
+#~ msgid "Usage"
+#~ msgstr "Brug"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protokoltip:"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Eksterne porte"
+
+#~ msgid "Laptop Support"
+#~ msgstr "Understøttelse af bærbare"
+
+#~ msgid "Hardware"
+#~ msgstr "Hardware"
+
+#~ msgid ""
+#~ "<qt>Smb4K only detects changes in state of your hardware. If you are "
+#~ "performing a software suspend or the like, you should unmount the shares "
+#~ "manually.</qt>"
+#~ msgstr ""
+#~ "<qt>Smb4K detekterer kun ændringer i din hardwares tilstand. Hvis du "
+#~ "udfører en suspendering i software eller lignende, skal du afmontere "
+#~ "ressourcerne manuelt.</qt>"
+
+#~ msgid ""
+#~ "The custom master browser that is to be queried has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Den brugervalgte masterbrowser der skal forespørges er ikke blevet "
+#~ "udfyldt.\n"
+#~ "Angiv den nu."
+
+#~ msgid ""
+#~ "The broadcast areas that are to be scanned have not been filled in.\n"
+#~ "Please enter them now."
+#~ msgstr ""
+#~ "De broadcast-områder der skal scannes er ikke blevet udfyldt.\n"
+#~ "Angiv dem nu."
+
+#~ msgid ""
+#~ "The mount prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Monteringspræfiks er ikke blevet udfyldt.\n"
+#~ "Angiv det nu."
+
+#~ msgid ""
+#~ "The file mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Filmasken er ikke blevet udfyldt.\n"
+#~ "Angiv den nu."
+
+#~ msgid ""
+#~ "The directory mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Mappemasken er ikke blevet udfyldt.\n"
+#~ "Angiv den nu."
+
+#~ msgid ""
+#~ "The synchronization prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Synkroniseringspræfiks er ikke blevet udfyldt.\n"
+#~ "Angiv det nu."
+
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Mappen hvor delvist overførte filer skal opbevares\n"
+#~ "er ikke blevet udfyldt.\n"
+#~ "Angiv den nu."
+
+#~ msgid ""
+#~ "The exclude pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Eksklusionsmønstret for synkronisering er ikke blevet udfyldt.\n"
+#~ "Angiv det nu."
+
+#~ msgid ""
+#~ "The file from which the exclude pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Filen hvorfra eksklusionsmønstret for synkronisering skal læses\n"
+#~ "er ikke blevet udfyldt.\n"
+#~ "Angiv den nu."
+
+#~ msgid ""
+#~ "The include pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Inklusionsmønstret for synkronisering er ikke blevet udfyldt.\n"
+#~ "Angiv det nu."
+
+#~ msgid ""
+#~ "The file from which the include pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Filen hvorfra inklusionsmønstret for synkronisering skal læses\n"
+#~ "er ikke blevet udfyldt.\n"
+#~ "Angiv den nu."
+
+#~ msgid ""
+#~ "The backup suffix for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Backupsuffiks for synkronisering er ikke blevet udfyldt.\n"
+#~ "Angiv det nu."
+
+#~ msgid ""
+#~ "The backup directory for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Backupmappen til synkronisering er ikke blevet udfyldt.\n"
+#~ "Angiv den nu."
+
+#~ msgid ""
+#~ "<qt>Due to security concerns, the cruid option cannot be defined here and "
+#~ "will now be removed.</qt>"
+#~ msgstr ""
+#~ "<qt>Af sikkerhedshensyn kan cruid-indstillingen ikke defineres her, og "
+#~ "vil nu blive fjernet.</qt>"
+
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Montering og afmontering"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Eksterne ressourcer"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Forhåndsvisningsdialog"
+
+#~ msgid "The password dialog mode is used and logins are not remembered."
+#~ msgstr "Tilstand med adgangskode-dialog bruges og logins huskes ikke."
+
+#~ msgid "Show custom bookmark label if available"
+#~ msgstr "Vis brugervalgt bogmærke-etiket hvis tilgængelig"
+
+#~ msgid ""
+#~ "Do not show the name of the share that is represented by the bookmark but "
+#~ "the custom label that was defined in the bookmark editor."
+#~ msgstr ""
+#~ "Vis ikke navnet på ressourcen der repræsenteres af bogmærket, men den "
+#~ "brugervalgte etiket som blev defineret i bogmærkeredigeringen."
+
+#~ msgid "Start docked"
+#~ msgstr "Start dokket"
+
+#~ msgid ""
+#~ "Start the application docked to the system tray, i.e. only the system "
+#~ "tray widget is shown and the main window is hidden. You can bring the "
+#~ "main window up by clicking on the system tray widget or by choosing "
+#~ "\"Restore\" from its popup menu."
+#~ msgstr ""
+#~ "Start programmet dokket i statusområdet, dvs. kun statusområde-widgetten "
+#~ "vises og hovedvinduet er skjult. Du kan åbne hovedvinduet ved at klikke "
+#~ "på statusområde-widgetten eller ved at vælge \"Genskab\" fra pop-op-menuen"
+
+#~ msgid "Show notifications"
+#~ msgstr "Vis bekendtgørelser"
+
+#~ msgid ""
+#~ "Notify the user about actions that were performed, e.g. the mounting or "
+#~ "unmounting of a share. If you do not want to be disturbed too often, you "
+#~ "might want to switch this option off. Warnings and error messages are not "
+#~ "affected by this option."
+#~ msgstr ""
+#~ "Giv brugeren besked om handlinger der blev udført, f.eks. montering eller "
+#~ "afmontering af ressourcer. Hvis du ikke vil forstyrres for ofte, skal du "
+#~ "måske overveje at slå denne indstilling fra. Advarsler og fejlmeddelelser "
+#~ "er ikke omfattet af denne indstilling."
+
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Vis monterede ressourcer med ikonvisning"
+
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr "De monterede ressourcer vil blive vist som ikoner."
+
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Vis monterede ressourcer med listevisning"
+
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "De monterede ressourcer vil blive vist som en liste."
+
+#~ msgid "Show printer shares"
+#~ msgstr "Vis printerressourcer"
+
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "Printerressourcer vil blive vist i netværksbrowseren."
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Vis skjulte ressourcer"
+
+#~ msgid ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgstr ""
+#~ "Skjulte ressourcer vil blive vist i netværksbrowseren. Skjulte ressourcer "
+#~ "slutter på et $-tegn, f.eks. Musik$ eller IPC$."
+
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Vis skjulte IPC$-ressourcer"
+
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr "Skjulte IPC$-ressourcer vil blive vist i netværksbrowseren."
+
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Vis skjulte ADMIN$-ressourcer"
+
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr "Skjulte ADMIN$-ressourcer vil blive vist i netværksbrowseren."
+
+#~ msgid "Show the type of the share"
+#~ msgstr "Vis ressourcetype"
+
+#~ msgid ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+#~ msgstr ""
+#~ "Ressourcetypen vil blive vist i en separat kolonne i netværksbrowseren. "
+#~ "Typen kan enten være Disk, Printer eller IPC."
+
+#~ msgid "Show the IP address of the server"
+#~ msgstr "Vis serverens IP-adresse"
+
+#~ msgid ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+#~ msgstr ""
+#~ "Serverens IP-adresse vil blive vist i en separat kolonne i "
+#~ "netværksbrowseren."
+
+#~ msgid "Show the comment"
+#~ msgstr "Vis kommentar"
+
+#~ msgid ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+#~ msgstr ""
+#~ "Kommentaren som beskriver serveren eller ressourcen vil blive vist i en "
+#~ "separat kolonne i netværksbrowseren."
+
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "Vis et værktøjstip med information om netværkselementet"
+
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr ""
+#~ "Værktøjstippet viser diverse informationer om det aktuelle "
+#~ "netværkselement."
+
+#~ msgid "Automatically expand domains and hosts"
+#~ msgstr "Fold automatisk domæner og værter ud"
+
+#~ msgid ""
+#~ "Automatically expand domain and host items when a list of associated "
+#~ "network items (domain members or shares) is added or updated. Please note "
+#~ "that a domain or host item will always be expanded when you execute it."
+#~ msgstr ""
+#~ "Fold automatisk domæne- og værtselementer ud, når en liste over "
+#~ "tilknyttede netværkselementer (domænemedlemmer og ressourcer) tilføjes "
+#~ "eller opdateres. Bemærk at et domæne eller en vært altid vil blive foldet "
+#~ "ud når det/den eksekveres."
+
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Vis monteringspunktet i stedet for ressourcenavnet"
+
+#~ msgid ""
+#~ "A share is normally displayed with its name in the shares view. Choosing "
+#~ "this feature will cause the exchange of the share name by the mount point."
+#~ msgstr ""
+#~ "En ressource vises normalt ved dens navn i ressourcevisningen. Valg af "
+#~ "denne funktion betyder at ressourcenavnet erstattes med monteringspunktet."
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "Vis alle ressourcer der er monteret på systemet"
+
+#~ msgid ""
+#~ "You will not only see the shares that were mounted and are owned by you, "
+#~ "but also all other mounts using the SMBFS and CIFS file system that are "
+#~ "present on the system."
+#~ msgstr ""
+#~ "Du vil ikke kun se de ressourcer der er monteret eller ejet af dig, men "
+#~ "også alle andre monteringer der bruger SMBFS- og CIFS-filsystemet som er "
+#~ "til stede på systemet."
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Vis et værktøjstip med information om ressourcen"
+
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr ""
+#~ "Værktøjstippet viser diverse informationer om den aktuelle ressource."
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Vis ejer og gruppe"
+
+#~ msgid "Show the UID and GID that own all files on the mounted file system."
+#~ msgstr "Vis UID og GID som ejer alle filer på det monterede filsystem."
+
+#~ msgid "Show the login name"
+#~ msgstr "Vis login-navnet"
+
+#~ msgid ""
+#~ "Show the login name that was used to authenticate to the server. The "
+#~ "column will only contain an entry if the share was mounted with the CIFS "
+#~ "file system."
+#~ msgstr ""
+#~ "Vis det login-navn der blev brugt til at autentificere på serveren. "
+#~ "Kolonnen vil kun indeholde en indgang hvis ressourcen blev monteret med "
+#~ "CIFS-filsystemet."
+
+#~ msgid "Show the file system"
+#~ msgstr "Vis filsystem"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr "Vis filsystemet som blev brugt til montering af ressourcen."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Vis ledig diskplads"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr "Vis ledig diskplads tilbage på ressourcen."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Vis den brugte diskplads"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr "Vis diskplads der allerede er brugt på ressourcen."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Vis diskplads i alt"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr "Vis diskplads på ressourcen i alt."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Vis diskforbrug"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr "Vis den plads der er brugt på ressourcen (som procentdel)."
+
+#~ msgid "Preview hidden files and directories"
+#~ msgstr "Forhåndsvis skjulte filer og mapper"
+
+#~ msgid ""
+#~ "Display hidden files and directories in the preview dialog. The hidden "
+#~ "files and directories are those whose names begin with a period.  They "
+#~ "are usually needed for very specific purposes (storing the configuration "
+#~ "information for an application, etc.). Since they are not of any "
+#~ "importance for your regular work, you normally do not need to enable this "
+#~ "feature."
+#~ msgstr ""
+#~ "Vis skjulte filer og mapper i dialogen til forhåndsvisning. De skjulte "
+#~ "filer og mapper er dem hvis navn begynder med punktum. De er normalt "
+#~ "nødvendige til meget specifikke formål (opbevaring af "
+#~ "konfigurationsinformation for et program osv.). Da de ikke er af "
+#~ "betydning for dit normale arbejde, vil du normalt ikke behøve aktivere "
+#~ "denne funktion."
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Scan netværksnabolaget for tilgængelige arbejdsgrupper og domæner"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Dette er standardmetoden til at hente den indledningsvise browseliste. "
+#~ "Den finder alle arbejdsgrupper og domæner ved at lede efter alle kendte "
+#~ "masterbrowsere i dit netværksnabolag."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Forespørg den aktuelle masterbrowser for arbejdsgruppen"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Denne metode forespørger den aktuelle masterbrowser for din arbejdsgruppe "
+#~ "eller dit domæne for at hente den indledningsvise browseliste."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Forespørg denne brugervalgte masterbrowser:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Denne metode forespørger en brugervalgt masterbrowser for at hente den "
+#~ "indledningsvise browseliste."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "En brugervalgt masterbrowser der skal forespørges"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Angiv navn eller IP-adresse på en masterbrowser som skal forespørges for "
+#~ "at opbygge den indledningsvise browseliste her."
+
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Scan disse broadcast-områder:"
+
+#~ msgid ""
+#~ "This method will scan the given broadcast areas and look for all "
+#~ "registered hosts."
+#~ msgstr ""
+#~ "Denne metode vil scanne de angivne broadcast-områder og lede efter alle "
+#~ "registrerede værter."
+
+#~ msgid "A custom list of broadcast addresses"
+#~ msgstr "En brugervalgt liste over broadcast-adresser"
+
+#~ msgid ""
+#~ "Enter a comma-separated list of broadcast addresses here (e.g. "
+#~ "192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in "
+#~ "the respective broadcast areas."
+#~ msgstr ""
+#~ "Angiv en kommaadskilt liste over broadcast-adresser her (f.eks. "
+#~ "192.168.0.255, 192.168.1.255). Den bruges til at scanne efter alle kendte "
+#~ "værter i de respektive broadcast-områder."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "Masterbrowserne kræver autentificering for at returnere browselisten"
+
+#~ msgid ""
+#~ "The master browsers in your network neighborhood require a login to "
+#~ "return the browse list. This setting is rarely needed and might even "
+#~ "cause a master browser to return an empty browse list. It will not have "
+#~ "any effect when you let Smb4K scan broadcast areas."
+#~ msgstr ""
+#~ "Masterbrowserne i dit netværksnabolag kræver login for at returnere "
+#~ "browselisten. Denne indstilling er sjældent nødvendig og kan endda få en "
+#~ "masterbrowser til at returnere en tom browseliste. Den vil ikke have "
+#~ "nogen virkning når du lader Smb4K scanne broadcast-områder."
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Scan netværksnabolaget periodisk"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Scan periodisk netværksnabolaget for tilgængelige arbejdsgrupper, værter "
+#~ "og ressourcer."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Interval mellem scanninger:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Dette er den tid i minutter, der går imellem at Smb4K genscanner "
+#~ "netværksnabolaget for nye arbejdsgrupper, værter og ressourcer."
+
+#~ msgid "Enable Wake-On-LAN features"
+#~ msgstr "Aktivér Wake-On-LAN-funktioner"
+
+#~ msgid ""
+#~ "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#~ "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#~ "magic package send via a UDP socket to wake up remote servers. If you "
+#~ "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#~ "this option."
+#~ msgstr ""
+#~ "Wake-On-LAN (WOL) er en standard for ethernet computernetværk som lader "
+#~ "en computer blive tændt eller vækket af en netværksbesked. Smb4K bruger "
+#~ "en magisk pakke som sendes via en UDP-sokkel til at vække eksterne "
+#~ "servere. Hvis du vil gøre brug af Wake-On-LAN-funktionen, skal du "
+#~ "aktivere denne indstilling."
+
+#~ msgid "Waiting time:"
+#~ msgstr "Ventetid:"
+
+#~ msgid ""
+#~ "This is the waiting time in seconds between the sending of the magic Wake-"
+#~ "On-LAN packages and the scanning of the network neighborhood or the "
+#~ "mounting of a share."
+#~ msgstr ""
+#~ "Dette er ventetiden i sekunder mellem afsendelse af de magiske Wake-On-"
+#~ "LAN-pakker og scanning af netværksnabolaget eller montering af en delt "
+#~ "ressource."
+
+#~ msgid "Mount prefix:"
+#~ msgstr "Monteringspræfiks:"
+
+#~ msgid ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+#~ msgstr ""
+#~ "Dette er det præfiks hvor Smb4K vil oprette monteringspunkter og montere "
+#~ "de eksterne ressourcer."
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr ""
+#~ "Gennemtving genererede undermapper til at være skrevet med små bogstaver"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "Alle navne på undermapper oprettet af Smb4K under monteringspræfiks vil "
+#~ "være med små bogstaver."
+
+#~ msgid "Unmount all personal shares on exit"
+#~ msgstr "Afmontér alle personlige ressourcer ved afslutning"
+
+#~ msgid ""
+#~ "Unmount all shares that belong to you when the program exits. Shares that "
+#~ "are owned by other users are ignored."
+#~ msgstr ""
+#~ "Afmontér alle ressourcer der tilhører dig når programmet afsluttes. "
+#~ "Ressourcer som ejes af andre brugere ignoreres."
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr "Genmontér nyligt anvendte ressourcer ved programopstart"
+
+#~ msgid ""
+#~ "Remount all your shares that were mounted when you exited the program. If "
+#~ "a remount fails, Smb4K will retry the next time it is started. Shares "
+#~ "that were mounted by other users are ignored."
+#~ msgstr ""
+#~ "Genmontér alle dine ressourcer som var monteret da du afsluttede "
+#~ "programmet. Hvis en genmontering mislykkes, vil Smb4K forsøge igen næste "
+#~ "gang det startes. Ressourcer der blev monteret af andre brugere ignoreres."
+
+#~ msgid "Number of remount attempts:"
+#~ msgstr "Antal forsøg på at genmontere:"
+
+#~ msgid ""
+#~ "Set the number of attempts that are made to remount shares before Smb4K "
+#~ "gives up."
+#~ msgstr ""
+#~ "Angiv antal gange det skal forsøges at genmontere ressourcer før Smb4K "
+#~ "giver op."
+
+#~ msgid "Interval between remount attempts:"
+#~ msgstr "Interval mellem forsøg på genmontering:"
+
+#~ msgid "Set the time that elapses between attempts to remount shares."
+#~ msgstr ""
+#~ "Angiv den tid der skal gå mellem forsøg på at genmontere ressourcer."
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr "Tillad afmontering af ressourcer der ejes af andre brugere"
+
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "Tillad afmontering af ressourcer som blev monteret af andre brugere. Tænk "
+#~ "dig venligst om før du aktiverer denne indstilling."
+
+#~ msgid "Force the unmounting of inaccessible shares"
+#~ msgstr "Gennemtving afmontering af utilgængelige ressourcer"
+
+#~ msgid ""
+#~ "Force the unmounting of inaccessible shares (Linux only). In case a share "
+#~ "is inaccessible, a lazy unmount is performed. Before the actual unmount "
+#~ "is performed, a warning dialog is shown asking to approve the unmount."
+#~ msgstr ""
+#~ "Gennemtving afmontering af utilgængelige ressourcer (kun Linux). Hvis en "
+#~ "ressource er utilgængelig, udføres en doven afmontering. Før den den "
+#~ "faktiske afmontering udføres, vises en dialog der spørger om godkendelse "
+#~ "af afmonteringen."
+
+#~ msgid "Interval between checks:"
+#~ msgstr "Interval mellem tjek:"
+
+#~ msgid ""
+#~ "This is the time in milliseconds that elapses until Smb4K checks again "
+#~ "for new mounts and unmounts. The lower limit is 500 ms, the upper one "
+#~ "300000 ms. Please note that the smaller the interval gets the higher is "
+#~ "your system load."
+#~ msgstr ""
+#~ "Dette er tiden der forløber i millisekunder indtil Smb4K igen tjekker "
+#~ "efter ny monteringer og afmonteringer. Den nedre grænse er 500 ms, den "
+#~ "øvre er 300000 ms. Bemærk at des mindre intervallet er, des højere er "
+#~ "systembelastningen."
+
+#~ msgid "Save logins in a wallet"
+#~ msgstr "Gem logins i en tegnebog"
+
+#~ msgid ""
+#~ "Use a wallet to store the login. The username and password are stored "
+#~ "encrypted on your hard drive. If this setting is disabled, the login is "
+#~ "not stored permanently but only temporarily."
+#~ msgstr ""
+#~ "Brug en tegnebog til at opbevare login. Brugernavnet og adgangskoden "
+#~ "opbevares krypteret på din harddisk. Hvis denne indstilling deaktiveres, "
+#~ "opbevares login ikke permanent men kun midlertidigt."
+
+#~ msgid "Remember logins during program run"
+#~ msgstr "Husk logins mens programmet kører"
+
+#~ msgid ""
+#~ "If you decide to store your logins temporarily, Smb4K will remember them "
+#~ "only until the program exits. If you disable this setting, you will have "
+#~ "to provide the login every time it is needed."
+#~ msgstr ""
+#~ "Hvis du beslutter at opbevare dine logins midlertidigt, vil Smb4K huske "
+#~ "dem indtil programmet afsluttes. Hvis du deaktiverer denne indstilling, "
+#~ "vil du skulle oplyse login hver gang det skal bruges."
+
+#~ msgid "Use a default login"
+#~ msgstr "Brug et standard-login"
+
+#~ msgid ""
+#~ "Enable the usage of a default login. The provided data is used by default "
+#~ "to authenticate to a remote server. This is very useful e.g. if you are "
+#~ "working in an Active Directory environment or an NT domain."
+#~ msgstr ""
+#~ "Aktivér brug af standard login. De oplyste data bruges som standard til "
+#~ "at autentificere hos en ekstern server. Dette er f.eks. meget nyttigt når "
+#~ "du arbejder i et Active Directory-miljø eller et NT-domæne."
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS-navn:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Dette er denne computers NetBIOS-navn som bruges af Smb4K. Som standard "
+#~ "er det enten det NetBIOS-navn der er defineret i filen smb.conf eller "
+#~ "værtsnavnet."
+
+#~ msgid "Domain:"
+#~ msgstr "Domæne:"
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "Dette er arbejdsgruppen eller domænet som denne computer er, eller burde "
+#~ "være,  i. Som standard er det den arbejdsgruppe der er defineret i filen "
+#~ "smb.conf."
+
+#~ msgid "Socket options:"
+#~ msgstr "Sokkel-tilvalg:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Disse er indstillinger for TCP-sokkel som bruges af nmblookup og "
+#~ "smbclient. Sokkel-indstillinger er kontroller på operativsystemets "
+#~ "netværkslag som lader forbindelsen blive finjusteret. Se manual-siden for "
+#~ "smb.conf for mere information."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS-scope:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Dette sætter det NetBIOS-scope som nmblookup og smbclient vil operere "
+#~ "under. Det bør ikke sættes medmindre alle maskiner i dit netværksnabolag "
+#~ "sætter denne værdi."
+
+#~ msgid "SMB port:"
+#~ msgstr "SMB-port:"
+
+#~ msgid ""
+#~ "This is the port that is used for connecting to remote servers with the "
+#~ "client programs net, smbclient and smbtree. The default value is 139 "
+#~ "(NetBIOS). This setting is not used for mounting."
+#~ msgstr ""
+#~ "Dette er porten der bruges til at forbinde til eksterne servere med "
+#~ "klientprogrammerne net, smbclient og smbtree. Standardværdien er 139 "
+#~ "(NetBIOS). Denne indstilling bruges ikke ved montering."
+
+#~ msgid "File system port:"
+#~ msgstr "Filsystem-port:"
+
+#~ msgid ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+#~ msgstr ""
+#~ "Dette er den port som udelukkende bruges til at montere ressourcer fra "
+#~ "eksterne servere. Standardværdien er 445 (CIFS-filsystem)."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Prøv at autentificere med Kerberos"
+
+#~ msgid ""
+#~ "Try to authenticate with Kerberos. This is only useful in an Active "
+#~ "Directory environment. The setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Prøv at autentificere med Kerberos. Dette er kun nyttigt i et Active "
+#~ "Directory-miljø. Indstillingen påvirker kommandoerne smbclient og smbtree."
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Autentificér med den lokale maskines konto"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient, and smbtree command."
+#~ msgstr ""
+#~ "Foretag forespørgsler til den eksterne server med brug af den lokale "
+#~ "servers maskinkonto. Indstillingen påvirker kommandoerne net, smbclient "
+#~ "og smbtree."
+
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Brug Winbind ccache til autentificering"
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects smbclient "
+#~ "and smbtree command."
+#~ msgstr ""
+#~ "Brug Winbind ccache til autentificering. Denne indstilling påvirker "
+#~ "kommandoerne smbclient og smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Signeringstilstand:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Sæt signeringstilstanden. Denne indstilling påvirker kommandoerne "
+#~ "smbclient og smbtree."
+
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "On"
+#~ msgstr "Til"
+
+#~ msgid "Off"
+#~ msgstr "Fra"
+
+#~ msgid "Required"
+#~ msgstr "Påkrævet"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Kryptér SMB-transport"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the smbclient and smbtree command."
+#~ msgstr ""
+#~ "Kryptér SMB-transporten (Kun Unix extended-servere)  Denne indstilling "
+#~ "påvirker kommandoerne smbclient og smbtree."
+
+#~ msgid ""
+#~ "This is the character set that is used by the client side (i.e. your "
+#~ "side) either to convert local path names to and from Unicode (CIFS, "
+#~ "Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you "
+#~ "keep the default setting, Smb4K will try to automatically determine the "
+#~ "charset by looking up the \"unix charset\" option in the smb.conf."
+#~ msgstr ""
+#~ "Dette er det tegnsæt der bruges på klientsiden (dvs. på din side), enten "
+#~ "til at konvertere lokale stinavne til og fra Unicode (CIFS, Linux) eller "
+#~ "til oversættelsefor af codepage til tegnsæt (SMBFS, FreeBSD). Hvis du "
+#~ "beholder standardindstillingen, vil Smb4K prøve at automatisk at bestemme "
+#~ "tegnsættet ved at slå indstillingen \"unix charset\" op i smb.conf."
+
+#~ msgid "default"
+#~ msgstr "standard"
+
+#~ msgid "iso8859-1"
+#~ msgstr "iso8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "iso8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "iso8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "iso8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "iso8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "iso8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "iso8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "iso8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "iso8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "iso8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "iso8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "iso8859-15"
+
+#~ msgid "utf8"
+#~ msgstr "utf8"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "koi8-u"
+#~ msgstr "koi8-u"
+
+#~ msgid "koi8-ru"
+#~ msgstr "koi8-ru"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "gb2312"
+#~ msgstr "gb2312"
+
+#~ msgid "big5"
+#~ msgstr "big5"
+
+#~ msgid "euc-jp"
+#~ msgstr "euc-jp"
+
+#~ msgid "euc-kr"
+#~ msgstr "euc-kr"
+
+#~ msgid "tis-620"
+#~ msgstr "tis-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Server-codepage:"
+
+#~ msgid ""
+#~ "This is the codepage that is used by the server. The setting is only "
+#~ "available with the SMBFS file system. If you keep the default setting, "
+#~ "Smb4K will try to automatically determine the codepage by looking up the "
+#~ "\"dos charset\" option in the smb.conf file."
+#~ msgstr ""
+#~ "Dette er den codepage som bruges af serveren. Indstillingen er kun "
+#~ "tilgængelig med SMBFS-filsystemet. Hvis du beholder "
+#~ "standardindstillingen, vil Smb4K prøve automatisk at bestemme codepage "
+#~ "ved at slå indstillingen \"dos charset\" op i filen smb.conf."
+
+#~ msgid "cp437"
+#~ msgstr "cp437"
+
+#~ msgid "cp720"
+#~ msgstr "cp720"
+
+#~ msgid "cp737"
+#~ msgstr "cp737"
+
+#~ msgid "cp775"
+#~ msgstr "cp775"
+
+#~ msgid "cp850"
+#~ msgstr "cp850"
+
+#~ msgid "cp852"
+#~ msgstr "cp852"
+
+#~ msgid "cp855"
+#~ msgstr "cp855"
+
+#~ msgid "cp857"
+#~ msgstr "cp857"
+
+#~ msgid "cp858"
+#~ msgstr "cp858"
+
+#~ msgid "cp860"
+#~ msgstr "cp860"
+
+#~ msgid "cp861"
+#~ msgstr "cp861"
+
+#~ msgid "cp862"
+#~ msgstr "cp862"
+
+#~ msgid "cp863"
+#~ msgstr "cp863"
+
+#~ msgid "cp864"
+#~ msgstr "cp864"
+
+#~ msgid "cp865"
+#~ msgstr "cp865"
+
+#~ msgid "cp866"
+#~ msgstr "cp866"
+
+#~ msgid "cp869"
+#~ msgstr "cp869"
+
+#~ msgid "cp874"
+#~ msgstr "cp874"
+
+#~ msgid "cp932"
+#~ msgstr "cp932"
+
+#~ msgid "cp936"
+#~ msgstr "cp936"
+
+#~ msgid "cp949"
+#~ msgstr "cp949"
+
+#~ msgid "cp950"
+#~ msgstr "cp950"
+
+#~ msgid "cp1250"
+#~ msgstr "cp1250"
+
+#~ msgid "cp1252"
+#~ msgstr "cp1252"
+
+#~ msgid "cp1253"
+#~ msgstr "cp1253"
+
+#~ msgid "cp1254"
+#~ msgstr "cp1254"
+
+#~ msgid "cp1255"
+#~ msgstr "cp1255"
+
+#~ msgid "cp1256"
+#~ msgstr "cp1256"
+
+#~ msgid "cp1257"
+#~ msgstr "cp1257"
+
+#~ msgid "cp1258"
+#~ msgstr "cp1258"
+
+#~ msgid "unicode"
+#~ msgstr "unicode"
+
+#~ msgid ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Dette er bruger-id'et (et tal) som filer og mapper på den monterede "
+#~ "ressource vil have. Hvis du bruger CIFS-filsystemet og den eksterne "
+#~ "server understøtter CIFS Unix-udvidelser vil denne indstilling blive "
+#~ "ignoreret."
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Dette er gruppe-id'et (et tal) som filer og mapper på den monterede "
+#~ "ressource vil have. Hvis du bruger CIFS-filsystemet og den eksterne "
+#~ "server understøtter CIFS Unix-udvidelser vil denne indstilling blive "
+#~ "ignoreret."
+
+#~ msgid "File mask:"
+#~ msgstr "Filmaske:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating files. It must be defined "
+#~ "in octal. In case the CIFS file system is used, this setting only takes "
+#~ "effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Dette er masken der vil blive brugt til oprettelse af filer. Den skal "
+#~ "defineres oktalt. Hvis CIFS-filsystemet bruges, har denne indstilling kun "
+#~ "virkning hvis servere ikke understøtter CIFS Unix-udvidelser."
+
+#~ msgid "Directory mask:"
+#~ msgstr "Mappemaske:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating directories. It must be "
+#~ "defined in octal. In case the CIFS file system is used, this setting only "
+#~ "takes effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Dette er masken der vil blive brugt til oprettelse af mapper. Den skal "
+#~ "defineres oktalt. Hvis CIFS-filsystemet bruges, har denne indstilling kun "
+#~ "virkning hvis servere ikke understøtter CIFS Unix-udvidelser."
+
+#~ msgid "Write access:"
+#~ msgstr "Skriveadgang:"
+
+#~ msgid ""
+#~ "Here you can choose if the shares should be mounted in read-write or read-"
+#~ "only mode."
+#~ msgstr ""
+#~ "Her kan du vælge om ressourcerne skal monteres i læse- og skrivetilstand "
+#~ "eller skrivebeskyttet."
+
+#~ msgid "read-write"
+#~ msgstr "læse og skrive"
+
+#~ msgid "read-only"
+#~ msgstr "skrivebeskyttet"
+
+#~ msgid "Do permission checks"
+#~ msgstr "Udfør rettighedstjek"
+
+#~ msgid ""
+#~ "The client side (i.e. your side) will check if you have the right UID/GID "
+#~ "to manipulate a file or directory. You might want to switch this feature "
+#~ "off if the server(s) support the CIFS Unix Extensions and you are not "
+#~ "allowed to access the files and directories. This setting does not affect "
+#~ "the normal ACL check."
+#~ msgstr ""
+#~ "Klientsiden (dvs. din side) vil tjekke om du har det rigtige UID/GID til "
+#~ "at ændre en fil eller mappe. Du vil måske ønske at slå denne funktion fra "
+#~ "hvis serveren understøtter CIFS Unix-udvidelser og du ikke tillades "
+#~ "adgang til filerne og mapperne. Denne indstilling påvirker ikke det "
+#~ "normale ACL-tjek."
+
+#~ msgid "Attempt to set UID and GID"
+#~ msgstr "Forsøg at sætte UID og GID"
+
+#~ msgid ""
+#~ "In case the server supports the CIFS Unix Extensions, the client side (i."
+#~ "e. your side) attempts to set the effective UID and GID of the current "
+#~ "process on newly created files, directories and devices. If this feature "
+#~ "is turned off, the default UID and GID defined for the share will be "
+#~ "used. It is recommended that you read the manual page of mount.cifs "
+#~ "before you change this setting."
+#~ msgstr ""
+#~ "Hvis serveren understøtter CIFS Unix-udvidelser, forsøger klientsiden "
+#~ "(dvs. din side) at sætte det effektive UID og GID for den aktuelle proces "
+#~ "ved nyoprettede filer, mapper og enheder. Hvis denne funktion slås fra, "
+#~ "bruges standard UID og GID defineret for ressourcen. Det anbefales at du "
+#~ "læser manual-siden for mount.cifs før du ændrer denne indstilling."
+
+#~ msgid "Use server inode numbers"
+#~ msgstr "Brug serverens inode-numre"
+
+#~ msgid ""
+#~ "Use inode numbers (unique persistent file identifiers) returned by the "
+#~ "server instead of automatically generating temporary inode numbers on the "
+#~ "client side."
+#~ msgstr ""
+#~ "Brug inode-numre (unikke persistente filidentifikatorer) som returneres "
+#~ "af serveren i stedet for automatisk at generere inode-numre på "
+#~ "klientsiden."
+
+#~ msgid "Do not cache inode data"
+#~ msgstr "Gem ikke inode-data i cache"
+
+#~ msgid ""
+#~ "Directly read from and write to files opened on the share. In some cases "
+#~ "this can provide better performance than the default behavior which "
+#~ "caches reads and writes."
+#~ msgstr ""
+#~ "Læs og skriv direkte til og fra filer åbnet på ressourcen. I nogle "
+#~ "tilfælde kan dette give bedre ydelse end standardopførslen som cacher "
+#~ "læsninger og skrivninger."
+
+#~ msgid "Translate reserved characters"
+#~ msgstr "Oversæt reserverede tegn"
+
+#~ msgid ""
+#~ "Translate six of the seven reserved characters (including the colon, "
+#~ "question mark, pipe, asterisk, greater than and less than characters but "
+#~ "not the backslash) to remap range (above 0xF000). This allows you to open "
+#~ "files that were created with such characters. This has no effect if the "
+#~ "server does not support Unicode."
+#~ msgstr ""
+#~ "Oversæt seks af de syv reserverede tegn (inklusiv kolon, spørgsmålstegn, "
+#~ "pipe, stjerne, større end, og mindre end, men ikke backslash) for at "
+#~ "omkoble området (over 0xF000). Dette lader dig åbne filer der blev "
+#~ "oprettet med sådanne tegn. Det har ingen virkning hvis serveren ikke "
+#~ "understøtter Unicode."
+
+#~ msgid "Do not use locking"
+#~ msgstr "Brug ikke låsning"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Brug ikke låsning. Start ikke lockd."
+
+#~ msgid ""
+#~ "Here you can enter advanced options for the CIFS file system in a comma-"
+#~ "separated list (refer to the manual page of mount.cifs to learn more). "
+#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
+#~ "do not enter options that have already been defined in the configuration "
+#~ "dialog."
+#~ msgstr ""
+#~ "Her kan du angive avancerede tilvalg for CIFS-filsystemet i en "
+#~ "kommaadskilt liste (se manual-siden for mount.cifs for at læse mere). "
+#~ "Listen vil blive tilføjet SOM DEN ER til argumentet \"-o\" for mount."
+#~ "cifs. Angiv ikke tilvalg der allerede er blevet defineret i "
+#~ "konfigurationsdialogen."
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Protokoltip:"
+
+#~ msgid ""
+#~ "Here you can choose the protocol that will be used by the net command for "
+#~ "the communication with remote servers if appropriate. In most cases the "
+#~ "automatic detection will work fine and you should not need to change the "
+#~ "default setting. However, if you experience problems, use the RPC "
+#~ "protocol for newer operating systems (Windows NT4 and above) and the RAP "
+#~ "protocol for older ones (Windows 98/NT3 and below). Functions that need "
+#~ "the ADS protocol (for Active Directory environments) have not been "
+#~ "implemented yet, so you can ignore that one for now."
+#~ msgstr ""
+#~ "Her kan du vælge den protokol der skal bruges af net-kommandoen til "
+#~ "kommunikation med eksterne servere hvis egnet. I de fleste tilfælde vil "
+#~ "den automatiske detektion virke fint og du bør ikke behøve at ændre "
+#~ "standardindstillingen. Hvis du imidlertid oplever problemer, så brug RPC-"
+#~ "protokollen til nyere operativsystemer (Windows NT4 og nyere) og RAP-"
+#~ "protokollen for ældre (Windows 98/NT3 og derunder). Funktioner der kræver "
+#~ "ADS-protokollen (til Active Directory-miljøer) er ikke blevet "
+#~ "implementeret endnu, så du kan ignorere den indtil videre."
+
+#~ msgid "Automatic detection"
+#~ msgstr "Automatisk detektering"
+
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "RPC: Moderne operativsystemer"
+
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "RAP: Ældre operativsystemer"
+
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "ADS: Active Directory-miljø (LDAP/Kerberos)"
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Navneopslagsrækkefølge:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Denne indstilling bruges til at bestemme hvilke navnetjenester der bruges "
+#~ "til at opløse værtsnavne og IP-adresser, og i hvilken rækkefølge. Den "
+#~ "accepterer en mellemrumsadskilt liste på indtil fire forskellige "
+#~ "navneopløsningsmuligheder. Disse er lmhost, host, wins, bcast. Se manual-"
+#~ "siden for smbclient for yderligere information."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Bufferstørrelse:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Denne indstilling ændrer bufferstørrelsen for afsendelse når en fil "
+#~ "hentes fraeller lægges på serveren. Standard er 65520 bytes. At sætte "
+#~ "denne værdi lavere, er observeret at have givet højere hastighed på "
+#~ "filoverførsler til og fra Windows 9x-servere."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Broadcast-adresse:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Forespørgsler udført nmblookup vil blive sendt til den angivne broadcast-"
+#~ "adresse. Uden denne indstilling er standardopførsel at sende "
+#~ "forespørgslerne til netkortets broadcast-adresse som enten blev "
+#~ "autodetekteret eller defineret i parameteren \"interfaces\" i filen smb."
+#~ "conf."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Prøv at koble til UDP-port 137 for at sende og modtage UDP-datagrammer"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Prøv at binde til UDP-port 137for at sende og modtage UDP-datagrammer. "
+#~ "Årsagen til denne indstilling er en fejl i Windows 95 hvor den ignorerer "
+#~ "kildeporten for anmodningspakken og kun svarer til UDP-port 137. Desværre "
+#~ "kræver superbruger-rettigheder på de fleste Unix-systemer for at binde "
+#~ "til denne port. Læs manual-siden for nmblookup for mere information."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Send anmodninger som broadcasts"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Lad smbtree forespørge netværksknuderne ved at sende anmodninger som "
+#~ "broadcasts i stedet for at forespørge den lokale masterbrowser."
+
+#~ msgid "Security mode:"
+#~ msgstr "Sikkerhedstilstand:"
+
+#~ msgid ""
+#~ "Security mode for mount.cifs. To be able to use this mode, the CIFS "
+#~ "kernel module 1.40 or later is required."
+#~ msgstr ""
+#~ "Sikkerhedstilstand for mount.cifs. For at kunne bruge denne tilstand, "
+#~ "kræves CIFS-kernemodul 1.40 eller nyere."
+
+#~ msgid "Connect as a null user (no name)"
+#~ msgstr "Forbind som en null-bruger (intet navn)"
+
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Kerberos 5-autentificering"
+
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Kerberos 5-autentificering og -pakkesignering"
+
+#~ msgid "NTLM protocol"
+#~ msgstr "NTLM-protokol"
+
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "NTLM-protokol og pakkesignering"
+
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "NTLMv2-protokol"
+
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "NTLMv2-protokol og pakkesignering"
+
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "NTLMSSP-protokol"
+
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "NTLMSSP-protokol og pakkesignering"
+
+#~ msgid "Synchronization prefix:"
+#~ msgstr "Synkroniseringspræfiks:"
+
+#~ msgid ""
+#~ "Under this prefix the destination directory for the synchronization will "
+#~ "be created. However, if you want to store the data of a particular share "
+#~ "elsewhere, you will be able to choose a different path before the actual "
+#~ "synchronization begins."
+#~ msgstr ""
+#~ "Destinationsmappen for synkroniseringen vil blive oprettet under dette "
+#~ "præfiks. Hvis du vil gemme data fra en bestemt ressource et andet sted, "
+#~ "vil du kunne vælge en anden sti før den egentlige synkronisering begynder."
+
+#~ msgid "Archive mode"
+#~ msgstr "Arkivtilstand"
+
+#~ msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+#~ msgstr ""
+#~ "Brug arkivtilstand  (-a, --archive). Dette er en forkortet form af -"
+#~ "riptgoD."
+
+#~ msgid "Recurse into subdirectories"
+#~ msgstr "Rekursivt ind i undermapper"
+
+#~ msgid "Recurse into directories (-r, --recursive)."
+#~ msgstr "Rekursivt ind i mapper (-r, --recursive)."
+
+#~ msgid "Update files"
+#~ msgstr "Opdatér filer"
+
+#~ msgid ""
+#~ "Update files in the destination directory that are older than in the "
+#~ "source directory (-u, --update)."
+#~ msgstr ""
+#~ "Opdatér filer i destinationsmappen som er ældre end i kildemappen (-u, --"
+#~ "update). "
+
+#~ msgid "Update files in place"
+#~ msgstr "Opdatér filer på stedet"
+
+#~ msgid ""
+#~ "Update destination files in-place (--inplace). By default, rsync first "
+#~ "creates a new copy of a file and moves it into place after its transfer "
+#~ "finished. If you enable this feature, no copy will be created but the "
+#~ "destination file will immediately be overwritten instead. An exception to "
+#~ "this is if you combine this option with --backup."
+#~ msgstr ""
+#~ "Opdatér destinationsfiler på stedet (--inplace). Som standard opretter "
+#~ "rsync først en ny kopi af en fil og flytter den på plads efter dens "
+#~ "overførsel er gennemført. Hvis du aktiverer denne funktion vil ingen kopi "
+#~ "blive oprettet, men destinationsfilen vil straks blive overskrevet i "
+#~ "stedet. En undtagelse til dette er hvis du kombinerer denne indstilling "
+#~ "med --backup."
+
+#~ msgid "Use relative path names"
+#~ msgstr "Brug relative stinavne"
+
+#~ msgid ""
+#~ "Use relative paths (-R, --relative). This means that the full path names "
+#~ "specified on the command line are sent to the server rather than just the "
+#~ "last parts of the file names."
+#~ msgstr ""
+#~ "Brug relative stier (-R, --relative). Dette betyder at de fulde stinavne, "
+#~ "der er angivet på kommandolinjen sendes til serveren i stedet for blot de "
+#~ "sidste dele af filnavnene."
+
+#~ msgid "Do not send implied directories"
+#~ msgstr "Send ikke underforståede mapper"
+
+#~ msgid ""
+#~ "Do not send implied directories with --relative (--no-implied-dirs). This "
+#~ "means that the corresponding path elements on the destination system are "
+#~ "left unchanged if they exist, and any missing implied directories are "
+#~ "created with default attributes. This even allows these implied path "
+#~ "elements to have big differences, such as being a symlink to a directory "
+#~ "on one side of the transfer, and a real directory on the other side."
+#~ msgstr ""
+#~ "Send ikke underforståede mapper med --relative (--no-implied-dirs). Dette "
+#~ "betyder at de tilsvarende stielementer på destinationssystemet lades være "
+#~ "uændrede, hvis de findes, og alle manglende underforståede mapper "
+#~ "oprettes med standardattributter. Dette lader endda disse underforståede "
+#~ "stielementer have store forskelle, såsom at være et symbolsk link til en "
+#~ "mappe på den ene side af overførslen og en ægte mappe på den anden side."
+
+#~ msgid "Transfer directories without recursing"
+#~ msgstr "Overfør mapper uden rekursivitet"
+
+#~ msgid ""
+#~ "Transfer directories without recursing (-d, --dirs). This means that all "
+#~ "top-level subdirectories are transferred but without their contents."
+#~ msgstr ""
+#~ "Overfør mapper uden rekursion (-d, --dirs). Dette betyder at alle "
+#~ "undermapper på topniveau overføres, men uden deres indhold."
+
+#~ msgid "Compress data during transfer"
+#~ msgstr "Komprimér data under overførsel"
+
+#~ msgid ""
+#~ "Compress data during transfer (-z, --compress). This significantly "
+#~ "reduces the amount of data that is being transferred. You may want to use "
+#~ "this option, if you have a slow connection."
+#~ msgstr ""
+#~ "Komprimér data under overførsel (-z, --compress). Dette reducerer mængden "
+#~ "af data der overføres betydeligt. Du vil måske ønske at bruge denne "
+#~ "indstilling hvis du har en langsom forbindelse."
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Bevar symbolske links"
+
+#~ msgid "Copy symlinks as symlinks (-l, --links)."
+#~ msgstr "Kopiér symbolske links som symbolske links (-l, --links)."
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Omdan symbolske links"
+
+#~ msgid ""
+#~ "Transform symlinks into the items they are pointing to (-L, --copy-links)."
+#~ msgstr ""
+#~ "Omdan symbolske links til de elementer de peger på (-L, --copy-links)."
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Omdan kun usikre symbolske links"
+
+#~ msgid ""
+#~ "Transform unsafe symlinks into the items they are pointing to (--copy-"
+#~ "unsafe-links). This means that only those symlinks are transformed that "
+#~ "point to items that are outside the copied tree. Absolute symlinks are "
+#~ "treated the same way. This option has no additional effect if --copy-"
+#~ "links has also been specified."
+#~ msgstr ""
+#~ "Omdan usikre symbolske links til de elementer de peger på (--copy-unsafe-"
+#~ "links). Dette betyder at kun de symbolske links der peger på elementer "
+#~ "der er udenfor det kopierede træ omdannes. Absolutte symbolske links "
+#~ "behandles på samme måde. Denne indstilling har ingen yderligere virkning "
+#~ "hvis --copy-links også er blevet angivet."
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Ignorér usikre symbolske links"
+
+#~ msgid ""
+#~ "Ignore symlinks that point outside the copied tree (--safe-links). All "
+#~ "absolute symlinks are also ignored. If you use this option in conjunction "
+#~ "with --relative you might get unexpected results."
+#~ msgstr ""
+#~ "Ignorér symbolske links der peger udenfor det kopierede træ (--safe-"
+#~ "links). Alle absolutte symbolske links ignoreres også. Hvis du bruger "
+#~ "denne indstilling sammen med --relative kan du få uventede resultater."
+
+#~ msgid "Preserve hard links"
+#~ msgstr "Bevar hårde links"
+
+#~ msgid ""
+#~ "Preserve hard links (-H, --hard-links). This options causes rsync to "
+#~ "preserve the hard links that are found during the transfer. Without it, "
+#~ "hard links are treated as though they were separate files."
+#~ msgstr ""
+#~ "Bevar hårde links (-H, --hard-links). Denne indstilling får rsync til at "
+#~ "bevare de hårde links der findes under overførslen. Uden denne behandles "
+#~ "hårde links som om de var separate filer."
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Behold symbolske links til mapper"
+
+#~ msgid ""
+#~ "Treat symlinked directories on the receiving side as though they were "
+#~ "real ones (-K, --keep-dirlinks). This only works if the symlink matches a "
+#~ "real directory from the sending side. Without this option, the receiver's "
+#~ "symlink will be deleted and replaced with a real directory."
+#~ msgstr ""
+#~ "Behandl symbolsk linkede mapper på modtagersiden som om de var ægte "
+#~ "mapper (-K, --keep-dirlinks). Dette virker kun hvis det symbolske link "
+#~ "matcher en ægte mappe fra afsendersiden. Uden denne indstilling, vil "
+#~ "modtagerens symbolske link blive slettet og erstattet med en ægte mappe."
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Bevar rettigheder"
+
+#~ msgid ""
+#~ "Preserve permissions (-p, --perms). The permissions of the destination "
+#~ "file will be same as the source file. For what happens if this option is "
+#~ "switched off, please read rsync's manual page."
+#~ msgstr ""
+#~ "Bevar rettigheder (-p, --perms). Rettighederne for destinationsfilen vil "
+#~ "være de samme som kildefilens. Vedrørende hvad der sker hvis denne "
+#~ "indstilling slås fra, læs rsyncs manual-side."
+
+#~ msgid "Preserve group"
+#~ msgstr "Bevar gruppe"
+
+#~ msgid ""
+#~ "Preserve the group (-g, --group). The group of the destination file will "
+#~ "be set to the same value as the source file."
+#~ msgstr ""
+#~ "Bevar gruppe (-g, --group). Gruppen for destinationsfilen vil blive sat "
+#~ "til den samme værdi som kildefilen."
+
+#~ msgid "Preserve owner"
+#~ msgstr "Bevar ejer"
+
+#~ msgid ""
+#~ "Preserve the owner (-o, --owner). The owner of the destination file will "
+#~ "be set to the same value as the source file, but only if the receiving "
+#~ "rsync is run as the super user. Without this option, the owner is set to "
+#~ "the invoking user on the receiving side."
+#~ msgstr ""
+#~ "Bevar ejer (-o, --owner). Ejeren af destinationsfilen vil blive sat til "
+#~ "de samme værdier som kildefilen, men kun hvis den modtagende rsync køres "
+#~ "som superbruger. Uden denne indstilling sættes ejeren til den bruger der "
+#~ "starter processen på modtagersiden."
+
+#~ msgid "Preserve device and special files"
+#~ msgstr "Bevar enheds- og specielle filer"
+
+#~ msgid ""
+#~ "Preserve device and special files (-D, --devices --specials). This option "
+#~ "causes rsync to transfer character and block devices as well as special "
+#~ "files such as named sockets and fifos. It works only partially if rsync "
+#~ "is not run as super user and the --super option is not specified."
+#~ msgstr ""
+#~ "Bevar enheds- og specielle filer (-D, --devices --specials). Denne "
+#~ "indstilling får rsync til at overføre tegn og blokenheder såvel som "
+#~ "specielle filer såsom navngivne sokler og fifos. Det virker kun delvist "
+#~ "hvis rsync ikke køres som superbruger og tilvalget --super ikke er "
+#~ "angivet."
+
+#~ msgid "Preserve times"
+#~ msgstr "Bevar tidspunkter"
+
+#~ msgid ""
+#~ "Preserve times (-t, --times). The modification times are transferred "
+#~ "along with the files. For what happens if this option is switched off, "
+#~ "please read rsync's manual page."
+#~ msgstr ""
+#~ "Bevar tidspunkter (-t, --times). Ændringstidspunkter overføres sammen med "
+#~ "filerne. Vedrørende hvad der sker hvis denne indstilling slås fra, læs "
+#~ "rsyncs manual-side."
+
+#~ msgid "Omit directories when preserving times"
+#~ msgstr "Undlad mapper ved bevaring af tidspunkter"
+
+#~ msgid ""
+#~ "Omit directories when preserving times (-O, --omit-dir-times). This means "
+#~ "that directories are omitted when modification times are being preserved. "
+#~ "Thus, this feature only works in conjunction with --times."
+#~ msgstr ""
+#~ "Undlad mapper når tidspunkter bevares (-O, --omit-dir-times). Dette "
+#~ "betyder at mapper undlades når ændringstidspunkter bevares. Således "
+#~ "virker denne funktion kun sammen med --times."
+
+#~ msgid "Remove synchronized source files"
+#~ msgstr "Fjern synkroniserede kildefiler"
+
+#~ msgid ""
+#~ "Remove all synchronized source files (--remove-source-files). This tells "
+#~ "rsync to remove from the sending side the non-directory items that are a "
+#~ "part of the transfer and have been successfully duplicated on the "
+#~ "receiving side."
+#~ msgstr ""
+#~ "Fjern alle synkroniserede kildefiler (--remove-source-files). Dette "
+#~ "beder  rsync om at fjerne elementer der ikke er mapper, som er en del af "
+#~ "overførslen og som er blevet kopieret korrekt til modtagersiden."
+
+#~ msgid "Delete extraneous files"
+#~ msgstr "Slet overflødige filer"
+
+#~ msgid ""
+#~ "Delete extraneous files from destination (--delete). This tells rsync to "
+#~ "delete all files from the receiving side that are not present on the "
+#~ "sending side, but only for the directories that are being synchronized."
+#~ msgstr ""
+#~ "Slet overflødige filer fra destinationen (--delete). Dette beder rsync om "
+#~ "at slette alle filer fra modtagersiden, som ikke findes på afsendersiden, "
+#~ "men kun for de mapper som synkroniseres."
+
+#~ msgid "Delete files before transfer"
+#~ msgstr "Slet filer før overførsel"
+
+#~ msgid ""
+#~ "Delete files on the receiving side before the transfer starts (--delete-"
+#~ "before). This is the default behavior if --delete or --delete-excluded is "
+#~ "specified without one of the --delete-WHEN options."
+#~ msgstr ""
+#~ "Slet filer på modtagersiden før overførslen starter (--delete-before). "
+#~ "Dette er standardopførsel hvis --delete eller --delete-excluded angives "
+#~ "uden tilvalgene --delete-WHEN."
+
+#~ msgid "Delete files after transfer"
+#~ msgstr "Slet filer efter overførsel"
+
+#~ msgid ""
+#~ "Delete files on the receiving side after the transfer has completed (--"
+#~ "delete-after, --del)."
+#~ msgstr ""
+#~ "Slet filer på modtagersiden efter overførslen er gennemført (--delete-"
+#~ "after, --del)."
+
+#~ msgid "Delete files during transfer"
+#~ msgstr "Slet filer under overførsel"
+
+#~ msgid ""
+#~ "Delete files on the receiving side during the transfer (--delete-during). "
+#~ "This method is faster than --delete-before or --delete-after, but it is "
+#~ "only supported with rsync 2.6.4 or later."
+#~ msgstr ""
+#~ "Slet filer på modtagersiden under overførslen (--delete-during). Denne "
+#~ "metode er hurtigere end --delete-before eller --delete-after, men den "
+#~ "understøttes kun af rsync 2.6.4 eller nyere."
+
+#~ msgid "Also delete excluded files"
+#~ msgstr "Slet også undladte filer"
+
+#~ msgid ""
+#~ "Also delete excluded files from destination directory (--delete-"
+#~ "excluded). In addition to deleting the files on the receiving side that "
+#~ "are not on the sending side, this tells rsync to also delete any files on "
+#~ "the receiving side that are excluded. Refer to rsync's manual page for "
+#~ "further information."
+#~ msgstr ""
+#~ "Slet også ekskluderede filer fra destinationsmappen (--delete-excluded). "
+#~ "Udover at slette de filer på modtagersiden som ikke findes på "
+#~ "afsendersiden, beder dette rsync om også at slette alle filer på "
+#~ "modtagersiden som er ekskluderede. Se rsyncs manual-side for mere "
+#~ "information."
+
+#~ msgid "Delete even if I/O errors occur"
+#~ msgstr "Slet selvom I/O-fejl forekommer"
+
+#~ msgid ""
+#~ "Delete even if I/O errors occur (--ignore-errors). This option has to be "
+#~ "specified in conjunction with --delete to take effect."
+#~ msgstr ""
+#~ "Slet selv hvis I/O-fejl forekommer (--ignore-errors). Denne indstilling "
+#~ "skal angives sammen med --delete for at have virkning."
+
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Gennemtving sletning af ikke-tomme mapper"
+
+#~ msgid ""
+#~ "Force deletion of directories even if they are not empty (--force). This "
+#~ "option tells rsync to delete a non-empty directory when it is to be "
+#~ "replaced by a non-directory. This is only relevant if deletions are not "
+#~ "active."
+#~ msgstr ""
+#~ "Gennemtving sletning af mapper, selv hvis de ikke er tomme (--force). "
+#~ "Denne indstilling beder rsync om at slette en ikke-tom mappe når den skal "
+#~ "erstattes med en ikke-mappe. Dette er kun relevant hvis sletninger ikke "
+#~ "er aktive."
+
+#~ msgid "Do not delete more than this many files:"
+#~ msgstr "Slet ikke flere end dette antal filer:"
+
+#~ msgid ""
+#~ "Only delete as many files as defined here (--max-delete=NUM). This tells "
+#~ "rsync not to delete more than NUM files or directories (NUM must be non-"
+#~ "zero). This is useful when mirroring very large trees to prevent "
+#~ "disasters."
+#~ msgstr ""
+#~ "Slet kun så mange filer som defineret her (--max-delete=ANTAL). Dette "
+#~ "beder rsync om ikke at slette flere end ANTAL filer eller mapper (ANTAL "
+#~ "må ikke være nul). Dette er nyttigt ved spejling af meget store træer for "
+#~ "at undgå katastrofer."
+
+#~ msgid "Value for DeleteMaximum config entry"
+#~ msgstr "Værdi for konfigurationsindgangen DeleteMaximum"
+
+#~ msgid "Do not transfer any file smaller than:"
+#~ msgstr "Overfør ingen filer mindre end:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is smaller than "
+#~ "the specified size (--min-size=SIZE)."
+#~ msgstr ""
+#~ "Denne indstilling får rsync til ikke at overføre nogen fil der er mindre "
+#~ "end den angivne størrelse (--min-size=STØRRELSE)."
+
+#~ msgid "Value for MinimalTransferSize config entry"
+#~ msgstr "Værdi for konfigurationsindgangen MinimalTransferSize"
+
+#~ msgid "Do not transfer any file larger than:"
+#~ msgstr "Overfør ingen filer større end:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is larger than the "
+#~ "specified size (--max-size=SIZE)."
+#~ msgstr ""
+#~ "Denne indstilling får rsync til ikke at overføre nogen fil der er større "
+#~ "end den angivne størrelse (--max-size=STØRRELSE)."
+
+#~ msgid "Value for MaximalTransferSize config entry"
+#~ msgstr "Værdi for konfigurationsindgangen MaximalTransferSize"
+
+#~ msgid "Keep partially transferred files"
+#~ msgstr "Behold delvist overførte filer"
+
+#~ msgid ""
+#~ "Keep partially transferred files (--partial). The default behavior is "
+#~ "that any partially transferred file is deleted if the transfer is "
+#~ "interrupted."
+#~ msgstr ""
+#~ "Behold delvist overførte filer (--partial). Standardopførslen er at alle "
+#~ "delvist overførte filer slettes hvis overførslen afbrydes."
+
+#~ msgid "Put partially transferred files into:"
+#~ msgstr "Placér delvist overførte filer i:"
+
+#~ msgid ""
+#~ "Put a partially transferred file into this directory (--partial-dir=DIR). "
+#~ "This is a better way than the --partial option to keep partial files, "
+#~ "because the partially transferred file is kept in a different directory "
+#~ "and the destination file is not overwritten."
+#~ msgstr ""
+#~ "Placér en delvist overført fil i denne mappe (--partial-dir=MAPPE). Dette "
+#~ "er en bedre metode end tilvalget --partial til at beholde dele af filer, "
+#~ "fordi den delvist overførte fil beholdes i en anden mappe og "
+#~ "destinationsfilen ikke overskrives."
+
+#~ msgid "The data for the UsePartialDirectory option"
+#~ msgstr "Data for indstillingen UsePartialDirectory"
+
+#~ msgid "Auto-ignore files in the same way CVS does"
+#~ msgstr "Ignorér automatisk filer på samme måde som CVS gør"
+
+#~ msgid ""
+#~ "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+#~ "useful shorthand for excluding a broad range of files that you often do "
+#~ "not want to transfer between systems. This option uses the same algorithm "
+#~ "that CVS uses to determine if a file should be ignored."
+#~ msgstr ""
+#~ "Ignorér automatisk filer på samme måde som CVS gør (-C, --cvs-exclude). "
+#~ "Dette er en nyttig genvej til at ekskludere en bred række af filer som du "
+#~ "ofte ikke ønsker at overføre mellem systemer. Denne indstilling bruger "
+#~ "samme algoritme som CVS bruger, til at bestemme om en fil skal ignoreres."
+
+#~ msgid "Exclude files matching this pattern:"
+#~ msgstr "Ekskludér filer som matcher dette mønster:"
+
+#~ msgid ""
+#~ "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+#~ "special filter rule. For further information on filter rules see rsync's "
+#~ "manual page."
+#~ msgstr ""
+#~ "Ekskludér filer som matcher et bestemt mønster (--exclude=MØNSTER). Dette "
+#~ "er en særlig filterregel. Se rsyncs manual-side for yderligere "
+#~ "information om filterregler."
+
+#~ msgid "Pattern that is used for file exclusion"
+#~ msgstr "Det mønster der skal bruges til eksklusion af filer"
+
+#~ msgid "Read exclude patterns from:"
+#~ msgstr "Læs eksklusionsmønstre fra:"
+
+#~ msgid ""
+#~ "Read exclude patterns from a file (--exclude-from=FILE). This option is "
+#~ "similar to the --exclude=PATTERN option except that the exclude patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Læs eksklusionsmønstre fra en fil (--exclude-from=FIL). Denne indstilling "
+#~ "ligner tilvalget --exclude=MØNSTER bortset fra at eksklusionsmønstrene "
+#~ "læses fra en fil. Dette er en særlig filterregel. Se rsyncs manual-side "
+#~ "for mere yderligere information om filterregler."
+
+#~ msgid "The file from which the exclude patterns are read"
+#~ msgstr "Filen hvorfra eksklusionsmønstre læses"
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Ekskludér ikke filer som matcher dette mønster:"
+
+#~ msgid ""
+#~ "Do not exclude files matching a certain pattern (--include=PATTERN). This "
+#~ "is a special filter rule. For further information on filter rules see "
+#~ "rsync's manual page."
+#~ msgstr ""
+#~ "Ekskludér ikke filterregler der matcher et bestemt mønster (--"
+#~ "include=MØNSTER). Dette er en særlig filterregel. Se rsyncs manual-side "
+#~ "for yderligere information om filterregler."
+
+#~ msgid "Pattern that is used for file inclusion"
+#~ msgstr "Det mønster der skal bruges til inklusion af filer"
+
+#~ msgid "Read include patterns from:"
+#~ msgstr "Læs inklusionsmønstre fra:"
+
+#~ msgid ""
+#~ "Read include patterns from a file (--include-from=FILE). This option is "
+#~ "similar to the --include=PATTERN option except that the include patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Læs inklusionsmønstre fra en fil (--include-from=FIL). Denne indstilling "
+#~ "ligner tilvalget --include=MØNSTER bortset fra at inklusionsmønstrene "
+#~ "læses fra en fil. Dette er en særlig filterregel. Se rsyncs manual-side "
+#~ "for mere yderligere information om filterregler."
+
+#~ msgid "The file from which the include patterns are read"
+#~ msgstr "Filen hvorfra inklusionsmønstre læses"
+
+#~ msgid "Custom filter rules:"
+#~ msgstr "Brugertilpassede filterregler:"
+
+#~ msgid ""
+#~ "Add custom file-filtering rules (-f, --filter=RULE). This option allows "
+#~ "you to add rules to selectively exclude certain files from the list of "
+#~ "files to be transferred. These rules will be added to the rsync command "
+#~ "as they are. Thus, each rule has to start with the --filter=... argument."
+#~ msgstr ""
+#~ "Tilføj brugertilpassede fil-filterregler (-f, --filter=REGEL). Denne "
+#~ "indstilling lader dig tilføje regler for selektivt at udelukke bestemte "
+#~ "filer fra listen over filer der skal overføres. Disse regler vil blive "
+#~ "føjet til rsync-kommandoen som de er. Derfor skal hver regel starte med "
+#~ "argumentet --filter=..."
+
+#~ msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+#~ msgstr "Brug filterreglen --filter='dir-merge /.rsync-filter'"
+
+#~ msgid ""
+#~ "This filter rule tells rsync to look for per-directory .rsync-filter "
+#~ "files that have been sprinkled through the hierarchy and use their rules "
+#~ "to filter the files in the transfer. It has no effect, if you also choose "
+#~ "to use the --filter='exclude .rsync-filter' rule."
+#~ msgstr ""
+#~ "Denne filterregel beder rsync om at lede efter .rsync-filter-filer pr. "
+#~ "mappe som er blevet spredt udover hierarkiet og bruger deres regler til "
+#~ "at filtrere filerne i overførslen. Den har ingen effekt hvis du også "
+#~ "vælger at bruge reglen --filter='exclude .rsync-filter'."
+
+#~ msgid "Use --filter='exclude .rsync-filter' filter rule"
+#~ msgstr "Brug filterreglen --filter='exclude .rsync-filter'"
+
+#~ msgid ""
+#~ "This rule filters out the .rsync-filter files from the transfer. These "
+#~ "files normally contain filter rules that can be activated by choosing the "
+#~ "--filter='dir-merge /.rsync-filter' rule and deselecting this one."
+#~ msgstr ""
+#~ "Denne regel filtrerer .rsync-filter-filerne ud fra overførslen. Disse "
+#~ "filer indeholder normalt filterregler der kan aktiveres ved at vælge "
+#~ "reglen --filter='dir-merge / .rsync-filter' og fravælge denne."
+
+#~ msgid "Handle sparse files efficiently"
+#~ msgstr "Håndtér sparse-filer effektivt"
+
+#~ msgid ""
+#~ "Handle sparse files efficiently (-S, --sparse) so that they take up less "
+#~ "space on the destination. This option conflicts with --inplace. For "
+#~ "further information read rsync's manual page."
+#~ msgstr ""
+#~ "Håndtér sparse-filer effektivt (-S, --sparse) så de kan optage mindre "
+#~ "plads på destinationen. Denne indstilling er i modstrid med --inplace. Se "
+#~ "rsyncs manual-side for yderligere information."
+
+#~ msgid "Copy files whole (no rsync algorithm)"
+#~ msgstr "Kopiér filer helt (ingen rsync-algoritme)"
+
+#~ msgid ""
+#~ "Copy files whole (-W, --whole-file). With this option the incremental "
+#~ "rsync algorithm is not used and the whole file is sent as-is instead."
+#~ msgstr ""
+#~ "Kopiér filer helt (-W, --whole-file). Med denne indstilling bruges den "
+#~ "inkrementelle rsync-algoritme ikke og hele filen sendes som den er i "
+#~ "stedet."
+
+#~ msgid "Do not cross file system boundaries"
+#~ msgstr "Kryds ikke filsystemsgrænser"
+
+#~ msgid ""
+#~ "Do not cross file system boundaries (-x, --one-file-system). This tells "
+#~ "rsync to avoid crossing a filesystem boundary when recursing. For further "
+#~ "information on this option, read the manual page."
+#~ msgstr ""
+#~ "Kryds ikke filsystemsgrænser (-x, --one-file-system). Dette beder rsync "
+#~ "om at undgå at krydse filsystemsgrænser ved rekursion. Læs manual-siden "
+#~ "for yderligere information on dette tilvalg."
+
+#~ msgid "Only update files that already exist"
+#~ msgstr "Opdatér kun filer som allerede findes"
+
+#~ msgid ""
+#~ "Skip creating new files on the receiving side (--existing). This tells "
+#~ "rsync to skip creating files (including directories) that do not exist "
+#~ "yet on the destination. If this option is combined with the --ignore-"
+#~ "existing option, no files will be updated (which can be useful if all you "
+#~ "want to do is to delete extraneous files)."
+#~ msgstr ""
+#~ "Skip oprettelse af nye filer på modtagersiden (--existing). Dette beder "
+#~ "rsync om at springe oprettelse af filer over (inklusiv mapper), som endnu "
+#~ "ikke eksisterer på destinationen. Hvis denne indstilling kombineres med "
+#~ "tilvalget --ignore-existing vil ingen filer bliver opdateret (hvilket kan "
+#~ "være nyttigt hvis du blot vil slette overflødige filer)."
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Ignorér filer som allerede findes"
+
+#~ msgid ""
+#~ "Skip updating files that already exist on the receiving side (--ignore-"
+#~ "existing). Existing directories are not ignored."
+#~ msgstr ""
+#~ "Skip opdatering af filer som allerede findes på modtagersiden (--ignore-"
+#~ "existing). Eksisterende mapper ignoreres ikke."
+
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Udskyd opdateringer til slutningen af overførslen"
+
+#~ msgid ""
+#~ "Delay updates until the end of the transfer (--delay-updates). This "
+#~ "option puts the temporary file from each updated file into a holding "
+#~ "directory until the end of the transfer, at which time all the files are "
+#~ "renamed and copied into place in rapid succession."
+#~ msgstr ""
+#~ "Udskyd opdateringer indtil slutningen af overførslen (--delay-updates). "
+#~ "Denne indstilling placerer den midlertidige fil fra hver opdateret fil i "
+#~ "en opbevaringsmappe indtil slutningen af overførslen, hvor alle filerne "
+#~ "omdøbes og kopieres på plads hurtigt efter hinanden."
+
+#~ msgid "Make backups"
+#~ msgstr "Lav backup"
+
+#~ msgid ""
+#~ "Make backups (-b, --backup). With this option, preexisting destination "
+#~ "files are renamed as each file is transferred or deleted. You can control "
+#~ "where the backup file goes and what (if any) suffix gets appended using "
+#~ "the --backup-dir=DIR and --suffix=SUFFIX options."
+#~ msgstr ""
+#~ "Lav backup (-b, --backup). Med denne indstilling omdøbes præ-eksisterende "
+#~ "filer efterhånden som hver fil overføres eller slettes. Du kan "
+#~ "kontrollere hvor backup-filen placeres og hvilket (om noget) suffiks der "
+#~ "tilføjes med tilvalgene --backup-dir=MAPPE og --suffix=SUFFIKS."
+
+#~ msgid "Backup suffix:"
+#~ msgstr "Backup-suffiks:"
+
+#~ msgid "Use this suffix for backups (--suffix=SUFFIX)."
+#~ msgstr "Brug dette suffiks til backup (--suffix=SUFFIKS)."
+
+#~ msgid "Backup suffix"
+#~ msgstr "Backup-suffiks"
+
+#~ msgid "Backup directory:"
+#~ msgstr "Backup-mappe:"
+
+#~ msgid "Store backups in this directory (--backup-dir=DIR)."
+#~ msgstr "Opbevar backups i denne mappe (--backup-dir=MAPPE)."
+
+#~ msgid "Backup directory"
+#~ msgstr "Backup-mappe"
+
+#~ msgid "Force fixed checksum block size:"
+#~ msgstr "Gennemtving fast blokstørrelse på tjeksum:"
+
+#~ msgid ""
+#~ "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces "
+#~ "the block size used in the rsync algorithm to a fixed value."
+#~ msgstr ""
+#~ "Gennemtving en fast blokstørrelse for tjeksum (-B, --block-"
+#~ "size=STØRRELSE). Dette tvinger den blokstørrelse der bruges i rsync-"
+#~ "algoritmen til at have en fast størrelse."
+
+#~ msgid "The block size"
+#~ msgstr "Blokstørrelse"
+
+#~ msgid "Set block/file checksum seed:"
+#~ msgstr "Sæt seed for blok-/filtjeksum:"
+
+#~ msgid ""
+#~ "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+#~ "seed to this integer. This 4 byte checksum seed is included in each block "
+#~ "and file MD4 checksum calculation. By default the checksum seed is "
+#~ "generated by the server and defaults to the current time."
+#~ msgstr ""
+#~ "Sæt seed for blok-/filtjeksum (--checksum-seed=NUM). Sæt seed for MD4-"
+#~ "tjeksum til dette heltal. Denne seed for tjeksum på 4 byte inkluderes i "
+#~ "hver udregning af MD4-tjeksum for blok og fil. Som standard genereres "
+#~ "seed for tjeksummen af serveren og bruger det aktuelle tidspunkt som "
+#~ "standard."
+
+#~ msgid "The checksum seed"
+#~ msgstr "Seed for tjeksum"
+
+#~ msgid "Skip files based on checksum"
+#~ msgstr "Skip filer baseret på tjeksum"
+
+#~ msgid ""
+#~ "Skip files based on a checksum and not based on modification time and "
+#~ "size (-c, --checksum). For further information on how this feature works "
+#~ "read rsync's manual page."
+#~ msgstr ""
+#~ "Skip filer baseret på tjeksum og ikke baseret på ændringstidspunkt og "
+#~ "størrelse (-c, --checksum). Læs rsyncs manual-side for yderligere "
+#~ "information om hvordan denne funktion virker."
+
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr "Afmontér alle ressourcer når der trykkes på soveknappen"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware sleep button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Afmontér alle monterede ressourcer efter tryk på hardware-soveknappen. "
+#~ "Ressourcerne vil automatisk blive monteret igen når computeren vågner op "
+#~ "igen."
+
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "Afmontér alle ressourcer når låget lukkes"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the lid of the laptop is closed. The "
+#~ "shares will automatically be remounted after the computer wakes up again."
+#~ msgstr ""
+#~ "Afmontér alle monterede ressourcer efter låget på en bærbar er blevet "
+#~ "lukket. Ressourcerne vil automatisk blive monteret igen når computeren "
+#~ "vågner op igen."
+
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr "Afmontér alle ressourcer når der trykkes på tænd-/sluk-knappen"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware power button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Afmontér alle monterede ressourcer efter tryk på hardware-tænd-/sluk-"
+#~ "knappen. Ressourcerne vil automatisk blive monteret igen når computeren "
+#~ "vågner op igen."
+
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr "Afmontér alle ressourcer når netværksforbindelse afbrydes"
+
+#~ msgid ""
+#~ "Unmount all mounted shares when the user disconnects from the network or "
+#~ "the connection is lost due to a different reason. Using this option in "
+#~ "combination with sleep and/or hibernation might lead to unwanted side "
+#~ "effects. In this case you should unmount the shares manually before you "
+#~ "suspend the computer."
+#~ msgstr ""
+#~ "Afmontér alle monterede ressourcer når brugeren afbryder "
+#~ "netværksforbindelsen eller forbindelsen mistes af en anden årsag. Brug af "
+#~ "denne indstilling kombineret med med sove og/eller dvale kan måske føre "
+#~ "til uønskede bivirkninger. I så fald bør du afmontere ressourcerne "
+#~ "manuelt før du suspenderer computeren."
+
+#~ msgid "The format of %1 is not supported."
+#~ msgstr "%1s format er ikke understøttet."
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Tilføj bogmærker"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Der vil blive sat bogmærke ved alle oplistede ressourcer. Klik på den "
+#~ "pågældende bogmærkeindgang for at redigere etiket eller gruppe."
+
+#~ msgid "Label:"
+#~ msgstr "Etiket:"
+
+#~ msgid "Group:"
+#~ msgstr "Gruppe:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Redigér bogmærker"
+
+#~ msgid "Add Group"
+#~ msgstr "Tilføj gruppe"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Ryd bogmærker"
+
+#~ msgid "Group name:"
+#~ msgstr "Gruppenavn:"
+
+#~ msgid ""
+#~ "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Angiv brugervalgte tilvalg for værten <b>%1</b> og alle de ressourcer "
+#~ "den deler.</p>"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Angiv brugervalgte tilvalg for ressourcen <b>%1</b> på værten <b>%2</"
+#~ "b>.</p>"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB-port:"
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 er ikke en version 1.0-fil."
+
+#~ msgid "Specify User"
+#~ msgstr "Angiv bruger"
+
+#~ msgid "Please specify a username."
+#~ msgstr "Angiv et brugernavn."
+
+#~ msgid "User:"
+#~ msgstr "Bruger:"
+
+#~ msgid ""
+#~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#~ "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ressourcen <b>%1</b> er monteret i <br><b>%2</b> og ejes af "
+#~ "brugeren <b>%3</b>.</p><p>Vil du virkelig afmontere den?</p></qt>"
+
+#~ msgid "Foreign Share"
+#~ msgstr "Fremmed ressource"
+
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Genmonterer ressourcer. Vent venligst."
+
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Afmonterer ressourcer. Vent venligst."
+
+#~ msgid "Mount Share"
+#~ msgstr "Montér ressource"
+
+#~ msgid ""
+#~ "Enter the location (UNC address) and optionally the IP address and "
+#~ "workgroup to mount a share."
+#~ msgstr ""
+#~ "Angiv placeringen (UNC-adresse) og eventuelt IP-adresse og arbejdsgruppe "
+#~ "for at montere en ressource."
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Uniform Naming Convention-adressen (UNC) beskriver placeringen af "
+#~ "ressourcen. Den har følgende syntaks: //[BRUGER@]VÆRT/RESSURCE. "
+#~ "Brugernavn er valgfrit."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "Internet Protocol-adressen (IP) identificerer værten på netværket og "
+#~ "indikerer hvor den er. Den har to gyldige formater, det ene kendt som IP "
+#~ "version 4 (f.eks. 192.168.2.11) og version 6-formatet (f.eks. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "Arbejdsgruppen eller domænet identificerer det peer-to-peer "
+#~ "computernetværk som værten er placeret i."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Tilføj denne ressource til bogmærker"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Hvis du markerer dette afkrydsningsfelt, vil der blive sat bogmærke ved "
+#~ "ressourcen og du kan tilgå den f.eks. via menupunktet \"Bogmærker\" i "
+#~ "hovedvinduet."
+
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "<p>Ressourcen <b>%1</b> er blevet monteret i <b>%2</b>.</p>"
+
+#~ msgid "Open"
+#~ msgstr "Åbn"
+
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr "<p>Ressourcen <b>%1</b> er blevet afmonteret fra <b>%2</b>.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "<p>%1 ressource ud af %2 er blevet monteret.</p>"
+#~ msgstr[1] "<p>%1 ressourcer ud af %2 er blevet monteret.</p>"
+
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "<p>Alle ressourcer er blevet monteret.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "<p>%1 ressource ud af %2 er blevet afmonteret.</p>"
+#~ msgstr[1] "<p>%1 ressourcer ud af %2 er blevet afmonteret.</p>"
+
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "<p>Alle ressourcer er blevet afmonteret.</p>"
+
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "<p>Åbning af tegnebogen <b>%1</b> mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>The logins stored in the wallet could not be accessed. There is either "
+#~ "no wallet available or it could not be opened.</p>"
+#~ msgstr ""
+#~ "<p>De logins der opbevares i tegnebogen kunne ikke tilgås. Enten er der "
+#~ "ingen tegnebog tilgængelig ellers kunne den ikke åbnes.</p>"
+
+#~ msgid ""
+#~ "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#~ "the file to PDF or Postscript and try again.</p>"
+#~ msgstr ""
+#~ "<p>MIME-typen <b>%1</b> er ikke understøttet til udskrift. Konvertér "
+#~ "filen til PDF eller PostScript og prøv igen.</p>"
+
+#~ msgid ""
+#~ "<p>The bookmark for share <b>%1</b> already exists and will be skipped."
+#~ msgstr ""
+#~ "<p>Bogmærket til ressourcen <b>%1</b> bruges allerede og vil blive "
+#~ "skippet."
+
+#~ msgid ""
+#~ "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+#~ "being used and will automatically be renamed.</p>"
+#~ msgstr ""
+#~ "<p>Etiketten <b>%1</b> for bogmærket til ressourcen <b>%2</b> bruges "
+#~ "allerede og vil automatisk blive omdøbt.</p>"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Indgangen for brugervalgt masterbrowser er tom. Smb4K vil forsøge at "
+#~ "forespørge den aktuelle masterbrowser for din arbejdsgruppe eller dit "
+#~ "domæne i stedet."
+
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Hentning af liste over domæner mislykkedes:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "<p>Hentning af liste over tilgængelige domæner mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Scanning af de definerede broadcast-områder mislykkedes:</p><p><tt>%1</"
+#~ "tt></p>"
+
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr "<p>Scanning af de definerede broadcast-områder mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Hentning af liste over servere fra domænet <b>%1</b> mislykkedes.</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Hentning af liste over servere fra domænet <b>%1</b> mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Hentning af liste over ressourcer fra <b>%1</b> mislykkedes:</p><p><tt>"
+#~ "%2</tt></p>"
+
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr "<p>Hentning af liste over ressourcer fra <b>%1</b> mislykkedes.</p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Hentning af forhåndsvisning af <b>%1</b> mislykkedes:</p><p><tt>%2</"
+#~ "tt></p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "<p>Hentning af forhåndsvisning af <b>%1</b> mislykkedes.</p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Montering af ressourcen <b>%1</b> mislykkedes:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr "<p>Montering af ressourcen <b>%1</b> mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Afmontering af ressourcen <b>%1</b> fra <b>%2</b> mislykkedes:</"
+#~ "p><p><tt>%3</tt></p>"
+
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Afmontering af ressourcen <b>%1</b> fra <b>%2</b> mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~ "is owned by the user <b>%3</b>.</p>"
+#~ msgstr ""
+#~ "<p>Du har ikke rettigheder til at afmontere ressourcen <b>%1</b> fra <b>"
+#~ "%2</b>. Den ejes af brugeren <b>%3</b>.</p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Udskrift på printeren <b>%1</b> mislykkedes:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "<p>Udskrift på printeren <b>%1</b> mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr ""
+#~ "<p>Synkronisering af <b>%1</b> med <b>%2</b> mislykkedes:</p><p><tt>%3</"
+#~ "tt></p>"
+
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "<p>Synkronisering af <b>%1</b> med <b>%2</b> mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Søgning i netværksnabolaget efter søgeelementet <b>%1</b> mislykkedes:"
+#~ "</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr ""
+#~ "<p>Søgning i netværksnabolaget efter søgeelementet <b>%1</b> mislykkedes."
+#~ "</p>"
+
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr ""
+#~ "<p>Kommandoen <b>%1</b> kunne ikke findes. Tjek din installation.</p>"
+
+#~ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#~ msgstr "<p>Ressourcen <b>%1</b> er en printer og kan ikke bogmærkes.</p>"
+
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "<p>Filen <b>%1</b> kunne ikke findes.</p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Åbning af filen <b>%1</b> mislykkedes:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Åbning af filen <b>%1</b> mislykkedes.</p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Læsning fra filen <b>%1</b> mislykkedes:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Læsning fra filen <b>%1</b> mislykkedes.</p>"
+
+#~ msgid ""
+#~ "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#~ msgstr "<p>Følgende mappe kunne ikke oprettes:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Processen kunne ikke starte (fejlkode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Processen brød sammen (fejlkode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Processen havde tidsudløb (fejlkode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Kunne ikke skrive til processen (fejlkode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Kunne ikke læse fra processen (fejlkode: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process reported an unknown error.</p>"
+#~ msgstr "<p>Processen rapporterede en ukendt fejl.</p>"
+
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr "<p>Systemkaldet <b>%1</b> mislykkedes:</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code:<tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr ""
+#~ "<p>Udførsel af en handling med root-rettigheder mislykkedes (fejlkoden "
+#~ "var: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr "<p>Udførsel af en handling med root-rettigheder mislykkedes.</p>"
+
+#~ msgid "<p>The URL that was passed is invalid.</p>"
+#~ msgstr "<p>URL'en der blev givet er ugyldig.</p>"
+
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "<p>Der er ikke defineret nogen broadcast-områder.</p>"
+
+#~ msgid "Preview"
+#~ msgstr "Forhåndsvisning"
+
+#~ msgid "The preview is displayed here."
+#~ msgstr "Forhåndsvisningen vises her."
+
+#~ msgid "Reload"
+#~ msgstr "Genindlæs"
+
+#~ msgid "Back"
+#~ msgstr "Tilbage"
+
+#~ msgid "Forward"
+#~ msgstr "Frem"
+
+#~ msgid "Up"
+#~ msgstr "Op"
+
+#~ msgid ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+#~ msgstr ""
+#~ "Den aktuelle UNC-adresse vises her. Du kan også vælge en af de tidligere "
+#~ "besøgte placeringer fra drop-ned-menuen, som så vil blive vist i "
+#~ "visningen ovenfor."
+
+#~ msgid "Print File"
+#~ msgstr "Udskriv fil"
+
+#~ msgid "Options"
+#~ msgstr "Indstilinger"
+
+#~ msgid "Printer"
+#~ msgstr "Printer"
+
+#~ msgid "File:"
+#~ msgstr "Fil:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Dette er filen du vil udskrive på den eksterne printer. I øjeblikket "
+#~ "understøttes kun nogle få MIME-typer såsom PDF, Postscript, klartekst og "
+#~ "billeder. Hvis filens MIME-type ikke er understøttet skal du konvertere "
+#~ "den."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopier:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Dette er antallet af kopier du vil udskrive."
+
+#~ msgid "Disk"
+#~ msgstr "Disk"
+
+#~ msgid "Synchronizing"
+#~ msgstr "Synkronisering"
+
+#~ msgid "Source"
+#~ msgstr "Kilde"
+
+#~ msgid "Destination"
+#~ msgstr "Destination"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Synkronisér destinationen med kilden"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Ombyt stier"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Ombyt kilde og destination"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Angiv venligst kilde- og destinationsmappe for synkroniseringen."
+
+#~ msgid "Source:"
+#~ msgstr "Kilde:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Dette er kildemappen. De data den indeholder skal skrives til "
+#~ "destinationsmappen."
+
+#~ msgid "Destination:"
+#~ msgstr "Destination:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Dette er destinationsmappen. Den vil blive opdateret med data fra "
+#~ "kildemappen."
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Angiv et brugernavn og en adgangskode til værten <b>%1</b>.</qt>"
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Angiv et brugernavn og en adgangskode til ressourcen <b>%1</b>.</qt>"
+
+#~ msgid "Rescan"
+#~ msgstr "Genscan"
+
+#~ msgid "Mount Dialog"
+#~ msgstr "Monteringsdialog"
+
+#~ msgid "<font size=\"-1\">on %1</font>"
+#~ msgstr "<font size=\"-1\">på %1</font>"
+
+#~ msgid "Unmount All"
+#~ msgstr "Afmontér alle"
+
+#~ msgid "NTLM password hashing"
+#~ msgstr "NTLM adgangskode-hashing"
+
+#~ msgid "NTLMv2 password hashing"
+#~ msgstr "NTLMv2 adgangskode-hashing"
+
+#~ msgid "NTLMv2 password hashing encapsulated in Raw NTLMSSP message"
+#~ msgstr "NTLMv2 adgangskode-hashing inkapslet i raw NTLMSSP-meddelelse"
+
+#~ msgid ""
+#~ "NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet "
+#~ "signing"
+#~ msgstr ""
+#~ "NTLMv2 adgangskode-hashing inkapslet i raw NTLMSSP-meddelelse og "
+#~ "pakkesignering"
+
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Prøver igen at montere ressourcer. Vent venligst."
+
+#~ msgid "Use default security mode"
+#~ msgstr "Brug standard sikkerhedstilstand"
+
+#~ msgid "IP address:"
+#~ msgstr "IP-adresse:"
+
+#~ msgid "Mount"
+#~ msgstr "Montér"
+
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Nogle påkrævede programmer kunne ikke findes:</p><p><tt>%1</tt></p>"
+
+#~ msgid "Advanced"
+#~ msgstr "Avanceret"
+
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Vil du virkelig gennemtvinge afmontering af ressourcen <b>%1</b> "
+#~ "fra <b>%2</b>?</p></qt>"
+
+#~ msgid "Force Unmounting"
+#~ msgstr "Gennemtving afmontering"
+
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of all inaccessible "
+#~ "shares?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Vil du virkelig gennemtvinge afmontering af alle utilgængelige "
+#~ "ressourcer?</p></qt>"
+
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "&Gennemtving afmontering"
+
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "<qt>Angiv et brugernavn og en adgangskode.</qt>"
+
+#~ msgid "Signing State"
+#~ msgstr "Signeringstilstand"
+
+#~ msgid "Use NTLM password hashing (default)"
+#~ msgstr "Brug NTLM adgangskode-hashing (standard)"
+
+#~ msgid "Lookup all workgroups, hosts and shares periodically."
+#~ msgstr "Slå alle arbejdsgrupper, værter og ressourcer op periodisk."
+
+#~ msgid "UNC Address"
+#~ msgstr "UNC-adresse"
+
+#~ msgid "Write Access"
+#~ msgstr "Skriveadgang"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "Bruger-id"
+
+#~ msgid "Group ID"
+#~ msgstr "Gruppe-id"
+
+#~ msgid "SMB Port"
+#~ msgstr "SMB-port"
+
+#~ msgid "File System Port"
+#~ msgstr "Filsystem-port"
+
+#~ msgid "Automatic"
+#~ msgstr "Automatisk"
+
+#~ msgid "Massimo Callegari"
+#~ msgstr "Massimo Callegari"
+
+#~ msgid "A&dd"
+#~ msgstr "&Tilføj"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "host. It has the following syntax: //HOST."
+#~ msgstr ""
+#~ "Uniform Naming Convention-adressen (UNC) beskriver placeringen af værten. "
+#~ "Den har følgende syntaks: //VÆRT."
+
+#~ msgid "automatic"
+#~ msgstr "automatisk"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //HOST/SHARE"
+#~ msgstr ""
+#~ "Uniform Naming Convention-adressen (UNC) beskriver placeringen af "
+#~ "ressourcen. Den har følgende syntaks: //VÆRT/RESSOURCE"
+
+#~ msgid "%1 has an unsupported format version."
+#~ msgstr "%1 har en ikke understøttet format-version."
+
+#~ msgid ""
+#~ "<qt>The format of the UNC address you entered is not correct. It must "
+#~ "have the form //[USER@]HOST/SHARE."
+#~ msgstr ""
+#~ "<qt>Formatet på UNC-adressen du angav er ikke korrekt. Det skal have "
+#~ "formen //[BRUGER@]VÆRT/RESSOURCE."
+
+#~ msgid "M&ount Manually"
+#~ msgstr "M&ontér manuelt"
+
+#~ msgid "Share"
+#~ msgstr "Ressource"
+
+#~ msgid "Bookmark Editor"
+#~ msgstr "Bogmærkeredigering"
+
+#~ msgid "Bookmark"
+#~ msgstr "Bogmærke"
+
+#~ msgid "Printing"
+#~ msgstr "Udskriver"
+
+#~ msgid "Converting File to PostScript"
+#~ msgstr "Konverterer fil til Postscript"
+
+#~ msgid "Input File"
+#~ msgstr "Inputfil"
+
+#~ msgid "Output File"
+#~ msgstr "Outputfil"
+
+#~ msgid "Acquiring Preview"
+#~ msgstr "Henter forhåndsvisning"
+
+#~ msgid "This is the view where the contents of the share is displayed."
+#~ msgstr "Dette er visningen hvor indholdet af ressourcen vises."
+
+#~ msgid "The file is invalid."
+#~ msgstr "Filen er ugyldig."
+
+#~ msgid "The file that is currently transferred is shown here."
+#~ msgstr "Filen der aktuelt overføres vises her."
+
+#~ msgid "The progress of the current file transfer is shown here."
+#~ msgstr "Fremgangen for den aktuelle filoverførsel vises her."
+
+#~ msgid "The overall progress of the synchronization is shown here."
+#~ msgstr "Den samlede fremgang for synkroniseringen vises her."
+
+#~ msgid "Files transferred:"
+#~ msgstr "Filer overført:"
+
+#~ msgid "Transfer rate:"
+#~ msgstr "Overførselshastighed:"
+
+#~ msgid ""
+#~ "This is the path where Smb4K will store the files and directories during "
+#~ "synchronization. If you plan to synchronize only with one remote share, "
+#~ "then you can put the data directly in this directory. If you want to "
+#~ "synchronize with several remote shares, then you should create a "
+#~ "subdirectory for each share and choose the appropriate one in the "
+#~ "synchronization dialog."
+#~ msgstr ""
+#~ "Dette er stien hvor Smb4K vil opbevare filer og mapper under "
+#~ "synkronisering. Hvis du påtænker kun at synkronisere med én ekstern "
+#~ "ressource, så kan du placere data direkte i denne mappe. Hvis du vil "
+#~ "synkronisere med flere eksterne ressourcer, så skal du oprette en "
+#~ "undermappe for hver ressource og vælge den passende mappe i "
+#~ "synkroniseringsdialogen."
+
+#~ msgid "NoSuchAction"
+#~ msgstr "IngenSådanHandling"
+
+#~| msgid ""
+#~| "The execution of the unmount action failed. The error code was: <tt>%1</"
+#~| "tt>"
+#~ msgid ""
+#~ "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Udførsel af afmonteringshandlingen mislykkedes (fejlkoden var: <tt>%1</"
+#~ "tt>).</p>"
+
+#~ msgid "The authentication action was denied."
+#~ msgstr "Autentificeringshandlingen blev afvist."
+
+#, fuzzy
+#~| msgid "The authentication action was denied."
+#~ msgid "The authentication was denied."
+#~ msgstr "Autentificeringshandlingen blev afvist."
+
+#~ msgid "Error Message"
+#~ msgstr "Fejlmeddelelse"
+
+#~ msgid "The directory <b>%1</b> could not be created."
+#~ msgstr "Mappen <b>%1</b> kunne ikke oprettes."
+
+#~ msgid "List"
+#~ msgstr "Liste"
+
+#~ msgid "A system call failed."
+#~ msgstr "Et systemkald mislykkedes."
+
+#~ msgid "The following error message was reported:"
+#~ msgstr "Følgende fejlmeddelelse blev rapporteret:"
+
+#~ msgid "\\u00A9 2007-2009, Alexander Reinholdt"
+#~ msgstr "\\u00A9 2007-2009, Alexander Reinholdt"
+
+#~ msgid "Share:"
+#~ msgstr "Ressource:"
+
+#~ msgid "Free:"
+#~ msgstr "Ledig:"
+
+#~ msgid "Used:"
+#~ msgstr "Brugt:"
+
+#~ msgid "Total:"
+#~ msgstr "I alt:"
+
+#~ msgid "Usage:"
+#~ msgstr "Brug:"
+
+#~ msgid "This share is inaccessible."
+#~ msgstr "Denne ressource er utilgængelig."
+
+#~ msgid "Pseudo master browser:"
+#~ msgstr "Pseudo-masterbrowser:"
+
+#~ msgid "No responder"
+#~ msgstr "Ingen responder"
+
+#~ msgid "Invalid action"
+#~ msgstr "Ugyldig handling"
+
+#~ msgid "Authorization denied"
+#~ msgstr "Godkendelse nægtet"
+
+#~ msgid "Helper busy"
+#~ msgstr "Hjælperen er optaget"
+
+#~ msgid "DBus error"
+#~ msgstr "D-Bus-fejl"
+
+#~ msgid ""
+#~ "<qt>If you experience problems due to insufficient privileges when "
+#~ "mounting shares, you should enable the appropriate settings in the "
+#~ "<b>Super User</b> configuration page.</qt>"
+#~ msgstr ""
+#~ "<qt>Hvis du oplever problemer pga. utilstrækkelige rettigheder ved "
+#~ "montering af ressourcer, skal du aktivere de passende indstillinger på "
+#~ "konfigurationssiden <b>Superbruger</b>.</qt>"
+
+#~ msgid "Smb4KSearchDialogPart"
+#~ msgstr "Smb4KSearchDialogPart"
+
+#~ msgid "The search dialog KPart of Smb4K"
+#~ msgstr "Smb4K's KPart til søgedialog"
+
+#~ msgid "Remove Entries"
+#~ msgstr "Fjern indgange"
+
+#~ msgid "Remove entries from the configuration file"
+#~ msgstr "Fjern indgange fra konfigurationsfilen"
+
+#~ msgid ""
+#~ "All entries that were written by Smb4K will be removed from /etc/sudoers. "
+#~ "Additionally, all your choices under \"Actions\" will be cleared."
+#~ msgstr ""
+#~ "Alle indgange der blev skrevet af Smb4K vil blive fjernet fra /etc/"
+#~ "sudoers. Desuden vil alle dine valg under \"Handlinger\" blive ryddet."
+
+#~ msgid "Super User"
+#~ msgstr "Superbruger"
+
+#~ msgid ""
+#~ "<b>smb4k_kill</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr ""
+#~ "<b>smb4k_kill</b> kræver administratorrettigheder. Angiv venligst din "
+#~ "adgangskode."
+
+#~ msgid ""
+#~ "<b>smb4k_mount</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr ""
+#~ "<b>smb4k_mount</b> kræver administratorrettigheder. Angiv venligst din "
+#~ "adgangskode."
+
+#~ msgid ""
+#~ "<b>smb4k_umount</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr ""
+#~ "<b>smb4k_umount</b> kræver administratorrettigheder. Angiv venligst din "
+#~ "adgangskode."
+
+#~ msgid ""
+#~ "The program <b>sudo</b> could not be found. Smb4K will continue without "
+#~ "using it."
+#~ msgstr ""
+#~ "Programmet <b>sudo</b> blev ikke fundet. Smb4K vil fortsætte uden at "
+#~ "bruge det."
+
+#~ msgid ""
+#~ "The program <b>kdesudo</b> could not be found. Smb4K will continue with "
+#~ "using <b>sudo</b> instead."
+#~ msgstr ""
+#~ "Programmet <b>kdesudo</b> blev ikke fundet. Smb4K vil fortsætte ved at "
+#~ "bruge <b>sudo</b> i stedet."
+
+#~ msgid "Writing to the <b>sudoers</b> file failed."
+#~ msgstr "Skrivning til <b>sudoers</b>-filen mislykkedes."
+
+#~ msgid "This program mounts SMBFS/CIFS shares."
+#~ msgstr "Dette program monterer SMBFS-/CIFS-ressourcer."
+
+#~ msgid "(C) 2010, Alexander Reinholdt"
+#~ msgstr "(C) 2010, Alexander Reinholdt"
+
+#~ msgid "smb4k_mount"
+#~ msgstr "smb4k_mount"
+
+#~ msgid "A comma-separated list of mount options"
+#~ msgstr "En kommaadskilt liste over monteringstilvalg"
+
+#~ msgid "The local (<cs1>) and the server's (<cs2>) character set"
+#~ msgstr "Det lokale (<cs1>) og serverens (<cs2>) tegnsæt"
+
+#~ msgid ""
+#~ "Do not use NetBIOS name resolver and connect directly to <host>, which "
+#~ "can be either a valid DNS name or an IP address"
+#~ msgstr ""
+#~ "Brug ikke NetBIOS navneopslag og forbind direkte til <vært>, som enten "
+#~ "kan være et gyldigt DNS-navn eller en IP-adresse"
+
+#~ msgid "Use <locale> for lower/upper case conversion routines"
+#~ msgstr ""
+#~ "Brug <lokalitet> til konverteringsrutiner mellem små og store bogstaver"
+
+#~ msgid "Assign access rights to the newly created connection"
+#~ msgstr "Tildel adgangsrettigheder til den nyoprettede forbindelse"
+
+#~ msgid "Do not ask for a password"
+#~ msgstr "Spørg ikke om adgangskode"
+
+#~ msgid "Assign owner/group attributes to the newly created connection"
+#~ msgstr "Tildel ejer-/gruppe-attributter til den nyoprettede forbindelse"
+
+#~ msgid ""
+#~ "How many retries should be done before the SMB requester decides to drop "
+#~ "the connection"
+#~ msgstr ""
+#~ "Hvor mange omforsøg skal udføres før SMB-anmoderen beslutter at droppe "
+#~ "forbindelsen"
+
+#~ msgid "Timeout in seconds for each request"
+#~ msgstr "Tidsudløb i sekunder for hver anmodning"
+
+#~ msgid "Username to authenticate with"
+#~ msgstr "Brugernavn til autentificering"
+
+#~ msgid ""
+#~ "This option specifies the workgroup to be used in the authentication "
+#~ "request"
+#~ msgstr ""
+#~ "Denne indstilling angiver den arbejdsgruppe der skal bruges i "
+#~ "autentificeringsanmodningen"
+
+#~ msgid "Set a case option which affects name representation"
+#~ msgstr "Vælg en versalindstilling som påvirker navnerepræsentation"
+
+#~ msgid "Specify permissions that should be assigned to files"
+#~ msgstr "Angiv rettigheder der skal tildeles filer"
+
+#~ msgid "Specify permissions that should be assigned to directories"
+#~ msgstr "Angiv rettigheder der skal tildeles mapper"
+
+#~ msgid "User ID assigned to files"
+#~ msgstr "Bruger-id der tildeles filer"
+
+#~ msgid "Group ID assigned to files"
+#~ msgstr "Gruppe-id der tildeles filer"
+
+#~ msgid "For further information see the manual page of mount_smbfs."
+#~ msgstr "Se manualsiden for mount_smbfs for yderligere information ."
+
+#~ msgid "The UNC of the remote share"
+#~ msgstr "UNC for den eksterne ressource"
+
+#~ msgid "The mountpoint for the remote share"
+#~ msgstr "Monteringspunktet for den eksterne ressource"
+
+#~ msgid "Aborting."
+#~ msgstr "Afbryder."
+
+#~ msgid "Could not find umount binary."
+#~ msgstr "Kunne ikke finde programmet umount."
+
+#~ msgid "The internal process crashed with exit code "
+#~ msgstr "Den interne proces brød sammen med afslutningskode "
+
+#~ msgid "An error occurred:"
+#~ msgstr "En fejl opstod:"
+
+#~ msgid "This program writes to the sudoers file."
+#~ msgstr "Dette program skriver til sudoers-filen."
+
+#~ msgid "(C) 2008-2010, Alexander Reinholdt"
+#~ msgstr "(C) 2008-2010, Alexander Reinholdt"
+
+#~ msgid "smb4k_sudowriter"
+#~ msgstr "smb4k_sudowriter"
+
+#~ msgid "Add an user to the sudoers file"
+#~ msgstr "Føj en bruger til sudoers-filen"
+
+#~ msgid "Remove an user from the sudoers file"
+#~ msgstr "Fjern en bruger fra sudoers-filen"
+
+#~ msgid "No valid arguments provided."
+#~ msgstr "Ingen gyldige argumenter angivet."
+
+#~ msgid "The lock file could not be created."
+#~ msgstr "Låsefilen kunne ikke oprettes."
+
+#~ msgid "The sudoers file is currently being edited."
+#~ msgstr "Filen sudoers redigeres i øjeblikket."
+
+#~ msgid "An invalid username has been provided."
+#~ msgstr "Et ugyldigt brugernavn blev givet."
+
+#~ msgid "The sudoers file was not found."
+#~ msgstr "Filen sudoers blev ikke fundet"
+
+#~ msgid "The sudoers file is irregular."
+#~ msgstr "Filen sudoers er uregelmæssig."
+
+#~ msgid "Cannot access sudoers file."
+#~ msgstr "Kan ikke tilgå sudoers-filen."
+
+#~ msgid "Could not read from sudoers file."
+#~ msgstr "Kunne ikke læse fra sudoers-filen."
+
+#~ msgid "Could not set file permissions for sudoers file."
+#~ msgstr "Kunne ikke sætte rettigheder for sudoers-filen."
+
+#~ msgid ""
+#~ "Could not find utility programs (smb4k_kill, smb4k_umount, smb4k_mount)."
+#~ msgstr ""
+#~ "Kunne ikke finde værktøjsprogrammer (smb4k_kill, smb4k_umount, "
+#~ "smb4k_mount)."
+
+#~ msgid "Wrong format of Smb4K section in sudoers file detected."
+#~ msgstr "Forkert format på Smb4K-sektionen fundet i sudoers-filen."
+
+#~ msgid "Please correct this manually."
+#~ msgstr "Løs venligst dette manuelt."
+
+#~ msgid "Could not compile Smb4K section for sudoers file."
+#~ msgstr "Kunne ikke sammensætte Smb4K-sektion til sudoers-filen."
+
+#~ msgid "Could not write to sudoers file."
+#~ msgstr "Kunne ikke skrive til sudoers-filen."
+
+#~ msgid "This program umounts SMBFS/CIFS shares."
+#~ msgstr "Dette program afmonterer SMBFS-/CIFS-ressourcer."
+
+#~ msgid "smb4k_umount"
+#~ msgstr "smb4k_umount"
+
+#~ msgid "Perform a lazy unmount"
+#~ msgstr "Udfør doven afmontering"
+
+#~ msgid "The mountpoint of the share"
+#~ msgstr "Ressourcens monteringspunkt"
+
+#~ msgid "Invalid mountpoint specified."
+#~ msgstr "Ugyldigt monteringspunkt angivet."
+
+#~ msgid "This program kills processes invoked by Smb4K."
+#~ msgstr "Dette program dræber processer som Smb4K har startet."
+
+#~ msgid "smb4k_kill"
+#~ msgstr "smb4k_kill"
+
+#~ msgid "The PID of the process that is to be killed"
+#~ msgstr "PID for processen der skal dræbes"
+
+#~ msgid "Could not find kill binary."
+#~ msgstr "Kunne ikke finde programmet kill."
+
+#~ msgid ""
+#~ "Unmount a share under Linux by force. This even works if the file system "
+#~ "is \"busy\", because it is immediately detached from the file system "
+#~ "hierarchy and all references to it are cleaned up later when it is not "
+#~ "busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of "
+#~ "this feature. Use with care. Note, that you will need the root password "
+#~ "to write the necessary changes to the configuration file."
+#~ msgstr ""
+#~ "Afmontér en ressourcer under Linux med tvang. Dette virker selvom "
+#~ "filsystemet er \"optaget\", da det straks afkobles fra "
+#~ "filsystemhierarkiet og alle henvisninger til det ryddes op senere når det "
+#~ "ikke længere er optaget. Linux-kerne 2.4.11 eller nyere kræves for at "
+#~ "udnytte denne funktion. Brug med omtanke. Bemærk at du behøver root-"
+#~ "adgangskoden for at skrive de nødvendige ændringer til "
+#~ "konfigurationsfilen."
+
+#~ msgid "Use super user privileges to mount and unmount shares"
+#~ msgstr ""
+#~ "Superbruger rettigheder kræves til at montere og afmontere ressourcer."
+
+#~ msgid ""
+#~ "Use super user privileges for mounting and unmounting remote shares. This "
+#~ "feature is only needed, if you are not allowed to do this as normal user. "
+#~ "Note, that you will need the root password to write the necessary changes "
+#~ "to the configuration file."
+#~ msgstr ""
+#~ "Brug superbruger-rettigheder til montering og afmontering af eksterne "
+#~ "ressourcer. Denne funktion behøves kun hvis du ikke har tilladelse til at "
+#~ "gøre dette som normal bruger. Bemærk at du behøver root-adgangskoden for "
+#~ "at skrive de nødvendige ændringer til konfigurationsfilen."
+
+#~ msgid "Do not modify sudo's configuration file"
+#~ msgstr "Ændr ikke sudos konfigurationsfil"
+
+#~ msgid ""
+#~ "Do not modify the configuration file of the program sudo. You might want "
+#~ "to enable this feature, if you are already allowed to execute arbitrary "
+#~ "programs with super user privileges without the need of giving a "
+#~ "password. Please note that during mounting the PASSWD environment "
+#~ "variable is evaluated, so you have to make sure that it is preserved when "
+#~ "sudo is run. This can be accomplished e.g. by setting the 'env_keep' "
+#~ "option in the sudoers file. See the sudoers manual page for further "
+#~ "information."
+#~ msgstr ""
+#~ "Ændr ikke konfigurationsfilen for programmet sudo. Du vil måske ønske at "
+#~ "aktivere denne funktion hvis du allerede har tilladt at køre vilkårlige "
+#~ "programmer med superbrugerprivilegier uden behov for at angive "
+#~ "adgangskode. Bemærk venligst at miljøvariablen PASSWD evalueres under "
+#~ "montering, så du skal sørge for at den bevares når sudo køres. Dette kan "
+#~ "f.eks. opnås ved at sætte indstillingen \"env_keep\" i sudoers-filen. Se "
+#~ "manualsiden sudoers for yderligere information."
+
+#~ msgid "Use kdesudo instead of sudo"
+#~ msgstr "Brug kdesudo i stedet for sudo"
+
+#~ msgid ""
+#~ "Use the graphical frontend kdesudo instead of sudo itself. To enable this "
+#~ "option, kdesudo must be installed on your computer. This option enables "
+#~ "you to provide a password each time it is needed. You should enable this "
+#~ "feature, if you are allowed to execute arbitrary programs with super user "
+#~ "privileges but need to provide a password."
+#~ msgstr ""
+#~ "Brug den grafiske brugerflade kdesudo i stedet for selve sudo. For at "
+#~ "aktivere denne indstilling skal kdesudo være installeret på din computer. "
+#~ "Denne indstilling lader dig oplyse adgangskode hver gang det er "
+#~ "nødvendigt. Du bør aktivere denne funktion hvis du har tilladelse til at "
+#~ "køre vilkårlige programmer med superbrugerprivilegier, men skal oplyse en "
+#~ "adgangskode."
+
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Detailed information cannot be provided "
+#~ "because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Navnet på din computer kunne ikke bestemmes ved brug af "
+#~ "systemkaldet gethostname().</p><p>Detaljeret information kan ikke gives, "
+#~ "da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Read the error message under \"Details\" "
+#~ "to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Navnet på din computer kunne ikke bestemmes ved brug af "
+#~ "systemkaldet gethostname().</p><p>Læs fejlmeddelelsen under \"Detaljer\" "
+#~ "for at få mere at vide.</p></qt>"
+
+#~ msgid "<qt>This feature has not been enabled.</qt>"
+#~ msgstr "<qt>Denne funktion er ikke blevet aktiveret.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>En fejl opstod under fortolkning af XML-filen \"%1\".</"
+#~ "p><p>Detaljeret information kan ikke gives, da der ikke var nogen "
+#~ "fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>En fejl opstod under fortolkning af XML-filen \"%1\".</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>En ukendt fejl opstod.</p><p>Detaljeret information kan ikke "
+#~ "gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Read the error message under "
+#~ "\"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>En ukendt fejl opstod.</p><p>Læs fejlmeddelelsen under \"Detaljer"
+#~ "\" for at få mere at vide.</p></qt>"
+
+#~ msgid "<qt>The process exited unexpectedly.</qt>"
+#~ msgstr "<qt>Processen afsluttede uventet.</qt>"
+
+#~ msgid "<qt>The file \"%1\" could not be found.</qt>"
+#~ msgstr "<qt>Filen \"%1\" kunne ikke findes.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>Either your PATH environment variable is not set properly or there "
+#~ "are the following programs missing on your system:</p><p>%1</p><p>Please "
+#~ "correct this and restart Smb4K.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Enten er din PATH-miljøvariabel ikke sat korrekt eller også "
+#~ "mangler der følgende programmer på dit system:</p><p>%1</p><p>Bring "
+#~ "venligst dette i orden og genstart Smb4K.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>En fejl opstod under skrivning til sudoers-filen.</p><p>Detaljeret "
+#~ "information kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>En fejl opstod under skrivning til sudoers-filen.</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Den midlertidige fil kunne ikke oprettes.</p><p>Detaljeret "
+#~ "information kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Den midlertidige fil kunne ikke oprettes.</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid "<qt>The file \"%1\" could not be opened.</qt>"
+#~ msgstr "<qt>Filen \"%1\" kunne ikke åbnes.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Filen \"%1\" kunne ikke åbnes.</p><p>Læs fejlmeddelelsen under "
+#~ "\"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ressourcen %1 kunne ikke afmonteres.</p><p>Detaljeret information "
+#~ "kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ressourcen %1 kunne ikke afmonteres.</p><p>Læs fejlmeddelelsen "
+#~ "under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Filen \"%1\" kunne ikke udskrives.</p><p>Detaljeret information "
+#~ "kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Filen \"%1\" kunne ikke udskrives.</p><p>Læs fejlmeddelelsen under "
+#~ "\"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt></p>The synchronization could not be finished successfully.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt></p>Synkroniseringen kunne ikke gennemføres korrekt.</p><p>Detaljeret "
+#~ "information kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The synchronization could not be finished successfully.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Synkroniseringen kunne ikke gennemføres korrekt.</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Søgningen kunne ikke gennemføres korrekt.</p><p>Detaljeret "
+#~ "information kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Søgningen kunne ikke gennemføres korrekt.</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid "Another user is currently editing the sudoers file."
+#~ msgstr "En anden bruger redigerer i øjeblikket sudoers-filen."
+
+#~ msgid "FATAL: Could not restore initial permissions of sudoers file."
+#~ msgstr "FATALT: Kunne ikke genskabe sudoers-filens oprindelige rettigheder."
+
+#~ msgid "Please inform your system administrator."
+#~ msgstr "Informér venligst din systemadministrator."
+
+#~ msgid "The Smb4K section does not conform with the required format."
+#~ msgstr "Smb4K-sektionen er ikke i overensstemmelse med det krævede format."
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over registrerede IP-adresser indenfor de angivne broadcast-"
+#~ "områder kunne ikke hentes.</p><p>Detaljeret information kan ikke gives, "
+#~ "da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Read the error message under \"Details"
+#~ "\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over registrerede IP-adresser indenfor de angivne broadcast-"
+#~ "områder kunne ikke hentes.</p><p>Læs fejlmeddelelsen under \"Detaljer\" "
+#~ "for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over servere kunne ikke hentes.</p><p>Detaljeret "
+#~ "information kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over servere kunne ikke hentes.</p><p>Læs fejlmeddelelsen "
+#~ "under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over ressourcer kunne ikke hentes.</p><p>Detaljeret "
+#~ "information kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over ressourcer kunne ikke hentes.</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Forhåndsvisningen kunne ikke sammensættes.</p><p>Detaljeret "
+#~ "information kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Forhåndsvisningen kunne ikke sammensættes.</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ressourcen %1 kunne ikke monteres.</p><p>Detaljeret information "
+#~ "kan ikke gives, da der ikke var nogen fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ressourcen %1 kunne ikke monteres.</p><p>Læs fejlmeddelelsen under "
+#~ "\"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>The share could not be unmounted, because the mount point string was "
+#~ "empty.</qt>"
+#~ msgstr ""
+#~ "<qt>Ressource kunne ikke afmonteres, fordi monteringspunkt-strengen var "
+#~ "tom.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over monterede ressourcer kunne ikke importeres.</"
+#~ "p><p>Detaljeret information kan ikke gives, da der ikke var nogen "
+#~ "fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over monterede ressourcer kunne ikke importeres.</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>The list of arguments for the \"net\" command could not be assembled."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Listen over argumenter til kommandoen \"net\" kunne ikke sættes "
+#~ "sammen.</qt>"
+
+#~ msgid ""
+#~ "<qt>The label \"%1\" is used more than once. It will automatically be "
+#~ "renamed for bookmark \"%2\" to avoid confusion.</qt>"
+#~ msgstr ""
+#~ "<qt>Etiketten \"%1\" bruges mere end én gang. Den vil automatisk blive "
+#~ "omdøbt for bogmærket \"%2\" for at undgå forvirring.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over arbejdsgrupper og domæner kunne ikke hentes.</"
+#~ "p><p>Detaljeret information kan ikke gives da der ikke var nogen "
+#~ "fejlmeddelelse.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Read the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Listen over arbejdsgrupper og domæner kunne ikke hentes.</p><p>Læs "
+#~ "fejlmeddelelsen under \"Detaljer\" for at få mere at vide.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>You previously chose to use \"%1\", but now it is missing on your "
+#~ "system. Smb4K will disable this feature.</qt>"
+#~ msgstr ""
+#~ "<qt>Du valgte tidligere at bruge \"%1\", men nu mangler den på dit "
+#~ "system. Smb4K vil deaktivere denne funktion.</qt>"
+
+#~ msgid ""
+#~ "<qt>The wallet \"%1\" could not be opened. KWallet support will be "
+#~ "disabled for this session.</qt>"
+#~ msgstr ""
+#~ "<qt>Tegnebogen \"%1\" kunne ikke åbnes. KWallet-understøttelse vil blive "
+#~ "deaktiveret for denne session.</qt>"
+
+#~ msgid "System Tray"
+#~ msgstr "Statusområde"
+
+#~ msgid "Main Window && System Tray"
+#~ msgstr "Hovedvindue og statusområde"
+
+#~ msgid "Embed application into the system tray"
+#~ msgstr "Indlejr programmet i statusområdet"
+
+#~ msgid ""
+#~ "Embed the application into the system tray. The system tray widget "
+#~ "provides a popup menu with several commonly used tasks, so you do not "
+#~ "need to bring up the main window every time. If this setting is chosen, "
+#~ "you have to use \"Quit\" from the \"File\" menu or the system tray widget "
+#~ "to exit the application."
+#~ msgstr ""
+#~ "Indlejr programmet i statusområdet. Statusområde-widgetten giver en pop-"
+#~ "op-menu med flere ofte brugte funktioner, så du ikke behøver at åbne "
+#~ "hovedvinduet hver gang. Hvis denne indstilling er valgt, skal du bruge "
+#~ "\"Afslut\" fra menuen \"Fil\" eller statusområde-widgetten for at "
+#~ "afslutte programmet."
+
+#~ msgid "none"
+#~ msgstr "ingen"
+
+#~ msgid "on"
+#~ msgstr "til"
+
+#, fuzzy
+#~| msgid "Preview"
+#~ msgid "The preview"
+#~ msgstr "Forhåndsvisning"
+
+#, fuzzy
+#~| msgid "Backup directory"
+#~ msgid "The source directory"
+#~ msgstr "Backup-mappe"
+
+#, fuzzy
+#~| msgid "Keep partially transferred files"
+#~ msgid "The currently transferred file"
+#~ msgstr "Behold delvist overførte filer"
+
+#, fuzzy
+#~| msgid "Delay updates until the end of transfer"
+#~ msgid "The progress of the current file transfer"
+#~ msgstr "Udskyd opdateringer til slutningen af overførslen"
+
+#, fuzzy
+#~| msgid "The network browser could not be created."
+#~ msgid "The workgroup where the host is located"
+#~ msgstr "Netværksbrowseren kunne ikke oprettes."
+
+#, fuzzy
+#~| msgid ""
+#~| "The address of the share\n"
+#~| "in UNC syntax"
+#~ msgid "The UNC address of the host"
+#~ msgstr ""
+#~ "Ressourcens adresse\n"
+#~ "i UNC-syntaks"
+
+#, fuzzy
+#~ msgid "The port used for communicating with servers"
+#~ msgstr "Brug unicode når der kommunikeres med serveren."
+
+#, fuzzy
+#~| msgid "Write access:"
+#~ msgid "The write access"
+#~ msgstr "Skriveadgang:"
+
+#, fuzzy
+#~| msgid "User ID"
+#~ msgid "The user ID"
+#~ msgstr "Bruger-id"
+
+#, fuzzy
+#~| msgid "Group ID"
+#~ msgid "The group ID"
+#~ msgstr "Gruppe-id"
+
+#~ msgid "The IPv4 or IPv6 address"
+#~ msgstr "IPv4- eller IPv6-adressen"
+
+#~ msgid "The workgroup name"
+#~ msgstr "Arbejdsgruppenavnet"
+
+#~ msgid "Bookmark this share"
+#~ msgstr "Sæt bogmærke ved ressourcen"
+
+#~ msgid "UNC:"
+#~ msgstr "UNC:"
+
+#~ msgid "Name:"
+#~ msgstr "Navn:"
+
+#~ msgid "Protocol:"
+#~ msgstr "Protokol:"
+
+#~ msgid "Try to authenticate with Kerberos (Active Directory)"
+#~ msgstr "Prøv at autentificere med Kerberos (Active Directory)"
+
+#~ msgid "UID"
+#~ msgstr "UID"
+
+#~ msgid "GID"
+#~ msgstr "GID"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "[Network] The custom master browser has not been entered."
+#~ msgstr "[Netværk] Brugervalgt masterbrowser er ikke blevet angivet."
+
+#~ msgid "[Network] The broadcast areas have not been entered."
+#~ msgstr "[Netværk] Broadcast-områderne er ikke blevet angivet."
+
+#~ msgid "[Shares] The mount prefix is empty."
+#~ msgstr "[Ressourcer] Præfikset for montering er tomt."
+
+#~ msgid "[Samba] The file mask is empty."
+#~ msgstr "[Samba] Filmasken er tom."
+
+#~ msgid "[Samba] The directory mask is empty."
+#~ msgstr "[Samba] Mappemasken er tom."
+
+#~ msgid "[Synchronization] The rsync prefix is empty."
+#~ msgstr "[Synkronisering] rsync-præfikset er tomt."
+
+#~ msgid "[Synchronization] The exclude patterns have not been entered."
+#~ msgstr "[Synkronisering] Ekskludér-mønstrene er ikke blevet angivet."
+
+#~ msgid "[Synchronization] The path of the exclude file is empty."
+#~ msgstr "[Synkronisering] Stien til ekskludér-filen er tom."
+
+#~ msgid "[Synchronization] The include patterns have not been entered."
+#~ msgstr "[Synkronisering] Inkludér-mønstrene er ikke blevet angivet."
+
+#~ msgid "[Synchronization] The path of the include file is empty."
+#~ msgstr "[Synkronisering] Stien til inkludér-filen er tom."
+
+#~ msgid "[Synchronization] The backup suffix has not been defined."
+#~ msgstr "[Synkronisering] Backup-suffikset er ikke blevet defineret."
+
+#~ msgid "[Synchronization] The backup directory is empty."
+#~ msgstr "[Synkronisering] Backup-mappen er tom."
+
+#~ msgid ""
+#~ "<qt>The configuration could not be written, because one setting is "
+#~ "incomplete:<ul>%2</ul>Please correct this issue.</qt>"
+#~ msgid_plural ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+#~ msgstr[0] ""
+#~ "<qt>Konfigurationen kunne ikke skrives, fordi én indstilling er "
+#~ "ufuldstændig:<ul>%2</ul>Bring venligst dette i orden.</qt>"
+#~ msgstr[1] ""
+#~ "<qt>Konfigurationen kunne ikke skrives, fordi %1 indstillinger er "
+#~ "ufuldstændige:<ul>%2</ul>Bring venligst dette i orden.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>Smb4K now uses a different configuration system. Thus, your old "
+#~ "settings are obsolete and you have to reconfigure the application.</"
+#~ "p><p>To ensure a clean transition, the current configuration file will be "
+#~ "removed.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Smb4K bruger nu et andet konfigurationssystem. Derfor er dine "
+#~ "gamle indstillinger forældede og du er nødt til at genkonfigurere "
+#~ "programmet.</p><p> For at sikre en glat overgang, vil den nuværende "
+#~ "konfiguration blive fjernet.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>Support for the program 'super' has been terminated. You have to "
+#~ "reconfigure Smb4K.</qt>"
+#~ msgstr ""
+#~ "<qt>Understøttelse af programmet \"super\" er blevet elimineret. Du er "
+#~ "nødt til at genkonfigurere Smb4K.</qt>"
+
+#, fuzzy
+#~| msgid "[Authentication] The default user name has not been entered."
+#~ msgid "[Authentication] The default username has not been entered."
+#~ msgstr "[Autentificering] Standard-brugernavn er ikke blevet angivet."
+
+#, fuzzy
+#~| msgid ""
+#~| "This user name is used by default to authenticate to a remote server."
+#~ msgid "This username is used by default to authenticate to a remote server."
+#~ msgstr ""
+#~ "Dette brugernavn anvendes som standard til at autentificere imod en "
+#~ "ekstern server."
+
+#~ msgid ""
+#~ "This password is used by default to authenticate to a remote server. It "
+#~ "may be empty."
+#~ msgstr ""
+#~ "Denne adgangskode bruges som standard til at autentificere imod en "
+#~ "ekstern server. Det kan være tomt."
+
+#, fuzzy
+#~| msgid "The share could not be mounted."
+#~ msgid "There are currently %1 shares mounted."
+#~ msgstr "Ressourcen kunne ikke monteres."
+
+#~ msgid "Delete"
+#~ msgstr "Slet"
+
+#~ msgid "Leopold Palomo Avellaneda"
+#~ msgstr "Leopold Palomo Avellaneda"
+
+#~ msgid "Catalan translation"
+#~ msgstr "Catalansk oversættelse"
+
+#~ msgid "Radoslaw Zawartko"
+#~ msgstr "Radoslaw Zawartko"
+
+#~ msgid "Polish translation"
+#~ msgstr "Polsk oversættelse"
+
+#~ msgid "Nick Chen"
+#~ msgstr "Nick Chen"
+
+#~ msgid "Chinese Simplified translation"
+#~ msgstr "Simplificeret kinesisk oversættelse"
+
+#~ msgid "Stanislav Yudin"
+#~ msgstr "Stanislav Yudin"
+
+#~ msgid "Russian translation"
+#~ msgstr "Russisk oversættelse"
+
+#~ msgid "Marc Hansen"
+#~ msgstr "Marc Hansen"
+
+#~ msgid "Swedish translation and intensive testing"
+#~ msgstr "Svensk oversættelse og intensiv testning "
+
+#~ msgid "Giovanni Degani"
+#~ msgstr "Giovanni Degani"
+
+#~ msgid "Brazilian Portuguese translation"
+#~ msgstr "Brasiliansk Portugisisk oversættelse"
+
+#~ msgid "Ivan Petrouchtchak"
+#~ msgstr "Ivan Petrouchtchak"
+
+#~ msgid "Ukrainian translation"
+#~ msgstr "Ukrainsk oversættelse"
+
+#~ msgid "Karoly Barcza"
+#~ msgstr "Karoly Barcza"
+
+#~ msgid "Hungarian translation"
+#~ msgstr "Ungarsk oversættelse"
+
+#~ msgid "Quique"
+#~ msgstr "Quique"
+
+#~ msgid "Spanish translation"
+#~ msgstr "Spansk oversættelse"
+
+#~ msgid "Michal Šulek"
+#~ msgstr "Michal Šulek"
+
+#~ msgid "Slovak translation"
+#~ msgstr "Slovakisk oversættelse"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"
+
+#~ msgid "French translation"
+#~ msgstr "Fransk oversættelse"
+
+#~ msgid "Toyohiro Asukai"
+#~ msgstr "Toyohiro Asukai"
+
+#~ msgid "Japanese translation"
+#~ msgstr "Japansk oversættelse"
+
+#~ msgid "Atanas Mavrov"
+#~ msgstr "Atanas Mavrov"
+
+#~ msgid "Bulgarian translation"
+#~ msgstr "Bulgarsk oversættelse"
+
+#~ msgid "Isidoro Russo"
+#~ msgstr "Isidoro Russo"
+
+#~ msgid "Nils Kristian Tomren"
+#~ msgstr "Nils Kristian Tomren"
+
+#~ msgid "Norwegian translations"
+#~ msgstr "Norsk oversættelse"
+
+#~ msgid "Alois Nešpor"
+#~ msgstr "Alois Nešpor"
+
+#~ msgid "Czech translation"
+#~ msgstr "Tjekkisk oversættelse"
+
+#~ msgid "Martín Carr"
+#~ msgstr "Martín Carr"
+
+#~ msgid "Görkem Çetin"
+#~ msgstr "Görkem Çetin"
+
+#~ msgid "Turkish translation"
+#~ msgstr "Tyrkisk oversættelse"
+
+#~ msgid "Jack Liu"
+#~ msgstr "Jack Liu"
+
+#~ msgid "Chinese Traditional translation"
+#~ msgstr "Traditionelt Kinesisk oversættelse"
+
+#~ msgid "Arnar Leósson"
+#~ msgstr "Arnar Leósson"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Islandsk oversættelse"
+
+#~ msgid "Michael Brinkloev"
+#~ msgstr "Michael Brinkloev"
+
+#~ msgid "Danish translation"
+#~ msgstr "Dansk oversættelse"
+
+#~ msgid "Joop Beris"
+#~ msgstr "Joop Beris"
+
+#~ msgid "Dutch translation"
+#~ msgstr "Hollandsk oversættelse"
+
+#~ msgid "Lamarque V. Souza"
+#~ msgstr "Lamarque V. Souza"
+
+#~ msgid "Serdar Soytetir"
+#~ msgstr "Serdar Soytetir"
+
+#~ msgid "Wei-Lun Chao"
+#~ msgstr "Wei-Lun Chao"
+
+#~ msgid "Rashid N. Achilov"
+#~ msgstr "Rashid N. Achilov"
+
+#~ msgid "Testing of Smb4K under FreeBSD"
+#~ msgstr "Test af Smb4K på FreeBSD"
+
+#~ msgid "Jerzy Trzeciak"
+#~ msgstr "Jerzy Trzeciak"
+
+#~ msgid "The share was successfully mounted."
+#~ msgstr "Ressourcen blev monteret korrekt."
+
+#~ msgid "The share was successfully unmounted."
+#~ msgstr "Ressourcen blev afmonteret korrekt."
+
+#~ msgid ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+#~ msgstr ""
+#~ "<qt>Konfigurationen kunne ikke skrives, fordi %1 indstillinger er "
+#~ "ufuldstændige:<ul>%2</ul>Bring venligst disse i orden.</qt>"
+
+#~ msgid "The access was denied. "
+#~ msgstr "Adgangen blev nægtet."
+
+#, fuzzy
+#~ msgid "The password is not correct. "
+#~ msgstr "Adgangskoden er ikke korrekt."
+
+#~ msgid "An authentication error occurred. "
+#~ msgstr "Der skete en godkendelses fejl."
+
+#~ msgid "The logon failed. "
+#~ msgstr "Indlogningen mislykkedes."
+
+#, fuzzy
+#~ msgid "Please enter authentication data for server %1."
+#~ msgstr "Skriv godkendelses data for %1."
+
+#, fuzzy
+#~ msgid "Scan Network"
+#~ msgstr "Netværk"
+
+#~ msgid "Samba Browser"
+#~ msgstr "Samba browser"
+
+#, fuzzy
+#~ msgid "Search Dialog"
+#~ msgstr "Søger..."
+
+#~ msgid "You haven't specified a file."
+#~ msgstr "Du har ikke angivet en fil."
+
+#, fuzzy
+#~ msgid "Querying master browser for workgroups and domains..."
+#~ msgstr "Forespørg master browser for at hente browselisten."
+
+#, fuzzy
+#~ msgid "Scanning broadcast areas for workgroups and domains..."
+#~ msgstr "Forespørg master browser for at hente browselisten."
+
+#, fuzzy
+#~ msgid "Looking for workgroup members..."
+#~ msgstr "Forespørg master browser for at hente browselisten."
+
+#, fuzzy
+#~ msgid "Querying host for list of shares..."
+#~ msgstr "Der skete en fejl da det blev forsøgt at få listen af ressourcer."
+
+#, fuzzy
+#~ msgid "Querying host for additional information..."
+#~ msgstr "Henter information..."
+
+#, fuzzy
+#~ msgid "Generating preview..."
+#~ msgstr "Henter forhåndsvisning..."
+
+#, fuzzy
+#~ msgid "Buffer size exceeded"
+#~ msgstr "Buffer størrelse:"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Some file permissions could not be determined.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message.</qt>"
+#~ msgstr ""
+#~ "Denne ressource kunne ikke afmonteres fordi monteringspunktet er tomt."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Some file permissions could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Denne ressource kunne ikke afmonteres fordi monteringspunktet er tomt."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The file \"%1\" is currently being edited by user %2. To avoid any "
+#~ "problems, access to this file is denied at the moment. Please try again "
+#~ "later.</qt>"
+#~ msgstr ""
+#~ "En anden bruger redigerer på nuværende tidspunkt en af de systemfiler, "
+#~ "som Smb4K vil skrive til. Prøv igen senere."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The temporary file \"%1\" could not be created.\n"
+#~ "Detailed information cannot be provided because there was no error "
+#~ "message.</qt>"
+#~ msgstr ""
+#~ "Denne ressource kunne ikke afmonteres fordi monteringspunktet er tomt."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The temporary file \"%1\" could not be created.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Denne ressource kunne ikke afmonteres fordi monteringspunktet er tomt."
+
+#, fuzzy
+#~ msgid "<qt>The directory \"%1\" could not be found.</qt>"
+#~ msgstr "Filen %1 kunne ikke findes."
+
+#, fuzzy
+#~ msgid "<qt>The file \"%1\" could not be closed.</qt>"
+#~ msgstr "Filen %1 kunne ikke findes."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The file \"%1\" could not be closed.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Denne ressource kunne ikke afmonteres fordi monteringspunktet er tomt."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of supplementary group IDs could not be determined.</qt>"
+#~ msgstr "Den brugte diskstørrelse kunne ikke bestemmes."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>The list of supplementary group IDs could not be determined.\n"
+#~ "Read the error message under \"Details\" to find out more.</qt>"
+#~ msgstr ""
+#~ "Denne ressource kunne ikke afmonteres fordi monteringspunktet er tomt."
+
+#~ msgid "Use the following program to gain super user privileges:"
+#~ msgstr "Brug følgende program til at opnå superbruger rettigheder:"
+
+#~ msgid "sudo"
+#~ msgstr "sudo"
+
+#, fuzzy
+#~ msgid "super"
+#~ msgstr "Bruger:"
+
+#~ msgid "Programs"
+#~ msgstr "Programmer"
+
+#~ msgid "Network Browser"
+#~ msgstr "Netværks Browser"
+
+#, fuzzy
+#~ msgid "Port:"
+#~ msgstr "Printer:"
+
+#~ msgid "CIFS"
+#~ msgstr "CIFS"
+
+#~ msgid "Caching time of directory listings:"
+#~ msgstr "Mellemlagrings tid af katalog listinger:"
+
+#, fuzzy
+#~ msgid "Use large file support"
+#~ msgstr "Understødt store filsystemer."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>NOTE: You might need to enable support for either <i>sudo</i> or "
+#~ "<i>super</i> in the Super User page.</qt>"
+#~ msgstr ""
+#~ "Bemærk: Hvis du vælger CIFS fil systemet bliver du måske nød til at brug "
+#~ "af enten <i>super</i> eller <i>sudo</i> i Superbruger fanen."
+
+#, fuzzy
+#~ msgid "User && Group"
+#~ msgstr "Bruger og Gruppe"
+
+#, fuzzy
+#~ msgid "Charset && Codepage"
+#~ msgstr "Charset og Tegntabel"
+
+#~ msgid "Permissions"
+#~ msgstr "Rettigheder"
+
+#, fuzzy
+#~ msgid "Allow dragging of shares"
+#~ msgstr "Vis printer ressourcer."
+
+#, fuzzy
+#~ msgid "Drag && Drop"
+#~ msgstr "Bruger og Gruppe"
+
+#, fuzzy
+#~ msgid "auto"
+#~ msgstr "Auto"
+
+#, fuzzy
+#~ msgid "Open with &Konqueror"
+#~ msgstr "&Konqueror"
+
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr "Michael Brinkloev"
+
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr "mhb@qxp.dk"
+
+#, fuzzy
+#~ msgid "Remove &All"
+#~ msgstr "Fjern alle"
+
+#, fuzzy
+#~ msgid ""
+#~ "Up to KDE 3.3.x, KIO and Konqueror cannot handle CIFS shares. Konqueror "
+#~ "will hang if you try to access it.\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "Op til KDE 3.3.1,KIO og Konqueror kan ikke håndtere CIFS ressourcer. "
+#~ "Konqueror vil fryse hvis du prøver at tilgå en.\n"
+#~ "Vil du fortsætte?"
+
+#, fuzzy
+#~ msgid "Show the comment of a share"
+#~ msgstr "Vis skjulte ressourcer."
+
+#, fuzzy
+#~ msgid "Show the mount point of a share instead of its name"
+#~ msgstr "Vis monteringspunkt i stedet for ressource navnet."
+
+#, fuzzy
+#~ msgid "Allow the dragging of share icons"
+#~ msgstr "Vis printer ressourcer."
+
+#, fuzzy
+#~ msgid "The mount prefix"
+#~ msgstr "Monter ressourcer:"
+
+#, fuzzy
+#~ msgid "Force the subdirectories created by Smb4K to be lowercase"
+#~ msgstr ""
+#~ "Tving generede underkataloger til at være skrevet med små bogstaver."
+
+#, fuzzy
+#~ msgid "Allow the unmounting of shares owned by other users"
+#~ msgstr "Tillad afmonteringen af ressourcer der er ejet af andre brugere."
+
+#, fuzzy
+#~ msgid "Use a wallet to store authentication data"
+#~ msgstr "Skriv godkendelses data for %1."
+
+#, fuzzy
+#~ msgid "The socket options"
+#~ msgstr "Socket flag:"
+
+#, fuzzy
+#~ msgid "The NetBIOS scope"
+#~ msgstr "NetBIOS navn:"
+
+#, fuzzy
+#~ msgid "The remote SMB port"
+#~ msgstr "Fjern SMB port:"
+
+#, fuzzy
+#~ msgid "Use machine account for login"
+#~ msgstr "Brug standard logind."
+
+#, fuzzy
+#~ msgid "The group ID that is to be used for mounting"
+#~ msgstr "Brug følgende fil system til monterede ressourcer:"
+
+#, fuzzy
+#~ msgid "Long file support"
+#~ msgstr "Understødt store filsystemer."
+
+#, fuzzy
+#~ msgid "Prefix for synchronization"
+#~ msgstr "Standard Logind"
+
+#, fuzzy
+#~ msgid "The program that should be used to gain super user privileges"
+#~ msgstr "Brug følgende program til at opnå superbruger rettigheder:"
+
+#, fuzzy
+#~ msgid "Use super user privileges to unmount inaccessible shares"
+#~ msgstr ""
+#~ "Superbruger rettigheder kræves til at montere og afmontere ressourcer."
+
+#, fuzzy
+#~ msgid ""
+#~ "The browse list could not be retrieved.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr ""
+#~ "Denne ressource kunne ikke afmonteres fordi monteringspunktet er tomt."
+
+#, fuzzy
+#~ msgid "The file \"%1\" could not be read."
+#~ msgstr "Filen %1 kunne ikke læses."
+
+#, fuzzy
+#~ msgid ""
+#~ "The file \"%1\" could not be read.\n"
+#~ "Read the error message under \"Details\" to find out more."
+#~ msgstr ""
+#~ "Denne ressource kunne ikke afmonteres fordi monteringspunktet er tomt."
+
+#, fuzzy
+#~ msgid "The file \"%1\" could not be written."
+#~ msgstr "Filen %1 kunne ikke læses."
+
+#, fuzzy
+#~ msgid ""
+#~ "IP addresses are not supported with this search method. Please choose "
+#~ "\"Use nmblookup\" in the configuration dialog and try again."
+#~ msgstr ""
+#~ "Søgningsmetoden du valgte (smbclient) kan ikke håndtere IP adresser "
+#~ "korrekt. Vælg venligst \"Brug nmblookup.\" i konfigurations dialogen og "
+#~ "prøv igen."
+
+#, fuzzy
+#~ msgid "Shares Vie&w"
+#~ msgstr "Ressource visning"
+
+#, fuzzy
+#~ msgid "List Vie&w"
+#~ msgstr "Ressource visning"
+
+#, fuzzy
+#~ msgid "Jump to shares view"
+#~ msgstr "Ressource visning"
+
+#, fuzzy
+#~ msgid "Jump to network browser"
+#~ msgstr "Netværks Browser"
+
+#, fuzzy
+#~ msgid "Jump to search dialog"
+#~ msgstr "Søger..."
+
+#~ msgid "Docking in System Tray"
+#~ msgstr "Dokning i StatusFelt"
+
+#~ msgid "Exiting..."
+#~ msgstr "Afslutter..."
+
+#, fuzzy
+#~ msgid "Querying current master browser..."
+#~ msgstr "Forespørg master browser for at hente browselisten."
+
+#, fuzzy
+#~ msgid "Querying master browser %1..."
+#~ msgstr "Forespørg master browser for at hente browselisten."
+
+#, fuzzy
+#~ msgid "Scanning broadcast areas..."
+#~ msgstr "Broadcast adresse:"
+
+#~ msgid "Opening workgroup..."
+#~ msgstr "Åbner arbejdsgruppen..."
+
+#, fuzzy
+#~ msgid "Retrieving list of shares..."
+#~ msgstr "Søger efter vært..."
+
+#, fuzzy
+#~ msgid "If no wallet is used, remember authentication data during run time"
+#~ msgstr "Hvis der ikke bruges en wallet så husk alle nødvendige kodeord. "
+
+#~ msgid "Use default login"
+#~ msgstr "Brug standard logind."
+
+#~ msgid "Show IPC$ shares"
+#~ msgstr "Vis IPC$ ressourcer"
+
+#~ msgid "Show ADMIN$ shares"
+#~ msgstr "Vis ADMIN$ ressourcer."
+
+#~ msgid "Show type"
+#~ msgstr "Vis type."
+
+#, fuzzy
+#~ msgid ""
+#~ "Smb4K uses \"nmblookup\" by default to search for remote hosts. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use \"smbclient"
+#~ "\"."
+#~ msgstr ""
+#~ "Som standard bruger Smb4K <i>nmblookup</i> til netværkssøgninger. Denne "
+#~ "metode er meget pålidelig men fejler af og til når dit netværk er sat "
+#~ "unormalt op. I dette tilfælde burde du prøve at bruge <i>smbclient</i>."
+
+#~ msgid "Use nmblookup (recommended)"
+#~ msgstr "Brug nmbloopup (anbefalet)"
+
+#, fuzzy
+#~ msgid "Smb4KConfigDialog"
+#~ msgstr "Smb4KMountDialog"
+
+#, fuzzy
+#~ msgid ""
+#~ "NOTE: You might need to enable support for either \"super\" or \"sudo\" "
+#~ "in the Super User page."
+#~ msgstr ""
+#~ "Bemærk: Hvis du vælger CIFS fil systemet bliver du måske nød til at brug "
+#~ "af enten <i>super</i> eller <i>sudo</i> i Superbruger fanen."
+
+#, fuzzy
+#~ msgid "Use large file system support"
+#~ msgstr "Understødt store filsystemer."
+
+#, fuzzy
+#~ msgid "Custom"
+#~ msgstr "Auto"
+
+#, fuzzy
+#~ msgid "The default user name for authentication"
+#~ msgstr "Denne master browser behøver godkendelse."
+
+#, fuzzy
+#~ msgid "The default password for authentication"
+#~ msgstr "Denne master browser behøver godkendelse."
+
+#, fuzzy
+#~ msgid "Querying %1..."
+#~ msgstr "Søger på netværket..."
+
+#, fuzzy
+#~ msgid "Retrieving browse list from current master browser..."
+#~ msgstr "Henter forhåndsvisning..."
+
+#, fuzzy
+#~ msgid "Querying %1 to compose browse list..."
+#~ msgstr "Forespørg master browser for at hente browselisten."
+
+#, fuzzy
+#~ msgid "Scanning network to retrieve browse list..."
+#~ msgstr "Afsøg netværket for at hente browse listen."
+
+#~ msgid "Show shares as list instead of as icons"
+#~ msgstr "Vis ressourcer som en liste i stedet for ikoner."
+
+#~ msgid ""
+#~ "Smb4K is an SMB/CIFS share browser for KDE.\n"
+#~ "It uses Samba to access the local network neighborhood."
+#~ msgstr ""
+#~ "Smb4k er en SMB/CIFS netværksressource browser til KDE.\n"
+#~ "Den bruger Samba til at tilgå det lokal netværk."
+
+#, fuzzy
+#~ msgid "Scan netwo&rk"
+#~ msgstr "Netværk"
+
+#, fuzzy
+#~ msgid "&Custom options"
+#~ msgstr "Samba flag"
+
+#, fuzzy
+#~ msgid "Broadcast addresses for IP scan:"
+#~ msgstr "Broadcast adresse:"
+
+#, fuzzy
+#~ msgid ""
+#~ "Smb4K uses <i>nmblookup</i> by default to do network searches. This "
+#~ "method is very reliable but fails sometimes if your network neighborhood "
+#~ "is configured uncommonly. In this case you should try to use "
+#~ "<i>smbclient</i>."
+#~ msgstr ""
+#~ "Som standard bruger Smb4K <i>nmblookup</i> til netværkssøgninger. Denne "
+#~ "metode er meget pålidelig men fejler af og til når dit netværk er sat "
+#~ "unormalt op. I dette tilfælde burde du prøve at bruge <i>smbclient</i>."
+
+#~ msgid ""
+#~ "Use super user privileges to force the unmounting of (broken) shares\n"
+#~ "(Requires Linux kernel 2.4.11 or later)"
+#~ msgstr ""
+#~ "Superbruger rettigheder kræves til at tvinge afmonteringen af "
+#~ "(fejlbehæftede) ressourcer.\n"
+#~ "(Kræver Linux kernel 2.4.11 eller senere.)"
+
+#~ msgid "Super User Privileges"
+#~ msgstr "Super Bruger Rettigheder"
+
+#~ msgid ""
+#~ "You forgot to enter the host you want to query to retrieve the browse "
+#~ "list.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Du har glemt at skrive værten som du vil forhøre dig hos for at hente "
+#~ "browselisten.\n"
+#~ "Vil du skrive den nu?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You forgot to enter the broadcast address(es) for the IP scan.\n"
+#~ "Do you want to enter them now?"
+#~ msgstr ""
+#~ "Du har glemt at skrive standard kodeordet.\n"
+#~ "Vil du skrive det nu?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You forgot to enter the mount prefix.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Du har glemt at skrive standard logind.\n"
+#~ "Vil du skrive det nu?"
+
+#, fuzzy
+#~ msgid "Preserve owner (root only)"
+#~ msgstr "Rettigheder"
+
+#~ msgid "Domain (workgroup):"
+#~ msgstr "Domæne (arbejdsgruppe):"
+
+#~ msgid "Scope (Read manual page):"
+#~ msgstr "Virkefelt (Læs manual siden først.):"
+
+#~ msgid "Active Directory"
+#~ msgstr "Aktiv Katalog"
+
+#, fuzzy
+#~ msgid "Linux charset:"
+#~ msgstr "Linux charset:"
+
+#, fuzzy
+#~ msgid "Use unicode when communicating with the server"
+#~ msgstr "Brug unicode når der kommunikeres med serveren."
+
+#~ msgid "Use default network read size"
+#~ msgstr "Brug netværk standard læse størrelse."
+
+#~ msgid "Auto"
+#~ msgstr "Auto"
+
+#, fuzzy
+#~ msgid "Active Directory (LDAP/Kerberos)"
+#~ msgstr "Aktiv Katalog (LDAP/Kerberos)"
+
+#~ msgid "DCE-RPC"
+#~ msgstr "DCE-RPC"
+
+#, fuzzy
+#~ msgid "RAP (older systems)"
+#~ msgstr "RAP (ældre systemer)"
+
+#, fuzzy
+#~ msgid "Resolve order:"
+#~ msgstr "Resolv orden:"
+
+#, fuzzy
+#~ msgid "The user IDs present on the system"
+#~ msgstr "Vis alle ressourcer der er monteret på systemet."
+
+#~ msgid "This login will be used, if none has been defined for a share."
+#~ msgstr ""
+#~ "Denne logind vil blive brugt hvis der ikke er blevet defineret nogen for "
+#~ "ressourcen."
+
+#~ msgid ""
+#~ "You forgot to enter the default login and password.\n"
+#~ "Do you want to enter them now?"
+#~ msgstr ""
+#~ "Du har glemt at skrive standard logind og kodeord.\n"
+#~ "Vil du skrive det nu?"
+
+#~ msgid ""
+#~ "You forgot to enter the default login.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Du har glemt at skrive standard logind.\n"
+#~ "Vil du skrive det nu?"
+
+#~ msgid ""
+#~ "You forgot to enter the default password.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Du har glemt at skrive standard kodeordet.\n"
+#~ "Vil du skrive det nu?"
+
+#~ msgid "Printer:"
+#~ msgstr "Printer:"
+
+#~ msgid "Copies"
+#~ msgstr "Kopier"
+
+#, fuzzy
+#~ msgid "The kernel (%1) does not support this operation."
+#~ msgstr "Din kernel (%1) understøtter ikke denne handling."
+
+#~ msgid "Smb4K - The SMB/CIFS Share Browser"
+#~ msgstr "Smb4K - SMB/CIFS Netværksressource Browseren"
+
+#, fuzzy
+#~ msgid "Jump to Search Dialog (Alternative)"
+#~ msgstr "Søger..."
+
+#~ msgid "Browse list retrieval"
+#~ msgstr "Browse list henting"
+
+#~ msgid "Version"
+#~ msgstr "Version"
+
+#, fuzzy
+#~ msgid "Master"
+#~ msgstr "Master:"
+
+#~ msgid "Opening host..."
+#~ msgstr "Åbner vært..."
+
+#~ msgid "Mounted &Shares"
+#~ msgstr "Monterede Res&sourcer"
+
+#, fuzzy
+#~ msgid "Range Scan"
+#~ msgstr "Genopfrisk "
+
+#, fuzzy
+#~ msgid ""
+#~ "You forgot to enter the IP address ranges you want to scan to retrieve "
+#~ "the browse list.\n"
+#~ "Do you want to enter them now?"
+#~ msgstr ""
+#~ "Du har glemt at skrive værten som du vil forhøre dig hos for at hente "
+#~ "browselisten.\n"
+#~ "Vil du skrive den nu?"
+
+#~ msgid "Set the UID to:"
+#~ msgstr "Sæt UID til:"
+
+#~ msgid "Set the GID to:"
+#~ msgstr "Sæt GID til:"
+
+#~ msgid "An error occurred while trying to get the list of workgroup members."
+#~ msgstr ""
+#~ "Der skete en fejl da det blev forsøgt at få listen af arbejdsgruppe "
+#~ "medlemmer."
+
+#~ msgid "An error occurred while trying to get the preview."
+#~ msgstr "Der skete en fejl da det blev forsøgt at hente forhåndsvisningen."
+
+#~ msgid "An error occurred while trying to mount the share."
+#~ msgstr "Der skete en fejl da det blev forsøgt at montere ressourcen."
+
+#~ msgid "An error occurred while trying to unmount the share."
+#~ msgstr "Der skete en fejl da det blev forsøgt at afmontere ressourcen."
+
+#~ msgid "An error occurred while trying to unmount all shares."
+#~ msgstr ""
+#~ "Der skete en fejl da det blev forsøgt at afmontere alle ressourcerne."
+
+#~ msgid "The hostname could not be determined."
+#~ msgstr "Værtsnavnet kunne ikke bestemmes."
+
+#~ msgid "The file %1 could not be written successfully."
+#~ msgstr "Filen %1 blev ikke skrevet."
+
+#~ msgid "The wallet \"%1\" could not be opened."
+#~ msgstr "Wallet \"%1\" kunne ikke åbnes."
+
+#~ msgid "An error occurred while trying to print."
+#~ msgstr "Der skete en fejl da det blev forsøgt at printe."
+
+#, fuzzy
+#~ msgid "An error occurred while trying to create a temporary directory."
+#~ msgstr "Der skete en fejl da det blev forsøgt at hente forhåndsvisningen."
+
+#, fuzzy
+#~ msgid "An error occurred while trying to create a temporary file."
+#~ msgstr "Der skete en fejl da det blev forsøgt at hente forhåndsvisningen."
+
+#, fuzzy
+#~ msgid "An error occurred while determining file permissions."
+#~ msgstr "Der skete en fejl da det blev forsøgt at printe."
+
+#, fuzzy
+#~ msgid "An error occurred during synchronization."
+#~ msgstr "Der skete en fejl da det blev forsøgt at printe."
+
+#, fuzzy
+#~ msgid "Workgroup/Domain"
+#~ msgstr "Arbejdsgruppe:"
+
+#~ msgid ""
+#~ "You forgot to enter the path where Smb4K will mount the shares to.\n"
+#~ "Do you want to enter it now?"
+#~ msgstr ""
+#~ "Du har glemt at skrive stien hvor Smb4K vil montere ressourcerne.\n"
+#~ "Vil du skrive den nu?"
+
+#~ msgid "Mount shares:"
+#~ msgstr "Monter ressourcer:"
+
+#, fuzzy
+#~ msgid ""
+#~ "(c) 2003, Alexander Reinholdt \n"
+#~ "(c) 2004, Alexander Reinholdt, Franck Babin \n"
+#~ "(c) 2005, Alexander Reinholdt & the Smb4K team"
+#~ msgstr ""
+#~ "(c) 2003, Alexander Reinholdt\n"
+#~ "(c) 2004, Alexander Reinholdt, Franck Babin\n"
+#~ "(c) 2005, The Smb4K team"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentation"
+
+#~ msgid "This computer is already in the list."
+#~ msgstr "Denne computer er allerede i listen."
+
+#~ msgid "This share cannot be added."
+#~ msgstr "Denne ressource kan ikke tilføjes."
+
+#~ msgid "file to open"
+#~ msgstr "fil at åbne"
+
+#~ msgid "Show network tab"
+#~ msgstr "Vis netværks fane"
+
+#~ msgid "Show Search tab"
+#~ msgstr "Vis søge fane"
+
+#~ msgid ""
+#~ "As of version 0.5.0, the entries in the super.tab file are stored in a "
+#~ "different format. Smb4K is now going to convert the old ones."
+#~ msgstr ""
+#~ "Fra version 0.5.0, er informationerne i super.tab gemt i et andet format. "
+#~ "Smb4K vil nu konvertere de gamle."
+
+#~ msgid ""
+#~ "Smb4K is going to modify the entries in the super.tab file in order to "
+#~ "work properly."
+#~ msgstr ""
+#~ "Smb4K vil ændre indholdet i filen super.tab for at programmet kan fungere "
+#~ "ordentligt."
+
+#~ msgid "Input"
+#~ msgstr "Inddata"
+
+#~ msgid ""
+#~ "The mimetype (%1) indicates that this is a text file. Printing it, "
+#~ "however, might fail. Do you want to continue?"
+#~ msgstr ""
+#~ "Mimetypen (%1) indikerer at dette er en tekst fil. Printning af den kan "
+#~ "dog fejle. Vil du fortsætte?"
+
+#~ msgid "NetBIOS name/IP address:"
+#~ msgstr "NetBIOS navn/IP adresse:"
+
+#~ msgid "Use authentication when querying the workgroup master browsers"
+#~ msgstr "Brug godkendelse når arbejdsgruppens master browser forespørges."
+
+#~ msgid "WINS server used by the system:"
+#~ msgstr "WINS server brugt af systemet:"
+
+#~ msgid "OS:"
+#~ msgstr "OS:"
+
+#~ msgid "S&earch"
+#~ msgstr "S&øg"
+
+#~ msgid ""
+#~ "This is the directory under which the shares will be mounted. Adjust it "
+#~ "according to your wishes."
+#~ msgstr "Dette er kataloget hvor ressourcerne vil blive monteret."
+
+#~ msgid "<font size=+2><b>Share</b></font>"
+#~ msgstr "<font size=+2><b>Ressource</b></font>"
+
+#~ msgid "Contents:"
+#~ msgstr "Indhold:"
+
+#~ msgid "%1 Item   "
+#~ msgstr "%1 Element"
+
+#~ msgid "%1 Items   "
+#~ msgstr "%1 Elementer"
+
+#~ msgid "(%1 Directory, "
+#~ msgstr "(%1 Katalog, "
+
+#~ msgid "(%1 Directories, "
+#~ msgstr "(%1 Kataloger,"
+
+#~ msgid "%1 File)"
+#~ msgstr "%1 Fil)"
+
+#~ msgid "%1 Files)"
+#~ msgstr "%1 Filer)"
+
+#~ msgid "super (recommended)"
+#~ msgstr "super (anbefalet)"
+
+#~ msgid "Smb4KBookmarkEditor"
+#~ msgstr "Smb4KBogmærkeEditor"
+
+#~ msgid "SMBFS (default)"
+#~ msgstr "SMBFS (standard)"

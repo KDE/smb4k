@@ -1,0 +1,92 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the smb4k package.
+#
+# giovanni <g.sora@tiscali.it>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-08-30 07:39+0200\n"
+"PO-Revision-Date: 2021-02-09 10:25+0100\n"
+"Last-Translator: giovanni <g.sora@tiscali.it>\n"
+"Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
+"Language: ia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 20.04.2\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:72
+#: package/contents/ui/SharesViewItemDelegate.qml:72
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">sur %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:46
+msgid "Go back"
+msgstr "Vade retro"
+
+#: package/contents/ui/BookmarksPage.qml:55
+msgid "Edit bookmarks"
+msgstr "Edita marcatores de libro"
+
+#: package/contents/ui/ConfigurationPage.qml:35
+msgid "Configuration Dialog"
+msgstr "Dialogo de configuration"
+
+#: package/contents/ui/main.qml:30 package/contents/ui/PopupDialog.qml:46
+msgid "Network Neighborhood"
+msgstr "Vicinitate de rete"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:105
+#: package/contents/ui/SharesViewItemDelegate.qml:89
+msgid "Bookmark"
+msgstr "Marcator de libro"
+
+#: package/contents/ui/NetworkBrowserPage.qml:51
+msgid "Rescan"
+msgstr "Re-examina"
+
+#: package/contents/ui/NetworkBrowserPage.qml:60
+msgid "Abort"
+msgstr "Aborta"
+
+#: package/contents/ui/NetworkBrowserPage.qml:69
+msgid "Go one level up"
+msgstr "Va a un nivello in alto"
+
+#: package/contents/ui/NetworkBrowserPage.qml:78
+msgid "Open the mount dialog"
+msgstr "Aperi le dialogo de montar"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Mounted Shares"
+msgstr "Partes Montate"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Bookmarks"
+msgstr "Marcatores de libro"
+
+#: package/contents/ui/PopupDialog.qml:67
+msgid "Profiles"
+msgstr "Profilos"
+
+#: package/contents/ui/PopupDialog.qml:74
+msgid "Configuration"
+msgstr "Configuration"
+
+#: package/contents/ui/ProfileItemDelegate.qml:65
+msgid "(active)"
+msgstr "(active)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:110
+msgid "Synchronize"
+msgstr "Synchronisa "
+
+#: package/contents/ui/SharesViewItemDelegate.qml:131
+msgid "Unmount"
+msgstr "Dismonta"
+
+#: package/contents/ui/SharesViewPage.qml:47
+msgid "Unmount all shares"
+msgstr "Dismonta omne portiones"

@@ -1,0 +1,95 @@
+# Translation of plasma_applet_org.kde.smb4kqml.po to Euskara/Basque (eu).
+# Copyright (C) 2020, This file is copyright:
+# This file is distributed under the same license as the smb4k package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@euskalnet.net>.
+#
+# Translators:
+# Iñigo Salvador Azurmendi <xalba@euskalnet.net>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-08-30 07:39+0200\n"
+"PO-Revision-Date: 2020-04-19 12:15+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 19.12.3\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:72
+#: package/contents/ui/SharesViewItemDelegate.qml:72
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">%1(e)an</font>"
+
+#: package/contents/ui/BookmarksPage.qml:46
+msgid "Go back"
+msgstr "Joan atzera"
+
+#: package/contents/ui/BookmarksPage.qml:55
+msgid "Edit bookmarks"
+msgstr "Editatu laster-markak"
+
+#: package/contents/ui/ConfigurationPage.qml:35
+msgid "Configuration Dialog"
+msgstr "Konfiguratzeko elkarrizketa-koadroa"
+
+#: package/contents/ui/main.qml:30 package/contents/ui/PopupDialog.qml:46
+msgid "Network Neighborhood"
+msgstr "Sareko auzoa"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:105
+#: package/contents/ui/SharesViewItemDelegate.qml:89
+msgid "Bookmark"
+msgstr "Laster-marka"
+
+#: package/contents/ui/NetworkBrowserPage.qml:51
+msgid "Rescan"
+msgstr "Berriz miatu"
+
+#: package/contents/ui/NetworkBrowserPage.qml:60
+msgid "Abort"
+msgstr "Utzi"
+
+#: package/contents/ui/NetworkBrowserPage.qml:69
+msgid "Go one level up"
+msgstr "Joan maila bat gora"
+
+#: package/contents/ui/NetworkBrowserPage.qml:78
+msgid "Open the mount dialog"
+msgstr "Ireki muntatzeko elkarrizketa-koadroa"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Mounted Shares"
+msgstr "Muntatutako partekatzeak"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Bookmarks"
+msgstr "Laster-markak"
+
+#: package/contents/ui/PopupDialog.qml:67
+msgid "Profiles"
+msgstr "Profilak"
+
+#: package/contents/ui/PopupDialog.qml:74
+msgid "Configuration"
+msgstr "Konfiguratzea"
+
+#: package/contents/ui/ProfileItemDelegate.qml:65
+msgid "(active)"
+msgstr "(aktibo)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:110
+msgid "Synchronize"
+msgstr "Sinkronizatu"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:131
+msgid "Unmount"
+msgstr "Desmuntatu"
+
+#: package/contents/ui/SharesViewPage.qml:47
+msgid "Unmount all shares"
+msgstr "Desmuntatu partekatze guztiak"

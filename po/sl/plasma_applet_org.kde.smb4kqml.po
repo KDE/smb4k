@@ -1,0 +1,93 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the smb4k package.
+#
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: smb4k\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-08-30 07:39+0200\n"
+"PO-Revision-Date: 2021-03-19 16:04+0100\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:72
+#: package/contents/ui/SharesViewItemDelegate.qml:72
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">na %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:46
+msgid "Go back"
+msgstr "Pojdi nazaj"
+
+#: package/contents/ui/BookmarksPage.qml:55
+msgid "Edit bookmarks"
+msgstr "Uredi zaznamke"
+
+#: package/contents/ui/ConfigurationPage.qml:35
+msgid "Configuration Dialog"
+msgstr "Dialog nastavitev"
+
+#: package/contents/ui/main.qml:30 package/contents/ui/PopupDialog.qml:46
+msgid "Network Neighborhood"
+msgstr "Sosedstvo omrežja"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:105
+#: package/contents/ui/SharesViewItemDelegate.qml:89
+msgid "Bookmark"
+msgstr "Zaznamek"
+
+#: package/contents/ui/NetworkBrowserPage.qml:51
+msgid "Rescan"
+msgstr "Ponovni pregled"
+
+#: package/contents/ui/NetworkBrowserPage.qml:60
+msgid "Abort"
+msgstr "Prekini"
+
+#: package/contents/ui/NetworkBrowserPage.qml:69
+msgid "Go one level up"
+msgstr "Pojdi nivo višje"
+
+#: package/contents/ui/NetworkBrowserPage.qml:78
+msgid "Open the mount dialog"
+msgstr "Odpri dialog priklopa"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Mounted Shares"
+msgstr "Priklopljeni deli"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Bookmarks"
+msgstr "Zaznamki"
+
+#: package/contents/ui/PopupDialog.qml:67
+msgid "Profiles"
+msgstr "Profili"
+
+#: package/contents/ui/PopupDialog.qml:74
+msgid "Configuration"
+msgstr "Nastavitev"
+
+#: package/contents/ui/ProfileItemDelegate.qml:65
+msgid "(active)"
+msgstr "(aktivno)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:110
+msgid "Synchronize"
+msgstr "Uskladi"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:131
+msgid "Unmount"
+msgstr "Odklopi"
+
+#: package/contents/ui/SharesViewPage.qml:47
+msgid "Unmount all shares"
+msgstr "Odklopi vse dele"

@@ -1,0 +1,98 @@
+# Burkhard Lück <lueck@hube-lueck.de>, 2014, 2015, 2017, 2018, 2019.
+# Alexander Reinholdt <alexander.reinholdt@t-online.de>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2019-08-30 07:39+0200\n"
+"PO-Revision-Date: 2019-07-24 06:09+0200\n"
+"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: package/contents/ui/BookmarkItemDelegate.qml:72
+#: package/contents/ui/SharesViewItemDelegate.qml:72
+msgid "<font size=\"-1\">on %1</font>"
+msgstr "<font size=\"-1\">auf %1</font>"
+
+#: package/contents/ui/BookmarksPage.qml:46
+msgid "Go back"
+msgstr "Zurück"
+
+#: package/contents/ui/BookmarksPage.qml:55
+msgid "Edit bookmarks"
+msgstr "Lesezeichen bearbeiten"
+
+#: package/contents/ui/ConfigurationPage.qml:35
+msgid "Configuration Dialog"
+msgstr "Einrichtungsdialog"
+
+#: package/contents/ui/main.qml:30 package/contents/ui/PopupDialog.qml:46
+msgid "Network Neighborhood"
+msgstr "Netzwerkumgebung"
+
+#: package/contents/ui/NetworkBrowserItemDelegate.qml:105
+#: package/contents/ui/SharesViewItemDelegate.qml:89
+msgid "Bookmark"
+msgstr "Lesezeichen"
+
+#: package/contents/ui/NetworkBrowserPage.qml:51
+msgid "Rescan"
+msgstr "Erneut einlesen"
+
+#: package/contents/ui/NetworkBrowserPage.qml:60
+msgid "Abort"
+msgstr "Abbrechen"
+
+#: package/contents/ui/NetworkBrowserPage.qml:69
+msgid "Go one level up"
+msgstr "Eine Ebene nach oben"
+
+#: package/contents/ui/NetworkBrowserPage.qml:78
+msgid "Open the mount dialog"
+msgstr "Dialog zum Einhängen öffnen"
+
+#: package/contents/ui/PopupDialog.qml:53
+msgid "Mounted Shares"
+msgstr "Eingehängte Freigaben"
+
+#: package/contents/ui/PopupDialog.qml:60
+msgid "Bookmarks"
+msgstr "Lesezeichen"
+
+#: package/contents/ui/PopupDialog.qml:67
+msgid "Profiles"
+msgstr "Profile"
+
+#: package/contents/ui/PopupDialog.qml:74
+msgid "Configuration"
+msgstr "Einrichtung"
+
+#: package/contents/ui/ProfileItemDelegate.qml:65
+msgid "(active)"
+msgstr "(aktiv)"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:110
+msgid "Synchronize"
+msgstr "Abgleichen"
+
+#: package/contents/ui/SharesViewItemDelegate.qml:131
+msgid "Unmount"
+msgstr "Aushängen"
+
+#: package/contents/ui/SharesViewPage.qml:47
+msgid "Unmount all shares"
+msgstr "Alle Freigaben aushängen"
+
+#~ msgid "Back"
+#~ msgstr "Zurück"
+
+#~ msgid "Edit"
+#~ msgstr "Bearbeiten"
+
+#~ msgid "Up"
+#~ msgstr "Nach oben"
