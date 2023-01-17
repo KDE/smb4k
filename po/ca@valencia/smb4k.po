@@ -327,7 +327,7 @@ msgstr "Opcions comunes"
 #: smb4k/smb4kconfigpagenetwork.cpp:57
 #, kde-format
 msgid "Browse Settings"
-msgstr "Configuració de la navegació"
+msgstr "Configureu la navegació"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:253
 #, kde-format
@@ -358,7 +358,7 @@ msgstr "Envia un paquet màgic abans de muntar una compartició"
 #: smb4k/smb4kconfigpagenetwork.cpp:303
 #, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Configuració de l'activació per LAN (Wake-On-LAN)"
+msgstr "Configureu l'activació per LAN (Wake-On-LAN)"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:324
 #: smb4k/smb4kconfigpagecustomoptions.cpp:509
@@ -483,7 +483,7 @@ msgstr "Seguretat"
 #: smb4k/smb4kconfigpagenetwork.cpp:248
 #, kde-format
 msgid "Samba Settings"
-msgstr "Configuració de Samba"
+msgstr "Configureu Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:259
 #, kde-format

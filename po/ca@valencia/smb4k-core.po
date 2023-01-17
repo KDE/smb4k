@@ -2163,7 +2163,7 @@ msgstr "Autenticació"
 #: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:840
 #, kde-format
 msgid "Browse Settings"
-msgstr "Configuració de la navegació"
+msgstr "Configureu la navegació"
 
 #: smb4kcustomoptionsmanager_p.cpp:497 smb4kcustomoptionsmanager_p.cpp:854
 #: smb4kcustomoptionsmanager_p.cpp:1089
@@ -2198,7 +2198,7 @@ msgstr "Envia un paquet màgic abans de muntar una compartició"
 #: smb4kcustomoptionsmanager_p.cpp:541 smb4kcustomoptionsmanager_p.cpp:898
 #, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Configuració de l'activació per LAN (Wake-On-LAN)"
+msgstr "Configureu l'activació per LAN (Wake-On-LAN)"
 
 #: smb4kcustomoptionsmanager_p.cpp:743
 #, kde-format
