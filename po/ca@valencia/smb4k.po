@@ -366,7 +366,7 @@ msgstr[1] ""
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #, kde-format
 msgid "Browse Settings"
-msgstr "Configuració de la navegació"
+msgstr "Configureu la navegació"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
