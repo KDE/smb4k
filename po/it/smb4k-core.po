@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-09 00:55+0000\n"
-"PO-Revision-Date: 2023-01-13 08:07+0100\n"
+"PO-Revision-Date: 2023-01-17 09:56+0100\n"
 "Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1067,7 +1067,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Mantieni liste di controllo degli accessi (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1078,6 +1078,11 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Mantieni le liste di controllo degli accessi (ACL). Questa opzione induce "
+"rsync ad aggiornare le ACL di destinazione in modo che siano le stesse di "
+"quelle di origine; implica anche --perms. Affinché questa opzione funzioni "
+"correttamente, il sistema di origine e quello di destinazione devono avere "
+"delle voci ACL compatibili."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
@@ -1087,16 +1092,14 @@ msgstr "Mantieni gli attributi estesi"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Mantiene il gruppo (-g, --group). Il gruppo del file di destinazione verrà "
-"impostato allo stesso valore del file di origine."
+"Mantieni gli attributi estesi. Questa opzione induce rsync ad aggiornare gli "
+"attributi estesi di destinazione in modo che siano gli stessi di quelli "
+"dell'origine."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
