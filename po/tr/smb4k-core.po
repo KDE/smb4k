@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-09 00:55+0000\n"
-"PO-Revision-Date: 2023-01-05 22:05+0300\n"
+"PO-Revision-Date: 2023-01-18 22:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -483,7 +483,7 @@ msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
 "environment."
 msgstr ""
-"Kimlik doğrulaması için Kerberos kullan. Bu sadece Active Directory "
+"Kimlik doğrulaması için Kerberos kullan. Bu yalnızca Active Directory "
 "ortamında kullanışlıdır."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
@@ -632,8 +632,8 @@ msgid ""
 "stored permanently but only temporarily."
 msgstr ""
 "Girişi depolamak için cüzdan kullan. Kullanıcı adı ve parola şifrelenmiş "
-"halde sabit diskinizde depolanır. Eğer bu ayarlar kapatılırsa, giriş sadece "
-"geçici olarak depolanır kalıcı değil."
+"halde sabit diskinizde depolanır. Eğer bu ayarlar kapatılırsa, giriş "
+"yalnızca geçici olarak depolanır kalıcı değil."
 
 #. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
 #: smb4k.kcfg:256
@@ -749,7 +749,7 @@ msgid ""
 "specified on the command line are sent to the server rather than just the "
 "last parts of the file names."
 msgstr ""
-"Göreceli yollar (-R, --relative) kullan. Dosya adlarının sadece son "
+"Göreceli yollar (-R, --relative) kullan. Dosya adlarının yalnızca son "
 "kısımları yerine komut satırında belirtilen tam yol adları gönderilir "
 "anlamına gelir."
 
@@ -904,7 +904,7 @@ msgid ""
 "specified."
 msgstr ""
 "Güvenli olmayan sembolik bağlantıları gösterilen ögelere dönüştür (--copy-"
-"unsafe-links). Bu, sembolik bağlantıların sadece kopyalanan ağacın dışında "
+"unsafe-links). Bu, sembolik bağlantıların yalnızca kopyalanan ağacın dışında "
 "gösterilen ögelere dönüştürülebileceği anlamına gelir. Tam sembolik "
 "bağlantılara aynı şekilde davranılır. Eğer --copy-links ayrıca belirtilirse "
 "bu seçeneğin hiçbir etkisi olmaz."
@@ -1135,7 +1135,7 @@ msgid ""
 "user on the receiving side."
 msgstr ""
 "Sahibini koru (-o, --owner). Hedef dosyanın sahibi, kaynak dosyanın sahibi "
-"olarak ayarlanacaktır, fakat sadece alıcı rsync süper kullanıcı ile "
+"olarak ayarlanacaktır, fakat yalnızca alıcı rsync süper kullanıcı ile "
 "çalıştırılırsa. Bu seçenek olmadan, alıcı tarafta sahip çağıran kullanıcı "
 "ayarlanır."
 
@@ -1158,7 +1158,7 @@ msgstr ""
 "uygulamasının karakter aktarmasına ve aygıtları, aynı zamanda soket ve fifo "
 "olarak adlandırılan özel dosyaları bloklamasına neden olur. Rsync uygulaması "
 "süper kullanıcı olarak çalıştırılmazsa ve --super seçeneği belirtilmezse "
-"sadece kısmi olarak çalışır."
+"yalnızca kısmi olarak çalışır."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
 #: smb4k.kcfg:417
@@ -1194,7 +1194,7 @@ msgid ""
 msgstr ""
 "Zamanlar korunurken dizinleri atla (-O, --omit-dir-times). Değiştirilme "
 "zamanları korunmuş dizinlerin atlanması anlamına gelir. Dolayısıyla bu "
-"özellik sadece --times ile birlikte çalışır."
+"özellik yalnızca --times ile birlikte çalışır."
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
 #: smb4k.kcfg:427
@@ -1283,7 +1283,7 @@ msgid ""
 msgstr ""
 "Aktarım sırasında alıcı taraftaki dosyaları sil (--delete-during). Bu yöntem "
 "--delete-before ya da --delete-after seçeneklerinden daha hızlıdır fakat "
-"sadece rsync 2.6.4 ya da sonrasındaki sürümlerde desteklenir."
+"yalnızca rsync 2.6.4 ya da sonrasındaki sürümlerde desteklenir."
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
 #: smb4k.kcfg:452
@@ -1337,7 +1337,7 @@ msgid ""
 msgstr ""
 "Boş olmadığı durumlarda bile dizinlerin silinmesini zorla (--force). Bu "
 "seçenek, rsync uygulamasına, boş olmayan bir dizinin olmayan bir dizin ile "
-"değiştirildiğinde silinmesini söyler. Bu sadece silme işlemleri etkin "
+"değiştirildiğinde silinmesini söyler. Bu yalnızca silme işlemleri etkin "
 "değilse ilgilidir."
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
@@ -1354,7 +1354,7 @@ msgid ""
 "rsync not to delete more than NUM files or directories (NUM must be non-"
 "zero). This is useful when mirroring very large trees to prevent disasters."
 msgstr ""
-"Sadece burada belirtildiği sayıda dosya sil (--max-delete=SAYI). Bu rsync "
+"Yalnızca burada belirtildiği sayıda dosya sil (--max-delete=SAYI). Bu rsync "
 "uygulamasına belirtilen SAYIdan fazla dosya ya da dizin silmemesini söyler "
 "(SAYI sıfır olmamalıdır). Bu çok büyük ağaçları yansıtırken olağanüstü "
 "durumları engellemek için kullanışlıdır."
@@ -1691,7 +1691,7 @@ msgstr ""
 #: smb4k.kcfg:595
 #, kde-format
 msgid "Only update files that already exist"
-msgstr "Sadece olan dosyaları güncelle"
+msgstr "Yalnızca olan dosyaları güncelle"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
 #: smb4k.kcfg:596
@@ -1707,7 +1707,7 @@ msgstr ""
 "uygulamasına hedefte henüz olmayan dosyaları (dizinlerde dahil) oluşturma "
 "işlemini atlamasını söyler. Eğer bu seçenek --ignore-existing seçeneği ile "
 "birleştirilirse, hiçbir dosya güncellenemeyecektir (eğer yapmak istediğiniz "
-"sadece fazlalık dosyaları silmek ise bu seçenek kullanışlı olabilir)."
+"yalnızca fazlalık dosyaları silmek ise bu seçenek kullanışlı olabilir)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
 #: smb4k.kcfg:600
@@ -2125,7 +2125,7 @@ msgid ""
 "If the file's mimetype is not supported, you need to convert it."
 msgstr ""
 "Bu uzak yazıcıdan yazdırmak istediğiniz dosyadır. Mevcut durumda PDF, "
-"Postscript, düz metin ve resim gibi sadece birkaç mime türünü destekliyor. "
+"Postscript, düz metin ve resim gibi yalnızca birkaç mime türünü destekliyor. "
 "Eğer dosyanın mime türü desteklenmiyorsa, dosyayı dönüştürmeniz gerekir."
 
 #: smb4kclient_p.cpp:2396
