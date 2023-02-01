@@ -4,7 +4,7 @@ See the summary of changes below. For a full list of changes, please
 refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.1
 
 - Fix a potential crash if the SMB context could not be initialized. 
-  Backported form master.
+  Backported from master.
 - Make the additional CIFS options dialog work.
 - Fix problems with the 'nolock' option for mount.cifs (BUG #463637).
 
