@@ -205,13 +205,6 @@ protected Q_SLOTS:
     void slotOnlineStateChanged(bool online);
 
     /**
-     * Called when a mounted share has been stat'ed.
-     *
-     * @param job             The KIO::StatJob
-     */
-    void slotStatResult(KJob *job);
-
-    /**
      * This slot is invoked when the active profile is about to be changed
      */
     void slotAboutToChangeProfile();

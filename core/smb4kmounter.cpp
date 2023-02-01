@@ -34,8 +34,6 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QStorageInfo>
-#include <QTextCodec>
-#include <QTextStream>
 #include <QTimer>
 #include <QUdpSocket>
 
@@ -49,7 +47,6 @@
 #include <KCoreAddons/KShell>
 #include <KCoreAddons/KUser>
 #include <KI18n/KLocalizedString>
-#include <KIOCore/KIO/StatJob>
 #include <KIOCore/KMountPoint>
 #include <KWidgetsAddons/KMessageBox>
 
@@ -203,6 +200,11 @@ void Smb4KMounter::import(bool checkInaccessible)
     }
 
     //
+    // Boolean to determine at the end if the mounted shares list changed
+    //
+    bool changed = false;
+
+    //
     // Get the mountpoints that are present on the system
     //
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::BasicInfoNeeded | KMountPoint::NeedMountOptions);
@@ -305,8 +307,10 @@ void Smb4KMounter::import(bool checkInaccessible)
             //
             // Remove the share from the global list and notify the program
             //
-            removeMountedShare(share);
-            Q_EMIT unmounted(unmountedShare);
+            if (removeMountedShare(share)) {
+                changed = true;
+                Q_EMIT unmounted(unmountedShare);
+            }
 
             //
             // Report the unmounted share to the user if it is a single one
@@ -330,11 +334,6 @@ void Smb4KMounter::import(bool checkInaccessible)
         // Reset the number of newly unmounted shares
         //
         d->newlyUnmounted = 0;
-
-        //
-        // Tell the program the list of mounted shares changed
-        //
-        Q_EMIT mountedSharesListChanged();
     } else {
         //
         // Reset the number of newly unmounted shares
@@ -343,39 +342,101 @@ void Smb4KMounter::import(bool checkInaccessible)
     }
 
     //
-    // Now stat the imported shares to get information about them.
-    // Do not use Smb4KShare::canonicalPath() here, otherwise we might
-    // get lock-ups with inaccessible shares.
+    // Now process the imported shares
     //
     if (Smb4KHardwareInterface::self()->isOnline()) {
-        QMutableListIterator<SharePtr> it(d->importedShares);
-
-        while (it.hasNext()) {
-            SharePtr share = it.next();
-            SharePtr mountedShare = findShareByPath(share->path());
+        while (!d->importedShares.isEmpty()) {
+            SharePtr importedShare = d->importedShares.takeFirst();
+            SharePtr mountedShare = findShareByPath(importedShare->path());
 
             if (mountedShare) {
                 if (mountedShare->isInaccessible() && !checkInaccessible) {
-                    it.remove();
+                    importedShare.clear();
                     continue;
                 }
             }
 
-            QUrl url = QUrl::fromLocalFile(share->path());
-            KIO::StatJob *job = KIO::stat(url, KIO::HideProgressInfo);
-            job->setDetails(KIO::StatNoDetails);
-            connect(job, SIGNAL(result(KJob *)), this, SLOT(slotStatResult(KJob *)));
+            //
+            // Check the imported share and retrieve some information about it
+            //
+            check(importedShare);
 
-            // Do not use addSubJob(), because that would confuse isRunning(), etc.
+            //
+            // Find out whether this is a share mounted by the user
+            //
+            if (importedShare->path().startsWith(Smb4KMountSettings::mountPrefix().path())
+                || (!importedShare->isInaccessible()
+                    && importedShare->canonicalPath().startsWith(QDir(Smb4KMountSettings::mountPrefix().path()).canonicalPath()))) {
+                importedShare->setForeign(false);
+            } else if (importedShare->path().startsWith(QDir::homePath())
+                       || (!importedShare->isInaccessible() && importedShare->canonicalPath().startsWith(QDir::home().canonicalPath()))) {
+                importedShare->setForeign(false);
+            } else if (importedShare->user().userId() == KUser(KUser::UseRealUserID).userId()
+                       && importedShare->group().groupId() == KUserGroup(KUser::UseRealUserID).groupId()) {
+                importedShare->setForeign(false);
+            } else {
+                importedShare->setForeign(true);
+            }
 
-            job->start();
+            //
+            // Search for a previously added mounted share and try to update it. If this fails,
+            // add the share to the global list.
+            //
+            if (!importedShare->isForeign() || Smb4KMountSettings::detectAllShares()) {
+                if (updateMountedShare(importedShare)) {
+                    SharePtr updatedShare = findShareByPath(importedShare->path());
+
+                    if (updatedShare) {
+                        Q_EMIT updated(updatedShare);
+                    }
+
+                    importedShare.clear();
+                } else {
+                    if (addMountedShare(importedShare)) {
+                        changed = true;
+
+                        // Remove the share from the list of shares that are to be remounted
+                        QMutableListIterator<SharePtr> s(d->remounts);
+
+                        while (s.hasNext()) {
+                            SharePtr remount = s.next();
+
+                            if (!importedShare->isForeign()
+                                && QString::compare(remount->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                                    importedShare->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
+                                                    Qt::CaseInsensitive)
+                                    == 0) {
+                                Smb4KCustomOptionsManager::self()->removeRemount(remount);
+                                s.remove();
+                                break;
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        // Tell the program and the user that the share was mounted. Also, reset the
+                        // counter of newly mounted shares, if necessary.
+                        d->newlyMounted += 1;
+                        Q_EMIT mounted(importedShare);
+
+                        if (!isRunning() && d->firstImportDone && d->importedShares.isEmpty()) {
+                            if (d->newlyMounted > 1) {
+                                Smb4KNotification::sharesMounted(d->newlyMounted);
+                            } else {
+                                Smb4KNotification::shareMounted(importedShare);
+                            }
+                            d->newlyMounted = 0;
+                        }
+                    } else {
+                        d->newlyMounted = 0;
+                        importedShare.clear();
+                    }
+                }
+            } else {
+                importedShare.clear();
+            }
         }
 
-        //
-        // Set d->firstImportDone here only for the case that no mounted shares
-        // could be found. In all other cases d->firstImportDone will be set in
-        // slotStatResult().
-        //
         if (!d->firstImportDone && d->importedShares.isEmpty()) {
             d->firstImportDone = true;
         }
@@ -388,6 +449,13 @@ void Smb4KMounter::import(bool checkInaccessible)
             SharePtr share = d->importedShares.takeFirst();
             share.clear();
         }
+    }
+
+    //
+    // Tell the program the list of mounted shares changed
+    //
+    if (changed) {
+        Q_EMIT mountedSharesListChanged();
     }
 }
 
@@ -436,7 +504,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         // Wake-On-LAN: Wake up the host before mounting
         //
         if (Smb4KSettings::enableWakeOnLAN()) {
-            OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(KIO::upUrl(share->url()));
+            OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share->url().resolved(QStringLiteral("..")));
 
             if (options && options->wolSendBeforeMount()) {
                 Q_EMIT aboutToStart(WakeUp);
@@ -511,7 +579,8 @@ void Smb4KMounter::mountShare(const SharePtr &share)
             parentDirectory = Smb4KMountSettings::mountPrefix();
         } else {
             QUrl u = Smb4KMountSettings::mountPrefix();
-            parentDirectory = KIO::upUrl(u);
+            parentDirectory = u.resolved(QStringLiteral(".."));
+            ;
         }
 
         QFile f(parentDirectory.path());
@@ -528,7 +597,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
 
             while (!parentDirectory.matches(u, QUrl::StripTrailingSlash)) {
                 QFile(u.path()).setPermissions(permissions);
-                u = KIO::upUrl(u);
+                u = u.resolved(QStringLiteral(".."));
             }
         }
 
@@ -1703,11 +1772,7 @@ void Smb4KMounter::check(const SharePtr &share)
         if (fileInfo.exists()) {
             share->setUser(KUser(static_cast<K_UID>(fileInfo.ownerId())));
             share->setGroup(KUserGroup(static_cast<K_GID>(fileInfo.groupId())));
-            share->setInaccessible(!(fileInfo.isDir() && fileInfo.isExecutable()));
         } else {
-            share->setInaccessible(true);
-            share->setFreeDiskSpace(0);
-            share->setTotalDiskSpace(0);
             share->setUser(KUser(KUser::UseRealUserID));
             share->setGroup(KUserGroup(KUser::UseRealUserID));
         }
@@ -1835,148 +1900,6 @@ void Smb4KMounter::slotOnlineStateChanged(bool online)
         // Now unmount all shares
         //
         unmountAllShares(true);
-    }
-}
-
-void Smb4KMounter::slotStatResult(KJob *job)
-{
-    Q_ASSERT(job);
-
-    //
-    // Stat job
-    //
-    KIO::StatJob *statJob = static_cast<KIO::StatJob *>(job);
-
-    //
-    // Get the mountpoint
-    //
-    QString mountpoint = statJob->url().toDisplayString(QUrl::PreferLocalFile);
-
-    //
-    // Find the imported share
-    //
-    SharePtr importedShare;
-
-    for (int i = 0; i < d->importedShares.size(); ++i) {
-        if (QString::compare(d->importedShares.at(i)->path(), mountpoint) == 0) {
-            importedShare = d->importedShares.takeAt(i);
-            break;
-        }
-    }
-
-    //
-    // If the share should have vanished in the meantime, return here.
-    //
-    if (!importedShare) {
-        return;
-    }
-
-    //
-    // Add the size, user and group information
-    //
-    if (statJob->error() == 0 /* no error */) {
-        check(importedShare);
-    } else {
-        importedShare->setInaccessible(true);
-        importedShare->setFreeDiskSpace(0);
-        importedShare->setTotalDiskSpace(0);
-        importedShare->setUser(KUser(KUser::UseRealUserID));
-        importedShare->setGroup(KUserGroup(KUser::UseRealUserID));
-    }
-
-    //
-    // Decide whether this is a share mounted by the user or by someone else.
-    //
-    QString canonicalMountPrefix = QDir(Smb4KMountSettings::mountPrefix().path()).canonicalPath();
-    QString canonicalHomePath = QDir::home().canonicalPath();
-
-    if (importedShare->path().startsWith(Smb4KMountSettings::mountPrefix().path()) || importedShare->canonicalPath().startsWith(canonicalMountPrefix)) {
-        //
-        // The path is below the mount prefix
-        //
-        importedShare->setForeign(false);
-    } else if (importedShare->path().startsWith(QDir::homePath()) || importedShare->canonicalPath().startsWith(canonicalHomePath)) {
-        //
-        // The path is below the home directory
-        //
-        importedShare->setForeign(false);
-    } else if (importedShare->user().userId() == KUser(KUser::UseRealUserID).userId()
-               && importedShare->group().groupId() == KUserGroup(KUser::UseRealUserID).groupId()) {
-        //
-        // The IDs are the same
-        //
-        importedShare->setForeign(false);
-    } else {
-        //
-        // The path is elsewhere. This is most certainly a foreign share.
-        //
-        importedShare->setForeign(true);
-    }
-
-    //
-    // Search for a previously added mounted share and try to update it. If this fails,
-    // add the share to the global list.
-    //
-    if (!importedShare->isForeign() || Smb4KMountSettings::detectAllShares()) {
-        if (updateMountedShare(importedShare)) {
-            SharePtr updatedShare = findShareByPath(importedShare->path());
-
-            if (updatedShare) {
-                Q_EMIT updated(updatedShare);
-            }
-
-            importedShare.clear();
-        } else {
-            if (addMountedShare(importedShare)) {
-                // Remove the share from the list of shares that are to be remounted
-                QMutableListIterator<SharePtr> s(d->remounts);
-
-                while (s.hasNext()) {
-                    SharePtr remount = s.next();
-
-                    if (!importedShare->isForeign()
-                        && QString::compare(remount->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
-                                            importedShare->url().toString(QUrl::RemoveUserInfo | QUrl::RemovePort),
-                                            Qt::CaseInsensitive)
-                            == 0) {
-                        Smb4KCustomOptionsManager::self()->removeRemount(remount);
-                        s.remove();
-                        break;
-                    } else {
-                        continue;
-                    }
-                }
-
-                // Tell the program and the user that the share was mounted. Also, reset the
-                // counter of newly mounted shares, if necessary.
-                d->newlyMounted += 1;
-                Q_EMIT mounted(importedShare);
-
-                if (!isRunning() && d->firstImportDone && d->importedShares.isEmpty() && d->newlyMounted == 1) {
-                    Smb4KNotification::shareMounted(importedShare);
-                }
-
-                QTimer::singleShot(250, this, [&]() {
-                    if (!isRunning()) {
-                        if (d->firstImportDone && d->importedShares.isEmpty() && d->newlyMounted > 1) {
-                            Smb4KNotification::sharesMounted(d->newlyMounted);
-                        }
-
-                        d->newlyMounted = 0;
-                    }
-                });
-
-                Q_EMIT mountedSharesListChanged();
-            } else {
-                importedShare.clear();
-            }
-        }
-    } else {
-        importedShare.clear();
-    }
-
-    if (!d->firstImportDone && d->importedShares.isEmpty()) {
-        d->firstImportDone = true;
     }
 }
 
