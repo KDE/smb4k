@@ -12,13 +12,13 @@
 # Miguel Navarrete Hernandez <recados.akka@gmail.com>, 2013.
 # Raul Gonzalez <raulgf83@gmail.com>, 2013, 2014, 2015.
 # Javier Vinal <fjvinal@gmail.com>, 2015, 2016, 2017, 2018, 2019.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022.
+# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-09 00:55+0000\n"
-"PO-Revision-Date: 2022-12-30 17:57+0100\n"
+"PO-Revision-Date: 2023-01-28 17:08+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1633,10 +1633,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Reglas de filtro personalizadas:"
+msgstr "Reglas de filtro personalizadas"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -2198,10 +2197,9 @@ msgid "Print"
 msgstr "Imprimir"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Preferencias de montaje"
+msgstr "Preferencias personalizadas"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, kde-format
@@ -3322,7 +3320,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "No enviar peticiones de bloqueo de rango de bytes"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3333,6 +3331,10 @@ msgid ""
 "(and most cifs servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"No enviar peticiones de bloqueo de rango de bytes al servidor. Es necesario "
+"para ciertas aplicaciones que no siguen el estilo obligatorio de cifs de "
+"bloqueo de rango de bytes (y la mayoría de servidores cifs no soportan de "
+"momento los bloqueos de rango de bytes recomendados)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3930,12 +3932,3 @@ msgid ""
 msgstr ""
 "<qt>Por favor, introduzca el usuario y contraseña para el recurso compartido "
 "<b>%1</b>.</qt>"
-
-#~ msgid "Custom Options"
-#~ msgstr "Opciones personalizadas"
-
-#~ msgid "Do not use locking"
-#~ msgstr "No usar bloqueo"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "No usar bloqueo. No iniciar lockd."

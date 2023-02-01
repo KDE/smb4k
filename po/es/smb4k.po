@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-05 00:48+0000\n"
-"PO-Revision-Date: 2023-01-04 15:45+0100\n"
+"PO-Revision-Date: 2023-01-28 17:09+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -178,10 +178,9 @@ msgid "Synchronization"
 msgstr "Sincronización"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Preferencias de montaje"
+msgstr "Preferencias personalizadas"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -398,14 +397,12 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Defina los servidores que deben ser despertados a través del diálogo de "
-"opciones personalizadas."
+"Defina los servidores que deben ser despertados a través del editor de "
+"preferencias personalizadas."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -687,10 +684,9 @@ msgstr "&Buscar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Add &Custom Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Añadir op&ciones personalizadas"
+msgstr "Añadir preferen&cias personalizadas"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -934,6 +930,3 @@ msgstr "Sistema de archivos:"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
-
-#~ msgid "Custom Options"
-#~ msgstr "Opciones personalizadas"

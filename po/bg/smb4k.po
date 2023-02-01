@@ -897,9 +897,3 @@ msgstr "Файлова система"
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "Размер"
-
-#~ msgid "Custom Options"
-#~ msgstr "Потребителски настройки"
-
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Монтиране на всички отметки"

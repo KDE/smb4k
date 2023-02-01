@@ -3398,13 +3398,3 @@ msgstr "Моля въведете удостоверяващи данни за �
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "Моля въведете удостоверяващи данни за ресурс %1"
-
-#~ msgid "Custom Options"
-#~ msgstr "Потребителски настройки"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Не използва заключване"
-
-#, fuzzy
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Не използва заключване"
