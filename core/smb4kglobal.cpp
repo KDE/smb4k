@@ -506,7 +506,8 @@ SharePtr Smb4KGlobal::findShareByPath(const QString &path)
 
     if (!path.isEmpty() && !p->mountedSharesList.isEmpty()) {
         for (const SharePtr &s : qAsConst(p->mountedSharesList)) {
-            if (QString::compare(s->path(), path, Qt::CaseInsensitive) == 0 || QString::compare(s->canonicalPath(), path, Qt::CaseInsensitive) == 0) {
+            if (QString::compare(s->path(), path, Qt::CaseInsensitive) == 0
+                || (!s->isInaccessible() && QString::compare(s->canonicalPath(), path, Qt::CaseInsensitive) == 0)) {
                 share = s;
                 break;
             }
