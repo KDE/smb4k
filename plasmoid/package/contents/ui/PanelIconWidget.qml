@@ -41,9 +41,6 @@ MouseArea {
       busyIndicator.visible = false
       busyIndicator.running = false
     }
-    else {
-      // Do nothing
-    }
   }
   
   //
@@ -51,8 +48,8 @@ MouseArea {
   //
   Connections {
     target: iface
-    onBusy: busy()
-    onIdle: idle()
+    function onBusy() { busy() }
+    function onIdle() { idle() }
   }
   
   //
@@ -63,18 +60,12 @@ MouseArea {
       busyIndicator.visible = true
       busyIndicator.running = true
     }
-    else {
-      // Do nothing
-    }
   }
   
   function idle() {
     if (!plasmoid.expanded) {
       busyIndicator.visible = false
       busyIndicator.running = false
-    }
-    else {
-      // Do nothing
     }
   }
 }

@@ -114,8 +114,8 @@ PlasmaComponents.Page {
   // 
   Connections {
     target: iface
-    onProfilesListChanged: fillView()
-    onActiveProfileChanged: fillView()
+    function onProfilesListChanged() { fillView() }
+    function onActiveProfileChanged() { fillView() }
   }
   
   //

@@ -159,7 +159,7 @@ PlasmaComponents.Page {
   //
   Connections {
     target: iface
-    onMountedSharesChanged: shareMountedOrUnmounted()
+    function onMountedSharesChanged() { shareMountedOrUnmounted() }
   }
   
   //

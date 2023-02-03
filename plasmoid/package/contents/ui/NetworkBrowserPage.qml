@@ -201,10 +201,10 @@ PlasmaComponents.Page {
   //
   Connections {
     target: iface
-    onWorkgroupsChanged: getWorkgroups()
-    onHostsChanged: getHosts()
-    onSharesChanged: getShares()
-    onMountedSharesChanged: shareMountedOrUnmounted()
+    function onWorkgroupsChanged() { getWorkgroups() }
+    function onHostsChanged() { getHosts() }
+    function onSharesChanged() { getShares() }
+    function onMountedSharesChanged() { shareMountedOrUnmounted() }
   }
   
   //
@@ -274,9 +274,6 @@ PlasmaComponents.Page {
         iface.lookup(object)
       }
     }
-    else {
-      // Do nothing
-    }
   }
   
   function getWorkgroups() {
@@ -288,9 +285,6 @@ PlasmaComponents.Page {
       for (var i = 0; i < iface.workgroups.length; i++) {
         networkBrowserItemDelegateModel.model.append({"object": iface.workgroups[i]})
       }
-    }
-    else {
-      // Do nothing
     }
     
     networkBrowserListView.currentIndex = 0
@@ -308,13 +302,7 @@ PlasmaComponents.Page {
         if (workgroupName.length != 0 && workgroupName == iface.hosts[i].workgroupName) {
           networkBrowserItemDelegateModel.model.append({"object": iface.hosts[i]})
         }
-        else {
-          // Do nothing
-        }
       }
-    }
-    else {
-      // Do nothing
     }
     
     networkBrowserListView.currentIndex = 0
@@ -332,13 +320,7 @@ PlasmaComponents.Page {
         if (hostName.length != 0 && hostName == iface.shares[i].hostName) {
           networkBrowserItemDelegateModel.model.append({"object": iface.shares[i]})
         }
-        else {
-          // Do nothing
-        }
       }
-    }
-    else {
-      // Do nothing
     }
     
     networkBrowserListView.currentIndex = 0
@@ -349,19 +331,8 @@ PlasmaComponents.Page {
       var object = networkBrowserItemDelegateModel.model.get(i).object
       
       if (object !== null && object.type == NetworkObject.Share) {
-        var mountedShare = iface.findMountedShare(object.url, false)
-        
-        if (mountedShare !== null) {
-          object.isMounted = mountedShare.isMounted
-        }
-        else {
-          object.isMounted = false
-        }
-        
+        object.isMounted = iface.isShareMounted(object.url)
         networkBrowserItemDelegateModel.model.set(i, {"object": object})
-      }
-      else {
-        // Do nothing
       }
     }
   }

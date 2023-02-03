@@ -114,8 +114,8 @@ FocusScope {
   //
   Connections {
     target: iface
-    onBusy: busy()
-    onIdle: idle()
+    function onBusy() { busy() }
+    function onIdle() { idle() }
   }
   
   //

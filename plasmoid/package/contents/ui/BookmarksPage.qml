@@ -68,9 +68,6 @@ PlasmaComponents.Page {
           less = (left.shareName < right.shareName && left.hostName < right.hostName)
         }
       }
-      else {
-        // Do nothing
-      }
 
       return less
     }
@@ -158,8 +155,8 @@ PlasmaComponents.Page {
   //
   Connections {
     target: iface
-    onMountedSharesChanged: shareMountedOrUnmounted()
-    onBookmarksListChanged: fillView()
+    function onMountedSharesChanged() { shareMountedOrUnmounted() }
+    function onBookmarksListChanged() { fillView() }
   }
   
   //
@@ -201,23 +198,9 @@ PlasmaComponents.Page {
       
       if (object !== null) {
         if (!object.isCategory) {
-          var mountedShare = iface.findMountedShare(object.url, false)
-          
-          if (mountedShare !== null) {
-            object.isMounted = mountedShare.isMounted
-          }
-          else {
-            object.isMounted = false
-          }
-          
+          object.isMounted = iface.isShareMounted(object.url)
           bookmarkItemDelegateModel.model.set(i, {"object": object})
         }
-        else {
-          // Do nothing
-        }
-      }
-      else {
-        // Do nothing
       }
     }
   }
@@ -233,13 +216,7 @@ PlasmaComponents.Page {
         if (iface.bookmarkCategories[i].categoryName.length != 0) {
           bookmarkItemDelegateModel.model.append({"object": iface.bookmarkCategories[i]})
         }
-        else {
-          // Do nothing
-        }
       }
-    }
-    else {
-      // Do nothing
     }
     
     // Get toplevel bookmarks
@@ -254,22 +231,10 @@ PlasmaComponents.Page {
       for (var i = 0; i < iface.bookmarks.length; i++) {
         if (iface.bookmarks[i].categoryName == categoryName) {
           var bookmark = iface.bookmarks[i]
-          var mountedShare = iface.findMountedShare(bookmark.url, false)
-          if (mountedShare !== null) {
-            bookmark.isMounted = mountedShare.isMounted
-          }
-          else {
-            // Do nothing
-          }
+          bookmark.isMounted = iface.isShareMounted(bookmark.url)
           bookmarkItemDelegateModel.model.append({"object": bookmark})
         }
-        else {
-          // Do nothing
-        }
       }
-    }
-    else {
-      // Do nothing
     }
   }
 }
