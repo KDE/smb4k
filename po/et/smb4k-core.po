@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-09 00:55+0000\n"
+"POT-Creation-Date: 2023-02-02 00:58+0000\n"
 "PO-Revision-Date: 2020-10-25 22:18+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2331,7 +2331,7 @@ msgstr "Kasutaja:"
 msgid "Clear List"
 msgstr "Puhasta nimekiri"
 
-#: smb4kmounter.cpp:686
+#: smb4kmounter.cpp:755
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2344,7 +2344,7 @@ msgstr ""
 "selle omanik on kasutaja <b>%3</b>.</p><p>Kas tõesti ressurss lahutada?</p></"
 "qt>"
 
-#: smb4kmounter.cpp:691
+#: smb4kmounter.cpp:760
 #, kde-format
 msgid "Foreign Share"
 msgstr "Võõrressurss"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-09 00:55+0000\n"
+"POT-Creation-Date: 2023-02-02 00:58+0000\n"
 "PO-Revision-Date: 2023-01-18 22:31+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2285,7 +2285,7 @@ msgstr "Kullanıcı:"
 msgid "Clear List"
 msgstr "Listeyi Temizle"
 
-#: smb4kmounter.cpp:686
+#: smb4kmounter.cpp:755
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2295,7 +2295,7 @@ msgstr ""
 "bağlanıyor.</p><p>Paylaşımın bağlantısını gerçekten kesmek istiyor musunuz?</"
 "p>"
 
-#: smb4kmounter.cpp:691
+#: smb4kmounter.cpp:760
 #, kde-format
 msgid "Foreign Share"
 msgstr "Yabancı Paylaşım"
