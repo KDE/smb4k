@@ -1,7 +1,7 @@
 /*
     This class provides the interface for Plasma and QtQuick
 
-    SPDX-FileCopyrightText: 2013-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2013-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -188,18 +188,12 @@ public:
     Q_INVOKABLE void unmountAll();
 
     /**
-     * This function takes a QUrl object, looks up the respective mounted share
-     * and returns it. If there is not such a share, NULL is returned.
-     *
-     * @param url         The URL of the mounted share
-     *
-     * @param exactMatch  Determines if the function should only search for the
-     *                    exact match or if it may also except matches where the
-     *                    user info and port may differ.
-     *
-     * @returns The mounted share or NULL if it was not found.
+     * This function takes a QUrl object and checks if a share with this URL
+     * is mounted. Returns nullptr if there is no such share.
+     * 
+     * @param url         The URL to check
      */
-    Q_INVOKABLE Smb4KNetworkObject *findMountedShare(const QUrl &url, bool exactMatch = true);
+    Q_INVOKABLE bool isShareMounted(const QUrl &url);
 
     /**
      * This function takes a network object representing a remote printer and

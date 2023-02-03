@@ -1,7 +1,7 @@
 /*
     This class provides the interface for Plasma and QtQuick
 
-    SPDX-FileCopyrightText: 2013-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2013-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -71,33 +71,26 @@ Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
 
 Smb4KDeclarative::~Smb4KDeclarative()
 {
-    while (!d->workgroupObjects.isEmpty()) {
-        delete d->workgroupObjects.takeFirst();
-    }
+    qDeleteAll(d->workgroupObjects);
+    d->workgroupObjects.clear();
 
-    while (!d->hostObjects.isEmpty()) {
-        delete d->hostObjects.takeFirst();
-    }
+    qDeleteAll(d->hostObjects);
+    d->hostObjects.clear();
 
-    while (!d->shareObjects.isEmpty()) {
-        delete d->shareObjects.takeFirst();
-    }
+    qDeleteAll(d->shareObjects);
+    d->shareObjects.clear();
 
-    while (!d->mountedObjects.isEmpty()) {
-        delete d->mountedObjects.takeFirst();
-    }
+    qDeleteAll(d->mountedObjects);
+    d->mountedObjects.clear();
+    
+    qDeleteAll(d->bookmarkObjects);
+    d->bookmarkObjects.clear();
 
-    while (!d->bookmarkObjects.isEmpty()) {
-        delete d->bookmarkObjects.takeFirst();
-    }
+    qDeleteAll(d->bookmarkCategoryObjects);
+    d->bookmarkCategoryObjects.clear();
 
-    while (!d->bookmarkCategoryObjects.isEmpty()) {
-        delete d->bookmarkCategoryObjects.takeFirst();
-    }
-
-    while (!d->profileObjects.isEmpty()) {
-        delete d->profileObjects.takeFirst();
-    }
+    qDeleteAll(d->profileObjects);
+    d->profileObjects.clear();
 }
 
 QQmlListProperty<Smb4KNetworkObject> Smb4KDeclarative::workgroups()
@@ -244,14 +237,12 @@ void Smb4KDeclarative::mountShare(Smb4KNetworkObject *object)
 void Smb4KDeclarative::mountBookmark(Smb4KBookmarkObject *object)
 {
     if (object) {
-        // If the share is not in the global list of shares,
-        // try the list of bookmarks.
         BookmarkPtr bookmark = Smb4KBookmarkHandler::self()->findBookmarkByUrl(object->url());
 
         SharePtr share = SharePtr(new Smb4KShare());
         share->setUrl(object->url());
-        share->setWorkgroupName(bookmark->workgroupName());
-        share->setHostIpAddress(bookmark->hostIpAddress());
+        share->setWorkgroupName(object->workgroupName());
+        share->setHostIpAddress(object->hostIpAddress());
 
         Smb4KMounter::self()->mountShare(share);
 
@@ -277,25 +268,17 @@ void Smb4KDeclarative::unmountAll()
     Smb4KMounter::self()->unmountAllShares(false);
 }
 
-Smb4KNetworkObject *Smb4KDeclarative::findMountedShare(const QUrl &url, bool exactMatch)
+bool Smb4KDeclarative::isShareMounted(const QUrl &url)
 {
-    Smb4KNetworkObject *object = nullptr;
-
-    if (url.isValid()) {
-        for (Smb4KNetworkObject *obj : qAsConst(d->mountedObjects)) {
-            if (url.matches(obj->url(), QUrl::None)) {
-                object = obj;
-                break;
-            } else if (!exactMatch && url.matches(obj->url(), QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
-                object = obj;
-                continue;
-            } else {
-                continue;
-            }
+    QList<SharePtr> shares = Smb4KGlobal::findShareByUrl(url);
+    
+    for (const SharePtr &share : qAsConst(shares)) {
+        if (!share->isForeign()) {
+            return true;
         }
     }
-
-    return object;
+    
+    return false;
 }
 
 void Smb4KDeclarative::print(Smb4KNetworkObject *object)
@@ -313,35 +296,20 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject *object)
 {
     if (object) {
         QList<SharePtr> shares;
-
-        // First, search the list of shares gathered by the scanner.
-        for (const SharePtr &share : Smb4KGlobal::sharesList()) {
-            if (share->url() == object->url()) {
-                shares << share;
-                break;
-            } else {
-                continue;
+        
+        SharePtr share = Smb4KGlobal::findShare(object->url(), object->workgroupName());
+        
+        if (share) {
+            shares << share;
+        } else {
+            QList<SharePtr> mountedShares = Smb4KGlobal::findShareByUrl(object->url());
+            
+            if (!mountedShares.isEmpty()) {
+                shares << mountedShares.first();
             }
         }
 
-        // Second, if the list is still empty, try the list of mounted shares.
-        if (shares.isEmpty()) {
-            for (const SharePtr &mountedShare : Smb4KGlobal::mountedSharesList()) {
-                if (mountedShare->url() == object->url()) {
-                    shares << mountedShare;
-                    break;
-                } else {
-                    continue;
-                }
-            }
-        }
-
-        // Now add the share.
         if (!shares.isEmpty()) {
-            for (const SharePtr &p : qAsConst(shares)) {
-                qDebug() << p->url();
-            }
-
             Smb4KBookmarkHandler::self()->addBookmarks(shares);
         }
     }
@@ -495,10 +463,8 @@ void Smb4KDeclarative::openConfigurationDialog()
 
 void Smb4KDeclarative::slotWorkgroupsListChanged()
 {
-    // (Re)fill the list of workgroup objects.
-    while (!d->workgroupObjects.isEmpty()) {
-        delete d->workgroupObjects.takeFirst();
-    }
+    qDeleteAll(d->workgroupObjects);
+    d->workgroupObjects.clear();
 
     for (const WorkgroupPtr &workgroup : Smb4KGlobal::workgroupsList()) {
         d->workgroupObjects << new Smb4KNetworkObject(workgroup.data());
@@ -509,10 +475,8 @@ void Smb4KDeclarative::slotWorkgroupsListChanged()
 
 void Smb4KDeclarative::slotHostsListChanged()
 {
-    // (Re)fill the list of host object.
-    while (!d->hostObjects.isEmpty()) {
-        delete d->hostObjects.takeFirst();
-    }
+    qDeleteAll(d->hostObjects);
+    d->hostObjects.clear();
 
     for (const HostPtr &host : Smb4KGlobal::hostsList()) {
         d->hostObjects << new Smb4KNetworkObject(host.data());
@@ -523,10 +487,8 @@ void Smb4KDeclarative::slotHostsListChanged()
 
 void Smb4KDeclarative::slotSharesListChanged()
 {
-    // (Re)fill the list of share objects.
-    while (!d->shareObjects.isEmpty()) {
-        delete d->shareObjects.takeFirst();
-    }
+    qDeleteAll(d->shareObjects);
+    d->shareObjects.clear();
 
     for (const SharePtr &share : Smb4KGlobal::sharesList()) {
         d->shareObjects << new Smb4KNetworkObject(share.data());
@@ -537,10 +499,8 @@ void Smb4KDeclarative::slotSharesListChanged()
 
 void Smb4KDeclarative::slotMountedSharesListChanged()
 {
-    // (Re)fill the list of share objects.
-    while (!d->mountedObjects.isEmpty()) {
-        delete d->mountedObjects.takeFirst();
-    }
+    qDeleteAll(d->mountedObjects);
+    d->mountedObjects.clear();
 
     for (const SharePtr &mountedShare : Smb4KGlobal::mountedSharesList()) {
         d->mountedObjects << new Smb4KNetworkObject(mountedShare.data());
@@ -551,14 +511,11 @@ void Smb4KDeclarative::slotMountedSharesListChanged()
 
 void Smb4KDeclarative::slotBookmarksListChanged()
 {
-    // (Re)fill the list of bookmark and group objects.
-    while (!d->bookmarkObjects.isEmpty()) {
-        delete d->bookmarkObjects.takeFirst();
-    }
+    qDeleteAll(d->bookmarkObjects);
+    d->bookmarkObjects.clear();
 
-    while (!d->bookmarkCategoryObjects.isEmpty()) {
-        delete d->bookmarkCategoryObjects.takeFirst();
-    }
+    qDeleteAll(d->bookmarkCategoryObjects);
+    d->bookmarkCategoryObjects.clear();
 
     QList<BookmarkPtr> bookmarksList = Smb4KBookmarkHandler::self()->bookmarksList();
     QStringList categoriesList = Smb4KBookmarkHandler::self()->categoryList();
@@ -576,9 +533,8 @@ void Smb4KDeclarative::slotBookmarksListChanged()
 
 void Smb4KDeclarative::slotProfilesListChanged(const QStringList &profiles)
 {
-    while (!d->profileObjects.isEmpty()) {
-        delete d->profileObjects.takeFirst();
-    }
+    qDeleteAll(d->profileObjects);
+    d->profileObjects.clear();
 
     for (const QString &p : profiles) {
         Smb4KProfileObject *profile = new Smb4KProfileObject();
