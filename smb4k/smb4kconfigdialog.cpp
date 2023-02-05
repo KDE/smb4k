@@ -105,8 +105,8 @@ void Smb4KConfigDialog::setupDialog()
     // Pages to the configuration dialog
     //
     m_user_interface = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), QStringLiteral("preferences-desktop"));
-    m_network = addPage(network_area, Smb4KSettings::self(), i18n("Network"), QStringLiteral("preferences-system-network"));
-    m_mounting = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("preferences-system-network-server-share"));
+    m_network = addPage(network_area, Smb4KSettings::self(), i18n("Network"), QStringLiteral("preferences-system-network-server-share-windows"));
+    m_mounting = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
     m_authentication = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"));
     m_synchronization = addPage(rsync_area, Smb4KSettings::self(), i18n("Synchronization"), QStringLiteral("folder-sync"));
     m_custom_settings = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Settings"), QStringLiteral("settings-configure"));
