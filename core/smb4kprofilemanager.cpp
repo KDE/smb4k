@@ -190,8 +190,6 @@ void Smb4KProfileManager::removeProfiles(const QStringList &list)
 
 void Smb4KProfileManager::slotConfigChanged()
 {
-    qDebug() << "Config changed!";
-
     bool usageChanged = false;
 
     //
