@@ -158,7 +158,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     //
     // Add custom options action
     //
-    QAction *customAction = new QAction(KDE::icon(QStringLiteral("preferences-system-network-share")), i18n("Add &Custom Settings"), this);
+    QAction *customAction = new QAction(KDE::icon(QStringLiteral("settings-configure")), i18n("Add &Custom Settings"), this);
     customAction->setEnabled(false);
 
     connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomSettings(bool)));
