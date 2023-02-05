@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2017 A. Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
@@ -137,9 +137,6 @@ PlasmaComponents.Page {
       for (var i = 0; i < iface.profiles.length; i++) {
         profileItemDelegateModel.model.append({"object": iface.profiles[i]})
       }
-    }
-    else {
-      // Do nothing
     }
   }  
 }

@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2017 A. Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2017-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
@@ -169,9 +169,6 @@ PlasmaComponents.Page {
     if (sharesViewListView.count == 0) {
       shareMountedOrUnmounted()
     }
-    else {
-      // Do nothing
-    }
   }
   
   //
@@ -187,9 +184,6 @@ PlasmaComponents.Page {
       
       if (mountedShare !== null) {
         sharesViewItemDelegateModel.model.append({"object": mountedShare})
-      }
-      else {
-        // Do nothing
       }
     }
     
