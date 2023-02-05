@@ -84,23 +84,14 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    ``` bash
    $ tar xvfj smb4k-x.y.z.tar.xz
    ```
-2. Replace x.y.z with the version number. Change into the source code directory and create a build directory:
+2. Replace x.y.z with the version number. Change into the source code directory:
    ``` bash
    $ cd smb4k-x.y.z
-   $ mkdir build
    ```
-3. Change into the build directory:
+3. Configure the source:
    ``` bash
-   $ cd build
-   ```
-4. Configure the source:
-   ``` bash
-   $ cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` -DCMAKE_BUILD_TYPE=Release ..
-     ```
-   If Smb4K cannot find some shared libraries after the installation, it might be necessary to add the `-DKDE_INSTALL_PLUGINDIR` argument to the command line above:
-   ``` bash
-   $ cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
-     -DKDE_INSTALL_PLUGINDIR=`qtpaths --plugin-dir` -DCMAKE_BUILD_TYPE=Release ..
+   $ cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
+   -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
    ```
    If you want to compile Smb4K with debug symbols, replace `Release` by `Debug`.
 
@@ -111,7 +102,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    | -DSMB4K_INSTALL_PLASMOID=ON/OFF     | Install the plasmoid. This is on by default.   |
    | -DSMB4K_WITH_WS_DISCOVERY=ON/OFF  | Build with WS-Discovery support for browsing. This is off by default. |
 
-5. After the configuration, compile and install Smb4K:
+4. After the configuration, compile and install Smb4K:
    ``` bash
    $ make && sudo make install
    ```
@@ -134,7 +125,8 @@ Debugging the Source Code
 If you experience crashes or similar and want to debug the source code yourself, compile the source code with debugging symbols. The procedure is similar to the one described in the section above, except that you need to modify the cmake command slightly:
 
 ``` bash
-$ cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix`  -DCMAKE_BUILD_TYPE=Debug ..
+   $ cmake -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
+   -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
 ```
 
 If you found the cause for a bug, please let us know. A backtrace or a patch will be much appreciated.
