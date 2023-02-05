@@ -87,8 +87,9 @@ Smb4KNetworkObject::Smb4KNetworkObject(Smb4KBasicNetworkItem *networkItem, QObje
         break;
     }
     default: {
+        d->url = networkItem->url();
+
         if (networkItem->url().toString() == QStringLiteral("smb://")) {
-            d->url = networkItem->url();
             d->mounted = false;
             d->inaccessible = false;
             d->printer = false;
