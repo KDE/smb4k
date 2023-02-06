@@ -62,7 +62,7 @@ If you would like to enable WS-Discovery support, you additionally need
 - KDSoap (version >= 1.9.0, 
   https://www.kdab.com/development-resources/qt-tools/kd-soap/)
 - KDSoap WS-Discovery client (version >= 0.2, 
-  https://github.com/caspermeijn/kdsoap-ws-discovery-client/)
+  https://invent.kde.org/libraries/kdsoap-ws-discovery-client)
 
 It also runtime depends on:
 - KPlasma
