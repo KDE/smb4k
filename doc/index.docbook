@@ -101,17 +101,7 @@
     
     <para>You can either launch &smb4k; from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner">&krunner;</ulink> by typing <userinput><command>smb4k</command></userinput>. &smb4k; comes with a <link linkend="plasmoid">&plasmoid;</link> for better desktop integration. It can be added as a widget to the desktop or panel.</para>
 
-    <para>If the system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
-    
-    <screenshot id="notification_missing_program">
-      <screeninfo>Screenshot of the missing program notification</screeninfo>
-      <mediaobject>
-        <imageobject><imagedata fileref="notification_missing_program.png" format="PNG" /></imageobject>
-        <textobject><phrase>The missing program notification</phrase></textobject>
-      </mediaobject>
-    </screenshot>
-    
-    <para>In this case, please install the specified program or, if it is already present, add its location to the <envar>PATH</envar> environment variable in your shell's configuration file (for the <ulink url="man:/bash"><citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> shell it is the <filename>~/.bashrc</filename> file).</para>
+    <para>If &smb4k; encounters a problem on start-up or while running, the user will be notified. For the solution of some common problems see the <link linkend="trouble_shooting">Trouble Shooting</link> section.</para>
   </sect1>
 
 <!-- 
@@ -1417,17 +1407,59 @@
   </sect1>
 
 <!-- 
-      Using Smb4K : Special Remarks 
+      Using Smb4K : Trouble Shooting
 -->
 
-  <sect1 id="special_remarks">
-    <title>Special Remarks</title>
+  <sect1 id="trouble_shooting">
+    <title>Trouble Shooting</title>
+
+<!--
+    Using Smb4K : Trouble Shooting : Missing Programs
+    -->
+
+    <sect2 id="trouble_shooting_missing_programs">
+      <title>Missing Programs</title>
+
+      <para>If the system is missing some of the programs &smb4k; needs to operate properly, it notifies the user:</para>
+
+      <screenshot id="notification_missing_program">
+        <screeninfo>Screenshot of the missing program notification</screeninfo>
+        <mediaobject>
+          <imageobject><imagedata fileref="notification_missing_program.png" format="PNG" /></imageobject>
+          <textobject><phrase>The missing program notification</phrase></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>In this case, please install the specified program or, if it is already present, add its location to the <envar>PATH</envar> environment variable in your shell's configuration file (for the <ulink url="man:/bash"><citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry></ulink> shell it is the <filename>~/.bashrc</filename> file).</para>
+    </sect2>
+
+<!--
+    Using Smb4K : Trouble Shooting : Zeroconf Daemon
+    -->
+
+    <sect2 id="trouble_shooting_zeroconf">
+      <title>Zeroconf Daemon Not Running</title>
+
+      <para>&smb4k; uses the Zeroconf service (<application><ulink url="https://avahi.org">Avahi</ulink></application>) to look up servers and shares in the network neighborhood using DNS Service Discovery (DNS-SD). For this to work, the Avahi daemon must be enabled and running on your system. If this is not the case, &smb4k; shows an error message:</para>
+
+      <screenshot id="notification_zeroconf_error">
+        <screeninfo>Screenshot of the Zeroconf error notification</screeninfo>
+        <mediaobject>
+          <imageobject><imagedata fileref="notification_zeroconf_error.png" format="PNG" /></imageobject>
+          <textobject><phrase>The Zeroconf error notification</phrase></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>In most cases, the Avahi daemon is not running when an error is reported. Under those &Linux; distributions that use <application>systemd</application> you can start it by running the following or a similar command from the terminal:</para>
+      <para><screen><userinput><prompt>$</prompt> <command>sudo</command> <command>systemctl</command> enable --now avahi-daemon</userinput></screen></para>
+      <para>With all other &Linux; distributions and under BSD refer to the specific documentation how to start the Avahi daemon.</para>
+    </sect2>
   
 <!--
-    Using Smb4K : Special Remarks : Denied Privilege Escalation
+    Using Smb4K : Trouble Shooting : Denied Privilege Escalation
 -->
     
-    <sect2 id="special_remarks_polkit-1">
+    <sect2 id="trouble_shooting_polkit-1">
       <title>Denied Privilege Escalation</title>
       
       <para>In case the mount and unmount actions fail (most likely with an <guilabel>AuthorizationDeniedError</guilabel> message), your polkit-1 setup might need to be adjusted: Add a file, &eg; named <filename>10-mounthelper.rules</filename>, to the <filename class="directory">$PREFIX/etc/polkit-1/rules.d/</filename> directory with the following content:</para>
@@ -1450,10 +1482,10 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Using Smb4K : Special Remarks : Mounting Problems under BSD
+      Using Smb4K : Trouble Shooting : Mounting Problems under BSD
   -->
     
-    <sect2 id="special_remarks_mounting_problems_under_bsd">
+    <sect2 id="trouble_shooting_mounting_problems_under_bsd">
       <title>Mounting Problems Under BSD</title>
       
       <para>If mounting of password-protected shares from either a &Samba; or a &Windows; server fails, this might be because <ulink url="man:/mount_smbfs"><citerefentry><refentrytitle>mount_smbfs</refentrytitle><manvolnum>8</manvolnum></citerefentry></ulink> only uses NTLMv1 authentication, and the server does not support it. To fix mounting for a &Samba; server, you can add the following entry to the [global] section of the <filename>smb.conf</filename> file of <emphasis>the server</emphasis>:</para>
@@ -1468,10 +1500,10 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Using Smb4K : Special Remarks : Other Desktops Than Plasma
+      Using Smb4K : Trouble Shooting : Other Desktops Than Plasma
 -->
 
-    <sect2 id="special_remarks_other_desktop_environments">
+    <sect2 id="trouble_shooting_other_desktop_environments">
       <title>Other Desktop Environments Than &plasma;</title>
 
       <para>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing some icons. In that case, you might want to install the application <application>qt5ct</application> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/">here</ulink>). To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
