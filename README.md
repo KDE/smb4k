@@ -92,7 +92,6 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    ``` bash
    $ cmake -B build -S $pkgname-$pkgver -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
    -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
-   $ cmake --build build
    ```
    If you want to compile Smb4K with debug symbols, replace `Release` by `Debug`.
 
@@ -105,13 +104,16 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
 
 4. After the configuration, compile and install Smb4K:
    ``` bash
+   $ cmake --build build
    $ cmake --install build
    ```
    If you want to be able to remove Smb4K with your package manager later on, use the following approaches depending on your distribution:
    
      <u>Debian, Ubuntu, openSUSE, Fedora, Redhat, Slackware:</u> Use checkinstall instead of make install. The package should be present in your distribution's repository.
       ``` bash
-      $ make && sudo checkinstall
+      $ cmake --build build
+      $ cd build
+      $ sudo checkinstall
       ```
 
      <u>Arch, Manjaro:</u> Create a PKGBUILD file inside the source's root directory and run the following command to install Smb4K.
