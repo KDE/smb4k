@@ -90,7 +90,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    ```
 3. Configure the source:
    ``` bash
-   $ cmake -B build -S $pkgname-$pkgver -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
+   $ cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
    -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
    ```
    If you want to compile Smb4K with debug symbols, replace `Release` by `Debug`.
