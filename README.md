@@ -93,7 +93,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
    $ cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
    -DSMB4K_INSTALL_PLASMOID=ON -DSMB4K_WITH_WS_DISCOVERY=OFF
    ```
-   If you want to compile Smb4K with debug symbols, replace `Release` by `Debug`.
+   If you want to enable WS-Discovery support, use `-DSMB4K_WITH_WS_DISCOVERY=ON` as argument. To compile Smb4K with debug symbols, replace `Release` by `Debug`. 
 
    There are some Smb4K specific CMake arguments you might be interested in:
    
