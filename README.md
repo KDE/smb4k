@@ -105,7 +105,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
 4. After the configuration, compile and install Smb4K:
    ``` bash
    $ cmake --build build
-   $ cmake --install build
+   $ sudo cmake --install build
    ```
    If you want to be able to remove Smb4K with your package manager later on, use the following approaches depending on your distribution:
    
