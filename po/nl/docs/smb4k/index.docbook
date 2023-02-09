@@ -218,35 +218,9 @@
 > voor betere bureaubladintegratie. Het kan toegevoegd worden als een widget aan het bureaublad of paneel.</para>
 
     <para
->Als het systeem enkele van de programma's mist die &smb4k; nodig heeft om op de juiste manier te werken, dan wordt dat aan de gebruiker gemeld:</para>
-    
-    <screenshot id="notification_missing_program">
-      <screeninfo
->Schermafdruk van de melding over ontbrekend programma</screeninfo>
-      <mediaobject>
-        <imageobject
-><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
-        <textobject
-><phrase
->De melding over ontbrekend programma</phrase
-></textobject>
-      </mediaobject>
-    </screenshot>
-    
-    <para
->Installeer in dat geval het gespecificeerde programma of, als het al aanwezig is, voeg zijn locatie toe aan de omgevingsvariabele <envar
->PATH</envar
-> aan het instellingenbestand van uw shell (voor de shell <ulink url="man:/bash"
-><citerefentry
-><refentrytitle
->bash</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> is dat het bestand <filename
->~/.bashrc</filename
->).</para>
+>Als &smb4k; een probleem tegenkomt bij opstarten of tijdens werking zal de gebruiker een melding krijgen. Voor de oplossing van sommige algemene problemen zie de sectie <link linkend="trouble_shooting"
+>Probleem oplossen</link
+>.</para>
   </sect1>
 
 <!-- 
@@ -2692,18 +2666,106 @@
   </sect1>
 
 <!-- 
-      Using Smb4K : Special Remarks 
+      Using Smb4K : Trouble Shooting
 -->
 
-  <sect1 id="special_remarks">
+  <sect1 id="trouble_shooting">
     <title
->Speciale opmerkingen</title>
+>Problemen oplossen</title>
+
+<!--
+    Using Smb4K : Trouble Shooting : Missing Programs
+    -->
+
+    <sect2 id="trouble_shooting_missing_programs">
+      <title
+>Ontbrekende programma's</title>
+
+      <para
+>Als het systeem enkele van de programma's mist die &smb4k; nodig heeft om op de juiste manier te werken, dan wordt dat aan de gebruiker gemeld:</para>
+
+      <screenshot id="notification_missing_program">
+        <screeninfo
+>Schermafdruk van de melding over ontbrekend programma</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>De melding over ontbrekend programma</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>Installeer in dat geval het gespecificeerde programma of, als het al aanwezig is, voeg zijn locatie toe aan de omgevingsvariabele <envar
+>PATH</envar
+> aan het instellingenbestand van uw shell (voor de shell <ulink url="man:/bash"
+><citerefentry
+><refentrytitle
+>bash</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> is dat het bestand <filename
+>~/.bashrc</filename
+>).</para>
+    </sect2>
+
+<!--
+    Using Smb4K : Trouble Shooting : Zeroconf Daemon
+    -->
+
+    <sect2 id="trouble_shooting_zeroconf">
+      <title
+>Zeroconf-daemon niet actief</title>
+
+      <para
+>&smb4k; gebruikt de Zeroconf-service (<application
+><ulink url="https://avahi.org"
+>Avahi</ulink
+></application
+>) om servers en shares in de netwerkomgeving op te zoeken met DNS Service Discovery (DNS-SD). Om dit te laten werken moet de Avahi-daemon ingeschakeld en actief zijn op uw systeem. Als dat niet het geval is zal &smb4k; een foutmelding tonen:</para>
+
+      <screenshot id="notification_zeroconf_error">
+        <screeninfo
+>Schermafdruk van de Zeroconf-foutmelding</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_zeroconf_error.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>De Zeroconf-foutmelding</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>In de meeste gevallen is de Avahi-daemon niet actief wanneer er een fout is gerapporteerd. Onder de &Linux; distributies die <application
+>systemd</application
+> gebruiken kunt u het starten met het volgende of gelijksoortige commando vanaf de terminal:</para>
+      <para
+><screen
+><userinput
+><prompt
+>$</prompt
+> <command
+>sudo</command
+> <command
+>systemctl</command
+> enable --now avahi-daemon</userinput
+></screen
+></para>
+      <para
+>Met alle andere &Linux; distributies en onder BSD bekijk de specifieke documentatie over hoe de Avahi-daemon te starten.</para>
+    </sect2>
   
 <!--
-    Using Smb4K : Special Remarks : Denied Privilege Escalation
+    Using Smb4K : Trouble Shooting : Denied Privilege Escalation
 -->
     
-    <sect2 id="special_remarks_polkit-1">
+    <sect2 id="trouble_shooting_polkit-1">
       <title
 >Geweigerde opschaling van rechten</title>
       
@@ -2742,10 +2804,10 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Using Smb4K : Special Remarks : Mounting Problems under BSD
+      Using Smb4K : Trouble Shooting : Mounting Problems under BSD
   -->
     
-    <sect2 id="special_remarks_mounting_problems_under_bsd">
+    <sect2 id="trouble_shooting_mounting_problems_under_bsd">
       <title
 >Problemen met aankoppelen onder BSD</title>
       
@@ -2776,10 +2838,10 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Using Smb4K : Special Remarks : Other Desktops Than Plasma
+      Using Smb4K : Trouble Shooting : Other Desktops Than Plasma
 -->
 
-    <sect2 id="special_remarks_other_desktop_environments">
+    <sect2 id="trouble_shooting_other_desktop_environments">
       <title
 >Andere Bureaubladomgevingen dan &plasma;</title>
 

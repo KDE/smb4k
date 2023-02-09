@@ -222,35 +222,9 @@
 > per a una millor integració amb l'escriptori. Es pot afegir com un giny per a l'escriptori o el plafó.</para>
 
     <para
->Si el sistema no troba algun dels programes que el &smb4k; necessita per a funcionar adequadament, aquest ho notificarà a l'usuari:</para>
-    
-    <screenshot id="notification_missing_program">
-      <screeninfo
->Captura de pantalla de la notificació del programa que falta</screeninfo>
-      <mediaobject>
-        <imageobject
-><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
-        <textobject
-><phrase
->La notificació del programa que falta</phrase
-></textobject>
-      </mediaobject>
-    </screenshot>
-    
-    <para
->En aquest cas, instal·leu el programa especificat o, si ja hi és, afegiu la seva ubicació amb la variable d'entorn <envar
->PATH</envar
-> al vostre fitxer de configuració de l'intèrpret d'ordres (per al <ulink url="man:/bash"
-><citerefentry
-><refentrytitle
->bash</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> aquest és el fitxer <filename
->~/.bashrc</filename
->).</para>
+>Si el &smb4k; troba un problema en iniciar o en executar-se, es notificarà a l'usuari. Per a la solució d'alguns problemes habituals, vegeu la secció <link linkend="trouble_shooting"
+>Resolució de problemes</link
+>.</para>
   </sect1>
 
 <!-- 
@@ -2714,18 +2688,106 @@
   </sect1>
 
 <!-- 
-      Using Smb4K : Special Remarks 
+      Using Smb4K : Trouble Shooting
 -->
 
-  <sect1 id="special_remarks">
+  <sect1 id="trouble_shooting">
     <title
->Observacions especials</title>
+>Resolució de problemes</title>
+
+<!--
+    Using Smb4K : Trouble Shooting : Missing Programs
+    -->
+
+    <sect2 id="trouble_shooting_missing_programs">
+      <title
+>Programes que manquen</title>
+
+      <para
+>Si el sistema no troba algun dels programes que el &smb4k; necessita per a funcionar adequadament, aquest ho notificarà a l'usuari:</para>
+
+      <screenshot id="notification_missing_program">
+        <screeninfo
+>Captura de pantalla de la notificació del programa que falta</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>La notificació del programa que falta</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>En aquest cas, instal·leu el programa especificat o, si ja hi és, afegiu la seva ubicació amb la variable d'entorn <envar
+>PATH</envar
+> al vostre fitxer de configuració de l'intèrpret d'ordres (per al <ulink url="man:/bash"
+><citerefentry
+><refentrytitle
+>bash</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> aquest és el fitxer <filename
+>~/.bashrc</filename
+>).</para>
+    </sect2>
+
+<!--
+    Using Smb4K : Trouble Shooting : Zeroconf Daemon
+    -->
+
+    <sect2 id="trouble_shooting_zeroconf">
+      <title
+>El dimoni Zeroconf no s'està executant</title>
+
+      <para
+>El &smb4k; utilitza el servei Zeroconf (<application
+><ulink url="https://avahi.org"
+>Avahi</ulink
+></application
+>) per cercar servidors i comparticions en el veïnatge de xarxa utilitzant el «DNS Service Discovery» (DNS-SD). Perquè això funcioni, el dimoni Avahi s'ha d'habilitar i executar en el sistema. Si aquest no és el cas, el &smb4k; mostrarà un missatge d'error:</para>
+
+      <screenshot id="notification_zeroconf_error">
+        <screeninfo
+>Captura de pantalla de la notificació d'error del Zeroconf</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_zeroconf_error.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>La notificació d'error del Zeroconf</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>En la majoria dels casos, el dimoni Avahi no s'està executant quan s'informa d'un error. En les distribucions &Linux; que utilitzen el <application
+>systemd</application
+> podeu iniciar-lo executant l'ordre següent o una de similar des del terminal:</para>
+      <para
+><screen
+><userinput
+><prompt
+>$</prompt
+> <command
+>sudo</command
+> <command
+>systemctl</command
+> enable --now avahi-daemon</userinput
+></screen
+></para>
+      <para
+>En totes les altres distribucions &Linux; i en el BSD consulteu la documentació específica de com iniciar el dimoni Avahi.</para>
+    </sect2>
   
 <!--
-    Using Smb4K : Special Remarks : Denied Privilege Escalation
+    Using Smb4K : Trouble Shooting : Denied Privilege Escalation
 -->
     
-    <sect2 id="special_remarks_polkit-1">
+    <sect2 id="trouble_shooting_polkit-1">
       <title
 >Denegar l'escalada de privilegis</title>
       
@@ -2764,10 +2826,10 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Using Smb4K : Special Remarks : Mounting Problems under BSD
+      Using Smb4K : Trouble Shooting : Mounting Problems under BSD
   -->
     
-    <sect2 id="special_remarks_mounting_problems_under_bsd">
+    <sect2 id="trouble_shooting_mounting_problems_under_bsd">
       <title
 >Problemes de muntatge en el BSD</title>
       
@@ -2798,10 +2860,10 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Using Smb4K : Special Remarks : Other Desktops Than Plasma
+      Using Smb4K : Trouble Shooting : Other Desktops Than Plasma
 -->
 
-    <sect2 id="special_remarks_other_desktop_environments">
+    <sect2 id="trouble_shooting_other_desktop_environments">
       <title
 >Altres entorns d'escriptori que el &plasma;</title>
 

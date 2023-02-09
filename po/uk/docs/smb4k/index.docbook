@@ -232,35 +232,9 @@
 > для поліпшення інтеграції зі стільницею. Плазмоїд можна додати на стільницю або на панель.</para>
 
     <para
->Якщо у системі не вистачатиме програм, які потрібні для нормальної роботи &smb4k;, програма повідомить вам про це.</para>
-    
-    <screenshot id="notification_missing_program">
-      <screeninfo
->Знімок діалогового вікна зі сповіщенням щодо програм, яких не вистачає</screeninfo>
-      <mediaobject>
-        <imageobject
-><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
-        <textobject
-><phrase
->Сповіщення щодо програм, яких не вистачає</phrase
-></textobject>
-      </mediaobject>
-    </screenshot>
-    
-    <para
->У цьому випадку, щоб отримати змогу користуватися програмою належним чином, вам доведеться встановити вказану програму або додати назву теки, де вона зберігаються, якщо її уже встановлено, до змінної середовища <envar
->PATH</envar
-> у вашому файлі налаштування командної оболонки (для оболонки <ulink url="man:/bash"
-><citerefentry
-><refentrytitle
->bash</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> цим файлом буде <filename
->~/.bashrc</filename
->).</para>
+>Якщо під час запуску або роботи у &smb4k; виникає проблема, програма сповіщає про неї. Поради щодо розв'язання типових проблем наведено у розділі щодо <link linkend="trouble_shooting"
+>вирішення проблем</link
+>.</para>
   </sect1>
 
 <!-- 
@@ -2710,18 +2684,106 @@
   </sect1>
 
 <!-- 
-      Using Smb4K : Special Remarks 
+      Using Smb4K : Trouble Shooting
 -->
 
-  <sect1 id="special_remarks">
+  <sect1 id="trouble_shooting">
     <title
->Спеціальні зауваження</title>
+>Вирішення проблем</title>
+
+<!--
+    Using Smb4K : Trouble Shooting : Missing Programs
+    -->
+
+    <sect2 id="trouble_shooting_missing_programs">
+      <title
+>Нестача програм</title>
+
+      <para
+>Якщо у системі не вистачатиме програм, які потрібні для нормальної роботи &smb4k;, програма повідомить вам про це.</para>
+
+      <screenshot id="notification_missing_program">
+        <screeninfo
+>Знімок діалогового вікна зі сповіщенням щодо програм, яких не вистачає</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Сповіщення щодо програм, яких не вистачає</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>У цьому випадку, щоб отримати змогу користуватися програмою належним чином, вам доведеться встановити вказану програму або додати назву теки, де вона зберігаються, якщо її уже встановлено, до змінної середовища <envar
+>PATH</envar
+> у вашому файлі налаштування командної оболонки (для оболонки <ulink url="man:/bash"
+><citerefentry
+><refentrytitle
+>bash</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> цим файлом буде <filename
+>~/.bashrc</filename
+>).</para>
+    </sect2>
+
+<!--
+    Using Smb4K : Trouble Shooting : Zeroconf Daemon
+    -->
+
+    <sect2 id="trouble_shooting_zeroconf">
+      <title
+>Фонову службу Zeroconf не запущено</title>
+
+      <para
+>&smb4k; використовує службу Zeroconf (<application
+><ulink url="https://avahi.org"
+>Avahi</ulink
+></application
+>) для пошуку серверів та спільних ресурсів у мережевому середовищі за допомогою служби виявлення DNS (DNS-SD). Щоб це спрацювало, у системі має бути увімкнено та запущено фонову службу Avahi. Якщо цю умову не виконано, &smb4k; покаже повідомлення про помилку:</para>
+
+      <screenshot id="notification_zeroconf_error">
+        <screeninfo
+>Знімок діалогового вікна зі сповіщенням щодо помилки Zeroconf</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_zeroconf_error.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Сповіщення про помилку Zeroconf</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>У більшості випадків, якщо ви бачите повідомлення про помилку, фонову службу Avahi не запущено. У тих дистрибутивах &Linux;, де використано <application
+>systemd</application
+>, ви можете запустити службу за допомогою вказаної нижче або подібної команди у терміналі:</para>
+      <para
+><screen
+><userinput
+><prompt
+>$</prompt
+> <command
+>sudo</command
+> <command
+>systemctl</command
+> enable --now avahi-daemon</userinput
+></screen
+></para>
+      <para
+>В інших дистрибутивах &Linux; та у BSD вам слід ознайомитися із документацією, щоб визначити спосіб запуску фонової служби Avahi.</para>
+    </sect2>
   
 <!--
-    Using Smb4K : Special Remarks : Denied Privilege Escalation
+    Using Smb4K : Trouble Shooting : Denied Privilege Escalation
 -->
     
-    <sect2 id="special_remarks_polkit-1">
+    <sect2 id="trouble_shooting_polkit-1">
       <title
 >Зауваження щодо відмови у розширенні прав доступу</title>
       
@@ -2760,10 +2822,10 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Using Smb4K : Special Remarks : Mounting Problems under BSD
+      Using Smb4K : Trouble Shooting : Mounting Problems under BSD
   -->
     
-    <sect2 id="special_remarks_mounting_problems_under_bsd">
+    <sect2 id="trouble_shooting_mounting_problems_under_bsd">
       <title
 >Проблеми із монтуванням у BSD</title>
       
@@ -2794,10 +2856,10 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Using Smb4K : Special Remarks : Other Desktops Than Plasma
+      Using Smb4K : Trouble Shooting : Other Desktops Than Plasma
 -->
 
-    <sect2 id="special_remarks_other_desktop_environments">
+    <sect2 id="trouble_shooting_other_desktop_environments">
       <title
 >Стільничні середовища, відмінні від Плазми</title>
 
