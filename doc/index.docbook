@@ -158,15 +158,7 @@
       <para>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie;, when you execute a network item. Due to the use of DNS-SD, you will most likely find a domain called <emphasis>LOCAL</emphasis> in the network neighborhood browser. This is the default local DNS domain used by services like <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)">Avahi</ulink> and not an actual &Windows; domain. Opening a domain or workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you must open the desired server.</para>
       <para>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic packet to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_advanced_settings_wake_on_lan">configuration dialog</link>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor.</para>
       <note>
-          <para>If you are using DNS Service Discovery and the Zeroconf daemon (Avahi) is not running, &smb4k; shows an error notification:</para>
-          <screenshot>
-              <screeninfo>Error message if the Zeroconf daemon is not running</screeninfo>
-              <mediaobject>
-                  <imageobject><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG" /></imageobject>
-                  <textobject><phrase>The error message if the Zeroconf daemon is not running</phrase></textobject>
-              </mediaobject>
-          </screenshot>
-          <para>In this case, please start the Zeroconf daemon and restart &smb4k;.</para>
+        <para>If you are using DNS Service Discovery and the Zeroconf daemon (Avahi) is not running, &smb4k; shows an error notification. For details see the <link linkend="trouble_shooting_zeroconf">Trouble Shooting</link> section.</para>
       </note>
     </sect2>
     
@@ -979,9 +971,9 @@
       </mediaobject>
     </screenshot>
 
-    <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share, or invoke the print dialog. To go up one level, you need to click the <guibutton>Up</guibutton> button in the tool bar.</para>
-    <para>For hosts and shares, there are some action buttons to the right of the network's name. For hosts, there is one button with which you can open the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding the share to the bookmarks</link>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the chosen action.</para>
-    <para>Besides the <guibutton>Up</guibutton> button, the tool bar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With these you can do a rescan, abort any running action, or open the <link linkend="network_neighborhood_browser_mounting">dialog for "manual" mounts</link>.</para>
+    <para>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share, or invoke the print dialog. To go one level up, you need to click the <guibutton>Up</guibutton> button in the tool bar.</para>
+    <para>For hosts and shares, there are some action buttons to the right of the network item's name. For hosts, there is one button with which you can open the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing">previewing the content of the selected share</link> and for <link linkend="bookmarks_adding">adding the share to the bookmarks</link>. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the chosen action.</para>
+    <para>Besides the <guibutton>Up</guibutton> button, the tool bar contains three more entries: <guibutton>Rescan</guibutton>, <guibutton>Abort</guibutton> and <guibutton>Mount Dialog</guibutton>. With these you can do a rescan, abort any running action, or open the <link linkend="network_neighborhood_browser_mounting">mount dialog</link>.</para>
   </sect2>
 
 <!-- 
@@ -1000,7 +992,7 @@
         <textobject><phrase>Bookmarks tab of the plasmoid</phrase></textobject></mediaobject>
     </screenshot>
 
-    <para>To the right of the name of the share and its host, three action buttons are arranged. The first is for <link linkend="bookmarks_adding">adding a bookmark</link>, the second is for <link linkend="shares_view_synchronization">synchronization</link>, and the third is for <link linkend="shares_view_unmounting">unmounting the share</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the selected action.</para>
+    <para>At the right side of each entry, three action buttons are arranged. The first is for <link linkend="bookmarks_adding">adding a bookmark</link>, the second is for <link linkend="shares_view_synchronization">synchronization</link>, and the third is for <link linkend="shares_view_unmounting">unmounting the share</link>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the selected action.</para>
     <para>The tool bar contains the <guibutton>Unmount All</guibutton> action that lets you unmount all shares at once.</para>
   </sect2>
 
@@ -1011,7 +1003,7 @@
   <sect2 id="plasmoid_bookmarks">
     <title>Bookmarks Tab</title>
 
-    <para>The bookmark groups and bookmarks defined for the currently active profile are listed on the <guilabel>Bookmarks</guilabel> page.</para>
+    <para>The bookmarks are listed on the <guilabel>Bookmarks</guilabel> page.</para>
     
     <screenshot>
       <screeninfo>Screenshot of the plasmoid's bookmarks tab</screeninfo>
@@ -1021,8 +1013,7 @@
       </mediaobject>
     </screenshot>
 
-    <para>Bookmarked shares can be mounted by left clicking the respective bookmark. Bookmark groups can be entered the same way.</para>
-    <para>To edit or remove the bookmarks, press the <guibutton>Edit</guibutton> action button in the tool bar to open the <link linkend="bookmarks_editor">Bookmark Editor</link>. To get back to the top level, use the <guibutton>Back</guibutton> button.</para>
+    <para>Bookmarked shares can be mounted by left clicking the respective bookmark. To edit or remove the bookmarks, press the <guibutton>Edit</guibutton> action button in the tool bar to open the <link linkend="bookmarks_editor">Bookmark Editor</link>. To get back to the top level from a category folder, use the <guibutton>Back</guibutton> button.</para>
   </sect2>
 
 <!-- 
@@ -1042,8 +1033,7 @@
       </mediaobject>
     </screenshot>
   
-    <para>You can activate a certain profile by clicking it.</para>
-    <para>Profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
+    <para>You can activate a certain profile by clicking it. All profiles can be <link linkend="profiles">managed</link> via the <link linkend="configuration_page_profiles">configuration dialog</link>.</para>
   </sect2>
   
 <!--
@@ -1063,9 +1053,9 @@
       </mediaobject>
     </screenshot>
     
-    <note>
+    <caution>
       <para>You should not open two configuration dialogs (through the main application and via the &plasmoid;) at the same time, because they might interfere with each other.</para>
-    </note>
+    </caution>
   </sect2>
   
 </sect1>
@@ -1084,7 +1074,7 @@
     <sect2 id="bookmarks_adding">
       <title>Adding Bookmarks</title>
 
-      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign the bookmark to a category.</para>
+      <para>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser">network neighborhood browser</link>, the <link linkend="shares_view">shares view</link> and the <link linkend="plasmoid">&plasmoid;</link>. In the dock widgets of the main window, this is done by selecting one or more shares and clicking the <menuchoice><guimenuitem>Add Bookmark</guimenuitem></menuchoice> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and assign the bookmark to a category.</para>
 
       <screenshot>
         <screeninfo>Screenshot of the bookmarks addition dialog</screeninfo>
@@ -1094,7 +1084,7 @@
         </mediaobject>
       </screenshot>
 
-      <para>Defining categories may help you organize the bookmarks. In the bookmark menu, all bookmarks belonging to one category are arranged in a submenu with the category entry as parent (see <link linkend="bookmarks_menu">below</link>).</para>
+      <para>Defining categories may help you organize the bookmarks. In the <link linkend="bookmarks_menu">bookmark menu</link>, all bookmarks belonging to the same category are arranged in a respective submenu.</para>
       <para>The label can be any text describing the share. In case you define a label, it will be displayed in the bookmarks menu instead of the location by default. If you want to change this behavior, you can do so in the <link linkend="configuration_page_user_interface_main_window">configuration dialog</link>.</para>
     </sect2>
     
@@ -1123,7 +1113,7 @@
             <menuchoice><guimenuitem>Edit Bookmarks</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Opens the <link linkend="bookmarks_editor">bookmark editor</link>. This action is disabled if there are no bookmarks.</para>
+            <para>Opens the <link linkend="bookmarks_editor">bookmark editor</link>. This entry is disabled if there are no bookmarks.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1134,28 +1124,28 @@
             </menuchoice>
           </term>
           <listitem>
-            <para>Adds bookmarks to the selected shares. At least one share must be selected to enable this action.</para>
+            <para>Adds bookmarks to the selected shares. At least one share must be selected to enable this entry.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
-      <para>If you have not defined any categories, there is a third item:</para>
+      <para>If there are bookmarks present that are not assigned to a category, and are, thus, shown directly at the top level of the menu, a third item is present:</para>
 
       <variablelist>
         <varlistentry>
           <term>
-            <menuchoice><guimenuitem>Mount All Bookmarks</guimenuitem></menuchoice>
+            <menuchoice><guimenuitem>Mount Bookmarks</guimenuitem></menuchoice>
           </term>
           <listitem>
-            <para>Mount all top-level bookmarks at once. This choice is disabled if all bookmarked shares are aready mounted.</para>
+            <para>Mount all top level bookmarks at once. This entry is disabled if all bookmarked shares are aready mounted.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
-      <para>All the rest of the entries are either category submenus or bookmarks that do not belong to any category. All entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. When you click a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is temporarily disabled.</para>
-      <para>The category submenus contain the assigned bookmarks, and in each case a <guimenuitem>Mount All Bookmarks</guimenuitem> menu item is also present. The latter item can be used to mount all bookmarks in that category at once.</para>
+      <para>The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the the entry is disabled.</para>
+      <para>The category submenus contain the assigned bookmarks, and in each case a <guimenuitem>Mount Bookmarks</guimenuitem> menu item is also present. It can be used to mount all bookmarks in that category at once.</para>
       <para>In the system tray widget, there is a similar <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> which, however, does not come with the <guilabel>Add Bookmark</guilabel> entry.</para>
-      <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar manner as in the bookmark menu. The bookmark categories and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the tool bar two actions are present: <guimenuitem>Back</guimenuitem> and <guimenuitem>Edit</guimenuitem>. By clicking <guimenuitem>Back</guimenuitem> you can get back to the top level if you entered a category folder. The <guimenuitem>Edit</guimenuitem> action opens the <link linkend="bookmarks_editor">bookmark editor</link>.</para>
+      <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar manner as in the bookmark menu. For further details read <link linkend="plasmoid_bookmarks">this section</link>.</para>
     </sect2>
     
 <!--
@@ -1223,28 +1213,37 @@
   
   <sect1 id="custom_settings">
     <title>Custom Settings</title>
-    
-    <para>Besides the global settings that can be defined in the <link linkend="configuration">configuration dialog</link>, &smb4k; offers the possibility to configure individual settings per server or share. Both in the <link linkend="network_neighborhood_browser_actions_popup_menu">network neighborhood browser</link> and in the <link linkend="shares_view_actions_popup_menu">shares view</link>, the editor for the custom settings can be accessed by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> menu entries.</para>
-    
-    <screenshot>
-      <screeninfo>Screenshot of the custom settings editor for a share</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="custom_settings_editor.png" format="PNG" />
-        </imageobject>
-        <textobject>
-          <phrase>The custom settings editor</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
 
-    <para>Use should use custom settings if you want to</para>
+    <sect2 id="custom_settings_usage">
+      <title>Using Custom Settings</title>
+
+      <para>Besides the global settings that can be defined in the <link linkend="configuration">configuration dialog</link>, &smb4k; offers the possibility to configure individual settings per server or share. You can make use of these custom settings if you want to</para>
       <itemizedlist>
-        <listitem><para>define custom mount or browse settings for a single server or share that deviate from the values defined in the configuration dialog,</para></listitem>
+        <listitem><para>define individual mount or browse settings for a single server or share that deviate from the values defined in the configuration dialog,</para></listitem>
         <listitem><para>define a server that should be awakened prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_advanced_settings_wake_on_lan">here</link>),</para></listitem>
         <listitem><para>always mount a particular share on start-up or when the corresponding profile is loaded.</para></listitem>
       </itemizedlist>
-      
+    </sect2>
+
+    <sect2 id="custom_settings_adding">
+      <title>Adding Custom Settings</title>
+
+      <para>In the case you want to define custom settings for a share, in both, the <link linkend="network_neighborhood_browser_actions_popup_menu">network neighborhood browser</link> and the <link linkend="shares_view_actions_popup_menu">shares view</link>, you can open the editor for the custom settings by clicking the <menuchoice><shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut><guimenuitem>Add Custom Settings</guimenuitem></menuchoice> menu entry.</para>
+    
+      <screenshot>
+        <screeninfo>Screenshot of the custom settings editor for a share</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="custom_settings_editor.png" format="PNG" />
+          </imageobject>
+          <textobject>
+            <phrase>The custom settings editor</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+
       <para>Individual settings can be made in the following sections / tabs:</para>
       
       <variablelist>
@@ -1290,9 +1289,15 @@
         </varlistentry>
       </variablelist>
       
-      
       <para>The <guibutton>Defaults</guibutton> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton>OK</guibutton> button is enabled if you changed the settings in the dialog. Clicking it will save the custom settings and close the dialog.</para>
       <para>Please note that under BSD the dialog contains fewer entries than if you run &Linux;, because several of the options are not supported.</para>
+    </sect2>
+
+    <sect2 id="custom_settings_managing_and_editing">
+      <title>Editing Custom Settings</title>
+
+      <para>You can edit or reset the settings of individual network items by opening the <guilabel>Custom Settings</guilabel> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"><guilabel>Custom Settings</guilabel> configuration page</link>, where you also can edit or remove the desired network entries.</para>
+    </sect2>
   </sect1>
 
 <!-- 
@@ -1438,7 +1443,7 @@
     -->
 
     <sect2 id="trouble_shooting_zeroconf">
-      <title>Zeroconf Daemon Not Running</title>
+      <title>Zeroconf Error</title>
 
       <para>&smb4k; uses the Zeroconf service (<application><ulink url="https://avahi.org">Avahi</ulink></application>) to look up servers and shares in the network neighborhood using DNS Service Discovery (DNS-SD). For this to work, the Avahi daemon must be enabled and running on your system. If this is not the case, &smb4k; shows an error message:</para>
 
@@ -4209,7 +4214,7 @@ ntlm auth = yes
     <screenshot>
       <screeninfo>Screenshot of the "Custom Settings" configuration tab</screeninfo>
       <mediaobject>
-        <imageobject><imagedata fileref="configuration_page_custom_options.png" format="PNG" /></imageobject>
+        <imageobject><imagedata fileref="configuration_page_custom_settings.png" format="PNG" /></imageobject>
         <textobject><phrase>The "Custom Settings" configuration tab</phrase></textobject>
       </mediaobject>
     </screenshot>
@@ -4647,7 +4652,7 @@ ntlm auth = yes
           </menuchoice>
         </term>
         <listitem>
-          <para>Mount all top-level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no toplevel bookmarks.</para>
+          <para>Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no toplevel bookmarks.</para>
         </listitem>
       </varlistentry>
     </variablelist>
