@@ -355,22 +355,10 @@
 >Configuració personalitzada</link
 > editor.</para>
       <note>
-          <para
->Si esteu utilitzant el descobriment de serveis DNS i el dimoni Zeroconf (Avahi) no s'està executant, el &smb4k; mostrarà una notificació d'error:</para>
-          <screenshot>
-              <screeninfo
->Missatge d'error si el dimoni Zeroconf no s'està executant</screeninfo>
-              <mediaobject>
-                  <imageobject
-><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG"/></imageobject>
-                  <textobject
-><phrase
->El missatge d'error si el dimoni Zeroconf no s'està executant</phrase
-></textobject>
-              </mediaobject>
-          </screenshot>
-          <para
->En aquesta cas, inicieu el dimoni Zeroconf i reinicieu el &smb4k;.</para>
+        <para
+>Si esteu utilitzant el descobriment de serveis DNS i el dimoni Zeroconf (Avahi) no s'està executant, el &smb4k; mostrarà una notificació d'error. Vegeu la secció <link linkend="trouble_shooting_zeroconf"
+>Resolució de problemes</link
+> per als detalls.</para>
       </note>
     </sect2>
     
@@ -1887,13 +1875,13 @@
 >Amunt</guibutton
 > que hi ha a la barra d'eines.</para>
     <para
->Per als servidors i les comparticions, a la dreta del nom de la xarxa hi ha alguns botons d'acció. Per als servidors, hi ha un botó amb el qual obrireu el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Per als servidors i les comparticions, a la dreta del nom de l'element de xarxa hi ha alguns botons d'acció. Per als servidors, hi ha un botó amb el qual obrireu el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Configuració personalitzada</link
 >. Per a les comparticions, hi ha botons addicionals per a <link linkend="network_neighborhood_browser_previewing"
 >previsualitzar el contingut de la compartició seleccionada</link
 > i per a <link linkend="bookmarks_adding"
 >afegir-la a les adreces d'interès</link
->, respectivament. De manera predeterminada, els botons d'acció són transparents i canvien a opacs quan moveu el ratolí per sobre seu. En fer clic esquerre, iniciareu l'acció triada.</para>
+>. De manera predeterminada, els botons d'acció són transparents i canvien a opacs quan moveu el ratolí per sobre seu. En fer clic esquerre, iniciareu l'acció triada.</para>
     <para
 >A més del botó <guibutton
 >Amunt</guibutton
@@ -1904,7 +1892,7 @@
 > i <guibutton
 >Munta</guibutton
 >. Amb aquestes, podreu tornar a escanejar, cancel·lar qualsevol acció en execució o obrir el <link linkend="network_neighborhood_browser_mounting"
->diàleg per als muntatges «manuals»</link
+>diàleg de muntatge</link
 >.</para>
   </sect2>
 
@@ -1935,7 +1923,7 @@
     </screenshot>
 
     <para
->A la dreta del nom de la compartició i el seu servidor, s'organitzen tres botons d'acció. El primer és per a <link linkend="bookmarks_adding"
+>A la dreta de cada entrada, es disposen tres botons d'acció. El primer és per a <link linkend="bookmarks_adding"
 >afegir una adreça d'interès</link
 >, el segon és per a la <link linkend="shares_view_synchronization"
 >sincronització</link
@@ -1959,7 +1947,7 @@
     <para
 >A la pàgina <guilabel
 >Adreces d'interès</guilabel
->, es llisten els grups d'adreces d'interès i les adreces d'interès definides per al perfil actualment actiu.</para>
+> es llisten les adreces d'interès.</para>
     
     <screenshot>
       <screeninfo
@@ -1975,13 +1963,11 @@
     </screenshot>
 
     <para
->Les comparticions marcades es poden muntar fent clic esquerre sobre l'adreça d'interès respectiva. Els grups d'adreces d'interès es poden manejar de la mateixa manera.</para>
-    <para
->Per a editar o eliminar les adreces d'interès, premeu el botó d'acció <guibutton
+>Les comparticions marcades com a adreces d'interès es poden muntar fent clic amb el botó esquerre a l'adreça respectiva. Per a editar o eliminar les adreces d'interès, premeu el botó d'acció <guibutton
 >Edita</guibutton
 > que hi ha a la barra d'eines per a obrir l'<link linkend="bookmarks_editor"
 >Editor de les adreces d'interès</link
->. Per a tornar al nivell superior, s'utilitza el botó <guibutton
+>. Per a tornar al nivell superior des d'una carpeta de categories, s'utilitza el botó <guibutton
 >Enrere</guibutton
 >.</para>
   </sect2>
@@ -2015,11 +2001,9 @@
     </screenshot>
   
     <para
->Podeu activar un determinat perfil fent-hi clic.</para>
-    <para
->Els perfils es poden <link linkend="profiles"
+>Podeu activar un perfil concret fent-hi clic. Tots els perfils es poden <link linkend="profiles"
 >gestionar</link
-> mitjançant el <link linkend="configuration_page_profiles"
+> en el <link linkend="configuration_page_profiles"
 >diàleg de configuració</link
 >.</para>
   </sect2>
@@ -2052,12 +2036,12 @@
       </mediaobject>
     </screenshot>
     
-    <note>
+    <caution>
       <para
 >No hauríeu d'obrir dos diàlegs de configuració (mitjançant l'aplicació principal i el <application
 >plasmoide</application
 >) al mateix temps, ja que poden interferir entre si.</para>
-    </note>
+    </caution>
   </sect2>
   
 </sect1>
@@ -2087,7 +2071,7 @@
 ><application
 >plasmoide</application
 ></link
->. Als ginys acoblats de la finestra principal, això es fa seleccionant una o múltiples comparticions i fent clic al botó d'acció <menuchoice
+>. Als ginys acoblats de la finestra principal, això es fa seleccionant una o més comparticions i fent clic al botó d'acció <menuchoice
 ><guimenuitem
 >Afegeix una adreça d'interès</guimenuitem
 ></menuchoice
@@ -2109,9 +2093,9 @@
       </screenshot>
 
       <para
->El fet de definir categories pot ajudar a organitzar les adreces d'interès. Al menú Adreces d'interès, totes les adreces d'interès pertanyents a una categoria estaran ordenades en un submenú amb l'entrada de la categoria com a pare (vegeu <link linkend="bookmarks_menu"
->a continuació</link
->).</para>
+>El fet de definir categories pot ajudar a organitzar les adreces d'interès. Al menú <link linkend="bookmarks_menu"
+>Adreces d'interès</link
+>, totes les adreces d'interès pertanyents a la mateixa categoria estaran ordenades en un submenú respectiu.</para>
       <para
 >L'etiqueta pot ser qualsevol text que descrigui la compartició. En cas de definir una etiqueta, es mostrarà al menú de les adreces d'interès en comptes de la ubicació, la qual és la manera predeterminada. Si voleu canviar aquest comportament, podeu fer-ho al <link linkend="configuration_page_user_interface_main_window"
 >diàleg de configuració</link
@@ -2159,7 +2143,7 @@
             <para
 >Obre l'<link linkend="bookmarks_editor"
 >editor de les adreces d'interès</link
->. Aquesta acció restarà desactivada si no hi ha adreces d'interès.</para>
+>. Aquesta entrada restarà desactivada si no hi ha adreces d'interès.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2177,35 +2161,35 @@
           </term>
           <listitem>
             <para
->Afegeix adreces d'interès a les comparticions seleccionades. S'ha de seleccionar com a mínim una acció per a habilitar aquesta acció.</para>
+>Afegeix adreces d'interès a les comparticions seleccionades. S'ha de seleccionar com a mínim una acció per a habilitar aquesta entrada.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Si no heu definit cap categoria, hi ha un tercer element:</para>
+>Si hi ha adreces d'interès presents que no estan assignades a cap categoria i, per tant, es mostren directament al nivell superior del menú, hi haurà present un tercer element:</para>
 
       <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guimenuitem
->Munta totes les adreces d'interès</guimenuitem
+>Munta les adreces d'interès</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
             <para
->Munta totes les adreces d'interès de nivell superior alhora. Estarà inhabilitada si ja estan muntades totes les comparticions marcades com a adreces d'interès.</para>
+>Munta totes les adreces d'interès de nivell superior alhora. Aquesta entrada estarà inhabilitada si ja estan muntades totes les comparticions marcades com a adreces d'interès.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Totes les altres entrades són submenús de categoria o adreces d'interès que no pertanyen a cap categoria. Totes les entrades es llisten alfabèticament i les adreces d'interès poden aparèixer amb la seva ubicació o etiqueta descriptiva. Quan feu clic a una adreça d'interès, es muntarà la compartició respectiva. Si hi ha una compartició marcada com a adreça d'interès muntada al sistema, l'entrada a adreces d'interès restarà temporalment inhabilitada.</para>
+>The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the entry is disabled.</para>
       <para
 >Els submenús de categoria contenen les adreces d'interès assignades i en cada cas també hi ha present un element de menú <guimenuitem
->Munta totes les adreces d'interès</guimenuitem
->. Aquest últim element es pot utilitzar per a muntar alhora totes les adreces d'interès que hi ha en aquesta categoria.</para>
+>Munta les adreces d'interès</guimenuitem
+>. Es pot utilitzar per a muntar alhora totes les adreces d'interès que hi ha en aquesta categoria.</para>
       <para
 >En el giny de la safata del sistema, hi ha un <link linkend="systemtray_menus"
 >submenú</link
@@ -2215,22 +2199,12 @@
 >Afegeix una adreça d'interès</guilabel
 >.</para>
       <para
->El <application
->Plasmoide</application
-> proporciona una <link linkend="plasmoid_bookmarks"
+>El &plasmoid; proporciona la <link linkend="plasmoid_bookmarks"
 >pestanya</link
 > <guilabel
 >Adreces d'interès</guilabel
-> on totes les adreces d'interès estaran ordenades d'una manera similar a la del menú Adreces d'interès. Les categories d'adreces d'interès i les adreces d'interès es llisten a la vista. Les comparticions marcades com a adreces d'interès es poden muntar fent clic sobre l'entrada corresponent. A la barra d'eines hi ha dues accions: <guimenuitem
->Endarrere</guimenuitem
-> i <guimenuitem
->Edita</guimenuitem
->. En fer clic a <guimenuitem
->Endarrere</guimenuitem
->, podeu tornar al nivell superior si heu entrat en una carpeta de categoria. L'acció <guimenuitem
->Edita</guimenuitem
-> obrirà l'<link linkend="bookmarks_editor"
->editor de les adreces d'interès</link
+> on totes les adreces d'interès s'organitzen de manera similar a la del menú d'adreces d'interès. Per a més detalls, llegiu <link linkend="plasmoid_bookmarks"
+>aquesta secció</link
 >.</para>
     </sect2>
     
@@ -2346,46 +2320,19 @@
   <sect1 id="custom_settings">
     <title
 >Configuració personalitzada</title>
-    
-    <para
+
+    <sect2 id="custom_settings_usage">
+      <title
+>Emprar una configuració personalitzada</title>
+
+      <para
 >A més de la configuració global que es pot definir al <link linkend="configuration"
 >diàleg de configuració</link
->, el &smb4k; ofereix la possibilitat de configurar els paràmetres de configuració individuals per servidor o compartició. Ambdós dins de l'<link linkend="network_neighborhood_browser_actions_popup_menu"
->explorador del veïnatge de xarxa</link
-> i a la <link linkend="shares_view_actions_popup_menu"
->vista de comparticions</link
->, es pot accedir a l'editor per a la configuració personalitzada fent clic a les entrades de menú <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-><guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
-></menuchoice
->.</para>
-    
-    <screenshot>
-      <screeninfo
->Captura de pantalla de l'editor de configuració personalitzada per a una compartició</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="custom_settings_editor.png" format="PNG"/>
-        </imageobject>
-        <textobject>
-          <phrase
->L'editor de configuració personalitzada</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para
->S'hauria d'utilitzar la configuració personalitzada si voleu</para>
+>, el &smb4k; ofereix la possibilitat d'establir opcions de configuració individuals per servidor o compartició. Si voleu, podeu utilitzar aquests paràmetres personalitzats per</para>
       <itemizedlist>
         <listitem
 ><para
->definir les opcions de configuració personalitzades de muntatge o de l'explorador per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
+>definir les opcions de configuració individuals de muntatge o de l'explorador per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
 ></listitem>
         <listitem
 ><para
@@ -2398,7 +2345,45 @@
 >muntar sempre una compartició en particular a l'inici o quan es carregui el perfil corresponent.</para
 ></listitem>
       </itemizedlist>
-      
+    </sect2>
+
+    <sect2 id="custom_settings_adding">
+      <title
+>Afegir una configuració personalitzada</title>
+
+      <para
+>En cas que vulgueu definir una configuració personalitzada per a una compartició, tant a l'<link linkend="network_neighborhood_browser_actions_popup_menu"
+>explorador del veïnatge de xarxa</link
+> com a la <link linkend="shares_view_actions_popup_menu"
+>vista de comparticions</link
+>, podreu obrir l'editor per a la configuració personalitzada fent clic a l'entrada de menú <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
+></menuchoice
+>.</para>
+    
+      <screenshot>
+        <screeninfo
+>Captura de pantalla de l'editor de configuració personalitzada per a una compartició</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="custom_settings_editor.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>L'editor de configuració personalitzada</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+
       <para
 >Es poden fer configuracions individuals en les seccions/pestanyes següents:</para>
       
@@ -2465,7 +2450,6 @@
         </varlistentry>
       </variablelist>
       
-      
       <para
 >El botó <guibutton
 >Predeterminat</guibutton
@@ -2474,6 +2458,21 @@
 > estarà habilitat si heu canviat la configuració al diàleg. En fer-ho, es desarà la configuració personalitzada i es tancarà el diàleg.</para>
       <para
 >Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
+    </sect2>
+
+    <sect2 id="custom_settings_managing_and_editing">
+      <title
+>Editar una configuració personalitzada</title>
+
+      <para
+>Podeu editar o restablir la configuració d'elements de xarxa individuals obrint l'editor <guilabel
+>Configuració personalitzada</guilabel
+>. La <link linkend="configuration_page_custom_settings"
+>pàgina <guilabel
+>Configuració personalitzada</guilabel
+></link
+> proporciona un resum complet de tots els paràmetres personalitzats, on també podeu editar o eliminar les entrades de xarxa desitjades.</para>
+    </sect2>
   </sect1>
 
 <!-- 
@@ -2741,7 +2740,7 @@
 
     <sect2 id="trouble_shooting_zeroconf">
       <title
->El dimoni Zeroconf no s'està executant</title>
+>Error del Zeroconf</title>
 
       <para
 >El &smb4k; utilitza el servei Zeroconf (<application
@@ -8078,7 +8077,7 @@ ntlm auth = yes
 >Captura de pantalla de la pestanya de configuració «Configuració personalitzada»</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
 >La pestanya de configuració «Configuració personalitzada»</phrase
@@ -8779,7 +8778,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Munta totes les adreces d'interès de nivell superior alhora. Estarà inhabilitada si totes les comparticions marcades com a adreces d'interès estan muntades. Aquesta acció no estarà present si no hi ha adreces d'interès de nivell superior.</para>
+>Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no top level bookmarks.</para>
         </listitem>
       </varlistentry>
     </variablelist>

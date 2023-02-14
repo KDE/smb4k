@@ -367,22 +367,10 @@
 >діалогового вікна нетипових параметрів</link
 >.</para>
       <note>
-          <para
->Якщо ви використовуєте виявлення служби DNS і фонову службу Zeroconf (Avahi) не запущено, &smb4k; покаже сповіщення про помилку:</para>
-          <screenshot>
-              <screeninfo
->Повідомлення про помилку, якщо фонову службу Zeroconf не запущено</screeninfo>
-              <mediaobject>
-                  <imageobject
-><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG"/></imageobject>
-                  <textobject
-><phrase
->Повідомлення про помилку, якщо фонову службу Zeroconf не запущено</phrase
-></textobject>
-              </mediaobject>
-          </screenshot>
-          <para
->У цьому випадку, будь ласка, запустіть фонову службу Zeroconf і перезапустіть &smb4k;.</para>
+        <para
+>Якщо ви використовуєте виявлення служби DNS і фонову службу Zeroconf (Avahi) не запущено, &smb4k; покаже сповіщення про помилку. Докладний опис наведено у <link linkend="trouble_shooting_zeroconf"
+>розділі щодо усування помилок</link
+>.</para>
       </note>
     </sect2>
     
@@ -1910,7 +1898,7 @@
 > і <guibutton
 >Діалогове вікно монтування</guibutton
 >. За допомогою цих кнопок ви можете віддати команду щодо повторного сканування, перервати роботу будь-якого запущеного скрипту або відкрити <link linkend="network_neighborhood_browser_mounting"
->діалогове вікно монтування «вручну»</link
+>діалогове вікно монтування</link
 >.</para>
   </sect2>
 
@@ -1941,7 +1929,7 @@
     </screenshot>
 
     <para
->Праворуч від пункту назви спільного ресурсу і його вузла буде показано три кнопки. За допомогою першої кнопки ви з можете <link linkend="bookmarks_adding"
+>Праворуч від пункту буде показано три кнопки. За допомогою першої кнопки ви з можете <link linkend="bookmarks_adding"
 >додати закладку</link
 >. Другу кнопку призначено для <link linkend="shares_view_synchronization"
 >синхронізація</link
@@ -1965,7 +1953,7 @@
     <para
 >На сторінці <guimenuitem
 >Закладки</guimenuitem
-> буде показано список усіх груп закладок та окремих закладок, які визначено для поточного активного профілю:</para>
+> буде показано список усіх закладок.</para>
     
     <screenshot>
       <screeninfo
@@ -1981,13 +1969,11 @@
     </screenshot>
 
     <para
->Спільні ресурси із закладками може бути змонтовано клацанням лівою кнопкою миші на відповідній закладці. У той самий спосіб можна входити до груп закладок.</para>
-    <para
->Щоб змінити або вилучити закладку, Натисніть кнопку <guibutton
+>Спільні ресурси із закладками можна змонтувати клацанням лівою кнопкою миші на відповідній закладці. Щоб змінити або вилучити закладку, Натисніть кнопку <guibutton
 >Редагувати</guibutton
 > на панелі інструментів, щоб відкрити <link linkend="bookmarks_editor"
 >вікно редактора закладок</link
->. Щоб повернутися на вищий рівень ієрархії закладок, натисніть кнопку <guibutton
+>. Щоб повернутися на вищий рівень ієрархії закладок з теки категорії, натисніть кнопку <guibutton
 >Назад</guibutton
 >.</para>
   </sect2>
@@ -2021,9 +2007,7 @@
     </screenshot>
   
     <para
->Задіяти профіль зі списку можна простим натисканням його пункту.</para>
-    <para
->Профілями можна <link linkend="profiles"
+>Задіяти певний профіль можна натисканням його пункту у списку. Усіма профілями можна <link linkend="profiles"
 >керувати</link
 > за допомогою <link linkend="configuration_page_profiles"
 >діалогового вікна налаштовування</link
@@ -2058,10 +2042,10 @@
       </mediaobject>
     </screenshot>
     
-    <note>
+    <caution>
       <para
 >Не варто відкривати діалогове вікно налаштовування у основній програмі і вікно плазмоїда одночасно, оскільки одночасна робота з цими вікнами може призвести до конфліктів між програмами.</para>
-    </note>
+    </caution>
   </sect2>
   
 </sect1>
@@ -2109,9 +2093,9 @@
       </screenshot>
 
       <para
->Призначення категорії є корисним для впорядкування закладок. У меню закладок всі заклади, що належать до однієї категорії, буде зібрано у одному підменю. Пункт категорії буде у такому підменю основним (докладніше див. <link linkend="bookmarks_menu"
->нижче</link
->).</para>
+>Призначення категорії є корисним для впорядкування закладок. У <link linkend="bookmarks_menu"
+>меню закладок</link
+> всі заклади, що належать до однієї категорії, буде зібрано у одному підменю.</para>
       <para
 >Міткою може бути довільний текст з описом спільного ресурсу. Якщо ви визначаєте мітку, її буде типово показано у меню закладок замість адреси. Якщо ви хочете бачити у меню лише адреси, скористайтеся для відповідного налаштовування <link linkend="configuration_page_user_interface_main_window"
 >діалоговим вікно налаштувань</link
@@ -2183,14 +2167,14 @@
       </variablelist>
 
       <para
->Якщо вами не було визначено жодної категорії, ви можете скористатися третім пунктом:</para>
+>Якщо існують закладки, які не пов'язано із категоріями, і отже, їх буде показано на верхньому рівні меню, буде показано третій пункт:</para>
 
       <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guimenuitem
->Змонтувати всі закладки</guimenuitem
+>Змонтувати закладки</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
@@ -2201,10 +2185,10 @@
       </variablelist>
 
       <para
->Всі інші пункти є або пунктами підменю категорії або пунктами закладок, які не належать до жодної категорії. Всі запис впорядковано за абеткою, кожному спільному ресурсу відповідає пункт з його адресою або описовою міткою. Натисканням пункту можна змонтувати відповідний ресурс. Якщо спільний ресурс вже змонтовано, пункт закладки буде тимчасово вимкнено.</para>
+>The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the entry is disabled.</para>
       <para
 >У підменю категорій буде наведено всі закладки, які належать до категорії, а також пункт <guimenuitem
->Змонтувати всі закладки</guimenuitem
+>Змонтувати закладки</guimenuitem
 >. За допомогою цього пункту ви зможете змонтувати спільні ресурси з усієї категорії одразу.</para>
       <para
 >У віджеті системного лотка передбачено подібне <link linkend="systemtray_menus"
@@ -2215,20 +2199,12 @@
 >Додати закладку</guilabel
 >.</para>
       <para
->Для плазмоїда передбачено <link linkend="plasmoid_bookmarks"
+>На панелі плазмоїда буде показано <link linkend="plasmoid_bookmarks"
 >вкладку</link
 > <guilabel
 >Закладки</guilabel
->, де усі закладки упорядковано у спосіб, подібний до меню закладок. На вкладці буде показано список категорій та окремих закладок. Змонтувати спільний ресурс, на який посилається закладка, можна простим натисканням відповідного пункту у списку. На панелі інструментів вкладки передбачено дві кнопки: <guimenuitem
->Назад</guimenuitem
-> і <guimenuitem
->Редагувати</guimenuitem
->. За допомогою натискання кнопки <guimenuitem
->Назад</guimenuitem
-> ви можете повернутися на вищий рівень ієрархії, якщо ви відкрили теку категорії закладок. За допомогою пункту <guimenuitem
->Редагувати</guimenuitem
-> можна відкрити <link linkend="bookmarks_editor"
->вікно редактора закладок</link
+>, де усі закладки упорядковано у спосіб, подібний до меню закладок. Докладніший опис наведено у <link linkend="plasmoid_bookmarks"
+>цьому розділі</link
 >.</para>
     </sect2>
     
@@ -2342,46 +2318,19 @@
   <sect1 id="custom_settings">
     <title
 >Нетипові параметри</title>
-    
-    <para
->Окрім загальних параметрів, які можна визначити за допомогою <link linkend="configuration"
->вікна налаштовування</link
->, у &smb4k; передбачено можливість налаштувати окремі параметри для сервера або спільного ресурсу. Отримати доступ до редактора нетипових параметрів на панелях <link linkend="network_neighborhood_browser_actions_popup_menu"
->навігатора мережевим середовищем</link
-> та <link linkend="shares_view_actions_popup_menu"
->перегляду спільних ресурсів</link
-> можна за допомогою пункту меню<menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-><guimenuitem
->Додати нетипові параметри</guimenuitem
-></menuchoice
->.</para>
-    
-    <screenshot>
-      <screeninfo
->Знімок вікна редактора нетипових параметрів спільного ресурсу</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="custom_settings_editor.png" format="PNG"/>
-        </imageobject>
-        <textobject>
-          <phrase
->Вікно редактора нетипових параметрів</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
 
-    <para
->Вам слід скористатися нетиповими параметрами, якщо вам потрібно</para>
+    <sect2 id="custom_settings_usage">
+      <title
+>Користування нетиповими параметрами</title>
+
+      <para
+>Окрім загальний параметрів, які може бути визначено за допомогою <link linkend="configuration"
+>вікна налаштовування</link
+>, у &smb4k; передбачено можливість налаштовування окремих параметрів для сервера або спільного ресурсу. Скористатися такими нетиповими параметрами можна, якщо ви хочете</para>
       <itemizedlist>
         <listitem
 ><para
->визначити нетипові параметри монтування або навігації, які відрізнятимуться від параметрів, визначених у діалоговому вікні налаштовування програми, для окремого сервера або спільного ресурсу,</para
+>визначити окремі параметри монтування або навігації, які відрізнятимуться від параметрів, визначених у діалоговому вікні налаштовування програми, для окремого сервера або спільного ресурсу,</para
 ></listitem>
         <listitem
 ><para
@@ -2394,7 +2343,45 @@
 >наказати програмі завжди монтувати певний спільний ресурс під час входу до системи або завантаження відповідного профілю.</para
 ></listitem>
       </itemizedlist>
-      
+    </sect2>
+
+    <sect2 id="custom_settings_adding">
+      <title
+>Додавання нетипових параметрів</title>
+
+      <para
+>Якщо вам потрібно визначити нетипові параметри для спільного ресурсу на панелях <link linkend="network_neighborhood_browser_actions_popup_menu"
+>навігатора мережевим середовищем</link
+> та <link linkend="shares_view_actions_popup_menu"
+>перегляду спільних ресурсів</link
+>, ви можете відкрити вікно редактора нетипових параметрів за допомогою пункту меню <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Додати нетипові параметри</guimenuitem
+></menuchoice
+>.</para>
+    
+      <screenshot>
+        <screeninfo
+>Знімок вікна редактора нетипових параметрів спільного ресурсу</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="custom_settings_editor.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>Вікно редактора нетипових параметрів</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+
       <para
 >Окремі параметри можна встановити за допомогою таких розділів або вкладок:</para>
       
@@ -2461,7 +2448,6 @@
         </varlistentry>
       </variablelist>
       
-      
       <para
 >Доступ до кнопки <guibutton
 >Типові</guibutton
@@ -2470,6 +2456,21 @@
 >. Після натискання цієї кнопки зміни буде застосовано, а діалогове вікно закрито.</para>
       <para
 >Будь ласка, зауважте, що у BSD у цьому діалоговому вікні міститиметься менше пунктів, ніж у &Linux;, оскільки підтримки деяких з параметрів не передбачено.</para>
+    </sect2>
+
+    <sect2 id="custom_settings_managing_and_editing">
+      <title
+>Редагування нетипових параметрів</title>
+
+      <para
+>Ви можете редагувати або скинути параметри для окремих записів мережі за допомогою вікна редактора <guilabel
+>Нетипові параметри</guilabel
+>. Повний огляд усіх нетипових параметрів наведено на <link linkend="configuration_page_custom_settings"
+>сторінці налаштувань <guilabel
+>Нетипові параметри</guilabel
+></link
+>. Там ви можете також редагувати або вилучити бажані записи мережі.</para>
+    </sect2>
   </sect1>
 
 <!-- 
@@ -2737,7 +2738,7 @@
 
     <sect2 id="trouble_shooting_zeroconf">
       <title
->Фонову службу Zeroconf не запущено</title>
+>Помилка Zeroconf</title>
 
       <para
 >&smb4k; використовує службу Zeroconf (<application
@@ -8074,7 +8075,7 @@ ntlm auth = yes
 >Знімок вкладки налаштування «Нетипові параметри»</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
 >Сторінка налаштування «Нетипові параметри»</phrase
@@ -8773,7 +8774,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Змонтувати всі закладки верхнього рівня одразу. Пункт буде вимкнено, якщо всі спільні ресурси верхнього рівня вже змонтовано. Цим пунктом не можна буде скористатися, якщо немає закладок верхнього рівня.</para>
+>Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no top level bookmarks.</para>
         </listitem>
       </varlistentry>
     </variablelist>
