@@ -351,22 +351,10 @@
 >Aangepaste instellingen</link
 >.</para>
       <note>
-          <para
->Als u DNS Service Discovery gebruikt en de Zeroconf-daemon (Avahi) is niet actief, dan toont &smb4k; een foutmelding:</para>
-          <screenshot>
-              <screeninfo
->Foutmelding als de Zeroconf-daemon niet actief is</screeninfo>
-              <mediaobject>
-                  <imageobject
-><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG"/></imageobject>
-                  <textobject
-><phrase
->De foutmelding als de Zeroconf-daemon niet actief is</phrase
-></textobject>
-              </mediaobject>
-          </screenshot>
-          <para
->In dat geval, start de Zeroconf-daemon en start &smb4k; opnieuw.</para>
+        <para
+>Als u DNS Service Discovery gebruikt en de Zeroconf-daemon (Avahi) is niet actief, dan toont &smb4k; een foutmelding. Voor details zie de sectie <link linkend="trouble_shooting_zeroconf"
+>Probleemoplossing</link
+>.</para>
       </note>
     </sect2>
     
@@ -1877,9 +1865,9 @@
 >Omhoog</guibutton
 > klikken.</para>
     <para
->Bij hosts en shares zijn er rechts van de naam van het netwerk nog enkele actieknoppen. Voor hosts, is er een knop waarmee u het dialoog <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Bij hosts en shares zijn er rechts van de naam van de netwerkitems nog enkele actieknoppen. Voor hosts, is er een knop waarmee u het dialoog <link linkend="network_neighborhood_browser_defining_custom_settings"
 >Aangepaste instellingen</link
-> kunt openen. Voor shares zijn er extra knoppen voor respectievelijk <link linkend="network_neighborhood_browser_previewing"
+> kunt openen. Voor shares zijn er extra knoppen voor <link linkend="network_neighborhood_browser_previewing"
 >de inhoud van de geselecteerde share bekijken</link
 > en voor <link linkend="bookmarks_adding"
 >de share toevoegen aan de bladwijzers</link
@@ -1894,7 +1882,7 @@
 > en <guibutton
 >Aankoppeldialoog</guibutton
 >. Hiermee kunt u herladen, een lopende actie afbreken of het <link linkend="network_neighborhood_browser_mounting"
->dialoog voor "handmatig" aankoppelen</link
+>dialoog voor aankoppelen</link
 > openen.</para>
   </sect2>
 
@@ -1925,7 +1913,7 @@
     </screenshot>
 
     <para
->Rechts van de naam van de share en zijn host ziet u drie actieknoppen. De eerste is om <link linkend="bookmarks_adding"
+>Rechts van elk item zijn drie actieknoppen. De eerste is om <link linkend="bookmarks_adding"
 >een bladwijzer aan te maken</link
 >, de tweede is voor <link linkend="shares_view_synchronization"
 >synchronisatie</link
@@ -1947,7 +1935,7 @@
     <para
 >Op de pagina <guilabel
 >Bladwijzers</guilabel
-> worden de groepen bladwijzers en de bladwijzers gedefinieerd voor het huidige actieve profiel weergegeven in een lijst:</para>
+> staan de bladwijzers.</para>
     
     <screenshot>
       <screeninfo
@@ -1963,13 +1951,11 @@
     </screenshot>
 
     <para
->Shares die een bladwijzer hebben kunt u aankoppelen door met de &LMB; op hun bladwijzer te klikken. Groepen bladwijzers kunt u op dezelfde manier openen.</para>
-    <para
->Voor het bewerken of verwijderen van bladwijzers, drukt u eerst op de knop <guibutton
+>Shares in bladwijzers kunnen aangekoppeld worden door rechts te klikken op de bijbehorende bladwijzer. Voor het bewerken of verwijderen van bladwijzers, drukt u eerst op de knop <guibutton
 >Bewerken</guibutton
 > in de werkbalk om de <link linkend="bookmarks_editor"
 >Bladwijzers bewerker</link
-> te openen. Om terug te gaan naar een hoger niveau, gebruikt u de knop <guibutton
+> te openen. Om terug te gaan vanuit een categoriemap naar een hoger niveau, gebruikt u de knop <guibutton
 >Vorige</guibutton
 >.</para>
   </sect2>
@@ -2003,12 +1989,10 @@
     </screenshot>
   
     <para
->Door erop te klikken maakt u een profiel actief.</para>
-    <para
->Profielen kunnen <link linkend="profiles"
+>U kunt een bepaald profiel activeren door er op te klikken. Alle profielen kunnen <link linkend="profiles"
 >beheerd</link
 > worden via de <link linkend="configuration_page_profiles"
->configuratiedialoog</link
+>instellingendialoog</link
 >.</para>
   </sect2>
   
@@ -2040,10 +2024,10 @@
       </mediaobject>
     </screenshot>
     
-    <note>
+    <caution>
       <para
 >U zou geen twee configuratiedialogen op hetzelfde moment (via de hoofdtoepassing en via de &plasmoid;) moeten openen, omdat ze op elkaar kunnen inwerken.</para>
-    </note>
+    </caution>
   </sect2>
   
 </sect1>
@@ -2071,7 +2055,7 @@
 >gedeelde mappen weergave</link
 > en de <link linkend="plasmoid"
 >&plasmoid;</link
-> bladwijzers voor uw favoriete shares aanmaken. In de widgets Vastzetten van het hoofdvenster doet u dit door een of meerdere shares te selecteren en daarna op de actie <menuchoice
+> bladwijzers voor uw favoriete shares aanmaken. In de widgets Vastzetten van het hoofdvenster doet u dit door een of meer shares te selecteren en daarna op de actie <menuchoice
 ><guimenuitem
 >Bladwijzer toevoegen</guimenuitem
 ></menuchoice
@@ -2091,9 +2075,9 @@
       </screenshot>
 
       <para
->Definiëren van een categorie kan u helpen bij het georganiseerd houden van bladwijzers. In het menu-item voor bladwijzers, vindt u alle bladwijzers die bij een groep horen in een submenu terug met de groepsnaam als hoofditem (zie <link linkend="bookmarks_menu"
->hieronder</link
->).</para>
+>Definiëren van een categorie kan u helpen bij het georganiseerd houden van bladwijzers. In het <link linkend="bookmarks_menu"
+>menu voor bladwijzers</link
+>, vindt u alle bladwijzers, die bij dezelfde categorie horen, in een bijbehorend submenu.</para>
       <para
 >De label kan elke tekst zijn die de share beschrijft. Als u een label opgeeft, dan zal in het bladwijzer-menu, in plaats van de locatie, deze tekst standaard zichtbaar zijn . Als u dit gedrag wilt wijzigen dan kunt u dat doen in het <link linkend="configuration_page_user_interface_main_window"
 >configuratievenster</link
@@ -2141,7 +2125,7 @@
             <para
 >Opent de <link linkend="bookmarks_editor"
 >bladwijzerbewerker</link
->. Deze knop is uitgeschakeld als er geen bladwijzers zijn.</para>
+>. Dit item is uitgeschakeld als er geen bladwijzers zijn.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2159,35 +2143,35 @@
           </term>
           <listitem>
             <para
->Voegt bladwijzers toe aan de geselecteerd shares. Minstens één share moet er geselecteerd zijn om deze actie in te schakelen.</para>
+>Voegt bladwijzers toe aan de geselecteerd shares. Minstens één share moet er geselecteerd zijn om dit item in te schakelen.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Als u nog geen categorieën hebt aangemaakt, is er nog een derde item beschikbaar:</para>
+>Als er bladwijzers aanwezig zijn die niet toegekend zijn aan een categorie, en dus direct op het hoogste niveau van het menu worden getoond, dan is er een derde item aanwezig:</para>
 
       <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guimenuitem
->Alle bladwijzers aankoppelen</guimenuitem
+>Bladwijzers aankoppelen</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
             <para
->Koppelt alle top-level bladwijzers tegelijk aan. Deze keuze is uitgeschakeld als alle shares met een bladwijzer al zijn aangekoppeld.</para>
+>Koppelt alle top-level bladwijzers tegelijk aan. Dit item is uitgeschakeld als alle shares met een bladwijzer al zijn aangekoppeld.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Alle overige items zijn of submenu's van categorieën of bladwijzers die niet bij een categorie horen. Alle items staan op alfabetische volgorde waarbij de bladwijzers zowel met zijn locatie-adres als met een beschrijvende label zichtbaar kan zijn. Door op een bladwijzer te klikken, koppelt u de betreffende share aan. Als een share met een bladwijzer al op het systeem is aangekoppeld, dan is het bladwijzer-item tijdelijk uitgeschakeld.</para>
+>The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the entry is disabled.</para>
       <para
 >De categorie submenu's bevat de toegekende bladwijzers en in elk geval een menu-item <guimenuitem
->Alle bladwijzers aankoppelen</guimenuitem
-> ook aanwezig. Dit laatste item kunt u gebruiken om alle bladwijzers in die categorie tegelijk aan te koppelen.</para>
+>Bladwijzers aankoppelen</guimenuitem
+> ook aanwezig. Het kan gebruikt worden om alle bladwijzers in die categorie tegelijk aan te koppelen.</para>
       <para
 >In het systeemvakwidget is er een soortgelijk <link linkend="systemtray_menus"
 >submenu</link
@@ -2197,20 +2181,12 @@
 >Bladwijzer toevoegen</guilabel
 >.</para>
       <para
->Het &plasmoid; biedt een <guilabel
->Bladwijzer</guilabel
+>De &plasmoid; levert een <guilabel
+>Bladwijzers</guilabel
 > <link linkend="plasmoid_bookmarks"
 >tabblad</link
-> waar alle bladwijzers op dezelfde manier zijn georganiseerd als in het bladwijzer-menu. In het venster vindt u alle bladwijzercategorieën en bladwijzers. U koppelt de shares met een bladwijzer aan door op het betreffende item te klikken. In de werkbalk zijn twee knoppen aanwezig: <guimenuitem
->Terug</guimenuitem
-> en <guimenuitem
->Bewerken</guimenuitem
->. Door te klikken op <guimenuitem
->Terug</guimenuitem
-> gaat u terug naar het hoogste niveau als u een categoriemap hebt geopend. De knop <guimenuitem
->Bewerken</guimenuitem
-> opent de <link linkend="bookmarks_editor"
->bladwijzerbewerker</link
+> waar alle bladwijzers op een vergelijkbare manier als in het bladwijzermenu zijn gearrangeerd. Voor verdere details lees <link linkend="plasmoid_bookmarks"
+>Deze sectie</link
 >.</para>
     </sect2>
     
@@ -2324,46 +2300,19 @@
   <sect1 id="custom_settings">
     <title
 >Aangepaste instellingen</title>
-    
-    <para
+
+    <sect2 id="custom_settings_usage">
+      <title
+>Aangepaste instellingen gebruiken</title>
+
+      <para
 >Naast de globale instellingen die gedefinieerd kunnen worden in de <link linkend="configuration"
 >configuratiedialoog</link
->, biedt &smb4k; de mogelijkheid om individuele instellingen per server of share te configureren. Beiden in de <link linkend="network_neighborhood_browser_actions_popup_menu"
->netwerkomgevingsbrowser</link
-> en in de <link linkend="shares_view_actions_popup_menu"
->sharesweergave</link
->, de bewerker voor de aangepaste instellingen kan gebruikt worden door te klikken op de menu-items<menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-><guimenuitem
->Aangepaste instellingen toevoegen</guimenuitem
-></menuchoice
->.</para>
-    
-    <screenshot>
-      <screeninfo
->Schermafdruk van de bewerker voor aangepaste instellingen voor een share</screeninfo>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="custom_settings_editor.png" format="PNG"/>
-        </imageobject>
-        <textobject>
-          <phrase
->De bewerker voor aangepaste instellingen</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para
->U zou aangepaste instellingen moeten gebruiken als u</para>
+>, biedt &smb4k; de mogelijkheid om individuele instellingen per server of share te configureren. U kunt gebruik maken van deze aangepaste instellingen als u</para>
       <itemizedlist>
         <listitem
 ><para
->aangepast aankoppelen of bladerinstellingen wilt definiëren voor een enkele server of share die afwijkt van waarden die u hebt gedefinieerd in het configuratievenster,</para
+>individuele aankoppelen of bladerinstellingen wilt definiëren voor een enkele server of share die afwijkt van waarden die u hebt gedefinieerd in het configuratievenster,</para
 ></listitem>
         <listitem
 ><para
@@ -2376,7 +2325,45 @@
 >altijd bij het opstarten een specifieke share wilt aankoppelen of wanneer het bijbehorend profiel wordt geladen.</para
 ></listitem>
       </itemizedlist>
-      
+    </sect2>
+
+    <sect2 id="custom_settings_adding">
+      <title
+>Aangepaste instellingen toevoegen</title>
+
+      <para
+>In het geval dat u aangepaste instellingen voor een share wilt definiëren, in zowel, de <link linkend="network_neighborhood_browser_actions_popup_menu"
+>netwerkomgevingsbrowser</link
+> als de <link linkend="shares_view_actions_popup_menu"
+>shares weergave</link
+>, dan kunt u de bewerker voor de aangepaste instellingen openen door te klikken op menu-item <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Aangepaste instellingen</guimenuitem
+></menuchoice
+>.</para>
+    
+      <screenshot>
+        <screeninfo
+>Schermafdruk van de bewerker voor aangepaste instellingen voor een share</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="custom_settings_editor.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>De bewerker voor aangepaste instellingen</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+
       <para
 >Individuele instellingen kunnen gemaakt worden in de volgende secties / tabbladen:</para>
       
@@ -2443,7 +2430,6 @@
         </varlistentry>
       </variablelist>
       
-      
       <para
 >De knop <guibutton
 >Standaarden</guibutton
@@ -2452,6 +2438,21 @@
 > is pas selecteerbaar nadat u de waarden in het dialoogvenster heeft gewijzigd. Door erop te klikken slaat u de aangepaste instellingen op en sluit u het dialoogvenster.</para>
       <para
 >Merk op dat bij gebruik van BSD er in het dialoogvenster minder ingangen zijn dan als u &Linux; gebruikt, omdat verschillende opties niet worden ondersteund.</para>
+    </sect2>
+
+    <sect2 id="custom_settings_managing_and_editing">
+      <title
+>Aangepaste instellingen bewerken</title>
+
+      <para
+>U kunt de instellingen van individuele netwerkitems bewerken door de bewerker <guilabel
+>AAngepaste instellingen</guilabel
+> te openen. Een compleet overzicht van alle aangepaste instellingen levert de <link linkend="configuration_page_custom_settings"
+><guilabel
+>Aangepaste instellingen</guilabel
+> configuratiepagina</link
+>, waar u ook de gewenste netwerkitems kunt bewerken of verwijderen.</para>
+    </sect2>
   </sect1>
 
 <!-- 
@@ -2719,7 +2720,7 @@
 
     <sect2 id="trouble_shooting_zeroconf">
       <title
->Zeroconf-daemon niet actief</title>
+>Zeroconf-fout</title>
 
       <para
 >&smb4k; gebruikt de Zeroconf-service (<application
@@ -8064,7 +8065,7 @@ ntlm auth = yes
 >Schermafdruk van het instellingentabblad voor "Aangepaste instellingen"</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
 >Het instellingentabblad voor "Aangepaste instellingen"</phrase
@@ -8765,7 +8766,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Koppelt alle toplevel bladwijzers tegelijk aan. Deze knop is uitgeschakeld als alle shares met een bladwijzer al zijn aangekoppeld. Deze actie is niet aanwezig als er geen toplevel bladwijzers zijn.</para>
+>Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no top level bookmarks.</para>
         </listitem>
       </varlistentry>
     </variablelist>

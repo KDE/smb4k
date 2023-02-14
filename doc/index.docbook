@@ -1142,7 +1142,7 @@
         </varlistentry>
       </variablelist>
 
-      <para>The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the the entry is disabled.</para>
+      <para>The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the entry is disabled.</para>
       <para>The category submenus contain the assigned bookmarks, and in each case a <guimenuitem>Mount Bookmarks</guimenuitem> menu item is also present. It can be used to mount all bookmarks in that category at once.</para>
       <para>In the system tray widget, there is a similar <guilabel>Bookmarks</guilabel> <link linkend="systemtray_menus">submenu</link> which, however, does not come with the <guilabel>Add Bookmark</guilabel> entry.</para>
       <para>The &plasmoid; provides a <guilabel>Bookmarks</guilabel> <link linkend="plasmoid_bookmarks">tab</link> where all bookmarks are arranged in a similar manner as in the bookmark menu. For further details read <link linkend="plasmoid_bookmarks">this section</link>.</para>
@@ -4652,7 +4652,7 @@ ntlm auth = yes
           </menuchoice>
         </term>
         <listitem>
-          <para>Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no toplevel bookmarks.</para>
+          <para>Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no top level bookmarks.</para>
         </listitem>
       </varlistentry>
     </variablelist>
