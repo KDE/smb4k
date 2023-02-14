@@ -1252,7 +1252,7 @@
             <guilabel>Common Mount Settings</guilabel> (&Linux; only)
           </term>
           <listitem>
-            <para>You can define common settings related to mounting here. Check the <guibutton>Always remount this share</guibutton> button for a selected share if it should be remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting_common_mount_settings">this section</link>.</para>
+            <para>You can define common settings related to mounting here. Check the <guibutton>Always remount this share</guibutton> button if you want to remount the selected share every time you start &smb4k;. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings">this section</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1260,7 +1260,7 @@
             <guilabel>Advanced Mount Settings</guilabel> (&Linux; only)
           </term>
           <listitem>
-            <para>You can define advanced settings related to mounting here. For information about the settings see <link linkend="configuration_page_mounting_advanced_mount_settings">this section</link>.</para>
+            <para>You can define advanced settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_advanced_mount_settings">this section</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1268,7 +1268,7 @@
             <guilabel>Mount Settings</guilabel> (BSD only)
           </term>
           <listitem>
-            <para>You can define settings related to mounting here. For information about the settings see <link linkend="configuration_page_mounting_mount_settings">this section</link>.</para>
+            <para>You can define settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_mount_settings">this section</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1276,7 +1276,7 @@
             <guilabel>Browse Settings</guilabel>
           </term>
           <listitem>
-            <para>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings, please see <link linkend="configuration_page_network">the network configuration page</link>.</para>
+            <para>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings have a look at <link linkend="configuration_page_network">this section</link>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1284,7 +1284,7 @@
             <guilabel>Wake-On-LAN Settings</guilabel>
           </term>
           <listitem>
-            <para>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN packet to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
+            <para>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if the server should be woken up by sending a magic Wake-On-LAN packet before the network neighborhood is scanned and/or one of its shares is mounted.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1296,7 +1296,7 @@
     <sect2 id="custom_settings_managing_and_editing">
       <title>Editing Custom Settings</title>
 
-      <para>You can edit or reset the settings of individual network items by opening the <guilabel>Custom Settings</guilabel> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"><guilabel>Custom Settings</guilabel> configuration page</link>, where you also can edit or remove the desired network entries.</para>
+      <para>You can edit or reset the settings of individual network items by opening the <guilabel>Custom Settings</guilabel> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"><guilabel>Custom Settings</guilabel> configuration page</link>, where you also can edit or remove the desired settings.</para>
     </sect2>
   </sect1>
 
