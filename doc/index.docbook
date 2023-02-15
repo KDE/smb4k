@@ -35,7 +35,7 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2022-01-05</date>
+  <date>2022-02-15</date>
   <releaseinfo>&smb4k; 3.2.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and &Samba; share mounting utility.</para>
@@ -1307,8 +1307,8 @@
   <sect1 id="profiles">
     <title>Profiles</title>
     
-    <para>&smb4k; offers the option to use different profiles. They are intended to facilitate better handling of different network neighborhoods, &eg;, if you are using your laptop at home and also at work.</para>
-    <para>By default, the use of different profiles is disabled and a default profile is used: one profile for everything. Most users won't have to change this, because the default behavior satisfies their needs completely. However, for some users this feature might be very useful.</para>
+    <para>&smb4k; offers the option to use different profiles. They are intended to facilitate handling of different network neighborhoods, &eg;, if you are using your laptop at home and also at work.</para>
+    <para>By default, the use of profiles is disabled. Most users won't have to change this, because the default behavior satisfies their needs completely. However, for some users this feature might be useful.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -1329,13 +1329,8 @@
           </textobject>
         </mediaobject>
       </screenshot>
-      <para>If you want to rename a profile, just click it and edit the name edit line. Clicking <guibutton>Add</guibutton> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. You may also change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
-      <para>In case you enabled the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides for the migration of all relevant settings.</para>
-      <itemizedlist>
-        <listitem><para>of a profile that is to be removed to another one</para></listitem>
-        <listitem><para>of the default profile to a specific other profile</para></listitem>
-        <listitem><para>of all profiles back to the default profile</para></listitem>
-      </itemizedlist>
+      <para>If you want to rename a profile, just click it and edit the name in the input line. Clicking <guibutton>Add</guibutton> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton>Remove</guibutton>. You may also change the order of the profiles with the <guibutton>Move Up</guibutton> and <guibutton>Move Down</guibutton> buttons.</para>
+      <para>In case you enabled the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It takes care of the migration of all relevant settings.</para>
       <para>The following screenshot illustrates the profile migration assistant after you have enabled the use of profiles:</para>
       <screenshot>
         <screeninfo>Screenshot of the profile migration assistant</screeninfo>
@@ -1348,7 +1343,7 @@
           </textobject>
         </mediaobject>
       </screenshot>
-      <para>The old profile (<guilabel>&lt;Default Profile&gt;</guilabel> in this case) is listed under <guilabel>Old Profile</guilabel>. Under <guilabel>New Profile</guilabel> you can use a drop-down menu to choose the profile to which the settings should be migrated. The first profile in the list is preselected. Clicking the <guibutton>OK</guibutton> button migrates the settings; clicking <guibutton>Cancel</guibutton> cancels the action.</para>
+      <para>The old profile (<guilabel>&lt;Default Profile&gt;</guilabel> in this case) is listed under <guilabel>Old Profile</guilabel>. Under <guilabel>New Profile</guilabel> you can choose the profile from the drop-down menu to which the settings should be migrated. The first profile in the list is preselected. Clicking the <guibutton>OK</guibutton> button migrates the settings. Clicking <guibutton>Cancel</guibutton> cancels the action.</para>
       <note><para>In order to use the migration assistant when you first enable the use of profiles, you must enable its use at the same time you enable the use of profiles.</para></note>
     </sect2>
   
@@ -1362,10 +1357,10 @@
       <para>When a profile is activated, several things happen:</para>
       <itemizedlist>
         <listitem><para>All currently mounted shares are unmounted and scheduled for remount.</para></listitem>
-        <listitem><para>All shares that were previously mounted are remounted under the newly activated profile.</para></listitem>
+        <listitem><para>All shares that were previously mounted under the newly activated profile are remounted.</para></listitem>
         <listitem><para>The bookmarks and custom settings from the new profile are loaded.</para></listitem>
       </itemizedlist>
-      <para>So don't be surprised when things change after you select a different profile ...</para>
+      <para>So, don't be surprised when things change after you select a different profile ...</para>
     </sect2>
   </sect1>
 
@@ -4778,7 +4773,7 @@ ntlm auth = yes
 <chapter id="credits" >
   <title>Credits and License</title>
 
-  <para>Copyright &copy; 2003 - 2021, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
+  <para>Copyright &copy; 2003 - 2023, Alexander Reinholdt <email>alexander.reinholdt@kdemail.net</email></para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
   &underFDL;
