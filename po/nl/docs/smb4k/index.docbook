@@ -2167,7 +2167,7 @@
       </variablelist>
 
       <para
->The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the entry is disabled.</para>
+>Alle volgende items zijn of submenu's van categorieën en bladwijzers die niet bij een categorie horen. De items staan op alfabetische volgorde waarbij de bladwijzers ofwel zichtbaar zijn met hun locatie of met een beschrijvend label. Als u op een bladwijzer klikt, zal de bijbehorende share aangekoppeld worden. Als een share met een bladwijzer al is aangekoppeld, dan is het item uitgeschakeld.</para>
       <para
 >De categorie submenu's bevat de toegekende bladwijzers en in elk geval een menu-item <guimenuitem
 >Bladwijzers aankoppelen</guimenuitem
@@ -2375,10 +2375,10 @@
 > (alleen &Linux;) </term>
           <listitem>
             <para
->U kunt hier algemene instellingen definiëren gerelateerd aan aankoppelen. Activeer de knop <guibutton
->Deze share altijd opnieuw aankoppelen</guibutton
-> voor een geselecteerde share als deze opnieuw aangekoppeld moet worden bij elke start van het programma. Voor informatie over alle andere instellingen zie <link linkend="configuration_page_mounting_common_mount_settings"
->deze sectie</link
+>You can define common settings related to mounting here. Check the <guibutton
+>Always remount this share</guibutton
+> button if you want to remount the selected share every time you start &smb4k;. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2389,8 +2389,8 @@
 > (alleen &Linux;) </term>
           <listitem>
             <para
->U kunt hier geavanceerde instellingen definiëren gerelateerd aan aankoppelen. Voor informatie over de instellingen zie <link linkend="configuration_page_mounting_advanced_mount_settings"
->deze sectie</link
+>You can define advanced settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_advanced_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2401,8 +2401,8 @@
 > (alleen BSD) </term>
           <listitem>
             <para
->U kunt hier instellingen definiëren gerelateerd aan aankoppelen. Voor informatie over de instellingen zie <link linkend="configuration_page_mounting_mount_settings"
->deze sectie</link
+>You can define settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2413,8 +2413,8 @@
           </term>
           <listitem>
             <para
->U kunt het minimale en maximale SMB-protocolversie, evenals de te gebruiken SMB-poort. Bovendien kunt u beslissen of Kerberos gebruikt zou moeten worden voor authenticatie. Voor gedetailleerde informatie over deze instellingen, kijk op <link linkend="configuration_page_network"
->de netwerkconfiguratiepagina</link
+>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings have a look at <link linkend="configuration_page_network"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2425,7 +2425,7 @@
           </term>
           <listitem>
             <para
->Om het Wake-On-LAN onderdeel te laten werken, moet u het MAC adres van de gekozen server opgeven. Op dit moment heeft &smb4k; geen methode om het MAC adres vast te stellen, u moet het daarom zelf vast stellen. Daarna kunt u instellen of &smb4k; voordat het de netwerkomgeving gaat scannen of een share gaat aankoppelen naar de gekozen host een a magisch Wake-On-LAN pakket moet versturen.</para>
+>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if the server should be woken up by sending a magic Wake-On-LAN packet before the network neighborhood is scanned and/or one of its shares is mounted.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2445,13 +2445,13 @@
 >Aangepaste instellingen bewerken</title>
 
       <para
->U kunt de instellingen van individuele netwerkitems bewerken door de bewerker <guilabel
->AAngepaste instellingen</guilabel
-> te openen. Een compleet overzicht van alle aangepaste instellingen levert de <link linkend="configuration_page_custom_settings"
+>You can edit or reset the settings of individual network items by opening the <guilabel
+>Custom Settings</guilabel
+> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
 ><guilabel
->Aangepaste instellingen</guilabel
-> configuratiepagina</link
->, waar u ook de gewenste netwerkitems kunt bewerken of verwijderen.</para>
+>Custom Settings</guilabel
+> configuration page</link
+>, where you also can edit or remove the desired settings.</para>
     </sect2>
   </sect1>
 
@@ -8766,7 +8766,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no top level bookmarks.</para>
+>Koppelt alle topniveau bladwijzers tegelijk aan. Deze knop is uitgeschakeld als alle shares met een bladwijzer al zijn aangekoppeld. Deze actie is niet aanwezig als er geen topniveau bladwijzers zijn.</para>
         </listitem>
       </varlistentry>
     </variablelist>

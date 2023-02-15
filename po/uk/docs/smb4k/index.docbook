@@ -2185,7 +2185,7 @@
       </variablelist>
 
       <para
->The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the entry is disabled.</para>
+>Всі інші пункти є або пунктами підменю категорії або пунктами закладок, які не належать до жодної категорії. Всі запис впорядковано за абеткою, кожному спільному ресурсу відповідає пункт з його адресою або описовою міткою. Натисканням пункту можна змонтувати відповідний ресурс. Якщо спільний ресурс вже змонтовано, пункт закладки буде вимкнено.</para>
       <para
 >У підменю категорій буде наведено всі закладки, які належать до категорії, а також пункт <guimenuitem
 >Змонтувати закладки</guimenuitem
@@ -2393,10 +2393,10 @@
 > (лише &Linux;) </term>
           <listitem>
             <para
->Тут ви можете визначити загальні параметри, які пов'язано із монтуванням. Якщо натиснути кнопку <guibutton
->Завжди повторно монтувати цей спільний ресурс</guibutton
-> ресурс повторно монтуватиметься під час кожного запуску програми. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_common_mount_settings"
->тут</link
+>You can define common settings related to mounting here. Check the <guibutton
+>Always remount this share</guibutton
+> button if you want to remount the selected share every time you start &smb4k;. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2407,8 +2407,8 @@
 > (лише &Linux;) </term>
           <listitem>
             <para
->Тут ви можете визначити додаткові параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_advanced_mount_settings"
->тут</link
+>You can define advanced settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_advanced_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2419,8 +2419,8 @@
 > (лише BSD) </term>
           <listitem>
             <para
->Тут ви можете визначити параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_mount_settings"
->тут</link
+>You can define settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2431,8 +2431,8 @@
           </term>
           <listitem>
             <para
->Ви можете визначити мінімальну і максимальну версії протоколу SMB, а також порт SMB, яким слід користуватися. Крім того, ви можете вказати, чи слід використовувати Kerberos для розпізнавання. Докладний опис цих параметрів можна знайти на <link linkend="configuration_page_network"
->сторінці налаштовування мережі</link
+>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings have a look at <link linkend="configuration_page_network"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2443,7 +2443,7 @@
           </term>
           <listitem>
             <para
->Щоб мати змогу скористатися можливістю пробудження спільних ресурсів у локальній мережі, вам слід вказати MAC-адресу потрібного вам сервера. У поточній версії у &smb4k; не передбачено можливості визначення такої MAC-адреси засобами програми, отже, вам доведеться визначити її самостійно. Щойно буде вказано адресу, ви можете визначити, чи слід &smb4k; надсилати контрольний пакет Wake-On-LAN до вказаного вузла перед пошуком ресурсів у мережевому оточенні та/або монтуванням одного зі спільних ресурсів сервера.</para>
+>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if the server should be woken up by sending a magic Wake-On-LAN packet before the network neighborhood is scanned and/or one of its shares is mounted.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2463,13 +2463,13 @@
 >Редагування нетипових параметрів</title>
 
       <para
->Ви можете редагувати або скинути параметри для окремих записів мережі за допомогою вікна редактора <guilabel
->Нетипові параметри</guilabel
->. Повний огляд усіх нетипових параметрів наведено на <link linkend="configuration_page_custom_settings"
->сторінці налаштувань <guilabel
->Нетипові параметри</guilabel
-></link
->. Там ви можете також редагувати або вилучити бажані записи мережі.</para>
+>You can edit or reset the settings of individual network items by opening the <guilabel
+>Custom Settings</guilabel
+> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
+><guilabel
+>Custom Settings</guilabel
+> configuration page</link
+>, where you also can edit or remove the desired settings.</para>
     </sect2>
   </sect1>
 
@@ -8774,7 +8774,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no top level bookmarks.</para>
+>Змонтувати всі закладки верхнього рівня одразу. Пункт буде вимкнено, якщо всі спільні ресурси верхнього рівня вже змонтовано. Цим пунктом не можна буде скористатися, якщо немає закладок верхнього рівня.</para>
         </listitem>
       </varlistentry>
     </variablelist>

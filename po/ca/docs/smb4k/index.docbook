@@ -2185,7 +2185,7 @@
       </variablelist>
 
       <para
->The following entries are category submenus and bookmarks that do not belong to any category. The entries are listed alphabetically and the bookmarks may appear either with their location or a descriptive label. If you click a bookmark, the respective share will be mounted. In case a bookmarked share is already mounted, the entry is disabled.</para>
+>Les entrades següents són submenús de categoria o adreces d'interès que no pertanyen a cap categoria. Les entrades es llisten alfabèticament i les adreces d'interès poden aparèixer amb la seva ubicació o una etiqueta descriptiva. Si feu clic a una adreça d'interès, es muntarà la compartició respectiva. En cas que hi hagi una compartició marcada com a adreça d'interès muntada al sistema, l'entrada restarà inhabilitada.</para>
       <para
 >Els submenús de categoria contenen les adreces d'interès assignades i en cada cas també hi ha present un element de menú <guimenuitem
 >Munta les adreces d'interès</guimenuitem
@@ -2395,10 +2395,10 @@
 > (només al &Linux;) </term>
           <listitem>
             <para
->Aquí podeu definir la configuració normal relacionada amb el muntatge. Activeu el botó <guibutton
->Torna a muntar sempre aquesta compartició</guibutton
-> per a una compartició seleccionada si s'hauria de tornar a muntar en cada inici del programa. Per a obtenir informació sobre tots els altres paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
->aquesta secció</link
+>You can define common settings related to mounting here. Check the <guibutton
+>Always remount this share</guibutton
+> button if you want to remount the selected share every time you start &smb4k;. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2409,8 +2409,8 @@
 > (només al &Linux;) </term>
           <listitem>
             <para
->Aquí podreu definir la configuració avançada relacionada amb el muntatge. Per a informació sobre els paràmetres, vegeu <link linkend="configuration_page_mounting_advanced_mount_settings"
->aquesta secció</link
+>You can define advanced settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_advanced_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2421,8 +2421,8 @@
 > (només al BSD) </term>
           <listitem>
             <para
->Aquí podreu definir la configuració relacionada amb el muntatge. Per a informació sobre els paràmetres, vegeu <link linkend="configuration_page_mounting_mount_settings"
->aquesta secció</link
+>You can define settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_mount_settings"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2433,8 +2433,8 @@
           </term>
           <listitem>
             <para
->Podeu definir les versions mínima i màxima del protocol SMB, així com el port SMB que s'emprarà. A més, podreu decidir el port SMB i si s'ha d'emprar el Kerberos per a l'autenticació. Per a més informació sobre aquestes opcions de configuració, vegeu <link linkend="configuration_page_network"
->la pàgina de configuració de la xarxa</link
+>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings have a look at <link linkend="configuration_page_network"
+>this section</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2445,7 +2445,7 @@
           </term>
           <listitem>
             <para
->Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el &smb4k; hauria d'enviar un paquet màgic Wake-On-LAN al servidor seleccionat abans d'examinar el veïnatge de xarxa i/o una de les seves comparticions muntades.</para>
+>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if the server should be woken up by sending a magic Wake-On-LAN packet before the network neighborhood is scanned and/or one of its shares is mounted.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2465,13 +2465,13 @@
 >Editar una configuració personalitzada</title>
 
       <para
->Podeu editar o restablir la configuració d'elements de xarxa individuals obrint l'editor <guilabel
->Configuració personalitzada</guilabel
->. La <link linkend="configuration_page_custom_settings"
->pàgina <guilabel
->Configuració personalitzada</guilabel
-></link
-> proporciona un resum complet de tots els paràmetres personalitzats, on també podeu editar o eliminar les entrades de xarxa desitjades.</para>
+>You can edit or reset the settings of individual network items by opening the <guilabel
+>Custom Settings</guilabel
+> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
+><guilabel
+>Custom Settings</guilabel
+> configuration page</link
+>, where you also can edit or remove the desired settings.</para>
     </sect2>
   </sect1>
 
@@ -8778,7 +8778,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Mount all top level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no top level bookmarks.</para>
+>Munta totes les adreces d'interès de nivell superior alhora. Estarà inhabilitada si totes les comparticions marcades com a adreces d'interès estan muntades. Aquesta acció no estarà present si no hi ha adreces d'interès de nivell superior.</para>
         </listitem>
       </varlistentry>
     </variablelist>
