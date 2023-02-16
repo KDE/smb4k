@@ -1296,7 +1296,7 @@
     <sect2 id="custom_settings_managing_and_editing">
       <title>Editing Custom Settings</title>
 
-      <para>You can edit or reset the settings of individual network items by opening the <guilabel>Custom Settings</guilabel> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"><guilabel>Custom Settings</guilabel> configuration page</link>, where you also can edit or remove the desired settings.</para>
+      <para>You can edit or reset the settings of individual network items by opening the custom settings editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"><guilabel>Custom Settings</guilabel> configuration page</link>, where you also can edit or remove the desired settings.</para>
     </sect2>
   </sect1>
 
@@ -1317,7 +1317,7 @@
     <sect2 id="profiles_enable">
       <title>Enabling and Managing Profiles</title>
       <para>The use of different profiles can be enabled in the <link linkend="configuration_page_profiles">configuration dialog</link>. The first profile in the list, most likely the <guilabel>Home</guilabel> profile, is picked to be the active profile. You can also enable the profile migration assistant.</para>
-      <para>Two profiles are pre-defined, <guilabel>Home</guilabel> and <guilabel>Work</guilabel>, but you can define as many profiles as you want. A new profile is added by entering its name into the edit line on the <guibutton>Profiles</guibutton> configuration page and clicking <guibutton>Add</guibutton> afterwards.</para>
+      <para>Two profiles are pre-defined, <guilabel>Home</guilabel> and <guilabel>Work</guilabel>, but you can define as many profiles as you want. A new profile is added by entering its name into the input line on the <guibutton>Profiles</guibutton> configuration page and clicking <guibutton>Add</guibutton> afterwards.</para>
       <screenshot>
         <screeninfo>Screenshot of the Profiles configuration page (add profile)</screeninfo>
         <mediaobject>
@@ -4399,7 +4399,19 @@ ntlm auth = yes
         <listitem>
           <para>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected. Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
         </listitem>
-      </varlistentry>      
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Add Custom Settings</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled. Read the <link linkend="custom_settings_adding">Adding Custom Settings</link> section for more details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice>
@@ -4422,18 +4434,6 @@ ntlm auth = yes
         </term>
         <listitem>
           <para>Open the <link linkend="network_neighborhood_browser_authentication">authentication dialog</link>. You can provide the login and password for the selected server or share. If a workgroup or no item is selected, this action is disabled.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice>
-            <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
-            <guimenu>Network</guimenu>
-            <guimenuitem>Add Custom Settings</guimenuitem>
-          </menuchoice>
-        </term>
-        <listitem>
-          <para>Open the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -4568,7 +4568,19 @@ ntlm auth = yes
         <listitem>
           <para>Add a bookmark to the currently selected mounted share. This action is disabled if no share is selected. Read the <link linkend="bookmarks_adding">Adding Bookmarks</link> section for more details.</para>
         </listitem>
-      </varlistentry>   
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice>
+            <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
+            <guimenu>Network</guimenu>
+            <guimenuitem>Add Custom Settings</guimenuitem>
+          </menuchoice>
+        </term>
+        <listitem>
+          <para>Open the <link linkend="network_neighborhood_browser_defining_custom_settings">Custom Settings</link> editor. You can set several custom settings for the selected share. Read the <link linkend="custom_settings_adding">Adding Custom Settings</link> section for more details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice>
@@ -4643,7 +4655,7 @@ ntlm auth = yes
         <term>
           <menuchoice>
             <guimenu>Bookmarks</guimenu>
-            <guimenuitem>Mount All Bookmarks</guimenuitem>
+            <guimenuitem>Mount Bookmarks</guimenuitem>
           </menuchoice>
         </term>
         <listitem>
@@ -4759,7 +4771,7 @@ ntlm auth = yes
     <listitem><para>Provide the version of &smb4k; and &kf5;.</para></listitem>
     <listitem><para>Mention your operating system (&Linux;, FreeBSD, &etc;) and the distribution that is running on your computer.</para></listitem>
     <listitem><para>Include the full error message if an error dialog was displayed.</para></listitem>
-    <listitem><para>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename>README</filename> file shipped in the sources.</para></listitem>
+    <listitem><para>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename>README.md</filename> file shipped in the sources.</para></listitem>
     <listitem><para>Add additional data, &eg; send a screen shot if you are reporting a &GUI; related problem.</para></listitem>
   </itemizedlist>
   <para>The recommended method to report a bug is to use the dialog that opens when you click the <menuchoice><guimenu>Help</guimenu><guimenuitem>Report Bug...</guimenuitem></menuchoice> menu item. But you can also go directly to the <ulink url="https://bugs.kde.org/enter_bug.cgi?product=Smb4k&amp;format=guided">KDE Bugtracking System</ulink> and fill out the form.</para>
