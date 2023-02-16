@@ -70,7 +70,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->5 січня 2023 року</date>
+>2022-02-15</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2393,10 +2393,10 @@
 > (лише &Linux;) </term>
           <listitem>
             <para
->You can define common settings related to mounting here. Check the <guibutton
->Always remount this share</guibutton
-> button if you want to remount the selected share every time you start &smb4k;. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings"
->this section</link
+>Тут ви можете визначити загальні параметри, які пов'язано із монтуванням. Якщо натиснути кнопку <guibutton
+>Завжди повторно монтувати цей спільний ресурс</guibutton
+> ресурс повторно монтуватиметься під час кожного запуску програми. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_common_mount_settings"
+>тут</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2407,8 +2407,8 @@
 > (лише &Linux;) </term>
           <listitem>
             <para
->You can define advanced settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_advanced_mount_settings"
->this section</link
+>Тут ви можете визначити додаткові параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_advanced_mount_settings"
+>тут</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2419,8 +2419,8 @@
 > (лише BSD) </term>
           <listitem>
             <para
->You can define settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_mount_settings"
->this section</link
+>Тут ви можете визначити параметри, які пов'язано із монтуванням. Докладний опис інших параметрів можна знайти <link linkend="configuration_page_mounting_mount_settings"
+>тут</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2431,8 +2431,8 @@
           </term>
           <listitem>
             <para
->You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings have a look at <link linkend="configuration_page_network"
->this section</link
+>Ви можете визначити мінімальну і максимальну версії протоколу SMB, а також порт SMB, яким слід користуватися. Крім того, ви можете вказати, чи слід використовувати Kerberos для розпізнавання. Докладний опис цих параметрів можна знайти на <link linkend="configuration_page_network"
+>сторінці налаштовування мережі</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2443,7 +2443,7 @@
           </term>
           <listitem>
             <para
->To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if the server should be woken up by sending a magic Wake-On-LAN packet before the network neighborhood is scanned and/or one of its shares is mounted.</para>
+>Щоб мати змогу скористатися можливістю пробудження спільних ресурсів у локальній мережі, вам слід вказати MAC-адресу потрібного вам сервера. У поточній версії у &smb4k; не передбачено можливості визначення такої MAC-адреси засобами програми, отже, вам доведеться визначити її самостійно. Щойно буде вказано адресу, ви можете визначити, чи слід пробуджувати сервер надсиланням контрольного пакета Wake-On-LAN перед пошуком ресурсів у мережевому оточенні та/або монтуванням одного зі спільних ресурсів сервера.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2463,13 +2463,13 @@
 >Редагування нетипових параметрів</title>
 
       <para
->You can edit or reset the settings of individual network items by opening the <guilabel
->Custom Settings</guilabel
-> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
-><guilabel
->Custom Settings</guilabel
-> configuration page</link
->, where you also can edit or remove the desired settings.</para>
+>Ви можете редагувати або скинути параметри для окремих записів мережі за допомогою вікна редактора <guilabel
+>Нетипові параметри</guilabel
+>. Повний огляд усіх нетипових параметрів наведено на <link linkend="configuration_page_custom_settings"
+>сторінці налаштувань <guilabel
+>Нетипові параметри</guilabel
+></link
+>. Там ви можете також редагувати або вилучити бажані параметри.</para>
     </sect2>
   </sect1>
 
@@ -2482,9 +2482,9 @@
 >Профілі</title>
     
     <para
->У &smb4k; реалізовано систему профілів. Профілі призначено для покращення обробки різних ситуацій у мережевому оточенні, наприклад ситуацій, коли програмою користуються одночасно вдома і на роботі.</para>
+>&smb4k; offers the option to use different profiles. They are intended to facilitate handling of different network neighborhoods, &eg;, if you are using your laptop at home and also at work.</para>
     <para
->Типово, використання різних профілів вимкнено. Використовується лише типовий профіль: один для усього. У більшості користувачів не виникне потреби у зміні такої поведінки програми, оскільки для виконання більшості завдань достатньо одного профілю. Втім, можливість використання декількох профілів є надзвичайно корисною для інших користувачів.</para>
+>By default, the use of profiles is disabled. Most users won't have to change this, because the default behavior satisfies their needs completely. However, for some users this feature might be useful.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2523,31 +2523,17 @@
         </mediaobject>
       </screenshot>
       <para
->Якщо вам потрібно перейменувати профіль, просто клацніть на його пункті у списку і змініть назву у рядку редагування. Натисканням кнопки <guibutton
->Додати</guibutton
-> можна оновити назву у списку. Усі збережені параметри буде перенесено без додаткових запитань (тобто без використання помічника перенесення профілів). Вилучити профіль можна позначенням його у списку з наступним натисканням кнопки <guibutton
->Вилучити</guibutton
->. Також передбачено можливість зміни порядку профілів за допомогою натискання кнопок <guibutton
->Пересунути вище</guibutton
-> і <guibutton
->Пересунути нижче</guibutton
->.</para>
+>If you want to rename a profile, just click it and edit the name in the input line. Clicking <guibutton
+>Add</guibutton
+> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton
+>Remove</guibutton
+>. You may also change the order of the profiles with the <guibutton
+>Move Up</guibutton
+> and <guibutton
+>Move Down</guibutton
+> buttons.</para>
       <para
->Якщо вами було увімкнено використання засобу перенесення даних, програма завжди запускатиме його коли ви вилучатимете профіль або вмикатимете чи вимикатимете використання профілів. У засобі передбачено можливість перенесення усіх відповідних даних:</para>
-      <itemizedlist>
-        <listitem
-><para
->профілю, який вилучається, до іншого профілю;</para
-></listitem>
-        <listitem
-><para
->типового профілю до вказаного іншого профілю;</para
-></listitem>
-        <listitem
-><para
->усіх профілів назад до типового профілю.</para
-></listitem>
-      </itemizedlist>
+>In case you enabled the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It takes care of the migration of all relevant settings.</para>
       <para
 >На наведеному нижче знімку вікна можна бачити приклад засобу перенесення профілів після вмикання використання профілів:</para>
       <screenshot>
@@ -2564,17 +2550,17 @@
         </mediaobject>
       </screenshot>
       <para
->У списку <guilabel
->Старий профіль</guilabel
-> буде наведено дані старого профілю (у цьому випадку профілю <guilabel
->&lt;Типовий профіль&gt;</guilabel
->). За допомогою пункту <guilabel
->Новий профіль</guilabel
-> ви можете вибрати, куди слід перенести параметри, за допомогою спадного меню. Попередньо буде вибрано перший профіль у списку. Після натискання кнопки <guibutton
->Гаразд</guibutton
-> значення параметрів буде перенесено. Натисканням кнопки <guibutton
->Скасувати</guibutton
-> можна скасувати дію.</para>
+>The old profile (<guilabel
+>&lt;Default Profile&gt;</guilabel
+> in this case) is listed under <guilabel
+>Old Profile</guilabel
+>. Under <guilabel
+>New Profile</guilabel
+> you can choose the profile from the drop-down menu to which the settings should be migrated. The first profile in the list is preselected. Clicking the <guibutton
+>OK</guibutton
+> button migrates the settings. Clicking <guibutton
+>Cancel</guibutton
+> cancels the action.</para>
       <note
 ><para
 >Щоб скористатися допоміжним засобом перенесення, коли ви вмикаєте використання профілів уперше, вам слід увімкнути його використання тоді ж, коли ви вмикаєте використання профілів.</para
@@ -2603,7 +2589,7 @@
 ></listitem>
         <listitem
 ><para
->Буде повторно змонтовано усі спільні ресурси, які раніше було змонтовано у задіяному профілі.</para
+>All shares that were previously mounted under the newly activated profile are remounted.</para
 ></listitem>
         <listitem
 ><para
@@ -2611,7 +2597,7 @@
 ></listitem>
       </itemizedlist>
       <para
->Отже, не дивуйтеся, якщо після вибору іншого профілю усе зміниться…</para>
+>So, don't be surprised when things change after you select a different profile ...</para>
     </sect2>
   </sect1>
 
@@ -8969,9 +8955,9 @@ ntlm auth = yes
 >Подяки і ліцензія</title>
 
   <para
->Авторські права на програму належать Alexander Reinholdt <email
+>Copyright &copy; 2003 - 2023, Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
->, 2003–2021</para>
+></para>
 
 <para
 >Переклад українською: Юрій Чорноіван <email
