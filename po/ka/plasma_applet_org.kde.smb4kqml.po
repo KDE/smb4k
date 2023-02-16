@@ -1,93 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the smb4k package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: kdeorg\n"
+"Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2023-02-15 11:05\n"
-"Last-Translator: \n"
-"Language-Team: Chinese Simplified\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2023-02-15 08:15+0100\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
+"Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: kdeorg\n"
-"X-Crowdin-Project-ID: 269464\n"
-"X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/smb4k/plasma_applet_org.kde.smb4kqml."
-"pot\n"
-"X-Crowdin-File-ID: 5967\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:59
 #: package/contents/ui/SharesViewItemDelegate.qml:59
 msgid "<font size=\"-1\">on %1</font>"
-msgstr "<font size=\"-1\">位于 %1</font>"
+msgstr "<font size=\"-1\">%1-ზე</font>"
 
 #: package/contents/ui/BookmarksPage.qml:32
 msgid "Go back"
-msgstr "返回"
+msgstr "უკან გადასვლა"
 
 #: package/contents/ui/BookmarksPage.qml:41
 msgid "Edit bookmarks"
-msgstr "编辑书签"
+msgstr "სანიშნების ჩასწორება"
 
 #: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
-msgstr "配置对话框"
+msgstr "მორგების ფანჯარა"
 
 #: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
 msgid "Network Neighborhood"
-msgstr "网上邻居"
+msgstr "ქსელური მეზობლები"
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package/contents/ui/SharesViewItemDelegate.qml:76
 msgid "Bookmark"
-msgstr "书签"
+msgstr "სანიშნი"
 
 #: package/contents/ui/NetworkBrowserPage.qml:38
 msgid "Rescan"
-msgstr "重新扫描"
+msgstr "თავიდან სკანირება"
 
 #: package/contents/ui/NetworkBrowserPage.qml:47
 msgid "Abort"
-msgstr "中止"
+msgstr "შეწყვეტა"
 
 #: package/contents/ui/NetworkBrowserPage.qml:56
 msgid "Go one level up"
-msgstr "返回上一级"
+msgstr "ერთი დონით მაღლა"
 
 #: package/contents/ui/NetworkBrowserPage.qml:65
 msgid "Open the mount dialog"
-msgstr "打开挂载对话框"
+msgstr "მიმაგრების ფანჯრის გახსნა"
 
 #: package/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
-msgstr "已挂载的共享"
+msgstr "მიმაგრებული გაზიარებულები"
 
 #: package/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
-msgstr "书签"
+msgstr "სანიშნები"
 
 #: package/contents/ui/PopupDialog.qml:53
 msgid "Profiles"
-msgstr "配置方案"
+msgstr "პროფილები"
 
 #: package/contents/ui/PopupDialog.qml:60
 msgid "Configuration"
-msgstr "配置"
+msgstr "მორგება"
 
 #: package/contents/ui/ProfileItemDelegate.qml:52
 msgid "(active)"
-msgstr "(活动)"
+msgstr "(აქტიური)"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:97
 msgid "Synchronize"
-msgstr "同步"
+msgstr "სინქრონიზაცია"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:118
 msgid "Unmount"
-msgstr "取消挂载"
+msgstr "მოხსნა"
 
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
-msgstr "取消挂载所有共享"
+msgstr "ყველა გაზიარებულის მოხსნა"

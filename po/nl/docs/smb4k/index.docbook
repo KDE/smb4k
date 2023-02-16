@@ -56,7 +56,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2022-01-05</date>
+>2022-02-15</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2375,10 +2375,10 @@
 > (alleen &Linux;) </term>
           <listitem>
             <para
->You can define common settings related to mounting here. Check the <guibutton
->Always remount this share</guibutton
-> button if you want to remount the selected share every time you start &smb4k;. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings"
->this section</link
+>U kunt hier algemene instellingen definiëren gerelateerd aan aankoppelen. Activeer de knop <guibutton
+>Deze share altijd opnieuw aankoppelen</guibutton
+> als u de geselecteerde share opnieuw wilt aankoppelen bij elke start van &smb4k;. Voor gedetailleerde informatie over deze instellingen zie <link linkend="configuration_page_mounting_common_mount_settings"
+>deze sectie</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2389,8 +2389,8 @@
 > (alleen &Linux;) </term>
           <listitem>
             <para
->You can define advanced settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_advanced_mount_settings"
->this section</link
+>U kunt hier geavanceerde instellingen definiëren gerelateerd aan aankoppelen. Voor gedetailleerde informatie over deze instellingen zie <link linkend="configuration_page_mounting_advanced_mount_settings"
+>deze sectie</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2401,8 +2401,8 @@
 > (alleen BSD) </term>
           <listitem>
             <para
->You can define settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_mount_settings"
->this section</link
+>U kunt hier instellingen definiëren gerelateerd aan aankoppelen. Voor gedetailleerde informatie over deze instellingen zie <link linkend="configuration_page_mounting_mount_settings"
+>deze sectie</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2413,8 +2413,8 @@
           </term>
           <listitem>
             <para
->You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings have a look at <link linkend="configuration_page_network"
->this section</link
+>U kunt het minimale en maximale SMB-protocolversie, evenals de te gebruiken SMB-poort. Bovendien kunt u beslissen of Kerberos gebruikt zou moeten worden voor authenticatie. Voor gedetailleerde informatie over deze instellingen, zie <link linkend="configuration_page_network"
+>deze sectie</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2425,7 +2425,7 @@
           </term>
           <listitem>
             <para
->To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if the server should be woken up by sending a magic Wake-On-LAN packet before the network neighborhood is scanned and/or one of its shares is mounted.</para>
+>Om het Wake-On-LAN onderdeel te laten werken, moet u het MAC adres van de gekozen server opgeven. Op dit moment heeft &smb4k; geen methode om het MAC adres vast te stellen, u moet het daarom zelf vast stellen. Daarna kunt u instellen of de server moet ontwaken voordat het de netwerkomgeving gaat scannen of een share gaat aankoppelen, een magisch Wake-On-LAN pakket moet versturen.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2445,13 +2445,13 @@
 >Aangepaste instellingen bewerken</title>
 
       <para
->You can edit or reset the settings of individual network items by opening the <guilabel
->Custom Settings</guilabel
-> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
+>U kunt de instellingen van individuele netwerkitems bewerken door de bewerker <guilabel
+>AAngepaste instellingen</guilabel
+> te openen. Een compleet overzicht van alle aangepaste instellingen levert de <link linkend="configuration_page_custom_settings"
 ><guilabel
->Custom Settings</guilabel
-> configuration page</link
->, where you also can edit or remove the desired settings.</para>
+>Aangepaste instellingen</guilabel
+> configuratiepagina</link
+>, waar u ook de gewenste instellingen kunt bewerken of verwijderen.</para>
     </sect2>
   </sect1>
 
@@ -2464,9 +2464,9 @@
 >Profielen</title>
     
     <para
->In &smb4k; biedt de optie om verschillende profielen te gebruiken. Het doel ervan is om verschillende netwerkomgevingen beter te kunnen hanteren, &eg; als u uw laptop zowel thuis als op kantoor gebruikt.</para>
+>&smb4k; offers the option to use different profiles. They are intended to facilitate handling of different network neighborhoods, &eg;, if you are using your laptop at home and also at work.</para>
     <para
->Standaard is het gebruik van verschillende profielen uitgeschakeld en gebruikt u een standaard profiel: een profiel voor alles. De meeste gebruikers hoeven dit nooit te veranderen, omdat ze helemaal tevreden zijn met het standaard gedrag. Maar voor sommige gebruikers kan dit onderdeel erg handig zijn.</para>
+>By default, the use of profiles is disabled. Most users won't have to change this, because the default behavior satisfies their needs completely. However, for some users this feature might be useful.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2505,31 +2505,17 @@
         </mediaobject>
       </screenshot>
       <para
->Als u een profiel een andere naam wilt geven, dan klikt u erop om vervolgens de naam in het invoervak te bewerken. Klik tenslotte op de knop <guibutton
->Toevoegen</guibutton
-> om de naam in de lijst bij te werken. Alle opgeslagen instellingen worden naadloos overgenomen (zonder gebruik van de assistent voor migratie). U kunt een profiel uit de lijst verwijderen door het in de lijst te selecteren en daarna op de knop <guibutton
->Verwijderen</guibutton
-> te klikken. U kunt ook de volgorde van de profielen wijzigen met de knoppen <guibutton
->Omhoog</guibutton
-> en <guibutton
->Omlaag</guibutton
->.</para>
+>If you want to rename a profile, just click it and edit the name in the input line. Clicking <guibutton
+>Add</guibutton
+> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton
+>Remove</guibutton
+>. You may also change the order of the profiles with the <guibutton
+>Move Up</guibutton
+> and <guibutton
+>Move Down</guibutton
+> buttons.</para>
       <para
->Indien u de assistent voor migratie hebt ingeschakeld, wordt deze altijd gestart wanneer u een profiel verwijdert of wanneer u het gebruik van profielen in- of uitschakelt. Het biedt alle relevante instellingen te migreren</para>
-      <itemizedlist>
-        <listitem
-><para
->van een profiel dat zal worden verwijderd naar een andere</para
-></listitem>
-        <listitem
-><para
->van het standaard profiel naar een specifiek ander profiel</para
-></listitem>
-        <listitem
-><para
->van alle profielen terug naar het standaard profiel</para
-></listitem>
-      </itemizedlist>
+>In case you enabled the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It takes care of the migration of all relevant settings.</para>
       <para
 >De volgende schermafdrukken illustreert de assistent voor migratie van profielen nadat u het gebruik van profielen hebt ingeschakeld:</para>
       <screenshot>
@@ -2546,17 +2532,17 @@
         </mediaobject>
       </screenshot>
       <para
->Het oude profiel (<guilabel
->&lt;Standaard profiel</guilabel
-> in dit geval) staat in de lijst onder <guilabel
->Oud profiel</guilabel
->. Onder <guilabel
->Nieuw Profiel</guilabel
-> kunt u in een afrolmenu gebruiken om het profiel te kiezen waarnaar de instellingen gemigreerd moeten worden. Het eerste profiel in de lijst is voorgeselecteerd. Het klikken op de knop <guibutton
+>The old profile (<guilabel
+>&lt;Default Profile&gt;</guilabel
+> in this case) is listed under <guilabel
+>Old Profile</guilabel
+>. Under <guilabel
+>New Profile</guilabel
+> you can choose the profile from the drop-down menu to which the settings should be migrated. The first profile in the list is preselected. Clicking the <guibutton
 >OK</guibutton
-> migreert de instellingen, het klikken op de knop <guibutton
->Annuleren</guibutton
-> annuleert de actie.</para>
+> button migrates the settings. Clicking <guibutton
+>Cancel</guibutton
+> cancels the action.</para>
       <note
 ><para
 >Om de assistent voor migratie te kunnen gebruiken nadat u het gebruik van profielen de eerste keer hebt ingeschakeld, moet u het gebruik daarvan tegelijk inschakelen met het inschakelen van het gebruik van profielen.</para
@@ -2585,7 +2571,7 @@
 ></listitem>
         <listitem
 ><para
->Alle shares die eerder waren aangekoppeld worden onder het nieuw geactiveerde profiel opnieuw aangekoppeld.</para
+>All shares that were previously mounted under the newly activated profile are remounted.</para
 ></listitem>
         <listitem
 ><para
@@ -2593,7 +2579,7 @@
 ></listitem>
       </itemizedlist>
       <para
->Wees dus niet verbaast als dingen anders zijn nadat u een ander profiel selecteert.</para>
+>So, don't be surprised when things change after you select a different profile ...</para>
     </sect2>
   </sect1>
 
@@ -8965,7 +8951,7 @@ ntlm auth = yes
 >Dankbetuigingen en licentie</title>
 
   <para
->Copyright &copy; 2003 - 2021, Alexander Reinholdt <email
+>Copyright &copy; 2003 - 2023, Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
 ></para>
 
