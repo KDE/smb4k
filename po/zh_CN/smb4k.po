@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-07 02:38+0000\n"
-"PO-Revision-Date: 2023-02-07 11:05\n"
+"PO-Revision-Date: 2023-02-15 11:07\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -20,12 +20,14 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "KDE 中国, Guo Yunhe, Shi Lei"
+msgstr "KDE 中国, Guo Yunhe, magsom, Shi Lei, Tyson Tan"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-china@kde.org, i@guoyunhe.me, slkde@kde.org"
+msgstr ""
+"kde-china@kde.org, i@guoyunhe.me, magsom@kde.org, slkde@kde.org, "
+"tysontan@tysontan.com"
 
 #: helpers/smb4kmounthelper.cpp:163
 #, kde-format
@@ -50,12 +52,12 @@ msgstr "Smb4K"
 #: smb4k/main.cpp:60
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
-msgstr "高级网络邻居浏览器和 Samba 共享挂载工具"
+msgstr "多功能网上邻居浏览器和 Samba 共享挂载工具"
 
 #: smb4k/main.cpp:61
 #, kde-format
 msgid "© 2003-2022 Alexander Reinholdt"
-msgstr ""
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:69
 #, kde-format
@@ -75,7 +77,7 @@ msgstr "Wolfgang Geisendörfer"
 #: smb4k/main.cpp:74
 #, kde-format
 msgid "Donator"
-msgstr "捐赠者"
+msgstr "捐款者"
 
 #. i18n: ectx: Menu (file)
 #: smb4k/smb4k_shell.rc:4
@@ -178,7 +180,7 @@ msgstr "配置文件"
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
 "corresponding configuration page to fix it.</qt>"
-msgstr "<qt>找到了不正确的设置。请检查相应的配置页面来修复。</qt>"
+msgstr "<qt>发现了错误的设置。程序将跳转到相关的配置页面以便您手动修复。</qt>"
 
 #: smb4k/smb4kconfigdialog.cpp:642
 #, kde-format
@@ -206,7 +208,7 @@ msgstr "编辑"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:81
 #, kde-format
 msgid "Remove"
-msgstr "删除"
+msgstr "移除"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:120
 #: smb4k/smb4knetworksearchtoolbar.cpp:126
@@ -224,7 +226,7 @@ msgstr "加载"
 msgid ""
 "The login information that was stored by Smb4K will be loaded from the "
 "wallet."
-msgstr ""
+msgstr "之前存储在 Smb4K 中的登录信息将改为从密码库中加载。"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:148
 #, kde-format
@@ -239,7 +241,7 @@ msgstr "您应用的所有修改已保存到密码库。"
 #: smb4k/smb4kconfigpageauthentication.cpp:164
 #, kde-format
 msgid "Details"
-msgstr ""
+msgstr "详情"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:237
 #: smb4k/smb4kconfigpageauthentication.cpp:362
@@ -281,7 +283,7 @@ msgstr "清除列表"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:117
 #, kde-format
 msgid "Identification"
-msgstr "标识"
+msgstr "身份识别"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:120 smb4k/smb4ktooltip.cpp:370
 #, kde-format
@@ -292,18 +294,18 @@ msgstr "工作组："
 #: smb4k/smb4ktooltip.cpp:534
 #, kde-format
 msgid "Location:"
-msgstr ""
+msgstr "位置："
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:140 smb4k/smb4ktooltip.cpp:358
 #: smb4k/smb4ktooltip.cpp:436
 #, kde-format
 msgid "IP Address:"
-msgstr "IP 地址:"
+msgstr "IP 地址："
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:152
 #, kde-format
 msgid "Network Item"
-msgstr "网络项"
+msgstr "网络项目"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:168
 #: smb4k/smb4kconfigpagecustomoptions.cpp:321
@@ -317,7 +319,7 @@ msgstr "通用选项"
 #: smb4k/smb4kconfigpagenetwork.cpp:57
 #, kde-format
 msgid "Browse Settings"
-msgstr ""
+msgstr "浏览设置"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:253
 #, kde-format
@@ -327,7 +329,7 @@ msgstr "MAC 地址"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:257
 #, kde-format
 msgid "MAC Address:"
-msgstr "MAC 地址:"
+msgstr "MAC 地址："
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:270
 #, kde-format
@@ -337,18 +339,18 @@ msgstr "操作"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:274
 #, kde-format
 msgid "Send magic package before scanning the network neighborhood"
-msgstr "在扫描网络邻居之前发送唤醒魔包"
+msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:280
 #, kde-format
 msgid "Send magic package before mounting a share"
-msgstr "在挂载共享之前发送唤醒魔包"
+msgstr "挂载共享前发送局域网唤醒魔术封包"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:288
 #: smb4k/smb4kconfigpagenetwork.cpp:303
 #, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr ""
+msgstr "局域网唤醒设置"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:324
 #: smb4k/smb4kconfigpagecustomoptions.cpp:509
@@ -371,7 +373,7 @@ msgstr "此服务器支持 CIFS Unix 扩展"
 #: smb4k/smb4kconfigpagemounting.cpp:326
 #, kde-format
 msgid "Common Mount Settings"
-msgstr ""
+msgstr "通用挂载设置"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:444
 #: smb4k/smb4kconfigpagemounting.cpp:334
@@ -383,7 +385,7 @@ msgstr "高级选项"
 #: smb4k/smb4kconfigpagemounting.cpp:463
 #, kde-format
 msgid "Advanced Mount Settings"
-msgstr ""
+msgstr "高级挂载设置"
 
 #: smb4k/smb4kconfigpagemounting.cpp:83 smb4k/smb4kconfigpagemounting.cpp:495
 #, kde-format
@@ -400,7 +402,7 @@ msgstr "行为"
 #: smb4k/smb4kconfigpagemounting.cpp:125 smb4k/smb4kconfigpagemounting.cpp:537
 #, kde-format
 msgid " min"
-msgstr "分钟"
+msgstr " 分钟"
 
 #: smb4k/smb4kconfigpagemounting.cpp:153 smb4k/smb4kconfigpagemounting.cpp:561
 #: smb4k/smb4kconfigpagenetwork.cpp:157
@@ -417,12 +419,12 @@ msgstr "选择其他用户"
 #: smb4k/smb4kconfigpagemounting.cpp:279 smb4k/smb4kconfigpagemounting.cpp:629
 #, kde-format
 msgid "Choose a different group"
-msgstr "选择其他组"
+msgstr "选择其他用户组"
 
 #: smb4k/smb4kconfigpagemounting.cpp:450
 #, kde-format
 msgid "Edit the additional CIFS options."
-msgstr "编辑附加 CIFS 选项."
+msgstr "编辑 CIFS 附加选项。"
 
 #: smb4k/smb4kconfigpagemounting.cpp:676
 #, kde-format
@@ -432,17 +434,17 @@ msgstr "字符集"
 #: smb4k/smb4kconfigpagemounting.cpp:726
 #, kde-format
 msgid "Mount Settings"
-msgstr ""
+msgstr "挂载设置"
 
 #: smb4k/smb4kconfigpagemounting.cpp:845
 #, kde-format
 msgid "Additional CIFS Options"
-msgstr "附加 CIFS 选项"
+msgstr "CIFS 附加选项"
 
 #: smb4k/smb4kconfigpagemounting.cpp:845
 #, kde-format
 msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr "<qt>输入所需的选项为逗号分隔列表：</qt>"
+msgstr "<qt>输入所需选项的列表，以半角逗号区分列表项：</qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:874
 #, kde-format
@@ -452,8 +454,7 @@ msgid ""
 msgid_plural ""
 "<qt>The following %1 entries are going to be removed from the additional "
 "options: %2. Please read the handbook for details.</qt>"
-msgstr[0] ""
-"<qt>以下 %1 条目将从附加选项中删除： %2。请阅读手册了解详细信息</qt>"
+msgstr[0] "<qt>下列 %1 个条目将从附加选项中删除：%2。详情请见使用手册。</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:168
 #, kde-format
@@ -463,12 +464,12 @@ msgstr "通用设置"
 #: smb4k/smb4kconfigpagenetwork.cpp:223
 #, kde-format
 msgid "Security"
-msgstr "证券"
+msgstr "安全"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:248
 #, kde-format
 msgid "Samba Settings"
-msgstr ""
+msgstr "Samba 设置"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:259
 #, kde-format
@@ -478,14 +479,14 @@ msgstr "局域网唤醒"
 #: smb4k/smb4kconfigpagenetwork.cpp:271
 #, kde-format
 msgid " s"
-msgstr "秒"
+msgstr " 秒"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:286
 #, kde-format
 msgid ""
 "<qt>Define the hosts that should be woken up via the custom options dialog.</"
 "qt>"
-msgstr "<qt>定义可通过自定义选项对话框唤醒的主机。</qt>"
+msgstr "<qt>指定要通过自定义选项对话框唤醒的主机。</qt>"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:55
 #, kde-format
@@ -511,7 +512,7 @@ msgstr "链接"
 #: smb4k/smb4kconfigpagesynchronization.cpp:179
 #, kde-format
 msgid "Permissions, etc."
-msgstr "权限等。"
+msgstr "权限和其他属性。"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:207
 #, kde-format
@@ -539,17 +540,17 @@ msgstr " KiB"
 #: smb4k/smb4kconfigpagesynchronization.cpp:455
 #, kde-format
 msgid "Miscellaneous"
-msgstr "杂项"
+msgstr "其他"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:275
 #, kde-format
 msgid " KiB/s"
-msgstr " KiB/秒"
+msgstr " KiB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:285
 #, kde-format
 msgid "File Transfer"
-msgstr "文件传送"
+msgstr "文件传输"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:294
 #, kde-format
@@ -589,22 +590,22 @@ msgstr "校验和"
 #: smb4k/smb4kconfigpageuserinterface.cpp:56
 #, kde-format
 msgid "Main Window"
-msgstr ""
+msgstr "主窗口"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:86 smb4k/smb4kmainwindow.cpp:242
 #, kde-format
 msgid "Network Neighborhood"
-msgstr "网络邻居"
+msgstr "网上邻居"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:119
 #, kde-format
 msgid "Shares View"
-msgstr ""
+msgstr "共享视图"
 
 #: smb4k/smb4kmainwindow.cpp:158
 #, kde-format
 msgid "Dock Widgets"
-msgstr "停靠挂件"
+msgstr "停靠栏挂件"
 
 #: smb4k/smb4kmainwindow.cpp:265 smb4k/smb4ksharesmenu.cpp:56
 #, kde-format
@@ -617,6 +618,8 @@ msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
+"<qt>关闭主窗口后，Smb4K 将继续在系统托盘中运行。<br>要退出此应用程序，请使用 "
+"<i>文件</i> 菜单的 <i>退出</i>  命令。</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:451
 #, kde-format
@@ -626,7 +629,7 @@ msgstr "停靠"
 #: smb4k/smb4kmainwindow.cpp:528
 #, kde-format
 msgid "There are currently no shares mounted."
-msgstr "目前没有挂载共享。"
+msgstr "目前没有已挂载的共享。"
 
 #: smb4k/smb4kmainwindow.cpp:533
 #, kde-format
@@ -637,32 +640,32 @@ msgstr[0] "目前已挂载 %1 个共享。"
 #: smb4k/smb4kmainwindow.cpp:736
 #, kde-format
 msgid "The wallet is used."
-msgstr "密码库已被使用。"
+msgstr "已使用密码库。"
 
 #: smb4k/smb4kmainwindow.cpp:742
 #, kde-format
 msgid "The password dialog is used."
-msgstr "密码对话框已被使用。"
+msgstr "已使用密码对话框。"
 
 #: smb4k/smb4kmainwindow.cpp:755
 #, kde-format
 msgid "Looking for workgroups and domains..."
-msgstr "查找工作组和域..."
+msgstr "正在查找工作组和域..."
 
 #: smb4k/smb4kmainwindow.cpp:761
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr "正在查找域中的主机 %1..."
+msgstr "正在查找域 %1 中的主机..."
 
 #: smb4k/smb4kmainwindow.cpp:767
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr "正在查找主机 %1 的共享..."
+msgstr "正在查找主机 %1 提供的共享..."
 
 #: smb4k/smb4kmainwindow.cpp:778 smb4k/smb4kmainwindow.cpp:789
 #, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "正在从 %1 中查找文件和目录..."
+msgstr "正在查找 %1 中的文件和目录..."
 
 #: smb4k/smb4kmainwindow.cpp:808
 #, kde-format
@@ -672,7 +675,7 @@ msgstr "正在唤醒远程主机..."
 #: smb4k/smb4kmainwindow.cpp:814
 #, kde-format
 msgid "Sending file to printer %1..."
-msgstr "发送文件到打印机%1..."
+msgstr "正在发送文件到打印机 %1..."
 
 #: smb4k/smb4kmainwindow.cpp:819
 #, kde-format
@@ -683,17 +686,17 @@ msgstr "正在搜索..."
 #: smb4k/smb4kmainwindow.cpp:1039
 #, kde-format
 msgid "Done."
-msgstr "完毕。"
+msgstr "已完成。"
 
 #: smb4k/smb4kmainwindow.cpp:854
 #, kde-format
 msgid "Mounting..."
-msgstr "挂载..."
+msgstr "正在挂载..."
 
 #: smb4k/smb4kmainwindow.cpp:859
 #, kde-format
 msgid "Unmounting..."
-msgstr "卸载..."
+msgstr "正在卸载..."
 
 #: smb4k/smb4kmainwindow.cpp:864
 #, kde-format
@@ -755,7 +758,7 @@ msgstr "打开挂载对话框(&O)"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Au&thentication"
-msgstr "用户验证(&T)"
+msgstr "身份验证(&T)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:215
 #, kde-format
@@ -817,12 +820,12 @@ msgstr "停止"
 #: smb4k/smb4knetworksearchtoolbar.cpp:100
 #, kde-format
 msgid "Item Down"
-msgstr "项目下行"
+msgstr "项目下移"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:113
 #, kde-format
 msgid "Item Up"
-msgstr "项目上行"
+msgstr "项目上移"
 
 #: smb4k/smb4ksharesmenu.cpp:124 smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
@@ -852,7 +855,7 @@ msgstr "使用 Konsole 打开"
 #: smb4k/smb4ksharesmenu.cpp:214
 #, kde-format
 msgid "Open with File Manager"
-msgstr "用文件管理器打开"
+msgstr "使用文件管理器打开"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:186
 #, kde-format
@@ -877,19 +880,19 @@ msgstr "同步(&Y)"
 #: smb4k/smb4ksharesviewdockwidget.cpp:249
 #, kde-format
 msgid "Open with Konso&le"
-msgstr "用 Konso&le 打开"
+msgstr "使用 Konso&le 打开"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:252
 #, kde-format
 msgid "Open with F&ile Manager"
-msgstr "用文件管理器打开(&I)"
+msgstr "使用文件管理器打开(&I)"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:431
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
 "any files here.</qt>"
-msgstr "<qt>共享没有活动连接 <b>%1</b>！无法在此处放置任何文件。</qt>"
+msgstr "<qt>当前没有连接到共享 <b>%1</b>。您无法在此处放置文件。</qt>"
 
 #: smb4k/smb4ktooltip.cpp:242 smb4k/smb4ktooltip.cpp:412
 #, kde-format
@@ -904,12 +907,12 @@ msgstr "否"
 #: smb4k/smb4ktooltip.cpp:288
 #, kde-format
 msgid "Type:"
-msgstr ""
+msgstr "类型："
 
 #: smb4k/smb4ktooltip.cpp:308
 #, kde-format
 msgid "Master Browser:"
-msgstr ""
+msgstr "主浏览器："
 
 #: smb4k/smb4ktooltip.cpp:343
 #, kde-format
@@ -919,7 +922,7 @@ msgstr "主机"
 #: smb4k/smb4ktooltip.cpp:346 smb4k/smb4ktooltip.cpp:391
 #, kde-format
 msgid "Comment:"
-msgstr ""
+msgstr "注释："
 
 #: smb4k/smb4ktooltip.cpp:388
 #, kde-format
@@ -929,12 +932,12 @@ msgstr "共享 (%1)"
 #: smb4k/smb4ktooltip.cpp:403
 #, kde-format
 msgid "Mounted:"
-msgstr ""
+msgstr "已挂载："
 
 #: smb4k/smb4ktooltip.cpp:425
 #, kde-format
 msgid "Host:"
-msgstr ""
+msgstr "主机："
 
 #: smb4k/smb4ktooltip.cpp:486 smb4k/smb4ktooltip.cpp:496
 #: smb4k/smb4ktooltip.cpp:561 smb4k/smb4ktooltip.cpp:573
@@ -946,12 +949,12 @@ msgstr "未知"
 #: smb4k/smb4ktooltip.cpp:492 smb4k/smb4ktooltip.cpp:602
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
-msgstr "共 %2，剩余 %1(已用 %3%)"
+msgstr "总共 %2，空闲 %1 (已用 %3)"
 
 #: smb4k/smb4ktooltip.cpp:545
 #, kde-format
 msgid "Mountpoint:"
-msgstr ""
+msgstr "挂载点："
 
 #: smb4k/smb4ktooltip.cpp:556
 #, kde-format
@@ -961,14 +964,14 @@ msgstr "登录名："
 #: smb4k/smb4ktooltip.cpp:568
 #, kde-format
 msgid "Owner:"
-msgstr ""
+msgstr "所有者："
 
 #: smb4k/smb4ktooltip.cpp:582
 #, kde-format
 msgid "File system:"
-msgstr ""
+msgstr "文件系统："
 
 #: smb4k/smb4ktooltip.cpp:593
 #, kde-format
 msgid "Size:"
-msgstr ""
+msgstr "大小："
