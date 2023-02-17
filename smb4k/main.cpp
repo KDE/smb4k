@@ -1,7 +1,7 @@
 /*
     Main file of the Smb4K program.
 
-    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
                          QStringLiteral(SMB4K_VERSION_STRING),
                          i18n("Advanced network neighborhood browser and Samba share mounting utility"),
                          KAboutLicense::GPL_V2,
-                         i18n("\u00A9 2003-2022 Alexander Reinholdt"),
+                         i18n("\u00A9 2003-2023 Alexander Reinholdt"),
                          QString(),
                          QStringLiteral("https://smb4k.sourceforge.io"));
 
