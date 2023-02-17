@@ -2445,13 +2445,11 @@
 >Aangepaste instellingen bewerken</title>
 
       <para
->U kunt de instellingen van individuele netwerkitems bewerken door de bewerker <guilabel
->AAngepaste instellingen</guilabel
-> te openen. Een compleet overzicht van alle aangepaste instellingen levert de <link linkend="configuration_page_custom_settings"
+>You can edit or reset the settings of individual network items by opening the custom settings editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
 ><guilabel
->Aangepaste instellingen</guilabel
-> configuratiepagina</link
->, waar u ook de gewenste instellingen kunt bewerken of verwijderen.</para>
+>Custom Settings</guilabel
+> configuration page</link
+>, where you also can edit or remove the desired settings.</para>
     </sect2>
   </sect1>
 
@@ -2464,9 +2462,9 @@
 >Profielen</title>
     
     <para
->&smb4k; offers the option to use different profiles. They are intended to facilitate handling of different network neighborhoods, &eg;, if you are using your laptop at home and also at work.</para>
+>In &smb4k; biedt de optie om verschillende profielen te gebruiken. Het doel ervan is om verschillende netwerkomgevingen te kunnen hanteren, &eg; als u uw laptop zowel thuis als op kantoor gebruikt.</para>
     <para
->By default, the use of profiles is disabled. Most users won't have to change this, because the default behavior satisfies their needs completely. However, for some users this feature might be useful.</para>
+>Standaard is het gebruik van profielen uitgeschakeld. De meeste gebruikers hoeven dit nooit te veranderen, omdat ze helemaal tevreden zijn met het standaard gedrag. Maar voor sommige gebruikers kan dit onderdeel handig zijn.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2482,15 +2480,15 @@
 >Thuis</guilabel
 > profiel. zal als actief profiel worden gebruikt. U kunt ook de assistent voor migratie van profielen inschakelen.</para>
       <para
->Er zijn al twee profielen voorgedefinieerd, <guilabel
->Thuis</guilabel
-> en <guilabel
->Werk</guilabel
->, maar u kunt net zo veel profielen aanmaken als u wilt. U voegt een nieuw profiel aan door zijn naam in het invoervak in het <guibutton
->Profielen</guibutton
-> configuratievenster in te voeren en daarna op de knoppen <guibutton
->Toevoegen</guibutton
-> te klikken.</para>
+>Two profiles are pre-defined, <guilabel
+>Home</guilabel
+> and <guilabel
+>Work</guilabel
+>, but you can define as many profiles as you want. A new profile is added by entering its name into the input line on the <guibutton
+>Profiles</guibutton
+> configuration page and clicking <guibutton
+>Add</guibutton
+> afterwards.</para>
       <screenshot>
         <screeninfo
 >Schermafdruk van de instellingenpagina voor Profielen (profiel toevoegen)</screeninfo>
@@ -2505,17 +2503,17 @@
         </mediaobject>
       </screenshot>
       <para
->If you want to rename a profile, just click it and edit the name in the input line. Clicking <guibutton
->Add</guibutton
-> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton
->Remove</guibutton
->. You may also change the order of the profiles with the <guibutton
->Move Up</guibutton
-> and <guibutton
->Move Down</guibutton
-> buttons.</para>
+>Als u een profiel een andere naam wilt geven, dan klikt u erop om vervolgens de naam in de invoerregel te bewerken. Klik tenslotte op de knop <guibutton
+>Toevoegen</guibutton
+> om de naam in de lijst bij te werken. Alle opgeslagen instellingen worden naadloos overgenomen (zonder gebruik van de assistent voor migratie). U kunt een profiel uit de lijst verwijderen door het in de lijst te selecteren en daarna op de knop <guibutton
+>Verwijderen</guibutton
+> te klikken. U kunt ook de volgorde van de profielen wijzigen met de knoppen <guibutton
+>Omhoog</guibutton
+> en <guibutton
+>Omlaag</guibutton
+>.</para>
       <para
->In case you enabled the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It takes care of the migration of all relevant settings.</para>
+>Indien u de assistent voor migratie hebt ingeschakeld, wordt deze altijd gestart wanneer u een profiel verwijdert of wanneer u het gebruik van profielen in- of uitschakelt. Het zorgt voor migratie van alle relevante instellingen.</para>
       <para
 >De volgende schermafdrukken illustreert de assistent voor migratie van profielen nadat u het gebruik van profielen hebt ingeschakeld:</para>
       <screenshot>
@@ -2532,17 +2530,17 @@
         </mediaobject>
       </screenshot>
       <para
->The old profile (<guilabel
->&lt;Default Profile&gt;</guilabel
-> in this case) is listed under <guilabel
->Old Profile</guilabel
->. Under <guilabel
->New Profile</guilabel
-> you can choose the profile from the drop-down menu to which the settings should be migrated. The first profile in the list is preselected. Clicking the <guibutton
+>Het oude profiel (<guilabel
+>&lt;Standaard profiel</guilabel
+> in dit geval) staat in de lijst onder <guilabel
+>Oud profiel</guilabel
+>. Onder <guilabel
+>Nieuw Profiel</guilabel
+> kunt u het profiel uit een afrolmenu gebruiken waarnaar de instellingen gemigreerd moeten worden. Het eerste profiel in de lijst is voorgeselecteerd. Het klikken op de knop <guibutton
 >OK</guibutton
-> button migrates the settings. Clicking <guibutton
->Cancel</guibutton
-> cancels the action.</para>
+> migreert de instellingen. Klikken op de knop <guibutton
+>Annuleren</guibutton
+> annuleert de actie.</para>
       <note
 ><para
 >Om de assistent voor migratie te kunnen gebruiken nadat u het gebruik van profielen de eerste keer hebt ingeschakeld, moet u het gebruik daarvan tegelijk inschakelen met het inschakelen van het gebruik van profielen.</para
@@ -2571,7 +2569,7 @@
 ></listitem>
         <listitem
 ><para
->All shares that were previously mounted under the newly activated profile are remounted.</para
+>Alle shares die eerder waren aangekoppeld worden onder het nieuw geactiveerde profiel opnieuw aangekoppeld.</para
 ></listitem>
         <listitem
 ><para
@@ -2579,7 +2577,7 @@
 ></listitem>
       </itemizedlist>
       <para
->So, don't be surprised when things change after you select a different profile ...</para>
+>Wees dus niet verbaast als dingen anders zijn nadat u een ander profiel selecteert.</para>
     </sect2>
   </sect1>
 
@@ -8340,8 +8338,31 @@ ntlm auth = yes
 >Bladwijzers toevoegen</link
 > voor meer details.</para>
         </listitem>
-      </varlistentry
->      
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Netwerk</guimenu
+> <guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled. Read the <link linkend="custom_settings_adding"
+>Adding Custom Settings</link
+> section for more details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8384,28 +8405,6 @@ ntlm auth = yes
 >Open het <link linkend="network_neighborhood_browser_authentication"
 >dialoog voor authenticatie</link
 >. Hier kunt u voor de gekozen server of share de gebruikersnaam en wachtwoord opgeven. U kunt deze knop niet selecteren als u nog geen werkgroep of item heeft geselecteerd.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Netwerk</guimenu
-> <guimenuitem
->Aangepaste instellingen toevoegen</guimenuitem
-> </menuchoice>
-        </term>
-        <listitem>
-          <para
->Open het bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
->Aangepaste instellingen</link
->. U kunt verschillende persoonlijke instellingen voor de geselecteerde server of share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8621,8 +8620,31 @@ ntlm auth = yes
 >Bladwijzers toevoegen</link
 > voor meer details.</para>
         </listitem>
-      </varlistentry
->   
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Netwerk</guimenu
+> <guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor. You can set several custom settings for the selected share. Read the <link linkend="custom_settings_adding"
+>Adding Custom Settings</link
+> section for more details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8745,9 +8767,9 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><guimenu
->Bladwijzers</guimenu
-><guimenuitem
->Alle bladwijzers aankoppelen</guimenuitem
+>Bookmarks</guimenu
+> <guimenuitem
+>Mount Bookmarks</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8920,9 +8942,9 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Als u crashes ervaart, voeg dan een volledige backtrace bij. Hiervoor is nodig &smb4k; te (her)compileren het met debugging symbolen. Hoe dit is gedaan is beschreven in het bestand <filename
->README</filename
-> meegeleverd in de broncode.</para
+>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename
+>README.md</filename
+> file shipped in the sources.</para
 ></listitem>
     <listitem
 ><para

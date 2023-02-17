@@ -70,7 +70,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2022-02-15</date>
+>15 лютого 2023 року</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2463,13 +2463,11 @@
 >Редагування нетипових параметрів</title>
 
       <para
->Ви можете редагувати або скинути параметри для окремих записів мережі за допомогою вікна редактора <guilabel
->Нетипові параметри</guilabel
->. Повний огляд усіх нетипових параметрів наведено на <link linkend="configuration_page_custom_settings"
->сторінці налаштувань <guilabel
->Нетипові параметри</guilabel
-></link
->. Там ви можете також редагувати або вилучити бажані параметри.</para>
+>You can edit or reset the settings of individual network items by opening the custom settings editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
+><guilabel
+>Custom Settings</guilabel
+> configuration page</link
+>, where you also can edit or remove the desired settings.</para>
     </sect2>
   </sect1>
 
@@ -2482,9 +2480,9 @@
 >Профілі</title>
     
     <para
->&smb4k; offers the option to use different profiles. They are intended to facilitate handling of different network neighborhoods, &eg;, if you are using your laptop at home and also at work.</para>
+>У &smb4k; реалізовано систему профілів. Профілі призначено для обробки різних ситуацій у мережевому оточенні, наприклад ситуацій, коли програмою користуються одночасно вдома і на роботі.</para>
     <para
->By default, the use of profiles is disabled. Most users won't have to change this, because the default behavior satisfies their needs completely. However, for some users this feature might be useful.</para>
+>Типово, використання профілів вимкнено. У більшості користувачів не виникне потреби у зміні такої поведінки програми, оскільки для виконання більшості завдань достатньо одного профілю. Втім, можливість використання декількох профілів є корисною для деяких користувачів.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2500,15 +2498,15 @@
 >Домашній</guilabel
 >. Ви також можете увімкнути допоміжний засіб перенесення профілів.</para>
       <para
->Попередньо визначено два профілі, <guilabel
->Домашній</guilabel
-> і <guilabel
->Робочий</guilabel
->. Ви також можете визначити довільну кількість інших профілів. Щоб додати профіль, введіть його назву у рядок редагування на сторінці налаштовування <guibutton
->Профілі</guibutton
-> і натисніть кнопку <guibutton
->Додати</guibutton
->.</para>
+>Two profiles are pre-defined, <guilabel
+>Home</guilabel
+> and <guilabel
+>Work</guilabel
+>, but you can define as many profiles as you want. A new profile is added by entering its name into the input line on the <guibutton
+>Profiles</guibutton
+> configuration page and clicking <guibutton
+>Add</guibutton
+> afterwards.</para>
       <screenshot>
         <screeninfo
 >Знімок сторінки налаштовування профілів (додавання профілю)</screeninfo>
@@ -2523,17 +2521,17 @@
         </mediaobject>
       </screenshot>
       <para
->If you want to rename a profile, just click it and edit the name in the input line. Clicking <guibutton
->Add</guibutton
-> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton
->Remove</guibutton
->. You may also change the order of the profiles with the <guibutton
->Move Up</guibutton
-> and <guibutton
->Move Down</guibutton
-> buttons.</para>
+>Якщо вам потрібно перейменувати профіль, просто клацніть на його пункті у списку і змініть назву у рядку для введення даних. Натисканням кнопки <guibutton
+>Додати</guibutton
+> можна оновити назву у списку. Усі збережені параметри буде перенесено без додаткових запитань (тобто без використання помічника перенесення профілів). Вилучити профіль можна позначенням його у списку з наступним натисканням кнопки <guibutton
+>Вилучити</guibutton
+>. Також передбачено можливість зміни порядку профілів за допомогою натискання кнопок <guibutton
+>Пересунути вище</guibutton
+> і <guibutton
+>Пересунути нижче</guibutton
+>.</para>
       <para
->In case you enabled the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It takes care of the migration of all relevant settings.</para>
+>Якщо вами було увімкнено використання засобу перенесення даних, програма завжди запускатиме його коли ви вилучатимете профіль або вмикатимете чи вимикатимете використання профілів. У засобі передбачено можливість перенесення усіх відповідних даних:</para>
       <para
 >На наведеному нижче знімку вікна можна бачити приклад засобу перенесення профілів після вмикання використання профілів:</para>
       <screenshot>
@@ -2550,17 +2548,17 @@
         </mediaobject>
       </screenshot>
       <para
->The old profile (<guilabel
->&lt;Default Profile&gt;</guilabel
-> in this case) is listed under <guilabel
->Old Profile</guilabel
->. Under <guilabel
->New Profile</guilabel
-> you can choose the profile from the drop-down menu to which the settings should be migrated. The first profile in the list is preselected. Clicking the <guibutton
->OK</guibutton
-> button migrates the settings. Clicking <guibutton
->Cancel</guibutton
-> cancels the action.</para>
+>У списку <guilabel
+>Старий профіль</guilabel
+> буде наведено дані старого профілю (у цьому випадку профілю <guilabel
+>&lt;Типовий профіль&gt;</guilabel
+>). За допомогою пункту <guilabel
+>Новий профіль</guilabel
+> ви можете вибрати, куди слід перенести параметри, за допомогою спадного меню. Попередньо буде вибрано перший профіль у списку. Після натискання кнопки <guibutton
+>Гаразд</guibutton
+> значення параметрів буде перенесено. Натисканням кнопки <guibutton
+>Скасувати</guibutton
+> можна скасувати дію.</para>
       <note
 ><para
 >Щоб скористатися допоміжним засобом перенесення, коли ви вмикаєте використання профілів уперше, вам слід увімкнути його використання тоді ж, коли ви вмикаєте використання профілів.</para
@@ -2589,7 +2587,7 @@
 ></listitem>
         <listitem
 ><para
->All shares that were previously mounted under the newly activated profile are remounted.</para
+>Буде повторно змонтовано усі спільні ресурси, які раніше було змонтовано у задіяному профілі.</para
 ></listitem>
         <listitem
 ><para
@@ -2597,7 +2595,7 @@
 ></listitem>
       </itemizedlist>
       <para
->So, don't be surprised when things change after you select a different profile ...</para>
+>Отже, не дивуйтеся, якщо після вибору іншого профілю усе зміниться…</para>
     </sect2>
   </sect1>
 
@@ -8348,8 +8346,31 @@ ntlm auth = yes
 >Додавання закладок</link
 >.</para>
         </listitem>
-      </varlistentry
->      
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>C</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Мережа</guimenu
+> <guimenuitem
+>Додати нетипові параметри</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled. Read the <link linkend="custom_settings_adding"
+>Adding Custom Settings</link
+> section for more details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8392,28 +8413,6 @@ ntlm auth = yes
 >Відкрити <link linkend="network_neighborhood_browser_authentication"
 >діалогове вікно розпізнавання</link
 >. За допомогою цього діалогового вікна ви зможете вказати ім’я користувача і пароль для доступу до вказаного сервера або спільного ресурсу. Якщо не позначено жодного з пунктів елементів мережі або робочої групи, цей пункт меню буде вимкнено.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice
-><shortcut
-> <keycombo action="simul"
-> &Ctrl; <keycap
->C</keycap
-> </keycombo
-> </shortcut
-> <guimenu
->Мережа</guimenu
-> <guimenuitem
->Додати нетипові параметри</guimenuitem
-> </menuchoice>
-        </term>
-        <listitem>
-          <para
->Відкрити <link linkend="network_neighborhood_browser_defining_custom_settings"
->діалогове вікно редактора нетипових параметрів</link
->. За допомогою цього вікна ви зможете визначити декілька нетипових параметрів позначеного сервера або спільного ресурсу. Якщо не позначено жодного з пунктів елементів мережі або робочої групи, цей пункт меню буде вимкнено.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8629,8 +8628,31 @@ ntlm auth = yes
 >Додавання закладок</link
 >.</para>
         </listitem>
-      </varlistentry
->   
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>C</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Мережа</guimenu
+> <guimenuitem
+>Додати нетипові параметри</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor. You can set several custom settings for the selected share. Read the <link linkend="custom_settings_adding"
+>Adding Custom Settings</link
+> section for more details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8753,9 +8775,9 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><guimenu
->Закладки</guimenu
+>Bookmarks</guimenu
 > <guimenuitem
->Змонтувати всі закладки</guimenuitem
+>Mount Bookmarks</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8924,9 +8946,9 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Якщо користування програмою супроводжується аварійними завершеннями її роботи, долучіть повне зворотне трасування. Для цього рекомендуємо вам зібрати &smb4k; із діагностичними символами. Опис процедури збирання можна знайти у файлі <filename
->README</filename
->, який постачається із початковими кодами програми.</para
+>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename
+>README.md</filename
+> file shipped in the sources.</para
 ></listitem>
     <listitem
 ><para
@@ -8955,9 +8977,9 @@ ntlm auth = yes
 >Подяки і ліцензія</title>
 
   <para
->Copyright &copy; 2003 - 2023, Alexander Reinholdt <email
+>Авторські права на програму належать Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
-></para>
+>, 2003–2023</para>
 
 <para
 >Переклад українською: Юрій Чорноіван <email

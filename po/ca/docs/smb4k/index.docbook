@@ -56,7 +56,7 @@
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->5 de gener de 2023</date>
+>15 de febrer de 2023</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -2395,10 +2395,10 @@
 > (només al &Linux;) </term>
           <listitem>
             <para
->You can define common settings related to mounting here. Check the <guibutton
->Always remount this share</guibutton
-> button if you want to remount the selected share every time you start &smb4k;. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_common_mount_settings"
->this section</link
+>Aquí podeu definir els paràmetres normals relacionats amb el muntatge. Activeu el botó <guibutton
+>Torna a muntar sempre aquesta compartició</guibutton
+> si voleu tornar a muntar la compartició seleccionada cada vegada que s'iniciï el &smb4k;. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
+>aquesta secció</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2409,8 +2409,8 @@
 > (només al &Linux;) </term>
           <listitem>
             <para
->You can define advanced settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_advanced_mount_settings"
->this section</link
+>Aquí podreu definir els paràmetres avançats relacionats amb el muntatge. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_advanced_mount_settings"
+>aquesta secció</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2421,8 +2421,8 @@
 > (només al BSD) </term>
           <listitem>
             <para
->You can define settings related to mounting here. For detailed information about these settings have a look at <link linkend="configuration_page_mounting_mount_settings"
->this section</link
+>Aquí podreu definir els paràmetres relacionats amb el muntatge. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_mount_settings"
+>aquesta secció</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2433,8 +2433,8 @@
           </term>
           <listitem>
             <para
->You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information about these settings have a look at <link linkend="configuration_page_network"
->this section</link
+>Podeu definir les versions mínima i màxima del protocol SMB, així com el port SMB que s'emprarà. A més, podreu decidir el port SMB i si s'ha d'emprar el Kerberos per a l'autenticació. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_network"
+>aquesta secció</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -2445,7 +2445,7 @@
           </term>
           <listitem>
             <para
->To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if the server should be woken up by sending a magic Wake-On-LAN packet before the network neighborhood is scanned and/or one of its shares is mounted.</para>
+>Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el servidor s'hauria de despertar enviant un paquet màgic Wake-On-LAN abans que s'explori el veïnatge de xarxa i/o es munti una de les seves comparticions.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2465,9 +2465,7 @@
 >Editar una configuració personalitzada</title>
 
       <para
->You can edit or reset the settings of individual network items by opening the <guilabel
->Custom Settings</guilabel
-> editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
+>You can edit or reset the settings of individual network items by opening the custom settings editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
 ><guilabel
 >Custom Settings</guilabel
 > configuration page</link
@@ -2484,9 +2482,9 @@
 >Perfils</title>
     
     <para
->El &smb4k; ofereix l'opció d'utilitzar perfils diferents. Estan destinats a una millor gestió dels diferents veïnatges de la xarxa, &pex;, si esteu utilitzant el portàtil a casa i també a la feina.</para>
+>El &smb4k; ofereix l'opció d'utilitzar perfils diferents. Estan destinats a facilitar la gestió dels diferents veïnatges de la xarxa, &pex;, si esteu utilitzant el portàtil a casa i també a la feina.</para>
     <para
->De manera predeterminada, l'ús de diferents perfils està inhabilitat i s'utilitza un perfil predeterminat: un perfil per a tot. La majoria dels usuaris no hauran de canviar-ho, perquè el comportament predeterminat compleix completament amb les seves necessitats. Tanmateix, per a alguns usuaris, aquesta característica pot ser molt útil.</para>
+>De manera predeterminada, l'ús de perfils està inhabilitat. La majoria dels usuaris no hauran de canviar-ho, perquè el comportament predeterminat compleix completament amb les seves necessitats. Tanmateix, aquesta característica pot ser útil per a alguns usuaris.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2502,15 +2500,15 @@
 >Casa</guilabel
 >, marcat com el perfil actiu. També podeu habilitar l'assistent per a la migració de perfils.</para>
       <para
->Hi ha dos perfils predefinits, <guilabel
->Casa</guilabel
-> i <guilabel
->Feina</guilabel
->, però podeu definir tants perfils com vulgueu. Un perfil nou serà afegit introduint el seu nom a la línia d'edició a la pàgina de configuració dels <guibutton
->Perfils</guibutton
-> i després fent clic a <guibutton
->Afegeix</guibutton
->.</para>
+>Two profiles are pre-defined, <guilabel
+>Home</guilabel
+> and <guilabel
+>Work</guilabel
+>, but you can define as many profiles as you want. A new profile is added by entering its name into the input line on the <guibutton
+>Profiles</guibutton
+> configuration page and clicking <guibutton
+>Add</guibutton
+> afterwards.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla de la pàgina de configuració «Perfils» (afegir un perfil)</screeninfo>
@@ -2525,7 +2523,7 @@
         </mediaobject>
       </screenshot>
       <para
->Si voleu canviar el nom d'un perfil, feu-hi clic i editeu la línia d'edició del nom. En fer clic a <guibutton
+>Si voleu canviar el nom d'un perfil, feu-hi clic i editeu el nom a la línia d'edició. En fer clic a <guibutton
 >Afegeix</guibutton
 > s'actualitzarà el nom a la vista de llista. Totes les opcions de configuració emmagatzemades es migraran sense problemes (sense l'ús de l'assistent per a la migració). Es pot eliminar un perfil seleccionant-lo a la vista de llista i fent clic a <guibutton
 >Elimina</guibutton
@@ -2535,21 +2533,7 @@
 >Mou avall</guibutton
 >.</para>
       <para
->En cas que hi hàgiu habilitat l'assistent per a la migració, sempre es llançarà quan elimineu un perfil o quan habiliteu/inhabiliteu l'ús de perfils. Proporciona la migració de totes les opcions de configuració rellevants.</para>
-      <itemizedlist>
-        <listitem
-><para
->d'un perfil que s'ha d'eliminar a un altre</para
-></listitem>
-        <listitem
-><para
->del perfil predeterminat a un altre perfil específic</para
-></listitem>
-        <listitem
-><para
->de tots els perfils torna al perfil predeterminat</para
-></listitem>
-      </itemizedlist>
+>En cas que hi hàgiu habilitat l'assistent de migració, sempre es llançarà quan elimineu un perfil o quan habiliteu/inhabiliteu l'ús de perfils. Té cura de la migració de totes les opcions de configuració rellevants.</para>
       <para
 >La captura de pantalla següent il·lustra l'assistent de migració de perfils després d'habilitar l'ús dels perfils:</para>
       <screenshot>
@@ -2572,9 +2556,9 @@
 >Perfil antic</guilabel
 >. Sota <guilabel
 >Perfil nou</guilabel
->, podreu utilitzar el menú desplegable per a triar el perfil al qual s'hauran de migrar les opcions de configuració. Estarà preseleccionat el primer perfil de la llista. En fer clic al botó <guibutton
+>, podreu utilitzar triar el perfil des del menú desplegable al qual s'hauran de migrar les opcions de configuració. Estarà preseleccionat el primer perfil de la llista. En fer clic al botó <guibutton
 >D'acord</guibutton
-> es migraran les opcions de configuració, fent clic a <guibutton
+> es migraran les opcions de configuració. Fent clic a <guibutton
 >Cancel·la</guibutton
 > es cancel·larà l'acció.</para>
       <note
@@ -8366,8 +8350,31 @@ ntlm auth = yes
 >Afegir adreces d'interès</link
 >.</para>
         </listitem>
-      </varlistentry
->      
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Xarxa</guimenu
+> <guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled. Read the <link linkend="custom_settings_adding"
+>Adding Custom Settings</link
+> section for more details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8410,28 +8417,6 @@ ntlm auth = yes
 >Obre el <link linkend="network_neighborhood_browser_authentication"
 >diàleg d'autenticació</link
 >. Pot proporcionar el nom d'usuari i la contrasenya per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o si heu seleccionat un grup de treball, aquesta acció estarà inhabilitada.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenu
->Xarxa</guimenu
-> <guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
-> </menuchoice>
-        </term>
-        <listitem>
-          <para
->Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
->Configuració personalitzada</link
->. Podeu establir diverses opcions personalitzades per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o un grup de treball, aquesta acció estarà inhabilitada.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8647,8 +8632,31 @@ ntlm auth = yes
 >Afegir adreces d'interès</link
 >.</para>
         </listitem>
-      </varlistentry
->   
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Xarxa</guimenu
+> <guimenuitem
+>Afegeix una configuració personalitzada</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Custom Settings</link
+> editor. You can set several custom settings for the selected share. Read the <link linkend="custom_settings_adding"
+>Adding Custom Settings</link
+> section for more details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8771,9 +8779,9 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><guimenu
->Adreces d'interès</guimenu
+>Bookmarks</guimenu
 > <guimenuitem
->Munta totes les adreces d'interès</guimenuitem
+>Mount Bookmarks</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8942,9 +8950,9 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Si heu experimentat una fallada, adjunteu una traça inversa completa. Per a això, es recomana tornar a compilar el &smb4k; amb els símbols de depuració. El com es fa s'esmenta al fitxer <filename
->README</filename
-> del codi font.</para
+>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename
+>README.md</filename
+> file shipped in the sources.</para
 ></listitem>
     <listitem
 ><para
@@ -8973,7 +8981,7 @@ ntlm auth = yes
 >Crèdits i llicència</title>
 
   <para
->Copyright &copy; 2003 - 2021, Alexander Reinholdt <email
+>Copyright &copy; 2003 - 2023, Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
 ></para>
 
