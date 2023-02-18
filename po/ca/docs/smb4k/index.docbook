@@ -2465,11 +2465,11 @@
 >Editar una configuració personalitzada</title>
 
       <para
->You can edit or reset the settings of individual network items by opening the custom settings editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
-><guilabel
->Custom Settings</guilabel
-> configuration page</link
->, where you also can edit or remove the desired settings.</para>
+>Podeu editar o restablir la configuració d'elements de xarxa individuals obrint l'editor de configuració personalitzada. La <link linkend="configuration_page_custom_settings"
+>pàgina <guilabel
+>Configuració personalitzada</guilabel
+></link
+> proporciona un resum complet de tots els paràmetres personalitzats, on també podeu editar o eliminar els paràmetres desitjats.</para>
     </sect2>
   </sect1>
 
@@ -2500,15 +2500,15 @@
 >Casa</guilabel
 >, marcat com el perfil actiu. També podeu habilitar l'assistent per a la migració de perfils.</para>
       <para
->Two profiles are pre-defined, <guilabel
->Home</guilabel
-> and <guilabel
->Work</guilabel
->, but you can define as many profiles as you want. A new profile is added by entering its name into the input line on the <guibutton
->Profiles</guibutton
-> configuration page and clicking <guibutton
->Add</guibutton
-> afterwards.</para>
+>Hi ha dos perfils predefinits, <guilabel
+>Casa</guilabel
+> i <guilabel
+>Feina</guilabel
+>, però podeu definir tants perfils com vulgueu. Un perfil nou serà afegit introduint el seu nom a la línia d'entrada a la pàgina de configuració dels <guibutton
+>Perfils</guibutton
+> i després fent clic a <guibutton
+>Afegeix</guibutton
+>.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla de la pàgina de configuració «Perfils» (afegir un perfil)</screeninfo>
@@ -8368,11 +8368,11 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
->Custom Settings</link
-> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled. Read the <link linkend="custom_settings_adding"
->Adding Custom Settings</link
-> section for more details.</para>
+>Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
+>. Podeu establir diverses opcions personalitzades per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o un grup de treball, aquesta acció estarà inhabilitada. Per a més detalls, llegiu la secció <link linkend="custom_settings_adding"
+>Afegir una configuració personalitzada</link
+>.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8650,11 +8650,11 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
->Custom Settings</link
-> editor. You can set several custom settings for the selected share. Read the <link linkend="custom_settings_adding"
->Adding Custom Settings</link
-> section for more details.</para>
+>Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Configuració personalitzada</link
+>. Podeu establir diverses opcions personalitzades per a la compartició seleccionada. Per a més detalls, llegiu la secció <link linkend="custom_settings_adding"
+>Afegir una configuració personalitzada</link
+>.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8779,9 +8779,9 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><guimenu
->Bookmarks</guimenu
+>Adreces d'interès</guimenu
 > <guimenuitem
->Mount Bookmarks</guimenuitem
+>Munta les adreces d'interès</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8950,9 +8950,9 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename
+>Si heu experimentat una fallada, adjunteu una traça inversa completa. Per a això, es recomana tornar a compilar el &smb4k; amb els símbols de depuració. El com es fa s'esmenta al fitxer <filename
 >README.md</filename
-> file shipped in the sources.</para
+> del codi font.</para
 ></listitem>
     <listitem
 ><para

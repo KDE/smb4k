@@ -2463,11 +2463,11 @@
 >Редагування нетипових параметрів</title>
 
       <para
->You can edit or reset the settings of individual network items by opening the custom settings editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
-><guilabel
->Custom Settings</guilabel
-> configuration page</link
->, where you also can edit or remove the desired settings.</para>
+>Ви можете редагувати або скинути параметри для окремих записів мережі за допомогою вікна редактора нетипових параметрів. Повний огляд усіх нетипових параметрів наведено на <link linkend="configuration_page_custom_settings"
+>сторінці налаштувань <guilabel
+>Нетипові параметри</guilabel
+></link
+>. Там ви можете також редагувати або вилучити бажані параметри.</para>
     </sect2>
   </sect1>
 
@@ -2498,15 +2498,15 @@
 >Домашній</guilabel
 >. Ви також можете увімкнути допоміжний засіб перенесення профілів.</para>
       <para
->Two profiles are pre-defined, <guilabel
->Home</guilabel
-> and <guilabel
->Work</guilabel
->, but you can define as many profiles as you want. A new profile is added by entering its name into the input line on the <guibutton
->Profiles</guibutton
-> configuration page and clicking <guibutton
->Add</guibutton
-> afterwards.</para>
+>Попередньо визначено два профілі, <guilabel
+>Домашній</guilabel
+> і <guilabel
+>Робочий</guilabel
+>. Ви також можете визначити довільну кількість інших профілів. Щоб додати профіль, введіть його назву у рядок редагування на сторінці налаштовування <guibutton
+>Профілі</guibutton
+> і натисніть кнопку <guibutton
+>Додати</guibutton
+>.</para>
       <screenshot>
         <screeninfo
 >Знімок сторінки налаштовування профілів (додавання профілю)</screeninfo>
@@ -8364,11 +8364,11 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
->Custom Settings</link
-> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled. Read the <link linkend="custom_settings_adding"
->Adding Custom Settings</link
-> section for more details.</para>
+>Відкрити <link linkend="network_neighborhood_browser_defining_custom_settings"
+>діалогове вікно редактора нетипових параметрів</link
+>. За допомогою цього вікна ви зможете визначити декілька нетипових параметрів позначеного сервера або спільного ресурсу. Якщо не позначено жодного з пунктів елементів мережі або робочої групи, цей пункт меню буде вимкнено. Докладніший опис можна знайти у розділі щодо <link linkend="custom_settings_adding"
+>додавання нетипових параметрів</link
+>.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8646,11 +8646,11 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
->Custom Settings</link
-> editor. You can set several custom settings for the selected share. Read the <link linkend="custom_settings_adding"
->Adding Custom Settings</link
-> section for more details.</para>
+>Відкрити <link linkend="network_neighborhood_browser_defining_custom_settings"
+>діалогове вікно редактора нетипових параметрів</link
+>. За допомогою цього вікна ви зможете визначити декілька нетипових параметрів позначеного спільного ресурсу. Докладніший опис можна знайти у розділі щодо <link linkend="custom_settings_adding"
+>додавання нетипових параметрів</link
+>.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8775,9 +8775,9 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><guimenu
->Bookmarks</guimenu
+>Закладки</guimenu
 > <guimenuitem
->Mount Bookmarks</guimenuitem
+>Змонтувати закладки</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8946,9 +8946,9 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename
+>Якщо користування програмою супроводжується аварійними завершеннями її роботи, долучіть повне зворотне трасування. Для цього рекомендуємо вам зібрати &smb4k; із діагностичними символами. Опис процедури збирання можна знайти у файлі <filename
 >README.md</filename
-> file shipped in the sources.</para
+>, який постачається із початковими кодами програми.</para
 ></listitem>
     <listitem
 ><para

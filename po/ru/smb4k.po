@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-05 00:48+0000\n"
+"POT-Creation-Date: 2023-02-18 00:58+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -65,8 +65,9 @@ msgstr ""
 "использованием протокола Samba"
 
 #: smb4k/main.cpp:47
-#, kde-format
-msgid "© 2003-2022 Alexander Reinholdt"
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
+msgid "© 2003-2023 Alexander Reinholdt"
 msgstr "© Alexander Reinholdt, 2003-2022"
 
 #: smb4k/main.cpp:56

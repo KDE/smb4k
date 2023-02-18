@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-05 00:48+0000\n"
+"POT-Creation-Date: 2023-02-18 00:58+0000\n"
 "PO-Revision-Date: 2023-02-15 11:05\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -55,8 +55,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "多功能网上邻居浏览器和 Samba 共享挂载工具"
 
 #: smb4k/main.cpp:47
-#, kde-format
-msgid "© 2003-2022 Alexander Reinholdt"
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
+msgid "© 2003-2023 Alexander Reinholdt"
 msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56

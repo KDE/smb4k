@@ -2445,11 +2445,11 @@
 >Aangepaste instellingen bewerken</title>
 
       <para
->You can edit or reset the settings of individual network items by opening the custom settings editor. A complete overview of all custom settings provides the <link linkend="configuration_page_custom_settings"
+>U kunt de instellingen van individuele netwerkitems bewerken door de bewerker aangepaste instellingen te openen. Een compleet overzicht van alle aangepaste instellingen levert de <link linkend="configuration_page_custom_settings"
 ><guilabel
->Custom Settings</guilabel
-> configuration page</link
->, where you also can edit or remove the desired settings.</para>
+>Aangepaste instellingen</guilabel
+> configuratiepagina</link
+>, waar u ook de gewenste instellingen kunt bewerken of verwijderen.</para>
     </sect2>
   </sect1>
 
@@ -2480,15 +2480,15 @@
 >Thuis</guilabel
 > profiel. zal als actief profiel worden gebruikt. U kunt ook de assistent voor migratie van profielen inschakelen.</para>
       <para
->Two profiles are pre-defined, <guilabel
->Home</guilabel
-> and <guilabel
->Work</guilabel
->, but you can define as many profiles as you want. A new profile is added by entering its name into the input line on the <guibutton
->Profiles</guibutton
-> configuration page and clicking <guibutton
->Add</guibutton
-> afterwards.</para>
+>Er zijn al twee profielen voorgedefinieerd, <guilabel
+>Thuis</guilabel
+> en <guilabel
+>Werk</guilabel
+>, maar u kunt net zo veel profielen aanmaken als u wilt. U voegt een nieuw profiel toe door zijn naam in de invoerregel in het configuratievenster <guibutton
+>Profielen</guibutton
+> in te voeren en daarna op de knop <guibutton
+>Toevoegen</guibutton
+> te klikken.</para>
       <screenshot>
         <screeninfo
 >Schermafdruk van de instellingenpagina voor Profielen (profiel toevoegen)</screeninfo>
@@ -8356,11 +8356,11 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
->Custom Settings</link
-> editor. You can set several custom settings for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled. Read the <link linkend="custom_settings_adding"
->Adding Custom Settings</link
-> section for more details.</para>
+>Open het bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
+>. U kunt verschillende persoonlijke instellingen voor de geselecteerde server of share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd. Lees de sectie <link linkend="custom_settings_adding"
+>Aangepaste instellingen toevoegen</link
+> voor meer details.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8638,11 +8638,11 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Open the <link linkend="network_neighborhood_browser_defining_custom_settings"
->Custom Settings</link
-> editor. You can set several custom settings for the selected share. Read the <link linkend="custom_settings_adding"
->Adding Custom Settings</link
-> section for more details.</para>
+>Open het bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
+>. U kunt verschillende persoonlijke instellingen voor de geselecteerde share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd. Lees de sectie <link linkend="custom_settings_adding"
+>Aangepaste instellingen toevoegen</link
+> voor meer details.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8767,9 +8767,9 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><guimenu
->Bookmarks</guimenu
-> <guimenuitem
->Mount Bookmarks</guimenuitem
+>Bladwijzers</guimenu
+><guimenuitem
+>Bladwijzers aankoppelen</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8942,9 +8942,9 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename
+>Als u crashes ervaart, voeg dan een volledige backtrace bij. Hiervoor is nodig &smb4k; te (her)compileren het met debugging symbolen. Hoe dit is gedaan is beschreven in het bestand <filename
 >README.md</filename
-> file shipped in the sources.</para
+> meegeleverd in de broncode.</para
 ></listitem>
     <listitem
 ><para
