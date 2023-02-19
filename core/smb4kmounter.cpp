@@ -414,18 +414,20 @@ void Smb4KMounter::import(bool checkInaccessible)
                             }
                         }
 
-                        // Tell the program and the user that the share was mounted. Also, reset the
-                        // counter of newly mounted shares, if necessary.
-                        d->newlyMounted += 1;
                         Q_EMIT mounted(importedShare);
 
-                        if (!isRunning() && d->firstImportDone && d->importedShares.isEmpty()) {
-                            if (d->newlyMounted > 1) {
-                                Smb4KNotification::sharesMounted(d->newlyMounted);
-                            } else {
-                                Smb4KNotification::shareMounted(importedShare);
+                        // Do not notify the user on first import
+                        if (d->firstImportDone) {
+                            d->newlyMounted += 1;
+
+                            if (!isRunning() && d->importedShares.isEmpty()) {
+                                if (d->newlyMounted > 1) {
+                                    Smb4KNotification::sharesMounted(d->newlyMounted);
+                                } else {
+                                    Smb4KNotification::shareMounted(importedShare);
+                                }
+                                d->newlyMounted = 0;
                             }
-                            d->newlyMounted = 0;
                         }
                     } else {
                         d->newlyMounted = 0;
