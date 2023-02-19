@@ -48,7 +48,7 @@ void Smb4KNotification::shareMounted(const SharePtr &share)
                                                                 0,
                                                                 KIconLoader::DefaultState,
                                                                 QStringList(QStringLiteral("emblem-mounted"))));
-        notification->setActions(QStringList(i18n("Open")));
+        notification->setActions(QStringList(i18nc("Open the contents of the share with the file manager", "Open")));
 
         QObject::connect(notification, &KNotification::action1Activated, [&]() {
             KIO::OpenUrlJob *job = new KIO::OpenUrlJob(QUrl::fromLocalFile(share->path()), QStringLiteral("inode/directory"));
