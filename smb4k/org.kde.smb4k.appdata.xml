@@ -23,6 +23,7 @@
   <name xml:lang="ia">Smb4K</name>
   <name xml:lang="id">Smb4K</name>
   <name xml:lang="it">Smb4K</name>
+  <name xml:lang="ka">Smb4K</name>
   <name xml:lang="ko">Smb4K</name>
   <name xml:lang="nds">Smb4K</name>
   <name xml:lang="nl">Smb4K</name>
@@ -142,6 +143,7 @@
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
     <p xml:lang="it">Funzionalità:</p>
+    <p xml:lang="ka">ფუნქციები:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nds">Markmalen:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
@@ -233,6 +235,7 @@
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
       <li xml:lang="id">Pengaitan dan pelepaskaitan berbagi</li>
       <li xml:lang="it">Montaggio e smontaggio delle condivisioni</li>
+      <li xml:lang="ka">გაზიარებების მიმაგრება და მოხსნა</li>
       <li xml:lang="ko">공유 마운트 및 마운트 해제</li>
       <li xml:lang="nds">Freegaven in- un uthangen</li>
       <li xml:lang="nl">Aan- en afkoppelen van gedeelde mappen</li>
@@ -385,6 +388,7 @@
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
       <li xml:lang="id">Pencarian jaringan</li>
       <li xml:lang="it">Ricerca in rete</li>
+      <li xml:lang="ka">ქსელში ძებნა</li>
       <li xml:lang="ko">네트워크 검색</li>
       <li xml:lang="nds">Nettwarksöök</li>
       <li xml:lang="nl">Netwerk doorzoeken</li>
@@ -446,6 +450,7 @@
       <li xml:lang="ia">Authentication predefinite</li>
       <li xml:lang="id">Login baku</li>
       <li xml:lang="it">Nome utente predefinito</li>
+      <li xml:lang="ka">ნაგულისხმები მომხმარებელი</li>
       <li xml:lang="ko">기본 로그인</li>
       <li xml:lang="nds">Standardanmellen</li>
       <li xml:lang="nl">Standaard aanmelden</li>
@@ -537,6 +542,7 @@
       <li xml:lang="gl">Fornece un trebello na área de notificación.</li>
       <li xml:lang="id">Widget system tray</li>
       <li xml:lang="it">Oggetto per il vassoio di sistema</li>
+      <li xml:lang="ka">სისტემის კუთხეში ხატულის ჩართვა</li>
       <li xml:lang="ko">시스템 트레이 위젯</li>
       <li xml:lang="nds">Systeemafsnitt-Lüttprogramm</li>
       <li xml:lang="nl">Widget in systeemvak</li>
@@ -567,6 +573,7 @@
       <li xml:lang="gl">Permite usar opcións avanzadas de montaxe</li>
       <li xml:lang="id">Dukungan opsi kait tingkat-lanjut</li>
       <li xml:lang="it">Supporto alle opzioni avanzate di montaggio</li>
+      <li xml:lang="ka">მიმაგრების დამატებითი პარამეტრების მხარდაჭერა</li>
       <li xml:lang="ko">고급 마운트 옵션 지원</li>
       <li xml:lang="nl">Ondersteuning van geavanceerde opties voor aankoppelen</li>
       <li xml:lang="pl">Obsługa rozszerzonych możliwości podpinania</li>
@@ -595,6 +602,7 @@
       <li xml:lang="gl">Permite usar impresoras compartidas.</li>
       <li xml:lang="id">Dukungan berbagi printer</li>
       <li xml:lang="it">Supporto alla condivisione di stampanti</li>
+      <li xml:lang="ka">პრინტერის გაზიარების მხარდაჭერა</li>
       <li xml:lang="ko">프린터 공유 지원</li>
       <li xml:lang="nds">Ünnerstütten vun Druckerfreegaven</li>
       <li xml:lang="nl">Ondersteuning van gedeelde printers</li>
@@ -626,6 +634,7 @@
       <li xml:lang="gl">Compatibilidade con KWallet.</li>
       <li xml:lang="id">Dukungan KWallet</li>
       <li xml:lang="it">Supporto a KWallet</li>
+      <li xml:lang="ka">KWallet-ის მხარდაჭერა</li>
       <li xml:lang="ko">KWallet 지원</li>
       <li xml:lang="nds">KWallet-Ünnerstütten</li>
       <li xml:lang="nl">Ondersteuning van KWallet</li>
@@ -746,6 +755,7 @@
       <li xml:lang="gl">Ofrece funcionalidades de espertar na rede (Wake-On-LAN).</li>
       <li xml:lang="id">Kemampuan Wake-On-LAN</li>
       <li xml:lang="it">Funzionalità Wake-On-LAN</li>
+      <li xml:lang="ka">ქსელით-გაღვიძების შესაძლებლობა</li>
       <li xml:lang="ko">Wake-On-LAN 기능</li>
       <li xml:lang="nds">Kann OpWaken-op-LAN (WOL)</li>
       <li xml:lang="nl">Vermogen voor Wake-On-LAN</li>
@@ -776,6 +786,7 @@
       <li xml:lang="gl">Ofrece integración co escritorio mediante un plasmoide.</li>
       <li xml:lang="id">Plasmoid untuk integrasi desktop</li>
       <li xml:lang="it">Plasmoide per l'integrazione desktop</li>
+      <li xml:lang="ka">პლაზმოიდი სამუშაო მაგიდასთან ინტეგრაციისთვის</li>
       <li xml:lang="ko">Plasmoid를 통한 데스크톱 통합</li>
       <li xml:lang="nds">Plasma-Lüttprogramm för't Integreren na den Schriefdisch</li>
       <li xml:lang="nl">Plasmoid voor bureaubladintegratie</li>
@@ -870,6 +881,7 @@
       <caption xml:lang="gl">A xanela principal</caption>
       <caption xml:lang="id">Jendela utama</caption>
       <caption xml:lang="it">La finestra principale</caption>
+      <caption xml:lang="ka">მთავარი ფანჯარა</caption>
       <caption xml:lang="ko">주 창</caption>
       <caption xml:lang="nds">Dat Hööftfinster</caption>
       <caption xml:lang="nl">Het hoofdvenster</caption>
@@ -904,6 +916,7 @@
       <caption xml:lang="gl">O plasmoide</caption>
       <caption xml:lang="id">Plasmoid</caption>
       <caption xml:lang="it">Il plasmoide</caption>
+      <caption xml:lang="ka">პლაზმოიდი</caption>
       <caption xml:lang="ko">Plasmoid</caption>
       <caption xml:lang="nds">Dat Plasma-Lüttprogramm</caption>
       <caption xml:lang="nl">De plasmoid</caption>
