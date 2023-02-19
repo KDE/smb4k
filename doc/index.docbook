@@ -35,7 +35,7 @@
     <holder>Alexander Reinholdt</holder>
   </copyright>
   <legalnotice>&underFDL;</legalnotice>
-  <date>2022-02-15</date>
+  <date>2023-02-19</date>
   <releaseinfo>&smb4k; 3.2.0</releaseinfo><!--FIXME change releaseinfo number-->
   <abstract>
     <para>&smb4k; is an advanced network neighborhood browser and &Samba; share mounting utility.</para>
