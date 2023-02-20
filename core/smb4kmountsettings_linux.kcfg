@@ -184,7 +184,7 @@
     </entry>
     <entry name="NoLocking" type="Bool">
       <label>Do not send byte range lock requests</label>
-      <whatsthis>Do not send byte range lock requests to the server. This is necessary for certain applications that break with cifs style mandatory byte range locks (and most cifs servers do not yet support requesting advisory byte range locks).</whatsthis>
+      <whatsthis>Do not send byte range lock requests to the server. This is necessary for certain applications that break with CIFS style mandatory byte range locks (and most CIFS servers do not yet support requesting advisory byte range locks).</whatsthis>
       <default>false</default>
     </entry>
     <entry name="TranslateReservedChars" type="Bool">
