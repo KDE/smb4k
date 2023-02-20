@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-02 00:58+0000\n"
+"POT-Creation-Date: 2023-02-20 00:57+0000\n"
 "PO-Revision-Date: 2023-02-15 11:05\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2162,7 +2162,7 @@ msgstr "用户名："
 msgid "Clear List"
 msgstr "清除列表"
 
-#: smb4kmounter.cpp:755
+#: smb4kmounter.cpp:757
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2171,7 +2171,7 @@ msgstr ""
 "<p>共享 <b>%1</b> 已挂载到 <br><b>%2</b>，所有者用户为 <b>%3</b>。</p><p>您确"
 "定要卸载它吗？</p>"
 
-#: smb4kmounter.cpp:760
+#: smb4kmounter.cpp:762
 #, kde-format
 msgid "Foreign Share"
 msgstr "外部共享"
@@ -3309,7 +3309,9 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>共享 <b>%1</b> 已挂载到 <b>%2</b>。</p>"
 
 #: smb4knotification.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open"
+msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "打开"
 

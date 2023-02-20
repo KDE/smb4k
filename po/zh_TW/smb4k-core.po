@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-02 00:58+0000\n"
+"POT-Creation-Date: 2023-02-20 00:57+0000\n"
 "PO-Revision-Date: 2019-05-14 22:35+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -2068,14 +2068,14 @@ msgstr "使用者："
 msgid "Clear List"
 msgstr ""
 
-#: smb4kmounter.cpp:755
+#: smb4kmounter.cpp:757
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:760
+#: smb4kmounter.cpp:762
 #, fuzzy, kde-format
 #| msgid "Mount Share"
 msgid "Foreign Share"
@@ -3153,6 +3153,7 @@ msgstr "目錄 %1 無法建立。"
 
 #: smb4knotification.cpp:51
 #, fuzzy, kde-format
+msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "&Konqueror"
 
