@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-02 00:58+0000\n"
+"POT-Creation-Date: 2023-02-20 00:57+0000\n"
 "PO-Revision-Date: 2023-01-09 10:25+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2347,7 +2347,7 @@ msgstr "Usuari:"
 msgid "Clear List"
 msgstr "Neteja la llista"
 
-#: smb4kmounter.cpp:755
+#: smb4kmounter.cpp:757
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2356,7 +2356,7 @@ msgstr ""
 "<p>La compartició <b>%1</b> està muntada a <br><b>%2</b> i és propietat de "
 "l'usuari <b>%3</b>.</p<p>Esteu segur que la voleu desmuntar?</p>"
 
-#: smb4kmounter.cpp:760
+#: smb4kmounter.cpp:762
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartició d'aliens"
@@ -3573,7 +3573,9 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>La compartició <b>%1</b> s'ha muntat a <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open"
+msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Obre"
 

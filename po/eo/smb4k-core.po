@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-02 00:58+0000\n"
+"POT-Creation-Date: 2023-02-20 00:57+0000\n"
 "PO-Revision-Date: 2009-11-15 12:06+0100\n"
 "Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -2026,14 +2026,14 @@ msgstr "Uzanto:"
 msgid "Clear List"
 msgstr "Forigi la liston"
 
-#: smb4kmounter.cpp:755
+#: smb4kmounter.cpp:757
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:760
+#: smb4kmounter.cpp:762
 #, kde-format
 msgid "Foreign Share"
 msgstr ""
@@ -3115,7 +3115,9 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr ""
 
 #: smb4knotification.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open"
+msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Malfermi"
 

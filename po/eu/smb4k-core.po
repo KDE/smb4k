@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-02 00:58+0000\n"
+"POT-Creation-Date: 2023-02-20 00:57+0000\n"
 "PO-Revision-Date: 2023-01-07 09:08+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2319,7 +2319,7 @@ msgstr "Erabiltzailea:"
 msgid "Clear List"
 msgstr "Garbitu zerrenda"
 
-#: smb4kmounter.cpp:755
+#: smb4kmounter.cpp:757
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2328,7 +2328,7 @@ msgstr ""
 "<p><b>%1</b> partekatzea <br><b>%2</b>(e)an muntatuta dago eta jabea <b>%3</"
 "b> erabiltzailea du.</p><p>Benetan desmuntatu nahi duzu?</p>"
 
-#: smb4kmounter.cpp:760
+#: smb4kmounter.cpp:762
 #, kde-format
 msgid "Foreign Share"
 msgstr "Partekatze arrotza"
@@ -3543,7 +3543,9 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p><b>%1</b> partekatzea <b>%2</b>(e)an muntatu da.</p>"
 
 #: smb4knotification.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open"
+msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Ireki"
 
