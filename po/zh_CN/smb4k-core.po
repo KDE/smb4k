@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-20 00:57+0000\n"
+"POT-Creation-Date: 2023-02-21 00:59+0000\n"
 "PO-Revision-Date: 2023-02-15 11:05\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -3071,11 +3071,16 @@ msgstr "不发送字节范围锁定请求"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Do not send byte range lock requests to the server. This is necessary for "
+#| "certain applications that break with cifs style mandatory byte range "
+#| "locks (and most cifs servers do not yet support requesting advisory byte "
+#| "range locks)."
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
-"certain applications that break with cifs style mandatory byte range locks "
-"(and most cifs servers do not yet support requesting advisory byte range "
+"certain applications that break with CIFS style mandatory byte range locks "
+"(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
 "不向服务器发送字节范围锁定请求。某些与 CIFS 风格的强制性字节范围锁定不兼容的"

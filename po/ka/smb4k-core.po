@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-20 00:57+0000\n"
-"PO-Revision-Date: 2023-02-15 08:33+0100\n"
+"POT-Creation-Date: 2023-02-21 00:59+0000\n"
+"PO-Revision-Date: 2023-02-20 07:02+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: smb4k.kcfg:18
 #, kde-format
 msgid "Tab orientation:"
-msgstr ""
+msgstr "ჩანართის ორიენტაცია:"
 
 #. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:19
@@ -116,7 +116,7 @@ msgstr ""
 #: smb4k.kcfg:57
 #, kde-format
 msgid "Show the comment"
-msgstr ""
+msgstr "კომენტარის ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:58
@@ -137,6 +137,8 @@ msgstr ""
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
 msgstr ""
+"მინიშნება აჩვენებს სხვადასხვა ინფორმაციას მიმდინარე ქსელური ელემენტის "
+"შესახებ."
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:67
@@ -867,7 +869,7 @@ msgstr ""
 #: smb4k.kcfg:377
 #, kde-format
 msgid "Preserve permissions"
-msgstr ""
+msgstr "წვდომის უფლებების შენარჩუნება"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
 #: smb4k.kcfg:378
@@ -912,7 +914,7 @@ msgstr ""
 #: smb4k.kcfg:392
 #, kde-format
 msgid "Preserve access times"
-msgstr ""
+msgstr "წვდომის დროის შენარჩუნება"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
@@ -926,7 +928,7 @@ msgstr ""
 #: smb4k.kcfg:397
 #, kde-format
 msgid "Preserve create times"
-msgstr ""
+msgstr "შექმნის დროის შენარჩუნება"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
@@ -940,7 +942,7 @@ msgstr ""
 #: smb4k.kcfg:402
 #, kde-format
 msgid "Preserve group"
-msgstr ""
+msgstr "ჯგუფის შენარჩუნება"
 
 #. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:403
@@ -954,7 +956,7 @@ msgstr ""
 #: smb4k.kcfg:407
 #, kde-format
 msgid "Preserve owner"
-msgstr ""
+msgstr "მფლობელის შენარჩუნება"
 
 #. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
 #: smb4k.kcfg:408
@@ -1920,7 +1922,7 @@ msgstr "MAC მისამართი"
 #: smb4kcustomoptionsmanager_p.cpp:1033
 #, kde-format
 msgid "MAC Address:"
-msgstr ""
+msgstr "MAC მისამართი:"
 
 #: smb4kcustomoptionsmanager_p.cpp:482 smb4kcustomoptionsmanager_p.cpp:826
 #: smb4kcustomoptionsmanager_p.cpp:1051
@@ -1943,7 +1945,7 @@ msgstr ""
 #: smb4kcustomoptionsmanager_p.cpp:504 smb4kcustomoptionsmanager_p.cpp:848
 #, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr ""
+msgstr "ქსელით-გაღვიძების მორგება"
 
 #: smb4kcustomoptionsmanager_p.cpp:698
 #, kde-format
@@ -2012,7 +2014,7 @@ msgstr ""
 #: smb4kmounter_p.cpp:128
 #, kde-format
 msgid "Location:"
-msgstr ""
+msgstr "ადგილმდებარეობა:"
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -2068,7 +2070,7 @@ msgstr ""
 #, kde-format
 msgctxt "Bookmark this share. Show input widgets in the dialog for this."
 msgid "Bookmark >>"
-msgstr ""
+msgstr "სანიშნი >>"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -2089,7 +2091,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:21 smb4kmountsettings_linux.kcfg:26
 #, kde-format
 msgid "Group ID:"
-msgstr ""
+msgstr "ჯგუფის ID:"
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
@@ -2119,7 +2121,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:39 smb4kmountsettings_linux.kcfg:44
 #, kde-format
 msgid "Directory mode:"
-msgstr ""
+msgstr "საქაღალდის რეჟიმი:"
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -2134,7 +2136,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:48
 #, kde-format
 msgid "Use character sets"
-msgstr ""
+msgstr "სიმბოლოების სეტების გამოყენება"
 
 #. i18n: ectx: whatsthis, entry (UseCharacterSets), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
@@ -2152,7 +2154,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:53 smb4kmountsettings_linux.kcfg:64
 #, kde-format
 msgid "Client character set:"
-msgstr ""
+msgstr "კლიენტის სიმბოლოების კოდირება:"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
@@ -2300,7 +2302,7 @@ msgstr "tis-620"
 #: smb4kmountsettings_bsd.kcfg:129
 #, kde-format
 msgid "Server character set:"
-msgstr ""
+msgstr "სერვერის სიმბოლოების კოდირება:"
 
 #. i18n: ectx: whatsthis, entry (ServerCodepage), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:130
@@ -2501,7 +2503,7 @@ msgstr "უნიკოდი"
 #: smb4kmountsettings_bsd.kcfg:235 smb4kmountsettings_linux.kcfg:298
 #, kde-format
 msgid "Mount prefix:"
-msgstr ""
+msgstr "მიმაგრების პრეფიქსი:"
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
@@ -2840,8 +2842,8 @@ msgstr ""
 #, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
-"certain applications that break with cifs style mandatory byte range locks "
-"(and most cifs servers do not yet support requesting advisory byte range "
+"certain applications that break with CIFS style mandatory byte range locks "
+"(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
 
@@ -3057,8 +3059,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr ""
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "გახსნა"
@@ -3283,7 +3284,7 @@ msgstr ""
 #: smb4kprofilemanager_p.cpp:116
 #, kde-format
 msgid "New Profile:"
-msgstr ""
+msgstr "ახალი პროფილი:"
 
 #: smb4kshare.cpp:192
 #, kde-format
@@ -3298,7 +3299,7 @@ msgstr "პრინტერი"
 #: smb4kshare.cpp:200
 #, kde-format
 msgid "IPC"
-msgstr ""
+msgstr "IPC"
 
 #: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
 #, kde-format

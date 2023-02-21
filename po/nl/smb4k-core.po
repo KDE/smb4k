@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-20 00:57+0000\n"
-"PO-Revision-Date: 2023-01-05 22:31+0100\n"
+"POT-Creation-Date: 2023-02-21 00:59+0000\n"
+"PO-Revision-Date: 2023-02-20 13:00+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -3297,11 +3297,16 @@ msgstr "Geen verzoeken voor vergrendelen van byte-reeksen verzenden"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Do not send byte range lock requests to the server. This is necessary for "
+#| "certain applications that break with cifs style mandatory byte range "
+#| "locks (and most cifs servers do not yet support requesting advisory byte "
+#| "range locks)."
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
-"certain applications that break with cifs style mandatory byte range locks "
-"(and most cifs servers do not yet support requesting advisory byte range "
+"certain applications that break with CIFS style mandatory byte range locks "
+"(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
 "Geen verzoeken voor vergrendelen van byte-reeksen naar de server verzenden. "
@@ -3547,8 +3552,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>De gedeelde map <b>%1</b> is aangekoppeld op <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Openen"

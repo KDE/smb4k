@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-18 00:58+0000\n"
-"PO-Revision-Date: 2023-02-18 07:02+0100\n"
+"PO-Revision-Date: 2023-02-20 06:59+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -180,6 +180,8 @@ msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
 "corresponding configuration page to fix it.</qt>"
 msgstr ""
+"<qt>აღმოჩენილია არასწორი პარამეტრი. ახლა შესაბამის გვერდზე გადაგიყვანთ, რათა "
+"ჩაასწოროთ ის.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
 #: smb4k/smb4kconfigpageprofiles.cpp:34
@@ -338,7 +340,7 @@ msgstr "CIFS-ის დამატებითი პარამეტრე�
 #: smb4k/smb4kconfigpagemounting.cpp:834
 #, kde-format
 msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr ""
+msgstr "<qt>შეიყვანეთ სასურველი პარამეტრები მძიმით გამოყოფილი სიის სახით.</qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:862
 #, kde-format

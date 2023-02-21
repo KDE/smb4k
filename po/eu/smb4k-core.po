@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-20 00:57+0000\n"
+"POT-Creation-Date: 2023-02-21 00:59+0000\n"
 "PO-Revision-Date: 2023-01-07 09:08+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -3295,11 +3295,16 @@ msgstr "Ez bidali byte barrutiak giltzatzeko eskaerarik"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Do not send byte range lock requests to the server. This is necessary for "
+#| "certain applications that break with cifs style mandatory byte range "
+#| "locks (and most cifs servers do not yet support requesting advisory byte "
+#| "range locks)."
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
-"certain applications that break with cifs style mandatory byte range locks "
-"(and most cifs servers do not yet support requesting advisory byte range "
+"certain applications that break with CIFS style mandatory byte range locks "
+"(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
 "Ez bidali zerbitzariari byte barrutiak giltzatzeko eskaerarik. Hori "
