@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-21 00:59+0000\n"
-"PO-Revision-Date: 2023-02-20 10:25+0100\n"
+"PO-Revision-Date: 2023-02-21 09:23+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -3322,12 +3322,7 @@ msgstr "No enviïs sol·licituds de bloqueig d'intervals de bytes"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not send byte range lock requests to the server. This is necessary for "
-#| "certain applications that break with cifs style mandatory byte range "
-#| "locks (and most cifs servers do not yet support requesting advisory byte "
-#| "range locks)."
+#, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
 "certain applications that break with CIFS style mandatory byte range locks "

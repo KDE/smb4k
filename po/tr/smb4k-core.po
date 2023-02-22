@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-21 00:59+0000\n"
-"PO-Revision-Date: 2023-02-20 17:00+0300\n"
+"PO-Revision-Date: 2023-02-21 22:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -3257,21 +3257,16 @@ msgstr "Bayt erimi kilit istekleri gönderme"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not send byte range lock requests to the server. This is necessary for "
-#| "certain applications that break with cifs style mandatory byte range "
-#| "locks (and most cifs servers do not yet support requesting advisory byte "
-#| "range locks)."
+#, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
 "certain applications that break with CIFS style mandatory byte range locks "
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
-"Sunucuya bayt erimi kilit istekleri gönderme. Bu, cifs tarzı zorunlu bayt "
+"Sunucuya bayt erimi kilit istekleri gönderme. Bu, CIFS tarzı zorunlu bayt "
 "erimi kilitlerini bozan kimi uygulamalar için gereklidir (ve henüz tavsiye "
-"niteliğinde bayt erimi kilitlerini istemeyi desteklemeyen çoğu cifs "
+"niteliğinde bayt erimi kilitlerini istemeyi desteklemeyen çoğu CIFS "
 "sunucuları için)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)

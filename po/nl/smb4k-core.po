@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-21 00:59+0000\n"
-"PO-Revision-Date: 2023-02-20 13:00+0100\n"
+"PO-Revision-Date: 2023-02-21 17:15+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -3297,12 +3297,7 @@ msgstr "Geen verzoeken voor vergrendelen van byte-reeksen verzenden"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not send byte range lock requests to the server. This is necessary for "
-#| "certain applications that break with cifs style mandatory byte range "
-#| "locks (and most cifs servers do not yet support requesting advisory byte "
-#| "range locks)."
+#, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
 "certain applications that break with CIFS style mandatory byte range locks "
@@ -3310,9 +3305,9 @@ msgid ""
 "locks)."
 msgstr ""
 "Geen verzoeken voor vergrendelen van byte-reeksen naar de server verzenden. "
-"Dit is nodig voor bepaalde toepassingen die breken met de stijl van cifs "
-"voor vergrendelen van byte-reeksen (en de meeste servers ondersteunen nog "
-"niet verzoeken geadviseerde vergrendeling van byte-reeksen."
+"Dit is nodig voor bepaalde toepassingen die breken met de stijl van CIFS "
+"voor vergrendelen van byte-reeksen (en de meeste CIFS-servers ondersteunen "
+"nog niet verzoeken geadviseerde vergrendeling van byte-reeksen."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
