@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-21 00:59+0000\n"
-"PO-Revision-Date: 2023-02-03 14:10+0100\n"
+"PO-Revision-Date: 2023-02-22 14:10+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -1959,7 +1959,7 @@ msgstr "Samba"
 #: smb4kcustomoptionsmanager_p.cpp:1073
 #, kde-format
 msgid "Wake-On-LAN"
-msgstr ""
+msgstr "Wake-On-LAN"
 
 #: smb4khomesshareshandler.cpp:128
 #, kde-format
@@ -3060,8 +3060,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr ""
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Otevřít"
