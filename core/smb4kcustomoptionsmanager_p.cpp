@@ -66,11 +66,11 @@ Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QW
 
     switch (m_options->type()) {
     case Host: {
-        description = new QLabel(i18n("<p>Define custom options for host <b>%1</b> and all the shares it provides.</p>", m_options->displayString()), header);
+        description = new QLabel(i18n("<p>Define custom settings for host <b>%1</b> and all the shares it provides.</p>", m_options->displayString()), header);
         break;
     }
     case Share: {
-        description = new QLabel(i18n("<p>Define custom options for share <b>%1</b>.</p>", m_options->displayString()), header);
+        description = new QLabel(i18n("<p>Define custom settings for share <b>%1</b>.</p>", m_options->displayString()), header);
         break;
     }
     default: {
