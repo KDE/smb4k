@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-21 00:59+0000\n"
-"PO-Revision-Date: 2023-02-20 19:12+0100\n"
+"PO-Revision-Date: 2023-02-22 10:32+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -3361,12 +3361,7 @@ msgstr "Ne pas envoyer de demandes de verrouillage de plage d’octets"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not send byte range lock requests to the server. This is necessary for "
-#| "certain applications that break with cifs style mandatory byte range "
-#| "locks (and most cifs servers do not yet support requesting advisory byte "
-#| "range locks)."
+#, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
 "certain applications that break with CIFS style mandatory byte range locks "
@@ -3375,9 +3370,9 @@ msgid ""
 msgstr ""
 "Ne pas envoyer de demandes de verrouillage de plage d’octets vers le "
 "serveur. Ceci est nécessaire pour certaines applications qui rompent avec "
-"les verrouillages de plage d’octets obligatoires de style « cifs » (et la "
-"plupart des serveurs « cifs » ne prennent pas encore en charge les "
-"verrouillages de plage d’octets informatifs)."
+"les verrouillages de plage d’octets obligatoires de style « CIFS » (et la "
+"plupart des serveurs « CIFS » ne prennent pas encore en charge les demandes "
+"de verrouillages de plage d’octets informatifs)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
