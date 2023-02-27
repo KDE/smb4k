@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 00:59+0000\n"
+"POT-Creation-Date: 2023-02-27 01:01+0000\n"
 "PO-Revision-Date: 2021-07-09 10:19+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2214,17 +2214,21 @@ msgid "Custom Settings"
 msgstr "Ρυθμίσεις προσάρτησης"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#| "provides.</p>"
 msgid ""
-"<p>Define custom options for host <b>%1</b> and all the shares it provides.</"
-"p>"
+"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
+"</p>"
 msgstr ""
 "<p>Καθορισμός προσαρμοσμένων επιλογών για τον υπολογιστή <b>%1</b> και όλους "
 "τους κοινούς πόρους που παρέχει.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, kde-format
-msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr ""
 "<p>Καθορισμός προσαρμοσμένων επιλογών για τον κοινό πόρο <b>%1</b>.</p>"
 

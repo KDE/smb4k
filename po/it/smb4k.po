@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-18 00:58+0000\n"
-"PO-Revision-Date: 2023-01-07 00:29+0100\n"
+"PO-Revision-Date: 2023-02-24 21:28+0100\n"
 "Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -57,10 +57,9 @@ msgstr ""
 "condivisioni Samba"
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format

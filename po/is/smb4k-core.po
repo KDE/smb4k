@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 00:59+0000\n"
+"POT-Creation-Date: 2023-02-27 01:01+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -1887,13 +1887,13 @@ msgstr "Tengi"
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, fuzzy, kde-format
 msgid ""
-"<p>Define custom options for host <b>%1</b> and all the shares it provides.</"
-"p>"
+"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
+"</p>"
 msgstr "Ekki tókst að útbúa möppuna %1."
 
 #: smb4kcustomoptionsmanager_p.cpp:73
 #, fuzzy, kde-format
-msgid "<p>Define custom options for share <b>%1</b>.</p>"
+msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr "Ekki tókst að útbúa möppuna %1."
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365

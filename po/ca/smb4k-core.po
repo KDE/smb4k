@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 00:59+0000\n"
+"POT-Creation-Date: 2023-02-27 01:01+0000\n"
 "PO-Revision-Date: 2023-02-21 09:23+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2209,17 +2209,21 @@ msgid "Custom Settings"
 msgstr "Configuració personalitzada"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#| "provides.</p>"
 msgid ""
-"<p>Define custom options for host <b>%1</b> and all the shares it provides.</"
-"p>"
+"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
+"</p>"
 msgstr ""
 "<p>Defineix les opcions personalitzades per al servidor <b>%1</b> i totes "
 "les comparticions que proporciona.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, kde-format
-msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr ""
 "<p>Defineix les opcions personalitzades per a la compartició <b>%1</b>.</p>"
 

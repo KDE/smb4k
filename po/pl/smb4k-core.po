@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 00:59+0000\n"
+"POT-Creation-Date: 2023-02-27 01:01+0000\n"
 "PO-Revision-Date: 2022-08-21 07:04+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -2169,17 +2169,21 @@ msgid "Custom Settings"
 msgstr "Ustawienia podpinania"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#| "provides.</p>"
 msgid ""
-"<p>Define custom options for host <b>%1</b> and all the shares it provides.</"
-"p>"
+"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
+"</p>"
 msgstr ""
 "<p>Określ własne opcje dla gospodarza <b>%1</b> i wszystkich zasobów jakie "
 "on zapewnia.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, kde-format
-msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr "<p>Określ własne opcje dla zasobu <b>%1</b>.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365

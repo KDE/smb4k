@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-21 00:59+0000\n"
+"POT-Creation-Date: 2023-02-27 01:01+0000\n"
 "PO-Revision-Date: 2022-07-13 11:14+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2096,17 +2096,21 @@ msgid "Custom Settings"
 msgstr "마운트 설정"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#| "provides.</p>"
 msgid ""
-"<p>Define custom options for host <b>%1</b> and all the shares it provides.</"
-"p>"
+"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
+"</p>"
 msgstr ""
 "<p><b>%1</b> 호스트와 호스트에 속한 모든 공유의 사용자 정의 옵션을 정의합니"
 "다.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, kde-format
-msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr "<p><b>%1</b> 공유의 사용자 정의 옵션을 정의합니다.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
