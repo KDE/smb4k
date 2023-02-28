@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-27 01:01+0000\n"
-"PO-Revision-Date: 2023-02-21 22:53+0300\n"
+"PO-Revision-Date: 2023-02-27 19:55+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2150,22 +2150,18 @@ msgid "Custom Settings"
 msgstr "Özel Ayarlar"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Sağlanan tüm paylaşımları ve <b>%1</b> sunucusu için özel seçenekleri "
-"tanımla.</p>"
+"<p>Sağlanan tüm paylaşımları ve <b>%1</b> sunucusu için özel ayarlar "
+"tanımlayın.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p><b>%1</b> paylaşımı için özel seçenekler tanımla.</p>"
+msgstr "<p><b>%1</b> paylaşımı için özel ayarlar tanımlayın.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709

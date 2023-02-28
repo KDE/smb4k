@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-27 01:01+0000\n"
-"PO-Revision-Date: 2023-02-21 09:54+0100\n"
+"PO-Revision-Date: 2023-02-27 09:03+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"X-Generator: Lokalize 22.12.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -2142,22 +2142,18 @@ msgid "Custom Settings"
 msgstr "Nastavitve po meri"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Določite možnosti po meri za gostitelja <b>%1</b> in skupne diske, ki jih "
-"ponuja.</p>"
+"<p>Določite nastavitve po meri za gostitelja <b>%1</b> in skupne diske, ki "
+"jih ponuja.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Določite možnosti po meri za skupni disk<b>%1</b>.</p>"
+msgstr "<p>Določite nastavitve po meri za skupni disk<b>%1</b>.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709

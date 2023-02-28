@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-27 01:01+0000\n"
-"PO-Revision-Date: 2023-01-28 17:08+0100\n"
+"PO-Revision-Date: 2023-02-25 16:53+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -3328,12 +3328,7 @@ msgstr "No enviar peticiones de bloqueo de rango de bytes"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not send byte range lock requests to the server. This is necessary for "
-#| "certain applications that break with cifs style mandatory byte range "
-#| "locks (and most cifs servers do not yet support requesting advisory byte "
-#| "range locks)."
+#, kde-format
 msgid ""
 "Do not send byte range lock requests to the server. This is necessary for "
 "certain applications that break with CIFS style mandatory byte range locks "
@@ -3341,8 +3336,8 @@ msgid ""
 "locks)."
 msgstr ""
 "No enviar peticiones de bloqueo de rango de bytes al servidor. Es necesario "
-"para ciertas aplicaciones que no siguen el estilo obligatorio de cifs de "
-"bloqueo de rango de bytes (y la mayoría de servidores cifs no soportan de "
+"para ciertas aplicaciones que no siguen el estilo obligatorio de CIFS de "
+"bloqueo de rango de bytes (y la mayoría de servidores CIFS no soportan de "
 "momento los bloqueos de rango de bytes recomendados)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
@@ -3582,8 +3577,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>El recurso compartido <b>%1</b> se ha montado en <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Abrir"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-27 01:01+0000\n"
-"PO-Revision-Date: 2023-02-22 14:10+0100\n"
+"PO-Revision-Date: 2023-02-27 14:44+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -1857,11 +1857,13 @@ msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
+"<p>Zadejte vlastní volby pro hostitele <b>%1</b> a všechna sdílení, která "
+"poskytuje.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
 #, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr ""
+msgstr "<p>Zadejte vlastní volby pro sdílení <b>%1</b>.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709

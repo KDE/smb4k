@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-27 01:01+0000\n"
-"PO-Revision-Date: 2023-02-21 17:15+0100\n"
+"PO-Revision-Date: 2023-02-27 10:46+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2187,22 +2187,18 @@ msgid "Custom Settings"
 msgstr "Aangepaste instellingen"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Definieer aangepaste opties voor host <b>%1</b> en alle shares die deze "
-"biedt.</p>"
+"<p>Definieer aangepaste instellingen voor host <b>%1</b> en alle shares die "
+"deze biedt.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Definieer eigen opties voor gedeelde map <b>%1</b>.</p>"
+msgstr "<p>Definieer eigen instellingen voor gedeelde map <b>%1</b>.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709
