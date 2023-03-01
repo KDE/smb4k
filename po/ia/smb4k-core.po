@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# giovanni <g.sora@tiscali.it>, 2021.
+# giovanni <g.sora@tiscali.it>, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-12-04 02:28+0000\n"
-"PO-Revision-Date: 2021-11-18 09:34+0100\n"
+"PO-Revision-Date: 2023-02-28 15:28+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:17
@@ -2830,7 +2830,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:231
 #, kde-format
 msgid "Cache mode:"
-msgstr ""
+msgstr "Modo de cache:"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
@@ -3154,32 +3154,33 @@ msgstr ""
 msgid ""
 "The network communication failed with the following error message: <s>%1</s>"
 msgstr ""
+"Le communication de rete falleva con le sequente message de error: <s>%1</s>"
 
 #: smb4kprofilemanager_p.cpp:52
 #, kde-format
 msgid "Profile Migration Assistant"
-msgstr ""
+msgstr "Assistente de Migration de Profilo"
 
 #: smb4kprofilemanager_p.cpp:105
 #, kde-format
 msgid "Migrate all relevant settings of one profile to another."
-msgstr ""
+msgstr "Migra tote preferentias notabile de un profilo a un altere."
 
 #: smb4kprofilemanager_p.cpp:122
 #, kde-format
 msgid "Old Profile:"
-msgstr ""
+msgstr "Vetere Profilo:"
 
 #: smb4kprofilemanager_p.cpp:129 smb4kprofilemanager_p.cpp:152
 #: smb4kprofilemanager_p.cpp:183 smb4kprofilemanager_p.cpp:194
 #, kde-format
 msgid "<Default Profile>"
-msgstr ""
+msgstr "<Default Profile>"
 
 #: smb4kprofilemanager_p.cpp:135
 #, kde-format
 msgid "<All Profiles>"
-msgstr ""
+msgstr "<All Profiles>"
 
 #: smb4kprofilemanager_p.cpp:145
 #, kde-format
