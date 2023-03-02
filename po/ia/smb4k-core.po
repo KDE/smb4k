@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-02-27 01:01+0000\n"
-"PO-Revision-Date: 2023-02-24 23:38+0100\n"
+"PO-Revision-Date: 2023-02-28 16:17+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -2926,7 +2926,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:231
 #, kde-format
 msgid "Cache mode:"
-msgstr ""
+msgstr "Modo de cache:"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
@@ -3246,6 +3246,8 @@ msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
+"<p>Le communication de rete falleva con le sequente message de error: <s>%1</"
+"s></p>"
 
 #: smb4knotification.cpp:432
 #, kde-format
@@ -3255,12 +3257,12 @@ msgstr ""
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
 msgid "Profile Migration Assistant"
-msgstr ""
+msgstr "Assistente de Migration de Profilo"
 
 #: smb4kprofilemanager_p.cpp:82
 #, kde-format
 msgid "Migrate all relevant settings of one profile to another."
-msgstr ""
+msgstr "Migra tote preferentias notabile de un profilo a un altere."
 
 #: smb4kprofilemanager_p.cpp:99
 #, kde-format
