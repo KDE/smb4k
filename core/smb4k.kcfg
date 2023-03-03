@@ -166,11 +166,11 @@
         </entry>
         <entry name="UseRemoteSmbPort" type="Bool">
             <label>Set the SMB port to:</label>
-            <whatsthis>This is the port that is used for connecting to remote servers with the client programs net, smbclient and smbtree. The default value is 139 (NetBIOS). Under FreeBSD, this setting is also used for mounting.</whatsthis>
+            <whatsthis>This is the port that is used for connecting to remote servers. The default value is 139 (NetBIOS). Under FreeBSD, this setting is also used for mounting.</whatsthis>
             <default>false</default>
         </entry>
         <entry name="RemoteSmbPort" type="Int">
-            <whatsthis>This is the port that is used for connecting to remote servers with the client programs net, smbclient and smbtree. The default value is 139 (NetBIOS). Under FreeBSD, this setting is also used for mounting.</whatsthis>
+            <whatsthis>This is the port that is used for connecting to remote servers. The default value is 139 (NetBIOS). Under FreeBSD, this setting is also used for mounting.</whatsthis>
             <min>1</min>
             <max>65535</max>
             <default>139</default>
