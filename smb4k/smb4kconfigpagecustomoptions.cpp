@@ -1,7 +1,7 @@
 /*
-    The configuration page for the custom options
+    The configuration page for the custom settings
 
-    SPDX-FileCopyrightText: 2013-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2013-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -212,7 +212,7 @@ void Smb4KConfigPageCustomOptions::slotEditCustomItem(QListWidgetItem *item)
             KMessageWidget *messageWidget = findChild<KMessageWidget *>();
 
             if (messageWidget) {
-                messageWidget->setText(i18n("The item %1 was removed, because all custom options were reset.", item->text()));
+                messageWidget->setText(i18n("The item %1 was removed, because all custom settings were reset.", item->text()));
 
                 if (!messageWidget->isVisible()) {
                     messageWidget->setVisible(true);
