@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 01:01+0000\n"
+"POT-Creation-Date: 2023-03-04 00:47+0000\n"
 "PO-Revision-Date: 2022-07-13 11:14+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -398,11 +398,15 @@ msgstr "SMB 포트:"
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the port that is used for connecting to remote servers with the "
+#| "client programs net, smbclient and smbtree. The default value is 139 "
+#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
 msgid ""
-"This is the port that is used for connecting to remote servers with the "
-"client programs net, smbclient and smbtree. The default value is 139 "
-"(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+"This is the port that is used for connecting to remote servers. The default "
+"value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
+"mounting."
 msgstr ""
 "net, smbclient, smbtree 클라이언트 프로그램에서 원격 서버에 연결할 때 사용할 "
 "포트 번호입니다. 기본값은 139(NetBIOS)입니다. FreeBSD 환경에서는 마운트할 때"

@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 01:01+0000\n"
+"POT-Creation-Date: 2023-03-04 00:47+0000\n"
 "PO-Revision-Date: 2023-02-27 19:03+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -455,11 +455,15 @@ msgstr "Définir le port « SMB » à :"
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the port that is used for connecting to remote servers with the "
+#| "client programs net, smbclient and smbtree. The default value is 139 "
+#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
 msgid ""
-"This is the port that is used for connecting to remote servers with the "
-"client programs net, smbclient and smbtree. The default value is 139 "
-"(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+"This is the port that is used for connecting to remote servers. The default "
+"value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
+"mounting."
 msgstr ""
 "Il s'agit du port qui est utilisé pour se connecter à des serveurs distants "
 "avec les programmes clients « net », « smbclient » et « smbtree ». La valeur "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-18 00:58+0000\n"
+"POT-Creation-Date: 2023-03-04 00:47+0000\n"
 "PO-Revision-Date: 2022-08-03 09:15+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -258,8 +258,9 @@ msgid "Clear List"
 msgstr "Rensa lista"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
-#, kde-format
-msgid "The item %1 was removed, because all custom options were reset."
+#, fuzzy, kde-format
+#| msgid "The item %1 was removed, because all custom options were reset."
+msgid "The item %1 was removed, because all custom settings were reset."
 msgstr "Objektet %1 togs bort, eftersom alla egna alternativ återställdes."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502

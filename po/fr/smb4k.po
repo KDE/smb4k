@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-18 00:58+0000\n"
+"POT-Creation-Date: 2023-03-04 00:47+0000\n"
 "PO-Revision-Date: 2023-02-19 09:10+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -275,8 +275,9 @@ msgid "Clear List"
 msgstr "Effacer la liste"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
-#, kde-format
-msgid "The item %1 was removed, because all custom options were reset."
+#, fuzzy, kde-format
+#| msgid "The item %1 was removed, because all custom options were reset."
+msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
 "L'élément %1 a été supprimé car toutes les options personnalisées ont été ré-"
 "initialisées."

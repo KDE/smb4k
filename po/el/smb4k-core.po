@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 01:01+0000\n"
+"POT-Creation-Date: 2023-03-04 00:47+0000\n"
 "PO-Revision-Date: 2021-07-09 10:19+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -431,11 +431,15 @@ msgstr "Θύρα SMB:"
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the port that is used for connecting to remote servers with the "
+#| "client programs net, smbclient and smbtree. The default value is 139 "
+#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
 msgid ""
-"This is the port that is used for connecting to remote servers with the "
-"client programs net, smbclient and smbtree. The default value is 139 "
-"(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+"This is the port that is used for connecting to remote servers. The default "
+"value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
+"mounting."
 msgstr ""
 "Αυτή είναι η θύρα στην οποία γίνεται η σύνδεση των απομακρυσμένων "
 "εξυπηρετητών με τις εφαρμογές net, smbclient και smbtree. Η προκαθορισμένη "
