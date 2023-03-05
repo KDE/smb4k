@@ -82,7 +82,7 @@ Smb4KDeclarative::~Smb4KDeclarative()
 
     qDeleteAll(d->mountedObjects);
     d->mountedObjects.clear();
-    
+
     qDeleteAll(d->bookmarkObjects);
     d->bookmarkObjects.clear();
 
@@ -271,13 +271,13 @@ void Smb4KDeclarative::unmountAll()
 bool Smb4KDeclarative::isShareMounted(const QUrl &url)
 {
     QList<SharePtr> shares = Smb4KGlobal::findShareByUrl(url);
-    
+
     for (const SharePtr &share : qAsConst(shares)) {
         if (!share->isForeign()) {
             return true;
         }
     }
-    
+
     return false;
 }
 
@@ -296,14 +296,14 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject *object)
 {
     if (object) {
         QList<SharePtr> shares;
-        
+
         SharePtr share = Smb4KGlobal::findShare(object->url(), object->workgroupName());
-        
+
         if (share) {
             shares << share;
         } else {
             QList<SharePtr> mountedShares = Smb4KGlobal::findShareByUrl(object->url());
-            
+
             if (!mountedShares.isEmpty()) {
                 shares << mountedShares.first();
             }

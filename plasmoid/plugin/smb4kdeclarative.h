@@ -190,7 +190,7 @@ public:
     /**
      * This function takes a QUrl object and checks if a share with this URL
      * is mounted. Returns nullptr if there is no such share.
-     * 
+     *
      * @param url         The URL to check
      */
     Q_INVOKABLE bool isShareMounted(const QUrl &url);
