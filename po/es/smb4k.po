@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-18 00:58+0000\n"
-"PO-Revision-Date: 2023-02-25 16:53+0100\n"
+"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"PO-Revision-Date: 2023-03-04 17:47+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -271,10 +271,10 @@ msgstr "Borrar lista"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
 #, kde-format
-msgid "The item %1 was removed, because all custom options were reset."
+msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
-"El elemento %1 se eliminó, ya que todas las opciones personalizadas fueron "
-"reiniciadas."
+"El elemento %1 se eliminó, ya que todas las preferencias personalizadas "
+"fueron reiniciadas."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format

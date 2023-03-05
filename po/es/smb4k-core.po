@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 01:01+0000\n"
-"PO-Revision-Date: 2023-02-25 16:53+0100\n"
+"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"PO-Revision-Date: 2023-03-04 17:47+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -440,13 +440,13 @@ msgstr "Establecer SMB en el puerto:"
 #: smb4k.kcfg:169 smb4k.kcfg:173
 #, kde-format
 msgid ""
-"This is the port that is used for connecting to remote servers with the "
-"client programs net, smbclient and smbtree. The default value is 139 "
-"(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+"This is the port that is used for connecting to remote servers. The default "
+"value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
+"mounting."
 msgstr ""
-"Este es el puerto que se utiliza para conectarse a los servidores remotos "
-"con los programas cliente net, smbclient y smbtree. El valor predeterminado "
-"es 139 (NetBIOS). En FreeBSD, este ajuste se utiliza también para el montaje."
+"Este es el puerto que se utiliza para conectarse a los servidores remotos. "
+"El valor predeterminado es 139 (NetBIOS). En FreeBSD, este ajuste se utiliza "
+"también para el montaje."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -2202,24 +2202,20 @@ msgid "Custom Settings"
 msgstr "Preferencias personalizadas"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Definir las opciones personalizadas para el servidor <b>%1</b> y todos "
-"los recursos compartidos que este proporciona.</p>"
+"<p>Definir las preferencias personalizadas para el servidor <b>%1</b> y "
+"todos los recursos compartidos que este proporciona. </p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr ""
-"<p>Definir las opciones personalizadas para el recurso compartido <b>%1</b>."
-"</p>"
+"<p>Definir las preferencias personalizadas para el recurso compartido <b>%1</"
+"b>.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709

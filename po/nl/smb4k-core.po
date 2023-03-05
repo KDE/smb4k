@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-27 01:01+0000\n"
-"PO-Revision-Date: 2023-02-27 10:46+0100\n"
+"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"PO-Revision-Date: 2023-03-04 18:07+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -424,14 +424,13 @@ msgstr "De SMB-poort instellen op:"
 #: smb4k.kcfg:169 smb4k.kcfg:173
 #, kde-format
 msgid ""
-"This is the port that is used for connecting to remote servers with the "
-"client programs net, smbclient and smbtree. The default value is 139 "
-"(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+"This is the port that is used for connecting to remote servers. The default "
+"value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
+"mounting."
 msgstr ""
-"Dit is de poort die gebruikt wordt voor het verbinden van servers op afstand "
-"met de clientprogramma's net, smbclient en smbtree. De standaard waarde is "
-"139 (NetBIOS). Onder FreeBSD wordt deze instelling ook gebruikt voor "
-"aankoppelen."
+"Dit is de poort die gebruikt wordt voor het verbinden van servers op "
+"afstand. De standaard waarde is 139 (NetBIOS). Onder FreeBSD wordt deze "
+"instelling ook gebruikt voor aankoppelen."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
