@@ -18,6 +18,7 @@
 #include <QDialog>
 #include <QPointer>
 #include <QPushButton>
+#include <QStorageInfo>
 #include <QString>
 
 class Smb4KMountDialog : public QDialog
@@ -167,6 +168,7 @@ public:
     bool detectAllShares;
     bool firstImportDone;
     bool longActionRunning;
+    QStorageInfo storageInfo;
 };
 
 class Smb4KMounterStatic

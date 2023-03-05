@@ -33,7 +33,6 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
-#include <QStorageInfo>
 #include <QTimer>
 #include <QUdpSocket>
 
@@ -1757,15 +1756,15 @@ bool Smb4KMounter::fillUnmountActionArgs(const SharePtr &, bool, bool, QVariantM
 
 void Smb4KMounter::check(const SharePtr &share)
 {
-    QStorageInfo storageInfo(share->path());
+    d->storageInfo.setPath(share->path());
 
-    if (storageInfo.isValid() && storageInfo.isReady()) {
+    if (d->storageInfo.isValid() && d->storageInfo.isReady()) {
         // Accessibility
         share->setInaccessible(false);
 
         // Size information
-        share->setFreeDiskSpace(storageInfo.bytesAvailable()); // Bytes available to the user, might be less that bytesFree()
-        share->setTotalDiskSpace(storageInfo.bytesTotal());
+        share->setFreeDiskSpace(d->storageInfo.bytesAvailable()); // Bytes available to the user, might be less that bytesFree()
+        share->setTotalDiskSpace(d->storageInfo.bytesTotal());
 
         // Get the owner an group, if possible.
         QFileInfo fileInfo(share->path());
