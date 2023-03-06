@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-02-28 08:41+0100\n"
+"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"PO-Revision-Date: 2023-03-05 22:00+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
@@ -422,19 +422,15 @@ msgstr "Določi SMB port na:"
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the port that is used for connecting to remote servers with the "
-#| "client programs net, smbclient and smbtree. The default value is 139 "
-#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+#, kde-format
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"To je port, ki se uporablja za povezovanje z oddaljenimi strežniki z "
-"odjemalski programi net, smbclient in smbtree. Privzeta vrednost je 139 "
-"(NetBIOS). Pri FreeBSD se ta nastavitev uporablja tudi za priklop."
+"To je port, ki se uporablja za povezovanje z oddaljenimi strežniki. Privzeta "
+"vrednost je 139 (NetBIOS). Pri FreeBSD se ta nastavitev uporablja tudi za "
+"priklop."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -2282,7 +2278,7 @@ msgstr "Uporabnik:"
 msgid "Clear List"
 msgstr "Očisti seznam"
 
-#: smb4kmounter.cpp:757
+#: smb4kmounter.cpp:756
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2291,7 +2287,7 @@ msgstr ""
 "<qt><p>Mrežni disk <b>%1</b> je priklopljen na<br><b>%2</b> in v lasti "
 "uporabnika <b>%3</b>.</p><p>Ali ga zares želite odklopiti?</p></qt>"
 
-#: smb4kmounter.cpp:762
+#: smb4kmounter.cpp:761
 #, kde-format
 msgid "Foreign Share"
 msgstr "Tuji mrežni disk"

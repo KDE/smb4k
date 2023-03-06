@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-06 00:48+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -2301,7 +2301,7 @@ msgstr "Bruger:"
 msgid "Clear List"
 msgstr "Ryd listen"
 
-#: smb4kmounter.cpp:757
+#: smb4kmounter.cpp:756
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2313,7 +2313,7 @@ msgstr ""
 "<qt><p>Ressourcen <b>%1</b> er monteret i <br><b>%2</b> og ejes af brugeren "
 "<b>%3</b>.</p><p>Vil du virkelig afmontere den?</p></qt>"
 
-#: smb4kmounter.cpp:762
+#: smb4kmounter.cpp:761
 #, kde-format
 msgid "Foreign Share"
 msgstr "Fremmed ressource"

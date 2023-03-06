@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-06 00:48+0000\n"
 "PO-Revision-Date: 2014-06-15 16:44+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2144,7 +2144,7 @@ msgstr "Felhasználó:"
 msgid "Clear List"
 msgstr "Lista törlése"
 
-#: smb4kmounter.cpp:757
+#: smb4kmounter.cpp:756
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2156,7 +2156,7 @@ msgstr ""
 "<qt><p>A(z) <b>%1</b> megosztás csatolva van a <br><b>%2</b> helyre, a "
 "tulajdonosa <b>%3</b>.</p><p>Biztosan leválasztja?</p></qt>"
 
-#: smb4kmounter.cpp:762
+#: smb4kmounter.cpp:761
 #, kde-format
 msgid "Foreign Share"
 msgstr "Külső megosztás"

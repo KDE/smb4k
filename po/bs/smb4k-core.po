@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-06 00:48+0000\n"
 "PO-Revision-Date: 2015-02-24 23:17+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -2308,7 +2308,7 @@ msgstr "Korisnik:"
 msgid "Clear List"
 msgstr "Očisti listu"
 
-#: smb4kmounter.cpp:757
+#: smb4kmounter.cpp:756
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2321,7 +2321,7 @@ msgstr ""
 "strane korisnika <b>%3</b>.</p><p>Da li sigurno želite da je razmjestite?</"
 "p></qt>"
 
-#: smb4kmounter.cpp:762
+#: smb4kmounter.cpp:761
 #, kde-format
 msgid "Foreign Share"
 msgstr "Strana razmjena"

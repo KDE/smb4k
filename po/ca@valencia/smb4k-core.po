@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-02-27 10:43+0100\n"
+"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"PO-Revision-Date: 2023-03-04 11:35+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -435,19 +435,15 @@ msgstr "Establix el port SMB a:"
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the port that is used for connecting to remote servers with the "
-#| "client programs net, smbclient and smbtree. The default value is 139 "
-#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+#, kde-format
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"Este és el port que s'utilitza per a connectar els servidors remots amb els "
-"programes client «net», «smbclient» i «smbtree». El valor predeterminat és "
-"139 (NetBIOS). Amb la FreeBSD, esta opció també s'utilitza per al muntatge."
+"Este és el port que s'utilitza per a connectar amb els servidors remots. El "
+"valor predeterminat és 139 (NetBIOS). Amb la FreeBSD, esta opció també "
+"s'utilitza per al muntatge."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -2350,7 +2346,7 @@ msgstr "Usuari:"
 msgid "Clear List"
 msgstr "Neteja la llista"
 
-#: smb4kmounter.cpp:757
+#: smb4kmounter.cpp:756
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2359,7 +2355,7 @@ msgstr ""
 "<p>La compartició <b>%1</b> està muntada a <br><b>%2</b> i és propietat de "
 "l'usuari <b>%3</b>.</p<p>Segur que la voleu desmuntar?</p>"
 
-#: smb4kmounter.cpp:762
+#: smb4kmounter.cpp:761
 #, kde-format
 msgid "Foreign Share"
 msgstr "Compartició d'aliens"

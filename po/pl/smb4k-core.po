@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-06 00:48+0000\n"
 "PO-Revision-Date: 2023-03-04 09:30+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -2296,7 +2296,7 @@ msgstr "Użytkownik:"
 msgid "Clear List"
 msgstr "Wyczyść listę"
 
-#: smb4kmounter.cpp:757
+#: smb4kmounter.cpp:756
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2305,7 +2305,7 @@ msgstr ""
 "<p>Zasób <b>%1</b> jest podpięty w <br><b>%2</b> i należy do użytkownika <b>"
 "%3</b>.</p><p>Czy na pewno chcesz go odpiąć?</p>"
 
-#: smb4kmounter.cpp:762
+#: smb4kmounter.cpp:761
 #, kde-format
 msgid "Foreign Share"
 msgstr "Obcy zasób"
