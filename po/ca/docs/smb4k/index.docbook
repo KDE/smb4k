@@ -898,7 +898,7 @@
       <para
 >Si ja s'ha proporcionat un nom d'usuari, es mostrarà en el seu camp respectiu. Si és incorrecte o no es va proporcionar el nom d'usuari, n'haureu d'introduir un. La contrasenya, però, es pot deixar en blanc. Fent clic al botó <guibutton
 >D'acord</guibutton
-> entregareu les dades. Depenent de la vostra elecció en el <link linkend="configuration_page_authentication"
+> cometreu les dades. Depenent de la vostra elecció en el <link linkend="configuration_page_authentication"
 >diàleg de configuració</link
 >, el nom d'usuari i la contrasenya s'emmagatzemaran o no permanentment en una cartera digital. En aquest últim cas, els haureu de proporcionar <emphasis
 >cada vegada</emphasis
@@ -6059,7 +6059,7 @@ ntlm auth = yes
 >Reinicia</guibutton
 > podeu restaurar l'estat inicial.</para>
       <para
->Un cop hàgiu finalitzat l'edició, es podran de cometre els canvis a la cartera fent clic a <guibutton
+>Un cop hàgiu finalitzat l'edició, es podran cometre els canvis a la cartera fent clic a <guibutton
 >Desa</guibutton
 >.</para>
     </sect2>
