@@ -919,7 +919,7 @@
       <para
 >Si ja s'ha proporcionat un nom d'usuari, es mostrarà sota el seu camp respectiu. Si és incorrecte o no es va proporcionar el nom d'usuari, n'haureu d'introduir un. La contrasenya, però, es pot deixar en blanc. Fent clic al botó <guibutton
 >D'acord</guibutton
-> entregareu les dades. Depenent de la vostra elecció en el <link linkend="configuration_page_authentication"
+> cometreu les dades. Depenent de la vostra elecció en el <link linkend="configuration_page_authentication"
 >diàleg de configuració</link
 >, el nom d'usuari i la contrasenya s'emmagatzemaran o no permanentment en una cartera digital. En aquest últim cas, els haureu de proporcionar <emphasis
 >cada vegada</emphasis
