@@ -1,6 +1,7 @@
 # KDE Config File
 [Desktop Entry]
 Name=Smb4K
+Name[ast]=Smb4K
 Name[bs]=Smb4K
 Name[ca]=Smb4K
 Name[ca@valencia]=Smb4K
@@ -17,7 +18,6 @@ Name[fr]=Smb4K
 Name[gl]=Smb4K
 Name[hu]=Smb4K
 Name[ia]=SMB4K
-Name[ie]=Smb4K
 Name[it]=Smb4K
 Name[ka]=Smb4K
 Name[ko]=Smb4K
@@ -49,13 +49,11 @@ GenericName[et]=Täiustatud SAMBA ressursside sirvija
 GenericName[eu]=SAMBA arakatzeko sareko arakatzaile aurreratua
 GenericName[fi]=Kehittynyt verkkoympäristöselain Samballe
 GenericName[fr]=Explorateur de réseau avancé pour SAMBA
-GenericName[ie]=Avansat navigator del rete SAMBA
 GenericName[it]=Navigatore avanzato di rete per SAMBA
 GenericName[ka]=ქსელის მეზობლების ბრაუზერი SAMBA-სთვის
 GenericName[ko]=고급 Samba 네트워크 환경 탐색기
 GenericName[nl]=Geavanceerde netwerkbrowser voor SAMBA
 GenericName[pl]=Rozbudowana przeglądarka sieciowa SAMBY
-GenericName[pt]=Navegador Avançado da Rede SAMBA
 GenericName[pt_BR]=Navegador avançado de rede para o SAMBA
 GenericName[ru]=Диспетчер сетевого окружения для SAMBA
 GenericName[sk]=Pokročilý sieťový prehliadač pre SAMBA
@@ -82,7 +80,6 @@ Comment[fr]=Explorateur avancé de voisinage réseau
 Comment[gl]=Navegador avanzado da veciñanza de rede
 Comment[hu]=Speciális hálózati mappa böngésző
 Comment[ia]=Navigator de vicinitate de rete avantiate
-Comment[ie]=Avansat navigator de vicinitá del rete
 Comment[it]=Navigatore avanzato delle risorse di rete
 Comment[ka]=ქსელის მეზობლების ბრაუზერი
 Comment[ko]=고급 네트워크 환경 탐색기
