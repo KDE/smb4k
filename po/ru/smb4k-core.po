@@ -6,21 +6,21 @@
 # Yudin Stanislav <decvar@inbox.ru>, 2003.
 # Nickolai Shaforostoff <shafff@ukr.net>, 2004.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2014, 2017.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2020, 2021, 2023.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2020, 2021.
 # Мария Шикунова <translation-team@basealt.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2023-01-28 14:35+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-08-23 15:19+0300\n"
+"Last-Translator: Мария Шикунова <translation-team@basealt.ru>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 22.04.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -519,7 +519,8 @@ msgstr "Использовать для аутентификации кэш Winb
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Encryption level:"
 msgid "Set the encryption level to:"
 msgstr "Уровень шифрования:"
 
@@ -609,7 +610,13 @@ msgstr "Включить Wake-On-LAN"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#| "magic package send via a UDP socket to wake up remote servers. If you "
+#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#| "this option."
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -618,7 +625,7 @@ msgid ""
 msgstr ""
 "Wake-on-LAN (WOL) — это стандарт сети Ethernet, который позволяет включать "
 "или пробуждать компьютер с помощью сетевого сообщения. Smb4K использует "
-"передачу «волшебного» пакета через UDP-сокет для пробуждения удалённых "
+"передачу «волшебного» пакета через UDP-сокет для пробуждения удаленных "
 "серверов. Для использования функции Wake-On-LAN необходимо включить этот "
 "параметр."
 
@@ -630,13 +637,17 @@ msgstr "Время ожидания:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the waiting time in seconds between the sending of the magic Wake-"
+#| "On-LAN packages and the scanning of the network neighborhood or the "
+#| "mounting of a share."
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
 "a share."
 msgstr ""
-"Это время ожидания в секундах между отправкой «волшебных» пакетов Wake-On-"
+"Это время ожидания в секундах между отправкой «волшебного» пакета Wake-On-"
 "LAN и сканированием сетевого окружения или подключением общего ресурса."
 
 #. i18n: ectx: label, entry (UseWallet), group (Authentication)
@@ -1094,9 +1105,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve extended attributes"
-msgstr "Сохранять расширенные аттрибуты"
+msgstr "Сохранять даты"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
@@ -2303,13 +2315,15 @@ msgstr "Действия"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Отправлять «волшебный» пакет перед сканированием сетевого окружения"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Отправлять «волшебный» пакет перед подключением ресурса"
 
@@ -3940,21 +3954,8 @@ msgid ""
 msgstr ""
 "<qt>Введите имя пользователя и пароль для общего ресурса <b>%1</b>.</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Особые параметры"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Не использовать блокировки"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Не использовать блокировки. Не запускать lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Отсутствует файл конфигурации пакета Samba <b>smb.conf</b>. Это не "
-#~ "является критической ошибкой, но рекомендуется создать такой файл."
+#~ msgid "View mode of the shares view:"
+#~ msgstr "Режим представления при просмотре общих ресурсов:"
 
 #~ msgid "NetBIOS name:"
 #~ msgstr "Имя NetBIOS:"
@@ -3981,6 +3982,22 @@ msgstr ""
 #~ msgid "Login:"
 #~ msgstr "Имя пользователя:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Особые параметры"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Не использовать блокировки"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Не использовать блокировки. Не запускать lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Отсутствует файл конфигурации пакета Samba <b>smb.conf</b>. Это не "
+#~ "является критической ошибкой, но рекомендуется создать такой файл."
+
 #~ msgid "Group:"
 #~ msgstr "Группа:"
 
@@ -3990,31 +4007,6 @@ msgstr ""
 
 #~ msgid "Group name:"
 #~ msgstr "Имя группы:"
-
-#~ msgid ""
-#~ "If you have trouble discovering the workgroups and domains in your "
-#~ "network neighborhood, you should consider to switch this setting on. "
-#~ "Smb4K will then force the use of the SMB 1.0 protocol for searching for "
-#~ "workgroups and domains."
-#~ msgstr ""
-#~ "Рекомендуется использовать этот параметр в случает, если не удаётся "
-#~ "выполнить поиск рабочих групп и доменов в сетевом окружении. При его "
-#~ "включении для поиска будет использоваться протокол SMB версии 1.0."
-
-#, fuzzy
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Введите имя пользователя и пароль для общего ресурса <b>%1</b>.</qt>"
-
-#, fuzzy
-#~ msgid "Unknown error"
-#~ msgstr "неизвестно"
-
-#, fuzzy
-#~ msgid "The smb.conf file would not load"
-#~ msgstr "Не удалось получить просмотр."
 
 #, fuzzy
 #~ msgid "Permission denied"
@@ -4037,12 +4029,306 @@ msgstr ""
 #~ msgstr "Не удалось получить просмотр."
 
 #, fuzzy
+#~ msgid "Unknown error"
+#~ msgstr "неизвестно"
+
+#, fuzzy
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Не удалось получить просмотр."
 
 #, fuzzy
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Не удалось получить просмотр."
+
+#, fuzzy
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "Не удалось получить просмотр."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Введите имя пользователя и пароль для общего ресурса <b>%1</b>.</qt>"
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Сканировать сетевое окружение для поиска рабочих групп и доменов"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Это способ по умолчанию. Для получения начального списка рабочих групп и "
+#~ "доменов производится поиск всех известных основных браузеров сети."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Опрашивать действующий основной браузер сети"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Если выбран этот способ, для получения начального списка просмотра "
+#~ "используется опрос основного браузера домена или рабочей группы."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Опрашивать заданный основной браузер:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Если выбран этот способ, для получения начального списка просмотра "
+#~ "используется опрос заданного основного браузера сети."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "Заданный пользователем основной браузер сети"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Введите имя или IP-адрес основного браузера, который будет опрашиваться "
+#~ "для получения начального списка просмотра."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "Основной браузер сети требует аутентификацию для предоставления списка "
+#~ "просмотра"
+
+#, fuzzy
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Сканировать сетевое окружение для поиска рабочих групп и доменов"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Периодически сканировать сетевое окружение для поиска доступных рабочих "
+#~ "групп, хостов и общих ресурсов."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Периодичность сканирования:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Задайте интервал времени в минутах, через который Smb4K будет повторно "
+#~ "сканировать сетевое окружение для поиска новых рабочих групп, хостов и "
+#~ "общих ресурсов."
+
+#~ msgid "Lookup method for IP addresses:"
+#~ msgstr "Способ поиска IP-адресов:"
+
+#~ msgid ""
+#~ "Define the method that is to be used to detect the IP addresses of the "
+#~ "hosts."
+#~ msgstr "Выбор способа определения IP-адресов хостов."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Использовать команду nmblookup"
+
+#~ msgid "Use net command"
+#~ msgstr "Использовать команду net"
+
+#~ msgid "Socket options:"
+#~ msgstr "Параметры сокета:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Это параметры сокета TCP, которые влияют на работу программ nmblookup и "
+#~ "smbclient. Параметры сокета определяют способ сетевого подключения. Для "
+#~ "большей информации смотрите страницу руководства UNIX об smb.conf."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "Область NetBIOS:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Этот параметр задаёт область NetBIOS, которую будут использовать "
+#~ "программы nmblookup и smbclient. Параметр следует использовать только в "
+#~ "случае, если он задан на всех компьютерах вашего сетевого окружения."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Пытаться выполнять вход с помощью Kerberos"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Входить по учётной записи этого компьютера"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "При включении этого параметра сетевые запросы будут выполняться с "
+#~ "использованием учётной записи локального сервера. Этот параметр "
+#~ "применяется к командам net, smbclient и smbtree."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Использовать для аутентификации кэш учётных данных Winbind. Параметр "
+#~ "влияет на программы net, smbclient и smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Состояние подписывания:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Устанавливает состояние подписывания. Параметр влияет на команды "
+#~ "smbclient и smbtree."
+
+#~ msgid "On"
+#~ msgstr "Включено"
+
+#~ msgid "Off"
+#~ msgstr "Выключено"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Шифрование транспорта SMB"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Параметр включает шифрование транспорта SMB (только для серверов с "
+#~ "расширениями UNIX). Параметр влияет на программы net, smbclient и smbtree."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Порядок разрешения имён:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Этот параметр используется для определения набора и порядка использования "
+#~ "служб сопоставления имён хостов и IP-адресов. Список должен состоять из "
+#~ "названий служб разрешения имен (от одной до четырех), разделённых "
+#~ "пробелами: lmhost, host, wins, bcast. Дополнительную информацию смотрите "
+#~ "на странице руководства программы smbclient."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Размер буфера:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Этот параметр задаёт размер буфера приёма/передачи. Значение по умолчанию "
+#~ "— 65520 байт. Было замечено, что уменьшение этого значения ускоряет приём "
+#~ "и передачу файлов при работе с серверами под управлением ОС Windows 9x."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Широковещательный адрес:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Отправлять запросы программы nmblookup на заданный широковещательный "
+#~ "адрес. Если параметр не задан, то запросы будут отправляться на "
+#~ "широковещательный адрес сетевого интерфейса, определённый автоматически, "
+#~ "либо явно заданный параметром «interfaces» в файле «smb.conf»."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Пытаться подключаться к порту UDP 137 для получения и отправки датаграмм"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Пытаться подключаться к UDP-порту 137 для получения и отправки датаграмм "
+#~ "UDP. Этот параметр нужен из-за ошибки Windows 95: порт отправителя "
+#~ "игнорируется, а ответы отправляются только на UDP-порт 137. К сожалению, "
+#~ "на большинстве систем Unix для использования этого порта требуются права "
+#~ "суперпользователя. Дополнительная информация содержится в руководстве "
+#~ "Unix к программе nmblookup."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Отправлять запросы в виде широковещательной рассылки"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Разрешить smbtree выполнять для опроса сети широковещательную рассылку "
+#~ "вместо опроса локального браузера домена."
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Не исключать файлы по маске:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "Значение «затравки» для контрольной суммы"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Удалить все закладки"
+
+#~ msgid "General"
+#~ msgstr "Общие"
+
+#~ msgid "UNC Address:"
+#~ msgstr "Путь UNC:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "Порт SMB:"
+
+# BUGME: what this means? --aspotashev
+#~ msgid "Filesystem Port:"
+#~ msgstr "Порт файловой системы:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Доступ для записи:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Режим безопасности:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Укажите особые параметры для общего ресурса <b>%1</b> на хосте <b>%2</"
+#~ "b>.</p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Путь UNC (Uniform Naming Convention, общее соглашение об именовании) "
+#~ "задаёт расположение общей папки. Он имеет следующий синтаксис: //"
+#~ "[ПОЛЬЗОВАТЕЛЬ@]ХОСТ/ПАПКА. Имя пользователя здесь является необязательным."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Кодировка сервера:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Основной браузер домена не указан явно в параметрах Smb4K. Будет "
+#~ "использоваться основной браузер домена, выбранный по умолчанию в вашем "
+#~ "домене или рабочей группе."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -4104,173 +4390,8 @@ msgstr ""
 #~ msgstr ""
 #~ "<p>Произошла ошибка при поиске объекта <b>%1</b> в сетевом окружении.</p>"
 
-#, fuzzy
-#~ msgid "Remounting"
-#~ msgstr "По&дключить"
-
-#~ msgid "UNC Address:"
-#~ msgstr "Путь UNC:"
-
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "Путь UNC (Uniform Naming Convention, общее соглашение об именовании) "
-#~ "задаёт расположение общей папки. Он имеет следующий синтаксис: //"
-#~ "[ПОЛЬЗОВАТЕЛЬ@]ХОСТ/ПАПКА. Имя пользователя здесь является необязательным."
-
-#~ msgid "The master browsers require authentication to return the browse list"
-#~ msgstr ""
-#~ "Основной браузер сети требует аутентификацию для предоставления списка "
-#~ "просмотра"
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Пытаться выполнять вход с помощью Kerberos"
-
-#~ msgid ""
-#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
-#~ "query the current master browser of your workgroup or domain instead."
-#~ msgstr ""
-#~ "Основной браузер домена не указан явно в параметрах Smb4K. Будет "
-#~ "использоваться основной браузер домена, выбранный по умолчанию в вашем "
-#~ "домене или рабочей группе."
-
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Не указано ни одного широковещательного сегмента.</p>"
-
-#~ msgid "Socket options:"
-#~ msgstr "Параметры сокета:"
-
-#~ msgid ""
-#~ "These are the TCP socket options that are used by nmblookup and "
-#~ "smbclient. Socket options are controls on the networking layer of the "
-#~ "operating systems which allow the connection to be tuned. See the manual "
-#~ "page of smb.conf for more information."
-#~ msgstr ""
-#~ "Это параметры сокета TCP, которые влияют на работу программ nmblookup и "
-#~ "smbclient. Параметры сокета определяют способ сетевого подключения. Для "
-#~ "большей информации смотрите страницу руководства UNIX об smb.conf."
-
-#~ msgid "NetBIOS scope:"
-#~ msgstr "Область NetBIOS:"
-
-#~ msgid ""
-#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
-#~ "under. It should not be set unless every machine on your network "
-#~ "neighborhood sets this value."
-#~ msgstr ""
-#~ "Этот параметр задаёт область NetBIOS, которую будут использовать "
-#~ "программы nmblookup и smbclient. Параметр следует использовать только в "
-#~ "случае, если он задан на всех компьютерах вашего сетевого окружения."
-
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Входить по учётной записи этого компьютера"
-
-#~ msgid ""
-#~ "Make queries to the remote server using the machine account of the local "
-#~ "server. The setting affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "При включении этого параметра сетевые запросы будут выполняться с "
-#~ "использованием учётной записи локального сервера. Этот параметр "
-#~ "применяется к командам net, smbclient и smbtree."
-
-#~ msgid ""
-#~ "Use the Winbind ccache for authentication. This setting affects the net, "
-#~ "smbclient and smbtree command."
-#~ msgstr ""
-#~ "Использовать для аутентификации кэш учётных данных Winbind. Параметр "
-#~ "влияет на программы net, smbclient и smbtree."
-
-#~ msgid "Signing state:"
-#~ msgstr "Состояние подписывания:"
-
-#~ msgid ""
-#~ "Set the signing state. This setting affects the smbclient and smbtree "
-#~ "command."
-#~ msgstr ""
-#~ "Устанавливает состояние подписывания. Параметр влияет на команды "
-#~ "smbclient и smbtree."
-
-#~ msgid "On"
-#~ msgstr "Включено"
-
-#~ msgid "Off"
-#~ msgstr "Выключено"
-
-#~ msgid "Required"
-#~ msgstr "Необходимо"
-
-#~ msgid "Encrypt SMB transport"
-#~ msgstr "Шифрование транспорта SMB"
-
-#~ msgid ""
-#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
-#~ "affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Параметр включает шифрование транспорта SMB (только для серверов с "
-#~ "расширениями UNIX). Параметр влияет на программы net, smbclient и smbtree."
-
-#~ msgid "Send requests as broadcasts"
-#~ msgstr "Отправлять запросы в виде широковещательной рассылки"
-
-#~ msgid ""
-#~ "Let smbtree query the network nodes by sending requests as broadcasts "
-#~ "instead of querying the local master browser."
-#~ msgstr ""
-#~ "Разрешить smbtree выполнять для опроса сети широковещательную рассылку "
-#~ "вместо опроса локального браузера домена."
-
-#~ msgid "Directory mask:"
-#~ msgstr "Маска для каталогов:"
-
-#~ msgid "unknown"
-#~ msgstr "неизвестно"
-
-#~ msgid "File"
-#~ msgstr "Файл"
-
-#~ msgid "Options"
-#~ msgstr "Параметры"
-
-#~ msgid "Options >>"
-#~ msgstr "Параметры >>"
-
-#~ msgid "Options <<"
-#~ msgstr "Параметры <<"
-
-#~ msgid "Name resolve order:"
-#~ msgstr "Порядок разрешения имён:"
-
-#~ msgid ""
-#~ "This option is used to determine what naming services and in what order "
-#~ "are used to resolve host names and IP addresses. It takes a space-"
-#~ "separated list of up to four different name resolution options. Those "
-#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
-#~ "further information."
-#~ msgstr ""
-#~ "Этот параметр используется для определения набора и порядка использования "
-#~ "служб сопоставления имён хостов и IP-адресов. Список должен состоять из "
-#~ "названий служб разрешения имен (от одной до четырех), разделённых "
-#~ "пробелами: lmhost, host, wins, bcast. Дополнительную информацию смотрите "
-#~ "на странице руководства программы smbclient."
-
-#~ msgid "Buffer size:"
-#~ msgstr "Размер буфера:"
-
-#~ msgid ""
-#~ "This option changes the transmit/send buffer size when getting or putting "
-#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
-#~ "smaller has been observed to speed up file transfers to and from Windows "
-#~ "9x servers."
-#~ msgstr ""
-#~ "Этот параметр задаёт размер буфера приёма/передачи. Значение по умолчанию "
-#~ "— 65520 байт. Было замечено, что уменьшение этого значения ускоряет приём "
-#~ "и передачу файлов при работе с серверами под управлением ОС Windows 9x."
-
-#, fuzzy
-#~ msgid "The workgroup could not be found"
-#~ msgstr "Не удалось получить просмотр."
 
 #~ msgid "The preview is displayed here."
 #~ msgstr "Это окно предварительного просмотра."
@@ -4289,144 +4410,14 @@ msgstr ""
 #~ "Здесь показан текущий путь UNC. Из выпадающего меню можно выбрать один из "
 #~ "ранее посещённых путей, — и он откроется в окне выше."
 
-#~ msgid "Broadcast address:"
-#~ msgstr "Широковещательный адрес:"
+#~ msgid "File"
+#~ msgstr "Файл"
 
-#~ msgid ""
-#~ "Queries performed with nmblookup will be send to the given broadcast "
-#~ "address. Without this option the default behavior is to send the queries "
-#~ "to the broadcast address of the network interface that was either auto-"
-#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
-#~ msgstr ""
-#~ "Отправлять запросы программы nmblookup на заданный широковещательный "
-#~ "адрес. Если параметр не задан, то запросы будут отправляться на "
-#~ "широковещательный адрес сетевого интерфейса, определённый автоматически, "
-#~ "либо явно заданный параметром «interfaces» в файле «smb.conf»."
+#~ msgid "Options >>"
+#~ msgstr "Параметры >>"
 
-#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
-#~ msgstr ""
-#~ "Пытаться подключаться к порту UDP 137 для получения и отправки датаграмм"
-
-#~ msgid ""
-#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
-#~ "reason for this option is a bug in Windows 95 where it ignores the source "
-#~ "port of the requesting packet and only replies to UDP port 137. "
-#~ "Unfortunately, on most Unix systems super user privileges are needed to "
-#~ "bind to this port. Please read the manual page of nmblookup for more "
-#~ "information."
-#~ msgstr ""
-#~ "Пытаться подключаться к UDP-порту 137 для получения и отправки датаграмм "
-#~ "UDP. Этот параметр нужен из-за ошибки Windows 95: порт отправителя "
-#~ "игнорируется, а ответы отправляются только на UDP-порт 137. К сожалению, "
-#~ "на большинстве систем Unix для использования этого порта требуются права "
-#~ "суперпользователя. Дополнительная информация содержится в руководстве "
-#~ "Unix к программе nmblookup."
-
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr ""
-#~ "Периодически сканировать сетевое окружение для поиска доступных рабочих "
-#~ "групп, хостов и общих ресурсов."
-
-#~ msgid "Interval between scans:"
-#~ msgstr "Периодичность сканирования:"
-
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr ""
-#~ "Задайте интервал времени в минутах, через который Smb4K будет повторно "
-#~ "сканировать сетевое окружение для поиска новых рабочих групп, хостов и "
-#~ "общих ресурсов."
-
-#~ msgid "Lookup method for IP addresses:"
-#~ msgstr "Способ поиска IP-адресов:"
-
-#~ msgid ""
-#~ "Define the method that is to be used to detect the IP addresses of the "
-#~ "hosts."
-#~ msgstr "Выбор способа определения IP-адресов хостов."
-
-#~ msgid "Use nmblookup command"
-#~ msgstr "Использовать команду nmblookup"
-
-#~ msgid "Use net command"
-#~ msgstr "Использовать команду net"
-
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr "Сканировать сетевое окружение для поиска рабочих групп и доменов"
-
-#~ msgid ""
-#~ "This is the default method to retrieve the initial browse list. It "
-#~ "discovers all workgroups and domains by looking for all known master "
-#~ "browsers on your network neighborhood."
-#~ msgstr ""
-#~ "Это способ по умолчанию. Для получения начального списка рабочих групп и "
-#~ "доменов производится поиск всех известных основных браузеров сети."
-
-#~ msgid "Query the current workgroup master browser"
-#~ msgstr "Опрашивать действующий основной браузер сети"
-
-#~ msgid ""
-#~ "This method queries the current master browser of your workgroup or "
-#~ "domain to retrieve the initial browse list."
-#~ msgstr ""
-#~ "Если выбран этот способ, для получения начального списка просмотра "
-#~ "используется опрос основного браузера домена или рабочей группы."
-
-#~ msgid "Query this custom master browser:"
-#~ msgstr "Опрашивать заданный основной браузер:"
-
-#~ msgid ""
-#~ "This method queries a custom master browser to retrieve the initial "
-#~ "browse list."
-#~ msgstr ""
-#~ "Если выбран этот способ, для получения начального списка просмотра "
-#~ "используется опрос заданного основного браузера сети."
-
-#~ msgid "A custom master browser that is to be queried"
-#~ msgstr "Заданный пользователем основной браузер сети"
-
-#~ msgid ""
-#~ "Enter the name or IP address of a master browser here that should be "
-#~ "queried to compile the initial browse list."
-#~ msgstr ""
-#~ "Введите имя или IP-адрес основного браузера, который будет опрашиваться "
-#~ "для получения начального списка просмотра."
-
-#~ msgid "Server codepage:"
-#~ msgstr "Кодировка сервера:"
-
-#~ msgid "General"
-#~ msgstr "Общие"
-
-#~ msgid "SMB Port:"
-#~ msgstr "Порт SMB:"
-
-# BUGME: what this means? --aspotashev
-#~ msgid "Filesystem Port:"
-#~ msgstr "Порт файловой системы:"
-
-#~ msgid "Write Access:"
-#~ msgstr "Доступ для записи:"
-
-#~ msgid "Security Mode:"
-#~ msgstr "Режим безопасности:"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr ""
-#~ "<p>Укажите особые параметры для общего ресурса <b>%1</b> на хосте <b>%2</"
-#~ "b>.</p>"
-
-#~ msgid "Do not exclude files matching this pattern:"
-#~ msgstr "Не исключать файлы по маске:"
-
-#~ msgid "The checksum seed"
-#~ msgstr "Значение «затравки» для контрольной суммы"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Удалить все закладки"
+#~ msgid "Options <<"
+#~ msgstr "Параметры <<"
 
 #~ msgid ""
 #~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
@@ -4793,6 +4784,10 @@ msgstr ""
 #, fuzzy
 #~ msgid "Mounting && Unmounting"
 #~ msgstr "Подключение/Отключение"
+
+#, fuzzy
+#~ msgid "Notifications"
+#~ msgstr "Задействовать уведомления"
 
 #, fuzzy
 #~ msgid "Bookmarks"
@@ -6144,6 +6139,10 @@ msgstr ""
 #~ "Вы не ввели ваши стандартные данные авторизации.\n"
 #~ "Сделать это сейчас?"
 
+#, fuzzy
+#~ msgid "Set the UID to:"
+#~ msgstr "Установить GID в:"
+
 #~ msgid "Set the GID to:"
 #~ msgstr "Установить GID в:"
 
@@ -6367,6 +6366,10 @@ msgstr ""
 #~ msgid "The mimetype \""
 #~ msgstr "mimetype \""
 
+#, fuzzy
+#~ msgid " could not be found!\n"
+#~ msgstr " невозможно найти!\n"
+
 #~ msgid " won't be printed."
 #~ msgstr " не будет напечатан."
 
@@ -6388,21 +6391,28 @@ msgstr ""
 #~ msgid "Smb4K can't handle printer shares yet."
 #~ msgstr "Smb4K не работаетс принтерами."
 
-#~ msgid "View mode of the shares view:"
-#~ msgstr "Режим представления при просмотре общих ресурсов:"
+#~ msgid ""
+#~ "If you have trouble discovering the workgroups and domains in your "
+#~ "network neighborhood, you should consider to switch this setting on. "
+#~ "Smb4K will then force the use of the SMB 1.0 protocol for searching for "
+#~ "workgroups and domains."
+#~ msgstr ""
+#~ "Рекомендуется использовать этот параметр в случает, если не удаётся "
+#~ "выполнить поиск рабочих групп и доменов в сетевом окружении. При его "
+#~ "включении для поиска будет использоваться протокол SMB версии 1.0."
 
 #, fuzzy
-#~ msgid "Scan the network neighborhood periodically"
-#~ msgstr "Сканировать сетевое окружение для поиска рабочих групп и доменов"
+#~ msgid "Remounting"
+#~ msgstr "По&дключить"
 
-#, fuzzy
-#~ msgid "Notifications"
-#~ msgstr "Задействовать уведомления"
+#~ msgid "Required"
+#~ msgstr "Необходимо"
 
-#, fuzzy
-#~ msgid "Set the UID to:"
-#~ msgstr "Установить GID в:"
+#~ msgid "Directory mask:"
+#~ msgstr "Маска для каталогов:"
 
-#, fuzzy
-#~ msgid " could not be found!\n"
-#~ msgstr " невозможно найти!\n"
+#~ msgid "unknown"
+#~ msgstr "неизвестно"
+
+#~ msgid "Options"
+#~ msgstr "Параметры"

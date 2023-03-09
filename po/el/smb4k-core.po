@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2021-07-09 10:19+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -3955,23 +3955,6 @@ msgstr ""
 "<qt>Δώστε ένα όνομα χρήστη και έναν κωδικό πρόσβασης για τον κοινό πόρο <b>"
 "%1</b>.</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Προσαρμοσμένες επιλογές"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Να μη γίνει χρήση κλειδώματος"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Να μη γίνει χρήση κλειδώματος. Να μην εκκινήσει το lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Το αρχείο διαμόρφωσης για τη σουίτα Samba <b>smb.conf</b> λείπει. Δεν "
-#~ "πρόκειται για μοιραίο σφάλμα, αλλά πρέπει να δημιουργήσετε ένα τέτοιο "
-#~ "αρχείο."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "Όνομα NetBIOS:"
 
@@ -3994,6 +3977,23 @@ msgstr ""
 
 #~ msgid "Login:"
 #~ msgstr "Σύνδεση:"
+
+#~ msgid "Custom Options"
+#~ msgstr "Προσαρμοσμένες επιλογές"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Να μη γίνει χρήση κλειδώματος"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Να μη γίνει χρήση κλειδώματος. Να μην εκκινήσει το lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Το αρχείο διαμόρφωσης για τη σουίτα Samba <b>smb.conf</b> λείπει. Δεν "
+#~ "πρόκειται για μοιραίο σφάλμα, αλλά πρέπει να δημιουργήσετε ένα τέτοιο "
+#~ "αρχείο."
 
 #~ msgid "Group:"
 #~ msgstr "Ομάδα:"

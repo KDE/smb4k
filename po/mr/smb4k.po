@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -364,10 +364,9 @@ msgid "Samba"
 msgstr "सांबा"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "सामान्य संयोजना"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
 #, kde-format
@@ -470,9 +469,9 @@ msgid "Files && Directories"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
+#, kde-format
 msgid "Restrictions"
-msgstr "लक्ष्य :"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
@@ -666,9 +665,9 @@ msgstr "शोध (&S)"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "Common Options"
+#| msgid "Advanced Settings"
 msgid "Add &Custom Settings"
-msgstr "सामान्य पर्याय"
+msgstr "प्रगत संयोजना"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -878,9 +877,9 @@ msgstr "यजमान"
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, fuzzy, kde-format
-#| msgid "Options"
+#| msgid "Notifications"
 msgid "Location:"
-msgstr "पर्याय"
+msgstr "सूचना"
 
 #: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
 #: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
@@ -930,27 +929,11 @@ msgstr "आकार"
 #~ msgid "Entry"
 #~ msgstr "नोंद :"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "वापरकर्ता संवाद"
+#~ msgid "Login"
+#~ msgstr "प्रवेश"
 
 #~ msgid "Password"
 #~ msgstr "गुप्तशब्द"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "वर्तन"
-
-#, fuzzy
-#~ msgid "General:"
-#~ msgstr "सामान्य"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "सामान्य संयोजना"
 
 #, fuzzy
 #~| msgid "Notifications"
@@ -980,54 +963,20 @@ msgstr "आकार"
 #~ msgid "Wake-On-LAN Settings"
 #~ msgstr "सामान्य संयोजना"
 
-#, fuzzy
-#~ msgid "Browse Settings:"
-#~ msgstr "संयोजना (&S)"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "अधिप्रमाणन"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "सुरक्षा"
 
 #, fuzzy
 #~ msgid "Samba Settings"
 #~ msgstr "संयोजना (&S)"
 
-#~ msgid "Login"
-#~ msgstr "प्रवेश"
-
 #~ msgid "Login:"
 #~ msgstr "प्रवेश :"
 
 #, fuzzy
-#~| msgid "Options"
+#~| msgid "Notifications"
 #~ msgid "Location"
-#~ msgstr "पर्याय"
-
-#~ msgid "Undo"
-#~ msgstr "पूर्ववत करा"
-
-#, fuzzy
-#~| msgid "Unmount"
-#~ msgid "Remounting"
-#~ msgstr "अनमाऊंट करा"
-
-#~ msgid "Columns"
-#~ msgstr "स्थंभ"
-
-#, fuzzy
-#~ msgid "Tooltips"
-#~ msgstr "टूलटिप्स :"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "सामान्य संयोजना"
+#~ msgstr "सूचना"
 
 #, fuzzy
 #~| msgid "Search Toolbar"
@@ -1046,12 +995,8 @@ msgstr "आकार"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "मुख्य साधनपट्टी"
 
-#~ msgid "&Clear"
-#~ msgstr "पुसून टाका (&C)"
-
-#, fuzzy
-#~ msgid " Bytes"
-#~ msgstr " बाइट्स"
+#~ msgid "Undo"
+#~ msgstr "पूर्ववत करा"
 
 #, fuzzy
 #~| msgid "Security"
@@ -1069,17 +1014,18 @@ msgstr "आकार"
 #~ msgstr "सामान्य पर्याय"
 
 #, fuzzy
-#~ msgid "Add Group"
-#~ msgstr "समूह जोडा"
-
-#~ msgid "Label:"
-#~ msgstr "लेबल :"
-
-#~ msgid "Group name:"
-#~ msgstr "समूह नाव :"
+#~ msgid " Bytes"
+#~ msgstr " बाइट्स"
 
 #~ msgid "Copying"
 #~ msgstr "प्रत करत आहे"
+
+#~ msgid "Columns"
+#~ msgstr "स्थंभ"
+
+#, fuzzy
+#~ msgid "Tooltips"
+#~ msgstr "टूलटिप्स :"
 
 #~ msgid "Open With"
 #~ msgstr "यामध्ये उघडा"
@@ -1210,6 +1156,16 @@ msgstr "आकार"
 #~ msgid "Kerberos 5 authentication"
 #~ msgstr "अधिप्रमाणन"
 
+#~ msgid "Label:"
+#~ msgstr "लेबल :"
+
+#, fuzzy
+#~ msgid "Add Group"
+#~ msgstr "समूह जोडा"
+
+#~ msgid "Group name:"
+#~ msgstr "समूह नाव :"
+
 #~ msgid "Open"
 #~ msgstr "उघडा"
 
@@ -1253,6 +1209,10 @@ msgstr "आकार"
 #, fuzzy
 #~ msgid "Source:"
 #~ msgstr "स्रोत :"
+
+#, fuzzy
+#~ msgid "Destination:"
+#~ msgstr "लक्ष्य :"
 
 #, fuzzy
 #~| msgid "Unmount"

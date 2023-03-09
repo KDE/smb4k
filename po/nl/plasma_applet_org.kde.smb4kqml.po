@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2014, 2017, 2018, 2019.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2014, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2019-04-27 13:00+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2019-05-20 11:56+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 19.04.1\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:59
 #: package/contents/ui/SharesViewItemDelegate.qml:59
@@ -85,47 +85,11 @@ msgstr "Synchroniseren"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:118
 msgid "Unmount"
-msgstr "Afkoppelen"
+msgstr "Afkoppelen (unmount)"
 
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Alle shares afkoppelen bij afsluiten"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Bladwijzers bewerken"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuleren"
-
-#~ msgid "Clear"
-#~ msgstr "Wissen"
-
-#~ msgid "Label:"
-#~ msgstr "Label:"
-
-#~ msgid "Login:"
-#~ msgstr "Aanmelden:"
-
-#~ msgid "IP Address:"
-#~ msgstr "IP-adres:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Groepsnaam:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Bovenste bladwijzers"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Bladwijzer verwijderen"
-
-#~ msgid "Add Group"
-#~ msgstr "Groep toevoegen"
-
-#~ msgid "Ok"
-#~ msgstr "OK"
 
 #~ msgid "Back"
 #~ msgstr "Terug"

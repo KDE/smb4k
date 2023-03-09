@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@ase.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -913,12 +913,6 @@ msgstr ""
 #~ msgid "MAC Address:"
 #~ msgstr "Adresă IP:"
 
-#~ msgid "Add Group"
-#~ msgstr "Adaugă grup"
-
-#~ msgid "Label:"
-#~ msgstr "Etichetă:"
-
 #~ msgid "cp437"
 #~ msgstr "cp437"
 
@@ -1026,3 +1020,9 @@ msgstr ""
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Adaugă semne de carte"
+
+#~ msgid "Label:"
+#~ msgstr "Etichetă:"
+
+#~ msgid "Add Group"
+#~ msgstr "Adaugă grup"

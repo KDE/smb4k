@@ -1,16 +1,16 @@
 # Translation for smb4k.po to Euskara/Basque (eu).
-# Copyright (C) 2020-2023 This file is copyright:
+# Copyright (C) 2020-2022, This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022, 2023.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-01-05 22:09+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-07-27 20:09+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -137,9 +137,10 @@ msgid "Add &Bookmark"
 msgstr "Gehitu &laster-marka"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Muntatu laster-markak"
+msgstr "Muntatu laster-marka guztiak"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -167,9 +168,10 @@ msgid "Synchronization"
 msgstr "Sinkronizatzea"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Neurrira egokitutako ezarpenak"
+msgstr "Ezarpen arruntak"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -238,17 +240,17 @@ msgstr "Sartu saio-hasteko informazio lehenetsia."
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "Ezarri zorroko %1 sarreraren erabiltzaile-izena eta pasahitza."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr "Ezarri saio-haste lehenetsiaren erabiltzaile-izena eta pasahitza."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Dena ondo dago."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -256,12 +258,9 @@ msgid "Clear List"
 msgstr "Garbitu zerrenda"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom options were reset."
+#, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
-"%1 elementua ezabatu da, norberak finkatutako aukera guztiak berrezarri "
-"direlako."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -383,27 +382,33 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Definitu neurrira egokitutako ezarpen editorearen bidez esnatu beharko "
-"liratekeen ostalariak."
+"<qt>Definitu norberak finkatutako aukeren elkarrizketa-koadroaren bidez "
+"esnatu beharreko ostalaria.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Ezarpen aurreratuak"
+msgstr "Muntatzeko ezarpen aurreratuak"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "Sinkronizatzeko direktorioa"
+msgstr "Sinkronizatzea"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Babes-kopiak"
+msgstr "Babes-kopia"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -423,17 +428,18 @@ msgstr "Fitxategiak manipulatzea"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "Fitxategi-atributuak"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
-msgstr "Jabetza"
+msgstr "Jabea:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Fitxategi-atributuak eta jabetza"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -443,13 +449,13 @@ msgstr "Konprimatzea"
 #: smb4k/smb4kconfigpagesynchronization.cpp:333
 #, kde-format
 msgid "Files"
-msgstr "Fitxategiak"
+msgstr "fitxategiak"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:343
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr " kB"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -461,7 +467,7 @@ msgstr "Beste zenbait"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kB/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -486,7 +492,7 @@ msgstr "Fitxategi ezabatzea"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr "Iragazteko ezarpen orokorrak"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -669,9 +675,10 @@ msgstr "&Bilatu"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Gehitu &neurrira egokitutako ezarpenak"
+msgstr "Muntatzeko ezarpen aurreratuak"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -897,9 +904,10 @@ msgid "Mountpoint:"
 msgstr "Muntaia-puntua:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Erabiltzaile-izena:"
+msgstr "Erabiltzailearen interfazea"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -919,15 +927,6 @@ msgstr "Neurria:"
 #~ msgid "Custom Options"
 #~ msgstr "Norberak finkatutako aukerak"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Muntatu laster-marka guztiak"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -942,31 +941,11 @@ msgstr "Neurria:"
 #~ msgid "Entry"
 #~ msgstr "Sarrera"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Erabiltzailearen interfazea"
+#~ msgid "Login"
+#~ msgstr "Saio-hasiera"
 
 #~ msgid "Password"
 #~ msgstr "Pasahitza"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Jokabidea"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Orokorra"
-
-#, fuzzy
-#~| msgid "Miscellaneous"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Beste zenbait"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Iragazte arau bereziak:"
 
 #~ msgid "Identification"
 #~ msgstr "Identifikatzea"
@@ -983,14 +962,10 @@ msgstr "Neurria:"
 #~ msgid "Actions"
 #~ msgstr "Ekintzak"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Bidali pakete magikoa sareko auzoa miatu aurretik"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
 
 #~ msgid "Wake-On-LAN Settings"
@@ -1002,24 +977,7 @@ msgstr "Neurria:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Zerbitzari honek Unix-eko CIFS hedapenak onartzen ditu"
 
-#, fuzzy
-#~| msgid "Browse Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Arakatze ezarpenak"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Profilak"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Autentifikatzea"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Segurtasuna"
 
 #~ msgid "Samba Settings"
@@ -1031,8 +989,17 @@ msgstr "Neurria:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Baimenak, etab."
 
-#~ msgid "Login"
-#~ msgstr "Saio-hasiera"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Iragazte arau bereziak:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Norberak finkatutako aukerak"
 
 #~ msgid "Login:"
 #~ msgstr "Saio-hasiera:"
@@ -1043,5 +1010,8 @@ msgstr "Neurria:"
 #~ msgid "The unmount process crashed."
 #~ msgstr "Desmuntatzeko prozesua kraskatu egin da."
 
-#~ msgid "Protocols"
-#~ msgstr "Protokoloak"
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1/%2 hutsik (%3 erabilita)"
+
+#~ msgid "Location"
+#~ msgstr "Kokalekua"

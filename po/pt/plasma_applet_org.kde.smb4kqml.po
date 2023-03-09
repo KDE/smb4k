@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_smb4k-qml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2018-06-25 15:30+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2018-01-30 11:21+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -48,7 +48,7 @@ msgstr "Interromper"
 
 #: package/contents/ui/NetworkBrowserPage.qml:56
 msgid "Go one level up"
-msgstr "Subir"
+msgstr "Subir um nível"
 
 #: package/contents/ui/NetworkBrowserPage.qml:65
 msgid "Open the mount dialog"
@@ -72,7 +72,7 @@ msgstr "Configuração"
 
 #: package/contents/ui/ProfileItemDelegate.qml:52
 msgid "(active)"
-msgstr "(activo)"
+msgstr "(activa)"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:97
 msgid "Synchronize"
@@ -85,33 +85,3 @@ msgstr "Desmontar"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Desmontar todas as partilhas"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Editar os Favoritos"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Clear"
-#~ msgstr "Limpar"
-
-#~ msgid "Label:"
-#~ msgstr "Nome:"
-
-#~ msgid "Login:"
-#~ msgstr "Utilizador:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Endereço IP:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nome do Grupo:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Favoritos de Topo"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Apagar o Favorito"

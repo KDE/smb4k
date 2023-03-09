@@ -1,16 +1,16 @@
 # Translation of smb4k.po to Ukrainian
-# Copyright (C) 2004-2021 This_file_is_part_of_KDE
+# Copyright (C) 2004-2019 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Ivan Petrouchtchak <ivanpetrouchtchak@yahoo.com>, 2004, 2005, 2006, 2007.
-# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-03-04 08:32+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-07-07 22:18+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -59,9 +59,10 @@ msgstr ""
 "монтування спільних ресурсів Samba"
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© Alexander Reinholdt, 2003–2023"
+msgstr "© Alexander Reinholdt, 2003–2022"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -137,9 +138,10 @@ msgid "Add &Bookmark"
 msgstr "&Додати закладку"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Змонтувати закладки"
+msgstr "Змонтувати всі закладки"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -167,9 +169,10 @@ msgid "Synchronization"
 msgstr "Синхронізація"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Нетипові параметри"
+msgstr "Загальні параметри"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -236,21 +239,27 @@ msgid "Enter the default login information."
 msgstr "Введіть типові реєстраційні дані."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:401
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgid "Set the username and password for wallet entry %1."
-msgstr "Встановити ім'я користувача і пароль для запису %1."
+msgstr ""
+"<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до вузла <b>"
+"%1</b>.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgid "Set the username and password for the default login."
 msgstr ""
-"Встановити ім'я користувача і пароль для типового облікового запису для "
-"входу."
+"<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до вузла <b>"
+"%1</b>.</qt>"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Усе гаразд."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -260,7 +269,7 @@ msgstr "Спорожнити список"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
-msgstr "Запис %1 було вилучено, оскільки було скинуто усі нетипові параметри."
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -390,27 +399,33 @@ msgid " s"
 msgstr " с"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Визначити вузли, які має бути пробуджено за допомогою редактора нетипових "
-"параметрів."
+"<qt>Визначити вузли, які має бути пробуджено за допомогою діалогового вікна "
+"нетипових параметрів.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Додаткові параметри"
+msgstr "Додаткові параметри монтування"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization prefix:"
 msgid "Synchronization Directory"
-msgstr "Каталог синхронізації"
+msgstr "Префікс синхронізації:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Резервні копії"
+msgstr "Резервування"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -430,17 +445,18 @@ msgstr "Обробка файлів"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "Атрибути файла"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "Власність"
+msgstr "Власник"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Атрибути і права власності файла"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -468,7 +484,7 @@ msgstr "Інше"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " кБ/с"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -491,9 +507,10 @@ msgid "File Deletion"
 msgstr "Вилучення файлів"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General Settings"
 msgid "General Filtering Settings"
-msgstr "Загальні параметри фільтрування"
+msgstr "Загальні параметри"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -679,9 +696,10 @@ msgstr "&Пошук"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Додати не&типові параметри"
+msgstr "Додаткові параметри монтування"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -907,7 +925,8 @@ msgid "Mountpoint:"
 msgstr "Точка монтування:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
 msgstr "Користувач:"
 
@@ -929,15 +948,6 @@ msgstr "Розмір:"
 #~ msgid "Custom Options"
 #~ msgstr "Нетипові параметри"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Змонтувати всі закладки"
-
-#~ msgid " KiB"
-#~ msgstr " КіБ"
-
-#~ msgid " KiB/s"
-#~ msgstr " КіБ/с"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -953,23 +963,11 @@ msgstr "Розмір:"
 #~ msgid "Entry"
 #~ msgstr "Запис"
 
-#~ msgid "Username"
+#~ msgid "Login"
 #~ msgstr "Користувач"
 
 #~ msgid "Password"
 #~ msgstr "Пароль"
-
-#~ msgid "Behavior:"
-#~ msgstr "Поведінка:"
-
-#~ msgid "General:"
-#~ msgstr "Загальне:"
-
-#~ msgid "Miscellaneous:"
-#~ msgstr "Інше:"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Особливі правила фільтрування:"
 
 #~ msgid "Identification"
 #~ msgstr "Ідентифікація"
@@ -986,11 +984,11 @@ msgstr "Розмір:"
 #~ msgid "Actions"
 #~ msgstr "Дії"
 
-#~ msgid "Send magic packet before scanning the network neighborhood"
-#~ msgstr "Надіслати контрольний пакет до сканування мережевого оточення"
+#~ msgid "Send magic package before scanning the network neighborhood"
+#~ msgstr "Надіслати контрольний пакунок до сканування мережевого оточення"
 
-#~ msgid "Send magic packet before mounting a share"
-#~ msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
+#~ msgid "Send magic package before mounting a share"
+#~ msgstr "Надіслати контрольний пакунок до монтування спільного ресурсу"
 
 #~ msgid "Wake-On-LAN Settings"
 #~ msgstr "Параметри Wake-On-LAN"
@@ -1001,17 +999,8 @@ msgstr "Розмір:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "На цьому сервері передбачено підтримку розширень UNIX CIFS"
 
-#~ msgid "Browse Settings:"
-#~ msgstr "Параметри навігації:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Профілі:"
-
-#~ msgid "Authentication:"
-#~ msgstr "Розпізнавання:"
-
-#~ msgid "Security:"
-#~ msgstr "Безпека:"
+#~ msgid "Security"
+#~ msgstr "Безпека"
 
 #~ msgid "Samba Settings"
 #~ msgstr "Параметри Samba"
@@ -1022,8 +1011,17 @@ msgstr "Розмір:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Права доступу до файлів тощо."
 
-#~ msgid "Login"
-#~ msgstr "Користувач"
+#~ msgid " KiB"
+#~ msgstr " КіБ"
+
+#~ msgid " KiB/s"
+#~ msgstr " КіБ/с"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Особливі правила фільтрування:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Не&типові параметри"
 
 #~ msgid "Login:"
 #~ msgstr "Користувач:"
@@ -1033,3 +1031,4086 @@ msgstr "Розмір:"
 
 #~ msgid "The unmount process crashed."
 #~ msgstr "Процес демонтування аварійно завершив роботу."
+
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 з %2 вільно (використано %3)"
+
+#~ msgid "Location"
+#~ msgstr "Розташування"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Панель мережі"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Панель пошуку"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Панель спільних ресурсів"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Альтернативна головна панель"
+
+#~ msgid "Shares"
+#~ msgstr "Спільні ресурси"
+
+#~ msgid "Password Storage"
+#~ msgstr "Збереження пароля"
+
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Завантажити записи, що зберігаються у торбинці."
+
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Зберегти записи до торбинки."
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Показати параметри позначеного запису."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Позначення цього пункту призведе до показу подробиць щодо реєстраційних "
+#~ "даних у полі, розташованому нижче."
+
+#~ msgid "Undo"
+#~ msgstr "Вернути"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-адреса:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Порт файлової системи:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Доступ для запису:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Режим безпеки:"
+
+#~ msgid "User ID:"
+#~ msgstr "Код користувача:"
+
+#~ msgid "Group ID:"
+#~ msgstr "Код групи:"
+
+#~ msgid "MAC address:"
+#~ msgstr "MAC-адреса:"
+
+#~ msgid "Browse List"
+#~ msgstr "Список навігації"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Періодична перевірка"
+
+#~ msgid "General Options"
+#~ msgstr "Загальні параметри"
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " байтів"
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Допоміжні програми"
+
+#~ msgid "Copying"
+#~ msgstr "Копіювання"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Вилучення і перенесення файлів"
+
+#~ msgid "Columns"
+#~ msgstr "Стовпчики"
+
+#~ msgid "Tooltips"
+#~ msgstr "Підказки"
+
+#~ msgid "View Mode"
+#~ msgstr "Режим перегляду"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "Не вдалося створити інструмент перегляду мережі."
+
+#~ msgid "Network Search"
+#~ msgstr "Пошук у мережі"
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Не вдалося створити діалогове вікно пошуку."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "Не вдалося створити панель перегляду спільних ресурсів."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Отримання даних попереднього перегляду з %1..."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "Інструмент перегляду мережевого оточення Smb4K"
+
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "© Alexander Reinholdt, 2007–2015"
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Пробуджуємо віддалені сервери…"
+
+#~ msgid "Search item:"
+#~ msgstr "Шукати:"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Введіть тут ключ пошуку."
+
+#~ msgid "Abort"
+#~ msgstr "Перервати"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "Модуль пошуку у мережі Smb4K"
+
+#~ msgid "Search Results"
+#~ msgstr "Результати пошуку"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Нічого не знайдено."
+
+#~ msgid "Open With"
+#~ msgstr "Відкрити за допомогою"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "Модуль для перегляду спільних ресурсів Smb4K"
+
+#~ msgid "&Shares"
+#~ msgstr "&Спільні ресурси"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
+
+#~ msgid "Advanced Network Neighborhood Browser"
+#~ msgstr "Переглядач мережевого оточення з додатковими можливостями"
+
+#~ msgid "Checks"
+#~ msgstr "Перевірки"
+
+#~ msgid "Looking for more information about host %1..."
+#~ msgstr "Виявлення додаткових відомостей щодо вузла %1..."
+
+#~ msgid "Mounting share..."
+#~ msgstr "Монтування спільного ресурсу…"
+
+#~ msgid "Server"
+#~ msgstr "Сервер"
+
+#~ msgid "Operating system"
+#~ msgstr "Операційна система"
+
+#~ msgid "The wallet is not in use."
+#~ msgstr "Торбинка не використовується."
+
+#~ msgid "Mounting %1 failed."
+#~ msgstr "Спроба монтування %1 завершилася невдало."
+
+#~ msgid "Unmounting %1 failed."
+#~ msgstr "Спроба демонтування %1 завершилася невдало."
+
+#~ msgid "View"
+#~ msgstr "Перегляд"
+
+#~ msgid "Settings for the list view:"
+#~ msgstr "Параметри списку перегляду:"
+
+#~ msgid "File System"
+#~ msgstr "Файлова система"
+
+#~ msgid "Free"
+#~ msgstr "Вільно"
+
+#~ msgid "Used"
+#~ msgstr "Використано"
+
+#~ msgid "Total"
+#~ msgstr "Загалом"
+
+#~ msgid "Usage"
+#~ msgstr "Використання"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Підказка протоколу:"
+
+#~ msgid "net"
+#~ msgstr "net"
+
+#~ msgid "Remote Ports"
+#~ msgstr "Віддалені порти"
+
+#~ msgid "Laptop Support"
+#~ msgstr "Підтримка ноутбуків"
+
+#~ msgid "Hardware"
+#~ msgstr "Обладнання"
+
+#~ msgid ""
+#~ "<qt>Smb4K only detects changes in state of your hardware. If you are "
+#~ "performing a software suspend or the like, you should unmount the shares "
+#~ "manually.</qt>"
+#~ msgstr ""
+#~ "<qt>Smb4K може спостерігати за змінами у стані лише вашого обладнання. "
+#~ "Якщо ви наказали системі виконати дію, подібну до програмного переходу у "
+#~ "стан сну, вам доведеться демонтувати спільні ресурси вручну.</qt>"
+
+#~ msgid ""
+#~ "The custom master browser that is to be queried has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано нетипового головного переглядача, до якого слід надсилати "
+#~ "запити.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The broadcast areas that are to be scanned have not been filled in.\n"
+#~ "Please enter them now."
+#~ msgstr ""
+#~ "Не було вказано діапазонів трансляції, сканування яких слід виконати.\n"
+#~ "Будь ласка, вкажіть їх зараз."
+
+#~ msgid ""
+#~ "The mount prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано префікса монтування.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The file mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано маски файлів.\n"
+#~ "Будь ласка, вкажіть її зараз."
+
+#~ msgid ""
+#~ "The directory mask has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано маски каталогів.\n"
+#~ "Будь ласка, вкажіть її зараз."
+
+#~ msgid ""
+#~ "The synchronization prefix has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано префікса синхронізації.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The directory where partially transferred files should\n"
+#~ "be stored has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано каталогу, до якого слід зберігати частково\n"
+#~ "завантажені файли.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The exclude pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано шаблону виключення з синхронізації.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The file from which the exclude pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано файла, з якого слід прочитати шаблони виключення з "
+#~ "синхронізації.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The include pattern for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано шаблону включення до синхронізації.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The file from which the include pattern for synchronization are to be "
+#~ "read\n"
+#~ "has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано файла, з якого слід прочитати шаблони включення до "
+#~ "синхронізації.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The backup suffix for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано суфікса назв файлів резервних копій для синхронізації.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "The backup directory for synchronization has not been filled in.\n"
+#~ "Please enter it now."
+#~ msgstr ""
+#~ "Не було вказано суфікса назв каталогів резервних копій для "
+#~ "синхронізації.\n"
+#~ "Будь ласка, вкажіть його зараз."
+
+#~ msgid ""
+#~ "<qt>Due to security concerns, the cruid option cannot be defined here and "
+#~ "will now be removed.</qt>"
+#~ msgstr ""
+#~ "<qt>Через проблеми із безпекою, тут не можна визначати параметр cruid, "
+#~ "отже, його визначення буде вилучено.</qt>"
+
+#~ msgid "Mounting && Unmounting"
+#~ msgstr "Монтування і демонтування"
+
+#~ msgid "Remote Shares"
+#~ msgstr "Віддалені спільні ресурси"
+
+#~ msgid "Preview Dialog"
+#~ msgstr "Вікно перегляду"
+
+#~ msgid "The password dialog mode is used and logins are not remembered."
+#~ msgstr ""
+#~ "Буде використано режим діалогового вікна введення паролів. Програма не "
+#~ "запам’ятовуватиме ім’я користувача."
+
+#~ msgid "Show custom bookmark label if available"
+#~ msgstr "Показувати нетипову мітку закладки, якщо таку вказано"
+
+#~ msgid ""
+#~ "Do not show the name of the share that is represented by the bookmark but "
+#~ "the custom label that was defined in the bookmark editor."
+#~ msgstr ""
+#~ "Не показувати назву спільного ресурсу, що визначається закладкою. Замість "
+#~ "неї показувати нетипову мітку, яку було визначено у редакторі закладок."
+
+#~ msgid "Start docked"
+#~ msgstr "Запускати в системний лоток"
+
+#~ msgid ""
+#~ "Start the application docked to the system tray, i.e. only the system "
+#~ "tray widget is shown and the main window is hidden. You can bring the "
+#~ "main window up by clicking on the system tray widget or by choosing "
+#~ "\"Restore\" from its popup menu."
+#~ msgstr ""
+#~ "Запускати програму згорнутою у системний лоток. Буде показано лише віджет "
+#~ "системного лотка — головне вікно буде приховано. Відкрити головне вікно "
+#~ "програми можна буде наведенням вказівника миші на віджет піктограми "
+#~ "системного лотка з наступним клацанням лівою кнопкою миші і вибором "
+#~ "пункту «Відновити» з контекстного меню."
+
+#~ msgid "Show notifications"
+#~ msgstr "Показувати сповіщення"
+
+#~ msgid ""
+#~ "Notify the user about actions that were performed, e.g. the mounting or "
+#~ "unmounting of a share. If you do not want to be disturbed too often, you "
+#~ "might want to switch this option off. Warnings and error messages are not "
+#~ "affected by this option."
+#~ msgstr ""
+#~ "Сповіщати користувача про дії, тобто монтування або демонтування спільних "
+#~ "ресурсів. Якщо ви не бажаєте, щоб програма вас турбувала, зніміть "
+#~ "позначення з цього пункту. Зміна значення цього параметра не "
+#~ "стосуватиметься повідомлень з попередженнями та повідомлень про помилки."
+
+#~ msgid "Show mounted shares in an icon view"
+#~ msgstr "Показувати змонтовані ресурси як піктограми"
+
+#~ msgid "The mounted shares will be displayed in an icon view."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати змонтовані спільні ресурси як піктограми."
+
+#~ msgid "Show mounted shares in a list view"
+#~ msgstr "Показувати спільні ресурси як список"
+
+#~ msgid "The mounted shares will be displayed in a list view."
+#~ msgstr "Визначає, чи слід показувати змонтовані спільні ресурси як список."
+
+#~ msgid "Show printer shares"
+#~ msgstr "Показувати спільні принтери"
+
+#~ msgid "Printer shares will be displayed in the network browser."
+#~ msgstr "Визначає, чи слід показувати спільні принтери у навігаторі мережею."
+
+#~ msgid "Show hidden shares"
+#~ msgstr "Показувати приховані спільні ресурси"
+
+#~ msgid ""
+#~ "Hidden shares will be displayed in the network browser. Hidden shares are "
+#~ "ending with a $ sign, e.g. Musik$ or IPC$."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати приховані спільні ресурси у навігаторі "
+#~ "мережею. Назви прихованих спільних ресурсів завершуються символом $, "
+#~ "наприклад Musik$ або IPC$."
+
+#~ msgid "Show hidden IPC$ shares"
+#~ msgstr "Показувати приховані спільні ресурси IPC$"
+
+#~ msgid "Hidden IPC$ shares will be displayed in the network browser."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати приховані спільні принтери IPC$ у навігаторі "
+#~ "мережею."
+
+#~ msgid "Show hidden ADMIN$ shares"
+#~ msgstr "Показувати приховані спільні ресурси ADMIN$"
+
+#~ msgid "Hidden ADMIN$ shares will be displayed in the network browser."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати приховані спільні принтери ADMIN$ у "
+#~ "навігаторі мережею."
+
+#~ msgid "Show the type of the share"
+#~ msgstr "Показувати тип спільного ресурсу"
+
+#~ msgid ""
+#~ "The type of a share will be displayed in a separate column in the network "
+#~ "browser. It can either be Disk, Print or IPC."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати тип спільного ресурсу у окремому стовпчику "
+#~ "навігатора мережею. Типом спільного ресурсу може бути «Диск», «Принтер» "
+#~ "чи «IPC»."
+
+#~ msgid "Show the IP address of the server"
+#~ msgstr "Показувати адресу IP сервера"
+
+#~ msgid ""
+#~ "The IP address of the server will be displayed in a separate column in "
+#~ "the network browser."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати адресу IP сервера у окремому стовпчику "
+#~ "навігатора мережею."
+
+#~ msgid "Show the comment"
+#~ msgstr "Показувати коментар"
+
+#~ msgid ""
+#~ "The comment describing the server or share will be displayed in a "
+#~ "separate column in the network browser."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати коментар з описом сервера або спільного "
+#~ "ресурсу у окремому стовпчику навігатора мережею."
+
+#~ msgid "Show a tooltip with information about the network item"
+#~ msgstr "Показувати підказку з інформацією про мережевий елемент"
+
+#~ msgid ""
+#~ "The tooltip shows various information about the current network item."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати підказку з різноманітними відомостями щодо "
+#~ "поточного пункту списку ресурсів мережі."
+
+#~ msgid "Automatically expand domains and hosts"
+#~ msgstr "Автоматично розгортати пункти доменів і вузлів"
+
+#~ msgid ""
+#~ "Automatically expand domain and host items when a list of associated "
+#~ "network items (domain members or shares) is added or updated. Please note "
+#~ "that a domain or host item will always be expanded when you execute it."
+#~ msgstr ""
+#~ "Автоматично розгортати пункти доменів і вузлів у разі додавання або "
+#~ "оновлення відповідного списку елементів мережі (учасників домену або "
+#~ "спільних ресурсів). Будь ласка, зауважте, що пункт домену або вузла "
+#~ "завжди буде розгорнуто, якщо ви виконуватимете з ним дії."
+
+#~ msgid "Show the mount point instead of the share name"
+#~ msgstr "Замість назви спільного ресурсу показувати точку монтування"
+
+#~ msgid ""
+#~ "A share is normally displayed with its name in the shares view. Choosing "
+#~ "this feature will cause the exchange of the share name by the mount point."
+#~ msgstr ""
+#~ "У списку спільних ресурсів для пункту ресурсу зазвичай буде показано "
+#~ "назву. Позначення цього пункту призведе до заміни назви ресурсу записом "
+#~ "його точки монтування."
+
+#~ msgid "Show all shares that are mounted on the system"
+#~ msgstr "Показати всі спільні ресурси, які змонтовано у системі"
+
+#~ msgid ""
+#~ "You will not only see the shares that were mounted and are owned by you, "
+#~ "but also all other mounts using the SMBFS and CIFS file system that are "
+#~ "present on the system."
+#~ msgstr ""
+#~ "У разі позначення цього пункту ви бачитимете не лише список спільних "
+#~ "ресурсів, які було змонтовано вами і які належать вам, але і всі інші "
+#~ "змонтовані за допомогою SMBFS і CIFS файлові системи."
+
+#~ msgid "Show a tooltip with information about the share"
+#~ msgstr "Показувати підказку з інформацією про спільний ресурс"
+
+#~ msgid "The tooltip shows various information about the current share."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати підказку з відомостями щодо спільного "
+#~ "ресурсу."
+
+#~ msgid "Show the owner and group"
+#~ msgstr "Показувати власника і групу"
+
+#~ msgid "Show the UID and GID that own all files on the mounted file system."
+#~ msgstr ""
+#~ "Показувати UID і GID власника всіх файлів на змонтованій файловій системі."
+
+#~ msgid "Show the login name"
+#~ msgstr "Показувати ім’я користувача"
+
+#~ msgid ""
+#~ "Show the login name that was used to authenticate to the server. The "
+#~ "column will only contain an entry if the share was mounted with the CIFS "
+#~ "file system."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати ім’я користувача, яке було використано для "
+#~ "розпізнавання на сервері. У цьому стовпчику можна буде побачити якісь "
+#~ "дані, лише якщо спільний ресурс було змонтовано як файлову систему CIFS."
+
+#~ msgid "Show the file system"
+#~ msgstr "Показувати файлову систему"
+
+#~ msgid "Show the file system that was used for mounting the share."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати файлову систему, яку було використано для "
+#~ "монтування спільного ресурсу."
+
+#~ msgid "Show the free disk space"
+#~ msgstr "Показувати вільне місце на диску"
+
+#~ msgid "Show the free disk space that is left on the share."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати вільне місце у файловій системі спільного "
+#~ "ресурсу."
+
+#~ msgid "Show the used disk space"
+#~ msgstr "Показувати використане місце на диску"
+
+#~ msgid "Show the disk space that is already used on the share."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати вже заповнений простір у файловій системі "
+#~ "спільного ресурсу."
+
+#~ msgid "Show the total disk space"
+#~ msgstr "Показувати дані про загальний розмір диска"
+
+#~ msgid "Show the total disk space of the share."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати дані щодо загального розміру файлової "
+#~ "системи спільного ресурсу."
+
+#~ msgid "Show the disk usage"
+#~ msgstr "Показувати використання диска"
+
+#~ msgid "Show the space that is used on the share (as a percentage.)"
+#~ msgstr ""
+#~ "Визначає, чи слід показувати значення використання файлової системи "
+#~ "спільного ресурсу у відсотках."
+
+#~ msgid "Preview hidden files and directories"
+#~ msgstr "Перегляд прихованих файлів і каталогів"
+
+#~ msgid ""
+#~ "Display hidden files and directories in the preview dialog. The hidden "
+#~ "files and directories are those whose names begin with a period.  They "
+#~ "are usually needed for very specific purposes (storing the configuration "
+#~ "information for an application, etc.). Since they are not of any "
+#~ "importance for your regular work, you normally do not need to enable this "
+#~ "feature."
+#~ msgstr ""
+#~ "Визначає, чи слід показувати приховані файли і каталоги у діалоговому "
+#~ "вікні попереднього перегляду. Назви прихованих файлів і каталогів "
+#~ "починаються з крапки і зазвичай використовуються для спеціальних потреб "
+#~ "(зберігання налаштувань програми тощо). Оскільки такі файли, зазвичай, не "
+#~ "потрібні для виконання типових завдань, вам не варто без потреби "
+#~ "позначати цей пункт."
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Виявляти у мережевому оточенні доступні робочі групи і домени"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Це типовий спосіб отримання початкового списку навігації. Програма "
+#~ "виявить всі робочі групи і домени пошуком за всіма відомими головними "
+#~ "навігаторами у мережевому оточенні вашого комп’ютера."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Опитати поточний головний навігатор робочої групи"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "За використання цього способу програма надішле запит до поточного "
+#~ "головного навігатора вашої робочої групи або домену для отримання "
+#~ "початкового списку навігації."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Опитати нетиповий головний навігатор:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "За використання цього способу програма надішле запит до нетипового "
+#~ "головного навігатора вашої робочої групи або домену для отримання "
+#~ "початкового списку навігації."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "Нетиповий головний навігатор, який буде опитано"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Введіть назву або адресу IP головного навігатора, який слід опитати для "
+#~ "складання початкового списку навігації."
+
+#~ msgid "Scan these broadcast areas:"
+#~ msgstr "Сканувати ці діапазони адрес:"
+
+#~ msgid ""
+#~ "This method will scan the given broadcast areas and look for all "
+#~ "registered hosts."
+#~ msgstr ""
+#~ "За використання цього способу програма виконає сканування вказаних "
+#~ "діапазонів адрес і знайде всі зареєстровані вузли."
+
+#~ msgid "A custom list of broadcast addresses"
+#~ msgstr "Нетиповий список діапазонів адрес"
+
+#~ msgid ""
+#~ "Enter a comma-separated list of broadcast addresses here (e.g. "
+#~ "192.168.0.255, 192.168.1.255). It is used to scan for all known hosts in "
+#~ "the respective broadcast areas."
+#~ msgstr ""
+#~ "Введіть відокремлений комами список адрес (наприклад, 192.168.0.255, "
+#~ "192.168.1.255). Цей список буде використано для виявлення всіх відомих "
+#~ "вузлів у відповідному діапазоні адрес."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr "Для отримання списку навігації потрібне розпізнавання"
+
+#~ msgid ""
+#~ "The master browsers in your network neighborhood require a login to "
+#~ "return the browse list. This setting is rarely needed and might even "
+#~ "cause a master browser to return an empty browse list. It will not have "
+#~ "any effect when you let Smb4K scan broadcast areas."
+#~ msgstr ""
+#~ "Визначає, чи повертатимуть головні навігатори у мережевому оточенні "
+#~ "вашого комп’ютера дані щодо списку навігації лише у відповідь на введення "
+#~ "імені користувача. Позначення цього пункту потрібне лише у рідкісних "
+#~ "випадках. У відповідь на непотрібне позначення можна отримати порожній "
+#~ "список навігації. Позначення цього пункту буде проігноровано, якщо ви "
+#~ "накажете Smb4K сканувати діапазони адрес."
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Періодично сканувати мережеве оточення"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Періодично виявляти у мережевому оточенні доступні робочі групи, вузли і "
+#~ "домени"
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Інтервал між перевірками:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Час у хвилинах між послідовними перевірками Smb4K мережевого оточення з "
+#~ "метою пошуку нових робочих груп, вузлів та спільних ресурсів."
+
+#~ msgid "Enable Wake-On-LAN features"
+#~ msgstr "Увімкнути можливості Wake-On-LAN"
+
+#~ msgid ""
+#~ "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#~ "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#~ "magic package send via a UDP socket to wake up remote servers. If you "
+#~ "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#~ "this option."
+#~ msgstr ""
+#~ "Wake-on-LAN (WOL) — стандарт щодо комп’ютерних мереж ethernet, який "
+#~ "уможливлює вмикання або пробудження комп’ютера за допомогою повідомлення, "
+#~ "надісланого мережею. У Smb4K пакунок, надісланий за допомогою сокета UDP, "
+#~ "використовується для пробудження віддалених серверів. Якщо ви хочете "
+#~ "скористатися перевагами можливостей Wake-On-LAN, вам слід позначити цей "
+#~ "пункт."
+
+#~ msgid "Waiting time:"
+#~ msgstr "Час очікування:"
+
+#~ msgid ""
+#~ "This is the waiting time in seconds between the sending of the magic Wake-"
+#~ "On-LAN packages and the scanning of the network neighborhood or the "
+#~ "mounting of a share."
+#~ msgstr ""
+#~ "Час очікування у секундах між надсиланням контрольних пакунків Wake-On-"
+#~ "LAN і скануванням мережевого оточення або монтуванням спільного ресурсу."
+
+#~ msgid "Mount prefix:"
+#~ msgstr "Префікс монтування:"
+
+#~ msgid ""
+#~ "This is the prefix where Smb4K will create the mount points and mount the "
+#~ "remote shares."
+#~ msgstr ""
+#~ "Визначає префікс монтування, де Smb4K створюватиме точки монтування і "
+#~ "монтуватиме віддалені спільні ресурси."
+
+#~ msgid "Force generated subdirectories to be lower case"
+#~ msgstr "Примусово створювати назви новостворених підтек у нижньому регістрі"
+
+#~ msgid ""
+#~ "All names of the subdirectories created by Smb4K below the mount prefix "
+#~ "will be lowercase."
+#~ msgstr ""
+#~ "Визначає, чи слід переводити назви всіх підтек, створених Smb4K у теці "
+#~ "префіксу, у нижній регістр (записувати малими літерами)."
+
+#~ msgid "Unmount all personal shares on exit"
+#~ msgstr "Під час виходу демонтувати всі особисті спільні ресурси"
+
+#~ msgid ""
+#~ "Unmount all shares that belong to you when the program exits. Shares that "
+#~ "are owned by other users are ignored."
+#~ msgstr ""
+#~ "Визначає, чи слід під час завершення роботи програми демонтувати всі "
+#~ "спільні ресурси, які належать лише вашому користувачеві. Спільні ресурси "
+#~ "інших користувачів буде пропущено."
+
+#~ msgid "Remount recently used shares on program start"
+#~ msgstr ""
+#~ "Під час запуску програми монтувати використані недавно спільні ресурси"
+
+#~ msgid ""
+#~ "Remount all your shares that were mounted when you exited the program. If "
+#~ "a remount fails, Smb4K will retry the next time it is started. Shares "
+#~ "that were mounted by other users are ignored."
+#~ msgstr ""
+#~ "Визначає, чи слід повторно монтувати всі ваші спільні ресурси, які було "
+#~ "змонтовано на час завершення роботи програми. Якщо повторне монтування "
+#~ "зазнає невдачі, Smb4K спробує виконати його під час наступного запуску "
+#~ "програми. Позначення цього пункту не стосуватиметься спільних ресурсів, "
+#~ "змонтованих іншими користувачами."
+
+#~ msgid "Number of remount attempts:"
+#~ msgstr "Кількість спроб повторного монтування:"
+
+#~ msgid ""
+#~ "Set the number of attempts that are made to remount shares before Smb4K "
+#~ "gives up."
+#~ msgstr ""
+#~ "Встановіть кількість спроб повторного монтування спільних ресурсів, після "
+#~ "виконання якої Smb4K має припинити спроби."
+
+#~ msgid "Interval between remount attempts:"
+#~ msgstr "Інтервал між спробами повторного монтування:"
+
+#~ msgid "Set the time that elapses between attempts to remount shares."
+#~ msgstr ""
+#~ "Встановіть час між послідовними спробами повторного монтування спільних "
+#~ "ресурсів."
+
+#~ msgid "Allow the unmounting of shares that are owned by other users"
+#~ msgstr ""
+#~ "Дозволяти демонтування спільних ресурсів, які належать іншим користувачам"
+
+#~ msgid ""
+#~ "Allow the unmounting of shares that were mounted by other users. Please "
+#~ "think before you enable this option."
+#~ msgstr ""
+#~ "Визначає, чи слід дозволяти програмі демонтувати спільні ресурси, які "
+#~ "було змонтовано іншими користувачами. Будь ласка, двічі подумайте, перш "
+#~ "ніж позначати цей пункт."
+
+#~ msgid "Force the unmounting of inaccessible shares"
+#~ msgstr "Виконувати демонтування недоступних ресурсів у примусовому режимі"
+
+#~ msgid ""
+#~ "Force the unmounting of inaccessible shares (Linux only). In case a share "
+#~ "is inaccessible, a lazy unmount is performed. Before the actual unmount "
+#~ "is performed, a warning dialog is shown asking to approve the unmount."
+#~ msgstr ""
+#~ "Виконати демонтування недоступних спільних ресурсів у примусовому режимі "
+#~ "(лише Linux). Якщо спільний ресурс недоступний, буде виконано відкладене "
+#~ "демонтування. Перед виконанням демонтування програма покаже діалогове "
+#~ "вікно з пропозицією підтвердити демонтування."
+
+#~ msgid "Interval between checks:"
+#~ msgstr "Інтервал між перевірками:"
+
+#~ msgid ""
+#~ "This is the time in milliseconds that elapses until Smb4K checks again "
+#~ "for new mounts and unmounts. The lower limit is 500 ms, the upper one "
+#~ "300000 ms. Please note that the smaller the interval gets the higher is "
+#~ "your system load."
+#~ msgstr ""
+#~ "Це значення визначає проміжок часу (у мілісекундах) між послідовними "
+#~ "перевірками на виконання дій з монтування або демонтування засобами "
+#~ "Smb4K. Найкоротшим інтервалом є 500 мс, найдовшим — 300000 мс. Будь "
+#~ "ласка, зауважте, що чим коротшим буде інтервал, тим вищим буде "
+#~ "навантаження на вашу систему."
+
+#~ msgid "Save logins in a wallet"
+#~ msgstr "Зберігати реєстраційні дані у торбинці"
+
+#~ msgid ""
+#~ "Use a wallet to store the login. The username and password are stored "
+#~ "encrypted on your hard drive. If this setting is disabled, the login is "
+#~ "not stored permanently but only temporarily."
+#~ msgstr ""
+#~ "Визначає, чи слід використовувати для зберігання реєстраційних даних "
+#~ "торбинку системи. Якщо ви позначите цей пункт програма зберігатиме "
+#~ "зашифровані дані щодо користувача та пароля. Якщо пункт не буде "
+#~ "позначено, програма зберігатиме реєстраційні дані лише тимчасово."
+
+#~ msgid "Remember logins during program run"
+#~ msgstr "Пам’ятати реєстраційні дані протягом сеансу"
+
+#~ msgid ""
+#~ "If you decide to store your logins temporarily, Smb4K will remember them "
+#~ "only until the program exits. If you disable this setting, you will have "
+#~ "to provide the login every time it is needed."
+#~ msgstr ""
+#~ "Якщо ви позначите цей пункт, Smb4K пам’ятатиме реєстраційні дані лише до "
+#~ "завершення роботи програми. Якщо ви знімете позначку з цього пункту, вам "
+#~ "доведеться вказувати ці дані кожного разу, коли на них надходитиме запит."
+
+#~ msgid "Use a default login"
+#~ msgstr "Використовувати типовий вхід"
+
+#~ msgid ""
+#~ "Enable the usage of a default login. The provided data is used by default "
+#~ "to authenticate to a remote server. This is very useful e.g. if you are "
+#~ "working in an Active Directory environment or an NT domain."
+#~ msgstr ""
+#~ "Якщо буде позначено цей пункт, програма використовуватиме типові "
+#~ "реєстраційні дані. Вказані нижче реєстраційні дані буде типово "
+#~ "використано для реєстрації на віддаленому сервері. Позначення пункту буде "
+#~ "корисним, якщо ви, наприклад працюєте у середовищі Active Directory або "
+#~ "домені NT."
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "Назва NetBIOS:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Це назва NetBIOS вашого комп’ютера, яку буде використано Smb4K. Типово, "
+#~ "цією назвою є або назва NetBIOS, визначена у файлі smb.conf, або назва "
+#~ "вузла."
+
+#~ msgid "Domain:"
+#~ msgstr "Домен:"
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "Це робоча група або домен, до якого має належати комп’ютер. Типовою є "
+#~ "робоча група, визначена у файлі smb.conf."
+
+#~ msgid "Socket options:"
+#~ msgstr "Параметри сокетів:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Це параметри сокетів TCP, які буде використано програмами nmblookup і "
+#~ "smbclient. Параметрами сокетів керується мережевий шар операційних "
+#~ "систем, який надає змогу налаштовувати з’єднання. Докладніше про це можна "
+#~ "дізнатися зі сторінки довідника (man) smb.conf."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "Діапазон NetBIOS:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Це значення є діапазоном або областю видимості NetBIOS, у якій діятимуть "
+#~ "nmblookup і smbclient. Вам не слід вказувати це значення, якщо хоч один з "
+#~ "комп’ютерів мережі не встановлює цього значення."
+
+#~ msgid "SMB port:"
+#~ msgstr "Порт SMB:"
+
+#~ msgid ""
+#~ "This is the port that is used for connecting to remote servers with the "
+#~ "client programs net, smbclient and smbtree. The default value is 139 "
+#~ "(NetBIOS). This setting is not used for mounting."
+#~ msgstr ""
+#~ "Це порт, який буде використано для встановлення з’єднань з віддаленими "
+#~ "серверами за допомогою клієнтських програм net, smbclient і smbtree. "
+#~ "Типовим портом є 139 (NetBIOS). Значення цього параметра не "
+#~ "використовуватиметься для монтування."
+
+#~ msgid "File system port:"
+#~ msgstr "Порт файлової системи:"
+
+#~ msgid ""
+#~ "This is the port that is exclusively used to mount shares from remote "
+#~ "servers. The default value is 445 (CIFS file system)."
+#~ msgstr ""
+#~ "Визначає єдиний порт, який використовуватиметься для монтування спільних "
+#~ "ресурсів з віддалених серверів. Типовим портом є 445 (файлова система "
+#~ "CIFS)."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Спробувати розпізнавання з Kerberos"
+
+#~ msgid ""
+#~ "Try to authenticate with Kerberos. This is only useful in an Active "
+#~ "Directory environment. The setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Визначає, чи слід намагатися виконати розпізнавання за допомогою "
+#~ "Kerberos. Позначення цього пункту буде корисним лише у середовищах Active "
+#~ "Directory. Позначення цього пункту вплине на параметри команд smbclient і "
+#~ "smbtree."
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Розпізнавання за локальним обліковим записом"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient, and smbtree command."
+#~ msgstr ""
+#~ "У разі позначення цього пункту запити до віддаленого сервера буде "
+#~ "надіслано на основі реєстраційних даних локального облікового запису "
+#~ "вашого користувача. Вказане значення буде використано командами net, "
+#~ "smbclient і smbtree."
+
+#~ msgid "Use Winbind ccache for authentication"
+#~ msgstr "Використовувати ccache Winbind для розпізнавання"
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects smbclient "
+#~ "and smbtree command."
+#~ msgstr ""
+#~ "Використовувати ccache Winbind для розпізнавання. Це значення буде "
+#~ "використано командами smbclient і smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Стан підписування:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Визначає стан підписування. Це значення буде використано командами "
+#~ "smbclient і smbtree."
+
+#~ msgid "None"
+#~ msgstr "Немає"
+
+#~ msgid "On"
+#~ msgstr "Увімкнено"
+
+#~ msgid "Off"
+#~ msgstr "Вимкнено"
+
+#~ msgid "Required"
+#~ msgstr "Обов’язкове"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Шифрувати передавання даних SMB"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the smbclient and smbtree command."
+#~ msgstr ""
+#~ "Шифрувати передавання даних протоколом SMB (лише для серверів Unix з "
+#~ "розширеними можливостями). Це значення буде використано командами "
+#~ "smbclient і smbtree."
+
+#~ msgid ""
+#~ "This is the character set that is used by the client side (i.e. your "
+#~ "side) either to convert local path names to and from Unicode (CIFS, "
+#~ "Linux) or for codepage to charset translations (SMBFS, FreeBSD). If you "
+#~ "keep the default setting, Smb4K will try to automatically determine the "
+#~ "charset by looking up the \"unix charset\" option in the smb.conf."
+#~ msgstr ""
+#~ "Цей пункт визначає набір символів (кодування), яке використовується на "
+#~ "клієнтській стороні (тобто у вашій системі) для перетворення локальних "
+#~ "адрес у та з кодування Unicode (CIFS, Linux) або перетворень символів "
+#~ "кодових таблиць (SMBFS, FreeBSD). Якщо ви не змінюватимете типового "
+#~ "значення, Smb4K спробує визначити набір символів на основі значення "
+#~ "параметра «unix charset» з файла smb.conf."
+
+#~ msgid "default"
+#~ msgstr "типове"
+
+#~ msgid "iso8859-1"
+#~ msgstr "iso8859-1"
+
+#~ msgid "iso8859-2"
+#~ msgstr "iso8859-2"
+
+#~ msgid "iso8859-3"
+#~ msgstr "iso8859-3"
+
+#~ msgid "iso8859-4"
+#~ msgstr "iso8859-4"
+
+#~ msgid "iso8859-5"
+#~ msgstr "iso8859-5"
+
+#~ msgid "iso8859-6"
+#~ msgstr "iso8859-6"
+
+#~ msgid "iso8859-7"
+#~ msgstr "iso8859-7"
+
+#~ msgid "iso8859-8"
+#~ msgstr "iso8859-8"
+
+#~ msgid "iso8859-9"
+#~ msgstr "iso8859-9"
+
+#~ msgid "iso8859-13"
+#~ msgstr "iso8859-13"
+
+#~ msgid "iso8859-14"
+#~ msgstr "iso8859-14"
+
+#~ msgid "iso8859-15"
+#~ msgstr "iso8859-15"
+
+#~ msgid "utf8"
+#~ msgstr "utf8"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "koi8-u"
+#~ msgstr "koi8-u"
+
+#~ msgid "koi8-ru"
+#~ msgstr "koi8-ru"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "gb2312"
+#~ msgstr "gb2312"
+
+#~ msgid "big5"
+#~ msgstr "big5"
+
+#~ msgid "euc-jp"
+#~ msgstr "euc-jp"
+
+#~ msgid "euc-kr"
+#~ msgstr "euc-kr"
+
+#~ msgid "tis-620"
+#~ msgstr "tis-620"
+
+#~ msgid "Server codepage:"
+#~ msgstr "Кодова сторінка сервера:"
+
+#~ msgid ""
+#~ "This is the codepage that is used by the server. The setting is only "
+#~ "available with the SMBFS file system. If you keep the default setting, "
+#~ "Smb4K will try to automatically determine the codepage by looking up the "
+#~ "\"dos charset\" option in the smb.conf file."
+#~ msgstr ""
+#~ "Цей пункт визначає кодову сторінку, яка використовується на сервері. "
+#~ "Визначити кодову сторінку можна лише для файлових систем SMBFS. Якщо ви "
+#~ "не змінюватимете типового значення, Smb4K спробує визначити кодову "
+#~ "сторінку у автоматичному режимі на основі значення параметра «dos "
+#~ "charset» з файла smb.conf."
+
+#~ msgid "cp437"
+#~ msgstr "cp437"
+
+#~ msgid "cp720"
+#~ msgstr "cp720"
+
+#~ msgid "cp737"
+#~ msgstr "cp737"
+
+#~ msgid "cp775"
+#~ msgstr "cp775"
+
+#~ msgid "cp850"
+#~ msgstr "cp850"
+
+#~ msgid "cp852"
+#~ msgstr "cp852"
+
+#~ msgid "cp855"
+#~ msgstr "cp855"
+
+#~ msgid "cp857"
+#~ msgstr "cp857"
+
+#~ msgid "cp858"
+#~ msgstr "cp858"
+
+#~ msgid "cp860"
+#~ msgstr "cp860"
+
+#~ msgid "cp861"
+#~ msgstr "cp861"
+
+#~ msgid "cp862"
+#~ msgstr "cp862"
+
+#~ msgid "cp863"
+#~ msgstr "cp863"
+
+#~ msgid "cp864"
+#~ msgstr "cp864"
+
+#~ msgid "cp865"
+#~ msgstr "cp865"
+
+#~ msgid "cp866"
+#~ msgstr "cp866"
+
+#~ msgid "cp869"
+#~ msgstr "cp869"
+
+#~ msgid "cp874"
+#~ msgstr "cp874"
+
+#~ msgid "cp932"
+#~ msgstr "cp932"
+
+#~ msgid "cp936"
+#~ msgstr "cp936"
+
+#~ msgid "cp949"
+#~ msgstr "cp949"
+
+#~ msgid "cp950"
+#~ msgstr "cp950"
+
+#~ msgid "cp1250"
+#~ msgstr "cp1250"
+
+#~ msgid "cp1252"
+#~ msgstr "cp1252"
+
+#~ msgid "cp1253"
+#~ msgstr "cp1253"
+
+#~ msgid "cp1254"
+#~ msgstr "cp1254"
+
+#~ msgid "cp1255"
+#~ msgstr "cp1255"
+
+#~ msgid "cp1256"
+#~ msgstr "cp1256"
+
+#~ msgid "cp1257"
+#~ msgstr "cp1257"
+
+#~ msgid "cp1258"
+#~ msgstr "cp1258"
+
+#~ msgid "unicode"
+#~ msgstr "unicode"
+
+#~ msgid ""
+#~ "This is the user ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Це ідентифікатор (номер) користувача, який використовуватиметься для "
+#~ "доступу до файлів та каталогів спільного ресурсу. Якщо ви користуєтеся "
+#~ "файловою системою CIFS, а віддалений сервер підтримує CIFS Unix "
+#~ "Extentions, значення цього пункту буде проігноровано."
+
+#~ msgid ""
+#~ "This is the group ID (a number) that the files and directories of the "
+#~ "mounted share will have. If you are using the CIFS file system and the "
+#~ "remote server supports the CIFS Unix Extensions, this setting will be "
+#~ "ignored."
+#~ msgstr ""
+#~ "Це ідентифікатор (номер) групи, який використовуватиметься для доступу до "
+#~ "файлів та каталогів спільного ресурсу. Якщо ви користуєтеся файловою "
+#~ "системою CIFS, а віддалений сервер підтримує CIFS Unix Extentions, "
+#~ "значення цього пункту буде проігноровано."
+
+#~ msgid "File mask:"
+#~ msgstr "Маска файлів:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating files. It must be defined "
+#~ "in octal. In case the CIFS file system is used, this setting only takes "
+#~ "effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Це маска прав доступу, яку буде використано для створення файлів. Маску "
+#~ "слід вказувати у вісімковій формі запису. Якщо ви користуєтеся файловою "
+#~ "системою CIFS, значення, вказане у цьому пункті, буде використано лише "
+#~ "для серверів, які не підтримують CIFS Unix Extensions."
+
+#~ msgid "Directory mask:"
+#~ msgstr "Маска каталогів:"
+
+#~ msgid ""
+#~ "This is the mask that will be used for creating directories. It must be "
+#~ "defined in octal. In case the CIFS file system is used, this setting only "
+#~ "takes effect if the server does not support the CIFS Unix Extensions."
+#~ msgstr ""
+#~ "Це маска прав доступу, яку буде використано для створення каталогів. "
+#~ "Маску слід вказувати у вісімковій формі запису. Якщо ви користуєтеся "
+#~ "файловою системою CIFS, значення, вказане у цьому пункті, буде "
+#~ "використано лише для серверів, які не підтримують CIFS Unix Extensions."
+
+#~ msgid "Write access:"
+#~ msgstr "Доступ для запису:"
+
+#~ msgid ""
+#~ "Here you can choose if the shares should be mounted in read-write or read-"
+#~ "only mode."
+#~ msgstr ""
+#~ "Тут ви можете визначити режим, у якому слід монтувати спільні ресурси: "
+#~ "режим читання і запису чи режим лише читання."
+
+#~ msgid "read-write"
+#~ msgstr "читання-запис"
+
+#~ msgid "read-only"
+#~ msgstr "лише читання"
+
+#~ msgid "Do permission checks"
+#~ msgstr "Виконувати перевірку прав доступу"
+
+#~ msgid ""
+#~ "The client side (i.e. your side) will check if you have the right UID/GID "
+#~ "to manipulate a file or directory. You might want to switch this feature "
+#~ "off if the server(s) support the CIFS Unix Extensions and you are not "
+#~ "allowed to access the files and directories. This setting does not affect "
+#~ "the normal ACL check."
+#~ msgstr ""
+#~ "Визначає, чи слід виконувати перевірки належного UID/GID для виконання "
+#~ "дій над файлами або каталогами на клієнтській стороні (вашому "
+#~ "комп’ютері). Якщо сервер підтримує CIFS Unix Extensions, а ви не можете "
+#~ "отримати доступ до файлів і каталогів, вам слід зняти позначку з цього "
+#~ "пункту. Позначення цього пункту не скасовуватиме звичайної перевірки за "
+#~ "списком керування доступом (ACL)."
+
+#~ msgid "Attempt to set UID and GID"
+#~ msgstr "Намагатися встановити UID і GID"
+
+#~ msgid ""
+#~ "In case the server supports the CIFS Unix Extensions, the client side (i."
+#~ "e. your side) attempts to set the effective UID and GID of the current "
+#~ "process on newly created files, directories and devices. If this feature "
+#~ "is turned off, the default UID and GID defined for the share will be "
+#~ "used. It is recommended that you read the manual page of mount.cifs "
+#~ "before you change this setting."
+#~ msgstr ""
+#~ "У разі позначення цього пункту, якщо сервер підтримує CIFS Unix "
+#~ "Extensions, клієнтська сторона (ваш комп’ютер) намагатиметься встановити "
+#~ "UID і GID поточного процесу для створених у системі файлів, каталогів та "
+#~ "пристроїв. Якщо цей пункт не буде позначено, буде використано типові UID "
+#~ "і GID для спільного ресурсу. Перш ніж позначати або знімати позначку з "
+#~ "цього пункту, вам слід ознайомитися з вмістом сторінки довідки (man) "
+#~ "mount.cifs."
+
+#~ msgid "Use server inode numbers"
+#~ msgstr "Використовувати номери inode з сервера"
+
+#~ msgid ""
+#~ "Use inode numbers (unique persistent file identifiers) returned by the "
+#~ "server instead of automatically generating temporary inode numbers on the "
+#~ "client side."
+#~ msgstr ""
+#~ "Визначає, чи слід використовувати номери inode (унікальні сталі "
+#~ "ідентифікатори файлів), повернені сервером, замість автоматично створених "
+#~ "тимчасових номерів inode, визначених на стороні клієнта (вашого "
+#~ "комп’ютера)."
+
+#~ msgid "Do not cache inode data"
+#~ msgstr "Не кешувати даних inode"
+
+#~ msgid ""
+#~ "Directly read from and write to files opened on the share. In some cases "
+#~ "this can provide better performance than the default behavior which "
+#~ "caches reads and writes."
+#~ msgstr ""
+#~ "Використовувати безпосереднє читання і запис файлів, відкритих на "
+#~ "спільному ресурсі. Здебільшого, позначення цього пункту покращує "
+#~ "швидкодію порівняно з типовою поведінкою, коли система кешує дії з "
+#~ "читання та запису."
+
+#~ msgid "Translate reserved characters"
+#~ msgstr "Переносити зарезервовані символи"
+
+#~ msgid ""
+#~ "Translate six of the seven reserved characters (including the colon, "
+#~ "question mark, pipe, asterisk, greater than and less than characters but "
+#~ "not the backslash) to remap range (above 0xF000). This allows you to open "
+#~ "files that were created with such characters. This has no effect if the "
+#~ "server does not support Unicode."
+#~ msgstr ""
+#~ "Переносити шість з семи зарезервованих символів (зокрема двокрапку, знак "
+#~ "питання, символ вертикальної риски, зірочку та символи знаків «більше» та "
+#~ "«менше», але не зворотну риску) до вищого діапазону (за 0xF000). Якщо ви "
+#~ "позначите цей пункт, ви зможете відкривати файли, назви яких містять ці "
+#~ "символи. Позначення пункту не матиме наслідків для серверів, які не "
+#~ "підтримують Unicode."
+
+#~ msgid "Do not use locking"
+#~ msgstr "Не використовувати блокування"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Не використовувати блокування. Не запускати lockd."
+
+#~ msgid ""
+#~ "Here you can enter advanced options for the CIFS file system in a comma-"
+#~ "separated list (refer to the manual page of mount.cifs to learn more). "
+#~ "The list will be added AS IS to the \"-o\" argument of mount.cifs. Please "
+#~ "do not enter options that have already been defined in the configuration "
+#~ "dialog."
+#~ msgstr ""
+#~ "Тут ви можете вказати додаткові параметри файлової системи CIFS як список "
+#~ "відокремлених комами значень (щоб дізнатися більше, зверніться до "
+#~ "сторінки довідки (man) mount.cifs). Список параметрів буде додано БЕЗ "
+#~ "ПЕРЕВІРКИ до параметра «-o» mount.cifs. Будь ласка, не вписуйте у це поле "
+#~ "параметрів, які вже було вказано у діалоговому вікні налаштування."
+
+#~ msgid "Protocol hint:"
+#~ msgstr "Підказка протоколу:"
+
+#~ msgid ""
+#~ "Here you can choose the protocol that will be used by the net command for "
+#~ "the communication with remote servers if appropriate. In most cases the "
+#~ "automatic detection will work fine and you should not need to change the "
+#~ "default setting. However, if you experience problems, use the RPC "
+#~ "protocol for newer operating systems (Windows NT4 and above) and the RAP "
+#~ "protocol for older ones (Windows 98/NT3 and below). Functions that need "
+#~ "the ADS protocol (for Active Directory environments) have not been "
+#~ "implemented yet, so you can ignore that one for now."
+#~ msgstr ""
+#~ "Тут ви можете обрати протокол, який за потреби буде використано для "
+#~ "обміну даними з віддаленими серверами за допомогою команди net. "
+#~ "Здебільшого, автоматичного визначення протоколу буде достатньо. Отже у "
+#~ "зміні типового значення потреби не виникатиме. Але, якщо у вас виникають "
+#~ "проблеми, скористайтеся протоколом RPC для новіших операційних систем "
+#~ "(Windows NT4 та новіших) або протоколом RAP для застарілих операційних "
+#~ "систем (Windows 98/NT3 та старіших). Функції, потрібні для роботи "
+#~ "протоколу ADS (середовища Active Directory) ще не реалізовано, отже ви "
+#~ "можете ігнорувати відповідний пункт."
+
+#~ msgid "Automatic detection"
+#~ msgstr "Автоматичне виявлення"
+
+#~ msgid "RPC: Modern operating systems"
+#~ msgstr "RPC: Сучасні операційні системи"
+
+#~ msgid "RAP: Older operating systems"
+#~ msgstr "RAP: Застарілі операційні системи"
+
+#~ msgid "ADS: Active Directory environment (LDAP/Kerberos)"
+#~ msgstr "ADS: середовище Active Directory (LDAP/Kerberos)"
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Порядок визначення назв:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Значення цього пункту буде використано для визначення служб назв та "
+#~ "їхнього порядку використання для визначення назв вузлів та адрес IP. Тут "
+#~ "слід вказати список відокремлених пробілами не більше, ніж чотирьох "
+#~ "варіантів визначення назв. Серед варіантів: lmhost, host, wins, bcast. "
+#~ "Докладніші відомості можна отримати зі сторінки довідки (man) програми "
+#~ "smbclient."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Розмір буфера:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "За допомогою цього пункту можна змінити розмір буфера отримання або "
+#~ "надсилання даних під час обміну даними з сервером. Типовий розмір "
+#~ "встановлено на рівні 65520 байтів. Зменшення цього значення пришвидшує "
+#~ "обмін даними з серверами під керуванням Windows 9x."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Трансляційна адреса:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Запити, створені nmblookup, буде надіслано за вказаною у цьому пункті "
+#~ "адресою. Якщо адреси не буде вказано, запити надсилатимуться за адресою "
+#~ "трансляції мережевого інтерфейсу, яку буде визначено або автоматично, або "
+#~ "на основі значення параметра «interfaces» з файла smb.conf."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Спробувати прив'язатися до порту UDP 137 для надсилання і прийняття "
+#~ "датаграм UDP"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Якщо позначити цей пункт, програма виконає спробу прив’язатися до порту "
+#~ "UDP 137 для надсилання і отримання датаграм UDP. Причиною появи цього "
+#~ "пункту у інтерфейсі програми є вада у Windows 95, пов’язана з "
+#~ "ігноруванням системою даних про порт джерела пакета запису — система "
+#~ "відповідає на порт UDP 137. На жаль, на більшості систем Unix для "
+#~ "прив’язки до цього порту потрібні права доступу суперкористувача "
+#~ "(адміністратора). З докладнішими відомостями можна ознайомитися на "
+#~ "сторінці довідки (man) nmblookup."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Надсилати запити як трансляції"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Позначення цього пункту дозволить smbtree опитувати вузли мережі "
+#~ "надсиланням запитів у формі трансляцій без опитування локального "
+#~ "головного навігатора."
+
+#~ msgid "Security mode:"
+#~ msgstr "Режим безпеки:"
+
+#~ msgid ""
+#~ "Security mode for mount.cifs. To be able to use this mode, the CIFS "
+#~ "kernel module 1.40 or later is required."
+#~ msgstr ""
+#~ "Режим безпеки для mount.cifs. Щоб можна було користуватися цим режимом, "
+#~ "потрібен CIFS-модуль ядра версії 1.40 або пізнішої."
+
+#~ msgid "Connect as a null user (no name)"
+#~ msgstr "З’єднатися з порожнім записом користувача (без імені)"
+
+#~ msgid "Kerberos 5 authentication"
+#~ msgstr "Розпізнавання Kerberos 5"
+
+#~ msgid "Kerberos 5 authentication and packet signing"
+#~ msgstr "Розпізнавання Kerberos 5 та підписування пакетів"
+
+#~ msgid "NTLM protocol"
+#~ msgstr "Протокол NTLM"
+
+#~ msgid "NTLM protocol and packet signing"
+#~ msgstr "Протокол NTLM з підписуванням пакетів"
+
+#~ msgid "NTLMv2 protocol"
+#~ msgstr "Протокол NTLMv2"
+
+#~ msgid "NTLMv2 protocol and packet signing"
+#~ msgstr "Протокол NTLMv2 та підписування пакетів"
+
+#~ msgid "NTLMSSP protocol"
+#~ msgstr "Протокол NTLMSSP"
+
+#~ msgid "NTLMSSP protocol and packet signing"
+#~ msgstr "Протокол NTLMSSP з підписуванням пакетів"
+
+#~ msgid ""
+#~ "Under this prefix the destination directory for the synchronization will "
+#~ "be created. However, if you want to store the data of a particular share "
+#~ "elsewhere, you will be able to choose a different path before the actual "
+#~ "synchronization begins."
+#~ msgstr ""
+#~ "У цьому каталозі буде створено каталог призначення для синхронізації. "
+#~ "Але, якщо ви бажаєте зберігати дані на певному спільному ресурсі у іншому "
+#~ "місці, ви зможете вибрати інший каталог до того, як буде розпочато "
+#~ "справжню синхронізацію."
+
+#~ msgid "Archive mode"
+#~ msgstr "Режим архівування"
+
+#~ msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
+#~ msgstr ""
+#~ "Визначає, чи слід використовувати режим архівування (-a, --archive). "
+#~ "Скорочена форма -rlptgoD."
+
+#~ msgid "Recurse into subdirectories"
+#~ msgstr "Рекурсивно заходити в каталоги"
+
+#~ msgid "Recurse into directories (-r, --recursive)."
+#~ msgstr "Визначає, чи слід рекурсивно заходити в каталоги (-r, --recursive)."
+
+#~ msgid "Update files"
+#~ msgstr "Оновлювати файли"
+
+#~ msgid ""
+#~ "Update files in the destination directory that are older than in the "
+#~ "source directory (-u, --update)."
+#~ msgstr ""
+#~ "Визначає, чи слід оновлювати ті файли у каталозі призначення, часова "
+#~ "мітка яких є старішою за часову мітку відповідного файла у каталозі "
+#~ "джерела (-u, --update)."
+
+#~ msgid "Update files in place"
+#~ msgstr "Оновлювати файли на місці"
+
+#~ msgid ""
+#~ "Update destination files in-place (--inplace). By default, rsync first "
+#~ "creates a new copy of a file and moves it into place after its transfer "
+#~ "finished. If you enable this feature, no copy will be created but the "
+#~ "destination file will immediately be overwritten instead. An exception to "
+#~ "this is if you combine this option with --backup."
+#~ msgstr ""
+#~ "Визначає, чи слід оновлювати файли призначення на місці (--inplace). "
+#~ "Типово, rsync спочатку створює нову копію файла і пересуває її на місце "
+#~ "після завершення перенесення. Якщо пункт буде позначено, програма не "
+#~ "створюватиме копій, а негайно перезаписуватиме файл призначення. Винятком "
+#~ "з цього правила є випадок, коли використовуватиметься ще і параметр --"
+#~ "backup."
+
+#~ msgid "Use relative path names"
+#~ msgstr "Використовувати відносні назви шляхів"
+
+#~ msgid ""
+#~ "Use relative paths (-R, --relative). This means that the full path names "
+#~ "specified on the command line are sent to the server rather than just the "
+#~ "last parts of the file names."
+#~ msgstr ""
+#~ "Визначає, чи слід використовувати відносні шляхи (-R, --relative). Це "
+#~ "означає, що адреси, вказані у командному рядку, буде надіслано на сервер "
+#~ "повністю, замість надсилання лише останньої частини з назвами файлів."
+
+#~ msgid "Do not send implied directories"
+#~ msgstr "Не надсилати потенційні каталоги"
+
+#~ msgid ""
+#~ "Do not send implied directories with --relative (--no-implied-dirs). This "
+#~ "means that the corresponding path elements on the destination system are "
+#~ "left unchanged if they exist, and any missing implied directories are "
+#~ "created with default attributes. This even allows these implied path "
+#~ "elements to have big differences, such as being a symlink to a directory "
+#~ "on one side of the transfer, and a real directory on the other side."
+#~ msgstr ""
+#~ "Якщо буде позначено цей пункт, програма не надсилатиме потенційних "
+#~ "каталогів за допомогою аргументів параметра --relative (--no-implied-"
+#~ "dirs). Це означає, що відповідні елементи шляху у системі призначення "
+#~ "залишаться незмінними, якщо вони існують. Всі відсутні потенційні "
+#~ "каталоги буде створено з типовими атрибутами. Використання цього пункту "
+#~ "дозволить таким каталогам бути дуже різними елементами, зокрема "
+#~ "символічним посиланням на каталог на одній зі сторін перенесення і "
+#~ "справжнім каталогом на іншій стороні."
+
+#~ msgid "Transfer directories without recursing"
+#~ msgstr "Переносити каталоги нерекурсивно"
+
+#~ msgid ""
+#~ "Transfer directories without recursing (-d, --dirs). This means that all "
+#~ "top-level subdirectories are transferred but without their contents."
+#~ msgstr ""
+#~ "Переносити каталоги без рекурсивного входження до них (-d, --dirs). Це "
+#~ "означає, що буде передано дані лише підкаталогів верхнього рівня, без "
+#~ "їхнього вмісту."
+
+#~ msgid "Compress data during transfer"
+#~ msgstr "Стискати дані під час перенесення"
+
+#~ msgid ""
+#~ "Compress data during transfer (-z, --compress). This significantly "
+#~ "reduces the amount of data that is being transferred. You may want to use "
+#~ "this option, if you have a slow connection."
+#~ msgstr ""
+#~ "Стискати дані під час передавання (-z, --compress). Значно зменшує обсяг "
+#~ "даних, які слід передати. Цим пунктом можна скористатися за умов "
+#~ "повільного з’єднання."
+
+#~ msgid "Preserve symlinks"
+#~ msgstr "Зберігати символьні посилання"
+
+#~ msgid "Copy symlinks as symlinks (-l, --links)."
+#~ msgstr ""
+#~ "Копіювати символічні посилання як символічні посилання (-l, --links)."
+
+#~ msgid "Transform symlinks"
+#~ msgstr "Перетворювати символічні посилання"
+
+#~ msgid ""
+#~ "Transform symlinks into the items they are pointing to (-L, --copy-links)."
+#~ msgstr ""
+#~ "Перетворювати символічні посилання на елементи, на які ці посилання "
+#~ "вказують (-L, --copy-links)."
+
+#~ msgid "Only transform unsafe symlinks"
+#~ msgstr "Перетворювати лише небезпечні посилання"
+
+#~ msgid ""
+#~ "Transform unsafe symlinks into the items they are pointing to (--copy-"
+#~ "unsafe-links). This means that only those symlinks are transformed that "
+#~ "point to items that are outside the copied tree. Absolute symlinks are "
+#~ "treated the same way. This option has no additional effect if --copy-"
+#~ "links has also been specified."
+#~ msgstr ""
+#~ "Перетворювати небезпечні символічні посилання на елементи, на які вони "
+#~ "вказують (--copy-unsafe-links). Це означає, що перетворення буде "
+#~ "застосовано лише до тих символічних посилань, які вказують на елементи, "
+#~ "розташовані поза деревом каталогів, які копіюються. Подібній же обробці "
+#~ "підлягатимуть абсолютні символічні посилання. Позначення пункту не "
+#~ "призведе до видимих наслідків, якщо вказано параметр --copy-links."
+
+#~ msgid "Ignore unsafe symlinks"
+#~ msgstr "Ігнорувати небезпечні символічні посилання"
+
+#~ msgid ""
+#~ "Ignore symlinks that point outside the copied tree (--safe-links). All "
+#~ "absolute symlinks are also ignored. If you use this option in conjunction "
+#~ "with --relative you might get unexpected results."
+#~ msgstr ""
+#~ "Ігнорувати символічні посилання, які вказують на елементи, розташовані "
+#~ "поза деревом каталогів, які копіюються (--safe-links). Буде проігноровано "
+#~ "також і всі абсолютні символічні посилання. Використання цього параметра "
+#~ "разом з параметром --relative може призвести до несподіваних наслідків."
+
+#~ msgid "Preserve hard links"
+#~ msgstr "Зберігати жорсткі посилання"
+
+#~ msgid ""
+#~ "Preserve hard links (-H, --hard-links). This options causes rsync to "
+#~ "preserve the hard links that are found during the transfer. Without it, "
+#~ "hard links are treated as though they were separate files."
+#~ msgstr ""
+#~ "Зберігати жорсткі посилання (-H, --hard-links). У разі використання цього "
+#~ "параметра rsync зберігатиме жорсткі посилання, які буде знайдено під час "
+#~ "передавання даних. Якщо параметр не буде використано, жорсткі посилання "
+#~ "вважатимуться окремими файлами."
+
+#~ msgid "Keep directory symlinks"
+#~ msgstr "Зберігати символічні посилання на каталоги"
+
+#~ msgid ""
+#~ "Treat symlinked directories on the receiving side as though they were "
+#~ "real ones (-K, --keep-dirlinks). This only works if the symlink matches a "
+#~ "real directory from the sending side. Without this option, the receiver's "
+#~ "symlink will be deleted and replaced with a real directory."
+#~ msgstr ""
+#~ "Обробляти символічні посилання на каталоги на стороні отримання даних "
+#~ "так, наче ці посилання є справжніми каталогами (-K, --keep-dirlinks). Цей "
+#~ "параметр працюватиме, лише якщо символічне посилання відповідає "
+#~ "справжньому каталогу на стороні надсилання. Якщо параметр не буде "
+#~ "використано, символічне посилання на стороні отримання даних буде "
+#~ "вилучено і замінено справжнім каталогом."
+
+#~ msgid "Preserve permissions"
+#~ msgstr "Зберігати права доступу"
+
+#~ msgid ""
+#~ "Preserve permissions (-p, --perms). The permissions of the destination "
+#~ "file will be same as the source file. For what happens if this option is "
+#~ "switched off, please read rsync's manual page."
+#~ msgstr ""
+#~ "Зберігати права доступу (-p, --perms). Права доступу до файла призначення "
+#~ "збігатимуться з правами доступу до файла джерела. Щоб дізнатися про те, "
+#~ "що станеться, якщо ви не позначатимете цей пункт, ознайомтеся зі "
+#~ "сторінкою довідки (man) rsync."
+
+#~ msgid "Preserve group"
+#~ msgstr "Зберігати групу"
+
+#~ msgid ""
+#~ "Preserve the group (-g, --group). The group of the destination file will "
+#~ "be set to the same value as the source file."
+#~ msgstr ""
+#~ "Зберігати групу (-g, --group). Параметр належності файла групі "
+#~ "користувачів буде однаковим для файла джерела і призначення."
+
+#~ msgid "Preserve owner"
+#~ msgstr "Зберігати власника"
+
+#~ msgid ""
+#~ "Preserve the owner (-o, --owner). The owner of the destination file will "
+#~ "be set to the same value as the source file, but only if the receiving "
+#~ "rsync is run as the super user. Without this option, the owner is set to "
+#~ "the invoking user on the receiving side."
+#~ msgstr ""
+#~ "Зберігати власника (-o, --owner). Для параметра власника файла "
+#~ "призначення буде встановлено те саме значення, що і для файла джерела, "
+#~ "але лише якщо rsync було запущено від імені суперкористувача "
+#~ "(адміністратора). Якщо параметр не буде використано, значення параметра "
+#~ "власника буде визначено за параметрами облікового запису користувача, "
+#~ "який запустив програму на стороні отримання даних."
+
+#~ msgid "Preserve device and special files"
+#~ msgstr "Зберігати файли пристроїв та особливі файли"
+
+#~ msgid ""
+#~ "Preserve device and special files (-D, --devices --specials). This option "
+#~ "causes rsync to transfer character and block devices as well as special "
+#~ "files such as named sockets and fifos. It works only partially if rsync "
+#~ "is not run as super user and the --super option is not specified."
+#~ msgstr ""
+#~ "Зберігати файли пристроїв та спеціальні файли (-D, --devices --specials). "
+#~ "Позначення цього пункту призведе до того, що rsync передаватиме символьні "
+#~ "і блокові пристрої, а також спеціальні файли як іменовані сокети і fifo. "
+#~ "Дія відповідного параметра буде лише частковою, якщо rsync запущено не "
+#~ "від імені суперкористувача і якщо не вказано параметр --super."
+
+#~ msgid "Preserve times"
+#~ msgstr "Зберігати час"
+
+#~ msgid ""
+#~ "Preserve times (-t, --times). The modification times are transferred "
+#~ "along with the files. For what happens if this option is switched off, "
+#~ "please read rsync's manual page."
+#~ msgstr ""
+#~ "Зберігати часові мітки (-t, --times). Дані про час зміни файлів буде "
+#~ "передано разом з самими файлами. Щоб дізнатися про те, що станеться, якщо "
+#~ "ви не позначатимете цей пункт, ознайомтеся зі сторінкою довідки (man) "
+#~ "rsync."
+
+#~ msgid "Omit directories when preserving times"
+#~ msgstr "Пропускати каталоги, коли зберігається час"
+
+#~ msgid ""
+#~ "Omit directories when preserving times (-O, --omit-dir-times). This means "
+#~ "that directories are omitted when modification times are being preserved. "
+#~ "Thus, this feature only works in conjunction with --times."
+#~ msgstr ""
+#~ "Пропускати каталоги у разі використання параметра збереження часових "
+#~ "міток (-O, --omit-dir-times). Це означає, що часові мітки каталогів не "
+#~ "зберігатимуться. Відповідні параметри працюватимуть, лише якщо вказано "
+#~ "параметр --times."
+
+#~ msgid "Remove synchronized source files"
+#~ msgstr "Вилучати синхронізовані файли джерела"
+
+#~ msgid ""
+#~ "Remove all synchronized source files (--remove-source-files). This tells "
+#~ "rsync to remove from the sending side the non-directory items that are a "
+#~ "part of the transfer and have been successfully duplicated on the "
+#~ "receiving side."
+#~ msgstr ""
+#~ "Вилучати всі синхронізовані файли джерела (--remove-source-files). У разі "
+#~ "використання цього параметра rsync вилучатиме на стороні надсилання даних "
+#~ "всі елементи, які не є каталогами і які успішно дубльовано на стороні "
+#~ "отримання даних."
+
+#~ msgid "Delete extraneous files"
+#~ msgstr "Вилучати зайві файли"
+
+#~ msgid ""
+#~ "Delete extraneous files from destination (--delete). This tells rsync to "
+#~ "delete all files from the receiving side that are not present on the "
+#~ "sending side, but only for the directories that are being synchronized."
+#~ msgstr ""
+#~ "Вилучати зайві файли з каталогів призначення (--delete). У разі "
+#~ "використання цього параметра rsync вилучить всі файли на стороні "
+#~ "отримання даних, яких немає на стороні надсилання даних, але лише у "
+#~ "каталогах, які синхронізує програма."
+
+#~ msgid "Delete files before transfer"
+#~ msgstr "Вилучати файли до перенесення"
+
+#~ msgid ""
+#~ "Delete files on the receiving side before the transfer starts (--delete-"
+#~ "before). This is the default behavior if --delete or --delete-excluded is "
+#~ "specified without one of the --delete-WHEN options."
+#~ msgstr ""
+#~ "Вилучати файли на стороні отримання даних до того, як розпочнеться "
+#~ "перенесення даних (--delete-before). Така поведінка програми є типовою, "
+#~ "якщо вказано параметр --delete або --delete-excluded і не вказано жодного "
+#~ "з параметрів --delete-УМОВА."
+
+#~ msgid "Delete files after transfer"
+#~ msgstr "Вилучати файли після перенесення"
+
+#~ msgid ""
+#~ "Delete files on the receiving side after the transfer has completed (--"
+#~ "delete-after, --del)."
+#~ msgstr ""
+#~ "Вилучати файли з каталогу джерела після завершення перенесення (--delete-"
+#~ "after, --del)."
+
+#~ msgid "Delete files during transfer"
+#~ msgstr "Вилучати файли під час перенесення"
+
+#~ msgid ""
+#~ "Delete files on the receiving side during the transfer (--delete-during). "
+#~ "This method is faster than --delete-before or --delete-after, but it is "
+#~ "only supported with rsync 2.6.4 or later."
+#~ msgstr ""
+#~ "Вилучати файли на стороні отримання даних під час перенесення даних (--"
+#~ "delete-during). Цей спосіб швидший за --delete-before або --delete-after, "
+#~ "але підтримується лише версією rsync 2.6.4 і пізнішими версіями програми."
+
+#~ msgid "Also delete excluded files"
+#~ msgstr "Також вилучити виключені файли"
+
+#~ msgid ""
+#~ "Also delete excluded files from destination directory (--delete-"
+#~ "excluded). In addition to deleting the files on the receiving side that "
+#~ "are not on the sending side, this tells rsync to also delete any files on "
+#~ "the receiving side that are excluded. Refer to rsync's manual page for "
+#~ "further information."
+#~ msgstr ""
+#~ "Вилучати з каталогу призначення і виключені файли (--delete-excluded). "
+#~ "Окрім вилучення тих файлів на стороні призначення, яких немає на стороні "
+#~ "надсилання, rsync вилучить і всі файли на стороні призначення, які "
+#~ "потрапили до списку виключень. Щоб дізнатися про те, що станеться, якщо "
+#~ "ви не позначатимете цей пункт, ознайомтеся зі сторінкою довідки (man) "
+#~ "rsync."
+
+#~ msgid "Delete even if I/O errors occur"
+#~ msgstr "Вилучати, навіть якщо станеться помилка В/В"
+
+#~ msgid ""
+#~ "Delete even if I/O errors occur (--ignore-errors). This option has to be "
+#~ "specified in conjunction with --delete to take effect."
+#~ msgstr ""
+#~ "Вилучати файли, навіть якщо станеться помилка вводу-виводу (--ignore-"
+#~ "errors). Щоб досягти бажаних результатів, цей пункт слід використовувати "
+#~ "разом з параметром --delete."
+
+#~ msgid "Force deletion of non-void directories"
+#~ msgstr "Примусове вилучення непорожніх каталогів"
+
+#~ msgid ""
+#~ "Force deletion of directories even if they are not empty (--force). This "
+#~ "option tells rsync to delete a non-empty directory when it is to be "
+#~ "replaced by a non-directory. This is only relevant if deletions are not "
+#~ "active."
+#~ msgstr ""
+#~ "Наказати програмі примусово вилучати каталоги, навіть якщо вони не є "
+#~ "порожніми (--force). У разі використання цього параметра rsync вилучатиме "
+#~ "непорожні каталоги, якщо їх слід замінити елементами, які не є "
+#~ "каталогами. Цей параметр матиме значення, лише якщо не визначено "
+#~ "параметрів вилучення вмісту."
+
+#~ msgid "Do not delete more than this many files:"
+#~ msgstr "Вилучати не більше файлів, ніж:"
+
+#~ msgid ""
+#~ "Only delete as many files as defined here (--max-delete=NUM). This tells "
+#~ "rsync not to delete more than NUM files or directories (NUM must be non-"
+#~ "zero). This is useful when mirroring very large trees to prevent "
+#~ "disasters."
+#~ msgstr ""
+#~ "Вилучати не більше файлів, ніж вказано у цьому пункті (--max-"
+#~ "delete=ЧИСЛО). У разі використання цього параметра rsync не вилучатиме "
+#~ "більше, ніж визначено значенням ЧИСЛО. файлів або каталогів (значення "
+#~ "ЧИСЛО має бути ненульовим). Цей параметр буде корисним під час створення "
+#~ "дзеркальних копій дуже великих ієрархій каталогів (за його допомогою "
+#~ "можна запобігти катастрофам)."
+
+#~ msgid "Value for DeleteMaximum config entry"
+#~ msgstr "Значення запису налаштування DeleteMaximum"
+
+#~ msgid "Do not transfer any file smaller than:"
+#~ msgstr "Не переносити файли менші, ніж:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is smaller than "
+#~ "the specified size (--min-size=SIZE)."
+#~ msgstr ""
+#~ "За допомогою цього пункту можна наказати rsync не переносити файли з "
+#~ "розміром, меншим за вказаний (--min-size=РОЗМІР)."
+
+#~ msgid "Value for MinimalTransferSize config entry"
+#~ msgstr "Значення запису налаштування MinimalTransferSize"
+
+#~ msgid "Do not transfer any file larger than:"
+#~ msgstr "Не переносити файли більші, ніж:"
+
+#~ msgid ""
+#~ "This option causes rsync to not transfer any file that is larger than the "
+#~ "specified size (--max-size=SIZE)."
+#~ msgstr ""
+#~ "За допомогою цього пункту можна наказати rsync не переносити файли з "
+#~ "розміром, більшим за вказаний (--max-size=РОЗМІР)."
+
+#~ msgid "Value for MaximalTransferSize config entry"
+#~ msgstr "Значення запису налаштування MaximalTransferSize"
+
+#~ msgid "Keep partially transferred files"
+#~ msgstr "Зберігати файли, які частково перенесено"
+
+#~ msgid ""
+#~ "Keep partially transferred files (--partial). The default behavior is "
+#~ "that any partially transferred file is deleted if the transfer is "
+#~ "interrupted."
+#~ msgstr ""
+#~ "Зберігати частково перенесені файли (--partial). Типовою є поведінка "
+#~ "програми, за якої у разі переривання перенесення всі частково перенесені "
+#~ "файли вилучатимуться."
+
+#~ msgid "Put partially transferred files into:"
+#~ msgstr "Зберігати частково перенесені файли у:"
+
+#~ msgid ""
+#~ "Put a partially transferred file into this directory (--partial-dir=DIR). "
+#~ "This is a better way than the --partial option to keep partial files, "
+#~ "because the partially transferred file is kept in a different directory "
+#~ "and the destination file is not overwritten."
+#~ msgstr ""
+#~ "Зберігати частково перенесені файли у вказаному каталозі (--partial-"
+#~ "dir=КАТАЛОГ). Використання цього параметра є кращим способом обробки "
+#~ "даних, ніж використання параметра --partial для збереження частково "
+#~ "перенесених файлів, оскільки частково перенесений файл зберігатиметься у "
+#~ "іншому каталозі, отже файл призначення не буде перезаписано."
+
+#~ msgid "The data for the UsePartialDirectory option"
+#~ msgstr "Дані для параметра UsePartialDirectory"
+
+#~ msgid "Auto-ignore files in the same way CVS does"
+#~ msgstr "Автоматично ігнорувати файли, подібно до CVS"
+
+#~ msgid ""
+#~ "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
+#~ "useful shorthand for excluding a broad range of files that you often do "
+#~ "not want to transfer between systems. This option uses the same algorithm "
+#~ "that CVS uses to determine if a file should be ignored."
+#~ msgstr ""
+#~ "Автоматично ігнорувати файли у спосіб, у який це робить CVS (-C, --cvs-"
+#~ "exclude). Використання цього параметра буде корисним для виключення "
+#~ "широкого діапазону файлів, які зазвичай не потрібно переносити між "
+#~ "системами. Під час роботи з цим параметром програма використовуватиме той "
+#~ "самий алгоритм, який допомагає CVS визначати файли, які слід ігнорувати."
+
+#~ msgid "Exclude files matching this pattern:"
+#~ msgstr "Виключати файли згідно з цим шаблоном:"
+
+#~ msgid ""
+#~ "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
+#~ "special filter rule. For further information on filter rules see rsync's "
+#~ "manual page."
+#~ msgstr ""
+#~ "Виключати файли, які відповідають певному шаблону (--exclude=PATTERN). Це "
+#~ "особливе правило фільтрування. Докладніші відомості щодо правил "
+#~ "фільтрування можна отримати зі сторінки довідки (man) rsync."
+
+#~ msgid "Pattern that is used for file exclusion"
+#~ msgstr "Шаблон, який буде використано для виключення файлів"
+
+#~ msgid "Read exclude patterns from:"
+#~ msgstr "Прочитати шаблони виключення з:"
+
+#~ msgid ""
+#~ "Read exclude patterns from a file (--exclude-from=FILE). This option is "
+#~ "similar to the --exclude=PATTERN option except that the exclude patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Прочитати шаблони виключення з файла (--exclude-from=ФАЙЛ). Цей параметр "
+#~ "подібний до параметра --exclude=ШАБЛОН, але шаблони виключення буде "
+#~ "прочитано з файла. Це особливе правило фільтрування. Докладніші відомості "
+#~ "щодо правил фільтрування можна отримати зі сторінки довідки (man) rsync."
+
+#~ msgid "The file from which the exclude patterns are read"
+#~ msgstr "Файл, з якого буде прочитано шаблони виключення"
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Не виключати файли, які відповідають цьому шаблону:"
+
+#~ msgid ""
+#~ "Do not exclude files matching a certain pattern (--include=PATTERN). This "
+#~ "is a special filter rule. For further information on filter rules see "
+#~ "rsync's manual page."
+#~ msgstr ""
+#~ "Не виключати файли, які відповідають певному шаблону (--include=PATTERN). "
+#~ "Це особливе правило фільтрування. Докладніші відомості щодо правил "
+#~ "фільтрування можна отримати зі сторінки довідки (man) rsync."
+
+#~ msgid "Pattern that is used for file inclusion"
+#~ msgstr "Шаблон, який буде використано для включення файлів"
+
+#~ msgid "Read include patterns from:"
+#~ msgstr "Прочитати шаблони включення з:"
+
+#~ msgid ""
+#~ "Read include patterns from a file (--include-from=FILE). This option is "
+#~ "similar to the --include=PATTERN option except that the include patterns "
+#~ "are read from a file. This is a special filter rule. For further "
+#~ "information on filter rules see rsync's manual page."
+#~ msgstr ""
+#~ "Прочитати шаблони включення з файла (--include-from=ФАЙЛ). Цей параметр "
+#~ "подібний до параметра --include=ШАБЛОН, але шаблони включення буде "
+#~ "прочитано з файла. Це особливе правило фільтрування. Докладніші відомості "
+#~ "щодо правил фільтрування можна отримати зі сторінки довідки (man) rsync."
+
+#~ msgid "The file from which the include patterns are read"
+#~ msgstr "Файл, з якого буде прочитано шаблони включення"
+
+#~ msgid "Custom filter rules:"
+#~ msgstr "Нетипові правила фільтрування:"
+
+#~ msgid ""
+#~ "Add custom file-filtering rules (-f, --filter=RULE). This option allows "
+#~ "you to add rules to selectively exclude certain files from the list of "
+#~ "files to be transferred. These rules will be added to the rsync command "
+#~ "as they are. Thus, each rule has to start with the --filter=... argument."
+#~ msgstr ""
+#~ "Додати нетипові правила фільтрування (-f, --filter=ПРАВИЛО). За допомогою "
+#~ "цього пункту ви зможете додати правила, за якими зі списку файлів для "
+#~ "перенесення буде вибірково виключено певні файли. Ці правила буде без "
+#~ "обробки додано у команду rsync. Отже, всі правила маю починатися з "
+#~ "параметра --filter=...."
+
+#~ msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
+#~ msgstr ""
+#~ "Використовувати правило фільтрування «--filter='dir-merge /.rsync-filter'»"
+
+#~ msgid ""
+#~ "This filter rule tells rsync to look for per-directory .rsync-filter "
+#~ "files that have been sprinkled through the hierarchy and use their rules "
+#~ "to filter the files in the transfer. It has no effect, if you also choose "
+#~ "to use the --filter='exclude .rsync-filter' rule."
+#~ msgstr ""
+#~ "У разі використання цього правила фільтрування rsync шукатиме у кожному з "
+#~ "каталогів файли .rsync-filter, розкидані ієрархією каталогів, і "
+#~ "використовуватиме визначені у них правила для фільтрування списку файлів "
+#~ "для перенесення. Позначення пункту буде проігноровано, якщо ви "
+#~ "використовуватиме правило  --filter='exclude .rsync-filter'."
+
+#~ msgid "Use --filter='exclude .rsync-filter' filter rule"
+#~ msgstr ""
+#~ "Використовувати правило фільтрування «--filter='exclude .rsync-filter'»"
+
+#~ msgid ""
+#~ "This rule filters out the .rsync-filter files from the transfer. These "
+#~ "files normally contain filter rules that can be activated by choosing the "
+#~ "--filter='dir-merge /.rsync-filter' rule and deselecting this one."
+#~ msgstr ""
+#~ "За допомогою цього правила можна виключити з перенесення всі файли .rsync-"
+#~ "filter. У таких файлах зазвичай містяться правила, які можна задіяти "
+#~ "позначенням пункту --filter='dir-merge /.rsync-filter' і зняттям позначки "
+#~ "з цього пункту."
+
+#~ msgid "Handle sparse files efficiently"
+#~ msgstr "Ефективно обробляти розпорошені файли"
+
+#~ msgid ""
+#~ "Handle sparse files efficiently (-S, --sparse) so that they take up less "
+#~ "space on the destination. This option conflicts with --inplace. For "
+#~ "further information read rsync's manual page."
+#~ msgstr ""
+#~ "Ефективно обробляти розпорошені каталогами файли (-S, --sparse) так, щоб "
+#~ "вони займали менше місця у каталогах призначення. Цей пункт не можна "
+#~ "використовувати разом з параметром --inplace. Докладніші відомості можна "
+#~ "отримати зі сторінки довідки (man) rsync."
+
+#~ msgid "Copy files whole (no rsync algorithm)"
+#~ msgstr "Копіювати файли цілими (без алгоритму rsync)"
+
+#~ msgid ""
+#~ "Copy files whole (-W, --whole-file). With this option the incremental "
+#~ "rsync algorithm is not used and the whole file is sent as-is instead."
+#~ msgstr ""
+#~ "Копіювати файли цілком (-W, --whole-file). У разі використання цього "
+#~ "параметра алгоритм нарощувального копіювання rsync буде вимкнено, замість "
+#~ "цього файли надсилатимуться цілком."
+
+#~ msgid "Do not cross file system boundaries"
+#~ msgstr "Не перетинати межі файлових систем"
+
+#~ msgid ""
+#~ "Do not cross file system boundaries (-x, --one-file-system). This tells "
+#~ "rsync to avoid crossing a filesystem boundary when recursing. For further "
+#~ "information on this option, read the manual page."
+#~ msgstr ""
+#~ "Не перетинати межі файлових систем (-x, --one-file-system). За допомогою "
+#~ "позначення цього пункту можна наказати rsync уникати перетинання меж "
+#~ "файлових систем під час рекурсивного перегляду каталогів. Докладніше про "
+#~ "цей параметр можна дізнатися зі сторінки довідника (man)."
+
+#~ msgid "Only update files that already exist"
+#~ msgstr "Оновлювати лише файли, які вже існують"
+
+#~ msgid ""
+#~ "Skip creating new files on the receiving side (--existing). This tells "
+#~ "rsync to skip creating files (including directories) that do not exist "
+#~ "yet on the destination. If this option is combined with the --ignore-"
+#~ "existing option, no files will be updated (which can be useful if all you "
+#~ "want to do is to delete extraneous files)."
+#~ msgstr ""
+#~ "Пропускати створення файлів на стороні отримання (--existing). За "
+#~ "допомогою цього параметра можна наказати rsync пропустити етап створення "
+#~ "файлів (і каталогів), яких ще немає на стороні призначення. Якщо поєднати "
+#~ "цей параметр з параметром --ignore-existing, файли не оновлюватимуться "
+#~ "взагалі (корисно, якщо вам потрібно просто вилучити зайві файли)."
+
+#~ msgid "Ignore files that already exist"
+#~ msgstr "Ігнорувати файли, які вже існують"
+
+#~ msgid ""
+#~ "Skip updating files that already exist on the receiving side (--ignore-"
+#~ "existing). Existing directories are not ignored."
+#~ msgstr ""
+#~ "Пропустити оновлення файлів, які вже існують на стороні отримання даних "
+#~ "(--ignore-existing). Програма не буде ігнорувати існуючі каталоги."
+
+#~ msgid "Delay updates until the end of transfer"
+#~ msgstr "Затримувати оновлення до завершення перенесення"
+
+#~ msgid ""
+#~ "Delay updates until the end of the transfer (--delay-updates). This "
+#~ "option puts the temporary file from each updated file into a holding "
+#~ "directory until the end of the transfer, at which time all the files are "
+#~ "renamed and copied into place in rapid succession."
+#~ msgstr ""
+#~ "Затримувати оновлення до завершення перенесення (--delay-updates). У разі "
+#~ "використання цього параметра програма зберігатиму тимчасовий файл для "
+#~ "кожного з файлів, які слід оновити у каталозі аж до завершення "
+#~ "перенесення, а потім всі перенесені файли буде послідовно перейменовано і "
+#~ "скопійовано на місце."
+
+#~ msgid "Make backups"
+#~ msgstr "Створювати резервні копії"
+
+#~ msgid ""
+#~ "Make backups (-b, --backup). With this option, preexisting destination "
+#~ "files are renamed as each file is transferred or deleted. You can control "
+#~ "where the backup file goes and what (if any) suffix gets appended using "
+#~ "the --backup-dir=DIR and --suffix=SUFFIX options."
+#~ msgstr ""
+#~ "Створювати резервні копії (-b, --backup). У разі використання цього "
+#~ "параметра програма перейменовуватиме початкові файли у каталогах "
+#~ "призначення, які згодом буде оновлено або вилучено. Керувати місцем "
+#~ "зберігання початкових файлів та додаванням до їхніх назв суфікса (якщо "
+#~ "такий слід додавати) можна за допомогою параметрів the --backup-"
+#~ "dir=КАТАЛОГ і --suffix=СУФІКС."
+
+#~ msgid "Backup suffix:"
+#~ msgstr "Суфікс резервних копій:"
+
+#~ msgid "Use this suffix for backups (--suffix=SUFFIX)."
+#~ msgstr ""
+#~ "Використовувати для резервних копій вказаний суфікс (--suffix=СУФІКС)."
+
+#~ msgid "Backup suffix"
+#~ msgstr "Суфікс резервних копій"
+
+#~ msgid "Backup directory:"
+#~ msgstr "Каталог резервних копій:"
+
+#~ msgid "Store backups in this directory (--backup-dir=DIR)."
+#~ msgstr "Зберігати резервні копії у цьому каталозі (--backup-dir=КАТАЛОГ)."
+
+#~ msgid "Backup directory"
+#~ msgstr "Каталог резервних копій"
+
+#~ msgid "Force fixed checksum block size:"
+#~ msgstr "Фіксований розмір блоків контрольної суми:"
+
+#~ msgid ""
+#~ "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces "
+#~ "the block size used in the rsync algorithm to a fixed value."
+#~ msgstr ""
+#~ "Примусово використовувати вказаний розмір блоку контрольної суми (-B, --"
+#~ "block-size=РОЗМІР). За допомогою цього пункту можна визначити фіксований "
+#~ "розмір блоку, який буде використано у алгоритмі синхронізації rsync."
+
+#~ msgid "The block size"
+#~ msgstr "Розмір блоку"
+
+#~ msgid "Set block/file checksum seed:"
+#~ msgstr "Вказати початкове число контрольної суми блоків/файлів:"
+
+#~ msgid ""
+#~ "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
+#~ "seed to this integer. This 4 byte checksum seed is included in each block "
+#~ "and file MD4 checksum calculation. By default the checksum seed is "
+#~ "generated by the server and defaults to the current time."
+#~ msgstr ""
+#~ "Вказати початкове число контрольної суми блоків/файлів (--checksum-"
+#~ "seed=ЧИСЛО). Встановити початкове число контрольної суми MD4. Це "
+#~ "початкове число контрольної суми, що має складатися з 4 байтів, буде "
+#~ "використано під ас обчислення всіх контрольних сум MD4 для блоків і "
+#~ "файлів. Типово, початкове число контрольної суми буде створено сервером "
+#~ "на основі даних про поточний час."
+
+#~ msgid "The checksum seed"
+#~ msgstr "Початкове число контрольної суми"
+
+#~ msgid "Skip files based on checksum"
+#~ msgstr "Пропускати файли на основі контрольної суми"
+
+#~ msgid ""
+#~ "Skip files based on a checksum and not based on modification time and "
+#~ "size (-c, --checksum). For further information on how this feature works "
+#~ "read rsync's manual page."
+#~ msgstr ""
+#~ "Пропускати файли на основі обчислень контрольної суми, а не часової мітки "
+#~ "зміни файла або розміру (-c, --checksum). Докладніше про роботу цього "
+#~ "параметра можна дізнатися зі сторінки довідника (man) rsync."
+
+#~ msgid "Unmount all shares when the sleep button is pressed"
+#~ msgstr ""
+#~ "Демонтувати всі спільні ресурси після натискання кнопки переходу до сну"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware sleep button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Демонтувати всі спільні ресурси після натискання апаратної кнопки "
+#~ "переходу до сну. Спільні ресурси буде автоматично змонтовано знову після "
+#~ "повернення комп’ютера у режимі нормальної роботи."
+
+#~ msgid "Unmount all shares when the lid is closed"
+#~ msgstr "Демонтувати всі спільні ресурси у відповідь на закриття кришки"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the lid of the laptop is closed. The "
+#~ "shares will automatically be remounted after the computer wakes up again."
+#~ msgstr ""
+#~ "Демонтувати всі спільні ресурси у відповідь на закриття кришки ноутбука. "
+#~ "Спільні ресурси буде автоматично змонтовано знову після повернення "
+#~ "комп’ютера у режимі нормальної роботи."
+
+#~ msgid "Unmount all shares when the power button is pressed"
+#~ msgstr ""
+#~ "Демонтувати всі спільні ресурси після натискання кнопки вимикання живлення"
+
+#~ msgid ""
+#~ "Unmount all mounted shares after the hardware power button is pressed. "
+#~ "The shares will automatically be remounted after the computer wakes up "
+#~ "again."
+#~ msgstr ""
+#~ "Демонтувати всі спільні ресурси після натискання апаратної кнопки "
+#~ "вимикання живлення. Спільні ресурси буде автоматично змонтовано знову "
+#~ "після повернення комп’ютера у режимі нормальної роботи."
+
+#~ msgid "Unmount all shares when the network is disconnected"
+#~ msgstr ""
+#~ "Демонтувати всі спільні ресурси у разі розірвання мережевого з’єднання"
+
+#~ msgid ""
+#~ "Unmount all mounted shares when the user disconnects from the network or "
+#~ "the connection is lost due to a different reason. Using this option in "
+#~ "combination with sleep and/or hibernation might lead to unwanted side "
+#~ "effects. In this case you should unmount the shares manually before you "
+#~ "suspend the computer."
+#~ msgstr ""
+#~ "Демонтувати всі змонтовані спільні ресурси у разі від’єднання від мережі "
+#~ "або втрати з’єднання з іншої причини. Позначення цього пункту разом з "
+#~ "позначенням пунктів режиму сну або очікування може призвести до небажаних "
+#~ "результатів. Вам варто демонтувати спільні ресурси вручну до переходу "
+#~ "комп’ютера у режим сну."
+
+#~ msgid "The format of %1 is not supported."
+#~ msgstr "Формат %1 не підтримується."
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Додати закладки"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Програма створить закладки для всіх спільних ресурсів зі списку. Щоб "
+#~ "змінити мітку або групу, натисніть відповідний пункт закладки."
+
+#~ msgid "Label:"
+#~ msgstr "Мітка:"
+
+#~ msgid "Group:"
+#~ msgstr "Група:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Редагувати закладки"
+
+#~ msgid "Add Group"
+#~ msgstr "Додати групу"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Спорожнити список закладок"
+
+#~ msgid "Group name:"
+#~ msgstr "Назва групи:"
+
+#~ msgid ""
+#~ "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Визначте нетипові параметри для вузла <b>%1</b> та всіх його спільних "
+#~ "ресурсів.</p>"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Визначте нетипові параметри спільного ресурсу <b>%1</b> на вузлі <b>"
+#~ "%2</b>.</p>"
+
+#~ msgid "SMB Port:"
+#~ msgstr "Порт SMB:"
+
+#~ msgid "%1 is not a version 1.0 file."
+#~ msgstr "%1 не є файлом у форматі версії 1.0."
+
+#~ msgid "Specify User"
+#~ msgstr "Вказати користувача"
+
+#~ msgid "Please specify a username."
+#~ msgstr "Будь ласка, вкажіть ім'я користувача."
+
+#~ msgid ""
+#~ "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#~ "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Спільний ресурс <b>%1</b> змонтовано до <br><b>%2</b>, він "
+#~ "належить користувачеві <b>%3</b>.</p><p>Бажаєте демонтувати його?</p></qt>"
+
+#~ msgid "Foreign Share"
+#~ msgstr "Сторонній ресурс"
+
+#~ msgid "Remounting shares. Please wait."
+#~ msgstr "Повторне монтування спільних ресурсів. Будь ласка, зачекайте…"
+
+#~ msgid "Unmounting shares. Please wait."
+#~ msgstr "Демонтування спільних ресурсів. Будь ласка, зачекайте…"
+
+#~ msgid "Mount Share"
+#~ msgstr "Змонтувати спільний ресурс"
+
+#~ msgid ""
+#~ "Enter the location (UNC address) and optionally the IP address and "
+#~ "workgroup to mount a share."
+#~ msgstr ""
+#~ "Вкажіть розташування (UNC-адресу), а також, якщо хочете, IP-адресу та "
+#~ "робочу групу для монтування спільного ресурсу."
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Адреса за універсальною угодою щодо назв (Uniform Naming Convention або "
+#~ "UNC) описує розташування спільного ресурсу. Синтаксична конструкція "
+#~ "адреси така: //[КОРИСТУВАЧ@]ВУЗОЛ/РЕСУРС). Вказувати ім’я користувача не "
+#~ "обов’язково."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "Адреса за протоколом інтернету (Internet Protocol або IP) визначає вузол "
+#~ "мережі і позначає його розташування. Чинними є два формати, перший "
+#~ "відомий під назвою IP версії 4 (приклад: 192.168.2.11), другий — версії 6 "
+#~ "(приклад: 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "Робоча група або домен визначають мережу безпосереднього зв’язку, у якій "
+#~ "працює вузол."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Додати цей спільний ресурс до закладок"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Якщо ви позначите цей пункт, програма створить закладку для цього "
+#~ "спільного ресурсу. Пізніше ви зможете отримати до нього доступ за "
+#~ "допомогою пункту головного меню «Закладки»."
+
+#~ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
+#~ msgstr "<p>Спільний ресурс <b>%1</b> змонтовано у <b>%2</b>.</p>"
+
+#~ msgid "Open"
+#~ msgstr "Відкрити"
+
+#~ msgid "<p>The share <b>%1</b> has been unmounted from <b>%2</b>.</p>"
+#~ msgstr "<p>Спільний ресурс <b>%1</b> демонтовано з <b>%2</b>.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been mounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been mounted.</p>"
+#~ msgstr[0] "<p>Було змонтовано %1 спільний ресурс з %2.</p>"
+#~ msgstr[1] "<p>Було змонтовано %1 спільні ресурси з %2.</p>"
+#~ msgstr[2] "<p>Було змонтовано %1 спільних ресурсів з %2.</p>"
+#~ msgstr[3] "<p>Було змонтовано %1 спільний ресурс з %2.</p>"
+
+#~ msgid "<p>All shares have been mounted.</p>"
+#~ msgstr "<p>Було змонтовано всі спільні ресурси.</p>"
+
+#~ msgid "<p>%1 share out of %2 has been unmounted.</p>"
+#~ msgid_plural "<p>%1 shares out of %2 have been unmounted.</p>"
+#~ msgstr[0] "<p>Було демонтовано %1 спільний ресурс з %2.</p>"
+#~ msgstr[1] "<p>Було демонтовано %1 спільні ресурси з %2.</p>"
+#~ msgstr[2] "<p>Було демонтовано %1 спільних ресурсів з %2.</p>"
+#~ msgstr[3] "<p>Було демонтовано спільний ресурс з %2.</p>"
+
+#~ msgid "<p>All shares have been unmounted.</p>"
+#~ msgstr "<p>Всі спільні ресурси було демонтовано.</p>"
+
+#~ msgid "<p>Opening the wallet <b>%1</b> failed.</p>"
+#~ msgstr "<p>Спроба відкриття торбинки <b>%1</b> зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>The logins stored in the wallet could not be accessed. There is either "
+#~ "no wallet available or it could not be opened.</p>"
+#~ msgstr ""
+#~ "<p>Не вдалося отримати доступ до реєстраційних даних, що зберігаються у "
+#~ "торбинці. Торбинка або недоступна, або програмі не вдалося її відкрити.</"
+#~ "p>"
+
+#~ msgid ""
+#~ "<p>The mimetype <b>%1</b> is not supported for printing. Please convert "
+#~ "the file to PDF or Postscript and try again.</p>"
+#~ msgstr ""
+#~ "<p>Друк даних з файлів типу MIME <b>%1</b> не підтримується. Будь ласка, "
+#~ "перетворіть дані файла у формат PostScript або PDF.</p>"
+
+#~ msgid ""
+#~ "<p>The bookmark for share <b>%1</b> already exists and will be skipped."
+#~ msgstr ""
+#~ "<p>Закладку для спільного ресурсу <b>%1</b> вже створено, її буде "
+#~ "пропущено."
+
+#~ msgid ""
+#~ "<p>The label <b>%1</b> of the bookmark for the share <b>%2</b> is already "
+#~ "being used and will automatically be renamed.</p>"
+#~ msgstr ""
+#~ "<p>Мітку <b>%1</b> закладки для спільного ресурсу <b>%2</b> вже "
+#~ "використано. Мітку закладки буде змінено автоматично.</p>"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Запис нетипового основного переглядача є порожнім. Smb4K спробує "
+#~ "визначити поточний основний переглядач вашої робочої групи або домену."
+
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба отримання списку доступних доменів зазнала невдачі:</p><p><tt>"
+#~ "%1</tt></p>"
+
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "<p>Спроба отримання списку доступних доменів зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба сканування вказаних діапазонів трансляцій зазнала невдачі:</"
+#~ "p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr ""
+#~ "<p>Спроба сканування вказаних діапазонів трансляцій зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба отримання списку серверів, що належать до домену <b>%1</b>, "
+#~ "зазнала невдачі.</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of servers belonging to domain <b>%1</b> failed.</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Спроба отримання списку серверів, що належать до домену <b>%1</b>, "
+#~ "зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба отримання списку спільних ресурсів з <b>%1</b> зазнала невдачі:"
+#~ "</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Спроба отримання списку спільних ресурсів з <b>%1</b> зазнала невдачі."
+#~ "</p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба отримання даних для перегляду <b>%1</b> зазнала невдачі:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Спроба отримання даних для перегляду <b>%1</b> зазнала невдачі.</p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба монтування спільного ресурсу <b>%1</b> зазнала невдачі:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Mounting the share <b>%1</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Спроба монтування спільного ресурсу <b>%1</b> зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed:</p><p><tt>%3</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>"
+#~ "%2</b> зазнала невдачі:</p><p><tt>%3</tt></p>"
+
+#~ msgid "<p>Unmounting the share <b>%1</b> from <b>%2</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Спроба демонтування спільного ресурсу <b>%1</b> з точки монтування <b>"
+#~ "%2</b> зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>You are not allowed to unmount the share <b>%1</b> from <b>%2</b>. It "
+#~ "is owned by the user <b>%3</b>.</p>"
+#~ msgstr ""
+#~ "<p>У вас немає прав доступу до демонтування спільного ресурсу <b>%1</b> з "
+#~ "точки монтування <b>%2</b>. Цей ресурс належить користувачеві <b>%3</b>.</"
+#~ "p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба на принтері <b>%1</b> зазнала невдачі:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr "<p>Спроба на принтері <b>%1</b> зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>Synchronizing <b>%1</b> with <b>%2</b> failed:</p><p><tt>%3</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба синхронізації <b>%1</b> з <b>%2</b> зазнала невдачі:</p><p><tt>"
+#~ "%3</tt></p>"
+
+#~ msgid "<p>Synchronizing <b>%1</b> with <b>%2</b> failed.</p>"
+#~ msgstr "<p>Спроба синхронізації <b>%1</b> з <b>%2</b> зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба пошуку у мережевому оточенні за ключем пошуку <b>%1</b> зазнала "
+#~ "невдачі:</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr ""
+#~ "<p>Спроба пошуку у мережевому оточенні за ключем пошуку <b>%1</b> зазнала "
+#~ "невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>The command <b>%1</b> could not be found. Please check your "
+#~ "installation.</p>"
+#~ msgstr ""
+#~ "<p>Не вдалося знайти програму <b>%1</b>. Будь ласка, перевірте, чи "
+#~ "встановлено всі потрібні компоненти.</p>"
+
+#~ msgid "<p>The share <b>%1</b> is a printer and cannot be bookmarked.</p>"
+#~ msgstr ""
+#~ "<p>Спільний ресурс <b>%1</b> є принтером, не можна створювати закладки "
+#~ "для принтерів.</p>"
+
+#~ msgid "<p>The file <b>%1</b> could not be found.</p>"
+#~ msgstr "<p>Не вдалося знайти файл <b>%1</b>.</p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба відкрити файл <b>%1</b> зазнала невдачі:</p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Opening the file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Спроба відкрити файл <b>%1</b> зазнала невдачі.</p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба читання даних з файла <b>%1</b> зазнала невдачі:</p><p><tt>%2</"
+#~ "tt></p>"
+
+#~ msgid "<p>Reading from file <b>%1</b> failed.</p>"
+#~ msgstr "<p>Спроба читання даних з файла <b>%1</b> зазнала невдачі.</p>"
+
+#~ msgid ""
+#~ "<p>The following directory could not be created:</p><p><tt>%1</tt></p>"
+#~ msgstr "<p>Не вдалося створити такий каталог:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>The process failed to start (error code: <tt>%1</tt>).</p>"
+#~ msgstr ""
+#~ "<p>Спроба запуску процесу була невдалою (код помилки: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process crashed (error code: <tt>%1</tt>).</p>"
+#~ msgstr "<p>Процес аварійно завершив роботу (код помилки: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process timed out (error code: <tt>%1</tt>).</p>"
+#~ msgstr ""
+#~ "<p>Перевищено час очікування даних від процесу (код помилки: <tt>%1</tt>)."
+#~ "</p>"
+
+#~ msgid "<p>Could not write to the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr ""
+#~ "<p>Не вдалося виконати запис до процесу (код помилки: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Could not read from the process (error code: <tt>%1</tt>).</p>"
+#~ msgstr ""
+#~ "<p>Не вдалося прочитати дані з процесу (код помилки: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>The process reported an unknown error.</p>"
+#~ msgstr "<p>Процес повідомив про невідому помилку.</p>"
+
+#~ msgid "<p>The system call <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Спроба виконання системного виклику <b>%1</b> зазнала невдачі:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Executing an action with root privileges failed (error code:<tt>%1</"
+#~ "tt>).</p>"
+#~ msgstr ""
+#~ "<p>Спроба виконання дії з правами доступу root зазнала невдачі (код "
+#~ "помилки: <tt>%1</tt>).</p>"
+
+#~ msgid "<p>Executing an action with root privileges failed.</p>"
+#~ msgstr "<p>Спроба виконання дії з правами доступу root зазнала невдачі.</p>"
+
+#~ msgid "<p>The URL that was passed is invalid.</p>"
+#~ msgstr "<qt>Вами передано некоректну адресу URL.</qt>"
+
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "<p>Не визначено жодного діапазону адрес.</p>"
+
+#~ msgid "Preview"
+#~ msgstr "Перегляд"
+
+#~ msgid "The preview is displayed here."
+#~ msgstr "Тут показано зображення попереднього перегляду."
+
+#~ msgid "Reload"
+#~ msgstr "Перезавантажити"
+
+#~ msgid "Back"
+#~ msgstr "Назад"
+
+#~ msgid "Forward"
+#~ msgstr "Вперед"
+
+#~ msgid "Up"
+#~ msgstr "Вгору"
+
+#~ msgid ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+#~ msgstr ""
+#~ "Тут показано поточну адресу UNC. Крім того, ви можете вибрати одну з "
+#~ "раніше відвіданих адрес зі спадного меню, яке можна відкрити на панелі, "
+#~ "розташованій вище."
+
+#~ msgid "Print File"
+#~ msgstr "Надрукувати файл"
+
+#~ msgid "Options"
+#~ msgstr "Параметри"
+
+#~ msgid "Printer"
+#~ msgstr "Принтер"
+
+#~ msgid "File:"
+#~ msgstr "Файл:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Це файл, який ви бажаєте надрукувати на віддаленому принтері. У поточній "
+#~ "версії передбачено підтримку декількох типів MIME, зокрема PDF, "
+#~ "Postscript, звичайного тексту та зображень. Якщо підтримки потрібного вам "
+#~ "типу MIME не передбачено, вам слід спочатку перетворити дані у формат, "
+#~ "який підтримується програмою."
+
+#~ msgid "Copies:"
+#~ msgstr "Копій:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Це кількість копій, які ви бажаєте надрукувати"
+
+#~ msgid "Disk"
+#~ msgstr "Диск"
+
+#~ msgid "Synchronizing"
+#~ msgstr "Синхронізація"
+
+#~ msgid "Source"
+#~ msgstr "Джерело"
+
+#~ msgid "Destination"
+#~ msgstr "Призначення"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Синхронізувати місце призначення з джерелом"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Поміняти адреси місцями"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Джерело і місце призначення свопінгу"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr ""
+#~ "Будь ласка, вкажіть початковий каталог та каталог призначення для "
+#~ "синхронізації."
+
+#~ msgid "Source:"
+#~ msgstr "Джерело:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Каталог початкових даних. Дані, які у ньому містяться, буде "
+#~ "синхронізовано каталог призначення."
+
+#~ msgid "Destination:"
+#~ msgstr "Призначення:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Каталог призначення даних. Дані у цьому каталозі буде оновлено за даними "
+#~ "з каталогу джерела."
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgstr ""
+#~ "<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до "
+#~ "спільного ресурсу <b>%1</b>.</qt>"
+
+#~ msgid "Rescan"
+#~ msgstr "Пересканувати"
+
+#~ msgid "Mount Dialog"
+#~ msgstr "Діалогове вікно монтування"
+
+#~ msgid "<font size=\"-1\">on %1</font>"
+#~ msgstr "<font size=\"-1\">на %1</font>"
+
+#~ msgid "Unmount All"
+#~ msgstr "Демонтувати всі"
+
+#~ msgid "NTLM password hashing"
+#~ msgstr "Хешування паролів NTLM"
+
+#~ msgid "NTLMv2 password hashing"
+#~ msgstr "Хешування паролів NTLMv2"
+
+#~ msgid "NTLMv2 password hashing encapsulated in Raw NTLMSSP message"
+#~ msgstr "Хешування паролів NTLMv2, вбудованих у повідомлення NTLMSSP"
+
+#~ msgid ""
+#~ "NTLMv2 password hashing encapsulated in Raw NTLMSSP message and packet "
+#~ "signing"
+#~ msgstr ""
+#~ "Хешування паролів NTLMv2, вбудованих у текстове повідомлення NTLMSSP, і "
+#~ "підписування пакетів"
+
+#~ msgid "Retrying to mount shares. Please wait."
+#~ msgstr "Повторна спроба змонтувати спільні ресурси. Будь ласка, зачекайте…"
+
+#~ msgid "Use default security mode"
+#~ msgstr "Використовувати типовий режим захисту"
+
+#~ msgid "IP address:"
+#~ msgstr "Адреса IP:"
+
+#~ msgid "Mount"
+#~ msgstr "Змонтувати"
+
+#~ msgid "<p>Some required programs could not be found:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Не знайдено програм критичних для роботи smb4K:</p><p><tt>%1</tt></p>"
+
+#~ msgid "Advanced"
+#~ msgstr "Додатково"
+
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of the share <b>%1</b> "
+#~ "from <b>%2</b>?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ви справді хочете примусово демонтувати цей спільний ресурс <b>%1</"
+#~ "b> з <b>%2</b>?</p></qt>"
+
+#~ msgid "Force Unmounting"
+#~ msgstr "Примусово демонтувати"
+
+#~ msgid ""
+#~ "<qt><p>Do you really want to force the unmounting of all inaccessible "
+#~ "shares?</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Ви справді хочете примусово демонтувати всі недоступні ресурси?</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "\\u00A9 2003-2011 Alexander Reinholdt\n"
+#~ "\\u00A9 2004-2007 Massimo Callegari"
+#~ msgstr ""
+#~ "© Alexander Reinholdt, 2003-2011\n"
+#~ "© Massimo Callegari, 2004–2007"
+
+#~ msgid "&Force Unmounting"
+#~ msgstr "&Примусове демонтування"
+
+#~ msgid "<qt>Please enter a username and a password.</qt>"
+#~ msgstr "<qt>Будь ласка, вкажіть ім’я користувача і пароль.</qt>"
+
+#~ msgid "Signing State"
+#~ msgstr "Стан підписування"
+
+#~ msgid "Use NTLM password hashing (default)"
+#~ msgstr "Використовувати хешування паролів NTLM (типовий)"
+
+#~ msgid "Lookup all workgroups, hosts and shares periodically."
+#~ msgstr ""
+#~ "Виконувати періодичний пошук всіх робочих груп, вузлів та спільних "
+#~ "ресурсів."
+
+#~ msgid "UNC Address"
+#~ msgstr "UNC-адреса"
+
+#~ msgid "Write Access"
+#~ msgstr "Доступ для запису"
+
+#~ msgid "Kerberos"
+#~ msgstr "Kerberos"
+
+#~ msgid "User ID"
+#~ msgstr "Код користувача"
+
+#~ msgid "Group ID"
+#~ msgstr "Код групи"
+
+#~ msgid "SMB Port"
+#~ msgstr "Порт SMB"
+
+#~ msgid "File System Port"
+#~ msgstr "Порт файлової системи"
+
+#~ msgid "Automatic"
+#~ msgstr "Автоматично"
+
+#~ msgid "Massimo Callegari"
+#~ msgstr "Massimo Callegari"
+
+#~ msgid "A&dd"
+#~ msgstr "&Додати"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "host. It has the following syntax: //HOST."
+#~ msgstr ""
+#~ "Адреса за універсальною угодою щодо назв (Uniform Naming Convention або "
+#~ "UNC) описує розташування вузла. Синтаксична конструкція адреси така: //"
+#~ "ВУЗОЛ"
+
+#~ msgid "automatic"
+#~ msgstr "автоматично"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //HOST/SHARE"
+#~ msgstr ""
+#~ "Адреса за універсальною угодою щодо назв (Uniform Naming Convention або "
+#~ "UNC) описує розташування спільного ресурсу. Синтаксична конструкція "
+#~ "адреси така: //ВУЗОЛ/РЕСУРС"
+
+#~ msgid "%1 has an unsupported format version."
+#~ msgstr "%1 збережено у форматі непідтримуваної версії."
+
+#~ msgid ""
+#~ "<qt>The format of the UNC address you entered is not correct. It must "
+#~ "have the form //[USER@]HOST/SHARE."
+#~ msgstr ""
+#~ "<qt>Вами введено помилкову адресу спільного ресурсу. Адресу слід "
+#~ "вказувати у формі //[КОРИСТУВАЧ@]ВУЗОЛ/РЕСУРС."
+
+#~ msgid "M&ount Manually"
+#~ msgstr "Змо&нтувати вручну"
+
+#~ msgid "Share"
+#~ msgstr "Спільний ресурс"
+
+#~ msgid "Bookmark Editor"
+#~ msgstr "Редактор закладок"
+
+#~ msgid "Bookmark"
+#~ msgstr "Закладка"
+
+#~ msgid "Printing"
+#~ msgstr "Друк"
+
+#~ msgid "Converting File to PostScript"
+#~ msgstr "Перетворення файла у формат PostScript"
+
+#~ msgid "Input File"
+#~ msgstr "Вхідний файл"
+
+#~ msgid "Output File"
+#~ msgstr "Вихідний файл"
+
+#~ msgid "Acquiring Preview"
+#~ msgstr "Отримання даних попереднього перегляду"
+
+#~ msgid "This is the view where the contents of the share is displayed."
+#~ msgstr "На цій панелі списку показано вміст спільного ресурсу."
+
+#~ msgid "The file is invalid."
+#~ msgstr "Некоректний файл."
+
+#~ msgid "The file that is currently transferred is shown here."
+#~ msgstr "Тут показано файл, перенесення даних якого виконує програма."
+
+#~ msgid "The progress of the current file transfer is shown here."
+#~ msgstr "Тут показано поступ передавання даних поточного файла."
+
+#~ msgid "The overall progress of the synchronization is shown here."
+#~ msgstr "Тут показано загальний поступ виконання операції."
+
+#~ msgid "Files transferred:"
+#~ msgstr "Перенесено файлів:"
+
+#~ msgid "Transfer rate:"
+#~ msgstr "Швидкість перенесення:"
+
+#~ msgid ""
+#~ "This is the path where Smb4K will store the files and directories during "
+#~ "synchronization. If you plan to synchronize only with one remote share, "
+#~ "then you can put the data directly in this directory. If you want to "
+#~ "synchronize with several remote shares, then you should create a "
+#~ "subdirectory for each share and choose the appropriate one in the "
+#~ "synchronization dialog."
+#~ msgstr ""
+#~ "Цей пункт визначає шлях, за яким Smb4K зберігатиме файли і каталоги під "
+#~ "час синхронізації. Якщо ви плануєте виконання синхронізації лише з одним "
+#~ "віддаленим спільним ресурсом, ви можете просто додавати дані "
+#~ "безпосередньо до цього каталогу. Якщо синхронізацію доведеться виконувати "
+#~ "з декількома віддаленими спільними ресурсами, ви можете створити "
+#~ "підкаталог для кожного спільного ресурсу і обирати відповідний каталог за "
+#~ "допомогою діалогового вікна синхронізації."
+
+#~ msgid "NoSuchAction"
+#~ msgstr "Немає такої дії"
+
+#~ msgid ""
+#~ "<p>The execution of the unmount action failed (error code: <tt>%1</tt>).</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p>Спроба виконання дії з демонтування зазнала невдачі (код помилки: <tt>"
+#~ "%1</tt>).</p>"
+
+#~ msgid "The authentication action was denied."
+#~ msgstr "Дію з розпізнавання було заборонено."
+
+#~ msgid "The authentication was denied."
+#~ msgstr "У розпізнаванні було відмовлено."
+
+#~ msgid "Error Message"
+#~ msgstr "Повідомлення про помилку"
+
+#~ msgid "The directory <b>%1</b> could not be created."
+#~ msgstr "Не вдалося створити каталог <b>%1</b>."
+
+#~ msgid "List"
+#~ msgstr "Список"
+
+#~ msgid "A system call failed."
+#~ msgstr "Помилка системного виклику."
+
+#~ msgid "The following error message was reported:"
+#~ msgstr "Надійшло таке повідомлення про помилку:"
+
+#~ msgid "\\u00A9 2007-2009, Alexander Reinholdt"
+#~ msgstr "© Alexander Reinholdt, 2007–2009"
+
+#~ msgid "Share:"
+#~ msgstr "Спільний ресурс:"
+
+#~ msgid "Free:"
+#~ msgstr "Вільно:"
+
+#~ msgid "Used:"
+#~ msgstr "Використано:"
+
+#~ msgid "Total:"
+#~ msgstr "Всього:"
+
+#~ msgid "Usage:"
+#~ msgstr "Використання:"
+
+#~ msgid "This share is inaccessible."
+#~ msgstr "Доступу до цього спільного ресурсу немає."
+
+#~ msgid "Pseudo master browser:"
+#~ msgstr "Псевдоголовний навігатор:"
+
+#~ msgid "No responder"
+#~ msgstr "Немає відповідача"
+
+#~ msgid "Invalid action"
+#~ msgstr "Некоректна дія"
+
+#~ msgid "Authorization denied"
+#~ msgstr "Уповноваження не надано"
+
+#~ msgid "Helper busy"
+#~ msgstr "Допоміжну програму зайнято"
+
+#~ msgid "DBus error"
+#~ msgstr "Помилка DBus"
+
+#~ msgid ""
+#~ "<qt>If you experience problems due to insufficient privileges when "
+#~ "mounting shares, you should enable the appropriate settings in the "
+#~ "<b>Super User</b> configuration page.</qt>"
+#~ msgstr ""
+#~ "<qt>Якщо у вас виникають проблеми, пов’язані з недостатніми правами "
+#~ "доступу, під час монтування спільних ресурсів, вам слід позначити "
+#~ "відповідні пункти на сторінці налаштування <b>Суперкористувач</b>.</qt>"
+
+#~ msgid "Smb4KSearchDialogPart"
+#~ msgstr "Smb4KSearchDialogPart"
+
+#~ msgid "The search dialog KPart of Smb4K"
+#~ msgstr "KPart діалогового вікна пошуку Smb4K"
+
+#~ msgid "Remove Entries"
+#~ msgstr "Вилучити записи"
+
+#~ msgid "Remove entries from the configuration file"
+#~ msgstr "Вилучити записи з файла налаштувань"
+
+#~ msgid ""
+#~ "All entries that were written by Smb4K will be removed from /etc/sudoers. "
+#~ "Additionally, all your choices under \"Actions\" will be cleared."
+#~ msgstr ""
+#~ "Всі записи, створені Smb4K, буде вилучено з /etc/sudoers. Крім того, буде "
+#~ "вилучено всі налаштування з розділу «Дії»."
+
+#~ msgid ""
+#~ "<b>smb4k_kill</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr ""
+#~ "Для роботи <b>smb4k_kill</b> потрібні права доступу адміністратора. Будь "
+#~ "ласка, вкажіть пароль адміністратора."
+
+#~ msgid ""
+#~ "<b>smb4k_mount</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr ""
+#~ "Для роботи <b>smb4k_mount</b> потрібні права доступу адміністратора. Будь "
+#~ "ласка, вкажіть пароль адміністратора."
+
+#~ msgid ""
+#~ "<b>smb4k_umount</b> needs administrative privileges. Please enter your "
+#~ "password."
+#~ msgstr ""
+#~ "Для роботи <b>smb4k_umount</b> потрібні права доступу адміністратора. "
+#~ "Будь ласка, вкажіть пароль адміністратора."
+
+#~ msgid ""
+#~ "The program <b>sudo</b> could not be found. Smb4K will continue without "
+#~ "using it."
+#~ msgstr ""
+#~ "Не вдалося виявити програму <b>sudo</b>. Smb4K продовжить роботу без "
+#~ "використання цієї програми."
+
+#~ msgid ""
+#~ "The program <b>kdesudo</b> could not be found. Smb4K will continue with "
+#~ "using <b>sudo</b> instead."
+#~ msgstr ""
+#~ "Не вдалося виявити програму <b>kdesudo</b>. Smb4K продовжить роботу за "
+#~ "допомогою програми <b>sudo</b>."
+
+#~ msgid "Writing to the <b>sudoers</b> file failed."
+#~ msgstr "Спроба запису до файла <b>sudoers</b> зазнала невдачі."
+
+#~ msgid "This program mounts SMBFS/CIFS shares."
+#~ msgstr "Ця програма виконує монтування спільних ресурсів SMBFS/CIFS."
+
+#~ msgid "(C) 2010, Alexander Reinholdt"
+#~ msgstr "© Alexander Reinholdt, 2010"
+
+#~ msgid "smb4k_mount"
+#~ msgstr "smb4k_mount"
+
+#~ msgid "A comma-separated list of mount options"
+#~ msgstr "Список відокремлених комами параметрів монтування"
+
+#~ msgid "The local (<cs1>) and the server's (<cs2>) character set"
+#~ msgstr "Локальний (<cs1>) набір символів та набір символів сервера (<cs2>)"
+
+#~ msgid ""
+#~ "Do not use NetBIOS name resolver and connect directly to <host>, which "
+#~ "can be either a valid DNS name or an IP address"
+#~ msgstr ""
+#~ "Не використовувати інструмент визначення назв NetBIOS, встановити "
+#~ "з’єднання безпосередньо з вузлом <host>, який можна задати у форматі "
+#~ "чинної назви DNS або IP-адреси"
+
+#~ msgid "Use <locale> for lower/upper case conversion routines"
+#~ msgstr ""
+#~ "Використовувати локаль <locale> для виконання перетворення між верхнім і "
+#~ "нижнім регістром символів"
+
+#~ msgid "Assign access rights to the newly created connection"
+#~ msgstr "Призначити права доступу до новоствореного з’єднання"
+
+#~ msgid "Do not ask for a password"
+#~ msgstr "Не запитувати про пароль"
+
+#~ msgid "Assign owner/group attributes to the newly created connection"
+#~ msgstr "Призначити атрибути власника і групи до новоствореного з’єднання"
+
+#~ msgid ""
+#~ "How many retries should be done before the SMB requester decides to drop "
+#~ "the connection"
+#~ msgstr ""
+#~ "Кількість повторних спроб, які слід виконати перш ніж програма надсилання "
+#~ "запитів SMB розірве з’єднання"
+
+#~ msgid "Timeout in seconds for each request"
+#~ msgstr "Час очікування на відповідь для кожного запиту"
+
+#~ msgid "Username to authenticate with"
+#~ msgstr "Ім’я користувача, який проходитиме розпізнавання"
+
+#~ msgid ""
+#~ "This option specifies the workgroup to be used in the authentication "
+#~ "request"
+#~ msgstr ""
+#~ "Цей параметр визначає робочу групу, яку буде використано у запиті щодо "
+#~ "розпізнавання"
+
+#~ msgid "Set a case option which affects name representation"
+#~ msgstr ""
+#~ "Встановити параметри регістру символів, який впливатиме на показ назв"
+
+#~ msgid "Specify permissions that should be assigned to files"
+#~ msgstr "Вказати права доступу, які має бути призначено для файлів"
+
+#~ msgid "Specify permissions that should be assigned to directories"
+#~ msgstr "Вказати права доступу, які має бути призначено для каталогів"
+
+#~ msgid "User ID assigned to files"
+#~ msgstr "Ідентифікатор користувача призначений до файлів"
+
+#~ msgid "Group ID assigned to files"
+#~ msgstr "Ідентифікатор групи призначений до файлів"
+
+#~ msgid "For further information see the manual page of mount_smbfs."
+#~ msgstr ""
+#~ "Докладніше про все можна дізнатися зі сторінки довідника (man) програми "
+#~ "mount_smbfs."
+
+#~ msgid "The UNC of the remote share"
+#~ msgstr "Адреса UNC віддаленого спільного ресурсу"
+
+#~ msgid "The mountpoint for the remote share"
+#~ msgstr "Точка монтування віддаленого спільного ресурсу"
+
+#~ msgid "Aborting."
+#~ msgstr "Переривання."
+
+#~ msgid "Could not find umount binary."
+#~ msgstr "Не вдалося виявити виконуваного файла програми umount."
+
+#~ msgid "The internal process crashed with exit code "
+#~ msgstr "Внутрішній процес аварійно завершив роботу з кодом помилки "
+
+#~ msgid "An error occurred:"
+#~ msgstr "Сталася помилка:"
+
+#~ msgid "This program writes to the sudoers file."
+#~ msgstr "Ця програма виконує запис до файла sudoers."
+
+#~ msgid "(C) 2008-2010, Alexander Reinholdt"
+#~ msgstr "© Alexander Reinholdt, 2008–2010"
+
+#~ msgid "smb4k_sudowriter"
+#~ msgstr "smb4k_sudowriter"
+
+#~ msgid "Add an user to the sudoers file"
+#~ msgstr "Додати користувача до файла sudoers"
+
+#~ msgid "Remove an user from the sudoers file"
+#~ msgstr "Вилучити користувача з файла sudoers"
+
+#~ msgid "No valid arguments provided."
+#~ msgstr "Не вказано коректних параметрів."
+
+#~ msgid "The lock file could not be created."
+#~ msgstr "Не вдалося створити файл блокування."
+
+#~ msgid "The sudoers file is currently being edited."
+#~ msgstr "Зараз виконується редагування файла sudoers."
+
+#~ msgid "An invalid username has been provided."
+#~ msgstr "Вказано некоректне ім’я користувача."
+
+#~ msgid "The sudoers file was not found."
+#~ msgstr "Не знайдено файл sudoers."
+
+#~ msgid "The sudoers file is irregular."
+#~ msgstr "Невідомий формат файла sudoers."
+
+#~ msgid "Cannot access sudoers file."
+#~ msgstr "Не вдалося отримати доступ до файла sudoers."
+
+#~ msgid "Could not read from sudoers file."
+#~ msgstr "Не вдалося виконати читання даних з файла sudoers."
+
+#~ msgid "Could not set file permissions for sudoers file."
+#~ msgstr "Не вдалося встановити права доступу до файла sudoers."
+
+#~ msgid ""
+#~ "Could not find utility programs (smb4k_kill, smb4k_umount, smb4k_mount)."
+#~ msgstr ""
+#~ "Не вдалося виявити допоміжних програм (smb4k_kill, smb4k_umount, "
+#~ "smb4k_mount)."
+
+#~ msgid "Wrong format of Smb4K section in sudoers file detected."
+#~ msgstr "Виявлено помилки у форматі розділу Smb4K файла sudoers."
+
+#~ msgid "Please correct this manually."
+#~ msgstr "Будь ласка, виправте це вручну."
+
+#~ msgid "Could not compile Smb4K section for sudoers file."
+#~ msgstr "Не вдалося створити розділ Smb4K у файлі sudoers."
+
+#~ msgid "Could not write to sudoers file."
+#~ msgstr "Не вдалося виконати запис до файла sudoers."
+
+#~ msgid "This program umounts SMBFS/CIFS shares."
+#~ msgstr "Ця програма виконує демонтування спільних ресурсів SMBFS/CIFS."
+
+#~ msgid "smb4k_umount"
+#~ msgstr "smb4k_umount"
+
+#~ msgid "Perform a lazy unmount"
+#~ msgstr "Виконати ліниве демонтування"
+
+#~ msgid "Invalid mountpoint specified."
+#~ msgstr "Вказано помилкову точку монтування."
+
+#~ msgid "This program kills processes invoked by Smb4K."
+#~ msgstr "Ця програма завершує роботу процесів, запущених Smb4K."
+
+#~ msgid "smb4k_kill"
+#~ msgstr "smb4k_kill"
+
+#~ msgid "The PID of the process that is to be killed"
+#~ msgstr "Ідентифікатор процесу (PID), роботу якого слід завершити"
+
+#~ msgid "Could not find kill binary."
+#~ msgstr "Не вдалося знайти файл програми kill."
+
+#~ msgid ""
+#~ "Unmount a share under Linux by force. This even works if the file system "
+#~ "is \"busy\", because it is immediately detached from the file system "
+#~ "hierarchy and all references to it are cleaned up later when it is not "
+#~ "busy anymore. Linux kernel 2.4.11 or later is needed to take advantage of "
+#~ "this feature. Use with care. Note, that you will need the root password "
+#~ "to write the necessary changes to the configuration file."
+#~ msgstr ""
+#~ "Примусово демонтувати спільний ресурс у Linux. Позначення цього пункту "
+#~ "працюватиме, навіть якщо файлову систему «зайнято», оскільки програма "
+#~ "негайно від’єднає точку монтування з ієрархії файлової системи, а всі "
+#~ "посилання на файлову систему буде вилучено пізніше, коли файлову систему "
+#~ "вже не буде зайнято. Для того, щоб ви могли скористатися цією можливістю, "
+#~ "у системі має бути встановлено ядро Linux версії 2.4.11 або пізнішої. "
+#~ "Будьте обережними! Вам знадобиться пароль користувача root для внесення "
+#~ "потрібних змін до файла налаштувань."
+
+#~ msgid "Use super user privileges to mount and unmount shares"
+#~ msgstr ""
+#~ "Застосовувати привілеї суперкористувача для монтування та демонтування "
+#~ "спільних ресурсів"
+
+#~ msgid ""
+#~ "Use super user privileges for mounting and unmounting remote shares. This "
+#~ "feature is only needed, if you are not allowed to do this as normal user. "
+#~ "Note, that you will need the root password to write the necessary changes "
+#~ "to the configuration file."
+#~ msgstr ""
+#~ "Використовувати права доступу суперкористувача для монтування і "
+#~ "демонтування віддалених спільних ресурсів. Позначення цього пункту може "
+#~ "знадобитися, лише якщо ви не можете цього робити від імені звичайного "
+#~ "користувача. Вам знадобиться пароль користувача root для внесення "
+#~ "потрібних змін до файла налаштувань."
+
+#~ msgid "Do not modify sudo's configuration file"
+#~ msgstr "Не вносити змін до файла налаштувань sudo"
+
+#~ msgid ""
+#~ "Do not modify the configuration file of the program sudo. You might want "
+#~ "to enable this feature, if you are already allowed to execute arbitrary "
+#~ "programs with super user privileges without the need of giving a "
+#~ "password. Please note that during mounting the PASSWD environment "
+#~ "variable is evaluated, so you have to make sure that it is preserved when "
+#~ "sudo is run. This can be accomplished e.g. by setting the 'env_keep' "
+#~ "option in the sudoers file. See the sudoers manual page for further "
+#~ "information."
+#~ msgstr ""
+#~ "Не вносити змін до файла налаштувань програми sudo. Потреба у позначенні "
+#~ "цього пункту може виникнути, якщо вами вже надано дозвіл на запуск "
+#~ "довільних програм з правами доступу суперкористувача без зазначення "
+#~ "пароля. Будь ласка, зауважте, що під час монтування програма визначатиме "
+#~ "змінну середовища PASSWD, отже, вам слід забезпечити стале значення цієї "
+#~ "змінною під час запуску sudo. Зробити це можна, наприклад, встановленням "
+#~ "параметра «env_keep» у файлі sudoers. Докладніші відомості можна знайти "
+#~ "на сторінці довідника sudoers."
+
+#~ msgid "Use kdesudo instead of sudo"
+#~ msgstr "Використовувати kdesudo замість sudo"
+
+#~ msgid ""
+#~ "Use the graphical frontend kdesudo instead of sudo itself. To enable this "
+#~ "option, kdesudo must be installed on your computer. This option enables "
+#~ "you to provide a password each time it is needed. You should enable this "
+#~ "feature, if you are allowed to execute arbitrary programs with super user "
+#~ "privileges but need to provide a password."
+#~ msgstr ""
+#~ "Використовувати графічну оболонку kdesudo замість sudo. Перш ніж ви "
+#~ "матимете змогу скористатися цим пунктом, ви маєте встановити kdesudo у "
+#~ "вашу систему. Якщо буде позначено цей пункт, програма проситиме вас "
+#~ "ввести пароль, кожного разу, коли це буде потрібно. Вам слід позначити "
+#~ "цей пункт, якщо у вашого користувача є дозвіл на запуск довільних програм "
+#~ "з правами доступу суперкористувача, але для їх запуску слід вказати "
+#~ "пароль."
+
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Detailed information cannot be provided "
+#~ "because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося визначити назву комп'ютера за допомогою системного "
+#~ "виклику gethostname().</p><p>Докладнішу інформацію неможливо надати, "
+#~ "оскільки не отримано ніяких повідомлень про помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The name of your computer could not be determined by using the "
+#~ "gethostname() system call.</p><p>Read the error message under \"Details\" "
+#~ "to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося визначити назву комп'ютера за допомогою системного "
+#~ "виклику gethostname().</p><p>Докладнішу інформацію та повідомлення про "
+#~ "помилку наведено у розділі «Подробиці».</p></qt>"
+
+#~ msgid "<qt>This feature has not been enabled.</qt>"
+#~ msgstr "<qt>Цю можливість не було увімкнено.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Під час спроби обробки файла XML «%1» сталася помилка.</"
+#~ "p><p>Докладнішу інформацію неможливо надати, оскільки не отримано ніяких "
+#~ "повідомлень про помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while parsing the XML file \"%1\".</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Під час спроби обробки файла XML «%1» сталася помилка.</"
+#~ "p><p>Докладнішу інформацію та повідомлення про помилку наведено у розділі "
+#~ "«Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Сталася невідома помилка.</p><p>Докладнішу інформацію неможливо "
+#~ "надати, оскільки не отримано ніяких повідомлень про помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An unknown error occurred.</p><p>Read the error message under "
+#~ "\"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Сталася невідома помилка.</p><p>Докладнішу інформацію та "
+#~ "повідомлення про помилку наведено у розділі «Подробиці».</p></qt>"
+
+#~ msgid "<qt>The process exited unexpectedly.</qt>"
+#~ msgstr "<qt>Процес несподівано завершив роботу.</qt>"
+
+#~ msgid "<qt>The file \"%1\" could not be found.</qt>"
+#~ msgstr "<qt>Не вдалося знайти файл «%1».</qt>"
+
+#~ msgid ""
+#~ "<qt><p>Either your PATH environment variable is not set properly or there "
+#~ "are the following programs missing on your system:</p><p>%1</p><p>Please "
+#~ "correct this and restart Smb4K.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>У вашій системі неправильно визначено змінну PATH або відсутні "
+#~ "наступні програми:</p><p>%1</p><p>Будь ласка, виправте це і заново "
+#~ "запустіть Smb4K.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Під час спроби запису до файла sudoers сталася невідома помилка.</"
+#~ "p><p>Докладнішу інформацію неможливо надати, оскільки не отримано ніяких "
+#~ "повідомлень про помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>An error occurred while writing to the sudoers file.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Під час спроби запису до файла sudoers сталася невідома помилка.</"
+#~ "p><p>Докладнішу інформацію та повідомлення про помилку наведено у розділі "
+#~ "«Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося створити тимчасовий файл.</p><p>Докладнішу інформацію "
+#~ "неможливо надати, оскільки не отримано ніяких повідомлень про помилку.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The temporary file could not be created.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося створити тимчасовий файл.</p><p>Докладнішу інформацію "
+#~ "та повідомлення про помилку наведено у розділі «Подробиці».</p></qt>"
+
+#~ msgid "<qt>The file \"%1\" could not be opened.</qt>"
+#~ msgstr "<qt>Не вдалося відкрити файл «%1».</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be opened.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося відкрити файл «%1».</p><p>Докладнішу інформацію та "
+#~ "повідомлення про помилку наведено у розділі «Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося демонтувати спільний ресурс %1.</p><p>Докладнішу "
+#~ "інформацію неможливо надати, оскільки не отримано ніяких повідомлень про "
+#~ "помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be unmounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося демонтувати спільний ресурс %1.</p><p>Докладнішу "
+#~ "інформацію та повідомлення про помилку наведено у розділі «Подробиці».</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p></p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося надрукувати файл «%1».</p><p>Докладнішу інформацію "
+#~ "неможливо надати, оскільки не отримано ніяких повідомлень про помилку.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The file \"%1\" could not be printed.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося надрукувати файл «%1».</p><p>Докладнішу інформацію та "
+#~ "повідомлення про помилку наведено у розділі «Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt></p>The synchronization could not be finished successfully.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося успішно завершити синхронізацію.</p><p>Докладнішу "
+#~ "інформацію неможливо надати, оскільки не отримано ніяких повідомлень про "
+#~ "помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The synchronization could not be finished successfully.</p><p>Read "
+#~ "the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося успішно завершити синхронізацію.</p><p>Докладнішу "
+#~ "інформацію та повідомлення про помилку наведено у розділі «Подробиці».</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося успішно завершити пошук.</p><p>Докладнішу інформацію "
+#~ "неможливо надати, оскільки не отримано ніяких повідомлень про помилку.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The search could not be finished successfully.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося успішно завершити пошук.</p><p>Докладнішу інформацію та "
+#~ "повідомлення про помилку наведено у розділі «Подробиці».</p></qt>"
+
+#~ msgid "Another user is currently editing the sudoers file."
+#~ msgstr "Зараз файл sudoers редагує інший користувач."
+
+#~ msgid "FATAL: Could not restore initial permissions of sudoers file."
+#~ msgstr ""
+#~ "Критична помилка: не вдалося відновити початкові права доступу до файла "
+#~ "sudoers."
+
+#~ msgid "Please inform your system administrator."
+#~ msgstr "Будь ласка, повідомте про це вашого системного адміністратора."
+
+#~ msgid "The Smb4K section does not conform with the required format."
+#~ msgstr "Формат розділу Smb4K не відповідає усталеним нормам."
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Detailed information cannot be "
+#~ "provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося отримати список зареєстрованих IP-адрес у вказаному "
+#~ "діапазоні.</p><p>Докладнішу інформацію неможливо надати, оскільки не "
+#~ "отримано ніяких повідомлень про помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of registered IP addresses within the given broadcast "
+#~ "areas could not be retrieved.</p><p>Read the error message under \"Details"
+#~ "\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося отримати список зареєстрованих IP-адрес у вказаному "
+#~ "діапазоні.</p><p>Докладнішу інформацію та повідомлення про помилку "
+#~ "наведено у розділі «Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося отримати список серверів.</p><p>Докладнішу інформацію "
+#~ "неможливо надати, оскільки не отримано ніяких повідомлень про помилку.</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of servers could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося отримати список серверів.</p><p>Докладнішу інформацію "
+#~ "та повідомлення про помилку наведено у розділі «Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося отримати список спільних ресурсів.</p><p>Докладнішу "
+#~ "інформацію неможливо надати, оскільки не отримано ніяких повідомлень про "
+#~ "помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of shares could not be retrieved.</p><p>Read the error "
+#~ "message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося отримати список спільних ресурсів.</p><p>Докладнішу "
+#~ "інформацію та повідомлення про помилку наведено у розділі «Подробиці».</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося зібрати дані для попереднього перегляду.</"
+#~ "p><p>Докладнішу інформацію неможливо надати, оскільки не отримано ніяких "
+#~ "повідомлень про помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The preview could not be compiled.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося зібрати дані для попереднього перегляду.</"
+#~ "p><p>Докладнішу інформацію та повідомлення про помилку наведено у розділі "
+#~ "«Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Detailed information "
+#~ "cannot be provided because there was no error message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося змонтувати спільний ресурс %1.</p><p>Докладнішу "
+#~ "інформацію неможливо надати, оскільки не отримано ніяких повідомлень про "
+#~ "помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The share %1 could not be mounted.</p><p>Read the error message "
+#~ "under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося змонтувати спільний ресурс %1.</p><p>Докладнішу "
+#~ "інформацію та повідомлення про помилку наведено у розділі «Подробиці».</"
+#~ "p></qt>"
+
+#~ msgid ""
+#~ "<qt>The share could not be unmounted, because the mount point string was "
+#~ "empty.</qt>"
+#~ msgstr ""
+#~ "<qt>Не вдалося демонтувати цей спільний ресурс, оскільки рядок точки "
+#~ "монтування є порожнім.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Detailed "
+#~ "information cannot be provided because there was no error message.</p></"
+#~ "qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося імпортувати список змонтованих спільних ресурсів.</"
+#~ "p><p>Докладнішу інформацію неможливо надати, оскільки не отримано ніяких "
+#~ "повідомлень про помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of mounted shares could not be imported.</p><p>Read the "
+#~ "error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося імпортувати список змонтованих спільних ресурсів.</"
+#~ "p><p>Докладнішу інформацію та повідомлення про помилку наведено у розділі "
+#~ "«Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt>The list of arguments for the \"net\" command could not be assembled."
+#~ "</qt>"
+#~ msgstr "<qt>Не вдалося скласти список параметрів команди «net».</qt>"
+
+#~ msgid ""
+#~ "<qt>The label \"%1\" is used more than once. It will automatically be "
+#~ "renamed for bookmark \"%2\" to avoid confusion.</qt>"
+#~ msgstr ""
+#~ "<qt>Мітку «%1» використано декілька разів. З метою уникнення двозначності "
+#~ "її буде автоматично перейменовано на «%2».</qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Detailed information cannot be provided because there was no error "
+#~ "message.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося отримати список робочих груп і доменів.</"
+#~ "p><p>Докладнішу інформацію неможливо надати, оскільки не отримано ніяких "
+#~ "повідомлень про помилку.</p></qt>"
+
+#~ msgid ""
+#~ "<qt><p>The list of workgroups and domains could not be retrieved.</"
+#~ "p><p>Read the error message under \"Details\" to find out more.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Не вдалося отримати список робочих груп і доменів.</"
+#~ "p><p>Докладнішу інформацію та повідомлення про помилку наведено у розділі "
+#~ "«Подробиці».</p></qt>"
+
+#~ msgid ""
+#~ "<qt>You previously chose to use \"%1\", but now it is missing on your "
+#~ "system. Smb4K will disable this feature.</qt>"
+#~ msgstr ""
+#~ "<qt>Раніше ви вказали програмі, що слід використовувати «%1», але "
+#~ "вказаної вами програми вже немає у системі. Smb4K вимкне цю можливість.</"
+#~ "qt>"
+
+#~ msgid ""
+#~ "<qt>The wallet \"%1\" could not be opened. KWallet support will be "
+#~ "disabled for this session.</qt>"
+#~ msgstr ""
+#~ "<qt>Не вдалося відкрити торбинку «%1». Протягом цього сеансу підтримку "
+#~ "KWallet буде вимкнено.</qt>"
+
+#~ msgid "System Tray"
+#~ msgstr "Системний лоток"
+
+#~ msgid "Main Window && System Tray"
+#~ msgstr "Головне вікно і системний лоток"
+
+#~ msgid "Embed application into the system tray"
+#~ msgstr "Вбудовувати програму до системного лотка"
+
+#~ msgid ""
+#~ "Embed the application into the system tray. The system tray widget "
+#~ "provides a popup menu with several commonly used tasks, so you do not "
+#~ "need to bring up the main window every time. If this setting is chosen, "
+#~ "you have to use \"Quit\" from the \"File\" menu or the system tray widget "
+#~ "to exit the application."
+#~ msgstr ""
+#~ "Вбудовувати програму до системного лотка. Для віджета системного лотка "
+#~ "передбачено контекстне меню з пунктами декількох поширених завдань, отже "
+#~ "вам не потрібно буде весь час відкривати вікно програми, щоб отримати "
+#~ "доступ до головного меню. Якщо буде позначено цей пункт, для завершення "
+#~ "роботи програми ви зможете скористатися пунктом «Вийти» з меню «Файл»."
+
+#~ msgid "on"
+#~ msgstr "увімкнено"
+
+#~ msgid "The preview"
+#~ msgstr "Попередній перегляд"
+
+#~ msgid "The current UNC address"
+#~ msgstr "Поточна адреса UNC"
+
+#~ msgid "The source directory"
+#~ msgstr "Каталог джерела"
+
+#~ msgid "The destination directory"
+#~ msgstr "Каталог призначення"
+
+#~ msgid "The currently transferred file"
+#~ msgstr "Файл, дані якого передаються"
+
+#~ msgid "The progress of the current file transfer"
+#~ msgstr "Поступ передавання даних поточного файла"
+
+#~ msgid "The overall progress"
+#~ msgstr "Загальний поступ"
+
+#~ msgid "The IP of the host where the share is located"
+#~ msgstr "IP-адреса вузла, де зберігаються дані спільного ресурсу"
+
+#~ msgid "The workgroup where the host is located"
+#~ msgstr "Робоча група, у якій працює вузол"
+
+#~ msgid "The UNC address of the host"
+#~ msgstr "Адреса вузла у форматі UNC"
+
+#~ msgid "The port used for communicating with servers"
+#~ msgstr "Порт, який буде використано для обміну даними з серверами"
+
+#~ msgid "The port used for mounting shares"
+#~ msgstr "Порт, який буде використано для монтування спільних ресурсів"
+
+#~ msgid "The write access"
+#~ msgstr "Доступ до запису"
+
+#~ msgid "The user ID"
+#~ msgstr "Код користувача"
+
+#~ msgid "The group ID"
+#~ msgstr "Код групи"
+
+#~ msgid "The number of copies"
+#~ msgstr "Кількість копій"
+
+#~ msgid "The IPv4 or IPv6 address"
+#~ msgstr "Адреса у форматі IPv4 або IPv6"
+
+#~ msgid "The workgroup name"
+#~ msgstr "Назва робочої групи"
+
+#~ msgid "Bookmark this share"
+#~ msgstr "Створити закладку для цього ресурсу"
+
+#~ msgid "UNC:"
+#~ msgstr "UNC:"
+
+#~ msgid "Name:"
+#~ msgstr "Назва:"
+
+#~ msgid "Protocol:"
+#~ msgstr "Протокол:"
+
+#~ msgid "Try to authenticate with Kerberos (Active Directory)"
+#~ msgstr "Спробувати розпізнавання з Kerberos (Active Directory)"
+
+#~ msgid "UID"
+#~ msgstr "UID"
+
+#~ msgid "GID"
+#~ msgstr "GID"
+
+#~ msgid "Port"
+#~ msgstr "Порт"
+
+#~ msgid "[Network] The custom master browser has not been entered."
+#~ msgstr "[Мережа] Не було вказано нетипового основного переглядача."
+
+#~ msgid "[Network] The broadcast areas have not been entered."
+#~ msgstr "[Мережа] Не вказано діапазонів адрес."
+
+#~ msgid "[Shares] The mount prefix is empty."
+#~ msgstr "[Спільні ресурси] Порожній префікс монтування."
+
+#~ msgid "[Samba] The file mask is empty."
+#~ msgstr "[Samba] Порожня маска файлів."
+
+#~ msgid "[Samba] The directory mask is empty."
+#~ msgstr "[Samba] Порожня маска каталогів."
+
+#~ msgid "[Synchronization] The rsync prefix is empty."
+#~ msgstr "[Синхронізація] Порожній префікс rsync."
+
+#~ msgid "[Synchronization] The exclude patterns have not been entered."
+#~ msgstr "[Синхронізація] Не вказано шаблонів виключення."
+
+#~ msgid "[Synchronization] The path of the exclude file is empty."
+#~ msgstr "[Синхронізація] Порожній шлях до файла виключень."
+
+#~ msgid "[Synchronization] The include patterns have not been entered."
+#~ msgstr "[Синхронізація] Не вказано шаблонів включення."
+
+#~ msgid "[Synchronization] The path of the include file is empty."
+#~ msgstr "[Синхронізація] Порожній шлях до файла включень."
+
+#~ msgid "[Synchronization] The backup suffix has not been defined."
+#~ msgstr "[Синхронізація] Не вказано суфікса назв резервних копій."
+
+#~ msgid "[Synchronization] The backup directory is empty."
+#~ msgstr "[Синхронізація] Порожня адреса каталогу резервування."
+
+#~ msgid ""
+#~ "<qt>The configuration could not be written, because one setting is "
+#~ "incomplete:<ul>%2</ul>Please correct this issue.</qt>"
+#~ msgid_plural ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+#~ msgstr[0] ""
+#~ "<qt>Не вдалося записати налаштування, оскільки %1 налаштування не "
+#~ "визначено:<ul>%2</ul>Будь ласка, вкажіть потрібні програмі дані.</qt>"
+#~ msgstr[1] ""
+#~ "<qt>Не вдалося записати налаштування, оскільки %1 налаштування не "
+#~ "визначено:<ul>%2</ul>Будь ласка, вкажіть потрібні програмі дані.</qt>"
+#~ msgstr[2] ""
+#~ "<qt>Не вдалося записати налаштування, оскільки %1 налаштувань не "
+#~ "визначено:<ul>%2</ul>Будь ласка, вкажіть потрібні програмі дані.</qt>"
+#~ msgstr[3] ""
+#~ "<qt>Не вдалося записати налаштування, оскільки %1 налаштування не "
+#~ "визначено:<ul>%2</ul>Будь ласка, вкажіть потрібні програмі дані.</qt>"
+
+#~ msgid ""
+#~ "<qt><p>Smb4K now uses a different configuration system. Thus, your old "
+#~ "settings are obsolete and you have to reconfigure the application.</"
+#~ "p><p>To ensure a clean transition, the current configuration file will be "
+#~ "removed.</p></qt>"
+#~ msgstr ""
+#~ "<qt><p>Тепер у Smb4K використовується інша система налаштування. Отже, "
+#~ "ваш старий набір параметрів вже не діятиме. Вам доведеться налаштовувати "
+#~ "програму з початку.</p><p>Щоб забезпечити безпроблемний перехід на нову "
+#~ "версію, поточний файл налаштувань буде вилучено.</p></qt>"
+
+#~ msgid ""
+#~ "<qt>Support for the program 'super' has been terminated. You have to "
+#~ "reconfigure Smb4K.</qt>"
+#~ msgstr ""
+#~ "<qt>Робота з програмою 'super' більше не підтримується. Вам слід змінити "
+#~ "налаштування Smb4K.</qt>"
+
+#~ msgid "[Authentication] The default username has not been entered."
+#~ msgstr "[Розпізнавання] Не було введено типового імені користувача."
+
+#~ msgid "This username is used by default to authenticate to a remote server."
+#~ msgstr ""
+#~ "Ім’я користувача, яке програма типово використовуватиме для розпізнавання "
+#~ "на віддаленому сервері."
+
+#~ msgid ""
+#~ "This password is used by default to authenticate to a remote server. It "
+#~ "may be empty."
+#~ msgstr ""
+#~ "Пароль, який програма типово використовуватиме для розпізнавання на "
+#~ "віддаленому сервері. Можна використовувати порожній пароль."
+
+#~ msgid "There are currently %1 shares mounted."
+#~ msgstr "Зараз змонтовано %1 спільних ресурсів."
+
+#~ msgid "Delete"
+#~ msgstr "Вилучити"
+
+#~ msgid "Leopold Palomo Avellaneda"
+#~ msgstr "Leopold Palomo Avellaneda"
+
+#~ msgid "Catalan translation"
+#~ msgstr "Переклад каталанською"
+
+#~ msgid "Radoslaw Zawartko"
+#~ msgstr "Radoslaw Zawartko"
+
+#~ msgid "Polish translation"
+#~ msgstr "Переклад польською"
+
+#~ msgid "Nick Chen"
+#~ msgstr "Nick Chen"
+
+#~ msgid "Chinese Simplified translation"
+#~ msgstr "Переклад спрощеною китайською"
+
+#~ msgid "Stanislav Yudin"
+#~ msgstr "Stanislav Yudin"
+
+#~ msgid "Russian translation"
+#~ msgstr "Переклад російською"
+
+#~ msgid "Marc Hansen"
+#~ msgstr "Marc Hansen"
+
+#~ msgid "Swedish translation and intensive testing"
+#~ msgstr "Переклад шведською та інтенсивне тестування"
+
+#~ msgid "Giovanni Degani"
+#~ msgstr "Giovanni Degani"
+
+#~ msgid "Brazilian Portuguese translation"
+#~ msgstr "Переклад бразильською португальською"
+
+#~ msgid "Ivan Petrouchtchak"
+#~ msgstr "Іван Петрущак"
+
+#~ msgid "Ukrainian translation"
+#~ msgstr "Переклад українською"
+
+#~ msgid "Karoly Barcza"
+#~ msgstr "Karoly Barcza"
+
+#~ msgid "Hungarian translation"
+#~ msgstr "Переклад угорською"
+
+#~ msgid "Quique"
+#~ msgstr "Quique"
+
+#~ msgid "Spanish translation"
+#~ msgstr "Переклад іспанською"
+
+#~ msgid "Michal Šulek"
+#~ msgstr "Michal Šulek"
+
+#~ msgid "Slovak translation"
+#~ msgstr "Переклад словацькою"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"
+
+#~ msgid "French translation"
+#~ msgstr "Переклад французькою"
+
+#~ msgid "Toyohiro Asukai"
+#~ msgstr "Toyohiro Asukai"
+
+#~ msgid "Japanese translation"
+#~ msgstr "Переклад японською"
+
+#~ msgid "Atanas Mavrov"
+#~ msgstr "Atanas Mavrov"
+
+#~ msgid "Bulgarian translation"
+#~ msgstr "Переклад болгарською"
+
+#~ msgid "Isidoro Russo"
+#~ msgstr "Isidoro Russo"
+
+#~ msgid "Nils Kristian Tomren"
+#~ msgstr "Nils Kristian Tomren"
+
+#~ msgid "Norwegian translations"
+#~ msgstr "Переклад норвезькою"
+
+#~ msgid "Alois Nešpor"
+#~ msgstr "Alois Nešpor"
+
+#~ msgid "Czech translation"
+#~ msgstr "Переклад чеською"
+
+#~ msgid "Martín Carr"
+#~ msgstr "Martín Carr"
+
+#~ msgid "Görkem Çetin"
+#~ msgstr "Görkem Çetin"
+
+#~ msgid "Turkish translation"
+#~ msgstr "Переклад турецькою"
+
+#~ msgid "Jack Liu"
+#~ msgstr "Jack Liu"
+
+#~ msgid "Chinese Traditional translation"
+#~ msgstr "Переклад традиційною китайською"
+
+#~ msgid "Arnar Leósson"
+#~ msgstr "Arnar Leósson"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Переклад ісландською"
+
+#~ msgid "Michael Brinkloev"
+#~ msgstr "Michael Brinkloev"
+
+#~ msgid "Danish translation"
+#~ msgstr "Переклад данською"
+
+#~ msgid "Joop Beris"
+#~ msgstr "Joop Beris"
+
+#~ msgid "Dutch translation"
+#~ msgstr "Переклад голландською"
+
+#~ msgid "Lamarque V. Souza"
+#~ msgstr "Lamarque V. Souza"
+
+#~ msgid "Serdar Soytetir"
+#~ msgstr "Serdar Soytetir"
+
+#~ msgid "Wei-Lun Chao"
+#~ msgstr "Wei-Lun Chao"
+
+#~ msgid "Rashid N. Achilov"
+#~ msgstr "Rashid N. Achilov"
+
+#~ msgid "Testing of Smb4K under FreeBSD"
+#~ msgstr "Тестування Smb4K на FreeBSD"
+
+#~ msgid "Jerzy Trzeciak"
+#~ msgstr "Jerzy Trzeciak"
+
+#~ msgid "The share was successfully mounted."
+#~ msgstr "Спільний ресурс було успішно змонтовано."
+
+#~ msgid "The share was successfully unmounted."
+#~ msgstr "Спільний ресурс було успішно демонтовано."
+
+#~ msgid ""
+#~ "<qt>The configuration could not be written, because %1 settings are "
+#~ "incomplete:<ul>%2</ul>Please correct these issues.</qt>"
+#~ msgstr ""
+#~ "<qt>Не вдалося записати налаштування, оскільки %1 з налаштувань не "
+#~ "визначено:<ul>%2</ul>Будь ласка, вкажіть потрібні програмі дані.</qt>"

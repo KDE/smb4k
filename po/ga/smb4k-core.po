@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2009-12-24 06:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -2063,10 +2063,9 @@ msgid ""
 msgstr ""
 
 #: smb4kmounter_p.cpp:128
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgid "Location:"
-msgstr "Roghanna"
+msgstr ""
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -3458,14 +3457,14 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 
-#~ msgid "Custom Options"
-#~ msgstr "Roghanna Saincheaptha"
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "Ainm NetBIOS:"
 
 #~ msgid "Login:"
 #~ msgstr "Logáil Isteach:"
+
+#~ msgid "Custom Options"
+#~ msgstr "Roghanna Saincheaptha"
 
 #~ msgid "Group:"
 #~ msgstr "Grúpa:"
@@ -3482,14 +3481,6 @@ msgstr ""
 #~ msgstr "anaithnid"
 
 #, fuzzy
-#~| msgid "Mountpoint"
-#~ msgid "Remounting"
-#~ msgstr "Pointe feistithe"
-
-#~ msgid "UNC Address:"
-#~ msgstr "Seoladh UNC:"
-
-#, fuzzy
 #~| msgid "NetBIOS name:"
 #~ msgid "NetBIOS scope:"
 #~ msgstr "Ainm NetBIOS:"
@@ -3500,22 +3491,34 @@ msgstr ""
 #~ msgid "Off"
 #~ msgstr "As"
 
-#~ msgid "Required"
-#~ msgstr "Riachtanach"
+#~ msgid "Broadcast address:"
+#~ msgstr "Seoladh craolacháin:"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Bánaigh Leabharmharcanna"
+
+#~ msgid "General"
+#~ msgstr "Ginearálta"
+
+#~ msgid "UNC Address:"
+#~ msgstr "Seoladh UNC:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "Port SMB:"
 
 #, fuzzy
-#~| msgid "Directories"
-#~ msgid "Directory mask:"
-#~ msgstr "Comhadlanna"
+#~| msgid "Security"
+#~ msgid "Security Mode:"
+#~ msgstr "Slándáil"
 
-#~ msgid "unknown"
-#~ msgstr "anaithnid"
+#~ msgid "Back"
+#~ msgstr "Siar"
+
+#~ msgid "Forward"
+#~ msgstr "Ar Aghaidh"
 
 #~ msgid "File"
 #~ msgstr "Comhad"
-
-#~ msgid "Options"
-#~ msgstr "Roghanna"
 
 #, fuzzy
 #~| msgid "Options"
@@ -3526,29 +3529,6 @@ msgstr ""
 #~| msgid "Options"
 #~ msgid "Options <<"
 #~ msgstr "Roghanna"
-
-#~ msgid "Back"
-#~ msgstr "Siar"
-
-#~ msgid "Forward"
-#~ msgstr "Ar Aghaidh"
-
-#~ msgid "Broadcast address:"
-#~ msgstr "Seoladh craolacháin:"
-
-#~ msgid "General"
-#~ msgstr "Ginearálta"
-
-#~ msgid "SMB Port:"
-#~ msgstr "Port SMB:"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security Mode:"
-#~ msgstr "Slándáil"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Bánaigh Leabharmharcanna"
 
 #, fuzzy
 #~| msgid "Broadcast address:"

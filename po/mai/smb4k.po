@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -364,16 +364,14 @@ msgid "Browse Settings"
 msgstr "जमावट (&S)"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "साम्बा"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "सामान्य जमावट"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
 #, kde-format
@@ -410,8 +408,7 @@ msgid "General"
 msgstr "सामान्य"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "लिंक"
 
@@ -427,9 +424,9 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
-#| msgid "Owner:"
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "मालिक:"
+msgstr "मालिक"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -478,10 +475,9 @@ msgid "Files && Directories"
 msgstr "निर्देशिका"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgid "Restrictions"
-msgstr "गंतव्य:"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
@@ -937,11 +933,6 @@ msgid "Size:"
 msgstr ""
 
 #, fuzzy
-#~| msgid "Add Bookmarks"
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "पुस्तचिह्न जोडू"
-
-#, fuzzy
 #~| msgid "Show details"
 #~ msgid "Details"
 #~ msgstr "विवरण देखाबू"
@@ -949,23 +940,11 @@ msgstr ""
 #~ msgid "Entry"
 #~ msgstr "प्रविष्टि"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "प्रयोक्ता अंतरफलक"
+#~ msgid "Login"
+#~ msgstr "लॉगिन"
 
 #~ msgid "Password"
 #~ msgstr "कूटशब्द"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "सामान्य"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "सामान्य जमावट"
 
 #, fuzzy
 #~| msgid "Notifications"
@@ -999,21 +978,8 @@ msgstr ""
 
 #, fuzzy
 #~| msgid "&Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "जमावट (&S)"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "सत्यापन"
-
-#, fuzzy
-#~| msgid "&Settings"
 #~ msgid "Samba Settings"
 #~ msgstr "जमावट (&S)"
-
-#~ msgid "Login"
-#~ msgstr "लॉगिन"
 
 #, fuzzy
 #~| msgid "Login"
@@ -1021,41 +987,9 @@ msgstr ""
 #~ msgstr "लॉगिन"
 
 #, fuzzy
-#~| msgid "Protocol"
-#~ msgid "Protocols"
-#~ msgstr "प्रोटोकॉल"
-
-#, fuzzy
 #~| msgid "Notifications"
 #~ msgid "Location"
 #~ msgstr "सूचनासभ"
-
-#~ msgid "Owner"
-#~ msgstr "मालिक"
-
-#~ msgid "Undo"
-#~ msgstr "अनावृत्ति"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "माउंट कएल जाए रहल अछि"
-
-#~ msgid "Columns"
-#~ msgstr "कालम"
-
-#~ msgid "Tooltips"
-#~ msgstr "अओजार-टिप"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "दृश्य"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "सामान्य जमावट"
 
 #, fuzzy
 #~| msgid "Search Toolbar"
@@ -1075,11 +1009,8 @@ msgstr ""
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "मुख्य अओजार पट्टी"
 
-#~ msgid "Abort"
-#~ msgstr "छोड़ू"
-
-#~ msgid "&Clear"
-#~ msgstr "साफ करू (&C)"
+#~ msgid "Undo"
+#~ msgstr "अनावृत्ति"
 
 #, fuzzy
 #~| msgid "File system:"
@@ -1097,29 +1028,22 @@ msgstr ""
 #~ msgid "General Options"
 #~ msgstr "सामान्य विकल्प"
 
-#, fuzzy
-#~| msgid "&Edit Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr " पसंदीदा  क' संपादन करू (&E)"
-
-#, fuzzy
-#~| msgid "Group ID"
-#~ msgid "Add Group"
-#~ msgstr "समूह ID"
-
-#, fuzzy
-#~| msgid "Label"
-#~ msgid "Label:"
-#~ msgstr "लेबल"
-
-#, fuzzy
-#~| msgctxt "NAME OF TRANSLATORS"
-#~| msgid "Your names"
-#~ msgid "Group name:"
-#~ msgstr "संगीता कुमारी"
-
 #~ msgid "Copying"
 #~ msgstr "कापी कए रहल"
+
+#~ msgid "Columns"
+#~ msgstr "कालम"
+
+#~ msgid "Tooltips"
+#~ msgstr "अओजार-टिप"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "दृश्य"
+
+#~ msgid "Abort"
+#~ msgstr "छोड़ू"
 
 #, fuzzy
 #~| msgid "Open"
@@ -1150,6 +1074,11 @@ msgstr ""
 
 #~ msgid "Usage"
 #~ msgstr "प्रयोग"
+
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "Protocol Hint:"
+#~ msgstr "प्रोटोकॉल"
 
 #~ msgid "Hardware"
 #~ msgstr "हार्डवेयर"
@@ -1265,9 +1194,25 @@ msgstr ""
 #~ msgstr "पुस्तचिह्न जोडू"
 
 #, fuzzy
+#~| msgid "Label"
+#~ msgid "Label:"
+#~ msgstr "लेबल"
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr " पसंदीदा  क' संपादन करू (&E)"
+
+#, fuzzy
 #~| msgid "Bookmarks"
 #~ msgid "Clear Bookmarks"
 #~ msgstr "पुस्तकचिह्न"
+
+#, fuzzy
+#~| msgctxt "NAME OF TRANSLATORS"
+#~| msgid "Your names"
+#~ msgid "Group name:"
+#~ msgstr "संगीता कुमारी"
 
 #~ msgid "Open"
 #~ msgstr "खोलू"
@@ -1310,6 +1255,9 @@ msgstr ""
 
 #~ msgid "Source:"
 #~ msgstr "श्रोत:"
+
+#~ msgid "Destination:"
+#~ msgstr "गंतव्य:"
 
 #, fuzzy
 #~| msgid "Mounting"

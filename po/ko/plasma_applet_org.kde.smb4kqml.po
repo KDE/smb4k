@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2019-05-18 15:35+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -90,36 +90,6 @@ msgstr "마운트 해제"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "모든 공유 마운트 해제"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "책갈피 편집"
-
-#~ msgid "OK"
-#~ msgstr "확인"
-
-#~ msgid "Cancel"
-#~ msgstr "취소"
-
-#~ msgid "Clear"
-#~ msgstr "지우기"
-
-#~ msgid "Label:"
-#~ msgstr "이름표:"
-
-#~ msgid "Login:"
-#~ msgstr "로그인:"
-
-#~ msgid "IP Address:"
-#~ msgstr "IP 주소:"
-
-#~ msgid "Group Name:"
-#~ msgstr "그룹 이름:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "최상위 단계 책갈피"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "책갈피 삭제"
 
 #~ msgid "Back"
 #~ msgstr "뒤로"

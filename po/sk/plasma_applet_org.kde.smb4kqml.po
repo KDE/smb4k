@@ -1,12 +1,12 @@
 # translation of plasma_applet_smb4k-qml.po to Slovak
 # Roman Paholik <wizzardsk@gmail.com>, 2014, 2019.
-# Mthw <jari_45@hotmail.com>, 2019.
+# Mthw <jari_45@hotmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_smb4k-qml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2019-09-01 19:33+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2019-09-01 19:26+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
@@ -40,7 +40,7 @@ msgstr "Moje blízke okolie"
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package/contents/ui/SharesViewItemDelegate.qml:76
 msgid "Bookmark"
-msgstr "Záložka"
+msgstr "Záložky"
 
 #: package/contents/ui/NetworkBrowserPage.qml:38
 msgid "Rescan"
@@ -80,7 +80,7 @@ msgstr "(aktívne)"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:97
 msgid "Synchronize"
-msgstr "Synchronizovať"
+msgstr "Synchromizovať"
 
 #: package/contents/ui/SharesViewItemDelegate.qml:118
 msgid "Unmount"
@@ -88,37 +88,7 @@ msgstr "Odpojiť"
 
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
-msgstr "Odpojiť všetky zdieľania"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Upraviť záložky"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Cancel"
-#~ msgstr "Zrušiť"
-
-#~ msgid "Clear"
-#~ msgstr "Vyčistiť"
-
-#~ msgid "Label:"
-#~ msgstr "Popisok:"
-
-#~ msgid "Login:"
-#~ msgstr "Login:"
-
-#~ msgid "IP Address:"
-#~ msgstr "IP Adresa:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Názov skupiny:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Najvrchnejšie záložky"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Odstrániť záložky"
+msgstr "Odpojiť všetko"
 
 #~ msgid "Back"
 #~ msgstr "Späť"

@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021, 2022, 2023.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-03-05 22:00+0100\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-07-10 09:43+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -54,9 +54,10 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Napredni omrežni brskalnik in pripomoček Sambe za priklop delov diska"
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -132,9 +133,10 @@ msgid "Add &Bookmark"
 msgstr "Dodaj zaznamek"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Priklopi zaznamke"
+msgstr "Priklopi vse zaznamke"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -162,9 +164,10 @@ msgid "Synchronization"
 msgstr "Usklajevanje"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Nastavitve po meri"
+msgstr "Skupne nastavitve"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -190,7 +193,7 @@ msgstr "Nastavitve"
 #: smb4k/smb4kconfigpageauthentication.cpp:64
 #, kde-format
 msgid "Wallet Entries"
-msgstr "Vnosi listnice"
+msgstr "Vnosi za listnico"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:97
 #, kde-format
@@ -233,17 +236,17 @@ msgstr "Vnesite privzete informacije za prijavo."
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "Nastavi uporabniško ime in geslo za dostop do listnice %1."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr "Nastavi uporabniško ime in geslo za privzeto prijavo."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Vse dobro."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -254,8 +257,6 @@ msgstr "Očisti seznam"
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
-"Postavka %1 je bila odstranjena, ker so bile ponovno nastavljene vse "
-"nastavitve po meri."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -370,7 +371,7 @@ msgstr "Brskajte po možnostih"
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, kde-format
@@ -383,27 +384,33 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Določi gostitelje, ki naj bi jih prebudili z urejevalnikom nastavitev po "
-"meri."
+"<qt>V pogovornem oknu z možnostmi po meri določite gostitelje, ki jih je "
+"treba prebuditi.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Napredne nastavitve"
+msgstr "Napredne nastavitve priklopa"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "Imenik za usklajevanje"
+msgstr "Usklajevanje"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Varnostne kopije"
+msgstr "Varnostna kopija"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -423,17 +430,18 @@ msgstr "Delo z datotekami"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "Lastnosti datoteke"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
-msgstr "Lastništvo"
+msgstr "Lastnik:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Lastnosti datoteke in lastništvo"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -449,7 +457,7 @@ msgstr "Datoteke"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr " kB"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -461,7 +469,7 @@ msgstr "Razno"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kB/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -486,7 +494,7 @@ msgstr "Brisanje datotek"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr "Nastavitve splošnega filtriranja"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -672,9 +680,10 @@ msgstr "Išči"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Dodaj nastavitve po meri"
+msgstr "Napredne nastavitve priklopa"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -900,9 +909,10 @@ msgid "Mountpoint:"
 msgstr "Točka priklopa:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Uporabniško ime:"
+msgstr "Uporabniški vmesnik"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -922,15 +932,6 @@ msgstr "Velikost:"
 #~ msgid "Custom Options"
 #~ msgstr "Možnosti po meri"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Priklopi vse zaznamke"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -946,23 +947,11 @@ msgstr "Velikost:"
 #~ msgid "Entry"
 #~ msgstr "Vnos"
 
-#~ msgid "Username"
-#~ msgstr "Uporabniško ime"
+#~ msgid "Login"
+#~ msgstr "Prijava"
 
 #~ msgid "Password"
 #~ msgstr "Geslo"
-
-#~ msgid "Behavior:"
-#~ msgstr "Obnašanje:"
-
-#~ msgid "General:"
-#~ msgstr "Splošno:"
-
-#~ msgid "Miscellaneous:"
-#~ msgstr "Razno:"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Posebna pravila filtra:"
 
 #~ msgid "Identification"
 #~ msgstr "Identifikacija"
@@ -979,11 +968,11 @@ msgstr "Velikost:"
 #~ msgid "Actions"
 #~ msgstr "Dejavnosti"
 
-#~ msgid "Send magic packet before scanning the network neighborhood"
-#~ msgstr "Pošlji čarobni paket pred pregledovanjem sosedstva omrežja"
+#~ msgid "Send magic package before scanning the network neighborhood"
+#~ msgstr "Pred pregledovanjem sosedstva omrežja pošlji čarobni paket"
 
-#~ msgid "Send magic packet before mounting a share"
-#~ msgstr "Pošlji čarobni paket pred priklopom skupnega diska"
+#~ msgid "Send magic package before mounting a share"
+#~ msgstr "Pred priklopom dela diska pošlji čarobni paket"
 
 #~ msgid "Wake-On-LAN Settings"
 #~ msgstr "Nastavitve Wake-On-LAN"
@@ -994,17 +983,8 @@ msgstr "Velikost:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Ta strežnik podpira razširitve CIFS Unix"
 
-#~ msgid "Browse Settings:"
-#~ msgstr "Brskaj po nastavitvah:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Profili:"
-
-#~ msgid "Authentication:"
-#~ msgstr "Overitev:"
-
-#~ msgid "Security:"
-#~ msgstr "Varnost:"
+#~ msgid "Security"
+#~ msgstr "Varnost"
 
 #~ msgid "Samba Settings"
 #~ msgstr "Nastavitve Sambe"
@@ -1015,14 +995,17 @@ msgstr "Velikost:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Dovoljenja, itd."
 
-#~ msgid "Login"
-#~ msgstr "Prijava"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Posebna pravila filtra:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Možnosti po meri"
 
 #~ msgid "Login:"
 #~ msgstr "Prijava:"
-
-#~ msgid "The mount process crashed."
-#~ msgstr "Postopek priklopa se je sesul."
-
-#~ msgid "The unmount process crashed."
-#~ msgstr "Postopek odklopa se je sesul."

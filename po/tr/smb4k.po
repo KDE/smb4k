@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-03-04 14:03+0300\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2023-02-08 14:15+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -58,9 +58,10 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Gelişmiş ağ komşuları tarayıcısı ve Samba paylaşım bağlama aracı"
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -136,9 +137,10 @@ msgid "Add &Bookmark"
 msgstr "Yer İmi &Ekle"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Yer İmlerini Bağla"
+msgstr "Tüm Yer İmlerini Bağla"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -166,9 +168,10 @@ msgid "Synchronization"
 msgstr "Eşleme"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Mount Settings"
 msgid "Custom Settings"
-msgstr "Özel Ayarlar"
+msgstr "Ortak Bağlama Ayarları"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -242,8 +245,7 @@ msgstr "%1 cüzdan girdisi için kullanıcı adı ve parolayı ayarlayın."
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr ""
-"Öntanımlı oturum açma verisi için kullanıcı adını ve parolayı ayarlayın."
+msgstr "Öntanımlı giriş için kullanıcı adı ve parolayı ayarlayın."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
@@ -256,9 +258,10 @@ msgid "Clear List"
 msgstr "Listeyi Temizle"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The item %1 was removed, because all custom options were reset."
 msgid "The item %1 was removed, because all custom settings were reset."
-msgstr "%1 ögesi kaldırıldı; çünkü tüm özel ayarlar sıfırlanmıştı."
+msgstr "%1 ögesi kaldırıldı; çünkü tüm özel seçenekler sıfırlanmıştı."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -380,11 +383,13 @@ msgid " s"
 msgstr " sn"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Define the hosts that should be woken up via the custom options dialog."
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Özel ayarlar düzenleyicisi ile uyandırılması gereken istemcileri tanımlayın."
+"Özel seçenekler penceresi ile uyandırılması gereken istemcileri tanımlayın."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -397,7 +402,8 @@ msgid "Synchronization Directory"
 msgstr "Eşzamanlama Dizini"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backups"
 msgid "Backups"
 msgstr "Yedekler"
 
@@ -417,14 +423,16 @@ msgid "File Handling"
 msgstr "Dosya Kullanımı"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File Attributes && Ownership"
 msgid "File Attributes"
-msgstr "Dosya Öznitelikleri"
+msgstr "Dosya Öznitelikleri ve Sahiplik"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
-msgstr "Sahiplik"
+msgstr "Sahip:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -445,7 +453,7 @@ msgstr "Dosyalar"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr "kB"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -457,7 +465,7 @@ msgstr "Çeşitli"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr "kB/sn"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -666,9 +674,10 @@ msgstr "&Ara"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Öz&el Ayarlar Ekle"
+msgstr "Gelişmiş Bağlama Ayarları"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -916,11 +925,56 @@ msgstr "Boyut:"
 #~ msgid "Custom Options"
 #~ msgstr "Özel Seçenekler"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Tüm Yer İmlerini Bağla"
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Identification"
+#~ msgstr "Kimlik denetimi"
+
+#, fuzzy
+#~| msgid "Network"
+#~ msgid "Network Item"
+#~ msgstr "Ağ"
+
+#, fuzzy
+#~| msgid "IP Address"
+#~ msgid "MAC Address"
+#~ msgstr "IP Adresi"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "MAC Address:"
+#~ msgstr "IP Adresi:"
+
+#, fuzzy
+#~| msgid "Restrictions"
+#~ msgid "Actions"
+#~ msgstr "Kısıtlamalar"
+
+#, fuzzy
+#~| msgid "Wake-On-LAN"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Ağdan Uyan"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Samba Settings"
+#~ msgstr "Ayarlar"
+
+#, fuzzy
+#~| msgid "Default Login"
+#~ msgid "Default Destination"
+#~ msgstr "Öntanımlı Giriş"
 
 #~ msgid " KiB"
 #~ msgstr " KB"
 
 #~ msgid " KiB/s"
 #~ msgstr " KB/sn"
+
+#, fuzzy
+#~| msgid "Filter Rules"
+#~ msgid "Special filter rules:"
+#~ msgstr "Süzme Kuralları"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Öz&el Seçenekler"

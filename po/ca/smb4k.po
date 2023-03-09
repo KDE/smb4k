@@ -1,16 +1,16 @@
 # Translation of smb4k.po to Catalan
-# Copyright (C) 2014-2023 This_file_is_part_of_KDE
+# Copyright (C) 2014-2022 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2016, 2018, 2019, 2020.
+# Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2016, 2018, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-03-04 11:36+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-12-24 12:02+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -59,9 +59,10 @@ msgstr ""
 "comparticions Samba"
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -137,9 +138,10 @@ msgid "Add &Bookmark"
 msgstr "A&fegeix una adreça d'interès"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Munta les adreces d'interès"
+msgstr "Munta totes les adreces d'interès"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -167,9 +169,10 @@ msgid "Synchronization"
 msgstr "Sincronització"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Configuració personalitzada"
+msgstr "Configuració normal"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -238,18 +241,17 @@ msgstr "Introduïu la informació de connexió predeterminada."
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "Defineix el nom d'usuari i contrasenya de l'entrada %1 de la cartera."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""
-"Defineix el nom d'usuari i la contrasenya de la connexió predeterminada."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Tot correcte."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -260,8 +262,6 @@ msgstr "Neteja la llista"
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
-"S'ha eliminat l'element %1 perquè s'han reiniciat tota la configuració "
-"personalitzada."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -290,7 +290,7 @@ msgstr "Configuració bàsica"
 #: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
 #, kde-format
 msgid "Common Options"
-msgstr "Opcions normals"
+msgstr "Opcions comunes"
 
 #: smb4k/smb4kconfigpagemounting.cpp:228
 #, kde-format
@@ -371,7 +371,7 @@ msgstr "Configuració de la navegació"
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, kde-format
@@ -384,27 +384,33 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Defineix els servidors que s'haurien d'activar via l'editor de configuració "
-"personalitzada."
+"<qt>Defineix els servidors que s'haurien d'activar via el diàleg d'opcions "
+"personalitzades.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Configuració avançada"
+msgstr "Configuració avançada de muntatge"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "Directori de sincronització"
+msgstr "Sincronització"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Còpies de seguretat"
+msgstr "Còpia de seguretat"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -424,17 +430,18 @@ msgstr "Gestió de fitxers"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "Atributs dels fitxers"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
-msgstr "Propietat"
+msgstr "Propietari:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Atributs dels fitxers i propietat"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -450,7 +457,7 @@ msgstr "Fitxers"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr " kB"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -462,7 +469,7 @@ msgstr "Miscel·lània"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kB/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -487,7 +494,7 @@ msgstr "Supressió de fitxers"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr "Configuració general del filtratge"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -671,9 +678,10 @@ msgstr "&Cerca"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Afegeix una &configuració personalitzada"
+msgstr "Configuració avançada de muntatge"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -899,9 +907,10 @@ msgid "Mountpoint:"
 msgstr "Punt de muntatge:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Nom d'usuari:"
+msgstr "Interfície d'usuari"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -917,3 +926,85 @@ msgstr "Sistema de fitxers:"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
+
+#~ msgid "Custom Options"
+#~ msgstr "Opcions personalitzades"
+
+#~ msgid ""
+#~ "The login information that was stored by Smb4K will be loaded from the "
+#~ "wallet."
+#~ msgstr ""
+#~ "La informació de connexió emmagatzemada pel Smb4K es carregarà des de la "
+#~ "cartera."
+
+#~ msgid "All modifications you applied are saved to the wallet."
+#~ msgstr "Totes les modificacions que heu efectuat s'han desat a la cartera."
+
+#~ msgid "Details"
+#~ msgstr "Detalls"
+
+#~ msgid "Entry"
+#~ msgstr "Entrada"
+
+#~ msgid "Login"
+#~ msgstr "Usuari"
+
+#~ msgid "Password"
+#~ msgstr "Contrasenya"
+
+#~ msgid "Identification"
+#~ msgstr "Identificació"
+
+#~ msgid "Network Item"
+#~ msgstr "Element de xarxa"
+
+#~ msgid "MAC Address"
+#~ msgstr "Adreça MAC"
+
+#~ msgid "MAC Address:"
+#~ msgstr "Adreça MAC:"
+
+#~ msgid "Actions"
+#~ msgstr "Accions"
+
+#~ msgid "Send magic package before scanning the network neighborhood"
+#~ msgstr "Envia un paquet màgic abans d'escanejar el veïnatge de xarxa"
+
+#~ msgid "Send magic package before mounting a share"
+#~ msgstr "Envia un paquet màgic abans de muntar una compartició"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Configuració de l'activació per LAN (Wake-On-LAN)"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Torna a muntar sempre aquesta compartició"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Aquest servidor admet les ampliacions CIFS d'Unix"
+
+#~ msgid "Security"
+#~ msgstr "Seguretat"
+
+#~ msgid "Samba Settings"
+#~ msgstr "Configuració del Samba"
+
+#~ msgid "Default Destination"
+#~ msgstr "Destinació predeterminada"
+
+#~ msgid "Permissions, etc."
+#~ msgstr "Permisos, etc."
+
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Regles de filtratge especials:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Op&cions personalitzades"
+
+#~ msgid "Login:"
+#~ msgstr "Usuari:"

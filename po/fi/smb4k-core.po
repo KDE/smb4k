@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2022-07-03 23:02+0300\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2021-03-22 17:10+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -192,9 +192,10 @@ msgstr "Työkaluvihje näyttää erilaista tietoa nykyisestä jaosta."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File mode:"
 msgid "View mode:"
-msgstr "Näkymä:"
+msgstr "Tiedostopeite:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -220,39 +221,45 @@ msgstr "Luettelonäkymä"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Settings for the list view:"
 msgid "Icon size for the icon view:"
-msgstr "Kuvakenäkymän kuvakekoko:"
+msgstr "Luettelonäkymän asetukset:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Aseta jakojen kuvakenäkymän kuvakekoko."
+msgstr "Jakonäkymän tila:"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Settings for the list view:"
 msgid "Icon size for the list view:"
-msgstr "Luettelonäkymä kuvakekoko:"
+msgstr "Luettelonäkymän asetukset:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:98
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Aseta jakojen luettelonäkymän kuvakekoko."
+msgstr "Jakonäkymän tila:"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Icon View"
 msgid "Icon size:"
-msgstr "Kuvakekoko:"
+msgstr "Kuvakenäkymä"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The advanced network neighborhood browser for KDE."
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "Aseta verkkoympäristöselaimen kuvakekoko."
+msgstr "KDE:n edistynyt verkkoympäristöselain."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -415,9 +422,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "SMB port:"
 msgid "Set the SMB port to:"
-msgstr "Aseta SMB-portiksi:"
+msgstr "SMB-portti:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
@@ -504,9 +512,10 @@ msgstr "Käytä tunnistautumiseen Winbindin ccacheä."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Encryption level:"
 msgid "Set the encryption level to:"
-msgstr "Aseta salaustasoksi:"
+msgstr "Salaustaso:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
@@ -591,16 +600,22 @@ msgstr "Käytä Wake-On-LAN-ominaisuuksia"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#| "magic package send via a UDP socket to wake up remote servers. If you "
+#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#| "this option."
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
 "magic packet send via a UDP socket to wake up remote servers. If you want to "
 "take advantage of the Wake-On-LAN feature, you need to enable this option."
 msgstr ""
-"Wake-On-LAN (WOL) on ethernet-verkkostandardi, joka mahdollistaa tietokoneen "
+"Wake-On-LAN tai WOL on verkkostandardi, joka mahdollistaa tietokoneen "
 "käynnistämisen tai herättämisen verkkoviestillä. Smb4K herättää "
-"etäpalvelimet UDP-pistokkeen kautta lähetetyllä taikapaketilla. Jos haluat "
+"etäpalvelimet UDP-pistokkeen kautta lähetetyllä paketilla. Jos haluat "
 "käyttää Wake-On-LANia, tämä ominaisuus on otettava käyttöön."
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
@@ -611,14 +626,17 @@ msgstr "Odotusaika:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the waiting time in seconds between the sending of the magic Wake-"
+#| "On-LAN packages and the scanning of the network neighborhood or the "
+#| "mounting of a share."
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
 "a share."
 msgstr ""
-"Tämä on odotusaika sekunteina Wake-On-LAN-taikapakettien lähettämisen ja "
-"verkon tutkimisen tai jaon liittämisen välillä."
+"Aseta allekirjoitustila. Asetus vaikuttaa komentoihin smbclient ja smbtree."
 
 #. i18n: ectx: label, entry (UseWallet), group (Authentication)
 #: smb4k.kcfg:251
@@ -2060,9 +2078,10 @@ msgid "Clear"
 msgstr "Tyhjennä"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "Käyttäjätunnus:"
+msgstr "Käyttäjä:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -2274,13 +2293,15 @@ msgstr "Toiminnot"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Lähetä taikapaketti ennen verkkoympäristön tutkimista"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Lähetä taikapaketti ennen jaon liittämistä"
 
@@ -3900,6 +3921,28 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
 
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS-nimi:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Tämä on Smb4K:n tälle koneelle käyttämä NetBIOS-nimi. Oletusarvoisesti se "
+#~ "on joko smb.conf-tiedostossa määritetty NetBIOS-nimi tai koneen "
+#~ "verkkonimi."
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "Tämä on työryhmä tai verkkoalue, johon tämän tietokoneen tulisi kuulua. "
+#~ "Oletusarvoisesti se on smb.conf-tiedostossa määritetty työryhmä."
+
+#~ msgid "Login:"
+#~ msgstr "Käyttäjätunnus:"
+
 #~ msgid "Custom Options"
 #~ msgstr "Omat valinnat"
 
@@ -3927,28 +3970,6 @@ msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
 #~ "Samba-ohjelmiston asetustiedosto <b>smb.conf</b> puuttuu. Tämä ei ole "
 #~ "vakava virhe, mutta sinun tulisi harkita tiedoston luomista."
 
-#~ msgid "NetBIOS name:"
-#~ msgstr "NetBIOS-nimi:"
-
-#~ msgid ""
-#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
-#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
-#~ "file or the host name."
-#~ msgstr ""
-#~ "Tämä on Smb4K:n tälle koneelle käyttämä NetBIOS-nimi. Oletusarvoisesti se "
-#~ "on joko smb.conf-tiedostossa määritetty NetBIOS-nimi tai koneen "
-#~ "verkkonimi."
-
-#~ msgid ""
-#~ "This is the workgroup or domain this computer is or should be in. By "
-#~ "default, it is the workgroup that is defined in the smb.conf file."
-#~ msgstr ""
-#~ "Tämä on työryhmä tai verkkoalue, johon tämän tietokoneen tulisi kuulua. "
-#~ "Oletusarvoisesti se on smb.conf-tiedostossa määritetty työryhmä."
-
-#~ msgid "Login:"
-#~ msgstr "Käyttäjätunnus:"
-
 #~ msgid "Group:"
 #~ msgstr "Ryhmä:"
 
@@ -3958,23 +3979,8 @@ msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
 #~ msgid "Group name:"
 #~ msgstr "Ryhmän nimi:"
 
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1 koneella %2</b>.</qt>"
-
-#~ msgid "Unknown error"
-#~ msgstr "Tuntematon virhe"
-
 #~ msgid "Out of memory"
 #~ msgstr "Muisti lopussa"
-
-#~ msgid "NULL context given"
-#~ msgstr "Annettiin NULL-konteksti"
-
-#~ msgid "The smb.conf file would not load"
-#~ msgstr "smb.conf-tiedostoa ei voitu ladata"
 
 #~ msgid "Permission denied"
 #~ msgstr "Ei käyttöoikeutta"
@@ -3994,11 +4000,304 @@ msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
 #~ msgid "The workgroup or server could not be found"
 #~ msgstr "Työryhmää tai palvelinta ei löytynyt"
 
+#~ msgid "Unknown error"
+#~ msgstr "Tuntematon virhe"
+
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Tulostustyötä ei voitu asettaa (vaihe 1)"
 
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Tulostustyötä ei voitu asettaa (vaihe 2)"
+
+#~ msgid "NULL context given"
+#~ msgstr "Annettiin NULL-konteksti"
+
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "smb.conf-tiedostoa ei voitu ladata"
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1 koneella %2</b>.</qt>"
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr ""
+#~ "Etsi verkkoympäristöstä käytettävissä olevia työryhmiä ja "
+#~ "verkkoalueitaEtsi verkkoympäristöstä käytettävissä olevia työryhmiä ja "
+#~ "verkkoalueita"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Tämä on oletusmenetelmä tuottaa alustava selausluettelo. Se hakee kaikki "
+#~ "työryhmät ja verkkoalueet kaikin tunnetuin pääselaimin "
+#~ "verkkoympäristöstäsi.Tämä on oletusmenetelmä tuottaa alustava "
+#~ "selausluettelo. Se hakee kaikki työryhmät ja verkkoalueet kaikin "
+#~ "tunnetuin pääselaimin verkkoympäristöstäsi."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Kysely nykyisen työryhmän pääselaimesta"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Tämä menetelmä kyselee alustavaa selausluetteloa työryhmäsi tai "
+#~ "verkkoalueesi nykyisestä pääselaimesta."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Kysely tästä mukautetusta pääselaimesta:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Tämä menetelmä kyselee alustavaa selausluetteloa mukautetusta "
+#~ "pääselaimesta."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "Mukautettu pääselain, josta kysellään"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Anna tähän konenimi tai IP-osoite pääselaimelle, josta alustavan "
+#~ "selausluettelon tiedot kysellään"
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr "Pääselaimet vaativat todennusta palauttaakseen selausluettelon"
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Tutki verkkoympäristö säännöllisesti"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Etsi saatavilla olevia työryhmiä, koneita ja jakoja verkkoympäristöstä "
+#~ "säännöllisin välein."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Hakukertojen välinen aika:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Tämä on minuutteina aika, jonka välein Smb4K etsii verkkoympäristöstä "
+#~ "uusia työryhmiä, palvelimia ja jakoja."
+
+#~ msgid "Lookup method for IP addresses:"
+#~ msgstr "IP-osoitteiden hakutapa:"
+
+#~ msgid ""
+#~ "Define the method that is to be used to detect the IP addresses of the "
+#~ "hosts."
+#~ msgstr "Aseta tapa, jota käytetään tunnistamaan koneiden IP-osoitteet."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Käytä nmblookup-komentoa"
+
+#~ msgid "Use net command"
+#~ msgstr "Käytä net-komentoa"
+
+#~ msgid "Socket options:"
+#~ msgstr "Pistokevalinnat:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Nämä ovat nmblookupin ja smbclientin käyttämät TCP-pistokevalinnat. "
+#~ "Pistokevalinnat vaikuttavat käyttöjärjestelmän verkkokerrokseen, joka "
+#~ "mahdollistaa yhteyden säätämisen. Lisätietoa löytyy smb.conf-man-sivulta."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS-alue:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Tämä asettaa nmblookupin ja smbclientin käyttämän NetBIOS-alueen. Tätä ei "
+#~ "tulisi asettaa, elleivät kaikki verkkosi koneet aseta sitä."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Yritä tunnistautua Kerberoksella"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Tunnistaudu paikallisen koneen tilillä"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Teet etäpalvelukyselyt paikallisen palvelimen tiliä käyttäen. Asetus "
+#~ "vaikuttaa komentoihin net, smbclient ja smbtree."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Käytä tunnistautumiseen Winbindin ccacheä. Asetus vaikuttaa komentoihin "
+#~ "net, smbclient ja smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Allekirjoitustila:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Aseta allekirjoitustila. Asetus vaikuttaa komentoihin smbclient ja "
+#~ "smbtree."
+
+#~ msgid "On"
+#~ msgstr "Käytössä"
+
+#~ msgid "Off"
+#~ msgstr "Ei käytössä"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Salaa SMB-välitys"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Salaa SMB-välitys (vain laajennetut UNIX-palvelimet). Asetus vaikuttaa "
+#~ "komentoihin net, smbclient ja smbtree."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Nimien ratkomisjärjestys:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Tätä asetusta käytetään määrittämään, mitä nimipalveluja ja missä "
+#~ "järjestyksessä käytetään ratkomaan konenimet ja IP-osoitteet. Voit "
+#~ "välilyönnein antaa enintään neljä nimenratkomisasetusta. Mahdolliset "
+#~ "arvot ovat lmhost, wins, bcast. Lisätietoa löydät smbclientin man-sivulta."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Puskurin koko:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Tämä asetus muuttaa tiedostoja palvelimeen tai palvelimesta siirrettäessä "
+#~ "käytetyn siirtopuskurin kokoa. Oletusarvo on 65520 tavua. Asetuksen "
+#~ "pienentämisen on havaittu nopeuttavan tiedostonsiirtoa Windows 9x -"
+#~ "palvelimilla."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Yleislähetysosoite:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "nmblookupilla tehdyt kyselyt lähetetään annettuun "
+#~ "yleislähetysosoitteeseen. Ilman tätä asetusta oletustoiminta on lähettää "
+#~ "kyselyt verkkoliitännän yleislähetysosoitteeseen, joka on joko "
+#~ "tunnistettu automaattisesti tai määritetty smb.conf-tiedoston "
+#~ "”interfaces”-parametrissa."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Yritä kytkeä UPD-portti 137 lähettämään ja vastaanottamaan UDP-"
+#~ "datagrammeja"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Yritä kytkeä UDP-portti 137 lähettämään ja vastaanottamaan UDP-"
+#~ "datagrammeja. Tämän asetuksen syynä on Windows 95:n ohjelmavirhe, joka "
+#~ "saa sen unohtamaan pyyntöpaketin lähdeportin ja vastaamaan vain UDP-"
+#~ "porttiin 137. Useimmissa UNIX-järjestelmissä tämän portin kytkeminen "
+#~ "vaatii valitettavasti pääkäyttäjäoikeuksia. Lisätietoa löytyy nmblookupin "
+#~ "man-sivulta."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Lähetä pyynnöt yleislähetyksinä"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Pane smbtree kyselemään verkkosolmuja yleislähetyspyyntöinä sen sijaan, "
+#~ "että se kyselisi niitä paikalliselta pääselaimelta."
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Älä jätä pois tätä hahmoa vastaavia tiedostoja:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "Tarkistussumman siemen"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Poista kirjanmerkit"
+
+#~ msgid "General"
+#~ msgstr "Yleistä"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-osoite:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB-portti:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Tiedostojärjestelmän portti:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Kirjoitusoikeus:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Turvallisuustila:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr "<p>Määritä lisävalinnat jaolle <b>%1</b> koneella <b>%2</b>.</p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "UNC eli yhtenäinen nimeämiskäytäntö kuvaa jaon sijainnin. Se on muotoa: //"
+#~ "[KÄYTTÄJÄTUNNUS@]PALVELIN/JAKO. Käyttäjätunnus on valinnainen.UNC eli "
+#~ "yhtenäinen nimeämiskäytäntö kuvaa jaon sijainnin. Se on muotoa: //"
+#~ "[KÄYTTÄJÄTUNNUS@]PALVELIN/JAKO. Käyttäjätunnus on valinnainen."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Palvelimen koodisivu:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Mukautetun pääselaimen kenttä on tyhjä. Smb4K yrittää kysellä pääselaimen "
+#~ "työryhmästäsi tai verkkoalueeltasi."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -4060,127 +4359,8 @@ msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
 #~ "failed.</p>"
 #~ msgstr "<p>Hakukohteen <b>%1</b> verkkoympäristöhaku epäonnistui.</p>"
 
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Liittäminen"
-
-#~ msgid "UNC Address:"
-#~ msgstr "UNC-osoite:"
-
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "UNC eli yhtenäinen nimeämiskäytäntö kuvaa jaon sijainnin. Se on muotoa: //"
-#~ "[KÄYTTÄJÄTUNNUS@]PALVELIN/JAKO. Käyttäjätunnus on valinnainen."
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Yritä tunnistautua Kerberoksella"
-
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Lähetysalueita ei ole määritetty.</p>"
-
-#~ msgid "Socket options:"
-#~ msgstr "Pistokevalinnat:"
-
-#~ msgid ""
-#~ "These are the TCP socket options that are used by nmblookup and "
-#~ "smbclient. Socket options are controls on the networking layer of the "
-#~ "operating systems which allow the connection to be tuned. See the manual "
-#~ "page of smb.conf for more information."
-#~ msgstr ""
-#~ "Nämä ovat nmblookupin ja smbclientin käyttämät TCP-pistokevalinnat. "
-#~ "Pistokevalinnat vaikuttavat käyttöjärjestelmän verkkokerrokseen, joka "
-#~ "mahdollistaa yhteyden säätämisen. Lisätietoa löytyy smb.conf-man-sivulta."
-
-#, fuzzy
-#~| msgid "NetBIOS name:"
-#~ msgid "NetBIOS scope:"
-#~ msgstr "NetBIOS-nimi:"
-
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Tunnistaudu paikallisen koneen tilillä"
-
-#~ msgid ""
-#~ "Make queries to the remote server using the machine account of the local "
-#~ "server. The setting affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Teet etäpalvelukyselyt paikallisen palvelimen tiliä käyttäen. Asetus "
-#~ "vaikuttaa komentoihin net, smbclient ja smbtree."
-
-#~ msgid ""
-#~ "Use the Winbind ccache for authentication. This setting affects the net, "
-#~ "smbclient and smbtree command."
-#~ msgstr ""
-#~ "Käytä tunnistautumiseen Winbindin ccacheä. Asetus vaikuttaa komentoihin "
-#~ "net, smbclient ja smbtree."
-
-#~ msgid "Signing state:"
-#~ msgstr "Allekirjoitustila:"
-
-#~ msgid ""
-#~ "Set the signing state. This setting affects the smbclient and smbtree "
-#~ "command."
-#~ msgstr ""
-#~ "Aseta allekirjoitustila. Asetus vaikuttaa komentoihin smbclient ja "
-#~ "smbtree."
-
-#~ msgid "On"
-#~ msgstr "Käytössä"
-
-#~ msgid "Off"
-#~ msgstr "Ei käytössä"
-
-#~ msgid "Required"
-#~ msgstr "Pakollinen"
-
-#~ msgid "Encrypt SMB transport"
-#~ msgstr "Salaa SMB-välitys"
-
-#~ msgid ""
-#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
-#~ "affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Salaa SMB-välitys (vain laajennetut UNIX-palvelimet). Asetus vaikuttaa "
-#~ "komentoihin net, smbclient ja smbtree."
-
-#~ msgid "Directory mask:"
-#~ msgstr "Kansiopeite:"
-
-#~ msgid "unknown"
-#~ msgstr "tuntematon"
-
-#~ msgid "File"
-#~ msgstr "Tiedosto"
-
-#~ msgid "Options"
-#~ msgstr "Valinnat"
-
-#~ msgid "Options >>"
-#~ msgstr "Valinnat >>"
-
-#~ msgid "Options <<"
-#~ msgstr "Valinnat <<"
-
-#~ msgid "Name resolve order:"
-#~ msgstr "Nimien ratkomisjärjestys:"
-
-#~ msgid ""
-#~ "This option is used to determine what naming services and in what order "
-#~ "are used to resolve host names and IP addresses. It takes a space-"
-#~ "separated list of up to four different name resolution options. Those "
-#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
-#~ "further information."
-#~ msgstr ""
-#~ "Tätä asetusta käytetään määrittämään, mitä nimipalveluja ja missä "
-#~ "järjestyksessä käytetään ratkomaan konenimet ja IP-osoitteet. Voit "
-#~ "välilyönnein antaa enintään neljä nimenratkomisasetusta. Mahdolliset "
-#~ "arvot ovat lmhost, wins, bcast. Lisätietoa löydät smbclientin man-sivulta."
-
-#~ msgid "Buffer size:"
-#~ msgstr "Puskurin koko:"
 
 #~ msgid "The preview is displayed here."
 #~ msgstr "Tässä näkyy esikatselu."
@@ -4199,79 +4379,14 @@ msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
 #~ "Tässä näkyy nykyinen UNC-osoite. Voit myös valita pudotusvalikosta "
 #~ "aiemman sijainnin, joka sitten näytetään ylemmässä näkymässä."
 
-#~ msgid "Broadcast address:"
-#~ msgstr "Yleislähetysosoite:"
+#~ msgid "File"
+#~ msgstr "Tiedosto"
 
-#, fuzzy
-#~| msgid "Advanced Network Neighborhood Browser"
-#~ msgid "Scan the network neighborhood periodically"
-#~ msgstr "Edistynyt verkkoympäristöselain"
+#~ msgid "Options >>"
+#~ msgstr "Valinnat >>"
 
-#, fuzzy
-#~| msgid "Advanced Network Neighborhood Browser"
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr "Edistynyt verkkoympäristöselain"
-
-#~ msgid "Interval between scans:"
-#~ msgstr "Hakukertojen välinen aika:"
-
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr ""
-#~ "Tämä on minuutteina aika, jonka välein Smb4K etsii verkkoympäristöstä "
-#~ "uusia työryhmiä, palvelimia ja jakoja."
-
-#, fuzzy
-#~| msgid "nmblookup"
-#~ msgid "Use nmblookup command"
-#~ msgstr "nmblookup"
-
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr ""
-#~ "Etsi verkkoympäristöstä käytettävissä olevia työryhmiä ja verkkoalueita"
-
-#~ msgid ""
-#~ "This is the default method to retrieve the initial browse list. It "
-#~ "discovers all workgroups and domains by looking for all known master "
-#~ "browsers on your network neighborhood."
-#~ msgstr ""
-#~ "Tämä on oletusmenetelmä tuottaa alustava selausluettelo. Se hakee kaikki "
-#~ "työryhmät ja verkkoalueet kaikin tunnetuin pääselaimin "
-#~ "verkkoympäristöstäsi."
-
-#~ msgid "Server codepage:"
-#~ msgstr "Palvelimen koodisivu:"
-
-#~ msgid "General"
-#~ msgstr "Yleistä"
-
-#~ msgid "SMB Port:"
-#~ msgstr "SMB-portti:"
-
-#~ msgid "Filesystem Port:"
-#~ msgstr "Tiedostojärjestelmän portti:"
-
-#~ msgid "Write Access:"
-#~ msgstr "Kirjoitusoikeus:"
-
-#~ msgid "Security Mode:"
-#~ msgstr "Turvallisuustila:"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr "<p>Määritä lisävalinnat jaolle <b>%1</b> koneella <b>%2</b>.</p>"
-
-#, fuzzy
-#~| msgid "Checksums"
-#~ msgid "The checksum seed"
-#~ msgstr "Tarkistussummat"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Kirjanmerkit"
+#~ msgid "Options <<"
+#~ msgstr "Valinnat <<"
 
 #, fuzzy
 #~| msgid "Unmounting share %1..."

@@ -4,13 +4,13 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Ivan Petrouchtchak <ivanpetrouchtchak@yahoo.com>, 2004, 2005, 2006, 2007.
-# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2018, 2019.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma_applet_org.kde.smb4kqml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2019-04-27 08:29+0300\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2019-05-20 16:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -94,42 +94,6 @@ msgstr "Демонтувати"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Демонтувати усі спільні ресурси"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Редагувати закладки"
-
-#~ msgid "OK"
-#~ msgstr "Гаразд"
-
-#~ msgid "Cancel"
-#~ msgstr "Скасувати"
-
-#~ msgid "Clear"
-#~ msgstr "Спорожнити"
-
-#~ msgid "Label:"
-#~ msgstr "Мітка:"
-
-#~ msgid "Login:"
-#~ msgstr "Користувач:"
-
-#~ msgid "IP Address:"
-#~ msgstr "IP-адреса:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Назва групи:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Закладки верхнього рівня"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Вилучити закладку"
-
-#~ msgid "Add Group"
-#~ msgstr "Додати групу"
-
-#~ msgid "Ok"
-#~ msgstr "Гаразд"
 
 #~ msgid "Back"
 #~ msgstr "Назад"

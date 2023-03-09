@@ -1,12 +1,12 @@
 # translation of smb4k-core.po to Slovak
-# Roman Paholik <wizzardsk@gmail.com>, 2014, 2015, 2016, 2019, 2022.
-# Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2021.
+# Roman Paholik <wizzardsk@gmail.com>, 2014, 2015, 2016, 2017, 2019, 2022.
+# Matej Mrenica <matejm98mthw@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2022-04-07 18:24+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-04-06 20:27+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
@@ -86,7 +86,7 @@ msgstr ""
 "Spustiť aplikáciu ukotvenú na systémovej lište, t.j. je zobrazený iba prvok "
 "systémovej lišty a hlavné okno je skryté. Hlavné okno môžete zobraziť až po "
 "kliknutí na prvok na systémovej lište alebo voľbou \"Obnoviť\" z jeho "
-"kontextovej ponuky"
+"kontextového menu."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
@@ -139,13 +139,13 @@ msgstr ""
 #: smb4k.kcfg:62
 #, kde-format
 msgid "Show tooltips for network items"
-msgstr "Zobraziť popisky pre sieťové položky"
+msgstr "Zobraziť nástrojové tipy pre sieťové položky"
 
 #. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:63
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
-msgstr "Popisok zobrazí rôzne informácie o aktuálnej sieťovej položke."
+msgstr "Nástrojový tip zobrazí rôzne informácie o aktuálnej sieťovej položke."
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
 #: smb4k.kcfg:67
@@ -170,19 +170,20 @@ msgstr ""
 #: smb4k.kcfg:72
 #, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr "Zobraziť popisky pre pripojené zdieľania"
+msgstr "Zobraziť nástrojové tipy pre pripojené zdieľania"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:73
 #, kde-format
 msgid "The tooltip shows various information about the current share."
-msgstr "Popisok zobrazí rôzne informácie o aktuálnom zdieľaní."
+msgstr "Nástrojový tip zobrazí rôzne informácie o aktuálnom zdieľaní."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File mode:"
 msgid "View mode:"
-msgstr "Režim zobrazenia:"
+msgstr "Režim súboru:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -233,9 +234,10 @@ msgstr "Režim pohľadu pre zdieľania:"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Icon View"
 msgid "Icon size:"
-msgstr "Veľkosť ikon:"
+msgstr "Zobrazenie s ikonami"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
@@ -2015,7 +2017,7 @@ msgstr "Vyčistiť"
 #, fuzzy, kde-format
 #| msgid "User:"
 msgid "Username:"
-msgstr "Užívateľské meno:"
+msgstr "Užívateľ:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -2372,7 +2374,7 @@ msgid ""
 "it e.g. through the \"Bookmarks\" menu entry in the main window."
 msgstr ""
 "Ak začiarknete toto políčko, zdieľanie bude uložené medzi záložky a môžete k "
-"nemu pristupovať napr. cez položku ponuku \"Záložky\" v hlavnom okne."
+"nemu pristupovať napr. cez položku menu \"Záložky\" v hlavnom okne."
 
 #: smb4kmounter_p.cpp:192
 #, kde-format
@@ -3275,7 +3277,7 @@ msgid ""
 "does not support Unicode."
 msgstr ""
 "Preložiť šesť zo siedmich vyhradených znakov (zahŕňajúce dvojbodku, otáznik, "
-"zvislá čiara, hviezdička, znaky väčší ako a menší ako, ale nie spätnú lomku) "
+"zvislá čiara, hviezdička, znaky väčší ako a menší ako, ale nie spätná lomka) "
 "na opätovné mapovanie rozsahu (nad 0xF000). To vám umožní otvoriť súbory , "
 "ktoré boli vytvorené s takýmito znakmi. Toto nemá žiadny vplyv, pokiaľ "
 "server nepodporuje Unicode."
@@ -3839,22 +3841,6 @@ msgid ""
 msgstr ""
 "<qt>Prosím zadajte meno používateľa a heslo pre zdieľanie <b>%1</b>.</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Vlastné voľby"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Nepoužívať zamykanie"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Nepoužívať zamykanie. Nespúšťať lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Konfiguračný súbor pre balík Samba <b>smb.conf</b> chýba. Toto nie je "
-#~ "kritická chyba, ale mali by ste zvážiť jeho vytvorenie."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS meno:"
 
@@ -3878,6 +3864,22 @@ msgstr ""
 #~ msgid "Login:"
 #~ msgstr "Prihlásenie:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Vlastné voľby"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Nepoužívať zamykanie"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Nepoužívať zamykanie. Nespúšťať lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Konfiguračný súbor pre balík Samba <b>smb.conf</b> chýba. Toto nie je "
+#~ "kritická chyba, ale mali by ste zvážiť jeho vytvorenie."
+
 #~ msgid "Group:"
 #~ msgstr "Skupina:"
 
@@ -3887,6 +3889,42 @@ msgstr ""
 #~ msgid "Group name:"
 #~ msgstr "Názov skupiny:"
 
+#~ msgid "Out of memory"
+#~ msgstr "Nedostatok pamäte"
+
+#~ msgid "Permission denied"
+#~ msgstr "Prístup zamietnutý"
+
+#~ msgid "An invalid URL was passed"
+#~ msgstr "Bolo zadané neplatné URL"
+
+#~ msgid "The URL does not exist"
+#~ msgstr "URL neexistuje"
+
+#~ msgid "Name is not a directory"
+#~ msgstr "Názov nie je adresár"
+
+#~ msgid "Operation not permitted"
+#~ msgstr "Operácia nie je povolená"
+
+#~ msgid "The workgroup or server could not be found"
+#~ msgstr "Pracovná skupina alebo server sa nenašiel"
+
+#~ msgid "Unknown error"
+#~ msgstr "Neznáma chyba"
+
+#~ msgid "The print job could not be set up (step 1)"
+#~ msgstr "Tlačová úloha sa nedala nastaviť (krok 1)"
+
+#~ msgid "The print job could not be set up (step 2)"
+#~ msgstr "Tlačová úloha sa nedala nastaviť (krok 2)"
+
+#~ msgid "NULL context given"
+#~ msgstr "Zadaný nulový kontext"
+
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "Súbor smb.conf sa nedá načítať"
+
 #~ msgid ""
 #~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
 #~ "</qt>"
@@ -3894,20 +3932,279 @@ msgstr ""
 #~ "<qt>Prosím zadajte meno používateľa a heslo pre zdieľanie <b>%1 na %2</b>."
 #~ "</qt>"
 
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown error"
-#~ msgstr "neznámy"
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr ""
+#~ "Prehľadať sieťové okolie kvôli dostupným pracovným skupinám a doménam"
 
-#, fuzzy
-#~| msgid "<p>The file <b>%1</b> could not be found.</p>"
-#~ msgid "The print job could not be set up (step 1)"
-#~ msgstr "<p>Súbor <b>%1</b> nie je možné nájsť.</p>"
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Toto je predvolená metóda k načítaniu počiatočného zoznamu prehliadania. "
+#~ "Odhaľuje všetky pracovné skupiny a domény prostredníctvom hľadania "
+#~ "všetkých známych hlavných prehliadačov na vašom sieťovom okolí."
 
-#, fuzzy
-#~| msgid "<p>The file <b>%1</b> could not be found.</p>"
-#~ msgid "The print job could not be set up (step 2)"
-#~ msgstr "<p>Súbor <b>%1</b> nie je možné nájsť.</p>"
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Dotaz pre aktuálny hlavný prehliadač pracovnej skupiny"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Táto metóda dopytuje aktuálny hlavný prehliadač vašej pracovnej skupiny "
+#~ "alebo domény na obnovenie počiatočného zoznamu prehliadania."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Opýtať tohto vlastného hlavného prehliadača:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Táto metóda dopytuje aktuálny hlavný prehliadač na obnovenie počiatočného "
+#~ "zoznamu prehliadania."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "Vlastný hlavný prehliadač, ktorý sa dopytuje"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Sem zadať názov alebo IP adresu pre hlavný prehliadač, ktorý by mal byť "
+#~ "dopytovaný, aby zostavil počiatočný zoznam prehliadania."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "Hlavné prehliadače požadujú overenie, aby vrátili zoznam prehliadania."
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Prehľadať pravidelne sieťové okolie kvôli dostupným pracovným skupinám, "
+#~ "hostiteľom a zdieľaniam."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Interval medzi prehľadávaniami:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Toto je čas v minútach, ktorý uplynie pokým Smb4K prehľadá sieťové okolie "
+#~ "na nové pracovné skupiny, hostiteľov a zdieľania."
+
+#~ msgid "Lookup method for IP addresses:"
+#~ msgstr "Metóda hľadania pre IP adresy:"
+
+#~ msgid ""
+#~ "Define the method that is to be used to detect the IP addresses of the "
+#~ "hosts."
+#~ msgstr "Definovať metódu, ktorú použiť na detekciu IP adries hostiteľov."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Použiť príkaz nmblookup"
+
+#~ msgid "Use net command"
+#~ msgstr "Použiť príkaz net"
+
+#~ msgid "Socket options:"
+#~ msgstr "Nastavenia socketu:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Toto sú voľby TCP soketu, ktoré používa nmblookup a smbclient. Voľby "
+#~ "socketu sú ovládacie prvky na sieťovej vrstve operačných systémov, ktoré "
+#~ "umožňujú, aby bolo pripojenie nastaviteľné. Viac sa dozviete v manuálovej "
+#~ "stránke smb.conf."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "Rozsah NetBIOS:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Toto nastavuje rozsah NetBIOS, v ktorom bude bežať nmblookup a "
+#~ "smbclient . Nemalo by to byť nastavené, pokiaľ každé zariadenie v "
+#~ "sieťovom okolí nemá nastavenú túto hodnotu."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Pokúsiť autentifikovať pomocou Kerberos."
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Overiť s lokálnym účtom počítača"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Urobiť dotazy na vzdialený server pomocou účtu počítača lokálneho "
+#~ "servera. Nastavenie ovplyvňuje príkaz net, smbclient a smbtree."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Použiť Winbind cache na overenie. Toto nastavenie ovplyvní príkazy net, "
+#~ "smbclient a smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Stav podpisu:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Nastaviť stav podpisu. Toto nastavenie ovplyvňuje príkaz smbclient a "
+#~ "smbtree."
+
+#~ msgid "On"
+#~ msgstr "Zapnúť"
+
+#~ msgid "Off"
+#~ msgstr "Vypnúť"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Šifrovať prenos SMB"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Šifrovať SMB prenos (iba rozšírené unixové servery). Toto nastavenie "
+#~ "ovplyvní príkazy net, smbclient a smbtree."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Poradie prekladu mena:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Táto voľba sa používa na určenie, aké služby mien a v akom poradí sa "
+#~ "používajú na preklad názvov hostiteľov a IP adries. Pozostáva zo "
+#~ "medzerami oddeleného zoznamu až štyroch rôznych variantov názvov. Sú to: "
+#~ "lmhost, host, wins, bcast. Viac sa dozviete v manuálovej stránke "
+#~ "smbclient."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Veľkosť bufferu:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Táto voľba zmení veľkosť vysielacieho/odosielacieho zásobníku pri "
+#~ "získavaní alebo ukladaní súboru z/na server. Predvolená hodnota je 65520 "
+#~ "bajtov. Pri nastavení menšej hodnoty bolo pozorované zrýchlenie prenosu "
+#~ "súborov do a zo serverov Windows 9x."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Broadcast adresa:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Dopyty vykonané s nmblookup budú odoslané na dané broadcast adresu. Bez "
+#~ "tejto voľby je predvolené správanie také, aby sa poslali dopyty na "
+#~ "broadcast adresu sieťového rozhrania, ktoré je buď automaticky detekované "
+#~ "alebo je definované v parametri \"interfaces\" súboru smb.conf."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "K zasielaniu a prijímaniu UDP datagramov sa pokúsiť využiť UDP port 137"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "K zasielaniu a prijímaniu UDP datagramov sa pokúsiť využiť UDP port 137. "
+#~ "Dôvodom pre túto voľbu je chyba v systéme Windows 95, kde sa ignoruje "
+#~ "zdrojový port žiadajúceho paketu a odpovedá len na UDP port 137. Bohužiaľ "
+#~ "na väčšina unixových systémoch sú potrebné administrátorské práva pre "
+#~ "pripojenie sa k tomuto portu. Pre viac informácií si, prosím, prečítajte "
+#~ "manuálovú stránku pre nmblookup."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Poslať požiadavky ako broadcast"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Nechať smbtree dopytovať uzly siete rozosielaním požiadaviek ako "
+#~ "broadcast namiesto dopytovania sa lokálneho hlavného prehliadača."
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Nevylúčiť súbory zodpovedajúce tomuto vzoru:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "Zdroj kontrolného súčtu"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Vyčistiť záložky"
+
+#~ msgid "General"
+#~ msgstr "Všeobecné"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC adresa:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB port:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Port súborového systému:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Prístup na zápis:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Bezpečnostný režim:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Definovať vlastné voľby pre zdieľanie <b>%1</b> na hostiteľovi <b>%2</"
+#~ "b>.</p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Adresa Uniform Naming Convention (UNC) popisuje umiestnenie zdieľania. Má "
+#~ "nasledujúcu syntax: //[USER@]HOST/SHARE. Používateľské meno je voliteľné."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Kód.stránka servera:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Vstup vlastného hlavného prehliadača je prázdny. Smb4K sa bude namiesto "
+#~ "toho snažiť dopytovať aktuálny hlavný prehliadač vašej pracovnej skupiny "
+#~ "alebo domény."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -3966,168 +4263,8 @@ msgstr ""
 #~ "<p>Prehľadávanie sieťového okolia kvôli hľadanej položke <b>%1</b> "
 #~ "zlyhalo.</p>"
 
-#~ msgid "UNC Address:"
-#~ msgstr "UNC adresa:"
-
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "Adresa Uniform Naming Convention (UNC) popisuje umiestnenie zdieľania. Má "
-#~ "nasledujúcu syntax: //[USER@]HOST/SHARE. Používateľské meno je voliteľné."
-
-#~ msgid "The master browsers require authentication to return the browse list"
-#~ msgstr ""
-#~ "Hlavné prehliadače požadujú overenie, aby vrátili zoznam prehliadania."
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Pokúsiť autentifikovať pomocou Kerberos."
-
-#~ msgid ""
-#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
-#~ "query the current master browser of your workgroup or domain instead."
-#~ msgstr ""
-#~ "Vstup vlastného hlavného prehliadača je prázdny. Smb4K sa bude namiesto "
-#~ "toho snažiť dopytovať aktuálny hlavný prehliadač vašej pracovnej skupiny "
-#~ "alebo domény."
-
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Nie sú definované žiadne broadcast oblasti.</p>"
-
-#~ msgid "Socket options:"
-#~ msgstr "Nastavenia socketu:"
-
-#~ msgid ""
-#~ "These are the TCP socket options that are used by nmblookup and "
-#~ "smbclient. Socket options are controls on the networking layer of the "
-#~ "operating systems which allow the connection to be tuned. See the manual "
-#~ "page of smb.conf for more information."
-#~ msgstr ""
-#~ "Toto sú voľby TCP soketu, ktoré používa nmblookup a smbclient. Voľby "
-#~ "socketu sú ovládacie prvky na sieťovej vrstve operačných systémov, ktoré "
-#~ "umožňujú, aby bolo pripojenie nastaviteľné. Viac sa dozviete v manuálovej "
-#~ "stránke smb.conf."
-
-#~ msgid "NetBIOS scope:"
-#~ msgstr "Rozsah NetBIOS:"
-
-#~ msgid ""
-#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
-#~ "under. It should not be set unless every machine on your network "
-#~ "neighborhood sets this value."
-#~ msgstr ""
-#~ "Toto nastavuje rozsah NetBIOS, v ktorom bude bežať nmblookup a "
-#~ "smbclient . Nemalo by to byť nastavené, pokiaľ každé zariadenie v "
-#~ "sieťovom okolí nemá nastavenú túto hodnotu."
-
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Overiť s lokálnym účtom počítača"
-
-#~ msgid ""
-#~ "Make queries to the remote server using the machine account of the local "
-#~ "server. The setting affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Urobiť dotazy na vzdialený server pomocou účtu počítača lokálneho "
-#~ "servera. Nastavenie ovplyvňuje príkaz net, smbclient a smbtree."
-
-#~ msgid ""
-#~ "Use the Winbind ccache for authentication. This setting affects the net, "
-#~ "smbclient and smbtree command."
-#~ msgstr ""
-#~ "Použiť Winbind cache na overenie. Toto nastavenie ovplyvní príkazy net, "
-#~ "smbclient a smbtree."
-
-#~ msgid "Signing state:"
-#~ msgstr "Stav podpisu:"
-
-#~ msgid ""
-#~ "Set the signing state. This setting affects the smbclient and smbtree "
-#~ "command."
-#~ msgstr ""
-#~ "Nastaviť stav podpisu. Toto nastavenie ovplyvňuje príkaz smbclient a "
-#~ "smbtree."
-
-#~ msgid "On"
-#~ msgstr "Zapnúť"
-
-#~ msgid "Off"
-#~ msgstr "Vypnúť"
-
-#~ msgid "Required"
-#~ msgstr "Vyžadované"
-
-#~ msgid "Encrypt SMB transport"
-#~ msgstr "Šifrovať prenos SMB"
-
-#~ msgid ""
-#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
-#~ "affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Šifrovať SMB prenos (iba rozšírené unixové servery). Toto nastavenie "
-#~ "ovplyvní príkazy net, smbclient a smbtree."
-
-#~ msgid "Send requests as broadcasts"
-#~ msgstr "Poslať požiadavky ako broadcast"
-
-#~ msgid ""
-#~ "Let smbtree query the network nodes by sending requests as broadcasts "
-#~ "instead of querying the local master browser."
-#~ msgstr ""
-#~ "Nechať smbtree dopytovať uzly siete rozosielaním požiadaviek ako "
-#~ "broadcast namiesto dopytovania sa lokálneho hlavného prehliadača."
-
-#~ msgid "Directory mask:"
-#~ msgstr "Maska priečinku:"
-
-#~ msgid "unknown"
-#~ msgstr "neznámy"
-
-#~ msgid "File"
-#~ msgstr "Súbor"
-
-#~ msgid "Options"
-#~ msgstr "Voľby"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options >>"
-#~ msgstr "Voľby"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options <<"
-#~ msgstr "Voľby"
-
-#~ msgid "Name resolve order:"
-#~ msgstr "Poradie prekladu mena:"
-
-#~ msgid ""
-#~ "This option is used to determine what naming services and in what order "
-#~ "are used to resolve host names and IP addresses. It takes a space-"
-#~ "separated list of up to four different name resolution options. Those "
-#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
-#~ "further information."
-#~ msgstr ""
-#~ "Táto voľba sa používa na určenie, aké služby mien a v akom poradí sa "
-#~ "používajú na preklad názvov hostiteľov a IP adries. Pozostáva zo "
-#~ "medzerami oddeleného zoznamu až štyroch rôznych variantov názvov. Sú to: "
-#~ "lmhost, host, wins, bcast. Viac sa dozviete v manuálovej stránke "
-#~ "smbclient."
-
-#~ msgid "Buffer size:"
-#~ msgstr "Veľkosť bufferu:"
-
-#~ msgid ""
-#~ "This option changes the transmit/send buffer size when getting or putting "
-#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
-#~ "smaller has been observed to speed up file transfers to and from Windows "
-#~ "9x servers."
-#~ msgstr ""
-#~ "Táto voľba zmení veľkosť vysielacieho/odosielacieho zásobníku pri "
-#~ "získavaní alebo ukladaní súboru z/na server. Predvolená hodnota je 65520 "
-#~ "bajtov. Pri nastavení menšej hodnoty bolo pozorované zrýchlenie prenosu "
-#~ "súborov do a zo serverov Windows 9x."
 
 #~ msgid "The preview is displayed here."
 #~ msgstr "Tu sa zobrazí náhľad."
@@ -4147,144 +4284,14 @@ msgstr ""
 #~ "navštívených miest z rozbaľovacieho menu, ktoré sa potom zobrazí v "
 #~ "pohľade vyššie."
 
-#~ msgid "Broadcast address:"
-#~ msgstr "Broadcast adresa:"
+#~ msgid "File"
+#~ msgstr "Súbor"
 
-#~ msgid ""
-#~ "Queries performed with nmblookup will be send to the given broadcast "
-#~ "address. Without this option the default behavior is to send the queries "
-#~ "to the broadcast address of the network interface that was either auto-"
-#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
-#~ msgstr ""
-#~ "Dopyty vykonané s nmblookup budú odoslané na dané broadcast adresu. Bez "
-#~ "tejto voľby je predvolené správanie také, aby sa poslali dopyty na "
-#~ "broadcast adresu sieťového rozhrania, ktoré je buď automaticky detekované "
-#~ "alebo je definované v parametri \"interfaces\" súboru smb.conf."
+#~ msgid "Options >>"
+#~ msgstr "Voľby >>"
 
-#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
-#~ msgstr ""
-#~ "K zasielaniu a prijímaniu UDP datagramov sa pokúsiť využiť UDP port 137"
-
-#~ msgid ""
-#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
-#~ "reason for this option is a bug in Windows 95 where it ignores the source "
-#~ "port of the requesting packet and only replies to UDP port 137. "
-#~ "Unfortunately, on most Unix systems super user privileges are needed to "
-#~ "bind to this port. Please read the manual page of nmblookup for more "
-#~ "information."
-#~ msgstr ""
-#~ "K zasielaniu a prijímaniu UDP datagramov sa pokúsiť využiť UDP port 137. "
-#~ "Dôvodom pre túto voľbu je chyba v systéme Windows 95, kde sa ignoruje "
-#~ "zdrojový port žiadajúceho paketu a odpovedá len na UDP port 137. Bohužiaľ "
-#~ "na väčšina unixových systémoch sú potrebné administrátorské práva pre "
-#~ "pripojenie sa k tomuto portu. Pre viac informácií si, prosím, prečítajte "
-#~ "manuálovú stránku pre nmblookup."
-
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr ""
-#~ "Prehľadať pravidelne sieťové okolie kvôli dostupným pracovným skupinám, "
-#~ "hostiteľom a zdieľaniam."
-
-#~ msgid "Interval between scans:"
-#~ msgstr "Interval medzi prehľadávaniami:"
-
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr ""
-#~ "Toto je čas v minútach, ktorý uplynie pokým Smb4K prehľadá sieťové okolie "
-#~ "na nové pracovné skupiny, hostiteľov a zdieľania."
-
-#~ msgid "Lookup method for IP addresses:"
-#~ msgstr "Metóda hľadania pre IP adresy:"
-
-#~ msgid ""
-#~ "Define the method that is to be used to detect the IP addresses of the "
-#~ "hosts."
-#~ msgstr "Definovať metódu, ktorú použiť na detekciu IP adries hostiteľov."
-
-#~ msgid "Use nmblookup command"
-#~ msgstr "Použiť príkaz nmblookup"
-
-#~ msgid "Use net command"
-#~ msgstr "Použiť príkaz net"
-
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr ""
-#~ "Prehľadať sieťové okolie kvôli dostupným pracovným skupinám a doménam"
-
-#~ msgid ""
-#~ "This is the default method to retrieve the initial browse list. It "
-#~ "discovers all workgroups and domains by looking for all known master "
-#~ "browsers on your network neighborhood."
-#~ msgstr ""
-#~ "Toto je predvolená metóda k načítaniu počiatočného zoznamu prehliadania. "
-#~ "Odhaľuje všetky pracovné skupiny a domény prostredníctvom hľadania "
-#~ "všetkých známych hlavných prehliadačov na vašom sieťovom okolí."
-
-#~ msgid "Query the current workgroup master browser"
-#~ msgstr "Dotaz pre aktuálny hlavný prehliadač pracovnej skupiny"
-
-#~ msgid ""
-#~ "This method queries the current master browser of your workgroup or "
-#~ "domain to retrieve the initial browse list."
-#~ msgstr ""
-#~ "Táto metóda dopytuje aktuálny hlavný prehliadač vašej pracovnej skupiny "
-#~ "alebo domény na obnovenie počiatočného zoznamu prehliadania."
-
-#~ msgid "Query this custom master browser:"
-#~ msgstr "Opýtať tohto vlastného hlavného prehliadača:"
-
-#~ msgid ""
-#~ "This method queries a custom master browser to retrieve the initial "
-#~ "browse list."
-#~ msgstr ""
-#~ "Táto metóda dopytuje aktuálny hlavný prehliadač na obnovenie počiatočného "
-#~ "zoznamu prehliadania."
-
-#~ msgid "A custom master browser that is to be queried"
-#~ msgstr "Vlastný hlavný prehliadač, ktorý sa dopytuje"
-
-#~ msgid ""
-#~ "Enter the name or IP address of a master browser here that should be "
-#~ "queried to compile the initial browse list."
-#~ msgstr ""
-#~ "Sem zadať názov alebo IP adresu pre hlavný prehliadač, ktorý by mal byť "
-#~ "dopytovaný, aby zostavil počiatočný zoznam prehliadania."
-
-#~ msgid "Server codepage:"
-#~ msgstr "Kód.stránka servera:"
-
-#~ msgid "General"
-#~ msgstr "Všeobecné"
-
-#~ msgid "SMB Port:"
-#~ msgstr "SMB port:"
-
-#~ msgid "Filesystem Port:"
-#~ msgstr "Port súborového systému:"
-
-#~ msgid "Write Access:"
-#~ msgstr "Prístup na zápis:"
-
-#~ msgid "Security Mode:"
-#~ msgstr "Bezpečnostný režim:"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr ""
-#~ "<p>Definovať vlastné voľby pre zdieľanie <b>%1</b> na hostiteľovi <b>%2</"
-#~ "b>.</p>"
-
-#~ msgid "Do not exclude files matching this pattern:"
-#~ msgstr "Nevylúčiť súbory zodpovedajúce tomuto vzoru:"
-
-#~ msgid "The checksum seed"
-#~ msgstr "Zdroj kontrolného súčtu"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Vyčistiť záložky"
+#~ msgid "Options <<"
+#~ msgstr "Voľby <<"
 
 #~ msgid ""
 #~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"

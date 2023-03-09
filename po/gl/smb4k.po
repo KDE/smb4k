@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2019-10-19 22:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -459,8 +459,7 @@ msgstr "Ficheiros"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:343
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
-#, fuzzy, kde-format
-#| msgid " kB"
+#, kde-format
 msgid " kB"
 msgstr " kB"
 
@@ -687,9 +686,9 @@ msgstr "&Buscar"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Op&cións personalizadas"
+msgstr "Configuración de montaxe avanzada"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -947,15 +946,6 @@ msgstr "Tamaño"
 #~ msgid "Custom Options"
 #~ msgstr "Opcións personalizadas"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Montar todos os marcadores"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -971,31 +961,11 @@ msgstr "Tamaño"
 #~ msgid "Entry"
 #~ msgstr "Entrada"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Interface do usuario"
+#~ msgid "Login"
+#~ msgstr "Acceso"
 
 #~ msgid "Password"
 #~ msgstr "Contrasinal"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Comportamento"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Xeral"
-
-#, fuzzy
-#~| msgid "Miscellaneous"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Diverso"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Regras de filtrado especiais:"
 
 #~ msgid "Identification"
 #~ msgstr "Identificación"
@@ -1012,14 +982,10 @@ msgstr "Tamaño"
 #~ msgid "Actions"
 #~ msgstr "Accións"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Enviar un paquete máxico antes de examinar a veciñanza de rede."
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Enviar un paquete máxico antes de montar a compartición."
 
 #, fuzzy
@@ -1033,30 +999,13 @@ msgstr "Tamaño"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Este servidor é compatíbel coas extensións CIFS de Unix"
 
-#, fuzzy
-#~| msgid "Basic Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Configuración básica"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Perfís"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Autenticación"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Seguranza"
 
 #, fuzzy
-#~| msgid "Basic Settings"
+#~| msgid "Settings"
 #~ msgid "Samba Settings"
-#~ msgstr "Configuración básica"
+#~ msgstr "Configuración"
 
 #~ msgid "Default Destination"
 #~ msgstr "Destino por omisión"
@@ -1064,10 +1013,20 @@ msgstr "Tamaño"
 #~ msgid "Permissions, etc."
 #~ msgstr "Permisos, etc."
 
-#~ msgid "Login"
-#~ msgstr "Acceso"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Regras de filtrado especiais:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Op&cións personalizadas"
 
 #, fuzzy
+#~| msgid "Login:"
 #~ msgid "Login:"
 #~ msgstr "Inicio de sesión:"
 
@@ -1077,62 +1036,11 @@ msgstr "Tamaño"
 #~ msgid "The unmount process crashed."
 #~ msgstr "O proceso de desmontar quebrou."
 
-#, fuzzy
-#~| msgid "Protocol Hint:"
-#~ msgid "Protocols"
-#~ msgstr "Suxestión do protocolo:"
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 de %2 libres (%3 usado)"
 
 #~ msgid "Location"
 #~ msgstr "Lugar"
-
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "A entrada seleccionada retirouse da carteira."
-
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Retíranse todas as entradas da carteira."
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "Marque esta opción para mostrar os detalles da información de acceso "
-#~ "seleccionada a continuación."
-
-#~ msgid "Password Storage"
-#~ msgstr "Almacenamento de contrasinais"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Mostrar os detalles da entrada seleccionada."
-
-#~ msgid "Undo"
-#~ msgstr "Desfacer"
-
-#~ msgid "Remounting"
-#~ msgstr "Montando de novo"
-
-#~ msgid "UNC:"
-#~ msgstr "UNC:"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Columnas"
-
-#~ msgid "Tooltips"
-#~ msgstr "Axudiñas"
-
-#~ msgid "View Mode"
-#~ msgstr "Modo de vista"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Opcións diversas"
-
-#~ msgid "Shares"
-#~ msgstr "Comparticións"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Barra de ferramentas de rede"
@@ -1146,44 +1054,30 @@ msgstr "Tamaño"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Barra de ferramentas principal alternativa"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Comparticións"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Ferramentas"
+#~ msgid "Password Storage"
+#~ msgstr "Almacenamento de contrasinais"
 
-#~ msgid "Network Search"
-#~ msgstr "Busca na rede"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Cargar as entradas almacenadas na carteira."
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Insira aquí a cadea de busca."
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Gardar as entradas na carteira."
 
-#~ msgid "Abort"
-#~ msgstr "Cancelar"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Mostrar os detalles da entrada seleccionada."
 
-#~ msgid "&Clear"
-#~ msgstr "&Limpar"
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Marque esta opción para mostrar os detalles da información de acceso "
+#~ "seleccionada a continuación."
 
-#~ msgid "The search returned no results."
-#~ msgstr "A busca non ofreceu ningún resultado."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " Bytes"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Obtendo a previsualización desde %1…"
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Exame periódico"
-
-#~ msgid "Browse List"
-#~ msgstr "Examinar a lista"
+#~ msgid "Undo"
+#~ msgstr "Desfacer"
 
 #~ msgid "UNC Address:"
 #~ msgstr "Enderezo UNC:"
@@ -1206,23 +1100,29 @@ msgstr "Tamaño"
 #~ msgid "MAC address:"
 #~ msgstr "Enderezo MAC:"
 
+#~ msgid "Browse List"
+#~ msgstr "Examinar a lista"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Exame periódico"
+
 #~ msgid "General Options"
 #~ msgstr "Opcións xerais"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Editar os marcadores"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#~ msgid "Add Group"
-#~ msgstr "Engadir un grupo"
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
 
-#~ msgid "Label:"
-#~ msgstr "Etiqueta:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#~ msgid "Group:"
-#~ msgstr "Grupo:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
 
-#~ msgid "Group name:"
-#~ msgstr "Nome do grupo:"
+#~ msgid "Utility Programs"
+#~ msgstr "Ferramentas"
 
 #~ msgid "Copying"
 #~ msgstr "Copiado"
@@ -1230,14 +1130,29 @@ msgstr "Tamaño"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Eliminación e transferencia de ficheiros"
 
+#~ msgid "Columns"
+#~ msgstr "Columnas"
+
+#~ msgid "Tooltips"
+#~ msgstr "Axudiñas"
+
+#~ msgid "View Mode"
+#~ msgstr "Modo de visualización"
+
 #~ msgid "The network browser could not be created."
-#~ msgstr "Non se puido crear o navegador de rede."
+#~ msgstr "Non foi posíbel crear o navegador de rede."
+
+#~ msgid "Network Search"
+#~ msgstr "Busca na rede"
 
 #~ msgid "The search dialog could not be created."
-#~ msgstr "Non se puido crear o diálogo de buscas."
+#~ msgstr "Non foi posíbel crear o diálogo de buscas."
 
 #~ msgid "The shares view could not be created."
-#~ msgstr "Non se puido crear a vista de comparticións."
+#~ msgstr "Non foi posíbel crear a vista de comparticións."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "A obter a previsualización desde %1…"
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1254,11 +1169,20 @@ msgstr "Tamaño"
 #~ msgid "Search item:"
 #~ msgstr "Elemento buscado:"
 
+#~ msgid "Enter the search string here."
+#~ msgstr "Introduza aquí a cadea."
+
+#~ msgid "Abort"
+#~ msgstr "Interromper"
+
 #~ msgid "Smb4KNetworkSearchPart"
 #~ msgstr "Smb4KNetworkSearchPart"
 
 #~ msgid "The network search KPart of Smb4K"
 #~ msgstr "KPart do buscador de rede de Smb4K"
+
+#~ msgid "The search returned no results."
+#~ msgstr "A busca non ofreceu ningún resultado."
 
 #~ msgid "Open With"
 #~ msgstr "Abrir con"
@@ -1271,6 +1195,9 @@ msgstr "Tamaño"
 
 #~ msgid "&Shares"
 #~ msgstr "Compartición&s"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Navegador avanzado da veciñanza de rede"
@@ -1318,6 +1245,9 @@ msgstr "Tamaño"
 
 #~ msgid "Usage"
 #~ msgstr "Uso"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Suxestión do protocolo:"
 
 #~ msgid "net"
 #~ msgstr "rede"
@@ -3267,9 +3197,29 @@ msgstr "Tamaño"
 #~ "qt>"
 
 #, fuzzy
+#~| msgid "Label"
+#~ msgid "Label:"
+#~ msgstr "Etiqueta"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "Group:"
+#~ msgstr "Identificador do grupo:"
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "&Modificar os marcadores"
+
+#, fuzzy
 #~| msgid "Bookmarks"
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Marcadores"
+
+#, fuzzy
+#~| msgid "Group ID:"
+#~ msgid "Group name:"
+#~ msgstr "Identificador do grupo:"
 
 #, fuzzy
 #~| msgid "The share could not be unmounted."

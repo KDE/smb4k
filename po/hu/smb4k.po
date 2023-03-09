@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -199,8 +199,7 @@ msgid "Settings"
 msgstr "Beállítások"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:64
-#, fuzzy, kde-format
-#| msgid "Wallet Entries"
+#, kde-format
 msgid "Wallet Entries"
 msgstr "A jelszótároló bejegyzései"
 
@@ -381,14 +380,12 @@ msgid "Browse Settings"
 msgstr "Beállítások"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
@@ -432,8 +429,7 @@ msgid "General"
 msgstr "Általános"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Hivatkozások"
 
@@ -501,8 +497,7 @@ msgid "Files && Directories"
 msgstr "Rejtett fájlok és mappák"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Korlátozások"
 
@@ -528,8 +523,7 @@ msgid "Filtering"
 msgstr "Szűrés"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Ellenőrzőösszegek"
 
@@ -709,9 +703,9 @@ msgstr "Kere&sés"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Settings"
 msgid "Add &Custom Settings"
-msgstr "&Egyéni beállítások"
+msgstr "Speciális beállítások"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -966,9 +960,6 @@ msgstr "Méret"
 #~ msgid "Custom Options"
 #~ msgstr "Egyéni beállítások"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Az összes könyvjelző csatolása"
-
 #, fuzzy
 #~| msgid ""
 #~| "The login information that was stored by Smb4K will be loaded from the "
@@ -993,31 +984,11 @@ msgstr "Méret"
 #~ msgid "Entry"
 #~ msgstr "Bejegyzés"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Felhasználói felület"
+#~ msgid "Login"
+#~ msgstr "Bejelentkezés"
 
 #~ msgid "Password"
 #~ msgstr "Jelszó"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Működés"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Általános"
-
-#, fuzzy
-#~| msgid "Miscellaneous Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Egyéb beállítások"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Speciális szűrési szabályok:"
 
 #, fuzzy
 #~| msgid "Notifications"
@@ -1042,14 +1013,10 @@ msgstr "Méret"
 #~ msgid "Actions"
 #~ msgstr "Beállítások"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Varázscsomag küldése a hálózati mappa vizsgálata előtt"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Varázscsomag küldése a megosztás csatolása előtt"
 
 #, fuzzy
@@ -1060,30 +1027,13 @@ msgstr "Méret"
 #~ msgid "Always remount this share"
 #~ msgstr "Mindig csatolja újra ezt a megosztást"
 
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Beállítások"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Profilok"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Hitelesítés"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Biztonság"
 
 #, fuzzy
-#~| msgid "Settings"
+#~| msgid "Samba Options"
 #~ msgid "Samba Settings"
-#~ msgstr "Beállítások"
+#~ msgstr "Samba Opciók"
 
 #~ msgid "Default Destination"
 #~ msgstr "Alapértelmezett cél"
@@ -1093,8 +1043,11 @@ msgstr "Méret"
 #~ msgid "Permissions, etc."
 #~ msgstr "Fájljogosultságok, stb."
 
-#~ msgid "Login"
-#~ msgstr "Bejelentkezés"
+#~ msgid "Special filter rules:"
+#~ msgstr "Speciális szűrési szabályok:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Egyéni beállítások"
 
 #~ msgid "Login:"
 #~ msgstr "Belépés:"
@@ -1106,10 +1059,6 @@ msgstr "Méret"
 #~ msgstr "A lecsatolási folyamat összeomlott."
 
 #, fuzzy
-#~ msgid "Protocols"
-#~ msgstr "Protokoll"
-
-#, fuzzy
 #~| msgid "%1 free of %2 (%3 used)"
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 / %2 szabad (%3 használt)"
@@ -1117,57 +1066,6 @@ msgstr "Méret"
 #, fuzzy
 #~ msgid "Location"
 #~ msgstr "Műveletek"
-
-#, fuzzy
-#~| msgid "Save the entries to the wallet."
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Bejegyzések mentése a jelszótárolóba."
-
-#, fuzzy
-#~| msgid "Load the entries stored in the wallet."
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Bejegyzések betöltése a jelszótárolóból."
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "A jelölőnégyzet kijelölése megjeleníti a kijelölt bejelentkezési "
-#~ "információk részleteit."
-
-#~ msgid "Password Storage"
-#~ msgstr "Jelszótároló"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "A kiválasztott bejegyzés részleteinek megjelenítése."
-
-#~ msgid "Undo"
-#~ msgstr "Visszavonás"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Csatolás"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Oszlopok"
-
-#~ msgid "Tooltips"
-#~ msgstr "Buboréksúgók"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "Nézet"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Egyéb beállítások"
-
-#~ msgid "Shares"
-#~ msgstr "Megosztások"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Hálózati eszköztár"
@@ -1181,47 +1079,30 @@ msgstr "Méret"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Alternatív fő eszköztár"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Megosztások"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Segédprogramok"
+#~ msgid "Password Storage"
+#~ msgstr "Jelszótároló"
 
-#~ msgid "Network Search"
-#~ msgstr "Hálózati keresés"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Bejegyzések betöltése a jelszótárolóból."
 
-#~ msgid "Searching for \"%1\"..."
-#~ msgstr "„%1” keresése…"
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Bejegyzések mentése a jelszótárolóba."
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Adja meg a keresett szöveget itt."
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "A kiválasztott bejegyzés részleteinek megjelenítése."
 
-#~ msgid "Abort"
-#~ msgstr "Megszakítás"
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "A jelölőnégyzet kijelölése megjeleníti a kijelölt bejelentkezési "
+#~ "információk részleteit."
 
-#~ msgid "&Clear"
-#~ msgstr "&Törlés"
-
-#~ msgid "The search returned no results."
-#~ msgstr "A keresés nem adott vissza eredményt."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " bájt"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Előnézet lekérése innen: %1…"
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Periodikus keresés"
-
-#~ msgid "Browse List"
-#~ msgstr "Tallózólista"
+#~ msgid "Undo"
+#~ msgstr "Visszavonás"
 
 #~ msgid "UNC Address:"
 #~ msgstr "UNC-cím:"
@@ -1244,23 +1125,29 @@ msgstr "Méret"
 #~ msgid "MAC address:"
 #~ msgstr "MAC-cím:"
 
+#~ msgid "Browse List"
+#~ msgstr "Tallózólista"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodikus keresés"
+
 #~ msgid "General Options"
 #~ msgstr "Általános beállítások"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Könyvjelzők szerkesztése"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#~ msgid "Add Group"
-#~ msgstr "Csoport hozzáadása"
+#~ msgid " Bytes"
+#~ msgstr " bájt"
 
-#~ msgid "Label:"
-#~ msgstr "Címke:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#~ msgid "Group:"
-#~ msgstr "Csoport:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
 
-#~ msgid "Group name:"
-#~ msgstr "Csoportnév:"
+#~ msgid "Utility Programs"
+#~ msgstr "Segédprogramok"
 
 #~ msgid "Copying"
 #~ msgstr "Másolás"
@@ -1268,14 +1155,34 @@ msgstr "Méret"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Fájltörlés és átvitel"
 
+#~ msgid "Columns"
+#~ msgstr "Oszlopok"
+
+#~ msgid "Tooltips"
+#~ msgstr "Buboréksúgók"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Nézet"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "Nem sikerült létrehozni a hálózatböngészőt."
+
+#~ msgid "Network Search"
+#~ msgstr "Hálózati keresés"
 
 #~ msgid "The search dialog could not be created."
 #~ msgstr "Nem sikerült létrehozni a keresési párbeszédablakot."
 
 #~ msgid "The shares view could not be created."
 #~ msgstr "Nem sikerült létrehozni a megosztások nézetet."
+
+#~ msgid "Searching for \"%1\"..."
+#~ msgstr "„%1” keresése…"
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Előnézet lekérése innen: %1…"
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1294,6 +1201,12 @@ msgstr "Méret"
 #~ msgid "Search item:"
 #~ msgstr "Keresett elem:"
 
+#~ msgid "Enter the search string here."
+#~ msgstr "Adja meg a keresett szöveget itt."
+
+#~ msgid "Abort"
+#~ msgstr "Megszakítás"
+
 #~ msgid "Smb4KNetworkSearchPart"
 #~ msgstr "Smb4KNetworkSearchPart"
 
@@ -1302,6 +1215,9 @@ msgstr "Méret"
 
 #~ msgid "Search Results"
 #~ msgstr "Keresési eredmények"
+
+#~ msgid "The search returned no results."
+#~ msgstr "A keresés nem adott vissza eredményt."
 
 #~ msgid "Open With"
 #~ msgstr "Megnyitás ezzel"
@@ -1314,6 +1230,9 @@ msgstr "Méret"
 
 #~ msgid "&Shares"
 #~ msgstr "&Megosztások"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Speciális hálózatimappa-böngésző"
@@ -2666,8 +2585,23 @@ msgstr "Méret"
 #~ "Az összes listázott megosztás könyvjelzőzve lesz. A címke vagy csoport "
 #~ "módosításához kattintson a megfelelő könyvjelző bejegyzésre."
 
+#~ msgid "Label:"
+#~ msgstr "Címke:"
+
+#~ msgid "Group:"
+#~ msgstr "Csoport:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Könyvjelzők szerkesztése"
+
+#~ msgid "Add Group"
+#~ msgstr "Csoport hozzáadása"
+
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Könyvjelzők törlése"
+
+#~ msgid "Group name:"
+#~ msgstr "Csoportnév:"
 
 #~ msgid ""
 #~ "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -3682,6 +3616,10 @@ msgstr "Méret"
 #~ msgstr "Könyvjelzőszerkesztő"
 
 #, fuzzy
+#~ msgid "Protocol:"
+#~ msgstr "Protokoll"
+
+#, fuzzy
 #~ msgid "Try to authenticate with Kerberos (Active Directory)"
 #~ msgstr "Hitelesítés megkisérlése Kerberos-al."
 
@@ -4222,9 +4160,6 @@ msgstr "Méret"
 #~ "Használja a rendszergazdai jogokat a (halott) megosztások "
 #~ "leválasztásához.\n"
 #~ "(2.4.11 vagy nagyobb kernel szükséges)"
-
-#~ msgid "Samba Options"
-#~ msgstr "Samba Opciók"
 
 #~ msgid "Super User Privileges"
 #~ msgstr "Rendszergazdai jogok"

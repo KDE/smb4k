@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2019-04-27 12:05+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2019-05-26 18:57+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
 "Language: en_GB\n"
@@ -90,42 +90,6 @@ msgstr "Unmount"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Unmount all shares"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Edit Bookmarks"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancel"
-
-#~ msgid "Clear"
-#~ msgstr "Clear"
-
-#~ msgid "Label:"
-#~ msgstr "Label:"
-
-#~ msgid "Login:"
-#~ msgstr "Login:"
-
-#~ msgid "IP Address:"
-#~ msgstr "IP Address:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Group Name:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Toplevel Bookmarks"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Delete Bookmark"
-
-#~ msgid "Add Group"
-#~ msgstr "Add Group"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
 
 #~ msgid "Back"
 #~ msgstr "Back"

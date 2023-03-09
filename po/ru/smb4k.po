@@ -12,10 +12,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2022-09-05 09:12+0300\n"
-"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
-"Language-Team: Basealt Translation Team\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-08-23 15:18+0300\n"
+"Last-Translator: Мария Шикунова <translation-team@basealt.ru>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -178,6 +178,7 @@ msgstr "Синхронизация"
 
 #: smb4k/smb4kconfigdialog.cpp:112
 #, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
 msgstr "Общие параметры"
 
@@ -399,10 +400,11 @@ msgstr " с"
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, fuzzy, kde-format
 #| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
-msgstr "Задайте хосты для пробуждения на странице «Особые параметры»."
+msgstr "<qt>Задайте хосты для пробуждения на странице «Особые параметры».<qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -415,9 +417,10 @@ msgid "Synchronization Directory"
 msgstr "Каталог синхронизации"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Резервные копии"
+msgstr "Резервная копия"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -442,6 +445,7 @@ msgstr "Свойства и владелец файла"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
 msgstr "Владелец:"
 
@@ -690,9 +694,9 @@ msgstr "&Поиск"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Особые &параметры"
+msgstr "Расширенные параметры"
 
 # BUGME: ellipsis at the end of this string? --aspotashev
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
@@ -944,16 +948,6 @@ msgstr "Размер:"
 #~ msgid "Custom Options"
 #~ msgstr "Особые параметры"
 
-# BUGME: add accelerator? split? --aspotashev
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Подключить все закладки"
-
-#~ msgid " KiB"
-#~ msgstr " КиБ"
-
-#~ msgid " KiB/s"
-#~ msgstr " КиБ/с"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -970,27 +964,11 @@ msgstr "Размер:"
 #~ msgid "Entry"
 #~ msgstr "Запись"
 
-#, fuzzy
-#~ msgid "Username"
-#~ msgstr "Интерфейс пользователя"
+#~ msgid "Login"
+#~ msgstr "Имя пользователя"
 
 #~ msgid "Password"
 #~ msgstr "Пароль"
-
-#, fuzzy
-#~ msgid "Behavior:"
-#~ msgstr "Поведение"
-
-#, fuzzy
-#~ msgid "General:"
-#~ msgstr "Общие"
-
-#, fuzzy
-#~ msgid "Miscellaneous:"
-#~ msgstr "Прочее"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Особые правила фильтрации:"
 
 #~ msgid "Identification"
 #~ msgstr "Идентификация"
@@ -1007,12 +985,10 @@ msgstr "Размер:"
 #~ msgid "Actions"
 #~ msgstr "Действия"
 
-#, fuzzy
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Отправлять «волшебный» пакет перед сканированием сетевого окружения"
 
-#, fuzzy
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Отправлять «волшебный» пакет перед подключением ресурса"
 
 #~ msgid "Wake-On-LAN Settings"
@@ -1024,20 +1000,7 @@ msgstr "Размер:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Расширения Unix для CIFS поддерживаются этим севером"
 
-#, fuzzy
-#~ msgid "Browse Settings:"
-#~ msgstr "Параметры просмотра"
-
-#, fuzzy
-#~ msgid "Profiles:"
-#~ msgstr "Профили"
-
-#, fuzzy
-#~ msgid "Authentication:"
-#~ msgstr "Аутентификация"
-
-#, fuzzy
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Безопасность"
 
 #~ msgid "Samba Settings"
@@ -1049,8 +1012,17 @@ msgstr "Размер:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Права на файлы и другое"
 
-#~ msgid "Login"
-#~ msgstr "Имя пользователя"
+#~ msgid " KiB"
+#~ msgstr " КиБ"
+
+#~ msgid " KiB/s"
+#~ msgstr " КиБ/с"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Особые правила фильтрации:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Особые &параметры"
 
 #~ msgid "Login:"
 #~ msgstr "Имя пользователя:"
@@ -1061,61 +1033,12 @@ msgstr "Размер:"
 #~ msgid "The unmount process crashed."
 #~ msgstr "Процесс отключения общей папки аварийно завершился."
 
-#, fuzzy
-#~ msgid "Protocols"
-#~ msgstr "Протоколы"
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "свободно %1 из %2 (использовано %3)"
 
 #, fuzzy
 #~ msgid "Location"
 #~ msgstr "Расположение:"
-
-#, fuzzy
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Загрузить записи из бумажника"
-
-#, fuzzy
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Загрузить записи из бумажника"
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "Используйте для просмотра подробной информации о выбранной учётной записи."
-
-#~ msgid "Password Storage"
-#~ msgstr "Хранение паролей"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Подробный просмотр выбранной записи."
-
-#~ msgid "Undo"
-#~ msgstr "Отменить"
-
-#, fuzzy
-#~ msgid "Remounting"
-#~ msgstr "Подключение"
-
-#~ msgid "UNC"
-#~ msgstr "Путь UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Столбцы"
-
-#~ msgid "Tooltips"
-#~ msgstr "Всплывающие подсказки"
-
-#~ msgid "View Mode"
-#~ msgstr "Режим просмотра"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Прочее"
-
-#~ msgid "Shares"
-#~ msgstr "Ресурсы"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Панель инструментов сети"
@@ -1130,48 +1053,35 @@ msgstr "Размер:"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Альтернативная основная панель инструментов"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Ресурсы"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Вспомогательные программы"
+#~ msgid "Password Storage"
+#~ msgstr "Хранение паролей"
 
-#~ msgid "Network Search"
-#~ msgstr "Поиск по сети"
+#, fuzzy
+#~ msgid "General Settings"
+#~ msgstr "Общие параметры"
 
-#~ msgid "Searching for \"%1\"..."
-#~ msgstr "Поиск «%1»..."
+#, fuzzy
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Сохранить записи в бумажник"
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Введите строку поиска."
+#, fuzzy
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Сохранить записи в бумажник"
 
-#~ msgid "Abort"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Подробный просмотр выбранной записи."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Используйте для просмотра подробной информации о выбранной учётной записи."
+
+#~ msgid "Undo"
 #~ msgstr "Отменить"
-
-#~ msgid "&Clear"
-#~ msgstr "&Очистить"
-
-#~ msgid "The search returned no results."
-#~ msgstr "Поиск не дал результатов."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-# BUGME: plurals --aspotashev
-#~ msgid " Bytes"
-#~ msgstr " байт"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Получение данных для предварительного просмотра %1..."
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Периодическое сканирование"
-
-#~ msgid "Browse List"
-#~ msgstr "Способ получения сетевого окружения от браузера сети"
 
 #~ msgid "UNC Address:"
 #~ msgstr "Путь UNC:"
@@ -1194,24 +1104,30 @@ msgstr "Размер:"
 #~ msgid "MAC address:"
 #~ msgstr "MAC-адрес:"
 
+#~ msgid "Browse List"
+#~ msgstr "Способ получения сетевого окружения от браузера сети"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Периодическое сканирование"
+
 #~ msgid "General Options"
 #~ msgstr "Общие параметры"
 
-#, fuzzy
-#~ msgid "Edit Bookmarks"
-#~ msgstr "&Изменить закладки"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#, fuzzy
-#~ msgid "Add Group"
-#~ msgstr "Рабочая группа:"
+# BUGME: plurals --aspotashev
+#~ msgid " Bytes"
+#~ msgstr " байт"
 
-#, fuzzy
-#~ msgid "Group:"
-#~ msgstr "Рабочая группа:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#, fuzzy
-#~ msgid "Group name:"
-#~ msgstr "Рабочая группа:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Вспомогательные программы"
 
 #~ msgid "Copying"
 #~ msgstr "Копирование"
@@ -1219,14 +1135,32 @@ msgstr "Размер:"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "П&ередача и удаление файлов"
 
+#~ msgid "Columns"
+#~ msgstr "Столбцы"
+
+#~ msgid "Tooltips"
+#~ msgstr "Всплывающие подсказки"
+
+#~ msgid "View Mode"
+#~ msgstr "Режим просмотра"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "Не удалось создать компонент «сетевое окружение»."
+
+#~ msgid "Network Search"
+#~ msgstr "Поиск по сети"
 
 #~ msgid "The search dialog could not be created."
 #~ msgstr "Не удалось создать компонент «поиск по сети»."
 
 #~ msgid "The shares view could not be created."
 #~ msgstr "Не удалось создать компонент «подключённые общие папки»."
+
+#~ msgid "Searching for \"%1\"..."
+#~ msgstr "Поиск «%1»..."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Получение данных для предварительного просмотра %1..."
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1243,6 +1177,12 @@ msgstr "Размер:"
 #~ msgid "Search item:"
 #~ msgstr "Искать:"
 
+#~ msgid "Enter the search string here."
+#~ msgstr "Введите строку поиска."
+
+#~ msgid "Abort"
+#~ msgstr "Отменить"
+
 #~ msgid "Smb4KNetworkSearchPart"
 #~ msgstr "Smb4KNetworkSearchPart"
 
@@ -1251,6 +1191,9 @@ msgstr "Размер:"
 
 #~ msgid "Search Results"
 #~ msgstr "Результаты поиска"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Поиск не дал результатов."
 
 #~ msgid "Open With"
 #~ msgstr "Открыть в программе"
@@ -1263,6 +1206,9 @@ msgstr "Размер:"
 
 #~ msgid "&Shares"
 #~ msgstr "&Ресурс"
+
+#~ msgid "UNC"
+#~ msgstr "Путь UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Диспетчер сетевого окружения"
@@ -1300,6 +1246,10 @@ msgstr "Размер:"
 
 #~ msgid "Usage"
 #~ msgstr "Использовано"
+
+#, fuzzy
+#~ msgid "Protocol Hint:"
+#~ msgstr "Протоколы"
 
 #~ msgid "net"
 #~ msgstr "net"
@@ -1671,6 +1621,10 @@ msgstr "Размер:"
 #~ msgstr "Требуется авторизация"
 
 #, fuzzy
+#~ msgid "Synchronization prefix:"
+#~ msgstr "Синхронизация"
+
+#, fuzzy
 #~ msgid "Preserve symlinks"
 #~ msgstr "Права"
 
@@ -1743,8 +1697,20 @@ msgstr "Размер:"
 #~ msgstr "&Изменить закладки"
 
 #, fuzzy
+#~ msgid "Group:"
+#~ msgstr "Рабочая группа:"
+
+#, fuzzy
+#~ msgid "Edit Bookmarks"
+#~ msgstr "&Изменить закладки"
+
+#, fuzzy
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Добавить в закладки"
+
+#, fuzzy
+#~ msgid "Group name:"
+#~ msgstr "Рабочая группа:"
 
 #, fuzzy
 #~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
@@ -1760,6 +1726,10 @@ msgstr "Размер:"
 #, fuzzy
 #~ msgid "Please specify a username."
 #~ msgstr "Укажите имя пользователя"
+
+#, fuzzy
+#~ msgid "User:"
+#~ msgstr "Пользователь:"
 
 #, fuzzy
 #~ msgid "Foreign Share"
@@ -2015,6 +1985,11 @@ msgstr "Размер:"
 #, fuzzy
 #~ msgid "Destination:"
 #~ msgstr "Авторизация"
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#~ msgstr "Использовать авторизацию для всех ресурсов"
 
 #, fuzzy
 #~ msgid ""
@@ -3025,9 +3000,6 @@ msgstr "Размер:"
 #~ "(Requires Linux kernel 2.4.11 or later)"
 #~ msgstr "Вы действительно хотите принудительно отключить это ресурс?"
 
-#~ msgid "Samba Options"
-#~ msgstr "Настройка Samba"
-
 #~ msgid "Super User Privileges"
 #~ msgstr "Привелегии суперпользователя"
 
@@ -3424,26 +3396,59 @@ msgstr "Размер:"
 #~ msgstr "Smb4K не работаетс принтерами."
 
 #, fuzzy
-#~ msgid "General Settings"
-#~ msgstr "Общие параметры"
+#~| msgid "User Interface"
+#~ msgid "Username"
+#~ msgstr "Интерфейс пользователя"
 
 #, fuzzy
-#~ msgid "Load the entries stored in the wallet."
-#~ msgstr "Сохранить записи в бумажник"
+#~| msgid "Behavior"
+#~ msgid "Behavior:"
+#~ msgstr "Поведение"
 
 #, fuzzy
-#~ msgid "Save the entries to the wallet."
-#~ msgstr "Сохранить записи в бумажник"
+#~| msgid "General"
+#~ msgid "General:"
+#~ msgstr "Общие"
 
 #, fuzzy
-#~ msgid "Synchronization prefix:"
-#~ msgstr "Синхронизация"
+#~| msgid "Miscellaneous"
+#~ msgid "Miscellaneous:"
+#~ msgstr "Прочее"
 
 #, fuzzy
-#~ msgid "User:"
-#~ msgstr "Пользователь:"
+#~| msgid "Browse Settings"
+#~ msgid "Browse Settings:"
+#~ msgstr "Параметры просмотра"
 
 #, fuzzy
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
-#~ msgstr "Использовать авторизацию для всех ресурсов"
+#~| msgid "Profiles"
+#~ msgid "Profiles:"
+#~ msgstr "Профили"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Authentication:"
+#~ msgstr "Аутентификация"
+
+#, fuzzy
+#~| msgid "Load the entries stored in the wallet."
+#~ msgid "All entries are removed from the wallet."
+#~ msgstr "Загрузить записи из бумажника"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Remounting"
+#~ msgstr "Подключение"
+
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Прочее"
+
+#~ msgid "&Clear"
+#~ msgstr "&Очистить"
+
+#, fuzzy
+#~ msgid "Add Group"
+#~ msgstr "Рабочая группа:"
+
+#~ msgid "Samba Options"
+#~ msgstr "Настройка Samba"

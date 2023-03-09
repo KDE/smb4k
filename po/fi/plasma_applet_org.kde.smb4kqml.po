@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2020-06-18 17:46+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -90,36 +90,6 @@ msgstr "Irrota"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Irrota kaikki jaot"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Muokkaa kirjanmerkkejä"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Cancel"
-#~ msgstr "Peru"
-
-#~ msgid "Clear"
-#~ msgstr "Tyhjennä"
-
-#~ msgid "Label:"
-#~ msgstr "Nimike:"
-
-#~ msgid "Login:"
-#~ msgstr "Käyttäjätunnus:"
-
-#~ msgid "IP Address:"
-#~ msgstr "IP-osoite:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Ryhmän nimi:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Ylimmän tason kirjanmerkit"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Poista kirjanmerkki"
 
 #~ msgid "Back"
 #~ msgstr "Takaisin"

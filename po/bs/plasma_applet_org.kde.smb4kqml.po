@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: $2\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2015-02-22 22:51+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: none\n"
@@ -94,29 +94,16 @@ msgid "Synchronize"
 msgstr ""
 
 #: package/contents/ui/SharesViewItemDelegate.qml:118
+#, fuzzy
+#| msgid "Unmount All"
 msgid "Unmount"
-msgstr ""
+msgstr "Demontiraj sve"
 
 #: package/contents/ui/SharesViewPage.qml:34
 #, fuzzy
 #| msgid "Unmount All"
 msgid "Unmount all shares"
 msgstr "Demontiraj sve"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Zabilješke"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Zabilješke"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Delete Bookmark"
-#~ msgstr "Zabilješke"
 
 #~ msgid "Back"
 #~ msgstr "Nazad"

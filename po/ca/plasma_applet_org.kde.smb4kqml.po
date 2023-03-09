@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2021-10-24 17:42+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -94,33 +94,3 @@ msgstr "Desmunta"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Desmunta totes les comparticions"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Edita les adreces d'interès"
-
-#~ msgid "OK"
-#~ msgstr "D'acord"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancel·la"
-
-#~ msgid "Clear"
-#~ msgstr "Neteja"
-
-#~ msgid "Label:"
-#~ msgstr "Etiqueta:"
-
-#~ msgid "Login:"
-#~ msgstr "Usuari:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Adreça IP:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nom del grup:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Adreces d'interès de nivell superior"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Suprimeix l'adreça d'interès"

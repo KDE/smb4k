@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2017-09-04 09:51+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -137,9 +137,9 @@ msgstr "&Pridėti žymelę"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
 #, fuzzy, kde-format
-#| msgid "&Edit Bookmarks"
+#| msgid "Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "&Keisti žymeles"
+msgstr "Žymelės"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -187,10 +187,9 @@ msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
 #: smb4k/smb4kconfigpageprofiles.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Settings"
-msgstr "&Nuostatos"
+msgstr "Nuostatos"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:64
 #, kde-format
@@ -282,9 +281,9 @@ msgstr ""
 #: smb4k/smb4kconfigpagenetwork.cpp:133
 #: smb4k/smb4kconfigpagesynchronization.cpp:131
 #, fuzzy, kde-format
-#| msgid "&Settings"
+#| msgid "Settings"
 msgid "Basic Settings"
-msgstr "&Nuostatos"
+msgstr "Nuostatos"
 
 #: smb4k/smb4kconfigpagemounting.cpp:178 smb4k/smb4kconfigpagemounting.cpp:579
 #, kde-format
@@ -315,7 +314,7 @@ msgstr "Bendros parinktys"
 #: smb4k/smb4kconfigpagemounting.cpp:344
 #, kde-format
 msgid "Advanced Options"
-msgstr "Išsamios nuostatos"
+msgstr "Išsamūs nustatymai"
 
 #: smb4k/smb4kconfigpagemounting.cpp:457
 #, kde-format
@@ -326,7 +325,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Advanced Settings"
 msgid "Advanced Mount Settings"
-msgstr "Išsamesnės nuostatos"
+msgstr "Išsamesni nustatymai"
 
 #: smb4k/smb4kconfigpagemounting.cpp:681
 #, kde-format
@@ -364,21 +363,19 @@ msgstr[3] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #, fuzzy, kde-format
-#| msgid "&Settings"
+#| msgid "Settings"
 msgid "Browse Settings"
-msgstr "&Nuostatos"
+msgstr "Nuostatos"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "Bendrosios nuostatos"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
 #, kde-format
@@ -395,7 +392,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Advanced Settings"
 msgid "Advanced Settings"
-msgstr "Išsamesnės nuostatos"
+msgstr "Išsamesni nustatymai"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
 #, fuzzy, kde-format
@@ -415,8 +412,7 @@ msgid "General"
 msgstr "Bendri"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Saitai"
 
@@ -464,7 +460,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "General Settings"
 msgid "Miscellaneous"
-msgstr "Bendrosios nuostatos"
+msgstr "Bendri nustatymai"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
@@ -483,10 +479,9 @@ msgid "Files && Directories"
 msgstr "Aplankai"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Restrictions"
-msgstr "Autentikacija"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
@@ -682,9 +677,9 @@ msgstr "&Ieškoti"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "Common Options"
+#| msgid "Advanced Settings"
 msgid "Add &Custom Settings"
-msgstr "Bendros parinktys"
+msgstr "Išsamesni nustatymai"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -895,9 +890,9 @@ msgstr "Mazgas"
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, fuzzy, kde-format
-#| msgid "Advanced Options"
+#| msgid "Notifications"
 msgid "Location:"
-msgstr "Išsamios nuostatos"
+msgstr "Pranešimai"
 
 #: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
 #: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
@@ -949,28 +944,11 @@ msgstr "Dydis"
 #~ msgid "Entry"
 #~ msgstr "Įrašas"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Naudotojo sąsaja"
+#~ msgid "Login"
+#~ msgstr "Registracija"
 
 #~ msgid "Password"
 #~ msgstr "Slaptažodis"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Elgsena"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Bendri"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Bendrosios nuostatos"
 
 #, fuzzy
 #~| msgid "Notifications"
@@ -995,35 +973,20 @@ msgstr "Dydis"
 #, fuzzy
 #~| msgid "Advanced Options"
 #~ msgid "Actions"
-#~ msgstr "Išsamios nuostatos"
+#~ msgstr "Išsamūs nustatymai"
 
 #, fuzzy
 #~| msgid "General Settings"
 #~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Bendrosios nuostatos"
+#~ msgstr "Bendri nustatymai"
 
-#, fuzzy
-#~| msgid "&Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "&Nuostatos"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Autentikacija"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Saugumas"
 
 #, fuzzy
-#~| msgid "&Settings"
+#~| msgid "Settings"
 #~ msgid "Samba Settings"
-#~ msgstr "&Nuostatos"
-
-#~ msgid "Login"
-#~ msgstr "Registracija"
+#~ msgstr "Nuostatos"
 
 #, fuzzy
 #~| msgid "Login"
@@ -1039,33 +1002,9 @@ msgstr "Dydis"
 #~ msgstr "%1 laisva iš %2 (%3 panaudota)"
 
 #, fuzzy
-#~| msgid "Advanced Options"
+#~| msgid "Notifications"
 #~ msgid "Location"
-#~ msgstr "Išsamios nuostatos"
-
-#~ msgid "Undo"
-#~ msgstr "Atšaukti"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Prijungiama"
-
-#~ msgid "Columns"
-#~ msgstr "Stulpeliai"
-
-#~ msgid "Tooltips"
-#~ msgstr "Paaiškinimai"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "Rodymas"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Bendrosios nuostatos"
+#~ msgstr "Pranešimai"
 
 #, fuzzy
 #~| msgid "Search Toolbar"
@@ -1085,29 +1024,37 @@ msgstr "Dydis"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Pagrindinė įrankinė"
 
-#~ msgid "Abort"
-#~ msgstr "Nutraukti"
-
-#~ msgid "&Clear"
-#~ msgstr "&Valyti"
-
-#~ msgid " Bytes"
-#~ msgstr " baitų"
+#~ msgid "Undo"
+#~ msgstr "Atšaukti"
 
 #~ msgid "User ID:"
 #~ msgstr "Naudotojo ID:"
 
+#~ msgid "Group ID:"
+#~ msgstr "Grupės ID:"
+
 #~ msgid "General Options"
 #~ msgstr "Bendros parinktys"
 
-#, fuzzy
-#~| msgctxt "NAME OF TRANSLATORS"
-#~| msgid "Your names"
-#~ msgid "Group name:"
-#~ msgstr "Liudas Ališauskas"
+#~ msgid " Bytes"
+#~ msgstr " baitų"
 
 #~ msgid "Copying"
 #~ msgstr "Kopijuojama"
+
+#~ msgid "Columns"
+#~ msgstr "Stulpeliai"
+
+#~ msgid "Tooltips"
+#~ msgstr "Paaiškinimai"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Rodymas"
+
+#~ msgid "Abort"
+#~ msgstr "Nutraukti"
 
 #~ msgid "Open With"
 #~ msgstr "Atverti su"

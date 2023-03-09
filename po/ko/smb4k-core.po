@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2022-07-13 11:14+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-05-07 14:33+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -176,9 +176,10 @@ msgstr "풍선 도움말은 현재 공유에 대한 다양한 정보를 표시�
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File mode:"
 msgid "View mode:"
-msgstr "보기 모드:"
+msgstr "파일 모드:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -206,37 +207,41 @@ msgstr "목록 보기"
 #: smb4k.kcfg:90
 #, kde-format
 msgid "Icon size for the icon view:"
-msgstr "아이콘 보기의 아이콘 크기:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "공유 보기의 아이콘 보기 모드에 사용할 아이콘 크기를 설정합니다."
+msgstr "공유 보기의 보기 모드:"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
 #, kde-format
 msgid "Icon size for the list view:"
-msgstr "목록 보기의 아이콘 크기:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:98
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "공유 보기의 목록 보기 모드에 사용할 아이콘 크기를 설정합니다."
+msgstr "공유 보기의 보기 모드:"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Icon View"
 msgid "Icon size:"
-msgstr "아이콘 크기:"
+msgstr "아이콘 보기"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "네트워크 환경 탐색기의 아이콘 크기를 설정합니다."
+msgstr "네트워크 환경을 검색하기 전에 매직 패킷 보내기"
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -391,7 +396,8 @@ msgstr "Samba 클라이언트가 사용할 최대 프로토콜 버전을 설정�
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "SMB port:"
 msgid "Set the SMB port to:"
 msgstr "SMB 포트:"
 
@@ -477,7 +483,8 @@ msgstr "Winbind ccache 인증을 사용합니다."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Encryption level:"
 msgid "Set the encryption level to:"
 msgstr "암호화 수준:"
 
@@ -561,7 +568,13 @@ msgstr "Wake-On-LAN 기능 활성화"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#| "magic package send via a UDP socket to wake up remote servers. If you "
+#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#| "this option."
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -581,7 +594,11 @@ msgstr "대기 시간:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the waiting time in seconds between the sending of the magic Wake-"
+#| "On-LAN packages and the scanning of the network neighborhood or the "
+#| "mounting of a share."
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -1972,9 +1989,10 @@ msgid "Clear"
 msgstr "비우기"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "사용자 이름:"
+msgstr "사용자:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -2185,13 +2203,15 @@ msgstr "동작"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "네트워크 환경을 검색하기 전에 매직 패킷 보내기"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
 
@@ -3750,6 +3770,27 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>공유 <b>%1</b>의 사용자 이름 및 암호를 입력하십시오.</qt>"
 
+#~ msgid "NetBIOS name:"
+#~ msgstr "NetBIOS 이름:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Smb4K에서 사용할 이 컴퓨터의 NetBIOS 이름입니다. 기본값으로 호스트 이름이"
+#~ "나 smb.conf 파일에 정의한 NetBIOS 이름입니다."
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "이 컴퓨터가 사용하거나 속해 있는 작업 그룹이나 도메인 이름입니다. 기본값으"
+#~ "로 smb.conf 파일에 정의한 작업 그룹입니다."
+
+#~ msgid "Login:"
+#~ msgstr "로그인:"
+
 #~ msgid "Custom Options"
 #~ msgstr "사용자 정의 옵션"
 
@@ -3765,9 +3806,3 @@ msgstr "<qt>공유 <b>%1</b>의 사용자 이름 및 암호를 입력하십시�
 #~ msgstr ""
 #~ "Samba 제품군 설정 파일 <b>smb.conf</b>가 없습니다. 치명적인 오류는 아니지"
 #~ "만 파일을 생성하기를 추천합니다."
-
-#~ msgid "NetBIOS name:"
-#~ msgstr "NetBIOS 이름:"
-
-#~ msgid "Login:"
-#~ msgstr "로그인:"

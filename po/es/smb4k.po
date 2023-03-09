@@ -8,17 +8,17 @@
 # Martín Carr <tincarr@gmail.com>, 2005, 2006, 2007, 2008.
 # Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>, 2010.
 # Xavier Corredor Llano <xavier.corredor.llano@gmail.com>, 2010, 2011, 2012.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2011, 2014, 2015.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2011, 2014, 2015, 2021.
 # Miguel Navarrete Hernandez <recados.akka@gmail.com>, 2013.
 # Raul Gonzalez <raulgf83@gmail.com>, 2013, 2014.
 # Javier Vinal <fjvinal@gmail.com>, 2015, 2016, 2017, 2018, 2019.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022, 2023.
+# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2022, %Y.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-03-04 17:47+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-07-09 17:47+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -70,9 +70,10 @@ msgstr ""
 "recursos compartidos de Samba"
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -148,9 +149,10 @@ msgid "Add &Bookmark"
 msgstr "Añadir &marcador"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Montar marcadores"
+msgstr "Montar todos los marcadores"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -178,9 +180,10 @@ msgid "Synchronization"
 msgstr "Sincronización"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Preferencias personalizadas"
+msgstr "Preferencias comunes"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -250,19 +253,16 @@ msgstr "Introduzca información de acceso predeterminada."
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr ""
-"Establecer el nombre de usuario y contraseña para la entrada de la cartera "
-"%1."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""
-"Establecer el nombre de usuario y contraseña para el acceso por omisión."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Todo bien."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -273,8 +273,6 @@ msgstr "Borrar lista"
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
-"El elemento %1 se eliminó, ya que todas las preferencias personalizadas "
-"fueron reiniciadas."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -384,7 +382,7 @@ msgstr "Preferencias de navegación"
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, kde-format
@@ -397,27 +395,33 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Defina los servidores que deben ser despertados a través del editor de "
-"preferencias personalizadas."
+"<qt>Defina los servidores que deben ser despertados a través del diálogo de "
+"opciones personalizadas.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Preferencias avanzadas"
+msgstr "Preferencias avanzadas de montaje"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "Directorio de sincronización"
+msgstr "Sincronización"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Copias de respaldo"
+msgstr "Copia de respaldo"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -437,17 +441,18 @@ msgstr "Gestión de archivos"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "Atributos del archivo"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
-msgstr "Propiedad"
+msgstr "Propietario:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Atributos del archivo && propiedad"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -463,7 +468,7 @@ msgstr "Archivos"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr "kB"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -475,7 +480,7 @@ msgstr "Miscelánea"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kB/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -485,7 +490,7 @@ msgstr "Transferencia de archivos"
 #: smb4k/smb4kconfigpagesynchronization.cpp:403
 #, kde-format
 msgid "Files && Directories"
-msgstr "Archivos && directorios"
+msgstr "Archivos y directorios"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
 #, kde-format
@@ -500,7 +505,7 @@ msgstr "Eliminación de archivos"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr "Preferencias de filtrado generales"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -684,9 +689,10 @@ msgstr "&Buscar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Añadir preferen&cias personalizadas"
+msgstr "Preferencias avanzadas de montaje"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -912,9 +918,10 @@ msgid "Mountpoint:"
 msgstr "Punto de montaje:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Nombre de usuario"
+msgstr "Interfaz de usuario"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -930,3 +937,85 @@ msgstr "Sistema de archivos:"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
+
+#~ msgid "Custom Options"
+#~ msgstr "Opciones personalizadas"
+
+#~ msgid ""
+#~ "The login information that was stored by Smb4K will be loaded from the "
+#~ "wallet."
+#~ msgstr ""
+#~ "La información de inicio de sesión que fue guardada por Smb4K se cargará "
+#~ "desde la cartera."
+
+#~ msgid "All modifications you applied are saved to the wallet."
+#~ msgstr "Todas las modificaciones que aplicó se guardan en la cartera."
+
+#~ msgid "Details"
+#~ msgstr "Detalles"
+
+#~ msgid "Entry"
+#~ msgstr "Entrada"
+
+#~ msgid "Login"
+#~ msgstr "Usuario"
+
+#~ msgid "Password"
+#~ msgstr "Contraseña"
+
+#~ msgid "Identification"
+#~ msgstr "Identificación"
+
+#~ msgid "Network Item"
+#~ msgstr "Elemento de red"
+
+#~ msgid "MAC Address"
+#~ msgstr "Dirección MAC"
+
+#~ msgid "MAC Address:"
+#~ msgstr "Dirección MAC"
+
+#~ msgid "Actions"
+#~ msgstr "Acciones"
+
+#~ msgid "Send magic package before scanning the network neighborhood"
+#~ msgstr "Enviar el paquete mágico antes de escanear el entorno de red"
+
+#~ msgid "Send magic package before mounting a share"
+#~ msgstr "Enviar el paquete mágico antes de montar un recurso compartido"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Preferencias de Wake-On-LAN"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Volver a montar este recurso compartido siempre"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Este servidor implementa las extensiones CIFS de Unix"
+
+#~ msgid "Security"
+#~ msgstr "Seguridad"
+
+#~ msgid "Samba Settings"
+#~ msgstr "Preferencias de Samba"
+
+#~ msgid "Default Destination"
+#~ msgstr "Destino predeterminado"
+
+#~ msgid "Permissions, etc."
+#~ msgstr "Permisos, etc."
+
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Reglas de filtrado especiales:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Op&ciones personalizadas"
+
+#~ msgid "Login:"
+#~ msgstr "Usuario:"

@@ -1039,7 +1039,7 @@
 >Browser-Einstellungen</title>
 
         <para
->Sie können die minimale und maximale SMB-Protokollversion sowie den verwendeten SMB-Port einstellen. Außerdem können Sie festlegen, ob Kerberos für die Authentifizierung benutzt wird. Weitere Informationen über die einzelnen Einstellungen finden Sie auf der Seite <link linkend="configuration_page_network"
+>Sie können die minimale und maximale SMB-Protokollversion, wenn die Client-Bibliothek für Samba dies unterstützt, sowie den verwendeten SMB-Port einstellen. Außerdem können Sie festlegen, ob Kerberos für die Authentifizierung benutzt wird. Weitere Informationen über die einzelnen Einstellungen finden Sie auf der Seite <link linkend="configuration_page_network"
 >Netzwerk-Einstellungen</link
 >.</para>
       </sect3>
@@ -3116,6 +3116,8 @@ ntlm auth = yes
               <para
 >Verwenden Sie diese Einstellung nur als letzten Ausweg, da das SMB-Protokoll Version 1.0 unsicher ist und in neueren &Samba;- und &Windows; Versionen angeschaltet wurde. Wenn Sie jedoch Probleme mit der Erkennung von Arbeitsgruppen und Domänen in Ihrer Netzwerkumgebung haben, können Sie diese Einstellung ausprobieren. Wenn Sie mit DNS Service Discovery (DNS-SD) oder Web Services Dynamic Discovery (WS-Discovery) keine Probleme haben, benötigen Sie Version 1.0 nicht.</para>
               <para
+>Diese Einstellung ist nur dann verfügbar, wenn die Client-Bibliothek für Samba das Einstellung der Protokollversion unterstützt.</para>
+              <para
 >Voreinstellung: nicht aktiviert</para>
             </listitem>
           </varlistentry>
@@ -3130,9 +3132,9 @@ ntlm auth = yes
               <para
 >Legt die minimale und maximale SMB-Protokollversion fest, die von &Samba;s Client-Bibliothek verwendet wird, um die Netzwerkumgebung zu durchsuchen. Dies überschreibt die Einstellungen in der Datei smb.conf. Normalerweise müssen Sie diese Option nicht verwenden, da die richtigen Protokollversionen zwischen dem Client und dem Server während des Verbindungsaufbaus ausgehandelt werden. Bitte beachten Sie, dass diese Einstellung möglicherweise nicht geeignet ist, um die Erkennung von Arbeitsgruppen und Domänen zu ermöglichen und gleichzeitig die ungestörte Verbindungsaufnahme zu Servern zu gewährleisten. Verwenden Sie DNS-Service-Erkennung (DNS-SD) oder Web Services Dynamic Discovery (WS-Discovery) für die Suche nach Domänen und Arbeitsgruppen.</para>
               <para
->Die folgenden Einstellungen für die minimale und maximale SMB-Protokollversion werden mit den Ankreuzfeldern aktiviert.</para>
+>Die folgenden Einstellungen für die minimale und maximale SMB-Protokollversion werden mit den Ankreuzfeldern aktiviert. Die maximale Protokollversion muss größer oder gleich der minimalen Protokollversion sein.</para>
               <para
->Die maximale SMB-Protokollversion muss größer oder gleich der minimalen SMB-Protokollversion sein.</para>
+>Diese Einstellungen ist nur dann verfügbar, wenn die Client-Bibliothek für Samba das Einstellung der Protokollversion unterstützt.</para>
               <para
 >Voreinstellung: nicht aktiviert</para>
               <variablelist>

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@ase.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -2021,10 +2021,9 @@ msgid ""
 msgstr ""
 
 #: smb4kmounter_p.cpp:128
-#, fuzzy, kde-format
-#| msgid "Custom Options"
+#, kde-format
 msgid "Location:"
-msgstr "Opțiuni personalizate"
+msgstr ""
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -3404,13 +3403,10 @@ msgstr ""
 #~ msgid "Add Group"
 #~ msgstr "Adaugă grup"
 
-#~ msgid "Directory mask:"
-#~ msgstr "Mască dosar:"
-
 #, fuzzy
-#~| msgid "Custom Options"
-#~ msgid "Options"
-#~ msgstr "Opțiuni personalizate"
+#~| msgid "Add Bookmarks"
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Adaugă semne de carte"
 
 #, fuzzy
 #~| msgid "Custom Options"
@@ -3421,8 +3417,3 @@ msgstr ""
 #~| msgid "Custom Options"
 #~ msgid "Options <<"
 #~ msgstr "Opțiuni personalizate"
-
-#, fuzzy
-#~| msgid "Add Bookmarks"
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Adaugă semne de carte"

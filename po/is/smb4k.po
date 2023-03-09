@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -368,16 +368,14 @@ msgid "Browse Settings"
 msgstr "Almennir valkostir"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "Almennar stillingar"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
 #, kde-format
@@ -413,8 +411,7 @@ msgid "General"
 msgstr "Almennt"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Tenglar"
 
@@ -481,8 +478,7 @@ msgid "Files && Directories"
 msgstr "Faldar skrár og möppur"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Takmarkanir"
 
@@ -507,8 +503,7 @@ msgid "Filtering"
 msgstr "Síun"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Gátsummur"
 
@@ -688,9 +683,9 @@ msgstr "&Leita"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Options"
 msgid "Add &Custom Settings"
-msgstr "Sérsniðnir &valkostir"
+msgstr "Ítarlegri valkostir"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -904,8 +899,9 @@ msgstr "Vél"
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, fuzzy, kde-format
+#| msgid "Notifications"
 msgid "Location:"
-msgstr "Aðgerðir"
+msgstr "Kerfistilkynningar"
 
 #: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
 #: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
@@ -954,10 +950,6 @@ msgstr "Stærð:"
 #~ msgstr "Sérsniðnir valkostir"
 
 #, fuzzy
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "&Sýsla með bókamerki"
-
-#, fuzzy
 #~| msgid "Show Share tab"
 #~ msgid "Details"
 #~ msgstr "Sýna sameignaflipa"
@@ -966,27 +958,13 @@ msgstr "Stærð:"
 #~ msgid "Entry"
 #~ msgstr "Umhverfi"
 
-#, fuzzy
-#~ msgid "Username"
-#~ msgstr "Notandaviðmót"
+#~ msgid "Login"
+#~ msgstr "Innskráning"
 
 #, fuzzy
 #~| msgid "Password:"
 #~ msgid "Password"
 #~ msgstr "Lykilorð:"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Almennt"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Almennar stillingar"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Sértækar síureglur:"
 
 #, fuzzy
 #~| msgid "Notifications"
@@ -1023,15 +1001,6 @@ msgstr "Stærð:"
 #~ msgstr "Fjartengdar sameignir"
 
 #, fuzzy
-#~ msgid "Browse Settings:"
-#~ msgstr "Almennir valkostir"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Auðkenning"
-
-#, fuzzy
 #~ msgid "Samba Settings"
 #~ msgstr "Almennir valkostir"
 
@@ -1043,8 +1012,11 @@ msgstr "Stærð:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Skráarheimildir o.s.frv."
 
-#~ msgid "Login"
-#~ msgstr "Innskráning"
+#~ msgid "Special filter rules:"
+#~ msgstr "Sértækar síureglur:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Sérsniðnir &valkostir"
 
 #, fuzzy
 #~ msgid "Login:"
@@ -1055,60 +1027,14 @@ msgstr "Stærð:"
 #~ msgstr "Forskeyti tengingar:"
 
 #, fuzzy
-#~ msgid "Protocols"
-#~ msgstr "Samskiptareglu vísbending"
-
-#, fuzzy
 #~| msgid "%1 %2 out of %3 %4 (%5\\% used)"
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 %2 af %3 %4 (%5\\% notað)"
 
 #, fuzzy
+#~| msgid "Notifications"
 #~ msgid "Location"
-#~ msgstr "Aðgerðir"
-
-#, fuzzy
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
-
-#, fuzzy
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
-
-#~ msgid "Password Storage"
-#~ msgstr "Geymsla lykilorðs"
-
-#, fuzzy
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Sýna IP vistfang"
-
-#, fuzzy
-#~ msgid "Undo"
-#~ msgstr "Afturkalla"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Tengi"
-
-#~ msgid "Columns"
-#~ msgstr "Dálkar"
-
-#~ msgid "Tooltips"
-#~ msgstr "Vísbendingar"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "Sýn"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Almennar stillingar"
-
-#~ msgid "Shares"
-#~ msgstr "Sameignir"
+#~ msgstr "Kerfistilkynningar"
 
 #, fuzzy
 #~ msgid "Network Toolbar"
@@ -1126,42 +1052,27 @@ msgstr "Stærð:"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Sameignasýn"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Sameignir"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Hjálparforrit"
-
-#~ msgid "Network Search"
-#~ msgstr "Netleit"
+#~ msgid "Password Storage"
+#~ msgstr "Geymsla lykilorðs"
 
 #, fuzzy
-#~ msgid "Enter the search string here."
-#~ msgstr "Sláðu inn vél hér"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 
 #, fuzzy
-#~ msgid "Abort"
-#~ msgstr "Hætt&a við"
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 
 #, fuzzy
-#~ msgid "&Clear"
-#~ msgstr "Hr&einsa"
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " Bæti"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Sýna IP vistfang"
 
 #, fuzzy
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Undirbý forsýn..."
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Browse List"
-#~ msgstr "Flakklisti"
+#~ msgid "Undo"
+#~ msgstr "Afturkalla"
 
 #, fuzzy
 #~| msgid "IP Address:"
@@ -1185,29 +1096,26 @@ msgstr "Stærð:"
 #~ msgid "MAC address:"
 #~ msgstr "IP vistfang:"
 
+#~ msgid "Browse List"
+#~ msgstr "Flakklisti"
+
 #~ msgid "General Options"
 #~ msgstr "Almennir valkostir"
 
-#, fuzzy
-#~| msgid "&Edit Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "&Sýsla með bókamerki"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#, fuzzy
-#~ msgid "Add Group"
-#~ msgstr "Bæta við hópi"
+#~ msgid " Bytes"
+#~ msgstr " Bæti"
 
-#, fuzzy
-#~ msgid "Label:"
-#~ msgstr "Merki:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#, fuzzy
-#~ msgid "Group:"
-#~ msgstr "Hópur:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
 
-#, fuzzy
-#~ msgid "Group name:"
-#~ msgstr "Hópur:"
+#~ msgid "Utility Programs"
+#~ msgstr "Hjálparforrit"
 
 #~ msgid "Copying"
 #~ msgstr "Afrita"
@@ -1215,9 +1123,23 @@ msgstr "Stærð:"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Skráareyðing og sending"
 
+#~ msgid "Columns"
+#~ msgstr "Dálkar"
+
+#~ msgid "Tooltips"
+#~ msgstr "Vísbendingar"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Sýn"
+
 #, fuzzy
 #~ msgid "The network browser could not be created."
 #~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#~ msgid "Network Search"
+#~ msgstr "Netleit"
 
 #, fuzzy
 #~ msgid "The search dialog could not be created."
@@ -1226,6 +1148,10 @@ msgstr "Stærð:"
 #, fuzzy
 #~ msgid "The shares view could not be created."
 #~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Undirbý forsýn..."
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1243,6 +1169,14 @@ msgstr "Stærð:"
 #, fuzzy
 #~ msgid "Search item:"
 #~ msgstr "Leit"
+
+#, fuzzy
+#~ msgid "Enter the search string here."
+#~ msgstr "Sláðu inn vél hér"
+
+#, fuzzy
+#~ msgid "Abort"
+#~ msgstr "Hætt&a við"
 
 #, fuzzy
 #~ msgid "Smb4KNetworkSearchPart"
@@ -1312,6 +1246,10 @@ msgstr "Stærð:"
 
 #~ msgid "Usage"
 #~ msgstr "Notkun"
+
+#, fuzzy
+#~ msgid "Protocol Hint:"
+#~ msgstr "Samskiptareglu vísbending"
 
 #~ msgid "net"
 #~ msgstr "net"
@@ -2062,8 +2000,29 @@ msgstr "Stærð:"
 #~ msgstr "&Sýsla með bókamerki"
 
 #, fuzzy
+#~ msgid "Label:"
+#~ msgstr "Merki:"
+
+#, fuzzy
+#~ msgid "Group:"
+#~ msgstr "Hópur:"
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "&Sýsla með bókamerki"
+
+#, fuzzy
+#~ msgid "Add Group"
+#~ msgstr "Bæta við hópi"
+
+#, fuzzy
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Bókamerki"
+
+#, fuzzy
+#~ msgid "Group name:"
+#~ msgstr "Hópur:"
 
 #, fuzzy
 #~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"

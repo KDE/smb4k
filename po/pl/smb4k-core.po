@@ -3,14 +3,14 @@
 #
 # Jerzy Trzeciak <artusek@wp.pl>, 2007, 2008, 2010.
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2007.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2014, 2015, 2016, 2017, 2019, 2020, 2021, 2022, 2023.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2023-03-04 09:30+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2023-03-04 09:24+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -37,25 +37,25 @@ msgstr "Określ położenie kart dla elementów interfejsu w dokach."
 #: smb4k.kcfg:22
 #, kde-format
 msgid "Top"
-msgstr "Na górze"
+msgstr "Góra"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:25
 #, kde-format
 msgid "Bottom"
-msgstr "Na dole"
+msgstr "Dół"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:28
 #, kde-format
 msgid "Left"
-msgstr "Po lewej"
+msgstr "Lewo"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:31
 #, kde-format
 msgid "Right"
-msgstr "Po prawej"
+msgstr "Prawo"
 
 #. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:37
@@ -186,9 +186,10 @@ msgstr "Podpowiedź zawiera szereg różnych danych o zasobie."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File mode:"
 msgid "View mode:"
-msgstr "Tryb widoku:"
+msgstr "Tryb pliku:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -214,39 +215,45 @@ msgstr "Widok listy"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Settings for the list view:"
 msgid "Icon size for the icon view:"
-msgstr "Rozmiar ikon dla widoku ikonowego:"
+msgstr "Ustawienia widoku listy:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Ustaw rozmiar ikon dla trybu widoku ikonowego widoku udziałów."
+msgstr "Tryb widoku widoku zasobów:"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Settings for the list view:"
 msgid "Icon size for the list view:"
-msgstr "Rozmiar ikon dla widoku listy:"
+msgstr "Ustawienia widoku listy:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:98
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Ustaw rozmiar ikon dla trybu widoku listy widoku udziałów."
+msgstr "Tryb widoku widoku zasobów:"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Icon View"
 msgid "Icon size:"
-msgstr "Rozmiar ikon:"
+msgstr "Widok ikon"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The advanced network neighborhood browser for KDE."
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "Ustaw rozmiar ikon dla przeglądarki otoczenia sieciowego."
+msgstr "Zaawansowana przeglądarka zasobów sieciowych dla KDE"
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -412,21 +419,27 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "SMB port:"
 msgid "Set the SMB port to:"
-msgstr "Ustaw port SMB na:"
+msgstr "Port SMB:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the port that is used for connecting to remote servers with the "
+#| "client programs net, smbclient and smbtree. The default value is 139 "
+#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"Jest to port używany do połączeń ze zdalnymi serwerami. Domyślna wartość "
-"wynosi 139 (NetBIOS). W FreeBSD ustawienia tego nie używa się do podpinania."
+"Jest to port używany do połączeń ze zdalnymi serwerami przy pomocy programów "
+"net, smbclient i smbtree. Domyślna wartość wynosi 139 (NetBIOS). W FreeBSD "
+"ustawienia tego nie używa się do podpinania."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -497,9 +510,10 @@ msgstr "Stosuj Winbind ccache do uwierzytelniania."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Encryption level:"
 msgid "Set the encryption level to:"
-msgstr "Ustaw poziom szyfrowania na:"
+msgstr "Poziom szyfrowania:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
@@ -583,7 +597,13 @@ msgstr "Włącz funkcje Wake-On-LAN"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#| "magic package send via a UDP socket to wake up remote servers. If you "
+#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#| "this option."
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -604,7 +624,11 @@ msgstr "Czas oczekiwania:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the waiting time in seconds between the sending of the magic Wake-"
+#| "On-LAN packages and the scanning of the network neighborhood or the "
+#| "mounting of a share."
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -1042,7 +1066,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr "Zachowaj listy sterowania dostępem (ACL)"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1053,58 +1077,66 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
-"Listy sterowania dostępem. Zleca rsync uaktualnienie docelowych ACL na "
-"wartości te same co źródłowe ACL. Ustawienie to pociąga za sobą także --"
-"perms. Systemy źródłowy i docelowy muszą mieć zgodne wpisy ACL, aby to "
-"ustawienie zadziałało poprawnie."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve extended attributes"
-msgstr "Zachowaj właściwości rozszerzone"
+msgstr "Zachowaj czasy"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Zachowywanie właściwości rozszerzonych. Zleca rsync ustawienie właściwości "
-"rozszerzonych pliku docelowego na te same wartości co pliku źródłowego."
+"Zachowaj grupę (-g, --group). Pliki docelowy i źródłowy będą należały do tej "
+"samej grupy."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve access times"
-msgstr "Zachowaj czasy dostępu"
+msgstr "Zachowaj czasy"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Zachowywanie czasów dostępu. Zleca rsync ustawienie czasów dostępu (użycia) "
-"pliku docelowego na te same wartości co pliku źródłowego."
+"Zachowaj grupę (-g, --group). Pliki docelowy i źródłowy będą należały do tej "
+"samej grupy."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve create times"
-msgstr "Zachowaj czasy utworzenia"
+msgstr "Zachowaj czasy"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Zachowywanie czasów utworzenia. Zleca rsync ustawienie czasów utworzenia "
-"(nowości) pliku docelowego na te same wartości co pliku źródłowego."
+"Zachowaj grupę (-g, --group). Pliki docelowy i źródłowy będą należały do tej "
+"samej grupy."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402
@@ -1598,9 +1630,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Custom filter rules:"
 msgid "Custom filter rules"
-msgstr "Własne zasady filtrowania"
+msgstr "Własne zasady filtrowania:"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -1813,7 +1846,7 @@ msgstr "Katalog kopii zapasowych"
 #: smb4k.kcfg:635
 #, kde-format
 msgid "Force fixed checksum block size:"
-msgstr "Wymuś stały rozmiar bloku sumy sprawdzającej:"
+msgstr "Wymuś stały rozmiar bloku sumy kontrolnej:"
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
 #: smb4k.kcfg:636
@@ -1822,8 +1855,8 @@ msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
 "block size used in the rsync algorithm to a fixed value."
 msgstr ""
-"Wymuś stały rozmiar sumy sprawdzającej (-B, --block-size=ROZMIAR). Opcja ta "
-"wymusza użycie przez rsync zdefiniowanego rozmiaru sumy sprawdzającej."
+"Wymuś stały rozmiar sumy kontrolnej (-B, --block-size=ROZMIAR). Opcja ta "
+"wymusza użycie przez rsync zdefiniowanego rozmiaru sumy kontrolnej."
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
 #: smb4k.kcfg:640
@@ -1835,7 +1868,7 @@ msgstr "Rozmiar bloku"
 #: smb4k.kcfg:646
 #, kde-format
 msgid "Set block/file checksum seed:"
-msgstr "Ustaw wartość początkową sumy sprawdzającej pliku/bloku:"
+msgstr "Ustaw wartość początkową sumy kontrolnej pliku/bloku:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
 #: smb4k.kcfg:647
@@ -1846,12 +1879,11 @@ msgid ""
 "and file MD4 checksum calculation. By default the checksum seed is generated "
 "by the server and defaults to the current time."
 msgstr ""
-"Ustawia sumę sprawdzającą bloku/pliku rozsiewającego (--checksum-seed=NUM). "
-"Ustaw sumę sprawdzającą MD4 rozsiewającego do tej l. całkowitej. Ta 4 "
-"bajtowa suma sprawdzająca rozsiewającego jest dołączona do każdego "
-"obliczania sumy sprawdzającej MD4 bloku i pliku. Domyślnie suma sprawdzająca "
-"rozsiewającego jest generowana przez serwer i domyślną wartością jest "
-"bieżący czas."
+"Ustawia sumę kontrolną bloku/pliku rozsiewającego (--checksum-seed=NUM). "
+"Ustaw sumę kontrolną MD4 rozsiewającego do tej l. całkowitej. Ta 4 bajtowa "
+"suma kontrolna rozsiewającego jest dołączona do każdego obliczania sumy "
+"kontrolnej MD4 bloku i pliku. Domyślnie suma kontrolna rozsiewającego jest "
+"generowana przez serwer i domyślną wartością jest bieżący czas."
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
 #: smb4k.kcfg:651
@@ -1863,7 +1895,7 @@ msgstr "Wartość dla opcji UseChecksumSeed"
 #: smb4k.kcfg:657
 #, kde-format
 msgid "Skip files based on checksum"
-msgstr "Pomijaj przenoszenie plików na podstawie sumy sprawdzającej"
+msgstr "Pomijaj przenoszenie plików na podstawie sumy kontrolnej"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
 #: smb4k.kcfg:658
@@ -2030,9 +2062,10 @@ msgid "Clear"
 msgstr "Wyczyść"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "Nazwa użytkownika:"
+msgstr "Użytkownik:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -2064,18 +2097,16 @@ msgstr "Nie można wydrukować pliku %1 na %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
-"Usługa Zeroconf nie jest uruchomiona. Żaden serwer nie jest wykrywany przy "
-"użyciu DNS-SD."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr "Obsługa Zeroconf jest niedostępna w tej wersji KDE."
+msgstr ""
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr "Wystąpił nieznany błąd z Zeroconf."
+msgstr ""
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2155,23 +2186,28 @@ msgid "Print"
 msgstr "Drukuj"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
 msgid "Custom Settings"
-msgstr "Własne ustawienia"
+msgstr "Ustawienia podpinania"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#| "provides.</p>"
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Określ własne ustawienia dla gospodarza <b>%1</b> i wszystkich zasobów "
-"jakie on zapewnia.</p>"
+"<p>Określ własne opcje dla gospodarza <b>%1</b> i wszystkich zasobów jakie "
+"on zapewnia.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Określ własne ustawienia dla zasobu <b>%1</b>.</p>"
+msgstr "<p>Określ własne opcje dla zasobu <b>%1</b>.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709
@@ -2241,13 +2277,15 @@ msgstr "Działania"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Wyślij magiczny pakiet przed przeszukaniem otoczenia sieciowego"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Wyślij magiczny pakiet przed podpięciem zasobu"
 
@@ -2297,13 +2335,16 @@ msgid "Clear List"
 msgstr "Wyczyść listę"
 
 #: smb4kmounter.cpp:756
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<p>Zasób <b>%1</b> jest podpięty w <br><b>%2</b> i należy do użytkownika <b>"
-"%3</b>.</p><p>Czy na pewno chcesz go odpiąć?</p>"
+"<qt><p>Zasób <b>%1</b> jest podpięty w <br><b>%2</b> i należy do użytkownika "
+"<b>%3</b>.</p><p>Czy na pewno chcesz go odpiąć?</p></qt>"
 
 #: smb4kmounter.cpp:761
 #, kde-format
@@ -3257,7 +3298,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr "Nie wysyłaj próśb o blokadę zakresu bajtów"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3268,10 +3309,6 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
-"Nie wysyłaj próśb o blokadę zakresu bajtów. Jest to wymagane dla aplikacji, "
-"które nie współpracują poprawnie z wymaganymi blokadami zakresu bajtów CIFS "
-"(a większość serwerów CIFS jeszcze nie obsługuje blokad zakresów bajtów na "
-"zasadzie rad)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3509,7 +3546,8 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Zasób <b>%1</b> został podpięty do <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open"
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Otwórz"
@@ -3705,7 +3743,7 @@ msgstr ""
 #: smb4knotification.cpp:404
 #, kde-format
 msgid "<p>Executing an action with root privileges failed.</p>"
-msgstr "<p>Nieudane wykonanie działania z uprawnieniami administratora.</p>"
+msgstr "<p>Nie udało się wykonać działania z uprawnieniami administratora.</p>"
 
 #: smb4knotification.cpp:416
 #, kde-format
@@ -3713,17 +3751,19 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>Podany adres URL jest nieprawidłowy.</p>"
 
 #: smb4knotification.cpp:424
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The network communication failed with the following error message: <s>%1</"
+#| "s>"
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
-msgstr ""
-"<p>Połączenie sieciowe nie udało się i zwraca następujący błąd: <s>%1</s></p>"
+msgstr "Połączenie sieciowe nie udało się i zwraca następujący błąd: <s>%1</s>"
 
 #: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr "<p>Wystąpił nieznany błąd z Zeroconf: <s>%1</s></p>"
+msgstr ""
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
@@ -3856,22 +3896,6 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Ustawienia własne"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Nie używaj blokowania"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Nie używaj blokowania. Nie uruchamiaj lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Brakuje pliku ustawień <b>smb.conf</b> dla pakietu Samby. Nie jest to "
-#~ "błąd krytyczny, lecz zaleca się stworzenie takiego pliku."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "Nazwa NetBIOS:"
 
@@ -3893,6 +3917,22 @@ msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt
 #~ msgid "Login:"
 #~ msgstr "Nazwa użytkownika:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Ustawienia własne"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Nie używaj blokowania"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Nie używaj blokowania. Nie uruchamiaj lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Brakuje pliku ustawień <b>smb.conf</b> dla pakietu Samby. Nie jest to "
+#~ "błąd krytyczny, lecz zaleca się stworzenie takiego pliku."
+
 #~ msgid "Group:"
 #~ msgstr "Grupa:"
 
@@ -3902,24 +3942,8 @@ msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt
 #~ msgid "Group name:"
 #~ msgstr "Nazwa grupy:"
 
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Proszę podać nazwę użytkownika i hasło dla zasobu <b>%1 na %2</b>.</"
-#~ "qt>"
-
-#~ msgid "Unknown error"
-#~ msgstr "Nieznany błąd"
-
 #~ msgid "Out of memory"
 #~ msgstr "Brak pamięci"
-
-#~ msgid "NULL context given"
-#~ msgstr "Podano kontekst NULL"
-
-#~ msgid "The smb.conf file would not load"
-#~ msgstr "Nie można wczytać pliku smb.conf"
 
 #~ msgid "Permission denied"
 #~ msgstr "Odmówiono uprawnienia"
@@ -3934,16 +3958,307 @@ msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt
 #~ msgstr "Nazwa nie jest katalogiem"
 
 #~ msgid "Operation not permitted"
-#~ msgstr "Działanie jest niedozwolone"
+#~ msgstr "Działanie niedozwolone"
 
 #~ msgid "The workgroup or server could not be found"
 #~ msgstr "Nie można znaleźć grupy roboczej lub serwera"
+
+#~ msgid "Unknown error"
+#~ msgstr "Nieznany błąd"
 
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Nie można ustawić zadania drukowania (krok 1)"
 
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Nie można ustawić zadania drukowania (krok 2)"
+
+#~ msgid "NULL context given"
+#~ msgstr "Podano kontekst NULL"
+
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "Nie można wczytać pliku smb.conf"
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Proszę podać nazwę użytkownika i hasło dla zasobu <b>%1 na %2</b>.</"
+#~ "qt>"
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Przeszukuj sieć w poszukiwaniu dostępnych grup roboczych i domen"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Jest to domyślna metoda pobierania początkowej listy przeglądania. "
+#~ "Znajduje wszystkie grupy robocze i domeny przez przeszukania wszystkich "
+#~ "znanych serwerów nadrzędnych w Twoim otoczeniu sieciowym."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Odpytaj nadrzędny serwer przeglądania dla grupy"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Nadrzędny serwer przeglądania dla grupy roboczej jest odpytywany w celu "
+#~ "pobrania początkowej listy przeglądania."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Odpytaj własny serwer przeglądania:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Własny serwer przeglądania dla grupy roboczej jest odpytywany w celu "
+#~ "pobrania początkowej listy przeglądania."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "Własny serwer przeglądania do odpytywania"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Podaj nazwę lub adres IP nadrzędnego serwera przeglądania, który ma "
+#~ "zostać odpytany w celu utworzenia początkowej listy przeglądania."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "Do utworzenia list przeglądania nadrzędne serwery przeglądania wymagają "
+#~ "uwierzytelnienia"
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Okresowo przeszukuj otoczenie sieciowe"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Okresowo przeszukuj otoczenie sieciowe pod kątem wszystkich dostępnych "
+#~ "grup roboczych, gospodarzy i udziałów."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Odstęp między skanowaniami:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Jest to czas w minutach, który upływa zanim Smb4K ponownie przeszukaj "
+#~ "otoczenie sieciowe pod kątem nowych grup roboczych, gospodarzy i udziałów."
+
+#~ msgid "Lookup method for IP addresses:"
+#~ msgstr "Sposób wyszukiwania adresów IP:"
+
+#~ msgid ""
+#~ "Define the method that is to be used to detect the IP addresses of the "
+#~ "hosts."
+#~ msgstr "Określ sposób wykorzystywany do wykrywania adresów IP gospodarzy."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Użyj polecenia nmblookup"
+
+#~ msgid "Use net command"
+#~ msgstr "Użyj polecenia net"
+
+#~ msgid "Socket options:"
+#~ msgstr "Opcje gniazda:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Są to opcje gniazda TCP, które są używane przez nmblookup i smbclient. "
+#~ "Opcje gniazda są kontrolkami w warstwie sieciowej systemów operacyjnych, "
+#~ "które pozwalają na dostrojenie połączenia. Zajrzyj na stronę instrukcji "
+#~ "pliku smb.conf po więcej informacji."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "Zakres NetBIOS:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Ustawia to zakres NetBIOS, na którym nmblookup i smbclient będą operować. "
+#~ "Nie powinno być to ustawione, dopóki każdy komputer w twoim otoczeniu "
+#~ "sieciowym tego nie ustawi."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Spróbuj użyć Kerberos do uwierzytelniania"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Uwierzytelniaj za pomocą konta komputera"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Odpytaj zdalny serwer za pomocą konta komputera serwea lokalnego. "
+#~ "Ustawienia te wpływają na polecenia net, smbclient i smbtree."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Użyj Winbind ccache dla uwierzytelnienia. Ustawienie to wpływa na "
+#~ "polecenie net, smbclient i smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Stan podpisywania:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Ustaw stan podpisywania. To ustawienie wpływa na polecenia smbtree i "
+#~ "smbclient."
+
+#~ msgid "On"
+#~ msgstr "Wł."
+
+#~ msgid "Off"
+#~ msgstr "Wył."
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Szyfrowane przesyłanie SMB"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Szyfrowane przesyłanie SMB (tylko serwery z rozszerzeniem Unix). "
+#~ "Ustawienie to wpływa na polecenie net, smbclient i smbtree."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Kolejność poszukiwania nazw:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Opcja ta jest wykorzystywana do określenia rodzaju usług nazywających i "
+#~ "ich kolejności przy rozwiązywaniu nazw gospodarzy i adresów IP. Przyjmuje "
+#~ "listę, oddzieloną spacjami, czterech różnych opcji rozwiązywania nazw. "
+#~ "Opcje te to: lmhost, host, wins, bcast. Zajrzyj na stronę instrukcji "
+#~ "obsługi smbclient po więcej informacji."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Rozmiar bufora:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Ta opcja zmienia rozmiar bufora przesyłania plików z/na serwer. Domyślnie "
+#~ "jest to 65520 bajtów. Zmniejszenie tej wartości może przyspieszyć "
+#~ "transfer plików z/na serwery oparte na Windows 9x."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Adres rozgłaszania:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Zapytania wykonane przy pomocy nmblookup będą przesłane do określonego "
+#~ "adresu rozgłaszania. Bez tej opcji domyślnie zapytanie jest przesyłane do "
+#~ "adresu rozgłaszania interfejsu sieciowego, który jest wykrywany "
+#~ "automatycznie, lub zdefiniowany parametrem \"interfaces\" w pliku smb."
+#~ "conf."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr "Wykorzystaj port UDP 137 do przesyłania komunikatów UDP"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Spróbuj i binduj do portu UDP 137, aby wysłać i otrzymać datagramy UDP. "
+#~ "Powodem tych opcji jest błąd w Windows 95, który ignoruje port źródłowy "
+#~ "żądanego pakiety i odpowiada tylko na port UDP 137. Niestety na "
+#~ "większości systemów Uniksa potrzebne są uprawnienia super użytkownika, "
+#~ "aby bindować do tego portu. Proszę przeczytać stronę instrukcji nmblookup "
+#~ "po więcej informacji."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Wysyłaj żądania jako rozgłaszanie"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Pozwól smbtree odpytać węzły sieci przez wysłanie żądań jako rozsyłanie "
+#~ "zamiast odpytywania lokalnej głównej przeglądarki."
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Nie ignoruj plików pasujących do tego wzorca:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "Wartość początkowa sumy kontrolnej"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Wyczyść zakładki"
+
+#~ msgid "General"
+#~ msgstr "Ogólne"
+
+#~ msgid "UNC Address:"
+#~ msgstr "Adres UNC:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "Port SMB:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Port systemu plików:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Prawo zapisu:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Tryb bezpieczeństwa:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Określ własne opcje dla udziału <b>%1</b> na hoście <b>%2</b>.</p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Uniform Naming Convention (UNC) - konwencja zapisu ścieżki do pliku - "
+#~ "określa lokalizację zasobu i posiada następującą składnię: //"
+#~ "[UZYTKOWNIK@]GOSPODARZ/ZASOB. Nazwa użytkownika jest opcjonalna."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Strona kodowa serwera:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Wpis własnej głównej przeglądarki jest pusty. Smb4K spróbuje odpytać "
+#~ "obecną główną przeglądarkę twojej grupy roboczej lub domeny."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -4001,172 +4316,8 @@ msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt
 #~ "<p>Nieudane przeszukiwanie otoczenia sieciowego za znajdywanym elementem "
 #~ "<b>%1</b>.</p>"
 
-#~ msgid "Remounting"
-#~ msgstr "Ponowne podpinanie"
-
-#~ msgid "UNC Address:"
-#~ msgstr "Adres UNC:"
-
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "Uniform Naming Convention (UNC) - konwencja zapisu ścieżki do pliku - "
-#~ "określa lokalizację zasobu i posiada następującą składnię: //"
-#~ "[UZYTKOWNIK@]GOSPODARZ/ZASOB. Nazwa użytkownika jest opcjonalna."
-
-#~ msgid "The master browsers require authentication to return the browse list"
-#~ msgstr ""
-#~ "Do utworzenia list przeglądania nadrzędne serwery przeglądania wymagają "
-#~ "uwierzytelnienia"
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Spróbuj użyć Kerberos do uwierzytelniania"
-
-#~ msgid ""
-#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
-#~ "query the current master browser of your workgroup or domain instead."
-#~ msgstr ""
-#~ "Wpis własnej głównej przeglądarki jest pusty. Smb4K spróbuje odpytać "
-#~ "obecną główną przeglądarkę twojej grupy roboczej lub domeny."
-
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Nie określono obszarów nadawania.</p>"
-
-#~ msgid "Socket options:"
-#~ msgstr "Opcje gniazda:"
-
-#~ msgid ""
-#~ "These are the TCP socket options that are used by nmblookup and "
-#~ "smbclient. Socket options are controls on the networking layer of the "
-#~ "operating systems which allow the connection to be tuned. See the manual "
-#~ "page of smb.conf for more information."
-#~ msgstr ""
-#~ "Są to opcje gniazda TCP, które są używane przez nmblookup i smbclient. "
-#~ "Opcje gniazda są kontrolkami w warstwie sieciowej systemów operacyjnych, "
-#~ "które pozwalają na dostrojenie połączenia. Zajrzyj na stronę instrukcji "
-#~ "pliku smb.conf po więcej informacji."
-
-#~ msgid "NetBIOS scope:"
-#~ msgstr "Zakres NetBIOS:"
-
-#~ msgid ""
-#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
-#~ "under. It should not be set unless every machine on your network "
-#~ "neighborhood sets this value."
-#~ msgstr ""
-#~ "Ustawia to zakres NetBIOS, na którym nmblookup i smbclient będą operować. "
-#~ "Nie powinno być to ustawione, dopóki każdy komputer w twoim otoczeniu "
-#~ "sieciowym tego nie ustawi."
-
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Uwierzytelniaj za pomocą konta komputera"
-
-#~ msgid ""
-#~ "Make queries to the remote server using the machine account of the local "
-#~ "server. The setting affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Odpytaj zdalny serwer za pomocą konta komputera serwea lokalnego. "
-#~ "Ustawienia te wpływają na polecenia net, smbclient i smbtree."
-
-#~ msgid ""
-#~ "Use the Winbind ccache for authentication. This setting affects the net, "
-#~ "smbclient and smbtree command."
-#~ msgstr ""
-#~ "Użyj Winbind ccache dla uwierzytelnienia. Ustawienie to wpływa na "
-#~ "polecenie net, smbclient i smbtree."
-
-#~ msgid "Signing state:"
-#~ msgstr "Stan podpisywania:"
-
-#~ msgid ""
-#~ "Set the signing state. This setting affects the smbclient and smbtree "
-#~ "command."
-#~ msgstr ""
-#~ "Ustaw stan podpisywania. To ustawienie wpływa na polecenia smbtree i "
-#~ "smbclient."
-
-#~ msgid "On"
-#~ msgstr "Wł."
-
-#~ msgid "Off"
-#~ msgstr "Wył."
-
-#~ msgid "Required"
-#~ msgstr "Wymagany"
-
-#~ msgid "Encrypt SMB transport"
-#~ msgstr "Szyfrowane przesyłanie SMB"
-
-#~ msgid ""
-#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
-#~ "affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Szyfrowane przesyłanie SMB (tylko serwery z rozszerzeniem Unix). "
-#~ "Ustawienie to wpływa na polecenie net, smbclient i smbtree."
-
-#~ msgid "Send requests as broadcasts"
-#~ msgstr "Wysyłaj żądania jako rozgłaszanie"
-
-#~ msgid ""
-#~ "Let smbtree query the network nodes by sending requests as broadcasts "
-#~ "instead of querying the local master browser."
-#~ msgstr ""
-#~ "Pozwól smbtree odpytać węzły sieci przez wysłanie żądań jako rozsyłanie "
-#~ "zamiast odpytywania lokalnej głównej przeglądarki."
-
-#~ msgid "Directory mask:"
-#~ msgstr "Maska katalogu:"
-
-#~ msgid "unknown"
-#~ msgstr "nieznany"
-
-#~ msgid "File"
-#~ msgstr "Plik"
-
-#~ msgid "Options"
-#~ msgstr "Opcje"
-
-#~ msgid "Options >>"
-#~ msgstr "Opcje >>"
-
-#~ msgid "Options <<"
-#~ msgstr "Opcje <<"
-
-#~ msgid "Name resolve order:"
-#~ msgstr "Kolejność poszukiwania nazw:"
-
-#~ msgid ""
-#~ "This option is used to determine what naming services and in what order "
-#~ "are used to resolve host names and IP addresses. It takes a space-"
-#~ "separated list of up to four different name resolution options. Those "
-#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
-#~ "further information."
-#~ msgstr ""
-#~ "Opcja ta jest wykorzystywana do określenia rodzaju usług nazywających i "
-#~ "ich kolejności przy rozwiązywaniu nazw gospodarzy i adresów IP. Przyjmuje "
-#~ "listę, oddzieloną spacjami, czterech różnych opcji rozwiązywania nazw. "
-#~ "Opcje te to: lmhost, host, wins, bcast. Zajrzyj na stronę instrukcji "
-#~ "obsługi smbclient po więcej informacji."
-
-#~ msgid "Buffer size:"
-#~ msgstr "Rozmiar bufora:"
-
-#~ msgid ""
-#~ "This option changes the transmit/send buffer size when getting or putting "
-#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
-#~ "smaller has been observed to speed up file transfers to and from Windows "
-#~ "9x servers."
-#~ msgstr ""
-#~ "Ta opcja zmienia rozmiar bufora przesyłania plików z/na serwer. Domyślnie "
-#~ "jest to 65520 bajtów. Zmniejszenie tej wartości może przyspieszyć "
-#~ "transfer plików z/na serwery oparte na Windows 9x."
-
-#, fuzzy
-#~| msgid "The network browser could not be created."
-#~ msgid "The workgroup could not be found"
-#~ msgstr "Nie można utworzyć przeglądarki sieci."
 
 #~ msgid "The preview is displayed here."
 #~ msgstr "Tutaj wyświetlany jest podgląd."
@@ -4185,145 +4336,17 @@ msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt
 #~ "Pokazany jest tutaj bieżący adres UNC. Poprzednio odwiedzane lokalizacje "
 #~ "można wybrać z rozwijalnego menu widocznego w górnej części."
 
-#~ msgid "Broadcast address:"
-#~ msgstr "Adres rozgłaszania:"
+#~ msgid "File"
+#~ msgstr "Plik"
 
-#~ msgid ""
-#~ "Queries performed with nmblookup will be send to the given broadcast "
-#~ "address. Without this option the default behavior is to send the queries "
-#~ "to the broadcast address of the network interface that was either auto-"
-#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
-#~ msgstr ""
-#~ "Zapytania wykonane przy pomocy nmblookup będą przesłane do określonego "
-#~ "adresu rozgłaszania. Bez tej opcji domyślnie zapytanie jest przesyłane do "
-#~ "adresu rozgłaszania interfejsu sieciowego, który jest wykrywany "
-#~ "automatycznie, lub zdefiniowany parametrem \"interfaces\" w pliku smb."
-#~ "conf."
+#~ msgid "Options"
+#~ msgstr "Opcje"
 
-#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
-#~ msgstr "Wykorzystaj port UDP 137 do przesyłania komunikatów UDP"
+#~ msgid "Options >>"
+#~ msgstr "Opcje >>"
 
-#~ msgid ""
-#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
-#~ "reason for this option is a bug in Windows 95 where it ignores the source "
-#~ "port of the requesting packet and only replies to UDP port 137. "
-#~ "Unfortunately, on most Unix systems super user privileges are needed to "
-#~ "bind to this port. Please read the manual page of nmblookup for more "
-#~ "information."
-#~ msgstr ""
-#~ "Spróbuj i binduj do portu UDP 137, aby wysłać i otrzymać datagramy UDP. "
-#~ "Powodem tych opcji jest błąd w Windows 95, który ignoruje port źródłowy "
-#~ "żądanego pakiety i odpowiada tylko na port UDP 137. Niestety na "
-#~ "większości systemów Uniksa potrzebne są uprawnienia super użytkownika, "
-#~ "aby bindować do tego portu. Proszę przeczytać stronę instrukcji nmblookup "
-#~ "po więcej informacji."
-
-#~ msgid "Scan the network neighborhood periodically"
-#~ msgstr "Okresowo przeszukuj otoczenie sieciowe"
-
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr ""
-#~ "Okresowo przeszukuj otoczenie sieciowe pod kątem wszystkich dostępnych "
-#~ "grup roboczych, gospodarzy i udziałów."
-
-#~ msgid "Interval between scans:"
-#~ msgstr "Odstęp między skanowaniami:"
-
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr ""
-#~ "Jest to czas w minutach, który upływa zanim Smb4K ponownie przeszukaj "
-#~ "otoczenie sieciowe pod kątem nowych grup roboczych, gospodarzy i udziałów."
-
-#~ msgid "Lookup method for IP addresses:"
-#~ msgstr "Sposób wyszukiwania adresów IP:"
-
-#~ msgid ""
-#~ "Define the method that is to be used to detect the IP addresses of the "
-#~ "hosts."
-#~ msgstr "Określ sposób wykorzystywany do wykrywania adresów IP gospodarzy."
-
-#~ msgid "Use nmblookup command"
-#~ msgstr "Użyj polecenia nmblookup"
-
-#~ msgid "Use net command"
-#~ msgstr "Użyj polecenia net"
-
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr "Przeszukuj sieć w poszukiwaniu dostępnych grup roboczych i domen"
-
-#~ msgid ""
-#~ "This is the default method to retrieve the initial browse list. It "
-#~ "discovers all workgroups and domains by looking for all known master "
-#~ "browsers on your network neighborhood."
-#~ msgstr ""
-#~ "Jest to domyślna metoda pobierania początkowej listy przeglądania. "
-#~ "Znajduje wszystkie grupy robocze i domeny przez przeszukania wszystkich "
-#~ "znanych serwerów nadrzędnych w Twoim otoczeniu sieciowym."
-
-#~ msgid "Query the current workgroup master browser"
-#~ msgstr "Odpytaj nadrzędny serwer przeglądania dla grupy"
-
-#~ msgid ""
-#~ "This method queries the current master browser of your workgroup or "
-#~ "domain to retrieve the initial browse list."
-#~ msgstr ""
-#~ "Nadrzędny serwer przeglądania dla grupy roboczej jest odpytywany w celu "
-#~ "pobrania początkowej listy przeglądania."
-
-#~ msgid "Query this custom master browser:"
-#~ msgstr "Odpytaj własny serwer przeglądania:"
-
-#~ msgid ""
-#~ "This method queries a custom master browser to retrieve the initial "
-#~ "browse list."
-#~ msgstr ""
-#~ "Własny serwer przeglądania dla grupy roboczej jest odpytywany w celu "
-#~ "pobrania początkowej listy przeglądania."
-
-#~ msgid "A custom master browser that is to be queried"
-#~ msgstr "Własny serwer przeglądania do odpytywania"
-
-#~ msgid ""
-#~ "Enter the name or IP address of a master browser here that should be "
-#~ "queried to compile the initial browse list."
-#~ msgstr ""
-#~ "Podaj nazwę lub adres IP nadrzędnego serwera przeglądania, który ma "
-#~ "zostać odpytany w celu utworzenia początkowej listy przeglądania."
-
-#~ msgid "Server codepage:"
-#~ msgstr "Strona kodowa serwera:"
-
-#~ msgid "General"
-#~ msgstr "Ogólne"
-
-#~ msgid "SMB Port:"
-#~ msgstr "Port SMB:"
-
-#~ msgid "Filesystem Port:"
-#~ msgstr "Port systemu plików:"
-
-#~ msgid "Write Access:"
-#~ msgstr "Prawo zapisu:"
-
-#~ msgid "Security Mode:"
-#~ msgstr "Tryb bezpieczeństwa:"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr ""
-#~ "<p>Określ własne opcje dla udziału <b>%1</b> na hoście <b>%2</b>.</p>"
-
-#~ msgid "Do not exclude files matching this pattern:"
-#~ msgstr "Nie ignoruj plików pasujących do tego wzorca:"
-
-#~ msgid "The checksum seed"
-#~ msgstr "Wartość początkowa sumy sprawdzającej"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Wyczyść zakładki"
+#~ msgid "Options <<"
+#~ msgstr "Opcje <<"
 
 #~ msgid ""
 #~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
@@ -5012,6 +5035,9 @@ msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt
 
 #~ msgid "Checks"
 #~ msgstr "Sprawdzanie"
+
+#~ msgid "Notifications"
+#~ msgstr "Powiadomienia"
 
 #~ msgid "Bookmarks"
 #~ msgstr "Zakładki"

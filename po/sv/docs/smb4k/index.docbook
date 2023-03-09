@@ -382,11 +382,11 @@
 >Avahi</ulink
 > och inte en riktig &Windows;-domän. Att öppna en domän eller arbetsgrupp visar servrarna som hör till den. Om du vill komma åt delade resurser på någon av servrarna, måste du öppna önskad server.</para>
       <para
->Det finns också möjlighet att väcka sovande servrar innan nätverksgrannskapet söks igenom (väckning av lokalt nätverk). Om funktionen är tillgänglig, skickar &smb4k; ett magiskt paket till varje server som ska väckas, och väntar den definierade tiden innan uppslagningen av arbetsgrupper och domäner startas. Inställningen av väckning av lokalt nätverk kan sättas på i <link linkend="configuration_page_network_wake_on_lan_settings"
->inställningsdialogrutan</link
->. Servrarna som ska väckas måste definieras i dialogrutan <link linkend="network_neighborhood_browser_defining_custom_options"
->Anpassade alternativ</link
->.</para>
+>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic packet to each server that is to be awakened, then waits the defined time until it starts to look up the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan_settings"
+>configuration dialog</link
+>. The servers that should be awakened must be defined in the <link linkend="network_neighborhood_browser_defining_custom_options"
+>Custom Options</link
+> dialog.</para>
     </sect2>
     
 <!--
@@ -1039,8 +1039,8 @@
 >Bläddringsinställningar</title>
 
         <para
->Du kan definiera minimal och maximal SMB-protokollversion samt SMB-port som ska användas. Dessutom kan du bestämma om Kerberos ska användas för behörighetskontroll. För detaljerad information om dessa inställningar, titta på <link linkend="configuration_page_network"
->nätverksinställningssidan</link
+>You can define the minimal and maximal SMB protocol versions as well as the SMB port to be used. In addition, you can decide if Kerberos should be used for authentication. For detailed information on these settings, please see <link linkend="configuration_page_network"
+>the network configuration page</link
 >.</para>
       </sect3>
 
@@ -1049,7 +1049,7 @@
 >Inställningar av väckning av lokalt nätverk</title>
     
         <para
->För att få funktionen för att väckas av lokalt nätverk att fungera, måste MAC-adressen för servern som valdes tillhandahållas. &smb4k; har inget sätt att bestämma MAC-adressen, så du måste ta reda på den själv. Därefter kan du definiera att &smb4k; ska skicka ett magiskt paket för väckning av lokalt nätverk till den valda värddatorn innan nätverksgrannskapet söks igenom och/eller någon av dess delade resurser monteras.</para>
+>To make the Wake-On-LAN feature work, you must provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN packet to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
       </sect3>
     </sect2>
 
@@ -1084,7 +1084,7 @@
 
   <sect1 id="shares_view">
     <title
->Visning av monterade resurser</title>
+>Visning av delade resurser</title>
 
     <para
 >I visningen av delade resurser kan du hantera resurserna monterade på systemet.</para>
@@ -3086,7 +3086,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Protokollet webbtjänst dynamisk upptäckt (WS-Discovery) används för att bläddra i det lokala nätverket och upptäcka arbetsgrupper, domäner och värddatorer. Det är användbart om nätverksgrannskapet domineras av servrar med moderna &Windows;-versioner. Om alternativet används, finns det ingen anledning att tvinga &Samba;s klientbibliotek att använda SMB-protokoll version 1.0 för att söka efter arbetsgrupper och domäner.</para>
+>The Web Services Dynamic Discovery (WS-Discovery) protocol is used to browse the local network and discover workgroups, domains and hosts. This is useful if your network neighborhood is dominated by servers with modern &Windows; versions. If you use this option, there should be no need to force &Samba;'s client library to use the SMB protocol version 1.0 to search for workgroups and domains.</para>
               <note
 ><para
 >Inställningen är valfri, och visas bara om &smb4k; kompilerades med stöd för WS-Discovery.</para
@@ -3104,7 +3104,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Gränssnittet DNS-tjänstupptäckt (DNS-SD) används för bläddra i det lokala nätverket och upptäcka servrar som tillhandahåller delade SMB-resurser De upptäckta domänerna motsvarar de lokala DNS-domänerna (t.ex. benämnda LOCAL) och troligtvis inte de som är definierade i nätverksgrannskapet. Dock påverkar inte det bläddringen. Om alternativet används, finns det inget behov av att tvinga &Samba; att använda SMB-protokoll version 1.0 vid sökning efter arbetsgrupper och domäner.</para>
+>Webbtjänst dynamisk upptäckt (WS-Discovery) används för att bläddra i det lokala nätverket och upptäcka arbetsgrupper, domäner och värddatorer. Det är användbart om nätverksgrannskapet domineras av servrar med moderna &Windows;-versioner. Om alternativet används, finns det ingen anledning att tvinga &Samba;s klientbibliotek att använda SMB-protokoll version 1.0 för att söka efter arbetsgrupper och domäner.</para>
               <para
 >Förval: valt</para>
             </listitem>
@@ -3134,9 +3134,9 @@ ntlm auth = yes
               <para
 >Ställ in den minsta och största SMB-protokollversion som används av &Samba;s klientbibliotek för att bläddra i nätverksgrannskapet. Det överskrider inställningarna i filen smb.conf. Normalt behöver inte alternativet användas, eftersom rätt protokollversion ska förhandlas mellan klienten och servern när anslutningen upprättas. Observera att inställningen kanske inte är lämplig för att göra att upptäckt av arbetsgrupper och domäner fungerar medan anslutning till servrar förblir ostörd. Använd istället  DNS-tjänstupptäckt  (DNS-SD) eller Webbtjänst dynamisk upptäckt (WS-Discovery) för uppslagning av domäner eller arbetsgrupper.</para>
               <para
->Inställningarna nedan för minsta och största SMB-protokollversion aktiveras genom att markera kryssrutan.</para>
+>The settings below for the minimal and maximal SMB protocol version are enabled by checking this checkbox.</para>
               <para
->Den största SMB-protokollversionen måste vara lika med eller större än den minsta SMB-protokollversionen.</para>
+>The maximal SMB protocol version must be equal to or greater than the minimal SMB protocol version.</para>
               <para
 >Förval: inte valt</para>
               <variablelist>
@@ -3525,7 +3525,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Aktivera väckning av lokalt nätverk (WOL) funktionerna. Väckning av lokalt nätverk är en nätverksstandard för datorer med Ethernet, som låter en dator sättas på eller väckas av ett nätverksmeddelande. Smb4K använder ett magiskt paket som skickas via ett UDP-uttag för att väcka fjärrservrar. Om du vill dra nytta av funktionen för att väckas av lokalt nätverk, måste det här alternativet aktiveras.</para>
+>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic packet send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
             <para
 >Förval: inte valt</para>
             <variablelist>
@@ -3538,7 +3538,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Det här är väntetiden i sekunder mellan att det magiska paketet för att väckas av lokalt nätverk skickas, och sökningen av nätverksgrannskapet eller montering av en delad resurs.</para>
+>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packets and the scanning of the network neighborhood or the mounting of a share.</para>
                   <para
 >Förval: 5 s</para>
                 </listitem>
@@ -8376,11 +8376,11 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
+> <keycombo action="simul"
+>&Ctrl;<keycap
 >B</keycap
 ></keycombo
-></shortcut
+> </shortcut
 > <guimenu
 >Bokmärken</guimenu
 > <guimenuitem

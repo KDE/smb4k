@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2009-11-15 12:06+0100\n"
 "Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -3465,16 +3465,6 @@ msgstr ""
 #~ msgstr "nekonata"
 
 #, fuzzy
-#~| msgid "Mount point:"
-#~ msgid "Remounting"
-#~ msgstr "Surmetingo:"
-
-#, fuzzy
-#~| msgid "IP Address"
-#~ msgid "UNC Address:"
-#~ msgstr "IP-adreso"
-
-#, fuzzy
 #~| msgid "Authentication"
 #~ msgid "Try to authenticate with Kerberos"
 #~ msgstr "Aŭtentigo"
@@ -3482,46 +3472,23 @@ msgstr ""
 #~ msgid "Off"
 #~ msgstr "Neniam"
 
-#~ msgid "Required"
-#~ msgstr "Postulita"
-
-#, fuzzy
-#~| msgid "Directories"
-#~ msgid "Directory mask:"
-#~ msgstr "Dosierujoj"
-
-#~ msgid "unknown"
-#~ msgstr "nekonata"
-
-#~ msgid "File"
-#~ msgstr "Dosiero"
-
-#~ msgid "Options"
-#~ msgstr "Opcioj"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options >>"
-#~ msgstr "Opcioj"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options <<"
-#~ msgstr "Opcioj"
-
-#~ msgid "Back"
-#~ msgstr "Reen"
-
-#~ msgid "Forward"
-#~ msgstr "Antaŭen"
-
 #, fuzzy
 #~| msgid "IP address:"
 #~ msgid "Broadcast address:"
 #~ msgstr "IP-adreso:"
 
+#, fuzzy
+#~| msgid "Bookmarks"
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Legosignoj"
+
 #~ msgid "General"
 #~ msgstr "Ĝeneralo"
+
+#, fuzzy
+#~| msgid "IP Address"
+#~ msgid "UNC Address:"
+#~ msgstr "IP-adreso"
 
 #, fuzzy
 #~| msgid "Port"
@@ -3533,10 +3500,24 @@ msgstr ""
 #~ msgid "Filesystem Port:"
 #~ msgstr "Dosiersistemo"
 
+#~ msgid "Back"
+#~ msgstr "Reen"
+
+#~ msgid "Forward"
+#~ msgstr "Antaŭen"
+
+#~ msgid "File"
+#~ msgstr "Dosiero"
+
 #, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Legosignoj"
+#~| msgid "Options"
+#~ msgid "Options >>"
+#~ msgstr "Opcioj"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Options <<"
+#~ msgstr "Opcioj"
 
 #, fuzzy
 #~| msgid "File system:"
@@ -3682,6 +3663,11 @@ msgstr ""
 
 #~ msgid "Directories"
 #~ msgstr "Dosierujoj"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "Notifications"
+#~ msgstr "Agoj"
 
 #~ msgid "Columns"
 #~ msgstr "Kolumnoj"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-02-22 14:10+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2023-02-03 14:11+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -55,9 +55,10 @@ msgstr ""
 "Pokročilý prohlížeč síťového okolí a nástroj na připojování úložišť Samba"
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -133,9 +134,10 @@ msgid "Add &Bookmark"
 msgstr "Přid&at záložku"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Připojit záložky"
+msgstr "Záložky"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -163,9 +165,10 @@ msgid "Synchronization"
 msgstr "Synchronizace"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Vlastní nastavení"
+msgstr "Obecné nastavení"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -232,17 +235,17 @@ msgstr ""
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "Nastavte uživatelské jméno a heslo pro položku %1 v úschovně."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr "Nastavte uživatelské jméno a heslo pro výchozí přihlášení."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Všechno v pořádku."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -358,7 +361,7 @@ msgstr "Procházet nastavení"
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, kde-format
@@ -377,19 +380,22 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Pokročilá nastavení"
+msgstr "Pokročilá nastavení připojení"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "Synchronizační adresář"
+msgstr "Synchronizace"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Zálohy"
+msgstr "Záloha"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -409,17 +415,18 @@ msgstr "Manipulace se soubory"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "Atributy souboru"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
-msgstr "Vlastnictví"
+msgstr "Vlastník:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Atributy souborů a vlastnictví"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -435,7 +442,7 @@ msgstr "Soubory"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr " kB"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -447,7 +454,7 @@ msgstr "Různé"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kB/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -472,7 +479,7 @@ msgstr "Vymazání souboru"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr "Obecná nastavení filtrování"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -656,9 +663,10 @@ msgstr "&Hledat"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Přidat vla&stní nastavení"
+msgstr "Pokročilá nastavení připojení"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -882,9 +890,10 @@ msgid "Mountpoint:"
 msgstr "Místo připojení:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Uživatelské jméno:"
+msgstr "Uživatelské rozhraní"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -900,3 +909,63 @@ msgstr "Souborový systém:"
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
+
+#~ msgid "Custom Options"
+#~ msgstr "Vlastní možnosti"
+
+#~ msgid "Details"
+#~ msgstr "Podrobnosti"
+
+#~ msgid "Entry"
+#~ msgstr "Záznam"
+
+#~ msgid "Login"
+#~ msgstr "Přihlášení"
+
+#~ msgid "Password"
+#~ msgstr "Heslo"
+
+#~ msgid "Identification"
+#~ msgstr "Identifikace"
+
+#~ msgid "Network Item"
+#~ msgstr "Položka sítě"
+
+#~ msgid "MAC Address"
+#~ msgstr "Mac adresa"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC adresa:"
+
+#~ msgid "Actions"
+#~ msgstr "Činnosti"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Nastavení Wake-On-LAN"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Vždy znovu připojit toto sdílení"
+
+#~ msgid "Security"
+#~ msgstr "Bezpečnost"
+
+#~ msgid "Samba Settings"
+#~ msgstr "Nastavení Samba"
+
+#~ msgid "Default Destination"
+#~ msgstr "Standardní cíl"
+
+#~ msgid "Permissions, etc."
+#~ msgstr "Oprávnění, atd."
+
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Vlast&ní možnosti"
+
+#~ msgid "Login:"
+#~ msgstr "Přihlášení:"

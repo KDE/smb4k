@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015.
 # Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2019-07-13 12:45+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2019-05-28 20:42+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -90,39 +90,6 @@ msgstr "Desmontar"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Desmontar todas as comparticións"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Editar os marcadores"
-
-#~ msgid "OK"
-#~ msgstr "Aceptar"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Clear"
-#~ msgstr "Borrar"
-
-#~ msgid "Label:"
-#~ msgstr "Etiqueta:"
-
-#~ msgid "Login:"
-#~ msgstr "Acceso:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Enderezo IP:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nome do grupo:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Marcadores raíz"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Eliminar o marcador"
-
-#~ msgid "Add Group"
-#~ msgstr "Engadir un grupo"
 
 #~ msgid "Back"
 #~ msgstr "Atrás"

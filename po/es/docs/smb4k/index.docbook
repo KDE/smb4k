@@ -11,17 +11,11 @@
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
-  <!ENTITY SMB3 "<acronym
->SMB3</acronym
->">
   <!ENTITY Samba "<application
 >Samba</application
 >">
   <!ENTITY solid "<application
 >Solid</application
->">
-  <!ENTITY kdbusaddons "<application
->KDBusAddons</application
 >">
 ]>
 
@@ -91,20 +85,20 @@
   </authorgroup>
   <copyright>
     <year
->2005-2022</year>
+>2005-2019</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2022-12-17</date>
+>2019-05-19</date>
   <releaseinfo
->&smb4k; 3.2.0</releaseinfo
+>&smb4k; 3.0.1</releaseinfo
 ><!--FIXME change releaseinfo number-->
   <abstract>
     <para
->&smb4k; es un navegador avanzado de entornos de red y una utilidad para el montaje de los recursos compartidos de &Samba;.</para>
+>&smb4k; is an advanced network neighborhood browser and Samba share mounting utility.</para>
   </abstract>
   <keywordset>
     <keyword
@@ -125,20 +119,20 @@
 >Introducción</title>
 
   <para
->Este manual describe &smb4k; 3.2.x y, en alguna medida, versiones anteriores.</para>
+>This handbook describes &smb4k; 3.0.x and to some extent earlier versions.</para>
   <para
->&smb4k; es un navegador avanzado de entornos de red y una utilidad para el montaje de los recursos compartidos de <ulink url="http://www.samba.org"
+>&smb4k; is an advanced network neighborhood browser and <ulink url="http://www.samba.org"
 >Samba</ulink
->. Proporciona muchas características prácticas que facilitarán su vida en un entorno de red dominado por &Windows;:</para>
+> share mounting utility. It provides many handy features that ease your life in a mostly &Windows;-dominated network environment:</para>
 
   <itemizedlist>
     <listitem
 ><para
->Escaneando grupos de trabajo (activos), servidores y recursos compartidos usando la librería cliente de &Samba;, servicio de descubrimiento DNS (DNS-SD) y, opcionalmente, el descubrimiento dinámico de servicios web (WS-Discovery)</para
+>Scanning for (active) workgroups, hosts, and shares</para
 ></listitem>
     <listitem
 ><para
->Implementa los sistemas de archivos &CIFS; y &SMB3; bajo &Linux; y el sistema de archivos SMBFS bajo BSD</para
+>Implementa los sistemas de archivos &CIFS; (&Linux;) y SMBFS (BSD)</para
 ></listitem>
     <listitem
 ><para
@@ -158,7 +152,7 @@
 ></listitem>
     <listitem
 ><para
->Información diversa sobre los elementos de red remotos y los recursos compartidos montados</para
+>Miscellaneous infos about remote network items and mounted shares</para
 ></listitem>
     <listitem
 ><para
@@ -174,7 +168,7 @@
 ></listitem>
     <listitem
 ><para
->Manejo especial de los directorios personales de los recursos compartidos</para
+>Special handling of homes shares</para
 ></listitem>
     <listitem
 ><para
@@ -198,7 +192,7 @@
 ></listitem>
     <listitem
 ><para
->Sincronización de un recurso compartido remoto con una copia local y viceversa</para
+>Synchronization of a remote share with a local copy and vice versa</para
 ></listitem>
     <listitem
 ><para
@@ -206,7 +200,7 @@
 ></listitem>
     <listitem
 ><para
->Soporte de hardware a través de el marco de trabajo de integración de dispositivos &solid;, las clases de utilidades &kdbusaddons; y el módulo de red de &Qt;.</para
+>Laptop support through the &solid; hardware device framework</para
 ></listitem>
     <listitem
 ><para
@@ -214,7 +208,7 @@
 ></listitem>
     <listitem
 ><para
->&plasmoid; para integración con el escritorio</para
+>&plasmoid; para la integración con el escritorio</para
 ></listitem>
     <listitem
 ><para
@@ -223,13 +217,13 @@
   </itemizedlist>
 
   <para
->Si usted encuentra problemas usando &smb4k;, por favor, envíe una petición de ayuda a nuestro foro  <ulink url="https://sourceforge.net/p/smb4k/discussion/help/"
->Ayuda</ulink
->. En caso de que encuentre un error, por favor informe en nuestro <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k"
-> seguimiento de errores</ulink
->. Para discutir sobre temas relacionados con &smb4k;, existe un foro de <ulink url="https://sourceforge.net/p/smb4k/discussion/general/"
->discusión general</ulink
-> en el que invitamos a todos los usuarios a participar.</para>
+>If you encounter problems while using &smb4k;, please post a help request to our <ulink url="https://sourceforge.net/p/smb4k/discussion/help/"
+>Help</ulink
+> forum. In case you find a bug, please report it to our <ulink url="https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=smb4k"
+>bug tracker</ulink
+>. For discussions about &smb4k;-related topics there is the <ulink url="https://sourceforge.net/p/smb4k/discussion/general/"
+>General Discussion</ulink
+> forum and we invite every user to participate.</para>
 </chapter>
 
 <!-- 
@@ -249,18 +243,25 @@
 >Ejecución de &smb4k;</title>
     
     <para
->Puede lanzar &smb4k; desde el menú K o desde <ulink url="https://userbase.kde.org/Plasma/Krunner"
+>You can either launch &smb4k; from the K menu or from <ulink url="https://userbase.kde.org/Plasma/Krunner"
 >&krunner;</ulink
-> escribiendo <userinput
+> by typing <userinput
 ><command
 >smb4k</command
 ></userinput
->. &smb4k; también viene con un <link linkend="plasmoid"
+>. &smb4k; comes with a <link linkend="plasmoid"
 >&plasmoid;</link
-> para una mejor integración con el escritorio. Puede añadirse como un control al escritorio o el panel.</para>
+> for better desktop integration. It can be added as widget to the desktop or panel.</para>
+
+    <note>
+      <para
+>If you are using &Samba; version 4.7 or above, you most likely have to change a setting in &Samba;'s configuration file to make browsing work. Have a look at the <link linkend="special_remarks_problems_browsing_samba_47"
+>Special Remarks</link
+> section to find out what has to be adjusted.</para>
+    </note>
 
     <para
->Si el sistema no tiene ninguno de los programas que &smb4k; necesita para funcionar apropiadamente, lo notifica al usuario:</para>
+>Si su sistema no tiene alguno de los programas que &smb4k; necesita para funcionar apropiadamente, se notificará al usuario:</para>
     
     <screenshot id="notification_missing_program">
       <screeninfo
@@ -300,11 +301,11 @@
 >La ventana principal</title>
   
     <para
->En el primer inicio, la ventana principal de &smb4k; tendrá una apariencia similar a la mostrada más abajo. El navegador de entornos de red (<guilabel
->Entorno de red</guilabel
->) y la vista de recursos compartidos montados (<guilabel
->Recursos compartidos montados</guilabel
->) están dispuestos en un control pestaña. Sobre ellos se encuentran la barra de menús y las barras de herramientas. Bajo ellos verá la barra de estado.</para>
+>On the first start-up, the main window of &smb4k; looks similar to the one shown below. The network neighborhood browser (<guilabel
+>Network Neighborhood</guilabel
+>) and the mounted shares view (<guilabel
+>Mounted Shares</guilabel
+>) are arranged in a tab widget. Above them the menubar and toolbar are located. Below them you find the status bar.</para>
     
     <screenshot id="mainwindow_overview_screenshot">
       <screeninfo
@@ -320,41 +321,41 @@
     </screenshot>
 
     <para
->La barra de herramientas que contiene algunas de las acciones principales, como <guimenuitem
->Configurar &smb4k;</guimenuitem
-> y <guimenuitem
->Salir</guimenuitem
->. También carga dinámicamente las acciones de la zona de paneles que tiene el foco en ese momento. Si desea más información, consulte las secciones que tratan el <link linkend="network_neighborhood_browser "
->navegador del entorno de red</link
-> y la <link linkend="shares_view"
->vista de recursos compartidos montados</link
+>&smb4k; comes with a toolbar that contains some of the main actions, like <guimenuitem
+>Configure &smb4k;</guimenuitem
+> and <guimenuitem
+>Quit</guimenuitem
+>. It also dynamically loads the actions of the dock widget that currently has got the focus. For additional information, please have a look at the sections discussing the <link linkend="network_neighborhood_browser"
+>network neighborhood browser</link
+> and <link linkend="shares_view"
+>mounted shares view</link
 >.</para>
     <para
->La barra de estado ofrece información sobre el estado actual de &smb4k;. Si la aplicación está procesando una solicitud del usuario (&eg; montando un recurso compartido), se muestra un mensaje descriptivo en la parte más a la izquierda y una barra de progreso con un indicador de ocupado. Los dos iconos del lado derecho indican si hay recursos compartidos montados (icono de carpeta de red) y el estado del sistema de autenticación (icono de cartera o llave).</para>
+>The status bar gives some information about the current status of &smb4k;. If the application is processing a user request (&eg; mounting a share), a descriptive message is displayed in the leftmost section and a progress bar is shown with a busy indicator. The two icons on the right hand side indicate if there are shares mounted (network folder icon) and the status of the authentication system (wallet or key icon).</para>
     <para
 >Si los controles de paneles están organizados como pestañas, el usuario obtiene sugerencias visuales adicionales. Cada vez que un recurso compartido es montado o desmontado, la pestaña <guilabel
 >Recursos compartidos montados</guilabel
 > se resalta durante unos segundos.</para>
     <para
->La ventana principal es altamente configurable. Se pueden ocultar o mostrar todos los elementos gráficos organizados en pestañas a través <menuchoice
+>The main window is highly configurable. You can hide or show all tabbed widgets (<menuchoice
 ><guimenu
->Preferencias</guimenu
+>Settings</guimenu
 ><guimenuitem
->Zona de paneles</guimenuitem
+>Dock Widgets</guimenuitem
 ></menuchoice
->. También se pueden arrastrar con el ratón y anclarlos en diferentes áreas de la ventana principal. Incluso se pueden desanclar de la ventana principal. La barra de estado y las barras de herramientas se pueden mostrar u ocultar activando/desactivando la opción de menú <menuchoice
+>). They can also be dragged around with the mouse and docked to different areas in the main window. You can even detach them from the main window. The status bar and the toolbars can be hidden/shown by toggling the menu entry <menuchoice
 ><guimenu
->Preferencias</guimenu
+>Settings</guimenu
 ><guimenuitem
->Mostrar barra de estado</guimenuitem
+>Show Statusbar</guimenuitem
 ></menuchoice
-> y las que se encuentran en la opción <menuchoice
+> and the ones under <menuchoice
 ><guimenu
->Preferencias</guimenu
+>Settings</guimenu
 ><guimenuitem
->Barras de herramientas</guimenuitem
+>Toolbars Shown</guimenuitem
 ></menuchoice
->, respectivamente.</para>
+>, respectively.</para>
   </sect1>
 
 <!-- 
@@ -366,11 +367,11 @@
 >El navegador del entorno de red</title>
 
     <para
->El navegador del <guilabel
->entorno de red</guilabel
-> contiene todos los elementos de la red &#8212; &ie; grupos de trabajo, servidores y recursos compartidos &#8212; que &smb4k; sea capaz de encontrar. Están organizados en un árbol de red, y puede navegar por él, bien haciendo clic en el control que hay al lado del nombre del elemento, o bien ejecutando el propio elemento.</para>
+>The interaction with the network neighborhood is done with the <guilabel
+>Network Neighborhood</guilabel
+> browser. It contains all network items &#8212; &ie; workgroups, servers, and shares &#8212; &smb4k; was able to find. They are organized in a network tree, and you can navigate through it by either clicking the control next to the item name or by executing the item itself.</para>
     <para
->En el árbol de red, el navegador maestro en cada grupo de trabajo o dominio está resaltado por un color de letra azul, si fue detectado (&eg; cuando se usa DNS-SD, el navegador maestro de un dominio &Windows; no se reconoce). Los recursos compartidos montados están marcados con el icono de carpeta respectivo y un tipo de letra cursiva.</para>
+>In the network tree, the master browser of each workgroup or domain is highlighted by blue font color. Mounted shares are marked with the respective folder icon and an italic font.</para>
 
     <screenshot>
       <screeninfo
@@ -397,45 +398,15 @@
 >Navegación</title>
 
       <para
->&smb4k; escanea automáticamente la vecindad de red buscando grupos de trabajo y dominios al inicio y los muestra en el navegador de vecindad de red. Con este propósito usa la librería cliente de &Samba;, <ulink url="https://en.wikipedia.org/wiki/Zero-configuration_networking#DNS-SD"
->Servicio de descubrimiento DNS (DNS-SD)</ulink
-> y, opcionalmente, <ulink url="https://en.wikipedia.org/wiki/WS-Discovery"
->Servicios web de descubrimiento dinámico (WS-Discovery)</ulink
->. La manera en la que &smb4k; navega por la vecindad de red puede ajustarse en la <link linkend="configuration_page_network_basic_settings_browse_settings"
-> página de configuración de <guilabel
->Red</guilabel
-></link
->.</para>
+>&smb4k; automatically scans the network neighborhood for active workgroups and domains on start-up and presents them in the network neighborhood browser. Opening a workgroup item shows the servers belonging to it. If you want to access the shares of one of the servers, you have to open the desired server.</para>
       <para
->&smb4k; usa el modo tradicional de escaneado, en el que inicialmente solo se buscan grupos de trabajo y dominios y los escaneados solo se ejecutan cuando son necesarios &#8212; &ie;, cuando ejecuta un elemento de red. Debido al uso de DNS-SD, seguramente encontrará un dominio llamado <emphasis
->LOCAL</emphasis
-> en el navegador de vecindad de red. Este es el dominio DNS local por omisión usado por servicios como <ulink url="https://en.wikipedia.org/wiki/Avahi_(software)"
->Avahi</ulink
-> y no es un dominio real de &Windows;. Abrir un elemento de dominio o grupo de trabajo mostrará los servidores que pertenezcan a él. Si quiere acceder a los recursos compartidos de uno de los servidores, tiene que abrir el servidor deseado.</para>
+>&smb4k; uses a traditional scan mode, where initially only workgroups and domains are looked up and scans are only made when necessary &#8212; &ie; when you execute a network item &#8212;.</para>
       <para
->También existe la posibilidad de despertar a los servidores dormidos antes de explorar el entorno de red (Wake-On-LAN). Si esta funcionalidad está activada, &smb4k; envía un paquete mágico a cada servidor que se pretende despertar y espera el tiempo definido hasta que comienza a buscar los grupos de trabajo y los dominios. La funcionalidad Wake-On-LAN se puede activar en el <link linkend="configuration_page_network_wake_on_lan_settings"
->diálogo de configuración</link
->. Los servidores que se deben despertar se tienen que definir en el diálogo <link linkend="network_neighborhood_browser_defining_custom_options"
->Opciones personalizadas</link
->.</para>
-      <note>
-          <para
->If you are using DNS Service Discovery and the Zeroconf daemon (Avahi) is not running, &smb4k; shows an error notification:</para>
-          <screenshot>
-              <screeninfo
->Error message if the Zeroconf daemon is not running</screeninfo>
-              <mediaobject>
-                  <imageobject
-><imagedata fileref="network_neighborhood_browser_dns-sd_error.png" format="PNG"/></imageobject>
-                  <textobject
-><phrase
->The error message if the Zeroconf daemon is not running</phrase
-></textobject>
-              </mediaobject>
-          </screenshot>
-          <para
->In this case, please start the Zeroconf daemon and restart &smb4k;.</para>
-      </note>
+>There is also the possibility to wake up sleeping servers prior to scanning the network neighborhood (Wake-On-LAN). If this feature is enabled, &smb4k; sends a magic package to each server that is to be woken up and waits the defined time until it starts the lookup of the workgroups and domains. The Wake-On-LAN setting can be turned on in the <link linkend="configuration_page_network_wake_on_lan"
+>configuration dialog</link
+>. The servers that should to be woken up have to be defined in the <link linkend="network_neighborhood_browser_defining_custom_options"
+>Custom Options</link
+> dialog.</para>
     </sect2>
     
 <!--
@@ -447,19 +418,19 @@
 >Búsqueda</title>
       
       <para
->Para buscar en la red vecina recursos compartidos que contengan cierto elemento de búsqueda, ejecute la acción <menuchoice
+>To search the network neighborhood for shares that contain a certain search item, execute the <menuchoice
 ><shortcut
 ><keycombo action="simul"
->&Ctrl;<keycap
->B</keycap
+>&Ctrl; <keycap
+>F</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
->Búsqueda</guimenuitem
+>Search</guimenuitem
 ></menuchoice
->(vea también la sección <link linkend="network_neighborhood_browser_actions_popup_menu"
->Acciones y menú emergente</link
-> más abajo). La barra de búsqueda se abre en la parte inferior del navegador del entorno.</para>
+> action (see also the <link linkend="network_neighborhood_browser_actions_popup_menu"
+>Actions an Popup Menu</link
+> section below). The search toolbar opens at the bottom of the network neighborhood browser.</para>
       
       <screenshot>
         <screeninfo
@@ -475,19 +446,19 @@
       </screenshot>
       
       <para
->Introduzca el término de búsqueda en la línea de edición y pulse la tecla &Enter; o el botón <guibutton
->Buscar</guibutton
->. &smb4k; comienza a buscar en todo el entorno de red. Cuando la búsqueda termina, todos los elementos compartidos que cumplen el término de búsqueda aparecerán destacados (seleccionados). Si quisiera hacer algo con <emphasis
->todos</emphasis
-> los elementos compartidos descubiertos (&eg; montarlo o previsualizarlo), puede hacerlo ahora. Por el contrario, puede usar los botones <guibutton
->Arriba</guibutton
-> y <guibutton
->Abajo</guibutton
-> para saltar a los elementos individuales. Se puede usar el botón <guibutton
->Despejar</guibutton
-> para limpiar la búsqueda. Para cerrar la barra de herramientas de búsqueda, pulse el botón <guibutton
->Cerrar</guibutton
->.</para>
+>Enter the search term in the line edit and press the &Enter; key or click the <guibutton
+>Search</guibutton
+> button. &smb4k; starts to search the entire network neighborhood. When the search finished, all shares matching the search term are highlighted (selected). If you would like to do something with <emphasis
+>all</emphasis
+> discovered shares (&eg; mount or preview), you can immediately do this now. Otherwise, you can use the <guibutton
+>Up</guibutton
+> and <guibutton
+>Down</guibutton
+> buttons to jump to the individual search results. The <guibutton
+>Clear</guibutton
+> button can be used to clear the search. To close the search toolbar, press the <guibutton
+>Close</guibutton
+> button.</para>
     </sect2>
 
 <!-- 
@@ -499,9 +470,9 @@
 >Acciones y menú emergente</title>
 
       <para
->Para el navegador del entorno de red hay varias acciones definidas. Se muestran en la barra de menú bajo <guimenu
->Red</guimenu
->, en la barra de herramientas y en el menú emergente. Las siguientes acciones están disponibles:</para>
+>For the network neighborhood browser several actions are defined. They are present in the menubar under <guimenu
+>Network</guimenu
+>, in the toolbar and the popup menu. The following ones are available:</para>
     
       <variablelist>
         <varlistentry>
@@ -517,7 +488,7 @@
           </term>
           <listitem>
             <para
->Escanea todo el entorno de red, grupo de trabajo/dominio resaltado o el equipo en busca de nuevas entradas. Esta acción es visible de manera predeterminada y será sustituida por la acción <guimenuitem
+>Escanea todo el entorno de red, grupo de trabajo/dominio resaltado o equipo en busca de nuevas entradas. Esta acción es visible de manera predeterminada y será sustituida por la acción <guimenuitem
 >Interrumpir</guimenuitem
 > si hay un escaneo de red en ejecución.</para>
           </listitem>
@@ -537,7 +508,9 @@
           </term>
           <listitem>
             <para
->Interrumpe cualquier proceso en ejecución del navegador del entorno de red. Esta acción está oculta de manera predeterminada y solo se hará visible cuando se esté ejecutando una exploración de la red.</para>
+>Interrumpe cualquier proceso en ejecución del navegador del entorno de red. Esta acción está oculta de manera predeterminada y solo se hará visible en lugar de la acción <guimenuitem
+>Explorar red|grupo de trabajo|equipo</guimenuitem
+> cuando se esté ejecutando una exploración de la red.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -555,9 +528,7 @@
           </term>
           <listitem>
             <para
-><link linkend="network_neighborhood_browser_searching"
->Buscar en el entorno de red</link
-> por términos específicos. Activar esta opción abre la barra de herramientas de búsqueda donde puede introducir el término de búsqueda y comenzar la búsqueda.</para>
+>Search the network neighborhood for a specified search term. Activating this action opens the search toolbar where you can enter the search term and start the search.</para>
           </listitem>
         </varlistentry
 >        
@@ -576,9 +547,11 @@
           </term>
           <listitem>
             <para
-><link linkend="bookmarks_adding"
->Añadir un marcador</link
-> al recurso compartido remoto que esté seleccionado en ese momento. Esta acción está desactivada si no hay ningún recurso compartido seleccionado.</para>
+>Añade un marcador al recurso compartido remoto que esté seleccionado en ese momento. Esta acción está desactivada si no hay ningún recurso compartido seleccionado.</para>
+            <para
+>Consulte la sección <link linkend="bookmarks_adding"
+>Añadir marcadores</link
+> para más detalles.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -598,7 +571,7 @@
             <para
 >Abra el <link linkend="network_neighborhood_browser_mounting"
 >diálogo</link
-> para montar recursos «manualmente». Esta característica puede ser necesaria si &smb4k; no puede encontrar el servidor desde el cual usted quiera montar un cierto recurso compartido.</para>
+> para montar recursos «manualmente». Esta característica puede ser necesaria si &smb4k; no puede encontrar un servidor desde el cual usted quiera montar un cierto recurso compartido.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -696,7 +669,7 @@
           </term>
           <listitem>
             <para
->Monta el recurso compartido remoto seleccionado. De manera predeterminada y si se ha seleccionado cualquier elemento que no sea un recurso compartido con tipo «Disco» o «IPC», esta acción estará desactivada. Para un recurso compartido montado, esta acción será sustituida con la acción <guimenuitem
+>Monta el recurso compartido remoto seleccionado. De manera predeterminada y si se ha hecho clic sobre cualquier elemento que no sea un recurso compartido con tipo «Disco» o «IPC», esta acción estará desactivada. Si ha seleccionado un recurso compartido montado, esta acción será sustituida por la acción <guimenuitem
 >Desmontar</guimenuitem
 >.</para>
           </listitem>
@@ -724,7 +697,7 @@
       </variablelist>
 
       <para
->En el navegador de vecindad de red puede pulsar el botón derecho del ratón para abrir un menú emergente para acceder a todas las opciones disponibles. Dependiendo de la posición en la que haya hecho clic (en un elemento de red o en el puerto de vista), algunas de estas acciones pueden estar desactivadas. La captura siguiente muestra el menú emergente que se ha abierto en un recurso compartido remoto.</para>
+>Although you can interact with the network neighborhood using the keyboard shortcuts mentioned above, in most cases it is more convenient to use the mouse. By right clicking you can open a popup menu. It contains all actions that are available in the network neighborhood browser. Depending on the position where you clicked (on a network item or on the viewport), some of them may be disabled. The figure below shows the popup menu opened on a remote share.</para>
 
       <screenshot>
         <screeninfo
@@ -750,7 +723,7 @@
 >Consejos emergentes</title>
 
       <para
->Para cada elemento de red, se proporciona un consejo emergente que contiene información variada, como el nombre del grupo de trabajo y del navegador maestro (si está disponibles), el nombre y la dirección IP del servidor, el nombre del recurso compartido, &etc;</para>
+>For each network item a tooltip is provided that contains various information like the name of the workgroup and master browser, the name and IP address of the host, the name of the share, &etc;</para>
       <para
 >Los consejos emergentes se pueden desactivar en el <link linkend="configuration_page_user_interface_network"
 >diálogo de configuración</link
@@ -809,32 +782,28 @@
           </mediaobject>
         </screenshot>
         <para
->Aquí puede introducir la ubicación del recurso compartido, bien como una dirección <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention"
+>Here you can enter the location of the share either as <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention"
 >Uniform Naming Convention (UNC)</ulink
-> en la forma <programlisting
+> address in the form <programlisting
 >//[USER@]SERVER/SHARE</programlisting
 > or <programlisting
->\ \[USER@]SERVER\SHARE</programlisting
-> o como una URL en la forma <programlisting
->[smb:]//[user@]server[:port]/share</programlisting
-> El botón <guibutton
->Aceptar</guibutton
->se activará y podrá pulsarlo para montar el recurso compartido. Sin embargo, es aconsejable introducir también la dirección IP y el grupo de trabajo del servidor. Si desea añadir el recurso compartido a los marcadores al mismo tiempo, pulse el botón <guibutton
->Marcador 
->
-></guibutton
->. Se desplegará un diálogo y podrá marcar la casilla de verificación <guibutton
->Añadir este recurso compartido a los marcadores</guibutton
-> e introduzca una etiqueta y una categoría para el marcador. </para
+>\\[USER@]SERVER\SHARE</programlisting
+> or as URL in the form <programlisting
+>[smb:]//[user@]server:port/share</programlisting
+> The <guibutton
+>OK</guibutton
+> button will be enabled and you can press it to mount the share. However, it is advisable to enter the IP address and the workgroup of the server, too. If you want to add the share to the bookmarks at the same time, tick the <guibutton
+>Add this share to the bookmarks</guibutton
+> check box.</para
 ></listitem>
       </orderedlist>
 
       <para
->A menudo un recurso compartido está protegido mediante una contraseña. En ese caso, aparecerá un <link linkend="network_neighborhood_browser_authentication"
-> diálogo de autenticación</link
-> y tendrá que introducir el nombre de usuario correcto (si no lo ha proporcionado ya) y la contraseña. &smb4k; procederá a montar el recurso compartido a menos que se haya suministrado un nombre de usuario o una contraseña erróneos. En este caso, el diálogo de autenticación volverá a aparecer. Si el proceso de montaje finaliza con éxito, el usuario verá una notificación y el recurso compartido aparecerá en la <link linkend="shares_view"
->Vista de recursos compartidos montados</link
->. Si el montaje falla, se mostrará una notificación con el mensaje de error devuelto por <ulink url="man:/mount.cifs"
+>Often a share is password protected. In this case, an <link linkend="network_neighborhood_browser_authentication"
+>authentication dialog</link
+> will appear and you have to enter the correct user name (if not already provided) and password. &smb4k; will proceed mounting the share unless a wrong user name or password was supplied. In that case, the authentication dialog will reappear. If the mount process was successful, the user will be shown a notification and the share will appear in the <link linkend="shares_view"
+>Mounted Shares</link
+> view. If mounting fails, a notification with the error message that was returned by <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -842,7 +811,7 @@
 >8</manvolnum
 ></citerefentry
 ></ulink
-> (&Linux;) o <ulink url="man:/mount_smbfs"
+> (&Linux;) or <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -850,7 +819,7 @@
 >8</manvolnum
 ></citerefentry
 ></ulink
-> (BSD).</para>
+> (BSD) will be shown.</para>
     </sect2>
 
 <!-- 
@@ -886,15 +855,15 @@
         </mediaobject>
       </screenshot>
       <para
->En la sección <guilabel
->Información</guilabel
-> se muestra información variada sobre la impresora. En el campo <guilabel
->Archivo y Preferencias</guilabel
-> tiene que proporcionar la ruta del archivo que desea imprimir y el número de copias. Pulse <guibutton
->Imprimir</guibutton
-> para iniciar el proceso de impresión.</para>
+>In the <guilabel
+>Information</guilabel
+> section various information about the printer is shown. Under <guilabel
+>File and Settings</guilabel
+> you have to provide the path to the file you want to print and the desired number of copies. Press <guibutton
+>Print</guibutton
+> to start the print process.</para>
       <para
->&smb4k; actualmente admite archivos PDF, Postscript, de imagen y de texto. Si intenta imprimir un archivo con un tipo mime no soportado, aparecerá una notificación con un mensaje de error diciéndole que se admite el tipo mime. En este caso debe convertir el archivo manualmente a Postscript o PDF e intentarlo de nuevo.</para>
+>&smb4k; currently supports PDF, Postscript, image, and text files. If you try to print a file with an unsupported mimetype, a notification with an error message will appear telling you the mimetype is not supported. In this case you have to convert the file manually to Postscript or PDF and try again.</para>
     </sect2>
 
 <!-- 
@@ -936,9 +905,9 @@
 >Recargar</guibutton
 >. La ubicación actual se muestra en la lista desplegable que hay a la derecha. También pude acceder a las carpetas ya visitadas con ella.</para>
       <para
->De manera predeterminada, el diálogo de vista previa solo muestra las carpetas y los archivos que no están ocultos. Puede cambiar este comportamiento en el <link linkend="configuration_page_network_basic_settings_behavior"
->diálogo de configuración</link
->. Las transferencias de archivos y similares no son posibles.</para>
+>By default, the preview dialog only shows folders and files that are not hidden. You can change this behavior in the <link linkend="configuration_page_network_samba_behavior"
+>configuration dialog</link
+>. File transfers or the like are not possible.</para>
     </sect2>
 
 <!-- 
@@ -950,7 +919,7 @@
 >Proporcionando información de autenticación</title>
 
       <para
->Muchos servidores y recursos compartidos remotos están protegidos por contraseña. En este caso, aparecerá un diálogo de contraseña pidiéndole un nombre de usuario y una contraseña. Lo mismo ocurre, si hace clic en la entrada de menú <menuchoice
+>Many servers or remote shares are password protected. In that case, a password dialog appears asking you for the user name and password. The same happens, if you click the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -958,9 +927,9 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Autenticación</guimenuitem
+>Authentication</guimenuitem
 ></menuchoice
->.</para>
+> menu entry.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diálogo de autenticación</screeninfo>
@@ -974,13 +943,13 @@
         </mediaobject>
       </screenshot>
       <para
->Si ya se ha proporcionado un nombre de usuario, este se mostrará en el campo correspondiente. Si es erróneo o si no se ha proporcionado ningún nombre de usuario, tendrá que introducir uno. Sin embargo, la contraseña se puede dejar vacía. Al hacer clic en el botón <guibutton
->aceptar</guibutton
-> se enviarán los datos. Dependiendo de su elección en el <link linkend="configuration_page_authentication"
->diálogo de configuración</link
->, el nombre de usuario y la contraseña se almacenarán permanentemente en una cartera digital o nunca. En el último caso tendrá que proporcionarlos <emphasis
->cada vez</emphasis
-> que sean necesarios.</para>
+>If a user name has already been provided, it will be shown in the respective field. If it is wrong or no user name was provided, you have to enter one. The password, however, may be left blank. Clicking the <guibutton
+>OK</guibutton
+> button commits the data. Depending on your choice in the <link linkend="configuration_page_authentication"
+>configuration dialog</link
+>, the user name and password will be stored permanently in a digital wallet or not at all. In the latter case you have to provide them <emphasis
+>every time</emphasis
+> they are needed.</para>
     </sect2>
 
 <!-- 
@@ -998,21 +967,21 @@
       <itemizedlist>
         <listitem
 ><para
->define un montaje personalizado o las preferencias del navegador para un servidor único o comparta los que se derivan de los valores definidos en el diálogo de configuración,</para
+>define custom mount or Samba options for a single server or share that deviate from the ones defined in the configuration dialog,</para
 ></listitem>
         <listitem
 ><para
->define un servidor que debería ser despertado antes de escaneos de red o intentos de montaje (Funcionalidad Despertar-En-LAN, consulte <link linkend="configuration_page_network_wake_on_lan_settings"
->aquí</link
+>define a server that should be woken up prior to network scans or mount attempts (Wake-On-LAN feature, see <link linkend="configuration_page_network_wake_on_lan"
+>here</link
 >),</para
 ></listitem>
         <listitem
 ><para
->siempre monta un recurso particular compartido en el inicio o cuando el perfil correspondiente se carga.</para
+>always mount a certain share on start-up or if the corresponding profile is loaded.</para
 ></listitem>
       </itemizedlist>
       <para
->El diálogo se abre pulsando la entrada de menú<menuchoice
+>The dialog is opened by clicking the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1020,9 +989,9 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Opciones personalizadas</guimenuitem
+>Custom Options</guimenuitem
 ></menuchoice
->. Dependiendo de su elección, las preferencias aplicarán a todos los recursos compartidos de un servidor o solo a uno.</para>
+> menu entry. Depending on your selection, the settings either apply to all shares of a server or to a single one. </para>
 
       <screenshot>
         <screeninfo
@@ -1039,62 +1008,44 @@
       </screenshot>
 
       <para
->El botón <guibutton
->Predeterminado</guibutton
-> está activado si las entradas del diálogo difieren de las preferencias que usted definió en el diálogo de configuración. Pulsándolo, puede reiniciar las entradas del diálogo a los valores predeterminados. El botón <guibutton
->Aceptar</guibutton
-> estará activado si cambia las preferencias del diálogo. Al pulsarlo salvará las preferencias personalizadas y se cerrará el diálogo.</para>
-      <para
->Please note that under BSD the dialog contains fewer entries than if you run &Linux;, because several of the options are not supported.</para>
+>The <guibutton
+>Default</guibutton
+> button is enabled if the entries in the dialog deviate from the settings you defined in the configuration dialog. By clicking it, you can reset the entries in the dialog to their default values. The <guibutton
+>OK</guibutton
+> button is enabled if you changed the settings in the dialog. Clicking it will commit the custom settings and close the dialog.</para>
+      <note
+><para
+>Under BSD, the dialog contains less entries than if you run a different operating system, because several of the options are not supported.</para
+></note>
 
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
+      <sect3 id="network_neighborhood_browser_defining_custom_options_mounting">
         <title
->Opciones comunes de montaje (solo &Linux;)</title>
+>Montaje</title>
         
         <para
->En esta pestaña puede definir las preferencias comunes relacionadas con el montaje. Seleccionar el botón <guibutton
->Re-Montar siempre este elemento compartido</guibutton
-> para un elemento compartido causará que el elemento se re--monte en cada inicio del programa. Para otra información sobra las preferencias acceda <link linkend="configuration_page_mounting"
->a esta sección</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
-        <title
->Preferencias avanzadas de montaje (solo &Linux;)</title>
-        
-        <para
->En esta pestaña puede definir las prioridades relacionadas con el montaje.  Para otra información sobra las preferencias acceda <link linkend="configuration_page_mounting"
->a esta sección</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
-        <title
->Opciones de montaje (solo BSD)</title>
-        
-        <para
->En esta pestaña puede definir las preferencias relacionadas con el montaje.  Para otra información sobra las preferencias acceda <link linkend="configuration_page_mounting "
->a esta sección</link
+>In this tab you can define settings related to mounting. Checking the <guibutton
+>Always remount this share</guibutton
+> button for a selected share leads to it being remounted on every program start. For information about all other settings see <link linkend="configuration_page_mounting"
+>here</link
 >.</para>
       </sect3>
         
       <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
         <title
->Preferencias de navegación</title>
+>Samba</title>
 
         <para
->Puede definir tanto las versiones máximas y mínimas del protocolo SMB como el puerto SMB a usar. Además, puede decidir si Kerberos debe usarse para la autenticación. Para información mas detallada sobre estas preferencias, consulte <link linkend="configuration_page_network"
->la página de configuración de red</link
->),</para>
+>You can define the SMB port and if Kerberos should be used for authentication. For detailed information on these settings, please see <link linkend="configuration_page_network"
+>here</link
+>.</para>
       </sect3>
 
       <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
         <title
->Preferencias de Wake-On-LAN</title>
+>Wake-On-LAN</title>
     
         <para
->Para que la funcionalidad «Wake-On-LAN» funcione, debe proporcionar la dirección MAC del servidor que ha seleccionado. Actualmente, &smb4k; no tiene manera de determinar la dirección MAC, por lo que debe averiguarla usted mismo. Después, puede definir si &smb4k; debe enviar un paquete «Wake-On-LAN» mágico al servidor seleccionado antes de que el entorno de red sea escaneado o uno de sus recursos compartidos montado.</para>
+>To make the Wake-On-LAN feature work, you need to provide the MAC address of the server you selected. Currently, &smb4k; has no way to determine the MAC address, so you need to find it out on your own. Afterwards, you can define if &smb4k; should send a magic Wake-On-LAN package to the selected host before the network neighborhood is scanned and/or one of its shares is mounted.</para>
       </sect3>
     </sect2>
 
@@ -1107,17 +1058,17 @@
 >Añadiendo marcadores</title>
 
       <para
->Un marcador se añade seleccionando un recurso compartido (son los únicos que se pueden añadir a marcados) y pulsando el acceso rápido de teclado <keycombo action="simul"
+>A bookmark is added by selecting a remote share (only these can be bookmarked) and pressing the <keycombo action="simul"
 >&Ctrl; <keycap
->M</keycap
+>B</keycap
 ></keycombo
-> o seleccionar la opción de menú <guimenuitem
->Añadir marcador</guimenuitem
->. A partir de ese momento, el marcador estará accesible a través del menú <guimenu
->Marcadores</guimenu
->. Consulte la sección <link linkend="bookmarks"
->Marcadores</link
-> para más detalles.</para>
+> keyboard shortcut or selecting the <guimenuitem
+>Add Bookmark</guimenuitem
+> menu item. The bookmark will then be accessible through the <guimenu
+>Bookmarks</guimenu
+> menu. See the section <link linkend="bookmarks"
+>Bookmarks</link
+> for more details.</para>
       <para
 >Los marcadores se pueden utilizar para montar recursos compartidos remotos.</para>
     </sect2>
@@ -1143,7 +1094,7 @@
 >Las diferentes vistas</title>
 
       <para
->&smb4k; se distribuye con dos vistas alternativas: una vista de iconos y una vista de lista. Ambas se muestran a continuación. La vista de iconos es la de por omisión.</para>
+>&smb4k; comes with two alternative views: an icon and a list view. They are both shown below. The default one is the icon view.</para>
       <para
 >La vista de iconos:</para>
       <screenshot>
@@ -1176,9 +1127,9 @@
       </screenshot>
 
       <para
->Se puede cambiar entre las dos vistas seleccionando la entrada apropiada en el sub-menú de la barra de herramientas <guimenuitem
+>Se puede cambiar entre las dos vistas seleccionando, bien la entrada apropiada en sub-menú <guimenuitem
 >Modos de vista</guimenuitem
->, en la barra de menú <link linkend="mainwindow_overview"
+> desde el menú <link linkend="mainwindow_overview"
 ><guimenu
 >Vistas compartidas</guimenu
 ></link
@@ -1186,8 +1137,8 @@
 >menú emergente</link
 >.</para>
       <para
->De manera predeterminada, solo se muestran sus propios montajes. No obstante, puede ajustar &smb4k; para que muestre todos los montajes con las <link linkend="configuration_page_mounting_basic_settings_behavior"
->respectivas preferencias</link
+>By default, only your own mounts are displayed. However, you can tell &smb4k; to show all mounts by altering the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>respective settings</link
 >.</para>
     </sect2>
 
@@ -1200,9 +1151,9 @@
 >Acciones y menú emergente</title>
 
       <para
->Hay varias opciones definidas en la vista de los recursos compartidos. Se encuentran en la barra de menús bajo <guimenu
->Recursos compartidos</guimenu
->, en la barra de herramientas y en el menú emergente. Las siguientes opciones están disponibles:</para>
+>For the shares view several actions are defined. They are present in the menubar under <guimenu
+>Shares</guimenu
+>, the toolbar and in its popup menu. The following ones are available:</para>
 
       <variablelist>
         <varlistentry>
@@ -1220,7 +1171,7 @@
                 <term>
                   <menuchoice
 ><guimenuitem
->Vista de icono</guimenuitem
+>Icon View</guimenuitem
 ></menuchoice>
                 </term>
                 <listitem>
@@ -1232,7 +1183,7 @@
                 <term>
                   <menuchoice
 ><guimenuitem
->Vista de lista</guimenuitem
+>List View</guimenuitem
 ></menuchoice>
                 </term>
                 <listitem>
@@ -1258,7 +1209,13 @@
           </term>
           <listitem>
             <para
->Desmontar los recursos compartidos. Si no se selecciona ningún recurso en la vista, este botón no está activado.</para>
+>Unmount one or multiple selected shares. The ability to unmount shares is by default restricted to the ones that are owned by you. However, you can change this behavior by changing the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>settings</link
+> in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
+            <para
+>&smb4k; también proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
+>preferencias</link
+> en el diálogo de configuración.</para>
             <para
 >Lea la sección <link linkend="shares_view_unmounting"
 >Desmontaje derecursos compartidos</link
@@ -1280,7 +1237,7 @@
           </term>
           <listitem>
             <para
->Desmonta todos los recursos compartidos a la vez. Si no tiene ningún recurso compartido montado, este botón está desactivado.</para>
+>Desmonta todos los recursos compartidos a la vez. Las restricciones comentadas anteriormente también se aplican aquí. Si no tiene ningún recurso compartido montado, este botón está desactivado.</para>
             <para
 >Lea la sección <link linkend="shares_view_unmounting"
 >Desmontaje derecursos compartidos</link
@@ -1302,7 +1259,7 @@
           </term>
           <listitem>
             <para
->Añade marcadores al recurso compartido seleccionado. Esta acción está desactivada si no hay ningún recurso compartido seleccionado.</para>
+>Add a bookmark to the currently selected mounted shares. This action is disabled if no share is selected.</para>
             <para
 >Consulte la sección <link linkend="bookmarks_adding"
 >Añadir marcadores</link
@@ -1324,9 +1281,9 @@
           </term>
           <listitem>
             <para
-><link linkend="shares_view_synchronization"
->Sincronizar</link
-> un recurso compartido con una copia local o viceversa. Esta entrada de menú solo estará activada si ha instalado previamente el programa <ulink url="man:/rsync"
+>Inicia la <link linkend="shares_view_synchronization"
+>sincronización</link
+> de un recurso compartido con una copia local o viceversa. Esta entrada de menú solo estará activada si ha instalado previamente el programa <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -1376,7 +1333,7 @@
       </variablelist>
 
       <para
->El menú emergente incluye todas las acciones que se pueden realizar sobre un recurso compartido montado:</para>
+>The popup menu includes all actions that can be performed on a mounted share:</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del menú emergente de la vista de recursos compartidos</screeninfo>
@@ -1391,7 +1348,7 @@
         </mediaobject>
       </screenshot>
       <para
->Se puede abrir haciendo clic &RMB;.</para>
+>It can be opened by clicking the right mouse button.</para>
     </sect2>
 
 <!-- 
@@ -1403,9 +1360,9 @@
 >Consejos emergentes</title>
 
       <para
->Los consejos emergentes proporcionan información sobre la localización remota del recurso compartido, el punto de montaje, el usuario y el grupo, el inicio de sesión, el sistema de archivos, el uso del disco y el espacio libre en el disco. Si el recurso compartido es <link linkend="shares_view_inaccessible_shares"
->inaccesible</link
->, estos valores estarán marcados como desconocidos.</para>
+>The tooltips provide information about the share name, the mount point, the user and group, the login, the file system, the disk usage, and the free disk space. If the share is <link linkend="shares_view_inaccessible_shares"
+>inaccessible</link
+>, these values are marked as unknown.</para>
       <para
 >Los consejos emergentes están activados de manera predeterminada. Puedes desactivarlos en el <link linkend="configuration_page_user_interface_shares_view"
 >diálogo de configuración</link
@@ -1421,27 +1378,13 @@
 >Recursos compartidos inaccesibles</title>
 
       <para
->&smb4k; comprueba periódicamente todos los recursos compartidos montados para ver si aún siguen siendo accesibles. Si se encuentra un recurso compartido inaccesible, este se marcará con un símbolo de candado y ya no podrá abrirlo ni sincronizarlo. Desmóntelo y añádalo a un marcador si aún es posible.</para>
+>&smb4k; comprueba periódicamente todos los recursos compartidos montados para ver si aún siguen siendo accesibles. Si se encuentra un recurso compartido inaccesible, este se marcará con un <link linkend="shares_view_icons"
+>icono de carpeta bloqueada</link
+> y ya no podrá abrirlo ni sincronizarlo. Desmóntelo y añádalo a un marcador si aún es posible.</para>
       <note
 ><para
 >El programa puede quedar congelado durante un breve periodo de tiempo debido a un recurso compartido inaccesible. Se recuperará después.</para
 ></note>
-    </sect2>
-    
-<!--
-      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
-  -->
-    
-    <sect2 id="shares_view_foreign_shares">
-      <title
->Recursos compartidos propiedad de otros usuarios</title>
-      
-      <para
->Los recursos compartidos propiedad de otro usuario solo se muestran si se configura las <link linkend="configuration_page_mounting_basic_settings_behavior"
->preferencias</link
-> para mostrarlos. En la configuración predeterminada, no se le permite desmontar estos recursos compartidos, pero también puede <link linkend="configuration_page_mounting_basic_settings_behavior"
->cambiar este comportamiento</link
->.</para>
     </sect2>
 
 <!-- 
@@ -1453,7 +1396,38 @@
 >Iconos</title>
 
       <para
->Un recurso compartido montado se representa mediante un pequeño símbolo en la esquina inferior del icono de la carpeta. Este símbolo cambia por un candado cuando el recurso no está disponible. En el caso de recursos compartidos propiedad de otros usuarios, el símbolo se remplaza por una señal de advertencia.</para>
+>Se pueden presentar tres iconos distintos al usuario:</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla de los tres diferentes iconos</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="shares_view_icons.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>Tres iconos diferentes</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+      <itemizedlist>
+        <listitem
+><para
+>The icon on the left hand side indicates that this share is not accessible. &smb4k; won't allow you to open it or synchronize it. You will only be able to unmount it or add a bookmark.</para
+></listitem>
+        <listitem
+><para
+>El icono central indica que el recurso compartido está en línea, es accesible y usted es su propietario. Puede realizar cualquier acción disponible sobre él.</para
+></listitem>
+        <listitem
+><para
+>Todos los recursos compartidos marcados con un indicador de advertencia como el que se encuentra en la parte derecha, son propiedad de otro usuario. Solo se muestran si se configura las <link linkend="configuration_page_mounting_basic_settings_behavior"
+>preferencias</link
+> para mostrarlos. En la configuración predeterminada, no se le permite desmontar estos recursos compartidos, pero también puede <link linkend="configuration_page_mounting_basic_settings_behavior"
+>cambiar este comportamiento</link
+>.</para
+></listitem>
+      </itemizedlist>
     </sect2>
 
 <!-- 
@@ -1465,7 +1439,7 @@
 >Arrastrar y soltar</title>
 
       <para
->&smb4k; implementa arrastrar y soltar en la vista de recursos compartidos. Para transferir o enlazar datos a un recurso compartido, arrastre los archivos o carpetas sobre el icono del recurso compartido y suéltelos ahí. Se abrirá un menú emergente preguntándole que hacer. Elija la acción apropiada (copiar, mover o enlazar).</para>
+>&smb4k; implementa arrastrar y soltar en la vista de recursos compartidos. Para transferir o enlazar datos a un recurso compartido, arrastre los archivos o carpetas sobre el icono del recurso compartido y suéltelos ahí. Se abrirá un menú emergente preguntándole lo que quiere hacer. Elija la acción apropiada (copiar, mover o enlazar).</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla de la vista de recursos compartidos después de que el usuario suelte un archivo</screeninfo>
@@ -1475,7 +1449,7 @@
           </imageobject>
           <textobject>
             <phrase
->Un menú emergente abierto después de que el usuario soltara un archivo en un recurso compartido</phrase>
+>Un menú emergente abierto después de que el usuario suelte un archivo en un recurso compartido</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
@@ -1484,7 +1458,7 @@
 >&Ctrl;&Shift;</keycombo
 > para enlazar mientras se arrastra y suelta. La transferencia solo será correcta si el recurso compartido se montó con permisos de lectura y escritura.</para>
       <para
->Usted también puede arrastrar el recurso compartido completo al escritorio o a otra aplicación (&eg; &dolphin;)í. De nuevo, se abrirá un menú emergente preguntándole qué hacer. Al elegir la operación apropiada recuerde que en la mayoría de las circunstancias, mover y enlazar el recurso compartido podría no ser una buena idea.</para>
+>Usted también puede arrastrar el recurso compartido completo al escritorio o a otra aplicación (&eg; &dolphin;)í. De nuevo, se abrirá un menú emergente preguntándole qué es lo que quiere hacer. Al elegir la operación apropiada recuerde que en la mayoría de las circunstancias, mover y enlazar el recurso compartido podría no ser una buena idea.</para>
     </sect2>
 
 <!-- 
@@ -1496,25 +1470,42 @@
 >Desmontando recursos compartidos</title>
 
       <para
->Se pueden desmontar uno o varios recursos compartidos seleccionando, bien pulsando la acción <menuchoice
+>One or multiple selected shares may be unmounted by either clicking the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
->D</keycap
+>U</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
->Desmontar</guimenuitem
+>Unmount</guimenuitem
 ></menuchoice
->, o bien pulsando su acceso rápido de teclado. De manera predeterminada, la capacidad para desmontar un recurso compartido está restringida a aquellos recursos que sean de su propiedad. Este comportamiento se puede modificar en el  <link linkend="configuration_page_mounting_basic_settings_behavior"
->diálogo de configuración</link
->. Si usted activó el desmontaje de recursos compartidos que son propiedad de otros usuarios, se le mostrará un diálogo de advertencia antes de realizar el desmontaje. Si continua, el recurso compartido será desmontado definitivamente. ¡Así que piénselo dos veces antes de hacerlo!</para>
+> action or by pressing its keyboard shortcut. By default, the ability to unmount a share is restricted to the ones that are owned by you. This behavior can be altered in the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>configuration dialog</link
+>. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount:</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla del diálogo de advertencia que se muestra cuando se va a desmontar un recurso compartido ajeno</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>El diálogo de advertencia que se muestra al desmontar recursos compartidos ajenos</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
       <para
->&smb4k; proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
->preferencias</link
-> en el diálogo de configuración. &smb4k; ejecutará luego un <ulink url="man:/umount(8)"
->desmontaje retardado</ulink
-> en los recursos compartidos inaccesibles.</para>
+>Si pulsa en el botón <guibutton
+>Sí</guibutton
+>, el recurso compartido se desmontará definitivamente. Por tanto, ¡piénselo dos veces antes de decidir desmontar recursos compartidos que son propiedad de otros usuarios!</para>
+      <para
+>Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="configuration_page_mounting_basic_settings_behavior"
+>configure</link
+> &smb4k; so as to perform a <ulink url="man:/umount"
+>lazy unmount</ulink
+> on inaccessible shares (&Linux; only).</para>
       <para
 >Todos los recursos compartidos pueden desmontarse a la vez pulsando la acción <menuchoice
 ><shortcut
@@ -1540,7 +1531,7 @@
 >Sincronización</title>
 
       <para
->La opción de menú <menuchoice
+>The <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -1548,13 +1539,13 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Sincronizar</guimenuitem
+>Synchronize</guimenuitem
 ></menuchoice
-> abre el diálogo de sincronización. Este diálogo le ofrece el punto de montaje del recurso compartido como el origen y una ruta debajo del <link linkend="configuration_page_synchronization_basic_settings_default_destination"
->prefijo de sincronización</link
-> como el destino. Para actualizar los datos del recurso compartido, puedes intercambiar el destino con el origen pulsando en el botón <guibutton
->Intercambiar rutas</guibutton
->.</para>
+> menu item opens the synchronization dialog. It offers you the mount point of the share as source and a path below the <link linkend="configuration_page_synchronization_basic_settings_default_destination"
+>synchronization prefix</link
+> as destination. To update the data on the share, you can swap the destination with the source by clicking the <guibutton
+>Swap Paths</guibutton
+> button.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diálogo de entrada de sincronización</screeninfo>
@@ -1569,9 +1560,11 @@
         </mediaobject>
       </screenshot>
       <para
->Al pulsar sobre el botón <guibutton
->Sincronizar</guibutton
-> se inicia la sincronización y se muestra un diálogo de progreso con los detalles sobre la transferencia.</para>
+>Clicking the <guibutton
+>Synchronize</guibutton
+> button starts the synchronization. By left clicking on the <guibutton
+>Notifications</guibutton
+> button in the system tray, a progress dialog can be opened that shows some details about the transfer.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diálogo de progreso de la sincronización</screeninfo>
@@ -1586,7 +1579,20 @@
         </mediaobject>
       </screenshot>
       <para
->La sincronización se puede cancelar en cualquier momento pulsando el botón detener situado a la derecha de la barra de progreso.</para>
+>In the default, collapsed version it displays the source and destination of the file that is currently transferred, the transfer rate and the overall progress. More information like the number of transferred files and a graphical representation of the transfer rate can be seen by clicking the <guibutton
+>[+]</guibutton
+> (More) button on the left below to the progress bar.</para>
+      <para
+>The synchronization can be paused or canceled at any time by pressing the pause or stop button to the right of the progress bar.</para>
+
+      <note>
+        <para
+>El número total de archivos que se muestra en diálogo de progreso corresponde al número de archivos presentes en el recurso compartido y no necesariamente al número total de archivos que serán transferidos.</para>
+        <para
+>The progress is calculated from the number of transferred files devided by the total number of files present on the share. Their size is not considered. That means that one very large file adds to the progress as much as a very small one does. Also, due to the way <application
+>rsync</application
+> displays the transfer progress, the progress bar is only updated after the transfer of the file finished.</para>
+      </note>
     </sect2>
 
 <!-- 
@@ -1605,7 +1611,7 @@
 ><title
 >Abrir un recurso compartido con &konsole;</title>
           <para
->Puede abrir el recurso compartido montado en &konsole; seleccionando la acción <menuchoice
+>You can open the mounted share in &konsole; by selecting the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -1613,9 +1619,9 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Abrir con Konsole</guimenuitem
+>Open with Konsole</guimenuitem
 ></menuchoice
->. Esto resulta útil si necesita ejecutar un shell script en el recurso compartido o hacer algo similar.</para>
+> action. This is useful if you need to run shell scripts on the share or similar.</para>
         </formalpara
 ></listitem>
         <listitem
@@ -1623,7 +1629,7 @@
 ><title
 >Abrir un recurso compartido con el gestor de archivos predeterminado</title>
           <para
->Puede abrir el recurso compartido en el gestor de archivos predeterminado (&eg; &dolphin;) haciendo clic sobre el icono del recursos compartido o seleccionando la acción <menuchoice
+>You can open the share in the default file manager (&eg; &dolphin;) by clicking the share icon or selecting the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -1631,9 +1637,9 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Abrir con el gestor de archivos</guimenuitem
+>Open with File Manager</guimenuitem
 ></menuchoice
->.</para>
+> action.</para>
         </formalpara
 ></listitem>
       </itemizedlist>
@@ -1661,7 +1667,7 @@
 >Ubicación y uso</title>
 
       <para
->When &smb4k; is started, a status icon appears in the system tray. Its status is set to active if workgroups or domains were discovered in your network neighborhood. Otherwise it is set to inactive.</para>
+>Cuando se inicia &smb4k; un icono de estado aparece en la bandeja del sistema. Su estado pasará a activo si se encontraron grupos de trabajo o dominios en su entorno de red. Si no pasará a inactivo.</para>
 
       <screenshot>
         <screeninfo
@@ -1677,7 +1683,7 @@
       </screenshot>
 
       <para
->You can minimize or restore the main window by left clicking the status icon. A right click brings up a popup menu that contains several items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use, and configure &smb4k; without opening the main window.</para>
+>By left clicking the (active) icon, you can minimize or restore the main window. A right click brings up a popup menu that contains several menu items allowing you to work with the mounted shares, manage or mount your bookmarks, select the profile you want to use and to configure &smb4k; without the need to open the main window.</para>
     </sect2>
 
 <!-- 
@@ -1724,8 +1730,8 @@
       </variablelist>
     
       <para
->Para cada recurso compartido montado, usted puede abrir un submenú que contiene las siguientes entradas. Para una información más amplia lea <link linkend="shares_view_actions_popup_menu"
->la sección del menú emergente</link
+>For each mounted share you can open a submenu that contains the following entries. For further information read <link linkend="shares_view_actions_popup_menu"
+>here</link
 >.</para>
 
       <variablelist>
@@ -1762,10 +1768,10 @@
           </term>
           <listitem>
             <para
->Synchronize the mounted share with a local copy or vice versa. For further information read the sections about the shares view's <link linkend="shares_view_actions_popup_menu"
->actions and popup menu</link
-> and the <link linkend="shares_view_synchronization"
->synchronization</link
+>Synchronize the mounted share with a local copy or vice versa. For further information read <link linkend="shares_view_actions_popup_menu"
+>here</link
+> and <link linkend="shares_view_synchronization"
+>here</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1796,12 +1802,12 @@
       </variablelist>
 
       <para
->El menú <guimenuitem
->Marcadores</guimenuitem
->contiene todos sus marcadores organizados conforme a la estructura que usted les dio (consulte también <link linkend="bookmarks_adding"
->añadiendo marcadores</link
-> y <link linkend="bookmarks_editor"
->editando marcadores</link
+>The <guimenuitem
+>Bookmarks</guimenuitem
+> menu contains all your bookmarks organized according to the structure you gave them (see also <link linkend="bookmarks_adding"
+>here</link
+> and <link linkend="bookmarks_editor"
+>here</link
 >).</para>
 
       <screenshot>
@@ -1818,17 +1824,17 @@
       </screenshot>
 
       <para
->Este esquema es como el descrito <link linkend="bookmarks_menu"
->aquí</link
->, excepto que la opción de menú <guimenuitem
->Añadir marcador</guimenuitem
-> no está presente.</para>
+>Its layout is as described <link linkend="bookmarks_menu"
+>here</link
+> except that the <guimenuitem
+>Add Bookmark</guimenuitem
+> menu item is not present.</para>
       <para
->In the <guimenuitem
->Profiles</guimenuitem
-> menu, all <link linkend="profiles"
->profiles</link
-> are listed:</para>
+>En el menú <guimenuitem
+>Perfiles</guimenuitem
+>, están listados todos los perfiles <link linkend="profiles"
+>definidos</link
+>:</para>
 
       <screenshot>
         <screeninfo
@@ -1844,13 +1850,13 @@
       </screenshot>
 
       <para
->You can activate a profile by clicking it. The profiles can be <link linkend="profiles"
->managed</link
-> in the <link linkend="configuration_page_profiles"
->configuration dialog</link
+>Usted puede activar un perfil pulsándolo. Los perfiles pueden ser <link linkend="profiles"
+>gestionados</link
+> vía el <link linkend="configuration_page_profiles"
+>diálogo de configuración</link
 >.</para>
       <para
->Estas son las otras opciones de menú son:</para>
+>The other menu entries are:</para>
 
       <variablelist>
         <varlistentry>
@@ -1862,9 +1868,9 @@
           </term>
           <listitem>
             <para
->Open the <link linkend="network_neighborhood_browser_mounting"
->dialog</link
-> for mounting shares by manually providing the URL, IP address and domain or workgroup.</para>
+>Abre el <link linkend="network_neighborhood_browser_mounting"
+>diálogo</link
+> para montajes «manuales».</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1876,8 +1882,8 @@
           </term>
           <listitem>
             <para
->Open the configuration dialog. See the section about <link linkend="configuration"
->the configuration</link
+>Open the configuration dialog. See <link linkend="configuration"
+>here</link
 > for a full list of available settings.</para>
           </listitem>
         </varlistentry>
@@ -1890,7 +1896,7 @@
           </term>
           <listitem>
             <para
->Ocultar (minimizar) o mostrar (restaurar) la ventana principal. El texto que se muestra depende del estado de la ventana principal.</para>
+>Hide (minimize) or show (restore) the main window. Which text is shown depends on the state of the main window.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1955,7 +1961,7 @@
 
   <sect2 id="plasmoid_network_neighborhood">
     <title
->Pestaña de entorno de red</title>
+>Pestaña del entorno de red</title>
 
     <para
 >El la página <guilabel
@@ -1964,7 +1970,7 @@
 
     <screenshot>
       <screeninfo
->Captura de pantalla de la pestaña del plasmoide de entorno de red</screeninfo>
+>Captura de pantalla de la pestaña del plasmoide del navegador del entorno de red</screeninfo>
       <mediaobject>
         <imageobject
 ><imagedata fileref="plasmoid_network_neighborhood_tab.png" format="PNG"/></imageobject>
@@ -1976,28 +1982,28 @@
     </screenshot>
 
     <para
->Pulsando una entrada, usted puede bien acceder al nivel inferior (&eg; pulsando un grupo de trabajo o elemento de dominio mostrará una lista de todos los servidores que le pertenezcan), montar el recurso compartido seleccionado o llamar al diálogo de impresión. Para subir un nivel, usted necesita pulsar el botón <guibutton
->Arriba</guibutton
-> en la barra de herramientas.</para>
+>By clicking an entry you either enter the level below (&eg; clicking a workgroup or domain item will show a list of all hosts belonging to it), mount the selected share or invoke the print dialog. To go one level up again, you need to click the <guibutton
+>Up</guibutton
+> button in the toolbar.</para>
     <para
->Para servidores y recursos compartidos, hay algunos botones de acción a la derecha del nombre del elemento de red. Para servidores, hay un botón con el que usted puede abrir el diálogo <link linkend="network_neighborhood_browser_defining_custom_options"
->Opciones personalizadas</link
->. Para recursos compartidos, hay botones adicionales para<link linkend="network_neighborhood_browser_previewing"
->previsualizar el contenido del recurso compartido seleccionado</link
-> y para <link linkend="bookmarks_adding"
->añadirlo a los marcadores</link
-> respectivamente. Los botones de acción son transparentes por omisión y cambian a opacos cuando usted mueve el ratón sobre ellos. Pulsando con el botón izquierdo, usted puede iniciar su acción elegida.</para>
+>For hosts and shares, to the right of the name of the network item some action buttons are arranged. For hosts, there is one button with that you can open the <link linkend="network_neighborhood_browser_defining_custom_options"
+>Custom Options</link
+> dialog. For shares, there are additional buttons for <link linkend="network_neighborhood_browser_previewing"
+>previewing the content of the selected share</link
+> and for <link linkend="bookmarks_adding"
+>adding it to the bookmarks</link
+>, respectively. The action buttons are transparent by default and change to opaque when you move the mouse over them. By left clicking, you initiate the respective action.</para>
     <para
->Junto al botón <guibutton
->Arriba</guibutton
->, la barra de herramientas contiene tres entradas más: <guibutton
->Volver a explorar</guibutton
+>Besides the <guibutton
+>Up</guibutton
+> button, the toolbar contains three more entries: <guibutton
+>Rescan</guibutton
 >, <guibutton
->Interrumpir</guibutton
-> y <guibutton
->Diálogo montar</guibutton
->. Con estos, usted puede volver a explorar, interrumpir cualquier acción en ejecución o abrir el <link linkend="network_neighborhood_browser_mounting"
->diálogo para montajes «a mano»</link
+>Abort</guibutton
+> and <guibutton
+>Mount Dialog</guibutton
+>. With them you can do a rescan, abort any running action or open the <link linkend="network_neighborhood_browser_mounting"
+>dialog for "manual" mounts</link
 >.</para>
   </sect2>
 
@@ -2012,11 +2018,11 @@
     <para
 >En la página <guilabel
 >Recursos compartdos montados</guilabel
-> se listan todos los recursos compartidos montados:</para>
+> se listan  todos los recursos compartidos montados:</para>
 
     <screenshot>
       <screeninfo
->Captura de pantalla de la pestaña de recursos compartidos montados</screeninfo>
+>Captura de pantalla de la pestaña del plasmoide de recursos compartidos compartidos</screeninfo>
       <mediaobject>
         <imageobject
 ><imagedata fileref="plasmoid_mounted_shares_tab.png" format="PNG"/></imageobject>
@@ -2028,17 +2034,17 @@
     </screenshot>
 
     <para
->A la derecha del nombre del recurso compartido y su servidor, están organizados tres botones de acciones. El primero es para <link linkend="bookmarks_adding"
-> añadir un marcador</link
->, el segundo es para <link linkend="shares_view_synchronization"
->sincronización</link
-> y el tercero es para <link linkend="shares_view_unmounting"
->desmontar el recurso compartido</link
->. Los botones de acción son transparentes por omisión y cambian a opaco cuando usted mueve el ratón sobre ellos. Al pulsar con el botón izquierdo usted inicia la acción seleccionada.</para>
+>Right to the name of the share and its host, three action buttons are arranged. The first one is for <link linkend="bookmarks_adding"
+>adding a bookmark</link
+>, the second for <link linkend="shares_view_synchronization"
+>synchronization</link
+> and the third for <link linkend="shares_view_unmounting"
+>unmounting the share</link
+>. The action buttons are transparent by default and change to opaque when you move your mouse over them. By left clicking you initiate the respective action.</para>
     <para
->La barra de herramientas contiene la acción <guibutton
->Desmontar todo</guibutton
-> que le permite desmontar todos los recursos compartidos de una vez..</para>
+>The toolbar only contains the <guibutton
+>Unmount All</guibutton
+> action that lets you unmount all shares at once.</para>
   </sect2>
 
 <!-- 
@@ -2050,13 +2056,13 @@
 >Pestaña de marcadores</title>
 
     <para
->Los grupos de marcadores y los marcadores definidos para el perfil activo actual se muestran en la página <guilabel
->Marcadores</guilabel
->.</para>
+>On the <guilabel
+>Bookmarks</guilabel
+> page, the bookmark groups and bookmarks defined for the currently active profile are listed:</para>
     
     <screenshot>
       <screeninfo
->Captura de pantalla de la pestaña de marcadores del plasmoide</screeninfo>
+>Captura de pantalla de la pestaña del plasmoide de marcadores</screeninfo>
       <mediaobject>
         <imageobject
 ><imagedata fileref="plasmoid_bookmarks_tab.png" format="PNG"/></imageobject>
@@ -2068,15 +2074,15 @@
     </screenshot>
 
     <para
->Los recursos compartidos de marcadores se montan pulsando con el botón izquierdo sobre el respectivo marcador. Los grupos de marcadores se pueden introducir del mismo modo.</para>
+>Los recursos compartidos de marcadores se montan pulsando con el botón  izquierdo sobre el respectivo marcador. Los grupos de marcadores se pueden  introducir del mismo modo.</para>
     <para
->Para editar o eliminar los marcadores, pulse el botón de acción <guibutton
->Editar</guibutton
-> en la barra de herramientas para abrir el <link linkend="bookmarks_editor"
->Editor de marcadores</link
->. Para regresar al nivel superior se usa el botón <guibutton
->Retroceder</guibutton
->.</para>
+>To edit or remove the bookmarks, you can press the <guibutton
+>Edit</guibutton
+> action button in the toolbar to open the <link linkend="bookmarks_editor"
+>Bookmark Editor</link
+>. To get back to the toplevel the <guibutton
+>Back</guibutton
+> button is used.</para>
   </sect2>
 
 <!-- 
@@ -2088,15 +2094,15 @@
 >Pestaña de perfiles</title>
   
     <para
->Todos los perfiles definidos se muestran en la página <guilabel
->Perfiles</guilabel
->. El perfil activo actual está marcado con la etiqueta <guilabel
->(activo)</guilabel
->.</para>
+>On the <guilabel
+>Profiles</guilabel
+> page, all defined profiles are listed. The currently active one is marked with an appended <guilabel
+>(active)</guilabel
+> label.</para>
   
     <screenshot>
       <screeninfo
->Captura de pantalla de la pestaña de configuración del plasmoide</screeninfo>
+>Captura de pantalla de la pestaña del plasmoide de perfiles</screeninfo>
       <mediaobject>
         <imageobject
 ><imagedata fileref="plasmoid_profiles_tab.png" format="PNG"/></imageobject>
@@ -2110,10 +2116,10 @@
     <para
 >Usted puede activar un determinado perfil al pulsarlo.</para>
     <para
->Los perfiles pueden ser <link linkend="profiles"
+>Los perfiles pueden ser <link  linkend="profiles"
 >gestionados</link
-> vía el <link linkend="configuration_page_profiles"
->diálogo de configuración</link
+> vía el <link linkend= "configuration_page_profiles"
+>diálogo de configuración</link 
 >.</para>
   </sect2>
   
@@ -2147,7 +2153,7 @@
     
     <note>
       <para
->No debe abrir dos diálogos de configuración (a través de la aplicación principal y el &plasmoid;) al mismo tiempo, porque pueden interferir entre si.</para>
+>You should not open a configuration dialog through the main application and the &plasmoid; at the same time, because they might interfere with each other.</para>
     </note>
   </sect2>
   
@@ -2170,15 +2176,17 @@
 >Añadiendo marcadores</title>
 
       <para
->Usted puede añadir marcadores para sus recursos compartidos favoritos desde el <link linkend="network_neighborhood_browser"
->navegador del entorno de red</link
->, la <link linkend="shares_view"
->vista de recursos compartidos</link
->. En los controles de la ventana principal, esto se hace seleccionando uno o varios recursos compartidos y haciendo clic en la acción <menuchoice
+>You can add bookmarks to your favorite shares from within the <link linkend="network_neighborhood_browser"
+>network neighborhood browser</link
+>, the <link linkend="shares_view"
+>shares view</link
+> and the <link linkend="plasmoid"
+>&plasmoid;</link
+>. In the dock widgets of the main window, this is done by selecting one or multiple shares and clicking the <menuchoice
 ><guimenuitem
->Añadir marcador</guimenuitem
+>Add Bookmark</guimenuitem
 ></menuchoice
->. Aparecerá un diálogo en el que puede añadir una etiqueta o asignar un marcador a la categoría.</para>
+> action. In the &plasmoid;, you click the respective bookmark action next to the item's name. A dialog will then pop up where you can add a label and/or assign a group to the bookmark.</para>
 
       <screenshot>
         <screeninfo
@@ -2194,11 +2202,11 @@
       </screenshot>
 
       <para
->La definición de una categoría puede ayudarle a organizar los marcadores. En el menú de marcadores, todos los marcadores pertenecientes a una misma categoría estarán organizados en un submenú con la entrada de la categoría como padre (consulte <link linkend="bookmarks_menu"
->más abajo</link
+>Adding a group may help you to organize the bookmarks. In the bookmark menu, all bookmarks belonging to one group are arranged in a submenu with the group entry as parent (see <link linkend="bookmarks_menu"
+>below</link
 >).</para>
       <para
->La etiqueta puede ser cualquier texto que describa al recurso compartido. En el caso de que usted defina una etiqueta, esta se mostrará en el menú de marcadores en lugar de la ubicación predeterminada. Si desea cambiar este comportamiento, puede hacerlo en el <link linkend="configuration_page_user_interface_main_window"
+>La etiqueta puede ser cualquier texto que describa al recurso compartido. En el caso de que defina una etiqueta, de manera predeterminada, esta se mostrará en el menú de marcadores en lugar de la localización. Si desea cambiar este comportamiento, puede hacerlo en el <link linkend="configuration_page_user_interface_main_window"
 >diálogo de configuración</link
 >.</para>
     </sect2>
@@ -2212,9 +2220,9 @@
 >Accediendo y gestionando marcadores</title>
 
       <para
->En la ventana principal, se puede acceder y gestionar los marcadores a través del menú <guilabel
->Marcadores</guilabel
->.</para>
+>In the main window, the bookmarks can be accessed and managed through the <guilabel
+>Bookmarks</guilabel
+> menu:</para>
 
       <screenshot>
         <screeninfo
@@ -2230,7 +2238,7 @@
       </screenshot>
 
       <para
->Hay dos elementos estáticos disponibles en el menú:</para>
+>In the menu there are two static items available:</para>
 
       <variablelist>
         <varlistentry>
@@ -2242,7 +2250,7 @@
           </term>
           <listitem>
             <para
->Abre el <link linkend="bookmarks_editor"
+>Abra el <link linkend="bookmarks_editor"
 >editor de marcadores</link
 >. Esta acción está desactivada si no hay ningún marcador.</para>
           </listitem>
@@ -2262,13 +2270,13 @@
           </term>
           <listitem>
             <para
->Añade marcadores a los recursos compartidos seleccionados. Es necesario que haya un recurso compartido seleccionado para activar esta opción.</para>
+>Add bookmarks to the selected shares. At least one share has to be selected to enable this action.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Si no ha definido ninguna categoría, hay un tercer elemento:</para>
+>In case you have not defined any groups, there is a third item:</para>
 
       <variablelist>
         <varlistentry>
@@ -2280,41 +2288,38 @@
           </term>
           <listitem>
             <para
->Monta todos los marcadores de nivel superior al mismo tiempo. Esta opción está desactivada si todos los recursos compartidos están ya montados.</para>
+>Mount all top-level bookmarks at once. It is disabled if all bookmarked shares are mounted.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->El resto de entradas son, bien categorías de submenús, o bien marcadores que no pertenecen a ninguna categoría. Todas las entradas se listan alfabéticamente y los marcadores pueden aparecer con su dirección o una etiqueta descriptiva. Al pulsar sobre un marcador, se monta el respectivo recurso compartido. Si un recurso compartido marcado se monta en el sistema, la entrada de marcadores se desactiva.</para>
+>All other entries are either group submenus or shares that do not belong to a group. All entries are listed alphabetically and the bookmarks may either appear with their location or descriptive label. By clicking a bookmark, the respective share is mounted. If a bookmarked share is mounted on the system, the bookmark entry is disabled.</para>
       <para
->Los submenús de categorías contienen los marcadores asignados , y en cada caso un elemento de menú <guimenuitem
->Montar todos los marcadores</guimenuitem
-> también está presente. Este último se puede utilizar para montar todos los marcadores en esa categoría al mismo tiempo.</para>
+>For each group there is a submenu. It contains all bookmarks belonging to the group and a <guimenuitem
+>Mount All Bookmarks</guimenuitem
+> menu item. The latter one can be used to mount all bookmarks in that submenu at once.</para>
       <para
->En el complemento de la bandeja del sistema, hay un <link linkend="systemtray_menus"
+>In the system tray widget, there is an identical <guilabel
+>Bookmarks</guilabel
+> <link linkend="systemtray_menus"
 >submenu</link
-> similar de <guilabel
->Marcadores</guilabel
-> que, sin embargo, no tiene la entrada <guilabel
->Añadir marcador</guilabel
->.</para>
-      <para
->El &plasmoid; proporciona una <link linkend="plasmoid_bookmarks"
->pestaña</link
-> <guilabel
->Marcadores</guilabel
-> donde todos los marcadores se organizan de forma parecida a como están en el menú de marcadores. Las categorías y los marcadores se listan en la vista. Los recursos compartidos marcados pueden montarse pulsando en la respectiva entrada, En la barra de herramientas se encuentran dos acciones: <guimenuitem
->Retroceder</guimenuitem
-> y <guimenuitem
->Editar</guimenuitem
->. Pulsando <guimenuitem
->Retroceder</guimenuitem
-> usted puede volver al nivel superior si usted entró a una carpeta de categoría. La acción <guimenuitem
->Editar</guimenuitem
-> abre el <link linkend="bookmarks_editor"
->
->editor de marcadores</link
+> except that the <guilabel
+>Add Bookmark</guilabel
+> entry is missing. The plasmoid provides a <guilabel
+>Bookmarks</guilabel
+> <link linkend="plasmoid_bookmarks"
+>tab</link
+> where all bookmarks are arranged in a similar way as in the bookmark menu. The bookmark groups and the bookmarks are listed in the view. Bookmarked shares can be mounted by clicking the respective entry. In the toolbar two actions are present: <guimenuitem
+>Back</guimenuitem
+> and <guimenuitem
+>Edit</guimenuitem
+>. By clicking <guimenuitem
+>Back</guimenuitem
+> you can get back to the top level if you entered a group folder. The <guimenuitem
+>Edit</guimenuitem
+> action will open the <link linkend="bookmarks_editor"
+>bookmark editor</link
 >.</para>
     </sect2>
     
@@ -2335,7 +2340,7 @@
 >Editar</guimenuitem
 > en la pestaña <guilabel
 >Marcadores</guilabel
-> del &plasmoid;.</para>
+>. del &plasmoid;.</para>
     
       <screenshot>
         <screeninfo
@@ -2351,17 +2356,17 @@
       </screenshot>
 
       <para
->En la vista de árbol, los marcadores están organizados de acuerdo con las categorías a las que pertenecen. Los marcadores sin una categoría se ubican en el nivel superior. Para reorganizar los marcadores, la vista de árbol ofrece capacidades de arrastrar y soltar, por lo que usted puede desplazar los marcadores con el ratón.</para>
+>In the tree view, the bookmarks are arranged according to the groups they belong to. Bookmarks without groups are located at the top level. To rearrange bookmarks, the tree view offers drag and drop capabilities, so that you can move bookmarks around using the mouse.</para>
       <para
->Si usted quiere editar un marcador, puede hacerlo seleccionándolo. La etiqueta almacenada, inicio de sesión, dirección IP y categoría aparecen en los controles de entrada y se convierten en editables. En la mayoría de los casos, usted no necesita tocar la dirección IP y el inicio de sesión, porque &smb4k; almacena los valores correctos en el momento en que usted marcó el recurso compartido. Sin embargo, si el servidor cambió de dirección IP (&eg;, porque se usa DHCP en su red local) o su inicio de sesión cambió, estas entradas deberían ajustarse. Con la etiqueta usted puede proporcionar a cada marcador una descripción personalizada. Se usará para mostrarla <emphasis
->en lugar de</emphasis
-> la ubicación, pero esto puede cambiarse en el <link linkend="configuration_page_user_interface_main_window"
->diálogo de configuración</link
->. Finalmente, la entrada de categoría le ayuda a organizar sus marcadores. Por ejemplo si usted usa, &eg;, su portátil en casa y también en el trabajo y usted no quiere usar <link linkend="profiles"
->perfiles</link
->, sería una buena idea crear dos grupos «Casa» y «Trabajo» y categorizar los marcadores según cada caso.</para>
+>If you want to edit a bookmark, you can do so by selecting it. The stored label, login, IP address and group name appear in the input widgets and become editable. In most cases, you do not need to touch the IP address and the login, because &smb4k; stored the correct values at the time you bookmarked the share. However, if the server got a different IP address (&eg; because DHCP is used on your local network) or your login changed, these entries should be adjusted. With the label you can give each bookmark a custom description. It will be used for display <emphasis
+>instead</emphasis
+> of the location, but this can be changed in the <link linkend="configuration_page_user_interface_main_window"
+>configuration dialog</link
+>. The group entry, finally, helps you to organize your bookmarks. Especially if you use &eg; your notebook at home and at work, and you do not want to use <link linkend="profiles"
+>profiles</link
+>, it might be a good idea to create two groups "Home" and "Work" and save the bookmarks accordingly.</para>
       <para
->La vista en árbol también ofrece un menú emergente que contiene las siguientes tres acciones. Estas se pueden utilizar para añadir categorías o eliminar grupos o marcadores.</para>
+>The tree view also offers a popup menu containing the following three actions. They can be used to add groups or remove groups and/or bookmarks.</para>
 
       <screenshot>
         <screeninfo
@@ -2381,12 +2386,12 @@
           <term>
             <menuchoice
 ><guimenuitem
->Añadir categoría</guimenuitem
+>Add Group</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
             <para
->Añade una categoría de marcadores. Una vez que cree una categoría, podrá mover los marcadores a ella.</para>
+>Add a bookmark group. After you created a group, you can move bookmarks to it.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2398,7 +2403,7 @@
           </term>
           <listitem>
             <para
->Elimina un marcador seleccionado o una categoría. En el caso de categoría, todos los marcadores almacenados en ese grupo se eliminan también.</para>
+>Remove a selected bookmark or group. In case of a group, all bookmarks stored under that group are also removed.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2410,14 +2415,14 @@
           </term>
           <listitem>
             <para
->Elimina todos los marcadores y las categorías de la vista de árbol.</para>
+>Remove all bookmarks from the tree view including all groups.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       <para
->Después de que haya terminado la edición, los cambios se guardan pulsando el botón <guibutton
->Aceptar</guibutton
->.</para>
+>After you finished editing, the changes can be committed by clicking the <guibutton
+>OK</guibutton
+> button.</para>
     </sect2>
   </sect1>
 
@@ -2430,9 +2435,9 @@
 >Perfiles</title>
     
     <para
->&smb4k; ofrece la opción de usar diferentes perfiles. Están diseñados para facilitar la gestión de diferentes entornos de red, v, si usted está usando su portátil en casa y también en el trabajo.</para>
+>&smb4k; offers the use of different profiles. They are intended for better handling of different network neighborhoods, &eg; if you are using your laptop at home and at work.</para>
     <para
->Por omisión, el uso de diferentes perfiles está desactivado y se usa el perfil predeterminado para todo. La mayor parte de usuarios no tendrían que cambiar esto, porque el comportamiento predeterminado satisface completamente sus necesidades. Sin embargo, esta característica podría ser útil para algunos usuarios.</para>
+>By default, the use of different profiles is disabled and a default profile is used: one profile for everything. Most users won't have to change anything, because the default behavior satisfies their needs completely. However, for some users this feature might be very useful.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2471,17 +2476,17 @@
         </mediaobject>
       </screenshot>
       <para
->Si usted quiere cambiar el nombre de un perfil, solo pulse y edite el nombre en la línea de edición. Pulsando <guibutton
->Añadir</guibutton
-> actualizará el nombre en la vista de lista. Todas las preferencias almacenadas se migrarán silenciosamente (sin la ayuda del asistente de migración). Un perfil puede eliminarse seleccionándolo en la vista de lista y pulsando <guibutton
->Eliminar</guibutton
->. También puede cambiar el orden de los perfiles con los botones <guibutton
->Subir</guibutton
-> y <guibutton
->Bajar</guibutton
->.</para>
+>If you want to rename a profile, just click it and edit the name edit line. Clicking <guibutton
+>Add</guibutton
+> will update the name in the list view. All stored settings will be migrated seamlessly (without the use of the migration assistant). A profile can be removed by selecting it in the list view and clicking <guibutton
+>Remove</guibutton
+>. There is also the possibility to change the order of the profiles with the <guibutton
+>Move Up</guibutton
+> and <guibutton
+>Move Down</guibutton
+> buttons.</para>
       <para
->En caso de que usted haya activado el asistente de migración, se lanza siempre que elimine un perfil o cuando active/desactive el uso de perfiles. Proporciona la migración de todas las preferencias importantes.</para>
+>In case you enabled the use of the migration assistant, it is always launched when you remove a profile or when you enable/disable the use of profiles. It provides the possibility to migrate all relevant settings</para>
       <itemizedlist>
         <listitem
 ><para
@@ -2497,7 +2502,7 @@
 ></listitem>
       </itemizedlist>
       <para
->Las siguiente captura de pantalla ilustra el asistente de migración de perfiles después de que usted haya activado el uso de perfiles:</para>
+>The following screenshot shows exemplarily the profile migration assistant after you enabled the use of profiles:</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del asistente de migración de perfiles</screeninfo>
@@ -2512,20 +2517,20 @@
         </mediaobject>
       </screenshot>
       <para
->El perfil antiguo (<guilabel
->&lt;Perfil por omisión&gt;</guilabel
-> en este caso) se muestra bajo <guilabel
->Perfil antiguo</guilabel
->. Bajo <guilabel
->Perfil nuevo</guilabel
-> usted puede usar un menú desplegable para elegir el perfil adonde se deberían migrar las preferencias. El primer perfil en la lista es preseleccionado. Pulsando el botón <guibutton
->Aceptar</guibutton
-> se migran las preferencias; pulsando el botón <guibutton
->Cancelar</guibutton
-> cancela la acción.</para>
+>Under <guilabel
+>Old Profile</guilabel
+> the old profile (<guilabel
+>&lt;Default Profile&gt;</guilabel
+> in this case) is listed. Under <guilabel
+>New Profile</guilabel
+> you can choose the profile where the settings should be migrated to from a drop-down menu. The first profile in the list is preselected. Clicking the <guibutton
+>OK</guibutton
+> button migrates the settings, clicking <guibutton
+>Cancel</guibutton
+> cancels the action.</para>
       <note
 ><para
->Para usar el asistente de migración cuando usted activa por primera vez el uso de perfiles, usted debe activar su uso al mismo tiempo que activa el uso de perfiles.</para
+>In order to use the migration assistant when you enable the use of profiles the first time, you need to enable its use at the same time you enable the use of profiles.</para
 ></note>
     </sect2>
   
@@ -2537,29 +2542,33 @@
       <title
 >Activación de un perfil</title>
       <para
->Por omisión, el primer perfil en la lista se activa cuando usted activa el uso de perfiles. El perfil activo puede cambiarse en el menú <guimenu
->Perfiles</guimenu
-> de la ventana principal o a través del control de la bandeja del sistema o la página <guilabel
->Perfiles</guilabel
-> del plasmoide.</para>
+>By default, the first profile in the list is set active when you enable the use of profiles. The active profile can be changed in the <guimenu
+>Profiles</guimenu
+> menu of the main window or the system tray widget or on the <guilabel
+>Profiles</guilabel
+> page of the plasmoid.</para>
       <para
 >Cuando un perfil se activa, suceden varias cosas:</para>
       <itemizedlist>
         <listitem
 ><para
->Todos los recursos compartidos montados actualmente se desmontan y se planifican para volver a montar.</para
+>All currently mounted shares are unmounted and are scheduled for remount.</para
 ></listitem>
         <listitem
 ><para
->Todos los recursos compartidos montados previamente bajo se vuelven a montar bajo el nuevo perfil activado.</para
+>All shares are remounted that were previously mounted under the activated profile.</para
 ></listitem>
         <listitem
 ><para
->Los marcadores y opciones personalizadas para el nuevo perfil son cargadas.</para
+>The bookmarks of this profile are loaded.</para
+></listitem>
+        <listitem
+><para
+>The custom options of this profile are loaded.</para
 ></listitem>
       </itemizedlist>
       <para
->Por lo tanto, no se sorprenda si las cosas cambian después de seleccionar un perfil diferente...</para>
+>So, don't be surprised when things change when you selected a different profile ...</para>
     </sect2>
   </sect1>
 
@@ -2579,7 +2588,7 @@
       <title
 >Comportamiento predeterminado</title>
       <para
->Los eventos normales, como montar y desmontar un recurso compartido, así como advertencias y errores se notifican al usuario vía las notificaciones del sistema. Por omisión, cuando se le notifica al usuario sobre un evento normal, una notificación emerge silenciosamente. Con advertencias y errores, también se reproduce un sonido. La captura de pantalla inferior muestra la notificación que emerge después de que se haya montado un recurso compartido.</para>
+>Normal events like mounting and unmounting of a share as well as warnings and errors are reported to the user via system notifications. By default, when the user is notified about a normal event, a notification pops up silently. With warnings and errors also a sound is played. The screenshot below shows the notification that pops up after a share was mounted.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla de la notificación posterior a montar un recurso compartido</screeninfo>
@@ -2606,15 +2615,13 @@
       <title
 >Gestión de notificaciones</title>
       <para
->Las notificaciones pueden configurarse a través de &systemsettings;. Para modificar el comportamiento de una notificación, navegue a la página <guibutton
->Notificaciones</guibutton
->. Para &plasma; 5.21 y siguientes, luego pulse el botón <guibutton
->Configurar</guibutton
-> al lado de la etiqueta <guilabel
->Aplicaciones</guilabel
-> y elija &smb4k; en la lista que aparece. Al pulsar <guibutton
->Configurar eventos...</guibutton
-> se abre el siguiente diálogo:</para>
+>Notifications can be managed via the &systemsettings;. To modify the behavior of a notification, navigate to the <guibutton
+>Notifications</guibutton
+> page. Under <guilabel
+>Event source</guilabel
+> select the <guilabel
+>Advanced Network Neighborhood Browser</guilabel
+> entry from the drop-down menu:</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del módulo de notificación de preferencias del sistema</screeninfo>
@@ -2628,7 +2635,7 @@
         </mediaobject>
       </screenshot>
       <para
->Aquí, todas las notificaciones disponibles se muestran en la vista de lista y pueden editarse, activarse o desactivarse de la manera que quiera.</para>
+>All available notifications are shown in the list view and can be edited, enabled and disabled according to your liking.</para>
     </sect2>
   </sect1>
 
@@ -2640,6 +2647,33 @@
     <title
 >Notas especiales</title>
   
+<!-- 
+      Using Smb4K : Special Remarks : Problems Browsing the Network Neighborhood with &Samba; 4.7 and above
+-->
+   
+    <sect2 id="special_remarks_problems_browsing_samba_47">
+      <title
+>Problems Browsing the Network Neighborhood with &Samba; 4.7 and above</title>
+      
+      <para
+>Since version 2.9.71, &smb4k; is using &Samba;'s client library (<application
+>libsmbclient</application
+>) to browse and search the network neighborhood and print files. With the &Samba; 4.7 release, the default protocol version has been set to SMB3 by the &Samba; team. Unfortunately, &Samba;'s client library cannot handle it correctly at the moment and browsing the network neighborhood will fail. For this reason, users of Samba 4.7 and above need to add the following setting to the [global] section of the <filename
+>smb.conf</filename
+> file to force &Samba; to use SMB1 (NT1) and, thus, fix the browsing of the network neighborhood:</para>
+      
+<programlisting
+>[global]
+...
+client max protocol = NT1
+...</programlisting>
+
+        <para
+>If you need help, you can consult the Samba Wiki's <ulink url="https://wiki.samba.org/index.php/User_Documentation"
+>User Documentation</ulink
+> section for further information.</para>
+    </sect2>
+    
 <!--
     Using Smb4K : Special Remarks : Denied Privilege Escalation
 -->
@@ -2651,11 +2685,11 @@
       <para
 >En caso de que las acciones de montar y desmontar fallen con un <guilabel
 >Error de autorización denegada</guilabel
->, su configuración de polkit-1 podría necesitar un ajuste: Añada un archivo, &eg; denominado <filename
->10-aistente-de-montaje.rules</filename
+>,su configuración de polkit-1 podría necesitar un ajuste: Añada un archivo, &eg; denominado  <filename
+>10-asistente-de-montaje.rules</filename
 >, al directorio <filename class="directory"
 >$PREFIX/etc/polkit-1/rules.d/</filename
->con el siguiente contenido:</para>
+> con el siguiente contenido:</para>
 
 <programlisting
 >polkit.addRule(function(action, subject) {
@@ -2673,11 +2707,11 @@ polkit.addRule(function(action, subject) {
 });</programlisting>
       
       <para
->Esto permite a todos los usuarios del grupo de Unix <emphasis
+>This allows all users in the Unix group <emphasis
 >wheel</emphasis
-> ejecutar las acción de montaje y desmontaje. Usted puede ajustar el grupo de usuarios autorizados a cualquier grupo que prefiera usar (&eg; <emphasis
+> to execute the mount and unmount action. You may adjust the group of authorized users to any group you need (&eg; <emphasis
 >sudo</emphasis
-> o <emphasis
+> or <emphasis
 >operator</emphasis
 >).</para>
     </sect2>
@@ -2691,7 +2725,7 @@ polkit.addRule(function(action, subject) {
 >Problemas de montaje en BSD</title>
       
       <para
->Si el montaje de recursos compartidos protegidos por contraseña desde un servidor &Samba; o &Windows; falla, esto puede ser debido porque <ulink url="man:/mount_smbfs"
+>If mounting of password-protected shares from either a &Samba; or a &Windows; server fails, this might be due to the fact that <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -2699,10 +2733,10 @@ polkit.addRule(function(action, subject) {
 >8</manvolnum
 ></citerefentry
 ></ulink
->  solo usa autenticación NTLMv1, y el servidor no la admite. Para arreglar el montaje para un servidor &Samba;, puede añadir la siguiente entrada a la sección [global] del archivo <filename
+> only uses NTLMv1 authentication and the server does not support it. To fix mounting for a &Samba; server, you can add the following entry to the [global] section of the <filename
 >smb.conf</filename
-> del <emphasis
->servidor</emphasis
+> file of <emphasis
+>the server</emphasis
 >:</para>
       
 <programlisting
@@ -2725,19 +2759,33 @@ ntlm auth = yes
 >Otros entornos de escritorio distintos de &plasma;</title>
 
       <para
->Cuando use un entorno de escritorio distinto de &plasma;, las aplicaciones &Qt; y &kf5; podrían perder algunos de los iconos. En ese caso, usted podría querer descargar los fuentes de <application
+>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing the icons. In that case, you might want to install the application <application
 >qt5ct</application
-> (el código fuente puede obtenerse <ulink url="https://sourceforge.net/projects/qt5ct/"
->aquí</ulink
->). Para usar <application
+> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/"
+>here</ulink
+>). To use <application
 >qt5ct</application
-> con su entorno de escritorio, añada la siguiente línea en su archivo <filename
+> with your desktop environment, add the following line to your <filename
 >~/.xinitrc</filename
-> o <filename
+> or <filename
 >~/.profile</filename
->:</para>
+> file:</para>
 <programlisting
 >export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
+      <note>
+        <para
+>Under NetBSD <application
+>qt5ct</application
+> might complain about a missing <filename
+>libfreetype.so.17</filename
+> or <filename
+>libGL.so.2</filename
+> shared library file and refuse to start. To fix this problem, create the <filename
+>/etc/ld.so.conf</filename
+> file and add the path <filename class="directory"
+>/usr/X11R7/lib</filename
+> to it.</para>
+      </note>
     </sect2>
   </sect1>
 </chapter>
@@ -2752,11 +2800,11 @@ ntlm auth = yes
 >Configuración de &smb4k;</title>
 
   <para
->Esta sección describe las preferencias que pueden usarse para configurar &smb4k;. Para abrir el diálogo de configuración, usted tiene que pulsar la opción de menú <link linkend="mainwindow_overview"
+>This section describes the settings that are available to configure &smb4k;. To open the configuration dialog, you have to click the <link linkend="mainwindow_overview"
 ><guimenuitem
->Configurar &smb4k;...</guimenuitem
+>Configure &smb4k;...</guimenuitem
 ></link
->.</para>
+> menu item.</para>
 
 <!-- 
       Configuring Smb4K : User Interface 
@@ -2767,10 +2815,10 @@ ntlm auth = yes
 >Interfaz de usuario</title>
 
     <para
->Puede cambiar el aspecto y comportamiento de varios diálogos y controles con las opciones localizadas aquí. Por favor, tenga en cuenta que si usted quiere cambiar el aspecto de la ventana principal, opciones adicionales están disponibles bajo <guimenu
->Preferencias</guimenu
-> en la <link linkend="mainwindow_overview"
->barra de menú</link
+>With the options located here you can change the appearance and behavior of several dialogs and widgets. Please note that if you want to change the appearance of the main window you will find additional options under <guimenu
+>Settings</guimenu
+> in the <link linkend="mainwindow_overview"
+>menubar</link
 >.</para>
     <screenshot>
       <screeninfo
@@ -2802,13 +2850,13 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Define la localización de las pestañas si los elementos gráficos del dock en la ventana principal están colocadas como pestañas. Se pueden elegir los siguientes valores:</para>
+>Define the location of the tabs if the dock widgets in the main window are arranged in tabs. The following values can be chosen:</para>
             <variablelist>
               <varlistentry>
                 <term>
                   <menuchoice
-><guimenuitem
->Superior</guimenuitem
+><guibutton
+>Top</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
@@ -2819,8 +2867,8 @@ ntlm auth = yes
               <varlistentry>
                 <term>
                   <menuchoice
-><guimenuitem
->Inferior</guimenuitem
+><guibutton
+>Inferior</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
@@ -2831,8 +2879,8 @@ ntlm auth = yes
               <varlistentry>
                 <term>
                   <menuchoice
-><guimenuitem
->Izquierda</guimenuitem
+><guibutton
+>Izquierda</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
@@ -2843,8 +2891,8 @@ ntlm auth = yes
               <varlistentry>
                 <term>
                   <menuchoice
-><guimenuitem
->Derecha</guimenuitem
+><guibutton
+>Derecha</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
@@ -2854,8 +2902,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Predeterminada: <guimenuitem
->Inferior</guimenuitem
+>Default: <guibutton
+>Bottom</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -2985,8 +3033,8 @@ ntlm auth = yes
               <varlistentry>
                 <term>
                   <menuchoice
-><guimenuitem
->Vista de icono</guimenuitem
+><guibutton
+>Icon View</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
@@ -2997,8 +3045,8 @@ ntlm auth = yes
               <varlistentry>
                 <term>
                   <menuchoice
-><guimenuitem
->Vista de lista</guimenuitem
+><guibutton
+>List View</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
@@ -3008,8 +3056,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Predeterminada:<guimenuitem
->Vista de icono</guimenuitem
+>Default: <guibutton
+>Icon View</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -3022,7 +3070,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Se mostrará un consejo emergente cuando usted mueve el puntero del ratón sobre un elemento en la vista de recursos compartidos. Contiene información sobre el recurso compartido, tal como el nombre del recurso compartido, dirección UNC, punto de montaje, propietario y grupo, inicio de sesión (sistema de archivos &CIFS;, solo &Linux;), uso de disco, &etc;</para>
+>A tooltip will be shown if you move the mouse pointer over an item in the shares view. It contains information about the mounted share such as the share name, UNC address, mount point, owner and group, login (&CIFS; file system, &Linux; only), disk usage, &etc;</para>
             <para
 >Predeterminado: seleccionado</para>
           </listitem>
@@ -3040,15 +3088,13 @@ ntlm auth = yes
 >Red</title>
 
     <para
->Las opciones localizadas aquí influyen en la comunicación de red. Puede modificar el comportamiento de la navegación en la pestaña <guibutton
->Preferencias básicas</guibutton
->, cambiar las opciones pasadas a la librería <application
+>The options located here influence the network communication. You can modify the behavior of the underlying <application
 >libsmbclient</application
-> en la pestaña <guibutton
->Preferencias de Samba</guibutton
-> y también activar las características Wake-On-LAN en la pestaña <guibutton
->Preferencias de Wake-On-LAN</guibutton
->.</para>
+> library in the <guibutton
+>Samba</guibutton
+> tab and enable the Wake-On-LAN features in the <guibutton
+>Wake-On-LAN</guibutton
+> tab.</para>
     
     <screenshot>
       <screeninfo
@@ -3062,259 +3108,18 @@ ntlm auth = yes
 ></textobject>
       </mediaobject>
     </screenshot>
-    
-<!--
-      Configuring Smb4K : Network : Basic Settings
-    -->
-    
-    <sect2 id="configuration_page_network_basic_settings">
-      <title
->Preferencias básicas</title>
-      
-      <sect3 id="configuration_page_network_basic_settings_browse_settings">
-        <title
->Preferencias de navegación</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Usar Descubrimiento Dinámico de Servicios Web (WS-Discovery) para navegar</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->El protocolo de Descubrimiento Dinámico de Servicios Web (WS-Discovery) se usa para navegar en la red local y descubrir grupos de trabajo, dominios y servidores. Es útil si su vecindad de red está compuesta mayormente por servidores con versiones de &Windows; actuales. Si usa esta opción, no debería ser necesario forzar a la librería cliente de &Samba; a usar la versión del protocolo SMB 1.0 para buscar grupos de trabajo y dominios.</para>
-              <note
-><para
->Esta preferencia es opcional, y solo aparece si compiló &smb4k; con el soporte para WS-Discovery.</para
-></note>
-              <para
->Predeterminado: seleccionado</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Usar el servicio de descubrimiento DNS (DNS-SD) para navegar</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->La interfaz del servicio de descubrimiento DNS (DNS-SD) se usa para navegar en la red local y descubrir servidores que proporcionan recursos SMB compartidos. Los dominios descubiertos corresponden a dominios DNS locales (&eg;, de nombre LOCAL) y posiblemente no a aquellos definidos en la vecindad de red. Sin embargo, esto no influencia la navegación. Si usa esta opción, no debería ser necesario forzar a la librería cliente de &Samba; a usar la versión del protocolo SMB 1.0 cuando se buscan grupos de trabajo y dominios.</para>
-              <para
->Predeterminado: seleccionado</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Forzar el uso de la versión 1.0 del protocolo SMB para búsquedas de grupos de trabajo y dominios</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Seleccione esta opción como último recurso, porque esta versión es insegura y ha sido desactivada en las versiones más actuales de &Samba; y &Windows;. Sin embargo, si tiene problemas descubriendo grupos de trabajo y dominios en su vecindad de red, puede considerar activar esta opción. Si está usando el servicio de descubrimiento DNS (DNS-SD) o los servicios de descubrimiento de servicios web (WS-Discovery) y estos le funcionen, no necesita la versión 1.0.</para>
-              <para
->Predeterminado: no seleccionado</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Establezca la versión mínima y máxima del protocolo SMB</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Establecer la versión mínima y máxima del protocolo SMB que es usada por la librería cliente de &Samba; para navegar la vecindad de red. Esto sobrescribirá las preferencias del archivo smb.conf. Normalmente, no necesita usar esta opción, porque la versión correcta del protocolo debe ser negociada entre el cliente y el servidor al establecer la conexión. Por favor, tenga en cuenta que esta preferencia puede no ser apropiada para descubrir grupos de trabajo y dominios al mismo tiempo que mantiene sin cortes las conectividad con servidores. Use el servicio de descubrimiento DNS (DNS-SD) o los servicios de descubrimiento de servicios web (WS-Discovery) para las búsquedas de dominios y grupos de trabajo en su lugar.</para>
-              <para
->Las preferencias más abajo para la versión mínima y máxima de la versión del protocolo SMB se activan al pulsar esta casilla de selección.</para>
-              <para
->La máxima versión del protocolo SMB debe ser igual o mayor que la versión mínima de SMB.</para>
-              <para
->Predeterminado: no seleccionado</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guilabel
->Versión mínima del protocolo SMB:</guilabel
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Se pueden usar las siguientes versiones del protocolo:</para>
-                    <variablelist>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->NT1 (Protocolo clásico CIFS/SMBv1)</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Esta es la versión previa del protocolo. Es usada por &Windows; NT y es conocida como CIFS. Se considera insegura y fue desactivada en la última versión de &Samba; y &Windows;.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->SMB2 (Windows Vista y superiores)</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Esta es la reimplementación del protocolo SMB. La usan &Windows; Vista y superiores.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->SMB3 (Windows 8 y superiores)</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Esta es la misma que SMB2. Esta versión del protocolo es usada por &Windows; 8 y superiores.</para>
-                        </listitem>
-                      </varlistentry>
-                    </variablelist>
-                    <para
->Predeterminada: <guimenuitem
->SMB2 (Windows Vista y superiores)</guimenuitem
-></para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guilabel
->Versión máxima del protocolo SMB:</guilabel
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Se pueden usar las siguientes versiones del protocolo:</para>
-                    <variablelist>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->NT1 (Protocolo clásico CIFS/SMBv1)</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Esta es la versión previa del protocolo. Es usada por &Windows; NT y es conocida como CIFS. Se considera insegura y fue desactivada en la última versión de &Samba; y &Windows;.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->SMB2 (Windows Vista y superiores)</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Esta es la reimplementación del protocolo SMB. La usan &Windows; Vista y superiores.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->SMB3 (Windows 8 y superiores)</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Esta es la misma que SMB2. Esta versión del protocolo es usada por &Windows; 8 y superiores.</para>
-                        </listitem>
-                      </varlistentry>
-                    </variablelist>
-                    <para
->Predeterminada: <guimenuitem
->SMB3 (Windows 8 y superiores)</guimenuitem
-></para>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-        
-      <sect3 id="configuration_page_network_basic_settings_behavior">
-        <title
->Comportamiento</title>
-    
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Detectar impresoras compartidas</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Se detectan las impresoras compartidas.</para>
-              <para
->Predeterminado: seleccionado</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Detectar recursos compartidos ocultos</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Se detectan los recursos compartidos ocultos. Los recursos compartidos ocultos terminan con un signo $, &eg; Música$ o IPC$.</para>
-              <para
->Predeterminado: seleccionado</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Vista previa de archivos y directorios ocultos</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Muestra todos los archivos y directorios, incluyendo los ocultos, al abrir los contenidos de un recurso compartido en el diálogo de vista previa.</para>
-              <para
->Predeterminado: no seleccionado</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Samba Settings (libsmbclient)
+      Configuring Smb4K : Network : Samba (libsmbclient)
 -->
 
-    <sect2 id="configuration_page_network_samba_settings">
+    <sect2 id="configuration_page_network_samba">
       <title
->Preferencias de Samba</title>
+>Samba</title>
       
-      <sect3 id="configuration_page_network_samba_settings_common_settings">
+      <sect3 id="configuration_page_network_samba_basic_settings">
         <title
->Preferencias comunes</title>
+>Preferencias básicas</title>
 
         <variablelist>
           <varlistentry>
@@ -3386,7 +3191,7 @@ ntlm auth = yes
         </variablelist>
       </sect3>
     
-      <sect3 id="configuration_page_network_samba_settings_authentication">
+      <sect3 id="configuration_page_network_samba_authentication">
         <title
 >Autenticación</title>
 
@@ -3436,7 +3241,7 @@ ntlm auth = yes
         </variablelist>
       </sect3>
       
-      <sect3 id="configuration_page_network_samba_settings_security">
+      <sect3 id="configuration_page_network_samba_security">
         <title
 >Seguridad</title>
         
@@ -3455,8 +3260,8 @@ ntlm auth = yes
                 <varlistentry>
                   <term>
                     <menuchoice
-><guimenuitem
->Ninguno</guimenuitem
+><guilabel
+>Ninguno</guilabel
 ></menuchoice>
                   </term>
                   <listitem>
@@ -3467,8 +3272,8 @@ ntlm auth = yes
                 <varlistentry>
                   <term>
                     <menuchoice
-><guimenuitem
->Solicitud</guimenuitem
+><guilabel
+>Solicitud</guilabel
 ></menuchoice>
                   </term>
                   <listitem>
@@ -3479,8 +3284,8 @@ ntlm auth = yes
                 <varlistentry>
                   <term>
                     <menuchoice
-><guimenuitem
->Exigido</guimenuitem
+><guilabel
+>Exigido</guilabel
 ></menuchoice>
                   </term>
                   <listitem>
@@ -3491,23 +3296,74 @@ ntlm auth = yes
 >                
               </variablelist>
               <para
->Predeterminada:<guimenuitem
->Ninguna</guimenuitem
+>Default: <guilabel
+>None</guilabel
 ></para>
             </listitem>
           </varlistentry>
         </variablelist>
+        
       </sect3
 >     
+
+      <sect3 id="configuration_page_network_samba_behavior">
+        <title
+>Comportamiento</title>
+    
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Detectar impresoras compartidas</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Se detectan las impresoras compartidas.</para>
+              <para
+>Predeterminado: seleccionado</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Detectar recursos compartidos ocultos</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Se detectan los recursos compartidos ocultos. Los recursos compartidos ocultos terminan con un signo $, &eg; Música$ o IPC$.</para>
+              <para
+>Predeterminado: seleccionado</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Vista previa de archivos y directorios ocultos</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Muestra todos los archivos y directorios, incluyendo los ocultos, al abrir los contenidos de un recurso compartido en el diálogo de vista previa.</para>
+              <para
+>Predeterminado: no seleccionado</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
     
 <!-- 
-      Configuring Smb4K : Network : Wake-On_LAN Settings
+      Configuring Smb4K : Network : Wake-On_LAN
 -->
 
-    <sect2 id="configuration_page_network_wake_on_lan_settings">
+    <sect2 id="configuration_page_network_wake_on_lan">
       <title
->Preferencias de Wake-On-LAN</title>
+>Wake-On-LAN</title>
 
       <para
 >Para poder utilizar la capacidad Wake-On-LAN de &smb4k;, debe activar este ajuste en esta sección. Los servidores que deben ser despertados tienen que definirse a través del <link linkend="network_neighborhood_browser_defining_custom_options"
@@ -3527,22 +3383,20 @@ ntlm auth = yes
 >Activar las características despertar-en-red (WOL). Wake-On-LAN es un estándar de red de equipo ethernet que permite a un equipo ser activado o despertado por un mensaje de red. Smb4K utiliza un paquete mágico enviado a través de un socket UDP para despertar a los servidores remotos. Si desea utilizar la característica despertar-en-red, debe activar esta opción.</para>
             <para
 >Predeterminado: no seleccionado</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guilabel
->Tiempo de espera</guilabel
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
+>Tiempo de espera</guibutton
 ></menuchoice>
-                </term>
-                <listitem>
-                  <para
+          </term>
+          <listitem>
+            <para
 >Este es el tiempo de espera, en segundos, que transcurre entre el envío de los paquetes mágicos Wake-On-LAN y la exploración del entorno de red o el montaje de un recurso compartido.</para>
-                  <para
+            <para
 >Predeterminado: 5 s</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -3645,39 +3499,37 @@ ntlm auth = yes
 ></note>
               <para
 >Predeterminado: no seleccionado</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
 ><guilabel
 >Número de intentos de remontaje</guilabel
 ></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
+            </term>
+            <listitem>
+              <para
 >Establece el número de veces que Smb4K intentará volver a montar los recursos compartidos antes de desistir.</para>
-                    <para
+              <para
 >Predeterminado: 1</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
 ><guilabel
 >Intervalo entre intentos de remontaje</guilabel
 ></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
+            </term>
+            <listitem>
+              <para
 >Establece el tiempo que transcurre entre los intentos de volver a montar los recursos compartidos.</para>
-                    <para
+              <para
 >Predeterminado: 5 min</para>
-                  </listitem>
-                </varlistentry
->  
-              </variablelist>
             </listitem>
-          </varlistentry>
+          </varlistentry
+>  
           <varlistentry>
             <term>
               <menuchoice
@@ -3701,7 +3553,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Fuerza el desmontaje de recursos compartidos inaccesibles (solo en &Linux;). En caso de que un recurso compartido no esté accesible, se ejecuta un desmontaje vago. Antes de que se haga el desmontaje real, se muestra un diálogo de advertencia pidiendo la aprobación del desmontaje.</para>
+>Fuerza el desmontado de recursos compartidos inaccesibles (solo en &Linux;). En caso de que un recurso compartido no esté accesible, se ejecuta un desmontaje vago. Antes de que se haga el desmontaje real, se muestra un diálogo de advertencia pidiendo la aprobación del desmontaje.</para>
               <para
 >Predeterminado: no seleccionado</para>
             </listitem>
@@ -3770,37 +3622,13 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->El acceso de escritura a un recurso compartido puede modificarse aquí. Esta opción es independiente de la máscaras de archivo y carpeta de más arriba. Las opciones disponibles son:</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->lectura-escritura</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Montar el recurso compartido en lectura-escritura.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->solo lectura</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Monta el recurso compartido en lectura solo.</para>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
+>Here you can determine if the shares should be mounted <emphasis
+>read-write</emphasis
+> or <emphasis
+>read-only</emphasis
+> by default. This option is independent of the file mask and the folder mask settings above.</para>
               <para
->Predeterminada:<guimenuitem
->lectura-escritura</guimenuitem
-></para>
+>Default: read-write</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3813,288 +3641,8 @@ ntlm auth = yes
             <listitem>
               <para
 >Establece el juego de caracteres que se usa en el lado del cliente (&ie;, su equipo).</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->predeterminado</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Conjunto de caracteres por omisión usado por el núcleo del cliente.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-1</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-1:1998. Este esquema de codificación de caracteres se usa en las Américas, oeste de Europa, Oceanía y gran parte de África.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-2</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-2:1999. Conocido informalmente como «Latin-2». Pensado para los idiomas de centro o Europa del éste que se escriben con los caracteres latinos.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-3</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-3:1999. Conocido informalmente como «Latin-3» o del sur de Europa. Se diseñó para cubrir el turco, maltés y el esperanto, pero la introducción del ISO/IEC 8859-9 lo sustituyó en el turco.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-4</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-4:1998. Conocido informalmente como «Latin-4» o del norte de Europa. Se diseñó para cubrir el estón, letón, lituano, groenlandés y sami. Ha sido sobrepasado por el ISO/IEC 8859-10 y el Unicode.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-5</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-5:1999. Conocido informalmente como Latín/Cirílico. Se diseñó para cubrir los idiomas que usan el alfabeto cirílico como el búlgaro, bielorruso, ruso, serbio y macedonio pero nunca se llegó a usar ampliamente.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-6</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-6:1999. Conocido informalmente como Latín/Arábigo. Se diseñó para cubrir el árabe.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-7</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-7:2003. Conocido informalmente como Latín/Griego. Se diseñó para cubrir el idioma griego moderno.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-8</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-8:1999. Conocido informalmente como Latín/Hebreo.  ISO/IEC 8859-8 cubre todas las letras hebreas pero no los signos vocálicos hebreos.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-9</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-9:1999. Conocido informalmente como Latin-5 o turco. Se diseñó para cubrir el idioma turco, diseñado para ser de más uso que la codificación ISO/IEC 8859-3.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-13</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-13:1998. Conocido informalmente como Latin-7 o báltico. Se diseñó para cubrir los idiomas bálticos, y añadió caracteres usados en el idioma polaco que no se encontraban en codificaciones anteriores ISO 8859-4 y ISO 8859-10. A diferencia de estos dos, no cubre los idiomas nórdicos.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-14</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-14:1998. Conocido informalmente como Latin-8 o céltico. Se diseñó para cubrir los idiomas célticos como el irlandés, manés, escocés gaélico, galés, córnico y bretón.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->iso8859-15</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->ISO/IEC 8859-15:1999. Conocido informalmente como Latin-9 (y durante un tiempo como Latin-0). Es similar a ISO 8859-1, y por tanto orientado a idiomas del oeste de Europa, pero remplaza símbolos poco comunes por el símbolo del euro y algunas letras que se consideraron necesarias.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->utf8</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Formato de transformación Unicode (o el conjunto de caracteres codificados universal) - 8-bit. UTF-8 es usado en muchas distribuciones &Linux; como el conjunto de caracteres por omisión y además es la codificación más usada para la web.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->koi8-r</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->KOI8-R (RFC 1489) es una codificación de caracteres de 8 bits, derivada de la codificación KOI-8 creada por el programador Andrei Chernov en 1993 y diseñada para cubrir el ruso, que usa el alfabeto cirílico.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->koi8-u</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->KOI8-U (RFC 2319) es una codificación de caracteres de 8 bits, diseñada para cubrir el ucraniano, que usa el alfabeto cirílico.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->koi8-ru</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->KOI8-RU es una codificación de caracteres de 8 bits, diseñada para cubrir el ruso, ucraniano y bielorruso, los cuales usan el alfabeto cirílico.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->cp1251</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Windows-1251 es una codificación de caracteres de 8 bits, diseñada para idiomas que usan el alfabeto cirílico como el ruso, el búlgaro, el serbio cirílico y otros idiomas. En Linux, esta codificación se conoce como cp1251.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->gb2312</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->GB/T 2312-1980 es un conjunto de caracteres oficial de la República Popular de China, usado para caracteres chinos simplificados. GB2312 es el nombre registrado en Internet para EUC-CN, que suele ser su forma de codificación usual. GB/T 2312-1980 ha sido superado por GBK y GB18030, que incluyen caracteres adicionales, pero GB/T 2312 sigue teniendo un uso extendido como subconjunto de esas codificaciones. </para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->big5</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Big-5 o Big5 es un método de codificación de caracteres chinos usado en Taiwan, Hong Kong y Macao para caracteres tradicionales chinos. La República Popular de China, que usa caracteres chinos simplificados, usa sin embargo el conjunto de caracteres GB 18030.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->euc-jp</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->EUC-JP es una codificación de longitud variable para representar los elementos de los tres conjuntos estándar de caracteres japoneses, llamados JIS X 0208, JIS X 0212 y JIS X 0201.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->euc-kr</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->EUC-KR es una codificación de longitud variable para representar texto en coreano usando dos conjuntos de caracteres, KS X 1001 (anteriormente KS C 5601) e ISO 646:KR (KS X 1003, previamente KS C 5636) o US-ASCII, dependiendo de la variante. KS X 2901 (anteriormente KS C 5861) estipula la codificación y la RFC 1557 la renombró a EUC-KR.</para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guimenuitem
->tis-620</guimenuitem
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Estándar industrial tailandés 620-2533, conocido comunmente como TIS-620, es el conjunto de caracteres más común y su codificación para el idioma tailandés.</para>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
               <para
->Predeterminado:<guimenuitem
->por omisión</guimenuitem
-></para>
+>Default: default</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -4118,11 +3666,11 @@ ntlm auth = yes
 >Custom Options</link
 > para definir números de puertos individuales para los servidores problemáticos.</para>
               <para
->Esta opción está disponible solo bajo &Linux;. Bajo BSD, el puerto para montar los recursos compartidos se establece con la opción <link linkend="configuration_page_network_samba_settings_common_settings"
+>This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_samba_basic_settings"
 ><guibutton
->puerto SMB</guibutton
+>SMB port</guibutton
 ></link
->.</para>
+> option.</para>
               <para
 >Predeterminado: 445</para>
             </listitem>
@@ -4143,7 +3691,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->La mayoría de las versiones de &Samba; admiten la extensiones &CIFS; Unix o POSIX. Para esos servidores, algunas opciones no son necesarias, porque los valores correctos son negociados durante el proceso de montaje. Para otros servidores, quizás quiera desmarcar esta opción, para que los valores por omisión se pasen al servidor. Por favor, tenga en cuenta que si su equipo está localizado en un entorno de red dominado por &Windows; con solo unos pocos servidores &Samba;, puede desmarcar esta opción con seguridad y definir valores personalizados para los servidores &Samba;.</para>
+>Most versions of Samba support the &CIFS; Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few Samba servers, you can safely uncheck this option and define custom options for the Samba servers.</para>
             <para
 >Predeterminado: no seleccionado</para>
           </listitem>
@@ -4352,7 +3900,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Traduce seis o siete caracteres reservados (no la barra inversa, pero incluye los caracteres dos puntos, signo de interrogación, barra vertical, asterisco, mayor y menor que) para volver a mapear el intervalo (sobre 0xF000) que también permite al lado del cliente reconocer archivos creados con tales caracteres por la emulación POSIX de &Windows;. Esto también puede ser útil cuando se monta en la mayoría de versiones de &Samba;. No tienen efecto si el servidor do implementa Unicode.</para>
+>Translate six of the seven reserved characters (not backslash, but including the colon, question mark, pipe, asterisk, greater than and less than characters) to the remap range (above 0xF000), which also allows the client side to recognize files created with such characters by &Windows;’s POSIX emulation. This can also be useful when mounting to most versions of Samba. This has no effect if the server does not support Unicode.</para>
             <para
 >Predeterminado: no seleccionado</para>
           </listitem>
@@ -4441,9 +3989,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Se usa el argumento de línea de órdenes <option
+>The <option
 >vers=2.1</option
->. Esto provoca que <ulink url="man:/mount.cifs"
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4451,7 +3999,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilice el protocolo SMBv2.1 que se introdujo en &Microsoft; &Windows; 7 y &Windows; Server 2008R2.</para>
+> to use the SMBv2.1 protocol that was introduced in Microsoft Windows 7 and Windows Server 2008R2.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4463,9 +4011,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Se usa el argumento de línea de órdenes <option
+>The <option
 >vers=3.0</option
->. Esto provoca que <ulink url="man:/mount.cifs"
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4473,7 +4021,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilice el protocolo SMBv3.0 que se introdujo en &Microsoft; &Windows; 8 y &Windows; Server 2012.</para>
+> to use the SMBv3.0 protocol that was introduced in Microsoft Windows 8 and Windows Server 2012.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4485,11 +4033,11 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Se usa el argumento de línea de órdenes <option
+>The <option
 >vers=3.1.1</option
-> o <option
+> or <option
 >vers=3.11</option
->. Esto provoca que <ulink url="man:/mount.cifs"
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4497,13 +4045,13 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilice el protocolo SMBv3.1.1 que se introdujo en &Windows; Server 2016.</para>
+> to use the SMBv3.1.1 protocol that was introduced in Windows Server 2016.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
             <para
->Por omisión: <guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>Default: <guibutton
+>3.0 (Windows 8/Windows Server 2016)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4890,7 +4438,7 @@ ntlm auth = yes
           </varlistentry>
           <varlistentry>
             <term>
-              <menuchoice
+                <menuchoice
 ><guibutton
 >Modo de archivo</guibutton
 ></menuchoice>
@@ -4965,728 +4513,41 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Usar los conjuntos de caracteres especificados en local y servidor.</para>
+>Use the specified local and server's character sets (see below).</para>
               <para
 >Predeterminado: no seleccionado</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
 ><guibutton
 >Juego de caracteres del cliente</guibutton
 ></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Usar este conjunto de caracteres para el lado cliente. Estos conjuntos de caracteres disponibles:</para>
-                    <variablelist>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->predeterminado</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Conjunto de caracteres por omisión usado por el núcleo del cliente.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-1</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-1:1998. Este esquema de codificación de caracteres se usa en las Américas, oeste de Europa, Oceanía y gran parte de África.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-2</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-2:1999. Conocido informalmente como «Latin-2». Pensado para los idiomas de centro o Europa del éste que se escriben con los caracteres latinos.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-3</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-3:1999. Conocido informalmente como «Latin-3» o del sur de Europa. Se diseñó para cubrir el turco, maltés y el esperanto, pero la introducción del ISO/IEC 8859-9 lo sustituyó en el turco.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-4</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-4:1998. Conocido informalmente como «Latin-4» o del norte de Europa. Se diseñó para cubrir el estón, letón, lituano, groenlandés y sami. Ha sido sobrepasado por el ISO/IEC 8859-10 y el Unicode.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-5</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-5:1999. Conocido informalmente como Latín/Cirílico. Se diseñó para cubrir los idiomas que usan el alfabeto cirílico como el búlgaro, bielorruso, ruso, serbio y macedonio pero nunca se llegó a usar ampliamente.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-6</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-6:1999. Conocido informalmente como Latín/Arábigo. Se diseñó para cubrir el árabe.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-7</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-7:2003. Conocido informalmente como Latín/Griego. Se diseñó para cubrir el idioma griego moderno.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-8</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-8:1999. Conocido informalmente como Latín/Hebreo.  ISO/IEC 8859-8 cubre todas las letras hebreas pero no los signos vocálicos hebreos.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-9</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-9:1999. Conocido informalmente como Latin-5 o turco. Se diseñó para cubrir el idioma turco, diseñado para ser de más uso que la codificación ISO/IEC 8859-3.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-13</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-13:1998. Conocido informalmente como Latin-7 o báltico. Se diseñó para cubrir los idiomas bálticos, y añadió caracteres usados en el idioma polaco que no se encontraban en codificaciones anteriores ISO 8859-4 y ISO 8859-10. A diferencia de estos dos, no cubre los idiomas nórdicos.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-14</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-14:1998. Conocido informalmente como Latin-8 o céltico. Se diseñó para cubrir los idiomas célticos como el irlandés, manés, escocés gaélico, galés, córnico y bretón.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->iso8859-15</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->ISO/IEC 8859-15:1999. Conocido informalmente como Latin-9 (y durante un tiempo como Latin-0). Es similar a ISO 8859-1, y por tanto orientado a idiomas del oeste de Europa, pero remplaza símbolos poco comunes por el símbolo del euro y algunas letras que se consideraron necesarias.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->utf8</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Formato de transformación Unicode (o el conjunto de caracteres codificados universal) - 8-bit. UTF-8 es usado en muchas distribuciones &Linux; como el conjunto de caracteres por omisión y además es la codificación más usada para la web.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->koi8-r</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->KOI8-R (RFC 1489) es una codificación de caracteres de 8 bits, derivada de la codificación KOI-8 creada por el programador Andrei Chernov en 1993 y diseñada para cubrir el ruso, que usa el alfabeto cirílico.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->koi8-u</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->KOI8-U (RFC 2319) es una codificación de caracteres de 8 bits, diseñada para cubrir el ucraniano, que usa el alfabeto cirílico.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->koi8-ru</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->KOI8-RU es una codificación de caracteres de 8 bits, diseñada para cubrir el ruso, ucraniano y bielorruso, los cuales usan el alfabeto cirílico.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1251</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Windows-1251 es una codificación de caracteres de 8 bits, diseñada para idiomas que usan el alfabeto cirílico como el ruso, el búlgaro, el serbio cirílico y otros idiomas. En Linux, esta codificación se conoce como cp1251.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->gb2312</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->GB/T 2312-1980 es un conjunto de caracteres oficial de la República Popular de China, usado para caracteres chinos simplificados. GB2312 es el nombre registrado en Internet para EUC-CN, que suele ser su forma de codificación usual. GB/T 2312-1980 ha sido superado por GBK y GB18030, que incluyen caracteres adicionales, pero GB/T 2312 sigue teniendo un uso extendido como subconjunto de esas codificaciones. </para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->big5</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Big-5 o Big5 es un método de codificación de caracteres chinos usado en Taiwan, Hong Kong y Macao para caracteres tradicionales chinos. La República Popular de China, que usa caracteres chinos simplificados, usa sin embargo el conjunto de caracteres GB 18030.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->euc-jp</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->EUC-JP es una codificación de longitud variable para representar los elementos de los tres conjuntos estándar de caracteres japoneses, llamados JIS X 0208, JIS X 0212 y JIS X 0201.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->euc-kr</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->EUC-KR es una codificación de longitud variable para representar texto en coreano usando dos conjuntos de caracteres, KS X 1001 (anteriormente KS C 5601) e ISO 646:KR (KS X 1003, previamente KS C 5636) o US-ASCII, dependiendo de la variante. KS X 2901 (anteriormente KS C 5861) estipula la codificación y la RFC 1557 la renombró a EUC-KR.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->tis-620</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Estándar industrial tailandés 620-2533, conocido comunmente como TIS-620, es el conjunto de caracteres más común y su codificación para el idioma tailandés.</para>
-                        </listitem>
-                      </varlistentry>
-                    </variablelist>
-                    <para
->Predeterminado:<guimenuitem
->por omisión</guimenuitem
-></para>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>
-                    <menuchoice
-><guibutton
->Juego de caracteres del servidor</guibutton
-></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
->Usar este conjunto de caracteres en el lado servidor. Estos conjuntos de caracteres están disponibles:</para>
-                    <variablelist>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->predeterminado</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Conjunto de caracteres por omisión usado por el servidor.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp437</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 437 es el conjunto de caracteres original del PC IBM (ordenador personal). Se conoce también como CP437, OEM-US, OEM 437, PC-8 o DOS Latin US. Este conjunto incluye todos los caracteres imprimibles ASCII, códigos extendidos para letras acentuadas (diacríticos), algunas letras griegas, iconos y símbolos para dibujar líneas.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp720</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 720 es un código de página usado para escribir árabe en Egipto, Irak, Jordania, Arabia Saudí y Siria.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp737</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 737 es un código de página usado para escribir el idioma griego en Grecia.</para>
-                        </listitem>
-                      </varlistentry
-> 
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp775</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 775 es un código de página usado para escribir los idiomas estón, letón y lituano.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp850</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 850 es un código de página usado en Europa occidental.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp852</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 852 es un código de página usado para escribir los idiomas de Europa central que usan el alfabeto latino (como el bosnio, croata, checo, húngaro, polaco, rumano, serbio, eslovaco y esloveno).</para>
-                        </listitem>
-                      </varlistentry
-> 
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp852</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 855 es un código de página usado para escribir en alfabeto cirílico. El código de página 872 es la actualización con la moneda euro del código de página 855.</para>
-                        </listitem>
-                      </varlistentry
-> 
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp857</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 857 es un código de página usado en Turquía para escribir turco. Se basa en el código de página 850, pero con muchos cambios. Incluye todos los caracteres de ISO 8859-9.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp858</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 858 es un código de página usado para escribir idiomas de Europa occidental. Como el código de página 850, el código de página 858 soporta todo el repertorio de ISO 8859-1, pero en una localización diferente.</para>
-                        </listitem>
-                      </varlistentry
->   
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp860</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 860 es un código de página usado en Portugal para escribir en portugués y también es adecuado para escribir español e italiano.</para>
-                        </listitem>
-                      </varlistentry
->                        
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp861</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 861 es un código de página usado en Islandia para escribir el idioma islandés (además de otros idiomas nórdicos).</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp862</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 862 es un código de página usado en Israel para el hebreo.</para>
-                        </listitem>
-                      </varlistentry
->  
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp863</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 863 es un código de página usado en Canada para escribir francés (principalmente en Quebec) aunque le faltan algunas letras.</para>
-                        </listitem>
-                      </varlistentry
->  
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp864</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 864 es un código de página usado para escribir árabe en Egipto, Irak, Jordania, Arabia Saudí y Siria.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp865</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 865 es un código de página usado en Dinamarca y Noruega para escribir idiomas nórdicos (excepto en Islandia, en el que se usa el código de página 861).</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp866</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 866 es un código de página usado en Rusia para escribir el alfabeto cirílico.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp869</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 869 es un código de página usado para escribir en idioma griego.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp874</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 874, también conocido como código de página 9066, es usado para escribir el idioma tailandés.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp932</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 932 es el código de página de &Microsoft; &Windows; usado para el idioma japonés, que es una variante extendida de la codificación de caracteres japonés Shift JIS.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp936</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 936 es el código de página de &Microsoft; &Windows; para el chino simplificado.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp949</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 949 es el código de página de &Microsoft; &Windows; para el idioma coreano.</para>
-                        </listitem>
-                      </varlistentry
-> 
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp950</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 950 es un código de página de &Microsoft; &Windows; para el chino tradicional.</para>
-                        </listitem>
-                      </varlistentry
-> 
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1250</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1250 es un código de página de &Microsoft; &Windows; para representar textos en idiomas de Europa central y del este que usan el alfabeto latino, como el polaco, checo, eslovaco, húngaro, esloveno, bosnio, croata, serbio (alfabeto latino), rumano (antes de la reforma de 1993) y albano. Puede ser usado también con el idioma alemán.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1251</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1251 es un código de página de &Microsoft; &Windows;, diseñado para idiomas que usan el alfabeto cirílico como el ruso, el búlgaro, el serbio cirílico y otros idiomas.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1252</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1252 es un código de página de &Microsoft; &Windows; usado para el inglés y muchas lenguas europeas incluyendo el español, francés y alemán.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1253</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1253 es un código de página de &Microsoft; &Windows; es usado para escribir el griego moderno. No soporta el antiguo griego politónico.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1254</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1254 es un código de página de &Microsoft; &Windows; usado para escribir turco.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1255</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1255 es un código de página de &Microsoft; &Windows; usado para escribir hebreo.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1256</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1256 es un código de página de &Microsoft; &Windows; para escribir en árabe (y posiblemente otros idiomas que usan los caracteres árabes, como el persa o el urdu).</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1257</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1257 es un código de página de &Microsoft; &Windows; que soporta los idiomas estón, letón y lituano.</para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->cp1258</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->El código de página 1258 es un código de página de &Microsoft; &Windows; para representar textos vietnamitas. Hace uso de combinaciones de marcas diacríticas. </para>
-                        </listitem>
-                      </varlistentry>
-                      <varlistentry>
-                        <term>
-                          <menuchoice
-><guimenuitem
->unicode</guimenuitem
-></menuchoice>
-                        </term>
-                        <listitem>
-                          <para
->Unicode es un estándar de tecnologías de la información para la codificación consistente, la representación y el manejo de texto expresado en la mayoría de sistemas de escritura del mundo.</para>
-                        </listitem>
-                      </varlistentry>
-                    </variablelist>
-                    <para
+            </term>
+            <listitem>
+              <para
+>Use the specified local character set.</para>
+              <para
 >Predeterminado: <guilabel
 >predeterminado</guilabel
 ></para>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Juego de caracteres del servidor</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Use the specified server's character set.</para>
+              <para
+>Predeterminado: <guilabel
+>predeterminado</guilabel
+></para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -5696,7 +4557,7 @@ ntlm auth = yes
 >  
   
 <!-- 
-      Configuring Smb4K : Authentication 
+      Configuration: Authentication 
 -->
 
   <sect1 id="configuration_page_authentication">
@@ -5721,7 +4582,7 @@ ntlm auth = yes
     </screenshot>
 
 <!-- 
-      Configuring Smb4K : Authentication : Settings
+      Configuring Smb4K : Authentication : General Settings
 -->
 
     <sect2 id="configuration_page_authentication_settings">
@@ -5785,19 +4646,17 @@ ntlm auth = yes
 >Entradas de cartera</title>
       
       <para
->En este editor usted puede modificar o eliminar las entradas existentes en la cartera. Antes de que pueda editarlas, deben cargarse desde la cartera pulsando el botón <guibutton
->Cargar</guibutton
->. Las lista de entradas aparecerá entonces en la vista de lista de la izquierda. Una entrada puede editarse siendo seleccionada y pulsando en el botón <guibutton
->Detalles</guibutton
-> a la derecha. Como alternativa puede hacer click derecho en la entrada y elegir el elemento <guimenuitem
->Editar</guimenuitem
-> en el menú desplegable. Tras esto los detalles se mostrarán y podrán modificarse.</para>
+>In this editor you can modify or remove existing wallet entries. Before you can edit them, they have to be loaded from the wallet by pressing the <guibutton
+>Load</guibutton
+> button. The list of entries appears then in the left list view. An entry can be edited by selecting it and clicking the <guibutton
+>Details</guibutton
+> button on the right. The details are then shown and can be modified.</para>
       <para
->Una entrada puede eliminarse eligiendo el elemento <guimenuitem
->Eliminar</guimenuitem
-> del menú emergente. Todas las entradas de la cartera podrían eliminarse de una vez eligiendo el elemento <guimenuitem
->Despejar lista</guimenuitem
->.</para>
+>An entry can be removed by right clicking it and choosing the <guimenuitem
+>Remove</guimenuitem
+> item from the popup menu. All wallet entries may be removed at once by choosing the <guimenuitem
+>Clear List</guimenuitem
+> item.</para>
       <para
 >Después de que haya finalizado la edición, los cambios pueden aplicarse a la cartera pulsando <guibutton
 >Guardar</guibutton
@@ -7401,7 +6260,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Use la regla de filtrado --filter='dir-merge /.rsync-filter'</guibutton
+>Use la regla de filtrado --filter=«dir-merge /.rsync-filter»</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -7433,7 +6292,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Use la regla de filtrado --filter='exclude .rsync-filter'</guibutton
+>Use la regla de filtrado --filter=«exclude .rsync-filter»</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -7662,70 +6521,44 @@ ntlm auth = yes
     </sect2>
     
 <!--
-      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
+      Configuring Smb4K : Custom Options : Mounting
 -->
-    <sect2 id="configuration_page_custom_options_common_mount_settings">
+    <sect2 id="configuration_page_custom_options_mounting">
       <title
->Opciones comunes de montaje (solo &Linux;)</title>
+>Montaje</title>
       
       <para
->Aquí puede editar las preferencias comunes usadas en el montaje de &Linux;. Eche un vistazo a la página de configuración de <link linkend="configuration_page_mounting"
->Montaje</link
-> para aprender más sobre las opciones presentes.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
-      <title
->Preferencias avanzadas de montaje (solo &Linux;)</title>
-      
-      <para
->Aquí puede editar las preferencias avanzadas usadas en el montaje de &Linux;. Eche un vistazo a la página de configuración de <link linkend="configuration_page_mounting"
->Montaje</link
-> para aprender más sobre las opciones presentes.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
--->
-    <sect2 id="configuration_page_custom_options_mount_settings">
-      <title
->Opciones de montaje (solo BSD)</title>
-      
-      <para
->Aquí puede editar las preferencias usadas en el montaje de BSD. Eche un vistazo a la página de configuración de <link linkend="configuration_page_mounting"
->Montaje</link
-> para aprender más sobre las opciones presentes.</para>
+>Here you can edit settings used for mounting. Have a look at the <link linkend="configuration_page_mounting"
+>Mounting</link
+> configuration page to learn more about the present options.</para>
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Browse Settings
+      Configuring Smb4K : Custom Options : Samba
 -->
 
-    <sect2 id="configuration_page_custom_options_browse_settings">
+    <sect2 id="configuration_page_custom_options_samba">
       <title
->Preferencias de navegación</title>
+>Samba</title>
     
       <para
->Usted puede editar varias preferencias de &Samba; usadas para navegar. Para más información, eche un vistazo a las preferencias de <link linkend="configuration_page_network_samba_settings"
+>You can edit various Samba settings here. Which ones are available depends on the operating system you are using. For more information, have a look at the <link linkend="configuration_page_network_samba"
 >&Samba;</link
->.</para>
+> settings.</para>
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
+      Configuring Smb4K : Custom Options : Wake-On-LAN 
 -->
 
-    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
+    <sect2 id="configuration_page_custom_options_wol">
       <title
->Preferencias de Wake-On-LAN</title>
+>Wake-On-LAN</title>
     
       <para
->Aquí usted puede editar las opciones Wake-On-LAN que definió previamente mediante el diálogo <link linkend="network_neighborhood_browser_defining_custom_options"
->Opciones personalizadas</link
->.</para>
+>Here you can edit the options that you previously defined through the <link linkend="network_neighborhood_browser_defining_custom_options"
+>Custom Options</link
+> dialog.</para>
     </sect2>
   </sect1>
 
@@ -8228,11 +7061,11 @@ ntlm auth = yes
 >Desmonta uno o varios recursos compartidos seleccionados. La capacidad de desmontar recursos compartidos está restringida de manera predeterminada a aquellos que sean propiedad del usuario. Sin embargo, puede cambiar este comportamiento modificando las <link linkend="configuration_page_mounting_basic_settings_behavior"
 >preferencias</link
 > en el diálogo de configuración. Si no hay ningún recurso compartido seleccionado en la vista de recursos compartidos, este botón está desactivado.</para>
-          <para
->&smb4k; proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
+            <para
+>&smb4k; también proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
 >preferencias</link
 > en el diálogo de configuración.</para>
-          <para
+            <para
 >Lea la sección <link linkend="shares_view_unmounting"
 >Desmontaje derecursos compartidos</link
 > para más detalles.</para>
@@ -8459,44 +7292,6 @@ ntlm auth = yes
         <listitem>
           <para
 >Muestra u oculta los controles acoplados en la ventana principal.</para>
-          <variablelist>
-            <varlistentry>
-              <term>
-                <menuchoice
-><guimenu
->Preferencias</guimenu
-> <guisubmenu
->Widgets del dock</guisubmenu
-><guimenuitem
->Entorno de red</guimenuitem
-> </menuchoice>
-              </term>
-              <listitem>
-                <para
->Mostrar u ocultar el elemento del dock <guilabel
->Entorno de red</guilabel
->.</para>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term>
-                <menuchoice
-><guimenu
->Preferencias</guimenu
-> <guisubmenu
->Widgets del dock</guisubmenu
-><guimenuitem
->Recursos compartidos montados</guimenuitem
-> </menuchoice>
-              </term>
-              <listitem>
-                <para
->Mostrar u ocultar el elemento del dock <guilabel
->Recursos compartidos montados</guilabel
->.</para>
-              </listitem>
-            </varlistentry>
-          </variablelist>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8525,11 +7320,11 @@ ntlm auth = yes
 >El menú Ayuda</title>
 
     <para
->Además, &smb4k; dispone de las opciones de menú comunes de &kde; de <guimenu
->Ayuda</guimenu
->, para más información, lea la sección sobre el <ulink url="help:/fundamentals/menus.html#menus-help"
->Menú de ayuda</ulink
-> de los fundamentos de &kde;.</para>
+>Additionally &smb4k; has the common &kde; <guimenu
+>Help</guimenu
+> menu items, for more information read the section about the <ulink url="help:/fundamentals/ui.html#menus-help"
+>Help Menu</ulink
+> of the &kde; Fundamentals.</para>
   </sect1>
 </chapter>
 
@@ -8568,9 +7363,9 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Si usted experimentó una caída, adjunte una traza completa. Para esto, se recomienda que usted recompile &smb4k; con la opción de símbolos de depuración. Cómo se hace esto se menciona en el archivo<filename
->README</filename
-> adjunto a las fuentes.</para
+>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <link linkend="appendix_compilation"
+>Configuration, Compilation and Installation</link
+> chapter in the appendix.</para
 ></listitem>
     <listitem
 ><para
@@ -8599,7 +7394,7 @@ ntlm auth = yes
 >Créditos y licencia</title>
 
   <para
->Copyright &copy; 2003 - 2021, Alexander Reinholdt <email
+>Copyright &copy; 2003 - 2019, Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
 ></para>
 
@@ -8643,4 +7438,277 @@ ntlm auth = yes
 </chapter>
 
 
+<!-- 
+      Appendix 
+  -->
+
+<appendix id="appendix">
+  <title
+>Appendix</title>
+
+  <sect1 id="appendix_getting_smb4k">
+    <title
+>How to obtain &smb4k;</title>
+    
+    <para
+>The latest stable release is available at <ulink url="https://sourceforge.net/projects/smb4k/files/"
+>https://sourceforge.net/projects/smb4k/files/</ulink
+>.</para>
+  </sect1>
+  
+  <sect1 id="appendix_requirements">
+    <title
+>Requirements</title>
+
+    <para
+>&smb4k; officially supports &Linux;, FreeBSD, NetBSD and DragonFly BSD. Other operating systems might work as well, but haven't been tested.</para>
+    <para
+>To compile &smb4k;, you need:</para>
+    <itemizedlist>
+      <listitem
+><para
+><ulink url="https://www.cmake.org"
+>CMake</ulink
+> (&ge; 3.2)</para
+></listitem>
+      <listitem
+><para
+><ulink url="https://gcc.gnu.org"
+>GNU Compiler Collection</ulink
+> (g++ &ge; 5.0) or <ulink url="https://clang.llvm.org"
+>clang/LLVM</ulink
+> (&ge; 3.0)</para
+></listitem>
+    </itemizedlist>
+    <para
+>To be able to use the main application of &smb4k;, you need at least <ulink url="https://www.qt.io"
+>&Qt;</ulink
+> version 5.6.0 and <ulink url="https://www.kde.org"
+>&kf5;</ulink
+> version 5.25.0 to be installed. The provided &plasmoid; is known to run with &Qt; version 5.6.1, &kf5; version 5.36 and &plasma; version 5.8.9. Earlier versions of &kf5; and &plasma; might work as well but have not been tested.</para>
+    <para
+>&smb4k; build depends on:</para>
+    <itemizedlist>
+      <listitem
+><para
+>QtCore, QtGui, QtWidgets, QtTest, QtNetwork, QtPrintSupport, QtQml</para
+></listitem>
+      <listitem
+><para
+>KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, KCompletion, KCoreAddons, &solid;, KIO, KNotifications, KXmlGui, KJobWidgets, &kwallet5;, KDBusAddons, KConfigWidgets, KNotifications, KWindowSystem</para
+></listitem>
+      <listitem
+><para
+>libsmbclient</para
+></listitem>
+    </itemizedlist>
+    <para
+>It also runtime depends on:</para>
+    <itemizedlist>
+      <listitem
+><para
+>KPlasma</para
+></listitem>
+      <listitem
+><para
+><ulink url="https://wiki.samba.org/index.php/LinuxCIFS_utils"
+>LinuxCIFS utils</ulink
+> (&Linux; only)</para
+></listitem>
+    </itemizedlist>
+    <para
+>To enable full functionality, you may also want to install these programs:</para>
+    <itemizedlist>
+      <listitem
+><para
+><ulink url="https://rsync.samba.org"
+>rsync</ulink
+></para
+></listitem>
+    </itemizedlist>
+    <para
+>The full list of changes can be found in the Git log at <ulink url="https://cgit.kde.org/smb4k.git"
+>cgit.kde.org</ulink
+>. A summary can be found in the <filename
+>ChangeLog</filename
+> file in the tarball.</para>
+  </sect1>
+  
+<!-- 
+      Appendix: Configuration, Compilation and Installation 
+  -->
+
+  <sect1 id="appendix_compilation">
+    <title
+>Configuration, Compilation and Installation</title>
+
+    <para
+>This section describes the configuration, compilation and installation of &smb4k;. Make sure, you have read the <link linkend="appendix_requirements"
+>Requirements</link
+> section before you start.</para>
+    <para
+><ulink url="https://sourceforge.net/projects/smb4k/files"
+>Download</ulink
+> the version of &smb4k; you are interested in and extract the source tarball:</para>
+    
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>tar</command
+> xvfJ smb4k-x.y.z.tar.xz</userinput
+>
+</screen>
+
+    <para
+>Replace x.y.z with the version number. Change into the source code directory and create a <filename class="directory"
+>build</filename
+> directory:</para>
+
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>cd</command
+> <filename class="directory"
+>smb4k-x.y.z</filename
+></userinput>
+<prompt
+>$</prompt
+> <userinput
+><command
+>mkdir</command
+> <filename class="directory"
+>build</filename
+></userinput
+>
+</screen>
+
+    <para
+>Change into the <filename class="directory"
+>build</filename
+> directory and configure the source code:</para>
+
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>cd</command
+> <filename class="directory"
+>build</filename
+></userinput>
+<prompt
+>$</prompt
+> <userinput
+><command
+>cmake</command
+> -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` -DCMAKE_BUILD_TYPE=Release <filename class="directory"
+>..</filename
+></userinput
+>
+</screen>
+
+    <para
+>If &smb4k; cannot find some shared libraries after the installation (&eg; if you are using Kubuntu 16.04), it may be necessary to add the <option
+>-DKDE_INSTALL_PLUGINDIR</option
+> argument to the command line above:</para>
+
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>cd</command
+> <filename class="directory"
+>build</filename
+></userinput>
+<prompt
+>$</prompt
+> <userinput
+><command
+>cmake</command
+> -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
+     -DKDE_INSTALL_PLUGINDIR=`qtpaths --plugin-dir` -DCMAKE_BUILD_TYPE=Release <filename class="directory"
+>..</filename
+></userinput
+>
+</screen>
+
+    <para
+>If you want to compile &smb4k; with debug symbols, replace Release by Debug. You should consider this if you experience &ie; a crash and want to either debug &smb4k; yourself or report a bug including a full backtrace.</para>
+    <para
+>There are also some &smb4k; specific arguments you might be interested in:</para>
+    <para>
+      <informaltable frame="all">
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry
+>Argument</entry>
+            <entry
+>Since</entry>
+            <entry
+>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry
+>-DINSTALL_HEADER_FILES=ON|OFF</entry>
+            <entry align="center"
+>1.0.0</entry>
+            <entry
+>Install the core header files. This is off by default.</entry>
+          </row>
+          <row>
+            <entry
+>-DINSTALL_PLASMOID=ON|OFF</entry>
+            <entry align="center"
+>1.1.0</entry>
+            <entry
+>Install the plasmoid. This is on by default.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+      </informaltable>
+    </para>
+    <para
+>After the configuration, compile and install &smb4k;:</para>
+
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>make</command
+> &amp;&amp; <command
+>sudo make</command
+> install</userinput
+>
+</screen>
+
+    <para
+>If you want to be able to remove &smb4k; with your package manager later on, use <application
+>checkinstall</application
+> instead of <command
+>make install</command
+>. The package should be present in your distribution's repository. Run:</para>
+
+<screen
+><prompt
+>$</prompt
+> <userinput
+><command
+>make</command
+> &amp;&amp; <command
+>sudo checkinstall</command
+></userinput
+>
+</screen>
+
+  </sect1>
+</appendix>
 </book>

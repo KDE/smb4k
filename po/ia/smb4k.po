@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# giovanni <g.sora@tiscali.it>, 2020, 2021, 2022, 2023.
+# giovanni <g.sora@tiscali.it>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-02-24 23:39+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-07-08 17:44+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,9 +53,10 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -81,7 +82,7 @@ msgstr "Donator"
 #: smb4k/smb4k_shell.rc:4
 #, kde-format
 msgid "&File"
-msgstr "&File "
+msgstr "&File"
 
 #. i18n: ectx: Menu (network)
 #: smb4k/smb4k_shell.rc:9
@@ -131,9 +132,10 @@ msgid "Add &Bookmark"
 msgstr "Adde marcator de li&bro"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Monta marcatores de libro"
+msgstr "Monta omne marcatores de libro"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -161,9 +163,10 @@ msgid "Synchronization"
 msgstr "Synchronisation"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Preferentias Personalisate"
+msgstr "Preferentias commun"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -374,19 +377,22 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Preferentias Avantiate"
+msgstr "Optiones avantiate de montar"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "Directorio de Synchronisation "
+msgstr "Synchronisation"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Backups (Retrocopias)"
+msgstr "Retrocopia"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -409,9 +415,10 @@ msgid "File Attributes"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
-msgstr "Proprietate"
+msgstr "Proprietario:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -432,7 +439,7 @@ msgstr "Files"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr " kB"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -444,7 +451,7 @@ msgstr "Miscellanea"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kb/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -636,7 +643,7 @@ msgstr "Commento"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:469
 #, kde-format
 msgid "Scan Netwo&rk"
-msgstr "Scande &rete"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:120
 #, kde-format
@@ -650,14 +657,15 @@ msgstr "&Cerca"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Adde &Preferentias Personalisate"
+msgstr "Optiones avantiate de montar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr "Aperi Dial&ogo do Montar"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
@@ -689,12 +697,12 @@ msgstr "&Dismonta"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:431
 #, kde-format
 msgid "Scan Compute&r"
-msgstr "Scande Computato&r"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:456
 #, kde-format
 msgid "Scan Wo&rkgroup"
-msgstr "Scande Wo&rkgroup"
+msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -729,7 +737,7 @@ msgstr "Elemento in alto"
 #: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
-msgstr "Dismo&nta Toto"
+msgstr ""
 
 #: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
@@ -749,7 +757,7 @@ msgstr "Synchronisa "
 #: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
-msgstr "Aperi con Konsole"
+msgstr ""
 
 #: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
@@ -779,7 +787,7 @@ msgstr "Synchronisa "
 #: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
-msgstr "Aperi con Konso&le"
+msgstr ""
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
@@ -816,7 +824,7 @@ msgstr "Gruppo de travalio"
 #: smb4k/smb4ktooltip.cpp:188
 #, kde-format
 msgid "Master Browser:"
-msgstr "Navigator principal (Master)"
+msgstr "Navigator principal (Master):"
 
 #: smb4k/smb4ktooltip.cpp:205
 #, kde-format
@@ -876,9 +884,10 @@ msgid "Mountpoint:"
 msgstr "Puncto de montage:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Nomine de usator:"
+msgstr "Interfacie de usator"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -898,15 +907,6 @@ msgstr "Dimension:"
 #~ msgid "Custom Options"
 #~ msgstr "Optione personalisate"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Monta omne marcatores de libro"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid "All modifications you applied are saved to the wallet."
 #~ msgstr ""
 #~ "Omne modificationes que tu applicava es salveguardate in le portafolio."
@@ -917,27 +917,11 @@ msgstr "Dimension:"
 #~ msgid "Entry"
 #~ msgstr "Elemento"
 
-#~ msgid "Username"
-#~ msgstr "Nomine usator"
+#~ msgid "Login"
+#~ msgstr "Accesso de identification"
 
 #~ msgid "Password"
 #~ msgstr "Contrasigno"
-
-#~ msgid "Behavior:"
-#~ msgstr "Comportamento:"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "General"
-
-#, fuzzy
-#~| msgid "Miscellaneous"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Miscellanea"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Regulas special de filtrar:"
 
 #~ msgid "Identification"
 #~ msgstr "Identification"
@@ -963,17 +947,8 @@ msgstr "Dimension:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Iste servitor supporta le extensiones de Unix de CIFS"
 
-#~ msgid "Browse Settings:"
-#~ msgstr "Preferentias de navigar:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Profilos:"
-
-#~ msgid "Authentication:"
-#~ msgstr "Authentication:"
-
-#~ msgid "Security:"
-#~ msgstr "Securitate:"
+#~ msgid "Security"
+#~ msgstr "Securitate"
 
 #~ msgid "Samba Settings"
 #~ msgstr "Preferentias de Samba"
@@ -984,17 +959,29 @@ msgstr "Dimension:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Permissiones, etc."
 
-#~ msgid "Login"
-#~ msgstr "Accesso de identification"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Regulas special de filtrar:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Optiones personalisate"
 
 #~ msgid "Login:"
 #~ msgstr "Accesso de identification:"
 
+#~ msgid "The mount process crashed."
+#~ msgstr "Le processo de montar fracassava"
+
 #~ msgid "The unmount process crashed."
 #~ msgstr "Le processo de dismontar fracassava."
 
-#~ msgid "Protocols"
-#~ msgstr "Protocollos"
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 de %2 libere (%3 usate)"
 
 #~ msgid "Location"
 #~ msgstr "Location"

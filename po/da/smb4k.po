@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -189,8 +189,7 @@ msgid "Settings"
 msgstr "Indstillinger"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:64
-#, fuzzy, kde-format
-#| msgid "Wallet Entries"
+#, kde-format
 msgid "Wallet Entries"
 msgstr "Tegnebogsindgange"
 
@@ -373,14 +372,12 @@ msgid "Browse Settings"
 msgstr "Indstillinger"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
@@ -424,8 +421,7 @@ msgid "General"
 msgstr "Generelt"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Links"
 
@@ -442,9 +438,9 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
-#| msgid "Owner:"
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "Ejer:"
+msgstr "Ejer"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -493,8 +489,7 @@ msgid "Files && Directories"
 msgstr "Skjulte filer og mapper"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Restriktioner"
 
@@ -520,8 +515,7 @@ msgid "Filtering"
 msgstr "Filtrering"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Tjeksummer"
 
@@ -696,9 +690,9 @@ msgstr "&Søg"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Settings"
 msgid "Add &Custom Settings"
-msgstr "&Brugervalgte indstillinger"
+msgstr "Avancerede indstillinger"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -957,9 +951,6 @@ msgstr "Størrelse"
 #~ msgid "Custom Options"
 #~ msgstr "Brugervalgte indstillinger"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Montér alle bogmærker"
-
 #, fuzzy
 #~| msgid ""
 #~| "The login information that was stored by Smb4K will be loaded from the "
@@ -984,31 +975,11 @@ msgstr "Størrelse"
 #~ msgid "Entry"
 #~ msgstr "Indgang"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Brugerflade"
+#~ msgid "Login"
+#~ msgstr "Login"
 
 #~ msgid "Password"
 #~ msgstr "Adgangskode"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Opførsel"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Generelt"
-
-#, fuzzy
-#~| msgid "Miscellaneous Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Diverse indstillinger"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Specielle filterregler:"
 
 #, fuzzy
 #~| msgid "Notifications"
@@ -1031,14 +1002,10 @@ msgstr "Størrelse"
 #~ msgid "Actions"
 #~ msgstr "Handlinger"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Send magisk pakke før scanning af netværksnabolaget"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Send magisk pakke før montering af en delt ressource"
 
 #, fuzzy
@@ -1049,30 +1016,13 @@ msgstr "Størrelse"
 #~ msgid "Always remount this share"
 #~ msgstr "Genmontér altid denne ressource"
 
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Indstillinger"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Profiler"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Autentificering"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Sikkerhed"
 
 #, fuzzy
-#~| msgid "Settings"
+#~| msgid "Samba Options"
 #~ msgid "Samba Settings"
-#~ msgstr "Indstillinger"
+#~ msgstr "Samba flag"
 
 #~ msgid "Default Destination"
 #~ msgstr "Standarddestination"
@@ -1082,8 +1032,11 @@ msgstr "Størrelse"
 #~ msgid "Permissions, etc."
 #~ msgstr "Filrettigheder, osv."
 
-#~ msgid "Login"
-#~ msgstr "Login"
+#~ msgid "Special filter rules:"
+#~ msgstr "Specielle filterregler:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Brugervalgte indstillinger"
 
 #~ msgid "Login:"
 #~ msgstr "Login:"
@@ -1094,71 +1047,11 @@ msgstr "Størrelse"
 #~ msgid "The unmount process crashed."
 #~ msgstr "Afmonteringsprocessen brød sammen."
 
-#, fuzzy
-#~| msgid "Protocol:"
-#~ msgid "Protocols"
-#~ msgstr "Protokol:"
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 ledig ud af %2 (%3 brugt)"
 
 #~ msgid "Location"
 #~ msgstr "Placering"
-
-#~ msgid "Owner"
-#~ msgstr "Ejer"
-
-#, fuzzy
-#~| msgid "Save the entries to the wallet."
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Gem indgangene i tegnebogen."
-
-#, fuzzy
-#~| msgid "Load the entries stored in the wallet."
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Indlæs indgange opbevaret i tegnebogen."
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "Markering af dette afkrydsningsfelt vil vise detaljerne for den valgte "
-#~ "login-information nedenfor."
-
-#~ msgid "Password Storage"
-#~ msgstr "Adgangskodeopbevaring"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Vis detaljerne for den valgte indgang."
-
-#~ msgid "Undo"
-#~ msgstr "Fortryd"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Montering"
-
-#~ msgid "UNC:"
-#~ msgstr "UNC:"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Kolonner"
-
-#~ msgid "Tooltips"
-#~ msgstr "Værktøjstips"
-
-#~ msgid "View Mode"
-#~ msgstr "Visningstilstand"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Diverse indstillinger"
-
-#~ msgid "Shares"
-#~ msgstr "Ressourcer"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Netværkværktøjslinje"
@@ -1172,47 +1065,30 @@ msgstr "Størrelse"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Alternativ hovedværktøjslinje"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Ressourcer"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Værktøjsprogrammer"
+#~ msgid "Password Storage"
+#~ msgstr "Adgangskodeopbevaring"
 
-#~ msgid "Network Search"
-#~ msgstr "Netværkssøgning"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Indlæs indgange opbevaret i tegnebogen."
 
-#~ msgid "Searching for \"%1\"..."
-#~ msgstr "Søger efter \"%1\"..."
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Gem indgangene i tegnebogen."
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Angiv søgestrengen her."
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Vis detaljerne for den valgte indgang."
 
-#~ msgid "Abort"
-#~ msgstr "Afbryd"
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Markering af dette afkrydsningsfelt vil vise detaljerne for den valgte "
+#~ "login-information nedenfor."
 
-#~ msgid "&Clear"
-#~ msgstr "&Ryd"
-
-#~ msgid "The search returned no results."
-#~ msgstr "Søgningen gav ingen resultater."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " bytes"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Henter forhåndsvisning fra %1..."
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Periodisk scanning"
-
-#~ msgid "Browse List"
-#~ msgstr "Gennemse listen"
+#~ msgid "Undo"
+#~ msgstr "Fortryd"
 
 #~ msgid "UNC Address:"
 #~ msgstr "UNC-adresse:"
@@ -1235,23 +1111,29 @@ msgstr "Størrelse"
 #~ msgid "MAC address:"
 #~ msgstr "MAC-adresse:"
 
+#~ msgid "Browse List"
+#~ msgstr "Gennemse listen"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodisk scanning"
+
 #~ msgid "General Options"
 #~ msgstr "Generelle indstillinger"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Redigér bogmærker"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#~ msgid "Add Group"
-#~ msgstr "Tilføj gruppe"
+#~ msgid " Bytes"
+#~ msgstr " bytes"
 
-#~ msgid "Label:"
-#~ msgstr "Etiket:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#~ msgid "Group:"
-#~ msgstr "Gruppe:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
 
-#~ msgid "Group name:"
-#~ msgstr "Gruppenavn:"
+#~ msgid "Utility Programs"
+#~ msgstr "Værktøjsprogrammer"
 
 #~ msgid "Copying"
 #~ msgstr "Kopiering"
@@ -1259,14 +1141,32 @@ msgstr "Størrelse"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Sletning og overførsel af filer"
 
+#~ msgid "Columns"
+#~ msgstr "Kolonner"
+
+#~ msgid "Tooltips"
+#~ msgstr "Værktøjstips"
+
+#~ msgid "View Mode"
+#~ msgstr "Visningstilstand"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "Netværksbrowseren kunne ikke oprettes."
+
+#~ msgid "Network Search"
+#~ msgstr "Netværkssøgning"
 
 #~ msgid "The search dialog could not be created."
 #~ msgstr "Søgedialogen kunne ikke oprettes."
 
 #~ msgid "The shares view could not be created."
 #~ msgstr "Ressourcevisningen kunne ikke oprettes."
+
+#~ msgid "Searching for \"%1\"..."
+#~ msgstr "Søger efter \"%1\"..."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Henter forhåndsvisning fra %1..."
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1283,6 +1183,12 @@ msgstr "Størrelse"
 #~ msgid "Search item:"
 #~ msgstr "Søgeelement:"
 
+#~ msgid "Enter the search string here."
+#~ msgstr "Angiv søgestrengen her."
+
+#~ msgid "Abort"
+#~ msgstr "Afbryd"
+
 #~ msgid "Smb4KNetworkSearchPart"
 #~ msgstr "Smb4KNetworkSearchPart"
 
@@ -1291,6 +1197,9 @@ msgstr "Størrelse"
 
 #~ msgid "Search Results"
 #~ msgstr "Søgeresultater"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Søgningen gav ingen resultater."
 
 #~ msgid "Open With"
 #~ msgstr "Åbn med"
@@ -1303,6 +1212,9 @@ msgstr "Størrelse"
 
 #~ msgid "&Shares"
 #~ msgstr "&Ressourcer"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Den avancerede browser til netværksnabolag"
@@ -3351,8 +3263,23 @@ msgstr "Størrelse"
 #~ "Der vil blive sat bogmærke ved alle oplistede ressourcer. Klik på den "
 #~ "pågældende bogmærkeindgang for at redigere etiket eller gruppe."
 
+#~ msgid "Label:"
+#~ msgstr "Etiket:"
+
+#~ msgid "Group:"
+#~ msgstr "Gruppe:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Redigér bogmærker"
+
+#~ msgid "Add Group"
+#~ msgstr "Tilføj gruppe"
+
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Ryd bogmærker"
+
+#~ msgid "Group name:"
+#~ msgstr "Gruppenavn:"
 
 #~ msgid ""
 #~ "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -4785,8 +4712,14 @@ msgstr "Størrelse"
 #~ msgid "Bookmark this share"
 #~ msgstr "Sæt bogmærke ved ressourcen"
 
+#~ msgid "UNC:"
+#~ msgstr "UNC:"
+
 #~ msgid "Name:"
 #~ msgstr "Navn:"
+
+#~ msgid "Protocol:"
+#~ msgstr "Protokol:"
 
 #~ msgid "Try to authenticate with Kerberos (Active Directory)"
 #~ msgstr "Prøv at autentificere med Kerberos (Active Directory)"
@@ -5522,9 +5455,6 @@ msgstr "Størrelse"
 #~ "Superbruger rettigheder kræves til at tvinge afmonteringen af "
 #~ "(fejlbehæftede) ressourcer.\n"
 #~ "(Kræver Linux kernel 2.4.11 eller senere.)"
-
-#~ msgid "Samba Options"
-#~ msgstr "Samba flag"
 
 #~ msgid "Super User Privileges"
 #~ msgstr "Super Bruger Rettigheder"

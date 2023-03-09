@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2019-05-14 22:35+0800\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2019-10-19 15:20+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
 "Language: zh_TW\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 19.04.1\n"
+"X-Generator: Lokalize 19.08.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -644,7 +644,7 @@ msgstr ""
 #: smb4k.kcfg:274
 #, kde-format
 msgid "Archive mode"
-msgstr "封存模式"
+msgstr "歸檔模式"
 
 #. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
 #: smb4k.kcfg:275
@@ -1716,7 +1716,7 @@ msgstr "工作群組："
 #, fuzzy, kde-format
 #| msgid "Archive mode"
 msgid "Active profile"
-msgstr "封存模式"
+msgstr "歸檔模式"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:695
@@ -3021,7 +3021,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgid "Archive mode"
 msgid "Cache mode:"
-msgstr "封存模式"
+msgstr "歸檔模式"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
@@ -3483,16 +3483,16 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "請為 %1 輸入驗證資料。"
 
-#, fuzzy
-#~ msgid "Custom Options"
-#~ msgstr "Samba 選項"
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS 名稱："
 
 #, fuzzy
 #~ msgid "Login:"
 #~ msgstr "鏈結"
+
+#, fuzzy
+#~ msgid "Custom Options"
+#~ msgstr "Samba 選項"
 
 #, fuzzy
 #~| msgid "Workgroup:"
@@ -3508,6 +3508,10 @@ msgstr "請為 %1 輸入驗證資料。"
 #~| msgid "Workgroup:"
 #~ msgid "Group name:"
 #~ msgstr "工作群組："
+
+#, fuzzy
+#~ msgid "Unknown error"
+#~ msgstr "不明的"
 
 #, fuzzy
 #~ msgid ""

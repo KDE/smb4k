@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2022-07-13 11:15+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -235,17 +235,17 @@ msgstr "기본 로그인 정보를 입력하십시오."
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr "기본 로그인 사용자 이름과 암호를 설정하십시오."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "모두 정상적입니다."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -253,10 +253,9 @@ msgid "Clear List"
 msgstr "목록 비우기"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom options were reset."
+#, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
-msgstr "모든 사용자 정의 옵션이 초기화되었으므로 항목 %1을(를) 삭제했습니다."
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -362,7 +361,7 @@ msgstr "탐색 설정"
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, kde-format
@@ -377,23 +376,27 @@ msgstr "초"
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, fuzzy, kde-format
 #| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
-msgstr "사용자 정의 옵션 대화 상자에서 깨울 호스트를 정의하십시오."
+msgstr "<qt>사용자 정의 옵션 대화 상자로 깨울 호스트를 정의하십시오.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "고급 설정"
+msgstr "고급 마운트 설정"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "동기화 디렉터리"
+msgstr "동기화"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
 msgstr "백업"
 
@@ -413,21 +416,20 @@ msgid "File Handling"
 msgstr "파일 처리"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
-#, fuzzy, kde-format
-#| msgid "File Attributes:"
+#, kde-format
 msgid "File Attributes"
-msgstr "파일 속성:"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
-#| msgid "Ownership:"
+#| msgid "Owner:"
 msgid "Ownership"
 msgstr "소유자:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "파일 속성과 소유자"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -480,7 +482,7 @@ msgstr "파일 삭제"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr "일반 필터 설정"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -663,9 +665,9 @@ msgstr "검색(&S)"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "사용자 정의 옵션(&C)"
+msgstr "고급 마운트 설정"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -891,9 +893,10 @@ msgid "Mountpoint:"
 msgstr "마운트 지점:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "사용자 이름:"
+msgstr "사용자 인터페이스"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -913,15 +916,6 @@ msgstr "크기:"
 #~ msgid "Custom Options"
 #~ msgstr "사용자 정의 옵션"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "모든 책갈피 마운트"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -936,23 +930,11 @@ msgstr "크기:"
 #~ msgid "Entry"
 #~ msgstr "항목"
 
-#~ msgid "Username"
-#~ msgstr "사용자 이름"
+#~ msgid "Login"
+#~ msgstr "로그인"
 
 #~ msgid "Password"
 #~ msgstr "암호"
-
-#~ msgid "Behavior:"
-#~ msgstr "행동:"
-
-#~ msgid "General:"
-#~ msgstr "일반:"
-
-#~ msgid "Miscellaneous:"
-#~ msgstr "기타:"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "특별 필터 규칙:"
 
 #~ msgid "Identification"
 #~ msgstr "식별"
@@ -969,14 +951,10 @@ msgstr "크기:"
 #~ msgid "Actions"
 #~ msgstr "동작"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "네트워크 환경을 검색하기 전에 매직 패킷 보내기"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
 
 #~ msgid "Wake-On-LAN Settings"
@@ -988,20 +966,7 @@ msgstr "크기:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "이 서버에서 CIFS 유닉스 확장을 지원합니다"
 
-#~ msgid "Browse Settings:"
-#~ msgstr "탐색 설정:"
-
-#~ msgid "Profiles:"
-#~ msgstr "프로필:"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "인증"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "보안"
 
 #~ msgid "Samba Settings"
@@ -1013,8 +978,17 @@ msgstr "크기:"
 #~ msgid "Permissions, etc."
 #~ msgstr "권한 등."
 
-#~ msgid "Login"
-#~ msgstr "로그인"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "특별 필터 규칙:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "사용자 정의 옵션(&C)"
 
 #~ msgid "Login:"
 #~ msgstr "로그인:"

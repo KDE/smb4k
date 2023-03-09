@@ -4,13 +4,13 @@
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
 # Stefan Asserhäll <stefan.asserhall@bredband.net>, 2009, 2010.
-# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2022-05-21 12:00+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2021-04-02 08:37+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -183,9 +183,10 @@ msgstr "Verktygstipset visar diverse information om den delade resursen."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File mode:"
 msgid "View mode:"
-msgstr "Visningsläge:"
+msgstr "Filläge:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -211,39 +212,45 @@ msgstr "Visa lista"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Settings for the list view:"
 msgid "Icon size for the icon view:"
-msgstr "Ikonstorlek för ikonvyn:"
+msgstr "Inställningar för listvyn:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Ställ in ikonstorlek för ikonvisningsläget för delade resurser."
+msgstr "Visningsläge för de delade resurserna:"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Settings for the list view:"
 msgid "Icon size for the list view:"
-msgstr "Ikonstorlek för listvyn:"
+msgstr "Inställningar för listvyn:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:98
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Ställ in ikonstorlek för listvisningsläget för delade resurser."
+msgstr "Visningsläge för de delade resurserna:"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Icon View"
 msgid "Icon size:"
-msgstr "Ikonstorlek:"
+msgstr "Ikonvy"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The advanced network neighborhood browser for KDE."
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "Ställ in ikonstorlek för bläddraren i nätverksgrannskapet."
+msgstr "Avancerad bläddrare i nätverkgrannskap för KDE"
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -410,9 +417,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "The remote SMB port"
 msgid "Set the SMB port to:"
-msgstr "Ställ in SMB-porten till:"
+msgstr "SMB fjärr porten"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
@@ -500,9 +508,10 @@ msgstr "Använd Winbind ccache för behörighetskontroll."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Encryption level:"
 msgid "Set the encryption level to:"
-msgstr "Ställ in krypteringsnivån till:"
+msgstr "Krypteringsnivå:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
@@ -587,7 +596,13 @@ msgstr "Aktivera funktion för att väckas av lokalt nätverk"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#| "magic package send via a UDP socket to wake up remote servers. If you "
+#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#| "this option."
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -608,7 +623,11 @@ msgstr "Väntetid:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the waiting time in seconds between the sending of the magic Wake-"
+#| "On-LAN packages and the scanning of the network neighborhood or the "
+#| "mounting of a share."
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -2032,9 +2051,10 @@ msgid "Clear"
 msgstr "Rensa"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "Användarnamn:"
+msgstr "Användare:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -2246,13 +2266,15 @@ msgstr "Händelser"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Skicka magiskt paket innan sökning av nätverksgrannskapet"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Skicka magiskt paket innan en delad resurs monteras"
 
@@ -3867,22 +3889,6 @@ msgstr ""
 "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1</b>."
 "</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Anpassade alternativ"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Använd inte låsning"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Använd inte låsning. Starta inte lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Inställningsfilen för Samba-sviten <b>smb.conf</b> saknas. Det är inte "
-#~ "ett allvarligt fel, men du bör fundera på att skapa en."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS namn:"
 
@@ -3908,6 +3914,22 @@ msgstr ""
 #~ msgid "Login:"
 #~ msgstr "Användarnamn:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Anpassade alternativ"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Använd inte låsning"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Använd inte låsning. Starta inte lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Inställningsfilen för Samba-sviten <b>smb.conf</b> saknas. Det är inte "
+#~ "ett allvarligt fel, men du bör fundera på att skapa en."
+
 #~ msgid "Group:"
 #~ msgstr "Grupp:"
 
@@ -3917,35 +3939,8 @@ msgstr ""
 #~ msgid "Group name:"
 #~ msgstr "Gruppnamn:"
 
-#~ msgid ""
-#~ "If you have trouble discovering the workgroups and domains in your "
-#~ "network neighborhood, you should consider to switch this setting on. "
-#~ "Smb4K will then force the use of the SMB 1.0 protocol for searching for "
-#~ "workgroups and domains."
-#~ msgstr ""
-#~ "Om du har problem att upptäcka arbetsgrupper och domäner i "
-#~ "nätverksgrannskapet, bör du överväga att aktivera inställningen. Smb4K "
-#~ "tvingar då att SMB protokoll 1.0 används vid sökning efter arbetsgrupper "
-#~ "och domäner."
-
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1 "
-#~ "på %2</b>.</qt>"
-
-#~ msgid "Unknown error"
-#~ msgstr "Okänt fel"
-
 #~ msgid "Out of memory"
 #~ msgstr "Slut på minne"
-
-#~ msgid "NULL context given"
-#~ msgstr "NULL-sammanhang angivet"
-
-#~ msgid "The smb.conf file would not load"
-#~ msgstr "Det gick inte att läsa in filen smb.conf"
 
 #~ msgid "Permission denied"
 #~ msgstr "Åtkomst nekas"
@@ -3965,11 +3960,38 @@ msgstr ""
 #~ msgid "The workgroup or server could not be found"
 #~ msgstr "Arbetsgruppen eller servern kunde inte hittas"
 
+#~ msgid "Unknown error"
+#~ msgstr "Okänt fel"
+
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Utskriftsjobbet kunde inte ställas in (steg 1)"
 
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Utskriftsjobbet kunde inte ställas in (steg 2)"
+
+#~ msgid "NULL context given"
+#~ msgstr "NULL-sammanhang angivet"
+
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "Det gick inte att läsa in filen smb.conf"
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1 "
+#~ "på %2</b>.</qt>"
+
+#~ msgid ""
+#~ "If you have trouble discovering the workgroups and domains in your "
+#~ "network neighborhood, you should consider to switch this setting on. "
+#~ "Smb4K will then force the use of the SMB 1.0 protocol for searching for "
+#~ "workgroups and domains."
+#~ msgstr ""
+#~ "Om du har problem att upptäcka arbetsgrupper och domäner i "
+#~ "nätverksgrannskapet, bör du överväga att aktivera inställningen. Smb4K "
+#~ "tvingar då att SMB protokoll 1.0 används vid sökning efter arbetsgrupper "
+#~ "och domäner."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"

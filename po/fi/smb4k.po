@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2022-07-11 22:10+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -169,7 +169,7 @@ msgstr "Synkronointi"
 #, fuzzy, kde-format
 #| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Yleiset asetukset"
+msgstr "Yleisasetukset"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -239,17 +239,17 @@ msgstr "Anna oletuskirjautumistiedot."
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "Aseta lompakkotietueen %1 käyttäjätunnus ja salasana."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr "Aseta oletuskirjautumisen käyttäjätunnus ja salasana."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Kaikki kunnossa."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -257,10 +257,9 @@ msgid "Clear List"
 msgstr "Tyhjennä luettelo"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom options were reset."
+#, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
-msgstr "Tietue %1 poistettiin, koska kaikki mukautetut valinnat nollattiin."
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -385,25 +384,29 @@ msgstr " s"
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, fuzzy, kde-format
 #| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
-msgstr "Määritä asetusikkunassa koneet, jotka tulisi herättää."
+msgstr "<qt>Määritä asetusikkunassa koneet, jotka tulisi herättää.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Lisäasetukset"
+msgstr "Liittämisen lisäasetukset"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "Synkronointikansio"
+msgstr "Synkronointi"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Varmuuskopiot"
+msgstr "Varmuuskopioi"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -421,10 +424,9 @@ msgid "File Handling"
 msgstr "Tiedostojen käsittely"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
-#, fuzzy, kde-format
-#| msgid "File Attributes && Ownership"
+#, kde-format
 msgid "File Attributes"
-msgstr "Tiedostomääritteet ja omistajuus"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
@@ -435,7 +437,7 @@ msgstr "Omistaja:"
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Tiedostomääritteet ja omistajuus"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -451,7 +453,7 @@ msgstr "Tiedostot"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " kt"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -486,9 +488,10 @@ msgid "File Deletion"
 msgstr "Tiedoston poisto"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General Settings"
 msgid "General Filtering Settings"
-msgstr "Yleiset suodatusasetukset"
+msgstr "Perusasetukset"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -672,9 +675,9 @@ msgstr "&Etsi"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "&Omat valinnat"
+msgstr "Liittämisen lisäasetukset"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -903,9 +906,10 @@ msgid "Mountpoint:"
 msgstr "Liitoskohta:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "Käyttäjätunnus:"
+msgstr "Käyttäjä:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -925,15 +929,6 @@ msgstr "Koko:"
 #~ msgid "Custom Options"
 #~ msgstr "Omat valinnat"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Liitä kaikki kirjanmerkit"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -948,27 +943,11 @@ msgstr "Koko:"
 #~ msgid "Entry"
 #~ msgstr "Tietue"
 
-#~ msgid "Username"
-#~ msgstr "Käyttäjätunnus"
+#~ msgid "Login"
+#~ msgstr "Kirjautuminen"
 
 #~ msgid "Password"
 #~ msgstr "Salasana"
-
-#~ msgid "Behavior:"
-#~ msgstr "Toiminta:"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Yleistä"
-
-#, fuzzy
-#~| msgid "Miscellaneous"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Sekalaista"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Erityiset suodatinsäännöt:"
 
 #~ msgid "Identification"
 #~ msgstr "Tunnistautuminen"
@@ -985,14 +964,10 @@ msgstr "Koko:"
 #~ msgid "Actions"
 #~ msgstr "Toiminnot"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Lähetä taikapaketti ennen verkkoympäristön tutkimista"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Lähetä taikapaketti ennen jaon liittämistä"
 
 #~ msgid "Wake-On-LAN Settings"
@@ -1004,25 +979,8 @@ msgstr "Koko:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Tämä palvelin tukee CIFSin UNIX-laajennuksia"
 
-#, fuzzy
-#~| msgid "Browse Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Selaa asetuksia"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Profiilit"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Tunnistautuminen"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
-#~ msgstr "Turvallisuus"
+#~ msgid "Security"
+#~ msgstr "Tietoturva"
 
 #~ msgid "Samba Settings"
 #~ msgstr "Samba-asetukset"
@@ -1033,8 +991,17 @@ msgstr "Koko:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Käyttöoikeudet jne."
 
-#~ msgid "Login"
-#~ msgstr "Kirjautuminen"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Erityiset suodatinsäännöt:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Omat valinnat"
 
 #~ msgid "Login:"
 #~ msgstr "Tunnus:"
@@ -1051,56 +1018,6 @@ msgstr "Koko:"
 #~ msgid "Location"
 #~ msgstr "Sijainti"
 
-#, fuzzy
-#~| msgid "Save the entries to the wallet."
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Tallenna tietueet lompakkoon."
-
-#, fuzzy
-#~| msgid "Load the entries stored in the wallet."
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Lataa lompakkoon tallennetut tietueet."
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "Tämän ruudun valitsemalla näet alla valitun kirjautumisen tarkemmat "
-#~ "tiedot.Tämän ruudun valitsemalla näet alla valitun kirjautumisen "
-#~ "tarkemmat tiedot."
-
-#~ msgid "Password Storage"
-#~ msgstr "Salasanavarasto"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Näytä valitun kohdan yksityiskohdat."
-
-#~ msgid "Undo"
-#~ msgstr "Kumoa"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Liittäminen"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Sarakkeet"
-
-#~ msgid "Tooltips"
-#~ msgstr "Työkaluvihjeet"
-
-#~ msgid "View Mode"
-#~ msgstr "Näkymätila"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Sekalaisia asetuksia"
-
-#~ msgid "Shares"
-#~ msgstr "Jaot"
-
 #~ msgid "Network Toolbar"
 #~ msgstr "Verkkotyökalurivi"
 
@@ -1113,44 +1030,31 @@ msgstr "Koko:"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Vaihtoehtoinen päätyökalurivi"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Jaot"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Apuohjelmat"
+#~ msgid "Password Storage"
+#~ msgstr "Salasanavarasto"
 
-#~ msgid "Network Search"
-#~ msgstr "Verkon etsintä"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Lataa lompakkoon tallennetut tietueet."
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Anna etsittävä jono tähän."
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Tallenna tietueet lompakkoon."
 
-#~ msgid "Abort"
-#~ msgstr "Keskeytä"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Näytä valitun kohdan yksityiskohdat."
 
-#~ msgid "&Clear"
-#~ msgstr "T&yhjennä"
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Tämän ruudun valitsemalla näet alla valitun kirjautumisen tarkemmat "
+#~ "tiedot.Tämän ruudun valitsemalla näet alla valitun kirjautumisen "
+#~ "tarkemmat tiedot."
 
-#~ msgid "The search returned no results."
-#~ msgstr "Haku ei palauttanut tuloksia."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " tavua"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Noudetaan esikatselua kohteesta %1…"
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Ajoittainen tarkistus"
-
-#~ msgid "Browse List"
-#~ msgstr "Selaa luetteloa"
+#~ msgid "Undo"
+#~ msgstr "Kumoa"
 
 #~ msgid "UNC Address:"
 #~ msgstr "UNC-osoite:"
@@ -1173,28 +1077,29 @@ msgstr "Koko:"
 #~ msgid "MAC address:"
 #~ msgstr "MAC-osoite:"
 
+#~ msgid "Browse List"
+#~ msgstr "Selaa luetteloa"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Ajoittainen tarkistus"
+
 #~ msgid "General Options"
 #~ msgstr "Yleisasetukset"
 
-#, fuzzy
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Muokkaa kirjanmerkkejä"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#, fuzzy
-#~ msgid "Add Group"
-#~ msgstr "Lisää ryhmä"
+#~ msgid " Bytes"
+#~ msgstr " tavua"
 
-#, fuzzy
-#~ msgid "Label:"
-#~ msgstr "Nimike:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#, fuzzy
-#~ msgid "Group:"
-#~ msgstr "Ryhmä:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
 
-#, fuzzy
-#~ msgid "Group name:"
-#~ msgstr "Ryhmän nimi:"
+#~ msgid "Utility Programs"
+#~ msgstr "Apuohjelmat"
 
 #~ msgid "Copying"
 #~ msgstr "Kopioidaan"
@@ -1202,8 +1107,20 @@ msgstr "Koko:"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Tiedoston poisto ja siirto"
 
+#~ msgid "Columns"
+#~ msgstr "Sarakkeet"
+
+#~ msgid "Tooltips"
+#~ msgstr "Työkaluvihjeet"
+
+#~ msgid "View Mode"
+#~ msgstr "Näkymätila"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "Verkkoselainta ei voitu luoda."
+
+#~ msgid "Network Search"
+#~ msgstr "Verkon etsintä"
 
 #~ msgid "The search dialog could not be created."
 #~ msgstr "Hakuikkunaa ei voitu luoda."
@@ -1211,23 +1128,53 @@ msgstr "Koko:"
 #~ msgid "The shares view could not be created."
 #~ msgstr "Jakonäkymää ei voitu luoda."
 
-#, fuzzy
-#~| msgid "Advanced Network Neighborhood Browser"
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Noudetaan esikatselua kohteesta %1…"
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
 #~ msgid "The network neighborhood browser KPart of Smb4K"
-#~ msgstr "Edistynyt verkkoympäristöselain"
+#~ msgstr "Smb4K:n verkkoympäristöselainosa."
 
-#, fuzzy
-#~| msgid "\\u00A9 2007-2015, Alexander Reinholdt"
 #~ msgid "© 2007-2015, Alexander Reinholdt"
-#~ msgstr "© 2007–2015 Alexander Reinholdt"
+#~ msgstr "© 2007-15 Alexander Reinholdt"
 
-#, fuzzy
-#~| msgid "Open with Konsole"
+#~ msgid "Waking up remote servers..."
+#~ msgstr "Herätetään etäpalvelimia…"
+
+#~ msgid "Search item:"
+#~ msgstr "Hakukohde:"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Anna etsittävä jono tähän."
+
+#~ msgid "Abort"
+#~ msgstr "Keskeytä"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "Smb4K:n verkkohakuosa"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Haku ei palauttanut tuloksia."
+
 #~ msgid "Open With"
-#~ msgstr "Avaa päätteessä"
+#~ msgstr "Avaa ohjelmalla"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "Smb4K:n jakonäkymäosa"
 
 #~ msgid "&Shares"
 #~ msgstr "Jao&t"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Edistynyt verkkoympäristöselain"
@@ -1673,6 +1620,21 @@ msgstr "Koko:"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Lisää kirjanmerkkejä"
+
+#~ msgid "Label:"
+#~ msgstr "Nimike:"
+
+#~ msgid "Group:"
+#~ msgstr "Ryhmä:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Muokkaa kirjanmerkkejä"
+
+#~ msgid "Add Group"
+#~ msgstr "Lisää ryhmä"
+
+#~ msgid "Group name:"
+#~ msgstr "Ryhmän nimi:"
 
 #~ msgid "SMB Port:"
 #~ msgstr "SMB-portti:"

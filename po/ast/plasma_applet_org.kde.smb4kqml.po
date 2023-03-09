@@ -1,93 +1,96 @@
-# Copyright (C) YEAR This file is copyright:
-# This file is distributed under the same license as the smb4k package.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
 #
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+# enolp <enolp@softastur.org>, 2016.
 msgid ""
 msgstr ""
-"Project-Id-Version: smb4k\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2022-08-10 23:39+0400\n"
-"Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
-"Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
-"Language: ar\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2016-12-19 01:57+0100\n"
+"Last-Translator: enolp <enolp@softastur.org>\n"
+"Language-Team: Asturian <alministradores@softastur.org>\n"
+"Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 21.07.70\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 2.0\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:59
 #: package/contents/ui/SharesViewItemDelegate.qml:59
 msgid "<font size=\"-1\">on %1</font>"
-msgstr "<font size=\"-1\">على %1</font>"
+msgstr ""
 
 #: package/contents/ui/BookmarksPage.qml:32
 msgid "Go back"
-msgstr "عُد"
+msgstr ""
 
 #: package/contents/ui/BookmarksPage.qml:41
+#, fuzzy
+#| msgid "Bookmarks"
 msgid "Edit bookmarks"
-msgstr "حرّر العلامات"
+msgstr "Marcadores"
 
 #: package/contents/ui/ConfigurationPage.qml:21
 msgid "Configuration Dialog"
-msgstr "حواري الضبط"
+msgstr ""
 
 #: package/contents/ui/main.qml:17 package/contents/ui/PopupDialog.qml:32
 msgid "Network Neighborhood"
-msgstr "الشبكة المجاورة"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserItemDelegate.qml:92
 #: package/contents/ui/SharesViewItemDelegate.qml:76
+#, fuzzy
+#| msgid "Bookmarks"
 msgid "Bookmark"
-msgstr "العلامة"
+msgstr "Marcadores"
 
 #: package/contents/ui/NetworkBrowserPage.qml:38
 msgid "Rescan"
-msgstr "أعد الاستكشاف"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserPage.qml:47
 msgid "Abort"
-msgstr "أجهض"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserPage.qml:56
 msgid "Go one level up"
-msgstr "انتقل مستوى للأعلى"
+msgstr ""
 
 #: package/contents/ui/NetworkBrowserPage.qml:65
 msgid "Open the mount dialog"
-msgstr "افتح حواري الضم"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
-msgstr "المجلدات المشاركة المضمومة"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
-msgstr "العلامات"
+msgstr "Marcadores"
 
 #: package/contents/ui/PopupDialog.qml:53
 msgid "Profiles"
-msgstr "التّشكيلات"
+msgstr ""
 
 #: package/contents/ui/PopupDialog.qml:60
 msgid "Configuration"
-msgstr "الضّبط"
+msgstr ""
 
 #: package/contents/ui/ProfileItemDelegate.qml:52
 msgid "(active)"
-msgstr "(نشط)"
+msgstr ""
 
 #: package/contents/ui/SharesViewItemDelegate.qml:97
 msgid "Synchronize"
-msgstr "زامِن"
+msgstr ""
 
 #: package/contents/ui/SharesViewItemDelegate.qml:118
 msgid "Unmount"
-msgstr "أزل الضم"
+msgstr ""
 
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
-msgstr "فك ضم جميع المشاركات"
+msgstr ""

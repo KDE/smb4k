@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2011-07-19 21:17+0300\n"
 "Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -224,6 +224,7 @@ msgstr "Ресурси"
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
 #, fuzzy, kde-format
+#| msgid "Icon View"
 msgid "Icon size:"
 msgstr "Изглед като икони"
 
@@ -231,7 +232,7 @@ msgstr "Изглед като икони"
 #: smb4k.kcfg:105
 #, fuzzy, kde-format
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "Проверка на близката мрежа за налични работни групи и домейни."
+msgstr "Файлова система използвана за монтиране на отдалечени ресурси"
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -1739,6 +1740,7 @@ msgstr "&Изчистване"
 
 #: smb4kbookmarkhandler_p.cpp:526
 #, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
 msgstr "Потребител:"
 
@@ -3400,3 +3402,13 @@ msgstr "Моля въведете удостоверяващи данни за �
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "Моля въведете удостоверяващи данни за ресурс %1"
+
+#~ msgid "Custom Options"
+#~ msgstr "Потребителски настройки"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Не използва заключване"
+
+#, fuzzy
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Не използва заключване"

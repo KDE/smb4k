@@ -3,20 +3,19 @@
 #
 # Atanas Mavrov <bugar@developer.bg>, 2004, 2005, 2006, 2007, 2008.
 # Yasen Pramatarov <yasen@lindeas.com>, 2011.
-# Mincho Kondarev <mkondarev@yahoo.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-01-20 23:26+0100\n"
-"Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
-"Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2011-07-19 21:17+0300\n"
+"Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -356,9 +355,9 @@ msgid "Browse Settings"
 msgstr "&Настройки"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
+#, kde-format
 msgid "Samba"
-msgstr "Самба"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, fuzzy, kde-format
@@ -383,13 +382,14 @@ msgstr "Разширени CIFS настройки"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
 #, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
 msgstr "Синхронизиране"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
 msgid "Backups"
-msgstr "Резервни копия"
+msgstr "Архив"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, fuzzy, kde-format
@@ -655,7 +655,7 @@ msgstr "&Търсене"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 msgid "Add &Custom Settings"
-msgstr "Възможности на Самба"
+msgstr "Разширени CIFS настройки"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -880,8 +880,9 @@ msgstr "Точка на монтиране"
 
 #: smb4k/smb4ktooltip.cpp:308
 #, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Потребител:"
+msgstr "Потребителски интерфейс"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, fuzzy, kde-format
@@ -897,3 +898,46 @@ msgstr "Файлова система"
 #, fuzzy, kde-format
 msgid "Size:"
 msgstr "Размер"
+
+#~ msgid "Custom Options"
+#~ msgstr "Потребителски настройки"
+
+#, fuzzy
+#~ msgid "Identification"
+#~ msgstr "Удостоверяване"
+
+#, fuzzy
+#~ msgid "Network Item"
+#~ msgstr "Мрежа"
+
+#, fuzzy
+#~ msgid "MAC Address"
+#~ msgstr "IP-адрес"
+
+#, fuzzy
+#~ msgid "MAC Address:"
+#~ msgstr "IP-адрес:"
+
+#, fuzzy
+#~ msgid "Actions"
+#~ msgstr "Ограничения"
+
+#, fuzzy
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Общи настройки"
+
+#, fuzzy
+#~ msgid "Samba Settings"
+#~ msgstr "&Настройки"
+
+#, fuzzy
+#~ msgid "Default Destination"
+#~ msgstr "Свързване по подразбиране"
+
+#, fuzzy
+#~ msgid "Special filter rules:"
+#~ msgstr "Използване на -F правило за филтър"
+
+#, fuzzy
+#~ msgid "&Custom Options"
+#~ msgstr "Възможности на Самба"

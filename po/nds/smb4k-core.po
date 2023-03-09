@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2354,9 +2354,9 @@ msgstr ""
 
 #: smb4kmounter_p.cpp:128
 #, fuzzy, kde-format
-#| msgid "Notifications"
+#| msgid "Actions"
 msgid "Location:"
-msgstr "Bescheden"
+msgstr "Akschonen"
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -3902,25 +3902,6 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Egen Optschonen"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Dateien nich afsluten"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr ""
-#~ "Keen Dateien för't Togriepen afsluten, den tohören Dämoon „lockd“ nich "
-#~ "starten"
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "De Instellendatei <b>smb.conf</b> för de Samba-Programmsammeln fehlt. Dat "
-#~ "is keen swoor Fehler, man överlegg bitte liekers, wat Du een opstellen "
-#~ "wullt."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS-Naam:"
 
@@ -3944,6 +3925,25 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 #~ msgid "Login:"
 #~ msgstr "Brukernaam:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Egen Optschonen"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Dateien nich afsluten"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr ""
+#~ "Keen Dateien för't Togriepen afsluten, den tohören Dämoon „lockd“ nich "
+#~ "starten"
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "De Instellendatei <b>smb.conf</b> för de Samba-Programmsammeln fehlt. Dat "
+#~ "is keen swoor Fehler, man överlegg bitte liekers, wat Du een opstellen "
+#~ "wullt."
+
 #~ msgid "Group:"
 #~ msgstr "Koppel:"
 
@@ -3952,25 +3952,6 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 
 #~ msgid "Group name:"
 #~ msgstr "Koppelnaam:"
-
-#, fuzzy
-#~| msgid ""
-#~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown error"
-#~ msgstr "nich begäng"
-
-#, fuzzy
-#~| msgid "The lock file could not be created."
-#~ msgid "The smb.conf file would not load"
-#~ msgstr "Slottdatei lett sik nich opstellen."
 
 #, fuzzy
 #~| msgid "File Permissions, etc."
@@ -3998,6 +3979,11 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 #~ msgstr "De Nettwarkkieker lett sik nich opstellen."
 
 #, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown error"
+#~ msgstr "nich begäng"
+
+#, fuzzy
 #~| msgid "The lock file could not be created."
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Slottdatei lett sik nich opstellen."
@@ -4006,6 +3992,306 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 #~| msgid "The lock file could not be created."
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Slottdatei lett sik nich opstellen."
+
+#, fuzzy
+#~| msgid "The lock file could not be created."
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "Slottdatei lett sik nich opstellen."
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "De Nettwarkümgeven op verföögbor Arbeitkoppeln un Domänen dörkieken"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Dat is de Standardmetood för't Halen vun de eerste Dörkieklist. Se kiekt "
+#~ "na all begäng Hööftkiekers binnen de Nettwarkümgeven un deckt so all "
+#~ "Arbeitkoppeln un Domänen op."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Bi den aktuellen Arbeitkoppel-Hööftkieker anfragen"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Bi disse Metood warrt de aktuelle Hööftkieker vun Dien Arbeitkoppel oder "
+#~ "Domään na de eerste Dörkieklist fraagt."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Bi dissen topassten Hööftkieker anfragen:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Bi disse Metood warrt en angeven Hööftkieker na de eerste Dörkieklist "
+#~ "fraagt."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "En topasst Hööftkieker, bi den Du anfragen wullt"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Bitte den Naam oder de IP-Adress vun en Hööftkieker ingeven, den Du na't "
+#~ "Tosamenstellen vun de eerste Dörkieklist fragen wullt"
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "De Hööftkiekers wüllt de Identiteet pröven, ehr se de Dörkieklist "
+#~ "torüchgeevt."
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "De Nettwarkümgeven perioodsch dörkieken"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "De Nettwarkümgeven perioodsch op verföögbor Arbeitkoppeln, Reekners un "
+#~ "Freegaven dörkieken."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Tiet twischen tweemaal kieken:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Dit is de Tiet in Minuten, de Smb4K vergahn lett, ehr dat de "
+#~ "Nettwarkümgeven wedder op verföögbor Arbeitkoppeln, Reekners un Freegaven "
+#~ "dörkiekt."
+
+#~ msgid "Lookup method for IP addresses:"
+#~ msgstr "Nasla-Metoden för IP-Adressen:"
+
+#~ msgid ""
+#~ "Define the method that is to be used to detect the IP addresses of the "
+#~ "hosts."
+#~ msgstr ""
+#~ "De Metoden fastleggen, mit de de IP-Adressen vun de Reekners opeckt warrt."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Befehl „nmblookup“ bruken"
+
+#~ msgid "Use net command"
+#~ msgstr "Befehl „net“ bruken"
+
+#~ msgid "Socket options:"
+#~ msgstr "Socket-Optschonen:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Dat sünd de TCP-Socketoptschonen, de  vun „nmblookup“ un „smbclient“ "
+#~ "bruukt warrt. Mit de Socketoptschonen laat sik de Verbinnen op de "
+#~ "Nettwarklaag vun't Bedriefsysteem fieninstellen. Kiek Di man de man-Siet "
+#~ "„smb.conf“ an, wenn Du mehr weten wullt."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS-Rebeet:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Leggt dat NetBIOS-Rebeet fast, dat „nmblookup“ un „smbclient“ bruukt. "
+#~ "Dissen Weert nich setten is beter, utbenahmen wenn op elkeen Reekner "
+#~ "binnen Dien Nettwarkümgeven dor wat för fastleggt is."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Anmellen mit Kerberos versöken"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Lokaal Reeknerkonto bi't Anmellen bruken"
+
+#, fuzzy
+#~| msgid ""
+#~| "Make queries to the remote server using the machine account of the local "
+#~| "server. The setting affects the net, smbclient, and smbtree command."
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Anfragen op feern Servers mit den lokalen Server sien Reeknerkonto maken. "
+#~ "Disse Instellen warrt vun de Befehlen „net“, „smbclient“ un „smbtree“ "
+#~ "bruukt."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Den Winbind-CCache bi't Anmellen bruken. Disse Instellen warrt vun de "
+#~ "Befehlen „net“, „smbclient“ un „smbtree“ bruukt."
+
+#~ msgid "Signing state:"
+#~ msgstr "Ünnerschriftstatus:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Leggt den Ünnerschriftstatus fast. Disse Instellen warrt vun de Befehlen "
+#~ "„smbclient“ un „smbtree“ bruukt."
+
+#~ msgid "On"
+#~ msgstr "An"
+
+#~ msgid "Off"
+#~ msgstr "Ut"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "SMB-Överdregen verslöteln"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "SMB-Överdregen verslöteln (bloots op Servers mit Unix-Verwiedern).  Disse "
+#~ "Instellen warrt vun de Befehlen „net“, „smbclient“ un „smbtree“ bruukt."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Naam-Oplöösreeg:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Mit disse Optschoon lett sik de Naamdeensten fastleggen, de bruukt warrt, "
+#~ "un in welk Reeg, wenn Reeknernaam un IP-Adressen oplööst warrn schöölt. "
+#~ "Du kannst bet to veer, mit Freetekens tosamensett Optschonen angeven: "
+#~ "„lmhost“, „host“, „wins“ un „bcast“. Kiek bitte op de „man“-Siet för "
+#~ "„smbclient“ na, wenn Du mehr weten wullt."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Puffergrött:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Disse Optschoon ännert de Grött vun den Överdragen-/Loosstüern-Puffer "
+#~ "bi't Halen oder Afleggen vun en Datei vun oder na den Server. De "
+#~ "Standardgrött is 65520 Bytes. As't lett föhrt dat Lüttermaken vun dissen "
+#~ "Weert to gauer Överdregen vun un na Windows-9x-Servers."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Rundroop-Adress:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Anfragen mit „nmblookup“ warrt de angeven Rundroopadress tostüert. Is "
+#~ "disse Optschoon nich angeven is dat Standardbedregen, de Anfragen warrt "
+#~ "de Nettwarkkoppelsteed ehr Rundroopadress tostüert, de automaatsch "
+#~ "rutfunnen oder binnen de Datei „smb.conf“ ehr „interfaces“-Parameter "
+#~ "angeven wöör ."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Dat utproberen un för't Loosstüern un Kriegen vun UDP-Datagrammen na de "
+#~ "UDP-Port 137 anbinnen"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Dat utproberen un för't Loosstüern un Kriegen vun UDP-Datagrammen na de "
+#~ "UDP-Port 137 anbinnen. De Grund för disse Optschoon is en Fehler binnen "
+#~ "Windows 95, dat de Bornport vun't Anfraagpaket övergeiht un bloots na "
+#~ "Port 137 antert. Man op de mehrsten Unix-Systemen bruukt een "
+#~ "Systeemplegerverlöven, wenn een na Port 137 anbinnen will. Kiek bitte op "
+#~ "de „man“-Siet för „nmblookup“ na, wenn Du mehr weten wullt."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Anfragen as Rundrööp loosstüern"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "„smbtree“ de Nettwarkknütten över Rundrööp affragen laten un nich de "
+#~ "lokalen Hööftkieker fragen."
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Dateien, op de dit Muster passt, nich utsluten:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "De Pröövsumm-Startweert"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Leestekens wegdoon"
+
+#~ msgid "General"
+#~ msgstr "Allmeen"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-Adress:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB-Port:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Dateisysteemport:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Schrieftogriep:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Sekerheitbedrief:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>De Optschonen för de Freegaav <b>%1</b> op den Reekner <b>%2</b> "
+#~ "topassen</p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "De Eenheitlich-Naamkonventschoon-Adress (engl. „Unified Name Convention“- "
+#~ "oder „UNC“-Address) gifft en Freegaav ehr Steed an. Se hett dissen "
+#~ "Opbuu: //[BRUKER@]REEKNER/FREEGAAV. De Brukernaam is köörfree."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Server-Kodesiet:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "De Indrag mit den topassten Hööftkieker is leddig. Smb4K versöcht dat un "
+#~ "fraagt ansteed binnen Dien Arbeitkoppel oder Domään na den Hööftkieker."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -4071,136 +4357,14 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 #~ "failed.</p>"
 #~ msgstr "Vöransicht vun %1 warrt haalt..."
 
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Inhangen"
+#~ msgid "Back"
+#~ msgstr "Torüch"
 
-#~ msgid "UNC Address:"
-#~ msgstr "UNC-Adress:"
-
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "De Eenheitlich-Naamkonventschoon-Adress (engl. „Unified Name Convention“- "
-#~ "oder „UNC“-Address) gifft en Freegaav ehr Steed an. Se hett dissen "
-#~ "Opbuu: //[BRUKER@]REEKNER/FREEGAAV. De Brukernaam is köörfree."
-
-#~ msgid "The master browsers require authentication to return the browse list"
-#~ msgstr ""
-#~ "De Hööftkiekers wüllt de Identiteet pröven, ehr se de Dörkieklist "
-#~ "torüchgeevt."
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Anmellen mit Kerberos versöken"
-
-#~ msgid ""
-#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
-#~ "query the current master browser of your workgroup or domain instead."
-#~ msgstr ""
-#~ "De Indrag mit den topassten Hööftkieker is leddig. Smb4K versöcht dat un "
-#~ "fraagt ansteed binnen Dien Arbeitkoppel oder Domään na den Hööftkieker."
-
-#~ msgid "Socket options:"
-#~ msgstr "Socket-Optschonen:"
-
-#~ msgid ""
-#~ "These are the TCP socket options that are used by nmblookup and "
-#~ "smbclient. Socket options are controls on the networking layer of the "
-#~ "operating systems which allow the connection to be tuned. See the manual "
-#~ "page of smb.conf for more information."
-#~ msgstr ""
-#~ "Dat sünd de TCP-Socketoptschonen, de  vun „nmblookup“ un „smbclient“ "
-#~ "bruukt warrt. Mit de Socketoptschonen laat sik de Verbinnen op de "
-#~ "Nettwarklaag vun't Bedriefsysteem fieninstellen. Kiek Di man de man-Siet "
-#~ "„smb.conf“ an, wenn Du mehr weten wullt."
-
-#~ msgid "NetBIOS scope:"
-#~ msgstr "NetBIOS-Rebeet:"
-
-#~ msgid ""
-#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
-#~ "under. It should not be set unless every machine on your network "
-#~ "neighborhood sets this value."
-#~ msgstr ""
-#~ "Leggt dat NetBIOS-Rebeet fast, dat „nmblookup“ un „smbclient“ bruukt. "
-#~ "Dissen Weert nich setten is beter, utbenahmen wenn op elkeen Reekner "
-#~ "binnen Dien Nettwarkümgeven dor wat för fastleggt is."
-
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Lokaal Reeknerkonto bi't Anmellen bruken"
-
-#, fuzzy
-#~| msgid ""
-#~| "Make queries to the remote server using the machine account of the local "
-#~| "server. The setting affects the net, smbclient, and smbtree command."
-#~ msgid ""
-#~ "Make queries to the remote server using the machine account of the local "
-#~ "server. The setting affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Anfragen op feern Servers mit den lokalen Server sien Reeknerkonto maken. "
-#~ "Disse Instellen warrt vun de Befehlen „net“, „smbclient“ un „smbtree“ "
-#~ "bruukt."
-
-#~ msgid ""
-#~ "Use the Winbind ccache for authentication. This setting affects the net, "
-#~ "smbclient and smbtree command."
-#~ msgstr ""
-#~ "Den Winbind-CCache bi't Anmellen bruken. Disse Instellen warrt vun de "
-#~ "Befehlen „net“, „smbclient“ un „smbtree“ bruukt."
-
-#~ msgid "Signing state:"
-#~ msgstr "Ünnerschriftstatus:"
-
-#~ msgid ""
-#~ "Set the signing state. This setting affects the smbclient and smbtree "
-#~ "command."
-#~ msgstr ""
-#~ "Leggt den Ünnerschriftstatus fast. Disse Instellen warrt vun de Befehlen "
-#~ "„smbclient“ un „smbtree“ bruukt."
-
-#~ msgid "On"
-#~ msgstr "An"
-
-#~ msgid "Off"
-#~ msgstr "Ut"
-
-#~ msgid "Required"
-#~ msgstr "Nödig"
-
-#~ msgid "Encrypt SMB transport"
-#~ msgstr "SMB-Överdregen verslöteln"
-
-#~ msgid ""
-#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
-#~ "affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "SMB-Överdregen verslöteln (bloots op Servers mit Unix-Verwiedern).  Disse "
-#~ "Instellen warrt vun de Befehlen „net“, „smbclient“ un „smbtree“ bruukt."
-
-#~ msgid "Send requests as broadcasts"
-#~ msgstr "Anfragen as Rundrööp loosstüern"
-
-#~ msgid ""
-#~ "Let smbtree query the network nodes by sending requests as broadcasts "
-#~ "instead of querying the local master browser."
-#~ msgstr ""
-#~ "„smbtree“ de Nettwarkknütten över Rundrööp affragen laten un nich de "
-#~ "lokalen Hööftkieker fragen."
-
-#~ msgid "Directory mask:"
-#~ msgstr "Ornermuster:"
-
-#~ msgid "unknown"
-#~ msgstr "nich begäng"
+#~ msgid "Forward"
+#~ msgstr "Vörut"
 
 #~ msgid "File"
 #~ msgstr "Datei"
-
-#~ msgid "Options"
-#~ msgstr "Optschonen"
 
 #, fuzzy
 #~| msgid "Options"
@@ -4211,192 +4375,6 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 #~| msgid "Options"
 #~ msgid "Options <<"
 #~ msgstr "Optschonen"
-
-#~ msgid "Name resolve order:"
-#~ msgstr "Naam-Oplöösreeg:"
-
-#~ msgid ""
-#~ "This option is used to determine what naming services and in what order "
-#~ "are used to resolve host names and IP addresses. It takes a space-"
-#~ "separated list of up to four different name resolution options. Those "
-#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
-#~ "further information."
-#~ msgstr ""
-#~ "Mit disse Optschoon lett sik de Naamdeensten fastleggen, de bruukt warrt, "
-#~ "un in welk Reeg, wenn Reeknernaam un IP-Adressen oplööst warrn schöölt. "
-#~ "Du kannst bet to veer, mit Freetekens tosamensett Optschonen angeven: "
-#~ "„lmhost“, „host“, „wins“ un „bcast“. Kiek bitte op de „man“-Siet för "
-#~ "„smbclient“ na, wenn Du mehr weten wullt."
-
-#~ msgid "Buffer size:"
-#~ msgstr "Puffergrött:"
-
-#~ msgid ""
-#~ "This option changes the transmit/send buffer size when getting or putting "
-#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
-#~ "smaller has been observed to speed up file transfers to and from Windows "
-#~ "9x servers."
-#~ msgstr ""
-#~ "Disse Optschoon ännert de Grött vun den Överdragen-/Loosstüern-Puffer "
-#~ "bi't Halen oder Afleggen vun en Datei vun oder na den Server. De "
-#~ "Standardgrött is 65520 Bytes. As't lett föhrt dat Lüttermaken vun dissen "
-#~ "Weert to gauer Överdregen vun un na Windows-9x-Servers."
-
-#, fuzzy
-#~| msgid "The network browser could not be created."
-#~ msgid "The workgroup could not be found"
-#~ msgstr "De Nettwarkkieker lett sik nich opstellen."
-
-#~ msgid "Back"
-#~ msgstr "Torüch"
-
-#~ msgid "Forward"
-#~ msgstr "Vörut"
-
-#~ msgid "Broadcast address:"
-#~ msgstr "Rundroop-Adress:"
-
-#~ msgid ""
-#~ "Queries performed with nmblookup will be send to the given broadcast "
-#~ "address. Without this option the default behavior is to send the queries "
-#~ "to the broadcast address of the network interface that was either auto-"
-#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
-#~ msgstr ""
-#~ "Anfragen mit „nmblookup“ warrt de angeven Rundroopadress tostüert. Is "
-#~ "disse Optschoon nich angeven is dat Standardbedregen, de Anfragen warrt "
-#~ "de Nettwarkkoppelsteed ehr Rundroopadress tostüert, de automaatsch "
-#~ "rutfunnen oder binnen de Datei „smb.conf“ ehr „interfaces“-Parameter "
-#~ "angeven wöör ."
-
-#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
-#~ msgstr ""
-#~ "Dat utproberen un för't Loosstüern un Kriegen vun UDP-Datagrammen na de "
-#~ "UDP-Port 137 anbinnen"
-
-#~ msgid ""
-#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
-#~ "reason for this option is a bug in Windows 95 where it ignores the source "
-#~ "port of the requesting packet and only replies to UDP port 137. "
-#~ "Unfortunately, on most Unix systems super user privileges are needed to "
-#~ "bind to this port. Please read the manual page of nmblookup for more "
-#~ "information."
-#~ msgstr ""
-#~ "Dat utproberen un för't Loosstüern un Kriegen vun UDP-Datagrammen na de "
-#~ "UDP-Port 137 anbinnen. De Grund för disse Optschoon is en Fehler binnen "
-#~ "Windows 95, dat de Bornport vun't Anfraagpaket övergeiht un bloots na "
-#~ "Port 137 antert. Man op de mehrsten Unix-Systemen bruukt een "
-#~ "Systeemplegerverlöven, wenn een na Port 137 anbinnen will. Kiek bitte op "
-#~ "de „man“-Siet för „nmblookup“ na, wenn Du mehr weten wullt."
-
-#~ msgid "Scan the network neighborhood periodically"
-#~ msgstr "De Nettwarkümgeven perioodsch dörkieken"
-
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr ""
-#~ "De Nettwarkümgeven perioodsch op verföögbor Arbeitkoppeln, Reekners un "
-#~ "Freegaven dörkieken."
-
-#~ msgid "Interval between scans:"
-#~ msgstr "Tiet twischen tweemaal kieken:"
-
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr ""
-#~ "Dit is de Tiet in Minuten, de Smb4K vergahn lett, ehr dat de "
-#~ "Nettwarkümgeven wedder op verföögbor Arbeitkoppeln, Reekners un Freegaven "
-#~ "dörkiekt."
-
-#~ msgid "Lookup method for IP addresses:"
-#~ msgstr "Nasla-Metoden för IP-Adressen:"
-
-#~ msgid ""
-#~ "Define the method that is to be used to detect the IP addresses of the "
-#~ "hosts."
-#~ msgstr ""
-#~ "De Metoden fastleggen, mit de de IP-Adressen vun de Reekners opeckt warrt."
-
-#~ msgid "Use nmblookup command"
-#~ msgstr "Befehl „nmblookup“ bruken"
-
-#~ msgid "Use net command"
-#~ msgstr "Befehl „net“ bruken"
-
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr "De Nettwarkümgeven op verföögbor Arbeitkoppeln un Domänen dörkieken"
-
-#~ msgid ""
-#~ "This is the default method to retrieve the initial browse list. It "
-#~ "discovers all workgroups and domains by looking for all known master "
-#~ "browsers on your network neighborhood."
-#~ msgstr ""
-#~ "Dat is de Standardmetood för't Halen vun de eerste Dörkieklist. Se kiekt "
-#~ "na all begäng Hööftkiekers binnen de Nettwarkümgeven un deckt so all "
-#~ "Arbeitkoppeln un Domänen op."
-
-#~ msgid "Query the current workgroup master browser"
-#~ msgstr "Bi den aktuellen Arbeitkoppel-Hööftkieker anfragen"
-
-#~ msgid ""
-#~ "This method queries the current master browser of your workgroup or "
-#~ "domain to retrieve the initial browse list."
-#~ msgstr ""
-#~ "Bi disse Metood warrt de aktuelle Hööftkieker vun Dien Arbeitkoppel oder "
-#~ "Domään na de eerste Dörkieklist fraagt."
-
-#~ msgid "Query this custom master browser:"
-#~ msgstr "Bi dissen topassten Hööftkieker anfragen:"
-
-#~ msgid ""
-#~ "This method queries a custom master browser to retrieve the initial "
-#~ "browse list."
-#~ msgstr ""
-#~ "Bi disse Metood warrt en angeven Hööftkieker na de eerste Dörkieklist "
-#~ "fraagt."
-
-#~ msgid "A custom master browser that is to be queried"
-#~ msgstr "En topasst Hööftkieker, bi den Du anfragen wullt"
-
-#~ msgid ""
-#~ "Enter the name or IP address of a master browser here that should be "
-#~ "queried to compile the initial browse list."
-#~ msgstr ""
-#~ "Bitte den Naam oder de IP-Adress vun en Hööftkieker ingeven, den Du na't "
-#~ "Tosamenstellen vun de eerste Dörkieklist fragen wullt"
-
-#~ msgid "Server codepage:"
-#~ msgstr "Server-Kodesiet:"
-
-#~ msgid "General"
-#~ msgstr "Allmeen"
-
-#~ msgid "SMB Port:"
-#~ msgstr "SMB-Port:"
-
-#~ msgid "Filesystem Port:"
-#~ msgstr "Dateisysteemport:"
-
-#~ msgid "Write Access:"
-#~ msgstr "Schrieftogriep:"
-
-#~ msgid "Security Mode:"
-#~ msgstr "Sekerheitbedrief:"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr ""
-#~ "<p>De Optschonen för de Freegaav <b>%1</b> op den Reekner <b>%2</b> "
-#~ "topassen</p>"
-
-#~ msgid "Do not exclude files matching this pattern:"
-#~ msgstr "Dateien, op de dit Muster passt, nich utsluten:"
-
-#~ msgid "The checksum seed"
-#~ msgstr "De Pröövsumm-Startweert"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Leestekens wegdoon"
 
 #~ msgid ""
 #~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
@@ -4849,6 +4827,9 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 #~ msgid "Checks"
 #~ msgstr "Kiekvörgäng"
 
+#~ msgid "Notifications"
+#~ msgstr "Bescheden"
+
 #~ msgid "Bookmarks"
 #~ msgstr "Leestekens"
 
@@ -5214,6 +5195,11 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
 #~| msgid "Actions"
 #~ msgid "NoSuchAction"
 #~ msgstr "Akschonen"
+
+#, fuzzy
+#~| msgid "The lock file could not be created."
+#~ msgid "The directory <b>%1</b> could not be created."
+#~ msgstr "Slottdatei lett sik nich opstellen."
 
 #, fuzzy
 #~| msgid "Links"

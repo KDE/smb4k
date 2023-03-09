@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2009-11-15 12:06+0100\n"
 "Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -362,16 +362,14 @@ msgid "Browse Settings"
 msgstr "Agordo"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "Ĝeneralaj Agordoj"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
 #, kde-format
@@ -424,9 +422,9 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
-#| msgid "Owner:"
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "Posedanto:"
+msgstr "Posedanto"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -475,10 +473,9 @@ msgid "Files && Directories"
 msgstr "Dosierujoj"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Restrictions"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
@@ -675,9 +672,9 @@ msgstr "&Serĉi"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "Common Options"
+#| msgid "Advanced Settings"
 msgid "Add &Custom Settings"
-msgstr "Ĝeneralaj opcioj"
+msgstr "Plia agordo"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -931,33 +928,11 @@ msgstr "Dosiersistemo:"
 msgid "Size:"
 msgstr ""
 
-#, fuzzy
-#~| msgid "&Edit Bookmarks"
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "&Redakti legosignojn"
-
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Uzant-interfaco"
+#~ msgid "Login"
+#~ msgstr "Ensaluti"
 
 #~ msgid "Password"
 #~ msgstr "Pasvorto"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Konduto"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Ĝeneralo"
-
-#, fuzzy
-#~| msgid "Miscellaneous Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Diversa agordo"
 
 #, fuzzy
 #~| msgid "Actions"
@@ -994,19 +969,7 @@ msgstr ""
 #~ msgid "Always remount this share"
 #~ msgstr "Legosigna modifilo"
 
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Agordo"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Aŭtentigo"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Sekureco"
 
 #, fuzzy
@@ -1014,39 +977,14 @@ msgstr ""
 #~ msgid "Samba Settings"
 #~ msgstr "Agordo"
 
-#~ msgid "Login"
-#~ msgstr "Ensaluti"
-
 #, fuzzy
 #~ msgid "Login:"
 #~ msgstr "Aliĝu"
 
 #, fuzzy
-#~| msgid "Protocol:"
-#~ msgid "Protocols"
-#~ msgstr "Protokolo:"
-
-#, fuzzy
 #~| msgid "Actions"
 #~ msgid "Location"
 #~ msgstr "Agoj"
-
-#~ msgid "Owner"
-#~ msgstr "Posedanto"
-
-#~ msgid "Undo"
-#~ msgstr "Malfari"
-
-#, fuzzy
-#~| msgid "Unmount"
-#~ msgid "Remounting"
-#~ msgstr "Malkroĉu"
-
-#~ msgid "Columns"
-#~ msgstr "Kolumnoj"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Diversa agordo"
 
 #, fuzzy
 #~| msgid "Search Toolbar"
@@ -1066,14 +1004,8 @@ msgstr ""
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Ĉefa ilobreto"
 
-#~ msgid "Abort"
-#~ msgstr "Ĉesigi"
-
-#~ msgid "&Clear"
-#~ msgstr "&Forigi"
-
-#~ msgid " Bytes"
-#~ msgstr " bitokoj"
+#~ msgid "Undo"
+#~ msgstr "Malfari"
 
 #, fuzzy
 #~| msgid "IP Address"
@@ -1096,36 +1028,20 @@ msgstr ""
 #~ msgid "General Options"
 #~ msgstr "Ĝeneralaj opcioj"
 
-#, fuzzy
-#~| msgid "&Edit Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "&Redakti legosignojn"
-
-#, fuzzy
-#~| msgid "Workgroup:"
-#~ msgid "Add Group"
-#~ msgstr "Laborgrupo:"
-
-#, fuzzy
-#~| msgid "Label"
-#~ msgid "Label:"
-#~ msgstr "Etikedo"
-
-#, fuzzy
-#~| msgid "Workgroup:"
-#~ msgid "Group:"
-#~ msgstr "Laborgrupo:"
-
-#, fuzzy
-#~| msgid "Workgroup:"
-#~ msgid "Group name:"
-#~ msgstr "Laborgrupo:"
+#~ msgid " Bytes"
+#~ msgstr " bitokoj"
 
 #~ msgid "Copying"
 #~ msgstr "Kopiante"
 
+#~ msgid "Columns"
+#~ msgstr "Kolumnoj"
+
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "Abort"
+#~ msgstr "Ĉesigi"
 
 #, fuzzy
 #~| msgid "Smb4KNetworkBrowserPart"
@@ -1148,6 +1064,11 @@ msgstr ""
 
 #~ msgid "Total"
 #~ msgstr "Sumo"
+
+#, fuzzy
+#~| msgid "Protocol:"
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protokolo:"
 
 #, fuzzy
 #~| msgid "Authentication"
@@ -1284,6 +1205,21 @@ msgstr ""
 #~ msgstr "Sekurkopio"
 
 #, fuzzy
+#~| msgid "Label"
+#~ msgid "Label:"
+#~ msgstr "Etikedo"
+
+#, fuzzy
+#~| msgid "Workgroup:"
+#~ msgid "Group:"
+#~ msgstr "Laborgrupo:"
+
+#, fuzzy
+#~| msgid "&Edit Bookmarks"
+#~ msgid "Edit Bookmarks"
+#~ msgstr "&Redakti legosignojn"
+
+#, fuzzy
 #~| msgid "Bookmarks"
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Legosignoj"
@@ -1321,6 +1257,11 @@ msgstr ""
 #~| msgid "Synchronize"
 #~ msgid "Synchronizing"
 #~ msgstr "Sinkronigu"
+
+#, fuzzy
+#~| msgid "Authentication"
+#~ msgid "Destination"
+#~ msgstr "Aŭtentigo"
 
 #, fuzzy
 #~| msgid "&Unmount"

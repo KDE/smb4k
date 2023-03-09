@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -1970,9 +1970,9 @@ msgstr "Aðgerðir"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, fuzzy, kde-format
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Netnágrenni"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
@@ -3453,15 +3453,15 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 
-#~ msgid "Custom Options"
-#~ msgstr "Sérsniðnir valkostir"
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS nafn:"
 
 #, fuzzy
 #~ msgid "Login:"
 #~ msgstr "Tenglar"
+
+#~ msgid "Custom Options"
+#~ msgstr "Sérsniðnir valkostir"
 
 #, fuzzy
 #~ msgid "Group:"
@@ -3474,17 +3474,6 @@ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 #, fuzzy
 #~ msgid "Group name:"
 #~ msgstr "Hópur:"
-
-#, fuzzy
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown error"
-#~ msgstr "óþekkt"
 
 #, fuzzy
 #~| msgid "File Permissions, etc."
@@ -3501,12 +3490,153 @@ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 #~ msgstr "Ekki tókst að útbúa möppuna %1."
 
 #, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown error"
+#~ msgstr "óþekkt"
+
+#, fuzzy
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Ekki tókst að útbúa möppuna %1."
 
 #, fuzzy
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#, fuzzy
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Spyrja stjórnvafra (master browser) um flakklistann"
+
+#, fuzzy
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#, fuzzy
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Gerfi stjórnandi:"
+
+#, fuzzy
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr "Skanna netið til að nálgast flakklista"
+
+#, fuzzy
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr "Netnágrenni"
+
+#, fuzzy
+#~| msgid "nmblookup"
+#~ msgid "Use nmblookup command"
+#~ msgstr "nmblookup"
+
+#~ msgid "Socket options:"
+#~ msgstr "Sökkul valkostir:"
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS svið:"
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Reyna auðkenningu með Kerberos"
+
+#, fuzzy
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Sama auðkenni og á vél"
+
+#, fuzzy
+#~| msgid "Signing State"
+#~ msgid "Signing state:"
+#~ msgstr "Staða auðkenningar"
+
+#~ msgid "On"
+#~ msgstr "Á"
+
+#~ msgid "Off"
+#~ msgstr "Af"
+
+#, fuzzy
+#~ msgid "Name resolve order:"
+#~ msgstr "Leysiröð:"
+
+#~ msgid "Buffer size:"
+#~ msgstr "Stærð biðminnis:"
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Útvörpunarvistfang:"
+
+#, fuzzy
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr "Reyna að nota UDP gátt 137 til að senda og móttaka UDP gögn"
+
+#, fuzzy
+#~| msgid "Don't exclude files matching this pattern:"
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Ekki undanskilja skrár sem passa við mynstrið:"
+
+#, fuzzy
+#~ msgid "The checksum seed"
+#~ msgstr "Setja blokkar/skráar gátsummu sendingu:"
+
+#, fuzzy
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Bókamerki"
+
+#~ msgid "General"
+#~ msgstr "Almennt"
+
+#, fuzzy
+#~| msgid "IP Address:"
+#~ msgid "UNC Address:"
+#~ msgstr "IP vistfang:"
+
+#, fuzzy
+#~ msgid "SMB Port:"
+#~ msgstr "Fjarlæg SMB gátt:"
+
+#, fuzzy
+#~ msgid "Filesystem Port:"
+#~ msgstr "Skráarkerfi:"
+
+#, fuzzy
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr "Ekki tókst að útbúa möppuna %1."
+
+#, fuzzy
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Inntakið á sameigninni er rangt. Það verður að vera í sniðinu //VÉL/"
+#~ "SAMEIGN."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Stafatafla miðlara:"
 
 #, fuzzy
 #~ msgid ""
@@ -3567,86 +3697,7 @@ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 #~ msgstr "Reyni aftur að opna miðlara..."
 
 #, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Tengi"
-
-#, fuzzy
-#~| msgid "IP Address:"
-#~ msgid "UNC Address:"
-#~ msgstr "IP vistfang:"
-
-#, fuzzy
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "Inntakið á sameigninni er rangt. Það verður að vera í sniðinu //VÉL/"
-#~ "SAMEIGN."
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Reyna auðkenningu með Kerberos"
-
-#, fuzzy
 #~ msgid "<p>There are no broadcast areas defined.</p>"
-#~ msgstr "Ekki tókst að útbúa möppuna %1."
-
-#~ msgid "Socket options:"
-#~ msgstr "Sökkul valkostir:"
-
-#~ msgid "NetBIOS scope:"
-#~ msgstr "NetBIOS svið:"
-
-#, fuzzy
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Sama auðkenni og á vél"
-
-#, fuzzy
-#~| msgid "Signing State"
-#~ msgid "Signing state:"
-#~ msgstr "Staða auðkenningar"
-
-#~ msgid "On"
-#~ msgstr "Á"
-
-#~ msgid "Off"
-#~ msgstr "Af"
-
-#~ msgid "Required"
-#~ msgstr "Nauðsynlegt"
-
-#~ msgid "Directory mask:"
-#~ msgstr "Möppumöskvi:"
-
-#~ msgid "unknown"
-#~ msgstr "óþekkt"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Skrá:"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "Aðgerðir"
-
-#, fuzzy
-#~ msgid "Options >>"
-#~ msgstr "Aðgerðir"
-
-#, fuzzy
-#~ msgid "Options <<"
-#~ msgstr "Aðgerðir"
-
-#, fuzzy
-#~ msgid "Name resolve order:"
-#~ msgstr "Leysiröð:"
-
-#~ msgid "Buffer size:"
-#~ msgstr "Stærð biðminnis:"
-
-#, fuzzy
-#~ msgid "The workgroup could not be found"
 #~ msgstr "Ekki tókst að útbúa möppuna %1."
 
 #, fuzzy
@@ -3657,90 +3708,17 @@ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 #~ msgid "Forward"
 #~ msgstr "Áfram"
 
-#~ msgid "Broadcast address:"
-#~ msgstr "Útvörpunarvistfang:"
+#, fuzzy
+#~ msgid "File"
+#~ msgstr "Skrá:"
 
 #, fuzzy
-#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
-#~ msgstr "Reyna að nota UDP gátt 137 til að senda og móttaka UDP gögn"
+#~ msgid "Options >>"
+#~ msgstr "Aðgerðir"
 
 #, fuzzy
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr "Netnágrenni"
-
-#, fuzzy
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr "Netnágrenni"
-
-#, fuzzy
-#~| msgid "nmblookup"
-#~ msgid "Use nmblookup command"
-#~ msgstr "nmblookup"
-
-#, fuzzy
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr "Netnágrenni"
-
-#, fuzzy
-#~ msgid "Query the current workgroup master browser"
-#~ msgstr "Spyrja stjórnvafra (master browser) um flakklistann"
-
-#, fuzzy
-#~ msgid ""
-#~ "This method queries the current master browser of your workgroup or "
-#~ "domain to retrieve the initial browse list."
-#~ msgstr "Skanna netið til að nálgast flakklista"
-
-#, fuzzy
-#~ msgid "Query this custom master browser:"
-#~ msgstr "Gerfi stjórnandi:"
-
-#, fuzzy
-#~ msgid ""
-#~ "This method queries a custom master browser to retrieve the initial "
-#~ "browse list."
-#~ msgstr "Skanna netið til að nálgast flakklista"
-
-#, fuzzy
-#~ msgid ""
-#~ "Enter the name or IP address of a master browser here that should be "
-#~ "queried to compile the initial browse list."
-#~ msgstr "Skanna netið til að nálgast flakklista"
-
-#~ msgid "Server codepage:"
-#~ msgstr "Stafatafla miðlara:"
-
-#~ msgid "General"
-#~ msgstr "Almennt"
-
-#, fuzzy
-#~ msgid "SMB Port:"
-#~ msgstr "Fjarlæg SMB gátt:"
-
-#, fuzzy
-#~ msgid "Filesystem Port:"
-#~ msgstr "Skráarkerfi:"
-
-#, fuzzy
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr "Ekki tókst að útbúa möppuna %1."
-
-#, fuzzy
-#~| msgid "Don't exclude files matching this pattern:"
-#~ msgid "Do not exclude files matching this pattern:"
-#~ msgstr "Ekki undanskilja skrár sem passa við mynstrið:"
-
-#, fuzzy
-#~ msgid "The checksum seed"
-#~ msgstr "Setja blokkar/skráar gátsummu sendingu:"
-
-#, fuzzy
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Bókamerki"
+#~ msgid "Options <<"
+#~ msgstr "Aðgerðir"
 
 #, fuzzy
 #~ msgid ""

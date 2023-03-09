@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2014-06-15 16:44+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2180,9 +2180,8 @@ msgstr ""
 
 #: smb4kmounter_p.cpp:128
 #, fuzzy, kde-format
-#| msgid "Notifications"
 msgid "Location:"
-msgstr "Értesítések"
+msgstr "Műveletek"
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -3697,15 +3696,6 @@ msgstr ""
 "<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> megosztáshoz.</"
 "qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Egyéni beállítások"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Ne használjon zárolást"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Ne használjon zárolást. Ne indítsa a lockd démont."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS név:"
 
@@ -3730,6 +3720,15 @@ msgstr ""
 #~ msgid "Login:"
 #~ msgstr "Belépés:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Egyéni beállítások"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Ne használjon zárolást"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Ne használjon zárolást. Ne indítsa a lockd démont."
+
 #~ msgid "Group:"
 #~ msgstr "Csoport:"
 
@@ -3738,25 +3737,6 @@ msgstr ""
 
 #~ msgid "Group name:"
 #~ msgstr "Csoportnév:"
-
-#, fuzzy
-#~| msgid ""
-#~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> megosztáshoz."
-#~ "</qt>"
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown error"
-#~ msgstr "ismeretlen"
-
-#, fuzzy
-#~ msgid "The smb.conf file would not load"
-#~ msgstr "A könyvtár (%1) létrehozása nem sikerült."
 
 #, fuzzy
 #~| msgid "Permissions"
@@ -3782,6 +3762,11 @@ msgstr ""
 #~ msgstr "Nem sikerült létrehozni a hálózatböngészőt."
 
 #, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown error"
+#~ msgstr "ismeretlen"
+
+#, fuzzy
 #~| msgid "The mount process could not be started."
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "A csatolási folyamat nem indítható el."
@@ -3790,6 +3775,224 @@ msgstr ""
 #~| msgid "The mount process could not be started."
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "A csatolási folyamat nem indítható el."
+
+#, fuzzy
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "A könyvtár (%1) létrehozása nem sikerült."
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> megosztáshoz."
+#~ "</qt>"
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Elérhető munkacsoportok és tartományok keresése a hálózaton"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Ez a kezdeti böngészési lista alapértelmezett letöltési metódusa. "
+#~ "Felfedezi az összes munkacsoportot és tartományt a hálózat összes "
+#~ "főtallózójának keresésével."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Az aktuális munkacsoport főtallózójának lekérdezése"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Ez a metódus a kezdeti böngészési lista elkészítéséhez lekérdezi a "
+#~ "munkacsoport vagy tartomány főtallózóját."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Egyéni főtallózó lekérdezése:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Ez a metódus egy egyéni főtallózó lekérdezésével tölti le a kezdeti "
+#~ "böngészési listát."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "A lekérdezendő egyéni főtallózó"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr "Adja meg a lekérdezendő főtallózó nevét vagy IP-címét."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "A főtallózó böngészési listájának letöltéséhez hitelesítés szükséges"
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Hálózat pásztázása rendszeresen"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Rendszeresen pásztázza a hálózatot elérhető munkacsoportokat, gépeket és "
+#~ "megosztásokat keresve."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Keresési időköz:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Ez adja meg az új munkacsoportok, gépek és megosztások keresése közötti "
+#~ "időt percekben."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Az nmblookup parancs használata"
+
+#~ msgid "Use net command"
+#~ msgstr "A net parancs használata"
+
+#~ msgid "Socket options:"
+#~ msgstr "Socketbeállítások:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Ezek az nmblookup és smbclient által használt TCP socketbeállítások. A "
+#~ "socketbeállításokat az operációs rendszer hálózati rétege verzérli, "
+#~ "lehetővé téve a kapcsolat hangolását. További inofmációkért lásd az smb."
+#~ "conf kézikönyvoldalát."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS címtartomány:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Ez az nmblookup és smbclient NetBIOS címtartománya. Mindenképp be kell "
+#~ "állítani, hacsak a hálózat összes gépén nincs beállítva ez az érték."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Hitelesítés megkísérlése Kerberosszal"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Hitelesítés a helyi számítógép azonosítójával"
+
+#, fuzzy
+#~| msgid ""
+#~| "Make queries to the remote server using the machine account of the local "
+#~| "server. The setting affects the net, smbclient, and smbtree command."
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "A távoli kiszolgálóhoz címzett lekérdezéseket a helyi kiszolgáló "
+#~ "azonosítójával végzi. A beállítás érinti a net, smbclient és smbtree "
+#~ "parancsokat."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Winbind ccache-t használ a hitelesítéshez. A beállítás érinti a net, "
+#~ "smbclient és smbtree parancsokat."
+
+#~ msgid "Signing state:"
+#~ msgstr "Aláírási állapot:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Beállítja az aláírás állapotát. A beállítás érinti az smbclient és "
+#~ "smbtree parancsokat."
+
+#~ msgid "On"
+#~ msgstr "Be"
+
+#~ msgid "Off"
+#~ msgstr "Ki"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "SMB átvitel titkosítása"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Titkosítja az SMB átvitelt (csak UNIX kiterjesztéssel rendelkező "
+#~ "kiszolgálókon). A beállítás érinti a net, smbclient és smbtree "
+#~ "parancsokat."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Névfeloldási sorrend:"
+
+#~ msgid "Buffer size:"
+#~ msgstr "Bufferméret:"
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Broadcast cím:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "Az ellenőrzőösszeg forrása"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Könyvjelzők törlése"
+
+#~ msgid "General"
+#~ msgstr "Általános"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-cím:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB port:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Fájlrendszer port:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Írási hozzáférés:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Biztonsági mód:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Egyéni beállítások meghatározása a(z) <b>%2</b> gép <b>%1</b> "
+#~ "megosztásához.</p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Az UNC-cím (Uniform Naming Convention) írja le a megosztás helyét. Ennek "
+#~ "szintaxisa a következő: //[[FELHASZNÁLÓNÉV@]GÉPNÉV/MEGOSZTÁS. A "
+#~ "felhasználónév opcionális."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Kiszolgáló oldali kódlap:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Az egyéni főtallózó bejegyzése üres. Az Smb4K helyette megpróbálja "
+#~ "lekérdezni a munkacsoport vagy tartomány jelenlegi főtallózóját."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -3849,149 +4052,8 @@ msgstr ""
 #~ msgstr ""
 #~ "<p>Nem sikerült a(z) <b>%1</b> elem keresése a hálózati mappában.</p>"
 
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Csatolás"
-
-#~ msgid "UNC Address:"
-#~ msgstr "UNC-cím:"
-
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "Az UNC-cím (Uniform Naming Convention) írja le a megosztás helyét. Ennek "
-#~ "szintaxisa a következő: //[[FELHASZNÁLÓNÉV@]GÉPNÉV/MEGOSZTÁS. A "
-#~ "felhasználónév opcionális."
-
-#~ msgid "The master browsers require authentication to return the browse list"
-#~ msgstr ""
-#~ "A főtallózó böngészési listájának letöltéséhez hitelesítés szükséges"
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Hitelesítés megkísérlése Kerberosszal"
-
-#~ msgid ""
-#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
-#~ "query the current master browser of your workgroup or domain instead."
-#~ msgstr ""
-#~ "Az egyéni főtallózó bejegyzése üres. Az Smb4K helyette megpróbálja "
-#~ "lekérdezni a munkacsoport vagy tartomány jelenlegi főtallózóját."
-
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Nincsenek szórási területek meghatározva.</p>"
-
-#~ msgid "Socket options:"
-#~ msgstr "Socketbeállítások:"
-
-#~ msgid ""
-#~ "These are the TCP socket options that are used by nmblookup and "
-#~ "smbclient. Socket options are controls on the networking layer of the "
-#~ "operating systems which allow the connection to be tuned. See the manual "
-#~ "page of smb.conf for more information."
-#~ msgstr ""
-#~ "Ezek az nmblookup és smbclient által használt TCP socketbeállítások. A "
-#~ "socketbeállításokat az operációs rendszer hálózati rétege verzérli, "
-#~ "lehetővé téve a kapcsolat hangolását. További inofmációkért lásd az smb."
-#~ "conf kézikönyvoldalát."
-
-#~ msgid "NetBIOS scope:"
-#~ msgstr "NetBIOS címtartomány:"
-
-#~ msgid ""
-#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
-#~ "under. It should not be set unless every machine on your network "
-#~ "neighborhood sets this value."
-#~ msgstr ""
-#~ "Ez az nmblookup és smbclient NetBIOS címtartománya. Mindenképp be kell "
-#~ "állítani, hacsak a hálózat összes gépén nincs beállítva ez az érték."
-
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Hitelesítés a helyi számítógép azonosítójával"
-
-#, fuzzy
-#~| msgid ""
-#~| "Make queries to the remote server using the machine account of the local "
-#~| "server. The setting affects the net, smbclient, and smbtree command."
-#~ msgid ""
-#~ "Make queries to the remote server using the machine account of the local "
-#~ "server. The setting affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "A távoli kiszolgálóhoz címzett lekérdezéseket a helyi kiszolgáló "
-#~ "azonosítójával végzi. A beállítás érinti a net, smbclient és smbtree "
-#~ "parancsokat."
-
-#~ msgid ""
-#~ "Use the Winbind ccache for authentication. This setting affects the net, "
-#~ "smbclient and smbtree command."
-#~ msgstr ""
-#~ "Winbind ccache-t használ a hitelesítéshez. A beállítás érinti a net, "
-#~ "smbclient és smbtree parancsokat."
-
-#~ msgid "Signing state:"
-#~ msgstr "Aláírási állapot:"
-
-#~ msgid ""
-#~ "Set the signing state. This setting affects the smbclient and smbtree "
-#~ "command."
-#~ msgstr ""
-#~ "Beállítja az aláírás állapotát. A beállítás érinti az smbclient és "
-#~ "smbtree parancsokat."
-
-#~ msgid "On"
-#~ msgstr "Be"
-
-#~ msgid "Off"
-#~ msgstr "Ki"
-
-#~ msgid "Required"
-#~ msgstr "Kötelező"
-
-#~ msgid "Encrypt SMB transport"
-#~ msgstr "SMB átvitel titkosítása"
-
-#~ msgid ""
-#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
-#~ "affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Titkosítja az SMB átvitelt (csak UNIX kiterjesztéssel rendelkező "
-#~ "kiszolgálókon). A beállítás érinti a net, smbclient és smbtree "
-#~ "parancsokat."
-
-#~ msgid "Directory mask:"
-#~ msgstr "Könyvtármaszk:"
-
-#~ msgid "unknown"
-#~ msgstr "ismeretlen"
-
-#~ msgid "File"
-#~ msgstr "Fájl"
-
-#~ msgid "Options"
-#~ msgstr "Beállítások"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options >>"
-#~ msgstr "Beállítások"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options <<"
-#~ msgstr "Beállítások"
-
-#~ msgid "Name resolve order:"
-#~ msgstr "Névfeloldási sorrend:"
-
-#~ msgid "Buffer size:"
-#~ msgstr "Bufferméret:"
-
-#, fuzzy
-#~| msgid "The network browser could not be created."
-#~ msgid "The workgroup could not be found"
-#~ msgstr "Nem sikerült létrehozni a hálózatböngészőt."
 
 #~ msgid "The preview is displayed here."
 #~ msgstr "Az előnézet itt jelenik meg."
@@ -4010,103 +4072,18 @@ msgstr ""
 #~ "Itt jelenik meg az aktuális UNC-cím. A korábban meglátogatott helyek "
 #~ "közül is választhat a fentebb megjelenő legördülő menüben."
 
-#~ msgid "Broadcast address:"
-#~ msgstr "Broadcast cím:"
+#~ msgid "File"
+#~ msgstr "Fájl"
 
-#~ msgid "Scan the network neighborhood periodically"
-#~ msgstr "Hálózat pásztázása rendszeresen"
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Options >>"
+#~ msgstr "Beállítások"
 
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr ""
-#~ "Rendszeresen pásztázza a hálózatot elérhető munkacsoportokat, gépeket és "
-#~ "megosztásokat keresve."
-
-#~ msgid "Interval between scans:"
-#~ msgstr "Keresési időköz:"
-
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr ""
-#~ "Ez adja meg az új munkacsoportok, gépek és megosztások keresése közötti "
-#~ "időt percekben."
-
-#~ msgid "Use nmblookup command"
-#~ msgstr "Az nmblookup parancs használata"
-
-#~ msgid "Use net command"
-#~ msgstr "A net parancs használata"
-
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr "Elérhető munkacsoportok és tartományok keresése a hálózaton"
-
-#~ msgid ""
-#~ "This is the default method to retrieve the initial browse list. It "
-#~ "discovers all workgroups and domains by looking for all known master "
-#~ "browsers on your network neighborhood."
-#~ msgstr ""
-#~ "Ez a kezdeti böngészési lista alapértelmezett letöltési metódusa. "
-#~ "Felfedezi az összes munkacsoportot és tartományt a hálózat összes "
-#~ "főtallózójának keresésével."
-
-#~ msgid "Query the current workgroup master browser"
-#~ msgstr "Az aktuális munkacsoport főtallózójának lekérdezése"
-
-#~ msgid ""
-#~ "This method queries the current master browser of your workgroup or "
-#~ "domain to retrieve the initial browse list."
-#~ msgstr ""
-#~ "Ez a metódus a kezdeti böngészési lista elkészítéséhez lekérdezi a "
-#~ "munkacsoport vagy tartomány főtallózóját."
-
-#~ msgid "Query this custom master browser:"
-#~ msgstr "Egyéni főtallózó lekérdezése:"
-
-#~ msgid ""
-#~ "This method queries a custom master browser to retrieve the initial "
-#~ "browse list."
-#~ msgstr ""
-#~ "Ez a metódus egy egyéni főtallózó lekérdezésével tölti le a kezdeti "
-#~ "böngészési listát."
-
-#~ msgid "A custom master browser that is to be queried"
-#~ msgstr "A lekérdezendő egyéni főtallózó"
-
-#~ msgid ""
-#~ "Enter the name or IP address of a master browser here that should be "
-#~ "queried to compile the initial browse list."
-#~ msgstr "Adja meg a lekérdezendő főtallózó nevét vagy IP-címét."
-
-#~ msgid "Server codepage:"
-#~ msgstr "Kiszolgáló oldali kódlap:"
-
-#~ msgid "General"
-#~ msgstr "Általános"
-
-#~ msgid "SMB Port:"
-#~ msgstr "SMB port:"
-
-#~ msgid "Filesystem Port:"
-#~ msgstr "Fájlrendszer port:"
-
-#~ msgid "Write Access:"
-#~ msgstr "Írási hozzáférés:"
-
-#~ msgid "Security Mode:"
-#~ msgstr "Biztonsági mód:"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr ""
-#~ "<p>Egyéni beállítások meghatározása a(z) <b>%2</b> gép <b>%1</b> "
-#~ "megosztásához.</p>"
-
-#~ msgid "The checksum seed"
-#~ msgstr "Az ellenőrzőösszeg forrása"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Könyvjelzők törlése"
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Options <<"
+#~ msgstr "Beállítások"
 
 #~ msgid ""
 #~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
@@ -4721,6 +4698,9 @@ msgstr ""
 
 #~ msgid "Checks"
 #~ msgstr "Ellenőrzések"
+
+#~ msgid "Notifications"
+#~ msgstr "Értesítések"
 
 #~ msgid "Bookmarks"
 #~ msgstr "Könyvjelzők"

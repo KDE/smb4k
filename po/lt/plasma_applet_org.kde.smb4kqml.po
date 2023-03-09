@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: l 10n\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2017-09-04 09:41+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2017-09-04 09:52+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -94,27 +94,16 @@ msgid "Synchronize"
 msgstr ""
 
 #: package/contents/ui/SharesViewItemDelegate.qml:118
+#, fuzzy
+#| msgid "Unmount All"
 msgid "Unmount"
-msgstr "Atjungti"
+msgstr "Atjungti viską"
 
 #: package/contents/ui/SharesViewPage.qml:34
+#, fuzzy
+#| msgid "Unmount All"
 msgid "Unmount all shares"
-msgstr ""
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Žymelės"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Žymelės"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Delete Bookmark"
-#~ msgstr "Žymelės"
+msgstr "Atjungti viską"
 
 #~ msgid "Back"
 #~ msgstr "Atgal"

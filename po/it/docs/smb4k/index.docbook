@@ -11,9 +11,6 @@
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
-  <!ENTITY SMB3 "<acronym
->SMB3</acronym
->">
   <!ENTITY Samba "<application
 >Samba</application
 >">
@@ -77,7 +74,7 @@
   </authorgroup>
   <copyright>
     <year
->2005-2022</year>
+>2005-2021</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
@@ -86,7 +83,7 @@
   <date
 >30/03/2021</date>
   <releaseinfo
->&smb4k; 3.2.0</releaseinfo
+>&smb4k; 3.1.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
   <abstract>
     <para
@@ -111,7 +108,7 @@
 >Introduzione</title>
 
   <para
->This handbook describes &smb4k; 3.2 and to some extent earlier versions.</para>
+>Questo manuale descrive &smb4k; 3.1.x e, in una certa misura, alcune versioni precedenti.</para>
   <para
 >&smb4k; è un navigatore avanzato delle risorse di rete e uno strumento per il montaggio delle condivisioni <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -124,7 +121,7 @@
 ></listitem>
     <listitem
 ><para
->Support of the &CIFS; and &SMB3; file system under &Linux; as well as the SMBFS file system under BSD</para
+>Supporto per il file system &CIFS; (&Linux;) e SMBFS (BSD)</para
 ></listitem>
     <listitem
 ><para
@@ -566,7 +563,7 @@
           </term>
           <listitem>
             <para
->Apre la <link linkend="network_neighborhood_browser_mounting"
+>Apri la <link linkend="network_neighborhood_browser_mounting"
 >finestra</link
 > per montare «manualmente» le condivisioni. Questa funzionalità può essere necessaria se &smb4k; non riesce a trovare il server sul quale montare una certa risorsa condivisa.</para>
           </listitem>
@@ -586,7 +583,7 @@
           </term>
           <listitem>
             <para
->Apre la <link linkend="network_neighborhood_browser_authentication"
+>Apri la <link linkend="network_neighborhood_browser_authentication"
 >finestra di autenticazione</link
 >. Puoi fornire nome utente e password per il server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa azione è disabilitata.</para>
           </listitem>
@@ -606,7 +603,7 @@
           </term>
           <listitem>
             <para
->Apre la finestra <link linkend="network_neighborhood_browser_defining_custom_options"
+>Apri la finestra <link linkend="network_neighborhood_browser_defining_custom_options"
 >Opzioni personalizzate</link
 >. Puoi impostare diverse opzioni personalizzate per il server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa voce di menu è disabilitata.</para>
           </listitem>
@@ -1056,7 +1053,7 @@
 >Impostazioni di navigazione</title>
 
         <para
->Puoi definire la versione minima e massima del protocollo SMB, così come la porta SMB da usare. Inoltre puoi decidere se Kerberos debba essere usato per l'autenticazione. Per informazioni dettagliate su queste impostazioni, vedi <link linkend="configuration_page_network"
+>Puoi definire la versione minima e massima del protocollo SMB (se la libreria del client di Samba lo supporta), così come la porta SMB da usare. Inoltre puoi decidere se Kerberos debba essere usato per l'autenticazione. Per informazioni dettagliate su queste impostazioni, vedi <link linkend="configuration_page_network"
 >questa pagina di configurazione della rete</link
 >.</para>
       </sect3>
@@ -1324,7 +1321,7 @@
           </term>
           <listitem>
             <para
->Apre la cartella base di una condivisione in &konsole;. Questa voce di menu è utile se hai bisogno di eseguire script di shell, &etc;</para>
+>Apri la cartella base di una condivisione in &konsole;. Questa voce di menu è utile se hai bisogno di eseguire script di shell, &etc;</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1342,7 +1339,7 @@
           </term>
           <listitem>
             <para
->Apre il contenuto di una condivisione nel gestore dei file predefinito.</para>
+>Apri il contenuto di una condivisione nel gestore dei file predefinito.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1795,7 +1792,7 @@
           </term>
           <listitem>
             <para
->Apre la cartella base della condivisione in &konsole;.</para>
+>Apri la cartella base della condivisione in &konsole;.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1807,7 +1804,7 @@
           </term>
           <listitem>
             <para
->Apre il contenuto della condivisione nel gestore dei file predefinito (&eg; &dolphin;).</para>
+>Apri il contenuto della condivisione nel gestore dei file predefinito (&eg; &dolphin;).</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1879,7 +1876,7 @@
           </term>
           <listitem>
             <para
->Apre la <link linkend="network_neighborhood_browser_mounting"
+>Apri la <link linkend="network_neighborhood_browser_mounting"
 >finestra</link
 > per il montaggio «manuale».</para>
           </listitem>
@@ -2890,7 +2887,7 @@ ntlm auth = yes
 >editor dei segnalibri</link
 >.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2916,7 +2913,7 @@ ntlm auth = yes
             <para
 >Espande automaticamente le voci di dominio e degli host quando un elenco degli elementi di rete associati (i membri del dominio o azioni) viene aggiunto o aggiornato. Nota che un dominio o un host verrà sempre espanso quando lo esegui.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2930,7 +2927,7 @@ ntlm auth = yes
             <para
 >Viene mostrato Il tipo delle condivisioni (ad esempio un disco, una stampante, o un IPC).</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2944,7 +2941,7 @@ ntlm auth = yes
             <para
 >Viene mostrato l'indirizzo IP dei server remoti.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2958,7 +2955,7 @@ ntlm auth = yes
             <para
 >Viene mostrato il commento su un server o su una condivisione.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2972,7 +2969,7 @@ ntlm auth = yes
             <para
 >Viene mostrato un suggerimento quando sposti il puntatore del mouse su un elemento nel navigatore delle risorse di rete. Contiene informazioni sull'elemento di rete, ad esempio il gruppo di lavoro o il nome di dominio, il nome dell'host, il commento, tipo, &etc;</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -3042,7 +3039,7 @@ ntlm auth = yes
             <para
 >Viene mostrato un suggerimento quando sposti il puntatore del mouse su un elemento nella vista delle condivisioni. Contiene delle informazioni sulla condivisione montata, come il nome stesso, l'indirizzo UNC, il punto di montaggio, il proprietario e il gruppo, il nome utente (file system &CIFS;, solo in &Linux;), l'utilizzo del disco, &etc;</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -3103,13 +3100,13 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Il protocollo di rilevamento dinamico dei servizi Web (WS-Discovery) viene usato per navigare nella rete locale e per rilevare i gruppi di lavoro, i domini e gli host. Ciò è utile se le tue risorse di rete sono prevalentemente costituite da server con versioni di &Windows; moderne. Se utilizzi questa opzione non dovrebbe essere necessario forzare le librerie client di &Samba; ad utilizzare la versione 1.0 del protocollo SMB per cercare i gruppi di lavoro e i domini.</para>
+>Il rilevamento dinamico dei servizi Web (WS-Discovery) viene usato per navigare nella rete locale e per rilevare i gruppi di lavoro, i domini e gli host. Ciò è utile se le tue risorse di rete sono prevalentemente costituite da server con versioni di &Windows; moderne. Se utilizzi questa opzione non dovrebbe essere necessario forzare le librerie client di &Samba; ad utilizzare la versione 1.0 del protocollo SMB per cercare i gruppi di lavoro e i domini.</para>
               <note
 ><para
 >Questa impostazione è facoltativa, ed appare solo se compili &smb4k; con il supporto a WS-Discovery.</para
 ></note>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3121,9 +3118,9 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->L'interfaccia al sistema di rilevamento dei servizi via DNS (DNS-SD) è utilizzata per navigare nella rete locale e per rilevare i server che forniscono risorse SMB condivise. I domini rilevati corrispondono ai domini DNS locali (chiamati &eg; LOCAL) e probabilmente non quelli definiti nelle risorse di rete. Questo non influenza la navigazione. Se utilizzi questa opzione non c'è bisogno di forzare le librerie client di &Samba; ad usare la versione 1.0 del protocollo nella ricerca dei gruppi di lavoro e di domini.</para>
+>Il sistema di rilevamento dei servizi via DNS (DNS-SD) è utilizzato per navigare nella rete locale e per rilevare i server che forniscono risorse SMB condivise. I domini rilevati corrispondono ai domini DNS locali (chiamati &eg; LOCAL) e probabilmente non quelli definiti nelle risorse di rete. Questo non influenza la navigazione. Se utilizzi questa opzione non c'è bisogno di forzare le librerie client di &Samba; ad usare la versione 1.0 del protocollo nella ricerca dei gruppi di lavoro e di domini.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3137,7 +3134,9 @@ ntlm auth = yes
               <para
 >Seleziona questa opzione come ultima risorsa, in quanto la versione 1.0 del protocollo non è sicura ed è stata disabilitata nelle ultime versioni di &Samba; e di &Windows;. Ad ogni modo, se hai problemi a trovare i gruppi di lavoro e i domini nelle tue risorse di rete, potresti voler considerare l'attivazione di questa opzione. Se stai utilizzando il sistema di rilevamento dei servizi via DNS (DNS-SD), oppure il rilevamento dinamico dei servizi Web (WS-Discovery), e questi funzionano, allora non hai bisogno della versione 1.0.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Questa opzione è disponibile solo se la libreria client di Samba supporta l'impostazione delle versioni di protocollo.</para>
+              <para
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3151,11 +3150,11 @@ ntlm auth = yes
               <para
 >Imposta la minima e la massima versione del protocollo SMB che viene utilizzata nella libreria client di &Samba; per navigare nelle risorse di rete; ciò scavalcherà le impostazioni nel file smb.conf. Normalmente non c'è bisogno di usare quest'opzione, in quanto in fase di negoziazione tra il client ed il server dovrebbe essere utilizzata la versione appropriata del protocollo. Nota però che questa impostazione potrebbe non essere appropriata per rendere funzionante la scoperta di gruppi di lavoro e domini mantenendo al contempo indisturbata la connettività ai server. Per la ricerca di domini e gruppi di lavoro dovresti utilizzare invece il sistema di rilevamento dei servizi via DNS (DNS-SD) o il rilevamento dinamico dei servizi Web (WS-Discovery).</para>
               <para
->Le impostazioni della versione minima e massima del protocollo SMB qui sotto vengono abilitate spuntando questa casella.</para>
+>Le impostazioni della versione minima e massima del protocollo SMB qui sotto vengono abilitate spuntando questa casella. La versione massima del protocollo SMB deve essere uguale o superiore alla versione minima del protocollo SMB.</para>
               <para
->La massima versione del protocollo SMB deve essere uguale o superiore alla versione minima del protocollo SMB.</para>
+>Queste opzioni sono disponibili solo se la libreria client di Samba supporta l'impostazione delle versioni di protocollo.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3287,7 +3286,7 @@ ntlm auth = yes
               <para
 >Le stampanti condivise sono rilevate.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3301,7 +3300,7 @@ ntlm auth = yes
               <para
 >Le condivisioni nascoste sono rilevate; sono quelle che terminano con il simbolo «$», ad esempio Musica$ o IPC$.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3315,7 +3314,7 @@ ntlm auth = yes
               <para
 >Mostra tutti i file e le cartelle, compresi gli elementi nascosti, quando apri il contenuto di una condivisione nella finestra di anteprima.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3398,7 +3397,7 @@ ntlm auth = yes
               <para
 >Nella configurazione predefinita, quando viene compilato l'elenco di ricerca vengono interrogati tutti i master browser; questo può richiedere molto tempo con risorse di rete molto grandi. Abilitando questa impostazione restringerai la ricerca a tre master browser.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3420,7 +3419,7 @@ ntlm auth = yes
               <para
 >Devi selezionare questo pulsante se i master browser del gruppo di lavoro richiedono l'autenticazione per restituire l'elenco di ricerca. Questo può essere il caso, per esempio, di alcuni dispositivi NAS. Questa impostazione è raramente necessaria, e potrebbe anche far sì che un master browser restituisca una elenco di ricerca vuoto.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3434,7 +3433,7 @@ ntlm auth = yes
               <para
 >Usa Kerberos per l'autenticazione in un ambiente Active Directory.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3448,7 +3447,7 @@ ntlm auth = yes
               <para
 >Prova ad utilizzare le credenziali memorizzate nella cache da Winbind.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3544,7 +3543,7 @@ ntlm auth = yes
             <para
 >Abilita la funzionalità Wake-on-LAN (WOL, letteralmente «risveglio da rete»). Si tratta di uno standard per le reti informatiche ethernet che permette ad un computer di venir acceso o risvegliato da un messaggio sulla rete. Smb4K usa un pacchetto magico inviato attraverso un socket UDP per risvegliare i server remoti. Se vuoi usare questa funzionalità devi abilitare quest'opzione.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             <variablelist>
               <varlistentry>
                 <term>
@@ -3636,7 +3635,7 @@ ntlm auth = yes
               <para
 >Tutte le sottocartelle create da &smb4k; sotto il prefisso di montaggio saranno in minuscolo.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3662,7 +3661,7 @@ ntlm auth = yes
 >Questa impostazione non influisce sul rimontaggio automatico di una condivisione quando il tuo computer si risveglia da uno stato d'inattività.</para
 ></note>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3707,7 +3706,7 @@ ntlm auth = yes
               <para
 >Smonta tutte le condivisioni che ti appartengono quando il programma termina. Le condivisioni appartenenti ad altri utenti vengono ignorate.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3721,7 +3720,7 @@ ntlm auth = yes
               <para
 >Forza lo smontaggio delle condivisioni inaccessibili (solo in &Linux;). Nel caso che una condivisione sia inaccessibile, viene eseguito uno smontaggio «alla buona». Prima che venga eseguito il vero smontaggio viene mostrata una finestra di avviso che chiede di approvare lo smontaggio.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3737,7 +3736,7 @@ ntlm auth = yes
               <para
 >DA USARE CON ESTREMA CAUTELA!</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3751,7 +3750,7 @@ ntlm auth = yes
               <para
 >Non vedrai solo le condivisioni che sono state montate da te e che ti appartengono, ma anche tutte gli altri montaggi che usano i file system SMBFS (BSD) e &CIFS; (&Linux;) che sono presenti nel sistema.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry
 >  
@@ -4163,7 +4162,7 @@ ntlm auth = yes
             <para
 >La maggior parte delle versioni di &Samba; supportano le estensioni &CIFS; per Unix o le POSIX. Per questi server alcune opzioni non sono necessarie, perché i valori corretti vengono negoziati durante il processo di montaggio. Per altri server potresti invece voler deselezionare quest'opzione, in modo che i valori predefiniti possano essere passati al server. Nota che se il tuo computer si trova in una rete con predominanza di sistemi &Windows; con solo alcuni server &Samba;, allora puoi deselezionare in sicurezza quest'opzione e definire delle opzioni personalizzate per i server &Samba;.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4286,7 +4285,7 @@ ntlm auth = yes
             <para
 >Ordina al client (il tuo lato) di ignorare qualsiasi identificativo dell'utente (UID) fornito dal server per i file e le cartelle, e di assegnare sempre il valore dell'UID trasmesso come proprietario.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4300,7 +4299,7 @@ ntlm auth = yes
             <para
 >Ordina al client (il tuo lato) di ignorare qualsiasi identificativo dell'utente (GID) fornito dal server per i file e le cartelle, e di assegnare sempre il valore del GID trasmesso come proprietario.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4314,7 +4313,7 @@ ntlm auth = yes
             <para
 >Il lato client controlla se hai i UID e GID corretti per manipolare i file e le cartelle della condivisione. Questo è in aggiunta al normale controllo ACL sulla macchina di destinazione effettuata dal software del server. Potresti voler disattivare questa funzione se i server supportano le estensioni &CIFS; per Unix, e quindi, non hai il permesso di accedere alla condivisione.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4336,7 +4335,7 @@ ntlm auth = yes
 ></ulink
 > prima di cambiare questa impostazione.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4358,7 +4357,7 @@ ntlm auth = yes
 ></ulink
 > prima di modificare questa impostazione.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4372,7 +4371,7 @@ ntlm auth = yes
             <para
 >Traduce sei dei sette caratteri riservati (non la barra rovesciata, ma il carattere dei due punti, del punto interrogativo, del pipe, dell'asterisco, del maggiore e del minore) per l'intervallo da rimappare (al di sopra di 0xf000), che permette anche al lato client di riconoscere i file creati con tali caratteri dall'emulazione POSIX di &Windows;. Questo comportamento può anche essere utile per il montaggio della maggior parte delle versioni di &Samba;. Non ha alcun effetto se il server non supporta Unicode.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4386,7 +4385,7 @@ ntlm auth = yes
             <para
 >Non usa il blocco. Non avvia lockd.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4985,7 +4984,7 @@ ntlm auth = yes
               <para
 >Usa gli insiemi di caratteri specifici locali e del server.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -5760,7 +5759,7 @@ ntlm auth = yes
 >Smb4K</filename
 >. Il vantaggio di questo metodo è che i dati di autenticazione vengono memorizzati in modo permanente e crittografato sul disco rigido: devi fornirli una sola volta, successivamente, quando sarà necessario, &smb4k; li leggerà dal portafoglio. Se deselezioni questa opzione, i dati di autenticazione non saranno immagazzinati.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -5788,7 +5787,7 @@ ntlm auth = yes
             <para
 >Devi compilare almeno il nome utente. Sono supportate le password vuote.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -5939,7 +5938,7 @@ ntlm auth = yes
 >-H</option
 >.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5959,7 +5958,7 @@ ntlm auth = yes
               <para
 >Ricorsione nelle sottocartelle.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5979,7 +5978,7 @@ ntlm auth = yes
               <para
 >Utilizza i nomi di percorso relativi. Ciò significa che i nomi dei percorsi completi specificati nella riga di comando vengono inviati al server, non solo le ultime parti di essi.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6003,7 +6002,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6041,7 +6040,7 @@ ntlm auth = yes
 >--recursive</option
 > avrà precedenza.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6093,7 +6092,7 @@ ntlm auth = yes
 >-f "P *~"</option
 >). Questo consentirà di evitare di eliminare i file conservati in precedenza. Nota che si forniscono le proprie regole di filtro potrebbe anche essere necessario inserire manualmente la propria regola di esclusione / protezione nell'elenco in un punto precedente, in modo da dare una priorità sufficientemente elevata per essere efficace (&eg;, se le regole specificano una inclusione / esclusione di «*» finale, la regola personale non verrebbe mai raggiunta).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6121,7 +6120,7 @@ ntlm auth = yes
 >Crea copie di sicurezza</guilabel
 >.</para>
               <para
->Impostazione predefinita: non selezionato; SUFFIX: ~</para>
+>Predefinito: non selezionato; SUFFIX: ~</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6147,7 +6146,7 @@ ntlm auth = yes
 >Crea copie di sicurezza</guilabel
 >.</para>
               <para
->Impostazione predefinita: non selezionato; DIR: <envar
+>Predefinito: non selezionato; DIR: <envar
 >$HOME</envar
 ></para>
             </listitem>
@@ -6195,7 +6194,7 @@ ntlm auth = yes
 ></ulink
 > ignora tutti i file presenti nella destinazione che hanno una data di modifica più recente di quella del file di origine. (Se un file di destinazione esistente ha un di modifica uguale a quello del file sorgente verrà aggiornato se le dimensioni sono diverse).</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6243,7 +6242,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6269,7 +6268,7 @@ ntlm auth = yes
 >Non usare questa opzione su una destinazione del file system «tmpfs» di &Solaris;: non sembra gestire correttamente ricerche su regioni nulle, e finisce per corrompere i file.</para
 ></note>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6297,7 +6296,7 @@ ntlm auth = yes
 ></ulink
 >, e l'intero file viene invece inviato come è. Il trasferimento può essere più veloce utilizzando questa opzione se la larghezza di banda tra la sorgente e la destinazione è superiore alla larghezza di banda su disco (specialmente quando il «disco» è in realtà un sistema di file di rete). Questa è l'impostazione predefinita quando sia l'origine che la destinazione sono specificate come percorsi locali.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6327,7 +6326,7 @@ ntlm auth = yes
 >--ignore-existing</option
 >, nessun file verrà aggiornato (il ché può essere utile se vuoi eliminare i file mancanti).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6355,7 +6354,7 @@ ntlm auth = yes
 >--ignore-non-existing</option
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6383,7 +6382,7 @@ ntlm auth = yes
               <para
 >Copia i collegamenti simbolici come collegamenti simbolici.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6403,7 +6402,7 @@ ntlm auth = yes
               <para
 >Quando si incontra un collegamento simbolico viene copiato l'elemento a cui punta al posto del collegamento stesso.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6421,7 +6420,7 @@ ntlm auth = yes
               <para
 >Trasforma solo collegamenti simbolici «non sicuri». Ciò significa che se si incontra un collegamento simbolico che punta al di fuori dell'albero copiato viene trasferito l'elemento del riferimento piuttosto che il relativo collegamento simbolico.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6449,7 +6448,7 @@ ntlm auth = yes
 >--relative</option
 > potresti avere dei risultati inattesi.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6485,7 +6484,7 @@ ntlm auth = yes
 ></ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry
 >          
@@ -6524,7 +6523,7 @@ ntlm auth = yes
 ></ulink
 > può rilevare collegamenti fissi solo se entrambe le parti del collegamento sono nella lista dei file che vengono inviati.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6546,7 +6545,7 @@ ntlm auth = yes
 >--copy-links</option
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6566,7 +6565,7 @@ ntlm auth = yes
               <para
 >Questa opzione fa sì che il lato ricevente tratti un collegamento simbolico a una cartella come se fosse una vera cartella, ma solo se corrisponde a una cartella vera e propria dal lato del mittente. Senza questa opzione, il collegamento simbolico del ricevente sarebbe stato eliminato e sostituito con una cartella reale.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6594,7 +6593,7 @@ ntlm auth = yes
               <para
 >Con questa opzione il lato ricevente imposta che i permessi di destinazione siano uguali a quelli del sorgente.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6634,7 +6633,7 @@ ntlm auth = yes
 >--super</option
 >.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6664,7 +6663,7 @@ ntlm auth = yes
 >--no-super</option
 >), solo i gruppi di cui il ricevitore è membro verranno mantenuti.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6694,7 +6693,7 @@ ntlm auth = yes
 >--super</option
 >.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6722,7 +6721,7 @@ ntlm auth = yes
 ></ulink
 > di trasferire gli orari di modifica insieme ai file e di aggiornarli sul sistema remoto.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6752,7 +6751,7 @@ ntlm auth = yes
 >--times</option
 >).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6789,7 +6788,7 @@ ntlm auth = yes
               <para
 >Comprime i file durante il trasferimento.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6847,7 +6846,7 @@ ntlm auth = yes
 ></ulink
 > di evitare di trasferire un qualsiasi file più piccolo della dimensione specificata, il ché può aiutare a non trasferire piccoli file spazzatura.</para>
               <para
->Impostazione predefinita: non selezionato; NUM: 0 Kb</para>
+>Predefinito: non selezionato; NUM: 0 Kb</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6873,7 +6872,7 @@ ntlm auth = yes
 ></ulink
 > di evitare di trasferire un qualsiasi file più grande della dimensione specificata.</para>
               <para
->Impostazione predefinita: non selezionato; NUM: 0 Kb</para>
+>Predefinito: non selezionato; NUM: 0 Kb</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6909,7 +6908,7 @@ ntlm auth = yes
 ></ulink
 > di mantenere il file parziale, in modo da rendere molto più veloce un successivo trasferimento dei file.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6939,7 +6938,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato; DIR: <filename class="directory"
+>Predefinito: non selezionato; DIR: <filename class="directory"
 >$HOME</filename
 ></para>
             </listitem>
@@ -6967,7 +6966,7 @@ ntlm auth = yes
               <para
 >Imposta la velocità massima di trasferimento in kilobyte al secondo.</para>
               <para
->Impostazione predefinita: non selezionato; RATE: 0 KiB/s</para>
+>Predefinito: non selezionato; RATE: 0 KiB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7010,7 +7009,7 @@ ntlm auth = yes
 ></ulink
 > di rimuovere dal lato di invio i file (cioè non le cartelle) che sono parte del trasferimento e che sono stati correttamente copiati sul lato ricevente.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7060,7 +7059,7 @@ ntlm auth = yes
 >--delete-excluded</option
 > o che contrassegni le regole come corrispondenti solo nel lato di invio.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7084,7 +7083,7 @@ ntlm auth = yes
 >--delete-WHEN</option
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7102,7 +7101,7 @@ ntlm auth = yes
               <para
 >Richiede che l'eliminazione dei file sul lato ricevente sia fatta dopo che il trasferimento è stato completato.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7128,7 +7127,7 @@ ntlm auth = yes
 ></ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7156,7 +7155,7 @@ ntlm auth = yes
 >--exclude</option
 >).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7176,7 +7175,7 @@ ntlm auth = yes
 >--delete</option
 > di andare avanti cancellando i file anche quando in presenza di errori di I/O.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7204,7 +7203,7 @@ ntlm auth = yes
 >--delete</option
 >).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7238,7 +7237,7 @@ ntlm auth = yes
 ></ulink
 > di non eliminare un numero di file o di cartelle maggiore di «NUM» («NUM» deve essere diverso da zero). Ciò è utile per prevenire disastri nella clonazione di alberi di grandi dimensioni.</para>
               <para
->Impostazione predefinita: non selezionato; NUM: 0</para>
+>Predefinito: non selezionato; NUM: 0</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7277,7 +7276,7 @@ ntlm auth = yes
               <para
 >È una scorciatoia utile per escludere una vasta gamma di file che spesso non si desidera trasferire tra i sistemi. Quest'opzione utilizza lo stesso algoritmo che CVS usa per determinare se un file debba essere ignorato.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7297,7 +7296,7 @@ ntlm auth = yes
 >--filter</option
 >, che per impostazione predefinita è una regola di esclusione e non consente la piena analisi delle regole della sintassi di normali regole di filtro.</para>
               <para
->Impostazione predefinita: non selezionato; PATTERN: vuoto</para>
+>Predefinito: non selezionato; PATTERN: vuoto</para>
             </listitem
 >             
           </varlistentry>
@@ -7318,7 +7317,7 @@ ntlm auth = yes
 >--exclude</option
 >, ma specifica un FILE che contiene i modelli di esclusione (uno per riga). Le righe vuote nel file e le linee che iniziano con «;» o «#» sono ignorate. Devi scegliere un file esistente per far funzionare questa opzione.</para>
               <para
->Impostazione predefinita: non selezionato; FILE: <filename
+>Predefinito: non selezionato; FILE: <filename
 >$HOME/exclude.txt</filename
 ></para>
             </listitem>
@@ -7340,7 +7339,7 @@ ntlm auth = yes
 >--filter</option
 >, che per impostazione predefinita è una regola di inclusione e non consente la piena analisi delle regole della sintassi di normali regole di filtro.</para>
               <para
->Impostazione predefinita: non selezionato; PATTERN: vuoto</para>
+>Predefinito: non selezionato; PATTERN: vuoto</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7360,7 +7359,7 @@ ntlm auth = yes
 >--include</option
 >, ma specifica un FILE che contiene i modelli di inclusione (uno per riga). Le righe vuote nel file e le linee che iniziano con «;» o «#» sono ignorate. Devi scegliere un file esistente per far funzionare questa opzione.</para>
               <para
->Impostazione predefinita: non selezionato; FILE: <filename
+>Predefinito: non selezionato; FILE: <filename
 >$HOME/include.txt</filename
 ></para>
             </listitem>
@@ -7444,7 +7443,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 > per informazioni dettagliate sul funzionamento dell'opzione.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7468,7 +7467,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 > per informazioni dettagliate sul funzionamento dell'opzione.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7507,7 +7506,7 @@ ntlm auth = yes
 >relazione tecnica</ulink
 > per i dettagli.</para>
               <para
->Impostazione predefinita: non selezionato; SIZE: 0</para>
+>Predefinito: non selezionato; SIZE: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7525,7 +7524,7 @@ ntlm auth = yes
               <para
 >Imposta il seme del codice di controllo MD4 all'intero «NUM». Questo seme del codice di controllo di 4 byte è incluso in ogni calcolo MD4 per il controllo di blocchi e file. Per impostazione predefinita il seme del codice di controllo viene generato dal server e il valore predefinito impostato all'ora corrente. Questa opzione è usata per impostare un seme specifico per il codice di controllo, utile per applicazioni che vogliano blocchi ripetibili e file di codice del controllo, o nel caso in cui l'utente desidera un seme per il codice di controllo più casuale. Nota che impostando «NUM» a 0 obbliga rsync ad utilizzare l'impostazione predefinita della funzione time() come seme per il codice di controllo.</para>
               <para
->Impostazione predefinita: non selezionato; NUM: 0</para>
+>Predefinito: non selezionato; NUM: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7545,7 +7544,7 @@ ntlm auth = yes
               <para
 >Questo forza il mittente a calcolare il codice di controllo di tutti i file regolari utilizzando checksum MD4 a 128 bit. Lo fa durante la scansione iniziale del file system, non appena crea l'elenco di tutti i file disponibili. Il ricevente controlla quindi il codice di controllo di ciascun file (se esiste e ha le stesse dimensioni della sua controparte sul lato mittente) per decidere quali file devono essere aggiornati: sia i file con una dimensione cambiata o con un codice di controllo modificato vengono selezionati per il trasferimento. Poiché questa verifica dei codici di controllo dei file interi e di tutti i file avviene su entrambi i lati della connessione in aggiunta alle verifiche automatiche dei codici di controllo durante il trasferimento di un file, questa opzione può essere molto lenta.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7597,7 +7596,7 @@ ntlm auth = yes
 ></ulink
 > considera il montaggio «legato» al dispositivo stesso piuttosto che al file system.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7619,7 +7618,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 > prima di utilizzare questa opzione.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7793,7 +7792,7 @@ ntlm auth = yes
 >elenco dei profili</link
 > sarà il profilo attivo.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -7807,7 +7806,7 @@ ntlm auth = yes
             <para
 >Usa l'assistente di migrazione dei profili quando i profili vengono rimossi, oppure ne viene abilitato o disabilitato l'uso. Questo ti permette di trasferire tutte le impostazioni che sono state salvate per un certo profilo in un altro.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -7991,7 +7990,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la barra degli strumenti di ricerca nel navigatore delle risorse di rete.</para>
+>Apri la barra degli strumenti di ricerca nel navigatore delle risorse di rete.</para>
         </listitem>
       </varlistentry
 > 
@@ -8029,7 +8028,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la <link linkend="network_neighborhood_browser_mounting"
+>Apri la <link linkend="network_neighborhood_browser_mounting"
 >finestra</link
 > per montare «manualmente» le condivisioni. Questa funzionalità può essere necessaria se &smb4k; non riesce a trovare un server sul quale montare una certa risorsa condivisa.</para>
         </listitem>
@@ -8051,7 +8050,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la <link linkend="network_neighborhood_browser_authentication"
+>Apri la <link linkend="network_neighborhood_browser_authentication"
 >finestra di autenticazione</link
 >. Puoi fornire nome utente e password per il server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa azione è disabilitata.</para>
         </listitem>
@@ -8073,7 +8072,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la finestra <link linkend="network_neighborhood_browser_defining_custom_options"
+>Apri la finestra <link linkend="network_neighborhood_browser_defining_custom_options"
 >Opzioni personalizzate</link
 >. Puoi impostare diverse opzioni personalizzate per il server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa voce di menu è disabilitata.</para>
         </listitem>
@@ -8360,7 +8359,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre il contenuto della condivisione selezionata nel gestore di file predefinito (&eg; &dolphin;).</para>
+>Apri il contenuto della condivisione selezionata nel gestore di file predefinito (&eg; &dolphin;).</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8386,7 +8385,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre l'<link linkend="bookmarks_editor"
+>Apri l'<link linkend="bookmarks_editor"
 >editor dei segnalibri</link
 >. Questa azione è disabilitata se non ci sono i segnalibri.</para>
         </listitem>
@@ -8528,7 +8527,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la finestra di configurazione</para>
+>Apri la finestra di configurazione</para>
         </listitem>
       </varlistentry>
     </variablelist>

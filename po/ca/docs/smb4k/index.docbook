@@ -11,9 +11,6 @@
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
-  <!ENTITY SMB3 "<acronym
->SMB3</acronym
->">
   <!ENTITY Samba "<application
 >Samba</application
 >">
@@ -49,16 +46,16 @@
   </authorgroup>
   <copyright>
     <year
->2005-2023</year>
+>2005-2021</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->19 de febrer de 2023</date>
+>30 de març de 2021</date>
   <releaseinfo
->&smb4k; 3.2.0</releaseinfo
+>&smb4k; 3.1.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
   <abstract>
     <para
@@ -83,7 +80,7 @@
 >Introducció</title>
 
   <para
->Aquest manual descriu el &smb4k; 3.2 i, en alguns aspectes, algunes de les versions anteriors.</para>
+>Aquest manual descriu el &smb4k; 3.1.x i, en alguns aspectes, algunes de les versions anteriors.</para>
   <para
 >El &smb4k; és un explorador avançat del veïnatge de xarxa i utilitat de muntatge de les comparticions <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -96,7 +93,7 @@
 ></listitem>
     <listitem
 ><para
->Implementació dels sistemes de fitxers &CIFS; i &SMB3; al &Linux;, així com el sistema de fitxers SMBFS al BSD</para
+>Implementació del sistema de fitxers &CIFS; (&Linux;) i SMBFS (BSD)</para
 ></listitem>
     <listitem
 ><para
@@ -160,7 +157,7 @@
 ></listitem>
     <listitem
 ><para
->La capacitat per a definir configuracions personalitzades individuals per a servidors i comparticions</para
+>La capacitat per a definir opcions personalitzades individuals per a servidors i comparticions</para
 ></listitem>
     <listitem
 ><para
@@ -222,9 +219,35 @@
 > per a una millor integració amb l'escriptori. Es pot afegir com un giny per a l'escriptori o el plafó.</para>
 
     <para
->Si el &smb4k; troba un problema en iniciar o en executar-se, es notificarà a l'usuari. Per a la solució d'alguns problemes habituals, vegeu la secció <link linkend="trouble_shooting"
->Resolució de problemes</link
->.</para>
+>Si el sistema no troba algun dels programes que el &smb4k; necessita per a funcionar adequadament, aquest ho notificarà a l'usuari:</para>
+    
+    <screenshot id="notification_missing_program">
+      <screeninfo
+>Captura de pantalla de la notificació del programa que falta</screeninfo>
+      <mediaobject>
+        <imageobject
+><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
+        <textobject
+><phrase
+>La notificació del programa que falta</phrase
+></textobject>
+      </mediaobject>
+    </screenshot>
+    
+    <para
+>En aquest cas, instal·leu el programa especificat o, si ja hi és, afegiu la seva ubicació amb la variable d'entorn <envar
+>PATH</envar
+> al vostre fitxer de configuració de l'intèrpret d'ordres (per al <ulink url="man:/bash"
+><citerefentry
+><refentrytitle
+>bash</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> aquest és el fitxer <filename
+>~/.bashrc</filename
+>).</para>
   </sect1>
 
 <!-- 
@@ -272,13 +295,13 @@
 >Comparticions muntades</guilabel
 > es ressaltarà per uns quants segons.</para>
     <para
->La finestra principal és altament configurable. Podeu ocultar o mostrar tots els ginys amb pestanyes a través d'<menuchoice
+>La finestra principal és altament configurable. Podeu ocultar o mostrar tots els ginys amb pestanyes (<menuchoice
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
 >Acobla els ginys</guimenuitem
 ></menuchoice
->. També es poden arrossegar amb el ratolí i acoblar a diferents àrees de la finestra principal. Fins i tot podeu desacoblar-los de la finestra principal. La barra d'estat i les barres d'eines es poden ocultar o mostrar alternant les entrades de menú <menuchoice
+>). També es poden arrossegar amb el ratolí i acoblar a diferents àrees de la finestra principal. Fins i tot podeu desacoblar-los de la finestra principal. La barra d'estat i les barres d'eines es poden ocultar o mostrar alternant les entrades de menú <menuchoice
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
@@ -302,9 +325,9 @@
 >L'explorador del veïnatge de xarxa</title>
 
     <para
->L'explorador del <guilabel
+>La interacció amb el veïnatge de xarxa es realitza amb l'explorador del <guilabel
 >Veïnatge de xarxa</guilabel
-> conté tots els elements de la xarxa -&ead;, grups de treball, servidors i comparticions- que el &smb4k; ha pogut trobar. S'organitzen en un arbre de la xarxa, i podeu navegar a través d'ell fent clic al control al costat del nom de l'element o executant l'element mateix.</para>
+>. Conté tots els elements de la xarxa -&ead;, grups de treball, servidors i comparticions- que el &smb4k; ha pogut trobar. S'organitzen en un arbre de la xarxa, i podeu navegar a través d'ell fent clic al control al costat del nom de l'element o executant l'element mateix.</para>
     <para
 >En l'arbre de la xarxa, l'explorador mestre en cada grup de treball o domini ressaltarà el tipus de lletra en un color blau, si l'ha detectat (&pex;, quan s'utilitza DNS-SD, no es reconeix l'explorador mestre d'un domini de &Windows;). Les comparticions muntades estaran marcades amb la icona de la carpeta respectiva i un tipus de lletra en cursiva.</para>
 
@@ -349,17 +372,11 @@
 >Avahi</ulink
 > i no un domini real de &Windows;. En obrir un element de domini o grup de treball, es mostraran els servidors que li pertanyen. Si voleu accedir als recursos compartits d'un dels servidors, haureu d'obrir el servidor desitjat.</para>
       <para
->També hi ha la possibilitat de despertar els servidors en suspensió abans d'escanejar el veïnatge de xarxa (activació per LAN «Wake-On-LAN»). Si aquesta característica està habilitada, el &smb4k; envia un paquet màgic a cada servidor que s'ha de despertar i espera el temps definit fins que comença la cerca dels grups de treball i dominis. L'ajust de l'activació per LAN (Wake-On-LAN) pot activar-se en el <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>També hi ha la possibilitat de despertar els servidors en suspensió abans d'escanejar el veïnatge de xarxa (activació per LAN «Wake-On-LAN»). Si aquesta característica està habilitada, el &smb4k; envia un paquet màgic a cada servidor que s'ha de despertar i espera el temps definit fins que comença la cerca dels grups de treball i dominis. L'ajust de l'activació per LAN (Wake-On-LAN) pot activar-se en el <link linkend="configuration_page_network_wake_on_lan_settings"
 >diàleg de configuració</link
->. Els servidors que s'han de despertar s'han de definir al diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
->Configuració personalitzada</link
-> editor.</para>
-      <note>
-        <para
->Si esteu utilitzant el descobriment de serveis DNS i el dimoni Zeroconf (Avahi) no s'està executant, el &smb4k; mostrarà una notificació d'error. Vegeu la secció <link linkend="trouble_shooting_zeroconf"
->Resolució de problemes</link
-> per als detalls.</para>
-      </note>
+>. Els servidors que s'han de despertar s'han de definir al diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
+>Opcions personalitzades</link
+>.</para>
     </sect2>
     
 <!--
@@ -403,7 +420,7 @@
 >Cerca</guibutton
 >. El &smb4k; començarà a cercar tot el veïnatge de xarxa. Quan es finalitzi la cerca, es ressaltaran totes les comparticions que coincideixin amb el terme de cerca (seleccionades). Si voleu fer quelcom amb <emphasis
 >totes</emphasis
-> les comparticions descobertes (&pex;, muntar o previsualitzar), podeu fer-ho ara. En cas contrari, podeu utilitzar els botons <guibutton
+> les comparticions descobertes (&pex;, muntar o previsualitzar), podeu fer-ho immediatament ara. En cas contrari, podeu utilitzar els botons <guibutton
 >Amunt</guibutton
 > i <guibutton
 >Avall</guibutton
@@ -461,7 +478,9 @@
           </term>
           <listitem>
             <para
->Interromp qualsevol procés en execució de l'explorador del veïnatge de xarxa. Aquesta acció és invisible de manera predeterminada i només serà visible quan hi ha en funcionament un escaneig de la xarxa.</para>
+>Interromp qualsevol procés en execució de l'explorador del veïnatge de xarxa. Aquesta acció és invisible de manera predeterminada i només serà visible (en lloc de l'acció <guimenuitem
+>Escaneja la xarxa|el grup de treball|l'ordinador</guimenuitem
+>) quan hi ha en funcionament un escaneig de la xarxa.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -479,9 +498,7 @@
           </term>
           <listitem>
             <para
-><link linkend="network_neighborhood_browser_searching"
->Cerca al veïnatge de xarxa</link
-> un terme especificat. Si activeu aquesta acció, s'obrirà la barra d'eines de cerca a on podreu introduir el terme de cerca i iniciar-la.</para>
+>Cerca al veïnatge de xarxa per a un terme especificat. Si activeu aquesta acció, s'obrirà la barra d'eines de cerca a on podreu introduir el terme de cerca i iniciar-la.</para>
           </listitem>
         </varlistentry
 >        
@@ -500,29 +517,11 @@
           </term>
           <listitem>
             <para
-><link linkend="bookmarks_adding"
->Afegeix una adreça d'interès</link
-> a les comparticions remotes seleccionades. Aquesta acció s'inhabilitarà si no hi ha cap compartició seleccionada.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem>
+>Afegeix una adreça d'interès per a la compartició remota seleccionada. Aquesta acció s'inhabilitarà si no se selecciona cap compartició.</para>
             <para
->Obre el diàleg <link linkend="custom_settings"
->Configuracions personalitzades</link
-> a on podeu establir diversos paràmetres personalitzats per a cada servidor i compartició seleccionada. Si no s'ha seleccionat cap element ni cap grup de treball, aquesta acció estarà inhabilitada.</para>
+>Per a més detalls, llegiu la secció <link linkend="bookmarks_adding"
+>Afegir adreces d'interès</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -562,7 +561,27 @@
             <para
 >Obre el <link linkend="network_neighborhood_browser_authentication"
 >diàleg d'autenticació</link
-> a on es pot proporcionar el nom d'usuari i la contrasenya per a cada servidor i compartició seleccionada. Si no s'ha seleccionat cap element ni cap grup de treball, aquesta acció estarà inhabilitada.</para>
+>. Pot proporcionar el nom d'usuari i la contrasenya per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o si heu seleccionat un grup de treball, aquesta acció estarà inhabilitada.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Opcions personalitzades</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
+>Opcions personalitzades</link
+>. Podeu establir diverses opcions personalitzades per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o un grup de treball, aquesta acció estarà inhabilitada.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -582,7 +601,7 @@
             <para
 >Ofereix una <link linkend="network_neighborhood_browser_previewing"
 >vista prèvia</link
-> del contingut de les comparticions remotes seleccionades. Aquesta acció només s'habilita si s'han seleccionat comparticions. Les impressores compartides no es poden previsualitzar.</para>
+> del contingut de la compartició remota seleccionada. Aquesta acció només s'habilita si se selecciona una compartició. Les impressores compartides no es poden previsualitzar.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -602,7 +621,7 @@
             <para
 ><link linkend="network_neighborhood_browser_printing"
 >Imprimeix</link
-> un fitxer en una impressora remota. Aquesta funció només està disponible si s'ha seleccionat com a mínim una impressora compartida.</para>
+> un fitxer en una impressora remota. Aquesta funció només està disponible si s'ha seleccionat una impressora compartida.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -620,7 +639,9 @@
           </term>
           <listitem>
             <para
->Munta les comparticions remotes seleccionades. Aquesta acció és visible només si s'han seleccionat comparticions que encara no estan muntades. De manera predeterminada, i si heu seleccionat quelcom diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada.</para>
+>Munta la compartició remota seleccionada. De manera predeterminada, i si heu fet clic en res diferent d'una compartició amb el tipus «Disc» o «IPC», aquesta acció estarà inhabilitada. Si heu seleccionat una compartició muntada, aquesta acció serà substituïda per l'acció <guimenuitem
+>Desmunta</guimenuitem
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -638,15 +659,15 @@
           </term>
           <listitem>
             <para
->Desmunta les comparticions seleccionades. De manera predeterminada, aquesta acció és invisible, i només serà visible en lloc de l'acció <guimenuitem
+>Desmunta la compartició seleccionada. De manera predeterminada, aquesta acció és invisible i només serà visible en lloc de l'acció <guimenuitem
 >Munta</guimenuitem
-> quan al menys una compartició muntada estigui seleccionada.</para>
+> quan la compartició ja es trobi muntada.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->A l'explorador del veïnatge de xarxa podeu fer un clic dret per obrir el menú emergent per accedir a totes les accions disponibles. Depenent de la posició on heu fet clic (sobre un element de xarxa o a l'àrea de visualització), algunes podrien estar inhabilitades. La captura de pantalla següent mostra el menú emergent obert en una compartició remota.</para>
+>Encara podreu interactuar amb el veïnatge de xarxa utilitzant les dreceres de teclat esmentades anteriorment, en la majoria dels casos és més còmode utilitzar el ratolí. Fent clic dret obrireu un menú emergent. Aquest contindrà totes les accions que estan disponibles en l'explorador del veïnatge de xarxa. Depenent de la posició on heu fet clic (sobre un element de xarxa o a l'àrea de visualització), algunes podrien estar inhabilitades. La següent captura de pantalla mostra el menú emergent obert sobre una compartició remota.</para>
 
       <screenshot>
         <screeninfo
@@ -672,7 +693,7 @@
 >Consells d'eines</title>
 
       <para
->Per a cada element de xarxa es proporciona un consell d'eina que conté informació diversa com el nom del grup de treball i l'explorador mestre (si és disponible), el nom i l'adreça IP del servidor, el nom de la compartició, &etc;</para>
+>Per a cada element de xarxa es proporciona un consell d'eina que conté informació diversa com el nom del grup de treball i l'explorador mestre, el nom i l'adreça IP del servidor, el nom de la compartició, &etc;</para>
       <para
 >Els consells d'eina es poden inhabilitar en el <link linkend="configuration_page_user_interface_network"
 >diàleg de configuració</link
@@ -685,7 +706,7 @@
 
     <sect2 id="network_neighborhood_browser_mounting">
       <title
->Muntar comparticions</title>
+>Muntar una compartició</title>
 
       <para
 >Hi ha tres opcions disponibles per a muntar una compartició remota:</para>
@@ -697,7 +718,7 @@
 ></listitem>
         <listitem
 ><para
->Seleccioneu les comparticions remotes i feu clic sobre l'entrada de menú <guimenuitem
+>Seleccioneu la compartició remota i feu clic sobre l'entrada de menú <guimenuitem
 >Munta</guimenuitem
 >. De manera alternativa, també podeu prémer la drecera de teclat <keycombo action="simul"
 >&Ctrl; <keycap
@@ -707,7 +728,7 @@
 ></listitem>
         <listitem
 ><para
->Premeu l'entrada de menú <menuchoice
+>Si el &smb4k; no ha pogut trobar el servidor on es troba la compartició, podeu prémer l'entrada de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -738,7 +759,7 @@
 > o <programlisting
 >\\[USUARI@]SERVIDOR\COMPARTICIÓ</programlisting
 > o com un URL en la forma <programlisting
->[smb:]//[usuari@]servidor[:port]/compartició</programlisting
+>[smb:]//[usuari@]servidor:port/compartició</programlisting
 > S'habilitarà el botó <guibutton
 >D'acord</guibutton
 > i el podreu prémer per a muntar la compartició. No obstant això, també és aconsellable introduir l'adreça IP i el grup de treball del servidor. Si voleu afegir alhora la compartició a les adreces d'interès, feu clic al botó <guibutton
@@ -896,7 +917,7 @@
         </mediaobject>
       </screenshot>
       <para
->Si ja s'ha proporcionat un nom d'usuari, es mostrarà en el seu camp respectiu. Si és incorrecte o no es va proporcionar el nom d'usuari, n'haureu d'introduir un. La contrasenya, però, es pot deixar en blanc. Fent clic al botó <guibutton
+>Si ja s'ha proporcionat un nom d'usuari, es mostrarà sota el seu camp respectiu. Si és incorrecte o no es va proporcionar el nom d'usuari, n'haureu d'introduir un. La contrasenya, però, es pot deixar en blanc. Fent clic al botó <guibutton
 >D'acord</guibutton
 > cometreu les dades. Depenent de la vostra elecció en el <link linkend="configuration_page_authentication"
 >diàleg de configuració</link
@@ -904,17 +925,37 @@
 >cada vegada</emphasis
 > que sigui necessari.</para>
     </sect2>
-    
+
 <!-- 
-      Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
   -->
 
-    <sect2 id="network_neighborhood_browser_defining_custom_settings">
+    <sect2 id="network_neighborhood_browser_defining_custom_options">
       <title
->Definir una configuració personalitzada</title>
-      
+>Definir les opcions personalitzades</title>
+
       <para
->Es pot definir una configuració personalitzada per a servidors individuals o comparticions que es desvien de la configuració global. Per fer-ho, podeu accedir a l'editor de configuració personalitzada fent clic a l'element de menú <menuchoice
+>Utilitzeu el diàleg <guilabel
+>Opcions personalitzades</guilabel
+> si voleu</para>
+      <itemizedlist>
+        <listitem
+><para
+>definir les opcions de configuració personalitzades de muntatge o de l'explorador per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
+></listitem>
+        <listitem
+><para
+>definir un servidor que s'haurà d'activar abans de fer els escanejos de la xarxa o dels intents de muntatge (característica Wake-On-LAN, vegeu <link linkend="configuration_page_network_wake_on_lan_settings"
+>aquí</link
+>),</para
+></listitem>
+        <listitem
+><para
+>muntar sempre una compartició en particular a l'inici o quan es carregui el perfil corresponent.</para
+></listitem>
+      </itemizedlist>
+      <para
+>El diàleg s'obre fent clic sobre l'entrada de menú <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -922,11 +963,84 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
+>Opcions personalitzades</guimenuitem
 ></menuchoice
->. Vegeu la secció <link linkend="custom_settings"
->Configuració personalitzada</link
-> per a més detalls.</para>
+>. Depenent de la vostra selecció, les opcions de configuració s'aplicaran a totes les comparticions d'un servidor o només a una.</para>
+
+      <screenshot>
+        <screeninfo
+>Captura de pantalla del diàleg «Opcions personalitzades» per a una compartició</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>El diàleg «Opcions personalitzades»</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>El botó <guibutton
+>Per omissió</guibutton
+> estarà habilitat si les entrades del diàleg es desvien de les opcions de configuració que heu definit al diàleg de configuració. En fer-hi clic, restablireu les entrades del diàleg als valors predeterminats. El botó <guibutton
+>D'acord</guibutton
+> estarà habilitat si heu canviat la configuració al diàleg. En fer-ho, s'entregaran les opcions de configuració personalitzades i es tancarà el diàleg.</para>
+      <note
+><para
+>A BSD, el diàleg conté menys entrades que si executeu un sistema operatiu diferent, ja que algunes d'aquestes opcions no estan admeses.</para
+></note>
+
+      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
+        <title
+>Configuració comuna del muntatge (només al &Linux;)</title>
+        
+        <para
+>En aquesta pestanya podreu definir les opcions de configuració comunes relacionades amb el muntatge. En marcar el botó <guibutton
+>Torna a muntar sempre aquesta compartició</guibutton
+> per a una compartició seleccionada, es tornarà a muntar en cada inici del programa. Per a obtenir informació sobre totes les altres opcions de configuració, vegeu <link linkend="configuration_page_mounting"
+>aquesta secció</link
+>.</para>
+      </sect3>
+      
+      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
+        <title
+>Configuració avançada del muntatge (només al &Linux;)</title>
+        
+        <para
+>En aquesta pestanya podreu definir les opcions de configuració avançades relacionades amb el muntatge. Per a obtenir informació sobre totes les altres opcions de configuració, vegeu <link linkend="configuration_page_mounting"
+>aquesta secció</link
+>.</para>
+      </sect3>
+      
+      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
+        <title
+>Configuració del muntatge (només al BSD)</title>
+        
+        <para
+>En aquesta pestanya podreu definir les opcions de configuració relacionades amb el muntatge. Per a obtenir informació sobre totes les altres opcions de configuració, vegeu <link linkend="configuration_page_mounting"
+>aquesta pàgina</link
+>.</para>
+      </sect3>
+        
+      <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
+        <title
+>Configuració de la navegació</title>
+
+        <para
+>Podeu definir les versions mínima i màxima del protocol SMB (si la biblioteca client de &Samba; ho admet), així com el port SMB que s'emprarà. A més, podreu decidir el port SMB i si s'ha d'emprar el Kerberos per a l'autenticació. Per a més informació sobre aquestes opcions de configuració, vegeu <link linkend="configuration_page_network"
+>la pàgina de configuració de la xarxa</link
+>.</para>
+      </sect3>
+
+      <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
+        <title
+>Configuració de l'activació per LAN (Wake-On-LAN)</title>
+    
+        <para
+>Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el &smb4k; hauria d'enviar un paquet màgic Wake-On-LAN al servidor seleccionat abans d'examinar el veïnatge de xarxa i/o una de les seves comparticions muntades.</para>
+      </sect3>
     </sect2>
 
 <!-- 
@@ -1009,13 +1123,13 @@
       <para
 >Podeu canviar entre les dues vistes si seleccioneu l'entrada adequada al submenú <guimenuitem
 >Modes de vista</guimenuitem
-> de la barra d'eines, a la barra de menús <link linkend="mainwindow_overview"
+> des del menú <link linkend="mainwindow_overview"
 ><guimenu
->Comparticions</guimenu
+>Vista de les comparticions</guimenu
 ></link
-> o en el <link linkend="shares_view_actions_popup_menu"
+> de la finestra principal o al <link linkend="shares_view_actions_popup_menu"
 >menú emergent</link
-> de la vista de comparticions.</para>
+> de la vista de les comparticions.</para>
       <para
 >De manera predeterminada, només es mostraran les muntades pròpies. Tanmateix, podeu ajustar el &smb4k; perquè mostri totes les muntades amb les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració respectives</link
@@ -1089,7 +1203,7 @@
           </term>
           <listitem>
             <para
->Desmunta les comparticions seleccionades. Si no hi ha seleccionada cap compartició a la vista de comparticions, aquest botó estarà inhabilitat.</para>
+>Desmunteu una o múltiples comparticions seleccionades. Si no hi ha seleccionada cap compartició a la vista de comparticions, aquest botó estarà inhabilitat.</para>
             <para
 >Per a més detalls, llegiu la secció <link linkend="shares_view_unmounting"
 >Desmuntar les comparticions</link
@@ -1133,31 +1247,11 @@
           </term>
           <listitem>
             <para
->Afegeix adreces d'interès per a les comparticions seleccionades. Aquesta acció s'inhabilitarà si no se selecciona cap compartició.</para>
+>Afegeix adreces d'interès per a les comparticions muntades que estan seleccionades. Aquesta acció s'inhabilitarà si no se selecciona cap compartició.</para>
             <para
 >Per a més detalls, llegiu la secció <link linkend="bookmarks_adding"
 >Afegir adreces d'interès</link
 >.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem>
-            <para
->Obre el diàleg de configuració personalitzada. Vegeu la secció quant al diàleg de l'editor de <link linkend="network_neighborhood_browser_defining_custom_settings"
->Configuració personalitzada</link
-> per a més detalls.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1272,27 +1366,13 @@
 >Comparticions inaccessibles</title>
 
       <para
->El &smb4k; comprova periòdicament totes les comparticions muntades per a veure si encara són accessibles. Si troba que una compartició és inaccessible, la marcarà amb un símbol de cadenat i ja no la podreu obrir ni sincronitzar. Encara serà possible desmuntar i afegir una adreça d'interès.</para>
+>El &smb4k; comprova periòdicament totes les comparticions muntades per a veure si encara són accessibles. Si troba que una compartició és inaccessible, la marcarà amb una <link linkend="shares_view_icons"
+>icona de carpeta bloquejada</link
+> i ja no la podreu obrir ni sincronitzar. Encara serà possible desmuntar i afegir una adreça d'interès.</para>
       <note
 ><para
 >El programa es pot congelar durant un curt període de temps a causa d'una compartició inaccessible. Després es recuperarà.</para
 ></note>
-    </sect2>
-    
-<!--
-      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
-  -->
-    
-    <sect2 id="shares_view_foreign_shares">
-      <title
->Comparticions que són propietat d'altres usuaris</title>
-      
-      <para
->Només es mostraran les comparticions que són propietat d'un altre usuari si heu ajustat les <link linkend="configuration_page_mounting_basic_settings_behavior"
->opcions de configuració</link
-> per a mostrar-les. A la configuració predeterminada, no tindreu permís per a desmuntar aquestes comparticions, però també podeu <link linkend="configuration_page_mounting_basic_settings_behavior"
->canviar aquest comportament</link
->.</para>
     </sect2>
 
 <!-- 
@@ -1304,7 +1384,38 @@
 >Icones</title>
 
       <para
->Una compartició muntada s'indica amb un petit símbol corresponent a la cantonada inferior de la icona de la carpeta. Això canvia a un cadenat a les comparticions que no són accessibles. Per a les comparticions que pertanyen a un altre usuari, se substitueix per un signe d'avís.</para>
+>Es poden presentar a l'usuari tres icones diferents:</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla de les tres icones</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="shares_view_icons.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>Tres icones diferents</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+      <itemizedlist>
+        <listitem
+><para
+>La icona de l'esquerra indica que aquesta compartició no és accessible. El &smb4k; no permetrà obrir-la ni sincronitzar-la. Només podreu desmuntar-la o afegir-hi una adreça d'interès.</para
+></listitem>
+        <listitem
+><para
+>La icona central indica que la compartició es troba en línia, accessible i de propietat. Podeu realitzar sobre seu totes les accions disponibles.</para
+></listitem>
+        <listitem
+><para
+>Totes les comparticions marcades amb un signe d'avís, com el que es troba a la dreta, són propietat d'un altre usuari. Només es mostraran si heu ajustat les <link linkend="configuration_page_mounting_basic_settings_behavior"
+>opcions de configuració</link
+> per a mostrar-les. A la configuració predeterminada, no tindreu permís per a desmuntar aquestes comparticions, però també podeu <link linkend="configuration_page_mounting_basic_settings_behavior"
+>canviar aquest comportament</link
+>.</para
+></listitem>
+      </itemizedlist>
     </sect2>
 
 <!-- 
@@ -1347,7 +1458,7 @@
 >Desmuntar les comparticions</title>
 
       <para
->Es poden desmuntar una o múltiples comparticions seleccionades fent clic a l'acció <menuchoice
+>Es poden desmuntar una o múltiples comparticions seleccionades fent clic al botó de l'acció <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl;<keycap
@@ -1357,15 +1468,32 @@
 ><guimenuitem
 >Desmunta</guimenuitem
 ></menuchoice
-> o prement la seva drecera de teclat. De manera predeterminada, la possibilitat de desmuntar una compartició està restringida a les que són propietat vostra. Aquest comportament es pot modificar al <link linkend="configuration_page_mounting_basic_settings_behavior"
+> o prement la drecera del teclat. De manera predeterminada, la possibilitat de desmuntar una compartició està restringida a les que són propietat vostra. Aquest comportament es pot modificar al <link linkend="configuration_page_mounting_basic_settings_behavior"
 >diàleg de configuració</link
->. Si heu habilitat el desmuntatge de les comparticions que són propietat d'altres usuaris, se us mostrarà un diàleg d'avís abans del desmuntatge real. Si continueu, la compartició es desmuntarà definitivament. Per tant, penseu-ho dues vegades abans de decidir desmuntar aquestes comparticions!</para>
+>. Si heu habilitat el desmuntatge de les comparticions que són propietat d'altres usuaris, se us mostrarà un diàleg d'avís abans del desmuntatge real:</para>
+      <screenshot>
+        <screeninfo
+>Captura de pantalla del diàleg d'avís que es mostra quan es desmunta una compartició aliena</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>El diàleg d'avís que es mostra quan es desmunten comparticions alienes</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+      <para
+>Si feu clic al botó <guibutton
+>Sí</guibutton
+>, la compartició serà definitivament desmuntada. Per tant, penseu-vos-ho dues vegades abans de decidir desmuntar les comparticions que són propietat d'altres usuaris!</para>
       <para
 >El &smb4k; també proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració</link
-> al diàleg de configuració. El &smb4k; realitzarà un <ulink url="man:/umount(8)"
->desmuntatge fluix</ulink
-> de les comparticions inaccessibles.</para>
+> al diàleg de configuració. El &smb4k; realitzarà un <ulink url="man:/umount"
+>desmuntatge lent</ulink
+> sobre les comparticions inaccessibles.</para>
       <para
 >Es poden desmuntar totes les comparticions alhora fent clic al botó de l'acció <menuchoice
 ><shortcut
@@ -1381,31 +1509,7 @@
       <para
 >Després d'un procés de desmuntatge amb èxit, se li notificarà a l'usuari. Si es produeix un error durant el desmuntatge, es mostrarà una notificació amb el missatge d'error retornat.</para>
     </sect2>
-    
-<!--
-      Using Smb4K : The Mounted Shares View : Defining Custom Settings
-  -->
-    
-    <sect2 id="shares_view_adding_custom_settings">
-      <title
->Definir una configuració personalitzada</title>
-      
-      <para
->Es poden definir una configuració personalitzada per a les comparticions seleccionades. Feu clic a l'acció <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-><guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
-></menuchoice
-> per a obrir el diàleg de configuració personalitzada. Per a més detalls, vegeu <link linkend="custom_settings"
->aquí</link
->.</para>
-    </sect2>
-    
+
 <!-- 
       Using Smb4K : The Mounted Shares View : Synchronization 
   -->
@@ -1446,7 +1550,9 @@
       <para
 >En fer clic al botó <guibutton
 >Sincronitza</guibutton
->, s'iniciarà la sincronització i es mostrarà un diàleg de progrés amb els detalls sobre la transferència.</para>
+>, s'iniciarà la sincronització. En fer clic al botó <guibutton
+>Notificacions</guibutton
+> a la safata del sistema, s'obrirà un diàleg de progrés mostrant els detalls sobre la transferència.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla del diàleg de progrés de la sincronització</screeninfo>
@@ -1464,6 +1570,15 @@
 >Es pot cancel·lar la sincronització en qualsevol moment prement el botó <guibutton
 >Atura</guibutton
 > que hi ha a la dreta de la barra de progrés.</para>
+            
+      <note>
+        <para
+>El nombre total de fitxers que es mostra al diàleg de progrés correspon al nombre de fitxers presents a la compartició i no necessàriament al nombre total de fitxers que es transferiran.</para>
+        <para
+>El progrés es calcula a partir del nombre de fitxers transferits dividit pel nombre total de fitxers presents en la compartició. La seva mida no es considerarà. Això vol dir que un fitxer molt gran serà afegit al progrés així com a un molt petit. A més, a causa de la manera com el <application
+>rsync</application
+> mostra el progrés de la transferència, la barra de progrés només s'actualitzarà una vegada finalitzada la transferència d'un altre fitxer.</para>
+      </note>
     </sect2>
 
 <!-- 
@@ -1554,7 +1669,7 @@
       </screenshot>
 
       <para
->Podeu minimitzar o restaurar la finestra principal fent un clic esquerre a la icona d'estat. Amb un clic dret apareixerà un menú emergent que contindrà diversos elements de menú que permeten treballar amb les comparticions muntades, gestionar o muntar les adreces d'interès, seleccionar el perfil que voleu utilitzar i configurar el &smb4k; sense obrir la finestra principal.</para>
+>Fent clic esquerre a la icona d'estat, podeu minimitzar o restaurar la finestra principal. Amb un clic dret apareixerà un menú emergent que contindrà diversos elements de menú que permeten treballar amb les comparticions muntades, gestionar o muntar les adreces d'interès, seleccionar el perfil que voleu utilitzar i configurar el &smb4k; sense obrir la finestra principal.</para>
     </sect2>
 
 <!-- 
@@ -1632,20 +1747,6 @@
         </varlistentry>
         <varlistentry>
           <term>
-            <menuchoice>
-              <guimenuitem
->Afegeix una configuració personalitzada</guimenuitem>
-            </menuchoice>
-          </term>
-          <listitem>
-            <para
->Obre el diàleg de configuració personalitzada per a la compartició seleccionada. Llegiu la secció quant a l'editor <link linkend="network_neighborhood_browser_defining_custom_settings"
->Configuració personalitzada</link
-> per a més informació.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
             <menuchoice
 ><guimenuitem
 >Sincronitza</guimenuitem
@@ -1653,10 +1754,10 @@
           </term>
           <listitem>
             <para
->Sincronitza la compartició muntada amb una còpia local o viceversa. Per a més informació, llegiu les seccions sobre les <link linkend="shares_view_actions_popup_menu"
->accions i menú emergent</link
-> de les vistes de comparticions i la <link linkend="shares_view_synchronization"
->sincronització</link
+>Sincronitza la compartició muntada amb una còpia local o viceversa. Per a més informació, llegiu <link linkend="shares_view_actions_popup_menu"
+>aquesta pàgina</link
+> i <link linkend="shares_view_synchronization"
+>també aquesta altra</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1717,8 +1818,8 @@
       <para
 >Al menú <guimenuitem
 >Perfils</guimenuitem
->, es llisten tots els <link linkend="profiles"
->perfils</link
+>, es llisten tots els perfils <link linkend="profiles"
+>definits</link
 >:</para>
 
       <screenshot>
@@ -1737,7 +1838,7 @@
       <para
 >Podeu activar un perfil fent-hi clic. Els perfils es poden <link linkend="profiles"
 >gestionar</link
-> en el <link linkend="configuration_page_profiles"
+> mitjançant el <link linkend="configuration_page_profiles"
 >diàleg de configuració</link
 >.</para>
       <para
@@ -1755,7 +1856,7 @@
             <para
 >Obre el <link linkend="network_neighborhood_browser_mounting"
 >diàleg</link
-> per a muntar comparticions manualment proporcionant l'URL, l'adreça IP i el domini o grup de treball.</para>
+> per a muntatges «manuals».</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1767,8 +1868,8 @@
           </term>
           <listitem>
             <para
->Obre el diàleg de configuració. Vegeu la secció de <link linkend="configuration"
->la configuració</link
+>Obre el diàleg de configuració. Vegeu <link linkend="configuration"
+>la secció de la configuració</link
 > per a una llista completa de les opcions de configuració disponibles.</para>
           </listitem>
         </varlistentry>
@@ -1871,17 +1972,17 @@
     </screenshot>
 
     <para
->En fer clic a una entrada, entrareu al nivell inferior (&pex;, fent clic sobre un grup de treball o un element de domini, es mostrarà una llista de tots els servidors que hi pertanyen), muntant la compartició seleccionada o invocant el diàleg d'impressió. Per a pujar un nivell, haureu de fer clic al botó <guibutton
+>En fer clic a una entrada, entrareu al nivell de sota (&pex;, fent clic sobre un grup de treball o un element de domini, es mostrarà una llista de tots els servidors que hi pertanyen), muntant la compartició seleccionada o invocant el diàleg d'impressió. Per a pujar un nivell, haureu de fer clic al botó <guibutton
 >Amunt</guibutton
 > que hi ha a la barra d'eines.</para>
     <para
->Per als servidors i les comparticions, a la dreta del nom de l'element de xarxa hi ha alguns botons d'acció. Per als servidors, hi ha un botó amb el qual obrireu el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
->Configuració personalitzada</link
+>Per als servidors i les comparticions, a la dreta del nom de la xarxa hi ha alguns botons d'acció. Per als servidors, hi ha un botó amb el qual obrireu el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
+>Opcions personalitzades</link
 >. Per a les comparticions, hi ha botons addicionals per a <link linkend="network_neighborhood_browser_previewing"
 >previsualitzar el contingut de la compartició seleccionada</link
 > i per a <link linkend="bookmarks_adding"
 >afegir-la a les adreces d'interès</link
->. De manera predeterminada, els botons d'acció són transparents i canvien a opacs quan moveu el ratolí per sobre seu. En fer clic esquerre, iniciareu l'acció triada.</para>
+>, respectivament. De manera predeterminada, els botons d'acció són transparents i canvien a opacs quan moveu el ratolí per sobre seu. En fer clic esquerre, iniciareu l'acció triada.</para>
     <para
 >A més del botó <guibutton
 >Amunt</guibutton
@@ -1892,7 +1993,7 @@
 > i <guibutton
 >Munta</guibutton
 >. Amb aquestes, podreu tornar a escanejar, cancel·lar qualsevol acció en execució o obrir el <link linkend="network_neighborhood_browser_mounting"
->diàleg de muntatge</link
+>diàleg per als muntatges «manuals»</link
 >.</para>
   </sect2>
 
@@ -1923,7 +2024,7 @@
     </screenshot>
 
     <para
->A la dreta de cada entrada, es disposen tres botons d'acció. El primer és per a <link linkend="bookmarks_adding"
+>A la dreta del nom de la compartició i el seu servidor, s'organitzen tres botons d'acció. El primer és per a <link linkend="bookmarks_adding"
 >afegir una adreça d'interès</link
 >, el segon és per a la <link linkend="shares_view_synchronization"
 >sincronització</link
@@ -1947,7 +2048,7 @@
     <para
 >A la pàgina <guilabel
 >Adreces d'interès</guilabel
-> es llisten les adreces d'interès.</para>
+>, es llisten els grups d'adreces d'interès i les adreces d'interès definides per al perfil actualment actiu.</para>
     
     <screenshot>
       <screeninfo
@@ -1963,11 +2064,13 @@
     </screenshot>
 
     <para
->Les comparticions marcades com a adreces d'interès es poden muntar fent clic amb el botó esquerre a l'adreça respectiva. Per a editar o eliminar les adreces d'interès, premeu el botó d'acció <guibutton
+>Les comparticions marcades es poden muntar fent clic esquerre sobre l'adreça d'interès respectiva. Els grups d'adreces d'interès es poden manejar de la mateixa manera.</para>
+    <para
+>Per a editar o eliminar les adreces d'interès, premeu el botó d'acció <guibutton
 >Edita</guibutton
 > que hi ha a la barra d'eines per a obrir l'<link linkend="bookmarks_editor"
 >Editor de les adreces d'interès</link
->. Per a tornar al nivell superior des d'una carpeta de categories, s'utilitza el botó <guibutton
+>. Per a tornar al nivell superior, s'utilitza el botó <guibutton
 >Enrere</guibutton
 >.</para>
   </sect2>
@@ -2001,9 +2104,11 @@
     </screenshot>
   
     <para
->Podeu activar un perfil concret fent-hi clic. Tots els perfils es poden <link linkend="profiles"
+>Podeu activar un determinat perfil fent-hi clic.</para>
+    <para
+>Els perfils es poden <link linkend="profiles"
 >gestionar</link
-> en el <link linkend="configuration_page_profiles"
+> mitjançant el <link linkend="configuration_page_profiles"
 >diàleg de configuració</link
 >.</para>
   </sect2>
@@ -2036,12 +2141,12 @@
       </mediaobject>
     </screenshot>
     
-    <caution>
+    <note>
       <para
 >No hauríeu d'obrir dos diàlegs de configuració (mitjançant l'aplicació principal i el <application
 >plasmoide</application
 >) al mateix temps, ja que poden interferir entre si.</para>
-    </caution>
+    </note>
   </sect2>
   
 </sect1>
@@ -2071,7 +2176,7 @@
 ><application
 >plasmoide</application
 ></link
->. Als ginys acoblats de la finestra principal, això es fa seleccionant una o més comparticions i fent clic al botó d'acció <menuchoice
+>. Als ginys acoblats de la finestra principal, això es fa seleccionant una o múltiples comparticions i fent clic al botó d'acció <menuchoice
 ><guimenuitem
 >Afegeix una adreça d'interès</guimenuitem
 ></menuchoice
@@ -2093,9 +2198,9 @@
       </screenshot>
 
       <para
->El fet de definir categories pot ajudar a organitzar les adreces d'interès. Al menú <link linkend="bookmarks_menu"
->Adreces d'interès</link
->, totes les adreces d'interès pertanyents a la mateixa categoria estaran ordenades en un submenú respectiu.</para>
+>El fet de definir categories pot ajudar a organitzar les adreces d'interès. Al menú Adreces d'interès, totes les adreces d'interès pertanyents a una categoria estaran ordenades en un submenú amb l'entrada de la categoria com a pare (vegeu <link linkend="bookmarks_menu"
+>a continuació</link
+>).</para>
       <para
 >L'etiqueta pot ser qualsevol text que descrigui la compartició. En cas de definir una etiqueta, es mostrarà al menú de les adreces d'interès en comptes de la ubicació, la qual és la manera predeterminada. Si voleu canviar aquest comportament, podeu fer-ho al <link linkend="configuration_page_user_interface_main_window"
 >diàleg de configuració</link
@@ -2143,7 +2248,7 @@
             <para
 >Obre l'<link linkend="bookmarks_editor"
 >editor de les adreces d'interès</link
->. Aquesta entrada restarà desactivada si no hi ha adreces d'interès.</para>
+>. Aquesta acció restarà desactivada si no hi ha adreces d'interès.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2161,35 +2266,35 @@
           </term>
           <listitem>
             <para
->Afegeix adreces d'interès a les comparticions seleccionades. S'ha de seleccionar com a mínim una acció per a habilitar aquesta entrada.</para>
+>Afegeix adreces d'interès a les comparticions seleccionades. S'ha de seleccionar com a mínim una acció per a habilitar aquesta acció.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Si hi ha adreces d'interès presents que no estan assignades a cap categoria i, per tant, es mostren directament al nivell superior del menú, hi haurà present un tercer element:</para>
+>Si no heu definit cap categoria, hi ha un tercer element:</para>
 
       <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guimenuitem
->Munta les adreces d'interès</guimenuitem
+>Munta totes les adreces d'interès</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
             <para
->Munta totes les adreces d'interès de nivell superior alhora. Aquesta entrada estarà inhabilitada si ja estan muntades totes les comparticions marcades com a adreces d'interès.</para>
+>Munta totes les adreces d'interès de nivell superior alhora. Estarà inhabilitada si ja estan muntades totes les comparticions marcades com a adreces d'interès.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Les entrades següents són submenús de categoria o adreces d'interès que no pertanyen a cap categoria. Les entrades es llisten alfabèticament i les adreces d'interès poden aparèixer amb la seva ubicació o una etiqueta descriptiva. Si feu clic a una adreça d'interès, es muntarà la compartició respectiva. En cas que hi hagi una compartició marcada com a adreça d'interès muntada al sistema, l'entrada restarà inhabilitada.</para>
+>Totes les altres entrades són submenús de categoria o adreces d'interès que no pertanyen a cap categoria. Totes les entrades es llisten alfabèticament i les adreces d'interès poden aparèixer amb la seva ubicació o etiqueta descriptiva. Quan feu clic a una adreça d'interès, es muntarà la compartició respectiva. Si hi ha una compartició marcada com a adreça d'interès muntada al sistema, l'entrada a adreces d'interès restarà temporalment inhabilitada.</para>
       <para
 >Els submenús de categoria contenen les adreces d'interès assignades i en cada cas també hi ha present un element de menú <guimenuitem
->Munta les adreces d'interès</guimenuitem
->. Es pot utilitzar per a muntar alhora totes les adreces d'interès que hi ha en aquesta categoria.</para>
+>Munta totes les adreces d'interès</guimenuitem
+>. Aquest últim element es pot utilitzar per a muntar alhora totes les adreces d'interès que hi ha en aquesta categoria.</para>
       <para
 >En el giny de la safata del sistema, hi ha un <link linkend="systemtray_menus"
 >submenú</link
@@ -2199,12 +2304,22 @@
 >Afegeix una adreça d'interès</guilabel
 >.</para>
       <para
->El &plasmoid; proporciona la <link linkend="plasmoid_bookmarks"
+>El <application
+>Plasmoide</application
+> proporciona una <link linkend="plasmoid_bookmarks"
 >pestanya</link
 > <guilabel
 >Adreces d'interès</guilabel
-> on totes les adreces d'interès s'organitzen de manera similar a la del menú d'adreces d'interès. Per a més detalls, llegiu <link linkend="plasmoid_bookmarks"
->aquesta secció</link
+> on totes les adreces d'interès estaran ordenades d'una manera similar a la del menú Adreces d'interès. Les categories d'adreces d'interès i les adreces d'interès es llisten a la vista. Les comparticions marcades com a adreces d'interès es poden muntar fent clic sobre l'entrada corresponent. A la barra d'eines hi ha dues accions: <guimenuitem
+>Endarrere</guimenuitem
+> i <guimenuitem
+>Edita</guimenuitem
+>. En fer clic a <guimenuitem
+>Endarrere</guimenuitem
+>, podeu tornar al nivell superior si heu entrat en una carpeta de categoria. L'acció <guimenuitem
+>Edita</guimenuitem
+> obrirà l'<link linkend="bookmarks_editor"
+>editor de les adreces d'interès</link
 >.</para>
     </sect2>
     
@@ -2248,7 +2363,7 @@
 >Si voleu editar una adreça d'interès, ho podreu fer seleccionant-la. L'etiqueta emmagatzemada, l'inici de la sessió, l'adreça IP i el nom de la categoria apareixeran als ginys d'entrada i es faran editables. En la majoria dels casos, no cal que toqueu l'adreça IP i l'inici de la sessió, ja que el &smb4k; emmagatzema els valors correctes en el moment en què va apuntar com a adreça d'interès la compartició. Tanmateix, si el servidor té una adreça IP diferent (&pex;, perquè el DHCP s'utilitza a la vostra xarxa local) o el vostre nom d'usuari ha canviat, aquestes s'hauran d'ajustar. Amb l'etiqueta podeu donar a cada adreça d'interès una descripció personalitzada. S'utilitzarà per a mostrar-la <emphasis
 >en lloc</emphasis
 > de la ubicació, però això es pot canviar al <link linkend="configuration_page_user_interface_main_window"
-> diàleg de configuració</link
+>diàleg de configuració</link
 >. Per a acabar, l'entrada de la categoria, ajuda a organitzar les vostres adreces d'interès. Sobretot si utilitzeu, &pex;, el bloc de notes a casa i a la feina, i no voleu utilitzar <link linkend="profiles"
 >perfils</link
 >, pot ser una bona idea crear dos grups «Casa» i «Feina», i categoritzar les adreces d'interès en conseqüència.</para>
@@ -2312,166 +2427,6 @@
 >.</para>
     </sect2>
   </sect1>
-  
-<!--
-      Using Smb4K : Custom Settings
-  -->
-  
-  <sect1 id="custom_settings">
-    <title
->Configuració personalitzada</title>
-
-    <sect2 id="custom_settings_usage">
-      <title
->Emprar una configuració personalitzada</title>
-
-      <para
->A més de la configuració global que es pot definir al <link linkend="configuration"
->diàleg de configuració</link
->, el &smb4k; ofereix la possibilitat d'establir opcions de configuració individuals per servidor o compartició. Si voleu, podeu utilitzar aquests paràmetres personalitzats per</para>
-      <itemizedlist>
-        <listitem
-><para
->definir les opcions de configuració individuals de muntatge o de l'explorador per a un sol servidor o compartició que es desvien dels valors definits en el diàleg de configuració,</para
-></listitem>
-        <listitem
-><para
->definir un servidor que s'haurà d'activar abans de fer els escanejos de la xarxa o dels intents de muntatge (característica Wake-On-LAN, vegeu <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
->aquí</link
->),</para
-></listitem>
-        <listitem
-><para
->muntar sempre una compartició en particular a l'inici o quan es carregui el perfil corresponent.</para
-></listitem>
-      </itemizedlist>
-    </sect2>
-
-    <sect2 id="custom_settings_adding">
-      <title
->Afegir una configuració personalitzada</title>
-
-      <para
->En cas que vulgueu definir una configuració personalitzada per a una compartició, tant a l'<link linkend="network_neighborhood_browser_actions_popup_menu"
->explorador del veïnatge de xarxa</link
-> com a la <link linkend="shares_view_actions_popup_menu"
->vista de comparticions</link
->, podreu obrir l'editor per a la configuració personalitzada fent clic a l'entrada de menú <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-><guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
-></menuchoice
->.</para>
-    
-      <screenshot>
-        <screeninfo
->Captura de pantalla de l'editor de configuració personalitzada per a una compartició</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="custom_settings_editor.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->L'editor de configuració personalitzada</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-
-      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
-
-      <para
->Es poden fer configuracions individuals en les seccions/pestanyes següents:</para>
-      
-      <variablelist>
-        <varlistentry>
-          <term
-><guilabel
->Configuració normal de muntatge</guilabel
-> (només al &Linux;) </term>
-          <listitem>
-            <para
->Aquí podeu definir els paràmetres normals relacionats amb el muntatge. Activeu el botó <guibutton
->Torna a muntar sempre aquesta compartició</guibutton
-> si voleu tornar a muntar la compartició seleccionada cada vegada que s'iniciï el &smb4k;. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_common_mount_settings"
->aquesta secció</link
->.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term
-><guilabel
->Configuració avançada del muntatge</guilabel
-> (només al &Linux;) </term>
-          <listitem>
-            <para
->Aquí podreu definir els paràmetres avançats relacionats amb el muntatge. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_advanced_mount_settings"
->aquesta secció</link
->.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term
-><guilabel
->Configuració del muntatge</guilabel
-> (només al BSD) </term>
-          <listitem>
-            <para
->Aquí podreu definir els paràmetres relacionats amb el muntatge. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_mounting_mount_settings"
->aquesta secció</link
->.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <guilabel
->Configuració de la navegació</guilabel>
-          </term>
-          <listitem>
-            <para
->Podeu definir les versions mínima i màxima del protocol SMB, així com el port SMB que s'emprarà. A més, podreu decidir el port SMB i si s'ha d'emprar el Kerberos per a l'autenticació. Per a una informació detallada sobre aquests paràmetres, vegeu <link linkend="configuration_page_network"
->aquesta secció</link
->.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <guilabel
->Configuració de l'activació per LAN (Wake-On-LAN)</guilabel>
-          </term>
-          <listitem>
-            <para
->Per a fer que funcioni la característica Wake-On-LAN, haureu de proporcionar l'adreça MAC del servidor que heu seleccionat. Actualment, el &smb4k; no té cap forma de determinar l'adreça MAC, de manera que cal que la descobriu pel vostre compte. Després, podreu definir si el servidor s'hauria de despertar enviant un paquet màgic Wake-On-LAN abans que s'explori el veïnatge de xarxa i/o es munti una de les seves comparticions.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      
-      <para
->El botó <guibutton
->Predeterminat</guibutton
-> estarà habilitat si les entrades del diàleg es desvien de la configuració que heu definit al diàleg de configuració. En fer-hi clic, restablireu les entrades del diàleg als valors predeterminats. El botó <guibutton
->D'acord</guibutton
-> estarà habilitat si heu canviat la configuració al diàleg. En fer-ho, es desarà la configuració personalitzada i es tancarà el diàleg.</para>
-      <para
->Tingueu en compte que al BSD el diàleg conté menys entrades que si executeu el &Linux;, ja que algunes d'aquestes opcions no estan admeses.</para>
-    </sect2>
-
-    <sect2 id="custom_settings_managing_and_editing">
-      <title
->Editar una configuració personalitzada</title>
-
-      <para
->Podeu editar o restablir la configuració d'elements de xarxa individuals obrint l'editor de configuració personalitzada. La <link linkend="configuration_page_custom_settings"
->pàgina <guilabel
->Configuració personalitzada</guilabel
-></link
-> proporciona un resum complet de tots els paràmetres personalitzats, on també podeu editar o eliminar els paràmetres desitjats.</para>
-    </sect2>
-  </sect1>
 
 <!-- 
       Using Smb4K : Profiles 
@@ -2482,9 +2437,9 @@
 >Perfils</title>
     
     <para
->El &smb4k; ofereix l'opció d'utilitzar perfils diferents. Estan destinats a facilitar la gestió dels diferents veïnatges de la xarxa, &pex;, si esteu utilitzant el portàtil a casa i també a la feina.</para>
+>El &smb4k; ofereix l'opció d'utilitzar perfils diferents. Estan destinats a una millor gestió dels diferents veïnatges de la xarxa, &pex;, si esteu utilitzant el portàtil a casa i també a la feina.</para>
     <para
->De manera predeterminada, l'ús de perfils està inhabilitat. La majoria dels usuaris no hauran de canviar-ho, perquè el comportament predeterminat compleix completament amb les seves necessitats. Tanmateix, aquesta característica pot ser útil per a alguns usuaris.</para>
+>De manera predeterminada, l'ús de diferents perfils està inhabilitat i s'utilitza un perfil predeterminat: un perfil per a tot. La majoria dels usuaris no hauran de canviar-ho, perquè el comportament predeterminat compleix completament amb les seves necessitats. Tanmateix, per a alguns usuaris, aquesta característica pot ser molt útil.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2504,7 +2459,7 @@
 >Casa</guilabel
 > i <guilabel
 >Feina</guilabel
->, però podeu definir tants perfils com vulgueu. Un perfil nou serà afegit introduint el seu nom a la línia d'entrada a la pàgina de configuració dels <guibutton
+>, però podeu definir tants perfils com vulgueu. Un perfil nou serà afegit introduint el seu nom a la línia d'edició a la pàgina de configuració dels <guibutton
 >Perfils</guibutton
 > i després fent clic a <guibutton
 >Afegeix</guibutton
@@ -2523,7 +2478,7 @@
         </mediaobject>
       </screenshot>
       <para
->Si voleu canviar el nom d'un perfil, feu-hi clic i editeu el nom a la línia d'edició. En fer clic a <guibutton
+>Si voleu canviar el nom d'un perfil, feu-hi clic i editeu la línia d'edició del nom. En fer clic a <guibutton
 >Afegeix</guibutton
 > s'actualitzarà el nom a la vista de llista. Totes les opcions de configuració emmagatzemades es migraran sense problemes (sense l'ús de l'assistent per a la migració). Es pot eliminar un perfil seleccionant-lo a la vista de llista i fent clic a <guibutton
 >Elimina</guibutton
@@ -2533,7 +2488,21 @@
 >Mou avall</guibutton
 >.</para>
       <para
->En cas que hi hàgiu habilitat l'assistent de migració, sempre es llançarà quan elimineu un perfil o quan habiliteu/inhabiliteu l'ús de perfils. Té cura de la migració de totes les opcions de configuració rellevants.</para>
+>En cas que hi hàgiu habilitat l'assistent per a la migració, sempre es llançarà quan elimineu un perfil o quan habiliteu/inhabiliteu l'ús de perfils. Proporciona la migració de totes les opcions de configuració rellevants.</para>
+      <itemizedlist>
+        <listitem
+><para
+>d'un perfil que s'ha d'eliminar a un altre</para
+></listitem>
+        <listitem
+><para
+>del perfil predeterminat a un altre perfil específic</para
+></listitem>
+        <listitem
+><para
+>de tots els perfils torna al perfil predeterminat</para
+></listitem>
+      </itemizedlist>
       <para
 >La captura de pantalla següent il·lustra l'assistent de migració de perfils després d'habilitar l'ús dels perfils:</para>
       <screenshot>
@@ -2556,9 +2525,9 @@
 >Perfil antic</guilabel
 >. Sota <guilabel
 >Perfil nou</guilabel
->, podreu utilitzar triar el perfil des del menú desplegable al qual s'hauran de migrar les opcions de configuració. Estarà preseleccionat el primer perfil de la llista. En fer clic al botó <guibutton
+>, podreu utilitzar el menú desplegable per a triar el perfil al qual s'hauran de migrar les opcions de configuració. Estarà preseleccionat el primer perfil de la llista. En fer clic al botó <guibutton
 >D'acord</guibutton
-> es migraran les opcions de configuració. Fent clic a <guibutton
+> es migraran les opcions de configuració, fent clic a <guibutton
 >Cancel·la</guibutton
 > es cancel·larà l'acció.</para>
       <note
@@ -2593,7 +2562,7 @@
 ></listitem>
         <listitem
 ><para
->Es carregaran les adreces d'interès i la configuració personalitzada des d'aquest perfil.</para
+>Es carregaran les adreces d'interès i les opcions personalitzades des d'aquest perfil.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -2671,106 +2640,18 @@
   </sect1>
 
 <!-- 
-      Using Smb4K : Trouble Shooting
+      Using Smb4K : Special Remarks 
 -->
 
-  <sect1 id="trouble_shooting">
+  <sect1 id="special_remarks">
     <title
->Resolució de problemes</title>
-
-<!--
-    Using Smb4K : Trouble Shooting : Missing Programs
-    -->
-
-    <sect2 id="trouble_shooting_missing_programs">
-      <title
->Programes que manquen</title>
-
-      <para
->Si el sistema no troba algun dels programes que el &smb4k; necessita per a funcionar adequadament, aquest ho notificarà a l'usuari:</para>
-
-      <screenshot id="notification_missing_program">
-        <screeninfo
->Captura de pantalla de la notificació del programa que falta</screeninfo>
-        <mediaobject>
-          <imageobject
-><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
-          <textobject
-><phrase
->La notificació del programa que falta</phrase
-></textobject>
-        </mediaobject>
-      </screenshot>
-
-      <para
->En aquest cas, instal·leu el programa especificat o, si ja hi és, afegiu la seva ubicació amb la variable d'entorn <envar
->PATH</envar
-> al vostre fitxer de configuració de l'intèrpret d'ordres (per al <ulink url="man:/bash"
-><citerefentry
-><refentrytitle
->bash</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> aquest és el fitxer <filename
->~/.bashrc</filename
->).</para>
-    </sect2>
-
-<!--
-    Using Smb4K : Trouble Shooting : Zeroconf Daemon
-    -->
-
-    <sect2 id="trouble_shooting_zeroconf">
-      <title
->Error del Zeroconf</title>
-
-      <para
->El &smb4k; utilitza el servei Zeroconf (<application
-><ulink url="https://avahi.org"
->Avahi</ulink
-></application
->) per cercar servidors i comparticions en el veïnatge de xarxa utilitzant el «DNS Service Discovery» (DNS-SD). Perquè això funcioni, el dimoni Avahi s'ha d'habilitar i executar en el sistema. Si aquest no és el cas, el &smb4k; mostrarà un missatge d'error:</para>
-
-      <screenshot id="notification_zeroconf_error">
-        <screeninfo
->Captura de pantalla de la notificació d'error del Zeroconf</screeninfo>
-        <mediaobject>
-          <imageobject
-><imagedata fileref="notification_zeroconf_error.png" format="PNG"/></imageobject>
-          <textobject
-><phrase
->La notificació d'error del Zeroconf</phrase
-></textobject>
-        </mediaobject>
-      </screenshot>
-
-      <para
->En la majoria dels casos, el dimoni Avahi no s'està executant quan s'informa d'un error. En les distribucions &Linux; que utilitzen el <application
->systemd</application
-> podeu iniciar-lo executant l'ordre següent o una de similar des del terminal:</para>
-      <para
-><screen
-><userinput
-><prompt
->$</prompt
-> <command
->sudo</command
-> <command
->systemctl</command
-> enable --now avahi-daemon</userinput
-></screen
-></para>
-      <para
->En totes les altres distribucions &Linux; i en el BSD consulteu la documentació específica de com iniciar el dimoni Avahi.</para>
-    </sect2>
+>Observacions especials</title>
   
 <!--
-    Using Smb4K : Trouble Shooting : Denied Privilege Escalation
+    Using Smb4K : Special Remarks : Denied Privilege Escalation
 -->
     
-    <sect2 id="trouble_shooting_polkit-1">
+    <sect2 id="special_remarks_polkit-1">
       <title
 >Denegar l'escalada de privilegis</title>
       
@@ -2809,12 +2690,12 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Using Smb4K : Trouble Shooting : Mounting Problems under BSD
+      Using Smb4K : Special Remarks : Mounting Problems under BSD
   -->
     
-    <sect2 id="trouble_shooting_mounting_problems_under_bsd">
+    <sect2 id="special_remarks_mounting_problems_under_bsd">
       <title
->Problemes de muntatge en el BSD</title>
+>Problemes de muntatge sota BSD</title>
       
       <para
 >Si es munten comparticions protegides per contrasenya des d'un servidor de &Samba; o de &Windows; que falla, això es pot deure al fet que <ulink url="man:/mount_smbfs"
@@ -2843,10 +2724,10 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Using Smb4K : Trouble Shooting : Other Desktops Than Plasma
+      Using Smb4K : Special Remarks : Other Desktops Than Plasma
 -->
 
-    <sect2 id="trouble_shooting_other_desktop_environments">
+    <sect2 id="special_remarks_other_desktop_environments">
       <title
 >Altres entorns d'escriptori que el &plasma;</title>
 
@@ -3017,20 +2898,6 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->Mida de les icones</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Estableix la mida de les icones a l'explorador del veïnatge de xarxa. La mida es pot ajustar en passos de 16 píxels des de 16 x 16 a 128 x 128 píxels.</para>
-            <para
->Omissió: mida petita de les icones</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
 >Expandeix automàticament els dominis i servidors</guibutton
 ></menuchoice>
           </term>
@@ -3157,34 +3024,6 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->Mida de les icones en la vista d'icones</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Estableix la mida de les icones en la vista d'icones de la vista de comparticions. La mida es pot ajustar en passos de 16 píxels des de 16 x 16 a 128 x 128 píxels.</para>
-            <para
->Omissió: mida de les icones d'escriptori</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
->Mida de les icones en la vista de llista</guibutton
-></menuchoice>
-          </term>
-          <listitem>
-            <para
->Estableix la mida de les icones en la vista de llista de la vista de comparticions. La mida es pot ajustar en passos de 16 píxels des de 16 x 16 a 128 x 128 píxels.</para>
-            <para
->Omissió: mida petita de les icones</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><guibutton
 >Mostra els consells d'eina per a les comparticions muntades</guibutton
 ></menuchoice>
           </term>
@@ -3210,8 +3049,12 @@ ntlm auth = yes
     <para
 >Les opcions ubicades aquí influeixen en la comunicació de la xarxa. Podeu modificar el comportament de la navegació i visualització a la pestanya <guibutton
 >Configuració bàsica</guibutton
-> i les opcions més avançades per al Samba i les característiques de l'activació per LAN a la pestanya <guibutton
->Configuració avançada</guibutton
+>, canviant les opcions passades a la biblioteca <application
+>libsmbclient</application
+> subjacent es troben a la pestanya <guibutton
+>Configuració de Samba</guibutton
+> i habiliteu també les característiques de l'activació per LAN a la pestanya <guibutton
+>Configuració de l'activació per LAN (Wake-On-LAN)</guibutton
 >.</para>
     
     <screenshot>
@@ -3249,7 +3092,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->El protocol «Web Services Dynamic Discovery» (WS-Discovery) s'utilitza per a explorar la xarxa local i descobrir grups de treball, dominis i servidors. Això és útil si el veïnatge de la xarxa està dominat per servidors amb versions modernes de &Windows;. Si empreu aquesta opció, no caldrà forçar a la biblioteca del client &Samba; perquè empri la versió 1.0 del protocol SMB per a cercar grups de treball i dominis.</para>
+>El «Web Services Dynamic Discovery» (WS-Discovery) s'utilitza per a explorar la xarxa local i descobrir grups de treball, dominis i servidors. Això és útil si el veïnatge de la xarxa està dominat per servidors amb versions modernes de &Windows;. Si empreu aquesta opció, no caldrà forçar a la biblioteca del client &Samba; per a que empri la versió 1.0 del protocol SMB per a cercar grups de treball i dominis.</para>
               <note
 ><para
 >Aquesta opció de configuració és opcional i només apareix si heu compilat el &smb4k; amb suport WS-Discovery.</para
@@ -3267,7 +3110,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Utilitza la interfície «DNS Service Discovery» (DNS-SD) per a explorar la xarxa local i descobrir els servidors que proporcionen recursos SMB compartits. Els dominis descoberts corresponen als dominis DNS locals (&pex;, anomenats LOCAL) i probablement no als definits al veïnatge de xarxa. Tanmateix, això no influirà l'exploració. En emprar aquesta opció, no caldrà forçar a la biblioteca client de &Samba; a què faci servir el protocol SMB versió 1.0 en cercar grups de treball i dominis.</para>
+>Utilitza el «DNS Service Discovery» (DNS-SD) per a explorar la xarxa local i descobrir els servidors que proporcionen recursos SMB compartits. Els dominis descoberts corresponen als dominis DNS locals (&pex;, anomenats LOCAL) i probablement no als definits a l'entorn de la xarxa. Tanmateix, això no influirà l'exploració. En emprar aquesta opció, no caldrà forçar a la biblioteca client de &Samba; a que faci servir el protocol SMB versió 1.0 en cercar grups de treball i dominis.</para>
               <para
 >Omissió: seleccionada</para>
             </listitem>
@@ -3283,6 +3126,8 @@ ntlm auth = yes
               <para
 >Seleccioneu aquesta opció com a últim recurs, perquè la versió 1.0 del protocol SMB no és segura i s'ha desactivat en les versions més recents de &Samba; i &Windows;. No obstant això, si teniu problemes per a descobrir grups de treball i dominis en el vostre veïnatge de xarxa, possiblement voldreu considerar activar aquesta opció de configuració. Si utilitzeu el descobriment de serveis DNS (DNS-SD) o el descobriment dinàmic de serveis web (WS-Discovery), i funcionen, és que no necessiteu la versió 1.0.</para>
               <para
+>Aquesta opció només estarà disponible si la biblioteca client de &Samba; admet la configuració de les versions del protocol.</para>
+              <para
 >Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
@@ -3297,9 +3142,9 @@ ntlm auth = yes
               <para
 >Estableix les versions mínima i màxima del protocol SMB que utilitzarà la biblioteca del client &Samba; per a explorar el veïnatge de xarxa. Això superposarà la configuració al fitxer «smb.conf». Normalment no cal emprar aquesta opció perquè les versions correctes del protocol s'han de negociar entre el client i el servidor en establir una connexió. Cal tenir en compte que aquesta opció pot no ser apropiada per a fer que funcioni el descobriment de grups de treball i dominis mentre es manté sense interrupcions la connectivitat amb els servidors. En el seu lloc, empreu el «DNS Service Discovery» (DNS-SD) o «Web Services Dynamic Discovery» (WS-Discovery) per a les cerques de dominis i grups de treball.</para>
               <para
->Les següents opcions de configuració per a la versió mínima i màxima del protocol SMB s'habiliten marcant aquesta casella de selecció.</para>
+>Les següents opcions de configuració per a la versió mínima i màxima del protocol SMB s'habiliten marcant aquesta casella de selecció. La versió màxima del protocol SMB haurà de ser igual o més gran que la versió mínima del protocol SMB.</para>
               <para
->La versió màxima del protocol SMB haurà de ser igual o més gran que la versió mínima del protocol SMB.</para>
+>Aquestes opcions només estaran disponibles si la biblioteca client de &Samba; admet la configuració de les versions del protocol.</para>
               <para
 >Omissió: no seleccionada</para>
               <variablelist>
@@ -3469,28 +3314,64 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Advanced Settings
+      Configuring Smb4K : Network : Samba Settings (libsmbclient)
 -->
 
-    <sect2 id="configuration_page_network_advanced_settings">
+    <sect2 id="configuration_page_network_samba_settings">
       <title
->Configuració avançada</title>
+>Configuració del Samba</title>
       
-      <sect3 id="configuration_page_network_advanced_settings_samba">
+      <sect3 id="configuration_page_network_samba_settings_common_settings">
         <title
->Samba</title>
+>Configuració comuna</title>
 
         <variablelist>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Estableix el port SMB a</guibutton
+>Nom del NetBIOS</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Si habiliteu aquesta opció de configuració, s'establirà el número del port remot SMB per a comunicar amb un amfitrió remot amb el valor definit en el botó de selecció de valors. En el BSD, aquest també serà el port que s'utilitzarà per a muntar.</para>
+>Estableix el nom de NetBIOS del vostre ordinador. El quadre de text ja hauria d'estar emplenat amb la informació que es troba al fitxer de configuració <filename
+>smb.conf</filename
+> o amb el nom de la màquina del vostre ordinador. En circumstàncies normals no hi haurà necessitat de canviar res.</para>
+              <para
+>Omissió: nom de NetBIOS definit al <filename
+>smb.conf</filename
+> o el nom de la màquina</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Domini</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Estableix el nom del domini/grup de treball on es troba el vostre ordinador. El quadre de text ja estarà omplert amb la informació que es troba al fitxer de configuració <filename
+>smb.conf</filename
+>. En circumstàncies normals no hi haurà necessitat de canviar res.</para>
+              <para
+>Omissió: nom de domini definit al <filename
+>smb.conf</filename
+></para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Port SMB</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Si habiliteu aquesta opció de configuració, s'establirà el número del port remot SMB per a comunicar amb un amfitrió remot amb el valor definit en el botó de selecció de valors. Sota BSD, aquest també serà el port que s'utilitzarà per a muntar.</para>
               <para
 >A menys que esteu utilitzant un tallafoc o teniu una opció de configuració de xarxa personalitzada, no caldrà canviar res.</para>
               <para
@@ -3501,7 +3382,79 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Estableix el nivell d'encriptatge a</guibutton
+>Aquest ordinador es troba en un veïnatge de xarxa gran</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>A la configuració predeterminada, es consultarà a tots els exploradors mestres disponibles quan es compila la llista d'exploració. En els veïnatges de la xarxa grans això pot trigar molt. Si habiliteu aquesta opció, es restringirà la consulta als tres exploradors principals.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+    
+      <sect3 id="configuration_page_network_samba_settings_authentication">
+        <title
+>Autenticació</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Els exploradors mestres requereixen autenticació</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Si els exploradors mestres del grup de treball requereixen autenticació per a retornar la llista d'exploració, haureu de marcar aquest botó. Aquest podria ser el cas, per exemple, amb alguns dispositius NAS. Aquesta opció de configuració rarament és necessària i fins i tot pot provocar que un explorador mestre retorni una llista d'exploració buida.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Usa Kerberos per a l'autenticació</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Utilitza Kerberos per a l'autenticació en un entorn d'Active Directory.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Usa la «ccache» del Winbind per a l'autenticació</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Intenta utilitzar les credencials emmagatzemades a la memòria cau per Winbind.</para>
+              <para
+>Omissió: no seleccionada</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+      
+      <sect3 id="configuration_page_network_samba_settings_security">
+        <title
+>Seguretat</title>
+        
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Nivell d'encriptatge</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3552,107 +3505,56 @@ ntlm auth = yes
 ></para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Aquest ordinador es troba en un veïnatge de xarxa gran</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->A la configuració predeterminada, es consultarà a tots els exploradors mestres disponibles quan es compila la llista d'exploració. En els veïnatges de la xarxa grans això pot trigar molt. Si habiliteu aquesta opció, es restringirà la consulta als tres exploradors principals.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Els exploradors mestres requereixen autenticació</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Si els exploradors mestres del grup de treball requereixen autenticació per a retornar la llista d'exploració, haureu de marcar aquest botó. Aquest podria ser el cas, per exemple, amb alguns dispositius NAS. Aquesta opció de configuració rarament és necessària i fins i tot pot provocar que un explorador mestre retorni una llista d'exploració buida.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Usa Kerberos per a l'autenticació</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Utilitza Kerberos per a l'autenticació en un entorn d'Active Directory.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Usa la «ccache» del Winbind per a l'autenticació</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Intenta utilitzar les credencials emmagatzemades a la memòria cau per Winbind.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry
->          
         </variablelist>
-      </sect3>
-      <sect3 id="configuration_page_network_advanced_settings_wake_on_lan">
-        <title
->Activació per LAN (Wake-On-LAN)</title>
+      </sect3
+>     
+    </sect2>
+    
+<!-- 
+      Configuring Smb4K : Network : Wake-On_LAN Settings
+-->
 
-        <para
->Per a poder utilitzar la capacitat Wake-On-LAN del &smb4k;, haureu d'habilitar aquesta opció. Els servidors que s'hagin de despertar s'hauran de definir mitjançant l'<link linkend="network_neighborhood_browser_defining_custom_settings"
->editor de configuració personalitzada</link
+    <sect2 id="configuration_page_network_wake_on_lan_settings">
+      <title
+>Configuració de l'activació per LAN (Wake-On-LAN)</title>
+
+      <para
+>Per a poder utilitzar la capacitat Wake-On-LAN del &smb4k;, haureu d'habilitar l'opció de configuració en aquesta secció. Els servidors que s'hagin de despertar, s'hauran de definir mitjançant el <link linkend="network_neighborhood_browser_defining_custom_options"
+>diàleg d'opcions personalitzades</link
 >.</para>
 
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
+      <variablelist>
+        <varlistentry>
+          <term>
+            <menuchoice
 ><guibutton
 >Activa les funcionalitats «Wake-On-LAN»</guibutton
 ></menuchoice>
-            </term>
-            <listitem>
-              <para
+          </term>
+          <listitem>
+            <para
 >Habilita les característiques Wake-on-LAN. El «Wake-on-LAN» (WOL) és un estàndard de xarxa ethernet d'ordinadors que permet engegar o despertar un ordinador amb un missatge de xarxa. El &smb4k; utilitza un paquet màgic enviat mitjançant un sòcol UDP per a despertar servidors remots. Si voleu disposar dels avantatges de la funcionalitat «Wake-On-LAN» cal activar aquesta opció.</para>
-              <para
+            <para
 >Omissió: no seleccionada</para>
-              <variablelist>
-                <varlistentry>
-                  <term>
-                    <menuchoice
+            <variablelist>
+              <varlistentry>
+                <term>
+                  <menuchoice
 ><guilabel
 >Temps d'espera</guilabel
 ></menuchoice>
-                  </term>
-                  <listitem>
-                    <para
+                </term>
+                <listitem>
+                  <para
 >Aquest és el temps d'espera en segons entre l'enviament dels paquets màgics «Wake-On-LAN» i l'escaneig del veïnatge de xarxa o del muntatge d'una compartició.</para>
-                    <para
+                  <para
 >Omissió: 5 s</para>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
   </sect1>
 
@@ -3746,6 +3648,10 @@ ntlm auth = yes
             <listitem>
               <para
 >Torna a muntar totes les vostres comparticions que estaven muntades quan vàreu sortir del programa o canviar el perfil. Si un dels muntatges falla, el &smb4k; ho reintentarà la pròxima vegada que s'iniciï. S'ignoraran les comparticions que pertanyin a altres usuaris.</para>
+              <note
+><para
+>Aquesta opció de configuració no afecta el remuntatge automàtic de les comparticions quan l'ordinador es desperta des de l'estat de son.</para
+></note>
               <para
 >Omissió: no seleccionada</para>
               <variablelist>
@@ -3850,29 +3756,13 @@ ntlm auth = yes
   
     <sect2 id="configuration_page_mounting_common_mount_settings">
       <title
->Configuració normal del muntatge (només al &Linux;)</title>
+>Configuració comuna del muntatge (només al &Linux;)</title>
       
       <para
 >La pestanya <guilabel
->Configuració normal de muntatge</guilabel
-> només és disponible al &Linux; i les opcions llistades fan referència a l'ordre <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> / <ulink url="man:/mount.smb3"
-><citerefentry
-><refentrytitle
->mount.smb3</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
->. Les opcions de configuració presents a BSD es poden trobar a la secció <link linkend="configuration_page_mounting_mount_settings"
->Configuració de muntatge (només BSD)</link
+>Configuració comuna del muntatge</guilabel
+> només està disponible al &Linux;. Les opcions de configuració presents a BSD es poden trobar a la secció <link linkend="configuration_page_mounting_mount_settings"
+>Configuració del muntatge (només al BSD)</link
 >.</para>
 
       <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
@@ -3900,10 +3790,6 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Opció: <option
->rw</option
-></para>
-                    <para
 >Munta la compartició en lectura i escriptura.</para>
                   </listitem>
                 </varlistentry>
@@ -3916,18 +3802,12 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Opció: <option
->ro</option
-></para>
-                    <para
 >Munta la compartició només en lectura.</para>
                   </listitem>
                 </varlistentry>
               </variablelist>
               <para
->Omissió: no seleccionat; <guimenuitem
->lectura-escriptura</guimenuitem
-></para>
+>Lectura i escriptura</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3939,11 +3819,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opció: <option
->iocharset=CHARSET</option
-></para>
-              <para
->Estableix el joc de caràcters utilitzat a la banda del client (&ead;, el vostre ordinador) a un dels següents:</para>
+>Estableix el joc de caràcters utilitzat a la banda del client (&ead;, el vostre ordinador).</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3954,9 +3830,7 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->El joc de caràcters predeterminat utilitzat pel nucli del client. En aquest cas l'opció <option
->iocharset</option
-> s'omet de la línia d'ordres.</para>
+>Estableix el joc de caràcters utilitzat pel nucli del client.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4112,7 +3986,7 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Format de transformació Unicode (o joc de caràcters codificats universals) de 8 bits. L'UTF-8 és emprat per moltes distribucions de &Linux; com a joc de caràcters predeterminat i, a més, és la codificació més normal per a la World Wide Web.</para>
+>Format de transformació Unicode (o joc de caràcters codificats universals) de 8 bits. L'UTF-8 és emprat per moltes distribucions de &Linux; com a joc de caràcters predeterminat i, a més, és la codificació més comuna per a la World Wide Web.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4220,13 +4094,13 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->L'estàndard industrial tailandès 620-2533, normalment conegut com a TIS-620, és el joc de caràcters i la codificació de caràcters més habitual per a l'idioma tailandès.</para>
+>L'estàndard industrial tailandès 620-2533, comunament conegut com a TIS-620, és el joc de caràcters i la codificació de caràcters més comuna per a l'idioma tailandès.</para>
                   </listitem>
                 </varlistentry>
               </variablelist>
               <para
->Omissió: no seleccionat; CHARSET: <guimenuitem
->predeterminat</guimenuitem
+>Omissió: <guimenuitem
+>Predeterminat</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4239,11 +4113,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opció: <option
->port=PORT</option
-></para>
-              <para
->Estableix el número de port que utilitza <ulink url="man:/mount.cifs"
+>Estableix el número de port del sistema de fitxers que utilitza <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4251,11 +4121,17 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> quan es munta una compartició remota. El número de port predeterminat (445) hauria de funcionar per a tots els sistemes operatius moderns. Si experimenteu problemes, proveu establint el número de port a 139. Si els problemes només es produeixen amb alguns servidors, es recomana deixar aquesta opció intacta i utilitzar el diàleg <link linkend="custom_settings"
->Configuració personalitzada</link
+> quan es munta una compartició remota. El número de port predeterminat (445) hauria de funcionar per a tots els sistemes operatius moderns. Si experimenteu problemes, proveu establint el número de port a 139. Si els problemes només es produeixen amb alguns servidors, es recomana deixar aquesta opció intacta i utilitzar el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
+>Opcions personalitzades</link
 > per a definir individualment els números de port per als servidors problemàtics.</para>
               <para
->Omissió: no seleccionat; PORT: 445</para>
+>Aquesta opció només estarà disponible sota &Linux;. Sota BSD, el port per a muntar les comparticions s'estableix amb l'opció <link linkend="configuration_page_network_samba_settings_common_settings"
+><guibutton
+>Port SMB</guibutton
+></link
+>.</para>
+              <para
+>Omissió: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4263,26 +4139,20 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_mounting_cifs_unix_extensions">
         <title
->Admetre les ampliacions Unix del &CIFS;</title>
+>Admetre les ampliacions &CIFS; d'Unix</title>
         <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guibutton
->Tots o la majoria dels servidors admeten les ampliacions Unix del &CIFS;</guibutton
+>Tots o la majoria dels servidors admeten les ampliacions &CIFS; d'Unix</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Opció: cap</para>
+>La majoria de les versions de &Samba; admeten les ampliacions &CIFS; d'Unix o POSIX. Per a aquests servidors, algunes opcions no són necessàries, perquè els valors correctes es negocien durant el procés de muntatge. Per als altres servidors, és possible que vulgueu desmarcar aquestes opcions, de manera que es puguin passar al servidor els valors predefinits. Cal tenir en compte que si l'ordinador està ubicat en un veïnatge de xarxa dominat per &Windows; amb només alguns servidors de &Samba;, podeu desmarcar aquesta opció amb seguretat i definir opcions personalitzades per als servidors de &Samba;.</para>
             <para
->La majoria de les versions de &Samba; admeten les ampliacions &CIFS; d'Unix o POSIX. Per a aquests servidors, algunes opcions no són necessàries, perquè els valors correctes es negocien durant el procés de muntatge. Per als altres servidors, és possible que vulgueu desmarcar aquestes opcions, de manera que es puguin passar al servidor els valors predefinits. Cal tenir en compte que si l'ordinador està ubicat en un veïnatge de xarxa dominat per &Windows; amb només alguns servidors de &Samba;, podeu desmarcar aquesta opció amb seguretat i definir una configuració personalitzada per als servidors de &Samba;.</para>
-            <para
->En el cas que desmarqueu aquesta opció, considereu canviar les comprovacions de a <link linkend="configuration_page_mounting_advanced_mount_settings"
->Configuració avançada de muntatge</link
->.</para>
-            <para
->Omissió: seleccionada</para>
+>Omissió: no seleccionada</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4294,15 +4164,9 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->uid=UID</option
-></para>
-            <para
 >Estableix el propietari dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre UID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
             <para
->En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
-            <para
->Omissió: seleccionat; UID: el vostre UID</para>
+>Omissió: el vostre UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4314,15 +4178,9 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->uid=GID</option
-></para>
-            <para
 >Estableix el grup dels fitxers i directoris en el sistema de fitxers. De manera predeterminada, s'utilitza el vostre GID. Per a canviar-lo, premeu el botó de cerca i seleccioneu-ne un des del menú desplegable.</para>
             <para
->En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
-            <para
->Omissió: seleccionat; GID: el vostre GID</para>
+>Omissió: el vostre GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4334,11 +4192,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->file_mode=ARG</option
-></para>
-            <para
->Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer (file_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount(8)"
+>Estableix els permisos que s'aplicaran als fitxers. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode fitxer (file_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4346,7 +4200,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> i <ulink url="man:/umask(2)"
+> i <ulink url="man:/umask"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4356,9 +4210,7 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
-            <para
->Omissió: seleccionat; ARG: 0755</para>
+>Omissió: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4370,11 +4222,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->dir_mode=ARG</option
-></para>
-            <para
->Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount(8)"
+>Estableix els permisos que s'aplicaran als directoris. El valor es dona en octal i haurà de tenir 4 dígits. Per a obtenir més informació sobre el mode directori (dir_mode), haureu de llegir les pàgines de manual <ulink url="man:/mount"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4382,7 +4230,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> i <ulink url="man:/umask(2)"
+> i <ulink url="man:/umask"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4392,9 +4240,7 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->En el cas que se seleccioni les ampliacions Unix del &CIFS;, aquest paràmetre es desactiva.</para>
-            <para
->Omissió: seleccionat; ARG: 0755</para>
+>Omissió: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4411,26 +4257,12 @@ ntlm auth = yes
       
       <para
 >La pestanya <guilabel
->Configuració avançada de muntatge</guilabel
-> només és disponible al &Linux; i les opcions llistades fan referència a l'ordre <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> / <ulink url="man:/mount.smb3"
-><citerefentry
-><refentrytitle
->mount.smb3</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
->. Les opcions de configuració presents a BSD es poden trobar a la secció <link linkend="configuration_page_mounting_mount_settings"
->Configuració de muntatge (només BSD)</link
+>Configuració avançada del muntatge</guilabel
+> només està disponible al &Linux;. Les opcions de configuració presents a BSD es poden trobar a la secció <link linkend="configuration_page_mounting_mount_settings"
+>Configuració del muntatge (només al BSD)</link
 >.</para>
+      <para
+>La majoria de les opcions que podeu definir aquí requereixen el nucli &Linux; 2.6.15 o posterior per a funcionar.</para>
       <variablelist>
         <varlistentry>
           <term>
@@ -4440,10 +4272,6 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
-            <para
->Opció: <option
->forceuid</option
-></para>
             <para
 >Demana al client (&ead;, a la vostra banda) que ignori qualsevol ID d'usuari (UID) proporcionat pel servidor per als fitxers i directoris, i que assigni sempre el propietari al valor de l'UID transmès.</para>
             <para
@@ -4459,10 +4287,6 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->forcegid</option
-></para>
-            <para
 >Demana al client (&ead;, a la vostra banda) que ignori qualsevol ID de grup (GID) proporcionat pel servidor per als fitxers i directoris, i que assigni sempre el propietari al valor del GID transmès.</para>
             <para
 >Omissió: no seleccionada</para>
@@ -4477,15 +4301,9 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->perm</option
-> or <option
->noperm</option
-></para>
+>El client comprovarà si té l'UID i el GID correcte per a manipular els fitxers i directoris en la compartició. Això es fa a més de la comprovació normal de l'ACL sobre la màquina de destinació, el qual és realitzat pel programari del servidor. És possible que vulgueu desactivar aquesta característica, si el/s servidor/s admeten les extensions &CIFS; d'Unix i, per tant, no podeu accedir a la compartició.</para>
             <para
->El client comprovarà si teniu l'UID i el GID correcte per a manipular els fitxers i directoris en la compartició. Això es fa a més de la comprovació normal de l'ACL sobre la màquina de destinació, el qual és realitzat pel programari del servidor. Segurament voldreu desactivar aquesta característica si el/s servidor/s admeten les ampliacions Unix del &CIFS; i, per tant, no permeten accedir completament a la compartició.</para>
-            <para
->Omissió: no seleccionada</para>
+>Omissió: seleccionada</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4497,13 +4315,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->setuids</option
-> o <option
->nosetuids</option
-></para>
-            <para
->Si les ampliacions Unix del &CIFS; es negocien amb el servidor, la banda del client intentarà establir els UID i GID efectius del procés local sobre els fitxers, directoris i dispositius creats recentment. Si aquesta característica està desactivada, s'utilitzaran els identificadors UID i GID definits per a la compartició. Es recomana llegir la pàgina de manual <ulink url="man:/mount.cifs"
+>Si les extensions &CIFS; d'Unix es negocien amb el servidor, la banda del client intentarà establir els UID i GID efectius del procés local sobre els fitxers, directoris i dispositius creats recentment. Si aquesta característica està desactivada, s'utilitzaran els identificadors UID i GID definits per a la compartició. Es recomana llegir la pàgina de manual <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4524,12 +4336,6 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
-            <para
->Opció: <option
->serverino</option
-> o <option
->noserverino</option
-></para>
             <para
 >Utilitza els números dels nodes-i (identificadors de fitxer persistents únics) retornats pel servidor en lloc de generar automàticament els nombres temporals del node-i a la banda del client. Aquest paràmetre no tindrà cap efecte si el servidor no admet retornar els números de node-i o similar. Es recomana llegir la pàgina de manual <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -4553,12 +4359,6 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->mapchars</option
-> o <option
->nomapchars</option
-></para>
-            <para
 >Tradueix sis dels set caràcters reservats (no la barra inversa, però inclou els dos punts, signe d'interrogació, canonada, asterisc, els caràcters més que i menys que) a l'interval de remapatge (per sobre de 0xF000), el qual també permet que el client reconegui els fitxers creats amb aquests caràcters per a l'emulació POSIX de &Windows;. Això també pot ser útil quan es munta a la majoria de versions de &Samba;. Això no tindrà cap efecte si el servidor no admet Unicode.</para>
             <para
 >Omissió: no seleccionada</para>
@@ -4568,16 +4368,12 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->No enviïs sol·licituds de bloqueig d'intervals de bytes</guibutton
+>No usis el bloqueig</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Opció: <option
->nobrl</option
-></para>
-            <para
->No enviïs sol·licituds de bloqueig d'intervals de bytes al servidor. Això és necessari per a determinades aplicacions que trenquen amb els bloqueigs d'intervals de bytes obligatoris de l'estil CIFS (i la majoria dels servidors CIFS encara no permeten sol·licituds d'avís de bloqueig d'intervals de bytes).</para>
+>No utilitza el bloqueig. No inicia el «lockd».</para>
             <para
 >Omissió: no seleccionada</para>
           </listitem>
@@ -4591,11 +4387,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Opció: <option
->vers=VERS</option
-></para>
-            <para
->Defineix quina versió del protocol SMB s'ha d'utilitzar. Normalment, aquesta opció no necessita estar habilitada perquè la versió del protocol es negocia entre el client i el servidor.</para>
+>Defineix quina versió del protocol SMB s'utilitzarà.</para>
             <para
 >Es permeten els següents valors:</para>
             <variablelist>
@@ -4608,7 +4400,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Això farà que <ulink url="man:/mount.cifs"
+>S'utilitzarà l'argument <option
+>vers=1.0</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4628,7 +4422,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Això farà que <ulink url="man:/mount.cifs"
+>S'utilitzarà l'argument <option
+>vers=2.0</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4636,9 +4432,11 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilitzi el protocol SMBv2.002. Aquest es va introduir inicialment en el &Windows; Vista Service Pack 1 i el &Windows; Server 2008 de &Microsoft;.</para>
-                  <para
->Cal tenir en compte que la versió inicial de &Windows; Vista de &Microsoft; parlava un dialecte lleugerament diferent (2.000) que no està admès.</para>
+> utilitzi el protocol SMBv2.002. Aquest es va introduir inicialment en el Windows Vista Service Pack 1 i el Windows Server 2008 de &Microsoft;.</para>
+                  <note>
+                    <para
+>Cal tenir en compte que la versió inicial de Windows Vista parlava un dialecte lleugerament diferent (2.000) que no està admès.</para>
+                  </note>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4650,7 +4448,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Això farà que <ulink url="man:/mount.cifs"
+>S'utilitzarà l'argument <option
+>vers=2.1</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4670,7 +4470,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Això farà que <ulink url="man:/mount.cifs"
+>S'utilitzarà l'argument <option
+>vers=3.0</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4685,33 +4487,16 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Això farà que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilitzi el protocol SMBv3.0.2 que es va introduir inicialment en el &Windows; 8.1 i el &Windows; Server 2012R2 de &Microsoft;.</para>
-                </listitem>
-              </varlistentry>
-              
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
 >3.1.1 (Windows Server 2016)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->Això farà que <ulink url="man:/mount.cifs"
+>S'utilitzarà l'argument <option
+>vers=3.1.1</option
+> o <option
+>vers=3.11</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4722,50 +4507,10 @@ ntlm auth = yes
 > utilitzi el protocol SMBv3.1.1 que es va introduir inicialment en el &Windows; Server 2016 de &Microsoft;.</para>
                 </listitem>
               </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->3 (Versió 3.0 i superior)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Això farà que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> utilitzi la versió del protocol SMBv3.0 o superior.</para>
-                </listitem>
-              </varlistentry>
-              <varlistentry>
-                <term>
-                  <menuchoice
-><guibutton
->predeterminat (Negocia la versió més alta)</guibutton
-></menuchoice>
-                </term>
-                <listitem>
-                  <para
->Això farà que <ulink url="man:/mount.cifs"
-><citerefentry
-><refentrytitle
->mount.cifs</refentrytitle
-><manvolnum
->8</manvolnum
-></citerefentry
-></ulink
-> intenti negociar la versió SMBv2+ més alta que acceptin tant el client com el servidor.</para>
-                </listitem>
-              </varlistentry>
             </variablelist>
             <para
->Omissió: no seleccionat; VERS: <guibutton
->predeterminat (Negocia la versió més alta)</guibutton
+>Omissió: <guibutton
+>3.1.1 (Windows Server 2016)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4777,10 +4522,6 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
-            <para
->Opció: <option
->cache=ARG</option
-></para>
             <para
 >Defineix com es gestionen les sol·licituds de lectura i escriptura. En cas que trieu no desar les dades dels fitxers a la memòria cau, el client mai utilitzarà la memòria cau per a les lectures i escriptures normals. Sempre accedirà directament al servidor per a satisfer una sol·licitud de lectura o escriptura. Si trieu seguir directament el protocol &CIFS;/SMB2, la memòria cau només serà confiable si el client ha establert un bloqueig d'operació («oplock»). Si el client no ha establert cap bloqueig d'operació, llavors el client ometrà la memòria cau i accedirà directament al servidor per a la sol·licitud de lectura o escriptura. Triant permetre una semàntica més laxa de la memòria cau, a vegades pot proporcionar un rendiment millor a canvi de la coherència de la memòria cau. Aquesta opció pot provocar corrupció de les dades, si diversos clients accedeixen al mateix conjunt de fitxers en el servidor al mateix temps. Per això, es recomana el mode directe de la memòria cau.</para>
             <para
@@ -4795,7 +4536,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Això farà que <ulink url="man:/mount.cifs"
+>S'utilitzarà l'argument <option
+>cache=none</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4815,7 +4558,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Això farà que <ulink url="man:/mount.cifs"
+>S'utilitzarà l'argument <option
+>cache=strict</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4823,7 +4568,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> segueixi el protocol &CIFS;/SMB2 de manera estricta.</para>
+> segueixi el protocol &CIFS;/SMB2 de manera directa.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4835,7 +4580,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Això farà que <ulink url="man:/mount.cifs"
+>S'utilitzarà l'argument <option
+>cache=loose</option
+> de la línia d'ordres. Això farà que <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4848,8 +4595,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Omissió: no seleccionat; ARG: <guibutton
->Segueix estrictament el protocol &CIFS;/SMB2</guibutton
+>Omissió: <guibutton
+>Segueix directament el protocol &CIFS;/SMB2</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -5066,7 +4813,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Omissió: no seleccionat; <guibutton
+>Omissió: <guibutton
 >Protocol NTLMSSP</guibutton
 ></para>
           </listitem>
@@ -5092,7 +4839,7 @@ ntlm auth = yes
 >D'acord</guibutton
 > al diàleg d'entrada, les opcions seran comprovades contra una llista blanca. Totes les entrades vàlides seran acceptades i introduïdes a la línia d'edició.</para>
             <para
->Omissió: no seleccionada; buida</para>
+>Omissió: buida</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -5110,7 +4857,7 @@ ntlm auth = yes
 >La pestanya <guilabel
 >Configuració del muntatge</guilabel
 > només està disponible a FreeBSD, NetBSD i DragonFly BSD. Les opcions de configuració presents al &Linux; es poden trobar a les seccions <link linkend="configuration_page_mounting_common_mount_settings"
->Configuració normal del muntatge (només al &Linux;)</link
+>Configuració comuna del muntatge (només al &Linux;)</link
 > i <link linkend="configuration_page_mounting_advanced_mount_settings"
 >Configuració avançada del muntatge (només al &Linux;)</link
 >.</para>
@@ -5165,7 +4912,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> i <ulink url="man:/umask(2)"
+> i <ulink url="man:/umask"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -5195,7 +4942,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> i <ulink url="man:/umask(2)"
+> i <ulink url="man:/umask"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -5405,7 +5152,7 @@ ntlm auth = yes
                         </term>
                         <listitem>
                           <para
->Format de transformació Unicode (o joc de caràcters codificats universals) de 8 bits. L'UTF-8 és emprat per moltes distribucions de &Linux; com a joc de caràcters predeterminat i, a més, és la codificació més normal per a la World Wide Web.</para>
+>Format de transformació Unicode (o joc de caràcters codificats universals) de 8 bits. L'UTF-8 és emprat per moltes distribucions de &Linux; com a joc de caràcters predeterminat i, a més, és la codificació més comuna per a la World Wide Web.</para>
                         </listitem>
                       </varlistentry>
                       <varlistentry>
@@ -5513,7 +5260,7 @@ ntlm auth = yes
                         </term>
                         <listitem>
                           <para
->L'estàndard industrial tailandès 620-2533, normalment conegut com a TIS-620, és el joc de caràcters i la codificació de caràcters més habitual per a l'idioma tailandès.</para>
+>L'estàndard industrial tailandès 620-2533, comunament conegut com a TIS-620, és el joc de caràcters i la codificació de caràcters més comuna per a l'idioma tailandès.</para>
                         </listitem>
                       </varlistentry>
                     </variablelist>
@@ -5998,7 +5745,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Els noms d'usuari d'inici de sessió i les contrasenyes s'emmagatzemen en una subcarpeta anomenada <filename role="directory"
+>Els noms d'inici de sessió i les contrasenyes s'emmagatzemen en una subcarpeta anomenada <filename role="directory"
 >Smb4K</filename
 > de la cartera de la xarxa actual (predeterminat: «kdewallet»). L'avantatge d'aquest mètode és que les dades d'autenticació s'emmagatzemen permanentment i estan encriptades al disc dur. Només haureu de proporcionar-la una vegada i la pròxima vegada que sigui necessària, el &smb4k; la llegirà a la cartera. Si desmarqueu aquesta opció, les dades d'autenticació no s'emmagatzemaran.</para>
             <para
@@ -6045,21 +5792,21 @@ ntlm auth = yes
 >Entrades de la cartera</title>
       
       <para
->En aquest editor podreu canviar o suprimir les entrades existents de la cartera. Abans de poder-les editar, haureu de carregar-les des de la cartera digital prement el botó <guibutton
+>En aquest editor podreu modificar o eliminar les entrades de la cartera existents. Abans de poder-les editar, haureu de carregar-les des de la cartera prement el botó <guibutton
 >Carrega</guibutton
->. Llavors apareixerà la llista de les entrades a la vista de la llista. Es pot editar una entrada seleccionant-la i marcant el botó <guibutton
->Edita</guibutton
-> de la dreta o fent-hi doble clic. Es mostrarà un diàleg de contrasenya amb el nom d'usuari i la contrasenya i podreu modificar les credencials.</para>
+>. La llista de les entrades apareixerà a la vista de llista de l'esquerra. Es pot editar una entrada seleccionant-la i marcant el botó <guibutton
+>Detalls</guibutton
+> de la dreta. També podeu senzillament fer clic dret sobre l'entrada i triar l'element <guimenuitem
+>Edita</guimenuitem
+> al menú emergent. Es mostraran els detalls i es poden modificar.</para>
       <para
->Es pot eliminar una entrada seleccionant-la i fent clic al botó <guibutton
->Elimina</guibutton
->. Totes les entrades de la cartera es poden eliminar alhora fent clic al botó <guibutton
->Neteja</guibutton
->. Amb el botó <guibutton
->Reinicia</guibutton
-> podeu restaurar l'estat inicial.</para>
+>Es pot eliminar una entrada seleccionant l'element <guimenuitem
+>Elimina</guimenuitem
+> des del menú emergent. Totes les entrades de la cartera es poden eliminar alhora triant l'element <guimenuitem
+>Neteja la llista</guimenuitem
+>.</para>
       <para
->Un cop hàgiu finalitzat l'edició, es podran cometre els canvis a la cartera fent clic a <guibutton
+>Un cop hàgiu finalitzat l'edició, es podran de cometre els canvis a la cartera prement <guibutton
 >Desa</guibutton
 >.</para>
     </sect2>
@@ -6117,7 +5864,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Directori de sincronització</title>
+>Destinació predeterminada</title>
 
         <variablelist>
           <varlistentry>
@@ -6172,44 +5919,14 @@ ntlm auth = yes
 >, el mateix que <option
 >-rlptgoD</option
 > (no <option
->-A</option
->), <option
->-X</option
->, <option
->-U</option
->, <option
->-N</option
->, <option
 >-H</option
 >)</para>
               <para
->Activa el mode d'arxiu. Aquesta és una forma ràpida de dir que voleu recursivitat i que voleu conservar gairebé tot. Tingueu en compte que <option
+>Alterna el mode de l'arxiu. Aquesta és una forma ràpida de dir que voleu recursivitat i conservar-ho gairebé tot. Cal tenir en compte que <option
 >-a</option
-> no preserva els enllaços durs (<option
+> no conservarà els enllaços durs, ja que trobar fitxers amb múltiples enllaços és costós. Haureu d'especificar per separat l'argument <option
 >-H</option
->), les llistes de control d'accés (ACL, <option
->-A</option
->), atributs ampliats (xattrs, <option
->-X</option
->), hores d'accés (<option
->-U</option
->) ni hores de creació (<option
->-N</option
->). Heu d'especificar aquestes opcions per separat. L'única excepció a l'equivalència anterior és quan s'especifica <option
->--files-from</option
->, en aquest cas no s'implica <option
->-r</option
 >.</para>
-              <para
->En cas que no vulgueu executar el <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> en el mode d'arxiu, trieu els arguments adequats en els paràmetres.</para>
               <para
 >Omissió: seleccionada</para>
             </listitem>
@@ -6231,7 +5948,7 @@ ntlm auth = yes
               <para
 >Recursiu en els subdirectoris.</para>
               <para
->Omissió: no seleccionada</para>
+>Omissió: seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6321,7 +6038,8 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title
->Còpies de seguretat</title>
+>Còpia de seguretat</title>
+
         <variablelist>
           <varlistentry>
             <term>
@@ -6410,15 +6128,7 @@ ntlm auth = yes
               <para
 >En combinació amb l'opció <option
 >--backup</option
->, això li indica al <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> que emmagatzemi totes les còpies de seguretat a la carpeta especificada. És molt útil per a les còpies de seguretat incrementals. També podeu especificar un sufix per a la còpia de seguretat amb l'opció <option
+>, això li indica al rsync que emmagatzemi totes les còpies de seguretat a la carpeta especificada. És molt útil per a les còpies de seguretat incrementals. També podeu especificar un sufix per a la còpia de seguretat amb l'opció <option
 >--suffix</option
 > (en cas contrari, els fitxers per als quals es crea la còpia de seguretat a la carpeta especificada conservaran els noms de fitxer originals).</para>
               <para
@@ -6474,7 +6184,7 @@ ntlm auth = yes
 ></ulink
 > ometi qualsevol fitxer que existeixi a la destinació i que tingui un temps de modificació més recent que el del fitxer d'origen. (Si un fitxer de destinació existent té un temps de modificació igual que el del fitxer d'origen, s'actualitzarà si les mides són diferents).</para>
               <para
->Omissió: no seleccionada</para>
+>Omissió: seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6662,7 +6372,7 @@ ntlm auth = yes
               <para
 >Copia els enllaços simbòlics com a enllaços simbòlics.</para>
               <para
->Omissió: no seleccionada</para>
+>Omissió: seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6741,6 +6451,8 @@ ntlm auth = yes
             <listitem>
               <para
 >Opció: <option
+>-H</option
+>/<option
 >--munge-links</option
 ></para>
               <para
@@ -6848,14 +6560,11 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
-    </sect2>
 
-    <sect2 id="configuration_page_synchronization_attributes_ownership">
-      <title
->Atributs dels fitxers i propietat</title>
-      <sect3 id="configuration_page_synchronization_attributes_ownership_attributes">
+      <sect3 id="configuration_page_synchronization_file_handling_perms">
         <title
->Atributs dels fitxers</title>
+>Permisos, &etc;</title>
+
         <variablelist>
           <varlistentry>
             <term>
@@ -6874,216 +6583,9 @@ ntlm auth = yes
               <para
 >Aquesta opció fa que la banda de la recepció estableixi els permisos en la destinació com els de l'origen.</para>
               <para
->Omissió: no seleccionada</para>
+>Omissió: seleccionada</para>
             </listitem>
           </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Conserva les llistes de control d'accés (ACL)</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-A</option
->/<option
->--acls</option
-></para>
-              <para
->Conserva les llistes de control d'accés. Aquesta opció fa que el <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> actualitzi les ACL de destinació perquè siguin les mateixes que les ACL d'origen. L'opció també implica --perms. Els sistemes d'origen i de destinació cal que tinguin les entrades ACL compatibles perquè aquesta opció funcioni adequadament.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Conserva els atributs ampliats</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-X</option
->/<option
->--xattrs</option
-></para>
-              <para
->Conserva els atributs ampliats. Aquesta opció fa que el <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> actualitzi els atributs ampliats de destí perquè siguin els mateixos que els d'origen.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Conserva les hores d'accés</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-U</option
->/<option
->--atimes</option
-></para>
-              <para
->Conserva les hores d'accés. Això fa que el <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> estableixi les hores d'accés (ús) dels fitxers de destinació amb els mateixos valors que els dels fitxers d'origen.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Conserva les hores de creació</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-N</option
->/<option
->--crtimes</option
-></para>
-              <para
->Conserva les hores de creació. Això fa que el <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> estableixi les hores de creació (novetat) dels fitxers de destinació amb els mateixos valors que els dels fitxers d'origen.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Conserva els dispositius i fitxers especials</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-D</option
->/<option
->--devices --specials</option
-></para>
-              <para
->Aquesta opció farà que el <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> transfereixi els caràcters i els fitxers de dispositiu de blocs, així com els fitxers especials (com ara els sòcols i fifo) al sistema remot. Aquesta opció no tindrà efecte si la banda de la recepció no s'executa com a superusuari i no s'especifica <option
->--super</option
->.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Conserva les hores</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-t</option
->/<option
->--times</option
-></para>
-              <para
->Li indica al <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> que transfereixi els temps de modificació juntament amb els fitxers i que ho actualitzi en el sistema remot.</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Omet els directoris en conservar les hores</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-O</option
->/<option
->--omit-dir-times</option
-></para>
-              <para
->Li indica al <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> que ometi els directoris quan mantinguin l'hora de modificació (vegeu <option
->--times</option
->).</para>
-              <para
->Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-      
-      <sect3 id="configuration_page_synchronization_attributes_ownership_ownership">
-        <title
->Propietat</title>
-        <variablelist>
           <varlistentry>
             <term>
               <menuchoice
@@ -7121,7 +6623,7 @@ ntlm auth = yes
 >--super</option
 >.</para>
               <para
->Omissió: no seleccionada</para>
+>Omissió: seleccionada</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7151,6 +6653,94 @@ ntlm auth = yes
 >--no-super</option
 >), només es conservaran els grups als quals sigui membre el receptor.</para>
               <para
+>Omissió: seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Conserva els dispositius i fitxers especials</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-D</option
+>/<option
+>--devices --specials</option
+></para>
+              <para
+>Aquesta opció farà que el <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> transfereixi els caràcters i els fitxers de dispositiu de blocs, així com els fitxers especials (com ara els sòcols i fifo) al sistema remot. Aquesta opció no tindrà efecte si la banda de la recepció no s'executa com a superusuari i no s'especifica <option
+>--super</option
+>.</para>
+              <para
+>Omissió: seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Conserva les hores</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-t</option
+>/<option
+>--times</option
+></para>
+              <para
+>Li indica al <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> que transfereixi els temps de modificació juntament amb els fitxers i que ho actualitzi en el sistema remot.</para>
+              <para
+>Omissió: seleccionada</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Omet els directoris en conservar les hores</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-O</option
+>/<option
+>--omit-dir-times</option
+></para>
+              <para
+>Li indica al <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> que ometi els directoris quan mantinguin l'hora de modificació (vegeu <option
+>--times</option
+>).</para>
+              <para
 >Omissió: no seleccionada</para>
             </listitem>
           </varlistentry>
@@ -7165,9 +6755,11 @@ ntlm auth = yes
     <sect2 id="configuration_page_synchronization_file_transfer">
       <title
 >Transferència de fitxers</title>
+
       <sect3 id="configuration_page_synchronization_file_transfer_compression">
         <title
 >Compressió</title>
+
         <variablelist>
           <varlistentry>
             <term>
@@ -7198,15 +6790,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opció: <option
->--compress-level=NUM</option
-></para>
-              <para
->Estableix explícitament el nivell de compressió a utilitzar. Si NÚM no és zero, l'argument <option
->--compress</option
-> és implícit.</para>
-              <para
->Omissió: no seleccionada; NRE: 0</para>
+>Estableix explícitament el nivell de compressió a utilitzar (--compress-level=NÚM). Si NÚM no és zero, l'argument --compress és implícit.</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7218,21 +6802,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opció: <option
->--skip-compress=LIST</option
-></para>
-              <para
->Sobreescriu la llista de sufixos de fitxers que no es comprimiran. La LLISTA hauria de ser un o més sufixos de fitxers (sense el punt) separats per barres. Es pot especificar una cadena buida per a indicar que no s'ha d'ometre cap fitxer. La llista predeterminada de sufixos se substituirà amb aquesta llista. Per als detalls addicionals, vegeu la <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->pàgina del manual del «rsync»</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
->.</para>
-              <para
->Omissió: no seleccionada; LLISTA: buida</para>
+>Sobreescriu la llista de sufixos de fitxers que no es comprimiran (--skip-compress=LLISTA). La LLISTA hauria de ser un o més sufixos de fitxers (sense el punt) separats per barres. Es pot especificar una cadena buida per a indicar que no s'ha d'ometre cap fitxer. La llista predeterminada de sufixos se substituirà per aquesta llista. Per als detalls addicionals, vegeu la pàgina del manual del «rsync».</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7241,6 +6811,7 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_files">
         <title
 >Fitxers</title>
+
         <variablelist>
           <varlistentry>
             <term>
@@ -7252,7 +6823,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Opció: <option
->--min-size=MIDA</option
+>--min-size=NÚM</option
 ></para>
               <para
 >Li indica al <ulink url="man:/rsync"
@@ -7265,7 +6836,7 @@ ntlm auth = yes
 ></ulink
 > que eviti la transferència de qualsevol fitxer que sigui més petit que la MIDA especificada, el qual pot ajudar a no transferir fitxers petits, no desitjats.</para>
               <para
->Omissió: no seleccionada; MIDA: 0 kB</para>
+>Omissió: no seleccionada; NÚM: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7278,7 +6849,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Opció: <option
->--max-size=MIDA</option
+>--max-size=NÚM</option
 ></para>
               <para
 >Li indica al <ulink url="man:/rsync"
@@ -7291,7 +6862,7 @@ ntlm auth = yes
 ></ulink
 > que eviti la transferència de qualsevol fitxer que sigui més gran que la MIDA especificada.</para>
               <para
->Omissió: no seleccionada; MIDA: 0 kB</para>
+>Omissió: no seleccionada; NÚM: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7368,6 +6939,7 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
         <title
 >Miscel·lània</title>
+
         <variablelist>
           <varlistentry>
             <term>
@@ -7382,9 +6954,9 @@ ntlm auth = yes
 >--bwlimit=VELOCITAT</option
 ></para>
               <para
->Estableix la VELOCITAT màxima de transferència de dades en kilobytes per segon.</para>
+>Estableix la velocitat màxima de transferència de dades en kilobytes per segon.</para>
               <para
->Omissió: no seleccionada; VELOCITAT: 0 kB/s</para>
+>Omissió: no seleccionada; VELOCITAT: 0 KiB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7794,6 +7366,48 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
+>Regles de filtratge personalitzades</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opció: <option
+>-f</option
+>/<option
+>--filter=REGLA</option
+></para>
+              <para
+>Aquí podeu definir una o més regles de filtratge. Cada regla haurà d'estar prefixada amb la cadena d'opció <option
+>--filter=</option
+> o <option
+>-f</option
+> perquè el contingut del quadre de text sigui passat a l'ordre <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> tal qual.</para>
+              <para
+>Aquesta opció permet afegir regles per a excloure selectivament determinats fitxers de la llista de fitxers que es transferiran. Això és molt útil en combinació amb una transferència recursiva.</para>
+              <para
+>Podeu utilitzar tantes opcions <option
+>--filter</option
+> com vulgueu, a mesura que creeu la llista de fitxers que voleu excloure.</para>
+              <para
+>Vegeu la secció «FILTER RULES» (REGLES DE FILTRATGE) de la <ulink url="man:/rsync"
+>pàgina del manual</ulink
+> per a obtenir informació detallada sobre com treballa aquesta opció.</para>
+              <para
+>Omissió: buida</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
 >Usa la regla de filtratge --filter='dir-merge /.rsync-filter'</guibutton
 ></menuchoice>
             </term>
@@ -7844,48 +7458,6 @@ ntlm auth = yes
 > per a obtenir informació detallada sobre com treballa aquesta opció.</para>
               <para
 >Omissió: no seleccionada</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Regles de filtratge personalitzades</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opció: <option
->-f</option
->/<option
->--filter=REGLA</option
-></para>
-              <para
->Aquí podeu definir una o més regles de filtratge. Cada regla haurà d'estar prefixada amb la cadena d'opció <option
->--filter=</option
-> o <option
->-f</option
-> perquè el contingut del quadre de text sigui passat a l'ordre <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> tal qual.</para>
-              <para
->Aquesta opció permet afegir regles per a excloure selectivament determinats fitxers de la llista de fitxers que es transferiran. Això és molt útil en combinació amb una transferència recursiva.</para>
-              <para
->Podeu utilitzar tantes opcions <option
->--filter</option
-> com vulgueu, a mesura que creeu la llista de fitxers que voleu excloure.</para>
-              <para
->Vegeu la secció «FILTER RULES» (REGLES DE FILTRATGE) de la <ulink url="man:/rsync"
->pàgina del manual</ulink
-> per a obtenir informació detallada sobre com treballa aquesta opció.</para>
-              <para
->Omissió: no seleccionada; REGLES: buida</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7970,7 +7542,8 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
         <title
->Miscel·lània</title>
+>General</title>
+
         <variablelist>
           <varlistentry>
             <term>
@@ -8046,45 +7619,121 @@ ntlm auth = yes
 
 
 <!-- 
-      Configuring Smb4K : Custom Settings
+      Configuring Smb4K : Custom Options
 -->
 
-  <sect1 id="configuration_page_custom_settings">
+  <sect1 id="configuration_page_custom_options">
     <title
->Configuració personalitzada</title>
+>Opcions personalitzades</title>
 
     <para
->Tots els servidors i comparticions per a les quals heu definit la configuració personalitzada estan llistats aquí.</para>
+>Tots els servidors i comparticions per a les quals heu definit les opcions personalitzades estan llistats aquí.</para>
 
     <screenshot>
       <screeninfo
->Captura de pantalla de la pestanya de configuració «Configuració personalitzada»</screeninfo>
+>Captura de pantalla de la pestanya de configuració «Opcions personalitzades»</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
->La pestanya de configuració «Configuració personalitzada»</phrase
+>La pestanya de configuració «Opcions personalitzades»</phrase
 ></textobject>
       </mediaobject>
     </screenshot>
 
     <para
->Les opcions definides per a un element de xarxa es poden editar fent doble clic sobre una entrada a la vista de llista o triant el botó <guimenuitem
+>Les opcions definides per a un element de xarxa es poden editar fent doble clic sobre una entrada a la vista de llista o triant l'element <guimenuitem
 >Edita</guimenuitem
->. S'obrirà l'<link linkend="custom_settings"
->editor de configuració personalitzada</link
-> i es podrà edita. Per a eliminar una entrada, seleccioneu-lo i feu clic dret i al botó <guimenuitem
+> des del menú emergent (feu clic dret sobre l'element seleccionat). Les opcions personalitzades es carregaran i es podran editar. Per a eliminar una entrada, feu clic dret i trieu l'element <guimenuitem
 >Elimina</guimenuitem
->. Tots els elements de la xarxa es poden eliminar alhora triant l'element <guimenuitem
+> des del menú emergent. Tots els elements de la xarxa es poden eliminar alhora triant l'element <guimenuitem
 >Neteja la llista</guimenuitem
->. Per a reiniciar els canvis, feu clic al botó <guibutton
-></guibutton
 >.</para>
+
     <para
->Per a més informació quant a l'editor de configuració personalitzada llegiu aquesta <link linkend="custom_settings"
->secció</link
+>Les opcions personalitzades són accessibles a través de les pestanyes de la dreta.</para>
+    
+<!--
+      Configuring Smb4K : Custom Options : Network Item
+-->
+    
+    <sect2 id="configuration_page_custom_options_network_item">
+      <title
+>Element de xarxa</title>
+      
+      <para
+>Aquesta pestanya serveix principalment com a recurs d'informació. A la llista desplegable <guilabel
+>Identificació</guilabel
+> ofereix el grup de treball o el domini de l'element de xarxa, la seva ubicació i l'adreça IP. Podeu editar l'adreça IP, en cas que us calgui ajustar-la.</para>
+    </sect2>
+    
+<!--
+      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
+-->
+    <sect2 id="configuration_page_custom_options_common_mount_settings">
+      <title
+>Configuració comuna del muntatge (només al &Linux;)</title>
+      
+      <para
+>Aquí podeu editar les opcions de configuració emprades habitualment per al muntatge sota &Linux;. Per a obtenir més informació sobre les opcions actuals, vegeu la pàgina de configuració del <link linkend="configuration_page_mounting"
+>Muntatge</link
 >.</para>
+    </sect2>
+    
+<!--
+      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
+-->
+    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
+      <title
+>Configuració avançada del muntatge (només al &Linux;)</title>
+      
+      <para
+>Aquí podeu editar les opcions de configuració avançades emprades per al muntatge sota &Linux;. Per a obtenir més informació sobre les opcions actuals, vegeu la pàgina de configuració del <link linkend="configuration_page_mounting"
+>Muntatge</link
+>.</para>
+    </sect2>
+    
+<!--
+      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
+-->
+    <sect2 id="configuration_page_custom_options_mount_settings">
+      <title
+>Configuració del muntatge (només al BSD)</title>
+      
+      <para
+>Aquí podeu editar les opcions de configuració emprades per al muntatge sota BSD. Per a obtenir més informació sobre les opcions actuals, vegeu la pàgina de configuració del <link linkend="configuration_page_mounting"
+>Muntatge</link
+>.</para>
+    </sect2>
+
+<!-- 
+      Configuring Smb4K : Custom Options : Browse Settings
+-->
+
+    <sect2 id="configuration_page_custom_options_browse_settings">
+      <title
+>Configuració de la navegació</title>
+    
+      <para
+>Aquí podeu editar diverses opcions de configuració de &Samba; emprades per a navegar. Per a obtenir més informació, vegeu les opcions de configuració de <link linkend="configuration_page_network_samba_settings"
+>&Samba;</link
+>.</para>
+    </sect2>
+
+<!-- 
+      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
+-->
+
+    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
+      <title
+>Configuració de l'activació per LAN (Wake-On-LAN)</title>
+    
+      <para
+>Aquí podeu editar les opcions Capacitats de l'activació per LAN (Wake-On-LAN) que heu definit prèviament a través del diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
+>Opcions personalitzades</link
+>.</para>
+    </sect2>
   </sect1>
 
 <!-- 
@@ -8129,7 +7778,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Fa que el &smb4k; utilitzi els perfils. Això permet definir diferents adreces d'interès i configuracions personalitzades per a cada perfil. Això és especialment útil si esteu utilitzant un ordinador portàtil en diferents veïnatges de la xarxa, &pex;, a casa i a la feina. Quan habiliteu aquesta opció per primera vegada, la primera entrada a la <link linkend="configuration_page_profiles_profiles"
+>Fa que el &smb4k; utilitzi els perfils. Això permet definir diferents adreces d'interès i opcions personalitzades per a cada perfil. Això és especialment útil si esteu utilitzant un ordinador portàtil en diferents veïnatges de la xarxa, &pex;, a casa i a la feina. Quan habiliteu aquesta opció per primera vegada, la primera entrada a la <link linkend="configuration_page_profiles_profiles"
 >llista de perfils</link
 > serà el perfil actiu.</para>
             <para
@@ -8350,31 +7999,8 @@ ntlm auth = yes
 >Afegir adreces d'interès</link
 >.</para>
         </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenu
->Xarxa</guimenu
-> <guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
-> </menuchoice>
-        </term>
-        <listitem>
-          <para
->Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
->Configuració personalitzada</link
->. Podeu establir diverses opcions personalitzades per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o un grup de treball, aquesta acció estarà inhabilitada. Per a més detalls, llegiu la secció <link linkend="custom_settings_adding"
->Afegir una configuració personalitzada</link
->.</para>
-        </listitem>
-      </varlistentry>
+      </varlistentry
+>      
       <varlistentry>
         <term>
           <menuchoice
@@ -8417,6 +8043,28 @@ ntlm auth = yes
 >Obre el <link linkend="network_neighborhood_browser_authentication"
 >diàleg d'autenticació</link
 >. Pot proporcionar el nom d'usuari i la contrasenya per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o si heu seleccionat un grup de treball, aquesta acció estarà inhabilitada.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Xarxa</guimenu
+> <guimenuitem
+>Opcions personalitzades</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_options"
+>Opcions personalitzades</link
+>. Podeu establir diverses opcions personalitzades per al servidor o compartició seleccionada. Si no s'ha seleccionat cap element, o un grup de treball, aquesta acció estarà inhabilitada.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8587,11 +8235,11 @@ ntlm auth = yes
 >Desmunteu una o múltiples comparticions seleccionades. La possibilitat de desmuntar les comparticions està restringida de manera predeterminada a les que són propietat de l'usuari. Tanmateix, podreu canviar aquest comportament canviant les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració</link
 > al diàleg de configuració. Si no hi ha cap compartició seleccionada a la vista de les comparticions, aquest botó restarà inhabilitat.</para>
-          <para
->El &smb4k; proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
+            <para
+>El &smb4k; també proporciona la possibilitat de forçar el desmuntatge de les comparticions (només al &Linux;). Això pot ser útil amb les comparticions inaccessibles que no es poden desmuntar de la manera normal. Per a habilitar aquesta característica, haureu de modificar les <link linkend="configuration_page_mounting_basic_settings_behavior"
 >opcions de configuració</link
 > al diàleg de configuració.</para>
-          <para
+            <para
 >Per a més detalls, llegiu la secció <link linkend="shares_view_unmounting"
 >Desmuntar les comparticions</link
 >.</para>
@@ -8632,31 +8280,8 @@ ntlm auth = yes
 >Afegir adreces d'interès</link
 >.</para>
         </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenu
->Xarxa</guimenu
-> <guimenuitem
->Afegeix una configuració personalitzada</guimenuitem
-> </menuchoice>
-        </term>
-        <listitem>
-          <para
->Obre el diàleg <link linkend="network_neighborhood_browser_defining_custom_settings"
->Configuració personalitzada</link
->. Podeu establir diverses opcions personalitzades per a la compartició seleccionada. Per a més detalls, llegiu la secció <link linkend="custom_settings_adding"
->Afegir una configuració personalitzada</link
->.</para>
-        </listitem>
-      </varlistentry>
+      </varlistentry
+>   
       <varlistentry>
         <term>
           <menuchoice
@@ -8781,7 +8406,7 @@ ntlm auth = yes
 ><guimenu
 >Adreces d'interès</guimenu
 > <guimenuitem
->Munta les adreces d'interès</guimenuitem
+>Munta totes les adreces d'interès</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8907,7 +8532,7 @@ ntlm auth = yes
 >El menú Ajuda</title>
 
     <para
->De manera addicional, el &smb4k; té la configuració normal al &kde; i els elements del menú <guimenu
+>De manera addicional, el &smb4k; té la configuració comuna al &kde; i els elements del menú <guimenu
 >Ajuda</guimenu
 >. Per a obtenir més informació, llegiu la secció sobre <ulink url="help:/fundamentals/menus.html#menus-help"
 >El menú Ajuda</ulink
@@ -8951,7 +8576,7 @@ ntlm auth = yes
     <listitem
 ><para
 >Si heu experimentat una fallada, adjunteu una traça inversa completa. Per a això, es recomana tornar a compilar el &smb4k; amb els símbols de depuració. El com es fa s'esmenta al fitxer <filename
->README.md</filename
+>README</filename
 > del codi font.</para
 ></listitem>
     <listitem
@@ -8981,7 +8606,7 @@ ntlm auth = yes
 >Crèdits i llicència</title>
 
   <para
->Copyright &copy; 2003 - 2023, Alexander Reinholdt <email
+>Copyright &copy; 2003 - 2021, Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
 ></para>
 

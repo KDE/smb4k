@@ -1,15 +1,15 @@
-# Translation of plasma_applet_org.kde.smb4kqml.po to Brazilian Portuguese
-# Copyright (C) 2014-2019 This_file_is_part_of_KDE
+# Translation of plasma_applet_smb4k-qml.po to Brazilian Portuguese
+# Copyright (C) 2014 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# André Marcelo Alvarenga <alvarenga@kde.org>, 2014, 2019.
+# André Marcelo Alvarenga <alvarenga@kde.org>, 2014.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2018, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version:plasma_applet_org.kde.smb4kqml \n"
+"Project-Id-Version: plasma_applet_smb4k-qml\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2019-04-29 16:47-0300\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2019-06-11 10:16-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 19.04.1\n"
 
 #: package/contents/ui/BookmarkItemDelegate.qml:59
 #: package/contents/ui/SharesViewItemDelegate.qml:59
@@ -93,32 +93,11 @@ msgstr "Desmontar"
 msgid "Unmount all shares"
 msgstr "Desmontar todos os compartilhamentos"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Editar favoritos"
+#~ msgid "Back"
+#~ msgstr "Voltar"
 
-#~ msgid "OK"
-#~ msgstr "OK"
+#~ msgid "Edit"
+#~ msgstr "Editar"
 
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Clear"
-#~ msgstr "Limpar"
-
-#~ msgid "Label:"
-#~ msgstr "Rótulo:"
-
-#~ msgid "Login:"
-#~ msgstr "Usuário:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Endereço IP:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nome do grupo:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Favoritos do topo"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Excluir favorito"
+#~ msgid "Up"
+#~ msgstr "Para cima"

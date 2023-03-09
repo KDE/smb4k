@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-03-06 15:54+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2018-01-29 09:44+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -40,8 +40,6 @@ msgstr ""
 "X-POFile-SpellExtra: nodes del MAC WOL KOI RU Big NÚM interval JP EUC TIS\n"
 "X-POFile-SpellExtra: KR GB CP WHEN NTLMSSP cruid Wolfgang Geisendörfer\n"
 "X-POFile-SpellExtra: KiB\n"
-"X-POFile-IgnoreConsistency: Type\n"
-"X-POFile-IgnoreConsistency: Comment\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -81,9 +79,10 @@ msgstr ""
 "partilhas de Samba"
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2019 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2019 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -159,9 +158,10 @@ msgid "Add &Bookmark"
 msgstr "Adicionar aos &Favoritos"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Favoritos de Montagens"
+msgstr "Montar Todos os Favoritos"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -189,9 +189,10 @@ msgid "Synchronization"
 msgstr "Sincronização"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Mount Settings"
 msgid "Custom Settings"
-msgstr "Configuração Personalizada"
+msgstr "Configuração de Montagens Comum"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -260,17 +261,17 @@ msgstr "Indique a informação de autenticação por omissão."
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "Define o utilizador e senha do item %1 da carteira."
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr "Define o utilizador e senha da conta predefinida."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Tudo correcto."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -281,7 +282,6 @@ msgstr "Limpar a Lista"
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
-"O item %1 foi removido, porque todas as opções personalizadas foram repostas."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -384,9 +384,10 @@ msgstr[1] ""
 "favor, leia o manual para saber mais detalhes.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Basic Settings"
 msgid "Browse Settings"
-msgstr "Configuração da Navegação"
+msgstr "Configuração Básica"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
@@ -404,27 +405,33 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Defina as máquinas que devem ser activadas com a janela do editor de "
-"configurações personalizadas."
+"<qt>Defina as máquinas que devem ser activadas com a janela de opções "
+"personalizadas.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Configuração Avançada"
+msgstr "Configuração de Montagens Avançada"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "Pasta de Sincronização"
+msgstr "Sincronização"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Cópias de segurança"
+msgstr "Cópia de Segurança"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -444,17 +451,18 @@ msgstr "Tratamento dos Ficheiros"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "Atributos dos Ficheiros"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner"
 msgid "Ownership"
 msgstr "Dono"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Atributos && Donos dos Ficheiros"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -482,7 +490,7 @@ msgstr "Diversos"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kB/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -505,9 +513,10 @@ msgid "File Deletion"
 msgstr "Remoção de Ficheiros"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General Settings"
 msgid "General Filtering Settings"
-msgstr "Configuração Geral da Filtragem"
+msgstr "Configuração Geral"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -550,14 +559,17 @@ msgid "Mounted Shares"
 msgstr "Partilhas Montadas"
 
 #: smb4k/smb4kmainwindow.cpp:402
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Closing the main window will keep Smb4K running in the system tray. "
+#| "Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
-"<qt>Se fechar a janela principal, irá manter o Smb4K em execução na bandeja "
-"do sistema.<br/>Use a opção <i>Sair</i> do menu <i>Ficheiro</i> para sair da "
-"aplicação.</qt>"
+"<p>Se fechar a janela principal, irá manter o Smb4K em execução na bandeja "
+"do sistema. Use a opção <i>Sair</i> do menu <i>Ficheiro</i> para sair da "
+"aplicação.</p>"
 
 #: smb4k/smb4kmainwindow.cpp:404
 #, kde-format
@@ -691,9 +703,10 @@ msgstr "&Procurar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Adicionar Opções &Personalizadas"
+msgstr "Configuração de Montagens Avançada"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -834,7 +847,7 @@ msgid ""
 "any files here.</qt>"
 msgstr ""
 "<qt>Não existe nenhuma ligação activa à partilha <b>%1</b>! Não consegue "
-"largar nada aqui.</qt>"
+"largar ficheiros aqui.</qt>"
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
@@ -847,9 +860,10 @@ msgid "no"
 msgstr "não"
 
 #: smb4k/smb4ktooltip.cpp:177
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Type"
 msgid "Type:"
-msgstr "Tipo:"
+msgstr "Tipo"
 
 #: smb4k/smb4ktooltip.cpp:184
 #, kde-format
@@ -857,9 +871,10 @@ msgid "Workgroup"
 msgstr "Grupo de Trabalho"
 
 #: smb4k/smb4ktooltip.cpp:188
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Master browser"
 msgid "Master Browser:"
-msgstr "Navegador Mestre:"
+msgstr "Navegador mestre"
 
 #: smb4k/smb4ktooltip.cpp:205
 #, kde-format
@@ -867,9 +882,10 @@ msgid "Host"
 msgstr "Máquina"
 
 #: smb4k/smb4ktooltip.cpp:209 smb4k/smb4ktooltip.cpp:227
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Comment"
 msgid "Comment:"
-msgstr "Comentário:"
+msgstr "Comentário"
 
 #: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
@@ -887,14 +903,16 @@ msgid "Share (%1)"
 msgstr "Partilha (%1)"
 
 #: smb4k/smb4ktooltip.cpp:231
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mounted"
 msgid "Mounted:"
-msgstr "Montada:"
+msgstr "Montada"
 
 #: smb4k/smb4ktooltip.cpp:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Host"
 msgid "Host:"
-msgstr "Máquina:"
+msgstr "Máquina"
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, kde-format
@@ -914,26 +932,282 @@ msgid "%1 free of %2 (%3 used)"
 msgstr "%1 livres em %2 (%3 usados)"
 
 #: smb4k/smb4ktooltip.cpp:304
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mountpoint"
 msgid "Mountpoint:"
-msgstr "Montar em:"
+msgstr "Montar em"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Utilizador:"
+msgstr "Interface do Utilizador"
 
 #: smb4k/smb4ktooltip.cpp:314
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner"
 msgid "Owner:"
-msgstr "Dono:"
+msgstr "Dono"
 
 #: smb4k/smb4ktooltip.cpp:317
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File system"
 msgid "File system:"
-msgstr "Sistema de ficheiros:"
+msgstr "Sistema de ficheiros"
 
 #: smb4k/smb4ktooltip.cpp:329
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Size"
 msgid "Size:"
-msgstr "Tamanho:"
+msgstr "Tamanho"
+
+#~ msgid "Custom Options"
+#~ msgstr "Opções Personalizadas"
+
+#~ msgid ""
+#~ "The login information that was stored by Smb4K will be loaded from the "
+#~ "wallet."
+#~ msgstr ""
+#~ "A informação de autenticação que foi guardada pelo Smb4K será carregada "
+#~ "da carteira."
+
+#~ msgid "All modifications you applied are saved to the wallet."
+#~ msgstr "Todas as modificações que aplicar serão gravadas na carteira."
+
+#~ msgid "Details"
+#~ msgstr "Detalhes"
+
+#~ msgid "Entry"
+#~ msgstr "Item"
+
+#~ msgid "Login"
+#~ msgstr "Utilizador"
+
+#~ msgid "Password"
+#~ msgstr "Senha"
+
+#~ msgid "Identification"
+#~ msgstr "Identificação"
+
+#~ msgid "Network Item"
+#~ msgstr "Item da Rede"
+
+#~ msgid "MAC Address"
+#~ msgstr "Endereço MAC"
+
+#~ msgid "MAC Address:"
+#~ msgstr "Endereço MAC:"
+
+#~ msgid "Actions"
+#~ msgstr "Acções"
+
+#~ msgid "Send magic package before scanning the network neighborhood"
+#~ msgstr "Enviar o 'pacote mágico' antes de sondar a vizinhança da rede"
+
+#~ msgid "Send magic package before mounting a share"
+#~ msgstr "Enviar o 'pacote mágico' antes de montar uma partilha"
+
+#, fuzzy
+#~| msgid "Wake-On-LAN"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Activação por LAN"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Montar de novo esta partilha sempre"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Este servidor tem suporte para as extensões de Unix do CIFS"
+
+#~ msgid "Security"
+#~ msgstr "Segurança"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Samba Settings"
+#~ msgstr "Configuração"
+
+#~ msgid "Default Destination"
+#~ msgstr "Destino Predefinido"
+
+#~ msgid "Permissions, etc."
+#~ msgstr "Permissões, etc."
+
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Regras de filtragem especiais:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Opções &Personalizadas"
+
+#, fuzzy
+#~| msgid "Login"
+#~ msgid "Login:"
+#~ msgstr "Utilizador"
+
+#~ msgid "The mount process crashed."
+#~ msgstr "O processo de montagem estoirou."
+
+#~ msgid "The unmount process crashed."
+#~ msgstr "O processo de desmontagem estoirou."
+
+#~ msgid "%1 of %2 free (%3 used)"
+#~ msgstr "%1 livres em %2 (%3 usados)"
+
+#~ msgid "Location"
+#~ msgstr "Localização"
+
+#~ msgid "Network Toolbar"
+#~ msgstr "Barra da Rede"
+
+#~ msgid "Search Toolbar"
+#~ msgstr "Barra de Procura"
+
+#~ msgid "Shares Toolbar"
+#~ msgstr "Barra de Partilhas"
+
+#~ msgid "Alternative Main Toolbar"
+#~ msgstr "Barra Principal Alternativa"
+
+#~ msgid "Password Storage"
+#~ msgstr "Armazenamento de Senhas"
+
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Carrega os itens armazenados na carteira."
+
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Gravar os itens na carteira."
+
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Mostrar os detalhes do item seleccionado."
+
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Se activar esta opção, irá mostrar os detalhes da informação de "
+#~ "autenticação em baixo."
+
+#~ msgid "Undo"
+#~ msgstr "Desfazer"
+
+#~ msgid "UNC Address:"
+#~ msgstr "Endereço UNC:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Porto do Sistema de Ficheiros:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Acesso de Escrita:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Modo de Segurança:"
+
+#~ msgid "User ID:"
+#~ msgstr "ID do Utilizador:"
+
+#~ msgid "Group ID:"
+#~ msgstr "ID do Grupo:"
+
+#~ msgid "Browse List"
+#~ msgstr "Lista de Navegações"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Análise Periódica"
+
+#~ msgid "General Options"
+#~ msgstr "Opções Gerais"
+
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
+
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
+
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Programas Utilitários"
+
+#~ msgid "Copying"
+#~ msgstr "A Copiar"
+
+#~ msgid "File Deletion && Transfer"
+#~ msgstr "Remoção && Transferência de Ficheiros"
+
+#~ msgid "Columns"
+#~ msgstr "Colunas"
+
+#~ msgid "Tooltips"
+#~ msgstr "Dicas"
+
+#~ msgid "View Mode"
+#~ msgstr "Modo de Visualização"
+
+#~ msgid "The network browser could not be created."
+#~ msgstr "Não foi possível criar o navegador da rede."
+
+#~ msgid "Network Search"
+#~ msgstr "Pesquisa na Rede"
+
+#~ msgid "The search dialog could not be created."
+#~ msgstr "Não foi possível criar a janela de pesquisa."
+
+#~ msgid "The shares view could not be created."
+#~ msgstr "Não foi possível criar a área de partilhas."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "A obter a antevisão de %1..."
+
+#~ msgid "Smb4KNetworkBrowserPart"
+#~ msgstr "Smb4KNetworkBrowserPart"
+
+#~ msgid "The network neighborhood browser KPart of Smb4K"
+#~ msgstr "A KPart de navegação na vizinhança da rede do Smb4K"
+
+#~ msgid "© 2007-2015, Alexander Reinholdt"
+#~ msgstr "© 2007-2015, Alexander Reinholdt"
+
+#~ msgid "Waking up remote servers..."
+#~ msgstr "A activar os servidores remotos..."
+
+#~ msgid "Search item:"
+#~ msgstr "Item a pesquisar:"
+
+#~ msgid "Enter the search string here."
+#~ msgstr "Indique aqui o texto a pesquisar."
+
+#~ msgid "Abort"
+#~ msgstr "Interromper"
+
+#~ msgid "Smb4KNetworkSearchPart"
+#~ msgstr "Smb4KNetworkSearchPart"
+
+#~ msgid "The network search KPart of Smb4K"
+#~ msgstr "A KPart de pesquisa na rede do Smb4K"
+
+#~ msgid "The search returned no results."
+#~ msgstr "A pesquisa não devolveu nenhuns resultados."
+
+#~ msgid "Open With"
+#~ msgstr "Abrir Com"
+
+#~ msgid "Smb4KSharesViewPart"
+#~ msgstr "Smb4KSharesViewPart"
+
+#~ msgid "The shares view KPart of Smb4K"
+#~ msgstr "O KPart de visualização das partilhas do Smb4K"
+
+#~ msgid "&Shares"
+#~ msgstr "Partilha&s"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"

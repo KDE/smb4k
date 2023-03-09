@@ -1,12 +1,12 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2017, 2019.
+# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2014, 2016, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2019-06-20 20:44+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -46,7 +46,7 @@ msgstr "Zakładka"
 
 #: package/contents/ui/NetworkBrowserPage.qml:38
 msgid "Rescan"
-msgstr "Przeszukaj ponownie"
+msgstr "Ponownie przeszukaj"
 
 #: package/contents/ui/NetworkBrowserPage.qml:47
 msgid "Abort"
@@ -62,7 +62,7 @@ msgstr "Otwórz okno dialogowe podpinania"
 
 #: package/contents/ui/PopupDialog.qml:39
 msgid "Mounted Shares"
-msgstr "Podpięte zasoby"
+msgstr "Podpięte udziały"
 
 #: package/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
@@ -92,32 +92,11 @@ msgstr "Odepnij"
 msgid "Unmount all shares"
 msgstr "Odepnij wszystkie zasoby"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Edytuj zakładki"
+#~ msgid "Back"
+#~ msgstr "Wstecz"
 
-#~ msgid "OK"
-#~ msgstr "OK"
+#~ msgid "Edit"
+#~ msgstr "Edytuj"
 
-#~ msgid "Cancel"
-#~ msgstr "Zaniechaj"
-
-#~ msgid "Clear"
-#~ msgstr "Wyczyść"
-
-#~ msgid "Label:"
-#~ msgstr "Etykieta:"
-
-#~ msgid "Login:"
-#~ msgstr "Login:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Adres IP:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nazwa grupy:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Szczytowe zakładki"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Usuń zakładkę"
+#~ msgid "Up"
+#~ msgstr "W górę"

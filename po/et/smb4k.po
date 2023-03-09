@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -192,8 +192,7 @@ msgid "Settings"
 msgstr "Seadistused"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:64
-#, fuzzy, kde-format
-#| msgid "Wallet Entries"
+#, kde-format
 msgid "Wallet Entries"
 msgstr "Turvalaeka kirjed"
 
@@ -369,14 +368,12 @@ msgid "Browse Settings"
 msgstr "Sirvimisseadistused"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
@@ -419,8 +416,7 @@ msgid "General"
 msgstr "Üldine"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Lingid"
 
@@ -436,9 +432,9 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
-#| msgid "Owner:"
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "Omanik:"
+msgstr "Omanik"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -446,14 +442,12 @@ msgid "File Attributes && Ownership"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
-#, fuzzy, kde-format
-#| msgid "Compression"
+#, kde-format
 msgid "Compression"
 msgstr "Tihendamine"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:333
-#, fuzzy, kde-format
-#| msgid "Files"
+#, kde-format
 msgid "Files"
 msgstr "Failid"
 
@@ -481,14 +475,12 @@ msgid "File Transfer"
 msgstr "Failiedastus"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:403
-#, fuzzy, kde-format
-#| msgid "Files && Directories"
+#, kde-format
 msgid "Files && Directories"
 msgstr "Failid ja kataloogid"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Piirangud"
 
@@ -514,8 +506,7 @@ msgid "Filtering"
 msgstr "Filtreerimine"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Kontrollsummad"
 
@@ -689,9 +680,9 @@ msgstr "Ot&si"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "&Kohandatud valikud"
+msgstr "Ühendamise muud seadistused"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -940,15 +931,6 @@ msgstr "Suurus:"
 #~ msgid "Custom Options"
 #~ msgstr "Kohandatud valikud"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Ühenda kõik järjehoidjad"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -963,31 +945,11 @@ msgstr "Suurus:"
 #~ msgid "Entry"
 #~ msgstr "Kirje"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Kasutajaliides"
+#~ msgid "Login"
+#~ msgstr "Kasutajanimi"
 
 #~ msgid "Password"
 #~ msgstr "Parool"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Käitumine"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Üldine"
-
-#, fuzzy
-#~| msgid "Miscellaneous"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Muu"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Erifiltrireeglid:"
 
 #~ msgid "Identification"
 #~ msgstr "Identifitseerimine"
@@ -1004,14 +966,10 @@ msgstr "Suurus:"
 #~ msgid "Actions"
 #~ msgstr "Toimingud"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Maagilise paketi saatmine enne võrgunaabruse uurimist"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Maagilise paketi saatmine enne jagatud ressursi ühendamist"
 
 #, fuzzy
@@ -1025,24 +983,7 @@ msgstr "Suurus:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "See server toetab CIFS-i Unixi laiendusi"
 
-#, fuzzy
-#~| msgid "Browse Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Sirvimisseadistused"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Profiilid"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Autentimine"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Turvalisus"
 
 #, fuzzy
@@ -1056,8 +997,17 @@ msgstr "Suurus:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Õigused ja muu selline"
 
-#~ msgid "Login"
-#~ msgstr "Kasutajanimi"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Erifiltrireeglid:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Kohandatud valikud"
 
 #~ msgid "Login:"
 #~ msgstr "Kasutajanimi:"
@@ -1068,14 +1018,29 @@ msgstr "Suurus:"
 #~ msgid "The unmount process crashed."
 #~ msgstr "Lahutamisprotsessi tabas krahh."
 
-#~ msgid "Protocols"
-#~ msgstr "Protokollid"
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 vaba, kokku %2 (kasutusel %3)"
 
+#~ msgid "Master browser"
+#~ msgstr "Nimekirjahoidja"
+
+#~ msgid "Mounted"
+#~ msgstr "Ühendatud"
+
 #~ msgid "Location"
 #~ msgstr "Asukoht"
+
+#~ msgid "Mountpoint"
+#~ msgstr "Ühenduspunkt"
+
+#~ msgid "File system"
+#~ msgstr "Failisüsteem"
+
+#~ msgid "Size"
+#~ msgstr "Suurus"
+
+#~ msgid "Protocols"
+#~ msgstr "Protokollid"
 
 #, fuzzy
 #~| msgid "Save the entries to the wallet."
@@ -3858,3 +3823,12 @@ msgstr "Suurus:"
 
 #~ msgid "M&ount Manually"
 #~ msgstr "Üh&enda käsitsi"
+
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Turvalaekasse salvestatud kirjete laadimine."
+
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Kirjete salvestamine turvalaekasse."
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protokolli vihje:"

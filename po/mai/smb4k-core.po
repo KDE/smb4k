@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -3465,33 +3465,38 @@ msgstr ""
 #~ msgid "Unknown error"
 #~ msgstr "अज्ञात"
 
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "माउंट कएल जाए रहल अछि"
-
 #~ msgid "On"
 #~ msgstr "शुरू"
 
 #~ msgid "Off"
 #~ msgstr "बन्न"
 
-#~ msgid "Required"
-#~ msgstr "आवश्यक"
+#, fuzzy
+#~| msgid "IP address:"
+#~ msgid "Broadcast address:"
+#~ msgstr "आईपी पता:"
 
 #, fuzzy
-#~| msgid "Directories"
-#~ msgid "Directory mask:"
-#~ msgstr "निर्देशिका"
+#~| msgid "Bookmarks"
+#~ msgid "Clear Bookmarks"
+#~ msgstr "पुस्तकचिह्न"
 
-#~ msgid "unknown"
-#~ msgstr "अज्ञात"
+#~ msgid "General"
+#~ msgstr "सामान्य"
+
+#, fuzzy
+#~| msgid "File system:"
+#~ msgid "Filesystem Port:"
+#~ msgstr "फाइल सिस्टमः"
+
+#~ msgid "Back"
+#~ msgstr "पाछाँ"
+
+#~ msgid "Forward"
+#~ msgstr "आगाँक तरफ"
 
 #~ msgid "File"
 #~ msgstr "फाइल"
-
-#~ msgid "Options"
-#~ msgstr "विकल्प"
 
 #, fuzzy
 #~| msgid "Options"
@@ -3502,30 +3507,6 @@ msgstr ""
 #~| msgid "Options"
 #~ msgid "Options <<"
 #~ msgstr "विकल्प"
-
-#~ msgid "Back"
-#~ msgstr "पाछाँ"
-
-#~ msgid "Forward"
-#~ msgstr "आगाँक तरफ"
-
-#, fuzzy
-#~| msgid "IP address:"
-#~ msgid "Broadcast address:"
-#~ msgstr "आईपी पता:"
-
-#~ msgid "General"
-#~ msgstr "सामान्य"
-
-#, fuzzy
-#~| msgid "File system:"
-#~ msgid "Filesystem Port:"
-#~ msgstr "फाइल सिस्टमः"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Clear Bookmarks"
-#~ msgstr "पुस्तकचिह्न"
 
 #, fuzzy
 #~| msgid "File system:"
@@ -3671,6 +3652,9 @@ msgstr ""
 
 #~ msgid "Directories"
 #~ msgstr "निर्देशिका"
+
+#~ msgid "Notifications"
+#~ msgstr "सूचनासभ"
 
 #~ msgid "Bookmarks"
 #~ msgstr "पुस्तकचिह्न"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2021-01-14 17:05+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -95,39 +95,6 @@ msgstr "Libérer"
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
 msgstr "Libérer tous les partages"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Modifier les signets"
-
-#~ msgid "OK"
-#~ msgstr "Ok"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuler"
-
-#~ msgid "Clear"
-#~ msgstr "Effacer"
-
-#~ msgid "Label:"
-#~ msgstr "Étiquette :"
-
-#~ msgid "Login:"
-#~ msgstr "Identifiant :"
-
-#~ msgid "IP Address:"
-#~ msgstr "Adresse IP :"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nom du groupe :"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Signets de plus haut niveau"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Supprimer un signet"
-
-#~ msgid "Add Group"
-#~ msgstr "Ajouter un groupe"
 
 #~ msgid "Back"
 #~ msgstr "Retours"

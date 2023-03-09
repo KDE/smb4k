@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -2337,9 +2337,9 @@ msgstr ""
 
 #: smb4kmounter_p.cpp:128
 #, fuzzy, kde-format
-#| msgid "Notifications"
+#| msgid "Location"
 msgid "Location:"
-msgstr "Bekendtgørelser"
+msgstr "Placering"
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -3880,22 +3880,6 @@ msgid ""
 msgstr ""
 "<qt>Angiv et brugernavn og en adgangskode til ressourcen <b>%1</b>.</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Brugervalgte indstillinger"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Brug ikke låsning"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Brug ikke låsning. Start ikke lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Konfigurationsfilen for Samba-suiten <b>smb.conf</b> mangler. Dette er "
-#~ "ikke en fatal fejl, men du bør overveje at oprette en."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS-navn:"
 
@@ -3922,6 +3906,22 @@ msgstr ""
 #~ msgid "Login:"
 #~ msgstr "Login:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Brugervalgte indstillinger"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Brug ikke låsning"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Brug ikke låsning. Start ikke lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Konfigurationsfilen for Samba-suiten <b>smb.conf</b> mangler. Dette er "
+#~ "ikke en fatal fejl, men du bør overveje at oprette en."
+
 #~ msgid "Group:"
 #~ msgstr "Gruppe:"
 
@@ -3930,25 +3930,6 @@ msgstr ""
 
 #~ msgid "Group name:"
 #~ msgstr "Gruppenavn:"
-
-#, fuzzy
-#~| msgid ""
-#~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Angiv et brugernavn og en adgangskode til ressourcen <b>%1</b>.</qt>"
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown error"
-#~ msgstr "ukendt"
-
-#, fuzzy
-#~| msgid "The lock file could not be created."
-#~ msgid "The smb.conf file would not load"
-#~ msgstr "Låsefilen kunne ikke oprettes."
 
 #, fuzzy
 #~| msgid "Permissions"
@@ -3980,6 +3961,11 @@ msgstr ""
 #~ msgstr "Netværksbrowseren kunne ikke oprettes."
 
 #, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown error"
+#~ msgstr "ukendt"
+
+#, fuzzy
 #~| msgid "The mount process could not be started."
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Monteringsprocessen kunne ikke startes."
@@ -3988,6 +3974,299 @@ msgstr ""
 #~| msgid "The mount process could not be started."
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Monteringsprocessen kunne ikke startes."
+
+#, fuzzy
+#~| msgid "The lock file could not be created."
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "Låsefilen kunne ikke oprettes."
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Angiv et brugernavn og en adgangskode til ressourcen <b>%1</b>.</qt>"
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Scan netværksnabolaget for tilgængelige arbejdsgrupper og domæner"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Dette er standardmetoden til at hente den indledningsvise browseliste. "
+#~ "Den finder alle arbejdsgrupper og domæner ved at lede efter alle kendte "
+#~ "masterbrowsere i dit netværksnabolag."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Forespørg den aktuelle masterbrowser for arbejdsgruppen"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Denne metode forespørger den aktuelle masterbrowser for din arbejdsgruppe "
+#~ "eller dit domæne for at hente den indledningsvise browseliste."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Forespørg denne brugervalgte masterbrowser:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Denne metode forespørger en brugervalgt masterbrowser for at hente den "
+#~ "indledningsvise browseliste."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "En brugervalgt masterbrowser der skal forespørges"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Angiv navn eller IP-adresse på en masterbrowser som skal forespørges for "
+#~ "at opbygge den indledningsvise browseliste her."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "Masterbrowserne kræver autentificering for at returnere browselisten"
+
+#~ msgid "Scan the network neighborhood periodically"
+#~ msgstr "Scan netværksnabolaget periodisk"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Scan periodisk netværksnabolaget for tilgængelige arbejdsgrupper, værter "
+#~ "og ressourcer."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Interval mellem scanninger:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Dette er den tid i minutter, der går imellem at Smb4K genscanner "
+#~ "netværksnabolaget for nye arbejdsgrupper, værter og ressourcer."
+
+#~ msgid "Lookup method for IP addresses:"
+#~ msgstr "Opslagsmetode for IP-adresser:"
+
+#~ msgid ""
+#~ "Define the method that is to be used to detect the IP addresses of the "
+#~ "hosts."
+#~ msgstr ""
+#~ "Angiv den metode der skal bruges til at detektere værternes IP-adresser."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Brug kommandoen nmblookup"
+
+#~ msgid "Use net command"
+#~ msgstr "Brug kommandoen net"
+
+#~ msgid "Socket options:"
+#~ msgstr "Sokkel-tilvalg:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Disse er indstillinger for TCP-sokkel som bruges af nmblookup og "
+#~ "smbclient. Sokkel-indstillinger er kontroller på operativsystemets "
+#~ "netværkslag som lader forbindelsen blive finjusteret. Se manual-siden for "
+#~ "smb.conf for mere information."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS-scope:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Dette sætter det NetBIOS-scope som nmblookup og smbclient vil operere "
+#~ "under. Det bør ikke sættes medmindre alle maskiner i dit netværksnabolag "
+#~ "sætter denne værdi."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Prøv at autentificere med Kerberos"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Autentificér med den lokale maskines konto"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Foretag forespørgsler til den eksterne server med brug af den lokale "
+#~ "servers maskinkonto. Indstillingen påvirker kommandoerne net, smbclient "
+#~ "og smbtree."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Brug Winbind ccache til autentificering. Denne indstilling påvirker "
+#~ "kommandoerne net, smbclient og smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Signeringstilstand:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Sæt signeringstilstanden. Denne indstilling påvirker kommandoerne "
+#~ "smbclient og smbtree."
+
+#~ msgid "On"
+#~ msgstr "Til"
+
+#~ msgid "Off"
+#~ msgstr "Fra"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Kryptér SMB-transport"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Kryptér SMB-transporten (Kun Unix extended-servere). Denne indstilling "
+#~ "påvirker kommandoerne net, smbclient og smbtree."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Navneopslagsrækkefølge:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Denne indstilling bruges til at bestemme hvilke navnetjenester der bruges "
+#~ "til at opløse værtsnavne og IP-adresser, og i hvilken rækkefølge. Den "
+#~ "accepterer en mellemrumsadskilt liste på indtil fire forskellige "
+#~ "navneopløsningsmuligheder. Disse er lmhost, host, wins, bcast. Se manual-"
+#~ "siden for smbclient for yderligere information."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Bufferstørrelse:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Denne indstilling ændrer bufferstørrelsen for afsendelse når en fil "
+#~ "hentes fraeller lægges på serveren. Standard er 65520 bytes. At sætte "
+#~ "denne værdi lavere, er observeret at have givet højere hastighed på "
+#~ "filoverførsler til og fra Windows 9x-servere."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Broadcast-adresse:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Forespørgsler udført nmblookup vil blive sendt til den angivne broadcast-"
+#~ "adresse. Uden denne indstilling er standardopførsel at sende "
+#~ "forespørgslerne til netkortets broadcast-adresse som enten blev "
+#~ "autodetekteret eller defineret i parameteren \"interfaces\" i filen smb."
+#~ "conf."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Prøv at koble til UDP-port 137 for at sende og modtage UDP-datagrammer"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Prøv at binde til UDP-port 137for at sende og modtage UDP-datagrammer. "
+#~ "Årsagen til denne indstilling er en fejl i Windows 95 hvor den ignorerer "
+#~ "kildeporten for anmodningspakken og kun svarer til UDP-port 137. Desværre "
+#~ "kræver superbruger-rettigheder på de fleste Unix-systemer for at binde "
+#~ "til denne port. Læs manual-siden for nmblookup for mere information."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Send anmodninger som broadcasts"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Lad smbtree forespørge netværksknuderne ved at sende anmodninger som "
+#~ "broadcasts i stedet for at forespørge den lokale masterbrowser."
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Ekskludér ikke filer som matcher dette mønster:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "Seed for tjeksum"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Ryd bogmærker"
+
+#~ msgid "General"
+#~ msgstr "Generelt"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC-adresse:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB-port:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Filsystem-port:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Skriveadgang:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Sikkerhedstilstand:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Angiv brugervalgte tilvalg for ressourcen <b>%1</b> på værten <b>%2</"
+#~ "b>.</p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "Uniform Naming Convention-adressen (UNC) beskriver placeringen af "
+#~ "ressourcen. Den har følgende syntaks: //[BRUGER@]VÆRT/RESSURCE. "
+#~ "Brugernavn er valgfrit."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Server-codepage:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Indgangen for brugervalgt masterbrowser er tom. Smb4K vil forsøge at "
+#~ "forespørge den aktuelle masterbrowser for din arbejdsgruppe eller dit "
+#~ "domæne i stedet."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -4048,176 +4327,8 @@ msgstr ""
 #~ "<p>Søgning i netværksnabolaget efter søgeelementet <b>%1</b> mislykkedes."
 #~ "</p>"
 
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Montering"
-
-#~ msgid "UNC Address:"
-#~ msgstr "UNC-adresse:"
-
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "Uniform Naming Convention-adressen (UNC) beskriver placeringen af "
-#~ "ressourcen. Den har følgende syntaks: //[BRUGER@]VÆRT/RESSURCE. "
-#~ "Brugernavn er valgfrit."
-
-#~ msgid "The master browsers require authentication to return the browse list"
-#~ msgstr ""
-#~ "Masterbrowserne kræver autentificering for at returnere browselisten"
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Prøv at autentificere med Kerberos"
-
-#~ msgid ""
-#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
-#~ "query the current master browser of your workgroup or domain instead."
-#~ msgstr ""
-#~ "Indgangen for brugervalgt masterbrowser er tom. Smb4K vil forsøge at "
-#~ "forespørge den aktuelle masterbrowser for din arbejdsgruppe eller dit "
-#~ "domæne i stedet."
-
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Der er ikke defineret nogen broadcast-områder.</p>"
-
-#~ msgid "Socket options:"
-#~ msgstr "Sokkel-tilvalg:"
-
-#~ msgid ""
-#~ "These are the TCP socket options that are used by nmblookup and "
-#~ "smbclient. Socket options are controls on the networking layer of the "
-#~ "operating systems which allow the connection to be tuned. See the manual "
-#~ "page of smb.conf for more information."
-#~ msgstr ""
-#~ "Disse er indstillinger for TCP-sokkel som bruges af nmblookup og "
-#~ "smbclient. Sokkel-indstillinger er kontroller på operativsystemets "
-#~ "netværkslag som lader forbindelsen blive finjusteret. Se manual-siden for "
-#~ "smb.conf for mere information."
-
-#~ msgid "NetBIOS scope:"
-#~ msgstr "NetBIOS-scope:"
-
-#~ msgid ""
-#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
-#~ "under. It should not be set unless every machine on your network "
-#~ "neighborhood sets this value."
-#~ msgstr ""
-#~ "Dette sætter det NetBIOS-scope som nmblookup og smbclient vil operere "
-#~ "under. Det bør ikke sættes medmindre alle maskiner i dit netværksnabolag "
-#~ "sætter denne værdi."
-
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Autentificér med den lokale maskines konto"
-
-#~ msgid ""
-#~ "Make queries to the remote server using the machine account of the local "
-#~ "server. The setting affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Foretag forespørgsler til den eksterne server med brug af den lokale "
-#~ "servers maskinkonto. Indstillingen påvirker kommandoerne net, smbclient "
-#~ "og smbtree."
-
-#~ msgid ""
-#~ "Use the Winbind ccache for authentication. This setting affects the net, "
-#~ "smbclient and smbtree command."
-#~ msgstr ""
-#~ "Brug Winbind ccache til autentificering. Denne indstilling påvirker "
-#~ "kommandoerne net, smbclient og smbtree."
-
-#~ msgid "Signing state:"
-#~ msgstr "Signeringstilstand:"
-
-#~ msgid ""
-#~ "Set the signing state. This setting affects the smbclient and smbtree "
-#~ "command."
-#~ msgstr ""
-#~ "Sæt signeringstilstanden. Denne indstilling påvirker kommandoerne "
-#~ "smbclient og smbtree."
-
-#~ msgid "On"
-#~ msgstr "Til"
-
-#~ msgid "Off"
-#~ msgstr "Fra"
-
-#~ msgid "Required"
-#~ msgstr "Påkrævet"
-
-#~ msgid "Encrypt SMB transport"
-#~ msgstr "Kryptér SMB-transport"
-
-#~ msgid ""
-#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
-#~ "affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Kryptér SMB-transporten (Kun Unix extended-servere). Denne indstilling "
-#~ "påvirker kommandoerne net, smbclient og smbtree."
-
-#~ msgid "Send requests as broadcasts"
-#~ msgstr "Send anmodninger som broadcasts"
-
-#~ msgid ""
-#~ "Let smbtree query the network nodes by sending requests as broadcasts "
-#~ "instead of querying the local master browser."
-#~ msgstr ""
-#~ "Lad smbtree forespørge netværksknuderne ved at sende anmodninger som "
-#~ "broadcasts i stedet for at forespørge den lokale masterbrowser."
-
-#~ msgid "Directory mask:"
-#~ msgstr "Mappemaske:"
-
-#~ msgid "unknown"
-#~ msgstr "ukendt"
-
-#~ msgid "File"
-#~ msgstr "Fil"
-
-#~ msgid "Options"
-#~ msgstr "Indstillinger"
-
-#~ msgid "Options >>"
-#~ msgstr "Indstillinger >>"
-
-#~ msgid "Options <<"
-#~ msgstr "Indstillinger <<"
-
-#~ msgid "Name resolve order:"
-#~ msgstr "Navneopslagsrækkefølge:"
-
-#~ msgid ""
-#~ "This option is used to determine what naming services and in what order "
-#~ "are used to resolve host names and IP addresses. It takes a space-"
-#~ "separated list of up to four different name resolution options. Those "
-#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
-#~ "further information."
-#~ msgstr ""
-#~ "Denne indstilling bruges til at bestemme hvilke navnetjenester der bruges "
-#~ "til at opløse værtsnavne og IP-adresser, og i hvilken rækkefølge. Den "
-#~ "accepterer en mellemrumsadskilt liste på indtil fire forskellige "
-#~ "navneopløsningsmuligheder. Disse er lmhost, host, wins, bcast. Se manual-"
-#~ "siden for smbclient for yderligere information."
-
-#~ msgid "Buffer size:"
-#~ msgstr "Bufferstørrelse:"
-
-#~ msgid ""
-#~ "This option changes the transmit/send buffer size when getting or putting "
-#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
-#~ "smaller has been observed to speed up file transfers to and from Windows "
-#~ "9x servers."
-#~ msgstr ""
-#~ "Denne indstilling ændrer bufferstørrelsen for afsendelse når en fil "
-#~ "hentes fraeller lægges på serveren. Standard er 65520 bytes. At sætte "
-#~ "denne værdi lavere, er observeret at have givet højere hastighed på "
-#~ "filoverførsler til og fra Windows 9x-servere."
-
-#, fuzzy
-#~| msgid "The network browser could not be created."
-#~ msgid "The workgroup could not be found"
-#~ msgstr "Netværksbrowseren kunne ikke oprettes."
 
 #~ msgid "The preview is displayed here."
 #~ msgstr "Forhåndsvisningen vises her."
@@ -4237,147 +4348,17 @@ msgstr ""
 #~ "besøgte placeringer fra drop-ned-menuen, som så vil blive vist i "
 #~ "visningen ovenfor."
 
-#~ msgid "Broadcast address:"
-#~ msgstr "Broadcast-adresse:"
+#~ msgid "File"
+#~ msgstr "Fil"
 
-#~ msgid ""
-#~ "Queries performed with nmblookup will be send to the given broadcast "
-#~ "address. Without this option the default behavior is to send the queries "
-#~ "to the broadcast address of the network interface that was either auto-"
-#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
-#~ msgstr ""
-#~ "Forespørgsler udført nmblookup vil blive sendt til den angivne broadcast-"
-#~ "adresse. Uden denne indstilling er standardopførsel at sende "
-#~ "forespørgslerne til netkortets broadcast-adresse som enten blev "
-#~ "autodetekteret eller defineret i parameteren \"interfaces\" i filen smb."
-#~ "conf."
+#~ msgid "Options"
+#~ msgstr "Indstillinger"
 
-#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
-#~ msgstr ""
-#~ "Prøv at koble til UDP-port 137 for at sende og modtage UDP-datagrammer"
+#~ msgid "Options >>"
+#~ msgstr "Indstillinger >>"
 
-#~ msgid ""
-#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
-#~ "reason for this option is a bug in Windows 95 where it ignores the source "
-#~ "port of the requesting packet and only replies to UDP port 137. "
-#~ "Unfortunately, on most Unix systems super user privileges are needed to "
-#~ "bind to this port. Please read the manual page of nmblookup for more "
-#~ "information."
-#~ msgstr ""
-#~ "Prøv at binde til UDP-port 137for at sende og modtage UDP-datagrammer. "
-#~ "Årsagen til denne indstilling er en fejl i Windows 95 hvor den ignorerer "
-#~ "kildeporten for anmodningspakken og kun svarer til UDP-port 137. Desværre "
-#~ "kræver superbruger-rettigheder på de fleste Unix-systemer for at binde "
-#~ "til denne port. Læs manual-siden for nmblookup for mere information."
-
-#~ msgid "Scan the network neighborhood periodically"
-#~ msgstr "Scan netværksnabolaget periodisk"
-
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr ""
-#~ "Scan periodisk netværksnabolaget for tilgængelige arbejdsgrupper, værter "
-#~ "og ressourcer."
-
-#~ msgid "Interval between scans:"
-#~ msgstr "Interval mellem scanninger:"
-
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr ""
-#~ "Dette er den tid i minutter, der går imellem at Smb4K genscanner "
-#~ "netværksnabolaget for nye arbejdsgrupper, værter og ressourcer."
-
-#~ msgid "Lookup method for IP addresses:"
-#~ msgstr "Opslagsmetode for IP-adresser:"
-
-#~ msgid ""
-#~ "Define the method that is to be used to detect the IP addresses of the "
-#~ "hosts."
-#~ msgstr ""
-#~ "Angiv den metode der skal bruges til at detektere værternes IP-adresser."
-
-#~ msgid "Use nmblookup command"
-#~ msgstr "Brug kommandoen nmblookup"
-
-#~ msgid "Use net command"
-#~ msgstr "Brug kommandoen net"
-
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr "Scan netværksnabolaget for tilgængelige arbejdsgrupper og domæner"
-
-#~ msgid ""
-#~ "This is the default method to retrieve the initial browse list. It "
-#~ "discovers all workgroups and domains by looking for all known master "
-#~ "browsers on your network neighborhood."
-#~ msgstr ""
-#~ "Dette er standardmetoden til at hente den indledningsvise browseliste. "
-#~ "Den finder alle arbejdsgrupper og domæner ved at lede efter alle kendte "
-#~ "masterbrowsere i dit netværksnabolag."
-
-#~ msgid "Query the current workgroup master browser"
-#~ msgstr "Forespørg den aktuelle masterbrowser for arbejdsgruppen"
-
-#~ msgid ""
-#~ "This method queries the current master browser of your workgroup or "
-#~ "domain to retrieve the initial browse list."
-#~ msgstr ""
-#~ "Denne metode forespørger den aktuelle masterbrowser for din arbejdsgruppe "
-#~ "eller dit domæne for at hente den indledningsvise browseliste."
-
-#~ msgid "Query this custom master browser:"
-#~ msgstr "Forespørg denne brugervalgte masterbrowser:"
-
-#~ msgid ""
-#~ "This method queries a custom master browser to retrieve the initial "
-#~ "browse list."
-#~ msgstr ""
-#~ "Denne metode forespørger en brugervalgt masterbrowser for at hente den "
-#~ "indledningsvise browseliste."
-
-#~ msgid "A custom master browser that is to be queried"
-#~ msgstr "En brugervalgt masterbrowser der skal forespørges"
-
-#~ msgid ""
-#~ "Enter the name or IP address of a master browser here that should be "
-#~ "queried to compile the initial browse list."
-#~ msgstr ""
-#~ "Angiv navn eller IP-adresse på en masterbrowser som skal forespørges for "
-#~ "at opbygge den indledningsvise browseliste her."
-
-#~ msgid "Server codepage:"
-#~ msgstr "Server-codepage:"
-
-#~ msgid "General"
-#~ msgstr "Generelt"
-
-#~ msgid "SMB Port:"
-#~ msgstr "SMB-port:"
-
-#~ msgid "Filesystem Port:"
-#~ msgstr "Filsystem-port:"
-
-#~ msgid "Write Access:"
-#~ msgstr "Skriveadgang:"
-
-#~ msgid "Security Mode:"
-#~ msgstr "Sikkerhedstilstand:"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr ""
-#~ "<p>Angiv brugervalgte tilvalg for ressourcen <b>%1</b> på værten <b>%2</"
-#~ "b>.</p>"
-
-#~ msgid "Do not exclude files matching this pattern:"
-#~ msgstr "Ekskludér ikke filer som matcher dette mønster:"
-
-#~ msgid "The checksum seed"
-#~ msgstr "Seed for tjeksum"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Ryd bogmærker"
+#~ msgid "Options <<"
+#~ msgstr "Indstillinger <<"
 
 #~ msgid ""
 #~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
@@ -5029,6 +5010,9 @@ msgstr ""
 
 #~ msgid "Checks"
 #~ msgstr "Tjek"
+
+#~ msgid "Notifications"
+#~ msgstr "Bekendtgørelser"
 
 #~ msgid "Bookmarks"
 #~ msgstr "Bogmærker"

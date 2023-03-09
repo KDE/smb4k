@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Eloy Cuadra <ecuadra@eloihr.net>, 2014, 2018.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2014.
 # Raul Gonzalez <raulgf83@gmail.com>, 2015.
-# Javier Vinal <fjvinal@gmail.com>, 2017, 2018, 2019.
+# Javier Vinal <fjvinal@gmail.com>, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2019-06-09 23:02+0200\n"
 "Last-Translator: Javier Vinal <fjvinal@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -26,7 +26,7 @@ msgstr "<font size=\"-1\">en %1</font>"
 
 #: package/contents/ui/BookmarksPage.qml:32
 msgid "Go back"
-msgstr "Atrás"
+msgstr "Retroceder"
 
 #: package/contents/ui/BookmarksPage.qml:41
 msgid "Edit bookmarks"
@@ -91,40 +91,13 @@ msgstr "Desmontar"
 
 #: package/contents/ui/SharesViewPage.qml:34
 msgid "Unmount all shares"
-msgstr "Desmontar todos los recursos compartidos"
+msgstr "Desmontar todas las comparticiones"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Editar marcadores"
+#~ msgid "Back"
+#~ msgstr "Atrás"
 
-#~ msgid "OK"
-#~ msgstr "Aceptar"
+#~ msgid "Edit"
+#~ msgstr "Editar"
 
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Clear"
-#~ msgstr "Despejar"
-
-#~ msgid "Label:"
-#~ msgstr "Etiqueta:"
-
-#~ msgid "Login:"
-#~ msgstr "Inicio de sesión:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Dirección IP:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nombre del grupo:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Marcadores del nivel superior"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Borrar marcador"
-
-#~ msgid "Add Group"
-#~ msgstr "Añadir grupo"
-
-#~ msgid "Ok"
-#~ msgstr "Aceptar"
+#~ msgid "Up"
+#~ msgstr "Arriba"

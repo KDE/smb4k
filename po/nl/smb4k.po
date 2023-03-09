@@ -7,26 +7,26 @@
 #
 # Joop Beris <jberis@risse.nl>, 2005, 2006.
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2012.
-# Freek de Kruijf <f.de.kruijf@gmail.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
+# Freek de Kruijf <f.de.kruijf@gmail.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-03-04 18:07+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-07-07 10:27+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: \n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 22.04.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - t/m 2023"
+msgstr "Freek de Kruijf - t/m 2019;2021"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -61,9 +61,10 @@ msgstr ""
 "het aankoppelen een Samba share."
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -139,9 +140,10 @@ msgid "Add &Bookmark"
 msgstr "&Bladwijzer toevoegen"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "Bladwijzers aankoppelen"
+msgstr "Alle bladwijzers aankoppelen"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -169,7 +171,8 @@ msgid "Synchronization"
 msgstr "Synchronisatie"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
 msgstr "Algemene instellingen"
 
@@ -238,22 +241,27 @@ msgid "Enter the default login information."
 msgstr "Voer de standaard aanmeldinformatie in."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:401
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgid "Set the username and password for wallet entry %1."
 msgstr ""
-"De gebruikersnaam en wachtwoord instellen voor toegang tot item %1 in "
-"portefeuille."
+"<qt>Gaarne een gebruikersnaam en een wachtwoord voor de host <b>%1</b> "
+"invoeren.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgid "Set the username and password for the default login."
 msgstr ""
-"De gebruikersnaam en wachtwoord instellen voor de standaard aanmelding."
+"<qt>Gaarne een gebruikersnaam en een wachtwoord voor de host <b>%1</b> "
+"invoeren.</qt>"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Alles in orde."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -264,7 +272,6 @@ msgstr "Lijst wissen"
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
-"Het item %1 is verwijderd, omdat alle aangepaste instellingen zijn gereset."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -386,27 +393,33 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Definieer de hosts die gewekt moeten worden via de bewerker voor aangepaste "
-"instellingen."
+"<qt>Definieer de hosts die gewekt moeten worden via de dialoog voor "
+"aangepaste opties.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Geavanceerde instellingen"
+msgstr "Geavanceerde instellingen voor aankoppelen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization prefix:"
 msgid "Synchronization Directory"
-msgstr "Synchronisatiemap"
+msgstr "Synchronisatie-voorvoegsel"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Back-ups"
+msgstr "Backup"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -416,7 +429,7 @@ msgstr "Algemeen"
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
 #, kde-format
 msgid "Links"
-msgstr "Koppelingen"
+msgstr "Links"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:223
 #, kde-format
@@ -426,17 +439,18 @@ msgstr "Behandeling van bestanden"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "Bestandsattributen"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "Eigenaarschap"
+msgstr "Eigenaar"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Attributen van bestand && eigendom"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -459,12 +473,12 @@ msgstr " kB"
 #: smb4k/smb4kconfigpagesynchronization.cpp:612
 #, kde-format
 msgid "Miscellaneous"
-msgstr "Overig"
+msgstr "Diversen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kB/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -487,9 +501,10 @@ msgid "File Deletion"
 msgstr "Bestand Verwijderen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General Settings"
 msgid "General Filtering Settings"
-msgstr "Algemene filterinstellingen"
+msgstr "Algemene instellingen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -504,7 +519,7 @@ msgstr "Filtering"
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
 #, kde-format
 msgid "Checksums"
-msgstr "Controlesommen"
+msgstr "Checksums"
 
 #: smb4k/smb4kconfigpageuserinterface.cpp:36
 #, kde-format
@@ -673,9 +688,10 @@ msgstr "&Zoek"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "&Aangepaste instellingen toevoegen"
+msgstr "Geavanceerde instellingen voor aankoppelen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -742,12 +758,12 @@ msgstr "Stoppen"
 #: smb4k/smb4knetworksearchtoolbar.cpp:82
 #, kde-format
 msgid "Item Down"
-msgstr "Item omlaag verplaatsen"
+msgstr "Item omlaag"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:95
 #, kde-format
 msgid "Item Up"
-msgstr "Item omhoog verplaatsen"
+msgstr "Item omhoog"
 
 #: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
@@ -901,9 +917,10 @@ msgid "Mountpoint:"
 msgstr "Aankoppelpunt:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "Gebruikersnaam:"
+msgstr "Gebruiker:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -923,15 +940,6 @@ msgstr "Grootte:"
 #~ msgid "Custom Options"
 #~ msgstr "Custom Opties"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Alle bladwijzers aankoppelen"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -949,23 +957,11 @@ msgstr "Grootte:"
 #~ msgid "Entry"
 #~ msgstr "Item"
 
-#~ msgid "Username"
-#~ msgstr "Gebruikersnaam"
+#~ msgid "Login"
+#~ msgstr "Aanmelden"
 
 #~ msgid "Password"
 #~ msgstr "Wachtwoord"
-
-#~ msgid "Behavior:"
-#~ msgstr "Gedrag:"
-
-#~ msgid "General:"
-#~ msgstr "Algemeen:"
-
-#~ msgid "Miscellaneous:"
-#~ msgstr "Diversen:"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Speciale filterregels:"
 
 #~ msgid "Identification"
 #~ msgstr "Identificatie"
@@ -982,10 +978,10 @@ msgstr "Grootte:"
 #~ msgid "Actions"
 #~ msgstr "Acties"
 
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Stuur magic-pakket alvorens de netwerkomgeving te scannen"
 
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Stuur magic-pakket alvorens een share aan te koppelen"
 
 #~ msgid "Wake-On-LAN Settings"
@@ -997,17 +993,8 @@ msgstr "Grootte:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Deze server ondersteunt CIFS Unix-extensies"
 
-#~ msgid "Browse Settings:"
-#~ msgstr "Browse-instellingen:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Profielen:"
-
-#~ msgid "Authentication:"
-#~ msgstr "Authenticatie:"
-
-#~ msgid "Security:"
-#~ msgstr "Beveiliging:"
+#~ msgid "Security"
+#~ msgstr "Beveiliging"
 
 #~ msgid "Samba Settings"
 #~ msgstr "Samba-instellingen"
@@ -1018,8 +1005,17 @@ msgstr "Grootte:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Rechten, etc."
 
-#~ msgid "Login"
-#~ msgstr "Aanmelden"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Speciale filterregels:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Aangepaste opties"
 
 #~ msgid "Login:"
 #~ msgstr "Aanmelden:"
@@ -1030,63 +1026,11 @@ msgstr "Grootte:"
 #~ msgid "The unmount process crashed."
 #~ msgstr "Het afkoppelproces is gecrasht."
 
-#~ msgid "Protocols"
-#~ msgstr "Protocollen"
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 van %2 is vrij (%3 gebruikt)"
 
 #~ msgid "Location"
 #~ msgstr "Locatie"
-
-#~ msgid "Owner"
-#~ msgstr "Eigenaar"
-
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Het geselecteerde item is uit de portefeuille verwijderd."
-
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Alle items zijn uit de portefeuille verwijderd."
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "Dit keuzevakje activeren zal de details van de geselecteerde "
-#~ "aanmeldinformatie onderstaand tonen."
-
-#~ msgid "Password Storage"
-#~ msgstr "Wachtwoordopslag"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Details van het geselecteerde item tonen."
-
-#~ msgid "Undo"
-#~ msgstr "Ongedaan maken"
-
-#~ msgid "Remounting"
-#~ msgstr "Wordt opnieuw aangekoppeld"
-
-#~ msgid "UNC:"
-#~ msgstr "UNC:"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Kolommen"
-
-#~ msgid "Tooltips"
-#~ msgstr "Tooltips"
-
-#~ msgid "View Mode"
-#~ msgstr "Weergavemodus"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Diverse instellingen"
-
-#~ msgid "Shares"
-#~ msgstr "Gedeelde Mappen"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Netwerkbalk"
@@ -1100,47 +1044,30 @@ msgstr "Grootte:"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Alternatieve hoofdwerkbalk"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Gedeelde Mappen"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Hulpprogramma's"
+#~ msgid "Password Storage"
+#~ msgstr "Wachtwoordopslag"
 
-#~ msgid "Network Search"
-#~ msgstr "Netwerk Doorzoeken"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "De items in de portefeuille laden."
 
-#~ msgid "Searching for \"%1\"..."
-#~ msgstr "Zoeken naar \"%1\"..."
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "De items in de portefeuille opslaan."
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Hier de zoektekst invoeren."
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Details van het geselecteerde item tonen."
 
-#~ msgid "Abort"
-#~ msgstr "Afbreken"
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Dit keuzevakje activeren zal de details van de geselecteerde "
+#~ "aanmeldinformatie onderstaand tonen."
 
-#~ msgid "&Clear"
-#~ msgstr "&Wissen"
-
-#~ msgid "The search returned no results."
-#~ msgstr "De zoekopdracht gaf geen resultaten."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " Bytes"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Bezig met voorbeeld ophalen uit %1..."
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Periodiek scannen"
-
-#~ msgid "Browse List"
-#~ msgstr "Browse lijst"
+#~ msgid "Undo"
+#~ msgstr "Ongedaan maken"
 
 #~ msgid "UNC Address:"
 #~ msgstr "UNC-adres:"
@@ -1163,23 +1090,29 @@ msgstr "Grootte:"
 #~ msgid "MAC address:"
 #~ msgstr "MAC-adres:"
 
+#~ msgid "Browse List"
+#~ msgstr "Browse lijst"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodiek scannen"
+
 #~ msgid "General Options"
 #~ msgstr "Algemene Opties"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Bladwijzers bewerken"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#~ msgid "Add Group"
-#~ msgstr "Groep toevoegen"
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
 
-#~ msgid "Label:"
-#~ msgstr "Label:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#~ msgid "Group:"
-#~ msgstr "Groep:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
 
-#~ msgid "Group name:"
-#~ msgstr "Groepsnaam:"
+#~ msgid "Utility Programs"
+#~ msgstr "Hulpprogramma's"
 
 #~ msgid "Copying"
 #~ msgstr "Bezig met kopieren"
@@ -1187,14 +1120,32 @@ msgstr "Grootte:"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Bestand verwijderen && overbrengen"
 
+#~ msgid "Columns"
+#~ msgstr "Kolommen"
+
+#~ msgid "Tooltips"
+#~ msgstr "Tooltips"
+
+#~ msgid "View Mode"
+#~ msgstr "Weergavemodus"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "De netwerkbrowser kon niet worden gemaakt."
+
+#~ msgid "Network Search"
+#~ msgstr "Netwerk Doorzoeken"
 
 #~ msgid "The search dialog could not be created."
 #~ msgstr "De zoekdialoog kon niet worden gemaakt."
 
 #~ msgid "The shares view could not be created."
 #~ msgstr "Het weergeven van de gedeelde mappen kon niet worden aangemaakt."
+
+#~ msgid "Searching for \"%1\"..."
+#~ msgstr "Zoeken naar \"%1\"..."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Bezig met voorbeeld ophalen uit %1..."
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1211,6 +1162,12 @@ msgstr "Grootte:"
 #~ msgid "Search item:"
 #~ msgstr "Zoekitem:"
 
+#~ msgid "Enter the search string here."
+#~ msgstr "Hier de zoektekst invoeren."
+
+#~ msgid "Abort"
+#~ msgstr "Afbreken"
+
 #~ msgid "Smb4KNetworkSearchPart"
 #~ msgstr "Smb4KNetworkSearchPart"
 
@@ -1219,6 +1176,9 @@ msgstr "Grootte:"
 
 #~ msgid "Search Results"
 #~ msgstr "Zoekresultaten"
+
+#~ msgid "The search returned no results."
+#~ msgstr "De zoekopdracht gaf geen resultaten."
 
 #~ msgid "Open With"
 #~ msgstr "Openen met"
@@ -1231,6 +1191,9 @@ msgstr "Grootte:"
 
 #~ msgid "&Shares"
 #~ msgstr "&Gedeelde bronnen"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Geavanceerde browser voor de netwerkomgeving"
@@ -2227,8 +2190,23 @@ msgstr "Grootte:"
 #~ "opgeslagen. Klik op het betrokken bladwijzeritem om het label of de groep "
 #~ "te bewerken."
 
+#~ msgid "Label:"
+#~ msgstr "Label:"
+
+#~ msgid "Group:"
+#~ msgstr "Groep:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Bladwijzers bewerken"
+
+#~ msgid "Add Group"
+#~ msgstr "Groep toevoegen"
+
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Bladwijzers wissen"
+
+#~ msgid "Group name:"
+#~ msgstr "Groepsnaam:"
 
 #~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
 #~ msgstr ""
@@ -3390,6 +3368,9 @@ msgstr "Grootte:"
 #~ msgid "Name:"
 #~ msgstr "Naam"
 
+#~ msgid "Protocol:"
+#~ msgstr "Protocol:"
+
 #~ msgid "Try to authenticate with Kerberos (Active Directory)"
 #~ msgstr "Probeer aan te melden met Kerberos (Active Directory)"
 
@@ -4058,9 +4039,6 @@ msgstr "Grootte:"
 #~ "Gebruik super user privileges voor het geforceerd ontkoppelen van "
 #~ "(defecte) gedeelde mappen\n"
 #~ "(Linux kernel 2.4.11 of hoger vereist)"
-
-#~ msgid "Samba Options"
-#~ msgstr "Samba Opties"
 
 #~ msgid "Super User Privileges"
 #~ msgstr "Super User Privileges"

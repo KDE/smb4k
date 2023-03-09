@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2020-10-25 22:18+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2020-10-25 22:19+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
 "Language: et\n"
@@ -252,9 +252,10 @@ msgstr "KDE täiustatud võrgunaabruse sirvija."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Use modern DNS service discovery (DNS-SD)"
 msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
-msgstr ""
+msgstr "Moodsa DNS-teenuse tuvastamise (DNS-SD) kasutamine"
 
 #. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:117
@@ -3893,22 +3894,6 @@ msgstr ""
 "<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool.</"
 "qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Kohandatud valikud"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Lukustamist ei kasutata"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Lukustamist ei kasutata. Ei käivitata lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Samba seadistusfail <b>smb.conf</b> puudub. See ei ole küll saatuslik "
-#~ "tõrge, aga tasuks kaaluda selle faili loomist."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS-e nimi:"
 
@@ -3930,6 +3915,22 @@ msgstr ""
 #~ msgid "Login:"
 #~ msgstr "Kasutajanimi:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Kohandatud valikud"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Lukustamist ei kasutata"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Lukustamist ei kasutata. Ei käivitata lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Samba seadistusfail <b>smb.conf</b> puudub. See ei ole küll saatuslik "
+#~ "tõrge, aga tasuks kaaluda selle faili loomist."
+
 #~ msgid "Group:"
 #~ msgstr "Grupp:"
 
@@ -3938,31 +3939,6 @@ msgstr ""
 
 #~ msgid "Group name:"
 #~ msgstr "Grupi nimi:"
-
-#~ msgid ""
-#~ "If you have trouble discovering the workgroups and domains in your "
-#~ "network neighborhood, you should consider to switch this setting on. "
-#~ "Smb4K will then force the use of the SMB 1.0 protocol for searching for "
-#~ "workgroups and domains."
-#~ msgstr ""
-#~ "Kui sul tekib progleeme töögruppide ja domeenide leidmisel oma "
-#~ "võrgunaabruses, võiks ehk selle valiku sisse lülitada. Smb4K tarvitab sel "
-#~ "juhul kindlasti SMB 1.0 protokolli töögruppide ja domeenide otsimisel."
-
-#, fuzzy
-#~| msgid ""
-#~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool."
-#~ "</qt>"
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown error"
-#~ msgstr "tundmatu"
 
 #, fuzzy
 #~| msgid "File Permissions, etc."
@@ -3980,6 +3956,11 @@ msgstr ""
 #~ msgstr "Võrgusirvija loomine nurjus."
 
 #, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown error"
+#~ msgstr "tundmatu"
+
+#, fuzzy
 #~| msgid "The mount process could not be started."
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Ühendamisprotsessi käivitamine nurjus."
@@ -3988,6 +3969,26 @@ msgstr ""
 #~| msgid "The mount process could not be started."
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Ühendamisprotsessi käivitamine nurjus."
+
+#, fuzzy
+#~| msgid ""
+#~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool."
+#~ "</qt>"
+
+#~ msgid ""
+#~ "If you have trouble discovering the workgroups and domains in your "
+#~ "network neighborhood, you should consider to switch this setting on. "
+#~ "Smb4K will then force the use of the SMB 1.0 protocol for searching for "
+#~ "workgroups and domains."
+#~ msgstr ""
+#~ "Kui sul tekib progleeme töögruppide ja domeenide leidmisel oma "
+#~ "võrgunaabruses, võiks ehk selle valiku sisse lülitada. Smb4K tarvitab sel "
+#~ "juhul kindlasti SMB 1.0 protokolli töögruppide ja domeenide otsimisel."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -5437,3 +5438,6 @@ msgstr ""
 
 #~ msgid "M&ount Manually"
 #~ msgstr "Üh&enda käsitsi"
+
+#~ msgid "Looking for workgroups and domains..."
+#~ msgstr "Töögruppide ja domeenide otsimine..."

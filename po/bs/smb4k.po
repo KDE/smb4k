@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -202,8 +202,7 @@ msgid "Settings"
 msgstr "Podešavanje"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:64
-#, fuzzy, kde-format
-#| msgid "Wallet Entries"
+#, kde-format
 msgid "Wallet Entries"
 msgstr "Unosi novčanika"
 
@@ -384,14 +383,12 @@ msgid "Browse Settings"
 msgstr "Podešavanje"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
@@ -435,8 +432,7 @@ msgid "General"
 msgstr "Opšte"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Veze"
 
@@ -504,8 +500,7 @@ msgid "Files && Directories"
 msgstr "Direktoriji"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Ograničenja"
 
@@ -531,8 +526,7 @@ msgid "Filtering"
 msgstr "Filtriranje"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Kontrolne sume"
 
@@ -716,9 +710,9 @@ msgstr "&Traži"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Settings"
 msgid "Add &Custom Settings"
-msgstr "&Uobilajene opcije"
+msgstr "Napredna podešavanja"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -929,10 +923,9 @@ msgid "Host:"
 msgstr "Poslužitelj"
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Location:"
-msgstr "Ograničenja"
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
 #: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
@@ -979,9 +972,6 @@ msgstr "Veličina"
 #~ msgid "Custom Options"
 #~ msgstr "Oubičajene opcije"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Montiraj sve bilješke"
-
 #, fuzzy
 #~| msgid ""
 #~| "The login information that was stored by Smb4K will be loaded from the "
@@ -1006,31 +996,11 @@ msgstr "Veličina"
 #~ msgid "Entry"
 #~ msgstr "Unos"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Korisnički interfejs"
+#~ msgid "Login"
+#~ msgstr "Prijava"
 
 #~ msgid "Password"
 #~ msgstr "Lozinka"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Ponašanje"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Opšte"
-
-#, fuzzy
-#~| msgid "Miscellaneous Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Razne postavke"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Specijalna pravila filtriranja:"
 
 #, fuzzy
 #~| msgid "Authentication"
@@ -1057,14 +1027,10 @@ msgstr "Veličina"
 #~ msgid "Actions"
 #~ msgstr "Ograničenja"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Pošalji čarobni paket prije skeniranja susjednih mreža"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Pošalji magic paket prije montaže udjela"
 
 #, fuzzy
@@ -1075,24 +1041,7 @@ msgstr "Veličina"
 #~ msgid "Always remount this share"
 #~ msgstr "Uvijek ponovno postavite ovaj udio"
 
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Podešavanje"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Profili"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Provjera autentičnosti"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Sigurnost"
 
 #, fuzzy
@@ -1108,8 +1057,11 @@ msgstr "Veličina"
 #~ msgid "Permissions, etc."
 #~ msgstr "Pristup datotekama,itd."
 
-#~ msgid "Login"
-#~ msgstr "Prijava"
+#~ msgid "Special filter rules:"
+#~ msgstr "Specijalna pravila filtriranja:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Uobilajene opcije"
 
 #, fuzzy
 #~| msgid "Login"
@@ -1123,70 +1075,9 @@ msgstr "Veličina"
 #~ msgstr "Ne montirajući proces se srušio."
 
 #, fuzzy
-#~| msgid "Protocol Hint:"
-#~ msgid "Protocols"
-#~ msgstr "Hint protokola:"
-
-#, fuzzy
 #~| msgid "%1 free of %2 (%3 used)"
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "Slobodno %1 od %2 (%3 popunjeno)"
-
-#, fuzzy
-#~| msgid "Restrictions"
-#~ msgid "Location"
-#~ msgstr "Ograničenja"
-
-#, fuzzy
-#~| msgid "Save the entries to the wallet."
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Sačuvaj podatke u novčanik-."
-
-#, fuzzy
-#~| msgid "Load the entries stored in the wallet."
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Učitaj sačuvano u skladištu."
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "Izborom ovog kvadratića prikazaće se detalji informacije ispod "
-#~ "selektovanog unosa."
-
-#~ msgid "Password Storage"
-#~ msgstr "Pohranjivanje lozinke"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Pokažite detalje selektovanog unosa."
-
-#~ msgid "Undo"
-#~ msgstr "Poništi"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Montiranje"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Kolone"
-
-#~ msgid "Tooltips"
-#~ msgstr "Savjeti"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "Pogled"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Razne postavke"
-
-#~ msgid "Shares"
-#~ msgstr "Dionice"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Mrežna alatna traka"
@@ -1200,44 +1091,30 @@ msgstr "Veličina"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Alatna traka za alternativne funkcije"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Dionice"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Korisni programi"
+#~ msgid "Password Storage"
+#~ msgstr "Pohranjivanje lozinke"
 
-#~ msgid "Network Search"
-#~ msgstr "Mežna pretraga"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Učitaj sačuvano u skladištu."
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Unesi string za traženje ovdje."
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Sačuvaj podatke u novčanik-."
 
-#~ msgid "Abort"
-#~ msgstr "Prekid"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Pokažite detalje selektovanog unosa."
 
-#~ msgid "&Clear"
-#~ msgstr "&Očisti"
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Izborom ovog kvadratića prikazaće se detalji informacije ispod "
+#~ "selektovanog unosa."
 
-#~ msgid "The search returned no results."
-#~ msgstr "Pretraga nije pronašla rezultate."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " bajtova"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Dohvaćanje pregleda  %1 ..."
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Periodično skeniranje"
-
-#~ msgid "Browse List"
-#~ msgstr "Pregledajte listu"
+#~ msgid "Undo"
+#~ msgstr "Poništi"
 
 #~ msgid "UNC Address:"
 #~ msgstr "UNC Addresa:"
@@ -1257,23 +1134,29 @@ msgstr "Veličina"
 #~ msgid "Group ID:"
 #~ msgstr "ID grupe:"
 
+#~ msgid "Browse List"
+#~ msgstr "Pregledajte listu"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodično skeniranje"
+
 #~ msgid "General Options"
 #~ msgstr "Opšte opcije"
 
-#, fuzzy
-#~| msgid "&Edit Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "&Izmijeni zabilješke"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#, fuzzy
-#~| msgid "Group ID:"
-#~ msgid "Group:"
-#~ msgstr "ID grupe:"
+#~ msgid " Bytes"
+#~ msgstr " bajtova"
 
-#, fuzzy
-#~| msgid "Group ID:"
-#~ msgid "Group name:"
-#~ msgstr "ID grupe:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Korisni programi"
 
 #~ msgid "Copying"
 #~ msgstr "Kopiram"
@@ -1281,14 +1164,31 @@ msgstr "Veličina"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Brisanje datoteke && Prenos"
 
+#~ msgid "Columns"
+#~ msgstr "Kolone"
+
+#~ msgid "Tooltips"
+#~ msgstr "Savjeti"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Pogled"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "Mrežni pretraživač ne može biti kreiran."
+
+#~ msgid "Network Search"
+#~ msgstr "Mežna pretraga"
 
 #~ msgid "The search dialog could not be created."
 #~ msgstr "Mrežni dijalog ne može biti kreiran."
 
 #~ msgid "The shares view could not be created."
 #~ msgstr "Pogled na dijeljenja ne može biti kreiran."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Dohvaćanje pregleda  %1 ..."
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1309,11 +1209,20 @@ msgstr "Veličina"
 #~ msgid "Search item:"
 #~ msgstr "Traži stavku:"
 
+#~ msgid "Enter the search string here."
+#~ msgstr "Unesi string za traženje ovdje."
+
+#~ msgid "Abort"
+#~ msgstr "Prekid"
+
 #~ msgid "Smb4KNetworkSearchPart"
 #~ msgstr "Smb4KNetworkSearchPart"
 
 #~ msgid "The network search KPart of Smb4K"
 #~ msgstr "Mrežno traženje  KPart od Smb4K"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Pretraga nije pronašla rezultate."
 
 #~ msgid "Open With"
 #~ msgstr "Otvori pomoću"
@@ -1326,6 +1235,9 @@ msgstr "Veličina"
 
 #~ msgid "&Shares"
 #~ msgstr "&Share-ovi"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Napredni pregledač mrežnog susjedstva"
@@ -1374,6 +1286,9 @@ msgstr "Veličina"
 
 #~ msgid "Usage"
 #~ msgstr "Upotreba"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Hint protokola:"
 
 #~ msgid "net"
 #~ msgstr "net"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -192,8 +192,7 @@ msgid "Settings"
 msgstr "Ρυθμίσεις"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:64
-#, fuzzy, kde-format
-#| msgid "Wallet Entries"
+#, kde-format
 msgid "Wallet Entries"
 msgstr "Εγγραφές πορτοφολιού"
 
@@ -366,14 +365,12 @@ msgid "Browse Settings"
 msgstr "Ρυθμίσεις περιήγησης"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Απομακρυσμένη αφύπνιση"
 
@@ -417,8 +414,7 @@ msgid "General"
 msgstr "Γενικά"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Σύνδεσμοι"
 
@@ -444,14 +440,12 @@ msgid "File Attributes && Ownership"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
-#, fuzzy, kde-format
-#| msgid "Compression"
+#, kde-format
 msgid "Compression"
 msgstr "Συμπίεση"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:333
-#, fuzzy, kde-format
-#| msgid "Files"
+#, kde-format
 msgid "Files"
 msgstr "Αρχεία"
 
@@ -479,14 +473,12 @@ msgid "File Transfer"
 msgstr "Μεταφορά αρχείου"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:403
-#, fuzzy, kde-format
-#| msgid "Files && Directories"
+#, kde-format
 msgid "Files && Directories"
 msgstr "Αρχεία && κατάλογοι"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Περιορισμοί"
 
@@ -512,8 +504,7 @@ msgid "Filtering"
 msgstr "Φιλτράρισμα"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Αθροίσματα ελέγχου"
 
@@ -685,9 +676,9 @@ msgstr "Αναζήτη&ση"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Προσαρ&μοσμένες επιλογές"
+msgstr "Προηγμένες ρυθμίσεις προσάρτησης"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -936,15 +927,6 @@ msgstr "Μέγεθος:"
 #~ msgid "Custom Options"
 #~ msgstr "Προσαρμοσμένες επιλογές"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Προσάρτηση όλων των σελιδοδεικτών"
-
-#~ msgid " KiB"
-#~ msgstr "KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr "KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -961,31 +943,11 @@ msgstr "Μέγεθος:"
 #~ msgid "Entry"
 #~ msgstr "Εγγραφή"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Διεπαφή χρήστη"
+#~ msgid "Login"
+#~ msgstr "Σύνδεση"
 
 #~ msgid "Password"
 #~ msgstr "Κωδικός πρόσβασης"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Συμπεριφορά"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Γενικά"
-
-#, fuzzy
-#~| msgid "Miscellaneous"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Διάφορα"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Ειδικοί κανόνες φιλτραρίσματος"
 
 #~ msgid "Identification"
 #~ msgstr "Αναγνώριση"
@@ -1002,14 +964,10 @@ msgstr "Μέγεθος:"
 #~ msgid "Actions"
 #~ msgstr "Ενέργειες"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Αποστολή μαγικού πακέτου πριν τη σάρωση του τοπικού δικτύου"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Αποστολή μαγικού πακέτου πριν την προσάρτηση κοινού πόρου"
 
 #~ msgid "Wake-On-LAN Settings"
@@ -1021,24 +979,7 @@ msgstr "Μέγεθος:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Αυτός ο εξυπηρετητής υποστηρίζει επεκτάσεις CIFS Unix"
 
-#, fuzzy
-#~| msgid "Browse Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "Ρυθμίσεις περιήγησης"
-
-#, fuzzy
-#~| msgid "Profiles"
-#~ msgid "Profiles:"
-#~ msgstr "Προφίλ"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Ταυτοποίηση"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Ασφάλεια"
 
 #~ msgid "Samba Settings"
@@ -1050,8 +991,17 @@ msgstr "Μέγεθος:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Δικαιώματα, κτλ."
 
-#~ msgid "Login"
-#~ msgstr "Σύνδεση"
+#~ msgid " KiB"
+#~ msgstr "KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr "KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Ειδικοί κανόνες φιλτραρίσματος"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Προσαρ&μοσμένες επιλογές"
 
 #~ msgid "Login:"
 #~ msgstr "Σύνδεση:"

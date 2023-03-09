@@ -1,14 +1,14 @@
 # translation of smb4k.po to Slovak
 # Michal Sulek <reloadshot@atlas.sk>, 2004, 2005.
-# Roman Paholík <wizzardsk@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2019, 2022.
+# Roman Paholík <wizzardsk@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2022.
 # Ferdinand Galko <galko.ferdinand@gmail.com>, 2014.
-# Matej Mrenica <matejm98mthw@gmail.com>, 2019, 2021.
+# Matej Mrenica <matejm98mthw@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2022-04-07 18:24+0200\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-04-06 20:27+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
@@ -166,9 +166,9 @@ msgstr "Synchronizácia"
 
 #: smb4k/smb4kconfigdialog.cpp:112
 #, fuzzy, kde-format
-#| msgid "Common Settings:"
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Spoločné nastavenia:"
+msgstr "Spoločné nastavenia"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -192,10 +192,9 @@ msgid "Settings"
 msgstr "Nastavenia"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:64
-#, fuzzy, kde-format
-#| msgid "Wallet Entries:"
+#, kde-format
 msgid "Wallet Entries"
-msgstr "Položky peňaženky:"
+msgstr "Položky peňaženky"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:97
 #, kde-format
@@ -368,14 +367,12 @@ msgid "Browse Settings"
 msgstr "Prehliadať nastavenia"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
@@ -419,8 +416,7 @@ msgid "General"
 msgstr "Všeobecné"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Odkazy"
 
@@ -446,14 +442,12 @@ msgid "File Attributes && Ownership"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
-#, fuzzy, kde-format
-#| msgid "Compression"
+#, kde-format
 msgid "Compression"
 msgstr "Kompresia"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:333
-#, fuzzy, kde-format
-#| msgid "Files"
+#, kde-format
 msgid "Files"
 msgstr "Súbory"
 
@@ -461,7 +455,7 @@ msgstr "Súbory"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -481,14 +475,12 @@ msgid "File Transfer"
 msgstr "Prenos súboru"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:403
-#, fuzzy, kde-format
-#| msgid "Files && Directories"
+#, kde-format
 msgid "Files && Directories"
 msgstr "Súbory && adresáre"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "Obmedzenia"
 
@@ -514,8 +506,7 @@ msgid "Filtering"
 msgstr "Filtrovanie"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Kontrolné súčty"
 
@@ -688,9 +679,9 @@ msgstr "&Hľadať"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "Vlastné voľby"
+msgstr "Pokročilé nastavenia pripojenia"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -916,9 +907,10 @@ msgid "Mountpoint:"
 msgstr "Bod pripojenia:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "Užívateľské meno:"
+msgstr "Užívateľské rozhranie"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -938,15 +930,6 @@ msgstr "Veľkosť:"
 #~ msgid "Custom Options"
 #~ msgstr "Vlastné voľby"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Pripojiť všetky záložky"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -962,27 +945,11 @@ msgstr "Veľkosť:"
 #~ msgid "Entry"
 #~ msgstr "Položka"
 
-#~ msgid "Username"
-#~ msgstr "Používateľské meno"
+#~ msgid "Login"
+#~ msgstr "Prihlásenie"
 
 #~ msgid "Password"
 #~ msgstr "Heslo"
-
-#~ msgid "Behavior:"
-#~ msgstr "Správanie:"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Všeobecné"
-
-#, fuzzy
-#~| msgid "Miscellaneous"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Rôzne"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Špeciálne pravidlá filtra:"
 
 #~ msgid "Identification"
 #~ msgstr "Identifikácia"
@@ -999,14 +966,10 @@ msgstr "Veľkosť:"
 #~ msgid "Actions"
 #~ msgstr "Akcie"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr "Poslať magický balík pred prehľadaním sieťového okolia"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "Poslať magický balík pred pripojeným zdieľania"
 
 #~ msgid "Wake-On-LAN Settings"
@@ -1018,17 +981,8 @@ msgstr "Veľkosť:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Tento server podporuje unixové rozšírenia CIFS"
 
-#~ msgid "Browse Settings:"
-#~ msgstr "Prehliadať nastavenia:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Profily:"
-
-#~ msgid "Authentication:"
-#~ msgstr "Overenie:"
-
-#~ msgid "Security:"
-#~ msgstr "Zabezpečenie:"
+#~ msgid "Security"
+#~ msgstr "Bezpečnosť"
 
 #~ msgid "Samba Settings"
 #~ msgstr "Nastavenia Samba"
@@ -1039,8 +993,17 @@ msgstr "Veľkosť:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Oprávnenia atď."
 
-#~ msgid "Login"
-#~ msgstr "Prihlásenie"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Špeciálne pravidlá filtra:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Vlastné voľby"
 
 #~ msgid "Login:"
 #~ msgstr "Prihlásenie:"
@@ -1051,67 +1014,11 @@ msgstr "Veľkosť:"
 #~ msgid "The unmount process crashed."
 #~ msgstr "Proces odpojenia spadol."
 
-#, fuzzy
-#~| msgid "Protocol Hint:"
-#~ msgid "Protocols"
-#~ msgstr "Pomoc protokolu:"
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 z %2 voľných (%3 použitých)"
 
 #~ msgid "Location"
 #~ msgstr "Umiestnenie"
-
-#, fuzzy
-#~| msgid "Save the entries to the wallet."
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Uložiť položky do peňaženky."
-
-#, fuzzy
-#~| msgid "Load the entries stored in the wallet."
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Načítať položky uložené v peňaženke."
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "Označenie tohto check boxu zobrazí podrobnosti vybraných prihlasovacích "
-#~ "informácií."
-
-#~ msgid "Password Storage"
-#~ msgstr "Úložisko hesiel:"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Zobraziť podrobnosti vybranej položky."
-
-#~ msgid "Undo"
-#~ msgstr "Späť"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Pripájanie"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Stĺpce"
-
-#~ msgid "Tooltips"
-#~ msgstr "Nástrojové tipy"
-
-#, fuzzy
-#~| msgid "View Modes"
-#~ msgid "View Mode"
-#~ msgstr "Režimy zobrazenia"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Rôzne nastavenia"
-
-#~ msgid "Shares"
-#~ msgstr "Zdieľania"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Lišta nástrojov siete"
@@ -1125,44 +1032,30 @@ msgstr "Veľkosť:"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Alternatívny hlavný panel nástrojov"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Zdieľania"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Programy nástrojov"
+#~ msgid "Password Storage"
+#~ msgstr "Úložisko hesiel:"
 
-#~ msgid "Network Search"
-#~ msgstr "Prehľadávanie siete"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Načítať položky uložené v peňaženke."
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Sem zadajte hľadaný reťazec."
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Uložiť položky do peňaženky."
 
-#~ msgid "Abort"
-#~ msgstr "Prerušiť"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Zobraziť podrobnosti vybranej položky."
 
-#~ msgid "&Clear"
-#~ msgstr "V&yčistiť"
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Označenie tohto check boxu zobrazí podrobnosti vybraných prihlasovacích "
+#~ "informácií."
 
-#~ msgid "The search returned no results."
-#~ msgstr "Hľadanie nevrátilo žiadne výsledky."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr "Bajtov"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Získavam náhľad z %1..."
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Periodické prehľadávanie"
-
-#~ msgid "Browse List"
-#~ msgstr "Zoznam prehliadania"
+#~ msgid "Undo"
+#~ msgstr "Späť"
 
 #~ msgid "UNC Address:"
 #~ msgstr "UNC adresa:"
@@ -1182,23 +1075,29 @@ msgstr "Veľkosť:"
 #~ msgid "Group ID:"
 #~ msgstr "ID skupiny:"
 
+#~ msgid "Browse List"
+#~ msgstr "Zoznam prehliadania"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Periodické prehľadávanie"
+
 #~ msgid "General Options"
 #~ msgstr "Všeobecné nastavenia"
 
-#, fuzzy
-#~| msgid "&Edit Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "&Upraviť záložky"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#, fuzzy
-#~| msgid "Group ID:"
-#~ msgid "Group:"
-#~ msgstr "ID skupiny:"
+#~ msgid " Bytes"
+#~ msgstr "Bajtov"
 
-#, fuzzy
-#~| msgid "Group ID:"
-#~ msgid "Group name:"
-#~ msgstr "ID skupiny:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
+
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Programy nástrojov"
 
 #~ msgid "Copying"
 #~ msgstr "Kopírujem"
@@ -1206,8 +1105,20 @@ msgstr "Veľkosť:"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Mazanie && prenos súborov"
 
+#~ msgid "Columns"
+#~ msgstr "Stĺpce"
+
+#~ msgid "Tooltips"
+#~ msgstr "Nástrojové tipy"
+
+#~ msgid "View Mode"
+#~ msgstr "Režim zobrazenia"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "Nie je možné vytvoriť sieťový prehliadač."
+
+#~ msgid "Network Search"
+#~ msgstr "Prehľadávanie siete"
 
 #~ msgid "The search dialog could not be created."
 #~ msgstr "Nie je možné vytvoriť dialóg hľadania."
@@ -1215,16 +1126,17 @@ msgstr "Veľkosť:"
 #~ msgid "The shares view could not be created."
 #~ msgstr "Nie je možné vytvoriť pohľad zdieľaní."
 
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Získavam náhľad z %1..."
+
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
 
 #~ msgid "The network neighborhood browser KPart of Smb4K"
 #~ msgstr "Prehliadač sieťového okolia KPart zo Smb4K"
 
-#, fuzzy
-#~| msgid "\\u00A9 2007-2015, Alexander Reinholdt"
 #~ msgid "© 2007-2015, Alexander Reinholdt"
-#~ msgstr "\\u00A9 2007-2015, Alexander Reinholdt"
+#~ msgstr "© 2007-2015, Alexander Reinholdt"
 
 #~ msgid "Waking up remote servers..."
 #~ msgstr "Prebúdzam vzdialené servery..."
@@ -1232,11 +1144,20 @@ msgstr "Veľkosť:"
 #~ msgid "Search item:"
 #~ msgstr "Hľadať položku:"
 
+#~ msgid "Enter the search string here."
+#~ msgstr "Sem zadajte hľadaný reťazec."
+
+#~ msgid "Abort"
+#~ msgstr "Prerušiť"
+
 #~ msgid "Smb4KNetworkSearchPart"
 #~ msgstr "Smb4KNetworkSearchPart"
 
 #~ msgid "The network search KPart of Smb4K"
 #~ msgstr "Sieťové hľadanie KPart zo Smb4K"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Hľadanie nevrátilo žiadne výsledky."
 
 #~ msgid "Open With"
 #~ msgstr "Otvoriť s"
@@ -1249,6 +1170,9 @@ msgstr "Veľkosť:"
 
 #~ msgid "&Shares"
 #~ msgstr "Zdieľania"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Pokročilý prehliadač sieťového okolia"
@@ -1299,6 +1223,9 @@ msgstr "Veľkosť:"
 
 #~ msgid "Usage"
 #~ msgstr "Použitie"
+
+#~ msgid "Protocol Hint:"
+#~ msgstr "Pomoc protokolu:"
 
 #~ msgid "net"
 #~ msgstr "sieť"

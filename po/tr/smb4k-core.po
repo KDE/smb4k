@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2023-03-04 14:03+0300\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2023-03-07 20:22+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:18
@@ -219,10 +219,11 @@ msgstr "Simge görünümü için simge boyutu:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Set the icon size for the list view mode of the shares view."
 msgid "Set the icon size for the icon view mode of the shares view."
 msgstr ""
-"Paylaşımlar görünümünün simge görünümü kipi için simge boyutunu ayarlayın."
+"Paylaşımlar görünümünün liste görünümü kipi için simge boyutunu ayarlayın."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
@@ -414,22 +415,27 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Set the SMB port to:"
 msgid "Set the SMB port to:"
 msgstr "SMB kapısını şuna ayarla:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the port that is used for connecting to remote servers with the "
+#| "client programs net, smbclient and smbtree. The default value is 139 "
+#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"Bu, uzak sunuculara bağlanmak için kullanılan kapıdır. Öntanımlı değer "
-"139'dur (NetBIOS). FreeBSD altında, bu ayar aynı zamanda bağlama için de "
-"kullanılır."
+"Bu, istemci programları net, smbclient ve smbtree ile uzak sunuculara "
+"bağlanmak için kullanılan porttur. Öntanımlı değer 139'dur (NetBIOS). Bu "
+"ayar ayrıca, FreeBSD altında bağlama için kullanılır."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -483,7 +489,7 @@ msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
 "environment."
 msgstr ""
-"Kimlik doğrulaması için Kerberos kullan. Bu yalnızca Active Directory "
+"Kimlik doğrulaması için Kerberos kullan. Bu sadece Active Directory "
 "ortamında kullanışlıdır."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
@@ -500,7 +506,8 @@ msgstr "Kimlik doğrulaması için Winbind ccache kullan."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Set the encryption level to:"
 msgid "Set the encryption level to:"
 msgstr "Şifreleme düzeyini şuna ayarla:"
 
@@ -586,7 +593,13 @@ msgstr "Ağdan Uyan özelliğini etkinleştir"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#| "magic packet send via a UDP socket to wake up remote servers. If you want "
+#| "to take advantage of the Wake-On-LAN feature, you need to enable this "
+#| "option."
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -607,7 +620,11 @@ msgstr "Bekleme süresi:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the waiting time in seconds between the sending of the magic Wake-"
+#| "On-LAN packets and the scanning of the network neighborhood or the "
+#| "mounting of a share."
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -631,10 +648,9 @@ msgid ""
 "encrypted on your hard drive. If this setting is disabled, the login is not "
 "stored permanently but only temporarily."
 msgstr ""
-"Oturum açma bilgilerini saklamak için bir cüzdan kullanın. Kullanıcı adı ve "
-"parola, sabit sürücünüzde şifrelenmiş olarak saklanır. Bu ayar devre dışı "
-"bırakılırsa oturum açma bilgileri kalıcı olarak değil, yalnızca geçici "
-"olarak saklanır."
+"Girişi depolamak için cüzdan kullan. Kullanıcı adı ve parola şifrelenmiş "
+"halde sabit diskinizde depolanır. Eğer bu ayarlar kapatılırsa, giriş sadece "
+"geçici olarak depolanır kalıcı değil."
 
 #. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
 #: smb4k.kcfg:256
@@ -750,7 +766,7 @@ msgid ""
 "specified on the command line are sent to the server rather than just the "
 "last parts of the file names."
 msgstr ""
-"Göreceli yollar (-R, --relative) kullan. Dosya adlarının yalnızca son "
+"Göreceli yollar (-R, --relative) kullan. Dosya adlarının sadece son "
 "kısımları yerine komut satırında belirtilen tam yol adları gönderilir "
 "anlamına gelir."
 
@@ -905,7 +921,7 @@ msgid ""
 "specified."
 msgstr ""
 "Güvenli olmayan sembolik bağlantıları gösterilen ögelere dönüştür (--copy-"
-"unsafe-links). Bu, sembolik bağlantıların yalnızca kopyalanan ağacın dışında "
+"unsafe-links). Bu, sembolik bağlantıların sadece kopyalanan ağacın dışında "
 "gösterilen ögelere dönüştürülebileceği anlamına gelir. Tam sembolik "
 "bağlantılara aynı şekilde davranılır. Eğer --copy-links ayrıca belirtilirse "
 "bu seçeneğin hiçbir etkisi olmaz."
@@ -1040,7 +1056,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr "Erişim denetim listelerini koru (ACL'ler)"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1051,58 +1067,66 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
-"Erişim denetim listelerini koru. Bu seçenek, rsync'in hedef erişim denetim "
-"listelerini kaynak olanlarıyla aynı biçimde güncellemesini sağlar. Bu "
-"seçenek ayrıca --perms ima eder. Bunun düzgünce çalışması için kaynak ve "
-"hedef sistemlerde uyumlu erişim denetim listeleri olmalıdır."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve extended attributes"
-msgstr "Genişletilmiş öznitelikleri koru"
+msgstr "Zamanları koru"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Genişletilmiş öznitelikleri koru. Bu seçenek, rsync'in hedef öznitelikleri "
-"kaynak olanlarıyla aynı biçimde güncellemesini sağlar."
+"Grup koru (-g, --group). Hedef dosyanın grubu kaynak dosya olarak "
+"ayarlanacaktır."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve access times"
-msgstr "Erişim zamanlarını koru"
+msgstr "Zamanları koru"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Erişim zamanlarını koru. Bu seçenek, rsync'e hedef dosyaların erişim "
-"(kullanım) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını söyler."
+"Grup koru (-g, --group). Hedef dosyanın grubu kaynak dosya olarak "
+"ayarlanacaktır."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve create times"
-msgstr "Oluşturma zamanlarını koru"
+msgstr "Zamanları koru"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Oluşturma zamanlarını koru. Bu seçenek, rsync'e hedef dosyaların oluşturma "
-"(yenilik) zamanlarını kaynak olanlarla aynı biçimde ayarlamasını söyler."
+"Grup koru (-g, --group). Hedef dosyanın grubu kaynak dosya olarak "
+"ayarlanacaktır."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402
@@ -1136,7 +1160,7 @@ msgid ""
 "user on the receiving side."
 msgstr ""
 "Sahibini koru (-o, --owner). Hedef dosyanın sahibi, kaynak dosyanın sahibi "
-"olarak ayarlanacaktır, fakat yalnızca alıcı rsync süper kullanıcı ile "
+"olarak ayarlanacaktır, fakat sadece alıcı rsync süper kullanıcı ile "
 "çalıştırılırsa. Bu seçenek olmadan, alıcı tarafta sahip çağıran kullanıcı "
 "ayarlanır."
 
@@ -1159,7 +1183,7 @@ msgstr ""
 "uygulamasının karakter aktarmasına ve aygıtları, aynı zamanda soket ve fifo "
 "olarak adlandırılan özel dosyaları bloklamasına neden olur. Rsync uygulaması "
 "süper kullanıcı olarak çalıştırılmazsa ve --super seçeneği belirtilmezse "
-"yalnızca kısmi olarak çalışır."
+"sadece kısmi olarak çalışır."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
 #: smb4k.kcfg:417
@@ -1195,7 +1219,7 @@ msgid ""
 msgstr ""
 "Zamanlar korunurken dizinleri atla (-O, --omit-dir-times). Değiştirilme "
 "zamanları korunmuş dizinlerin atlanması anlamına gelir. Dolayısıyla bu "
-"özellik yalnızca --times ile birlikte çalışır."
+"özellik sadece --times ile birlikte çalışır."
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
 #: smb4k.kcfg:427
@@ -1284,7 +1308,7 @@ msgid ""
 msgstr ""
 "Aktarım sırasında alıcı taraftaki dosyaları sil (--delete-during). Bu yöntem "
 "--delete-before ya da --delete-after seçeneklerinden daha hızlıdır fakat "
-"yalnızca rsync 2.6.4 ya da sonrasındaki sürümlerde desteklenir."
+"sadece rsync 2.6.4 ya da sonrasındaki sürümlerde desteklenir."
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
 #: smb4k.kcfg:452
@@ -1338,7 +1362,7 @@ msgid ""
 msgstr ""
 "Boş olmadığı durumlarda bile dizinlerin silinmesini zorla (--force). Bu "
 "seçenek, rsync uygulamasına, boş olmayan bir dizinin olmayan bir dizin ile "
-"değiştirildiğinde silinmesini söyler. Bu yalnızca silme işlemleri etkin "
+"değiştirildiğinde silinmesini söyler. Bu sadece silme işlemleri etkin "
 "değilse ilgilidir."
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
@@ -1355,7 +1379,7 @@ msgid ""
 "rsync not to delete more than NUM files or directories (NUM must be non-"
 "zero). This is useful when mirroring very large trees to prevent disasters."
 msgstr ""
-"Yalnızca burada belirtildiği sayıda dosya sil (--max-delete=SAYI). Bu rsync "
+"Sadece burada belirtildiği sayıda dosya sil (--max-delete=SAYI). Bu rsync "
 "uygulamasına belirtilen SAYIdan fazla dosya ya da dizin silmemesini söyler "
 "(SAYI sıfır olmamalıdır). Bu çok büyük ağaçları yansıtırken olağanüstü "
 "durumları engellemek için kullanışlıdır."
@@ -1594,9 +1618,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Custom filter rules:"
 msgid "Custom filter rules"
-msgstr "Özel süzgeç kuralları"
+msgstr "Özel süzme kuralları:"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -1692,7 +1717,7 @@ msgstr ""
 #: smb4k.kcfg:595
 #, kde-format
 msgid "Only update files that already exist"
-msgstr "Yalnızca olan dosyaları güncelle"
+msgstr "Sadece olan dosyaları güncelle"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
 #: smb4k.kcfg:596
@@ -1708,7 +1733,7 @@ msgstr ""
 "uygulamasına hedefte henüz olmayan dosyaları (dizinlerde dahil) oluşturma "
 "işlemini atlamasını söyler. Eğer bu seçenek --ignore-existing seçeneği ile "
 "birleştirilirse, hiçbir dosya güncellenemeyecektir (eğer yapmak istediğiniz "
-"yalnızca fazlalık dosyaları silmek ise bu seçenek kullanışlı olabilir)."
+"sadece fazlalık dosyaları silmek ise bu seçenek kullanışlı olabilir)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
 #: smb4k.kcfg:600
@@ -2055,18 +2080,16 @@ msgstr "%1 dosyası %2 adresine yazdırılamadı"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
-"Zeroconf ardalan süreci çalışmıyor. DNS-SD kullanarak bir sunucu "
-"keşfedilmedi."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr "Zeroconf desteği, KDE'nin bu sürümünde kullanılabilir değil."
+msgstr ""
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr "Zeroconf ile bilinmeyen bir hata oluştu."
+msgstr ""
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2126,7 +2149,7 @@ msgid ""
 "If the file's mimetype is not supported, you need to convert it."
 msgstr ""
 "Bu uzak yazıcıdan yazdırmak istediğiniz dosyadır. Mevcut durumda PDF, "
-"Postscript, düz metin ve resim gibi yalnızca birkaç mime türünü destekliyor. "
+"Postscript, düz metin ve resim gibi sadece birkaç mime türünü destekliyor. "
 "Eğer dosyanın mime türü desteklenmiyorsa, dosyayı dönüştürmeniz gerekir."
 
 #: smb4kclient_p.cpp:2396
@@ -2145,23 +2168,28 @@ msgid "Print"
 msgstr "Yazdır"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
 msgid "Custom Settings"
-msgstr "Özel Ayarlar"
+msgstr "Bağlama Ayarları"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#| "provides.</p>"
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Sağlanan tüm paylaşımları ve <b>%1</b> sunucusu için özel ayarlar "
-"tanımlayın.</p>"
+"<p>Sağlanan tüm paylaşımları ve <b>%1</b> sunucusu için özel seçenekleri "
+"tanımla.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p><b>%1</b> paylaşımı için özel ayarlar tanımlayın.</p>"
+msgstr "<p><b>%1</b> paylaşımı için özel seçenekler tanımla.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709
@@ -2231,13 +2259,15 @@ msgstr "İşlemler"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic packet before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Ağ komşularını taramadan önce özel paket gönder"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic packet before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Bir paylaşımı bağlamadan önce özel paket gönder"
 
@@ -2287,14 +2317,17 @@ msgid "Clear List"
 msgstr "Listeyi Temizle"
 
 #: smb4kmounter.cpp:756
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<p>Sahibi <b>%3</b> olan <b>%1</b> paylaşımı <br><b>%2</b> ortamına "
+"<qt><p>Sahibi <b>%3</b> olan <b>%1</b> paylaşımı <br><b>%2</b> ortamına "
 "bağlanıyor.</p><p>Paylaşımın bağlantısını gerçekten kesmek istiyor musunuz?</"
-"p>"
+"p></qt>"
 
 #: smb4kmounter.cpp:761
 #, kde-format
@@ -3253,7 +3286,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr "Bayt erimi kilit istekleri gönderme"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3264,10 +3297,6 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
-"Sunucuya bayt erimi kilit istekleri gönderme. Bu, CIFS tarzı zorunlu bayt "
-"erimi kilitlerini bozan kimi uygulamalar için gereklidir (ve henüz tavsiye "
-"niteliğinde bayt erimi kilitlerini istemeyi desteklemeyen çoğu CIFS "
-"sunucuları için)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3503,7 +3532,8 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p><b>%1</b> paylaşımı <b>%2</b> olarak bağlandı.</p>"
 
 #: smb4knotification.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open"
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Aç"
@@ -3706,21 +3736,22 @@ msgstr "<p>Eylemi yönetici ayrıcalıklarıyla yürütme başarısız oldu.</p>
 #: smb4knotification.cpp:416
 #, kde-format
 msgid "<p>The URL that was passed is invalid.</p>"
-msgstr "<p>Geçirilen adres geçersiz.</p>"
+msgstr "<p>Geçirilen URL geçersiz.</p>"
 
 #: smb4knotification.cpp:424
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The network communication failed with the following error message: <s>%1</"
+#| "s>"
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
-msgstr ""
-"<p>Ağ iletişimi, aşağıdaki hata iletisiyle başarısız oldu: <s>%1</s><p>"
+msgstr "Ağ iletişimi aşağıdaki hata iletisiyle başarısız oldu: <s>%1</s>"
 
 #: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
 msgstr ""
-"<p>Zeroconf hizmetiyle ilgili bilinmeyen bir hata oluştu: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
@@ -3850,6 +3881,12 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı ve parola girin.</qt>"
+
+#, fuzzy
+#~| msgid "Set the icon size for the icon view mode of the shares view."
+#~ msgid "View mode of the shares view:"
+#~ msgstr ""
+#~ "Paylaşımlar görünümünün simge görünümü kipi için simge boyutunu ayarlayın."
 
 #~ msgid "Custom Options"
 #~ msgstr "Özel Seçenekler"

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2022-11-09 23:31+0100\n"
-"Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2022-07-23 23:54+0200\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -167,9 +167,9 @@ msgstr "Abgleich"
 
 #: smb4k/smb4kconfigdialog.cpp:112
 #, fuzzy, kde-format
-#| msgid "Common Settings:"
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "Allgemeine Einstellungen:"
+msgstr "Allgemeine Einstellungen"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -236,19 +236,27 @@ msgid "Enter the default login information."
 msgstr "Tragen Sie die Standardanmeldung ein."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:401
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgid "Set the username and password for wallet entry %1."
-msgstr "Benutzernamen und Passwort des Passwortspeicher-Eintrags %1 festlegen."
+msgstr ""
+"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für den Rechner <b>"
+"%1</b> ein.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgid "Set the username and password for the default login."
-msgstr "Benutzernamen und Passwort der Standardanmeldung festlegen."
+msgstr ""
+"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für den Rechner <b>"
+"%1</b> ein.</qt>"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "Alles in Ordnung."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -256,12 +264,9 @@ msgid "Clear List"
 msgstr "Liste löschen"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom options were reset."
+#, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
-"Der Eintrag %1 wurde gelöscht, weil alle benutzerdefinierten Optionen "
-"zurückgesetzt worden sind."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -387,27 +392,31 @@ msgstr " s"
 #: smb4k/smb4kconfigpagenetwork.cpp:225
 #, fuzzy, kde-format
 #| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Legen Sie die Rechner, die aufgeweckt werden sollen, im Dialog für "
-"benutzerdefinierte Einstellungen fest."
+"<qt>Legen Sie die Rechner, die aufgeweckt werden sollen, im Dialog für "
+"benutzerdefinierte Einstellungen fest.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "Erweiterte Einstellungen"
+msgstr "Erweiterte Einstellungen zum Einhängen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization prefix:"
 msgid "Synchronization Directory"
-msgstr "Abgleichordner"
+msgstr "Basisordner für den Abgleich:"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
-msgstr "Sicherungen"
+msgstr "Sicherungskopien"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -425,21 +434,20 @@ msgid "File Handling"
 msgstr "Dateiverarbeitung"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
-#, fuzzy, kde-format
-#| msgid "File Attributes && Ownership"
+#, kde-format
 msgid "File Attributes"
-msgstr "Dateiattribute && -besitzer"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
-#| msgid "Owner:"
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "Eigentümer:"
+msgstr "Eigentümer"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "Dateiattribute && -besitzer"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -453,8 +461,7 @@ msgstr "Dateien"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:343
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
-#, fuzzy, kde-format
-#| msgid " kB"
+#, kde-format
 msgid " kB"
 msgstr " kB"
 
@@ -491,9 +498,10 @@ msgid "File Deletion"
 msgstr "Löschen von Dateien"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General Settings"
 msgid "General Filtering Settings"
-msgstr "Allgemeine Filter-Einstellungen"
+msgstr "Allgemeine Einstellungen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -678,9 +686,9 @@ msgstr "&Suchen"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "B&enutzerdefinierte Einstellungen"
+msgstr "Erweiterte Einstellungen zum Einhängen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -906,9 +914,10 @@ msgid "Mountpoint:"
 msgstr "Einhängepunkt:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "Benutzername:"
+msgstr "Benutzer:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -928,15 +937,6 @@ msgstr "Größe:"
 #~ msgid "Custom Options"
 #~ msgstr "Benutzerdefinierte Einstellungen"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Alle Lesezeichen einhängen"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -954,27 +954,11 @@ msgstr "Größe:"
 #~ msgid "Entry"
 #~ msgstr "Eintrag"
 
-#~ msgid "Username"
-#~ msgstr "Benutzername"
+#~ msgid "Login"
+#~ msgstr "Anmeldename"
 
 #~ msgid "Password"
 #~ msgstr "Passwort"
-
-#~ msgid "Behavior:"
-#~ msgstr "Verhalten:"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Allgemein"
-
-#, fuzzy
-#~| msgid "Miscellaneous"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Verschiedenes"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Spezielle Filterregeln:"
 
 #~ msgid "Identification"
 #~ msgstr "Kennung"
@@ -991,15 +975,11 @@ msgstr "Größe:"
 #~ msgid "Actions"
 #~ msgstr "Aktionen"
 
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgid "Send magic package before scanning the network neighborhood"
 #~ msgstr ""
 #~ "„Magisches“ Datenpaket vor dem Durchsuchen der Netzwerkumgebung senden"
 
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
+#~ msgid "Send magic package before mounting a share"
 #~ msgstr "„Magisches“ Datenpaket vor dem Einhängen einer Freigabe senden"
 
 #~ msgid "Wake-On-LAN Settings"
@@ -1011,17 +991,8 @@ msgstr "Größe:"
 #~ msgid "This server supports the CIFS Unix extensions"
 #~ msgstr "Dieser Server unterstützt die CIFS-Erweiterungen unter Unix"
 
-#~ msgid "Browse Settings:"
-#~ msgstr "Browser-Einstellungen:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Profile:"
-
-#~ msgid "Authentication:"
-#~ msgstr "Authentifizierung:"
-
-#~ msgid "Security:"
-#~ msgstr "Sicherheit:"
+#~ msgid "Security"
+#~ msgstr "Sicherheit"
 
 #~ msgid "Samba Settings"
 #~ msgstr "Samba-Einstellungen"
@@ -1032,8 +1003,17 @@ msgstr "Größe:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Berechtigungen usw."
 
-#~ msgid "Login"
-#~ msgstr "Anmeldename"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Spezielle Filterregeln:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "B&enutzerdefinierte Einstellungen"
 
 #~ msgid "Login:"
 #~ msgstr "Anmeldename:"
@@ -1044,69 +1024,11 @@ msgstr "Größe:"
 #~ msgid "The unmount process crashed."
 #~ msgstr "Der Aushängevorgang ist abgestürzt."
 
-#~ msgid "Protocols"
-#~ msgstr "Protokolle"
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 von %2 frei (%3 belegt)"
 
 #~ msgid "Location"
 #~ msgstr "Ort"
-
-#~ msgid "Owner"
-#~ msgstr "Eigentümer"
-
-#, fuzzy
-#~| msgid "Save the entries to the wallet."
-#~ msgid "The selected entry is removed from the wallet."
-#~ msgstr "Einträge im Passwortspeicher speichern."
-
-#, fuzzy
-#~| msgid "Load the entries stored in the wallet."
-#~ msgid "All entries are removed from the wallet."
-#~ msgstr "Im Passwortspeicher abgelegte Einträge laden."
-
-#~ msgid ""
-#~ "Marking this check box will show the details of the selected login "
-#~ "information below."
-#~ msgstr ""
-#~ "Das Markieren dieses Ankreuzfeldes zeigt unten die Einzelheiten zu der "
-#~ "ausgewählten Anmeldeinformation."
-
-#~ msgid "Password Storage"
-#~ msgstr "Passwortspeicherung"
-
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Einzelheiten des ausgewählten Eintrags anzeigen."
-
-# Rückgängig?
-# Muss String noch im Programm sehen
-#~ msgid "Undo"
-#~ msgstr "Zurücksetzen"
-
-#~ msgid "Remounting"
-#~ msgstr "Aushängen"
-
-#~ msgid "UNC:"
-#~ msgstr "UNC:"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Spalten"
-
-#~ msgid "Tooltips"
-#~ msgstr "Kurzinfos"
-
-#~ msgid "View Mode"
-#~ msgstr "Ansicht"
-
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Verschiedene Einstellungen"
-
-#~ msgid "Shares"
-#~ msgstr "Freigaben"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Netzwerk-Werkzeugleiste"
@@ -1120,46 +1042,32 @@ msgstr "Größe:"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Alternative Haupt-Werkzeugleiste"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Freigaben"
 
-# Klientenprogramme?
-# ugly
-#~ msgid "Utility Programs"
-#~ msgstr "Dienstprogramme"
+#~ msgid "Password Storage"
+#~ msgstr "Passwortspeicherung"
 
-#~ msgid "Network Search"
-#~ msgstr "Netzwerksuche"
+#~ msgid "Load the entries stored in the wallet."
+#~ msgstr "Im Passwortspeicher abgelegte Einträge laden."
 
-#~ msgid "Enter the search string here."
-#~ msgstr "Geben Sie hier den Suchbegriff ein."
+#~ msgid "Save the entries to the wallet."
+#~ msgstr "Einträge im Passwortspeicher speichern."
 
-#~ msgid "Abort"
-#~ msgstr "Abbrechen"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Einzelheiten des ausgewählten Eintrags anzeigen."
 
-#~ msgid "&Clear"
-#~ msgstr "&Leeren"
+#~ msgid ""
+#~ "Marking this check box will show the details of the selected login "
+#~ "information below."
+#~ msgstr ""
+#~ "Das Markieren dieses Ankreuzfeldes zeigt unten die Einzelheiten zu der "
+#~ "ausgewählten Anmeldeinformation."
 
-#~ msgid "The search returned no results."
-#~ msgstr "Die Suche hat keine Übereinstimmungen ergeben."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " Bytes"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Vorschau für %1 wird erzeugt ..."
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
-
-#~ msgid "Periodic Scanning"
-#~ msgstr "Regelmäßiges Durchsuchen"
-
-#~ msgid "Browse List"
-#~ msgstr "Browseliste"
+# Rückgängig?
+# Muss String noch im Programm sehen
+#~ msgid "Undo"
+#~ msgstr "Zurücksetzen"
 
 #~ msgid "UNC Address:"
 #~ msgstr "UNC-Adresse:"
@@ -1182,23 +1090,31 @@ msgstr "Größe:"
 #~ msgid "MAC address:"
 #~ msgstr "MAC-Adresse:"
 
+#~ msgid "Browse List"
+#~ msgstr "Browseliste"
+
+#~ msgid "Periodic Scanning"
+#~ msgstr "Regelmäßiges Durchsuchen"
+
 #~ msgid "General Options"
 #~ msgstr "Allgemeine Einstellungen"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Lesezeichen bearbeiten"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#~ msgid "Add Group"
-#~ msgstr "Gruppe hinzufügen"
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
 
-#~ msgid "Label:"
-#~ msgstr "Beschreibung:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#~ msgid "Group:"
-#~ msgstr "Gruppe:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
 
-#~ msgid "Group name:"
-#~ msgstr "Gruppenname:"
+# Klientenprogramme?
+# ugly
+#~ msgid "Utility Programs"
+#~ msgstr "Dienstprogramme"
 
 #~ msgid "Copying"
 #~ msgstr "Kopieren"
@@ -1206,14 +1122,29 @@ msgstr "Größe:"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Löschen && Übertragen von Dateien"
 
+#~ msgid "Columns"
+#~ msgstr "Spalten"
+
+#~ msgid "Tooltips"
+#~ msgstr "Kurzinfos"
+
+#~ msgid "View Mode"
+#~ msgstr "Ansicht"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "Der Netzwerkbrowser kann nicht erstellt werden."
+
+#~ msgid "Network Search"
+#~ msgstr "Netzwerksuche"
 
 #~ msgid "The search dialog could not be created."
 #~ msgstr "Der Suchdialog kann nicht erstellt werden."
 
 #~ msgid "The shares view could not be created."
 #~ msgstr "Die Freigabenansicht kann nicht erstellt werden."
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Vorschau für %1 wird erzeugt ..."
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1230,6 +1161,12 @@ msgstr "Größe:"
 #~ msgid "Search item:"
 #~ msgstr "Suchbegriff:"
 
+#~ msgid "Enter the search string here."
+#~ msgstr "Geben Sie hier den Suchbegriff ein."
+
+#~ msgid "Abort"
+#~ msgstr "Abbrechen"
+
 #~ msgid "Smb4KNetworkSearchPart"
 #~ msgstr "Smb4KNetworkSearchPart"
 
@@ -1238,6 +1175,9 @@ msgstr "Größe:"
 
 #~ msgid "Search Results"
 #~ msgstr "Suchergebnisse"
+
+#~ msgid "The search returned no results."
+#~ msgstr "Die Suche hat keine Übereinstimmungen ergeben."
 
 #~ msgid "Open With"
 #~ msgstr "Öffnen mit"
@@ -1250,6 +1190,9 @@ msgstr "Größe:"
 
 #~ msgid "&Shares"
 #~ msgstr "F&reigaben"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Advanced Network Neighborhood Browser"
 #~ msgstr "Erweiterter Browser für die Netzwerkumgebung"
@@ -3405,8 +3348,23 @@ msgstr "Größe:"
 #~ "Beschreibung oder die Gruppe zu bearbeiten, klicken Sie auf den "
 #~ "entsprechenden Lesezeicheneintrag."
 
+#~ msgid "Label:"
+#~ msgstr "Beschreibung:"
+
+#~ msgid "Group:"
+#~ msgstr "Gruppe:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Lesezeichen bearbeiten"
+
+#~ msgid "Add Group"
+#~ msgstr "Gruppe hinzufügen"
+
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Lesezeichen löschen"
+
+#~ msgid "Group name:"
+#~ msgstr "Gruppenname:"
 
 #~ msgid ""
 #~ "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -4824,8 +4782,14 @@ msgstr "Größe:"
 #~ msgid "Bookmark this share"
 #~ msgstr "Lesezeichen für diese Freigabe"
 
+#~ msgid "UNC:"
+#~ msgstr "UNC:"
+
 #~ msgid "Name:"
 #~ msgstr "Name:"
+
+#~ msgid "Protocol:"
+#~ msgstr "Protokoll:"
 
 #~ msgid "Try to authenticate with Kerberos (Active Directory)"
 #~ msgstr "Versuche eine Anmeldung mit Kerberos (Active Directory)"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2023-02-24 12:44\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2023-02-24 12:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/smb4k/smb4k.pot\n"
-"X-Crowdin-File-ID: 5947\n"
+"X-Crowdin-File: /kf5-stable/messages/smb4k/smb4k.pot\n"
+"X-Crowdin-File-ID: 4220\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -55,9 +55,10 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "多功能网上邻居浏览器和 Samba 共享挂载工具"
 
 #: smb4k/main.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2023 Alexander Reinholdt"
+msgstr "© 2003-2022 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -133,9 +134,10 @@ msgid "Add &Bookmark"
 msgstr "添加书签(&B)"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
-msgstr "挂载书签"
+msgstr "挂载所有书签"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -163,9 +165,10 @@ msgid "Synchronization"
 msgstr "同步"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Common Settings"
 msgid "Custom Settings"
-msgstr "自定义设置"
+msgstr "通用设置"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -232,17 +235,17 @@ msgstr "输入默认登录信息。"
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "设置密码库条目 %1 的用户名和密码。"
+msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr "设置默认登录的用户名和密码。"
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr "全部正常。"
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -250,10 +253,9 @@ msgid "Clear List"
 msgstr "清除列表"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom options were reset."
+#, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
-msgstr "项目 %1 已被移除，因为自定义选项已被全部重置。"
+msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -357,7 +359,7 @@ msgstr "浏览设置"
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, kde-format
@@ -370,23 +372,29 @@ msgid " s"
 msgstr " 秒"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>Define the hosts that should be woken up via the custom options "
+#| "dialog.</qt>"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
-msgstr "指定要通过自定义设置编辑器唤醒的主机。"
+msgstr "<qt>指定要通过自定义选项对话框唤醒的主机。</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Advanced Settings"
-msgstr "高级设置"
+msgstr "高级挂载设置"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Synchronization"
 msgid "Synchronization Directory"
-msgstr "同步目录"
+msgstr "同步"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Backup"
 msgid "Backups"
 msgstr "备份"
 
@@ -408,17 +416,18 @@ msgstr "文件处理"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr "文件属性"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Owner:"
 msgid "Ownership"
-msgstr "所有权"
+msgstr "所有者："
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr "文件属性和所有权"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -434,7 +443,7 @@ msgstr "文件"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr " kB"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -446,7 +455,7 @@ msgstr "其他"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr " kB/s"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -471,7 +480,7 @@ msgstr "文件删除"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr "常规过滤设置"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -653,9 +662,10 @@ msgstr "搜索(&S)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Advanced Mount Settings"
 msgid "Add &Custom Settings"
-msgstr "添加自定义设置(&C)"
+msgstr "高级挂载设置"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -879,9 +889,10 @@ msgid "Mountpoint:"
 msgstr "挂载点："
 
 #: smb4k/smb4ktooltip.cpp:308
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User Interface"
 msgid "Username:"
-msgstr "用户名："
+msgstr "用户界面"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -897,3 +908,83 @@ msgstr "文件系统："
 #, kde-format
 msgid "Size:"
 msgstr "大小："
+
+#~ msgid "Custom Options"
+#~ msgstr "自定义选项"
+
+#~ msgid ""
+#~ "The login information that was stored by Smb4K will be loaded from the "
+#~ "wallet."
+#~ msgstr "之前存储在 Smb4K 中的登录信息将改为从密码库中加载。"
+
+#~ msgid "All modifications you applied are saved to the wallet."
+#~ msgstr "您应用的所有修改已保存到密码库。"
+
+#~ msgid "Details"
+#~ msgstr "详情"
+
+#~ msgid "Entry"
+#~ msgstr "条目"
+
+#~ msgid "Login"
+#~ msgstr "登录"
+
+#~ msgid "Password"
+#~ msgstr "密码"
+
+#~ msgid "Identification"
+#~ msgstr "身份识别"
+
+#~ msgid "Network Item"
+#~ msgstr "网络项目"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC 地址"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC 地址："
+
+#~ msgid "Actions"
+#~ msgstr "操作"
+
+#~ msgid "Send magic package before scanning the network neighborhood"
+#~ msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
+
+#~ msgid "Send magic package before mounting a share"
+#~ msgstr "挂载共享前发送局域网唤醒魔术封包"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "局域网唤醒设置"
+
+#~ msgid "Always remount this share"
+#~ msgstr "总是重新挂载此共享"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "此服务器支持 CIFS Unix 扩展"
+
+#~ msgid "Security"
+#~ msgstr "安全"
+
+#~ msgid "Samba Settings"
+#~ msgstr "Samba 设置"
+
+#~ msgid "Default Destination"
+#~ msgstr "默认目标"
+
+#~ msgid "Permissions, etc."
+#~ msgstr "权限和其他属性。"
+
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "特殊过滤规则："
+
+#~ msgid "&Custom Options"
+#~ msgstr "自定义选项(&C)"
+
+#~ msgid "Login:"
+#~ msgstr "登录名："

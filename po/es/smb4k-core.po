@@ -8,24 +8,24 @@
 # Martín Carr <tincarr@gmail.com>, 2005, 2006, 2007, 2008.
 # Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>, 2010.
 # Xavier Corredor Llano <xavier.corredor.llano@gmail.com>, 2010, 2011, 2012.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2011, 2014, 2015, 2019, 2020.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2011, 2014, 2015, 2019, 2020, 2021.
 # Miguel Navarrete Hernandez <recados.akka@gmail.com>, 2013.
 # Raul Gonzalez <raulgf83@gmail.com>, 2013, 2014, 2015.
-# Javier Vinal <fjvinal@gmail.com>, 2015, 2016, 2017, 2018, 2019.
-# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, 2019, 2020, 2021, 2022, 2023.
+# Javier Vinal <fjvinal@gmail.com>, 2015, 2016, 2017, 2019.
+# Víctor Rodrigo Córdoba <vrcordoba@gmail.com>, %Y.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2023-03-04 17:47+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2021-04-02 10:35+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 21.03.80\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
@@ -197,9 +197,10 @@ msgstr "Se muestra información variada sobre el recurso compartido actual."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File mode:"
 msgid "View mode:"
-msgstr "Modo de vista:"
+msgstr "Modo de archivo:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -227,41 +228,41 @@ msgstr "Vista de lista"
 #: smb4k.kcfg:90
 #, kde-format
 msgid "Icon size for the icon view:"
-msgstr "Tamaño de icono para la vista de iconos:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr ""
-"Establecer el tamaño de icono para el modo de vista de iconos en la vista "
-"compartida."
+msgstr "Modo de vista de la vista de recursos compartidos:"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
 #, kde-format
 msgid "Icon size for the list view:"
-msgstr "Tamaño de icono para la vista de lista:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:98
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "View mode of the shares view:"
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr ""
-"Establecer el tamaño de icono para el modo de vista de lista en la vista "
-"compartida."
+msgstr "Modo de vista de la vista de recursos compartidos:"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Icon View"
 msgid "Icon size:"
-msgstr "Tamaño de icono:"
+msgstr "Vista de iconos"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Scan the network neighborhood periodically"
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "Establecer el tamaño de icono para el navegador de red de vecindad."
+msgstr "Explorar el entorno de red periódicamente"
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -431,22 +432,27 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "SMB port:"
 msgid "Set the SMB port to:"
-msgstr "Establecer SMB en el puerto:"
+msgstr "Puerto SMB:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the port that is used for connecting to remote servers with the "
+#| "client programs net, smbclient and smbtree. The default value is 139 "
+#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"Este es el puerto que se utiliza para conectarse a los servidores remotos. "
-"El valor predeterminado es 139 (NetBIOS). En FreeBSD, este ajuste se utiliza "
-"también para el montaje."
+"Este es el puerto que se utiliza para conectarse a los servidores remotos "
+"con los programas cliente net, smbclient y smbtree. El valor predeterminado "
+"es 139 (NetBIOS). En FreeBSD, este ajuste se utiliza también para el montaje."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -519,9 +525,10 @@ msgstr "Utilizar Winbind ccache para autenticación."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Encryption level:"
 msgid "Set the encryption level to:"
-msgstr "Establecer el nivel de cifrado en:"
+msgstr "Nivel de cifrado:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
@@ -607,7 +614,13 @@ msgstr "Activar características «Wake-On-LAN»"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
+#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
+#| "magic package send via a UDP socket to wake up remote servers. If you "
+#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
+#| "this option."
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -628,7 +641,11 @@ msgstr "Tiempo de espera:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "This is the waiting time in seconds between the sending of the magic Wake-"
+#| "On-LAN packages and the scanning of the network neighborhood or the "
+#| "mounting of a share."
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -1069,7 +1086,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr "Preservar listas de control de acceso (ACLs)"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1080,58 +1097,66 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
-"Preservar listas de control de acceso. Esta opción fuerza a rsync a "
-"actualizar las ACLs de destino para que sean iguales a las de la fuente. "
-"Esta opción también implica «--perms». Esta función solo funcionará si los "
-"sistemas origen y destino tienen ACLs compatibles."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve extended attributes"
-msgstr "Preservar atributos extendidos"
+msgstr "Preservar fechas"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Preservar atributos extendidos. Esta opción fuerza a rsync a actualizar los "
-"atributos extendidos en destino para que sean iguales a los de la fuente."
+"Preservar grupo (-g, --group). El grupo del archivo de destino se le "
+"asignará el mismo valor que el archivo de origen."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve access times"
-msgstr "Preservar horas de acceso"
+msgstr "Preservar fechas"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Preservar horas de acceso. Esta opción hace que rsync sincronice las horas "
-"de acceso a los archivos en fuente y destino."
+"Preservar grupo (-g, --group). El grupo del archivo de destino se le "
+"asignará el mismo valor que el archivo de origen."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Preserve times"
 msgid "Preserve create times"
-msgstr "Preservar horas de creación."
+msgstr "Preservar fechas"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Preserve the group (-g, --group). The group of the destination file will "
+#| "be set to the same value as the source file."
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Preservar horas de creación. Esta opción hace que rsync sincronice las horas "
-"de creación de los archivos en fuente y destino."
+"Preservar grupo (-g, --group). El grupo del archivo de destino se le "
+"asignará el mismo valor que el archivo de origen."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402
@@ -1633,9 +1658,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Custom filter rules:"
 msgid "Custom filter rules"
-msgstr "Reglas de filtro personalizadas"
+msgstr "Reglas de filtro personalizadas:"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -2072,9 +2098,10 @@ msgid "Clear"
 msgstr "Despejar"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "Nombre de usuario:"
+msgstr "Usuario:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -2106,18 +2133,16 @@ msgstr "El archivo %1 no se ha podido imprimir a %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
-"El demonio de Zeroconf no está ejecutando. No se descubrirán servidores "
-"usando DNS-SD."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr "Zeroconf no está disponible en esta versión de KDE."
+msgstr ""
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr "Ha ocurrido un error desconocido en Zeroconf."
+msgstr ""
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2197,25 +2222,30 @@ msgid "Print"
 msgstr "Imprimir"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
 msgid "Custom Settings"
-msgstr "Preferencias personalizadas"
+msgstr "Preferencias de montaje"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#| "provides.</p>"
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Definir las preferencias personalizadas para el servidor <b>%1</b> y "
-"todos los recursos compartidos que este proporciona. </p>"
+"<p>Definir las opciones personalizadas para el servidor <b>%1</b> y todos "
+"los recursos compartidos que este proporciona.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr ""
-"<p>Definir las preferencias personalizadas para el recurso compartido <b>%1</"
-"b>.</p>"
+"<p>Definir las opciones personalizadas para el recurso compartido <b>%1</b>."
+"</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709
@@ -2285,13 +2315,15 @@ msgstr "Acciones"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Enviar el paquete mágico antes de escanear el entorno de red"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Enviar el paquete mágico antes de montar un recurso compartido"
 
@@ -2343,13 +2375,16 @@ msgid "Clear List"
 msgstr "Borrar lista"
 
 #: smb4kmounter.cpp:756
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
+#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<p>El recurso <b>%1</b> está montado en <br><b>%2</b> y es propiedad del "
-"usuario <b>%3</b>.</p><p>¿Realmente desea desmontarlo?</p>"
+"<qt><p>El recurso <b>%1</b> está montado en <br><b>%2</b> y es propiedad del "
+"usuario <b>%3</b>.</p><p>¿Realmente desea desmontarlo?</p></qt>"
 
 #: smb4kmounter.cpp:761
 #, kde-format
@@ -3320,7 +3355,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr "No enviar peticiones de bloqueo de rango de bytes"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3331,10 +3366,6 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
-"No enviar peticiones de bloqueo de rango de bytes al servidor. Es necesario "
-"para ciertas aplicaciones que no siguen el estilo obligatorio de CIFS de "
-"bloqueo de rango de bytes (y la mayoría de servidores CIFS no soportan de "
-"momento los bloqueos de rango de bytes recomendados)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3573,7 +3604,8 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>El recurso compartido <b>%1</b> se ha montado en <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open"
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Abrir"
@@ -3784,18 +3816,21 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>El URL pasado no es válido.</p>"
 
 #: smb4knotification.cpp:424
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The network communication failed with the following error message: <s>%1</"
+#| "s>"
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"<p>La comunicación de red ha fallado con el siguiente mensaje de error: <s>"
-"%1</s></p>"
+"La comunicación de red ha fallado con el siguiente mensaje de error: <s>%1</"
+"s>"
 
 #: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr "<p>Ha ocurrido un error con el servicio Zeroconf: <s>%1</s></p>"
+msgstr ""
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
@@ -3933,3 +3968,480 @@ msgid ""
 msgstr ""
 "<qt>Por favor, introduzca el usuario y contraseña para el recurso compartido "
 "<b>%1</b>.</qt>"
+
+#~ msgid "NetBIOS name:"
+#~ msgstr "Nombre NetBIOS:"
+
+#~ msgid ""
+#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
+#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
+#~ "file or the host name."
+#~ msgstr ""
+#~ "Este es el nombre NetBIOS de este equipo que es utilizado por Smb4K. Por "
+#~ "defecto, es el nombre NetBIOS que se define en el archivo smb.conf o en "
+#~ "el nombre de host."
+
+#~ msgid ""
+#~ "This is the workgroup or domain this computer is or should be in. By "
+#~ "default, it is the workgroup that is defined in the smb.conf file."
+#~ msgstr ""
+#~ "Este es el grupo de trabajo o dominio que el equipo está o debería estar. "
+#~ "Por defecto, es el grupo de trabajo que se define en el archivo smb.conf."
+
+#~ msgid "Login:"
+#~ msgstr "Acceso:"
+
+#~ msgid "Custom Options"
+#~ msgstr "Opciones personalizadas"
+
+#~ msgid "Do not use locking"
+#~ msgstr "No usar bloqueo"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "No usar bloqueo. No iniciar lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "El archivo de configuración de la suite Samba <b>smb.conf</b> no existe. "
+#~ "No es un error fatal, pero debería considerar crear uno."
+
+#~ msgid "Group:"
+#~ msgstr "Grupo:"
+
+#~ msgid "Add Group"
+#~ msgstr "Añadir grupo"
+
+#~ msgid "Group name:"
+#~ msgstr "Nombre del grupo:"
+
+#~ msgid "Out of memory"
+#~ msgstr "Desbordamiento de memoria"
+
+#~ msgid "Permission denied"
+#~ msgstr "Permiso denegado"
+
+#~ msgid "An invalid URL was passed"
+#~ msgstr "Se ha pasado un URL no válido"
+
+#~ msgid "The URL does not exist"
+#~ msgstr "El URL no existe"
+
+#~ msgid "Name is not a directory"
+#~ msgstr "El nombre no es un directorio"
+
+#~ msgid "Operation not permitted"
+#~ msgstr "Operación no permitida"
+
+#~ msgid "The workgroup or server could not be found"
+#~ msgstr "No se puede encontrar el grupo de trabajo o el servidor"
+
+#~ msgid "Unknown error"
+#~ msgstr "Error desconocido"
+
+#~ msgid "The print job could not be set up (step 1)"
+#~ msgstr "No se puede configurar el trabajo de impresión (paso 1)"
+
+#~ msgid "The print job could not be set up (step 2)"
+#~ msgstr "No se puede configurar el trabajo de impresión (paso 2)"
+
+#~ msgid "NULL context given"
+#~ msgstr "Proporcionado contenido NULO"
+
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "El archivo smb.conf no puede cargarse"
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Por favor, introduzca el usuario y contraseña para el recurso "
+#~ "compartido <b>%1 en %2</b>.</qt>"
+
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr ""
+#~ "Buscar en el entorno de red por grupos de trabajo y dominios disponibles"
+
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Este es el método predeterminado para obtener la lista inicial de "
+#~ "navegación.Busca en todos los grupos de trabajo y dominios todos los "
+#~ "navegadores maestros conocidos en su entorno de red."
+
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Consultar al navegador maestro actual"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Este método consulta el navegador maestro actual de su grupo de trabajo o "
+#~ "de dominio para recuperar la lista inicial de navegación."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Consultar este navegador maestro personalizado:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Este método consulta un navegador maestro para recuperar la lista inicial "
+#~ "de navegación."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "El navegador maestro que se va a consultar"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Introduzca el nombre o la dirección IP de un navegador maestro aquí que "
+#~ "debe ser consultado para crear la lista inicial de navegación."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "Los navegadores maestros requieren de autenticación para recuperar la "
+#~ "lista inicial de navegación"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Explorar el entorno de red periódicamente para todos los grupos de "
+#~ "trabajo, servidores y recursos compartidos."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Intervalo entre escaneos:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Este es el tiempo en minutos que transcurre hasta que Smb4k vuelva a "
+#~ "explorar el entorno de red para grupos de trabajo nuevos, servidores y "
+#~ "recursos compartidos."
+
+#~ msgid "Lookup method for IP addresses:"
+#~ msgstr "Método de búsqueda de direcciones IP:"
+
+#~ msgid ""
+#~ "Define the method that is to be used to detect the IP addresses of the "
+#~ "hosts."
+#~ msgstr ""
+#~ "Define el método que se va a utilizar para detectar las direcciones IP de "
+#~ "los servidores."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Usar la orden nmblookup"
+
+#~ msgid "Use net command"
+#~ msgstr "Usar la orden net"
+
+#~ msgid "Socket options:"
+#~ msgstr "Opciones de socket:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Estas son las opciones de socket TCP que se utilizan por nmblookup y "
+#~ "smbclient. Las opciones de Socket son los controles de la capa de red de "
+#~ "los sistemas operativos que permiten a una conexión ser concretada. Vea "
+#~ "la página de manual de smb.conf para más información."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "Ámbito NetBIOS:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Esto establece el ámbito de NetBIOS que nmblookup y smbclient "
+#~ "funcionarán. No deben establecerse a menos que todas las máquinas en su "
+#~ "entorno de red se asigne este valor."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Intentar la autenticación con Kerberos"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Autenticarse con la cuenta del equipo local"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Hace consultas al servidor remoto usando la cuenta de la máquina del "
+#~ "servidor local. El ajuste afecta a las órdenes «net», «smbclient» y "
+#~ "«smbtree»."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Utilizar Winbind ccache para la autenticación. Este ajuste afecta a las "
+#~ "órdenes net, smbclient y smbtree."
+
+#~ msgid "Signing state:"
+#~ msgstr "Estado de la firma:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Establecer la firma de estado. Este ajuste afecta a las órdenes "
+#~ "«smbclient» y «smbtree»."
+
+#~ msgid "On"
+#~ msgstr "Encendido"
+
+#~ msgid "Off"
+#~ msgstr "Apagado"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Cifrar el transporte SMB"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Cifrar el transporte SMB (únicamente para servidores Unix extendidos). "
+#~ "Este ajuste afecta a las órdenes net, smbclient y smbtree."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Orden de resolución de nombres:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Esta opción se utiliza para determinar qué servicios de nombres y en qué "
+#~ "orden se utilizan para resolver nombres de host y direcciones IP. Toma "
+#~ "una lista separada por espacios de hasta cuatro opciones diferentes para "
+#~ "la resolución de nombres. Estos son: lmhost, host, wins, bcast. Vea la "
+#~ "página de manual de smbclient para más información."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Tamaño del buffer:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Esta opción cambia el tamaño de la transmisión/envío del búfer al recibir "
+#~ "o enviar un archivo desde/hacia el servidor. El valor predeterminado es "
+#~ "65520 bytes. Al establecer este valor más pequeño se ha observado más "
+#~ "velocidad en la transferencia de archivos hacia y desde los servidores de "
+#~ "Windows 9x."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Dirección de difusión (broadcast):"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Las consultas realizadas con nmblookup serán enviadas a la dirección de "
+#~ "difusión determinada. Sin esta opción, el comportamiento por defecto es "
+#~ "la de enviar las consultas a la dirección de difusión de la interfaz de "
+#~ "red que sea detectada automáticamente o definidos en las «interfaces» en "
+#~ "los parámetros del archivo smb.conf."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Intentar conectar al puerto UDP 137 para enviar y recibir datagramas UDP"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Intentar conectar al puerto UDP 137 para enviar y recibir datagramas UDP. "
+#~ "La razón de esta opción es un error de Windows 95, donde se ignora el "
+#~ "puerto de origen de la solicitud del paquete y solo responde al puerto "
+#~ "UDP 137. Por desgracia, en la mayoría de sistemas Unix se necesitan "
+#~ "privilegios de superusuario para enlazar a este puerto. Por favor, lea la "
+#~ "página del manual de «nmblookup» para más información."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Enviar peticiones como difusiones"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Dejar que smbtree consulte los nodos de red mediante el envío de "
+#~ "solicitudes en lugar de consultar el navegador maestro local."
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "No excluir archivos que concuerdan con este patrón:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "La semilla de verificación"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Borrar marcadores"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "UNC Address:"
+#~ msgstr "Dirección UNC:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "Puerto SMB:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Puerto del sistema de archivos:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Acceso de escritura:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Modo de seguridad:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Definir las opciones personalizadas para el recurso compartido <b>%1</"
+#~ "b> en el servidor <b>%2</b>.</p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "La convención de nomenclatura (UNC) de direcciones describe la ubicación "
+#~ "de los recursos compartidos. Se usa la siguiente sintaxis: //"
+#~ "[USUARIO@]SERVIDOR/RECURSO_COMPARTIDO. El nombre de usuario es opcional."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Código de página del servidor:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "La entrada del navegador maestro personalizado está vacía. Smb4k tratará "
+#~ "de consultar el navegador maestro actual de su grupo de trabajo o del "
+#~ "dominio."
+
+#~ msgid ""
+#~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la recuperación de la lista de recursos compartidos "
+#~ "disponibles en el dominio:</p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>Retrieving the list of available domains failed.</p>"
+#~ msgstr "<p>Ha fallado la obtención de la lista de dominios.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of hosts belonging to domain <b>%1</b> failed.</"
+#~ "p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>La recuperación de la lista de servidores pertenecientes al dominio <b>"
+#~ "%1</b> ha fallado.</p><p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of hosts belonging to domain <b>%1</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>La recuperación de la lista de servidores pertenecientes al dominio <b>"
+#~ "%1</b> ha fallado.</p>"
+
+#~ msgid ""
+#~ "<p>Retrieving the list of shares from <b>%1</b> failed:</p><p><tt>%2</"
+#~ "tt></p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la obtención de la lista de recursos compartidos de <b>%1</"
+#~ "b>:</p> <p><tt>%2</tt></p>"
+
+#~ msgid "<p>Retrieving the list of shares from <b>%1</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la obtención de la lista de recursos compartidos de <b>%1</"
+#~ "b>.</p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la obtención de la vista previa de <b>%1</b>:</p><p><tt>%2</"
+#~ "tt></p>"
+
+#~ msgid "<p>Retrieving the preview of <b>%1</b> failed.</p>"
+#~ msgstr "<p>Ha fallado la obtención de la vista previa de <b>%1</b>.</p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la impresión del archivo <b>%1</b> en la impresora:</"
+#~ "p><p><tt>%2</tt></p>"
+
+#~ msgid "<p>Printing on printer <b>%1</b> failed.</p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la impresión del archivo <b>%1</b> en la impresora.</p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed:</p><p><tt>%2</tt></p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la búsqueda en el entorno de red para el elemento<b>%1</b>:"
+#~ "</p> <p><tt>%2</tt></p>"
+
+#~ msgid ""
+#~ "<p>Searching the network neighborhood for the search item <b>%1</b> "
+#~ "failed.</p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la búsqueda en el entorno de red para el elemento<b>%1</b>."
+#~ "</p>"
+
+#~ msgid "<p>There are no broadcast areas defined.</p>"
+#~ msgstr "<p>No hay áreas de difusión definidas.</p>"
+
+#~ msgid "The preview is displayed here."
+#~ msgstr "La vista previa se muestra aquí."
+
+#~ msgid "Back"
+#~ msgstr "Atrás"
+
+#~ msgid "Forward"
+#~ msgstr "Adelante"
+
+#~ msgid ""
+#~ "The current UNC address is shown here. You can also choose one of the "
+#~ "previously visited locations from the drop-down menu that will then be "
+#~ "displayed in the view above."
+#~ msgstr ""
+#~ "La actual dirección UNC se muestra aquí. También puede optar por uno de "
+#~ "los lugares visitados con anterioridad en el menú desplegable que "
+#~ "aparecerá en la vista superior."
+
+#~ msgid "File"
+#~ msgstr "Archivo"
+
+#~ msgid "Options >>"
+#~ msgstr "Opciones >>"
+
+#~ msgid "Options <<"
+#~ msgstr "Opciones <<"
+
+#~ msgid ""
+#~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la exploración de la(s) área(s) de difusión definida(s):</"
+#~ "p><p><tt>%1</tt></p>"
+
+#~ msgid "<p>Scanning the defined broadcast area(s) failed.</p>"
+#~ msgstr ""
+#~ "<p>Ha fallado la exploración de la(s) área(s) de difusión definida(s).</p>"

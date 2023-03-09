@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -375,16 +375,14 @@ msgid "Browse Settings"
 msgstr "&Instellen"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "Allgemeen Instellen"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
 #, kde-format
@@ -421,8 +419,7 @@ msgid "General"
 msgstr "Allmeen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Links"
 
@@ -439,9 +436,9 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
-#| msgid "Owner:"
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "Eegner:"
+msgstr "Eegner"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -490,10 +487,9 @@ msgid "Files && Directories"
 msgstr "Versteken Dateien un Ornern"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgid "Restrictions"
-msgstr "Teel:"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
@@ -516,8 +512,7 @@ msgid "Filtering"
 msgstr "Filtern"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "Pröövsummen"
 
@@ -698,9 +693,9 @@ msgstr "&Söken"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "&Custom Options"
+#| msgid "Advanced Options"
 msgid "Add &Custom Settings"
-msgstr "Egen Opts&chonen"
+msgstr "Verwiedert Optschonen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -957,9 +952,6 @@ msgstr "Grött"
 #~ msgid "Custom Options"
 #~ msgstr "Egen Optschonen"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "All Leestekens inhangen"
-
 #, fuzzy
 #~| msgid "Show details"
 #~ msgid "Details"
@@ -968,31 +960,11 @@ msgstr "Grött"
 #~ msgid "Entry"
 #~ msgstr "Indrag"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Böversiet"
+#~ msgid "Login"
+#~ msgstr "Anmellen"
 
 #~ msgid "Password"
 #~ msgstr "Passwoort"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Bedregen"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Allmeen"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Allgemeen Instellen"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Besünner Filterregeln:"
 
 #, fuzzy
 #~| msgid "Notifications"
@@ -1029,19 +1001,7 @@ msgstr "Grött"
 #~ msgid "Always remount this share"
 #~ msgstr "Leesteken-Editor"
 
-#, fuzzy
-#~| msgid "&Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "&Instellen"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Identiteetprööv"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Sekerheit"
 
 #, fuzzy
@@ -1057,8 +1017,11 @@ msgstr "Grött"
 #~ msgid "Permissions, etc."
 #~ msgstr "Dateiverlöven use."
 
-#~ msgid "Login"
-#~ msgstr "Anmellen"
+#~ msgid "Special filter rules:"
+#~ msgstr "Besünner Filterregeln:"
+
+#~ msgid "&Custom Options"
+#~ msgstr "Egen Opts&chonen"
 
 #~ msgid "Login:"
 #~ msgstr "Brukernaam:"
@@ -1069,11 +1032,6 @@ msgstr "Grött"
 #~ msgstr "Den Server sien IP-Adress wiesen"
 
 #, fuzzy
-#~| msgid "Protocol:"
-#~ msgid "Protocols"
-#~ msgstr "Protokoll:"
-
-#, fuzzy
 #~| msgid "%1 free of %2 (%3 used)"
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 free vun %2 (%3 bruukt)"
@@ -1082,44 +1040,6 @@ msgstr "Grött"
 #~| msgid "Actions"
 #~ msgid "Location"
 #~ msgstr "Akschonen"
-
-#~ msgid "Owner"
-#~ msgstr "Eegner"
-
-#~ msgid "Password Storage"
-#~ msgstr "Passwoort sekern"
-
-#, fuzzy
-#~| msgid "Show the IP address of the server"
-#~ msgid "Show the details of the selected entry."
-#~ msgstr "Den Server sien IP-Adress wiesen"
-
-#~ msgid "Undo"
-#~ msgstr "Torüchnehmen"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "Inhangen"
-
-#~ msgid "Columns"
-#~ msgstr "Striepen"
-
-#~ msgid "Tooltips"
-#~ msgstr "Kortinformatschonen"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "Ansicht"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Allgemeen Instellen"
-
-#~ msgid "Shares"
-#~ msgstr "Freegaven"
 
 #~ msgid "Network Toolbar"
 #~ msgstr "Nettwark-Warktüüchbalken"
@@ -1135,35 +1055,19 @@ msgstr "Grött"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Hööft-Warktüüchbalken"
 
-#~ msgid "smbtree"
-#~ msgstr "smbtree"
+#~ msgid "Shares"
+#~ msgstr "Freegaven"
 
-#~ msgid "Utility Programs"
-#~ msgstr "Hülpprogrammen"
+#~ msgid "Password Storage"
+#~ msgstr "Passwoort sekern"
 
-#~ msgid "Network Search"
-#~ msgstr "Nettwarksöök"
+#, fuzzy
+#~| msgid "Show the IP address of the server"
+#~ msgid "Show the details of the selected entry."
+#~ msgstr "Den Server sien IP-Adress wiesen"
 
-#~ msgid "Abort"
-#~ msgstr "Afbreken"
-
-#~ msgid "&Clear"
-#~ msgstr "&Leddig maken"
-
-#~ msgid "The search returned no results."
-#~ msgstr "De Söök hett keen Resultaten funnen."
-
-#~ msgid "smbclient"
-#~ msgstr "smbclient"
-
-#~ msgid " Bytes"
-#~ msgstr " Bytes"
-
-#~ msgid "Retrieving preview from %1..."
-#~ msgstr "Vöransicht vun %1 warrt haalt..."
-
-#~ msgid "nmblookup"
-#~ msgstr "nmblookup"
+#~ msgid "Undo"
+#~ msgstr "Torüchnehmen"
 
 #, fuzzy
 #~| msgid "IP Address:"
@@ -1195,17 +1099,20 @@ msgstr "Grött"
 #~ msgid "General Options"
 #~ msgstr "Allmeen Optschonen"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Leestekens bewerken"
+#~ msgid "smbclient"
+#~ msgstr "smbclient"
 
-#~ msgid "Add Group"
-#~ msgstr "Koppel tofögen"
+#~ msgid " Bytes"
+#~ msgstr " Bytes"
 
-#~ msgid "Group:"
-#~ msgstr "Koppel:"
+#~ msgid "nmblookup"
+#~ msgstr "nmblookup"
 
-#~ msgid "Group name:"
-#~ msgstr "Koppelnaam:"
+#~ msgid "smbtree"
+#~ msgstr "smbtree"
+
+#~ msgid "Utility Programs"
+#~ msgstr "Hülpprogrammen"
 
 #~ msgid "Copying"
 #~ msgstr "Koperen"
@@ -1213,8 +1120,25 @@ msgstr "Grött"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Dateien wegdoon un överdregen"
 
+#~ msgid "Columns"
+#~ msgstr "Striepen"
+
+#~ msgid "Tooltips"
+#~ msgstr "Kortinformatschonen"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Ansicht"
+
 #~ msgid "The network browser could not be created."
 #~ msgstr "De Nettwarkkieker lett sik nich opstellen."
+
+#~ msgid "Network Search"
+#~ msgstr "Nettwarksöök"
+
+#~ msgid "Retrieving preview from %1..."
+#~ msgstr "Vöransicht vun %1 warrt haalt..."
 
 #~ msgid "Smb4KNetworkBrowserPart"
 #~ msgstr "Smb4KNetworkBrowserPart"
@@ -1232,6 +1156,9 @@ msgstr "Grött"
 #~ msgid "Search item:"
 #~ msgstr "Söökwoort:"
 
+#~ msgid "Abort"
+#~ msgstr "Afbreken"
+
 #, fuzzy
 #~| msgid "Smb4KNetworkBrowserPart"
 #~ msgid "Smb4KNetworkSearchPart"
@@ -1244,6 +1171,9 @@ msgstr "Grött"
 
 #~ msgid "Search Results"
 #~ msgstr "Söökresultaten"
+
+#~ msgid "The search returned no results."
+#~ msgstr "De Söök hett keen Resultaten funnen."
 
 #, fuzzy
 #~| msgid "Open with Konsole"
@@ -1296,6 +1226,11 @@ msgstr "Grött"
 
 #~ msgid "Usage"
 #~ msgstr "Bruuk"
+
+#, fuzzy
+#~| msgid "Protocol:"
+#~ msgid "Protocol Hint:"
+#~ msgstr "Protokoll:"
 
 #~ msgid "Remote Ports"
 #~ msgstr "Feern Porten"
@@ -1935,8 +1870,20 @@ msgstr "Grött"
 #~ msgid "Add Bookmarks"
 #~ msgstr "Leestekens tofögen"
 
+#~ msgid "Group:"
+#~ msgstr "Koppel:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Leestekens bewerken"
+
+#~ msgid "Add Group"
+#~ msgstr "Koppel tofögen"
+
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Leestekens wegdoon"
+
+#~ msgid "Group name:"
+#~ msgstr "Koppelnaam:"
 
 #, fuzzy
 #~| msgid "%1 has been unmounted successfully."
@@ -2210,6 +2157,9 @@ msgstr "Grött"
 
 #~ msgid "Source:"
 #~ msgstr "Born:"
+
+#~ msgid "Destination:"
+#~ msgstr "Teel:"
 
 #~ msgid ""
 #~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"

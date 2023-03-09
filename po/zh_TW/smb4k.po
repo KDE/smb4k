@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
-"PO-Revision-Date: 2019-04-09 23:19+0800\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2019-10-19 15:20+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
 "Language: zh_TW\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 19.03.90\n"
+"X-Generator: Lokalize 19.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -360,8 +360,7 @@ msgid "Browse Settings"
 msgstr "一般選項"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
@@ -404,8 +403,7 @@ msgid "General"
 msgstr "一般"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "鏈結"
 
@@ -465,12 +463,12 @@ msgstr "檔案轉送"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:403
 #, fuzzy, kde-format
+#| msgid "Directories"
 msgid "Files && Directories"
-msgstr "強制刪除非空目錄"
+msgstr "目錄"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "限制"
 
@@ -495,8 +493,7 @@ msgid "Filtering"
 msgstr "過濾"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:565
-#, fuzzy, kde-format
-#| msgid "Checksums"
+#, kde-format
 msgid "Checksums"
 msgstr "總和檢查碼"
 
@@ -532,7 +529,7 @@ msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
-"關閉主視窗後 Smb4K 將在系統匣中繼續執行。可用檔案選單中的離開來結束程式。"
+"關閉主視窗後 Smb4K 將在系統匣中繼續執行。可用檔案選單中的離開來退出程式。"
 
 #: smb4k/smb4kmainwindow.cpp:404
 #, fuzzy, kde-format
@@ -674,7 +671,7 @@ msgstr "搜尋(&S)"
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 msgid "Add &Custom Settings"
-msgstr "Samba 選項"
+msgstr "Rsync 選項"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -725,15 +722,13 @@ msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:52
 #, fuzzy, kde-format
-#| msgid "&Search"
 msgid "Search string"
-msgstr "搜尋(&S)"
+msgstr "搜尋結果"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:67
-#, fuzzy, kde-format
-#| msgid "&Search"
+#, kde-format
 msgid "Search"
-msgstr "搜尋(&S)"
+msgstr "搜尋"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:69
 #, kde-format
@@ -887,7 +882,6 @@ msgstr "主機："
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, fuzzy, kde-format
-#| msgid "Restrictions"
 msgid "Location:"
 msgstr "限制"
 
@@ -937,31 +931,18 @@ msgstr "大小："
 #~ msgstr "Samba 選項"
 
 #, fuzzy
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "編輯書籤(&E)"
-
-#, fuzzy
 #~| msgid "Show hidden shares"
 #~ msgid "Details"
 #~ msgstr "顯示隱藏的共享"
 
 #, fuzzy
+#~ msgid "Login"
+#~ msgstr "鏈結"
+
+#, fuzzy
 #~| msgid "Password:"
 #~ msgid "Password"
 #~ msgstr "密碼："
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "一般"
-
-#, fuzzy
-#~ msgid "Miscellaneous:"
-#~ msgstr "一般選項"
-
-#, fuzzy
-#~ msgid "Special filter rules:"
-#~ msgstr "過濾器規則"
 
 #, fuzzy
 #~| msgid "Authentication"
@@ -993,19 +974,6 @@ msgstr "大小："
 #~ msgstr "掛載的共享(&S)"
 
 #, fuzzy
-#~ msgid "Browse Settings:"
-#~ msgstr "一般選項"
-
-#, fuzzy
-#~ msgid "Profiles:"
-#~ msgstr "列印檔案(&P)"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "身分驗證"
-
-#, fuzzy
 #~ msgid "Samba Settings"
 #~ msgstr "一般選項"
 
@@ -1018,8 +986,12 @@ msgstr "大小："
 #~ msgstr "檔案權限…等等。"
 
 #, fuzzy
-#~ msgid "Login"
-#~ msgstr "鏈結"
+#~ msgid "Special filter rules:"
+#~ msgstr "過濾器規則"
+
+#, fuzzy
+#~ msgid "&Custom Options"
+#~ msgstr "Samba 選項"
 
 #, fuzzy
 #~ msgid "Login:"
@@ -1035,6 +1007,5 @@ msgstr "大小："
 #~ msgstr "%3 %4 之中的 %1 %2 (%5\\% 已使用)"
 
 #, fuzzy
-#~| msgid "Restrictions"
 #~ msgid "Location"
 #~ msgstr "限制"

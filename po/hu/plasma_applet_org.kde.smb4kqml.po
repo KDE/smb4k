@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2014-02-08 22:55+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -90,29 +90,16 @@ msgid "Synchronize"
 msgstr ""
 
 #: package/contents/ui/SharesViewItemDelegate.qml:118
+#, fuzzy
+#| msgid "Unmount All"
 msgid "Unmount"
-msgstr ""
+msgstr "Összes leválasztása"
 
 #: package/contents/ui/SharesViewPage.qml:34
 #, fuzzy
 #| msgid "Unmount All"
 msgid "Unmount all shares"
 msgstr "Összes leválasztása"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Könyvjelzők"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Könyvjelzők"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Delete Bookmark"
-#~ msgstr "Könyvjelzők"
 
 #~ msgid "Back"
 #~ msgstr "Vissza"

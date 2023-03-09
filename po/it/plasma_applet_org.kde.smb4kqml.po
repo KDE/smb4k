@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2019-04-29 15:00+0200\n"
 "Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -91,35 +91,11 @@ msgstr "Smonta"
 msgid "Unmount all shares"
 msgstr "Smonta tutte le condivisioni"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Modifica i segnalibri"
+#~ msgid "Back"
+#~ msgstr "Indietro"
 
-#~ msgid "OK"
-#~ msgstr "OK"
+#~ msgid "Edit"
+#~ msgstr "Modifica"
 
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#~ msgid "Clear"
-#~ msgstr "Pulisci"
-
-#~ msgid "Label:"
-#~ msgstr "Etichetta:"
-
-#~ msgid "Login:"
-#~ msgstr "Nome utente:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Indirizzo IP:"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nome del gruppo:"
-
-#~ msgid "Toplevel Bookmarks"
-#~ msgstr "Segnalibri di livello massimo"
-
-#~ msgid "Delete Bookmark"
-#~ msgstr "Elimina segnalibro"
-
-#~ msgid "Add Group"
-#~ msgstr "Aggiungi gruppo"
+#~ msgid "Up"
+#~ msgstr "Su"

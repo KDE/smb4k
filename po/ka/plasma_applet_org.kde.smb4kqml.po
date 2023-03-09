@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-09-30 00:16+0000\n"
-"PO-Revision-Date: 2023-02-15 08:15+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2023-02-18 07:55+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -25,7 +25,7 @@ msgstr "<font size=\"-1\">%1-ზე</font>"
 
 #: package/contents/ui/BookmarksPage.qml:32
 msgid "Go back"
-msgstr "უკან გადასვლა"
+msgstr "უკან დაბრუნება"
 
 #: package/contents/ui/BookmarksPage.qml:41
 msgid "Edit bookmarks"
@@ -66,7 +66,7 @@ msgstr "მიმაგრებული გაზიარებულებ�
 
 #: package/contents/ui/PopupDialog.qml:46
 msgid "Bookmarks"
-msgstr "სანიშნები"
+msgstr "სანიშნეები"
 
 #: package/contents/ui/PopupDialog.qml:53
 msgid "Profiles"

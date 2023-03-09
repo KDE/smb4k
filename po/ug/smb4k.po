@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -364,16 +364,14 @@ msgid "Browse Settings"
 msgstr "تەڭشەك(&S)"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "ئادەتتىكى تەڭشەك"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
 #, kde-format
@@ -410,8 +408,7 @@ msgid "General"
 msgstr "ئادەتتىكى"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "ئۇلانمىلار"
 
@@ -478,8 +475,7 @@ msgid "Files && Directories"
 msgstr "مۇندەرىجىلەر"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Restrictions"
 msgstr "چەكلىمە"
 
@@ -676,9 +672,9 @@ msgstr "ئىزدە(&S)"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "Advanced Options"
+#| msgid "Advanced Settings"
 msgid "Add &Custom Settings"
-msgstr "ئالىي تاللانما"
+msgstr "ئالىي تەڭشەك"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -888,9 +884,9 @@ msgstr "ماشىنا"
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, fuzzy, kde-format
-#| msgid "Options"
+#| msgid "Notifications"
 msgid "Location:"
-msgstr "تاللانما"
+msgstr "ئۇقتۇرۇشلار"
 
 #: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
 #: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
@@ -942,28 +938,11 @@ msgstr "چوڭلۇقى"
 #~ msgid "Entry"
 #~ msgstr "تۈر"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "كۆرۈنمەيۈز"
+#~ msgid "Login"
+#~ msgstr "كىرىش"
 
 #~ msgid "Password"
 #~ msgstr "ئىم"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "ھەرىكەت"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "ئادەتتىكى"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "ئادەتتىكى تەڭشەك"
 
 #, fuzzy
 #~| msgid "Notifications"
@@ -993,19 +972,7 @@ msgstr "چوڭلۇقى"
 #~ msgid "Wake-On-LAN Settings"
 #~ msgstr "ئادەتتىكى تەڭشەك"
 
-#, fuzzy
-#~| msgid "&Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "تەڭشەك(&S)"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "كىملىك دەلىللەش"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "بىخەتەرلىك"
 
 #, fuzzy
@@ -1013,40 +980,13 @@ msgstr "چوڭلۇقى"
 #~ msgid "Samba Settings"
 #~ msgstr "تەڭشەك(&S)"
 
-#~ msgid "Login"
-#~ msgstr "كىرىش"
-
 #~ msgid "Login:"
 #~ msgstr "تىزىمغا كىر:"
 
 #, fuzzy
-#~| msgid "Options"
+#~| msgid "Notifications"
 #~ msgid "Location"
-#~ msgstr "تاللانما"
-
-#~ msgid "Undo"
-#~ msgstr "يېنىۋال"
-
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "ئېگەرلەۋاتىدۇ"
-
-#~ msgid "Columns"
-#~ msgstr "ئىستونلار"
-
-#~ msgid "Tooltips"
-#~ msgstr "كۆرسەتمىلەر"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "كۆرۈنۈش"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "ئادەتتىكى تەڭشەك"
+#~ msgstr "ئۇقتۇرۇشلار"
 
 #, fuzzy
 #~| msgid "Search Toolbar"
@@ -1066,14 +1006,8 @@ msgstr "چوڭلۇقى"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "ئاساسىي قورال بالداق"
 
-#~ msgid "Abort"
-#~ msgstr "توختات"
-
-#~ msgid "&Clear"
-#~ msgstr "تازىلا(&C)"
-
-#~ msgid " Bytes"
-#~ msgstr " بايت"
+#~ msgid "Undo"
+#~ msgstr "يېنىۋال"
 
 #~ msgid "User ID:"
 #~ msgstr "ئىشلەتكۈچى ID:"
@@ -1081,25 +1015,30 @@ msgstr "چوڭلۇقى"
 #~ msgid "General Options"
 #~ msgstr "ئادەتتىكى تاللانمىلار"
 
-#~ msgid "Add Group"
-#~ msgstr "گۇرۇپپا قوش"
-
-#~ msgid "Label:"
-#~ msgstr "ئەن:"
-
-#~ msgid "Group:"
-#~ msgstr "گۇرۇپپا:"
-
-#~ msgid "Group name:"
-#~ msgstr "گۇرۇپپا ئاتى:"
+#~ msgid " Bytes"
+#~ msgstr " بايت"
 
 #~ msgid "Copying"
 #~ msgstr "كۆچۈرۈۋاتىدۇ"
+
+#~ msgid "Columns"
+#~ msgstr "ئىستونلار"
+
+#~ msgid "Tooltips"
+#~ msgstr "كۆرسەتمىلەر"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "كۆرۈنۈش"
 
 #, fuzzy
 #~| msgid "Advanced Network Neighborhood Browser"
 #~ msgid "The network neighborhood browser KPart of Smb4K"
 #~ msgstr "ئالىي تور قوشنا كۆرگۈ"
+
+#~ msgid "Abort"
+#~ msgstr "توختات"
 
 #~ msgid "Open With"
 #~ msgstr "بۇنىڭدا ئېچىش"
@@ -1170,6 +1109,18 @@ msgstr "چوڭلۇقى"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "خەتكۈچلەرنى قوش"
+
+#~ msgid "Label:"
+#~ msgstr "ئەن:"
+
+#~ msgid "Group:"
+#~ msgstr "گۇرۇپپا:"
+
+#~ msgid "Add Group"
+#~ msgstr "گۇرۇپپا قوش"
+
+#~ msgid "Group name:"
+#~ msgstr "گۇرۇپپا ئاتى:"
 
 #~ msgid "Specify User"
 #~ msgstr "بەلگىلەنگەن ئىشلەتكۈچى"

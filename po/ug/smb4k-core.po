@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1957,10 +1957,9 @@ msgstr "تاللانما"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, fuzzy, kde-format
-#| msgid "Advanced Network Neighborhood Browser"
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr "ئالىي تور قوشنا كۆرگۈ"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
@@ -3437,33 +3436,28 @@ msgstr ""
 #~ msgid "Unknown error"
 #~ msgstr "نامەلۇم"
 
-#, fuzzy
-#~| msgid "Mounting"
-#~ msgid "Remounting"
-#~ msgstr "ئېگەرلەۋاتىدۇ"
-
 #~ msgid "On"
 #~ msgstr "ئوچۇق"
 
 #~ msgid "Off"
 #~ msgstr "تاقا"
 
-#~ msgid "Required"
-#~ msgstr "تەلەپ"
-
 #, fuzzy
-#~| msgid "Directories"
-#~ msgid "Directory mask:"
-#~ msgstr "مۇندەرىجىلەر"
+#~| msgid "Bookmarks"
+#~ msgid "Clear Bookmarks"
+#~ msgstr "خەتكۈشلەر"
 
-#~ msgid "unknown"
-#~ msgstr "نامەلۇم"
+#~ msgid "General"
+#~ msgstr "ئادەتتىكى"
+
+#~ msgid "Back"
+#~ msgstr "كەينى"
+
+#~ msgid "Forward"
+#~ msgstr "ئالدى"
 
 #~ msgid "File"
 #~ msgstr "ھۆججەت"
-
-#~ msgid "Options"
-#~ msgstr "تاللانما"
 
 #, fuzzy
 #~| msgid "Options"
@@ -3474,20 +3468,6 @@ msgstr ""
 #~| msgid "Options"
 #~ msgid "Options <<"
 #~ msgstr "تاللانما"
-
-#~ msgid "Back"
-#~ msgstr "كەينى"
-
-#~ msgid "Forward"
-#~ msgstr "ئالدى"
-
-#~ msgid "General"
-#~ msgstr "ئادەتتىكى"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Clear Bookmarks"
-#~ msgstr "خەتكۈشلەر"
 
 #~ msgid "Automatic detection"
 #~ msgstr "ئۆزلۈكىدىن تەكشۈر"

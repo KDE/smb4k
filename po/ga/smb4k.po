@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2009-12-24 06:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -368,16 +368,14 @@ msgid "Browse Settings"
 msgstr "&Socruithe"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
-#, fuzzy, kde-format
-#| msgid "Samba"
+#, kde-format
 msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN"
-msgstr "Socruithe Ginearálta"
+msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:216
 #, kde-format
@@ -414,8 +412,7 @@ msgid "General"
 msgstr "Ginearálta"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:176
-#, fuzzy, kde-format
-#| msgid "Links"
+#, kde-format
 msgid "Links"
 msgstr "Naisc"
 
@@ -431,9 +428,9 @@ msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
 #, fuzzy, kde-format
-#| msgid "Owner:"
+#| msgid "Owner"
 msgid "Ownership"
-msgstr "Úinéir:"
+msgstr "Úinéir"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -482,10 +479,9 @@ msgid "Files && Directories"
 msgstr "Comhadlanna"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgid "Restrictions"
-msgstr "Sprioc:"
+msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:465
 #, kde-format
@@ -684,9 +680,9 @@ msgstr "&Cuardach"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
-#| msgid "Custom Options"
+#| msgid "Advanced Settings"
 msgid "Add &Custom Settings"
-msgstr "Roghanna Saincheaptha"
+msgstr "Ardsocruithe"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -893,10 +889,9 @@ msgid "Host:"
 msgstr "Óstríomhaire"
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgid "Location:"
-msgstr "Roghanna"
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
 #: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
@@ -950,28 +945,11 @@ msgstr "Méid"
 #~ msgid "Entry"
 #~ msgstr "Iontráil"
 
-#, fuzzy
-#~| msgid "User Interface"
-#~ msgid "Username"
-#~ msgstr "Comhéadan Úsáideora"
+#~ msgid "Login"
+#~ msgstr "Logáil isteach"
 
 #~ msgid "Password"
 #~ msgstr "Focal Faire"
-
-#, fuzzy
-#~| msgid "Behavior"
-#~ msgid "Behavior:"
-#~ msgstr "Oibriú"
-
-#, fuzzy
-#~| msgid "General"
-#~ msgid "General:"
-#~ msgstr "Ginearálta"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous:"
-#~ msgstr "Socruithe Ginearálta"
 
 #, fuzzy
 #~| msgid "Authentication"
@@ -1003,19 +981,7 @@ msgstr "Méid"
 #~ msgid "Wake-On-LAN Settings"
 #~ msgstr "Socruithe Ginearálta"
 
-#, fuzzy
-#~| msgid "&Settings"
-#~ msgid "Browse Settings:"
-#~ msgstr "&Socruithe"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Authentication:"
-#~ msgstr "Fíordheimhniú"
-
-#, fuzzy
-#~| msgid "Security"
-#~ msgid "Security:"
+#~ msgid "Security"
 #~ msgstr "Slándáil"
 
 #, fuzzy
@@ -1028,51 +994,8 @@ msgstr "Méid"
 #~ msgid "Permissions, etc."
 #~ msgstr "Caomhnaigh ceadanna"
 
-#~ msgid "Login"
-#~ msgstr "Logáil isteach"
-
 #~ msgid "Login:"
 #~ msgstr "Logáil Isteach:"
-
-#, fuzzy
-#~| msgid "Protocol"
-#~ msgid "Protocols"
-#~ msgstr "Prótacal"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Location"
-#~ msgstr "Roghanna"
-
-#~ msgid "Owner"
-#~ msgstr "Úinéir"
-
-#~ msgid "Undo"
-#~ msgstr "Cealaigh"
-
-#, fuzzy
-#~| msgid "Unmount"
-#~ msgid "Remounting"
-#~ msgstr "Dífheistigh"
-
-#~ msgid "UNC"
-#~ msgstr "UNC"
-
-#~ msgid "Columns"
-#~ msgstr "Colúin"
-
-#~ msgid "Tooltips"
-#~ msgstr "Leideanna Uirlisí"
-
-#, fuzzy
-#~| msgid "View"
-#~ msgid "View Mode"
-#~ msgstr "Amharc"
-
-#, fuzzy
-#~| msgid "General Settings"
-#~ msgid "Miscellaneous Settings"
-#~ msgstr "Socruithe Ginearálta"
 
 #, fuzzy
 #~| msgid "Search Toolbar"
@@ -1092,14 +1015,8 @@ msgstr "Méid"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Príomhbharra Uirlisí"
 
-#~ msgid "Abort"
-#~ msgstr "Tobscoir"
-
-#~ msgid "&Clear"
-#~ msgstr "&Glan"
-
-#~ msgid " Bytes"
-#~ msgstr " Beart"
+#~ msgid "Undo"
+#~ msgstr "Cealaigh"
 
 #~ msgid "UNC Address:"
 #~ msgstr "Seoladh UNC:"
@@ -1120,17 +1037,8 @@ msgstr "Méid"
 #~ msgid "General Options"
 #~ msgstr "Roghanna Ginearálta"
 
-#~ msgid "Add Group"
-#~ msgstr "Cuir Grúpa Leis"
-
-#~ msgid "Label:"
-#~ msgstr "Lipéad:"
-
-#~ msgid "Group:"
-#~ msgstr "Grúpa:"
-
-#~ msgid "Group name:"
-#~ msgstr "Ainm grúpa:"
+#~ msgid " Bytes"
+#~ msgstr " Beart"
 
 #~ msgid "Copying"
 #~ msgstr "Á Chóipeáil"
@@ -1138,10 +1046,27 @@ msgstr "Méid"
 #~ msgid "File Deletion && Transfer"
 #~ msgstr "Scriosadh agus Aistriú Comhad"
 
+#~ msgid "Columns"
+#~ msgstr "Colúin"
+
+#~ msgid "Tooltips"
+#~ msgstr "Leideanna Uirlisí"
+
+#, fuzzy
+#~| msgid "View"
+#~ msgid "View Mode"
+#~ msgstr "Amharc"
+
+#~ msgid "Abort"
+#~ msgstr "Tobscoir"
+
 #, fuzzy
 #~| msgid "Open"
 #~ msgid "Open With"
 #~ msgstr "Oscail"
+
+#~ msgid "UNC"
+#~ msgstr "UNC"
 
 #~ msgid "Server"
 #~ msgstr "Freastalaí"
@@ -1263,6 +1188,11 @@ msgstr "Méid"
 #~ msgid "read-only"
 #~ msgstr "inléite amháin"
 
+#, fuzzy
+#~| msgid "Protocol"
+#~ msgid "Protocol hint:"
+#~ msgstr "Prótacal"
+
 #~ msgid "Automatic detection"
 #~ msgstr "Aimsiú uathoibríoch"
 
@@ -1353,8 +1283,20 @@ msgstr "Méid"
 #~ msgid "Add Bookmarks"
 #~ msgstr "Cruthaigh Leabharmharcanna"
 
+#~ msgid "Label:"
+#~ msgstr "Lipéad:"
+
+#~ msgid "Group:"
+#~ msgstr "Grúpa:"
+
+#~ msgid "Add Group"
+#~ msgstr "Cuir Grúpa Leis"
+
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Bánaigh Leabharmharcanna"
+
+#~ msgid "Group name:"
+#~ msgstr "Ainm grúpa:"
 
 #~ msgid "SMB Port:"
 #~ msgstr "Port SMB:"
@@ -1400,6 +1342,9 @@ msgstr "Méid"
 
 #~ msgid "Source:"
 #~ msgstr "Foinse:"
+
+#~ msgid "Destination:"
+#~ msgstr "Sprioc:"
 
 #, fuzzy
 #~| msgid "Unmount"

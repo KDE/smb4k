@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2032,10 +2032,9 @@ msgid ""
 msgstr ""
 
 #: smb4kmounter_p.cpp:128
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgid "Location:"
-msgstr "पर्याय"
+msgstr ""
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -3433,37 +3432,12 @@ msgstr ""
 #~ msgstr "बंद"
 
 #, fuzzy
-#~ msgid "Directory mask:"
-#~ msgstr "फाईल मास्क (&F):"
-
-#~ msgid "unknown"
-#~ msgstr "अपरिचीत"
-
-#~ msgid "File"
-#~ msgstr "फाईल"
-
-#~ msgid "Options"
-#~ msgstr "पर्याय"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options >>"
-#~ msgstr "पर्याय"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options <<"
-#~ msgstr "पर्याय"
-
-#~ msgid "Back"
-#~ msgstr "मागे"
-
-#~ msgid "Forward"
-#~ msgstr "पुढे"
-
-#, fuzzy
 #~ msgid "Broadcast address:"
 #~ msgstr "Mac पत्ता :"
+
+#, fuzzy
+#~ msgid "Clear Bookmarks"
+#~ msgstr "ओळखचिन्ह"
 
 #, fuzzy
 #~ msgid "General"
@@ -3474,9 +3448,24 @@ msgstr ""
 #~ msgid "Security Mode:"
 #~ msgstr "सुरक्षा"
 
+#~ msgid "Back"
+#~ msgstr "मागे"
+
+#~ msgid "Forward"
+#~ msgstr "पुढे"
+
+#~ msgid "File"
+#~ msgstr "फाईल"
+
 #, fuzzy
-#~ msgid "Clear Bookmarks"
-#~ msgstr "ओळखचिन्ह"
+#~| msgid "Options"
+#~ msgid "Options >>"
+#~ msgstr "पर्याय"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Options <<"
+#~ msgstr "पर्याय"
 
 #, fuzzy
 #~ msgid "Show the file system"

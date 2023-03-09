@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
 "PO-Revision-Date: 2015-02-24 23:17+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -2344,10 +2344,9 @@ msgstr ""
 "namjestili razmjenu."
 
 #: smb4kmounter_p.cpp:128
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgid "Location:"
-msgstr "Opcije"
+msgstr ""
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -3884,22 +3883,6 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Molimo unesite korisničko ime i šifru za razmjenu <b>%1</b>.</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Prilagođene opcije"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Ne koristi zaključavanje"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Ne koristi zaključavanje. Nemoj pokretati lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Konfiguracijska datoteka za Samba paket <b>smb.conf</b> nedostaje. Ovo "
-#~ "nije kobna greška, ali razmislite o kreiranju jedne."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS ime:"
 
@@ -3922,6 +3905,22 @@ msgstr "<qt>Molimo unesite korisničko ime i šifru za razmjenu <b>%1</b>.</qt>"
 #~ msgid "Login:"
 #~ msgstr "Prijava:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Prilagođene opcije"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Ne koristi zaključavanje"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Ne koristi zaključavanje. Nemoj pokretati lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Konfiguracijska datoteka za Samba paket <b>smb.conf</b> nedostaje. Ovo "
+#~ "nije kobna greška, ali razmislite o kreiranju jedne."
+
 #~ msgid "Group:"
 #~ msgstr "Grupa:"
 
@@ -3932,6 +3931,11 @@ msgstr "<qt>Molimo unesite korisničko ime i šifru za razmjenu <b>%1</b>.</qt>"
 #~ msgstr "Ime grupe:"
 
 #, fuzzy
+#~| msgid "unknown"
+#~ msgid "Unknown error"
+#~ msgstr "nepoznat"
+
+#, fuzzy
 #~| msgid ""
 #~| "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 #~ msgid ""
@@ -3940,20 +3944,276 @@ msgstr "<qt>Molimo unesite korisničko ime i šifru za razmjenu <b>%1</b>.</qt>"
 #~ msgstr ""
 #~ "<qt>Molimo unesite korisničko ime i šifru za razmjenu <b>%1</b>.</qt>"
 
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown error"
-#~ msgstr "nepoznat"
+#~ msgid "Scan the network neighborhood for available workgroups and domains"
+#~ msgstr "Pregleda mrežne susjede za dostupnim radnim grupama i domenama"
 
-#, fuzzy
-#~| msgid "<p>The file <b>%1</b> could not be found.</p>"
-#~ msgid "The print job could not be set up (step 1)"
-#~ msgstr "<p>Datoteka <b>%1</b> nije pronađena.</p>"
+#~ msgid ""
+#~ "This is the default method to retrieve the initial browse list. It "
+#~ "discovers all workgroups and domains by looking for all known master "
+#~ "browsers on your network neighborhood."
+#~ msgstr ""
+#~ "Ovo je podrazumijevani metod za vraćanje prvobitne liste pretraživanja. "
+#~ "On otkriva sve radne grupe i domene tražeći sve poznate glavne "
+#~ "pretraživače na mrežnim susjedima."
 
-#, fuzzy
-#~| msgid "<p>The file <b>%1</b> could not be found.</p>"
-#~ msgid "The print job could not be set up (step 2)"
-#~ msgstr "<p>Datoteka <b>%1</b> nije pronađena.</p>"
+#~ msgid "Query the current workgroup master browser"
+#~ msgstr "Upit glavnog pretraživača trenutne radne grupe"
+
+#~ msgid ""
+#~ "This method queries the current master browser of your workgroup or "
+#~ "domain to retrieve the initial browse list."
+#~ msgstr ""
+#~ "Ovaj metod ispituje trenutnog glavnog pretraživača vaše radne grupe ili "
+#~ "domene za povrat početne liste pretraživanja."
+
+#~ msgid "Query this custom master browser:"
+#~ msgstr "Ispitaj ovaj prilagođeni glavni pretraživač:"
+
+#~ msgid ""
+#~ "This method queries a custom master browser to retrieve the initial "
+#~ "browse list."
+#~ msgstr ""
+#~ "Ovaj metod ispituje prilagođeni glavni pretraživač za povrat početne "
+#~ "liste pretraživanja."
+
+#~ msgid "A custom master browser that is to be queried"
+#~ msgstr "Prilagođeni glavni pretraživač će biti ispitan"
+
+#~ msgid ""
+#~ "Enter the name or IP address of a master browser here that should be "
+#~ "queried to compile the initial browse list."
+#~ msgstr ""
+#~ "Unesite ovdje ime ili IP adresu glavnog pretraživačakoe će biti ispitano "
+#~ "za sastavljanje početne liste pretraživanja."
+
+#~ msgid "The master browsers require authentication to return the browse list"
+#~ msgstr ""
+#~ "Glavni pretraživači zahtijevaju potvrdu za povrat liste pretraživanja"
+
+#~ msgid ""
+#~ "Scan the network neighborhood periodically for all available workgroups, "
+#~ "hosts and shares."
+#~ msgstr ""
+#~ "Pregledaj mrežne susjede periodično za sve dostupne radne grupe, hostove "
+#~ "i razmjene."
+
+#~ msgid "Interval between scans:"
+#~ msgstr "Interval između pretraživanja:"
+
+#~ msgid ""
+#~ "This is the time in minutes that elapses until Smb4K rescans the network "
+#~ "neighborhood for new workgroups, hosts and shares."
+#~ msgstr ""
+#~ "Ovo je vrijemeu minutama koje je proteklo dok Smb4K ponovo pregleda "
+#~ "mrežne susjede za sve nove radne grupe, hostove i razmjene."
+
+#~ msgid "Lookup method for IP addresses:"
+#~ msgstr "Metoda potrage za IP adresama:"
+
+#~ msgid ""
+#~ "Define the method that is to be used to detect the IP addresses of the "
+#~ "hosts."
+#~ msgstr "Definiši metod koji je korišten za detektovanje IP adresa hostova."
+
+#~ msgid "Use nmblookup command"
+#~ msgstr "Koristi nmblookup komandu"
+
+#~ msgid "Use net command"
+#~ msgstr "Koristi net komandu"
+
+#~ msgid "Socket options:"
+#~ msgstr "Opcije spojnice:"
+
+#~ msgid ""
+#~ "These are the TCP socket options that are used by nmblookup and "
+#~ "smbclient. Socket options are controls on the networking layer of the "
+#~ "operating systems which allow the connection to be tuned. See the manual "
+#~ "page of smb.conf for more information."
+#~ msgstr ""
+#~ "Ovo su opcije TCP spojnice koje su korištene od strane nmblookup i "
+#~ "smbclien. Opcije spojnice su kontrole na mrežnom sloju operativnih "
+#~ "sistema koje dopuštaju konekciji da bude podešena. Za više informacija "
+#~ "pogledajte stranicu smb.conf."
+
+#~ msgid "NetBIOS scope:"
+#~ msgstr "NetBIOS opseg:"
+
+#~ msgid ""
+#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
+#~ "under. It should not be set unless every machine on your network "
+#~ "neighborhood sets this value."
+#~ msgstr ""
+#~ "Ovo postavlja NetBIOS opseg pod kojim upravljaju nmblookup i smbclient. "
+#~ "Ne treba biti postavljeno ukoliko svaka mašina na vašoj mreži susjeda "
+#~ "nije postavila ovu vrijednost."
+
+#~ msgid "Try to authenticate with Kerberos"
+#~ msgstr "Pokušaj potvrditi sa Kerberos"
+
+#~ msgid "Authenticate with local machine account"
+#~ msgstr "Potvrdi sa računom lokalne mašine"
+
+#~ msgid ""
+#~ "Make queries to the remote server using the machine account of the local "
+#~ "server. The setting affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Napravi upite udaljenom serveru koristeći račun mašine lokalnog servera. "
+#~ "Postavka utiče na net, smbclient i smbtree komande."
+
+#~ msgid ""
+#~ "Use the Winbind ccache for authentication. This setting affects the net, "
+#~ "smbclient and smbtree command."
+#~ msgstr ""
+#~ "Koristi Winbind ccashe za potvrdu. Ova postavka utiče na net, smbclient i "
+#~ "smbtree komande."
+
+#~ msgid "Signing state:"
+#~ msgstr "Stanje prijavljivanja:"
+
+#~ msgid ""
+#~ "Set the signing state. This setting affects the smbclient and smbtree "
+#~ "command."
+#~ msgstr ""
+#~ "Postavi stanje prijavljivanja. Ova postavka utiče na smbclient i smbtree "
+#~ "komande."
+
+#~ msgid "On"
+#~ msgstr "Uključeno"
+
+#~ msgid "Off"
+#~ msgstr "Isključeno"
+
+#~ msgid "Encrypt SMB transport"
+#~ msgstr "Šifruj SMP prijenos"
+
+#~ msgid ""
+#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
+#~ "affects the net, smbclient and smbtree command."
+#~ msgstr ""
+#~ "Šifruj SMP prijenos (samo Unix prošireni serveri). Ova postavka utiče na "
+#~ "net, smbclient i smbtree komande."
+
+#~ msgid "Name resolve order:"
+#~ msgstr "Red riješenih imena:"
+
+#~ msgid ""
+#~ "This option is used to determine what naming services and in what order "
+#~ "are used to resolve host names and IP addresses. It takes a space-"
+#~ "separated list of up to four different name resolution options. Those "
+#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
+#~ "further information."
+#~ msgstr ""
+#~ "Ova opcija je korištena da odredi koje usluge imenovanja su korištene za "
+#~ "rješavanje imena hosta i IP adresa. Zahtijeva listu od najviše četiri "
+#~ "opcije rezolucije imena razdvojenu razmacima. To su: lmhost, host, wins, "
+#~ "bcast. Vidi stranicu smbclient za više informacija."
+
+#~ msgid "Buffer size:"
+#~ msgstr "Veličina međumemorije:"
+
+#~ msgid ""
+#~ "This option changes the transmit/send buffer size when getting or putting "
+#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
+#~ "smaller has been observed to speed up file transfers to and from Windows "
+#~ "9x servers."
+#~ msgstr ""
+#~ "Ova opcija mijenja prijenos/slanje veličine međumemorije kada se dobija "
+#~ "ili stavlja datoteka sa/na server. Podrazumijevana je 65520 bajta. "
+#~ "Postavljanje ove vrijednosti na manju će ubrzati prijenos podataka za i "
+#~ "od Windows 9x servera."
+
+#~ msgid "Broadcast address:"
+#~ msgstr "Adresa emitovanja:"
+
+#~ msgid ""
+#~ "Queries performed with nmblookup will be send to the given broadcast "
+#~ "address. Without this option the default behavior is to send the queries "
+#~ "to the broadcast address of the network interface that was either auto-"
+#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
+#~ msgstr ""
+#~ "Upiti obavljeni sa nmblookup će biti poslani datim adresama emitovanja. "
+#~ "Bez ove opcije podrazumijevano ponašanje je da se pošalju upiti adresama "
+#~ "emitovanja mrežnog interfejsa koji je ili automatski detektovan ili "
+#~ "definisan u \"interfaces\" parametru u smb.conf datoteci."
+
+#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
+#~ msgstr ""
+#~ "Pokušaj i poveži sa UDP portom 137 za slanje i primanje UDP datagram-ova"
+
+#~ msgid ""
+#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
+#~ "reason for this option is a bug in Windows 95 where it ignores the source "
+#~ "port of the requesting packet and only replies to UDP port 137. "
+#~ "Unfortunately, on most Unix systems super user privileges are needed to "
+#~ "bind to this port. Please read the manual page of nmblookup for more "
+#~ "information."
+#~ msgstr ""
+#~ "Pokušaj i poveži sa UDP portom 137 za slanje i primanje UDP datagram-ova. "
+#~ "Razlog za ovu opciju je greška u Windows 95 gdje se zanemaruje izvorišni "
+#~ "port zahtjevanog paketa i samo se odgovara UDP portu 137. Nažalost, na "
+#~ "većini Unix sistema privilegije super korisnika su potrebne za "
+#~ "povezivanje na ovaj port. Molimo pročitajte stranicu nmblookup za više "
+#~ "informacija."
+
+#~ msgid "Send requests as broadcasts"
+#~ msgstr "Pošalji zahtjev kao emitovanja"
+
+#~ msgid ""
+#~ "Let smbtree query the network nodes by sending requests as broadcasts "
+#~ "instead of querying the local master browser."
+#~ msgstr ""
+#~ "Pusti smbtree da ispita mrežne čvorove šaljući zahtjeve kao emitovanja "
+#~ "umjesto ispitujući lokalni glavni pretraživač."
+
+#~ msgid "Do not exclude files matching this pattern:"
+#~ msgstr "Nemoj isključivati datoteke koje se podudaraju sa ovim uzorkom:"
+
+#~ msgid "The checksum seed"
+#~ msgstr "Sjeme kontrolnog zbira"
+
+#~ msgid "Clear Bookmarks"
+#~ msgstr "Očisti zabilješke"
+
+#~ msgid "General"
+#~ msgstr "Opšte"
+
+#~ msgid "UNC Address:"
+#~ msgstr "UNC Addresa:"
+
+#~ msgid "SMB Port:"
+#~ msgstr "SMB Port:"
+
+#~ msgid "Filesystem Port:"
+#~ msgstr "Port datotečnog sistema:"
+
+#~ msgid "Write Access:"
+#~ msgstr "Upiši pristup:"
+
+#~ msgid "Security Mode:"
+#~ msgstr "Sigurnosni režim:"
+
+#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgstr ""
+#~ "<p>Definiše prilagođene opcije za razmjene <b>%1</b> na hostu <b>%2</b>.</"
+#~ "p>"
+
+#~ msgid ""
+#~ "The Uniform Naming Convention (UNC) address describes the location of the "
+#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
+#~ "optional."
+#~ msgstr ""
+#~ "The Uniform Naming Convention (UNC) adresa opisuje lokaciju razmjene. Ima "
+#~ "sljedeću sintaksu: //[USER@]HOST/SHARE. Korisničko ime je opcionalno."
+
+#~ msgid "Server codepage:"
+#~ msgstr "Kodna stranica servera:"
+
+#~ msgid ""
+#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
+#~ "query the current master browser of your workgroup or domain instead."
+#~ msgstr ""
+#~ "Ulaz prilagođenog glavnog pretraživača je prazan. Smb4K će pokušati "
+#~ "ispitati trenutni glavni pretraživač vaše radne grupe ili domene."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"
@@ -4014,166 +4274,8 @@ msgstr "<qt>Molimo unesite korisničko ime i šifru za razmjenu <b>%1</b>.</qt>"
 #~ "<p>Pretraživanje mrežnih susjeda za traženom stavkom <b>%1</b> nije "
 #~ "uspjelo.</p>"
 
-#~ msgid "UNC Address:"
-#~ msgstr "UNC Addresa:"
-
-#~ msgid ""
-#~ "The Uniform Naming Convention (UNC) address describes the location of the "
-#~ "share. It has the following syntax: //[USER@]HOST/SHARE. The username is "
-#~ "optional."
-#~ msgstr ""
-#~ "The Uniform Naming Convention (UNC) adresa opisuje lokaciju razmjene. Ima "
-#~ "sljedeću sintaksu: //[USER@]HOST/SHARE. Korisničko ime je opcionalno."
-
-#~ msgid "The master browsers require authentication to return the browse list"
-#~ msgstr ""
-#~ "Glavni pretraživači zahtijevaju potvrdu za povrat liste pretraživanja"
-
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Pokušaj potvrditi sa Kerberos"
-
-#~ msgid ""
-#~ "The entry of the custom master browser is empty. Smb4K is going to try to "
-#~ "query the current master browser of your workgroup or domain instead."
-#~ msgstr ""
-#~ "Ulaz prilagođenog glavnog pretraživača je prazan. Smb4K će pokušati "
-#~ "ispitati trenutni glavni pretraživač vaše radne grupe ili domene."
-
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Nema definisanih oblasti emitiranja.</p>"
-
-#~ msgid "Socket options:"
-#~ msgstr "Opcije spojnice:"
-
-#~ msgid ""
-#~ "These are the TCP socket options that are used by nmblookup and "
-#~ "smbclient. Socket options are controls on the networking layer of the "
-#~ "operating systems which allow the connection to be tuned. See the manual "
-#~ "page of smb.conf for more information."
-#~ msgstr ""
-#~ "Ovo su opcije TCP spojnice koje su korištene od strane nmblookup i "
-#~ "smbclien. Opcije spojnice su kontrole na mrežnom sloju operativnih "
-#~ "sistema koje dopuštaju konekciji da bude podešena. Za više informacija "
-#~ "pogledajte stranicu smb.conf."
-
-#~ msgid "NetBIOS scope:"
-#~ msgstr "NetBIOS opseg:"
-
-#~ msgid ""
-#~ "This sets the NetBIOS scope that nmblookup and smbclient will operate "
-#~ "under. It should not be set unless every machine on your network "
-#~ "neighborhood sets this value."
-#~ msgstr ""
-#~ "Ovo postavlja NetBIOS opseg pod kojim upravljaju nmblookup i smbclient. "
-#~ "Ne treba biti postavljeno ukoliko svaka mašina na vašoj mreži susjeda "
-#~ "nije postavila ovu vrijednost."
-
-#~ msgid "Authenticate with local machine account"
-#~ msgstr "Potvrdi sa računom lokalne mašine"
-
-#~ msgid ""
-#~ "Make queries to the remote server using the machine account of the local "
-#~ "server. The setting affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Napravi upite udaljenom serveru koristeći račun mašine lokalnog servera. "
-#~ "Postavka utiče na net, smbclient i smbtree komande."
-
-#~ msgid ""
-#~ "Use the Winbind ccache for authentication. This setting affects the net, "
-#~ "smbclient and smbtree command."
-#~ msgstr ""
-#~ "Koristi Winbind ccashe za potvrdu. Ova postavka utiče na net, smbclient i "
-#~ "smbtree komande."
-
-#~ msgid "Signing state:"
-#~ msgstr "Stanje prijavljivanja:"
-
-#~ msgid ""
-#~ "Set the signing state. This setting affects the smbclient and smbtree "
-#~ "command."
-#~ msgstr ""
-#~ "Postavi stanje prijavljivanja. Ova postavka utiče na smbclient i smbtree "
-#~ "komande."
-
-#~ msgid "On"
-#~ msgstr "Uključeno"
-
-#~ msgid "Off"
-#~ msgstr "Isključeno"
-
-#~ msgid "Required"
-#~ msgstr "Zahtijevana"
-
-#~ msgid "Encrypt SMB transport"
-#~ msgstr "Šifruj SMP prijenos"
-
-#~ msgid ""
-#~ "Encrypt the SMB transport (Unix extended servers only). This setting "
-#~ "affects the net, smbclient and smbtree command."
-#~ msgstr ""
-#~ "Šifruj SMP prijenos (samo Unix prošireni serveri). Ova postavka utiče na "
-#~ "net, smbclient i smbtree komande."
-
-#~ msgid "Send requests as broadcasts"
-#~ msgstr "Pošalji zahtjev kao emitovanja"
-
-#~ msgid ""
-#~ "Let smbtree query the network nodes by sending requests as broadcasts "
-#~ "instead of querying the local master browser."
-#~ msgstr ""
-#~ "Pusti smbtree da ispita mrežne čvorove šaljući zahtjeve kao emitovanja "
-#~ "umjesto ispitujući lokalni glavni pretraživač."
-
-#~ msgid "Directory mask:"
-#~ msgstr "Maska direktorija:"
-
-#~ msgid "unknown"
-#~ msgstr "nepoznat"
-
-#~ msgid "File"
-#~ msgstr "Datoteka"
-
-#~ msgid "Options"
-#~ msgstr "Opcije"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options >>"
-#~ msgstr "Opcije"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options <<"
-#~ msgstr "Opcije"
-
-#~ msgid "Name resolve order:"
-#~ msgstr "Red riješenih imena:"
-
-#~ msgid ""
-#~ "This option is used to determine what naming services and in what order "
-#~ "are used to resolve host names and IP addresses. It takes a space-"
-#~ "separated list of up to four different name resolution options. Those "
-#~ "are: lmhost, host, wins, bcast. See the manual page of smbclient for "
-#~ "further information."
-#~ msgstr ""
-#~ "Ova opcija je korištena da odredi koje usluge imenovanja su korištene za "
-#~ "rješavanje imena hosta i IP adresa. Zahtijeva listu od najviše četiri "
-#~ "opcije rezolucije imena razdvojenu razmacima. To su: lmhost, host, wins, "
-#~ "bcast. Vidi stranicu smbclient za više informacija."
-
-#~ msgid "Buffer size:"
-#~ msgstr "Veličina međumemorije:"
-
-#~ msgid ""
-#~ "This option changes the transmit/send buffer size when getting or putting "
-#~ "a file from/to the server. The default is 65520 bytes. Setting this value "
-#~ "smaller has been observed to speed up file transfers to and from Windows "
-#~ "9x servers."
-#~ msgstr ""
-#~ "Ova opcija mijenja prijenos/slanje veličine međumemorije kada se dobija "
-#~ "ili stavlja datoteka sa/na server. Podrazumijevana je 65520 bajta. "
-#~ "Postavljanje ove vrijednosti na manju će ubrzati prijenos podataka za i "
-#~ "od Windows 9x servera."
 
 #~ msgid "The preview is displayed here."
 #~ msgstr "Pregled je prikazan ovdje."
@@ -4193,143 +4295,18 @@ msgstr "<qt>Molimo unesite korisničko ime i šifru za razmjenu <b>%1</b>.</qt>"
 #~ "prethodno posjećenih lokacija iz padajućeg menija koje će biti prikazane "
 #~ "u pregledu iznad."
 
-#~ msgid "Broadcast address:"
-#~ msgstr "Adresa emitovanja:"
+#~ msgid "File"
+#~ msgstr "Datoteka"
 
-#~ msgid ""
-#~ "Queries performed with nmblookup will be send to the given broadcast "
-#~ "address. Without this option the default behavior is to send the queries "
-#~ "to the broadcast address of the network interface that was either auto-"
-#~ "detected or defined in the \"interfaces\" parameter of the smb.conf file."
-#~ msgstr ""
-#~ "Upiti obavljeni sa nmblookup će biti poslani datim adresama emitovanja. "
-#~ "Bez ove opcije podrazumijevano ponašanje je da se pošalju upiti adresama "
-#~ "emitovanja mrežnog interfejsa koji je ili automatski detektovan ili "
-#~ "definisan u \"interfaces\" parametru u smb.conf datoteci."
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Options >>"
+#~ msgstr "Opcije"
 
-#~ msgid "Try and bind to UDP port 137 to send and receive UDP datagrams"
-#~ msgstr ""
-#~ "Pokušaj i poveži sa UDP portom 137 za slanje i primanje UDP datagram-ova"
-
-#~ msgid ""
-#~ "Try and bind to UDP port 137 to send and receive UDP datagrams. The "
-#~ "reason for this option is a bug in Windows 95 where it ignores the source "
-#~ "port of the requesting packet and only replies to UDP port 137. "
-#~ "Unfortunately, on most Unix systems super user privileges are needed to "
-#~ "bind to this port. Please read the manual page of nmblookup for more "
-#~ "information."
-#~ msgstr ""
-#~ "Pokušaj i poveži sa UDP portom 137 za slanje i primanje UDP datagram-ova. "
-#~ "Razlog za ovu opciju je greška u Windows 95 gdje se zanemaruje izvorišni "
-#~ "port zahtjevanog paketa i samo se odgovara UDP portu 137. Nažalost, na "
-#~ "većini Unix sistema privilegije super korisnika su potrebne za "
-#~ "povezivanje na ovaj port. Molimo pročitajte stranicu nmblookup za više "
-#~ "informacija."
-
-#~ msgid ""
-#~ "Scan the network neighborhood periodically for all available workgroups, "
-#~ "hosts and shares."
-#~ msgstr ""
-#~ "Pregledaj mrežne susjede periodično za sve dostupne radne grupe, hostove "
-#~ "i razmjene."
-
-#~ msgid "Interval between scans:"
-#~ msgstr "Interval između pretraživanja:"
-
-#~ msgid ""
-#~ "This is the time in minutes that elapses until Smb4K rescans the network "
-#~ "neighborhood for new workgroups, hosts and shares."
-#~ msgstr ""
-#~ "Ovo je vrijemeu minutama koje je proteklo dok Smb4K ponovo pregleda "
-#~ "mrežne susjede za sve nove radne grupe, hostove i razmjene."
-
-#~ msgid "Lookup method for IP addresses:"
-#~ msgstr "Metoda potrage za IP adresama:"
-
-#~ msgid ""
-#~ "Define the method that is to be used to detect the IP addresses of the "
-#~ "hosts."
-#~ msgstr "Definiši metod koji je korišten za detektovanje IP adresa hostova."
-
-#~ msgid "Use nmblookup command"
-#~ msgstr "Koristi nmblookup komandu"
-
-#~ msgid "Use net command"
-#~ msgstr "Koristi net komandu"
-
-#~ msgid "Scan the network neighborhood for available workgroups and domains"
-#~ msgstr "Pregleda mrežne susjede za dostupnim radnim grupama i domenama"
-
-#~ msgid ""
-#~ "This is the default method to retrieve the initial browse list. It "
-#~ "discovers all workgroups and domains by looking for all known master "
-#~ "browsers on your network neighborhood."
-#~ msgstr ""
-#~ "Ovo je podrazumijevani metod za vraćanje prvobitne liste pretraživanja. "
-#~ "On otkriva sve radne grupe i domene tražeći sve poznate glavne "
-#~ "pretraživače na mrežnim susjedima."
-
-#~ msgid "Query the current workgroup master browser"
-#~ msgstr "Upit glavnog pretraživača trenutne radne grupe"
-
-#~ msgid ""
-#~ "This method queries the current master browser of your workgroup or "
-#~ "domain to retrieve the initial browse list."
-#~ msgstr ""
-#~ "Ovaj metod ispituje trenutnog glavnog pretraživača vaše radne grupe ili "
-#~ "domene za povrat početne liste pretraživanja."
-
-#~ msgid "Query this custom master browser:"
-#~ msgstr "Ispitaj ovaj prilagođeni glavni pretraživač:"
-
-#~ msgid ""
-#~ "This method queries a custom master browser to retrieve the initial "
-#~ "browse list."
-#~ msgstr ""
-#~ "Ovaj metod ispituje prilagođeni glavni pretraživač za povrat početne "
-#~ "liste pretraživanja."
-
-#~ msgid "A custom master browser that is to be queried"
-#~ msgstr "Prilagođeni glavni pretraživač će biti ispitan"
-
-#~ msgid ""
-#~ "Enter the name or IP address of a master browser here that should be "
-#~ "queried to compile the initial browse list."
-#~ msgstr ""
-#~ "Unesite ovdje ime ili IP adresu glavnog pretraživačakoe će biti ispitano "
-#~ "za sastavljanje početne liste pretraživanja."
-
-#~ msgid "Server codepage:"
-#~ msgstr "Kodna stranica servera:"
-
-#~ msgid "General"
-#~ msgstr "Opšte"
-
-#~ msgid "SMB Port:"
-#~ msgstr "SMB Port:"
-
-#~ msgid "Filesystem Port:"
-#~ msgstr "Port datotečnog sistema:"
-
-#~ msgid "Write Access:"
-#~ msgstr "Upiši pristup:"
-
-#~ msgid "Security Mode:"
-#~ msgstr "Sigurnosni režim:"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr ""
-#~ "<p>Definiše prilagođene opcije za razmjene <b>%1</b> na hostu <b>%2</b>.</"
-#~ "p>"
-
-#~ msgid "Do not exclude files matching this pattern:"
-#~ msgstr "Nemoj isključivati datoteke koje se podudaraju sa ovim uzorkom:"
-
-#~ msgid "The checksum seed"
-#~ msgstr "Sjeme kontrolnog zbira"
-
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Očisti zabilješke"
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Options <<"
+#~ msgstr "Opcije"
 
 #~ msgid ""
 #~ "<p>Scanning the defined broadcast area(s) failed:</p><p><tt>%1</tt></p>"

@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# giovanni <g.sora@tiscali.it>, 2020, 2021, 2022, 2023.
+# giovanni <g.sora@tiscali.it>, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2023-02-28 16:17+0100\n"
+"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"PO-Revision-Date: 2023-02-28 15:28+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -166,9 +166,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File mode:"
 msgid "View mode:"
-msgstr "Modo de vista:"
+msgstr "Modo de File:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -216,9 +217,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Icon View"
 msgid "Icon size:"
-msgstr "Dimension de Icone:"
+msgstr "Vista a Icone"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
@@ -1673,7 +1675,7 @@ msgstr ""
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
-msgstr "%1 super %2"
+msgstr "%1 sur %2"
 
 #: smb4kbookmarkhandler.cpp:335 smb4kcustomoptionsmanager.cpp:267
 #, kde-format
@@ -1726,9 +1728,10 @@ msgid "Clear"
 msgstr "Netta"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "User:"
 msgid "Username:"
-msgstr "Nomine de usator:"
+msgstr "Usator:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -1845,9 +1848,10 @@ msgid "Print"
 msgstr "Imprime"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount Settings"
 msgid "Custom Settings"
-msgstr "Preferentias Personalisate"
+msgstr "Preferentias de Montar"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, kde-format
@@ -3056,7 +3060,8 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr ""
 
 #: smb4knotification.cpp:51
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Open"
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Aperi"
@@ -3241,13 +3246,15 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr ""
 
 #: smb4knotification.cpp:424
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "The network communication failed with the following error message: <s>%1</"
+#| "s>"
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"<p>Le communication de rete falleva con le sequente message de error: <s>%1</"
-"s></p>"
+"Le communication de rete falleva con le sequente message de error: <s>%1</s>"
 
 #: smb4knotification.cpp:432
 #, kde-format
@@ -3267,18 +3274,18 @@ msgstr "Migra tote preferentias notabile de un profilo a un altere."
 #: smb4kprofilemanager_p.cpp:99
 #, kde-format
 msgid "Old Profile:"
-msgstr "Vetere profilo:"
+msgstr "Vetere Profilo:"
 
 #: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
 #: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
 #, kde-format
 msgid "<Default Profile>"
-msgstr ""
+msgstr "<Default Profile>"
 
 #: smb4kprofilemanager_p.cpp:108
 #, kde-format
 msgid "<All Profiles>"
-msgstr ""
+msgstr "<All Profiles>"
 
 #: smb4kprofilemanager_p.cpp:116
 #, kde-format
@@ -3391,20 +3398,32 @@ msgstr ""
 "<qt>Pro favor inserta un nomine de usator e un contrasigno per le compartite "
 "<b>%1</b>.</qt>"
 
-#~ msgid "Custom Options"
-#~ msgstr "Optione personalisate"
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "Nomine de NetBIOS:"
 
 #~ msgid "Login:"
 #~ msgstr "Accesso de identification:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Optione personalisate"
+
 #~ msgid "Group:"
 #~ msgstr "Gruppo:"
 
 #~ msgid "Add Group"
-#~ msgstr "Adde gruppo"
+#~ msgstr "Adde Gruppo"
 
 #~ msgid "Group name:"
 #~ msgstr "Nomine de gruppo:"
+
+#~ msgid "Out of memory"
+#~ msgstr "Foras de Memoria"
+
+#~ msgid "Permission denied"
+#~ msgstr "Permission negate"
+
+#~ msgid "Operation not permitted"
+#~ msgstr "Operation non permittite"
+
+#~ msgid "Unknown error"
+#~ msgstr "Error Incognite"
