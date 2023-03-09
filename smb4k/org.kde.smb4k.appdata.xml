@@ -8,6 +8,7 @@ SPDX-License-Identifier: CC0-1.0
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+ and GFDL-1.2</project_license>
   <name>Smb4K</name>
+  <name xml:lang="ast">Smb4K</name>
   <name xml:lang="bs">Smb4K</name>
   <name xml:lang="ca">Smb4K</name>
   <name xml:lang="ca-valencia">Smb4K</name>
@@ -24,7 +25,6 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="gl">Smb4K</name>
   <name xml:lang="ia">Smb4K</name>
   <name xml:lang="id">Smb4K</name>
-  <name xml:lang="ie">Smb4K</name>
   <name xml:lang="it">Smb4K</name>
   <name xml:lang="ka">Smb4K</name>
   <name xml:lang="ko">Smb4K</name>
@@ -58,9 +58,9 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="ko">네트워크에 있는 Samba와 Windows 공유를 탐색하고 마운트</summary>
   <summary xml:lang="nl">Ontdek en koppel aan SAMBA en Windows-shares over het netwerk</summary>
   <summary xml:lang="pl">Wykrywaj i podpinaj zasoby SAMBY oraz Windowsa w sieci</summary>
-  <summary xml:lang="pt">Descubra e monte partilhas de SAMBA e do Windows na rede</summary>
   <summary xml:lang="pt-BR">Descubra e monte compartilhamentos SAMBA e Windows pela rede</summary>
   <summary xml:lang="ru">Обнаружение и подключение общих ресурсов SAMBA и Windows по сети</summary>
+  <summary xml:lang="sk">Objaviť a pripojiť SAMBA a Windows zdieľania cez sieť</summary>
   <summary xml:lang="sl">Odkrijte in priklopite skupno rabo mrežnih diskov SAMBA in Windows</summary>
   <summary xml:lang="sv">Upptäck och montera delade SAMBA- och Windows-resurser via nätverket</summary>
   <summary xml:lang="tr">SAMBA ve Windows paylaşımlarını ağ üzerinden keşfedin ve bağlayın</summary>
@@ -85,7 +85,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="id">Smb4K adalah sebuah penelusur  pengaitan berbagi Samba. Ini berbasiskan pada KDE Frameworks 5 dan pustaka klien Samba (libsmbclient). Ini memindaikan jaringan tetanggamu untuk semua workgroup-workgroup, server-server, dan bebagi-bebagi yang tersedia dan bisa mengaitkan semua berbagi yang diinginkan ke sistem file lokalmu.</p>
     <p xml:lang="it">Smb4K è un navigatore di risorse di rete avanzato e un programma per montare le condivisioni Samba. È basato su KDE Frameworks 5 e sulla libreria client di Samba (libsmbclient). Analizza le risorse di rete per trovare tutti i gruppi di lavoro disponibili, i server e le condivisioni, e può montare tutte le condivisioni che desideri nel tuo file system locale.</p>
     <p xml:lang="ko">Smb4K는 고급 네트워크 환경 탐색기 및 Samba 공유 마운트 도구입니다. KDE 프레임워크 5와 Samba 클라이언트 라이브러리(libsmbclient)를 사용합니다. 로컬 네트워크에 있는 작업 그룹, 서버, 공유 자원을 탐색할 수 있으며 로컬 파일 시스템에 공유를 마운트할 수 있습니다.</p>
-    <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op het KDE Frameworks 5 en de clientbibliotheek (libsmbclient). Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
+    <p xml:lang="nl">Smb4K is een geavanceerde browser voor de netwerkomgeving en hulpmiddel voor aankoppelen van Samba shares. Het is gebaseerd op de KDE Frameworks 5 en de clientbiblotheek van Samba (libsmbclient). Het scant uw netwerkomgeving voor alle beschikbare werkgroepen, servers en shares en kan alle gewenste shares aankoppelen aan uw lokale bestandssysteem.</p>
     <p xml:lang="pl">Smb4K jest rozbudowaną przeglądarką otoczenia sieciowego i narzędziem do podpinania udziałów Samby. Jest oparta na Szkieletach KDE 5 i bibliotece klienckiej Samby (libsmbclient). Przegląda twoje otoczenie sieciowe w poszukiwaniu wszystkich dostępnych grup roboczych, serwerów i udziałów, żeby umożliwić podpięcie wszystkich tych udziałów w lokalnym systemie plików.</p>
     <p xml:lang="pt">O Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de partilhas do Samba. Baseia-se nas Plataformas do KDE 5 e na biblioteca-cliente do Samba (libsmbclient). Ele sonda a sua vizinhança da rede à procura de todos os grupos de trabalho, servidores e partilhas disponíveis, podendo montar todas as partilhas desejadas no seu sistema de ficheiros local.</p>
     <p xml:lang="pt-BR">Smb4K é um navegador avançado da vizinhança da rede e um utilitário de montagem de compartilhamentos do Samba. Ele tem como base o KDE Frameworks 5 e a biblioteca-cliente do Samba (libsmbclient). Verifica a vizinhança da rede à procura de todos os grupos de trabalho, servidores e compartilhamentos disponíveis, podendo montar todos os compartilhamentos desejados no seu sistema de arquivos local.</p>
@@ -114,7 +114,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="id">Smb4K adalah berbasiskan pada pustaka klien Samba. Tujuannya adalah untuk menyediakan sebuah program yang mudah digunakan dan memiliki fitur sebanyak mungkin.</p>
     <p xml:lang="it">Smb4K è basato sulla libreria client di Samba. Il suo scopo è quello di fornire un programma che sia facile da usare e che abbia più funzionalità possibili.</p>
     <p xml:lang="ko">Smb4K는 Samba 클라이언트 라이브러리를 사용합니다. 사용하기 편하면서도 기능이 풍부한 프로그램을 목적으로 합니다.</p>
-    <p xml:lang="nl">Smb4K is gebaseerd op de client-bibliotheek van Samba. Het doel is een programma te bieden dat gemakkelijk is te gebruiken to use en zoveel mogelijk functies heeft.</p>
+    <p xml:lang="nl">Smb4K is gebaseerd op de clientbibliotheek van Samba. Het doel is een programma te bieden dat gemakkelijk is te gebruiken en zoveel mogelijk functies heeft.</p>
     <p xml:lang="pl">Smb4K jest oparte na bibliotece klienta Samba. Jego zadaniem jest dostarczenie łatwego w użyciu programu jednocześnie posiadającego tak wiele możliwości jaka tylko jest możliwa.</p>
     <p xml:lang="pt">O Smb4K baseia-se na biblioteca-cliente do Samba. O seu objectivo é oferecer um programa que seja simples de usar e tenha tantas funcionalidades quantas possíveis.</p>
     <p xml:lang="pt-BR">O Smb4K tem como base a biblioteca-cliente do Samba. Seu objetivo é oferecer um programa que seja simples de usar e tenha todas as funcionalidades possíveis.</p>
@@ -129,7 +129,6 @@ SPDX-License-Identifier: CC0-1.0
     <p>
       Features:
     </p>
-    <p xml:lang="ar">الميزات:</p>
     <p xml:lang="bs">Svojstva:</p>
     <p xml:lang="ca">Característiques:</p>
     <p xml:lang="ca-valencia">Característiques:</p>
@@ -146,9 +145,8 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="gl">Funcionalidades:</p>
     <p xml:lang="ia">Characteristicas:</p>
     <p xml:lang="id">Fitur:</p>
-    <p xml:lang="ie">Caracteristicas:</p>
     <p xml:lang="it">Funzionalità:</p>
-    <p xml:lang="ka">თვისებები:</p>
+    <p xml:lang="ka">ფუნქციები:</p>
     <p xml:lang="ko">기능:</p>
     <p xml:lang="nds">Markmalen:</p>
     <p xml:lang="nl">Mogelijkheden:</p>
@@ -209,7 +207,6 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge des systèmes de fichiers CIFS (Linux) et SMBFS (FreeBSD)</li>
       <li xml:lang="gl">É compatíbel cos sistemas de ficheiros CIFS (Linux) e SMBFS (FreeBSD).</li>
       <li xml:lang="id">Dukungan sistem file CIFS (Linux) dan SMBFS (FreeBSD)</li>
-      <li xml:lang="ie">Supporte del sistemas de files CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="it">Supporto dei file system CIFS (Linux) e SMBFS (FreeBSD)</li>
       <li xml:lang="ko">CIFS(리눅스) 및 SMBFS(FreeBSD) 파일 시스템 지원</li>
       <li xml:lang="nds">Ünnerstütt dat CIFS- (op Linux) un SMBFS-Dateisysteem (op FreeBSD)</li>
@@ -240,7 +237,6 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Montage et démontage des partages</li>
       <li xml:lang="gl">Permite montar e desmontar comparticións.</li>
       <li xml:lang="id">Pengaitan dan pelepaskaitan berbagi</li>
-      <li xml:lang="ie">Montage e demontage de partites</li>
       <li xml:lang="it">Montaggio e smontaggio delle condivisioni</li>
       <li xml:lang="ka">გაზიარებების მიმაგრება და მოხსნა</li>
       <li xml:lang="ko">공유 마운트 및 마운트 해제</li>
@@ -394,7 +390,6 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Recherche sur le réseau</li>
       <li xml:lang="gl">Permite realizar buscas na rede.</li>
       <li xml:lang="id">Pencarian jaringan</li>
-      <li xml:lang="ie">Sercha in li rete</li>
       <li xml:lang="it">Ricerca in rete</li>
       <li xml:lang="ka">ქსელში ძებნა</li>
       <li xml:lang="ko">네트워크 검색</li>
@@ -440,7 +435,6 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="uk">Попередній перегляд даних із віддаленого спільного ресурсу</li>
       <li xml:lang="x-test">xxPreview of the contents of a remote sharexx</li>
       <li xml:lang="zh-CN">预览远程共享的内容</li>
-      <li xml:lang="zh-TW">預覽遠端分享的內容</li>
       <li>Default login</li>
       <li xml:lang="bs">Početna prijava</li>
       <li xml:lang="ca">Inici de sessió predeterminat</li>
@@ -596,7 +590,6 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="uk">Підтримка додаткових параметрів монтування</li>
       <li xml:lang="x-test">xxSupport of advanced mount optionsxx</li>
       <li xml:lang="zh-CN">支持高级挂载选项</li>
-      <li xml:lang="zh-TW">支援進階的掛載選項</li>
       <li>Support of printer shares</li>
       <li xml:lang="bs">Podrška za razmjene štampača</li>
       <li xml:lang="ca">Implementació de les impressores compartides</li>
@@ -643,13 +636,12 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="fr">Prise en charge de KWallet</li>
       <li xml:lang="gl">Compatibilidade con KWallet.</li>
       <li xml:lang="id">Dukungan KWallet</li>
-      <li xml:lang="ie">Supporte de KWallet</li>
       <li xml:lang="it">Supporto a KWallet</li>
       <li xml:lang="ka">KWallet-ის მხარდაჭერა</li>
       <li xml:lang="ko">KWallet 지원</li>
       <li xml:lang="nds">KWallet-Ünnerstütten</li>
       <li xml:lang="nl">Ondersteuning van KWallet</li>
-      <li xml:lang="pl">Obsługa Portfela</li>
+      <li xml:lang="pl">Obsługa KPortfela</li>
       <li xml:lang="pt">Suporte para a KWallet</li>
       <li xml:lang="pt-BR">Suporte para o KWallet</li>
       <li xml:lang="ru">Поддержка бумажника KWallet;</li>
@@ -891,7 +883,6 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fr">La fenêtre principale</caption>
       <caption xml:lang="gl">A xanela principal</caption>
       <caption xml:lang="id">Jendela utama</caption>
-      <caption xml:lang="ie">Li fenestre principal</caption>
       <caption xml:lang="it">La finestra principale</caption>
       <caption xml:lang="ka">მთავარი ფანჯარა</caption>
       <caption xml:lang="ko">주 창</caption>
@@ -927,7 +918,6 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fr">Le plasmoïde</caption>
       <caption xml:lang="gl">O plasmoide</caption>
       <caption xml:lang="id">Plasmoid</caption>
-      <caption xml:lang="ie">Li plasmoid</caption>
       <caption xml:lang="it">Il plasmoide</caption>
       <caption xml:lang="ka">პლაზმოიდი</caption>
       <caption xml:lang="ko">Plasmoid</caption>
