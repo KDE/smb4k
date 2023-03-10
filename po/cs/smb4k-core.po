@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-09 02:49+0000\n"
-"PO-Revision-Date: 2023-02-22 14:10+0100\n"
+"PO-Revision-Date: 2023-02-27 14:44+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -169,7 +169,7 @@ msgstr ""
 #: smb4k.kcfg:77
 #, kde-format
 msgid "View mode:"
-msgstr ""
+msgstr "Režim pohledu:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -199,10 +199,9 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Režim zobrazení pohledu na sdílení:"
+msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
@@ -212,17 +211,15 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:98
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Režim zobrazení pohledu na sdílení:"
+msgstr ""
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, fuzzy, kde-format
-#| msgid "Icon View"
+#, kde-format
 msgid "Icon size:"
-msgstr "Pohled s ikonami"
+msgstr "Velikost ikony:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
@@ -359,10 +356,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, fuzzy, kde-format
-#| msgid "SMB port:"
+#, kde-format
 msgid "Set the SMB port to:"
-msgstr "Port SMB:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
@@ -433,10 +429,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, fuzzy, kde-format
-#| msgid "Set compression level:"
+#, kde-format
 msgid "Set the encryption level to:"
-msgstr "Nastavit úroveň komprese:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
@@ -902,10 +897,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Zachovat časy"
+msgstr "Zachovat rozšířené atributy"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
@@ -917,10 +911,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Zachovat časy"
+msgstr "Zachovat časy přístupu"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
@@ -932,10 +925,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Zachovat časy"
+msgstr "Zachovat časy vytvoření"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
@@ -1360,7 +1352,7 @@ msgstr ""
 #: smb4k.kcfg:565
 #, kde-format
 msgid "Custom filter rules"
-msgstr ""
+msgstr "Přizpůsobit pravidla filtrování"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -1736,10 +1728,9 @@ msgid "Clear"
 msgstr "Vyprázdnit"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Uživatel:"
+msgstr "Uživatelské jméno:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -1856,10 +1847,9 @@ msgid "Print"
 msgstr "Tisknout"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Nastavení připojení"
+msgstr "Vlastní nastavení"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
 #, kde-format
@@ -1867,11 +1857,13 @@ msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
+"<p>Zadejte vlastní volby pro hostitele <b>%1</b> a všechna sdílení, která "
+"poskytuje.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
 #, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr ""
+msgstr "<p>Zadejte vlastní volby pro sdílení <b>%1</b>.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709
@@ -1943,7 +1935,7 @@ msgstr "Činnosti"
 #: smb4kcustomoptionsmanager_p.cpp:1055
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "Odeslat magický paket před skenováním síťového okolí"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
@@ -3070,8 +3062,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr ""
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Otevřít"
@@ -3395,12 +3386,3 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
-
-#~ msgid "NetBIOS name:"
-#~ msgstr "Název NetBIOS:"
-
-#~ msgid "Login:"
-#~ msgstr "Přihlášení:"
-
-#~ msgid "Custom Options"
-#~ msgstr "Vlastní možnosti"

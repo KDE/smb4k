@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-09 02:49+0000\n"
-"PO-Revision-Date: 2023-02-18 07:58+0100\n"
+"PO-Revision-Date: 2023-03-10 02:48+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -56,10 +56,9 @@ msgstr ""
 "პროგრამა"
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -135,10 +134,9 @@ msgid "Add &Bookmark"
 msgstr "&სანიშნის დამატება"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "ყველა სანიშნის მიმაგრება"
+msgstr "სანიშნების მიმაგრება"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -166,10 +164,9 @@ msgid "Synchronization"
 msgstr "სინქრონიზაცია"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Common Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "საერთო პარამეტრები"
+msgstr "პარამეტრების ხელით მითითება"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -183,6 +180,8 @@ msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
 "corresponding configuration page to fix it.</qt>"
 msgstr ""
+"<qt>აღმოჩენილია არასწორი პარამეტრი. ახლა შესაბამის გვერდზე გადაგიყვანთ, რათა "
+"ჩაასწოროთ ის.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
 #: smb4k/smb4kconfigpageprofiles.cpp:34
@@ -236,17 +235,17 @@ msgstr "შეიყვანეთ შესვლის ნაგულის�
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr ""
+msgstr "დააყენეთ მომხმარებელი და პაროლი საფულის ჩანაწერისთვის %1."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr ""
+msgstr "დააყეენთ მომხმარებელი და პაროლი ნაგულისხმები შესვლისთვის."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "ყველაფერი კარგადაა."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -257,6 +256,7 @@ msgstr "სიის გასუფთავება"
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
+"ჩანაწერი %1 წაიშალა, რადგან ყველა ხელით მითითებული პარამეტრი გასუფთავდა."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -340,7 +340,7 @@ msgstr "CIFS-ის დამატებითი პარამეტრე�
 #: smb4k/smb4kconfigpagemounting.cpp:834
 #, kde-format
 msgid "<qt>Enter the desired options as a comma separated list:</qt>"
-msgstr ""
+msgstr "<qt>შეიყვანეთ სასურველი პარამეტრები მძიმით გამოყოფილი სიის სახით.</qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:862
 #, kde-format
@@ -361,7 +361,7 @@ msgstr "პარამეტრების დათვალიერებ�
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
 msgid "Samba"
-msgstr ""
+msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, kde-format
@@ -380,22 +380,19 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "მიმაგრების დამატებითი პარამეტრები"
+msgstr "დამატებითი პარამეტრები"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "სინქრონიზაცია"
+msgstr "სინქრონიზაციის საქაღალდე"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "მარქაფი"
+msgstr "მარქაფები"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -415,18 +412,17 @@ msgstr "ფაილის დამუშავება"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "ფაილის ატრიბუტები"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Owner:"
+#, kde-format
 msgid "Ownership"
-msgstr "მფლობელი:"
+msgstr "მფლობელობა"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "ფაილის ატრიბუტები და მფლობელი"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -442,7 +438,7 @@ msgstr "ფაილები"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " კბ"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -454,7 +450,7 @@ msgstr "სხვადასხვა"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " კბ/წმ"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -479,7 +475,7 @@ msgstr "ფაილის წაშლა"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr ""
+msgstr "საერთო ფილტრის პარამეტრები"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -660,10 +656,9 @@ msgstr "&ძებნა"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "მიმაგრების დამატებითი პარამეტრები"
+msgstr "&პარამეტრების ხელით მითითება"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -887,10 +882,9 @@ msgid "Mountpoint:"
 msgstr "მიმაგრების წერტილი:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User Interface"
+#, kde-format
 msgid "Username:"
-msgstr "სამომხმარებლო ინტერფეისი"
+msgstr "მომხმარებელი:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format

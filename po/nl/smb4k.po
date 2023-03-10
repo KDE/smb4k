@@ -7,26 +7,26 @@
 #
 # Joop Beris <jberis@risse.nl>, 2005, 2006.
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2012.
-# Freek de Kruijf <f.de.kruijf@gmail.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022.
+# Freek de Kruijf <f.de.kruijf@gmail.com>, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-09 02:49+0000\n"
-"PO-Revision-Date: 2022-07-07 10:27+0200\n"
+"PO-Revision-Date: 2023-03-09 10:26+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - t/m 2019;2021"
+msgstr "Freek de Kruijf - t/m 2019;2021;2023"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -61,10 +61,9 @@ msgstr ""
 "het aankoppelen een Samba share."
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -140,10 +139,9 @@ msgid "Add &Bookmark"
 msgstr "&Bladwijzer toevoegen"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Alle bladwijzers aankoppelen"
+msgstr "Bladwijzers aankoppelen"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -171,10 +169,9 @@ msgid "Synchronization"
 msgstr "Synchronisatie"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Common Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Algemene instellingen"
+msgstr "Aangepaste instellingen"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -241,27 +238,22 @@ msgid "Enter the default login information."
 msgstr "Voer de standaard aanmeldinformatie in."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:401
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr ""
-"<qt>Gaarne een gebruikersnaam en een wachtwoord voor de host <b>%1</b> "
-"invoeren.</qt>"
+"De gebruikersnaam en wachtwoord instellen voor toegang tot item %1 in "
+"portefeuille."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""
-"<qt>Gaarne een gebruikersnaam en een wachtwoord voor de host <b>%1</b> "
-"invoeren.</qt>"
+"De gebruikersnaam en wachtwoord instellen voor de standaard aanmelding."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "Alles in orde."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -272,6 +264,7 @@ msgstr "Lijst wissen"
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
+"Het item %1 is verwijderd, omdat alle aangepaste instellingen zijn gereset."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -393,33 +386,27 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Define the hosts that should be woken up via the custom options "
-#| "dialog.</qt>"
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"<qt>Definieer de hosts die gewekt moeten worden via de dialoog voor "
-"aangepaste opties.</qt>"
+"Definieer de hosts die gewekt moeten worden via de bewerker voor aangepaste "
+"instellingen."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "Geavanceerde instellingen voor aankoppelen"
+msgstr "Geavanceerde instellingen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization prefix:"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Synchronisatie-voorvoegsel"
+msgstr "Synchronisatiemap"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Backup"
+msgstr "Back-ups"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -439,18 +426,17 @@ msgstr "Behandeling van bestanden"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "Bestandsattributen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Ownership"
-msgstr "Eigenaar"
+msgstr "Eigendom"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "Attributen van bestand && eigendom"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -478,7 +464,7 @@ msgstr "Diversen"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -501,10 +487,9 @@ msgid "File Deletion"
 msgstr "Bestand Verwijderen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "General Filtering Settings"
-msgstr "Algemene instellingen"
+msgstr "Algemene filterinstellingen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -688,10 +673,9 @@ msgstr "&Zoek"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Geavanceerde instellingen voor aankoppelen"
+msgstr "&Aangepaste instellingen toevoegen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -917,10 +901,9 @@ msgid "Mountpoint:"
 msgstr "Aankoppelpunt:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Gebruiker:"
+msgstr "Gebruikersnaam:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format

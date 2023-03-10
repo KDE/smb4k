@@ -4,13 +4,13 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Ivan Petrouchtchak <ivanpetrouchtchak@yahoo.com>, 2004, 2005, 2006, 2007.
-# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-09 02:49+0000\n"
-"PO-Revision-Date: 2022-07-07 22:18+0300\n"
+"PO-Revision-Date: 2023-03-09 09:58+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -59,10 +59,9 @@ msgstr ""
 "монтування спільних ресурсів Samba"
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© Alexander Reinholdt, 2003–2022"
+msgstr "© Alexander Reinholdt, 2003–2023"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -138,10 +137,9 @@ msgid "Add &Bookmark"
 msgstr "&Додати закладку"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Змонтувати всі закладки"
+msgstr "Змонтувати закладки"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -169,10 +167,9 @@ msgid "Synchronization"
 msgstr "Синхронізація"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Common Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Загальні параметри"
+msgstr "Нетипові параметри"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -239,27 +236,21 @@ msgid "Enter the default login information."
 msgstr "Введіть типові реєстраційні дані."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:401
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr ""
-"<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до вузла <b>"
-"%1</b>.</qt>"
+msgstr "Встановити ім'я користувача і пароль для запису %1."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""
-"<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до вузла <b>"
-"%1</b>.</qt>"
+"Встановити ім'я користувача і пароль для типового облікового запису для "
+"входу."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "Усе гаразд."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -269,7 +260,7 @@ msgstr "Спорожнити список"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
-msgstr ""
+msgstr "Запис %1 було вилучено, оскільки було скинуто усі нетипові параметри."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -399,33 +390,27 @@ msgid " s"
 msgstr " с"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Define the hosts that should be woken up via the custom options "
-#| "dialog.</qt>"
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"<qt>Визначити вузли, які має бути пробуджено за допомогою діалогового вікна "
-"нетипових параметрів.</qt>"
+"Визначити вузли, які має бути пробуджено за допомогою редактора нетипових "
+"параметрів."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "Додаткові параметри монтування"
+msgstr "Додаткові параметри"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization prefix:"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Префікс синхронізації:"
+msgstr "Каталог синхронізації"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Резервування"
+msgstr "Резервні копії"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -445,18 +430,17 @@ msgstr "Обробка файлів"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "Атрибути файла"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Ownership"
-msgstr "Власник"
+msgstr "Власність"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "Атрибути і права власності файла"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -484,7 +468,7 @@ msgstr "Інше"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " кБ/с"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -507,10 +491,9 @@ msgid "File Deletion"
 msgstr "Вилучення файлів"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "General Filtering Settings"
-msgstr "Загальні параметри"
+msgstr "Загальні параметри фільтрування"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -696,10 +679,9 @@ msgstr "&Пошук"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Додаткові параметри монтування"
+msgstr "Додати не&типові параметри"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -925,8 +907,7 @@ msgid "Mountpoint:"
 msgstr "Точка монтування:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
 msgstr "Користувач:"
 

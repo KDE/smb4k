@@ -11,6 +11,9 @@
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
+  <!ENTITY SMB3 "<acronym
+>SMB3</acronym
+>">
   <!ENTITY Samba "<application
 >Samba</application
 >">
@@ -46,16 +49,16 @@
   </authorgroup>
   <copyright>
     <year
->2005-2021</year>
+>2005-2023</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2021-03-30</date>
+>2023-02-19</date>
   <releaseinfo
->&smb4k; 3.1.0</releaseinfo
+>&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
   <abstract>
     <para
@@ -80,7 +83,7 @@
 >Inleiding</title>
 
   <para
->Dit handboek beschrijft &smb4k; 3.1.x en in een bepaalde mate eerdere versies.</para>
+>Dit handboek beschrijft &smb4k; 3.2 en in een bepaalde mate eerdere versies.</para>
   <para
 >&smb4k; is een geavanceerd bladerprogramma voor het nabije netwerk en een hulpprogramma voor aankoppelen van <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -93,7 +96,7 @@
 ></listitem>
     <listitem
 ><para
->Ondersteuning van het &CIFS; (&Linux;) en SMBFS (BSD) bestandssysteem</para
+>Ondersteuning van het &CIFS; en &SMB3; bestandssysteem onder &Linux; evenals het SMBFS bestandssysteem onder BSD</para
 ></listitem>
     <listitem
 ><para
@@ -157,7 +160,7 @@
 ></listitem>
     <listitem
 ><para
->Vermogen om eigen opties voor individuele servers en shares te definiëren</para
+>Vermogen om eigen instellingen voor individuele servers en shares te definiëren</para
 ></listitem>
     <listitem
 ><para
@@ -215,35 +218,9 @@
 > voor betere bureaubladintegratie. Het kan toegevoegd worden als een widget aan het bureaublad of paneel.</para>
 
     <para
->Als het systeem enkele van de programma's mist die &smb4k; nodig heeft om op de juiste manier te werken, dan wordt dat aan de gebruiker gemeld:</para>
-    
-    <screenshot id="notification_missing_program">
-      <screeninfo
->Schermafdruk van de melding over ontbrekend programma</screeninfo>
-      <mediaobject>
-        <imageobject
-><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
-        <textobject
-><phrase
->De melding over ontbrekend programma</phrase
-></textobject>
-      </mediaobject>
-    </screenshot>
-    
-    <para
->Installeer in dat geval het gespecificeerde programma of, als het al aanwezig is, voeg zijn locatie toe aan de omgevingsvariabele <envar
->PATH</envar
-> aan het instellingenbestand van uw shell (voor de shell <ulink url="man:/bash"
-><citerefentry
-><refentrytitle
->bash</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> is dat het bestand <filename
->~/.bashrc</filename
->).</para>
+>Als &smb4k; een probleem tegenkomt bij opstarten of tijdens werking zal de gebruiker een melding krijgen. Voor de oplossing van sommige algemene problemen zie de sectie <link linkend="trouble_shooting"
+>Probleem oplossen</link
+>.</para>
   </sect1>
 
 <!-- 
@@ -291,7 +268,7 @@
 >Aangekoppelde gedeelde mappen</guilabel
 > voor een paar seconden op.</para>
     <para
->Het hoofdvenster heeft veel mogelijkheden tot instellen. U kunt alle tabs tonen/verbergen (<menuchoice
+>Het hoofdvenster heeft veel mogelijkheden tot instellen. U kunt alle tabs tonen/verbergen via (<menuchoice
 ><guimenu
 >Instellingen</guimenu
 ><guimenuitem
@@ -321,9 +298,9 @@
 >De browser voor de netwerkomgeving</title>
 
     <para
->De interactie met de netwerkomgeving gebeurt via de browser voor <guilabel
+>De browser voor de <guilabel
 >netwerkomgeving</guilabel
->. Hierin vindt u alle netwerk items &#8212; &ie; werkgroepen, servers, en shares &#8212; die &smb4k; kon vinden. Ze zijn in een netwerkstructuur weergegeven, waardoor u kunt navigeren door op de besturing naast de naam van het item of op het item zelf te klikken.</para>
+>. bevat alle netwerkitems &#8212; &ie; werkgroepen, servers, en shares &#8212; die &smb4k; kon vinden. Ze zijn in een netwerkstructuur weergegeven, waardoor u kunt navigeren door op de besturing naast de naam van het item of op het item zelf te klikken.</para>
     <para
 >In de netwerkstructuur is de top van elke werkgroep blauw gemarkeerd, als het is gedetecteerd (&eg; wanneer DNS-SD wordt gebruikt, de masterbrowser van een &Windows;-domein niet wordt herkend). Aangekoppelde shares zijn met een bijbehorende pictogram en cursief lettertype gemarkeerd.</para>
 
@@ -368,11 +345,17 @@
 >Avahi</ulink
 > en niet een actueel &Windows;-domein. Een domein of werkgroepitem openen toont de servers die er toe behoren. Als u toegang tot de shares van een van de servers wilt, moet u de gewenste server openen.</para>
       <para
->Ook is het mogelijk om voordat u de netwerkomgeving gaat scannen de servers die in slaapstand staan weer in te schakelen (Wake-On-LAN). Als deze mogelijkheid is ingeschakeld, dan zal &smb4k; een speciaal pakket sturen naar elke server die weer wakker gemaakt moet worden en daarna een ingestelde tijd wachten voordat het de werkgroepen en domeinen gaat opvragen. U kunt de Wake-On-LAN inschakelen in het <link linkend="configuration_page_network_wake_on_lan_settings"
->configuratievenster</link
->. De servers die uit de slaapstand moet komen kunt u opgeven in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
+>Ook is het mogelijk om voordat u de netwerkomgeving gaat scannen de servers die in slaapstand staan weer in te schakelen (Wake-On-LAN). Als deze mogelijkheid is ingeschakeld, dan zal &smb4k; een speciaal pakket sturen naar elke server die weer wakker gemaakt moet worden en daarna een ingestelde tijd wachten voordat het de werkgroepen en domeinen gaat opvragen. U kunt de Wake-On-LAN inschakelen in het <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>configuratiedialoog</link
+>. De servers die uit de slaapstand moet komen kunt u opgeven in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
 >.</para>
+      <note>
+        <para
+>Als u DNS Service Discovery gebruikt en de Zeroconf-daemon (Avahi) is niet actief, dan toont &smb4k; een foutmelding. Voor details zie de sectie <link linkend="trouble_shooting_zeroconf"
+>Probleemoplossing</link
+>.</para>
+      </note>
     </sect2>
     
 <!--
@@ -400,7 +383,7 @@
       
       <screenshot>
         <screeninfo
->Schermafdruk van de browser voor de netwerkomgeving met zichtbare zoekwerkbalk</screeninfo>
+>Schermafdruk van de browser voor de netwerkomgeving met zichtbare zoekwerkbalk.</screeninfo>
         <mediaobject>
           <imageobject
 ><imagedata fileref="network_neighborhood_browser_searching.png" format="PNG"/></imageobject>
@@ -416,7 +399,7 @@
 >Zoeken</guibutton
 >. &smb4k; begint met zoeken in de gehele netwerkomgeving. Wanneer het zoeken eindigt, worden alle shares die overeenkomen met de zoekterm geactiveerd (geselecteerd). Als u iets wilt doen met <emphasis
 >alle</emphasis
-> ontdekte shares (&eg; aankoppelen of bekijken), dan kunt u dat onmiddellijk nu doen. Anders kunt u de knoppen <guibutton
+> ontdekte shares (&eg; aankoppelen of bekijken), dan kunt u dat nu doen. Anders kunt u de knoppen <guibutton
 >Omhoog</guibutton
 > en <guibutton
 >Omlaag</guibutton
@@ -474,9 +457,7 @@
           </term>
           <listitem>
             <para
->Breekt alle lopende processen van de netwerkomgeving browser af. Standaard is deze knop onzichtbaar en zal alleen zichtbaar zijn (in plaats van de actie <guimenuitem
->Netwerk|Werkgroep|Computer scannen</guimenuitem
->) wanneer een netwerk scan bezig is.</para>
+>Breekt alle lopende processen van de netwerkomgevingsbrowser af. Standaard is deze knop onzichtbaar als een netwerk scan bezig is.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -494,7 +475,9 @@
           </term>
           <listitem>
             <para
->Doorzoek de netwerkomgeving op een gespecificeerde term. Deze actie activeren opent de zoekwerkbalk waar u de zoekterm in kunt voeren en het zoeken starten.</para>
+><link linkend="network_neighborhood_browser_searching"
+>Doorzoek de netwerkomgeving</link
+> op een gespecificeerde term. Deze actie activeren opent de zoekwerkbalk waar u de zoekterm in kunt voeren en het zoeken starten.</para>
           </listitem>
         </varlistentry
 >        
@@ -513,11 +496,29 @@
           </term>
           <listitem>
             <para
->Voeg een bladwijzer toe aan de nu geselecteerde share op afstand. Deze actie is uitgeschakeld als er geen share is geselecteerd.</para>
+><link linkend="bookmarks_adding"
+>Voeg een bladwijzer toe</link
+> aan de geselecteerde shares op afstand. Deze actie is uitgeschakeld als er geen share zijn geselecteerd.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
             <para
->Lees de sectie <link linkend="bookmarks_adding"
->Bladwijzers toevoegen</link
-> voor meer details.</para>
+>Open het dialoog voor <link linkend="custom_settings"
+>Aangepaste instellingen</link
+> waar u verschillende persoonlijke instellingen voor elke geselecteerde server en share kunt aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -557,27 +558,7 @@
             <para
 >Open het <link linkend="network_neighborhood_browser_authentication"
 >dialoog voor authenticatie</link
->. Hier kunt u voor de gekozen server of share de gebruikersnaam en wachtwoord opgeven. U kunt deze knop niet selecteren als u nog geen werkgroep of item heeft geselecteerd.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenuitem
->Aangepaste opties</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem>
-            <para
->Open het dialoog voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
->. U kunt verschillende persoonlijke instellingen voor de geselecteerde server of share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item heeft geselecteerd.</para>
+> waar u voor de gekozen server en share de gebruikersnaam en wachtwoord kunt opgeven. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -597,7 +578,7 @@
             <para
 ><link linkend="network_neighborhood_browser_previewing"
 >Voorbeeld bekijken</link
-> van de inhoud van de geselecteerde gedeelde map op afstand. Deze is alleen ingeschakeld als er een gedeelde map is geselecteerd. Van gedeelde printers kunnen geen voorbeelden worden weergegeven.</para>
+> van de inhoud van de geselecteerde shares op afstand. Deze is alleen ingeschakeld als er shares zijn geselecteerd. Van gedeelde printers kunnen geen voorbeelden worden weergegeven.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -617,7 +598,7 @@
             <para
 ><link linkend="network_neighborhood_browser_printing"
 >Druk</link
-> een bestand af op een printer op afstand. Deze actie is alleen beschikbaar als een gedeelde printer is geselecteerd.</para>
+> een bestand af op een printer op afstand. Deze actie is alleen beschikbaar als minstens één gedeelde printer is geselecteerd.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -635,9 +616,7 @@
           </term>
           <listitem>
             <para
->Koppelt de geselecteerde externe share aan. Standaard, en ook als u op iets anders dan een share van het type "Disk" of "IPC" hebt geklikt, kunt u deze actie niet selecteren. Als u een aangekoppelde share heeft geselecteerd, dan wordt deze actie vervangen door de actie <guimenuitem
->Afkoppelen</guimenuitem
->.</para>
+>Koppelt de geselecteerde externe shares aan. Deze actie is zichtbaar als alleen shares zijn geselecteerd die niet zijn aangekoppeld. Standaard, en ook als u iets anders dan een share van het type "Schijf" of "IPC" hebt geselecteerd, kunt u deze actie niet selecteren.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -655,15 +634,15 @@
           </term>
           <listitem>
             <para
->Afkoppelen van de geselecteerde share. Deze knop is standaard onzichtbaar en komt pas in de plaats van de knop <guimenuitem
+>Afkoppelen van de geselecteerde shares. Deze knop is standaard onzichtbaar en komt pas in de plaats van de actie <guimenuitem
 >Aankoppelen</guimenuitem
-> als de share aangekoppeld is.</para>
+> als minstens één aangekoppelde share is geselecteerd.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Alhoewel u met behulp van de hierboven beschreven sneltoetsen interactie met de netwerkomgeving kunt hebben, zal het in de meeste gevallen handiger zijn om de muis te gebruiken. Met behulp van de &RMB; kunt u een contextmenu openen. Hierin vindt u alle acties die in de browser voor de netwerkomgeving beschikbaar zijn. Afhankelijk van de locatie waar u klikt (op een netwerk item of op het venster), kunnen sommige daarvan niet selecteer zijn. De schermafdruk hieronder toont een geopend context-menu van een externe share.</para>
+>In de browser voor de netwerkomgeving kunt u rechts klikken om het pop-upmenu te openen voor toegang tot alle beschikbare acties. Afhankelijk van de locatie waar u klikt (op een netwerk item of op het venster), kunnen sommige daarvan niet selecteer zijn. De schermafdruk hieronder toont een geopend context-menu van een externe share.</para>
 
       <screenshot>
         <screeninfo
@@ -689,7 +668,7 @@
 >Tekstballonnen</title>
 
       <para
->Bij elk netwerk-item is een tekstballon beschikbaar met diverse informatie zoals de naam van de werkgroep en de master browser, de naam en IP adres van de server, de naam van de share, &etc;</para>
+>Bij elk netwerk-item is een tekstballon beschikbaar met diverse informatie zoals de naam van de werkgroep en de master browser, (indien beschikbaar) de naam en IP adres van de server, de naam van de share, &etc;</para>
       <para
 >De tekstballonnen kunnen worden uitgeschakeld in de <link linkend="configuration_page_user_interface_network"
 >configuratiedialoog</link
@@ -702,7 +681,7 @@
 
     <sect2 id="network_neighborhood_browser_mounting">
       <title
->Een gedeelde map (share) aankoppelen</title>
+>Shares aankoppelen</title>
 
       <para
 >Er zijn drie opties om een share op afstand aan te koppelen:</para>
@@ -714,7 +693,7 @@
 ></listitem>
         <listitem
 ><para
->Selecteer de externe share en klik op het menuitem <guimenuitem
+>Selecteer de shares op afstand en klik op het menuitem <guimenuitem
 >Aankoppelen</guimenuitem
 >. Als alternatief kunt u ook de sneltoets <keycombo action="simul"
 >&Ctrl; <keycap
@@ -724,7 +703,7 @@
 ></listitem>
         <listitem
 ><para
->Als &smb4k; niet in staat was om de server te vinden waar de share zich bevindt, dan kunt u op het menu-item <menuchoice
+>Druk op het menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -734,7 +713,7 @@
 ><guimenuitem
 >Dialoog voor aankoppelen openen</guimenuitem
 ></menuchoice
-> drukken en een dialoog voor aankoppelen zal worden geopend:</para>
+> en een dialoog voor aankoppelen zal worden geopend:</para>
         <screenshot>
           <screeninfo
 >Schermafdruk van de dialoog voor "Share aankoppelen"</screeninfo>
@@ -748,9 +727,9 @@
           </mediaobject>
         </screenshot>
         <para
->Hier kunt u de locatie van de share naar keuze invoeren als <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention"
+>Hier kunt u de locatie van de share naar keuze invoeren als een adres <ulink url="http://en.wikipedia.org/wiki/Uniform_Naming_Convention#Uniform_Naming_Convention"
 >Uniform Naming Convention (UNC)</ulink
-> adres in de vorm <programlisting
+> in de vorm <programlisting
 >//[USER@]SERVER/SHARE</programlisting
 > of <programlisting
 >\\[USER@]SERVER\SHARE</programlisting
@@ -762,7 +741,7 @@
 >Bladwijzer 
 >
 ></guibutton
->. De dialoog zal vergroot worden en u kunt het keuzevakje <guibutton
+>. De dialoog zal vergroot worden dus kunt u het keuzevakje <guibutton
 >Voeg een bladwijzer toe voor deze gedeelde map</guibutton
 > aanvinken en een label en categorie invoeren voor de bladwijzer. </para
 ></listitem>
@@ -921,37 +900,17 @@
 >iedere keer</emphasis
 > dat ze nodig zijn, opgeven.</para>
     </sect2>
-
+    
 <!-- 
-      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
   -->
 
-    <sect2 id="network_neighborhood_browser_defining_custom_options">
+    <sect2 id="network_neighborhood_browser_defining_custom_settings">
       <title
->Aangepaste opties definiëren</title>
-
+>Aangepaste instellingen definiëren</title>
+      
       <para
->Gebruik het dialoogvenster <guilabel
->Custom Opties</guilabel
-> als u wilt</para>
-      <itemizedlist>
-        <listitem
-><para
->definieert aangepast aankoppelen of bladerinstellingen voor een enkele server of share die afwijken van diegene die u heeft gemaakt in het configuratievenster,</para
-></listitem>
-        <listitem
-><para
->Een server wilt instellen die weer moet ontwaken voordat er pogingen tot netwerk-scans of aankoppelen zijn (Mogelijkheid tot Wake-On-LAN, lees meer <link linkend="configuration_page_network_wake_on_lan_settings"
->hier</link
->),</para
-></listitem>
-        <listitem
-><para
->altijd bij het opstarten of bij het laden van een bijbehorend profiel een bepaalde share aankoppelen.</para
-></listitem>
-      </itemizedlist>
-      <para
->De dialoog wordt geopend door te klikken op het menu-item <menuchoice
+>Voor individuele servers  of shares kunt u aangepaste instellingen definiëren. Om dat te doen kunt de bewerker voor aangepaste instellingen gebruiken door te klikken op het menu-item <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -959,84 +918,11 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Aangepaste opties</guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
 ></menuchoice
->. Afhankelijk van uw selectie worden de instellingen toegepast op alle shares van een server of op slechts één.</para>
-
-      <screenshot>
-        <screeninfo
->Schermafdruk van de dialoog voor aangepaste opties voor een share</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->De dialoog voor aangepaste opties</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-
-      <para
->De knop <guibutton
->Standaard</guibutton
-> is pas selecteerbaar als de instellingen die u heeft gedaan afwijken van de ingestelde waarden in het configuratievenster. Door erop te klikken, kunt u de instellingen in het dialoogvenster terugzetten naar hun standaardwaarden. De knop <guibutton
->OK</guibutton
-> is pas selecteerbaar nadat u de waarden in het dialoogvenster heeft gewijzigd. Door erop te klikken slaat u de aangepaste instellingen op en sluit u het dialoogvenster.</para>
-      <note
-><para
->Bij gebruik van BSD, zijn er in het dialoogvenster minder ingangen dan bij een ander besturingssysteem, doordat verschillende mogelijkheden niet worden ondersteund.</para
-></note>
-
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
-        <title
->Algemene instellingen voor aankoppelen (alleen &Linux;)</title>
-        
-        <para
->In dit tabblad kunt u algemene instellingen definiëren gerelateerd aan aankoppelen. Activeren van de knop <guibutton
->Deze share altijd opnieuw aankoppelen</guibutton
-> voor een geselecteerde share leidt er toe dat het opnieuw wordt aangekoppeld bij elke start van het programma. Voor informatie over alle andere instellingen zie <link linkend="configuration_page_mounting"
->hier</link
+>. Voor meer details zie de sectie <link linkend="custom_settings"
+>Aangepaste instellingen</link
 >.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
-        <title
->Geavanceerde instellingen voor aankoppelen (alleen &Linux;)</title>
-        
-        <para
->In dit tabblad kunt u geavanceerde instellingen definiëren gerelateerd aan aankoppelen. Voor informatie over alle andere instellingen zie <link linkend="configuration_page_mounting"
->hier</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
-        <title
->Instellingen voor aankoppelen (alleen BSD)</title>
-        
-        <para
->In dit tabblad kunt u instellingen definiëren gerelateerd aan aankoppelen. Voor informatie over alle andere instellingen zie <link linkend="configuration_page_mounting"
->hier</link
->.</para>
-      </sect3>
-        
-      <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
-        <title
->Browse-instellingen</title>
-
-        <para
->U kunt het minimale en maximale SMB-protocolversie (als de client-bibliotheek van Samba het ondersteunt), evenals de SMB-poort definiëren en of Kerberos wordt gebruikt voor authenticatie. Voor gedetailleerde informatie over deze instellingen, kijk <link linkend="configuration_page_network"
->hier</link
->.</para>
-      </sect3>
-
-      <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
-        <title
->Instellingen Wake-On-LAN</title>
-    
-        <para
->Om het Wake-On-LAN onderdeel te laten werken, moet u het MAC adres van de gekozen server opgeven. Op dit moment heeft &smb4k; geen methode om het MAC adres vast te stellen, u moet het daarom zelf vast stellen. Daarna kunt u instellen of &smb4k; voordat het de netwerkomgeving gaat scannen of een share gaat aankoppelen naar de gekozen host een a magisch Wake-On-LAN pakket moet versturen.</para>
-      </sect3>
     </sect2>
 
 <!-- 
@@ -1117,13 +1003,13 @@
       </screenshot>
 
       <para
->U kunt tussen de twee weergaven heen en weer schakelen door het gewenste item in het submenu <guimenuitem
+>U kunt tussen de twee weergaven heen en weer schakelen door het gewenste item in het submenu van de werkbalk <guimenuitem
 >Weergavemodi</guimenuitem
-> uit het menu <link linkend="mainwindow_overview"
-><guibutton
->Weergave van gedeelde mappen</guibutton
+>, in de menubalk <link linkend="mainwindow_overview"
+><guimenu
+>Gedeelde mappen</guimenu
 ></link
-> van het hoofdvenster of in het <link linkend="shares_view_actions_popup_menu"
+> of in het <link linkend="shares_view_actions_popup_menu"
 >pop-up-menu</link
 > van weergave van de gedeelde mappen</para>
       <para
@@ -1199,7 +1085,7 @@
           </term>
           <listitem>
             <para
->Koppelt een of meerdere geselecteerde shares af. Als u in het venster geen shares heeft geselecteerd dan is deze knop niet te selecteren.</para>
+>Koppelt de geselecteerde gedeelde mappen af. Als u in het venster geen gedeelde mappen hebt geselecteerd dan is deze knop niet te selecteren.</para>
             <para
 >Lees de sectie <link linkend="shares_view_unmounting"
 >Shares afkoppelen</link
@@ -1243,10 +1129,30 @@
           </term>
           <listitem>
             <para
->Voeg bladwijzers toe aan de nu geselecteerde aangekoppelde shares. Deze actie is uitgeschakeld als er geen share is geselecteerd.</para>
+>Voeg bladwijzers toe aan de geselecteerde gedeelde mappen. Deze actie is uitgeschakeld als er geen gedeelde map is geselecteerd.</para>
             <para
 >Lees de sectie <link linkend="bookmarks_adding"
 >Bladwijzers toevoegen</link
+> voor meer details.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Open de bewerker voor aangepaste instellingen voor de geselecteerde shares. Lees de sectie over de dialoog <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
 > voor meer details.</para>
           </listitem>
         </varlistentry>
@@ -1362,13 +1268,27 @@
 >Ontoegankelijke shares</title>
 
       <para
->&smb4k; controleert periodiek bij alle aangekoppelde shares of ze nog toegankelijk zijn. Als het een ontoegankelijke share tegenkomt, dan wordt gemarkeerd met een <link linkend="shares_view_icons"
->vergrendelde map-pictogram</link
-> en zal u niet meer in staat zijn om het te openen of te synchroniseren. Afkoppelen en een bladwijzer toevoegen is echter nog steeds mogelijk.</para>
+>&smb4k; controleert periodiek bij alle aangekoppelde shares of ze nog toegankelijk zijn. Als het een ontoegankelijke share tegenkomt, dan wordt deze gemarkeerd met een vergrendelsymbool en zult u niet meer in staat zijn om het te openen of te synchroniseren. Afkoppelen en een bladwijzer toevoegen is echter nog steeds mogelijk.</para>
       <note
 ><para
 >Het programma kan vanwege een ontoegankelijke share voor een korte tijd traag werken. Het zal zich echter daarna weer herstellen.</para
 ></note>
+    </sect2>
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
+  -->
+    
+    <sect2 id="shares_view_foreign_shares">
+      <title
+>Shares met andere gebruikers als eigenaar</title>
+      
+      <para
+>Shares die eigendom zijn van een andere gebruiker worden alleen getoond als u de <link linkend="configuration_page_mounting_basic_settings_behavior"
+>instellingen</link
+> wijzigt. In de standaard configuratie, is het u niet toegestaan om deze shares af te koppelen, maar u kunt ook <link linkend="configuration_page_mounting_basic_settings_behavior"
+>dit gedrag wijzigen</link
+>.</para>
     </sect2>
 
 <!-- 
@@ -1380,38 +1300,7 @@
 >Pictogrammen</title>
 
       <para
->Drie verschillende pictogrammen die de gebruiker te zien kan krijgen:</para>
-      <screenshot>
-        <screeninfo
->Schermafbeelding van drie verschillende pictogrammen</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_icons.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Drie verschillende pictogrammen</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <itemizedlist>
-        <listitem
-><para
->Het pictogram aan de linkerkant geeft aan dat deze share niet toegankelijk is. &smb4k; laat het openen of ermee synchroniseren niet toe. U kunt het niet afkoppelen of er een bladwijzer voor maken.</para
-></listitem>
-        <listitem
-><para
->De middelste pictogram geeft aan dat de share online is, toegankelijk, en dat u de eigenaar ervan bent. U mag alle beschikbare acties erop uitvoeren.</para
-></listitem>
-        <listitem
-><para
->Alle met een waarschuwingsteken gemarkeerde shares zoals aan de rechterkant zijn eigendom van een andere gebruiker. U krijgt ze alleen te zien als u de <link linkend="configuration_page_mounting_basic_settings_behavior"
->instellingen</link
-> wijzigt. In de standaard configuratie, is het u niet toegestaan om deze shares af te koppelen, maar u kunt ook <link linkend="configuration_page_mounting_basic_settings_behavior"
->dit gedrag wijzigen</link
->.</para
-></listitem>
-      </itemizedlist>
+>Een aangekoppelde share wordt aangegeven door een klein, overeenkomstig symbool in de lagere hoek van het mappictogram. Dit wijzigt in een slot voor shares die niet toegankelijk zijn. Voor shares behorend bij een andere gebruiker wordt dit vervangen door een waarschuwingsteken.</para>
     </sect2>
 
 <!-- 
@@ -1423,7 +1312,7 @@
 >Slepen en loslaten</title>
 
       <para
->&smb4k; ondersteunt slepen en loslaten in de sharesweergave. Om gegevens te transporteren of een koppeling te maken naar een share, sleep de bestanden en/of mappen boven het sharepictogram en laat ze daar los. Er opent een popup-menu die vraagt wat u wilt doen. Kies de toepasselijke actie (kopiëren, verplaatsen of koppelen).</para>
+>&smb4k; ondersteunt slepen en loslaten in de sharesweergave. Om gegevens te transporteren of een koppeling te maken naar een share, sleep de bestanden en/of mappen boven het sharepictogram en laat ze daar los. Er opent een popup-menu die vraagt wat te doen. Kies de toepasselijke actie (kopiëren, verplaatsen of koppelen).</para>
       <screenshot>
         <screeninfo
 >Schermafbeelding van de weergave van shares nadat een bestand is losgelaten</screeninfo>
@@ -1442,7 +1331,7 @@
 >&Ctrl;&Shift;</keycombo
 > voor een koppeling bij slepen en loslaten. De overdracht zal alleen lukken als de gedeelde map aangekoppeld is met lees- en schrijfrechten.</para>
       <para
->U kunt ook de gehele gedeelde map slepen en loslaten naar het bureaublad of naar een andere toepassing (&eg; &dolphin;). Nogmaals, er zal een pop-up-menu verschijnen die u vraagt, wat u wilt doen. Denk er aan dat, bij het kiezen van de toepasselijke bewerking, onder de meeste omstandigheden, verplaatsen en koppelen van de gedeelde map geen goed idee zou kunnen zijn.</para>
+>U kunt ook de gehele gedeelde map slepen en loslaten naar het bureaublad of naar een andere toepassing (&eg; &dolphin;). Nogmaals, er zal een pop-up-menu verschijnen die u vraagt, wat te doen. Denk er aan dat, bij het kiezen van de toepasselijke bewerking, onder de meeste omstandigheden, verplaatsen en koppelen van de gedeelde map geen goed idee zou kunnen zijn.</para>
     </sect2>
 
 <!-- 
@@ -1466,26 +1355,9 @@
 ></menuchoice
 > in te drukken. Standaard is de mogelijkheid tot het afkoppelen van shares beperkt tot diegene waarvan u de eigenaar bent. Maar, u kunt dit wijzigen door de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
-> in het configuratievenster te wijzigen. Als u de mogelijkheid tot het afkoppelen van shares waarvan anderen gebruikers de eigenaar zijn, heeft ingeschakeld, dan krijgt u een waarschuwing te zien voor het eigenlijke afkoppelen:</para>
-      <screenshot>
-        <screeninfo
->Schermafdruk van het waarschuwingsdialoog die getoond wordt bij afkoppelen van vreemde shares</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->De waarschuwingsdialog die getoond wordt bij afkoppelen van vreemde shares</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
+> in het configuratievenster te wijzigen. Als u de mogelijkheid tot het afkoppelen van shares waarvan anderen gebruikers de eigenaar zijn, heeft ingeschakeld, dan krijgt u een waarschuwing te zien voor het eigenlijke afkoppelen. Als u door gaat zal de share definitief afgekoppeld worden. Denk dus twee keer na alvorens u beslist om deze shares af te koppelen!</para>
       <para
->Als u op de knop <guibutton
->Ja</guibutton
-> klikt, dan wordt de share definitief afgekoppeld. Denk er daarom nog een keer over na voordat u beslist om om shares van andere gebruikers af te koppelen!</para>
-      <para
->In &smb4k; is er ook de mogelijkheid aanwezig voor het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
+>&smb4k; biedt de mogelijkheid om shares geforceerd af te koppelen (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
 > in het configuratievenster wijzigen. &smb4k; zal daarna een <ulink url="man:/umount"
 >langzame afkoppeling</ulink
@@ -1503,9 +1375,33 @@
 ></menuchoice
 >. Afhankelijk van uw instellingen zal deze ook externe en ontoegankelijke shares afkoppelen.</para>
       <para
->Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker een melding daarvan. Als de afkoppeling mislukt, dan krijgt u een foutmelding.</para>
+>Na de afhandeling van een succesvolle afkoppeling, krijgt de gebruiker een melding daarvan. Als de afkoppeling mislukt krijgt u een foutmelding.</para>
     </sect2>
-
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Defining Custom Settings
+  -->
+    
+    <sect2 id="shares_view_adding_custom_settings">
+      <title
+>Aangepaste instellingen definiëren</title>
+      
+      <para
+>Voor de geselecteerde shares kunnen aangepaste instellingen gedefinieerd worden. Klik op het actie <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
+></menuchoice
+> om de bewerker voor aangepaste opties te openen. Voor meer details zie <link linkend="custom_settings"
+>deze sectie</link
+>.</para>
+    </sect2>
+    
 <!-- 
       Using Smb4K : The Mounted Shares View : Synchronization 
   -->
@@ -1546,9 +1442,7 @@
       <para
 >Door op de knop <guibutton
 >Synchroniseren</guibutton
-> te klikken, start u de synchronisatie. Door met de &LMB; op de knop <guibutton
->Meldingen en taken</guibutton
-> in het systeemvak te klikken, opent u een voortgangsbalk die informatie geeft over de voortgang van de transfer.</para>
+> te klikken, start u de synchronisatie en een voortgangsbalk die informatie geeft over de voortgang van de transfer.</para>
       <screenshot>
         <screeninfo
 >Schermafdruk van de indicator voor voortgang van synchronisatie</screeninfo>
@@ -1564,15 +1458,6 @@
       </screenshot>
       <para
 >U kunt op elk moment de synchronisatie afbreken door op de stopknop te drukken rechts naast de voortgangsbalk.</para>
-            
-      <note>
-        <para
->Het totaal aantal in de voortgangsbalk getoonde bestanden komt overeen met het aantal bestanden op de share en is niet noodzakelijk het totaal aantal verstuurde bestanden.</para>
-        <para
->De voortgang wordt berekent door het aantal verstuurde bestanden te delen door het totaal aantal bestanden op de share. Bestandsgrootte is niet van belang. Dat houdt in dat een zeer groot bestand net zoveel aan de voortgang bijdraagt als een zeer kleine. Omdat de manier waarop <application
->rsync</application
-> de voortgang weergeeft, wordt de voortgangsbalk alleen na het eindigen van het versturen van het bestand bijgewerkt.</para>
-      </note>
     </sect2>
 
 <!-- 
@@ -1647,7 +1532,7 @@
 >Locatie en gebruik</title>
 
       <para
->Wanneer &smb4k; is gestart verschijnt er een statuspictogram in uw systeemvak. Zijn status is op actief gezet als werkgroepen of domeinen zijn ontdekt in uw netwerkomgeving. Ander is het gezet op inactief.</para>
+>Wanneer &smb4k; is gestart verschijnt er een statuspictogram in het systeemvak. Zijn status is op actief gezet als werkgroepen of domeinen ontdekt zijn in uw netwerkomgeving. Anders staat deze op inactief.</para>
 
       <screenshot>
         <screeninfo
@@ -1663,7 +1548,7 @@
       </screenshot>
 
       <para
->Door met de &LMB; op het statuspictogram te klikken, kunt u het hoofdvenster minimaliseren of weer openen. Als u met de &RMB; klikt dan opent een contextmenu met verschillende items waarmee u de aangekoppelde shares kunt beheren, uw bladwijzers kunt aankoppelen, het profiel dat u wilt gebruiken selecteren en &smb4k; kunt configureren zonder openen van het hoofdvenster.</para>
+>U kunt het hoofdvenster minimaliseren of weer openen door links te klikken op het statuspictogram. Als u met de &RMB; klikt dan opent een contextmenu met verschillende items waarmee u de aangekoppelde shares kunt beheren, uw bladwijzers kunt aankoppelen, het profiel dat u wilt gebruiken selecteren en &smb4k; kunt configureren zonder openen van het hoofdvenster.</para>
     </sect2>
 
 <!-- 
@@ -1741,6 +1626,20 @@
         </varlistentry>
         <varlistentry>
           <term>
+            <menuchoice>
+              <guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Open de bewerker voor aangepaste instellingen voor de geselecteerde share. Voor verdere informatie lees de sectie over de bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
             <menuchoice
 ><guimenuitem
 >Synchroniseren</guimenuitem
@@ -1748,11 +1647,11 @@
           </term>
           <listitem>
             <para
->Synchroniseert de aangekoppelde share met een lokale kopie of omgekeerd. Meer informatie daarover kunt u <link linkend="shares_view_actions_popup_menu"
->deze pagina</link
-> en <link linkend="shares_view_synchronization"
->ook deze pagina</link
-> lezen.</para>
+>Synchroniseer de aangekoppelde share met een lokale kopie of omgekeerd. Voor meer informatie lees de secties over <link linkend="shares_view_actions_popup_menu"
+>de acties in de de weergave van shares</link
+> en de <link linkend="shares_view_synchronization"
+>synchronisatie</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1812,9 +1711,9 @@
       <para
 >In het menu <guimenuitem
 >Profielen</guimenuitem
->, worden alle profielen die u heeft <link linkend="profiles"
->gedefinieerd</link
-> opgenoemd:</para>
+> worden alle <link linkend="profiles"
+>profielen</link
+> weergegeven:</para>
 
       <screenshot>
         <screeninfo
@@ -1832,8 +1731,8 @@
       <para
 >U kunt een profiel activeren door er op te klikken. Profielen kunnen <link linkend="profiles"
 >beheerd</link
-> worden via de <link linkend="configuration_page_profiles"
->configuratiedialoog</link
+> worden in de <link linkend="configuration_page_profiles"
+>instellingendialoog</link
 >.</para>
       <para
 >Dit zijn de andere menu-items:</para>
@@ -1850,7 +1749,7 @@
             <para
 >Open de <link linkend="network_neighborhood_browser_mounting"
 >dialoog</link
-> voor "handmatig" aankoppelen.</para>
+> voor "handmatig" aankoppelen van shares met een URL, IP-adres en domein of werkgroep.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1862,8 +1761,8 @@
           </term>
           <listitem>
             <para
->Open de instellingendialoog. Zie <link linkend="configuration"
->de sectie configuratie</link
+>Open de configuratiedialoog. Zie de sectie over <link linkend="configuration"
+>de configuratie</link
 > voor een volledige lijst met beschikbare instellingen.</para>
           </listitem>
         </varlistentry>
@@ -1966,9 +1865,9 @@
 >Omhoog</guibutton
 > klikken.</para>
     <para
->Bij hosts en shares zijn er rechts van de naam van het netwerk nog enkele actieknoppen. Voor hosts, is er een knop waarmee u het dialoog <link linkend="network_neighborhood_browser_defining_custom_options"
->Custom Opties</link
-> kunt openen. Voor shares zijn er extra knoppen voor respectievelijk <link linkend="network_neighborhood_browser_previewing"
+>Bij hosts en shares zijn er rechts van de naam van de netwerkitems nog enkele actieknoppen. Voor hosts, is er een knop waarmee u het dialoog <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
+> kunt openen. Voor shares zijn er extra knoppen voor <link linkend="network_neighborhood_browser_previewing"
 >de inhoud van de geselecteerde share bekijken</link
 > en voor <link linkend="bookmarks_adding"
 >de share toevoegen aan de bladwijzers</link
@@ -1983,7 +1882,7 @@
 > en <guibutton
 >Aankoppeldialoog</guibutton
 >. Hiermee kunt u herladen, een lopende actie afbreken of het <link linkend="network_neighborhood_browser_mounting"
->dialoog voor "handmatig" aankoppelen</link
+>dialoog voor aankoppelen</link
 > openen.</para>
   </sect2>
 
@@ -2014,7 +1913,7 @@
     </screenshot>
 
     <para
->Rechts van de naam van de share en zijn host ziet u drie actieknoppen. De eerste is om <link linkend="bookmarks_adding"
+>Rechts van elk item zijn drie actieknoppen. De eerste is om <link linkend="bookmarks_adding"
 >een bladwijzer aan te maken</link
 >, de tweede is voor <link linkend="shares_view_synchronization"
 >synchronisatie</link
@@ -2022,7 +1921,7 @@
     <para
 >De werkbalk bevat de actie <guibutton
 >Alles afkoppelen</guibutton
-> die all shares in één keer laat afkoppelen.</para>
+> die alle shares in één keer laat afkoppelen.</para>
   </sect2>
 
 <!-- 
@@ -2036,7 +1935,7 @@
     <para
 >Op de pagina <guilabel
 >Bladwijzers</guilabel
-> worden de groepen bladwijzers en de bladwijzers gedefinieerd voor het huidige actieve profiel weergegeven in een lijst:</para>
+> staan de bladwijzers.</para>
     
     <screenshot>
       <screeninfo
@@ -2052,13 +1951,11 @@
     </screenshot>
 
     <para
->Shares die een bladwijzer hebben kunt u aankoppelen door met de &LMB; op hun bladwijzer te klikken. Groepen bladwijzers kunt u op dezelfde manier openen.</para>
-    <para
->Voor het bewerken of verwijderen van bladwijzers, drukt u eerst op de knop <guibutton
+>Shares in bladwijzers kunnen aangekoppeld worden door rechts te klikken op de bijbehorende bladwijzer. Voor het bewerken of verwijderen van bladwijzers, drukt u eerst op de knop <guibutton
 >Bewerken</guibutton
 > in de werkbalk om de <link linkend="bookmarks_editor"
 >Bladwijzers bewerker</link
-> te openen. Om terug te gaan naar een hoger niveau, gebruikt u de knop <guibutton
+> te openen. Om terug te gaan vanuit een categoriemap naar een hoger niveau, gebruikt u de knop <guibutton
 >Vorige</guibutton
 >.</para>
   </sect2>
@@ -2092,12 +1989,10 @@
     </screenshot>
   
     <para
->Door erop te klikken maakt u een profiel actief.</para>
-    <para
->Profielen kunnen <link linkend="profiles"
+>U kunt een bepaald profiel activeren door er op te klikken. Alle profielen kunnen <link linkend="profiles"
 >beheerd</link
 > worden via de <link linkend="configuration_page_profiles"
->configuratiedialoog</link
+>instellingendialoog</link
 >.</para>
   </sect2>
   
@@ -2129,10 +2024,10 @@
       </mediaobject>
     </screenshot>
     
-    <note>
+    <caution>
       <para
 >U zou geen twee configuratiedialogen op hetzelfde moment (via de hoofdtoepassing en via de &plasmoid;) moeten openen, omdat ze op elkaar kunnen inwerken.</para>
-    </note>
+    </caution>
   </sect2>
   
 </sect1>
@@ -2160,7 +2055,7 @@
 >gedeelde mappen weergave</link
 > en de <link linkend="plasmoid"
 >&plasmoid;</link
-> bladwijzers voor uw favoriete shares aanmaken. In de widgets Vastzetten van het hoofdvenster doet u dit door een of meerdere shares te selecteren en daarna op de actie <menuchoice
+> bladwijzers voor uw favoriete shares aanmaken. In de widgets Vastzetten van het hoofdvenster doet u dit door een of meer shares te selecteren en daarna op de actie <menuchoice
 ><guimenuitem
 >Bladwijzer toevoegen</guimenuitem
 ></menuchoice
@@ -2180,9 +2075,9 @@
       </screenshot>
 
       <para
->Definiëren van een categorie kan u helpen bij het georganiseerd houden van bladwijzers. In het menu-item voor bladwijzers, vindt u alle bladwijzers die bij een groep horen in een submenu terug met de groepsnaam als hoofditem (zie <link linkend="bookmarks_menu"
->hieronder</link
->).</para>
+>Definiëren van een categorie kan u helpen bij het georganiseerd houden van bladwijzers. In het <link linkend="bookmarks_menu"
+>menu voor bladwijzers</link
+>, vindt u alle bladwijzers, die bij dezelfde categorie horen, in een bijbehorend submenu.</para>
       <para
 >De label kan elke tekst zijn die de share beschrijft. Als u een label opgeeft, dan zal in het bladwijzer-menu, in plaats van de locatie, deze tekst standaard zichtbaar zijn . Als u dit gedrag wilt wijzigen dan kunt u dat doen in het <link linkend="configuration_page_user_interface_main_window"
 >configuratiedialoog</link
@@ -2230,7 +2125,7 @@
             <para
 >Opent de <link linkend="bookmarks_editor"
 >bladwijzerbewerker</link
->. Deze knop is uitgeschakeld als er geen bladwijzers zijn.</para>
+>. Dit item is uitgeschakeld als er geen bladwijzers zijn.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2248,35 +2143,35 @@
           </term>
           <listitem>
             <para
->Voegt bladwijzers toe aan de geselecteerd shares. Minstens één share moet er geselecteerd zijn om deze actie in te schakelen.</para>
+>Voegt bladwijzers toe aan de geselecteerd shares. Minstens één share moet er geselecteerd zijn om dit item in te schakelen.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Als u nog geen categorieën hebt aangemaakt, is er nog een derde item beschikbaar:</para>
+>Als er bladwijzers aanwezig zijn die niet toegekend zijn aan een categorie, en dus direct op het hoogste niveau van het menu worden getoond, dan is er een derde item aanwezig:</para>
 
       <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guimenuitem
->Alle bladwijzers aankoppelen</guimenuitem
+>Bladwijzers aankoppelen</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
             <para
->Koppelt alle top-level bladwijzers tegelijk aan. Deze keuze is uitgeschakeld als alle shares met een bladwijzer al zijn aangekoppeld.</para>
+>Koppelt alle top-level bladwijzers tegelijk aan. Dit item is uitgeschakeld als alle shares met een bladwijzer al zijn aangekoppeld.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Alle overige items zijn of submenu's van categorieën of bladwijzers die niet bij een categorie horen. Alle items staan op alfabetische volgorde waarbij de bladwijzers zowel met zijn locatie-adres als met een beschrijvende label zichtbaar kan zijn. Door op een bladwijzer te klikken, koppelt u de betreffende share aan. Als een share met een bladwijzer al op het systeem is aangekoppeld, dan is het bladwijzer-item tijdelijk uitgeschakeld.</para>
+>Alle volgende items zijn of submenu's van categorieën en bladwijzers die niet bij een categorie horen. De items staan op alfabetische volgorde waarbij de bladwijzers ofwel zichtbaar zijn met hun locatie of met een beschrijvend label. Als u op een bladwijzer klikt, zal de bijbehorende share aangekoppeld worden. Als een share met een bladwijzer al is aangekoppeld, dan is het item uitgeschakeld.</para>
       <para
 >De categorie submenu's bevat de toegekende bladwijzers en in elk geval een menu-item <guimenuitem
->Alle bladwijzers aankoppelen</guimenuitem
-> ook aanwezig. Dit laatste item kunt u gebruiken om alle bladwijzers in die categorie tegelijk aan te koppelen.</para>
+>Bladwijzers aankoppelen</guimenuitem
+> ook aanwezig. Het kan gebruikt worden om alle bladwijzers in die categorie tegelijk aan te koppelen.</para>
       <para
 >In het systeemvakwidget is er een soortgelijk <link linkend="systemtray_menus"
 >submenu</link
@@ -2286,20 +2181,12 @@
 >Bladwijzer toevoegen</guilabel
 >.</para>
       <para
->Het &plasmoid; biedt een <guilabel
->Bladwijzer</guilabel
+>De &plasmoid; levert een <guilabel
+>Bladwijzers</guilabel
 > <link linkend="plasmoid_bookmarks"
 >tabblad</link
-> waar alle bladwijzers op dezelfde manier zijn georganiseerd als in het bladwijzer-menu. In het venster vindt u alle bladwijzercategorieën en bladwijzers. U koppelt de shares met een bladwijzer aan door op het betreffende item te klikken. In de werkbalk zijn twee knoppen aanwezig: <guimenuitem
->Terug</guimenuitem
-> en <guimenuitem
->Bewerken</guimenuitem
->. Door te klikken op <guimenuitem
->Terug</guimenuitem
-> gaat u terug naar het hoogste niveau als u een categoriemap hebt geopend. De knop <guimenuitem
->Bewerken</guimenuitem
-> opent de <link linkend="bookmarks_editor"
->bladwijzerbewerker</link
+> waar alle bladwijzers op een vergelijkbare manier als in het bladwijzermenu zijn gearrangeerd. Voor verdere details lees <link linkend="plasmoid_bookmarks"
+>Deze sectie</link
 >.</para>
     </sect2>
     
@@ -2405,6 +2292,166 @@
 > te klikken.</para>
     </sect2>
   </sect1>
+  
+<!--
+      Using Smb4K : Custom Settings
+  -->
+  
+  <sect1 id="custom_settings">
+    <title
+>Aangepaste instellingen</title>
+
+    <sect2 id="custom_settings_usage">
+      <title
+>Aangepaste instellingen gebruiken</title>
+
+      <para
+>Naast de globale instellingen die gedefinieerd kunnen worden in de <link linkend="configuration"
+>configuratiedialoog</link
+>, biedt &smb4k; de mogelijkheid om individuele instellingen per server of share te configureren. U kunt gebruik maken van deze aangepaste instellingen als u</para>
+      <itemizedlist>
+        <listitem
+><para
+>individuele aankoppelen of bladerinstellingen wilt definiëren voor een enkele server of share die afwijkt van waarden die u hebt gedefinieerd in het configuratievenster,</para
+></listitem>
+        <listitem
+><para
+>een server wilt definiëren die weer moet ontwaken voordat er pogingen tot netwerk-scans of aankoppelen zijn (functie Wake-On-LAN, lees meer <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>hier</link
+>),</para
+></listitem>
+        <listitem
+><para
+>altijd bij het opstarten of bij het laden van een bijbehorend profiel een bepaalde share aankoppelen.</para
+></listitem>
+      </itemizedlist>
+    </sect2>
+
+    <sect2 id="custom_settings_adding">
+      <title
+>Aangepaste instellingen toevoegen</title>
+
+      <para
+>In het geval dat u aangepaste instellingen voor een share wilt definiëren, in zowel, de <link linkend="network_neighborhood_browser_actions_popup_menu"
+>netwerkomgevingsbrowser</link
+> als de <link linkend="shares_view_actions_popup_menu"
+>shares weergave</link
+>, dan kunt u de bewerker voor de aangepaste instellingen openen door te klikken op menu-item <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Aangepaste instellingen</guimenuitem
+></menuchoice
+>.</para>
+    
+      <screenshot>
+        <screeninfo
+>Schermafdruk van de bewerker voor aangepaste instellingen voor een share</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="custom_settings_editor.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>De bewerker voor aangepaste instellingen</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+
+      <para
+>Individuele instellingen kunnen gemaakt worden in de volgende secties / tabbladen:</para>
+      
+      <variablelist>
+        <varlistentry>
+          <term
+><guilabel
+>Algemene instellingen voor aankoppelen</guilabel
+> (alleen &Linux;) </term>
+          <listitem>
+            <para
+>U kunt hier algemene instellingen definiëren gerelateerd aan aankoppelen. Activeer de knop <guibutton
+>Deze share altijd opnieuw aankoppelen</guibutton
+> als u de geselecteerde share opnieuw wilt aankoppelen bij elke start van &smb4k;. Voor gedetailleerde informatie over deze instellingen zie <link linkend="configuration_page_mounting_common_mount_settings"
+>deze sectie</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Geavanceerde instellingen voor aankoppelen</guilabel
+> (alleen &Linux;) </term>
+          <listitem>
+            <para
+>U kunt hier geavanceerde instellingen definiëren gerelateerd aan aankoppelen. Voor gedetailleerde informatie over deze instellingen zie <link linkend="configuration_page_mounting_advanced_mount_settings"
+>deze sectie</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Instellingen voor aankoppelen</guilabel
+> (alleen BSD) </term>
+          <listitem>
+            <para
+>U kunt hier instellingen definiëren gerelateerd aan aankoppelen. Voor gedetailleerde informatie over deze instellingen zie <link linkend="configuration_page_mounting_mount_settings"
+>deze sectie</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Browse-instellingen</guilabel>
+          </term>
+          <listitem>
+            <para
+>U kunt het minimale en maximale SMB-protocolversie, evenals de te gebruiken SMB-poort. Bovendien kunt u beslissen of Kerberos gebruikt zou moeten worden voor authenticatie. Voor gedetailleerde informatie over deze instellingen, zie <link linkend="configuration_page_network"
+>deze sectie</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Instellingen Wake-On-LAN</guilabel>
+          </term>
+          <listitem>
+            <para
+>Om het Wake-On-LAN onderdeel te laten werken, moet u het MAC adres van de gekozen server opgeven. Op dit moment heeft &smb4k; geen methode om het MAC adres vast te stellen, u moet het daarom zelf vast stellen. Daarna kunt u instellen of de server moet ontwaken voordat het de netwerkomgeving gaat scannen of een share gaat aankoppelen, een magisch Wake-On-LAN pakket moet versturen.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      
+      <para
+>De knop <guibutton
+>Standaarden</guibutton
+> is pas te selecteren als de instellingen die u heeft gedaan afwijken van de ingestelde waarden in het configuratievenster. Door erop te klikken, kunt u de instellingen in het dialoogvenster terugzetten naar hun standaardwaarden. De knop <guibutton
+>OK</guibutton
+> is pas selecteerbaar nadat u de waarden in het dialoogvenster heeft gewijzigd. Door erop te klikken slaat u de aangepaste instellingen op en sluit u het dialoogvenster.</para>
+      <para
+>Merk op dat bij gebruik van BSD er in het dialoogvenster minder ingangen zijn dan als u &Linux; gebruikt, omdat verschillende opties niet worden ondersteund.</para>
+    </sect2>
+
+    <sect2 id="custom_settings_managing_and_editing">
+      <title
+>Aangepaste instellingen bewerken</title>
+
+      <para
+>U kunt de instellingen van individuele netwerkitems bewerken door de bewerker aangepaste instellingen te openen. Een compleet overzicht van alle aangepaste instellingen levert de <link linkend="configuration_page_custom_settings"
+><guilabel
+>Aangepaste instellingen</guilabel
+> configuratiepagina</link
+>, waar u ook de gewenste instellingen kunt bewerken of verwijderen.</para>
+    </sect2>
+  </sect1>
 
 <!-- 
       Using Smb4K : Profiles 
@@ -2415,9 +2462,9 @@
 >Profielen</title>
     
     <para
->In &smb4k; biedt de optie om verschillende profielen te gebruiken. Het doel ervan is om verschillende netwerkomgevingen beter te kunnen hanteren, &eg; als u uw laptop zowel thuis als op kantoor gebruikt.</para>
+>In &smb4k; biedt de optie om verschillende profielen te gebruiken. Het doel ervan is om verschillende netwerkomgevingen te kunnen hanteren, &eg; als u uw laptop zowel thuis als op kantoor gebruikt.</para>
     <para
->Standaard is het gebruik van verschillende profielen uitgeschakeld en gebruikt u een standaard profiel: een profiel voor alles. De meeste gebruikers hoeven dit nooit te veranderen, omdat ze helemaal tevreden zijn met het standaard gedrag. Maar voor sommige gebruikers kan dit onderdeel erg handig zijn.</para>
+>Standaard is het gebruik van profielen uitgeschakeld. De meeste gebruikers hoeven dit nooit te veranderen, omdat ze helemaal tevreden zijn met het standaard gedrag. Maar voor sommige gebruikers kan dit onderdeel handig zijn.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2437,9 +2484,9 @@
 >Thuis</guilabel
 > en <guilabel
 >Werk</guilabel
->, maar u kunt net zo veel profielen aanmaken als u wilt. U voegt een nieuw profiel aan door zijn naam in het invoervak in het <guibutton
+>, maar u kunt net zo veel profielen aanmaken als u wilt. U voegt een nieuw profiel toe door zijn naam in de invoerregel in het configuratievenster <guibutton
 >Profielen</guibutton
-> configuratiedialoog in te voeren en daarna op de knoppen <guibutton
+> in te voeren en daarna op de knop <guibutton
 >Toevoegen</guibutton
 > te klikken.</para>
       <screenshot>
@@ -2456,7 +2503,7 @@
         </mediaobject>
       </screenshot>
       <para
->Als u een profiel een andere naam wilt geven, dan klikt u erop om vervolgens de naam in het invoervak te bewerken. Klik tenslotte op de knop <guibutton
+>Als u een profiel een andere naam wilt geven, dan klikt u erop om vervolgens de naam in het invoerregel te bewerken. Klik tenslotte op de knop <guibutton
 >Toevoegen</guibutton
 > om de naam in de lijst bij te werken. Alle opgeslagen instellingen worden naadloos overgenomen (zonder gebruik van de assistent voor migratie). U kunt een profiel uit de lijst verwijderen door het in de lijst te selecteren en daarna op de knop <guibutton
 >Verwijderen</guibutton
@@ -2466,21 +2513,7 @@
 >Omlaag</guibutton
 >.</para>
       <para
->Indien u de assistent voor migratie hebt ingeschakeld, wordt deze altijd gestart wanneer u een profiel verwijdert of wanneer u het gebruik van profielen in- of uitschakelt. Het biedt alle relevante instellingen te migreren</para>
-      <itemizedlist>
-        <listitem
-><para
->van een profiel dat zal worden verwijderd naar een andere</para
-></listitem>
-        <listitem
-><para
->van het standaard profiel naar een specifiek ander profiel</para
-></listitem>
-        <listitem
-><para
->van alle profielen terug naar het standaard profiel</para
-></listitem>
-      </itemizedlist>
+>Indien u de assistent voor migratie hebt ingeschakeld, wordt deze altijd gestart wanneer u een profiel verwijdert of wanneer u het gebruik van profielen in- of uitschakelt. Het zorgt voor migratie van alle relevante instellingen.</para>
       <para
 >De volgende schermafdrukken illustreert de assistent voor migratie van profielen nadat u het gebruik van profielen hebt ingeschakeld:</para>
       <screenshot>
@@ -2503,9 +2536,9 @@
 >Oud profiel</guilabel
 >. Onder <guilabel
 >Nieuw Profiel</guilabel
-> kunt u in een afrolmenu gebruiken om het profiel te kiezen waarnaar de instellingen gemigreerd moeten worden. Het eerste profiel in de lijst is voorgeselecteerd. Het klikken op de knop <guibutton
+> kunt u het profiel uit een afrolmenu gebruiken waarnaar de instellingen gemigreerd moeten worden. Het eerste profiel in de lijst is voorgeselecteerd. Het klikken op de knop <guibutton
 >OK</guibutton
-> migreert de instellingen, het klikken op de knop <guibutton
+> migreert de instellingen. Klikken op de knop <guibutton
 >Annuleren</guibutton
 > annuleert de actie.</para>
       <note
@@ -2540,7 +2573,7 @@
 ></listitem>
         <listitem
 ><para
->De bladwijzers en aangepaste opties van het nieuwe profiel zijn geladen.</para
+>De bladwijzers en aangepaste instellingen van het nieuwe profiel zijn geladen.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -2618,18 +2651,106 @@
   </sect1>
 
 <!-- 
-      Using Smb4K : Special Remarks 
+      Using Smb4K : Trouble Shooting
 -->
 
-  <sect1 id="special_remarks">
+  <sect1 id="trouble_shooting">
     <title
->Speciale opmerkingen</title>
+>Problemen oplossen</title>
+
+<!--
+    Using Smb4K : Trouble Shooting : Missing Programs
+    -->
+
+    <sect2 id="trouble_shooting_missing_programs">
+      <title
+>Ontbrekende programma's</title>
+
+      <para
+>Als het systeem enkele van de programma's mist die &smb4k; nodig heeft om op de juiste manier te werken, dan wordt dat aan de gebruiker gemeld:</para>
+
+      <screenshot id="notification_missing_program">
+        <screeninfo
+>Schermafdruk van de melding over ontbrekend programma</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>De melding over ontbrekend programma</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>Installeer in dat geval het gespecificeerde programma of, als het al aanwezig is, voeg zijn locatie toe aan de omgevingsvariabele <envar
+>PATH</envar
+> aan het instellingenbestand van uw shell (voor de shell <ulink url="man:/bash"
+><citerefentry
+><refentrytitle
+>bash</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> is dat het bestand <filename
+>~/.bashrc</filename
+>).</para>
+    </sect2>
+
+<!--
+    Using Smb4K : Trouble Shooting : Zeroconf Daemon
+    -->
+
+    <sect2 id="trouble_shooting_zeroconf">
+      <title
+>Zeroconf-fout</title>
+
+      <para
+>&smb4k; gebruikt de Zeroconf-service (<application
+><ulink url="https://avahi.org"
+>Avahi</ulink
+></application
+>) om servers en shares in de netwerkomgeving op te zoeken met DNS Service Discovery (DNS-SD). Om dit te laten werken moet de Avahi-daemon ingeschakeld en actief zijn op uw systeem. Als dat niet het geval is zal &smb4k; een foutmelding tonen:</para>
+
+      <screenshot id="notification_zeroconf_error">
+        <screeninfo
+>Schermafdruk van de Zeroconf-foutmelding</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_zeroconf_error.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>De Zeroconf-foutmelding</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>In de meeste gevallen is de Avahi-daemon niet actief wanneer er een fout is gerapporteerd. Onder de &Linux; distributies die <application
+>systemd</application
+> gebruiken kunt u het starten met het volgende of gelijksoortige commando vanaf de terminal:</para>
+      <para
+><screen
+><userinput
+><prompt
+>$</prompt
+> <command
+>sudo</command
+> <command
+>systemctl</command
+> enable --now avahi-daemon</userinput
+></screen
+></para>
+      <para
+>Met alle andere &Linux; distributies en onder BSD bekijk de specifieke documentatie over hoe de Avahi-daemon te starten.</para>
+    </sect2>
   
 <!--
-    Using Smb4K : Special Remarks : Denied Privilege Escalation
+    Using Smb4K : Trouble Shooting : Denied Privilege Escalation
 -->
     
-    <sect2 id="special_remarks_polkit-1">
+    <sect2 id="trouble_shooting_polkit-1">
       <title
 >Geweigerde opschaling van rechten</title>
       
@@ -2668,10 +2789,10 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Using Smb4K : Special Remarks : Mounting Problems under BSD
+      Using Smb4K : Trouble Shooting : Mounting Problems under BSD
   -->
     
-    <sect2 id="special_remarks_mounting_problems_under_bsd">
+    <sect2 id="trouble_shooting_mounting_problems_under_bsd">
       <title
 >Aankoppelproblemen onder BSD</title>
       
@@ -2702,10 +2823,10 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Using Smb4K : Special Remarks : Other Desktops Than Plasma
+      Using Smb4K : Trouble Shooting : Other Desktops Than Plasma
 -->
 
-    <sect2 id="special_remarks_other_desktop_environments">
+    <sect2 id="trouble_shooting_other_desktop_environments">
       <title
 >Andere Bureaubladomgevingen dan &plasma;</title>
 
@@ -2876,6 +2997,20 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Pictogramgrootte</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Stel de pictogramgrootte in in het bladerprogramma van de netwerkomgeving. De grootte kan aangepast worden in stappen van 16 pixels van 16 x 16 pixels tot 128 x 128 pixels.</para>
+            <para
+>Standaard: kleine pictogramgrootte</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Domeinen en hosts automatisch uitvouwen</guibutton
 ></menuchoice>
           </term>
@@ -3002,6 +3137,34 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Pictogramgrootte voor de pictogramweergave</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Stel de pictogramgrootte in de pictogramweergave van de sharesweergave. De grootte kan aangepast worden in stappen van 16 pixels van 16 x 16 pixels tot 128 x 128 pixels.</para>
+            <para
+>Standaard: pictogramgrootte van bureaublad</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
+>Pictogramgrootte voor de weergave met lijst</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Stel de pictogramgrootte in in de weergave van lijst van de weergave van shares. De grootte kan aangepast worden in stappen van 16 pixels van 16 x 16 pixels tot 128 x 128 pixels.</para>
+            <para
+>Standaard: kleine pictogramgrootte</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Tekstballonnen voor aangekoppelde gedeelde mappen tonen</guibutton
 ></menuchoice>
           </term>
@@ -3027,13 +3190,9 @@ ntlm auth = yes
     <para
 >De hier aanwezige opties beïnvloeden de netwerkcommunicatie. U kunt het blader- en weergavegedrag wijzigen in het tabblad <guibutton
 >Basisinstellingen</guibutton
->, wijzig de opties doorgegeven naar de onderliggende <application
->libsmbclient</application
-> in het tabblad <guibutton
->Samba-instellingen</guibutton
-> en schakelt de functies Wake-On-LAN in het tabblad <guibutton
->Wake-On-LAN-instellingen</guibutton
-> in.</para>
+> en de meer geavanceerde opties voor Samba en de mogelijkheden voor Wake-On-LAN in het tabblad <guibutton
+>Geavanceerde instellingen</guibutton
+>.</para>
     
     <screenshot>
       <screeninfo
@@ -3070,7 +3229,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Web Services Dynamic Discovery (WS-Discovery) wordt gebruikt om in het locale netwerk te bladeren en werkgroepen, domeinen en hosts te ontdekken. Dit is nuttig, als uw netwerkomgeving gedomineerd wordt door servers met moderne &Windows; versies. Als u deze optie gebruikt, zou er geen noodzaak meer zijn om de clientbibliotheek van &Samba; te dwingen de versie van het SMB-protocol versie 1.0 voor zoeken naar werkgroepen en domeinen te gebruiken.</para>
+>Het protocol van de Web Services Dynamic Discovery (WS-Discovery) wordt gebruikt om in het locale netwerk te bladeren en werkgroepen, domeinen en hosts te ontdekken. Dit is nuttig, als uw netwerkomgeving gedomineerd wordt door servers met moderne &Windows; versies. Als u deze optie gebruikt, zou er geen noodzaak meer zijn om de clientbibliotheek van &Samba; te dwingen de versie van het SMB-protocol versie 1.0 voor zoeken naar werkgroepen en domeinen te gebruiken.</para>
               <note
 ><para
 >Deze instelling is optioneel en verschijnt alleen als u &smb4k; compileert met WS-Discovery ondersteuning.</para
@@ -3088,7 +3247,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->DNS Service Discovery (DNS-SD) wordt gebruikt om in het lokale netwerk te bladeren en servers te ontdekken die gedeelde SMB-hulpmiddelen leveren. De ontdekte domeinen komen overeen met de lokale DNS-domeinen (&eg; genaamd LOCAL) en meest waarschijnlijk niet diegenen gedefinieerd in de netwerkomgeving. Dit beïnvloedt echter niet het bladeren. Als u deze optie gebruikt is er geen noodzaak om de client-bibliotheek van &Samba; te dwingen het SMB protocol versie 1.0, bij zoeken naar werkgroepen en domeinen, te gebruiken.</para>
+>Het interface van de DNS Service Discovery (DNS-SD) wordt gebruikt om in het lokale netwerk te bladeren en servers te ontdekken die gedeelde SMB-hulpmiddelen leveren. De ontdekte domeinen komen overeen met de lokale DNS-domeinen (&eg; genaamd LOCAL) en meest waarschijnlijk niet diegenen gedefinieerd in de netwerkomgeving. Dit beïnvloedt echter niet het bladeren. Als u deze optie gebruikt is er geen noodzaak om de client-bibliotheek van &Samba; te dwingen het SMB protocol versie 1.0, bij zoeken naar werkgroepen en domeinen, te gebruiken.</para>
               <para
 >Standaard: geselecteerd</para>
             </listitem>
@@ -3104,8 +3263,6 @@ ntlm auth = yes
               <para
 >Deze optie als laatste redmiddel selecteren, omdat het SMB-protocol versie 1.0 onveilig is en uitgeschakeld is in nieuwere versies van &Samba; en &Windows;. Als u echter problemen heeft bij het ontdekken van werkgroepen en domeinen in uw netwerkomgeving, dan zou u kunnen overwegen naar deze instelling om te schakelen. Als u DNS Service Discovery (DNS-SD) of Web Services Dynamic Discovery (WS-Discovery) gebruikt en die werken voor u, dan hebt u versie 1.0 niet nodig.</para>
               <para
->Deze optie is alleen beschikbaar als de clientbibliotheek van Samba het instellen van de protocolversie ondersteunt.</para>
-              <para
 >Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
@@ -3120,9 +3277,9 @@ ntlm auth = yes
               <para
 >Stel de minimale en maximale SMB-protocolversie in die gebruikt wordt door de client-bibliotheek van &Samba; om de netwerkomgeving af te zoeken. Dit overschrijft de instellingen in het bestand smb.conf. Normaal heeft u het niet nodig om deze optie te gebruiken, omdat de juiste protocolversies onderhandeld zouden moeten worden tussen de client en de server tijdens het maken van een verbinding. Merk op dat deze instelling niet toepasselijk is om het opzoeken van werkgroepen en domeinen te laten werken bij het behouden van een ongestoorde verbinding naar servers. Gebruik DNS Service Discovery (DNS-SD) of Web Services Dynamic Discovery (WS-Discovery) in plaats daarvan voor opzoeken van domein en werkgroep.</para>
               <para
->De onderstaande instellingen voor de minimale en maximale protocolversie zijn ingeschakeld wanneer dit keuzevakje is geactiveerd. De maximale SMB protocolversie moet gelijk of groter zijn dan de minimale SMB protocolversie.</para>
+>De onderstaande instellingen voor de minimale en maximale protocolversie zijn ingeschakeld wanneer dit keuzevakje is geactiveerd:</para>
               <para
->Deze opties zijn alleen beschikbaar als de clientbibliotheek van Samba het instellen van de protocolversie ondersteunt.</para>
+>De maximale SMB protocolversie moet gelijk of groter zijn dan de minimale SMB protocolversie.</para>
               <para
 >Standaard: niet geselecteerd</para>
               <variablelist>
@@ -3292,59 +3449,23 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Samba Settings (libsmbclient)
+      Configuring Smb4K : Network : Advanced Settings
 -->
 
-    <sect2 id="configuration_page_network_samba_settings">
+    <sect2 id="configuration_page_network_advanced_settings">
       <title
->Samba-instellingen</title>
+>Geavanceerde instellingen</title>
       
-      <sect3 id="configuration_page_network_samba_settings_common_settings">
+      <sect3 id="configuration_page_network_advanced_settings_samba">
         <title
->Algemene instellingen</title>
+>Samba</title>
 
         <variablelist>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->NetBIOS-naam</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Hier stelt u de NetBIOS naam van uw computer in. Het tekstvak zou al gevuld moeten zijn met de informatie gevonden in het configuratiebestand <filename
->smb.conf</filename
->  of met de hostnaam van uw computer. Normaal gesproken hoeft u hier niets te wijzigen.</para>
-              <para
->Standaard: NetBIOS naam gedefinieerd in <filename
->smb.conf</filename
-> of de hostnaam</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Domein</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Hier stelt u de naam van het domein/werkgroep van uw computer in. Het tekstvak zou al gevuld moeten zijn met de informatie gevonden in het configuratiebestand <filename
->smb.conf</filename
->. Normaal gesproken hoeft u hier niets te wijzigen.</para>
-              <para
->Standaard: domein naam gedefinieerd in <filename
->smb.conf</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->SMB-poort</guibutton
+>De SMB-poort instellen op</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3360,79 +3481,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Deze computer bevindt zich in een grote netwerkomgeving</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->In de standaard configuratie worden alle beschikbare masterbrowsers afgevraagd wanneer de browselijst is gecompileerd. Op grote netwerkomgevingen kan dit erg veel tijd kosten. deze instelling inschakelen beperkt het afvragen tot drie masterbrowsers.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    
-      <sect3 id="configuration_page_network_samba_settings_authentication">
-        <title
->Authenticatie</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Master-browsers vereisen authenticatie</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Als de master-browsers authenticatie vereisen voordat ze de browse-lijst terug geven, dat moet u dit inschakelen. Dit kan bijvoorbeeld het geval zijn bij sommige NAS apparaten. Dit is zelden nodig en kan zelfs ervoor zorgen dat de master-browser een lege browse-lijst geeft.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Kerberos voor authenticatie gebruiken</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Kerberos voor authenticatie in de Active Directory omgeving gebruiken.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Winbind ccache voor authenticatie gebruiken</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Probeer de credentials te gebruiken in de cache van Winbind.</para>
-              <para
->Standaard: niet geselecteerd</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-      
-      <sect3 id="configuration_page_network_samba_settings_security">
-        <title
->Beveiliging</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Versleutelingsniveau</guibutton
+>Het versleutelingsniveau instellen op</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3483,56 +3532,107 @@ ntlm auth = yes
 ></para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Deze computer bevindt zich in een grote netwerkomgeving</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>In de standaard configuratie worden alle beschikbare masterbrowsers afgevraagd wanneer de browselijst is gecompileerd. Op grote netwerkomgevingen kan dit erg veel tijd kosten. deze instelling inschakelen beperkt het afvragen tot drie masterbrowsers.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Master-browsers vereisen authenticatie</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Als de master-browsers authenticatie vereisen voordat ze de browse-lijst terug geven, dat moet u dit inschakelen. Dit kan bijvoorbeeld het geval zijn bij sommige NAS apparaten. Dit is zelden nodig en kan zelfs ervoor zorgen dat de master-browser een lege browse-lijst geeft.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Kerberos voor authenticatie gebruiken</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Kerberos voor authenticatie in de Active Directory omgeving gebruiken.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Winbind ccache voor authenticatie gebruiken</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Probeer de credentials te gebruiken in de cache van Winbind.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry
+>          
         </variablelist>
-      </sect3
->     
-    </sect2>
-    
-<!-- 
-      Configuring Smb4K : Network : Wake-On_LAN Settings
--->
+      </sect3>
+      <sect3 id="configuration_page_network_advanced_settings_wake_on_lan">
+        <title
+>Wake-On-LAN</title>
 
-    <sect2 id="configuration_page_network_wake_on_lan_settings">
-      <title
->Instellingen Wake-On-LAN</title>
-
-      <para
->Om de Wake-On_LAN mogelijkheid van &smb4k; te kunnen gebruiken, moet u dit eerst in deze sectie inschakelen. De hosts die u wilt wakker maken, moet u opgeven in de <link linkend="configuration_page_custom_options"
->dialoog voor aangepaste opties</link
+        <para
+>Om de Wake-On_LAN mogelijkheid van &smb4k; te kunnen gebruiken, moet u deze instelling inschakelen. De hosts die u wilt wakker maken, moet u opgeven in de <link linkend="configuration_page_custom_settings"
+>bewerker voor aangepaste instellingen</link
 >.</para>
 
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
 ><guibutton
 >Functies voor Wake-On-LAN inschakelen</guibutton
 ></menuchoice>
-          </term>
-          <listitem>
-            <para
+            </term>
+            <listitem>
+              <para
 >Wake-on-LAN (WOL) is een ethernet standaard die een u in staat stelt om een computer aan te zetten of te laten ontwaken met een netwerkbericht. Smb4K gebruikt een magic-pakket verzonden via een UDP-socket om servers op afstand te laten ontwaken. Als u uw voordeel wilt doen met de functie Wake-On-LAN, dan moet u deze optie inschakelen.</para>
-            <para
+              <para
 >Standaard: niet geselecteerd</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice
 ><guilabel
 >Wachttijd</guilabel
 ></menuchoice>
-                </term>
-                <listitem>
-                  <para
+                  </term>
+                  <listitem>
+                    <para
 >Dit is de wachttijd in seconden tussen het verzenden van de pakketten voor 'magic Wake-On-LAN' en het scannen van de netwerkomgeving of het aankoppelen van een share.</para>
-                  <para
+                    <para
 >Standaard: 5 s</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
   </sect1>
 
@@ -3626,10 +3726,6 @@ ntlm auth = yes
             <listitem>
               <para
 >Koppelt all uw shares weer aan die werden aangekoppeld toen u het programma afsloot of van profiel wisselde. Als het weer aankoppelen van een share mislukt, dan zal Smb4K het bij de volgende keer opstarten opnieuw proberen. Door andere aangekoppelde shares worden genegeerd.</para>
-              <note
-><para
->Deze instelling is niet van toepassing op het automatisch opnieuw aankoppelen van uw shares wanneer uw computer uit een slaapstand wakker wordt.</para
-></note>
               <para
 >Standaard: niet geselecteerd</para>
               <variablelist>
@@ -3738,9 +3834,25 @@ ntlm auth = yes
       
       <para
 >Het tabblad <guilabel
->Algemene instellingen voor aankoppelen</guilabel
-> is alleen beschikbaar onder &Linux;. De instellingen aanwezig onder BSD zijn te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
->Instellingen voor aankoppelen (alleen BSD)</link
+>Gemeenschappelijke instellingen voor aankoppelen</guilabel
+> is alleen beschikbaar onder &Linux; en de getoonde opties verwijzen naar het commando <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. De instellingen aanwezig onder BSD zijn te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
+>Instellingen voor aankoppelen (BSD only)</link
 >.</para>
 
       <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
@@ -3768,6 +3880,10 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
+>Optie: <option
+>rw</option
+></para>
+                    <para
 >De share lezen-schrijven aankoppelen.</para>
                   </listitem>
                 </varlistentry>
@@ -3780,12 +3896,16 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
+>Optie: <option
+>ro</option
+></para>
+                    <para
 >De share alleen-lezen aankoppelen.</para>
                   </listitem>
                 </varlistentry>
               </variablelist>
               <para
->Standaard: <guimenuitem
+>Standaard: niet geselecteerd; <guimenuitem
 >lezen-schrijven</guimenuitem
 ></para>
             </listitem>
@@ -3799,7 +3919,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Stelt de tekensetin die aan de clientkant wordt gebruikt (&ie; uw computer).</para>
+>Optie: <option
+>iocharset=TEKENSET</option
+></para>
+              <para
+>Stelt de tekenset in die aan de clientkant wordt gebruikt (&ie; uw computer) op een van de volgende:</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3810,7 +3934,9 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Standaard tekenset die aan de clientkant wordt gebruikt.</para>
+>Standaard tekenset die aan de clientkant wordt gebruikt. In dit geval wordt optie <option
+>iocharset</option
+> weggelaten uit de opdrachtregel.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4079,8 +4205,8 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Standaard: <guilabel
->standaard</guilabel
+>Standaard: niet geselecteerd; TEKENSET: <guimenuitem
+>standaard</guimenuitem
 ></para>
             </listitem>
           </varlistentry>
@@ -4093,7 +4219,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Hier stelt u het poort-nummer voor bestandssysteem in dat wordt gebruikt door <ulink url="man:/mount.cifs"
+>Optie: <option
+>port=PORT</option
+></para>
+              <para
+>Hier stelt u het poort-nummer in dat wordt gebruikt door <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4101,17 +4231,11 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> voor het aankoppelen van een externe share. De standaard poort-nummer (445) zou bij alle moderne besturingssystemen moeten werken. Als u problemen heeft, probeer dan het poort-nummer 139. Als de problemen alleen bij enkele hosts optreden, dan raden wij aan om dit niet te wijzigen en het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
+> voor het aankoppelen van een externe share. De standaard poort-nummer (445) zou bij alle moderne besturingssystemen moeten werken. Als u problemen heeft, probeer dan het poort-nummer 139. Als de problemen alleen bij enkele hosts optreden, dan raden wij aan om dit niet te wijzigen en de bewerker voor <link linkend="custom_settings"
+>Aangepaste instellingen</link
 > te gebruiken om individuele poort-nummers voor de problematische hosts in te stellen.</para>
               <para
->Deze optie is alleen beschikbaar onder &Linux;. Onder BSD, stelt u de poort voor het aankoppelen van shares in met de optie <link linkend="configuration_page_network_samba_settings_common_settings"
-><guibutton
->SMB poort</guibutton
-></link
->.</para>
-              <para
->Standaard: 445</para>
+>Standaard: niet geselecteerd; POORT: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4130,9 +4254,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->De meeste versies van &Samba; ondersteunen de &CIFS; Unix- of POSIX-extensies. Voor deze servers zijn enkele opties niet nodig, omdat de juiste waarden zijn onderhandeld gedurende het aankoppelproces. Voor andere servers zou u kunnen kiezen om deze optie te deactiveren, zodat voorgedefinieerde waarden doorgegeven kunnen worden aan de server. Merk op dat als uw computer zich in een door &Windows; gedomineerde netwerkomgeving bevindt met alleen een paar &Samba;-servers, u deze optie veilig kunt deactiveren en aangepaste opties voor de &Samba;-servers definiëren.</para>
+>Optie: geen</para>
             <para
->Standaard: niet geselecteerd</para>
+>De meeste versies van &Samba; ondersteunen de &CIFS; Unix- of POSIX-extensies. Voor deze servers zijn enkele opties niet nodig, omdat de juiste waarden zijn onderhandeld gedurende het aankoppelproces. Voor andere servers zou u kunnen kiezen om deze optie te deactiveren, zodat voorgedefinieerde waarden doorgegeven kunnen worden aan de server. Merk op dat als uw computer zich in een door &Windows; gedomineerde netwerkomgeving bevindt met alleen een paar &Samba;-servers, u deze optie veilig kunt deactiveren en aangepaste instellingen voor de &Samba;-servers definiëren.</para>
+            <para
+>Als u deze optie deactiveert, overweeg om om te schakelen naar controle van rechten onder <link linkend="configuration_page_mounting_advanced_mount_settings"
+>Geavanceerde instellingen van aankoppelen</link
+>.</para>
+            <para
+>Standaard: geselecteerd</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4144,9 +4274,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>uid=UID</option
+></para>
+            <para
 >Stelt in wie de eigenaar van de bestanden en mappen in het bestandssysteem is. Standaard wordt uw UID gebruikt. Om de UID te wijzigen, drukt u zoekknop in en kiest in de keuzelijst er een uit.</para>
             <para
->Standaard: uw UID</para>
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
+            <para
+>Standaard: geselecteerd; UID: uw UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4158,9 +4294,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>uid=GID</option
+></para>
+            <para
 >Stelt de groep in die eigenaar is van de bestanden en mappen In het bestandssysteem. Standaard wordt uw GID gebruikt. Om de GID te wijzigen druk op de zoekknop en kies er een uit het afrolmenu.</para>
             <para
->Standaard: uw GID</para>
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
+            <para
+>Standaard: geselecteerd; GID: uw GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4172,7 +4314,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus (file_mode), moet u de manpagina's <ulink url="man:/mount"
+>Optie: <option
+>file_mode=ARG</option
+></para>
+            <para
+>Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus (file_mode), moet u de manpagina's <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4180,7 +4326,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> en <ulink url="man:/umask"
+> en <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4190,7 +4336,9 @@ ntlm auth = yes
 ></ulink
 > lezen.</para>
             <para
->Standaard: 0755</para>
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
+            <para
+>Standaard: geselecteerd; ARG: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4202,7 +4350,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over het mappenmodus (dir_modus), moet u de manpagina's <ulink url="man:/mount"
+>Optie: <option
+>dir_mode=ARG</option
+></para>
+            <para
+>Stelt de rechten in die worden toegekend aan mappen. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over het mappenmodus (dir_mode), moet u de manpagina's <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4210,7 +4362,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> en <ulink url="man:/umask"
+> en <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4220,7 +4372,9 @@ ntlm auth = yes
 ></ulink
 > lezen.</para>
             <para
->Standaard: 0755</para>
+>In het geval de ondersteuning voor de &CIFS; Unix extensies is geselecteerd, wordt deze instelling uitgeschakeld.</para>
+            <para
+>Standaard: geselecteerd; ARG: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4237,12 +4391,26 @@ ntlm auth = yes
       
       <para
 >Het tabblad <guilabel
->geavanceerd instellingen voor aankoppelen</guilabel
-> is alleen beschikbaar onder &Linux;. De inselltingen aanwezig onder BSD zijn te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
->Instellingen voor aankoppelen (alleen BSD)</link
+>Geavanceerde instellingen voor aankoppelen</guilabel
+> is alleen beschikbaar onder &Linux; en de getoonde opties verwijzen naar het commando <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. De instellingen aanwezig onder BSD zijn te vinden in de sectie <link linkend="configuration_page_mounting_mount_settings"
+>Instellingen voor aankoppelen (BSD only)</link
 >.</para>
-      <para
->De meeste van de opties die u hier kunt definiëren vereisen &Linux; kernel 2.6.15 of later om te werken.</para>
       <variablelist>
         <varlistentry>
           <term>
@@ -4252,6 +4420,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>forceuid</option
+></para>
             <para
 >Instrueer de client (d.w.z. uw kant) om elke gebruikers-id (UID) geleverd door de server voor bestanden en mappen te negeren en om altijd als eigenaar de waarde van de overgebrachte UID toe te kennen.</para>
             <para
@@ -4267,6 +4439,10 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>forcegid</option
+></para>
+            <para
 >Instrueer de client (d.w.z. uw kant) om elke groeps-id (GID) geleverd door de server voor bestanden en mappen te negeren en om altijd als eigenaar de waarde van de overgebrachte GID toe te kennen.</para>
             <para
 >Standaard: niet geselecteerd</para>
@@ -4281,9 +4457,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Aan de cliënt-kant vind een controle plaats of u de correcte UID en GID heeft voor het manipuleren van bestanden en mappen op de share. Dit is naast de normale ACL controle door de server software op de doelmachine. U wilt wellicht dit onderdeel uitschakelen, als de server(s) de &CIFS; Unix extensies ondersteunen en u daarom geen toegang tot de share heeft.</para>
+>Optie: <option
+>perm</option
+> of <option
+>noperm</option
+></para>
             <para
->Standaard: geselecteerd</para>
+>Aan de cliënt-kant vind een controle plaats of u de correcte UID en GID heeft voor het manipuleren van bestanden en mappen op de share. Dit is naast de normale ACL controle door de server software op de doelmachine. U wilt vrijwel zeker dit onderdeel uitschakelen, als de server(s) de &CIFS; Unix extensies ondersteunen en u daarom geen volledige toegang tot de share heeft.</para>
+            <para
+>Standaard: niet geselecteerd</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4294,6 +4476,12 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>setuids</option
+> of <option
+>nosetuids</option
+></para>
             <para
 >Als over de &CIFS; Unix extensies is onderhandelt met de server dan zal de client-zijde proberen om de UID en GID van het lokale proces op de nieuwe bestanden, mappen en apparaten in te stellen. Als dit onderdeel is uitgeschakeld, dan wordt de standaard voor de share ingestelde UID en GID worden gebruikt. Het wordt aanbevolen om de manpagina's van <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -4317,6 +4505,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>serverino</option
+> of <option
+>noserverino</option
+></para>
+            <para
 >Gebruik de inode-nummers (unique persistent file identifiers) verstuurt door de server in plaats van de automatisch aan de client-zijde gegenereerde tijdelijke inode-nummers. Deze instelling heeft heeft geen effect als de server het versturen van inode-nummers of iets dergelijks niet ondersteund. Het wordt aanbevolen om de manpagina's van <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4339,6 +4533,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Optie: <option
+>mapchars</option
+> of <option
+>nomapchars</option
+></para>
+            <para
 >Zes van de zeven gereserveerde tekens (de backslash niet, maar wel de dubbele punt, vraagteken, pipe, sterretje, groter-dan en kleiner-dan tekens) vertalen naar de remap range (boven 0xF000), hierdoor kan aan de client kant bestanden worden herkend die dergelijke tekens hebben doordat ze gecreerd zijn via &Windows;’s POSIX emulatie. Dit kan ook handig zijn bij het aankoppelen van de meeste versies van &Samba;. Deze instelling heeft geen effect als de server unicode niet ondersteund. </para>
             <para
 >Standaard: niet geselecteerd</para>
@@ -4348,12 +4548,16 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->Vergrendeling niet gebruiken</guibutton
+>Geen verzoeken voor vergrendelen van byte-reeksen verzenden</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Geen vergrendeling gebruiken. lockd niet starten.</para>
+>Optie: <option
+>nobrl</option
+></para>
+            <para
+>Geen verzoeken voor vergrendelen van byte-reeksen naar de server verzenden. Dit is nodig voor bepaalde toepassingen die breken met de stijl van cifs voor vergrendelen van byte-reeksen (en de meeste servers ondersteunen nog niet verzoeken geadviseerde vergrendeling van byte-reeksen.</para>
             <para
 >Standaard: niet geselecteerd</para>
           </listitem>
@@ -4367,7 +4571,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Definieer welke versie van het SMB protocol zal worden gebruikt.</para>
+>Optie: <option
+>vers=VERS</option
+></para>
+            <para
+>Definieer welke versie van het SMB-protocol moet worden gebruikt. Normaal is deze optie niet nodig om ingeschakeld te worden omdat de protocolversie wordt onderhandelt tussen de client en de server.</para>
             <para
 >De volgende waarden zijn toegestaan:</para>
             <variablelist>
@@ -4380,9 +4588,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=1.0</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4402,9 +4608,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=2.0</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4412,11 +4616,9 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> het SMBv2.002 protocol zal gebruiken. Dit was initieel geïntroduceerd in Windows Vista Service Pack 1 en Windows Server 2008.</para>
-                  <note>
-                    <para
->Merk op dat de eerste release van Windows Vista een licht verschillend dialect (2.000) gebruikte die niet wordt ondersteund.</para>
-                  </note>
+> het SMBv2.002 protocol zal gebruiken. Dit was initieel geïntroduceerd in &Microsoft; &Windows; Vista Service Pack 1 en &Windows; Server 2008.</para>
+                  <para
+>Merk op dat de eerste release van &Microsoft; &Windows; Vista een licht verschillend dialect (2.000) gebruikte die niet wordt ondersteund.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4428,9 +4630,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=2.1</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4450,9 +4650,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=3.0</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4467,16 +4665,12 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->De optie <option
->vers=3.1</option
-> of <option
->vers=3.11</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4484,13 +4678,74 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> het SMBv3.1 protocol zal gebruiken, dat is geïntroduceerd in &Windows; Server 2016.</para>
+> het SMBv3.0 protocol zal gebruiken, dat is geïntroduceerd in &Microsoft; &Windows; 8 en &Windows; Server 2012.</para>
+                </listitem>
+              </varlistentry>
+              
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3.1.1 (Windows Server 2016)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> het SMBv3.0 protocol zal gebruiken, dat is geïntroduceerd in &Microsoft; &Windows; 8 en &Windows; Server 2012.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3 (Versie 3.0 en hoger)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> het SMBv3.0 protocol en hoger zal gebruiken.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>standaard (onderhandel over de hoogste versie)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> zal proberen de hoogste versie van SMBv2+, die door zowel de client als de server wordt gebruikt, te gebruiken.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
             <para
->Standaard: <guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>Standaard: niet geselecteerd; VERS: <guibutton
+>standaard (onderhandel de hoogste versie)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4502,6 +4757,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Optie: <option
+>cache=ARG</option
+></para>
             <para
 >Definieer hoe lees- en schrijfverzoeken behandeld worden. In het geval dat u er voor kiest helemaal geen cache voor bestandsgegevens te hebben, zal de client nooit de cache voor bestandsgegevens gebruiken voor normaal lezen en schrijven. Het zal de server altijd direct benaderen om een lees- of schrijfverzoek uit te voeren. Als u er voor kiest om het &CIFS;/SMB2 protocol strict te volgen, zal de cache alleen vertrouwd worden als de client een oplock bijhoudt. Als de client geen oplock bijhoudt zal de client langs de cache gaan en de server direct benaderen om aan een lees- of schrijfverzoek te voldoen. Het kiezen van een losse semantiek voor de cache kan soms betere prestaties ten koste van coherentie in de cache bieden. Deze optie kan verminking van gegevens veroorzaken, als verschillende clients dezelfde set bestanden op de server op hetzelfde moment benaderen. Daarom wordt de strikte cache-modus aanbevolen.</para>
             <para
@@ -4516,9 +4775,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->cache=none</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4538,9 +4795,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->cache=strict</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4560,9 +4815,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->De optie <option
->cache=loose</option
-> als argument op de opdrachtregel is gebruikt. Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
+>Dit heeft tot gevolg dat <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4575,7 +4828,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: <guibutton
+>Standaard: niet geselecteerd; ARG: <guibutton
 >Volg strikt het &CIFS;/SMB2 protocol</guibutton
 ></para>
           </listitem>
@@ -4793,7 +5046,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Standaard: <guibutton
+>Standaard: niet geselecteerd; <guibutton
 >NTLMSSP-protocol</guibutton
 ></para>
           </listitem>
@@ -4819,7 +5072,7 @@ ntlm auth = yes
 >OK</guibutton
 > in het invoerdialoog, zullen de opties worden gecontroleerd tegen een lijst met toegestane waarden (witte lijst). Alle geldige items worden geaccepteerd en ingevoerd in de regelbewerking.</para>
             <para
->Standaard: leeg</para>
+>Standaard: niet geselecteerd; leeg</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4884,7 +5137,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over het bestandsmodus, moet u de manpagina's <ulink url="man:/mount_smbfs"
+>Stelt de rechten in die worden toegekend aan bestanden. De waarde wordt gegeven als octaal getal en moet 4 cijfers bevatten. Om meer te weten te komen over de bestandsmodus, moet u de manpagina's <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4892,7 +5145,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> en <ulink url="man:/umask"
+> en <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4922,7 +5175,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> en <ulink url="man:/umask"
+> en <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -5725,7 +5978,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->De login namen en wachtwoorden worden opgeslagen in een submap van de huidige netwerk portefeuille genaamd <filename role="directory"
+>De gebruikersnamen en wachtwoorden worden opgeslagen in een submap van de huidige netwerk portefeuille genaamd <filename role="directory"
 >Smb4K</filename
 > (standaard: "kdewallet"). Het voordeel van deze methode is, dat de authenticatie data permanent en versleuteld op uw harde schijf is opgeslagen. U hoeft het maar een keer op te geven en de volgende keer dat het nodig is, zal &smb4k; het in de portefeuille opzoeken. Als u deze optie uitschakelt, dan zal de authenticatie data helemaal niet worden opgeslagen.</para>
             <para
@@ -5772,21 +6025,21 @@ ntlm auth = yes
 >Items in portefeuille</title>
       
       <para
->In deze bewerker kunt u items in de portefeuille wijzigen en verwijderen. Voordat u ze kunt bewerken, moeten ze geladen worden uit de portefeuille door op de knop <guibutton
+>In de bewerker kunt u items in de portefeuille wijzigen en verwijderen. Echter voordat u ze kunt bewerken, moeten ze geladen worden uit de digitale portefeuille door op de knop <guibutton
 >Laden</guibutton
-> te drukken. De lijst met items verschijnt dan in de linker lijstweergave. Een item kan bewerkt worden door het te selecteren en te klikken op de knop <guibutton
->Details</guibutton
-> rechtsonder. Als alternatief kunt u gewoon op het item rechts klikken en het item <guimenuitem
->Bewerken</guimenuitem
-> in het verschijnende menu kiezen. De details worden dan getoond en kunnen gewijzigd worden.</para>
+> te drukken. De portefeuille-items verschijnen dan in de lijstweergave. Een item kan bewerkt worden door het te selecteren en te klikken op de knop <guibutton
+>Bewerken</guibutton
+> of u kunt er op dubbelklikken. Er verschijnt een wachtwoorddialoog met de gebruikersnaam en het wachtwoord wordt getoond en u kunt ze wijzigen.</para>
       <para
->Een item kan verwijderd worden door <guimenuitem
->Verwijderen</guimenuitem
-> te selecteren in het verschijnende menu. U kunt alle items in de portefeuille in een keer verwijderen door het item <guimenuitem
->Lijst wissen</guimenuitem
-> te selecteren.</para>
+>Een item kan verwijderd worden door het te selecteren en te klikken op de knop <guibutton
+>Verwijderen</guibutton
+>. Alle items in de portefeuille kunnen in een keer worden verwijderd door op de knop <guibutton
+>Wissen</guibutton
+> te klikken.Met de knop <guibutton
+>Reset</guibutton
+> kunt u de initiële status herstellen.</para>
       <para
->Als u klaar bent met bewerken, kunt u de wijzigingen in de portefeuille vastleggen door te drukken op de knop <guibutton
+>Als u klaar bent met bewerken, kunt u de wijzigingen in de portefeuille vastleggen door te klikken op <guibutton
 >Opslaan</guibutton
 >.</para>
     </sect2>
@@ -5844,7 +6097,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Standaard bestemming</title>
+>Synchronisatiemap</title>
 
         <variablelist>
           <varlistentry>
@@ -5901,14 +6154,44 @@ ntlm auth = yes
 >, hetzelfde als <option
 >-rlptgoD</option
 > (no <option
+>-A</option
+>, <option
+>-X</option
+>, <option
+>-U</option
+>, <option
+>-N</option
+>, <option
 >-H</option
 >)</para>
               <para
->Schakelt de archiefmodus in. Dit is een snelle manier om te zeggen dat u de mappenstructuur wilt en zal bijna alles bewaren. Merk op dat <option
+>Schakel de modus archiveren aan. Dit is een snelle manier van zeggen dat u recursie wilt en bijna alles wilt behouden. Merk op dat <option
 >-a</option
-> geen hardlinks bewaart, omdat het opzoeken van meervoudig verknoopte bestanden tijdrovend is. U moet <option
+> geen harde koppelingen behoudt (<option
 >-H</option
-> separaat opgeven.</para>
+>), toegangscontrolelijsten (ACL's, <option
+>-A</option
+>), uitgebreide attributen (xattrs, <option
+>-X</option
+>), toegangstijden (gebruik) (<option
+>-U</option
+>) noch aanmaaktijden (<option
+>-N</option
+>). U moet deze opties apart specificeren. De enige uitzondering op het bovenstaande is wanneer <option
+>--files-from</option
+> is gespecificeerd, in welk geval <option
+>-r</option
+> is niet impliciet.</para>
+              <para
+>In het geval dat u <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> niet in modus archiveren wilt uitvoeren, kies de van toepassing zijnde argumenten in de instellingen zelf.</para>
               <para
 >Standaard: geselecteerd</para>
             </listitem>
@@ -5930,7 +6213,7 @@ ntlm auth = yes
               <para
 >Volg mappenstructuur.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6020,8 +6303,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title
->Reservekopie</title>
-
+>Back-ups</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6110,7 +6392,15 @@ ntlm auth = yes
               <para
 >In combinatie met de optie <option
 >--backup</option
-> zorgt dit ervoor dat rsync alle backups in de opgegeven map opslaat. Dit is erg handig bij incrementele backups. U kunt daarnaast met behulp van de optie <option
+> zorgt dit ervoor dat <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> alle backups in de opgegeven map opslaat. Dit is erg handig bij incrementele backups. U kunt daarnaast met behulp van de optie <option
 >--suffix</option
 > voor de backups een achtervoegsel opgegeven (anders houden de backup-bestanden in de opgegeven map hun originele bestandsnamen).</para>
               <para
@@ -6166,7 +6456,7 @@ ntlm auth = yes
 ></ulink
 > om alle bestanden in de doelmachine over te slaan die een wijzigingstijd hebben die nieuwer is dan die in in de bronmachine. (als een bestaand doelbestand een wijzigingstijd heeft die gelijk is aan die van het bronbestand, dan wordt het bijgewerkt als de grootte verschillend is.)</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6354,7 +6644,7 @@ ntlm auth = yes
               <para
 >Kopieert symbolische koppeling als symbolische koppeling.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6433,8 +6723,6 @@ ntlm auth = yes
             <listitem>
               <para
 >Optie: <option
->-H</option
->/<option
 >--munge-links</option
 ></para>
               <para
@@ -6542,11 +6830,14 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+    </sect2>
 
-      <sect3 id="configuration_page_synchronization_file_handling_perms">
+    <sect2 id="configuration_page_synchronization_attributes_ownership">
+      <title
+>Attributen van bestand &amp; eigendom</title>
+      <sect3 id="configuration_page_synchronization_attributes_ownership_attributes">
         <title
->Permissies, &etc;</title>
-
+>Bestandsattributen</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6565,25 +6856,25 @@ ntlm auth = yes
               <para
 >Dit zorgt ervoor dat aan de ontvangende zijde de permissies hetzelfde zijn als bij de verzendende zijde.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Eigenaar behouden</guibutton
+>Lijst met toegangscontrole behouden (ACL's)</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
 >Optie: <option
->-o</option
+>-A</option
 >/<option
->--owner</option
+>--acls</option
 ></para>
               <para
->Dit zorgt ervoor dat <ulink url="man:/rsync"
+>Lijsten met toegangscontrole behouden. Deze optie laat <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -6591,39 +6882,27 @@ ntlm auth = yes
 >1</manvolnum
 ></citerefentry
 ></ulink
-> het doelbestand dezelfde eigenaar geeft als die van het bronbestand. Standaard, wordt daarvoor de naam gebruikt, maar kan in bepaalde gevallen terugvallen op het ID-nummer (lees de beschrijving van de optie <option
->--numeric-ids</option
-> voor een complete beschrijving). Deze optie heeft geen effect als de ontvangende <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> niet met super user-rechten is opgestart en <option
->--super</option
-> niet is opgegeven.</para>
+> de ACL's van de bestemming bijwerken om hetzelfde te zijn als de ACL's van de bron. De optie impliceert ook --perms. De bron- en bestemmingssystemen moeten compatibele ACL-items hebben om deze optie juist te laten werken.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Behoud groep</guibutton
+>Uitgebreide attributen behouden</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
 >Optie: <option
->-g</option
+>-X</option
 >/<option
->--group</option
+>--xattrs</option
 ></para>
               <para
->Dit zorgt ervoor dat <ulink url="man:/rsync"
+>Uitgebreide attributen behouden. Deze optie laat <ulink url="man:/rsync"
 ><citerefentry
 ><refentrytitle
 >rsync</refentrytitle
@@ -6631,11 +6910,65 @@ ntlm auth = yes
 >1</manvolnum
 ></citerefentry
 ></ulink
-> het doelbestand dezelfde groep geeft als van het bronbestand. Als de ontvangende programma niet als super-user (of met de <option
->--no-super</option
-> optie) werkt,dan worden alleen de groepen waarvan de ontvanger lid is, worden bewaard.</para>
+> de uitgebreide attributen van de bestemming bijwerken om hetzelfde te zijn als die van de bron.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Toegangstijden behouden</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-U</option
+>/<option
+>--atimes</option
+></para>
+              <para
+>Toegangstijden behouden. Dit vertelt <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> om set de toegangstijden (gebruik) van de bestemmingsbestanden hetzelfde in te stellen als de bronbestanden.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Aanmaaktijden behouden</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-N</option
+>/<option
+>--crtimes</option
+></para>
+              <para
+>Aanmaaktijden behouden. Dit vertelt <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> om de aanmaaktijden (nieuwheid) van de bestemmingsbestanden hetzelfde in te stellen als de bronbestanden.</para>
+              <para
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6673,7 +7006,7 @@ ntlm auth = yes
 >--super</option
 > niet is opgegeven.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6701,7 +7034,7 @@ ntlm auth = yes
 ></ulink
 > om tijden van wijziging mee te zenden met de bestanden en ze op het systeem op afstand bij te werken.</para>
               <para
->Standaard: geselecteerd</para>
+>Standaard: niet geselecteerd</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6736,6 +7069,83 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+      
+      <sect3 id="configuration_page_synchronization_attributes_ownership_ownership">
+        <title
+>Eigendom</title>
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Eigenaar behouden</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-o</option
+>/<option
+>--owner</option
+></para>
+              <para
+>Dit zorgt ervoor dat <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> het doelbestand dezelfde eigenaar geeft als die van het bronbestand. Standaard, wordt daarvoor de naam gebruikt, maar kan in bepaalde gevallen terugvallen op het ID-nummer (lees de beschrijving van de optie <option
+>--numeric-ids</option
+> voor een complete beschrijving). Deze optie heeft geen effect als de ontvangende <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> niet met super user-rechten is opgestart en <option
+>--super</option
+> niet is opgegeven.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Behoud groep</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-g</option
+>/<option
+>--group</option
+></para>
+              <para
+>Dit zorgt ervoor dat <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> het doelbestand dezelfde groep geeft als van het bronbestand. Als de ontvangende programma niet als super-user (of met de <option
+>--no-super</option
+> optie) werkt,dan worden alleen de groepen waarvan de ontvanger lid is, worden bewaard.</para>
+              <para
+>Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
 
 <!-- 
@@ -6745,11 +7155,9 @@ ntlm auth = yes
     <sect2 id="configuration_page_synchronization_file_transfer">
       <title
 >Bestandsoverdracht</title>
-
       <sect3 id="configuration_page_synchronization_file_transfer_compression">
         <title
 >Compressie</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6780,7 +7188,13 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Stel expliciet het te gebruiken compressieniveau in (--compress-level=NUM). Als NUM ongelijk nul is, is het argument --compress impliciet.</para>
+>Optie: <option
+>--compress-level=NUM</option
+></para>
+              <para
+>Stel expliciet het te gebruiken compressieniveau in. Als NUM ongelijk nul is, is het argument --compress impliciet.</para>
+              <para
+>Standaard: niet geselecteerd: NUM: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6792,7 +7206,21 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Overschrijf de lijst met achtervoegsel van bestanden die niet gecomprimeerd zullen worden (--skip-compress=LIJST). De LIJST zou een of meer achtervoegsels van bestanden moeten zijn (zonder de punt) gescheiden door slashes. U kunt een lege tekenreeks specificeren om aan te geven dat geen bestand overgeslagen mag worden. De standaard lijst met achtervoegsels zal vervangen worden door deze lijst. Voor verdere details, zie de manpagina van rsync.</para>
+>Optie: <option
+>--skip-compress=LIST</option
+></para>
+              <para
+>Overschrijf de lijst met achtervoegsel van bestanden die niet gecomprimeerd zullen worden. De LIJST zou een of meer achtervoegsels van bestanden moeten zijn (zonder de punt) gescheiden door slashes. U kunt een lege tekenreeks specificeren om aan te geven dat geen bestand overgeslagen mag worden. De standaard lijst met achtervoegsels zal vervangen worden door deze lijst. Voor verdere details, zie de <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>manpagina van rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>.</para>
+              <para
+>Standaard: niet geselecteerd; LIJST: leeg</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6801,7 +7229,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_files">
         <title
 >Bestanden</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6813,7 +7240,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Optie: <option
->--min-size=NUM</option
+>--min-size=GROOTTE</option
 ></para>
               <para
 >Dit vertelt <ulink url="man:/rsync"
@@ -6826,7 +7253,7 @@ ntlm auth = yes
 ></ulink
 > om te voorkomen dat elk bestand kleiner dan de gespecificeerde SIZE wordt overgebracht, wat kan helpen om geen kleine bestanden met rommel over te brengen.</para>
               <para
->Standaard: niet geselecteerd: NUM: 0 kB</para>
+>Standaard: niet geselecteerd: SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6839,7 +7266,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Optie: <option
->--max-size=NUM</option
+>--max-size=GROOTTE</option
 ></para>
               <para
 >Dit vertelt <ulink url="man:/rsync"
@@ -6852,7 +7279,7 @@ ntlm auth = yes
 ></ulink
 > om te voorkomen dat elk bestand groter dan de gespecificeerde SIZE wordt overgebracht.</para>
               <para
->Standaard: niet geselecteerd: NUM: 0 kB</para>
+>Standaard: niet geselecteerd: SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6929,7 +7356,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
         <title
 >Diversen</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6944,9 +7370,9 @@ ntlm auth = yes
 >--bwlimit=RATE</option
 ></para>
               <para
->De maximale overdrachtssnelheid in kilobytes per seconde instellen.</para>
+>De maximale overdrachtsSNELHEID in kilobytes per seconde instellen.</para>
               <para
->Standaard: niet geselecteerd: SNELHEID: 0 KiB/s</para>
+>Standaard: niet geselecteerd: SNELHEID: 0 kB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7356,48 +7782,6 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Eigen filterregels</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Optie: <option
->-f</option
->/<option
->--filter=REGEL</option
-></para>
-              <para
->U kunt hier een of meer filterregels definiëren. Elke regel moet vooraf worden gegaan door de optie-tekst <option
->--filter=</option
-> of <option
->-f</option
->, omdat de inhoud van het tekstvak zal worden doorgegeven aan het commando <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> ZOALS HET IS.</para>
-              <para
->Deze optie staat het toe dat u regels toevoegt om selectief bepaalde bestanden te negeren voor de lijst met te verzenden bestanden. Dit is vooral handig in combinatie met een verzending die de mappenstructuur volgt.</para>
-              <para
->U mag net zoveel keer de optie <option
->--filter</option
-> gebruiken als u wilt bij het maken van de lijst met te negeren bestanden.</para>
-              <para
->Lees de sectie FILTER RULES van de <ulink url="man:/rsync"
->manual page</ulink
-> voor meer informatie over het gebruik van deze optie.</para>
-              <para
->Standaard: leeg</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
 >Gebruik --filter='dir-merge /.rsync-filter' filterregels</guibutton
 ></menuchoice>
             </term>
@@ -7448,6 +7832,48 @@ ntlm auth = yes
 > voor meer informatie over hoe deze optie werkt.</para>
               <para
 >Standaard: niet geselecteerd</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Eigen filterregels</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Optie: <option
+>-f</option
+>/<option
+>--filter=REGEL</option
+></para>
+              <para
+>U kunt hier een of meer filterregels definiëren. Elke regel moet vooraf worden gegaan door de optie-tekst <option
+>--filter=</option
+> of <option
+>-f</option
+>, omdat de inhoud van het tekstvak zal worden doorgegeven aan het commando <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> ZOALS HET IS.</para>
+              <para
+>Deze optie staat het toe dat u regels toevoegt om selectief bepaalde bestanden te negeren voor de lijst met te verzenden bestanden. Dit is vooral handig in combinatie met een verzending die de mappenstructuur volgt.</para>
+              <para
+>U mag net zoveel keer de optie <option
+>--filter</option
+> gebruiken als u wilt bij het maken van de lijst met te negeren bestanden.</para>
+              <para
+>Lees de sectie FILTER RULES van de <ulink url="man:/rsync"
+>manual page</ulink
+> voor meer informatie over het gebruik van deze optie.</para>
+              <para
+>Standaard: niet geselecteerd; REGELS: leeg</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7532,8 +7958,7 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
         <title
->Algemeen</title>
-
+>Diversen</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -7609,121 +8034,45 @@ ntlm auth = yes
 
 
 <!-- 
-      Configuring Smb4K : Custom Options
+      Configuring Smb4K : Custom Settings
 -->
 
-  <sect1 id="configuration_page_custom_options">
+  <sect1 id="configuration_page_custom_settings">
     <title
->Custom Opties</title>
+>Aangepaste instellingen</title>
 
     <para
->Alle servers en shares waarvoor u Custom Opties heeft gedefinieerd worden hier opgenoemd.</para>
+>Alle servers en shares, waarvoor u Aangepaste instellingen hebt gedefinieerd, worden hier opgenoemd.</para>
 
     <screenshot>
       <screeninfo
->Schermafdruk van het instellingentabblad voor "Aangepaste opties"</screeninfo>
+>Schermafdruk van het instellingentabblad voor "Aangepaste instellingen"</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
->Het instellingentabblad voor "Aangepaste opties"</phrase
+>Het instellingentabblad voor "Aangepaste instellingen"</phrase
 ></textobject>
       </mediaobject>
     </screenshot>
 
     <para
->U kunt de opties die bij een netwerkitem horen bewerken door naar keuze op een item in de lijst te dubbelklikken of door in het contextmenu het item <guimenuitem
+>De opties gedefinieerd voor een netwerkitem kunnen bewerkt worden door ofwel op een item in de lijst te dubbelklikken of te klikken op de knop <guimenuitem
 >Bewerken</guimenuitem
-> te selecteren (klik op het geselecteerde item met de &RMB;). De aangepaste opties worden dan geladen zodat u ze kunt bewerken. Om een item te verwijderen, klikt u op het geselecteerde item met de &RMB; en kiest in het contextmenu het item <guimenuitem
+>. De <link linkend="custom_settings"
+>bewerker voor aangepaste instellingen</link
+> wordt dan geopend en de instellingen kunnen worden bewerkt. Om een item te verwijderen, selecteer deze en klik op de knop <guimenuitem
 >Verwijderen</guimenuitem
->. U kunt alle netwerkitems tegelijk verwijderen door het item <guimenuitem
+>. Alle netwerkitems kunnen kunnen tegelijk worden verwijderd door op de knop <guimenuitem
 >Lijst wissen</guimenuitem
-> te kiezen.</para>
-
+> te klikken. Om alle wijzigingen te resetten klik op de knop <guibutton
+>Reset</guibutton
+>.</para>
     <para
->De aangepaste opties zijn toegankelijk via de tabbladen rechts.</para>
-    
-<!--
-      Configuring Smb4K : Custom Options : Network Item
--->
-    
-    <sect2 id="configuration_page_custom_options_network_item">
-      <title
->Netwerkitem</title>
-      
-      <para
->Dit tabblad dient vooral als bron van informatie. In het groepsvak <guilabel
->Identificatie</guilabel
-> zijn de werkgroep of domein van het netwerkitem, zijn locatie en IP-adres gegeven. Het IP-adres kan bewerkt worden, in het geval dat u het nodig hebt om het aan te passen.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_common_mount_settings">
-      <title
->Algemene instellingen voor aankoppelen (alleen &Linux;)</title>
-      
-      <para
->Hier kunt u algemene instellingen, gebruikt voor aankoppelen onder Linux, bewerken. Kijk op de configuratiepagina <link linkend="configuration_page_mounting"
->Aankoppelen</link
-> om meer te weten te komen over de huidige opties.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
-      <title
->Geavanceerde instellingen voor aankoppelen (alleen &Linux;)</title>
-      
-      <para
->Hier kunt u geavanceerde instellingen, gebruikt voor aankoppelen onder Linux, bewerken. Kijk op de configuratiepagina <link linkend="configuration_page_mounting"
->Aankoppelen</link
-> om meer te weten te komen over de huidige opties.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
--->
-    <sect2 id="configuration_page_custom_options_mount_settings">
-      <title
->Instellingen voor aankoppelen (alleen BSD)</title>
-      
-      <para
->Hier kunt u instellingen, gebruikt voor aankoppelen onder BSD, bewerken. Kijk op de configuratiepagina <link linkend="configuration_page_mounting"
->Aankoppelen</link
-> om meer te weten te komen over de huidige opties.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Options : Browse Settings
--->
-
-    <sect2 id="configuration_page_custom_options_browse_settings">
-      <title
->Browse-instellingen</title>
-    
-      <para
->U kunt hier verschillende &Samba; instellingen wijzigen die gebruikt worden voor bladeren. Meer informatie kunt u vinden in <link linkend="configuration_page_network_samba_settings"
->Samba</link
-> configuratievenster.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
--->
-
-    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
-      <title
->Instellingen Wake-On-LAN</title>
-    
-      <para
->Hier kunt u de opties voor Wake-On-LAN bewerken die u eerder in het dialoogvenster voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
-> heeft gedefinieerd.</para>
-    </sect2>
+>Voor verdere informatie over de bewerker voor aangepaste instellingen, lees deze <link linkend="custom_settings"
+>sectie</link
+>.</para>
   </sect1>
 
 <!-- 
@@ -7768,7 +8117,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Zorgt dat Smb4K profielen gebruikt. Dit geeft u de mogelijkheid dat u voor elk profiel verschillende bladwijzers en aangepaste opties kunt definiëren. Dit is met name handig als u een laptop in meerdere netwerkomgevingen gebruikt, &eg; thuis en op het werk. De eerste keer dat u dit inschakelt, zal de eerste item in de <link linkend="configuration_page_profiles_profiles"
+>Zorgt dat Smb4K profielen gebruikt. Dit geeft u de mogelijkheid om voor elk profiel verschillende bladwijzers en aangepaste instellingen te definiëren. Dit is met name handig als u een laptop in meerdere netwerkomgevingen gebruikt, &eg; thuis en op het werk. De eerste keer dat u dit inschakelt, zal de eerste item in de <link linkend="configuration_page_profiles_profiles"
 >lijst met profielen</link
 > het actieve profiel worden.</para>
             <para
@@ -7970,7 +8319,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Open de zoekbalk in de browser voor de netwerkomgeving.</para>
+>De zoekwerkbalk in de browser voor de netwerkomgeving openen.</para>
         </listitem>
       </varlistentry
 > 
@@ -7989,8 +8338,31 @@ ntlm auth = yes
 >Bladwijzers toevoegen</link
 > voor meer details.</para>
         </listitem>
-      </varlistentry
->      
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Netwerk</guimenu
+> <guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Open het bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
+>. U kunt verschillende persoonlijke instellingen voor de geselecteerde server of share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd. Lees de sectie <link linkend="custom_settings_adding"
+>Aangepaste instellingen toevoegen</link
+> voor meer details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8033,28 +8405,6 @@ ntlm auth = yes
 >Open het <link linkend="network_neighborhood_browser_authentication"
 >dialoog voor authenticatie</link
 >. Hier kunt u voor de gekozen server of share de gebruikersnaam en wachtwoord opgeven. U kunt deze knop niet selecteren als u nog geen werkgroep of item heeft geselecteerd.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Netwerk</guimenu
-> <guimenuitem
->Aangepaste opties</guimenuitem
-> </menuchoice>
-        </term>
-        <listitem>
-          <para
->Open het dialoog voor <link linkend="network_neighborhood_browser_defining_custom_options"
->Aangepaste opties</link
->. U kunt verschillende persoonlijke instellingen voor de geselecteerde server of share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item heeft geselecteerd.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8225,11 +8575,11 @@ ntlm auth = yes
 >Koppelt een of meerdere geselecteerde shares af. Standaard is de mogelijkheid tot het afkoppelen van shares beperkt tot die waarvan de gebruiker eigenaar is. Maar, u kunt dit wijzigen door de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
 > in de configuratiedialoog te wijzigen. Als u in het venster geen shares heeft geselecteerd dan is deze knop niet te selecteren.</para>
-            <para
->In &smb4k; is er ook de mogelijkheid aanwezig voor het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
+          <para
+>In &smb4k; biedt de mogelijkheid voor het geforceerd afkoppelen van shares (alleen in &Linux; ). Dit kan handig zijn bij ontoegankelijke shares die niet op de normale manier kunnen worden afgekoppeld. Om dit hulpmiddel in te schakelen, moet u de <link linkend="configuration_page_mounting_basic_settings_behavior"
 >instellingen</link
-> in de configuratiedialoog wijzigen.</para>
-            <para
+> in het configuratievenster wijzigen.</para>
+          <para
 >Lees de sectie <link linkend="shares_view_unmounting"
 >Shares afkoppelen</link
 > voor meer details.</para>
@@ -8270,8 +8620,31 @@ ntlm auth = yes
 >Bladwijzers toevoegen</link
 > voor meer details.</para>
         </listitem>
-      </varlistentry
->   
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Netwerk</guimenu
+> <guimenuitem
+>Aangepaste instellingen toevoegen</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Open het bewerker voor <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Aangepaste instellingen</link
+>. U kunt verschillende persoonlijke instellingen voor de geselecteerde share aanpassen. U kunt deze knop niet selecteren als u nog geen werkgroep of item hebt geselecteerd. Lees de sectie <link linkend="custom_settings_adding"
+>Aangepaste instellingen toevoegen</link
+> voor meer details.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8396,12 +8769,12 @@ ntlm auth = yes
 ><guimenu
 >Bladwijzers</guimenu
 ><guimenuitem
->Alle bladwijzers aankoppelen</guimenuitem
+>Bladwijzers aankoppelen</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
           <para
->Koppelt alle toplevel bladwijzers tegelijk aan. Deze knop is uitgeschakeld als alle shares met een bladwijzer al zijn aangekoppeld. Deze actie is niet aanwezig als er geen toplevel bladwijzers zijn.</para>
+>Koppelt alle topniveau bladwijzers tegelijk aan. Deze knop is uitgeschakeld als alle shares met een bladwijzer al zijn aangekoppeld. Deze actie is niet aanwezig als er geen topniveau bladwijzers zijn.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8570,7 +8943,7 @@ ntlm auth = yes
     <listitem
 ><para
 >Als u crashes ervaart, voeg dan een volledige backtrace bij. Hiervoor is nodig &smb4k; te (her)compileren het met debugging symbolen. Hoe dit is gedaan is beschreven in het bestand <filename
->README</filename
+>README.md</filename
 > meegeleverd in de broncode.</para
 ></listitem>
     <listitem
@@ -8600,7 +8973,7 @@ ntlm auth = yes
 >Dankbetuigingen en licentie</title>
 
   <para
->Copyright &copy; 2003 - 2021, Alexander Reinholdt <email
+>Copyright &copy; 2003 - 2023, Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
 ></para>
 
