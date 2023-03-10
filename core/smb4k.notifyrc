@@ -1918,7 +1918,21 @@ Action=Popup|Sound
 
 [Event/zeroconfError]
 Name=Zeroconf error
+Name[ca]=Error del Zeroconf
+Name[cs]=Chyba Zeroconf
+Name[es]=Error de Zeroconf
+Name[ka]=Zeroconf-ის შეცდომა
+Name[nl]=Zeroconf-fout
+Name[uk]=Помилка Zeroconf
+Name[x-test]=xxZeroconf errorxx
 Comment=An error with the Zeroconf daemon occurred
+Comment[ca]=S'ha produït un error amb el dimoni Zeroconf
+Comment[cs]=Nastala chyba v démonu Zeroconf
+Comment[es]=Ha ocurrido un error con el demonio de Zeroconf
+Comment[ka]=Zeroconf დემონის შეცდომა
+Comment[nl]=Er is een fout opgetreden met de daemon Zeroconf
+Comment[uk]=Сталася помилка, яку пов'язано із фоновою службою Zeroconf
+Comment[x-test]=xxAn error with the Zeroconf daemon occurredxx
 Context=Error
 Sound=Oxygen-Sys-App-Error.ogg
 Action=Popup|Sound
