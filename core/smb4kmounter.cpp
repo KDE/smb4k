@@ -505,7 +505,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
         // Wake-On-LAN: Wake up the host before mounting
         //
         if (Smb4KSettings::enableWakeOnLAN()) {
-            OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share->url().resolved(QStringLiteral("..")));
+            OptionsPtr options = Smb4KCustomOptionsManager::self()->findOptions(share->url().resolved(QUrl(QStringLiteral(".."))));
 
             if (options && options->wolSendBeforeMount()) {
                 Q_EMIT aboutToStart(WakeUp);
@@ -580,7 +580,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
             parentDirectory = Smb4KMountSettings::mountPrefix();
         } else {
             QUrl u = Smb4KMountSettings::mountPrefix();
-            parentDirectory = u.resolved(QStringLiteral(".."));
+            parentDirectory = u.resolved(QUrl(QStringLiteral("..")));
             ;
         }
 
@@ -598,7 +598,7 @@ void Smb4KMounter::mountShare(const SharePtr &share)
 
             while (!parentDirectory.matches(u, QUrl::StripTrailingSlash)) {
                 QFile(u.path()).setPermissions(permissions);
-                u = u.resolved(QStringLiteral(".."));
+                u = u.resolved(QUrl(QStringLiteral("..")));
             }
         }
 
