@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the smb4k package.
 #
-# giovanni <g.sora@tiscali.it>, 2021, 2022.
+# giovanni <g.sora@tiscali.it>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-09 02:49+0000\n"
-"PO-Revision-Date: 2022-07-08 17:44+0200\n"
+"PO-Revision-Date: 2023-03-10 11:22+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -53,10 +53,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -132,10 +131,9 @@ msgid "Add &Bookmark"
 msgstr "Adde marcator de li&bro"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Monta omne marcatores de libro"
+msgstr "Monta marcatores de libro"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -163,10 +161,9 @@ msgid "Synchronization"
 msgstr "Synchronisation"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Common Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Preferentias commun"
+msgstr "Preferentias Personalisate"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -377,22 +374,19 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "Optiones avantiate de montar"
+msgstr "Preferentias Avantiate"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Synchronisation"
+msgstr "Directorio de Synchronisation "
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Retrocopia"
+msgstr "Backups (Retrocopias)"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -415,10 +409,9 @@ msgid "File Attributes"
 msgstr ""
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Owner:"
+#, kde-format
 msgid "Ownership"
-msgstr "Proprietario:"
+msgstr "Proprietate"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -439,7 +432,7 @@ msgstr "Files"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -451,7 +444,7 @@ msgstr "Miscellanea"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kb/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -643,7 +636,7 @@ msgstr "Commento"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:469
 #, kde-format
 msgid "Scan Netwo&rk"
-msgstr ""
+msgstr "Scande &rete"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:120
 #, kde-format
@@ -657,15 +650,14 @@ msgstr "&Cerca"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Optiones avantiate de montar"
+msgstr "Adde &Preferentias Personalisate"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr ""
+msgstr "Aperi Dial&ogo do Montar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
@@ -697,12 +689,12 @@ msgstr "&Dismonta"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:431
 #, kde-format
 msgid "Scan Compute&r"
-msgstr ""
+msgstr "Scande Computato&r"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:456
 #, kde-format
 msgid "Scan Wo&rkgroup"
-msgstr ""
+msgstr "Scande Wo&rkgroup"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -737,7 +729,7 @@ msgstr "Elemento in alto"
 #: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
-msgstr ""
+msgstr "Dismo&nta Toto"
 
 #: smb4k/smb4ksharesmenu.cpp:159
 #, kde-format
@@ -757,7 +749,7 @@ msgstr "Synchronisa "
 #: smb4k/smb4ksharesmenu.cpp:223
 #, kde-format
 msgid "Open with Konsole"
-msgstr ""
+msgstr "Aperi con Konsole"
 
 #: smb4k/smb4ksharesmenu.cpp:237
 #, kde-format
@@ -787,7 +779,7 @@ msgstr "Synchronisa "
 #: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
-msgstr ""
+msgstr "Aperi con Konso&le"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
@@ -884,10 +876,9 @@ msgid "Mountpoint:"
 msgstr "Puncto de montage:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User Interface"
+#, kde-format
 msgid "Username:"
-msgstr "Interfacie de usator"
+msgstr "Nomine de usator:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format

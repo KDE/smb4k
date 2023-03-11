@@ -239,17 +239,17 @@ msgstr "Anna oletuskirjautumistiedot."
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr ""
+msgstr "Aseta lompakkotietueen %1 käyttäjätunnus ja salasana."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr ""
+msgstr "Aseta oletuskirjautumisen käyttäjätunnus ja salasana."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "Kaikki kunnossa."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -391,22 +391,19 @@ msgid ""
 msgstr "<qt>Määritä asetusikkunassa koneet, jotka tulisi herättää.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "Liittämisen lisäasetukset"
+msgstr "Lisäasetukset"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Synkronointi"
+msgstr "Synkronointikansio"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Varmuuskopioi"
+msgstr "Varmuuskopiot"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -437,7 +434,7 @@ msgstr "Omistaja:"
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "Tiedostomääritteet ja omistajuus"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -488,10 +485,9 @@ msgid "File Deletion"
 msgstr "Tiedoston poisto"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "General Filtering Settings"
-msgstr "Perusasetukset"
+msgstr "Yleiset suodatusasetukset"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -906,10 +902,9 @@ msgid "Mountpoint:"
 msgstr "Liitoskohta:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Käyttäjä:"
+msgstr "Käyttäjätunnus:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
