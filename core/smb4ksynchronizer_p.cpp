@@ -443,7 +443,7 @@ void Smb4KSyncJob::slotReadStandardOutput()
     QStringList stdOut = QString::fromUtf8(m_process->readAllStandardOutput()).split(QStringLiteral("\r"), Qt::SkipEmptyParts);
 
     for (const QString &line : stdOut) {
-        if (line.contains("%")) {
+        if (line.contains(QStringLiteral("%"))) {
             bool success = true;
             QString transferInfo = line.trimmed().simplified();
 
@@ -500,7 +500,7 @@ void Smb4KSyncJob::slotReadStandardOutput()
             }
 
         } else if (!line.contains(QStringLiteral("sending incremental file list"))) {
-            QString file = line.trimmed().remove("\n").section("/", -1, -1);
+            QString file = line.trimmed().remove(QStringLiteral("\n")).section(QStringLiteral("/"), -1, -1);
 
             QUrl sourceUrl = m_sourceUrl;
             sourceUrl.setPath(QDir::cleanPath(sourceUrl.path() + QStringLiteral("/") + file));
