@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-06 00:48+0000\n"
-"PO-Revision-Date: 2023-02-24 12:44\n"
+"PO-Revision-Date: 2023-03-11 04:53\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -385,18 +385,14 @@ msgstr "SMB 端口："
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the port that is used for connecting to remote servers with the "
-#| "client programs net, smbclient and smbtree. The default value is 139 "
-#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+#, kde-format
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"这是用于通过 net、smbclient、smbtree 等程序连接到远程服务器的端口。默认值是 "
-"139 (NetBIOS)。在 FreeBSD 环境下，此设置也被用于挂载。"
+"这是用于连接到远程服务器的端口。默认值是 139 (NetBIOS)。在 FreeBSD 环境下，此"
+"设置也被用于挂载。"
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -2032,18 +2028,14 @@ msgid "Custom Settings"
 msgstr "自定义设置"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr "<p>指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr "<p>指定共享 <b>%1</b> 的自定义选项。</p>"
 
