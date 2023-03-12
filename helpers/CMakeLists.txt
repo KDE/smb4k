@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Albert Astals Cid <aacid@kde.org>
-# SPDX-FileCopyrightText: 2010-2016 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2010-2013 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -14,7 +14,7 @@ add_executable(mounthelper ${smb4kmounthelper_SRCS})
 
 target_link_libraries(mounthelper
   smb4kcore
-  Qt5::Core
+  Qt${QT_MAJOR_VERSION}::Core
   ${AUTHLIB}
   KF5::CoreAddons
   KF5::I18n

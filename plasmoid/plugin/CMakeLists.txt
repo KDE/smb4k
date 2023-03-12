@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2012-2017 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2012-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 include_directories(
   ${CMAKE_SOURCE_DIR}
@@ -18,8 +18,8 @@ set(smb4kqmlplugin_LIB_SRC
 add_library(smb4kqmlplugin SHARED ${smb4kqmlplugin_LIB_SRC})
 
 target_link_libraries(smb4kqmlplugin
-  Qt5::Core
-  Qt5::Qml
+  Qt${QT_MAJOR_VERSION}::Core
+  Qt${QT_MAJOR_VERSION}::Qml
   smb4kcore)
 
 install(TARGETS smb4kqmlplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/smb4k/smb4kqmlplugin)

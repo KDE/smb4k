@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2009-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -26,9 +26,9 @@ set(smb4kconfigdialog_LIB_SRCS
 add_library(smb4kconfigdialog MODULE ${smb4kconfigdialog_LIB_SRCS})
 
 target_link_libraries(smb4kconfigdialog
-  Qt5::Core
-  Qt5::Widgets
-  Qt5::Gui
+  Qt${QT_MAJOR_VERSION}::Core
+  Qt${QT_MAJOR_VERSION}::Widgets
+  Qt${QT_MAJOR_VERSION}::Gui
   KF5::WidgetsAddons
   KF5::CoreAddons
   KF5::XmlGui
@@ -67,9 +67,9 @@ add_executable(smb4k ${smb4k_SRCS})
 
 target_link_libraries(smb4k
   smb4kcore
-  Qt5::Core
-  Qt5::Gui
-  Qt5::Widgets
+  Qt${QT_MAJOR_VERSION}::Core
+  Qt${QT_MAJOR_VERSION}::Gui
+  Qt${QT_MAJOR_VERSION}::Widgets
   KF5::CoreAddons
   KF5::WidgetsAddons
   KF5::DBusAddons

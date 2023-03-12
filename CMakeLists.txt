@@ -1,7 +1,7 @@
 
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Pino Toscano <pino@kde.org>
-# SPDX-FileCopyrightText: 2009-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 #
 # Project
 #
@@ -11,8 +11,8 @@ project(smb4k)
 # Version
 #
 set(VERSION_MAJOR 3)
-set(VERSION_MINOR 1)
-set(VERSION_PATCH 90)
+set(VERSION_MINOR 2)
+set(VERSION_PATCH 70)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
@@ -31,13 +31,10 @@ if (POLICY CMP0071)
 endif()
 
 #
-# Minimum required versions of Qt5 and KF5
+# Minimum required versions of Qt and Frameworks
 #
-# set(QT_MIN_VERSION "5.15.2")
-# set(KF5_MIN_VERSION "5.98.0")
-
-set(QT_MIN_VERSION "5.14.0")
-set(KF5_MIN_VERSION "5.80.0")
+set(QT_MIN_VERSION "5.15.8")
+set(KF5_MIN_VERSION "5.103.0")
 
 #
 # Options for building Smb4K
@@ -49,8 +46,8 @@ option(SMB4K_INSTALL_PLASMOID "Install the plasmoid" ON)
 option(SMB4K_WITH_WS_DISCOVERY "Build with WS-Discovery support for browsing" OFF)
 
 # Compile definitions
-# Error out when deprecated functions (in Qt <= 5.15.0) are encountered
-add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x050F00)
+# Error out when deprecated functions (in Qt <= 6.0.0) are encountered
+add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x060000)
 
 #
 # Required packages and includes
@@ -78,13 +75,13 @@ ecm_setup_version(${VERSION} VARIABLE_PREFIX SMB4K VERSION_HEADER smb4k_version.
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
-# Qt5 modules
-find_package(Qt5Core ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt5Gui ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt5Network ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt5PrintSupport ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt5Qml ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt5Widgets ${QT_MIN_VERSION} REQUIRED)
+# Qt modules
+find_package(Qt${QT_MAJOR_VERSION}Core ${QT_MIN_VERSION} REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}Gui ${QT_MIN_VERSION} REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}Network ${QT_MIN_VERSION} REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}PrintSupport ${QT_MIN_VERSION} REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}Qml ${QT_MIN_VERSION} REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION}Widgets ${QT_MIN_VERSION} REQUIRED)
 
 # KF5 modules
 find_package(KF5Auth ${KF5_MIN_VERSION} REQUIRED)
@@ -127,8 +124,15 @@ endif()
 
 # Find KDSoap client
 if (SMB4K_WITH_WS_DISCOVERY)
+    if (QT_MAJOR_VERSION EQUAL "6")
+      set(KDSOAP_PACKAGE KDSoap-qt6)
+      set(KDSOAP_VERSION 2.0.0)
+    else ()
+      set(KDSOAP_PACKAGE KDSoap)
+      set(KDSOAP_VERSION 1.9.0)
+    endif ()
     message(STATUS "Building with WS-Discovery support (-DSMB4K_WITH_WS_DISCOVERY=OFF to disable)")
-    find_package(KDSoap 1.9.0 REQUIRED)
+    find_package(${KDSOAP_PACKAGE} ${KDSOAP_VERSION} REQUIRED)
     find_package(KDSoapWSDiscoveryClient 0.2 REQUIRED)
 elseif(NOT SMB4K_WITH_WS_DISCOVERY)
     message(STATUS "Not building with WS-Discovery support (-DSMB4K_WITH_WS_DISCOVERY=ON to enable)")

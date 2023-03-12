@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2009-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+# SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 #
 # KDSoap WS Discovery client uses 'signals' and 'slots'
 # 
@@ -62,12 +62,12 @@ endif ()
 add_library(smb4kcore SHARED ${smb4kcore_LIB_SRCS})
 
 target_link_libraries(smb4kcore
-  Qt5::Core
-  Qt5::Widgets
-  Qt5::Gui
-  Qt5::PrintSupport
-  Qt5::Network
-  Qt5::Qml
+  Qt${QT_MAJOR_VERSION}::Core
+  Qt${QT_MAJOR_VERSION}::Widgets
+  Qt${QT_MAJOR_VERSION}::Gui
+  Qt${QT_MAJOR_VERSION}::PrintSupport
+  Qt${QT_MAJOR_VERSION}::Network
+  Qt${QT_MAJOR_VERSION}::Qml
   KF5::ConfigCore
   KF5::ConfigGui
   KF5::AuthCore
