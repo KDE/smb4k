@@ -132,7 +132,7 @@
 ></listitem>
     <listitem
 ><para
->Implementa los sistemas de archivos &CIFS; (&Linux;) y SMBFS (BSD)</para
+>Support of the &CIFS; (&Linux;) and SMBFS (BSD) file system</para
 ></listitem>
     <listitem
 ><para
@@ -196,7 +196,7 @@
 ></listitem>
     <listitem
 ><para
->Capacidad para definir opciones personalizadas para servidores y recursos compartidos individuales</para
+>Ability to define custom options for individual servers and shares</para
 ></listitem>
     <listitem
 ><para
@@ -434,13 +434,13 @@
       
       <screenshot>
         <screeninfo
->Captura de pantalla del navegador del entorno de red con la barra de búsqueda visible</screeninfo>
+>Screenshot of the network neighborhood browser with visible search toolbar</screeninfo>
         <mediaobject>
           <imageobject
 ><imagedata fileref="network_neighborhood_browser_searching.png" format="PNG"/></imageobject>
           <textobject
 ><phrase
->El navegador del entorno de red con la barra de búsqueda visible</phrase
+>The network neighborhood browser with visible search toolbar</phrase
 ></textobject>
         </mediaobject>
       </screenshot>
@@ -547,7 +547,7 @@
           </term>
           <listitem>
             <para
->Añade un marcador al recurso compartido remoto que esté seleccionado en ese momento. Esta acción está desactivada si no hay ningún recurso compartido seleccionado.</para>
+>Add a bookmark to the currently selected remote share. This action is disabled if no share is selected.</para>
             <para
 >Consulte la sección <link linkend="bookmarks_adding"
 >Añadir marcadores</link
@@ -604,14 +604,14 @@
 ></keycombo
 ></shortcut
 > <guimenuitem
->Opciones personalizadas</guimenuitem
+>Custom Options</guimenuitem
 > </menuchoice>
           </term>
           <listitem>
             <para
->Abre el diálogo <link linkend="network_neighborhood_browser_defining_custom_options"
->opciones personalizadas</link
->. En él puede personalizar varias opciones para el servidor o el recurso compartido seleccionado. Si no hay ningún grupo de trabajo ni elemento seleccionado, esta entrada de menú estará desactivada.</para>
+>Open the <link linkend="network_neighborhood_browser_defining_custom_options"
+>Custom Options</link
+> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -736,7 +736,7 @@
 
     <sect2 id="network_neighborhood_browser_mounting">
       <title
->Montar un recurso compartido</title>
+>Mounting a Share</title>
 
       <para
 >Hay tres opciones disponibles para montar un recurso compartido remoto:</para>
@@ -748,27 +748,27 @@
 ></listitem>
         <listitem
 ><para
->Seleccionar el recurso compartido remoto y hacer clic en la entrada de menú <guimenuitem
->Montar</guimenuitem
->. De forma alternativa, puede pulsar el acceso rápido de teclado <keycombo action="simul"
+>Select the remote share and click the <guimenuitem
+>Mount</guimenuitem
+> menu entry. Alternatively, you can press the <keycombo action="simul"
 >&Ctrl; <keycap
 >M</keycap
 ></keycombo
->.</para
+> keyboard shortcut.</para
 ></listitem>
         <listitem
 ><para
->Si &smb4k; no fuera capaz de encontrar el servidor en el que se encuentra el recurso compartido, puede pulsar la entrada de menú <menuchoice
+>If &smb4k; was not able to find the server where the share is located, you can press the <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
->A</keycap
+>O</keycap
 ></keycombo
 ></shortcut
 ><guimenuitem
->Abrir diálogo de montaje</guimenuitem
+>Open Mount Dialog</guimenuitem
 ></menuchoice
-> y se abrirá un diálogo de montaje:</para>
+> menu entry and a mount dialog will be opened:</para>
         <screenshot>
           <screeninfo
 >Captura de pantalla del diálogo «Montar recurso compartido»</screeninfo>
@@ -958,12 +958,12 @@
 
     <sect2 id="network_neighborhood_browser_defining_custom_options">
       <title
->Definiendo opciones personalizadas</title>
+>Defining Custom Options</title>
 
       <para
->Use el diálogo <guilabel
->Opciones personalizadas</guilabel
-> si usted quiere</para>
+>Use the <guilabel
+>Custom Options</guilabel
+> dialog if you want to</para>
       <itemizedlist>
         <listitem
 ><para
@@ -995,14 +995,14 @@
 
       <screenshot>
         <screeninfo
->Captura de pantalla del diálogo de opciones personalizadas de un recurso compartido</screeninfo>
+>Screenshot of the custom options dialog for a share</screeninfo>
         <mediaobject>
           <imageobject>
             <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG"/>
           </imageobject>
           <textobject>
             <phrase
->El diálogo opciones personalizadas</phrase>
+>The custom options dialog</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
@@ -1127,14 +1127,14 @@
       </screenshot>
 
       <para
->Se puede cambiar entre las dos vistas seleccionando, bien la entrada apropiada en sub-menú <guimenuitem
->Modos de vista</guimenuitem
-> desde el menú <link linkend="mainwindow_overview"
+>You can switch between the two views by selecting either the appropriate entry in the <guimenuitem
+>View Modes</guimenuitem
+> submenu from the <link linkend="mainwindow_overview"
 ><guimenu
->Vistas compartidas</guimenu
+>Shares View</guimenu
 ></link
-> de la ventana principal o en la vista compartida <link linkend="shares_view_actions_popup_menu"
->menú emergente</link
+> menu of the main window or in the shares view's <link linkend="shares_view_actions_popup_menu"
+>popup menu</link
 >.</para>
       <para
 >By default, only your own mounts are displayed. However, you can tell &smb4k; to show all mounts by altering the <link linkend="configuration_page_mounting_basic_settings_behavior"
@@ -1213,9 +1213,9 @@
 >settings</link
 > in the configuration dialog. If no share is selected in the shares view, this button is disabled.</para>
             <para
->&smb4k; también proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
->preferencias</link
-> en el diálogo de configuración.</para>
+>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>settings</link
+> in the configuration dialog.</para>
             <para
 >Lea la sección <link linkend="shares_view_unmounting"
 >Desmontaje derecursos compartidos</link
@@ -1378,9 +1378,9 @@
 >Recursos compartidos inaccesibles</title>
 
       <para
->&smb4k; comprueba periódicamente todos los recursos compartidos montados para ver si aún siguen siendo accesibles. Si se encuentra un recurso compartido inaccesible, este se marcará con un <link linkend="shares_view_icons"
->icono de carpeta bloqueada</link
-> y ya no podrá abrirlo ni sincronizarlo. Desmóntelo y añádalo a un marcador si aún es posible.</para>
+>&smb4k; periodically checks all mounted shares if they are still accessible. If an inaccessible share is encountered, it will be marked with a <link linkend="shares_view_icons"
+>locked folder icon</link
+> and you will not be able to open or synchronize it anymore. Unmounting and adding a bookmark is still possible.</para>
       <note
 ><para
 >El programa puede quedar congelado durante un breve periodo de tiempo debido a un recurso compartido inaccesible. Se recuperará después.</para
@@ -1396,17 +1396,17 @@
 >Iconos</title>
 
       <para
->Se pueden presentar tres iconos distintos al usuario:</para>
+>Three different icons may be presented to the user:</para>
       <screenshot>
         <screeninfo
->Captura de pantalla de los tres diferentes iconos</screeninfo>
+>Screenshot of three different icons</screeninfo>
         <mediaobject>
           <imageobject>
             <imagedata fileref="shares_view_icons.png" format="PNG"/>
           </imageobject>
           <textobject>
             <phrase
->Tres iconos diferentes</phrase>
+>Three different icons</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
@@ -1417,15 +1417,15 @@
 ></listitem>
         <listitem
 ><para
->El icono central indica que el recurso compartido está en línea, es accesible y usted es su propietario. Puede realizar cualquier acción disponible sobre él.</para
+>The central icon indicates that the share is online, accessible, and owned by you. You may perform all available actions on it.</para
 ></listitem>
         <listitem
 ><para
->Todos los recursos compartidos marcados con un indicador de advertencia como el que se encuentra en la parte derecha, son propiedad de otro usuario. Solo se muestran si se configura las <link linkend="configuration_page_mounting_basic_settings_behavior"
->preferencias</link
-> para mostrarlos. En la configuración predeterminada, no se le permite desmontar estos recursos compartidos, pero también puede <link linkend="configuration_page_mounting_basic_settings_behavior"
->cambiar este comportamiento</link
->.</para
+>All shares marked with a warning sign like the one on the right hand side are owned by another user. They are only shown if you adjusted the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>settings</link
+> to display them. In the default configuration, you are not allowed to unmount these shares, but you can <link linkend="configuration_page_mounting_basic_settings_behavior"
+>change this behavior</link
+>, too.</para
 ></listitem>
       </itemizedlist>
     </sect2>
@@ -1439,7 +1439,7 @@
 >Arrastrar y soltar</title>
 
       <para
->&smb4k; implementa arrastrar y soltar en la vista de recursos compartidos. Para transferir o enlazar datos a un recurso compartido, arrastre los archivos o carpetas sobre el icono del recurso compartido y suéltelos ahí. Se abrirá un menú emergente preguntándole lo que quiere hacer. Elija la acción apropiada (copiar, mover o enlazar).</para>
+>&smb4k; supports drag-and-drop in the shares view. To transfer or link data to a share, drag the files and/or folders over the share icon and drop them there. A popup menu will open asking you what you want to do. Choose the appropriate action (copy, move or link).</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla de la vista de recursos compartidos después de que el usuario suelte un archivo</screeninfo>
@@ -1458,7 +1458,7 @@
 >&Ctrl;&Shift;</keycombo
 > para enlazar mientras se arrastra y suelta. La transferencia solo será correcta si el recurso compartido se montó con permisos de lectura y escritura.</para>
       <para
->Usted también puede arrastrar el recurso compartido completo al escritorio o a otra aplicación (&eg; &dolphin;)í. De nuevo, se abrirá un menú emergente preguntándole qué es lo que quiere hacer. Al elegir la operación apropiada recuerde que en la mayoría de las circunstancias, mover y enlazar el recurso compartido podría no ser una buena idea.</para>
+>You can also drag and drop the whole share to the desktop or to another application (&eg; &dolphin;). Again, a popup menu will open asking you, what you want to do. When choosing the appropriate operation, please remember that under most circumstances moving and linking the share might not be a good idea.</para>
     </sect2>
 
 <!-- 
@@ -1485,21 +1485,21 @@
 >. If you enabled the unmounting of shares that are owned by other users, you will be presented with a warning dialog prior to the actual unmount:</para>
       <screenshot>
         <screeninfo
->Captura de pantalla del diálogo de advertencia que se muestra cuando se va a desmontar un recurso compartido ajeno</screeninfo>
+>Screenshot of the warning dialog that is shown when a foreign share is to be unmounted</screeninfo>
         <mediaobject>
           <imageobject>
             <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
           </imageobject>
           <textobject>
             <phrase
->El diálogo de advertencia que se muestra al desmontar recursos compartidos ajenos</phrase>
+>The warning dialog that is shown when unmounting foreign shares</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
       <para
->Si pulsa en el botón <guibutton
->Sí</guibutton
->, el recurso compartido se desmontará definitivamente. Por tanto, ¡piénselo dos veces antes de decidir desmontar recursos compartidos que son propiedad de otros usuarios!</para>
+>If you click the <guibutton
+>Yes</guibutton
+> button, the share will definitely be unmounted. So, please think twice before you decide to unmount shares that are owned by other users!</para>
       <para
 >Inaccessible shares are unmounted with a "normal" unmount by default. If this should fail, you can <link linkend="configuration_page_mounting_basic_settings_behavior"
 >configure</link
@@ -1519,7 +1519,7 @@
 ></menuchoice
 >. Dependiendo de sus preferencias, esto desmontara recursos compartidos extranjeros e inaccesibles.</para>
       <para
->Después de un proceso de desmontaje satisfactorio, se le notifica al usuario. Si el desmontaje falla, se mostrará una notificación con el mensaje de error devuelto.</para>
+>After a successful unmount process, the user is notified. If unmounting fails, a notification with the returned error message will be shown.</para>
     </sect2>
 
 <!-- 
@@ -1587,7 +1587,7 @@
 
       <note>
         <para
->El número total de archivos que se muestra en diálogo de progreso corresponde al número de archivos presentes en el recurso compartido y no necesariamente al número total de archivos que serán transferidos.</para>
+>The total number of files that is shown in the progress dialog corresponds to the number of files present on the share and not necessarily to the total number of files that will actually be transferred.</para>
         <para
 >The progress is calculated from the number of transferred files devided by the total number of files present on the share. Their size is not considered. That means that one very large file adds to the progress as much as a very small one does. Also, due to the way <application
 >rsync</application
@@ -1667,7 +1667,7 @@
 >Ubicación y uso</title>
 
       <para
->Cuando se inicia &smb4k; un icono de estado aparece en la bandeja del sistema. Su estado pasará a activo si se encontraron grupos de trabajo o dominios en su entorno de red. Si no pasará a inactivo.</para>
+>When &smb4k; is started, a status icon appears in your system tray. Its status is set to active if workgroups or domains were discovered in your network neighborhood. Otherwise it is set to inactive.</para>
 
       <screenshot>
         <screeninfo
@@ -1830,11 +1830,11 @@
 >Add Bookmark</guimenuitem
 > menu item is not present.</para>
       <para
->En el menú <guimenuitem
->Perfiles</guimenuitem
->, están listados todos los perfiles <link linkend="profiles"
->definidos</link
->:</para>
+>In the <guimenuitem
+>Profiles</guimenuitem
+> menu, all <link linkend="profiles"
+>defined</link
+> profiles are listed:</para>
 
       <screenshot>
         <screeninfo
@@ -1850,10 +1850,10 @@
       </screenshot>
 
       <para
->Usted puede activar un perfil pulsándolo. Los perfiles pueden ser <link linkend="profiles"
->gestionados</link
-> vía el <link linkend="configuration_page_profiles"
->diálogo de configuración</link
+>You can activate a profile by clicking it. The profiles can be <link linkend="profiles"
+>managed</link
+> via the <link linkend="configuration_page_profiles"
+>configuration dialog</link
 >.</para>
       <para
 >The other menu entries are:</para>
@@ -1868,9 +1868,9 @@
           </term>
           <listitem>
             <para
->Abre el <link linkend="network_neighborhood_browser_mounting"
->diálogo</link
-> para montajes «manuales».</para>
+>Open the <link linkend="network_neighborhood_browser_mounting"
+>dialog</link
+> for "manual" mounts.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2074,7 +2074,7 @@
     </screenshot>
 
     <para
->Los recursos compartidos de marcadores se montan pulsando con el botón  izquierdo sobre el respectivo marcador. Los grupos de marcadores se pueden  introducir del mismo modo.</para>
+>Bookmarked shares can be mounted by left clicking the respective bookmark. Bookmark groups can be entered the same way.</para>
     <para
 >To edit or remove the bookmarks, you can press the <guibutton
 >Edit</guibutton
@@ -2114,12 +2114,12 @@
     </screenshot>
   
     <para
->Usted puede activar un determinado perfil al pulsarlo.</para>
+>You can activate a certain profile by clicking it.</para>
     <para
->Los perfiles pueden ser <link  linkend="profiles"
->gestionados</link
-> vía el <link linkend= "configuration_page_profiles"
->diálogo de configuración</link 
+>Profiles can be <link linkend="profiles"
+>managed</link
+> via the <link linkend="configuration_page_profiles"
+>configuration dialog</link
 >.</para>
   </sect2>
   
@@ -2283,7 +2283,7 @@
           <term>
             <menuchoice
 ><guimenuitem
->Montar todos los marcadores</guimenuitem
+>Mount All Bookmarks</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
@@ -2453,15 +2453,15 @@
 >Casa</guilabel
 >, se toma como perfil activo. Usted también puede activar el asistente de migración de perfiles.</para>
       <para
->Están predefinidos dos perfiles, <guilabel
->Casa</guilabel
-> y <guilabel
->Trabajo</guilabel
->, pero usted puede definir tantos perfiles como quiera. Se añade un nuevo perfil introduciendo su nombre en la línea de la página de configuración de <guibutton
->Perfiles</guibutton
-> y pulsando posteriormente <guibutton
->Añadir</guibutton
->.</para>
+>Two profiles are pre-defined, <guilabel
+>Home</guilabel
+> and <guilabel
+>Work</guilabel
+>, but you can define as many profiles as you want. A new profile is added by entering its name into the edit line on the <guibutton
+>Profiles</guibutton
+> configuration page and clicking <guibutton
+>Add</guibutton
+> afterwards.</para>
       <screenshot>
         <screeninfo
 >Captura de pantalla de la página de configuración de perfiles (añadir perfil)</screeninfo>
@@ -2490,15 +2490,15 @@
       <itemizedlist>
         <listitem
 ><para
->de un perfil que se va a eliminar a otro</para
+>of a profile that is to be removed to another one</para
 ></listitem>
         <listitem
 ><para
->o el perfil predeterminado a otro perfil específico</para
+>of the default profile to a specific other profile</para
 ></listitem>
         <listitem
 ><para
->o todos los perfiles regresan al perfil predeterminado</para
+>of all profiles back to the default profile</para
 ></listitem>
       </itemizedlist>
       <para
@@ -2645,7 +2645,7 @@
 
   <sect1 id="special_remarks">
     <title
->Notas especiales</title>
+>Special Remarks</title>
   
 <!-- 
       Using Smb4K : Special Remarks : Problems Browsing the Network Neighborhood with &Samba; 4.7 and above
@@ -3126,34 +3126,34 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Nombre NetBIOS</guibutton
+>NetBIOS name</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Establece el nombre NetBIOS de su equipo. El área de texto ya debería estar cumplimentada con la información encontrada en el archivo de configuración <filename
+>Set the NetBIOS name of your computer. The text box should already be filled with the information found in the <filename
 >smb.conf</filename
-> o con el nombre de su equipo. Bajo circunstancias normales, no hay necesidad de cambiar nada aquí.</para>
+> configuration file or with the hostname of your computer. Under normal circumstances there is no need to change anything here.</para>
               <para
->Predeterminado: nombre NetBIOS definido en <filename
+>Default: NetBIOS name defined in <filename
 >smb.conf</filename
-> o nombre del equipo</para>
+> or the hostname</para>
             </listitem>
           </varlistentry>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Dominio</guibutton
+>Domain</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Establece el nombre del dominio/grupo de trabajo en el que está su equipo. El área de texto ya debería estar cumplimentada con la información encontrada en el archivo de configuración <filename
+>Set the name of the domain/workgroup your computer is in. The text box should already be filled with the information found in the <filename
 >smb.conf</filename
-> o con el nombre de su equipo. Bajo circunstancias normales, no hay necesidad de cambiar nada aquí.</para>
+> configuration file. Under normal circumstances there is no need to change anything here.</para>
               <para
->Predeterminado: nombre de dominio definido en <filename
+>Default: domain name defined in <filename
 >smb.conf</filename
 ></para>
             </listitem>
@@ -3162,7 +3162,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Puerto SMB</guibutton
+>SMB port</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3243,14 +3243,14 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_network_samba_security">
         <title
->Seguridad</title>
+>Security</title>
         
         <variablelist>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Nivel de cifrado</guibutton
+>Encryption level</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3366,8 +3366,8 @@ ntlm auth = yes
 >Wake-On-LAN</title>
 
       <para
->Para poder utilizar la capacidad Wake-On-LAN de &smb4k;, debe activar este ajuste en esta sección. Los servidores que deben ser despertados tienen que definirse a través del <link linkend="network_neighborhood_browser_defining_custom_options"
->diálogo de opciones personalizadas</link
+>To be able to use the Wake-On-LAN capability of &smb4k;, you have to enable the setting in this section. The hosts that should to be woken up have to be defined through the <link linkend="network_neighborhood_browser_defining_custom_options"
+>custom options dialog</link
 >.</para>
 
       <variablelist>
@@ -3380,7 +3380,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Activar las características despertar-en-red (WOL). Wake-On-LAN es un estándar de red de equipo ethernet que permite a un equipo ser activado o despertado por un mensaje de red. Smb4K utiliza un paquete mágico enviado a través de un socket UDP para despertar a los servidores remotos. Si desea utilizar la característica despertar-en-red, debe activar esta opción.</para>
+>Enable Wake-on-LAN (WOL) features. Wake-On-LAN is an ethernet computer networking standard that allows a computer to be turned on or woken up by a network message. Smb4K uses a magic package send via a UDP socket to wake up remote servers. If you want to take advantage of the Wake-On-LAN feature, you need to enable this option.</para>
             <para
 >Predeterminado: no seleccionado</para>
           </listitem>
@@ -3394,7 +3394,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Este es el tiempo de espera, en segundos, que transcurre entre el envío de los paquetes mágicos Wake-On-LAN y la exploración del entorno de red o el montaje de un recurso compartido.</para>
+>This is the waiting time in seconds between the sending of the magic Wake-On-LAN packages and the scanning of the network neighborhood or the mounting of a share.</para>
             <para
 >Predeterminado: 5 s</para>
           </listitem>
@@ -3495,7 +3495,7 @@ ntlm auth = yes
 >Vuelve a montar todos los recursos compartidos que se montaron cuando usted salió del programa o cambió un perfil. Si la vuelta a montar del recurso compartido falla, Smb4K lo reintentará la próxima vez que se arranque. Los recursos compartidos que se montaron por otros usuarios se ignoran.</para>
               <note
 ><para
->Esta preferencia no afecta a la vuelta a montar automática de los recursos compartidos cuando su equipo despierta de un estado de sueño.</para
+>This setting does not affect the automatic remounting of shares when your computer woke up from a sleep state.</para
 ></note>
               <para
 >Predeterminado: no seleccionado</para>
@@ -3548,12 +3548,12 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Forzar el desmontaje de recursos compartidos inaccesibles</guibutton
+>Force the unmounting of inaccessible shares</guibutton
 ></menuchoice>
             </term>
             <listitem>
               <para
->Fuerza el desmontado de recursos compartidos inaccesibles (solo en &Linux;). En caso de que un recurso compartido no esté accesible, se ejecuta un desmontaje vago. Antes de que se haga el desmontaje real, se muestra un diálogo de advertencia pidiendo la aprobación del desmontaje.</para>
+>Force the unmounting of inaccessible shares (&Linux; only). In case a share is inaccessible, a lazy unmount is performed. Before the actual unmounting is done, a warning dialog is shown asking to approve the unmount.</para>
               <para
 >Predeterminado: no seleccionado</para>
             </listitem>
@@ -3602,11 +3602,11 @@ ntlm auth = yes
 >Opciones comunes de montaje (solo &Linux;)</title>
       
       <para
->La pestaña <guilabel
->Opciones comunes de montaje</guilabel
-> solo está disponible en &Linux;. Las preferencias en BSD pueden encontrarse en la sección <link linkend="configuration_page_mounting_mount_settings"
->Opciones de montaje (solo BSD)</link
-></para>
+>The <guilabel
+>Common Mount Settings</guilabel
+> tab is only available under &Linux;. The settings present under BSD can be found in the <link linkend="configuration_page_mounting_mount_settings"
+>Mount Settings (BSD only)</link
+> section.</para>
 
       <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
         <title
@@ -3640,7 +3640,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Establece el juego de caracteres que se usa en el lado del cliente (&ie;, su equipo).</para>
+>Sets the character set used by the client side (&ie; your computer).</para>
               <para
 >Default: default</para>
             </listitem>
@@ -3654,7 +3654,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Establece el número de puerto del sistema de archivos que se usa por <ulink url="man:/mount.cifs"
+>Sets the file system port number that is used by <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -3662,9 +3662,9 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> cuando se monta un recurso compartido remoto. El número de puerto predeterminado (445) debería funcionar para todos los sistemas operativos modernos. Si usted experimenta problemas, intente establecer el número de puerto a 139. Si el problema solo aparece con unos pocos servidores, se recomienda dejar esta opción sin tocar y usar el diálogo <link linkend="network_neighborhood_browser_defining_custom_options"
+> when mounting a remote share. The default port number (445) should work for all modern operating systems. If you experience problems, try setting the port number to 139. If the problems only occur with a few hosts, it is recommended to leave this option untouched and to use the <link linkend="network_neighborhood_browser_defining_custom_options"
 >Custom Options</link
-> para definir números de puertos individuales para los servidores problemáticos.</para>
+> dialog to define individual port numbers for the problematic hosts.</para>
               <para
 >This option is only available under &Linux;. Under BSD, the port for mounting shares is set with the <link linkend="configuration_page_network_samba_basic_settings"
 ><guibutton
@@ -3672,7 +3672,7 @@ ntlm auth = yes
 ></link
 > option.</para>
               <para
->Predeterminado: 445</para>
+>Default: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3733,7 +3733,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Establece los permisos que se aplican a los archivos. El valor se proporciona en octal y debe tener 4 dígitos. Para aprender más sobre el modo de archivo (file_mode), usted debería leer las páginas <ulink url="man:/mount"
+>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode (file_mode), you should read the <ulink url="man:/mount"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -3741,7 +3741,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> y <ulink url="man:/umask"
+> and <ulink url="man:/umask"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -3749,7 +3749,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> del manual.</para>
+> manual pages.</para>
             <para
 >Predeterminado: 0755</para>
           </listitem>
@@ -3763,7 +3763,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Establece los permisos que se aplican a los directorios. El valor se proporciona en octal y debe tener 4 dígitos. Para aprender más sobre el modo de carpeta (dir_mode), usted debería leer las páginas <ulink url="man:/mount"
+>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -3771,7 +3771,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> y <ulink url="man:/umask"
+> and <ulink url="man:/umask"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -3779,7 +3779,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> del manual.</para>
+> manual pages.</para>
             <para
 >Predeterminado: 0755</para>
           </listitem>
@@ -3797,13 +3797,13 @@ ntlm auth = yes
 >Preferencias avanzadas de montaje (solo &Linux;)</title>
       
       <para
->La pestaña <guilabel
->Preferencias avanzadas de montaje</guilabel
-> solo está disponible en &Linux;. Las preferencias en BSD pueden encontrarse en la sección <link linkend="configuration_page_mounting_mount_settings"
->Opciones de montaje (solo BSD)</link
-></para>
+>The <guilabel
+>Advanced Mount Settings</guilabel
+> tab is only available under &Linux;. The settings present under BSD can be found in the <link linkend="configuration_page_mounting_mount_settings"
+>Mount Settings (BSD only)</link
+> section.</para>
       <para
->La mayor parte de las opciones que usted puede definir aquí necesitan &Linux; kernel 2.6.15 o posterior para funcionar.</para>
+>Most of the options you can define here require &Linux; kernel 2.6.15 or later to work.</para>
       <variablelist>
         <varlistentry>
           <term>
@@ -3842,7 +3842,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->El lado del cliente comprueba si usted tiene el UID y GID correctos para manipular archivos y directorios en el recurso compartido. Esto es un añadido a la comprobación normal de ACL en la máquina destino hecha por el software del servidor. Usted podría querer desactivar esta característica, si el servidor admite las extensiones &CIFS; de Unix y usted no tiene, sin embargo, permiso para acceder al servidor.</para>
+>The client side checks if you have the correct UID and GID to manipulate files and directories on the share. This is in addition to the normal ACL check on the target machine done by the server software. You might want to switch this feature off, if the server(s) support the &CIFS; Unix extensions and you are, hence, not allowed to access the share.</para>
             <para
 >Predeterminado: seleccionado</para>
           </listitem>
@@ -3909,12 +3909,12 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->No usar bloqueo</guibutton
+>Do not use locking</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->No usa blocaje. No inicia lockd.</para>
+>Do not use locking. Do not start lockd.</para>
             <para
 >Predeterminado: no seleccionado</para>
           </listitem>
@@ -3928,7 +3928,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Define que versión del protocolo SMB se va a usar.</para>
+>Define which version of the SMB protocol is to be used.</para>
             <para
 >Se permiten los siguientes valores:</para>
             <variablelist>
@@ -3941,9 +3941,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Se usa el parámetro de línea de órdenes <option
+>The <option
 >vers=1.0</option
->. Esto provoca que <ulink url="man:/mount.cifs"
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -3951,7 +3951,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilice el protocolo &CIFS;/SMBv1 clásico.</para>
+> to use the classic &CIFS;/SMBv1 protocol.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -3963,9 +3963,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Se usa el argumento de línea de órdenes <option
+>The <option
 >vers=2.0</option
->. Esto provoca que <ulink url="man:/mount.cifs"
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -3973,10 +3973,10 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> utilice el protocolo SMBv2.002. Esto se introdujo inicialmente en Windows Vista Service Pack 1, y Windows Server 2008.</para>
+> to use the SMBv2.002 protocol. This was initially introduced in Windows Vista Service Pack 1, and Windows Server 2008.</para>
                   <note>
                     <para
->Tenga en cuenta que la versión inicial de Windows Vista habla una dialecto ligeramente diferente (2.000) que no está implementado.</para>
+>Note that the initial release version of Windows Vista spoke a slightly different dialect (2.000) that is not supported.</para>
                   </note>
                 </listitem>
               </varlistentry>
@@ -4077,9 +4077,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Se usa el argumento de línea de órdenes<option
+>The <option
 >cache=none</option
->. Esto provoca que <ulink url="man:/mount.cifs"
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4087,7 +4087,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> no cachee datos de archivos.</para>
+> to not cache file data at all.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4099,9 +4099,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Se usa el argumento de línea de órdenes <option
+>The <option
 >cache=strict</option
->. Esto provoca que <ulink url="man:/mount.cifs"
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4109,7 +4109,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> siga el protocolo &CIFS;/SMB2 estrictamente.</para>
+> to follow the &CIFS;/SMB2 protocol strictly.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4121,9 +4121,9 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Se usa el argumento de línea de órdenes <option
+>The <option
 >cache=loose</option
->. Esto provoca que <ulink url="man:/mount.cifs"
+> command line argument is used. This causes <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4131,13 +4131,13 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> permita la pérdida de semántica de caché.</para>
+> to allow loose caching semantics.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
             <para
->Predeterminado: <guibutton
->Seguir el protocolo &CIFS;/SMB2 estrictamente</guibutton
+>Default: <guibutton
+>Follow the &CIFS;/SMB2 protocol strictly</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4354,8 +4354,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Predeterminado: <guibutton
->protocolo NTLMSSP</guibutton
+>Default: <guibutton
+>NTLMSSP protocol</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4380,7 +4380,7 @@ ntlm auth = yes
 >Aceptar</guibutton
 > en el diálogo de entrada, se comprobarán las opciones contra una lista blanca. Todas las entradas válidas se aceptan e introducen en la edición de línea.</para>
             <para
->Predeterminado: vacío</para>
+>Default: empty</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4445,7 +4445,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Establece los permisos que se aplican a los archivos. El valor se proporciona en octal y debe tener 4 dígitos. Para aprender más sobre el modo del archivo, usted debería leer las páginas <ulink url="man:/mount_smbfs"
+>Sets the permissions that are applied to files. The value is given in octal and has to have 4 digits. To learn more about the file mode, you should read the <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4453,7 +4453,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> y <ulink url="man:/umask"
+> and <ulink url="man:/umask"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4461,7 +4461,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> del manual.</para>
+> manual pages.</para>
               <para
 >Predeterminado: 0755</para>
             </listitem>
@@ -4475,7 +4475,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Establece los permisos que se aplican a los directorios. El valor se proporciona en octal y debe tener 4 dígitos. Para aprender más sobre el modo de carpeta (dir_mode), usted debería leer las páginas <ulink url="man:/mount_smbfs"
+>Sets the permissions that are applied to directories. The value is given in octal and has to have 4 digits. To learn more about the directory mode (dir_mode), you should read the <ulink url="man:/mount_smbfs"
 ><citerefentry
 ><refentrytitle
 >mount_smbfs</refentrytitle
@@ -4483,7 +4483,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> y <ulink url="man:/umask"
+> and <ulink url="man:/umask"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4491,7 +4491,7 @@ ntlm auth = yes
 >2</manvolnum
 ></citerefentry
 ></ulink
-> del manual.</para>
+> manual pages.</para>
               <para
 >Predeterminado: 0755</para>
             </listitem>
@@ -4599,9 +4599,9 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Los nombres y contraseñas de inicio de sesión se almacenan en una subcarpeta denominada <filename role="directory"
+>The login names and passwords are stored in a subfolder named <filename role="directory"
 >Smb4K</filename
-> de la actual cartera de red (predeterminado: «kdewallet»). La ventaja de este método es que los datos de autenticación se almacenan permanentemente y se cifran en su disco duro. Usted solo tiene que proporcionarlos una vez y la siguiente vez que se necesiten, &smb4k; los leerá de la cartera. Si usted desmarca esta opción, los datos de autenticación no se guardarán.</para>
+> of the current network wallet (default: "kdewallet"). The advantage of this method is, that the authentication data is stored permanently and encrypted on your hard drive. You only have to provide it once and the next time it is needed, &smb4k; will read it from the wallet. If you uncheck this option, the authentication data won't be stored at all.</para>
             <para
 >Predeterminado: seleccionado</para>
           </listitem>
@@ -4658,8 +4658,8 @@ ntlm auth = yes
 >Clear List</guimenuitem
 > item.</para>
       <para
->Después de que haya finalizado la edición, los cambios pueden aplicarse a la cartera pulsando <guibutton
->Guardar</guibutton
+>After you finished editing, the changes can be committed to the wallet by pressing <guibutton
+>Save</guibutton
 >.</para>
     </sect2>
   </sect1>
@@ -4716,7 +4716,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Destino predeterminado</title>
+>Default Destination</title>
 
         <variablelist>
           <varlistentry>
@@ -4764,19 +4764,19 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opción: <option
+>Option: <option
 >-a</option
 >/<option
 >--archive</option
->, igual que <option
+>, same as <option
 >-rlptgoD</option
 > (no <option
 >-H</option
 >)</para>
               <para
->Activa el modo de archivado. Esto es un modo rápido de decir que usted quiere recursividad y quiere guardar casi todo. Tenga en cuenta que <option
+>Switch the archive mode on. This is a quick way of saying you want recursion and want to preserve almost everything. Note that <option
 >-a</option
-> no preserva enlaces duros, porque encontrar archivos múltiplemente enlazados es caro. Debe especificarlo separadamente con <option
+> does not preserve hardlinks, because finding multiply-linked files is expensive. You must separately specify <option
 >-H</option
 >.</para>
               <para
@@ -4890,7 +4890,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title
->Copia de seguridad</title>
+>Backup</title>
 
         <variablelist>
           <varlistentry>
@@ -4978,11 +4978,11 @@ ntlm auth = yes
 >--backup-dir=DIR</option
 ></para>
               <para
->En combinación con la opción <option
+>In combination with the <option
 >--backup</option
->, esto le indica a rsync que almacene todas las copias de respaldo en la carpeta especificada. Esto es muy útil para copias de respaldo incrementales. Usted puede, además, especificar un sufijo de respaldo usando la opción <option
+> option, this tells rsync to store all backups in the specified folder. This is very useful for incremental backups. You can additionally specify a backup suffix using the <option
 >--suffix</option
-> (de otro modo los archivos respaldados en la carpeta especificada mantendrán sus nombres de archivo originales).</para>
+> option (otherwise the files backed up in the specified folder will keep their original filenames).</para>
               <para
 >Esta opción solo está disponible si usted marcó la opción <guilabel
 >Hacer copias de respaldo</guilabel
@@ -5302,7 +5302,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opción: <option
+>Option: <option
 >-H</option
 >/<option
 >--munge-links</option
@@ -5415,7 +5415,7 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_file_handling_perms">
         <title
->Permisos, &etc;</title>
+>Permissions, &etc;</title>
 
         <variablelist>
           <varlistentry>
@@ -5642,7 +5642,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Establecer el nivel de compresión a usar (--compress-level=NUM). Si NUM no es cero, se aplicará el argumento --compress.</para>
+>Explicitly set the compression level to use (--compress-level=NUM). If NUM is non-zero, the --compress argument is implied.</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5654,7 +5654,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Sobrescribe la lista de sufijos de archivos que no se comprimirán (--skip-compress=LISTA). La LISTA debe ser uno o más sufijos (sin el punto) separados por barras. Puede especificar una cadena vacía para indicar que ningún archivo se dejará sin comprimir. La lista de sufijos por omisión será remplazada con esta lista. Para más detalles, vea el manual de rsync.</para>
+>Overwrite the list of file suffixes that will not be compressed (--skip-compress=LIST). The LIST should be one or more file suffixes (without the dot) separated by slashes. You may specify an empty string to indicate that no file should be skipped. The default list of suffixes will be replaced by this list. For further details, see the manual page of rsync.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -5674,7 +5674,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opción: <option
+>Option: <option
 >--min-size=NUM</option
 ></para>
               <para
@@ -5688,7 +5688,7 @@ ntlm auth = yes
 ></ulink
 > que evite transferir cualquier archivo que sea menor que el TAMAÑO especificado, lo que puede ayudar en no transferir archivos pequeños nulos.</para>
               <para
->Predeterminado: no seleccionado; NUM: 0 Kb</para>
+>Default: not selected; NUM: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5700,7 +5700,7 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Opción: <option
+>Option: <option
 >--max-size=NUM</option
 ></para>
               <para
@@ -5714,7 +5714,7 @@ ntlm auth = yes
 ></ulink
 > que evite transferir cualquier archivo que sea más grande que el TAMAÑO especificado.</para>
               <para
->Predeterminado: no seleccionado; NUM: 0 Kb</para>
+>Default: not selected; NUM: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5806,9 +5806,9 @@ ntlm auth = yes
 >--bwlimit=TASA</option
 ></para>
               <para
->Establecer la máxima tasa de transferencia de datos en kilobytes por segundo.</para>
+>Set the maximum data transfer rate in kilobytes per second.</para>
               <para
->Predeterminado: no seleccionado; TASA: 0 KiB/s</para>
+>Default: not selected; RATE: 0 KiB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6253,7 +6253,7 @@ ntlm auth = yes
 >página del manual</ulink
 > para información detallada sobre esta opción.</para>
               <para
->Predeterminado: vacío</para>
+>Default: empty</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6476,35 +6476,35 @@ ntlm auth = yes
 
   <sect1 id="configuration_page_custom_options">
     <title
->Opciones personalizadas</title>
+>Custom Options</title>
 
     <para
->Todos los servidores y recursos compartidos para los que usted definió opciones personalizadas se listan aquí.</para>
+>All servers and shares for which you defined custom options are listed here.</para>
 
     <screenshot>
       <screeninfo
->Captura de pantalla de la pestaña de configuración «Opciones personalizadas»</screeninfo>
+>Screenshot of the "Custom Options" configuration tab</screeninfo>
       <mediaobject>
         <imageobject
 ><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
->La pestaña de configuración «Opciones personalizadas»</phrase
+>The "Custom Options" configuration tab</phrase
 ></textobject>
       </mediaobject>
     </screenshot>
 
     <para
->Las opciones definidas para cada elemento de red pueden editarse, bien por doble clic en una entrada de la vista de lista, o bien al elegir la opción <guimenuitem
->Editar</guimenuitem
-> del menú emergente (clic derecho sobre el elemento seleccionado). Las opciones personalizadas se comienzan a cargar y pueden editarse. Para eliminar una entrada, pulse con el botón derecho y elija la opción <guimenuitem
->Eliminar</guimenuitem
-> del menú emergente. Todos los elementos de red pueden eliminarse de una vez eligiendo la opción <guimenuitem
->Despejar lista</guimenuitem
->.</para>
+>The options defined for a network item can be edited by either double clicking an entry in the list view or by choosing the <guimenuitem
+>Edit</guimenuitem
+> item from the popup menu (right click on the selected item). The custom options are then being loaded and can be edited. To remove an entry, right click it and choose the <guimenuitem
+>Remove</guimenuitem
+> item from the popup menu. All network items may be removed at once by choosing the <guimenuitem
+>Clear List</guimenuitem
+> item.</para>
 
     <para
->Las opciones personalizadas son accesibles desde las pestañas de la derecha.</para>
+>The custom options are accessible through the tabs on the right.</para>
     
 <!--
       Configuring Smb4K : Custom Options : Network Item
@@ -6512,12 +6512,12 @@ ntlm auth = yes
     
     <sect2 id="configuration_page_custom_options_network_item">
       <title
->Elemento de red</title>
+>Network Item</title>
       
       <para
->Esta pestaña sirve como recurso de información. En la sección <guilabel
->Identificación</guilabel
-> se muestran el grupo de trabajo o el dominio del elemento de red, su localización y la dirección IP. La dirección IP puede ser editada, en caso de que sea necesario.</para>
+>This tab mostly serves as resource of information. In the <guilabel
+>Identification</guilabel
+> groupbox the workgroup or domain of the network item, its location and IP address are given. The IP address can be edited, in case you might need to adjust it.</para>
     </sect2>
     
 <!--
@@ -6604,9 +6604,9 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Obliga a que Smb4k use perfiles. Esto le permite definir diferentes marcadores y opciones personalizadas para cada perfil. Esto es especialmente útil si usted está usando un portátil en diferentes entornos de red, &eg; en casa y en el trabajo. En la primera activación de esta preferencia, la primera entrada en la <link linkend="configuration_page_profiles_profiles"
->lista de perfiles</link
-> se convertirá en el perfil activo.</para>
+>Make Smb4K use profiles. This enables you to define different bookmarks and custom options for each profile. This is especially useful if you are using a laptop in different network neighborhoods, &eg; at home and at work. When enabling this setting the first time, the first entry in the <link linkend="configuration_page_profiles_profiles"
+>profiles list</link
+> will be the active profile.</para>
             <para
 >Predeterminado: no seleccionado</para>
           </listitem>
@@ -6806,7 +6806,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Abre la barra de búsqueda en el navegador del entorno de red.</para>
+>Open the search toolbar in the network neighborhood browser.</para>
         </listitem>
       </varlistentry
 > 
@@ -6881,16 +6881,16 @@ ntlm auth = yes
 ></keycombo
 ></shortcut
 > <guimenu
->Red</guimenu
+>Network</guimenu
 > <guimenuitem
->Opciones personalizadas</guimenuitem
+>Custom Options</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
           <para
->Abre el diálogo <link linkend="network_neighborhood_browser_defining_custom_options"
->opciones personalizadas</link
->. En él puede personalizar varias opciones para el servidor o el recurso compartido seleccionado. Si no hay ningún grupo de trabajo ni elemento seleccionado, esta entrada de menú estará desactivada.</para>
+>Open the <link linkend="network_neighborhood_browser_defining_custom_options"
+>Custom Options</link
+> dialog. You can set several custom options for the selected server or share. If a workgroup or no item is selected, this menu entry is disabled.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -7062,9 +7062,9 @@ ntlm auth = yes
 >preferencias</link
 > en el diálogo de configuración. Si no hay ningún recurso compartido seleccionado en la vista de recursos compartidos, este botón está desactivado.</para>
             <para
->&smb4k; también proporciona la capacidad de forzar el desmontaje de los recursos compartidos (solo en &Linux;). Esto puede ser de utilidad con los recursos compartidos inaccesibles que no se pueden desmontar de la forma habitual. Para activar esta característica, necesita modificar las <link linkend="configuration_page_mounting_basic_settings_behavior"
->preferencias</link
-> en el diálogo de configuración.</para>
+>&smb4k; also provides the ability to force the unmounting of shares (&Linux; only). This might be useful with inaccessible shares that cannot be unmounted the normal way. To enable this feature, you need to modify the <link linkend="configuration_page_mounting_basic_settings_behavior"
+>settings</link
+> in the configuration dialog.</para>
             <para
 >Lea la sección <link linkend="shares_view_unmounting"
 >Desmontaje derecursos compartidos</link
@@ -7230,14 +7230,14 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><guimenu
->Marcadores</guimenu
+>Bookmarks</guimenu
 > <guimenuitem
->Montar todos los marcadores</guimenuitem
+>Mount All Bookmarks</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
           <para
->Monta todos los marcadores de nivel superior al mismo tiempo. Esta opción está desactivada si todos los recursos compartidos están montados. Esta acción no está presente si no hay marcadores de nivel superior.</para>
+>Mount all top-level bookmarks at once. It is disabled if all bookmarked shares are mounted. This action is not present if there are no toplevel bookmarks.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -7263,7 +7263,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->En este submenú, usted puede activar o desactivar las barras de herramientas.</para>
+>In this submenu you can enable or disable the toolbars.</para>
         </listitem>
       </varlistentry>
       <varlistentry>

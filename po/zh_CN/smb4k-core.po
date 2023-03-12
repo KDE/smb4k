@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-09 02:49+0000\n"
-"PO-Revision-Date: 2023-02-24 12:58\n"
+"PO-Revision-Date: 2023-03-11 04:55\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -171,10 +171,9 @@ msgstr "悬停时显示关于当前网络共享的各种信息。"
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, fuzzy, kde-format
-#| msgid "File mode:"
+#, kde-format
 msgid "View mode:"
-msgstr "文件模式："
+msgstr "视图模式："
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -200,41 +199,37 @@ msgstr "列表视图"
 #: smb4k.kcfg:90
 #, kde-format
 msgid "Icon size for the icon view:"
-msgstr ""
+msgstr "图标视图的图标大小："
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "共享视图模式："
+msgstr "设置共享视图的图标模式下的图标大小。"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
 #, kde-format
 msgid "Icon size for the list view:"
-msgstr ""
+msgstr "列表视图的图标大小："
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:98
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "共享视图模式："
+msgstr "设置共享视图的列表模式下的图标大小。"
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, fuzzy, kde-format
-#| msgid "Icon View"
+#, kde-format
 msgid "Icon size:"
-msgstr "图标视图"
+msgstr "图标大小："
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
+#, kde-format
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
+msgstr "设置网上邻居浏览器的图标大小。"
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -383,26 +378,21 @@ msgstr "此选项用于控制 Samba 客户端程序库尝试使用的最高 SMB 
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, fuzzy, kde-format
-#| msgid "SMB port:"
+#, kde-format
 msgid "Set the SMB port to:"
 msgstr "SMB 端口："
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the port that is used for connecting to remote servers with the "
-#| "client programs net, smbclient and smbtree. The default value is 139 "
-#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+#, kde-format
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"这是用于通过 net、smbclient、smbtree 等程序连接到远程服务器的端口。默认值是 "
-"139 (NetBIOS)。在 FreeBSD 环境下，此设置也被用于挂载。"
+"这是用于连接到远程服务器的端口。默认值是 139 (NetBIOS)。在 FreeBSD 环境下，此"
+"设置也被用于挂载。"
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -469,8 +459,7 @@ msgstr "使用 Winbind ccache 进行身份验证。"
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, fuzzy, kde-format
-#| msgid "Encryption level:"
+#, kde-format
 msgid "Set the encryption level to:"
 msgstr "加密级别："
 
@@ -553,13 +542,7 @@ msgstr "启用局域网唤醒功能"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, fuzzy, kde-format
-#| msgid ""
-#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
-#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
-#| "magic package send via a UDP socket to wake up remote servers. If you "
-#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
-#| "this option."
+#, kde-format
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -578,11 +561,7 @@ msgstr "等待时间："
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the waiting time in seconds between the sending of the magic Wake-"
-#| "On-LAN packages and the scanning of the network neighborhood or the "
-#| "mounting of a share."
+#, kde-format
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -988,7 +967,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "保留访问控制列表 (ACL)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -999,60 +978,57 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"保留访问控制列表。此选项将命令 rsync 把目标位置的 ACL 更新为来源位置的 ACL。"
+"此选项隐含了 --perms 选项。此选项只能在来源和目标系统的 ACL 项相互兼容时才能"
+"正常工作。"
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "保留修改时间"
+msgstr "保留扩展属性"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
-msgstr "保留用户组 (-g, --group)。目标文件的用户组将按照来源文件进行设置。"
+msgstr ""
+"保留扩展属性。此选项将命令 rsync 把目标位置的扩展属性更新为来源位置的扩展属"
+"性。"
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "保留修改时间"
+msgstr "保留访问时间"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
-msgstr "保留用户组 (-g, --group)。目标文件的用户组将按照来源文件进行设置。"
+msgstr ""
+"保留访问时间。此选项将命令 rsync 把目标文件的访问 (使用) 时间更新为来源文件的"
+"访问时间。"
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "保留修改时间"
+msgstr "保留创建时间"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
-msgstr "保留用户组 (-g, --group)。目标文件的用户组将按照来源文件进行设置。"
+msgstr ""
+"保留创建时间。此选项将命令 rsync 把目标文件的创建 (新建) 时间更新为来源文件的"
+"创建时间。"
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402
@@ -1514,10 +1490,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "自定义过滤规则："
+msgstr "自定义过滤规则"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -1926,8 +1901,7 @@ msgid "Clear"
 msgstr "清除"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
 msgstr "用户名："
 
@@ -1960,17 +1934,17 @@ msgstr "文件 %1 无法打印到 %2"
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
-msgstr ""
+msgstr "Zeroconf 守护进程未在运行。没有通过 DNS-SD 发现任何服务器。"
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "此版本的 KDE 软件不提供 Zeroconf 支持。"
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Zeroconf 发生未知错误。"
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2049,24 +2023,19 @@ msgid "Print"
 msgstr "打印"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "挂载设置"
+msgstr "自定义设置"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr "<p>指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr "<p>指定共享 <b>%1</b> 的自定义选项。</p>"
 
@@ -2138,15 +2107,13 @@ msgstr "操作"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
+#, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "挂载共享前发送局域网唤醒魔术封包"
 
@@ -2196,16 +2163,13 @@ msgid "Clear List"
 msgstr "清除列表"
 
 #: smb4kmounter.cpp:756
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>共享 <b>%1</b> 已挂载到 <br><b>%2</b>，所有者用户为 <b>%3</b>。</p><p>"
-"您确定要卸载它吗？</p></qt>"
+"<p>共享 <b>%1</b> 已挂载到 <br><b>%2</b>，所有者用户为 <b>%3</b>。</p><p>您确"
+"定要卸载它吗？</p>"
 
 #: smb4kmounter.cpp:761
 #, kde-format
@@ -3103,7 +3067,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "不发送字节范围锁定请求"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3114,6 +3078,9 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"不向服务器发送字节范围锁定请求。某些与 CIFS 风格的强制性字节范围锁定不兼容的"
+"应用程序 (大多数 CIFS 服务器尚未支持请求咨询字节范围锁定) 可能需要此选项才能"
+"正常工作。"
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3342,8 +3309,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>共享 <b>%1</b> 已挂载到 <b>%2</b>。</p>"
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "打开"
@@ -3532,19 +3498,16 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>传递的 URL 无效</p>"
 
 #: smb4knotification.cpp:424
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
-msgstr "网络通信失败，错误消息：<s>%1</s>"
+msgstr "<p>网络通信失败，错误消息：<s>%1</s></p>"
 
 #: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Zeroconf 服务出错：<s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
@@ -3672,39 +3635,3 @@ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
-
-#~ msgid "NetBIOS name:"
-#~ msgstr "NetBIOS 名称："
-
-#~ msgid ""
-#~ "This is the NetBIOS name of this computer that is used by Smb4K. By "
-#~ "default, it is either the NetBIOS name that is defined in the smb.conf "
-#~ "file or the host name."
-#~ msgstr ""
-#~ "这是 Smb4K 使用的本机 NetBIOS 名称。默认情况下，它要么是 smb.conf 配置文件"
-#~ "中指定的 NetBIOS 名称，要么是主机名称。"
-
-#~ msgid ""
-#~ "This is the workgroup or domain this computer is or should be in. By "
-#~ "default, it is the workgroup that is defined in the smb.conf file."
-#~ msgstr ""
-#~ "这是本机所在的工作组或者域。默认情况下是 smb.conf 配置文件中指定的工作组。"
-
-#~ msgid "Login:"
-#~ msgstr "登录名："
-
-#~ msgid "Custom Options"
-#~ msgstr "自定义选项"
-
-#~ msgid "Do not use locking"
-#~ msgstr "不使用锁定"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "不使用锁定。不启动 lockd。"
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Samba 程序套件的 <b>smb.conf</b> 配置文件丢失。虽然这不是一个致命的错误，"
-#~ "但你应该考虑创建 smb.conf 配置文件。"
