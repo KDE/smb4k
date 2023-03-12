@@ -1,7 +1,7 @@
 /*
     This class provides the interface to the libsmbclient library.
 
-    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -11,6 +11,7 @@
 #include "smb4kclient_p.h"
 #include "smb4kcustomoptions.h"
 #include "smb4kcustomoptionsmanager.h"
+#include "smb4kfile.h"
 #include "smb4kglobal.h"
 #include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
