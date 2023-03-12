@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-09 02:49+0000\n"
-"PO-Revision-Date: 2022-07-23 23:54+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2022-11-09 23:31+0100\n"
+"Last-Translator: Frank Steinmetzger <dev-kde@felsenfleischer.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -236,27 +236,19 @@ msgid "Enter the default login information."
 msgstr "Tragen Sie die Standardanmeldung ein."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:401
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr ""
-"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für den Rechner <b>"
-"%1</b> ein.</qt>"
+msgstr "Benutzernamen und Passwort des Passwortspeicher-Eintrags %1 festlegen."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for the default login."
-msgstr ""
-"<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für den Rechner <b>"
-"%1</b> ein.</qt>"
+msgstr "Benutzernamen und Passwort der Standardanmeldung festlegen."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "Alles in Ordnung."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -401,22 +393,19 @@ msgstr ""
 "benutzerdefinierte Einstellungen fest.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "Erweiterte Einstellungen zum Einhängen"
+msgstr "Erweiterte Einstellungen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization prefix:"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Basisordner für den Abgleich:"
+msgstr "Abgleichordner"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Sicherungskopien"
+msgstr "Sicherungen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -447,7 +436,7 @@ msgstr "Eigentümer"
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "Dateiattribute && -besitzer"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -461,7 +450,8 @@ msgstr "Dateien"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:343
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
-#, kde-format
+#, fuzzy, kde-format
+#| msgid " kB"
 msgid " kB"
 msgstr " kB"
 
@@ -498,10 +488,9 @@ msgid "File Deletion"
 msgstr "Löschen von Dateien"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "General Filtering Settings"
-msgstr "Allgemeine Einstellungen"
+msgstr "Allgemeine Filter-Einstellungen"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -914,10 +903,9 @@ msgid "Mountpoint:"
 msgstr "Einhängepunkt:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Benutzer:"
+msgstr "Benutzername:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
