@@ -27,6 +27,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QPointer>
+#include <QRegularExpression>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 
@@ -321,9 +322,9 @@ void Smb4KCustomOptionsManager::readCustomOptions()
                                             } else if (xmlReader.name() == QStringLiteral("mac_address")) {
                                                 QString macAddress = xmlReader.readElementText();
 
-                                                QRegExp exp(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
+                                                QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
-                                                if (exp.exactMatch(macAddress)) {
+                                                if (expression.match(macAddress).hasMatch()) {
                                                     options->setMACAddress(macAddress);
                                                 }
                                             } else if (xmlReader.name() == QStringLiteral("wol_send_before_first_scan")) {

@@ -20,6 +20,7 @@
 #include <QLabel>
 #include <QLocale>
 #include <QPointer>
+#include <QRegularExpression>
 #include <QStandardPaths>
 #include <QTimer>
 #include <QWindow>
@@ -459,7 +460,8 @@ void Smb4KSyncJob::slotReadStandardOutput()
             }
 
             // Speed
-            QString speedString = transferInfo.section(QStringLiteral(" "), 2, 2).section(QRegExp(QStringLiteral("../s")), 0, 0);
+            QRegularExpression expression(QStringLiteral("../s"));
+            QString speedString = transferInfo.section(QStringLiteral(" "), 2, 2).section(expression, 0, 0);
 
             if (!speedString.isEmpty()) {
                 QLocale locale;

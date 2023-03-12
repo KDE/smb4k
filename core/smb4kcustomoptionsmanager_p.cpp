@@ -23,6 +23,7 @@
 #include <QLabel>
 #include <QList>
 #include <QPushButton>
+#include <QRegularExpression>
 #include <QSpinBox>
 #include <QTabWidget>
 #include <QVBoxLayout>
@@ -1384,9 +1385,9 @@ bool Smb4KCustomOptionsDialog::checkDefaultValues()
         KLineEdit *macAddress = findChild<KLineEdit *>(QStringLiteral("MACAddress"));
 
         if (macAddress) {
-            QRegExp exp(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
+            QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
-            if (exp.exactMatch(macAddress->text())) {
+            if (expression.match(macAddress->text()).hasMatch()) {
                 return false;
             }
         }
@@ -1953,18 +1954,18 @@ void Smb4KCustomOptionsDialog::slotOKClicked()
 
 void Smb4KCustomOptionsDialog::slotEnableWOLFeatures(const QString &mac)
 {
-    QRegExp exp(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
+    QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
     QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeScan"));
 
     if (sendPacketBeforeScan) {
-        sendPacketBeforeScan->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
+        sendPacketBeforeScan->setEnabled(m_options->type() == Host && expression.match(mac).hasMatch());
     }
 
     QCheckBox *sendPacketBeforeMount = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeMount"));
 
     if (sendPacketBeforeMount) {
-        sendPacketBeforeMount->setEnabled(m_options->type() == Host && exp.exactMatch(mac));
+        sendPacketBeforeMount->setEnabled(m_options->type() == Host && expression.match(mac).hasMatch());
     }
 }
 

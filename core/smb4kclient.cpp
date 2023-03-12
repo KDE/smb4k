@@ -11,7 +11,6 @@
 #include "smb4kclient_p.h"
 #include "smb4kcustomoptions.h"
 #include "smb4kcustomoptionsmanager.h"
-#include "smb4kfile.h"
 #include "smb4kglobal.h"
 #include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
