@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-06 00:48+0000\n"
+"POT-Creation-Date: 2023-03-13 00:49+0000\n"
 "PO-Revision-Date: 2023-03-11 04:53\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1842,13 +1842,13 @@ msgstr ""
 "当配置文件被移除，或者在启用、禁用使用配置文件功能时，使用配置文件迁移辅助工"
 "具。该工具可以将某个配置文件中保存的所有设置迁移到另一个配置文件。"
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:300
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
-#: smb4kbookmarkhandler.cpp:335 smb4kcustomoptionsmanager.cpp:267
+#: smb4kbookmarkhandler.cpp:335 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "不支持 %1 格式。"
@@ -2022,117 +2022,117 @@ msgstr "这是你想要打印的份数。"
 msgid "Print"
 msgstr "打印"
 
-#: smb4kcustomoptionsmanager_p.cpp:46
+#: smb4kcustomoptionsmanager_p.cpp:47
 #, kde-format
 msgid "Custom Settings"
 msgstr "自定义设置"
 
-#: smb4kcustomoptionsmanager_p.cpp:69
+#: smb4kcustomoptionsmanager_p.cpp:70
 #, kde-format
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr "<p>指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。</p>"
 
-#: smb4kcustomoptionsmanager_p.cpp:73
+#: smb4kcustomoptionsmanager_p.cpp:74
 #, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr "<p>指定共享 <b>%1</b> 的自定义选项。</p>"
 
-#: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
-#: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709
-#: smb4kcustomoptionsmanager_p.cpp:934
+#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
+#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
+#: smb4kcustomoptionsmanager_p.cpp:935
 #, kde-format
 msgid "Common Options"
 msgstr "通用选项"
 
-#: smb4kcustomoptionsmanager_p.cpp:171 smb4kcustomoptionsmanager_p.cpp:620
+#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
 #, kde-format
 msgid "Always remount this share"
 msgstr "总是重新挂载此共享"
 
-#: smb4kcustomoptionsmanager_p.cpp:217
+#: smb4kcustomoptionsmanager_p.cpp:218
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS Unix 扩展支持"
 
-#: smb4kcustomoptionsmanager_p.cpp:220
+#: smb4kcustomoptionsmanager_p.cpp:221
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "此服务器支持 CIFS Unix 扩展"
 
-#: smb4kcustomoptionsmanager_p.cpp:299
+#: smb4kcustomoptionsmanager_p.cpp:300
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "通用挂载设置"
 
-#: smb4kcustomoptionsmanager_p.cpp:310
+#: smb4kcustomoptionsmanager_p.cpp:311
 #, kde-format
 msgid "Advanced Options"
 msgstr "高级选项"
 
-#: smb4kcustomoptionsmanager_p.cpp:354
+#: smb4kcustomoptionsmanager_p.cpp:355
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "高级挂载设置"
 
-#: smb4kcustomoptionsmanager_p.cpp:432 smb4kcustomoptionsmanager_p.cpp:776
-#: smb4kcustomoptionsmanager_p.cpp:1001
+#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
+#: smb4kcustomoptionsmanager_p.cpp:1002
 #, kde-format
 msgid "Authentication"
 msgstr "身份验证"
 
-#: smb4kcustomoptionsmanager_p.cpp:446 smb4kcustomoptionsmanager_p.cpp:790
+#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
 #, kde-format
 msgid "Browse Settings"
 msgstr "浏览设置"
 
-#: smb4kcustomoptionsmanager_p.cpp:460 smb4kcustomoptionsmanager_p.cpp:804
-#: smb4kcustomoptionsmanager_p.cpp:1029
+#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
+#: smb4kcustomoptionsmanager_p.cpp:1030
 #, kde-format
 msgid "MAC Address"
 msgstr "MAC 地址"
 
-#: smb4kcustomoptionsmanager_p.cpp:464 smb4kcustomoptionsmanager_p.cpp:808
-#: smb4kcustomoptionsmanager_p.cpp:1033
+#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
+#: smb4kcustomoptionsmanager_p.cpp:1034
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC 地址："
 
-#: smb4kcustomoptionsmanager_p.cpp:482 smb4kcustomoptionsmanager_p.cpp:826
-#: smb4kcustomoptionsmanager_p.cpp:1051
+#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
+#: smb4kcustomoptionsmanager_p.cpp:1052
 #, kde-format
 msgid "Actions"
 msgstr "操作"
 
-#: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
-#: smb4kcustomoptionsmanager_p.cpp:1055
+#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
+#: smb4kcustomoptionsmanager_p.cpp:1056
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
 
-#: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
-#: smb4kcustomoptionsmanager_p.cpp:1063
+#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
+#: smb4kcustomoptionsmanager_p.cpp:1064
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "挂载共享前发送局域网唤醒魔术封包"
 
-#: smb4kcustomoptionsmanager_p.cpp:504 smb4kcustomoptionsmanager_p.cpp:848
+#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "局域网唤醒设置"
 
-#: smb4kcustomoptionsmanager_p.cpp:698
+#: smb4kcustomoptionsmanager_p.cpp:699
 #, kde-format
 msgid "Mount Settings"
 msgstr "挂载设置"
 
-#: smb4kcustomoptionsmanager_p.cpp:1015
+#: smb4kcustomoptionsmanager_p.cpp:1016
 #, kde-format
 msgid "Samba"
 msgstr "Samba"
 
-#: smb4kcustomoptionsmanager_p.cpp:1073
+#: smb4kcustomoptionsmanager_p.cpp:1074
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "局域网唤醒"
@@ -3555,70 +3555,70 @@ msgstr "打印机"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
+#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
 #, kde-format
 msgid "Synchronizing"
 msgstr "正在同步"
 
-#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
+#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
 #, kde-format
 msgid "Source"
 msgstr "来源"
 
-#: smb4ksynchronizer_p.cpp:432 smb4ksynchronizer_p.cpp:512
+#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
 #, kde-format
 msgid "Destination"
 msgstr "目标"
 
-#: smb4ksynchronizer_p.cpp:550
+#: smb4ksynchronizer_p.cpp:552
 #, kde-format
 msgid "Synchronization"
 msgstr "同步"
 
-#: smb4ksynchronizer_p.cpp:553
+#: smb4ksynchronizer_p.cpp:555
 #, kde-format
 msgid "Swap Paths"
 msgstr "对调路径"
 
-#: smb4ksynchronizer_p.cpp:554
+#: smb4ksynchronizer_p.cpp:556
 #, kde-format
 msgid "Swap source and destination"
 msgstr "对调来源和目标"
 
-#: smb4ksynchronizer_p.cpp:555
+#: smb4ksynchronizer_p.cpp:557
 #, kde-format
 msgid "Synchronize"
 msgstr "同步"
 
-#: smb4ksynchronizer_p.cpp:556
+#: smb4ksynchronizer_p.cpp:558
 #, kde-format
 msgid "Synchronize the destination with the source"
 msgstr "同步来源到目标"
 
-#: smb4ksynchronizer_p.cpp:570
+#: smb4ksynchronizer_p.cpp:572
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization."
 msgstr "请提供同步使用的来源和目标目录。"
 
-#: smb4ksynchronizer_p.cpp:580
+#: smb4ksynchronizer_p.cpp:582
 #, kde-format
 msgid "Source:"
 msgstr "来源："
 
-#: smb4ksynchronizer_p.cpp:588
+#: smb4ksynchronizer_p.cpp:590
 #, kde-format
 msgid ""
 "This is the source directory. The data that it contains is to be written to "
 "the destination directory."
 msgstr "在此设置来源目录。此目录中的数据将被写入到目标目录。"
 
-#: smb4ksynchronizer_p.cpp:591
+#: smb4ksynchronizer_p.cpp:593
 #, kde-format
 msgid "Destination:"
 msgstr "目标："
 
-#: smb4ksynchronizer_p.cpp:599
+#: smb4ksynchronizer_p.cpp:601
 #, kde-format
 msgid ""
 "This is the destination directory. It will be updated with the data from the "
