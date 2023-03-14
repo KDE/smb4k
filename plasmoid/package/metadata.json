@@ -9,6 +9,7 @@
                 "Name[de]": "Alexander Reinholdt",
                 "Name[it]": "Alexander Reinholdt",
                 "Name[nl]": "Alexander Reinholdt",
+                "Name[sl]": "Alexander Reinholdt",
                 "Name[tr]": "Alexander Reinholdt",
                 "Name[uk]": "Alexander Reinholdt",
                 "Name[x-test]": "xxAlexander Reinholdtxx"
@@ -21,6 +22,7 @@
         "Description[de]": "Erweiterter Browser für die Netzwerkumgebung auf der Basis von Smb4K",
         "Description[it]": "Navigatore delle risorse di rete basato su Smb4K",
         "Description[nl]": "Browser gebaseerd op smb4k voor de netwerkomgeving",
+        "Description[sl]": "Brskalnik po sosedstvu omrežja na osnovi Smb4K",
         "Description[tr]": "Smb4k tabanlı ağ komşuları tarayıcısı",
         "Description[uk]": "Переглядач мережевого середовища на основі Smb4K",
         "Description[x-test]": "xxNetwork neighborhood browser based on Smb4Kxx",
@@ -34,6 +36,7 @@
         "Name[de]": "Netzwerkumgebung",
         "Name[it]": "Risorse di rete",
         "Name[nl]": "Netwerkomgeving",
+        "Name[sl]": "Sosedstvo omrežja",
         "Name[tr]": "Ağ Komşuları",
         "Name[uk]": "Мережеве оточення",
         "Name[x-test]": "xxNetwork Neighborhoodxx",
