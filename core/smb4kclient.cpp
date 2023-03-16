@@ -11,12 +11,10 @@
 #include "smb4kclient_p.h"
 #include "smb4kcustomoptions.h"
 #include "smb4kcustomoptionsmanager.h"
-#include "smb4kfile.h"
 #include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
-#include "smb4kshare.h"
 #include "smb4kwalletmanager.h"
 
 // Qt includes
