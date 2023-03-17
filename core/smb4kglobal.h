@@ -8,15 +8,6 @@
 #ifndef SMB4KGLOBAL_H
 #define SMB4KGLOBAL_H
 
-// application specific includes
-#include "smb4kbasicnetworkitem.h"
-#include "smb4kbookmark.h"
-#include "smb4kcustomoptions.h"
-#include "smb4kfile.h"
-#include "smb4khost.h"
-#include "smb4kshare.h"
-#include "smb4kworkgroup.h"
-
 // Qt includes
 #include <QEvent>
 #include <QList>
@@ -24,6 +15,15 @@
 #include <QSharedPointer>
 #include <QString>
 #include <QStringList>
+
+// forward declarations
+class Smb4KBasicNetworkItem;
+class Smb4KWorkgroup;
+class Smb4KHost;
+class Smb4KShare;
+class Smb4KFile;
+class Smb4KBookmark;
+class Smb4KCustomOptions;
 
 // type definitions
 typedef QSharedPointer<Smb4KBasicNetworkItem> NetworkItemPtr;
