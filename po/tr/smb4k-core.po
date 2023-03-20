@@ -3714,7 +3714,7 @@ msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"<p>Ağ iletişimi, aşağıdaki hata iletisiyle başarısız oldu: <s>%1</s><p>"
+"<p>Ağ iletişimi, aşağıdaki hata iletisiyle başarısız oldu: <s>%1</s></p>"
 
 #: smb4knotification.cpp:432
 #, kde-format
@@ -3850,19 +3850,3 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı ve parola girin.</qt>"
-
-#~ msgid "Custom Options"
-#~ msgstr "Özel Seçenekler"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Kilitleme kullanma"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Kilitleme kullanma. lockd başlatma."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Samba paketi için yapılandırma dosyası <b>smb.conf</b> eksik. Bu ölümcül "
-#~ "bir hata değil, fakat bir tane oluşturmayı düşünmelisiniz."
