@@ -1,4 +1,6 @@
-# Translation of smb4k into esperanto.
+# Translation of smb4k-core.pot into esperanto.
+# Copyright (C) 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the smb4k package.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
 #
 msgid ""
@@ -6,8 +8,8 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-13 00:49+0000\n"
-"PO-Revision-Date: 2009-11-15 12:06+0100\n"
-"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"PO-Revision-Date: 2023-03-23 21:50+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -84,10 +86,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:47
-#, fuzzy, kde-format
-#| msgid "File system:"
+#, kde-format
 msgid "Show the type of the share"
-msgstr "Dosiersistemo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:48
@@ -113,10 +114,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:57
-#, fuzzy, kde-format
-#| msgid "File system:"
+#, kde-format
 msgid "Show the comment"
-msgstr "Dosiersistemo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:58
@@ -155,10 +155,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:72
-#, fuzzy, kde-format
-#| msgid "File system:"
+#, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr "Dosiersistemo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:73
@@ -168,10 +167,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, fuzzy, kde-format
-#| msgid "File:"
+#, kde-format
 msgid "View mode:"
-msgstr "Dosiero:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -183,17 +181,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:81
-#, fuzzy, kde-format
-#| msgid "View"
+#, kde-format
 msgid "Icon View"
-msgstr "Vido"
+msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:84
-#, fuzzy, kde-format
-#| msgid "View"
+#, kde-format
 msgid "List View"
-msgstr "Vido"
+msgstr ""
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
@@ -221,10 +217,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, fuzzy, kde-format
-#| msgid "View"
+#, kde-format
 msgid "Icon size:"
-msgstr "Vido"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
@@ -291,10 +286,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:131
-#, fuzzy, kde-format
-#| msgid "Protocol:"
+#, kde-format
 msgid "Set minimal and maximal SMB protocol version"
-msgstr "Protokolo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
 #: smb4k.kcfg:132
@@ -313,10 +307,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Protocol:"
+#, kde-format
 msgid "Minimal SMB protocol version:"
-msgstr "Protokolo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:137
@@ -349,10 +342,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:152
-#, fuzzy, kde-format
-#| msgid "Protocol:"
+#, kde-format
 msgid "Maximal SMB protocol version:"
-msgstr "Protokolo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
 #: smb4k.kcfg:153
@@ -364,10 +356,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, fuzzy, kde-format
-#| msgid "Port"
+#, kde-format
 msgid "Set the SMB port to:"
-msgstr "Pordo"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
@@ -398,10 +389,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:184
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Master browsers require authentication"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:185
@@ -413,10 +403,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:189
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Use Kerberos for authentication"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
 #: smb4k.kcfg:190
@@ -428,17 +417,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:194
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Use Winbind ccache for authentication"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
 #: smb4k.kcfg:195
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Use the Winbind ccache for authentication."
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
@@ -461,17 +448,15 @@ msgstr "Neniu"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:210
-#, fuzzy, kde-format
-#| msgid "Required"
+#, kde-format
 msgid "Request"
-msgstr "Postulita"
+msgstr ""
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:213
-#, fuzzy, kde-format
-#| msgid "Required"
+#, kde-format
 msgid "Require"
-msgstr "Postulita"
+msgstr ""
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
 #: smb4k.kcfg:219
@@ -579,10 +564,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
 #: smb4k.kcfg:269
-#, fuzzy, kde-format
-#| msgid "Synchronize"
+#, kde-format
 msgid "Synchronization prefix:"
-msgstr "Sinkronigu"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
 #: smb4k.kcfg:270
@@ -1349,10 +1333,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:560
-#, fuzzy, kde-format
-#| msgid "Filter Rules"
+#, kde-format
 msgid "Custom filter rules:"
-msgstr "Filtroreguloj"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:561
@@ -1366,10 +1349,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, fuzzy, kde-format
-#| msgid "Filter Rules"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Filtroreguloj"
+msgstr ""
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -1511,10 +1493,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:615
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backup suffix:"
-msgstr "Sekurkopio"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:616
@@ -1524,10 +1505,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
 #: smb4k.kcfg:620
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backup suffix"
-msgstr "Sekurkopio"
+msgstr ""
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:625
@@ -1702,10 +1682,9 @@ msgid "The format of %1 is not supported."
 msgstr ""
 
 #: smb4kbookmarkhandler_p.cpp:45
-#, fuzzy, kde-format
-#| msgid "Bookmark"
+#, kde-format
 msgid "Add Bookmarks"
-msgstr "Legosigno"
+msgstr ""
 
 #: smb4kbookmarkhandler_p.cpp:121
 #, kde-format
@@ -1717,27 +1696,25 @@ msgstr ""
 #. i18n("Add this share to the bookmarks"));
 #: smb4kbookmarkhandler_p.cpp:147 smb4kbookmarkhandler_p.cpp:521
 #: smb4kmounter_p.cpp:187
-#, fuzzy, kde-format
-#| msgid "Label"
+#, kde-format
 msgid "Label:"
-msgstr "Etikedo"
+msgstr "Etikedo:"
 
 #: smb4kbookmarkhandler_p.cpp:155 smb4kbookmarkhandler_p.cpp:550
 #: smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Kategorio:"
 
 #: smb4kbookmarkhandler_p.cpp:379
-#, fuzzy, kde-format
-#| msgid "&Edit Bookmarks"
+#, kde-format
 msgid "Edit Bookmarks"
-msgstr "&Redakti legosignojn"
+msgstr "Redakti legosignojn"
 
 #: smb4kbookmarkhandler_p.cpp:497 smb4kbookmarkhandler_p.cpp:997
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Aldoni Kategorion"
 
 #: smb4kbookmarkhandler_p.cpp:498
 #, kde-format
@@ -1745,16 +1722,14 @@ msgid "Remove"
 msgstr "Forigi"
 
 #: smb4kbookmarkhandler_p.cpp:500
-#, fuzzy, kde-format
-#| msgid "&Clear"
+#, kde-format
 msgid "Clear"
-msgstr "&Forigi"
+msgstr "Forigi"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Uzanto:"
+msgstr ""
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -1798,10 +1773,9 @@ msgid "An unknown error with Zeroconf occurred."
 msgstr ""
 
 #: smb4kclient_p.cpp:1963
-#, fuzzy, kde-format
-#| msgid "Preview"
+#, kde-format
 msgid "Preview of %1"
-msgstr "Antaŭrigardo"
+msgstr ""
 
 #: smb4kclient_p.cpp:1999
 #, kde-format
@@ -1819,22 +1793,19 @@ msgid "Up"
 msgstr "Supren"
 
 #: smb4kclient_p.cpp:2333
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print File"
-msgstr "Presilo"
+msgstr ""
 
 #: smb4kclient_p.cpp:2349
-#, fuzzy, kde-format
-#| msgid "Actions"
+#, kde-format
 msgid "Information"
-msgstr "Agoj"
+msgstr ""
 
 #: smb4kclient_p.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Printer:"
-msgstr "Presilo"
+msgstr "Presilo:"
 
 #: smb4kclient_p.cpp:2367
 #, kde-format
@@ -1842,10 +1813,9 @@ msgid "Domain:"
 msgstr "Retregiono:"
 
 #: smb4kclient_p.cpp:2378
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
+#, kde-format
 msgid "File and Settings"
-msgstr "Pliaj opcioj"
+msgstr ""
 
 #: smb4kclient_p.cpp:2382
 #, kde-format
@@ -1871,16 +1841,14 @@ msgid "This is the number of copies you want to print."
 msgstr ""
 
 #: smb4kclient_p.cpp:2411
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print"
-msgstr "Presilo"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:47
-#, fuzzy, kde-format
-#| msgid "Mount point:"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Surmetingo:"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:70
 #, kde-format
@@ -1902,10 +1870,9 @@ msgid "Common Options"
 msgstr "Ĝeneralaj opcioj"
 
 #: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Always remount this share"
-msgstr "Legosigna modifilo"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:218
 #, kde-format
@@ -1918,10 +1885,9 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:300
-#, fuzzy, kde-format
-#| msgid "Common Options"
+#, kde-format
 msgid "Common Mount Settings"
-msgstr "Ĝeneralaj opcioj"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:311
 #, kde-format
@@ -1929,10 +1895,9 @@ msgid "Advanced Options"
 msgstr "Pliaj opcioj"
 
 #: smb4kcustomoptionsmanager_p.cpp:355
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
+#, kde-format
 msgid "Advanced Mount Settings"
-msgstr "Pliaj opcioj"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
 #: smb4kcustomoptionsmanager_p.cpp:1002
@@ -1941,31 +1906,27 @@ msgid "Authentication"
 msgstr "Aŭtentigo"
 
 #: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgid "Browse Settings"
-msgstr "A&gordo"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
 #: smb4kcustomoptionsmanager_p.cpp:1030
-#, fuzzy, kde-format
-#| msgid "IP address:"
+#, kde-format
 msgid "MAC Address"
-msgstr "IP-adreso:"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
 #: smb4kcustomoptionsmanager_p.cpp:1034
-#, fuzzy, kde-format
-#| msgid "IP address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "IP-adreso:"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
 #: smb4kcustomoptionsmanager_p.cpp:1052
-#, fuzzy, kde-format
-#| msgid "Options"
+#, kde-format
 msgid "Actions"
-msgstr "Opcioj"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
 #: smb4kcustomoptionsmanager_p.cpp:1056
@@ -1980,16 +1941,14 @@ msgid "Send magic packet before mounting a share"
 msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Ĝeneralaj Agordoj"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:699
-#, fuzzy, kde-format
-#| msgid "Mount point:"
+#, kde-format
 msgid "Mount Settings"
-msgstr "Surmetingo:"
+msgstr ""
 
 #: smb4kcustomoptionsmanager_p.cpp:1016
 #, kde-format
@@ -2039,10 +1998,9 @@ msgid "Foreign Share"
 msgstr ""
 
 #: smb4kmounter_p.cpp:47
-#, fuzzy, kde-format
-#| msgid "Mount point:"
+#, kde-format
 msgid "Mount Share"
-msgstr "Surmetingo:"
+msgstr ""
 
 #: smb4kmounter_p.cpp:118
 #, kde-format
@@ -2052,10 +2010,9 @@ msgid ""
 msgstr ""
 
 #: smb4kmounter_p.cpp:128
-#, fuzzy, kde-format
-#| msgid "Actions"
+#, kde-format
 msgid "Location:"
-msgstr "Agoj"
+msgstr ""
 
 #: smb4kmounter_p.cpp:132
 #, kde-format
@@ -2108,11 +2065,10 @@ msgid ""
 msgstr ""
 
 #: smb4kmounter_p.cpp:225
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark this share. Show input widgets in the dialog for this."
 msgid "Bookmark >>"
-msgstr "Legosignoj"
+msgstr ""
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -2146,10 +2102,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:30 smb4kmountsettings_linux.kcfg:35
-#, fuzzy, kde-format
-#| msgid "File:"
+#, kde-format
 msgid "File mode:"
-msgstr "Dosiero:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
@@ -2162,10 +2117,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseDirectoryMode), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:39 smb4kmountsettings_linux.kcfg:44
-#, fuzzy, kde-format
-#| msgid "Directories"
+#, kde-format
 msgid "Directory mode:"
-msgstr "Dosierujoj"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -2545,10 +2499,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MountPrefix), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:235 smb4kmountsettings_linux.kcfg:298
-#, fuzzy, kde-format
-#| msgid "Mount point:"
+#, kde-format
 msgid "Mount prefix:"
-msgstr "Surmetingo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (MountPrefix), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:236 smb4kmountsettings_linux.kcfg:299
@@ -2588,10 +2541,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:313
-#, fuzzy, kde-format
-#| msgid "Mount point:"
+#, kde-format
 msgid "Remount shares"
-msgstr "Surmetingo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
@@ -2745,10 +2697,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:53
-#, fuzzy, kde-format
-#| msgid "File System"
+#, kde-format
 msgid "File system port:"
-msgstr "Dosiersistemo"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
 #. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
@@ -2913,10 +2864,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseSmbProtocolVersion), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:196
-#, fuzzy, kde-format
-#| msgid "Protocol:"
+#, kde-format
 msgid "SMB protocol version:"
-msgstr "Protokolo:"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
@@ -3038,59 +2988,51 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:262
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Kerberos 5 authentication"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:265
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Kerberos 5 authentication and packet signing"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:268
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgid "NTLM protocol"
-msgstr "Protokolo"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:271
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "NTLM protocol and packet signing"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:274
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgid "NTLMv2 protocol"
-msgstr "Protokolo"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:277
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "NTLMv2 protocol and packet signing"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:280
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgid "NTLMSSP protocol"
-msgstr "Protokolo"
+msgstr ""
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:283
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "NTLMSSP protocol and packet signing"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #. i18n: ectx: label, entry (UseCustomCifsOptions), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:289
@@ -3115,8 +3057,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr ""
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Malfermi"
@@ -3359,10 +3300,9 @@ msgid "IPC"
 msgstr ""
 
 #: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
-#, fuzzy, kde-format
-#| msgid "Synchronize"
+#, kde-format
 msgid "Synchronizing"
-msgstr "Sinkronigu"
+msgstr ""
 
 #: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
 #, kde-format
@@ -3370,10 +3310,9 @@ msgid "Source"
 msgstr ""
 
 #: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Destination"
-msgstr "Aŭtentigo"
+msgstr ""
 
 #: smb4ksynchronizer_p.cpp:552
 #, kde-format
@@ -3393,7 +3332,7 @@ msgstr ""
 #: smb4ksynchronizer_p.cpp:557
 #, kde-format
 msgid "Synchronize"
-msgstr "Sinkronigu"
+msgstr "Sinkronigi"
 
 #: smb4ksynchronizer_p.cpp:558
 #, kde-format
@@ -3409,7 +3348,7 @@ msgstr ""
 #: smb4ksynchronizer_p.cpp:582
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "Fonto:"
 
 #: smb4ksynchronizer_p.cpp:590
 #, kde-format
@@ -3419,10 +3358,9 @@ msgid ""
 msgstr ""
 
 #: smb4ksynchronizer_p.cpp:593
-#, fuzzy, kde-format
-#| msgid "Authentication"
+#, kde-format
 msgid "Destination:"
-msgstr "Aŭtentigo"
+msgstr "Celo:"
 
 #: smb4ksynchronizer_p.cpp:601
 #, kde-format
@@ -3441,468 +3379,3 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Login:"
-#~ msgstr "Aliĝu"
-
-#, fuzzy
-#~| msgid "Workgroup:"
-#~ msgid "Group:"
-#~ msgstr "Laborgrupo:"
-
-#, fuzzy
-#~| msgid "Workgroup:"
-#~ msgid "Add Group"
-#~ msgstr "Laborgrupo:"
-
-#~ msgid "Group name:"
-#~ msgstr "Grupnomo:"
-
-#, fuzzy
-#~| msgid "unknown"
-#~ msgid "Unknown error"
-#~ msgstr "nekonata"
-
-#, fuzzy
-#~| msgid "Mount point:"
-#~ msgid "Remounting"
-#~ msgstr "Surmetingo:"
-
-#, fuzzy
-#~| msgid "IP Address"
-#~ msgid "UNC Address:"
-#~ msgstr "IP-adreso"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Try to authenticate with Kerberos"
-#~ msgstr "Aŭtentigo"
-
-#~ msgid "Off"
-#~ msgstr "Neniam"
-
-#~ msgid "Required"
-#~ msgstr "Postulita"
-
-#, fuzzy
-#~| msgid "Directories"
-#~ msgid "Directory mask:"
-#~ msgstr "Dosierujoj"
-
-#~ msgid "unknown"
-#~ msgstr "nekonata"
-
-#~ msgid "File"
-#~ msgstr "Dosiero"
-
-#~ msgid "Options"
-#~ msgstr "Opcioj"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options >>"
-#~ msgstr "Opcioj"
-
-#, fuzzy
-#~| msgid "Options"
-#~ msgid "Options <<"
-#~ msgstr "Opcioj"
-
-#~ msgid "Back"
-#~ msgstr "Reen"
-
-#~ msgid "Forward"
-#~ msgstr "Antaŭen"
-
-#, fuzzy
-#~| msgid "IP address:"
-#~ msgid "Broadcast address:"
-#~ msgstr "IP-adreso:"
-
-#~ msgid "General"
-#~ msgstr "Ĝeneralo"
-
-#, fuzzy
-#~| msgid "Port"
-#~ msgid "SMB Port:"
-#~ msgstr "Pordo"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgid "Filesystem Port:"
-#~ msgstr "Dosiersistemo"
-
-#, fuzzy
-#~| msgid "Bookmarks"
-#~ msgid "Clear Bookmarks"
-#~ msgstr "Legosignoj"
-
-#, fuzzy
-#~| msgid "File system:"
-#~ msgid "Show the login name"
-#~ msgstr "Dosiersistemo:"
-
-#, fuzzy
-#~| msgid "File system:"
-#~ msgid "Show the file system"
-#~ msgstr "Dosiersistemo:"
-
-#, fuzzy
-#~| msgid "File system:"
-#~ msgid "Show the free disk space"
-#~ msgstr "Dosiersistemo:"
-
-#, fuzzy
-#~| msgid "File system:"
-#~ msgid "Show the used disk space"
-#~ msgstr "Dosiersistemo:"
-
-#, fuzzy
-#~| msgid "File system:"
-#~ msgid "Show the total disk space"
-#~ msgstr "Dosiersistemo:"
-
-#, fuzzy
-#~| msgid "File system:"
-#~ msgid "Show the disk usage"
-#~ msgstr "Dosiersistemo:"
-
-#, fuzzy
-#~| msgid "IP address:"
-#~ msgid "Scan these broadcast areas:"
-#~ msgstr "IP-adreso:"
-
-#, fuzzy
-#~| msgid "Protocol:"
-#~ msgid "Protocol hint:"
-#~ msgstr "Protokolo:"
-
-#, fuzzy
-#~| msgid "automatic"
-#~ msgid "Automatic detection"
-#~ msgstr "aŭtomata"
-
-#, fuzzy
-#~| msgid "Protocol:"
-#~ msgid "Protocol Hint:"
-#~ msgstr "Protokolo:"
-
-#, fuzzy
-#~| msgid "Authentication"
-#~ msgid "Show notifications"
-#~ msgstr "Aŭtentigo"
-
-#~ msgid "Network"
-#~ msgstr "Reto"
-
-#~ msgid "Type"
-#~ msgstr "Tipo"
-
-#~ msgid "IP Address"
-#~ msgstr "IP-adreso"
-
-#~ msgid "Comment"
-#~ msgstr "Komento"
-
-#~ msgid "&Abort"
-#~ msgstr "&Haltigu"
-
-#~ msgid "&Mount"
-#~ msgstr "&Kroĉi"
-
-#~ msgid "&Unmount"
-#~ msgstr "&Malkroĉi"
-
-#~ msgid "Smb4KNetworkBrowserPart"
-#~ msgstr "Smb4KNetworkBrowserPart"
-
-#~ msgid "Done."
-#~ msgstr "Farita."
-
-#~ msgid "&Network"
-#~ msgstr "&Reto"
-
-#, fuzzy
-#~| msgid "Reload"
-#~ msgid "Load"
-#~ msgstr "Reŝargi"
-
-#, fuzzy
-#~| msgid "Share"
-#~ msgid "Save"
-#~ msgstr "Komunigi"
-
-#~ msgid "Edit"
-#~ msgstr "Redakti"
-
-#, fuzzy
-#~| msgid "no"
-#~ msgid "Undo"
-#~ msgstr "ne"
-
-#, fuzzy
-#~ msgid "Login"
-#~ msgstr "Aliĝu"
-
-#, fuzzy
-#~| msgid "Password:"
-#~ msgid "Password"
-#~ msgstr "Pasvorto:"
-
-#~ msgid "User Interface"
-#~ msgstr "Uzant-interfaco"
-
-#, fuzzy
-#~| msgid "IP address:"
-#~ msgid "MAC address:"
-#~ msgstr "IP-adreso:"
-
-#, fuzzy
-#~ msgid "Links"
-#~ msgstr "Linio"
-
-#~ msgid "Copying"
-#~ msgstr "Kopiante"
-
-#~ msgid "Filter Rules"
-#~ msgstr "Filtroreguloj"
-
-#~ msgid "Filtering"
-#~ msgstr "Filtrado"
-
-#~ msgid "Backup"
-#~ msgstr "Sekurkopio"
-
-#~ msgid "General Options"
-#~ msgstr "Ĝeneralaj opcioj"
-
-#~ msgid " Bytes"
-#~ msgstr "bitokoj"
-
-#~ msgid "Directories"
-#~ msgstr "Dosierujoj"
-
-#~ msgid "Columns"
-#~ msgstr "Kolumnoj"
-
-#~ msgid "Smb4K"
-#~ msgstr "Smb4K"
-
-#~ msgid "Developer"
-#~ msgstr "Kreinto"
-
-#~ msgid "&Search"
-#~ msgstr "&Serĉi"
-
-#~ msgid "Search Results"
-#~ msgstr "Serĉrezultoj"
-
-#, fuzzy
-#~| msgid "Smb4KNetworkBrowserPart"
-#~ msgid "Smb4KNetworkSearchPart"
-#~ msgstr "Smb4KNetworkBrowserPart"
-
-#~ msgid "Search"
-#~ msgstr "Serĉi"
-
-#~ msgid "File System"
-#~ msgstr "Dosiersistemo"
-
-#~ msgid "Owner"
-#~ msgstr "Posedanto"
-
-#~ msgid "Total"
-#~ msgstr "Sumo"
-
-#, fuzzy
-#~| msgid "Share"
-#~ msgid "&Shares"
-#~ msgstr "Komunigi"
-
-#~ msgid "&File"
-#~ msgstr "&Dosiero"
-
-#~ msgid "&Bookmarks"
-#~ msgstr "&Legosignoj"
-
-#, fuzzy
-#~| msgid "Search Toolbar"
-#~ msgid "Network Toolbar"
-#~ msgstr "Serĉa ilobreto"
-
-#~ msgid "Search Toolbar"
-#~ msgstr "Serĉa ilobreto"
-
-#, fuzzy
-#~| msgid "Search Toolbar"
-#~ msgid "Shares Toolbar"
-#~ msgstr "Serĉa ilobreto"
-
-#, fuzzy
-#~| msgid "Main Toolbar"
-#~ msgid "Alternative Main Toolbar"
-#~ msgstr "Ĉefa ilobreto"
-
-#~ msgid "Main Toolbar"
-#~ msgstr "Ĉefa ilobreto"
-
-#~ msgid "&Edit Bookmarks"
-#~ msgstr "&Redakti legosignojn"
-
-#, fuzzy
-#~| msgid "&Edit Bookmarks"
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "&Redakti legosignojn"
-
-#, fuzzy
-#~| msgid "Synchronize"
-#~ msgid "Synchronizing %1"
-#~ msgstr "Sinkronigu"
-
-#, fuzzy
-#~| msgid "&Unmount"
-#~ msgid "Unmount"
-#~ msgstr "&Malkroĉi"
-
-#~ msgid "yes"
-#~ msgstr "jes"
-
-#~ msgid "no"
-#~ msgstr "ne"
-
-#, fuzzy
-#~| msgid "Host:"
-#~ msgid "Host"
-#~ msgstr "Gastigo:"
-
-#, fuzzy
-#~| msgid "Share"
-#~ msgid "Server"
-#~ msgstr "Komunigi"
-
-#, fuzzy
-#~| msgid "Share"
-#~ msgid "Share (%1)"
-#~ msgstr "Komunigi"
-
-#, fuzzy
-#~| msgid "Mount"
-#~ msgid "Mounted"
-#~ msgstr "Kroĉu"
-
-#, fuzzy
-#~| msgid "File system:"
-#~ msgid "File system"
-#~ msgstr "Dosiersistemo:"
-
-#, fuzzy
-#~| msgid "&Unmount"
-#~ msgid "Unmount All"
-#~ msgstr "&Malkroĉi"
-
-#~ msgid "Mount"
-#~ msgstr "Kroĉu"
-
-#~ msgid "Advanced"
-#~ msgstr "Plie"
-
-#, fuzzy
-#~| msgid "IP Address"
-#~ msgid "UNC Address"
-#~ msgstr "IP-adreso"
-
-#~ msgid "Kerberos"
-#~ msgstr "Kerberos"
-
-#, fuzzy
-#~| msgid "User ID:"
-#~ msgid "User ID"
-#~ msgstr "Identigilo de uzanto:"
-
-#, fuzzy
-#~| msgid "Port"
-#~ msgid "SMB Port"
-#~ msgstr "Pordo"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgid "File System Port"
-#~ msgstr "Dosiersistemo"
-
-#~ msgid "A&dd"
-#~ msgstr "Al&doni"
-
-#~ msgid "automatic"
-#~ msgstr "aŭtomata"
-
-#~ msgid "Bookmark Editor"
-#~ msgstr "Legosigna modifilo"
-
-#, fuzzy
-#~| msgid "Printer"
-#~ msgid "Printing"
-#~ msgstr "Presilo"
-
-#~ msgid "Transfer rate:"
-#~ msgstr "Transigrapideco:"
-
-#, fuzzy
-#~| msgid "Actions"
-#~ msgid "NoSuchAction"
-#~ msgstr "Agoj"
-
-#, fuzzy
-#~ msgid "List"
-#~ msgstr "Linio"
-
-#~ msgid "Owner:"
-#~ msgstr "Posedanto:"
-
-#~ msgid "Total:"
-#~ msgstr "Sumo:"
-
-#~ msgid "Usage:"
-#~ msgstr "Uzado:"
-
-#~ msgid "Comment:"
-#~ msgstr "Komento:"
-
-#~ msgid "Type:"
-#~ msgstr "Tipo:"
-
-#~ msgid "Smb4KSearchDialogPart"
-#~ msgstr "Smb4KSearchDialogPart"
-
-#, fuzzy
-#~| msgid "System &Tray"
-#~ msgid "System Tray"
-#~ msgstr "&Taskopleto"
-
-#~ msgid "on"
-#~ msgstr "ŝaltita"
-
-#, fuzzy
-#~| msgid "Preview"
-#~ msgid "The preview"
-#~ msgstr "Antaŭrigardo"
-
-#, fuzzy
-#~| msgid "User ID:"
-#~ msgid "The user ID"
-#~ msgstr "Identigilo de uzanto:"
-
-#~ msgid "Name:"
-#~ msgstr "Nomo:"
-
-#~ msgid "UID"
-#~ msgstr "UID"
-
-#~ msgid "GID"
-#~ msgstr "G-no"
-
-#~ msgid "Delete"
-#~ msgstr "Forigi"
-
-#~ msgid "Nicolas Ternisien"
-#~ msgstr "Nicolas Ternisien"
