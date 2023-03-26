@@ -752,14 +752,16 @@ void Smb4KMounter::unmountShare(const SharePtr &share, bool silent)
                 return;
             } else {
                 if (!silent) {
-                    if (KMessageBox::warningYesNo(QApplication::activeWindow(),
-                                                  i18n("<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</b>.</p>"
-                                                       "<p>Do you really want to unmount it?</p>",
-                                                       share->displayString(),
-                                                       share->path(),
-                                                       share->user().loginName()),
-                                                  i18n("Foreign Share"))
-                        == KMessageBox::No) {
+                    if (KMessageBox::warningTwoActions(QApplication::activeWindow(),
+                                                       i18n("<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</b>.</p>"
+                                                            "<p>Do you really want to unmount it?</p>",
+                                                            share->displayString(),
+                                                            share->path(),
+                                                            share->user().loginName()),
+                                                       i18n("Foreign Share"),
+                                                       KStandardGuiItem::ok(),
+                                                       KStandardGuiItem::cancel())
+                        == KMessageBox::SecondaryAction) {
                         return;
                     }
                 } else {
