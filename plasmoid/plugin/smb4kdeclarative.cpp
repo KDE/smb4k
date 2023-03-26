@@ -26,11 +26,12 @@
 
 // Qt includes
 #include <QDebug>
+#include <QPointer>
 
 // KDE includes
 #include <KConfigWidgets/KConfigDialog>
 #include <KCoreAddons/KPluginFactory>
-#include <KCoreAddons/KPluginLoader>
+#include <KCoreAddons/KPluginMetaData>
 
 Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
     : QObject(parent)
@@ -448,11 +449,11 @@ void Smb4KDeclarative::openConfigurationDialog()
     //
     // If the dialog does not exist, load and show it:
     //
-    KPluginLoader loader(QStringLiteral("smb4kconfigdialog"), this);
-    KPluginFactory *configFactory = loader.factory();
+    KPluginMetaData metaData(QStringLiteral("smb4kconfigdialog"));
+    KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
 
-    if (configFactory) {
-        KConfigDialog *dlg = configFactory->create<KConfigDialog>();
+    if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
+        QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>();
 
         if (dlg) {
             dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
