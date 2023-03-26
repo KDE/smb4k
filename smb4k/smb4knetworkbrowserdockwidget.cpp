@@ -153,7 +153,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     connect(bookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotAddBookmark(bool)));
 
     m_actionCollection->addAction(QStringLiteral("bookmark_action"), bookmarkAction);
-    m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL + Qt::Key_B));
+    m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(i18n("Ctrl+B")));
 
     //
     // Add custom options action
@@ -164,7 +164,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomSettings(bool)));
 
     m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
-    m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL + Qt::Key_C));
+    m_actionCollection->setDefaultShortcut(customAction, QKeySequence(i18n("Ctrl+C")));
 
     //
     // Mount dialog action
@@ -176,7 +176,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     connect(manualAction, SIGNAL(triggered(bool)), this, SLOT(slotMountManually(bool)));
 
     m_actionCollection->addAction(QStringLiteral("mount_manually_action"), manualAction);
-    m_actionCollection->setDefaultShortcut(manualAction, QKeySequence(Qt::CTRL + Qt::Key_O));
+    m_actionCollection->setDefaultShortcut(manualAction, QKeySequence(i18n("Ctrl+O")));
 
     //
     // Separator
@@ -195,7 +195,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     connect(authAction, SIGNAL(triggered(bool)), this, SLOT(slotAuthentication(bool)));
 
     m_actionCollection->addAction(QStringLiteral("authentication_action"), authAction);
-    m_actionCollection->setDefaultShortcut(authAction, QKeySequence(Qt::CTRL + Qt::Key_T));
+    m_actionCollection->setDefaultShortcut(authAction, QKeySequence(i18n("Ctrl+T")));
 
     //
     // Preview action
@@ -206,7 +206,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     connect(previewAction, SIGNAL(triggered(bool)), this, SLOT(slotPreview(bool)));
 
     m_actionCollection->addAction(QStringLiteral("preview_action"), previewAction);
-    m_actionCollection->setDefaultShortcut(previewAction, QKeySequence(Qt::CTRL + Qt::Key_V));
+    m_actionCollection->setDefaultShortcut(previewAction, QKeySequence(i18n("Ctrl+V")));
 
     //
     // Print action
@@ -217,7 +217,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     connect(printAction, SIGNAL(triggered(bool)), this, SLOT(slotPrint(bool)));
 
     m_actionCollection->addAction(QStringLiteral("print_action"), printAction);
-    m_actionCollection->setDefaultShortcut(printAction, QKeySequence(Qt::CTRL + Qt::Key_P));
+    m_actionCollection->setDefaultShortcut(printAction, QKeySequence(i18n("Ctrl+P")));
 
     //
     // Mount/unmount action
@@ -235,7 +235,7 @@ void Smb4KNetworkBrowserDockWidget::setupActions()
     connect(mountAction, SIGNAL(activeChanged(bool)), this, SLOT(slotMountActionChanged(bool)));
 
     m_actionCollection->addAction(QStringLiteral("mount_action"), mountAction);
-    m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(Qt::CTRL + Qt::Key_M));
+    m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(i18n("Ctrl+M")));
 
     //
     // Plug the actions into the context menu
@@ -976,9 +976,9 @@ void Smb4KNetworkBrowserDockWidget::slotMountActionChanged(bool active)
     //
     if (mountAction) {
         if (active) {
-            m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(Qt::CTRL + Qt::Key_M));
+            m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(i18n("Ctrl+M")));
         } else {
-            m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(Qt::CTRL + Qt::Key_U));
+            m_actionCollection->setDefaultShortcut(mountAction, QKeySequence(i18n("Ctrl+U")));
         }
     }
 }
