@@ -10,7 +10,7 @@
 
 // application specific includes
 #include "smb4kbasicnetworkitem.h"
-#include "smb4kglobal.h"
+#include "smb4kglobalenums.h"
 
 // Qt includes
 #include <QScopedPointer>

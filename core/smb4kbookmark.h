@@ -9,7 +9,7 @@
 #define SMB4KBOOKMARK_H
 
 // application specific includes
-#include "smb4kglobal.h"
+#include "smb4kglobalenums.h"
 
 // Qt includes
 #include <QIcon>

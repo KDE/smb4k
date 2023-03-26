@@ -10,7 +10,7 @@
 #define SMB4KBASICNETWORKITEM_H
 
 // application specific includes
-#include "smb4kglobal.h"
+#include "smb4kglobalenums.h"
 
 // Qt includes
 #include <QIcon>
