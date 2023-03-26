@@ -287,8 +287,13 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
         // is under the mouse.
         if (e->type() == QEvent::MouseButtonPress) {
             QMouseEvent *event = static_cast<QMouseEvent *>(e);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            QPointF pos = walletEntriesWidget->mapFromGlobal(event->globalPosition());
+            QListWidgetItem *item = walletEntriesWidget->itemAt(pos.toPoint());
+#else
             QPoint pos = walletEntriesWidget->mapFromGlobal(event->globalPos());
             QListWidgetItem *item = walletEntriesWidget->itemAt(pos);
+#endif
 
             findChild<QPushButton *>(QStringLiteral("edit_button"))->setEnabled(item != nullptr);
             findChild<QPushButton *>(QStringLiteral("remove_button"))->setEnabled(item != nullptr);
