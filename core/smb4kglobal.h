@@ -8,6 +8,15 @@
 #ifndef SMB4KGLOBAL_H
 #define SMB4KGLOBAL_H
 
+// application specific includes
+#include "smb4kbasicnetworkitem.h"
+#include "smb4kbookmark.h"
+#include "smb4kcustomoptions.h"
+#include "smb4kfile.h"
+#include "smb4khost.h"
+#include "smb4kshare.h"
+#include "smb4kworkgroup.h"
+
 // Qt includes
 #include <QEvent>
 #include <QList>
@@ -15,15 +24,6 @@
 #include <QSharedPointer>
 #include <QString>
 #include <QStringList>
-
-// forward declarations
-class Smb4KBasicNetworkItem;
-class Smb4KWorkgroup;
-class Smb4KHost;
-class Smb4KShare;
-class Smb4KFile;
-class Smb4KBookmark;
-class Smb4KCustomOptions;
 
 // type definitions
 typedef QSharedPointer<Smb4KBasicNetworkItem> NetworkItemPtr;
@@ -49,48 +49,6 @@ typedef QSharedPointer<Smb4KCustomOptions> OptionsPtr;
 
 namespace Smb4KGlobal
 {
-/**
- * The Process enumeration.
- *
- * @enum LookupDomains          Look up domains
- * @enum LookupDomainMembers    Look up those servers that belong to a domain/workgroup
- * @enum LookupShares           Look up shares on a server
- * @enum LookupFiles            Look up files and directories within a share
- * @enum WakeUp                 Send magic Wake-On-LAN packets
- * @enum PrintFile              Print a file
- * @enum NetworkSearch          Network search
- * @enum MountShare             Mount a share
- * @enum UnmountShare           Unmount a share
- * @enum NoProcess              No process
- */
-enum Process { LookupDomains, LookupDomainMembers, LookupShares, LookupFiles, WakeUp, PrintFile, NetworkSearch, MountShare, UnmountShare, NoProcess };
-
-/**
- * The enumeration to determine the type of a network item.
- *
- * @enum Network                The network
- * @enum Workgroup              A workgroup
- * @enum Host                   A host
- * @enum Share                  A share
- * @enum Directory              A directory in a shared folder
- * @enum File                   A file in a shared folder
- * @enum UnknownNetworkItem     An unknown network item
- */
-enum NetworkItem { Network, Workgroup, Host, Share, Directory, File, UnknownNetworkItem };
-
-/**
- * The enumeration that determines the share type
- *
- * @enum FileShare              a file share
- * @enum PrinterShare           a printer share
- * @enum IpcShare               an IPC share
- */
-enum ShareType {
-    FileShare,
-    PrinterShare,
-    IpcShare,
-};
-
 /**
  * Use this function to initialize the core classes. Besides starting several
  * core classes such as the scanner (for an initial browse list) and the mounter
