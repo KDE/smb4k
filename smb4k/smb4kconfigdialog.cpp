@@ -53,9 +53,6 @@ Smb4KConfigDialog::~Smb4KConfigDialog()
 
 void Smb4KConfigDialog::setupDialog()
 {
-    // Close destructively
-    setAttribute(Qt::WA_DeleteOnClose, true);
-
     // Add the pages:
     Smb4KConfigPageUserInterface *interface_options = new Smb4KConfigPageUserInterface(this);
     QScrollArea *interface_area = new QScrollArea(this);
