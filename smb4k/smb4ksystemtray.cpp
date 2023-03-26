@@ -26,7 +26,7 @@
 #include <KConfigWidgets/KStandardAction>
 #include <KCoreAddons/KAboutData>
 #include <KCoreAddons/KPluginFactory>
-#include <KCoreAddons/KPluginLoader>
+#include <KCoreAddons/KPluginMetaData>
 #include <KI18n/KLocalizedString>
 #include <KIconThemes/KIconLoader>
 #include <KWidgetsAddons/KMessageBox>
@@ -151,17 +151,17 @@ void Smb4KSystemTray::slotConfigDialog()
     //
     // If the dialog does not exist, load and show it:
     //
-    KPluginLoader loader(QStringLiteral("smb4kconfigdialog"));
-    KPluginFactory *configFactory = loader.factory();
+    KPluginMetaData metaData(QStringLiteral("smb4kconfigdialog"));
+    KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
 
-    if (configFactory) {
+    if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
         QPointer<KConfigDialog> dlg = nullptr;
 
         if (associatedWidget()) {
-            dlg = configFactory->create<KConfigDialog>(associatedWidget());
+            dlg = result.plugin->create<KConfigDialog>(associatedWidget());
             dlg->setObjectName(QStringLiteral("ConfigDialog"));
         } else {
-            dlg = configFactory->create<KConfigDialog>(contextMenu());
+            dlg = result.plugin->create<KConfigDialog>(contextMenu());
             dlg->setObjectName(QStringLiteral("ConfigDialog"));
         }
 
@@ -172,7 +172,7 @@ void Smb4KSystemTray::slotConfigDialog()
             dlg->show();
         }
     } else {
-        KMessageBox::error(nullptr, loader.errorString());
+        KMessageBox::error(nullptr, result.errorString);
         return;
     }
 }
