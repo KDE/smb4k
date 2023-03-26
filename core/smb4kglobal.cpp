@@ -7,6 +7,7 @@
 
 // application specific includes
 #include "smb4kglobal.h"
+#include "smb4kglobalenums.h"
 #include "smb4kclient.h"
 #include "smb4kglobal_p.h"
 #include "smb4kmounter.h"
