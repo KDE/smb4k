@@ -16,7 +16,7 @@
 #include <QUrl>
 
 // KDE includes
-#include <KAuth/KAuthHelperSupport>
+#include <KAuth/HelperSupport>
 #include <KCoreAddons/KProcess>
 #include <KI18n/KLocalizedString>
 #include <KIOCore/KMountPoint>

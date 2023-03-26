@@ -12,7 +12,7 @@
 #include <QObject>
 
 // KDE includes
-#include <KAuth/KAuthActionReply>
+#include <KAuth/ActionReply>
 
 using namespace KAuth;
 
