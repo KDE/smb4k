@@ -185,8 +185,13 @@ bool Smb4KConfigPageCustomOptions::eventFilter(QObject *obj, QEvent *e)
         if (obj == optionsListWidget->viewport()) {
             if (e->type() == QEvent::MouseButtonPress) {
                 QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(e);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+                QPointF pos = optionsListWidget->viewport()->mapFromGlobal(mouseEvent->globalPosition());
+                QListWidgetItem *item = optionsListWidget->itemAt(pos.toPoint());
+#else
                 QPoint pos = optionsListWidget->viewport()->mapFromGlobal(mouseEvent->globalPos());
                 QListWidgetItem *item = optionsListWidget->itemAt(pos);
+#endif
 
                 findChild<QPushButton *>(QStringLiteral("edit_button"))->setEnabled(item != nullptr);
                 findChild<QPushButton *>(QStringLiteral("remove_button"))->setEnabled(item != nullptr);
