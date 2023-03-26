@@ -18,7 +18,6 @@
 #include <QApplication>
 #include <QFile>
 #include <QPointer>
-#include <QTextCodec>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 
