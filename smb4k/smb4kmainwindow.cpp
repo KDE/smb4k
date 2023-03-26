@@ -30,6 +30,7 @@
 #include <QLabel>
 #include <QMenu>
 #include <QMenuBar>
+#include <QPointer>
 #include <QSize>
 #include <QStatusBar>
 #include <QString>
@@ -42,7 +43,7 @@
 #include <KConfigWidgets/KConfigDialog>
 #include <KConfigWidgets/KStandardAction>
 #include <KCoreAddons/KPluginFactory>
-#include <KCoreAddons/KPluginLoader>
+#include <KCoreAddons/KPluginMetaData>
 #include <KI18n/KLocalizedString>
 #include <KIconThemes/KIconLoader>
 #include <KWidgetsAddons/KMessageBox>
@@ -564,11 +565,11 @@ void Smb4KMainWindow::slotConfigDialog()
     //
     // If the dialog does not exist, load and show it:
     //
-    KPluginLoader loader(QStringLiteral("smb4kconfigdialog"));
-    KPluginFactory *configFactory = loader.factory();
+    KPluginMetaData metaData(QStringLiteral("smb4kconfigdialog"));
+    KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
 
-    if (configFactory) {
-        KConfigDialog *dlg = configFactory->create<KConfigDialog>(this);
+    if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
+        QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>(this);
 
         if (dlg) {
             dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
@@ -577,7 +578,7 @@ void Smb4KMainWindow::slotConfigDialog()
             dlg->show();
         }
     } else {
-        KMessageBox::error(nullptr, loader.errorString());
+        KMessageBox::error(nullptr, result.errorString);
         return;
     }
 }
