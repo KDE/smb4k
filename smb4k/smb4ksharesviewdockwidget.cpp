@@ -200,7 +200,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     connect(unmountAction, SIGNAL(triggered(bool)), this, SLOT(slotUnmountActionTriggered(bool)));
 
     m_actionCollection->addAction(QStringLiteral("unmount_action"), unmountAction);
-    m_actionCollection->setDefaultShortcut(unmountAction, QKeySequence(Qt::CTRL + Qt::Key_U));
+    m_actionCollection->setDefaultShortcut(unmountAction, QKeySequence(i18n("Ctrl+U")));
 
     //
     // The Unmount All action
@@ -210,7 +210,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     connect(unmountAllAction, SIGNAL(triggered(bool)), this, SLOT(slotUnmountAllActionTriggered(bool)));
 
     m_actionCollection->addAction(QStringLiteral("unmount_all_action"), unmountAllAction);
-    m_actionCollection->setDefaultShortcut(unmountAllAction, QKeySequence(Qt::CTRL + Qt::Key_N));
+    m_actionCollection->setDefaultShortcut(unmountAllAction, QKeySequence(i18n("Ctrl+N")));
 
     //
     // Second separator
@@ -228,7 +228,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     connect(bookmarkAction, SIGNAL(triggered(bool)), this, SLOT(slotBookmarkActionTriggered(bool)));
 
     m_actionCollection->addAction(QStringLiteral("bookmark_action"), bookmarkAction);
-    m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(Qt::CTRL + Qt::Key_B));
+    m_actionCollection->setDefaultShortcut(bookmarkAction, QKeySequence(i18n("Ctrl+B")));
 
     //
     // Add custom options action
@@ -238,7 +238,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     connect(customAction, SIGNAL(triggered(bool)), this, SLOT(slotAddCustomSettingsTriggered(bool)));
 
     m_actionCollection->addAction(QStringLiteral("custom_action"), customAction);
-    m_actionCollection->setDefaultShortcut(customAction, QKeySequence(Qt::CTRL + Qt::Key_C));
+    m_actionCollection->setDefaultShortcut(customAction, QKeySequence(i18n("Ctrl+C")));
 
     //
     // The Synchronize action
@@ -248,7 +248,7 @@ void Smb4KSharesViewDockWidget::setupActions()
     connect(synchronizeAction, SIGNAL(triggered(bool)), this, SLOT(slotSynchronizeActionTriggered(bool)));
 
     m_actionCollection->addAction(QStringLiteral("synchronize_action"), synchronizeAction);
-    m_actionCollection->setDefaultShortcut(synchronizeAction, QKeySequence(Qt::CTRL + Qt::Key_Y));
+    m_actionCollection->setDefaultShortcut(synchronizeAction, QKeySequence(i18n("Ctrl+Y")));
 
     //
     // Third separator
@@ -266,14 +266,14 @@ void Smb4KSharesViewDockWidget::setupActions()
     connect(konsoleAction, SIGNAL(triggered(bool)), this, SLOT(slotKonsoleActionTriggered(bool)));
 
     m_actionCollection->addAction(QStringLiteral("konsole_action"), konsoleAction);
-    m_actionCollection->setDefaultShortcut(konsoleAction, QKeySequence(Qt::CTRL + Qt::Key_L));
+    m_actionCollection->setDefaultShortcut(konsoleAction, QKeySequence(i18n("Ctrl+L")));
 
     QAction *filemanagerAction = new QAction(KDE::icon(QStringLiteral("system-file-manager")), i18n("Open with F&ile Manager"), this);
     filemanagerAction->setEnabled(false);
     connect(filemanagerAction, SIGNAL(triggered(bool)), this, SLOT(slotFileManagerActionTriggered(bool)));
 
     m_actionCollection->addAction(QStringLiteral("filemanager_action"), filemanagerAction);
-    m_actionCollection->setDefaultShortcut(filemanagerAction, QKeySequence(Qt::CTRL + Qt::Key_I));
+    m_actionCollection->setDefaultShortcut(filemanagerAction, QKeySequence(i18n("Ctrl+I")));
 
     //
     // Plug the actions into the context menu
