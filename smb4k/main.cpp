@@ -28,9 +28,11 @@ using namespace Smb4KGlobal;
 
 int main(int argc, char **argv)
 {
+#if QT_VERSION <= QT_VERSION_CHECK(6, 0, 0)
     // Set attributes
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+#endif
 
     // Create the application
     QApplication app(argc, argv);
@@ -90,10 +92,8 @@ int main(int argc, char **argv)
 
     QObject::connect(&service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList & /*args*/, const QString & /*workingDir*/) {
         if (mainWindow->isVisible()) {
-#if KWINDOWSYSTEM_VERSION >= QT_VERSION_CHECK(5, 91, 0)
             KWindowSystem::updateStartupId(mainWindow->windowHandle());
             KWindowSystem::activateWindow(mainWindow->windowHandle());
-#endif
         } else {
             mainWindow->setVisible(true);
         }
