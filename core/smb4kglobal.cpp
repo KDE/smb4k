@@ -21,7 +21,6 @@
 #include <QStandardPaths>
 #include <QTimer>
 #include <QUrl>
-#include <QVariant>
 
 // KDE includes
 #include <KCoreAddons/KShell>
