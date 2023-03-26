@@ -21,8 +21,6 @@
 #include <QFile>
 #include <QHostAddress>
 #include <QHostInfo>
-#include <QTextCodec>
-#include <QTextStream>
 
 Smb4KGlobalPrivate::Smb4KGlobalPrivate()
 {
