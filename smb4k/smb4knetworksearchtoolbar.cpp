@@ -53,7 +53,7 @@ Smb4KNetworkSearchToolBar::Smb4KNetworkSearchToolBar(QWidget *parent)
     comboBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     comboBox->setCompletionMode(KCompletion::CompletionPopupAuto);
 
-    connect(comboBox, SIGNAL(returnPressed()), this, SLOT(slotReturnKeyPressed()));
+    connect(comboBox, SIGNAL(returnPressed(QString)), this, SLOT(slotReturnKeyPressed(QString)));
     // FIXME: Add a connection to the clearSearch() slot
 
     addWidget(comboBox);
@@ -247,26 +247,15 @@ QStringList Smb4KNetworkSearchToolBar::completionStrings() const
     return comboBox->completionObject()->items();
 }
 
-void Smb4KNetworkSearchToolBar::slotReturnKeyPressed()
+void Smb4KNetworkSearchToolBar::slotReturnKeyPressed(const QString &text)
 {
-    //
-    // Get the input combo box
-    //
-    KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
+    if (!text.isEmpty()) {
+        KComboBox *comboBox = findChild<KComboBox *>(QStringLiteral("SearchCombo"));
 
-    //
-    // Initialize a search if the line edit is not empty
-    //
-    if (!comboBox->currentText().isEmpty()) {
-        //
-        // Add the search item to the completion object
-        //
-        comboBox->completionObject()->addItem(comboBox->currentText());
-
-        //
-        // Emit the search signal
-        //
-        Q_EMIT search(comboBox->currentText());
+        if (comboBox) {
+            comboBox->completionObject()->addItem(text);
+            Q_EMIT search(text);
+        }
     }
 }
 

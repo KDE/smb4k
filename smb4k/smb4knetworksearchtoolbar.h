@@ -100,7 +100,7 @@ protected Q_SLOTS:
     /**
      * Called when the return key was pressed
      */
-    void slotReturnKeyPressed();
+    void slotReturnKeyPressed(const QString &text);
 
     /**
      * Called when the search dual action is toggled
