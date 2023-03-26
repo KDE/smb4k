@@ -23,7 +23,6 @@
 #include <QFile>
 #include <QMutableListIterator>
 #include <QPointer>
-#include <QTextCodec>
 #include <QTextStream>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
