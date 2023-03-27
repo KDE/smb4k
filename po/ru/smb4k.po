@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-04 00:47+0000\n"
+"POT-Creation-Date: 2023-03-27 00:49+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -52,40 +52,40 @@ msgstr "«%1» — недопустимая точка подключения."
 msgid "The unmount process could not be started."
 msgstr "Не удалось запустить процесс отключения общей папки."
 
-#: smb4k/main.cpp:43 smb4k/smb4ksystemtray.cpp:56
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
 
-#: smb4k/main.cpp:45
+#: smb4k/main.cpp:47
 #, kde-format
 msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr ""
 "Диспетчер сетевого окружения и инструмент для подключения общих ресурсов с "
 "использованием протокола Samba"
 
-#: smb4k/main.cpp:47
+#: smb4k/main.cpp:49
 #, fuzzy, kde-format
 #| msgid "© 2003-2022 Alexander Reinholdt"
 msgid "© 2003-2023 Alexander Reinholdt"
 msgstr "© Alexander Reinholdt, 2003-2022"
 
-#: smb4k/main.cpp:56
+#: smb4k/main.cpp:58
 #, kde-format
 msgid "Alexander Reinholdt"
 msgstr "Alexander Reinholdt"
 
-#: smb4k/main.cpp:56
+#: smb4k/main.cpp:58
 #, kde-format
 msgid "Developer"
 msgstr "Разработчик"
 
-#: smb4k/main.cpp:61
+#: smb4k/main.cpp:63
 #, kde-format
 msgid "Wolfgang Geisendörfer"
 msgstr "Wolfgang Geisendörfer"
 
-#: smb4k/main.cpp:61
+#: smb4k/main.cpp:63
 #, kde-format
 msgid "Donator"
 msgstr "Спонсор"
@@ -137,7 +137,7 @@ msgstr "Закладки"
 msgid "&Edit Bookmarks"
 msgstr "&Изменить закладки..."
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
+#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:146
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
@@ -151,43 +151,43 @@ msgstr "Добавить &закладку"
 msgid "Mount Bookmarks"
 msgstr "Подключить все закладки"
 
-#: smb4k/smb4kconfigdialog.cpp:107
+#: smb4k/smb4kconfigdialog.cpp:104
 #, kde-format
 msgid "User Interface"
 msgstr "Интерфейс пользователя"
 
-#: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:105 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Сеть"
 
-#: smb4k/smb4kconfigdialog.cpp:109
+#: smb4k/smb4kconfigdialog.cpp:106
 #, kde-format
 msgid "Mounting"
 msgstr "Подключение"
 
-#: smb4k/smb4kconfigdialog.cpp:110
+#: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
 msgid "Authentication"
 msgstr "Аутентификация"
 
-#: smb4k/smb4kconfigdialog.cpp:111
+#: smb4k/smb4kconfigdialog.cpp:108
 #, kde-format
 msgid "Synchronization"
 msgstr "Синхронизация"
 
-#: smb4k/smb4kconfigdialog.cpp:112
+#: smb4k/smb4kconfigdialog.cpp:109
 #, fuzzy, kde-format
 msgid "Custom Settings"
 msgstr "Общие параметры"
 
-#: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:110 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Профили"
 
-#: smb4k/smb4kconfigdialog.cpp:135
+#: smb4k/smb4kconfigdialog.cpp:132
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -240,17 +240,17 @@ msgstr "Очистить список"
 msgid "Default Login"
 msgstr "Вход по умолчанию"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:327
 #, kde-format
 msgid "Enter the default login information."
 msgstr "Введите данные для входа, применяемые по умолчанию."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:401
+#: smb4k/smb4kconfigpageauthentication.cpp:406
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr "Укажите имя пользователя и пароль для учётной записи бумажника %1."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:403
+#: smb4k/smb4kconfigpageauthentication.cpp:408
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr "Укажите имя пользователя и пароль для учётной записи по умолчанию."
@@ -265,7 +265,7 @@ msgstr "Всё настроено."
 msgid "Clear List"
 msgstr "Очистить список"
 
-#: smb4k/smb4kconfigpagecustomoptions.cpp:215
+#: smb4k/smb4kconfigpagecustomoptions.cpp:220
 #, fuzzy, kde-format
 #| msgid "The item %1 was removed, because all custom options were reset."
 msgid "The item %1 was removed, because all custom settings were reset."
@@ -523,7 +523,7 @@ msgstr "Контрольные суммы"
 msgid "Main Window"
 msgstr "Основное окно"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:217
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:218
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Сетевое окружение"
@@ -534,18 +534,18 @@ msgstr "Сетевое окружение"
 msgid "Shares View"
 msgstr "Вид списка папок"
 
-#: smb4k/smb4kmainwindow.cpp:135
+#: smb4k/smb4kmainwindow.cpp:136
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Панели"
 
 # This is about mounted shared _folders_. --aspotashev
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
+#: smb4k/smb4kmainwindow.cpp:241 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Подключённые общие папки"
 
-#: smb4k/smb4kmainwindow.cpp:402
+#: smb4k/smb4kmainwindow.cpp:403
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -555,17 +555,17 @@ msgstr ""
 "<br>Чтобы закрыть программу, используйте команду <i>Выход</i> из меню "
 "<i>Файл</i>.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:404
+#: smb4k/smb4kmainwindow.cpp:405
 #, kde-format
 msgid "Docking"
 msgstr "Сворачивание в системный лоток"
 
-#: smb4k/smb4kmainwindow.cpp:468
+#: smb4k/smb4kmainwindow.cpp:469
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Не подключено ни одной общей папки."
 
-#: smb4k/smb4kmainwindow.cpp:471
+#: smb4k/smb4kmainwindow.cpp:472
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
@@ -574,83 +574,83 @@ msgstr[1] "Подключены %1 общих папки."
 msgstr[2] "Подключены %1 общих папок."
 msgstr[3] "Подключена %1 общая папка."
 
-#: smb4k/smb4kmainwindow.cpp:632
+#: smb4k/smb4kmainwindow.cpp:633
 #, kde-format
 msgid "The wallet is used."
 msgstr "Используется бумажник."
 
-#: smb4k/smb4kmainwindow.cpp:635
+#: smb4k/smb4kmainwindow.cpp:636
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Используется диалог ввода пароля."
 
-#: smb4k/smb4kmainwindow.cpp:645
+#: smb4k/smb4kmainwindow.cpp:646
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Поиск рабочих групп и доменов..."
 
-#: smb4k/smb4kmainwindow.cpp:650
+#: smb4k/smb4kmainwindow.cpp:651
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Поиск хостов в домене %1..."
 
-#: smb4k/smb4kmainwindow.cpp:655
+#: smb4k/smb4kmainwindow.cpp:656
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Запрос списка общих ресурсов, доступных на хосте %1..."
 
-#: smb4k/smb4kmainwindow.cpp:663 smb4k/smb4kmainwindow.cpp:671
+#: smb4k/smb4kmainwindow.cpp:664 smb4k/smb4kmainwindow.cpp:672
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Поиск папок и каталогов в %1..."
 
-#: smb4k/smb4kmainwindow.cpp:688
+#: smb4k/smb4kmainwindow.cpp:689
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Пробуждение хостов..."
 
-#: smb4k/smb4kmainwindow.cpp:693
+#: smb4k/smb4kmainwindow.cpp:694
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Отправка файла на принтер %1..."
 
-#: smb4k/smb4kmainwindow.cpp:697
+#: smb4k/smb4kmainwindow.cpp:698
 #, kde-format
 msgid "Searching..."
 msgstr "Поиск..."
 
-#: smb4k/smb4kmainwindow.cpp:715 smb4k/smb4kmainwindow.cpp:752
-#: smb4k/smb4kmainwindow.cpp:864
+#: smb4k/smb4kmainwindow.cpp:716 smb4k/smb4kmainwindow.cpp:753
+#: smb4k/smb4kmainwindow.cpp:865
 #, kde-format
 msgid "Done."
 msgstr "Готово."
 
-#: smb4k/smb4kmainwindow.cpp:725
+#: smb4k/smb4kmainwindow.cpp:726
 #, kde-format
 msgid "Mounting..."
 msgstr "Подключение..."
 
-#: smb4k/smb4kmainwindow.cpp:729
+#: smb4k/smb4kmainwindow.cpp:730
 #, kde-format
 msgid "Unmounting..."
 msgstr "Отключение..."
 
-#: smb4k/smb4kmainwindow.cpp:733
+#: smb4k/smb4kmainwindow.cpp:734
 #, kde-format
 msgid "Waking up host..."
 msgstr "Пробуждение хоста..."
 
-#: smb4k/smb4kmainwindow.cpp:763
+#: smb4k/smb4kmainwindow.cpp:764
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "Ресурс «%1» успешно подключён."
 
-#: smb4k/smb4kmainwindow.cpp:796
+#: smb4k/smb4kmainwindow.cpp:797
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "Ресурс «%1» успешно отключён."
 
-#: smb4k/smb4kmainwindow.cpp:852
+#: smb4k/smb4kmainwindow.cpp:853
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Синхронизация %1"
@@ -687,6 +687,12 @@ msgstr "&Остановить"
 msgid "&Search"
 msgstr "&Поиск"
 
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#, kde-format
+msgid "Ctrl+B"
+msgstr ""
+
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
@@ -694,26 +700,52 @@ msgstr "&Поиск"
 msgid "Add &Custom Settings"
 msgstr "Особые &параметры"
 
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:167
+#: smb4k/smb4ksharesviewdockwidget.cpp:241
+#, kde-format
+msgid "Ctrl+C"
+msgstr ""
+
 # BUGME: ellipsis at the end of this string? --aspotashev
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Откр&ыть диалог подключения"
 
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:179
+#, kde-format
+msgid "Ctrl+O"
+msgstr ""
+
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Au&thentication"
 msgstr "&Аутентификация"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
+#, kde-format
+msgid "Ctrl+T"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
 msgid "Pre&view"
 msgstr "П&редварительный просмотр"
 
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
+#, kde-format
+msgid "Ctrl+V"
+msgstr ""
+
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:214
 #, kde-format
 msgid "&Print File"
 msgstr "На&печатать файл"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:220
+#, kde-format
+msgid "Ctrl+P"
+msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:226
 #, kde-format
@@ -726,6 +758,12 @@ msgstr "По&дключить"
 msgid "&Unmount"
 msgstr "Откл&ючить"
 
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:238
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:979
+#, kde-format
+msgid "Ctrl+M"
+msgstr ""
+
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:420
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:431
 #, kde-format
@@ -736,6 +774,12 @@ msgstr "С&канировать компьютер"
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Ск&анировать рабочую группу"
+
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4ksharesviewdockwidget.cpp:203
+#, kde-format
+msgid "Ctrl+U"
+msgstr ""
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -813,20 +857,40 @@ msgstr "Значки"
 msgid "List View"
 msgstr "Таблица"
 
+#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#, kde-format
+msgid "Ctrl+N"
+msgstr ""
+
 #: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "&Синхронизировать"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
+#, kde-format
+msgid "Ctrl+Y"
+msgstr ""
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "О&ткрыть в Konsole"
 
+#: smb4k/smb4ksharesviewdockwidget.cpp:269
+#, kde-format
+msgid "Ctrl+L"
+msgstr ""
+
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Открыть в &диспетчере файлов"
+
+#: smb4k/smb4ksharesviewdockwidget.cpp:276
+#, kde-format
+msgid "Ctrl+I"
+msgstr ""
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-13 00:49+0000\n"
-"PO-Revision-Date: 2023-03-11 04:53\n"
+"POT-Creation-Date: 2023-03-27 00:49+0000\n"
+"PO-Revision-Date: 2023-03-26 02:19\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -1848,7 +1848,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
-#: smb4kbookmarkhandler.cpp:335 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "不支持 %1 格式。"
@@ -2137,7 +2137,7 @@ msgstr "Samba"
 msgid "Wake-On-LAN"
 msgstr "局域网唤醒"
 
-#: smb4khomesshareshandler.cpp:128
+#: smb4khomesshareshandler.cpp:127
 #, kde-format
 msgid "%1 is not a version 1.0 file."
 msgstr "%1 不是版本 1.0 文件。"
