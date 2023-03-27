@@ -18,7 +18,8 @@
                 "Name[sl]": "Alexander Reinholdt",
                 "Name[tr]": "Alexander Reinholdt",
                 "Name[uk]": "Alexander Reinholdt",
-                "Name[x-test]": "xxAlexander Reinholdtxx"
+                "Name[x-test]": "xxAlexander Reinholdtxx",
+                "Name[zh_CN]": "Alexander Reinholdt"
             }
         ],
         "Category": "Utilities",
@@ -38,6 +39,7 @@
         "Description[tr]": "Smb4k tabanlı ağ komşuları tarayıcısı",
         "Description[uk]": "Переглядач мережевого середовища на основі Smb4K",
         "Description[x-test]": "xxNetwork neighborhood browser based on Smb4Kxx",
+        "Description[zh_CN]": "基于 smb4k 的网上邻居浏览器",
         "EnabledByDefault": true,
         "Icon": "smb4k",
         "Id": "org.kde.smb4kqml",
@@ -58,6 +60,7 @@
         "Name[tr]": "Ağ Komşuları",
         "Name[uk]": "Мережеве оточення",
         "Name[x-test]": "xxNetwork Neighborhoodxx",
+        "Name[zh_CN]": "网上邻居",
         "ServiceTypes": [
             "Plasma/Applet"
         ],
