@@ -1,11 +1,11 @@
-
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Pino Toscano <pino@kde.org>
 # SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+
 #
-# Project
+# Minimum required CMake version
 #
-project(smb4k)
+cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
 #
 # Version
@@ -17,9 +17,9 @@ set(VERSION_PATCH 70)
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 #
-# Minimum required CMake version
+# Project
 #
-cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+project(smb4k)
 
 #
 # CMake policies
