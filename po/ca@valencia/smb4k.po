@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-27 00:49+0000\n"
-"PO-Revision-Date: 2023-03-12 22:13+0100\n"
-"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
+"PO-Revision-Date: 2023-03-27 10:30+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -673,7 +673,7 @@ msgstr "Bu&sca"
 #: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
@@ -685,7 +685,7 @@ msgstr "Afig una &configuració personalitzada"
 #: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -695,7 +695,7 @@ msgstr "O&bri el diàleg de muntatge"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:179
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ctrl+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
@@ -705,7 +705,7 @@ msgstr "Au&tenticació"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -715,7 +715,7 @@ msgstr "&Vista prèvia"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:214
 #, kde-format
@@ -725,7 +725,7 @@ msgstr "Im&primix el fitxer"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:220
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:226
 #, kde-format
@@ -742,7 +742,7 @@ msgstr "Desm&unta"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:979
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ctrl+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:420
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:431
@@ -759,7 +759,7 @@ msgstr "Escaneja els g&rups de treball"
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Ctrl+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -839,7 +839,7 @@ msgstr "Vista de llista"
 #: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
@@ -849,7 +849,7 @@ msgstr "S&incronitza"
 #: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Ctrl+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
@@ -859,7 +859,7 @@ msgstr "Obri amb el Konso&le"
 #: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Ctrl+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
@@ -869,7 +869,7 @@ msgstr "Obri amb el gestor de fi&txers"
 #: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format

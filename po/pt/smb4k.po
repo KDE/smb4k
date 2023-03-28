@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-27 00:49+0000\n"
-"PO-Revision-Date: 2023-03-06 15:54+0000\n"
+"PO-Revision-Date: 2023-03-27 23:15+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -693,7 +693,7 @@ msgstr "&Procurar"
 #: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
@@ -705,7 +705,7 @@ msgstr "Adicionar Opções &Personalizadas"
 #: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -715,7 +715,7 @@ msgstr "Abrir a Janela de M&ontagem"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:179
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ctrl+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
@@ -725,7 +725,7 @@ msgstr "Au&tenticação"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -735,7 +735,7 @@ msgstr "Ante&visão"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:214
 #, kde-format
@@ -745,7 +745,7 @@ msgstr "Im&primir o Ficheiro"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:220
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:226
 #, kde-format
@@ -762,7 +762,7 @@ msgstr "&Desmontar"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:979
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ctrl+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:420
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:431
@@ -779,7 +779,7 @@ msgstr "Analisar o G&rupo de Trabalho"
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Ctrl+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -859,7 +859,7 @@ msgstr "Vista em Lista"
 #: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
@@ -869,7 +869,7 @@ msgstr "S&incronizar"
 #: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Ctrl+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
@@ -879,7 +879,7 @@ msgstr "Abrir com o Konso&le"
 #: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Ctrl+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
@@ -889,7 +889,7 @@ msgstr "Abrir com o &Gestor de Ficheiros"
 #: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format

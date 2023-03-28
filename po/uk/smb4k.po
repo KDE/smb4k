@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-27 00:49+0000\n"
-"PO-Revision-Date: 2023-03-04 08:32+0200\n"
+"PO-Revision-Date: 2023-03-27 08:39+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -681,7 +681,7 @@ msgstr "&Пошук"
 #: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
@@ -693,7 +693,7 @@ msgstr "Додати не&типові параметри"
 #: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -703,7 +703,7 @@ msgstr "&Відкрити вікно монтування"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:179
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ctrl+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
@@ -713,7 +713,7 @@ msgstr "&Розпізнавання"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -723,7 +723,7 @@ msgstr "Перегля&д"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:214
 #, kde-format
@@ -733,7 +733,7 @@ msgstr "&Надрукувати файл"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:220
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:226
 #, kde-format
@@ -750,7 +750,7 @@ msgstr "&Демонтувати"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:979
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ctrl+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:420
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:431
@@ -767,7 +767,7 @@ msgstr "Сканувати ро&бочу групу"
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Ctrl+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -847,7 +847,7 @@ msgstr "Перегляд списку"
 #: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
@@ -857,7 +857,7 @@ msgstr "С&инхронізувати"
 #: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Ctrl+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
@@ -867,7 +867,7 @@ msgstr "В&ідкрити у Konsole"
 #: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Ctrl+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
@@ -877,7 +877,7 @@ msgstr "Відкрити за допомогою менеджера &файлі�
 #: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format

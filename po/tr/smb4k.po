@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-27 00:49+0000\n"
-"PO-Revision-Date: 2023-03-04 14:03+0300\n"
+"PO-Revision-Date: 2023-03-27 13:28+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -668,7 +668,7 @@ msgstr "&Ara"
 #: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Kontrol+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
@@ -680,7 +680,7 @@ msgstr "Öz&el Ayarlar Ekle"
 #: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Kontrol+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -690,7 +690,7 @@ msgstr "&Bağlama Penceresini Aç"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:179
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Kontrol+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
@@ -700,7 +700,7 @@ msgstr "&Kimlik denetimi"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Kontrol+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -710,7 +710,7 @@ msgstr "Ö&nizleme"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Kontrol+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:214
 #, kde-format
@@ -720,7 +720,7 @@ msgstr "&Dosyayı Yazdır"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:220
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Kontrol+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:226
 #, kde-format
@@ -737,7 +737,7 @@ msgstr "&Bağlantıyı Kes"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:979
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Kontrol+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:420
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:431
@@ -754,7 +754,7 @@ msgstr "Çalışma &Grubunu Tara"
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Kontrol+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -834,7 +834,7 @@ msgstr "Liste Görünümü"
 #: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Kontrol+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
@@ -844,7 +844,7 @@ msgstr "&Eşzamanla"
 #: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Kontrol+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
@@ -854,7 +854,7 @@ msgstr "&Konsole ile Aç"
 #: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Kontrol+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
@@ -864,7 +864,7 @@ msgstr "&Dosya Yöneticisi ile Aç"
 #: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Kontrol+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
