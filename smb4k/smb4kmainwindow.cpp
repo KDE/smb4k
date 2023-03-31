@@ -554,17 +554,10 @@ void Smb4KMainWindow::slotQuit()
 
 void Smb4KMainWindow::slotConfigDialog()
 {
-    //
-    // Check if the configuration dialog exists and try to show it.
-    //
-    if (KConfigDialog::exists(QStringLiteral("Smb4KConfigDialog"))) {
-        KConfigDialog::showDialog(QStringLiteral("Smb4KConfigDialog"));
+    if (KConfigDialog::showDialog(QStringLiteral("Smb4KConfigDialog"))) {
         return;
     }
 
-    //
-    // If the dialog does not exist, load and show it:
-    //
     KPluginMetaData metaData(QStringLiteral("smb4kconfigdialog"));
     KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
 

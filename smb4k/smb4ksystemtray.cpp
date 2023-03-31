@@ -140,17 +140,10 @@ void Smb4KSystemTray::slotMountDialog()
 
 void Smb4KSystemTray::slotConfigDialog()
 {
-    //
-    // Check if the configuration dialog exists and try to show it.
-    //
-    if (KConfigDialog::exists(QStringLiteral("ConfigDialog"))) {
-        KConfigDialog::showDialog(QStringLiteral("ConfigDialog"));
+    if (KConfigDialog::showDialog(QStringLiteral("Smb4KConfigDialog"))) {
         return;
     }
 
-    //
-    // If the dialog does not exist, load and show it:
-    //
     KPluginMetaData metaData(QStringLiteral("smb4kconfigdialog"));
     KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
 
@@ -159,14 +152,13 @@ void Smb4KSystemTray::slotConfigDialog()
 
         if (associatedWidget()) {
             dlg = result.plugin->create<KConfigDialog>(associatedWidget());
-            dlg->setObjectName(QStringLiteral("ConfigDialog"));
+            dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
         } else {
             dlg = result.plugin->create<KConfigDialog>(contextMenu());
-            dlg->setObjectName(QStringLiteral("ConfigDialog"));
+            dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
         }
 
         if (dlg) {
-            dlg->setObjectName(QStringLiteral("ConfigDialog"));
             connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
             connect(dlg, SIGNAL(settingsChanged(QString)), this, SIGNAL(settingsChanged(QString)), Qt::UniqueConnection);
             dlg->show();
