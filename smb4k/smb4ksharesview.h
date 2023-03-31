@@ -115,7 +115,7 @@ protected:
     /**
      * Reimplemented to allow dragging.
      */
-    QMimeData *mimeData(const QList<QListWidgetItem *> list) const;
+    QMimeData *mimeData(const QList<QListWidgetItem *> list) const override;
 
     /**
      * Reimplemented to allow dragging.
