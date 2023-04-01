@@ -1506,7 +1506,7 @@ ntlm auth = yes
     <sect2 id="trouble_shooting_other_desktop_environments">
       <title>Other Desktop Environments Than &plasma;</title>
 
-      <para>When using a different desktop environment than &plasma;, &Qt; and &kf5; applications might be missing some icons. In that case, you might want to install the application <application>qt5ct</application> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/">here</ulink>). To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
+      <para>When using a different desktop environment than &plasma;, &Qt; and &kde-frameworks; applications might be missing some icons. In that case, you might want to install the application <application>qt5ct</application> (the source code can be obtained <ulink url="https://sourceforge.net/projects/qt5ct/">here</ulink>). To use <application>qt5ct</application> with your desktop environment, add the following line to your <filename>~/.xinitrc</filename> or <filename>~/.profile</filename> file:</para>
 <programlisting>export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
     </sect2>
   </sect1>
@@ -4768,7 +4768,7 @@ ntlm auth = yes
   <para>Follow these directions for your bug report:</para>
   <itemizedlist>
     <listitem><para>Describe <emphasis>in detail</emphasis> what you did to receive the problem you are reporting.</para></listitem>
-    <listitem><para>Provide the version of &smb4k; and &kf5;.</para></listitem>
+    <listitem><para>Provide the version of &smb4k; and &kde-frameworks;.</para></listitem>
     <listitem><para>Mention your operating system (&Linux;, FreeBSD, &etc;) and the distribution that is running on your computer.</para></listitem>
     <listitem><para>Include the full error message if an error dialog was displayed.</para></listitem>
     <listitem><para>If you experienced a crash, attach a full backtrace. For this it is recommended that you (re-)compile &smb4k; with debugging symbols. How this is done is mentioned in the <filename>README.md</filename> file shipped in the sources.</para></listitem>
