@@ -38,11 +38,7 @@
 
 // KDE includes
 #include <kauth_version.h>
-#if KAUTH_VERSION >= QT_VERSION_CHECK(5, 92, 0)
 #include <KAuth/ExecuteJob>
-#else
-#include <KAuth/KAuthExecuteJob>
-#endif
 #include <KCoreAddons/KShell>
 #include <KCoreAddons/KUser>
 #include <KI18n/KLocalizedString>
