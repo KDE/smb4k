@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-13 00:49+0000\n"
+"POT-Creation-Date: 2023-03-27 00:49+0000\n"
 "PO-Revision-Date: 2023-01-07 09:08+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2004,7 +2004,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 %2(e)an"
 
-#: smb4kbookmarkhandler.cpp:335 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1(r)en formatua ez da onartzen."
@@ -2302,7 +2302,7 @@ msgstr "Samba"
 msgid "Wake-On-LAN"
 msgstr "Esnatu sare bidez (Wake-On-LAN)"
 
-#: smb4khomesshareshandler.cpp:128
+#: smb4khomesshareshandler.cpp:127
 #, kde-format
 msgid "%1 is not a version 1.0 file."
 msgstr "%1 ez da 1.0 bertsioko fitxategi bat."

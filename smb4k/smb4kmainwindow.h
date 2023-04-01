@@ -237,24 +237,24 @@ private:
     /**
      * This is the progress bar in the status bar.
      */
-    QProgressBar *m_progress_bar;
+    QProgressBar *m_progressBar;
 
     /**
      * This is the pixmap label that represents the state of
      * the password handler in the status bar.
      */
-    QLabel *m_pass_icon;
+    QLabel *m_passwordIcon;
 
     /**
      * This icon gives feedback on actions that took place like
      * mounting a share, etc.
      */
-    QLabel *m_feedback_icon;
+    QLabel *m_feedbackIcon;
 
     /**
      * The system tray widget
      */
-    Smb4KSystemTray *m_system_tray_widget;
+    Smb4KSystemTray *m_systemTrayWidget;
 
     /**
      * This is the widget (embedded into a dock widget) that has

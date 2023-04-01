@@ -54,7 +54,7 @@ using namespace KParts;
 
 Smb4KMainWindow::Smb4KMainWindow()
     : KXmlGuiWindow()
-    , m_system_tray_widget(nullptr)
+    , m_systemTrayWidget(nullptr)
 {
     //
     // The widget (embedded into the dock widgets) that has the focus
@@ -160,28 +160,28 @@ void Smb4KMainWindow::setupActions()
 void Smb4KMainWindow::setupStatusBar()
 {
     // Set up the progress bar.
-    m_progress_bar = new QProgressBar(statusBar());
-    m_progress_bar->setFixedWidth(100);
-    m_progress_bar->setMaximum(0);
-    m_progress_bar->setMinimum(0);
-    m_progress_bar->setFixedHeight(statusBar()->fontMetrics().height());
-    m_progress_bar->setAlignment(Qt::AlignCenter);
-    m_progress_bar->setVisible(false);
+    m_progressBar = new QProgressBar(statusBar());
+    m_progressBar->setFixedWidth(100);
+    m_progressBar->setMaximum(0);
+    m_progressBar->setMinimum(0);
+    m_progressBar->setFixedHeight(statusBar()->fontMetrics().height());
+    m_progressBar->setAlignment(Qt::AlignCenter);
+    m_progressBar->setVisible(false);
 
     // Set the icon on the right side that represents the initial
     // state of the wallet manager.
-    m_pass_icon = new QLabel(statusBar());
-    m_pass_icon->setContentsMargins(0, 0, 0, 0);
-    m_pass_icon->setAlignment(Qt::AlignCenter);
+    m_passwordIcon = new QLabel(statusBar());
+    m_passwordIcon->setContentsMargins(0, 0, 0, 0);
+    m_passwordIcon->setAlignment(Qt::AlignCenter);
 
     // The feedback icon.
-    m_feedback_icon = new QLabel(statusBar());
-    m_feedback_icon->setContentsMargins(0, 0, 0, 0);
-    m_feedback_icon->setAlignment(Qt::AlignCenter);
+    m_feedbackIcon = new QLabel(statusBar());
+    m_feedbackIcon->setContentsMargins(0, 0, 0, 0);
+    m_feedbackIcon->setAlignment(Qt::AlignCenter);
 
-    statusBar()->addPermanentWidget(m_progress_bar);
-    statusBar()->addPermanentWidget(m_feedback_icon);
-    statusBar()->addPermanentWidget(m_pass_icon);
+    statusBar()->addPermanentWidget(m_progressBar);
+    statusBar()->addPermanentWidget(m_feedbackIcon);
+    statusBar()->addPermanentWidget(m_passwordIcon);
 
     slotWalletManagerInitialized();
     setupMountIndicator();
@@ -295,11 +295,11 @@ void Smb4KMainWindow::setupMenuBar()
 
 void Smb4KMainWindow::setupSystemTrayWidget()
 {
-    if (!m_system_tray_widget) {
-        m_system_tray_widget = new Smb4KSystemTray(this);
+    if (!m_systemTrayWidget) {
+        m_systemTrayWidget = new Smb4KSystemTray(this);
     }
 
-    connect(m_system_tray_widget, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)));
+    connect(m_systemTrayWidget, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)));
 }
 
 void Smb4KMainWindow::loadSettings()
@@ -466,13 +466,13 @@ void Smb4KMainWindow::setupMountIndicator()
     QStringList overlays;
 
     if (mountedSharesList().size() == 0) {
-        m_feedback_icon->setToolTip(i18n("There are currently no shares mounted."));
+        m_feedbackIcon->setToolTip(i18n("There are currently no shares mounted."));
     } else {
         overlays << QStringLiteral("emblem-mounted");
-        m_feedback_icon->setToolTip(i18np("There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size()));
+        m_feedbackIcon->setToolTip(i18np("There is currently %1 share mounted.", "There are currently %1 shares mounted.", mountedSharesList().size()));
     }
 
-    m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"), KIconLoader::Small, 0, KIconLoader::DefaultState, overlays));
+    m_feedbackIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("folder-network"), KIconLoader::Small, 0, KIconLoader::DefaultState, overlays));
 }
 
 void Smb4KMainWindow::setupDynamicActionList(QDockWidget *dock)
@@ -554,17 +554,10 @@ void Smb4KMainWindow::slotQuit()
 
 void Smb4KMainWindow::slotConfigDialog()
 {
-    //
-    // Check if the configuration dialog exists and try to show it.
-    //
-    if (KConfigDialog::exists(QStringLiteral("Smb4KConfigDialog"))) {
-        KConfigDialog::showDialog(QStringLiteral("Smb4KConfigDialog"));
+    if (KConfigDialog::showDialog(QStringLiteral("ConfigDialog"))) {
         return;
     }
 
-    //
-    // If the dialog does not exist, load and show it:
-    //
     KPluginMetaData metaData(QStringLiteral("smb4kconfigdialog"));
     KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
 
@@ -572,9 +565,8 @@ void Smb4KMainWindow::slotConfigDialog()
         QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>(this);
 
         if (dlg) {
-            dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
             connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
-            connect(dlg, SIGNAL(settingsChanged(QString)), m_system_tray_widget, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
+            connect(dlg, SIGNAL(settingsChanged(QString)), m_systemTrayWidget, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
             dlg->show();
         }
     } else {
@@ -625,15 +617,15 @@ void Smb4KMainWindow::slotWalletManagerInitialized()
 {
     if (Smb4KWalletManager::self()->useWalletSystem()) {
         if (KIconLoader::global()->hasIcon(QStringLiteral("kwalletmanager"))) {
-            m_pass_icon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("kwalletmanager"), KIconLoader::Small, 0, KIconLoader::DefaultState));
+            m_passwordIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("kwalletmanager"), KIconLoader::Small, 0, KIconLoader::DefaultState));
         } else {
-            m_pass_icon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("security-high"), KIconLoader::Small, 0, KIconLoader::DefaultState));
+            m_passwordIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("security-high"), KIconLoader::Small, 0, KIconLoader::DefaultState));
         }
 
-        m_pass_icon->setToolTip(i18n("The wallet is used."));
+        m_passwordIcon->setToolTip(i18n("The wallet is used."));
     } else {
-        m_pass_icon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-password"), KIconLoader::Small, 0, KIconLoader::DefaultState));
-        m_pass_icon->setToolTip(i18n("The password dialog is used."));
+        m_passwordIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-password"), KIconLoader::Small, 0, KIconLoader::DefaultState));
+        m_passwordIcon->setToolTip(i18n("The password dialog is used."));
     }
 }
 
@@ -703,16 +695,16 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
     }
     }
 
-    if (!m_progress_bar->isVisible()) {
-        m_progress_bar->setVisible(true);
+    if (!m_progressBar->isVisible()) {
+        m_progressBar->setVisible(true);
     }
 }
 
 void Smb4KMainWindow::slotClientFinished(const NetworkItemPtr & /*item*/, int /*process*/)
 {
     if (!coreIsRunning()) {
-        m_progress_bar->setVisible(false);
-        m_progress_bar->reset();
+        m_progressBar->setVisible(false);
+        m_progressBar->reset();
         statusBar()->showMessage(i18n("Done."), 2000);
     }
 }
@@ -739,8 +731,8 @@ void Smb4KMainWindow::slotMounterAboutToStart(int process)
     }
     }
 
-    if (!m_progress_bar->isVisible()) {
-        m_progress_bar->setVisible(true);
+    if (!m_progressBar->isVisible()) {
+        m_progressBar->setVisible(true);
     }
 }
 
@@ -748,8 +740,8 @@ void Smb4KMainWindow::slotMounterFinished(int /*process*/)
 {
     QTimer::singleShot(250, this, [this]() {
         if (!coreIsRunning()) {
-            m_progress_bar->setVisible(false);
-            m_progress_bar->reset();
+            m_progressBar->setVisible(false);
+            m_progressBar->reset();
             statusBar()->showMessage(i18n("Done."), 2000);
         }
     });
@@ -760,8 +752,8 @@ void Smb4KMainWindow::slotVisualMountFeedback(const SharePtr &share)
     Q_ASSERT(share);
 
     if (share) {
-        m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-ok"), KIconLoader::Small, 0, KIconLoader::DefaultState));
-        m_feedback_icon->setToolTip(i18n("%1 has been mounted successfully.", share->displayString()));
+        m_feedbackIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-ok"), KIconLoader::Small, 0, KIconLoader::DefaultState));
+        m_feedbackIcon->setToolTip(i18n("%1 has been mounted successfully.", share->displayString()));
 
         QList<QTabBar *> list = findChildren<QTabBar *>();
         QDockWidget *shares_dock = findChild<QDockWidget *>(QStringLiteral("SharesViewDockWidget"));
@@ -793,8 +785,8 @@ void Smb4KMainWindow::slotVisualUnmountFeedback(const SharePtr &share)
     Q_ASSERT(share);
 
     if (share) {
-        m_feedback_icon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-ok"), KIconLoader::Small, 0, KIconLoader::DefaultState));
-        m_feedback_icon->setToolTip(i18n("%1 has been unmounted successfully.", share->displayString()));
+        m_feedbackIcon->setPixmap(KIconLoader::global()->loadIcon(QStringLiteral("dialog-ok"), KIconLoader::Small, 0, KIconLoader::DefaultState));
+        m_feedbackIcon->setToolTip(i18n("%1 has been unmounted successfully.", share->displayString()));
 
         QList<QTabBar *> list = findChildren<QTabBar *>();
         QDockWidget *shares_dock = findChild<QDockWidget *>(QStringLiteral("SharesViewDockWidget"));
@@ -852,16 +844,16 @@ void Smb4KMainWindow::slotSynchronizerAboutToStart(const QString &dest)
 {
     statusBar()->showMessage(i18n("Synchronizing %1", dest), 0);
 
-    if (!m_progress_bar->isVisible()) {
-        m_progress_bar->setVisible(true);
+    if (!m_progressBar->isVisible()) {
+        m_progressBar->setVisible(true);
     }
 }
 
 void Smb4KMainWindow::slotSynchronizerFinished(const QString & /*dest*/)
 {
     if (!coreIsRunning()) {
-        m_progress_bar->setVisible(false);
-        m_progress_bar->reset();
+        m_progressBar->setVisible(false);
+        m_progressBar->reset();
         statusBar()->showMessage(i18n("Done."), 2000);
     }
 }

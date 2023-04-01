@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-13 00:49+0000\n"
+"POT-Creation-Date: 2023-03-27 00:49+0000\n"
 "PO-Revision-Date: 2018-11-25 12:20+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -1677,7 +1677,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:335 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr ""
@@ -1961,7 +1961,7 @@ msgstr ""
 msgid "Wake-On-LAN"
 msgstr ""
 
-#: smb4khomesshareshandler.cpp:128
+#: smb4khomesshareshandler.cpp:127
 #, kde-format
 msgid "%1 is not a version 1.0 file."
 msgstr ""
