@@ -140,7 +140,7 @@ void Smb4KSystemTray::slotMountDialog()
 
 void Smb4KSystemTray::slotConfigDialog()
 {
-    if (KConfigDialog::showDialog(QStringLiteral("Smb4KConfigDialog"))) {
+    if (KConfigDialog::showDialog(QStringLiteral("ConfigDialog"))) {
         return;
     }
 
@@ -152,10 +152,8 @@ void Smb4KSystemTray::slotConfigDialog()
 
         if (associatedWidget()) {
             dlg = result.plugin->create<KConfigDialog>(associatedWidget());
-            dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
         } else {
             dlg = result.plugin->create<KConfigDialog>(contextMenu());
-            dlg->setObjectName(QStringLiteral("Smb4KConfigDialog"));
         }
 
         if (dlg) {
