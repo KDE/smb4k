@@ -10,6 +10,8 @@ refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
 - Fix a crash in the plasmoid that occurred every time when a share
   was checked if it was mounted. Also improve the code.
 - Add ability to define custom settings also from the shares view.
+- Fix handling of the configuration dialog in the main window and the system
+  tray icon.
 - Improve config dialog by disentagling the code, removing dead code and fixing
   bugs.
 - Update icons in the configuration dialog and the GUI.
