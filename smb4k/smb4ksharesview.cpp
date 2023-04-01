@@ -222,7 +222,11 @@ Qt::DropActions Smb4KSharesView::supportedDropActions() const
     return (Qt::CopyAction | Qt::LinkAction);
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+QMimeData *Smb4KSharesView::mimeData(const QList<QListWidgetItem *> &list) const
+#else
 QMimeData *Smb4KSharesView::mimeData(const QList<QListWidgetItem *> list) const
+#endif
 {
     QMimeData *mimeData = new QMimeData();
     QList<QUrl> urls;
