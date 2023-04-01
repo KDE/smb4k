@@ -169,9 +169,9 @@ add_subdirectory(doc)
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
   ki18n_install(po)
-  if(KF${QT_MAJOR_VERSION}DocTools_FOUND)
+  if(KF5DocTools_FOUND)
     kdoctools_install(po)
-  endif(KF${QT_MAJOR_VERSION}DocTools_FOUND)
+  endif(KF5DocTools_FOUND)
 endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
 
 #
