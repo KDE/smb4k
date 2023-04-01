@@ -16,9 +16,9 @@ target_link_libraries(mounthelper
   smb4kcore
   Qt${QT_MAJOR_VERSION}::Core
   ${AUTHLIB}
-  KF5::CoreAddons
-  KF5::I18n
-  KF5::KIOCore)
+  KF${QT_MAJOR_VERSION}::CoreAddons
+  KF${QT_MAJOR_VERSION}::I18n
+  KF${QT_MAJOR_VERSION}::KIOCore)
 
 install(TARGETS mounthelper DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
 

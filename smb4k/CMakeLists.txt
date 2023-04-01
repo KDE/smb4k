@@ -29,16 +29,16 @@ target_link_libraries(smb4kconfigdialog
   Qt${QT_MAJOR_VERSION}::Core
   Qt${QT_MAJOR_VERSION}::Widgets
   Qt${QT_MAJOR_VERSION}::Gui
-  KF5::WidgetsAddons
-  KF5::CoreAddons
-  KF5::XmlGui
-  KF5::IconThemes
-  KF5::I18n
-  KF5::ConfigCore
-  KF5::ConfigGui
-  KF5::KIOCore
-  KF5::KIOWidgets
-  KF5::WindowSystem
+  KF${QT_MAJOR_VERSION}::WidgetsAddons
+  KF${QT_MAJOR_VERSION}::CoreAddons
+  KF${QT_MAJOR_VERSION}::XmlGui
+  KF${QT_MAJOR_VERSION}::IconThemes
+  KF${QT_MAJOR_VERSION}::I18n
+  KF${QT_MAJOR_VERSION}::ConfigCore
+  KF${QT_MAJOR_VERSION}::ConfigGui
+  KF${QT_MAJOR_VERSION}::KIOCore
+  KF${QT_MAJOR_VERSION}::KIOWidgets
+  KF${QT_MAJOR_VERSION}::WindowSystem
   smb4kcore)
   
 if (SMB4K_WITH_WS_DISCOVERY)
@@ -70,16 +70,16 @@ target_link_libraries(smb4k
   Qt${QT_MAJOR_VERSION}::Core
   Qt${QT_MAJOR_VERSION}::Gui
   Qt${QT_MAJOR_VERSION}::Widgets
-  KF5::CoreAddons
-  KF5::WidgetsAddons
-  KF5::DBusAddons
-  KF5::XmlGui
-  KF5::I18n
-  KF5::IconThemes
-  KF5::KIOCore
-  KF5::ConfigWidgets
-  KF5::Crash
-  KF5::WindowSystem)
+  KF${QT_MAJOR_VERSION}::CoreAddons
+  KF${QT_MAJOR_VERSION}::WidgetsAddons
+  KF${QT_MAJOR_VERSION}::DBusAddons
+  KF${QT_MAJOR_VERSION}::XmlGui
+  KF${QT_MAJOR_VERSION}::I18n
+  KF${QT_MAJOR_VERSION}::IconThemes
+  KF${QT_MAJOR_VERSION}::KIOCore
+  KF${QT_MAJOR_VERSION}::ConfigWidgets
+  KF${QT_MAJOR_VERSION}::Crash
+  KF${QT_MAJOR_VERSION}::WindowSystem)
 
 ########### install files ###############
 
@@ -88,6 +88,6 @@ install(TARGETS smb4k DESTINATION ${KDE_INSTALL_BINDIR})
 
 install(PROGRAMS org.kde.smb4k.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 
-install(FILES smb4k_shell.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/smb4k)
+install(FILES smb4k_shell.rc DESTINATION ${KDE_INSTALL_KXMLGUIDIR}/smb4k)
 install(FILES org.kde.smb4k.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 

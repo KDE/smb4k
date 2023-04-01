@@ -3,6 +3,11 @@
 # SPDX-FileCopyrightText: 2019 Pino Toscano <pino@kde.org>
 # SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
 #
+# Minimum required CMake version
+#
+cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+
+#
 # Project
 #
 project(smb4k)
@@ -15,11 +20,6 @@ set(VERSION_MINOR 2)
 set(VERSION_PATCH 70)
 
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
-
-#
-# Minimum required CMake version
-#
-cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
 #
 # CMake policies
@@ -76,38 +76,42 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 # Qt modules
-find_package(Qt${QT_MAJOR_VERSION}Core ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}Gui ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}Network ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}PrintSupport ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}Qml ${QT_MIN_VERSION} REQUIRED)
-find_package(Qt${QT_MAJOR_VERSION}Widgets ${QT_MIN_VERSION} REQUIRED)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} NO_MODULE REQUIRED COMPONENTS
+  Core
+  Gui
+  Network
+  PrintSupport
+  Qml
+  Widgets
+)
 
-# KF5 modules
-find_package(KF5Auth ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Completion ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Config ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5ConfigWidgets ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5CoreAddons ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5DBusAddons ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5DocTools ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5I18n ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5IconThemes ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5JobWidgets ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5KIO ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Notifications ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Solid ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Wallet ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5WidgetsAddons ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5WindowSystem ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5XmlGui ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5Crash ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5DNSSD ${KF5_MIN_VERSION} REQUIRED)
+# Frameworks modules
+find_package(KF${QT_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+  Auth
+  Completion
+  Config
+  ConfigWidgets
+  CoreAddons
+  Crash
+  DBusAddons
+  DNSSD
+  DocTools
+  I18n
+  IconThemes
+  JobWidgets
+  KIO
+  Notifications
+  Solid
+  Wallet
+  WidgetsAddons
+  WindowSystem
+  XmlGui
+)
 
 # Install the plasmoid if desired
 if (SMB4K_INSTALL_PLASMOID)
-  find_package(KF5Plasma ${KF5_MIN_VERSION})
-  set_package_properties(KF5Plasma PROPERTIES TYPE RUNTIME)
+  find_package(KF${QT_MAJOR_VERSION} ${KF5_MIN_VERSION} COMPONENTS Plasma)
+  set_package_properties(KF${QT_MAJOR_VERSION}Plasma PROPERTIES TYPE RUNTIME)
 endif()
 
 # Find libsmbclient.h
@@ -165,9 +169,9 @@ add_subdirectory(doc)
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
   ki18n_install(po)
-  if(KF5DocTools_FOUND)
+  if(KF${QT_MAJOR_VERSION}DocTools_FOUND)
     kdoctools_install(po)
-  endif(KF5DocTools_FOUND)
+  endif(KF${QT_MAJOR_VERSION}DocTools_FOUND)
 endif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/po")
 
 #

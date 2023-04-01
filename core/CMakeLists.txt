@@ -68,21 +68,21 @@ target_link_libraries(smb4kcore
   Qt${QT_MAJOR_VERSION}::PrintSupport
   Qt${QT_MAJOR_VERSION}::Network
   Qt${QT_MAJOR_VERSION}::Qml
-  KF5::ConfigCore
-  KF5::ConfigGui
-  KF5::AuthCore
-  KF5::IconThemes
-  KF5::I18n
-  KF5::Completion
-  KF5::CoreAddons
-  KF5::Solid
-  KF5::KIOCore
-  KF5::KIOWidgets
-  KF5::Notifications
-  KF5::JobWidgets
-  KF5::Wallet
-  KF5::XmlGui
-  KF5::DNSSD
+  KF${QT_MAJOR_VERSION}::ConfigCore
+  KF${QT_MAJOR_VERSION}::ConfigGui
+  KF${QT_MAJOR_VERSION}::AuthCore
+  KF${QT_MAJOR_VERSION}::IconThemes
+  KF${QT_MAJOR_VERSION}::I18n
+  KF${QT_MAJOR_VERSION}::Completion
+  KF${QT_MAJOR_VERSION}::CoreAddons
+  KF${QT_MAJOR_VERSION}::Solid
+  KF${QT_MAJOR_VERSION}::KIOCore
+  KF${QT_MAJOR_VERSION}::KIOWidgets
+  KF${QT_MAJOR_VERSION}::Notifications
+  KF${QT_MAJOR_VERSION}::JobWidgets
+  KF${QT_MAJOR_VERSION}::Wallet
+  KF${QT_MAJOR_VERSION}::XmlGui
+  KF${QT_MAJOR_VERSION}::DNSSD
   ${LIBSMBCLIENT_LIBRARIES})
     
 #
