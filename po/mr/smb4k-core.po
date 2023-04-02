@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 00:49+0000\n"
+"POT-Creation-Date: 2023-04-02 00:47+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2007,14 +2007,14 @@ msgstr "वापरकर्ता:"
 msgid "Clear List"
 msgstr "यादी रिकामी करा"
 
-#: smb4kmounter.cpp:756
+#: smb4kmounter.cpp:752
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
 
-#: smb4kmounter.cpp:761
+#: smb4kmounter.cpp:757
 #, kde-format
 msgid "Foreign Share"
 msgstr ""

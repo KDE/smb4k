@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 00:49+0000\n"
+"POT-Creation-Date: 2023-04-02 00:47+0000\n"
 "PO-Revision-Date: 2023-03-29 08:25+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2278,7 +2278,7 @@ msgstr "Uporabnik:"
 msgid "Clear List"
 msgstr "Očisti seznam"
 
-#: smb4kmounter.cpp:756
+#: smb4kmounter.cpp:752
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2287,7 +2287,7 @@ msgstr ""
 "<qt><p>Mrežni disk <b>%1</b> je priklopljen na<br><b>%2</b> in v lasti "
 "uporabnika <b>%3</b>.</p><p>Ali ga zares želite odklopiti?</p></qt>"
 
-#: smb4kmounter.cpp:761
+#: smb4kmounter.cpp:757
 #, kde-format
 msgid "Foreign Share"
 msgstr "Tuji mrežni disk"

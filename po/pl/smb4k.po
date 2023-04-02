@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 00:51+0000\n"
+"POT-Creation-Date: 2023-04-02 00:47+0000\n"
 "PO-Revision-Date: 2023-03-25 09:34+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -561,83 +561,83 @@ msgstr[0] "Obecnie podpięty jest %1 zasób."
 msgstr[1] "Obecnie podpięte są %1 zasoby."
 msgstr[2] "Obecnie podpiętych jest %1 zasobów."
 
-#: smb4k/smb4kmainwindow.cpp:626
+#: smb4k/smb4kmainwindow.cpp:625
 #, kde-format
 msgid "The wallet is used."
 msgstr "Portfel jest w użyciu."
 
-#: smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:628
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Używany jest okno dialogowe hasła."
 
-#: smb4k/smb4kmainwindow.cpp:639
+#: smb4k/smb4kmainwindow.cpp:638
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Wyszukiwanie grup roboczych i domen..."
 
-#: smb4k/smb4kmainwindow.cpp:644
+#: smb4k/smb4kmainwindow.cpp:643
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Wyszukiwanie gospodarza w domenie %1..."
 
-#: smb4k/smb4kmainwindow.cpp:649
+#: smb4k/smb4kmainwindow.cpp:648
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Wyszukiwanie zasobów udostępnionych przez gospodarza %1..."
 
-#: smb4k/smb4kmainwindow.cpp:657 smb4k/smb4kmainwindow.cpp:665
+#: smb4k/smb4kmainwindow.cpp:656 smb4k/smb4kmainwindow.cpp:664
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Wyszukiwanie plików i katalogów w %1..."
 
-#: smb4k/smb4kmainwindow.cpp:682
+#: smb4k/smb4kmainwindow.cpp:681
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Budzenie zdalnych gospodarzy..."
 
-#: smb4k/smb4kmainwindow.cpp:687
+#: smb4k/smb4kmainwindow.cpp:686
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Wysyłanie pliku do drukarki %1..."
 
-#: smb4k/smb4kmainwindow.cpp:691
+#: smb4k/smb4kmainwindow.cpp:690
 #, kde-format
 msgid "Searching..."
 msgstr "Wyszukiwanie..."
 
-#: smb4k/smb4kmainwindow.cpp:709 smb4k/smb4kmainwindow.cpp:746
-#: smb4k/smb4kmainwindow.cpp:858
+#: smb4k/smb4kmainwindow.cpp:708 smb4k/smb4kmainwindow.cpp:745
+#: smb4k/smb4kmainwindow.cpp:857
 #, kde-format
 msgid "Done."
 msgstr "Gotowe."
 
-#: smb4k/smb4kmainwindow.cpp:719
+#: smb4k/smb4kmainwindow.cpp:718
 #, kde-format
 msgid "Mounting..."
 msgstr "Podpinanie..."
 
-#: smb4k/smb4kmainwindow.cpp:723
+#: smb4k/smb4kmainwindow.cpp:722
 #, kde-format
 msgid "Unmounting..."
 msgstr "Odpinanie..."
 
-#: smb4k/smb4kmainwindow.cpp:727
+#: smb4k/smb4kmainwindow.cpp:726
 #, kde-format
 msgid "Waking up host..."
 msgstr "Budzenie gospodarza..."
 
-#: smb4k/smb4kmainwindow.cpp:757
+#: smb4k/smb4kmainwindow.cpp:756
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 został pomyślnie podpięty."
 
-#: smb4k/smb4kmainwindow.cpp:790
+#: smb4k/smb4kmainwindow.cpp:789
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 został pomyślnie odpięty."
 
-#: smb4k/smb4kmainwindow.cpp:846
+#: smb4k/smb4kmainwindow.cpp:845
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Synchronizacja %1"

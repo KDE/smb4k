@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-01 00:51+0000\n"
+"POT-Creation-Date: 2023-04-02 00:47+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -573,83 +573,83 @@ msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Praegu on ühendatud %1 ressurss."
 msgstr[1] "Praegu on ühendatud %1 ressurssi."
 
-#: smb4k/smb4kmainwindow.cpp:626
+#: smb4k/smb4kmainwindow.cpp:625
 #, kde-format
 msgid "The wallet is used."
 msgstr "Turvalaegas on kasutusel."
 
-#: smb4k/smb4kmainwindow.cpp:629
+#: smb4k/smb4kmainwindow.cpp:628
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Paroolidialoog on kasutusel."
 
-#: smb4k/smb4kmainwindow.cpp:639
+#: smb4k/smb4kmainwindow.cpp:638
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Töögruppide ja domeenide otsimine..."
 
-#: smb4k/smb4kmainwindow.cpp:644
+#: smb4k/smb4kmainwindow.cpp:643
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Masinate otsimine domeenis %1..."
 
-#: smb4k/smb4kmainwindow.cpp:649
+#: smb4k/smb4kmainwindow.cpp:648
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Masina %1 jagatavate ressursside otsimine..."
 
-#: smb4k/smb4kmainwindow.cpp:657 smb4k/smb4kmainwindow.cpp:665
+#: smb4k/smb4kmainwindow.cpp:656 smb4k/smb4kmainwindow.cpp:664
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Failide ja kataloogide otsimine masinas %1 ..."
 
-#: smb4k/smb4kmainwindow.cpp:682
+#: smb4k/smb4kmainwindow.cpp:681
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Võrgumasinate äratamine..."
 
-#: smb4k/smb4kmainwindow.cpp:687
+#: smb4k/smb4kmainwindow.cpp:686
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Faili saatmine printerisse %1..."
 
-#: smb4k/smb4kmainwindow.cpp:691
+#: smb4k/smb4kmainwindow.cpp:690
 #, kde-format
 msgid "Searching..."
 msgstr "Otsimine ..."
 
-#: smb4k/smb4kmainwindow.cpp:709 smb4k/smb4kmainwindow.cpp:746
-#: smb4k/smb4kmainwindow.cpp:858
+#: smb4k/smb4kmainwindow.cpp:708 smb4k/smb4kmainwindow.cpp:745
+#: smb4k/smb4kmainwindow.cpp:857
 #, kde-format
 msgid "Done."
 msgstr "Tehtud."
 
-#: smb4k/smb4kmainwindow.cpp:719
+#: smb4k/smb4kmainwindow.cpp:718
 #, kde-format
 msgid "Mounting..."
 msgstr "Ühendamine ..."
 
-#: smb4k/smb4kmainwindow.cpp:723
+#: smb4k/smb4kmainwindow.cpp:722
 #, kde-format
 msgid "Unmounting..."
 msgstr "Lahutamine ..."
 
-#: smb4k/smb4kmainwindow.cpp:727
+#: smb4k/smb4kmainwindow.cpp:726
 #, kde-format
 msgid "Waking up host..."
 msgstr "Masina äratamine ..."
 
-#: smb4k/smb4kmainwindow.cpp:757
+#: smb4k/smb4kmainwindow.cpp:756
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 on edukalt ühendatud."
 
-#: smb4k/smb4kmainwindow.cpp:790
+#: smb4k/smb4kmainwindow.cpp:789
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 on edukalt lahutatud."
 
-#: smb4k/smb4kmainwindow.cpp:846
+#: smb4k/smb4kmainwindow.cpp:845
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "%1 sünkroonimine"

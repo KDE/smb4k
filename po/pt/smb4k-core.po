@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-27 00:49+0000\n"
+"POT-Creation-Date: 2023-04-02 00:47+0000\n"
 "PO-Revision-Date: 2023-03-06 15:55+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2334,7 +2334,7 @@ msgstr "Utilizador:"
 msgid "Clear List"
 msgstr "Limpar a Lista"
 
-#: smb4kmounter.cpp:756
+#: smb4kmounter.cpp:752
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2343,7 +2343,7 @@ msgstr ""
 "<p>A partilha <b>%1</b> está montada em <br><b>%2</b> e pertence ao "
 "utilizador <b>%3</b>.</p><p>Deseja realmente desmontá-la?</p>"
 
-#: smb4kmounter.cpp:761
+#: smb4kmounter.cpp:757
 #, kde-format
 msgid "Foreign Share"
 msgstr "Partilha de Terceiros"
