@@ -7,7 +7,7 @@
     <include>QDir</include>
     <include>QUrl</include>
     <include>QHostInfo</include>
-    <include>KIconThemes/KIconLoader</include>
+    <include>KIconLoader</include>
     <include>smb4kglobal.h</include>
     <kcfgfile name="smb4krc" />
 

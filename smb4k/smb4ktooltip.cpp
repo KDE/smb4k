@@ -20,9 +20,9 @@
 #include <QScreen>
 
 // KDE includes
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KSeparator>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KSeparator>
 
 using namespace Smb4KGlobal;
 

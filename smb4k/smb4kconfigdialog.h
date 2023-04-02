@@ -12,7 +12,7 @@
 #include <QAbstractButton>
 
 // KDE includes
-#include <KConfigWidgets/KConfigDialog>
+#include <KConfigDialog>
 
 // application specific includes
 #include "core/smb4kglobal.h"

@@ -37,13 +37,13 @@
 #include <QUdpSocket>
 
 // KDE includes
-#include <kauth_version.h>
 #include <KAuth/ExecuteJob>
-#include <KCoreAddons/KShell>
-#include <KCoreAddons/KUser>
-#include <KI18n/KLocalizedString>
-#include <KIOCore/KMountPoint>
-#include <KWidgetsAddons/KMessageBox>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KMountPoint>
+#include <KShell>
+#include <KUser>
+#include <kauth_version.h>
 
 using namespace Smb4KGlobal;
 

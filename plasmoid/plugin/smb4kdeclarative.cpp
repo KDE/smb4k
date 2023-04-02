@@ -29,9 +29,9 @@
 #include <QPointer>
 
 // KDE includes
-#include <KConfigWidgets/KConfigDialog>
-#include <KCoreAddons/KPluginFactory>
-#include <KCoreAddons/KPluginMetaData>
+#include <KConfigDialog>
+#include <KPluginFactory>
+#include <KPluginMetaData>
 
 Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
     : QObject(parent)

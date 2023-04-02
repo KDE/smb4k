@@ -23,8 +23,7 @@
 #include <QRegularExpression>
 
 // KDE includes
-#include <KCoreAddons/KUser>
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 class Smb4KCustomOptionsPrivate
 {

@@ -17,9 +17,9 @@
 
 // KDE includes
 #include <KAuth/HelperSupport>
-#include <KCoreAddons/KProcess>
-#include <KI18n/KLocalizedString>
-#include <KIOCore/KMountPoint>
+#include <KLocalizedString>
+#include <KMountPoint>
+#include <KProcess>
 
 using namespace Smb4KGlobal;
 

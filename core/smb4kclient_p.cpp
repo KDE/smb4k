@@ -38,14 +38,14 @@
 #include <QWindow>
 
 // KDE includes
-#include <KConfigGui/KWindowConfig>
-#include <KI18n/KLocalizedString>
+#include <KDualAction>
+#include <KFileItem>
 #include <KIO/Global>
-#include <KIOCore/KFileItem>
-#include <KIOWidgets/KUrlComboBox>
-#include <KIOWidgets/KUrlRequester>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KDualAction>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KUrlComboBox>
+#include <KUrlRequester>
+#include <KWindowConfig>
 
 #ifdef USE_WS_DISCOVERY
 #include <KDSoapClient/KDQName>

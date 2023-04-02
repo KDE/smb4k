@@ -14,8 +14,8 @@
 #include <QHostAddress>
 
 // KDE includes
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
+#include <KLocalizedString>
 
 using namespace Smb4KGlobal;
 

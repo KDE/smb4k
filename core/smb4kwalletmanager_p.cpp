@@ -16,7 +16,7 @@
 #include <QDebug>
 
 // KDE includes
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 using namespace Smb4KGlobal;
 

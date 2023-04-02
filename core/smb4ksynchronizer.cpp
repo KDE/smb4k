@@ -19,9 +19,6 @@
 #include <QFile>
 #include <QTimer>
 
-// KDE includes
-#include <KCoreAddons/KShell>
-
 using namespace Smb4KGlobal;
 
 Q_GLOBAL_STATIC(Smb4KSynchronizerStatic, p);

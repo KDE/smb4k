@@ -19,11 +19,11 @@
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KCompletion/KComboBox>
-#include <KCompletion/KLineEdit>
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KMessageWidget>
+#include <KComboBox>
+#include <KIconLoader>
+#include <KLineEdit>
+#include <KLocalizedString>
+#include <KMessageWidget>
 
 Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
     : QTabWidget(parent)

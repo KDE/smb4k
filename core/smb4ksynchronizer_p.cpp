@@ -26,11 +26,11 @@
 #include <QWindow>
 
 // KDE includes
-#include <KCompletion/KLineEdit>
-#include <KConfigGui/KWindowConfig>
-#include <KI18n/KLocalizedString>
-#include <KIOWidgets/KUrlCompletion>
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
+#include <KLineEdit>
+#include <KLocalizedString>
+#include <KUrlCompletion>
+#include <KWindowConfig>
 
 using namespace Smb4KGlobal;
 

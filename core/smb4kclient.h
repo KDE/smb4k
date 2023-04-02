@@ -15,8 +15,8 @@
 #include <QScopedPointer>
 
 // KDE includes
-#include <KCoreAddons/KCompositeJob>
-#include <KIOCore/KFileItem>
+#include <KCompositeJob>
+#include <KFileItem>
 
 // forward declarations
 class Smb4KClientPrivate;

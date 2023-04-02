@@ -14,7 +14,7 @@
 #include <QWidget>
 
 // KDE includes
-#include <KWidgetsAddons/KEditListWidget>
+#include <KEditListWidget>
 
 class Smb4KConfigPageProfiles : public QWidget
 {

@@ -19,9 +19,9 @@
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KMessageWidget>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KMessageWidget>
 
 using namespace Smb4KGlobal;
 

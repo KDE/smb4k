@@ -15,7 +15,7 @@
 
 // KDE includes
 #include <KIO/Global>
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
 
 using namespace Smb4KGlobal;
 

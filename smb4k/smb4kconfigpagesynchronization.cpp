@@ -19,9 +19,9 @@
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KCompletion/KLineEdit>
-#include <KI18n/KLocalizedString>
-#include <KIOWidgets/KUrlRequester>
+#include <KLineEdit>
+#include <KLocalizedString>
+#include <KUrlRequester>
 
 Smb4KConfigPageSynchronization::Smb4KConfigPageSynchronization(QWidget *parent)
     : QTabWidget(parent)

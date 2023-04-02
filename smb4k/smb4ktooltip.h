@@ -17,7 +17,7 @@
 #include <QWindow>
 
 // KDE includes
-#include <KWidgetsAddons/KToolTipWidget>
+#include <KToolTipWidget>
 
 // Forward declaration
 class Smb4KBasicNetworkItem;

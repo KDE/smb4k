@@ -15,11 +15,11 @@
 #include <QString>
 
 // KDE includes
-#include <KCoreAddons/KAboutData>
-#include <KCrash/KCrash>
-#include <KDBusAddons/KDBusService>
-#include <KI18n/KLocalizedString>
-#include <KWindowSystem/KWindowSystem>
+#include <KAboutData>
+#include <KCrash>
+#include <KDBusService>
+#include <KLocalizedString>
+#include <KWindowSystem>
 #include <kwindowsystem_version.h>
 
 #include <smb4k_version.h>

@@ -23,9 +23,9 @@
 #include <QUrl>
 
 // KDE includes
-#include <KCompletion/KComboBox>
-#include <KCompletion/KLineEdit>
-#include <KWidgetsAddons/KActionMenu>
+#include <KActionMenu>
+#include <KComboBox>
+#include <KLineEdit>
 
 class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
 {

@@ -13,11 +13,11 @@
 #include <QDebug>
 
 // KDE includes
-#include <KCompletion/KComboBox>
-#include <KCompletion/KLineEdit>
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KDualAction>
+#include <KComboBox>
+#include <KDualAction>
+#include <KIconLoader>
+#include <KLineEdit>
+#include <KLocalizedString>
 
 Smb4KNetworkSearchToolBar::Smb4KNetworkSearchToolBar(QWidget *parent)
     : QToolBar(parent)

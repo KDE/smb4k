@@ -19,7 +19,7 @@
 #include <QtGlobal>
 
 // KDE includes
-#include <KCoreAddons/KUser>
+#include <KUser>
 
 // forward declarations
 class Smb4KAuthInfo;

@@ -13,8 +13,8 @@
 #include "smb4kwalletmanager.h"
 
 // KDE includes
-#include <KWallet/KWallet>
-#include <KWidgetsAddons/KPasswordDialog>
+#include <KPasswordDialog>
+#include <KWallet>
 
 class Smb4KPasswordDialog : public KPasswordDialog
 {

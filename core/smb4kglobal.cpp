@@ -7,9 +7,9 @@
 
 // application specific includes
 #include "smb4kglobal.h"
-#include "smb4kglobalenums.h"
 #include "smb4kclient.h"
 #include "smb4kglobal_p.h"
+#include "smb4kglobalenums.h"
 #include "smb4kmounter.h"
 #include "smb4knotification.h"
 #include "smb4ksynchronizer.h"
@@ -24,7 +24,6 @@
 #include <QUrl>
 
 // KDE includes
-#include <KCoreAddons/KShell>
 #include <KIO/CommandLauncherJob>
 #include <KIO/OpenUrlJob>
 #include <kio_version.h>

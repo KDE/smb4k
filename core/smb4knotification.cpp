@@ -18,15 +18,11 @@
 
 // KDE includes
 #include "kauth_version.h"
-#if KAUTH_VERSION >= QT_VERSION_CHECK(5, 92, 0)
 #include <KAuth/ActionReply>
-#else
-#include <KAuth/KAuthActionReply>
-#endif
-#include <KI18n/KLocalizedString>
 #include <KIO/OpenUrlJob>
-#include <KIconThemes/KIconLoader>
-#include <KNotifications/KNotification>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KNotification>
 
 using namespace KAuth;
 

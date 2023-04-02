@@ -17,8 +17,7 @@
 #include <QPointer>
 
 // KDE includes
-#include <KWidgetsAddons/KActionMenu>
-#include <KXmlGui/KActionCollection>
+#include <KActionMenu>
 
 // forward declarations
 class Smb4KBookmark;

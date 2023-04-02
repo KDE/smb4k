@@ -19,7 +19,7 @@
 #include <QWidget>
 
 // KDE includes
-#include <KCompletion/KComboBox>
+#include <KComboBox>
 
 class Smb4KProfileMigrationDialog : public QDialog
 {

@@ -21,7 +21,7 @@
 #include <QVariant>
 
 // KDE includes
-#include <KCoreAddons/KCompositeJob>
+#include <KCompositeJob>
 
 // forward declarations
 class Smb4KShare;

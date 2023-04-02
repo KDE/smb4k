@@ -27,10 +27,10 @@
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KDualAction>
-#include <KWidgetsAddons/KGuiItem>
+#include <KDualAction>
+#include <KGuiItem>
+#include <KIconLoader>
+#include <KLocalizedString>
 
 using namespace Smb4KGlobal;
 

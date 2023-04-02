@@ -13,7 +13,7 @@
 #include <QStringList>
 
 // KDE includes
-#include <KWidgetsAddons/KSelectAction>
+#include <KSelectAction>
 
 class Smb4KProfilesMenu : public KSelectAction
 {

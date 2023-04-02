@@ -19,8 +19,8 @@
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KCompletion/KComboBox>
-#include <KI18n/KLocalizedString>
+#include <KComboBox>
+#include <KLocalizedString>
 
 Smb4KConfigPageUserInterface::Smb4KConfigPageUserInterface(QWidget *parent)
     : QWidget(parent)

@@ -31,11 +31,11 @@
 #include <QWindow>
 
 // KDE includes
-#include <KConfigGui/KWindowConfig>
-#include <KCoreAddons/KPluginFactory>
-#include <KI18n/KLocalizedString>
-#include <KIOWidgets/KUrlRequester>
-#include <KWidgetsAddons/KMessageBox>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KPluginFactory>
+#include <KUrlRequester>
+#include <KWindowConfig>
 
 using namespace Smb4KGlobal;
 
@@ -261,5 +261,3 @@ void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem *current, KPageWidgetItem 
     Q_UNUSED(current);
     checkSettings(before);
 }
-
-#include "smb4kconfigdialog.moc"

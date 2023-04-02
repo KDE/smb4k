@@ -19,7 +19,7 @@
 #include <QUrl>
 
 // KDE includes
-#include <KXmlGui/KXmlGuiWindow>
+#include <KXmlGuiWindow>
 
 // forward declarations
 class Smb4KSystemTray;

@@ -15,10 +15,10 @@
 
 // KDE includes
 #include "kiconthemes_version.h"
-#include <KI18n/KLocalizedString>
-#include <KIOCore/KIO/Global>
-#include <KIOCore/KMountPoint>
-#include <KIconThemes/KIconLoader>
+#include <KIO/Global>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KMountPoint>
 
 class Smb4KSharePrivate
 {

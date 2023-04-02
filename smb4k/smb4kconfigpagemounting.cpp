@@ -26,12 +26,12 @@
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KCompletion/KComboBox>
-#include <KCompletion/KLineEdit>
-#include <KI18n/KLocalizedString>
-#include <KIOWidgets/KUrlRequester>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KMessageBox>
+#include <KComboBox>
+#include <KIconLoader>
+#include <KLineEdit>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KUrlRequester>
 
 using namespace Smb4KGlobal;
 

@@ -17,8 +17,8 @@
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KCompletion/KLineEdit>
-#include <KI18n/KLocalizedString>
+#include <KLineEdit>
+#include <KLocalizedString>
 
 Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     : QWidget(parent)

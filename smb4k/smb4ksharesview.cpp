@@ -18,7 +18,7 @@
 #include <QWheelEvent>
 
 // KDE includes
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
 
 Smb4KSharesView::Smb4KSharesView(QWidget *parent)
     : QListWidget(parent)
@@ -173,7 +173,7 @@ void Smb4KSharesView::dragMoveEvent(QDragMoveEvent *e)
     QAbstractItemView::dragMoveEvent(e);
 
     // Now we do our thing.
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0) 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->position().toPoint()));
 #else
     Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(itemAt(e->pos()));

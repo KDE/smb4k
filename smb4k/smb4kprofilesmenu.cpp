@@ -15,8 +15,8 @@
 #include <QStringList>
 
 // KDE includes
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
+#include <KLocalizedString>
 
 Smb4KProfilesMenu::Smb4KProfilesMenu(QObject *parent)
     : KSelectAction(KDE::icon(QStringLiteral("system-users")), i18n("Profiles"), parent)

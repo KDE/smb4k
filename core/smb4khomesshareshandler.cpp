@@ -22,8 +22,7 @@
 #include <QXmlStreamWriter>
 
 // KDE includes
-#define TRANSLATION_DOMAIN "smb4k-core"
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 Q_GLOBAL_STATIC(Smb4KHomesSharesHandlerStatic, p);
 

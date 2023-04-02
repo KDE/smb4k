@@ -22,9 +22,9 @@
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KPasswordDialog>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KPasswordDialog>
 
 Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     : QWidget(parent)

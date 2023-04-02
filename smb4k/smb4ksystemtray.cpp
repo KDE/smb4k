@@ -22,15 +22,14 @@
 #include <QPointer>
 
 // KDE specific includes
-#include <KConfigWidgets/KConfigDialog>
-#include <KConfigWidgets/KStandardAction>
-#include <KCoreAddons/KAboutData>
-#include <KCoreAddons/KPluginFactory>
-#include <KCoreAddons/KPluginMetaData>
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KMessageBox>
-#include <KXmlGui/KActionCollection>
+#include <KAboutData>
+#include <KConfigDialog>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KPluginFactory>
+#include <KPluginMetaData>
+#include <KStandardAction>
 
 using namespace Smb4KGlobal;
 

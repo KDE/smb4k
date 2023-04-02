@@ -30,11 +30,11 @@
 #include <QWindow>
 
 // KDE includes
-#include <KCompletion/KComboBox>
-#include <KCompletion/KLineEdit>
-#include <KConfigGui/KWindowConfig>
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
+#include <KComboBox>
+#include <KIconLoader>
+#include <KLineEdit>
+#include <KLocalizedString>
+#include <KWindowConfig>
 
 Smb4KBookmarkDialog::Smb4KBookmarkDialog(const QList<BookmarkPtr> &bookmarks, const QStringList &categories, QWidget *parent)
     : QDialog(parent)

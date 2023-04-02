@@ -19,9 +19,9 @@
 #include <QWindow>
 
 // KDE includes
-#include <KConfigGui/KWindowConfig>
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KWindowConfig>
 
 Smb4KProfileMigrationDialog::Smb4KProfileMigrationDialog(const QStringList &from, const QStringList &to, QWidget *parent)
     : QDialog(parent)

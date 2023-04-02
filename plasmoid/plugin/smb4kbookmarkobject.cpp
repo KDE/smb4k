@@ -13,7 +13,7 @@
 #include <QHostAddress>
 
 // KDE includes
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
 
 class Smb4KBookmarkObjectPrivate
 {

@@ -17,8 +17,8 @@
 #include <QDockWidget>
 
 // KDE includes
-#include <KWidgetsAddons/KActionMenu>
-#include <KXmlGui/KActionCollection>
+#include <KActionCollection>
+#include <KActionMenu>
 
 using namespace Smb4KGlobal;
 

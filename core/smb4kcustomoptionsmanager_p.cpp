@@ -30,12 +30,12 @@
 #include <QWindow>
 
 // KDE includes
-#include <KCompletion/KComboBox>
-#include <KCompletion/KLineEdit>
-#include <KConfigGui/KWindowConfig>
-#include <KCoreAddons/KUser>
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
+#include <KComboBox>
+#include <KIconLoader>
+#include <KLineEdit>
+#include <KLocalizedString>
+#include <KUser>
+#include <KWindowConfig>
 
 Smb4KCustomOptionsDialog::Smb4KCustomOptionsDialog(const OptionsPtr &options, QWidget *parent)
     : QDialog(parent)

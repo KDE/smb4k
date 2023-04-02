@@ -13,7 +13,7 @@
 #include <QWidget>
 
 // KDE includes
-#include <KNotifications/KStatusNotifierItem>
+#include <KStatusNotifierItem>
 
 class Smb4KSystemTray : public KStatusNotifierItem
 {

@@ -16,8 +16,8 @@
 #include <QDockWidget>
 
 // KDE includes
-#include <KWidgetsAddons/KActionMenu>
-#include <KXmlGui/KActionCollection>
+#include <KActionCollection>
+#include <KActionMenu>
 
 // forward declarations
 class Smb4KSharesViewItem;

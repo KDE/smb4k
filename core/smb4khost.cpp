@@ -15,7 +15,7 @@
 #include <QUrl>
 
 // KDE includes
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
 
 class Smb4KHostPrivate
 {

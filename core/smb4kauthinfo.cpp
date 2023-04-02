@@ -15,7 +15,7 @@
 #include <QHostAddress>
 
 // KDE includes
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 class Smb4KAuthInfoPrivate
 {

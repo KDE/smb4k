@@ -19,7 +19,7 @@
 #include <QStringList>
 
 // KDE includes
-#include <KCompletion/KComboBox>
+#include <KComboBox>
 
 class Smb4KHomesUsers
 {

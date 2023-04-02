@@ -30,12 +30,12 @@
 #include <QMenu>
 
 // KDE includes
-#include <KCoreAddons/KJobUiDelegate>
-#include <KI18n/KLocalizedString>
-#include <KIOWidgets/KIO/DropJob>
-#include <KIconThemes/KIconLoader>
-#include <KJobWidgets/KJobWidgets>
-#include <KWidgetsAddons/KMessageBox>
+#include <KIO/DropJob>
+#include <KIconLoader>
+#include <KJobUiDelegate>
+#include <KJobWidgets>
+#include <KLocalizedString>
+#include <KMessageBox>
 
 Smb4KSharesViewDockWidget::Smb4KSharesViewDockWidget(const QString &title, QWidget *parent)
     : QDockWidget(title, parent)

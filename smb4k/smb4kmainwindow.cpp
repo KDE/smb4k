@@ -40,14 +40,14 @@
 
 // KDE includes
 #include "kiconthemes_version.h"
-#include <KConfigWidgets/KConfigDialog>
-#include <KConfigWidgets/KStandardAction>
-#include <KCoreAddons/KPluginFactory>
-#include <KCoreAddons/KPluginMetaData>
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
-#include <KWidgetsAddons/KMessageBox>
-#include <KXmlGui/KXMLGUIFactory>
+#include <KConfigDialog>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KPluginFactory>
+#include <KPluginMetaData>
+#include <KStandardAction>
+#include <KXMLGUIFactory>
 
 using namespace Smb4KGlobal;
 using namespace KParts;

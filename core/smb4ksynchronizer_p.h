@@ -19,10 +19,10 @@
 #include <QUrl>
 
 // KDE includes
-#include <KCoreAddons/KJob>
-#include <KCoreAddons/KProcess>
-#include <KIOWidgets/KUrlRequester>
-#include <KJobWidgets/KUiServerJobTracker>
+#include <KJob>
+#include <KProcess>
+#include <KUiServerJobTracker>
+#include <KUrlRequester>
 
 class Smb4KSyncJob : public KJob
 {

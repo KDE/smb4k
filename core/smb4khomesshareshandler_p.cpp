@@ -23,9 +23,9 @@
 #include <QWindow>
 
 // KDE includes
-#include <KConfigGui/KWindowConfig>
-#include <KI18n/KLocalizedString>
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
+#include <KLocalizedString>
+#include <KWindowConfig>
 
 Smb4KHomesUsers::Smb4KHomesUsers(const SharePtr &s, const QStringList &u)
 {

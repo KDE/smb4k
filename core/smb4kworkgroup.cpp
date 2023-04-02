@@ -14,7 +14,7 @@
 #include <QUrl>
 
 // KDE includes
-#include <KIconThemes/KIconLoader>
+#include <KIconLoader>
 
 using namespace Smb4KGlobal;
 

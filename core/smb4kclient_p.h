@@ -27,16 +27,11 @@
 #include <QUrl>
 
 // KDE includes
-#include <KCoreAddons/KJob>
-#include <kdnssd_version.h>
-#if KDNSSD_VERSION >= QT_VERSION_CHECK(5, 84, 0)
 #include <KDNSSD/RemoteService>
 #include <KDNSSD/ServiceBrowser>
-#else
-#include <KDNSSD/DNSSD/RemoteService>
-#include <KDNSSD/DNSSD/ServiceBrowser>
-#endif
-#include <KIOCore/KFileItem>
+#include <KFileItem>
+#include <KJob>
+#include <kdnssd_version.h>
 
 #ifdef USE_WS_DISCOVERY
 #include <WSDiscoveryClient>
