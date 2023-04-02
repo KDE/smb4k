@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"POT-Creation-Date: 2023-04-02 02:38+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -587,90 +587,90 @@ msgstr[0] "Trenutno %1  dijeljenje  montirano."
 msgstr[1] "Trenutno %1  dijeljenja  montirana."
 msgstr[2] "Trenutno %1  dijeljenja montirano."
 
-#: smb4k/smb4kmainwindow.cpp:632
+#: smb4k/smb4kmainwindow.cpp:630
 #, fuzzy, kde-format
 #| msgid "The wallet is in use."
 msgid "The wallet is used."
 msgstr "Novčanik je već u upotrebi."
 
-#: smb4k/smb4kmainwindow.cpp:635
+#: smb4k/smb4kmainwindow.cpp:633
 #, fuzzy, kde-format
 #| msgid "The password dialog mode is used."
 msgid "The password dialog is used."
 msgstr "Lozinka dijalog je iskorišten."
 
-#: smb4k/smb4kmainwindow.cpp:645
+#: smb4k/smb4kmainwindow.cpp:643
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Traži radne grupe i domene..."
 
-#: smb4k/smb4kmainwindow.cpp:650
+#: smb4k/smb4kmainwindow.cpp:648
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Traži domaće domene %1..."
 
-#: smb4k/smb4kmainwindow.cpp:655
+#: smb4k/smb4kmainwindow.cpp:653
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Traži dozvoljena dijeljenja domaćina %1..."
 
-#: smb4k/smb4kmainwindow.cpp:663 smb4k/smb4kmainwindow.cpp:671
+#: smb4k/smb4kmainwindow.cpp:661 smb4k/smb4kmainwindow.cpp:669
 #, fuzzy, kde-format
 #| msgid "Looking for hosts in domain %1..."
 msgid "Looking for files and directories in %1..."
 msgstr "Traži domaće domene %1..."
 
-#: smb4k/smb4kmainwindow.cpp:688
+#: smb4k/smb4kmainwindow.cpp:686
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Buđenje udaljenih domaćina ..."
 
-#: smb4k/smb4kmainwindow.cpp:693
+#: smb4k/smb4kmainwindow.cpp:691
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Slanje datoteke printeru %1..."
 
-#: smb4k/smb4kmainwindow.cpp:697
+#: smb4k/smb4kmainwindow.cpp:695
 #, fuzzy, kde-format
 #| msgid "Searching for \"%1\"..."
 msgid "Searching..."
 msgstr "Tražim \"%1\"..."
 
-#: smb4k/smb4kmainwindow.cpp:715 smb4k/smb4kmainwindow.cpp:752
-#: smb4k/smb4kmainwindow.cpp:864
+#: smb4k/smb4kmainwindow.cpp:713 smb4k/smb4kmainwindow.cpp:750
+#: smb4k/smb4kmainwindow.cpp:862
 #, kde-format
 msgid "Done."
 msgstr "Gotovo."
 
-#: smb4k/smb4kmainwindow.cpp:725
+#: smb4k/smb4kmainwindow.cpp:723
 #, fuzzy, kde-format
 #| msgid "Mounting"
 msgid "Mounting..."
 msgstr "Montiranje"
 
-#: smb4k/smb4kmainwindow.cpp:729
+#: smb4k/smb4kmainwindow.cpp:727
 #, fuzzy, kde-format
 #| msgid "Unmounting share %1..."
 msgid "Unmounting..."
 msgstr "Ne montirano dijeljeno %1..."
 
-#: smb4k/smb4kmainwindow.cpp:733
+#: smb4k/smb4kmainwindow.cpp:731
 #, fuzzy, kde-format
 #| msgid "Waking up host %1..."
 msgid "Waking up host..."
 msgstr "Buđenje domaćina %1..."
 
-#: smb4k/smb4kmainwindow.cpp:763
+#: smb4k/smb4kmainwindow.cpp:761
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 je uspješno montirano."
 
-#: smb4k/smb4kmainwindow.cpp:796
+#: smb4k/smb4kmainwindow.cpp:794
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 nije uspješno montirano."
 
-#: smb4k/smb4kmainwindow.cpp:852
+#: smb4k/smb4kmainwindow.cpp:850
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Prevođenje %1"
