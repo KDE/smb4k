@@ -2851,7 +2851,7 @@ ntlm auth = yes
 >Altres entorns d'escriptori que el &plasma;</title>
 
       <para
->Quan s'utilitza un entorn d'escriptori diferent que el &plasma;, les &Qt; i els &kf5;, podria ser que a les aplicacions hi manquin algunes icones. En aquest cas, és possible que vulgueu instal·lar l'aplicació <application
+>Quan s'utilitza un entorn d'escriptori diferent que el &plasma;, les &Qt; i els &kde-frameworks;, podria ser que a les aplicacions hi manquin algunes icones. En aquest cas, és possible que vulgueu instal·lar l'aplicació <application
 >qt5ct</application
 > (el codi font es pot obtenir <ulink url="https://sourceforge.net/projects/qt5ct/"
 >aquí</ulink
@@ -8938,7 +8938,7 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Proporcioneu les versions del &smb4k; i &kf5;.</para
+>Proporcioneu les versions del &smb4k; i &kde-frameworks;.</para
 ></listitem>
     <listitem
 ><para
