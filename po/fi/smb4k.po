@@ -3,13 +3,13 @@
 # Author: Lliehu
 # Jiri Grönroos <jiri.gronroos+kde@iki.fi>, 2012.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2012, 2013, 2014, 2015, 2016.
-# Tommi Nieminen <translator@legisign.org>, 2012, 2018, 2019, 2020, 2021, 2022.
+# Tommi Nieminen <translator@legisign.org>, 2012, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-02 02:38+0000\n"
-"PO-Revision-Date: 2022-07-11 22:10+0300\n"
+"PO-Revision-Date: 2023-03-30 12:11+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-12-01 22:27:24+0000\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -56,10 +56,9 @@ msgid "Advanced network neighborhood browser and Samba share mounting utility"
 msgstr "Kehittynyt verkkoympäristöselain ja Samba-jakojen liittämistyökalu."
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003–2022 Alexander Reinholdt"
+msgstr "© 2003–2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -135,10 +134,9 @@ msgid "Add &Bookmark"
 msgstr "Lisää &kirjanmerkki"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Liitä kaikki kirjanmerkit"
+msgstr "Liitä kirjanmerkit"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -166,10 +164,9 @@ msgid "Synchronization"
 msgstr "Synkronointi"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Common Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Yleisasetukset"
+msgstr "Mukautetut valinnat"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -259,7 +256,7 @@ msgstr "Tyhjennä luettelo"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
-msgstr ""
+msgstr "Tietue %1 poistettiin, koska kaikki mukautetut valinnat palautettiin."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -382,13 +379,12 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Define the hosts that should be woken up via the custom options "
-#| "dialog.</qt>"
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
-msgstr "<qt>Määritä asetusikkunassa koneet, jotka tulisi herättää.</qt>"
+msgstr ""
+"Määritä koneet, jotka tulisi herättää mukautettujen valintojen muokkaimen "
+"kautta."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -423,13 +419,12 @@ msgstr "Tiedostojen käsittely"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "Tiedostomääritteet"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Owner:"
+#, kde-format
 msgid "Ownership"
-msgstr "Omistaja:"
+msgstr "Omistajuus"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -462,7 +457,7 @@ msgstr "Sekalaista"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kt/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -670,10 +665,9 @@ msgstr "&Etsi"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Liittämisen lisäasetukset"
+msgstr "Lisää &mukautetut valinnat"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
