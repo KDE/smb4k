@@ -4573,7 +4573,7 @@ ntlm auth = yes
         <term>
           <menuchoice>
             <shortcut><keycombo action="simul">&Ctrl; <keycap>C</keycap></keycombo></shortcut>
-            <guimenu>Network</guimenu>
+            <guimenu>Shares</guimenu>
             <guimenuitem>Add Custom Settings</guimenuitem>
           </menuchoice>
         </term>
