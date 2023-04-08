@@ -37,7 +37,7 @@ endif()
 # set(KF5_MIN_VERSION "5.98.0")
 
 set(QT_MIN_VERSION "5.14.0")
-set(KF5_MIN_VERSION "5.80.0")
+set(KF5_MIN_VERSION "5.78.0")
 
 #
 # Options for building Smb4K
