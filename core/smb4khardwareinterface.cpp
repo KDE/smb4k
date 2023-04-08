@@ -24,7 +24,7 @@
 #include <Solid/DeviceInterface>
 #include <Solid/DeviceNotifier>
 #include <Solid/NetworkShare>
-#include <Solid/solid_version.h>
+#include <solid_version.h>
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 #include <KIOCore/KMountPoint>
 #endif
