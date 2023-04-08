@@ -1,3 +1,14 @@
+Smb4K 3.2.1 (2023-04-08):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
+
+- Lower required KF5 version to 5.78 so that it can be compiled under 
+  Debian 11.
+- Fix include statement so that Smb4K 3.2 can be compiled with older 
+  versions of KF5.
+- Make installation work with KF5 version < 5.89.
+
 Smb4K 3.2.0 (2023-04-07):
 
 See the summary of changes below. For a full list of changes, please
