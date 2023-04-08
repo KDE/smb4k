@@ -8643,7 +8643,7 @@ ntlm auth = yes
 ></keycombo
 ></shortcut
 > <guimenu
->Xarxa</guimenu
+>Comparticions</guimenu
 > <guimenuitem
 >Afegeix una configuració personalitzada</guimenuitem
 > </menuchoice>

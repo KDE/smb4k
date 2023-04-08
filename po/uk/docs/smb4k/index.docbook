@@ -8633,13 +8633,13 @@ ntlm auth = yes
         <term>
           <menuchoice
 ><shortcut
-> <keycombo action="simul"
-> &Ctrl; <keycap
+><keycombo action="simul"
+>&Ctrl; <keycap
 >C</keycap
-> </keycombo
-> </shortcut
+></keycombo
+></shortcut
 > <guimenu
->Мережа</guimenu
+>Спільні ресурси</guimenu
 > <guimenuitem
 >Додати нетипові параметри</guimenuitem
 > </menuchoice>
