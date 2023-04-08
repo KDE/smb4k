@@ -2831,7 +2831,7 @@ ntlm auth = yes
 >Andere Bureaubladomgevingen dan &plasma;</title>
 
       <para
->Bij gebruik van een andere bureaubladomgeving dan &plasma;, kunnen bij &Qt; en &kf5; toepassingen sommige pictogrammen ontbreken. In dat geval zou u de toepassing <application
+>Bij gebruik van een andere bureaubladomgeving dan &plasma;, kunnen bij &Qt; en &kde-frameworks; toepassingen sommige pictogrammen ontbreken. In dat geval zou u de toepassing <application
 >qt5ct</application
 > kunnen installeren (de broncode is <ulink url="https://sourceforge.net/projects/qt5ct/"
 >hier</ulink
@@ -8631,7 +8631,7 @@ ntlm auth = yes
 ></keycombo
 > </shortcut
 > <guimenu
->Netwerk</guimenu
+>Shares</guimenu
 > <guimenuitem
 >Aangepaste instellingen toevoegen</guimenuitem
 > </menuchoice>
@@ -8930,7 +8930,7 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Geef de versie van &smb4k; en &kf5;.</para
+>Geef de versie van &smb4k; en &kde-frameworks;.</para
 ></listitem>
     <listitem
 ><para
