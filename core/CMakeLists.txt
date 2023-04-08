@@ -101,5 +101,9 @@ endif(SMB4K_WITH_WS_DISCOVERY)
 ########### install files ###############
 
 install(FILES smb4k.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
-install(FILES smb4k.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
+if (${ECM_VERSION} GREATER_EQUAL 5.89.0)
+  install(FILES smb4k.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFYRCDIR})
+else ()
+  install(FILES smb4k.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFY5RCDIR})
+endif()
 
