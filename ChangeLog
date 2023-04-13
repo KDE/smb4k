@@ -1,3 +1,79 @@
+Smb4K 3.2.1 (2023-04-08):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
+
+- Lower required KF5 version to 5.78 so that it can be compiled under 
+  Debian 11.
+- Fix include statement so that Smb4K 3.2 can be compiled with older 
+  versions of KF5.
+- Make installation work with KF5 version < 5.89.
+
+Smb4K 3.2.0 (2023-04-07):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
+
+- Set required Qt version to 5.14 and KF5 version to 5.80.
+- Rename "Custom Options" to "Custom Settings" all over the GUI.
+- Replace 'Login' with 'Username' in the GUI where appropriate.
+- Add support for SMB3 filesystem under Linux.
+- Fix a crash in the plasmoid that occurred every time when a share
+  was checked if it was mounted. Also improve the code.
+- Add ability to define custom settings also from the shares view.
+- Fix handling of the configuration dialog in the main window and the system
+  tray icon.
+- Improve config dialog by disentagling the code, removing dead code and fixing
+  bugs.
+- Update icons in the configuration dialog and the GUI.
+- Improve "Custom Settings" config page and custom settings handling.
+- Improve "Authentication" config page and credentials handling.
+- Improve "Network" configuration page. Move Samba and Wake-on-LAN settings to
+  one "Advanced Settings" tab. Replace self-made note in the Wake-on-LAN group
+  box by a KMessageWidget.
+- Improve "Mounting" configuration page. Make the additional CIFS options entry
+  checkable.
+- Enable support for the CIFS Unix extensions by default. To make this work
+  properly, do not perform permission checks on the share by default.
+- Add settings to the "User Interface" configuration page to adjust the icon sizes
+  in the network neighborhood browser and the shares view.
+- Improve "Synchronization" configuration page. Make the custom filter rules entry
+  checkable. Create new tab for the file attributes and ownership settings. Use
+  kilobytes (base 10) and the appropriate SI units with synchronization.
+- Add new synchronization options and handle the existing once more intuitively
+  (like you would in a command line in the terminal).
+- Use capabilites of rsync >= 3.1 to refactor the synchronization code. Get rid
+  of the occasionally appearing error notifications when the user canceled the
+  synchronization via the cancel button.
+- Improve and fix bookmark menu code. Improve handling of toplevel mount action.
+  Rename text of mount actions to "Mount Bookmarks".
+- Fix handling of profiles: Save changes to the active profile to disk.
+- Overhaul the handling of several selected shares.
+- Do not clutter the share icon with too many emblems and only use one base folder
+  icon.
+- Revise notifications and adjust code accordingly.
+- Make remounting of shares work when the profile was changed.
+- Show an error notification if DNS-SD ought to be used and Zeroconf is not
+  working.
+- Allow more advanced options to be passed to mount.cifs.
+- Improve handling of mounted and unmounted network shares.
+- Use QStorageInfo instead of KIO::StatJob in the mounter and merge code
+  from slotStatResult() into the import() function. Emit the
+  mountedSharesListChanged() only once. Replace KIO::upUrl() with a
+  QUrl::resolved() approach. Use QStorageInfo instead of deprecated (as
+  of KF5 5.88.0) KDiskFreeSpaceInfo. Adjust code in Smb4KShare accordingly.
+- Get rid of the settings Smb4KSettings::NetBIOSName and Smb4KSettings::DomainName. If
+  the user set up Samba correctly, these values are provided by the respective smbc_get*()
+  functions. Otherwise we will use fall back values. There is no need to make these
+  configurable anymore.
+- Extensively rewrite Smb4KWalletManager class and remove basically unnecessary
+  functions from Smb4KAuthInfo class. Adjust the code accordingly.
+- Check whether the share is accessible before using the canonical path
+  in findShareByPath().
+- Updated handbook.
+- Updated README.md
+- Many other bug fixes.
+
 Smb4K 3.1.7 (2023-01-08):
 
 See the summary of changes below. For a full list of changes, please
