@@ -1,7 +1,7 @@
 /*
     These are the private helper classes of the Smb4KGlobal namespace.
 
-    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -96,8 +96,8 @@ Smb4KGlobalPrivate::Smb4KGlobalPrivate()
         if (!smbContext) {
             smbc_free_context(smbContext, 1);
         } else {
-            machineNetbiosName = QString::fromUtf8(smbc_getNetbiosName(smbContext)).toUpper();
-            machineWorkgroupName = QString::fromUtf8(smbc_getWorkgroup(smbContext)).toUpper();
+            machineNetbiosName = QString::fromUtf8(smbc_getNetbiosName(smbContext), -1).toUpper();
+            machineWorkgroupName = QString::fromUtf8(smbc_getWorkgroup(smbContext), -1).toUpper();
         }
     }
 

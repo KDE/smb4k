@@ -1,7 +1,7 @@
 /*
     Private classes for the SMB client
 
-    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -277,13 +277,13 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
         // authentication data.
         //
         if (Smb4KSettings::masterBrowsersRequireAuth()) {
-            if (QString::fromUtf8(server).toUpper() != QString::fromUtf8(workgroup).toUpper()) {
+            if (QString::fromUtf8(server, -1).toUpper() != QString::fromUtf8(workgroup, -1).toUpper()) {
                 //
                 // This is the master browser. Create a host object for it.
                 //
                 HostPtr masterBrowser = HostPtr(new Smb4KHost());
-                masterBrowser->setWorkgroupName(QString::fromUtf8(workgroup));
-                masterBrowser->setHostName(QString::fromUtf8(server));
+                masterBrowser->setWorkgroupName(QString::fromUtf8(workgroup, -1));
+                masterBrowser->setHostName(QString::fromUtf8(server, -1));
 
                 //
                 // Get the authentication data
@@ -392,7 +392,7 @@ void Smb4KClientJob::initClientLibrary()
         int errorCode = errno;
 
         setError(ClientError);
-        setErrorText(QString::fromUtf8(strerror(errorCode)));
+        setErrorText(QString::fromUtf8(strerror(errorCode), -1));
 
         emitResult();
         return;
@@ -407,7 +407,7 @@ void Smb4KClientJob::initClientLibrary()
         int errorCode = errno;
 
         setError(ClientError);
-        setErrorText(QString::fromUtf8(strerror(errorCode)));
+        setErrorText(QString::fromUtf8(strerror(errorCode), -1));
         emitResult();
         return;
     }
@@ -700,7 +700,7 @@ void Smb4KClientJob::doLookups()
     if (!openDirectory) {
         int errorCode = errno;
         setError(ClientError);
-        setErrorText(QString::fromUtf8(strerror(errorCode)));
+        setErrorText(QString::fromUtf8(strerror(errorCode), -1));
         return;
     }
 
@@ -722,19 +722,19 @@ void Smb4KClientJob::doLookups()
             case EACCES:
             case EPERM: {
                 setError(AccessDeniedError);
-                setErrorText(QString::fromUtf8(strerror(errorCode)));
+                setErrorText(QString::fromUtf8(strerror(errorCode), -1));
                 break;
             }
             case ENOENT: {
                 if ((*pNetworkItem)->type() != Network) {
                     setError(ClientError);
-                    setErrorText(QString::fromUtf8(strerror(errorCode)));
+                    setErrorText(QString::fromUtf8(strerror(errorCode), -1));
                 }
                 break;
             }
             default: {
                 setError(ClientError);
-                setErrorText(QString::fromUtf8(strerror(errorCode)));
+                setErrorText(QString::fromUtf8(strerror(errorCode), -1));
                 break;
             }
             }
@@ -752,7 +752,7 @@ void Smb4KClientJob::doLookups()
     if (!readDirectory) {
         int errorCode = errno;
         setError(ClientError);
-        setErrorText(QString::fromUtf8(strerror(errorCode)));
+        setErrorText(QString::fromUtf8(strerror(errorCode), -1));
         return;
     }
 
@@ -767,13 +767,13 @@ void Smb4KClientJob::doLookups()
             //
             // Set the workgroup name
             //
-            QString workgroupName = QString::fromUtf8(directoryEntry->name);
+            QString workgroupName = QString::fromUtf8(directoryEntry->name, -1);
             workgroup->setWorkgroupName(workgroupName);
 
             //
             // Set the master browser
             //
-            QString masterBrowserName = QString::fromUtf8(directoryEntry->comment);
+            QString masterBrowserName = QString::fromUtf8(directoryEntry->comment, -1);
             workgroup->setMasterBrowserName(masterBrowserName);
 
             //
@@ -809,13 +809,13 @@ void Smb4KClientJob::doLookups()
             //
             // Set the host name
             //
-            QString hostName = QString::fromUtf8(directoryEntry->name);
+            QString hostName = QString::fromUtf8(directoryEntry->name, -1);
             host->setHostName(hostName);
 
             //
             // Set the comment
             //
-            QString comment = QString::fromUtf8(directoryEntry->comment);
+            QString comment = QString::fromUtf8(directoryEntry->comment, -1);
             host->setComment(comment);
 
             //
@@ -856,12 +856,12 @@ void Smb4KClientJob::doLookups()
             //
             // Set the share name
             //
-            share->setShareName(QString::fromUtf8(directoryEntry->name));
+            share->setShareName(QString::fromUtf8(directoryEntry->name, -1));
 
             //
             // Set the comment
             //
-            share->setComment(QString::fromUtf8(directoryEntry->comment));
+            share->setComment(QString::fromUtf8(directoryEntry->comment, -1));
 
             //
             // Set share type
@@ -912,12 +912,12 @@ void Smb4KClientJob::doLookups()
             //
             // Set the share name
             //
-            share->setShareName(QString::fromUtf8(directoryEntry->name));
+            share->setShareName(QString::fromUtf8(directoryEntry->name, -1));
 
             //
             // Set the comment
             //
-            share->setComment(QString::fromUtf8(directoryEntry->comment));
+            share->setComment(QString::fromUtf8(directoryEntry->comment, -1));
 
             //
             // Set share type
@@ -968,12 +968,12 @@ void Smb4KClientJob::doLookups()
             //
             // Set the share name
             //
-            share->setShareName(QString::fromUtf8(directoryEntry->name));
+            share->setShareName(QString::fromUtf8(directoryEntry->name, -1));
 
             //
             // Set the comment
             //
-            share->setComment(QString::fromUtf8(directoryEntry->comment));
+            share->setComment(QString::fromUtf8(directoryEntry->comment, -1));
 
             //
             // Set share type
@@ -1009,14 +1009,14 @@ void Smb4KClientJob::doLookups()
             //
             // Do not process '.' and '..' directories
             //
-            QString name = QString::fromUtf8(directoryEntry->name);
+            QString name = QString::fromUtf8(directoryEntry->name, -1);
 
             if (name != QStringLiteral(".") && name != QStringLiteral("..")) {
                 //
                 // Create the URL for the discovered item
                 //
                 QUrl u = (*pNetworkItem)->url();
-                u.setPath((*pNetworkItem)->url().path() + QDir::separator() + QString::fromUtf8(directoryEntry->name));
+                u.setPath((*pNetworkItem)->url().path() + QDir::separator() + QString::fromUtf8(directoryEntry->name, -1));
 
                 //
                 // We do not stat directories. Directly create the directory object
@@ -1059,7 +1059,7 @@ void Smb4KClientJob::doLookups()
             // Create the URL for the discovered item
             //
             QUrl u = (*pNetworkItem)->url();
-            u.setPath((*pNetworkItem)->url().path() + QDir::separator() + QString::fromUtf8(directoryEntry->name));
+            u.setPath((*pNetworkItem)->url().path() + QDir::separator() + QString::fromUtf8(directoryEntry->name, -1));
 
             //
             // Create the directory object
@@ -1123,7 +1123,7 @@ void Smb4KClientJob::doLookups()
         int errorCode = errno;
 
         setError(ClientError);
-        setErrorText(QString::fromUtf8(strerror(errorCode)));
+        setErrorText(QString::fromUtf8(strerror(errorCode), -1));
         return;
     }
 
@@ -1214,7 +1214,7 @@ void Smb4KClientJob::doPrinting()
     if (!openPrinter) {
         int errorCode = errno;
         setError(ClientError);
-        setErrorText(QString::fromUtf8(strerror(errorCode)));
+        setErrorText(QString::fromUtf8(strerror(errorCode), -1));
         return;
     }
 
@@ -1229,12 +1229,12 @@ void Smb4KClientJob::doPrinting()
         switch (errorCode) {
         case EACCES: {
             setError(AccessDeniedError);
-            setErrorText(QString::fromUtf8(strerror(errorCode)));
+            setErrorText(QString::fromUtf8(strerror(errorCode), -1));
             break;
         }
         default: {
             setError(ClientError);
-            setErrorText(QString::fromUtf8(strerror(errorCode)));
+            setErrorText(QString::fromUtf8(strerror(errorCode), -1));
             break;
         }
         }
