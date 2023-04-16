@@ -1,7 +1,7 @@
 /*
     smb4ksystemtray  -  This is the system tray window class of Smb4K.
 
-    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -30,6 +30,7 @@
 #include <KPluginFactory>
 #include <KPluginMetaData>
 #include <KStandardAction>
+#include <knotifications_version.h>
 
 using namespace Smb4KGlobal;
 
@@ -147,13 +148,11 @@ void Smb4KSystemTray::slotConfigDialog()
     KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
 
     if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
-        QPointer<KConfigDialog> dlg = nullptr;
-
-        if (associatedWidget()) {
-            dlg = result.plugin->create<KConfigDialog>(associatedWidget());
-        } else {
-            dlg = result.plugin->create<KConfigDialog>(contextMenu());
-        }
+#if KNOTIFICATIONS_VERSION >= QT_VERSION_CHECK(5, 240, 0)
+        QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>(associatedWindow());
+#else
+        QPointer<KConfigDialog> dlg = result.plugin->create<KConfigDialog>(associatedWidget());
+#endif
 
         if (dlg) {
             connect(dlg, SIGNAL(settingsChanged(QString)), this, SLOT(slotSettingsChanged(QString)), Qt::UniqueConnection);
