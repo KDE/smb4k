@@ -2873,7 +2873,7 @@ ntlm auth = yes
 >Otros entornos de escritorio distintos de &plasma;</title>
 
       <para
->Cuando use un entorno de escritorio distinto de &plasma;, las aplicaciones &Qt; y &kf5; podrían perder algunos de los iconos. En ese caso, usted podría querer descargar los fuentes de <application
+>Cuando use un entorno de escritorio distinto de &plasma;, las aplicaciones &Qt; y &kde-frameworks; podrían perder algunos de los iconos. En ese caso, usted podría querer descargar los fuentes de <application
 >qt5ct</application
 > (el código fuente puede obtenerse <ulink url="https://sourceforge.net/projects/qt5ct/"
 >aquí</ulink
@@ -8665,7 +8665,7 @@ ntlm auth = yes
 ></keycombo
 ></shortcut
 > <guimenu
->Red</guimenu
+>Recursos compartidos</guimenu
 > <guimenuitem
 >Añadir preferencias personalizadas</guimenuitem
 > </menuchoice>
@@ -8960,7 +8960,7 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Proporcione la versión de &smb4k; y &kf5;.</para
+>Proporcione la versión de &smb4k; y &kde-frameworks;.</para
 ></listitem>
     <listitem
 ><para
