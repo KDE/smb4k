@@ -235,17 +235,17 @@ msgstr "기본 로그인 정보를 입력하십시오."
 #: smb4k/smb4kconfigpageauthentication.cpp:401
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr ""
+msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for the default login."
-msgstr ""
+msgstr "기본 로그인 사용자 이름과 암호를 설정하십시오."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "모두 정상적입니다."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -361,7 +361,7 @@ msgstr "탐색 설정"
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
 msgid "Samba"
-msgstr ""
+msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
 #, kde-format
@@ -383,20 +383,17 @@ msgid ""
 msgstr "<qt>사용자 정의 옵션 대화 상자로 깨울 호스트를 정의하십시오.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "고급 마운트 설정"
+msgstr "고급 설정"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "동기화"
+msgstr "동기화 디렉터리"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
 msgstr "백업"
 
@@ -429,7 +426,7 @@ msgstr "소유자:"
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "파일 속성과 소유자"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -482,7 +479,7 @@ msgstr "파일 삭제"
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
 #, kde-format
 msgid "General Filtering Settings"
-msgstr ""
+msgstr "일반 필터 설정"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -893,10 +890,9 @@ msgid "Mountpoint:"
 msgstr "마운트 지점:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User Interface"
+#, kde-format
 msgid "Username:"
-msgstr "사용자 인터페이스"
+msgstr "사용자 이름:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
