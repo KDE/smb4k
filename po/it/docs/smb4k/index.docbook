@@ -77,14 +77,14 @@
   </authorgroup>
   <copyright>
     <year
->2005-2022</year>
+>2005-2023</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->30/03/2021</date>
+>25/02/2022</date>
   <releaseinfo
 >&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
@@ -111,7 +111,7 @@
 >Introduzione</title>
 
   <para
->This handbook describes &smb4k; 3.2 and to some extent earlier versions.</para>
+>Questo manuale descrive &smb4k; 3.2 e, in una certa misura, alcune versioni precedenti.</para>
   <para
 >&smb4k; è un navigatore avanzato delle risorse di rete e uno strumento per il montaggio delle condivisioni <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -124,7 +124,7 @@
 ></listitem>
     <listitem
 ><para
->Support of the &CIFS; and &SMB3; file system under &Linux; as well as the SMBFS file system under BSD</para
+>Supporto per i file system &CIFS; e &SMB3; nei sistemi &Linux;, e SMBFS in BSD</para
 ></listitem>
     <listitem
 ><para
@@ -188,7 +188,7 @@
 ></listitem>
     <listitem
 ><para
->Capacità di definire opzioni personalizzate per server individuali e per le condivisioni</para
+>Capacità di definire impostazioni personalizzate per server individuali e per le condivisioni</para
 ></listitem>
     <listitem
 ><para
@@ -246,35 +246,9 @@
 > per una migliore integrazione con il desktop: può essere aggiunto come oggetto al desktop o al pannello.</para>
 
     <para
->Se nel sistema manca qualche programma che serve a &smb4k; per operare correttamente, questo viene notificato all'utente:</para>
-    
-    <screenshot id="notification_missing_program">
-      <screeninfo
->Schermata per la notifica della mancanza di un programma</screeninfo>
-      <mediaobject>
-        <imageobject
-><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
-        <textobject
-><phrase
->La notifica della mancanza di un programma</phrase
-></textobject>
-      </mediaobject>
-    </screenshot>
-    
-    <para
->In questo caso installa il programma specifico o, se è già presente, aggiungi la sua posizione alla variabile d'ambiente <envar
->PATH</envar
-> nel file di configurazione della tua shell (per la shell <ulink url="man:/bash"
-><citerefentry
-><refentrytitle
->bash</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> è il file <filename
->~/.bashrc</filename
->).</para>
+>Se &smb4k; si imbatte in un problema all'avvio oppure mentre è in esecuzione, verrà inviata una notifica all'utente. Per la risoluzione di alcuni problemi comuni, vedi la sezione <link linkend="trouble_shooting"
+>Risoluzione dei problemi</link
+>.</para>
   </sect1>
 
 <!-- 
@@ -322,13 +296,13 @@
 >Condivisioni montate</guilabel
 > viene evidenziata per alcuni secondi.</para>
     <para
->La finestra principale è ampiamente configurabile: puoi nascondere o mostrare tutti gli oggetti a schede (<menuchoice
+>La finestra principale è ampiamente configurabile: puoi nascondere o mostrare tutti gli oggetti a schede da <menuchoice
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
 >Oggetti agganciabili</guimenuitem
 ></menuchoice
->), che possono essere anche trascinati col mouse e agganciati in diverse aree della finestra principale, e anche essere staccati dalla finestra principale. La barra di stato e le barre degli strumenti possono essere nascoste o visualizzate commutando rispettivamente le voce di menu <menuchoice
+>; questi possono essere anche trascinati col mouse e agganciati in diverse aree della finestra principale, e anche essere staccati dalla finestra principale. La barra di stato e le barre degli strumenti possono essere nascoste o visualizzate commutando rispettivamente le voce di menu <menuchoice
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
@@ -352,9 +326,9 @@
 >Il navigatore delle risorse di rete</title>
 
     <para
->L'interazione con le risorse di rete avviene tramite il navigatore delle <guilabel
+>Il navigatore delle <guilabel
 >Risorse di rete</guilabel
->. Contiene tutti gli elementi della rete &#8212; &ie; gruppi di lavoro, server e condivisioni &#8212; che &smb4k; è in grado di rilevare. Sono organizzati in un albero di rete, e puoi visitarli facendo clic sul controllo accanto al nome dell'elemento o eseguendo l'elemento stesso.</para>
+> contiene tutti gli elementi della rete &#8212; &ie; i gruppi di lavoro, i server e le condivisioni &#8212; che &smb4k; è in grado di rilevare. Sono organizzati in un albero di rete, e puoi visitarli facendo clic sul controllo accanto al nome dell'elemento o eseguendo l'elemento stesso.</para>
     <para
 >Nell'albero di rete, il master browser di ciascun gruppo di lavoro o dominio viene evidenziato da un carattere blu, se è stato rilevato (&eg; quando si usa DNS-SD il master browser di un dominio &Windows; non viene riconosciuto). Le condivisioni montate sono contrassegnate con la loro icona della cartella e con un carattere in corsivo.</para>
 
@@ -399,11 +373,17 @@
 >Avahi</ulink
 >, e non un vero e proprio dominio di &Windows;. L'apertura di un dominio o di un elemento del gruppo di lavoro ne mostra i server che ne fanno parte. Se vuoi accedere alle condivisioni di uno dei server lo devi aprire.</para>
       <para
->C'è anche la possibilità di risvegliare i server dormienti prima di analizzare le risorse di rete (Wake-On-LAN). Se questa funzionalità è abilitata, &smb4k; invia un pacchetto magico a ciascun server da risvegliare, e aspetta il tempo definito prima di cercare i gruppi di lavoro e i domini. Le impostazioni del Wake-On-LAN possono essere attivate nella <link linkend= "configuration_page_network_wake_on_lan_settings"
+>C'è anche la possibilità di risvegliare i server dormienti prima di analizzare le risorse di rete (Wake-On-LAN). Se questa funzionalità è abilitata, &smb4k; invia un pacchetto magico a ciascun server da risvegliare, e aspetta il tempo definito prima di cercare i gruppi di lavoro e i domini. Le impostazioni del Wake-On-LAN possono essere attivate nella <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
 >finestra di configurazione</link
->, mentre i server da risvegliare devono essere definiti nella finestra <link linkend="network_neighborhood_browser_defining_custom_options"
->Opzioni personalizzate</link
+>, mentre i server da risvegliare devono essere definiti nell'editor delle <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Impostazioni personalizzate</link
 >.</para>
+      <note>
+        <para
+>Se stai usando il sistema di rilevamento dei servizi via DNS (DNS-SD) e il demone Zeroconf (Avahi) non è in esecuzione, &smb4k; mostra una notifica di errore. Per i dettagli vedi la sezione <link linkend="trouble_shooting_zeroconf"
+>Risoluzione dei problemi</link
+>.</para>
+      </note>
     </sect2>
     
 <!--
@@ -447,7 +427,7 @@
 >Cerca</guibutton
 >: &smb4k; inizierà a cercare in tutte le risorse di rete. Quando la ricerca finisce, vengono evidenziate tutte le condivisioni che corrispondono al termine di ricerca (selezionate): se vuoi fare qualcosa con <emphasis
 >tutte</emphasis
-> le condivisioni trovate (&eg; montarle o farne l'anteprima), la potrai quindi fare immediatamente. Puoi anche usare i pulsanti <guibutton
+> le condivisioni trovate (&eg; montarle o farne l'anteprima), puoi farlo adesso. Puoi anche usare i pulsanti <guibutton
 >Su</guibutton
 > e <guibutton
 >Giù</guibutton
@@ -505,9 +485,7 @@
           </term>
           <listitem>
             <para
->Interrompe qualsiasi processo in esecuzione nel navigatore delle risorse di rete. Questa azione è invisibile per impostazione predefinita; sarà visibile al posto dell'azione <guimenuitem
->Analizza la rete|Gruppo di lavoro|Computer</guimenuitem
-> quando è in corso un'analisi di rete.</para>
+>Interrompe qualsiasi processo in esecuzione nel navigatore delle risorse di rete. Questa azione è invisibile per impostazione predefinita; diventerà visibile mentre è in corso un'analisi di rete.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -525,7 +503,9 @@
           </term>
           <listitem>
             <para
->Cerca un termine specifico nelle risorse di rete. Attivando questa azione si apre la barra degli strumenti di ricerca nella quale puoi inserire il termine di ricerca ed iniziare la ricerca.</para>
+><link linkend="network_neighborhood_browser_searching"
+>Cerca nelle risorse di rete</link
+> un termine specifico. Attivando questa azione si apre la barra degli strumenti di ricerca, nella quale puoi inserire il termine ed avviare la ricerca.</para>
           </listitem>
         </varlistentry
 >        
@@ -544,11 +524,29 @@
           </term>
           <listitem>
             <para
->Aggiungi un segnalibro alla condivisione remota selezionata. Questa azione è disattivata se non è selezionata una condivisione.</para>
+><link linkend="bookmarks_adding"
+>Aggiungi un segnalibro</link
+> alle condivisioni remote selezionate Questa azione è disabilitata se non ci sono condivisioni selezionate.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Aggiungi impostazioni personalizzate</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
             <para
->Consulta la sezione <link linkend="bookmarks_adding"
->Aggiungere i segnalibri</link
-> per maggiori dettagli.</para>
+>Apri l'editor delle <link linkend="custom_settings"
+>impostazioni personalizzate</link
+>, da dove puoi impostare diverse opzioni personalizzate per ciascun server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa voce di menu è disabilitata.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -566,7 +564,7 @@
           </term>
           <listitem>
             <para
->Apre la <link linkend="network_neighborhood_browser_mounting"
+>Apri la <link linkend="network_neighborhood_browser_mounting"
 >finestra</link
 > per montare «manualmente» le condivisioni. Questa funzionalità può essere necessaria se &smb4k; non riesce a trovare il server sul quale montare una certa risorsa condivisa.</para>
           </listitem>
@@ -586,29 +584,9 @@
           </term>
           <listitem>
             <para
->Apre la <link linkend="network_neighborhood_browser_authentication"
+>Apri la <link linkend="network_neighborhood_browser_authentication"
 >finestra di autenticazione</link
->. Puoi fornire nome utente e password per il server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa azione è disabilitata.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenuitem
->Opzioni personalizzate</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem>
-            <para
->Apre la finestra <link linkend="network_neighborhood_browser_defining_custom_options"
->Opzioni personalizzate</link
->. Puoi impostare diverse opzioni personalizzate per il server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa voce di menu è disabilitata.</para>
+>, da dove puoi fornire nome utente e password per ciascun server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa azione è disabilitata.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -628,7 +606,7 @@
             <para
 >Esegue l'<link linkend="network_neighborhood_browser_previewing"
 >anteprima</link
-> del contenuto della connessione remota selezionata. Questa azione è abilitata solo se è selezionata una condivisione. Le stampanti non dispongono di anteprima.</para>
+> del contenuto della connessione remota selezionata. Questa azione è abilitata solo se sono selezionate delle condivisioni. Non è possibile eseguire l'anteprima di stampanti.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -648,7 +626,7 @@
             <para
 ><link linkend="network_neighborhood_browser_printing"
 >Stampa</link
-> un file su una stampante remota. Questa azione è disponibile solo se è stata selezionata una stampante condivisa.</para>
+> un file su una stampante remota. Questa azione è disponibile solo se è stata selezionata almeno una stampante condivisa.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -666,9 +644,7 @@
           </term>
           <listitem>
             <para
->Monta la condivisione remota selezionata. Come comportamento predefinito, e se fai clic su qualcosa di diverso da una condivisione di tipo «Disco» o «IPC», questa azione è disabilitata. Se selezioni invece una condivisione montata, viene sostituita dall'azione <guimenuitem
->Smonta</guimenuitem
->.</para>
+>Monta le condivisioni remote selezionate. Questa azione è visibile solo se sono selezionate condivisioni che non sono già montate. Per impostazione predefinita, e se selezioni qualcosa di diverso da una condivisione di tipo «Disco» o «IPC», questa azione è disabilitata.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -686,15 +662,15 @@
           </term>
           <listitem>
             <para
->Smonta la condivisione selezionata. Questa azione è invisibile come impostazione predefinita; sarà invece visibile l'azione <guimenuitem
+>Smonta le condivisioni selezionate. Questa azione è invisibile per impostazione predefinita; sarà invece visibile l'azione <guimenuitem
 >Monta</guimenuitem
-> quando la condivisione è attualmente montata.</para>
+> se è selezionata almeno una condivisione montata.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Anche se puoi interagire con le risorse di rete utilizzando le scorciatoie da tastiera menzionate qui sopra, nella maggior parte dei casi è più conveniente usare il mouse. Con un clic destro puoi aprire un menu a comparsa che contiene tutte le azioni disponibili nel navigatore delle risorse di rete. A seconda della posizione in cui hai fatto clic (su un elemento di rete oppure sull'area di visualizzazione), alcuni di esse possono essere disattivate. La schermata seguente mostra il menu a comparsa aperto su di una condivisione remota.</para>
+>Puoi usare il tasto destro nel navigatore delle risorse di rete per aprire il menu a comparsa, che consente l'accesso a tutte le azioni disponibili. A seconda della posizione in cui hai fatto clic (su un elemento di rete, oppure sull'area di visualizzazione), alcune di esse possono essere disattivate. La schermata seguente mostra il menu a comparsa che si è aperto su di una condivisione remota.</para>
 
       <screenshot>
         <screeninfo
@@ -720,7 +696,7 @@
 >Suggerimenti</title>
 
       <para
->Per ogni elemento di rete viene fornito un suggerimento. Questo contiene varie informazioni, come il nome del gruppo di lavoro e del master browser, il nome e l'indirizzo IP dell'host, il nome della condivisione, &etc;</para>
+>Per ogni elemento di rete viene fornito un suggerimento. Questo contiene varie informazioni, come il nome del gruppo di lavoro e del master browser, se disponibile, il nome e l'indirizzo IP dell'host, il nome della condivisione, &etc;</para>
       <para
 >È possibile disattivare i suggerimenti nella <link linkend="configuration_page_user_interface_network"
 >finestra di configurazione</link
@@ -733,7 +709,7 @@
 
     <sect2 id="network_neighborhood_browser_mounting">
       <title
->Montare una condivisione</title>
+>Montare le condivisioni</title>
 
       <para
 >Ci sono tre opzioni disponibili per montare una condivisione remota:</para>
@@ -745,7 +721,7 @@
 ></listitem>
         <listitem
 ><para
->Selezionare la condivisione remota e fare clic sulla voce del menu <guimenuitem
+>Seleziona le condivisioni remote e fai clic sulla voce del menu <guimenuitem
 >Monta</guimenuitem
 >. In alternativa puoi usare la scorciatoia di tastiera <keycombo action="simul"
 >&Ctrl; <keycap
@@ -755,7 +731,7 @@
 ></listitem>
         <listitem
 ><para
->Se &smb4k; non è stato in grado di trovare il server su cui si trova la condivisione, puoi usare la voce <menuchoice
+>Premi la voce di menu <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -786,8 +762,8 @@
 > o <programlisting
 >\\[USER@]SERVER\SHARE</programlisting
 >, oppure come URL nella forma <programlisting
->[smb:]//[user@]server:port/share</programlisting
->. Il pulsante <guibutton
+>[smb:]//[user@]server[:port]/share</programlisting
+> Il pulsante <guibutton
 >OK</guibutton
 > è attivo e puoi quindi usarlo per montare la condivisione, tuttavia è consigliabile inserire anche l'indirizzo IP e il gruppo di lavoro del server. Se allo stesso tempo vuoi aggiungere la condivisione nei segnalibri, fai clic sul pulsante <guibutton
 >Segnalibro 
@@ -952,37 +928,17 @@
 >tutte le volte</emphasis
 > che sono necessari.</para>
     </sect2>
-
+    
 <!-- 
-      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
   -->
 
-    <sect2 id="network_neighborhood_browser_defining_custom_options">
+    <sect2 id="network_neighborhood_browser_defining_custom_settings">
       <title
->Definire le opzioni personalizzate</title>
-
+>Definire le impostazioni personalizzate</title>
+      
       <para
->Usa la finestra delle <guilabel
->Opzioni personalizzate</guilabel
-> se vuoi</para>
-      <itemizedlist>
-        <listitem
-><para
->definire un montaggio personalizzato o sfogliare le impostazioni di un singolo server o per una condivisione che si discosta da un valore definito nella finestra di configurazione,</para
-></listitem>
-        <listitem
-><para
->definire un server che dovrebbe essere risvegliato prima delle scansioni di rete o dei tentativi di montaggio (funzionalità Wake-On-LAN, vedi <link linkend="configuration_page_network_wake_on_lan_settings"
->qui</link
->),</para
-></listitem>
-        <listitem
-><para
->montare sempre una particolare condivisione all'avvio, oppure quando viene caricato il profilo corrispondente.</para
-></listitem>
-      </itemizedlist>
-      <para
->La finestra viene aperta facendo clic sulla voce di menu <menuchoice
+>Per server o condivisioni individuali puoi definire delle impostazioni personalizzate che deviano da quelle globali. Per farlo puoi accedere all'editor delle impostazioni personalizzate facendo clic sulla voce di menu<menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -990,84 +946,11 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Opzioni personalizzate</guimenuitem
+>Aggiungi opzioni personalizzate</guimenuitem
 ></menuchoice
->. A seconda della tua selezione, le impostazioni si applicano o a tutte le condivisioni di un server o ad una singola.</para>
-
-      <screenshot>
-        <screeninfo
->Schermata della finestra delle opzioni personalizzate di una condivisione</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Finestra delle opzioni personalizzate</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-
-      <para
->Il pulsante <guibutton
->Predefinito</guibutton
-> è attivo se le voci nella finestra differiscono dalle impostazioni definite nella finestra di configurazione. Facendo clic su di esso puoi reimpostare le voci nella finestra ai loro valori di predefiniti. Il pulsante <guibutton
->OK</guibutton
-> è attivo se hai modificato le impostazioni nella finestra di dialogo: facendo clic su di esso salverai le impostazioni personalizzate e chiuderai la finestra.</para>
-      <note
-><para
->In BSD la finestra contiene meno voci che su un altro sistema operativo; questo perché molte delle opzioni non sono supportate.</para
-></note>
-
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
-        <title
->Impostazioni condivise di montaggio (solo in &Linux;)</title>
-        
-        <para
->In questa scheda puoi definire le impostazioni comuni relative al montaggio. Spuntando il pulsante <guibutton
->Rimonta sempre questa condivisione</guibutton
-> per la condivisione selezionata, questa sarà rimontata ad ogni avvio del programma. Per informazioni sulle altre impostazioni, vedi <link linkend="configuration_page_mounting"
->questa sezione</link
+>. Per maggiori dettagli, vedi la sezione <link linkend="custom_settings"
+>Impostazioni personalizzate</link
 >.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
-        <title
->Impostazioni di montaggio avanzate (solo in &Linux;)</title>
-        
-        <para
->In questa scheda puoi definire le impostazioni avanzate relative al montaggio. Per informazioni sulle altre impostazioni, vedi <link linkend="configuration_page_mounting"
->questa sezione</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
-        <title
->Impostazioni di montaggio (solo in BSD)</title>
-        
-        <para
->In questa scheda puoi definire le impostazioni avanzate relative al montaggio. Per informazioni sulle altre impostazioni, vedi <link linkend="configuration_page_mounting"
->questa pagina</link
->.</para>
-      </sect3>
-        
-      <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
-        <title
->Impostazioni di navigazione</title>
-
-        <para
->Puoi definire la versione minima e massima del protocollo SMB, così come la porta SMB da usare. Inoltre puoi decidere se Kerberos debba essere usato per l'autenticazione. Per informazioni dettagliate su queste impostazioni, vedi <link linkend="configuration_page_network"
->questa pagina di configurazione della rete</link
->.</para>
-      </sect3>
-
-      <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
-        <title
->Impostazioni Wake-On-LAN</title>
-    
-        <para
->Per non avere problemi con la funzionalità Wake-On-LAN devi fornire l'indirizzo MAC del server che hai selezionato: al momento, infatti, &smb4k; non ha modo di determinarlo; devi quindi scoprirlo tu stesso. Successivamente puoi definire se &smb4k; dovrebbe inviare un pacchetto magico Wake-On-LAN all'host selezionato prima che vengano analizzate le risorse di rete, oppure se le sue condivisioni sono montate.</para>
-      </sect3>
     </sect2>
 
 <!-- 
@@ -1148,15 +1031,15 @@
       </screenshot>
 
       <para
->Puoi passare da una visualizzazione all'altra sia selezionando la voce appropriata nel sotto-menu <guimenuitem
+>Puoi passare da una visualizzazione all'altra selezionando la voce appropriata nel sotto-menu della barra degli strumenti <guimenuitem
 >Modalità di visualizzazione</guimenuitem
-> della <link linkend="mainwindow_overview"
+>, nella barra del menu sotto <link linkend="mainwindow_overview"
 ><guimenu
->Vista delle condivisioni</guimenu
+>Condivisioni</guimenu
 ></link
-> nella finestra principale, sia tramite il <link linkend="shares_view_actions_popup_menu"
+>, oppure nel <link linkend="shares_view_actions_popup_menu"
 >menu a comparsa</link
-> nella vista delle condivisioni.</para>
+> della vista delle condivisioni.</para>
       <para
 >Per impostazione predefinita vedrai solo le tue condivisioni. Puoi comunque regolare &smb4k; per mostrartele tutte con le <link linkend="configuration_page_mounting_basic_settings_behavior"
 >rispettive impostazioni</link
@@ -1230,7 +1113,7 @@
           </term>
           <listitem>
             <para
->Smonta una o più condivisioni selezionate. Se nella vista non è selezionata nessuna condivisione, questo pulsante è disabilitato.</para>
+>Smonta le condivisioni selezionate. Se nella vista non è selezionata nessuna condivisione, questo pulsante è disabilitato.</para>
             <para
 >Consulta la sezione <link linkend="shares_view_unmounting"
 >smontare le condivisioni</link
@@ -1274,11 +1157,31 @@
           </term>
           <listitem>
             <para
->Aggiunge dei segnalibri alle condivisioni montate attualmente selezionate. Questa azione è disabilitata se non è selezionata nessuna condivisione.</para>
+>Aggiunge dei segnalibri alle condivisioni selezionate. Questa azione è disabilitata se non è selezionata nessuna condivisione.</para>
             <para
 >Consulta la sezione <link linkend="bookmarks_adding"
 >Aggiungere i segnalibri</link
 > per maggiori dettagli.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenuitem
+>Aggiungi impostazioni personalizzate</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Apri l'editor delle impostazioni personalizzate per le condivisioni selezionate. Per maggiori dettagli, leggi la sezione sulle <link linkend="network_neighborhood_browser_defining_custom_settings"
+>impostazioni personalizzate</link
+>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1324,7 +1227,7 @@
           </term>
           <listitem>
             <para
->Apre la cartella base di una condivisione in &konsole;. Questa voce di menu è utile se hai bisogno di eseguire script di shell, &etc;</para>
+>Apri la cartella base di una condivisione in &konsole;. Questa voce di menu è utile se hai bisogno di eseguire script di shell, &etc;</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1342,7 +1245,7 @@
           </term>
           <listitem>
             <para
->Apre il contenuto di una condivisione nel gestore dei file predefinito.</para>
+>Apri il contenuto di una condivisione nel gestore dei file predefinito.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1393,13 +1296,27 @@
 >Condivisioni inaccessibili</title>
 
       <para
->&smb4k; controlla periodicamente che tutte le condivisioni montate siano ancora accessibili. Se viene rilevata una condivisione inaccessibile, questa sarà contrassegnata con un'<link linkend="shares_view_icons"
->icona di una cartella bloccata</link
-> e non potrai più aprirla o sincronizzarla. Sarà però ancora possibile smontarla e aggiungerci un segnalibro.</para>
+>&smb4k; controlla periodicamente che tutte le condivisioni montate siano ancora accessibili. Se ne viene rilevata una inaccessibile, questa verrà contrassegnata col simbolo di un lucchetto e non potrai più aprirla o sincronizzarla. Sarà però ancora possibile smontarla e aggiungergli un segnalibro.</para>
       <note
 ><para
 >Il programma potrebbe bloccarsi per un breve periodo di tempo a causa di una condivisione inaccessibile. Riprenderà successivamente.</para
 ></note>
+    </sect2>
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
+  -->
+    
+    <sect2 id="shares_view_foreign_shares">
+      <title
+>Condivisioni possedute da altri utenti</title>
+      
+      <para
+>Le condivisioni di proprietà di altri utenti vengono visualizzate solo se hai modificato le <link linkend="configuration_page_mounting_basic_settings_behavior"
+>impostazioni</link
+> per visualizzarle. Con la configurazione predefinita non puoi smontare queste condivisioni, tuttavia puoi <link linkend="configuration_page_mounting_basic_settings_behavior"
+>modificare questo comportamento</link
+>.</para>
     </sect2>
 
 <!-- 
@@ -1411,38 +1328,7 @@
 >Icone</title>
 
       <para
->All'utente possono venir presentate da tre diverse icone:</para>
-      <screenshot>
-        <screeninfo
->Schermata delle tre diverse icone</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_icons.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Le tre diverse icone</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <itemizedlist>
-        <listitem
-><para
->L'icona a sinistra indica che questa condivisione non è accessibile. &smb4k; non ti permetterà di aprirla o di sincronizzarla; sarai solo in grado di smontarla o di aggiungerci un segnalibro.</para
-></listitem>
-        <listitem
-><para
->L'icona centrale indica che la condivisione è in linea, accessibile, e di tua proprietà. Su di essa puoi eseguire tutte le azioni disponibili.</para
-></listitem>
-        <listitem
-><para
->Tutte le condivisioni contrassegnate con un segnale di pericolo, come quello a destra, sono di proprietà di un altro utente: vengono visualizzate solo se hai modificato le <link linkend="configuration_page_mounting_basic_settings_behavior"
->impostazioni</link
-> per visualizzarle. Con la configurazione predefinita non puoi smontare queste condivisioni, tuttavia puoi <link linkend="configuration_page_mounting_basic_settings_behavior"
->modificare questo comportamento</link
->.</para
-></listitem>
-      </itemizedlist>
+>Una condivisione montata viene indicata con un piccolo simbolo nell'angolo inferiore dell'icona della cartella. Questo si modifica in un lucchetto per quelle non accessibili. Nelle condivisioni possedute da un altro utente viene sostituito da un simbolo di pericolo.</para>
     </sect2>
 
 <!-- 
@@ -1454,7 +1340,7 @@
 >Trascinamento</title>
 
       <para
->&smb4k; supporta il trascinamento nella vista delle sincronizzazioni. Per trasferire o per collegare dei dati ad una condivisione, trascina i file o le cartelle sopra l'icona della condivisione e rilasciali: si aprirà un menu a comparsa per chiederti cosa vuoi fare. Scegli poi l'azione appropriata (copia, sposta o collega).</para>
+>&smb4k; supporta il trascinamento nella vista delle sincronizzazioni. Per trasferire o per collegare dei dati ad una condivisione, trascina i file o le cartelle sopra l'icona della condivisione e rilasciali: si aprirà un menu a comparsa per chiederti cosa fare. Scegli poi l'azione appropriata (copia, sposta o collega).</para>
       <screenshot>
         <screeninfo
 >Schermata della vista delle condivisioni dopo che l'utente ha rilasciato un file</screeninfo>
@@ -1473,7 +1359,7 @@
 >&Ctrl;&Shift;</keycombo
 > per collegare durante il trascinamento. Il trasferimento avrà successo solo se la condivisione è stata montata con permessi di lettura e scrittura.</para>
       <para
->Puoi trascinare l'intera condivisione sul desktop, oppure in un'altra applicazione (&eg; &dolphin;); anche in questo caso si aprirà un menu a comparsa che ti chiederà cosa vuoi fare. Quando hai scelto l'operazione appropriata, ricordati che, nella maggior parte dei casi, spostare e collegare la condivisione potrebbe non essere una buona idea.</para>
+>Puoi trascinare l'intera condivisione sul desktop, oppure in un'altra applicazione (&eg; &dolphin;); anche in questo caso si aprirà un menu a comparsa che ti chiederà cosa fare. Quando hai scelto l'operazione appropriata, ricordati che, nella maggior parte dei casi, spostare e collegare la condivisione potrebbe non essere una buona idea.</para>
     </sect2>
 
 <!-- 
@@ -1495,30 +1381,13 @@
 ><guimenuitem
 >Smonta</guimenuitem
 ></menuchoice
->, sia usando la sua scorciatoia da tastiera. Come impostazione predefinita la possibilità di smontare una condivisione è limitata a quelle che ti appartengono, ma puoi cambiare questo comportamento nella <link linkend="configuration_page_mounting_basic_settings_behavior"
+>, sia usando la sua scorciatoia da tastiera. Per impostazione predefinita la possibilità di smontare una condivisione è limitata a quelle che ti appartengono; puoi però cambiare questo comportamento nella <link linkend="configuration_page_mounting_basic_settings_behavior"
 >finestra di configurazione</link
->. Se hai attivato lo smontaggio delle condivisioni appartenenti ad altri utenti ti verrà mostrata una finestra di avviso prima dello smontaggio reale:</para>
-      <screenshot>
-        <screeninfo
->Schermata della finestra di avviso che viene visualizzato quando deve essere smontata una condivisione estranea</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->La finestra di avviso che viene visualizzata quando smonti una condivisione estranea</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
+>. Se hai attivato lo smontaggio delle condivisioni appartenenti ad altri utenti, ti verrà mostrata una finestra di avviso prima dello smontaggio reale: se procedi, la condivisione verrà smontata definitivamente. Quindi, pensaci due volte prima di decidere di smontare queste condivisioni!</para>
       <para
->Se fai clic sul pulsante <guibutton
->Sì</guibutton
->, la condivisione sarà sicuramente smontata. Quindi, pensaci due volte prima di decidere di smontare condivisioni che appartengono ad altri utenti!</para>
-      <para
->&smb4k; riesce anche a forzare lo smontaggio delle condivisioni (solo in &Linux;). Questo può essere utile in caso di condivisioni inaccessibili che non possono essere smontate in maniera normale. Per abilitare questa funzionalità devi modificare le <link linkend="configuration_page_mounting_basic_settings_behavior"
+>&smb4k; fornisce la possibilità di forzare lo smontaggio delle condivisioni (solo in &Linux;). Questo può essere utile in caso di condivisioni inaccessibili che non possono essere smontate in maniera normale. Per abilitare questa funzionalità devi modificare le <link linkend="configuration_page_mounting_basic_settings_behavior"
 >impostazioni</link
-> nella finestra di configurazione. &smb4k; eseguirà un <ulink url="man:/umount"
+> nella finestra di configurazione. &smb4k; eseguirà un <ulink url="man:/umount(8)"
 >smontaggio «lazy»</ulink
 > sulle condivisioni inaccessibili.</para>
       <para
@@ -1534,9 +1403,33 @@
 ></menuchoice
 >. In base alle tue impostazioni, questa azione smonterà anche le condivisioni estranee e quelle inaccessibili.</para>
       <para
->Verrai avvisato dopo un processo di smontaggio riuscito. Se lo smontaggio non dovesse riuscire ti sarà mostrata una notifica con il messaggio di errore restituito.</para>
+>Verrai avvisato se un processo di smontaggio ha successo. Se invece non dovesse riuscire, ti verrà mostrata una notifica con il messaggio di errore restituito.</para>
     </sect2>
-
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Defining Custom Settings
+  -->
+    
+    <sect2 id="shares_view_adding_custom_settings">
+      <title
+>Definire le impostazioni personalizzate</title>
+      
+      <para
+>Per le condivisioni selezionate possono essere definite delle impostazioni personalizzate. Fai clic sull'azione <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Aggiungi impostazioni personalizzate</guimenuitem
+></menuchoice
+> per aprire la finestra relativa. Per maggiori dettagli, vedi <link linkend="custom_settings"
+>questa sezione</link
+>.</para>
+    </sect2>
+    
 <!-- 
       Using Smb4K : The Mounted Shares View : Synchronization 
   -->
@@ -1556,7 +1449,7 @@
 ><guimenuitem
 >Sincronizza</guimenuitem
 ></menuchoice
-> apre la finestra di sincronizzazione, che ti offre il punto di montaggio della condivisione come sorgente, e un percorso al di sotto del <link linkend="configuration_page_synchronization_basic_settings_default_destination"
+> apre la finestra di sincronizzazione, che offre il punto di montaggio della condivisione come sorgente, e un percorso al di sotto del <link linkend="configuration_page_synchronization_basic_settings_default_destination"
 >prefisso sincronizzazione</link
 > come destinazione. Per aggiornare i dati della condivisione puoi scambiare la destinazione con la sorgente: fai clic sul pulsante <guibutton
 >Scambia i percorsi</guibutton
@@ -1577,9 +1470,7 @@
       <para
 >Facendo clic sul pulsante <guibutton
 >Sincronizza</guibutton
-> la sincronizzazione inizia. Facendo clic col pulsante sinistro sul pulsante <guibutton
->Notifiche</guibutton
-> nel vassoio di sistema, può essere aperta una finestra di avanzamento che mostra alcuni dettagli sul trasferimento.</para>
+> la sincronizzazione ha inizio, e viene mostrata una finestra sul progresso che mostra i dettagli sul trasferimento.</para>
       <screenshot>
         <screeninfo
 >Schermata della finestra di avanzamento della sincronizzazione</screeninfo>
@@ -1595,15 +1486,6 @@
       </screenshot>
       <para
 >La sincronizzazione può essere annullata in qualsiasi momento premendo il pulsante di interruzione nell'angolo in alto a destra della barra di avanzamento.</para>
-            
-      <note>
-        <para
->Il numero totale dei file che viene mostrato nella finestra di avanzamento corrisponde al numero dei file presenti nella condivisione, e non necessariamente al totale dei file che saranno davvero trasferiti.</para>
-        <para
->L'avanzamento viene calcolato dividendo il numero dei file trasferiti per il numero totale dei file presenti nella condivisione, mentre le loro dimensione non viene considerata. Questo significa che un file molto grande aggiunge molto di più all'avanzamento di uno molto piccolo. Inoltre, a causa del modo in cui <application
->rsync</application
-> visualizza l'avanzamento del trasferimento, la barra di avanzamento viene aggiornata solo dopo che un altro trasferimento è stato completato.</para>
-      </note>
     </sect2>
 
 <!-- 
@@ -1678,7 +1560,7 @@
 >Posizione e uso</title>
 
       <para
->Quando viene avviato &smb4k; appare un'icona di stato nel vassoio di sistema. Il suo stato viene impostato ad attivo se vengono trovati dei gruppi di lavoro o dei domini, diversamente è inattivo.</para>
+>Quando viene avviato &smb4k;, nel vassoio di sistema appare un'icona di stato. Il suo stato viene impostato ad attivo se vengono trovati dei gruppi di lavoro o dei domini, diversamente è inattivo.</para>
 
       <screenshot>
         <screeninfo
@@ -1694,7 +1576,7 @@
       </screenshot>
 
       <para
->Facendo clic sull'icona di stato puoi minimizzare o ripristinare la finestra principale. Un clic destro permette di visualizzare un menu a comparsa che contiene diverse voci; queste ti permettono di lavorare con le condivisioni montate, di gestire o di montare i tuoi segnalibri, di selezionare il profilo che vuoi usare e di configurare &smb4k; senza aprire la finestra principale.</para>
+>Puoi minimizzare o ripristinare la finestra principale facendo clic sull'icona di stato. Un clic destro visualizza un menu a comparsa che contiene diverse voci, che ti permettono di lavorare con le condivisioni montate, di gestire o di montare i tuoi segnalibri, di selezionare il profilo che vuoi usare e di configurare &smb4k; senza aprire la finestra principale.</para>
     </sect2>
 
 <!-- 
@@ -1772,6 +1654,20 @@
         </varlistentry>
         <varlistentry>
           <term>
+            <menuchoice>
+              <guimenuitem
+>Aggiungi impostazioni personalizzate</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Apri l'editor delle impostazioni personalizzate per le condivisioni selezionate. Per ulteriori informazioni leggi la sezione sull'editor delle <link linkend="network_neighborhood_browser_defining_custom_settings"
+>impostazioni personalizzate</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
             <menuchoice
 ><guimenuitem
 >Sincronizza</guimenuitem
@@ -1779,11 +1675,11 @@
           </term>
           <listitem>
             <para
->Sincronizza la condivisione montata con una copia locale, o viceversa. Per maggiori informazioni leggi <link linkend="shares_view_actions_popup_menu"
->questa pagina</link
-> e <link linkend="shares_view_synchronization"
->quest'altra</link
->.</para>
+>Sincronizza la condivisione montata con una copia locale, o viceversa. Per maggiori informazioni, leggi le sezioni sulle <link linkend="shares_view_actions_popup_menu"
+>azioni e sul menu a comparsa</link
+> e sulla <link linkend="shares_view_synchronization"
+>sincronizzazione</link
+> della vista delle condivisioni.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1795,7 +1691,7 @@
           </term>
           <listitem>
             <para
->Apre la cartella base della condivisione in &konsole;.</para>
+>Apri la cartella base della condivisione in &konsole;.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1807,7 +1703,7 @@
           </term>
           <listitem>
             <para
->Apre il contenuto della condivisione nel gestore dei file predefinito (&eg; &dolphin;).</para>
+>Apri il contenuto della condivisione nel gestore dei file predefinito (&eg; &dolphin;).</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1843,8 +1739,8 @@
       <para
 >Nel menu <guimenuitem
 >Profili</guimenuitem
-> sono elencati tutti i profili <link linkend="profiles"
->definiti</link
+> sono elencati tutti i <link linkend="profiles"
+>profili</link
 >:</para>
 
       <screenshot>
@@ -1863,7 +1759,7 @@
       <para
 >Puoi attivare un profilo facendoci clic sopra. Il profilo può essere <link linkend="profiles"
 >gestito</link
-> dalla <link linkend="configuration_page_profiles"
+> nella <link linkend="configuration_page_profiles"
 >finestra di configurazione</link
 >.</para>
       <para
@@ -1879,9 +1775,9 @@
           </term>
           <listitem>
             <para
->Apre la <link linkend="network_neighborhood_browser_mounting"
+>Apri la <link linkend="network_neighborhood_browser_mounting"
 >finestra</link
-> per il montaggio «manuale».</para>
+> per il montaggio manuale della condivisione dopo aver fornito l'URL, l'indirizzo IP e il dominio o il gruppo di lavoro.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1893,9 +1789,9 @@
           </term>
           <listitem>
             <para
->Apri la finestra di configurazione. Vedi <link linkend="configuration"
->la sezione di configurazione</link
-> per un elenco completo delle impostazioni.</para>
+>Apri la finestra di configurazione. Vedi la sezione sulla <link linkend="configuration"
+>configurazione</link
+> per un elenco completo delle impostazioni disponibili.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1993,19 +1889,19 @@
     </screenshot>
 
     <para
->Facendo clic su una voce entri al livello sottostante (ad esempio facendo clic su un gruppo di lavoro o su di un elemento del dominio verrà visualizzato un elenco di tutti gli host che appartengono ad esso), monti la condivisione selezionata oppure richiami la finestra di stampa. Per salire di un livello devi fare clic sul pulsante <guibutton
+>Facendo clic su una voce entri al livello sottostante (&eg; facendo clic su un gruppo di lavoro o su di un elemento del dominio verrà visualizzato un elenco di tutti gli host che appartengono ad esso), monti la condivisione selezionata oppure richiami la finestra di stampa. Per salire di un livello devi fare clic sul pulsante <guibutton
 >Su</guibutton
 > nella barra degli strumenti.</para>
     <para
->Per gli host e per le condivisioni ci sono dei pulsanti di azione alla destra del nome della rete. Per i primi ce n'è uno con cui puoi aprire la finestra delle <link linkend="network_neighborhood_browser_defining_custom_options"
->opzioni personalizzate</link
->, mentre per le condivisioni ci sono dei pulsanti aggiuntivi per, rispettivamente, l'<link linkend="network_neighborhood_browser_previewing"
+>Per gli host e per le condivisioni ci sono dei pulsanti di azione alla destra del nome dell'oggetto di rete. Per i primi ce n'è uno con cui puoi aprire la finestra delle <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Impostazioni personalizzate</link
+>, mentre per le condivisioni ci sono dei pulsanti aggiuntivi per l'<link linkend="network_neighborhood_browser_previewing"
 >anteprima dei contenuti della condivisione selezionata</link
 > e per <link linkend="bookmarks_adding"
 >aggiungerla ai segnalibri</link
 >. Questi pulsanti sono trasparenti per impostazione predefinita, e modificano l'opacità quando ci sposti il mouse sopra. Con un clic sinistro inizi le rispettive azioni.</para>
     <para
->Vicino al pulsante <guibutton
+>Accanto al pulsante <guibutton
 >Su</guibutton
 >, nella barra degli strumenti ci sono altre tre voci:: <guibutton
 >Analizza di nuovo</guibutton
@@ -2013,8 +1909,8 @@
 >Interrompi</guibutton
 > e <guibutton
 >Finestra di montaggio</guibutton
->. Con questi puoi analizzare nuovamente, interrompere qualsiasi azione in corso o aprire la <link linkend="network_neighborhood_browser_mounting"
->finestra per il montaggio «manuale»</link
+>. Con questi puoi analizzare nuovamente, interrompere qualsiasi azione in corso oppure aprire la <link linkend="network_neighborhood_browser_mounting"
+>finestra di montaggio</link
 >.</para>
   </sect2>
 
@@ -2045,13 +1941,13 @@
     </screenshot>
 
     <para
->Alla destra del nome della condivisione e dei suo host ci sono tre pulsanti di azione: il primo è per <link linkend="bookmarks_adding"
+>Alla destra di ciascuna voce ci sono tre pulsanti di azione: il primo è per <link linkend="bookmarks_adding"
 >aggiungere un segnalibro</link
 >, il secondo per la <link linkend="shares_view_synchronization"
 >sincronizzazione</link
 >, mentre il terzo è per <link linkend="shares_view_unmounting"
 >smontare la condivisione</link
->. I pulsanti di azione sono trasparenti per impostazione predefinita, e modificano l'opacità quando ci sposti il mouse sopra. Con un clic sinistro inizi l'azione selezionata.</para>
+>. I pulsanti di azione sono trasparenti per impostazione predefinita: modificano l'opacità quando ci sposti il mouse sopra. Con un clic sinistro inizi l'azione selezionata.</para>
     <para
 >La barra degli strumenti contiene l'azione <guibutton
 >Smonta tutto</guibutton
@@ -2067,7 +1963,7 @@
 >Scheda Segnalibri</title>
 
     <para
->I gruppi di segnalibri e i segnalibri definiti per il profilo attualmente attivo sono elencati nella pagina <guilabel
+>I segnalibri sono elencati nella pagina <guilabel
 >Segnalibri</guilabel
 >.</para>
     
@@ -2085,13 +1981,11 @@
     </screenshot>
 
     <para
->Le condivisioni nei segnalibri possono essere montate facendo clic col tasto sinistro sul rispettivo segnalibro, mentre i gruppi di segnalibri possono essere inseriti nello stesso modo.</para>
-    <para
->Per modificare o per rimuovere i segnalibri premi il pulsante dell'azione <guibutton
+>Le condivisioni nei segnalibri possono essere montate con un clic sinistro sul rispettivo segnalibro. Per modificare o per rimuovere i segnalibri, premi il pulsante dell'azione <guibutton
 >Modifica</guibutton
-> nella barra degli strumenti, che apre l'<link linkend="bookmarks_editor"
+> nella barra degli strumenti per aprire l'<link linkend="bookmarks_editor"
 >editor dei segnalibri</link
->, mentre per tornare indietro al livello principale puoi usare il pulsante <guibutton
+>, mentre per tornare indietro al livello principale da una cartella della categoria puoi usare il pulsante <guibutton
 >Indietro</guibutton
 >.</para>
   </sect2>
@@ -2125,11 +2019,9 @@
     </screenshot>
   
     <para
->Puoi attivare un determinato profilo facendoci clic sopra.</para>
-    <para
->I profili possono essere <link linkend="profiles"
+>Puoi attivare un determinato profilo facendoci clic sopra. Tutti i profili possono essere <link linkend="profiles"
 >gestiti</link
-> attraverso la <link linkend="configuration_page_profiles"
+> dalla <link linkend="configuration_page_profiles"
 >finestra di configurazione</link
 >.</para>
   </sect2>
@@ -2162,10 +2054,10 @@
       </mediaobject>
     </screenshot>
     
-    <note>
+    <caution>
       <para
 >Non dovresti aprire contemporaneamente due finestre di configurazione (sia nell'applicazione che nel &plasmoid;), perché potrebbero interferire tra di loro.</para>
-    </note>
+    </caution>
   </sect2>
   
 </sect1>
@@ -2193,7 +2085,7 @@
 >vista delle condivisioni</link
 > e nel <link linkend= "plasmoid"
 >&plasmoid;</link
->. Negli oggetti agganciabili della finestra principale questo viene fatto selezionando una o più condivisioni e facendo quindi clic sull'azione <menuchoice
+>. Negli oggetti agganciabili della finestra principale questo viene fatto selezionando una o più condivisioni, e facendo quindi clic sull'azione <menuchoice
 ><guimenuitem
 >Aggiungi segnalibro</guimenuitem
 ></menuchoice
@@ -2213,9 +2105,9 @@
       </screenshot>
 
       <para
->La definizione di categorie può aiutarti ad organizzare i segnalibri. Nel menu dei segnalibri tutti i segnalibri appartenenti ad un unica categoria sono organizzati in un sotto-menu con la voce della categoria come genitore (vedi <link linkend="bookmarks_menu"
->sotto</link
->).</para>
+>La definizione di categorie può aiutarti ad organizzare i segnalibri. Nel <link linkend="bookmarks_menu"
+>menu dei segnalibri </link
+> tutti i segnalibri che appartengono alla stessa categoria sono organizzati nel loro sotto-menu.</para>
       <para
 >L'etichetta può essere un qualsiasi testo che descrive la condivisione. Nel caso in cui definisci l'etichetta, questa verrà visualizzata come impostazione predefinita nel menu segnalibri al posto della posizione. Se vuoi modificare questo comportamento, puoi farlo nella <link linkend="configuration_page_user_interface_main_window"
 >finestra di configurazione</link
@@ -2263,7 +2155,7 @@
             <para
 >Apre l'<link linkend="bookmarks_editor"
 >editor dei segnalibri</link
->. Questa azione è disabilitata se non ci sono i segnalibri.</para>
+>. Questa voce è disabilitata se non ci sono i segnalibri.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2281,35 +2173,35 @@
           </term>
           <listitem>
             <para
->Aggiunge dei segnalibri alle condivisioni selezionate. Deve essere selezionata almeno una condivisione per abilitare questa azione.</para>
+>Aggiunge dei segnalibri alle condivisioni selezionate. Affinché questa voce sia abilitata deve essere selezionata almeno una condivisione.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Se non è stato definito nessuna categoria, vi è un terzo elemento:</para>
+>Se ci sono dei segnalibri che non sono assegnati a nessuna categoria, e che quindi sono mostrati nel livello principale, è presente una terza voce:</para>
 
       <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guimenuitem
->Monta tutti i segnalibri</guimenuitem
+>Monta segnalibri</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
             <para
->Monta contemporaneamente tutti i segnalibri di primo livello. Questa scelta è disabilitata se tutte le condivisioni nei segnalibri sono montate.</para>
+>Monta contemporaneamente tutti i segnalibri di primo livello. Questa voce è disabilitata se tutte le condivisioni nei segnalibri sono già montate.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Tutte le altre voci sono sotto-menu di categorie oppure segnalibri che non appartengono a nessuna categoria. Tutte le voci sono elencate in ordine alfabetico, ed i segnalibri possono sia comparire con la loro posizione, sia con un'etichetta descrittiva. Facendo clic su un segnalibro viene montata la condivisione corrispondente. Se una condivisione nei segnalibri è montata nel sistema, la voce del segnalibro viene temporaneamente disabilitata.</para>
+>Le seguenti voci sono sotto-menu di categorie e segnalibri che non appartengono a nessuna categoria. Le voci sono elencate in ordine alfabetico, ed i segnalibri possono comparire sia con la loro posizione che con un'etichetta descrittiva. Se fai clic su un segnalibro, la rispettiva condivisione viene montata. Se una condivisione nei segnalibri è già montata, la voce è disabilitata.</para>
       <para
->Il sotto-menu della categoria contiene tutti i segnalibri assegnati, e in ogni caso è presente anche una voce di menu <guimenuitem
->Monta tutti i segnalibri</guimenuitem
->. L'ultimo elemento può essere usato per montare contemporaneamente tutti i segnalibri in quella categoria.</para>
+>Il sotto-menu della categoria contiene tutti i segnalibri assegnati, e in ciascun caso è presente anche una voce di menu <guimenuitem
+>Monta segnalibri</guimenuitem
+>: può essere usata per montare contemporaneamente tutti i segnalibri in quella categoria.</para>
       <para
 >Nell'oggetto per il vassoio di sistema c'è un <link linkend="systemtray_menus"
 >sotto-menu</link
@@ -2323,16 +2215,8 @@
 >scheda</link
 > <guilabel
 >Segnalibri</guilabel
-> nella quale tutti i segnalibri sono sistemati in maniera simile al menu segnalibro. Le categorie di segnalibri e i segnalibri sono elencati nella vista. Le condivisioni aggiunte ai segnalibri possono essere montate facendo clic sulla rispettiva voce. Nella barra degli strumenti sono presenti due azioni: <guimenuitem
->Indietro</guimenuitem
-> e <guimenuitem
->Modifica</guimenuitem
->. Facendo clic su <guimenuitem
->Indietro</guimenuitem
-> puoi tornare indietro al livello massimo se hai inserito una cartella di categorie. L'azione <guimenuitem
->Modifica</guimenuitem
-> aprirà l'<link linkend="bookmarks_editor"
->editor dei segnalibri</link
+> nella quale tutti i segnalibri sono disposti similmente al menu segnalibri. Per maggiori dettagli leggi <link linkend="plasmoid_bookmarks"
+>questa sezione</link
 >.</para>
     </sect2>
     
@@ -2438,6 +2322,166 @@
 >.</para>
     </sect2>
   </sect1>
+  
+<!--
+      Using Smb4K : Custom Settings
+  -->
+  
+  <sect1 id="custom_settings">
+    <title
+>Impostazioni personalizzate</title>
+
+    <sect2 id="custom_settings_usage">
+      <title
+>Uso delle impostazioni personalizzate</title>
+
+      <para
+>Accanto alle impostazioni globali che possono essere definite nella <link linkend="configuration"
+>finestra di configurazione</link
+>, &smb4k; offre la possibilità di configurare delle impostazioni individuali per server o per condivisione. Puoi usarle se vuoi</para>
+      <itemizedlist>
+        <listitem
+><para
+>definire un montaggio individuale oppure sfogliare le impostazioni di un singolo server o di una condivisione che si discosta dai valori definiti nella finestra di configurazione,</para
+></listitem>
+        <listitem
+><para
+>definire un server che dovrebbe essere risvegliato prima delle scansioni di rete o dei tentativi di montaggio (funzionalità Wake-On-LAN, vedi <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>qui</link
+>),</para
+></listitem>
+        <listitem
+><para
+>montare sempre una particolare condivisione all'avvio, oppure quando viene caricato il profilo corrispondente.</para
+></listitem>
+      </itemizedlist>
+    </sect2>
+
+    <sect2 id="custom_settings_adding">
+      <title
+>Aggiungere impostazioni personalizzate</title>
+
+      <para
+>Nel caso tu voglia definire delle impostazioni personalizzate per una condivisione sia nel <link linkend="network_neighborhood_browser_actions_popup_menu"
+>navigatore delle risorse di rete</link
+> che nella <link linkend="shares_view_actions_popup_menu"
+>vista delle condivisioni</link
+> puoi aprire l'editor delle impostazioni personalizzate facendo clic sulla voce di menu <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Aggiungi impostazioni personalizzate</guimenuitem
+></menuchoice
+>.</para>
+    
+      <screenshot>
+        <screeninfo
+>Schermata dell'editor delle impostazioni personalizzate di una condivisione</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="custom_settings_editor.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>L'editor delle impostazioni personalizzate</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+
+      <para
+>Le impostazioni individuali possono essere fatte nelle seguenti sezioni o schede:</para>
+      
+      <variablelist>
+        <varlistentry>
+          <term
+><guilabel
+>Impostazioni condivise di montaggio</guilabel
+> (solo in &Linux;) </term>
+          <listitem>
+            <para
+>Qui puoi definire le impostazioni comuni relative al montaggio. Controlla il pulsante <guibutton
+>Rimonta sempre questa condivisione</guibutton
+> se vuoi rimontare la condivisione selezionata ogni volta che avvii &smb4k;. Per informazioni su queste impostazioni, dai un'occhiata a <link linkend="configuration_page_mounting_common_mount_settings"
+>questa sezione</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Impostazioni di montaggio avanzate</guilabel
+> (solo in &Linux;) </term>
+          <listitem>
+            <para
+>Qui puoi definire le impostazioni avanzate relative al montaggio. Per informazioni su queste impostazioni, dai un'occhiata a <link linkend="configuration_page_mounting_advanced_mount_settings"
+>questa sezione</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Impostazioni di montaggio</guilabel
+> (solo in BSD) </term>
+          <listitem>
+            <para
+>Qui puoi definire le impostazioni relative al montaggio. Per informazioni sulle impostazioni, dai un'occhiata a <link linkend="configuration_page_mounting_mount_settings"
+>questa sezione</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Impostazioni di navigazione</guilabel>
+          </term>
+          <listitem>
+            <para
+>Puoi definire la versione minima e massima del protocollo SMB, così come la porta SMB da usare. Inoltre puoi decidere se Kerberos dovrebbe essere usato per l'autenticazione. Per informazioni dettagliate su queste impostazioni, dai un'occhiata a <link linkend="configuration_page_network"
+>questa sezione</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Impostazioni Wake-On-LAN</guilabel>
+          </term>
+          <listitem>
+            <para
+>Per non avere problemi con la funzionalità Wake-On-LAN, devi fornire l'indirizzo MAC del server che hai selezionato. Infatti, al momento, &smb4k; non ha modo di determinarlo: devi quindi scoprirlo tu stesso. Successivamente puoi definire se il server dovrebbe essere risvegliato con l'invio di un pacchetto magico Wake-On-LAN prima che vengano analizzate le risorse di rete, oppure prima che una delle sue condivisioni venga montata.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      
+      <para
+>Il pulsante <guibutton
+>Impostazioni predefinite</guibutton
+> è attivo se le voci nella finestra differiscono dalle impostazioni definite nella finestra di configurazione. Facendo clic su di esso puoi reimpostare le voci nella finestra ai loro valori di predefiniti. Il pulsante <guibutton
+>OK</guibutton
+> è attivo se hai modificato le impostazioni nella finestra di dialogo: facendo clic su di esso salverai le impostazioni personalizzate e chiuderai la finestra.</para>
+      <para
+>Nota che in BSD la finestra contiene meno voci che in &Linux;; questo perché molte delle opzioni non sono supportate.</para>
+    </sect2>
+
+    <sect2 id="custom_settings_managing_and_editing">
+      <title
+>Modificare le impostazioni personalizzate</title>
+
+      <para
+>Puoi modificare o azzerare le impostazioni dei singoli elementi di rete aprendo l'editor delle impostazioni personalizzate. Una panoramica completa di tutte queste è fornita dalla <link linkend="configuration_page_custom_settings"
+>pagina di configurazione delle <guilabel
+>Impostazioni personalizzate</guilabel
+></link
+>, da dove puoi anche modificare o rimuovere le impostazioni desiderate.</para>
+    </sect2>
+  </sect1>
 
 <!-- 
       Using Smb4K : Profiles 
@@ -2448,9 +2492,9 @@
 >Profili</title>
     
     <para
->&smb4k; permette l'opzione di usare dei profili diversi. Essi consentono una migliore gestione delle diverse risorse di rete, ad esempio se stai usando il tuo portatile a casa oppure al lavoro.</para>
+>&smb4k; offre l'opzione per usare dei profili diversi. Essi consentono di facilitare la gestione di risorse di rete diverse, &eg; se usi il tuo portatile sia a casa che al lavoro.</para>
     <para
->Per impostazione predefinita, l'uso di più profili è disabilitato: viene usato quello predefinito, un profilo per tutto. La maggior parte degli utenti non dovrà cambiare ciò perché il comportamento predefinito soddisfa completamente le loro necessità, tuttavia per alcuni di essi questa funzionalità potrebbe essere davvero utile.</para>
+>Per impostazione predefinita l'uso dei profili è disabilitato. Alla maggior parte degli utenti andrà bene così, perché il comportamento predefinito soddisfa completamente le loro necessità, tuttavia ad alcuni questa funzionalità potrebbe essere utile.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2466,13 +2510,13 @@
 >Casa</guilabel
 >, viene scelto per essere quello attivo. Puoi anche abilitare l'assistente di migrazione dei profili.</para>
       <para
->Due profili sono già definiti, <guilabel
+>Ci sono già due profili definiti, <guilabel
 >Casa</guilabel
 > e <guilabel
 >Lavoro</guilabel
->, ma puoi definirne quanti ne vuoi. Un profilo nuovo viene aggiunto inserendo il suo nome nella riga di modifica nella pagina di configurazione <guibutton
+>, ma puoi definirne quanti ne vuoi. Un nuovo profilo viene aggiunto inserendo il suo nome nella riga di ingresso che si trova nella pagina di configurazione <guibutton
 >Profili</guibutton
->, quindi facendo clic su <guibutton
+>, e facendo quindi clic su <guibutton
 >Aggiungi</guibutton
 >.</para>
       <screenshot>
@@ -2489,7 +2533,7 @@
         </mediaobject>
       </screenshot>
       <para
->Se vuoi rinominare un profilo, facci semplicemente clic sopra e modifica la riga di modifica del nome. Premendo <guibutton
+>Se vuoi rinominare un profilo, facci semplicemente clic sopra e modifica il nome nella riga di inserimento. Premendo <guibutton
 >Aggiungi</guibutton
 > aggiornerai il nome nella vista ad elenco. Tutte le informazioni immagazzinate saranno migrate senza problemi (senza l'uso dell'assistente di migrazione). Un profilo può essere rimosso selezionandolo nella vista ad elenco e facendo clic su <guibutton
 >Rimuovi</guibutton
@@ -2499,21 +2543,7 @@
 >Sposta in basso</guibutton
 >.</para>
       <para
->Nel caso tu abbia abilitato l'assistente di migrazione, esso verrà sempre lanciato quando rimuovi un profilo, oppure quando abiliti o disabiliti l'uso dei profili. Fornisce la migrazione di tutte le impostazioni rilevanti.</para>
-      <itemizedlist>
-        <listitem
-><para
->di un profilo che viene rimosso in un altro</para
-></listitem>
-        <listitem
-><para
->del profilo predefinito in un altro specifico</para
-></listitem>
-        <listitem
-><para
->di tornare al profilo predefinito da tutti i profili</para
-></listitem>
-      </itemizedlist>
+>Nel caso tu abbia abilitato l'assistente di migrazione, questo verrà sempre lanciato quando rimuovi un profilo, oppure quando abiliti o disabiliti l'uso dei profili. Si prende cura della migrazione di tutte le impostazioni rilevanti.</para>
       <para
 >La seguente schermata mostra l'assistente di migrazione dei profili dopo che hai abilitato l'uso dei profili:</para>
       <screenshot>
@@ -2532,11 +2562,11 @@
       <para
 >Il vecchio profilo (<guilabel
 >&lt;Profilo predefinito&gt;</guilabel
->, in questo caso) viene elencato sotto <guilabel
+>, in questo caso) viene elencato sotto al <guilabel
 >Vecchio profilo</guilabel
->. Sotto <guilabel
+>. Sotto al <guilabel
 >Nuovo profilo</guilabel
-> puoi usare un menu a discesa per scegliere il profilo al quale le impostazioni dovrebbero essere migrate. Il primo profilo nell'elenco è preselezionato. Facendo clic sul pulsante <guibutton
+> puoi scegliere un profilo dal menu a discesa verso al quale dovrebbero essere migrate le impostazioni. Il primo nell'elenco è preselezionato. Facendo clic sul pulsante <guibutton
 >OK</guibutton
 > vengono migrate le impostazioni, mentre facendo clic su <guibutton
 >Annulla</guibutton
@@ -2569,11 +2599,11 @@
 ></listitem>
         <listitem
 ><para
->Vengono rimontate tutte le condivisioni che in precedenza erano montate nel nuovo profilo attivato.</para
+>Tutte le condivisioni che erano montate in precedenza vengono rimontate nel nuovo profilo attivato.</para
 ></listitem>
         <listitem
 ><para
->Vengono caricati i segnalibri e le opzioni personalizzate di questo profilo.</para
+>Vengono caricati i segnalibri e le impostazioni personalizzate dal nuovo profilo.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -2651,18 +2681,106 @@
   </sect1>
 
 <!-- 
-      Using Smb4K : Special Remarks 
+      Using Smb4K : Trouble Shooting
 -->
 
-  <sect1 id="special_remarks">
+  <sect1 id="trouble_shooting">
     <title
->Note speciali</title>
+>Risoluzione dei problemi</title>
+
+<!--
+    Using Smb4K : Trouble Shooting : Missing Programs
+    -->
+
+    <sect2 id="trouble_shooting_missing_programs">
+      <title
+>Programmi mancanti</title>
+
+      <para
+>Se nel sistema manca qualche programma che serve a &smb4k; per operare correttamente, questo viene notificato all'utente:</para>
+
+      <screenshot id="notification_missing_program">
+        <screeninfo
+>Schermata per la notifica della mancanza di un programma</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>La notifica della mancanza di un programma</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>In questo caso installa il programma specifico o, se è già presente, aggiungi la sua posizione alla variabile d'ambiente <envar
+>PATH</envar
+> nel file di configurazione della tua shell (per la shell <ulink url="man:/bash"
+><citerefentry
+><refentrytitle
+>bash</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> è il file <filename
+>~/.bashrc</filename
+>).</para>
+    </sect2>
+
+<!--
+    Using Smb4K : Trouble Shooting : Zeroconf Daemon
+    -->
+
+    <sect2 id="trouble_shooting_zeroconf">
+      <title
+>Errore di Zeroconf</title>
+
+      <para
+>&smb4k; utilizza il servizio Zeroconf (<application
+><ulink url="https://avahi.org"
+>Avahi</ulink
+></application
+>) per cercare i server e le condivisioni nelle risorse di rete usando il sistema di rilevamento dei servizi via DNS (DNS-SD). Per farlo funzionare il demone Avahi deve essere abilitato e in esecuzione nel tuo sistema; se così non fosse, &smb4k; mostrerebbe un messaggio di errore:</para>
+
+      <screenshot id="notification_zeroconf_error">
+        <screeninfo
+>Schermata della notifica di errore di Zeroconf</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_zeroconf_error.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>La notifica di errore di Zeroconf</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>Nella maggior parte dei casi il demone Avahi non è in esecuzione quando viene rilevato un errore. In quelle distribuzioni che usano <application
+>systemd</application
+> puoi avviarlo eseguendo da terminale il seguente comando, o uno simile:</para>
+      <para
+><screen
+><userinput
+><prompt
+>$</prompt
+> <command
+>sudo</command
+> <command
+>systemctl</command
+> enable --now avahi-daemon</userinput
+></screen
+></para>
+      <para
+>Con tutte le altre distribuzioni &Linux; e in BSD fai riferimento alla documentazione specifica su come avviare il demone Avahi.</para>
+    </sect2>
   
 <!--
-    Using Smb4K : Special Remarks : Denied Privilege Escalation
+    Using Smb4K : Trouble Shooting : Denied Privilege Escalation
 -->
     
-    <sect2 id="special_remarks_polkit-1">
+    <sect2 id="trouble_shooting_polkit-1">
       <title
 >Denied Privilege Escalation</title>
       
@@ -2701,10 +2819,10 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Using Smb4K : Special Remarks : Mounting Problems under BSD
+      Using Smb4K : Trouble Shooting : Mounting Problems under BSD
   -->
     
-    <sect2 id="special_remarks_mounting_problems_under_bsd">
+    <sect2 id="trouble_shooting_mounting_problems_under_bsd">
       <title
 >Problemi di montaggio in BSD</title>
       
@@ -2735,15 +2853,15 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Using Smb4K : Special Remarks : Other Desktops Than Plasma
+      Using Smb4K : Trouble Shooting : Other Desktops Than Plasma
 -->
 
-    <sect2 id="special_remarks_other_desktop_environments">
+    <sect2 id="trouble_shooting_other_desktop_environments">
       <title
 >Altri ambienti desktop diversi da &plasma;</title>
 
       <para
->Quando usi un ambiente desktop diverso da &plasma;, nelle applicazioni &Qt; e &kf5; potrebbe mancare qualche icona. In questo caso potresti installare l'applicazione <application
+>Quando usi un ambiente desktop diverso da &plasma;, nelle applicazioni &Qt; e &kde-frameworks; potrebbe mancare qualche icona. In questo caso potresti installare l'applicazione <application
 >qt5ct</application
 > (il codice sorgente può essere prelevato da <ulink url="https://sourceforge.net/projects/qt5ct/"
 >qui</ulink
@@ -2751,7 +2869,7 @@ ntlm auth = yes
 >qt5ct</application
 > col tuo ambiente desktop, aggiungi la seguente riga al file <filename
 >~/.xinitrc</filename
-> o <filename
+> oppure <filename
 >~/.profile</filename
 >:</para>
 <programlisting
@@ -2890,7 +3008,7 @@ ntlm auth = yes
 >editor dei segnalibri</link
 >.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -2909,6 +3027,20 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Dimensione delle icone</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Imposta la dimensione delle icone nel navigatore delle risorse di rete. Questa può essere regolata in passi da 16 x 16 pixel a 128 x 128.</para>
+            <para
+>Predefinito: dimensione delle icone piccola</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Espandi automaticamente domini ed host</guibutton
 ></menuchoice>
           </term>
@@ -2916,7 +3048,7 @@ ntlm auth = yes
             <para
 >Espande automaticamente le voci di dominio e degli host quando un elenco degli elementi di rete associati (i membri del dominio o azioni) viene aggiunto o aggiornato. Nota che un dominio o un host verrà sempre espanso quando lo esegui.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2930,7 +3062,7 @@ ntlm auth = yes
             <para
 >Viene mostrato Il tipo delle condivisioni (ad esempio un disco, una stampante, o un IPC).</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2944,7 +3076,7 @@ ntlm auth = yes
             <para
 >Viene mostrato l'indirizzo IP dei server remoti.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2958,7 +3090,7 @@ ntlm auth = yes
             <para
 >Viene mostrato il commento su un server o su una condivisione.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -2972,7 +3104,7 @@ ntlm auth = yes
             <para
 >Viene mostrato un suggerimento quando sposti il puntatore del mouse su un elemento nel navigatore delle risorse di rete. Contiene informazioni sull'elemento di rete, ad esempio il gruppo di lavoro o il nome di dominio, il nome dell'host, il commento, tipo, &etc;</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -3035,6 +3167,34 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Dimensione delle icone per la vista ad icone</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Imposta la dimensione delle icone nella vista a icone della vista delle condivisioni. Questa può essere regolata in passi da 16 x 16 pixel a 128 x 128.</para>
+            <para
+>Predefinito: dimensione delle icone del desktop</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
+>Dimensione delle icone per la vista a elenco</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Imposta la dimensione delle icone nella vista a elenco della vista delle condivisioni. Questa può essere regolata in passi da 16 x 16 pixel a 128 x 128.</para>
+            <para
+>Predefinito: dimensione delle icone piccola</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Mostra i suggerimenti sulle condivisioni montate</guibutton
 ></menuchoice>
           </term>
@@ -3042,7 +3202,7 @@ ntlm auth = yes
             <para
 >Viene mostrato un suggerimento quando sposti il puntatore del mouse su un elemento nella vista delle condivisioni. Contiene delle informazioni sulla condivisione montata, come il nome stesso, l'indirizzo UNC, il punto di montaggio, il proprietario e il gruppo, il nome utente (file system &CIFS;, solo in &Linux;), l'utilizzo del disco, &etc;</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -3060,12 +3220,8 @@ ntlm auth = yes
     <para
 >Le opzioni posizionate qui influenzano la comunicazione di rete. Puoi modificare il comportamento di navigazione e di visualizzazione nella scheda <guibutton
 >Impostazioni di base</guibutton
->, modificare quelle passate alla libreria sottostante <application
->libsmbclient</application
-> nella scheda <guibutton
->Impostazioni di Samba</guibutton
-> ed abilitare anche la funzionalità Wake-On-LAN nella scheda <guibutton
->Impostazioni Wake-On-LAN</guibutton
+>, mentre le opzioni più avanzate di Samba e delle capacità di the Wake-On-LAN sono nella scheda <guibutton
+>Impostazioni avanzate</guibutton
 >.</para>
     
     <screenshot>
@@ -3109,7 +3265,7 @@ ntlm auth = yes
 >Questa impostazione è facoltativa, ed appare solo se compili &smb4k; con il supporto a WS-Discovery.</para
 ></note>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3123,7 +3279,7 @@ ntlm auth = yes
               <para
 >L'interfaccia al sistema di rilevamento dei servizi via DNS (DNS-SD) è utilizzata per navigare nella rete locale e per rilevare i server che forniscono risorse SMB condivise. I domini rilevati corrispondono ai domini DNS locali (chiamati &eg; LOCAL) e probabilmente non quelli definiti nelle risorse di rete. Questo non influenza la navigazione. Se utilizzi questa opzione non c'è bisogno di forzare le librerie client di &Samba; ad usare la versione 1.0 del protocollo nella ricerca dei gruppi di lavoro e di domini.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3137,7 +3293,7 @@ ntlm auth = yes
               <para
 >Seleziona questa opzione come ultima risorsa, in quanto la versione 1.0 del protocollo non è sicura ed è stata disabilitata nelle ultime versioni di &Samba; e di &Windows;. Ad ogni modo, se hai problemi a trovare i gruppi di lavoro e i domini nelle tue risorse di rete, potresti voler considerare l'attivazione di questa opzione. Se stai utilizzando il sistema di rilevamento dei servizi via DNS (DNS-SD), oppure il rilevamento dinamico dei servizi Web (WS-Discovery), e questi funzionano, allora non hai bisogno della versione 1.0.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3155,7 +3311,7 @@ ntlm auth = yes
               <para
 >La massima versione del protocollo SMB deve essere uguale o superiore alla versione minima del protocollo SMB.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3287,7 +3443,7 @@ ntlm auth = yes
               <para
 >Le stampanti condivise sono rilevate.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3301,7 +3457,7 @@ ntlm auth = yes
               <para
 >Le condivisioni nascoste sono rilevate; sono quelle che terminano con il simbolo «$», ad esempio Musica$ o IPC$.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3315,7 +3471,7 @@ ntlm auth = yes
               <para
 >Mostra tutti i file e le cartelle, compresi gli elementi nascosti, quando apri il contenuto di una condivisione nella finestra di anteprima.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3323,59 +3479,23 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Samba Settings (libsmbclient)
+      Configuring Smb4K : Network : Advanced Settings
 -->
 
-    <sect2 id="configuration_page_network_samba_settings">
+    <sect2 id="configuration_page_network_advanced_settings">
       <title
->Impostazioni di Samba</title>
+>Impostazioni avanzate</title>
       
-      <sect3 id="configuration_page_network_samba_settings_common_settings">
+      <sect3 id="configuration_page_network_advanced_settings_samba">
         <title
->Impostazioni comuni</title>
+>Samba</title>
 
         <variablelist>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->Nome NetBIOS</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Imposta il nome NetBIOS del computer. La casella di testo dovrebbe già essere riempita con le informazioni che si trovano nel file di configurazione <filename
->smb.conf</filename
-> o con il nome host del tuo computer. In circostanze normali, non è necessario cambiare nulla.</para>
-              <para
->Predefinito: nome NetBIOS definito in <filename
->smb.conf</filename
-> o il nome dell'host</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Dominio</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Imposta il nome del dominio / gruppo di lavoro di cui fa parte il tuo computer. La casella di testo dovrebbe già essere riempita con le informazioni trovate nel file di configurazione <filename
->smb.conf</filename
->. In circostanze normali, non è necessario cambiare nulla.</para>
-              <para
->Predefinito: nome del dominio definito in <filename
->smb.conf</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Porta SMB</guibutton
+>Imposta la porta SMB a</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3391,79 +3511,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Questo computer si trova in una rete grande</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Nella configurazione predefinita, quando viene compilato l'elenco di ricerca vengono interrogati tutti i master browser; questo può richiedere molto tempo con risorse di rete molto grandi. Abilitando questa impostazione restringerai la ricerca a tre master browser.</para>
-              <para
->Impostazione predefinita: non selezionato</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    
-      <sect3 id="configuration_page_network_samba_settings_authentication">
-        <title
->Autenticazione</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->I master browser richiedono l'autenticazione</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Devi selezionare questo pulsante se i master browser del gruppo di lavoro richiedono l'autenticazione per restituire l'elenco di ricerca. Questo può essere il caso, per esempio, di alcuni dispositivi NAS. Questa impostazione è raramente necessaria, e potrebbe anche far sì che un master browser restituisca una elenco di ricerca vuoto.</para>
-              <para
->Impostazione predefinita: non selezionato</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Usa Kerberos per l'autenticazione</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Usa Kerberos per l'autenticazione in un ambiente Active Directory.</para>
-              <para
->Impostazione predefinita: non selezionato</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Usa Winbind ccache per l'autenticazione</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Prova ad utilizzare le credenziali memorizzate nella cache da Winbind.</para>
-              <para
->Impostazione predefinita: non selezionato</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-      
-      <sect3 id="configuration_page_network_samba_settings_security">
-        <title
->Sicurezza</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Livello di cifratura</guibutton
+>Imposta il livello di cifratura a</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3514,56 +3562,107 @@ ntlm auth = yes
 ></para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Questo computer si trova in una rete grande</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Nella configurazione predefinita, quando viene compilato l'elenco di ricerca vengono interrogati tutti i master browser; questo può richiedere molto tempo con risorse di rete molto grandi. Abilitando questa impostazione restringerai la ricerca a tre master browser.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>I master browser richiedono l'autenticazione</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Devi selezionare questo pulsante se i master browser del gruppo di lavoro richiedono l'autenticazione per restituire l'elenco di ricerca. Questo può essere il caso, per esempio, di alcuni dispositivi NAS. Questa impostazione è raramente necessaria, e potrebbe anche far sì che un master browser restituisca una elenco di ricerca vuoto.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Usa Kerberos per l'autenticazione</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Usa Kerberos per l'autenticazione in un ambiente Active Directory.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Usa Winbind ccache per l'autenticazione</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Prova ad utilizzare le credenziali memorizzate nella cache da Winbind.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry
+>          
         </variablelist>
-      </sect3
->     
-    </sect2>
-    
-<!-- 
-      Configuring Smb4K : Network : Wake-On_LAN Settings
--->
+      </sect3>
+      <sect3 id="configuration_page_network_advanced_settings_wake_on_lan">
+        <title
+>Wake-On-LAN</title>
 
-    <sect2 id="configuration_page_network_wake_on_lan_settings">
-      <title
->Impostazioni Wake-On-LAN</title>
-
-      <para
->Per essere in grado di usa la funzionalità Wake-On-LAN di &smb4k; devi abilitare l'impostazione in questa sezione. L'host che dovrebbe essere risvegliato deve essere definito attraverso la <link linkend="network_neighborhood_browser_defining_custom_options"
->finestra delle opzioni personalizzate</link
+        <para
+>Per essere in grado di usare la funzionalità Wake-On-LAN di &smb4k;, devi abilitare questa impostazione. L'host che dovrebbe essere risvegliato deve essere definito nell'<link linkend="network_neighborhood_browser_defining_custom_settings"
+>editor delle impostazioni personalizzate</link
 >.</para>
 
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
 ><guibutton
 >Abilita funzionalità Wake-On-LAN</guibutton
 ></menuchoice>
-          </term>
-          <listitem>
-            <para
+            </term>
+            <listitem>
+              <para
 >Abilita la funzionalità Wake-on-LAN (WOL, letteralmente «risveglio da rete»). Si tratta di uno standard per le reti informatiche ethernet che permette ad un computer di venir acceso o risvegliato da un messaggio sulla rete. Smb4K usa un pacchetto magico inviato attraverso un socket UDP per risvegliare i server remoti. Se vuoi usare questa funzionalità devi abilitare quest'opzione.</para>
-            <para
->Impostazione predefinita: non selezionato</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
+              <para
+>Predefinito: non selezionato</para>
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice
 ><guilabel
 >Tempo d'attesa</guilabel
 ></menuchoice>
-                </term>
-                <listitem>
-                  <para
+                  </term>
+                  <listitem>
+                    <para
 >Questo è il tempo d'attesa, in secondi, tra l'invio dei pacchetti magici Wake-On-LAN e la scansione delle risorse di rete o il montaggio della partizione condivisa.</para>
-                  <para
+                    <para
 >Predefinito: 5 sec</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
   </sect1>
 
@@ -3636,7 +3735,7 @@ ntlm auth = yes
               <para
 >Tutte le sottocartelle create da &smb4k; sotto il prefisso di montaggio saranno in minuscolo.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -3657,12 +3756,8 @@ ntlm auth = yes
             <listitem>
               <para
 >Rimonta tutte le tue condivisioni che erano montate quando sei uscito dal programma o hai cambiato un profilo. Se il rimontaggio di una condivisione non ha successo, Smb4K ritenterà al prossimo avvio. Le condivisioni che sono state montate da altri utenti verranno ignorate.</para>
-              <note
-><para
->Questa impostazione non influisce sul rimontaggio automatico di una condivisione quando il tuo computer si risveglia da uno stato d'inattività.</para
-></note>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3707,7 +3802,7 @@ ntlm auth = yes
               <para
 >Smonta tutte le condivisioni che ti appartengono quando il programma termina. Le condivisioni appartenenti ad altri utenti vengono ignorate.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3719,9 +3814,9 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Forza lo smontaggio delle condivisioni inaccessibili (solo in &Linux;). Nel caso che una condivisione sia inaccessibile, viene eseguito uno smontaggio «alla buona». Prima che venga eseguito il vero smontaggio viene mostrata una finestra di avviso che chiede di approvare lo smontaggio.</para>
+>Forza lo smontaggio delle condivisioni inaccessibili (solo in &Linux;). Nel caso che una condivisione sia inaccessibile, viene eseguito uno smontaggio «alla buona». Prima che il vero smontaggio venga eseguito, viene mostrata una finestra di avviso: ti viene chiesto di approvare lo smontaggio.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3737,7 +3832,7 @@ ntlm auth = yes
               <para
 >DA USARE CON ESTREMA CAUTELA!</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -3751,7 +3846,7 @@ ntlm auth = yes
               <para
 >Non vedrai solo le condivisioni che sono state montate da te e che ti appartengono, ma anche tutte gli altri montaggi che usano i file system SMBFS (BSD) e &CIFS; (&Linux;) che sono presenti nel sistema.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry
 >  
@@ -3770,8 +3865,24 @@ ntlm auth = yes
       <para
 >La scheda <guilabel
 >Impostazioni condivise di montaggio</guilabel
-> è disponibile solo in &Linux;. Le impostazioni presenti in BSD possono essere trovate nella sezione <link linkend="configuration_page_mounting_mount_settings"
->Impostazioni comuni (solo in BSD)</link
+> è disponibile solo in &Linux;, e le opzioni elencate fanno riferimento al comando <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Le impostazioni presenti in BSD possono essere trovate nella sezione <link linkend="configuration_page_mounting_mount_settings"
+>Impostazioni di montaggio (solo BSD)</link
 >.</para>
 
       <sect3 id="configuration_page_mounting_common_mount_settings_common_options">
@@ -3799,6 +3910,10 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
+>Opzione: <option
+>rw</option
+></para>
+                    <para
 >Monta la condivisione in sola lettura.</para>
                   </listitem>
                 </varlistentry>
@@ -3811,12 +3926,16 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
+>Opzione: <option
+>ro</option
+></para>
+                    <para
 >Monta la condivisione in sola lettura.</para>
                   </listitem>
                 </varlistentry>
               </variablelist>
               <para
->Predefinito: <guimenuitem
+>Predefinito: non selezionata; <guimenuitem
 >lettura e scrittura</guimenuitem
 ></para>
             </listitem>
@@ -3830,7 +3949,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Imposta l'insieme di caratteri utilizzato dal lato client (&ie; il tuo computer).</para>
+>Opzione: <option
+>iocharset=CHARSET</option
+></para>
+              <para
+>Imposta l'insieme di caratteri utilizzato dal lato client (&ie; il tuo computer) a una delle seguenti:</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3841,7 +3964,9 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Insieme di caratteri predefinito utilizzato dal kernel del client.</para>
+>L'insieme di caratteri predefinito usato dal kernel del client. In questo caso l'opzione <option
+>iocharset</option
+> viene omessa dalla riga di comando.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4110,7 +4235,7 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Predefinita: <guimenuitem
+>Predefinito: non selezionata; CHARSET: <guimenuitem
 >predefinita</guimenuitem
 ></para>
             </listitem>
@@ -4124,7 +4249,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Imposta il valore della porta del file system usata da <ulink url="man:/mount.cifs"
+>Opzione: <option
+>port=PORT</option
+></para>
+              <para
+>Imposta il valore della porta usata da <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4132,17 +4261,11 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> per montare una condivisione remota. Il valore predefinito della porta (445) dovrebbe funzionare per tutti i sistemi operativi moderni. Se riscontri problemi, prova a impostarlo a 139. Se riscontri problemi solo con alcuni host, ti raccomandiamo di non modificare questa opzione e di usare la finestra delle <link linkend="network_neighborhood_browser_defining_custom_options"
+> al montaggio di una condivisione remota. Il valore predefinito della porta (445) dovrebbe funzionare con tutti i sistemi operativi moderni. Se riscontri problemi, prova a impostarlo a 139. Se riscontri problemi solo con alcuni host, ti raccomandiamo di non modificare questa opzione e di usare la finestra delle <link linkend="custom_settings"
 >opzioni personalizzate</link
-> per definire individualmente il numero di porta per gli host problematici.</para>
+> per definire individualmente il numero di porta con gli host problematici.</para>
               <para
->Questa opzione è disponibile solo in &Linux;. In BSD la porta per montare le condivisioni è impostata dall'opzione <link linkend="configuration_page_network_samba_settings_common_settings"
-><guibutton
->Porta SMB</guibutton
-></link
->.</para>
-              <para
->Predefinita: 445</para>
+>Predefinito: non selezionato; PORT: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4161,9 +4284,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->La maggior parte delle versioni di &Samba; supportano le estensioni &CIFS; per Unix o le POSIX. Per questi server alcune opzioni non sono necessarie, perché i valori corretti vengono negoziati durante il processo di montaggio. Per altri server potresti invece voler deselezionare quest'opzione, in modo che i valori predefiniti possano essere passati al server. Nota che se il tuo computer si trova in una rete con predominanza di sistemi &Windows; con solo alcuni server &Samba;, allora puoi deselezionare in sicurezza quest'opzione e definire delle opzioni personalizzate per i server &Samba;.</para>
+>Opzione: nessuna</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>La maggior parte delle versioni di &Samba; supportano le estensioni &CIFS; per Unix o le POSIX. Per questi server alcune opzioni non sono necessarie, perché i valori corretti vengono negoziati durante il processo di montaggio. Per altri server potresti invece voler deselezionare quest'opzione, in modo che possano essere passati al server i valori predefiniti. Nota che se il tuo computer si trova in una rete con predominanza di sistemi &Windows; con solo alcuni server &Samba;, allora puoi deselezionare in sicurezza quest'opzione e definire delle impostazioni personalizzate per i server &Samba;.</para>
+            <para
+>Nel caso deselezioni questa opzione, considera di attivare il controllo dei permessi nelle <link linkend="configuration_page_mounting_advanced_mount_settings"
+>impostazioni di montaggio avanzate</link
+>.</para>
+            <para
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4175,9 +4304,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opzione: <option
+>uid=UID</option
+></para>
+            <para
 >Consente di impostare il proprietario dei file e delle cartelle nel file system. Per impostazione predefinita viene utilizzato il tuo UID. Per modificare l'UID, usa il pulsante di ricerca e scegline uno dal menu a discesa.</para>
             <para
->Predefinito: il tuo UID</para>
+>Nel caso sia selezionato il supporto alle estensioni &CIFS; per unix, questa impostazione è disabilitata.</para>
+            <para
+>Predefinito: selezionato; UID: il tuo UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4189,9 +4324,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opzione: <option
+>uid=GID</option
+></para>
+            <para
 >Imposta il gruppo che possiede i file e le cartelle del file system. Per impostazione predefinita, viene utilizzato il tuo GID. Per modificare il GID, usa il pulsante di ricerca e scegline uno dal menu a discesa.</para>
             <para
->Predefinito: il tuo GID</para>
+>Nel caso sia selezionato il supporto alle estensioni &CIFS; per unix, questa impostazione è disabilitata.</para>
+            <para
+>Predefinito: selezionato; GID: il tuo GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4203,7 +4344,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Imposta i permessi che vengono applicati ai file. Il valore è espresso in ottale, e deve avere 4 cifre. Per ulteriori informazioni sulla modalità del file (file_mode), leggi le pagine di manuale <ulink url="man:/mount"
+>Opzione: <option
+>file_mode=ARG</option
+></para>
+            <para
+>Imposta i permessi che vengono applicati ai file. Il valore è espresso in ottale, e deve avere 4 cifre. Per ulteriori informazioni sulla modalità del file (file_mode), leggi le pagine di manuale <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4211,7 +4356,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> e <ulink url="man:/umask"
+> e <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 > umask</refentrytitle
@@ -4221,7 +4366,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->Predefinito: 0755</para>
+>Nel caso sia selezionato il supporto alle estensioni &CIFS; per unix, questa impostazione è disabilitata.</para>
+            <para
+>Predefinito: selezionato; ARG: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4233,7 +4380,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Imposta i permessi che vengono applicati alle cartelle. Il valore è espresso in ottale, e deve avere 4 cifre. Per ulteriori informazioni sulla modalità della cartella (dir_mode), leggi le pagine di manuale <ulink url="man:/mount"
+>Opzione: <option
+>dir_mode=ARG</option
+></para>
+            <para
+>Imposta i permessi che vengono applicati alle cartelle. Il valore è espresso in ottale, e deve avere 4 cifre. Per ulteriori informazioni sulla modalità della cartella (dir_mode), leggi le pagine di manuale <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4241,7 +4392,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> e <ulink url="man:/umask"
+> e <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4251,7 +4402,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->Predefinito: 0755</para>
+>Nel caso sia selezionato il supporto alle estensioni &CIFS; per unix, questa impostazione è disabilitata.</para>
+            <para
+>Predefinito: selezionato; ARG: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4269,11 +4422,25 @@ ntlm auth = yes
       <para
 >La scheda <guilabel
 >Impostazioni di montaggio avanzate</guilabel
-> è disponibile solo in &Linux;. Le impostazioni presenti in BSD possono essere trovate nella sezione <link linkend="configuration_page_mounting_mount_settings"
->Impostazioni comuni (solo in BSD)</link
+> è disponibile solo in &Linux;, e le opzioni elencate fanno riferimento al comando <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Le impostazioni presenti in BSD possono essere trovate nella sezione <link linkend="configuration_page_mounting_mount_settings"
+>Impostazioni di montaggio (solo BSD)</link
 >.</para>
-      <para
->La maggior parte delle opzioni che puoi definire qui richiede &Linux; kernel 2.6.15 o successivo per funzionare.</para>
       <variablelist>
         <varlistentry>
           <term>
@@ -4284,9 +4451,13 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opzione: <option
+>forceuid</option
+></para>
+            <para
 >Ordina al client (il tuo lato) di ignorare qualsiasi identificativo dell'utente (UID) fornito dal server per i file e le cartelle, e di assegnare sempre il valore dell'UID trasmesso come proprietario.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4298,9 +4469,13 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opzione: <option
+>forcegid</option
+></para>
+            <para
 >Ordina al client (il tuo lato) di ignorare qualsiasi identificativo dell'utente (GID) fornito dal server per i file e le cartelle, e di assegnare sempre il valore del GID trasmesso come proprietario.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4312,9 +4487,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Il lato client controlla se hai i UID e GID corretti per manipolare i file e le cartelle della condivisione. Questo è in aggiunta al normale controllo ACL sulla macchina di destinazione effettuata dal software del server. Potresti voler disattivare questa funzione se i server supportano le estensioni &CIFS; per Unix, e quindi, non hai il permesso di accedere alla condivisione.</para>
+>Opzione: <option
+>perm</option
+> oppure <option
+>noperm</option
+></para>
             <para
->Impostazione predefinita: selezionato</para>
+>Il lato client controlla se hai i UID e GID corretti per manipolare i file e le cartelle della condivisione. Questo è in aggiunta al normale controllo ACL sulla macchina di destinazione effettuata dal software del server. Sicuramente vorrai disattivare questa funzione se i server supportano le estensioni &CIFS; per Unix, e quindi, non hai il permesso di accedere completamente alla condivisione.</para>
+            <para
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4326,6 +4507,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opzione: <option
+>setuids</option
+> oppure <option
+>nosetuids</option
+></para>
+            <para
 >Se le estensioni &CIFS; per Unix vengono negoziate con il server, il lato client tenterà di impostare l'effettivo UID e GID del processo locale sui file, sulle cartelle e sui dispositivi appena creati. Se questa funzione è disattivata, verranno utilizzati UID e GID predefiniti, definiti per la condivisione. Ti raccomandiamo di leggere la pagina di manuale per <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4336,7 +4523,7 @@ ntlm auth = yes
 ></ulink
 > prima di cambiare questa impostazione.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4348,6 +4535,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opzione: <option
+>serverino</option
+> oppure <option
+>noserverino</option
+></para>
+            <para
 >Utilizza i numeri di inode (identificatori unici e persistenti dei file) restituiti dal server invece di generare automaticamente numeri di inode temporanei sul lato client. Questo parametro non ha effetto se il server non supporta la restituzione di numeri di inode o simili. Ti raccomandiamo di leggere la pagina di manuale di <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4358,7 +4551,7 @@ ntlm auth = yes
 ></ulink
 > prima di modificare questa impostazione.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4370,23 +4563,33 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Opzione: <option
+>mapchars</option
+> oppure <option
+>nomapchars</option
+></para>
+            <para
 >Traduce sei dei sette caratteri riservati (non la barra rovesciata, ma il carattere dei due punti, del punto interrogativo, del pipe, dell'asterisco, del maggiore e del minore) per l'intervallo da rimappare (al di sopra di 0xf000), che permette anche al lato client di riconoscere i file creati con tali caratteri dall'emulazione POSIX di &Windows;. Questo comportamento può anche essere utile per il montaggio della maggior parte delle versioni di &Samba;. Non ha alcun effetto se il server non supporta Unicode.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <menuchoice
 ><guibutton
->Non usare il blocco</guibutton
+>Non inviare richieste di blocco di intervalli di byte</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Non usa il blocco. Non avvia lockd.</para>
+>Opzione: <option
+>nobrl</option
+></para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Non inviare richieste di blocco di intervalli di byte. Ciò è necessario con alcune applicazioni che non funzionano coi blocchi di intervalli di byte obbligatori in stile cifs (e la maggior parte dei server cifs non supporta ancora i blocchi di intervalli di byte di richiesta).</para>
+            <para
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4398,7 +4601,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Definisce quale versione del protocollo SMB vada usata.</para>
+>Opzione: <option
+>vers=VERS</option
+></para>
+            <para
+>Definisci quale versione del protocollo SMB è da usare. Normalmente questa opzione non deve essere abilitata, perché la versione del protocollo viene negoziata tra il client e il server.</para>
             <para
 >Sono permessi i seguenti valori:</para>
             <variablelist>
@@ -4411,9 +4618,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
-> Viene usato l'argomento da riga di comando <option
->vers=1.0</option
->. A causa di ciò <ulink url="man:/mount.cifs"
+>A causa di ciò, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4433,9 +4638,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Viene usato l'argomento da riga di comando <option
->vers=2.0</option
->. A causa di ciò <ulink url="man:/mount.cifs"
+>A causa di ciò, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4443,11 +4646,9 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> deve usare il protocollo SMBv2.002. Questo è stato inizialmente introdotto nel Service Pack 1 di Windows Vista e in Windows Server 2008.</para>
-                  <note>
-                    <para
+> deve usare il protocollo SMBv2.002. Questo è stato inizialmente introdotto nel Service Pack 1 di &Microsoft; &Windows; Vista e in &Windows; Server 2008.</para>
+                  <para
 >Nota che la versione iniziale di rilascio di Windows Vista parlava un dialetto leggermente diverso (2.000) che non è supportato.</para>
-                  </note>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4459,9 +4660,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Viene usato l'argomento da riga di comando <option
->vers=2.1</option
->. A causa di ciò <ulink url="man:/mount.cifs"
+>A causa di ciò, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4481,9 +4680,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Viene usato l'argomento da riga di comando <option
->vers=3.0</option
->. A causa di ciò <ulink url="man:/mount.cifs"
+>A causa di ciò, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4498,16 +4695,12 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->Viene usato l'argomento da riga di comando <option
->vers=3.1.1</option
-> oppure <option
->vers=3.0</option
->. A causa di ciò <ulink url="man:/mount.cifs"
+>A causa di ciò, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4515,13 +4708,74 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> deve usare il protocollo SMBv3.1.1, che è stato introdotto in &Windows; Server 2016.</para>
+> deve usare il protocollo SMBv3.0.2, che è stato introdotto in &Microsoft; &Windows; 8.1 e in &Windows; Server 2012R2.</para>
+                </listitem>
+              </varlistentry>
+              
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3.1.1 (Windows Server 2016)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>A causa di ciò <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> deve usare il protocollo SMBv3.1.1, che è stato introdotto in &Microsoft; &Windows; Server 2016.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3 (versione 3.0 o superiore)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>A causa di ciò, <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> deve usare il protocollo SMBv3.0 o successivo.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>predefinita (negozia la versione più alta)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>A causa di ciò, <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> cerca di negoziare la versione SMBv2+ più alta supportata sia dal client che dal server.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
             <para
->Predefinito: <guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>Predefinito: non selezionata; VERS: <guibutton
+>predefinita (negozia la versione più alta)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4533,6 +4787,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Opzione: <option
+>cache=ARG</option
+></para>
             <para
 >Definisce come sono gestite le richieste di lettura e scrittura. Se scegli di non memorizzare nessun dato nella cache il client non userà mai la cache per le letture e le scritture normali, accederà sempre direttamente al server per soddisfare una richiesta di lettura o scrittura. Se scegli di seguire rigorosamente il protocollo &CIFS;/SMB2, ci si fiderà della cache solo se il client ha un oplock. Se il client non lo ha, esso salterà la cache e accederà direttamente al server per soddisfare una richiesta di lettura o scrittura. Scegliendo di permettere la semantica rilassata di cache può a volte risultare in prestazioni migliori a spese della coerenza della cache. Questa opzione potrebbe danneggiare i dati se diversi client stanno accedendo contemporaneamente agli stessi file sul server. Per questo motivo, la modalità rigorosa di memorizzazione in cache è raccomandata.</para>
             <para
@@ -4547,9 +4805,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Viene usato l'argomento da riga di comando <option
->cache=none</option
->. A causa di ciò <ulink url="man:/mount.cifs"
+>A causa di ciò, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4569,9 +4825,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Viene usato l'argomento da riga di comando <option
->cache=strict</option
->. A causa di ciò <ulink url="man:/mount.cifs"
+>A causa di ciò, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4591,9 +4845,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Viene usato l'argomento da riga di comando <option
->cache=loose</option
->. A causa di ciò <ulink url="man:/mount.cifs"
+>A causa di ciò, <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4606,7 +4858,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Predefinito: <guibutton
+>Predefinito: non selezionato; ARG: <guibutton
 >Segui rigorosamente il protocollo &CIFS;/SMB2</guibutton
 ></para>
           </listitem>
@@ -4824,8 +5076,8 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Predefinito: <guilabel
->Protocollo NTLMSSP</guilabel
+>Predefinito: non selezionato; <guibutton
+>Protocollo NTLMSSP</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4850,7 +5102,7 @@ ntlm auth = yes
 >OK</guibutton
 > nella finestra di inserimento, le opzioni saranno verificate rispetto a una lista bianca: tutte le voci valide saranno inserite nella riga di modifica.</para>
             <para
->Predefinito: vuoto</para>
+>Predefinito: non selezionato; vuoto</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4923,7 +5175,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> e <ulink url="man:/umask"
+> e <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4953,7 +5205,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> e <ulink url="man:/umask"
+> e <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4985,7 +5237,7 @@ ntlm auth = yes
               <para
 >Usa gli insiemi di caratteri specifici locali e del server.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -5760,7 +6012,7 @@ ntlm auth = yes
 >Smb4K</filename
 >. Il vantaggio di questo metodo è che i dati di autenticazione vengono memorizzati in modo permanente e crittografato sul disco rigido: devi fornirli una sola volta, successivamente, quando sarà necessario, &smb4k; li leggerà dal portafoglio. Se deselezioni questa opzione, i dati di autenticazione non saranno immagazzinati.</para>
             <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -5788,7 +6040,7 @@ ntlm auth = yes
             <para
 >Devi compilare almeno il nome utente. Sono supportate le password vuote.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -5803,21 +6055,21 @@ ntlm auth = yes
 >Voci del portafoglio</title>
       
       <para
->In questo editor puoi modificare o rimuovere le voci esistenti del portafogli. Prima di poterle modificare devono essere caricate dal portafogli premendo il pulsante <guibutton
+>Nell'editor puoi modificare o eliminare le voci esistenti del portafogli. Tuttavia, prima di poterle modificare devono essere caricate dal portafogli premendo il pulsante <guibutton
 >Carica</guibutton
->. L'elenco delle voci appare poi a sinistra nella vista a elenco. Una voce può essere modificata selezionandola e facendo clic sul pulsante <guibutton
->Dettagli</guibutton
-> sulla destra; come alternativa puoi semplicemente fare clic col tasto destro sulla voce e scegliere la voce <guimenuitem
->Modifica</guimenuitem
-> nel menu a comparsa. I dettagli vengono quindi visualizzati e possono essere modificati.</para>
+>. Le voci del portafogli appaiono quindi nella vista a elenco. Una voce può essere modificata sia selezionandola e facendo clic sul pulsante <guibutton
+>Modifica</guibutton
+>, sia facendoci doppio clic. Viene mostrata una finestra per la password con il nome utente e la password memorizzata, così puoi modificare le credenziali.</para>
       <para
->Una voce può essere rimossa scegliendo la voce <guimenuitem
+>Una voce può essere rimossa selezionandola E facendo clic sul pulsante <guimenuitem
 >Rimuovi</guimenuitem
-> dal menu a comparsa. Tutte le voci del portafogli possono essere rimosse contemporaneamente scegliendo la voce <guimenuitem
->Pulisci l'elenco</guimenuitem
->.</para>
+>. Tutte le voci del portafogli possono essere rimosse contemporaneamente facendo clic sul pulsante<guimenuitem
+>Pulisci</guimenuitem
+>. Con <guibutton
+>Azzera</guibutton
+> puoi ripristinare lo stato iniziale.</para>
       <para
->Una volta terminata la modifica, i cambiamenti possono essere inviati al portafogli premendo <guibutton
+>Una volta terminata la modifica, i cambiamenti possono essere inviati al portafogli facendo clic su <guibutton
 >Salva</guibutton
 >.</para>
     </sect2>
@@ -5875,7 +6127,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Destinazione predefinita</title>
+>Cartella di sincronizzazione</title>
 
         <variablelist>
           <varlistentry>
@@ -5930,16 +6182,46 @@ ntlm auth = yes
 >, come <option
 >-rlptgoD</option
 > (no <option
+>-A</option
+>, <option
+>-X</option
+>, <option
+>-U</option
+>, <option
+>-N</option
+> e <option
 >-H</option
 >)</para>
               <para
->Attiva la modalità di archivio. Questo è un modo rapido per dire che desideri ricorsione e che desideri mantenere quasi tutto. Nota che <option
+>Attiva la modalità archivio. È una modalità veloce per dire che vuoi la ricorsione e che vuoi preservare quasi tutto. Nota che <option
 >-a</option
-> non mantiene i collegamenti fisici, perché trovare file con collegamenti multipli è impegnativo. Devi specificare separatamente <option
+> non preserva i collegamenti fisici (<option
 >-H</option
->.</para>
+>), non accede all'elenco di controllo (ACL, <option
+>-A</option
+>), agli attributi estesi (xattrs, <option
+>-X</option
+>), non accede (usa) gli orari (<option
+>-U</option
+>) e non crea gli orari (<option
+>-N</option
+>): devi specificare separatamente queste opzioni. La sola eccezione all'equivalenza qui sopra è quando viene specificato <option
+>--files-from</option
+>: in questo caso <option
+>-r</option
+> non è implicito.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Nel caso tu non voglia eseguire <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> in modalità archivio, scegli gli argomenti appropriati nelle impostazioni stesse.</para>
+              <para
+>Predefinito: selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5959,7 +6241,7 @@ ntlm auth = yes
               <para
 >Ricorsione nelle sottocartelle.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5979,7 +6261,7 @@ ntlm auth = yes
               <para
 >Utilizza i nomi di percorso relativi. Ciò significa che i nomi dei percorsi completi specificati nella riga di comando vengono inviati al server, non solo le ultime parti di essi.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6003,7 +6285,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6041,7 +6323,7 @@ ntlm auth = yes
 >--recursive</option
 > avrà precedenza.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6049,8 +6331,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title
->Copia di sicurezza</title>
-
+>Copie di sicurezza</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6093,7 +6374,7 @@ ntlm auth = yes
 >-f "P *~"</option
 >). Questo consentirà di evitare di eliminare i file conservati in precedenza. Nota che si forniscono le proprie regole di filtro potrebbe anche essere necessario inserire manualmente la propria regola di esclusione / protezione nell'elenco in un punto precedente, in modo da dare una priorità sufficientemente elevata per essere efficace (&eg;, se le regole specificano una inclusione / esclusione di «*» finale, la regola personale non verrebbe mai raggiunta).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6121,7 +6402,7 @@ ntlm auth = yes
 >Crea copie di sicurezza</guilabel
 >.</para>
               <para
->Impostazione predefinita: non selezionato; SUFFIX: ~</para>
+>Predefinito: non selezionato; SUFFIX: ~</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6139,7 +6420,15 @@ ntlm auth = yes
               <para
 >In combinazione con l'opzione <option
 >--backup</option
-> indica a rsync di memorizzare tutte le copie di sicurezza nella cartella specificata; questo è molto utile per le copie incrementali. Puoi inoltre specificare un suffisso per le copie usando l'opzione <option
+> indica a <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> di memorizzare tutte le copie di sicurezza nella cartella specificata; questo è molto utile per le copie incrementali. Puoi inoltre specificare un suffisso per le copie usando l'opzione <option
 >--suffix</option
 > (altrimenti i file delle copie di sicurezza nella cartella specificata manterranno i loro nomi originali).</para>
               <para
@@ -6147,7 +6436,7 @@ ntlm auth = yes
 >Crea copie di sicurezza</guilabel
 >.</para>
               <para
->Impostazione predefinita: non selezionato; DIR: <envar
+>Predefinito: non selezionato; DIR: <envar
 >$HOME</envar
 ></para>
             </listitem>
@@ -6195,7 +6484,7 @@ ntlm auth = yes
 ></ulink
 > ignora tutti i file presenti nella destinazione che hanno una data di modifica più recente di quella del file di origine. (Se un file di destinazione esistente ha un di modifica uguale a quello del file sorgente verrà aggiornato se le dimensioni sono diverse).</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6243,7 +6532,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6269,7 +6558,7 @@ ntlm auth = yes
 >Non usare questa opzione su una destinazione del file system «tmpfs» di &Solaris;: non sembra gestire correttamente ricerche su regioni nulle, e finisce per corrompere i file.</para
 ></note>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6297,7 +6586,7 @@ ntlm auth = yes
 ></ulink
 >, e l'intero file viene invece inviato come è. Il trasferimento può essere più veloce utilizzando questa opzione se la larghezza di banda tra la sorgente e la destinazione è superiore alla larghezza di banda su disco (specialmente quando il «disco» è in realtà un sistema di file di rete). Questa è l'impostazione predefinita quando sia l'origine che la destinazione sono specificate come percorsi locali.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6327,7 +6616,7 @@ ntlm auth = yes
 >--ignore-existing</option
 >, nessun file verrà aggiornato (il ché può essere utile se vuoi eliminare i file mancanti).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6355,7 +6644,7 @@ ntlm auth = yes
 >--ignore-non-existing</option
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6383,7 +6672,7 @@ ntlm auth = yes
               <para
 >Copia i collegamenti simbolici come collegamenti simbolici.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6403,7 +6692,7 @@ ntlm auth = yes
               <para
 >Quando si incontra un collegamento simbolico viene copiato l'elemento a cui punta al posto del collegamento stesso.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6421,7 +6710,7 @@ ntlm auth = yes
               <para
 >Trasforma solo collegamenti simbolici «non sicuri». Ciò significa che se si incontra un collegamento simbolico che punta al di fuori dell'albero copiato viene trasferito l'elemento del riferimento piuttosto che il relativo collegamento simbolico.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6449,7 +6738,7 @@ ntlm auth = yes
 >--relative</option
 > potresti avere dei risultati inattesi.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6462,8 +6751,6 @@ ntlm auth = yes
             <listitem>
               <para
 >Opzione: <option
->-H</option
->/<option
 >--munge-links</option
 ></para>
               <para
@@ -6485,7 +6772,7 @@ ntlm auth = yes
 ></ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry
 >          
@@ -6524,7 +6811,7 @@ ntlm auth = yes
 ></ulink
 > può rilevare collegamenti fissi solo se entrambe le parti del collegamento sono nella lista dei file che vengono inviati.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6546,7 +6833,7 @@ ntlm auth = yes
 >--copy-links</option
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6566,16 +6853,19 @@ ntlm auth = yes
               <para
 >Questa opzione fa sì che il lato ricevente tratti un collegamento simbolico a una cartella come se fosse una vera cartella, ma solo se corrisponde a una cartella vera e propria dal lato del mittente. Senza questa opzione, il collegamento simbolico del ricevente sarebbe stato eliminato e sostituito con una cartella reale.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
       </sect3>
+    </sect2>
 
-      <sect3 id="configuration_page_synchronization_file_handling_perms">
+    <sect2 id="configuration_page_synchronization_attributes_ownership">
+      <title
+>Attributi del file e proprietà</title>
+      <sect3 id="configuration_page_synchronization_attributes_ownership_attributes">
         <title
->Permessi &etc;</title>
-
+>Attributi del file</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6594,9 +6884,216 @@ ntlm auth = yes
               <para
 >Con questa opzione il lato ricevente imposta che i permessi di destinazione siano uguali a quelli del sorgente.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Mantieni liste di controllo degli accessi (ACL)</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-A</option
+>/<option
+>--acls</option
+></para>
+              <para
+>Mantieni le liste di controllo degli accessi (ACL). Questa opzione induce <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> ad aggiornare le ACL di destinazione in modo che siano le stesse di quelle di origine; implica anche --perms. Affinché questa opzione funzioni correttamente, il sistema di origine e quello di destinazione devono avere delle voci ACL compatibili.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Mantieni gli attributi estesi</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-X</option
+>/<option
+>--xattrs</option
+></para>
+              <para
+>Mantieni gli attributi estesi. Questa opzione induce <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> ad aggiornare gli attributi estesi di destinazione in modo che siano gli stessi di quelli dell'origine.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Mantieni i tempi d'accesso</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-U</option
+>/<option
+>--atimes</option
+></para>
+              <para
+>Mantieni l'ora di accesso. Questo dice a <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> di impostare l'ora di accesso (di utilizzo) del file di destinazione allo stesso valore di quello del file sorgente.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Mantieni l'ora di creazione</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-N</option
+>/<option
+>--crtimes</option
+></para>
+              <para
+>Mantieni l'ora di creazione. Questo dice a <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> di impostare l'ora di creazione (la novità) del file di destinazione allo stesso valore di quello del file sorgente.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Mantieni i dispositivi ed i file speciali</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-D</option
+>/<option
+>--devices --specials</option
+></para>
+              <para
+>Questa opzione permette a <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> di trasferire i file di dispositivi a caratteri e a blocchi come file speciali (come i nomi dei socket e le fifo) al sistema remoto. Questa opzione non ha alcun effetto se il ricevente non è in esecuzione come amministratore e se non è specificato <option
+>--super</option
+>.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Mantieni gli orari</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-t</option
+>/<option
+>--times</option
+></para>
+              <para
+>Questo dice a <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> di trasferire gli orari di modifica insieme ai file e di aggiornarli sul sistema remoto.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Ometti le cartelle quando conservi gli orari</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-O</option
+>/<option
+>--omit-dir-times</option
+></para>
+              <para
+>Questa opzione permette a <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> di omettere le cartelle quando si conservano gli orari (vedi <option
+>--times</option
+>).</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+      
+      <sect3 id="configuration_page_synchronization_attributes_ownership_ownership">
+        <title
+>Proprietà</title>
+        <variablelist>
           <varlistentry>
             <term>
               <menuchoice
@@ -6634,7 +7131,7 @@ ntlm auth = yes
 >--super</option
 >.</para>
               <para
->Impostazione predefinita: selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6664,95 +7161,7 @@ ntlm auth = yes
 >--no-super</option
 >), solo i gruppi di cui il ricevitore è membro verranno mantenuti.</para>
               <para
->Impostazione predefinita: selezionato</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Mantieni i dispositivi ed i file speciali</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opzione: <option
->-D</option
->/<option
->--devices --specials</option
-></para>
-              <para
->Questa opzione permette a <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> di trasferire i file di dispositivi a caratteri e a blocchi come file speciali (come i nomi dei socket e le fifo) al sistema remoto. Questa opzione non ha alcun effetto se il ricevente non è in esecuzione come amministratore e se non è specificato <option
->--super</option
->.</para>
-              <para
->Impostazione predefinita: selezionato</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Mantieni gli orari</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opzione: <option
->-t</option
->/<option
->--times</option
-></para>
-              <para
->Questo dice a <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> di trasferire gli orari di modifica insieme ai file e di aggiornarli sul sistema remoto.</para>
-              <para
->Impostazione predefinita: selezionato</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Ometti le cartelle quando conservi gli orari</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opzione: <option
->-O</option
->/<option
->--omit-dir-times</option
-></para>
-              <para
->Questa opzione permette a <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> di omettere le cartelle quando si conservano gli orari (vedi <option
->--times</option
->).</para>
-              <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6766,11 +7175,9 @@ ntlm auth = yes
     <sect2 id="configuration_page_synchronization_file_transfer">
       <title
 >Trasferimento file</title>
-
       <sect3 id="configuration_page_synchronization_file_transfer_compression">
         <title
 >Compressione</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6789,7 +7196,7 @@ ntlm auth = yes
               <para
 >Comprime i file durante il trasferimento.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6801,7 +7208,15 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Imposta esplicitamente il livello di compressione da usare (--compress-level=NUM). Se NUM non è zero, l'argomento --compress è implicito.</para>
+>Opzione: <option
+>--compress-level=NUM</option
+></para>
+              <para
+>Imposta esplicitamente il livello di compressione da usare Se NUM non è zero, l'argomento <option
+>--compress</option
+> è implicito.</para>
+              <para
+>Predefinito: non selezionato; NUM: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6813,7 +7228,21 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Sovrascrive l'elenco dei suffissi di file che non saranno compressi (--skip-compress=ELENCO). L'ELENCO dovrebbe essere uno o più suffissi di file (senza il punto) separati da barre. Puoi specificare una stringa vuota per indicare che non si deve saltare nessun file. L'elenco predefinito dei suffissi sarà sostituito da questo. Per ulteriori dettagli vedi il manuale di rsync.</para>
+>Opzione: <option
+>--skip-compress=LIST</option
+></para>
+              <para
+>Sovrascrive l'elenco dei suffissi di file che non saranno compressi. L'ELENCO dovrebbe essere uno o più suffissi di file (senza il punto) separati da barre. Puoi specificare una stringa vuota per indicare che non si deve saltare nessun file. L'elenco predefinito dei suffissi sarà sostituito da questo. Per ulteriori dettagli vedi la <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>pagine di manuale di rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>.</para>
+              <para
+>Predefinito: non selezionato; LIST: vuoto</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6822,7 +7251,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_files">
         <title
 >File</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6834,7 +7262,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Opzione: <option
->--min-size=NUM</option
+>--min-size=SIZE</option
 ></para>
               <para
 >Indica a <ulink url="man:/rsync"
@@ -6847,7 +7275,7 @@ ntlm auth = yes
 ></ulink
 > di evitare di trasferire un qualsiasi file più piccolo della dimensione specificata, il ché può aiutare a non trasferire piccoli file spazzatura.</para>
               <para
->Impostazione predefinita: non selezionato; NUM: 0 Kb</para>
+>Predefinito: non selezionato; SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6860,7 +7288,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Opzione: <option
->--max-size=NUM</option
+>--max-size=SIZE</option
 ></para>
               <para
 >Indica a <ulink url="man:/rsync"
@@ -6873,7 +7301,7 @@ ntlm auth = yes
 ></ulink
 > di evitare di trasferire un qualsiasi file più grande della dimensione specificata.</para>
               <para
->Impostazione predefinita: non selezionato; NUM: 0 Kb</para>
+>Predefinito: non selezionato; SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6909,7 +7337,7 @@ ntlm auth = yes
 ></ulink
 > di mantenere il file parziale, in modo da rendere molto più veloce un successivo trasferimento dei file.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6939,7 +7367,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato; DIR: <filename class="directory"
+>Predefinito: non selezionato; DIR: <filename class="directory"
 >$HOME</filename
 ></para>
             </listitem>
@@ -6950,7 +7378,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
         <title
 >Varie</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6965,9 +7392,9 @@ ntlm auth = yes
 >--bwlimit=RATE</option
 ></para>
               <para
->Imposta la velocità massima di trasferimento in kilobyte al secondo.</para>
+>Imposta la VELOCITÀ massima di trasferimento in kilobyte al secondo.</para>
               <para
->Impostazione predefinita: non selezionato; RATE: 0 KiB/s</para>
+>Predefinito: non selezionato; RATE: 0 KB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7010,7 +7437,7 @@ ntlm auth = yes
 ></ulink
 > di rimuovere dal lato di invio i file (cioè non le cartelle) che sono parte del trasferimento e che sono stati correttamente copiati sul lato ricevente.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7060,7 +7487,7 @@ ntlm auth = yes
 >--delete-excluded</option
 > o che contrassegni le regole come corrispondenti solo nel lato di invio.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7084,7 +7511,7 @@ ntlm auth = yes
 >--delete-WHEN</option
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7102,7 +7529,7 @@ ntlm auth = yes
               <para
 >Richiede che l'eliminazione dei file sul lato ricevente sia fatta dopo che il trasferimento è stato completato.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7128,7 +7555,7 @@ ntlm auth = yes
 ></ulink
 >.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7156,7 +7583,7 @@ ntlm auth = yes
 >--exclude</option
 >).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7176,7 +7603,7 @@ ntlm auth = yes
 >--delete</option
 > di andare avanti cancellando i file anche quando in presenza di errori di I/O.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7204,7 +7631,7 @@ ntlm auth = yes
 >--delete</option
 >).</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7238,7 +7665,7 @@ ntlm auth = yes
 ></ulink
 > di non eliminare un numero di file o di cartelle maggiore di «NUM» («NUM» deve essere diverso da zero). Ciò è utile per prevenire disastri nella clonazione di alberi di grandi dimensioni.</para>
               <para
->Impostazione predefinita: non selezionato; NUM: 0</para>
+>Predefinito: non selezionato; NUM: 0</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7277,7 +7704,7 @@ ntlm auth = yes
               <para
 >È una scorciatoia utile per escludere una vasta gamma di file che spesso non si desidera trasferire tra i sistemi. Quest'opzione utilizza lo stesso algoritmo che CVS usa per determinare se un file debba essere ignorato.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7297,7 +7724,7 @@ ntlm auth = yes
 >--filter</option
 >, che per impostazione predefinita è una regola di esclusione e non consente la piena analisi delle regole della sintassi di normali regole di filtro.</para>
               <para
->Impostazione predefinita: non selezionato; PATTERN: vuoto</para>
+>Predefinito: non selezionato; PATTERN: vuoto</para>
             </listitem
 >             
           </varlistentry>
@@ -7318,7 +7745,7 @@ ntlm auth = yes
 >--exclude</option
 >, ma specifica un FILE che contiene i modelli di esclusione (uno per riga). Le righe vuote nel file e le linee che iniziano con «;» o «#» sono ignorate. Devi scegliere un file esistente per far funzionare questa opzione.</para>
               <para
->Impostazione predefinita: non selezionato; FILE: <filename
+>Predefinito: non selezionato; FILE: <filename
 >$HOME/exclude.txt</filename
 ></para>
             </listitem>
@@ -7340,7 +7767,7 @@ ntlm auth = yes
 >--filter</option
 >, che per impostazione predefinita è una regola di inclusione e non consente la piena analisi delle regole della sintassi di normali regole di filtro.</para>
               <para
->Impostazione predefinita: non selezionato; PATTERN: vuoto</para>
+>Predefinito: non selezionato; PATTERN: vuoto</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7360,7 +7787,7 @@ ntlm auth = yes
 >--include</option
 >, ma specifica un FILE che contiene i modelli di inclusione (uno per riga). Le righe vuote nel file e le linee che iniziano con «;» o «#» sono ignorate. Devi scegliere un file esistente per far funzionare questa opzione.</para>
               <para
->Impostazione predefinita: non selezionato; FILE: <filename
+>Predefinito: non selezionato; FILE: <filename
 >$HOME/include.txt</filename
 ></para>
             </listitem>
@@ -7373,6 +7800,62 @@ ntlm auth = yes
 >Regole di filtraggio</title>
 
         <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Usa la regola di filtraggio --filter=«dir-merge /.rsync-filter»</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-F</option
+></para>
+              <para
+>Questa opzione indica a <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> di cercare i file <filename
+>.rsync-filter</filename
+> che sono sparsi nella gerarchia e di utilizzare le loro regole per filtrare i file nel trasferimento.</para>
+              <para
+>Consulta la sezione «Regole di filtraggio» della <ulink url="man:/rsync"
+>pagina di manuale</ulink
+> per informazioni dettagliate sul funzionamento dell'opzione.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Usa la regola di filtro --filter=«exclude .rsync-filter»</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Opzione: <option
+>-FF</option
+></para>
+              <para
+>Questa opzione filtra i file <filename
+>.rsync-filter</filename
+> stessi durante il trasferimento.</para>
+              <para
+>Consulta la sezione «Regole di filtraggio» della <ulink url="man:/rsync"
+>pagina di manuale</ulink
+> per informazioni dettagliate sul funzionamento dell'opzione.</para>
+              <para
+>Predefinito: non selezionato</para>
+            </listitem>
+          </varlistentry>
           <varlistentry>
             <term>
               <menuchoice
@@ -7412,63 +7895,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 > per informazioni più dettagliate sull'opzione.</para>
               <para
->Predefinito: vuoto</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Usa la regola di filtraggio --filter=«dir-merge /.rsync-filter»</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opzione: <option
->-F</option
-></para>
-              <para
->Questa opzione indica a <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> di cercare i file <filename
->.rsync-filter</filename
-> che sono sparsi nella gerarchia e di utilizzare le loro regole per filtrare i file nel trasferimento.</para>
-              <para
->Consulta la sezione «Regole di filtraggio» della <ulink url="man:/rsync"
->pagina di manuale</ulink
-> per informazioni dettagliate sul funzionamento dell'opzione.</para>
-              <para
->Impostazione predefinita: non selezionato</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Usa la regola di filtro --filter=«exclude .rsync-filter»</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Opzione: <option
->-FF</option
-></para>
-              <para
->Questa opzione filtra i file <filename
->.rsync-filter</filename
-> stessi durante il trasferimento.</para>
-              <para
->Consulta la sezione «Regole di filtraggio» della <ulink url="man:/rsync"
->pagina di manuale</ulink
-> per informazioni dettagliate sul funzionamento dell'opzione.</para>
-              <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato; RULES: vuoto</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7507,7 +7934,7 @@ ntlm auth = yes
 >relazione tecnica</ulink
 > per i dettagli.</para>
               <para
->Impostazione predefinita: non selezionato; SIZE: 0</para>
+>Predefinito: non selezionato; SIZE: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7525,7 +7952,7 @@ ntlm auth = yes
               <para
 >Imposta il seme del codice di controllo MD4 all'intero «NUM». Questo seme del codice di controllo di 4 byte è incluso in ogni calcolo MD4 per il controllo di blocchi e file. Per impostazione predefinita il seme del codice di controllo viene generato dal server e il valore predefinito impostato all'ora corrente. Questa opzione è usata per impostare un seme specifico per il codice di controllo, utile per applicazioni che vogliano blocchi ripetibili e file di codice del controllo, o nel caso in cui l'utente desidera un seme per il codice di controllo più casuale. Nota che impostando «NUM» a 0 obbliga rsync ad utilizzare l'impostazione predefinita della funzione time() come seme per il codice di controllo.</para>
               <para
->Impostazione predefinita: non selezionato; NUM: 0</para>
+>Predefinito: non selezionato; NUM: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7545,7 +7972,7 @@ ntlm auth = yes
               <para
 >Questo forza il mittente a calcolare il codice di controllo di tutti i file regolari utilizzando checksum MD4 a 128 bit. Lo fa durante la scansione iniziale del file system, non appena crea l'elenco di tutti i file disponibili. Il ricevente controlla quindi il codice di controllo di ciascun file (se esiste e ha le stesse dimensioni della sua controparte sul lato mittente) per decidere quali file devono essere aggiornati: sia i file con una dimensione cambiata o con un codice di controllo modificato vengono selezionati per il trasferimento. Poiché questa verifica dei codici di controllo dei file interi e di tutti i file avviene su entrambi i lati della connessione in aggiunta alle verifiche automatiche dei codici di controllo durante il trasferimento di un file, questa opzione può essere molto lenta.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7553,8 +7980,7 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
         <title
->Generale</title>
-
+>Varie</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -7597,7 +8023,7 @@ ntlm auth = yes
 ></ulink
 > considera il montaggio «legato» al dispositivo stesso piuttosto che al file system.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -7619,7 +8045,7 @@ ntlm auth = yes
 >pagina di manuale</ulink
 > prima di utilizzare questa opzione.</para>
               <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7630,25 +8056,25 @@ ntlm auth = yes
 
 
 <!-- 
-      Configuring Smb4K : Custom Options
+      Configuring Smb4K : Custom Settings
 -->
 
-  <sect1 id="configuration_page_custom_options">
+  <sect1 id="configuration_page_custom_settings">
     <title
->Opzioni personalizzate</title>
+>Impostazioni personalizzate</title>
 
     <para
->Tutti i server e le condivisioni su cui hai definito delle opzioni personalizzate sono elencati qui.</para>
+>Tutti i server e le condivisioni su cui hai definito delle impostazioni personalizzate sono elencati qui.</para>
 
     <screenshot>
       <screeninfo
->Schermata della scheda di configurazione «Opzioni personalizzate»</screeninfo>
+>Schermata della scheda di configurazione «Impostazioni personalizzate»</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
->La scheda di configurazione «Opzioni personalizzate»</phrase
+>La scheda di configurazione «Impostazioni personalizzate»</phrase
 ></textobject>
       </mediaobject>
     </screenshot>
@@ -7656,95 +8082,19 @@ ntlm auth = yes
     <para
 >Le opzioni definite per un elemento di rete possono possono essere modificate sia con un doppio clic su un elemento nella vista ad elenco, sia scegliendo la voce <guimenuitem
 >Modifica</guimenuitem
-> dal menu a comparsa (tasto destro sull'elemento selezionato). Le opzioni personalizzate vengono quindi caricate e possono essere modificate. Per rimuovere un elemento, fai clic con il tasto destro su di esso e scegli la voce <guimenuitem
+>. Si apre quindi l' <link linkend="custom_settings"
+>editor delle impostazioni personalizzate</link
+> ed è possibile modificare le impostazioni. Per rimuovere un elemento, selezionalo e fai clic sul pulsante <guimenuitem
 >Rimuovi</guimenuitem
-> dal menu a comparsa. Tutti gli elementi di rete possono essere rimossi contemporaneamente scegliendo la voce <guimenuitem
+>. Tutti gli elementi di rete possono essere rimossi contemporaneamente facendo clic sul pulsante <guimenuitem
 >Svuota l'elenco</guimenuitem
+>. Per azzerare le modifiche, fai clic sul pulsante <guibutton
+>Azzera</guibutton
 >.</para>
-
     <para
->Le opzioni personalizzate sono accessibili tramite le schede sulla destra.</para>
-    
-<!--
-      Configuring Smb4K : Custom Options : Network Item
--->
-    
-    <sect2 id="configuration_page_custom_options_network_item">
-      <title
->Elemento di rete</title>
-      
-      <para
->Questa scheda serve principalmente come risorsa di informazioni. Nel riquadro di gruppo <guilabel
->Identificazione</guilabel
-> viene fornito il gruppo di lavoro o il dominio dell'elemento di rete, la sua posizione e l'indirizzo IP. Quest'ultimo può essere modificato, nel caso tu ne abbia bisogno.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_common_mount_settings">
-      <title
->Impostazioni condivise di montaggio (solo in &Linux;)</title>
-      
-      <para
->Qui puoi modificare le impostazioni comuni usate per il montaggio in &Linux;. Dai un'occhiata alla pagina di configurazione <link linkend="configuration_page_mounting"
->Montaggio</link
-> per saperne di più sulle opzioni presenti.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
-      <title
->Impostazioni di montaggio avanzate (solo in &Linux;)</title>
-      
-      <para
->Qui puoi modificare le impostazioni avanzate usate per il montaggio in &Linux;. Dai un'occhiata alla pagina di configurazione <link linkend="configuration_page_mounting"
->Montaggio</link
-> per saperne di più sulle opzioni presenti.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
--->
-    <sect2 id="configuration_page_custom_options_mount_settings">
-      <title
->Impostazioni di montaggio (solo in BSD)</title>
-      
-      <para
->Qui puoi modificare le impostazioni usate per il montaggio in BSD. Dai un'occhiata alla pagina di configurazione <link linkend="configuration_page_mounting"
->Montaggio</link
-> per imparare di più sulle opzioni presenti.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Options : Browse Settings
--->
-
-    <sect2 id="configuration_page_custom_options_browse_settings">
-      <title
->Impostazioni di navigazione</title>
-    
-      <para
->Qui puoi modificare molte delle impostazioni di &Samba; che sono usate nella navigazione. Per maggiori informazioni dai un'occhiata alle impostazioni di <link linkend="configuration_page_network_samba_settings"
->&Samba;</link
-></para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
--->
-
-    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
-      <title
->Impostazioni Wake-On-LAN</title>
-    
-      <para
->Qui puoi modificare le opzioni Wake-On-LAN che hai definito in precedenza dalla finestra <link linkend="network_neighborhood_browser_defining_custom_options"
->opzioni personalizzate</link
+>Per maggiori informazioni sull'editor delle impostazioni personalizzate, consulta questa <link linkend="custom_settings"
+>sezione</link
 >.</para>
-    </sect2>
   </sect1>
 
 <!-- 
@@ -7789,11 +8139,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Fai usare i profili a Smb4K. Questo ti permette di definire segnalibri diversi e opzioni personalizzate per ogni profilo; ciò è particolarmente utile se stai usando un portatile in diverse risorse di rete, per esempio in casa e al lavoro. Quando abiliti questa impostazione per la prima volta, la prima voce nell'<link linkend="configuration_page_profiles_profiles"
+>Fai usare i profili a Smb4K. Questo ti permette di definire segnalibri diversi e impostazioni personalizzate per ogni profilo; ciò è particolarmente utile se stai usando un portatile in diverse risorse di rete, per esempio in casa e al lavoro. Quando abiliti questa impostazione per la prima volta, la prima voce nell'<link linkend="configuration_page_profiles_profiles"
 >elenco dei profili</link
 > sarà il profilo attivo.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -7807,7 +8157,7 @@ ntlm auth = yes
             <para
 >Usa l'assistente di migrazione dei profili quando i profili vengono rimossi, oppure ne viene abilitato o disabilitato l'uso. Questo ti permette di trasferire tutte le impostazioni che sono state salvate per un certo profilo in un altro.</para>
             <para
->Impostazione predefinita: non selezionato</para>
+>Predefinito: non selezionato</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -7991,7 +8341,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la barra degli strumenti di ricerca nel navigatore delle risorse di rete.</para>
+>Apri la barra degli strumenti di ricerca nel navigatore delle risorse di rete.</para>
         </listitem>
       </varlistentry
 > 
@@ -8010,8 +8360,31 @@ ntlm auth = yes
 >Aggiungere i segnalibri</link
 >.</para>
         </listitem>
-      </varlistentry
->      
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Rete</guimenu
+> <guimenuitem
+>Aggiungi impostazioni personalizzate</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Apri l'editor delle <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Impostazioni personalizzate</link
+>: puoi impostare diverse impostazioni personalizzate per il server o per la condivisione selezionata. Se non è selezionato nessun elemento o gruppo di lavoro, questa voce di menu è disabilitata. Per maggiori dettagli leggi la sezione <link linkend="custom_settings_adding"
+>Aggiungere impostazioni personalizzate</link
+>.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8029,7 +8402,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la <link linkend="network_neighborhood_browser_mounting"
+>Apri la <link linkend="network_neighborhood_browser_mounting"
 >finestra</link
 > per montare «manualmente» le condivisioni. Questa funzionalità può essere necessaria se &smb4k; non riesce a trovare un server sul quale montare una certa risorsa condivisa.</para>
         </listitem>
@@ -8051,31 +8424,9 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la <link linkend="network_neighborhood_browser_authentication"
+>Apri la <link linkend="network_neighborhood_browser_authentication"
 >finestra di autenticazione</link
 >. Puoi fornire nome utente e password per il server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa azione è disabilitata.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenu
->Rete</guimenu
-> <guimenuitem
->Opzioni personalizzate</guimenuitem
-> </menuchoice>
-        </term>
-        <listitem>
-          <para
->Apre la finestra <link linkend="network_neighborhood_browser_defining_custom_options"
->Opzioni personalizzate</link
->. Puoi impostare diverse opzioni personalizzate per il server selezionato o per la condivisione. Se non è selezionato nessun elemento o gruppo di lavoro, questa voce di menu è disabilitata.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8246,11 +8597,11 @@ ntlm auth = yes
 >Smonta una o più condivisioni selezionate. La capacità di smontare le condivisioni è limitata per impostazione predefinita a quelle che appartengono all'utente, tuttavia puoi modificare questo comportamento modificando le <link linkend= "configuration_page_mounting_basic_settings_behavior"
 >impostazioni</link
 > nella finestra di configurazione. Se nessuna condivisione è selezionata nella vista delle condivisioni, questo pulsante è disattivato.</para>
-            <para
->&smb4k; riesce anche a forzare lo smontaggio delle condivisioni (solo in &Linux;). Questo può essere utile in caso di condivisioni inaccessibili che non possono essere smontate in maniera normale. Per abilitare questa funzionalità devi modificare le <link linkend="configuration_page_mounting_basic_settings_behavior"
+          <para
+>&smb4k; riesce a forzare lo smontaggio delle condivisioni (solo in &Linux;). Questo può essere utile in caso di condivisioni inaccessibili che non possono essere smontate in maniera normale. Per abilitare questa funzionalità devi modificare le <link linkend="configuration_page_mounting_basic_settings_behavior"
 >impostazioni</link
 > nella finestra di configurazione.</para>
-            <para
+          <para
 >Consulta la sezione <link linkend="shares_view_unmounting"
 >smontare le condivisioni</link
 > per maggiori dettagli.</para>
@@ -8291,8 +8642,31 @@ ntlm auth = yes
 >aggiungere i segnalibri</link
 > per maggiori dettagli.</para>
         </listitem>
-      </varlistentry
->   
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Condivisioni</guimenu
+> <guimenuitem
+>Aggiungi impostazioni personalizzate</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Apri l'editor delle <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Impostazioni personalizzate</link
+>: puoi impostare diverse impostazioni personalizzate per la condivisione selezionata. Per maggiori dettagli leggi la sezione <link linkend="custom_settings_adding"
+>Aggiungere impostazioni personalizzate</link
+>.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8360,7 +8734,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre il contenuto della condivisione selezionata nel gestore di file predefinito (&eg; &dolphin;).</para>
+>Apri il contenuto della condivisione selezionata nel gestore di file predefinito (&eg; &dolphin;).</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8386,7 +8760,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre l'<link linkend="bookmarks_editor"
+>Apri l'<link linkend="bookmarks_editor"
 >editor dei segnalibri</link
 >. Questa azione è disabilitata se non ci sono i segnalibri.</para>
         </listitem>
@@ -8417,12 +8791,12 @@ ntlm auth = yes
 ><guimenu
 >Segnalibri</guimenu
 > <guimenuitem
->Monta tutti i segnalibri</guimenuitem
+>Monta segnalibri</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
           <para
->Monta contemporaneamente tutti i segnalibri di primo livello. È disabilitato se sono montate tutte le condivisioni nei segnalibri. Questa azione non è presente se non ci sono segnalibri di primo livello.</para>
+>Monta contemporaneamente tutti i segnalibri di primo livello. È disabilitata se sono montate tutte le condivisioni nei segnalibri. Questa azione non è presente se non ci sono segnalibri di primo livello.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8528,7 +8902,7 @@ ntlm auth = yes
         </term>
         <listitem>
           <para
->Apre la finestra di configurazione</para>
+>Apri la finestra di configurazione</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -8574,7 +8948,7 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Fornisci la versione di &smb4k; e di &kf5;.</para
+>Fornisci la versione di &smb4k; e di &kde-frameworks;.</para
 ></listitem>
     <listitem
 ><para
@@ -8587,8 +8961,8 @@ ntlm auth = yes
     <listitem
 ><para
 >Se si verifica un crash, allega un backtrace completo. Per questo ti raccomandiamo di (ri)compilare &smb4k; con i simboli di debug. Come farlo viene spiegato nel file <filename
->README</filename
-> fornito coi sorgenti.</para
+>README.md</filename
+> che è stato fornito coi sorgenti.</para
 ></listitem>
     <listitem
 ><para
@@ -8617,7 +8991,7 @@ ntlm auth = yes
 >Riconoscimenti e licenza</title>
 
   <para
->Copyright &copy; 2003 - 2021, Alexander Reinholdt <email
+>Copyright &copy; 2003 - 2023, Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
 ></para>
 
