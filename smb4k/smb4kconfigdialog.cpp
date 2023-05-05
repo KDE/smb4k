@@ -263,4 +263,3 @@ void Smb4KConfigDialog::slotCheckPage(KPageWidgetItem *current, KPageWidgetItem 
 }
 
 #include "smb4kconfigdialog.moc"
-

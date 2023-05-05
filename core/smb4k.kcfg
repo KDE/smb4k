@@ -6,9 +6,7 @@
     <include>QString</include>
     <include>QDir</include>
     <include>QUrl</include>
-    <include>QHostInfo</include>
     <include>KIconLoader</include>
-    <include>smb4kglobal.h</include>
     <kcfgfile name="smb4krc" />
 
 <!-- User Interface -->

@@ -33,6 +33,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileInfo>
+#include <QHostInfo>
 #include <QTimer>
 #include <QUdpSocket>
 
