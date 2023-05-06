@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 00:46+0000\n"
+"POT-Creation-Date: 2023-05-06 00:47+0000\n"
 "PO-Revision-Date: 2022-05-21 12:00+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -21,49 +21,49 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:18
+#: smb4k.kcfg:16
 #, kde-format
 msgid "Tab orientation:"
 msgstr "Flikorientering:"
 
 #. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:19
+#: smb4k.kcfg:17
 #, kde-format
 msgid "Set the tab orientation for the tabified dock widgets."
 msgstr "Ställ in flikorienteringen för dockningskomponenterna med flikar."
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:22
+#: smb4k.kcfg:20
 #, kde-format
 msgid "Top"
 msgstr "Längst upp"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:25
+#: smb4k.kcfg:23
 #, kde-format
 msgid "Bottom"
 msgstr "Längst ner"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:28
+#: smb4k.kcfg:26
 #, kde-format
 msgid "Left"
 msgstr "Vänster"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:31
+#: smb4k.kcfg:29
 #, kde-format
 msgid "Right"
 msgstr "Höger"
 
 #. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
-#: smb4k.kcfg:37
+#: smb4k.kcfg:35
 #, kde-format
 msgid "Show custom bookmark label if available"
 msgstr "Visa anpassad bokmärkesbeteckning om tillgänglig"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
-#: smb4k.kcfg:38
+#: smb4k.kcfg:36
 #, kde-format
 msgid ""
 "Do not show the name of the share that is represented by the bookmark but "
@@ -73,13 +73,13 @@ msgstr ""
 "den anpassade beteckningen som angavs i bokmärkeseditorn."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
-#: smb4k.kcfg:42
+#: smb4k.kcfg:40
 #, kde-format
 msgid "Start docked"
 msgstr "Starta inbäddad"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
-#: smb4k.kcfg:43
+#: smb4k.kcfg:41
 #, kde-format
 msgid ""
 "Start the application docked to the system tray, i.e. only the system tray "
@@ -93,13 +93,13 @@ msgstr ""
 "popup meny."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
-#: smb4k.kcfg:47
+#: smb4k.kcfg:45
 #, kde-format
 msgid "Show the type of the share"
 msgstr "Visa typ av resurs"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
-#: smb4k.kcfg:48
+#: smb4k.kcfg:46
 #, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
@@ -109,13 +109,13 @@ msgstr ""
 "vara en disk, skrivare eller IPC."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
-#: smb4k.kcfg:52
+#: smb4k.kcfg:50
 #, kde-format
 msgid "Show the IP address of the server"
 msgstr "Visa serverns IP-adress"
 
 #. i18n: ectx: whatsthis, entry (ShowIPAddress), group (UserInterface)
-#: smb4k.kcfg:53
+#: smb4k.kcfg:51
 #, kde-format
 msgid ""
 "The IP address of the server will be displayed in a separate column in the "
@@ -123,13 +123,13 @@ msgid ""
 msgstr "Serverns IP-adress visas i en separat kolumn i nätverksbläddraren."
 
 #. i18n: ectx: label, entry (ShowComment), group (UserInterface)
-#: smb4k.kcfg:57
+#: smb4k.kcfg:55
 #, kde-format
 msgid "Show the comment"
 msgstr "Visa kommentar"
 
 #. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
-#: smb4k.kcfg:58
+#: smb4k.kcfg:56
 #, kde-format
 msgid ""
 "The comment describing the server or share will be displayed in a separate "
@@ -139,25 +139,25 @@ msgstr ""
 "separat kolumn i nätverksbläddraren."
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
-#: smb4k.kcfg:62
+#: smb4k.kcfg:60
 #, kde-format
 msgid "Show tooltips for network items"
 msgstr "Visa verktygstips för nätverksobjekt"
 
 #. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
-#: smb4k.kcfg:63
+#: smb4k.kcfg:61
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
 msgstr "Verktygstipset visar blandat information om nätverksposten."
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
-#: smb4k.kcfg:67
+#: smb4k.kcfg:65
 #, kde-format
 msgid "Automatically expand domains and hosts"
 msgstr "Expandera domäner och värddatorer automatiskt"
 
 #. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
-#: smb4k.kcfg:68
+#: smb4k.kcfg:66
 #, kde-format
 msgid ""
 "Automatically expand domain and host items when a list of associated network "
@@ -170,25 +170,25 @@ msgstr ""
 "expanderas när det körs."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
-#: smb4k.kcfg:72
+#: smb4k.kcfg:70
 #, kde-format
 msgid "Show tooltips for mounted shares"
 msgstr "Visa verktygstips för monterade resurser"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
-#: smb4k.kcfg:73
+#: smb4k.kcfg:71
 #, kde-format
 msgid "The tooltip shows various information about the current share."
 msgstr "Verktygstipset visar diverse information om den delade resursen."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:77
+#: smb4k.kcfg:75
 #, kde-format
 msgid "View mode:"
 msgstr "Visningsläge:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:78
+#: smb4k.kcfg:76
 #, kde-format
 msgid ""
 "This setting determines the view mode of the shares view. There are two "
@@ -198,61 +198,61 @@ msgstr ""
 "varianter: ikonvy och listvy."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:81
+#: smb4k.kcfg:79
 #, kde-format
 msgid "Icon View"
 msgstr "Ikonvy"
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:84
+#: smb4k.kcfg:82
 #, kde-format
 msgid "List View"
 msgstr "Visa lista"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
-#: smb4k.kcfg:90
+#: smb4k.kcfg:88
 #, kde-format
 msgid "Icon size for the icon view:"
 msgstr "Ikonstorlek för ikonvyn:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
-#: smb4k.kcfg:91
+#: smb4k.kcfg:89
 #, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
 msgstr "Ställ in ikonstorlek för ikonvisningsläget för delade resurser."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
-#: smb4k.kcfg:97
+#: smb4k.kcfg:95
 #, kde-format
 msgid "Icon size for the list view:"
 msgstr "Ikonstorlek för listvyn:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
-#: smb4k.kcfg:98
+#: smb4k.kcfg:96
 #, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
 msgstr "Ställ in ikonstorlek för listvisningsläget för delade resurser."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
-#: smb4k.kcfg:104
+#: smb4k.kcfg:102
 #, kde-format
 msgid "Icon size:"
 msgstr "Ikonstorlek:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
-#: smb4k.kcfg:105
+#: smb4k.kcfg:103
 #, kde-format
 msgid "Set the icon size for the network neighborhood browser."
 msgstr "Ställ in ikonstorlek för bläddraren i nätverksgrannskapet."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
-#: smb4k.kcfg:116
+#: smb4k.kcfg:114
 #, kde-format
 msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
 msgstr "Använd Webbtjänst dynamisk upptäckt (WS-Discovery) för bläddring"
 
 #. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
-#: smb4k.kcfg:117
+#: smb4k.kcfg:115
 #, kde-format
 msgid ""
 "The Web Services Dynamic Discovery (WS-Discovery) is used to browse the "
@@ -270,13 +270,13 @@ msgstr ""
 "efter arbetsgrupper och domäner."
 
 #. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
-#: smb4k.kcfg:121
+#: smb4k.kcfg:119
 #, kde-format
 msgid "Use DNS Service Discovery (DNS-SD) for browsing"
 msgstr "Använd DNS-tjänstupptäckt (DNS-SD) för bläddring"
 
 #. i18n: ectx: whatsthis, entry (UseDnsServiceDiscovery), group (Network)
-#: smb4k.kcfg:122
+#: smb4k.kcfg:120
 #, kde-format
 msgid ""
 "The DNS Service Discovery (DNS-SD) is used to browse the local network and "
@@ -296,7 +296,7 @@ msgstr ""
 "arbetsgrupper och domäner."
 
 #. i18n: ectx: label, entry (ForceSmb1Protocol), group (Network)
-#: smb4k.kcfg:126
+#: smb4k.kcfg:124
 #, kde-format
 msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 msgstr ""
@@ -304,7 +304,7 @@ msgstr ""
 "domänsökning"
 
 #. i18n: ectx: whatsthis, entry (ForceSmb1Protocol), group (Network)
-#: smb4k.kcfg:127
+#: smb4k.kcfg:125
 #, kde-format
 msgid ""
 "Smb4K will force Samba's client library to use the SMB protocol version 1.0 "
@@ -326,13 +326,13 @@ msgstr ""
 "fungerar, behövs det inte."
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
-#: smb4k.kcfg:131
+#: smb4k.kcfg:129
 #, kde-format
 msgid "Set minimal and maximal SMB protocol version"
 msgstr "Ange minsta och största SMB-protokollversion"
 
 #. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
-#: smb4k.kcfg:132
+#: smb4k.kcfg:130
 #, kde-format
 msgid ""
 "Smb4K will set the minimal and maximal SMB protocol version that is used by "
@@ -356,13 +356,13 @@ msgstr ""
 "uppslagning av domäner eller arbetsgrupper."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:136
+#: smb4k.kcfg:134
 #, kde-format
 msgid "Minimal SMB protocol version:"
 msgstr "Minsta SMB-protokollversion:"
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:137
+#: smb4k.kcfg:135
 #, kde-format
 msgid ""
 "This setting controls the minimum protocol version that Samba's client "
@@ -373,33 +373,33 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:140 smb4k.kcfg:156
+#: smb4k.kcfg:138 smb4k.kcfg:154
 #, kde-format
 msgid "NT1 (Classic CIFS/SMBv1 protocol)"
 msgstr "NT1 (klassiskt CIFS/SMBv1-protokoll)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:143 smb4k.kcfg:159
+#: smb4k.kcfg:141 smb4k.kcfg:157
 #, kde-format
 msgid "SMB2 (Windows Vista and above)"
 msgstr "SMB2 (Windows Vista och senare)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:146 smb4k.kcfg:162
+#: smb4k.kcfg:144 smb4k.kcfg:160
 #, kde-format
 msgid "SMB3 (Windows 8 and above)"
 msgstr "SMB3 (Windows 8 och senare)"
 
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:152
+#: smb4k.kcfg:150
 #, kde-format
 msgid "Maximal SMB protocol version:"
 msgstr "Största SMB-protokollversion:"
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:153
+#: smb4k.kcfg:151
 #, kde-format
 msgid ""
 "This setting controls the maximum protocol version that Samba's client "
@@ -409,14 +409,14 @@ msgstr ""
 "försöker använda."
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
-#: smb4k.kcfg:168
+#: smb4k.kcfg:166
 #, kde-format
 msgid "Set the SMB port to:"
 msgstr "Ställ in SMB-porten till:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
-#: smb4k.kcfg:169 smb4k.kcfg:173
+#: smb4k.kcfg:167 smb4k.kcfg:171
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the port that is used for connecting to remote servers with the "
@@ -432,13 +432,13 @@ msgstr ""
 "(NetBIOS). Med FreeBSD används inställningen också vid montering."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
-#: smb4k.kcfg:179
+#: smb4k.kcfg:177
 #, kde-format
 msgid "This computer is on a large network neighborhood"
 msgstr "Datorn befinner sig i ett stort nätverksgrannskap"
 
 #. i18n: ectx: whatsthis, entry (LargeNetworkNeighborhood), group (Network)
-#: smb4k.kcfg:180
+#: smb4k.kcfg:178
 #, kde-format
 msgid ""
 "In case your computer is on a large network neighborhood, discovering all "
@@ -455,13 +455,13 @@ msgstr ""
 "nätverksgrannskap."
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
-#: smb4k.kcfg:184
+#: smb4k.kcfg:182
 #, kde-format
 msgid "Master browsers require authentication"
 msgstr "Huvudbläddrare kräver behörighetskontroll"
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
-#: smb4k.kcfg:185
+#: smb4k.kcfg:183
 #, kde-format
 msgid ""
 "The master browsers in your network neighborhood require a login to return "
@@ -471,13 +471,13 @@ msgstr ""
 "bläddringslistan. Inställningen behövs sällan."
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
-#: smb4k.kcfg:189
+#: smb4k.kcfg:187
 #, kde-format
 msgid "Use Kerberos for authentication"
 msgstr "Använd Kerberos för behörighetskontroll"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
-#: smb4k.kcfg:190
+#: smb4k.kcfg:188
 #, kde-format
 msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
@@ -487,56 +487,56 @@ msgstr ""
 "med aktiva kataloger."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
-#: smb4k.kcfg:194
+#: smb4k.kcfg:192
 #, kde-format
 msgid "Use Winbind ccache for authentication"
 msgstr "Använd Winbind ccache för behörighetskontroll"
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
-#: smb4k.kcfg:195
+#: smb4k.kcfg:193
 #, kde-format
 msgid "Use the Winbind ccache for authentication."
 msgstr "Använd Winbind ccache för behörighetskontroll."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
-#: smb4k.kcfg:199
+#: smb4k.kcfg:197
 #, kde-format
 msgid "Set the encryption level to:"
 msgstr "Ställ in krypteringsnivån till:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:200 smb4k.kcfg:204
+#: smb4k.kcfg:198 smb4k.kcfg:202
 #, kde-format
 msgid "Set the level of encryption that is used for making connections."
 msgstr "Ställ in krypteringsnivå som används för att upprätta förbindelser."
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:207
+#: smb4k.kcfg:205
 #, kde-format
 msgid "None"
 msgstr "Ingen"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:210
+#: smb4k.kcfg:208
 #, kde-format
 msgid "Request"
 msgstr "Begärd"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:213
+#: smb4k.kcfg:211
 #, kde-format
 msgid "Require"
 msgstr "Obligatorisk"
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
-#: smb4k.kcfg:219
+#: smb4k.kcfg:217
 #, kde-format
 msgid "Preview hidden files and directories"
 msgstr "Förhandsgranska dolda filer och kataloger"
 
 #. i18n: ectx: whatsthis, entry (PreviewHiddenItems), group (Network)
-#: smb4k.kcfg:220
+#: smb4k.kcfg:218
 #, kde-format
 msgid ""
 "Preview hidden files and directories. The hidden files and directories are "
@@ -552,25 +552,25 @@ msgstr ""
 "aktiveras."
 
 #. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
-#: smb4k.kcfg:224
+#: smb4k.kcfg:222
 #, kde-format
 msgid "Detect printer shares"
 msgstr "Detektera delade skrivare"
 
 #. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
-#: smb4k.kcfg:225
+#: smb4k.kcfg:223
 #, kde-format
 msgid "Printer shares are detected."
 msgstr "Delade skrivare detekteras."
 
 #. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
-#: smb4k.kcfg:229
+#: smb4k.kcfg:227
 #, kde-format
 msgid "Detect hidden shares"
 msgstr "Detektera dolda resurser"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
-#: smb4k.kcfg:230
+#: smb4k.kcfg:228
 #, kde-format
 msgid ""
 "Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
@@ -580,13 +580,13 @@ msgstr ""
 "Musik$ or IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
-#: smb4k.kcfg:234
+#: smb4k.kcfg:232
 #, kde-format
 msgid "Enable Wake-On-LAN features"
 msgstr "Aktivera funktion för att väckas av lokalt nätverk"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
-#: smb4k.kcfg:235
+#: smb4k.kcfg:233
 #, kde-format
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
@@ -601,13 +601,13 @@ msgstr ""
 "väckas av lokalt nätverk, måste det här alternativet aktiveras."
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
-#: smb4k.kcfg:239
+#: smb4k.kcfg:237
 #, kde-format
 msgid "Waiting time:"
 msgstr "Väntetid:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
-#: smb4k.kcfg:240
+#: smb4k.kcfg:238
 #, kde-format
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
@@ -619,13 +619,13 @@ msgstr ""
 "montering av en delad resurs."
 
 #. i18n: ectx: label, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:251
+#: smb4k.kcfg:249
 #, kde-format
 msgid "Save logins in a wallet"
 msgstr "Spara användarnamn och lösenord i en plånbok"
 
 #. i18n: ectx: whatsthis, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:252
+#: smb4k.kcfg:250
 #, kde-format
 msgid ""
 "Use a wallet to store the login. The username and password are stored "
@@ -637,13 +637,13 @@ msgstr ""
 "lagras inloggningsinformationen endast temporärt."
 
 #. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:256
+#: smb4k.kcfg:254
 #, kde-format
 msgid "Use a default login"
 msgstr "Använd standardanvändare"
 
 #. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:257
+#: smb4k.kcfg:255
 #, kde-format
 msgid ""
 "Enable the usage of a default login. The provided data is used by default to "
@@ -656,13 +656,13 @@ msgstr ""
 "NT-domän."
 
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:269
+#: smb4k.kcfg:267
 #, kde-format
 msgid "Synchronization prefix:"
 msgstr "Synkroniseringsprefix:"
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:270
+#: smb4k.kcfg:268
 #, kde-format
 msgid ""
 "Under this prefix the destination directory for the synchronization will be "
@@ -675,37 +675,37 @@ msgstr ""
 "att kunna välja en annan sökväg innan själva synkroniseringen börjar."
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:274
+#: smb4k.kcfg:272
 #, kde-format
 msgid "Archive mode"
 msgstr "Arkivering"
 
 #. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:275
+#: smb4k.kcfg:273
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
 msgstr "Använd arkivering (-a, --archive). Detta är kortformen av -rlptgoD."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:279
+#: smb4k.kcfg:277
 #, kde-format
 msgid "Recurse into subdirectories"
 msgstr "Gå in i underkataloger"
 
 #. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:280
+#: smb4k.kcfg:278
 #, kde-format
 msgid "Recurse into directories (-r, --recursive)."
 msgstr "Gå in i kataloger (-r, --recursive)."
 
 #. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:284
+#: smb4k.kcfg:282
 #, kde-format
 msgid "Update files"
 msgstr "Uppdatera filer"
 
 #. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:285
+#: smb4k.kcfg:283
 #, kde-format
 msgid ""
 "Update files in the destination directory that are older than in the source "
@@ -715,13 +715,13 @@ msgstr ""
 "update)."
 
 #. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:289
+#: smb4k.kcfg:287
 #, kde-format
 msgid "Update files in place"
 msgstr "Uppdatera filer på plats"
 
 #. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:290
+#: smb4k.kcfg:288
 #, kde-format
 msgid ""
 "Update destination files in-place (--inplace). By default, rsync first "
@@ -737,13 +737,13 @@ msgstr ""
 "backup."
 
 #. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:294
+#: smb4k.kcfg:292
 #, kde-format
 msgid "Use relative path names"
 msgstr "Använd relativa sökvägar"
 
 #. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:295
+#: smb4k.kcfg:293
 #, kde-format
 msgid ""
 "Use relative paths (-R, --relative). This means that the full path names "
@@ -755,13 +755,13 @@ msgstr ""
 "bara de sista delarna av filnamnen."
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:299
+#: smb4k.kcfg:297
 #, kde-format
 msgid "Do not send implied directories"
 msgstr "Skicka inte tillhörande kataloger"
 
 #. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:300
+#: smb4k.kcfg:298
 #, kde-format
 msgid ""
 "Do not send implied directories with --relative (--no-implied-dirs). This "
@@ -780,13 +780,13 @@ msgstr ""
 "katalog på den andra sidan."
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:304
+#: smb4k.kcfg:302
 #, kde-format
 msgid "Transfer directories without recursing"
 msgstr "Överför utan att läsa ner i kataloger"
 
 #. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:305
+#: smb4k.kcfg:303
 #, kde-format
 msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
@@ -796,13 +796,13 @@ msgstr ""
 "underkataloger som finns i högsta nivån överförs men utan innehållet."
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:310
+#: smb4k.kcfg:308
 #, kde-format
 msgid "Compress data during transfer"
 msgstr "Komprimera data under överföringen"
 
 #. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:311
+#: smb4k.kcfg:309
 #, kde-format
 msgid ""
 "Compress data during transfer (-z, --compress). This significantly reduces "
@@ -814,13 +814,13 @@ msgstr ""
 "fördel använda denna inställning."
 
 #. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:315
+#: smb4k.kcfg:313
 #, kde-format
 msgid "Set compression level:"
 msgstr "Ställ in komprimeringsgrad:"
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:316
+#: smb4k.kcfg:314
 #, kde-format
 msgid ""
 "Explicitly set the compression level to use (--compress-level=NUM). If NUM "
@@ -830,19 +830,19 @@ msgstr ""
 "NUM är skilt från noll, är argumentet till --compress underförstått."
 
 #. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
-#: smb4k.kcfg:320
+#: smb4k.kcfg:318
 #, kde-format
 msgid "The value for the UseCompressionLevel config entry"
 msgstr "Värde för UseCompressionLeve konfigurationsinställning"
 
 #. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:327
+#: smb4k.kcfg:325
 #, kde-format
 msgid "Skip compression for following file suffixes:"
 msgstr "Hoppa över komprimering för följande filsuffix:"
 
 #. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:328
+#: smb4k.kcfg:326
 #, kde-format
 msgid ""
 "Overwrite the list of file suffixes that will not be compressed (--skip-"
@@ -858,44 +858,44 @@ msgstr ""
 "listan. För ytterligare information, se manualsidan för rsync."
 
 #. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
-#: smb4k.kcfg:332
+#: smb4k.kcfg:330
 #, kde-format
 msgid "The value(s) for the UseSkipCompression config entry"
 msgstr "Värde(n) för inställningsalternativet UseSkipCompression"
 
 #. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:337
+#: smb4k.kcfg:335
 #, kde-format
 msgid "Preserve symlinks"
 msgstr "Bevara symboliska länkar"
 
 #. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:338
+#: smb4k.kcfg:336
 #, kde-format
 msgid "Copy symlinks as symlinks (-l, --links)."
 msgstr "Kopiera symboliska länkar som symboliska länkar (-l, --links)."
 
 #. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:342
+#: smb4k.kcfg:340
 #, kde-format
 msgid "Transform symlinks"
 msgstr "Omvandla symboliska länkar"
 
 #. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:343
+#: smb4k.kcfg:341
 #, kde-format
 msgid ""
 "Transform symlinks into the items they are pointing to (-L, --copy-links)."
 msgstr "Omvandla symboliska länkar till det de pekar på (-L, --copy-links)."
 
 #. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:347
+#: smb4k.kcfg:345
 #, kde-format
 msgid "Transform unsafe symlinks"
 msgstr "Omvandla osäkra symboliska länkar"
 
 #. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:348
+#: smb4k.kcfg:346
 #, kde-format
 msgid ""
 "Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
@@ -911,13 +911,13 @@ msgstr ""
 "har angivits."
 
 #. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:352
+#: smb4k.kcfg:350
 #, kde-format
 msgid "Ignore unsafe symlinks"
 msgstr "Ignorera osäkra symboliska länkar"
 
 #. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:353
+#: smb4k.kcfg:351
 #, kde-format
 msgid ""
 "Ignore symlinks that point outside the copied tree (--safe-links). All "
@@ -929,13 +929,13 @@ msgstr ""
 "används tillsammans med --relative kan oönskade resultat förekomma."
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:357
+#: smb4k.kcfg:355
 #, kde-format
 msgid "Munge symlinks"
 msgstr "Modifiera symboliska länkar"
 
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:358
+#: smb4k.kcfg:356
 #, kde-format
 msgid ""
 "This option tells rsync to (1) modify all symlinks on the receiving side in "
@@ -954,13 +954,13 @@ msgstr ""
 "för rsync."
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:362
+#: smb4k.kcfg:360
 #, kde-format
 msgid "Preserve hard links"
 msgstr "Bevara hårda länkar"
 
 #. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:363
+#: smb4k.kcfg:361
 #, kde-format
 msgid ""
 "Preserve hard links (-H, --hard-links). This options causes rsync to "
@@ -972,13 +972,13 @@ msgstr ""
 "länkarna som om de vore separata filer."
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:367
+#: smb4k.kcfg:365
 #, kde-format
 msgid "Copy directory symlinks"
 msgstr "Kopiera symboliska kataloglänkar"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:368
+#: smb4k.kcfg:366
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the sending side as though they were real "
@@ -999,13 +999,13 @@ msgstr ""
 "manualsidan för rsync."
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:372
+#: smb4k.kcfg:370
 #, kde-format
 msgid "Keep directory symlinks"
 msgstr "Behåll symboliska kataloglänkar"
 
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:373
+#: smb4k.kcfg:371
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the receiving side as though they were real "
@@ -1019,13 +1019,13 @@ msgstr ""
 "mottagarens symboliska länk att skrivas över med en riktig katalog."
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:377
+#: smb4k.kcfg:375
 #, kde-format
 msgid "Preserve permissions"
 msgstr "Bevara rättigheter"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:378
+#: smb4k.kcfg:376
 #, kde-format
 msgid ""
 "Preserve permissions (-p, --perms). The permissions of the destination file "
@@ -1037,13 +1037,13 @@ msgstr ""
 "denna inställning inte används."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:382
+#: smb4k.kcfg:380
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:383
+#: smb4k.kcfg:381
 #, kde-format
 msgid ""
 "Preserve access control lists. This option causes rsync to update the "
@@ -1053,14 +1053,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:387
+#: smb4k.kcfg:385
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve extended attributes"
 msgstr "Bevara tidsstämpeln"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:388
+#: smb4k.kcfg:386
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1073,14 +1073,14 @@ msgstr ""
 "att vara samma som källfilens."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:392
+#: smb4k.kcfg:390
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve access times"
 msgstr "Bevara tidsstämpeln"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:393
+#: smb4k.kcfg:391
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1093,14 +1093,14 @@ msgstr ""
 "att vara samma som källfilens."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:397
+#: smb4k.kcfg:395
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve create times"
 msgstr "Bevara tidsstämpeln"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:398
+#: smb4k.kcfg:396
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1113,13 +1113,13 @@ msgstr ""
 "att vara samma som källfilens."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:402
+#: smb4k.kcfg:400
 #, kde-format
 msgid "Preserve group"
 msgstr "Bevara grupp"
 
 #. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:403
+#: smb4k.kcfg:401
 #, kde-format
 msgid ""
 "Preserve the group (-g, --group). The group of the destination file will be "
@@ -1129,13 +1129,13 @@ msgstr ""
 "att vara samma som källfilens."
 
 #. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:407
+#: smb4k.kcfg:405
 #, kde-format
 msgid "Preserve owner"
 msgstr "Bevara ägare"
 
 #. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:408
+#: smb4k.kcfg:406
 #, kde-format
 msgid ""
 "Preserve the owner (-o, --owner). The owner of the destination file will be "
@@ -1148,13 +1148,13 @@ msgstr ""
 "detta val kommer ägaren bli den som skriver filen på mottagarsidan."
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:412
+#: smb4k.kcfg:410
 #, kde-format
 msgid "Preserve device and special files"
 msgstr "Bevara enheter och speciella filer"
 
 #. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:413
+#: smb4k.kcfg:411
 #, kde-format
 msgid ""
 "Preserve device and special files (-D, --devices --specials). This option "
@@ -1168,13 +1168,13 @@ msgstr ""
 "super inte angivits."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:417
+#: smb4k.kcfg:415
 #, kde-format
 msgid "Preserve times"
 msgstr "Bevara tidsstämpeln"
 
 #. i18n: ectx: whatsthis, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:418
+#: smb4k.kcfg:416
 #, kde-format
 msgid ""
 "Preserve times (-t, --times). The modification times are transferred along "
@@ -1186,13 +1186,13 @@ msgstr ""
 "inställning inte används."
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:422
+#: smb4k.kcfg:420
 #, kde-format
 msgid "Omit directories when preserving times"
 msgstr "Undanhåll kataloger när tidsstämpeln bevaras"
 
 #. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:423
+#: smb4k.kcfg:421
 #, kde-format
 msgid ""
 "Omit directories when preserving times (-O, --omit-dir-times). This means "
@@ -1204,13 +1204,13 @@ msgstr ""
 "inställning fungerar endast tillsammans med --times."
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:427
+#: smb4k.kcfg:425
 #, kde-format
 msgid "Remove synchronized source files"
 msgstr "Ta bort synkroniserade källfiler"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:428
+#: smb4k.kcfg:426
 #, kde-format
 msgid ""
 "Remove all synchronized source files (--remove-source-files). This tells "
@@ -1223,13 +1223,13 @@ msgstr ""
 "överföringen och där kopieringen till den mottagande sidan har lyckats."
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:432
+#: smb4k.kcfg:430
 #, kde-format
 msgid "Delete extraneous files"
 msgstr "Ta bort irrelevanta filer"
 
 #. i18n: ectx: whatsthis, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:433
+#: smb4k.kcfg:431
 #, kde-format
 msgid ""
 "Delete extraneous files from destination (--delete). This tells rsync to "
@@ -1241,13 +1241,13 @@ msgstr ""
 "sidan, dock endast för de kataloter som har synkroniserats."
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:437
+#: smb4k.kcfg:435
 #, kde-format
 msgid "Delete files before transfer"
 msgstr "Ta bort filer innan överföring"
 
 #. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:438
+#: smb4k.kcfg:436
 #, kde-format
 msgid ""
 "Delete files on the receiving side before the transfer starts (--delete-"
@@ -1259,13 +1259,13 @@ msgstr ""
 "har angivits utan en av --delete-WHEN valen."
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:442
+#: smb4k.kcfg:440
 #, kde-format
 msgid "Delete files after transfer"
 msgstr "Ta bort filer efter överföring"
 
 #. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:443
+#: smb4k.kcfg:441
 #, kde-format
 msgid ""
 "Delete files on the receiving side after the transfer has completed (--"
@@ -1275,13 +1275,13 @@ msgstr ""
 "delete-after, --del)."
 
 #. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:447
+#: smb4k.kcfg:445
 #, kde-format
 msgid "Delete files during transfer"
 msgstr "Ta bort filer under överföring"
 
 #. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:448
+#: smb4k.kcfg:446
 #, kde-format
 msgid ""
 "Delete files on the receiving side during the transfer (--delete-during). "
@@ -1293,13 +1293,13 @@ msgstr ""
 "med rsync 2.6.4 eller senare version."
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:452
+#: smb4k.kcfg:450
 #, kde-format
 msgid "Delete excluded files"
 msgstr "Ta bort uteslutna filer"
 
 #. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:453
+#: smb4k.kcfg:451
 #, kde-format
 msgid ""
 "Also delete excluded files from destination directory (--delete-excluded). "
@@ -1313,13 +1313,13 @@ msgstr ""
 "mottagarsidan som uteslutits. Läs rsyncs mansida för ytterligare information."
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:457
+#: smb4k.kcfg:455
 #, kde-format
 msgid "Delete even if I/O errors occur"
 msgstr "Ta bort även om I/O fel uppstår"
 
 #. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:458
+#: smb4k.kcfg:456
 #, kde-format
 msgid ""
 "Delete even if I/O errors occur (--ignore-errors). This option has to be "
@@ -1329,13 +1329,13 @@ msgstr ""
 "måste användas tillsammans med --delete för att fungera."
 
 #. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:462
+#: smb4k.kcfg:460
 #, kde-format
 msgid "Force deletion of non-void directories"
 msgstr "Tvinga borttagning av ogiltiga kataloger"
 
 #. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:463
+#: smb4k.kcfg:461
 #, kde-format
 msgid ""
 "Force deletion of directories even if they are not empty (--force). This "
@@ -1348,13 +1348,13 @@ msgstr ""
 "inte är aktiva."
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:467
+#: smb4k.kcfg:465
 #, kde-format
 msgid "Do not delete more than this many files:"
 msgstr "Ta inte bort mer än så här många filer:"
 
 #. i18n: ectx: whatsthis, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:468
+#: smb4k.kcfg:466
 #, kde-format
 msgid ""
 "Only delete as many files as defined here (--max-delete=NUM). This tells "
@@ -1367,19 +1367,19 @@ msgstr ""
 "speglas för att unvika missöden."
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
-#: smb4k.kcfg:472
+#: smb4k.kcfg:470
 #, kde-format
 msgid "Value for DeleteMaximum config entry"
 msgstr "Värde för DeleteMaximum konfigurationsinställning"
 
 #. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:478
+#: smb4k.kcfg:476
 #, kde-format
 msgid "Do not transfer any file smaller than:"
 msgstr "Överför inte några filer mindre än:"
 
 #. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:479
+#: smb4k.kcfg:477
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is smaller than the "
@@ -1389,19 +1389,19 @@ msgstr ""
 "storleken (--min-size=SIZE)."
 
 #. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:483
+#: smb4k.kcfg:481
 #, kde-format
 msgid "Value for MinimalTransferSize config entry"
 msgstr "Värde för MinimalTransferSize konfigurationsinställning"
 
 #. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:489
+#: smb4k.kcfg:487
 #, kde-format
 msgid "Do not transfer any file larger than:"
 msgstr "Överför inte några filer större än:"
 
 #. i18n: ectx: whatsthis, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:490
+#: smb4k.kcfg:488
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is larger than the "
@@ -1411,19 +1411,19 @@ msgstr ""
 "storleken (--max-size=SIZE)."
 
 #. i18n: ectx: label, entry (MaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:494
+#: smb4k.kcfg:492
 #, kde-format
 msgid "Value for MaximalTransferSize config entry"
 msgstr "Värde för inställningsalternativet MaximalTransferSize"
 
 #. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:500
+#: smb4k.kcfg:498
 #, kde-format
 msgid "Keep partially transferred files"
 msgstr "Behåll delvis överförda filer"
 
 #. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:501
+#: smb4k.kcfg:499
 #, kde-format
 msgid ""
 "Keep partially transferred files (--partial). The default behavior is that "
@@ -1433,13 +1433,13 @@ msgstr ""
 "delvis överförda filer om överföringen avbryts."
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:505
+#: smb4k.kcfg:503
 #, kde-format
 msgid "Put partially transferred files into:"
 msgstr "Placera delvis överförda filer i:"
 
 #. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:506
+#: smb4k.kcfg:504
 #, kde-format
 msgid ""
 "Put a partially transferred file into this directory (--partial-dir=DIR). "
@@ -1453,19 +1453,19 @@ msgstr ""
 "skrivs inte över."
 
 #. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
-#: smb4k.kcfg:510
+#: smb4k.kcfg:508
 #, kde-format
 msgid "The data for the UsePartialDirectory option"
 msgstr "Data för alternativet UsePartialDirectory"
 
 #. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:515
+#: smb4k.kcfg:513
 #, kde-format
 msgid "Auto-ignore files in the same way CVS does"
 msgstr "Ignorera automatiskt filer på samma sätt som CVS"
 
 #. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:516
+#: smb4k.kcfg:514
 #, kde-format
 msgid ""
 "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
@@ -1479,13 +1479,13 @@ msgstr ""
 "som CVS för att bestämma om en fil ska ignoreras."
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:520
+#: smb4k.kcfg:518
 #, kde-format
 msgid "Exclude files matching this pattern:"
 msgstr "Uteslut filer som motsvarar följande mönster:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:521
+#: smb4k.kcfg:519
 #, kde-format
 msgid ""
 "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
@@ -1497,19 +1497,19 @@ msgstr ""
 "manualsidan för rsync."
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
-#: smb4k.kcfg:525
+#: smb4k.kcfg:523
 #, kde-format
 msgid "Pattern that is used for file exclusion"
 msgstr "Mönster som används för att undanta filer"
 
 #. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:530
+#: smb4k.kcfg:528
 #, kde-format
 msgid "Read exclude patterns from:"
 msgstr "Läs mönster att utesluta från:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:531
+#: smb4k.kcfg:529
 #, kde-format
 msgid ""
 "Read exclude patterns from a file (--exclude-from=FILE). This option is "
@@ -1523,19 +1523,19 @@ msgstr ""
 "manualsidan för rsync."
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:535
+#: smb4k.kcfg:533
 #, kde-format
 msgid "The file from which the exclude patterns are read"
 msgstr "Filen som undantagsmönster läses från"
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:540
+#: smb4k.kcfg:538
 #, kde-format
 msgid "Include files matching this pattern:"
 msgstr "Inkludera filer som motsvarar följande mönster:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:541
+#: smb4k.kcfg:539
 #, kde-format
 msgid ""
 "Do not exclude files matching a certain pattern (--include=PATTERN). This is "
@@ -1547,19 +1547,19 @@ msgstr ""
 "filterregler, se manualsidan för rsync."
 
 #. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
-#: smb4k.kcfg:545
+#: smb4k.kcfg:543
 #, kde-format
 msgid "Pattern that is used for file inclusion"
 msgstr "Mönster som används för att inkludera filer"
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:550
+#: smb4k.kcfg:548
 #, kde-format
 msgid "Read include patterns from:"
 msgstr "Läs mönster att inkludera från:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:551
+#: smb4k.kcfg:549
 #, kde-format
 msgid ""
 "Read include patterns from a file (--include-from=FILE). This option is "
@@ -1573,19 +1573,19 @@ msgstr ""
 "manualsidan för rsync."
 
 #. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
-#: smb4k.kcfg:555
+#: smb4k.kcfg:553
 #, kde-format
 msgid "The file from which the include patterns are read"
 msgstr "Filen som inkluderingsmönster läses från"
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:560
+#: smb4k.kcfg:558
 #, kde-format
 msgid "Custom filter rules:"
 msgstr "Anpassade filterregler:"
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:561
+#: smb4k.kcfg:559
 #, kde-format
 msgid ""
 "Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
@@ -1599,20 +1599,20 @@ msgstr ""
 "måste varje regel börja med väljaren --filter=..."
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:565
+#: smb4k.kcfg:563
 #, fuzzy, kde-format
 #| msgid "Custom filter rules:"
 msgid "Custom filter rules"
 msgstr "Anpassade filterregler:"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:570
+#: smb4k.kcfg:568
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
 msgstr "Använd --filter='dir-merge /.rsync-filter' filterregel"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:571
+#: smb4k.kcfg:569
 #, kde-format
 msgid ""
 "This filter rule tells rsync to look for per-directory .rsync-filter files "
@@ -1626,13 +1626,13 @@ msgstr ""
 "använda regeln --filter='exclude .rsync-filter'."
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:575
+#: smb4k.kcfg:573
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
 msgstr "Använd --filter='exclude .rsync-filter' filterregel"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:576
+#: smb4k.kcfg:574
 #, kde-format
 msgid ""
 "This rule filters out the .rsync-filter files from the transfer. These files "
@@ -1644,13 +1644,13 @@ msgstr ""
 "regeln --filter='dir-merge /.rsync-filter', och avmarkera denna."
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:580
+#: smb4k.kcfg:578
 #, kde-format
 msgid "Handle sparse files efficiently"
 msgstr "Hantera glesa filer effektivt"
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:581
+#: smb4k.kcfg:579
 #, kde-format
 msgid ""
 "Handle sparse files efficiently (-S, --sparse) so that they take up less "
@@ -1662,13 +1662,13 @@ msgstr ""
 "ytterligare information, läs manualsidan för rsync."
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:585
+#: smb4k.kcfg:583
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
 msgstr "Kopiera hela filer (ingen rsync algoritm)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:586
+#: smb4k.kcfg:584
 #, kde-format
 msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
@@ -1679,13 +1679,13 @@ msgstr ""
 "istället."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:590
+#: smb4k.kcfg:588
 #, kde-format
 msgid "Do not cross file system boundaries"
 msgstr "Korsa inte filsystemets gränser"
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:591
+#: smb4k.kcfg:589
 #, kde-format
 msgid ""
 "Do not cross file system boundaries (-x, --one-file-system). This tells "
@@ -1697,13 +1697,13 @@ msgstr ""
 "ytterligare information om väljaren, läs manualsidan."
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:595
+#: smb4k.kcfg:593
 #, kde-format
 msgid "Only update files that already exist"
 msgstr "Uppdatera endast extsterande filer"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:596
+#: smb4k.kcfg:594
 #, kde-format
 msgid ""
 "Skip creating new files on the receiving side (--existing). This tells rsync "
@@ -1719,13 +1719,13 @@ msgstr ""
 "göra är att ta bort onödiga filer)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:600
+#: smb4k.kcfg:598
 #, kde-format
 msgid "Ignore files that already exist"
 msgstr "Ignorera extsterande filer"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:601
+#: smb4k.kcfg:599
 #, kde-format
 msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
@@ -1735,13 +1735,13 @@ msgstr ""
 "existing). Befintliga kataloger ignoreras inte."
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:605
+#: smb4k.kcfg:603
 #, kde-format
 msgid "Delay updates until the end of transfer"
 msgstr "Vänta med uppdatering tills slutet av överföringen"
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:606
+#: smb4k.kcfg:604
 #, kde-format
 msgid ""
 "Delay updates until the end of the transfer (--delay-updates). This option "
@@ -1755,13 +1755,13 @@ msgstr ""
 "kopieras på plats i snabb följd."
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:610
+#: smb4k.kcfg:608
 #, kde-format
 msgid "Make backups"
 msgstr "Säkerhetskopiera"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:611
+#: smb4k.kcfg:609
 #, kde-format
 msgid ""
 "Make backups (-b, --backup). With this option, preexisting destination files "
@@ -1775,49 +1775,49 @@ msgstr ""
 "till med väljarna --backup-dir=KAT och --suffix=ÄNDELSE."
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:615
+#: smb4k.kcfg:613
 #, kde-format
 msgid "Backup suffix:"
 msgstr "Ändelse för säkerhetskopia:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:616
+#: smb4k.kcfg:614
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
 msgstr "Använd denna ändelse för säkerhetskopior (--suffix=ÄNDELSE)"
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
-#: smb4k.kcfg:620
+#: smb4k.kcfg:618
 #, kde-format
 msgid "Backup suffix"
 msgstr "Ändelse för säkerhetskopia"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:625
+#: smb4k.kcfg:623
 #, kde-format
 msgid "Backup directory:"
 msgstr "Säkerhetskopieringskatalog"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:626
+#: smb4k.kcfg:624
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
 msgstr "Lagra säkerhetskopior i denna katalog (--backup-dir=KAT)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
-#: smb4k.kcfg:630
+#: smb4k.kcfg:628
 #, kde-format
 msgid "Backup directory"
 msgstr "Säkerhetskopieringskatalog"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:635
+#: smb4k.kcfg:633
 #, kde-format
 msgid "Force fixed checksum block size:"
 msgstr "Tvinga fast blockstorlek för checksumma:"
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:636
+#: smb4k.kcfg:634
 #, kde-format
 msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
@@ -1828,19 +1828,19 @@ msgstr ""
 "värde."
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
-#: smb4k.kcfg:640
+#: smb4k.kcfg:638
 #, kde-format
 msgid "The block size"
 msgstr "Blockstorlek"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:646
+#: smb4k.kcfg:644
 #, kde-format
 msgid "Set block/file checksum seed:"
 msgstr "Ange frö för block- och filchecksumma:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:647
+#: smb4k.kcfg:645
 #, kde-format
 msgid ""
 "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
@@ -1855,19 +1855,19 @@ msgstr ""
 "aktuell tid."
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:651
+#: smb4k.kcfg:649
 #, kde-format
 msgid "The value for the UseChecksumSeed config option"
 msgstr "Värdet på inställningsalternativet UseChecksumSeed"
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:657
+#: smb4k.kcfg:655
 #, kde-format
 msgid "Skip files based on checksum"
 msgstr "Hoppa över filer baserad på checksumma"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:658
+#: smb4k.kcfg:656
 #, kde-format
 msgid ""
 "Skip files based on a checksum and not based on modification time and size (-"
@@ -1879,13 +1879,13 @@ msgstr ""
 "fungerar, läs manualsidan för rsync."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:662
+#: smb4k.kcfg:660
 #, kde-format
 msgid "Set bandwidth limit:"
 msgstr "Ställ in bandbreddsbegränsning:"
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:663
+#: smb4k.kcfg:661
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
@@ -1894,19 +1894,19 @@ msgstr ""
 "bwlimit=RATE)."
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:667
+#: smb4k.kcfg:665
 #, kde-format
 msgid "The value for the UseBandwidthLimit config option"
 msgstr "Värdet på inställningsalternativet UseBandwidthLimit"
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:679
+#: smb4k.kcfg:677
 #, kde-format
 msgid "Use profiles"
 msgstr "Använd profiler"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:680
+#: smb4k.kcfg:678
 #, kde-format
 msgid ""
 "Make Smb4K use profiles. This enables you to define different bookmarks and "
@@ -1918,49 +1918,49 @@ msgstr ""
 "bärbar dator används i olika nätverksgrannskap, t.ex. hemma och på arbetet."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:684
+#: smb4k.kcfg:682
 #, kde-format
 msgid "Profiles"
 msgstr "Profiler"
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:685
+#: smb4k.kcfg:683
 #, kde-format
 msgid "The list of profiles."
 msgstr "Listan över profiler."
 
-#: smb4k.kcfg:692
+#: smb4k.kcfg:690
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
 msgstr "Hem"
 
-#: smb4k.kcfg:693
+#: smb4k.kcfg:691
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
 msgstr "Arbete"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:694
+#: smb4k.kcfg:692
 #, kde-format
 msgid "Active profile"
 msgstr "Aktiv profil"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:695
+#: smb4k.kcfg:693
 #, kde-format
 msgid "This is the currently active profile."
 msgstr "Det här är profilen som för närvarande är aktiv."
 
 #. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:699
+#: smb4k.kcfg:697
 #, kde-format
 msgid "Use profile migration assistant"
 msgstr "Använd hjälpverktyget för profilöverföring"
 
 #. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:700
+#: smb4k.kcfg:698
 #, kde-format
 msgid ""
 "Use the profile migration assistant when profiles are removed or the use of "
@@ -2301,7 +2301,7 @@ msgstr "Användare:"
 msgid "Clear List"
 msgstr "Rensa lista"
 
-#: smb4kmounter.cpp:752
+#: smb4kmounter.cpp:753
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2313,7 +2313,7 @@ msgstr ""
 "<qt><p>Den delade resursen <b>%1</b> är monterad som <br><b>%2</b> och ägs "
 "av användaren <b>%3</b>.</p><p>Vill du verkligen avmontera den?</p></qt>"
 
-#: smb4kmounter.cpp:757
+#: smb4kmounter.cpp:758
 #, kde-format
 msgid "Foreign Share"
 msgstr "Främmande delad resurs"

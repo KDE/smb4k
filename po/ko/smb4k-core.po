@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-03 00:46+0000\n"
+"POT-Creation-Date: 2023-05-06 00:47+0000\n"
 "PO-Revision-Date: 2022-07-13 11:14+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -18,49 +18,49 @@ msgstr ""
 "X-Generator: Lokalize 21.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:18
+#: smb4k.kcfg:16
 #, kde-format
 msgid "Tab orientation:"
 msgstr "탭 방향:"
 
 #. i18n: ectx: whatsthis, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:19
+#: smb4k.kcfg:17
 #, kde-format
 msgid "Set the tab orientation for the tabified dock widgets."
 msgstr "탭 형태로 된 독 위젯의 탭 방향을 설정합니다."
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:22
+#: smb4k.kcfg:20
 #, kde-format
 msgid "Top"
 msgstr "위"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:25
+#: smb4k.kcfg:23
 #, kde-format
 msgid "Bottom"
 msgstr "아래"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:28
+#: smb4k.kcfg:26
 #, kde-format
 msgid "Left"
 msgstr "왼쪽"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
-#: smb4k.kcfg:31
+#: smb4k.kcfg:29
 #, kde-format
 msgid "Right"
 msgstr "오른쪽"
 
 #. i18n: ectx: label, entry (ShowCustomBookmarkLabel), group (UserInterface)
-#: smb4k.kcfg:37
+#: smb4k.kcfg:35
 #, kde-format
 msgid "Show custom bookmark label if available"
 msgstr "사용 가능한 경우 사용자 정의 책갈피 이름표 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
-#: smb4k.kcfg:38
+#: smb4k.kcfg:36
 #, kde-format
 msgid ""
 "Do not show the name of the share that is represented by the bookmark but "
@@ -70,13 +70,13 @@ msgstr ""
 "표를 표시합니다."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
-#: smb4k.kcfg:42
+#: smb4k.kcfg:40
 #, kde-format
 msgid "Start docked"
 msgstr "도킹 상태에서 시작"
 
 #. i18n: ectx: whatsthis, entry (StartMainWindowDocked), group (UserInterface)
-#: smb4k.kcfg:43
+#: smb4k.kcfg:41
 #, kde-format
 msgid ""
 "Start the application docked to the system tray, i.e. only the system tray "
@@ -89,13 +89,13 @@ msgstr ""
 "\"복원\"을 선택해서 주 창을 복원할 수 있습니다."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
-#: smb4k.kcfg:47
+#: smb4k.kcfg:45
 #, kde-format
 msgid "Show the type of the share"
 msgstr "공유 형식 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
-#: smb4k.kcfg:48
+#: smb4k.kcfg:46
 #, kde-format
 msgid ""
 "The type of a share will be displayed in a separate column in the network "
@@ -105,13 +105,13 @@ msgstr ""
 "중 하나입니다."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
-#: smb4k.kcfg:52
+#: smb4k.kcfg:50
 #, kde-format
 msgid "Show the IP address of the server"
 msgstr "서버의 IP 주소 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowIPAddress), group (UserInterface)
-#: smb4k.kcfg:53
+#: smb4k.kcfg:51
 #, kde-format
 msgid ""
 "The IP address of the server will be displayed in a separate column in the "
@@ -119,13 +119,13 @@ msgid ""
 msgstr "서버의 IP 주소를 네트워크 환경 탐색기의 별도 열로 표시합니다."
 
 #. i18n: ectx: label, entry (ShowComment), group (UserInterface)
-#: smb4k.kcfg:57
+#: smb4k.kcfg:55
 #, kde-format
 msgid "Show the comment"
 msgstr "설명 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
-#: smb4k.kcfg:58
+#: smb4k.kcfg:56
 #, kde-format
 msgid ""
 "The comment describing the server or share will be displayed in a separate "
@@ -133,25 +133,25 @@ msgid ""
 msgstr "서버나 공유 설명을 네트워크 환경 탐색기의 별도 열로 표시합니다."
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
-#: smb4k.kcfg:62
+#: smb4k.kcfg:60
 #, kde-format
 msgid "Show tooltips for network items"
 msgstr "네트워크 항목 풍선 도움말 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
-#: smb4k.kcfg:63
+#: smb4k.kcfg:61
 #, kde-format
 msgid "The tooltip shows various information about the current network item."
 msgstr "풍선 도움말은 현재 네트워크 항목의 다양한 정보를 표시합니다."
 
 #. i18n: ectx: label, entry (AutoExpandNetworkItems), group (UserInterface)
-#: smb4k.kcfg:67
+#: smb4k.kcfg:65
 #, kde-format
 msgid "Automatically expand domains and hosts"
 msgstr "자동으로 도메인과 호스트 확장"
 
 #. i18n: ectx: whatsthis, entry (AutoExpandNetworkItems), group (UserInterface)
-#: smb4k.kcfg:68
+#: smb4k.kcfg:66
 #, kde-format
 msgid ""
 "Automatically expand domain and host items when a list of associated network "
@@ -163,25 +163,25 @@ msgstr ""
 "상 확장됩니다."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
-#: smb4k.kcfg:72
+#: smb4k.kcfg:70
 #, kde-format
 msgid "Show tooltips for mounted shares"
 msgstr "마운트된 공유의 풍선 도움말 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
-#: smb4k.kcfg:73
+#: smb4k.kcfg:71
 #, kde-format
 msgid "The tooltip shows various information about the current share."
 msgstr "풍선 도움말은 현재 공유에 대한 다양한 정보를 표시합니다."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:77
+#: smb4k.kcfg:75
 #, kde-format
 msgid "View mode:"
 msgstr "보기 모드:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:78
+#: smb4k.kcfg:76
 #, kde-format
 msgid ""
 "This setting determines the view mode of the shares view. There are two "
@@ -191,61 +191,61 @@ msgstr ""
 "할 수 있습니다."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:81
+#: smb4k.kcfg:79
 #, kde-format
 msgid "Icon View"
 msgstr "아이콘 보기"
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
-#: smb4k.kcfg:84
+#: smb4k.kcfg:82
 #, kde-format
 msgid "List View"
 msgstr "목록 보기"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
-#: smb4k.kcfg:90
+#: smb4k.kcfg:88
 #, kde-format
 msgid "Icon size for the icon view:"
 msgstr "아이콘 보기의 아이콘 크기:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
-#: smb4k.kcfg:91
+#: smb4k.kcfg:89
 #, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
 msgstr "공유 보기의 아이콘 보기 모드에 사용할 아이콘 크기를 설정합니다."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
-#: smb4k.kcfg:97
+#: smb4k.kcfg:95
 #, kde-format
 msgid "Icon size for the list view:"
 msgstr "목록 보기의 아이콘 크기:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
-#: smb4k.kcfg:98
+#: smb4k.kcfg:96
 #, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
 msgstr "공유 보기의 목록 보기 모드에 사용할 아이콘 크기를 설정합니다."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
-#: smb4k.kcfg:104
+#: smb4k.kcfg:102
 #, kde-format
 msgid "Icon size:"
 msgstr "아이콘 크기:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
-#: smb4k.kcfg:105
+#: smb4k.kcfg:103
 #, kde-format
 msgid "Set the icon size for the network neighborhood browser."
 msgstr "네트워크 환경 탐색기의 아이콘 크기를 설정합니다."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
-#: smb4k.kcfg:116
+#: smb4k.kcfg:114
 #, kde-format
 msgid "Use Web Services Dynamic Discovery (WS-Discovery) for browsing"
 msgstr "탐색 시 웹 서비스 동적 발견(WS-Discovery) 사용"
 
 #. i18n: ectx: whatsthis, entry (UseWsDiscovery), group (Network)
-#: smb4k.kcfg:117
+#: smb4k.kcfg:115
 #, kde-format
 msgid ""
 "The Web Services Dynamic Discovery (WS-Discovery) is used to browse the "
@@ -262,13 +262,13 @@ msgstr ""
 "할 필요가 없습니다."
 
 #. i18n: ectx: label, entry (UseDnsServiceDiscovery), group (Network)
-#: smb4k.kcfg:121
+#: smb4k.kcfg:119
 #, kde-format
 msgid "Use DNS Service Discovery (DNS-SD) for browsing"
 msgstr "탐색 시 DNS 서비스 검색(DNS-SD) 사용"
 
 #. i18n: ectx: whatsthis, entry (UseDnsServiceDiscovery), group (Network)
-#: smb4k.kcfg:122
+#: smb4k.kcfg:120
 #, kde-format
 msgid ""
 "The DNS Service Discovery (DNS-SD) is used to browse the local network and "
@@ -287,13 +287,13 @@ msgstr ""
 "용할 필요가 없습니다."
 
 #. i18n: ectx: label, entry (ForceSmb1Protocol), group (Network)
-#: smb4k.kcfg:126
+#: smb4k.kcfg:124
 #, kde-format
 msgid "Force SMB protocol version 1.0 for workgroup and domain lookups"
 msgstr "작업 그룹과 도메인을 검색할 때 SMB 프로토콜 버전 1.0 강제 사용"
 
 #. i18n: ectx: whatsthis, entry (ForceSmb1Protocol), group (Network)
-#: smb4k.kcfg:127
+#: smb4k.kcfg:125
 #, kde-format
 msgid ""
 "Smb4K will force Samba's client library to use the SMB protocol version 1.0 "
@@ -313,13 +313,13 @@ msgstr ""
 "며 해당 기능이 잘 작동한다면 이 옵션은 필요하지 않습니다."
 
 #. i18n: ectx: label, entry (UseClientProtocolVersions), group (Network)
-#: smb4k.kcfg:131
+#: smb4k.kcfg:129
 #, kde-format
 msgid "Set minimal and maximal SMB protocol version"
 msgstr "SMB 프로토콜 버전의 최소 및 최댓값 설정"
 
 #. i18n: ectx: whatsthis, entry (UseClientProtocolVersions), group (Network)
-#: smb4k.kcfg:132
+#: smb4k.kcfg:130
 #, kde-format
 msgid ""
 "Smb4K will set the minimal and maximal SMB protocol version that is used by "
@@ -341,13 +341,13 @@ msgstr ""
 "적 발견)를 대신 사용하십시오."
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:136
+#: smb4k.kcfg:134
 #, kde-format
 msgid "Minimal SMB protocol version:"
 msgstr "최소 SMB 프로토콜 버전:"
 
 #. i18n: ectx: whatsthis, entry (MinimalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:137
+#: smb4k.kcfg:135
 #, kde-format
 msgid ""
 "This setting controls the minimum protocol version that Samba's client "
@@ -356,33 +356,33 @@ msgstr "Samba 클라이언트가 사용할 최소 프로토콜 버전을 설정�
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:140 smb4k.kcfg:156
+#: smb4k.kcfg:138 smb4k.kcfg:154
 #, kde-format
 msgid "NT1 (Classic CIFS/SMBv1 protocol)"
 msgstr "NT1(고전 CIFS/SMBv1 프로토콜)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:143 smb4k.kcfg:159
+#: smb4k.kcfg:141 smb4k.kcfg:157
 #, kde-format
 msgid "SMB2 (Windows Vista and above)"
 msgstr "SMB2(Windows Vista 이상)"
 
 #. i18n: ectx: label, entry (MinimalClientProtocolVersion), group (Network)
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:146 smb4k.kcfg:162
+#: smb4k.kcfg:144 smb4k.kcfg:160
 #, kde-format
 msgid "SMB3 (Windows 8 and above)"
 msgstr "SMB3(Windows 8 이상)"
 
 #. i18n: ectx: label, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:152
+#: smb4k.kcfg:150
 #, kde-format
 msgid "Maximal SMB protocol version:"
 msgstr "최대 SMB 프로토콜 버전"
 
 #. i18n: ectx: whatsthis, entry (MaximalClientProtocolVersion), group (Network)
-#: smb4k.kcfg:153
+#: smb4k.kcfg:151
 #, kde-format
 msgid ""
 "This setting controls the maximum protocol version that Samba's client "
@@ -390,14 +390,14 @@ msgid ""
 msgstr "Samba 클라이언트가 사용할 최대 프로토콜 버전을 설정합니다."
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
-#: smb4k.kcfg:168
+#: smb4k.kcfg:166
 #, kde-format
 msgid "Set the SMB port to:"
 msgstr "SMB 포트:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
-#: smb4k.kcfg:169 smb4k.kcfg:173
+#: smb4k.kcfg:167 smb4k.kcfg:171
 #, fuzzy, kde-format
 #| msgid ""
 #| "This is the port that is used for connecting to remote servers with the "
@@ -413,13 +413,13 @@ msgstr ""
 "에도 이 포트를 사용합니다."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
-#: smb4k.kcfg:179
+#: smb4k.kcfg:177
 #, kde-format
 msgid "This computer is on a large network neighborhood"
 msgstr "컴퓨터가 대형 네트워크 환경에 있음"
 
 #. i18n: ectx: whatsthis, entry (LargeNetworkNeighborhood), group (Network)
-#: smb4k.kcfg:180
+#: smb4k.kcfg:178
 #, kde-format
 msgid ""
 "In case your computer is on a large network neighborhood, discovering all "
@@ -434,13 +434,13 @@ msgstr ""
 "형 네트워크 환경 탐색 시간을 단축할 수 있습니다."
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
-#: smb4k.kcfg:184
+#: smb4k.kcfg:182
 #, kde-format
 msgid "Master browsers require authentication"
 msgstr "마스터 브라우저에서 인증이 필요함"
 
 #. i18n: ectx: whatsthis, entry (MasterBrowsersRequireAuth), group (Network)
-#: smb4k.kcfg:185
+#: smb4k.kcfg:183
 #, kde-format
 msgid ""
 "The master browsers in your network neighborhood require a login to return "
@@ -450,13 +450,13 @@ msgstr ""
 "때 선택하십시오. 이 설정은 거의 필요하지 않습니다."
 
 #. i18n: ectx: label, entry (UseKerberos), group (Network)
-#: smb4k.kcfg:189
+#: smb4k.kcfg:187
 #, kde-format
 msgid "Use Kerberos for authentication"
 msgstr "Kerberos 인증 사용"
 
 #. i18n: ectx: whatsthis, entry (UseKerberos), group (Network)
-#: smb4k.kcfg:190
+#: smb4k.kcfg:188
 #, kde-format
 msgid ""
 "Use Kerberos for authentication. This is only useful in an Active Directory "
@@ -464,56 +464,56 @@ msgid ""
 msgstr "Kerberos 인증을 사용합니다. Active Directory 환경에서만 유용합니다."
 
 #. i18n: ectx: label, entry (UseWinbindCCache), group (Network)
-#: smb4k.kcfg:194
+#: smb4k.kcfg:192
 #, kde-format
 msgid "Use Winbind ccache for authentication"
 msgstr "Winbind ccache 인증 사용"
 
 #. i18n: ectx: whatsthis, entry (UseWinbindCCache), group (Network)
-#: smb4k.kcfg:195
+#: smb4k.kcfg:193
 #, kde-format
 msgid "Use the Winbind ccache for authentication."
 msgstr "Winbind ccache 인증을 사용합니다."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
-#: smb4k.kcfg:199
+#: smb4k.kcfg:197
 #, kde-format
 msgid "Set the encryption level to:"
 msgstr "암호화 수준:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:200 smb4k.kcfg:204
+#: smb4k.kcfg:198 smb4k.kcfg:202
 #, kde-format
 msgid "Set the level of encryption that is used for making connections."
 msgstr "연결할 때 사용할 암호화 수준을 설정합니다."
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:207
+#: smb4k.kcfg:205
 #, kde-format
 msgid "None"
 msgstr "없음"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:210
+#: smb4k.kcfg:208
 #, kde-format
 msgid "Request"
 msgstr "요청"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
-#: smb4k.kcfg:213
+#: smb4k.kcfg:211
 #, kde-format
 msgid "Require"
 msgstr "필요"
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
-#: smb4k.kcfg:219
+#: smb4k.kcfg:217
 #, kde-format
 msgid "Preview hidden files and directories"
 msgstr "숨김 파일과 디렉터리 미리 보기"
 
 #. i18n: ectx: whatsthis, entry (PreviewHiddenItems), group (Network)
-#: smb4k.kcfg:220
+#: smb4k.kcfg:218
 #, kde-format
 msgid ""
 "Preview hidden files and directories. The hidden files and directories are "
@@ -527,25 +527,25 @@ msgstr ""
 "업에는 중요하지 않으므로 이 옵션을 활성화할 필요는 없습니다."
 
 #. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
-#: smb4k.kcfg:224
+#: smb4k.kcfg:222
 #, kde-format
 msgid "Detect printer shares"
 msgstr "프린터 공유 감지"
 
 #. i18n: ectx: whatsthis, entry (DetectPrinterShares), group (Network)
-#: smb4k.kcfg:225
+#: smb4k.kcfg:223
 #, kde-format
 msgid "Printer shares are detected."
 msgstr "프린터 공유가 감지되었습니다."
 
 #. i18n: ectx: label, entry (DetectHiddenShares), group (Network)
-#: smb4k.kcfg:229
+#: smb4k.kcfg:227
 #, kde-format
 msgid "Detect hidden shares"
 msgstr "숨김 공유 감지"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
-#: smb4k.kcfg:230
+#: smb4k.kcfg:228
 #, kde-format
 msgid ""
 "Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
@@ -554,13 +554,13 @@ msgstr ""
 "숨김 공유가 감지되었습니다. 숨김 공유는 $ 기호로 끝납니다. 예: Musik$, IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
-#: smb4k.kcfg:234
+#: smb4k.kcfg:232
 #, kde-format
 msgid "Enable Wake-On-LAN features"
 msgstr "Wake-On-LAN 기능 활성화"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
-#: smb4k.kcfg:235
+#: smb4k.kcfg:233
 #, kde-format
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
@@ -574,13 +574,13 @@ msgstr ""
 "면 이 옵션을 사용하십시오."
 
 #. i18n: ectx: label, entry (WakeOnLANWaitingTime), group (Network)
-#: smb4k.kcfg:239
+#: smb4k.kcfg:237
 #, kde-format
 msgid "Waiting time:"
 msgstr "대기 시간:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
-#: smb4k.kcfg:240
+#: smb4k.kcfg:238
 #, kde-format
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
@@ -591,13 +591,13 @@ msgstr ""
 "까지 기다릴 시간입니다."
 
 #. i18n: ectx: label, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:251
+#: smb4k.kcfg:249
 #, kde-format
 msgid "Save logins in a wallet"
 msgstr "지갑에 로그인 정보 저장"
 
 #. i18n: ectx: whatsthis, entry (UseWallet), group (Authentication)
-#: smb4k.kcfg:252
+#: smb4k.kcfg:250
 #, kde-format
 msgid ""
 "Use a wallet to store the login. The username and password are stored "
@@ -609,13 +609,13 @@ msgstr ""
 "니다."
 
 #. i18n: ectx: label, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:256
+#: smb4k.kcfg:254
 #, kde-format
 msgid "Use a default login"
 msgstr "기본 로그인 사용"
 
 #. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
-#: smb4k.kcfg:257
+#: smb4k.kcfg:255
 #, kde-format
 msgid ""
 "Enable the usage of a default login. The provided data is used by default to "
@@ -627,13 +627,13 @@ msgstr ""
 "합니다."
 
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:269
+#: smb4k.kcfg:267
 #, kde-format
 msgid "Synchronization prefix:"
 msgstr "동기화 접두사:"
 
 #. i18n: ectx: whatsthis, entry (RsyncPrefix), group (Synchronization)
-#: smb4k.kcfg:270
+#: smb4k.kcfg:268
 #, kde-format
 msgid ""
 "Under this prefix the destination directory for the synchronization will be "
@@ -646,37 +646,37 @@ msgstr ""
 "도 있습니다."
 
 #. i18n: ectx: label, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:274
+#: smb4k.kcfg:272
 #, kde-format
 msgid "Archive mode"
 msgstr "보관 모드"
 
 #. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
-#: smb4k.kcfg:275
+#: smb4k.kcfg:273
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
 msgstr "보관 모드(-a, --archive)를 사용합니다. -rlptgoD의 축약형입니다."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:279
+#: smb4k.kcfg:277
 #, kde-format
 msgid "Recurse into subdirectories"
 msgstr "하위 디렉터리도 재귀적으로 탐색"
 
 #. i18n: ectx: whatsthis, entry (RecurseIntoDirectories), group (Synchronization)
-#: smb4k.kcfg:280
+#: smb4k.kcfg:278
 #, kde-format
 msgid "Recurse into directories (-r, --recursive)."
 msgstr "하위 디렉터리도 재귀적으로 탐색합니다(-r, --recursive)."
 
 #. i18n: ectx: label, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:284
+#: smb4k.kcfg:282
 #, kde-format
 msgid "Update files"
 msgstr "파일 업데이트"
 
 #. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
-#: smb4k.kcfg:285
+#: smb4k.kcfg:283
 #, kde-format
 msgid ""
 "Update files in the destination directory that are older than in the source "
@@ -686,13 +686,13 @@ msgstr ""
 "이트합니다(-u, --update)."
 
 #. i18n: ectx: label, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:289
+#: smb4k.kcfg:287
 #, kde-format
 msgid "Update files in place"
 msgstr "파일을 직접 업데이트"
 
 #. i18n: ectx: whatsthis, entry (UpdateInPlace), group (Synchronization)
-#: smb4k.kcfg:290
+#: smb4k.kcfg:288
 #, kde-format
 msgid ""
 "Update destination files in-place (--inplace). By default, rsync first "
@@ -707,13 +707,13 @@ msgstr ""
 "션과 같이 사용했을 때는 예외적으로 적용되지 않습니다."
 
 #. i18n: ectx: label, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:294
+#: smb4k.kcfg:292
 #, kde-format
 msgid "Use relative path names"
 msgstr "상대 경로 사용"
 
 #. i18n: ectx: whatsthis, entry (RelativePathNames), group (Synchronization)
-#: smb4k.kcfg:295
+#: smb4k.kcfg:293
 #, kde-format
 msgid ""
 "Use relative paths (-R, --relative). This means that the full path names "
@@ -724,13 +724,13 @@ msgstr ""
 "령행에 지정한 전체 경로를 서버에 전송합니다."
 
 #. i18n: ectx: label, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:299
+#: smb4k.kcfg:297
 #, kde-format
 msgid "Do not send implied directories"
 msgstr "암시적 디렉터리를 전송하지 않음"
 
 #. i18n: ectx: whatsthis, entry (NoImpliedDirectories), group (Synchronization)
-#: smb4k.kcfg:300
+#: smb4k.kcfg:298
 #, kde-format
 msgid ""
 "Do not send implied directories with --relative (--no-implied-dirs). This "
@@ -747,13 +747,13 @@ msgstr ""
 "에 큰 차이가 생길 수도 있습니다."
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:304
+#: smb4k.kcfg:302
 #, kde-format
 msgid "Transfer directories without recursing"
 msgstr "디렉터리를 재귀하지 않고 전송"
 
 #. i18n: ectx: whatsthis, entry (TransferDirectories), group (Synchronization)
-#: smb4k.kcfg:305
+#: smb4k.kcfg:303
 #, kde-format
 msgid ""
 "Transfer directories without recursing (-d, --dirs). This means that all top-"
@@ -763,13 +763,13 @@ msgstr ""
 "리를 전송하지만 해당 디렉터리의 내용은 전송하지 않습니다."
 
 #. i18n: ectx: label, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:310
+#: smb4k.kcfg:308
 #, kde-format
 msgid "Compress data during transfer"
 msgstr "전송 시 데이터 압축"
 
 #. i18n: ectx: whatsthis, entry (CompressData), group (Synchronization)
-#: smb4k.kcfg:311
+#: smb4k.kcfg:309
 #, kde-format
 msgid ""
 "Compress data during transfer (-z, --compress). This significantly reduces "
@@ -780,13 +780,13 @@ msgstr ""
 "니다. 연결이 느릴 때 이 옵션을 사용해 볼 수 있습니다."
 
 #. i18n: ectx: label, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:315
+#: smb4k.kcfg:313
 #, kde-format
 msgid "Set compression level:"
 msgstr "압축 단계 설정:"
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
-#: smb4k.kcfg:316
+#: smb4k.kcfg:314
 #, kde-format
 msgid ""
 "Explicitly set the compression level to use (--compress-level=NUM). If NUM "
@@ -796,19 +796,19 @@ msgstr ""
 "아니면 --compress 인자가 암시적으로 지정됩니다."
 
 #. i18n: ectx: label, entry (CompressionLevel), group (Synchronization)
-#: smb4k.kcfg:320
+#: smb4k.kcfg:318
 #, kde-format
 msgid "The value for the UseCompressionLevel config entry"
 msgstr "UseCompressionLevel 설정 옵션의 값"
 
 #. i18n: ectx: label, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:327
+#: smb4k.kcfg:325
 #, kde-format
 msgid "Skip compression for following file suffixes:"
 msgstr "다음 파일 확장자는 압축하지 않음:"
 
 #. i18n: ectx: whatsthis, entry (UseSkipCompression), group (Synchronization)
-#: smb4k.kcfg:328
+#: smb4k.kcfg:326
 #, kde-format
 msgid ""
 "Overwrite the list of file suffixes that will not be compressed (--skip-"
@@ -823,31 +823,31 @@ msgstr ""
 "은 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (SkipCompression), group (Synchronization)
-#: smb4k.kcfg:332
+#: smb4k.kcfg:330
 #, kde-format
 msgid "The value(s) for the UseSkipCompression config entry"
 msgstr "UseSkipCompression 설정 옵션의 값"
 
 #. i18n: ectx: label, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:337
+#: smb4k.kcfg:335
 #, kde-format
 msgid "Preserve symlinks"
 msgstr "심볼릭 링크 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveSymlinks), group (Synchronization)
-#: smb4k.kcfg:338
+#: smb4k.kcfg:336
 #, kde-format
 msgid "Copy symlinks as symlinks (-l, --links)."
 msgstr "심볼릭 링크를 심복릭 링크로 복사합니다(-l, --links)."
 
 #. i18n: ectx: label, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:342
+#: smb4k.kcfg:340
 #, kde-format
 msgid "Transform symlinks"
 msgstr "심볼릭 링크 변형"
 
 #. i18n: ectx: whatsthis, entry (TransformSymlinks), group (Synchronization)
-#: smb4k.kcfg:343
+#: smb4k.kcfg:341
 #, kde-format
 msgid ""
 "Transform symlinks into the items they are pointing to (-L, --copy-links)."
@@ -855,13 +855,13 @@ msgstr ""
 "심볼릭 링크를 해당 링크가 가리키는 항목으로 변환합니다(-L, --copy-links)."
 
 #. i18n: ectx: label, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:347
+#: smb4k.kcfg:345
 #, kde-format
 msgid "Transform unsafe symlinks"
 msgstr "안전하지 않은 심볼릭 링크 변형"
 
 #. i18n: ectx: whatsthis, entry (TransformUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:348
+#: smb4k.kcfg:346
 #, kde-format
 msgid ""
 "Transform unsafe symlinks into the items they are pointing to (--copy-unsafe-"
@@ -876,13 +876,13 @@ msgstr ""
 "links 옵션을 지정했다면 이 옵션은 효과가 없습니다."
 
 #. i18n: ectx: label, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:352
+#: smb4k.kcfg:350
 #, kde-format
 msgid "Ignore unsafe symlinks"
 msgstr "안전하지 않은 심볼릭 링크 무시"
 
 #. i18n: ectx: whatsthis, entry (IgnoreUnsafeSymlinks), group (Synchronization)
-#: smb4k.kcfg:353
+#: smb4k.kcfg:351
 #, kde-format
 msgid ""
 "Ignore symlinks that point outside the copied tree (--safe-links). All "
@@ -894,13 +894,13 @@ msgstr ""
 "과 같이 이 옵션을 사용했다면 예상하지 못한 결과가 발생할 수도 있습니다."
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:357
+#: smb4k.kcfg:355
 #, kde-format
 msgid "Munge symlinks"
 msgstr "심볼릭 링크 뭉개기"
 
 #. i18n: ectx: whatsthis, entry (MungeSymlinks), group (Synchronization)
-#: smb4k.kcfg:358
+#: smb4k.kcfg:356
 #, kde-format
 msgid ""
 "This option tells rsync to (1) modify all symlinks on the receiving side in "
@@ -917,13 +917,13 @@ msgstr ""
 "자세한 정보는 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:362
+#: smb4k.kcfg:360
 #, kde-format
 msgid "Preserve hard links"
 msgstr "하드 링크 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveHardLinks), group (Synchronization)
-#: smb4k.kcfg:363
+#: smb4k.kcfg:361
 #, kde-format
 msgid ""
 "Preserve hard links (-H, --hard-links). This options causes rsync to "
@@ -935,13 +935,13 @@ msgstr ""
 "드 링크를 다른 파일인 것처럼 취급합니다."
 
 #. i18n: ectx: label, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:367
+#: smb4k.kcfg:365
 #, kde-format
 msgid "Copy directory symlinks"
 msgstr "디렉터리 심볼릭 링크 복사"
 
 #. i18n: ectx: whatsthis, entry (CopyDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:368
+#: smb4k.kcfg:366
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the sending side as though they were real "
@@ -961,13 +961,13 @@ msgstr ""
 "는 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:372
+#: smb4k.kcfg:370
 #, kde-format
 msgid "Keep directory symlinks"
 msgstr "디렉터리 심볼릭 링크 유지"
 
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
-#: smb4k.kcfg:373
+#: smb4k.kcfg:371
 #, kde-format
 msgid ""
 "Treat symlinks to directories on the receiving side as though they were real "
@@ -981,13 +981,13 @@ msgstr ""
 "를 삭제하고 실제 디렉터리로 대체합니다."
 
 #. i18n: ectx: label, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:377
+#: smb4k.kcfg:375
 #, kde-format
 msgid "Preserve permissions"
 msgstr "권한 보존"
 
 #. i18n: ectx: whatsthis, entry (PreservePermissions), group (Synchronization)
-#: smb4k.kcfg:378
+#: smb4k.kcfg:376
 #, kde-format
 msgid ""
 "Preserve permissions (-p, --perms). The permissions of the destination file "
@@ -998,13 +998,13 @@ msgstr ""
 "니다. 이 옵션을 사용하지 않았을 때의 동작은 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:382
+#: smb4k.kcfg:380
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
-#: smb4k.kcfg:383
+#: smb4k.kcfg:381
 #, kde-format
 msgid ""
 "Preserve access control lists. This option causes rsync to update the "
@@ -1014,14 +1014,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:387
+#: smb4k.kcfg:385
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve extended attributes"
 msgstr "시간 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
-#: smb4k.kcfg:388
+#: smb4k.kcfg:386
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1034,14 +1034,14 @@ msgstr ""
 "니다."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:392
+#: smb4k.kcfg:390
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve access times"
 msgstr "시간 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
-#: smb4k.kcfg:393
+#: smb4k.kcfg:391
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1054,14 +1054,14 @@ msgstr ""
 "니다."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:397
+#: smb4k.kcfg:395
 #, fuzzy, kde-format
 #| msgid "Preserve times"
 msgid "Preserve create times"
 msgstr "시간 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
-#: smb4k.kcfg:398
+#: smb4k.kcfg:396
 #, fuzzy, kde-format
 #| msgid ""
 #| "Preserve the group (-g, --group). The group of the destination file will "
@@ -1074,13 +1074,13 @@ msgstr ""
 "니다."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:402
+#: smb4k.kcfg:400
 #, kde-format
 msgid "Preserve group"
 msgstr "그룹 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveGroup), group (Synchronization)
-#: smb4k.kcfg:403
+#: smb4k.kcfg:401
 #, kde-format
 msgid ""
 "Preserve the group (-g, --group). The group of the destination file will be "
@@ -1090,13 +1090,13 @@ msgstr ""
 "니다."
 
 #. i18n: ectx: label, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:407
+#: smb4k.kcfg:405
 #, kde-format
 msgid "Preserve owner"
 msgstr "소유자 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveOwner), group (Synchronization)
-#: smb4k.kcfg:408
+#: smb4k.kcfg:406
 #, kde-format
 msgid ""
 "Preserve the owner (-o, --owner). The owner of the destination file will be "
@@ -1109,13 +1109,13 @@ msgstr ""
 "하지 않았을 때의 동작은 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:412
+#: smb4k.kcfg:410
 #, kde-format
 msgid "Preserve device and special files"
 msgstr "장치와 특별한 파일 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveDevicesAndSpecials), group (Synchronization)
-#: smb4k.kcfg:413
+#: smb4k.kcfg:411
 #, kde-format
 msgid ""
 "Preserve device and special files (-D, --devices --specials). This option "
@@ -1129,13 +1129,13 @@ msgstr ""
 "을 수 있습니다."
 
 #. i18n: ectx: label, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:417
+#: smb4k.kcfg:415
 #, kde-format
 msgid "Preserve times"
 msgstr "시간 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveTimes), group (Synchronization)
-#: smb4k.kcfg:418
+#: smb4k.kcfg:416
 #, kde-format
 msgid ""
 "Preserve times (-t, --times). The modification times are transferred along "
@@ -1146,13 +1146,13 @@ msgstr ""
 "니다. 이 옵션을 사용하지 않았을 때의 동작은 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:422
+#: smb4k.kcfg:420
 #, kde-format
 msgid "Omit directories when preserving times"
 msgstr "시간을 보존할 때 디렉터리 무시"
 
 #. i18n: ectx: whatsthis, entry (OmitDirectoryTimes), group (Synchronization)
-#: smb4k.kcfg:423
+#: smb4k.kcfg:421
 #, kde-format
 msgid ""
 "Omit directories when preserving times (-O, --omit-dir-times). This means "
@@ -1164,13 +1164,13 @@ msgstr ""
 "니다."
 
 #. i18n: ectx: label, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:427
+#: smb4k.kcfg:425
 #, kde-format
 msgid "Remove synchronized source files"
 msgstr "동기화된 원본 파일 삭제"
 
 #. i18n: ectx: whatsthis, entry (RemoveSourceFiles), group (Synchronization)
-#: smb4k.kcfg:428
+#: smb4k.kcfg:426
 #, kde-format
 msgid ""
 "Remove all synchronized source files (--remove-source-files). This tells "
@@ -1183,13 +1183,13 @@ msgstr ""
 "을 삭제합니다."
 
 #. i18n: ectx: label, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:432
+#: smb4k.kcfg:430
 #, kde-format
 msgid "Delete extraneous files"
 msgstr "추가 파일 삭제"
 
 #. i18n: ectx: whatsthis, entry (DeleteExtraneous), group (Synchronization)
-#: smb4k.kcfg:433
+#: smb4k.kcfg:431
 #, kde-format
 msgid ""
 "Delete extraneous files from destination (--delete). This tells rsync to "
@@ -1200,13 +1200,13 @@ msgstr ""
 "서 보내는 쪽에 없지만 받는 쪽에 있는 모든 파일을 삭제하라고 지시합니다."
 
 #. i18n: ectx: label, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:437
+#: smb4k.kcfg:435
 #, kde-format
 msgid "Delete files before transfer"
 msgstr "전송하기 전에 파일 삭제"
 
 #. i18n: ectx: whatsthis, entry (DeleteBefore), group (Synchronization)
-#: smb4k.kcfg:438
+#: smb4k.kcfg:436
 #, kde-format
 msgid ""
 "Delete files on the receiving side before the transfer starts (--delete-"
@@ -1218,13 +1218,13 @@ msgstr ""
 "지 않았을 때의 기본값입니다."
 
 #. i18n: ectx: label, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:442
+#: smb4k.kcfg:440
 #, kde-format
 msgid "Delete files after transfer"
 msgstr "전송한 후 파일 삭제"
 
 #. i18n: ectx: whatsthis, entry (DeleteAfter), group (Synchronization)
-#: smb4k.kcfg:443
+#: smb4k.kcfg:441
 #, kde-format
 msgid ""
 "Delete files on the receiving side after the transfer has completed (--"
@@ -1232,13 +1232,13 @@ msgid ""
 msgstr "전송이 완료된 후 받는 쪽에서 파일을 삭제합니다(--delete-after, --del)."
 
 #. i18n: ectx: label, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:447
+#: smb4k.kcfg:445
 #, kde-format
 msgid "Delete files during transfer"
 msgstr "전송하는 동안 파일 삭제"
 
 #. i18n: ectx: whatsthis, entry (DeleteDuring), group (Synchronization)
-#: smb4k.kcfg:448
+#: smb4k.kcfg:446
 #, kde-format
 msgid ""
 "Delete files on the receiving side during the transfer (--delete-during). "
@@ -1250,13 +1250,13 @@ msgstr ""
 "니다."
 
 #. i18n: ectx: label, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:452
+#: smb4k.kcfg:450
 #, kde-format
 msgid "Delete excluded files"
 msgstr "제외된 파일 삭제"
 
 #. i18n: ectx: whatsthis, entry (DeleteExcluded), group (Synchronization)
-#: smb4k.kcfg:453
+#: smb4k.kcfg:451
 #, kde-format
 msgid ""
 "Also delete excluded files from destination directory (--delete-excluded). "
@@ -1270,13 +1270,13 @@ msgstr ""
 "십시오."
 
 #. i18n: ectx: label, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:457
+#: smb4k.kcfg:455
 #, kde-format
 msgid "Delete even if I/O errors occur"
 msgstr "I/O 오류가 발생했어도 삭제"
 
 #. i18n: ectx: whatsthis, entry (IgnoreErrors), group (Synchronization)
-#: smb4k.kcfg:458
+#: smb4k.kcfg:456
 #, kde-format
 msgid ""
 "Delete even if I/O errors occur (--ignore-errors). This option has to be "
@@ -1286,13 +1286,13 @@ msgstr ""
 "함께 지정해야 효과가 있습니다."
 
 #. i18n: ectx: label, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:462
+#: smb4k.kcfg:460
 #, kde-format
 msgid "Force deletion of non-void directories"
 msgstr "비어 있지 않은 디렉터리 강제 삭제"
 
 #. i18n: ectx: whatsthis, entry (ForceDirectoryDeletion), group (Synchronization)
-#: smb4k.kcfg:463
+#: smb4k.kcfg:461
 #, kde-format
 msgid ""
 "Force deletion of directories even if they are not empty (--force). This "
@@ -1304,13 +1304,13 @@ msgstr ""
 "다. 삭제 옵션을 지정하지 않았을 때에만 효과가 있습니다."
 
 #. i18n: ectx: label, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:467
+#: smb4k.kcfg:465
 #, kde-format
 msgid "Do not delete more than this many files:"
 msgstr "최대 파일 삭제 개수:"
 
 #. i18n: ectx: whatsthis, entry (UseMaximumDelete), group (Synchronization)
-#: smb4k.kcfg:468
+#: smb4k.kcfg:466
 #, kde-format
 msgid ""
 "Only delete as many files as defined here (--max-delete=NUM). This tells "
@@ -1322,19 +1322,19 @@ msgstr ""
 "함). 매우 큰 트리를 미러링할 때 문제 발생을 막을 수 있어서 유용합니다."
 
 #. i18n: ectx: label, entry (MaximumDeleteValue), group (Synchronization)
-#: smb4k.kcfg:472
+#: smb4k.kcfg:470
 #, kde-format
 msgid "Value for DeleteMaximum config entry"
 msgstr "DeleteMaximum 설정 옵션의 값"
 
 #. i18n: ectx: label, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:478
+#: smb4k.kcfg:476
 #, kde-format
 msgid "Do not transfer any file smaller than:"
 msgstr "다음보다 작은 파일 전송하지 않기:"
 
 #. i18n: ectx: whatsthis, entry (UseMinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:479
+#: smb4k.kcfg:477
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is smaller than the "
@@ -1344,19 +1344,19 @@ msgstr ""
 "size=SIZE)."
 
 #. i18n: ectx: label, entry (MinimalTransferSize), group (Synchronization)
-#: smb4k.kcfg:483
+#: smb4k.kcfg:481
 #, kde-format
 msgid "Value for MinimalTransferSize config entry"
 msgstr "MinimalTransferSize 설정 옵션의 값"
 
 #. i18n: ectx: label, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:489
+#: smb4k.kcfg:487
 #, kde-format
 msgid "Do not transfer any file larger than:"
 msgstr "다음보다 큰 파일 전송하지 않기:"
 
 #. i18n: ectx: whatsthis, entry (UseMaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:490
+#: smb4k.kcfg:488
 #, kde-format
 msgid ""
 "This option causes rsync to not transfer any file that is larger than the "
@@ -1366,19 +1366,19 @@ msgstr ""
 "size=SIZE)."
 
 #. i18n: ectx: label, entry (MaximalTransferSize), group (Synchronization)
-#: smb4k.kcfg:494
+#: smb4k.kcfg:492
 #, kde-format
 msgid "Value for MaximalTransferSize config entry"
 msgstr "MaximalTransferSize 설정 옵션의 값"
 
 #. i18n: ectx: label, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:500
+#: smb4k.kcfg:498
 #, kde-format
 msgid "Keep partially transferred files"
 msgstr "일부분만 전송된 파일 유지"
 
 #. i18n: ectx: whatsthis, entry (KeepPartial), group (Synchronization)
-#: smb4k.kcfg:501
+#: smb4k.kcfg:499
 #, kde-format
 msgid ""
 "Keep partially transferred files (--partial). The default behavior is that "
@@ -1388,13 +1388,13 @@ msgstr ""
 "때 일부분만 전송된 파일을 삭제합니다."
 
 #. i18n: ectx: label, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:505
+#: smb4k.kcfg:503
 #, kde-format
 msgid "Put partially transferred files into:"
 msgstr "다음 위치에 일부분만 전송된 파일 저장:"
 
 #. i18n: ectx: whatsthis, entry (UsePartialDirectory), group (Synchronization)
-#: smb4k.kcfg:506
+#: smb4k.kcfg:504
 #, kde-format
 msgid ""
 "Put a partially transferred file into this directory (--partial-dir=DIR). "
@@ -1407,19 +1407,19 @@ msgstr ""
 "partial 옵션을 사용하여 일부분만 전송된 파일을 유지하는 것보다 더 유용합니다."
 
 #. i18n: ectx: label, entry (PartialDirectory), group (Synchronization)
-#: smb4k.kcfg:510
+#: smb4k.kcfg:508
 #, kde-format
 msgid "The data for the UsePartialDirectory option"
 msgstr "UsePartialDirectory 옵션에 사용할 데이터"
 
 #. i18n: ectx: label, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:515
+#: smb4k.kcfg:513
 #, kde-format
 msgid "Auto-ignore files in the same way CVS does"
 msgstr "CVS 방식으로 파일 자동 무시"
 
 #. i18n: ectx: whatsthis, entry (UseCVSExclude), group (Synchronization)
-#: smb4k.kcfg:516
+#: smb4k.kcfg:514
 #, kde-format
 msgid ""
 "Auto-ignore files in the same way CVS does (-C, --cvs-exclude). This is a "
@@ -1432,13 +1432,13 @@ msgstr ""
 "은 알고리즘을 사용하여 파일 무시 여부를 결정합니다."
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:520
+#: smb4k.kcfg:518
 #, kde-format
 msgid "Exclude files matching this pattern:"
 msgstr "이 패턴과 일치하는 파일 제외:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludePattern), group (Synchronization)
-#: smb4k.kcfg:521
+#: smb4k.kcfg:519
 #, kde-format
 msgid ""
 "Exclude files that match a certain pattern (--exclude=PATTERN). This is a "
@@ -1449,19 +1449,19 @@ msgstr ""
 "터 규칙입니다. 자세한 정보는 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (ExcludePattern), group (Synchronization)
-#: smb4k.kcfg:525
+#: smb4k.kcfg:523
 #, kde-format
 msgid "Pattern that is used for file exclusion"
 msgstr "파일 제외에 사용할 패턴"
 
 #. i18n: ectx: label, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:530
+#: smb4k.kcfg:528
 #, kde-format
 msgid "Read exclude patterns from:"
 msgstr "다음에서 제외 패턴 읽기:"
 
 #. i18n: ectx: whatsthis, entry (UseExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:531
+#: smb4k.kcfg:529
 #, kde-format
 msgid ""
 "Read exclude patterns from a file (--exclude-from=FILE). This option is "
@@ -1474,19 +1474,19 @@ msgstr ""
 "한 필터 규칙입니다. 자세한 정보는 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (ExcludeFrom), group (Synchronization)
-#: smb4k.kcfg:535
+#: smb4k.kcfg:533
 #, kde-format
 msgid "The file from which the exclude patterns are read"
 msgstr "파일 제외 패턴을 읽을 파일"
 
 #. i18n: ectx: label, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:540
+#: smb4k.kcfg:538
 #, kde-format
 msgid "Include files matching this pattern:"
 msgstr "이 패턴과 일치하는 파일 포함:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludePattern), group (Synchronization)
-#: smb4k.kcfg:541
+#: smb4k.kcfg:539
 #, kde-format
 msgid ""
 "Do not exclude files matching a certain pattern (--include=PATTERN). This is "
@@ -1497,19 +1497,19 @@ msgstr ""
 "별한 필터 규칙입니다. 자세한 정보는 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (IncludePattern), group (Synchronization)
-#: smb4k.kcfg:545
+#: smb4k.kcfg:543
 #, kde-format
 msgid "Pattern that is used for file inclusion"
 msgstr "파일 포함에 사용할 패턴"
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:550
+#: smb4k.kcfg:548
 #, kde-format
 msgid "Read include patterns from:"
 msgstr "다음에서 포함 패턴 읽기:"
 
 #. i18n: ectx: whatsthis, entry (UseIncludeFrom), group (Synchronization)
-#: smb4k.kcfg:551
+#: smb4k.kcfg:549
 #, kde-format
 msgid ""
 "Read include patterns from a file (--include-from=FILE). This option is "
@@ -1522,19 +1522,19 @@ msgstr ""
 "한 필터 규칙입니다. 자세한 정보는 rsync man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (IncludeFrom), group (Synchronization)
-#: smb4k.kcfg:555
+#: smb4k.kcfg:553
 #, kde-format
 msgid "The file from which the include patterns are read"
 msgstr "파일 포함 패턴을 읽을 파일"
 
 #. i18n: ectx: label, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:560
+#: smb4k.kcfg:558
 #, kde-format
 msgid "Custom filter rules:"
 msgstr "사용자 정의 필터 규칙:"
 
 #. i18n: ectx: whatsthis, entry (UseCustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:561
+#: smb4k.kcfg:559
 #, kde-format
 msgid ""
 "Add custom file-filtering rules (-f, --filter=RULE). This option allows you "
@@ -1548,20 +1548,20 @@ msgstr ""
 "시작해야 합니다."
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
-#: smb4k.kcfg:565
+#: smb4k.kcfg:563
 #, fuzzy, kde-format
 #| msgid "Custom filter rules:"
 msgid "Custom filter rules"
 msgstr "사용자 정의 필터 규칙:"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:570
+#: smb4k.kcfg:568
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
 msgstr "--filter='dir-merge /.rsync-filter' 필터 규칙 사용"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
-#: smb4k.kcfg:571
+#: smb4k.kcfg:569
 #, kde-format
 msgid ""
 "This filter rule tells rsync to look for per-directory .rsync-filter files "
@@ -1574,13 +1574,13 @@ msgstr ""
 "filter='exclude .rsync-filter' 규칙을 지정했다면 이 옵션은 효과가 없습니다."
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:575
+#: smb4k.kcfg:573
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
 msgstr "--filter='exclude .rsync-filter' 필터 규칙 사용"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
-#: smb4k.kcfg:576
+#: smb4k.kcfg:574
 #, kde-format
 msgid ""
 "This rule filters out the .rsync-filter files from the transfer. These files "
@@ -1592,13 +1592,13 @@ msgstr ""
 "때 활성화할 수 있는 필터 규칙을 포함하고 있습니다."
 
 #. i18n: ectx: label, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:580
+#: smb4k.kcfg:578
 #, kde-format
 msgid "Handle sparse files efficiently"
 msgstr "효율적으로 스파스 파일 처리"
 
 #. i18n: ectx: whatsthis, entry (EfficientSparseFileHandling), group (Synchronization)
-#: smb4k.kcfg:581
+#: smb4k.kcfg:579
 #, kde-format
 msgid ""
 "Handle sparse files efficiently (-S, --sparse) so that they take up less "
@@ -1610,13 +1610,13 @@ msgstr ""
 "참조하십시오."
 
 #. i18n: ectx: label, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:585
+#: smb4k.kcfg:583
 #, kde-format
 msgid "Copy files whole (no rsync algorithm)"
 msgstr "파일 전체 복사(rsync 알고리즘 사용 안 함)"
 
 #. i18n: ectx: whatsthis, entry (CopyFilesWhole), group (Synchronization)
-#: smb4k.kcfg:586
+#: smb4k.kcfg:584
 #, kde-format
 msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
@@ -1626,13 +1626,13 @@ msgstr ""
 "리즘을 사용하지 않고 전체 파일을 있는 그대로 보냅니다."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:590
+#: smb4k.kcfg:588
 #, kde-format
 msgid "Do not cross file system boundaries"
 msgstr "파일 시스템 경계 넘지 않기"
 
 #. i18n: ectx: whatsthis, entry (OneFileSystem), group (Synchronization)
-#: smb4k.kcfg:591
+#: smb4k.kcfg:589
 #, kde-format
 msgid ""
 "Do not cross file system boundaries (-x, --one-file-system). This tells "
@@ -1644,13 +1644,13 @@ msgstr ""
 "조하십시오."
 
 #. i18n: ectx: label, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:595
+#: smb4k.kcfg:593
 #, kde-format
 msgid "Only update files that already exist"
 msgstr "존재하는 파일만 업데이트"
 
 #. i18n: ectx: whatsthis, entry (UpdateExisting), group (Synchronization)
-#: smb4k.kcfg:596
+#: smb4k.kcfg:594
 #, kde-format
 msgid ""
 "Skip creating new files on the receiving side (--existing). This tells rsync "
@@ -1665,13 +1665,13 @@ msgstr ""
 "려고만 할 때 유용함)."
 
 #. i18n: ectx: label, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:600
+#: smb4k.kcfg:598
 #, kde-format
 msgid "Ignore files that already exist"
 msgstr "존재하는 파일 무시"
 
 #. i18n: ectx: whatsthis, entry (IgnoreExisting), group (Synchronization)
-#: smb4k.kcfg:601
+#: smb4k.kcfg:599
 #, kde-format
 msgid ""
 "Skip updating files that already exist on the receiving side (--ignore-"
@@ -1681,13 +1681,13 @@ msgstr ""
 "는 디렉터리는 무시하지 않습니다."
 
 #. i18n: ectx: label, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:605
+#: smb4k.kcfg:603
 #, kde-format
 msgid "Delay updates until the end of transfer"
 msgstr "전송이 끝날 때까지 업데이트 지연"
 
 #. i18n: ectx: whatsthis, entry (DelayUpdates), group (Synchronization)
-#: smb4k.kcfg:606
+#: smb4k.kcfg:604
 #, kde-format
 msgid ""
 "Delay updates until the end of the transfer (--delay-updates). This option "
@@ -1701,13 +1701,13 @@ msgstr ""
 "복사합니다."
 
 #. i18n: ectx: label, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:610
+#: smb4k.kcfg:608
 #, kde-format
 msgid "Make backups"
 msgstr "백업 생성"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
-#: smb4k.kcfg:611
+#: smb4k.kcfg:609
 #, kde-format
 msgid ""
 "Make backups (-b, --backup). With this option, preexisting destination files "
@@ -1721,49 +1721,49 @@ msgstr ""
 "션으로 각각 지정할 수 있습니다."
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:615
+#: smb4k.kcfg:613
 #, kde-format
 msgid "Backup suffix:"
 msgstr "백업 접미사:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
-#: smb4k.kcfg:616
+#: smb4k.kcfg:614
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
 msgstr "백업에 지정한 접미사를 사용합니다(--suffix=SUFFIX)."
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
-#: smb4k.kcfg:620
+#: smb4k.kcfg:618
 #, kde-format
 msgid "Backup suffix"
 msgstr "백업 접미사"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:625
+#: smb4k.kcfg:623
 #, kde-format
 msgid "Backup directory:"
 msgstr "백업 디렉터리:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
-#: smb4k.kcfg:626
+#: smb4k.kcfg:624
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
 msgstr "백업을 이 디렉터리에 저장합니다(--backup-dir=DIR)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
-#: smb4k.kcfg:630
+#: smb4k.kcfg:628
 #, kde-format
 msgid "Backup directory"
 msgstr "백업 디렉터리"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:635
+#: smb4k.kcfg:633
 #, kde-format
 msgid "Force fixed checksum block size:"
 msgstr "강제 고정 체크섬 블록 크기:"
 
 #. i18n: ectx: whatsthis, entry (UseBlockSize), group (Synchronization)
-#: smb4k.kcfg:636
+#: smb4k.kcfg:634
 #, kde-format
 msgid ""
 "Force a fixed checksum block-size (-B, --block-size=SIZE). This forces the "
@@ -1773,19 +1773,19 @@ msgstr ""
 "리즘의 블록 크기를 고정된 값으로 강제합니다."
 
 #. i18n: ectx: label, entry (BlockSize), group (Synchronization)
-#: smb4k.kcfg:640
+#: smb4k.kcfg:638
 #, kde-format
 msgid "The block size"
 msgstr "블록 크기"
 
 #. i18n: ectx: label, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:646
+#: smb4k.kcfg:644
 #, kde-format
 msgid "Set block/file checksum seed:"
 msgstr "블록/파일 체크섬 시드 설정:"
 
 #. i18n: ectx: whatsthis, entry (UseChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:647
+#: smb4k.kcfg:645
 #, kde-format
 msgid ""
 "Set block/file checksum seed (--checksum-seed=NUM). Set the MD4 checksum "
@@ -1799,19 +1799,19 @@ msgstr ""
 "본값으로 합니다."
 
 #. i18n: ectx: label, entry (ChecksumSeed), group (Synchronization)
-#: smb4k.kcfg:651
+#: smb4k.kcfg:649
 #, kde-format
 msgid "The value for the UseChecksumSeed config option"
 msgstr "UseChecksumSeed 설정 옵션의 값"
 
 #. i18n: ectx: label, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:657
+#: smb4k.kcfg:655
 #, kde-format
 msgid "Skip files based on checksum"
 msgstr "체크섬을 기준으로 파일 건너뛰기"
 
 #. i18n: ectx: whatsthis, entry (UseChecksum), group (Synchronization)
-#: smb4k.kcfg:658
+#: smb4k.kcfg:656
 #, kde-format
 msgid ""
 "Skip files based on a checksum and not based on modification time and size (-"
@@ -1822,32 +1822,32 @@ msgstr ""
 "이 기능에 대한 자세한 정보는 rsync의 man 페이지를 참조하십시오."
 
 #. i18n: ectx: label, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:662
+#: smb4k.kcfg:660
 #, kde-format
 msgid "Set bandwidth limit:"
 msgstr "대역폭 제한 설정:"
 
 #. i18n: ectx: whatsthis, entry (UseBandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:663
+#: smb4k.kcfg:661
 #, kde-format
 msgid ""
 "Set the maximum data transfer rate in kilobytes per second (--bwlimit=RATE)."
 msgstr "최대 전송 대역폭을 초당 킬로바이트 단위로 설정합니다(--bwlimit=RATE)."
 
 #. i18n: ectx: label, entry (BandwidthLimit), group (Synchronization)
-#: smb4k.kcfg:667
+#: smb4k.kcfg:665
 #, kde-format
 msgid "The value for the UseBandwidthLimit config option"
 msgstr "UseBandwidthLimit 설정 옵션의 값"
 
 #. i18n: ectx: label, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:679
+#: smb4k.kcfg:677
 #, kde-format
 msgid "Use profiles"
 msgstr "프로필 사용"
 
 #. i18n: ectx: whatsthis, entry (UseProfiles), group (Profiles)
-#: smb4k.kcfg:680
+#: smb4k.kcfg:678
 #, kde-format
 msgid ""
 "Make Smb4K use profiles. This enables you to define different bookmarks and "
@@ -1859,49 +1859,49 @@ msgstr ""
 "사용할 때 유용합니다."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:684
+#: smb4k.kcfg:682
 #, kde-format
 msgid "Profiles"
 msgstr "프로필"
 
 #. i18n: ectx: whatsthis, entry (ProfilesList), group (Profiles)
-#: smb4k.kcfg:685
+#: smb4k.kcfg:683
 #, kde-format
 msgid "The list of profiles."
 msgstr "프로필 목록입니다."
 
-#: smb4k.kcfg:692
+#: smb4k.kcfg:690
 #, kde-format
 msgctxt "default profile name for use at home"
 msgid "Home"
 msgstr "집"
 
-#: smb4k.kcfg:693
+#: smb4k.kcfg:691
 #, kde-format
 msgctxt "default profile name for use at work"
 msgid "Work"
 msgstr "직장"
 
 #. i18n: ectx: label, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:694
+#: smb4k.kcfg:692
 #, kde-format
 msgid "Active profile"
 msgstr "활성 프로필"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
-#: smb4k.kcfg:695
+#: smb4k.kcfg:693
 #, kde-format
 msgid "This is the currently active profile."
 msgstr "현재 활성화된 프로필입니다."
 
 #. i18n: ectx: label, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:699
+#: smb4k.kcfg:697
 #, kde-format
 msgid "Use profile migration assistant"
 msgstr "프로필 이전 도우미 사용"
 
 #. i18n: ectx: whatsthis, entry (UseMigrationAssistant), group (Profiles)
-#: smb4k.kcfg:700
+#: smb4k.kcfg:698
 #, kde-format
 msgid ""
 "Use the profile migration assistant when profiles are removed or the use of "
@@ -2240,7 +2240,7 @@ msgstr "사용자:"
 msgid "Clear List"
 msgstr "목록 비우기"
 
-#: smb4kmounter.cpp:752
+#: smb4kmounter.cpp:753
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2252,7 +2252,7 @@ msgstr ""
 "<qt><p><b>%1</b> 공유가<br><b>%2</b>에 마운트되어 있으며 <b>%3</b> 사용자가 "
 "소유하고 있습니다.</p><p>마운트를 해제하시겠습니까?</p></qt>"
 
-#: smb4kmounter.cpp:757
+#: smb4kmounter.cpp:758
 #, kde-format
 msgid "Foreign Share"
 msgstr "외부 공유"
