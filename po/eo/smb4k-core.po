@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 00:47+0000\n"
-"PO-Revision-Date: 2023-05-06 05:43+0100\n"
+"PO-Revision-Date: 2023-05-10 07:15+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -104,7 +104,7 @@ msgid ""
 "The type of a share will be displayed in a separate column in the network "
 "neighborhood browser. It can either be Disk, Print or IPC."
 msgstr ""
-"La tipo de akcio estos montrata en aparta kolumno en la retumilo de "
+"La tipo de kunhavaĵo estos montrata en aparta kolumno en la retumilo de "
 "najbareco. Ĝi povas aŭ esti Disko, Presaĵo aŭ IPC."
 
 #. i18n: ectx: label, entry (ShowIPAddress), group (UserInterface)
@@ -136,7 +136,7 @@ msgid ""
 "The comment describing the server or share will be displayed in a separate "
 "column in the network neighborhood browser."
 msgstr ""
-"La komento priskribanta la servilon aŭ akcion estos montrata en aparta "
+"La komento priskribanta la servilon aŭ kunhavaĵon estos montrata en aparta "
 "kolumno en la retumilo de najbareco."
 
 #. i18n: ectx: label, entry (ShowNetworkItemToolTip), group (UserInterface)
@@ -166,15 +166,15 @@ msgid ""
 "domain or host item will always be expanded when you execute it."
 msgstr ""
 "Aŭtomate vastigu domajnon kaj gastigantajn erojn kiam listo de rilataj "
-"retaĵoj (domajnaj membroj aŭ akcioj) estas aldonita aŭ ĝisdatigita. Bonvolu "
-"noti, ke domajno aŭ gastiga ero ĉiam estos pligrandigita kiam vi plenumos "
-"ĝin."
+"retaĵoj (domajnaj membroj aŭ kunhavaĵoj) estas aldonita aŭ ĝisdatigita. "
+"Bonvolu rimarki, ke domajno aŭ gastiga ero ĉiam estos pligrandigita kiam vi "
+"plenumos ĝin."
 
 #. i18n: ectx: label, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:70
 #, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr "Montri konsiletojn por muntitaj akcioj"
+msgstr "Montri konsiletojn por muntitaj kunhavaĵoj"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:71
@@ -195,14 +195,14 @@ msgid ""
 "This setting determines the view mode of the shares view. There are two "
 "modes: the icon view and the list view."
 msgstr ""
-"Ĉi tiu agordo determinas la vidoreĝimon de la akcia vido. Estas du reĝimoj: "
-"la piktogramo kaj la listvido."
+"Ĉi tiu agordo determinas la vidoreĝimon de la kunhavaĵa vido. Estas du "
+"reĝimoj: la piktograma kaj la lista vido."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:79
 #, kde-format
 msgid "Icon View"
-msgstr "Ikono Vido"
+msgstr "Piktograma Vido"
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:82
@@ -214,13 +214,14 @@ msgstr "Listo Vido"
 #: smb4k.kcfg:88
 #, kde-format
 msgid "Icon size for the icon view:"
-msgstr "Ikonograndeco por la ikonovido:"
+msgstr "Piktogramgrandeco por la piktogramvido:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:89
 #, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Agordi la piktogramgrandon por la ikona vido-reĝimo de la akciaj vido."
+msgstr ""
+"Agordi la piktogramgrandon por la piktograma vidreĝimo de la kunhavaĵa vido."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:95
@@ -232,13 +233,14 @@ msgstr "Piktograma grandeco por la listvido:"
 #: smb4k.kcfg:96
 #, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Agordi la piktogramgrandon por la lerta vido-reĝimo de la akcia vido."
+msgstr ""
+"Agordi la piktogramgrandon por la lerta vido-reĝimo de la kunhavaĵoj-vido."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:102
 #, kde-format
 msgid "Icon size:"
-msgstr "Ikono grandeco:"
+msgstr "Piktograma grandeco:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:103
@@ -443,10 +445,11 @@ msgid ""
 "the time consumption on large network neighborhoods considerably."
 msgstr ""
 "Se via komputilo estas en granda reto-najbareco, malkovri ĉiujn "
-"laborgrupojn, gastigantojn kaj akciojn eble daŭros longan tempon, ĉar en la "
-"defaŭlta agordo ĉiuj lokaj majstraj retumiloj estas pridemanditaj. Ebligi ĉi "
-"tiun agordon limigas la nombron da uzitaj lokaj majstraj retumiloj al tri. "
-"Tio povas redukti la tempokonsumon sur grandaj retaj najbarecoj konsiderinde."
+"laborgrupojn, gastigantojn kaj kunhavaĵojn eble daŭros longan tempon, ĉar en "
+"la defaŭlta agordo ĉiuj lokaj majstraj retumiloj estas pridemanditaj. Ebligi "
+"ĉi tiun agordon limigas la nombron da uzitaj lokaj majstraj retumiloj al "
+"tri. Tio povas redukti la tempokonsumon sur grandaj retaj najbarecoj "
+"konsiderinde."
 
 #. i18n: ectx: label, entry (MasterBrowsersRequireAuth), group (Network)
 #: smb4k.kcfg:182
@@ -560,7 +563,7 @@ msgstr "Presiloj estas detektitaj."
 #: smb4k.kcfg:227
 #, kde-format
 msgid "Detect hidden shares"
-msgstr "Detekti kaŝitajn akciojn"
+msgstr "Detekti kaŝitajn kunhavaĵojn"
 
 #. i18n: ectx: whatsthis, entry (DetectHiddenShares), group (Network)
 #: smb4k.kcfg:228
@@ -569,8 +572,8 @@ msgid ""
 "Hidden shares are detected. Hidden shares are ending with a $ sign, e.g. "
 "Musik$ or IPC$."
 msgstr ""
-"Kaŝitaj akcioj estas detektitaj. Kaŝitaj akcioj finiĝas per $-signo, ekz. "
-"Musik$ aŭ IPC$."
+"Kaŝitaj kunhavaĵoj estas detektitaj. Kaŝitaj kunhavaĵoj finiĝas per $-signo, "
+"ekz. Musik$ aŭ IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:232
@@ -607,7 +610,7 @@ msgid ""
 "a share."
 msgstr ""
 "Ĉi tiu estas la atendotempo en sekundoj inter la sendo de la magiaj Wake-On-"
-"LAN-pakaĵoj kaj la skanado de la reto-najbareco aŭ la muntado de akcio."
+"LAN-pakaĵoj kaj la skanado de la reto-najbareco aŭ la muntado de kunhavaĵo."
 
 #. i18n: ectx: label, entry (UseWallet), group (Authentication)
 #: smb4k.kcfg:249
@@ -1983,7 +1986,7 @@ msgid ""
 "All listed shares will be bookmarked. To edit the label or group, click the "
 "respective bookmark entry."
 msgstr ""
-"Ĉiuj listigitaj akcioj estos legosignitaj. Por redakti la etikedon aŭ "
+"Ĉiuj listigitaj kunhavaĵoj estos legosignitaj. Por redakti la etikedon aŭ "
 "grupon, alklaku la respektivan legosignan eniron."
 
 #. i18n("Add this share to the bookmarks"));
@@ -2188,7 +2191,7 @@ msgstr "Ĉi tiu servilo subtenas la CIFS Uniksajn etendaĵojn"
 #: smb4kcustomoptionsmanager_p.cpp:300
 #, kde-format
 msgid "Common Mount Settings"
-msgstr "Komunaj Montaj Agordoj"
+msgstr "Komunaj Munt-agordoj"
 
 #: smb4kcustomoptionsmanager_p.cpp:311
 #, kde-format
@@ -2198,7 +2201,7 @@ msgstr "Pliaj opcioj"
 #: smb4kcustomoptionsmanager_p.cpp:355
 #, kde-format
 msgid "Advanced Mount Settings"
-msgstr "Altnivelaj Muntaj Agordoj"
+msgstr "Altnivelaj Munt-agordoj"
 
 #: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
 #: smb4kcustomoptionsmanager_p.cpp:1002
@@ -2249,7 +2252,7 @@ msgstr "Agordoj de Wake-On-LAN"
 #: smb4kcustomoptionsmanager_p.cpp:699
 #, kde-format
 msgid "Mount Settings"
-msgstr "Monto Agordoj"
+msgstr "Muntaj Agordoj"
 
 #: smb4kcustomoptionsmanager_p.cpp:1016
 #, kde-format
@@ -2298,12 +2301,12 @@ msgstr ""
 #: smb4kmounter.cpp:758
 #, kde-format
 msgid "Foreign Share"
-msgstr "Eksterlanda Akcio"
+msgstr "Eksterlanda kunhavaĵo"
 
 #: smb4kmounter_p.cpp:47
 #, kde-format
 msgid "Mount Share"
-msgstr "Monto Share"
+msgstr "Munti kunhavaĵon"
 
 #: smb4kmounter_p.cpp:118
 #, kde-format
@@ -2844,8 +2847,8 @@ msgid ""
 "This is the prefix where Smb4K will create the mount points and mount the "
 "remote shares."
 msgstr ""
-"Ĉi tiu estas la prefikso kie Smb4K kreos la muntajn punktojn kaj montos la "
-"forajn akciojn."
+"Ĉi tiu estas la prefikso kie Smb4K kreos la muntajn punktojn kaj muntos la "
+"forajn kunhavaĵojn."
 
 #. i18n: ectx: label, entry (ForceLowerCaseSubdirs), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:240 smb4kmountsettings_linux.kcfg:303
@@ -2867,7 +2870,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:245 smb4kmountsettings_linux.kcfg:308
 #, kde-format
 msgid "Unmount all personal shares on exit"
-msgstr "Malmunti ĉiujn personajn akciojn ĉe eliro"
+msgstr "Malmunti ĉiujn personajn kunhavaĵojn ĉe eliro"
 
 #. i18n: ectx: whatsthis, entry (UnmountSharesOnExit), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:246 smb4kmountsettings_linux.kcfg:309
@@ -2876,14 +2879,14 @@ msgid ""
 "Unmount all shares that belong to you when the program exits. Shares that "
 "are owned by other users are ignored."
 msgstr ""
-"Malmunti ĉiujn akciojn kiuj apartenas al vi kiam la programo eliras. Akcioj "
-"kiuj estas posedataj de aliaj uzantoj estas ignoritaj."
+"Malmunti ĉiujn kunhavaĵojn kiuj apartenas al vi kiam la programo eliras. "
+"Kunhavaĵoj kiuj estas posedataj de aliaj uzantoj estas ignoritaj."
 
 #. i18n: ectx: label, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:250 smb4kmountsettings_linux.kcfg:313
 #, kde-format
 msgid "Remount shares"
-msgstr "Remunti akciojn"
+msgstr "Remunti kunhavaĵojn"
 
 #. i18n: ectx: whatsthis, entry (RemountShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:251 smb4kmountsettings_linux.kcfg:314
@@ -2895,11 +2898,11 @@ msgid ""
 "ignored. Please note that this setting does not affect the automatic "
 "remounting of shares when your computer woke up from a sleep state."
 msgstr ""
-"Remuntu ĉiujn viajn akciojn, kiuj estis muntitaj kiam vi eliris el la "
+"Remuntu ĉiujn viajn kunhavaĵojn, kiuj estis muntitaj kiam vi eliris el la "
 "programo aŭ ŝanĝis profilon. Se la remuntado de parto malsukcesas, Smb4K "
-"reprovos la venontan fojon kiam ĝi estos komencita. Akcioj kiuj estis "
+"reprovos la venontan fojon kiam ĝi estos komencita. Kunhavaĵoj kiuj estis "
 "muntitaj de aliaj uzantoj estas ignoritaj. Bonvolu noti, ke ĉi tiu agordo ne "
-"influas la aŭtomatan remuntadon de akcioj kiam via komputilo vekiĝis el "
+"influas la aŭtomatan remuntadon de kunhavaĵoj kiam via komputilo vekiĝis el "
 "dorma stato."
 
 #. i18n: ectx: label, entry (RemountAttempts), group (Mounting)
@@ -2915,7 +2918,7 @@ msgid ""
 "Set the number of attempts that are made to remount shares before Smb4K "
 "gives up."
 msgstr ""
-"Agordu la nombron da provoj por remunti akciojn antaŭ ol Smb4K rezignas."
+"Agordu la nombron da provoj por remunti kunhavaĵojn antaŭ ol Smb4K rezignas."
 
 #. i18n: ectx: label, entry (RemountInterval), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:262 smb4kmountsettings_linux.kcfg:325
@@ -2927,14 +2930,14 @@ msgstr "Intervalo inter remuntaj provoj:"
 #: smb4kmountsettings_bsd.kcfg:263 smb4kmountsettings_linux.kcfg:326
 #, kde-format
 msgid "Set the time that elapses between attempts to remount shares."
-msgstr "Agordi la tempon, kiu pasas inter provoj remunti akciojn."
+msgstr "Agordi la tempon, kiu pasas inter provoj remunti kunhavaĵojn."
 
 #. i18n: ectx: label, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:269 smb4kmountsettings_linux.kcfg:332
 #, kde-format
 msgid "Allow the unmounting of shares that are owned by other users"
 msgstr ""
-"Permesu la malmuntadon de akcioj, kiuj estas posedataj de aliaj uzantoj"
+"Permesu la malmuntadon de kunhavaĵoj, kiuj estas posedataj de aliaj uzantoj"
 
 #. i18n: ectx: whatsthis, entry (UnmountForeignShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:270 smb4kmountsettings_linux.kcfg:333
@@ -2943,14 +2946,14 @@ msgid ""
 "Allow the unmounting of shares that were mounted by other users. Please "
 "think before you enable this option."
 msgstr ""
-"Permesu la malmuntadon de akcioj, kiuj estis muntitaj de aliaj uzantoj. "
+"Permesu la malmuntadon de kunhavaĵoj, kiuj estis muntitaj de aliaj uzantoj. "
 "Bonvolu pripensi antaŭ ol vi ebligi ĉi tiun opcion."
 
 #. i18n: ectx: label, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:274 smb4kmountsettings_linux.kcfg:337
 #, kde-format
 msgid "Force the unmounting of inaccessible shares"
-msgstr "Devigi la malmuntadon de nealireblaj akcioj"
+msgstr "Devigi la malmuntadon de nealireblaj kunhavaĵoj"
 
 #. i18n: ectx: whatsthis, entry (ForceUnmountInaccessible), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:275 smb4kmountsettings_linux.kcfg:338
@@ -2960,16 +2963,16 @@ msgid ""
 "inaccessible, a lazy unmount is performed. Before the actual unmount is "
 "performed, a warning dialog is shown asking to approve the unmount."
 msgstr ""
-"Devigu la malmuntadon de nealireblaj akcioj (nur Linukso). En la okazo ke "
-"parto estas neatingebla, maldiligenta malmuntado estas farita. Antaŭ ol la "
-"efektiva malmuntado estas farita, averta dialogo estas montrata petante "
+"Devigu la malmuntadon de nealireblaj kunhavaĵoj (nur Linukso). En la okazo "
+"ke parto estas neatingebla, maldiligenta malmuntado estas farita. Antaŭ ol "
+"la efektiva malmuntado estas farita, averta dialogo estas montrata petante "
 "aprobi la malmuntadon."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:279 smb4kmountsettings_linux.kcfg:342
 #, kde-format
 msgid "Detect all shares that are mounted on the system"
-msgstr "Detekti ĉiujn akciojn kiuj estas muntitaj sur la sistemo"
+msgstr "Detekti ĉiujn kunhavaĵojn kiuj estas muntitaj sur la sistemo"
 
 #. i18n: ectx: whatsthis, entry (DetectAllShares), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:280 smb4kmountsettings_linux.kcfg:343
@@ -2979,8 +2982,8 @@ msgid ""
 "also all other mounts using the SMBFS and CIFS file system that are present "
 "on the system."
 msgstr ""
-"Vi ne nur vidos la akciojn kiuj estis muntitaj kaj estas posedataj de vi, "
-"sed ankaŭ ĉiujn aliajn muntadojn uzante la SMBFS kaj CIFS dosiersistemon "
+"Vi ne nur vidos la kunhavaĵojn kiuj estis muntitaj kaj estas posedataj de "
+"vi, sed ankaŭ ĉiujn aliajn muntadojn uzante la SMBFS kaj CIFS dosiersistemon "
 "kiuj ĉeestas en la sistemo."
 
 #. i18n: ectx: label, entry (CifsUnixExtensionsSupport), group (Mounting)
@@ -3092,8 +3095,8 @@ msgid ""
 "This is the port that is exclusively used to mount shares from remote "
 "servers. The default value is 445 (CIFS file system)."
 msgstr ""
-"Ĉi tiu estas la pordo, kiu estas ekskluzive uzata por munti akciojn de foraj "
-"serviloj. La defaŭlta valoro estas 445 (CIFS-dosiersistemo)."
+"Ĉi tiu estas la pordo, kiu estas ekskluzive uzata por munti kunhavaĵojn de "
+"foraj serviloj. La defaŭlta valoro estas 445 (CIFS-dosiersistemo)."
 
 #. i18n: ectx: whatsthis, entry (UseClientCharset), group (Mounting)
 #. i18n: ectx: whatsthis, entry (ClientCharset), group (Mounting)
@@ -3126,8 +3129,8 @@ msgid ""
 "Here you can choose if the shares should be mounted in read-write or read-"
 "only mode."
 msgstr ""
-"Ĉi tie vi povas elekti ĉu la akcioj devus esti muntitaj en lego-skriba aŭ "
-"nurlegebla reĝimo."
+"Ĉi tie vi povas elekti ĉu la kunhavaĵoj devus esti muntitaj en lego-skriba "
+"aŭ nurlegebla reĝimo."
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:152
@@ -3509,15 +3512,15 @@ msgstr "<p>La parto <b>%1</b> estis malmuntita de <b>%2</b>.</p>"
 #, kde-format
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
-msgstr[0] "<p>%1 kunhavigaĵo estis muntita."
-msgstr[1] "<p>%1 kunhavigaĵoj estis muntitaj."
+msgstr[0] "<p>%1 kunhavigaĵo estis muntita.</p>"
+msgstr[1] "<p>%1 kunhavigaĵoj estis muntitaj.</p>"
 
 #: smb4knotification.cpp:95
 #, kde-format
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
-msgstr[0] "<p>%1 kunhavigaĵo estis malmuntita."
-msgstr[1] "<p>%1 kunhavigaĵoj estis malmuntitaj."
+msgstr[0] "<p>%1 kunhavigaĵo estis malmuntita.</p>"
+msgstr[1] "<p>%1 kunhavigaĵoj estis malmuntitaj.</p>"
 
 #: smb4knotification.cpp:111
 #, kde-format
@@ -3562,12 +3565,12 @@ msgstr ""
 #: smb4knotification.cpp:176
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed:</p><p><tt>%2</tt></p>"
-msgstr "<p>Montado de la parto <b>%1</b> malsukcesis:</p><p><tt>%2</tt></p>"
+msgstr "<p>Muntado de la parto <b>%1</b> malsukcesis:</p><p><tt>%2</tt></p>"
 
 #: smb4knotification.cpp:178
 #, kde-format
 msgid "<p>Mounting the share <b>%1</b> failed.</p>"
-msgstr "<p>Montado de la parto <b>%1</b> malsukcesis.</p>"
+msgstr "<p>Muntado de la parto <b>%1</b> malsukcesis.</p>"
 
 #: smb4knotification.cpp:196
 #, kde-format
