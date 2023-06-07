@@ -621,4 +621,6 @@ private:
     const QScopedPointer<Smb4KCustomOptionsPrivate> d;
 };
 
+Q_DECLARE_METATYPE(Smb4KCustomOptions)
+
 #endif
