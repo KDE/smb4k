@@ -229,4 +229,6 @@ private:
     const QScopedPointer<Smb4KBookmarkPrivate> d;
 };
 
+Q_DECLARE_METATYPE(Smb4KBookmark)
+
 #endif
