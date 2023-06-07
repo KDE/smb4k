@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 "X-Generator: Lokalize 1.0\n"
@@ -3511,7 +3511,6 @@ msgstr "%1 を無事にマウント解除しました。"
 msgid "<p>%1 share has been mounted.</p>"
 msgid_plural "<p>%1 shares have been mounted.</p>"
 msgstr[0] "%1 を無事にマウント解除しました。"
-msgstr[1] "%1 を無事にマウント解除しました。"
 
 #: smb4knotification.cpp:95
 #, fuzzy, kde-format
@@ -3519,7 +3518,6 @@ msgstr[1] "%1 を無事にマウント解除しました。"
 msgid "<p>%1 share has been unmounted.</p>"
 msgid_plural "<p>%1 shares have been unmounted.</p>"
 msgstr[0] "%1 を無事にマウント解除しました。"
-msgstr[1] "%1 を無事にマウント解除しました。"
 
 #: smb4knotification.cpp:111
 #, fuzzy, kde-format
