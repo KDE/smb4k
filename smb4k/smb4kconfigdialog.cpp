@@ -15,6 +15,7 @@
 #include "smb4kconfigpageprofiles.h"
 #include "smb4kconfigpagesynchronization.h"
 #include "smb4kconfigpageuserinterface.h"
+#include "smb4kconfigpagebookmarks.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
@@ -44,6 +45,8 @@ K_PLUGIN_FACTORY(Smb4KConfigDialogFactory, registerPlugin<Smb4KConfigDialog>();)
 Smb4KConfigDialog::Smb4KConfigDialog(QWidget *parent, const QList<QVariant> & /*args*/)
     : KConfigDialog(parent, QStringLiteral("ConfigDialog"), Smb4KSettings::self())
 {
+    setAttribute(Qt::WA_DeleteOnClose, true);
+
     setupDialog();
 }
 
@@ -54,67 +57,75 @@ Smb4KConfigDialog::~Smb4KConfigDialog()
 void Smb4KConfigDialog::setupDialog()
 {
     // Add the pages:
-    Smb4KConfigPageUserInterface *interface_options = new Smb4KConfigPageUserInterface(this);
-    QScrollArea *interface_area = new QScrollArea(this);
-    interface_area->setWidget(interface_options);
-    interface_area->setWidgetResizable(true);
-    interface_area->setFrameStyle(QFrame::NoFrame);
+    Smb4KConfigPageUserInterface *userInterfacePage = new Smb4KConfigPageUserInterface(this);
+    QScrollArea *userInterfaceArea = new QScrollArea(this);
+    userInterfaceArea->setWidget(userInterfacePage);
+    userInterfaceArea->setWidgetResizable(true);
+    userInterfaceArea->setFrameStyle(QFrame::NoFrame);
 
-    Smb4KConfigPageNetwork *network_options = new Smb4KConfigPageNetwork(this);
-    QScrollArea *network_area = new QScrollArea(this);
-    network_area->setWidget(network_options);
-    network_area->setWidgetResizable(true);
-    network_area->setFrameStyle(QFrame::NoFrame);
+    Smb4KConfigPageNetwork *networkPage = new Smb4KConfigPageNetwork(this);
+    QScrollArea *networkArea = new QScrollArea(this);
+    networkArea->setWidget(networkPage);
+    networkArea->setWidgetResizable(true);
+    networkArea->setFrameStyle(QFrame::NoFrame);
 
-    Smb4KConfigPageMounting *mount_options = new Smb4KConfigPageMounting(this);
-    QScrollArea *mount_area = new QScrollArea(this);
-    mount_area->setWidget(mount_options);
-    mount_area->setWidgetResizable(true);
-    mount_area->setFrameStyle(QFrame::NoFrame);
+    Smb4KConfigPageMounting *mountingPage = new Smb4KConfigPageMounting(this);
+    QScrollArea *mountingArea = new QScrollArea(this);
+    mountingArea->setWidget(mountingPage);
+    mountingArea->setWidgetResizable(true);
+    mountingArea->setFrameStyle(QFrame::NoFrame);
 
-    Smb4KConfigPageAuthentication *auth_options = new Smb4KConfigPageAuthentication(this);
-    QScrollArea *auth_area = new QScrollArea(this);
-    auth_area->setWidget(auth_options);
-    auth_area->setWidgetResizable(true);
-    auth_area->setFrameStyle(QFrame::NoFrame);
+    Smb4KConfigPageAuthentication *authenticationPage = new Smb4KConfigPageAuthentication(this);
+    QScrollArea *authenticationArea = new QScrollArea(this);
+    authenticationArea->setWidget(authenticationPage);
+    authenticationArea->setWidgetResizable(true);
+    authenticationArea->setFrameStyle(QFrame::NoFrame);
 
-    Smb4KConfigPageSynchronization *rsync_options = new Smb4KConfigPageSynchronization(this);
-    QScrollArea *rsync_area = new QScrollArea(this);
-    rsync_area->setWidget(rsync_options);
-    rsync_area->setWidgetResizable(true);
-    rsync_area->setFrameStyle(QFrame::NoFrame);
+    Smb4KConfigPageSynchronization *synchronizationPage = new Smb4KConfigPageSynchronization(this);
+    QScrollArea *synchronizationArea = new QScrollArea(this);
+    synchronizationArea->setWidget(synchronizationPage);
+    synchronizationArea->setWidgetResizable(true);
+    synchronizationArea->setFrameStyle(QFrame::NoFrame);
 
-    rsync_options->setEnabled(!QStandardPaths::findExecutable(QStringLiteral("rsync")).isEmpty());
+    synchronizationPage->setEnabled(!QStandardPaths::findExecutable(QStringLiteral("rsync")).isEmpty());
 
-    Smb4KConfigPageCustomOptions *custom_options = new Smb4KConfigPageCustomOptions(this);
-    QScrollArea *custom_area = new QScrollArea(this);
-    custom_area->setWidget(custom_options);
-    custom_area->setWidgetResizable(true);
-    custom_area->setFrameStyle(QFrame::NoFrame);
+    Smb4KConfigPageCustomOptions *customSettingsPage = new Smb4KConfigPageCustomOptions(this);
+    QScrollArea *customSettingsArea = new QScrollArea(this);
+    customSettingsArea->setWidget(customSettingsPage);
+    customSettingsArea->setWidgetResizable(true);
+    customSettingsArea->setFrameStyle(QFrame::NoFrame);
 
-    Smb4KConfigPageProfiles *profiles_page = new Smb4KConfigPageProfiles(this);
-    QScrollArea *profiles_area = new QScrollArea(this);
-    profiles_area->setWidget(profiles_page);
-    profiles_area->setWidgetResizable(true);
-    profiles_area->setFrameStyle(QFrame::NoFrame);
+    Smb4KConfigPageProfiles *profilesPage = new Smb4KConfigPageProfiles(this);
+    QScrollArea *profilesArea = new QScrollArea(this);
+    profilesArea->setWidget(profilesPage);
+    profilesArea->setWidgetResizable(true);
+    profilesArea->setFrameStyle(QFrame::NoFrame);
+
+    Smb4KConfigPageBookmarks *bookmarksPage = new Smb4KConfigPageBookmarks(this);
+    QScrollArea *bookmarksArea = new QScrollArea(this);
+    bookmarksArea->setWidget(bookmarksPage);
+    bookmarksArea->setWidgetResizable(true);
+    bookmarksArea->setFrameStyle(QFrame::NoFrame);
 
     //
     // Pages to the configuration dialog
     //
-    m_user_interface = addPage(interface_area, Smb4KSettings::self(), i18n("User Interface"), QStringLiteral("preferences-desktop"));
-    m_network = addPage(network_area, Smb4KSettings::self(), i18n("Network"), QStringLiteral("preferences-system-network-server-share-windows"));
-    m_mounting = addPage(mount_area, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
-    m_authentication = addPage(auth_area, Smb4KSettings::self(), i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"));
-    m_synchronization = addPage(rsync_area, Smb4KSettings::self(), i18n("Synchronization"), QStringLiteral("folder-sync"));
-    m_custom_settings = addPage(custom_area, Smb4KSettings::self(), i18n("Custom Settings"), QStringLiteral("settings-configure"));
-    m_profiles = addPage(profiles_area, Smb4KSettings::self(), i18n("Profiles"), QStringLiteral("preferences-system-users"));
+    m_user_interface = addPage(userInterfaceArea, Smb4KSettings::self(), i18n("User Interface"), QStringLiteral("preferences-desktop"));
+    m_network = addPage(networkArea, Smb4KSettings::self(), i18n("Network"), QStringLiteral("preferences-system-network-server-share-windows"));
+    m_mounting = addPage(mountingArea, Smb4KMountSettings::self(), i18n("Mounting"), QStringLiteral("media-mount"));
+    m_authentication = addPage(authenticationArea, Smb4KSettings::self(), i18n("Authentication"), QStringLiteral("preferences-desktop-user-password"));
+    m_synchronization = addPage(synchronizationArea, Smb4KSettings::self(), i18n("Synchronization"), QStringLiteral("folder-sync"));
+    m_bookmarks = addPage(bookmarksArea, Smb4KSettings::self(), i18n("Bookmarks"), QStringLiteral("bookmarks"));
+    m_custom_settings = addPage(customSettingsArea, Smb4KSettings::self(), i18n("Custom Settings"), QStringLiteral("settings-configure"));
+    m_profiles = addPage(profilesArea, Smb4KSettings::self(), i18n("Profiles"), QStringLiteral("preferences-system-users"));
 
     //
     // Connections
     //
-    connect(custom_options, SIGNAL(customSettingsModified()), this, SLOT(slotEnableApplyButton()));
-    connect(auth_options, SIGNAL(walletEntriesModified()), this, SLOT(slotEnableApplyButton()));
-    connect(this, SIGNAL(currentPageChanged(KPageWidgetItem *, KPageWidgetItem *)), this, SLOT(slotCheckPage(KPageWidgetItem *, KPageWidgetItem *)));
+    connect(customSettingsPage, &Smb4KConfigPageCustomOptions::customSettingsModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
+    connect(authenticationPage, &Smb4KConfigPageAuthentication::walletEntriesModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
+    connect(bookmarksPage, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
+    connect(this, &Smb4KConfigDialog::currentPageChanged, this, &Smb4KConfigDialog::slotCheckPage);
 
     //
     // Dialog size
@@ -164,30 +175,41 @@ bool Smb4KConfigDialog::checkSettings(KPageWidgetItem *page)
 
 void Smb4KConfigDialog::updateSettings()
 {
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
-
-    if (customOptionsPage) {
-        customOptionsPage->saveCustomOptions();
-    }
-
     Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
 
     if (authenticationPage) {
         authenticationPage->saveLoginCredentials();
     }
 
+    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+
+    if (customOptionsPage) {
+        customOptionsPage->saveCustomOptions();
+    }
+
+    Smb4KConfigPageBookmarks *bookmarksPage = m_bookmarks->widget()->findChild<Smb4KConfigPageBookmarks *>();
+
+    if (bookmarksPage) {
+        bookmarksPage->saveBookmarks();
+    }
+
     Smb4KConfigPageProfiles *profilesPage = m_profiles->widget()->findChild<Smb4KConfigPageProfiles *>();
 
     if (profilesPage) {
-        profilesPage->applyChanges();
+        if (profilesPage->profilesChanged()) {
+            profilesPage->applyChanges();
 
-        //
-        // Finally reload the custom options.
-        //
-        Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+            Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
-        if (customOptionsPage) {
-            customOptionsPage->loadCustomOptions();
+            if (customOptionsPage) {
+                customOptionsPage->loadCustomOptions();
+            }
+
+            Smb4KConfigPageBookmarks *bookmarksPage = m_bookmarks->widget()->findChild<Smb4KConfigPageBookmarks *>();
+
+            if (bookmarksPage) {
+                bookmarksPage->loadBookmarks();
+            }
         }
     }
 
@@ -223,32 +245,26 @@ void Smb4KConfigDialog::reject()
 
 void Smb4KConfigDialog::slotEnableApplyButton()
 {
-    //
-    // Check if we need to enable the Apply button
-    //
     bool enable = false;
 
-    //
-    // Check the wallet entries
-    //
     Smb4KConfigPageAuthentication *authenticationPage = m_authentication->widget()->findChild<Smb4KConfigPageAuthentication *>();
 
     if (authenticationPage) {
         enable = authenticationPage->loginCredentialsChanged();
     }
 
-    //
-    // Check the custom options
-    //
     Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
 
     if (!enable && customOptionsPage) {
         enable = customOptionsPage->customSettingsChanged();
     }
 
-    //
-    // Enable/disable the apply button
-    //
+    Smb4KConfigPageBookmarks *boookmarksPage = m_bookmarks->widget()->findChild<Smb4KConfigPageBookmarks *>();
+
+    if (!enable && boookmarksPage) {
+        enable = boookmarksPage->bookmarksChanged();
+    }
+
     QPushButton *applyButton = buttonBox()->button(QDialogButtonBox::Apply);
 
     if (applyButton) {

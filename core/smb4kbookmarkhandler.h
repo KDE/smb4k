@@ -111,7 +111,7 @@ public:
      * @returns             The current list of bookmarks stored in the
      *                      bookmark file.
      */
-    QList<BookmarkPtr> bookmarksList() const;
+    QList<BookmarkPtr> bookmarkList() const;
 
     /**
      * Get the list of bookmarks belonging to a certain category.
@@ -120,7 +120,7 @@ public:
      *
      * @returns a list of bookmarks belonging to a certain category
      */
-    QList<BookmarkPtr> bookmarksList(const QString &categoryName) const;
+    QList<BookmarkPtr> bookmarkList(const QString &categoryName) const;
 
     /**
      * This function searches for a bookmark using its URL and returns a pointer
@@ -166,7 +166,7 @@ public:
     /**
      * This function opens the bookmark editor.
      */
-    void editBookmarks();
+    SMB4K_DEPRECATED void editBookmarks();
 
 Q_SIGNALS:
     /**

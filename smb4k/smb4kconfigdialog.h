@@ -113,6 +113,11 @@ private:
     KPageWidgetItem *m_profiles;
 
     /**
+     * "Bookmarks" page
+     */
+    KPageWidgetItem *m_bookmarks;
+
+    /**
      * Set up the config dialog.
      */
     void setupDialog();

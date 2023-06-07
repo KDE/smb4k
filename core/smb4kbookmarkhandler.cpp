@@ -399,7 +399,7 @@ void Smb4KBookmarkHandler::readBookmarkList()
 BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
 {
     BookmarkPtr bookmark;
-    QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
+    QList<BookmarkPtr> temporalBookmarkList = bookmarkList();
 
     if (!url.isEmpty() && url.isValid() && !temporalBookmarkList.isEmpty()) {
         for (const BookmarkPtr &b : qAsConst(temporalBookmarkList)) {
@@ -422,7 +422,7 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByUrl(const QUrl &url)
 BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
 {
     BookmarkPtr bookmark;
-    QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
+    QList<BookmarkPtr> temporalBookmarkList = bookmarkList();
 
     for (const BookmarkPtr &b : qAsConst(temporalBookmarkList)) {
         if (QString::compare(b->label().toUpper(), label.toUpper()) == 0) {
@@ -434,7 +434,7 @@ BookmarkPtr Smb4KBookmarkHandler::findBookmarkByLabel(const QString &label)
     return bookmark;
 }
 
-QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
+QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarkList() const
 {
     QList<BookmarkPtr> bookmarks;
 
@@ -453,10 +453,10 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList() const
     return bookmarks;
 }
 
-QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &categoryName) const
+QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarkList(const QString &categoryName) const
 {
     QList<BookmarkPtr> bookmarks;
-    QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
+    QList<BookmarkPtr> temporalBookmarkList = bookmarkList();
 
     for (const BookmarkPtr &bookmark : qAsConst(temporalBookmarkList)) {
         if (categoryName == bookmark->categoryName()) {
@@ -470,7 +470,7 @@ QList<BookmarkPtr> Smb4KBookmarkHandler::bookmarksList(const QString &categoryNa
 QStringList Smb4KBookmarkHandler::categoryList() const
 {
     QStringList categories;
-    QList<BookmarkPtr> temporalBookmarkList = bookmarksList();
+    QList<BookmarkPtr> temporalBookmarkList = bookmarkList();
 
     for (const BookmarkPtr &bookmark : qAsConst(temporalBookmarkList)) {
         if (!categories.contains(bookmark->categoryName())) {
@@ -501,7 +501,7 @@ void Smb4KBookmarkHandler::editBookmarks()
     // Only allow one instance of the bookmark editor
     //
     if (!d->editor) {
-        d->editor = new Smb4KBookmarkEditor(bookmarksList(), QApplication::activeWindow());
+        d->editor = new Smb4KBookmarkEditor(bookmarkList(), QApplication::activeWindow());
     } else {
         d->editor->raise();
     }

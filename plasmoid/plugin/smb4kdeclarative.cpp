@@ -518,7 +518,7 @@ void Smb4KDeclarative::slotBookmarksListChanged()
     qDeleteAll(d->bookmarkCategoryObjects);
     d->bookmarkCategoryObjects.clear();
 
-    QList<BookmarkPtr> bookmarksList = Smb4KBookmarkHandler::self()->bookmarksList();
+    QList<BookmarkPtr> bookmarksList = Smb4KBookmarkHandler::self()->bookmarkList();
     QStringList categoriesList = Smb4KBookmarkHandler::self()->categoryList();
 
     for (const BookmarkPtr &bookmark : qAsConst(bookmarksList)) {

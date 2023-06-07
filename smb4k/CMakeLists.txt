@@ -16,6 +16,7 @@ add_subdirectory(icons)
 set(smb4kconfigdialog_LIB_SRCS
   smb4kconfigdialog.cpp
   smb4kconfigpageauthentication.cpp
+  smb4kconfigpagebookmarks.cpp
   smb4kconfigpagecustomoptions.cpp
   smb4kconfigpagemounting.cpp
   smb4kconfigpagenetwork.cpp
@@ -49,7 +50,9 @@ endif(SMB4K_WITH_WS_DISCOVERY)
 
 set(smb4k_SRCS
   main.cpp
+  smb4kbookmarkeditor.cpp
   smb4kbookmarkmenu.cpp
+  smb4kconfigpagebookmarks.cpp
   smb4kprofilesmenu.cpp
   smb4kmainwindow.cpp
   smb4knetworkbrowser.cpp
