@@ -23,6 +23,8 @@
 Smb4KConfigPageProfiles::Smb4KConfigPageProfiles(QWidget *parent)
     : QWidget(parent)
 {
+    m_profilesChanged = false;
+
     //
     // Layout
     //
@@ -74,17 +76,26 @@ Smb4KConfigPageProfiles::~Smb4KConfigPageProfiles()
 
 void Smb4KConfigPageProfiles::applyChanges()
 {
-    // Remove the profiles
-    if (!m_removed.isEmpty()) {
-        Smb4KProfileManager::self()->removeProfiles(m_removed);
-        m_removed.clear();
-    }
+    if (m_profilesChanged) {
+        // Remove the profiles
+        if (!m_removed.isEmpty()) {
+            Smb4KProfileManager::self()->removeProfiles(m_removed);
+            m_removed.clear();
+        }
 
-    // Rename the profiles
-    if (!m_renamed.isEmpty()) {
-        Smb4KProfileManager::self()->migrateProfiles(m_renamed);
-        m_renamed.clear();
+        // Rename the profiles
+        if (!m_renamed.isEmpty()) {
+            Smb4KProfileManager::self()->migrateProfiles(m_renamed);
+            m_renamed.clear();
+        }
+
+        m_profilesChanged = false;
     }
+}
+
+bool Smb4KConfigPageProfiles::profilesChanged() const
+{
+    return m_profilesChanged;
 }
 
 void Smb4KConfigPageProfiles::slotEnableWidget(int state)
@@ -104,7 +115,13 @@ void Smb4KConfigPageProfiles::slotEnableWidget(int state)
     }
 }
 
-void Smb4KConfigPageProfiles::slotProfileRemoved(const QString &name)
+void Smb4KConfigPageProfiles::slotProfileAdded(const QString& text)
+{
+    Q_UNUSED(text);
+    m_profilesChanged = true;
+}
+
+void Smb4KConfigPageProfiles::slotProfileRemoved(const QString &text)
 {
     // If the removed profile was renamed before, remove it from
     // the list.
@@ -113,12 +130,13 @@ void Smb4KConfigPageProfiles::slotProfileRemoved(const QString &name)
     while (it.hasNext()) {
         QPair<QString, QString> entry = it.next();
 
-        if (QString::compare(entry.first, name) == 0 || QString::compare(entry.second, name) == 0) {
+        if (entry.first == text || entry.second == text) {
             it.remove();
         }
     }
 
-    m_removed << name;
+    m_removed << text;
+    m_profilesChanged = true;
 }
 
 void Smb4KConfigPageProfiles::slotProfileChanged()
@@ -145,7 +163,7 @@ void Smb4KConfigPageProfiles::slotProfileChanged()
             bool write = true;
 
             for (int i = 0; i < m_renamed.size(); ++i) {
-                if (QString::compare(savedProfiles.first(), m_renamed.at(i).first, Qt::CaseSensitive) == 0) {
+                if (savedProfiles.first() == m_renamed.at(i).first) {
                     QPair<QString, QString> pair = static_cast<QPair<QString, QString>>(m_renamed.at(i));
                     pair.second = currentProfiles.first();
                     write = false;
@@ -157,6 +175,7 @@ void Smb4KConfigPageProfiles::slotProfileChanged()
             if (write) {
                 QPair<QString, QString> renamed(savedProfiles.first(), currentProfiles.first());
                 m_renamed << renamed;
+                m_profilesChanged = true;
             }
         }
     }

@@ -36,15 +36,22 @@ public:
      */
     void applyChanges();
 
+    /**
+     * Returns TRUE if the list of profiles changed and FALSE otherwise.
+     */
+    bool profilesChanged() const;
+
 protected Q_SLOTS:
     void slotEnableWidget(int state);
-    void slotProfileRemoved(const QString &name);
+    void slotProfileAdded(const QString &text);
+    void slotProfileRemoved(const QString &text);
     void slotProfileChanged();
 
 private:
     KEditListWidget *m_profiles;
     QList<QPair<QString, QString>> m_renamed;
     QStringList m_removed;
+    bool m_profilesChanged;
 };
 
 #endif
