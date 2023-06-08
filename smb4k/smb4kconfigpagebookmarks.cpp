@@ -174,9 +174,7 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
 
         if (!bookmarks.isEmpty()) {
             for (const BookmarkPtr &bookmark : qAsConst(bookmarks)) {
-                QVariant variant;
-                variant.setValue(*bookmark.data());
-
+                QVariant variant = QVariant::fromValue(*bookmark.data());
                 QTreeWidgetItem *bookmarkItem = nullptr;
 
                 if (categoryItem) {
@@ -277,8 +275,7 @@ void Smb4KConfigPageBookmarks::endEditingCategoryItem(QTreeWidgetItem* item)
                 Smb4KBookmark bookmark = item->child(i)->data(0, DataRole).value<Smb4KBookmark>();
                 bookmark.setCategoryName(item->text(0));
 
-                QVariant variant;
-                variant.setValue(bookmark);
+                QVariant variant = QVariant::fromValue(bookmark);
                 item->child(i)->setData(0, DataRole, variant);
             }
         }
@@ -335,9 +332,7 @@ bool Smb4KConfigPageBookmarks::eventFilter(QObject* obj, QEvent* e)
                         bookmark.setCategoryName(QStringLiteral(""));
                     }
 
-                    QVariant variant;
-                    variant.setValue(bookmark);
-
+                    QVariant variant = QVariant::fromValue(bookmark);
                     (*it)->setData(0, DataRole, variant);
                 }
 
@@ -453,8 +448,7 @@ void Smb4KConfigPageBookmarks::slotLabelEdited()
             Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
             bookmark.setLabel(m_labelEdit->text());
 
-            QVariant variant;
-            variant.setValue(bookmark);
+            QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
 
             m_bookmarksChanged = true;
@@ -470,8 +464,7 @@ void Smb4KConfigPageBookmarks::slotCategoryEdited()
             Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
             bookmark.setCategoryName(m_categoryEdit->currentText());
 
-            QVariant variant;
-            variant.setValue(bookmark);
+            QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
 
             QTreeWidgetItem *categoryItem = nullptr;
@@ -514,8 +507,7 @@ void Smb4KConfigPageBookmarks::slotUserNameEdited()
             Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
             bookmark.setUserName(m_userNameEdit->text());
 
-            QVariant variant;
-            variant.setValue(bookmark);
+            QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
 
             m_bookmarksChanged = true;
@@ -531,8 +523,7 @@ void Smb4KConfigPageBookmarks::slotWorkgroupEdited()
             Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
             bookmark.setWorkgroupName(m_workgroupEdit->text());
 
-            QVariant variant;
-            variant.setValue(bookmark);
+            QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
 
             m_bookmarksChanged = true;
@@ -548,8 +539,7 @@ void Smb4KConfigPageBookmarks::slotIpAddressEdited()
             Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
             bookmark.setHostIpAddress(m_ipAddressEdit->text());
 
-            QVariant variant;
-            variant.setValue(bookmark);
+            QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
 
             m_bookmarksChanged = true;
