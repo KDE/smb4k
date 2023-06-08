@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-17 00:48+0000\n"
+"POT-Creation-Date: 2023-06-08 00:47+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -119,67 +119,72 @@ msgstr "&Instellen"
 msgid "Main Toolbar"
 msgstr "Hööft-Warktüüchbalken"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkeditor.cpp:27
+#, kde-format
+msgid "Bookmark Editor"
+msgstr "Leesteken-Editor"
+
+#: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
 msgid "Bookmarks"
 msgstr "Leestekens"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:51
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Leestekens bewerken"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:146
+#: smb4k/smb4kbookmarkmenu.cpp:60 smb4k/smb4kmainwindow.cpp:146
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Leesteken tofögen"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
+#: smb4k/smb4kbookmarkmenu.cpp:71 smb4k/smb4kbookmarkmenu.cpp:213
 #, fuzzy, kde-format
 #| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
 msgstr "All Leestekens inhangen"
 
-#: smb4k/smb4kconfigdialog.cpp:104
+#: smb4k/smb4kconfigdialog.cpp:113
 #, kde-format
 msgid "User Interface"
 msgstr "Böversiet"
 
-#: smb4k/smb4kconfigdialog.cpp:105 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:114 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Nettwark"
 
-#: smb4k/smb4kconfigdialog.cpp:106
+#: smb4k/smb4kconfigdialog.cpp:115
 #, kde-format
 msgid "Mounting"
 msgstr "Inhangen"
 
-#: smb4k/smb4kconfigdialog.cpp:107
+#: smb4k/smb4kconfigdialog.cpp:116
 #, kde-format
 msgid "Authentication"
 msgstr "Identiteetprööv"
 
-#: smb4k/smb4kconfigdialog.cpp:108
+#: smb4k/smb4kconfigdialog.cpp:117
 #, kde-format
 msgid "Synchronization"
 msgstr "Synkroniseren"
 
-#: smb4k/smb4kconfigdialog.cpp:109
+#: smb4k/smb4kconfigdialog.cpp:119
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Custom Settings"
 msgstr "Allmeen Optschonen"
 
-#: smb4k/smb4kconfigdialog.cpp:110 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:120 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:132
+#: smb4k/smb4kconfigdialog.cpp:143
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -187,7 +192,7 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#: smb4k/smb4kconfigpageprofiles.cpp:34
+#: smb4k/smb4kconfigpageprofiles.cpp:36
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgid "Settings"
@@ -210,12 +215,14 @@ msgid "Save"
 msgstr "Sekern"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagebookmarks.cpp:119
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
 msgstr "Bewerken"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagebookmarks.cpp:131
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
 #, kde-format
 msgid "Remove"
@@ -252,15 +259,53 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
 msgid "Set the username and password for the default login."
 msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
 
-#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#: smb4k/smb4kconfigpagebookmarks.cpp:62
 #, kde-format
-msgid "All fine."
+msgid "Label:"
 msgstr ""
 
+#: smb4k/smb4kconfigpagebookmarks.cpp:68
+#, kde-format
+msgid "Category:"
+msgstr ""
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
+#, fuzzy, kde-format
+#| msgid "User:"
+msgid "Username:"
+msgstr "Bruker:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:82 smb4k/smb4ktooltip.cpp:216
+#, kde-format
+msgid "Workgroup:"
+msgstr "Arbeidkoppel:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:88 smb4k/smb4ktooltip.cpp:213
+#: smb4k/smb4ktooltip.cpp:244
+#, kde-format
+msgid "IP Address:"
+msgstr "IP-Adress:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#, kde-format
+msgid "Add Category"
+msgstr ""
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
 msgid "Clear List"
 msgstr "List leddig maken"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#, kde-format
+msgid "New Category"
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:220
 #, kde-format
@@ -943,16 +988,6 @@ msgstr "Reekner"
 msgid "Comment:"
 msgstr "Kommentar:"
 
-#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-Adress:"
-
-#: smb4k/smb4ktooltip.cpp:216
-#, kde-format
-msgid "Workgroup:"
-msgstr "Arbeidkoppel:"
-
 #: smb4k/smb4ktooltip.cpp:223
 #, fuzzy, kde-format
 #| msgid "Shares"
@@ -994,12 +1029,6 @@ msgstr "%1 free vun %2 (%3 bruukt)"
 #| msgid "Mountpoint"
 msgid "Mountpoint:"
 msgstr "Inhangsteed"
-
-#: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
-msgid "Username:"
-msgstr "Bruker:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -2370,9 +2399,6 @@ msgstr "Grött"
 
 #~ msgid "M&ount Manually"
 #~ msgstr "Vun Hand inhangen"
-
-#~ msgid "Bookmark Editor"
-#~ msgstr "Leesteken-Editor"
 
 #~ msgid "Bookmark"
 #~ msgstr "Leesteken"

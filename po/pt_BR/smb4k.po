@@ -6,7 +6,7 @@
 # Alexander Reinholdt <alexander.reinholdt@web.de>, 2004.
 # Lamarque Vieira Souza <lamarque@syst.com.br>, 2006.
 # Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>, 2010.
-# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2010, 2013, 2018, 2019, 2020, 2021, 2022.
+# Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2010, 2013, 2018, 2019, 2020, 2021, 2022, 2023.
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019.
 # Aracele Torres <araceletorres@gmail.com>, 2010, 2011.
 # Marcus Gama <marcus.gama@gmail.com>, 2011, 2012.
@@ -14,10 +14,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-17 00:48+0000\n"
-"PO-Revision-Date: 2022-07-14 10:25-0300\n"
+"POT-Creation-Date: 2023-06-08 00:47+0000\n"
+"PO-Revision-Date: 2023-06-02 10:51-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,10 +63,9 @@ msgstr ""
 "compartilhamentos Samba"
 
 #: smb4k/main.cpp:49
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:58
 #, kde-format
@@ -124,67 +123,72 @@ msgstr "&Configurações"
 msgid "Main Toolbar"
 msgstr "Barra de ferramentas principal"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkeditor.cpp:27
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgid "Bookmark Editor"
+msgstr "Favoritos"
+
+#: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
 msgid "Bookmarks"
 msgstr "Favoritos"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:51
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Editar favoritos"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:146
+#: smb4k/smb4kbookmarkmenu.cpp:60 smb4k/smb4kmainwindow.cpp:146
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Adicionar favorito"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#: smb4k/smb4kbookmarkmenu.cpp:71 smb4k/smb4kbookmarkmenu.cpp:213
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Montar todos os favoritos"
+msgstr "Montar favoritos"
 
-#: smb4k/smb4kconfigdialog.cpp:104
+#: smb4k/smb4kconfigdialog.cpp:113
 #, kde-format
 msgid "User Interface"
 msgstr "Interface do usuário"
 
-#: smb4k/smb4kconfigdialog.cpp:105 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:114 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Rede"
 
-#: smb4k/smb4kconfigdialog.cpp:106
+#: smb4k/smb4kconfigdialog.cpp:115
 #, kde-format
 msgid "Mounting"
 msgstr "Montagem"
 
-#: smb4k/smb4kconfigdialog.cpp:107
+#: smb4k/smb4kconfigdialog.cpp:116
 #, kde-format
 msgid "Authentication"
 msgstr "Autenticação"
 
-#: smb4k/smb4kconfigdialog.cpp:108
+#: smb4k/smb4kconfigdialog.cpp:117
 #, kde-format
 msgid "Synchronization"
 msgstr "Sincronização"
 
-#: smb4k/smb4kconfigdialog.cpp:109
+#: smb4k/smb4kconfigdialog.cpp:119
 #, fuzzy, kde-format
 #| msgid "Common Settings:"
 msgid "Custom Settings"
 msgstr "Configurações comuns:"
 
-#: smb4k/smb4kconfigdialog.cpp:110 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:120 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Perfis"
 
-#: smb4k/smb4kconfigdialog.cpp:132
+#: smb4k/smb4kconfigdialog.cpp:143
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -194,7 +198,7 @@ msgstr ""
 "configuração respectiva para corrigi-la.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#: smb4k/smb4kconfigpageprofiles.cpp:34
+#: smb4k/smb4kconfigpageprofiles.cpp:36
 #, kde-format
 msgid "Settings"
 msgstr "Configurações"
@@ -215,12 +219,14 @@ msgid "Save"
 msgstr "Salvar"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagebookmarks.cpp:119
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
 msgstr "Editar"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagebookmarks.cpp:131
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
 #, kde-format
 msgid "Remove"
@@ -252,19 +258,55 @@ msgstr "Definir o nome de usuário e senha para a entrada da carteira %1."
 msgid "Set the username and password for the default login."
 msgstr "Definir o nome de usuário e senha para a conta padrão."
 
-#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#: smb4k/smb4kconfigpagebookmarks.cpp:62
 #, kde-format
-msgid "All fine."
-msgstr "Tudo bem."
+msgid "Label:"
+msgstr ""
 
+#: smb4k/smb4kconfigpagebookmarks.cpp:68
+#, kde-format
+msgid "Category:"
+msgstr ""
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
+#, kde-format
+msgid "Username:"
+msgstr "Nome de usuário:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:82 smb4k/smb4ktooltip.cpp:216
+#, kde-format
+msgid "Workgroup:"
+msgstr "Grupo de trabalho:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:88 smb4k/smb4ktooltip.cpp:213
+#: smb4k/smb4ktooltip.cpp:244
+#, kde-format
+msgid "IP Address:"
+msgstr "Endereço IP:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#, kde-format
+msgid "Add Category"
+msgstr ""
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
 msgid "Clear List"
 msgstr "Limpar lista"
 
+#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#, kde-format
+msgid "New Category"
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr "Tudo bem."
+
 #: smb4k/smb4kconfigpagecustomoptions.cpp:220
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom options were reset."
+#, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
 "O item %1 foi removido pois todas as opções personalizadas foram redefinidas."
@@ -431,16 +473,14 @@ msgid "File Handling"
 msgstr "Tratamento de arquivos"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
-#, fuzzy, kde-format
-#| msgid "File Attributes && Ownership"
+#, kde-format
 msgid "File Attributes"
-msgstr "Atributos de arquivo e propriedade"
+msgstr "Atributos do arquivo"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Owner:"
+#, kde-format
 msgid "Ownership"
-msgstr "Proprietário:"
+msgstr "Propriedade"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -473,7 +513,7 @@ msgstr "Diversos"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -927,16 +967,6 @@ msgstr "Máquina"
 msgid "Comment:"
 msgstr "Comentário:"
 
-#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
-#, kde-format
-msgid "IP Address:"
-msgstr "Endereço IP:"
-
-#: smb4k/smb4ktooltip.cpp:216
-#, kde-format
-msgid "Workgroup:"
-msgstr "Grupo de trabalho:"
-
 #: smb4k/smb4ktooltip.cpp:223
 #, kde-format
 msgid "Share (%1)"
@@ -973,11 +1003,6 @@ msgstr "%1 livres de %2 (%3 usado)"
 #, kde-format
 msgid "Mountpoint:"
 msgstr "Ponto de montagem:"
-
-#: smb4k/smb4ktooltip.cpp:308
-#, kde-format
-msgid "Username:"
-msgstr "Nome de usuário:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format

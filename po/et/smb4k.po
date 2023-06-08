@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-17 00:48+0000\n"
+"POT-Creation-Date: 2023-06-08 00:47+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -116,67 +116,73 @@ msgstr "&Seadistused"
 msgid "Main Toolbar"
 msgstr "Peamine tööriistariba"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkeditor.cpp:27
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgid "Bookmark Editor"
+msgstr "Järjehoidjad"
+
+#: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
 msgid "Bookmarks"
 msgstr "Järjehoidjad"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:51
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Muuda järjehoidjaid"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:146
+#: smb4k/smb4kbookmarkmenu.cpp:60 smb4k/smb4kmainwindow.cpp:146
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Lisa järjehoidja"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
+#: smb4k/smb4kbookmarkmenu.cpp:71 smb4k/smb4kbookmarkmenu.cpp:213
 #, fuzzy, kde-format
 #| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
 msgstr "Ühenda kõik järjehoidjad"
 
-#: smb4k/smb4kconfigdialog.cpp:104
+#: smb4k/smb4kconfigdialog.cpp:113
 #, kde-format
 msgid "User Interface"
 msgstr "Kasutajaliides"
 
-#: smb4k/smb4kconfigdialog.cpp:105 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:114 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Võrk"
 
-#: smb4k/smb4kconfigdialog.cpp:106
+#: smb4k/smb4kconfigdialog.cpp:115
 #, kde-format
 msgid "Mounting"
 msgstr "Ühendamine"
 
-#: smb4k/smb4kconfigdialog.cpp:107
+#: smb4k/smb4kconfigdialog.cpp:116
 #, kde-format
 msgid "Authentication"
 msgstr "Autentimine"
 
-#: smb4k/smb4kconfigdialog.cpp:108
+#: smb4k/smb4kconfigdialog.cpp:117
 #, kde-format
 msgid "Synchronization"
 msgstr "Sünkroonimine"
 
-#: smb4k/smb4kconfigdialog.cpp:109
+#: smb4k/smb4kconfigdialog.cpp:119
 #, fuzzy, kde-format
 #| msgid "Common Settings"
 msgid "Custom Settings"
 msgstr "Samba üldseadistused"
 
-#: smb4k/smb4kconfigdialog.cpp:110 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:120 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profiilid"
 
-#: smb4k/smb4kconfigdialog.cpp:132
+#: smb4k/smb4kconfigdialog.cpp:143
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -186,7 +192,7 @@ msgstr ""
 "leheküljele, kus saab seda parandada.</qt>"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#: smb4k/smb4kconfigpageprofiles.cpp:34
+#: smb4k/smb4kconfigpageprofiles.cpp:36
 #, kde-format
 msgid "Settings"
 msgstr "Seadistused"
@@ -208,12 +214,14 @@ msgid "Save"
 msgstr "Salvesta"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagebookmarks.cpp:119
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
 msgstr "Muuda"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagebookmarks.cpp:131
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
 #, kde-format
 msgid "Remove"
@@ -249,15 +257,53 @@ msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 msgid "Set the username and password for the default login."
 msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 
-#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#: smb4k/smb4kconfigpagebookmarks.cpp:62
 #, kde-format
-msgid "All fine."
+msgid "Label:"
+msgstr "Nimi:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:68
+#, kde-format
+msgid "Category:"
 msgstr ""
 
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
+#, fuzzy, kde-format
+#| msgid "User:"
+msgid "Username:"
+msgstr "Kasutaja:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:82 smb4k/smb4ktooltip.cpp:216
+#, kde-format
+msgid "Workgroup:"
+msgstr "Töögrupp:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:88 smb4k/smb4ktooltip.cpp:213
+#: smb4k/smb4ktooltip.cpp:244
+#, kde-format
+msgid "IP Address:"
+msgstr "IP-aadress:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#, kde-format
+msgid "Add Category"
+msgstr ""
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
 msgid "Clear List"
 msgstr "Puhasta nimekiri"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#, kde-format
+msgid "New Category"
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:220
 #, kde-format
@@ -933,16 +979,6 @@ msgstr "Masin"
 msgid "Comment:"
 msgstr "Kommentaar:"
 
-#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-aadress:"
-
-#: smb4k/smb4ktooltip.cpp:216
-#, kde-format
-msgid "Workgroup:"
-msgstr "Töögrupp:"
-
 #: smb4k/smb4ktooltip.cpp:223
 #, kde-format
 msgid "Share (%1)"
@@ -979,12 +1015,6 @@ msgstr "%1 vaba, kokku %2 (kasutusel %3)"
 #, kde-format
 msgid "Mountpoint:"
 msgstr "Ühenduspunkt:"
-
-#: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
-msgid "Username:"
-msgstr "Kasutaja:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -1273,9 +1303,6 @@ msgstr "Suurus:"
 
 #~ msgid "Add Group"
 #~ msgstr "Lisa grupp"
-
-#~ msgid "Label:"
-#~ msgstr "Nimi:"
 
 #~ msgid "Group:"
 #~ msgstr "Grupp:"

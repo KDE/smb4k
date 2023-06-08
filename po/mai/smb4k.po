@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-17 00:48+0000\n"
+"POT-Creation-Date: 2023-06-08 00:47+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -115,67 +115,72 @@ msgstr "जमावट (&S)"
 msgid "Main Toolbar"
 msgstr "मुख्य अओजार पट्टी"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28
+#: smb4k/smb4kbookmarkeditor.cpp:27
+#, kde-format
+msgid "Bookmark Editor"
+msgstr "पुस्तकचिह्न संपादक"
+
+#: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
 msgid "Bookmarks"
 msgstr "पुस्तकचिह्न"
 
-#: smb4k/smb4kbookmarkmenu.cpp:49
+#: smb4k/smb4kbookmarkmenu.cpp:51
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr " पसंदीदा  क' संपादन करू (&E)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:146
+#: smb4k/smb4kbookmarkmenu.cpp:60 smb4k/smb4kmainwindow.cpp:146
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr ""
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
+#: smb4k/smb4kbookmarkmenu.cpp:71 smb4k/smb4kbookmarkmenu.cpp:213
 #, fuzzy, kde-format
 #| msgid "Add Bookmarks"
 msgid "Mount Bookmarks"
 msgstr "पुस्तचिह्न जोडू"
 
-#: smb4k/smb4kconfigdialog.cpp:104
+#: smb4k/smb4kconfigdialog.cpp:113
 #, kde-format
 msgid "User Interface"
 msgstr "प्रयोक्ता अंतरफलक"
 
-#: smb4k/smb4kconfigdialog.cpp:105 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:114 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "नेटवर्क"
 
-#: smb4k/smb4kconfigdialog.cpp:106
+#: smb4k/smb4kconfigdialog.cpp:115
 #, kde-format
 msgid "Mounting"
 msgstr "माउंट कएल जाए रहल अछि"
 
-#: smb4k/smb4kconfigdialog.cpp:107
+#: smb4k/smb4kconfigdialog.cpp:116
 #, kde-format
 msgid "Authentication"
 msgstr "सत्यापन"
 
-#: smb4k/smb4kconfigdialog.cpp:108
+#: smb4k/smb4kconfigdialog.cpp:117
 #, kde-format
 msgid "Synchronization"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:109
+#: smb4k/smb4kconfigdialog.cpp:119
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgid "Custom Settings"
 msgstr "जमावट (&S)"
 
-#: smb4k/smb4kconfigdialog.cpp:110 smb4k/smb4kconfigpageprofiles.cpp:52
+#: smb4k/smb4kconfigdialog.cpp:120 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:132
+#: smb4k/smb4kconfigdialog.cpp:143
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -183,7 +188,7 @@ msgid ""
 msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:42
-#: smb4k/smb4kconfigpageprofiles.cpp:34
+#: smb4k/smb4kconfigpageprofiles.cpp:36
 #, fuzzy, kde-format
 #| msgid "&Settings"
 msgid "Settings"
@@ -205,12 +210,14 @@ msgid "Save"
 msgstr "सहेजू"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpagebookmarks.cpp:119
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
 msgstr "संपादन"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpagebookmarks.cpp:131
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
 #, kde-format
 msgid "Remove"
@@ -243,15 +250,55 @@ msgstr ""
 msgid "Set the username and password for the default login."
 msgstr ""
 
-#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#: smb4k/smb4kconfigpagebookmarks.cpp:62
+#, fuzzy, kde-format
+#| msgid "Label"
+msgid "Label:"
+msgstr "लेबल"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:68
 #, kde-format
-msgid "All fine."
+msgid "Category:"
 msgstr ""
 
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
+#, fuzzy, kde-format
+#| msgid "User:"
+msgid "Username:"
+msgstr "प्रयोक्ता:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:82 smb4k/smb4ktooltip.cpp:216
+#, fuzzy, kde-format
+#| msgid "Group ID"
+msgid "Workgroup:"
+msgstr "समूह ID"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:88 smb4k/smb4ktooltip.cpp:213
+#: smb4k/smb4ktooltip.cpp:244
+#, kde-format
+msgid "IP Address:"
+msgstr "IP पता:"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#, kde-format
+msgid "Add Category"
+msgstr ""
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
 msgid "Clear List"
 msgstr "सूची साफ करू"
+
+#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#, kde-format
+msgid "New Category"
+msgstr ""
+
+#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#, kde-format
+msgid "All fine."
+msgstr ""
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:220
 #, kde-format
@@ -925,17 +972,6 @@ msgstr "होस्ट:"
 msgid "Comment:"
 msgstr "टिप्पणीः"
 
-#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
-#, kde-format
-msgid "IP Address:"
-msgstr "IP पता:"
-
-#: smb4k/smb4ktooltip.cpp:216
-#, fuzzy, kde-format
-#| msgid "Group ID"
-msgid "Workgroup:"
-msgstr "समूह ID"
-
 #: smb4k/smb4ktooltip.cpp:223
 #, fuzzy, kde-format
 #| msgid "Share"
@@ -977,12 +1013,6 @@ msgstr ""
 #| msgid "Mount point:"
 msgid "Mountpoint:"
 msgstr "माउन्ट पाइंटः"
-
-#: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
-msgid "Username:"
-msgstr "प्रयोक्ता:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format
@@ -1170,11 +1200,6 @@ msgstr ""
 #~| msgid "Group ID"
 #~ msgid "Add Group"
 #~ msgstr "समूह ID"
-
-#, fuzzy
-#~| msgid "Label"
-#~ msgid "Label:"
-#~ msgstr "लेबल"
 
 #, fuzzy
 #~| msgctxt "NAME OF TRANSLATORS"
@@ -1405,9 +1430,6 @@ msgstr ""
 
 #~ msgid "automatic"
 #~ msgstr "स्वचालित"
-
-#~ msgid "Bookmark Editor"
-#~ msgstr "पुस्तकचिह्न संपादक"
 
 #~ msgid "Bookmark"
 #~ msgstr "पुस्तकचिह्न"
