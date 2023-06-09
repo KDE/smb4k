@@ -163,6 +163,7 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
     }
 
     QStringList categories = Smb4KBookmarkHandler::self()->categoryList();
+    m_categoryEdit->addItems(categories);
 
     for (const QString &category : qAsConst(categories)) {
         QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarkList(category);
