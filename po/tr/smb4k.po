@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 00:47+0000\n"
-"PO-Revision-Date: 2023-03-27 13:28+0300\n"
+"POT-Creation-Date: 2023-06-09 00:48+0000\n"
+"PO-Revision-Date: 2023-06-08 11:58+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -119,10 +119,9 @@ msgid "Main Toolbar"
 msgstr "Ana Araç Çubuğu"
 
 #: smb4k/smb4kbookmarkeditor.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "Yer İmleri"
+msgstr "Yer İmi Düzenleyicisi"
 
 #: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
@@ -164,7 +163,7 @@ msgstr "Bağlama"
 #: smb4k/smb4kconfigdialog.cpp:116
 #, kde-format
 msgid "Authentication"
-msgstr "Kimlik denetimi"
+msgstr "Kimlik Denetimi"
 
 #: smb4k/smb4kconfigdialog.cpp:117
 #, kde-format
@@ -256,12 +255,12 @@ msgstr ""
 #: smb4k/smb4kconfigpagebookmarks.cpp:62
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "Etiket:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:68
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Kategori:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -282,7 +281,7 @@ msgstr "IP Adresi:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Kategori Ekle"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
@@ -290,10 +289,10 @@ msgstr ""
 msgid "Clear List"
 msgstr "Listeyi Temizle"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#: smb4k/smb4kconfigpagebookmarks.cpp:366
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Yeni Kategori"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
