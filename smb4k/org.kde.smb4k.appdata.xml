@@ -16,6 +16,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="de">Smb4K</name>
   <name xml:lang="el">Smb4K</name>
   <name xml:lang="en-GB">Smb4K</name>
+  <name xml:lang="eo">Smb4K</name>
   <name xml:lang="es">Smb4K</name>
   <name xml:lang="et">Smb4K</name>
   <name xml:lang="eu">Smb4K</name>
@@ -48,6 +49,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="de">Samba- und Windows-Freigaben im Netzwerk suchen und einhängen</summary>
   <summary xml:lang="el">Ανακαλύψτε και προσαρτήστε κοινούς πόρους SAMBA και Windows στο δίκτυο</summary>
   <summary xml:lang="en-GB">Discover and mount SAMBA and Windows shares over the network</summary>
+  <summary xml:lang="eo">Malkovru kaj muntu SAMBA kaj Windows-komunaĵojn tra la reto</summary>
   <summary xml:lang="es">Descubra y monte archivos compartidos SAMBA y Windows en red</summary>
   <summary xml:lang="et">SAMBA ja Windowsi jagatud ressursside tuvastamine võrgus ja nende ühendamine</summary>
   <summary xml:lang="eu">Sarean aurkitu eta muntatu SAMBA eta Windows partekatzeak</summary>
@@ -76,6 +78,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="de">Smb4K ist ein erweiterter Browser für die Netzwerkumgebung und Dienstprogramm für das Einhängen von Samba-Freigaben. Es basiert auf den KDE Frameworks 5 und der Samba-Bibliothek libsmbclient.Es durchsucht Ihre Netzwerkumgebung nach allen verfügbaren Arbeitsgruppen, Server und Freigaben und kann alle gewünschten Freigaben in Ihr lokales Dateisystem einhängen.</p>
     <p xml:lang="el">Το Smb4K είναι ένας προηγμένος περιηγητής τοπικού δικτύου και το εργαλείο προσάρτησης κοινών πόρων. Βασίζεται στο KDE Frameworks 5 και στη βιβλιοθήκη πελάτη της Samba (libsmbclient). Σαρώνει το τοπικό σας δίκτυο για όλες τις διαθέσιμες ομάδες εργασίας, εξυπηρετητές και κοινούς πόρους και μπορεί να προσαρτά όλους τους επιθυμητούς κοινούς πόρους στο σύστημα αρχείων του υπολογιστή σας.</p>
     <p xml:lang="en-GB">Smb4K is an advanced network neighbourhood browser and Samba share mounting utility. It is based on the KDE Frameworks 5 and Samba's client library (libsmbclient). It scans your network neighbourhood for all available workgroups, servers and shares and can mount all desired shares to your local file system.</p>
+    <p xml:lang="eo">Smb4K estas altnivela retumila najbara retumilo kaj Samba kundivida munta ilaro. Ĝi baziĝas sur la KDE Frameworks 5 kaj la klientbiblioteko de Samba (libsmbclient). Ĝi skanas vian retan najbarecon por ĉiuj disponeblaj laborgrupoj, serviloj kaj komunaĵoj kaj povas munti ĉiujn deziratajn via loka dosiersistemo.</p>
     <p xml:lang="es">Smb4K es un navegador avanzado del entorno de red y una utilidad de montaje de recursos compartidos Samba. Se basa en la infraestructura de KDE 5 y la biblioteca de clientes de Samba (libsmbclient). Escanea su entorno de red en busca de los grupos de trabajo, servidores y recursos compartidos disponibles y puede montar todos los recursos compartidos deseados en su sistema de archivos local.</p>
     <p xml:lang="et">Smb4K on täiustatud võrgunaabruse sirvija ja Samba jagatud ressursside ühendamise tööriist. Selle aluseks on KDE Frameworks 5 ja Samba kliendi teek (libsmbclient). See uurib sinu võrgunaabruses saadaolevate töögruppide, serverite ja jagatud ressursside leidumist ning võib kõik soovitud ressursid ühendada sinu kohaliku süsteemiga.</p>
     <p xml:lang="eu">Smb4K sare-auzo arakatzaile aurreratu bat da eta Samba partekatzeak muntatzeko erabilgarritasuna. KDE Frameworks 5 eta Samba-ren bezero-liburutegian (libsmbclient) oinarritzen da. Zure sareko auzoa miatzen du erabilgarri dauden lantalde, zerbitzari eta partekatzeen bila eta nahi diren partekatzeak muntatu ditzake zure fitxategi-sistema lokalean.</p>
@@ -105,6 +108,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="de">Smb4K benutzt die Samba-Bibliothek, um ein Programm mit leichter Handhabung und möglichst vielen Funktionen zur Verfügung zu stellen.</p>
     <p xml:lang="el">Το Smb4K βασίζεται στη βιβλιοθήκη πελάτη της Samba. Ο σκοπός του είναι να παρέχει ένα πρόγραμμα εύκολο στη χρήση και με όσο το δυνατόν περισσότερα χαρακτηριστικά.</p>
     <p xml:lang="en-GB">Smb4K is based on Samba's client library. Its purpose is to provide a program that is easy to use and has as many features as possible.</p>
+    <p xml:lang="eo">Smb4K baziĝas sur la klientbiblioteko de Samba. Ĝia celo estas provizi programon, kiu estas facile uzebla kaj havas kiel eble plej multajn funkciojn.</p>
     <p xml:lang="es">Smb4K se basa en la biblioteca de clientes de Samba. Su propósito es proporcionar un programa que sea fácil de usar y tenga tantas prestaciones como sea posible.</p>
     <p xml:lang="et">Smb4K aluseks on Samba kliendi teek. Eesmärk on pakkuda rakendust, mis oleks hõlpsalt kasutatav ja võimalikult paljude võimalustega.</p>
     <p xml:lang="eu">Smb4K Samba-ren bezero-liburutegian oinarrituta dago. Bere helburua erabiltzen erraza den programa bat ahal den ezaugarri gehienekin eskaintzea da.</p>
@@ -138,6 +142,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="de">Funktionen:</p>
     <p xml:lang="el">Χαρακτηριστικά:</p>
     <p xml:lang="en-GB">Features:</p>
+    <p xml:lang="eo">Trajtoj:</p>
     <p xml:lang="es">Características:</p>
     <p xml:lang="et">Omadused:</p>
     <p xml:lang="eu">Ezaugarriak:</p>
@@ -172,6 +177,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Suche nach (aktiven) Arbeitsgruppen, Rechnern und Freigaben</li>
       <li xml:lang="el">Σαρώνει για (ενεργές) ομάδες εργασίας, υπολογιστές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Scanning for (active) workgroups, hosts, and shares</li>
+      <li xml:lang="eo">Skanado por (aktivaj) laborgrupoj, gastigantoj kaj komunaĵoj</li>
       <li xml:lang="es">Escaneo de grupos de trabajo, servidores y recursos compartidos (activos)</li>
       <li xml:lang="et">(Aktiivsete) töögruppide, serverite ja jagatud ressursside väljaselgitamine</li>
       <li xml:lang="eu">Lantalde, ostalari eta partekatze (aktibo) bila miatzen</li>
@@ -202,6 +208,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Unterstützung für CIFS-Dateisysteme unter Linux und SMBFS-Dateisysteme unter FreeBSD</li>
       <li xml:lang="el">Υποστηρίζει τα συστήματα αρχείων CIFS (Linux) και SMBFS (FreeBSD)</li>
       <li xml:lang="en-GB">Support of the CIFS (Linux) and SMBFS (FreeBSD) file system</li>
+      <li xml:lang="eo">Subteno de la CIFS (Linukso) kaj SMBFS (FreeBSD) dosiersistemo</li>
       <li xml:lang="es">Admite los sistemas de archivo CIFS (Linux) y SMBFS (FreeBSD)</li>
       <li xml:lang="et">Failisüsteemide CIFS (Linux) ja SMBFS (FreeBSD) toetus</li>
       <li xml:lang="eu">CIFS (Linux) eta SMBFS (FreeBSD) fitxategi-sistemak onartzen ditu</li>
@@ -233,6 +240,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Ein- und Aushängen von Freigaben</li>
       <li xml:lang="el">Προσαρτά και απομακρύνει κοινούς πόρους</li>
       <li xml:lang="en-GB">Mounting and unmounting of shares</li>
+      <li xml:lang="eo">Muntado kaj malmuntado de komunaĵoj</li>
       <li xml:lang="es">Montaje y desmontaje de recursos compartidos</li>
       <li xml:lang="et">Jagatud ressursside ühendamine ja lahutamine</li>
       <li xml:lang="eu">Partekatzeak muntatzea eta desmuntatzea</li>
@@ -265,6 +273,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Zugriff auf die Dateien einer eingehängten Freigabe mit einem Dateiverwaltungsprogramm oder einem Terminal</li>
       <li xml:lang="el">Παρέχει πρόσβαση στα αρχεία ενός προσαρτημένου κοινού πόρου με χρήση του διαχειριστή αρχείων ή του τερματικού</li>
       <li xml:lang="en-GB">Access to the files of a mounted share using a file manager or terminal</li>
+      <li xml:lang="eo">Aliro al la dosieroj de muntita komunaĵo per dosieradministranto aŭ terminalo</li>
       <li xml:lang="es">Acceso a los archivos de un recurso compartido montado utilizando un gestor de archivos o un terminal</li>
       <li xml:lang="et">Ligipääs ühendatud jagatud ressursi failidele failihalduri või terminali abil</li>
       <li xml:lang="eu">Atzitu muntatutako partekatze baten fitxategiak fitxategi-kudeatzaile bat edo terminal bat erabiliz</li>
@@ -295,6 +304,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Automatische Erkennung externer Medien, die ein- oder ausgehängt werden</li>
       <li xml:lang="el">Αυτόματος εντοπισμός εξωτερικών προσαρτήσεων και απομακρύνσεων</li>
       <li xml:lang="en-GB">Auto-detection of external mounts and unmounts</li>
+      <li xml:lang="eo">Aŭtomata detekto de eksteraj muntadoj kaj malmuntaĵoj</li>
       <li xml:lang="es">Detección automática de montajes y desmontajes externos</li>
       <li xml:lang="et">Väliste ühendamiste ja lahutamiste automaatne tuvastamine</li>
       <li xml:lang="eu">Kanpoko muntatzeak eta desmuntatzeak automatikoki antzematea</li>
@@ -325,6 +335,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Erneutes Einhängen von vorher benutzten Freigaben beim Start des Programms</li>
       <li xml:lang="el">Αναπροσαρτά κοινούς πόρους προηγούμενης χρήσης στην εκκίνηση του προγράμματος</li>
       <li xml:lang="en-GB">Remounting of previously used shares on program start</li>
+      <li xml:lang="eo">Remuntado de antaŭe uzataj komunaĵoj ĉe programo-komenco</li>
       <li xml:lang="es">Vuelve a montar los recursos compartidos utilizados anteriormente al iniciar el programa</li>
       <li xml:lang="et">Varem kasutatud jagatud ressursside taasühendamine rakenduse käivitamisel</li>
       <li xml:lang="eu">Aurrez erabilitako partekatzeak birmuntatzea programa abiatzean</li>
@@ -355,6 +366,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Verschiedene Informationen über Netzwerke auf anderen Rechnern und eingehängte Freigaben</li>
       <li xml:lang="el">Διάφορες πληροφορίες για απομακρυσμένα δικτυακά αντικείμενα και προσαρτημένους κοινούς πόρους</li>
       <li xml:lang="en-GB">Miscellaneous information about remote network items and mounted shares</li>
+      <li xml:lang="eo">Diversaj informoj pri foraj retaĵoj kaj muntitaj komunaĵoj</li>
       <li xml:lang="es">Información variada sobre los elementos remotos de la red y los recursos compartidos montados</li>
       <li xml:lang="et">Mitmesugune teave võrguelementide ja ühendatud jagatud ressursside kohta</li>
       <li xml:lang="eu">Askotariko informazioak urruneko sare-elementuei eta muntatutako partekatzeei buruz</li>
@@ -387,6 +399,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Netzwerksuche</li>
       <li xml:lang="el">Αναζήτηση στο δίκτυο</li>
       <li xml:lang="en-GB">Network search</li>
+      <li xml:lang="eo">Reta serĉo</li>
       <li xml:lang="es">Búsqueda en la red</li>
       <li xml:lang="et">Võrguotsing</li>
       <li xml:lang="eu">Sareko bilaketa</li>
@@ -419,6 +432,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Vorschau des Inhalts einer entfernten Freigabe</li>
       <li xml:lang="el">Προεπισκόπηση περιεχομένων απομακρυσμένου κοινού πόρου</li>
       <li xml:lang="en-GB">Preview of the contents of a remote share</li>
+      <li xml:lang="eo">Antaŭrigardo de la enhavo de fora kundivido</li>
       <li xml:lang="es">Vista previa del contenido de un recurso compartido remoto</li>
       <li xml:lang="et">Jagatud võrguressursi sisu eelvaatlus</li>
       <li xml:lang="eu">Urruneko partekatze baten edukiak aurreikustea</li>
@@ -450,6 +464,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Standardanmeldung</li>
       <li xml:lang="el">Προκαθορισμένη σύνδεση</li>
       <li xml:lang="en-GB">Default login</li>
+      <li xml:lang="eo">Defaŭlta ensaluto</li>
       <li xml:lang="es">Inicio de sesión predeterminado</li>
       <li xml:lang="et">Vaikimisi sisselogimine</li>
       <li xml:lang="eu">Saio-hasiera lehenetsia</li>
@@ -482,6 +497,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Besondere Behandlung freigegebener persönlicher Ordner</li>
       <li xml:lang="el">Ειδικός χειρισμός πόρων περιοχών χρηστών</li>
       <li xml:lang="en-GB">Special handling of homes shares</li>
+      <li xml:lang="eo">Speciala uzado de hejmaj komunaĵoj</li>
       <li xml:lang="es">Manejo especial de los directorios personales compartidos</li>
       <li xml:lang="et">Jagatud ressursside kogukataloogide spetsiaalne kohtlemine</li>
       <li xml:lang="eu">«Etxeko» partekatzeen trataera berezia</li>
@@ -512,6 +528,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Lesezeichen für bevorzugte Freigaben</li>
       <li xml:lang="el">Δυνατότητα αποθήκευσης πόρων σε σελιδοδείκτες</li>
       <li xml:lang="en-GB">Ability to bookmark favorite shares</li>
+      <li xml:lang="eo">Kapablo marki plej ŝatatajn komunaĵojn</li>
       <li xml:lang="es">Capacidad para poner como marcadores los recursos compartidos favoritos</li>
       <li xml:lang="et">Võimalus lisada lemmikust jagatud ressursse järjehoidjatesse</li>
       <li xml:lang="eu">Partekatze gogokoen laster-markak egiteko gaitasuna</li>
@@ -543,6 +560,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Symbol im Systemabschnitt der Kontrollleiste</li>
       <li xml:lang="el">Γραφικό συστατικό πλαισίου συστήματος</li>
       <li xml:lang="en-GB">System tray widget</li>
+      <li xml:lang="eo">Sistempleta fenestraĵo</li>
       <li xml:lang="es">Elemento gráfico de la bandeja del sistema</li>
       <li xml:lang="et">Süsteemisalve vidin</li>
       <li xml:lang="eu">Sistema-erretiluko trepeta</li>
@@ -574,6 +592,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Unterstützung der erweiterten Einstellungen zum Einhängen</li>
       <li xml:lang="el">Υποστήριξη προηγμένων επιλογών προσάρτησης</li>
       <li xml:lang="en-GB">Support of advanced mount options</li>
+      <li xml:lang="eo">Subteno de altnivelaj muntaj opcioj</li>
       <li xml:lang="es">Apoyo para opciones avanzadas de montaje</li>
       <li xml:lang="et">Rohkete ühendamisvalikute toetus</li>
       <li xml:lang="eu">Muntatzeko aukera aurreratuak onartzen ditu</li>
@@ -604,6 +623,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Unterstützung für Drucker-Freigaben</li>
       <li xml:lang="el">Υποστήριξη κοινών πόρων εκτυπωτών</li>
       <li xml:lang="en-GB">Support of printer shares</li>
+      <li xml:lang="eo">Subteno de presilaj komunaĵoj</li>
       <li xml:lang="es">Apoyo de impresoras compartidas</li>
       <li xml:lang="et">Jagatud printeriressursside toetus</li>
       <li xml:lang="eu">Inprimagailu-partekatzeak onartzen ditu</li>
@@ -636,6 +656,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Unterstützung für KWallet</li>
       <li xml:lang="el">Υποστήριξη KWallet</li>
       <li xml:lang="en-GB">KWallet support</li>
+      <li xml:lang="eo">KWallet-subteno</li>
       <li xml:lang="es">Apoyo para KWallet</li>
       <li xml:lang="et">KDE turvalaeka toetus</li>
       <li xml:lang="eu">KWallet-en euskarria</li>
@@ -668,6 +689,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Abgleich einer entfernten Freigabe mit einer lokalen Kopie und umgekehrt</li>
       <li xml:lang="el">Συγχρονισμός απομακρυσμένου πόρου με τοπικό αντίγραφο και αντίστροφα</li>
       <li xml:lang="en-GB">Synchronisation of a remote share with a local copy and vice versa</li>
+      <li xml:lang="eo">Sinkronigo de fora parto kun loka kopio kaj inverse</li>
       <li xml:lang="es">Sincronización de un recurso compartido remoto con una copia local y viceversa</li>
       <li xml:lang="et">Võrguressursi sünkroonimine kohaliku koopiaga ja vastupidi</li>
       <li xml:lang="eu">Partekatze bat kopia lokal batekin sinkronizatzea eta alderantziz</li>
@@ -698,6 +720,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Fähigkeit zur Definition von benutzerdefinierten Einstellungen für einzelne Server und Freigaben.</li>
       <li xml:lang="el">Δυνατότητα καθορισμού προσαρμοσμένων επιλογών για ξεχωριστούς εξυπηρετητές και κοινούς πόρους</li>
       <li xml:lang="en-GB">Ability to define custom options for individual servers and shares</li>
+      <li xml:lang="eo">Kapablo difini proprajn opciojn por individuaj serviloj kaj komunaĵoj</li>
       <li xml:lang="es">Capacidad para definir opciones personalizadas para servidores y recursos compartidos individuales</li>
       <li xml:lang="et">Võimalus määrata kohandatud valikuid konkreetsetele serveritele ja jagatud ressurssidele</li>
       <li xml:lang="eu">Banakako zerbitzarietan eta partekatzeetan berariaz finkatutako aukerak definitzeko gaitasuna</li>
@@ -728,6 +751,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Laptop-Unterstützung durch das Solid-Framework für Hardware-Geräte</li>
       <li xml:lang="el">Υποστήριξη φορητού υπολογιστή μέσω του πλαισίου Solid για συσκευές</li>
       <li xml:lang="en-GB">Laptop support through the Solid hardware device framework</li>
+      <li xml:lang="eo">Tekkomputila subteno per la kadro de Solida aparataro</li>
       <li xml:lang="es">Apoyo para portátiles a través de la infraestructura de dispositivos hardware Solid</li>
       <li xml:lang="et">Sülearvutite toetus Solidi riistvaraseadmete raamistiku vahendusel</li>
       <li xml:lang="eu">Magalekoen euskarria, Solid, hardware azpiegituraren bidez</li>
@@ -758,6 +782,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">„Wake-On-LAN“-Fähigkeiten</li>
       <li xml:lang="el">Δυνατότητες απομακρυσμένης αφύπνισης</li>
       <li xml:lang="en-GB">Wake-On-LAN capabilities</li>
+      <li xml:lang="eo">Kapabloj de Wake-On-LAN</li>
       <li xml:lang="es">Capacidades «Despertar en LAN»</li>
       <li xml:lang="et">Wake-On-LAN võimekus</li>
       <li xml:lang="eu">Esnatu sare bidez gaitasunak (Wake-On-LAN)</li>
@@ -789,6 +814,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Plasmoid für die Integration in die Arbeitsfläche</li>
       <li xml:lang="el">Πλασμοειδές για ενοποίηση με το γραφικό περιβάλλον</li>
       <li xml:lang="en-GB">Plasmoid for desktop integration</li>
+      <li xml:lang="eo">Plasmoido por labortabla integriĝo</li>
       <li xml:lang="es">Plasmoide para integración en el escritorio</li>
       <li xml:lang="et">Töölauaga lõimitud plasmoid</li>
       <li xml:lang="eu">Mahaigainean bateratzeko plasmoidea</li>
@@ -819,6 +845,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="de">Profile für verschiedene Einstellungen der Netzwerkumgebung</li>
       <li xml:lang="el">Προφίλ για ρυθμίσεις διαφορετικών τοπικών δικτύων</li>
       <li xml:lang="en-GB">Profiles for different network neighbourhood setups</li>
+      <li xml:lang="eo">Profiloj por malsamaj retaj najbaraj aranĝoj</li>
       <li xml:lang="es">Perfiles para diferentes configuraciones de entorno de red</li>
       <li xml:lang="et">Profiilid võrgunaabruse eri seadistuste tarbeks</li>
       <li xml:lang="eu">Profilak, sareko-auzo ezarpen ezberdinetarako</li>
@@ -850,6 +877,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="de">Wenn Sie in einer Windows-dominierten Netzwerkumgebung arbeiten, sollten Sie diese Anwendung installieren, um leicht auf die vorhandenen Windows-Freigaben zuzugreifen.</p>
     <p xml:lang="el">Αν εργάζεστε σε ένα περιβάλλον δικτύου υπό την κυριαρχία των Windows, θα θέλατε να εγκαταστήσετε την εφαρμογή αυτή για να μπορείτε να έχετε άνετηπρόσβαση στους κοινούς πόρους που παρέχουν τα Windows.</p>
     <p xml:lang="en-GB">If you are working in a Windows dominated network environment, you may want to install this application to be able to easily access the provided Windows shares.</p>
+    <p xml:lang="eo">Se vi laboras en reto-medio dominata de Vindozo, vi eble volas instali ĉi tiun aplikaĵon por povi facile aliri la provizitajn Vindozajn komunaĵojn.</p>
     <p xml:lang="es">Si estás trabajando en un entorno de red dominado por Windows, es posible que desees instalar esta aplicación para poder acceder fácilmente a los recursos Windows compartidos.</p>
     <p xml:lang="et">Kui töötad võrgukeskkonnas, milles domineerib Windows, tasuks see rakendus paigaldada, et pääseda kergemini ligi saadaolevatele Windowsi jagatud ressurssidele.</p>
     <p xml:lang="eu">Windows nagusi den sare-ingurune batean lan egiten baduzu, aplikazio hau instalatu nahi izan dezakezu hornitutako Windows partekatzeak erraz atzitzeko.</p>
@@ -884,6 +912,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="de">Das Hauptfenster</caption>
       <caption xml:lang="el">Το κύριο παράθυρο</caption>
       <caption xml:lang="en-GB">The main window</caption>
+      <caption xml:lang="eo">La ĉefa fenestro</caption>
       <caption xml:lang="es">La ventana principal</caption>
       <caption xml:lang="et">Peaaken</caption>
       <caption xml:lang="eu">Leiho nagusia</caption>
@@ -920,6 +949,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="de">Das Plasmoid</caption>
       <caption xml:lang="el">Το πλασμοειδές</caption>
       <caption xml:lang="en-GB">The plasmoid</caption>
+      <caption xml:lang="eo">La plasmoido</caption>
       <caption xml:lang="es">El plasmoide</caption>
       <caption xml:lang="et">Plasmoid</caption>
       <caption xml:lang="eu">Plasmoidea</caption>
