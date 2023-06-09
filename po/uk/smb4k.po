@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 00:47+0000\n"
-"PO-Revision-Date: 2023-03-27 08:39+0300\n"
+"POT-Creation-Date: 2023-06-09 00:48+0000\n"
+"PO-Revision-Date: 2023-06-08 09:05+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -120,10 +120,9 @@ msgid "Main Toolbar"
 msgstr "Головна панель"
 
 #: smb4k/smb4kbookmarkeditor.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "Закладки"
+msgstr "Редактор закладок"
 
 #: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
@@ -258,12 +257,12 @@ msgstr ""
 #: smb4k/smb4kconfigpagebookmarks.cpp:62
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "Мітка:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:68
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Категорія:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -284,7 +283,7 @@ msgstr "Адреса IP:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Додати категорію"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
@@ -292,10 +291,10 @@ msgstr ""
 msgid "Clear List"
 msgstr "Спорожнити список"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#: smb4k/smb4kconfigpagebookmarks.cpp:366
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Нова категорія"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format

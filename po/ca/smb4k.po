@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 00:47+0000\n"
-"PO-Revision-Date: 2023-03-27 10:30+0200\n"
+"POT-Creation-Date: 2023-06-09 00:48+0000\n"
+"PO-Revision-Date: 2023-06-08 08:20+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -120,10 +120,9 @@ msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
 
 #: smb4k/smb4kbookmarkeditor.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "Adreces d'interès"
+msgstr "Editor d'adreces d'interès"
 
 #: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
@@ -257,12 +256,12 @@ msgstr ""
 #: smb4k/smb4kconfigpagebookmarks.cpp:62
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "Etiqueta:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:68
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Categoria:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -283,7 +282,7 @@ msgstr "Adreça IP:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Afegeix una categoria"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
@@ -291,10 +290,10 @@ msgstr ""
 msgid "Clear List"
 msgstr "Neteja la llista"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#: smb4k/smb4kconfigpagebookmarks.cpp:366
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Categoria nova"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format

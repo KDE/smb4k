@@ -20,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 00:47+0000\n"
+"POT-Creation-Date: 2023-06-09 00:48+0000\n"
 "PO-Revision-Date: 2023-03-28 15:23+0200\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -273,7 +273,8 @@ msgstr ""
 "Définir un nom d'utilisateur et un mot de passe pour la connexion par défaut."
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Label:"
 msgid "Label:"
 msgstr "Étiquette :"
 
@@ -309,7 +310,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Effacer la liste"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#: smb4k/smb4kconfigpagebookmarks.cpp:366
 #, kde-format
 msgid "New Category"
 msgstr ""

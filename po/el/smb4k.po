@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 00:47+0000\n"
+"POT-Creation-Date: 2023-06-09 00:48+0000\n"
 "PO-Revision-Date: 2021-07-09 10:20+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -291,7 +291,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Καθαρισμός λίστας"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#: smb4k/smb4kconfigpagebookmarks.cpp:366
 #, kde-format
 msgid "New Category"
 msgstr ""

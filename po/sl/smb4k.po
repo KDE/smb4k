@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-08 00:47+0000\n"
-"PO-Revision-Date: 2023-03-29 08:25+0200\n"
+"POT-Creation-Date: 2023-06-09 00:48+0000\n"
+"PO-Revision-Date: 2023-06-08 06:16+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -115,10 +115,9 @@ msgid "Main Toolbar"
 msgstr "Glavna orodna letvica"
 
 #: smb4k/smb4kbookmarkeditor.cpp:27
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "Zaznamki"
+msgstr "Urejevalnik zaznamkov"
 
 #: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
@@ -251,12 +250,12 @@ msgstr "Nastavi uporabniško ime in geslo za privzeto prijavo."
 #: smb4k/smb4kconfigpagebookmarks.cpp:62
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "Oznaka:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:68
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Kategorija:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -277,7 +276,7 @@ msgstr "IP naslov:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Dodaj kategorijo"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
@@ -285,10 +284,10 @@ msgstr ""
 msgid "Clear List"
 msgstr "Očisti seznam"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:371
+#: smb4k/smb4kconfigpagebookmarks.cpp:366
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Nova kategorija"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
