@@ -1,7 +1,7 @@
 /*
     Provides an interface to the computer's hardware
 
-    SPDX-FileCopyrightText: 2015-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2015-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -67,11 +67,7 @@ Smb4KHardwareInterface::Smb4KHardwareInterface(QObject *parent)
         const Solid::DeviceInterface *iface = device.asDeviceInterface(Solid::DeviceInterface::NetworkShare);
         const Solid::NetworkShare *networkShare = qobject_cast<const Solid::NetworkShare *>(iface);
 
-#if (SOLID_VERSION < QT_VERSION_CHECK(5, 98, 0))
-        if (networkShare && networkShare->type() == Solid::NetworkShare::Cifs) {
-#else
         if (networkShare && (networkShare->type() == Solid::NetworkShare::Cifs || networkShare->type() == Solid::NetworkShare::Smb3)) {
-#endif
             d->udis << device.udi();
         }
     }
@@ -219,11 +215,7 @@ void Smb4KHardwareInterface::slotDeviceAdded(const QString &udi)
     const Solid::DeviceInterface *iface = device.asDeviceInterface(Solid::DeviceInterface::NetworkShare);
     const Solid::NetworkShare *networkShare = qobject_cast<const Solid::NetworkShare *>(iface);
 
-#if (SOLID_VERSION < QT_VERSION_CHECK(5, 98, 0))
-    if (networkShare && networkShare->type() == Solid::NetworkShare::Cifs) {
-#else
     if (networkShare && (networkShare->type() == Solid::NetworkShare::Cifs || networkShare->type() == Solid::NetworkShare::Smb3)) {
-#endif
         d->udis << udi;
         Q_EMIT networkShareAdded();
     }
