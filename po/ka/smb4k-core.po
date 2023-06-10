@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-06 00:47+0000\n"
-"PO-Revision-Date: 2023-02-20 07:02+0100\n"
+"PO-Revision-Date: 2023-06-09 06:24+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -446,7 +446,7 @@ msgstr ""
 #: smb4k.kcfg:205
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "არაფერი"
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:208
@@ -458,7 +458,7 @@ msgstr "მოთხოვნა"
 #: smb4k.kcfg:211
 #, kde-format
 msgid "Require"
-msgstr ""
+msgstr "მოთხოვნა"
 
 #. i18n: ectx: label, entry (PreviewHiddenItems), group (Network)
 #: smb4k.kcfg:217
@@ -584,7 +584,7 @@ msgstr ""
 #: smb4k.kcfg:272
 #, kde-format
 msgid "Archive mode"
-msgstr ""
+msgstr "არქივის რეჟიმი"
 
 #. i18n: ectx: whatsthis, entry (ArchiveMode), group (Synchronization)
 #: smb4k.kcfg:273
@@ -608,7 +608,7 @@ msgstr ""
 #: smb4k.kcfg:282
 #, kde-format
 msgid "Update files"
-msgstr ""
+msgstr "ფაილების განახლება"
 
 #. i18n: ectx: whatsthis, entry (UpdateTarget), group (Synchronization)
 #: smb4k.kcfg:283
@@ -701,7 +701,7 @@ msgstr ""
 #: smb4k.kcfg:313
 #, kde-format
 msgid "Set compression level:"
-msgstr ""
+msgstr "შეკუმშვის დონის დაყენება:"
 
 #. i18n: ectx: whatsthis, entry (UseCompressionLevel), group (Synchronization)
 #: smb4k.kcfg:314
@@ -1630,7 +1630,7 @@ msgstr "პროფილები"
 #: smb4k.kcfg:683
 #, kde-format
 msgid "The list of profiles."
-msgstr ""
+msgstr "პროფილების სია."
 
 #: smb4k.kcfg:690
 #, kde-format
@@ -1648,7 +1648,7 @@ msgstr "სამუშაო"
 #: smb4k.kcfg:692
 #, kde-format
 msgid "Active profile"
-msgstr ""
+msgstr "აქტიური პროფილი"
 
 #. i18n: ectx: whatsthis, entry (ActiveProfile), group (Profiles)
 #: smb4k.kcfg:693
@@ -1700,7 +1700,7 @@ msgstr ""
 #: smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "ჭდე:"
 
 #: smb4kbookmarkhandler_p.cpp:155 smb4kbookmarkhandler_p.cpp:550
 #: smb4kmounter_p.cpp:197
@@ -1721,7 +1721,7 @@ msgstr "კატეგორიის დამატება"
 #: smb4kbookmarkhandler_p.cpp:498
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "წაშლა"
 
 #: smb4kbookmarkhandler_p.cpp:500
 #, kde-format
@@ -1731,7 +1731,7 @@ msgstr "სუფთა ცა"
 #: smb4kbookmarkhandler_p.cpp:526
 #, kde-format
 msgid "Username:"
-msgstr ""
+msgstr "მომხმარებელი:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -1746,7 +1746,7 @@ msgstr "IP მისამართი:"
 #: smb4kbookmarkhandler_p.cpp:997
 #, kde-format
 msgid "Category name:"
-msgstr ""
+msgstr "კატეგორიის სახელი:"
 
 #: smb4kclient_p.cpp:1252
 #, kde-format
@@ -1777,7 +1777,7 @@ msgstr ""
 #: smb4kclient_p.cpp:1963
 #, kde-format
 msgid "Preview of %1"
-msgstr ""
+msgstr "%1-ის მინიატურა"
 
 #: smb4kclient_p.cpp:1999
 #, kde-format
@@ -1817,12 +1817,12 @@ msgstr "დომენი:"
 #: smb4kclient_p.cpp:2378
 #, kde-format
 msgid "File and Settings"
-msgstr ""
+msgstr "ფაილი და პარამეტრები"
 
 #: smb4kclient_p.cpp:2382
 #, kde-format
 msgid "File:"
-msgstr ""
+msgstr "ფაილი:"
 
 #: smb4kclient_p.cpp:2387
 #, kde-format
@@ -1970,7 +1970,7 @@ msgstr ""
 #: smb4khomesshareshandler_p.cpp:124
 #, kde-format
 msgid "Specify User"
-msgstr ""
+msgstr "მიუთითეთ მომხმარებელი"
 
 #: smb4khomesshareshandler_p.cpp:172
 #, kde-format
@@ -1980,7 +1980,7 @@ msgstr ""
 #: smb4khomesshareshandler_p.cpp:186
 #, kde-format
 msgid "User:"
-msgstr ""
+msgstr "მომხმარებელი:"
 
 #: smb4khomesshareshandler_p.cpp:196
 #, kde-format
@@ -2701,7 +2701,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:53
 #, kde-format
 msgid "File system port:"
-msgstr ""
+msgstr "ფაილური სისტემის პორტი:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteFileSystemPort), group (Mounting)
 #. i18n: ectx: whatsthis, entry (RemoteFileSystemPort), group (Mounting)
@@ -2728,7 +2728,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:144
 #, kde-format
 msgid "Write access:"
-msgstr ""
+msgstr "ჩაწერის უფლება:"
 
 #. i18n: ectx: whatsthis, entry (UseWriteAccess), group (Mounting)
 #. i18n: ectx: whatsthis, entry (WriteAccess), group (Mounting)
@@ -2743,7 +2743,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:152
 #, kde-format
 msgid "read-write"
-msgstr ""
+msgstr "ჩაწერადი-წაკითხვადი"
 
 #. i18n: ectx: label, entry (WriteAccess), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:155
@@ -2868,7 +2868,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:196
 #, kde-format
 msgid "SMB protocol version:"
-msgstr ""
+msgstr "SMB პროტოკოლის ვერსია:"
 
 #. i18n: ectx: whatsthis, entry (UseSmbProtocolVersion), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SmbProtocolVersion), group (Mounting)
@@ -2929,7 +2929,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:231
 #, kde-format
 msgid "Cache mode:"
-msgstr ""
+msgstr "ქეშის რეჟიმი:"
 
 #. i18n: ectx: whatsthis, entry (UseCacheMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (CacheMode), group (Mounting)
@@ -3004,7 +3004,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:268
 #, kde-format
 msgid "NTLM protocol"
-msgstr ""
+msgstr "პროტოკოლი NTLM"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:271
@@ -3016,7 +3016,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:274
 #, kde-format
 msgid "NTLMv2 protocol"
-msgstr ""
+msgstr "პროტოკოლი NTLMv2"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:277
@@ -3028,7 +3028,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:280
 #, kde-format
 msgid "NTLMSSP protocol"
-msgstr ""
+msgstr "პროტოკოლი NTLMSSP"
 
 #. i18n: ectx: label, entry (SecurityMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:283

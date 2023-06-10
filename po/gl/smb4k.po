@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-09 00:48+0000\n"
+"POT-Creation-Date: 2023-06-10 00:48+0000\n"
 "PO-Revision-Date: 2019-10-19 22:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -259,7 +259,8 @@ msgstr ""
 "<qt>Introduza un nome de usuario e un contrasinal para a máquina %1.</qt>"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Label:"
 msgid "Label:"
 msgstr "Etiqueta:"
 
@@ -296,7 +297,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Limpar a lista"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:366
+#: smb4k/smb4kconfigpagebookmarks.cpp:367
 #, kde-format
 msgid "New Category"
 msgstr ""

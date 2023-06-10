@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-09 00:48+0000\n"
+"POT-Creation-Date: 2023-06-10 00:48+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -290,7 +290,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "सूची साफ करू"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:366
+#: smb4k/smb4kconfigpagebookmarks.cpp:367
 #, kde-format
 msgid "New Category"
 msgstr ""
