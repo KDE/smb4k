@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-09 00:48+0000\n"
+"POT-Creation-Date: 2023-06-10 00:48+0000\n"
 "PO-Revision-Date: 2023-01-05 22:09+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -290,7 +290,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Garbitu zerrenda"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:366
+#: smb4k/smb4kconfigpagebookmarks.cpp:367
 #, kde-format
 msgid "New Category"
 msgstr ""

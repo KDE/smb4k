@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-09 00:48+0000\n"
+"POT-Creation-Date: 2023-06-10 00:48+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Очистить список"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:366
+#: smb4k/smb4kconfigpagebookmarks.cpp:367
 #, kde-format
 msgid "New Category"
 msgstr ""
