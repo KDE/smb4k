@@ -273,8 +273,7 @@ msgstr ""
 "Définir un nom d'utilisateur et un mot de passe pour la connexion par défaut."
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:62
-#, fuzzy, kde-format
-#| msgid "Label:"
+#, kde-format
 msgid "Label:"
 msgstr "Étiquette :"
 

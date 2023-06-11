@@ -118,7 +118,8 @@ msgid "Main Toolbar"
 msgstr "Barra degli strumenti principale"
 
 #: smb4k/smb4kbookmarkeditor.cpp:27
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Bookmark Editor"
 msgid "Bookmark Editor"
 msgstr "Gestore dei segnalibri"
 
