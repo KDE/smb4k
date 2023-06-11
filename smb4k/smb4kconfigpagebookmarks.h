@@ -99,6 +99,7 @@ protected Q_SLOTS:
     void slotWorkgroupEdited();
     void slotIpAddressEdited();
     void slotEnableButtons();
+    void slotIconSizeChanged(int group);
 
 private:
     enum Role { TypeRole = Qt::UserRole, DataRole = Qt::UserRole + 1 };

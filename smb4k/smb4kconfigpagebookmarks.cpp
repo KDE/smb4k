@@ -26,8 +26,6 @@
 Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     : QWidget(parent)
 {
-    // FIXME: Add slot to change icon size if it changed
-
     m_bookmarksChanged = false;
     m_savingBookmarks = false;
 
@@ -150,6 +148,7 @@ Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
 
     connect(this, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigPageBookmarks::slotEnableButtons);
     connect(Smb4KBookmarkHandler::self(), &Smb4KBookmarkHandler::updated, this, &Smb4KConfigPageBookmarks::loadBookmarks);
+    connect(KIconLoader::global(), &KIconLoader::iconChanged, this, &Smb4KConfigPageBookmarks::slotIconSizeChanged);
 }
 
 Smb4KConfigPageBookmarks::~Smb4KConfigPageBookmarks()
@@ -245,7 +244,7 @@ void Smb4KConfigPageBookmarks::saveBookmarks()
     }
 }
 
-void Smb4KConfigPageBookmarks::setCompletionItems(const QMap<QString, QStringList>& items)
+void Smb4KConfigPageBookmarks::setCompletionItems(const QMap<QString, QStringList> &items)
 {
     m_labelEdit->setCompletionMode(KCompletion::CompletionAuto);
     m_labelEdit->completionObject()->setItems(items[QStringLiteral("LabelCompletion")]);
@@ -627,4 +626,18 @@ void Smb4KConfigPageBookmarks::slotEnableButtons()
     m_resetButton->setEnabled(m_bookmarksChanged);
     m_clearButton->setEnabled(m_treeWidget->topLevelItemCount() != 0);
     m_addCategoryButton->setEnabled(m_treeWidget->topLevelItemCount() != 0);
+}
+
+void Smb4KConfigPageBookmarks::slotIconSizeChanged(int group)
+{
+    switch (group) {
+    case KIconLoader::Small: {
+        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
+        m_treeWidget->setIconSize(QSize(iconSize, iconSize));
+        break;
+    }
+    default: {
+        break;
+    }
+    }
 }

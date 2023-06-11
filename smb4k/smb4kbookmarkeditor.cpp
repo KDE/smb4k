@@ -7,15 +7,15 @@
 
 // application specific includes
 #include "smb4kbookmarkeditor.h"
-#include "core/smb4ksettings.h"
 #include "core/smb4kbookmarkhandler.h"
+#include "core/smb4ksettings.h"
 
 // Qt includes
 #include <QDialogButtonBox>
+#include <QMap>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QWindow>
-#include <QMap>
 
 // KDE includes
 #include <KConfigGroup>
