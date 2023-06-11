@@ -115,7 +115,7 @@ void Smb4KConfigPageProfiles::slotEnableWidget(int state)
     }
 }
 
-void Smb4KConfigPageProfiles::slotProfileAdded(const QString& text)
+void Smb4KConfigPageProfiles::slotProfileAdded(const QString &text)
 {
     Q_UNUSED(text);
     m_profilesChanged = true;

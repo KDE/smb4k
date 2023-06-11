@@ -9,13 +9,13 @@
 #include "smb4kconfigdialog.h"
 #include "core/smb4ksettings.h"
 #include "smb4kconfigpageauthentication.h"
+#include "smb4kconfigpagebookmarks.h"
 #include "smb4kconfigpagecustomoptions.h"
 #include "smb4kconfigpagemounting.h"
 #include "smb4kconfigpagenetwork.h"
 #include "smb4kconfigpageprofiles.h"
 #include "smb4kconfigpagesynchronization.h"
 #include "smb4kconfigpageuserinterface.h"
-#include "smb4kconfigpagebookmarks.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
