@@ -9,8 +9,8 @@
 #define SMB4KBOOKMARKMENU_H
 
 // application specific includes
-#include "smb4kglobal.h"
 #include "smb4kbookmarkeditor.h"
+#include "smb4kglobal.h"
 
 // Qt includes
 #include <QAction>
@@ -102,11 +102,6 @@ protected Q_SLOTS:
      */
     void slotEnableBookmark(const SharePtr &share);
 
-    /**
-     * Called when the bookmark editor is closed
-     */
-    void slotBookmarkEditorClosed(int result);
-
 private:
     /**
      * Add a bookmark to the menu
@@ -167,7 +162,7 @@ private:
     /**
      * The bookmark editor
      */
-    QPointer<Smb4KBookmarkEditor> m_bookmarkEditor;
+    QPointer<QDialog> m_bookmarkEditor;
 };
 
 #endif

@@ -21,6 +21,9 @@
 // KDE includes
 #include <KIconLoader>
 #include <KLocalizedString>
+#include <KMessageBox>
+#include <KPluginFactory>
+#include <KPluginMetaData>
 
 using namespace Smb4KGlobal;
 
@@ -420,10 +423,21 @@ void Smb4KBookmarkMenu::slotEditActionTriggered(bool checked)
 {
     Q_UNUSED(checked);
 
-    if (!m_bookmarkEditor) {
-        m_bookmarkEditor = new Smb4KBookmarkEditor();
-        connect(m_bookmarkEditor, &Smb4KBookmarkEditor::finished, this, &Smb4KBookmarkMenu::slotBookmarkEditorClosed);
-        m_bookmarkEditor->open();
+    if (m_bookmarkEditor.isNull()) {
+        KPluginMetaData metaData(QStringLiteral("smb4kbookmarkeditor"));
+        KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
+
+        if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
+            m_bookmarkEditor = result.plugin->create<QDialog>();
+
+            if (!m_bookmarkEditor.isNull()) {
+                m_bookmarkEditor->setAttribute(Qt::WA_DeleteOnClose);
+                m_bookmarkEditor->open();
+            }
+        } else {
+            KMessageBox::error(nullptr, result.errorString);
+            return;
+        }
     } else {
         m_bookmarkEditor->raise();
     }
@@ -565,11 +579,3 @@ void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)
         adjustMountActions();
     }
 }
-
-void Smb4KBookmarkMenu::slotBookmarkEditorClosed(int result)
-{
-    Q_UNUSED(result);
-    delete m_bookmarkEditor;
-    m_bookmarkEditor = nullptr;
-}
-
