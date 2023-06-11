@@ -1,7 +1,7 @@
 /*
     This class provides helper classes for Smb4KDeclarative
 
-    SPDX-FileCopyrightText: 2013-2021 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2013-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -13,6 +13,10 @@
 #include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
 
+// Qt includes
+#include <QDialog>
+#include <QPointer>
+
 class Smb4KDeclarativePrivate
 {
 public:
@@ -23,6 +27,7 @@ public:
     QList<Smb4KBookmarkObject *> bookmarkObjects;
     QList<Smb4KBookmarkObject *> bookmarkCategoryObjects;
     QList<Smb4KProfileObject *> profileObjects;
+    QPointer<QDialog> bookmarkEditor;
 };
 
 #endif

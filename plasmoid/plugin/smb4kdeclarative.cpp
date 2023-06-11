@@ -23,13 +23,14 @@
 #include "smb4kdeclarative_p.h"
 #include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
-
+//
 // Qt includes
 #include <QDebug>
 #include <QPointer>
 
 // KDE includes
 #include <KConfigDialog>
+#include <KMessageBox>
 #include <KPluginFactory>
 #include <KPluginMetaData>
 
@@ -332,7 +333,24 @@ void Smb4KDeclarative::removeBookmark(Smb4KBookmarkObject *object)
 
 void Smb4KDeclarative::editBookmarks()
 {
-    Smb4KBookmarkHandler::self()->editBookmarks();
+    if (d->bookmarkEditor.isNull()) {
+        KPluginMetaData metaData(QStringLiteral("smb4kbookmarkeditor"));
+        KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
+
+        if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
+            d->bookmarkEditor = result.plugin->create<QDialog>();
+
+            if (!d->bookmarkEditor.isNull()) {
+                d->bookmarkEditor->setAttribute(Qt::WA_DeleteOnClose);
+                d->bookmarkEditor->open();
+            }
+        } else {
+            KMessageBox::error(nullptr, result.errorString);
+            return;
+        }
+    } else {
+        d->bookmarkEditor->raise();
+    }
 }
 
 void Smb4KDeclarative::synchronize(Smb4KNetworkObject *object)
