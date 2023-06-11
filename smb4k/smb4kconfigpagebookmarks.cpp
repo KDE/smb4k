@@ -10,24 +10,23 @@
 #include "core/smb4kbookmarkhandler.h"
 
 // Qt includes
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QGridLayout>
 #include <QDialogButtonBox>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QKeyEvent>
+#include <QMouseEvent>
+#include <QTimer>
 #include <QUrl>
+#include <QVBoxLayout>
 
 // KF includes
 #include <KIconLoader>
 #include <KLocalizedString>
-#include <QMouseEvent>
-#include <QKeyEvent>
-#include <QTimer>
-
 
 Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     : QWidget(parent)
 {
-    // FIXME: Add completion items??
+    // FIXME: Add slot to change icon size if it changed
 
     m_bookmarksChanged = false;
     m_savingBookmarks = false;
@@ -62,6 +61,7 @@ Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     m_labelLabel = new QLabel(i18n("Label:"), m_editorWidget);
     m_labelEdit = new KLineEdit(m_editorWidget);
     m_labelEdit->setClearButtonEnabled(true);
+    m_labelEdit->setCompletionMode(KCompletion::CompletionNone);
 
     connect(m_labelEdit, &KLineEdit::editingFinished, this, &Smb4KConfigPageBookmarks::slotLabelEdited);
 
@@ -69,6 +69,7 @@ Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     m_categoryEdit = new KComboBox(m_editorWidget);
     m_categoryEdit->setEditable(true);
     m_categoryEdit->lineEdit()->setClearButtonEnabled(true);
+    m_categoryEdit->setCompletionMode(KCompletion::CompletionNone);
 
     connect(m_categoryEdit->lineEdit(), &QLineEdit::editingFinished, this, &Smb4KConfigPageBookmarks::slotCategoryEdited);
 
@@ -76,18 +77,21 @@ Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     m_userNameEdit = new KLineEdit(m_editorWidget);
     m_userNameEdit->setObjectName(QStringLiteral("UserNameEdit"));
     m_userNameEdit->setClearButtonEnabled(true);
+    m_userNameEdit->setCompletionMode(KCompletion::CompletionNone);
 
     connect(m_userNameEdit, &KLineEdit::editingFinished, this, &Smb4KConfigPageBookmarks::slotUserNameEdited);
 
     m_workgroupLabel = new QLabel(i18n("Workgroup:"), m_editorWidget);
     m_workgroupEdit = new KLineEdit(m_editorWidget);
     m_workgroupEdit->setClearButtonEnabled(true);
+    m_workgroupEdit->setCompletionMode(KCompletion::CompletionNone);
 
     connect(m_workgroupEdit, &KLineEdit::editingFinished, this, &Smb4KConfigPageBookmarks::slotWorkgroupEdited);
 
     m_ipAddressLabel = new QLabel(i18n("IP Address:"), m_editorWidget);
     m_ipAddressEdit = new KLineEdit(m_editorWidget);
     m_ipAddressEdit->setClearButtonEnabled(true);
+    m_ipAddressEdit->setCompletionMode(KCompletion::CompletionNone);
     // FIXME: Do we need an input mask?
 
     connect(m_ipAddressEdit, &KLineEdit::editingFinished, this, &Smb4KConfigPageBookmarks::slotIpAddressEdited);
@@ -165,6 +169,10 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
     QStringList categories = Smb4KBookmarkHandler::self()->categoryList();
     m_categoryEdit->addItems(categories);
 
+    if (!m_categoryEdit->contains(QStringLiteral(""))) {
+        m_categoryEdit->addItem(QStringLiteral(""));
+    }
+
     for (const QString &category : qAsConst(categories)) {
         QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarkList(category);
         QTreeWidgetItem *categoryItem = nullptr;
@@ -184,7 +192,7 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
                     bookmarkItem = new QTreeWidgetItem(m_treeWidget);
                 }
 
-                bookmarkItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsDragEnabled|Qt::ItemIsEnabled);
+                bookmarkItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
                 bookmarkItem->setText(0, bookmark->displayString());
                 bookmarkItem->setIcon(0, bookmark->icon());
                 bookmarkItem->setData(0, TypeRole, BookmarkType);
@@ -237,15 +245,60 @@ void Smb4KConfigPageBookmarks::saveBookmarks()
     }
 }
 
+void Smb4KConfigPageBookmarks::setCompletionItems(const QMap<QString, QStringList>& items)
+{
+    m_labelEdit->setCompletionMode(KCompletion::CompletionAuto);
+    m_labelEdit->completionObject()->setItems(items[QStringLiteral("LabelCompletion")]);
+
+    m_categoryEdit->setCompletionMode(KCompletion::CompletionAuto);
+    m_categoryEdit->completionObject()->setItems(items[QStringLiteral("CategoryCompletion")]);
+
+    m_userNameEdit->setCompletionMode(KCompletion::CompletionAuto);
+    m_userNameEdit->completionObject()->setItems(items[QStringLiteral("LoginCompletion")]);
+
+    m_ipAddressEdit->setCompletionMode(KCompletion::CompletionAuto);
+    m_ipAddressEdit->completionObject()->setItems(items[QStringLiteral("IpAddressCompletion")]);
+
+    m_workgroupEdit->setCompletionMode(KCompletion::CompletionAuto);
+    m_workgroupEdit->completionObject()->setItems(items[QStringLiteral("WorkgroupCompletion")]);
+}
+
+QMap<QString, QStringList> Smb4KConfigPageBookmarks::getCompletionItems() const
+{
+    QMap<QString, QStringList> items;
+
+    if (m_labelEdit->completionMode() != KCompletion::CompletionNone) {
+        items[QStringLiteral("LabelCompletion")] = m_labelEdit->completionObject()->items();
+    }
+
+    if (m_categoryEdit->completionMode() != KCompletion::CompletionNone) {
+        items[QStringLiteral("CategoryCompletion")] = m_categoryEdit->completionObject()->items();
+    }
+
+    if (m_userNameEdit->completionMode() != KCompletion::CompletionNone) {
+        items[QStringLiteral("LoginCompletion")] = m_userNameEdit->completionObject()->items();
+    }
+
+    if (m_ipAddressEdit->completionMode() != KCompletion::CompletionNone) {
+        items[QStringLiteral("IpAddressCompletion")] = m_ipAddressEdit->completionObject()->items();
+    }
+
+    if (m_workgroupEdit->completionMode() != KCompletion::CompletionNone) {
+        items[QStringLiteral("WorkgroupCompletion")] = m_workgroupEdit->completionObject()->items();
+    }
+
+    return items;
+}
+
 bool Smb4KConfigPageBookmarks::bookmarksChanged() const
 {
     return m_bookmarksChanged;
 }
 
-QTreeWidgetItem *Smb4KConfigPageBookmarks::addCategoryItem(const QString& text)
+QTreeWidgetItem *Smb4KConfigPageBookmarks::addCategoryItem(const QString &text)
 {
     QTreeWidgetItem *categoryItem = new QTreeWidgetItem(m_treeWidget, QTreeWidgetItem::UserType);
-    categoryItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsDropEnabled|Qt::ItemIsEnabled);
+    categoryItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
     categoryItem->setText(0, text);
     categoryItem->setIcon(0, KDE::icon(QStringLiteral("folder-favorites")));
     categoryItem->setData(0, TypeRole, CategoryType);
@@ -258,14 +311,14 @@ QTreeWidgetItem *Smb4KConfigPageBookmarks::addCategoryItem(const QString& text)
     return categoryItem;
 }
 
-void Smb4KConfigPageBookmarks::startEditingCategoryItem(QTreeWidgetItem* item)
+void Smb4KConfigPageBookmarks::startEditingCategoryItem(QTreeWidgetItem *item)
 {
     m_treeWidget->setCurrentItem(item);
     m_treeWidget->openPersistentEditor(item, 0);
     m_treeWidget->setFocus();
 }
 
-void Smb4KConfigPageBookmarks::endEditingCategoryItem(QTreeWidgetItem* item)
+void Smb4KConfigPageBookmarks::endEditingCategoryItem(QTreeWidgetItem *item)
 {
     if (m_treeWidget->isPersistentEditorOpen(item, 0)) {
         m_treeWidget->closePersistentEditor(item, 0);
@@ -282,10 +335,11 @@ void Smb4KConfigPageBookmarks::endEditingCategoryItem(QTreeWidgetItem* item)
         }
 
         m_categoryEdit->addItem(item->text(0));
+        m_categoryEdit->completionObject()->addItem(item->text(0));
     }
 }
 
-bool Smb4KConfigPageBookmarks::eventFilter(QObject* obj, QEvent* e)
+bool Smb4KConfigPageBookmarks::eventFilter(QObject *obj, QEvent *e)
 {
     if (obj == m_treeWidget->viewport()) {
         if (e->type() == QEvent::MouseButtonPress) {
@@ -368,7 +422,6 @@ void Smb4KConfigPageBookmarks::slotAddCategoryButtonClicked(bool checked)
     startEditingCategoryItem(item);
 }
 
-
 void Smb4KConfigPageBookmarks::slotRemoveButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
@@ -400,7 +453,7 @@ void Smb4KConfigPageBookmarks::slotClearButtonClicked(bool checked)
     Q_EMIT bookmarksModified();
 }
 
-void Smb4KConfigPageBookmarks::slotCurrentItemChanged(QTreeWidgetItem* current, QTreeWidgetItem* previous)
+void Smb4KConfigPageBookmarks::slotCurrentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
 {
     Q_UNUSED(current);
 
@@ -426,7 +479,7 @@ void Smb4KConfigPageBookmarks::slotItemSelectionChanged()
     }
 }
 
-void Smb4KConfigPageBookmarks::slotItemDoubleClicked(QTreeWidgetItem* item, int column)
+void Smb4KConfigPageBookmarks::slotItemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     Q_UNUSED(column);
 
@@ -451,6 +504,10 @@ void Smb4KConfigPageBookmarks::slotLabelEdited()
 
             QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
+
+            if (m_labelEdit->completionMode() != KCompletion::CompletionNone) {
+                m_labelEdit->completionObject()->addItem(m_labelEdit->text());
+            }
 
             m_bookmarksChanged = true;
             Q_EMIT bookmarksModified();
@@ -495,6 +552,10 @@ void Smb4KConfigPageBookmarks::slotCategoryEdited()
                 categoryItem->sortChildren(0, Qt::AscendingOrder);
             }
 
+            if (m_categoryEdit->completionMode() != KCompletion::CompletionNone) {
+                m_categoryEdit->completionObject()->addItem(m_categoryEdit->currentText());
+            }
+
             m_bookmarksChanged = true;
             Q_EMIT bookmarksModified();
         }
@@ -510,6 +571,10 @@ void Smb4KConfigPageBookmarks::slotUserNameEdited()
 
             QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
+
+            if (m_userNameEdit->completionMode() != KCompletion::CompletionNone) {
+                m_userNameEdit->completionObject()->addItem(m_userNameEdit->text());
+            }
 
             m_bookmarksChanged = true;
             Q_EMIT bookmarksModified();
@@ -527,6 +592,10 @@ void Smb4KConfigPageBookmarks::slotWorkgroupEdited()
             QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
 
+            if (m_workgroupEdit->completionMode() != KCompletion::CompletionNone) {
+                m_workgroupEdit->completionObject()->addItem(m_workgroupEdit->text());
+            }
+
             m_bookmarksChanged = true;
             Q_EMIT bookmarksModified();
         }
@@ -543,6 +612,10 @@ void Smb4KConfigPageBookmarks::slotIpAddressEdited()
             QVariant variant = QVariant::fromValue(bookmark);
             m_treeWidget->currentItem()->setData(0, DataRole, variant);
 
+            if (m_ipAddressEdit->completionMode() != KCompletion::CompletionNone) {
+                m_ipAddressEdit->completionObject()->addItem(m_ipAddressEdit->text());
+            }
+
             m_bookmarksChanged = true;
             Q_EMIT bookmarksModified();
         }
@@ -555,5 +628,3 @@ void Smb4KConfigPageBookmarks::slotEnableButtons()
     m_clearButton->setEnabled(m_treeWidget->topLevelItemCount() != 0);
     m_addCategoryButton->setEnabled(m_treeWidget->topLevelItemCount() != 0);
 }
-
-

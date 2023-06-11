@@ -12,12 +12,12 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QTreeWidget>
 #include <QLabel>
+#include <QTreeWidget>
 
 // KDE includes
-#include <KLineEdit>
 #include <KComboBox>
+#include <KLineEdit>
 #include <QPushButton>
 
 /**
@@ -47,6 +47,19 @@ public:
      * and FALSE otherwise.
      */
     bool bookmarksChanged() const;
+
+    /**
+     * Set the completion items for the editor widgets on demand
+     *
+     * @param items     A map containing the completion items for
+     *                  each editor widget
+     */
+    void setCompletionItems(const QMap<QString, QStringList> &items);
+
+    /**
+     * Get the completion items from the editor widgets on demand
+     */
+    QMap<QString, QStringList> getCompletionItems() const;
 
 protected:
     /**
@@ -88,14 +101,8 @@ protected Q_SLOTS:
     void slotEnableButtons();
 
 private:
-    enum Role {
-        TypeRole = Qt::UserRole,
-        DataRole = Qt::UserRole + 1
-    };
-    enum Type {
-        CategoryType = Qt::UserRole + 100,
-        BookmarkType = Qt::UserRole + 101
-    };
+    enum Role { TypeRole = Qt::UserRole, DataRole = Qt::UserRole + 1 };
+    enum Type { CategoryType = Qt::UserRole + 100, BookmarkType = Qt::UserRole + 101 };
     QTreeWidgetItem *addCategoryItem(const QString &text);
     void startEditingCategoryItem(QTreeWidgetItem *item);
     void endEditingCategoryItem(QTreeWidgetItem *item);
