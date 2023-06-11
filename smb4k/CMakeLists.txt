@@ -46,13 +46,26 @@ if (SMB4K_WITH_WS_DISCOVERY)
   target_compile_definitions(smb4kconfigdialog PRIVATE USE_WS_DISCOVERY=${SMB4K_WITH_WS_DISCOVERY})
 endif(SMB4K_WITH_WS_DISCOVERY)
 
+########### Bookmarks ################################
+
+set(smb4kbookmarkeditor_LIB_SRCS
+  smb4kbookmarkeditor.cpp
+  smb4kconfigpagebookmarks.cpp)
+
+add_library(smb4kbookmarkeditor MODULE ${smb4kbookmarkeditor_LIB_SRCS})
+
+target_link_libraries(smb4kbookmarkeditor
+  smb4kcore
+  Qt${QT_MAJOR_VERSION}::Core
+  Qt${QT_MAJOR_VERSION}::Widgets
+  KF${QT_MAJOR_VERSION}::Completion
+  KF${QT_MAJOR_VERSION}::CoreAddons)
+
 ########### Main Application #########################
 
 set(smb4k_SRCS
   main.cpp
-  smb4kbookmarkeditor.cpp
   smb4kbookmarkmenu.cpp
-  smb4kconfigpagebookmarks.cpp
   smb4kprofilesmenu.cpp
   smb4kmainwindow.cpp
   smb4knetworkbrowser.cpp
@@ -87,6 +100,7 @@ target_link_libraries(smb4k
 ########### install files ###############
 
 install(TARGETS smb4kconfigdialog DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS smb4kbookmarkeditor DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(TARGETS smb4k DESTINATION ${KDE_INSTALL_BINDIR})
 
 install(PROGRAMS org.kde.smb4k.desktop DESTINATION ${KDE_INSTALL_APPDIR})
