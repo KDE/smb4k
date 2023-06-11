@@ -1,7 +1,7 @@
 /*
     This class handles the bookmarks.
 
-    SPDX-FileCopyrightText: 2004-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -481,11 +481,6 @@ QStringList Smb4KBookmarkHandler::categoryList() const
     return categories;
 }
 
-void Smb4KBookmarkHandler::resetBookmarks()
-{
-    readBookmarkList();
-}
-
 bool Smb4KBookmarkHandler::isBookmarked(const SharePtr &share)
 {
     if (findBookmarkByUrl(share->url())) {
@@ -493,30 +488,6 @@ bool Smb4KBookmarkHandler::isBookmarked(const SharePtr &share)
     }
 
     return false;
-}
-
-void Smb4KBookmarkHandler::editBookmarks()
-{
-    //
-    // Only allow one instance of the bookmark editor
-    //
-    if (!d->editor) {
-        d->editor = new Smb4KBookmarkEditor(bookmarkList(), QApplication::activeWindow());
-    } else {
-        d->editor->raise();
-    }
-
-    if (d->editor->exec() == QDialog::Accepted) {
-        addBookmarks(d->editor->editedBookmarks(), true);
-    } else {
-        resetBookmarks();
-    }
-
-    //
-    // Delete the editor after use
-    //
-    delete d->editor;
-    d->editor = nullptr;
 }
 
 void Smb4KBookmarkHandler::update() const

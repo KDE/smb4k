@@ -1,7 +1,7 @@
 /*
     This class handles the bookmarks.
 
-    SPDX-FileCopyrightText: 2004-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -152,21 +152,11 @@ public:
     QStringList categoryList() const;
 
     /**
-     * Reset the bookmarks by reloading them from the file.
-     */
-    void resetBookmarks();
-
-    /**
      * This function checks if the @p share is already bookmarked or not.
      * @param share         The share item
      * @returns TRUE if the share is bookmarked and FALSE otherwise.
      */
     bool isBookmarked(const SharePtr &share);
-
-    /**
-     * This function opens the bookmark editor.
-     */
-    SMB4K_DEPRECATED void editBookmarks();
 
 Q_SIGNALS:
     /**
