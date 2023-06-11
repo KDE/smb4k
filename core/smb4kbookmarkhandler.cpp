@@ -53,11 +53,6 @@ Smb4KBookmarkHandler::Smb4KBookmarkHandler(QObject *parent)
     // Read the list of bookmarks
     //
     readBookmarkList();
-
-    //
-    // Init the bookmark editor
-    //
-    d->editor = nullptr;
 }
 
 Smb4KBookmarkHandler::~Smb4KBookmarkHandler()

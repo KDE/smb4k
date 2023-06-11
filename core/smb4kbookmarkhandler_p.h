@@ -113,7 +113,6 @@ class Smb4KBookmarkHandlerPrivate
 {
 public:
     QList<BookmarkPtr> bookmarks;
-    QPointer<Smb4KBookmarkEditor> editor;
 };
 
 class Smb4KBookmarkHandlerStatic
