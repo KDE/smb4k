@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 00:47+0000\n"
+"POT-Creation-Date: 2023-06-12 00:53+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1959,7 +1959,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 na %2"
 
-#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Formát %1 nie je podporovaný."
@@ -1979,58 +1979,15 @@ msgstr ""
 "alebo skupinu, kliknite na príslušnú položku záložky."
 
 #. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:147 smb4kbookmarkhandler_p.cpp:521
-#: smb4kmounter_p.cpp:187
+#: smb4kbookmarkhandler_p.cpp:147 smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
 msgstr "Popis:"
 
-#: smb4kbookmarkhandler_p.cpp:155 smb4kbookmarkhandler_p.cpp:550
-#: smb4kmounter_p.cpp:197
+#: smb4kbookmarkhandler_p.cpp:155 smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
 msgstr "Kategória:"
-
-#: smb4kbookmarkhandler_p.cpp:379
-#, kde-format
-msgid "Edit Bookmarks"
-msgstr "Upraviť záložky"
-
-#: smb4kbookmarkhandler_p.cpp:497 smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Add Category"
-msgstr "Pridať kategóriu"
-
-#: smb4kbookmarkhandler_p.cpp:498
-#, kde-format
-msgid "Remove"
-msgstr "Odstrániť"
-
-#: smb4kbookmarkhandler_p.cpp:500
-#, kde-format
-msgid "Clear"
-msgstr "Vyčistiť"
-
-#: smb4kbookmarkhandler_p.cpp:526
-#, fuzzy, kde-format
-#| msgid "User:"
-msgid "Username:"
-msgstr "Užívateľské meno:"
-
-#: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "Pracovná skupina:"
-
-#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
-#, kde-format
-msgid "IP Address:"
-msgstr "IP adresa:"
-
-#: smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Category name:"
-msgstr "Názov kategórie:"
 
 #: smb4kclient_p.cpp:1252
 #, kde-format
@@ -2092,6 +2049,11 @@ msgstr "Informácia"
 #, kde-format
 msgid "Printer:"
 msgstr "Tlačiareň:"
+
+#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#, kde-format
+msgid "IP Address:"
+msgstr "IP adresa:"
 
 #: smb4kclient_p.cpp:2367
 #, kde-format
@@ -2350,6 +2312,11 @@ msgstr ""
 "miesto, kde je. Má dva platné formáty, jeden známy ako IP verzie 4 (napr. "
 "192.168.2.11) a vo formáte verzie 6 (napr. "
 "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#: smb4kmounter_p.cpp:154
+#, kde-format
+msgid "Workgroup:"
+msgstr "Pracovná skupina:"
 
 #: smb4kmounter_p.cpp:158
 #, kde-format
@@ -3838,6 +3805,26 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Prosím zadajte meno používateľa a heslo pre zdieľanie <b>%1</b>.</qt>"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Upraviť záložky"
+
+#~ msgid "Add Category"
+#~ msgstr "Pridať kategóriu"
+
+#~ msgid "Remove"
+#~ msgstr "Odstrániť"
+
+#~ msgid "Clear"
+#~ msgstr "Vyčistiť"
+
+#, fuzzy
+#~| msgid "User:"
+#~ msgid "Username:"
+#~ msgstr "Užívateľské meno:"
+
+#~ msgid "Category name:"
+#~ msgstr "Názov kategórie:"
 
 #~ msgid "Custom Options"
 #~ msgstr "Vlastné voľby"

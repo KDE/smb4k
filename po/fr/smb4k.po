@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-10 00:48+0000\n"
+"POT-Creation-Date: 2023-06-12 00:53+0000\n"
 "PO-Revision-Date: 2023-03-28 15:23+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -134,30 +134,30 @@ msgstr "&Configuration"
 msgid "Main Toolbar"
 msgstr "Barre principale"
 
-#: smb4k/smb4kbookmarkeditor.cpp:27
+#: smb4k/smb4kbookmarkeditor.cpp:33
 #, fuzzy, kde-format
 #| msgid "Bookmarks"
 msgid "Bookmark Editor"
 msgstr "Signets"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
+#: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
 msgid "Bookmarks"
 msgstr "Signets"
 
-#: smb4k/smb4kbookmarkmenu.cpp:51
+#: smb4k/smb4kbookmarkmenu.cpp:54
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Modifier des signets"
 
-#: smb4k/smb4kbookmarkmenu.cpp:60 smb4k/smb4kmainwindow.cpp:146
+#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:146
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Ajouter un signet"
 
-#: smb4k/smb4kbookmarkmenu.cpp:71 smb4k/smb4kbookmarkmenu.cpp:213
+#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:216
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Monter tous les signets"
@@ -229,14 +229,14 @@ msgid "Save"
 msgstr "Enregistrer"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
-#: smb4k/smb4kconfigpagebookmarks.cpp:119
+#: smb4k/smb4kconfigpagebookmarks.cpp:121
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
 msgstr "Modifier"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
-#: smb4k/smb4kconfigpagebookmarks.cpp:131
+#: smb4k/smb4kconfigpagebookmarks.cpp:133
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
 #, kde-format
 msgid "Remove"
@@ -272,17 +272,17 @@ msgid "Set the username and password for the default login."
 msgstr ""
 "Définir un nom d'utilisateur et un mot de passe pour la connexion par défaut."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:62
+#: smb4k/smb4kconfigpagebookmarks.cpp:59
 #, kde-format
 msgid "Label:"
 msgstr "Étiquette :"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:68
+#: smb4k/smb4kconfigpagebookmarks.cpp:66
 #, kde-format
 msgid "Category:"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:74 smb4k/smb4ktooltip.cpp:308
 #, kde-format
 msgid "Username:"
 msgstr "Nom d'utilisateur :"
@@ -292,24 +292,24 @@ msgstr "Nom d'utilisateur :"
 msgid "Workgroup:"
 msgstr "Groupe de travail :"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:88 smb4k/smb4ktooltip.cpp:213
+#: smb4k/smb4kconfigpagebookmarks.cpp:89 smb4k/smb4ktooltip.cpp:213
 #: smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "Adresse IP :"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#: smb4k/smb4kconfigpagebookmarks.cpp:127
 #, kde-format
 msgid "Add Category"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:137
+#: smb4k/smb4kconfigpagebookmarks.cpp:139
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
 msgid "Clear List"
 msgstr "Effacer la liste"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:367
+#: smb4k/smb4kconfigpagebookmarks.cpp:420
 #, kde-format
 msgid "New Category"
 msgstr ""

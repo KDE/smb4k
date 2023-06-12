@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 00:47+0000\n"
+"POT-Creation-Date: 2023-06-12 00:53+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1684,7 +1684,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr ""
@@ -1703,59 +1703,14 @@ msgid ""
 msgstr ""
 
 #. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:147 smb4kbookmarkhandler_p.cpp:521
-#: smb4kmounter_p.cpp:187
+#: smb4kbookmarkhandler_p.cpp:147 smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
 msgstr "लेबल :"
 
-#: smb4kbookmarkhandler_p.cpp:155 smb4kbookmarkhandler_p.cpp:550
-#: smb4kmounter_p.cpp:197
+#: smb4kbookmarkhandler_p.cpp:155 smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
-msgstr ""
-
-#: smb4kbookmarkhandler_p.cpp:379
-#, kde-format
-msgid "Edit Bookmarks"
-msgstr "ओळखचिन्हे संपादित करा"
-
-#: smb4kbookmarkhandler_p.cpp:497 smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Add Category"
-msgstr ""
-
-#: smb4kbookmarkhandler_p.cpp:498
-#, kde-format
-msgid "Remove"
-msgstr "काढून टाका"
-
-#: smb4kbookmarkhandler_p.cpp:500
-#, fuzzy, kde-format
-#| msgid "&Clear"
-msgid "Clear"
-msgstr "पुसून टाका (&C)"
-
-#: smb4kbookmarkhandler_p.cpp:526
-#, fuzzy, kde-format
-#| msgid "User:"
-msgid "Username:"
-msgstr "वापरकर्ता:"
-
-#: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
-#, fuzzy, kde-format
-#| msgid "Group:"
-msgid "Workgroup:"
-msgstr "समूह :"
-
-#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
-#, kde-format
-msgid "IP Address:"
-msgstr "IP पत्ता :"
-
-#: smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Category name:"
 msgstr ""
 
 #: smb4kclient_p.cpp:1252
@@ -1821,6 +1776,11 @@ msgstr ""
 #| msgid "Printer"
 msgid "Printer:"
 msgstr "प्रिंटर"
+
+#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#, kde-format
+msgid "IP Address:"
+msgstr "IP पत्ता :"
 
 #: smb4kclient_p.cpp:2367
 #, fuzzy, kde-format
@@ -2054,6 +2014,12 @@ msgid ""
 "4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
 "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
 msgstr ""
+
+#: smb4kmounter_p.cpp:154
+#, fuzzy, kde-format
+#| msgid "Group:"
+msgid "Workgroup:"
+msgstr "समूह :"
 
 #: smb4kmounter_p.cpp:158
 #, kde-format
@@ -3407,6 +3373,22 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "ओळखचिन्हे संपादित करा"
+
+#~ msgid "Remove"
+#~ msgstr "काढून टाका"
+
+#, fuzzy
+#~| msgid "&Clear"
+#~ msgid "Clear"
+#~ msgstr "पुसून टाका (&C)"
+
+#, fuzzy
+#~| msgid "User:"
+#~ msgid "Username:"
+#~ msgstr "वापरकर्ता:"
 
 #~ msgid "Login:"
 #~ msgstr "प्रवेश :"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 00:47+0000\n"
+"POT-Creation-Date: 2023-06-12 00:53+0000\n"
 "PO-Revision-Date: 2020-10-25 22:18+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2010,7 +2010,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 asukohas %2"
 
-#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 vorming ei ole toetatud."
@@ -2030,57 +2030,14 @@ msgstr ""
 "muutmiseks klõpsa vajalikul järjehoidjal."
 
 #. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:147 smb4kbookmarkhandler_p.cpp:521
-#: smb4kmounter_p.cpp:187
+#: smb4kbookmarkhandler_p.cpp:147 smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
 msgstr "Nimi:"
 
-#: smb4kbookmarkhandler_p.cpp:155 smb4kbookmarkhandler_p.cpp:550
-#: smb4kmounter_p.cpp:197
+#: smb4kbookmarkhandler_p.cpp:155 smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
-msgstr ""
-
-#: smb4kbookmarkhandler_p.cpp:379
-#, kde-format
-msgid "Edit Bookmarks"
-msgstr "Järjehoidjate muutmine"
-
-#: smb4kbookmarkhandler_p.cpp:497 smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Add Category"
-msgstr ""
-
-#: smb4kbookmarkhandler_p.cpp:498
-#, kde-format
-msgid "Remove"
-msgstr "Eemalda"
-
-#: smb4kbookmarkhandler_p.cpp:500
-#, kde-format
-msgid "Clear"
-msgstr "Puhasta"
-
-#: smb4kbookmarkhandler_p.cpp:526
-#, fuzzy, kde-format
-#| msgid "User:"
-msgid "Username:"
-msgstr "Kasutaja:"
-
-#: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "Töögrupp:"
-
-#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-aadress:"
-
-#: smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Category name:"
 msgstr ""
 
 #: smb4kclient_p.cpp:1252
@@ -2143,6 +2100,11 @@ msgstr "Teave"
 #, kde-format
 msgid "Printer:"
 msgstr "Printer:"
+
+#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#, kde-format
+msgid "IP Address:"
+msgstr "IP-aadress:"
 
 #: smb4kclient_p.cpp:2367
 #, kde-format
@@ -2407,6 +2369,11 @@ msgstr ""
 "kus see asub. Sel on kaks korrektset vormingut, üks IP versioonile 4 (nt. "
 "192.168.2.11) ja teine IP versioonile 6 (nt. "
 "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#: smb4kmounter_p.cpp:154
+#, kde-format
+msgid "Workgroup:"
+msgstr "Töögrupp:"
 
 #: smb4kmounter_p.cpp:158
 #, kde-format
@@ -3892,6 +3859,20 @@ msgid ""
 msgstr ""
 "<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool.</"
 "qt>"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Järjehoidjate muutmine"
+
+#~ msgid "Remove"
+#~ msgstr "Eemalda"
+
+#~ msgid "Clear"
+#~ msgstr "Puhasta"
+
+#, fuzzy
+#~| msgid "User:"
+#~ msgid "Username:"
+#~ msgstr "Kasutaja:"
 
 #~ msgid "Custom Options"
 #~ msgstr "Kohandatud valikud"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 00:47+0000\n"
+"POT-Creation-Date: 2023-06-12 00:53+0000\n"
 "PO-Revision-Date: 2023-01-07 09:08+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2004,7 +2004,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 %2(e)an"
 
-#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1(r)en formatua ez da onartzen."
@@ -2024,57 +2024,15 @@ msgstr ""
 "taldea editatzeko, egin klik dagokion laster-marka sarrerari."
 
 #. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:147 smb4kbookmarkhandler_p.cpp:521
-#: smb4kmounter_p.cpp:187
+#: smb4kbookmarkhandler_p.cpp:147 smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
 msgstr "Etiketa:"
 
-#: smb4kbookmarkhandler_p.cpp:155 smb4kbookmarkhandler_p.cpp:550
-#: smb4kmounter_p.cpp:197
+#: smb4kbookmarkhandler_p.cpp:155 smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
 msgstr "Kategoria:"
-
-#: smb4kbookmarkhandler_p.cpp:379
-#, kde-format
-msgid "Edit Bookmarks"
-msgstr "Editatu laster-markak"
-
-#: smb4kbookmarkhandler_p.cpp:497 smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Add Category"
-msgstr "Gehitu kategoria"
-
-#: smb4kbookmarkhandler_p.cpp:498
-#, kde-format
-msgid "Remove"
-msgstr "Kendu"
-
-#: smb4kbookmarkhandler_p.cpp:500
-#, kde-format
-msgid "Clear"
-msgstr "Garbitu"
-
-#: smb4kbookmarkhandler_p.cpp:526
-#, kde-format
-msgid "Username:"
-msgstr "Erabiltzaile-izena:"
-
-#: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "Lantaldea:"
-
-#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
-#, kde-format
-msgid "IP Address:"
-msgstr "IP helbidea:"
-
-#: smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Category name:"
-msgstr "Kategoria-izena:"
 
 #: smb4kclient_p.cpp:1252
 #, kde-format
@@ -2138,6 +2096,11 @@ msgstr "Informazioa"
 #, kde-format
 msgid "Printer:"
 msgstr "Inprimagailua:"
+
+#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#, kde-format
+msgid "IP Address:"
+msgstr "IP helbidea:"
 
 #: smb4kclient_p.cpp:2367
 #, kde-format
@@ -2386,6 +2349,11 @@ msgstr ""
 "non dagoen adierazten du. Balio duten bi formatu ditu, IP 4 bertsiokoa "
 "(adib. 192.168.2.11) eta 6 bertsioko formatua (adib. "
 "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#: smb4kmounter_p.cpp:154
+#, kde-format
+msgid "Workgroup:"
+msgstr "Lantaldea:"
 
 #: smb4kmounter_p.cpp:158
 #, kde-format
@@ -3907,6 +3875,24 @@ msgid ""
 msgstr ""
 "<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> partekatzerako.</"
 "qt>"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Editatu laster-markak"
+
+#~ msgid "Add Category"
+#~ msgstr "Gehitu kategoria"
+
+#~ msgid "Remove"
+#~ msgstr "Kendu"
+
+#~ msgid "Clear"
+#~ msgstr "Garbitu"
+
+#~ msgid "Username:"
+#~ msgstr "Erabiltzaile-izena:"
+
+#~ msgid "Category name:"
+#~ msgstr "Kategoria-izena:"
 
 #~ msgid "Custom Options"
 #~ msgstr "Norberak finkatutako aukerak"
