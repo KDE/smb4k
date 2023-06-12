@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-06 00:47+0000\n"
+"POT-Creation-Date: 2023-06-12 00:53+0000\n"
 "PO-Revision-Date: 2023-05-22 14:01\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1848,7 +1848,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
-#: smb4kbookmarkhandler.cpp:334 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "不支持 %1 格式。"
@@ -1868,57 +1868,15 @@ msgstr ""
 "项。"
 
 #. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:147 smb4kbookmarkhandler_p.cpp:521
-#: smb4kmounter_p.cpp:187
+#: smb4kbookmarkhandler_p.cpp:147 smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
 msgstr "标签："
 
-#: smb4kbookmarkhandler_p.cpp:155 smb4kbookmarkhandler_p.cpp:550
-#: smb4kmounter_p.cpp:197
+#: smb4kbookmarkhandler_p.cpp:155 smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
 msgstr "类别："
-
-#: smb4kbookmarkhandler_p.cpp:379
-#, kde-format
-msgid "Edit Bookmarks"
-msgstr "编辑书签"
-
-#: smb4kbookmarkhandler_p.cpp:497 smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Add Category"
-msgstr "添加类别"
-
-#: smb4kbookmarkhandler_p.cpp:498
-#, kde-format
-msgid "Remove"
-msgstr "移除"
-
-#: smb4kbookmarkhandler_p.cpp:500
-#, kde-format
-msgid "Clear"
-msgstr "清除"
-
-#: smb4kbookmarkhandler_p.cpp:526
-#, kde-format
-msgid "Username:"
-msgstr "用户名："
-
-#: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "工作组："
-
-#: smb4kbookmarkhandler_p.cpp:542 smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
-#, kde-format
-msgid "IP Address:"
-msgstr "IP 地址："
-
-#: smb4kbookmarkhandler_p.cpp:997
-#, kde-format
-msgid "Category name:"
-msgstr "类别名称："
 
 #: smb4kclient_p.cpp:1252
 #, kde-format
@@ -1980,6 +1938,11 @@ msgstr "信息"
 #, kde-format
 msgid "Printer:"
 msgstr "打印机："
+
+#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#, kde-format
+msgid "IP Address:"
+msgstr "IP 地址："
 
 #: smb4kclient_p.cpp:2367
 #, kde-format
@@ -2216,6 +2179,11 @@ msgstr ""
 "互联网协议地址 (IP 地址) 用于对网络中的主机进行标识和显示其位置。IP 地址有两"
 "种有效格式，其一是 IPv4 (例如 192.168.2.11)，其二是 IPv6 (例如 "
 "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)。"
+
+#: smb4kmounter_p.cpp:154
+#, kde-format
+msgid "Workgroup:"
+msgstr "工作组："
 
 #: smb4kmounter_p.cpp:158
 #, kde-format
@@ -3635,3 +3603,21 @@ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "编辑书签"
+
+#~ msgid "Add Category"
+#~ msgstr "添加类别"
+
+#~ msgid "Remove"
+#~ msgstr "移除"
+
+#~ msgid "Clear"
+#~ msgstr "清除"
+
+#~ msgid "Username:"
+#~ msgstr "用户名："
+
+#~ msgid "Category name:"
+#~ msgstr "类别名称："

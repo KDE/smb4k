@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-10 00:48+0000\n"
+"POT-Creation-Date: 2023-06-12 00:53+0000\n"
 "PO-Revision-Date: 2023-06-08 10:55+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -114,29 +114,29 @@ msgstr "A&gordo"
 msgid "Main Toolbar"
 msgstr "Ĉefa ilobreto"
 
-#: smb4k/smb4kbookmarkeditor.cpp:27
+#: smb4k/smb4kbookmarkeditor.cpp:33
 #, kde-format
 msgid "Bookmark Editor"
 msgstr "Legosigna Redaktoro"
 
-#: smb4k/smb4kbookmarkmenu.cpp:28 smb4k/smb4kconfigdialog.cpp:118
+#: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:118
 #, kde-format
 msgid "Bookmarks"
 msgstr "Legosignoj"
 
-#: smb4k/smb4kbookmarkmenu.cpp:51
+#: smb4k/smb4kbookmarkmenu.cpp:54
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Redakti legosignojn"
 
-#: smb4k/smb4kbookmarkmenu.cpp:60 smb4k/smb4kmainwindow.cpp:146
+#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:146
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Aldoni &legosignon"
 
-#: smb4k/smb4kbookmarkmenu.cpp:71 smb4k/smb4kbookmarkmenu.cpp:213
+#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:216
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Munti Legosignojn"
@@ -208,14 +208,14 @@ msgid "Save"
 msgstr "Konservi"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
-#: smb4k/smb4kconfigpagebookmarks.cpp:119
+#: smb4k/smb4kconfigpagebookmarks.cpp:121
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
 msgstr "Redakti"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
-#: smb4k/smb4kconfigpagebookmarks.cpp:131
+#: smb4k/smb4kconfigpagebookmarks.cpp:133
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
 #, kde-format
 msgid "Remove"
@@ -247,17 +247,17 @@ msgstr "Agordu la uzantnomon kaj pasvorton por monujo %1."
 msgid "Set the username and password for the default login."
 msgstr "Agordu la uzantnomon kaj pasvorton por la defaŭlta ensaluto."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:62
+#: smb4k/smb4kconfigpagebookmarks.cpp:59
 #, kde-format
 msgid "Label:"
 msgstr "Etikedo:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:68
+#: smb4k/smb4kconfigpagebookmarks.cpp:66
 #, kde-format
 msgid "Category:"
 msgstr "Kategorio:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:74 smb4k/smb4ktooltip.cpp:308
 #, kde-format
 msgid "Username:"
 msgstr "Uzantonomo:"
@@ -267,24 +267,24 @@ msgstr "Uzantonomo:"
 msgid "Workgroup:"
 msgstr "Laborgrupo:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:88 smb4k/smb4ktooltip.cpp:213
+#: smb4k/smb4kconfigpagebookmarks.cpp:89 smb4k/smb4ktooltip.cpp:213
 #: smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-Adreso:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:125
+#: smb4k/smb4kconfigpagebookmarks.cpp:127
 #, kde-format
 msgid "Add Category"
 msgstr "Aldoni Kategorion"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:137
+#: smb4k/smb4kconfigpagebookmarks.cpp:139
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
 msgid "Clear List"
 msgstr "Forigi la liston"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:367
+#: smb4k/smb4kconfigpagebookmarks.cpp:420
 #, kde-format
 msgid "New Category"
 msgstr "Nova Kategorio"
