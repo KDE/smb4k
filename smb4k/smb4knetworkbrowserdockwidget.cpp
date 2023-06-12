@@ -102,6 +102,8 @@ Smb4KNetworkBrowserDockWidget::Smb4KNetworkBrowserDockWidget(const QString &titl
     connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), this, SLOT(slotShareUnmounted(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(aboutToStart(int)), this, SLOT(slotMounterAboutToStart(int)));
     connect(Smb4KMounter::self(), SIGNAL(finished(int)), this, SLOT(slotMounterFinished(int)));
+
+    connect(KIconLoader::global(), &KIconLoader::iconChanged, this, &Smb4KNetworkBrowserDockWidget::slotIconSizeChanged);
 }
 
 Smb4KNetworkBrowserDockWidget::~Smb4KNetworkBrowserDockWidget()
@@ -1192,4 +1194,23 @@ void Smb4KNetworkBrowserDockWidget::slotJumpToResult(const QString &url)
 void Smb4KNetworkBrowserDockWidget::slotClearSearchResults()
 {
     m_networkBrowser->clearSelection();
+}
+
+void Smb4KNetworkBrowserDockWidget::slotIconSizeChanged(int group)
+{
+    switch (group) {
+    case KIconLoader::Small: {
+        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Small);
+        m_networkBrowser->setIconSize(QSize(iconSize, iconSize));
+        break;
+    }
+    case KIconLoader::Toolbar: {
+        int iconSize = KIconLoader::global()->currentSize(KIconLoader::Toolbar);
+        m_searchToolBar->setIconSize(QSize(iconSize, iconSize));
+        break;
+    }
+    default: {
+        break;
+    }
+    }
 }
