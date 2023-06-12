@@ -10,6 +10,7 @@
 
 // Qt includes
 #include <QDialog>
+#include <QPushButton>
 
 // application specific includes
 #include "smb4kconfigpagebookmarks.h"
@@ -31,7 +32,12 @@ public:
 
 protected Q_SLOTS:
     /**
-     * Invokes when the dialog is accepted and the bookmarks
+     * Invoked when the bookmarks changed. Enables the "Save" button
+     */
+    void slotBookmarksModified();
+
+    /**
+     * Invoked when the dialog is accepted and the bookmarks
      * are to be saved.
      */
     void slotAccepted();
@@ -43,6 +49,9 @@ protected Q_SLOTS:
 
 private:
     Smb4KConfigPageBookmarks *m_mainWidget;
+    QPushButton *m_saveButton;
+    QPushButton *m_cancelButton;
+
 };
 
 #endif
