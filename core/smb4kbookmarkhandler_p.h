@@ -13,19 +13,8 @@
 #include "smb4kglobal.h"
 
 // Qt includes
-#include <QAction>
 #include <QDialog>
 #include <QListWidget>
-#include <QPointer>
-#include <QPushButton>
-#include <QString>
-#include <QTreeWidget>
-#include <QUrl>
-
-// KDE includes
-#include <KActionMenu>
-#include <KComboBox>
-#include <KLineEdit>
 
 class Q_DECL_EXPORT Smb4KBookmarkDialog : public QDialog
 {

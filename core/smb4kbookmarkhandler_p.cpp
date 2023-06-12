@@ -12,20 +12,10 @@
 
 // Qt includes
 #include <QDialogButtonBox>
-#include <QDragEnterEvent>
-#include <QDragLeaveEvent>
-#include <QDragMoveEvent>
-#include <QDropEvent>
-#include <QEvent>
 #include <QGridLayout>
 #include <QHBoxLayout>
-#include <QHeaderView>
-#include <QInputDialog>
 #include <QLabel>
-#include <QMenu>
 #include <QPushButton>
-#include <QTimer>
-#include <QTreeWidgetItemIterator>
 #include <QVBoxLayout>
 #include <QWindow>
 
