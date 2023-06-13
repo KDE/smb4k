@@ -243,11 +243,6 @@ protected Q_SLOTS:
      */
     void slotClearSearchResults();
 
-    /**
-     * This slot is called when (global) icon sizes changed
-     */
-    void slotIconSizeChanged(int group);
-
 private:
     /**
      * Set up the actions
