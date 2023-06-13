@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-12 00:53+0000\n"
+"POT-Creation-Date: 2023-06-13 00:47+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -1970,12 +1970,12 @@ msgstr "%1 på %2"
 msgid "The format of %1 is not supported."
 msgstr "%1s format er ikke understøttet."
 
-#: smb4kbookmarkhandler_p.cpp:45
+#: smb4kbookmarkhandler_p.cpp:35
 #, kde-format
 msgid "Add Bookmarks"
 msgstr "Tilføj bogmærker"
 
-#: smb4kbookmarkhandler_p.cpp:121
+#: smb4kbookmarkhandler_p.cpp:111
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To edit the label or group, click the "
@@ -1985,12 +1985,12 @@ msgstr ""
 "pågældende bogmærkeindgang for at redigere etiket eller gruppe."
 
 #. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:147 smb4kmounter_p.cpp:187
+#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
 msgstr "Etiket:"
 
-#: smb4kbookmarkhandler_p.cpp:155 smb4kmounter_p.cpp:197
+#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
 msgstr ""

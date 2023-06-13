@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-12 00:53+0000\n"
+"POT-Creation-Date: 2023-06-13 00:47+0000\n"
 "PO-Revision-Date: 2023-03-04 08:32+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2037,12 +2037,12 @@ msgstr "%1 на %2"
 msgid "The format of %1 is not supported."
 msgstr "Формат %1 не підтримується."
 
-#: smb4kbookmarkhandler_p.cpp:45
+#: smb4kbookmarkhandler_p.cpp:35
 #, kde-format
 msgid "Add Bookmarks"
 msgstr "Додати закладки"
 
-#: smb4kbookmarkhandler_p.cpp:121
+#: smb4kbookmarkhandler_p.cpp:111
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To edit the label or group, click the "
@@ -2052,12 +2052,12 @@ msgstr ""
 "мітку або групу, натисніть відповідний пункт закладки."
 
 #. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:147 smb4kmounter_p.cpp:187
+#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
 msgstr "Мітка:"
 
-#: smb4kbookmarkhandler_p.cpp:155 smb4kmounter_p.cpp:197
+#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
 msgstr "Категорія:"
