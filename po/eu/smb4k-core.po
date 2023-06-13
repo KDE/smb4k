@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-12 00:53+0000\n"
+"POT-Creation-Date: 2023-06-13 00:47+0000\n"
 "PO-Revision-Date: 2023-01-07 09:08+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2009,12 +2009,12 @@ msgstr "%1 %2(e)an"
 msgid "The format of %1 is not supported."
 msgstr "%1(r)en formatua ez da onartzen."
 
-#: smb4kbookmarkhandler_p.cpp:45
+#: smb4kbookmarkhandler_p.cpp:35
 #, kde-format
 msgid "Add Bookmarks"
 msgstr "Gehitu laster-markak"
 
-#: smb4kbookmarkhandler_p.cpp:121
+#: smb4kbookmarkhandler_p.cpp:111
 #, kde-format
 msgid ""
 "All listed shares will be bookmarked. To edit the label or group, click the "
@@ -2024,12 +2024,12 @@ msgstr ""
 "taldea editatzeko, egin klik dagokion laster-marka sarrerari."
 
 #. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:147 smb4kmounter_p.cpp:187
+#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
 #, kde-format
 msgid "Label:"
 msgstr "Etiketa:"
 
-#: smb4kbookmarkhandler_p.cpp:155 smb4kmounter_p.cpp:197
+#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
 #, kde-format
 msgid "Category:"
 msgstr "Kategoria:"
