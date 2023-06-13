@@ -36,17 +36,14 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent, const QList<QVariant> 
 
     m_mainWidget = new Smb4KConfigPageBookmarks(this);
 
-    connect(m_mainWidget, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KBookmarkEditor::slotBookmarksModified);
-
     layout->addWidget(m_mainWidget);
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
-    m_saveButton = buttonBox->addButton(QDialogButtonBox::Save);
-    m_saveButton->setEnabled(false);
-    m_cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
+    QPushButton *saveButton = buttonBox->addButton(QDialogButtonBox::Save);
+    QPushButton *cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
 
-    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KBookmarkEditor::slotAccepted);
-    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KBookmarkEditor::slotRejected);
+    connect(saveButton, &QPushButton::clicked, this, &Smb4KBookmarkEditor::slotAccepted);
+    connect(cancelButton, &QPushButton::clicked, this, &Smb4KBookmarkEditor::slotRejected);
 
     layout->addWidget(buttonBox);
 
@@ -82,11 +79,6 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent, const QList<QVariant> 
 
 Smb4KBookmarkEditor::~Smb4KBookmarkEditor()
 {
-}
-
-void Smb4KBookmarkEditor::slotBookmarksModified()
-{
-    m_saveButton->setEnabled(m_mainWidget->bookmarksChanged());
 }
 
 void Smb4KBookmarkEditor::slotAccepted()
