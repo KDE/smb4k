@@ -8631,7 +8631,7 @@ ntlm auth = yes
 ></keycombo
 > </shortcut
 > <guimenu
->Netwerk</guimenu
+>Shares</guimenu
 > <guimenuitem
 >Aangepaste instellingen toevoegen</guimenuitem
 > </menuchoice>
