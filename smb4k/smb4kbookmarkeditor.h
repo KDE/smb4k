@@ -8,11 +8,11 @@
 #ifndef SMB4KBOOKMARKEDITOR_H
 #define SMB4KBOOKMARKEDITOR_H
 
-// Qt includes
-#include <QDialog>
-
 // application specific includes
 #include "smb4kconfigpagebookmarks.h"
+
+// Qt includes
+#include <QDialog>
 
 class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
 {
@@ -22,7 +22,7 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KBookmarkEditor(QWidget *parent, const QList<QVariant> &args);
+    explicit Smb4KBookmarkEditor(QWidget *parent = nullptr);
 
     /**
      * Destructor

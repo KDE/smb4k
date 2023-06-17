@@ -334,20 +334,9 @@ void Smb4KDeclarative::removeBookmark(Smb4KBookmarkObject *object)
 void Smb4KDeclarative::editBookmarks()
 {
     if (d->bookmarkEditor.isNull()) {
-        KPluginMetaData metaData(QStringLiteral("smb4kbookmarkeditor"));
-        KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
-
-        if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
-            d->bookmarkEditor = result.plugin->create<QDialog>();
-
-            if (!d->bookmarkEditor.isNull()) {
-                d->bookmarkEditor->setAttribute(Qt::WA_DeleteOnClose);
-                d->bookmarkEditor->open();
-            }
-        } else {
-            KMessageBox::error(nullptr, result.errorString);
-            return;
-        }
+        d->bookmarkEditor = new Smb4KBookmarkEditor();
+        d->bookmarkEditor->setAttribute(Qt::WA_DeleteOnClose);
+        d->bookmarkEditor->open();
     } else {
         d->bookmarkEditor->raise();
     }

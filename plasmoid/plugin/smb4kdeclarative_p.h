@@ -12,6 +12,7 @@
 #include "smb4kbookmarkobject.h"
 #include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
+#include "smb4k/smb4kbookmarkeditor.h"
 
 // Qt includes
 #include <QDialog>
@@ -27,7 +28,7 @@ public:
     QList<Smb4KBookmarkObject *> bookmarkObjects;
     QList<Smb4KBookmarkObject *> bookmarkCategoryObjects;
     QList<Smb4KProfileObject *> profileObjects;
-    QPointer<QDialog> bookmarkEditor;
+    QPointer<Smb4KBookmarkEditor> bookmarkEditor;
 };
 
 #endif

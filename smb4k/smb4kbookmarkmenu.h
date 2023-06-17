@@ -162,7 +162,7 @@ private:
     /**
      * The bookmark editor
      */
-    QPointer<QDialog> m_bookmarkEditor;
+    QPointer<Smb4KBookmarkEditor> m_bookmarkEditor;
 };
 
 #endif

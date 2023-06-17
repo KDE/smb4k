@@ -46,20 +46,24 @@ if (SMB4K_WITH_WS_DISCOVERY)
   target_compile_definitions(smb4kconfigdialog PRIVATE USE_WS_DISCOVERY=${SMB4K_WITH_WS_DISCOVERY})
 endif(SMB4K_WITH_WS_DISCOVERY)
 
-########### Bookmarks ################################
+########### Dialogs ################################
 
-set(smb4kbookmarkeditor_LIB_SRCS
+set(smb4kdialogs_LIB_SRCS
+  smb4kbookmarkdialog.cpp
   smb4kbookmarkeditor.cpp
   smb4kconfigpagebookmarks.cpp)
 
-add_library(smb4kbookmarkeditor MODULE ${smb4kbookmarkeditor_LIB_SRCS})
+add_library(smb4kdialogs SHARED ${smb4kdialogs_LIB_SRCS})
 
-target_link_libraries(smb4kbookmarkeditor
+target_link_libraries(smb4kdialogs
   smb4kcore
   Qt${QT_MAJOR_VERSION}::Core
   Qt${QT_MAJOR_VERSION}::Widgets
   KF${QT_MAJOR_VERSION}::Completion
-  KF${QT_MAJOR_VERSION}::CoreAddons)
+  KF${QT_MAJOR_VERSION}::ConfigGui
+  KF${QT_MAJOR_VERSION}::CoreAddons
+  KF${QT_MAJOR_VERSION}::I18n
+  KF${QT_MAJOR_VERSION}::IconThemes)
 
 ########### Main Application #########################
 
@@ -83,6 +87,7 @@ add_executable(smb4k ${smb4k_SRCS})
 
 target_link_libraries(smb4k
   smb4kcore
+  smb4kdialogs
   Qt${QT_MAJOR_VERSION}::Core
   Qt${QT_MAJOR_VERSION}::Gui
   Qt${QT_MAJOR_VERSION}::Widgets
@@ -100,7 +105,7 @@ target_link_libraries(smb4k
 ########### install files ###############
 
 install(TARGETS smb4kconfigdialog DESTINATION ${KDE_INSTALL_PLUGINDIR})
-install(TARGETS smb4kbookmarkeditor DESTINATION ${KDE_INSTALL_PLUGINDIR})
+install(TARGETS smb4kdialogs DESTINATION ${KDE_INSTALL_LIBDIR})
 install(TARGETS smb4k DESTINATION ${KDE_INSTALL_BINDIR})
 
 install(PROGRAMS org.kde.smb4k.desktop DESTINATION ${KDE_INSTALL_APPDIR})

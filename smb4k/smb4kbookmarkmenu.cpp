@@ -424,20 +424,9 @@ void Smb4KBookmarkMenu::slotEditActionTriggered(bool checked)
     Q_UNUSED(checked);
 
     if (m_bookmarkEditor.isNull()) {
-        KPluginMetaData metaData(QStringLiteral("smb4kbookmarkeditor"));
-        KPluginFactory::Result<KPluginFactory> result = KPluginFactory::loadFactory(metaData);
-
-        if (result.errorReason == KPluginFactory::NO_PLUGIN_ERROR) {
-            m_bookmarkEditor = result.plugin->create<QDialog>();
-
-            if (!m_bookmarkEditor.isNull()) {
-                m_bookmarkEditor->setAttribute(Qt::WA_DeleteOnClose);
-                m_bookmarkEditor->open();
-            }
-        } else {
-            KMessageBox::error(nullptr, result.errorString);
-            return;
-        }
+        m_bookmarkEditor = new Smb4KBookmarkEditor();
+        m_bookmarkEditor->setAttribute(Qt::WA_DeleteOnClose);
+        m_bookmarkEditor->open();
     } else {
         m_bookmarkEditor->raise();
     }

@@ -23,13 +23,9 @@
 #include <KPluginFactory>
 #include <KWindowConfig>
 
-K_PLUGIN_FACTORY(Smb4KBookmarkEditorFactory, registerPlugin<Smb4KBookmarkEditor>();)
-
-Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent, const QList<QVariant> &args)
+Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent)
     : QDialog(parent)
 {
-    Q_UNUSED(args);
-
     setWindowTitle(i18n("Bookmark Editor"));
 
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -103,5 +99,3 @@ void Smb4KBookmarkEditor::slotRejected()
 {
     reject();
 }
-
-#include "smb4kbookmarkeditor.moc"
