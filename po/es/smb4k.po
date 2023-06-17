@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:47+0000\n"
+"POT-Creation-Date: 2023-06-14 00:47+0000\n"
 "PO-Revision-Date: 2023-06-10 17:35+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -146,7 +146,7 @@ msgid "&Edit Bookmarks"
 msgstr "&Editar los marcadores"
 
 #: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:146
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:152
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
@@ -709,110 +709,110 @@ msgstr "Dirección IP"
 msgid "Comment"
 msgstr "Comentario"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:471
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:406
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:469
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Explorar &red"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:122
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
 #, kde-format
 msgid "&Abort"
 msgstr "&Interrumpir"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
 #, kde-format
 msgid "&Search"
 msgstr "&Buscar"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:158
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:156
 #: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:163 smb4k/smb4ksharesmenu.cpp:191
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Añadir preferen&cias personalizadas"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:169
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:167
 #: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:175 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Abrir diálogo de montaje"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:179
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:194
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&tenticación"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:200
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:205
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
 msgid "Pre&view"
 msgstr "&Vista previa"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:216
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:214
 #, kde-format
 msgid "&Print File"
 msgstr "Im&primir archivo"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:220
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:228
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
 #, kde-format
 msgid "&Mount"
 msgstr "&Montar"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:229
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:227
 #: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "&Desmontar"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:240
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:238
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:979
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:422
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:420
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:431
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Explo&rar equipo"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:458
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Explo&rar grupo de trabajo"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"

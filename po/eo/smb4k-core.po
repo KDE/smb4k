@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 00:47+0000\n"
-"PO-Revision-Date: 2023-05-10 07:15+0100\n"
+"PO-Revision-Date: 2023-06-15 21:48+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1151,7 +1151,7 @@ msgid ""
 "not run as super user and the --super option is not specified."
 msgstr ""
 "Konservu aparaton kaj specialajn dosierojn (-D, --devices --specials). Ĉi "
-"tiu opcio igas rsync translokigi karakterojn kaj blokajn aparatojn same kiel "
+"tiu opcio igas rsync translokigi signajn kaj blokajn aparatojn same kiel "
 "specialajn dosierojn kiel nomitajn ingojn kaj fifos. Ĝi funkcias nur parte "
 "se rsync ne estas rulita kiel superuzanto kaj la opcio --super ne estas "
 "specifita."
@@ -2454,7 +2454,7 @@ msgstr ""
 #: smb4kmountsettings_bsd.kcfg:53 smb4kmountsettings_linux.kcfg:64
 #, kde-format
 msgid "Client character set:"
-msgstr "Klienta karaktero aro:"
+msgstr "Klienta signaro:"
 
 #. i18n: ectx: label, entry (ClientCharset), group (Mounting)
 #. i18n: ectx: label, entry (ServerCodepage), group (Mounting)
@@ -3811,21 +3811,3 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Bonvolu enigi uzantnomon kaj pasvorton por la kundivido <b>%1</b>.</qt>"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Redakti legosignojn"
-
-#~ msgid "Add Category"
-#~ msgstr "Aldoni Kategorion"
-
-#~ msgid "Remove"
-#~ msgstr "Forigi"
-
-#~ msgid "Clear"
-#~ msgstr "Forigi"
-
-#~ msgid "Username:"
-#~ msgstr "Uzantnomo:"
-
-#~ msgid "Category name:"
-#~ msgstr "Kategoria nomo:"
