@@ -49,7 +49,6 @@ endif(SMB4K_WITH_WS_DISCOVERY)
 ########### Dialogs ################################
 
 set(smb4kdialogs_LIB_SRCS
-  smb4kbookmarkdialog.cpp
   smb4kbookmarkeditor.cpp
   smb4kconfigpagebookmarks.cpp)
 
