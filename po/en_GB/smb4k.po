@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-14 00:47+0000\n"
-"PO-Revision-Date: 2023-03-27 20:42+0100\n"
+"POT-Creation-Date: 2023-06-18 00:54+0000\n"
+"PO-Revision-Date: 2023-06-17 12:10+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -115,7 +115,7 @@ msgstr "&Settings"
 msgid "Main Toolbar"
 msgstr "Main Toolbar"
 
-#: smb4k/smb4kbookmarkeditor.cpp:33
+#: smb4k/smb4kbookmarkeditor.cpp:29
 #, kde-format
 msgid "Bookmark Editor"
 msgstr "Bookmark Editor"
@@ -256,7 +256,7 @@ msgstr "Label:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:66
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Category:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:74 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -277,7 +277,7 @@ msgstr "IP Address:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:127
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Add Category"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:139
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
@@ -288,7 +288,7 @@ msgstr "Clear List"
 #: smb4k/smb4kconfigpagebookmarks.cpp:420
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "New Category"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format

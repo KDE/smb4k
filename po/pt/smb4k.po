@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-14 00:47+0000\n"
+"POT-Creation-Date: 2023-06-18 00:54+0000\n"
 "PO-Revision-Date: 2023-03-27 23:15+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -141,7 +141,7 @@ msgstr "&Configuração"
 msgid "Main Toolbar"
 msgstr "Barra Principal"
 
-#: smb4k/smb4kbookmarkeditor.cpp:33
+#: smb4k/smb4kbookmarkeditor.cpp:29
 #, kde-format
 msgid "Bookmark Editor"
 msgstr "Editor de Favoritos"

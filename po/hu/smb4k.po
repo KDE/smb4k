@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-14 00:47+0000\n"
+"POT-Creation-Date: 2023-06-18 00:54+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -125,7 +125,7 @@ msgstr "&Beállítások"
 msgid "Main Toolbar"
 msgstr "Fő eszköztár"
 
-#: smb4k/smb4kbookmarkeditor.cpp:33
+#: smb4k/smb4kbookmarkeditor.cpp:29
 #, kde-format
 msgid "Bookmark Editor"
 msgstr "Könyvjelzőszerkesztő"

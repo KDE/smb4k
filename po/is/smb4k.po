@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-14 00:47+0000\n"
+"POT-Creation-Date: 2023-06-18 00:54+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -121,7 +121,7 @@ msgstr "Almennir valkostir"
 msgid "Main Toolbar"
 msgstr "Sameignasýn"
 
-#: smb4k/smb4kbookmarkeditor.cpp:33
+#: smb4k/smb4kbookmarkeditor.cpp:29
 #, fuzzy, kde-format
 #| msgid "Bookmarks"
 msgid "Bookmark Editor"
