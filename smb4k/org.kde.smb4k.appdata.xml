@@ -53,6 +53,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="eu">Sarean aurkitu eta muntatu SAMBA eta Windows partekatzeak</summary>
   <summary xml:lang="fi">Etsi ja liitä Samba- ja Windows-jakoja verkon yli</summary>
   <summary xml:lang="fr">Découvre et monte des partages Windows et SAMBA à travers le réseau</summary>
+  <summary xml:lang="gl">Descubrir e montar comparticións de rede de SAMBA e de Windows.</summary>
   <summary xml:lang="id">Temukan dan kaitkan SAMBA dan berbagi Windows melalui jaringan</summary>
   <summary xml:lang="it">Rileva e monta nella rete le condivisioni SAMBA e Windows</summary>
   <summary xml:lang="ka">აღმოაჩინეთ და მიამაგრეთ SAMBA-ის და Windows-ის გაზიარებულები ქსელში</summary>
@@ -793,7 +794,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="eu">Mahaigainean bateratzeko plasmoidea</li>
       <li xml:lang="fi">Sovelma työpöytäintegrointiin</li>
       <li xml:lang="fr">Plasmoïde pour l'intégration sur le bureau</li>
-      <li xml:lang="gl">Ofrece integración co escritorio mediante un plasmoide.</li>
+      <li xml:lang="gl">Ofrece integración co escritorio mediante un trebello.</li>
       <li xml:lang="id">Plasmoid untuk integrasi desktop</li>
       <li xml:lang="it">Plasmoide per l'integrazione desktop</li>
       <li xml:lang="ka">პლაზმოიდი სამუშაო მაგიდასთან ინტეგრაციისთვის</li>
@@ -888,7 +889,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="eu">Leiho nagusia</caption>
       <caption xml:lang="fi">Pääikkuna</caption>
       <caption xml:lang="fr">La fenêtre principale</caption>
-      <caption xml:lang="gl">A xanela principal</caption>
+      <caption xml:lang="gl">A xanela principal.</caption>
       <caption xml:lang="id">Jendela utama</caption>
       <caption xml:lang="it">La finestra principale</caption>
       <caption xml:lang="ka">მთავარი ფანჯარა</caption>
@@ -923,7 +924,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="eu">Plasmoidea</caption>
       <caption xml:lang="fi">Sovelma</caption>
       <caption xml:lang="fr">Le plasmoïde</caption>
-      <caption xml:lang="gl">O plasmoide</caption>
+      <caption xml:lang="gl">O trebello.</caption>
       <caption xml:lang="id">Plasmoid</caption>
       <caption xml:lang="it">Il plasmoide</caption>
       <caption xml:lang="ka">პლაზმოიდი</caption>
