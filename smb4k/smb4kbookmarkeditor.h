@@ -1,5 +1,5 @@
 /*
- *  smb4kbookmarkeditor  -  Bookmark editor
+ *  Bookmark editor
  *
  *  SPDX-FileCopyrightText: 2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  *  SPDX-License-Identifier: GPL-2.0-or-later
@@ -13,6 +13,7 @@
 
 // Qt includes
 #include <QDialog>
+#include <QPushButton>
 
 class Q_DECL_EXPORT Smb4KBookmarkEditor : public QDialog
 {
@@ -31,6 +32,11 @@ public:
 
 protected Q_SLOTS:
     /**
+     * Invoked when the "Save" button should be enabled
+     */
+    void slotEnabledButtons();
+
+    /**
      * Invoked when the dialog is accepted and the bookmarks
      * are to be saved.
      */
@@ -43,6 +49,8 @@ protected Q_SLOTS:
 
 private:
     Smb4KConfigPageBookmarks *m_mainWidget;
+    QPushButton *m_saveButton;
+    QPushButton *m_cancelButton;
 };
 
 #endif

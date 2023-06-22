@@ -93,10 +93,15 @@ protected Q_SLOTS:
     void slotCurrentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
     void slotItemSelectionChanged();
     void slotItemDoubleClicked(QTreeWidgetItem *item, int column);
+    void slotLabelChanged(const QString &text);
     void slotLabelEdited();
+    void slotCategoryChanged(const QString &text);
     void slotCategoryEdited();
+    void slotUserNameChanged(const QString &text);
     void slotUserNameEdited();
+    void slotWorkgroupChanged(const QString &text);
     void slotWorkgroupEdited();
+    void slotIpAddressChanged(const QString &text);
     void slotIpAddressEdited();
     void slotEnableButtons();
     void slotIconSizeChanged(int group);

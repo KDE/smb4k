@@ -107,6 +107,25 @@ void Smb4KConfigDialog::setupDialog()
     bookmarksArea->setWidgetResizable(true);
     bookmarksArea->setFrameStyle(QFrame::NoFrame);
 
+    KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
+
+    if (bookmarkGroup.exists()) {
+        QMap<QString, QStringList> completionItems;
+        completionItems[QStringLiteral("CategoryCompletion")] = bookmarkGroup.readEntry("CategoryCompletion", QStringList());
+        completionItems[QStringLiteral("LabelCompletion")] = bookmarkGroup.readEntry("LabelCompletion", QStringList());
+        // For backward compatibility (since Smb4K 3.3.0)
+        if (bookmarkGroup.hasKey(QStringLiteral("IPCompletion"))) {
+            completionItems[QStringLiteral("IpAddressCompletion")] = bookmarkGroup.readEntry("IPCompletion", QStringList());
+            bookmarkGroup.deleteEntry("IPCompletion");
+        } else {
+            completionItems[QStringLiteral("IpAddressCompletion")] = bookmarkGroup.readEntry("IpAddressCompletion", QStringList());
+        }
+        completionItems[QStringLiteral("LoginCompletion")] = bookmarkGroup.readEntry("LoginCompletion", QStringList());
+        completionItems[QStringLiteral("WorkgroupCompletion")] = bookmarkGroup.readEntry("WorkgroupCompletion", QStringList());
+
+        bookmarksPage->setCompletionItems(completionItems);
+    }
+
     //
     // Pages to the configuration dialog
     //
@@ -191,6 +210,15 @@ void Smb4KConfigDialog::updateSettings()
 
     if (bookmarksPage) {
         bookmarksPage->saveBookmarks();
+        QMap<QString, QStringList> completionItems = bookmarksPage->getCompletionItems();
+
+        KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
+
+        bookmarkGroup.writeEntry("CategoryCompletion", completionItems[QStringLiteral("CategoryCompletion")]);
+        bookmarkGroup.writeEntry("LabelCompletion", completionItems[QStringLiteral("LabelCompletion")]);
+        bookmarkGroup.writeEntry("IpAddressCompletion", completionItems[QStringLiteral("IpAddressCompletion")]);
+        bookmarkGroup.writeEntry("LoginCompletion", completionItems[QStringLiteral("LoginCompletion")]);
+        bookmarkGroup.writeEntry("WorkgroupCompletion", completionItems[QStringLiteral("WorkgroupCompletion")]);
     }
 
     Smb4KConfigPageProfiles *profilesPage = m_profiles->widget()->findChild<Smb4KConfigPageProfiles *>();
