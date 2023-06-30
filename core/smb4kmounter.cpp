@@ -14,7 +14,6 @@
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4khardwareinterface.h"
 #include "smb4khomesshareshandler.h"
-#include "smb4kmounter_p.h"
 #include "smb4knotification.h"
 #include "smb4kprofilemanager.h"
 #include "smb4ksettings.h"
@@ -36,6 +35,8 @@
 #include <QHostInfo>
 #include <QTimer>
 #include <QUdpSocket>
+#include <QPointer>
+#include <QStorageInfo>
 
 // KDE includes
 #include <KAuth/ExecuteJob>
@@ -49,6 +50,31 @@
 using namespace Smb4KGlobal;
 
 #define TIMEOUT 50
+
+class Smb4KMounterPrivate
+{
+public:
+    int remountTimeout;
+    int remountAttempts;
+    int timerId;
+    int checkTimeout;
+    int newlyMounted;
+    int newlyUnmounted;
+    QList<SharePtr> importedShares;
+    QList<SharePtr> retries;
+    QList<SharePtr> remounts;
+    QString activeProfile;
+    bool detectAllShares;
+    bool firstImportDone;
+    bool longActionRunning;
+    QStorageInfo storageInfo;
+};
+
+class Smb4KMounterStatic
+{
+public:
+    Smb4KMounter instance;
+};
 
 Q_GLOBAL_STATIC(Smb4KMounterStatic, p);
 
@@ -64,7 +90,6 @@ Smb4KMounter::Smb4KMounter(QObject *parent)
     d->checkTimeout = 0;
     d->newlyMounted = 0;
     d->newlyUnmounted = 0;
-    d->dialog = nullptr;
     d->firstImportDone = false;
     d->longActionRunning = false;
     d->activeProfile = Smb4KProfileManager::self()->activeProfile();
@@ -896,32 +921,6 @@ void Smb4KMounter::unmountShares(const QList<SharePtr> &shares, bool silent)
 void Smb4KMounter::unmountAllShares(bool silent)
 {
     unmountShares(mountedSharesList(), silent);
-}
-
-void Smb4KMounter::openMountDialog()
-{
-    if (!d->dialog) {
-        SharePtr share = SharePtr(new Smb4KShare());
-        BookmarkPtr bookmark = BookmarkPtr(new Smb4KBookmark());
-
-        d->dialog = new Smb4KMountDialog(share, bookmark, QApplication::activeWindow());
-
-        if (d->dialog->exec() == QDialog::Accepted && d->dialog->validUserInput()) {
-            // Pass the share to mountShare().
-            mountShare(share);
-
-            // Bookmark the share if the user wants this.
-            if (d->dialog->bookmarkShare()) {
-                Smb4KBookmarkHandler::self()->addBookmark(bookmark);
-            }
-        }
-
-        delete d->dialog;
-        d->dialog = nullptr;
-
-        share.clear();
-        bookmark.clear();
-    }
 }
 
 void Smb4KMounter::start()

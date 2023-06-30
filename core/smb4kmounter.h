@@ -26,7 +26,6 @@
 // forward declarations
 class Smb4KShare;
 class Smb4KAuthInfo;
-class Smb4KMountDialog;
 class Smb4KMountJob;
 class Smb4KUnmountJob;
 class Smb4KMounterPrivate;
@@ -111,12 +110,6 @@ public:
      *                    case of an error. The default value is FALSE.
      */
     void unmountAllShares(bool silent);
-
-    /**
-     * Mount a share via a mount dialog. The mount dialog is opened and you have
-     * to enter the UNC and optionally the workgroup and IP address.
-     */
-    void openMountDialog();
 
     /**
      * This function reports if the mounter is running or not.
