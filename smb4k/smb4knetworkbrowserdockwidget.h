@@ -12,9 +12,11 @@
 #include "core/smb4kglobal.h"
 #include "smb4knetworkbrowser.h"
 #include "smb4knetworksearchtoolbar.h"
+#include "smb4kmountdialog.h"
 
 // Qt includes
 #include <QDockWidget>
+#include <QPointer>
 
 // KDE includes
 #include <KActionCollection>
@@ -274,6 +276,11 @@ private:
      * network search is underway
      */
     bool m_searchRunning;
+
+    /**
+     * Mount dialog
+     */
+    QPointer<Smb4KMountDialog> m_mountDialog;
 };
 
 #endif

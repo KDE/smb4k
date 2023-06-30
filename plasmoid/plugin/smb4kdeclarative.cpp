@@ -222,7 +222,13 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
 
 void Smb4KDeclarative::openMountDialog()
 {
-    Smb4KMounter::self()->openMountDialog();
+    if (d->mountDialog.isNull()) {
+        d->mountDialog = new Smb4KMountDialog();
+        d->mountDialog->setAttribute(Qt::WA_DeleteOnClose);
+        d->mountDialog->open();
+    } else {
+        d->mountDialog->raise();
+    }
 }
 
 void Smb4KDeclarative::mountShare(Smb4KNetworkObject *object)

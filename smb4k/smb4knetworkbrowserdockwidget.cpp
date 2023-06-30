@@ -851,7 +851,13 @@ void Smb4KNetworkBrowserDockWidget::slotMountManually(bool checked)
 {
     Q_UNUSED(checked);
 
-    Smb4KMounter::self()->openMountDialog();
+    if (m_mountDialog.isNull()) {
+        m_mountDialog = new Smb4KMountDialog();
+        m_mountDialog->setAttribute(Qt::WA_DeleteOnClose);
+        m_mountDialog->open();
+    } else {
+        m_mountDialog->raise();
+    }
 }
 
 void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool checked)

@@ -19,7 +19,6 @@
 // Qt includes
 #include <QDebug>
 #include <QMenu>
-#include <QPointer>
 
 // KDE specific includes
 #include <KAboutData>
@@ -135,7 +134,13 @@ void Smb4KSystemTray::loadSettings()
 
 void Smb4KSystemTray::slotMountDialog()
 {
-    Smb4KMounter::self()->openMountDialog();
+    if (m_mountDialog.isNull()) {
+        m_mountDialog = new Smb4KMountDialog();
+        m_mountDialog->setAttribute(Qt::WA_DeleteOnClose);
+        m_mountDialog->open();
+    } else {
+        m_mountDialog->raise();
+    }
 }
 
 void Smb4KSystemTray::slotConfigDialog()

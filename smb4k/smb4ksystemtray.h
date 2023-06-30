@@ -8,9 +8,13 @@
 #ifndef SMB4KSYSTEMTRAY_H
 #define SMB4KSYSTEMTRAY_H
 
+// application specific includes
+#include "smb4kmountdialog.h"
+
 // Qt includes
 #include <QString>
 #include <QWidget>
+#include <QPointer>
 
 // KDE includes
 #include <KStatusNotifierItem>
@@ -78,6 +82,9 @@ protected Q_SLOTS:
      * the lists is populated.
      */
     void slotSetStatus();
+
+private:
+    QPointer<Smb4KMountDialog> m_mountDialog;
 };
 
 #endif

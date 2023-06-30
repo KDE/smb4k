@@ -48,6 +48,7 @@
 #include <KPluginMetaData>
 #include <KStandardAction>
 #include <KXMLGUIFactory>
+// #include <KMessageWidget>
 
 using namespace Smb4KGlobal;
 using namespace KParts;
@@ -257,6 +258,19 @@ void Smb4KMainWindow::setupView()
 
     // Insert the Shares menu
     plugActionList(QStringLiteral("shares_menu"), sharesViewDock->actionCollection()->actions());
+
+    // KMessageWidget *messageWidget = new KMessageWidget();
+    // messageWidget->setMessageType(KMessageWidget::Positive);
+    // messageWidget->setText(i18n("Test ..."));
+    //
+    // QDockWidget *messageDockWidget = new QDockWidget(this);
+    // messageDockWidget->setObjectName(QStringLiteral("MessageDockWidget"));
+    // messageDockWidget->setWidget(messageWidget);
+    // messageDockWidget->setTitleBarWidget(new QWidget());
+    // messageDockWidget->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    // messageDockWidget->setContentsMargins(0, 0, 0, 0);
+    //
+    // addDockWidget(Qt::TopDockWidgetArea, messageDockWidget);
 
     //
     // Initial main window look
