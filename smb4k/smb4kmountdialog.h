@@ -9,15 +9,15 @@
 #define SMB4KMOUNTDIALOG_H
 
 // Qt includes
+#include <QCheckBox>
 #include <QDialog>
 #include <QPushButton>
-#include <QCheckBox>
-#include <QSize>
 #include <QResizeEvent>
+#include <QSize>
 
 // KDE includes
-#include <KLineEdit>
 #include <KComboBox>
+#include <KLineEdit>
 
 class Q_DECL_EXPORT Smb4KMountDialog : public QDialog
 {

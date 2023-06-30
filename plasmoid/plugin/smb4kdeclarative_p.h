@@ -9,11 +9,11 @@
 #define SMB4KDECLARATIVE_P_H
 
 // application specific includes
+#include "smb4k/smb4kbookmarkeditor.h"
+#include "smb4k/smb4kmountdialog.h"
 #include "smb4kbookmarkobject.h"
 #include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
-#include "smb4k/smb4kbookmarkeditor.h"
-#include "smb4k/smb4kmountdialog.h"
 
 // Qt includes
 #include <QDialog>

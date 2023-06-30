@@ -7,30 +7,29 @@
 
 // application specific includes
 #include "smb4kmountdialog.h"
-#include "core/smb4ksettings.h"
-#include "core/smb4knotification.h"
+#include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4kmounter.h"
-#include "core/smb4kbookmarkhandler.h"
+#include "core/smb4knotification.h"
+#include "core/smb4ksettings.h"
 
 // Qt includes
-#include <QVBoxLayout>
 #include <QDialogButtonBox>
-#include <QWindow>
-#include <QGridLayout>
-#include <QLabel>
-#include <QHostAddress>
 #include <QFrame>
+#include <QGridLayout>
+#include <QHostAddress>
+#include <QLabel>
 #include <QSizePolicy>
+#include <QVBoxLayout>
+#include <QWindow>
 
 // KDE includes
-#include <KLocalizedString>
 #include <KConfigGroup>
+#include <KLocalizedString>
 #include <KWindowConfig>
 
-
-Smb4KMountDialog::Smb4KMountDialog(QWidget* parent)
-: QDialog(parent)
+Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
+    : QDialog(parent)
 {
     setWindowTitle(i18n("Mount Dialog"));
 
@@ -178,7 +177,7 @@ Smb4KMountDialog::~Smb4KMountDialog()
 {
 }
 
-bool Smb4KMountDialog::isValidLocation(const QString& text)
+bool Smb4KMountDialog::isValidLocation(const QString &text)
 {
     QString userInput = text;
 
@@ -204,7 +203,7 @@ void Smb4KMountDialog::adjustDialogSize()
     resize(dialogSize);
 }
 
-void Smb4KMountDialog::slotEnableButtons(const QString& text)
+void Smb4KMountDialog::slotEnableButtons(const QString &text)
 {
     bool enable = isValidLocation(text);
     m_okButton->setEnabled(enable);

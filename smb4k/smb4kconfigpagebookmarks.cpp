@@ -13,12 +13,12 @@
 #include <QDialogButtonBox>
 #include <QGridLayout>
 #include <QHBoxLayout>
+#include <QHostAddress>
 #include <QKeyEvent>
 #include <QMouseEvent>
 #include <QTimer>
 #include <QUrl>
 #include <QVBoxLayout>
-#include <QHostAddress>
 
 // KF includes
 #include <KIconLoader>
@@ -531,7 +531,7 @@ void Smb4KConfigPageBookmarks::slotItemDoubleClicked(QTreeWidgetItem *item, int 
     }
 }
 
-void Smb4KConfigPageBookmarks::slotLabelChanged(const QString& text)
+void Smb4KConfigPageBookmarks::slotLabelChanged(const QString &text)
 {
     if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
         Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
@@ -557,7 +557,7 @@ void Smb4KConfigPageBookmarks::slotLabelEdited()
     }
 }
 
-void Smb4KConfigPageBookmarks::slotCategoryChanged(const QString& text)
+void Smb4KConfigPageBookmarks::slotCategoryChanged(const QString &text)
 {
     if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
         if (m_treeWidget->currentItem()->data(0, TypeRole).toInt() == BookmarkType) {
@@ -612,7 +612,7 @@ void Smb4KConfigPageBookmarks::slotCategoryEdited()
     }
 }
 
-void Smb4KConfigPageBookmarks::slotUserNameChanged(const QString& text)
+void Smb4KConfigPageBookmarks::slotUserNameChanged(const QString &text)
 {
     if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
         Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
@@ -638,7 +638,7 @@ void Smb4KConfigPageBookmarks::slotUserNameEdited()
     }
 }
 
-void Smb4KConfigPageBookmarks::slotWorkgroupChanged(const QString& text)
+void Smb4KConfigPageBookmarks::slotWorkgroupChanged(const QString &text)
 {
     if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
         Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
@@ -664,7 +664,7 @@ void Smb4KConfigPageBookmarks::slotWorkgroupEdited()
     }
 }
 
-void Smb4KConfigPageBookmarks::slotIpAddressChanged(const QString& text)
+void Smb4KConfigPageBookmarks::slotIpAddressChanged(const QString &text)
 {
     if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
         Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();

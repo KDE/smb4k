@@ -12,9 +12,9 @@
 #include "smb4kmountdialog.h"
 
 // Qt includes
+#include <QPointer>
 #include <QString>
 #include <QWidget>
-#include <QPointer>
 
 // KDE includes
 #include <KStatusNotifierItem>

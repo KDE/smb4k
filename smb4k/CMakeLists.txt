@@ -50,6 +50,7 @@ endif(SMB4K_WITH_WS_DISCOVERY)
 
 set(smb4kdialogs_LIB_SRCS
   smb4kbookmarkeditor.cpp
+  smb4kbookmarkdialog.cpp
   smb4kconfigpagebookmarks.cpp
   smb4kmountdialog.cpp)
 

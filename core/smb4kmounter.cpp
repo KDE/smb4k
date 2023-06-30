@@ -33,10 +33,10 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QHostInfo>
-#include <QTimer>
-#include <QUdpSocket>
 #include <QPointer>
 #include <QStorageInfo>
+#include <QTimer>
+#include <QUdpSocket>
 
 // KDE includes
 #include <KAuth/ExecuteJob>

@@ -10,9 +10,9 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
+#include "smb4kmountdialog.h"
 #include "smb4knetworkbrowser.h"
 #include "smb4knetworksearchtoolbar.h"
-#include "smb4kmountdialog.h"
 
 // Qt includes
 #include <QDockWidget>
