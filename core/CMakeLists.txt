@@ -18,7 +18,6 @@ set(smb4kcore_LIB_SRCS
   smb4kbasicnetworkitem.cpp
   smb4kbookmark.cpp
   smb4kbookmarkhandler.cpp
-  smb4kbookmarkhandler_p.cpp
   smb4kclient.cpp
   smb4kclient_p.cpp
   smb4kcustomoptions.cpp
@@ -33,7 +32,6 @@ set(smb4kcore_LIB_SRCS
   smb4khomesshareshandler_p.cpp
   smb4khost.cpp
   smb4kmounter.cpp 
-  smb4kmounter_p.cpp
   smb4knotification.cpp
   smb4kprofilemanager.cpp
   smb4kprofilemanager_p.cpp
@@ -67,7 +65,6 @@ target_link_libraries(smb4kcore
   Qt${QT_MAJOR_VERSION}::Gui
   Qt${QT_MAJOR_VERSION}::PrintSupport
   Qt${QT_MAJOR_VERSION}::Network
-  Qt${QT_MAJOR_VERSION}::Qml
   KF${QT_MAJOR_VERSION}::ConfigCore
   KF${QT_MAJOR_VERSION}::ConfigGui
   KF${QT_MAJOR_VERSION}::AuthCore
@@ -81,7 +78,6 @@ target_link_libraries(smb4kcore
   KF${QT_MAJOR_VERSION}::Notifications
   KF${QT_MAJOR_VERSION}::JobWidgets
   KF${QT_MAJOR_VERSION}::Wallet
-  KF${QT_MAJOR_VERSION}::XmlGui
   KF${QT_MAJOR_VERSION}::DNSSD
   ${LIBSMBCLIENT_LIBRARIES})
     
