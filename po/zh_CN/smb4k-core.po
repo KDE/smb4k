@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-13 00:47+0000\n"
-"PO-Revision-Date: 2023-05-22 14:01\n"
+"PO-Revision-Date: 2023-06-17 04:11\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -3603,21 +3603,3 @@ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "编辑书签"
-
-#~ msgid "Add Category"
-#~ msgstr "添加类别"
-
-#~ msgid "Remove"
-#~ msgstr "移除"
-
-#~ msgid "Clear"
-#~ msgstr "清除"
-
-#~ msgid "Username:"
-#~ msgstr "用户名："
-
-#~ msgid "Category name:"
-#~ msgstr "类别名称："

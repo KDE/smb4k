@@ -61,7 +61,7 @@ msgstr "Dereita"
 #: smb4k.kcfg:35
 #, kde-format
 msgid "Show custom bookmark label if available"
-msgstr "Mostrar a etiqueta co marcador personalizado se estiver dispoñíbel"
+msgstr "Amosar a etiqueta co marcador personalizado se estiver dispoñíbel"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
@@ -70,8 +70,8 @@ msgid ""
 "Do not show the name of the share that is represented by the bookmark but "
 "the custom label that was defined in the bookmark editor."
 msgstr ""
-"Non mostrar o nome da compartición que está representada polo marcador, "
-"senón unha etiqueta personalizada definida no editor de marcadores."
+"Non amosar o nome da compartición que está representada polo marcador, senón "
+"unha etiqueta personalizada definida no editor de marcadores."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40
@@ -97,7 +97,7 @@ msgstr ""
 #: smb4k.kcfg:45
 #, kde-format
 msgid "Show the type of the share"
-msgstr "Mostrar o tipo de compartición"
+msgstr "Amosar o tipo de compartición"
 
 #. i18n: ectx: whatsthis, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:46
@@ -113,7 +113,7 @@ msgstr ""
 #: smb4k.kcfg:50
 #, kde-format
 msgid "Show the IP address of the server"
-msgstr "Mostrar o enderezo IP do servidor"
+msgstr "Amosar o enderezo IP do servidor"
 
 #. i18n: ectx: whatsthis, entry (ShowIPAddress), group (UserInterface)
 #: smb4k.kcfg:51
@@ -129,7 +129,7 @@ msgstr ""
 #: smb4k.kcfg:55
 #, kde-format
 msgid "Show the comment"
-msgstr "Mostrar o comentario"
+msgstr "Amosar o comentario"
 
 #. i18n: ectx: whatsthis, entry (ShowComment), group (UserInterface)
 #: smb4k.kcfg:56
@@ -145,7 +145,7 @@ msgstr ""
 #: smb4k.kcfg:60
 #, kde-format
 msgid "Show tooltips for network items"
-msgstr "Mostrar mensaxes emerxentes para os elementos de rede"
+msgstr "Amosar mensaxes emerxentes para os elementos de rede"
 
 #. i18n: ectx: whatsthis, entry (ShowNetworkItemToolTip), group (UserInterface)
 #: smb4k.kcfg:61
@@ -176,7 +176,7 @@ msgstr ""
 #: smb4k.kcfg:70
 #, kde-format
 msgid "Show tooltips for mounted shares"
-msgstr "Mostrar mensaxes emerxentes para as comparticións montadas"
+msgstr "Amosar mensaxes emerxentes para as comparticións montadas"
 
 #. i18n: ectx: whatsthis, entry (ShowShareToolTip), group (UserInterface)
 #: smb4k.kcfg:71
@@ -492,7 +492,7 @@ msgstr "Nivel de cifrado:"
 #: smb4k.kcfg:198 smb4k.kcfg:202
 #, kde-format
 msgid "Set the level of encryption that is used for making connections."
-msgstr "Definir o nivel de cifrado que se usa para estabelecer conexións."
+msgstr "Definir o nivel de cifrado que se usa para definir conexións."
 
 #. i18n: ectx: label, entry (EncryptionLevel), group (Network)
 #: smb4k.kcfg:205
@@ -633,7 +633,7 @@ msgstr ""
 #: smb4k.kcfg:254
 #, kde-format
 msgid "Use a default login"
-msgstr "Empregar un inicio de sesión por omisión"
+msgstr "Usar un inicio de sesión por omisión"
 
 #. i18n: ectx: whatsthis, entry (UseDefaultLogin), group (Authentication)
 #: smb4k.kcfg:255
@@ -644,8 +644,8 @@ msgid ""
 "in an Active Directory environment or an NT domain."
 msgstr ""
 "Activar o uso de credenciais de acceso predeterminados. Os datos fornecidos "
-"empréganse de maneira predeterminada para autenticarse nun servidor remoto. "
-"Isto é moi útil, por exemplo, se se está a traballar nun ambiente Active "
+"úsanse de maneira predeterminada para autenticarse nun servidor remoto. Isto "
+"é moi útil, por exemplo, se se está a traballar nun ambiente Active "
 "Directorio ou nun dominio NT."
 
 #. i18n: ectx: label, entry (RsyncPrefix), group (Synchronization)
@@ -679,7 +679,7 @@ msgstr "Modo de arquivo"
 #, kde-format
 msgid "Use archive mode (-a, --archive). This is a short form of -rlptgoD."
 msgstr ""
-"Empregar o modo de arquivo (-a, --archive). Esta é unha forma abreviada de -"
+"Usar o modo de arquivo (-a, --archive). Esta é unha forma abreviada de -"
 "rlptgoD."
 
 #. i18n: ectx: label, entry (RecurseIntoDirectories), group (Synchronization)
@@ -926,9 +926,8 @@ msgid ""
 "with --relative you might get unexpected results."
 msgstr ""
 "Ignorar as ligazóns simbólicas que apunten para fóra da árbore copiada (--"
-"safe-links). Tamén se ignoran todas as ligazóns simbólicas. Se se emprega "
-"esta opción en combinación con --relative pódense obter resultados "
-"inesperados."
+"safe-links). Tamén se ignoran todas as ligazóns simbólicas. Se se usa esta "
+"opción en combinación con --relative pódense obter resultados inesperados."
 
 #. i18n: ectx: label, entry (MungeSymlinks), group (Synchronization)
 #: smb4k.kcfg:355
@@ -1371,7 +1370,7 @@ msgid ""
 "zero). This is useful when mirroring very large trees to prevent disasters."
 msgstr ""
 "Eliminar só o número de ficheiros que se indica aquí (--max-delete=NUM). "
-"Isto indícalle a rsync que non elimine máis de NUM ficheiros ou directorios "
+"Isto indícalle a rsync que non elimine máis de NUM ficheiros ou cartafoles "
 "(NUM ha de ser distinto de cero). Isto é útil cando se fan réplicas de "
 "árbores moi grandes para evitar desastres."
 
@@ -1486,8 +1485,8 @@ msgstr ""
 "Ignorar automaticamente os ficheiros do mesmo xeito que o fai CVS (-C, --cvs-"
 "exclude). Este é un atallo útil para excluír unha grande variedade de "
 "ficheiros que normalmente non se queren transferir entre sistemas. Esta "
-"opción emprega o mesmo algoritmo que CVS para determinar se hai que ignorar "
-"un ficheiro."
+"opción usa o mesmo algoritmo que CVS para determinar se hai que ignorar un "
+"ficheiro."
 
 #. i18n: ectx: label, entry (UseExcludePattern), group (Synchronization)
 #: smb4k.kcfg:518
@@ -1562,7 +1561,7 @@ msgstr ""
 #: smb4k.kcfg:543
 #, kde-format
 msgid "Pattern that is used for file inclusion"
-msgstr "Padrón que se emprega para a inclusión de ficheiros"
+msgstr "Padrón que se usa para a inclusión de ficheiros"
 
 #. i18n: ectx: label, entry (UseIncludeFrom), group (Synchronization)
 #: smb4k.kcfg:548
@@ -1623,7 +1622,7 @@ msgstr "Regras de filtrado personalizadas:"
 #: smb4k.kcfg:568
 #, kde-format
 msgid "Use --filter='dir-merge /.rsync-filter' filter rule"
-msgstr "Empregar a regra de filtrado --filter='dir-merge /.rsync-filter'"
+msgstr "Usar a regra de filtrado --filter='dir-merge /.rsync-filter'"
 
 #. i18n: ectx: whatsthis, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:569
@@ -1635,15 +1634,15 @@ msgid ""
 "filter='exclude .rsync-filter' rule."
 msgstr ""
 "Esta regra de filtrado indícalle a rsync que busque ficheiros .rsync-filter "
-"en cada directorio que se espallaron pola xerarquía e empregar as súas "
-"regras para filtrar os ficheiros na transferencia. Se non é efectiva, tamén "
-"se pode escoller empregar a regra filter='exclude .rsync-filter'."
+"en cada directorio que se espallaron pola xerarquía e usar as súas regras "
+"para filtrar os ficheiros na transferencia. Se non é efectiva, tamén se pode "
+"escoller usar a regra filter='exclude .rsync-filter'."
 
 #. i18n: ectx: label, entry (UseFFFilterRule), group (Synchronization)
 #: smb4k.kcfg:573
 #, kde-format
 msgid "Use --filter='exclude .rsync-filter' filter rule"
-msgstr "Empregar a regra de filtrado --filter='exclude .rsync-filter'"
+msgstr "Usar a regra de filtrado --filter='exclude .rsync-filter'"
 
 #. i18n: ectx: whatsthis, entry (UseFFFilterRule), group (Synchronization)
 #: smb4k.kcfg:574
@@ -1689,9 +1688,9 @@ msgid ""
 "Copy files whole (-W, --whole-file). With this option the incremental rsync "
 "algorithm is not used and the whole file is sent as-is instead."
 msgstr ""
-"Copiar os ficheiros completos (-W, --whole-file). Con esta opción non se "
-"emprega o algoritmo incremental de rsync e no seu contao envíase o ficheiro "
-"completo tal e como está."
+"Copiar os ficheiros completos (-W, --whole-file). Con esta opción non se usa "
+"o algoritmo incremental de rsync e no seu contao envíase o ficheiro completo "
+"tal e como está."
 
 #. i18n: ectx: label, entry (OneFileSystem), group (Synchronization)
 #: smb4k.kcfg:588
@@ -1774,7 +1773,7 @@ msgstr ""
 #: smb4k.kcfg:608
 #, kde-format
 msgid "Make backups"
-msgstr "Facer copias de seguranza"
+msgstr "Facer copias de seguridade"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
 #: smb4k.kcfg:609
@@ -1785,47 +1784,47 @@ msgid ""
 "the backup file goes and what (if any) suffix gets appended using the --"
 "backup-dir=DIR and --suffix=SUFFIX options."
 msgstr ""
-"Facer copias de seguranza (-b, --backup). Con esta opción, múdaselle o nome "
+"Facer copias de seguridade (-b, --backup). Con esta opción, múdaselle o nome "
 "aos ficheiros de destino xa existentes segundo se vai transferindo ou "
 "eliminando cada ficheiro. Pódese controlar a onde vai o ficheiro de "
-"seguranza e que sufixo (de existir) se lle engade coas opcións backup-"
+"seguridade e que sufixo (de existir) se lle engade coas opcións backup-"
 "dir=DIR e --suffix=SUFIXO."
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:613
 #, kde-format
 msgid "Backup suffix:"
-msgstr "Sufixo das copias de seguranza:"
+msgstr "Sufixo das copias de seguridade:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:614
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
-msgstr "Empregar este sufixo para as copias de seguranza (--suffix=SUFIXO)."
+msgstr "Usar este sufixo para as copias de seguridade (--suffix=SUFIXO)."
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
 #: smb4k.kcfg:618
 #, kde-format
 msgid "Backup suffix"
-msgstr "Sufixo das copias de seguranza"
+msgstr "Sufixo das copias de seguridade"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:623
 #, kde-format
 msgid "Backup directory:"
-msgstr "Directorio das copias de seguranza:"
+msgstr "Directorio das copias de seguridade:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:624
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
-msgstr "Almacenar as copias de seguranza neste directorio (--backup-dir=DIR)."
+msgstr "Almacenar as copias de seguridade neste directorio (--backup-dir=DIR)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
 #: smb4k.kcfg:628
 #, kde-format
 msgid "Backup directory"
-msgstr "Directorio das copias de seguranza"
+msgstr "Directorio das copias de seguridade"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
 #: smb4k.kcfg:633
@@ -2980,7 +2979,7 @@ msgid ""
 "performed, a warning dialog is shown asking to approve the unmount."
 msgstr ""
 "Desmontar forzosamente comparticións inaccesíbeis (só en Linux). Se non se "
-"pode acceder a unha compartición, realízase unha desmontaxe falsa e móstrase "
+"pode acceder a unha compartición, realízase unha desmontaxe falsa e amósase "
 "un diálogo de confirmación antes de realizar a desmontaxe de verdade."
 
 #. i18n: ectx: label, entry (DetectAllShares), group (Mounting)
@@ -2998,7 +2997,7 @@ msgid ""
 "on the system."
 msgstr ""
 "Vense non só as comparticións montadas por vostede e da súa propiedade, "
-"senón todo o demais que se montaxe empregando o sistema de ficheiros SMBFS e "
+"senón todo o demais que se montaxe usando o sistema de ficheiros SMBFS e "
 "CIFS que estean presentes no sistema."
 
 #. i18n: ectx: label, entry (CifsUnixExtensionsSupport), group (Mounting)
@@ -3041,10 +3040,10 @@ msgid ""
 "ignored unless the assignment of the user ID is forced."
 msgstr ""
 "Este é o identificador numérico de usuario que terán os ficheiros e "
-"directorios da compartición montada. Se está a empregar o sistema de "
-"ficheiros CIFS en Linux e o servidor remoto admite as extensións de CIFS de "
-"Unix, esta opción ignórase a menos que se force a asignación do "
-"identificador de usuario."
+"directorios da compartición montada. Se está a usar o sistema de ficheiros "
+"CIFS en Linux e o servidor remoto admite as extensións de CIFS de Unix, esta "
+"opción ignórase a menos que se force a asignación do identificador de "
+"usuario."
 
 #. i18n: ectx: whatsthis, entry (UseGroupId), group (Mounting)
 #. i18n: ectx: whatsthis, entry (GroupId), group (Mounting)
@@ -3057,10 +3056,10 @@ msgid ""
 "be ignored unless the assignment of the group ID is forced."
 msgstr ""
 "Este é o identificador numérico de grupo que terán os ficheiros e "
-"directorios da compartición montada. Se está a empregar o sistema de "
-"ficheiros CIFS en Linux e o servidor remoto admite as extensións de CIFS de "
-"Unix, esta opción ignórase a menos que se force a asignación do "
-"identificador de usuario."
+"directorios da compartición montada. Se está a usar o sistema de ficheiros "
+"CIFS en Linux e o servidor remoto admite as extensións de CIFS de Unix, esta "
+"opción ignórase a menos que se force a asignación do identificador de "
+"usuario."
 
 #. i18n: ectx: whatsthis, entry (UseFileMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:36
@@ -3071,7 +3070,7 @@ msgid ""
 "takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
 "Este é o modo de ficheiro que se utiliza ao crear ficheiros. Haina que "
-"definir en octal. no caso de que se empregue un sistema de ficheiros CIFS a "
+"definir en octal. no caso de que se use un sistema de ficheiros CIFS a "
 "opción só é efectiva se o servidor non admite as extensións de CIFS de Unix."
 
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
@@ -3083,7 +3082,7 @@ msgid ""
 "takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
 "Este é o modo de ficheiro que se utiliza ao crear ficheiros. Haina que "
-"definir en octal. no caso de que se empregue un sistema de ficheiros CIFS a "
+"definir en octal. no caso de que se use un sistema de ficheiros CIFS a "
 "opción só é efectiva se o servidor non admite as extensións de CIFS de Unix."
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
@@ -3096,7 +3095,7 @@ msgid ""
 "only takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
 "Este é o modo de directorio que se utiliza ao crear directorios. Haina que "
-"definir en octal. no caso de que se empregue un sistema de ficheiros CIFS a "
+"definir en octal. no caso de que se use un sistema de ficheiros CIFS a "
 "opción só é efectiva se o servidor non admite as extensións de CIFS de Unix."
 
 #. i18n: ectx: label, entry (UseRemoteFileSystemPort), group (Mounting)
@@ -3216,7 +3215,7 @@ msgid ""
 "ACL check."
 msgstr ""
 "O lado do cliente (é dicir, o seu lado) comproba que ten o UID/GID correcto "
-"para manipular un ficheiro ou directorio. Pode querer desactivar esta "
+"para manipular un ficheiro ou cartafol. Pode querer desactivar esta "
 "funcionalidade se o(s) servidor(es) admiten as extensións de CIFS de Unix e "
 "non se lle permite acceder aos ficheiros e directorios. Esta opción non "
 "afecta a comprobación ACL normal."
@@ -3241,7 +3240,7 @@ msgstr ""
 "No caso de que o servidor admita as extensións de CIFS de Unix, o lado do "
 "cliente (é dicir, o seu lado) intenta definir os UID e GID efectivos do "
 "proceso actual nos ficheiros, directorios e dispositivos novos que se creen. "
-"Se esta funcionalidade estiver desactivada, empréganse os UID e GID "
+"Se esta funcionalidade estiver desactivada, úsanse os UID e GID "
 "predeterminados definidos para a compartición. Recoméndase ler a páxina do "
 "manual de mount.cifs antes de cambiar esta opción."
 
@@ -3249,7 +3248,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:181
 #, kde-format
 msgid "Use server inode numbers"
-msgstr "Empregar os números de inodo do servidor"
+msgstr "Usar os números de inodo do servidor"
 
 #. i18n: ectx: whatsthis, entry (ServerInodeNumbers), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:182
@@ -3259,9 +3258,9 @@ msgid ""
 "server instead of automatically generating temporary inode numbers on the "
 "client side."
 msgstr ""
-"Empregar os números de inodo (identificadores de ficheiros persistentes "
-"únicos) devolvidos polo servidor no canto de xerar automaticamente números "
-"de inodo temporais por parte do cliente."
+"Usar os números de inodo (identificadores de ficheiros persistentes únicos) "
+"devolvidos polo servidor no canto de xerar automaticamente números de inodo "
+"temporais por parte do cliente."
 
 #. i18n: ectx: label, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:186
@@ -3398,7 +3397,7 @@ msgstr ""
 "costa dunha peor coherencia interna da caché. Esta última opción pode causar "
 "danos nos datos, por exemplo no caso de que varios clientes accedesen ao "
 "mesmo grupo de ficheiros no servidor ao mesmo tempo; é por iso que se "
-"recomenda empregar o modo estrito de caché."
+"recomenda usar o modo estrito de caché."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:239
@@ -3422,7 +3421,7 @@ msgstr "Usar a caché de maneira non estrita"
 #: smb4kmountsettings_linux.kcfg:251
 #, kde-format
 msgid "Security mode:"
-msgstr "Modo de seguranza:"
+msgstr "Modo de seguridade:"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
@@ -3432,7 +3431,7 @@ msgid ""
 "Security mode for mount.cifs. To be able to use this mode, the CIFS kernel "
 "module 1.40 or later is required."
 msgstr ""
-"O modo de seguranza para «mount.cifs». Para poder usar este modo necesita a "
+"O modo de seguridade para «mount.cifs». Para poder usar este modo necesita a "
 "versión 1.40 ou unha versión posterior do módulo de  CIFS do núcleo do "
 "sistema."
 
