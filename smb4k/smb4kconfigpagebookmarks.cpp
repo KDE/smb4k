@@ -489,11 +489,42 @@ void Smb4KConfigPageBookmarks::slotItemDoubleClicked(QTreeWidgetItem *item, int 
     Q_UNUSED(column);
 
     if (item->data(0, TypeRole).toInt() == BookmarkType) {
-        m_labelEdit->setText(item->data(0, DataRole).value<Smb4KBookmark>().label());
-        m_categoryEdit->setCurrentItem(item->data(0, DataRole).value<Smb4KBookmark>().categoryName(), true);
-        m_userNameEdit->setText(item->data(0, DataRole).value<Smb4KBookmark>().userName());
-        m_workgroupEdit->setText(item->data(0, DataRole).value<Smb4KBookmark>().workgroupName());
-        m_ipAddressEdit->setText(item->data(0, DataRole).value<Smb4KBookmark>().hostIpAddress());
+        QString label = item->data(0, DataRole).value<Smb4KBookmark>().label();
+        m_labelEdit->setText(label);
+
+        if (!m_labelEdit->completionObject()->items().contains(label)) {
+            m_labelEdit->completionObject()->addItem(label);
+        }
+
+        QString categoryName = item->data(0, DataRole).value<Smb4KBookmark>().categoryName();
+        m_categoryEdit->setCurrentItem(categoryName, true);
+
+        if (!m_categoryEdit->completionObject()->items().contains(categoryName)) {
+            m_categoryEdit->completionObject()->addItem(categoryName);
+        }
+
+        QString userName = item->data(0, DataRole).value<Smb4KBookmark>().userName();
+        m_userNameEdit->setText(userName);
+
+        if (!m_userNameEdit->completionObject()->items().contains(userName)) {
+            m_userNameEdit->completionObject()->addItem(userName);
+        }
+
+        QString workgroupName = item->data(0, DataRole).value<Smb4KBookmark>().workgroupName();
+        m_workgroupEdit->setText(workgroupName);
+
+        if (!m_workgroupEdit->completionObject()->items().contains(workgroupName)) {
+            m_workgroupEdit->completionObject()->addItem(workgroupName);
+        }
+
+        QString hostIpAddress = item->data(0, DataRole).value<Smb4KBookmark>().hostIpAddress();
+        m_ipAddressEdit->setText(hostIpAddress);
+
+        if (!m_ipAddressEdit->completionObject()->items().contains(hostIpAddress)) {
+            qDebug() << "Add completion item";
+            m_ipAddressEdit->completionObject()->addItem(hostIpAddress);
+        }
+
         m_editorWidget->setVisible(true);
     } else {
         startEditingCategoryItem(item);

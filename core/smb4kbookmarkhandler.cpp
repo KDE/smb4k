@@ -8,7 +8,6 @@
 // application specific includes
 #include "smb4kbookmarkhandler.h"
 #include "smb4kbookmark.h"
-#include "smb4kbookmarkhandler_p.h"
 #include "smb4kglobal.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4khost.h"
@@ -31,6 +30,18 @@
 #include <KLocalizedString>
 
 using namespace Smb4KGlobal;
+
+class Smb4KBookmarkHandlerPrivate
+{
+public:
+    QList<BookmarkPtr> bookmarks;
+};
+
+class Smb4KBookmarkHandlerStatic
+{
+public:
+    Smb4KBookmarkHandler instance;
+};
 
 Q_GLOBAL_STATIC(Smb4KBookmarkHandlerStatic, p);
 
@@ -149,27 +160,12 @@ void Smb4KBookmarkHandler::addBookmarks(const QList<SharePtr> &list)
         newBookmarks << bookmark;
     }
 
-    //
-    // Show the bookmark dialog, if necessary
-    //
     if (!newBookmarks.isEmpty()) {
-        QPointer<Smb4KBookmarkDialog> dlg = new Smb4KBookmarkDialog(newBookmarks, categoryList(), QApplication::activeWindow());
+        addBookmarks(newBookmarks, false);
 
-        if (dlg->exec() == QDialog::Accepted) {
-            // The bookmark dialog uses an internal list of bookmarks,
-            // so use that one instead of the temporary list created
-            // above.
-            addBookmarks(dlg->bookmarks(), false);
+        while (!newBookmarks.isEmpty()) {
+            newBookmarks.takeFirst().clear();
         }
-
-        delete dlg;
-    }
-
-    //
-    // Clear the temporary list of bookmarks
-    //
-    while (!newBookmarks.isEmpty()) {
-        newBookmarks.takeFirst().clear();
     }
 }
 

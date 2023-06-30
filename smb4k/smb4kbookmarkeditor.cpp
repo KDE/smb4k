@@ -58,13 +58,15 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent)
         QMap<QString, QStringList> completionItems;
         completionItems[QStringLiteral("CategoryCompletion")] = group.readEntry("CategoryCompletion", Smb4KBookmarkHandler::self()->categoryList());
         completionItems[QStringLiteral("LabelCompletion")] = group.readEntry("LabelCompletion", QStringList());
-        // For backward compatibility (since Smb4K 3.3.0)
-        if (group.hasKey(QStringLiteral("IPCompletion"))) {
+
+        // Since 3.3.0: For backward compatibility. Remove later.
+        if (group.hasKey("IPCompletion")) {
             completionItems[QStringLiteral("IpAddressCompletion")] = group.readEntry("IPCompletion", QStringList());
             group.deleteEntry("IPCompletion");
         } else {
             completionItems[QStringLiteral("IpAddressCompletion")] = group.readEntry("IpAddressCompletion", QStringList());
         }
+
         completionItems[QStringLiteral("LoginCompletion")] = group.readEntry("LoginCompletion", QStringList());
         completionItems[QStringLiteral("WorkgroupCompletion")] = group.readEntry("WorkgroupCompletion", QStringList());
 

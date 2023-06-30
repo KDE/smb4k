@@ -22,6 +22,7 @@ add_library(smb4kqmlplugin SHARED ${smb4kqmlplugin_LIB_SRC})
 target_link_libraries(smb4kqmlplugin
   Qt${QT_MAJOR_VERSION}::Core
   Qt${QT_MAJOR_VERSION}::Qml
+  KF${QT_MAJOR_VERSION}::XmlGui
   smb4kcore
   smb4kdialogs)
 
