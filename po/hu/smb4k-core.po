@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:47+0000\n"
+"POT-Creation-Date: 2023-07-01 00:48+0000\n"
 "PO-Revision-Date: 2014-06-15 16:44+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1806,35 +1806,10 @@ msgstr ""
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 formátuma nem támogatott."
-
-#: smb4kbookmarkhandler_p.cpp:35
-#, kde-format
-msgid "Add Bookmarks"
-msgstr "Könyvjelzők hozzáadása"
-
-#: smb4kbookmarkhandler_p.cpp:111
-#, kde-format
-msgid ""
-"All listed shares will be bookmarked. To edit the label or group, click the "
-"respective bookmark entry."
-msgstr ""
-"Az összes listázott megosztás könyvjelzőzve lesz. A címke vagy csoport "
-"módosításához kattintson a megfelelő könyvjelző bejegyzésre."
-
-#. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
-#, kde-format
-msgid "Label:"
-msgstr "Címke:"
-
-#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
-#, kde-format
-msgid "Category:"
-msgstr ""
 
 #: smb4kclient_p.cpp:1252
 #, fuzzy, kde-format
@@ -1898,7 +1873,7 @@ msgstr "Műveletek"
 msgid "Printer:"
 msgstr "Nyomtató:"
 
-#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#: smb4kclient_p.cpp:2360
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-cím:"
@@ -2105,7 +2080,7 @@ msgstr "Felhasználó:"
 msgid "Clear List"
 msgstr "Lista törlése"
 
-#: smb4kmounter.cpp:753
+#: smb4kmounter.cpp:778
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2117,102 +2092,10 @@ msgstr ""
 "<qt><p>A(z) <b>%1</b> megosztás csatolva van a <br><b>%2</b> helyre, a "
 "tulajdonosa <b>%3</b>.</p><p>Biztosan leválasztja?</p></qt>"
 
-#: smb4kmounter.cpp:758
+#: smb4kmounter.cpp:783
 #, kde-format
 msgid "Foreign Share"
 msgstr "Külső megosztás"
-
-#: smb4kmounter_p.cpp:47
-#, kde-format
-msgid "Mount Share"
-msgstr "Megosztás csatolása"
-
-#: smb4kmounter_p.cpp:118
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the location (UNC address) and optionally the IP address and "
-#| "workgroup to mount a share."
-msgid ""
-"Enter the location and optionally the IP address and workgroup to mount a "
-"share."
-msgstr ""
-"Adja meg a helyet (UNC-cím) és opcionálisan az IP-címet és munkacsoportot a "
-"megosztás csatolásához."
-
-#: smb4kmounter_p.cpp:128
-#, fuzzy, kde-format
-#| msgid "Notifications"
-msgid "Location:"
-msgstr "Értesítések"
-
-#: smb4kmounter_p.cpp:132
-#, kde-format
-msgid ""
-"The location of the share is provided by the Uniform Resource Locator (URL). "
-"It generally has the following syntax: [smb:]//[USER:PASSWORD@]HOST[:PORT]/"
-"SHARE. The scheme, username, password and port are optional. You should omit "
-"to enter the password here, because it is shown in cleartext."
-msgstr ""
-
-#: smb4kmounter_p.cpp:145
-#, kde-format
-msgid ""
-"The Internet Protocol (IP) address identifies the host in the network and "
-"indicates where it is. It has two valid formats, the one known as IP version "
-"4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-msgstr ""
-"Az IP-cím (Internet Protocol) azonosítja a gépet a hálózaton és jelzi merre "
-"van. Két érvényes formája van, az IPv4-ként ismert (például 192.168.2.11) és "
-"az IPv6 (például 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-
-#: smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "Munkacsoport:"
-
-#: smb4kmounter_p.cpp:158
-#, kde-format
-msgid ""
-"The workgroup or domain identifies the peer-to-peer computer network the "
-"host is located in."
-msgstr ""
-"A munkacsoport vagy tartomány azonosítja azt a számítógép hálózatot, ahol a "
-"gép található."
-
-#: smb4kmounter_p.cpp:180
-#, kde-format
-msgid "Add this share to the bookmarks"
-msgstr "Megosztás hozzáadása a könyvjelzőkhöz"
-
-#: smb4kmounter_p.cpp:183
-#, kde-format
-msgid ""
-"If you tick this checkbox, the share will be bookmarked and you can access "
-"it e.g. through the \"Bookmarks\" menu entry in the main window."
-msgstr ""
-"Ha bejelöli ezt a jelölőnégyzetet, a megosztás bekerül a könyvjelzők közé és "
-"elérheti a főablak „Könyvjelzők” menüjéből."
-
-#: smb4kmounter_p.cpp:192
-#, kde-format
-msgid ""
-"Add a label describing your bookmark. It is then shown instead of the "
-"location."
-msgstr ""
-
-#: smb4kmounter_p.cpp:202
-#, kde-format
-msgid ""
-"Assign a category to your bookmark. This way you can organize your bookmarks."
-msgstr ""
-
-#: smb4kmounter_p.cpp:225
-#, fuzzy, kde-format
-#| msgid "Bookmark"
-msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-msgid "Bookmark >>"
-msgstr "Könyvjelző"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -3662,6 +3545,75 @@ msgid ""
 msgstr ""
 "<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> megosztáshoz.</"
 "qt>"
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Könyvjelzők hozzáadása"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Az összes listázott megosztás könyvjelzőzve lesz. A címke vagy csoport "
+#~ "módosításához kattintson a megfelelő könyvjelző bejegyzésre."
+
+#~ msgid "Label:"
+#~ msgstr "Címke:"
+
+#~ msgid "Mount Share"
+#~ msgstr "Megosztás csatolása"
+
+#, fuzzy
+#~| msgid ""
+#~| "Enter the location (UNC address) and optionally the IP address and "
+#~| "workgroup to mount a share."
+#~ msgid ""
+#~ "Enter the location and optionally the IP address and workgroup to mount a "
+#~ "share."
+#~ msgstr ""
+#~ "Adja meg a helyet (UNC-cím) és opcionálisan az IP-címet és munkacsoportot "
+#~ "a megosztás csatolásához."
+
+#, fuzzy
+#~| msgid "Notifications"
+#~ msgid "Location:"
+#~ msgstr "Értesítések"
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "Az IP-cím (Internet Protocol) azonosítja a gépet a hálózaton és jelzi "
+#~ "merre van. Két érvényes formája van, az IPv4-ként ismert (például "
+#~ "192.168.2.11) és az IPv6 (például "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid "Workgroup:"
+#~ msgstr "Munkacsoport:"
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "A munkacsoport vagy tartomány azonosítja azt a számítógép hálózatot, ahol "
+#~ "a gép található."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Megosztás hozzáadása a könyvjelzőkhöz"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Ha bejelöli ezt a jelölőnégyzetet, a megosztás bekerül a könyvjelzők közé "
+#~ "és elérheti a főablak „Könyvjelzők” menüjéből."
+
+#, fuzzy
+#~| msgid "Bookmark"
+#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
+#~ msgid "Bookmark >>"
+#~ msgstr "Könyvjelző"
 
 #~ msgid "Edit Bookmarks"
 #~ msgstr "Könyvjelzők szerkesztése"

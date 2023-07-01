@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:47+0000\n"
+"POT-Creation-Date: 2023-07-01 00:48+0000\n"
 "PO-Revision-Date: 2023-05-15 22:40+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1968,35 +1968,10 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%2 üzerinde %1"
 
-#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 biçimi desteklenmiyor."
-
-#: smb4kbookmarkhandler_p.cpp:35
-#, kde-format
-msgid "Add Bookmarks"
-msgstr "Yer İmi Ekle"
-
-#: smb4kbookmarkhandler_p.cpp:111
-#, kde-format
-msgid ""
-"All listed shares will be bookmarked. To edit the label or group, click the "
-"respective bookmark entry."
-msgstr ""
-"Bütün listelenmiş paylaşımlar yer imlerine eklenecektir. Etiket ya da grubu "
-"düzenlemek için, ilgili yer imi girdisini tıklayın."
-
-#. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
-#, kde-format
-msgid "Label:"
-msgstr "Etiket:"
-
-#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
-#, kde-format
-msgid "Category:"
-msgstr "Kategori:"
 
 #: smb4kclient_p.cpp:1252
 #, kde-format
@@ -2061,7 +2036,7 @@ msgstr "Bilgi"
 msgid "Printer:"
 msgstr "Yazıcı:"
 
-#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#: smb4kclient_p.cpp:2360
 #, kde-format
 msgid "IP Address:"
 msgstr "IP Adresi:"
@@ -2249,7 +2224,7 @@ msgstr "Kullanıcı:"
 msgid "Clear List"
 msgstr "Listeyi Temizle"
 
-#: smb4kmounter.cpp:753
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2259,106 +2234,10 @@ msgstr ""
 "bağlanıyor.</p><p>Paylaşımın bağlantısını gerçekten kesmek istiyor musunuz?</"
 "p>"
 
-#: smb4kmounter.cpp:758
+#: smb4kmounter.cpp:783
 #, kde-format
 msgid "Foreign Share"
 msgstr "Yabancı Paylaşım"
-
-#: smb4kmounter_p.cpp:47
-#, kde-format
-msgid "Mount Share"
-msgstr "&Bağlı Paylaşımlar"
-
-#: smb4kmounter_p.cpp:118
-#, kde-format
-msgid ""
-"Enter the location and optionally the IP address and workgroup to mount a "
-"share."
-msgstr ""
-"Bir paylaşımı bağlamak için çalışma grubu, isteğe bağlı IP adresi ve konum "
-"girin."
-
-#: smb4kmounter_p.cpp:128
-#, kde-format
-msgid "Location:"
-msgstr "Konum:"
-
-#: smb4kmounter_p.cpp:132
-#, kde-format
-msgid ""
-"The location of the share is provided by the Uniform Resource Locator (URL). "
-"It generally has the following syntax: [smb:]//[USER:PASSWORD@]HOST[:PORT]/"
-"SHARE. The scheme, username, password and port are optional. You should omit "
-"to enter the password here, because it is shown in cleartext."
-msgstr ""
-"Paylaşımın konumu, Tekdüzen Kaynak Bulucu (URL) tarafından sağlanır. "
-"Genellikle şu sözdizime sahiptir: [smb:]//[KULLANICI:PAROLA@]MAKİNE[:KAPI]/"
-"PAYLAŞIM. Şema, kullanıcı adı, parola ve bağlantı noktası isteğe bağlıdır. "
-"Şifre açık metin olarak gösterildiği için buraya şifreyi girmeyi ihmal "
-"etmelisiniz."
-
-#: smb4kmounter_p.cpp:145
-#, kde-format
-msgid ""
-"The Internet Protocol (IP) address identifies the host in the network and "
-"indicates where it is. It has two valid formats, the one known as IP version "
-"4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-msgstr ""
-"Ağ Protokolü (IP) adresi ağdaki sunucuları tanımlar ve nerede olduklarını "
-"belirtir. IP sürüm 4 (192.168.2.11) ve sürüm 6 "
-"(2001:0db8:85a3:08d3:1319:8a2e:0370:7334) olarak bilinen iki geçerli biçimi "
-"vardır."
-
-#: smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "Çalışma grubu:"
-
-#: smb4kmounter_p.cpp:158
-#, kde-format
-msgid ""
-"The workgroup or domain identifies the peer-to-peer computer network the "
-"host is located in."
-msgstr ""
-"Çalışma grubu veya etki alanı, ev sahibi olduğu eş düzeyde bilgisayar ağı "
-"tanımlar."
-
-#: smb4kmounter_p.cpp:180
-#, kde-format
-msgid "Add this share to the bookmarks"
-msgstr "Bu paylaşımı yer imlerine ekle"
-
-#: smb4kmounter_p.cpp:183
-#, kde-format
-msgid ""
-"If you tick this checkbox, the share will be bookmarked and you can access "
-"it e.g. through the \"Bookmarks\" menu entry in the main window."
-msgstr ""
-"Eğer bu onay kutusunu işaretlerseniz paylaşım yer imlerine eklenecek ve ana "
-"pencerede \"Yer İmleri\" menü girdisi üzerinden erişebileceksiniz."
-
-#: smb4kmounter_p.cpp:192
-#, kde-format
-msgid ""
-"Add a label describing your bookmark. It is then shown instead of the "
-"location."
-msgstr ""
-"Yer iminizi açıklayan bir etiket ekleyin. Daha sonra konum yerine gösterilir."
-
-#: smb4kmounter_p.cpp:202
-#, kde-format
-msgid ""
-"Assign a category to your bookmark. This way you can organize your bookmarks."
-msgstr ""
-"Yer iminize bir kategori atayın. Bu şekilde yer imlerinizi "
-"düzenleyebilirsiniz."
-
-#: smb4kmounter_p.cpp:225
-#, kde-format
-msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-msgid "Bookmark >>"
-msgstr "Yer İmi Ekle >>"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -3818,6 +3697,97 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı ve parola girin.</qt>"
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Yer İmi Ekle"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Bütün listelenmiş paylaşımlar yer imlerine eklenecektir. Etiket ya da "
+#~ "grubu düzenlemek için, ilgili yer imi girdisini tıklayın."
+
+#~ msgid "Label:"
+#~ msgstr "Etiket:"
+
+#~ msgid "Category:"
+#~ msgstr "Kategori:"
+
+#~ msgid "Mount Share"
+#~ msgstr "&Bağlı Paylaşımlar"
+
+#~ msgid ""
+#~ "Enter the location and optionally the IP address and workgroup to mount a "
+#~ "share."
+#~ msgstr ""
+#~ "Bir paylaşımı bağlamak için çalışma grubu, isteğe bağlı IP adresi ve "
+#~ "konum girin."
+
+#~ msgid "Location:"
+#~ msgstr "Konum:"
+
+#~ msgid ""
+#~ "The location of the share is provided by the Uniform Resource Locator "
+#~ "(URL). It generally has the following syntax: [smb:]//[USER:"
+#~ "PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are "
+#~ "optional. You should omit to enter the password here, because it is shown "
+#~ "in cleartext."
+#~ msgstr ""
+#~ "Paylaşımın konumu, Tekdüzen Kaynak Bulucu (URL) tarafından sağlanır. "
+#~ "Genellikle şu sözdizime sahiptir: [smb:]//[KULLANICI:PAROLA@]MAKİNE[:"
+#~ "KAPI]/PAYLAŞIM. Şema, kullanıcı adı, parola ve bağlantı noktası isteğe "
+#~ "bağlıdır. Şifre açık metin olarak gösterildiği için buraya şifreyi "
+#~ "girmeyi ihmal etmelisiniz."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "Ağ Protokolü (IP) adresi ağdaki sunucuları tanımlar ve nerede olduklarını "
+#~ "belirtir. IP sürüm 4 (192.168.2.11) ve sürüm 6 "
+#~ "(2001:0db8:85a3:08d3:1319:8a2e:0370:7334) olarak bilinen iki geçerli "
+#~ "biçimi vardır."
+
+#~ msgid "Workgroup:"
+#~ msgstr "Çalışma grubu:"
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "Çalışma grubu veya etki alanı, ev sahibi olduğu eş düzeyde bilgisayar ağı "
+#~ "tanımlar."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Bu paylaşımı yer imlerine ekle"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Eğer bu onay kutusunu işaretlerseniz paylaşım yer imlerine eklenecek ve "
+#~ "ana pencerede \"Yer İmleri\" menü girdisi üzerinden erişebileceksiniz."
+
+#~ msgid ""
+#~ "Add a label describing your bookmark. It is then shown instead of the "
+#~ "location."
+#~ msgstr ""
+#~ "Yer iminizi açıklayan bir etiket ekleyin. Daha sonra konum yerine "
+#~ "gösterilir."
+
+#~ msgid ""
+#~ "Assign a category to your bookmark. This way you can organize your "
+#~ "bookmarks."
+#~ msgstr ""
+#~ "Yer iminize bir kategori atayın. Bu şekilde yer imlerinizi "
+#~ "düzenleyebilirsiniz."
+
+#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
+#~ msgid "Bookmark >>"
+#~ msgstr "Yer İmi Ekle >>"
 
 #~ msgid "Edit Bookmarks"
 #~ msgstr "Yer İmlerini Düzenle"

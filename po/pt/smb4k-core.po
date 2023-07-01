@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:47+0000\n"
+"POT-Creation-Date: 2023-07-01 00:48+0000\n"
 "PO-Revision-Date: 2023-03-06 15:55+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2016,35 +2016,10 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 em %2"
 
-#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "O formato do %1 não é suportado."
-
-#: smb4kbookmarkhandler_p.cpp:35
-#, kde-format
-msgid "Add Bookmarks"
-msgstr "Adicionar aos Favoritos"
-
-#: smb4kbookmarkhandler_p.cpp:111
-#, kde-format
-msgid ""
-"All listed shares will be bookmarked. To edit the label or group, click the "
-"respective bookmark entry."
-msgstr ""
-"Todas as partilhas assinaladas serão adicionadas aos favoritos. Para editar "
-"o nome ou o grupo, carregue no item de favoritos respectivos."
-
-#. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
-#, kde-format
-msgid "Label:"
-msgstr "Nome:"
-
-#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
-#, kde-format
-msgid "Category:"
-msgstr "Categoria:"
 
 #: smb4kclient_p.cpp:1252
 #, kde-format
@@ -2109,7 +2084,7 @@ msgstr "Informação"
 msgid "Printer:"
 msgstr "Impressora:"
 
-#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#: smb4kclient_p.cpp:2360
 #, kde-format
 msgid "IP Address:"
 msgstr "Endereço IP:"
@@ -2297,7 +2272,7 @@ msgstr "Utilizador:"
 msgid "Clear List"
 msgstr "Limpar a Lista"
 
-#: smb4kmounter.cpp:753
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2306,106 +2281,10 @@ msgstr ""
 "<p>A partilha <b>%1</b> está montada em <br><b>%2</b> e pertence ao "
 "utilizador <b>%3</b>.</p><p>Deseja realmente desmontá-la?</p>"
 
-#: smb4kmounter.cpp:758
+#: smb4kmounter.cpp:783
 #, kde-format
 msgid "Foreign Share"
 msgstr "Partilha de Terceiros"
-
-#: smb4kmounter_p.cpp:47
-#, kde-format
-msgid "Mount Share"
-msgstr "Montar a Partilha"
-
-#: smb4kmounter_p.cpp:118
-#, kde-format
-msgid ""
-"Enter the location and optionally the IP address and workgroup to mount a "
-"share."
-msgstr ""
-"Indique a localização e, opcionalmente, o endereço IP e grupo de trabalho "
-"para montar uma partilha."
-
-#: smb4kmounter_p.cpp:128
-#, kde-format
-msgid "Location:"
-msgstr "Localização:"
-
-#: smb4kmounter_p.cpp:132
-#, kde-format
-msgid ""
-"The location of the share is provided by the Uniform Resource Locator (URL). "
-"It generally has the following syntax: [smb:]//[USER:PASSWORD@]HOST[:PORT]/"
-"SHARE. The scheme, username, password and port are optional. You should omit "
-"to enter the password here, because it is shown in cleartext."
-msgstr ""
-"A localização da partilha é indicada pelo URL (Uniform Resource Locator - "
-"Localizador de Recursos Uniforme). Normalmente tem a seguinte sintaxe: "
-"[smb:]//[UTILIZADOR:SENHA@]SERVIDOR[:PORTO]/PARTILHA. O utilizador, senha e "
-"porto são opcionais. Deverá omitir a introdução da senha aqui, porque "
-"aparece em texto simples."
-
-#: smb4kmounter_p.cpp:145
-#, kde-format
-msgid ""
-"The Internet Protocol (IP) address identifies the host in the network and "
-"indicates where it is. It has two valid formats, the one known as IP version "
-"4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-msgstr ""
-"O endereço IP identifica a máquina na rede e indica onde se encontra. Tem "
-"dois formatos válidos, um conhecido como IP versão 4 (p.ex. 192.168.2.11) e "
-"o outro como versão 6 (p.ex. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-
-#: smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "Grupo de trabalho:"
-
-#: smb4kmounter_p.cpp:158
-#, kde-format
-msgid ""
-"The workgroup or domain identifies the peer-to-peer computer network the "
-"host is located in."
-msgstr ""
-"O grupo de trabalho ou domínio identifica a rede de computadores em que se "
-"encontra a máquina."
-
-#: smb4kmounter_p.cpp:180
-#, kde-format
-msgid "Add this share to the bookmarks"
-msgstr "Adicionar esta partilha aos favoritos"
-
-#: smb4kmounter_p.cpp:183
-#, kde-format
-msgid ""
-"If you tick this checkbox, the share will be bookmarked and you can access "
-"it e.g. through the \"Bookmarks\" menu entry in the main window."
-msgstr ""
-"Se assinalar esta opção, a partilha ficará marcada como favorito e poderá "
-"aceder a ela p.ex. através do menu \"Favoritos\" da janela principal."
-
-#: smb4kmounter_p.cpp:192
-#, kde-format
-msgid ""
-"Add a label describing your bookmark. It is then shown instead of the "
-"location."
-msgstr ""
-"Adicione uma legenda que descreva o seu favorito. É então apresentado em vez "
-"da localização."
-
-#: smb4kmounter_p.cpp:202
-#, kde-format
-msgid ""
-"Assign a category to your bookmark. This way you can organize your bookmarks."
-msgstr ""
-"Atribua uma categoria ao seu favorito. Desta forma poderá organizar os seus "
-"favoritos."
-
-#: smb4kmounter_p.cpp:225
-#, kde-format
-msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-msgid "Bookmark >>"
-msgstr "Adicionar aos Favoritos >>"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -3874,6 +3753,96 @@ msgid ""
 msgstr ""
 "<qt>Indique por favor um nome de utilizador e uma senha para a partilha <b>"
 "%1</b>.</qt>"
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Adicionar aos Favoritos"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Todas as partilhas assinaladas serão adicionadas aos favoritos. Para "
+#~ "editar o nome ou o grupo, carregue no item de favoritos respectivos."
+
+#~ msgid "Label:"
+#~ msgstr "Nome:"
+
+#~ msgid "Category:"
+#~ msgstr "Categoria:"
+
+#~ msgid "Mount Share"
+#~ msgstr "Montar a Partilha"
+
+#~ msgid ""
+#~ "Enter the location and optionally the IP address and workgroup to mount a "
+#~ "share."
+#~ msgstr ""
+#~ "Indique a localização e, opcionalmente, o endereço IP e grupo de trabalho "
+#~ "para montar uma partilha."
+
+#~ msgid "Location:"
+#~ msgstr "Localização:"
+
+#~ msgid ""
+#~ "The location of the share is provided by the Uniform Resource Locator "
+#~ "(URL). It generally has the following syntax: [smb:]//[USER:"
+#~ "PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are "
+#~ "optional. You should omit to enter the password here, because it is shown "
+#~ "in cleartext."
+#~ msgstr ""
+#~ "A localização da partilha é indicada pelo URL (Uniform Resource Locator - "
+#~ "Localizador de Recursos Uniforme). Normalmente tem a seguinte sintaxe: "
+#~ "[smb:]//[UTILIZADOR:SENHA@]SERVIDOR[:PORTO]/PARTILHA. O utilizador, senha "
+#~ "e porto são opcionais. Deverá omitir a introdução da senha aqui, porque "
+#~ "aparece em texto simples."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "O endereço IP identifica a máquina na rede e indica onde se encontra. Tem "
+#~ "dois formatos válidos, um conhecido como IP versão 4 (p.ex. 192.168.2.11) "
+#~ "e o outro como versão 6 (p.ex. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid "Workgroup:"
+#~ msgstr "Grupo de trabalho:"
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "O grupo de trabalho ou domínio identifica a rede de computadores em que "
+#~ "se encontra a máquina."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Adicionar esta partilha aos favoritos"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Se assinalar esta opção, a partilha ficará marcada como favorito e poderá "
+#~ "aceder a ela p.ex. através do menu \"Favoritos\" da janela principal."
+
+#~ msgid ""
+#~ "Add a label describing your bookmark. It is then shown instead of the "
+#~ "location."
+#~ msgstr ""
+#~ "Adicione uma legenda que descreva o seu favorito. É então apresentado em "
+#~ "vez da localização."
+
+#~ msgid ""
+#~ "Assign a category to your bookmark. This way you can organize your "
+#~ "bookmarks."
+#~ msgstr ""
+#~ "Atribua uma categoria ao seu favorito. Desta forma poderá organizar os "
+#~ "seus favoritos."
+
+#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
+#~ msgid "Bookmark >>"
+#~ msgstr "Adicionar aos Favoritos >>"
 
 #~ msgid "Edit Bookmarks"
 #~ msgstr "Editar os Favoritos"

@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:47+0000\n"
+"POT-Creation-Date: 2023-07-01 00:48+0000\n"
 "PO-Revision-Date: 2023-03-04 19:31+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -2059,35 +2059,10 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1 sur %2"
 
-#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Le format de %1 n'est pas pris en charge."
-
-#: smb4kbookmarkhandler_p.cpp:35
-#, kde-format
-msgid "Add Bookmarks"
-msgstr "Ajouter des signets"
-
-#: smb4kbookmarkhandler_p.cpp:111
-#, kde-format
-msgid ""
-"All listed shares will be bookmarked. To edit the label or group, click the "
-"respective bookmark entry."
-msgstr ""
-"Tous les partages listés vont être mis en signets. Pour modifier l'étiquette "
-"ou le groupe, cliquez sur l'élément de signet correspondant."
-
-#. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
-#, kde-format
-msgid "Label:"
-msgstr "Étiquette :"
-
-#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
-#, kde-format
-msgid "Category:"
-msgstr "Catégorie : "
 
 #: smb4kclient_p.cpp:1252
 #, kde-format
@@ -2153,7 +2128,7 @@ msgstr "Informations"
 msgid "Printer:"
 msgstr "Imprimante :"
 
-#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#: smb4kclient_p.cpp:2360
 #, kde-format
 msgid "IP Address:"
 msgstr "Adresse IP :"
@@ -2344,7 +2319,7 @@ msgstr "Utilisateur :"
 msgid "Clear List"
 msgstr "Effacer la liste"
 
-#: smb4kmounter.cpp:753
+#: smb4kmounter.cpp:778
 #, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
@@ -2353,108 +2328,10 @@ msgstr ""
 "<p>Le partage <b>%1</b> est monté sur <br><b>%2</b>et appartient à "
 "l'utilisateur <b>%3</b>.</p><p>Voulez-vous vraiment le libérer ?</p>"
 
-#: smb4kmounter.cpp:758
+#: smb4kmounter.cpp:783
 #, kde-format
 msgid "Foreign Share"
 msgstr "Partage étranger"
-
-#: smb4kmounter_p.cpp:47
-#, kde-format
-msgid "Mount Share"
-msgstr "Monter le partage"
-
-#: smb4kmounter_p.cpp:118
-#, kde-format
-msgid ""
-"Enter the location and optionally the IP address and workgroup to mount a "
-"share."
-msgstr ""
-"Saisissez l'emplacement et de façon facultative, l'adresse IP et le groupe "
-"de travail pour monter un partage."
-
-#: smb4kmounter_p.cpp:128
-#, kde-format
-msgid "Location:"
-msgstr "Emplacement :"
-
-#: smb4kmounter_p.cpp:132
-#, kde-format
-msgid ""
-"The location of the share is provided by the Uniform Resource Locator (URL). "
-"It generally has the following syntax: [smb:]//[USER:PASSWORD@]HOST[:PORT]/"
-"SHARE. The scheme, username, password and port are optional. You should omit "
-"to enter the password here, because it is shown in cleartext."
-msgstr ""
-"L'emplacement du partage est fourni par une « URL » (Uniform Resource "
-"Locator). Elle a en général, la syntaxe suivante : [smb:]//[USER:"
-"PASSWORD@]HOST[ : PORT] / SHARE. L'emplacement, le nom d'utilisateur, le mot "
-"de passe et le port sont optionnels. Vous devriez ne pas saisir le mot de "
-"passe car il est affiché en texte visible."
-
-#: smb4kmounter_p.cpp:145
-#, kde-format
-msgid ""
-"The Internet Protocol (IP) address identifies the host in the network and "
-"indicates where it is. It has two valid formats, the one known as IP version "
-"4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-msgstr ""
-"L'adresse IP (Internet Protocol) identifie l'hôte dans le réseau et indique "
-"où il se trouve. Elle offre deux formats valables, l'un connu sous le nom de "
-"IP version 4 (ex. 192.168.2.11) et l'autre, le format version 6 (ex. "
-"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-
-#: smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "Groupe de travail :"
-
-#: smb4kmounter_p.cpp:158
-#, kde-format
-msgid ""
-"The workgroup or domain identifies the peer-to-peer computer network the "
-"host is located in."
-msgstr ""
-"Le groupe de travail ou le domaine identifie le réseau de l'ordinateur pair "
-"à pair dans lequel se trouve l'hôte."
-
-#: smb4kmounter_p.cpp:180
-#, kde-format
-msgid "Add this share to the bookmarks"
-msgstr "Ajouter ce partage aux signets"
-
-#: smb4kmounter_p.cpp:183
-#, kde-format
-msgid ""
-"If you tick this checkbox, the share will be bookmarked and you can access "
-"it e.g. through the \"Bookmarks\" menu entry in the main window."
-msgstr ""
-"Si vous cochez cette case, le partage sera mis en signet et vous pouvez y "
-"accéder, ex. par le biais de la ligne de menu « Signets » dans la fenêtre "
-"principale."
-
-#: smb4kmounter_p.cpp:192
-#, kde-format
-msgid ""
-"Add a label describing your bookmark. It is then shown instead of the "
-"location."
-msgstr ""
-"Ajout d'une étiquette décrivant votre marque-marque. Il est alors affiché à "
-"la place de son emplacement."
-
-#: smb4kmounter_p.cpp:202
-#, kde-format
-msgid ""
-"Assign a category to your bookmark. This way you can organize your bookmarks."
-msgstr ""
-"Associer une catégorie à votre marque-marque. De cette façon, vous pouvez "
-"organiser vos marque-pages."
-
-#: smb4kmounter_p.cpp:225
-#, kde-format
-msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-msgid "Bookmark >>"
-msgstr "Marque-page >>"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -3939,6 +3816,98 @@ msgid ""
 msgstr ""
 "<qt>Veuillez saisir un nom d'utilisateur et un mot de passe pour le partage "
 "<b>%1</b>.</qt>"
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Ajouter des signets"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Tous les partages listés vont être mis en signets. Pour modifier "
+#~ "l'étiquette ou le groupe, cliquez sur l'élément de signet correspondant."
+
+#~ msgid "Label:"
+#~ msgstr "Étiquette :"
+
+#~ msgid "Category:"
+#~ msgstr "Catégorie : "
+
+#~ msgid "Mount Share"
+#~ msgstr "Monter le partage"
+
+#~ msgid ""
+#~ "Enter the location and optionally the IP address and workgroup to mount a "
+#~ "share."
+#~ msgstr ""
+#~ "Saisissez l'emplacement et de façon facultative, l'adresse IP et le "
+#~ "groupe de travail pour monter un partage."
+
+#~ msgid "Location:"
+#~ msgstr "Emplacement :"
+
+#~ msgid ""
+#~ "The location of the share is provided by the Uniform Resource Locator "
+#~ "(URL). It generally has the following syntax: [smb:]//[USER:"
+#~ "PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are "
+#~ "optional. You should omit to enter the password here, because it is shown "
+#~ "in cleartext."
+#~ msgstr ""
+#~ "L'emplacement du partage est fourni par une « URL » (Uniform Resource "
+#~ "Locator). Elle a en général, la syntaxe suivante : [smb:]//[USER:"
+#~ "PASSWORD@]HOST[ : PORT] / SHARE. L'emplacement, le nom d'utilisateur, le "
+#~ "mot de passe et le port sont optionnels. Vous devriez ne pas saisir le "
+#~ "mot de passe car il est affiché en texte visible."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "L'adresse IP (Internet Protocol) identifie l'hôte dans le réseau et "
+#~ "indique où il se trouve. Elle offre deux formats valables, l'un connu "
+#~ "sous le nom de IP version 4 (ex. 192.168.2.11) et l'autre, le format "
+#~ "version 6 (ex. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid "Workgroup:"
+#~ msgstr "Groupe de travail :"
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "Le groupe de travail ou le domaine identifie le réseau de l'ordinateur "
+#~ "pair à pair dans lequel se trouve l'hôte."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Ajouter ce partage aux signets"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Si vous cochez cette case, le partage sera mis en signet et vous pouvez y "
+#~ "accéder, ex. par le biais de la ligne de menu « Signets » dans la fenêtre "
+#~ "principale."
+
+#~ msgid ""
+#~ "Add a label describing your bookmark. It is then shown instead of the "
+#~ "location."
+#~ msgstr ""
+#~ "Ajout d'une étiquette décrivant votre marque-marque. Il est alors affiché "
+#~ "à la place de son emplacement."
+
+#~ msgid ""
+#~ "Assign a category to your bookmark. This way you can organize your "
+#~ "bookmarks."
+#~ msgstr ""
+#~ "Associer une catégorie à votre marque-marque. De cette façon, vous pouvez "
+#~ "organiser vos marque-pages."
+
+#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
+#~ msgid "Bookmark >>"
+#~ msgstr "Marque-page >>"
 
 #~ msgid "Edit Bookmarks"
 #~ msgstr "Modifier des signets"

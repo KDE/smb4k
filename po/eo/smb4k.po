@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-18 00:54+0000\n"
+"POT-Creation-Date: 2023-07-01 00:48+0000\n"
 "PO-Revision-Date: 2023-06-14 20:54+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -43,7 +43,7 @@ msgstr "La muntpunkto %1 estas malvalida."
 msgid "The unmount process could not be started."
 msgstr "La procezo de malmuntado ne eblis komenci."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:55
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -119,7 +119,7 @@ msgstr "Ĉefa ilobreto"
 msgid "Bookmark Editor"
 msgstr "Legosigna Redaktoro"
 
-#: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:118
+#: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:137
 #, kde-format
 msgid "Bookmarks"
 msgstr "Legosignoj"
@@ -129,7 +129,7 @@ msgstr "Legosignoj"
 msgid "&Edit Bookmarks"
 msgstr "&Redakti legosignojn"
 
-#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:146
+#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:147
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
@@ -141,43 +141,43 @@ msgstr "Aldoni &legosignon"
 msgid "Mount Bookmarks"
 msgstr "Munti Legosignojn"
 
-#: smb4k/smb4kconfigdialog.cpp:113
+#: smb4k/smb4kconfigdialog.cpp:132
 #, kde-format
 msgid "User Interface"
 msgstr "Uzant-interfaco"
 
-#: smb4k/smb4kconfigdialog.cpp:114 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Reto"
 
-#: smb4k/smb4kconfigdialog.cpp:115
+#: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
 msgid "Mounting"
 msgstr "Muntado"
 
-#: smb4k/smb4kconfigdialog.cpp:116
+#: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format
 msgid "Authentication"
 msgstr "Aŭtentigo"
 
-#: smb4k/smb4kconfigdialog.cpp:117
+#: smb4k/smb4kconfigdialog.cpp:136
 #, kde-format
 msgid "Synchronization"
 msgstr "Sinkronigado"
 
-#: smb4k/smb4kconfigdialog.cpp:119
+#: smb4k/smb4kconfigdialog.cpp:138
 #, kde-format
 msgid "Custom Settings"
 msgstr "Propraj Agordoj"
 
-#: smb4k/smb4kconfigdialog.cpp:120 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:139 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profiloj"
 
-#: smb4k/smb4kconfigdialog.cpp:143
+#: smb4k/smb4kconfigdialog.cpp:162
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -208,14 +208,14 @@ msgid "Save"
 msgstr "Konservi"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
-#: smb4k/smb4kconfigpagebookmarks.cpp:121
+#: smb4k/smb4kconfigpagebookmarks.cpp:127
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
 msgstr "Redakti"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
-#: smb4k/smb4kconfigpagebookmarks.cpp:133
+#: smb4k/smb4kconfigpagebookmarks.cpp:139
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
 #, kde-format
 msgid "Remove"
@@ -247,44 +247,45 @@ msgstr "Agordu la uzantnomon kaj pasvorton por monujo %1."
 msgid "Set the username and password for the default login."
 msgstr "Agordu la uzantnomon kaj pasvorton por la defaŭlta ensaluto."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:59
+#: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:115
 #, kde-format
 msgid "Label:"
 msgstr "Etikedo:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:122
 #, kde-format
 msgid "Category:"
 msgstr "Kategorio:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:74 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
 #, kde-format
 msgid "Username:"
 msgstr "Uzantonomo:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:82 smb4k/smb4ktooltip.cpp:216
+#: smb4k/smb4kconfigpagebookmarks.cpp:86 smb4k/smb4kmountdialog.cpp:80
+#: smb4k/smb4ktooltip.cpp:216
 #, kde-format
 msgid "Workgroup:"
 msgstr "Laborgrupo:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:89 smb4k/smb4ktooltip.cpp:213
-#: smb4k/smb4ktooltip.cpp:244
+#: smb4k/smb4kconfigpagebookmarks.cpp:94 smb4k/smb4kmountdialog.cpp:73
+#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-Adreso:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:127
+#: smb4k/smb4kconfigpagebookmarks.cpp:133
 #, kde-format
 msgid "Add Category"
 msgstr "Aldoni Kategorion"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:139
+#: smb4k/smb4kconfigpagebookmarks.cpp:145
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
 msgid "Clear List"
 msgstr "Forigi la liston"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:420
+#: smb4k/smb4kconfigpagebookmarks.cpp:426
 #, kde-format
 msgid "New Category"
 msgstr "Nova Kategorio"
@@ -544,7 +545,7 @@ msgstr "Kontrolsumoj"
 msgid "Main Window"
 msgstr "Ĉefa Fenestro"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:218
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:219
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Reta Kvartalo"
@@ -554,17 +555,17 @@ msgstr "Reta Kvartalo"
 msgid "Shares View"
 msgstr "Kundividas Vidon"
 
-#: smb4k/smb4kmainwindow.cpp:136
+#: smb4k/smb4kmainwindow.cpp:137
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Dock Widgets"
 
-#: smb4k/smb4kmainwindow.cpp:241 smb4k/smb4ksharesmenu.cpp:38
+#: smb4k/smb4kmainwindow.cpp:242 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Muntitaj Kundividaĵoj"
 
-#: smb4k/smb4kmainwindow.cpp:403
+#: smb4k/smb4kmainwindow.cpp:417
 #, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -573,103 +574,135 @@ msgstr ""
 "<qt>Fermo de la ĉefa fenestro pluigos Smb4K funkciantan en la sistempleto."
 "<br>Uzu <i>Ĉesi</i> de la menuo <i>Dosiero</i> por ĉesi la aplikaĵon.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:405
+#: smb4k/smb4kmainwindow.cpp:419
 #, kde-format
 msgid "Docking"
 msgstr "Aldokiĝo"
 
-#: smb4k/smb4kmainwindow.cpp:469
+#: smb4k/smb4kmainwindow.cpp:483
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Nuntempe ne estas kundividaĵoj muntitaj."
 
-#: smb4k/smb4kmainwindow.cpp:472
+#: smb4k/smb4kmainwindow.cpp:486
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Estas aktuale %1 kundividaĵo muntita."
 msgstr[1] "Estas aktuale %1 kundividaĵoj muntitaj."
 
-#: smb4k/smb4kmainwindow.cpp:625
+#: smb4k/smb4kmainwindow.cpp:639
 #, kde-format
 msgid "The wallet is used."
 msgstr "La monujo estas uzata."
 
-#: smb4k/smb4kmainwindow.cpp:628
+#: smb4k/smb4kmainwindow.cpp:642
 #, kde-format
 msgid "The password dialog is used."
 msgstr "La dialogo de pasvorto estas uzata."
 
-#: smb4k/smb4kmainwindow.cpp:638
+#: smb4k/smb4kmainwindow.cpp:652
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Serĉante laborgrupojn kaj domajnojn..."
 
-#: smb4k/smb4kmainwindow.cpp:643
+#: smb4k/smb4kmainwindow.cpp:657
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Serĉante gastigantojn en domajno %1..."
 
-#: smb4k/smb4kmainwindow.cpp:648
+#: smb4k/smb4kmainwindow.cpp:662
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Serĉante kundividaĵojn provizitajn de gastiganto %1..."
 
-#: smb4k/smb4kmainwindow.cpp:656 smb4k/smb4kmainwindow.cpp:664
+#: smb4k/smb4kmainwindow.cpp:670 smb4k/smb4kmainwindow.cpp:678
 #, kde-format
 msgid "Looking for files and directories in %1..."
 msgstr "Serĉante dosierojn kaj dosierujojn en %1..."
 
-#: smb4k/smb4kmainwindow.cpp:681
+#: smb4k/smb4kmainwindow.cpp:695
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Vekante forajn gastigantojn..."
 
-#: smb4k/smb4kmainwindow.cpp:686
+#: smb4k/smb4kmainwindow.cpp:700
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Sendante dosieron al presilo %1..."
 
-#: smb4k/smb4kmainwindow.cpp:690
+#: smb4k/smb4kmainwindow.cpp:704
 #, kde-format
 msgid "Searching..."
 msgstr "Serĉante..."
 
-#: smb4k/smb4kmainwindow.cpp:708 smb4k/smb4kmainwindow.cpp:745
-#: smb4k/smb4kmainwindow.cpp:857
+#: smb4k/smb4kmainwindow.cpp:722 smb4k/smb4kmainwindow.cpp:759
+#: smb4k/smb4kmainwindow.cpp:871
 #, kde-format
 msgid "Done."
 msgstr "Farita."
 
-#: smb4k/smb4kmainwindow.cpp:718
+#: smb4k/smb4kmainwindow.cpp:732
 #, kde-format
 msgid "Mounting..."
 msgstr "Muntante..."
 
-#: smb4k/smb4kmainwindow.cpp:722
+#: smb4k/smb4kmainwindow.cpp:736
 #, kde-format
 msgid "Unmounting..."
 msgstr "Malmuntante..."
 
-#: smb4k/smb4kmainwindow.cpp:726
+#: smb4k/smb4kmainwindow.cpp:740
 #, kde-format
 msgid "Waking up host..."
 msgstr "Vekante gastiganton..."
 
-#: smb4k/smb4kmainwindow.cpp:756
+#: smb4k/smb4kmainwindow.cpp:770
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 estis muntita sukcese."
 
-#: smb4k/smb4kmainwindow.cpp:789
+#: smb4k/smb4kmainwindow.cpp:803
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 estis malmuntita sukcese."
 
-#: smb4k/smb4kmainwindow.cpp:845
+#: smb4k/smb4kmainwindow.cpp:859
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Sinkronigante %1"
+
+#: smb4k/smb4kmountdialog.cpp:34
+#, fuzzy, kde-format
+#| msgid "&Open Mount Dialog"
+msgid "Mount Dialog"
+msgstr "Malfermi Munto-Dial&ogon"
+
+#: smb4k/smb4kmountdialog.cpp:50
+#, kde-format
+msgid ""
+"Enter the location and optionally the IP address and workgroup to mount a "
+"share."
+msgstr ""
+
+#: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
+#: smb4k/smb4ktooltip.cpp:301
+#, kde-format
+msgid "Location:"
+msgstr "Loko:"
+
+#: smb4k/smb4kmountdialog.cpp:105
+#, fuzzy, kde-format
+#| msgid "Bookmark Editor"
+msgid "Bookmark this share"
+msgstr "Legosigna Redaktoro"
+
+#: smb4k/smb4kmountdialog.cpp:144
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgctxt "Bookmark a share in the mount dialog."
+msgid "Bookmark >>"
+msgstr "Legosignoj"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -721,7 +754,7 @@ msgstr "Aldoni Proprajn A&gordojn"
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Malfermi Munto-Dial&ogon"
@@ -773,7 +806,7 @@ msgid "&Unmount"
 msgstr "&Malkroĉi"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:238
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:979
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -789,7 +822,7 @@ msgstr "Skani Komputilo&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Skani Labo&rgrupon"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
@@ -963,11 +996,6 @@ msgstr "Muntita:"
 #, kde-format
 msgid "Host:"
 msgstr "Gastiganto:"
-
-#: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
-#, kde-format
-msgid "Location:"
-msgstr "Loko:"
 
 #: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
 #: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310

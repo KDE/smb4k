@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-18 00:54+0000\n"
+"POT-Creation-Date: 2023-07-01 00:48+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -48,7 +48,7 @@ msgstr "Sýna tengipunkt í stað nafns á sameign"
 msgid "The unmount process could not be started."
 msgstr "Ekki tókst að útbúa möppuna %1."
 
-#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:56
+#: smb4k/main.cpp:45 smb4k/smb4ksystemtray.cpp:55
 #, kde-format
 msgid "Smb4K"
 msgstr "Smb4K"
@@ -127,7 +127,7 @@ msgstr "Sameignasýn"
 msgid "Bookmark Editor"
 msgstr "Bókamerki"
 
-#: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:118
+#: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:137
 #, kde-format
 msgid "Bookmarks"
 msgstr "Bókamerki"
@@ -137,7 +137,7 @@ msgstr "Bókamerki"
 msgid "&Edit Bookmarks"
 msgstr "&Sýsla með bókamerki"
 
-#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:146
+#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:147
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
@@ -149,44 +149,44 @@ msgstr "&Bæta við bókamerki"
 msgid "Mount Bookmarks"
 msgstr "&Sýsla með bókamerki"
 
-#: smb4k/smb4kconfigdialog.cpp:113
+#: smb4k/smb4kconfigdialog.cpp:132
 #, fuzzy, kde-format
 msgid "User Interface"
 msgstr "Notandaviðmót"
 
-#: smb4k/smb4kconfigdialog.cpp:114 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Netkerfi"
 
-#: smb4k/smb4kconfigdialog.cpp:115
+#: smb4k/smb4kconfigdialog.cpp:134
 #, kde-format
 msgid "Mounting"
 msgstr "Tengi"
 
-#: smb4k/smb4kconfigdialog.cpp:116
+#: smb4k/smb4kconfigdialog.cpp:135
 #, kde-format
 msgid "Authentication"
 msgstr "Auðkenning"
 
-#: smb4k/smb4kconfigdialog.cpp:117
+#: smb4k/smb4kconfigdialog.cpp:136
 #, kde-format
 msgid "Synchronization"
 msgstr "Samræming"
 
-#: smb4k/smb4kconfigdialog.cpp:119
+#: smb4k/smb4kconfigdialog.cpp:138
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Custom Settings"
 msgstr "Algengar stillingar"
 
-#: smb4k/smb4kconfigdialog.cpp:120 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:139 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:143
+#: smb4k/smb4kconfigdialog.cpp:162
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -217,14 +217,14 @@ msgid "Save"
 msgstr "Sameign"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
-#: smb4k/smb4kconfigpagebookmarks.cpp:121
+#: smb4k/smb4kconfigpagebookmarks.cpp:127
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
 msgstr "Breyta"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
-#: smb4k/smb4kconfigpagebookmarks.cpp:133
+#: smb4k/smb4kconfigpagebookmarks.cpp:139
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
 #, kde-format
 msgid "Remove"
@@ -256,45 +256,46 @@ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 msgid "Set the username and password for the default login."
 msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:59
+#: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:115
 #, fuzzy, kde-format
 msgid "Label:"
 msgstr "Merki:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:122
 #, kde-format
 msgid "Category:"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:74 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
 #, fuzzy, kde-format
 #| msgid "User:"
 msgid "Username:"
 msgstr "Notandi:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:82 smb4k/smb4ktooltip.cpp:216
+#: smb4k/smb4kconfigpagebookmarks.cpp:86 smb4k/smb4kmountdialog.cpp:80
+#: smb4k/smb4ktooltip.cpp:216
 #, kde-format
 msgid "Workgroup:"
 msgstr "Vinnuhópur:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:89 smb4k/smb4ktooltip.cpp:213
-#: smb4k/smb4ktooltip.cpp:244
+#: smb4k/smb4kconfigpagebookmarks.cpp:94 smb4k/smb4kmountdialog.cpp:73
+#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "IP vistfang:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:127
+#: smb4k/smb4kconfigpagebookmarks.cpp:133
 #, kde-format
 msgid "Add Category"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:139
+#: smb4k/smb4kconfigpagebookmarks.cpp:145
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
 msgid "Clear List"
 msgstr "Hreinsa lista"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:420
+#: smb4k/smb4kconfigpagebookmarks.cpp:426
 #, kde-format
 msgid "New Category"
 msgstr ""
@@ -563,7 +564,7 @@ msgstr "Gátsummur"
 msgid "Main Window"
 msgstr ""
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:218
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:219
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Netumhverfi"
@@ -573,17 +574,17 @@ msgstr "Netumhverfi"
 msgid "Shares View"
 msgstr "Sameignasýn"
 
-#: smb4k/smb4kmainwindow.cpp:136
+#: smb4k/smb4kmainwindow.cpp:137
 #, fuzzy, kde-format
 msgid "Dock Widgets"
 msgstr "flipahluta"
 
-#: smb4k/smb4kmainwindow.cpp:241 smb4k/smb4ksharesmenu.cpp:38
+#: smb4k/smb4kmainwindow.cpp:242 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Tengdar sameignir"
 
-#: smb4k/smb4kmainwindow.cpp:403
+#: smb4k/smb4kmainwindow.cpp:417
 #, fuzzy, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
@@ -592,112 +593,144 @@ msgstr ""
 "Smb4K mun keyra áfram í kerfisbakkanum. Notaðu 'Skrá->Hætta' til að hætta í "
 "forritinu."
 
-#: smb4k/smb4kmainwindow.cpp:405
+#: smb4k/smb4kmainwindow.cpp:419
 #, fuzzy, kde-format
 msgid "Docking"
 msgstr "Spjal&dhlutar"
 
-#: smb4k/smb4kmainwindow.cpp:469
+#: smb4k/smb4kmainwindow.cpp:483
 #, fuzzy, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Ekki tókst að útbúa möppuna %1."
 
-#: smb4k/smb4kmainwindow.cpp:472
+#: smb4k/smb4kmainwindow.cpp:486
 #, fuzzy, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Ekki tókst að útbúa möppuna %1."
 msgstr[1] "Ekki tókst að útbúa möppuna %1."
 
-#: smb4k/smb4kmainwindow.cpp:625
+#: smb4k/smb4kmainwindow.cpp:639
 #, fuzzy, kde-format
 #| msgid "The wallet \"%1\" could not be opened."
 msgid "The wallet is used."
 msgstr "Ekki tókst að opna veskið \"%1\"."
 
-#: smb4k/smb4kmainwindow.cpp:628
+#: smb4k/smb4kmainwindow.cpp:642
 #, fuzzy, kde-format
 #| msgid "The wallet \"%1\" could not be opened."
 msgid "The password dialog is used."
 msgstr "Ekki tókst að opna veskið \"%1\"."
 
-#: smb4k/smb4kmainwindow.cpp:638
+#: smb4k/smb4kmainwindow.cpp:652
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Leita að vinnuhópum og lénum..."
 
-#: smb4k/smb4kmainwindow.cpp:643
+#: smb4k/smb4kmainwindow.cpp:657
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Leita að miðlurum á léninu %1..."
 
-#: smb4k/smb4kmainwindow.cpp:648
+#: smb4k/smb4kmainwindow.cpp:662
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Leita að sameignum sem boðið er upp á af miðlaranum %1..."
 
-#: smb4k/smb4kmainwindow.cpp:656 smb4k/smb4kmainwindow.cpp:664
+#: smb4k/smb4kmainwindow.cpp:670 smb4k/smb4kmainwindow.cpp:678
 #, fuzzy, kde-format
 #| msgid "Looking for hosts in domain %1..."
 msgid "Looking for files and directories in %1..."
 msgstr "Leita að miðlurum á léninu %1..."
 
-#: smb4k/smb4kmainwindow.cpp:681
+#: smb4k/smb4kmainwindow.cpp:695
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:686
+#: smb4k/smb4kmainwindow.cpp:700
 #, fuzzy, kde-format
 #| msgid "Sending file to printer..."
 msgid "Sending file to printer %1..."
 msgstr "Sendi skrá á prentara..."
 
-#: smb4k/smb4kmainwindow.cpp:690
+#: smb4k/smb4kmainwindow.cpp:704
 #, fuzzy, kde-format
 #| msgid "Searching for host..."
 msgid "Searching..."
 msgstr "Leita eftir miðlara..."
 
-#: smb4k/smb4kmainwindow.cpp:708 smb4k/smb4kmainwindow.cpp:745
-#: smb4k/smb4kmainwindow.cpp:857
+#: smb4k/smb4kmainwindow.cpp:722 smb4k/smb4kmainwindow.cpp:759
+#: smb4k/smb4kmainwindow.cpp:871
 #, kde-format
 msgid "Done."
 msgstr "Lokið."
 
-#: smb4k/smb4kmainwindow.cpp:718
+#: smb4k/smb4kmainwindow.cpp:732
 #, fuzzy, kde-format
 #| msgid "Mounting"
 msgid "Mounting..."
 msgstr "Tengi"
 
-#: smb4k/smb4kmainwindow.cpp:722
+#: smb4k/smb4kmainwindow.cpp:736
 #, fuzzy, kde-format
 #| msgid "Unmounting share %1..."
 msgid "Unmounting..."
 msgstr "Aftengi sameignina %1..."
 
-#: smb4k/smb4kmainwindow.cpp:726
+#: smb4k/smb4kmainwindow.cpp:740
 #, fuzzy, kde-format
 #| msgid "Looking for hosts in domain %1..."
 msgid "Waking up host..."
 msgstr "Leita að miðlurum á léninu %1..."
 
-#: smb4k/smb4kmainwindow.cpp:756
+#: smb4k/smb4kmainwindow.cpp:770
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:789
+#: smb4k/smb4kmainwindow.cpp:803
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr ""
 
-#: smb4k/smb4kmainwindow.cpp:845
+#: smb4k/smb4kmainwindow.cpp:859
 #, fuzzy, kde-format
 #| msgid "Synchronizing data..."
 msgid "Synchronizing %1"
 msgstr "Samræmi gögn..."
+
+#: smb4k/smb4kmountdialog.cpp:34
+#, fuzzy, kde-format
+#| msgid "&Open Mount Dialog"
+msgid "Mount Dialog"
+msgstr "&Opna tengingarglugga"
+
+#: smb4k/smb4kmountdialog.cpp:50
+#, kde-format
+msgid ""
+"Enter the location and optionally the IP address and workgroup to mount a "
+"share."
+msgstr ""
+
+#: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
+#: smb4k/smb4ktooltip.cpp:301
+#, fuzzy, kde-format
+msgid "Location:"
+msgstr "Aðgerðir"
+
+#: smb4k/smb4kmountdialog.cpp:105
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgid "Bookmark this share"
+msgstr "Bókamerki"
+
+#: smb4k/smb4kmountdialog.cpp:144
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgctxt "Bookmark a share in the mount dialog."
+msgid "Bookmark >>"
+msgstr "Bókamerki"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -750,7 +783,7 @@ msgstr "Sérsniðnir &valkostir"
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Opna tengingarglugga"
@@ -802,7 +835,7 @@ msgid "&Unmount"
 msgstr "&Aftengja"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:238
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:979
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -818,7 +851,7 @@ msgstr "&Skanna vél"
 msgid "Scan Wo&rkgroup"
 msgstr "&Skanna vinnuhóp"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
@@ -1001,11 +1034,6 @@ msgstr "Tengt:"
 #| msgid "Host"
 msgid "Host:"
 msgstr "Vél"
-
-#: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
-#, fuzzy, kde-format
-msgid "Location:"
-msgstr "Aðgerðir"
 
 #: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
 #: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
@@ -2459,11 +2487,6 @@ msgstr "Stærð:"
 #~ msgid ""
 #~ "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 #~ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
-
-#, fuzzy
-#~| msgid "&Open Mount Dialog"
-#~ msgid "Mount Dialog"
-#~ msgstr "&Opna tengingarglugga"
 
 #, fuzzy
 #~| msgid "U&nmount All"
