@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:47+0000\n"
+"POT-Creation-Date: 2023-07-01 00:48+0000\n"
 "PO-Revision-Date: 2022-07-13 11:14+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1919,35 +1919,10 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%2의 %1"
 
-#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1의 형식은 지원하지 않습니다."
-
-#: smb4kbookmarkhandler_p.cpp:35
-#, kde-format
-msgid "Add Bookmarks"
-msgstr "책갈피 추가"
-
-#: smb4kbookmarkhandler_p.cpp:111
-#, kde-format
-msgid ""
-"All listed shares will be bookmarked. To edit the label or group, click the "
-"respective bookmark entry."
-msgstr ""
-"목록에 있는 모든 공유를 책갈피에 추가합니다. 레이블이나 그룹을 편집하려면 해"
-"당 책갈피 항목을 클릭하십시오."
-
-#. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
-#, kde-format
-msgid "Label:"
-msgstr "레이블:"
-
-#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
-#, kde-format
-msgid "Category:"
-msgstr "분류:"
 
 #: smb4kclient_p.cpp:1252
 #, kde-format
@@ -2010,7 +1985,7 @@ msgstr "정보"
 msgid "Printer:"
 msgstr "프린터:"
 
-#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#: smb4kclient_p.cpp:2360
 #, kde-format
 msgid "IP Address:"
 msgstr "IP 주소:"
@@ -2203,7 +2178,7 @@ msgstr "사용자:"
 msgid "Clear List"
 msgstr "목록 비우기"
 
-#: smb4kmounter.cpp:753
+#: smb4kmounter.cpp:778
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2215,100 +2190,10 @@ msgstr ""
 "<qt><p><b>%1</b> 공유가<br><b>%2</b>에 마운트되어 있으며 <b>%3</b> 사용자가 "
 "소유하고 있습니다.</p><p>마운트를 해제하시겠습니까?</p></qt>"
 
-#: smb4kmounter.cpp:758
+#: smb4kmounter.cpp:783
 #, kde-format
 msgid "Foreign Share"
 msgstr "외부 공유"
-
-#: smb4kmounter_p.cpp:47
-#, kde-format
-msgid "Mount Share"
-msgstr "공유 마운트"
-
-#: smb4kmounter_p.cpp:118
-#, kde-format
-msgid ""
-"Enter the location and optionally the IP address and workgroup to mount a "
-"share."
-msgstr ""
-"공유를 마운트하려면 공유의 위치와 IP 주소, 작업 그룹(선택 사항)을 입력하십시"
-"오."
-
-#: smb4kmounter_p.cpp:128
-#, kde-format
-msgid "Location:"
-msgstr "위치:"
-
-#: smb4kmounter_p.cpp:132
-#, kde-format
-msgid ""
-"The location of the share is provided by the Uniform Resource Locator (URL). "
-"It generally has the following syntax: [smb:]//[USER:PASSWORD@]HOST[:PORT]/"
-"SHARE. The scheme, username, password and port are optional. You should omit "
-"to enter the password here, because it is shown in cleartext."
-msgstr ""
-"공유 위치는 URL로 지정해야 합니다. 다음 문법을 사용합니다: [smb:]//[USER:"
-"PASSWORD@]HOST[:PORT]/SHARE. 스키마, 사용자 이름, 암호, 포트는 선택 사항입니"
-"다. 여기에 암호를 입력하면 평문으로 표시되기 때문에 암호를 입력하면 안 됩니"
-"다."
-
-#: smb4kmounter_p.cpp:145
-#, kde-format
-msgid ""
-"The Internet Protocol (IP) address identifies the host in the network and "
-"indicates where it is. It has two valid formats, the one known as IP version "
-"4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-msgstr ""
-"IP 주소는 네트워크의 호스트를 식별하고 위치를 나타냅니다. IPv4(예: "
-"192.168.2.11) 또는 IPv6(예: 2001:0db8:85a3:08d3:1319:8a2e:0370:7334) 주소 형"
-"식을 사용할 수 있습니다."
-
-#: smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "작업 그룹:"
-
-#: smb4kmounter_p.cpp:158
-#, kde-format
-msgid ""
-"The workgroup or domain identifies the peer-to-peer computer network the "
-"host is located in."
-msgstr ""
-"작업 그룹이나 도메인은 호스트가 속해 있는 P2P 컴퓨터 네트워크를 식별합니다."
-
-#: smb4kmounter_p.cpp:180
-#, kde-format
-msgid "Add this share to the bookmarks"
-msgstr "이 공유를 책갈피에 추가"
-
-#: smb4kmounter_p.cpp:183
-#, kde-format
-msgid ""
-"If you tick this checkbox, the share will be bookmarked and you can access "
-"it e.g. through the \"Bookmarks\" menu entry in the main window."
-msgstr ""
-"이 옵션을 사용하면 공유를 책갈피에 등록하고 주 창의 \"책갈피\" 메뉴 항목에서 "
-"접근할 수 있습니다."
-
-#: smb4kmounter_p.cpp:192
-#, kde-format
-msgid ""
-"Add a label describing your bookmark. It is then shown instead of the "
-"location."
-msgstr "책갈피를 설명하는 레이블을 추가합니다. 위치 대신에 표시할 수 있습니다."
-
-#: smb4kmounter_p.cpp:202
-#, kde-format
-msgid ""
-"Assign a category to your bookmark. This way you can organize your bookmarks."
-msgstr "책갈피에 분류를 할당합니다. 이를 통해 책갈피를 정리할 수 있습니다."
-
-#: smb4kmounter_p.cpp:225
-#, kde-format
-msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-msgid "Bookmark >>"
-msgstr "책갈피 >>"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -3717,6 +3602,92 @@ msgstr "<qt>호스트 <b>%1</b>의 사용자 이름 및 암호를 입력하십�
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>공유 <b>%1</b>의 사용자 이름 및 암호를 입력하십시오.</qt>"
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "책갈피 추가"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "목록에 있는 모든 공유를 책갈피에 추가합니다. 레이블이나 그룹을 편집하려면 "
+#~ "해당 책갈피 항목을 클릭하십시오."
+
+#~ msgid "Label:"
+#~ msgstr "레이블:"
+
+#~ msgid "Category:"
+#~ msgstr "분류:"
+
+#~ msgid "Mount Share"
+#~ msgstr "공유 마운트"
+
+#~ msgid ""
+#~ "Enter the location and optionally the IP address and workgroup to mount a "
+#~ "share."
+#~ msgstr ""
+#~ "공유를 마운트하려면 공유의 위치와 IP 주소, 작업 그룹(선택 사항)을 입력하십"
+#~ "시오."
+
+#~ msgid "Location:"
+#~ msgstr "위치:"
+
+#~ msgid ""
+#~ "The location of the share is provided by the Uniform Resource Locator "
+#~ "(URL). It generally has the following syntax: [smb:]//[USER:"
+#~ "PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are "
+#~ "optional. You should omit to enter the password here, because it is shown "
+#~ "in cleartext."
+#~ msgstr ""
+#~ "공유 위치는 URL로 지정해야 합니다. 다음 문법을 사용합니다: [smb:]//[USER:"
+#~ "PASSWORD@]HOST[:PORT]/SHARE. 스키마, 사용자 이름, 암호, 포트는 선택 사항입"
+#~ "니다. 여기에 암호를 입력하면 평문으로 표시되기 때문에 암호를 입력하면 안 "
+#~ "됩니다."
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "IP 주소는 네트워크의 호스트를 식별하고 위치를 나타냅니다. IPv4(예: "
+#~ "192.168.2.11) 또는 IPv6(예: 2001:0db8:85a3:08d3:1319:8a2e:0370:7334) 주소 "
+#~ "형식을 사용할 수 있습니다."
+
+#~ msgid "Workgroup:"
+#~ msgstr "작업 그룹:"
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "작업 그룹이나 도메인은 호스트가 속해 있는 P2P 컴퓨터 네트워크를 식별합니"
+#~ "다."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "이 공유를 책갈피에 추가"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "이 옵션을 사용하면 공유를 책갈피에 등록하고 주 창의 \"책갈피\" 메뉴 항목에"
+#~ "서 접근할 수 있습니다."
+
+#~ msgid ""
+#~ "Add a label describing your bookmark. It is then shown instead of the "
+#~ "location."
+#~ msgstr ""
+#~ "책갈피를 설명하는 레이블을 추가합니다. 위치 대신에 표시할 수 있습니다."
+
+#~ msgid ""
+#~ "Assign a category to your bookmark. This way you can organize your "
+#~ "bookmarks."
+#~ msgstr "책갈피에 분류를 할당합니다. 이를 통해 책갈피를 정리할 수 있습니다."
+
+#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
+#~ msgid "Bookmark >>"
+#~ msgstr "책갈피 >>"
 
 #~ msgid "Edit Bookmarks"
 #~ msgstr "책갈피 편집"

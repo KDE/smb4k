@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-13 00:47+0000\n"
+"POT-Creation-Date: 2023-07-01 00:48+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1979,35 +1979,10 @@ msgstr ""
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:329 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:268
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Dat Forrmaat vun „%1“ warrt nich ünnerstütt."
-
-#: smb4kbookmarkhandler_p.cpp:35
-#, kde-format
-msgid "Add Bookmarks"
-msgstr "Leestekens tofögen"
-
-#: smb4kbookmarkhandler_p.cpp:111
-#, kde-format
-msgid ""
-"All listed shares will be bookmarked. To edit the label or group, click the "
-"respective bookmark entry."
-msgstr ""
-"All opföhrt Freegaven warrt de Leestekens toföögt. Klick bitte op en Indrag, "
-"wenn Du em Bewerken wullt."
-
-#. i18n("Add this share to the bookmarks"));
-#: smb4kbookmarkhandler_p.cpp:137 smb4kmounter_p.cpp:187
-#, kde-format
-msgid "Label:"
-msgstr "Beteker:"
-
-#: smb4kbookmarkhandler_p.cpp:145 smb4kmounter_p.cpp:197
-#, kde-format
-msgid "Category:"
-msgstr ""
 
 #: smb4kclient_p.cpp:1252
 #, fuzzy, kde-format
@@ -2075,7 +2050,7 @@ msgstr "Akschonen"
 msgid "Printer:"
 msgstr "Drucker"
 
-#: smb4kclient_p.cpp:2360 smb4kmounter_p.cpp:141
+#: smb4kclient_p.cpp:2360
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-Adress:"
@@ -2279,7 +2254,7 @@ msgstr "Bruker:"
 msgid "Clear List"
 msgstr "List leddig maken"
 
-#: smb4kmounter.cpp:753
+#: smb4kmounter.cpp:778
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
@@ -2291,104 +2266,10 @@ msgstr ""
 "<qt><p>De Freegaav <b>%1</b> is inhangt op<br><b>%2</b> un höört den Bruker "
 "<b>%3</b> to.</p><p>Wullt Du ehr redig afhangen?</p></qt>"
 
-#: smb4kmounter.cpp:758
+#: smb4kmounter.cpp:783
 #, kde-format
 msgid "Foreign Share"
 msgstr "Frömd Freegaav"
-
-#: smb4kmounter_p.cpp:47
-#, kde-format
-msgid "Mount Share"
-msgstr "Freegaven inhangen"
-
-#: smb4kmounter_p.cpp:118
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the location (UNC address) and optionally the IP address and "
-#| "workgroup to mount a share."
-msgid ""
-"Enter the location and optionally the IP address and workgroup to mount a "
-"share."
-msgstr ""
-"Giff bitte de UNC-Adress un köörfree de IP-Adress un den Arbeitkoppel för't "
-"Inhangen vun de Freegaav in."
-
-#: smb4kmounter_p.cpp:128
-#, fuzzy, kde-format
-#| msgid "Notifications"
-msgid "Location:"
-msgstr "Bescheden"
-
-#: smb4kmounter_p.cpp:132
-#, kde-format
-msgid ""
-"The location of the share is provided by the Uniform Resource Locator (URL). "
-"It generally has the following syntax: [smb:]//[USER:PASSWORD@]HOST[:PORT]/"
-"SHARE. The scheme, username, password and port are optional. You should omit "
-"to enter the password here, because it is shown in cleartext."
-msgstr ""
-
-#: smb4kmounter_p.cpp:145
-#, kde-format
-msgid ""
-"The Internet Protocol (IP) address identifies the host in the network and "
-"indicates where it is. It has two valid formats, the one known as IP version "
-"4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-msgstr ""
-"De Internet-Protokoll-(IP-)Adress maakt den Reekner in't Nettwark begäng un "
-"wiest dor op, woneem he is. Dat gifft dor twee Formaten för, vun de een as "
-"„IPv4“ (IP Verschoon 4) begäng is, de anner as Verschoon 6 („IPv6“, a.B. "
-"2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-
-#: smb4kmounter_p.cpp:154
-#, kde-format
-msgid "Workgroup:"
-msgstr "Arbeidkoppel:"
-
-#: smb4kmounter_p.cpp:158
-#, kde-format
-msgid ""
-"The workgroup or domain identifies the peer-to-peer computer network the "
-"host is located in."
-msgstr ""
-"De Arbeitkoppel oder Domään gifft dat Partnernettwark an, dat de Reekner "
-"tohöört."
-
-#: smb4kmounter_p.cpp:180
-#, kde-format
-msgid "Add this share to the bookmarks"
-msgstr "Disse Freegaav de Leestekens tofögen"
-
-#: smb4kmounter_p.cpp:183
-#, kde-format
-msgid ""
-"If you tick this checkbox, the share will be bookmarked and you can access "
-"it e.g. through the \"Bookmarks\" menu entry in the main window."
-msgstr ""
-"Maakst Du dit an, warrt de Freegaav de Leestekens toföögt. Du kannst denn a."
-"B. över den Punkt „Leestekens“ binnen dat Hööftfinster sien Menü dor op "
-"togriepen."
-
-#: smb4kmounter_p.cpp:192
-#, kde-format
-msgid ""
-"Add a label describing your bookmark. It is then shown instead of the "
-"location."
-msgstr ""
-
-#: smb4kmounter_p.cpp:202
-#, kde-format
-msgid ""
-"Assign a category to your bookmark. This way you can organize your bookmarks."
-msgstr ""
-
-#: smb4kmounter_p.cpp:225
-#, fuzzy, kde-format
-#| msgid "Bookmark"
-msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-msgid "Bookmark >>"
-msgstr "Leesteken"
 
 #. i18n: ectx: label, entry (UseUserId), group (Mounting)
 #: smb4kmountsettings_bsd.kcfg:12 smb4kmountsettings_linux.kcfg:17
@@ -3867,6 +3748,76 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
+
+#~ msgid "Add Bookmarks"
+#~ msgstr "Leestekens tofögen"
+
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "All opföhrt Freegaven warrt de Leestekens toföögt. Klick bitte op en "
+#~ "Indrag, wenn Du em Bewerken wullt."
+
+#~ msgid "Label:"
+#~ msgstr "Beteker:"
+
+#~ msgid "Mount Share"
+#~ msgstr "Freegaven inhangen"
+
+#, fuzzy
+#~| msgid ""
+#~| "Enter the location (UNC address) and optionally the IP address and "
+#~| "workgroup to mount a share."
+#~ msgid ""
+#~ "Enter the location and optionally the IP address and workgroup to mount a "
+#~ "share."
+#~ msgstr ""
+#~ "Giff bitte de UNC-Adress un köörfree de IP-Adress un den Arbeitkoppel "
+#~ "för't Inhangen vun de Freegaav in."
+
+#, fuzzy
+#~| msgid "Notifications"
+#~ msgid "Location:"
+#~ msgstr "Bescheden"
+
+#~ msgid ""
+#~ "The Internet Protocol (IP) address identifies the host in the network and "
+#~ "indicates where it is. It has two valid formats, the one known as IP "
+#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
+#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+#~ msgstr ""
+#~ "De Internet-Protokoll-(IP-)Adress maakt den Reekner in't Nettwark begäng "
+#~ "un wiest dor op, woneem he is. Dat gifft dor twee Formaten för, vun de "
+#~ "een as „IPv4“ (IP Verschoon 4) begäng is, de anner as Verschoon 6 "
+#~ "(„IPv6“, a.B. 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
+
+#~ msgid "Workgroup:"
+#~ msgstr "Arbeidkoppel:"
+
+#~ msgid ""
+#~ "The workgroup or domain identifies the peer-to-peer computer network the "
+#~ "host is located in."
+#~ msgstr ""
+#~ "De Arbeitkoppel oder Domään gifft dat Partnernettwark an, dat de Reekner "
+#~ "tohöört."
+
+#~ msgid "Add this share to the bookmarks"
+#~ msgstr "Disse Freegaav de Leestekens tofögen"
+
+#~ msgid ""
+#~ "If you tick this checkbox, the share will be bookmarked and you can "
+#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
+#~ msgstr ""
+#~ "Maakst Du dit an, warrt de Freegaav de Leestekens toföögt. Du kannst denn "
+#~ "a.B. över den Punkt „Leestekens“ binnen dat Hööftfinster sien Menü dor op "
+#~ "togriepen."
+
+#, fuzzy
+#~| msgid "Bookmark"
+#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
+#~ msgid "Bookmark >>"
+#~ msgstr "Leesteken"
 
 #~ msgid "Edit Bookmarks"
 #~ msgstr "Leestekens bewerken"
