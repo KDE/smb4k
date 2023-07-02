@@ -12,7 +12,6 @@ include_directories(
 set(smb4kqmlplugin_LIB_SRC
   smb4kbookmarkobject.cpp
   smb4kdeclarative.cpp
-  smb4kdeclarative_p.cpp
   smb4knetworkobject.cpp
   smb4kprofileobject.cpp
   smb4kqmlplugin.cpp)

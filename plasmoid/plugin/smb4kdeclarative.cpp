@@ -19,10 +19,12 @@
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kworkgroup.h"
+#include "smb4kbookmarkeditor.h"
 #include "smb4kbookmarkobject.h"
-#include "smb4kdeclarative_p.h"
+#include "smb4kmountdialog.h"
 #include "smb4knetworkobject.h"
 #include "smb4kprofileobject.h"
+
 //
 // Qt includes
 #include <QDebug>
@@ -33,6 +35,20 @@
 #include <KMessageBox>
 #include <KPluginFactory>
 #include <KPluginMetaData>
+
+class Smb4KDeclarativePrivate
+{
+public:
+    QList<Smb4KNetworkObject *> workgroupObjects;
+    QList<Smb4KNetworkObject *> hostObjects;
+    QList<Smb4KNetworkObject *> shareObjects;
+    QList<Smb4KNetworkObject *> mountedObjects;
+    QList<Smb4KBookmarkObject *> bookmarkObjects;
+    QList<Smb4KBookmarkObject *> bookmarkCategoryObjects;
+    QList<Smb4KProfileObject *> profileObjects;
+    QPointer<Smb4KBookmarkEditor> bookmarkEditor;
+    QPointer<Smb4KMountDialog> mountDialog;
+};
 
 Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
     : QObject(parent)

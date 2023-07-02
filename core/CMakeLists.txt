@@ -27,7 +27,6 @@ set(smb4kcore_LIB_SRCS
   smb4kglobal.cpp
   smb4kglobal_p.cpp
   smb4khardwareinterface.cpp
-  smb4khardwareinterface_p.cpp
   smb4khomesshareshandler.cpp
   smb4khomesshareshandler_p.cpp
   smb4khost.cpp

@@ -7,16 +7,18 @@
 
 // application specific includes
 #include "smb4khardwareinterface.h"
-#include "smb4khardwareinterface_p.h"
 
 // system includes
 #include <unistd.h>
 
 // Qt includes
+#include <QDBusInterface>
 #include <QDBusReply>
+#include <QDBusUnixFileDescriptor>
 #include <QDebug>
 #include <QNetworkInterface>
 #include <QString>
+#include <QStringList>
 #include <QTimer>
 
 // KDE includes
@@ -28,6 +30,24 @@
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 #include <KMountPoint>
 #endif
+
+class Smb4KHardwareInterfacePrivate
+{
+public:
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+    QStringList mountPoints;
+#endif
+    QScopedPointer<QDBusInterface> dbusInterface;
+    QDBusUnixFileDescriptor fileDescriptor;
+    bool systemOnline;
+    QStringList udis;
+};
+
+class Smb4KHardwareInterfaceStatic
+{
+public:
+    Smb4KHardwareInterface instance;
+};
 
 Q_GLOBAL_STATIC(Smb4KHardwareInterfaceStatic, p);
 
