@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-02 02:38+0000\n"
-"PO-Revision-Date: 2023-06-08 11:58+0300\n"
+"PO-Revision-Date: 2023-07-01 12:44+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -567,7 +567,7 @@ msgstr "Cüzdan kullanıldı."
 #: smb4k/smb4kmainwindow.cpp:633
 #, kde-format
 msgid "The password dialog is used."
-msgstr "Parola penceresi kullanıldı."
+msgstr "Parola iletişim kutusu kullanıldı."
 
 #: smb4k/smb4kmainwindow.cpp:643
 #, kde-format
@@ -682,7 +682,7 @@ msgstr "Gelişmiş Bağlama Ayarları"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr "&Bağlama Penceresini Aç"
+msgstr "&Bağlama İletişim Kutusunu Aç"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
