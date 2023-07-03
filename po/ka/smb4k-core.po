@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-06-09 06:24+0200\n"
+"PO-Revision-Date: 2023-07-02 06:59+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -2616,7 +2616,7 @@ msgstr "ჩაწერადი-წაკითხვადი"
 #: smb4kmountsettings_linux.kcfg:155
 #, kde-format
 msgid "read-only"
-msgstr ""
+msgstr "მხოლოდ-წაკითხვადი"
 
 #. i18n: ectx: label, entry (ForceUID), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:161
@@ -2838,7 +2838,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:251
 #, kde-format
 msgid "Security mode:"
-msgstr ""
+msgstr "უსაფრთხოების რეჟიმი:"
 
 #. i18n: ectx: whatsthis, entry (UseSecurityMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (SecurityMode), group (Mounting)
@@ -3135,7 +3135,7 @@ msgstr ""
 #: smb4kprofilemanager_p.cpp:99
 #, kde-format
 msgid "Old Profile:"
-msgstr ""
+msgstr "ძველი პროფილი:"
 
 #: smb4kprofilemanager_p.cpp:105 smb4kprofilemanager_p.cpp:122
 #: smb4kprofilemanager_p.cpp:150 smb4kprofilemanager_p.cpp:159
@@ -3176,7 +3176,7 @@ msgstr "სინქრონიზაცია"
 #: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
 #, kde-format
 msgid "Source"
-msgstr ""
+msgstr "წყარო"
 
 #: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
 #, kde-format

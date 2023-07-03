@@ -703,10 +703,9 @@ msgid "Synchronizing %1"
 msgstr "Synchronisation de %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Open Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "&Ouvrir la boîte de dialogue de montage"
+msgstr "Boîte de dialogue de montage"
 
 #: smb4k/smb4kmountdialog.cpp:50
 #, kde-format
