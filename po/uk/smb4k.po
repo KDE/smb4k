@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-06-08 09:05+0300\n"
+"PO-Revision-Date: 2023-07-01 09:03+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -691,10 +691,9 @@ msgid "Synchronizing %1"
 msgstr "Синхронізація %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Open Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "&Відкрити вікно монтування"
+msgstr "Вікно монтування"
 
 #: smb4k/smb4kmountdialog.cpp:50
 #, kde-format
@@ -702,6 +701,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Вкажіть розташування, а також, якщо хочете, IP-адресу та робочу групу для "
+"монтування спільного ресурсу."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -710,17 +711,15 @@ msgid "Location:"
 msgstr "Розташування:"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Редактор закладок"
+msgstr "Створити закладку для цього ресурсу"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Закладки"
+msgstr "Закладка >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format

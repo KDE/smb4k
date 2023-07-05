@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-06-08 11:58+0300\n"
+"PO-Revision-Date: 2023-07-01 12:44+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -604,7 +604,7 @@ msgstr "Cüzdan kullanıldı."
 #: smb4k/smb4kmainwindow.cpp:642
 #, kde-format
 msgid "The password dialog is used."
-msgstr "Parola penceresi kullanıldı."
+msgstr "Parola iletişim kutusu kullanıldı."
 
 #: smb4k/smb4kmainwindow.cpp:652
 #, kde-format
@@ -678,10 +678,9 @@ msgid "Synchronizing %1"
 msgstr "%1 eşzamanlanıyor"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Open Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "&Bağlama Penceresini Aç"
+msgstr "Bağlama İletişim Kutusu"
 
 #: smb4k/smb4kmountdialog.cpp:50
 #, kde-format
@@ -689,6 +688,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Bir paylaşımı bağlamak için konumu ve isteğe bağlı olarak IP adresini ve "
+"çalışma grubunu girin."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -697,17 +698,15 @@ msgid "Location:"
 msgstr "Konum:"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Yer İmi Düzenleyicisi"
+msgstr "Bu paylaşımı yer imlerine ekle"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Yer İmleri"
+msgstr "Yer İmlerine Ekle >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -762,7 +761,7 @@ msgstr "Kontrol+C"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
-msgstr "&Bağlama Penceresini Aç"
+msgstr "&Bağlama İletişim Kutusunu Aç"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:179
 #, kde-format

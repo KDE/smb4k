@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-03-29 16:16+0200\n"
+"PO-Revision-Date: 2023-07-03 12:00+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -668,10 +668,9 @@ msgid "Synchronizing %1"
 msgstr "Synchronizuji %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "Připojování"
+msgstr "Připojovací dialog"
 
 #: smb4k/smb4kmountdialog.cpp:50
 #, kde-format
@@ -687,17 +686,15 @@ msgid "Location:"
 msgstr "Umístění:"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Editor záložek"
+msgstr "Přidat sdílené úložiště do záložek"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Záložky"
+msgstr "Záložka >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format

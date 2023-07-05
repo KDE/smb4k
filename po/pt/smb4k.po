@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-03-27 23:15+0100\n"
+"PO-Revision-Date: 2023-07-02 02:26+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -703,10 +703,9 @@ msgid "Synchronizing %1"
 msgstr "A sincronizar o %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Open Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "Abrir a Janela de M&ontagem"
+msgstr "Janela de Montagem"
 
 #: smb4k/smb4kmountdialog.cpp:50
 #, kde-format
@@ -714,6 +713,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Indique a localização e, a título opcional, o endereço IP e o grupo de "
+"trabalho onde montar uma partilha."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -722,17 +723,15 @@ msgid "Location:"
 msgstr "Localização:"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Editor de Favoritos"
+msgstr "Adicionar esta partilha aos favoritos"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Favoritos"
+msgstr "Favoritos >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format

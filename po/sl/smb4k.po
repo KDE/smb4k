@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-06-08 06:16+0200\n"
+"PO-Revision-Date: 2023-07-01 08:40+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -684,10 +684,9 @@ msgid "Synchronizing %1"
 msgstr "Usklajevanje %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Open Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "Odpri pogovor o priklopu"
+msgstr "Odpri pogovor"
 
 #: smb4k/smb4kmountdialog.cpp:50
 #, kde-format
@@ -695,6 +694,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Vnesite lokacijo in neobvezno naslov IP in delovno skupino za priklop "
+"skupnega diska."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -703,17 +704,15 @@ msgid "Location:"
 msgstr "Kraj:"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Urejevalnik zaznamkov"
+msgstr "Zaznamuj ta skupni disk"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Zaznamki"
+msgstr "Zaznamek>>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format

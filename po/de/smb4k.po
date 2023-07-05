@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-06-12 00:20+0200\n"
+"PO-Revision-Date: 2023-07-01 18:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -682,19 +682,16 @@ msgstr "%1 wird abgeglichen ..."
 #: smb4k/smb4kmountdialog.cpp:34
 #, kde-format
 msgid "Mount Dialog"
-msgstr "Dialog zum Einbinden"
+msgstr "Einhängen-Dialog"
 
 #: smb4k/smb4kmountdialog.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the location (UNC address) and optionally the IP address and "
-#| "workgroup to mount a share."
+#, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
-"Geben Sie den Ort (UNC-Adresse) sowie wahlweise die IP-Addresse und "
-"Arbeitsgruppe ein, um eine Freigabe einzubinden."
+"Geben Sie den Ort sowie wahlweise die IP-Adresse und Arbeitsgruppe ein, um "
+"eine Freigabe einzuhängen."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -705,14 +702,13 @@ msgstr "Ort:"
 #: smb4k/smb4kmountdialog.cpp:105
 #, kde-format
 msgid "Bookmark this share"
-msgstr "Lesezeichen für diese Freigabe"
+msgstr "Lesezeichen für diese Freigabe hinzufügen"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmark"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Lesezeichen"
+msgstr "Lesezeichen >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format

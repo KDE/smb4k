@@ -3253,28 +3253,3 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
-
-#~ msgid "Add Bookmarks"
-#~ msgstr "Přidat záložky"
-
-#~ msgid "Label:"
-#~ msgstr "Popisek:"
-
-#~ msgid "Category:"
-#~ msgstr "Kategorie:"
-
-#~ msgid "Mount Share"
-#~ msgstr "Připojit Sdílení"
-
-#~ msgid "Location:"
-#~ msgstr "Umístění:"
-
-#~ msgid "Workgroup:"
-#~ msgstr "Pracovní skupina:"
-
-#~ msgid "Add this share to the bookmarks"
-#~ msgstr "Přidat toto sdílení k záložkám"
-
-#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-#~ msgid "Bookmark >>"
-#~ msgstr "Záložka >>"
