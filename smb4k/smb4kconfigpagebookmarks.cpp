@@ -204,13 +204,9 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
                 bookmarkItem->setData(0, DataRole, variant);
             }
         }
-
-        if (categoryItem) {
-            categoryItem->sortChildren(0, Qt::AscendingOrder);
-        }
     }
 
-    m_treeWidget->sortItems(0, Qt::AscendingOrder);
+    sortItems();
 
     for (int i = 0; i < m_treeWidget->topLevelItemCount(); ++i) {
         QTreeWidgetItem *item = m_treeWidget->topLevelItem(i);
@@ -602,12 +598,13 @@ void Smb4KConfigPageBookmarks::slotCategoryEdited()
                 parentItem->removeChild(itemToMove);
 
                 categoryItem->addChild(itemToMove);
-                categoryItem->sortChildren(0, Qt::AscendingOrder);
             }
 
             if (m_categoryEdit->completionMode() != KCompletion::CompletionNone) {
                 m_categoryEdit->completionObject()->addItem(m_categoryEdit->currentText());
             }
+
+            sortItems();
         }
     }
 }
@@ -717,3 +714,27 @@ void Smb4KConfigPageBookmarks::slotIconSizeChanged(int group)
     }
     }
 }
+
+void Smb4KConfigPageBookmarks::sortItems()
+{
+    QMap<QString, QTreeWidgetItem *> itemMap;
+
+    while (m_treeWidget->topLevelItemCount() > 0) {
+        QTreeWidgetItem *item = m_treeWidget->takeTopLevelItem(0);
+
+        if (item->data(0, TypeRole).toInt() == CategoryType) {
+            item->sortChildren(0, Qt::AscendingOrder);
+            itemMap[QStringLiteral("00_")+item->data(0, DataRole).toString()] = item;
+        } else {
+            itemMap[QStringLiteral("01_")+item->data(0, DataRole).value<Smb4KBookmark>().displayString()] = item;
+        }
+    }
+
+    QMapIterator<QString, QTreeWidgetItem *> it(itemMap);
+
+    while (it.hasNext()) {
+        it.next();
+        m_treeWidget->addTopLevelItem(it.value());
+    }
+}
+
