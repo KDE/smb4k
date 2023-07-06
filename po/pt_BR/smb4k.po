@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-06-02 10:51-0300\n"
+"POT-Creation-Date: 2023-07-06 00:59+0000\n"
+"PO-Revision-Date: 2023-07-05 17:22-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -124,10 +124,9 @@ msgid "Main Toolbar"
 msgstr "Barra de ferramentas principal"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "Favoritos"
+msgstr "Editor de favoritos"
 
 #: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:137
 #, kde-format
@@ -177,10 +176,9 @@ msgid "Synchronization"
 msgstr "Sincronização"
 
 #: smb4k/smb4kconfigdialog.cpp:138
-#, fuzzy, kde-format
-#| msgid "Common Settings:"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Configurações comuns:"
+msgstr "Configurações personalizadas"
 
 #: smb4k/smb4kconfigdialog.cpp:139 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -261,12 +259,12 @@ msgstr "Definir o nome de usuário e senha para a conta padrão."
 #: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:115
 #, kde-format
 msgid "Label:"
-msgstr ""
+msgstr "Rótulo:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:122
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Categoria:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -288,7 +286,7 @@ msgstr "Endereço IP:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:133
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Adicionar categoria"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:145
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
@@ -296,10 +294,10 @@ msgstr ""
 msgid "Clear List"
 msgstr "Limpar lista"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:426
+#: smb4k/smb4kconfigpagebookmarks.cpp:422
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Nova categoria"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
@@ -434,13 +432,11 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Define as máquinas que devem ser ativadas através da janela de opções "
+"Define as máquinas que devem ser ativadas através do editor de configurações "
 "personalizada."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
@@ -502,7 +498,7 @@ msgstr "Arquivos"
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
 #, kde-format
 msgid " kB"
-msgstr ""
+msgstr " kB"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:377
 #: smb4k/smb4kconfigpagesynchronization.cpp:596
@@ -690,10 +686,9 @@ msgid "Synchronizing %1"
 msgstr "Sincronizando o %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Open Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "Abrir a janela de m&ontagem"
+msgstr "Janela de montagem"
 
 #: smb4k/smb4kmountdialog.cpp:50
 #, kde-format
@@ -701,6 +696,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Indique a localização e, opcionalmente, o endereço IP e grupo de trabalho "
+"para montar um compartilhamento."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -709,17 +706,15 @@ msgid "Location:"
 msgstr "Localização:"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Favoritos"
+msgstr "Favoritar este compartilhamento"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Favoritos"
+msgstr "Favoritos >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -757,20 +752,19 @@ msgstr "Pe&squisar"
 #: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "&Custom Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Opções &personalizadas"
+msgstr "Adicionar &configurações personalizadas"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:167
 #: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
@@ -780,7 +774,7 @@ msgstr "Abrir a janela de m&ontagem"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:179
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ctrl+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
@@ -790,7 +784,7 @@ msgstr "Au&tenticação"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:198
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -800,7 +794,7 @@ msgstr "Ante&visão"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:209
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:214
 #, kde-format
@@ -810,7 +804,7 @@ msgstr "Im&primir o arquivo"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:220
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:226
 #, kde-format
@@ -827,7 +821,7 @@ msgstr "&Desmontar"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ctrl+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:420
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:431
@@ -844,7 +838,7 @@ msgstr "Analisar o g&rupo de trabalho"
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Ctrl+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -924,7 +918,7 @@ msgstr "Exibição em lista"
 #: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
@@ -934,7 +928,7 @@ msgstr "S&incronizar"
 #: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Ctrl+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
@@ -944,7 +938,7 @@ msgstr "Abrir com o Konso&le"
 #: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Ctrl+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
@@ -954,7 +948,7 @@ msgstr "Abr&ir com o Gerenciador de arquivos"
 #: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
