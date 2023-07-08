@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-06 00:59+0000\n"
-"PO-Revision-Date: 2023-06-10 20:40+0200\n"
+"PO-Revision-Date: 2023-07-02 15:23+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -680,22 +680,18 @@ msgid "Synchronizing %1"
 msgstr "Sincronizzazione di %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Open Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "&Apri la finestra per il montaggio"
+msgstr "Finestra di montaggio"
 
 #: smb4k/smb4kmountdialog.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the location (UNC address) and optionally the IP address and "
-#| "workgroup to mount a share."
+#, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
-"Inserisci la posizione (indirizzo UNC), e opzionalmente indirizzo IP e "
-"gruppo di lavoro, per montare la condivisione."
+"Inserisci la posizione ed opzionalmente l'indirizzo IP e il gruppo di lavoro "
+"per montare una condivisione."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -704,17 +700,15 @@ msgid "Location:"
 msgstr "Posizione:"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Gestore dei segnalibri"
+msgstr "Aggiungi questa condivisione ai segnalibri"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmark"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Segnalibro"
+msgstr "Segnalibro >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
