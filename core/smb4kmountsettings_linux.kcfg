@@ -247,7 +247,7 @@
       </choices>
       <default>Strict</default>
     </entry>
-    <entry name="UseSecurityMode" type="Enum">
+    <entry name="UseSecurityMode" type="Bool">
       <label>Security mode:</label>
       <whatsthis>Security mode for mount.cifs. To be able to use this mode, the CIFS kernel module 1.40 or later is required.</whatsthis>
       <default>false</default>
