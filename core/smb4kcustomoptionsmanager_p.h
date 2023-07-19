@@ -47,16 +47,6 @@ private:
     OptionsPtr m_options;
 };
 
-class Smb4KCustomOptionsManagerPrivate
-{
-public:
-    QList<OptionsPtr> options;
-};
 
-class Smb4KCustomOptionsManagerStatic
-{
-public:
-    Smb4KCustomOptionsManager instance;
-};
 
 #endif

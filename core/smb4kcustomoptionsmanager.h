@@ -1,7 +1,7 @@
 /*
     Manage custom options
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -142,7 +142,7 @@ public:
      *
      * @param item                The network item
      */
-    void openCustomOptionsDialog(const NetworkItemPtr &item);
+    SMB4K_DEPRECATED void openCustomOptionsDialog(const NetworkItemPtr &item);
 
     /**
      * This function opens a custom options dialog for an options pointer.
@@ -153,7 +153,7 @@ public:
      *
      * @returns TRUE if there are custom options defined, otherwise FALSE.
      */
-    bool openCustomOptionsDialog(const OptionsPtr &options, bool write = true);
+    SMB4K_DEPRECATED bool openCustomOptionsDialog(const OptionsPtr &options, bool write = true);
 
     /**
      * This function adds custom options for a single network item to the list
@@ -190,12 +190,12 @@ public:
     /**
      * Reload custom options from the file.
      */
-    void resetCustomOptions();
+    SMB4K_DEPRECATED void resetCustomOptions();
 
     /**
      * Save custom options to the file.
      */
-    void saveCustomOptions();
+    void saveCustomOptions(const QList<OptionsPtr> &optionsList);
 
 protected Q_SLOTS:
     /**

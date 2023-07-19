@@ -1,7 +1,7 @@
 /*
     Manage custom options
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -35,6 +35,18 @@
 #include <KLocalizedString>
 
 using namespace Smb4KGlobal;
+
+class Smb4KCustomOptionsManagerPrivate
+{
+public:
+    QList<OptionsPtr> options;
+};
+
+class Smb4KCustomOptionsManagerStatic
+{
+public:
+    Smb4KCustomOptionsManager instance;
+};
 
 Q_GLOBAL_STATIC(Smb4KCustomOptionsManagerStatic, p);
 
@@ -788,8 +800,19 @@ void Smb4KCustomOptionsManager::resetCustomOptions()
     readCustomOptions();
 }
 
-void Smb4KCustomOptionsManager::saveCustomOptions()
+void Smb4KCustomOptionsManager::saveCustomOptions(const QList<OptionsPtr> &optionsList)
 {
+    QMutableListIterator<OptionsPtr> it(d->options);
+
+    while (it.hasNext()) {
+        OptionsPtr options = it.next();
+        removeCustomOptions(options);
+    }
+
+    for (const OptionsPtr &options : optionsList) {
+        addCustomOptions(options, false);
+    }
+
     writeCustomOptions();
 }
 
