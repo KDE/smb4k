@@ -1,7 +1,7 @@
 /*
     This class carries custom options
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -621,6 +621,6 @@ private:
     const QScopedPointer<Smb4KCustomOptionsPrivate> d;
 };
 
-Q_DECLARE_METATYPE(Smb4KCustomOptions)
+Q_DECLARE_METATYPE(Smb4KCustomOptions);
 
 #endif

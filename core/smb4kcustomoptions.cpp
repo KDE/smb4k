@@ -1,7 +1,7 @@
 /*
     This class carries custom options
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -665,11 +665,13 @@ bool Smb4KCustomOptions::useKerberos() const
 
 void Smb4KCustomOptions::setMACAddress(const QString &macAddress)
 {
-    QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
+    if (d->macAddress != macAddress) {
+        QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
-    if (d->macAddress != macAddress && expression.match(macAddress).hasMatch()) {
-        d->macAddress = macAddress;
-        d->changed = true;
+        if (expression.match(macAddress).hasMatch() || macAddress.isEmpty()) {
+            d->macAddress = macAddress;
+            d->changed = true;
+        }
     }
 }
 
