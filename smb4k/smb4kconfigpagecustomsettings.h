@@ -1,28 +1,30 @@
 /*
-    The configuration page for the custom settings
+    Configuration page for the custom settings
 
     SPDX-FileCopyrightText: 2013-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef SMB4KCONFIGPAGECUSTOMOPTIONS_H
-#define SMB4KCONFIGPAGECUSTOMOPTIONS_H
+#ifndef SMB4KCONFIGPAGECUSTOMSETTINGS_H
+#define SMB4KCONFIGPAGECUSTOMSETTINGS_H
 
 // application specific includes
+#include "smb4kcustomsettingseditorwidget.h"
 #include "core/smb4kglobal.h"
 
 // Qt includes
 #include <QListWidget>
 #include <QWidget>
+#include <QPushButton>
 
 /**
- * This configuration page contains the custom options
+ * This configuration page takes care of the custom settings
  *
  * @author Alexander Reinholdt <alexander.reinholdt@kdemail.net>
  * @since 1.1.0
  */
 
-class Smb4KConfigPageCustomOptions : public QWidget
+class Smb4KConfigPageCustomSettings : public QWidget
 {
     Q_OBJECT
 
@@ -30,27 +32,22 @@ public:
     /**
      * Constructor
      */
-    explicit Smb4KConfigPageCustomOptions(QWidget *parent = nullptr);
+    explicit Smb4KConfigPageCustomSettings(QWidget *parent = nullptr);
 
     /**
      * Destructor
      */
-    virtual ~Smb4KConfigPageCustomOptions();
+    virtual ~Smb4KConfigPageCustomSettings();
 
     /**
-     * This function loads the list of custom options.
+     * This function loads the list of custom settings.
      */
-    void loadCustomOptions();
+    void loadCustomSettings();
 
     /**
-     * This function saves the list of custom options.
+     * This function saves the list of custom settings.
      */
-    void saveCustomOptions();
-
-    /**
-     * This function resets the custom options.
-     */
-    void resetCustomOptions();
+    void saveCustomSettings();
 
     /**
      * Returns TRUE if there may be changed custom settings. You must check if
@@ -77,6 +74,11 @@ Q_SIGNALS:
 
 protected Q_SLOTS:
     /**
+     * This slot is called when the item selection changed.
+     */
+    void slotItemSelectionChanged();
+
+    /**
      * This slot is invoked when an item is double clicked. It is used
      * to edit the item the user double clicked.
      *
@@ -85,7 +87,7 @@ protected Q_SLOTS:
     void slotEditCustomItem(QListWidgetItem *item);
 
     /**
-     * This slot is called when a custom options is to be edited.
+     * This slot is called when custom settings are to be edited.
      *
      * @param checked         TRUE if the button is checked and FALSE otherwise.
      */
@@ -99,14 +101,14 @@ protected Q_SLOTS:
     void slotRemoveButtonClicked(bool checked);
 
     /**
-     * This slot is called when the list of custom options is to be cleared.
+     * This slot is called when the list of custom settings is to be cleared.
      *
      * @param checked         TRUE if the button is checked and FALSE otherwise.
      */
     void slotClearButtonClicked(bool checked);
 
     /**
-     * This slot is called when the actions performed on the custom options
+     * This slot is called when the actions performed on the custom settings
      * are to be reset.
      *
      * @param checked         TRUE if the button is checked and FALSE otherwise.
@@ -114,12 +116,27 @@ protected Q_SLOTS:
     void slotResetButtonClicked(bool checked);
 
     /**
-     * This slot is called when the reset button is to be enabled/disabled.
+     * Enable/disable the buttons
      */
-    void slotEnableResetButton();
+    void slotEnableButtons();
+
+    /**
+     * Called when the selected custom setting is edited
+     *
+     * @param changed           TRUE if the settings are changed and FALSE if not
+     */
+    void slotCustomSettingsEdited(bool changed);
 
 private:
+    QListWidget *m_listWidget;
+    QListWidgetItem *m_itemToEdit;
+    Smb4KCustomSettingsEditorWidget *m_editorWidget;
     bool m_customSettingsChanged;
+    bool m_savingCustomSettings;
+    QPushButton *m_resetButton;
+    QPushButton *m_editButton;
+    QPushButton *m_removeButton;
+    QPushButton *m_clearButton;
 };
 
 #endif

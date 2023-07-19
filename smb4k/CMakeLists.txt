@@ -17,12 +17,13 @@ set(smb4kconfigdialog_LIB_SRCS
   smb4kconfigdialog.cpp
   smb4kconfigpageauthentication.cpp
   smb4kconfigpagebookmarks.cpp
-  smb4kconfigpagecustomoptions.cpp
+  smb4kconfigpagecustomsettings.cpp
   smb4kconfigpagemounting.cpp
   smb4kconfigpagenetwork.cpp
   smb4kconfigpageprofiles.cpp
   smb4kconfigpagesynchronization.cpp
-  smb4kconfigpageuserinterface.cpp)
+  smb4kconfigpageuserinterface.cpp
+  smb4kcustomsettingseditorwidget.cpp)
   
 add_library(smb4kconfigdialog MODULE ${smb4kconfigdialog_LIB_SRCS})
 
@@ -49,6 +50,9 @@ endif(SMB4K_WITH_WS_DISCOVERY)
 ########### Dialogs ################################
 
 set(smb4kdialogs_LIB_SRCS
+# smb4kcustomsettingseditor.cpp
+  smb4kcustomsettingseditorwidget.cpp
+  smb4kbookmarkdialog.cpp
   smb4kbookmarkeditor.cpp
   smb4kconfigpagebookmarks.cpp
   smb4kmountdialog.cpp)
