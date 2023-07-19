@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-06 00:59+0000\n"
-"PO-Revision-Date: 2023-03-28 15:23+0200\n"
+"PO-Revision-Date: 2023-07-17 21:57+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -135,10 +135,9 @@ msgid "Main Toolbar"
 msgstr "Barre principale"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "Signets"
+msgstr "Éditeur de signets"
 
 #: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:137
 #, kde-format
@@ -280,7 +279,7 @@ msgstr "Étiquette :"
 #: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:122
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Catégorie :"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -302,7 +301,7 @@ msgstr "Adresse IP :"
 #: smb4k/smb4kconfigpagebookmarks.cpp:133
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Ajouter une catégorie"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:145
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
@@ -313,7 +312,7 @@ msgstr "Effacer la liste"
 #: smb4k/smb4kconfigpagebookmarks.cpp:422
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Nouvelle catégorie"
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
@@ -713,6 +712,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Saisissez l'emplacement et, de façon facultative, l'adresse IP et le groupe "
+"de travail pour monter un partage."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -721,17 +722,15 @@ msgid "Location:"
 msgstr "Emplacement :"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Signets"
+msgstr "Ajouter ce partage aux signets"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Signets"
+msgstr "Signets>>>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format

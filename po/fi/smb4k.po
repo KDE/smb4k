@@ -678,7 +678,8 @@ msgid "Synchronizing %1"
 msgstr "Synkronoidaan %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mount Dialog"
 msgid "Mount Dialog"
 msgstr "Liittämisikkuna"
 
