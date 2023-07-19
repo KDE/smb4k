@@ -15,17 +15,16 @@
 #endif
 
 // Qt includes
-#include <QGroupBox>
 #include <QGridLayout>
+#include <QGroupBox>
 
 // KDE includes
 #include <KLocalizedString>
 
 using namespace Smb4KGlobal;
 
-
-Smb4KCustomSettingsEditorWidget::Smb4KCustomSettingsEditorWidget(QWidget* parent)
-: QTabWidget(parent)
+Smb4KCustomSettingsEditorWidget::Smb4KCustomSettingsEditorWidget(QWidget *parent)
+    : QTabWidget(parent)
 {
     // FIXME: Implement mount point!?
 
@@ -273,7 +272,6 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 }
 #endif
 
-
 void Smb4KCustomSettingsEditorWidget::setCustomSettings(OptionsPtr settings)
 {
     if (settings->type() != Host) {
@@ -480,8 +478,7 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         return;
     }
 
-    if (m_userId->currentData().toString() != m_customSettings->user().userId().toString())
-    {
+    if (m_userId->currentData().toString() != m_customSettings->user().userId().toString()) {
         Q_EMIT edited(true);
         return;
     }
@@ -660,7 +657,7 @@ void Smb4KCustomSettingsEditorWidget::slotUseFileModeToggled(bool checked)
     checkValues();
 }
 
-void Smb4KCustomSettingsEditorWidget::slotFileModeChanged(const QString& text)
+void Smb4KCustomSettingsEditorWidget::slotFileModeChanged(const QString &text)
 {
     Q_UNUSED(text);
     checkValues();
@@ -672,7 +669,7 @@ void Smb4KCustomSettingsEditorWidget::slotUseDirectoryModeToggled(bool checked)
     checkValues();
 }
 
-void Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged(const QString& text)
+void Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged(const QString &text)
 {
     Q_UNUSED(text);
     checkValues();
@@ -744,7 +741,7 @@ void Smb4KCustomSettingsEditorWidget::slotUseKerberosToggled(bool checked)
     checkValues();
 }
 
-void Smb4KCustomSettingsEditorWidget::slotMacAddressChanged(const QString& text)
+void Smb4KCustomSettingsEditorWidget::slotMacAddressChanged(const QString &text)
 {
     Q_UNUSED(text);
 
@@ -765,4 +762,3 @@ void Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeMountToggled(bool chec
     Q_UNUSED(checked);
     checkValues();
 }
-

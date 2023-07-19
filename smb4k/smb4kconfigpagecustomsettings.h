@@ -9,13 +9,13 @@
 #define SMB4KCONFIGPAGECUSTOMSETTINGS_H
 
 // application specific includes
-#include "smb4kcustomsettingseditorwidget.h"
 #include "core/smb4kglobal.h"
+#include "smb4kcustomsettingseditorwidget.h"
 
 // Qt includes
 #include <QListWidget>
-#include <QWidget>
 #include <QPushButton>
+#include <QWidget>
 
 /**
  * This configuration page takes care of the custom settings

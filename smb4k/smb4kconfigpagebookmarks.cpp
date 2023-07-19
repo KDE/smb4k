@@ -724,9 +724,9 @@ void Smb4KConfigPageBookmarks::sortItems()
 
         if (item->data(0, TypeRole).toInt() == CategoryType) {
             item->sortChildren(0, Qt::AscendingOrder);
-            itemMap[QStringLiteral("00_")+item->data(0, DataRole).toString()] = item;
+            itemMap[QStringLiteral("00_") + item->data(0, DataRole).toString()] = item;
         } else {
-            itemMap[QStringLiteral("01_")+item->data(0, DataRole).value<Smb4KBookmark>().displayString()] = item;
+            itemMap[QStringLiteral("01_") + item->data(0, DataRole).value<Smb4KBookmark>().displayString()] = item;
         }
     }
 
@@ -737,4 +737,3 @@ void Smb4KConfigPageBookmarks::sortItems()
         m_treeWidget->addTopLevelItem(it.value());
     }
 }
-

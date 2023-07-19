@@ -12,10 +12,10 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QTabWidget>
 #include <QCheckBox>
-#include <QSpinBox>
 #include <QLabel>
+#include <QSpinBox>
+#include <QTabWidget>
 
 // KDE includes
 #include <KComboBox>

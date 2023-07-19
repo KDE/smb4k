@@ -8,14 +8,11 @@
 // application specific includes
 #include "smb4kcustomsettingseditor.h"
 
-Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget* parent)
-: QDialog(parent)
+Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
+    : QDialog(parent)
 {
 }
 
 Smb4KCustomSettingsEditor::~Smb4KCustomSettingsEditor() noexcept
 {
 }
-
-
-

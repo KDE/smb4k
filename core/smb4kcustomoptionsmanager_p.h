@@ -47,6 +47,4 @@ private:
     OptionsPtr m_options;
 };
 
-
-
 #endif
