@@ -10,7 +10,7 @@
 #include "core/smb4ksettings.h"
 #include "smb4kconfigpageauthentication.h"
 #include "smb4kconfigpagebookmarks.h"
-#include "smb4kconfigpagecustomoptions.h"
+#include "smb4kconfigpagecustomsettings.h"
 #include "smb4kconfigpagemounting.h"
 #include "smb4kconfigpagenetwork.h"
 #include "smb4kconfigpageprofiles.h"
@@ -89,7 +89,7 @@ void Smb4KConfigDialog::setupDialog()
 
     synchronizationPage->setEnabled(!QStandardPaths::findExecutable(QStringLiteral("rsync")).isEmpty());
 
-    Smb4KConfigPageCustomOptions *customSettingsPage = new Smb4KConfigPageCustomOptions(this);
+    Smb4KConfigPageCustomSettings *customSettingsPage = new Smb4KConfigPageCustomSettings(this);
     QScrollArea *customSettingsArea = new QScrollArea(this);
     customSettingsArea->setWidget(customSettingsPage);
     customSettingsArea->setWidgetResizable(true);
@@ -141,7 +141,7 @@ void Smb4KConfigDialog::setupDialog()
     //
     // Connections
     //
-    connect(customSettingsPage, &Smb4KConfigPageCustomOptions::customSettingsModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
+    connect(customSettingsPage, &Smb4KConfigPageCustomSettings::customSettingsModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(authenticationPage, &Smb4KConfigPageAuthentication::walletEntriesModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(bookmarksPage, &Smb4KConfigPageBookmarks::bookmarksModified, this, &Smb4KConfigDialog::slotEnableApplyButton);
     connect(this, &Smb4KConfigDialog::currentPageChanged, this, &Smb4KConfigDialog::slotCheckPage);
@@ -200,10 +200,10 @@ void Smb4KConfigDialog::updateSettings()
         authenticationPage->saveLoginCredentials();
     }
 
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+    Smb4KConfigPageCustomSettings *customSettingsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomSettings *>();
 
-    if (customOptionsPage) {
-        customOptionsPage->saveCustomOptions();
+    if (customSettingsPage) {
+        customSettingsPage->saveCustomSettings();
     }
 
     Smb4KConfigPageBookmarks *bookmarksPage = m_bookmarks->widget()->findChild<Smb4KConfigPageBookmarks *>();
@@ -227,10 +227,10 @@ void Smb4KConfigDialog::updateSettings()
         if (profilesPage->profilesChanged()) {
             profilesPage->applyChanges();
 
-            Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+            Smb4KConfigPageCustomSettings *customSettingsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomSettings *>();
 
-            if (customOptionsPage) {
-                customOptionsPage->loadCustomOptions();
+            if (customSettingsPage) {
+                customSettingsPage->loadCustomSettings();
             }
 
             Smb4KConfigPageBookmarks *bookmarksPage = m_bookmarks->widget()->findChild<Smb4KConfigPageBookmarks *>();
@@ -251,10 +251,10 @@ void Smb4KConfigDialog::updateSettings()
 
 void Smb4KConfigDialog::updateWidgets()
 {
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+    Smb4KConfigPageCustomSettings *customSettingsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomSettings *>();
 
-    if (customOptionsPage) {
-        customOptionsPage->loadCustomOptions();
+    if (customSettingsPage) {
+        customSettingsPage->loadCustomSettings();
     }
 
     KConfigDialog::updateWidgets();
@@ -262,12 +262,6 @@ void Smb4KConfigDialog::updateWidgets()
 
 void Smb4KConfigDialog::reject()
 {
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
-
-    if (customOptionsPage) {
-        customOptionsPage->resetCustomOptions();
-    }
-
     QDialog::reject();
 }
 
@@ -281,10 +275,10 @@ void Smb4KConfigDialog::slotEnableApplyButton()
         enable = authenticationPage->loginCredentialsChanged();
     }
 
-    Smb4KConfigPageCustomOptions *customOptionsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomOptions *>();
+    Smb4KConfigPageCustomSettings *customSettingsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomSettings *>();
 
-    if (!enable && customOptionsPage) {
-        enable = customOptionsPage->customSettingsChanged();
+    if (!enable && customSettingsPage) {
+        enable = customSettingsPage->customSettingsChanged();
     }
 
     Smb4KConfigPageBookmarks *boookmarksPage = m_bookmarks->widget()->findChild<Smb4KConfigPageBookmarks *>();
