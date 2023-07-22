@@ -582,8 +582,7 @@ msgid "Shares View"
 msgstr "Vue des partages"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:48
-#, fuzzy, kde-format
-#| msgid "Always remount this share"
+#, kde-format
 msgid "Always remount this share"
 msgstr "Toujours remonter ce partage"
 
@@ -593,8 +592,7 @@ msgid "Page 1"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:85
-#, fuzzy, kde-format
-#| msgid "This server supports the CIFS Unix extensions"
+#, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Ce serveur prend en charge les extensions Unix CIFS"
 
@@ -614,20 +612,17 @@ msgid "Page 4"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
+#, kde-format
 msgid "MAC Address:"
 msgstr "Adresse MAC :"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#, fuzzy, kde-format
-#| msgid "Send magic packet before scanning the network neighborhood"
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Envoyer un paquet « magique » avant de balayer le voisinage du réseau"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
-#, fuzzy, kde-format
-#| msgid "Send magic packet before mounting a share"
+#, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Envoyer un paquet « magique » avant de monter un partage"
 

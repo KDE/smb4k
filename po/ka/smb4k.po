@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 00:49+0000\n"
-"PO-Revision-Date: 2023-07-02 07:00+0200\n"
+"PO-Revision-Date: 2023-07-21 07:08+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -393,7 +393,11 @@ msgid_plural ""
 "<qt>The following %1 entries are going to be removed from the additional "
 "options: %2. Please read the handbook for details.</qt>"
 msgstr[0] ""
+"<qt>დამატებითი პარამეტრებიდან წაიშლება შემდეგი ჩანაწერი: %2 დეტალებისთვის "
+"გადაიკითხეთ სახელმძღვანელო.</qt>"
 msgstr[1] ""
+"<qt>დამატებითი პარამეტრებიდან წაიშლება შემდეგი %1 ჩანაწერი: %2 დეტალებისთვის "
+"გადაიკითხეთ სახელმძღვანელო.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:177
@@ -422,6 +426,8 @@ msgstr " წმ"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
+"აღწერეთ ჰოსტები, რომლებმაც მომხმარებლის პარამეტრების რედაქტორის გავლით უნდა "
+"გაიღვიძონ."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -554,53 +560,52 @@ msgstr "გაზიარებების ხედი"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:48
 #, kde-format
 msgid "Always remount this share"
-msgstr ""
+msgstr "ამ გაზიარებულის ყოველთვის მიმაგრება"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "Page 1"
-msgstr ""
+msgstr "გვერდი 1"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:85
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "ამ სერვერს CIFS-ის Unix-ის გაფართოებების მხარდაჭერა გააჩნია"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Page 2"
-msgstr ""
+msgstr "გვერდი 2"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Page 3"
-msgstr ""
+msgstr "გვერდი 3"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
 msgid "Page 4"
-msgstr ""
+msgstr "გვერდი 4"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
-#, fuzzy, kde-format
-#| msgid "IP Address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "IP მისამართი:"
+msgstr "MAC მისამართი:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "ქსელურ მეზობლების სკანირებამდე ჯადოსნური პაკეტის გაგზავნა"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
+msgstr "გაზიარებულის მიმაგრებამდე ჯადოსნური პაკეტის გაგზავნა"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:263
 #, kde-format
 msgid "Page 5"
-msgstr ""
+msgstr "გვერდი 5"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -728,6 +733,8 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"გაზიარებულის მისამაგრებლად შეიყვანეთ მისი მდებარეობა და თუ გნებავთ, IP "
+"მისამართი და სამუშაო ჯგუფი."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -986,6 +993,8 @@ msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
 "any files here.</qt>"
 msgstr ""
+"<qt>გაზიარებულამდე <b>%1</b> აქტიური მიერთება არ არსებობს! აქ ფაილებს ვერ "
+"დაყრით.</qt>"
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format

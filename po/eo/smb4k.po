@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 00:49+0000\n"
-"PO-Revision-Date: 2023-07-02 22:05+0100\n"
+"PO-Revision-Date: 2023-07-2120:51+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -586,10 +586,9 @@ msgid "Page 4"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
-#, fuzzy, kde-format
-#| msgid "IP Address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "IP-Adreso:"
+msgstr "MAC-Adreso:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
@@ -1078,7 +1077,3 @@ msgstr "Dosiersistemo:"
 #, kde-format
 msgid "Size:"
 msgstr "Grandeco:"
-
-#~ msgid "The item %1 was removed, because all custom settings were reset."
-#~ msgstr ""
-#~ "La ero %1 estis forigita, ĉar ĉiuj propraj agordoj estis restarigitaj."
