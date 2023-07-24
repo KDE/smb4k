@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 00:49+0000\n"
-"PO-Revision-Date: 2023-07-01 17:13+0200\n"
+"PO-Revision-Date: 2023-07-22 11:49+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -578,53 +578,52 @@ msgstr "Vista de recursos compartidos"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:48
 #, kde-format
 msgid "Always remount this share"
-msgstr ""
+msgstr "Remontar este recurso compartido siempre"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "Page 1"
-msgstr ""
+msgstr "Página 1"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:85
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "Este servidor es compatible con las extensiones CIFS de Unix"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Page 2"
-msgstr ""
+msgstr "Página 2"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Page 3"
-msgstr ""
+msgstr "Página 3"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
 msgid "Page 4"
-msgstr ""
+msgstr "Página 4"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
-#, fuzzy, kde-format
-#| msgid "IP Address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "Dirección IP:"
+msgstr "Dirección MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "Enviar paquete «magic» antes de escanear el entorno de red"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
+msgstr "Enviar paquete «magic» antes de montar un recurso compartido"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:263
 #, kde-format
 msgid "Page 5"
-msgstr ""
+msgstr "Página 5"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -1099,8 +1098,3 @@ msgstr "Sistema de archivos:"
 #, kde-format
 msgid "Size:"
 msgstr "Tamaño:"
-
-#~ msgid "The item %1 was removed, because all custom settings were reset."
-#~ msgstr ""
-#~ "El elemento %1 se eliminó, ya que todas las preferencias personalizadas "
-#~ "fueron reiniciadas."

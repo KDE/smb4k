@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 00:49+0000\n"
-"PO-Revision-Date: 2023-07-01 12:48+0200\n"
+"PO-Revision-Date: 2023-07-20 11:10+0300\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -565,53 +565,52 @@ msgstr "Vista de comparticions"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:48
 #, kde-format
 msgid "Always remount this share"
-msgstr ""
+msgstr "Torna a muntar sempre esta compartició"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "Page 1"
-msgstr ""
+msgstr "Pàgina 1"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:85
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "Este servidor admet les ampliacions Unix de CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Page 2"
-msgstr ""
+msgstr "Pàgina 2"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Page 3"
-msgstr ""
+msgstr "Pàgina 3"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
 msgid "Page 4"
-msgstr ""
+msgstr "Pàgina 4"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
-#, fuzzy, kde-format
-#| msgid "IP Address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "Adreça IP:"
+msgstr "Adreça MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "Envia un paquet màgic abans d'escanejar el veïnatge de xarxa"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
+msgstr "Envia un paquet màgic abans de muntar una compartició"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:263
 #, kde-format
 msgid "Page 5"
-msgstr ""
+msgstr "Pàgina 5"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -1086,8 +1085,3 @@ msgstr "Sistema de fitxers:"
 #, kde-format
 msgid "Size:"
 msgstr "Mida:"
-
-#~ msgid "The item %1 was removed, because all custom settings were reset."
-#~ msgstr ""
-#~ "S'ha eliminat l'element %1 perquè s'ha reiniciat tota la configuració "
-#~ "personalitzada."

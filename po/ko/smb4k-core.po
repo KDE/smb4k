@@ -84,9 +84,9 @@ msgid ""
 "up by clicking on the system tray widget or by choosing \"Restore\" from its "
 "popup menu."
 msgstr ""
-"프로그램을 시스템 트레이에 도킹된 상태로 시작합니다. 주 창은 표시되지 않고 시"
-"스템 트레이 위젯만 표시됩니다. 시스템 트레이 위젯을 클릭하거나 팝업 메뉴에서 "
-"\"복원\"을 선택해서 주 창을 복원할 수 있습니다."
+"앱을 시스템 트레이에 도킹된 상태로 시작합니다. 주 창은 표시되지 않고 시스템 "
+"트레이 위젯만 표시됩니다. 시스템 트레이 위젯을 클릭하거나 팝업 메뉴에서 \"복"
+"원\"을 선택해서 주 창을 복원할 수 있습니다."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
 #: smb4k.kcfg:45
@@ -523,8 +523,8 @@ msgid ""
 "normally do not need to enable this feature."
 msgstr ""
 "숨김 파일과 디렉터리를 미리 봅니다. 숨김 파일과 디렉터리는 이름이 마침표로 시"
-"작합니다. 프로그램 설정 저장 등 특수 목적으로 해당 파일을 사용합니다. 일반 작"
-"업에는 중요하지 않으므로 이 옵션을 활성화할 필요는 없습니다."
+"작합니다. 앱 설정 저장 등 특수 목적으로 해당 파일을 사용합니다. 일반 작업에"
+"는 중요하지 않으므로 이 옵션을 활성화할 필요는 없습니다."
 
 #. i18n: ectx: label, entry (DetectPrinterShares), group (Network)
 #: smb4k.kcfg:222

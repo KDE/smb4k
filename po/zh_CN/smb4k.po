@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 00:49+0000\n"
-"PO-Revision-Date: 2023-07-18 11:12\n"
+"PO-Revision-Date: 2023-07-23 12:28\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -550,53 +550,52 @@ msgstr "共享视图"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:48
 #, kde-format
 msgid "Always remount this share"
-msgstr ""
+msgstr "总是重新挂载此共享"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "Page 1"
-msgstr ""
+msgstr "第 1 页"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:85
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "此服务器支持 CIFS Unix 扩展"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Page 2"
-msgstr ""
+msgstr "第 2 页"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Page 3"
-msgstr ""
+msgstr "第 3 页"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
 msgid "Page 4"
-msgstr ""
+msgstr "第 4 页"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
-#, fuzzy, kde-format
-#| msgid "IP Address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "IP 地址："
+msgstr "MAC 地址："
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
+msgstr "挂载共享前发送局域网唤醒魔术封包"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:263
 #, kde-format
 msgid "Page 5"
-msgstr ""
+msgstr "第 5 页"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -1065,6 +1064,3 @@ msgstr "文件系统："
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid "The item %1 was removed, because all custom settings were reset."
-#~ msgstr "项目 %1 已被移除，因为自定义选项已被全部重置。"
