@@ -527,8 +527,8 @@ msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
-"<qt>주 창을 닫아도 시스템 트레이에서 Smb4K를 실행합니다.<br>프로그램을 끝내려"
-"면 <i>파일</i> 메뉴의 <i>끝내기</i> 항목을 사용하십시오.</qt>"
+"<qt>주 창을 닫아도 시스템 트레이에서 Smb4K를 실행합니다.<br>앱을 끝내려면 <i>"
+"파일</i> 메뉴의 <i>끝내기</i> 항목을 사용하십시오.</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:404
 #, kde-format
