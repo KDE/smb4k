@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 00:49+0000\n"
-"PO-Revision-Date: 2023-07-01 18:30+0200\n"
+"PO-Revision-Date: 2023-07-24 21:38+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -567,7 +567,7 @@ msgstr "Diese Freigabe immer einhängen"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "Page 1"
-msgstr ""
+msgstr "Seite 1"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:85
 #, kde-format
@@ -577,17 +577,17 @@ msgstr "Dieser Server unterstützt die CIFS-Erweiterungen unter Unix"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Page 2"
-msgstr ""
+msgstr "Seite 2"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Page 3"
-msgstr ""
+msgstr "Seite 3"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
 msgid "Page 4"
-msgstr ""
+msgstr "Seite 4"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
 #, kde-format
@@ -595,21 +595,19 @@ msgid "MAC Address:"
 msgstr "MAC-Adresse:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "„Magisches“ Datenpaket vor dem Durchsuchen der Netzwerkumgebung senden"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
+#, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "„Magisches“ Datenpaket vor dem Einhängen einer Freigabe senden"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:263
 #, kde-format
 msgid "Page 5"
-msgstr ""
+msgstr "Seite 5"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
