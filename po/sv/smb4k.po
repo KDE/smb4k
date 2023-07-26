@@ -4,13 +4,13 @@
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
 # Stefan Asserhäll <stefan.asserhall@bredband.net>, 2009, 2010.
-# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-02 02:38+0000\n"
-"PO-Revision-Date: 2022-07-09 21:37+0200\n"
+"PO-Revision-Date: 2023-07-25 13:16+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -58,10 +58,9 @@ msgstr ""
 "Samba-resurser"
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -137,10 +136,9 @@ msgid "Add &Bookmark"
 msgstr "Lägg till &bokmärke"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Montera alla bokmärken"
+msgstr "Monteringsbokmärken"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
@@ -168,10 +166,9 @@ msgid "Synchronization"
 msgstr "Synkronisering"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Common Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Vanliga inställningar"
+msgstr "Egna inställningar"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -238,23 +235,19 @@ msgid "Enter the default login information."
 msgstr "Ange den normala inloggningsinformationen."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:401
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr "<qt>Ange ett användarnamn och lösenord för värddatorn <b>%1</b>.</qt>"
+msgstr "Ange ett användarnamn och lösenord för plånbokspost %1."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
+#, kde-format
 msgid "Set the username and password for the default login."
-msgstr "<qt>Ange ett användarnamn och lösenord för värddatorn <b>%1</b>.</qt>"
+msgstr "Ange ett användarnamn och lösenord för standardinloggning."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "Allt är bra."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -264,7 +257,7 @@ msgstr "Rensa lista"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:215
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
-msgstr ""
+msgstr "Objektet %1 togs bort, eftersom alla egna inställningar återställdes."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -387,15 +380,12 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Define the hosts that should be woken up via the custom options "
-#| "dialog.</qt>"
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"<qt>Definiera värddatorerna som ska väckas via dialogrutan för anpassade "
-"alternativ.</qt>"
+"Definiera värddatorerna som ska väckas via dialogrutan för egna "
+"inställningar."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -403,16 +393,14 @@ msgid "Advanced Settings"
 msgstr "Avancerade inställningar"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization prefix:"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Synkroniseringsprefix:"
+msgstr "Synkroniseringskatalog"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Säkerhetskopiering"
+msgstr "Säkerhetskopior"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -432,18 +420,17 @@ msgstr "Filhantering"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "Filegenskaper"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Ownership"
 msgstr "Ägare"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "Filegenskaper och ägare"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -471,7 +458,7 @@ msgstr "Diverse"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -494,10 +481,9 @@ msgid "File Deletion"
 msgstr "Radera filer"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "General Filtering Settings"
-msgstr "Allmänt inställningar"
+msgstr "Allmänna filtreringsinställningar"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -681,10 +667,9 @@ msgstr "&Sök"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Avancerade monteringsinställningar"
+msgstr "Lägg till &egna inställningar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -910,10 +895,9 @@ msgid "Mountpoint:"
 msgstr "Monteringsplats:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Användare:"
+msgstr "Användarnamn:"
 
 #: smb4k/smb4ktooltip.cpp:314
 #, kde-format

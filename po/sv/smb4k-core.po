@@ -4,13 +4,13 @@
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
 # Stefan Asserhäll <stefan.asserhall@bredband.net>, 2009, 2010.
-# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
+# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-09 02:49+0000\n"
-"PO-Revision-Date: 2021-04-02 08:37+0200\n"
+"PO-Revision-Date: 2023-07-25 13:57+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -183,10 +183,9 @@ msgstr "Verktygstipset visar diverse information om den delade resursen."
 
 #. i18n: ectx: label, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:77
-#, fuzzy, kde-format
-#| msgid "File mode:"
+#, kde-format
 msgid "View mode:"
-msgstr "Filläge:"
+msgstr "Visningsläge:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewMode), group (UserInterface)
 #: smb4k.kcfg:78
@@ -212,45 +211,39 @@ msgstr "Visa lista"
 
 #. i18n: ectx: label, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:90
-#, fuzzy, kde-format
-#| msgid "Settings for the list view:"
+#, kde-format
 msgid "Icon size for the icon view:"
-msgstr "Inställningar för listvyn:"
+msgstr "Ikonstorlek för ikonvyn:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeIconView), group (UserInterface)
 #: smb4k.kcfg:91
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the icon view mode of the shares view."
-msgstr "Visningsläge för de delade resurserna:"
+msgstr "Ställ in ikonstorlek för ikonvisningsläget för delade resurser."
 
 #. i18n: ectx: label, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:97
-#, fuzzy, kde-format
-#| msgid "Settings for the list view:"
+#, kde-format
 msgid "Icon size for the list view:"
-msgstr "Inställningar för listvyn:"
+msgstr "Ikonstorlek för listvyn:"
 
 #. i18n: ectx: whatsthis, entry (SharesViewIconSizeListView), group (UserInterface)
 #: smb4k.kcfg:98
-#, fuzzy, kde-format
-#| msgid "View mode of the shares view:"
+#, kde-format
 msgid "Set the icon size for the list view mode of the shares view."
-msgstr "Visningsläge för de delade resurserna:"
+msgstr "Ställ in ikonstorlek för listvisningsläget för delade resurser."
 
 #. i18n: ectx: label, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:104
-#, fuzzy, kde-format
-#| msgid "Icon View"
+#, kde-format
 msgid "Icon size:"
-msgstr "Ikonvy"
+msgstr "Ikonstorlek:"
 
 #. i18n: ectx: whatsthis, entry (NetworkBrowserIconSize), group (UserInterface)
 #: smb4k.kcfg:105
-#, fuzzy, kde-format
-#| msgid "The advanced network neighborhood browser for KDE."
+#, kde-format
 msgid "Set the icon size for the network neighborhood browser."
-msgstr "Avancerad bläddrare i nätverkgrannskap för KDE"
+msgstr "Ställ in ikonstorlek för bläddraren i nätverksgrannskapet."
 
 #. i18n: ectx: label, entry (UseWsDiscovery), group (Network)
 #: smb4k.kcfg:116
@@ -417,27 +410,22 @@ msgstr ""
 
 #. i18n: ectx: label, entry (UseRemoteSmbPort), group (Network)
 #: smb4k.kcfg:168
-#, fuzzy, kde-format
-#| msgid "The remote SMB port"
+#, kde-format
 msgid "Set the SMB port to:"
-msgstr "SMB fjärr porten"
+msgstr "Ställ in SMB-port till:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:169 smb4k.kcfg:173
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the port that is used for connecting to remote servers with the "
-#| "client programs net, smbclient and smbtree. The default value is 139 "
-#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+#, kde-format
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"Detta är porten som används för att ansluta till fjärrservrar med "
-"klientprogrammen net, smbclient och smbtree. Standardvärdet är 139 "
-"(NetBIOS). Med FreeBSD används inställningen också vid montering."
+"Detta är porten som används för att ansluta till fjärrservrar. "
+"Standardvärdet är 139 (NetBIOS). Med FreeBSD används inställningen också vid "
+"montering."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:179
@@ -508,10 +496,9 @@ msgstr "Använd Winbind ccache för behörighetskontroll."
 
 #. i18n: ectx: label, entry (UseEncryptionLevel), group (Network)
 #: smb4k.kcfg:199
-#, fuzzy, kde-format
-#| msgid "Encryption level:"
+#, kde-format
 msgid "Set the encryption level to:"
-msgstr "Krypteringsnivå:"
+msgstr "Ställ in krypteringsnivån till:"
 
 #. i18n: ectx: whatsthis, entry (UseEncryptionLevel), group (Network)
 #. i18n: ectx: whatsthis, entry (EncryptionLevel), group (Network)
@@ -596,13 +583,7 @@ msgstr "Aktivera funktion för att väckas av lokalt nätverk"
 
 #. i18n: ectx: whatsthis, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:235
-#, fuzzy, kde-format
-#| msgid ""
-#| "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows "
-#| "a computer to be turned on or woken up by a network message. Smb4K uses a "
-#| "magic package send via a UDP socket to wake up remote servers. If you "
-#| "want to take advantage of the Wake-On-LAN feature, you need to enable "
-#| "this option."
+#, kde-format
 msgid ""
 "Wake-on-LAN (WOL) is an ethernet computer networking standard that allows a "
 "computer to be turned on or woken up by a network message. Smb4K uses a "
@@ -623,11 +604,7 @@ msgstr "Väntetid:"
 
 #. i18n: ectx: whatsthis, entry (WakeOnLANWaitingTime), group (Network)
 #: smb4k.kcfg:240
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the waiting time in seconds between the sending of the magic Wake-"
-#| "On-LAN packages and the scanning of the network neighborhood or the "
-#| "mounting of a share."
+#, kde-format
 msgid ""
 "This is the waiting time in seconds between the sending of the magic Wake-On-"
 "LAN packets and the scanning of the network neighborhood or the mounting of "
@@ -1059,7 +1036,7 @@ msgstr ""
 #: smb4k.kcfg:382
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Bevara åtkomstkontrollistor (ACL:er)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:383
@@ -1070,66 +1047,58 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Bevara åtkomstkontrollistor. Alternativet gör att rsync uppdaterar målets "
+"ACL:er att vara likadana som källans ACL:er. Alternativet medför också --"
+"perms. Käll- och målsystemen måste ha kompatibla ACL-poster för att "
+"alternativet ska fungera på rätt sätt."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:387
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Bevara tidsstämpeln"
+msgstr "Bevara utökade attribut"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:388
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Bevara grupptillhörighet (-g, --group). Målfilens grupptillhörighet kommer "
-"att vara samma som källfilens."
+"Bevara utökade attribut. Alternativet gör att rsync uppdaterar målets "
+"utökade attribute så att de är likadana som källans."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Bevara tidsstämpeln"
+msgstr "Bevara åtkomsttider"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Bevara grupptillhörighet (-g, --group). Målfilens grupptillhörighet kommer "
-"att vara samma som källfilens."
+"Bevara åtkomsttider. Det talar om för rsync att ställa in målfilernas "
+"åtkomsttider (användningstider) till samma värde som källfilerna."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:397
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Bevara tidsstämpeln"
+msgstr "Bevara skapad tid"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:398
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Bevara grupptillhörighet (-g, --group). Målfilens grupptillhörighet kommer "
-"att vara samma som källfilens."
+"Bevara skapad tid. Det talar om för rsync att ställa in målfilernas skapad "
+"tid (hur nya de är) till samma värde som källfilerna."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:402
@@ -1619,10 +1588,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:565
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Anpassade filterregler:"
+msgstr "Egna filterregler"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:570
@@ -2051,10 +2019,9 @@ msgid "Clear"
 msgstr "Rensa"
 
 #: smb4kbookmarkhandler_p.cpp:526
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Användare:"
+msgstr "Användarnamn:"
 
 #: smb4kbookmarkhandler_p.cpp:534 smb4kmounter_p.cpp:154
 #, kde-format
@@ -2086,16 +2053,17 @@ msgstr "Filen %1 kunde inte skrivas ut på %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"Zeroconf-demonen kör inte. Inga servrar upptäcks med användning av DNS-SD."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "Zeroconf-stöd är inte tillgängligt i den här versionen av KDE."
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Ett okänt fel uppstod med Zeroconf."
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2174,29 +2142,24 @@ msgid "Print"
 msgstr "Skriv ut"
 
 #: smb4kcustomoptionsmanager_p.cpp:46
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Monteringsinställningar"
+msgstr "Egna inställningar"
 
 #: smb4kcustomoptionsmanager_p.cpp:69
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "<p>Define custom settings for host <b>%1</b> and all the shares it provides."
 "</p>"
 msgstr ""
-"<p>Definiera anpassade alternativ för värddatorn <b>%1</b> och alla delade "
+"<p>Definiera egna inställningar för värddatorn <b>%1</b> och alla delade "
 "kataloger den tillhandahåller.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:73
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#, kde-format
 msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 msgstr ""
-"<p>Definiera anpassade alternativ för den delade katalogen <b>%1</b>.</p>"
+"<p>Definiera egna inställningar för den delade katalogen <b>%1</b>.</p>"
 
 #: smb4kcustomoptionsmanager_p.cpp:168 smb4kcustomoptionsmanager_p.cpp:365
 #: smb4kcustomoptionsmanager_p.cpp:617 smb4kcustomoptionsmanager_p.cpp:709
@@ -2266,15 +2229,13 @@ msgstr "Händelser"
 
 #: smb4kcustomoptionsmanager_p.cpp:486 smb4kcustomoptionsmanager_p.cpp:830
 #: smb4kcustomoptionsmanager_p.cpp:1055
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Skicka magiskt paket innan sökning av nätverksgrannskapet"
 
 #: smb4kcustomoptionsmanager_p.cpp:494 smb4kcustomoptionsmanager_p.cpp:838
 #: smb4kcustomoptionsmanager_p.cpp:1063
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
+#, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Skicka magiskt paket innan en delad resurs monteras"
 
@@ -2324,16 +2285,13 @@ msgid "Clear List"
 msgstr "Rensa lista"
 
 #: smb4kmounter.cpp:756
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>Den delade resursen <b>%1</b> är monterad som <br><b>%2</b> och ägs "
-"av användaren <b>%3</b>.</p><p>Vill du verkligen avmontera den?</p></qt>"
+"<p>Den delade resursen <b>%1</b> är monterad som <br><b>%2</b> och ägs av "
+"användaren <b>%3</b>.</p<p>Vill du verkligen avmontera den?</p>>"
 
 #: smb4kmounter.cpp:761
 #, kde-format
@@ -3287,7 +3245,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "Skicka inte låsningsbegäran för byte-intervall"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -3298,6 +3256,10 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"Skicka inte låsningsbegäran för byte-intervall till servern. Det är "
+"nödvändigt för vissa program som inte följer den obligatoriska CIFS-stil "
+"låsningsbegäran för byte-intervall (och de flesta CIFS-servrar stöder inte "
+"ännu att begära rådgivande låsningsbegäran för byte-intervall)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3534,8 +3496,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Den delade katalogen <b>%1</b> har monterats som <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:51
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Öppna"
@@ -3742,20 +3703,18 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<qt>Webbadressen du matade in är ogiltig.</qt>"
 
 #: smb4knotification.cpp:424
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"Nätverkskommunikation misslyckades med följande felmeddelande: <s>%1</s>"
+"<p>Nätverkskommunikation misslyckades med följande felmeddelande: <s>%1</s></"
+"p>"
 
 #: smb4knotification.cpp:432
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Ett fel uppstod med Zeroconf-tjänsten: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
