@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-20 00:49+0000\n"
-"PO-Revision-Date: 2023-07-05 17:22-0300\n"
+"PO-Revision-Date: 2023-07-25 10:54-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -574,7 +574,7 @@ msgstr "Sempre remontar este compartilhamento"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "Page 1"
-msgstr ""
+msgstr "Página 1"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:85
 #, kde-format
@@ -584,17 +584,17 @@ msgstr "Este servidor suporta as extensões CIFS Unix"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Page 2"
-msgstr ""
+msgstr "Página 2"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Page 3"
-msgstr ""
+msgstr "Página 3"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
 msgid "Page 4"
-msgstr ""
+msgstr "Página 4"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
 #, kde-format
@@ -602,21 +602,19 @@ msgid "MAC Address:"
 msgstr "Endereço MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Enviar o 'pacote mágico' antes de verificar a vizinhança da rede"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
+#, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Enviar o 'pacote mágico' antes de montar um compartilhamento"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:263
 #, kde-format
 msgid "Page 5"
-msgstr ""
+msgstr "Página 5"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
