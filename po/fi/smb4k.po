@@ -596,14 +596,12 @@ msgid "MAC Address:"
 msgstr "MAC-osoite:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Lähetä taikapaketti ennen verkkoympäristön tutkimista"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
+#, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Lähetä taikapaketti ennen jaon liittämistä"
 
