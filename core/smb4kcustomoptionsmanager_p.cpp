@@ -1904,7 +1904,11 @@ void Smb4KCustomOptionsDialog::saveValues()
         KLineEdit *macAddress = findChild<KLineEdit *>(QStringLiteral("MACAddress"));
 
         if (macAddress) {
-            m_options->setMACAddress(macAddress->text());
+            if (macAddress->hasAcceptableInput()) {
+                m_options->setMACAddress(macAddress->text());
+            } else {
+                m_options->setMACAddress(QString());
+            }
         }
 
         QCheckBox *sendPacketBeforeScan = findChild<QCheckBox *>(QStringLiteral("SendPacketBeforeScan"));
