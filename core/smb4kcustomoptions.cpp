@@ -20,6 +20,7 @@
 // Qt includes
 #include <QDebug>
 #include <QHostAddress>
+#include <QRegularExpression>
 
 // KDE includes
 #include <KCoreAddons/KUser>
@@ -665,11 +666,13 @@ bool Smb4KCustomOptions::useKerberos() const
 
 void Smb4KCustomOptions::setMACAddress(const QString &macAddress)
 {
-    QRegExp exp(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
+    if (d->macAddress != macAddress) {
+        QRegularExpression expression(QStringLiteral("..\\:..\\:..\\:..\\:..\\:.."));
 
-    if (d->macAddress != macAddress && exp.exactMatch(macAddress)) {
-        d->macAddress = macAddress;
-        d->changed = true;
+        if (expression.match(macAddress).hasMatch() || macAddress.isEmpty()) {
+            d->macAddress = macAddress;
+            d->changed = true;
+        }
     }
 }
 
