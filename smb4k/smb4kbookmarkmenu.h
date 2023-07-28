@@ -83,16 +83,6 @@ protected Q_SLOTS:
     void slotBookmarkActionTriggered(QAction *action);
 
     /**
-     * Called when a bookmark was added
-     */
-    void slotBookmarkAdded(const BookmarkPtr &bookmark);
-
-    /**
-     * Called when a bookmark was removed
-     */
-    void slotBookmarkRemoved(const BookmarkPtr &bookmark);
-
-    /**
      * Called when the list bookmarks has been updated
      */
     void slotBookmarksUpdated();
@@ -107,11 +97,6 @@ private:
      * Add a bookmark to the menu
      */
     void addBookmarkToMenu(const BookmarkPtr &bookmark);
-
-    /**
-     * Remove a bookmark from the menu
-     */
-    void removeBookmarkFromMenu(const BookmarkPtr &bookmark);
 
     /**
      * Enables or disables the mount actions according to the status
