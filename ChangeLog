@@ -1,3 +1,14 @@
+Smb4K 3.2.2 (2023-07-28):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
+
+- Fix crash in the bookmark menu and remove unnecessary/dysfunctional code
+  (BUG 472467).
+- Fix Smb4KCustomOptions::setMACAddress(). Backported from master.
+- Fix clearing the MAC address in the custom options dialog. Backported
+  from master.
+
 Smb4K 3.2.1 (2023-04-08):
 
 See the summary of changes below. For a full list of changes, please
