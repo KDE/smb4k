@@ -1,7 +1,7 @@
 /*
     This is the bookmark container for Smb4K (next generation).
 
-    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -61,11 +61,18 @@ public:
     ~Smb4KBookmark();
 
     /**
+     * Set the share item.
+     *
+     * @param share           The share
+     */
+    void setShare(Smb4KShare *share) const;
+
+    /**
      * Set the workgroup name.
      *
      * @param workgroup       The workgroup where the share is located.
      */
-    void setWorkgroupName(const QString &workgroup);
+    void setWorkgroupName(const QString &workgroup) const;
 
     /**
      * Returns the workgroup/domain name.
@@ -75,25 +82,11 @@ public:
     QString workgroupName() const;
 
     /**
-     * Set the host name.
-     *
-     * @param host            The host where the share is located.
-     */
-    void setHostName(const QString &host);
-
-    /**
      * Returns the host name.
      *
      * @returns the host name.
      */
     QString hostName() const;
-
-    /**
-     * Set the share name.
-     *
-     * @param share           The share name
-     */
-    void setShareName(const QString &share);
 
     /**
      * Returns the share name.
@@ -107,7 +100,7 @@ public:
      *
      * @param ip              The host's IP address
      */
-    void setHostIpAddress(const QString &ip);
+    void setHostIpAddress(const QString &ip) const;
 
     /**
      * Returns the host's IP address.
@@ -121,7 +114,7 @@ public:
      *
      * @param type            The type of the share.
      */
-    void setShareType(Smb4KGlobal::ShareType type);
+    void setShareType(Smb4KGlobal::ShareType type) const;
 
     /**
      * Returns the share's type.
@@ -135,7 +128,7 @@ public:
      *
      * @param label         The bookmark's label
      */
-    void setLabel(const QString &label);
+    void setLabel(const QString &label) const;
 
     /**
      * Returns the bookmark's label.
@@ -149,7 +142,7 @@ public:
      *
      * @param name          The user name
      */
-    void setUserName(const QString &name);
+    void setUserName(const QString &name) const;
 
     /**
      * Returns the user name that is used to mount this share.
@@ -163,7 +156,7 @@ public:
      *
      * @param url             The URL of the network item
      */
-    void setUrl(const QUrl &url);
+    void setUrl(const QUrl &url) const;
 
     /**
      * Returns the URL of this bookmark.
@@ -177,7 +170,7 @@ public:
      *
      * @param name            The category name
      */
-    void setCategoryName(const QString &name);
+    void setCategoryName(const QString &name) const;
 
     /**
      * Returns the name of the category this bookmark is in.
@@ -193,7 +186,7 @@ public:
      *
      * @param profile         The profile name
      */
-    void setProfile(const QString &profile);
+    void setProfile(const QString &profile) const;
 
     /**
      * Returns the name of the profile this bookmark belongs to.
@@ -207,7 +200,7 @@ public:
      *
      * @param icon          The icon
      */
-    void setIcon(const QIcon &icon);
+    void setIcon(const QIcon &icon) const;
 
     /**
      * This function returns the icon of the network item. By default, it
@@ -225,10 +218,16 @@ public:
      */
     QString displayString() const;
 
+    /**
+     * Copy assignment operator
+     */
+    Smb4KBookmark &operator=(const Smb4KBookmark &other);
+
 private:
     const QScopedPointer<Smb4KBookmarkPrivate> d;
 };
 
-Q_DECLARE_METATYPE(Smb4KBookmark)
+Q_DECLARE_METATYPE(Smb4KBookmark);
+Q_DECLARE_OPAQUE_POINTER(Smb4KBookmark);
 
 #endif
