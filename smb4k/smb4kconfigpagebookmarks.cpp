@@ -333,10 +333,14 @@ void Smb4KConfigPageBookmarks::endEditingCategoryItem(QTreeWidgetItem *item)
                 QVariant variant = QVariant::fromValue(bookmark);
                 item->child(i)->setData(0, DataRole, variant);
             }
+
+            m_bookmarksChanged = true;
         }
 
         m_categoryEdit->addItem(item->text(0));
         m_categoryEdit->completionObject()->addItem(item->text(0));
+
+        Q_EMIT bookmarksModified();
     }
 }
 
@@ -359,7 +363,7 @@ bool Smb4KConfigPageBookmarks::eventFilter(QObject *obj, QEvent *e)
                 m_treeWidget->clearSelection();
             }
 
-            if (m_treeWidget->isPersistentEditorOpen(m_treeWidget->currentItem())) {
+            if (m_treeWidget->isPersistentEditorOpen(m_treeWidget->currentItem(), 0)) {
                 endEditingCategoryItem(m_treeWidget->currentItem());
             }
         }
@@ -368,7 +372,7 @@ bool Smb4KConfigPageBookmarks::eventFilter(QObject *obj, QEvent *e)
             QKeyEvent *keyEvent = static_cast<QKeyEvent *>(e);
 
             if (keyEvent->key() == Qt::Key_Return) {
-                if (m_treeWidget->isPersistentEditorOpen(m_treeWidget->currentItem())) {
+                if (m_treeWidget->isPersistentEditorOpen(m_treeWidget->currentItem(), 0)) {
                     endEditingCategoryItem(m_treeWidget->currentItem());
                     return true;
                 }
