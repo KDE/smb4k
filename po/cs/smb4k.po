@@ -552,12 +552,12 @@ msgstr "Sdílí pohled"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:48
 #, kde-format
 msgid "Always remount this share"
-msgstr ""
+msgstr "Vždy znovu připojit toto sdílení"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "Page 1"
-msgstr ""
+msgstr "Strana 1"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:85
 #, kde-format
@@ -567,7 +567,7 @@ msgstr ""
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Page 2"
-msgstr ""
+msgstr "Strana 2"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
@@ -580,15 +580,14 @@ msgid "Page 4"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:239
-#, fuzzy, kde-format
-#| msgid "IP Address:"
+#, kde-format
 msgid "MAC Address:"
-msgstr "IP adresa:"
+msgstr "MAC adresa:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "Odeslat magický paket před skenováním síťového okolí"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:251
 #, kde-format
