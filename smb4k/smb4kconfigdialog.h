@@ -51,18 +51,6 @@ protected Q_SLOTS:
     void updateSettings() override;
 
     /**
-     * Reimplemented from KConfigDialog. Used to do things before
-     * the dialog is shown.
-     */
-    void updateWidgets() override;
-
-    /**
-     * Reimplemented from QDialog. Used to reset things after the dialog was
-     * closed via the 'Cancel' button.
-     */
-    void reject() override;
-
-    /**
      * Enable/disable the "Apply" button if settings that are not managed by
      * KConfig XT have changed.
      */

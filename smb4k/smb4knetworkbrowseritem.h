@@ -60,7 +60,7 @@ public:
      *
      * @returns a pointer to the workgroup item or NULL.
      */
-    WorkgroupPtr workgroupItem();
+    SMB4K_DEPRECATED WorkgroupPtr workgroupItem();
 
     /**
      * This function is provided for convenience. It returns a pointer to
@@ -68,7 +68,7 @@ public:
      *
      * @returns a pointer to the host item or NULL.
      */
-    HostPtr hostItem();
+    SMB4K_DEPRECATED HostPtr hostItem();
 
     /**
      * This function is provided for convenience. It returns a pointer to
@@ -76,7 +76,7 @@ public:
      *
      * @returns a pointer to the share item or NULL.
      */
-    SharePtr shareItem();
+    SMB4K_DEPRECATED SharePtr shareItem();
 
     /**
      * This function returns the encapsulated network item.
@@ -84,7 +84,7 @@ public:
      * @returns a pointer to the encapsulated Smb4KBasicNetworkItem object
      * or NULL if there is no item defined (this should never happen).
      */
-    const NetworkItemPtr &networkItem();
+    NetworkItemPtr networkItem();
 
     /**
      * This function updates the internal network item.

@@ -46,12 +46,12 @@ public:
     /**
      * Set the custom settings object that needs to be edited
      */
-    void setCustomSettings(OptionsPtr settings);
+    void setCustomSettings(const Smb4KCustomOptions &settings);
 
     /**
      * Get the custom settings object that has been edited
      */
-    OptionsPtr getCustomSettings();
+    Smb4KCustomOptions getCustomSettings() const;
 
     /**
      * Clears the input widgets
@@ -93,7 +93,8 @@ protected Q_SLOTS:
 private:
     void setupView();
     void checkValues();
-    OptionsPtr m_customSettings;
+    bool m_haveCustomSettings;
+    Smb4KCustomOptions m_customSettings;
     QCheckBox *m_alwaysRemountShare;
     QCheckBox *m_useWriteAccess;
     KComboBox *m_writeAccess;

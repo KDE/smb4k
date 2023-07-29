@@ -28,10 +28,8 @@ Smb4KCustomSettingsEditorWidget::Smb4KCustomSettingsEditorWidget(QWidget *parent
 {
     // FIXME: Implement mount point!?
 
-    // FIXME: Honor diabled widgets and unchecked check boxes!?
-
-    m_customSettings = nullptr;
-
+    // FIXME: Honor disabled widgets and unchecked check boxes!?
+    m_haveCustomSettings = false;
     setupView();
 }
 
@@ -77,7 +75,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab1Layout->addWidget(m_fileSystemPort, 2, 1);
     tab1Layout->setRowStretch(3, 100);
 
-    addTab(tab1, i18n("Page 1"));
+    addTab(tab1, i18n("Page 1: Mounting"));
 
     QGroupBox *tab2 = new QGroupBox(i18n("CIFS Unix Extensions Support"), this);
     QGridLayout *tab2Layout = new QGridLayout(tab2);
@@ -137,7 +135,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab2Layout->addWidget(m_directoryMode, 4, 1);
     tab2Layout->setRowStretch(5, 100);
 
-    addTab(tab2, i18n("Page 2"));
+    addTab(tab2, i18n("Page 2: Mounting"));
 
     QGroupBox *tab3 = new QGroupBox(i18n("Advanced Mount Settings"), this);
     QGridLayout *tab3Layout = new QGridLayout(tab3);
@@ -172,7 +170,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab3Layout->addWidget(m_securityMode, 1, 1);
     tab3Layout->setRowStretch(2, 100);
 
-    addTab(tab3, i18n("Page 3"));
+    addTab(tab3, i18n("Page 3: Mounting"));
 
     QGroupBox *tab4 = new QGroupBox(i18n("Browse Settings"), this);
     QGridLayout *tab4Layout = new QGridLayout(tab4);
@@ -231,9 +229,9 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab4Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
     tab4Layout->setRowStretch(5, 100);
 
-    addTab(tab4, i18n("Page 4"));
+    addTab(tab4, i18n("Page 4: Browsing"));
 
-    QGroupBox *tab5 = new QGroupBox(i18n("Wake-On-LAN"), this);
+    QGroupBox *tab5 = new QGroupBox(i18n("Wake-On-LAN Settings"), this);
     QGridLayout *tab5Layout = new QGridLayout(tab5);
 
     m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab5);
@@ -260,7 +258,7 @@ void Smb4KCustomSettingsEditorWidget::setupView()
     tab5Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
     tab5Layout->setRowStretch(3, 100);
 
-    addTab(tab5, i18n("Page 5"));
+    addTab(tab5, i18n("Page 5: Wake-On-LAN"));
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 void Smb4KCustomSettingsEditorWidget::setupView()
@@ -272,123 +270,125 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 }
 #endif
 
-void Smb4KCustomSettingsEditorWidget::setCustomSettings(OptionsPtr settings)
+void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomOptions &settings)
 {
-    if (settings->type() != Host) {
+    if (settings.type() != Host) {
         m_alwaysRemountShare->setEnabled(true);
-        m_alwaysRemountShare->setChecked(settings->remount() == Smb4KCustomOptions::RemountAlways);
+        m_alwaysRemountShare->setChecked(settings.remount() == Smb4KCustomOptions::RemountAlways);
     }
 
-    m_useWriteAccess->setChecked(settings->useWriteAccess());
-    m_writeAccess->setCurrentIndex(settings->writeAccess());
+    m_useWriteAccess->setChecked(settings.useWriteAccess());
+    m_writeAccess->setCurrentIndex(settings.writeAccess());
 
-    m_useFileSystemPort->setChecked(settings->useFileSystemPort());
-    m_fileSystemPort->setValue(settings->fileSystemPort());
+    m_useFileSystemPort->setChecked(settings.useFileSystemPort());
+    m_fileSystemPort->setValue(settings.fileSystemPort());
 
-    m_cifsUnixExtensionSupport->setChecked(settings->cifsUnixExtensionsSupport());
+    m_cifsUnixExtensionSupport->setChecked(settings.cifsUnixExtensionsSupport());
 
-    m_useUserId->setChecked(settings->useUser());
-    int userIndex = m_userId->findData(settings->user().userId().toString());
+    m_useUserId->setChecked(settings.useUser());
+    int userIndex = m_userId->findData(settings.user().userId().toString());
     m_userId->setCurrentIndex(userIndex);
 
-    m_useGroupId->setChecked(settings->useGroup());
-    int groupIndex = m_groupId->findData(settings->group().groupId().toString());
+    m_useGroupId->setChecked(settings.useGroup());
+    int groupIndex = m_groupId->findData(settings.group().groupId().toString());
     m_groupId->setCurrentIndex(groupIndex);
 
-    m_useFileMode->setChecked(settings->useFileMode());
-    m_fileMode->setText(settings->fileMode());
+    m_useFileMode->setChecked(settings.useFileMode());
+    m_fileMode->setText(settings.fileMode());
 
-    m_useDirectoryMode->setChecked(settings->useDirectoryMode());
-    m_directoryMode->setText(settings->directoryMode());
+    m_useDirectoryMode->setChecked(settings.useDirectoryMode());
+    m_directoryMode->setText(settings.directoryMode());
 
-    m_useSmbMountProtocolVersion->setChecked(settings->useMountProtocolVersion());
-    int mountProtocolVersionIndex = m_smbMountProtocolVersion->findData(settings->mountProtocolVersion());
+    m_useSmbMountProtocolVersion->setChecked(settings.useMountProtocolVersion());
+    int mountProtocolVersionIndex = m_smbMountProtocolVersion->findData(settings.mountProtocolVersion());
     m_smbMountProtocolVersion->setCurrentIndex(mountProtocolVersionIndex);
 
-    m_useSecurityMode->setChecked(settings->useSecurityMode());
-    int securityModeIndex = m_securityMode->findData(settings->securityMode());
+    m_useSecurityMode->setChecked(settings.useSecurityMode());
+    int securityModeIndex = m_securityMode->findData(settings.securityMode());
     m_securityMode->setCurrentIndex(securityModeIndex);
 
-    m_useClientProtocolVersions->setChecked(settings->useClientProtocolVersions());
-    int minimalClientProtocolVersionIndex = m_minimalClientProtocolVersion->findData(settings->minimalClientProtocolVersion());
+    m_useClientProtocolVersions->setChecked(settings.useClientProtocolVersions());
+    int minimalClientProtocolVersionIndex = m_minimalClientProtocolVersion->findData(settings.minimalClientProtocolVersion());
     m_minimalClientProtocolVersion->setCurrentIndex(minimalClientProtocolVersionIndex);
-    int maximalClientProtocolVersionIndex = m_maximalClientProtocolVersion->findData(settings->maximalClientProtocolVersion());
+    int maximalClientProtocolVersionIndex = m_maximalClientProtocolVersion->findData(settings.maximalClientProtocolVersion());
     m_maximalClientProtocolVersion->setCurrentIndex(maximalClientProtocolVersionIndex);
 
-    m_useRemoteSmbPort->setChecked(settings->useSmbPort());
-    m_remoteSmbPort->setValue(settings->smbPort());
+    m_useRemoteSmbPort->setChecked(settings.useSmbPort());
+    m_remoteSmbPort->setValue(settings.smbPort());
 
-    m_useKerberos->setChecked(settings->useKerberos());
+    m_useKerberos->setChecked(settings.useKerberos());
 
-    if (settings->type() == Host) {
+    if (settings.type() == Host) {
         m_macAddressLabel->setEnabled(Smb4KSettings::enableWakeOnLAN());
         m_macAddress->setEnabled(Smb4KSettings::enableWakeOnLAN());
         m_sendPacketBeforeScan->setEnabled(Smb4KSettings::enableWakeOnLAN());
         m_sendPacketBeforeMount->setEnabled(Smb4KSettings::enableWakeOnLAN());
 
-        m_macAddress->setText(settings->macAddress());
-        m_sendPacketBeforeScan->setChecked(settings->wolSendBeforeNetworkScan());
-        m_sendPacketBeforeMount->setChecked(settings->wolSendBeforeMount());
+        m_macAddress->setText(settings.macAddress());
+        m_sendPacketBeforeScan->setChecked(settings.wolSendBeforeNetworkScan());
+        m_sendPacketBeforeMount->setChecked(settings.wolSendBeforeMount());
     }
 
     m_customSettings = settings;
+    m_haveCustomSettings = true;
 }
 
-OptionsPtr Smb4KCustomSettingsEditorWidget::getCustomSettings()
+Smb4KCustomOptions Smb4KCustomSettingsEditorWidget::getCustomSettings() const
 {
-    if (m_customSettings->type() != Host) {
-        m_customSettings->setRemount(m_alwaysRemountShare->isChecked() ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::UndefinedRemount);
+    if (m_customSettings.type() != Host) {
+        m_customSettings.setRemount(m_alwaysRemountShare->isChecked() ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::UndefinedRemount);
     }
 
-    m_customSettings->setUseWriteAccess(m_useWriteAccess->isChecked());
-    m_customSettings->setWriteAccess(m_writeAccess->currentIndex());
+    m_customSettings.setUseWriteAccess(m_useWriteAccess->isChecked());
+    m_customSettings.setWriteAccess(m_writeAccess->currentIndex());
 
-    m_customSettings->setUseFileSystemPort(m_useFileSystemPort->isChecked());
-    m_customSettings->setFileSystemPort(m_fileSystemPort->value());
+    m_customSettings.setUseFileSystemPort(m_useFileSystemPort->isChecked());
+    m_customSettings.setFileSystemPort(m_fileSystemPort->value());
 
-    m_customSettings->setCifsUnixExtensionsSupport(m_cifsUnixExtensionSupport->isChecked());
+    m_customSettings.setCifsUnixExtensionsSupport(m_cifsUnixExtensionSupport->isChecked());
 
-    m_customSettings->setUseUser(m_useUserId->isChecked());
-    m_customSettings->setUser(KUser(K_UID(m_userId->currentData().toInt())));
+    m_customSettings.setUseUser(m_useUserId->isChecked());
+    m_customSettings.setUser(KUser(K_UID(m_userId->currentData().toInt())));
 
-    m_customSettings->setUseGroup(m_useGroupId->isChecked());
-    m_customSettings->setGroup(KUserGroup(K_GID(m_groupId->currentData().toInt())));
+    m_customSettings.setUseGroup(m_useGroupId->isChecked());
+    m_customSettings.setGroup(KUserGroup(K_GID(m_groupId->currentData().toInt())));
 
-    m_customSettings->setUseFileMode(m_useFileMode->isChecked());
-    m_customSettings->setFileMode(m_fileMode->text());
+    m_customSettings.setUseFileMode(m_useFileMode->isChecked());
+    m_customSettings.setFileMode(m_fileMode->text());
 
-    m_customSettings->setUseDirectoryMode(m_useDirectoryMode->isChecked());
-    m_customSettings->setDirectoryMode(m_directoryMode->text());
+    m_customSettings.setUseDirectoryMode(m_useDirectoryMode->isChecked());
+    m_customSettings.setDirectoryMode(m_directoryMode->text());
 
-    m_customSettings->setUseMountProtocolVersion(m_useSmbMountProtocolVersion->isChecked());
-    m_customSettings->setMountProtocolVersion(m_smbMountProtocolVersion->currentData().toInt());
+    m_customSettings.setUseMountProtocolVersion(m_useSmbMountProtocolVersion->isChecked());
+    m_customSettings.setMountProtocolVersion(m_smbMountProtocolVersion->currentData().toInt());
 
-    m_customSettings->setUseSecurityMode(m_useSecurityMode->isChecked());
-    m_customSettings->setSecurityMode(m_securityMode->currentData().toInt());
+    m_customSettings.setUseSecurityMode(m_useSecurityMode->isChecked());
+    m_customSettings.setSecurityMode(m_securityMode->currentData().toInt());
 
-    m_customSettings->setUseClientProtocolVersions(m_useClientProtocolVersions->isChecked());
-    m_customSettings->setMinimalClientProtocolVersion(m_minimalClientProtocolVersion->currentData().toInt());
-    m_customSettings->setMaximalClientProtocolVersion(m_maximalClientProtocolVersion->currentData().toInt());
+    m_customSettings.setUseClientProtocolVersions(m_useClientProtocolVersions->isChecked());
+    m_customSettings.setMinimalClientProtocolVersion(m_minimalClientProtocolVersion->currentData().toInt());
+    m_customSettings.setMaximalClientProtocolVersion(m_maximalClientProtocolVersion->currentData().toInt());
 
-    m_customSettings->setUseSmbPort(m_useRemoteSmbPort->isChecked());
-    m_customSettings->setSmbPort(m_remoteSmbPort->value());
+    m_customSettings.setUseSmbPort(m_useRemoteSmbPort->isChecked());
+    m_customSettings.setSmbPort(m_remoteSmbPort->value());
 
-    m_customSettings->setUseKerberos(m_useKerberos->isChecked());
+    m_customSettings.setUseKerberos(m_useKerberos->isChecked());
 
     if (m_macAddress->hasAcceptableInput()) {
-        m_customSettings->setMACAddress(m_macAddress->text());
+        m_customSettings.setMACAddress(m_macAddress->text());
     } else {
-        m_customSettings->setMACAddress(QString());
+        m_customSettings.setMACAddress(QString());
     }
-    m_customSettings->setWOLSendBeforeNetworkScan(m_sendPacketBeforeScan->isChecked());
-    m_customSettings->setWOLSendBeforeMount(m_sendPacketBeforeMount->isChecked());
+    m_customSettings.setWOLSendBeforeNetworkScan(m_sendPacketBeforeScan->isChecked());
+    m_customSettings.setWOLSendBeforeMount(m_sendPacketBeforeMount->isChecked());
 
     return m_customSettings;
 }
 
 void Smb4KCustomSettingsEditorWidget::clear()
 {
-    m_customSettings = nullptr;
+    m_customSettings = Smb4KCustomOptions();
+    m_haveCustomSettings = false;
     setCurrentIndex(0);
 
     m_alwaysRemountShare->setChecked(false);
@@ -439,141 +439,141 @@ void Smb4KCustomSettingsEditorWidget::clear()
 
 void Smb4KCustomSettingsEditorWidget::checkValues()
 {
-    if (!m_customSettings) {
+    if (!m_haveCustomSettings) {
         return;
     }
 
-    if (m_alwaysRemountShare->isChecked() != (m_customSettings->remount() == Smb4KCustomOptions::RemountAlways)) {
+    if (m_alwaysRemountShare->isChecked() != (m_customSettings.remount() == Smb4KCustomOptions::RemountAlways)) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useWriteAccess->isChecked() != m_customSettings->useWriteAccess()) {
+    if (m_useWriteAccess->isChecked() != m_customSettings.useWriteAccess()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_writeAccess->currentIndex() != m_customSettings->writeAccess()) {
+    if (m_writeAccess->currentIndex() != m_customSettings.writeAccess()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useFileSystemPort->isChecked() != m_customSettings->useFileSystemPort()) {
+    if (m_useFileSystemPort->isChecked() != m_customSettings.useFileSystemPort()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_fileSystemPort->value() != m_customSettings->fileSystemPort()) {
+    if (m_fileSystemPort->value() != m_customSettings.fileSystemPort()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_cifsUnixExtensionSupport->isChecked() != m_customSettings->cifsUnixExtensionsSupport()) {
+    if (m_cifsUnixExtensionSupport->isChecked() != m_customSettings.cifsUnixExtensionsSupport()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useUserId->isChecked() != m_customSettings->useUser()) {
+    if (m_useUserId->isChecked() != m_customSettings.useUser()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_userId->currentData().toString() != m_customSettings->user().userId().toString()) {
+    if (m_userId->currentData().toString() != m_customSettings.user().userId().toString()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useGroupId->isChecked() != m_customSettings->useGroup()) {
+    if (m_useGroupId->isChecked() != m_customSettings.useGroup()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_groupId->currentData().toString() != m_customSettings->group().groupId().toString()) {
+    if (m_groupId->currentData().toString() != m_customSettings.group().groupId().toString()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useFileMode->isChecked() != m_customSettings->useFileMode()) {
+    if (m_useFileMode->isChecked() != m_customSettings.useFileMode()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_fileMode->text() != m_customSettings->fileMode()) {
+    if (m_fileMode->text() != m_customSettings.fileMode()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useDirectoryMode->isChecked() != m_customSettings->useDirectoryMode()) {
+    if (m_useDirectoryMode->isChecked() != m_customSettings.useDirectoryMode()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_directoryMode->text() != m_customSettings->directoryMode()) {
+    if (m_directoryMode->text() != m_customSettings.directoryMode()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useSmbMountProtocolVersion->isChecked() != m_customSettings->useMountProtocolVersion()) {
+    if (m_useSmbMountProtocolVersion->isChecked() != m_customSettings.useMountProtocolVersion()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_smbMountProtocolVersion->currentData().toInt() != m_customSettings->mountProtocolVersion()) {
+    if (m_smbMountProtocolVersion->currentData().toInt() != m_customSettings.mountProtocolVersion()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useSecurityMode->isChecked() != m_customSettings->useSecurityMode()) {
+    if (m_useSecurityMode->isChecked() != m_customSettings.useSecurityMode()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_securityMode->currentData().toInt() != m_customSettings->securityMode()) {
+    if (m_securityMode->currentData().toInt() != m_customSettings.securityMode()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useClientProtocolVersions->isChecked() != m_customSettings->useClientProtocolVersions()) {
+    if (m_useClientProtocolVersions->isChecked() != m_customSettings.useClientProtocolVersions()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_minimalClientProtocolVersion->currentData().toInt() != m_customSettings->minimalClientProtocolVersion()) {
+    if (m_minimalClientProtocolVersion->currentData().toInt() != m_customSettings.minimalClientProtocolVersion()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_maximalClientProtocolVersion->currentData().toInt() != m_customSettings->maximalClientProtocolVersion()) {
+    if (m_maximalClientProtocolVersion->currentData().toInt() != m_customSettings.maximalClientProtocolVersion()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useRemoteSmbPort->isChecked() != m_customSettings->useSmbPort()) {
+    if (m_useRemoteSmbPort->isChecked() != m_customSettings.useSmbPort()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_remoteSmbPort->value() != m_customSettings->smbPort()) {
+    if (m_remoteSmbPort->value() != m_customSettings.smbPort()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_useKerberos->isChecked() != m_customSettings->useKerberos()) {
+    if (m_useKerberos->isChecked() != m_customSettings.useKerberos()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_macAddress->text() != m_customSettings->macAddress()) {
+    if (m_macAddress->text() != m_customSettings.macAddress()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_sendPacketBeforeScan->isChecked() != m_customSettings->wolSendBeforeNetworkScan()) {
+    if (m_sendPacketBeforeScan->isChecked() != m_customSettings.wolSendBeforeNetworkScan()) {
         Q_EMIT edited(true);
         return;
     }
 
-    if (m_sendPacketBeforeMount->isChecked() != m_customSettings->wolSendBeforeMount()) {
+    if (m_sendPacketBeforeMount->isChecked() != m_customSettings.wolSendBeforeMount()) {
         Q_EMIT edited(true);
         return;
     }

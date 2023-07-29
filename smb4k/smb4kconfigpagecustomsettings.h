@@ -17,6 +17,9 @@
 #include <QPushButton>
 #include <QWidget>
 
+// KDE includes
+#include <KMessageWidget>
+
 /**
  * This configuration page takes care of the custom settings
  *
@@ -40,6 +43,15 @@ public:
     virtual ~Smb4KConfigPageCustomSettings();
 
     /**
+     * Returns TRUE if there may be changed custom settings. You must check if
+     * this is indeed the case in you code.
+     *
+     * @returns TRUE if custom settings may have changed.
+     */
+    bool customSettingsChanged();
+
+public Q_SLOTS:
+    /**
      * This function loads the list of custom settings.
      */
     void loadCustomSettings();
@@ -48,14 +60,6 @@ public:
      * This function saves the list of custom settings.
      */
     void saveCustomSettings();
-
-    /**
-     * Returns TRUE if there may be changed custom settings. You must check if
-     * this is indeed the case in you code.
-     *
-     * @returns TRUE if custom settings may have changed.
-     */
-    bool customSettingsChanged();
 
 protected:
     /**
@@ -128,9 +132,11 @@ protected Q_SLOTS:
     void slotCustomSettingsEdited(bool changed);
 
 private:
+    void setRemovalMessage(const Smb4KCustomOptions &settings);
     QListWidget *m_listWidget;
     QListWidgetItem *m_itemToEdit;
     Smb4KCustomSettingsEditorWidget *m_editorWidget;
+    KMessageWidget *m_messageWidget;
     bool m_customSettingsChanged;
     bool m_savingCustomSettings;
     QPushButton *m_resetButton;

@@ -22,7 +22,6 @@ set(smb4kcore_LIB_SRCS
   smb4kclient_p.cpp
   smb4kcustomoptions.cpp
   smb4kcustomoptionsmanager.cpp
-  smb4kcustomoptionsmanager_p.cpp
   smb4kfile.cpp
   smb4kglobal.cpp
   smb4kglobal_p.cpp

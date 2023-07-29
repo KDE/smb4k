@@ -14,6 +14,7 @@
 #include "core/smb4ksettings.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
+#include "smb4kcustomsettingseditor.h"
 #include "smb4ksharesviewitem.h"
 #include "smb4ktooltip.h"
 
@@ -537,8 +538,12 @@ void Smb4KSharesViewDockWidget::slotAddCustomSettingsTriggered(bool checked)
     for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
-        if (item) {
-            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->shareItem());
+        QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
+        if (customSettingsEditor->setNetworkItem(item->shareItem())) {
+            customSettingsEditor->setAttribute(Qt::WA_DeleteOnClose);
+            customSettingsEditor->open();
+        } else {
+            delete customSettingsEditor;
         }
     }
 }

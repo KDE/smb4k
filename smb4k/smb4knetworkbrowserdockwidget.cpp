@@ -16,6 +16,7 @@
 #include "core/smb4kshare.h"
 #include "core/smb4kwalletmanager.h"
 #include "core/smb4kworkgroup.h"
+#include "smb4kcustomsettingseditor.h"
 #include "smb4knetworkbrowseritem.h"
 #include "smb4ktooltip.h"
 
@@ -896,20 +897,12 @@ void Smb4KNetworkBrowserDockWidget::slotAddCustomSettings(bool checked)
     for (QTreeWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
-        if (item) {
-            switch (item->type()) {
-            case Host: {
-                Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->hostItem());
-                break;
-            }
-            case Share: {
-                Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(item->shareItem());
-                break;
-            }
-            default: {
-                break;
-            }
-            }
+        QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
+        if (customSettingsEditor->setNetworkItem(item->networkItem())) {
+            customSettingsEditor->setAttribute(Qt::WA_DeleteOnClose);
+            customSettingsEditor->open();
+        } else {
+            delete customSettingsEditor;
         }
     }
 }

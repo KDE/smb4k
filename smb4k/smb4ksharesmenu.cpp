@@ -13,6 +13,7 @@
 #include "core/smb4kmounter.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
+#include "smb4kcustomsettingseditor.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
@@ -23,6 +24,7 @@
 // Qt includes
 #include <QMap>
 #include <QMenu>
+#include <QPointer>
 #include <QStandardPaths>
 #include <QString>
 #include <QStringList>
@@ -357,7 +359,13 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
         } else if (type == QStringLiteral("bookmark")) {
             Smb4KBookmarkHandler::self()->addBookmark(share);
         } else if (type == QStringLiteral("options")) {
-            Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(share);
+            QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
+            if (customSettingsEditor->setNetworkItem(share)) {
+                customSettingsEditor->setAttribute(Qt::WA_DeleteOnClose);
+                customSettingsEditor->open();
+            } else {
+                delete customSettingsEditor;
+            }
         } else if (type == QStringLiteral("sync")) {
             Smb4KSynchronizer::self()->synchronize(share);
         } else if (type == QStringLiteral("konsole")) {

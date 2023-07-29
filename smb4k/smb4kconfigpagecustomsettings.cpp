@@ -57,15 +57,15 @@ Smb4KConfigPageCustomSettings::Smb4KConfigPageCustomSettings(QWidget *parent)
     //
     // The feedback message widget
     //
-    KMessageWidget *messageWidget = new KMessageWidget(leftWidget);
-    messageWidget->setCloseButtonVisible(true);
-    messageWidget->setMessageType(KMessageWidget::Information);
-    messageWidget->setIcon(KDE::icon(QStringLiteral("emblem-information")));
-    messageWidget->setText(i18n("All fine."));
-    messageWidget->setWordWrap(true);
-    messageWidget->setVisible(false);
+    m_messageWidget = new KMessageWidget(leftWidget);
+    m_messageWidget->setCloseButtonVisible(true);
+    m_messageWidget->setMessageType(KMessageWidget::Information);
+    m_messageWidget->setIcon(KDE::icon(QStringLiteral("emblem-information")));
+    m_messageWidget->setText(i18n("All fine."));
+    m_messageWidget->setWordWrap(true);
+    m_messageWidget->setVisible(false);
 
-    leftWidgetLayout->addWidget(messageWidget);
+    leftWidgetLayout->addWidget(m_messageWidget);
 
     layout->addWidget(leftWidget);
 
@@ -99,6 +99,7 @@ Smb4KConfigPageCustomSettings::Smb4KConfigPageCustomSettings(QWidget *parent)
     loadCustomSettings();
 
     connect(this, &Smb4KConfigPageCustomSettings::customSettingsModified, this, &Smb4KConfigPageCustomSettings::slotEnableButtons);
+    connect(Smb4KCustomOptionsManager::self(), &Smb4KCustomOptionsManager::updated, this, &Smb4KConfigPageCustomSettings::loadCustomSettings);
 }
 
 Smb4KConfigPageCustomSettings::~Smb4KConfigPageCustomSettings()
@@ -145,16 +146,26 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
 {
     if (m_customSettingsChanged) {
         if (m_itemToEdit) {
-            OptionsPtr customSettings = m_editorWidget->getCustomSettings();
+            Smb4KCustomOptions customSettings = m_editorWidget->getCustomSettings();
 
-            if (customSettings) {
+            if (customSettings.hasOptions()) {
                 Smb4KCustomOptions currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomOptions>();
-                currentCustomSettings.update(customSettings.data());
+                currentCustomSettings.update(&customSettings);
 
                 QVariant variant = QVariant::fromValue(currentCustomSettings);
                 m_itemToEdit->setData(Qt::UserRole, variant);
+            } else {
+                m_editorWidget->setVisible(false);
+                m_editorWidget->clear();
 
-                customSettings.clear();
+                delete m_itemToEdit;
+                m_itemToEdit = nullptr;
+
+                setRemovalMessage(customSettings);
+
+                if (!m_messageWidget->isVisible()) {
+                    m_messageWidget->setVisible(true);
+                }
             }
         }
 
@@ -175,6 +186,11 @@ void Smb4KConfigPageCustomSettings::saveCustomSettings()
         m_customSettingsChanged = false;
         Q_EMIT customSettingsModified();
     }
+}
+
+void Smb4KConfigPageCustomSettings::setRemovalMessage(const Smb4KCustomOptions &settings)
+{
+    m_messageWidget->setText(i18n("The item <b>%1</b> was removed, because all custom settings were reset.", settings.displayString()));
 }
 
 bool Smb4KConfigPageCustomSettings::eventFilter(QObject *obj, QEvent *e)
@@ -207,17 +223,25 @@ void Smb4KConfigPageCustomSettings::slotItemSelectionChanged()
     if (m_editorWidget->isVisible()) {
         m_editorWidget->setVisible(false);
 
-        OptionsPtr customSettings = m_editorWidget->getCustomSettings();
+        Smb4KCustomOptions customSettings = m_editorWidget->getCustomSettings();
 
-        if (customSettings) {
+        if (customSettings.hasOptions()) {
             Smb4KCustomOptions currentCustomSettings = m_itemToEdit->data(Qt::UserRole).value<Smb4KCustomOptions>();
-            currentCustomSettings.update(customSettings.data());
+            currentCustomSettings.update(&customSettings);
 
             QVariant variant = QVariant::fromValue(currentCustomSettings);
             m_itemToEdit->setData(Qt::UserRole, variant);
 
             m_itemToEdit = nullptr;
-            customSettings.clear();
+        } else {
+            delete m_itemToEdit;
+            m_itemToEdit = nullptr;
+
+            setRemovalMessage(customSettings);
+
+            if (!m_messageWidget->isVisible()) {
+                m_messageWidget->setVisible(true);
+            }
         }
 
         m_editorWidget->clear();
@@ -226,34 +250,9 @@ void Smb4KConfigPageCustomSettings::slotItemSelectionChanged()
 
 void Smb4KConfigPageCustomSettings::slotEditCustomItem(QListWidgetItem *item)
 {
-    OptionsPtr customSettings = OptionsPtr(new Smb4KCustomOptions(item->data(Qt::UserRole).value<Smb4KCustomOptions>()));
-    m_editorWidget->setCustomSettings(customSettings);
+    m_editorWidget->setCustomSettings(item->data(Qt::UserRole).value<Smb4KCustomOptions>());
     m_editorWidget->setVisible(true);
     m_itemToEdit = item;
-
-    // if (optionsPtr) {
-    //     if (!Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(optionsPtr, false)) {
-    //         KMessageWidget *messageWidget = findChild<KMessageWidget *>();
-    //
-    //         if (messageWidget) {
-    //             messageWidget->setText(i18n("The item %1 was removed, because all custom settings were reset.", item->text()));
-    //
-    //             if (!messageWidget->isVisible()) {
-    //                 messageWidget->setVisible(true);
-    //             }
-    //         }
-    //
-    //         delete item;
-    //     }
-    //
-    //     if (item) {
-    //         QVariant variant = QVariant::fromValue(*optionsPtr.data());
-    //         item->setData(Qt::UserRole, variant);
-    //     }
-    //
-    //     m_customSettingsChanged = (optionsPtr->isChanged() || !item);
-    //     Q_EMIT customSettingsModified();
-    // }
 }
 
 void Smb4KConfigPageCustomSettings::slotEditButtonClicked(bool checked)
@@ -287,6 +286,7 @@ void Smb4KConfigPageCustomSettings::slotResetButtonClicked(bool checked)
     // FIXME: Do not close the editor
     Q_UNUSED(checked);
     m_listWidget->clear();
+    m_messageWidget->setVisible(false);
     loadCustomSettings();
 }
 

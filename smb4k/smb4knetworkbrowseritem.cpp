@@ -150,7 +150,7 @@ SharePtr Smb4KNetworkBrowserItem::shareItem()
     return m_item.staticCast<Smb4KShare>();
 }
 
-const NetworkItemPtr &Smb4KNetworkBrowserItem::networkItem()
+NetworkItemPtr Smb4KNetworkBrowserItem::networkItem()
 {
     return m_item;
 }

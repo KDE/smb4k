@@ -138,24 +138,6 @@ public:
     QList<OptionsPtr> customOptions(bool withoutRemountOnce = false) const;
 
     /**
-     * This function opens the custom options dialog for a network item.
-     *
-     * @param item                The network item
-     */
-    SMB4K_DEPRECATED void openCustomOptionsDialog(const NetworkItemPtr &item);
-
-    /**
-     * This function opens a custom options dialog for an options pointer.
-     *
-     * @param options           The custom options object
-     *
-     * @param write             Write the options to the file
-     *
-     * @returns TRUE if there are custom options defined, otherwise FALSE.
-     */
-    SMB4K_DEPRECATED bool openCustomOptionsDialog(const OptionsPtr &options, bool write = true);
-
-    /**
      * This function adds custom options for a single network item to the list
      * of options. If there already are options defined for that network item,
      * they are updated.
@@ -188,14 +170,15 @@ public:
     QList<OptionsPtr> wakeOnLanEntries() const;
 
     /**
-     * Reload custom options from the file.
-     */
-    SMB4K_DEPRECATED void resetCustomOptions();
-
-    /**
      * Save custom options to the file.
      */
     void saveCustomOptions(const QList<OptionsPtr> &optionsList);
+
+Q_SIGNALS:
+    /**
+     * Emitted when the list of custom settings was updated
+     */
+    void updated();
 
 protected Q_SLOTS:
     /**

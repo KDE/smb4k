@@ -249,22 +249,6 @@ void Smb4KConfigDialog::updateSettings()
     KConfigDialog::updateSettings();
 }
 
-void Smb4KConfigDialog::updateWidgets()
-{
-    Smb4KConfigPageCustomSettings *customSettingsPage = m_custom_settings->widget()->findChild<Smb4KConfigPageCustomSettings *>();
-
-    if (customSettingsPage) {
-        customSettingsPage->loadCustomSettings();
-    }
-
-    KConfigDialog::updateWidgets();
-}
-
-void Smb4KConfigDialog::reject()
-{
-    QDialog::reject();
-}
-
 void Smb4KConfigDialog::slotEnableApplyButton()
 {
     bool enable = false;

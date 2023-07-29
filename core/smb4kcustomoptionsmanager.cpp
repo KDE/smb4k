@@ -8,7 +8,6 @@
 // application specific includes
 #include "smb4kcustomoptionsmanager.h"
 #include "smb4kcustomoptions.h"
-#include "smb4kcustomoptionsmanager_p.h"
 #include "smb4kglobal.h"
 #include "smb4khomesshareshandler.h"
 #include "smb4khost.h"
@@ -100,10 +99,8 @@ void Smb4KCustomOptionsManager::addRemount(const SharePtr &share, bool always)
             d->options << options;
         }
 
-        //
-        // Write the custom options
-        //
         writeCustomOptions();
+        Q_EMIT updated();
     }
 }
 
@@ -131,10 +128,8 @@ void Smb4KCustomOptionsManager::removeRemount(const SharePtr &share, bool force)
             }
         }
 
-        //
-        // Write the options
-        //
         writeCustomOptions();
+        Q_EMIT updated();
     }
 }
 
@@ -158,10 +153,8 @@ void Smb4KCustomOptionsManager::clearRemounts(bool force)
         }
     }
 
-    //
-    // Write the options
-    //
     writeCustomOptions();
+    Q_EMIT updated();
 }
 
 QList<OptionsPtr> Smb4KCustomOptionsManager::sharesToRemount()
@@ -539,19 +532,6 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
         return;
     }
 
-    bool write = false;
-
-    for (const OptionsPtr &options : qAsConst(d->options)) {
-        if (options->isChanged()) {
-            write = true;
-            break;
-        }
-    }
-
-    if (!write) {
-        return;
-    }
-
     if (xmlFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QXmlStreamWriter xmlWriter(&xmlFile);
         xmlWriter.setAutoFormatting(true);
@@ -585,8 +565,6 @@ void Smb4KCustomOptionsManager::writeCustomOptions()
                 xmlWriter.writeEndElement();
                 xmlWriter.writeEndElement();
             }
-
-            options->setChanged(false);
         }
 
         xmlWriter.writeEndDocument();
@@ -620,80 +598,6 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::customOptions(bool withoutRemountOn
     // Return the list of relevant options
     //
     return optionsList;
-}
-
-void Smb4KCustomOptionsManager::openCustomOptionsDialog(const NetworkItemPtr &item)
-{
-    if (item) {
-        OptionsPtr options;
-
-        switch (item->type()) {
-        case Host: {
-            options = findOptions(item);
-
-            if (!options) {
-                options = OptionsPtr(new Smb4KCustomOptions(item.data()));
-                options->setProfile(Smb4KProfileManager::self()->activeProfile());
-            }
-
-            break;
-        }
-        case Share: {
-            SharePtr share = item.staticCast<Smb4KShare>();
-
-            if (share && !share->isPrinter()) {
-                if (share->isHomesShare()) {
-                    if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true)) {
-                        return;
-                    }
-                }
-
-                options = findOptions(share);
-
-                if (!options) {
-                    options = OptionsPtr(new Smb4KCustomOptions(share.data()));
-                    options->setProfile(Smb4KProfileManager::self()->activeProfile());
-
-                    // Get rid of the 'homes' share
-                    if (share->isHomesShare()) {
-                        options->setUrl(share->homeUrl());
-                    }
-                }
-            }
-
-            break;
-        }
-        default: {
-            break;
-        }
-        }
-
-        openCustomOptionsDialog(options, true);
-    }
-}
-
-bool Smb4KCustomOptionsManager::openCustomOptionsDialog(const OptionsPtr &options, bool write)
-{
-    if (options) {
-        QPointer<Smb4KCustomOptionsDialog> dlg = new Smb4KCustomOptionsDialog(options, QApplication::activeWindow());
-
-        if (dlg->exec() == QDialog::Accepted) {
-            if (options->hasOptions()) {
-                addCustomOptions(options, write);
-            } else {
-                removeCustomOptions(options, write);
-            }
-        } else {
-            // FIXME: When operating on a list with uncommitted changes, this reset function might cause problems.
-            resetCustomOptions();
-        }
-
-        delete dlg;
-
-        return options->hasOptions();
-    }
-
-    return false;
 }
 
 void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool write)
@@ -755,15 +659,14 @@ void Smb4KCustomOptionsManager::addCustomOptions(const OptionsPtr &options, bool
         if (write) {
             writeCustomOptions();
         }
+
+        Q_EMIT updated();
     }
 }
 
 void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options, bool write)
 {
     if (options) {
-        //
-        // Find the custom options and remove them
-        //
         for (int i = 0; i < d->options.size(); ++i) {
             if ((!Smb4KSettings::useProfiles() || Smb4KProfileManager::self()->activeProfile() == d->options.at(i)->profile())
                 && d->options.at(i)->url().matches(options->url(), QUrl::RemoveUserInfo | QUrl::RemovePort | QUrl::StripTrailingSlash)) {
@@ -772,12 +675,11 @@ void Smb4KCustomOptionsManager::removeCustomOptions(const OptionsPtr &options, b
             }
         }
 
-        //
-        // Write the custom options to the file, if desired
-        //
         if (write) {
             writeCustomOptions();
         }
+
+        Q_EMIT updated();
     }
 }
 
@@ -793,11 +695,6 @@ QList<OptionsPtr> Smb4KCustomOptionsManager::wakeOnLanEntries() const
     }
 
     return optionsList;
-}
-
-void Smb4KCustomOptionsManager::resetCustomOptions()
-{
-    readCustomOptions();
 }
 
 void Smb4KCustomOptionsManager::saveCustomOptions(const QList<OptionsPtr> &optionsList)
@@ -818,19 +715,14 @@ void Smb4KCustomOptionsManager::saveCustomOptions(const QList<OptionsPtr> &optio
 
 void Smb4KCustomOptionsManager::migrateProfile(const QString &from, const QString &to)
 {
-    //
-    // Replace the old with the new profile
-    //
     for (const OptionsPtr &options : qAsConst(d->options)) {
         if (options->profile() == from) {
             options->setProfile(to);
         }
     }
 
-    //
-    // Write all custom options to the file.
-    //
     writeCustomOptions();
+    Q_EMIT updated();
 }
 
 void Smb4KCustomOptionsManager::removeProfile(const QString &name)
@@ -848,10 +740,8 @@ void Smb4KCustomOptionsManager::removeProfile(const QString &name)
         }
     }
 
-    //
-    // Write all custom options to the file.
-    //
     writeCustomOptions();
+    Q_EMIT updated();
 }
 
 /////////////////////////////////////////////////////////////////////////////

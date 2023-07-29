@@ -19,6 +19,7 @@
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kworkgroup.h"
+#include "smb4k/smb4kcustomsettingseditor.h"
 #include "smb4kbookmarkeditor.h"
 #include "smb4kbookmarkobject.h"
 #include "smb4kmountdialog.h"
@@ -378,14 +379,14 @@ void Smb4KDeclarative::synchronize(Smb4KNetworkObject *object)
 void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
 {
     if (object) {
+        NetworkItemPtr networkItem;
+
         switch (object->type()) {
         case Smb4KNetworkObject::Host: {
             for (const HostPtr &host : Smb4KGlobal::hostsList()) {
                 if (host->url() == object->url()) {
-                    Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(host);
+                    networkItem = host;
                     break;
-                } else {
-                    continue;
                 }
             }
             break;
@@ -393,10 +394,8 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
         case Smb4KNetworkObject::Share: {
             for (const SharePtr &share : Smb4KGlobal::sharesList()) {
                 if (share->url() == object->url()) {
-                    Smb4KCustomOptionsManager::self()->openCustomOptionsDialog(share);
+                    networkItem = share;
                     break;
-                } else {
-                    continue;
                 }
             }
             break;
@@ -404,6 +403,16 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
         default: {
             break;
         }
+        }
+
+        if (!networkItem.isNull()) {
+            QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
+            if (customSettingsEditor->setNetworkItem(networkItem)) {
+                customSettingsEditor->setAttribute(Qt::WA_DeleteOnClose);
+                customSettingsEditor->open();
+            } else {
+                delete customSettingsEditor;
+            }
         }
     }
 }
