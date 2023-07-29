@@ -81,12 +81,7 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     m_separator = addSeparator();
     m_separator->setVisible(!Smb4KBookmarkHandler::self()->bookmarkList().isEmpty());
 
-    //
-    // Add all bookmarks to the menu
-    //
-    for (const BookmarkPtr &bookmark : Smb4KBookmarkHandler::self()->bookmarkList()) {
-        addBookmarkToMenu(bookmark);
-    }
+    loadBookmarks();
 
     //
     // Adjust mount actions
@@ -96,9 +91,7 @@ Smb4KBookmarkMenu::Smb4KBookmarkMenu(int type, QObject *parent)
     //
     // Connections
     //
-    connect(Smb4KBookmarkHandler::self(), SIGNAL(bookmarkAdded(BookmarkPtr)), SLOT(slotBookmarkAdded(BookmarkPtr)));
-    connect(Smb4KBookmarkHandler::self(), SIGNAL(bookmarkRemoved(BookmarkPtr)), SLOT(slotBookmarkRemoved(BookmarkPtr)));
-    connect(Smb4KBookmarkHandler::self(), SIGNAL(updated()), SLOT(slotBookmarksUpdated()));
+    connect(Smb4KBookmarkHandler::self(), &Smb4KBookmarkHandler::updated, this, &Smb4KBookmarkMenu::loadBookmarks);
     connect(Smb4KMounter::self(), SIGNAL(mounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
     connect(Smb4KMounter::self(), SIGNAL(unmounted(SharePtr)), SLOT(slotEnableBookmark(SharePtr)));
     connect(m_bookmarks, SIGNAL(triggered(QAction *)), SLOT(slotBookmarkActionTriggered(QAction *)));
@@ -110,6 +103,11 @@ Smb4KBookmarkMenu::~Smb4KBookmarkMenu()
 }
 
 void Smb4KBookmarkMenu::refreshMenu()
+{
+    loadBookmarks();
+}
+
+void Smb4KBookmarkMenu::loadBookmarks()
 {
     //
     // Remove all categories from the menu
@@ -309,55 +307,6 @@ void Smb4KBookmarkMenu::addBookmarkToMenu(const BookmarkPtr &bookmark)
     }
 }
 
-void Smb4KBookmarkMenu::removeBookmarkFromMenu(const BookmarkPtr &bookmark)
-{
-    //
-    // The list of category menus
-    //
-    QList<QAction *> allCategories = m_categories->actions();
-
-    //
-    // Get the action menu
-    //
-    KActionMenu *bookmarkMenu = nullptr;
-
-    if (!bookmark->categoryName().isEmpty()) {
-        for (QAction *action : qAsConst(allCategories)) {
-            if (action->data().toMap().value(QStringLiteral("category")).toString() == bookmark->categoryName()) {
-                bookmarkMenu = static_cast<KActionMenu *>(action);
-                break;
-            }
-        }
-    } else {
-        bookmarkMenu = this;
-    }
-
-    //
-    // Now remove the bookmark
-    //
-    for (int i = 0; i < m_bookmarks->actions().size(); ++i) {
-        QUrl bookmarkUrl = m_bookmarks->actions().at(i)->data().toMap().value(QStringLiteral("url")).toUrl();
-        if (bookmark->url().matches(bookmarkUrl, QUrl::RemoveUserInfo | QUrl::RemovePort)) {
-            QAction *bookmarkAction = m_bookmarks->actions().takeAt(i);
-            bookmarkMenu->removeAction(bookmarkAction);
-            delete bookmarkAction;
-            break;
-        }
-    }
-
-    //
-    // Remove the category, if necessary
-    //
-    if (!bookmark->categoryName().isEmpty()) {
-        QList<BookmarkPtr> bookmarks = Smb4KBookmarkHandler::self()->bookmarkList(bookmark->categoryName());
-
-        if (bookmarks.isEmpty()) {
-            removeAction(bookmarkMenu);
-            delete bookmarkMenu;
-        }
-    }
-}
-
 void Smb4KBookmarkMenu::adjustMountActions()
 {
     QList<BookmarkPtr> toplevelBookmarks = Smb4KBookmarkHandler::self()->bookmarkList(QStringLiteral(""));
@@ -499,48 +448,6 @@ void Smb4KBookmarkMenu::slotBookmarkActionTriggered(QAction *action)
         Smb4KMounter::self()->mountShare(share);
         share.clear();
     }
-}
-
-void Smb4KBookmarkMenu::slotBookmarkAdded(const BookmarkPtr &bookmark)
-{
-    addBookmarkToMenu(bookmark);
-}
-
-void Smb4KBookmarkMenu::slotBookmarkRemoved(const BookmarkPtr &bookmark)
-{
-    removeBookmarkFromMenu(bookmark);
-}
-
-void Smb4KBookmarkMenu::slotBookmarksUpdated()
-{
-    //
-    // Enable the "Edit Bookmarks" action if necessary
-    //
-    QList<BookmarkPtr> allBookmarks = Smb4KBookmarkHandler::self()->bookmarkList();
-    m_editBookmarks->setEnabled(!allBookmarks.isEmpty());
-
-    //
-    // Enable and show the separator if necessary
-    //
-    m_separator->setEnabled(!m_bookmarks->actions().isEmpty());
-    m_separator->setVisible(!m_bookmarks->actions().isEmpty());
-
-    //
-    // Adjust mount actions
-    //
-    adjustMountActions();
-
-    //
-    // Make sure the correct menu entries are shown
-    //
-    menu()->update();
-
-    //
-    // Work around a display glitch were the first bookmark
-    // might not be shown (see also BUG 442187)
-    //
-    menu()->adjustSize();
-    QCoreApplication::processEvents();
 }
 
 void Smb4KBookmarkMenu::slotEnableBookmark(const SharePtr &share)

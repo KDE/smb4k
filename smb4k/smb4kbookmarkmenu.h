@@ -44,9 +44,7 @@ public:
     ~Smb4KBookmarkMenu();
 
     /**
-     * Force the menu to be set up again. This should be called if
-     * the settings changed and the handling of bookmarks might be
-     * affected.
+     * Refresh the menu
      */
     void refreshMenu();
 
@@ -54,6 +52,12 @@ public:
      * Enable/disable the 'Add Bookmark' action
      */
     void setBookmarkActionEnabled(bool enable);
+
+public Q_SLOTS:
+    /**
+     * Load the bookmarks into the menu
+     */
+    void loadBookmarks();
 
 Q_SIGNALS:
     /**
@@ -83,21 +87,6 @@ protected Q_SLOTS:
     void slotBookmarkActionTriggered(QAction *action);
 
     /**
-     * Called when a bookmark was added
-     */
-    void slotBookmarkAdded(const BookmarkPtr &bookmark);
-
-    /**
-     * Called when a bookmark was removed
-     */
-    void slotBookmarkRemoved(const BookmarkPtr &bookmark);
-
-    /**
-     * Called when the list bookmarks has been updated
-     */
-    void slotBookmarksUpdated();
-
-    /**
      * Called when a bookmark was unmounted
      */
     void slotEnableBookmark(const SharePtr &share);
@@ -107,11 +96,6 @@ private:
      * Add a bookmark to the menu
      */
     void addBookmarkToMenu(const BookmarkPtr &bookmark);
-
-    /**
-     * Remove a bookmark from the menu
-     */
-    void removeBookmarkFromMenu(const BookmarkPtr &bookmark);
 
     /**
      * Enables or disables the mount actions according to the status
