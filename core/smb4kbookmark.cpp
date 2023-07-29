@@ -56,7 +56,7 @@ Smb4KBookmark::~Smb4KBookmark()
 {
 }
 
-void Smb4KBookmark::setShare(Smb4KShare* share) const
+void Smb4KBookmark::setShare(Smb4KShare *share) const
 {
     if (!share->isHomesShare()) {
         d->url = share->url();
@@ -69,7 +69,6 @@ void Smb4KBookmark::setShare(Smb4KShare* share) const
     d->icon = KDE::icon(QStringLiteral("folder-network"));
     d->ip.setAddress(share->hostIpAddress());
 }
-
 
 void Smb4KBookmark::setWorkgroupName(const QString &workgroup) const
 {
@@ -181,9 +180,8 @@ QString Smb4KBookmark::displayString() const
     return i18n("%1 on %2", shareName(), hostName());
 }
 
-Smb4KBookmark & Smb4KBookmark::operator=(const Smb4KBookmark& other)
+Smb4KBookmark &Smb4KBookmark::operator=(const Smb4KBookmark &other)
 {
     *d = *other.d;
     return *this;
 }
-
