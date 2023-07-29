@@ -224,10 +224,9 @@ public:
     Smb4KBookmark &operator=(const Smb4KBookmark &other);
 
 private:
-    const QScopedPointer<Smb4KBookmarkPrivate> d;
+    QScopedPointer<Smb4KBookmarkPrivate> d;
 };
 
-Q_DECLARE_METATYPE(Smb4KBookmark);
-Q_DECLARE_OPAQUE_POINTER(Smb4KBookmark);
+Q_DECLARE_METATYPE(Smb4KBookmark)
 
 #endif

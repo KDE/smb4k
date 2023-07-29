@@ -612,7 +612,6 @@ private:
     QScopedPointer<Smb4KCustomOptionsPrivate> d;
 };
 
-Q_DECLARE_METATYPE(Smb4KCustomOptions);
-Q_DECLARE_OPAQUE_POINTER(Smb4KCustomOptions);
+Q_DECLARE_METATYPE(Smb4KCustomOptions)
 
 #endif
