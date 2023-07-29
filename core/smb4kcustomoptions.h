@@ -63,7 +63,7 @@ public:
      *
      * @param networkItem   The network item
      */
-    void setNetworkItem(Smb4KBasicNetworkItem *networkItem);
+    void setNetworkItem(Smb4KBasicNetworkItem *networkItem) const;
 
     /**
      * Returns the type of the network item for that the options
@@ -78,7 +78,7 @@ public:
      *
      * @param workgroup       The workgroup name
      */
-    void setWorkgroupName(const QString &workgroup);
+    void setWorkgroupName(const QString &workgroup) const;
 
     /**
      * Returns the workgroup name.
@@ -92,7 +92,7 @@ public:
      *
      * @param url             The URL
      */
-    void setUrl(const QUrl &url);
+    void setUrl(const QUrl &url) const;
 
     /**
      * Returns the URL of the network item
@@ -120,7 +120,7 @@ public:
      *
      * @param ip              The IP address
      */
-    void setIpAddress(const QString &ip);
+    void setIpAddress(const QString &ip) const;
 
     /**
      * Returns the IP address of the network item
@@ -160,7 +160,7 @@ public:
      *
      * @param remount       One entry of the Remount enumeration
      */
-    void setRemount(int remount);
+    void setRemount(int remount) const;
 
     /**
      * Returns if the network item should be remounted.
@@ -176,7 +176,7 @@ public:
      * @param usage            Boolean that determines whether the uid should be
      *                          used.
      */
-    void setUseUser(bool use);
+    void setUseUser(bool use) const;
 
     /**
      * Use the information about the user that is to be owner of the share.
@@ -189,7 +189,7 @@ public:
      * Set the user who owns the share.
      * @param user    The user
      */
-    void setUser(const KUser &user);
+    void setUser(const KUser &user) const;
 
     /**
      * Returns the user who owns the share.
@@ -203,7 +203,7 @@ public:
      *
      * @param use      Boolean that determines whether the gid should be used.
      */
-    void setUseGroup(bool use);
+    void setUseGroup(bool use) const;
 
     /**
      * Use the information about the group that is to be owner of the share.
@@ -217,7 +217,7 @@ public:
      *
      * @param group   The group
      */
-    void setGroup(const KUserGroup &group);
+    void setGroup(const KUserGroup &group) const;
 
     /**
      * Returns the group that owns the share.
@@ -231,7 +231,7 @@ public:
      *
      * @param use     Boolean that determines whether the file mode should be used.
      */
-    void setUseFileMode(bool use);
+    void setUseFileMode(bool use) const;
 
     /**
      * Returns if the file mode should be used.
@@ -245,7 +245,7 @@ public:
      *
      * @param mode    The file mode
      */
-    void setFileMode(const QString &mode);
+    void setFileMode(const QString &mode) const;
 
     /**
      * Returns the file mode that should be used. The value is returned in octal.
@@ -259,7 +259,7 @@ public:
      *
      * @param use     Boolean that determines whether the directory mode should be used.
      */
-    void setUseDirectoryMode(bool use);
+    void setUseDirectoryMode(bool use) const;
 
     /**
      * Returns if the directory mode should be used.
@@ -273,7 +273,7 @@ public:
      *
      * @param mode    The directory mode
      */
-    void setDirectoryMode(const QString &mode);
+    void setDirectoryMode(const QString &mode) const;
 
     /**
      * Returns the directory mode that should be used. The value is returned in octal.
@@ -290,7 +290,7 @@ public:
      * @param supports          Boolean that determines if the server supports
      *                          the CIFS Unix extensions.
      */
-    void setCifsUnixExtensionsSupport(bool support);
+    void setCifsUnixExtensionsSupport(bool support) const;
 
     /**
      * The server supports the CIFS Unix extensions.
@@ -305,7 +305,7 @@ public:
      * @param use             Boolean that determines if the filesystem port should
      *                        be used
      */
-    void setUseFileSystemPort(bool use);
+    void setUseFileSystemPort(bool use) const;
 
     /**
      * Returns if the filesystem port should be used.
@@ -320,7 +320,7 @@ public:
      *
      * @param port            The file system port
      */
-    void setFileSystemPort(int port);
+    void setFileSystemPort(int port) const;
 
     /**
      * Returns the file system port. The default value is 445.
@@ -335,7 +335,7 @@ public:
      * @param use             Boolean that determines if the SMB protocol version
      *                        for mounting should be set
      */
-    void setUseMountProtocolVersion(bool use);
+    void setUseMountProtocolVersion(bool use) const;
 
     /**
      * Returns if the SMB protocol version for mounting should be set.
@@ -349,7 +349,7 @@ public:
      *
      * @param version         The protocol version used for mounting
      */
-    void setMountProtocolVersion(int version);
+    void setMountProtocolVersion(int version) const;
 
     /**
      * Returns the SMB protocol version for mounting.
@@ -364,7 +364,7 @@ public:
      * @param use             Boolean that determines if the security mode should
      *                        be used
      */
-    void setUseSecurityMode(bool use);
+    void setUseSecurityMode(bool use) const;
 
     /**
      * Returns if the security mode should be used
@@ -378,7 +378,7 @@ public:
      *
      * @param mode            The security mode
      */
-    void setSecurityMode(int mode);
+    void setSecurityMode(int mode) const;
 
     /**
      * Returns the security mode for mounting a specific share.
@@ -393,7 +393,7 @@ public:
      * @param use             Boolean that determines if the write access setting
      *                        should be used
      */
-    void setUseWriteAccess(bool use);
+    void setUseWriteAccess(bool use) const;
 
     /**
      * Returns if the write access setting should be used
@@ -407,7 +407,7 @@ public:
      *
      * @param access          The write access
      */
-    void setWriteAccess(int access);
+    void setWriteAccess(int access) const;
 
     /**
      * Returns the write access for the share.
@@ -424,7 +424,7 @@ public:
      *
      * @param profile         The profile name
      */
-    void setProfile(const QString &profile);
+    void setProfile(const QString &profile) const;
 
     /**
      * Returns the name of the profile this custom options object belongs to.
@@ -439,7 +439,7 @@ public:
      *
      * @param use             TRUE, if the protocol versions should used
      */
-    void setUseClientProtocolVersions(bool use);
+    void setUseClientProtocolVersions(bool use) const;
 
     /**
      * Returns whether the client minimal and maximal protocol versions
@@ -454,7 +454,7 @@ public:
      *
      * @param version         The SMB protocol version
      */
-    void setMinimalClientProtocolVersion(int version);
+    void setMinimalClientProtocolVersion(int version) const;
 
     /**
      * Return the minimal client protocol version to use.
@@ -468,7 +468,7 @@ public:
      *
      * @param version         The SMB protocol version
      */
-    void setMaximalClientProtocolVersion(int version);
+    void setMaximalClientProtocolVersion(int version) const;
 
     /**
      * Return the maximal client protocol version to use.
@@ -482,7 +482,7 @@ public:
      *
      * @param use             True, if the SMB port should be used
      */
-    void setUseSmbPort(bool use);
+    void setUseSmbPort(bool use) const;
 
     /**
      * Returns whether the SMB port should be used.
@@ -496,7 +496,7 @@ public:
      *
      * @param port            The SMB port
      */
-    void setSmbPort(int port);
+    void setSmbPort(int port) const;
 
     /**
      * Returns the SMB port. The default value is 139.
@@ -510,7 +510,7 @@ public:
      *
      * @param use               Boolean that determines the useage of Kerberos
      */
-    void setUseKerberos(bool use);
+    void setUseKerberos(bool use) const;
 
     /**
      * Returns the usage of Kerberos for this network item.
@@ -526,7 +526,7 @@ public:
      *
      * @param macAddress        The MAC address of the host
      */
-    void setMACAddress(const QString &macAddress);
+    void setMACAddress(const QString &macAddress) const;
 
     /**
      * This function returns the MAC address of the host or an empty string if
@@ -544,7 +544,7 @@ public:
      * @param send              Boolean that determines if a magic WOL packet
      *                          is to be sent.
      */
-    void setWOLSendBeforeNetworkScan(bool send);
+    void setWOLSendBeforeNetworkScan(bool send) const;
 
     /**
      * Send a magic WOL packet to the host that this network item represents
@@ -563,7 +563,7 @@ public:
      * @param send              Boolean that determines if a magic WOL packet
      *                          is to be sent.
      */
-    void setWOLSendBeforeMount(bool send);
+    void setWOLSendBeforeMount(bool send) const;
 
     /**
      * Send a magic WOL packet to the host that this network item represents
@@ -604,23 +604,15 @@ public:
     void update(Smb4KCustomOptions *options);
 
     /**
-     * (Re-)Set if the custom options were changed.
-     *
-     * @param changed           Set the options as changed
+     * Copy assignment operator
      */
-    void setChanged(bool changed);
-
-    /**
-     * Return if the custom options were changed.
-     *
-     * @return TRUE if the custom options were changed.
-     */
-    bool isChanged() const;
+    Smb4KCustomOptions &operator=(const Smb4KCustomOptions &other);
 
 private:
-    const QScopedPointer<Smb4KCustomOptionsPrivate> d;
+    QScopedPointer<Smb4KCustomOptionsPrivate> d;
 };
 
 Q_DECLARE_METATYPE(Smb4KCustomOptions);
+Q_DECLARE_OPAQUE_POINTER(Smb4KCustomOptions);
 
 #endif
