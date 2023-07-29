@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-02 02:38+0000\n"
+"POT-Creation-Date: 2023-07-29 02:26+0000\n"
 "PO-Revision-Date: 2023-03-10 11:22+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -130,7 +130,7 @@ msgstr "&Modifica marcatores de libro"
 msgid "Add &Bookmark"
 msgstr "Adde marcator de li&bro"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:209
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Monta marcatores de libro"

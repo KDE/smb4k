@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-09 02:49+0000\n"
+"POT-Creation-Date: 2023-07-29 02:26+0000\n"
 "PO-Revision-Date: 2023-07-23 12:30\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1842,7 +1842,7 @@ msgstr ""
 "当配置文件被移除，或者在启用、禁用使用配置文件功能时，使用配置文件迁移辅助工"
 "具。该工具可以将某个配置文件中保存的所有设置迁移到另一个配置文件。"
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:300
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
