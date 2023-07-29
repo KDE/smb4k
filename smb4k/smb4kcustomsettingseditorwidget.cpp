@@ -277,6 +277,7 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomOptions
         m_alwaysRemountShare->setChecked(settings.remount() == Smb4KCustomOptions::RemountAlways);
     }
 
+#ifdef Q_OS_LINUX
     m_useWriteAccess->setChecked(settings.useWriteAccess());
     m_writeAccess->setCurrentIndex(settings.writeAccess());
 
@@ -284,6 +285,7 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomOptions
     m_fileSystemPort->setValue(settings.fileSystemPort());
 
     m_cifsUnixExtensionSupport->setChecked(settings.cifsUnixExtensionsSupport());
+#endif
 
     m_useUserId->setChecked(settings.useUser());
     int userIndex = m_userId->findData(settings.user().userId().toString());
@@ -299,6 +301,7 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomOptions
     m_useDirectoryMode->setChecked(settings.useDirectoryMode());
     m_directoryMode->setText(settings.directoryMode());
 
+#ifdef Q_OS_LINUX
     m_useSmbMountProtocolVersion->setChecked(settings.useMountProtocolVersion());
     int mountProtocolVersionIndex = m_smbMountProtocolVersion->findData(settings.mountProtocolVersion());
     m_smbMountProtocolVersion->setCurrentIndex(mountProtocolVersionIndex);
@@ -306,6 +309,7 @@ void Smb4KCustomSettingsEditorWidget::setCustomSettings(const Smb4KCustomOptions
     m_useSecurityMode->setChecked(settings.useSecurityMode());
     int securityModeIndex = m_securityMode->findData(settings.securityMode());
     m_securityMode->setCurrentIndex(securityModeIndex);
+#endif
 
     m_useClientProtocolVersions->setChecked(settings.useClientProtocolVersions());
     int minimalClientProtocolVersionIndex = m_minimalClientProtocolVersion->findData(settings.minimalClientProtocolVersion());
@@ -339,6 +343,7 @@ Smb4KCustomOptions Smb4KCustomSettingsEditorWidget::getCustomSettings() const
         m_customSettings.setRemount(m_alwaysRemountShare->isChecked() ? Smb4KCustomOptions::RemountAlways : Smb4KCustomOptions::UndefinedRemount);
     }
 
+#ifdef Q_OS_LINUX
     m_customSettings.setUseWriteAccess(m_useWriteAccess->isChecked());
     m_customSettings.setWriteAccess(m_writeAccess->currentIndex());
 
@@ -346,6 +351,7 @@ Smb4KCustomOptions Smb4KCustomSettingsEditorWidget::getCustomSettings() const
     m_customSettings.setFileSystemPort(m_fileSystemPort->value());
 
     m_customSettings.setCifsUnixExtensionsSupport(m_cifsUnixExtensionSupport->isChecked());
+#endif
 
     m_customSettings.setUseUser(m_useUserId->isChecked());
     m_customSettings.setUser(KUser(K_UID(m_userId->currentData().toInt())));
@@ -359,11 +365,13 @@ Smb4KCustomOptions Smb4KCustomSettingsEditorWidget::getCustomSettings() const
     m_customSettings.setUseDirectoryMode(m_useDirectoryMode->isChecked());
     m_customSettings.setDirectoryMode(m_directoryMode->text());
 
+#ifdef Q_OS_LINUX
     m_customSettings.setUseMountProtocolVersion(m_useSmbMountProtocolVersion->isChecked());
     m_customSettings.setMountProtocolVersion(m_smbMountProtocolVersion->currentData().toInt());
 
     m_customSettings.setUseSecurityMode(m_useSecurityMode->isChecked());
     m_customSettings.setSecurityMode(m_securityMode->currentData().toInt());
+#endif
 
     m_customSettings.setUseClientProtocolVersions(m_useClientProtocolVersions->isChecked());
     m_customSettings.setMinimalClientProtocolVersion(m_minimalClientProtocolVersion->currentData().toInt());
@@ -394,6 +402,7 @@ void Smb4KCustomSettingsEditorWidget::clear()
     m_alwaysRemountShare->setChecked(false);
     m_alwaysRemountShare->setEnabled(false);
 
+#ifdef Q_OS_LINUX
     m_useWriteAccess->setChecked(false);
     m_writeAccess->setCurrentIndex(0);
 
@@ -401,6 +410,7 @@ void Smb4KCustomSettingsEditorWidget::clear()
     m_fileSystemPort->setValue(445);
 
     m_cifsUnixExtensionSupport->setChecked(false);
+#endif
 
     m_useUserId->setChecked(false);
     m_userId->setCurrentIndex(0);
@@ -414,11 +424,13 @@ void Smb4KCustomSettingsEditorWidget::clear()
     m_useDirectoryMode->setChecked(false);
     m_directoryMode->clear();
 
+#ifdef Q_OS_LINUX
     m_useSmbMountProtocolVersion->setChecked(false);
     m_smbMountProtocolVersion->setCurrentIndex(0);
 
     m_useSecurityMode->setChecked(false);
     m_securityMode->setCurrentIndex(0);
+#endif
 
     m_useClientProtocolVersions->setChecked(false);
     m_minimalClientProtocolVersion->setCurrentIndex(0);
@@ -448,6 +460,7 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         return;
     }
 
+#ifdef Q_OS_LINUX
     if (m_useWriteAccess->isChecked() != m_customSettings.useWriteAccess()) {
         Q_EMIT edited(true);
         return;
@@ -472,6 +485,7 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         Q_EMIT edited(true);
         return;
     }
+#endif
 
     if (m_useUserId->isChecked() != m_customSettings.useUser()) {
         Q_EMIT edited(true);
@@ -513,6 +527,7 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         return;
     }
 
+#ifdef Q_OS_LINUX
     if (m_useSmbMountProtocolVersion->isChecked() != m_customSettings.useMountProtocolVersion()) {
         Q_EMIT edited(true);
         return;
@@ -532,6 +547,7 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         Q_EMIT edited(true);
         return;
     }
+#endif
 
     if (m_useClientProtocolVersions->isChecked() != m_customSettings.useClientProtocolVersions()) {
         Q_EMIT edited(true);
@@ -587,6 +603,7 @@ void Smb4KCustomSettingsEditorWidget::slotAlwaysRemoutShareToggled(bool checked)
     checkValues();
 }
 
+#ifdef Q_OS_LINUX
 void Smb4KCustomSettingsEditorWidget::slotUseWriteAccessToggled(bool checked)
 {
     Q_UNUSED(checked);
@@ -626,6 +643,7 @@ void Smb4KCustomSettingsEditorWidget::slotCifsUnixExtensionSupportToggled(bool c
 
     checkValues();
 }
+#endif
 
 void Smb4KCustomSettingsEditorWidget::slotUseUserIdToggled(bool checked)
 {
@@ -675,6 +693,7 @@ void Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged(const QString &te
     checkValues();
 }
 
+#ifdef Q_OS_LINUX
 void Smb4KCustomSettingsEditorWidget::slotUseSmbMountProtocolVersionToggled(bool checked)
 {
     Q_UNUSED(checked);
@@ -698,6 +717,7 @@ void Smb4KCustomSettingsEditorWidget::slotSecurityModeChanged(int index)
     Q_UNUSED(index);
     checkValues();
 }
+#endif
 
 void Smb4KCustomSettingsEditorWidget::slotUseClientProtocolVersionsToggled(bool checked)
 {

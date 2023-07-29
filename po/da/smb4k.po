@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-06 00:59+0000\n"
+"POT-Creation-Date: 2023-07-20 00:49+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -128,7 +128,7 @@ msgstr "Bogmærker"
 msgid "&Edit Bookmarks"
 msgstr "&Redigér bogmærker"
 
-#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:147
+#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
 #: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
@@ -211,14 +211,14 @@ msgstr "Gem"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
 #: smb4k/smb4kconfigpagebookmarks.cpp:127
-#: smb4k/smb4kconfigpagecustomoptions.cpp:82
+#: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Redigér"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
 #: smb4k/smb4kconfigpagebookmarks.cpp:139
-#: smb4k/smb4kconfigpagecustomoptions.cpp:87
+#: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, kde-format
 msgid "Remove"
 msgstr "Fjern"
@@ -288,7 +288,7 @@ msgid "Add Category"
 msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:145
-#: smb4k/smb4kconfigpagecustomoptions.cpp:92
+#: smb4k/smb4kconfigpagecustomsettings.cpp:88
 #, kde-format
 msgid "Clear List"
 msgstr "Ryd listen"
@@ -298,14 +298,9 @@ msgstr "Ryd listen"
 msgid "New Category"
 msgstr ""
 
-#: smb4k/smb4kconfigpagecustomoptions.cpp:65
+#: smb4k/smb4kconfigpagecustomsettings.cpp:64
 #, kde-format
 msgid "All fine."
-msgstr ""
-
-#: smb4k/smb4kconfigpagecustomoptions.cpp:220
-#, kde-format
-msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
@@ -339,6 +334,7 @@ msgid "Common Options"
 msgstr "Fælles indstillinger"
 
 #: smb4k/smb4kconfigpagemounting.cpp:228
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:82
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr ""
@@ -354,6 +350,7 @@ msgid "Choose a different group"
 msgstr "Vælg en anden gruppe"
 
 #: smb4k/smb4kconfigpagemounting.cpp:336
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:45
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Common Mount Settings"
@@ -370,6 +367,7 @@ msgid "Edit the additional CIFS options."
 msgstr "Redigér de yderligere CIFS-tilvalg."
 
 #: smb4k/smb4kconfigpagemounting.cpp:470
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:142
 #, fuzzy, kde-format
 #| msgid "Advanced Settings"
 msgid "Advanced Mount Settings"
@@ -413,6 +411,7 @@ msgstr[1] ""
 "håndbogen for detaljer.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:177
 #, fuzzy, kde-format
 #| msgid "Settings"
 msgid "Browse Settings"
@@ -425,6 +424,7 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "Wake-On-LAN"
 msgid "Wake-On-LAN"
@@ -576,7 +576,7 @@ msgstr "Tjeksummer"
 msgid "Main Window"
 msgstr "Hovedvindue"
 
-#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:219
+#: smb4k/smb4kconfigpageuserinterface.cpp:63 smb4k/smb4kmainwindow.cpp:217
 #, kde-format
 msgid "Network Neighborhood"
 msgstr "Netværksnabolag"
@@ -586,17 +586,69 @@ msgstr "Netværksnabolag"
 msgid "Shares View"
 msgstr "Ressourcevisning"
 
-#: smb4k/smb4kmainwindow.cpp:137
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:48
+#, kde-format
+msgid "Always remount this share"
+msgstr "Genmontér altid denne ressource"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
+#, kde-format
+msgid "Page 1"
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:85
+#, kde-format
+msgid "This server supports the CIFS Unix extensions"
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
+#, kde-format
+msgid "Page 2"
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
+#, kde-format
+msgid "Page 3"
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:234
+#, kde-format
+msgid "Page 4"
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:239
+#, kde-format
+msgid "MAC Address:"
+msgstr "MAC-adresse:"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
+msgid "Send magic packet before scanning the network neighborhood"
+msgstr "Send magisk pakke før scanning af netværksnabolaget"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:251
+#, fuzzy, kde-format
+#| msgid "Send magic package before mounting a share"
+msgid "Send magic packet before mounting a share"
+msgstr "Send magisk pakke før montering af en delt ressource"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:263
+#, kde-format
+msgid "Page 5"
+msgstr ""
+
+#: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Dok kontroller"
 
-#: smb4k/smb4kmainwindow.cpp:242 smb4k/smb4ksharesmenu.cpp:38
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Monterede ressourcer"
 
-#: smb4k/smb4kmainwindow.cpp:417
+#: smb4k/smb4kmainwindow.cpp:415
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Closing the main window will keep Smb4K running in the system tray. "
@@ -608,101 +660,101 @@ msgstr ""
 "<qt>Ved lukning af hovedvinduet vil Smb4K stadig køre i statusområdet. Brug "
 "<i>Afslut</i> i menuen <i>Fil</i> for at afslutte programmet.</qt>"
 
-#: smb4k/smb4kmainwindow.cpp:419
+#: smb4k/smb4kmainwindow.cpp:417
 #, kde-format
 msgid "Docking"
 msgstr "Dokning"
 
-#: smb4k/smb4kmainwindow.cpp:483
+#: smb4k/smb4kmainwindow.cpp:481
 #, kde-format
 msgid "There are currently no shares mounted."
 msgstr "Der er aktuelt ingen monterede ressourcer."
 
-#: smb4k/smb4kmainwindow.cpp:486
+#: smb4k/smb4kmainwindow.cpp:484
 #, kde-format
 msgid "There is currently %1 share mounted."
 msgid_plural "There are currently %1 shares mounted."
 msgstr[0] "Der er aktuelt %1 monteret ressource."
 msgstr[1] "Der er aktuelt %1 monterede ressourcer."
 
-#: smb4k/smb4kmainwindow.cpp:639
+#: smb4k/smb4kmainwindow.cpp:637
 #, kde-format
 msgid "The wallet is used."
 msgstr "Tegnebogen er i brug."
 
-#: smb4k/smb4kmainwindow.cpp:642
+#: smb4k/smb4kmainwindow.cpp:640
 #, kde-format
 msgid "The password dialog is used."
 msgstr "Adgangskode-dialog bruges."
 
-#: smb4k/smb4kmainwindow.cpp:652
+#: smb4k/smb4kmainwindow.cpp:650
 #, kde-format
 msgid "Looking for workgroups and domains..."
 msgstr "Leder efter arbejdsgrupper og domæner..."
 
-#: smb4k/smb4kmainwindow.cpp:657
+#: smb4k/smb4kmainwindow.cpp:655
 #, kde-format
 msgid "Looking for hosts in domain %1..."
 msgstr "Leder efter værter på domænet %1..."
 
-#: smb4k/smb4kmainwindow.cpp:662
+#: smb4k/smb4kmainwindow.cpp:660
 #, kde-format
 msgid "Looking for shares provided by host %1..."
 msgstr "Leder efter ressourcer leveret af værten %1..."
 
-#: smb4k/smb4kmainwindow.cpp:670 smb4k/smb4kmainwindow.cpp:678
+#: smb4k/smb4kmainwindow.cpp:668 smb4k/smb4kmainwindow.cpp:676
 #, fuzzy, kde-format
 #| msgid "Looking for hosts in domain %1..."
 msgid "Looking for files and directories in %1..."
 msgstr "Leder efter værter på domænet %1..."
 
-#: smb4k/smb4kmainwindow.cpp:695
+#: smb4k/smb4kmainwindow.cpp:693
 #, kde-format
 msgid "Waking up remote hosts..."
 msgstr "Vækker eksterne værtsmaskiner..."
 
-#: smb4k/smb4kmainwindow.cpp:700
+#: smb4k/smb4kmainwindow.cpp:698
 #, kde-format
 msgid "Sending file to printer %1..."
 msgstr "Sender fil til printeren %1..."
 
-#: smb4k/smb4kmainwindow.cpp:704
+#: smb4k/smb4kmainwindow.cpp:702
 #, fuzzy, kde-format
 msgid "Searching..."
 msgstr "Søger på netværket..."
 
-#: smb4k/smb4kmainwindow.cpp:722 smb4k/smb4kmainwindow.cpp:759
-#: smb4k/smb4kmainwindow.cpp:871
+#: smb4k/smb4kmainwindow.cpp:720 smb4k/smb4kmainwindow.cpp:757
+#: smb4k/smb4kmainwindow.cpp:869
 #, kde-format
 msgid "Done."
 msgstr "Færdig."
 
-#: smb4k/smb4kmainwindow.cpp:732
+#: smb4k/smb4kmainwindow.cpp:730
 #, kde-format
 msgid "Mounting..."
 msgstr "Montering..."
 
-#: smb4k/smb4kmainwindow.cpp:736
+#: smb4k/smb4kmainwindow.cpp:734
 #, kde-format
 msgid "Unmounting..."
 msgstr "Afmontering..."
 
-#: smb4k/smb4kmainwindow.cpp:740
+#: smb4k/smb4kmainwindow.cpp:738
 #, kde-format
 msgid "Waking up host..."
 msgstr "Vækker ekstern værtsmaskine..."
 
-#: smb4k/smb4kmainwindow.cpp:770
+#: smb4k/smb4kmainwindow.cpp:768
 #, kde-format
 msgid "%1 has been mounted successfully."
 msgstr "%1 er blevet monteret."
 
-#: smb4k/smb4kmainwindow.cpp:803
+#: smb4k/smb4kmainwindow.cpp:801
 #, kde-format
 msgid "%1 has been unmounted successfully."
 msgstr "%1 er blevet afmonteret."
 
-#: smb4k/smb4kmainwindow.cpp:859
+#: smb4k/smb4kmainwindow.cpp:857
 #, kde-format
 msgid "Synchronizing %1"
 msgstr "Synkroniserer %1"
@@ -1149,29 +1201,13 @@ msgstr "Størrelse"
 #~ msgid "MAC Address"
 #~ msgstr "MAC-adresse:"
 
-#~ msgid "MAC Address:"
-#~ msgstr "MAC-adresse:"
-
 #~ msgid "Actions"
 #~ msgstr "Handlinger"
-
-#, fuzzy
-#~| msgid "Send magic package before scanning the network neighborhood"
-#~ msgid "Send magic packet before scanning the network neighborhood"
-#~ msgstr "Send magisk pakke før scanning af netværksnabolaget"
-
-#, fuzzy
-#~| msgid "Send magic package before mounting a share"
-#~ msgid "Send magic packet before mounting a share"
-#~ msgstr "Send magisk pakke før montering af en delt ressource"
 
 #, fuzzy
 #~| msgid "Wake-On-LAN"
 #~ msgid "Wake-On-LAN Settings"
 #~ msgstr "Wake-On-LAN"
-
-#~ msgid "Always remount this share"
-#~ msgstr "Genmontér altid denne ressource"
 
 #, fuzzy
 #~| msgid "Settings"

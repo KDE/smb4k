@@ -63,11 +63,13 @@ Q_SIGNALS:
 
 protected Q_SLOTS:
     void slotAlwaysRemoutShareToggled(bool checked);
+#ifdef Q_OS_LINUX
     void slotUseWriteAccessToggled(bool checked);
     void slotWriteAccessChanged(int index);
     void slotUseFileSystemPortToggled(bool checked);
     void slotFileSystemPortChanged(int port);
     void slotCifsUnixExtensionSupportToggled(bool checked);
+#endif
     void slotUseUserIdToggled(bool checked);
     void slotUserIdChanged(int index);
     void slotUseGroupIdToggled(bool checked);
@@ -76,10 +78,12 @@ protected Q_SLOTS:
     void slotFileModeChanged(const QString &text);
     void slotUseDirectoryModeToggled(bool checked);
     void slotDirectoryModeChanged(const QString &text);
+#ifdef Q_OS_LINUX
     void slotUseSmbMountProtocolVersionToggled(bool checked);
     void slotSmbMountProtocolVersionChanged(int index);
     void slotUseSecurityModeToggled(bool checked);
     void slotSecurityModeChanged(int index);
+#endif
     void slotUseClientProtocolVersionsToggled(bool checked);
     void slotMinimalClientProtocolVersionChanged(int index);
     void slotMaximalClientProtocolVersionChanged(int index);
@@ -96,11 +100,13 @@ private:
     bool m_haveCustomSettings;
     Smb4KCustomOptions m_customSettings;
     QCheckBox *m_alwaysRemountShare;
+#ifdef Q_OS_LINUX
     QCheckBox *m_useWriteAccess;
     KComboBox *m_writeAccess;
     QCheckBox *m_useFileSystemPort;
     QSpinBox *m_fileSystemPort;
     QCheckBox *m_cifsUnixExtensionSupport;
+#endif
     QCheckBox *m_useUserId;
     KComboBox *m_userId;
     QCheckBox *m_useGroupId;
@@ -109,10 +115,12 @@ private:
     KLineEdit *m_fileMode;
     QCheckBox *m_useDirectoryMode;
     KLineEdit *m_directoryMode;
+#ifdef Q_OS_LINUX
     QCheckBox *m_useSmbMountProtocolVersion;
     KComboBox *m_smbMountProtocolVersion;
     QCheckBox *m_useSecurityMode;
     KComboBox *m_securityMode;
+#endif
     QCheckBox *m_useClientProtocolVersions;
     QLabel *m_minimalClientProtocolVersionLabel;
     KComboBox *m_minimalClientProtocolVersion;

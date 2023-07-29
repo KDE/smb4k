@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-01 00:48+0000\n"
-"PO-Revision-Date: 2023-07-02 06:59+0200\n"
+"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"PO-Revision-Date: 2023-07-21 07:09+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1678,7 +1678,7 @@ msgstr ""
 msgid "%1 on %2"
 msgstr "%1-ი %2-ზე"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:268
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr ""
@@ -1814,7 +1814,7 @@ msgstr "საერთო პარამეტრები"
 #: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
 #, kde-format
 msgid "Always remount this share"
-msgstr ""
+msgstr "ამ გაზიარებულის ყოველთვის მიმაგრება"
 
 #: smb4kcustomoptionsmanager_p.cpp:218
 #, kde-format
@@ -1824,7 +1824,7 @@ msgstr "CIFS-ის Unix-ის გაფართოებების მხ�
 #: smb4kcustomoptionsmanager_p.cpp:221
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "ამ სერვერს CIFS-ის Unix-ის გაფართოებების მხარდაჭერა გააჩნია"
 
 #: smb4kcustomoptionsmanager_p.cpp:300
 #, kde-format
@@ -1874,13 +1874,13 @@ msgstr "ქმედებები"
 #: smb4kcustomoptionsmanager_p.cpp:1056
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "ქსელურ მეზობლების სკანირებამდე ჯადოსნური პაკეტის გაგზავნა"
 
 #: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
 #: smb4kcustomoptionsmanager_p.cpp:1064
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
+msgstr "გაზიარებულის მიმაგრებამდე ჯადოსნური პაკეტის გაგზავნა"
 
 #: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
 #, kde-format
