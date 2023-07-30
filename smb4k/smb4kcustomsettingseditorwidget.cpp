@@ -579,7 +579,7 @@ void Smb4KCustomSettingsEditorWidget::checkValues()
         return;
     }
 
-    if (m_macAddress->text() != m_customSettings.macAddress()) {
+    if (m_macAddress->hasAcceptableInput() && m_macAddress->text() != m_customSettings.macAddress()) {
         Q_EMIT edited(true);
         return;
     }
