@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-02 02:38+0000\n"
+"POT-Creation-Date: 2023-07-29 02:26+0000\n"
 "PO-Revision-Date: 2021-12-15 11:16+0100\n"
 "Last-Translator: Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail."
 "com>\n"
@@ -135,7 +135,7 @@ msgstr "&Rediger bokmerke"
 msgid "Add &Bookmark"
 msgstr "Legg til &bokmerke"
 
-#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:211
+#: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:209
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr ""

@@ -92,7 +92,7 @@
   <itemizedlist>
     <listitem
 ><para
->Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de &Samba;, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery -WS-Discovery-).</para
+>Escanejat per a grups de treball (actius), amfitrions i comparticions utilitzant la biblioteca del client de &Samba;, descobriment de serveis de DNS (DNS Service Discovery -DNS-SD-) i, de manera opcional, descobriment dinàmic de serveis web (Web Services Dynamic Discovery, WS-Discovery).</para
 ></listitem>
     <listitem
 ><para
