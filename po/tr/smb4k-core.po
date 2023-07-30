@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-05-15 22:40+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1962,13 +1962,13 @@ msgstr ""
 "belli bir profil için kaydedilen bütün ayarların bir diğerine taşınmasına "
 "olanak sağlar."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%2 üzerinde %1"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 biçimi desteklenmiyor."
@@ -2081,123 +2081,6 @@ msgstr "Bu yazdırmak istediğiniz kopya sayısıdır."
 #, kde-format
 msgid "Print"
 msgstr "Yazdır"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, kde-format
-msgid "Custom Settings"
-msgstr "Özel Ayarlar"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, kde-format
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Sağlanan tüm paylaşımları ve <b>%1</b> sunucusu için özel ayarlar "
-"tanımlayın.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, kde-format
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p><b>%1</b> paylaşımı için özel ayarlar tanımlayın.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Ortak Seçenekler"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Bu paylaşımı her zaman yeniden bağla"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "CIFS Unix Eklentileri Desteği"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "Bu sunucu CIFS Unix eklentilerini destekler"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, kde-format
-msgid "Common Mount Settings"
-msgstr "Ortak Bağlama Seçenekleri"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Gelişmiş Seçenekler"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, kde-format
-msgid "Advanced Mount Settings"
-msgstr "Gelişmiş Bağlama Seçenekleri"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Kimlik Doğrulama"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr "Tarama Ayarları"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "MAC Adresi"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC Adresi:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "İşlemler"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, kde-format
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Ağ komşularını taramadan önce özel paket gönder"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, kde-format
-msgid "Send magic packet before mounting a share"
-msgstr "Bir paylaşımı bağlamadan önce özel paket gönder"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Ağdan Uyan Ayarları"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, kde-format
-msgid "Mount Settings"
-msgstr "Bağlama Ayarları"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Ağdan Uyan"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3697,6 +3580,73 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı ve parola girin.</qt>"
+
+#~ msgid "Custom Settings"
+#~ msgstr "Özel Ayarlar"
+
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Sağlanan tüm paylaşımları ve <b>%1</b> sunucusu için özel ayarlar "
+#~ "tanımlayın.</p>"
+
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "<p><b>%1</b> paylaşımı için özel ayarlar tanımlayın.</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Ortak Seçenekler"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Bu paylaşımı her zaman yeniden bağla"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "CIFS Unix Eklentileri Desteği"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Bu sunucu CIFS Unix eklentilerini destekler"
+
+#~ msgid "Common Mount Settings"
+#~ msgstr "Ortak Bağlama Seçenekleri"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Gelişmiş Seçenekler"
+
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Gelişmiş Bağlama Seçenekleri"
+
+#~ msgid "Authentication"
+#~ msgstr "Kimlik Doğrulama"
+
+#~ msgid "Browse Settings"
+#~ msgstr "Tarama Ayarları"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC Adresi"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC Adresi:"
+
+#~ msgid "Actions"
+#~ msgstr "İşlemler"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Ağ komşularını taramadan önce özel paket gönder"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Bir paylaşımı bağlamadan önce özel paket gönder"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Ağdan Uyan Ayarları"
+
+#~ msgid "Mount Settings"
+#~ msgstr "Bağlama Ayarları"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Ağdan Uyan"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Yer İmi Ekle"

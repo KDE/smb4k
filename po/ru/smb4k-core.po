@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-01-28 14:35+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2029,13 +2029,13 @@ msgstr ""
 "или отключении поддержки профилей. Мастер переноса профилей позволяет "
 "перенести все сохранённые параметры из одного профиля в другой."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 на %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Формат файла %1 не поддерживается."
@@ -2147,128 +2147,6 @@ msgstr "Желаемое число копий, которые будут нап
 #, kde-format
 msgid "Print"
 msgstr "Печать"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
-msgid "Custom Settings"
-msgstr "Параметры подключения"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Укажите особые параметры для хоста <b>%1</b> и для всех его общих "
-"ресурсов.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Укажите особые параметры для общего ресурса <b>%1</b>.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Общие параметры"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Всегда переподключать этот ресурс"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "Поддержка расширений Unix для CIFS"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "Расширения Unix для CIFS поддерживаются этим севером"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, kde-format
-msgid "Common Mount Settings"
-msgstr "Общие параметры"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Дополнительные параметры"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, kde-format
-msgid "Advanced Mount Settings"
-msgstr "Расширенные параметры"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Авторизация"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr "Параметры просмотра"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "MAC-адрес"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC-адрес:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "Действия"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, kde-format
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Отправлять «волшебный» пакет перед сканированием сетевого окружения"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, kde-format
-msgid "Send magic packet before mounting a share"
-msgstr "Отправлять «волшебный» пакет перед подключением ресурса"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Параметры Wake-On-LAN"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, kde-format
-msgid "Mount Settings"
-msgstr "Параметры подключения"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Wake-On-LAN"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3788,6 +3666,81 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Введите имя пользователя и пароль для общего ресурса <b>%1</b>.</qt>"
+
+#, fuzzy
+#~| msgid "Mount Settings"
+#~ msgid "Custom Settings"
+#~ msgstr "Параметры подключения"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~| "provides.</p>"
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Укажите особые параметры для хоста <b>%1</b> и для всех его общих "
+#~ "ресурсов.</p>"
+
+#, fuzzy
+#~| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "<p>Укажите особые параметры для общего ресурса <b>%1</b>.</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Общие параметры"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Всегда переподключать этот ресурс"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "Поддержка расширений Unix для CIFS"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Расширения Unix для CIFS поддерживаются этим севером"
+
+#~ msgid "Common Mount Settings"
+#~ msgstr "Общие параметры"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Дополнительные параметры"
+
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Расширенные параметры"
+
+#~ msgid "Authentication"
+#~ msgstr "Авторизация"
+
+#~ msgid "Browse Settings"
+#~ msgstr "Параметры просмотра"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC-адрес"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC-адрес:"
+
+#~ msgid "Actions"
+#~ msgstr "Действия"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Отправлять «волшебный» пакет перед сканированием сетевого окружения"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Отправлять «волшебный» пакет перед подключением ресурса"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Параметры Wake-On-LAN"
+
+#~ msgid "Mount Settings"
+#~ msgstr "Параметры подключения"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Wake-On-LAN"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Добавление закладок"

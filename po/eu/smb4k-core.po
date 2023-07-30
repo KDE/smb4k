@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-01-07 09:08+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1998,13 +1998,13 @@ msgstr ""
 "zehatz batean gordetako ezarpen guztiak beste profil batera migratzen uzten "
 "dizu."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 %2(e)an"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1(r)en formatua ez da onartzen."
@@ -2118,127 +2118,6 @@ msgstr "Hau da inprimatu nahi duzun kopia kopurua."
 #, kde-format
 msgid "Print"
 msgstr "Inprimatu"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, kde-format
-msgid "Custom Settings"
-msgstr "Neurrira egokitutako ezarpenak"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Definitu <b>%1</b> ostalariarentzako eta honek hornitzen dituen "
-"partekatze guztientzako norberak finkatutako aukerak.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Definitu <b>%1</b> partekatzearen aukerak.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Ezarpen arruntak"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Birmuntatu beti partekatze hau"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "Unix-eko CIFS hedapenen euskarria"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "Zerbitzari honek Unix-eko CIFS hedapenak onartzen ditu"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, kde-format
-msgid "Common Mount Settings"
-msgstr "Muntatzeko ezarpen arruntak"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Aukera aurreratuak"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, kde-format
-msgid "Advanced Mount Settings"
-msgstr "Muntatzeko ezarpen aurreratuak"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Autentifikatzea"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr "Arakatze ezarpenak"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "MAC helbidea"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC helbidea:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "Ekintzak"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, kde-format
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Bidali pakete magikoa sareko auzoa aztertu aurretik"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, kde-format
-msgid "Send magic packet before mounting a share"
-msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Sare bidez esnatzeko (Wake-On-LAN) ezarpenak"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, kde-format
-msgid "Mount Settings"
-msgstr "Muntatze-ezarpenak"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Esnatu sare bidez (Wake-On-LAN)"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3752,6 +3631,79 @@ msgid ""
 msgstr ""
 "<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> partekatzerako.</"
 "qt>"
+
+#~ msgid "Custom Settings"
+#~ msgstr "Neurrira egokitutako ezarpenak"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~| "provides.</p>"
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Definitu <b>%1</b> ostalariarentzako eta honek hornitzen dituen "
+#~ "partekatze guztientzako norberak finkatutako aukerak.</p>"
+
+#, fuzzy
+#~| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "<p>Definitu <b>%1</b> partekatzearen aukerak.</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Ezarpen arruntak"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Birmuntatu beti partekatze hau"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "Unix-eko CIFS hedapenen euskarria"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Zerbitzari honek Unix-eko CIFS hedapenak onartzen ditu"
+
+#~ msgid "Common Mount Settings"
+#~ msgstr "Muntatzeko ezarpen arruntak"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Aukera aurreratuak"
+
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Muntatzeko ezarpen aurreratuak"
+
+#~ msgid "Authentication"
+#~ msgstr "Autentifikatzea"
+
+#~ msgid "Browse Settings"
+#~ msgstr "Arakatze ezarpenak"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC helbidea"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC helbidea:"
+
+#~ msgid "Actions"
+#~ msgstr "Ekintzak"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Bidali pakete magikoa sareko auzoa aztertu aurretik"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Sare bidez esnatzeko (Wake-On-LAN) ezarpenak"
+
+#~ msgid "Mount Settings"
+#~ msgstr "Muntatze-ezarpenak"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Esnatu sare bidez (Wake-On-LAN)"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Gehitu laster-markak"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1947,13 +1947,13 @@ msgid ""
 "one."
 msgstr ""
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr ""
@@ -2066,134 +2066,6 @@ msgstr ""
 #| msgid "Printer"
 msgid "Print"
 msgstr "プリンタ"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, fuzzy, kde-format
-#| msgid "Mount Share"
-msgid "Custom Settings"
-msgstr "共有をマウント"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, fuzzy, kde-format
-#| msgid "%1 has been unmounted successfully."
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr "%1 を無事にマウント解除しました。"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, fuzzy, kde-format
-#| msgid "%1 has been unmounted successfully."
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "%1 を無事にマウント解除しました。"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, fuzzy, kde-format
-#| msgid "Custom Options"
-msgid "Common Options"
-msgstr "カスタムオプション"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, fuzzy, kde-format
-#| msgid "Remote Shares"
-msgid "Always remount this share"
-msgstr "リモート共有"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, fuzzy, kde-format
-#| msgid "Custom Options"
-msgid "Common Mount Settings"
-msgstr "カスタムオプション"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, fuzzy, kde-format
-#| msgid "Options"
-msgid "Advanced Options"
-msgstr "オプション"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, fuzzy, kde-format
-#| msgid "Options"
-msgid "Advanced Mount Settings"
-msgstr "オプション"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, fuzzy, kde-format
-#| msgid "Use Kerberos authentication"
-msgid "Authentication"
-msgstr "Kerberos 認証を使用"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, fuzzy, kde-format
-#| msgid "UNC Address:"
-msgid "MAC Address"
-msgstr "UNC アドレス:"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, fuzzy, kde-format
-#| msgid "UNC Address:"
-msgid "MAC Address:"
-msgstr "UNC アドレス:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, fuzzy, kde-format
-#| msgid "Options"
-msgid "Actions"
-msgstr "オプション"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, kde-format
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, kde-format
-msgid "Send magic packet before mounting a share"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, fuzzy, kde-format
-#| msgid "Mount Share"
-msgid "Mount Settings"
-msgstr "共有をマウント"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr ""
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3722,6 +3594,76 @@ msgstr "<qt>ホスト %1 のユーザ名とパスワードを入力してくだ�
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>共有 %1 のユーザ名とパスワードを入力してください。</qt>"
+
+#, fuzzy
+#~| msgid "Mount Share"
+#~ msgid "Custom Settings"
+#~ msgstr "共有をマウント"
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr "%1 を無事にマウント解除しました。"
+
+#, fuzzy
+#~| msgid "%1 has been unmounted successfully."
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "%1 を無事にマウント解除しました。"
+
+#, fuzzy
+#~| msgid "Custom Options"
+#~ msgid "Common Options"
+#~ msgstr "カスタムオプション"
+
+#, fuzzy
+#~| msgid "Remote Shares"
+#~ msgid "Always remount this share"
+#~ msgstr "リモート共有"
+
+#, fuzzy
+#~| msgid "Custom Options"
+#~ msgid "Common Mount Settings"
+#~ msgstr "カスタムオプション"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Advanced Options"
+#~ msgstr "オプション"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "オプション"
+
+#, fuzzy
+#~| msgid "Use Kerberos authentication"
+#~ msgid "Authentication"
+#~ msgstr "Kerberos 認証を使用"
+
+#, fuzzy
+#~| msgid "UNC Address:"
+#~ msgid "MAC Address"
+#~ msgstr "UNC アドレス:"
+
+#, fuzzy
+#~| msgid "UNC Address:"
+#~ msgid "MAC Address:"
+#~ msgstr "UNC アドレス:"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Actions"
+#~ msgstr "オプション"
+
+#, fuzzy
+#~| msgid "Mount Share"
+#~ msgid "Mount Settings"
+#~ msgstr "共有をマウント"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "ブックマークを追加(&B)"

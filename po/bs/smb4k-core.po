@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2015-02-24 23:17+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -1962,13 +1962,13 @@ msgstr ""
 "profila vam dozvoljava da pomjerite sve postavke koju su bile snimljene za "
 "određeni profil za neki drugi."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr ""
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Format %1 nije podržan."
@@ -2083,140 +2083,6 @@ msgstr "Ovo je broj kopija koje želite odštampati."
 #| msgid "Printer"
 msgid "Print"
 msgstr "Štampač"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, fuzzy, kde-format
-#| msgid "Mount Share"
-msgid "Custom Settings"
-msgstr "Namještanje razmjene"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Definiše prilagođene opcije za hostove <b>%1</b> i sve razmjene su "
-"obezbjeđene.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr ""
-"<p>Definiše prilagođene opcije za razmjene <b>%1</b> na hostu <b>%2</b>.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, fuzzy, kde-format
-#| msgid "Custom Options"
-msgid "Common Options"
-msgstr "Prilagođene opcije"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Uvijek ponovo namjestite ovu razmjenu"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, fuzzy, kde-format
-#| msgid "Custom Options"
-msgid "Common Mount Settings"
-msgstr "Prilagođene opcije"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, fuzzy, kde-format
-#| msgid "Options"
-msgid "Advanced Options"
-msgstr "Opcije"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, fuzzy, kde-format
-#| msgid "Options"
-msgid "Advanced Mount Settings"
-msgstr "Opcije"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, fuzzy, kde-format
-#| msgid "Kerberos 5 authentication"
-msgid "Authentication"
-msgstr "Kerberos 5 potvrda"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr ""
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, fuzzy, kde-format
-#| msgid "MAC Address:"
-msgid "MAC Address"
-msgstr "MAC adresa:"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC adresa:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, fuzzy, kde-format
-#| msgid "Options"
-msgid "Actions"
-msgstr "Opcije"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Pošalji čarobni paket prije pretraživanja susjednih mreža"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
-msgid "Send magic packet before mounting a share"
-msgstr "Pošalji magični paket prije namještanja razmjene"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
-msgid "Wake-On-LAN Settings"
-msgstr "Wake-On-LAN"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, fuzzy, kde-format
-#| msgid "Mount Share"
-msgid "Mount Settings"
-msgstr "Namještanje razmjene"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Wake-On-LAN"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3730,6 +3596,96 @@ msgstr "<qt>Molimo unesite korisničko ime i šifru za host <b>%1</b>.</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Molimo unesite korisničko ime i šifru za razmjenu <b>%1</b>.</qt>"
+
+#, fuzzy
+#~| msgid "Mount Share"
+#~ msgid "Custom Settings"
+#~ msgstr "Namještanje razmjene"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~| "provides.</p>"
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Definiše prilagođene opcije za hostove <b>%1</b> i sve razmjene su "
+#~ "obezbjeđene.</p>"
+
+#, fuzzy
+#~| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr ""
+#~ "<p>Definiše prilagođene opcije za razmjene <b>%1</b> na hostu <b>%2</b>.</"
+#~ "p>"
+
+#, fuzzy
+#~| msgid "Custom Options"
+#~ msgid "Common Options"
+#~ msgstr "Prilagođene opcije"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Uvijek ponovo namjestite ovu razmjenu"
+
+#, fuzzy
+#~| msgid "Custom Options"
+#~ msgid "Common Mount Settings"
+#~ msgstr "Prilagođene opcije"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Advanced Options"
+#~ msgstr "Opcije"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Opcije"
+
+#, fuzzy
+#~| msgid "Kerberos 5 authentication"
+#~ msgid "Authentication"
+#~ msgstr "Kerberos 5 potvrda"
+
+#, fuzzy
+#~| msgid "MAC Address:"
+#~ msgid "MAC Address"
+#~ msgstr "MAC adresa:"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC adresa:"
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Actions"
+#~ msgstr "Opcije"
+
+#, fuzzy
+#~| msgid "Send magic package before scanning the network neighborhood"
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Pošalji čarobni paket prije pretraživanja susjednih mreža"
+
+#, fuzzy
+#~| msgid "Send magic package before mounting a share"
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Pošalji magični paket prije namještanja razmjene"
+
+#, fuzzy
+#~| msgid "Wake-On-LAN"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Wake-On-LAN"
+
+#, fuzzy
+#~| msgid "Mount Share"
+#~ msgid "Mount Settings"
+#~ msgstr "Namještanje razmjene"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Wake-On-LAN"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Dodaj zabilješke"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1953,13 +1953,13 @@ msgstr ""
 "premigrovať všetky nastavenia, ktoré sú uložené pre určitý profil do iného "
 "profilu."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 na %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Formát %1 nie je podporovaný."
@@ -2071,130 +2071,6 @@ msgstr "Toto je počet kópií, ktoré chcete tlačiť."
 #, kde-format
 msgid "Print"
 msgstr "Tlačiť"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, fuzzy, kde-format
-#| msgid "Mount Settings"
-msgid "Custom Settings"
-msgstr "Voľby pripojenia"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Definovať vlastné voľby pre hostiteľa <b>%1</b> a všetky zdieľania, ktoré "
-"poskytuje</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Definovať vlastné voľby pre zdieľanie <b>%1</b>.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Obvyklé možnosti"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Vždy znovu pripojiť toto zdieľanie"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "Podpora unixových rozšírení CIFS"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "Tento server podporuje unixové rozšírenia CIFS"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, kde-format
-msgid "Common Mount Settings"
-msgstr "Obvyklé možnosti pripojenia"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Pokročilé možnosti"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, kde-format
-msgid "Advanced Mount Settings"
-msgstr "Pokročilé nastavenia pripojenia"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Overenie"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr "Prehliadať nastavenia"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "MAC adresa"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC adresa:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "Akcie"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Poslať magický balík pred prehľadaním sieťového okolia"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
-msgid "Send magic packet before mounting a share"
-msgstr "Poslať magický balík pred pripojeným zdieľania"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Nastavenia Wake-On-LAN"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, kde-format
-msgid "Mount Settings"
-msgstr "Voľby pripojenia"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Wake-On-LAN"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3682,6 +3558,85 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Prosím zadajte meno používateľa a heslo pre zdieľanie <b>%1</b>.</qt>"
+
+#, fuzzy
+#~| msgid "Mount Settings"
+#~ msgid "Custom Settings"
+#~ msgstr "Voľby pripojenia"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~| "provides.</p>"
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Definovať vlastné voľby pre hostiteľa <b>%1</b> a všetky zdieľania, "
+#~ "ktoré poskytuje</p>"
+
+#, fuzzy
+#~| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "<p>Definovať vlastné voľby pre zdieľanie <b>%1</b>.</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Obvyklé možnosti"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Vždy znovu pripojiť toto zdieľanie"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "Podpora unixových rozšírení CIFS"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Tento server podporuje unixové rozšírenia CIFS"
+
+#~ msgid "Common Mount Settings"
+#~ msgstr "Obvyklé možnosti pripojenia"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Pokročilé možnosti"
+
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Pokročilé nastavenia pripojenia"
+
+#~ msgid "Authentication"
+#~ msgstr "Overenie"
+
+#~ msgid "Browse Settings"
+#~ msgstr "Prehliadať nastavenia"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC adresa"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC adresa:"
+
+#~ msgid "Actions"
+#~ msgstr "Akcie"
+
+#, fuzzy
+#~| msgid "Send magic package before scanning the network neighborhood"
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Poslať magický balík pred prehľadaním sieťového okolia"
+
+#, fuzzy
+#~| msgid "Send magic package before mounting a share"
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Poslať magický balík pred pripojeným zdieľania"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Nastavenia Wake-On-LAN"
+
+#~ msgid "Mount Settings"
+#~ msgstr "Voľby pripojenia"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Wake-On-LAN"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Pridať záložky"

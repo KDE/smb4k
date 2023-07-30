@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-03-16 21:38+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -2023,13 +2023,13 @@ msgstr ""
 "Migrationsassistent erlaubt es, alle unter einem Profil gespeicherten "
 "Einstellungen zu einem anderen zu migrieren."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 auf %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 besitzt eine nicht unterstützte Formatversion."
@@ -2144,124 +2144,6 @@ msgstr "Dies ist die Anzahl von Kopien, die Sie drucken möchten."
 #, kde-format
 msgid "Print"
 msgstr "Drucken"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, kde-format
-msgid "Custom Settings"
-msgstr "Benutzerdefinierte Einstellungen"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, kde-format
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Benutzerdefinierte Einstellungen für den Rechner <b>%1</b> und all seine "
-"Freigaben festlegen.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, kde-format
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr ""
-"<p>Benutzerdefinierte Einstellungen für die Freigabe <b>%1</b> festlegen.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Übliche Einstellungen"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Diese Freigabe immer einhängen"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "Unterstützung für CIFS-Erweiterungen unter Unix"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "Dieser Server unterstützt die CIFS-Erweiterungen unter Unix"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, kde-format
-msgid "Common Mount Settings"
-msgstr "Allgemeine Einstellungen zum Einhängen"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Erweiterte Einstellungen"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, kde-format
-msgid "Advanced Mount Settings"
-msgstr "Erweiterte Einstellungen zum Einhängen"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Authentifizierung"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr "Browser-Einstellungen"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "MAC-Adresse"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC-Adresse:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "Aktionen"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, kde-format
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "„Magisches“ Datenpaket vor dem Durchsuchen der Netzwerkumgebung senden"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, kde-format
-msgid "Send magic packet before mounting a share"
-msgstr "„Magisches“ Datenpaket vor dem Einhängen einer Freigabe senden"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Wake-On-LAN-Einstellungen"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, kde-format
-msgid "Mount Settings"
-msgstr "Einstellungen zum Einhängen"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Wake-On-LAN"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3796,6 +3678,76 @@ msgid ""
 msgstr ""
 "<qt>Bitte geben Sie einen Benutzernamen und ein Passwort für die Freigabe <b>"
 "%1</b> ein.</qt>"
+
+#~ msgid "Custom Settings"
+#~ msgstr "Benutzerdefinierte Einstellungen"
+
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Benutzerdefinierte Einstellungen für den Rechner <b>%1</b> und all "
+#~ "seine Freigaben festlegen.</p>"
+
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr ""
+#~ "<p>Benutzerdefinierte Einstellungen für die Freigabe <b>%1</b> festlegen."
+#~ "</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Übliche Einstellungen"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Diese Freigabe immer einhängen"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "Unterstützung für CIFS-Erweiterungen unter Unix"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Dieser Server unterstützt die CIFS-Erweiterungen unter Unix"
+
+#~ msgid "Common Mount Settings"
+#~ msgstr "Allgemeine Einstellungen zum Einhängen"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Erweiterte Einstellungen"
+
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Erweiterte Einstellungen zum Einhängen"
+
+#~ msgid "Authentication"
+#~ msgstr "Authentifizierung"
+
+#~ msgid "Browse Settings"
+#~ msgstr "Browser-Einstellungen"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC-Adresse"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC-Adresse:"
+
+#~ msgid "Actions"
+#~ msgstr "Aktionen"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr ""
+#~ "„Magisches“ Datenpaket vor dem Durchsuchen der Netzwerkumgebung senden"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "„Magisches“ Datenpaket vor dem Einhängen einer Freigabe senden"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Wake-On-LAN-Einstellungen"
+
+#~ msgid "Mount Settings"
+#~ msgstr "Einstellungen zum Einhängen"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Wake-On-LAN"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Lesezeichen hinzufügen"

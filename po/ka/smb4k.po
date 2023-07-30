@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-07-21 07:08+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -132,13 +132,13 @@ msgid "&Edit Bookmarks"
 msgstr "&სანიშნების ჩასწორება"
 
 #: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:145
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:226
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
+#: smb4k/smb4ksharesviewdockwidget.cpp:227
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&სანიშნის დამატება"
 
-#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:216
+#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:214
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "სანიშნების მიმაგრება"
@@ -168,7 +168,7 @@ msgstr "ავთენტიკაცია"
 msgid "Synchronization"
 msgstr "სინქრონიზაცია"
 
-#: smb4k/smb4kconfigdialog.cpp:138
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
 #, kde-format
 msgid "Custom Settings"
 msgstr "პარამეტრების ხელით მითითება"
@@ -287,7 +287,7 @@ msgstr "კატეგორიის დამატება"
 msgid "Clear List"
 msgstr "სიის გასუფთავება"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:422
+#: smb4k/smb4kconfigpagebookmarks.cpp:426
 #, kde-format
 msgid "New Category"
 msgstr "ახალი კატეგორია"
@@ -296,6 +296,13 @@ msgstr "ახალი კატეგორია"
 #, kde-format
 msgid "All fine."
 msgstr "ყველაფერი კარგადაა."
+
+#: smb4k/smb4kconfigpagecustomsettings.cpp:193
+#, fuzzy, kde-format
+#| msgid "The item %1 was removed, because all custom settings were reset."
+msgid "The item <b>%1</b> was removed, because all custom settings were reset."
+msgstr ""
+"ჩანაწერი %1 წაიშალა, რადგან ყველა ხელით მითითებული პარამეტრი გასუფთავდა."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -327,7 +334,7 @@ msgid "Common Options"
 msgstr "საერთო პარამეტრები"
 
 #: smb4k/smb4kconfigpagemounting.cpp:228
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS-ის Unix-ის გაფართოებების მხარდაჭერა"
@@ -343,7 +350,7 @@ msgid "Choose a different group"
 msgstr "აირჩიეთ სხვა ჯგუფი"
 
 #: smb4k/smb4kconfigpagemounting.cpp:336
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:45
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "საერთო მიმაგრების პარამეტრები"
@@ -359,7 +366,7 @@ msgid "Edit the additional CIFS options."
 msgstr "CIFS-ის დამატებითი პარამეტრების ჩასწორება."
 
 #: smb4k/smb4kconfigpagemounting.cpp:470
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:142
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "მიმაგრების დამატებითი პარამეტრები"
@@ -400,7 +407,7 @@ msgstr[1] ""
 "გადაიკითხეთ სახელმძღვანელო.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:177
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Browse Settings"
 msgstr "პარამეტრების დათვალიერება"
@@ -411,7 +418,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:236
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "ქსელით-გაღვიძება"
@@ -557,62 +563,83 @@ msgstr "ქსელური მეზობლები"
 msgid "Shares View"
 msgstr "გაზიარებების ხედი"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:48
+#: smb4k/smb4kcustomsettingseditor.cpp:100
+#, kde-format
+msgid ""
+"Define custom settings for host <b>%1</b> and all the shares it provides."
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditor.cpp:116
+#, kde-format
+msgid "Define custom settings for share <b>%1</b>."
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #, kde-format
 msgid "Always remount this share"
 msgstr "ამ გაზიარებულის ყოველთვის მიმაგრება"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
-#, kde-format
-msgid "Page 1"
-msgstr "გვერდი 1"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 1: Mounting"
+msgstr "მიმაგრება"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:85
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "ამ სერვერს CIFS-ის Unix-ის გაფართოებების მხარდაჭერა გააჩნია"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
-#, kde-format
-msgid "Page 2"
-msgstr "გვერდი 2"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 2: Mounting"
+msgstr "მიმაგრება"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 3: Mounting"
+msgstr "მიმაგრება"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
-msgid "Page 3"
-msgstr "გვერდი 3"
+msgid "Page 4: Browsing"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#, kde-format
-msgid "Page 4"
-msgstr "გვერდი 4"
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Wake-On-LAN Settings"
+msgstr "ქსელით-გაღვიძება"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:239
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC მისამართი:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "ქსელურ მეზობლების სკანირებამდე ჯადოსნური პაკეტის გაგზავნა"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:251
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "გაზიარებულის მიმაგრებამდე ჯადოსნური პაკეტის გაგზავნა"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:263
-#, kde-format
-msgid "Page 5"
-msgstr "გვერდი 5"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Page 5: Wake-On-LAN"
+msgstr "ქსელით-გაღვიძება"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
 msgid "Dock Widgets"
 msgstr "ვიჯეტების მიმაგრება"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:40
 #, kde-format
 msgid "Mounted Shares"
 msgstr "მიმაგრებული გაზიარებულები"
@@ -768,111 +795,111 @@ msgstr "IP მისამართი"
 msgid "Comment"
 msgstr "კომენტარი"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:406
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:469
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:119
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:470
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "ქსელის &სკანირება"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:121
 #, kde-format
 msgid "&Abort"
 msgstr "გაუქმება"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #, kde-format
 msgid "&Search"
 msgstr "&ძებნა"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156
-#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157
+#: smb4k/smb4ksharesviewdockwidget.cpp:232
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
-#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksharesmenu.cpp:193
+#: smb4k/smb4ksharesviewdockwidget.cpp:237
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "&პარამეტრების ხელით მითითება"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:167
-#: smb4k/smb4ksharesviewdockwidget.cpp:241
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:168
+#: smb4k/smb4ksharesviewdockwidget.cpp:242
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:174 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&მიმაგრების ფანჯრის გახსნა"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:179
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Au&thentication"
 msgstr "&ავთენტიკაცია"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:199
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Pre&view"
 msgstr "&გადახედვა"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:214
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:215
 #, kde-format
 msgid "&Print File"
 msgstr "&ფაილის დაბეჭდვა"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:220
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:227
 #, kde-format
 msgid "&Mount"
 msgstr "&მიმაგრება"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:228
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "&Unmount"
 msgstr "&მიმაგრების მოხსნა (unmount)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:238
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:239
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:978
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:420
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:431
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:421
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:432
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "&კომპიუტერში ძებნა"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:457
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "სამუშაო &ჯგუფში ძებნა"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
-#: smb4k/smb4ksharesviewdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:980
+#: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -907,87 +934,87 @@ msgstr "ჩანაწერი დაბლა"
 msgid "Item Up"
 msgstr "ჩანაწერი მაღლა"
 
-#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
 msgid "U&nmount All"
 msgstr "&ყველას მოხსნა"
 
-#: smb4k/smb4ksharesmenu.cpp:159
+#: smb4k/smb4ksharesmenu.cpp:161
 #, kde-format
 msgid "Unmount"
 msgstr "მოხსნა"
 
-#: smb4k/smb4ksharesmenu.cpp:178
+#: smb4k/smb4ksharesmenu.cpp:180
 #, kde-format
 msgid "Add Bookmark"
 msgstr "სანიშნის დამატება"
 
-#: smb4k/smb4ksharesmenu.cpp:204
+#: smb4k/smb4ksharesmenu.cpp:206
 #, kde-format
 msgid "Synchronize"
 msgstr "სინქრონიზაცია"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:225
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Konsole-ით გახსნა"
 
-#: smb4k/smb4ksharesmenu.cpp:237
+#: smb4k/smb4ksharesmenu.cpp:239
 #, kde-format
 msgid "Open with File Manager"
 msgstr "ფაილთა მმართველში გახსნა"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:153
+#: smb4k/smb4ksharesviewdockwidget.cpp:154
 #, kde-format
 msgid "View Modes"
 msgstr "ნახვის რეჟიმები"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:159
+#: smb4k/smb4ksharesviewdockwidget.cpp:160
 #, kde-format
 msgid "Icon View"
 msgstr "ხატულებით ჩვენება"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:165
+#: smb4k/smb4ksharesviewdockwidget.cpp:166
 #, kde-format
 msgid "List View"
 msgstr "სიისებრი ხედი"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:246
+#: smb4k/smb4ksharesviewdockwidget.cpp:247
 #, kde-format
 msgid "S&ynchronize"
 msgstr "&სინქრონიზაცია"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:251
+#: smb4k/smb4ksharesviewdockwidget.cpp:252
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:264
+#: smb4k/smb4ksharesviewdockwidget.cpp:265
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "&Konsole-ით გახსნა"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:269
+#: smb4k/smb4ksharesviewdockwidget.cpp:270
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:271
+#: smb4k/smb4ksharesviewdockwidget.cpp:272
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "&ფაილების მმართველში გახსნა"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:276
+#: smb4k/smb4ksharesviewdockwidget.cpp:277
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:391
+#: smb4k/smb4ksharesviewdockwidget.cpp:392
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1078,6 +1105,17 @@ msgstr "ფაილური სისტემა:"
 msgid "Size:"
 msgstr "Size:"
 
-#~ msgid "The item %1 was removed, because all custom settings were reset."
-#~ msgstr ""
-#~ "ჩანაწერი %1 წაიშალა, რადგან ყველა ხელით მითითებული პარამეტრი გასუფთავდა."
+#~ msgid "Page 1"
+#~ msgstr "გვერდი 1"
+
+#~ msgid "Page 2"
+#~ msgstr "გვერდი 2"
+
+#~ msgid "Page 3"
+#~ msgstr "გვერდი 3"
+
+#~ msgid "Page 4"
+#~ msgstr "გვერდი 4"
+
+#~ msgid "Page 5"
+#~ msgstr "გვერდი 5"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-07-23 12:28\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1842,13 +1842,13 @@ msgstr ""
 "当配置文件被移除，或者在启用、禁用使用配置文件功能时，使用配置文件迁移辅助工"
 "具。该工具可以将某个配置文件中保存的所有设置迁移到另一个配置文件。"
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "不支持 %1 格式。"
@@ -1959,121 +1959,6 @@ msgstr "这是你想要打印的份数。"
 #, kde-format
 msgid "Print"
 msgstr "打印"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, kde-format
-msgid "Custom Settings"
-msgstr "自定义设置"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, kde-format
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr "<p>指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, kde-format
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>指定共享 <b>%1</b> 的自定义选项。</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "通用选项"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "总是重新挂载此共享"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "CIFS Unix 扩展支持"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "此服务器支持 CIFS Unix 扩展"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, kde-format
-msgid "Common Mount Settings"
-msgstr "通用挂载设置"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "高级选项"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, kde-format
-msgid "Advanced Mount Settings"
-msgstr "高级挂载设置"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "身份验证"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr "浏览设置"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "MAC 地址"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC 地址："
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "操作"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, kde-format
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, kde-format
-msgid "Send magic packet before mounting a share"
-msgstr "挂载共享前发送局域网唤醒魔术封包"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "局域网唤醒设置"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, kde-format
-msgid "Mount Settings"
-msgstr "挂载设置"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "局域网唤醒"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3492,3 +3377,68 @@ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
+
+#~ msgid "Custom Settings"
+#~ msgstr "自定义设置"
+
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr "<p>指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。</p>"
+
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "<p>指定共享 <b>%1</b> 的自定义选项。</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "通用选项"
+
+#~ msgid "Always remount this share"
+#~ msgstr "总是重新挂载此共享"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "CIFS Unix 扩展支持"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "此服务器支持 CIFS Unix 扩展"
+
+#~ msgid "Common Mount Settings"
+#~ msgstr "通用挂载设置"
+
+#~ msgid "Advanced Options"
+#~ msgstr "高级选项"
+
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "高级挂载设置"
+
+#~ msgid "Authentication"
+#~ msgstr "身份验证"
+
+#~ msgid "Browse Settings"
+#~ msgstr "浏览设置"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC 地址"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC 地址："
+
+#~ msgid "Actions"
+#~ msgstr "操作"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "挂载共享前发送局域网唤醒魔术封包"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "局域网唤醒设置"
+
+#~ msgid "Mount Settings"
+#~ msgstr "挂载设置"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "局域网唤醒"
