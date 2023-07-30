@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2020-01-12 12:19+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -1990,13 +1990,13 @@ msgstr ""
 "desactivar o uso de perfís. O asistente de migración de perfís permítelle "
 "migrar a un perfil a configuración gardada para outro perfil."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 en %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "O formato de %1 non é compatíbel."
@@ -2108,135 +2108,6 @@ msgstr "Este é o número de copias que quere imprimir."
 #, kde-format
 msgid "Print"
 msgstr "Imprimir"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, fuzzy, kde-format
-#| msgid "Mounting"
-msgid "Custom Settings"
-msgstr "Montaxe"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Definir opcións personalizadas para o servidor <b>%1</b> e todas as "
-"comparticións que fornece.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Definir opcións personalizadas para a compartición <b>%1</b>.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Opcións comúns"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Sempre montar de novo esta compartición."
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "Compatibilidade con extensións de CIFS de Unix"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "Este servidor é compatíbel coas extensións de CIFS de Unix"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, fuzzy, kde-format
-#| msgid "Common Options"
-msgid "Common Mount Settings"
-msgstr "Opcións comúns"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Opcións avanzadas"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
-msgid "Advanced Mount Settings"
-msgstr "Opcións avanzadas"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Autenticación"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, fuzzy, kde-format
-#| msgid "Browse List"
-msgid "Browse Settings"
-msgstr "Examinar a lista"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "Enderezo MAC"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "Enderezo MAC:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "Accións"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Enviar un paquete máxico antes de examinar a veciñanza de rede."
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
-msgid "Send magic packet before mounting a share"
-msgstr "Enviar un paquete máxico antes de montar a compartición."
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
-msgid "Wake-On-LAN Settings"
-msgstr "Espertar na rede"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, fuzzy, kde-format
-#| msgid "Mounting"
-msgid "Mount Settings"
-msgstr "Montaxe"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Espertar na rede"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3744,6 +3615,96 @@ msgid ""
 msgstr ""
 "<qt>Escriba o seu nome de usuario e contrasinal para a compartición <b>%1</"
 "b>.</qt>"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Custom Settings"
+#~ msgstr "Montaxe"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~| "provides.</p>"
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Definir opcións personalizadas para o servidor <b>%1</b> e todas as "
+#~ "comparticións que fornece.</p>"
+
+#, fuzzy
+#~| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr ""
+#~ "<p>Definir opcións personalizadas para a compartición <b>%1</b>.</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Opcións comúns"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Sempre montar de novo esta compartición."
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "Compatibilidade con extensións de CIFS de Unix"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Este servidor é compatíbel coas extensións de CIFS de Unix"
+
+#, fuzzy
+#~| msgid "Common Options"
+#~ msgid "Common Mount Settings"
+#~ msgstr "Opcións comúns"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Opcións avanzadas"
+
+#, fuzzy
+#~| msgid "Advanced Options"
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Opcións avanzadas"
+
+#~ msgid "Authentication"
+#~ msgstr "Autenticación"
+
+#, fuzzy
+#~| msgid "Browse List"
+#~ msgid "Browse Settings"
+#~ msgstr "Examinar a lista"
+
+#~ msgid "MAC Address"
+#~ msgstr "Enderezo MAC"
+
+#~ msgid "MAC Address:"
+#~ msgstr "Enderezo MAC:"
+
+#~ msgid "Actions"
+#~ msgstr "Accións"
+
+#, fuzzy
+#~| msgid "Send magic package before scanning the network neighborhood"
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Enviar un paquete máxico antes de examinar a veciñanza de rede."
+
+#, fuzzy
+#~| msgid "Send magic package before mounting a share"
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Enviar un paquete máxico antes de montar a compartición."
+
+#, fuzzy
+#~| msgid "Wake-On-LAN"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Espertar na rede"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Mount Settings"
+#~ msgstr "Montaxe"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Espertar na rede"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Engadir marcadores"

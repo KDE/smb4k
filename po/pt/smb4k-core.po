@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-03-06 15:55+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -2010,13 +2010,13 @@ msgstr ""
 "migrar todas as definições que foram gravadas num determinado perfil para um "
 "diferente."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 em %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "O formato do %1 não é suportado."
@@ -2129,123 +2129,6 @@ msgstr "Este é o número de cópias que deseja imprimir."
 #, kde-format
 msgid "Print"
 msgstr "Imprimir"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, kde-format
-msgid "Custom Settings"
-msgstr "Configuração Personalizada"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, kde-format
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Definir as opções personalizadas da máquina <b>%1</b> e de todas as "
-"partilhas que oferece.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, kde-format
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Definir as opções personalizadas da partilha <b>%1</b>.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Opções Comuns"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Montar de novo esta partilha sempre"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "Suporte às Extensões de Unix do CIFS"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "Este servidor tem suporte para as extensões de Unix do CIFS"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, kde-format
-msgid "Common Mount Settings"
-msgstr "Configuração de Montagens Comum"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Opções Avançadas"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, kde-format
-msgid "Advanced Mount Settings"
-msgstr "Configuração de Montagens Avançada"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Autenticação"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr "Configuração da Navegação"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "Endereço MAC"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "Endereço MAC:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "Acções"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, kde-format
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Enviar o 'pacote mágico' antes de sondar a vizinhança da rede"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, kde-format
-msgid "Send magic packet before mounting a share"
-msgstr "Enviar o 'pacote mágico' antes de montar uma partilha"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Configuração da Activação por LAN"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, kde-format
-msgid "Mount Settings"
-msgstr "Configuração das Montagens"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Activação por LAN"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3753,6 +3636,73 @@ msgid ""
 msgstr ""
 "<qt>Indique por favor um nome de utilizador e uma senha para a partilha <b>"
 "%1</b>.</qt>"
+
+#~ msgid "Custom Settings"
+#~ msgstr "Configuração Personalizada"
+
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Definir as opções personalizadas da máquina <b>%1</b> e de todas as "
+#~ "partilhas que oferece.</p>"
+
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "<p>Definir as opções personalizadas da partilha <b>%1</b>.</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Opções Comuns"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Montar de novo esta partilha sempre"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "Suporte às Extensões de Unix do CIFS"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "Este servidor tem suporte para as extensões de Unix do CIFS"
+
+#~ msgid "Common Mount Settings"
+#~ msgstr "Configuração de Montagens Comum"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Opções Avançadas"
+
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Configuração de Montagens Avançada"
+
+#~ msgid "Authentication"
+#~ msgstr "Autenticação"
+
+#~ msgid "Browse Settings"
+#~ msgstr "Configuração da Navegação"
+
+#~ msgid "MAC Address"
+#~ msgstr "Endereço MAC"
+
+#~ msgid "MAC Address:"
+#~ msgstr "Endereço MAC:"
+
+#~ msgid "Actions"
+#~ msgstr "Acções"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Enviar o 'pacote mágico' antes de sondar a vizinhança da rede"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Enviar o 'pacote mágico' antes de montar uma partilha"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Configuração da Activação por LAN"
+
+#~ msgid "Mount Settings"
+#~ msgstr "Configuração das Montagens"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Activação por LAN"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Adicionar aos Favoritos"

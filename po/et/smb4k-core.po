@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2020-10-25 22:18+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -2004,13 +2004,13 @@ msgstr ""
 "migreerimise nõustaja aitab sul kõik seadistused, mis olid salvestatud "
 "konkreetsesse profiili, üle kanda teise profiili."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 asukohas %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "%1 vorming ei ole toetatud."
@@ -2121,135 +2121,6 @@ msgstr "Trükitavate koopiate arv."
 #, kde-format
 msgid "Print"
 msgstr "Trüki"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, fuzzy, kde-format
-#| msgid "Mounting"
-msgid "Custom Settings"
-msgstr "Ühendamine"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Kohandatud valikute määramine masinale <b>%1</b> ja kõigile jagatud "
-"ressurssidele, mida see pakub.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b>.</p>"
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Kohandatud valikute määramine jagatud ressursile <b>%1</b>.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Üldised valikud"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "See ressurss ühendatakse alati uuesti"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "CIFS-i Unixi laienduse toetus"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "See server toetab CIFS-i Unixi laiendusi"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, fuzzy, kde-format
-#| msgid "Common Options"
-msgid "Common Mount Settings"
-msgstr "Üldised valikud"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Muud valikud"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
-msgid "Advanced Mount Settings"
-msgstr "Muud valikud"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Autentimine"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, fuzzy, kde-format
-#| msgid "Browse List"
-msgid "Browse Settings"
-msgstr "Sirvimisnimekiri"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "MAC-aadress"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC-aadress:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "Toimingud"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Maagilise paketi saatmine enne võrgunaabruse uurimist"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
-msgid "Send magic packet before mounting a share"
-msgstr "Maagilise paketi saatmine enne jagatud ressursi ühendamist"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
-msgid "Wake-On-LAN Settings"
-msgstr "Wake-On-LAN"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, fuzzy, kde-format
-#| msgid "Mounting"
-msgid "Mount Settings"
-msgstr "Ühendamine"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Wake-On-LAN"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3737,6 +3608,95 @@ msgid ""
 msgstr ""
 "<qt>Palun sisesta jagatud ressursi <b>%1</b> jaoks kasutajanimi ja parool.</"
 "qt>"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Custom Settings"
+#~ msgstr "Ühendamine"
+
+#, fuzzy
+#~| msgid ""
+#~| "<p>Define custom options for host <b>%1</b> and all the shares it "
+#~| "provides.</p>"
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Kohandatud valikute määramine masinale <b>%1</b> ja kõigile jagatud "
+#~ "ressurssidele, mida see pakub.</p>"
+
+#, fuzzy
+#~| msgid "<p>Define custom options for share <b>%1</b>.</p>"
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "<p>Kohandatud valikute määramine jagatud ressursile <b>%1</b>.</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Üldised valikud"
+
+#~ msgid "Always remount this share"
+#~ msgstr "See ressurss ühendatakse alati uuesti"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "CIFS-i Unixi laienduse toetus"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "See server toetab CIFS-i Unixi laiendusi"
+
+#, fuzzy
+#~| msgid "Common Options"
+#~ msgid "Common Mount Settings"
+#~ msgstr "Üldised valikud"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Muud valikud"
+
+#, fuzzy
+#~| msgid "Advanced Options"
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Muud valikud"
+
+#~ msgid "Authentication"
+#~ msgstr "Autentimine"
+
+#, fuzzy
+#~| msgid "Browse List"
+#~ msgid "Browse Settings"
+#~ msgstr "Sirvimisnimekiri"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC-aadress"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC-aadress:"
+
+#~ msgid "Actions"
+#~ msgstr "Toimingud"
+
+#, fuzzy
+#~| msgid "Send magic package before scanning the network neighborhood"
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Maagilise paketi saatmine enne võrgunaabruse uurimist"
+
+#, fuzzy
+#~| msgid "Send magic package before mounting a share"
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Maagilise paketi saatmine enne jagatud ressursi ühendamist"
+
+#, fuzzy
+#~| msgid "Wake-On-LAN"
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Wake-On-LAN"
+
+#, fuzzy
+#~| msgid "Mounting"
+#~ msgid "Mount Settings"
+#~ msgstr "Ühendamine"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Wake-On-LAN"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Järjehoidjate lisamine"

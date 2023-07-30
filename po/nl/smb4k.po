@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-07-20 13:24+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -137,13 +137,13 @@ msgid "&Edit Bookmarks"
 msgstr "&Bladwijzers bewerken"
 
 #: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:145
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:226
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
+#: smb4k/smb4ksharesviewdockwidget.cpp:227
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "&Bladwijzer toevoegen"
 
-#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:216
+#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:214
 #, kde-format
 msgid "Mount Bookmarks"
 msgstr "Bladwijzers aankoppelen"
@@ -173,7 +173,7 @@ msgstr "Authenticatie"
 msgid "Synchronization"
 msgstr "Synchronisatie"
 
-#: smb4k/smb4kconfigdialog.cpp:138
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
 #, kde-format
 msgid "Custom Settings"
 msgstr "Algemene instellingen"
@@ -295,7 +295,7 @@ msgstr "Categorie toevoegen"
 msgid "Clear List"
 msgstr "Lijst wissen"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:422
+#: smb4k/smb4kconfigpagebookmarks.cpp:426
 #, kde-format
 msgid "New Category"
 msgstr "Nieuwe categorie"
@@ -304,6 +304,13 @@ msgstr "Nieuwe categorie"
 #, kde-format
 msgid "All fine."
 msgstr "Alles in orde."
+
+#: smb4k/smb4kconfigpagecustomsettings.cpp:193
+#, fuzzy, kde-format
+#| msgid "The item %1 was removed, because all custom settings were reset."
+msgid "The item <b>%1</b> was removed, because all custom settings were reset."
+msgstr ""
+"Het item %1 is verwijderd, omdat alle aangepaste instellingen zijn gereset."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -335,7 +342,7 @@ msgid "Common Options"
 msgstr "Algemene opties"
 
 #: smb4k/smb4kconfigpagemounting.cpp:228
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS ondersteuning van Unix-extensies"
@@ -351,7 +358,7 @@ msgid "Choose a different group"
 msgstr "Een andere groep kiezen"
 
 #: smb4k/smb4kconfigpagemounting.cpp:336
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:45
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Algemene instellingen voor aankoppelen"
@@ -367,7 +374,7 @@ msgid "Edit the additional CIFS options."
 msgstr "De extra CIFS-opties bewerken."
 
 #: smb4k/smb4kconfigpagemounting.cpp:470
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:142
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Geavanceerde instellingen voor aankoppelen"
@@ -408,7 +415,7 @@ msgstr[1] ""
 "Lees het handboek voor details.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:177
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Browse Settings"
 msgstr "Browse-instellingen"
@@ -419,7 +426,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:236
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -565,62 +571,86 @@ msgstr "Netwerkomgeving"
 msgid "Shares View"
 msgstr "Gedeelde Mappen Weergave"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:48
+#: smb4k/smb4kcustomsettingseditor.cpp:100
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+msgid ""
+"Define custom settings for host <b>%1</b> and all the shares it provides."
+msgstr ""
+"<p>Definieer eigen opties voor gedeelde map <b>%1</b> op host <b>%2</b>.</p>"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:116
+#, fuzzy, kde-format
+#| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+msgid "Define custom settings for share <b>%1</b>."
+msgstr ""
+"<p>Definieer eigen opties voor gedeelde map <b>%1</b> op host <b>%2</b>.</p>"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #, kde-format
 msgid "Always remount this share"
 msgstr "Deze share (gedeelde mappen) altijd opnieuw aankoppelen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
-#, kde-format
-msgid "Page 1"
-msgstr "Pagina 1"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 1: Mounting"
+msgstr "Aankoppelen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:85
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "Deze server ondersteunt CIFS Unix-extensies"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
-#, kde-format
-msgid "Page 2"
-msgstr "Pagina 2"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 2: Mounting"
+msgstr "Aankoppelen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 3: Mounting"
+msgstr "Aankoppelen"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
-msgid "Page 3"
-msgstr "Pagina 3"
+msgid "Page 4: Browsing"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
-msgid "Page 4"
-msgstr "Pagina 4"
+msgid "Wake-On-LAN Settings"
+msgstr "Instellingen Wake-On-LAN"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:239
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-adres:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Stuur magic-pakket alvorens de netwerkomgeving te scannen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:251
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Stuur magic-pakket alvorens een share aan te koppelen"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:263
-#, kde-format
-msgid "Page 5"
-msgstr "Pagina 5"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Page 5: Wake-On-LAN"
+msgstr "Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
 msgid "Dock Widgets"
 msgstr "Vastzetwidgets"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:40
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Aangekoppelde gedeelde mappen"
@@ -779,111 +809,111 @@ msgstr "IP Adres"
 msgid "Comment"
 msgstr "Opmerking"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:406
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:469
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:119
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:470
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Scan Netwe&rk"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:121
 #, kde-format
 msgid "&Abort"
 msgstr "&Afbreken"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #, kde-format
 msgid "&Search"
 msgstr "&Zoek"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156
-#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157
+#: smb4k/smb4ksharesviewdockwidget.cpp:232
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
-#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksharesmenu.cpp:193
+#: smb4k/smb4ksharesviewdockwidget.cpp:237
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "&Aangepaste instellingen toevoegen"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:167
-#: smb4k/smb4ksharesviewdockwidget.cpp:241
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:168
+#: smb4k/smb4ksharesviewdockwidget.cpp:242
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:174 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Dialoog voor aankoppelen &openen"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:179
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&thenticatie"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:199
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Pre&view"
 msgstr "Pre&view"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:214
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:215
 #, kde-format
 msgid "&Print File"
 msgstr "Bestand a&fdrukken"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:220
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:227
 #, kde-format
 msgid "&Mount"
 msgstr "&Koppelen"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:228
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "&Unmount"
 msgstr "&Afkoppelen"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:238
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:239
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:978
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:420
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:431
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:421
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:432
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Scan Compute&r"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:457
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Scan We&rkgroep"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
-#: smb4k/smb4ksharesviewdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:980
+#: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -918,87 +948,87 @@ msgstr "Item omlaag verplaatsen"
 msgid "Item Up"
 msgstr "Item omhoog verplaatsen"
 
-#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
 msgid "U&nmount All"
 msgstr "A&lles Afkoppelen"
 
-#: smb4k/smb4ksharesmenu.cpp:159
+#: smb4k/smb4ksharesmenu.cpp:161
 #, kde-format
 msgid "Unmount"
 msgstr "Afkoppelen"
 
-#: smb4k/smb4ksharesmenu.cpp:178
+#: smb4k/smb4ksharesmenu.cpp:180
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Bladwijzer toevoegen"
 
-#: smb4k/smb4ksharesmenu.cpp:204
+#: smb4k/smb4ksharesmenu.cpp:206
 #, kde-format
 msgid "Synchronize"
 msgstr "Synchroniseren"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:225
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Openen met Konsole"
 
-#: smb4k/smb4ksharesmenu.cpp:237
+#: smb4k/smb4ksharesmenu.cpp:239
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Openen met bestandsbeheerder"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:153
+#: smb4k/smb4ksharesviewdockwidget.cpp:154
 #, kde-format
 msgid "View Modes"
 msgstr "Weergavemodi"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:159
+#: smb4k/smb4ksharesviewdockwidget.cpp:160
 #, kde-format
 msgid "Icon View"
 msgstr "Pictogramweergave"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:165
+#: smb4k/smb4ksharesviewdockwidget.cpp:166
 #, kde-format
 msgid "List View"
 msgstr "Lijstweergave"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:246
+#: smb4k/smb4ksharesviewdockwidget.cpp:247
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&ynchronizeren"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:251
+#: smb4k/smb4ksharesviewdockwidget.cpp:252
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:264
+#: smb4k/smb4ksharesviewdockwidget.cpp:265
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Openen met Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:269
+#: smb4k/smb4ksharesviewdockwidget.cpp:270
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:271
+#: smb4k/smb4ksharesviewdockwidget.cpp:272
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Openen met b&estandsbeheerder"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:276
+#: smb4k/smb4ksharesviewdockwidget.cpp:277
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:391
+#: smb4k/smb4ksharesviewdockwidget.cpp:392
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1089,10 +1119,20 @@ msgstr "Bestandssysteem:"
 msgid "Size:"
 msgstr "Grootte:"
 
-#~ msgid "The item %1 was removed, because all custom settings were reset."
-#~ msgstr ""
-#~ "Het item %1 is verwijderd, omdat alle aangepaste instellingen zijn "
-#~ "gereset."
+#~ msgid "Page 1"
+#~ msgstr "Pagina 1"
+
+#~ msgid "Page 2"
+#~ msgstr "Pagina 2"
+
+#~ msgid "Page 3"
+#~ msgstr "Pagina 3"
+
+#~ msgid "Page 4"
+#~ msgstr "Pagina 4"
+
+#~ msgid "Page 5"
+#~ msgstr "Pagina 5"
 
 #~ msgid "Custom Options"
 #~ msgstr "Custom Opties"
@@ -1152,9 +1192,6 @@ msgstr "Grootte:"
 
 #~ msgid "Actions"
 #~ msgstr "Acties"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Instellingen Wake-On-LAN"
 
 #~ msgid "Browse Settings:"
 #~ msgstr "Browse-instellingen:"
@@ -2385,11 +2422,6 @@ msgstr "Grootte:"
 
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Bladwijzers wissen"
-
-#~ msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
-#~ msgstr ""
-#~ "<p>Definieer eigen opties voor gedeelde map <b>%1</b> op host <b>%2</b>.</"
-#~ "p>"
 
 #~ msgid "SMB Port:"
 #~ msgstr "SMB-poort:"

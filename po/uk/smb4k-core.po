@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2023-03-04 08:32+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2026,13 +2026,13 @@ msgstr ""
 "перенесення профілів ви зможете перенести усі параметри, які було збережено "
 "для певного профілю, до іншого профілю."
 
-#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:186 smb4kcustomoptions.cpp:299
+#: smb4kauthinfo.cpp:157 smb4kbookmark.cpp:180 smb4kcustomoptions.cpp:285
 #: smb4kshare.cpp:159 smb4kshare.cpp:162
 #, kde-format
 msgid "%1 on %2"
 msgstr "%1 на %2"
 
-#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:280
+#: smb4kbookmarkhandler.cpp:325 smb4kcustomoptionsmanager.cpp:273
 #, kde-format
 msgid "The format of %1 is not supported."
 msgstr "Формат %1 не підтримується."
@@ -2147,123 +2147,6 @@ msgstr "Це кількість копій, які ви бажаєте надр�
 #, kde-format
 msgid "Print"
 msgstr "Друк"
-
-#: smb4kcustomoptionsmanager_p.cpp:47
-#, kde-format
-msgid "Custom Settings"
-msgstr "Нетипові параметри"
-
-#: smb4kcustomoptionsmanager_p.cpp:70
-#, kde-format
-msgid ""
-"<p>Define custom settings for host <b>%1</b> and all the shares it provides."
-"</p>"
-msgstr ""
-"<p>Визначте нетипові параметри для вузла <b>%1</b> та всіх його спільних "
-"ресурсів.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:74
-#, kde-format
-msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-msgstr "<p>Визначте нетипові параметри спільного ресурсу <b>%1</b>.</p>"
-
-#: smb4kcustomoptionsmanager_p.cpp:169 smb4kcustomoptionsmanager_p.cpp:366
-#: smb4kcustomoptionsmanager_p.cpp:618 smb4kcustomoptionsmanager_p.cpp:710
-#: smb4kcustomoptionsmanager_p.cpp:935
-#, kde-format
-msgid "Common Options"
-msgstr "Загальні параметри"
-
-#: smb4kcustomoptionsmanager_p.cpp:172 smb4kcustomoptionsmanager_p.cpp:621
-#, kde-format
-msgid "Always remount this share"
-msgstr "Завжди повторно монтувати цей спільний ресурс"
-
-#: smb4kcustomoptionsmanager_p.cpp:218
-#, kde-format
-msgid "CIFS Unix Extensions Support"
-msgstr "Підтримка розширень UNIX CIFS"
-
-#: smb4kcustomoptionsmanager_p.cpp:221
-#, kde-format
-msgid "This server supports the CIFS Unix extensions"
-msgstr "На цьому сервері передбачено підтримку розширень UNIX CIFS"
-
-#: smb4kcustomoptionsmanager_p.cpp:300
-#, kde-format
-msgid "Common Mount Settings"
-msgstr "Загальні параметри монтування"
-
-#: smb4kcustomoptionsmanager_p.cpp:311
-#, kde-format
-msgid "Advanced Options"
-msgstr "Додаткові параметри"
-
-#: smb4kcustomoptionsmanager_p.cpp:355
-#, kde-format
-msgid "Advanced Mount Settings"
-msgstr "Додаткові параметри монтування"
-
-#: smb4kcustomoptionsmanager_p.cpp:433 smb4kcustomoptionsmanager_p.cpp:777
-#: smb4kcustomoptionsmanager_p.cpp:1002
-#, kde-format
-msgid "Authentication"
-msgstr "Розпізнавання"
-
-#: smb4kcustomoptionsmanager_p.cpp:447 smb4kcustomoptionsmanager_p.cpp:791
-#, kde-format
-msgid "Browse Settings"
-msgstr "Параметри навігації"
-
-#: smb4kcustomoptionsmanager_p.cpp:461 smb4kcustomoptionsmanager_p.cpp:805
-#: smb4kcustomoptionsmanager_p.cpp:1030
-#, kde-format
-msgid "MAC Address"
-msgstr "MAC-адреса"
-
-#: smb4kcustomoptionsmanager_p.cpp:465 smb4kcustomoptionsmanager_p.cpp:809
-#: smb4kcustomoptionsmanager_p.cpp:1034
-#, kde-format
-msgid "MAC Address:"
-msgstr "MAC-адреса:"
-
-#: smb4kcustomoptionsmanager_p.cpp:483 smb4kcustomoptionsmanager_p.cpp:827
-#: smb4kcustomoptionsmanager_p.cpp:1052
-#, kde-format
-msgid "Actions"
-msgstr "Дії"
-
-#: smb4kcustomoptionsmanager_p.cpp:487 smb4kcustomoptionsmanager_p.cpp:831
-#: smb4kcustomoptionsmanager_p.cpp:1056
-#, kde-format
-msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Надіслати контрольний пакет до сканування мережевого оточення"
-
-#: smb4kcustomoptionsmanager_p.cpp:495 smb4kcustomoptionsmanager_p.cpp:839
-#: smb4kcustomoptionsmanager_p.cpp:1064
-#, kde-format
-msgid "Send magic packet before mounting a share"
-msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
-
-#: smb4kcustomoptionsmanager_p.cpp:505 smb4kcustomoptionsmanager_p.cpp:849
-#, kde-format
-msgid "Wake-On-LAN Settings"
-msgstr "Параметри Wake-On-LAN"
-
-#: smb4kcustomoptionsmanager_p.cpp:699
-#, kde-format
-msgid "Mount Settings"
-msgstr "Параметри монтування"
-
-#: smb4kcustomoptionsmanager_p.cpp:1016
-#, kde-format
-msgid "Samba"
-msgstr "Samba"
-
-#: smb4kcustomoptionsmanager_p.cpp:1074
-#, kde-format
-msgid "Wake-On-LAN"
-msgstr "Wake-On-LAN"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3805,6 +3688,73 @@ msgid ""
 msgstr ""
 "<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до спільного "
 "ресурсу <b>%1</b>.</qt>"
+
+#~ msgid "Custom Settings"
+#~ msgstr "Нетипові параметри"
+
+#~ msgid ""
+#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
+#~ "provides.</p>"
+#~ msgstr ""
+#~ "<p>Визначте нетипові параметри для вузла <b>%1</b> та всіх його спільних "
+#~ "ресурсів.</p>"
+
+#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
+#~ msgstr "<p>Визначте нетипові параметри спільного ресурсу <b>%1</b>.</p>"
+
+#~ msgid "Common Options"
+#~ msgstr "Загальні параметри"
+
+#~ msgid "Always remount this share"
+#~ msgstr "Завжди повторно монтувати цей спільний ресурс"
+
+#~ msgid "CIFS Unix Extensions Support"
+#~ msgstr "Підтримка розширень UNIX CIFS"
+
+#~ msgid "This server supports the CIFS Unix extensions"
+#~ msgstr "На цьому сервері передбачено підтримку розширень UNIX CIFS"
+
+#~ msgid "Common Mount Settings"
+#~ msgstr "Загальні параметри монтування"
+
+#~ msgid "Advanced Options"
+#~ msgstr "Додаткові параметри"
+
+#~ msgid "Advanced Mount Settings"
+#~ msgstr "Додаткові параметри монтування"
+
+#~ msgid "Authentication"
+#~ msgstr "Розпізнавання"
+
+#~ msgid "Browse Settings"
+#~ msgstr "Параметри навігації"
+
+#~ msgid "MAC Address"
+#~ msgstr "MAC-адреса"
+
+#~ msgid "MAC Address:"
+#~ msgstr "MAC-адреса:"
+
+#~ msgid "Actions"
+#~ msgstr "Дії"
+
+#~ msgid "Send magic packet before scanning the network neighborhood"
+#~ msgstr "Надіслати контрольний пакет до сканування мережевого оточення"
+
+#~ msgid "Send magic packet before mounting a share"
+#~ msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
+
+#~ msgid "Wake-On-LAN Settings"
+#~ msgstr "Параметри Wake-On-LAN"
+
+#~ msgid "Mount Settings"
+#~ msgstr "Параметри монтування"
+
+#~ msgid "Samba"
+#~ msgstr "Samba"
+
+#~ msgid "Wake-On-LAN"
+#~ msgstr "Wake-On-LAN"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Додати закладки"

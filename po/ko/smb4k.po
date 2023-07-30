@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-20 00:49+0000\n"
+"POT-Creation-Date: 2023-07-30 00:46+0000\n"
 "PO-Revision-Date: 2022-07-13 11:15+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -131,13 +131,13 @@ msgid "&Edit Bookmarks"
 msgstr "책갈피 편집(&E)"
 
 #: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:145
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:150
-#: smb4k/smb4ksharesviewdockwidget.cpp:226
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
+#: smb4k/smb4ksharesviewdockwidget.cpp:227
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "책갈피 추가(&B)"
 
-#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:216
+#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:214
 #, fuzzy, kde-format
 #| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"
@@ -168,7 +168,7 @@ msgstr "인증"
 msgid "Synchronization"
 msgstr "동기화"
 
-#: smb4k/smb4kconfigdialog.cpp:138
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
 #, fuzzy, kde-format
 #| msgid "Common Settings"
 msgid "Custom Settings"
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "목록 비우기"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:422
+#: smb4k/smb4kconfigpagebookmarks.cpp:426
 #, kde-format
 msgid "New Category"
 msgstr ""
@@ -297,6 +297,12 @@ msgstr ""
 #, kde-format
 msgid "All fine."
 msgstr "모두 정상적입니다."
+
+#: smb4k/smb4kconfigpagecustomsettings.cpp:193
+#, fuzzy, kde-format
+#| msgid "The item %1 was removed, because all custom options were reset."
+msgid "The item <b>%1</b> was removed, because all custom settings were reset."
+msgstr "모든 사용자 정의 옵션이 초기화되었으므로 항목 %1을(를) 삭제했습니다."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -328,7 +334,7 @@ msgid "Common Options"
 msgstr "공통 옵션"
 
 #: smb4k/smb4kconfigpagemounting.cpp:228
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:82
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFS 유닉스 확장 지원"
@@ -344,7 +350,7 @@ msgid "Choose a different group"
 msgstr "다른 그룹 선택"
 
 #: smb4k/smb4kconfigpagemounting.cpp:336
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:45
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "공통 마운트 설정"
@@ -360,7 +366,7 @@ msgid "Edit the additional CIFS options."
 msgstr "추가 CIFS 옵션을 편집합니다."
 
 #: smb4k/smb4kconfigpagemounting.cpp:470
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:142
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "고급 마운트 설정"
@@ -398,7 +404,7 @@ msgstr[0] ""
 "조하십시오.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:177
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
 #, kde-format
 msgid "Browse Settings"
 msgstr "탐색 설정"
@@ -409,7 +415,6 @@ msgid "Samba"
 msgstr "Samba"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:196
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:236
 #, kde-format
 msgid "Wake-On-LAN"
 msgstr "Wake-On-LAN"
@@ -557,64 +562,84 @@ msgstr "네트워크 환경"
 msgid "Shares View"
 msgstr "공유 보기"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:48
+#: smb4k/smb4kcustomsettingseditor.cpp:100
+#, kde-format
+msgid ""
+"Define custom settings for host <b>%1</b> and all the shares it provides."
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditor.cpp:116
+#, kde-format
+msgid "Define custom settings for share <b>%1</b>."
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #, kde-format
 msgid "Always remount this share"
 msgstr "항상 이 공유 다시 마운트"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:80
-#, kde-format
-msgid "Page 1"
-msgstr ""
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:78
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 1: Mounting"
+msgstr "마운트"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:85
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
 msgstr "이 서버에서 CIFS 유닉스 확장을 지원합니다"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:140
-#, kde-format
-msgid "Page 2"
-msgstr ""
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:138
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 2: Mounting"
+msgstr "마운트"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:175
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:173
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 3: Mounting"
+msgstr "마운트"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
-msgid "Page 3"
+msgid "Page 4: Browsing"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
-msgid "Page 4"
-msgstr ""
+msgid "Wake-On-LAN Settings"
+msgstr "Wake-On-LAN 설정"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:239
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC 주소:"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:247
 #, fuzzy, kde-format
 #| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "네트워크 환경을 검색하기 전에 매직 패킷 보내기"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:251
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, fuzzy, kde-format
 #| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "공유를 마운트하기 전에 매직 패킷 보내기"
 
-#: smb4k/smb4kcustomsettingseditorwidget.cpp:263
-#, kde-format
-msgid "Page 5"
-msgstr ""
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:261
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Page 5: Wake-On-LAN"
+msgstr "Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
 msgid "Dock Widgets"
 msgstr "독 위젯"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:40
 #, kde-format
 msgid "Mounted Shares"
 msgstr "마운트된 공유"
@@ -772,112 +797,112 @@ msgstr "IP 주소"
 msgid "Comment"
 msgstr "설명"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:118
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:406
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:469
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:119
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:470
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "네트워크 검색(&K)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:121
 #, kde-format
 msgid "&Abort"
 msgstr "중지(&A)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:132
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
 #, kde-format
 msgid "&Search"
 msgstr "검색(&S)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:156
-#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:157
+#: smb4k/smb4ksharesviewdockwidget.cpp:232
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
-#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksharesmenu.cpp:193
+#: smb4k/smb4ksharesviewdockwidget.cpp:237
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
 msgid "Add &Custom Settings"
 msgstr "사용자 정의 옵션(&C)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:167
-#: smb4k/smb4ksharesviewdockwidget.cpp:241
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:168
+#: smb4k/smb4ksharesviewdockwidget.cpp:242
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:174 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "마운트 대화 상자 열기(&O)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:179
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
 #, kde-format
 msgid "Ctrl+O"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:192
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
 msgid "Au&thentication"
 msgstr "인증(&T)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:199
 #, kde-format
 msgid "Ctrl+T"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
 msgid "Pre&view"
 msgstr "미리 보기(&V)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:209
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
 msgid "Ctrl+V"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:214
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:215
 #, kde-format
 msgid "&Print File"
 msgstr "파일 인쇄(&P)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:220
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+P"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:226
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:227
 #, kde-format
 msgid "&Mount"
 msgstr "마운트(&M)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:227
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:228
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "&Unmount"
 msgstr "마운트 해제(&U)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:238
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:239
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:978
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:420
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:431
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:421
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:432
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "컴퓨터 검색(&R)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:456
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:457
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "작업 그룹 검색(&R)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
-#: smb4k/smb4ksharesviewdockwidget.cpp:203
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:980
+#: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
 msgstr ""
@@ -912,87 +937,87 @@ msgstr "항목 아래로"
 msgid "Item Up"
 msgstr "항목 위로"
 
-#: smb4k/smb4ksharesmenu.cpp:53 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
 msgid "U&nmount All"
 msgstr "모두 마운트 해제(&N)"
 
-#: smb4k/smb4ksharesmenu.cpp:159
+#: smb4k/smb4ksharesmenu.cpp:161
 #, kde-format
 msgid "Unmount"
 msgstr "마운트 해제"
 
-#: smb4k/smb4ksharesmenu.cpp:178
+#: smb4k/smb4ksharesmenu.cpp:180
 #, kde-format
 msgid "Add Bookmark"
 msgstr "책갈피 추가"
 
-#: smb4k/smb4ksharesmenu.cpp:204
+#: smb4k/smb4ksharesmenu.cpp:206
 #, kde-format
 msgid "Synchronize"
 msgstr "동기화"
 
-#: smb4k/smb4ksharesmenu.cpp:223
+#: smb4k/smb4ksharesmenu.cpp:225
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Konsole로 열기"
 
-#: smb4k/smb4ksharesmenu.cpp:237
+#: smb4k/smb4ksharesmenu.cpp:239
 #, kde-format
 msgid "Open with File Manager"
 msgstr "파일 관리자로 열기"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:153
+#: smb4k/smb4ksharesviewdockwidget.cpp:154
 #, kde-format
 msgid "View Modes"
 msgstr "보기 모드"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:159
+#: smb4k/smb4ksharesviewdockwidget.cpp:160
 #, kde-format
 msgid "Icon View"
 msgstr "아이콘 보기"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:165
+#: smb4k/smb4ksharesviewdockwidget.cpp:166
 #, kde-format
 msgid "List View"
 msgstr "목록 보기"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Ctrl+N"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:246
+#: smb4k/smb4ksharesviewdockwidget.cpp:247
 #, kde-format
 msgid "S&ynchronize"
 msgstr "동기화(&Y)"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:251
+#: smb4k/smb4ksharesviewdockwidget.cpp:252
 #, kde-format
 msgid "Ctrl+Y"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:264
+#: smb4k/smb4ksharesviewdockwidget.cpp:265
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Konsole로 열기(&L)"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:269
+#: smb4k/smb4ksharesviewdockwidget.cpp:270
 #, kde-format
 msgid "Ctrl+L"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:271
+#: smb4k/smb4ksharesviewdockwidget.cpp:272
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "파일 관리자로 열기(&I)"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:276
+#: smb4k/smb4ksharesviewdockwidget.cpp:277
 #, kde-format
 msgid "Ctrl+I"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:391
+#: smb4k/smb4ksharesviewdockwidget.cpp:392
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1083,12 +1108,6 @@ msgstr "파일 시스템:"
 msgid "Size:"
 msgstr "크기:"
 
-#, fuzzy
-#~| msgid "The item %1 was removed, because all custom options were reset."
-#~ msgid "The item %1 was removed, because all custom settings were reset."
-#~ msgstr ""
-#~ "모든 사용자 정의 옵션이 초기화되었으므로 항목 %1을(를) 삭제했습니다."
-
 #~ msgid "Custom Options"
 #~ msgstr "사용자 정의 옵션"
 
@@ -1144,9 +1163,6 @@ msgstr "크기:"
 
 #~ msgid "Actions"
 #~ msgstr "동작"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Wake-On-LAN 설정"
 
 #~ msgid "Browse Settings:"
 #~ msgstr "탐색 설정:"
