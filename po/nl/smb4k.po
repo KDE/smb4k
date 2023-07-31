@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2023-07-20 13:24+0200\n"
+"PO-Revision-Date: 2023-07-30 11:32+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -306,11 +306,11 @@ msgid "All fine."
 msgstr "Alles in orde."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
-"Het item %1 is verwijderd, omdat alle aangepaste instellingen zijn gereset."
+"Het item <b>%1</b> is verwijderd, omdat alle aangepaste instellingen zijn "
+"gereset."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -572,19 +572,17 @@ msgid "Shares View"
 msgstr "Gedeelde Mappen Weergave"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:100
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
-"<p>Definieer eigen opties voor gedeelde map <b>%1</b> op host <b>%2</b>.</p>"
+"Definieer aangepaste instellingen voor host <b>%1</b> en alle gedeelde "
+"mappen die het levert."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:116
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
-"<p>Definieer eigen opties voor gedeelde map <b>%1</b> op host <b>%2</b>.</p>"
+msgstr "Definieer aangepaste instellingen voor gedeelde map <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #, kde-format
@@ -592,10 +590,9 @@ msgid "Always remount this share"
 msgstr "Deze share (gedeelde mappen) altijd opnieuw aankoppelen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Aankoppelen"
+msgstr "Pagina 1: aankoppelen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -603,21 +600,19 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Deze server ondersteunt CIFS Unix-extensies"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Aankoppelen"
+msgstr "Pagina 2: aankoppelen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Aankoppelen"
+msgstr "Pagina 3: aankoppelen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Pagina 4: bladeren"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
@@ -640,10 +635,9 @@ msgid "Send magic packet before mounting a share"
 msgstr "Stuur magic-pakket alvorens een share aan te koppelen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr "Pagina 5: Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format

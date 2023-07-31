@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2023-07-21 20:51+0100\n"
+"PO-Revision-Date: 2023-07-30 07:59+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -299,6 +299,7 @@ msgstr "Ĉio bone."
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
+"La ero <b>%1</b> estis forigita, ĉar ĉiuj propraj agordoj estis restarigitaj."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -564,50 +565,48 @@ msgstr "Kundividas Vidon"
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
+"Difini proprajn agordojn por gastiganto <b>%1</b> kaj ĉiujn kundividaĵojn "
+"kiujn ĝi provizas."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:116
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "Difini proprajn agordojn por kundividaĵo <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #, kde-format
 msgid "Always remount this share"
-msgstr ""
+msgstr "Ĉiam remunti ĉi tiun kundividaĵon"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Muntado"
+msgstr "Paĝo 1: Muntado"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
 msgid "This server supports the CIFS Unix extensions"
-msgstr ""
+msgstr "Tiu servilo subtenas la CIFS Uniks-etendojn"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Muntado"
+msgstr "Paĝo 2: Muntado"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Muntado"
+msgstr "Paĝo 3: Muntado"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Paĝo 4: Foliumado"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Wake-On-LAN"
+msgstr "Agordoj pri Wake-On-LAN"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #, kde-format
@@ -617,18 +616,17 @@ msgstr "MAC-Adreso:"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:247
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr ""
+msgstr "Sendi magian paketon antaŭ ol skani la retan najbarecon"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #, kde-format
 msgid "Send magic packet before mounting a share"
-msgstr ""
+msgstr "Sendi magian paketon antaŭ ol munti kundividaĵon"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr "Paĝo 5: Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format

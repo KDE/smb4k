@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2023-07-20 06:50+0300\n"
+"PO-Revision-Date: 2023-07-30 08:44+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -303,10 +303,10 @@ msgid "All fine."
 msgstr "Усе гаразд."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
-msgstr "Запис %1 було вилучено, оскільки було скинуто усі нетипові параметри."
+msgstr ""
+"Запис <b>%1</b> було вилучено, оскільки було скинуто усі нетипові параметри."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -580,11 +580,13 @@ msgstr "Перегляд спільних ресурсів"
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
+"Визначте нетипові параметри для вузла <b>%1</b> та всіх його спільних "
+"ресурсів."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:116
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "Визначте нетипові параметри спільного ресурсу <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #, kde-format
@@ -592,10 +594,9 @@ msgid "Always remount this share"
 msgstr "Завжди повторно монтувати цей спільний ресурс"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Монтування"
+msgstr "Сторінка 1. Монтування"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -603,21 +604,19 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "На цьому сервері передбачено підтримку розширень UNIX CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Монтування"
+msgstr "Сторінка 2. Монтування"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Монтування"
+msgstr "Сторінка 3. Монтування"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Сторінка 4. Навігація"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
@@ -640,10 +639,9 @@ msgid "Send magic packet before mounting a share"
 msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr "Сторінка 5. Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format

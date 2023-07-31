@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2023-07-20 06:32+0200\n"
+"PO-Revision-Date: 2023-07-30 08:26+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
 "X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
@@ -296,11 +296,10 @@ msgid "All fine."
 msgstr "Vse dobro."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
-"Postavka %1 je bila odstranjena, ker so bile ponovno nastavljene vse "
+"Postavka <b>%1</b> je bila odstranjena, ker so bile ponovno nastavljene vse "
 "nastavitve po meri."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
@@ -573,22 +572,23 @@ msgstr "Pogled delov diskov"
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
+"Določite nastavitve po meri za gostitelja <b>%1</b> in vse vire v skupni "
+"rab, ki jih ponuja."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:116
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "Določite nastavitve po meri za skupni vir <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #, kde-format
 msgid "Always remount this share"
-msgstr "Vedno ponovno priklopi ta del"
+msgstr "Vedno ponovno priklopi ta skupni vir"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Priklapljanje"
+msgstr "Stran 1: Priklapljanje"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -596,21 +596,19 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Ta strežnik podpira razširitve CIFS Unix"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Priklapljanje"
+msgstr "Stran 2: Priklapljanje"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Priklapljanje"
+msgstr "Stran 3: Priklapljanje"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Stran 4: Brskanje"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #, kde-format
@@ -633,10 +631,9 @@ msgid "Send magic packet before mounting a share"
 msgstr "Pošlji čarobni paket pred priklopom skupnega diska"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr "Stran 5: Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
