@@ -192,7 +192,7 @@ void Smb4KConfigPageBookmarks::loadBookmarks()
                 QTreeWidgetItem *bookmarkItem = nullptr;
 
                 if (categoryItem) {
-                    bookmarkItem = new QTreeWidgetItem(categoryItem, 0);
+                    bookmarkItem = new QTreeWidgetItem(categoryItem);
                 } else {
                     bookmarkItem = new QTreeWidgetItem(m_treeWidget);
                 }
@@ -339,6 +339,45 @@ void Smb4KConfigPageBookmarks::endEditingCategoryItem(QTreeWidgetItem *item)
 
         m_categoryEdit->addItem(item->text(0));
         m_categoryEdit->completionObject()->addItem(item->text(0));
+
+        Q_EMIT bookmarksModified();
+    }
+}
+
+void Smb4KConfigPageBookmarks::checkValues()
+{
+    if (m_treeWidget->currentItem() && m_treeWidget->currentItem()->data(0, TypeRole).toInt() == BookmarkType && m_editorWidget->isVisible()) {
+        Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
+
+        if (bookmark.label() != m_labelEdit->text()) {
+            m_bookmarksChanged = true;
+            Q_EMIT bookmarksModified();
+            return;
+        }
+
+        if (bookmark.categoryName() != m_categoryEdit->currentText()) {
+            m_bookmarksChanged = true;
+            Q_EMIT bookmarksModified();
+            return;
+        }
+
+        if (bookmark.userName() != m_userNameEdit->text()) {
+            m_bookmarksChanged = true;
+            Q_EMIT bookmarksModified();
+            return;
+        }
+
+        if (bookmark.workgroupName() != m_workgroupEdit->text()) {
+            m_bookmarksChanged = true;
+            Q_EMIT bookmarksModified();
+            return;
+        }
+
+        if (bookmark.hostIpAddress() != m_ipAddressEdit->text()) {
+            m_bookmarksChanged = true;
+            Q_EMIT bookmarksModified();
+            return;
+        }
 
         Q_EMIT bookmarksModified();
     }
@@ -533,11 +572,8 @@ void Smb4KConfigPageBookmarks::slotItemDoubleClicked(QTreeWidgetItem *item, int 
 
 void Smb4KConfigPageBookmarks::slotLabelChanged(const QString &text)
 {
-    if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
-        Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
-        m_bookmarksChanged = (bookmark.label() != text);
-        Q_EMIT bookmarksModified();
-    }
+    Q_UNUSED(text);
+    checkValues();
 }
 
 void Smb4KConfigPageBookmarks::slotLabelEdited()
@@ -559,13 +595,8 @@ void Smb4KConfigPageBookmarks::slotLabelEdited()
 
 void Smb4KConfigPageBookmarks::slotCategoryChanged(const QString &text)
 {
-    if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
-        if (m_treeWidget->currentItem()->data(0, TypeRole).toInt() == BookmarkType) {
-            Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
-            m_bookmarksChanged = (bookmark.categoryName() != text);
-            Q_EMIT bookmarksModified();
-        }
-    }
+    Q_UNUSED(text);
+    checkValues();
 }
 
 void Smb4KConfigPageBookmarks::slotCategoryEdited()
@@ -600,7 +631,6 @@ void Smb4KConfigPageBookmarks::slotCategoryEdited()
                 QTreeWidgetItem *parentItem = m_treeWidget->currentItem()->parent();
 
                 parentItem->removeChild(itemToMove);
-
                 categoryItem->addChild(itemToMove);
             }
 
@@ -615,11 +645,8 @@ void Smb4KConfigPageBookmarks::slotCategoryEdited()
 
 void Smb4KConfigPageBookmarks::slotUserNameChanged(const QString &text)
 {
-    if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
-        Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
-        m_bookmarksChanged = (bookmark.userName() != text);
-        Q_EMIT bookmarksModified();
-    }
+    Q_UNUSED(text);
+    checkValues();
 }
 
 void Smb4KConfigPageBookmarks::slotUserNameEdited()
@@ -641,11 +668,8 @@ void Smb4KConfigPageBookmarks::slotUserNameEdited()
 
 void Smb4KConfigPageBookmarks::slotWorkgroupChanged(const QString &text)
 {
-    if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
-        Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
-        m_bookmarksChanged = (bookmark.workgroupName() != text);
-        Q_EMIT bookmarksModified();
-    }
+    Q_UNUSED(text);
+    checkValues();
 }
 
 void Smb4KConfigPageBookmarks::slotWorkgroupEdited()
@@ -667,11 +691,8 @@ void Smb4KConfigPageBookmarks::slotWorkgroupEdited()
 
 void Smb4KConfigPageBookmarks::slotIpAddressChanged(const QString &text)
 {
-    if (m_treeWidget->currentItem() && m_editorWidget->isVisible()) {
-        Smb4KBookmark bookmark = m_treeWidget->currentItem()->data(0, DataRole).value<Smb4KBookmark>();
-        m_bookmarksChanged = (bookmark.hostIpAddress() != text);
-        Q_EMIT bookmarksModified();
-    }
+    Q_UNUSED(text);
+    checkValues();
 }
 
 void Smb4KConfigPageBookmarks::slotIpAddressEdited()

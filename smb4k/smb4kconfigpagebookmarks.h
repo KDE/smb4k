@@ -108,6 +108,7 @@ protected Q_SLOTS:
     void sortItems();
 
 private:
+    void checkValues();
     enum Role { TypeRole = Qt::UserRole, DataRole = Qt::UserRole + 1 };
     enum Type { CategoryType = Qt::UserRole + 100, BookmarkType = Qt::UserRole + 101 };
     QTreeWidgetItem *addCategoryItem(const QString &text);
