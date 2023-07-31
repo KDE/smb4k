@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2023-07-20 12:42+0300\n"
+"PO-Revision-Date: 2023-07-30 21:43+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -301,10 +301,9 @@ msgid "All fine."
 msgstr "Her şey yolunda."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
-msgstr "%1 ögesi kaldırıldı; çünkü tüm özel ayarlar sıfırlanmıştı."
+msgstr "<b>%1</b> ögesi kaldırıldı; çünkü tüm özel ayarlar sıfırlanmıştı."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -569,11 +568,12 @@ msgstr "Paylaşım Görünümü"
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
+"<b>%1</b> makinesi ve sağladığı tüm paylaşımlar için özel ayarlar tanımlayın."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:116
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "<b>%1</b> paylaşımı için özel ayarlar tanımlayın."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #, kde-format
@@ -581,10 +581,9 @@ msgid "Always remount this share"
 msgstr "Bu paylaşımı her zaman yeniden bağla"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Bağlama"
+msgstr "Sayfa 1: Bağlama"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -592,27 +591,24 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Bu sunucu, CIFS Unix uzantılarını destekler"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Bağlama"
+msgstr "Sayfa 2: Bağlama"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Bağlama"
+msgstr "Sayfa 3: Bağlama"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Sayfa 4: Tarama"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Ağdan Uyan"
+msgstr "Ağdan Uyan Ayarları"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #, kde-format
@@ -630,10 +626,9 @@ msgid "Send magic packet before mounting a share"
 msgstr "Bir paylaşımı bağlamadan önce sihirli paket gönder"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Ağdan Uyan"
+msgstr "Sayfa 5: Ağdan Uyan"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
