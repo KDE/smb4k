@@ -263,6 +263,154 @@ void Smb4KCustomSettingsEditorWidget::setupView()
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 void Smb4KCustomSettingsEditorWidget::setupView()
 {
+    QGroupBox *tab1 = new QGroupBox(i18n("Mount Settings"), this);
+    QGridLayout *tab1Layout = new QGridLayout(tab1);
+
+    m_alwaysRemountShare = new QCheckBox(i18n("Always remount this share"), tab1);
+    m_alwaysRemountShare->setEnabled(false);
+
+    connect(m_alwaysRemountShare, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotAlwaysRemoutShareToggled);
+
+    m_useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), tab1);
+    m_userId = new KComboBox(tab1);
+
+    QList<KUser> allUsers = KUser::allUsers();
+
+    for (const KUser &user : qAsConst(allUsers)) {
+        m_userId->addItem(user.loginName() + QStringLiteral(" (") + user.userId().toString() + QStringLiteral(")"), user.userId().toString());
+    }
+
+    connect(m_useUserId, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseUserIdToggled);
+    connect(m_userId, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotUserIdChanged);
+
+    m_useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), tab1);
+    m_groupId = new KComboBox(tab1);
+
+    QList<KUserGroup> allGroups = KUserGroup::allGroups();
+
+    for (const KUserGroup &group : qAsConst(allGroups)) {
+        m_groupId->addItem(group.name() + QStringLiteral(" (") + group.groupId().toString() + QStringLiteral(")"), group.groupId().toString());
+    }
+
+    connect(m_useGroupId, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseGroupIdToggled);
+    connect(m_groupId, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotGroupIdChanged);
+
+    m_useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), tab1);
+    m_fileMode = new KLineEdit(tab1);
+    m_fileMode->setClearButtonEnabled(true);
+    m_fileMode->setAlignment(Qt::AlignRight);
+
+    connect(m_useFileMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseFileModeToggled);
+    connect(m_fileMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotFileModeChanged);
+
+    m_useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), tab1);
+    m_directoryMode = new KLineEdit(tab1);
+    m_directoryMode->setClearButtonEnabled(true);
+    m_directoryMode->setAlignment(Qt::AlignRight);
+
+    connect(m_useDirectoryMode, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseDirectoryModeToggled);
+    connect(m_directoryMode, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotDirectoryModeChanged);
+
+    tab1Layout->addWidget(m_alwaysRemountShare, 0, 0, 1, 2);
+    tab1Layout->addWidget(m_useUserId, 1, 0);
+    tab1Layout->addWidget(m_userId, 1, 1);
+    tab1Layout->addWidget(m_useGroupId, 2, 0);
+    tab1Layout->addWidget(m_groupId, 2, 1);
+    tab1Layout->addWidget(m_useFileMode, 3, 0);
+    tab1Layout->addWidget(m_fileMode, 3, 1);
+    tab1Layout->addWidget(m_useDirectoryMode, 4, 0);
+    tab1Layout->addWidget(m_directoryMode, 4, 1);
+    tab1Layout->setRowStretch(5, 100);
+
+    addTab(tab1, i18n("Page 1: Mounting"));
+
+    QGroupBox *tab2 = new QGroupBox(i18n("Browse Settings"), this);
+    QGridLayout *tab2Layout = new QGridLayout(tab2);
+
+    m_useClientProtocolVersions = new QCheckBox(Smb4KSettings::self()->useClientProtocolVersionsItem()->label(), tab2);
+
+    m_minimalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), tab2);
+    m_minimalClientProtocolVersionLabel->setIndent(25);
+    m_minimalClientProtocolVersionLabel->setEnabled(false);
+    m_minimalClientProtocolVersion = new KComboBox(tab2);
+    m_minimalClientProtocolVersion->setEnabled(false);
+    m_minimalClientProtocolVersionLabel->setBuddy(m_minimalClientProtocolVersion);
+
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalClientProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
+
+    for (int i = 0; i < minimalClientProtocolVersionChoices.size(); ++i) {
+        m_minimalClientProtocolVersion->addItem(minimalClientProtocolVersionChoices.at(i).label, i);
+    }
+
+    m_maximalClientProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), tab2);
+    m_maximalClientProtocolVersionLabel->setIndent(25);
+    m_maximalClientProtocolVersionLabel->setEnabled(false);
+    m_maximalClientProtocolVersion = new KComboBox(tab2);
+    m_maximalClientProtocolVersion->setEnabled(false);
+    m_maximalClientProtocolVersionLabel->setBuddy(m_maximalClientProtocolVersion);
+
+    QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalClientProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
+
+    for (int i = 0; i < maximalClientProtocolVersionChoices.size(); ++i) {
+        m_maximalClientProtocolVersion->addItem(maximalClientProtocolVersionChoices.at(i).label, i);
+    }
+
+    connect(m_useClientProtocolVersions, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseClientProtocolVersionsToggled);
+    connect(m_minimalClientProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotMinimalClientProtocolVersionChanged);
+    connect(m_maximalClientProtocolVersion, &KComboBox::currentIndexChanged, this, &Smb4KCustomSettingsEditorWidget::slotMaximalClientProtocolVersionChanged);
+
+    m_useRemoteSmbPort = new QCheckBox(Smb4KSettings::self()->useRemoteSmbPortItem()->label(), tab2);
+    m_remoteSmbPort = new QSpinBox(tab2);
+    m_remoteSmbPort->setMinimum(Smb4KSettings::self()->remoteSmbPortItem()->minValue().toInt());
+    m_remoteSmbPort->setMaximum(Smb4KSettings::self()->remoteSmbPortItem()->maxValue().toInt());
+
+    connect(m_useRemoteSmbPort, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseClientProtocolVersionsToggled);
+    connect(m_remoteSmbPort, &QSpinBox::valueChanged, this, &Smb4KCustomSettingsEditorWidget::slotRemoteSmbPortChanged);
+
+    m_useKerberos = new QCheckBox(Smb4KSettings::self()->useKerberosItem()->label(), tab2);
+
+    connect(m_useKerberos, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotUseKerberosToggled);
+
+    tab2Layout->addWidget(m_useClientProtocolVersions, 0, 0, 1, 2);
+    tab2Layout->addWidget(m_minimalClientProtocolVersionLabel, 1, 0);
+    tab2Layout->addWidget(m_minimalClientProtocolVersion, 1, 1);
+    tab2Layout->addWidget(m_maximalClientProtocolVersionLabel, 2, 0);
+    tab2Layout->addWidget(m_maximalClientProtocolVersion, 2, 1);
+    tab2Layout->addWidget(m_useRemoteSmbPort, 3, 0);
+    tab2Layout->addWidget(m_remoteSmbPort, 3, 1);
+    tab2Layout->addWidget(m_useKerberos, 4, 0, 1, 2);
+    tab2Layout->setRowStretch(5, 100);
+
+    addTab(tab2, i18n("Page 2: Browsing"));
+
+    QGroupBox *tab3 = new QGroupBox(i18n("Wake-On-LAN Settings"), this);
+    QGridLayout *tab3Layout = new QGridLayout(tab3);
+
+    m_macAddressLabel = new QLabel(i18n("MAC Address:"), tab3);
+    m_macAddressLabel->setEnabled(false);
+    m_macAddress = new KLineEdit(tab3);
+    m_macAddress->setClearButtonEnabled(true);
+    m_macAddress->setInputMask(QStringLiteral("HH:HH:HH:HH:HH:HH;_")); // MAC address, see QLineEdit doc
+    m_macAddress->setEnabled(false);
+    m_macAddressLabel->setBuddy(m_macAddress);
+
+    connect(m_macAddress, &KLineEdit::textChanged, this, &Smb4KCustomSettingsEditorWidget::slotMacAddressChanged);
+
+    m_sendPacketBeforeScan = new QCheckBox(i18n("Send magic packet before scanning the network neighborhood"), tab3);
+    m_sendPacketBeforeScan->setEnabled(false);
+    m_sendPacketBeforeMount = new QCheckBox(i18n("Send magic packet before mounting a share"), tab3);
+    m_sendPacketBeforeMount->setEnabled(false);
+
+    connect(m_sendPacketBeforeScan, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeScanToggled);
+    connect(m_sendPacketBeforeMount, &QCheckBox::toggled, this, &Smb4KCustomSettingsEditorWidget::slotSendPacketBeforeMountToggled);
+
+    tab3Layout->addWidget(m_macAddressLabel, 0, 0);
+    tab3Layout->addWidget(m_macAddress, 0, 1);
+    tab3Layout->addWidget(m_sendPacketBeforeScan, 1, 0, 1, 2);
+    tab3Layout->addWidget(m_sendPacketBeforeMount, 2, 0, 1, 2);
+    tab3Layout->setRowStretch(3, 100);
+
+    addTab(tab3, i18n("Page 3: Wake-On-LAN"));
 }
 #else
 void Smb4KCustomSettingsEditorWidget::setupView()
