@@ -4,13 +4,13 @@
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
 # Stefan Asserhäll <stefan.asserhall@bredband.net>, 2009, 2010.
-# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2022-05-21 12:00+0200\n"
+"PO-Revision-Date: 2023-07-25 13:57+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -412,24 +412,20 @@ msgstr ""
 #: smb4k.kcfg:166
 #, kde-format
 msgid "Set the SMB port to:"
-msgstr "Ställ in SMB-porten till:"
+msgstr "Ställ in SMB-port till:"
 
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:167 smb4k.kcfg:171
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the port that is used for connecting to remote servers with the "
-#| "client programs net, smbclient and smbtree. The default value is 139 "
-#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+#, kde-format
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"Detta är porten som används för att ansluta till fjärrservrar med "
-"klientprogrammen net, smbclient och smbtree. Standardvärdet är 139 "
-"(NetBIOS). Med FreeBSD används inställningen också vid montering."
+"Detta är porten som används för att ansluta till fjärrservrar. "
+"Standardvärdet är 139 (NetBIOS). Med FreeBSD används inställningen också vid "
+"montering."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:177
@@ -1040,7 +1036,7 @@ msgstr ""
 #: smb4k.kcfg:380
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "Bevara åtkomstkontrollistor (ACL:er)"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:381
@@ -1051,66 +1047,58 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"Bevara åtkomstkontrollistor. Alternativet gör att rsync uppdaterar målets "
+"ACL:er att vara likadana som källans ACL:er. Alternativet medför också --"
+"perms. Käll- och målsystemen måste ha kompatibla ACL-poster för att "
+"alternativet ska fungera på rätt sätt."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:385
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "Bevara tidsstämpeln"
+msgstr "Bevara utökade attribut"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:386
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"Bevara grupptillhörighet (-g, --group). Målfilens grupptillhörighet kommer "
-"att vara samma som källfilens."
+"Bevara utökade attribut. Alternativet gör att rsync uppdaterar målets "
+"utökade attribute så att de är likadana som källans."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:390
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "Bevara tidsstämpeln"
+msgstr "Bevara åtkomsttider"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:391
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"Bevara grupptillhörighet (-g, --group). Målfilens grupptillhörighet kommer "
-"att vara samma som källfilens."
+"Bevara åtkomsttider. Det talar om för rsync att ställa in målfilernas "
+"åtkomsttider (användningstider) till samma värde som källfilerna."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:395
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "Bevara tidsstämpeln"
+msgstr "Bevara skapad tid"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:396
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"Bevara grupptillhörighet (-g, --group). Målfilens grupptillhörighet kommer "
-"att vara samma som källfilens."
+"Bevara skapad tid. Det talar om för rsync att ställa in målfilernas skapad "
+"tid (hur nya de är) till samma värde som källfilerna."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:400
@@ -1600,10 +1588,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:563
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "Anpassade filterregler:"
+msgstr "Egna filterregler"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:568
@@ -1999,16 +1986,17 @@ msgstr "Filen %1 kunde inte skrivas ut på %2"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"Zeroconf-demonen kör inte. Inga servrar upptäcks med användning av DNS-SD."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "Zeroconf-stöd är inte tillgängligt i den här versionen av KDE."
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "Ett okänt fel uppstod med Zeroconf."
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2117,16 +2105,13 @@ msgid "Clear List"
 msgstr "Rensa lista"
 
 #: smb4kmounter.cpp:778
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p>Den delade resursen <b>%1</b> är monterad som <br><b>%2</b> och ägs "
-"av användaren <b>%3</b>.</p><p>Vill du verkligen avmontera den?</p></qt>"
+"<p>Den delade resursen <b>%1</b> är monterad som <br><b>%2</b> och ägs av "
+"användaren <b>%3</b>.</p<p>Vill du verkligen avmontera den?</p>>"
 
 #: smb4kmounter.cpp:783
 #, kde-format
@@ -2988,7 +2973,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "Skicka inte låsningsbegäran för byte-intervall"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -2999,6 +2984,10 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"Skicka inte låsningsbegäran för byte-intervall till servern. Det är "
+"nödvändigt för vissa program som inte följer den obligatoriska CIFS-stil "
+"låsningsbegäran för byte-intervall (och de flesta CIFS-servrar stöder inte "
+"ännu att begära rådgivande låsningsbegäran för byte-intervall)."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3235,8 +3224,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p>Den delade katalogen <b>%1</b> har monterats som <b>%2</b>.</p>"
 
 #: smb4knotification.cpp:47
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "Öppna"
@@ -3443,20 +3431,18 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<qt>Webbadressen du matade in är ogiltig.</qt>"
 
 #: smb4knotification.cpp:420
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
 msgstr ""
-"Nätverkskommunikation misslyckades med följande felmeddelande: <s>%1</s>"
+"<p>Nätverkskommunikation misslyckades med följande felmeddelande: <s>%1</s></"
+"p>"
 
 #: smb4knotification.cpp:428
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Ett fel uppstod med Zeroconf-tjänsten: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
@@ -3590,27 +3576,56 @@ msgstr ""
 "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1</b>."
 "</qt>"
 
-#, fuzzy
-#~| msgid "Mount Settings"
-#~ msgid "Custom Settings"
-#~ msgstr "Monteringsinställningar"
+#~ msgid "Add Bookmarks"
+#~ msgstr "Lägg till bokmärken"
 
-#, fuzzy
-#~| msgid ""
-#~| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#~| "provides.</p>"
+#~ msgid ""
+#~ "All listed shares will be bookmarked. To edit the label or group, click "
+#~ "the respective bookmark entry."
+#~ msgstr ""
+#~ "Alla listade delade resurser kommer att få bokmärken. För att redigera "
+#~ "beteckningen eller gruppen, klicka på respektive bokmärkespost."
+
+#~ msgid "Label:"
+#~ msgstr "Beteckning:"
+
+#~ msgid "Category:"
+#~ msgstr "Kategori:"
+
+#~ msgid "Edit Bookmarks"
+#~ msgstr "Redigera bokmärken"
+
+#~ msgid "Add Category"
+#~ msgstr "Lägg till kategori"
+
+#~ msgid "Remove"
+#~ msgstr "Ta bort"
+
+#~ msgid "Clear"
+#~ msgstr "Rensa"
+
+#~ msgid "Username:"
+#~ msgstr "Användarnamn:"
+
+#~ msgid "Workgroup:"
+#~ msgstr "Arbetsgrupp:"
+
+#~ msgid "Category name:"
+#~ msgstr "Kategorinamn:"
+
+#~ msgid "Custom Settings"
+#~ msgstr "Egna inställningar"
+
 #~ msgid ""
 #~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
 #~ "provides.</p>"
 #~ msgstr ""
-#~ "<p>Definiera anpassade alternativ för värddatorn <b>%1</b> och alla "
-#~ "delade kataloger den tillhandahåller.</p>"
+#~ "<p>Definiera egna inställningar för värddatorn <b>%1</b> och alla delade "
+#~ "kataloger den tillhandahåller.</p>"
 
-#, fuzzy
-#~| msgid "<p>Define custom options for share <b>%1</b>.</p>"
 #~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
 #~ msgstr ""
-#~ "<p>Definiera anpassade alternativ för den delade katalogen <b>%1</b>.</p>"
+#~ "<p>Definiera egna inställningar för den delade katalogen <b>%1</b>.</p>"
 
 #~ msgid "Common Options"
 #~ msgstr "Vanliga alternativ"
@@ -3666,22 +3681,6 @@ msgstr ""
 #~ msgid "Wake-On-LAN"
 #~ msgstr "Väckning av lokalt nätverk"
 
-#~ msgid "Add Bookmarks"
-#~ msgstr "Lägg till bokmärken"
-
-#~ msgid ""
-#~ "All listed shares will be bookmarked. To edit the label or group, click "
-#~ "the respective bookmark entry."
-#~ msgstr ""
-#~ "Alla listade delade resurser kommer att få bokmärken. För att redigera "
-#~ "beteckningen eller gruppen, klicka på respektive bokmärkespost."
-
-#~ msgid "Label:"
-#~ msgstr "Beteckning:"
-
-#~ msgid "Category:"
-#~ msgstr "Kategori:"
-
 #~ msgid "Mount Share"
 #~ msgstr "Montera delade resurser"
 
@@ -3719,9 +3718,6 @@ msgstr ""
 #~ "4 (t.ex. 192.168.2.11) och version 6 formatet (t.ex. "
 #~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
 
-#~ msgid "Workgroup:"
-#~ msgstr "Arbetsgrupp:"
-
 #~ msgid ""
 #~ "The workgroup or domain identifies the peer-to-peer computer network the "
 #~ "host is located in."
@@ -3758,40 +3754,6 @@ msgstr ""
 #~ msgid "Bookmark >>"
 #~ msgstr "Bokmärke >>"
 
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Redigera bokmärken"
-
-#~ msgid "Add Category"
-#~ msgstr "Lägg till kategori"
-
-#~ msgid "Remove"
-#~ msgstr "Ta bort"
-
-#~ msgid "Clear"
-#~ msgstr "Rensa"
-
-#~ msgid "Username:"
-#~ msgstr "Användarnamn:"
-
-#~ msgid "Category name:"
-#~ msgstr "Kategorinamn:"
-
-#~ msgid "Custom Options"
-#~ msgstr "Anpassade alternativ"
-
-#~ msgid "Do not use locking"
-#~ msgstr "Använd inte låsning"
-
-#~ msgid "Do not use locking. Do not start lockd."
-#~ msgstr "Använd inte låsning. Starta inte lockd."
-
-#~ msgid ""
-#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
-#~ "This is not a fatal error, but you should consider creating one."
-#~ msgstr ""
-#~ "Inställningsfilen för Samba-sviten <b>smb.conf</b> saknas. Det är inte "
-#~ "ett allvarligt fel, men du bör fundera på att skapa en."
-
 #~ msgid "NetBIOS name:"
 #~ msgstr "NetBIOS namn:"
 
@@ -3817,6 +3779,22 @@ msgstr ""
 #~ msgid "Login:"
 #~ msgstr "Användarnamn:"
 
+#~ msgid "Custom Options"
+#~ msgstr "Anpassade alternativ"
+
+#~ msgid "Do not use locking"
+#~ msgstr "Använd inte låsning"
+
+#~ msgid "Do not use locking. Do not start lockd."
+#~ msgstr "Använd inte låsning. Starta inte lockd."
+
+#~ msgid ""
+#~ "The configuration file for the Samba suite <b>smb.conf</b> is missing. "
+#~ "This is not a fatal error, but you should consider creating one."
+#~ msgstr ""
+#~ "Inställningsfilen för Samba-sviten <b>smb.conf</b> saknas. Det är inte "
+#~ "ett allvarligt fel, men du bör fundera på att skapa en."
+
 #~ msgid "Group:"
 #~ msgstr "Grupp:"
 
@@ -3826,35 +3804,8 @@ msgstr ""
 #~ msgid "Group name:"
 #~ msgstr "Gruppnamn:"
 
-#~ msgid ""
-#~ "If you have trouble discovering the workgroups and domains in your "
-#~ "network neighborhood, you should consider to switch this setting on. "
-#~ "Smb4K will then force the use of the SMB 1.0 protocol for searching for "
-#~ "workgroups and domains."
-#~ msgstr ""
-#~ "Om du har problem att upptäcka arbetsgrupper och domäner i "
-#~ "nätverksgrannskapet, bör du överväga att aktivera inställningen. Smb4K "
-#~ "tvingar då att SMB protokoll 1.0 används vid sökning efter arbetsgrupper "
-#~ "och domäner."
-
-#~ msgid ""
-#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
-#~ "</qt>"
-#~ msgstr ""
-#~ "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1 "
-#~ "på %2</b>.</qt>"
-
-#~ msgid "Unknown error"
-#~ msgstr "Okänt fel"
-
 #~ msgid "Out of memory"
 #~ msgstr "Slut på minne"
-
-#~ msgid "NULL context given"
-#~ msgstr "NULL-sammanhang angivet"
-
-#~ msgid "The smb.conf file would not load"
-#~ msgstr "Det gick inte att läsa in filen smb.conf"
 
 #~ msgid "Permission denied"
 #~ msgstr "Åtkomst nekas"
@@ -3874,11 +3825,38 @@ msgstr ""
 #~ msgid "The workgroup or server could not be found"
 #~ msgstr "Arbetsgruppen eller servern kunde inte hittas"
 
+#~ msgid "Unknown error"
+#~ msgstr "Okänt fel"
+
 #~ msgid "The print job could not be set up (step 1)"
 #~ msgstr "Utskriftsjobbet kunde inte ställas in (steg 1)"
 
 #~ msgid "The print job could not be set up (step 2)"
 #~ msgstr "Utskriftsjobbet kunde inte ställas in (steg 2)"
+
+#~ msgid "NULL context given"
+#~ msgstr "NULL-sammanhang angivet"
+
+#~ msgid "The smb.conf file would not load"
+#~ msgstr "Det gick inte att läsa in filen smb.conf"
+
+#~ msgid ""
+#~ "<qt>Please enter a username and a password for the share <b>%1 on %2</b>."
+#~ "</qt>"
+#~ msgstr ""
+#~ "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1 "
+#~ "på %2</b>.</qt>"
+
+#~ msgid ""
+#~ "If you have trouble discovering the workgroups and domains in your "
+#~ "network neighborhood, you should consider to switch this setting on. "
+#~ "Smb4K will then force the use of the SMB 1.0 protocol for searching for "
+#~ "workgroups and domains."
+#~ msgstr ""
+#~ "Om du har problem att upptäcka arbetsgrupper och domäner i "
+#~ "nätverksgrannskapet, bör du överväga att aktivera inställningen. Smb4K "
+#~ "tvingar då att SMB protokoll 1.0 används vid sökning efter arbetsgrupper "
+#~ "och domäner."
 
 #~ msgid ""
 #~ "<p>Retrieving the list of available domains failed:</p><p><tt>%1</tt></p>"

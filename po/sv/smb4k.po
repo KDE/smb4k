@@ -4,13 +4,13 @@
 # Marc Hansen <marcgie@berlios.de>, 2005.
 # Leslie Jensen <leslie@eskk.nu>, 2008.
 # Stefan Asserhäll <stefan.asserhall@bredband.net>, 2009, 2010.
-# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Stefan Asserhall <stefan.asserhall@bredband.net>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2022-08-03 09:15+0200\n"
+"POT-Creation-Date: 2023-08-01 00:46+0000\n"
+"PO-Revision-Date: 2023-07-25 13:16+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -58,10 +58,9 @@ msgstr ""
 "Samba-resurser"
 
 #: smb4k/main.cpp:49
-#, fuzzy, kde-format
-#| msgid "© 2003-2022 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2022 Alexander Reinholdt"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:58
 #, kde-format
@@ -142,10 +141,9 @@ msgid "Add &Bookmark"
 msgstr "Lägg till &bokmärke"
 
 #: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:214
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Montera alla bokmärken"
+msgstr "Monteringsbokmärken"
 
 #: smb4k/smb4kconfigdialog.cpp:132
 #, kde-format
@@ -173,10 +171,9 @@ msgid "Synchronization"
 msgstr "Synkronisering"
 
 #: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
-#, fuzzy, kde-format
-#| msgid "Common Settings:"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Vanliga inställningar:"
+msgstr "Egna inställningar"
 
 #: smb4k/smb4kconfigdialog.cpp:139 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -292,7 +289,7 @@ msgstr ""
 msgid "Clear List"
 msgstr "Rensa lista"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:426
+#: smb4k/smb4kconfigpagebookmarks.cpp:465
 #, kde-format
 msgid "New Category"
 msgstr ""
@@ -304,9 +301,9 @@ msgstr "Allt är bra."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
 #, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom options were reset."
+#| msgid "The item %1 was removed, because all custom settings were reset."
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
-msgstr "Objektet %1 togs bort, eftersom alla egna alternativ återställdes."
+msgstr "Objektet %1 togs bort, eftersom alla egna inställningar återställdes."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -433,14 +430,12 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "Define the hosts that should be woken up via the custom options dialog."
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"Definiera värddatorerna som ska väckas via dialogrutan för anpassade "
-"alternativ."
+"Definiera värddatorerna som ska väckas via dialogrutan för egna "
+"inställningar."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -473,16 +468,14 @@ msgid "File Handling"
 msgstr "Filhantering"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
-#, fuzzy, kde-format
-#| msgid "File Attributes:"
+#, kde-format
 msgid "File Attributes"
-msgstr "Filegenskaper:"
+msgstr "Filegenskaper"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Ownership:"
+#, kde-format
 msgid "Ownership"
-msgstr "Ägare:"
+msgstr "Ägare"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
@@ -515,7 +508,7 @@ msgstr "Diverse"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -635,12 +628,14 @@ msgid "MAC Address:"
 msgstr "MAC-adress:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before scanning the network neighborhood"
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Skicka magiskt paket innan sökning av nätverksgrannskapet"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Send magic package before mounting a share"
 msgid "Send magic packet before mounting a share"
 msgstr "Skicka magiskt paket innan en delad resurs monteras"
 
@@ -653,7 +648,7 @@ msgstr "Väckning av lokalt nätverk"
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
 msgid "Dock Widgets"
-msgstr "Dockningskomponenter"
+msgstr "Grafiska dockningskomponenter"
 
 #: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:40
 #, kde-format
@@ -843,10 +838,9 @@ msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksharesmenu.cpp:193
 #: smb4k/smb4ksharesviewdockwidget.cpp:237
-#, fuzzy, kde-format
-#| msgid "&Custom Options"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "&Anpassade alternativ"
+msgstr "Lägg till &egna inställningar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:168
 #: smb4k/smb4ksharesviewdockwidget.cpp:242
@@ -1132,15 +1126,6 @@ msgstr "Storlek:"
 #~ msgid "Custom Options"
 #~ msgstr "Anpassade alternativ"
 
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "Montera alla bokmärken"
-
-#~ msgid " KiB"
-#~ msgstr " KiB"
-
-#~ msgid " KiB/s"
-#~ msgstr " KiB/s"
-
 #~ msgid ""
 #~ "The login information that was stored by Smb4K will be loaded from the "
 #~ "wallet."
@@ -1157,23 +1142,11 @@ msgstr "Storlek:"
 #~ msgid "Entry"
 #~ msgstr "Post"
 
-#~ msgid "Username"
+#~ msgid "Login"
 #~ msgstr "Användarnamn"
 
 #~ msgid "Password"
 #~ msgstr "Lösenord"
-
-#~ msgid "Behavior:"
-#~ msgstr "Beteende:"
-
-#~ msgid "General:"
-#~ msgstr "Allmänt:"
-
-#~ msgid "Miscellaneous:"
-#~ msgstr "Diverse:"
-
-#~ msgid "Special filter rules:"
-#~ msgstr "Speciella filterregler"
 
 #~ msgid "Identification"
 #~ msgstr "Identifiering"
@@ -1187,17 +1160,8 @@ msgstr "Storlek:"
 #~ msgid "Actions"
 #~ msgstr "Händelser"
 
-#~ msgid "Browse Settings:"
-#~ msgstr "Bläddringsinställningar:"
-
-#~ msgid "Profiles:"
-#~ msgstr "Profiler:"
-
-#~ msgid "Authentication:"
-#~ msgstr "Behörighetskontroll:"
-
-#~ msgid "Security:"
-#~ msgstr "Säkerhet:"
+#~ msgid "Security"
+#~ msgstr "Säkerhet"
 
 #~ msgid "Samba Settings"
 #~ msgstr "Inställningar av Samba"
@@ -1208,8 +1172,17 @@ msgstr "Storlek:"
 #~ msgid "Permissions, etc."
 #~ msgstr "Rättigheter, etc."
 
-#~ msgid "Login"
-#~ msgstr "Användarnamn"
+#~ msgid " KiB"
+#~ msgstr " KiB"
+
+#~ msgid " KiB/s"
+#~ msgstr " KiB/s"
+
+#~ msgid "Special filter rules:"
+#~ msgstr "Speciella filterregler"
+
+#~ msgid "&Custom Options"
+#~ msgstr "&Anpassade alternativ"
 
 #~ msgid "Login:"
 #~ msgstr "Användarnamn:"
@@ -1220,17 +1193,14 @@ msgstr "Storlek:"
 #~ msgid "The unmount process crashed."
 #~ msgstr "Avmonteringsprocessen kraschade."
 
-#~ msgid "Protocols"
-#~ msgstr "Protokoll"
-
 #~ msgid "%1 of %2 free (%3 used)"
 #~ msgstr "%1 av %2 ledigt (%3 använt)"
 
 #~ msgid "Location"
 #~ msgstr "Plats"
 
-#~ msgid "Owner"
-#~ msgstr "Ägare"
+#~ msgid "Protocols"
+#~ msgstr "Protokoll"
 
 #~ msgid "The selected entry is removed from the wallet."
 #~ msgstr "Den valda posten tas bort från plånboken."
