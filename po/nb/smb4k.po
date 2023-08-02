@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-01 00:46+0000\n"
 "PO-Revision-Date: 2006-04-12 21:04+0200\n"
 "Last-Translator: Nils Kristian Tomren <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Clear List"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:426
+#: smb4k/smb4kconfigpagebookmarks.cpp:465
 #, kde-format
 msgid "New Category"
 msgstr ""

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-01 00:46+0000\n"
-"PO-Revision-Date: 2023-07-25 13:16+0200\n"
+"POT-Creation-Date: 2023-08-02 00:47+0000\n"
+"PO-Revision-Date: 2023-08-01 08:26+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -259,7 +259,7 @@ msgstr "Beteckning:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:122
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Kategori:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -281,7 +281,7 @@ msgstr "IP-adress:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:133
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Lägg till kategori"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:145
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
@@ -292,7 +292,7 @@ msgstr "Rensa lista"
 #: smb4k/smb4kconfigpagebookmarks.cpp:465
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Ny kategori"
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:64
 #, kde-format
@@ -300,10 +300,10 @@ msgid "All fine."
 msgstr "Allt är bra."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
-msgstr "Objektet %1 togs bort, eftersom alla egna inställningar återställdes."
+msgstr ""
+"Objektet <b>%1</b> togs bort, eftersom alla egna inställningar återställdes."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -378,6 +378,7 @@ msgid "Character Sets"
 msgstr "Teckenuppsättningar"
 
 #: smb4k/smb4kconfigpagemounting.cpp:729
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Monteringsinställningar"
@@ -410,6 +411,7 @@ msgstr[1] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Bläddringsinställningar"
@@ -566,34 +568,29 @@ msgid "Shares View"
 msgstr "Resursvisning"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:100
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
-"<p>Definiera anpassade alternativ för värddatorn <b>%1</b> och alla delade "
-"kataloger den tillhandahåller.</p>"
+"Definiera anpassade alternativ för värddatorn <b>%1</b> och alla delade "
+"kataloger den tillhandahåller."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:116
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
-"<p>Definiera anpassade alternativ för den delade katalogen <b>%1</b> på "
-"värddatorn <b>%2</b>.</p>"
+msgstr "Definiera anpassade alternativ för den delade katalogen <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
 #, kde-format
 msgid "Always remount this share"
 msgstr "Återmontera alltid resursen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Montering"
+msgstr "Sida 1: Montering"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -601,49 +598,60 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Servern stöder CIFS Unix-utökningar"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Montering"
+msgstr "Sida 2: Montering"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Montering"
+msgstr "Sida 3: Montering"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Sida 4: Bläddring"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Inställningar av väckning av lokalt nätverk"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-adress:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:247
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Skicka magiskt paket innan sökning av nätverksgrannskapet"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
+#, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Skicka magiskt paket innan en delad resurs monteras"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Väckning av lokalt nätverk"
+msgstr "Sida 5: Väckning av lokalt nätverk"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Page 4: Browsing"
+msgid "Page 2: Browsing"
+msgstr "Sida 4: Bläddring"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
+#, fuzzy, kde-format
+#| msgid "Page 5: Wake-On-LAN"
+msgid "Page 3: Wake-On-LAN"
+msgstr "Sida 5: Väckning av lokalt nätverk"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -769,16 +777,13 @@ msgid "Mount Dialog"
 msgstr "Monteringsdialogruta"
 
 #: smb4k/smb4kmountdialog.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the location (UNC address) and optionally the IP address and "
-#| "workgroup to mount a share."
+#, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
-"Ange plats (UNC-adress) och valfritt IP-adress och arbetsgrupp för att "
-"montera en delad resurs."
+"Ange plats och valfritt IP-adress och arbetsgrupp för att montera en delad "
+"resurs."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -792,11 +797,10 @@ msgid "Bookmark this share"
 msgstr "Lägg till bokmärke för den delade katalogen"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmark"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Bokmärke"
+msgstr "Bokmärke >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -834,7 +838,7 @@ msgstr "&Sök"
 #: smb4k/smb4ksharesviewdockwidget.cpp:232
 #, kde-format
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksharesmenu.cpp:193
 #: smb4k/smb4ksharesviewdockwidget.cpp:237
@@ -846,7 +850,7 @@ msgstr "Lägg till &egna inställningar"
 #: smb4k/smb4ksharesviewdockwidget.cpp:242
 #, kde-format
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:174 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
@@ -856,7 +860,7 @@ msgstr "Ö&ppna monteringsdialogruta"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:180
 #, kde-format
 msgid "Ctrl+O"
-msgstr ""
+msgstr "Ctrl+O"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:193
 #, kde-format
@@ -866,7 +870,7 @@ msgstr "Behörighe&tskontroll"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:199
 #, kde-format
 msgid "Ctrl+T"
-msgstr ""
+msgstr "Ctrl+T"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:204
 #, kde-format
@@ -876,7 +880,7 @@ msgstr "F&örhandsgranska"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:210
 #, kde-format
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:215
 #, kde-format
@@ -886,7 +890,7 @@ msgstr "Sk&riv ut filen"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:221
 #, kde-format
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:227
 #, kde-format
@@ -903,7 +907,7 @@ msgstr "&Avmontera"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:978
 #, kde-format
 msgid "Ctrl+M"
-msgstr ""
+msgstr "Ctrl+M"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:421
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:432
@@ -920,7 +924,7 @@ msgstr "Läs av arbets&grupp"
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Ctrl+U"
 
 #: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
@@ -1000,7 +1004,7 @@ msgstr "Listvy"
 #: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Ctrl+N"
-msgstr ""
+msgstr "Ctrl+N"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:247
 #, kde-format
@@ -1010,7 +1014,7 @@ msgstr "S&ynkronisera"
 #: smb4k/smb4ksharesviewdockwidget.cpp:252
 #, kde-format
 msgid "Ctrl+Y"
-msgstr ""
+msgstr "Ctrl+Y"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:265
 #, kde-format
@@ -1020,7 +1024,7 @@ msgstr "Öppna i Konso&le"
 #: smb4k/smb4ksharesviewdockwidget.cpp:270
 #, kde-format
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Ctrl+L"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:272
 #, kde-format
@@ -1030,7 +1034,7 @@ msgstr "Öppna i f&ilhanterare"
 #: smb4k/smb4ksharesviewdockwidget.cpp:277
 #, kde-format
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+I"
 
 #: smb4k/smb4ksharesviewdockwidget.cpp:392
 #, kde-format

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-01 00:46+0000\n"
+"POT-Creation-Date: 2023-08-02 00:47+0000\n"
 "PO-Revision-Date: 2023-07-30 08:44+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -381,6 +381,7 @@ msgid "Character Sets"
 msgstr "Набори символів"
 
 #: smb4k/smb4kconfigpagemounting.cpp:729
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Параметри монтування"
@@ -420,6 +421,7 @@ msgstr[3] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Параметри навігації"
@@ -589,11 +591,13 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "Визначте нетипові параметри спільного ресурсу <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
 #, kde-format
 msgid "Always remount this share"
 msgstr "Завжди повторно монтувати цей спільний ресурс"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Page 1: Mounting"
 msgstr "Сторінка 1. Монтування"
@@ -619,21 +623,25 @@ msgid "Page 4: Browsing"
 msgstr "Сторінка 4. Навігація"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Параметри Wake-On-LAN"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC-адреса:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:247
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Надіслати контрольний пакет до сканування мережевого оточення"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Надіслати контрольний пакет до монтування спільного ресурсу"
@@ -641,6 +649,18 @@ msgstr "Надіслати контрольний пакет до монтува
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
 #, kde-format
 msgid "Page 5: Wake-On-LAN"
+msgstr "Сторінка 5. Wake-On-LAN"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Page 4: Browsing"
+msgid "Page 2: Browsing"
+msgstr "Сторінка 4. Навігація"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
+#, fuzzy, kde-format
+#| msgid "Page 5: Wake-On-LAN"
+msgid "Page 3: Wake-On-LAN"
 msgstr "Сторінка 5. Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
