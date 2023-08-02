@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-01 00:46+0000\n"
+"POT-Creation-Date: 2023-08-02 00:47+0000\n"
 "PO-Revision-Date: 2023-07-30 09:25+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -379,6 +379,7 @@ msgid "Character Sets"
 msgstr "Karaktere-multzoa"
 
 #: smb4k/smb4kconfigpagemounting.cpp:729
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Muntatze-ezarpenak"
@@ -410,6 +411,7 @@ msgstr[1] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Arakatze ezarpenak"
@@ -579,11 +581,13 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definitu <b>%1</b> partekatzeari neurrira ipinitako ezarpenak."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
 #, kde-format
 msgid "Always remount this share"
 msgstr "Birmuntatu beti partekatze hau"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, kde-format
 msgid "Page 1: Mounting"
 msgstr "1. orrialdea: Muntatzea"
@@ -609,21 +613,25 @@ msgid "Page 4: Browsing"
 msgstr "4. orrialdea: Arakatzea"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Sare bidez esnatzeko (Wake-On-LAN) ezarpenak"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
 #, kde-format
 msgid "MAC Address:"
 msgstr "MAC helbidea:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:247
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Bidali pakete magikoa sareko auzoa miatu aurretik"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
@@ -631,6 +639,18 @@ msgstr "Bidali pakete magikoa partekatze bat muntatu aurretik"
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
 #, kde-format
 msgid "Page 5: Wake-On-LAN"
+msgstr "5. orrialdea: Esnatu sare bidez (Wake-On-LAN)"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Page 4: Browsing"
+msgid "Page 2: Browsing"
+msgstr "4. orrialdea: Arakatzea"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
+#, fuzzy, kde-format
+#| msgid "Page 5: Wake-On-LAN"
+msgid "Page 3: Wake-On-LAN"
 msgstr "5. orrialdea: Esnatu sare bidez (Wake-On-LAN)"
 
 #: smb4k/smb4kmainwindow.cpp:135

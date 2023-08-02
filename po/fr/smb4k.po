@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-01 00:46+0000\n"
+"POT-Creation-Date: 2023-08-02 00:47+0000\n"
 "PO-Revision-Date: 2023-07-17 21:57+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -400,6 +400,7 @@ msgid "Character Sets"
 msgstr "Jeux de caractères"
 
 #: smb4k/smb4kconfigpagemounting.cpp:729
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Paramètres de montage"
@@ -433,6 +434,7 @@ msgstr[1] ""
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:327
 #, kde-format
 msgid "Browse Settings"
 msgstr "Naviguer parmi les paramètres"
@@ -600,11 +602,13 @@ msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:269
 #, kde-format
 msgid "Always remount this share"
 msgstr "Toujours remonter ce partage"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:325
 #, fuzzy, kde-format
 #| msgid "Mounting"
 msgid "Page 1: Mounting"
@@ -633,21 +637,25 @@ msgid "Page 4: Browsing"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:386
 #, kde-format
 msgid "Wake-On-LAN Settings"
 msgstr "Paramètres de « Wake-On-LAN »"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:389
 #, kde-format
 msgid "MAC Address:"
 msgstr "Adresse MAC :"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:247
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:399
 #, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
 msgstr "Envoyer un paquet « magique » avant de balayer le voisinage du réseau"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:401
 #, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Envoyer un paquet « magique » avant de monter un partage"
@@ -656,6 +664,18 @@ msgstr "Envoyer un paquet « magique » avant de monter un partage"
 #, fuzzy, kde-format
 #| msgid "Wake-On-LAN"
 msgid "Page 5: Wake-On-LAN"
+msgstr "Wake-On-LAN"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:384
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Page 2: Browsing"
+msgstr "Montage"
+
+#: smb4k/smb4kcustomsettingseditorwidget.cpp:413
+#, fuzzy, kde-format
+#| msgid "Wake-On-LAN"
+msgid "Page 3: Wake-On-LAN"
 msgstr "Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
