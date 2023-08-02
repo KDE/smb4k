@@ -152,8 +152,9 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
 void Smb4KCustomSettingsEditor::slotRestoreDefaultsClicked()
 {
     Smb4KCustomOptions defaultCustomSettings;
-    // FIXME: Set the necessary parameters
-    m_editorWidget->setCustomSettings(defaultCustomSettings);
+    Smb4KCustomOptions customSettings = *m_customSettings.data();
+    customSettings.update(&defaultCustomSettings);
+    m_editorWidget->setCustomSettings(customSettings);
 }
 
 void Smb4KCustomSettingsEditor::slotSaveClicked()
