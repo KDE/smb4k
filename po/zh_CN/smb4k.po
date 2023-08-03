@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 00:47+0000\n"
-"PO-Revision-Date: 2023-07-30 07:10\n"
+"PO-Revision-Date: 2023-08-02 12:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -297,7 +297,7 @@ msgstr "全部正常。"
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
 #, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
-msgstr ""
+msgstr "项目 <b>%1</b> 已被移除，因为自定义选项已被全部重置。"
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -557,12 +557,12 @@ msgstr "共享视图"
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
-msgstr ""
+msgstr "指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:116
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "指定共享 <b>%1</b> 的自定义选项。"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:269
@@ -572,10 +572,9 @@ msgstr "总是重新挂载此共享"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "挂载"
+msgstr "第 1 页：挂载"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -583,28 +582,25 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "此服务器支持 CIFS Unix 扩展"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "挂载"
+msgstr "第 2 页：挂载"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "挂载"
+msgstr "第 3 页：挂载"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "第 4 页：挂载"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "局域网唤醒"
+msgstr "局域网唤醒设置"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -625,22 +621,21 @@ msgid "Send magic packet before mounting a share"
 msgstr "挂载共享前发送局域网唤醒魔术封包"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "局域网唤醒"
+msgstr "第 1 页：局域网唤醒"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
 #, fuzzy, kde-format
-#| msgid "Mounting"
+#| msgid "Page 4: Browsing"
 msgid "Page 2: Browsing"
-msgstr "挂载"
+msgstr "第 4 页：挂载"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:413
 #, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#| msgid "Page 5: Wake-On-LAN"
 msgid "Page 3: Wake-On-LAN"
-msgstr "局域网唤醒"
+msgstr "第 1 页：局域网唤醒"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -1109,18 +1104,3 @@ msgstr "文件系统："
 #, kde-format
 msgid "Size:"
 msgstr "大小："
-
-#~ msgid "Page 1"
-#~ msgstr "第 1 页"
-
-#~ msgid "Page 2"
-#~ msgstr "第 2 页"
-
-#~ msgid "Page 3"
-#~ msgstr "第 3 页"
-
-#~ msgid "Page 4"
-#~ msgstr "第 4 页"
-
-#~ msgid "Page 5"
-#~ msgstr "第 5 页"

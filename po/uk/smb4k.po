@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-02 00:47+0000\n"
-"PO-Revision-Date: 2023-07-30 08:44+0300\n"
+"PO-Revision-Date: 2023-08-02 17:12+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -652,16 +652,14 @@ msgid "Page 5: Wake-On-LAN"
 msgstr "Сторінка 5. Wake-On-LAN"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Page 4: Browsing"
+#, kde-format
 msgid "Page 2: Browsing"
-msgstr "Сторінка 4. Навігація"
+msgstr "Сторінка 2. Навігація"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, fuzzy, kde-format
-#| msgid "Page 5: Wake-On-LAN"
+#, kde-format
 msgid "Page 3: Wake-On-LAN"
-msgstr "Сторінка 5. Wake-On-LAN"
+msgstr "Сторінка 3. Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
