@@ -55,6 +55,7 @@ private:
     QPushButton *m_resetButton;
     QPushButton *m_saveButton;
     QPushButton *m_cancelButton;
+    bool m_defaultsRestored;
 };
 
 #endif

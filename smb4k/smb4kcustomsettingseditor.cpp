@@ -26,6 +26,7 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     : QDialog(parent)
 {
     m_customSettings = nullptr;
+    m_defaultsRestored = false;
 
     setWindowTitle(i18n("Custom Settings"));
 
@@ -155,6 +156,8 @@ void Smb4KCustomSettingsEditor::slotRestoreDefaultsClicked()
     Smb4KCustomOptions customSettings = *m_customSettings.data();
     customSettings.update(&defaultCustomSettings);
     m_editorWidget->setCustomSettings(customSettings);
+    m_resetButton->setEnabled(false);
+    m_defaultsRestored = true;
 }
 
 void Smb4KCustomSettingsEditor::slotSaveClicked()
@@ -178,5 +181,6 @@ void Smb4KCustomSettingsEditor::slotCancelClicked()
 
 void Smb4KCustomSettingsEditor::slotCustomSettingsEdited(bool changed)
 {
-    m_saveButton->setEnabled(changed);
+    m_saveButton->setEnabled(changed || m_defaultsRestored);
+    m_resetButton->setEnabled((changed && m_defaultsRestored) || !m_defaultsRestored);
 }
