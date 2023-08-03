@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-29 02:26+0000\n"
-"PO-Revision-Date: 2023-07-01 12:44+0300\n"
+"PO-Revision-Date: 2023-08-02 13:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -525,7 +525,7 @@ msgstr "Paylaşım Görünümü"
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
 msgid "Dock Widgets"
-msgstr "Gereçleri Kilitle"
+msgstr "Araç Takımlarını Rıhtımla"
 
 #: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:38
 #, kde-format
@@ -687,7 +687,7 @@ msgstr "&Bağlama İletişim Kutusunu Aç"
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:192
 #, kde-format
 msgid "Au&thentication"
-msgstr "&Kimlik denetimi"
+msgstr "&Kimlik Denetimi"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:203
 #, kde-format
@@ -817,8 +817,8 @@ msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
 "any files here.</qt>"
 msgstr ""
-"<qt><b>%1</b> paylaştırmak için herhangi bir aktif bağlantı yoktur! Buraya "
-"herhangi bir dosya  bırakamazsınız.</qt>"
+"<qt><b>%1</b> paylaşımına etkin bir bağlantı yok! Buraya herhangi bir dosya  "
+"bırakamazsınız.</qt>"
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
