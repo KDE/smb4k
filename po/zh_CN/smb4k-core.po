@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2023-07-30 07:10\n"
+"PO-Revision-Date: 2023-08-02 12:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -3377,68 +3377,3 @@ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
-
-#~ msgid "Custom Settings"
-#~ msgstr "自定义设置"
-
-#~ msgid ""
-#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
-#~ "provides.</p>"
-#~ msgstr "<p>指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。</p>"
-
-#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-#~ msgstr "<p>指定共享 <b>%1</b> 的自定义选项。</p>"
-
-#~ msgid "Common Options"
-#~ msgstr "通用选项"
-
-#~ msgid "Always remount this share"
-#~ msgstr "总是重新挂载此共享"
-
-#~ msgid "CIFS Unix Extensions Support"
-#~ msgstr "CIFS Unix 扩展支持"
-
-#~ msgid "This server supports the CIFS Unix extensions"
-#~ msgstr "此服务器支持 CIFS Unix 扩展"
-
-#~ msgid "Common Mount Settings"
-#~ msgstr "通用挂载设置"
-
-#~ msgid "Advanced Options"
-#~ msgstr "高级选项"
-
-#~ msgid "Advanced Mount Settings"
-#~ msgstr "高级挂载设置"
-
-#~ msgid "Authentication"
-#~ msgstr "身份验证"
-
-#~ msgid "Browse Settings"
-#~ msgstr "浏览设置"
-
-#~ msgid "MAC Address"
-#~ msgstr "MAC 地址"
-
-#~ msgid "MAC Address:"
-#~ msgstr "MAC 地址："
-
-#~ msgid "Actions"
-#~ msgstr "操作"
-
-#~ msgid "Send magic packet before scanning the network neighborhood"
-#~ msgstr "扫描网上邻居之前发送局域网唤醒魔术封包"
-
-#~ msgid "Send magic packet before mounting a share"
-#~ msgstr "挂载共享前发送局域网唤醒魔术封包"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "局域网唤醒设置"
-
-#~ msgid "Mount Settings"
-#~ msgstr "挂载设置"
-
-#~ msgid "Samba"
-#~ msgstr "Samba"
-
-#~ msgid "Wake-On-LAN"
-#~ msgstr "局域网唤醒"

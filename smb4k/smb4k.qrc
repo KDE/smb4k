@@ -1,0 +1,6 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/kxmlgui5/smb4k">
+        <file>smb4k_shell.rc</file>
+    </qresource>
+</RCC>
