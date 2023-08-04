@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 00:47+0000\n"
+"POT-Creation-Date: 2023-08-04 00:46+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -170,7 +170,7 @@ msgstr "Autentimine"
 msgid "Synchronization"
 msgstr "Sünkroonimine"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
 #, fuzzy, kde-format
 #| msgid "Common Settings"
 msgid "Custom Settings"
@@ -587,7 +587,7 @@ msgstr "Võrgunaabrus"
 msgid "Shares View"
 msgstr "Ressursivaade"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:100
+#: smb4k/smb4kcustomsettingseditor.cpp:101
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -598,7 +598,7 @@ msgstr ""
 "<p>Kohandatud valikute määramine masinale <b>%1</b> ja kõigile jagatud "
 "ressurssidele, mida see pakub.</p>"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:116
+#: smb4k/smb4kcustomsettingseditor.cpp:117
 #, fuzzy, kde-format
 #| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
 msgid "Define custom settings for share <b>%1</b>."

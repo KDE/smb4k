@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 00:47+0000\n"
+"POT-Creation-Date: 2023-08-04 00:46+0000\n"
 "PO-Revision-Date: 2023-08-02 13:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -170,7 +170,7 @@ msgstr "Kimlik Denetimi"
 msgid "Synchronization"
 msgstr "Eşleme"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
 #, kde-format
 msgid "Custom Settings"
 msgstr "Özel Ayarlar"
@@ -565,14 +565,14 @@ msgstr "Ağ Komşuları"
 msgid "Shares View"
 msgstr "Paylaşım Görünümü"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:100
+#: smb4k/smb4kcustomsettingseditor.cpp:101
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
 "<b>%1</b> makinesi ve sağladığı tüm paylaşımlar için özel ayarlar tanımlayın."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:116
+#: smb4k/smb4kcustomsettingseditor.cpp:117
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "<b>%1</b> paylaşımı için özel ayarlar tanımlayın."

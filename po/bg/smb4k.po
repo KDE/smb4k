@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 00:47+0000\n"
+"POT-Creation-Date: 2023-08-04 00:46+0000\n"
 "PO-Revision-Date: 2023-01-20 23:26+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -169,7 +169,7 @@ msgstr "Удостоверяване"
 msgid "Synchronization"
 msgstr "Синхронизиране"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
 #, fuzzy, kde-format
 msgid "Custom Settings"
 msgstr "Потребителски настройки"
@@ -556,13 +556,13 @@ msgstr "Търсене в мрежата"
 msgid "Shares View"
 msgstr "Изглед като ресурси"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:100
+#: smb4k/smb4kcustomsettingseditor.cpp:101
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditor.cpp:116
+#: smb4k/smb4kcustomsettingseditor.cpp:117
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""

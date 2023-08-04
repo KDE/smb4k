@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 00:47+0000\n"
+"POT-Creation-Date: 2023-08-04 00:46+0000\n"
 "PO-Revision-Date: 2023-08-02 12:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -167,7 +167,7 @@ msgstr "身份验证"
 msgid "Synchronization"
 msgstr "同步"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
 #, kde-format
 msgid "Custom Settings"
 msgstr "自定义设置"
@@ -553,13 +553,13 @@ msgstr "网上邻居"
 msgid "Shares View"
 msgstr "共享视图"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:100
+#: smb4k/smb4kcustomsettingseditor.cpp:101
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr "指定主机 <b>%1</b> 和它提供的所有共享的自定义选项。"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:116
+#: smb4k/smb4kcustomsettingseditor.cpp:117
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "指定共享 <b>%1</b> 的自定义选项。"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-02 00:47+0000\n"
+"POT-Creation-Date: 2023-08-04 00:46+0000\n"
 "PO-Revision-Date: 2023-08-02 07:58+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -170,7 +170,7 @@ msgstr "Behörighetskontroll"
 msgid "Synchronization"
 msgstr "Synkronisering"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:30
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
 #, kde-format
 msgid "Custom Settings"
 msgstr "Egna inställningar"
@@ -567,7 +567,7 @@ msgstr "Nätverksgrannskap"
 msgid "Shares View"
 msgstr "Resursvisning"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:100
+#: smb4k/smb4kcustomsettingseditor.cpp:101
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -575,7 +575,7 @@ msgstr ""
 "Definiera anpassade alternativ för värddatorn <b>%1</b> och alla delade "
 "kataloger den tillhandahåller."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:116
+#: smb4k/smb4kcustomsettingseditor.cpp:117
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definiera anpassade alternativ för den delade katalogen <b>%1</b>."
