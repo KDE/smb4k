@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# Shinjo Park <kde@peremen.name>, 2021, 2022.
+# Shinjo Park <kde@peremen.name>, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-30 00:46+0000\n"
-"PO-Revision-Date: 2022-07-13 11:14+0200\n"
+"PO-Revision-Date: 2023-08-06 22:55+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -398,19 +398,14 @@ msgstr "SMB 포트:"
 #. i18n: ectx: whatsthis, entry (UseRemoteSmbPort), group (Network)
 #. i18n: ectx: whatsthis, entry (RemoteSmbPort), group (Network)
 #: smb4k.kcfg:167 smb4k.kcfg:171
-#, fuzzy, kde-format
-#| msgid ""
-#| "This is the port that is used for connecting to remote servers with the "
-#| "client programs net, smbclient and smbtree. The default value is 139 "
-#| "(NetBIOS). Under FreeBSD, this setting is also used for mounting."
+#, kde-format
 msgid ""
 "This is the port that is used for connecting to remote servers. The default "
 "value is 139 (NetBIOS). Under FreeBSD, this setting is also used for "
 "mounting."
 msgstr ""
-"net, smbclient, smbtree 클라이언트 프로그램에서 원격 서버에 연결할 때 사용할 "
-"포트 번호입니다. 기본값은 139(NetBIOS)입니다. FreeBSD 환경에서는 마운트할 때"
-"에도 이 포트를 사용합니다."
+"원격 서버에 연결할 때 사용할 포트 번호입니다. 기본값은 139(NetBIOS)입니다. "
+"FreeBSD 환경에서는 마운트할 때에도 이 포트를 사용합니다."
 
 #. i18n: ectx: label, entry (LargeNetworkNeighborhood), group (Network)
 #: smb4k.kcfg:177
@@ -1001,7 +996,7 @@ msgstr ""
 #: smb4k.kcfg:380
 #, kde-format
 msgid "Preserve access control lists (ACLs)"
-msgstr ""
+msgstr "접근 권한 목록(ACL) 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveACLs), group (Synchronization)
 #: smb4k.kcfg:381
@@ -1012,66 +1007,58 @@ msgid ""
 "--perms. The source and destination systems must have compatible ACL entries "
 "for this option to work properly."
 msgstr ""
+"접근 권한 목록을 보존합니다. rsync에게 대상 파일의 접근 권한 목록을 원본 파일"
+"과 똑같이 유지하도록 지시합니다. --perms 옵션을 암시적으로 적용합니다. 이 옵"
+"션이 제대로 작동하려면 원본과 대상 시스템에 호환되는 ACL 항목이 모두 존재해"
+"야 합니다."
 
 #. i18n: ectx: label, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:385
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve extended attributes"
-msgstr "시간 보존"
+msgstr "확장된 속성 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveExtendedAttributes), group (Synchronization)
 #: smb4k.kcfg:386
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve extended attributes. This option causes rsync to update the "
 "destination extended attributes to be the same as the source ones."
 msgstr ""
-"그룹을 보존합니다(-g, --group). 대상 파일의 그룹을 원본 파일과 똑같이 유지합"
-"니다."
+"확장된 속성을 그룹을 보존합니다. rsync에게 대상 파일의 확장된 속성을 원본 파"
+"일과 똑같이 유지하도록 지시합니다."
 
 #. i18n: ectx: label, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:390
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve access times"
-msgstr "시간 보존"
+msgstr "접근 시간 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveAccessTimes), group (Synchronization)
 #: smb4k.kcfg:391
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve access times. This tells rsync to set the access (use) times of the "
 "destination files to the same value as the source files."
 msgstr ""
-"그룹을 보존합니다(-g, --group). 대상 파일의 그룹을 원본 파일과 똑같이 유지합"
-"니다."
+"접근 시간을 보존합니다. rsync에게 대상 파일의 접근 시간을 원본 파일과 똑같이 "
+"유지하도록 지시합니다."
 
 #. i18n: ectx: label, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:395
-#, fuzzy, kde-format
-#| msgid "Preserve times"
+#, kde-format
 msgid "Preserve create times"
-msgstr "시간 보존"
+msgstr "생성 시간 보존"
 
 #. i18n: ectx: whatsthis, entry (PreserveCreateTimes), group (Synchronization)
 #: smb4k.kcfg:396
-#, fuzzy, kde-format
-#| msgid ""
-#| "Preserve the group (-g, --group). The group of the destination file will "
-#| "be set to the same value as the source file."
+#, kde-format
 msgid ""
 "Preserve create times. This tells rsync to set the create times (newness) of "
 "the destination files to the same value as the source files."
 msgstr ""
-"그룹을 보존합니다(-g, --group). 대상 파일의 그룹을 원본 파일과 똑같이 유지합"
-"니다."
+"그룹을 보존합니다. rsync에게 대상 파일의 생성 시간을 원본 파일과 똑같이 유지"
+"하도록 지시합니다."
 
 #. i18n: ectx: label, entry (PreserveGroup), group (Synchronization)
 #: smb4k.kcfg:400
@@ -1549,10 +1536,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (CustomFilteringRules), group (Synchronization)
 #: smb4k.kcfg:563
-#, fuzzy, kde-format
-#| msgid "Custom filter rules:"
+#, kde-format
 msgid "Custom filter rules"
-msgstr "사용자 정의 필터 규칙:"
+msgstr "사용자 정의 필터 규칙"
 
 #. i18n: ectx: label, entry (UseFFilterRule), group (Synchronization)
 #: smb4k.kcfg:568
@@ -1939,16 +1925,17 @@ msgstr "%2에서 %1 파일을 인쇄할 수 없음"
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
+"Zeroconf 데몬이 실행 중이 아닙니다. DNS-SD를 사용하여 발견한 서버가 없습니다."
 
 #: smb4kclient_p.cpp:1363
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
-msgstr ""
+msgstr "이 KDE 버전에서는 Zeroconf 지원을 사용할 수 없습니다."
 
 #: smb4kclient_p.cpp:1367
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
+msgstr "알 수 없는 Zeroconf 오류가 발생했습니다."
 
 #: smb4kclient_p.cpp:1963
 #, kde-format
@@ -2057,16 +2044,13 @@ msgid "Clear List"
 msgstr "목록 비우기"
 
 #: smb4kmounter.cpp:778
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt><p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user "
-#| "<b>%3</b>.</p><p>Do you really want to unmount it?</p></qt>"
+#, kde-format
 msgid ""
 "<p>The share <b>%1</b> is mounted to <br><b>%2</b> and owned by user <b>%3</"
 "b>.</p><p>Do you really want to unmount it?</p>"
 msgstr ""
-"<qt><p><b>%1</b> 공유가<br><b>%2</b>에 마운트되어 있으며 <b>%3</b> 사용자가 "
-"소유하고 있습니다.</p><p>마운트를 해제하시겠습니까?</p></qt>"
+"<p><b>%1</b> 공유가<br><b>%2</b>에 마운트되어 있으며 <b>%3</b> 사용자가 소유"
+"하고 있습니다.</p><p>마운트를 해제하시겠습니까?</p>"
 
 #: smb4kmounter.cpp:783
 #, kde-format
@@ -2900,7 +2884,7 @@ msgstr ""
 #: smb4kmountsettings_linux.kcfg:186
 #, kde-format
 msgid "Do not send byte range lock requests"
-msgstr ""
+msgstr "바이트 범위 잠금 요청 보내지 않기"
 
 #. i18n: ectx: whatsthis, entry (NoLocking), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:187
@@ -2911,6 +2895,9 @@ msgid ""
 "(and most CIFS servers do not yet support requesting advisory byte range "
 "locks)."
 msgstr ""
+"서버에 바이트 단위 범위 잠금 요청을 보내지 않습니다. CIFS 스타일 강제 바이트 "
+"범위 잠금이 설정되었을 때(또한 대부분 CIFS 서버는 추천 바이트 범위 잠금 요청"
+"을 지원하지 않음) 올바르게 작동하지 않는 앱에 필요합니다."
 
 #. i18n: ectx: label, entry (TranslateReservedChars), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:191
@@ -3143,8 +3130,7 @@ msgid "<p>The share <b>%1</b> has been mounted to <b>%2</b>.</p>"
 msgstr "<p><b>%1</b> 공유가 <b>%2</b>에 마운트되었습니다.</p>"
 
 #: smb4knotification.cpp:47
-#, fuzzy, kde-format
-#| msgid "Open"
+#, kde-format
 msgctxt "Open the contents of the share with the file manager"
 msgid "Open"
 msgstr "열기"
@@ -3339,19 +3325,17 @@ msgid "<p>The URL that was passed is invalid.</p>"
 msgstr "<p>전달한 URL이 잘못되었습니다.</p>"
 
 #: smb4knotification.cpp:420
-#, fuzzy, kde-format
-#| msgid ""
-#| "The network communication failed with the following error message: <s>%1</"
-#| "s>"
+#, kde-format
 msgid ""
 "<p>The network communication failed with the following error message: <s>%1</"
 "s></p>"
-msgstr "네트워크 통신이 실패했으며 다음 오류 메시지를 반환했습니다: <s>%1</s>"
+msgstr ""
+"<p>네트워크 통신이 실패했으며 다음 오류 메시지를 반환했습니다: <s>%1</s></p>"
 
 #: smb4knotification.cpp:428
 #, kde-format
 msgid "<p>An error with the Zeroconf service occurred: <s>%1</s></p>"
-msgstr ""
+msgstr "<p>Zeroconf 서비스에서 오류가 발생함: <s>%1</s></p>"
 
 #: smb4kprofilemanager_p.cpp:34
 #, kde-format
