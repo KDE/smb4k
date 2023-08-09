@@ -16,6 +16,7 @@
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
 #include <QWindow>
+#include <QFrame>
 
 // KDE includes
 #include <KConfigGroup>
@@ -42,14 +43,16 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
 
     descriptionWidgetLayout->addWidget(descriptionPixmap);
 
-    m_descriptionText = new QLabel(this);
+    m_descriptionText = new QLabel(descriptionWidget);
     m_descriptionText->setWordWrap(true);
-    m_descriptionText->setAlignment(Qt::AlignVCenter);
+    m_descriptionText->setAlignment(Qt::AlignBottom);
     m_descriptionText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    m_descriptionText->setText(i18n("No network item was set."));
 
     descriptionWidgetLayout->addWidget(m_descriptionText);
 
     layout->addWidget(descriptionWidget);
+    layout->addSpacing(layout->spacing());
 
     m_editorWidget = new Smb4KCustomSettingsEditorWidget(this);
     connect(m_editorWidget, &Smb4KCustomSettingsEditorWidget::edited, this, &Smb4KCustomSettingsEditor::slotCustomSettingsEdited);
@@ -92,7 +95,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
 {
     Q_ASSERT(networkItem);
 
-    bool customSettingsSet = false;
+    bool setCustomSettings = false;
 
     if (networkItem) {
         switch (networkItem->type()) {
@@ -108,7 +111,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
             }
 
             m_editorWidget->setCustomSettings(*m_customSettings.data());
-            customSettingsSet = true;
+            setCustomSettings = true;
 
             break;
         }
@@ -119,7 +122,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
             if (!share->isPrinter()) {
                 if (share->isHomesShare()) {
                     if (!Smb4KHomesSharesHandler::self()->specifyUser(share, true)) {
-                        return customSettingsSet;
+                        return setCustomSettings;
                     }
                 }
 
@@ -136,7 +139,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
                 }
 
                 m_editorWidget->setCustomSettings(*m_customSettings.data());
-                customSettingsSet = true;
+                setCustomSettings = true;
             }
 
             break;
@@ -147,7 +150,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
         }
     }
 
-    return customSettingsSet;
+    return setCustomSettings;
 }
 
 void Smb4KCustomSettingsEditor::slotRestoreDefaultsClicked()
