@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-04 00:46+0000\n"
-"PO-Revision-Date: 2023-08-02 07:58+0200\n"
+"PO-Revision-Date: 2023-08-07 20:52+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -572,13 +572,13 @@ msgstr "Resursvisning"
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
-"Definiera anpassade alternativ för värddatorn <b>%1</b> och alla delade "
+"Definiera egna inställningar för värddatorn <b>%1</b> och alla delade "
 "kataloger den tillhandahåller."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:117
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr "Definiera anpassade alternativ för den delade katalogen <b>%1</b>."
+msgstr "Definiera egna inställningar för den delade katalogen <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:269

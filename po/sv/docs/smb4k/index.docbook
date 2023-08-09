@@ -11,6 +11,9 @@
   <!ENTITY CIFS "<acronym
 >CIFS</acronym
 >">
+  <!ENTITY SMB3 "<acronym
+>SMB3</acronym
+>">
   <!ENTITY Samba "<application
 >Samba</application
 >">
@@ -60,16 +63,16 @@
   </authorgroup>
   <copyright>
     <year
->2005-2021</year>
+>2005-2023</year>
     <holder
 >Alexander Reinholdt</holder>
   </copyright>
   <legalnotice
 >&underFDL;</legalnotice>
   <date
->2021-03-30</date>
+>2023-02-19</date>
   <releaseinfo
->&smb4k; 3.1.0</releaseinfo
+>&smb4k; 3.2.0</releaseinfo
 ><!--FIXME change releaseinfo number-->
   <abstract>
     <para
@@ -94,7 +97,7 @@
 >Inledning</title>
 
   <para
->Den här handboken beskriver &smb4k; 3.1.x, och i viss utsträckning tidigare versioner.</para>
+>Den här handboken beskriver &smb4k; 3.2, och i viss utsträckning tidigare versioner.</para>
   <para
 >&smb4k; är en avancerad bläddrare för nätverksgrannskapet, och verktyget för montering av delade resurser <ulink url="http://www.samba.org"
 >Samba</ulink
@@ -107,7 +110,7 @@
 ></listitem>
     <listitem
 ><para
->Stöd för filsystemen &CIFS; (&Linux;) och SMBFS (BSD)</para
+>Stöd för filsystemen &CIFS; och &SMB3; på &Linux; samt SMBFS filsystemet på BSD</para
 ></listitem>
     <listitem
 ><para
@@ -171,7 +174,7 @@
 ></listitem>
     <listitem
 ><para
->Möjlighet att definiera egna alternativ för enskilda servrar och delade resurser</para
+>Möjlighet att definiera egna inställningar för enskilda servrar och delade resurser</para
 ></listitem>
     <listitem
 ><para
@@ -229,35 +232,9 @@
 > för bättre integrering med skrivbordet. Den kan läggas till som en grafisk komponent på skrivbordet eller i panelen.</para>
 
     <para
->Om systemet saknar några av programmen som &smb4k; behöver för att fungera på ett riktigt sätt, underrättas användaren om det:</para>
-    
-    <screenshot id="notification_missing_program">
-      <screeninfo
->Skärmbild av underrättelse om saknade program</screeninfo>
-      <mediaobject>
-        <imageobject
-><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
-        <textobject
-><phrase
->Underrättelse om saknade program</phrase
-></textobject>
-      </mediaobject>
-    </screenshot>
-    
-    <para
->Installera i detta fall det angivna programmet, eller om det redan finns, lägg till dess plats i miljövariabeln <envar
->PATH</envar
-> i skalets inställningsfil (för <ulink url="man:/bash"
-><citerefentry
-><refentrytitle
->bash</refentrytitle
-> <manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> är filen <filename
->~/.bashrc</filename
->).</para>
+>Om &smb4k; stöter på ett problem vid start eller under körning blir användaren underrättad om det. För att lösa några vanliga problem se avsnittet <link linkend="trouble_shooting"
+>Felsökning</link
+>.</para>
   </sect1>
 
 <!-- 
@@ -299,19 +276,19 @@
 >visningen av monterade resurser</link
 >.</para>
     <para
->Statusraden tillhandahåller viss information om &smb4k;s nuvarande status. Om programmet håller på att behandla en begäran av användaren (t.ex. att montera en delad resurs), visas ett beskrivande meddelande längst till vänster och en förloppsrad visas med indikering av att programmet är upptaget. De två ikonerna på höger sida anger om det finns delade resurser monterade (nätverkskatalogikonen) och status hos systemet för behörighetskontroll (plånboks- eller nyckelikonen).</para>
+>Statusraden tillhandahåller viss information om &smb4k;s nuvarande status. Om programmet håller på att behandla en begäran av användaren (t.ex. att montera en delad resurs), visas ett beskrivande meddelande längst till vänster och en förloppsrad visas med indikering av att programmet är upptaget. De två ikonerna på höger sida anger om delade resurser är monterade (nätverkskatalogikonen) och status hos systemet för behörighetskontroll (plånboks- eller nyckelikonen).</para>
     <para
 >Om dockningskomponenter är arrangerade som flikar, får användaren ytterligare visuell återmatning. Varje gång en delad resurs monteras eller avmonteras, markeras fliken <guilabel
 >Monterade resurser</guilabel
 > under några sekunder.</para>
     <para
->Huvudfönstret är ytterst anpassningsbart. Du kan dölja eller visa alla flikkomponenter (<menuchoice
+>Huvudfönstret är ytterst anpassningsbart. Du kan dölja eller visa alla flikkomponenter med <menuchoice
 ><guimenu
 >Inställningar</guimenu
 ><guimenuitem
 >Dockningskomponenter</guimenuitem
 ></menuchoice
->). De kan också dras omkring med musen och placeras på olika områden i huvudfönstret. Du kan till och med koppla bort dem från huvudfönstret. Statusraden och verktygsraderna kan döljas eller visas genom att ändra menyalternativet <menuchoice
+>. De kan också dras omkring med musen och placeras på olika områden i huvudfönstret. Du kan till och med koppla bort dem från huvudfönstret. Statusraden och verktygsraderna kan döljas eller visas genom att ändra menyalternativet <menuchoice
 ><guimenu
 >Inställningar</guimenu
 ><guimenuitem
@@ -335,9 +312,9 @@
 >Bläddraren i nätverksgrannskapet</title>
 
     <para
->Interaktion med nätverksgrannskapet görs med bläddraren i <guilabel
+>Bläddraren i <guilabel
 >Nätverksgrannskapet</guilabel
->. Den innehåller alla nätverksobjekt, dvs. arbetsgrupper, servrar och delade resurser som &smb4k; kunde hitta. De är organiserade i ett nätverksträd, och du kan navigera i det genom att antingen klicka på styrknappen intill objektnamnet eller genom att köra själva objektet.</para>
+> innehåller alla nätverksobjekt, dvs. arbetsgrupper, servrar och delade resurser som &smb4k; kunde hitta. De är organiserade i ett nätverksträd, och du kan navigera i det genom att antingen klicka på styrknappen intill objektnamnet eller genom att köra själva objektet.</para>
     <para
 >Huvudbläddraren i varje arbetsgrupp eller domän är markerad med en blå teckenfärg i nätverksträdet, om den har detekterats (t.ex. när DNS-SD används, huvudbläddraren i en &Windows;-domän känns inte igen). Monterade resurser är markerade med respektive katalogikon och ett kursivt teckensnitt.</para>
 
@@ -382,11 +359,17 @@
 >Avahi</ulink
 > och inte en riktig &Windows;-domän. Att öppna en domän eller arbetsgrupp visar servrarna som hör till den. Om du vill komma åt delade resurser på någon av servrarna, måste du öppna önskad server.</para>
       <para
->Det finns också möjlighet att väcka sovande servrar innan nätverksgrannskapet söks igenom (väckning av lokalt nätverk). Om funktionen är tillgänglig, skickar &smb4k; ett magiskt paket till varje server som ska väckas, och väntar den definierade tiden innan uppslagningen av arbetsgrupper och domäner startas. Inställningen av väckning av lokalt nätverk kan sättas på i <link linkend="configuration_page_network_wake_on_lan_settings"
+>Det finns också möjlighet att väcka sovande servrar innan nätverksgrannskapet söks igenom (väckning av lokalt nätverk). Om funktionen är tillgänglig, skickar &smb4k; ett magiskt paket till varje server som ska väckas, och väntar den definierade tiden innan uppslagningen av arbetsgrupper och domäner startas. Inställningen av väckning av lokalt nätverk kan sättas på i <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
 >inställningsdialogrutan</link
->. Servrarna som ska väckas måste definieras i dialogrutan <link linkend="network_neighborhood_browser_defining_custom_options"
->Anpassade alternativ</link
+>. Servrarna som ska väckas måste definieras i dialogrutan <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Egna inställningar</link
 >.</para>
+      <note>
+        <para
+>Om du använder DNS-tjänstupptäckt och Zeroconf-demonen (Avahi) inte körs, visar &smb4k; ett felmeddelande. Mer information finns i avsnittet <link linkend="trouble_shooting_zeroconf"
+>Felsökning</link
+>.</para>
+      </note>
     </sect2>
     
 <!--
@@ -430,7 +413,7 @@
 >Sök</guibutton
 >. &smb4k; börjar söka i hela nätverksgrannskapet. När sökningen är klar, är alla delade resurser som motsvarar sökbegreppet färglagda (markerade). Om du vill göra något med <emphasis
 >alla</emphasis
-> funna resurser (t.ex. montera eller granska) kan du omedelbart göra det. Annars kan knapparna <guibutton
+> funna resurser (t.ex. montera eller granska) kan du göra det nu. Annars kan knapparna <guibutton
 >Upp</guibutton
 > och <guibutton
 >Ner</guibutton
@@ -488,9 +471,7 @@
           </term>
           <listitem>
             <para
->Avbryt eventuell åtgärd som utförs av bläddraren i nätverksgrannskapet. Åtgärden är normalt osynlig och blir bara synlig (istället för åtgärden <guimenuitem
->Läs av nätverket|arbetsgrupp|datorn</guimenuitem
->) när en nätverkssökning pågår.</para>
+>Avbryt eventuell åtgärd som utförs av bläddraren i nätverksgrannskapet. Åtgärden är normalt osynlig och blir bara synlig när en nätverkssökning pågår.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -508,7 +489,9 @@
           </term>
           <listitem>
             <para
->Sök i nätverksgrannskapet efter ett angivet begrepp. Genom att aktivera åtgärden visas sökverktygsraden där sökbegreppet kan skrivas in och sökningen startas.</para>
+><link linkend="network_neighborhood_browser_searching"
+>Sök i nätverksgrannskapet</link
+> efter ett angivet begrepp. Genom att aktivera åtgärden visas sökverktygsraden där sökbegreppet kan skrivas in och sökningen startas.</para>
           </listitem>
         </varlistentry
 >        
@@ -527,11 +510,29 @@
           </term>
           <listitem>
             <para
->Lägg till ett bokmärke för den markerade delade fjärresursen. Åtgärden är inaktiverad om ingen delad resurs är markerad.</para>
+><link linkend="bookmarks_adding"
+>Lägg till ett bokmärke</link
+> för de markerade delade fjärresurserna. Åtgärden är inaktiverad om inga delade resurser är markerade.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>C</keycap
+> </keycombo
+> </shortcut
+> <guimenuitem
+>Lägg till egna inställningar</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
             <para
->Läs avsnittet <link linkend="bookmarks_adding"
->Lägga till bokmärken</link
-> för mer detaljerad information.</para>
+>Visa dialogrutan <link linkend="custom_settings"
+>Egna inställningar</link
+>. Du kan ställa in flera anpassade alternativ för den markerade servern eller delade resursen. Om en arbetsgrupp eller inget objekt är markerat, är menyalternativet inaktiverat.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -571,27 +572,7 @@
             <para
 >Visa <link linkend="network_neighborhood_browser_authentication"
 >Dialogrutan för behörighetskontroll</link
->. Du kan tillhandahålla inloggningsnamn och lösenord för den markerade servern eller delade resursen. Om en arbetsgrupp eller inget objekt är markerat, är åtgärden inaktiverat.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>
-            <menuchoice
-><shortcut
-> <keycombo action="simul"
-> &Ctrl; <keycap
->C</keycap
-> </keycombo
-> </shortcut
-> <guimenuitem
->Anpassade alternativ</guimenuitem
-> </menuchoice>
-          </term>
-          <listitem>
-            <para
->Visa dialogrutan <link linkend="network_neighborhood_browser_defining_custom_options"
->Anpassade alternativ</link
->. Du kan ställa in flera anpassade alternativ för den markerade servern eller delade resursen. Om en arbetsgrupp eller inget objekt är markerat, är menyalternativet inaktiverat.</para>
+> där du kan tillhandahålla användarnamn och lösenord för varje markerad server och delad resurs. Om en arbetsgrupp eller inget objekt är markerat, är åtgärden inaktiverat.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -611,7 +592,7 @@
             <para
 ><link linkend="network_neighborhood_browser_previewing"
 >Förhandsgranska</link
-> innehållet på den markerade delade fjärresursen. Åtgärden är bara aktiverad när en delad resurs är markerad. Delade skrivare går inte att förhandsgranska.</para>
+> innehållet på de markerade delade fjärresurserna. Åtgärden är bara aktiverad när delade resurser är markerade. Delade skrivare går inte att förhandsgranska.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -631,7 +612,7 @@
             <para
 ><link linkend="network_neighborhood_browser_printing"
 >Skriv ut</link
-> en fil på en fjärrskrivare. Åtgärden är bara tillgängligt om en delad skrivarresurs är markerad.</para>
+> en fil på en fjärrskrivare. Åtgärden är bara tillgängligt om åtminstone en delad skrivarresurs är markerad.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -649,9 +630,7 @@
           </term>
           <listitem>
             <para
->Montera den markerade fjärresursen. Menyalternativet är normalt inaktiverat, och dessutom om du klickade på något annat en en delad resurs med typen "Disk" eller "IPC". Om en monterad resurs är markerad, ersätts alternativet med alternativet <guimenuitem
->Avmontera</guimenuitem
->.</para>
+>Montera de markerade fjärresurserna. Alternativet är synligt om bara delade resurser är markerade som inte redan är monterade. Normalt, och om du markerade något annat än en delad resurs med typen "Disk" eller "IPC" är åtgärden inaktiverad.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -669,15 +648,15 @@
           </term>
           <listitem>
             <para
->Avmontera den markerade resursen. Åtgärden är normalt osynlig och blir bara synlig istället för alternativet <guimenuitem
+>Avmontera de markerade resurserna. Åtgärden är normalt osynlig och blir bara synlig istället för alternativet <guimenuitem
 >Montera</guimenuitem
-> när den delade resursen för närvarande är monterad.</para>
+> när åtminstone en monterad delad resurs är markerad.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Även om du kan hantera nätverksgrannskapet med ovannämnda snabbtangenter, är det i de flesta fall bekvämare att använda musen. Genom att högerklicka kan du visa en sammanhangsberoende meny. Den innehåller alla åtgärder som är tillgängliga för bläddraren i nätverksgrannskapet. Beroende på platsen du klickade (på ett nätverksobjekt eller i vyn), kan vissa av dem vara inaktiverade. Skärmbilden nedan visar den sammanhangsberoende menyn för en fjärresurs.</para>
+>I bläddraren i nätverksgrannskapet kan du högerklicka för att visa en sammanhangsberoende meny för att komma åt alla tillgängliga åtgärder. Beroende på platsen du klickade (på ett nätverksobjekt eller i vyn), kan vissa av dem vara inaktiverade. Skärmbilden nedan visar den sammanhangsberoende menyn för en fjärresurs.</para>
 
       <screenshot>
         <screeninfo
@@ -703,7 +682,7 @@
 >Verktygstips</title>
 
       <para
->För varje nätverksobjekt tillhandahålls ett verktygstips som innehåller diverse information, som arbetsgruppens namn och huvudbläddrare, värddatorns namn och IP-adress, den delade resursens namn, etc.</para>
+>För varje nätverksobjekt tillhandahålls ett verktygstips som innehåller diverse information, som arbetsgruppens namn och huvudbläddrare (om tillgänglig), värddatorns namn och IP-adress, den delade resursens namn, etc.</para>
       <para
 >Verktygstipsen kan inaktiveras i <link linkend="configuration_page_user_interface_network"
 >inställningsdialogrutan</link
@@ -716,7 +695,7 @@
 
     <sect2 id="network_neighborhood_browser_mounting">
       <title
->Montera en delad resurs</title>
+>Montera delade resurser</title>
 
       <para
 >Det finns tre alternativ tillgängliga för att montera en delad fjärresurs:</para>
@@ -728,7 +707,7 @@
 ></listitem>
         <listitem
 ><para
->Markera fjärresursen och klicka på menyalternativet <guimenuitem
+>Markera fjärresurserna och klicka på menyalternativet <guimenuitem
 >Montera</guimenuitem
 >. Som ett alternativ kan du trycka på snabbtangenten <keycombo action="simul"
 >&Ctrl;<keycap
@@ -738,7 +717,7 @@
 ></listitem>
         <listitem
 ><para
->Om &smb4k; inte kunde hitta servern där den delade resursen finns, kan du klicka på menyalternativet <menuchoice
+>Klicka på menyalternativet <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -935,37 +914,17 @@
 >varje gång</emphasis
 > de behövs.</para>
     </sect2>
-
+    
 <!-- 
-      Using Smb4K : The Network Neighborhood Browser : Defining Custom Options 
+      Using Smb4K : The Network Neighborhood Browser : Defining Custom Settings
   -->
 
-    <sect2 id="network_neighborhood_browser_defining_custom_options">
+    <sect2 id="network_neighborhood_browser_defining_custom_settings">
       <title
->Definiera anpassade inställningar</title>
-
+>Definiera egna inställningar</title>
+      
       <para
->Använd dialogrutan <guilabel
->Anpassade alternativ</guilabel
-> om du vill</para>
-      <itemizedlist>
-        <listitem
-><para
->definiera egen montering eller bläddringsinställning för en enstaka server eller delad resurs som avviker från värdena som är definierade i inställningsdialogrutan.</para
-></listitem>
-        <listitem
-><para
->definiera en server som ska väckas innan nätverkssökningar eller monteringsförsök (funktionen för väckning av lokalt nätverk, titta <link linkend="configuration_page_network_wake_on_lan_settings"
->här</link
->),</para
-></listitem>
-        <listitem
-><para
->montera alltid en viss delad resurs vid start eller när motsvarande profil är inläst.</para
-></listitem>
-      </itemizedlist>
-      <para
->Dialogrutan visas genom att klicka på menyalternativet <menuchoice
+>För enskilda servrar eller delade resurser kan egna inställningar definieras som skiljer sig från de globala inställningarna. För att göra det kan editorn av egna inställningar kommas åt genom att klicka på menyalternativet <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -973,84 +932,11 @@
 ></keycombo
 ></shortcut
 ><guimenuitem
->Anpassade inställningar</guimenuitem
+>Egna inställningar</guimenuitem
 ></menuchoice
->. Beroende på vad som väljes, gäller inställningarna antingen alla delade resurser på en server, eller bara en enda.</para>
-
-      <screenshot>
-        <screeninfo
->Skärmbild av dialogrutan för anpassade alternativ för en delad resurs</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="network_neighborhood_browser_custom_options_dialog.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Dialogrutan för anpassade alternativ</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-
-      <para
->Knappen <guibutton
->Förval</guibutton
-> är aktiverad om posterna i dialogrutan skiljer sig från inställningarna du definierade i inställningsdialogrutan. Genom att klicka på den kan du återställa inställningarna i dialogrutan till sina förvalda värdena. Knappen <guibutton
->Ok</guibutton
-> är aktiverad om du ändrat inställningarna i dialogrutan. Genom att klicka på den sparar de anpassade ändringarna och dialogrutan stängs.</para>
-      <note
-><para
->För BSD innehåller dialogrutan färre poster än om ett annat operativsystem används, eftersom flera av alternativen inte stöds.</para
-></note>
-
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_common_mount_settings">
-        <title
->Vanliga monteringsinställningar (bara &Linux;)</title>
-        
-        <para
->Under den här fliken kan vanliga inställningar relaterade till montering definieras. Att markera knappen <guibutton
->Återmontera alltid resursen</guibutton
-> för en markerad resurs gör att den återmonteras vid varje programstart. För information om alla andra inställningar, titta i <link linkend="configuration_page_mounting"
->det här avsnittet</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_advanced_mount_settings">
-        <title
->Avancerade monteringsinställningar (bara &Linux;)</title>
-        
-        <para
->Under den här fliken kan avancerade inställningar relaterade till montering definieras. För information om alla andra inställningar, titta i <link linkend="configuration_page_mounting"
->det här avsnittet</link
->.</para>
-      </sect3>
-      
-      <sect3 id="network_neighborhood_browser_custom_options_dialog_bsd_mount_settings">
-        <title
->Monteringsinställningar (bara BSD)</title>
-        
-        <para
->Under den här fliken kan inställningar relaterade till montering definieras. För information om alla andra inställningar, titta i <link linkend="configuration_page_mounting"
->det här avsnittet</link
->.</para>
-      </sect3>
-        
-      <sect3 id="network_neighborhood_browser_defining_custom_options_samba">
-        <title
->Bläddringsinställningar</title>
-
-        <para
->Du kan definiera minimal och maximal SMB-protokollversion samt SMB-port som ska användas. Dessutom kan du bestämma om Kerberos ska användas för behörighetskontroll. För detaljerad information om dessa inställningar, titta på <link linkend="configuration_page_network"
->nätverksinställningssidan</link
->.</para>
-      </sect3>
-
-      <sect3 id="network_neighborhood_browser_defining_custom_options_wol">
-        <title
->Inställningar av väckning av lokalt nätverk</title>
-    
-        <para
->För att få funktionen för att väckas av lokalt nätverk att fungera, måste MAC-adressen för servern som valdes tillhandahållas. &smb4k; har inget sätt att bestämma MAC-adressen, så du måste ta reda på den själv. Därefter kan du definiera att &smb4k; ska skicka ett magiskt paket för väckning av lokalt nätverk till den valda värddatorn innan nätverksgrannskapet söks igenom och/eller någon av dess delade resurser monteras.</para>
-      </sect3>
+>. Se avsnittet <link linkend="custom_settings"
+>Egna inställningar</link
+> för mer information.</para>
     </sect2>
 
 <!-- 
@@ -1131,11 +1017,11 @@
       </screenshot>
 
       <para
->Du kan byta mellan de två vyerna genom att antingen välja lämpligt alternativ i undermenyn <guimenuitem
+>Du kan byta mellan de två vyerna genom att välja lämpligt alternativ i undermenyn <guimenuitem
 >Visningslägen</guimenuitem
-> i menyn <link linkend="mainwindow_overview"
+> i verktygsraden, i menyraden under <link linkend="mainwindow_overview"
 ><guimenu
->Visning av delade resurser</guimenu
+>Delade resurser</guimenu
 ></link
 > i huvudfönstret eller i den <link linkend="shares_view_actions_popup_menu"
 >sammanhangsberoende meny</link
@@ -1213,7 +1099,7 @@
           </term>
           <listitem>
             <para
->Avmontera en eller flera delade resurser. Om ingen delad resurs är markerad i resursvyn, är knappen inaktiverad.</para>
+>Avmontera de markerade delade resurserna. Om ingen delad resurs är markerad i resursvyn, är knappen inaktiverad.</para>
             <para
 >Läs avsnittet <link linkend="shares_view_unmounting"
 >Avmontera delade resurser</link
@@ -1257,11 +1143,31 @@
           </term>
           <listitem>
             <para
->Lägg till bokmärken för de monterade delade resurserna som för närvarande är markerade. Åtgärden är inaktiverad om ingen delad resurs är markerad.</para>
+>Lägg till bokmärken för de markerade delade resurserna. Åtgärden är inaktiverad om ingen delad resurs är markerad.</para>
             <para
 >Läs avsnittet <link linkend="bookmarks_adding"
 >Lägga till bokmärken</link
 > för mer detaljerad information.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><shortcut
+> <keycombo action="simul"
+> &Ctrl; <keycap
+>C</keycap
+> </keycombo
+> </shortcut
+> <guimenuitem
+>Lägg till egna inställningar</guimenuitem
+> </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Öppna editorn för egna inställningar för de markerade delade resurserna. Läs avsnittet om editorn av <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Egna inställningar</link
+> för mer information.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1376,13 +1282,27 @@
 >Oåtkomliga resurser</title>
 
       <para
->&smb4k; kontrollerar periodiskt om alla monterade delade resurser fortfarande är åtkomliga. Om en oåtkomlig resurs träffas på, markeras den med en <link linkend="shares_view_icons"
->låst katalogikon</link
->, och du kommer inte att kunna öppna eller synkronisera den längre. Att avmontera och lägga till ett bokmärke är fortfarande möjligt.</para>
+>&smb4k; kontrollerar periodiskt om alla monterade delade resurser fortfarande är åtkomliga. Om en oåtkomlig resurs träffas på, markeras den med en låssymbol, och du kommer inte att kunna öppna eller synkronisera den längre. Att avmontera och lägga till ett bokmärke är fortfarande möjligt.</para>
       <note
 ><para
 >Programmet kan frysas en kort tidsperiod på grund av en oåtkomlig delad resurs. Det återhämtar sig därefter.</para
 ></note>
+    </sect2>
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Shares Owned by Other Users
+  -->
+    
+    <sect2 id="shares_view_foreign_shares">
+      <title
+>Resurser ägda av andra användare</title>
+      
+      <para
+>Delade resurser ägda av en annan användare visas bara om du ändrat <link linkend="configuration_page_mounting_basic_settings_behavior"
+>inställningarna</link
+> för att visa dem. Med den normala inställningen tillåts du inte avmontera dessa resurser, men du kan också <link linkend="configuration_page_mounting_basic_settings_behavior"
+>ändra det beteendet</link
+>.</para>
     </sect2>
 
 <!-- 
@@ -1394,38 +1314,7 @@
 >Ikoner</title>
 
       <para
->Tre olika ikoner kan visas för användaren:</para>
-      <screenshot>
-        <screeninfo
->Skärmbild av tre olika ikoner</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_icons.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Tre olika ikoner</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-      <itemizedlist>
-        <listitem
-><para
->Ikonen på vänster sida talar om att den delade resursen inte är tillgänglig. &smb4k; låter dig inte öppna eller synkronisera den. Du kommer bara att kunna avmontera den eller lägga till ett bokmärke.</para
-></listitem>
-        <listitem
-><para
->Ikonen i mitten anger att den delade resursen är uppkopplad, åtkomlig och ägd av dig. Du kan utföra alla tillgängliga åtgärder med den.</para
-></listitem>
-        <listitem
-><para
->Alla delade resurser markerade med ett varningstecken som liknar det på höger sida ägs av en annan användare. De visas bara om du ändrat <link linkend="configuration_page_mounting_basic_settings_behavior"
->inställningarna</link
-> för att visa dem. Med den normala inställningen tillåts du inte avmontera dessa resurser, men du kan också <link linkend="configuration_page_mounting_basic_settings_behavior"
->ändra det beteendet</link
->.</para
-></listitem>
-      </itemizedlist>
+>En monterad resurs indikeras av en liten motsvarande symbol i det nedre hörnet av katalogikonen. Det ändras till ett lås för delade resurser som inte är tillgängliga. För delade resurser som tillhör en annan användare ersätts den av en varningsskylt.</para>
     </sect2>
 
 <!-- 
@@ -1437,7 +1326,7 @@
 >Drag och släpp</title>
 
       <para
->&smb4k; stöder drag och släpp i visningen av delade resurser. För att överföra eller länka data med en delad resurs, dra filerna och/eller katalogerna över den delade ikonen och släppa dem där. En sammanhangsberoende meny öppnas som frågar dig vad du vill göra. Välj lämplig åtgärd (kopiera, flytta eller länka).</para>
+>&smb4k; stöder drag och släpp i visningen av delade resurser. För att överföra eller länka data med en delad resurs, dra filerna och/eller katalogerna över den delade ikonen och släppa dem där. En sammanhangsberoende meny öppnas som frågar dig vad som ska göras. Välj lämplig åtgärd (kopiera, flytta eller länka).</para>
       <screenshot>
         <screeninfo
 >Skärmbild av de delade resursernas vy efter användaren har släppt en fil</screeninfo>
@@ -1456,7 +1345,7 @@
 >&Ctrl;&Shift;</keycombo
 > för att länka. Överföringen lyckas bara om resursen monterades med läs- och skrivrättigheter.</para>
       <para
->Du kan också dra och släppa hela den delade resursen till skrivbordet eller till ett annat program (t.ex. &dolphin;). Återigen visas en sammanhangsberoende meny som frågar dig vad du vill göra. När du väljer lämplig åtgärd, kom då ihåg att i de flesta omständigheter är de inte en god idé att flytta och länka en delad resurs.</para>
+>Du kan också dra och släppa hela den delade resursen till skrivbordet eller till ett annat program (t.ex. &dolphin;). Återigen visas en sammanhangsberoende meny som frågar dig vad som ska göras. När du väljer lämplig åtgärd, kom då ihåg att i de flesta omständigheter är de inte en god idé att flytta och länka en delad resurs.</para>
     </sect2>
 
 <!-- 
@@ -1468,7 +1357,7 @@
 >Avmontera delade resurser</title>
 
       <para
->En eller flera markerade resurser kan avmonteras genom att antingen klicka på menyalternativet <menuchoice
+>En eller flera markerade resurser kan avmonteras genom att antingen klicka på alternativet <menuchoice
 ><shortcut
 ><keycombo action="simul"
 >&Ctrl; <keycap
@@ -1480,28 +1369,11 @@
 ></menuchoice
 >, eller trycka på dess snabbtangent. Normalt är möjligheten att avmontera en resurs begränsat till de som ägs av dig. Beteendet kan ändras i <link linkend="configuration_page_mounting_basic_settings_behavior"
 >inställningsdialogrutan</link
->. Om du aktiverat avmontering av resurser som ägs av andra användare, visas en varningsdialogruta innan själva avmonteringen:</para>
-      <screenshot>
-        <screeninfo
->Skärmbild av varningsdialogrutan som visas när en främmande delad resurs ska avmonteras</screeninfo>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="shares_view_warning_dialog_foreign_share.png" format="PNG"/>
-          </imageobject>
-          <textobject>
-            <phrase
->Varningsdialogrutan som visas när en främmande delad resurs avmonteras</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
+>. Om du aktiverat avmontering av resurser som ägs av andra användare, visas en varningsdialogruta innan själva avmonteringen. Så, tänk efter noga innan du bestämmer dig för att avmontera sådana resurser!</para>
       <para
->Om du klickar på knappen <guibutton
->Ja</guibutton
->, avmonteras resursen definitivt. Tänk alltså efter ordentligt innan du bestämmer dig för att avmontera delade resurser som ägs av andra användare.</para>
-      <para
->&smb4k; tillhandahåller också möjlighet att tvinga avmontering av delade resurser (bara på &Linux;). Det kan vara användbart för oåtkomliga delade resurser som inte kan avmonteras på det normala sättet. För att aktivera funktionen måste <link linkend="configuration_page_mounting_basic_settings_behavior"
+>&smb4k; tillhandahåller möjlighet att tvinga avmontering av delade resurser (bara på &Linux;). Det kan vara användbart för oåtkomliga delade resurser som inte kan avmonteras på det normala sättet. För att aktivera funktionen måste <link linkend="configuration_page_mounting_basic_settings_behavior"
 >inställningarna</link
-> i inställningsdialogrutan ändras. &smb4k; utför sedan en <ulink url="man:/umount"
+> i inställningsdialogrutan ändras. &smb4k; utför sedan en <ulink url="man:/umount(8)"
 >lat avmontering</ulink
 > för resurser som inte går att komma åt.</para>
       <para
@@ -1519,7 +1391,31 @@
       <para
 >Efter en lyckad avmonteringsprocess, får användaren en underrättelse. Om avmonteringen misslyckas, visas en underrättelse med det returnerade felmeddelandet.</para>
     </sect2>
-
+    
+<!--
+      Using Smb4K : The Mounted Shares View : Defining Custom Settings
+  -->
+    
+    <sect2 id="shares_view_adding_custom_settings">
+      <title
+>Definiera egna inställningar</title>
+      
+      <para
+>För de markerade delade resurserna kan egna inställningar definieras. Klicka på alternativet <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Lägg till egna inställningar</guimenuitem
+></menuchoice
+> för att öppna dialogrutan för egna inställningar. För mer information, se <link linkend="custom_settings"
+>det här avsnittet</link
+>.</para>
+    </sect2>
+    
 <!-- 
       Using Smb4K : The Mounted Shares View : Synchronization 
   -->
@@ -1539,7 +1435,7 @@
 ><guimenuitem
 >Synkronisera</guimenuitem
 ></menuchoice
-> visar dialogrutan för synkronisering. Den erbjuder dig den delade resursens monteringspunkt som källan och <link linkend="configuration_page_synchronization_basic_settings_default_destination"
+> visar dialogrutan för synkronisering. Den erbjuder den delade resursens monteringspunkt som källan och <link linkend="configuration_page_synchronization_basic_settings_default_destination"
 >synkroniseringsprefixet</link
 > som målet. I de flesta fall ska man nog redigera målet att peka på rätt plats. För att uppdatera resursens data kan målet bytas med källan genom att klicka på knappen <guibutton
 >Byt källa och mål</guibutton
@@ -1560,9 +1456,7 @@
       <para
 >Att klicka på knappen <guibutton
 >Synkronisera</guibutton
-> påbörjar synkroniseringen. Genom att vänsterklicka på knappen <guibutton
->Underrättelser</guibutton
-> i systembrickan, kan en förloppsdialogruta öppnas som visas detaljinformation om överföringen.</para>
+> startar synkroniseringen och en förloppsrad visas, som visar information om överföringen.</para>
       <screenshot>
         <screeninfo
 >Skärmbild av synkroniseringens förloppsdialogruta</screeninfo>
@@ -1578,15 +1472,6 @@
       </screenshot>
       <para
 >Synkroniseringen kan avbrytas när som helst genom att klicka på stoppknappen till höger om förloppsraden.</para>
-            
-      <note>
-        <para
->Det totala antalet filer som visas i förloppsdialogrutan motsvarar det totala antal filer som finns på den delade resursen, och inte nödvändigtvis det totala antalet filer som faktiskt kommer att överföras.</para>
-        <para
->Förloppet beräknas från antal överförda filer dividerat med totala antalet filer som finns på den delade resursen. Filstorlekar tas inte hänsyn till. Det betyder att en mycket stor fil lägger till precis lika mycket till förloppet som en mycket liten gör. På grund av sättet som <application
->rsync</application
-> visar överföringens förlopp, uppdateras dessutom förloppsraden bara efter att överföringen av en fil är klar.</para>
-      </note>
     </sect2>
 
 <!-- 
@@ -1677,7 +1562,7 @@
       </screenshot>
 
       <para
->Genom att vänsterklicka på statusikonen kan du minimera huvudfönstret eller återställas. Ett högerklick visar en sammanhangsberoende meny som innehåller flera alternativ som låter dig arbeta med monterade resurser, hantera eller montera bokmärken, välja profilen du vill använda och anpassa &smb4k; utan att öppna huvudfönstret.</para>
+>Du kan minimera eller återställa huvudfönstret genom att vänsterklicka på statusikonen. Ett högerklick visar en sammanhangsberoende meny som innehåller flera alternativ som låter dig arbeta med monterade resurser, hantera eller montera bokmärken, välja profilen du vill använda och anpassa &smb4k; utan att öppna huvudfönstret.</para>
     </sect2>
 
 <!-- 
@@ -1755,6 +1640,20 @@
         </varlistentry>
         <varlistentry>
           <term>
+            <menuchoice>
+              <guimenuitem
+>Lägg till egna inställningar</guimenuitem>
+            </menuchoice>
+          </term>
+          <listitem>
+            <para
+>Öppna editorn för egna inställningar för markerad delad resurs. För ytterligare information läs avsnittet om editorn av <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Egna inställningar</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
             <menuchoice
 ><guimenuitem
 >Synkronisera</guimenuitem
@@ -1762,10 +1661,10 @@
           </term>
           <listitem>
             <para
->Synkronisera den monterade resursen med en lokal kopia eller tvärtom. För ytterligare information läs <link linkend="shares_view_actions_popup_menu"
->den här sidan</link
+>Synkronisera den monterade resursen med en lokal kopia eller tvärtom. För ytterligare information läs avsnitten om visningen av delade resursers <link linkend="shares_view_actions_popup_menu"
+>åtgärder och sammanhangsberoende meny</link
 > och <link linkend="shares_view_synchronization"
->dessutom den här sidan</link
+>synkronisering</link
 >.</para>
           </listitem>
         </varlistentry>
@@ -1824,10 +1723,10 @@
 >Lägg till bokmärke</guimenuitem
 > inte är tillgängligt.</para>
       <para
->Alla profiler som har <link linkend="profiles"
->definierats</link
-> listas i menyn <guimenuitem
+>I menyn <guimenuitem
 >Profiler</guimenuitem
+>, listas alla <link linkend="profiles"
+>profiler</link
 >:</para>
 
       <screenshot>
@@ -1846,7 +1745,7 @@
       <para
 >Du kan aktivera en profil genom att klicka på den. Profiler kan <link linkend="profiles"
 > hanteras</link
-> via <link linkend="configuration_page_profiles"
+> i <link linkend="configuration_page_profiles"
 >inställningsdialogrutan</link
 >.</para>
       <para
@@ -1864,7 +1763,7 @@
             <para
 >Öppna <link linkend="network_neighborhood_browser_mounting"
 >dialogrutan</link
-> för "manuell" montering.</para>
+> för att montera delade resurser genom att tillhandahålla webbadress, IP-adress och domän eller arbetsgrupp manuellt.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1876,9 +1775,9 @@
           </term>
           <listitem>
             <para
->Öppna inställningsdialogrutan. Se <link linkend="configuration"
->inställningsavsnittet</link
-> för en fullständig lista med tillgängliga inställningar.</para>
+>Öppna inställningsdialogrutan. Se avsnittet om <link linkend="configuration"
+>inställningar</link
+> för en fullständig lista över tillgängliga inställningar.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1980,8 +1879,8 @@
 >Upp</guibutton
 > i verktygsraden.</para>
     <para
->För värddatorer och delade resurser finns några åtgärdsknappar arrangerade till höger om namnet på nätverksobjektet. För värddatorer finns en knapp som man kan öppna dialogrutan <link linkend="network_neighborhood_browser_defining_custom_options"
->Anpassade alternativ</link
+>För värddatorer och delade resurser finns några åtgärdsknappar arrangerade till höger om nätverksobjektets namn. För värddatorer finns en knapp som man kan öppna dialogrutan <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Egna inställningar</link
 >. För delade resurser finns ytterligare knappar för att <link linkend="network_neighborhood_browser_previewing"
 >förhandsgranska den delade resursens</link
 > och för att <link linkend="bookmarks_adding"
@@ -1997,7 +1896,7 @@
 > och <guibutton
 >Monteringsdialogruta</guibutton
 >. De kan används för att söka igen, avbryta en eventuell pågående åtgärd eller öppna <link linkend="network_neighborhood_browser_mounting"
->dialogrutan för "manuell" montering</link
+>monteringsdialogrutan</link
 >.</para>
   </sect2>
 
@@ -2028,7 +1927,7 @@
     </screenshot>
 
     <para
->Till höger om namnet på resursen och dess värddator är tre åtgärdsknappar arrangerade. Den första är till för att <link linkend="bookmarks_adding"
+>På höger sida om varje resurs är tre åtgärdsknappar arrangerade. Den första är till för att <link linkend="bookmarks_adding"
 > lägga till ett bokmärke</link
 >, den andra för <link linkend="shares_view_synchronization"
 >synkronisering</link
@@ -2050,9 +1949,9 @@
 >Fliken Bokmärken</title>
 
     <para
->På sidan <guilabel
+>Bokmärkena listas på sidan <guilabel
 >Bokmärken</guilabel
-> listas bokmärkesgrupper och bokmärken definierade för profilen som för närvarande är aktiv.</para>
+>.</para>
     
     <screenshot>
       <screeninfo
@@ -2068,9 +1967,7 @@
     </screenshot>
 
     <para
->Bokmärkta delade resurser kan monteras genom att vänsterklicka på respektive bokmärke. Bokmärkesgrupper kan hanteras på samma sätt.</para>
-    <para
->För att redigera eller ta bort bokmärkena, tryck på åtgärdsknappen <guibutton
+>Bokmärkta delade resurser kan monteras genom att vänsterklicka på respektive bokmärke. För att redigera eller ta bort bokmärkena, tryck på åtgärdsknappen <guibutton
 >Redigera</guibutton
 > i verktygsraden för att öppna <link linkend="bookmarks_editor"
 >bokmärkeseditorn</link
@@ -2108,9 +2005,7 @@
     </screenshot>
   
     <para
->En viss profil kan aktiveras genom att klicka på den.</para>
-    <para
->Profiler kan <link linkend="profiles"
+>Du kan aktivera en viss profil genom att klicka på den. Alla profiler kan <link linkend="profiles"
 > hanteras</link
 > via <link linkend="configuration_page_profiles"
 >inställningsdialogrutan</link
@@ -2145,10 +2040,10 @@
       </mediaobject>
     </screenshot>
     
-    <note>
+    <caution>
       <para
 >Du bör inte inte öppna två inställningsdialogrutor (via huvudprogrammet och Plasmoiden) samtidigt, eftersom de kan interferera med varandra.</para>
-    </note>
+    </caution>
   </sect2>
   
 </sect1>
@@ -2196,9 +2091,9 @@
       </screenshot>
 
       <para
->Att definiera kategori kan hjälpa till att organisera bokmärkena. I bokmärkesmenyn arrangeras alla bokmärken som hör till en kategori i en undermeny med kategorialternativet som överliggande alternativ (se <link linkend="bookmarks_menu"
->nedan</link
->).</para>
+>Att definiera kategorier kan hjälpa till att organisera bokmärkena. I <link linkend="bookmarks_menu"
+>bokmärkesmenyn</link
+> arrangeras alla bokmärken som hör till samma kategori i en undermeny.</para>
       <para
 >Beteckningen kan vara vilken text som helst som beskriver den delade resursen. Om du definierar en beteckning visas den normal i bokmärkesmenyn istället för platsen. Om du vill ändra beteendet, går det att göra i <link linkend="configuration_page_user_interface_main_window"
 >inställningsdialogrutan</link
@@ -2264,20 +2159,20 @@
           </term>
           <listitem>
             <para
->Lägger till bokmärken för de markerade delade resurserna. Åtminstone en delad resurs måste vara markerad för att åtgärden ska aktiveras.</para>
+>Lägger till bokmärken för de markerade delade resurserna. Åtminstone en delad resurs måste vara markerad för att alternativet ska aktiveras.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para
->Om du inte har definierat några kategorier, finns ett tredje alternativ:</para>
+>Om det finns bokmärken som inte är tilldelade till en kategori, och därför visas direkt på menyns översta nivå, finns ett tredje alternativ:</para>
 
       <variablelist>
         <varlistentry>
           <term>
             <menuchoice
 ><guimenuitem
->Montera alla bokmärken</guimenuitem
+>Montera bokmärken</guimenuitem
 ></menuchoice>
           </term>
           <listitem>
@@ -2288,11 +2183,11 @@
       </variablelist>
 
       <para
->Alla andra alternativ är antingen kategori-undermenyer eller bokmärken som inte hör till någon kategori. Alla alternativ listas alfabetiskt, och bokmärkena kan antingen visas med sin plats eller en beskrivande beteckning. Genom att klicka på ett bokmärke monteras respektive delade resurs. Om en delad resurs med bokmärke är monterad på systemet, är bokmärkesalternativet tillfälligt inaktiverat.</para>
+>Alla andra alternativ är antingen undermenyer för kategorier eller bokmärken som inte hör till någon kategori. Alternativen listas alfabetiskt, och bokmärkena kan antingen visas med sin plats eller en beskrivande beteckning. Om du klickar på ett bokmärke monteras respektive delade resurs. Om en delad resurs med bokmärke är redan monterad på systemet, är alternativet inaktiverat.</para>
       <para
 >Kategori-undermenyerna innehåller de tilldelade bokmärkena, och i varje finns också menyalternativet <guimenuitem
->Montera alla bokmärken</guimenuitem
->. Det senare alternativet kan användas för att montera alla bokmärken i kategorin på en gång.</para>
+>Montera bokmärken</guimenuitem
+>. Det kan användas för att montera alla bokmärken i kategorin på en gång.</para>
       <para
 >I systembrickans komponent finns en identisk <link linkend="systemtray_menus"
 >undermeny</link
@@ -2303,19 +2198,11 @@
 >.</para>
       <para
 >Plasmoiden tillhandahåller <link linkend="plasmoid_bookmarks"
->fliken</link
-> <guilabel
->Bokmärken</guilabel
-> där alla bokmärken är arrangerade på ett liknande sätt som i bokmärkesmenyn. Bokmärkeskategorierna och bokmärkena listas i vyn. Bokmärkta delade resurser kan monteras genom att klicka på respektive alternativ. I verktygsraden finns två åtgärder: <guimenuitem
->Tillbaka</guimenuitem
-> och <guimenuitem
->Redigera</guimenuitem
->. Genom att klicka på <guimenuitem
->Tillbaka</guimenuitem
-> kan du komma tillbaka till toppnivån om du gick ner i en kategorikatalog. Åtgärden <guimenuitem
->Redigera</guimenuitem
-> öppnar <link linkend="bookmarks_editor"
->bokmärkeseditorn</link
+>fliken <guilabel 
+>Bokmärken</guilabel 
+></link
+> där alla bokmärken är ordnade på liknande sätt som i bokmärkesmenyn. För ytterligare information läs <link linkend="plasmoid_bookmarks"
+>det här avsnittet</link
 >.</para>
     </sect2>
     
@@ -2421,6 +2308,166 @@
 >.</para>
     </sect2>
   </sect1>
+  
+<!--
+      Using Smb4K : Custom Settings
+  -->
+  
+  <sect1 id="custom_settings">
+    <title
+>Egna inställningar</title>
+
+    <sect2 id="custom_settings_usage">
+      <title
+>Använda egna inställningar</title>
+
+      <para
+>Förutom de globala inställningarna som kan definieras i <link linkend="configuration"
+>inställningsdialogrutan</link
+>, erbjuder &smb4k; möjligheten att konfigurera individuella inställningar per server eller delad resurs. Du kan använda de egna inställningarna om du vill:</para>
+      <itemizedlist>
+        <listitem
+><para
+>definiera individuell montering eller bläddringsinställning för en enstaka server eller delad resurs som avviker från värdena som är definierade i inställningsdialogrutan.</para
+></listitem>
+        <listitem
+><para
+>definiera en server som ska väckas innan nätverkssökningar eller monteringsförsök (funktionen för väckning av lokalt nätverk, titta <link linkend="configuration_page_network_advanced_settings_wake_on_lan"
+>här</link
+>),</para
+></listitem>
+        <listitem
+><para
+>montera alltid en viss delad resurs vid start eller när motsvarande profil är inläst.</para
+></listitem>
+      </itemizedlist>
+    </sect2>
+
+    <sect2 id="custom_settings_adding">
+      <title
+>Lägga till egna inställningar</title>
+
+      <para
+>Om du behöver definiera egna inställningar för en delad resurs i både <link linkend="network_neighborhood_browser_actions_popup_menu"
+>bläddraren i nätverksgrannskapet</link
+> och <link linkend="shares_view_actions_popup_menu"
+>visningen av delade resurser</link
+>, kan du öppna editorn av egna resurser genom att klicka på menyalternativet <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+></shortcut
+><guimenuitem
+>Lägg till egna inställningar</guimenuitem
+></menuchoice
+>.</para>
+    
+      <screenshot>
+        <screeninfo
+>Skärmbild av editorn av egna inställningar för en delad resurs</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="custom_settings_editor.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase
+>Editorn av egna inställningar</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <!-- FIXME: Custom settings for a server are also applied to its shares. -->
+
+      <para
+>Individuella inställningar kan göras under följande sektioner eller flikar:</para>
+      
+      <variablelist>
+        <varlistentry>
+          <term
+><guilabel
+>Vanliga monteringsinställningar</guilabel
+> (bara &Linux;) </term>
+          <listitem>
+            <para
+>Du kan definiera vanliga inställningar relaterade till montering här. Markera knappen <guibutton
+>Återmontera alltid resursen</guibutton
+> om du vill återmonteras den markerade delade resursen varje gång du startar &smb4k;. För detaljerad information om inställningarna, ta en titt på <link linkend="configuration_page_mounting"
+>det här avsnittet</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Avancerade monteringsinställningar</guilabel
+> (bara &Linux;) </term>
+          <listitem>
+            <para
+>Du kan definiera avancerade inställningar relaterade till montering här. För detaljerad information om inställningarna, ta en titt på <link linkend="configuration_page_mounting_advanced_mount_settings"
+>det här avsnittet</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term
+><guilabel
+>Monteringsinställningar</guilabel
+> (bara BSD) </term>
+          <listitem>
+            <para
+>Du kan definiera inställningar relaterade till montering här. För detaljerad information om inställningarna, ta en titt på <link linkend="configuration_page_mounting_mount_settings"
+>det här avsnittet</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Bläddringsinställningar</guilabel>
+          </term>
+          <listitem>
+            <para
+>Du kan definiera minimal och maximal SMB-protokollversion samt SMB-port som ska användas. Dessutom kan du bestämma om Kerberos ska användas för behörighetskontroll. För detaljerad information om inställningarna, ta en titt på <link linkend="configuration_page_network"
+>det här avsnittet</link
+>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <guilabel
+>Inställningar av väckning av lokalt nätverk</guilabel>
+          </term>
+          <listitem>
+            <para
+>För att få funktionen för att väckas av lokalt nätverk att fungera, måste MAC-adressen för servern som valdes tillhandahållas. &smb4k; har inget sätt att bestämma MAC-adressen, så du måste ta reda på den själv. Därefter kan du definiera om servern ska väckas genom att skicka ett magiskt paket för väckning av lokalt nätverk innan nätverksgrannskapet söks igenom och/eller någon av dess delade resurser monteras.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      
+      <para
+>Knappen <guibutton
+>Förval</guibutton
+> är aktiverad om posterna i dialogrutan skiljer sig från inställningarna du definierade i inställningsdialogrutan. Genom att klicka på den kan du återställa inställningarna i dialogrutan till sina förvalda värdena. Knappen <guibutton
+>Ok</guibutton
+> är aktiverad om du ändrat inställningarna i dialogrutan. Genom att klicka på den sparar de anpassade ändringarna och dialogrutan stängs.</para>
+      <para
+>Observera att för BSD innehåller dialogrutan färre poster än om &Linux; används, eftersom flera av alternativen inte stöds.</para>
+    </sect2>
+
+    <sect2 id="custom_settings_managing_and_editing">
+      <title
+>Redigera egna inställningar</title>
+
+      <para
+>Du kan redigera eller återställa inställningarna för enskilda nätverksobjekt genom att öppna editorn av egna inställningar. En fullständig översikt över alla egna inställningar ges av inställningssidan <link linkend="configuration_page_custom_settings"
+><guilabel
+>Egna inställningar</guilabel
+></link
+>, där du också kan redigera eller ta bort önskade inställningar.</para>
+    </sect2>
+  </sect1>
 
 <!-- 
       Using Smb4K : Profiles 
@@ -2433,7 +2480,7 @@
     <para
 >&smb4k; erbjuder möjligheten att använda olika profiler. De är avsedda att underlätta hantering av olika nätverksgrannskap, t.ex. om du använder din bärbara dator både hemma och på arbetet.</para>
     <para
->Normalt är användning av olika profiler inaktiverat, och en standardprofil används: en profil för allting. De flesta användare behöver inte ändra det, eftersom standardbeteendet uppfyller deras behov helt och hållet. För vissa användare kan den här funktionen dock vara mycket användbar.</para>
+>Normalt är användning av profiler inaktiverat. De flesta användare behöver inte ändra det, eftersom standardbeteendet uppfyller deras behov helt och hållet. För vissa användare kan den här funktionen dock vara användbar.</para>
   
 <!-- 
       Using Smb4K : Profiles : Enabling and Managing Profiles 
@@ -2453,7 +2500,7 @@
 >Hem</guilabel
 > och <guilabel
 >Arbete</guilabel
->, men du kan definiera hur många profiler du vill. En ny profil läggs till genom att skriva in dess namn i redigeringsraden på inställningssidan <guibutton
+>, men du kan definiera hur många profiler du vill. En ny profil läggs till genom att skriva in dess namn i inmatningsraden på inställningssidan <guibutton
 >Profiler</guibutton
 > och efteråt klicka på <guibutton
 >Lägg till</guibutton
@@ -2472,7 +2519,7 @@
         </mediaobject>
       </screenshot>
       <para
->Om du vill byta namn på en profil, klicka bara på den och redigera namnet på redigeringsraden. Namnet uppdateras i listvyn genom att klicka på <guibutton
+>Om du vill byta namn på en profil, klicka bara på den och redigera namnet på inmatningsraden. Namnet uppdateras i listvyn genom att klicka på <guibutton
 >Lägg till</guibutton
 >. Alla lagrade inställningar överförs sömlöst (utan användning av guiden för överföring). En profil kan tas bort genom att markera den i listvyn och klicka på <guibutton
 >Ta bort</guibutton
@@ -2482,21 +2529,7 @@
 >Flytta ner</guibutton
 >.</para>
       <para
->Ifall du har aktiverat överföringsguiden, startas den alltid när en profil tas bort eller när användning av profiler aktiveras eller inaktiveras. Den ger möjlighet att överföra alla relevanta inställningar.</para>
-      <itemizedlist>
-        <listitem
-><para
->i en profil som ska tas bort till en annan</para
-></listitem>
-        <listitem
-><para
->i standardprofilen till en specifik annan profil</para
-></listitem>
-        <listitem
-><para
->i alla profiler tillbaka till standardprofilen</para
-></listitem>
-      </itemizedlist>
+>Ifall du har aktiverat överföringsguiden, startas den alltid när en profil tas bort eller när användning av profiler aktiveras eller inaktiveras. Den tar hand om överföring av alla relevanta inställningar.</para>
       <para
 >Följande skärmbild åskådliggör guiden för profilöverföring efter användning av profiler har aktiverats:</para>
       <screenshot>
@@ -2519,7 +2552,7 @@
 >Gammal profil</guilabel
 >. Under <guilabel
 >Ny profil</guilabel
-> kan du använda en kombinationsmeny för att välja profilen som inställningarna ska överföras till. Den första profilen i listan är vald i förväg. Genom att klicka på knappen <guibutton
+> kan du välja profilen som inställningarna ska överföras till från kombinationsmeny. Den första profilen i listan är vald i förväg. Genom att klicka på knappen <guibutton
 >Ok</guibutton
 > överförs inställningarna. Att klicka på <guibutton
 >Avbryt</guibutton
@@ -2552,11 +2585,11 @@
 ></listitem>
         <listitem
 ><para
->Alla delade resurser som tidigare varit monterade monteras igen för den nyligen aktiverade profilen.</para
+>Alla delade resurser som tidigare varit monterade med den nyligen aktiverade profilen monteras igen.</para
 ></listitem>
         <listitem
 ><para
->Bokmärkena och de anpassade alternativen för den nya profilen läses in.</para
+>Bokmärkena och de egna inställningarna för den nya profilen läses in.</para
 ></listitem>
       </itemizedlist>
       <para
@@ -2634,18 +2667,106 @@
   </sect1>
 
 <!-- 
-      Using Smb4K : Special Remarks 
+      Using Smb4K : Trouble Shooting
 -->
 
-  <sect1 id="special_remarks">
+  <sect1 id="trouble_shooting">
     <title
->Särskilda anmärkningar</title>
+>Felsökning</title>
+
+<!--
+    Using Smb4K : Trouble Shooting : Missing Programs
+    -->
+
+    <sect2 id="trouble_shooting_missing_programs">
+      <title
+>Saknade program</title>
+
+      <para
+>Om systemet saknar några av programmen som &smb4k; behöver för att fungera på ett riktigt sätt, underrättas användaren om det:</para>
+
+      <screenshot id="notification_missing_program">
+        <screeninfo
+>Skärmbild av underrättelse om saknade program</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_missing_program.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Underrättelse om saknade program</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>Installera i detta fall det angivna programmet, eller om det redan finns, lägg till dess plats i miljövariabeln <envar
+>PATH</envar
+> i skalets inställningsfil (för <ulink url="man:/bash"
+><citerefentry
+><refentrytitle
+>bash</refentrytitle
+> <manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> är filen <filename
+>~/.bashrc</filename
+>).</para>
+    </sect2>
+
+<!--
+    Using Smb4K : Trouble Shooting : Zeroconf Daemon
+    -->
+
+    <sect2 id="trouble_shooting_zeroconf">
+      <title
+>Zeroconf-fel</title>
+
+      <para
+>&smb4k; använder tjänsten Zeroconf (<application
+><ulink url="https://avahi.org"
+>Avahi</ulink
+></application
+>) för att söka upp servrar och resurser i nätverksgrannskapet med hjälp av DNS-tjänstupptäckt (DNS-SD). För att det ska fungera måste Avahi-demonen vara aktiverad och köras på systemet. Om det inte är fallet, visar &smb4k; ett felmeddelande:</para>
+
+      <screenshot id="notification_zeroconf_error">
+        <screeninfo
+>Skärmbild av Zeroconf-felmeddelandet</screeninfo>
+        <mediaobject>
+          <imageobject
+><imagedata fileref="notification_zeroconf_error.png" format="PNG"/></imageobject>
+          <textobject
+><phrase
+>Zeroconf-felmeddelandet</phrase
+></textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para
+>I de flesta fall körs inte Avahi-demonen när ett fel rapporteras. Under de &Linux;-distributioner som använder <application
+>systemd</application
+> kan man starta den genom att köra följande eller ett liknande kommando från terminalen:</para>
+      <para
+><screen
+><userinput
+><prompt
+>$</prompt
+> <command
+>sudo</command
+> <command
+>systemctl</command
+> enable --now avahi-daemon</userinput
+></screen
+></para>
+      <para
+>Med alla andra &Linux;-distributioner och med BSD hänvisar till den specifika dokumentationen om hur man startar Avahi-demonen.</para>
+    </sect2>
   
 <!--
-    Using Smb4K : Special Remarks : Denied Privilege Escalation
+    Using Smb4K : Trouble Shooting : Denied Privilege Escalation
 -->
     
-    <sect2 id="special_remarks_polkit-1">
+    <sect2 id="trouble_shooting_polkit-1">
       <title
 >Nekad eskalering av rättigheter</title>
       
@@ -2684,10 +2805,10 @@ polkit.addRule(function(action, subject) {
     </sect2>
   
 <!--
-      Using Smb4K : Special Remarks : Mounting Problems under BSD
+      Using Smb4K : Trouble Shooting : Mounting Problems under BSD
   -->
     
-    <sect2 id="special_remarks_mounting_problems_under_bsd">
+    <sect2 id="trouble_shooting_mounting_problems_under_bsd">
       <title
 >Monteringsproblem med BSD</title>
       
@@ -2718,15 +2839,15 @@ ntlm auth = yes
     </sect2>
     
 <!-- 
-      Using Smb4K : Special Remarks : Other Desktops Than Plasma
+      Using Smb4K : Trouble Shooting : Other Desktops Than Plasma
 -->
 
-    <sect2 id="special_remarks_other_desktop_environments">
+    <sect2 id="trouble_shooting_other_desktop_environments">
       <title
 >Andra skrivbordsmiljöer än &plasma;</title>
 
       <para
->När en annan skrivbordsmiljö än &plasma; används, kan &Qt;- och KF5-program sakna vissa ikoner. I så fall, kan du eventuellt installera programmet <application
+>När en annan skrivbordsmiljö än &plasma; används, kan &Qt;- och &kde; Ramverk sakna vissa ikoner. I så fall, kan du eventuellt installera programmet <application
 >qt5ct</application
 > (källkoden kan hämtas <ulink url="https://sourceforge.net/projects/qt5ct/"
 >här</ulink
@@ -2892,6 +3013,20 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Ikonstorlek</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Ställ in ikonstorlek för bläddraren i nätverksgrannskapet. Storleken kan justeras i 16 bildpunkters steg från 16 x 16 bildpunkter till 128 x 128 bildpunkter.</para>
+            <para
+>Förval: liten ikonstorlek</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Expandera domäner och värddatorer automatiskt</guibutton
 ></menuchoice>
           </term>
@@ -3018,6 +3153,34 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
+>Ikonstorlek för ikonvyn</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Ställ in ikonstorlek för ikonvisningsläget för delade resurser. Storleken kan justeras i 16 bildpunkters steg från 16 x 16 bildpunkter till 128 x 128 bildpunkter.</para>
+            <para
+>Förval: skrivbordets ikonstorlek</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
+>Ikonstorlek för listvyn</guibutton
+></menuchoice>
+          </term>
+          <listitem>
+            <para
+>Ställ in ikonstorlek för listvisningsläget för delade resurser. Storleken kan justeras i 16 bildpunkters steg från 16 x 16 bildpunkter till 128 x 128 bildpunkter.</para>
+            <para
+>Förval: liten ikonstorlek</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            <menuchoice
+><guibutton
 >Visa verktygstips för monterade resurser</guibutton
 ></menuchoice>
           </term>
@@ -3041,14 +3204,10 @@ ntlm auth = yes
 >Nätverk</title>
 
     <para
->Alternativen som finns här påverkar nätverkskommunikationen. Det går att ändra bläddrings- och visningsbeteende under fliken <guibutton
+>Alternativen som finns här påverkar nätverkskommunikationen. Du kan ändra bläddrings- och visningsbeteende under fliken <guibutton
 >Grundinställningar</guibutton
->, ändra alternativen som skickas till det underliggande biblioteket <application
->libsmbclient</application
-> under fliken <guibutton
->Samba</guibutton
-> och dessutom aktivera funktioner för att väckas av lokalt nätverk under fliken <guibutton
->Väckning av lokalt nätverk</guibutton
+> och de mer avancerade alternativen för Samba och funktionerna för att väckas av lokalt nätverk under fliken <guibutton
+>Avancerade inställningar</guibutton
 >.</para>
     
     <screenshot>
@@ -3306,59 +3465,23 @@ ntlm auth = yes
     </sect2>
 
 <!-- 
-      Configuring Smb4K : Network : Samba Settings (libsmbclient)
+      Configuring Smb4K : Network : Advanced Settings
 -->
 
-    <sect2 id="configuration_page_network_samba_settings">
+    <sect2 id="configuration_page_network_advanced_settings">
       <title
->Inställningar av Samba</title>
+>Avancerade inställningar</title>
       
-      <sect3 id="configuration_page_network_samba_settings_common_settings">
+      <sect3 id="configuration_page_network_advanced_settings_samba">
         <title
->Vanliga inställningar</title>
+>Samba</title>
 
         <variablelist>
           <varlistentry>
             <term>
               <menuchoice
 ><guibutton
->NetBIOS-namn</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Ställ in datorns NetBIOS-namn. Textrutan ska redan vara ifylld med informationen som hittades i inställningsfilen <filename
->smb.conf</filename
-> eller med datorns värddatornamn. Under normala omständigheter finns det ingen anledning att ändra någonting här.</para>
-              <para
->Förval: NetBIOS namn definierat i <filename
->smb.conf</filename
-> eller värddatornamnet</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Domän</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Ställ in namnet på domänen/arbetsgruppen som datorn ingår i. Textrutan ska redan vara ifylld med informationen som hittades i inställningsfilen <filename
->smb.conf</filename
->. Under normala omständigheter finns det ingen anledning att ändra någonting här.</para>
-              <para
->Förval: domännamnet definierat i <filename
->smb.conf</filename
-></para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->SMB-port</guibutton
+>Ställ in SMB-port till</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3374,79 +3497,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Datorn befinner sig i ett stort nätverksgrannskap</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Med standardinställningen tillfrågas alla tillgängliga huvudbläddrare när bläddringslistan sammanställs. För stora nätverksgrannskap kan det ta mycket lång tid. Aktiveras den här inställningen begränsas förfrågan till tre huvudbläddrare.</para>
-              <para
->Förval: inte valt</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-    
-      <sect3 id="configuration_page_network_samba_settings_authentication">
-        <title
->Behörighetskontroll</title>
-
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Huvudbläddrare kräver behörighetskontroll</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Om arbetsgruppens huvudbläddrare kräver behörighetskontroll för att returnera bläddringslistan, måste du markera knappen. Det kan till exempel vara fallet med vissa NAS-enheter. Inställningen behövs sällan, och kan till och med orsaka att en huvudbläddrare returnerar en tom bläddringslista.</para>
-              <para
->Förval: inte valt</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Använd Kerberos för behörighetskontroll</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Använd Kerberos för behörighetskontroll i en miljö med aktiva kataloger.</para>
-              <para
->Förval: inte valt</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Använd Winbind ccache för behörighetskontroll</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Försök att använda inloggningsinformationen lagrad av Winbind.</para>
-              <para
->Förval: inte valt</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </sect3>
-      
-      <sect3 id="configuration_page_network_samba_settings_security">
-        <title
->Säkerhet</title>
-        
-        <variablelist>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Krypteringsnivå</guibutton
+>Ställ in krypteringsnivån till</guibutton
 ></menuchoice>
             </term>
             <listitem>
@@ -3497,56 +3548,107 @@ ntlm auth = yes
 ></para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Datorn befinner sig i ett stort nätverksgrannskap</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Med standardinställningen tillfrågas alla tillgängliga huvudbläddrare när bläddringslistan sammanställs. För stora nätverksgrannskap kan det ta mycket lång tid. Aktiveras den här inställningen begränsas förfrågan till tre huvudbläddrare.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Huvudbläddrare kräver behörighetskontroll</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Om arbetsgruppens huvudbläddrare kräver behörighetskontroll för att returnera bläddringslistan, måste du markera knappen. Det kan till exempel vara fallet med vissa NAS-enheter. Inställningen behövs sällan, och kan till och med orsaka att en huvudbläddrare returnerar en tom bläddringslista.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Använd Kerberos för behörighetskontroll</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Använd Kerberos för behörighetskontroll i en miljö med aktiva kataloger.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Använd Winbind ccache för behörighetskontroll</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Försök att använda inloggningsinformationen lagrad av Winbind.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry
+>          
         </variablelist>
-      </sect3
->     
-    </sect2>
-    
-<!-- 
-      Configuring Smb4K : Network : Wake-On_LAN Settings
--->
+      </sect3>
+      <sect3 id="configuration_page_network_advanced_settings_wake_on_lan">
+        <title
+>Väckning av lokalt nätverk</title>
 
-    <sect2 id="configuration_page_network_wake_on_lan_settings">
-      <title
->Inställningar av väckning av lokalt nätverk</title>
-
-      <para
->För att kunna använda funktionen för väckning av lokalt nätverk i &smb4k; måste du aktivera inställningen i den här sektionen. Värddatorerna som ska väckas upp måste definieras via dialogrutan <link linkend="network_neighborhood_browser_defining_custom_options"
->Anpassade alternativ</link
+        <para
+>För att kunna använda funktionen för väckning av lokalt nätverk i &smb4k; måste du aktivera inställningen. Värddatorerna som ska väckas upp måste definieras via editorn av <link linkend="network_neighborhood_browser_defining_custom_settings"
+>egna inställningar</link
 >.</para>
 
-      <variablelist>
-        <varlistentry>
-          <term>
-            <menuchoice
+        <variablelist>
+          <varlistentry>
+            <term>
+              <menuchoice
 ><guibutton
 >Aktivera funktion för att väckas av lokalt nätverk</guibutton
 ></menuchoice>
-          </term>
-          <listitem>
-            <para
+            </term>
+            <listitem>
+              <para
 >Aktivera väckning av lokalt nätverk (WOL) funktionerna. Väckning av lokalt nätverk är en nätverksstandard för datorer med Ethernet, som låter en dator sättas på eller väckas av ett nätverksmeddelande. Smb4K använder ett magiskt paket som skickas via ett UDP-uttag för att väcka fjärrservrar. Om du vill dra nytta av funktionen för att väckas av lokalt nätverk, måste det här alternativet aktiveras.</para>
-            <para
+              <para
 >Förval: inte valt</para>
-            <variablelist>
-              <varlistentry>
-                <term>
-                  <menuchoice
+              <variablelist>
+                <varlistentry>
+                  <term>
+                    <menuchoice
 ><guilabel
 >Väntetid</guilabel
 ></menuchoice>
-                </term>
-                <listitem>
-                  <para
+                  </term>
+                  <listitem>
+                    <para
 >Det här är väntetiden i sekunder mellan att det magiska paketet för att väckas av lokalt nätverk skickas, och sökningen av nätverksgrannskapet eller montering av en delad resurs.</para>
-                  <para
+                    <para
 >Förval: 5 s</para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
     </sect2>
   </sect1>
 
@@ -3640,10 +3742,6 @@ ntlm auth = yes
             <listitem>
               <para
 >Återmontera alla dina delade resurser som fortfarande var monterade när du avslutade programmet, eller ändra en profil. Om en återmontering av en delad resurs misslyckas, kommer Smb4K försöka igen vid nästa start. Delade resurser monterade av andra användare berörs inte.</para>
-              <note
-><para
->Inställningen påverkar inte automatisk återmontering av delade resurser när datorn vaknar från ett viloläge.</para
-></note>
               <para
 >Förval: inte valt</para>
               <variablelist>
@@ -3753,7 +3851,23 @@ ntlm auth = yes
       <para
 >Fliken <guilabel
 >Vanliga monteringsinställningar</guilabel
-> är bara tillgänglig på &Linux;. Inställningarna som gäller BSD finns i avsnittet <link linkend="configuration_page_mounting_mount_settings"
+> är bara tillgänglig på &Linux; och de listade alternativen gäller kommandona <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Inställningarna som gäller BSD finns i avsnittet <link linkend="configuration_page_mounting_mount_settings"
 >Monteringsinställningar (bara BSD)</link
 >.</para>
 
@@ -3782,6 +3896,10 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
+>Väljare: <option
+>rw</option
+></para>
+                    <para
 >Montera de delade resurserna som läs- och skrivbara.</para>
                   </listitem>
                 </varlistentry>
@@ -3789,17 +3907,21 @@ ntlm auth = yes
                   <term>
                     <menuchoice
 ><guimenuitem
->läsbara</guimenuitem
+>skrivskyddade</guimenuitem
 ></menuchoice>
                   </term>
                   <listitem>
+                    <para
+>Väljare: <option
+>ro</option
+></para>
                     <para
 >Montera de delade resurserna som läsbara.</para>
                   </listitem>
                 </varlistentry>
               </variablelist>
               <para
->Förval: <guimenuitem
+>Förval: inte valt, <guimenuitem
 >läs- och skrivbara</guimenuitem
 ></para>
             </listitem>
@@ -3813,7 +3935,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Ställer in teckenuppsättning använd på klientsidan (dvs. din dator).</para>
+>Väljare: <option
+>iocharset=CHARSET</option
+></para>
+              <para
+>Ställer in teckenuppsättning använd på klientsidan (dvs. din dator) till något av följande:</para>
               <variablelist>
                 <varlistentry>
                   <term>
@@ -3824,7 +3950,9 @@ ntlm auth = yes
                   </term>
                   <listitem>
                     <para
->Förvalt teckensnitt använt av klientens kärna.</para>
+>Förvalt teckensnitt använt av klientens kärna. I detta fall utelämnas alternativet <option
+>iocharset</option
+> från kommandoraden.</para>
                   </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -4093,7 +4221,7 @@ ntlm auth = yes
                 </varlistentry>
               </variablelist>
               <para
->Förval: <guimenuitem
+>Default: inte valt, CHARSET: <guimenuitem
 >förval</guimenuitem
 ></para>
             </listitem>
@@ -4107,7 +4235,11 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Ställer in filsystemets portnummer som används av <ulink url="man:/mount.cifs"
+>Väljare: <option
+>port=PORT</option
+></para>
+              <para
+>Ställer in portnummer som används av <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4115,17 +4247,11 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> när en fjärresurs monteras. Det normala portnumret (445) bör fungera med alla moderna operativsystem. Om du upplever problem, försök att ställa in portnumret till 139. Om problemen bara uppstår med några få värddatorer, rekommenderas att lämna alternativet orört och använda dialogrutan <link linkend="network_neighborhood_browser_defining_custom_options"
->Anpassade inställningar</link
+> när en fjärresurs monteras. Det normala portnumret (445) bör fungera med alla moderna operativsystem. Om du upplever problem, försök att ställa in portnumret till 139. Om problemen bara uppstår med några få värddatorer, rekommenderas att lämna alternativet orört och använda editorn av <link linkend="custom_settings"
+>Egna inställningar</link
 > för att definiera portnumret individuellt för de problematiska värddatorerna.</para>
               <para
->Alternativet är bara tillgängligt på &Linux;. På BSD, ställs porten för att montera delade resurser in med alternativet <link linkend="configuration_page_network_samba_settings_common_settings"
-><guibutton
->SMB-port</guibutton
-></link
->.</para>
-              <para
->Förval: 445</para>
+>Förval: inte valt, PORT: 445</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -4144,9 +4270,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->De flesta versioner av &Samba; stöder &CIFS; Unix- eller POSIX-utökningar. För dessa servrar behövs inte vissa alternativ, eftersom riktiga värden förhandlas under monteringsprocessen. För andra servrar, kanske du vill avmarkera alternativet så att fördefinierade värden kan skickas till servern. Observera att om datorn är placerad i ett nätverksgrannskap dominerat av &Windows; med bara några få &Samba;-servrar, kan alternativet säkert avmarkeras och anpassade alternativ definieras för &Samba;-servrarna.</para>
+>Väljare: ingen</para>
             <para
->Förval: inte valt</para>
+>De flesta versioner av &Samba; stöder &CIFS; Unix- eller POSIX-utökningar. För dessa servrar behövs inte vissa alternativ, eftersom riktiga värden förhandlas under monteringsprocessen. För andra servrar, kanske du vill avmarkera alternativet så att fördefinierade värden kan skickas till servern. Observera att om datorn är placerad i ett nätverksgrannskap dominerat av &Windows; med bara några få &Samba;-servrar, kan alternativet säkert avmarkeras och egna inställningar definieras för &Samba;-servrarna.</para>
+            <para
+>Om du avmarkerar alternativet, överväg att sätta på rättighetskontroller under <link linkend="configuration_page_mounting_advanced_mount_settings"
+>Avancerade monteringsinställningar</link
+>.</para>
+            <para
+>Förval: valt</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4158,9 +4290,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Väljare: <option
+>uid=UID</option
+></para>
+            <para
 >Ställer in ägare av filer och kataloger i filsystemet. Normalt används din användar-id. Tryck på sökknappen och välj en i kombinationsrutan för att ändra användar-id.</para>
             <para
->Förval: din användar-id</para>
+>Om stödet för &CIFS; Unix-tillägg är valt, är inställningen inaktiverad.</para>
+            <para
+>Förval: valt, UID: din UID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4172,9 +4310,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Väljare: <option
+>uid=GID</option
+></para>
+            <para
 >Ställer in gruppen som äger filer och kataloger i filsystemet. Normalt används din grupp-id. Tryck på sökknappen och välj en i kombinationsrutan för att ändra grupp-id.</para>
             <para
->Förval: din grupp-id</para>
+>Om stödet för &CIFS; Unix-tillägg är valt, är inställningen inaktiverad.</para>
+            <para
+>Förval: valt, GID: din GID</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4186,7 +4330,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Ställer in rättigheter som används för filer. Värdet anges oktalt och måste ha fyra siffror. För att lära dig mer om filläget (file_mode), bör du läsa manualsidorna <ulink url="man:/mount"
+>Väljare: <option
+>file_mode=ARG</option
+></para>
+            <para
+>Ställer in rättigheter som används för filer. Värdet anges oktalt och måste ha fyra siffror. För att lära dig mer om filläget (file_mode), bör du läsa manualsidorna <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4194,7 +4342,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> och <ulink url="man:/umask"
+> och <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4204,7 +4352,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->Förval: 0755</para>
+>Om stödet för &CIFS; Unix-tillägg är valt, är inställningen inaktiverad.</para>
+            <para
+>Förval: valt, ARG: 0755</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4216,7 +4366,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Ställer in rättigheter som används för kataloger. Värdet anges oktalt och måste ha fyra siffror. För att lära dig mer om katalogläget (dir_mode), bör du läsa manualsidorna <ulink url="man:/mount"
+>Väljare: <option
+>dir_mode=ARG</option
+></para>
+            <para
+>Ställer in rättigheter som används för kataloger. Värdet anges oktalt och måste ha fyra siffror. För att lära dig mer om katalogläget (dir_mode), bör du läsa manualsidorna <ulink url="man:/mount(8)"
 ><citerefentry
 ><refentrytitle
 >mount</refentrytitle
@@ -4224,7 +4378,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> och <ulink url="man:/umask"
+> och <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4234,7 +4388,9 @@ ntlm auth = yes
 ></ulink
 >.</para>
             <para
->Förval: 0755</para>
+>Om stödet för &CIFS; Unix-tillägg är valt, är inställningen inaktiverad.</para>
+            <para
+>Förval: valt, ARG: 0755</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4252,11 +4408,25 @@ ntlm auth = yes
       <para
 >Fliken <guilabel
 >Avancerade monteringsinställningar</guilabel
-> är bara tillgänglig på &Linux;. Inställningarna som gäller BSD finns i avsnittet <link linkend="configuration_page_mounting_mount_settings"
+> är bara tillgänglig på &Linux; och de listade alternativen gäller kommandona <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> / <ulink url="man:/mount.smb3"
+><citerefentry
+><refentrytitle
+>mount.smb3</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+>. Inställningarna som gäller BSD finns i avsnittet <link linkend="configuration_page_mounting_mount_settings"
 >Monteringsinställningar (bara BSD)</link
 >.</para>
-      <para
->De flesta alternativ som kan definieras här kräver &Linux; kärna 2.6.15 eller senare för att fungera.</para>
       <variablelist>
         <varlistentry>
           <term>
@@ -4266,6 +4436,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Väljare: <option
+>forceuid</option
+></para>
             <para
 >Tala om för klienten (dvs. din sida) att ignorera eventuella användar-id (UID) som tillhandahålls av servern för filer och kataloger och att alltid låta ägaren tilldelas värdet av den överförda användaridentiteten.</para>
             <para
@@ -4281,6 +4455,10 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Väljare: <option
+>forcegid</option
+></para>
+            <para
 >Tala om för klienten (dvs. din sida) att ignorera eventuella grupp-id (GID) som tillhandahålls av servern för filer och kataloger och att alltid låta ägaren tilldelas värdet av den överförda gruppidentiteten.</para>
             <para
 >Förval: inte valt</para>
@@ -4295,9 +4473,15 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Klientsidan kontrollerar om du har riktig användar-id och grupp-id för att behandla filer och kataloger på den delade resursen. Det gäller förutom de normala ACL-kontrollerna på måldatorn som görs av serverprogramvaran. Om servern stöder &CIFS; Unix-utökningar och du därmed inte tillåts att komma åt den delade resursen, bör du kanske stänga av funktionen.</para>
+>Väljare: <option
+>perm</option
+> eller <option
+>noperm</option
+></para>
             <para
->Förval: valt</para>
+>Klientsidan kontrollerar om du har riktig användar-id och grupp-id för att behandla filer och kataloger på den delade resursen. Det gäller förutom de normala ACL-kontrollerna på måldatorn som görs av serverprogramvaran. Om servern stöder &CIFS; Unix-utökningar och du därmed inte tillåts att komma åt den delade resursen helt och hållet, ska du definitivt stänga av funktionen.</para>
+            <para
+>Förval: inte valt</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4308,6 +4492,12 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Väljare: <option
+>setuids</option
+> eller <option
+>nosetuids</option
+></para>
             <para
 >Om &CIFS; Unix-utökningar förhandlas med servern, försöker klientsidan ställa in effektiv användar-id och grupp-id för den lokala processen för nyskapade filer, kataloger och enheter. Om funktionen är avstängd, kommer användar-id och grupp-id som är definierade som standard för resursen att användas. Det rekommenderas att läsa manualsidan för <ulink url="man:/mount.cifs"
 ><citerefentry
@@ -4331,6 +4521,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Väljare: <option
+>serverino</option
+> eller <option
+>noserverino</option
+></para>
+            <para
 >Använd inod-nummer (unika och beständiga filidentifieringar) som returneras av servern, istället för automatiskt genererade tillfälliga inod-nummer på klientsidan. Parametern har ingen effekt om servern inte stöder att returnera inod-nummer eller liknande. Det rekommenderas att du läser manualsidan för <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
@@ -4353,6 +4549,12 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
+>Väljare: <option
+>mapchars</option
+> eller <option
+>nomapchars</option
+></para>
+            <para
 >Översätt sex av de sju reserverade tecknen (inte omvänt snedstreck, men tecknen kolon, frågetecken, lodrätt streck, asterisk, större än och mindre än) till omkodningsområdet (ovanför 0xF000), vilket också tillåter att klientsidan känner igen filer skapade med sådana tecken av &Windows; POSIX-emulering. Det kan också vara användbart vid montering med de flesta versioner av &Samba;. Det har ingen effekt om servern inte stöder Unicode.</para>
             <para
 >Förval: inte valt</para>
@@ -4362,12 +4564,16 @@ ntlm auth = yes
           <term>
             <menuchoice
 ><guibutton
->Använd inte låsning</guibutton
+>Skicka inte låsningsbegäran för byte-intervall</guibutton
 ></menuchoice>
           </term>
           <listitem>
             <para
->Använd inte låsning. Starta inte lockd.</para>
+>Väljare: <option
+>nobrl</option
+></para>
+            <para
+>Skicka inte låsningsbegäran för byte-intervall till servern. Det är nödvändigt för vissa program som inte följer den obligatoriska cifs-stil låsningsbegäran för byte-intervall (och de flesta cifs-servrar stöder inte ännu att begära rådgivande låsningsbegäran för byte-intervall).</para>
             <para
 >Förval: inte valt</para>
           </listitem>
@@ -4381,7 +4587,11 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Definiera vilken version av SMB-protokollet som ska användas.</para>
+>Väljare: <option
+>vers=VERS</option
+></para>
+            <para
+>Definiera vilken version av SMB-protokollet som ska användas. Normalt behöver alternativet inte vara aktiverat eftersom protokollversionen förhandlas mellan klienten och servern.</para>
             <para
 >Följande värden är tillåtna:</para>
             <variablelist>
@@ -4394,9 +4604,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Kommandoradsväljaren <option
->vers=1.0</option
-> används. Det gör att <ulink url="man:/mount.cifs"
+>Det gör att <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4416,9 +4624,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Kommandoradsväljaren <option
->vers=2.0</option
-> används. Det gör att <ulink url="man:/mount.cifs"
+>Det gör att <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4426,11 +4632,9 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> använder det protokollet SMBv2.002. Det introducerades ursprungligen i Windows Vista Service Pack 1, och Windows Server 2008.</para>
-                  <note>
-                    <para
->Observera att den ursprungligt utgivna versionen av Windows Vista använde en något annorlunda dialekt (2.000) som inte stöds.</para>
-                  </note>
+> använder det protokollet SMBv2.002. Det introducerades ursprungligen i &Microsoft; &Windows; Vista Service Pack 1, och &Windows; Server 2008.</para>
+                  <para
+>Observera att den ursprungligt utgivna versionen av &Microsoft; &Windows; Vista använde en något annorlunda dialekt (2.000) som inte stöds.</para>
                 </listitem>
               </varlistentry>
               <varlistentry>
@@ -4442,9 +4646,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Kommandoradsväljaren <option
->vers=2.1</option
-> används. Det gör att <ulink url="man:/mount.cifs"
+>Det gör att <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4464,9 +4666,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Kommandoradsväljaren <option
->vers=3.0</option
-> används. Det gör att <ulink url="man:/mount.cifs"
+>Det gör att <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4481,16 +4681,12 @@ ntlm auth = yes
                 <term>
                   <menuchoice
 ><guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>3.0.2 (Windows 8.1/Windows Server 2012R2)</guibutton
 ></menuchoice>
                 </term>
                 <listitem>
                   <para
->Kommandoradsväljaren <option
->vers=3.1.1</option
-> eller <option
->vers=3.11</option
-> används. Det gör att <ulink url="man:/mount.cifs"
+>Det gör att <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4498,13 +4694,74 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> använder protokollet SMBv3.1.1 som introducerades i &Windows; Server 2016.</para>
+> använder protokollet SMBv3.0.2 som introducerades i &Microsoft; &Windows; 8.1 och &Windows; Server 2012R2.</para>
+                </listitem>
+              </varlistentry>
+              
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3.1.1 (Windows Server 2016)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Det gör att <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> använder protokollet SMBv3.1.1 som introducerades i &Microsoft; &Windows; Server 2016.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>3 (Version 3.0 och senare)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Det gör att <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> använder protokollversionen SMBv3.0 eller senare.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term>
+                  <menuchoice
+><guibutton
+>standard (förhandla om den senaste versionen)</guibutton
+></menuchoice>
+                </term>
+                <listitem>
+                  <para
+>Det gör att <ulink url="man:/mount.cifs"
+><citerefentry
+><refentrytitle
+>mount.cifs</refentrytitle
+><manvolnum
+>8</manvolnum
+></citerefentry
+></ulink
+> försöker förhandla den senaste versionen av SMBv2+ som både stöds av klienten och servern.</para>
                 </listitem>
               </varlistentry>
             </variablelist>
             <para
->Förval: <guibutton
->3.1.1 (Windows Server 2016)</guibutton
+>Förval: inte vald, VERS: <guibutton
+>förval (förhandla den senaste versionen)</guibutton
 ></para>
           </listitem>
         </varlistentry>
@@ -4516,6 +4773,10 @@ ntlm auth = yes
 ></menuchoice>
           </term>
           <listitem>
+            <para
+>Väljare: <option
+>cache=ARG</option
+></para>
             <para
 >Definiera hur en läs- eller skrivbegäran hanteras. Om du väljer att inte lagra fildata alls, utnyttjar klienten aldrig cachen för normal läsning och skrivning. Den använder alltid servern direkt för att uppfylla en läs- eller skrivbegäran. Om du väljer att följa &CIFS;/SMB2-protokollet strikt, anses cachen bara vara pålitlig om klienten har ett op-lås. Om klienten inte har ett op-lås, går den förbi cachen och använder servern direkt för att uppfylla en läs- eller skrivbegäran. Att välja fri lagringssemantik kan ibland ge bättre prestanda men med sämre cache-koherens som följd. Alternativet kan orsaka dataförlust om flera klienter försöker komma åt samma uppsättning filer på servern samtidigt. På grund av det rekommenderas den strikta lagringsmetoden.</para>
             <para
@@ -4530,9 +4791,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Kommandoradsväljaren <option
->cache=none</option
-> används. Det gör att <ulink url="man:/mount.cifs"
+>Det gör att <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4552,9 +4811,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Kommandoradsväljaren <option
->cache=strict</option
-> används. Det gör att <ulink url="man:/mount.cifs"
+>Det gör att <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4574,9 +4831,7 @@ ntlm auth = yes
                 </term>
                 <listitem>
                   <para
->Kommandoradsväljaren <option
->cache=loose</option
-> används. Det gör att <ulink url="man:/mount.cifs"
+>Det gör att <ulink url="man:/mount.cifs"
 ><citerefentry
 ><refentrytitle
 >mount.cifs</refentrytitle
@@ -4589,7 +4844,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Förval: <guibutton
+>Förval: inte valt, ARG: <guibutton
 >Följ &CIFS;/SMB2-protokollet strikt</guibutton
 ></para>
           </listitem>
@@ -4807,7 +5062,7 @@ ntlm auth = yes
               </varlistentry>
             </variablelist>
             <para
->Förval: <guibutton
+>Förval: inte valt, <guibutton
 >NTLMSSP-protokoll</guibutton
 ></para>
           </listitem>
@@ -4833,7 +5088,7 @@ ntlm auth = yes
 >Ok</guibutton
 > i inmatningsdialogrutan, kontrolleras alternativen mot en vitlista. Alla giltiga poster accepteras och läggs till i radeditorn.</para>
             <para
->Förval: tomt</para>
+>Förval: inte valt, tomt</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -4906,7 +5161,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> och <ulink url="man:/umask"
+> och <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -4936,7 +5191,7 @@ ntlm auth = yes
 >8</manvolnum
 ></citerefentry
 ></ulink
-> och <ulink url="man:/umask"
+> och <ulink url="man:/umask(2)"
 ><citerefentry
 ><refentrytitle
 >umask</refentrytitle
@@ -5739,7 +5994,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Inloggningsnamn och lösenord lagras i en underkatalog som heter <filename role="directory"
+>Användarnamn och lösenord lagras i en underkatalog som heter <filename role="directory"
 >Smb4K</filename
 > i den nuvarande nätverksplånboken. (normalt "kdewallet"). Fördelen med detta sätt är att behörighetsinformation lagras permanent och krypterat på hårddisken. Du behöver bara tillhandahålla det en gång, och nästa gång det behövs läser &smb4k; det från plånboken. Om du avmarkerar alternativet, lagras behörighetsinformation inte alls.</para>
             <para
@@ -5786,18 +6041,18 @@ ntlm auth = yes
 >Poster i plånboken</title>
       
       <para
->I den här editorn kan befintliga poster i plånboken ändras eller tas bort. Innan du kan redigera dem måste de läsas in från plånboken genom att klicka på knappen <guibutton
->Ladda</guibutton
->. Listan med poster visas då i listvyn till vänster. En post kan redigeras genom att markera den och klicka på knappen <guibutton
->Detaljinformation</guibutton
-> till höger. Som alternativ kan du bara högerklicka på posten och välja alternativet <guimenuitem
->Redigera</guimenuitem
-> i den sammanhangsberoende menyn. Detaljinformationen visas då, och kan ändras.</para>
+>I editorn kan du ändra eller ta bort befintliga poster i plånboken. Innan du kan redigera dem måste de läsas in från den digitala plånboken genom att klicka på knappen <guibutton
+>Läs in</guibutton
+>. Plånbokens poster visas då i listvyn. En post kan antingen redigeras genom att markera den och klicka på knappen <guibutton
+>Redigera</guibutton
+> eller genom att dubbelklicka. En lösenordsdialogruta med det lagrade användarnamnet och lösenordet visas och du kan ändra inloggningsinformationen.</para>
       <para
->En post kan tas bort genom att välja <guimenuitem
+>En post kan tas bort genom att välja den och klicka på knappen <guimenuitem
 >Ta bort</guimenuitem
-> i den sammanhangsberoende menyn. Alla plånboksposter kan tas bort på en gång genom att välja alternativet <guimenuitem
->Rensa lista</guimenuitem
+>. Alla plånboksposter kan tas bort på en gång genom att klicka på alternativet <guimenuitem
+>Rensa</guimenuitem
+>. Du kan återställa initialtillståndet med knappen <guibutton
+>Återställ</guibutton
 >.</para>
       <para
 >Efter redigeringen är klar kan ändringarna lagras i plånboken genom att klicka på <guibutton
@@ -5858,7 +6113,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_default_destination">
         <title
->Standardmål</title>
+>Synkroniseringskatalog</title>
 
         <variablelist>
           <varlistentry>
@@ -5913,14 +6168,44 @@ ntlm auth = yes
 >, samma som <option
 >-rlptgoD</option
 > (ingen <option
+>-A</option
+>, <option
+>-X</option
+>, <option
+>-U</option
+>, <option
+>-N</option
+>, <option
 >-H</option
 >)</para>
               <para
->Sätt på arkiveringsläge. Det är ett snabbt sätt att säga att du vill ha rekursion, och vill bevara nästan allting. Observera att <option
+>Sätt på arkiveringsläget. Det är ett snabbt sätt att tala om att du vill ha rekursion och vill bevara nästan allt. Observera att <option
 >-a</option
-> inte bevarar hårda länkar, eftersom det är kostsamt att hitta filer med flera länkar. Du måste ange <option
+> inte bevarar hårda länkar (<option
 >-H</option
-> separat.</para>
+>), åtkomstkontrollistor (ACL:er, <option
+>-A</option
+>), utökade attribut (xattrs, <option
+>-X</option
+>), åtkomst (användnings) tider (<option
+>-U</option
+>) eller skapad tider (<option
+>-N</option
+>). Du måste ange väljarna separat. Det enda undantaget från ovanstående motsvarighet är när <option
+>--files-from</option
+> är angivet, då är inte <option
+>-r</option
+> underförstådd.</para>
+              <para
+>Om du inte vill köra <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> i arkiveringsläge, välj lämpliga argument i inställningarna själv.</para>
               <para
 >Förval: valt</para>
             </listitem>
@@ -5942,7 +6227,7 @@ ntlm auth = yes
               <para
 >Gå in i underkataloger.</para>
               <para
->Förval: valt</para>
+>Förval: inte valt</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6032,8 +6317,7 @@ ntlm auth = yes
       
       <sect3 id="configuration_page_synchronization_basic_settings_backup">
         <title
->Säkerhetskopiering</title>
-
+>Säkerhetskopior</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6122,7 +6406,15 @@ ntlm auth = yes
               <para
 >Tillsammans med väljaren <option
 >--backup</option
-> talar detta om för rsync att lagra alla säkerhetskopior i den angivna katalogen. Det är mycket användbart för inkrementell säkerhetskopiering. Dessutom kan du ange ett suffix för säkerhetskopior med väljaren <option
+> talar detta om för <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> att lagra alla säkerhetskopior i den angivna katalogen. Det är mycket användbart för inkrementella säkerhetskopior. Dessutom kan du ange ett suffix för säkerhetskopior med väljaren <option
 >--suffix</option
 > (annars behåller filerna som säkerhetskopieras i den angivna katalogen sina ursprungliga filnamn).</para>
               <para
@@ -6178,7 +6470,7 @@ ntlm auth = yes
 ></ulink
 > att hoppa över alla filer som redan finns i målkatalogen och har en ändringstid som är nyare än den som källfilen har. (Om en befintlig målfil har en ändringstid som är lika med källfilens, uppdateras den om storlekarna skiljer sig åt.)</para>
               <para
->Förval: valt</para>
+>Förval: inte valt</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6366,7 +6658,7 @@ ntlm auth = yes
               <para
 >Kopiera symboliska länkar som symboliska länkar</para>
               <para
->Förval: valt</para>
+>Förval: inte valt</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6443,8 +6735,6 @@ ntlm auth = yes
             <listitem>
               <para
 >Väljare: <option
->-H</option
->/<option
 >--munge-links</option
 ></para>
               <para
@@ -6552,11 +6842,14 @@ ntlm auth = yes
           </varlistentry>
         </variablelist>
       </sect3>
+    </sect2>
 
-      <sect3 id="configuration_page_synchronization_file_handling_perms">
+    <sect2 id="configuration_page_synchronization_attributes_ownership">
+      <title
+>Filegenskaper och ägare</title>
+      <sect3 id="configuration_page_synchronization_attributes_ownership_attributes">
         <title
->Filrättigheter, etc.</title>
-
+>Filegenskaper</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -6575,9 +6868,216 @@ ntlm auth = yes
               <para
 >Väljaren gör att mottagarsidan ställer in målrättigheterna till samma som källrättigheterna.</para>
               <para
->Förval: valt</para>
+>Förval: inte valt</para>
             </listitem>
           </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Bevara åtkomstkontrollistor (ACL:er)</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Väljare: <option
+>-A</option
+>/<option
+>--acls</option
+></para>
+              <para
+>Bevara åtkomstkontrollistor. Väljaren gör att <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> uppdaterar målets ACL:er så att de är likadana som källans ACL:er. Alternativet innebär också --perms. Källans och målets system måste ha kompatibla ACL-poster för att alternativet ska fungera som det ska.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Bevara utökade attribut</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Väljare: <option
+>-X</option
+>/<option
+>--xattrs</option
+></para>
+              <para
+>Detta talar om för  <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> att överföra ändringstider tillsammans med filerna och uppdatera dem på fjärrsystemet.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Bevara åtkomsttider</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Väljare: <option
+>-U</option
+>/<option
+>--atimes</option
+></para>
+              <para
+>Bevara åtkomsttider. Det talar om för <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> att ställa in målfilernas åtkomsttider (användningstider) till samma värde som källfilerna.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Bevara skapade tider</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Väljare: <option
+>-N</option
+>/<option
+>--crtimes</option
+></para>
+              <para
+>Bevara skapade tider. Det talar om för <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> att ställa in målfilernas skapade tider (nyhet) till samma värde som källfilerna.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Bevara enheter och speciella filer</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Väljare: <option
+>-D</option
+>/<option
+>--devices --specials</option
+></para>
+              <para
+>Väljaren gör att <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> överför tecken- och blockenhetsfiler samt specialfiler (som namngivna uttag och FIFO:n) till fjärrsystemet. Alternativet har ingen effekt om inte mottagarsidan kör som systemadministratör och <option
+>--super</option
+> inte är angivet.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Bevara tidsstämpeln</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Väljare: <option
+>-t</option
+>/<option
+>--times</option
+></para>
+              <para
+>Detta talar om för  <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> att överföra ändringstider tillsammans med filerna och uppdatera dem på fjärrsystemet.</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Undanhåll kataloger när tidsstämpeln bevaras</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Väljare: <option
+>-O</option
+>/<option
+>--omit-dir-times</option
+></para>
+              <para
+>Detta talar om för <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> att undanta kataloger när ändringstider bevaras (se <option
+>--times</option
+>).</para>
+              <para
+>Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+      
+      <sect3 id="configuration_page_synchronization_attributes_ownership_ownership">
+        <title
+>Ägare</title>
+        <variablelist>
           <varlistentry>
             <term>
               <menuchoice
@@ -6615,7 +7115,7 @@ ntlm auth = yes
 >--super</option
 > inte är angivet.</para>
               <para
->Förval: valt</para>
+>Förval: inte valt</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6645,94 +7145,6 @@ ntlm auth = yes
 >--no-super</option
 >), bevaras bara grupper som mottagaren är medlem i.</para>
               <para
->Förval: valt</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Bevara enheter och speciella filer</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Väljare: <option
->-D</option
->/<option
->--devices --specials</option
-></para>
-              <para
->Väljaren gör att <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> överför tecken- och blockenhetsfiler samt specialfiler (som namngivna uttag och FIFO:n) till fjärrsystemet. Alternativet har ingen effekt om inte mottagarsidan kör som systemadministratör och <option
->--super</option
-> inte är angivet.</para>
-              <para
->Förval: valt</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Bevara tidsstämpeln</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Väljare: <option
->-t</option
->/<option
->--times</option
-></para>
-              <para
->Detta talar om för  <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> att överföra ändringstider tillsammans med filerna och uppdatera dem på fjärrsystemet.</para>
-              <para
->Förval: valt</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
->Undanhåll kataloger när tidsstämpeln bevaras</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Väljare: <option
->-O</option
->/<option
->--omit-dir-times</option
-></para>
-              <para
->Detta talar om för <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> att undanta kataloger när ändringstider bevaras (se <option
->--times</option
->).</para>
-              <para
 >Förval: inte valt</para>
             </listitem>
           </varlistentry>
@@ -6747,11 +7159,9 @@ ntlm auth = yes
     <sect2 id="configuration_page_synchronization_file_transfer">
       <title
 >Filöverföring</title>
-
       <sect3 id="configuration_page_synchronization_file_transfer_compression">
         <title
 >Komprimering</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6782,7 +7192,15 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Ställ explicit in komprimeringsgrad att använda (--compress-level=NUM). Om NUM är skilt från noll, är argumentet till --compress underförstått.</para>
+>Väljare: <option
+>--compress-level=NUM</option
+></para>
+              <para
+>Ställ explicit in komprimeringsgrad att använda. Om NUM är skilt från noll, är argumentet till <option
+>--compress</option
+> underförstått.</para>
+              <para
+>Förval: inte valt, NUM: 0</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6794,7 +7212,21 @@ ntlm auth = yes
             </term>
             <listitem>
               <para
->Skriv över listan med filsuffix som inte ska komprimeras (--skip-compress=LISTA). LISTA ska vara ett eller flera filsuffix (utan punkten) åtskilda med snedstreck. Det går att ange en tom sträng för att indikera att ingen fil ska hoppas över. Standardlistan med suffix ersätts av den här listan. För ytterligare information, se manualsidan för rsync.</para>
+>Väljare: <option
+>--skip-compress=LIST</option
+></para>
+              <para
+>Skriv över listan med filsuffix som inte ska komprimeras. LISTA ska vara ett eller flera filsuffix (utan punkten) åtskilda med snedstreck. Det går att ange en tom sträng för att indikera att ingen fil ska hoppas över. Standardlistan med suffix ersätts av den här listan. För ytterligare information, se <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>manualsidan för rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+>.</para>
+              <para
+>Förval: inte valt, LISTA: tom</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -6803,7 +7235,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_files">
         <title
 >Filer</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6815,7 +7246,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Väljare: <option
->--min-size=NUM</option
+>--min-size=SIZE</option
 ></para>
               <para
 >Detta talar om för <ulink url="man:/rsync"
@@ -6828,7 +7259,7 @@ ntlm auth = yes
 ></ulink
 > att undvika överföring av alla filer vars storlek är mindre än angiven STORLEK, vilket kan hjälpa till att inte överföra små skräpfiler.</para>
               <para
->Förval: inte valt, NUM: 0 kB</para>
+>Förval: inte valt, SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6841,7 +7272,7 @@ ntlm auth = yes
             <listitem>
               <para
 >Väljare: <option
->--max-size=NUM</option
+>--max-size=SIZE</option
 ></para>
               <para
 >Detta talar om för <ulink url="man:/rsync"
@@ -6854,7 +7285,7 @@ ntlm auth = yes
 ></ulink
 > att undvika överföring av alla filer vars storlek är större än angiven STORLEK.</para>
               <para
->Förval: inte valt, NUM: 0 kB</para>
+>Förval: inte valt, SIZE: 0 kB</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -6931,7 +7362,6 @@ ntlm auth = yes
       <sect3 id="configuration_page_synchronization_file_transfer_miscellaneous">
         <title
 >Diverse</title>
-
         <variablelist>
           <varlistentry>
             <term>
@@ -6948,7 +7378,7 @@ ntlm auth = yes
               <para
 >Ställ in maximal dataöverföringshastighet i kilobyte per sekund.</para>
               <para
->Förval: inte valt, GRÄNS: 0 kiB/s</para>
+>Förval: inte valt, GRÄNS: 0 kB/s</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7358,48 +7788,6 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Egna filterregler</guibutton
-></menuchoice>
-            </term>
-            <listitem>
-              <para
->Väljare: <option
->-f</option
->/<option
->--filter=REGEL</option
-></para>
-              <para
->Här kan du definiera en eller flera filterregler. Varje regel måste inledas med väljarsträngen <option
->--filter=</option
-> eller <option
->-f</option
->, eftersom innehållet i textrutan skickas till kommandot <ulink url="man:/rsync"
-><citerefentry
-><refentrytitle
->rsync</refentrytitle
-><manvolnum
->1</manvolnum
-></citerefentry
-></ulink
-> SOM DET ÄR.</para>
-              <para
->Väljaren låter dig lägga till regler för att selektivt undanta vissa filer från listan med filer att överföra. Det är mest användbart tillsammans med en rekursiv överföring.</para>
-              <para
->Du kan använda hur många <option
->--filter</option
-> väljare som du vill, för att bygga upp en lista med filer att undanta.</para>
-              <para
->Se avsnittet FILTERREGLER på <ulink url="man:/rsync"
->manualsidan</ulink
-> för detaljerad information om alternativet.</para>
-              <para
->Förval: tomt</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>
-              <menuchoice
-><guibutton
 >Använd --filter='dir-merge /.rsync-filter' filterregel</guibutton
 ></menuchoice>
             </term>
@@ -7450,6 +7838,48 @@ ntlm auth = yes
 > för detaljerad information om hur alternativet fungerar.</para>
               <para
 >Förval: inte valt</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              <menuchoice
+><guibutton
+>Egna filterregler</guibutton
+></menuchoice>
+            </term>
+            <listitem>
+              <para
+>Väljare: <option
+>-f</option
+>/<option
+>--filter=REGEL</option
+></para>
+              <para
+>Här kan du definiera en eller flera filterregler. Varje regel måste inledas med väljarsträngen <option
+>--filter=</option
+> eller <option
+>-f</option
+>, eftersom innehållet i textrutan skickas till kommandot <ulink url="man:/rsync"
+><citerefentry
+><refentrytitle
+>rsync</refentrytitle
+><manvolnum
+>1</manvolnum
+></citerefentry
+></ulink
+> SOM DET ÄR.</para>
+              <para
+>Väljaren låter dig lägga till regler för att selektivt undanta vissa filer från listan med filer att överföra. Det är mest användbart tillsammans med en rekursiv överföring.</para>
+              <para
+>Du kan använda hur många <option
+>--filter</option
+> väljare som du vill, för att bygga upp en lista med filer att undanta.</para>
+              <para
+>Se avsnittet FILTERREGLER på <ulink url="man:/rsync"
+>manualsidan</ulink
+> för detaljerad information om alternativet.</para>
+              <para
+>Förval: inte valt, REGLER: tomt</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -7534,8 +7964,7 @@ ntlm auth = yes
 
       <sect3 id="configuration_page_synchronization_miscellaneous_miscellaneous">
         <title
->Allmänt</title>
-
+>Diverse</title>
         <variablelist>
           <varlistentry>
             <term>
@@ -7611,121 +8040,45 @@ ntlm auth = yes
 
 
 <!-- 
-      Configuring Smb4K : Custom Options
+      Configuring Smb4K : Custom Settings
 -->
 
-  <sect1 id="configuration_page_custom_options">
+  <sect1 id="configuration_page_custom_settings">
     <title
->Anpassade inställningar</title>
+>Egna inställningar</title>
 
     <para
->Alla servrar och delade resurser där du kan definiera anpassade alternativ listas här.</para>
+>Alla servrar och delade resurser där du har definierat egna inställningar listas här.</para>
 
     <screenshot>
       <screeninfo
->Skärmbild av inställningsfliken "Anpassade alternativ"</screeninfo>
+>Skärmbild av inställningsfliken "Egna inställningar"</screeninfo>
       <mediaobject>
         <imageobject
-><imagedata fileref="configuration_page_custom_options.png" format="PNG"/></imageobject>
+><imagedata fileref="configuration_page_custom_settings.png" format="PNG"/></imageobject>
         <textobject
 ><phrase
->Inställningsfliken "Anpassade alternativ"</phrase
+>Inställningsfliken "Egna inställningar"</phrase
 ></textobject>
       </mediaobject>
     </screenshot>
 
     <para
->Alternativen som definieras för ett nätverksobjekt kan redigeras genom att antingen dubbelklicka på en post i listvyn eller genom att välja alternativet <guimenuitem
->Redigera</guimenuitem
-> i den sammanhangsberoende menyn (högerklicka på det markerade objektet). De anpassade alternativen läses då in och kan redigeras. Högerklicka på en post och välj alternativet <guimenuitem
->Ta bort</guimenuitem
-> i den sammanhangsberoende menyn för att ta bort den. Alla nätverksobjekt kan tas bort på en gång genom att välja alternativet <guimenuitem
->Rensa lista</guimenuitem
+>Alternativen som definieras för ett nätverksobjekt kan redigeras genom att antingen dubbelklicka på en post i listvyn eller genom att klicka på knappen  <guibutton
+>Redigera</guibutton
+>. Editorn av <link linkend="custom_settings"
+>egna inställningar</link
+> öppnas och inställningarna kan redigeras. För att ta bort en post, markera den och klicka på knappen <guibutton
+>Ta bort</guibutton
+>. Alla nätverksobjekt kan tas bort på en gång genom att klicka på knappen <guibutton
+>Rensa lista</guibutton
+>. För att återställa ändringarna, klicka på knappen <guibutton
+>Återställ</guibutton
 >.</para>
-
     <para
->De anpassade alternativen är tillgängliga via flikarna till höger.</para>
-    
-<!--
-      Configuring Smb4K : Custom Options : Network Item
--->
-    
-    <sect2 id="configuration_page_custom_options_network_item">
-      <title
->Nätverksobjekt</title>
-      
-      <para
->Fliken används i huvudsak som en informationsresurs. I grupprutan <guilabel
->Identifikation</guilabel
-> anges arbetsgrupp eller domän för nätverksobjektet, dess plats och IP-adress. IP-adressen kan redigeras, i händelse den behöver justeras.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Common Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_common_mount_settings">
-      <title
->Vanliga monteringsinställningar (bara &Linux;)</title>
-      
-      <para
->Här kan vanliga inställningar använda för montering redigeras på &Linux;. Ta en titt på inställningssidan <link linkend="configuration_page_mounting"
->Montering</link
-> för att ta reda på mer om de nuvarande alternativen.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Advanced Mount Settings (Linux only)
--->
-    <sect2 id="configuration_page_custom_options_advanced_mount_settings">
-      <title
->Avancerade monteringsinställningar (bara &Linux;)</title>
-      
-      <para
->Här kan avancerade inställningar använda för montering redigeras på &Linux;. Ta en titt på inställningssidan <link linkend="configuration_page_mounting"
->Montering</link
-> för att ta reda på mer om de nuvarande alternativen.</para>
-    </sect2>
-    
-<!--
-      Configuring Smb4K : Custom Options : Mount Settings (BSD only)
--->
-    <sect2 id="configuration_page_custom_options_mount_settings">
-      <title
->Monteringsinställningar (bara BSD)</title>
-      
-      <para
->Här kan inställningar använda för montering redigeras på BSD. Ta en titt på inställningssidan <link linkend="configuration_page_mounting"
->Montering</link
-> för att ta reda på mer om de nuvarande alternativen.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Options : Browse Settings
--->
-
-    <sect2 id="configuration_page_custom_options_browse_settings">
-      <title
->Bläddringsinställningar</title>
-    
-      <para
->Du kan redigera diverse &Samba;-inställningar som används vid bläddring här. Ta en titt på inställning av <link linkend="configuration_page_network_samba_settings"
->&Samba;</link
-> för mer information.</para>
-    </sect2>
-
-<!-- 
-      Configuring Smb4K : Custom Options : Wake-On-LAN Settings
--->
-
-    <sect2 id="configuration_page_custom_options_wake_on_lan_settings">
-      <title
->Inställningar av väckning av lokalt nätverk</title>
-    
-      <para
->Här kan du redigera alternativen för att väckas av lokalt nätverk som du tidigare definierade via dialogrutan <link linkend="network_neighborhood_browser_defining_custom_options"
->Anpassade alternativ</link
+>För ytterligare information om editorn av egna inställningar, läs det här <link linkend="custom_settings"
+>avsnittet</link
 >.</para>
-    </sect2>
   </sect1>
 
 <!-- 
@@ -7770,7 +8123,7 @@ ntlm auth = yes
           </term>
           <listitem>
             <para
->Låt Smb4K använda profiler. Det möjliggör att olika bokmärken och egna alternativ definieras för varje profil. Det är särskilt användbart om en bärbar dator används i olika nätverksgrannskap, t.ex. hemma och på arbetet. När alternativet aktiveras för första gången, blir den första posten i <link linkend="configuration_page_profiles_profiles"
+>Låt Smb4K använda profiler. Det möjliggör att olika bokmärken och egna inställningar definieras för varje profil. Det är särskilt användbart om en bärbar dator används i olika nätverksgrannskap, t.ex. hemma och på arbetet. När alternativet aktiveras för första gången, blir den första posten i <link linkend="configuration_page_profiles_profiles"
 >profillistan</link
 > den aktiva profilen.</para>
             <para
@@ -7991,8 +8344,31 @@ ntlm auth = yes
 >Lägga till bokmärken</link
 > för mer detaljerad information.</para>
         </listitem>
-      </varlistentry
->      
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Nätverk</guimenu
+> <guimenuitem
+>Lägg till egna inställningar</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Öppna editorn av <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Egna inställningar</link
+>. Du kan ställa in flera egna inställningar för den valda servern eller markerade delade resursen. Om en arbetsgrupp eller inget objekt är markerat, är menyalternativet inaktiverat. Läs avsnittet <link linkend="custom_settings_adding"
+>Lägga till egna inställningar</link
+> för mer information.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8035,28 +8411,6 @@ ntlm auth = yes
 >Visa <link linkend="network_neighborhood_browser_authentication"
 >Dialogrutan för behörighetskontroll</link
 >. Du kan tillhandahålla inloggningsnamn och lösenord för den markerade servern eller delade resursen. Om en arbetsgrupp eller inget objekt är markerat, är åtgärden inaktiverat.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>
-          <menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl; <keycap
->C</keycap
-></keycombo
-></shortcut
-> <guimenu
->Nätverk</guimenu
-> <guimenuitem
->Anpassade alternativ</guimenuitem
-> </menuchoice>
-        </term>
-        <listitem>
-          <para
->Visa dialogrutan <link linkend="network_neighborhood_browser_defining_custom_options"
->Anpassade alternativ</link
->. Du kan ställa in flera anpassade alternativ för den markerade servern eller delade resursen. Om en arbetsgrupp eller inget objekt är markerat, är menyalternativet inaktiverat.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -8227,11 +8581,11 @@ ntlm auth = yes
 >Avmontera en eller flera delade resurser. Möjligheten att avmontera resurser är normalt begränsat till de som ägs av användaren. Du kan ändra beteendet genom att ändra <link linkend="configuration_page_mounting_basic_settings_behavior"
 >inställningarna</link
 > i inställningsdialogrutan. Om ingen delad resurs är markerad i resursvyn, är knappen inaktiverad.</para>
-            <para
->&smb4k; tillhandahåller också möjlighet att tvinga avmontering av delade resurser (bara på &Linux;). Det kan vara användbart för oåtkomliga delade resurser som inte kan avmonteras på det normala sättet. För att aktivera funktionen måste <link linkend="configuration_page_mounting_basic_settings_behavior"
+          <para
+>&smb4k; tillhandahåller möjlighet att tvinga avmontering av delade resurser (bara på &Linux;). Det kan vara användbart för oåtkomliga delade resurser som inte kan avmonteras på det normala sättet. För att aktivera funktionen måste <link linkend="configuration_page_mounting_basic_settings_behavior"
 >inställningarna</link
 > i inställningsdialogrutan ändras.</para>
-            <para
+          <para
 >Läs avsnittet <link linkend="shares_view_unmounting"
 >Avmontera delade resurser</link
 > för detaljinformation.</para>
@@ -8272,8 +8626,31 @@ ntlm auth = yes
 >Lägga till bokmärken</link
 > för mer detaljerad information.</para>
         </listitem>
-      </varlistentry
->   
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Delade resurser</guimenu
+> <guimenuitem
+>Lägg till egna inställningar</guimenuitem
+> </menuchoice>
+        </term>
+        <listitem>
+          <para
+>Öppna editorn av <link linkend="network_neighborhood_browser_defining_custom_settings"
+>Egna inställningar</link
+>. Du kan ställa in flera egna inställningar för den markerade delade resursen. Läs avsnittet <link linkend="custom_settings_adding"
+>Lägga till egna inställningar</link
+> för mer information.</para>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>
           <menuchoice
@@ -8398,7 +8775,7 @@ ntlm auth = yes
 ><guimenu
 >Bokmärken</guimenu
 > <guimenuitem
->Montera alla bokmärken</guimenuitem
+>Montera bokmärken</guimenuitem
 > </menuchoice>
         </term>
         <listitem>
@@ -8555,7 +8932,7 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Tillhandahåll version av &smb4k; och KF5.</para
+>Tillhandahåll version av &smb4k; och &kde; Ramverk.</para
 ></listitem>
     <listitem
 ><para
@@ -8567,8 +8944,8 @@ ntlm auth = yes
 ></listitem>
     <listitem
 ><para
->Om du råkar ut för en krasch, bilägg en fullständig bakåtspårning. För det rekommenderas att kompilera (om) &smb4k; med avlusningssymboler. Hur man gör det beskrivs i filen <filename
->README</filename
+>Om du råkar ut för en krasch, bilägg en fullständig bakåtspårning. För det rekommenderas att kompilera (om) &smb4k; med avlusningssymboler. Hur man gör det nämns i filen <filename
+>README.md</filename
 > som levereras med källkoden.</para
 ></listitem>
     <listitem
@@ -8598,7 +8975,7 @@ ntlm auth = yes
 >Tack till och licens</title>
 
   <para
->Copyright &copy; 2003 - 2021, Alexander Reinholdt <email
+>Copyright &copy; 2003 - 2023, Alexander Reinholdt <email
 >alexander.reinholdt@kdemail.net</email
 ></para>
 
