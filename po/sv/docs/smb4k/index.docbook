@@ -2847,17 +2847,7 @@ ntlm auth = yes
 >Andra skrivbordsmiljöer än &plasma;</title>
 
       <para
->När en annan skrivbordsmiljö än &plasma; används, kan &Qt;- och &kde; Ramverk sakna vissa ikoner. I så fall, kan du eventuellt installera programmet <application
->qt5ct</application
-> (källkoden kan hämtas <ulink url="https://sourceforge.net/projects/qt5ct/"
->här</ulink
->). För att använda <application
->qt5ct</application
-> med din skrivbordsmiljö, lägg till följande rad i filen <filename
->~/.xinitrc</filename
-> eller <filename
->~/.profile</filename
->:</para>
+>När en annan skrivbordsmiljö än &plasma; används, kan &Qt;- och &kde; Ramverk-program sakna vissa ikoner. I så fall, kan du eventuellt installera programmet <application>qt5ct</application> (källkoden kan hämtas <ulink url="https://sourceforge.net/projects/qt5ct/">här</ulink>). För att använda <application>qt5ct</application> med din skrivbordsmiljö, lägg till följande rad i filen <filename>~/.xinitrc</filename> eller <filename>~/.profile</filename>:</para>
 <programlisting
 >export QT_QPA_PLATFORMTHEME=qt5ct</programlisting>
     </sect2>
