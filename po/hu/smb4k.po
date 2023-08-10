@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -178,7 +178,7 @@ msgstr "Hitelesítés"
 msgid "Synchronization"
 msgstr "Szinkronizálás"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Custom Settings"
@@ -600,7 +600,13 @@ msgstr "Hálózati mappa"
 msgid "Shares View"
 msgstr "Megosztások nézet"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network"
+msgid "No network item was set."
+msgstr "Hálózat"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -611,7 +617,7 @@ msgstr ""
 "<p>Egyéni beállítások megadása a(z) <b>%1</b> géphez és az általa "
 "biztosított megosztásokhoz.</p>"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, fuzzy, kde-format
 #| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
 msgid "Define custom settings for share <b>%1</b>."
@@ -1253,11 +1259,6 @@ msgstr "Méret"
 #~| msgid "Notifications"
 #~ msgid "Identification"
 #~ msgstr "Értesítések"
-
-#, fuzzy
-#~| msgid "Network"
-#~ msgid "Network Item"
-#~ msgstr "Hálózat"
 
 #, fuzzy
 #~| msgid "MAC Address:"

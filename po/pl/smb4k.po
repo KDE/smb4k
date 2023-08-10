@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2023-04-10 11:49+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -171,7 +171,7 @@ msgstr "Uwierzytelnianie"
 msgid "Synchronization"
 msgstr "Synchronizacja"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, kde-format
 msgid "Custom Settings"
 msgstr "Własne ustawienia"
@@ -570,7 +570,13 @@ msgstr "Otoczenie sieciowe"
 msgid "Shares View"
 msgstr "Widok zasobów"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network Item"
+msgid "No network item was set."
+msgstr "Element sieci"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -581,7 +587,7 @@ msgstr ""
 "<p>Określ własne opcje dla hosta <b>%1</b> i wszystkich udziałów jakie on "
 "zapewnia.</p>"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, fuzzy, kde-format
 #| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
 msgid "Define custom settings for share <b>%1</b>."
@@ -1195,9 +1201,6 @@ msgstr "Rozmiar:"
 
 #~ msgid "Identification"
 #~ msgstr "Rozpoznawanie"
-
-#~ msgid "Network Item"
-#~ msgstr "Element sieci"
 
 #~ msgid "MAC Address"
 #~ msgstr "Adres MAC"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Synchronization"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, fuzzy, kde-format
 #| msgid "Custom Options"
 msgid "Custom Settings"
@@ -559,13 +559,18 @@ msgstr ""
 msgid "Shares View"
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, kde-format
+msgid "No network item was set."
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""

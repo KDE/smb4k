@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2023-08-03 06:51+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -166,7 +166,7 @@ msgstr "Aŭtentigo"
 msgid "Synchronization"
 msgstr "Sinkronigado"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, kde-format
 msgid "Custom Settings"
 msgstr "Propraj Agordoj"
@@ -562,7 +562,12 @@ msgstr "Reta Kvartalo"
 msgid "Shares View"
 msgstr "Kundividas Vidon"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, kde-format
+msgid "No network item was set."
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -570,7 +575,7 @@ msgstr ""
 "Difini proprajn agordojn por gastiganto <b>%1</b> kaj ĉiujn kundividaĵojn "
 "kiujn ĝi provizas."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Difini proprajn agordojn por kundividaĵo <b>%1</b>."

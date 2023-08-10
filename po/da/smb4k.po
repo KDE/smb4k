@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -166,7 +166,7 @@ msgstr "Autentificering"
 msgid "Synchronization"
 msgstr "Synkronisering"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Custom Settings"
@@ -592,7 +592,13 @@ msgstr "Netværksnabolag"
 msgid "Shares View"
 msgstr "Ressourcevisning"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network"
+msgid "No network item was set."
+msgstr "Netværk"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -603,7 +609,7 @@ msgstr ""
 "<p>Angiv brugervalgte tilvalg for værten <b>%1</b> og alle de ressourcer den "
 "deler.</p>"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, fuzzy, kde-format
 #| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
 msgid "Define custom settings for share <b>%1</b>."
@@ -1243,11 +1249,6 @@ msgstr "Størrelse"
 #~| msgid "Notifications"
 #~ msgid "Identification"
 #~ msgstr "Bekendtgørelser"
-
-#, fuzzy
-#~| msgid "Network"
-#~ msgid "Network Item"
-#~ msgstr "Netværk"
 
 #, fuzzy
 #~| msgid "MAC Address:"

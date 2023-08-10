@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -181,7 +181,7 @@ msgstr "Аутентификация"
 msgid "Synchronization"
 msgstr "Синхронизация"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, fuzzy, kde-format
 msgid "Custom Settings"
 msgstr "Общие параметры"
@@ -585,13 +585,19 @@ msgstr "Сетевое окружение"
 msgid "Shares View"
 msgstr "Вид списка папок"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network Item"
+msgid "No network item was set."
+msgstr "Объект сети"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, fuzzy, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr "Не удалось получить просмотр."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, fuzzy, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Не удалось получить просмотр."
@@ -1206,9 +1212,6 @@ msgstr "Размер:"
 
 #~ msgid "Identification"
 #~ msgstr "Идентификация"
-
-#~ msgid "Network Item"
-#~ msgstr "Объект сети"
 
 #~ msgid "MAC Address"
 #~ msgstr "MAC-адрес"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2023-08-03 18:45+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -168,7 +168,7 @@ msgstr "ავთენტიკაცია"
 msgid "Synchronization"
 msgstr "სინქრონიზაცია"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, kde-format
 msgid "Custom Settings"
 msgstr "პარამეტრების ხელით მითითება"
@@ -564,7 +564,12 @@ msgstr "ქსელური მეზობლები"
 msgid "Shares View"
 msgstr "გაზიარებების ხედი"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, kde-format
+msgid "No network item was set."
+msgstr ""
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -572,7 +577,7 @@ msgstr ""
 "აღწერეთ მომხმარებლის პარამეტრები ჰოსტისთვის <b>%1</b> და ყველა "
 "გაზიარებულისთვის, რომელსაც ის გიზიარებთ."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "აღწერეთ მომხმარებლის პარამეტრები გაზიარებულისთვის <b>%1</b>."

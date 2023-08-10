@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2023-08-02 07:39+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -166,7 +166,7 @@ msgstr "Overitev"
 msgid "Synchronization"
 msgstr "Usklajevanje"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, kde-format
 msgid "Custom Settings"
 msgstr "Nastavitve po meri"
@@ -569,7 +569,13 @@ msgstr "Sosedstvo omrežja"
 msgid "Shares View"
 msgstr "Pogled delov diskov"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network Item"
+msgid "No network item was set."
+msgstr "Predmet mreže"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -577,7 +583,7 @@ msgstr ""
 "Določite nastavitve po meri za gostitelja <b>%1</b> in vse vire v skupni "
 "rab, ki jih ponuja."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Določite nastavitve po meri za skupni vir <b>%1</b>."
@@ -1191,9 +1197,6 @@ msgstr "Velikost:"
 
 #~ msgid "Identification"
 #~ msgstr "Identifikacija"
-
-#~ msgid "Network Item"
-#~ msgstr "Predmet mreže"
 
 #~ msgid "MAC Address"
 #~ msgstr "MAC naslov"

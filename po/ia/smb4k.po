@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2023-07-02 22:06+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -165,7 +165,7 @@ msgstr "Authentication"
 msgid "Synchronization"
 msgstr "Synchronisation"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, kde-format
 msgid "Custom Settings"
 msgstr "Preferentias Personalisate"
@@ -552,13 +552,19 @@ msgstr "Vicinitate de rete"
 msgid "Shares View"
 msgstr "Vista de partitiones (share)"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network Item"
+msgid "No network item was set."
+msgstr "Elemento de Rete"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
@@ -1153,9 +1159,6 @@ msgstr "Dimension:"
 
 #~ msgid "Identification"
 #~ msgstr "Identification"
-
-#~ msgid "Network Item"
-#~ msgstr "Elemento de Rete"
 
 #~ msgid "MAC Address"
 #~ msgstr "Adresse MAC"

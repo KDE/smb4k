@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -172,7 +172,7 @@ msgstr "Identiteetprööv"
 msgid "Synchronization"
 msgstr "Synkroniseren"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Custom Settings"
@@ -588,14 +588,20 @@ msgstr ""
 msgid "Shares View"
 msgstr "Freegavenansicht"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network"
+msgid "No network item was set."
+msgstr "Nettwark"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, fuzzy, kde-format
 #| msgid "%1 has been unmounted successfully."
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr "\"%1\" wöör mit Spood afhangt."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, fuzzy, kde-format
 #| msgid "%1 has been unmounted successfully."
 msgid "Define custom settings for share <b>%1</b>."
@@ -1218,11 +1224,6 @@ msgstr "Grött"
 #~| msgid "Notifications"
 #~ msgid "Identification"
 #~ msgstr "Bescheden"
-
-#, fuzzy
-#~| msgid "Network"
-#~ msgid "Network Item"
-#~ msgstr "Nettwark"
 
 #, fuzzy
 #~| msgid "IP address:"

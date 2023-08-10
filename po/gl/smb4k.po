@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2019-10-19 22:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -172,7 +172,7 @@ msgstr "Autenticación"
 msgid "Synchronization"
 msgstr "Sincronización"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, fuzzy, kde-format
 #| msgid "Common Mount Settings"
 msgid "Custom Settings"
@@ -586,14 +586,20 @@ msgstr "Veciñanza de rede"
 msgid "Shares View"
 msgstr "Vista de comparticións"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network Item"
+msgid "No network item was set."
+msgstr "Elemento de rede"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, fuzzy, kde-format
 #| msgid "The share could not be unmounted."
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr "Non foi posíbel desmontar a compartición."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, fuzzy, kde-format
 #| msgid "The share could not be unmounted."
 msgid "Define custom settings for share <b>%1</b>."
@@ -1221,9 +1227,6 @@ msgstr "Tamaño"
 
 #~ msgid "Identification"
 #~ msgstr "Identificación"
-
-#~ msgid "Network Item"
-#~ msgstr "Elemento de rede"
 
 #~ msgid "MAC Address"
 #~ msgstr "Enderezo MAC"

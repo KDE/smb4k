@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-04 00:46+0000\n"
+"POT-Creation-Date: 2023-08-10 00:46+0000\n"
 "PO-Revision-Date: 2023-08-02 11:58+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -173,7 +173,7 @@ msgstr "Authenticatie"
 msgid "Synchronization"
 msgstr "Synchronisatie"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:31
+#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
 #, kde-format
 msgid "Custom Settings"
 msgstr "Algemene instellingen"
@@ -573,7 +573,13 @@ msgstr "Netwerkomgeving"
 msgid "Shares View"
 msgstr "Gedeelde Mappen Weergave"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:101
+#: smb4k/smb4kcustomsettingseditor.cpp:50
+#, fuzzy, kde-format
+#| msgid "Network Item"
+msgid "No network item was set."
+msgstr "Netwerkitem"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:104
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -581,7 +587,7 @@ msgstr ""
 "Definieer aangepaste instellingen voor host <b>%1</b> en alle gedeelde "
 "mappen die het levert."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:117
+#: smb4k/smb4kcustomsettingseditor.cpp:120
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definieer aangepaste instellingen voor gedeelde map <b>%1</b>."
@@ -1195,9 +1201,6 @@ msgstr "Grootte:"
 
 #~ msgid "Identification"
 #~ msgstr "Identificatie"
-
-#~ msgid "Network Item"
-#~ msgstr "Netwerkitem"
 
 #~ msgid "MAC Address"
 #~ msgstr "MAC-adres"
