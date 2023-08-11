@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-10 00:46+0000\n"
-"PO-Revision-Date: 2023-08-02 17:12+0300\n"
+"PO-Revision-Date: 2023-08-10 09:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -578,10 +578,9 @@ msgid "Shares View"
 msgstr "Перегляд спільних ресурсів"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:50
-#, fuzzy, kde-format
-#| msgid "Network Item"
+#, kde-format
 msgid "No network item was set."
-msgstr "Запис мережі"
+msgstr "Не встановлено жодного запису мережі."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:104
 #, kde-format
