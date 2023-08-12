@@ -14,9 +14,9 @@
 
 // Qt includes
 #include <QDialogButtonBox>
+#include <QFrame>
 #include <QVBoxLayout>
 #include <QWindow>
-#include <QFrame>
 
 // KDE includes
 #include <KConfigGroup>
