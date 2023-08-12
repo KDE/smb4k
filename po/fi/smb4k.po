@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-10 00:46+0000\n"
-"PO-Revision-Date: 2023-03-30 12:11+0300\n"
+"PO-Revision-Date: 2023-07-27 15:59+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -117,10 +117,9 @@ msgid "Main Toolbar"
 msgstr "Päätyökalurivi"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "Kirjanmerkit"
+msgstr "Kirjanmerkkimuokkain"
 
 #: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:137
 #, kde-format
@@ -252,14 +251,14 @@ msgid "Set the username and password for the default login."
 msgstr "Aseta oletuskirjautumisen käyttäjätunnus ja salasana."
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:115
-#, fuzzy, kde-format
+#, kde-format
 msgid "Label:"
-msgstr "Nimike:"
+msgstr "Selite:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:122
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Luokka:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -281,7 +280,7 @@ msgstr "IP-osoite:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:133
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Lisää luokka"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:145
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
@@ -292,7 +291,7 @@ msgstr "Tyhjennä luettelo"
 #: smb4k/smb4kconfigpagebookmarks.cpp:465
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Uusi luokka"
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:64
 #, kde-format
@@ -779,8 +778,7 @@ msgid "Synchronizing %1"
 msgstr "Synkronoidaan %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
 msgstr "Liittämisikkuna"
 
@@ -790,6 +788,7 @@ msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
+"Anna jaettavan liitoksen sijainti ja valinnaisesti IP-osoite ja työryhmä."
 
 #: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
@@ -798,17 +797,15 @@ msgid "Location:"
 msgstr "Sijainti:"
 
 #: smb4k/smb4kmountdialog.cpp:105
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Kirjanmerkit"
+msgstr "Tee tästä jaosta kirjanmerkki"
 
 #: smb4k/smb4kmountdialog.cpp:144
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Kirjanmerkit"
+msgstr "Kirjanmerkki >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
