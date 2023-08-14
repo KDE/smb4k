@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-13 00:46+0000\n"
-"PO-Revision-Date: 2023-07-24 21:38+0200\n"
+"PO-Revision-Date: 2023-08-13 16:37+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -298,12 +298,11 @@ msgid "All fine."
 msgstr "Alles in Ordnung."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
-"Der Eintrag %1 wurde gelöscht, weil alle benutzerdefinierten Einstellungen "
-"zurückgesetzt worden sind."
+"Der Eintrag <b>%1</b> wurde gelöscht, weil alle benutzerdefinierten "
+"Einstellungen zurückgesetzt worden sind."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -575,23 +574,17 @@ msgid "No network item was set."
 msgstr "Netzwerkeintrag"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:104
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
-"<p>Benutzerdefinierte Optionen für den Rechner <b>%1</b> und all seine "
-"Freigaben festlegen.</p>"
+"Benutzerdefinierte Einstellungen für den Rechner <b>%1</b> und all seine "
+"Freigaben festlegen."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:120
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
-"<p>Benutzerdefinierte Optionen für die Freigabe <b>%1</b> auf dem Rechner <b>"
-"%2</b> festlegen.</p>"
+msgstr "Benutzerdefinierte Einstellungen für die Freigabe <b>%1</b> festlegen."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:269
