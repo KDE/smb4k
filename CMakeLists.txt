@@ -108,6 +108,10 @@ find_package(KF${QT_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED COMPONENTS
   XmlGui
 )
 
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(KF6StatusNotifierItem ${KF_MIN_VERSION} REQUIRED)
+endif()
+
 # Install the plasmoid if desired
 if (SMB4K_INSTALL_PLASMOID)
   find_package(KF${QT_MAJOR_VERSION} ${KF5_MIN_VERSION} COMPONENTS Plasma)

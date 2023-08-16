@@ -51,5 +51,6 @@ Dependencies:
     'frameworks/kxmlgui': '@latest-kf6'
     'frameworks/kdnssd': '@latest-kf6'
     'frameworks/plasma-framework': '@latest-kf6'
+    'frameworks/kstatusnotifieritem': '@latest-kf6'
     'third-party/kdsoap': '@latest'
     'libraries/kdsoap-ws-discovery-client': '@stable'
