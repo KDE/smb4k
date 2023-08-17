@@ -50,12 +50,13 @@ endif(SMB4K_WITH_WS_DISCOVERY)
 ########### Dialogs ################################
 
 set(smb4kdialogs_LIB_SRCS
-  smb4kcustomsettingseditor.cpp
-  smb4kcustomsettingseditorwidget.cpp
   smb4kbookmarkdialog.cpp
   smb4kbookmarkeditor.cpp
   smb4kconfigpagebookmarks.cpp
-  smb4kmountdialog.cpp)
+  smb4kcustomsettingseditor.cpp
+  smb4kcustomsettingseditorwidget.cpp
+  smb4kmountdialog.cpp
+  smb4kprintdialog.cpp)
 
 add_library(smb4kdialogs SHARED ${smb4kdialogs_LIB_SRCS})
 
