@@ -136,7 +136,6 @@ void Smb4KSystemTray::slotMountDialog()
 {
     if (m_mountDialog.isNull()) {
         m_mountDialog = new Smb4KMountDialog();
-        m_mountDialog->setAttribute(Qt::WA_DeleteOnClose);
         m_mountDialog->open();
     } else {
         m_mountDialog->raise();

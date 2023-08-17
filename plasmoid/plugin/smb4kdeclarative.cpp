@@ -241,7 +241,6 @@ void Smb4KDeclarative::openMountDialog()
 {
     if (d->mountDialog.isNull()) {
         d->mountDialog = new Smb4KMountDialog();
-        d->mountDialog->setAttribute(Qt::WA_DeleteOnClose);
         d->mountDialog->open();
     } else {
         d->mountDialog->raise();
@@ -358,7 +357,6 @@ void Smb4KDeclarative::editBookmarks()
 {
     if (d->bookmarkEditor.isNull()) {
         d->bookmarkEditor = new Smb4KBookmarkEditor();
-        d->bookmarkEditor->setAttribute(Qt::WA_DeleteOnClose);
         d->bookmarkEditor->open();
     } else {
         d->bookmarkEditor->raise();
@@ -408,7 +406,6 @@ void Smb4KDeclarative::openCustomOptionsDialog(Smb4KNetworkObject *object)
         if (!networkItem.isNull()) {
             QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
             if (customSettingsEditor->setNetworkItem(networkItem)) {
-                customSettingsEditor->setAttribute(Qt::WA_DeleteOnClose);
                 customSettingsEditor->open();
             } else {
                 delete customSettingsEditor;

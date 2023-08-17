@@ -361,7 +361,6 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
         } else if (type == QStringLiteral("options")) {
             QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
             if (customSettingsEditor->setNetworkItem(share)) {
-                customSettingsEditor->setAttribute(Qt::WA_DeleteOnClose);
                 customSettingsEditor->open();
             } else {
                 delete customSettingsEditor;

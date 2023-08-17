@@ -242,7 +242,6 @@ void Smb4KBookmarkMenu::slotEditActionTriggered(bool checked)
 
     if (m_bookmarkEditor.isNull()) {
         m_bookmarkEditor = new Smb4KBookmarkEditor();
-        m_bookmarkEditor->setAttribute(Qt::WA_DeleteOnClose);
         m_bookmarkEditor->open();
     } else {
         m_bookmarkEditor->raise();

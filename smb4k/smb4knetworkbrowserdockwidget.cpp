@@ -19,6 +19,7 @@
 #include "smb4kcustomsettingseditor.h"
 #include "smb4knetworkbrowseritem.h"
 #include "smb4ktooltip.h"
+#include "smb4kprintdialog.h"
 
 // Qt includes
 #include <QApplication>
@@ -854,7 +855,6 @@ void Smb4KNetworkBrowserDockWidget::slotMountManually(bool checked)
 
     if (m_mountDialog.isNull()) {
         m_mountDialog = new Smb4KMountDialog();
-        m_mountDialog->setAttribute(Qt::WA_DeleteOnClose);
         m_mountDialog->open();
     } else {
         m_mountDialog->raise();
@@ -899,7 +899,6 @@ void Smb4KNetworkBrowserDockWidget::slotAddCustomSettings(bool checked)
 
         QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
         if (customSettingsEditor->setNetworkItem(item->networkItem())) {
-            customSettingsEditor->setAttribute(Qt::WA_DeleteOnClose);
             customSettingsEditor->open();
         } else {
             delete customSettingsEditor;
