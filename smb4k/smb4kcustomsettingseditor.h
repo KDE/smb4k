@@ -47,6 +47,7 @@ protected Q_SLOTS:
     void slotSaveClicked();
     void slotCancelClicked();
     void slotCustomSettingsEdited(bool changed);
+    void slotCustomSettingsUpdated();
 
 private:
     OptionsPtr m_customSettings;
@@ -56,6 +57,8 @@ private:
     QPushButton *m_saveButton;
     QPushButton *m_cancelButton;
     bool m_defaultsRestored;
+    bool m_changedCustomSettings;
+    bool m_savingCustomSettings;
 };
 
 #endif

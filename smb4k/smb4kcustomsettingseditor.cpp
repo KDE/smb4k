@@ -26,10 +26,13 @@
 Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     : QDialog(parent)
 {
+    setWindowTitle(i18n("Custom Settings Editor"));
+    setAttribute(Qt::WA_DeleteOnClose);
+
     m_customSettings = nullptr;
     m_defaultsRestored = false;
-
-    setWindowTitle(i18n("Custom Settings"));
+    m_savingCustomSettings = false;
+    m_changedCustomSettings = false;
 
     QVBoxLayout *layout = new QVBoxLayout(this);
 
@@ -59,9 +62,13 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
     m_resetButton = buttonBox->addButton(QDialogButtonBox::RestoreDefaults);
+
     m_saveButton = buttonBox->addButton(QDialogButtonBox::Save);
     m_saveButton->setEnabled(false);
+    m_saveButton->setShortcut(QKeySequence::Save);
+
     m_cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
+    m_cancelButton->setShortcut(QKeySequence::Cancel);
 
     connect(m_resetButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotRestoreDefaultsClicked);
     connect(m_saveButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotSaveClicked);
@@ -69,6 +76,8 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
 
     layout->addWidget(m_editorWidget);
     layout->addWidget(buttonBox);
+
+    connect(Smb4KCustomOptionsManager::self(), &Smb4KCustomOptionsManager::updated, this, &Smb4KCustomSettingsEditor::slotCustomSettingsUpdated);
 
     create();
 
@@ -167,7 +176,10 @@ void Smb4KCustomSettingsEditor::slotSaveClicked()
 {
     OptionsPtr tempCustomSettings = OptionsPtr(new Smb4KCustomOptions(m_editorWidget->getCustomSettings()));
     m_customSettings.swap(tempCustomSettings);
+
+    m_savingCustomSettings = true;
     Smb4KCustomOptionsManager::self()->addCustomOptions(m_customSettings, true);
+    m_savingCustomSettings = false;
 
     KConfigGroup group(Smb4KSettings::self()->config(), "CustomOptionsDialog");
     KWindowConfig::saveWindowSize(windowHandle(), group);
@@ -186,4 +198,21 @@ void Smb4KCustomSettingsEditor::slotCustomSettingsEdited(bool changed)
 {
     m_saveButton->setEnabled(changed || m_defaultsRestored);
     m_resetButton->setEnabled((changed && m_defaultsRestored) || !m_defaultsRestored);
+
+    m_changedCustomSettings = changed;
 }
+
+void Smb4KCustomSettingsEditor::slotCustomSettingsUpdated()
+{
+    if (!m_savingCustomSettings) {
+        OptionsPtr customSettings = Smb4KCustomOptionsManager::self()->findOptions(m_customSettings->url());
+
+        // Only reload existing custom settings, because only those could have
+        // been changed externally.
+        if (customSettings && !m_changedCustomSettings && !m_defaultsRestored) {
+            m_customSettings = customSettings;
+            m_editorWidget->setCustomSettings(*m_customSettings.data());
+        }
+    }
+}
+
