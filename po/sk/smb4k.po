@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-10 00:46+0000\n"
+"POT-Creation-Date: 2023-08-13 00:46+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -122,24 +122,24 @@ msgstr "Hlavný panel nástrojov"
 msgid "Bookmark Editor"
 msgstr "Záložky"
 
-#: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:137
+#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:137
 #, kde-format
 msgid "Bookmarks"
 msgstr "Záložky"
 
-#: smb4k/smb4kbookmarkmenu.cpp:54
+#: smb4k/smb4kbookmarkmenu.cpp:41
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "&Upraviť záložky"
 
-#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:145
+#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:151
 #: smb4k/smb4ksharesviewdockwidget.cpp:227
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Prid&ať záložku"
 
-#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:214
+#: smb4k/smb4kbookmarkmenu.cpp:55 smb4k/smb4kbookmarkmenu.cpp:108
 #, fuzzy, kde-format
 #| msgid "Mount All Bookmarks"
 msgid "Mount Bookmarks"

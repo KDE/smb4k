@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-10 00:46+0000\n"
+"POT-Creation-Date: 2023-08-13 00:46+0000\n"
 "PO-Revision-Date: 2009-12-24 06:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -119,24 +119,24 @@ msgstr "Príomhbharra Uirlisí"
 msgid "Bookmark Editor"
 msgstr "Eagarthóir Leabharmharcanna"
 
-#: smb4k/smb4kbookmarkmenu.cpp:31 smb4k/smb4kconfigdialog.cpp:137
+#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:137
 #, kde-format
 msgid "Bookmarks"
 msgstr "Leabharmharcanna"
 
-#: smb4k/smb4kbookmarkmenu.cpp:54
+#: smb4k/smb4kbookmarkmenu.cpp:41
 #, kde-format
 msgid "&Edit Bookmarks"
 msgstr "Cuir Leabharmharcanna in &Eagar"
 
-#: smb4k/smb4kbookmarkmenu.cpp:63 smb4k/smb4kmainwindow.cpp:145
+#: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:151
 #: smb4k/smb4ksharesviewdockwidget.cpp:227
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Cuir &Leabharmharc Leis"
 
-#: smb4k/smb4kbookmarkmenu.cpp:74 smb4k/smb4kbookmarkmenu.cpp:214
+#: smb4k/smb4kbookmarkmenu.cpp:55 smb4k/smb4kbookmarkmenu.cpp:108
 #, fuzzy, kde-format
 #| msgid "Edit Bookmarks"
 msgid "Mount Bookmarks"

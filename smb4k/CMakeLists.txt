@@ -108,6 +108,10 @@ target_link_libraries(smb4k
   KF${QT_MAJOR_VERSION}::Crash
   KF${QT_MAJOR_VERSION}::WindowSystem)
 
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(smb4k KF6::StatusNotifierItem)
+endif()
+
 ########### install files ###############
 
 install(TARGETS smb4kconfigdialog DESTINATION ${KDE_INSTALL_PLUGINDIR})
