@@ -27,6 +27,7 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent)
     : QDialog(parent)
 {
     setWindowTitle(i18n("Bookmark Editor"));
+    setAttribute(Qt::WA_DeleteOnClose, true);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
 
