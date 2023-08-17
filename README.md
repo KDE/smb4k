@@ -30,6 +30,7 @@ Features
 - Plasmoid for desktop integration
 - Profiles for different network neighborhood setups
 
+
 Translations
 ------------
 Translations are provided by the KDE translators.
@@ -48,9 +49,9 @@ To compile Smb4K, you need:
   or clang/LLVM (version >= 3.3, https://clang.llvm.org)
 
 Smb4K build depends on:
-- Qt (version >= 5.14, https://www.qt.io): QtCore, QtGui, QtWidgets, 
+- Qt (version >= 5.15.8, https://www.qt.io): QtCore, QtGui, QtWidgets,
   QtNetwork, QtPrintSupport, QtQml
-- KDE Frameworks 5 (KF5, version >= 5.80.0, https://www.kde.org): ECM, 
+- KDE Frameworks 5 (KF5, version >= 5.103.0, https://www.kde.org): ECM,
   KConfig, KAuth, KDocTools, KIconThemes, KWidgetsAddons, KI18n, 
   KCompletion, KCoreAddons, Solid, KIO, KNotifications, KXmlGui, 
   KJobWidgets, KWallet, KDBusAddons, KConfigWidgets, KWindowSystem,
@@ -59,7 +60,7 @@ Smb4K build depends on:
 
 If you would like to enable WS-Discovery support, you additionally need
 (see also below for required build option):
-- KDSoap (version >= 1.9.0, 
+- KDSoap (version >= 1.9.0,
   https://www.kdab.com/development-resources/qt-tools/kd-soap/)
 - KDSoap WS-Discovery client (version >= 0.2, 
   https://invent.kde.org/libraries/kdsoap-ws-discovery-client)
@@ -123,6 +124,7 @@ To configure, compile and install Smb4K follow the steps below. Make sure, you h
       
    For all other distributions and operating systems, please have a look at the respective documentation.
 
+
 Debugging the Source Code
 -------------------------
 If you experience crashes or similar and want to debug the source code yourself, compile the source code with debugging symbols. The procedure is similar to the one described in the section above, except that you need to modify the cmake command slightly:
@@ -140,6 +142,7 @@ Help and Support
 If you encounter problems when using Smb4K and/or need help or support, please
 contact us in our [Help](https://sourceforge.net/p/smb4k/discussion/help/) or [General Discussion](https://sourceforge.net/p/smb4k/discussion/general/) 
 forums.
+
 
 Bugs
 ----
