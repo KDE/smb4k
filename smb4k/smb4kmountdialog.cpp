@@ -32,6 +32,7 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
     : QDialog(parent)
 {
     setWindowTitle(i18n("Mount Dialog"));
+    setAttribute(Qt::WA_DeleteOnClose);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
 
