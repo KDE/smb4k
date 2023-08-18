@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-13 00:46+0000\n"
+"POT-Creation-Date: 2023-08-18 00:45+0000\n"
 "PO-Revision-Date: 2023-07-17 21:57+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -150,7 +150,7 @@ msgid "&Edit Bookmarks"
 msgstr "&Modifier des signets"
 
 #: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:151
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:152
 #: smb4k/smb4ksharesviewdockwidget.cpp:227
 #, kde-format
 msgid "Add &Bookmark"
@@ -186,7 +186,7 @@ msgstr "Authentification"
 msgid "Synchronization"
 msgstr "Synchronisation"
 
-#: smb4k/smb4kconfigdialog.cpp:138 smb4k/smb4kcustomsettingseditor.cpp:32
+#: smb4k/smb4kconfigdialog.cpp:138
 #, kde-format
 msgid "Custom Settings"
 msgstr "Configuration personnalisées"
@@ -271,12 +271,12 @@ msgid "Set the username and password for the default login."
 msgstr ""
 "Définir un nom d'utilisateur et un mot de passe pour la connexion par défaut."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:115
+#: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:116
 #, kde-format
 msgid "Label:"
 msgstr "Étiquette :"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:122
+#: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:123
 #, kde-format
 msgid "Category:"
 msgstr "Catégorie :"
@@ -286,13 +286,13 @@ msgstr "Catégorie :"
 msgid "Username:"
 msgstr "Nom d'utilisateur :"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:86 smb4k/smb4kmountdialog.cpp:80
+#: smb4k/smb4kconfigpagebookmarks.cpp:86 smb4k/smb4kmountdialog.cpp:81
 #: smb4k/smb4ktooltip.cpp:216
 #, kde-format
 msgid "Workgroup:"
 msgstr "Groupe de travail :"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:94 smb4k/smb4kmountdialog.cpp:73
+#: smb4k/smb4kconfigpagebookmarks.cpp:94 smb4k/smb4kmountdialog.cpp:74
 #: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
@@ -590,19 +590,25 @@ msgstr "Voisinage réseau"
 msgid "Shares View"
 msgstr "Vue des partages"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:50
+#: smb4k/smb4kcustomsettingseditor.cpp:29
+#, fuzzy, kde-format
+#| msgid "Custom Settings"
+msgid "Custom Settings Editor"
+msgstr "Configuration personnalisées"
+
+#: smb4k/smb4kcustomsettingseditor.cpp:53
 #, fuzzy, kde-format
 #| msgid "Network Item"
 msgid "No network item was set."
 msgstr "Élément du réseau"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:104
+#: smb4k/smb4kcustomsettingseditor.cpp:113
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
 
-#: smb4k/smb4kcustomsettingseditor.cpp:120
+#: smb4k/smb4kcustomsettingseditor.cpp:129
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
@@ -807,7 +813,7 @@ msgstr "Synchronisation de %1"
 msgid "Mount Dialog"
 msgstr "Boîte de dialogue de montage"
 
-#: smb4k/smb4kmountdialog.cpp:50
+#: smb4k/smb4kmountdialog.cpp:51
 #, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
@@ -816,18 +822,18 @@ msgstr ""
 "Saisissez l'emplacement et, de façon facultative, l'adresse IP et le groupe "
 "de travail pour monter un partage."
 
-#: smb4k/smb4kmountdialog.cpp:64 smb4k/smb4ktooltip.cpp:247
+#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:247
 #: smb4k/smb4ktooltip.cpp:301
 #, kde-format
 msgid "Location:"
 msgstr "Emplacement :"
 
-#: smb4k/smb4kmountdialog.cpp:105
+#: smb4k/smb4kmountdialog.cpp:106
 #, kde-format
 msgid "Bookmark this share"
 msgstr "Ajouter ce partage aux signets"
 
-#: smb4k/smb4kmountdialog.cpp:144
+#: smb4k/smb4kmountdialog.cpp:145
 #, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
@@ -848,110 +854,110 @@ msgstr "Adresse IP"
 msgid "Comment"
 msgstr "Commentaire"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:119
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:407
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:470
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:471
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Parcourir le &réseau"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:121
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:122
 #, kde-format
 msgid "&Abort"
 msgstr "&Annuler"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:133
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
 #, kde-format
 msgid "&Search"
 msgstr "&Chercher"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:157
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:158
 #: smb4k/smb4ksharesviewdockwidget.cpp:232
 #, kde-format
 msgid "Ctrl+B"
 msgstr "CTRL + B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:162 smb4k/smb4ksharesmenu.cpp:193
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:163 smb4k/smb4ksharesmenu.cpp:193
 #: smb4k/smb4ksharesviewdockwidget.cpp:237
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Ajouter une &configuration personnalisée"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:168
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:169
 #: smb4k/smb4ksharesviewdockwidget.cpp:242
 #, kde-format
 msgid "Ctrl+C"
 msgstr "CTRL + C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:174 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:175 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "&Ouvrir la boîte de dialogue de montage"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:180
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
 #, kde-format
 msgid "Ctrl+O"
 msgstr "CTRL + O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:193
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:194
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&thentification"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:199
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:200
 #, kde-format
 msgid "Ctrl+T"
 msgstr "CTRL + T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:205
 #, kde-format
 msgid "Pre&view"
 msgstr "A&perçu"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:210
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
 #, kde-format
 msgid "Ctrl+V"
 msgstr "CTRL + V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:215
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:216
 #, kde-format
 msgid "&Print File"
 msgstr "&Imprimer un fichier"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:221
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
 #, kde-format
 msgid "Ctrl+P"
 msgstr "CTRL + P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:227
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:228
 #, kde-format
 msgid "&Mount"
 msgstr "&Monter"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:228
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:229
 #: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "&Unmount"
 msgstr "&Libérer"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:239
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:978
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:240
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:977
 #, kde-format
 msgid "Ctrl+M"
 msgstr "CTRL + M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:421
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:432
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:422
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Analyser l'o&rdinateur"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:457
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:458
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Analyser le grou&pe de travail"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:980
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:979
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -986,6 +992,18 @@ msgstr "Déplacer l'élément vers le bas"
 #, kde-format
 msgid "Item Up"
 msgstr "Déplacer l'élément vers le haut"
+
+#: smb4k/smb4kprintdialog.cpp:21
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Print Dialog"
+msgstr "Boîte de dialogue d'aperçu"
+
+#: smb4k/smb4kprintdialog.cpp:33
+#, fuzzy, kde-format
+#| msgid "&Print File"
+msgid "Print"
+msgstr "&Imprimer un fichier"
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
@@ -1618,6 +1636,3 @@ msgstr "Taille :"
 
 #~ msgid "Remote Shares"
 #~ msgstr "Partages distants"
-
-#~ msgid "Preview Dialog"
-#~ msgstr "Boîte de dialogue d'aperçu"
