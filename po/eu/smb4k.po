@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-18 00:45+0000\n"
-"PO-Revision-Date: 2023-08-16 18:56+0200\n"
+"PO-Revision-Date: 2023-08-18 20:38+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -173,7 +173,7 @@ msgstr "Sinkronizatzea"
 #: smb4k/smb4kconfigdialog.cpp:138
 #, kde-format
 msgid "Custom Settings"
-msgstr "Neurrira ipinitako ezarpenak"
+msgstr "Neurrira ipintzeko ezarpenak"
 
 #: smb4k/smb4kconfigdialog.cpp:139 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -568,10 +568,9 @@ msgid "Shares View"
 msgstr "Partekatze ikuspegia"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Neurrira ipinitako ezarpenak"
+msgstr "Ezarpenak neurrira ipintzeko editorea"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
 #, kde-format
@@ -583,13 +582,13 @@ msgstr "Ez da sare elementurik ezarri."
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
-"Definitu neurrira ipinitako ezarpenak <b>%1</b> ostalariarentzako eta "
-"hornitzen dituen partekatze guztietarako."
+"Definitu  <b>%1</b> ostalariarentzako eta hornitzen dituen partekatze "
+"guztietarako neurrira ipintzeko ezarpenak."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:129
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr "Definitu <b>%1</b> partekatzeari neurrira ipinitako ezarpenak."
+msgstr "Definitu <b>%1</b> partekatzeari neurrira ipintzeko ezarpenak."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:269
@@ -852,7 +851,7 @@ msgstr "Ktrl+B"
 #: smb4k/smb4ksharesviewdockwidget.cpp:237
 #, kde-format
 msgid "Add &Custom Settings"
-msgstr "Gehitu &neurrira egokitutako ezarpenak"
+msgstr "Gehitu &neurrira ipinitako ezarpenak"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:169
 #: smb4k/smb4ksharesviewdockwidget.cpp:242
@@ -965,16 +964,14 @@ msgid "Item Up"
 msgstr "Elementua zama-igo"
 
 #: smb4k/smb4kprintdialog.cpp:21
-#, fuzzy, kde-format
-#| msgid "Mount Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Muntatzeko elkarrizketa-koadroa"
+msgstr "Inprimatzeko elkarrizketa-koadroa"
 
 #: smb4k/smb4kprintdialog.cpp:33
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print"
-msgstr "In&primatu fitxategia"
+msgstr "Inprimatu"
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format

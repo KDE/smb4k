@@ -13,7 +13,7 @@
 # Joëlle Cornavin <jcorn@free.fr>, 2010, 2011, 2012, 2013.
 # Geoffray Levasseur <geoffray.levasseurbrandin@numericable.fr>, 2013, 2014.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Xavier Besnard <xavier.besnard@neuf.fr>
 # Xavier BESNARD <xavier.besnard@neuf.fr>, 2022, 2023.
 #
 msgid ""
@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-18 00:45+0000\n"
-"PO-Revision-Date: 2023-07-17 21:57+0200\n"
+"PO-Revision-Date: 2023-08-17 17:24+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.07.90\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -320,12 +320,11 @@ msgid "All fine."
 msgstr "Tout va bien."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
-"L'élément %1 a été supprimé car toutes les options personnalisées ont été ré-"
-"initialisées."
+"L'élément <b>%1</b> a été supprimé car toute la configuration personnalisé a "
+"été ré-initialisée."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -597,21 +596,22 @@ msgid "Custom Settings Editor"
 msgstr "Configuration personnalisées"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
-#, fuzzy, kde-format
-#| msgid "Network Item"
+#, kde-format
 msgid "No network item was set."
-msgstr "Élément du réseau"
+msgstr "Aucun élément du réseau n'a été défini."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:113
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
+"Définissez la configuration personnalisée concernant l'hôte <b>%1</b> et "
+"tous les partages qu'il fournit."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:129
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "Définissez les options personnalisées pour le partage <b>%1</b>"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:269
@@ -621,10 +621,9 @@ msgstr "Toujours remonter ce partage"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Montage"
+msgstr "Page 1 : montage"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -632,21 +631,19 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Ce serveur prend en charge les extensions Unix CIFS"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Montage"
+msgstr "Page 2 : montage"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Montage"
+msgstr "Page 3 : montage"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Page 4 : navigation"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:386
@@ -673,22 +670,19 @@ msgid "Send magic packet before mounting a share"
 msgstr "Envoyer un paquet « magique » avant de monter un partage"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr "Page 5 : réveil « Wake-On-LAN »"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Browsing"
-msgstr "Montage"
+msgstr "Page 2 : navigation"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 3: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr "Page 3 : réveil « Wake-On-LAN »"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format

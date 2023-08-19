@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-18 00:45+0000\n"
-"PO-Revision-Date: 2023-08-10 09:27+0300\n"
+"PO-Revision-Date: 2023-08-18 09:00+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -578,10 +578,9 @@ msgid "Shares View"
 msgstr "Перегляд спільних ресурсів"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Нетипові параметри"
+msgstr "Редактор нетипових параметрів"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
 #, kde-format
@@ -978,16 +977,14 @@ msgid "Item Up"
 msgstr "На пункт вище"
 
 #: smb4k/smb4kprintdialog.cpp:21
-#, fuzzy, kde-format
-#| msgid "Mount Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Вікно монтування"
+msgstr "Вікно друку"
 
 #: smb4k/smb4kprintdialog.cpp:33
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print"
-msgstr "&Надрукувати файл"
+msgstr "Надрукувати"
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
