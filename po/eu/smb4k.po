@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-29 02:26+0000\n"
-"PO-Revision-Date: 2023-07-30 09:01+0200\n"
+"PO-Revision-Date: 2023-08-18 20:33+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -168,7 +168,7 @@ msgstr "Sinkronizatzea"
 #: smb4k/smb4kconfigdialog.cpp:112
 #, kde-format
 msgid "Custom Settings"
-msgstr "Neurrira ipinitako ezarpenak"
+msgstr "Neurrira ipintzeko ezarpenak"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
