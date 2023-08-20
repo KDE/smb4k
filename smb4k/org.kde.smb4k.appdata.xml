@@ -58,6 +58,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="gl">Descubrir e montar comparticións de rede de SAMBA e de Windows.</summary>
   <summary xml:lang="id">Temukan dan kaitkan SAMBA dan berbagi Windows melalui jaringan</summary>
   <summary xml:lang="it">Rileva e monta nella rete le condivisioni SAMBA e Windows</summary>
+  <summary xml:lang="ka">აღმოაჩინეთ და მიამაგრეთ SAMBA-ის და Windows-ის გაზიარებულები ქსელში</summary>
   <summary xml:lang="ko">네트워크에 있는 Samba와 Windows 공유를 탐색하고 마운트</summary>
   <summary xml:lang="nl">Ontdek en koppel aan SAMBA en Windows-shares over het netwerk</summary>
   <summary xml:lang="pl">Wykrywaj i podpinaj zasoby SAMBY oraz Windowsa w sieci</summary>
@@ -187,6 +188,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Buscando grupos de traballo (activos), servidores e comparticións</li>
       <li xml:lang="id">Pemindaian untuk workgroup, host, dan berbagi (yang aktif)</li>
       <li xml:lang="it">Ricerca di gruppi di lavoro, host e condivisioni (attivi)</li>
+      <li xml:lang="ka">(აქტიური) ამუშაო ჯგუფების, ჰოსტებისა და გაზიარებულების სკანირება</li>
       <li xml:lang="ko">(활성) 작업 그룹, 호스트, 공유 검색</li>
       <li xml:lang="nds">Kieken na (aktiev) Arbeitkoppeln, Reekners un Freegaven</li>
       <li xml:lang="nl">Scannen voor (actieve) werkgroepen, hosts en shares</li>
@@ -314,6 +316,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Pode detectar automaticamente montaxes e desmontaxes externos.</li>
       <li xml:lang="id">Auto deteksi kait dan lepaskait eksternal</li>
       <li xml:lang="it">Rilevazione automatica di montaggi o di smontaggi esterni</li>
+      <li xml:lang="ka">გარე მიმაგრებებისა და მოხსნების ავტომატური აღმოჩენა</li>
       <li xml:lang="ko">외부 마운트 및 마운트 해제 자동 감지</li>
       <li xml:lang="nds">Automaatsch Opdecken vun In- un Uthangen vun buten ut</li>
       <li xml:lang="nl">Autodetectie van externe aan- en afkoppelingen</li>
@@ -345,6 +348,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Pode volver a montar comparticións usadas previamente ao iniciar o programa.</li>
       <li xml:lang="id">Mengaitkan-ulang berbagi-berbagi yang digunakan sebelumnya saat memulai program</li>
       <li xml:lang="it">Rimontaggio all'avvio del programma di una condivisione usata in precedenza</li>
+      <li xml:lang="ka">პროგრამის გაშვებისას ადრე მიმაგრებული გაზიარებულების თავიდან მიმაგრება</li>
       <li xml:lang="ko">프로그램을 시작할 때 이전에 사용한 공유 다시 마운트</li>
       <li xml:lang="nds">Wedderinhangen vun al vördem bruukt Freegaven bi Programmstart</li>
       <li xml:lang="nl">Recent gebruikte gedeelde mappen opnieuw tijdens het laden van het programma aankoppelen</li>
@@ -442,6 +446,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Permite obter unha vista previa dos contidos dunha compartición remota</li>
       <li xml:lang="id">Pratinjaunya konten dari berbagi jarak jauh</li>
       <li xml:lang="it">Anteprima dei contenuti di una condivisione remota</li>
+      <li xml:lang="ka">დაშორებული გაზიარებულის შემცველობის მინიატურები</li>
       <li xml:lang="ko">원격 공유 내용 미리 보기</li>
       <li xml:lang="nl">Voorbeeldweergave van de inhoud van een share op afstand</li>
       <li xml:lang="pl">Podgląd treści zdalnego udziału</li>
@@ -507,6 +512,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Xestiona de forma especial as particións de cartafoles persoais.</li>
       <li xml:lang="id">Penanganan spesial pemberbagian beranda</li>
       <li xml:lang="it">Gestione speciale delle condivisioni delle home</li>
+      <li xml:lang="ka">საწყისი გაზიარებულების სპეციალური დამუშავება</li>
       <li xml:lang="ko">홈 공유 특수 처리</li>
       <li xml:lang="nds">Besünner Hanteren vun Tohuus-Freegaven</li>
       <li xml:lang="nl">Speciale behandeling van shares van hoofdmappen</li>
@@ -538,6 +544,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Fornece un sistema de marcadores para gardar comparticións.</li>
       <li xml:lang="id">Kemampuan untuk memarkahi berbagi-berbagi favorit</li>
       <li xml:lang="it">Possibilità di aggiungere le condivisioni preferite nei segnalibri</li>
+      <li xml:lang="ka">რჩეული გაზიარებულების ჩანიშვნა</li>
       <li xml:lang="ko">자주 찾는 공유 책갈피 추가</li>
       <li xml:lang="nds">Leestekens för vörtrocken Freegaven</li>
       <li xml:lang="nl">Vermogen om van favoriete shares een bladwijzer te maken</li>
@@ -699,6 +706,7 @@ SPDX-License-Identifier: CC0-1.0
       <li xml:lang="gl">Permite sincronizar comparticións remotas con copias locais en ambos sentidos.</li>
       <li xml:lang="id">Sinkronisasi berbagi jarak jauh dengan salinan lokal dan sebaliknya</li>
       <li xml:lang="it">Sincronizzazione di una condivisione remota con una copia locale e viceversa</li>
+      <li xml:lang="ka">დაშორებული გაზიარებულის ლოკალურთან სინქრონიზაცია და პირიქით</li>
       <li xml:lang="ko">원격 공유와 로컬 사본 양방향 동기화</li>
       <li xml:lang="nds">Synkroniseren vun en feern Freegaav mit en lokaal Kopie, un ok ümdreiht</li>
       <li xml:lang="nl">Synchronisatie van een share op afstand met een lokale kopie en vice versa</li>
