@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-18 00:45+0000\n"
-"PO-Revision-Date: 2023-08-03 18:45+0200\n"
+"PO-Revision-Date: 2023-08-19 05:13+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -565,15 +565,14 @@ msgid "Shares View"
 msgstr "გაზიარებების ხედი"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "პარამეტრების ხელით მითითება"
+msgstr "მომხმარებლის პარამეტრების რედაქტორი"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
 #, kde-format
 msgid "No network item was set."
-msgstr ""
+msgstr "ქსელის ელემენტი დაყენებული არაა."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:113
 #, kde-format
@@ -963,16 +962,14 @@ msgid "Item Up"
 msgstr "ჩანაწერი მაღლა"
 
 #: smb4k/smb4kprintdialog.cpp:21
-#, fuzzy, kde-format
-#| msgid "Mount Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "&მიმაგრების ფანჯარა"
+msgstr "ბეჭდვის ფანჯარა"
 
 #: smb4k/smb4kprintdialog.cpp:33
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print"
-msgstr "&ფაილის დაბეჭდვა"
+msgstr "დაბეჭდვა"
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
