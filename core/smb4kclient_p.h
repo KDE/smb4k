@@ -347,7 +347,6 @@ class Smb4KClientPrivate
 {
 public:
     QList<Smb4KPreviewDialog *> previewDialogs;
-    QList<Smb4KPrintDialog *> printDialogs;
     QList<WorkgroupPtr> tempWorkgroupList;
     QList<HostPtr> tempHostList;
 };
