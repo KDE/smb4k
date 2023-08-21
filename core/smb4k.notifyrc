@@ -662,7 +662,7 @@ Comment[x-test]=xxThe network wallet could not be openedxx
 Comment[zh_CN]=无法打开网络密码库
 Comment[zh_TW]=無法開啟網路錢包
 Contexts=Warning
-Sound=Oxygen-Sys-Warning.ogg
+Sound=dialog-warning
 Action=Popup|Sound
 
 [Event/credentialsNotAccessible]
@@ -735,7 +735,7 @@ Comment[x-test]=xxThe credentials could not be read from the walletxx
 Comment[zh_CN]=无法从密码库中读取该身份验证信息
 Comment[zh_TW]=無法從錢包中讀取帳號密碼資訊
 Contexts=Warning
-Sound=Oxygen-Sys-Warning.ogg
+Sound=dialog-warning
 Action=Popup|Sound
 
 [Event/mimetypeNotSupported]
@@ -807,7 +807,7 @@ Comment[x-test]=xxThe mimetype of the file that is to be printed is not supporte
 Comment[zh_CN]=要打印的文件的 MIME 类型不受支持
 Comment[zh_TW]=要列印的檔案 MIME 型態未被支援
 Contexts=Warning
-Sound=Oxygen-Sys-Warning.ogg
+Sound=dialog-warning
 Action=Popup|Sound
 
 [Event/bookmarkExists]
@@ -880,7 +880,7 @@ Comment[x-test]=xxThe bookmark existsxx
 Comment[zh_CN]=该书签已存在
 Comment[zh_TW]=書籤已存在
 Contexts=Warning
-Sound=Oxygen-Sys-Warning.ogg
+Sound=dialog-warning
 Action=Popup|Sound
 
 [Event/bookmarkLabelInUse]
@@ -953,7 +953,7 @@ Comment[x-test]=xxThe label for the bookmark already existsxx
 Comment[zh_CN]=该书签标签已存在
 Comment[zh_TW]=書籤的標記已存在
 Contexts=Warning
-Sound=Oxygen-Sys-Warning.ogg
+Sound=dialog-warning
 Action=Popup|Sound
 
 [Event/mountingFailed]
@@ -1027,7 +1027,7 @@ Comment[x-test]=xxMounting a share failedxx
 Comment[zh_CN]=挂载共享失败
 Comment[zh_TW]=掛載分享資料夾失敗
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/unmountingFailed]
@@ -1102,7 +1102,7 @@ Comment[x-test]=xxUnmounting a share failedxx
 Comment[zh_CN]=卸载共享失败
 Comment[zh_TW]=卸載分享資料夾失敗
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/unmountingNotAllowed]
@@ -1175,7 +1175,7 @@ Comment[x-test]=xxThe unmounting of a certain share is not allowedxx
 Comment[zh_CN]=某个共享不允许卸载
 Comment[zh_TW]=不允許卸載特定分享資料夾
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/synchronizationFailed]
@@ -1248,7 +1248,7 @@ Comment[x-test]=xxThe synchronization of a share and a local copy failedxx
 Comment[zh_CN]=共享和本地副本的同步失败
 Comment[zh_TW]=將分享資源與本地端複本同步失敗
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/commandNotFound]
@@ -1324,7 +1324,7 @@ Comment[x-test]=xxA required command could not be foundxx
 Comment[zh_CN]=无法找到所需的命令
 Comment[zh_TW]=找不到需要的指令
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/cannotBookmarkPrinter]
@@ -1397,7 +1397,7 @@ Comment[x-test]=xxA printer cannot be bookmarkedxx
 Comment[zh_CN]=打印机无法添加书签
 Comment[zh_TW]=無法將印表機加入書籤
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/fileNotFound]
@@ -1474,7 +1474,7 @@ Comment[x-test]=xxA file could not be foundxx
 Comment[zh_CN]=无法找到文件
 Comment[zh_TW]=找不到檔案
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/openingFileFailed]
@@ -1547,7 +1547,7 @@ Comment[x-test]=xxA file could not be openedxx
 Comment[zh_CN]=无法打开文件
 Comment[zh_TW]=無法開啟檔案
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/readingFileFailed]
@@ -1620,7 +1620,7 @@ Comment[x-test]=xxA file could not be readxx
 Comment[zh_CN]=无法读取文件
 Comment[zh_TW]=無法讀取檔案
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/mkdirFailed]
@@ -1694,7 +1694,7 @@ Comment[x-test]=xxA directory could not be createdxx
 Comment[zh_CN]=无法创建目录
 Comment[zh_TW]=無法建立目錄
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/processError]
@@ -1770,7 +1770,7 @@ Comment[x-test]=xxA process error occurredxx
 Comment[zh_CN]=发生处理错误
 Comment[zh_TW]=行程發生錯誤
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/actionFailed]
@@ -1844,7 +1844,7 @@ Comment[x-test]=xxA KAuth action failedxx
 Comment[zh_CN]=KAuth 操作失败
 Comment[zh_TW]=KAuth 動作失敗
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/invalidURL]
@@ -1920,7 +1920,7 @@ Comment[x-test]=xxAn invalid URL was passedxx
 Comment[zh_CN]=传递的 URL 无效
 Comment[zh_TW]=傳遞了不合法的網址
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/networkCommunicationFailed]
@@ -1985,7 +1985,7 @@ Comment[x-test]=xxA network related action could not be performed or failedxx
 Comment[zh_CN]=无法执行与网络有关的操作，或操作失败
 Comment[zh_TW]=網路相關動作無法執行或是執行失敗。
 Contexts=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
 
 [Event/zeroconfError]
@@ -2041,5 +2041,5 @@ Comment[uk]=Сталася помилка, яку пов'язано із фон�
 Comment[x-test]=xxAn error with the Zeroconf daemon occurredxx
 Comment[zh_CN]=Zeroconf 守护进程发生错误
 Context=Error
-Sound=Oxygen-Sys-App-Error.ogg
+Sound=dialog-error
 Action=Popup|Sound
