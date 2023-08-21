@@ -13,7 +13,12 @@
 
 // Qt includes
 #include <QDialog>
+#include <QLabel>
 #include <QPushButton>
+#include <QSpinBox>
+
+// KDE includes
+#include <KUrlRequester>
 
 class Q_DECL_EXPORT Smb4KPrintDialog : public QDialog
 {
@@ -34,16 +39,25 @@ public:
      * Set the printer share to which should be printed
      *
      * @param printer       The printer share
+     *
+     * @returns TRUE if the printer share could successfully be set
      */
-    void setPrinterShare(SharePtr printer);
+    bool setPrinterShare(SharePtr printer);
 
 protected Q_SLOTS:
     void slotCancelButtonClicked(bool checked);
     void slotPrintButtonClicked(bool checked);
+    void slotUrlChanged(const QString &path);
+    void slotCopiesChanged(int copies);
 
 private:
+    void enablePrintButton();
+    SharePtr m_printer;
     QPushButton *m_cancelButton;
     QPushButton *m_printButton;
+    QLabel *m_descriptionText;
+    KUrlRequester *m_fileInput;
+    QSpinBox *m_copiesInput;
 };
 
 #endif

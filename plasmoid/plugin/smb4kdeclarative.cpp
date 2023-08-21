@@ -20,6 +20,7 @@
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kworkgroup.h"
 #include "smb4k/smb4kcustomsettingseditor.h"
+#include "smb4k/smb4kprintdialog.h"
 #include "smb4kbookmarkeditor.h"
 #include "smb4kbookmarkobject.h"
 #include "smb4kmountdialog.h"
@@ -47,8 +48,6 @@ public:
     QList<Smb4KBookmarkObject *> bookmarkObjects;
     QList<Smb4KBookmarkObject *> bookmarkCategoryObjects;
     QList<Smb4KProfileObject *> profileObjects;
-    QPointer<Smb4KBookmarkEditor> bookmarkEditor;
-    QPointer<Smb4KMountDialog> mountDialog;
 };
 
 Smb4KDeclarative::Smb4KDeclarative(QObject *parent)
@@ -239,12 +238,8 @@ Smb4KNetworkObject *Smb4KDeclarative::findNetworkItem(const QUrl &url, int type)
 
 void Smb4KDeclarative::openMountDialog()
 {
-    if (d->mountDialog.isNull()) {
-        d->mountDialog = new Smb4KMountDialog();
-        d->mountDialog->open();
-    } else {
-        d->mountDialog->raise();
-    }
+    QPointer<Smb4KMountDialog> mountDialog = new Smb4KMountDialog();
+    mountDialog->open();
 }
 
 void Smb4KDeclarative::mountShare(Smb4KNetworkObject *object)
@@ -311,7 +306,13 @@ void Smb4KDeclarative::print(Smb4KNetworkObject *object)
         SharePtr printer = Smb4KGlobal::findShare(object->url(), object->workgroupName());
 
         if (printer) {
-            Smb4KClient::self()->openPrintDialog(printer);
+            QPointer<Smb4KPrintDialog> printDialog = new Smb4KPrintDialog();
+
+            if (printDialog->setPrinterShare(printer)) {
+                printDialog->open();
+            } else {
+                delete printDialog;
+            }
         }
     }
 }
@@ -355,12 +356,8 @@ void Smb4KDeclarative::removeBookmark(Smb4KBookmarkObject *object)
 
 void Smb4KDeclarative::editBookmarks()
 {
-    if (d->bookmarkEditor.isNull()) {
-        d->bookmarkEditor = new Smb4KBookmarkEditor();
-        d->bookmarkEditor->open();
-    } else {
-        d->bookmarkEditor->raise();
-    }
+    QPointer<Smb4KBookmarkEditor> bookmarkEditor = new Smb4KBookmarkEditor();
+    bookmarkEditor->open();
 }
 
 void Smb4KDeclarative::synchronize(Smb4KNetworkObject *object)

@@ -1,7 +1,7 @@
 /*
     The network neighborhood browser dock widget
 
-    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -10,13 +10,11 @@
 
 // application specific includes
 #include "core/smb4kglobal.h"
-#include "smb4kmountdialog.h"
 #include "smb4knetworkbrowser.h"
 #include "smb4knetworksearchtoolbar.h"
 
 // Qt includes
 #include <QDockWidget>
-#include <QPointer>
 
 // KDE includes
 #include <KActionCollection>
@@ -276,11 +274,6 @@ private:
      * network search is underway
      */
     bool m_searchRunning;
-
-    /**
-     * Mount dialog
-     */
-    QPointer<Smb4KMountDialog> m_mountDialog;
 };
 
 #endif

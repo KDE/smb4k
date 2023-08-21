@@ -1,7 +1,7 @@
 /*
     The network neighborhood browser dock widget
 
-    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -17,14 +17,16 @@
 #include "core/smb4kwalletmanager.h"
 #include "core/smb4kworkgroup.h"
 #include "smb4kcustomsettingseditor.h"
+#include "smb4kmountdialog.h"
 #include "smb4knetworkbrowseritem.h"
-#include "smb4ktooltip.h"
 #include "smb4kprintdialog.h"
+#include "smb4ktooltip.h"
 
 // Qt includes
 #include <QApplication>
 #include <QHeaderView>
 #include <QMenu>
+#include <QPointer>
 #include <QTreeWidgetItemIterator>
 #include <QVBoxLayout>
 
@@ -853,12 +855,8 @@ void Smb4KNetworkBrowserDockWidget::slotMountManually(bool checked)
 {
     Q_UNUSED(checked);
 
-    if (m_mountDialog.isNull()) {
-        m_mountDialog = new Smb4KMountDialog();
-        m_mountDialog->open();
-    } else {
-        m_mountDialog->raise();
-    }
+    QPointer<Smb4KMountDialog> mountDialog = new Smb4KMountDialog();
+    mountDialog->open();
 }
 
 void Smb4KNetworkBrowserDockWidget::slotAuthentication(bool checked)
@@ -931,7 +929,13 @@ void Smb4KNetworkBrowserDockWidget::slotPrint(bool checked)
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
         if (item && item->shareItem()->isPrinter()) {
-            Smb4KClient::self()->openPrintDialog(item->shareItem());
+            QPointer<Smb4KPrintDialog> printDialog = new Smb4KPrintDialog();
+
+            if (printDialog->setPrinterShare(item->shareItem())) {
+                printDialog->open();
+            } else {
+                delete printDialog;
+            }
         }
     }
 }

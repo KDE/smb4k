@@ -343,67 +343,6 @@ private:
     QList<FilePtr> m_listing;
 };
 
-class Smb4KPrintDialog : public QDialog
-{
-    Q_OBJECT
-
-public:
-    /**
-     * Constructor
-     */
-    Smb4KPrintDialog(const SharePtr &share, QWidget *parent = nullptr);
-
-    /**
-     * Destructor
-     */
-    ~Smb4KPrintDialog();
-
-    /**
-     * Returns the share that is printed to
-     *
-     * @returns the share
-     */
-    SharePtr share() const;
-
-    /**
-     * Returns the file item that is to be printed
-     *
-     * @returns the file
-     */
-    KFileItem fileItem() const;
-
-Q_SIGNALS:
-    /**
-     * Emitted when a file is to be printed
-     */
-    void printFile(const SharePtr &printer, const KFileItem &file, int copies);
-
-    /**
-     * Emitted when the dialog is about to close
-     */
-    void aboutToClose(Smb4KPrintDialog *dialog);
-
-protected Q_SLOTS:
-    /**
-     * Print button was clicked
-     */
-    void slotPrintButtonClicked();
-
-    /**
-     * Cancel button clicked
-     */
-    void slotCancelButtonClicked();
-
-    /**
-     * Called when the URL was changed
-     */
-    void slotUrlChanged();
-
-private:
-    SharePtr m_share;
-    KFileItem m_fileItem;
-};
-
 class Smb4KClientPrivate
 {
 public:

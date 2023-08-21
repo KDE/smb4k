@@ -119,13 +119,6 @@ public:
      */
     void openPreviewDialog(const SharePtr &share);
 
-    /**
-     * This function opens the print dialog for @p share.
-     *
-     * @param share           The share object (printer only)
-     */
-    void openPrintDialog(const SharePtr &share);
-
 Q_SIGNALS:
     /**
      * This signal is emitted when the client starts its work.
@@ -211,16 +204,6 @@ protected Q_SLOTS:
      * Called when a process should be aborted
      */
     void slotAbort();
-
-    /**
-     * Called when a file is about to be printed
-     */
-    void slotStartPrinting(const SharePtr &printer, const KFileItem &fileItem, int copies);
-
-    /**
-     * Called when a print dialog closed
-     */
-    void slotPrintDialogClosed(Smb4KPrintDialog *dialog);
 
 private:
     /**

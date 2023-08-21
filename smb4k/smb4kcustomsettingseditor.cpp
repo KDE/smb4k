@@ -215,4 +215,3 @@ void Smb4KCustomSettingsEditor::slotCustomSettingsUpdated()
         }
     }
 }
-

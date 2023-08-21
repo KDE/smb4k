@@ -365,6 +365,13 @@ void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
 
 void Smb4KClient::printFile(const SharePtr &share, const KFileItem &fileItem, int copies)
 {
+    if (fileItem.mimetype() != QStringLiteral("application/postscript") && fileItem.mimetype() != QStringLiteral("application/pdf")
+        && fileItem.mimetype() != QStringLiteral("application/x-shellscript") && !fileItem.mimetype().startsWith(QStringLiteral("text"))
+        && !fileItem.mimetype().startsWith(QStringLiteral("message")) && !fileItem.mimetype().startsWith(QStringLiteral("image"))) {
+        Smb4KNotification::mimetypeNotSupported(fileItem.mimetype());
+        return;
+    }
+
     //
     // Emit the aboutToStart() signal
     //
@@ -503,50 +510,6 @@ void Smb4KClient::openPreviewDialog(const SharePtr &share)
         connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
         connect(this, SIGNAL(aboutToStart(NetworkItemPtr, int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr, int)));
         connect(this, SIGNAL(finished(NetworkItemPtr, int)), dlg, SLOT(slotFinished(NetworkItemPtr, int)));
-    }
-
-    //
-    // Show the preview dialog
-    //
-    if (!dlg->isVisible()) {
-        dlg->setVisible(true);
-    }
-}
-
-void Smb4KClient::openPrintDialog(const SharePtr &share)
-{
-    //
-    // Printer share check
-    //
-    if (!share->isPrinter()) {
-        return;
-    }
-
-    //
-    // Start the print dialog
-    //
-    // First, check if a print dialog has already been set up for this share
-    // and reuse it, if possible.
-    //
-    QPointer<Smb4KPrintDialog> dlg = nullptr;
-
-    for (Smb4KPrintDialog *p : qAsConst(d->printDialogs)) {
-        if (share == p->share()) {
-            dlg = p;
-        }
-    }
-
-    //
-    // If there was no print dialog present, create a new one
-    //
-    if (!dlg) {
-        Smb4KWalletManager::self()->readLoginCredentials(share);
-
-        dlg = new Smb4KPrintDialog(share, QApplication::activeWindow());
-        d->printDialogs << dlg;
-
-        connect(dlg, SIGNAL(printFile(SharePtr, KFileItem, int)), this, SLOT(slotStartPrinting(SharePtr, KFileItem, int)));
-        connect(dlg, SIGNAL(aboutToClose(Smb4KPrintDialog *)), this, SLOT(slotPrintDialogClosed(Smb4KPrintDialog *)));
     }
 
     //
@@ -1008,26 +971,4 @@ void Smb4KClient::slotPreviewDialogClosed(Smb4KPreviewDialog *dialog)
 void Smb4KClient::slotAbort()
 {
     abort();
-}
-
-void Smb4KClient::slotStartPrinting(const SharePtr &printer, const KFileItem &fileItem, int copies)
-{
-    //
-    // Start printing
-    //
-    printFile(printer, fileItem, copies);
-}
-
-void Smb4KClient::slotPrintDialogClosed(Smb4KPrintDialog *dialog)
-{
-    //
-    // Remove the print dialog from the list
-    //
-    if (dialog) {
-        // Find the dialog in the list and take it from the list.
-        // It will automatically be deleted on close, so there is
-        // no need to delete the dialog here.
-        int i = d->printDialogs.indexOf(dialog);
-        d->printDialogs.takeAt(i);
-    }
 }
