@@ -28,42 +28,33 @@ public:
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(NetworkItem type)
     : d(new Smb4KBasicNetworkItemPrivate)
 {
-    //
-    // Set the type
-    //
     d->type = type;
-
-    //
-    // Initialize the dnsDiscovered variable
-    //
     d->dnsDiscovered = false;
 
-    //
-    // Initialize the protected variables
-    //
     pUrl = &d->url;
     pIcon = &d->icon;
     pComment = &d->comment;
+    pType = &d->type;
 }
 
 Smb4KBasicNetworkItem::Smb4KBasicNetworkItem(const Smb4KBasicNetworkItem &item)
     : d(new Smb4KBasicNetworkItemPrivate)
 {
-    //
-    // Copy the private variables
-    //
     *d = *item.d;
 
-    //
-    // Initialize the protected variables
-    //
     pUrl = &d->url;
     pIcon = &d->icon;
     pComment = &d->comment;
+    pType = &d->type;
 }
 
 Smb4KBasicNetworkItem::~Smb4KBasicNetworkItem()
 {
+}
+
+void Smb4KBasicNetworkItem::setType(Smb4KGlobal::NetworkItem type)
+{
+    d->type = type;
 }
 
 Smb4KGlobal::NetworkItem Smb4KBasicNetworkItem::type() const
@@ -155,4 +146,10 @@ QString Smb4KBasicNetworkItem::comment() const
 bool Smb4KBasicNetworkItem::hasUserInfo() const
 {
     return !d->url.userInfo().isEmpty();
+}
+
+Smb4KBasicNetworkItem &Smb4KBasicNetworkItem::operator=(const Smb4KBasicNetworkItem &other)
+{
+    *d = *other.d;
+    return *this;
 }

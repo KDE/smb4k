@@ -497,3 +497,9 @@ void Smb4KShare::update(Smb4KShare *share)
         setHostIpAddress(share->hostIpAddress());
     }
 }
+
+Smb4KShare &Smb4KShare::operator=(const Smb4KShare &other)
+{
+    *d = *other.d;
+    return *this;
+}

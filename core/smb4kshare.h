@@ -456,6 +456,11 @@ public:
      */
     void update(Smb4KShare *share);
 
+    /**
+     * Copy assignment operator
+     */
+    Smb4KShare &operator=(const Smb4KShare &other);
+
 private:
     const QScopedPointer<Smb4KSharePrivate> d;
 
@@ -464,5 +469,7 @@ private:
      */
     void setShareIcon();
 };
+
+Q_DECLARE_METATYPE(Smb4KShare)
 
 #endif

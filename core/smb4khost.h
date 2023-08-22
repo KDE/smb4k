@@ -181,8 +181,15 @@ public:
      */
     void update(Smb4KHost *host);
 
+    /**
+     * Copy assignment operator
+     */
+    Smb4KHost &operator=(const Smb4KHost &other);
+
 private:
     const QScopedPointer<Smb4KHostPrivate> d;
 };
+
+Q_DECLARE_METATYPE(Smb4KHost)
 
 #endif

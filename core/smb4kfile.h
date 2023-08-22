@@ -37,6 +37,11 @@ public:
     Smb4KFile(const Smb4KFile &file);
 
     /**
+     * Empty constructor
+     */
+    Smb4KFile();
+
+    /**
      * Destructor
      */
     ~Smb4KFile();
@@ -139,8 +144,15 @@ public:
      */
     bool isHidden() const;
 
+    /**
+     * Copy assignment operator
+     */
+    Smb4KFile &operator=(const Smb4KFile &other);
+
 private:
     const QScopedPointer<Smb4KFilePrivate> d;
 };
+
+Q_DECLARE_METATYPE(Smb4KFile)
 
 #endif

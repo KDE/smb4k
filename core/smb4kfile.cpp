@@ -46,6 +46,12 @@ Smb4KFile::Smb4KFile(const Smb4KFile &file)
     *d = *file.d;
 }
 
+Smb4KFile::Smb4KFile()
+    : Smb4KBasicNetworkItem(Smb4KGlobal::File)
+    , d(new Smb4KFilePrivate)
+{
+}
+
 Smb4KFile::~Smb4KFile()
 {
 }
@@ -136,4 +142,10 @@ QString Smb4KFile::name() const
 bool Smb4KFile::isHidden() const
 {
     return name().startsWith(QStringLiteral("."));
+}
+
+Smb4KFile &Smb4KFile::operator=(const Smb4KFile &other)
+{
+    *d = *other.d;
+    return *this;
 }

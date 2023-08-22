@@ -137,8 +137,15 @@ public:
      */
     void update(Smb4KWorkgroup *workgroup);
 
+    /**
+     * Copy assignment operator
+     */
+    Smb4KWorkgroup &operator=(const Smb4KWorkgroup &other);
+
 private:
     const QScopedPointer<Smb4KWorkgroupPrivate> d;
 };
+
+Q_DECLARE_METATYPE(Smb4KWorkgroup)
 
 #endif

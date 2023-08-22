@@ -132,3 +132,9 @@ void Smb4KWorkgroup::update(Smb4KWorkgroup *workgroup)
         setMasterBrowserIpAddress(workgroup->masterBrowserIpAddress());
     }
 }
+
+Smb4KWorkgroup &Smb4KWorkgroup::operator=(const Smb4KWorkgroup &other)
+{
+    *d = *other.d;
+    return *this;
+}

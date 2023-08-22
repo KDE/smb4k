@@ -153,3 +153,9 @@ void Smb4KHost::update(Smb4KHost *host)
         }
     }
 }
+
+Smb4KHost &Smb4KHost::operator=(const Smb4KHost &other)
+{
+    *d = *other.d;
+    return *this;
+}

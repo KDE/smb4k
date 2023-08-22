@@ -35,7 +35,7 @@ public:
     /**
      * The constructor
      */
-    explicit Smb4KBasicNetworkItem(Smb4KGlobal::NetworkItem type = Smb4KGlobal::UnknownNetworkItem);
+    Smb4KBasicNetworkItem(Smb4KGlobal::NetworkItem type = Smb4KGlobal::UnknownNetworkItem);
 
     /**
      * The copy constructor
@@ -46,6 +46,13 @@ public:
      * The destructor
      */
     ~Smb4KBasicNetworkItem();
+
+    /**
+     * This function sets the type of the basic network item.
+     *
+     * @param type          The type of the network item
+     */
+    void setType(Smb4KGlobal::NetworkItem type);
 
     /**
      * This function returns the type of the basic network
@@ -121,6 +128,11 @@ public:
      */
     bool hasUserInfo() const;
 
+    /**
+     * Copy assignment operator
+     */
+    Smb4KBasicNetworkItem &operator=(const Smb4KBasicNetworkItem &other);
+
 protected:
     /**
      * Expose a pointer to the private URL variable.
@@ -137,8 +149,15 @@ protected:
      */
     QString *pComment;
 
+    /**
+     * Export a pointer to the private type variable
+     */
+    Smb4KGlobal::NetworkItem *pType;
+
 private:
     const QScopedPointer<Smb4KBasicNetworkItemPrivate> d;
 };
+
+Q_DECLARE_METATYPE(Smb4KBasicNetworkItem)
 
 #endif
