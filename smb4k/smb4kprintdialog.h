@@ -28,12 +28,12 @@ public:
     /**
      * Constructor
      */
-    Smb4KPrintDialog(QWidget *parent = nullptr);
+    explicit Smb4KPrintDialog(QWidget *parent = nullptr);
 
     /**
      * Destructor
      */
-    ~Smb4KPrintDialog();
+    virtual ~Smb4KPrintDialog();
 
     /**
      * Set the printer share to which should be printed
