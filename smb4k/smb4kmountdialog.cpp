@@ -153,6 +153,8 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
 
     layout->addWidget(buttonBox);
 
+    setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
+
     create();
 
     KConfigGroup group(Smb4KSettings::self()->config(), "MountDialog");

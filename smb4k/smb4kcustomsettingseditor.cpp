@@ -79,6 +79,8 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
 
     connect(Smb4KCustomOptionsManager::self(), &Smb4KCustomOptionsManager::updated, this, &Smb4KCustomSettingsEditor::slotCustomSettingsUpdated);
 
+    setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
+
     create();
 
     KConfigGroup group(Smb4KSettings::self()->config(), "CustomOptionsDialog");

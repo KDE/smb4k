@@ -90,10 +90,14 @@ Smb4KPrintDialog::Smb4KPrintDialog(QWidget *parent)
 
     layout->addWidget(buttonBox);
 
+    setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
+
     create();
 
     KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
     QSize dialogSize;
+
+    // FIXME: Insert completion objects?
 
     if (group.exists()) {
         KWindowConfig::restoreWindowSize(windowHandle(), group);
@@ -144,6 +148,8 @@ void Smb4KPrintDialog::slotPrintButtonClicked(bool checked)
 
     KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");
     KWindowConfig::saveWindowSize(windowHandle(), group);
+
+    // FIXME: Save completion objects?
 
     accept();
 }

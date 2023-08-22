@@ -47,6 +47,8 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent)
 
     layout->addWidget(buttonBox);
 
+    setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
+
     create();
 
     KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
