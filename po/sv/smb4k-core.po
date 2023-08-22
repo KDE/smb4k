@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-07-25 13:57+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -2018,67 +2018,6 @@ msgstr "Avbryt"
 msgid "Up"
 msgstr "Upp:"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Skriv ut filen"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "Information"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Skrivare:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-adress:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Domän:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr "Fil och inställningar"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Fil:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Det här är filen du vill skriva ut på fjärrskrivaren. För närvarande stöds "
-"bara ett fåtal Mime-typer, som PDF, Postscript, enkel text och bilder. Om "
-"filens Mime-typ inte stöds, måste du konvertera den."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Kopior:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Det här är antalet kopior du vill skriva ut."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Skriv ut"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3575,6 +3514,45 @@ msgid ""
 msgstr ""
 "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1</b>."
 "</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Skriv ut filen"
+
+#~ msgid "Information"
+#~ msgstr "Information"
+
+#~ msgid "Printer:"
+#~ msgstr "Skrivare:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP-adress:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domän:"
+
+#~ msgid "File and Settings"
+#~ msgstr "Fil och inställningar"
+
+#~ msgid "File:"
+#~ msgstr "Fil:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Det här är filen du vill skriva ut på fjärrskrivaren. För närvarande "
+#~ "stöds bara ett fåtal Mime-typer, som PDF, Postscript, enkel text och "
+#~ "bilder. Om filens Mime-typ inte stöds, måste du konvertera den."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopior:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Det här är antalet kopior du vill skriva ut."
+
+#~ msgid "Print"
+#~ msgstr "Skriv ut"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Lägg till bokmärken"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-07-30 09:28+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2053,68 +2053,6 @@ msgstr "Utzi"
 msgid "Up"
 msgstr "Gora"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Inprimatu fitxategia"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "Informazioa"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Inprimagailua:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP helbidea:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Domeinua:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr "Fitxategia eta ezarpenak"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Fitxategia:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Hau da urruneko inprimagailuan inprimatu nahi duzun fitxategia. Une honetan "
-"MIME-mota gutxi batzuk onartzen dira, PDF, Postscript, testu arrunta, eta "
-"irudiak esaterako. Fitxategiko MIME-mota onartzen ez bada, hura bihurtu "
-"behar duzu."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Kopiak:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Hau da inprimatu nahi duzun kopia kopurua."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Inprimatu"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3621,6 +3559,46 @@ msgid ""
 msgstr ""
 "<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> partekatzerako.</"
 "qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Inprimatu fitxategia"
+
+#~ msgid "Information"
+#~ msgstr "Informazioa"
+
+#~ msgid "Printer:"
+#~ msgstr "Inprimagailua:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP helbidea:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domeinua:"
+
+#~ msgid "File and Settings"
+#~ msgstr "Fitxategia eta ezarpenak"
+
+#~ msgid "File:"
+#~ msgstr "Fitxategia:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Hau da urruneko inprimagailuan inprimatu nahi duzun fitxategia. Une "
+#~ "honetan MIME-mota gutxi batzuk onartzen dira, PDF, Postscript, testu "
+#~ "arrunta, eta irudiak esaterako. Fitxategiko MIME-mota onartzen ez bada, "
+#~ "hura bihurtu behar duzu."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopiak:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Hau da inprimatu nahi duzun kopia kopurua."
+
+#~ msgid "Print"
+#~ msgstr "Inprimatu"
 
 #~ msgid "Custom Settings"
 #~ msgstr "Neurrira egokitutako ezarpenak"

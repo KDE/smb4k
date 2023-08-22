@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2033,68 +2033,6 @@ msgstr "Afbreken"
 msgid "Up"
 msgstr "Na baven"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Datei drucken"
-
-#: smb4kclient_p.cpp:2349
-#, fuzzy, kde-format
-#| msgid "Actions"
-msgid "Information"
-msgstr "Akschonen"
-
-#: smb4kclient_p.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Printer:"
-msgstr "Drucker"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-Adress:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Domään:"
-
-#: smb4kclient_p.cpp:2378
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
-msgid "File and Settings"
-msgstr "Verwiedert Optschonen"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Datei:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Kopien:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr ""
-
-#: smb4kclient_p.cpp:2411
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Print"
-msgstr "Drucker"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3615,6 +3553,41 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Datei drucken"
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "Information"
+#~ msgstr "Akschonen"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Printer:"
+#~ msgstr "Drucker"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP-Adress:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domään:"
+
+#, fuzzy
+#~| msgid "Advanced Options"
+#~ msgid "File and Settings"
+#~ msgstr "Verwiedert Optschonen"
+
+#~ msgid "File:"
+#~ msgstr "Datei:"
+
+#~ msgid "Copies:"
+#~ msgstr "Kopien:"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Print"
+#~ msgstr "Drucker"
 
 #, fuzzy
 #~| msgid "Mounting"

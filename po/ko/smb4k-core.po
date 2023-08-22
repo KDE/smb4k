@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-08-06 22:55+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1957,67 +1957,6 @@ msgstr "중지"
 msgid "Up"
 msgstr "위로"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "파일 인쇄"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "정보"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "프린터:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP 주소:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "도메인:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr "파일과 설정"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "파일:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"원격 프린터에서 인쇄할 파일입니다. PDF, 포스트스크립트, 일반 텍스트, 이미지"
-"와 같은 일부 MIME 형식만 지원합니다. 파일의 MIME 형식을 지원하지 않으면 변환"
-"해야 합니다."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "복사 부수:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "인쇄할 복사 부수입니다."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "인쇄"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3464,6 +3403,45 @@ msgstr "<qt>호스트 <b>%1</b>의 사용자 이름 및 암호를 입력하십�
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>공유 <b>%1</b>의 사용자 이름 및 암호를 입력하십시오.</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "파일 인쇄"
+
+#~ msgid "Information"
+#~ msgstr "정보"
+
+#~ msgid "Printer:"
+#~ msgstr "프린터:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP 주소:"
+
+#~ msgid "Domain:"
+#~ msgstr "도메인:"
+
+#~ msgid "File and Settings"
+#~ msgstr "파일과 설정"
+
+#~ msgid "File:"
+#~ msgstr "파일:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "원격 프린터에서 인쇄할 파일입니다. PDF, 포스트스크립트, 일반 텍스트, 이미"
+#~ "지와 같은 일부 MIME 형식만 지원합니다. 파일의 MIME 형식을 지원하지 않으면 "
+#~ "변환해야 합니다."
+
+#~ msgid "Copies:"
+#~ msgstr "복사 부수:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "인쇄할 복사 부수입니다."
+
+#~ msgid "Print"
+#~ msgstr "인쇄"
 
 #, fuzzy
 #~| msgid "Mount Settings"

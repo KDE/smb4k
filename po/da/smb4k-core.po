@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -2017,69 +2017,6 @@ msgstr "Afbryd"
 msgid "Up"
 msgstr "Op"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Udskriv fil"
-
-#: smb4kclient_p.cpp:2349
-#, fuzzy, kde-format
-#| msgid "Location"
-msgid "Information"
-msgstr "Placering"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Printer:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-adresse:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Domæne:"
-
-#: smb4kclient_p.cpp:2378
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
-msgid "File and Settings"
-msgstr "Avancerede indstillinger"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Fil:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Dette er filen du vil udskrive på den eksterne printer. I øjeblikket "
-"understøttes kun nogle få MIME-typer såsom PDF, Postscript, klartekst og "
-"billeder. Hvis filens MIME-type ikke er understøttet skal du konvertere den."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Kopier:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Dette er antallet af kopier du vil udskrive."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Udskriv"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3594,6 +3531,50 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Angiv et brugernavn og en adgangskode til ressourcen <b>%1</b>.</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Udskriv fil"
+
+#, fuzzy
+#~| msgid "Location"
+#~ msgid "Information"
+#~ msgstr "Placering"
+
+#~ msgid "Printer:"
+#~ msgstr "Printer:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP-adresse:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domæne:"
+
+#, fuzzy
+#~| msgid "Advanced Settings"
+#~ msgid "File and Settings"
+#~ msgstr "Avancerede indstillinger"
+
+#~ msgid "File:"
+#~ msgstr "Fil:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Dette er filen du vil udskrive på den eksterne printer. I øjeblikket "
+#~ "understøttes kun nogle få MIME-typer såsom PDF, Postscript, klartekst og "
+#~ "billeder. Hvis filens MIME-type ikke er understøttet skal du konvertere "
+#~ "den."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopier:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Dette er antallet af kopier du vil udskrive."
+
+#~ msgid "Print"
+#~ msgstr "Udskriv"
 
 #, fuzzy
 #~| msgid "Mounting"

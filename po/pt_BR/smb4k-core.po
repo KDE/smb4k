@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-06-07 09:42-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -2059,67 +2059,6 @@ msgstr "Cancelar"
 msgid "Up"
 msgstr "Acima"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Imprimir arquivo"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "Informação"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Impressora:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "Endereço IP:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Domínio:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr "Arquivo e Configurações"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Arquivo:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Este é o arquivo que deseja imprimir na impressora remota. Atualmente, só "
-"são suportados alguns tipos MIME, como o PDF, o PostScript, o texto simples "
-"e as imagens. Se o tipo MIME não for suportado, você terá que convertê-lo."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Cópias:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Este é o número de cópias que deseja imprimir."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Imprimir"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3632,6 +3571,46 @@ msgid ""
 msgstr ""
 "<qt>Insira um nome de usuário e uma senha para o compartilhamento <b>%1</b>."
 "</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Imprimir arquivo"
+
+#~ msgid "Information"
+#~ msgstr "Informação"
+
+#~ msgid "Printer:"
+#~ msgstr "Impressora:"
+
+#~ msgid "IP Address:"
+#~ msgstr "Endereço IP:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domínio:"
+
+#~ msgid "File and Settings"
+#~ msgstr "Arquivo e Configurações"
+
+#~ msgid "File:"
+#~ msgstr "Arquivo:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Este é o arquivo que deseja imprimir na impressora remota. Atualmente, só "
+#~ "são suportados alguns tipos MIME, como o PDF, o PostScript, o texto "
+#~ "simples e as imagens. Se o tipo MIME não for suportado, você terá que "
+#~ "convertê-lo."
+
+#~ msgid "Copies:"
+#~ msgstr "Cópias:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Este é o número de cópias que deseja imprimir."
+
+#~ msgid "Print"
+#~ msgstr "Imprimir"
 
 #~ msgid "Custom Settings"
 #~ msgstr "Configurações personalizadas"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2022-11-10 12:52+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -1727,64 +1727,6 @@ msgstr "Interrupter"
 msgid "Up"
 msgstr "Ad up"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Printar li file"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "Information"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Printator:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "Adresse IP:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Dominia:"
-
-#: smb4kclient_p.cpp:2378
-#, fuzzy, kde-format
-msgid "File and Settings"
-msgstr "Configurar li parametres del gerente de files"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "File:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Copies:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr ""
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Printar"
-
 #: smb4khomesshareshandler.cpp:126
 #, fuzzy, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3140,6 +3082,34 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
+
+#~ msgid "Print File"
+#~ msgstr "Printar li file"
+
+#~ msgid "Information"
+#~ msgstr "Information"
+
+#~ msgid "Printer:"
+#~ msgstr "Printator:"
+
+#~ msgid "IP Address:"
+#~ msgstr "Adresse IP:"
+
+#~ msgid "Domain:"
+#~ msgstr "Dominia:"
+
+#, fuzzy
+#~ msgid "File and Settings"
+#~ msgstr "Configurar li parametres del gerente de files"
+
+#~ msgid "File:"
+#~ msgstr "File:"
+
+#~ msgid "Copies:"
+#~ msgstr "Copies:"
+
+#~ msgid "Print"
+#~ msgstr "Printar"
 
 #, fuzzy
 #~ msgid "Custom Settings"

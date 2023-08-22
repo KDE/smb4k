@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-03-04 09:30+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -2030,68 +2030,6 @@ msgstr "Porzuć"
 msgid "Up"
 msgstr "Do góry"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Drukuj plik"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "Informacje"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Drukarka:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "Adres IP:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Domena:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr "Pliki i ustawienia"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Plik:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Jest to plik, który zamierzasz wydrukować na zdalnej drukarce. Obecnie tylko "
-"kilka rodzajów plików jest obsługiwanych. Są to: PDF, Postscript, plik "
-"tekstowy, obrazy. Jeśli typ twojego pliku nie jest obsługiwany, należy go "
-"przekształcić."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Kopie:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Liczba kopii do drukowania."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Drukuj"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3586,6 +3524,46 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Drukuj plik"
+
+#~ msgid "Information"
+#~ msgstr "Informacje"
+
+#~ msgid "Printer:"
+#~ msgstr "Drukarka:"
+
+#~ msgid "IP Address:"
+#~ msgstr "Adres IP:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domena:"
+
+#~ msgid "File and Settings"
+#~ msgstr "Pliki i ustawienia"
+
+#~ msgid "File:"
+#~ msgstr "Plik:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Jest to plik, który zamierzasz wydrukować na zdalnej drukarce. Obecnie "
+#~ "tylko kilka rodzajów plików jest obsługiwanych. Są to: PDF, Postscript, "
+#~ "plik tekstowy, obrazy. Jeśli typ twojego pliku nie jest obsługiwany, "
+#~ "należy go przekształcić."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopie:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Liczba kopii do drukowania."
+
+#~ msgid "Print"
+#~ msgstr "Drukuj"
 
 #~ msgid "Custom Settings"
 #~ msgstr "Własne ustawienia"
