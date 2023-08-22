@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2019-05-14 22:35+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -1800,66 +1800,6 @@ msgstr "放棄(&A)"
 msgid "Up"
 msgstr "向上"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "列印檔案"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr ""
-
-#: smb4kclient_p.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Printer:"
-msgstr "印表機"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP 位址："
-
-#: smb4kclient_p.cpp:2367
-#, fuzzy, kde-format
-msgid "Domain:"
-msgstr "位置："
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr ""
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "檔案："
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "份數："
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr ""
-
-#: smb4kclient_p.cpp:2411
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Print"
-msgstr "印表機"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3227,6 +3167,32 @@ msgstr "請為 %1 輸入驗證資料。"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "請為 %1 輸入驗證資料。"
+
+#~ msgid "Print File"
+#~ msgstr "列印檔案"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Printer:"
+#~ msgstr "印表機"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP 位址："
+
+#, fuzzy
+#~ msgid "Domain:"
+#~ msgstr "位置："
+
+#~ msgid "File:"
+#~ msgstr "檔案："
+
+#~ msgid "Copies:"
+#~ msgstr "份數："
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Print"
+#~ msgstr "印表機"
 
 #, fuzzy
 #~| msgid "Mount Share"

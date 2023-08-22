@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -1745,69 +1745,6 @@ msgstr "छोड़ू"
 msgid "Up"
 msgstr "उप्पर"
 
-#: smb4kclient_p.cpp:2333
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Print File"
-msgstr "मुद्रक"
-
-#: smb4kclient_p.cpp:2349
-#, fuzzy, kde-format
-#| msgid "Notifications"
-msgid "Information"
-msgstr "सूचनासभ"
-
-#: smb4kclient_p.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Printer:"
-msgstr "मुद्रक"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP पता:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "डोमेन:"
-
-#: smb4kclient_p.cpp:2378
-#, fuzzy, kde-format
-#| msgid "Advanced Options"
-msgid "File and Settings"
-msgstr "उन्नत विकल्प"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "फाइल:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr ""
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr ""
-
-#: smb4kclient_p.cpp:2411
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Print"
-msgstr "मुद्रक"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3172,6 +3109,40 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Print File"
+#~ msgstr "मुद्रक"
+
+#, fuzzy
+#~| msgid "Notifications"
+#~ msgid "Information"
+#~ msgstr "सूचनासभ"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Printer:"
+#~ msgstr "मुद्रक"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP पता:"
+
+#~ msgid "Domain:"
+#~ msgstr "डोमेन:"
+
+#, fuzzy
+#~| msgid "Advanced Options"
+#~ msgid "File and Settings"
+#~ msgstr "उन्नत विकल्प"
+
+#~ msgid "File:"
+#~ msgstr "फाइल:"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Print"
+#~ msgstr "मुद्रक"
 
 #, fuzzy
 #~| msgid "Mounting"

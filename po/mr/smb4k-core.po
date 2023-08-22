@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1736,68 +1736,6 @@ msgstr ""
 msgid "Up"
 msgstr "वर"
 
-#: smb4kclient_p.cpp:2333
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Print File"
-msgstr "प्रिंटर"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr ""
-
-#: smb4kclient_p.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Printer:"
-msgstr "प्रिंटर"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP पत्ता :"
-
-#: smb4kclient_p.cpp:2367
-#, fuzzy, kde-format
-msgid "Domain:"
-msgstr "क्षेत्र :"
-
-#: smb4kclient_p.cpp:2378
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
-msgid "File and Settings"
-msgstr "प्रगत संयोजना"
-
-#: smb4kclient_p.cpp:2382
-#, fuzzy, kde-format
-msgid "File:"
-msgstr "फाईल :"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-
-#: smb4kclient_p.cpp:2396
-#, fuzzy, kde-format
-msgid "Copies:"
-msgstr "प्रती (&I):"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr ""
-
-#: smb4kclient_p.cpp:2411
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Print"
-msgstr "प्रिंटर"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3149,6 +3087,41 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Print File"
+#~ msgstr "प्रिंटर"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Printer:"
+#~ msgstr "प्रिंटर"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP पत्ता :"
+
+#, fuzzy
+#~ msgid "Domain:"
+#~ msgstr "क्षेत्र :"
+
+#, fuzzy
+#~| msgid "Advanced Settings"
+#~ msgid "File and Settings"
+#~ msgstr "प्रगत संयोजना"
+
+#, fuzzy
+#~ msgid "File:"
+#~ msgstr "फाईल :"
+
+#, fuzzy
+#~ msgid "Copies:"
+#~ msgstr "प्रती (&I):"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Print"
+#~ msgstr "प्रिंटर"
 
 #, fuzzy
 #~ msgid "Custom Settings"

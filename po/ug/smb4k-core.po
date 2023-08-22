@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1741,68 +1741,6 @@ msgstr "توختات"
 msgid "Up"
 msgstr "ئۈستى"
 
-#: smb4kclient_p.cpp:2333
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Print File"
-msgstr "پرىنتېر"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr ""
-
-#: smb4kclient_p.cpp:2353
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Printer:"
-msgstr "پرىنتېر"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP ئادرېسى:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "دائىرە:"
-
-#: smb4kclient_p.cpp:2378
-#, fuzzy, kde-format
-#| msgid "Advanced Settings"
-msgid "File and Settings"
-msgstr "ئالىي تەڭشەك"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "ھۆججەت:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "كۆچۈرۈلمە سانى:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr ""
-
-#: smb4kclient_p.cpp:2411
-#, fuzzy, kde-format
-#| msgid "Printer"
-msgid "Print"
-msgstr "پرىنتېر"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3156,6 +3094,38 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Print File"
+#~ msgstr "پرىنتېر"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Printer:"
+#~ msgstr "پرىنتېر"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP ئادرېسى:"
+
+#~ msgid "Domain:"
+#~ msgstr "دائىرە:"
+
+#, fuzzy
+#~| msgid "Advanced Settings"
+#~ msgid "File and Settings"
+#~ msgstr "ئالىي تەڭشەك"
+
+#~ msgid "File:"
+#~ msgstr "ھۆججەت:"
+
+#~ msgid "Copies:"
+#~ msgstr "كۆچۈرۈلمە سانى:"
+
+#, fuzzy
+#~| msgid "Printer"
+#~ msgid "Print"
+#~ msgstr "پرىنتېر"
 
 #, fuzzy
 #~| msgid "Mounting"

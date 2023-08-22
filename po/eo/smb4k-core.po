@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-06-15 21:48+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -2023,68 +2023,6 @@ msgstr "Ĉesigi"
 msgid "Up"
 msgstr "Supren"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Presi Dosiero"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "Informoj"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Presilo:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-adreso:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Retregiono:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr "Dosiero kaj Agordoj"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Dosiero:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Ĉi tiu estas la dosiero, kiun vi volas presi sur la fora presilo. Nuntempe "
-"nur kelkaj mimtipoj estas subtenataj kiel PDF, Postskribo, simpla teksto kaj "
-"bildoj. Se la mimetipo de la dosiero ne estas subtenata, vi devas konverti "
-"ĝin."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Kopioj:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Jen la nombro da kopioj, kiujn vi volas presi."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Presi"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3575,6 +3513,46 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Bonvolu enigi uzantnomon kaj pasvorton por la kundivido <b>%1</b>.</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Presi Dosiero"
+
+#~ msgid "Information"
+#~ msgstr "Informoj"
+
+#~ msgid "Printer:"
+#~ msgstr "Presilo:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP-adreso:"
+
+#~ msgid "Domain:"
+#~ msgstr "Retregiono:"
+
+#~ msgid "File and Settings"
+#~ msgstr "Dosiero kaj Agordoj"
+
+#~ msgid "File:"
+#~ msgstr "Dosiero:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Ĉi tiu estas la dosiero, kiun vi volas presi sur la fora presilo. "
+#~ "Nuntempe nur kelkaj mimtipoj estas subtenataj kiel PDF, Postskribo, "
+#~ "simpla teksto kaj bildoj. Se la mimetipo de la dosiero ne estas "
+#~ "subtenata, vi devas konverti ĝin."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopioj:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Jen la nombro da kopioj, kiujn vi volas presi."
+
+#~ msgid "Print"
+#~ msgstr "Presi"
 
 #~ msgid "Custom Settings"
 #~ msgstr "Propraj Agordoj"

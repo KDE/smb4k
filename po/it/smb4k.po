@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-18 00:45+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-08-06 21:45+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -133,7 +133,7 @@ msgid "&Edit Bookmarks"
 msgstr "Modifica i s&egnalibri"
 
 #: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:152
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:154
 #: smb4k/smb4ksharesviewdockwidget.cpp:227
 #, kde-format
 msgid "Add &Bookmark"
@@ -828,110 +828,110 @@ msgstr "Indirizzo IP"
 msgid "Comment"
 msgstr "Commento"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:120
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:408
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:471
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:122
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:410
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:473
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Analizza la &rete"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:122
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:124
 #, kde-format
 msgid "&Abort"
 msgstr "&Interrompi"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:134
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:136
 #, kde-format
 msgid "&Search"
 msgstr "&Cerca"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:158
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:160
 #: smb4k/smb4ksharesviewdockwidget.cpp:232
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:163 smb4k/smb4ksharesmenu.cpp:193
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:193
 #: smb4k/smb4ksharesviewdockwidget.cpp:237
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Aggiungi &impostazioni personalizzate"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:169
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:171
 #: smb4k/smb4ksharesviewdockwidget.cpp:242
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:175 smb4k/smb4ksystemtray.cpp:71
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:177 smb4k/smb4ksystemtray.cpp:71
 #, kde-format
 msgid "&Open Mount Dialog"
 msgstr "Apri la finestra di montaggi&o"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:181
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:183
 #, kde-format
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:194
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:196
 #, kde-format
 msgid "Au&thentication"
 msgstr "Au&tenticazione"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:200
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:202
 #, kde-format
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:205
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:207
 #, kde-format
 msgid "Pre&view"
 msgstr "A&nteprima"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:211
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+V"
 msgstr "Ctrl+V"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:216
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:218
 #, kde-format
 msgid "&Print File"
 msgstr "Stam&pa file"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:222
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:224
 #, kde-format
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:228
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:230
 #, kde-format
 msgid "&Mount"
 msgstr "&Monta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:229
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:231
 #: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "&Unmount"
 msgstr "&Smonta"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:240
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:977
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:242
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:422
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:433
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:424
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Analizza il compute&r"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:458
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:460
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Analizza g&ruppo di lavoro"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:979
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -967,17 +967,39 @@ msgstr "Elemento giù"
 msgid "Item Up"
 msgstr "Elemento su"
 
-#: smb4k/smb4kprintdialog.cpp:21
+#: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
 #| msgid "Preview Dialog"
 msgid "Print Dialog"
 msgstr "Finestra anteprima"
 
-#: smb4k/smb4kprintdialog.cpp:33
+#: smb4k/smb4kprintdialog.cpp:46
+#, fuzzy, kde-format
+#| msgid "Print File"
+msgid "Print a file."
+msgstr "Stampa il file"
+
+#: smb4k/smb4kprintdialog.cpp:60
+#, kde-format
+msgid "File:"
+msgstr "File:"
+
+#: smb4k/smb4kprintdialog.cpp:68
+#, kde-format
+msgid "Copies:"
+msgstr "Copie:"
+
+#: smb4k/smb4kprintdialog.cpp:86
 #, fuzzy, kde-format
 #| msgid "Printer"
 msgid "Print"
 msgstr "Stampante"
+
+#: smb4k/smb4kprintdialog.cpp:118
+#, fuzzy, kde-format
+#| msgid "Sending file to printer %1..."
+msgid "Print a file to printer <b>%1</b>."
+msgstr "Invio del file alla stampante %1..."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
@@ -3898,12 +3920,6 @@ msgstr "Dimensione:"
 #~ "L'indirizzo UNC attuale è visibile qui. Puoi scegliere inoltre una delle "
 #~ "posizioni visitate in precedenza dal menu a tendina visualizzato in alto."
 
-#~ msgid "Print File"
-#~ msgstr "Stampa il file"
-
-#~ msgid "File:"
-#~ msgstr "File:"
-
 #~ msgid ""
 #~ "This is the file you want to print on the remote printer. Currently only "
 #~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
@@ -3913,9 +3929,6 @@ msgstr "Dimensione:"
 #~ "solo pochi tipi mime sono supportati, come PDF, PostScript, testo "
 #~ "semplice e immagini. Se il tipo mime del file non è supportato, è "
 #~ "necessario convertirlo."
-
-#~ msgid "Copies:"
-#~ msgstr "Copie:"
 
 #~ msgid "This is the number of copies you want to print."
 #~ msgstr "Numero di copie che vuoi stampare."

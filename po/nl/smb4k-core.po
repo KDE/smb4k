@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-03-04 18:07+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -2055,68 +2055,6 @@ msgstr "Afbreken"
 msgid "Up"
 msgstr "Omhoog"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Bestand Afdrukken"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "Informatie"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Printer:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-adres:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Domein:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr "Bestand en instellingen"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Bestand:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Dit is het bestand dat u op de printer op afstand wilt afdrukken. Op dit "
-"moment worden slechts een paar mimetypes ondersteund, zoals PDF, Postscript, "
-"platte tekst en afbeeldingen. Als het mimetype van het bestand niet wordt "
-"ondersteund, dan is het nodig deze te converteren."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Kopieën:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Dit is het aantal kopieën dat u wilt afdrukken."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Afdrukken"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3627,6 +3565,46 @@ msgid ""
 msgstr ""
 "<qt>Een gebruikersnaam en een wachtwoord voor de gedeelde map <b>%1</b> "
 "invoeren.</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Bestand Afdrukken"
+
+#~ msgid "Information"
+#~ msgstr "Informatie"
+
+#~ msgid "Printer:"
+#~ msgstr "Printer:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP-adres:"
+
+#~ msgid "Domain:"
+#~ msgstr "Domein:"
+
+#~ msgid "File and Settings"
+#~ msgstr "Bestand en instellingen"
+
+#~ msgid "File:"
+#~ msgstr "Bestand:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Dit is het bestand dat u op de printer op afstand wilt afdrukken. Op dit "
+#~ "moment worden slechts een paar mimetypes ondersteund, zoals PDF, "
+#~ "Postscript, platte tekst en afbeeldingen. Als het mimetype van het "
+#~ "bestand niet wordt ondersteund, dan is het nodig deze te converteren."
+
+#~ msgid "Copies:"
+#~ msgstr "Kopieën:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Dit is het aantal kopieën dat u wilt afdrukken."
+
+#~ msgid "Print"
+#~ msgstr "Afdrukken"
 
 #~ msgid "Custom Settings"
 #~ msgstr "Aangepaste instellingen"

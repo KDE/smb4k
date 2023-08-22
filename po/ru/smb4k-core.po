@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2023-01-28 14:35+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2086,68 +2086,6 @@ msgstr "Остановить"
 msgid "Up"
 msgstr "Вверх"
 
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Печать файла"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr "Сведения"
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr "Принтер:"
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-адрес:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Домен:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr "Файл и параметры"
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Файл:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Это файл, который будет распечатан на сетевом принтере. На данный момент "
-"возможна печать файлов только нескольких типов: документы PDF и PostScript, "
-"простые текстовые файлы и изображения. Если тип MIME файла не "
-"поддерживается, то следует преобразовать его в другой формат."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Число копий:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Желаемое число копий, которые будут напечатаны на принтере."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr "Печать"
-
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
 msgid "%1 is not a version 1.0 file."
@@ -3666,6 +3604,46 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Введите имя пользователя и пароль для общего ресурса <b>%1</b>.</qt>"
+
+#~ msgid "Print File"
+#~ msgstr "Печать файла"
+
+#~ msgid "Information"
+#~ msgstr "Сведения"
+
+#~ msgid "Printer:"
+#~ msgstr "Принтер:"
+
+#~ msgid "IP Address:"
+#~ msgstr "IP-адрес:"
+
+#~ msgid "Domain:"
+#~ msgstr "Домен:"
+
+#~ msgid "File and Settings"
+#~ msgstr "Файл и параметры"
+
+#~ msgid "File:"
+#~ msgstr "Файл:"
+
+#~ msgid ""
+#~ "This is the file you want to print on the remote printer. Currently only "
+#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
+#~ "images. If the file's mimetype is not supported, you need to convert it."
+#~ msgstr ""
+#~ "Это файл, который будет распечатан на сетевом принтере. На данный момент "
+#~ "возможна печать файлов только нескольких типов: документы PDF и "
+#~ "PostScript, простые текстовые файлы и изображения. Если тип MIME файла не "
+#~ "поддерживается, то следует преобразовать его в другой формат."
+
+#~ msgid "Copies:"
+#~ msgstr "Число копий:"
+
+#~ msgid "This is the number of copies you want to print."
+#~ msgstr "Желаемое число копий, которые будут напечатаны на принтере."
+
+#~ msgid "Print"
+#~ msgstr "Печать"
 
 #, fuzzy
 #~| msgid "Mount Settings"
