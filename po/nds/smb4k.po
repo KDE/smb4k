@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -600,14 +600,14 @@ msgstr "Allmeen Optschonen"
 msgid "No network item was set."
 msgstr "Nettwark"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, fuzzy, kde-format
 #| msgid "%1 has been unmounted successfully."
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr "\"%1\" wöör mit Spood afhangt."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, fuzzy, kde-format
 #| msgid "%1 has been unmounted successfully."
 msgid "Define custom settings for share <b>%1</b>."
@@ -1039,7 +1039,7 @@ msgstr "Kopien:"
 msgid "Print"
 msgstr "Drucker"
 
-#: smb4k/smb4kprintdialog.cpp:118
+#: smb4k/smb4kprintdialog.cpp:122
 #, fuzzy, kde-format
 #| msgid "Sending file to printer %1..."
 msgid "Print a file to printer <b>%1</b>."

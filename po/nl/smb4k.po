@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
-"PO-Revision-Date: 2023-08-18 09:14+0200\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"PO-Revision-Date: 2023-08-22 13:28+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -583,7 +583,7 @@ msgstr "Bewerker voor aangepaste instellingen"
 msgid "No network item was set."
 msgstr "Geen netwerkitem is gezet"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -591,7 +591,7 @@ msgstr ""
 "Definieer aangepaste instellingen voor host <b>%1</b> en alle gedeelde "
 "mappen die het levert."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definieer aangepaste instellingen voor gedeelde map <b>%1</b>."
@@ -976,10 +976,9 @@ msgid "Print Dialog"
 msgstr "Dialoog voor afdrukken"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Bestand Afdrukken"
+msgstr "Een bestand afdrukken."
 
 #: smb4k/smb4kprintdialog.cpp:60
 #, kde-format
@@ -996,11 +995,10 @@ msgstr "Kopieën:"
 msgid "Print"
 msgstr "Afdrukken"
 
-#: smb4k/smb4kprintdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#: smb4k/smb4kprintdialog.cpp:122
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Bezig bestand naar printer %1 te zenden..."
+msgstr "Een bestand op printer <b>%1</b> afdrukken."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format

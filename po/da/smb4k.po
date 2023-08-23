@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -604,7 +604,7 @@ msgstr "Fælles indstillinger"
 msgid "No network item was set."
 msgstr "Netværk"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -615,7 +615,7 @@ msgstr ""
 "<p>Angiv brugervalgte tilvalg for værten <b>%1</b> og alle de ressourcer den "
 "deler.</p>"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, fuzzy, kde-format
 #| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
 msgid "Define custom settings for share <b>%1</b>."
@@ -1046,7 +1046,7 @@ msgstr "Kopier:"
 msgid "Print"
 msgstr "Printer"
 
-#: smb4k/smb4kprintdialog.cpp:118
+#: smb4k/smb4kprintdialog.cpp:122
 #, fuzzy, kde-format
 #| msgid "Sending file to printer %1..."
 msgid "Print a file to printer <b>%1</b>."

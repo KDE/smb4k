@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
-"PO-Revision-Date: 2023-08-18 11:57+0200\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"PO-Revision-Date: 2023-08-22 11:34+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -580,7 +580,7 @@ msgstr "Editor de configuració personalitzada"
 msgid "No network item was set."
 msgstr "No s'ha establert cap element de xarxa."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -588,7 +588,7 @@ msgstr ""
 "Defineix la configuració personalitzada per al servidor <b>%1</b> i totes "
 "les comparticions que proporciona."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr ""
@@ -974,32 +974,29 @@ msgid "Print Dialog"
 msgstr "Diàleg d'impressió"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Im&primeix el fitxer"
+msgstr "Imprimeix un fitxer."
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "&Fitxer"
+msgstr "Fitxer:"
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "Còpies:"
 
 #: smb4k/smb4kprintdialog.cpp:86
 #, kde-format
 msgid "Print"
 msgstr "Imprimeix"
 
-#: smb4k/smb4kprintdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#: smb4k/smb4kprintdialog.cpp:122
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "S'està enviant un fitxer a la impressora %1..."
+msgstr "Imprimeix un fitxer en la impressora <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format

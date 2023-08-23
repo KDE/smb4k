@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
 "PO-Revision-Date: 2023-08-17 17:24+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -600,7 +600,7 @@ msgstr "Configuration personnalisées"
 msgid "No network item was set."
 msgstr "Aucun élément du réseau n'a été défini."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -608,7 +608,7 @@ msgstr ""
 "Définissez la configuration personnalisée concernant l'hôte <b>%1</b> et "
 "tous les partages qu'il fournit."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Définissez les options personnalisées pour le partage <b>%1</b>"
@@ -1016,7 +1016,7 @@ msgstr ""
 msgid "Print"
 msgstr "&Imprimer un fichier"
 
-#: smb4k/smb4kprintdialog.cpp:118
+#: smb4k/smb4kprintdialog.cpp:122
 #, fuzzy, kde-format
 #| msgid "Sending file to printer %1..."
 msgid "Print a file to printer <b>%1</b>."

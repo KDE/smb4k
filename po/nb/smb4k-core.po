@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-30 00:46+0000\n"
+"POT-Creation-Date: 2023-08-22 00:46+0000\n"
 "PO-Revision-Date: 2014-11-09 21:22+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -1774,67 +1774,6 @@ msgstr "Avbryt"
 #, kde-format
 msgid "Up"
 msgstr "Opp"
-
-#: smb4kclient_p.cpp:2333
-#, kde-format
-msgid "Print File"
-msgstr "Skriv ut fil"
-
-#: smb4kclient_p.cpp:2349
-#, kde-format
-msgid "Information"
-msgstr ""
-
-#: smb4kclient_p.cpp:2353
-#, kde-format
-msgid "Printer:"
-msgstr ""
-
-#: smb4kclient_p.cpp:2360
-#, kde-format
-msgid "IP Address:"
-msgstr "IP-Adresse:"
-
-#: smb4kclient_p.cpp:2367
-#, kde-format
-msgid "Domain:"
-msgstr "Domene:"
-
-#: smb4kclient_p.cpp:2378
-#, kde-format
-msgid "File and Settings"
-msgstr ""
-
-#: smb4kclient_p.cpp:2382
-#, kde-format
-msgid "File:"
-msgstr "Fil:"
-
-#: smb4kclient_p.cpp:2387
-#, kde-format
-msgid ""
-"This is the file you want to print on the remote printer. Currently only a "
-"few mimetypes are supported such as PDF, Postscript, plain text, and images. "
-"If the file's mimetype is not supported, you need to convert it."
-msgstr ""
-"Dette er fila du vil skrive ut på nettverksskriveren. For tiden er bare noen "
-"få mimetyper støttet, slik som PDF, PostScript, ren tekst og bilder. Hvis "
-"mimetypen for fila ikke er støttet må du konvertere den."
-
-#: smb4kclient_p.cpp:2396
-#, kde-format
-msgid "Copies:"
-msgstr "Kopier:"
-
-#: smb4kclient_p.cpp:2400
-#, kde-format
-msgid "This is the number of copies you want to print."
-msgstr "Dette er antall kopier du vil skrive ut."
-
-#: smb4kclient_p.cpp:2411
-#, kde-format
-msgid "Print"
-msgstr ""
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
