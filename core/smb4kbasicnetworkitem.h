@@ -2,7 +2,7 @@
     This class provides the basic network item for the core library of
     Smb4K.
 
-    SPDX-FileCopyrightText: 2009-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -35,7 +35,7 @@ public:
     /**
      * The constructor
      */
-    Smb4KBasicNetworkItem(Smb4KGlobal::NetworkItem type = Smb4KGlobal::UnknownNetworkItem);
+    explicit Smb4KBasicNetworkItem(Smb4KGlobal::NetworkItem type = Smb4KGlobal::UnknownNetworkItem);
 
     /**
      * The copy constructor
@@ -45,14 +45,14 @@ public:
     /**
      * The destructor
      */
-    ~Smb4KBasicNetworkItem();
+    virtual ~Smb4KBasicNetworkItem();
 
     /**
      * This function sets the type of the basic network item.
      *
      * @param type          The type of the network item
      */
-    void setType(Smb4KGlobal::NetworkItem type);
+    void setType(Smb4KGlobal::NetworkItem type) const;
 
     /**
      * This function returns the type of the basic network
@@ -67,7 +67,7 @@ public:
      *
      * @param icon          The icon
      */
-    void setIcon(const QIcon &icon);
+    void setIcon(const QIcon &icon) const;
 
     /**
      * This function returns the icon of the network item. By default, it
@@ -83,7 +83,7 @@ public:
      *
      * @param url           The URL
      */
-    void setUrl(const QUrl &url);
+    void setUrl(const QUrl &url) const;
 
     /**
      * Return the URL for this network item.
@@ -99,7 +99,7 @@ public:
      * @param discovered    Set this to TRUE if the network item was discovered
      *                      using the DNS-SD service
      */
-    void setDnsDiscovered(bool discovered);
+    void setDnsDiscovered(bool discovered) const;
 
     /**
      * Return TRUE if the network item was discovered using the DNS-SD
@@ -114,7 +114,7 @@ public:
      *
      * @param comment       The comment
      */
-    void setComment(const QString &comment);
+    void setComment(const QString &comment) const;
 
     /**
      * Return the comment for this network item.

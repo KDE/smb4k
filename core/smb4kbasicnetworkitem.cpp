@@ -2,7 +2,7 @@
     This class provides the basic network item for the core library of
     Smb4K.
 
-    SPDX-FileCopyrightText: 2009-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2009-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -52,7 +52,7 @@ Smb4KBasicNetworkItem::~Smb4KBasicNetworkItem()
 {
 }
 
-void Smb4KBasicNetworkItem::setType(Smb4KGlobal::NetworkItem type)
+void Smb4KBasicNetworkItem::setType(Smb4KGlobal::NetworkItem type) const
 {
     d->type = type;
 }
@@ -62,7 +62,7 @@ Smb4KGlobal::NetworkItem Smb4KBasicNetworkItem::type() const
     return d->type;
 }
 
-void Smb4KBasicNetworkItem::setIcon(const QIcon &icon)
+void Smb4KBasicNetworkItem::setIcon(const QIcon &icon) const
 {
     d->icon = icon;
 }
@@ -72,7 +72,7 @@ QIcon Smb4KBasicNetworkItem::icon() const
     return d->icon;
 }
 
-void Smb4KBasicNetworkItem::setUrl(const QUrl &url)
+void Smb4KBasicNetworkItem::setUrl(const QUrl &url) const
 {
     //
     // Check that the URL is valid
@@ -123,7 +123,7 @@ QUrl Smb4KBasicNetworkItem::url() const
     return d->url;
 }
 
-void Smb4KBasicNetworkItem::setDnsDiscovered(bool discovered)
+void Smb4KBasicNetworkItem::setDnsDiscovered(bool discovered) const
 {
     d->dnsDiscovered = discovered;
 }
@@ -133,7 +133,7 @@ bool Smb4KBasicNetworkItem::dnsDiscovered() const
     return d->dnsDiscovered;
 }
 
-void Smb4KBasicNetworkItem::setComment(const QString &comment)
+void Smb4KBasicNetworkItem::setComment(const QString &comment) const
 {
     d->comment = comment;
 }
