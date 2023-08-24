@@ -56,6 +56,7 @@ set(smb4kdialogs_LIB_SRCS
   smb4kcustomsettingseditor.cpp
   smb4kcustomsettingseditorwidget.cpp
   smb4kmountdialog.cpp
+  smb4kpreviewdialog.cpp
   smb4kprintdialog.cpp)
 
 add_library(smb4kdialogs SHARED ${smb4kdialogs_LIB_SRCS})

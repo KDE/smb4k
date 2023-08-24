@@ -668,7 +668,7 @@ void Smb4KMainWindow::slotClientAboutToStart(const NetworkItemPtr &item, int pro
             message = i18n("Looking for files and directories in %1...", item.staticCast<Smb4KShare>()->displayString());
             break;
         }
-        case Directory: {
+        case FileOrDirectory: {
             FilePtr file = item.staticCast<Smb4KFile>();
 
             for (const SharePtr &s : sharesList()) {

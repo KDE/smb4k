@@ -23,7 +23,6 @@ class Smb4KClientPrivate;
 class Smb4KBasicNetworkItem;
 class Smb4KClientBaseJob;
 class Smb4KPreviewDialog;
-class Smb4KPrintDialog;
 
 class Q_DECL_EXPORT Smb4KClient : public KCompositeJob
 {
@@ -112,13 +111,6 @@ public:
      */
     void search(const QString &item);
 
-    /**
-     * This function opens the preview dialog for @p share.
-     *
-     * @param share           The share object
-     */
-    void openPreviewDialog(const SharePtr &share);
-
 Q_SIGNALS:
     /**
      * This signal is emitted when the client starts its work.
@@ -189,16 +181,6 @@ protected Q_SLOTS:
      * Called when the application is about to be closed
      */
     void slotAboutToQuit();
-
-    /**
-     * Start a network query
-     */
-    void slotStartNetworkQuery(NetworkItemPtr item);
-
-    /**
-     * Called when a preview dialog closed
-     */
-    void slotPreviewDialogClosed(Smb4KPreviewDialog *dialog);
 
     /**
      * Called when a process should be aborted

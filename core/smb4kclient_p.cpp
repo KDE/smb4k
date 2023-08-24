@@ -344,33 +344,32 @@ void Smb4KClientJob::get_auth_data_fn(const char *server,
 
         break;
     }
-    case Directory: {
+    case FileOrDirectory: {
         //
         // The file object
         //
         FilePtr file = (*pNetworkItem).staticCast<Smb4KFile>();
 
-        //
-        // Create a share object
-        //
-        SharePtr share = SharePtr(new Smb4KShare());
-        share->setWorkgroupName(file->workgroupName());
-        share->setHostName(file->hostName());
-        share->setShareName(file->shareName());
-        share->setUserName(file->userName());
-        share->setPassword(file->password());
+        if (file->isDirectory()) {
+            SharePtr share = SharePtr(new Smb4KShare());
+            share->setWorkgroupName(file->workgroupName());
+            share->setHostName(file->hostName());
+            share->setShareName(file->shareName());
+            share->setUserName(file->userName());
+            share->setPassword(file->password());
 
-        //
-        // Get the authentication data
-        //
-        Smb4KWalletManager::self()->readLoginCredentials(share);
+            //
+            // Get the authentication data
+            //
+            Smb4KWalletManager::self()->readLoginCredentials(share);
 
-        //
-        // Copy the authentication data
-        //
-        if (share->hasUserInfo()) {
-            qstrncpy(username, share->userName().toUtf8().data(), maxLenUsername);
-            qstrncpy(password, share->password().toUtf8().data(), maxLenPassword);
+            //
+            // Copy the authentication data
+            //
+            if (share->hasUserInfo()) {
+                qstrncpy(username, share->userName().toUtf8().data(), maxLenUsername);
+                qstrncpy(password, share->password().toUtf8().data(), maxLenPassword);
+            }
         }
 
         break;
@@ -494,23 +493,26 @@ void Smb4KClientJob::initClientLibrary()
 
         break;
     }
-    case Directory: {
+    case FileOrDirectory: {
         //
         // In case the domain/workgroup was discovered by the DNS-SD service, the
         // workgroup/domain might not be identical with the one defined in the network
         // neighborhood. Thus, only set the workgroup if no DNS-SD discovery was used.
         //
         FilePtr file = (*pNetworkItem).staticCast<Smb4KFile>();
-        WorkgroupPtr workgroup = findWorkgroup(file->workgroupName());
 
-        if (workgroup && !workgroup->dnsDiscovered()) {
-            smbc_setWorkgroup(m_context, file->workgroupName().toUtf8().data());
+        if (file->isDirectory()) {
+            WorkgroupPtr workgroup = findWorkgroup(file->workgroupName());
+
+            if (workgroup && !workgroup->dnsDiscovered()) {
+                smbc_setWorkgroup(m_context, file->workgroupName().toUtf8().data());
+            }
+
+            //
+            // Set the NetBIOS name
+            //
+            smbc_setNetbiosName(m_context, file->hostName().toUtf8().data());
         }
-
-        //
-        // Set the NetBIOS name
-        //
-        smbc_setNetbiosName(m_context, file->hostName().toUtf8().data());
 
         break;
     }
@@ -1021,7 +1023,8 @@ void Smb4KClientJob::doLookups()
                 //
                 // We do not stat directories. Directly create the directory object
                 //
-                FilePtr dir = FilePtr(new Smb4KFile(u, Directory));
+                FilePtr dir = FilePtr(new Smb4KFile(u));
+                dir->setDirectory(true);
 
                 //
                 // Set the workgroup name
@@ -1062,14 +1065,14 @@ void Smb4KClientJob::doLookups()
             u.setPath((*pNetworkItem)->url().path() + QDir::separator() + QString::fromUtf8(directoryEntry->name, -1));
 
             //
-            // Create the directory object
+            // Create the file object
             //
-            FilePtr dir = FilePtr(new Smb4KFile(u, File));
+            FilePtr file = FilePtr(new Smb4KFile(u));
 
             //
             // Set the workgroup name
             //
-            dir->setWorkgroupName((*pNetworkItem).staticCast<Smb4KShare>()->workgroupName());
+            file->setWorkgroupName((*pNetworkItem).staticCast<Smb4KShare>()->workgroupName());
 
             //
             // Stat the file
@@ -1079,8 +1082,8 @@ void Smb4KClientJob::doLookups()
             //
             // Set the authentication data
             //
-            dir->setUserName((*pNetworkItem)->url().userName());
-            dir->setPassword((*pNetworkItem)->url().password());
+            file->setUserName((*pNetworkItem)->url().userName());
+            file->setPassword((*pNetworkItem)->url().password());
 
             //
             // Lookup IP address
@@ -1093,10 +1096,10 @@ void Smb4KClientJob::doLookups()
             // and delete the pointer.
             //
             if (!address.isNull()) {
-                dir->setHostIpAddress(address);
-                *pFiles << dir;
+                file->setHostIpAddress(address);
+                *pFiles << file;
             } else {
-                dir.clear();
+                file.clear();
             }
 
             break;
@@ -1952,373 +1955,3 @@ void Smb4KWsDiscoveryJob::slotDiscoveryFinished()
     emitResult();
 }
 #endif
-
-Smb4KPreviewDialog::Smb4KPreviewDialog(const SharePtr &share, QWidget *parent)
-    : QDialog(parent)
-    , m_share(share)
-{
-    //
-    // Dialog title
-    //
-    setWindowTitle(i18n("Preview of %1", share->displayString()));
-
-    //
-    // Attributes
-    //
-    setAttribute(Qt::WA_DeleteOnClose, true);
-
-    //
-    // Layout
-    //
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    setLayout(layout);
-
-    //
-    // The list widget
-    //
-    QListWidget *listWidget = new QListWidget(this);
-    listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    connect(listWidget, SIGNAL(itemActivated(QListWidgetItem *)), SLOT(slotItemActivated(QListWidgetItem *)));
-
-    layout->addWidget(listWidget, 0);
-
-    //
-    // Toolbar
-    // Use QToolBar here with the settings suggested by the note provided in the 'Detailed Description'
-    // section of KToolBar (https://api.kde.org/frameworks/kxmlgui/html/classKToolBar.html)
-    //
-    QToolBar *toolBar = new QToolBar(this);
-    toolBar->setToolButtonStyle(Qt::ToolButtonFollowStyle);
-    toolBar->setProperty("otherToolbar", true);
-
-    //
-    // Reload / cancel action
-    //
-    KDualAction *reloadAction = new KDualAction(toolBar);
-    reloadAction->setObjectName(QStringLiteral("reload_action"));
-    reloadAction->setInactiveText(i18n("Reload"));
-    reloadAction->setInactiveIcon(KDE::icon(QStringLiteral("view-refresh")));
-    reloadAction->setActiveText(i18n("Abort"));
-    reloadAction->setActiveIcon(KDE::icon(QStringLiteral("process-stop")));
-    reloadAction->setActive(false);
-    reloadAction->setAutoToggle(false);
-
-    connect(reloadAction, SIGNAL(toggled(bool)), this, SLOT(slotReloadActionTriggered()));
-
-    toolBar->addAction(reloadAction);
-
-    //
-    // Up action
-    //
-    QAction *upAction = toolBar->addAction(KDE::icon(QStringLiteral("go-up")), i18n("Up"), this, SLOT(slotUpActionTriggered()));
-    upAction->setObjectName(QStringLiteral("up_action"));
-    upAction->setEnabled(false);
-
-    toolBar->addSeparator();
-
-    //
-    // URL combo box
-    //
-    KUrlComboBox *urlCombo = new KUrlComboBox(KUrlComboBox::Directories, toolBar);
-    urlCombo->setEditable(false);
-    toolBar->addWidget(urlCombo);
-    connect(urlCombo, SIGNAL(urlActivated(QUrl)), this, SLOT(slotUrlActivated(QUrl)));
-
-    layout->addWidget(toolBar, 0);
-
-    //
-    // Dialog button box
-    //
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
-    buttonBox->setOrientation(Qt::Horizontal);
-    QPushButton *closeButton = buttonBox->addButton(QDialogButtonBox::Close);
-    connect(closeButton, SIGNAL(clicked()), this, SLOT(slotClosingDialog()));
-
-    layout->addWidget(buttonBox, 0);
-
-    //
-    // Set the minimum width
-    //
-    setMinimumWidth(sizeHint().width() > 350 ? sizeHint().width() : 350);
-
-    //
-    // Set the dialog size
-    //
-    create();
-
-    KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
-    QSize dialogSize;
-
-    if (group.exists()) {
-        KWindowConfig::restoreWindowSize(windowHandle(), group);
-        dialogSize = windowHandle()->size();
-    } else {
-        dialogSize = sizeHint();
-    }
-
-    resize(dialogSize); // workaround for QTBUG-40584
-
-    //
-    // Start the preview
-    //
-    m_currentItem = m_share;
-    QTimer::singleShot(0, this, SLOT(slotInitializePreview()));
-}
-
-Smb4KPreviewDialog::~Smb4KPreviewDialog()
-{
-    //
-    // Clear the share
-    //
-    m_share.clear();
-
-    //
-    // Clear the current item
-    //
-    m_currentItem.clear();
-
-    //
-    // Clear the listing
-    //
-    while (!m_listing.isEmpty()) {
-        m_listing.takeFirst().clear();
-    }
-}
-
-SharePtr Smb4KPreviewDialog::share() const
-{
-    return m_share;
-}
-
-void Smb4KPreviewDialog::slotClosingDialog()
-{
-    //
-    // Save the dialog size
-    //
-    KConfigGroup group(Smb4KSettings::self()->config(), "PreviewDialog");
-    KWindowConfig::saveWindowSize(windowHandle(), group);
-
-    //
-    // Emit the aboutToClose() signal
-    //
-    Q_EMIT aboutToClose(this);
-
-    //
-    // Close the dialog
-    //
-    accept();
-}
-
-void Smb4KPreviewDialog::slotReloadActionTriggered()
-{
-    KDualAction *reloadAction = findChild<KDualAction *>();
-
-    if (reloadAction->isActive()) {
-        Q_EMIT requestAbort();
-    } else {
-        Q_EMIT requestPreview(m_currentItem);
-    }
-}
-
-void Smb4KPreviewDialog::slotUpActionTriggered()
-{
-    //
-    // Get the new URL
-    //
-    QUrl u = KIO::upUrl(m_currentItem->url());
-
-    //
-    // Create a new network item object, if necessary and set the new current
-    // item. Also, disable the "Up" action, if necessary.
-    //
-    if (m_share->url().matches(u, QUrl::StripTrailingSlash)) {
-        findChild<QAction *>(QStringLiteral("up_action"))->setEnabled(false);
-        m_currentItem = m_share;
-    } else if (m_share->url().path().length() < u.path().length()) {
-        FilePtr file = FilePtr(new Smb4KFile(u, Directory));
-        file->setWorkgroupName(m_share->workgroupName());
-        m_currentItem = file;
-    } else {
-        return;
-    }
-
-    //
-    // Emit the requestPreview() signal
-    //
-    Q_EMIT requestPreview(m_currentItem);
-}
-
-void Smb4KPreviewDialog::slotUrlActivated(const QUrl &url)
-{
-    //
-    // Get the full authentication information. This is needed, since the combo
-    // box only returns sanitized URLs, i.e. without password, etc.
-    //
-    QUrl u = url;
-    u.setUserName(m_share->userName());
-    u.setPassword(m_share->password());
-
-    //
-    // Create a new network item object, if necessary and set the new current
-    // item.
-    //
-    if (m_share->url().matches(u, QUrl::StripTrailingSlash)) {
-        m_currentItem = m_share;
-    } else {
-        FilePtr file = FilePtr(new Smb4KFile(u, Directory));
-        file->setWorkgroupName(m_share->workgroupName());
-        m_currentItem = file;
-    }
-
-    //
-    // Emit the requestPreview() signal
-    //
-    Q_EMIT requestPreview(m_currentItem);
-}
-
-void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
-{
-    //
-    // Only process the item if it represents a directory
-    //
-    if (item && item->type() == Directory) {
-        //
-        // Find the file item, make it the current one and emit the requestPreview()
-        // signal.
-        //
-        for (const FilePtr &f : qAsConst(m_listing)) {
-            if (item->data(Qt::UserRole).toUrl().matches(f->url(), QUrl::None)) {
-                m_currentItem = f;
-                Q_EMIT requestPreview(m_currentItem);
-                break;
-            }
-        }
-    }
-}
-
-void Smb4KPreviewDialog::slotInitializePreview()
-{
-    Q_EMIT requestPreview(m_currentItem);
-}
-
-void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr> &list)
-{
-    //
-    // Only process data the belongs to this dialog
-    //
-    if (m_share->workgroupName() == list.first()->workgroupName() && m_share->hostName() == list.first()->hostName()
-        && list.first()->url().path().startsWith(m_share->url().path())) {
-        //
-        // Clear the internal listing
-        //
-        while (!m_listing.isEmpty()) {
-            m_listing.takeFirst().clear();
-        }
-
-        //
-        // Copy the list into the private variable
-        //
-        m_listing = list;
-
-        //
-        // Get the list widget
-        //
-        QListWidget *listWidget = findChild<QListWidget *>();
-
-        //
-        // Clear the list widget
-        //
-        listWidget->clear();
-
-        //
-        // Insert the new listing
-        //
-        if (listWidget) {
-            for (const FilePtr &f : list) {
-                QListWidgetItem *item = new QListWidgetItem(f->icon(), f->name(), listWidget, f->isDirectory() ? Directory : File);
-                item->setData(Qt::UserRole, f->url());
-            }
-        }
-
-        //
-        // Sort the list widget
-        //
-        listWidget->sortItems();
-
-        //
-        // Add the URL to the combo box and show it. Omit duplicates.
-        //
-        KUrlComboBox *urlCombo = findChild<KUrlComboBox *>();
-        QStringList urls = urlCombo->urls();
-        urls << m_currentItem->url().toString();
-        urlCombo->setUrls(urls);
-        urlCombo->setUrl(m_currentItem->url());
-
-        //
-        // Enable / disable the "Up" action
-        //
-        findChild<QAction *>(QStringLiteral("up_action"))->setEnabled(!m_share->url().matches(m_currentItem->url(), QUrl::StripTrailingSlash));
-    }
-}
-
-void Smb4KPreviewDialog::slotAboutToStart(const NetworkItemPtr &item, int type)
-{
-    if (type == LookupFiles) {
-        switch (item->type()) {
-        case Share: {
-            SharePtr s = item.staticCast<Smb4KShare>();
-
-            if (m_share->workgroupName() == s->workgroupName() && m_share->hostName() == s->hostName() && s->url().path().startsWith(m_share->url().path())) {
-                KDualAction *reloadAction = findChild<KDualAction *>();
-                reloadAction->setActive(true);
-            }
-
-            break;
-        }
-        case Directory: {
-            FilePtr f = item.staticCast<Smb4KFile>();
-
-            if (m_share->workgroupName() == f->workgroupName() && m_share->hostName() == f->hostName() && f->url().path().startsWith(m_share->url().path())) {
-                KDualAction *reloadAction = findChild<KDualAction *>();
-                reloadAction->setActive(true);
-            }
-
-            break;
-        }
-        default: {
-            break;
-        }
-        }
-    }
-}
-
-void Smb4KPreviewDialog::slotFinished(const NetworkItemPtr &item, int type)
-{
-    if (type == LookupFiles) {
-        switch (item->type()) {
-        case Share: {
-            SharePtr s = item.staticCast<Smb4KShare>();
-
-            if (m_share->workgroupName() == s->workgroupName() && m_share->hostName() == s->hostName() && s->url().path().startsWith(m_share->url().path())) {
-                KDualAction *reloadAction = findChild<KDualAction *>();
-                reloadAction->setActive(false);
-            }
-
-            break;
-        }
-        case Directory: {
-            FilePtr f = item.staticCast<Smb4KFile>();
-
-            if (m_share->workgroupName() == f->workgroupName() && m_share->hostName() == f->hostName() && f->url().path().startsWith(m_share->url().path())) {
-                KDualAction *reloadAction = findChild<KDualAction *>();
-                reloadAction->setActive(false);
-            }
-
-            break;
-        }
-        default: {
-            break;
-        }
-        }
-    }
-}

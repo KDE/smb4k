@@ -11,7 +11,6 @@
 #include "core/smb4kbookmark.h"
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kclient.h"
-#include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4kglobal.h"
 #include "core/smb4khost.h"
 #include "core/smb4kmounter.h"
@@ -20,6 +19,7 @@
 #include "core/smb4ksynchronizer.h"
 #include "core/smb4kworkgroup.h"
 #include "smb4k/smb4kcustomsettingseditor.h"
+#include "smb4k/smb4kpreviewdialog.h"
 #include "smb4k/smb4kprintdialog.h"
 #include "smb4kbookmarkeditor.h"
 #include "smb4kbookmarkobject.h"
@@ -463,7 +463,11 @@ void Smb4KDeclarative::preview(Smb4KNetworkObject *object)
         SharePtr share = Smb4KGlobal::findShare(object->url(), object->workgroupName());
 
         if (share) {
-            Smb4KClient::self()->openPreviewDialog(share);
+            QPointer<Smb4KPreviewDialog> previewDialog = new Smb4KPreviewDialog();
+
+            if (previewDialog->setShare(share)) {
+                previewDialog->open();
+            }
         }
     }
 }

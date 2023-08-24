@@ -33,11 +33,10 @@ enum Process { LookupDomains, LookupDomainMembers, LookupShares, LookupFiles, Wa
  * @enum Workgroup              A workgroup
  * @enum Host                   A host
  * @enum Share                  A share
- * @enum Directory              A directory in a shared folder
- * @enum File                   A file in a shared folder
+ * @enum FileOrDirectory        A file or director in a shared folder
  * @enum UnknownNetworkItem     An unknown network item
  */
-enum NetworkItem { Network, Workgroup, Host, Share, Directory, File, UnknownNetworkItem };
+enum NetworkItem { Network, Workgroup, Host, Share, FileOrDirectory, UnknownNetworkItem };
 
 /**
  * The enumeration that determines the share type

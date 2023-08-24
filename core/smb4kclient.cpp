@@ -328,37 +328,19 @@ void Smb4KClient::lookupShares(const HostPtr &host)
 
 void Smb4KClient::lookupFiles(const NetworkItemPtr &item)
 {
-    //
-    // Check that the network item has the correct type and process it.
-    //
-    if (item->type() == Share || item->type() == Directory) {
-        //
-        // Emit the aboutToStart() signal
-        //
+    if (item->type() == Share || (item->type() == FileOrDirectory && item.staticCast<Smb4KFile>()->isDirectory())) {
         Q_EMIT aboutToStart(item, LookupFiles);
 
-        //
-        // Create the job
-        //
         Smb4KClientJob *job = new Smb4KClientJob(this);
         job->setNetworkItem(item);
         job->setProcess(LookupFiles);
 
-        //
-        // Set the busy cursor
-        //
         if (!hasSubjobs() && modifyCursor()) {
             QApplication::setOverrideCursor(Qt::BusyCursor);
         }
 
-        //
-        // Add the job to the subjobs
-        //
         addSubjob(job);
 
-        //
-        // Start the job
-        //
         job->start();
     }
 }
@@ -464,61 +446,61 @@ void Smb4KClient::search(const QString &item)
     Q_EMIT finished(networkItem, NetworkSearch);
 }
 
-void Smb4KClient::openPreviewDialog(const SharePtr &share)
-{
-    //
-    // Printer share check
-    //
-    if (share->isPrinter()) {
-        return;
-    }
-
-    //
-    // 'homes' share check
-    //
-    if (share->isHomesShare()) {
-        Smb4KHomesSharesHandler::self()->specifyUser(share, true);
-    }
-
-    //
-    // Start the preview dialog
-    //
-    // First, check if a preview dialog has already been set up for this share
-    // and reuse it, if possible.
-    //
-    QPointer<Smb4KPreviewDialog> dlg = nullptr;
-
-    for (Smb4KPreviewDialog *p : qAsConst(d->previewDialogs)) {
-        if (share == p->share()) {
-            dlg = p;
-        }
-    }
-
-    //
-    // If there was no preview dialog present, create a new one
-    //
-    if (!dlg) {
-        dlg = new Smb4KPreviewDialog(share, QApplication::activeWindow());
-        d->previewDialogs << dlg;
-
-        //
-        // Connections
-        //
-        connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
-        connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog *)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog *)));
-        connect(dlg, SIGNAL(requestAbort()), this, SLOT(slotAbort()));
-        connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
-        connect(this, SIGNAL(aboutToStart(NetworkItemPtr, int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr, int)));
-        connect(this, SIGNAL(finished(NetworkItemPtr, int)), dlg, SLOT(slotFinished(NetworkItemPtr, int)));
-    }
-
-    //
-    // Show the preview dialog
-    //
-    if (!dlg->isVisible()) {
-        dlg->setVisible(true);
-    }
-}
+// void Smb4KClient::openPreviewDialog(const SharePtr &share)
+// {
+//     //
+//     // Printer share check
+//     //
+//     if (share->isPrinter()) {
+//         return;
+//     }
+//
+//     //
+//     // 'homes' share check
+//     //
+//     if (share->isHomesShare()) {
+//         Smb4KHomesSharesHandler::self()->specifyUser(share, true);
+//     }
+//
+//     //
+//     // Start the preview dialog
+//     //
+//     // First, check if a preview dialog has already been set up for this share
+//     // and reuse it, if possible.
+//     //
+//     QPointer<Smb4KPreviewDialog> dlg = nullptr;
+//
+//     for (Smb4KPreviewDialog *p : qAsConst(d->previewDialogs)) {
+//         if (share == p->share()) {
+//             dlg = p;
+//         }
+//     }
+//
+//     //
+//     // If there was no preview dialog present, create a new one
+//     //
+//     if (!dlg) {
+//         dlg = new Smb4KPreviewDialog(share, QApplication::activeWindow());
+//         d->previewDialogs << dlg;
+//
+//         //
+//         // Connections
+//         //
+//         connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
+//         connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog *)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog *)));
+//         connect(dlg, SIGNAL(requestAbort()), this, SLOT(slotAbort()));
+//         connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
+//         connect(this, SIGNAL(aboutToStart(NetworkItemPtr, int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr, int)));
+//         connect(this, SIGNAL(finished(NetworkItemPtr, int)), dlg, SLOT(slotFinished(NetworkItemPtr, int)));
+//     }
+//
+//     //
+//     // Show the preview dialog
+//     //
+//     if (!dlg->isVisible()) {
+//         dlg->setVisible(true);
+//     }
+// }
 
 void Smb4KClient::processErrors(Smb4KClientBaseJob *job)
 {
@@ -544,8 +526,7 @@ void Smb4KClient::processErrors(Smb4KClientBaseJob *job)
 
             break;
         }
-        case Directory:
-        case File: {
+        case FileOrDirectory: {
             FilePtr file = job->networkItem().staticCast<Smb4KFile>();
 
             SharePtr share = SharePtr(new Smb4KShare());
@@ -891,7 +872,7 @@ void Smb4KClient::slotResult(KJob *job)
     // Get the result from the query and process it
     //
     if (clientBaseJob->error() == 0) {
-        switch (clientBaseJob->networkItem()->type()) {
+        switch (networkItem->type()) {
         case Network: {
             // Process the discovered workgroups
             processWorkgroups(clientBaseJob);
@@ -907,10 +888,14 @@ void Smb4KClient::slotResult(KJob *job)
             processShares(clientBaseJob);
             break;
         }
-        case Share:
-        case Directory: {
-            // Process the discoveres files and directories
+        case Share: {
             processFiles(clientBaseJob);
+            break;
+        }
+        case FileOrDirectory: {
+            if (networkItem.staticCast<Smb4KFile>()->isDirectory()) {
+                processFiles(clientBaseJob);
+            }
             break;
         }
         default: {
@@ -944,28 +929,6 @@ void Smb4KClient::slotResult(KJob *job)
 void Smb4KClient::slotAboutToQuit()
 {
     abort();
-}
-
-void Smb4KClient::slotStartNetworkQuery(NetworkItemPtr item)
-{
-    //
-    // Look up files
-    //
-    lookupFiles(item);
-}
-
-void Smb4KClient::slotPreviewDialogClosed(Smb4KPreviewDialog *dialog)
-{
-    //
-    // Remove the preview dialog from the list
-    //
-    if (dialog) {
-        // Find the dialog in the list and take it from the list.
-        // It will automatically be deleted on close, so there is
-        // no need to delete the dialog here.
-        int i = d->previewDialogs.indexOf(dialog);
-        d->previewDialogs.takeAt(i);
-    }
 }
 
 void Smb4KClient::slotAbort()

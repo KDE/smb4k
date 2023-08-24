@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a directory or file.
 
-    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -24,10 +24,8 @@ public:
      * Constructor
      *
      * @param url           The URL of the file or directory
-     *
-     * @param item          The type of the item (only Directory and File)
      */
-    Smb4KFile(const QUrl &url, Smb4KGlobal::NetworkItem item);
+    Smb4KFile(const QUrl &url);
 
     /**
      * Copy constructor
@@ -51,7 +49,7 @@ public:
      *
      * @param name          The workgroup name
      */
-    void setWorkgroupName(const QString &name);
+    void setWorkgroupName(const QString &name) const;
 
     /**
      * Returns the workgroup name.
@@ -72,7 +70,7 @@ public:
      *
      * @param ip            The IP address of the host
      */
-    void setHostIpAddress(const QHostAddress &address);
+    void setHostIpAddress(const QHostAddress &address) const;
 
     /**
      * Returns the host's IP address.
@@ -100,7 +98,7 @@ public:
      *
      * @param name          The user name
      */
-    void setUserName(const QString &name);
+    void setUserName(const QString &name) const;
 
     /**
      * Return the user name for the share where this file or directory is located.
@@ -114,7 +112,7 @@ public:
      *
      * @param pass          The password
      */
-    void setPassword(const QString &pass);
+    void setPassword(const QString &pass) const;
 
     /**
      * Return the password for the share where this file or directory is located.
@@ -122,6 +120,13 @@ public:
      * @returns the password
      */
     QString password() const;
+
+    /**
+     * Indicate that this network item is a directory.
+     *
+     * @param directory     Set this to TRUE if this is a directory
+     */
+    void setDirectory(bool directory) const;
 
     /**
      * Returns TRUE if the network item is a directory and FALSE otherwise.

@@ -60,7 +60,7 @@ public:
      *
      * @returns a pointer to the workgroup item or NULL.
      */
-    SMB4K_DEPRECATED WorkgroupPtr workgroupItem();
+    WorkgroupPtr workgroupItem();
 
     /**
      * This function is provided for convenience. It returns a pointer to
@@ -68,7 +68,7 @@ public:
      *
      * @returns a pointer to the host item or NULL.
      */
-    SMB4K_DEPRECATED HostPtr hostItem();
+    HostPtr hostItem();
 
     /**
      * This function is provided for convenience. It returns a pointer to
@@ -76,7 +76,7 @@ public:
      *
      * @returns a pointer to the share item or NULL.
      */
-    SMB4K_DEPRECATED SharePtr shareItem();
+    SharePtr shareItem();
 
     /**
      * This function returns the encapsulated network item.

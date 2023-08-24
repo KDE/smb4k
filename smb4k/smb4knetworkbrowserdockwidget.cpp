@@ -9,7 +9,6 @@
 #include "smb4knetworkbrowserdockwidget.h"
 #include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kclient.h"
-#include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4khost.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4ksettings.h"
@@ -19,6 +18,7 @@
 #include "smb4kcustomsettingseditor.h"
 #include "smb4kmountdialog.h"
 #include "smb4knetworkbrowseritem.h"
+#include "smb4kpreviewdialog.h"
 #include "smb4kprintdialog.h"
 #include "smb4ktooltip.h"
 
@@ -914,7 +914,11 @@ void Smb4KNetworkBrowserDockWidget::slotPreview(bool checked)
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(selectedItem);
 
         if (item && item->type() == Share && !item->shareItem()->isPrinter()) {
-            Smb4KClient::self()->openPreviewDialog(item->shareItem());
+            QPointer<Smb4KPreviewDialog> previewDialog = new Smb4KPreviewDialog();
+
+            if (previewDialog->setShare(item->shareItem())) {
+                previewDialog->open();
+            }
         }
     }
 }
