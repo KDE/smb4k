@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a share.
 
-    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -65,14 +65,14 @@ Smb4KShare::Smb4KShare(const QUrl &url)
     setShareIcon();
 }
 
-Smb4KShare::Smb4KShare(const Smb4KShare &s)
-    : Smb4KBasicNetworkItem(Share)
+Smb4KShare::Smb4KShare(const Smb4KShare &share)
+    : Smb4KBasicNetworkItem(share)
     , d(new Smb4KSharePrivate)
 {
     //
     // Copy the private variables
     //
-    *d = *s.d;
+    *d = *share.d;
 
     //
     // Set the icon if necessary
