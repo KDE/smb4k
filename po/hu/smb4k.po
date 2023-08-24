@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -612,7 +612,7 @@ msgstr "Közös beállítások"
 msgid "No network item was set."
 msgstr "Hálózat"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Define custom options for host <b>%1</b> and all the shares it "
@@ -623,7 +623,7 @@ msgstr ""
 "<p>Egyéni beállítások megadása a(z) <b>%1</b> géphez és az általa "
 "biztosított megosztásokhoz.</p>"
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, fuzzy, kde-format
 #| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
 msgid "Define custom settings for share <b>%1</b>."
@@ -1058,7 +1058,7 @@ msgstr "Másolatok:"
 msgid "Print"
 msgstr "Nyomtató"
 
-#: smb4k/smb4kprintdialog.cpp:118
+#: smb4k/smb4kprintdialog.cpp:122
 #, fuzzy, kde-format
 #| msgid "Sending file to printer %1..."
 msgid "Print a file to printer <b>%1</b>."

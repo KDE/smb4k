@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
-"PO-Revision-Date: 2023-08-18 09:00+0300\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"PO-Revision-Date: 2023-08-22 07:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -587,7 +587,7 @@ msgstr "Редактор нетипових параметрів"
 msgid "No network item was set."
 msgstr "Не встановлено жодного запису мережі."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -595,7 +595,7 @@ msgstr ""
 "Визначте нетипові параметри для вузла <b>%1</b> та всіх його спільних "
 "ресурсів."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Визначте нетипові параметри спільного ресурсу <b>%1</b>."
@@ -982,32 +982,29 @@ msgid "Print Dialog"
 msgstr "Вікно друку"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "&Надрукувати файл"
+msgstr "Надрукувати файл."
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "&Файл"
+msgstr "Файл:"
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "Копій:"
 
 #: smb4k/smb4kprintdialog.cpp:86
 #, kde-format
 msgid "Print"
 msgstr "Надрукувати"
 
-#: smb4k/smb4kprintdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#: smb4k/smb4kprintdialog.cpp:122
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Надсилання файла на принтер %1..."
+msgstr "Надрукувати файл на принтері <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format

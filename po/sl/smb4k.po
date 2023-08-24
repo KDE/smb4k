@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
-"PO-Revision-Date: 2023-08-18 06:59+0200\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"PO-Revision-Date: 2023-08-22 09:18+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -579,7 +579,7 @@ msgstr "Urejevalnik nastavitev po meri"
 msgid "No network item was set."
 msgstr "Ni določenega predmeta mreže."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -587,7 +587,7 @@ msgstr ""
 "Določite nastavitve po meri za gostitelja <b>%1</b> in vse vire v skupni "
 "rab, ki jih ponuja."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Določite nastavitve po meri za skupni vir <b>%1</b>."
@@ -974,32 +974,29 @@ msgid "Print Dialog"
 msgstr "Natisni pogovor"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Tiskaj datoteko"
+msgstr "Natisni datoteko."
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "Datoteka"
+msgstr "Datoteka:"
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "Kopij:"
 
 #: smb4k/smb4kprintdialog.cpp:86
 #, kde-format
 msgid "Print"
 msgstr "Tiskaj"
 
-#: smb4k/smb4kprintdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#: smb4k/smb4kprintdialog.cpp:122
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Pošiljanje datotek na tiskalnik %1..."
+msgstr "Natisni datoteko na tiskalniku <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format

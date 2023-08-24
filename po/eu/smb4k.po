@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
-"PO-Revision-Date: 2023-08-18 20:38+0200\n"
+"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"PO-Revision-Date: 2023-08-22 21:32+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -577,7 +577,7 @@ msgstr "Ezarpenak neurrira ipintzeko editorea"
 msgid "No network item was set."
 msgstr "Ez da sare elementurik ezarri."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:113
+#: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
@@ -585,7 +585,7 @@ msgstr ""
 "Definitu  <b>%1</b> ostalariarentzako eta hornitzen dituen partekatze "
 "guztietarako neurrira ipintzeko ezarpenak."
 
-#: smb4k/smb4kcustomsettingseditor.cpp:129
+#: smb4k/smb4kcustomsettingseditor.cpp:131
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
 msgstr "Definitu <b>%1</b> partekatzeari neurrira ipintzeko ezarpenak."
@@ -969,32 +969,29 @@ msgid "Print Dialog"
 msgstr "Inprimatzeko elkarrizketa-koadroa"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "In&primatu fitxategia"
+msgstr "Inprimatu fitxategi bat."
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "&Fitxategia"
+msgstr "Fitxategia:"
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "Kopiak:"
 
 #: smb4k/smb4kprintdialog.cpp:86
 #, kde-format
 msgid "Print"
 msgstr "Inprimatu"
 
-#: smb4k/smb4kprintdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#: smb4k/smb4kprintdialog.cpp:122
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Fitxategia %1 inprimagailura bidaltzen..."
+msgstr "Inprimatu fitxategi bat <b>%1</b> inprimagailuan."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
