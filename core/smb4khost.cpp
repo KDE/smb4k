@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a host.
 
-    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -34,11 +34,11 @@ Smb4KHost::Smb4KHost(const QUrl &url)
     *pUrl = url;
 }
 
-Smb4KHost::Smb4KHost(const Smb4KHost &h)
-    : Smb4KBasicNetworkItem(Host)
+Smb4KHost::Smb4KHost(const Smb4KHost &host)
+    : Smb4KBasicNetworkItem(host)
     , d(new Smb4KHostPrivate)
 {
-    *d = *h.d;
+    *d = *host.d;
 
     if (pIcon->isNull()) {
         *pIcon = KDE::icon(QStringLiteral("network-server"));
