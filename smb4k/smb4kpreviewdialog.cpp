@@ -21,6 +21,7 @@
 #include <KWindowConfig>
 #include <QWindow>
 #include <QToolBar>
+#include <QMap>
 
 Smb4KPreviewDialog::Smb4KPreviewDialog(QWidget *parent)
     : QDialog(parent)
@@ -165,14 +166,28 @@ void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr>& files)
         m_listWidget->clear();
     }
 
+    QMap<QString, QListWidgetItem *> sortingMap;
+
     for (const FilePtr &file : files) {
         QVariant variant = QVariant::fromValue(*file.data());
 
-        QListWidgetItem *item = new QListWidgetItem(m_listWidget);
+        QListWidgetItem *item = new QListWidgetItem();
         item->setText(file->name());
         item->setIcon(file->icon());
-
         item->setData(Qt::UserRole, variant);
+
+        if (file->isDirectory()) {
+            sortingMap[QStringLiteral("00_")+file->name()] = item;
+        } else {
+            sortingMap[QStringLiteral("01_")+file->name()] = item;
+        }
+    }
+
+    QMapIterator<QString, QListWidgetItem *> it(sortingMap);
+
+    while (it.hasNext()) {
+        it.next();
+        m_listWidget->addItem(it.value());
     }
 
     m_upAction->setEnabled(m_currentItem != m_share);
