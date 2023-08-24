@@ -20,32 +20,17 @@
 // Qt includes
 #include <QAbstractSocket>
 #include <QDebug>
-#include <QDialogButtonBox>
 #include <QDir>
-#include <QGroupBox>
 #include <QHostInfo>
-#include <QLabel>
-#include <QListWidget>
 #include <QNetworkInterface>
 #include <QPrinter>
-#include <QPushButton>
-#include <QSpinBox>
 #include <QTemporaryDir>
 #include <QTextDocument>
-#include <QToolBar>
 #include <QUuid>
-#include <QVBoxLayout>
-#include <QWindow>
 
 // KDE includes
-#include <KDualAction>
 #include <KFileItem>
-#include <KIO/Global>
-#include <KIconLoader>
 #include <KLocalizedString>
-#include <KUrlComboBox>
-#include <KUrlRequester>
-#include <KWindowConfig>
 
 #ifdef USE_WS_DISCOVERY
 #include <KDSoapClient/KDQName>

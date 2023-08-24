@@ -20,18 +20,14 @@
 #include <libsmbclient.h>
 
 // Qt includes
-#include <QDialog>
 #include <QHostAddress>
-#include <QListWidgetItem>
 #include <QTimer>
 #include <QUrl>
 
 // KDE includes
 #include <KDNSSD/RemoteService>
 #include <KDNSSD/ServiceBrowser>
-#include <KFileItem>
 #include <KJob>
-#include <kdnssd_version.h>
 
 #ifdef USE_WS_DISCOVERY
 #include <WSDiscoveryClient>
