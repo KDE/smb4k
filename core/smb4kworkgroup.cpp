@@ -1,7 +1,7 @@
 /*
     Smb4K's container class for information about a workgroup.
 
-    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -41,13 +41,13 @@ Smb4KWorkgroup::Smb4KWorkgroup(const QString &name)
     *pIcon = KDE::icon(QStringLiteral("network-workgroup"));
 }
 
-Smb4KWorkgroup::Smb4KWorkgroup(const Smb4KWorkgroup &w)
-    : Smb4KBasicNetworkItem(Workgroup)
+Smb4KWorkgroup::Smb4KWorkgroup(const Smb4KWorkgroup &workgroup)
+    : Smb4KBasicNetworkItem(workgroup)
     , d(new Smb4KWorkgroupPrivate)
 {
     // Copy the private variables
     //
-    *d = *w.d;
+    *d = *workgroup.d;
 
     //
     // Set the icon if necessary
