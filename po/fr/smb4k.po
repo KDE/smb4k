@@ -1000,15 +1000,14 @@ msgid "Print a file."
 msgstr "&Imprimer un fichier"
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "&Fichier"
+msgstr "Fichier :"
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "Copies :"
 
 #: smb4k/smb4kprintdialog.cpp:86
 #, fuzzy, kde-format
