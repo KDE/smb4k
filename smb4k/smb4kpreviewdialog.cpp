@@ -7,21 +7,22 @@
 
 // application specific includes
 #include "smb4kpreviewdialog.h"
+#include "core/smb4kclient.h"
 #include "core/smb4khomesshareshandler.h"
 #include "core/smb4ksettings.h"
-#include "core/smb4kclient.h"
 
 // Qt includes
 #include <QDialogButtonBox>
+#include <QMap>
 #include <QVBoxLayout>
 
 // KDE includes
-#include <KLocalizedString>
 #include <KConfigGroup>
+#include <KLocalizedString>
 #include <KWindowConfig>
-#include <QWindow>
 #include <QToolBar>
-#include <QMap>
+#include <QWindow>
+// #include <KIO/OpenUrlJob>
 
 Smb4KPreviewDialog::Smb4KPreviewDialog(QWidget *parent)
     : QDialog(parent)
@@ -91,8 +92,6 @@ Smb4KPreviewDialog::Smb4KPreviewDialog(QWidget *parent)
 
     resize(dialogSize); // workaround for QTBUG-40584
 
-    // FIXME
-
     connect(Smb4KClient::self(), &Smb4KClient::files, this, &Smb4KPreviewDialog::slotPreviewResults);
     connect(Smb4KClient::self(), &Smb4KClient::aboutToStart, this, &Smb4KPreviewDialog::slotAdjustReloadAction);
     connect(Smb4KClient::self(), &Smb4KClient::finished, this, &Smb4KPreviewDialog::slotAdjustReloadAction);
@@ -147,7 +146,7 @@ void Smb4KPreviewDialog::slotCloseButtonClicked()
     accept();
 }
 
-void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem* item)
+void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem *item)
 {
     Smb4KFile file = item->data(Qt::UserRole).value<Smb4KFile>();
 
@@ -155,13 +154,15 @@ void Smb4KPreviewDialog::slotItemActivated(QListWidgetItem* item)
         FilePtr fileItem = FilePtr(new Smb4KFile(file));
         loadPreview(fileItem);
     } else {
-        // FIXME: Do we want to do something with the files?
+        // KIO::OpenUrlJob *job = new KIO::OpenUrlJob(file.url());
+        // job->setFollowRedirections(false);
+        // job->setAutoDelete(true);
+        // job->start();
     }
 }
 
-void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr>& files)
+void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr> &files)
 {
-    // FIXME: Implement sorting?
     if (m_listWidget->count() != 0) {
         m_listWidget->clear();
     }
@@ -177,9 +178,9 @@ void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr>& files)
         item->setData(Qt::UserRole, variant);
 
         if (file->isDirectory()) {
-            sortingMap[QStringLiteral("00_")+file->name()] = item;
+            sortingMap[QStringLiteral("00_") + file->name()] = item;
         } else {
-            sortingMap[QStringLiteral("01_")+file->name()] = item;
+            sortingMap[QStringLiteral("01_") + file->name()] = item;
         }
     }
 
@@ -190,7 +191,7 @@ void Smb4KPreviewDialog::slotPreviewResults(const QList<FilePtr>& files)
         m_listWidget->addItem(it.value());
     }
 
-    m_upAction->setEnabled(m_currentItem != m_share);
+    m_upAction->setEnabled(!m_currentItem->url().matches(m_share->url(), QUrl::StripTrailingSlash));
 }
 
 void Smb4KPreviewDialog::slotReloadActionTriggered(bool checked)
@@ -211,17 +212,20 @@ void Smb4KPreviewDialog::slotReloadActionTriggered(bool checked)
 
 void Smb4KPreviewDialog::slotUpActionTriggered()
 {
-    QUrl url = m_currentItem->url().resolved(QUrl(QStringLiteral("..")));
+    if (!m_currentItem->url().matches(m_share->url(), QUrl::StripTrailingSlash)) {
+        QUrl url = m_currentItem->url().adjusted(QUrl::StripTrailingSlash); // Do not merge with the line below (See code for KIO::upUrl())
+        url = url.adjusted(QUrl::RemoveFilename);
 
-    FilePtr file = FilePtr(new Smb4KFile(url));
-    file->setUserName(m_share->userName());
-    file->setPassword(m_share->password());
-    file->setDirectory(true);
+        FilePtr file = FilePtr(new Smb4KFile(url));
+        file->setUserName(m_share->userName());
+        file->setPassword(m_share->password());
+        file->setDirectory(true);
 
-    loadPreview(file);
+        loadPreview(file);
+    }
 }
 
-void Smb4KPreviewDialog::slotUrlActivated(const QUrl& url)
+void Smb4KPreviewDialog::slotUrlActivated(const QUrl &url)
 {
     Q_UNUSED(url);
 
@@ -241,11 +245,9 @@ void Smb4KPreviewDialog::slotUrlActivated(const QUrl& url)
     loadPreview(networkItem);
 }
 
-void Smb4KPreviewDialog::slotAdjustReloadAction(const NetworkItemPtr& item, int type)
+void Smb4KPreviewDialog::slotAdjustReloadAction(const NetworkItemPtr &item, int type)
 {
     if (m_currentItem->url().matches(item->url(), QUrl::StripTrailingSlash) && type == LookupFiles) {
         m_reloadAction->setActive(!m_reloadAction->isActive());
     }
 }
-
-

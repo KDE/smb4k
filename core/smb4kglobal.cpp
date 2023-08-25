@@ -26,7 +26,6 @@
 // KDE includes
 #include <KIO/CommandLauncherJob>
 #include <KIO/OpenUrlJob>
-#include <kio_version.h>
 
 Q_GLOBAL_STATIC(Smb4KGlobalPrivate, p);
 QRecursiveMutex mutex;

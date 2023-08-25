@@ -12,10 +12,10 @@
 #include "core/smb4kglobal.h"
 
 // Qt includes
-#include <QDialog>
-#include <QPushButton>
-#include <QListWidget>
 #include <QAction>
+#include <QDialog>
+#include <QListWidget>
+#include <QPushButton>
 
 // KDE includes
 #include <KDualAction>
