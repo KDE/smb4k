@@ -35,7 +35,7 @@ Smb4KHost::Smb4KHost(const QUrl &url)
 }
 
 Smb4KHost::Smb4KHost(const Smb4KHost &h)
-    : Smb4KBasicNetworkItem(Host)
+    : Smb4KBasicNetworkItem(h)
     , d(new Smb4KHostPrivate)
 {
     *d = *h.d;

@@ -66,7 +66,7 @@ Smb4KShare::Smb4KShare(const QUrl &url)
 }
 
 Smb4KShare::Smb4KShare(const Smb4KShare &s)
-    : Smb4KBasicNetworkItem(Share)
+    : Smb4KBasicNetworkItem(s)
     , d(new Smb4KSharePrivate)
 {
     //

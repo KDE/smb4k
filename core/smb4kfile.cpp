@@ -40,7 +40,7 @@ Smb4KFile::Smb4KFile(const QUrl &url, Smb4KGlobal::NetworkItem type)
 }
 
 Smb4KFile::Smb4KFile(const Smb4KFile &file)
-    : Smb4KBasicNetworkItem(file.type())
+    : Smb4KBasicNetworkItem(file)
     , d(new Smb4KFilePrivate)
 {
     *d = *file.d;

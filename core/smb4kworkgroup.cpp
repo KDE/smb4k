@@ -42,7 +42,7 @@ Smb4KWorkgroup::Smb4KWorkgroup(const QString &name)
 }
 
 Smb4KWorkgroup::Smb4KWorkgroup(const Smb4KWorkgroup &w)
-    : Smb4KBasicNetworkItem(Workgroup)
+    : Smb4KBasicNetworkItem(w)
     , d(new Smb4KWorkgroupPrivate)
 {
     // Copy the private variables
