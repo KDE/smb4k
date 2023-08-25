@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2022-11-10 12:50+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -908,7 +908,7 @@ msgid "&Unmount"
 msgstr "&Demonter"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -924,7 +924,7 @@ msgstr "Examinar li computato&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Examinar li labo&r-gruppe"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -959,6 +959,33 @@ msgstr "Mover li selectet element al sequent linea"
 #, fuzzy, kde-format
 msgid "Item Up"
 msgstr "Mover li selectet element al precedent linea"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+msgid "Preview Dialog"
+msgstr "Aperter li dialog de montage"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid "&Abort"
+msgid "Abort"
+msgstr "In&terrupter"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Pre&view"
+msgid "Preview of %1"
+msgstr "Pre&vider"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format

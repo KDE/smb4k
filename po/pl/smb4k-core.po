@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-03-04 09:30+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -1982,17 +1982,17 @@ msgstr "%1 na %2"
 msgid "The format of %1 is not supported."
 msgstr "Format %1 jest nieobsługiwany."
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "Nie można odczytać pliku %1"
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "Nie można wydrukować pliku %1 na %2"
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
@@ -2000,35 +2000,15 @@ msgstr ""
 "Usługa Zeroconf nie jest uruchomiona. Żaden serwer nie jest wykrywany przy "
 "użyciu DNS-SD."
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr "Obsługa Zeroconf jest niedostępna w tej wersji KDE."
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Wystąpił nieznany błąd z Zeroconf."
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr "Podgląd %1"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Wczytaj ponownie"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "Porzuć"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Do góry"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3524,6 +3504,18 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt>"
+
+#~ msgid "Preview of %1"
+#~ msgstr "Podgląd %1"
+
+#~ msgid "Reload"
+#~ msgstr "Wczytaj ponownie"
+
+#~ msgid "Abort"
+#~ msgstr "Porzuć"
+
+#~ msgid "Up"
+#~ msgstr "Do góry"
 
 #~ msgid "Print File"
 #~ msgstr "Drukuj plik"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-07-02 02:26+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -943,7 +943,7 @@ msgid "&Unmount"
 msgstr "&Desmontar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -959,7 +959,7 @@ msgstr "Analisar o Computado&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Analisar o G&rupo de Trabalho"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -994,6 +994,34 @@ msgstr "Subir o Item"
 #, kde-format
 msgid "Item Up"
 msgstr "Descer o Item"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Mount Dialog"
+msgid "Preview Dialog"
+msgstr "Janela de Montagem"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid "&Abort"
+msgid "Abort"
+msgstr "&Interromper"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Pre&view"
+msgid "Preview of %1"
+msgstr "Ante&visão"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format

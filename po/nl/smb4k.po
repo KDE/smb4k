@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-08-22 13:28+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -918,7 +918,7 @@ msgid "&Unmount"
 msgstr "&Afkoppelen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -934,7 +934,7 @@ msgstr "Scan Compute&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Scan We&rkgroep"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -969,6 +969,33 @@ msgstr "Item omlaag verplaatsen"
 #, kde-format
 msgid "Item Up"
 msgstr "Item omhoog verplaatsen"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Print Dialog"
+msgid "Preview Dialog"
+msgstr "Dialoog voor afdrukken"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Herladen"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Afbreken"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Omhoog"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Preview"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format
@@ -1359,9 +1386,6 @@ msgstr "Grootte:"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Hier de zoektekst invoeren."
-
-#~ msgid "Abort"
-#~ msgstr "Afbreken"
 
 #~ msgid "&Clear"
 #~ msgstr "&Wissen"
@@ -2780,23 +2804,14 @@ msgstr "Grootte:"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Er zijn geen broadcast-gebieden gedefinieerd.</p>"
 
-#~ msgid "Preview"
-#~ msgstr "Preview"
-
 #~ msgid "The preview is displayed here."
 #~ msgstr "Het voorbeeld wordt hier getoond."
-
-#~ msgid "Reload"
-#~ msgstr "Herladen"
 
 #~ msgid "Back"
 #~ msgstr "Terug"
 
 #~ msgid "Forward"
 #~ msgstr "Doorsturen"
-
-#~ msgid "Up"
-#~ msgstr "Omhoog"
 
 #~ msgid ""
 #~ "The current UNC address is shown here. You can also choose one of the "

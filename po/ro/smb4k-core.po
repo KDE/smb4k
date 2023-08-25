@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2013-10-24 14:36+0300\n"
 "Last-Translator: Sergiu Bivol <sergiu@ase.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -1681,50 +1681,30 @@ msgstr ""
 msgid "The format of %1 is not supported."
 msgstr ""
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr ""
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr ""
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr ""
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
-msgstr ""
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr ""
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr ""
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr ""
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
 msgstr ""
 
 #: smb4khomesshareshandler.cpp:126

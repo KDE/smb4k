@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -919,7 +919,7 @@ msgid "&Unmount"
 msgstr "अनमाऊंट करा"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -935,7 +935,7 @@ msgstr ""
 msgid "Scan Wo&rkgroup"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -973,6 +973,33 @@ msgstr "घटक"
 #| msgid "Item"
 msgid "Item Up"
 msgstr "घटक"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Preview Dialog"
+msgstr "सामान्य पर्याय"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, fuzzy, kde-format
+msgid "Reload"
+msgstr "पुन्हा दाखल करा"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "वर"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "पूर्वावलोकन"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1451,21 +1478,11 @@ msgstr "आकार"
 #~ msgid "Open"
 #~ msgstr "उघडा"
 
-#~ msgid "Preview"
-#~ msgstr "पूर्वावलोकन"
-
-#, fuzzy
-#~ msgid "Reload"
-#~ msgstr "पुन्हा दाखल करा"
-
 #~ msgid "Back"
 #~ msgstr "मागे"
 
 #~ msgid "Forward"
 #~ msgstr "पुढे"
-
-#~ msgid "Up"
-#~ msgstr "वर"
 
 #, fuzzy
 #~ msgid "Disk"

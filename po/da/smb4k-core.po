@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2017-11-06 15:22+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -1970,52 +1970,32 @@ msgstr "%1 på %2"
 msgid "The format of %1 is not supported."
 msgstr "%1s format er ikke understøttet."
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, fuzzy, kde-format
 msgid "The file %1 could not be read"
 msgstr "Filen %1 kunne ikke læses."
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, fuzzy, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "Filen %1 kunne ikke læses."
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr ""
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, fuzzy, kde-format
 #| msgid "An authentication error occurred. "
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Der skete en godkendelses fejl."
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr "Forhåndsvisning af %1"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Genindlæs"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "Afbryd"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Op"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3531,6 +3511,18 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Angiv et brugernavn og en adgangskode til ressourcen <b>%1</b>.</qt>"
+
+#~ msgid "Preview of %1"
+#~ msgstr "Forhåndsvisning af %1"
+
+#~ msgid "Reload"
+#~ msgstr "Genindlæs"
+
+#~ msgid "Abort"
+#~ msgstr "Afbryd"
+
+#~ msgid "Up"
+#~ msgstr "Op"
 
 #~ msgid "Print File"
 #~ msgstr "Udskriv fil"

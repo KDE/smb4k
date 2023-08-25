@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1984,54 +1984,33 @@ msgstr ""
 msgid "The format of %1 is not supported."
 msgstr "Dat Forrmaat vun „%1“ warrt nich ünnerstütt."
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, fuzzy, kde-format
 #| msgid "The lock file could not be created."
 msgid "The file %1 could not be read"
 msgstr "Slottdatei lett sik nich opstellen."
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, fuzzy, kde-format
 #| msgid "The lock file could not be created."
 msgid "The file %1 could not be printed to %2"
 msgstr "Slottdatei lett sik nich opstellen."
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr ""
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
-
-#: smb4kclient_p.cpp:1963
-#, fuzzy, kde-format
-#| msgid "Preview"
-msgid "Preview of %1"
-msgstr "Vöransicht"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Nieg laden"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "Afbreken"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Na baven"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3553,6 +3532,20 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
+
+#, fuzzy
+#~| msgid "Preview"
+#~ msgid "Preview of %1"
+#~ msgstr "Vöransicht"
+
+#~ msgid "Reload"
+#~ msgstr "Nieg laden"
+
+#~ msgid "Abort"
+#~ msgstr "Afbreken"
+
+#~ msgid "Up"
+#~ msgstr "Na baven"
 
 #~ msgid "Print File"
 #~ msgstr "Datei drucken"

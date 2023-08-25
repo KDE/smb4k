@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-08-22 21:32+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -911,7 +911,7 @@ msgid "&Unmount"
 msgstr "&Desmuntatu"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ktrl+M"
@@ -927,7 +927,7 @@ msgstr "Miatu o&rdenagailua"
 msgid "Scan Wo&rkgroup"
 msgstr "Miatu la&ntaldea"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -962,6 +962,34 @@ msgstr "Elementua zama-jaitsi"
 #, kde-format
 msgid "Item Up"
 msgstr "Elementua zama-igo"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Print Dialog"
+msgid "Preview Dialog"
+msgstr "Inprimatzeko elkarrizketa-koadroa"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid "&Abort"
+msgid "Abort"
+msgstr "&Utzi"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Pre&view"
+msgid "Preview of %1"
+msgstr "Aurrei&kusi"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format

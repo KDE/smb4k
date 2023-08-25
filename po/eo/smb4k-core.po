@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-06-15 21:48+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -1975,17 +1975,17 @@ msgstr "%1 sur %2"
 msgid "The format of %1 is not supported."
 msgstr "La formato de %1 ne estas subtenata."
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "La dosiero %1 ne eblis legi"
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "La dosiero %1 ne povis esti presita al %2"
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
@@ -1993,35 +1993,15 @@ msgstr ""
 "La Zeroconf-demono ne funkcias. Neniuj serviloj estas malkovritaj uzante DNS-"
 "SD."
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr "Zeroconf-subteno ne haveblas en ĉi tiu versio de KDE."
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Nekonata eraro kun Zeroconf okazis."
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr "Antaŭrigardo de %1"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Reŝargi"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "Ĉesigi"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Supren"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3513,6 +3493,18 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Bonvolu enigi uzantnomon kaj pasvorton por la kundivido <b>%1</b>.</qt>"
+
+#~ msgid "Preview of %1"
+#~ msgstr "Antaŭrigardo de %1"
+
+#~ msgid "Reload"
+#~ msgstr "Reŝargi"
+
+#~ msgid "Abort"
+#~ msgstr "Ĉesigi"
+
+#~ msgid "Up"
+#~ msgstr "Supren"
 
 #~ msgid "Print File"
 #~ msgstr "Presi Dosiero"

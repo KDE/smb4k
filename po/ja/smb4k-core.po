@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -1958,54 +1958,33 @@ msgstr ""
 msgid "The format of %1 is not supported."
 msgstr ""
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, fuzzy, kde-format
 #| msgid "<qt>The command \"%1\" could not be found.</qt>"
 msgid "The file %1 could not be read"
 msgstr "<qt>コマンド \"%1\" は、見つかりません</qt>"
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, fuzzy, kde-format
 #| msgid "<qt>The command \"%1\" could not be found.</qt>"
 msgid "The file %1 could not be printed to %2"
 msgstr "<qt>コマンド \"%1\" は、見つかりません</qt>"
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr ""
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
-
-#: smb4kclient_p.cpp:1963
-#, fuzzy, kde-format
-#| msgid "Preview"
-msgid "Preview of %1"
-msgstr "プレビュー"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "再読み込み"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "中断"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "上"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3534,6 +3513,20 @@ msgstr "<qt>ホスト %1 のユーザ名とパスワードを入力してくだ�
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>共有 %1 のユーザ名とパスワードを入力してください。</qt>"
+
+#, fuzzy
+#~| msgid "Preview"
+#~ msgid "Preview of %1"
+#~ msgstr "プレビュー"
+
+#~ msgid "Reload"
+#~ msgstr "再読み込み"
+
+#~ msgid "Abort"
+#~ msgstr "中断"
+
+#~ msgid "Up"
+#~ msgstr "上"
 
 #~ msgid "Print File"
 #~ msgstr "ファイルを印刷"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-08-18 11:57+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -915,7 +915,7 @@ msgid "&Unmount"
 msgstr "Desm&unta"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -931,7 +931,7 @@ msgstr "Escaneja els o&rdinadors"
 msgid "Scan Wo&rkgroup"
 msgstr "Escaneja els g&rups de treball"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -966,6 +966,34 @@ msgstr "Element avall"
 #, kde-format
 msgid "Item Up"
 msgstr "Element amunt"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Print Dialog"
+msgid "Preview Dialog"
+msgstr "Diàleg d'impressió"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid "&Abort"
+msgid "Abort"
+msgstr "&Interromp"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Pre&view"
+msgid "Preview of %1"
+msgstr "&Vista prèvia"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format

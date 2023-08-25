@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -944,7 +944,7 @@ msgid "&Unmount"
 msgstr "&Aftengja"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -960,7 +960,7 @@ msgstr "&Skanna vél"
 msgid "Scan Wo&rkgroup"
 msgstr "&Skanna vinnuhóp"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -997,6 +997,33 @@ msgstr "Atriði"
 #| msgid "Item"
 msgid "Item Up"
 msgstr "Atriði"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Preview Dialog"
+msgstr "Forskoðunargluggi"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, fuzzy, kde-format
+msgid "Reload"
+msgstr "Tilbúin."
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, fuzzy, kde-format
+msgid "Abort"
+msgstr "Hætt&a við"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Upp"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Forsýn"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1383,10 +1410,6 @@ msgstr "Stærð:"
 #, fuzzy
 #~ msgid "Enter the search string here."
 #~ msgstr "Sláðu inn vél hér"
-
-#, fuzzy
-#~ msgid "Abort"
-#~ msgstr "Hætt&a við"
 
 #, fuzzy
 #~ msgid "&Clear"
@@ -2539,13 +2562,6 @@ msgstr "Stærð:"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "Ekki tókst að útbúa möppuna %1."
 
-#~ msgid "Preview"
-#~ msgstr "Forsýn"
-
-#, fuzzy
-#~ msgid "Reload"
-#~ msgstr "Tilbúin."
-
 #, fuzzy
 #~ msgid "Back"
 #~ msgstr "Afrita"
@@ -2553,9 +2569,6 @@ msgstr "Stærð:"
 #, fuzzy
 #~ msgid "Forward"
 #~ msgstr "Áfram"
-
-#~ msgid "Up"
-#~ msgstr "Upp"
 
 #~ msgid "Disk"
 #~ msgstr "Diskur"
