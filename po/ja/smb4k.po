@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -940,7 +940,7 @@ msgid "&Unmount"
 msgstr "アンマウント(&U)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -956,7 +956,7 @@ msgstr "コンピュータを検索(&R)"
 msgid "Scan Wo&rkgroup"
 msgstr "ワークグループを検索(&R)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -992,6 +992,34 @@ msgstr ""
 #, kde-format
 msgid "Item Up"
 msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Preview Dialog"
+msgstr "マウント中"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid "&Abort"
+msgid "Abort"
+msgstr "中断(&A)"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Pre&view"
+msgid "Preview of %1"
+msgstr "プレビュー(&V)"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -938,7 +938,7 @@ msgid "&Unmount"
 msgstr "Откл&ючить"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -954,7 +954,7 @@ msgstr "С&канировать компьютер"
 msgid "Scan Wo&rkgroup"
 msgstr "Ск&анировать рабочую группу"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -989,6 +989,32 @@ msgstr "Переместить вниз"
 #, kde-format
 msgid "Item Up"
 msgstr "Переместить вверх"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+msgid "Preview Dialog"
+msgstr "Предпросмотр"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, fuzzy, kde-format
+msgid "Reload"
+msgstr "Готово"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Отменить"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Вверх"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Предпросмотр"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1376,9 +1402,6 @@ msgstr "Размер:"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Введите строку поиска."
-
-#~ msgid "Abort"
-#~ msgstr "Отменить"
 
 #~ msgid "&Clear"
 #~ msgstr "&Очистить"
@@ -2195,16 +2218,6 @@ msgstr "Размер:"
 #, fuzzy
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "Не удалось получить просмотр."
-
-#~ msgid "Preview"
-#~ msgstr "Предпросмотр"
-
-#, fuzzy
-#~ msgid "Reload"
-#~ msgstr "Готово"
-
-#~ msgid "Up"
-#~ msgstr "Вверх"
 
 #, fuzzy
 #~ msgid "Synchronizing"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-03-04 08:32+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -2037,17 +2037,17 @@ msgstr "%1 на %2"
 msgid "The format of %1 is not supported."
 msgstr "Формат %1 не підтримується."
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "Не вдалося прочитати файл %1"
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "Не вдалося надрукувати файл %1 на %2"
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
@@ -2055,35 +2055,15 @@ msgstr ""
 "Не запущено фонову службу Zeroconf. За допомогою DNS-SD не виявлено жодного "
 "сервера."
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr "У цій версії KDE підтримка Zeroconf є недоступною."
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Невідома помилка, яку пов'язано із Zeroconf."
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr "Попередній перегляд %1"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Перезавантажити"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "Перервати"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Вгору"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3625,6 +3605,18 @@ msgid ""
 msgstr ""
 "<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до спільного "
 "ресурсу <b>%1</b>.</qt>"
+
+#~ msgid "Preview of %1"
+#~ msgstr "Попередній перегляд %1"
+
+#~ msgid "Reload"
+#~ msgstr "Перезавантажити"
+
+#~ msgid "Abort"
+#~ msgstr "Перервати"
+
+#~ msgid "Up"
+#~ msgstr "Вгору"
 
 #~ msgid "Print File"
 #~ msgstr "Надрукувати файл"

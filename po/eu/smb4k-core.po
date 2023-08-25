@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-07-30 09:28+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2005,17 +2005,17 @@ msgstr "%1 %2(e)an"
 msgid "The format of %1 is not supported."
 msgstr "%1(r)en formatua ez da onartzen."
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "%1 fitxategia ezin izan da irakurri"
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "%1 fitxategia ezin izan da inprimatu %2 bidez"
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
@@ -2023,35 +2023,15 @@ msgstr ""
 "«Zeroconf» daimona ez da ibiltzen ari. Ez da zerbitzaririk aurkitu DNS-SD "
 "erabiliz."
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr "«Zeroconf» euskarria ez dago erabilgarri KDEren bertsio honetan."
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr "«Zeroconf»ekin errore ezezagun bat gertatu da."
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr "%1(r)en aurreikuspegia"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Birzamatu"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "Utzi"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Gora"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3559,6 +3539,18 @@ msgid ""
 msgstr ""
 "<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> partekatzerako.</"
 "qt>"
+
+#~ msgid "Preview of %1"
+#~ msgstr "%1(r)en aurreikuspegia"
+
+#~ msgid "Reload"
+#~ msgstr "Birzamatu"
+
+#~ msgid "Abort"
+#~ msgstr "Utzi"
+
+#~ msgid "Up"
+#~ msgstr "Gora"
 
 #~ msgid "Print File"
 #~ msgstr "Inprimatu fitxategia"

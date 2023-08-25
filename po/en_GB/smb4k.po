@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-06-17 12:10+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -917,7 +917,7 @@ msgid "&Unmount"
 msgstr "&Unmount"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -933,7 +933,7 @@ msgstr "Scan Compute&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Scan Wo&rkgroup"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -968,6 +968,33 @@ msgstr "Item Down"
 #, kde-format
 msgid "Item Up"
 msgstr "Item Up"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Preview Dialog"
+msgstr "Preview Dialogue"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Reload"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Abort"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Up"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Preview"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1351,9 +1378,6 @@ msgstr "Size:"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Enter the search string here."
-
-#~ msgid "Abort"
-#~ msgstr "Abort"
 
 #~ msgid "&Clear"
 #~ msgstr "&Clear"
@@ -3822,20 +3846,11 @@ msgstr "Size:"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "There are currently no shares mounted."
 
-#~ msgid "Preview"
-#~ msgstr "Preview"
-
-#~ msgid "Reload"
-#~ msgstr "Reload"
-
 #~ msgid "Back"
 #~ msgstr "Back"
 
 #~ msgid "Forward"
 #~ msgstr "Forwards"
-
-#~ msgid "Up"
-#~ msgstr "Up"
 
 #~ msgid ""
 #~ "The current UNC address is shown here. You can also choose one of the "

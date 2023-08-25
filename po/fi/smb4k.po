@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-07-27 15:59+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -915,7 +915,7 @@ msgid "&Unmount"
 msgstr "&Irrota"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -931,7 +931,7 @@ msgstr "T&utki tietokone"
 msgid "Scan Wo&rkgroup"
 msgstr "Tutki työ&ryhmä"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -966,6 +966,33 @@ msgstr "Tietue alemmas"
 #, kde-format
 msgid "Item Up"
 msgstr "Tietue ylemmäs"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Preview Dialog"
+msgstr "Esikatseluikkuna"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr ""
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Keskeytä"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Ylös"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Pre&view"
+msgid "Preview of %1"
+msgstr "&Esikatselu"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1352,9 +1379,6 @@ msgstr "Koko:"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Anna etsittävä jono tähän."
-
-#~ msgid "Abort"
-#~ msgstr "Keskeytä"
 
 #~ msgid "&Clear"
 #~ msgstr "T&yhjennä"
@@ -1919,9 +1943,6 @@ msgstr "Koko:"
 
 #~ msgid "Forward"
 #~ msgstr "Eteenpäin"
-
-#~ msgid "Up"
-#~ msgstr "Ylös"
 
 #~ msgid "Disk"
 #~ msgstr "Levy"

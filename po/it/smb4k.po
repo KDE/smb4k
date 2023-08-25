@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
-"PO-Revision-Date: 2023-08-06 21:45+0200\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"PO-Revision-Date: 2023-08-19 17:07+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -568,16 +568,14 @@ msgid "Shares View"
 msgstr "Visualizzazione delle condivisioni"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Impostazioni personalizzate"
+msgstr "Editor delle impostazioni personalizzate"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
-#, fuzzy, kde-format
-#| msgid "Network Item"
+#, kde-format
 msgid "No network item was set."
-msgstr "Elemento di rete"
+msgstr "Non è stato impostato nessun elemento di rete."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
@@ -915,7 +913,7 @@ msgid "&Unmount"
 msgstr "&Smonta"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -931,7 +929,7 @@ msgstr "Analizza il compute&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Analizza g&ruppo di lavoro"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -967,11 +965,37 @@ msgstr "Elemento giù"
 msgid "Item Up"
 msgstr "Elemento su"
 
-#: smb4k/smb4kprintdialog.cpp:29
+#: smb4k/smb4kpreviewdialog.cpp:29
 #, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#| msgid "Print Dialog"
+msgid "Preview Dialog"
+msgstr "Finestra di stampa"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Ricarica"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Interrompi"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Su"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Anteprima"
+
+#: smb4k/smb4kprintdialog.cpp:29
+#, kde-format
 msgid "Print Dialog"
-msgstr "Finestra anteprima"
+msgstr "Finestra di stampa"
 
 #: smb4k/smb4kprintdialog.cpp:46
 #, fuzzy, kde-format
@@ -990,10 +1014,9 @@ msgid "Copies:"
 msgstr "Copie:"
 
 #: smb4k/smb4kprintdialog.cpp:86
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print"
-msgstr "Stampante"
+msgstr "Stampa"
 
 #: smb4k/smb4kprintdialog.cpp:122
 #, fuzzy, kde-format
@@ -1360,9 +1383,6 @@ msgstr "Dimensione:"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Inserisci qui il termine da cercare."
-
-#~ msgid "Abort"
-#~ msgstr "Interrompi"
 
 #~ msgid "&Clear"
 #~ msgstr "Pulis&ci"
@@ -3894,23 +3914,14 @@ msgstr "Dimensione:"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Non ci sono aree di broadcast definite.</p>"
 
-#~ msgid "Preview"
-#~ msgstr "Anteprima"
-
 #~ msgid "The preview is displayed here."
 #~ msgstr "L'anteprima viene mostrata qui."
-
-#~ msgid "Reload"
-#~ msgstr "Ricarica"
 
 #~ msgid "Back"
 #~ msgstr "Indietro"
 
 #~ msgid "Forward"
 #~ msgstr "Avanti"
-
-#~ msgid "Up"
-#~ msgstr "Su"
 
 #~ msgid ""
 #~ "The current UNC address is shown here. You can also choose one of the "

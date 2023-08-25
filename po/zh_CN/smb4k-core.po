@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-08-02 12:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1853,51 +1853,31 @@ msgstr "%2 上的 %1"
 msgid "The format of %1 is not supported."
 msgstr "不支持 %1 格式。"
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "无法读取文件 %1"
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "文件 %1 无法打印到 %2"
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr "Zeroconf 守护进程未在运行。没有通过 DNS-SD 发现任何服务器。"
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr "此版本的 KDE 软件不提供 Zeroconf 支持。"
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf 发生未知错误。"
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr "%1 的预览"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "重新加载"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "中止"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "向上"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3316,6 +3296,18 @@ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
+
+#~ msgid "Preview of %1"
+#~ msgstr "%1 的预览"
+
+#~ msgid "Reload"
+#~ msgstr "重新加载"
+
+#~ msgid "Abort"
+#~ msgstr "中止"
+
+#~ msgid "Up"
+#~ msgstr "向上"
 
 #~ msgid "Print File"
 #~ msgstr "打印文件"

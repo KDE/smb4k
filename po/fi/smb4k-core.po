@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-03-11 22:57+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1996,51 +1996,31 @@ msgstr "%1 koneella %2"
 msgid "The format of %1 is not supported."
 msgstr "Muotoa ei tueta: %1."
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "Tiedostoa %1 ei voitu lukea"
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "Tiedostoa %1 ei voitu tulostaa tulostimeen %2"
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr "Zeroconf-palvelu ei ole käynnissä. DNS-SD ei löytänyt palvelimia."
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr "Zeroconf-tuki ei ole käytettävissä tässä KDE-versiossa."
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconfissa tapahtui tuntematon virhe."
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr "Esikatselu – %1"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Lataa uudelleen"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "Keskeytä"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Ylös"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3547,6 +3527,18 @@ msgstr "<qt>Anna käyttäjätunnus ja salasana palvelimelle <b>%1</b>.</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Anna käyttäjätunnus ja salasana jaolle <b>%1</b>.</qt>"
+
+#~ msgid "Preview of %1"
+#~ msgstr "Esikatselu – %1"
+
+#~ msgid "Reload"
+#~ msgstr "Lataa uudelleen"
+
+#~ msgid "Abort"
+#~ msgstr "Keskeytä"
+
+#~ msgid "Up"
+#~ msgstr "Ylös"
 
 #~ msgid "Print File"
 #~ msgstr "Tulosta tiedosto"

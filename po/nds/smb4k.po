@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -956,7 +956,7 @@ msgid "&Unmount"
 msgstr "&Afhangen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -972,7 +972,7 @@ msgstr "Reekner dö&rkieken"
 msgid "Scan Wo&rkgroup"
 msgstr "Arbeidkoppel dö&rkieken"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -1010,6 +1010,33 @@ msgstr "Indrag"
 #| msgid "Item"
 msgid "Item Up"
 msgstr "Indrag"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Preview Dialog"
+msgstr "Vöransicht-Dialoog"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Nieg laden"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Afbreken"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Na baven"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Vöransicht"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1389,9 +1416,6 @@ msgstr "Grött"
 
 #~ msgid "Network Search"
 #~ msgstr "Nettwarksöök"
-
-#~ msgid "Abort"
-#~ msgstr "Afbreken"
 
 #~ msgid "&Clear"
 #~ msgstr "&Leddig maken"
@@ -2399,20 +2423,11 @@ msgstr "Grött"
 #~ msgid "<p>Executing an action with root privileges failed.</p>"
 #~ msgstr "Vöransicht vun %1 warrt haalt..."
 
-#~ msgid "Preview"
-#~ msgstr "Vöransicht"
-
-#~ msgid "Reload"
-#~ msgstr "Nieg laden"
-
 #~ msgid "Back"
 #~ msgstr "Torüch"
 
 #~ msgid "Forward"
 #~ msgstr "Vörut"
-
-#~ msgid "Up"
-#~ msgstr "Na baven"
 
 #~ msgid "Disk"
 #~ msgstr "Fastplaat"

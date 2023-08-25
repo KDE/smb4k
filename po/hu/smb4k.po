@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -976,7 +976,7 @@ msgid "&Unmount"
 msgstr "&Leválasztás"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -992,7 +992,7 @@ msgstr "Számí&tógép pásztázása"
 msgid "Scan Wo&rkgroup"
 msgstr "Munkacsopo&rt pásztázása"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -1029,6 +1029,33 @@ msgstr "Elem"
 #| msgid "Item"
 msgid "Item Up"
 msgstr "Elem"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Preview Dialog"
+msgstr "Párbeszédablak előnézete"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Újratöltés"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Megszakítás"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Fel"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Előnézet"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1445,9 +1472,6 @@ msgstr "Méret"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Adja meg a keresett szöveget itt."
-
-#~ msgid "Abort"
-#~ msgstr "Megszakítás"
 
 #~ msgid "&Clear"
 #~ msgstr "&Törlés"
@@ -3215,23 +3239,14 @@ msgstr "Méret"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Nincsenek szórási területek meghatározva.</p>"
 
-#~ msgid "Preview"
-#~ msgstr "Előnézet"
-
 #~ msgid "The preview is displayed here."
 #~ msgstr "Az előnézet itt jelenik meg."
-
-#~ msgid "Reload"
-#~ msgstr "Újratöltés"
 
 #~ msgid "Back"
 #~ msgstr "Vissza"
 
 #~ msgid "Forward"
 #~ msgstr "Előre"
-
-#~ msgid "Up"
-#~ msgstr "Fel"
 
 #~ msgid ""
 #~ "The current UNC address is shown here. You can also choose one of the "

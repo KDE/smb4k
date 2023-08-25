@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2011-07-19 21:17+0300\n"
 "Last-Translator: Yasen Pramatarov <yasen@lindeas.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -1692,51 +1692,31 @@ msgstr ""
 msgid "The format of %1 is not supported."
 msgstr ""
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, fuzzy, kde-format
 msgid "The file %1 could not be read"
 msgstr "Файл %1 не може да бъде прочетен."
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, fuzzy, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "Файл %1 не може да бъде прочетен."
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
 msgstr ""
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr ""
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr ""
-
-#: smb4kclient_p.cpp:1963
-#, fuzzy, kde-format
-msgid "Preview of %1"
-msgstr "Преглед"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Презареждане"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "Прекъсване"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Нагоре"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3094,6 +3074,19 @@ msgstr "Моля въведете удостоверяващи данни за �
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "Моля въведете удостоверяващи данни за ресурс %1"
+
+#, fuzzy
+#~ msgid "Preview of %1"
+#~ msgstr "Преглед"
+
+#~ msgid "Reload"
+#~ msgstr "Презареждане"
+
+#~ msgid "Abort"
+#~ msgstr "Прекъсване"
+
+#~ msgid "Up"
+#~ msgstr "Нагоре"
 
 #~ msgid "Print File"
 #~ msgstr "Отпечатване на файл"

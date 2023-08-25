@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-08-18 07:08+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -912,7 +912,7 @@ msgid "&Unmount"
 msgstr "&Avmontera"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -928,7 +928,7 @@ msgstr "Läs av &datorn"
 msgid "Scan Wo&rkgroup"
 msgstr "Läs av arbets&grupp"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -963,6 +963,33 @@ msgstr "Objekt neråt"
 #, kde-format
 msgid "Item Up"
 msgstr "Objekt uppåt"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Print Dialog"
+msgid "Preview Dialog"
+msgstr "Utskriftsdialogruta"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Uppdatera"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Avbryt"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Upp:"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Förhandsgranskning"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format
@@ -1312,9 +1339,6 @@ msgstr "Storlek:"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Skriv in söksträng här."
-
-#~ msgid "Abort"
-#~ msgstr "Avbryt"
 
 #~ msgid "&Clear"
 #~ msgstr "&Rensa"
@@ -3786,23 +3810,14 @@ msgstr "Storlek:"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Det finns inga utsändningsområden definierade.</p>"
 
-#~ msgid "Preview"
-#~ msgstr "Förhandsgranskning"
-
 #~ msgid "The preview is displayed here."
 #~ msgstr "Förhandsgranskningen visas här."
-
-#~ msgid "Reload"
-#~ msgstr "Uppdatera"
 
 #~ msgid "Back"
 #~ msgstr "Tillbaka"
 
 #~ msgid "Forward"
 #~ msgstr "Vidarbefordra"
-
-#~ msgid "Up"
-#~ msgstr "Upp:"
 
 #~ msgid ""
 #~ "The current UNC address is shown here. You can also choose one of the "

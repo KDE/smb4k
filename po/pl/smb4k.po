@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-04-10 11:49+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -936,7 +936,7 @@ msgid "&Unmount"
 msgstr "&Odepnij"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -952,7 +952,7 @@ msgstr "Przeszukaj kompute&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Przeszukaj g&rupę roboczą"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -987,6 +987,33 @@ msgstr "Element w dół"
 #, kde-format
 msgid "Item Up"
 msgstr "Element w górę"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Preview Dialog"
+msgstr "Okno podglądu"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Wczytaj ponownie"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Porzuć"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Do góry"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Podgląd"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1368,9 +1395,6 @@ msgstr "Rozmiar:"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Podaj tutaj tekst do wyszukania."
-
-#~ msgid "Abort"
-#~ msgstr "Porzuć"
 
 #~ msgid "&Clear"
 #~ msgstr "Wy&czyść"
@@ -3854,23 +3878,14 @@ msgstr "Rozmiar:"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Nie określono obszarów nadawania.</p>"
 
-#~ msgid "Preview"
-#~ msgstr "Podgląd"
-
 #~ msgid "The preview is displayed here."
 #~ msgstr "Podgląd jest wyświetlany tutaj."
-
-#~ msgid "Reload"
-#~ msgstr "Wczytaj ponownie"
 
 #~ msgid "Back"
 #~ msgstr "Do tyłu"
 
 #~ msgid "Forward"
 #~ msgstr "Do przodu"
-
-#~ msgid "Up"
-#~ msgstr "Do góry"
 
 #~ msgid ""
 #~ "The current UNC address is shown here. You can also choose one of the "

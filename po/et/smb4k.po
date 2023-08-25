@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -958,7 +958,7 @@ msgid "&Unmount"
 msgstr "Lah&uta"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -974,7 +974,7 @@ msgstr "Uuri ar&vutit"
 msgid "Scan Wo&rkgroup"
 msgstr "Uuri töö&gruppi"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -1009,6 +1009,33 @@ msgstr "Kirje alla"
 #, kde-format
 msgid "Item Up"
 msgstr "Kirje üles"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Preview Dialog"
+msgstr "Eelvaatluse dialoog"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Laadi uuesti"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Katkesta"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Üles"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Eelvaatlus"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1403,9 +1430,6 @@ msgstr "Suurus:"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Kirjuta siia otsingusõna."
-
-#~ msgid "Abort"
-#~ msgstr "Katkesta"
 
 #~ msgid "&Clear"
 #~ msgstr "&Puhasta"
@@ -3834,23 +3858,14 @@ msgstr "Suurus:"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "<p>Praegu ei ole määratud ühtegi leviala.</p>"
 
-#~ msgid "Preview"
-#~ msgstr "Eelvaatlus"
-
 #~ msgid "The preview is displayed here."
 #~ msgstr "Siin näeb eelvaatlust."
-
-#~ msgid "Reload"
-#~ msgstr "Laadi uuesti"
 
 #~ msgid "Back"
 #~ msgstr "Tagasi"
 
 #~ msgid "Forward"
 #~ msgstr "Edasi"
-
-#~ msgid "Up"
-#~ msgstr "Üles"
 
 #~ msgid ""
 #~ "The current UNC address is shown here. You can also choose one of the "

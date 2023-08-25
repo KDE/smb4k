@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-22 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2023-08-22 22:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1973,17 +1973,17 @@ msgstr "%2 üzerinde %1"
 msgid "The format of %1 is not supported."
 msgstr "%1 biçimi desteklenmiyor."
 
-#: smb4kclient_p.cpp:1252
+#: smb4kclient_p.cpp:1240
 #, kde-format
 msgid "The file %1 could not be read"
 msgstr "%1 dosyası okunamadı"
 
-#: smb4kclient_p.cpp:1269
+#: smb4kclient_p.cpp:1257
 #, kde-format
 msgid "The file %1 could not be printed to %2"
 msgstr "%1 dosyası %2 adresine yazdırılamadı"
 
-#: smb4kclient_p.cpp:1359
+#: smb4kclient_p.cpp:1347
 #, kde-format
 msgid ""
 "The Zeroconf daemon is not running. No servers are discovered using DNS-SD."
@@ -1991,35 +1991,15 @@ msgstr ""
 "Zeroconf ardalan süreci çalışmıyor. DNS-SD kullanarak bir sunucu "
 "keşfedilmedi."
 
-#: smb4kclient_p.cpp:1363
+#: smb4kclient_p.cpp:1351
 #, kde-format
 msgid "Zeroconf support is not available in this version of KDE."
 msgstr "Zeroconf desteği, KDE'nin bu sürümünde kullanılabilir değil."
 
-#: smb4kclient_p.cpp:1367
+#: smb4kclient_p.cpp:1355
 #, kde-format
 msgid "An unknown error with Zeroconf occurred."
 msgstr "Zeroconf ile bilinmeyen bir hata oluştu."
-
-#: smb4kclient_p.cpp:1963
-#, kde-format
-msgid "Preview of %1"
-msgstr "%1 ögesinin Önizlemesi"
-
-#: smb4kclient_p.cpp:1999
-#, kde-format
-msgid "Reload"
-msgstr "Yeniden Yükle"
-
-#: smb4kclient_p.cpp:2001
-#, kde-format
-msgid "Abort"
-msgstr "İptal"
-
-#: smb4kclient_p.cpp:2013
-#, kde-format
-msgid "Up"
-msgstr "Yukarı"
 
 #: smb4khomesshareshandler.cpp:126
 #, kde-format
@@ -3519,6 +3499,18 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Lütfen <b>%1</b> paylaşımı için bir kullanıcı adı ve parola girin.</qt>"
+
+#~ msgid "Preview of %1"
+#~ msgstr "%1 ögesinin Önizlemesi"
+
+#~ msgid "Reload"
+#~ msgstr "Yeniden Yükle"
+
+#~ msgid "Abort"
+#~ msgstr "İptal"
+
+#~ msgid "Up"
+#~ msgstr "Yukarı"
 
 #~ msgid "Print File"
 #~ msgstr "Dosyayı Yazdır"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2019-10-19 22:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -946,7 +946,7 @@ msgid "&Unmount"
 msgstr "&Desmontar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -962,7 +962,7 @@ msgstr "Examina&r o computador"
 msgid "Scan Wo&rkgroup"
 msgstr "Examinar o g&rupo de traballo"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -997,6 +997,33 @@ msgstr "Baixar o elemento"
 #, kde-format
 msgid "Item Up"
 msgstr "Subir o elemento"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Preview Dialog"
+msgid "Preview Dialog"
+msgstr "Diálogo de previsualización"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Anovar"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Cancelar"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Subir"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Previsualizar"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1398,9 +1425,6 @@ msgstr "Tamaño"
 
 #~ msgid "Enter the search string here."
 #~ msgstr "Insira aquí a cadea de busca."
-
-#~ msgid "Abort"
-#~ msgstr "Cancelar"
 
 #~ msgid "&Clear"
 #~ msgstr "&Limpar"
@@ -3822,20 +3846,11 @@ msgstr "Tamaño"
 #~ msgid "<p>There are no broadcast areas defined.</p>"
 #~ msgstr "Non foi posíbel montar a compartición."
 
-#~ msgid "Preview"
-#~ msgstr "Previsualizar"
-
-#~ msgid "Reload"
-#~ msgstr "Anovar"
-
 #~ msgid "Back"
 #~ msgstr "Recuar"
 
 #~ msgid "Forward"
 #~ msgstr "Avanzar"
-
-#~ msgid "Up"
-#~ msgstr "Subir"
 
 #~ msgid "Disk"
 #~ msgstr "Disco"

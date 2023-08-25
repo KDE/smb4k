@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2009-12-24 06:59-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -939,7 +939,7 @@ msgid "&Unmount"
 msgstr "&Dífheistigh"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -955,7 +955,7 @@ msgstr ""
 msgid "Scan Wo&rkgroup"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -993,6 +993,33 @@ msgstr "Mír"
 #| msgid "Item"
 msgid "Item Up"
 msgstr "Mír"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Common Options"
+msgid "Preview Dialog"
+msgstr "Roghanna Coitianta"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "Athluchtaigh"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "Tobscoir"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "Suas"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "Réamhamharc"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1334,9 +1361,6 @@ msgstr "Méid"
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "Príomhbharra Uirlisí"
 
-#~ msgid "Abort"
-#~ msgstr "Tobscoir"
-
 #~ msgid "&Clear"
 #~ msgstr "&Glan"
 
@@ -1601,20 +1625,11 @@ msgstr "Méid"
 #~ msgid "Open"
 #~ msgstr "Oscail"
 
-#~ msgid "Preview"
-#~ msgstr "Réamhamharc"
-
-#~ msgid "Reload"
-#~ msgstr "Athluchtaigh"
-
 #~ msgid "Back"
 #~ msgstr "Siar"
 
 #~ msgid "Forward"
 #~ msgstr "Ar Aghaidh"
-
-#~ msgid "Up"
-#~ msgstr "Suas"
 
 #~ msgid "Disk"
 #~ msgstr "Diosca"

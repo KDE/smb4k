@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-23 00:46+0000\n"
+"POT-Creation-Date: 2023-08-25 00:46+0000\n"
 "PO-Revision-Date: 2010-09-24 13:02+0530\n"
 "Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
 "Language-Team: Maithili <bhashaghar@googlegroups.com>\n"
@@ -934,7 +934,7 @@ msgid "&Unmount"
 msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:981
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -950,7 +950,7 @@ msgstr ""
 msgid "Scan Wo&rkgroup"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:983
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -988,6 +988,33 @@ msgstr "वस्तु"
 #| msgid "Item"
 msgid "Item Up"
 msgstr "वस्तु"
+
+#: smb4k/smb4kpreviewdialog.cpp:29
+#, fuzzy, kde-format
+#| msgid "Mounting"
+msgid "Preview Dialog"
+msgstr "माउंट कएल जाए रहल अछि"
+
+#: smb4k/smb4kpreviewdialog.cpp:46
+#, kde-format
+msgid "Reload"
+msgstr "पुनः लोड करू"
+
+#: smb4k/smb4kpreviewdialog.cpp:48
+#, kde-format
+msgid "Abort"
+msgstr "छोड़ू"
+
+#: smb4k/smb4kpreviewdialog.cpp:56
+#, kde-format
+msgid "Up"
+msgstr "उप्पर"
+
+#: smb4k/smb4kpreviewdialog.cpp:119
+#, fuzzy, kde-format
+#| msgid "Preview"
+msgid "Preview of %1"
+msgstr "पूर्वावलोकन"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, fuzzy, kde-format
@@ -1323,9 +1350,6 @@ msgstr ""
 #~ msgid "Alternative Main Toolbar"
 #~ msgstr "मुख्य अओजार पट्टी"
 
-#~ msgid "Abort"
-#~ msgstr "छोड़ू"
-
 #~ msgid "&Clear"
 #~ msgstr "साफ करू (&C)"
 
@@ -1515,17 +1539,8 @@ msgstr ""
 #~ msgid "Open"
 #~ msgstr "खोलू"
 
-#~ msgid "Preview"
-#~ msgstr "पूर्वावलोकन"
-
-#~ msgid "Reload"
-#~ msgstr "पुनः लोड करू"
-
 #~ msgid "Forward"
 #~ msgstr "आगाँक तरफ"
-
-#~ msgid "Up"
-#~ msgstr "उप्पर"
 
 #~ msgid "Disk"
 #~ msgstr "डिस्क"
