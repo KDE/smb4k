@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1030,28 +1030,28 @@ msgstr "Elem"
 msgid "Item Up"
 msgstr "Elem"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
+#: smb4k/smb4kpreviewdialog.cpp:30
 #, fuzzy, kde-format
 #| msgid "Preview Dialog"
 msgid "Preview Dialog"
 msgstr "Párbeszédablak előnézete"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
+#: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
 msgstr "Újratöltés"
 
-#: smb4k/smb4kpreviewdialog.cpp:48
+#: smb4k/smb4kpreviewdialog.cpp:49
 #, kde-format
 msgid "Abort"
 msgstr "Megszakítás"
 
-#: smb4k/smb4kpreviewdialog.cpp:56
+#: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
 msgstr "Fel"
 
-#: smb4k/smb4kpreviewdialog.cpp:119
+#: smb4k/smb4kpreviewdialog.cpp:118
 #, fuzzy, kde-format
 #| msgid "Preview"
 msgid "Preview of %1"

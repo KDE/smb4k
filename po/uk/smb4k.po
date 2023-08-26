@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
-"PO-Revision-Date: 2023-08-22 07:57+0300\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"PO-Revision-Date: 2023-08-25 09:46+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -976,33 +976,30 @@ msgstr "На пункт нижче"
 msgid "Item Up"
 msgstr "На пункт вище"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Print Dialog"
+#: smb4k/smb4kpreviewdialog.cpp:30
+#, kde-format
 msgid "Preview Dialog"
-msgstr "Вікно друку"
+msgstr "Вікно попереднього перегляду"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
+#: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "Перезавантажити"
 
-#: smb4k/smb4kpreviewdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "&Abort"
+#: smb4k/smb4kpreviewdialog.cpp:49
+#, kde-format
 msgid "Abort"
-msgstr "П&ерервати"
+msgstr "Перервати"
 
-#: smb4k/smb4kpreviewdialog.cpp:56
+#: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "Вище"
 
-#: smb4k/smb4kpreviewdialog.cpp:119
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#: smb4k/smb4kpreviewdialog.cpp:118
+#, kde-format
 msgid "Preview of %1"
-msgstr "Перегля&д"
+msgstr "Попередній перегляд %1"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format

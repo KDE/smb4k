@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
 "PO-Revision-Date: 2013-03-30 16:49+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -974,28 +974,28 @@ msgstr "घटक"
 msgid "Item Up"
 msgstr "घटक"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
+#: smb4k/smb4kpreviewdialog.cpp:30
 #, fuzzy, kde-format
 #| msgid "Common Options"
 msgid "Preview Dialog"
 msgstr "सामान्य पर्याय"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
+#: smb4k/smb4kpreviewdialog.cpp:47
 #, fuzzy, kde-format
 msgid "Reload"
 msgstr "पुन्हा दाखल करा"
 
-#: smb4k/smb4kpreviewdialog.cpp:48
+#: smb4k/smb4kpreviewdialog.cpp:49
 #, kde-format
 msgid "Abort"
 msgstr ""
 
-#: smb4k/smb4kpreviewdialog.cpp:56
+#: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
 msgstr "वर"
 
-#: smb4k/smb4kpreviewdialog.cpp:119
+#: smb4k/smb4kpreviewdialog.cpp:118
 #, fuzzy, kde-format
 #| msgid "Preview"
 msgid "Preview of %1"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
 "PO-Revision-Date: 2023-04-10 11:49+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -988,28 +988,28 @@ msgstr "Element w dół"
 msgid "Item Up"
 msgstr "Element w górę"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
+#: smb4k/smb4kpreviewdialog.cpp:30
 #, fuzzy, kde-format
 #| msgid "Preview Dialog"
 msgid "Preview Dialog"
 msgstr "Okno podglądu"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
+#: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
 msgstr "Wczytaj ponownie"
 
-#: smb4k/smb4kpreviewdialog.cpp:48
+#: smb4k/smb4kpreviewdialog.cpp:49
 #, kde-format
 msgid "Abort"
 msgstr "Porzuć"
 
-#: smb4k/smb4kpreviewdialog.cpp:56
+#: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
 msgstr "Do góry"
 
-#: smb4k/smb4kpreviewdialog.cpp:119
+#: smb4k/smb4kpreviewdialog.cpp:118
 #, fuzzy, kde-format
 #| msgid "Preview"
 msgid "Preview of %1"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kde 49i410\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
 "PO-Revision-Date: 2015-02-24 23:16+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team: Bosnian\n"
@@ -1030,28 +1030,28 @@ msgstr "Predmet"
 msgid "Item Up"
 msgstr "Predmet"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
+#: smb4k/smb4kpreviewdialog.cpp:30
 #, fuzzy, kde-format
 #| msgid "&Open Mount Dialog"
 msgid "Preview Dialog"
 msgstr "&Otvori montirajući dijalog"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
+#: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
 msgstr ""
 
-#: smb4k/smb4kpreviewdialog.cpp:48
+#: smb4k/smb4kpreviewdialog.cpp:49
 #, kde-format
 msgid "Abort"
 msgstr "Prekid"
 
-#: smb4k/smb4kpreviewdialog.cpp:56
+#: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
 msgstr ""
 
-#: smb4k/smb4kpreviewdialog.cpp:119
+#: smb4k/smb4kpreviewdialog.cpp:118
 #, fuzzy, kde-format
 #| msgid "Pre&view"
 msgid "Preview of %1"

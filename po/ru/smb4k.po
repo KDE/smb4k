@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -990,27 +990,27 @@ msgstr "Переместить вниз"
 msgid "Item Up"
 msgstr "Переместить вверх"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
+#: smb4k/smb4kpreviewdialog.cpp:30
 #, fuzzy, kde-format
 msgid "Preview Dialog"
 msgstr "Предпросмотр"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
+#: smb4k/smb4kpreviewdialog.cpp:47
 #, fuzzy, kde-format
 msgid "Reload"
 msgstr "Готово"
 
-#: smb4k/smb4kpreviewdialog.cpp:48
+#: smb4k/smb4kpreviewdialog.cpp:49
 #, kde-format
 msgid "Abort"
 msgstr "Отменить"
 
-#: smb4k/smb4kpreviewdialog.cpp:56
+#: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
 msgstr "Вверх"
 
-#: smb4k/smb4kpreviewdialog.cpp:119
+#: smb4k/smb4kpreviewdialog.cpp:118
 #, fuzzy, kde-format
 #| msgid "Preview"
 msgid "Preview of %1"
