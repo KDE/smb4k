@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-25 00:46+0000\n"
-"PO-Revision-Date: 2023-08-02 12:41\n"
+"PO-Revision-Date: 2023-08-27 03:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -3296,54 +3296,3 @@ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
-
-#~ msgid "Preview of %1"
-#~ msgstr "%1 的预览"
-
-#~ msgid "Reload"
-#~ msgstr "重新加载"
-
-#~ msgid "Abort"
-#~ msgstr "中止"
-
-#~ msgid "Up"
-#~ msgstr "向上"
-
-#~ msgid "Print File"
-#~ msgstr "打印文件"
-
-#~ msgid "Information"
-#~ msgstr "信息"
-
-#~ msgid "Printer:"
-#~ msgstr "打印机："
-
-#~ msgid "IP Address:"
-#~ msgstr "IP 地址："
-
-#~ msgid "Domain:"
-#~ msgstr "域："
-
-#~ msgid "File and Settings"
-#~ msgstr "文件和设置"
-
-#~ msgid "File:"
-#~ msgstr "文件："
-
-#~ msgid ""
-#~ "This is the file you want to print on the remote printer. Currently only "
-#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
-#~ "images. If the file's mimetype is not supported, you need to convert it."
-#~ msgstr ""
-#~ "这是您想要在远程打印机上打印的文件。目前只支持少数几种 MIME 类型的文件，例"
-#~ "如 PDF、Postscript、纯文本和图像。如果文件的 MIME 类型不受支持，您需要在打"
-#~ "印前将它转换为上述支持的类型。"
-
-#~ msgid "Copies:"
-#~ msgstr "份数："
-
-#~ msgid "This is the number of copies you want to print."
-#~ msgstr "这是你想要打印的份数。"
-
-#~ msgid "Print"
-#~ msgstr "打印"

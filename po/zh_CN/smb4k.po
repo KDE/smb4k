@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-26 00:46+0000\n"
-"PO-Revision-Date: 2023-08-02 12:41\n"
+"PO-Revision-Date: 2023-08-27 03:41\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -554,15 +554,14 @@ msgid "Shares View"
 msgstr "共享视图"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "自定义设置"
+msgstr "自定义设置编辑器"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
 #, kde-format
 msgid "No network item was set."
-msgstr ""
+msgstr "没有设置网络项目。"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
@@ -637,16 +636,14 @@ msgid "Page 5: Wake-On-LAN"
 msgstr "第 1 页：局域网唤醒"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Page 4: Browsing"
+#, kde-format
 msgid "Page 2: Browsing"
-msgstr "第 4 页：挂载"
+msgstr "第 2 页：浏览"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, fuzzy, kde-format
-#| msgid "Page 5: Wake-On-LAN"
+#, kde-format
 msgid "Page 3: Wake-On-LAN"
-msgstr "第 1 页：局域网唤醒"
+msgstr "第 3 页：局域网唤醒"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -948,67 +945,59 @@ msgid "Item Up"
 msgstr "项目上移"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Mount Dialog"
+#, kde-format
 msgid "Preview Dialog"
-msgstr "挂载对话框"
+msgstr "预览对话框"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "重新加载"
 
 #: smb4k/smb4kpreviewdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "&Abort"
+#, kde-format
 msgid "Abort"
-msgstr "中止(&A)"
+msgstr "中止"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "向上"
 
 #: smb4k/smb4kpreviewdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#, kde-format
 msgid "Preview of %1"
-msgstr "预览(&V)"
+msgstr "%1 的预览"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Mount Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "挂载对话框"
+msgstr "打印对话框"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "打印文件(&P)"
+msgstr "打印文件。"
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "文件(&F)"
+msgstr "文件："
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "份数："
 
 #: smb4k/smb4kprintdialog.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print"
-msgstr "打印文件(&P)"
+msgstr "打印"
 
 #: smb4k/smb4kprintdialog.cpp:122
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "正在发送文件到打印机 %1..."
+msgstr "打印文件到打印机 <b>%1</b>。"
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
