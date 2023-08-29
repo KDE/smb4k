@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-29 02:26+0000\n"
-"PO-Revision-Date: 2023-03-10 02:48+0100\n"
+"PO-Revision-Date: 2023-08-28 06:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -351,7 +351,11 @@ msgid_plural ""
 "<qt>The following %1 entries are going to be removed from the additional "
 "options: %2. Please read the handbook for details.</qt>"
 msgstr[0] ""
+"<qt>დამატებითი პარამეტრებიდან წაიშლება შემდეგი ჩანაწერი: %2 დეტალებისთვის "
+"გადაიკითხეთ სახელმძღვანელო.</qt>"
 msgstr[1] ""
+"<qt>დამატებითი პარამეტრებიდან წაიშლება შემდეგი %1 ჩანაწერი: %2 დეტალებისთვის "
+"გადაიკითხეთ სახელმძღვანელო.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #, kde-format
@@ -378,6 +382,8 @@ msgstr " წმ"
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
+"აღწერეთ ჰოსტები, რომლებმაც მომხმარებლის პარამეტრების რედაქტორის გავლით უნდა "
+"გაიღვიძონ."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
 #, kde-format
@@ -523,6 +529,9 @@ msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
+"<qt>მთავარი ფანჯრის დახურვის შემდეგ Smb4k შესრულებას სისტემის კუთხეში, "
+"საათთან გააგრძელებს. აპლიკაციიდან გასასვლელად<br><i>ფაილის</i> "
+"მენიუდან<i>გასვლა</i> აირჩიეთ.</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:404
 #, kde-format
@@ -798,6 +807,8 @@ msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
 "any files here.</qt>"
 msgstr ""
+"<qt>გაზიარებულამდე <b>%1</b> აქტიური მიერთება არ არსებობს! აქ ფაილებს ვერ "
+"დაყრით.</qt>"
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
