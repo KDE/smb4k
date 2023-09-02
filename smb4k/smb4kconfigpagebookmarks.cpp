@@ -34,7 +34,6 @@ Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     QVBoxLayout *leftLayout = new QVBoxLayout();
 
     m_treeWidget = new QTreeWidget(this);
-    m_treeWidget->setObjectName(QStringLiteral("TreeWidget"));
     m_treeWidget->headerItem()->setHidden(true);
     m_treeWidget->setColumnCount(1);
     m_treeWidget->setRootIsDecorated(false);
@@ -51,7 +50,6 @@ Smb4KConfigPageBookmarks::Smb4KConfigPageBookmarks(QWidget *parent)
     connect(m_treeWidget, &QTreeWidget::itemDoubleClicked, this, &Smb4KConfigPageBookmarks::slotItemDoubleClicked);
 
     m_editorWidget = new QWidget(this);
-    m_editorWidget->setObjectName(QStringLiteral("EditorWidget"));
     m_editorWidget->setVisible(false);
 
     QGridLayout *editorWidgetLayout = new QGridLayout(m_editorWidget);
@@ -516,7 +514,7 @@ void Smb4KConfigPageBookmarks::slotItemSelectionChanged()
     if (m_editorWidget->isVisible()) {
         m_editorWidget->setVisible(false);
         m_labelEdit->clear();
-        m_categoryEdit->clear();
+        m_categoryEdit->lineEdit()->clear();
         m_userNameEdit->clear();
         m_workgroupEdit->clear();
         m_ipAddressEdit->clear();
@@ -560,7 +558,6 @@ void Smb4KConfigPageBookmarks::slotItemDoubleClicked(QTreeWidgetItem *item, int 
         m_ipAddressEdit->setText(hostIpAddress);
 
         if (!m_ipAddressEdit->completionObject()->items().contains(hostIpAddress)) {
-            qDebug() << "Add completion item";
             m_ipAddressEdit->completionObject()->addItem(hostIpAddress);
         }
 
@@ -628,10 +625,20 @@ void Smb4KConfigPageBookmarks::slotCategoryEdited()
 
             if (categoryItem != m_treeWidget->currentItem()->parent()) {
                 QTreeWidgetItem *itemToMove = m_treeWidget->currentItem();
-                QTreeWidgetItem *parentItem = m_treeWidget->currentItem()->parent();
+                QTreeWidgetItem *parentItem = nullptr;
+
+                if (!itemToMove->parent()) {
+                    parentItem = m_treeWidget->invisibleRootItem();
+                } else {
+                    parentItem = itemToMove->parent();
+                }
 
                 parentItem->removeChild(itemToMove);
                 categoryItem->addChild(itemToMove);
+            }
+
+            if (!m_categoryEdit->contains(m_categoryEdit->currentText())) {
+                m_categoryEdit->addItem(m_categoryEdit->currentText());
             }
 
             if (m_categoryEdit->completionMode() != KCompletion::CompletionNone) {
@@ -760,5 +767,9 @@ void Smb4KConfigPageBookmarks::sortItems()
     while (it.hasNext()) {
         it.next();
         m_treeWidget->addTopLevelItem(it.value());
+
+        if (it.value()->childCount() != 0) {
+            it.value()->setExpanded(true);
+        }
     }
 }
