@@ -556,10 +556,9 @@ msgid "Shares View"
 msgstr "Sdílí pohled"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Vlastní nastavení"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
 #, kde-format
@@ -585,10 +584,9 @@ msgstr "Vždy znovu připojit toto sdílení"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Připojování"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -596,16 +594,14 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Připojování"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Připojování"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
@@ -614,10 +610,9 @@ msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:386
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Wake-On-LAN Settings"
-msgstr "Wake-On-LAN"
+msgstr "Nastavení Wake-On-LAN"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:237
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:389
@@ -638,22 +633,19 @@ msgid "Send magic packet before mounting a share"
 msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Browsing"
-msgstr "Připojování"
+msgstr ""
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 3: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr ""
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -957,67 +949,59 @@ msgid "Item Up"
 msgstr "Položku nahoru"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Mount Dialog"
+#, kde-format
 msgid "Preview Dialog"
-msgstr "Připojovací dialog"
+msgstr ""
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "Obnovit"
 
 #: smb4k/smb4kpreviewdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "&Abort"
+#, kde-format
 msgid "Abort"
-msgstr "&Zrušit"
+msgstr "Přerušit"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "Nahoru"
 
 #: smb4k/smb4kpreviewdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#, kde-format
 msgid "Preview of %1"
-msgstr "Ná&hled"
+msgstr "Náhled %1"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Mount Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Připojovací dialog"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Vy&tisknout soubor"
+msgstr ""
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "&Soubor"
+msgstr "Soubor:"
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "Kopie:"
 
 #: smb4k/smb4kprintdialog.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print"
-msgstr "Vy&tisknout soubor"
+msgstr "Tisk"
 
 #: smb4k/smb4kprintdialog.cpp:122
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Odesílám soubor do tiskárny %1..."
+msgstr ""
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
@@ -1187,9 +1171,3 @@ msgstr "Souborový systém:"
 #, kde-format
 msgid "Size:"
 msgstr "Velikost:"
-
-#~ msgid "Page 1"
-#~ msgstr "Strana 1"
-
-#~ msgid "Page 2"
-#~ msgstr "Strana 2"

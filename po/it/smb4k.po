@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-26 00:46+0000\n"
-"PO-Revision-Date: 2023-08-19 17:07+0200\n"
+"PO-Revision-Date: 2023-08-27 22:35+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -966,10 +966,9 @@ msgid "Item Up"
 msgstr "Elemento su"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Print Dialog"
+#, kde-format
 msgid "Preview Dialog"
-msgstr "Finestra di stampa"
+msgstr "Finestra di anteprima"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
@@ -987,10 +986,9 @@ msgid "Up"
 msgstr "Su"
 
 #: smb4k/smb4kpreviewdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Preview"
+#, kde-format
 msgid "Preview of %1"
-msgstr "Anteprima"
+msgstr "Anteprima di %1"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format
@@ -998,10 +996,9 @@ msgid "Print Dialog"
 msgstr "Finestra di stampa"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Stampa il file"
+msgstr "Stampa un file."
 
 #: smb4k/smb4kprintdialog.cpp:60
 #, kde-format
@@ -1019,10 +1016,9 @@ msgid "Print"
 msgstr "Stampa"
 
 #: smb4k/smb4kprintdialog.cpp:122
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Invio del file alla stampante %1..."
+msgstr "Stampa un file sulla stampante <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
