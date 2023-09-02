@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
-"PO-Revision-Date: 2023-08-22 14:52+0300\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"PO-Revision-Date: 2023-08-25 14:06+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -961,33 +961,30 @@ msgstr "Öge Aşağı"
 msgid "Item Up"
 msgstr "Öge Yukarı"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Print Dialog"
+#: smb4k/smb4kpreviewdialog.cpp:30
+#, kde-format
 msgid "Preview Dialog"
-msgstr "Yazdırma İletişim Kutusu"
+msgstr "Önizleme İletişim Kutusu"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
+#: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "Yeniden Yükle"
 
-#: smb4k/smb4kpreviewdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "&Abort"
+#: smb4k/smb4kpreviewdialog.cpp:49
+#, kde-format
 msgid "Abort"
-msgstr "İ&ptal"
+msgstr "İptal Et"
 
-#: smb4k/smb4kpreviewdialog.cpp:56
+#: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "Yukarı"
 
-#: smb4k/smb4kpreviewdialog.cpp:119
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#: smb4k/smb4kpreviewdialog.cpp:118
+#, kde-format
 msgid "Preview of %1"
-msgstr "Ö&nizleme"
+msgstr "%1 Önizlemesi"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format

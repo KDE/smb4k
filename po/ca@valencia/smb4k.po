@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
-"PO-Revision-Date: 2023-08-18 11:57+0200\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"PO-Revision-Date: 2023-08-25 13:13+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -967,33 +967,30 @@ msgstr "Element avall"
 msgid "Item Up"
 msgstr "Element amunt"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Print Dialog"
+#: smb4k/smb4kpreviewdialog.cpp:30
+#, kde-format
 msgid "Preview Dialog"
-msgstr "Diàleg d'impressió"
+msgstr "Diàleg de vista prèvia"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
+#: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "Torna a carregar"
 
-#: smb4k/smb4kpreviewdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "&Abort"
+#: smb4k/smb4kpreviewdialog.cpp:49
+#, kde-format
 msgid "Abort"
-msgstr "&Interromp"
+msgstr "Interromp"
 
-#: smb4k/smb4kpreviewdialog.cpp:56
+#: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "Amunt"
 
-#: smb4k/smb4kpreviewdialog.cpp:119
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#: smb4k/smb4kpreviewdialog.cpp:118
+#, kde-format
 msgid "Preview of %1"
-msgstr "&Vista prèvia"
+msgstr "Vista prèvia de %1"
 
 #: smb4k/smb4kprintdialog.cpp:29
 #, kde-format
@@ -1001,21 +998,19 @@ msgid "Print Dialog"
 msgstr "Diàleg d'impressió"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Im&primix el fitxer"
+msgstr "Imprimix un fitxer."
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "Fi&txer"
+msgstr "Fitxer:"
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "Còpies:"
 
 #: smb4k/smb4kprintdialog.cpp:86
 #, kde-format
@@ -1023,10 +1018,9 @@ msgid "Print"
 msgstr "Imprimix"
 
 #: smb4k/smb4kprintdialog.cpp:122
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "S'està enviant un fitxer a la impressora %1..."
+msgstr "Imprimix un fitxer en la impressora <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format

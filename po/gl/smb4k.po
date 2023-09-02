@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-08-26 00:46+0000\n"
 "PO-Revision-Date: 2019-10-19 22:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -998,28 +998,31 @@ msgstr "Baixar o elemento"
 msgid "Item Up"
 msgstr "Subir o elemento"
 
-#: smb4k/smb4kpreviewdialog.cpp:29
+#: smb4k/smb4kpreviewdialog.cpp:30
 #, fuzzy, kde-format
 #| msgid "Preview Dialog"
 msgid "Preview Dialog"
 msgstr "Diálogo de previsualización"
 
-#: smb4k/smb4kpreviewdialog.cpp:46
-#, kde-format
+#: smb4k/smb4kpreviewdialog.cpp:47
+#, fuzzy, kde-format
+#| msgid "Reload"
 msgid "Reload"
 msgstr "Anovar"
 
-#: smb4k/smb4kpreviewdialog.cpp:48
-#, kde-format
+#: smb4k/smb4kpreviewdialog.cpp:49
+#, fuzzy, kde-format
+#| msgid "Abort"
 msgid "Abort"
 msgstr "Cancelar"
 
-#: smb4k/smb4kpreviewdialog.cpp:56
-#, kde-format
+#: smb4k/smb4kpreviewdialog.cpp:57
+#, fuzzy, kde-format
+#| msgid "Up"
 msgid "Up"
 msgstr "Subir"
 
-#: smb4k/smb4kpreviewdialog.cpp:119
+#: smb4k/smb4kpreviewdialog.cpp:118
 #, fuzzy, kde-format
 #| msgid "Preview"
 msgid "Preview of %1"
@@ -1038,12 +1041,14 @@ msgid "Print a file."
 msgstr "Imprimir un ficheiro"
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File:"
 msgid "File:"
 msgstr "Ficheiro:"
 
 #: smb4k/smb4kprintdialog.cpp:68
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Copies:"
 msgid "Copies:"
 msgstr "Copias:"
 
