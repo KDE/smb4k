@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-03 00:46+0000\n"
 "PO-Revision-Date: 2023-08-25 09:46+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -213,14 +213,14 @@ msgid "Save"
 msgstr "Зберегти"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
-#: smb4k/smb4kconfigpagebookmarks.cpp:127
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Змінити"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
-#: smb4k/smb4kconfigpagebookmarks.cpp:139
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, kde-format
 msgid "Remove"
@@ -254,45 +254,45 @@ msgstr ""
 "Встановити ім'я користувача і пароль для типового облікового запису для "
 "входу."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kconfigpagebookmarks.cpp:58 smb4k/smb4kmountdialog.cpp:116
 #, kde-format
 msgid "Label:"
 msgstr "Мітка:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kconfigpagebookmarks.cpp:66 smb4k/smb4kmountdialog.cpp:123
 #, kde-format
 msgid "Category:"
 msgstr "Категорія:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
 msgid "Username:"
 msgstr "Користувач:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:86 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
 #: smb4k/smb4ktooltip.cpp:216
 #, kde-format
 msgid "Workgroup:"
 msgstr "Робоча група:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:94 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
 #: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "Адреса IP:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:133
+#: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
 msgstr "Додати категорію"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:145
+#: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
 #, kde-format
 msgid "Clear List"
 msgstr "Спорожнити список"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:465
+#: smb4k/smb4kconfigpagebookmarks.cpp:463
 #, kde-format
 msgid "New Category"
 msgstr "Нова категорія"

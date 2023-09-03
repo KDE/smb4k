@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-03 00:46+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -214,14 +214,14 @@ msgid "Save"
 msgstr "Salvesta"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
-#: smb4k/smb4kconfigpagebookmarks.cpp:127
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Muuda"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
-#: smb4k/smb4kconfigpagebookmarks.cpp:139
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, kde-format
 msgid "Remove"
@@ -257,46 +257,46 @@ msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 msgid "Set the username and password for the default login."
 msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kconfigpagebookmarks.cpp:58 smb4k/smb4kmountdialog.cpp:116
 #, kde-format
 msgid "Label:"
 msgstr "Nimi:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kconfigpagebookmarks.cpp:66 smb4k/smb4kmountdialog.cpp:123
 #, kde-format
 msgid "Category:"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, fuzzy, kde-format
 #| msgid "User:"
 msgid "Username:"
 msgstr "Kasutaja:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:86 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
 #: smb4k/smb4ktooltip.cpp:216
 #, kde-format
 msgid "Workgroup:"
 msgstr "Töögrupp:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:94 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
 #: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-aadress:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:133
+#: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:145
+#: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
 #, kde-format
 msgid "Clear List"
 msgstr "Puhasta nimekiri"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:465
+#: smb4k/smb4kconfigpagebookmarks.cpp:463
 #, kde-format
 msgid "New Category"
 msgstr ""

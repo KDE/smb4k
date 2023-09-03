@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-03 00:46+0000\n"
 "PO-Revision-Date: 2023-08-25 23:44+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -207,14 +207,14 @@ msgid "Save"
 msgstr "저장"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
-#: smb4k/smb4kconfigpagebookmarks.cpp:127
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "편집"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
-#: smb4k/smb4kconfigpagebookmarks.cpp:139
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, kde-format
 msgid "Remove"
@@ -246,45 +246,45 @@ msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
 msgid "Set the username and password for the default login."
 msgstr "기본 로그인 사용자 이름과 암호를 설정하십시오."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kconfigpagebookmarks.cpp:58 smb4k/smb4kmountdialog.cpp:116
 #, kde-format
 msgid "Label:"
 msgstr "이름표:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kconfigpagebookmarks.cpp:66 smb4k/smb4kmountdialog.cpp:123
 #, kde-format
 msgid "Category:"
 msgstr "분류:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
 msgid "Username:"
 msgstr "사용자 이름:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:86 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
 #: smb4k/smb4ktooltip.cpp:216
 #, kde-format
 msgid "Workgroup:"
 msgstr "작업 그룹:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:94 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
 #: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "IP 주소:"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:133
+#: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
 msgstr "분류 추가"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:145
+#: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
 #, kde-format
 msgid "Clear List"
 msgstr "목록 비우기"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:465
+#: smb4k/smb4kconfigpagebookmarks.cpp:463
 #, kde-format
 msgid "New Category"
 msgstr "새 분류"

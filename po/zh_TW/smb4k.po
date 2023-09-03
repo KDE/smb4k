@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-26 00:46+0000\n"
+"POT-Creation-Date: 2023-09-03 00:46+0000\n"
 "PO-Revision-Date: 2019-04-09 23:19+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -213,14 +213,14 @@ msgid "Save"
 msgstr "共享："
 
 #: smb4k/smb4kconfigpageauthentication.cpp:116
-#: smb4k/smb4kconfigpagebookmarks.cpp:127
+#: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr ""
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
-#: smb4k/smb4kconfigpagebookmarks.cpp:139
+#: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, fuzzy, kde-format
 msgid "Remove"
@@ -252,45 +252,45 @@ msgstr ""
 msgid "Set the username and password for the default login."
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:60 smb4k/smb4kmountdialog.cpp:116
+#: smb4k/smb4kconfigpagebookmarks.cpp:58 smb4k/smb4kmountdialog.cpp:116
 #, kde-format
 msgid "Label:"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:68 smb4k/smb4kmountdialog.cpp:123
+#: smb4k/smb4kconfigpagebookmarks.cpp:66 smb4k/smb4kmountdialog.cpp:123
 #, kde-format
 msgid "Category:"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:77 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
 msgid "Username:"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:86 smb4k/smb4kmountdialog.cpp:81
+#: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
 #: smb4k/smb4ktooltip.cpp:216
 #, fuzzy, kde-format
 msgid "Workgroup:"
 msgstr "工作群組："
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:94 smb4k/smb4kmountdialog.cpp:74
+#: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
 #: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "IP Address:"
 msgstr "IP 位址："
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:133
+#: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:145
+#: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
 #, kde-format
 msgid "Clear List"
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:465
+#: smb4k/smb4kconfigpagebookmarks.cpp:463
 #, kde-format
 msgid "New Category"
 msgstr ""
