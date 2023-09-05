@@ -156,5 +156,5 @@ Smb4K is released under the terms of the [GNU General Public License (GPL), vers
 
 Latest Version
 --------------
-The latest stable version of Smb4K can always be downloaded from out [project's web page](https://sourceforge.net/projects/smb4k/files/latest/download).
+The latest stable version of Smb4K can always be downloaded from our [project's web page](https://sourceforge.net/projects/smb4k/files/latest/download).
 
