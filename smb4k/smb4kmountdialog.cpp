@@ -157,23 +157,27 @@ Smb4KMountDialog::Smb4KMountDialog(QWidget *parent)
 
     create();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "MountDialog");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), "MountDialog");
     QSize dialogSize;
 
-    if (group.exists()) {
-        KWindowConfig::restoreWindowSize(windowHandle(), group);
+    if (dialogGroup.exists()) {
+        KWindowConfig::restoreWindowSize(windowHandle(), dialogGroup);
         dialogSize = windowHandle()->size();
-
-        m_locationInput->completionObject()->setItems(group.readEntry("LocationCompletion", QStringList()));
-        m_ipAddressInput->completionObject()->setItems(group.readEntry("IPAddressCompletion", QStringList()));
-        m_workgroupInput->completionObject()->setItems(group.readEntry("WorkgroupCompletion", QStringList()));
-        m_bookmarkLabelInput->completionObject()->setItems(group.readEntry("LabelCompletion", QStringList()));
-        m_bookmarkCategoryInput->completionObject()->setItems(group.readEntry("CategoryCompletion", Smb4KBookmarkHandler::self()->categoryList()));
     } else {
         dialogSize = sizeHint();
     }
 
     resize(dialogSize); // workaround for QTBUG-40584
+
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+
+    if (completionGroup.exists()) {
+        m_locationInput->completionObject()->setItems(completionGroup.readEntry("LocationCompletion", QStringList()));
+        m_ipAddressInput->completionObject()->setItems(completionGroup.readEntry("IpAddressCompletion", QStringList()));
+        m_workgroupInput->completionObject()->setItems(completionGroup.readEntry("WorkgroupCompletion", QStringList()));
+        m_bookmarkLabelInput->completionObject()->setItems(completionGroup.readEntry("LabelCompletion", QStringList()));
+        m_bookmarkCategoryInput->completionObject()->setItems(completionGroup.readEntry("CategoryCompletion", Smb4KBookmarkHandler::self()->categoryList()));
+    }
 }
 
 Smb4KMountDialog::~Smb4KMountDialog()
@@ -335,13 +339,15 @@ void Smb4KMountDialog::slotAccepted()
         adjustDialogSize();
     }
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "MountDialog");
-    KWindowConfig::saveWindowSize(windowHandle(), group);
-    group.writeEntry("LocationCompletion", m_locationInput->completionObject()->items());
-    group.writeEntry("IPAddressCompletion", m_ipAddressInput->completionObject()->items());
-    group.writeEntry("WorkgroupCompletion", m_workgroupInput->completionObject()->items());
-    group.writeEntry("LabelCompletion", m_bookmarkLabelInput->completionObject()->items());
-    group.writeEntry("CategoryCompletion", m_bookmarkCategoryInput->completionObject()->items());
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), "MountDialog");
+    KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
+
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+    completionGroup.writeEntry("LocationCompletion", m_locationInput->completionObject()->items());
+    completionGroup.writeEntry("IpAddressCompletion", m_ipAddressInput->completionObject()->items());
+    completionGroup.writeEntry("WorkgroupCompletion", m_workgroupInput->completionObject()->items());
+    completionGroup.writeEntry("LabelCompletion", m_bookmarkLabelInput->completionObject()->items());
+    completionGroup.writeEntry("CategoryCompletion", m_bookmarkCategoryInput->completionObject()->items());
 
     accept();
 }

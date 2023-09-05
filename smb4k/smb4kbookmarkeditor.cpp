@@ -51,34 +51,30 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent)
 
     create();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
     QSize dialogSize;
 
-    if (group.exists()) {
-        KWindowConfig::restoreWindowSize(windowHandle(), group);
+    if (dialogGroup.exists()) {
+        KWindowConfig::restoreWindowSize(windowHandle(), dialogGroup);
         dialogSize = windowHandle()->size();
-
-        QMap<QString, QStringList> completionItems;
-        completionItems[QStringLiteral("CategoryCompletion")] = group.readEntry("CategoryCompletion", Smb4KBookmarkHandler::self()->categoryList());
-        completionItems[QStringLiteral("LabelCompletion")] = group.readEntry("LabelCompletion", QStringList());
-
-        // Since 3.3.0: For backward compatibility. Remove later.
-        if (group.hasKey("IPCompletion")) {
-            completionItems[QStringLiteral("IpAddressCompletion")] = group.readEntry("IPCompletion", QStringList());
-            group.deleteEntry("IPCompletion");
-        } else {
-            completionItems[QStringLiteral("IpAddressCompletion")] = group.readEntry("IpAddressCompletion", QStringList());
-        }
-
-        completionItems[QStringLiteral("LoginCompletion")] = group.readEntry("LoginCompletion", QStringList());
-        completionItems[QStringLiteral("WorkgroupCompletion")] = group.readEntry("WorkgroupCompletion", QStringList());
-
-        m_mainWidget->setCompletionItems(completionItems);
     } else {
         dialogSize = sizeHint();
     }
 
     resize(dialogSize); // workaround for QTBUG-40584
+
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+
+    if (completionGroup.exists()) {
+        QMap<QString, QStringList> completionItems;
+        completionItems[QStringLiteral("CategoryCompletion")] = completionGroup.readEntry("CategoryCompletion", Smb4KBookmarkHandler::self()->categoryList());
+        completionItems[QStringLiteral("LabelCompletion")] = completionGroup.readEntry("LabelCompletion", QStringList());
+        completionItems[QStringLiteral("IpAddressCompletion")] = completionGroup.readEntry("IpAddressCompletion", QStringList());
+        completionItems[QStringLiteral("LoginCompletion")] = completionGroup.readEntry("LoginCompletion", QStringList());
+        completionItems[QStringLiteral("WorkgroupCompletion")] = completionGroup.readEntry("WorkgroupCompletion", QStringList());
+
+        m_mainWidget->setCompletionItems(completionItems);
+    }
 }
 
 Smb4KBookmarkEditor::~Smb4KBookmarkEditor()
@@ -94,16 +90,17 @@ void Smb4KBookmarkEditor::slotAccepted()
 {
     m_mainWidget->saveBookmarks();
 
-    KConfigGroup group(Smb4KSettings::self()->config(), "BookmarkEditor");
-    KWindowConfig::saveWindowSize(windowHandle(), group);
+    KConfigGroup dialogGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
+    KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
     QMap<QString, QStringList> completionItems = m_mainWidget->getCompletionItems();
 
-    group.writeEntry("CategoryCompletion", completionItems[QStringLiteral("CategoryCompletion")]);
-    group.writeEntry("LabelCompletion", completionItems[QStringLiteral("LabelCompletion")]);
-    group.writeEntry("IpAddressCompletion", completionItems[QStringLiteral("IpAddressCompletion")]);
-    group.writeEntry("LoginCompletion", completionItems[QStringLiteral("LoginCompletion")]);
-    group.writeEntry("WorkgroupCompletion", completionItems[QStringLiteral("WorkgroupCompletion")]);
+    completionGroup.writeEntry("CategoryCompletion", completionItems[QStringLiteral("CategoryCompletion")]);
+    completionGroup.writeEntry("LabelCompletion", completionItems[QStringLiteral("LabelCompletion")]);
+    completionGroup.writeEntry("IpAddressCompletion", completionItems[QStringLiteral("IpAddressCompletion")]);
+    completionGroup.writeEntry("LoginCompletion", completionItems[QStringLiteral("LoginCompletion")]);
+    completionGroup.writeEntry("WorkgroupCompletion", completionItems[QStringLiteral("WorkgroupCompletion")]);
 
     accept();
 }
