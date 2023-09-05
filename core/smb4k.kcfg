@@ -33,7 +33,7 @@
         </entry>
         <entry name="ShowCustomBookmarkLabel" type="Bool">
             <label>Show custom bookmark label if available</label>
-            <whatsthis>Do not show the name of the share that is represented by the bookmark but the custom label that was defined in the bookmark editor.</whatsthis>
+            <whatsthis>Do not show the name of the bookmarked share, but the custom label that was defined in the bookmark editor.</whatsthis>
             <default>true</default>
         </entry>
         <entry name="StartMainWindowDocked" type="Bool">
