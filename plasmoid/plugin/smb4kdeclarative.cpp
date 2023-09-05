@@ -21,6 +21,7 @@
 #include "smb4k/smb4kcustomsettingseditor.h"
 #include "smb4k/smb4kpreviewdialog.h"
 #include "smb4k/smb4kprintdialog.h"
+#include "smb4kbookmarkdialog.h"
 #include "smb4kbookmarkeditor.h"
 #include "smb4kbookmarkobject.h"
 #include "smb4kmountdialog.h"
@@ -335,7 +336,11 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject *object)
         }
 
         if (!shares.isEmpty()) {
-            Smb4KBookmarkHandler::self()->addBookmarks(shares);
+            QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
+
+            if (bookmarkDialog->setBookmarks(shares)) {
+                bookmarkDialog->open();
+            }
         }
     }
 }

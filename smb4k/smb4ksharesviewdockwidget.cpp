@@ -1,19 +1,18 @@
 /*
     The network search widget dock widget
 
-    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 // application specific includes
 #include "smb4ksharesviewdockwidget.h"
-#include "core/smb4kbookmarkhandler.h"
-#include "core/smb4kcustomoptionsmanager.h"
 #include "core/smb4khardwareinterface.h"
 #include "core/smb4kmounter.h"
 #include "core/smb4ksettings.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
+#include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
 #include "smb4ksharesviewitem.h"
 #include "smb4ktooltip.h"
@@ -526,7 +525,11 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool checked)
         shares << item->shareItem();
     }
 
-    Smb4KBookmarkHandler::self()->addBookmarks(shares);
+    QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
+
+    if (bookmarkDialog->setBookmarks(shares)) {
+        bookmarkDialog->open();
+    }
 }
 
 void Smb4KSharesViewDockWidget::slotAddCustomSettingsTriggered(bool checked)

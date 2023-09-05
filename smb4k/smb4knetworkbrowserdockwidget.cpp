@@ -7,7 +7,6 @@
 
 // application specific includes
 #include "smb4knetworkbrowserdockwidget.h"
-#include "core/smb4kbookmarkhandler.h"
 #include "core/smb4kclient.h"
 #include "core/smb4khost.h"
 #include "core/smb4kmounter.h"
@@ -15,6 +14,7 @@
 #include "core/smb4kshare.h"
 #include "core/smb4kwalletmanager.h"
 #include "core/smb4kworkgroup.h"
+#include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
 #include "smb4kmountdialog.h"
 #include "smb4knetworkbrowseritem.h"
@@ -847,7 +847,11 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool checked)
     }
 
     if (!shares.isEmpty()) {
-        Smb4KBookmarkHandler::self()->addBookmarks(shares);
+        QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
+
+        if (bookmarkDialog->setBookmarks(shares)) {
+            bookmarkDialog->open();
+        }
     }
 }
 
