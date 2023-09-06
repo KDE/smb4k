@@ -1872,35 +1872,20 @@ void Smb4KMounter::slotAboutToQuit()
 void Smb4KMounter::slotOnlineStateChanged(bool online)
 {
     if (online) {
-        //
-        // (Re-)start the job
-        //
         slotStartJobs();
     } else {
-        //
-        // Abort all running jobs if the computer goes offline
-        //
         abort();
-
-        //
-        // Save the list of shares for later remount
-        //
         saveSharesForRemount();
 
-        //
-        // Mark all mounted shares as inaccessible and send the updated() signal
-        //
+        // FIXME: Do we need this at all?
         for (const SharePtr &share : mountedSharesList()) {
-            // Only mark the shares inaccessible and DO NOT emit
-            // the updated() signal here, because that would freeze
-            // the application.
             share->setInaccessible(true);
         }
 
-        //
-        // Now unmount all shares
-        //
         unmountAllShares(true);
+
+        d->remountAttempts = 0;
+        d->remountTimeout = 0;
     }
 }
 
