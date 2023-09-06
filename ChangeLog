@@ -1,3 +1,13 @@
+Smb4K 3.2.3 (2023-09-06):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
+
+- Fix bug in the copy constructors of the derived network item classes.
+- Fix the remounting of shares after the computer went online again / woke 
+  up from suspend/resume. Thank you to Hendrik Haddorp and Stefan v. Wachter
+  for reporting this issue.
+
 Smb4K 3.2.2 (2023-07-28):
 
 See the summary of changes below. For a full list of changes, please
