@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2020-01-12 12:19+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -65,10 +65,13 @@ msgstr "Amosar a etiqueta co marcador personalizado se estiver dispoñíbel"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Do not show the name of the share that is represented by the bookmark but "
+#| "the custom label that was defined in the bookmark editor."
 msgid ""
-"Do not show the name of the share that is represented by the bookmark but "
-"the custom label that was defined in the bookmark editor."
+"Do not show the name of the bookmarked share, but the custom label that was "
+"defined in the bookmark editor."
 msgstr ""
 "Non amosar o nome da compartición que está representada polo marcador, senón "
 "unha etiqueta personalizada definida no editor de marcadores."

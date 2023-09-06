@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2023-03-04 17:47+0100\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -74,10 +74,13 @@ msgstr "Mostrar la etiqueta del marcador personalizado si está disponible"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Do not show the name of the share that is represented by the bookmark but "
+#| "the custom label that was defined in the bookmark editor."
 msgid ""
-"Do not show the name of the share that is represented by the bookmark but "
-"the custom label that was defined in the bookmark editor."
+"Do not show the name of the bookmarked share, but the custom label that was "
+"defined in the bookmark editor."
 msgstr ""
 "No volver a mostrar el nombre del recurso compartido que está en el "
 "marcador, excepto si la etiqueta fue personalizada en el editor de "

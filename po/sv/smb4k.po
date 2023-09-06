@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-03 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2023-08-25 18:24+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -118,6 +118,36 @@ msgstr "In&ställningar"
 msgid "Main Toolbar"
 msgstr "Huvudverktygsrad"
 
+#: smb4k/smb4kbookmarkdialog.cpp:31
+#, fuzzy, kde-format
+#| msgid "Bookmark this share"
+msgid "Bookmark Shares"
+msgstr "Lägg till bokmärke för den delade katalogen"
+
+#: smb4k/smb4kbookmarkdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid ""
+#| "All listed shares will be bookmarked. To edit the label or group, click "
+#| "the respective bookmark entry."
+msgid ""
+"All listed shares will be bookmarked. To add a label or category, double-"
+"click the respective bookmark entry."
+msgstr ""
+"Alla listade delade resurser kommer att få bokmärken. För att redigera "
+"beteckningen eller gruppen, klicka på respektive bokmärkespost."
+
+#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:116
+#, kde-format
+msgid "Label:"
+msgstr "Beteckning:"
+
+#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:123
+#, kde-format
+msgid "Category:"
+msgstr "Kategori:"
+
 #: smb4k/smb4kbookmarkeditor.cpp:29
 #, kde-format
 msgid "Bookmark Editor"
@@ -135,7 +165,7 @@ msgstr "&Ordna bokmärken"
 
 #: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:154
-#: smb4k/smb4ksharesviewdockwidget.cpp:227
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Lägg till &bokmärke"
@@ -250,16 +280,6 @@ msgstr "Ange ett användarnamn och lösenord för plånbokspost %1."
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr "Ange ett användarnamn och lösenord för standardinloggning."
-
-#: smb4k/smb4kconfigpagebookmarks.cpp:58 smb4k/smb4kmountdialog.cpp:116
-#, kde-format
-msgid "Label:"
-msgstr "Beteckning:"
-
-#: smb4k/smb4kconfigpagebookmarks.cpp:66 smb4k/smb4kmountdialog.cpp:123
-#, kde-format
-msgid "Category:"
-msgstr "Kategori:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -843,19 +863,19 @@ msgid "&Search"
 msgstr "&Sök"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:160
-#: smb4k/smb4ksharesviewdockwidget.cpp:232
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:193
-#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Lägg till &egna inställningar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:171
-#: smb4k/smb4ksharesviewdockwidget.cpp:242
+#: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
@@ -906,13 +926,13 @@ msgid "&Mount"
 msgstr "&Montera"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:231
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "&Avmontera"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:989
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -928,8 +948,8 @@ msgstr "Läs av &datorn"
 msgid "Scan Wo&rkgroup"
 msgstr "Läs av arbets&grupp"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:991
+#: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -1019,7 +1039,7 @@ msgstr "Skriv ut"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Skriv ut en fil på skrivaren <b>%1</b>."
 
-#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "A&vmontera alla"
@@ -1049,57 +1069,57 @@ msgstr "Öppna i Konsole"
 msgid "Open with File Manager"
 msgstr "Öppna i filhanterare"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:154
+#: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
 msgid "View Modes"
 msgstr "Visningslägen"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:160
+#: smb4k/smb4ksharesviewdockwidget.cpp:159
 #, kde-format
 msgid "Icon View"
 msgstr "Ikonvy"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:166
+#: smb4k/smb4ksharesviewdockwidget.cpp:165
 #, kde-format
 msgid "List View"
 msgstr "Listvy"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:247
+#: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&ynkronisera"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:265
+#: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Öppna i Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:270
+#: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:272
+#: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Öppna i f&ilhanterare"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:277
+#: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:392
+#: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -3484,13 +3504,6 @@ msgstr "Storlek:"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Lägg till bokmärken"
-
-#~ msgid ""
-#~ "All listed shares will be bookmarked. To edit the label or group, click "
-#~ "the respective bookmark entry."
-#~ msgstr ""
-#~ "Alla listade delade resurser kommer att få bokmärken. För att redigera "
-#~ "beteckningen eller gruppen, klicka på respektive bokmärkespost."
 
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Rensa bokmärken"

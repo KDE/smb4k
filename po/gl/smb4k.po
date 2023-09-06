@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-03 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2019-10-19 22:40+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -118,6 +118,37 @@ msgstr "&Configuración"
 msgid "Main Toolbar"
 msgstr "Barra de ferramentas principal"
 
+#: smb4k/smb4kbookmarkdialog.cpp:31
+#, fuzzy, kde-format
+#| msgid "Bookmarks"
+msgid "Bookmark Shares"
+msgstr "Marcadores"
+
+#: smb4k/smb4kbookmarkdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid ""
+#| "<qt>All checked shares will be bookmarked. To add a descriptive label to "
+#| "a bookmark, double click the respective field.</qt>"
+msgid ""
+"All listed shares will be bookmarked. To add a label or category, double-"
+"click the respective bookmark entry."
+msgstr ""
+"<qt>Vanse marcar todas as comparticións seleccionadas. Para engadir unha "
+"etiqueta descritiva a un marcador, faga duplo clic no campo respectivo.</qt>"
+
+#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:116
+#, fuzzy, kde-format
+#| msgid "Label:"
+msgid "Label:"
+msgstr "Etiqueta:"
+
+#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:123
+#, kde-format
+msgid "Category:"
+msgstr ""
+
 #: smb4k/smb4kbookmarkeditor.cpp:29
 #, fuzzy, kde-format
 #| msgid "Bookmarks"
@@ -136,7 +167,7 @@ msgstr "&Modificar os marcadores"
 
 #: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:154
-#: smb4k/smb4ksharesviewdockwidget.cpp:227
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Engadir un &marcador"
@@ -257,17 +288,6 @@ msgstr ""
 msgid "Set the username and password for the default login."
 msgstr ""
 "<qt>Introduza un nome de usuario e un contrasinal para a máquina %1.</qt>"
-
-#: smb4k/smb4kconfigpagebookmarks.cpp:58 smb4k/smb4kmountdialog.cpp:116
-#, fuzzy, kde-format
-#| msgid "Label:"
-msgid "Label:"
-msgstr "Etiqueta:"
-
-#: smb4k/smb4kconfigpagebookmarks.cpp:66 smb4k/smb4kmountdialog.cpp:123
-#, kde-format
-msgid "Category:"
-msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, fuzzy, kde-format
@@ -876,20 +896,20 @@ msgid "&Search"
 msgstr "&Buscar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:160
-#: smb4k/smb4ksharesviewdockwidget.cpp:232
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:193
-#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
 msgid "Add &Custom Settings"
 msgstr "Op&cións personalizadas"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:171
-#: smb4k/smb4ksharesviewdockwidget.cpp:242
+#: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
@@ -940,13 +960,13 @@ msgid "&Mount"
 msgstr "&Montar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:231
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "&Desmontar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:989
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -962,8 +982,8 @@ msgstr "Examina&r o computador"
 msgid "Scan Wo&rkgroup"
 msgstr "Examinar o g&rupo de traballo"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:991
+#: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
 msgstr ""
@@ -1064,7 +1084,7 @@ msgstr "Impresora"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "A enviar o ficheiro á impresora %1…"
 
-#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "Desmo&ntalo todo"
@@ -1094,57 +1114,57 @@ msgstr "Abrir con Konsole"
 msgid "Open with File Manager"
 msgstr "Abrir co xestor de ficheiros"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:154
+#: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
 msgid "View Modes"
 msgstr "Modos de vista"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:160
+#: smb4k/smb4ksharesviewdockwidget.cpp:159
 #, kde-format
 msgid "Icon View"
 msgstr "Vista de iconas"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:166
+#: smb4k/smb4ksharesviewdockwidget.cpp:165
 #, kde-format
 msgid "List View"
 msgstr "Vista de lista"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:247
+#: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&incronizar"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:265
+#: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Abrir con Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:270
+#: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:272
+#: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Abrir co Xestor de Fic&heiros"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:277
+#: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:392
+#: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -3517,18 +3537,6 @@ msgstr "Tamaño"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Engadir marcadores"
-
-#, fuzzy
-#~| msgid ""
-#~| "<qt>All checked shares will be bookmarked. To add a descriptive label to "
-#~| "a bookmark, double click the respective field.</qt>"
-#~ msgid ""
-#~ "All listed shares will be bookmarked. To edit the label or group, click "
-#~ "the respective bookmark entry."
-#~ msgstr ""
-#~ "<qt>Vanse marcar todas as comparticións seleccionadas. Para engadir unha "
-#~ "etiqueta descritiva a un marcador, faga duplo clic no campo respectivo.</"
-#~ "qt>"
 
 #, fuzzy
 #~| msgid "Bookmarks"

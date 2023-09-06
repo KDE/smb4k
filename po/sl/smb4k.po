@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-03 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2023-08-25 08:29+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -114,6 +114,31 @@ msgstr "Nastavitve"
 msgid "Main Toolbar"
 msgstr "Glavna orodna letvica"
 
+#: smb4k/smb4kbookmarkdialog.cpp:31
+#, fuzzy, kde-format
+#| msgid "Bookmark this share"
+msgid "Bookmark Shares"
+msgstr "Zaznamuj ta skupni disk"
+
+#: smb4k/smb4kbookmarkdialog.cpp:48
+#, kde-format
+msgid ""
+"All listed shares will be bookmarked. To add a label or category, double-"
+"click the respective bookmark entry."
+msgstr ""
+
+#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:116
+#, kde-format
+msgid "Label:"
+msgstr "Oznaka:"
+
+#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:123
+#, kde-format
+msgid "Category:"
+msgstr "Kategorija:"
+
 #: smb4k/smb4kbookmarkeditor.cpp:29
 #, kde-format
 msgid "Bookmark Editor"
@@ -131,7 +156,7 @@ msgstr "Uredi zaznamke"
 
 #: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:154
-#: smb4k/smb4ksharesviewdockwidget.cpp:227
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Dodaj zaznamek"
@@ -246,16 +271,6 @@ msgstr "Nastavi uporabniško ime in geslo za dostop do listnice %1."
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr "Nastavi uporabniško ime in geslo za privzeto prijavo."
-
-#: smb4k/smb4kconfigpagebookmarks.cpp:58 smb4k/smb4kmountdialog.cpp:116
-#, kde-format
-msgid "Label:"
-msgstr "Oznaka:"
-
-#: smb4k/smb4kconfigpagebookmarks.cpp:66 smb4k/smb4kmountdialog.cpp:123
-#, kde-format
-msgid "Category:"
-msgstr "Kategorija:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, kde-format
@@ -847,19 +862,19 @@ msgid "&Search"
 msgstr "Išči"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:160
-#: smb4k/smb4ksharesviewdockwidget.cpp:232
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:193
-#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Dodaj nastavitve po meri"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:171
-#: smb4k/smb4ksharesviewdockwidget.cpp:242
+#: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Ctrl+C"
@@ -910,13 +925,13 @@ msgid "&Mount"
 msgstr "Priklopi"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:231
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "Odklopi"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:989
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -932,8 +947,8 @@ msgstr "Preišči računalnik"
 msgid "Scan Wo&rkgroup"
 msgstr "Preišči delovno skupino"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:991
+#: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
@@ -1023,7 +1038,7 @@ msgstr "Tiskaj"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Natisni datoteko na tiskalniku <b>%1</b>."
 
-#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "Odklopi vse"
@@ -1053,57 +1068,57 @@ msgstr "Odpri v konzoli"
 msgid "Open with File Manager"
 msgstr "Odpri z upravljalnikom datotek"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:154
+#: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
 msgid "View Modes"
 msgstr "Načini pogledov"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:160
+#: smb4k/smb4ksharesviewdockwidget.cpp:159
 #, kde-format
 msgid "Icon View"
 msgstr "Pogled ikon"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:166
+#: smb4k/smb4ksharesviewdockwidget.cpp:165
 #, kde-format
 msgid "List View"
 msgstr "Pogled seznama"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:247
+#: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "Uskladi"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Ctrl+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:265
+#: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Odpri s konzolo"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:270
+#: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Ctrl+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:272
+#: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Odpri z upravljalnikom datotek"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:277
+#: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:392
+#: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "

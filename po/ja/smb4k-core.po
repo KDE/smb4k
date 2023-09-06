@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -64,10 +64,13 @@ msgstr "利用可能な場合カスタムブックマークラベルを表示し
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Do not show the name of the share that is represented by the bookmark but "
+#| "the custom label that was defined in the bookmark editor."
 msgid ""
-"Do not show the name of the share that is represented by the bookmark but "
-"the custom label that was defined in the bookmark editor."
+"Do not show the name of the bookmarked share, but the custom label that was "
+"defined in the bookmark editor."
 msgstr ""
 "ブックマークエディタで定義されたカスタム・ラベル、ブックマークによって表され"
 "る共有名を表示しません"

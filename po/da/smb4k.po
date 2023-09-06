@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-03 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2017-11-06 15:20+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -113,6 +113,36 @@ msgstr "&Indstillinger"
 msgid "Main Toolbar"
 msgstr "Hovedværktøjslinje"
 
+#: smb4k/smb4kbookmarkdialog.cpp:31
+#, fuzzy, kde-format
+#| msgid "Bookmark this share"
+msgid "Bookmark Shares"
+msgstr "Sæt bogmærke ved ressourcen"
+
+#: smb4k/smb4kbookmarkdialog.cpp:48
+#, fuzzy, kde-format
+#| msgid ""
+#| "All listed shares will be bookmarked. To edit the label or group, click "
+#| "the respective bookmark entry."
+msgid ""
+"All listed shares will be bookmarked. To add a label or category, double-"
+"click the respective bookmark entry."
+msgstr ""
+"Der vil blive sat bogmærke ved alle oplistede ressourcer. Klik på den "
+"pågældende bogmærkeindgang for at redigere etiket eller gruppe."
+
+#: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
+#: smb4k/smb4kmountdialog.cpp:116
+#, kde-format
+msgid "Label:"
+msgstr "Etiket:"
+
+#: smb4k/smb4kbookmarkdialog.cpp:79 smb4k/smb4kconfigpagebookmarks.cpp:66
+#: smb4k/smb4kmountdialog.cpp:123
+#, kde-format
+msgid "Category:"
+msgstr ""
+
 #: smb4k/smb4kbookmarkeditor.cpp:29
 #, kde-format
 msgid "Bookmark Editor"
@@ -130,7 +160,7 @@ msgstr "&Redigér bogmærker"
 
 #: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:154
-#: smb4k/smb4ksharesviewdockwidget.cpp:227
+#: smb4k/smb4ksharesviewdockwidget.cpp:226
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Tilføj &bogmærke"
@@ -253,16 +283,6 @@ msgstr "<qt>Angiv et brugernavn og en adgangskode til værten <b>%1</b>.</qt>"
 #| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgid "Set the username and password for the default login."
 msgstr "<qt>Angiv et brugernavn og en adgangskode til værten <b>%1</b>.</qt>"
-
-#: smb4k/smb4kconfigpagebookmarks.cpp:58 smb4k/smb4kmountdialog.cpp:116
-#, kde-format
-msgid "Label:"
-msgstr "Etiket:"
-
-#: smb4k/smb4kconfigpagebookmarks.cpp:66 smb4k/smb4kmountdialog.cpp:123
-#, kde-format
-msgid "Category:"
-msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
 #, fuzzy, kde-format
@@ -893,20 +913,20 @@ msgid "&Search"
 msgstr "&Søg"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:160
-#: smb4k/smb4ksharesviewdockwidget.cpp:232
+#: smb4k/smb4ksharesviewdockwidget.cpp:231
 #, kde-format
 msgid "Ctrl+B"
 msgstr ""
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:193
-#: smb4k/smb4ksharesviewdockwidget.cpp:237
+#: smb4k/smb4ksharesviewdockwidget.cpp:236
 #, fuzzy, kde-format
 #| msgid "&Custom Options"
 msgid "Add &Custom Settings"
 msgstr "&Brugervalgte indstillinger"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:171
-#: smb4k/smb4ksharesviewdockwidget.cpp:242
+#: smb4k/smb4ksharesviewdockwidget.cpp:241
 #, kde-format
 msgid "Ctrl+C"
 msgstr ""
@@ -957,13 +977,13 @@ msgid "&Mount"
 msgstr "&Montér"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:231
-#: smb4k/smb4ksharesviewdockwidget.cpp:199
+#: smb4k/smb4ksharesviewdockwidget.cpp:198
 #, kde-format
 msgid "&Unmount"
 msgstr "&Afmontér"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:985
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:989
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -979,8 +999,8 @@ msgstr "Scan compute&r"
 msgid "Scan Wo&rkgroup"
 msgstr "Scan a&rbejdsgruppe"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:987
-#: smb4k/smb4ksharesviewdockwidget.cpp:204
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:991
+#: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
 msgstr ""
@@ -1079,7 +1099,7 @@ msgstr "Printer"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "Sender fil til printeren %1..."
 
-#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:209
+#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
 msgid "U&nmount All"
 msgstr "Afmo&ntér alle"
@@ -1109,57 +1129,57 @@ msgstr "Åbn med Konsole"
 msgid "Open with File Manager"
 msgstr "Åbn med filhåndtering"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:154
+#: smb4k/smb4ksharesviewdockwidget.cpp:153
 #, kde-format
 msgid "View Modes"
 msgstr "Visningstilstande"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:160
+#: smb4k/smb4ksharesviewdockwidget.cpp:159
 #, kde-format
 msgid "Icon View"
 msgstr "Ikonvisning"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:166
+#: smb4k/smb4ksharesviewdockwidget.cpp:165
 #, kde-format
 msgid "List View"
 msgstr "Listevisning"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:214
+#: smb4k/smb4ksharesviewdockwidget.cpp:213
 #, kde-format
 msgid "Ctrl+N"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:247
+#: smb4k/smb4ksharesviewdockwidget.cpp:246
 #, kde-format
 msgid "S&ynchronize"
 msgstr "S&ynkronisér"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:252
+#: smb4k/smb4ksharesviewdockwidget.cpp:251
 #, kde-format
 msgid "Ctrl+Y"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:265
+#: smb4k/smb4ksharesviewdockwidget.cpp:264
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "Åbn med Konso&le"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:270
+#: smb4k/smb4ksharesviewdockwidget.cpp:269
 #, kde-format
 msgid "Ctrl+L"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:272
+#: smb4k/smb4ksharesviewdockwidget.cpp:271
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "Åbn med f&ilhåndtering"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:277
+#: smb4k/smb4ksharesviewdockwidget.cpp:276
 #, kde-format
 msgid "Ctrl+I"
 msgstr ""
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:392
+#: smb4k/smb4ksharesviewdockwidget.cpp:391
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -3610,13 +3630,6 @@ msgstr "Størrelse"
 
 #~ msgid "Add Bookmarks"
 #~ msgstr "Tilføj bogmærker"
-
-#~ msgid ""
-#~ "All listed shares will be bookmarked. To edit the label or group, click "
-#~ "the respective bookmark entry."
-#~ msgstr ""
-#~ "Der vil blive sat bogmærke ved alle oplistede ressourcer. Klik på den "
-#~ "pågældende bogmærkeindgang for at redigere etiket eller gruppe."
 
 #~ msgid "Clear Bookmarks"
 #~ msgstr "Ryd bogmærker"

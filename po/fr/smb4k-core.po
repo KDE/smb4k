@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2023-03-04 19:31+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -81,10 +81,13 @@ msgstr "Afficher l'étiquette de signet personnalisée, si disponible"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Do not show the name of the share that is represented by the bookmark but "
+#| "the custom label that was defined in the bookmark editor."
 msgid ""
-"Do not show the name of the share that is represented by the bookmark but "
-"the custom label that was defined in the bookmark editor."
+"Do not show the name of the bookmarked share, but the custom label that was "
+"defined in the bookmark editor."
 msgstr ""
 "N'affiche pas le nom du partage représenté par le signet mais l'étiquette "
 "personnalisée définie dans l'éditeur de signets."

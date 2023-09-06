@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-25 00:46+0000\n"
+"POT-Creation-Date: 2023-09-06 00:46+0000\n"
 "PO-Revision-Date: 2023-06-07 09:42-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -70,10 +70,13 @@ msgstr "Mostrar o rótulo do favorito se disponível"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Do not show the name of the share that is represented by the bookmark but "
+#| "the custom label that was defined in the bookmark editor."
 msgid ""
-"Do not show the name of the share that is represented by the bookmark but "
-"the custom label that was defined in the bookmark editor."
+"Do not show the name of the bookmarked share, but the custom label that was "
+"defined in the bookmark editor."
 msgstr ""
 "Não mostrar o nome do compartilhamento que é representado pelo favorito, mas "
 "sim o rótulo personalizado que foi definido no editor de favoritos."
