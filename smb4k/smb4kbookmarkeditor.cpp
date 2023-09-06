@@ -94,7 +94,7 @@ void Smb4KBookmarkEditor::slotAccepted()
     KWindowConfig::saveWindowSize(windowHandle(), dialogGroup);
 
     KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
-    QMap<QString, QStringList> completionItems = m_mainWidget->getCompletionItems();
+    QMap<QString, QStringList> completionItems = m_mainWidget->completionItems();
 
     completionGroup.writeEntry("CategoryCompletion", completionItems[QStringLiteral("CategoryCompletion")]);
     completionGroup.writeEntry("LabelCompletion", completionItems[QStringLiteral("LabelCompletion")]);

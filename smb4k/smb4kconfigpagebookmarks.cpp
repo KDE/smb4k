@@ -262,7 +262,7 @@ void Smb4KConfigPageBookmarks::setCompletionItems(const QMap<QString, QStringLis
     m_workgroupEdit->completionObject()->setItems(items[QStringLiteral("WorkgroupCompletion")]);
 }
 
-QMap<QString, QStringList> Smb4KConfigPageBookmarks::getCompletionItems() const
+QMap<QString, QStringList> Smb4KConfigPageBookmarks::completionItems() const
 {
     QMap<QString, QStringList> items;
 

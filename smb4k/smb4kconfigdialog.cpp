@@ -210,7 +210,7 @@ void Smb4KConfigDialog::updateSettings()
 
     if (bookmarksPage) {
         bookmarksPage->saveBookmarks();
-        QMap<QString, QStringList> completionItems = bookmarksPage->getCompletionItems();
+        QMap<QString, QStringList> completionItems = bookmarksPage->completionItems();
 
         KConfigGroup bookmarkGroup(Smb4KSettings::self()->config(), "BookmarkEditor");
 

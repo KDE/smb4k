@@ -59,7 +59,7 @@ public:
     /**
      * Get the completion items from the editor widgets on demand
      */
-    QMap<QString, QStringList> getCompletionItems() const;
+    QMap<QString, QStringList> completionItems() const;
 
 protected:
     /**
