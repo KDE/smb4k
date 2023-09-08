@@ -221,7 +221,7 @@ void Smb4KNetworkSearchToolBar::setSearchResults(const QList<SharePtr> &list)
     clearAction->setEnabled(!m_searchResults.isEmpty());
 }
 
-void Smb4KNetworkSearchToolBar::setCompletionStrings(const QStringList &strings)
+void Smb4KNetworkSearchToolBar::setCompletionItems(const QStringList &items)
 {
     //
     // Get the input combo box
@@ -231,10 +231,10 @@ void Smb4KNetworkSearchToolBar::setCompletionStrings(const QStringList &strings)
     //
     // Set the completion strings
     //
-    comboBox->completionObject()->setItems(strings);
+    comboBox->completionObject()->setItems(items);
 }
 
-QStringList Smb4KNetworkSearchToolBar::completionStrings() const
+QStringList Smb4KNetworkSearchToolBar::completionItems() const
 {
     //
     // Get the input combo box

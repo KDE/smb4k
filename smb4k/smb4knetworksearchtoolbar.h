@@ -56,19 +56,19 @@ public:
     void clearSearch();
 
     /**
-     * Set the completion strings. This function should be invoked before the
+     * Set the completion items. This function should be invoked before the
      * search toolbar is shown.
      *
-     * @param strings         The list of completion strings
+     * @param items         The list of completion strings
      */
-    void setCompletionStrings(const QStringList &strings);
+    void setCompletionItems(const QStringList &items);
 
     /**
      * Get the completion strings.
      *
      * @returns the completion strings
      */
-    QStringList completionStrings() const;
+    QStringList completionItems() const;
 
 Q_SIGNALS:
     /**
