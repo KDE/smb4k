@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-08-26 06:09+0200\n"
+"PO-Revision-Date: 2023-09-07 03:47+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -117,10 +117,9 @@ msgid "Main Toolbar"
 msgstr "ხელსაწყოთა მთავარი ზოლი"
 
 #: smb4k/smb4kbookmarkdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Bookmark this share"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "ამ გაზიარებულის სანიშნებში ჩამატება"
+msgstr "რჩეული გაზიარებულების ჩანიშვნა"
 
 #: smb4k/smb4kbookmarkdialog.cpp:48
 #, kde-format
@@ -128,6 +127,8 @@ msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
+"ყველა ჩამოთვლილის ზიარი სანიშნეებში დამატება. ჭდის ან კატეგორიის "
+"დასამატებლად შესაბამის რჩეულს ორჯერ დააწკაპუნეთ."
 
 #: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:116

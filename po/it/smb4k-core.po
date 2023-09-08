@@ -1,14 +1,14 @@
 # translation of smb4k.po to Italian
+# SPDX-FileCopyrightText: 2018, 2019, 2020, 2021, 2022, 2023 Paolo Zamponi <feus73@gmail.com>
 # Isidoro Russo <risidoro@despammed.com>, 2004.
 # Innocenzo Ventre <innocenzo.ventre@gmail.com>, 2012.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2012, 2014.
-# Paolo Zamponi <feus73@gmail.com>, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-04-16 07:44+0200\n"
+"PO-Revision-Date: 2023-09-06 21:55+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -63,17 +63,13 @@ msgstr "Mostra etichetta personalizzata del segnalibro, se disponibile"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"Non mostrare il nome della condivisione rappresentata dal segnalibro, ma "
-"l'etichetta personalizzata precedentemente definita nell'editor dei "
-"segnalibri."
+"Non mostrare il nome della condivisione nei segnalibri, ma l'etichetta "
+"personalizzata precedentemente definita nell'editor dei segnalibri."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40
