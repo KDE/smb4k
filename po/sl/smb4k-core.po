@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-07-30 07:47+0200\n"
+"PO-Revision-Date: 2023-09-06 07:18+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -64,15 +64,12 @@ msgstr "Pokaži oznako zaznamkov po meri, če je na voljo"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"Ne prikaži imena dela diska, ki ga predstavlja zaznamek, ampak oznako po "
+"Ne prikaži imena skupnega diska, ki ga predstavlja zaznamek, ampak oznako po "
 "meri, kot je bila določena v urejevalniku zaznamkov."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)

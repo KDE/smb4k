@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-03-04 08:32+0200\n"
+"PO-Revision-Date: 2023-09-06 17:33+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -66,16 +66,13 @@ msgstr "Показувати нетипову мітку закладки, як�
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"Не показувати назву спільного ресурсу, що визначається закладкою. Замість "
-"неї показувати нетипову мітку, яку було визначено у редакторі закладок."
+"Не показувати назву спільного ресурсу з закладкою. Замість неї показувати "
+"нетипову мітку, яку було визначено у редакторі закладок."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40

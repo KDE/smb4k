@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-08-25 09:46+0300\n"
+"PO-Revision-Date: 2023-09-06 17:35+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -120,10 +120,9 @@ msgid "Main Toolbar"
 msgstr "Головна панель"
 
 #: smb4k/smb4kbookmarkdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Bookmark this share"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Створити закладку для цього ресурсу"
+msgstr "Створення закладки для спільних ресурсів"
 
 #: smb4k/smb4kbookmarkdialog.cpp:48
 #, kde-format
@@ -131,6 +130,8 @@ msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
+"Програма створить закладки для всіх спільних ресурсів зі списку. Щоб додати "
+"мітку або категорію, двічі клацніть на відповідному пункті закладки."
 
 #: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:116

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-08-26 04:07+0100\n"
+"PO-Revision-Date: 2023-09-06 21:19+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -115,10 +115,9 @@ msgid "Main Toolbar"
 msgstr "Ĉefa ilobreto"
 
 #: smb4k/smb4kbookmarkdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Bookmark this share"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Legosigni ĉi kundividaĵon"
+msgstr "Legosigni Komunaĵojn"
 
 #: smb4k/smb4kbookmarkdialog.cpp:48
 #, kde-format
@@ -126,6 +125,8 @@ msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
+"Ĉiuj listigitaj komunaĵoj estos legosignitaj. Por aldoni etikedon aŭ "
+"kategorion, duoble alklaku la respektivan legosignan eniron."
 
 #: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:116
