@@ -266,31 +266,31 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
     m_networkBrowser->setColumnHidden(Smb4KNetworkBrowser::Type, !Smb4KSettings::showType());
     m_networkBrowser->setColumnHidden(Smb4KNetworkBrowser::Comment, !Smb4KSettings::showComment());
 
-    //
-    // Load and apply the positions of the columns
-    //
     KConfigGroup configGroup(Smb4KSettings::self()->config(), "NetworkBrowserPart");
 
-    QMap<int, int> map;
-    map.insert(configGroup.readEntry("ColumnPositionNetwork", (int)Smb4KNetworkBrowser::Network), Smb4KNetworkBrowser::Network);
-    map.insert(configGroup.readEntry("ColumnPositionType", (int)Smb4KNetworkBrowser::Type), Smb4KNetworkBrowser::Type);
-    map.insert(configGroup.readEntry("ColumnPositionIP", (int)Smb4KNetworkBrowser::IP), Smb4KNetworkBrowser::IP);
-    map.insert(configGroup.readEntry("ColumnPositionComment", (int)Smb4KNetworkBrowser::Comment), Smb4KNetworkBrowser::Comment);
+    if (configGroup.exists()) {
+        QMap<int, int> map;
+        map.insert(configGroup.readEntry("ColumnPositionNetwork", (int)Smb4KNetworkBrowser::Network), Smb4KNetworkBrowser::Network);
+        map.insert(configGroup.readEntry("ColumnPositionType", (int)Smb4KNetworkBrowser::Type), Smb4KNetworkBrowser::Type);
+        map.insert(configGroup.readEntry("ColumnPositionIP", (int)Smb4KNetworkBrowser::IP), Smb4KNetworkBrowser::IP);
+        map.insert(configGroup.readEntry("ColumnPositionComment", (int)Smb4KNetworkBrowser::Comment), Smb4KNetworkBrowser::Comment);
 
-    QMap<int, int>::const_iterator it = map.constBegin();
+        QMap<int, int>::const_iterator it = map.constBegin();
 
-    while (it != map.constEnd()) {
-        if (it.key() != m_networkBrowser->header()->visualIndex(it.value())) {
-            m_networkBrowser->header()->moveSection(m_networkBrowser->header()->visualIndex(it.value()), it.key());
+        while (it != map.constEnd()) {
+            if (it.key() != m_networkBrowser->header()->visualIndex(it.value())) {
+                m_networkBrowser->header()->moveSection(m_networkBrowser->header()->visualIndex(it.value()), it.key());
+            }
+
+            ++it;
         }
-
-        ++it;
     }
 
-    //
-    // Apply the completion strings to the search toolbar
-    //
-    m_searchToolBar->setCompletionStrings(configGroup.readEntry("SearchItemCompletion", QStringList()));
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+
+    if (completionGroup.exists()) {
+        m_searchToolBar->setCompletionItems(completionGroup.readEntry("SearchItemCompletion", QStringList()));
+    }
 
     //
     // Does anything has to be changed with the marked shares?
@@ -310,21 +310,16 @@ void Smb4KNetworkBrowserDockWidget::loadSettings()
 
 void Smb4KNetworkBrowserDockWidget::saveSettings()
 {
-    //
-    // Save the position of the columns
-    //
     KConfigGroup configGroup(Smb4KSettings::self()->config(), "NetworkBrowserPart");
     configGroup.writeEntry("ColumnPositionNetwork", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::Network));
     configGroup.writeEntry("ColumnPositionType", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::Type));
     configGroup.writeEntry("ColumnPositionIP", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::IP));
     configGroup.writeEntry("ColumnPositionComment", m_networkBrowser->header()->visualIndex(Smb4KNetworkBrowser::Comment));
-
-    //
-    // Save the completion strings
-    //
-    configGroup.writeEntry("SearchItemCompletion", m_searchToolBar->completionStrings());
-
     configGroup.sync();
+
+    KConfigGroup completionGroup(Smb4KSettings::self()->config(), "CompletionItems");
+    completionGroup.writeEntry("SearchItemCompletion", m_searchToolBar->completionItems());
+    completionGroup.sync();
 }
 
 KActionCollection *Smb4KNetworkBrowserDockWidget::actionCollection()
