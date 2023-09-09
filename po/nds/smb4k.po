@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-09-09 00:46+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -884,8 +884,8 @@ msgid "Comment"
 msgstr "Kommentar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:122
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:410
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:473
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:405
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:468
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "&Nettwark dörkieken"
@@ -971,23 +971,23 @@ msgid "&Unmount"
 msgstr "&Afhangen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:989
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:424
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:419
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:430
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Reekner dö&rkieken"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:460
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:455
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Arbeidkoppel dö&rkieken"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:991
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"

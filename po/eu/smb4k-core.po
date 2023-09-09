@@ -1,7 +1,7 @@
 # Translation for smb4k-core.po to Euskara/Basque (eu).
 # Copyright (C) 2020-2023 This file is copyright:
 # This file is distributed under the same license as the smb4k package.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2021, 2022, 2023.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-07-30 09:28+0200\n"
+"PO-Revision-Date: 2023-09-09 00:33+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -64,16 +64,13 @@ msgstr "Erakutsi norberak finkatutako laster-marka etiketa, erabilgarri badago"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"Ez erakutsi laster-markak ordezkatzen duen partekatzearen izena, laster-"
-"marka editorean definitu zen etiketa baizik."
+"Ez erakutsi laster-marka duen partekatzearen izena, baizik eta laster-marka "
+"editorean neurrira definitu zen etiketa."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40

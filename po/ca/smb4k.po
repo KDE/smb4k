@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-09-09 00:46+0000\n"
 "PO-Revision-Date: 2023-09-06 11:54+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -847,8 +847,8 @@ msgid "Comment"
 msgstr "Comentari"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:122
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:410
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:473
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:405
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:468
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Escaneja la xa&rxa"
@@ -933,23 +933,23 @@ msgid "&Unmount"
 msgstr "Desm&unta"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:989
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:424
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:419
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:430
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "Escaneja els o&rdinadors"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:460
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:455
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "Escaneja els g&rups de treball"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:991
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"

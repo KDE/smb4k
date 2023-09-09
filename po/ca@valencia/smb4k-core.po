@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-03-04 11:35+0100\n"
+"PO-Revision-Date: 2023-09-06 11:48+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -68,17 +68,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"No mostra el nom de la compartició que està representada per l'adreça "
-"d'interés sinó l'etiqueta personalitzada que s'ha definit en l'editor "
-"d'adreces d'interés."
+"No mostra el nom de la compartició de l'adreça d'interés, sinó l'etiqueta "
+"personalitzada que s'ha definit en l'editor d'adreces d'interés."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40
@@ -308,7 +304,7 @@ msgid ""
 msgstr ""
 "Utilitza «DNS Service Discovery» (DNS-SD) per a explorar la xarxa local i "
 "descobrir els servidors que proporcionen recursos SMB compartits. Els "
-"dominis descoberts corresponen als dominis DNS locals (p. ex. anomenats "
+"dominis descoberts corresponen als dominis DNS locals (p. ex., anomenats "
 "LOCAL) i probablement no als definits al veïnatge de la xarxa. Tanmateix, "
 "açò no influirà l'exploració. En utilitzar esta opció, no caldrà forçar la "
 "biblioteca del client Samba a què faça servir el protocol SMB versió 1.0 per "
@@ -596,7 +592,7 @@ msgid ""
 "Musik$ or IPC$."
 msgstr ""
 "Es detectaran les comparticions ocultes. Les comparticions ocultes acaben "
-"amb un signe $, p. ex. Musik$ o IPC$."
+"amb un signe $, p. ex., Musik$ o IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:232
@@ -1966,7 +1962,7 @@ msgstr ""
 "Fa que Smb4K utilitze els perfils. Açò permet definir diferents adreces "
 "d'interés i opcions personalitzades per a cada perfil. És especialment útil "
 "si esteu utilitzant un ordinador portàtil en diferents veïnatges de xarxa, "
-"p. ex. a casa i a la faena."
+"p. ex., a casa i a la faena."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
 #: smb4k.kcfg:682
@@ -3580,237 +3576,3 @@ msgid ""
 msgstr ""
 "<qt>Introduïu un nom d'usuari i una contrasenya per a la compartició <b>%1</"
 "b>.</qt>"
-
-#~ msgid "Preview of %1"
-#~ msgstr "Vista prèvia de %1"
-
-#~ msgid "Reload"
-#~ msgstr "Actualitza"
-
-#~ msgid "Abort"
-#~ msgstr "Interromp"
-
-#~ msgid "Up"
-#~ msgstr "Amunt"
-
-#~ msgid "Print File"
-#~ msgstr "Imprimix el fitxer"
-
-#~ msgid "Information"
-#~ msgstr "Informació"
-
-#~ msgid "Printer:"
-#~ msgstr "Impressora:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Adreça IP:"
-
-#~ msgid "Domain:"
-#~ msgstr "Domini:"
-
-#~ msgid "File and Settings"
-#~ msgstr "Fitxer i configuració"
-
-#~ msgid "File:"
-#~ msgstr "Fitxer:"
-
-#~ msgid ""
-#~ "This is the file you want to print on the remote printer. Currently only "
-#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
-#~ "images. If the file's mimetype is not supported, you need to convert it."
-#~ msgstr ""
-#~ "Este és el fitxer que voleu imprimir en la impressora remota. Actualment "
-#~ "només s'accepten alguns tipus MIME com PDF, Postscript, text, i imatges. "
-#~ "Si el tipus MIME del fitxer no està admés, caldrà que el convertiu."
-
-#~ msgid "Copies:"
-#~ msgstr "Còpies:"
-
-#~ msgid "This is the number of copies you want to print."
-#~ msgstr "Este és el nombre de còpies que voleu imprimir."
-
-#~ msgid "Print"
-#~ msgstr "Imprimix"
-
-#~ msgid "Custom Settings"
-#~ msgstr "Configuració personalitzada"
-
-#~ msgid ""
-#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
-#~ "provides.</p>"
-#~ msgstr ""
-#~ "<p>Definix la configuració personalitzada per al servidor <b>%1</b> i "
-#~ "totes les comparticions que proporciona.</p>"
-
-#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-#~ msgstr ""
-#~ "<p>Definix la configuració personalitzada per a la compartició <b>%1</b>."
-#~ "</p>"
-
-#~ msgid "Common Options"
-#~ msgstr "Opcions normals"
-
-#~ msgid "Always remount this share"
-#~ msgstr "Torna a muntar sempre esta compartició"
-
-#~ msgid "CIFS Unix Extensions Support"
-#~ msgstr "Admet les ampliacions Unix de CIFS"
-
-#~ msgid "This server supports the CIFS Unix extensions"
-#~ msgstr "Este servidor admet les ampliacions Unix de CIFS"
-
-#~ msgid "Common Mount Settings"
-#~ msgstr "Configuració normal de muntatge"
-
-#~ msgid "Advanced Options"
-#~ msgstr "Opcions avançades"
-
-#~ msgid "Advanced Mount Settings"
-#~ msgstr "Configuració avançada del muntatge"
-
-#~ msgid "Authentication"
-#~ msgstr "Autenticació"
-
-#~ msgid "Browse Settings"
-#~ msgstr "Configureu la navegació"
-
-#~ msgid "MAC Address"
-#~ msgstr "Adreça MAC"
-
-#~ msgid "MAC Address:"
-#~ msgstr "Adreça MAC:"
-
-#~ msgid "Actions"
-#~ msgstr "Accions"
-
-#~ msgid "Send magic packet before scanning the network neighborhood"
-#~ msgstr "Envia un paquet màgic abans d'escanejar el veïnatge de xarxa"
-
-#~ msgid "Send magic packet before mounting a share"
-#~ msgstr "Envia un paquet màgic abans de muntar una compartició"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Configureu l'activació per LAN (Wake-On-LAN)"
-
-#~ msgid "Mount Settings"
-#~ msgstr "Configuració de muntatge"
-
-#~ msgid "Samba"
-#~ msgstr "Samba"
-
-#~ msgid "Wake-On-LAN"
-#~ msgstr "Activació per LAN (Wake-On-LAN)"
-
-#~ msgid "Add Bookmarks"
-#~ msgstr "Afig a les adreces d'interés"
-
-#~ msgid ""
-#~ "All listed shares will be bookmarked. To edit the label or group, click "
-#~ "the respective bookmark entry."
-#~ msgstr ""
-#~ "Totes les comparticions llistades s'afegiran a les adreces d'interés. Per "
-#~ "a editar l'etiqueta o grup, cliqueu l'entrada d'adreça d'interés "
-#~ "respectiva."
-
-#~ msgid "Label:"
-#~ msgstr "Etiqueta:"
-
-#~ msgid "Category:"
-#~ msgstr "Categoria:"
-
-#~ msgid "Mount Share"
-#~ msgstr "Muntatge de la compartició"
-
-#~ msgid ""
-#~ "Enter the location and optionally the IP address and workgroup to mount a "
-#~ "share."
-#~ msgstr ""
-#~ "Introduïu la ubicació i de manera opcional l'adreça IP i grup de treball "
-#~ "per a muntar una compartició."
-
-#~ msgid "Location:"
-#~ msgstr "Ubicació:"
-
-# skip-rule: t-2p_sp
-#~ msgid ""
-#~ "The location of the share is provided by the Uniform Resource Locator "
-#~ "(URL). It generally has the following syntax: [smb:]//[USER:"
-#~ "PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are "
-#~ "optional. You should omit to enter the password here, because it is shown "
-#~ "in cleartext."
-#~ msgstr ""
-#~ "La ubicació de la compartició és proporcionada pel Localitzador Uniforme "
-#~ "de Recursos (Uniform Resource Locator/URL). Generalment té la sintaxi "
-#~ "següent: [smb:]//[USUARI:CONTRASENYA@]SERVIDOR[:PORT]/COMPARTICIÓ. "
-#~ "L'esquema, nom d'usuari, contrasenya i port són opcionals. Ací hauríeu "
-#~ "d'ometre la introducció de la contrasenya, perquè es mostra en text clar."
-
-# skip-rule: t-pu_sp
-#~ msgid ""
-#~ "The Internet Protocol (IP) address identifies the host in the network and "
-#~ "indicates where it is. It has two valid formats, the one known as IP "
-#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-#~ msgstr ""
-#~ "L'adreça IP (Internet Protocol) identifica el servidor a la xarxa i li "
-#~ "indica a on es troba. Té dos formats vàlids, el conegut com a IP versió 4 "
-#~ "(p. ex. 192.168.2.11) i el format versió 6 (p. ex. "
-#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-
-#~ msgid "Workgroup:"
-#~ msgstr "Grup de treball:"
-
-# skip-rule: barb-igual_a
-#~ msgid ""
-#~ "The workgroup or domain identifies the peer-to-peer computer network the "
-#~ "host is located in."
-#~ msgstr ""
-#~ "El grup de treball o domini identifica la xarxa d'ordinadors d'igual a "
-#~ "igual on es troba el servidor."
-
-#~ msgid "Add this share to the bookmarks"
-#~ msgstr "Afig esta compartició a les adreces d'interés"
-
-#~ msgid ""
-#~ "If you tick this checkbox, the share will be bookmarked and you can "
-#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
-#~ msgstr ""
-#~ "Si marqueu esta casella de selecció, la compartició s'afegirà a les "
-#~ "adreces d'interés i podreu accedir-hi, per exemple, a través de l'entrada "
-#~ "de menú «Adreces d'interés» de la finestra principal."
-
-#~ msgid ""
-#~ "Add a label describing your bookmark. It is then shown instead of the "
-#~ "location."
-#~ msgstr ""
-#~ "Afig una etiqueta que descriga l'adreça d'interés. Aleshores es mostrarà "
-#~ "en lloc de la ubicació."
-
-#~ msgid ""
-#~ "Assign a category to your bookmark. This way you can organize your "
-#~ "bookmarks."
-#~ msgstr ""
-#~ "Assigna una categoria a l'adreça d'interés. D'esta manera es poden "
-#~ "organitzar les adreces d'interés."
-
-#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-#~ msgid "Bookmark >>"
-#~ msgstr "Adreça d'interés >>"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Edita les adreces d'interés"
-
-#~ msgid "Add Category"
-#~ msgstr "Afig una categoria"
-
-#~ msgid "Remove"
-#~ msgstr "Elimina"
-
-#~ msgid "Clear"
-#~ msgstr "Neteja"
-
-#~ msgid "Username:"
-#~ msgstr "Nom d'usuari:"
-
-#~ msgid "Category name:"
-#~ msgstr "Nom de la categoria:"

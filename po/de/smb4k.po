@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-09-09 00:46+0000\n"
 "PO-Revision-Date: 2023-08-13 16:37+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -855,8 +855,8 @@ msgid "Comment"
 msgstr "Kommentar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:122
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:410
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:473
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:405
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:468
 #, kde-format
 msgid "Scan Netwo&rk"
 msgstr "Netzwe&rk durchsuchen"
@@ -941,23 +941,23 @@ msgid "&Unmount"
 msgstr "&Aushängen"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:989
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Strg+M"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:424
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:435
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:419
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:430
 #, kde-format
 msgid "Scan Compute&r"
 msgstr "&Rechner durchsuchen"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:460
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:455
 #, kde-format
 msgid "Scan Wo&rkgroup"
 msgstr "A&rbeitsgruppe durchsuchen"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:991
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
 #: smb4k/smb4ksharesviewdockwidget.cpp:203
 #, kde-format
 msgid "Ctrl+U"
@@ -1000,17 +1000,20 @@ msgid "Preview Dialog"
 msgstr "Vorschaudialog"
 
 #: smb4k/smb4kpreviewdialog.cpp:47
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Reload"
 msgid "Reload"
 msgstr "Erneut laden"
 
 #: smb4k/smb4kpreviewdialog.cpp:49
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Abort"
 msgid "Abort"
 msgstr "Abbrechen"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Up"
 msgid "Up"
 msgstr "Hoch"
 
@@ -1033,12 +1036,14 @@ msgid "Print a file."
 msgstr "Datei drucken"
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File:"
 msgid "File:"
 msgstr "Datei:"
 
 #: smb4k/smb4kprintdialog.cpp:68
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Copies:"
 msgid "Copies:"
 msgstr "Kopien:"
 
