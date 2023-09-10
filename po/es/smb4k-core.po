@@ -18,14 +18,14 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-06 00:46+0000\n"
-"PO-Revision-Date: 2023-03-04 17:47+0100\n"
+"PO-Revision-Date: 2023-09-09 17:43+0200\n"
 "Last-Translator: Víctor Rodrigo Córdoba <vrcordoba@gmail.com>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
@@ -74,17 +74,13 @@ msgstr "Mostrar la etiqueta del marcador personalizado si está disponible"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"No volver a mostrar el nombre del recurso compartido que está en el "
-"marcador, excepto si la etiqueta fue personalizada en el editor de "
-"marcadores."
+"No mostrar el nombre del recurso compartido que está en el marcador, sino la "
+"etiqueta personalizada que se definió en el editor de marcadores."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40
@@ -3580,235 +3576,3 @@ msgid ""
 msgstr ""
 "<qt>Por favor, introduzca el usuario y contraseña para el recurso compartido "
 "<b>%1</b>.</qt>"
-
-#~ msgid "Preview of %1"
-#~ msgstr "Vista previa de %1"
-
-#~ msgid "Reload"
-#~ msgstr "Volver a cargar"
-
-#~ msgid "Abort"
-#~ msgstr "Interrumpir"
-
-#~ msgid "Up"
-#~ msgstr "Subir"
-
-#~ msgid "Print File"
-#~ msgstr "Imprimir el archivo"
-
-#~ msgid "Information"
-#~ msgstr "Información"
-
-#~ msgid "Printer:"
-#~ msgstr "Impresora:"
-
-#~ msgid "IP Address:"
-#~ msgstr "Dirección IP:"
-
-#~ msgid "Domain:"
-#~ msgstr "Dominio:"
-
-#~ msgid "File and Settings"
-#~ msgstr "Archivo y preferencias"
-
-#~ msgid "File:"
-#~ msgstr "Archivo:"
-
-#~ msgid ""
-#~ "This is the file you want to print on the remote printer. Currently only "
-#~ "a few mimetypes are supported such as PDF, Postscript, plain text, and "
-#~ "images. If the file's mimetype is not supported, you need to convert it."
-#~ msgstr ""
-#~ "Este es el archivo que desea imprimir en la impresora remota. Actualmente "
-#~ "hay pocos tipos MIME compatibles, tales como PDF, Postscript, texto sin "
-#~ "formato e imágenes. Si el tipo MIME del archivo no está permitido, será "
-#~ "necesario convertirlo."
-
-#~ msgid "Copies:"
-#~ msgstr "Copias:"
-
-#~ msgid "This is the number of copies you want to print."
-#~ msgstr "Este es el número de copias que desea imprimir."
-
-#~ msgid "Print"
-#~ msgstr "Imprimir"
-
-#~ msgid "Custom Settings"
-#~ msgstr "Preferencias personalizadas"
-
-#~ msgid ""
-#~ "<p>Define custom settings for host <b>%1</b> and all the shares it "
-#~ "provides.</p>"
-#~ msgstr ""
-#~ "<p>Definir las preferencias personalizadas para el servidor <b>%1</b> y "
-#~ "todos los recursos compartidos que este proporciona. </p>"
-
-#~ msgid "<p>Define custom settings for share <b>%1</b>.</p>"
-#~ msgstr ""
-#~ "<p>Definir las preferencias personalizadas para el recurso compartido <b>"
-#~ "%1</b>.</p>"
-
-#~ msgid "Common Options"
-#~ msgstr "Opciones comunes"
-
-#~ msgid "Always remount this share"
-#~ msgstr "Volver a montar este recurso compartido siempre"
-
-#~ msgid "CIFS Unix Extensions Support"
-#~ msgstr "Implementación de extensiones CIFS de Unix"
-
-#~ msgid "This server supports the CIFS Unix extensions"
-#~ msgstr "Este servidor implementa las extensiones CIFS de Unix"
-
-#~ msgid "Common Mount Settings"
-#~ msgstr "Preferencias comunes de montaje"
-
-#~ msgid "Advanced Options"
-#~ msgstr "Opciones avanzadas"
-
-#~ msgid "Advanced Mount Settings"
-#~ msgstr "Preferencias avanzadas de montaje"
-
-#~ msgid "Authentication"
-#~ msgstr "Autenticación"
-
-#~ msgid "Browse Settings"
-#~ msgstr "Preferencias de navegación"
-
-#~ msgid "MAC Address"
-#~ msgstr "Dirección MAC"
-
-#~ msgid "MAC Address:"
-#~ msgstr "Dirección MAC:"
-
-#~ msgid "Actions"
-#~ msgstr "Acciones"
-
-#~ msgid "Send magic packet before scanning the network neighborhood"
-#~ msgstr "Enviar el paquete mágico antes de escanear el entorno de red"
-
-#~ msgid "Send magic packet before mounting a share"
-#~ msgstr "Enviar el paquete mágico antes de montar un recurso compartido"
-
-#~ msgid "Wake-On-LAN Settings"
-#~ msgstr "Preferencias de Wake-On-LAN"
-
-#~ msgid "Mount Settings"
-#~ msgstr "Preferencias de montaje"
-
-#~ msgid "Samba"
-#~ msgstr "Samba"
-
-#~ msgid "Wake-On-LAN"
-#~ msgstr "Wake-On-LAN"
-
-#~ msgid "Add Bookmarks"
-#~ msgstr "Agregar marcadores"
-
-#~ msgid ""
-#~ "All listed shares will be bookmarked. To edit the label or group, click "
-#~ "the respective bookmark entry."
-#~ msgstr ""
-#~ "Todos los recursos compartidos listados se guardarán en sus marcadores. "
-#~ "Para editar la etiqueta o grupo de un marcador, haga doble clic en la "
-#~ "entrada de su respectivo campo."
-
-#~ msgid "Label:"
-#~ msgstr "Etiqueta:"
-
-#~ msgid "Category:"
-#~ msgstr "Categoría:"
-
-#~ msgid "Mount Share"
-#~ msgstr "Montar Recurso Compartido"
-
-#~ msgid ""
-#~ "Enter the location and optionally the IP address and workgroup to mount a "
-#~ "share."
-#~ msgstr ""
-#~ "Introduzca la ubicación y, opcionalmente, la dirección IP y el grupo de "
-#~ "trabajo para montar un recurso compartido."
-
-#~ msgid "Location:"
-#~ msgstr "Ubicación:"
-
-#~ msgid ""
-#~ "The location of the share is provided by the Uniform Resource Locator "
-#~ "(URL). It generally has the following syntax: [smb:]//[USER:"
-#~ "PASSWORD@]HOST[:PORT]/SHARE. The scheme, username, password and port are "
-#~ "optional. You should omit to enter the password here, because it is shown "
-#~ "in cleartext."
-#~ msgstr ""
-#~ "La ubicación del recurso compartido se proporciona por el (URL). "
-#~ "Generalmente, tiene la siguiente sintaxis: [smb:]//[USER:PASSWORD@]HOST[:"
-#~ "PORT]/ SHARE. El esquema, usuario, contraseña y puerto son opcionales. "
-#~ "Usted debería omitir aquí la contraseña, porque se muestra en texto "
-#~ "visible."
-
-#~ msgid ""
-#~ "The Internet Protocol (IP) address identifies the host in the network and "
-#~ "indicates where it is. It has two valid formats, the one known as IP "
-#~ "version 4 (e.g. 192.168.2.11) and the version 6 format (e.g. "
-#~ "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-#~ msgstr ""
-#~ "La dirección del Protocolo de Internet (IP) identifica al servidor en la "
-#~ "red e indica dónde se encuentra. Tiene dos formatos válidos: el conocido "
-#~ "como IP versión 4 (por ejemplo, 192.168.2.11) y el formato de la versión "
-#~ "6 (por ejemplo, 2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
-
-#~ msgid "Workgroup:"
-#~ msgstr "Grupo de trabajo:"
-
-#~ msgid ""
-#~ "The workgroup or domain identifies the peer-to-peer computer network the "
-#~ "host is located in."
-#~ msgstr ""
-#~ "El grupo de trabajo o el dominio identifica la red de equipos entre "
-#~ "iguales en la que está ubicado el servidor."
-
-#~ msgid "Add this share to the bookmarks"
-#~ msgstr "Agregar este recurso compartido a los marcadores"
-
-#~ msgid ""
-#~ "If you tick this checkbox, the share will be bookmarked and you can "
-#~ "access it e.g. through the \"Bookmarks\" menu entry in the main window."
-#~ msgstr ""
-#~ "Si se marca esta casilla de verificación, el recurso se guardará en la "
-#~ "lista de marcadores y podrá acceder a él mediante la entrada menú "
-#~ "«Marcadores» de la ventana principal."
-
-#~ msgid ""
-#~ "Add a label describing your bookmark. It is then shown instead of the "
-#~ "location."
-#~ msgstr ""
-#~ "Añadir una etiqueta describiendo su marcador. Se muestra en lugar de la "
-#~ "localización."
-
-#~ msgid ""
-#~ "Assign a category to your bookmark. This way you can organize your "
-#~ "bookmarks."
-#~ msgstr ""
-#~ "Asignar una categoría a tu marcador. De esta manera puede organizar sus "
-#~ "marcadores."
-
-#~ msgctxt "Bookmark this share. Show input widgets in the dialog for this."
-#~ msgid "Bookmark >>"
-#~ msgstr "Marcador >>"
-
-#~ msgid "Edit Bookmarks"
-#~ msgstr "Editar marcadores"
-
-#~ msgid "Add Category"
-#~ msgstr "Añadir categoría"
-
-#~ msgid "Remove"
-#~ msgstr "Eliminar"
-
-#~ msgid "Clear"
-#~ msgstr "Despejar"
-
-#~ msgid "Username:"
-#~ msgstr "Nombre de usuario:"
-
-#~ msgid "Category name:"
-#~ msgstr "Nombre de la categoría:"
