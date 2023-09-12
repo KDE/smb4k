@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-09 00:46+0000\n"
-"PO-Revision-Date: 2023-08-17 17:24+0200\n"
+"PO-Revision-Date: 2023-09-10 15:49+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.90\n"
+"X-Generator: Lokalize 23.08.0\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -135,10 +135,9 @@ msgid "Main Toolbar"
 msgstr "Barre principale"
 
 #: smb4k/smb4kbookmarkdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Bookmark this share"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Ajouter ce partage aux signets"
+msgstr "Ajouter des partages aux signets"
 
 #: smb4k/smb4kbookmarkdialog.cpp:48
 #, kde-format
@@ -146,6 +145,9 @@ msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
+"Tous les partages listés vont être transformés en signets. Pour ajouter une "
+"étiquette ou une catégorie, veuillez cliquer sur l'entrée correspondante "
+"d'un signet."
 
 #: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:116
@@ -605,10 +607,9 @@ msgid "Shares View"
 msgstr "Vue des partages"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Configuration personnalisées"
+msgstr "Éditeur de configuration personnalisée"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
 #, kde-format
@@ -1003,8 +1004,7 @@ msgid "Item Up"
 msgstr "Déplacer l'élément vers le haut"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Preview Dialog"
 msgstr "Boîte de dialogue d'aperçu"
 
@@ -1024,22 +1024,19 @@ msgid "Up"
 msgstr "Haut"
 
 #: smb4k/smb4kpreviewdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Pre&view"
+#, kde-format
 msgid "Preview of %1"
-msgstr "A&perçu"
+msgstr "Aperçu de %1"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Boîte de dialogue d'aperçu"
+msgstr "Boîte de dialogue d'impression"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "&Imprimer un fichier"
+msgstr "Imprimer un fichier."
 
 #: smb4k/smb4kprintdialog.cpp:60
 #, kde-format
@@ -1052,16 +1049,14 @@ msgid "Copies:"
 msgstr "Copies :"
 
 #: smb4k/smb4kprintdialog.cpp:86
-#, fuzzy, kde-format
-#| msgid "&Print File"
+#, kde-format
 msgid "Print"
-msgstr "&Imprimer un fichier"
+msgstr "Imprimer"
 
 #: smb4k/smb4kprintdialog.cpp:122
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Envoie du fichier à l'imprimante %1..."
+msgstr "Imprimer un fichier sur l'imprimante <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:208
 #, kde-format
