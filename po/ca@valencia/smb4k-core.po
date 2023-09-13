@@ -305,7 +305,7 @@ msgid ""
 msgstr ""
 "Utilitza «DNS Service Discovery» (DNS-SD) per a explorar la xarxa local i "
 "descobrir els servidors que proporcionen recursos SMB compartits. Els "
-"dominis descoberts corresponen als dominis DNS locals (p. ex. anomenats "
+"dominis descoberts corresponen als dominis DNS locals (p. ex., anomenats "
 "LOCAL) i probablement no als definits al veïnatge de la xarxa. Tanmateix, "
 "açò no influirà l'exploració. En utilitzar esta opció, no caldrà forçar la "
 "biblioteca del client Samba a què faça servir el protocol SMB versió 1.0 per "
@@ -593,7 +593,7 @@ msgid ""
 "Musik$ or IPC$."
 msgstr ""
 "Es detectaran les comparticions ocultes. Les comparticions ocultes acaben "
-"amb un signe $, p. ex. Musik$ o IPC$."
+"amb un signe $, p. ex., Musik$ o IPC$."
 
 #. i18n: ectx: label, entry (EnableWakeOnLAN), group (Network)
 #: smb4k.kcfg:234
@@ -1963,7 +1963,7 @@ msgstr ""
 "Fa que Smb4K utilitze els perfils. Açò permet definir diferents adreces "
 "d'interés i opcions personalitzades per a cada perfil. És especialment útil "
 "si esteu utilitzant un ordinador portàtil en diferents veïnatges de xarxa, "
-"p. ex. a casa i a la faena."
+"p. ex., a casa i a la faena."
 
 #. i18n: ectx: label, entry (ProfilesList), group (Profiles)
 #: smb4k.kcfg:684
@@ -2405,7 +2405,7 @@ msgid ""
 msgstr ""
 "L'adreça IP (Internet Protocol) identifica el servidor a la xarxa i li "
 "indica a on es troba. Té dos formats vàlids, el conegut com a IP versió 4 "
-"(p. ex. 192.168.2.11) i el format versió 6 (p. ex. "
+"(p. ex., 192.168.2.11) i el format versió 6 (p. ex., "
 "2001:0db8:85a3:08d3:1319:8a2e:0370:7334)."
 
 # skip-rule: barb-igual_a
