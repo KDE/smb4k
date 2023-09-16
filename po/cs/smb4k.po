@@ -116,10 +116,9 @@ msgid "Main Toolbar"
 msgstr "Hlavní panel nástrojů"
 
 #: smb4k/smb4kbookmarkdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Bookmark this share"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Přidat sdílené úložiště do záložek"
+msgstr ""
 
 #: smb4k/smb4kbookmarkdialog.cpp:48
 #, kde-format
