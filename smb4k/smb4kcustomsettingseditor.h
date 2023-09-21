@@ -35,6 +35,8 @@ public:
      * Set the network item. Ideally, this function should be used before
      * the dialog is shown.
      *
+     * This function should be run before the dialog is shown.
+     *
      * @param networkItem       The network item for which the custom settings
      *                          should be defined
      *
