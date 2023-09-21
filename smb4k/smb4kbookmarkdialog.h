@@ -39,6 +39,8 @@ public:
      * Set the shares that are to be bookmarked. If all shares have already been
      * bookmarked, this function returns FALSE otherwise TRUE.
      *
+     * This function should be run before showing the dialog.
+     *
      * @param shares        The list of shares that are to be bookmarked
      *
      * @returns TRUE if at least one of the shares has not been bookmarked yet.
