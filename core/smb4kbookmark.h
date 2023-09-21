@@ -16,6 +16,7 @@
 #include <QScopedPointer>
 #include <QString>
 #include <QUrl>
+#include <QMetaType>
 
 // forward declarations
 class Smb4KShare;
