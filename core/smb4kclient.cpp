@@ -446,62 +446,6 @@ void Smb4KClient::search(const QString &item)
     Q_EMIT finished(networkItem, NetworkSearch);
 }
 
-// void Smb4KClient::openPreviewDialog(const SharePtr &share)
-// {
-//     //
-//     // Printer share check
-//     //
-//     if (share->isPrinter()) {
-//         return;
-//     }
-//
-//     //
-//     // 'homes' share check
-//     //
-//     if (share->isHomesShare()) {
-//         Smb4KHomesSharesHandler::self()->specifyUser(share, true);
-//     }
-//
-//     //
-//     // Start the preview dialog
-//     //
-//     // First, check if a preview dialog has already been set up for this share
-//     // and reuse it, if possible.
-//     //
-//     QPointer<Smb4KPreviewDialog> dlg = nullptr;
-//
-//     for (Smb4KPreviewDialog *p : qAsConst(d->previewDialogs)) {
-//         if (share == p->share()) {
-//             dlg = p;
-//         }
-//     }
-//
-//     //
-//     // If there was no preview dialog present, create a new one
-//     //
-//     if (!dlg) {
-//         dlg = new Smb4KPreviewDialog(share, QApplication::activeWindow());
-//         d->previewDialogs << dlg;
-//
-//         //
-//         // Connections
-//         //
-//         connect(dlg, SIGNAL(requestPreview(NetworkItemPtr)), this, SLOT(slotStartNetworkQuery(NetworkItemPtr)));
-//         connect(dlg, SIGNAL(aboutToClose(Smb4KPreviewDialog *)), this, SLOT(slotPreviewDialogClosed(Smb4KPreviewDialog *)));
-//         connect(dlg, SIGNAL(requestAbort()), this, SLOT(slotAbort()));
-//         connect(this, SIGNAL(files(QList<FilePtr>)), dlg, SLOT(slotPreviewResults(QList<FilePtr>)));
-//         connect(this, SIGNAL(aboutToStart(NetworkItemPtr, int)), dlg, SLOT(slotAboutToStart(NetworkItemPtr, int)));
-//         connect(this, SIGNAL(finished(NetworkItemPtr, int)), dlg, SLOT(slotFinished(NetworkItemPtr, int)));
-//     }
-//
-//     //
-//     // Show the preview dialog
-//     //
-//     if (!dlg->isVisible()) {
-//         dlg->setVisible(true);
-//     }
-// }
-
 void Smb4KClient::processErrors(Smb4KClientBaseJob *job)
 {
     switch (job->error()) {
