@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-09 00:46+0000\n"
-"PO-Revision-Date: 2023-07-27 15:59+0300\n"
+"PO-Revision-Date: 2023-08-28 18:00+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -314,10 +314,10 @@ msgid "All fine."
 msgstr "Kaikki kunnossa."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
-msgstr "Tietue %1 poistettiin, koska kaikki mukautetut valinnat palautettiin."
+msgstr ""
+"Tietue <b>%1<(b> poistettiin, koska kaikki mukautetut valinnat palautettiin."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -588,21 +588,20 @@ msgid "Custom Settings Editor"
 msgstr "Mukautetut valinnat"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
-#, fuzzy, kde-format
-#| msgid "Network Item"
+#, kde-format
 msgid "No network item was set."
-msgstr "Verkkotietue"
+msgstr "Verkkotietuetta ei asetettu."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:115
 #, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
-msgstr ""
+msgstr "Mukauta koneen <b>%1</b> ja sen tarjoamien jakojen asetuksia."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:131
 #, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr ""
+msgstr "Mukauta jaon <b>%1</b> asetuksia."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:269
@@ -612,10 +611,9 @@ msgstr "Liitä tämä jako aina uudelleen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Liittäminen"
+msgstr "Sivu 1: Liittäminen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -623,21 +621,19 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Tämä palvelin tukee CIFSin UNIX-laajennuksia"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Liittäminen"
+msgstr "Sivu 2: Liittäminen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Liittäminen"
+msgstr "Sivu 3: Liittäminen"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Sivu 4: Selaus"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:386
@@ -664,22 +660,19 @@ msgid "Send magic packet before mounting a share"
 msgstr "Lähetä taikapaketti ennen jaon liittämistä"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr "Sivu 5: Wake-On-LAN"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Browsing"
-msgstr "Liittäminen"
+msgstr "Sivu 2: Selaus"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 3: Wake-On-LAN"
-msgstr "Wake-On-LAN"
+msgstr "Sivu 3: Wake-On-LAN"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -999,7 +992,8 @@ msgid "Abort"
 msgstr "Keskeytä"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Up"
 msgid "Up"
 msgstr "Ylös"
 
@@ -1022,12 +1016,14 @@ msgid "Print a file."
 msgstr "Tulosta tiedosto"
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "File:"
 msgid "File:"
 msgstr "Tiedosto:"
 
 #: smb4k/smb4kprintdialog.cpp:68
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Copies:"
 msgid "Copies:"
 msgstr "Kopioita:"
 
