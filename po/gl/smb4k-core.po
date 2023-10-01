@@ -88,9 +88,9 @@ msgid ""
 "up by clicking on the system tray widget or by choosing \"Restore\" from its "
 "popup menu."
 msgstr ""
-"Iniciar a aplicación ancorada na bandexa do sistema, ou sexa, só aparece o "
-"trebello da bandexa do sistema e a xanela principal queda agochada. Pódese "
-"abrir a xanela principal premendo o trebello da bandexa do sistema ou "
+"Iniciar a aplicación ancorada na área de notificación, ou sexa, só aparece o "
+"trebello da área de notificación e a xanela principal queda agochada. Pódese "
+"abrir a xanela principal premendo o trebello da área de notificación ou "
 "escollendo \"Restaurar\" no seu menú emerxente."
 
 #. i18n: ectx: label, entry (ShowType), group (UserInterface)
@@ -1773,7 +1773,7 @@ msgstr ""
 #: smb4k.kcfg:610
 #, kde-format
 msgid "Make backups"
-msgstr "Facer copias de seguridade"
+msgstr "Facer salvagardas"
 
 #. i18n: ectx: whatsthis, entry (MakeBackups), group (Synchronization)
 #: smb4k.kcfg:611
@@ -1784,47 +1784,47 @@ msgid ""
 "the backup file goes and what (if any) suffix gets appended using the --"
 "backup-dir=DIR and --suffix=SUFFIX options."
 msgstr ""
-"Facer copias de seguridade (-b, --backup). Con esta opción, múdaselle o nome "
-"aos ficheiros de destino xa existentes segundo se vai transferindo ou "
-"eliminando cada ficheiro. Pódese controlar a onde vai o ficheiro de "
-"seguridade e que sufixo (de existir) se lle engade coas opcións backup-"
-"dir=DIR e --suffix=SUFIXO."
+"Facer salvagardas (-b, --backup). Con esta opción, múdaselle o nome aos "
+"ficheiros de destino xa existentes segundo se vai transferindo ou eliminando "
+"cada ficheiro. Pódese controlar a onde vai o ficheiro de seguridade e que "
+"sufixo (de existir) se lle engade coas opcións backup-dir=DIR e --"
+"suffix=SUFIXO."
 
 #. i18n: ectx: label, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:615
 #, kde-format
 msgid "Backup suffix:"
-msgstr "Sufixo das copias de seguridade:"
+msgstr "Sufixo das salvagardas:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupSuffix), group (Synchronization)
 #: smb4k.kcfg:616
 #, kde-format
 msgid "Use this suffix for backups (--suffix=SUFFIX)."
-msgstr "Usar este sufixo para as copias de seguridade (--suffix=SUFIXO)."
+msgstr "Usar este sufixo para as salvagardas (--suffix=SUFIXO)."
 
 #. i18n: ectx: label, entry (BackupSuffix), group (Synchronization)
 #: smb4k.kcfg:620
 #, kde-format
 msgid "Backup suffix"
-msgstr "Sufixo das copias de seguridade"
+msgstr "Sufixo das salvagardas"
 
 #. i18n: ectx: label, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:625
 #, kde-format
 msgid "Backup directory:"
-msgstr "Directorio das copias de seguridade:"
+msgstr "Directorio das salvagardas:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:626
 #, kde-format
 msgid "Store backups in this directory (--backup-dir=DIR)."
-msgstr "Almacenar as copias de seguridade neste directorio (--backup-dir=DIR)."
+msgstr "Almacenar as salvagardas neste directorio (--backup-dir=DIR)."
 
 #. i18n: ectx: label, entry (BackupDirectory), group (Synchronization)
 #: smb4k.kcfg:630
 #, kde-format
 msgid "Backup directory"
-msgstr "Directorio das copias de seguridade"
+msgstr "Directorio das salvagardas"
 
 #. i18n: ectx: label, entry (UseBlockSize), group (Synchronization)
 #: smb4k.kcfg:635
@@ -2077,7 +2077,7 @@ msgstr "Non puido lerse o ficheiro %1"
 #: smb4kclient_p.cpp:1269
 #, kde-format
 msgid "The file %1 could not be printed to %2"
-msgstr "Non se puido imprimir o ficheiro %1 en %2"
+msgstr "Non foi posíbel imprimir o ficheiro %1 en %2"
 
 #: smb4kclient_p.cpp:1359
 #, kde-format
@@ -3102,9 +3102,9 @@ msgid ""
 "defined in octal. In case the CIFS file system is used, this setting only "
 "takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
-"Este é o modo de ficheiro que se utiliza ao crear ficheiros. Haina que "
-"definir en octal. no caso de que se use un sistema de ficheiros CIFS a "
-"opción só é efectiva se o servidor non admite as extensións de CIFS de Unix."
+"Este é o modo de ficheiro que se usa ao crear ficheiros. Haina que definir "
+"en octal. no caso de que se use un sistema de ficheiros CIFS a opción só é "
+"efectiva se o servidor non admite as extensións de CIFS de Unix."
 
 #. i18n: ectx: whatsthis, entry (FileMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:40
@@ -3114,9 +3114,9 @@ msgid ""
 "defined in octal. In case the CIFS file system is used, this setting only "
 "takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
-"Este é o modo de ficheiro que se utiliza ao crear ficheiros. Haina que "
-"definir en octal. no caso de que se use un sistema de ficheiros CIFS a "
-"opción só é efectiva se o servidor non admite as extensións de CIFS de Unix."
+"Este é o modo de ficheiro que se usa ao crear ficheiros. Haina que definir "
+"en octal. no caso de que se use un sistema de ficheiros CIFS a opción só é "
+"efectiva se o servidor non admite as extensións de CIFS de Unix."
 
 #. i18n: ectx: whatsthis, entry (UseDirectoryMode), group (Mounting)
 #. i18n: ectx: whatsthis, entry (DirectoryMode), group (Mounting)
@@ -3127,7 +3127,7 @@ msgid ""
 "must be defined in octal. In case the CIFS file system is used, this setting "
 "only takes effect if the server does not support the CIFS Unix Extensions."
 msgstr ""
-"Este é o modo de directorio que se utiliza ao crear directorios. Haina que "
+"Este é o modo de directorio que se usa ao crear directorios. Haina que "
 "definir en octal. no caso de que se use un sistema de ficheiros CIFS a "
 "opción só é efectiva se o servidor non admite as extensións de CIFS de Unix."
 
@@ -3419,18 +3419,18 @@ msgid ""
 "this, the strict cache mode is recommended."
 msgstr ""
 "Determina como xestionar as solicitudes de lectura e escritura. Se escolle "
-"non usar a caché para nada, o cliente non utiliza nunca a caché para "
-"operacións normais de lectura e escritura; sempre accede directamente ao "
-"servidor para satisfacer as solicitudes de lectura ou escritura. Se escolle "
-"seguir o protocolo de CIFS e SMB2 de maneira estrita, só se confiará na "
-"caché cando o cliente teña un bloqueo de operación; se o cliente non ten un "
-"bloqueo, entón o cliente ignora a caché e acceder directamente ao servidor "
-"para satisfacer a solicitude de lectura ou escritura. Escoller usar a caché "
-"de maneira non estrita pode en ocasións fornecer un mellor rendemento a "
-"costa dunha peor coherencia interna da caché. Esta última opción pode causar "
-"danos nos datos, por exemplo no caso de que varios clientes accedesen ao "
-"mesmo grupo de ficheiros no servidor ao mesmo tempo; é por iso que se "
-"recomenda usar o modo estrito de caché."
+"non usar a caché para nada, o cliente non usa nunca a caché para operacións "
+"normais de lectura e escritura; sempre accede directamente ao servidor para "
+"satisfacer as solicitudes de lectura ou escritura. Se escolle seguir o "
+"protocolo de CIFS e SMB2 de maneira estrita, só se confiará na caché cando o "
+"cliente teña un bloqueo de operación; se o cliente non ten un bloqueo, entón "
+"o cliente ignora a caché e acceder directamente ao servidor para satisfacer "
+"a solicitude de lectura ou escritura. Escoller usar a caché de maneira non "
+"estrita pode en ocasións fornecer un mellor rendemento a costa dunha peor "
+"coherencia interna da caché. Esta última opción pode causar danos nos datos, "
+"por exemplo no caso de que varios clientes accedesen ao mesmo grupo de "
+"ficheiros no servidor ao mesmo tempo; é por iso que se recomenda usar o modo "
+"estrito de caché."
 
 #. i18n: ectx: label, entry (CacheMode), group (Mounting)
 #: smb4kmountsettings_linux.kcfg:239
