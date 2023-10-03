@@ -40,12 +40,7 @@ protected Q_SLOTS:
      * Invoked when the dialog is accepted and the bookmarks
      * are to be saved.
      */
-    void slotAccepted();
-
-    /**
-     * Invoked when the dialog is rejected.
-     */
-    void slotRejected();
+    void slotSaveBookmarks();
 
 private:
     Smb4KConfigPageBookmarks *m_mainWidget;

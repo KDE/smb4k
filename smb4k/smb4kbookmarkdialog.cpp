@@ -107,8 +107,8 @@ Smb4KBookmarkDialog::Smb4KBookmarkDialog(QWidget *parent)
     m_cancelButton->setShortcut(QKeySequence::Cancel);
     m_cancelButton->setDefault(true);
 
-    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KBookmarkDialog::slotAccepted);
-    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KBookmarkDialog::slotRejected);
+    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KBookmarkDialog::slotSaveBookmarks);
+    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KBookmarkDialog::reject);
 
     layout->addWidget(buttonBox);
 
@@ -140,7 +140,7 @@ Smb4KBookmarkDialog::~Smb4KBookmarkDialog()
 {
 }
 
-bool Smb4KBookmarkDialog::setBookmarks(const QList<SharePtr> &shares)
+bool Smb4KBookmarkDialog::setShares(const QList<SharePtr> &shares)
 {
     bool bookmarksSet = false;
 
@@ -237,7 +237,7 @@ void Smb4KBookmarkDialog::slotCategoryEdited()
     }
 }
 
-void Smb4KBookmarkDialog::slotAccepted()
+void Smb4KBookmarkDialog::slotSaveBookmarks()
 {
     if (m_editorWidget->isVisible()) {
         Smb4KBookmark bookmark = m_listWidget->currentItem()->data(Qt::UserRole).value<Smb4KBookmark>();
@@ -263,9 +263,4 @@ void Smb4KBookmarkDialog::slotAccepted()
     completionGroup.writeEntry("CategoryCompletion", m_categoryEdit->completionObject()->items());
 
     accept();
-}
-
-void Smb4KBookmarkDialog::slotRejected()
-{
-    reject();
 }

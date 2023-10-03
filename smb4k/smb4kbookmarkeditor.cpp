@@ -40,10 +40,12 @@ Smb4KBookmarkEditor::Smb4KBookmarkEditor(QWidget *parent)
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
     m_saveButton = buttonBox->addButton(QDialogButtonBox::Save);
     m_saveButton->setEnabled(false);
+    m_saveButton->setShortcut(QKeySequence::Save);
     m_cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
+    m_cancelButton->setShortcut(QKeySequence::Cancel);
 
-    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KBookmarkEditor::slotAccepted);
-    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KBookmarkEditor::slotRejected);
+    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KBookmarkEditor::slotSaveBookmarks);
+    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KBookmarkEditor::reject);
 
     layout->addWidget(buttonBox);
 
@@ -86,7 +88,7 @@ void Smb4KBookmarkEditor::slotEnabledButtons()
     m_saveButton->setEnabled(m_mainWidget->bookmarksChanged());
 }
 
-void Smb4KBookmarkEditor::slotAccepted()
+void Smb4KBookmarkEditor::slotSaveBookmarks()
 {
     m_mainWidget->saveBookmarks();
 
@@ -103,9 +105,4 @@ void Smb4KBookmarkEditor::slotAccepted()
     completionGroup.writeEntry("WorkgroupCompletion", completionItems[QStringLiteral("WorkgroupCompletion")]);
 
     accept();
-}
-
-void Smb4KBookmarkEditor::slotRejected()
-{
-    reject();
 }

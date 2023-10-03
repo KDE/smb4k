@@ -81,12 +81,12 @@ Smb4KPrintDialog::Smb4KPrintDialog(QWidget *parent)
     m_cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
     m_cancelButton->setShortcut(QKeySequence::Cancel);
     m_cancelButton->setDefault(true);
-    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KPrintDialog::slotCancelButtonClicked);
+    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KPrintDialog::reject);
 
     m_printButton = buttonBox->addButton(i18n("Print"), QDialogButtonBox::ActionRole);
     m_printButton->setShortcut(QKeySequence::Print);
     m_printButton->setEnabled(false);
-    connect(m_printButton, &QPushButton::clicked, this, &Smb4KPrintDialog::slotPrintButtonClicked);
+    connect(m_printButton, &QPushButton::clicked, this, &Smb4KPrintDialog::slotPrintFile);
 
     layout->addWidget(buttonBox);
 
@@ -134,16 +134,8 @@ void Smb4KPrintDialog::enablePrintButton()
     m_printButton->setEnabled(pathUrl.isValid() && copies > 0);
 }
 
-void Smb4KPrintDialog::slotCancelButtonClicked(bool checked)
+void Smb4KPrintDialog::slotPrintFile()
 {
-    Q_UNUSED(checked)
-    reject();
-}
-
-void Smb4KPrintDialog::slotPrintButtonClicked(bool checked)
-{
-    Q_UNUSED(checked)
-
     Smb4KClient::self()->printFile(m_printer, KFileItem(m_fileInput->url()), m_copiesInput->value());
 
     KConfigGroup group(Smb4KSettings::self()->config(), "PrintDialog");

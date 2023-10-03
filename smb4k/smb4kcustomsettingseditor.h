@@ -45,9 +45,8 @@ public:
     bool setNetworkItem(NetworkItemPtr networkItem);
 
 protected Q_SLOTS:
-    void slotRestoreDefaultsClicked();
-    void slotSaveClicked();
-    void slotCancelClicked();
+    void slotRestoreDefaults();
+    void slotSaveCustomSettings();
     void slotCustomSettingsEdited(bool changed);
     void slotCustomSettingsUpdated();
 

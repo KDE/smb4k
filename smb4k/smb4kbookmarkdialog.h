@@ -45,7 +45,7 @@ public:
      *
      * @returns TRUE if at least one of the shares has not been bookmarked yet.
      */
-    bool setBookmarks(const QList<SharePtr> &shares);
+    bool setShares(const QList<SharePtr> &shares);
 
 protected:
     bool eventFilter(QObject *object, QEvent *event) override;
@@ -55,8 +55,7 @@ protected Q_SLOTS:
     void slotItemSelectionChanged();
     void slotLabelEdited();
     void slotCategoryEdited();
-    void slotAccepted();
-    void slotRejected();
+    void slotSaveBookmarks();
 
 private:
     QListWidget *m_listWidget;

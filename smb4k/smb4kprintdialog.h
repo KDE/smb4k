@@ -45,8 +45,7 @@ public:
     bool setPrinterShare(SharePtr printer);
 
 protected Q_SLOTS:
-    void slotCancelButtonClicked(bool checked);
-    void slotPrintButtonClicked(bool checked);
+    void slotPrintFile();
     void slotUrlChanged(const QString &path);
     void slotCopiesChanged(int copies);
 

@@ -70,9 +70,9 @@ Smb4KCustomSettingsEditor::Smb4KCustomSettingsEditor(QWidget *parent)
     m_cancelButton = buttonBox->addButton(QDialogButtonBox::Cancel);
     m_cancelButton->setShortcut(QKeySequence::Cancel);
 
-    connect(m_resetButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotRestoreDefaultsClicked);
-    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotSaveClicked);
-    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotCancelClicked);
+    connect(m_resetButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotRestoreDefaults);
+    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::slotSaveCustomSettings);
+    connect(m_cancelButton, &QPushButton::clicked, this, &Smb4KCustomSettingsEditor::reject);
 
     layout->addWidget(m_editorWidget);
     layout->addWidget(buttonBox);
@@ -164,7 +164,7 @@ bool Smb4KCustomSettingsEditor::setNetworkItem(NetworkItemPtr networkItem)
     return setCustomSettings;
 }
 
-void Smb4KCustomSettingsEditor::slotRestoreDefaultsClicked()
+void Smb4KCustomSettingsEditor::slotRestoreDefaults()
 {
     Smb4KCustomOptions defaultCustomSettings;
     Smb4KCustomOptions customSettings = *m_customSettings.data();
@@ -174,7 +174,7 @@ void Smb4KCustomSettingsEditor::slotRestoreDefaultsClicked()
     m_defaultsRestored = true;
 }
 
-void Smb4KCustomSettingsEditor::slotSaveClicked()
+void Smb4KCustomSettingsEditor::slotSaveCustomSettings()
 {
     OptionsPtr tempCustomSettings = OptionsPtr(new Smb4KCustomOptions(m_editorWidget->getCustomSettings()));
     m_customSettings.swap(tempCustomSettings);
@@ -189,11 +189,6 @@ void Smb4KCustomSettingsEditor::slotSaveClicked()
     // FIXME: Save completion objects?
 
     accept();
-}
-
-void Smb4KCustomSettingsEditor::slotCancelClicked()
-{
-    reject();
 }
 
 void Smb4KCustomSettingsEditor::slotCustomSettingsEdited(bool changed)
