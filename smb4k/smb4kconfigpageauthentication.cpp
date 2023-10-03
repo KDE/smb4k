@@ -147,6 +147,8 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     resetButton->setObjectName(QStringLiteral("reset_button"));
     resetButton->setEnabled(false);
 
+    connect(resetButton, SIGNAL(clicked(bool)), SLOT(slotResetButtonClicked(bool)));
+
     walletEntriesEditorLayout->addWidget(buttonBox);
 
     walletEntriesBoxLayout->addWidget(walletEntriesEditor);
