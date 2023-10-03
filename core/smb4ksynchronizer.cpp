@@ -13,10 +13,8 @@
 #include "smb4ksynchronizer_p.h"
 
 // Qt includes
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDebug>
-#include <QDir>
-#include <QFile>
 #include <QTimer>
 
 using namespace Smb4KGlobal;

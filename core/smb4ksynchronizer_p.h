@@ -10,7 +10,6 @@
 #define SMB4KSYNCHRONIZER_P_H
 
 // application specific includes
-#include "smb4kglobal.h"
 #include "smb4ksynchronizer.h"
 
 // Qt includes
