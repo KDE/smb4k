@@ -89,7 +89,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     //
     // The button box
     //
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Vertical, walletEntriesBox);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Vertical, walletEntriesEditor);
 
     //
     // Load button
