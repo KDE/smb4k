@@ -500,13 +500,13 @@ void Smb4KSyncJob::slotReadStandardOutput()
             }
 
         } else if (!line.contains(QStringLiteral("sending incremental file list"))) {
-            QString file = line.trimmed().remove(QStringLiteral("\n")).section(QStringLiteral("/"), -1, -1);
+            QString relativePath = line.trimmed().simplified();
 
             QUrl sourceUrl = m_sourceUrl;
-            sourceUrl.setPath(QDir::cleanPath(sourceUrl.path() + QStringLiteral("/") + file));
+            sourceUrl.setPath(QDir::cleanPath(sourceUrl.path() + QStringLiteral("/") + relativePath));
 
             QUrl destinationUrl = m_destinationUrl;
-            destinationUrl.setPath(QDir::cleanPath(destinationUrl.path() + QStringLiteral("/") + file));
+            destinationUrl.setPath(QDir::cleanPath(destinationUrl.path() + QStringLiteral("/") + relativePath));
 
             // Send description to the GUI
             Q_EMIT description(this, i18n("Synchronizing"), qMakePair(i18n("Source"), sourceUrl.path()), qMakePair(i18n("Destination"), destinationUrl.path()));
