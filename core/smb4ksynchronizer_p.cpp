@@ -2,7 +2,7 @@
     This file contains private helper classes for the Smb4KSynchronizer
     class.
 
-    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -11,38 +11,26 @@
 #include "smb4kglobal.h"
 #include "smb4knotification.h"
 #include "smb4ksettings.h"
-#include "smb4kshare.h"
 
 // Qt includes
-#include <QApplication>
-#include <QDialogButtonBox>
-#include <QGridLayout>
-#include <QLabel>
 #include <QLocale>
-#include <QPointer>
 #include <QRegularExpression>
 #include <QStandardPaths>
 #include <QTimer>
-#include <QWindow>
 
 // KDE includes
-#include <KIconLoader>
-#include <KLineEdit>
 #include <KLocalizedString>
-#include <KUrlCompletion>
-#include <KWindowConfig>
 
 using namespace Smb4KGlobal;
 
 Smb4KSyncJob::Smb4KSyncJob(QObject *parent)
     : KJob(parent)
-    , m_share(nullptr)
     , m_process(nullptr)
 {
     setCapabilities(KJob::Killable);
 
     m_terminated = false;
-    m_job_tracker = new KUiServerJobTracker(this);
+    m_jobTracker = new KUiServerJobTracker(this);
 }
 
 Smb4KSyncJob::~Smb4KSyncJob()
@@ -54,10 +42,11 @@ void Smb4KSyncJob::start()
     QTimer::singleShot(0, this, SLOT(slotStartSynchronization()));
 }
 
-void Smb4KSyncJob::setupSynchronization(const SharePtr &share)
+void Smb4KSyncJob::setupSynchronization(const QUrl &sourceUrl, const QUrl &destinationUrl)
 {
-    if (share) {
-        m_share = share;
+    if (sourceUrl.isValid() && !sourceUrl.isEmpty() && destinationUrl.isValid() && !destinationUrl.isEmpty()) {
+        m_sourceUrl = sourceUrl;
+        m_destinationUrl = destinationUrl;
     }
 }
 
@@ -73,52 +62,27 @@ bool Smb4KSyncJob::doKill()
 
 void Smb4KSyncJob::slotStartSynchronization()
 {
-    //
-    // Find the shell command
-    //
+    if (m_sourceUrl.isEmpty() || m_destinationUrl.isEmpty()) {
+        emitResult();
+        return;
+    }
+
     QString rsync = QStandardPaths::findExecutable(QStringLiteral("rsync"));
 
     if (rsync.isEmpty()) {
         Smb4KNotification::commandNotFound(QStringLiteral("rsync"));
         emitResult();
         return;
-    } else {
-        // Go ahead
     }
 
-    //
-    // The synchronization dialog
-    //
-    if (m_share) {
-        // Show the user an URL input dialog.
-        QPointer<Smb4KSynchronizationDialog> dlg = new Smb4KSynchronizationDialog(m_share, QApplication::activeWindow());
+    QDir destinationDirectory(m_destinationUrl.path());
 
-        if (dlg->exec() == QDialog::Accepted) {
-            // Create the destination directory if it does not already exits.
-            QDir syncDir(dlg->destination().path());
-
-            if (!syncDir.exists()) {
-                if (!QDir().mkpath(syncDir.path())) {
-                    Smb4KNotification::mkdirFailed(syncDir);
-                    emitResult();
-                    return;
-                }
-            }
-
-            // Make sure that we have got the trailing slash present.
-            // rsync is very picky regarding it.
-            m_sourceUrl = dlg->source();
-            m_destinationUrl = dlg->destination();
-
-            delete dlg;
-        } else {
-            delete dlg;
+    if (!destinationDirectory.exists()) {
+        if (!QDir().mkpath(destinationDirectory.path())) {
+            Smb4KNotification::mkdirFailed(destinationDirectory);
             emitResult();
             return;
         }
-    } else {
-        emitResult();
-        return;
     }
 
     //
@@ -412,8 +376,8 @@ void Smb4KSyncJob::slotStartSynchronization()
     //
     // The job tracker
     //
-    m_job_tracker->registerJob(this);
-    connect(this, SIGNAL(result(KJob *)), m_job_tracker, SLOT(unregisterJob(KJob *)));
+    m_jobTracker->registerJob(this);
+    connect(this, &Smb4KSyncJob::result, m_jobTracker, &KUiServerJobTracker::unregisterJob);
 
     //
     // The process
@@ -502,13 +466,13 @@ void Smb4KSyncJob::slotReadStandardOutput()
             }
 
         } else if (!line.contains(QStringLiteral("sending incremental file list"))) {
-            QString file = line.trimmed().remove(QStringLiteral("\n")).section(QStringLiteral("/"), -1, -1);
+            QString relativePath = line.trimmed().simplified();
 
             QUrl sourceUrl = m_sourceUrl;
-            sourceUrl.setPath(QDir::cleanPath(sourceUrl.path() + QStringLiteral("/") + file));
+            sourceUrl.setPath(QDir::cleanPath(sourceUrl.path() + QStringLiteral("/") + relativePath));
 
             QUrl destinationUrl = m_destinationUrl;
-            destinationUrl.setPath(QDir::cleanPath(destinationUrl.path() + QStringLiteral("/") + file));
+            destinationUrl.setPath(QDir::cleanPath(destinationUrl.path() + QStringLiteral("/") + relativePath));
 
             // Send description to the GUI
             Q_EMIT description(this, i18n("Synchronizing"), qMakePair(i18n("Source"), sourceUrl.path()), qMakePair(i18n("Destination"), destinationUrl.path()));
@@ -543,133 +507,4 @@ void Smb4KSyncJob::slotProcessFinished(int, QProcess::ExitStatus status)
     // Finish job
     emitResult();
     Q_EMIT finished(m_destinationUrl.path());
-}
-
-Smb4KSynchronizationDialog::Smb4KSynchronizationDialog(const SharePtr &share, QWidget *parent)
-    : QDialog(parent)
-    , m_share(share)
-{
-    setWindowTitle(i18n("Synchronization"));
-
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal, this);
-    m_swap_button = buttonBox->addButton(i18n("Swap Paths"), QDialogButtonBox::ActionRole);
-    m_swap_button->setToolTip(i18n("Swap source and destination"));
-    m_synchronize_button = buttonBox->addButton(i18n("Synchronize"), QDialogButtonBox::ActionRole);
-    m_synchronize_button->setToolTip(i18n("Synchronize the destination with the source"));
-    m_cancel_button = buttonBox->addButton(QDialogButtonBox::Cancel);
-
-    m_cancel_button->setShortcut(Qt::Key_Escape);
-
-    m_synchronize_button->setDefault(true);
-
-    QGridLayout *layout = new QGridLayout(this);
-
-    QLabel *pixmap = new QLabel(this);
-    QPixmap sync_pix = KDE::icon(QStringLiteral("folder-sync")).pixmap(KIconLoader::SizeHuge);
-    pixmap->setPixmap(sync_pix);
-    pixmap->setAlignment(Qt::AlignBottom);
-
-    QLabel *description = new QLabel(i18n("Please provide the source and destination "
-                                          "directory for the synchronization."),
-                                     this);
-    description->setWordWrap(true);
-    description->setAlignment(Qt::AlignBottom);
-
-    QUrl sourceUrl = QUrl(QDir::cleanPath(m_share->path()));
-    QUrl destinationUrl =
-        QUrl(QDir::cleanPath(Smb4KSettings::rsyncPrefix().path() + QDir::separator() + m_share->hostName() + QDir::separator() + m_share->shareName()));
-
-    QLabel *source_label = new QLabel(i18n("Source:"), this);
-    m_source = new KUrlRequester(this);
-    m_source->setUrl(sourceUrl);
-    m_source->setMode(KFile::Directory | KFile::LocalOnly);
-    m_source->lineEdit()->setSqueezedTextEnabled(true);
-    m_source->completionObject()->setCompletionMode(KCompletion::CompletionPopupAuto);
-    m_source->completionObject()->setMode(KUrlCompletion::FileCompletion);
-    m_source->setWhatsThis(
-        i18n("This is the source directory. The data that it contains is to be written "
-             "to the destination directory."));
-
-    QLabel *destination_label = new QLabel(i18n("Destination:"), this);
-    m_destination = new KUrlRequester(this);
-    m_destination->setUrl(destinationUrl);
-    m_destination->setMode(KFile::Directory | KFile::LocalOnly);
-    m_destination->lineEdit()->setSqueezedTextEnabled(true);
-    m_destination->completionObject()->setCompletionMode(KCompletion::CompletionPopupAuto);
-    m_destination->completionObject()->setMode(KUrlCompletion::FileCompletion);
-    m_destination->setWhatsThis(
-        i18n("This is the destination directory. It will be updated with the data "
-             "from the source directory."));
-
-    layout->addWidget(pixmap, 0, 0);
-    layout->addWidget(description, 0, 1, Qt::AlignBottom);
-    layout->addWidget(source_label, 1, 0);
-    layout->addWidget(m_source, 1, 1);
-    layout->addWidget(destination_label, 2, 0);
-    layout->addWidget(m_destination, 2, 1);
-    layout->addWidget(buttonBox, 3, 0, 1, 2);
-
-    //
-    // Connections
-    //
-    connect(m_cancel_button, SIGNAL(clicked()), SLOT(slotCancelClicked()));
-    connect(m_synchronize_button, SIGNAL(clicked()), SLOT(slotSynchronizeClicked()));
-    connect(m_swap_button, SIGNAL(clicked()), SLOT(slotSwapPathsClicked()));
-
-    //
-    // Set the dialog size
-    //
-    create();
-
-    KConfigGroup group(Smb4KSettings::self()->config(), "SynchronizationDialog");
-    QSize dialogSize;
-
-    if (group.exists()) {
-        KWindowConfig::restoreWindowSize(windowHandle(), group);
-        dialogSize = windowHandle()->size();
-    } else {
-        dialogSize = sizeHint();
-    }
-
-    resize(dialogSize); // workaround for QTBUG-40584
-}
-
-Smb4KSynchronizationDialog::~Smb4KSynchronizationDialog()
-{
-}
-
-const QUrl Smb4KSynchronizationDialog::source()
-{
-    return m_source->url();
-}
-
-const QUrl Smb4KSynchronizationDialog::destination()
-{
-    return m_destination->url();
-}
-
-/////////////////////////////////////////////////////////////////////////////
-//   SLOT IMPLEMENTATIONS
-/////////////////////////////////////////////////////////////////////////////
-
-void Smb4KSynchronizationDialog::slotCancelClicked()
-{
-    reject();
-}
-
-void Smb4KSynchronizationDialog::slotSynchronizeClicked()
-{
-    KConfigGroup group(Smb4KSettings::self()->config(), "SynchronizationDialog");
-    KWindowConfig::saveWindowSize(windowHandle(), group);
-    accept();
-}
-
-void Smb4KSynchronizationDialog::slotSwapPathsClicked()
-{
-    // Swap URLs.
-    QString sourceURL = m_source->url().path();
-    QString destinationURL = m_destination->url().path();
-
-    m_source->setUrl(QUrl(destinationURL));
-    m_destination->setUrl(QUrl(sourceURL));
 }

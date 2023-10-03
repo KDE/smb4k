@@ -844,7 +844,7 @@ void Smb4KNetworkBrowserDockWidget::slotAddBookmark(bool checked)
     if (!shares.isEmpty()) {
         QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
 
-        if (bookmarkDialog->setBookmarks(shares)) {
+        if (bookmarkDialog->setShares(shares)) {
             bookmarkDialog->open();
         }
     }

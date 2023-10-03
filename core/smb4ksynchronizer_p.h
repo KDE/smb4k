@@ -2,7 +2,7 @@
     This file contains private helper classes for the Smb4KSynchronizer
     class.
 
-    SPDX-FileCopyrightText: 2008-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2008-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -14,15 +14,12 @@
 #include "smb4ksynchronizer.h"
 
 // Qt includes
-#include <QDialog>
-#include <QPushButton>
 #include <QUrl>
 
 // KDE includes
 #include <KJob>
 #include <KProcess>
 #include <KUiServerJobTracker>
-#include <KUrlRequester>
 
 class Smb4KSyncJob : public KJob
 {
@@ -48,29 +45,11 @@ public:
      * Setup the synchronization process. This function must be
      * called before start() is run.
      *
-     * @param share     The share
-     */
-    void setupSynchronization(const SharePtr &share);
-
-    /**
-     * Returns the source directory.
+     * @param sourceUrl         The source URL
      *
-     * @returns the source directory.
+     * @param destinationUrl    The destination URL
      */
-    const QUrl &source()
-    {
-        return m_sourceUrl;
-    }
-
-    /**
-     * Returns the destination directory.
-     *
-     * @returns the destination directory.
-     */
-    const QUrl &destination()
-    {
-        return m_destinationUrl;
-    }
+    void setupSynchronization(const QUrl &sourceUrl, const QUrl &destinationUrl);
 
 Q_SIGNALS:
     /**
@@ -103,67 +82,11 @@ protected Q_SLOTS:
     void slotProcessFinished(int exitCode, QProcess::ExitStatus status);
 
 private:
-    SharePtr m_share;
     QUrl m_sourceUrl;
     QUrl m_destinationUrl;
     KProcess *m_process;
-    KUiServerJobTracker *m_job_tracker;
+    KUiServerJobTracker *m_jobTracker;
     bool m_terminated;
-};
-
-class Smb4KSynchronizationDialog : public QDialog
-{
-    Q_OBJECT
-
-public:
-    /**
-     * The constructor
-     *
-     * @param share         The share item
-     *
-     * @param parent        The parent widget
-     */
-    explicit Smb4KSynchronizationDialog(const SharePtr &share, QWidget *parent = nullptr);
-
-    /**
-     * The destructor
-     */
-    ~Smb4KSynchronizationDialog();
-
-    /**
-     * The source URL
-     */
-    const QUrl source();
-
-    /**
-     * The destination URL
-     */
-    const QUrl destination();
-
-protected Q_SLOTS:
-    void slotCancelClicked();
-    void slotSynchronizeClicked();
-    void slotSwapPathsClicked();
-
-private:
-    QPushButton *m_swap_button;
-    QPushButton *m_synchronize_button;
-    QPushButton *m_cancel_button;
-
-    /**
-     * A pointer to the share object
-     */
-    SharePtr m_share;
-
-    /**
-     * The source URL requester
-     */
-    KUrlRequester *m_source;
-
-    /**
-     * The destination URL requester
-     */
-    KUrlRequester *m_destination;
 };
 
 class Smb4KSynchronizerPrivate

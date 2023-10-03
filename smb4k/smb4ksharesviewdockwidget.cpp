@@ -15,6 +15,7 @@
 #include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
 #include "smb4ksharesviewitem.h"
+#include "smb4ksynchronizationdialog.h"
 #include "smb4ktooltip.h"
 
 #if defined(Q_OS_LINUX)
@@ -307,7 +308,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
 
     if (selectedItems.size() == 1) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItems.first());
-        bool syncRunning = Smb4KSynchronizer::self()->isRunning(item->shareItem());
+        bool syncRunning = Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()));
 
         m_actionCollection->action(QStringLiteral("unmount_action"))
             ->setEnabled((!item->shareItem()->isForeign() || Smb4KMountSettings::unmountForeignShares()));
@@ -334,7 +335,7 @@ void Smb4KSharesViewDockWidget::slotItemSelectionChanged()
 
             if (item) {
                 // Is the share synchronized at the moment?
-                if (Smb4KSynchronizer::self()->isRunning(item->shareItem())) {
+                if (Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()))) {
                     syncsRunning += 1;
                 }
 
@@ -527,7 +528,7 @@ void Smb4KSharesViewDockWidget::slotBookmarkActionTriggered(bool checked)
 
     QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
 
-    if (bookmarkDialog->setBookmarks(shares)) {
+    if (bookmarkDialog->setShares(shares)) {
         bookmarkDialog->open();
     }
 }
@@ -543,7 +544,6 @@ void Smb4KSharesViewDockWidget::slotAddCustomSettingsTriggered(bool checked)
 
         QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
         if (customSettingsEditor->setNetworkItem(item->shareItem())) {
-            customSettingsEditor->setAttribute(Qt::WA_DeleteOnClose);
             customSettingsEditor->open();
         } else {
             delete customSettingsEditor;
@@ -560,8 +560,13 @@ void Smb4KSharesViewDockWidget::slotSynchronizeActionTriggered(bool checked)
     for (QListWidgetItem *selectedItem : qAsConst(selectedItems)) {
         Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(selectedItem);
 
-        if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(item->shareItem())) {
-            Smb4KSynchronizer::self()->synchronize(item->shareItem());
+        if (item && !item->shareItem()->isInaccessible() && !Smb4KSynchronizer::self()->isRunning(QUrl::fromLocalFile(item->shareItem()->path()))) {
+            QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog();
+            if (synchronizationDialog->setShare(item->shareItem())) {
+                synchronizationDialog->open();
+            } else {
+                delete synchronizationDialog;
+            }
         }
     }
 }

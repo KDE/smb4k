@@ -1,7 +1,7 @@
 /*
     This is the new synchronizer of Smb4K.
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -46,13 +46,14 @@ public:
     static Smb4KSynchronizer *self();
 
     /**
-     * Sets the URL for the source and destination by showing the user a
-     * dialog for URL input. The URLs are then passed to the actual job that
-     * does all the work.
+     * Sets the URL for the source and destination and start the
+     * synchronization.
      *
-     * @param share         The Smb4KShare object
+     * @param sourceUrl         The source URL
+     *
+     * @param destinationUrl    The destination URL
      */
-    void synchronize(const SharePtr &share);
+    void synchronize(const QUrl &sourceUrl, const QUrl &destinationUrl);
 
     /**
      * This function tells you whether the synchronizer is running
@@ -64,20 +65,19 @@ public:
 
     /**
      * With this function you can test whether a synchronization job
-     * for a certain share @param share is already running.
+     * for a certain @param sourceUrl is already running.
      *
      * @returns TRUE if a synchronization process is already running
      */
-    bool isRunning(const SharePtr &share);
+    bool isRunning(const QUrl &sourceUrl);
 
     /**
      * This function either aborts the synchronization for a certain
-     * mounted share, if a valid pointer is passed, or aborts all running
-     * processes.
+     * URL or aborts all running processes.
      *
      * @param share         The Smb4KShare object
      */
-    void abort(const SharePtr &share = SharePtr());
+    void abort(const QUrl &sourceUrl = QUrl());
 
     /**
      * This function starts the composite job

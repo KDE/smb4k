@@ -21,6 +21,7 @@
 #include "smb4k/smb4kcustomsettingseditor.h"
 #include "smb4k/smb4kpreviewdialog.h"
 #include "smb4k/smb4kprintdialog.h"
+#include "smb4k/smb4ksynchronizationdialog.h"
 #include "smb4kbookmarkdialog.h"
 #include "smb4kbookmarkeditor.h"
 #include "smb4kbookmarkobject.h"
@@ -338,7 +339,7 @@ void Smb4KDeclarative::addBookmark(Smb4KNetworkObject *object)
         if (!shares.isEmpty()) {
             QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
 
-            if (bookmarkDialog->setBookmarks(shares)) {
+            if (bookmarkDialog->setShares(shares)) {
                 bookmarkDialog->open();
             }
         }
@@ -370,7 +371,12 @@ void Smb4KDeclarative::synchronize(Smb4KNetworkObject *object)
     if (object && object->type() == Smb4KNetworkObject::Share) {
         for (const SharePtr &share : Smb4KGlobal::mountedSharesList()) {
             if (share->url() == object->url()) {
-                Smb4KSynchronizer::self()->synchronize(share);
+                QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog();
+                if (synchronizationDialog->setShare(share)) {
+                    synchronizationDialog->open();
+                } else {
+                    delete synchronizationDialog;
+                }
             }
         }
     }

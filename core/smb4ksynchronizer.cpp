@@ -1,7 +1,7 @@
 /*
     This is the new synchronizer of Smb4K.
 
-    SPDX-FileCopyrightText: 2011-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2011-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -40,18 +40,16 @@ Smb4KSynchronizer *Smb4KSynchronizer::self()
     return &p->instance;
 }
 
-void Smb4KSynchronizer::synchronize(const SharePtr &share)
+void Smb4KSynchronizer::synchronize(const QUrl &sourceUrl, const QUrl &destinationUrl)
 {
-    if (!isRunning(share)) {
-        // Create a new job, add it to the subjobs and register it
-        // with the job tracker.
+    if (!isRunning(sourceUrl)) {
         Smb4KSyncJob *job = new Smb4KSyncJob(this);
-        job->setObjectName(QStringLiteral("SyncJob_") + share->canonicalPath());
-        job->setupSynchronization(share);
+        job->setObjectName(QStringLiteral("SyncJob_") + sourceUrl.toLocalFile());
+        job->setupSynchronization(sourceUrl, destinationUrl);
 
-        connect(job, SIGNAL(result(KJob *)), SLOT(slotJobFinished(KJob *)));
-        connect(job, SIGNAL(aboutToStart(QString)), SIGNAL(aboutToStart(QString)));
-        connect(job, SIGNAL(finished(QString)), SIGNAL(finished(QString)));
+        connect(job, &Smb4KSyncJob::result, this, &Smb4KSynchronizer::slotJobFinished);
+        connect(job, &Smb4KSyncJob::aboutToStart, this, &Smb4KSynchronizer::aboutToStart);
+        connect(job, &Smb4KSyncJob::finished, this, &Smb4KSynchronizer::finished);
 
         addSubjob(job);
 
@@ -64,14 +62,14 @@ bool Smb4KSynchronizer::isRunning()
     return hasSubjobs();
 }
 
-bool Smb4KSynchronizer::isRunning(const SharePtr &share)
+bool Smb4KSynchronizer::isRunning(const QUrl &sourceUrl)
 {
     bool running = false;
 
     QListIterator<KJob *> it(subjobs());
 
     while (it.hasNext()) {
-        if (it.next()->objectName() == QStringLiteral("SyncJob_") + share->canonicalPath()) {
+        if (it.next()->objectName() == QStringLiteral("SyncJob_") + sourceUrl.toLocalFile()) {
             running = true;
             break;
         }
@@ -80,15 +78,15 @@ bool Smb4KSynchronizer::isRunning(const SharePtr &share)
     return running;
 }
 
-void Smb4KSynchronizer::abort(const SharePtr &share)
+void Smb4KSynchronizer::abort(const QUrl &sourceUrl)
 {
-    if (share && !share.isNull()) {
+    if (!sourceUrl.isEmpty() && sourceUrl.isValid()) {
         QListIterator<KJob *> it(subjobs());
 
         while (it.hasNext()) {
             KJob *job = it.next();
 
-            if (QStringLiteral("SyncJob_") + share->canonicalPath() == job->objectName()) {
+            if (QStringLiteral("SyncJob_") + sourceUrl.toLocalFile() == job->objectName()) {
                 job->kill(KJob::EmitResult);
                 break;
             }

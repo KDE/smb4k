@@ -13,7 +13,10 @@
 #include "core/smb4kmounter.h"
 #include "core/smb4kshare.h"
 #include "core/smb4ksynchronizer.h"
+#include "smb4kbookmarkdialog.h"
 #include "smb4kcustomsettingseditor.h"
+#include "smb4kpreviewdialog.h"
+#include "smb4ksynchronizationdialog.h"
 
 #if defined(Q_OS_LINUX)
 #include "smb4kmountsettings_linux.h"
@@ -357,7 +360,12 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
         if (type == QStringLiteral("unmount")) {
             Smb4KMounter::self()->unmountShare(share, false);
         } else if (type == QStringLiteral("bookmark")) {
-            Smb4KBookmarkHandler::self()->addBookmark(share);
+            QPointer<Smb4KBookmarkDialog> bookmarkDialog = new Smb4KBookmarkDialog();
+            if (bookmarkDialog->setShares(QList<SharePtr>({share}))) {
+                bookmarkDialog->open();
+            } else {
+                delete bookmarkDialog;
+            }
         } else if (type == QStringLiteral("options")) {
             QPointer<Smb4KCustomSettingsEditor> customSettingsEditor = new Smb4KCustomSettingsEditor();
             if (customSettingsEditor->setNetworkItem(share)) {
@@ -366,7 +374,12 @@ void Smb4KSharesMenu::slotShareAction(QAction *action)
                 delete customSettingsEditor;
             }
         } else if (type == QStringLiteral("sync")) {
-            Smb4KSynchronizer::self()->synchronize(share);
+            QPointer<Smb4KSynchronizationDialog> synchronizationDialog = new Smb4KSynchronizationDialog();
+            if (synchronizationDialog->setShare(share)) {
+                synchronizationDialog->open();
+            } else {
+                delete synchronizationDialog;
+            }
         } else if (type == QStringLiteral("konsole")) {
             openShare(share, Smb4KGlobal::Konsole);
         } else if (type == QStringLiteral("filemanager")) {
