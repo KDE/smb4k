@@ -53,9 +53,6 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
     QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
 
-    //
-    // Wallet Entries editor
-    //
     m_walletEntriesEditor = new QWidget(walletEntriesBox);
     QHBoxLayout *walletEntriesEditorLayout = new QHBoxLayout(m_walletEntriesEditor);
     walletEntriesEditorLayout->setContentsMargins(0, 0, 0, 0);
@@ -112,6 +109,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
 
     layout->addWidget(walletEntriesBox);
 
+    // FIXME: Find way to make this work with signals and slots.
     slotKWalletButtonToggled(useWallet->isChecked());
     slotDefaultLoginToggled(useDefaultLogin->isChecked());
 
@@ -206,8 +204,8 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
         if (e->type() == QEvent::MouseButtonPress) {
             QMouseEvent *event = static_cast<QMouseEvent *>(e);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-            QPointF pos = walletEntriesWidget->mapFromGlobal(event->globalPosition());
-            QListWidgetItem *item = walletEntriesWidget->itemAt(pos.toPoint());
+            QPointF pos = m_walletEntriesWidget->mapFromGlobal(event->globalPosition());
+            QListWidgetItem *item = m_walletEntriesWidget->itemAt(pos.toPoint());
 #else
             QPoint pos = m_walletEntriesWidget->mapFromGlobal(event->globalPos());
             QListWidgetItem *item = m_walletEntriesWidget->itemAt(pos);
