@@ -15,10 +15,8 @@
 #include <QDialogButtonBox>
 #include <QGroupBox>
 #include <QHBoxLayout>
-#include <QListWidget>
 #include <QListWidgetItem>
 #include <QMouseEvent>
-#include <QPushButton>
 #include <QVBoxLayout>
 
 // KDE includes
@@ -31,14 +29,8 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
 {
     m_entries_loaded = false;
 
-    //
-    // Layout
-    //
     QVBoxLayout *layout = new QVBoxLayout(this);
 
-    //
-    // Settings
-    //
     QGroupBox *settingsBox = new QGroupBox(i18n("Settings"), this);
     QVBoxLayout *settingsBoxLayout = new QVBoxLayout(settingsBox);
 
@@ -58,111 +50,72 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
 
     layout->addWidget(settingsBox);
 
-    //
-    // Wallet entries widget
-    //
     QGroupBox *walletEntriesBox = new QGroupBox(i18n("Wallet Entries"), this);
     QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
 
     //
     // Wallet Entries editor
     //
-    QWidget *walletEntriesEditor = new QWidget(walletEntriesBox);
-    walletEntriesEditor->setObjectName(QStringLiteral("WalletEntriesEditor"));
-    QHBoxLayout *walletEntriesEditorLayout = new QHBoxLayout(walletEntriesEditor);
+    m_walletEntriesEditor = new QWidget(walletEntriesBox);
+    QHBoxLayout *walletEntriesEditorLayout = new QHBoxLayout(m_walletEntriesEditor);
     walletEntriesEditorLayout->setContentsMargins(0, 0, 0, 0);
 
-    //
-    // The list view
-    //
-    QListWidget *walletEntriesWidget = new QListWidget(walletEntriesEditor);
-    walletEntriesWidget->setObjectName(QStringLiteral("WalletEntriesWidget"));
-    walletEntriesWidget->setDragDropMode(QListWidget::NoDragDrop);
-    walletEntriesWidget->setSelectionMode(QListWidget::SingleSelection);
-    walletEntriesWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
-    walletEntriesWidget->viewport()->installEventFilter(this);
+    m_walletEntriesWidget = new QListWidget(m_walletEntriesEditor);
+    m_walletEntriesWidget->setDragDropMode(QListWidget::NoDragDrop);
+    m_walletEntriesWidget->setSelectionMode(QListWidget::SingleSelection);
+    m_walletEntriesWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
+    m_walletEntriesWidget->viewport()->installEventFilter(this);
 
-    connect(walletEntriesWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), SLOT(slotWalletItemDoubleClicked(QListWidgetItem *)));
+    connect(m_walletEntriesWidget, &QListWidget::itemDoubleClicked, this, &Smb4KConfigPageAuthentication::slotWalletItemDoubleClicked);
 
-    walletEntriesEditorLayout->addWidget(walletEntriesWidget);
+    walletEntriesEditorLayout->addWidget(m_walletEntriesWidget);
 
-    //
-    // The button box
-    //
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Vertical, walletEntriesBox);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Vertical, m_walletEntriesEditor);
 
-    //
-    // Load button
-    //
-    QPushButton *loadButton = buttonBox->addButton(i18n("Load"), QDialogButtonBox::ActionRole);
-    loadButton->setIcon(KDE::icon(QStringLiteral("document-open")));
-    loadButton->setObjectName(QStringLiteral("load_button"));
+    m_loadButton = buttonBox->addButton(i18n("Load"), QDialogButtonBox::ActionRole);
+    m_loadButton->setIcon(KDE::icon(QStringLiteral("document-open")));
 
-    connect(loadButton, SIGNAL(clicked(bool)), SLOT(slotLoadButtonClicked(bool)));
+    connect(m_loadButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotLoadButtonClicked);
 
-    //
-    // Save button
-    //
-    QPushButton *saveButton = buttonBox->addButton(i18n("Save"), QDialogButtonBox::ActionRole);
-    saveButton->setIcon(KDE::icon(QStringLiteral("document-save-all")));
-    saveButton->setObjectName(QStringLiteral("save_button"));
-    saveButton->setEnabled(false);
+    m_saveButton = buttonBox->addButton(i18n("Save"), QDialogButtonBox::ActionRole);
+    m_saveButton->setIcon(KDE::icon(QStringLiteral("document-save-all")));
+    m_saveButton->setEnabled(false);
 
-    connect(saveButton, SIGNAL(clicked(bool)), SLOT(slotSaveButtonClicked(bool)));
+    connect(m_saveButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotSaveButtonClicked);
 
-    //
-    // Edit button
-    //
-    QPushButton *editButton = buttonBox->addButton(i18n("Edit"), QDialogButtonBox::ActionRole);
-    editButton->setIcon(KDE::icon(QStringLiteral("edit-rename")));
-    editButton->setObjectName(QStringLiteral("edit_button"));
-    editButton->setEnabled(false);
+    m_editButton = buttonBox->addButton(i18n("Edit"), QDialogButtonBox::ActionRole);
+    m_editButton->setIcon(KDE::icon(QStringLiteral("edit-rename")));
+    m_editButton->setEnabled(false);
 
-    connect(editButton, SIGNAL(clicked(bool)), SLOT(slotEditButtonClicked(bool)));
+    connect(m_editButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotEditButtonClicked);
 
-    //
-    // Remove button
-    //
-    QPushButton *removeButton = buttonBox->addButton(i18n("Remove"), QDialogButtonBox::ActionRole);
-    removeButton->setIcon(KDE::icon(QStringLiteral("edit-delete")));
-    removeButton->setObjectName(QStringLiteral("remove_button"));
-    removeButton->setEnabled(false);
+    m_removeButton = buttonBox->addButton(i18n("Remove"), QDialogButtonBox::ActionRole);
+    m_removeButton->setIcon(KDE::icon(QStringLiteral("edit-delete")));
+    m_removeButton->setEnabled(false);
 
-    connect(removeButton, SIGNAL(clicked(bool)), SLOT(slotRemoveButtonClicked(bool)));
+    connect(m_removeButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotRemoveButtonClicked);
 
-    //
-    // Clear button
-    //
-    QPushButton *clearButton = buttonBox->addButton(i18n("Clear"), QDialogButtonBox::ActionRole);
-    clearButton->setIcon(KDE::icon(QStringLiteral("edit-clear-list")));
-    clearButton->setObjectName(QStringLiteral("clear_button"));
-    clearButton->setEnabled(false);
+    m_clearButton = buttonBox->addButton(i18n("Clear"), QDialogButtonBox::ActionRole);
+    m_clearButton->setIcon(KDE::icon(QStringLiteral("edit-clear-list")));
+    m_clearButton->setEnabled(false);
 
-    connect(clearButton, SIGNAL(clicked(bool)), SLOT(slotClearButtonClicked(bool)));
+    connect(m_clearButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotClearButtonClicked);
 
-    //
-    // Reset button
-    //
-    QPushButton *resetButton = buttonBox->addButton(QDialogButtonBox::Reset);
-    resetButton->setObjectName(QStringLiteral("reset_button"));
-    resetButton->setEnabled(false);
+    m_resetButton = buttonBox->addButton(QDialogButtonBox::Reset);
+    m_resetButton->setEnabled(false);
+
+    connect(m_resetButton, &QPushButton::clicked, this, &Smb4KConfigPageAuthentication::slotResetButtonClicked);
 
     walletEntriesEditorLayout->addWidget(buttonBox);
 
-    walletEntriesBoxLayout->addWidget(walletEntriesEditor);
+    walletEntriesBoxLayout->addWidget(m_walletEntriesEditor);
 
     layout->addWidget(walletEntriesBox);
 
-    //
-    // Adjustments
-    //
     slotKWalletButtonToggled(useWallet->isChecked());
     slotDefaultLoginToggled(useDefaultLogin->isChecked());
 
-    //
-    // Connection to enable/disable the reset button
-    //
-    connect(this, SIGNAL(walletEntriesModified()), SLOT(slotEnableResetButton()));
+    connect(this, &Smb4KConfigPageAuthentication::walletEntriesModified, this, &Smb4KConfigPageAuthentication::slotEnableResetButton);
 }
 
 Smb4KConfigPageAuthentication::~Smb4KConfigPageAuthentication()
@@ -171,60 +124,33 @@ Smb4KConfigPageAuthentication::~Smb4KConfigPageAuthentication()
 
 void Smb4KConfigPageAuthentication::loadLoginCredentials()
 {
-    //
-    // Insert the list of authentication information
-    //
     m_entriesList = Smb4KWalletManager::self()->loginCredentialsList();
 
-    //
-    // Reset the changed flag, since we are (re)loading the information
-    //
     Q_EMIT walletEntriesModified();
 
-    //
-    // Get the list widget
-    //
-    QListWidget *walletEntriesWidget = findChild<QListWidget *>(QStringLiteral("WalletEntriesWidget"));
+    m_walletEntriesWidget->clear();
 
-    //
-    // Clear the list widget
-    //
-    walletEntriesWidget->clear();
-
-    //
-    // Insert the authentication information entries into the
-    // list widget
-    //
     for (Smb4KAuthInfo *authInfo : qAsConst(m_entriesList)) {
         switch (authInfo->type()) {
         case UnknownNetworkItem: {
-            QListWidgetItem *item = new QListWidgetItem(KDE::icon(QStringLiteral("dialog-password")), i18n("Default Login"), walletEntriesWidget);
+            QListWidgetItem *item = new QListWidgetItem(KDE::icon(QStringLiteral("dialog-password")), i18n("Default Login"), m_walletEntriesWidget);
             item->setData(Qt::UserRole, authInfo->url());
             break;
         }
         default: {
-            QListWidgetItem *item = new QListWidgetItem(KDE::icon(QStringLiteral("dialog-password")), authInfo->displayString(), walletEntriesWidget);
+            QListWidgetItem *item = new QListWidgetItem(KDE::icon(QStringLiteral("dialog-password")), authInfo->displayString(), m_walletEntriesWidget);
             item->setData(Qt::UserRole, authInfo->url());
             break;
         }
         }
     }
 
-    //
-    // Sort the entries
-    //
-    walletEntriesWidget->sortItems();
+    m_walletEntriesWidget->sortItems();
 
-    //
-    // Set the loaded flag to true
-    //
     m_entries_loaded = true;
 
-    //
-    // Enable buttons
-    //
-    findChild<QPushButton *>(QStringLiteral("save_button"))->setEnabled(walletEntriesWidget->count() != 0);
-    findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled(walletEntriesWidget->count() != 0);
+    m_saveButton->setEnabled(m_walletEntriesWidget->count() != 0);
+    m_clearButton->setEnabled(m_walletEntriesWidget->count() != 0);
 }
 
 void Smb4KConfigPageAuthentication::saveLoginCredentials()
@@ -273,15 +199,7 @@ bool Smb4KConfigPageAuthentication::loginCredentialsChanged()
 
 bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
 {
-    //
-    // Get the list widget
-    //
-    QListWidget *walletEntriesWidget = findChild<QListWidget *>(QStringLiteral("WalletEntriesWidget"));
-
-    //
-    // Process the events in the list widget
-    //
-    if (object == walletEntriesWidget->viewport()) {
+    if (object == m_walletEntriesWidget->viewport()) {
         // If the user clicked on the viewport of the entries view, clear
         // the details widget and the "Details" button, if no item
         // is under the mouse.
@@ -291,15 +209,15 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
             QPointF pos = walletEntriesWidget->mapFromGlobal(event->globalPosition());
             QListWidgetItem *item = walletEntriesWidget->itemAt(pos.toPoint());
 #else
-            QPoint pos = walletEntriesWidget->mapFromGlobal(event->globalPos());
-            QListWidgetItem *item = walletEntriesWidget->itemAt(pos);
+            QPoint pos = m_walletEntriesWidget->mapFromGlobal(event->globalPos());
+            QListWidgetItem *item = m_walletEntriesWidget->itemAt(pos);
 #endif
 
-            findChild<QPushButton *>(QStringLiteral("edit_button"))->setEnabled(item != nullptr);
-            findChild<QPushButton *>(QStringLiteral("remove_button"))->setEnabled(item != nullptr);
+            m_editButton->setEnabled(item != nullptr);
+            m_removeButton->setEnabled(item != nullptr);
 
             if (!item) {
-                walletEntriesWidget->clearSelection();
+                m_walletEntriesWidget->clearSelection();
             }
         }
     }
@@ -314,7 +232,7 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
 void Smb4KConfigPageAuthentication::slotKWalletButtonToggled(bool checked)
 {
     findChild<QCheckBox *>(QStringLiteral("kcfg_UseDefaultLogin"))->setEnabled(checked);
-    findChild<QWidget *>(QStringLiteral("WalletEntriesEditor"))->setEnabled(checked);
+    m_walletEntriesEditor->setEnabled(checked);
 }
 
 void Smb4KConfigPageAuthentication::slotDefaultLoginToggled(bool checked)
@@ -352,8 +270,8 @@ void Smb4KConfigPageAuthentication::slotLoadButtonClicked(bool checked)
         loadLoginCredentials();
     }
 
-    findChild<QPushButton *>(QStringLiteral("load_button"))->setEnabled(false);
-    findChild<QListWidget *>()->setFocus();
+    m_loadButton->setEnabled(false);
+    m_walletEntriesWidget->setFocus();
 }
 
 void Smb4KConfigPageAuthentication::slotSaveButtonClicked(bool checked)
@@ -364,27 +282,12 @@ void Smb4KConfigPageAuthentication::slotSaveButtonClicked(bool checked)
         saveLoginCredentials();
     }
 
-    //
-    // Get the list widget
-    //
-    QListWidget *walletEntriesWidget = findChild<QListWidget *>(QStringLiteral("WalletEntriesWidget"));
+    m_editButton->setEnabled(false);
+    m_removeButton->setEnabled(false);
+    m_clearButton->setEnabled((m_walletEntriesWidget->count() != 0));
 
-    //
-    // Disable buttons
-    //
-    findChild<QPushButton *>(QStringLiteral("edit_button"))->setEnabled(false);
-    findChild<QPushButton *>(QStringLiteral("remove_button"))->setEnabled(false);
-    findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled((walletEntriesWidget->count() != 0));
+    m_walletEntriesWidget->clearSelection();
 
-    //
-    // Clear the selection in the list view
-    //
-    walletEntriesWidget->clearSelection();
-
-    //
-    // Tell the program that the authentication information may be changed
-    // and emit the appropriate signal
-    //
     Q_EMIT walletEntriesModified();
 }
 
@@ -394,14 +297,12 @@ void Smb4KConfigPageAuthentication::slotEditButtonClicked(bool checked)
 
     KPasswordDialog dlg(this, KPasswordDialog::ShowUsernameLine);
 
-    QListWidget *walletEntriesWidget = findChild<QListWidget *>(QStringLiteral("WalletEntriesWidget"));
-
-    if (walletEntriesWidget->currentItem()) {
+    if (m_walletEntriesWidget->currentItem()) {
         Smb4KAuthInfo *authInfo = nullptr;
 
         for (Smb4KAuthInfo *walletEntry : qAsConst(m_entriesList)) {
             // The following check also finds the default login, because it has an empty URL.
-            if (walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == walletEntry->url()) {
+            if (m_walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == walletEntry->url()) {
                 if (walletEntry->type() != Smb4KGlobal::UnknownNetworkItem) {
                     dlg.setPrompt(i18n("Set the username and password for wallet entry %1.", walletEntry->displayString()));
                 } else {
@@ -431,17 +332,9 @@ void Smb4KConfigPageAuthentication::slotRemoveButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    //
-    // Get the list widget
-    //
-    QListWidget *walletEntriesWidget = findChild<QListWidget *>(QStringLiteral("WalletEntriesWidget"));
-
-    //
-    // Remove the appropriate entry from the list of authentication information
-    //
     for (int i = 0; i < m_entriesList.size(); ++i) {
         // The following check also finds the default login, because it has an empty URL.
-        if (walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == m_entriesList.at(i)->url()) {
+        if (m_walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == m_entriesList.at(i)->url()) {
             switch (m_entriesList.at(i)->type()) {
             case UnknownNetworkItem: {
                 QCheckBox *useDefaultLogin = findChild<QCheckBox *>(QStringLiteral("kcfg_UseDefaultLogin"));
@@ -460,20 +353,10 @@ void Smb4KConfigPageAuthentication::slotRemoveButtonClicked(bool checked)
         }
     }
 
-    //
-    // Remove the current item
-    //
-    delete walletEntriesWidget->currentItem();
+    delete m_walletEntriesWidget->currentItem();
 
-    //
-    // Enable actions
-    //
-    findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled((walletEntriesWidget->count() != 0));
+    m_clearButton->setEnabled((m_walletEntriesWidget->count() != 0));
 
-    //
-    // Tell the program that the authentication information may be changed
-    // and emit the appropriate signal
-    //
     Q_EMIT walletEntriesModified();
 }
 
@@ -481,39 +364,18 @@ void Smb4KConfigPageAuthentication::slotClearButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    //
-    // Get the list widget
-    //
-    QListWidget *walletEntriesWidget = findChild<QListWidget *>(QStringLiteral("WalletEntriesWidget"));
-
-    //
-    // Remove all entries from the view
-    //
-    while (walletEntriesWidget->count() != 0) {
-        delete walletEntriesWidget->item(0);
+    while (m_walletEntriesWidget->count() != 0) {
+        delete m_walletEntriesWidget->item(0);
     }
 
-    //
-    // Remove all entries from the list off authentication information
-    //
     while (!m_entriesList.isEmpty()) {
         delete m_entriesList.takeFirst();
     }
 
-    //
-    // Enabled widgets
-    //
-    findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled(false);
+    m_clearButton->setEnabled(false);
 
-    //
-    // Uncheck the Default Login checkbox
-    //
     findChild<QCheckBox *>(QStringLiteral("kcfg_UseDefaultLogin"))->setChecked(false);
 
-    //
-    // Tell the program that the authentication information may be changed
-    // and emit the appropriate signal
-    //
     Q_EMIT walletEntriesModified();
 }
 
@@ -527,21 +389,13 @@ void Smb4KConfigPageAuthentication::slotResetButtonClicked(bool checked)
 
     Q_EMIT walletEntriesModified();
 
-    findChild<QPushButton *>(QStringLiteral("clear_button"))->setEnabled((findChild<QListWidget *>(QStringLiteral("WalletEntriesWidget"))->count() != 0));
+    m_clearButton->setEnabled((m_walletEntriesWidget->count() != 0));
 }
 
 void Smb4KConfigPageAuthentication::slotEnableResetButton()
 {
-    QDialogButtonBox *buttonBox = findChild<QDialogButtonBox *>();
-
-    if (buttonBox) {
-        QPushButton *resetButton = buttonBox->button(QDialogButtonBox::Reset);
-
-        if (resetButton) {
-            bool changed = loginCredentialsChanged();
-            resetButton->setEnabled(changed);
-        }
-    }
+    bool changed = loginCredentialsChanged();
+    m_resetButton->setEnabled(changed);
 }
 
 void Smb4KConfigPageAuthentication::slotWalletItemDoubleClicked(QListWidgetItem *item)

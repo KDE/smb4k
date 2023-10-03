@@ -13,6 +13,8 @@
 
 // Qt includes
 #include <QList>
+#include <QListWidget>
+#include <QPushButton>
 #include <QWidget>
 
 // Forward declarations
@@ -156,6 +158,14 @@ protected Q_SLOTS:
     void slotWalletItemDoubleClicked(QListWidgetItem *item);
 
 private:
+    QWidget *m_walletEntriesEditor;
+    QListWidget *m_walletEntriesWidget;
+    QPushButton *m_loadButton;
+    QPushButton *m_saveButton;
+    QPushButton *m_editButton;
+    QPushButton *m_removeButton;
+    QPushButton *m_clearButton;
+    QPushButton *m_resetButton;
     QList<Smb4KAuthInfo *> m_entriesList;
     bool m_entries_loaded;
 };
