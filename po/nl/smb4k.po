@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-29 02:26+0000\n"
+"POT-Creation-Date: 2023-10-04 02:26+0000\n"
 "PO-Revision-Date: 2023-03-09 10:26+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
@@ -227,24 +227,24 @@ msgstr "Verwijderen"
 msgid "Clear"
 msgstr "Wissen"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:201
+#: smb4k/smb4kconfigpageauthentication.cpp:203
 #, kde-format
 msgid "Default Login"
 msgstr "Standaard Login"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:324
 #, kde-format
 msgid "Enter the default login information."
 msgstr "Voer de standaard aanmeldinformatie in."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:401
+#: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr ""
 "De gebruikersnaam en wachtwoord instellen voor toegang tot item %1 in "
 "portefeuille."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:403
+#: smb4k/smb4kconfigpageauthentication.cpp:405
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""

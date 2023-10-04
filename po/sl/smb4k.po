@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-29 02:26+0000\n"
+"POT-Creation-Date: 2023-10-04 02:26+0000\n"
 "PO-Revision-Date: 2023-03-11 09:31+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -220,22 +220,22 @@ msgstr "Odstrani"
 msgid "Clear"
 msgstr "Očisti"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:201
+#: smb4k/smb4kconfigpageauthentication.cpp:203
 #, kde-format
 msgid "Default Login"
 msgstr "Privzeta prijava"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:324
 #, kde-format
 msgid "Enter the default login information."
 msgstr "Vnesite privzete informacije za prijavo."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:401
+#: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr "Nastavi uporabniško ime in geslo za dostop do listnice %1."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:403
+#: smb4k/smb4kconfigpageauthentication.cpp:405
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr "Nastavi uporabniško ime in geslo za privzeto prijavo."

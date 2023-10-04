@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-29 02:26+0000\n"
+"POT-Creation-Date: 2023-10-04 02:26+0000\n"
 "PO-Revision-Date: 2023-03-04 19:32+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -240,25 +240,25 @@ msgstr "Supprimer"
 msgid "Clear"
 msgstr "Effacer"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:201
+#: smb4k/smb4kconfigpageauthentication.cpp:203
 #, kde-format
 msgid "Default Login"
 msgstr "Identifiant par défaut"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:324
 #, kde-format
 msgid "Enter the default login information."
 msgstr ""
 "Saisissez les informations relatives à l'identifiant de connexion par défaut."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:401
+#: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr ""
 "Définir un nom d'utilisateur et un mot de passe pour l'entrée <b>%1</b> du "
 "portefeuille."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:403
+#: smb4k/smb4kconfigpageauthentication.cpp:405
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""

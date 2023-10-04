@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-29 02:26+0000\n"
+"POT-Creation-Date: 2023-10-04 02:26+0000\n"
 "PO-Revision-Date: 2022-08-23 15:18+0300\n"
 "Last-Translator: Мария Шикунова <translation-team@basealt.ru>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -236,22 +236,22 @@ msgstr "Удалить"
 msgid "Clear"
 msgstr "Очистить список"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:201
+#: smb4k/smb4kconfigpageauthentication.cpp:203
 #, kde-format
 msgid "Default Login"
 msgstr "Вход по умолчанию"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:322
+#: smb4k/smb4kconfigpageauthentication.cpp:324
 #, kde-format
 msgid "Enter the default login information."
 msgstr "Введите данные для входа, применяемые по умолчанию."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:401
+#: smb4k/smb4kconfigpageauthentication.cpp:403
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr "Укажите имя пользователя и пароль для учётной записи бумажника %1."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:403
+#: smb4k/smb4kconfigpageauthentication.cpp:405
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr "Укажите имя пользователя и пароль для учётной записи по умолчанию."
