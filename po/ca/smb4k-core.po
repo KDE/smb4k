@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 11:48+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -3484,80 +3484,20 @@ msgstr "Impressora"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "Sincronització"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Origen"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Destinació"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Sincronització"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Intercanvia els camins"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Intercanvia l'origen i la destinació"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Sincronitza"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "Sincronitza la destinació amb l'origen"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr ""
-"Proporcioneu el directori d'origen i de destinació per a la sincronització."
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Origen:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"Aquest és el directori d'origen. Les dades que conté s'escriuran al "
-"directori de destinació."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Destinació:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"Aquest és el directori de destinació. S'actualitzarà amb les dades del "
-"directori d'origen."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3573,3 +3513,45 @@ msgid ""
 msgstr ""
 "<qt>Introduïu un nom d'usuari i una contrasenya per a la compartició <b>%1</"
 "b>.</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Sincronització"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Intercanvia els camins"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Intercanvia l'origen i la destinació"
+
+#~ msgid "Synchronize"
+#~ msgstr "Sincronitza"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Sincronitza la destinació amb l'origen"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr ""
+#~ "Proporcioneu el directori d'origen i de destinació per a la "
+#~ "sincronització."
+
+#~ msgid "Source:"
+#~ msgstr "Origen:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Aquest és el directori d'origen. Les dades que conté s'escriuran al "
+#~ "directori de destinació."
+
+#~ msgid "Destination:"
+#~ msgstr "Destinació:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Aquest és el directori de destinació. S'actualitzarà amb les dades del "
+#~ "directori d'origen."

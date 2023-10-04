@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2023-08-06 22:55+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -3305,76 +3305,20 @@ msgstr "프린터"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "동기화"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "원본"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "대상"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "동기화"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "경로 바꾸기"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "원본과 대상 바꾸기"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "동기화"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "대상을 원본과 동기화"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr "동기화 원본과 대상 디렉터리를 지정하십시오."
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "원본:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"원본 디렉터리입니다. 이 디렉터리에 있는 내용을 대상 디렉터리로 전송합니다."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "대상:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr "대상 디렉터리입니다. 원본 디렉터리의 데이터로 업데이트됩니다."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3386,6 +3330,43 @@ msgstr "<qt>호스트 <b>%1</b>의 사용자 이름 및 암호를 입력하십�
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>공유 <b>%1</b>의 사용자 이름 및 암호를 입력하십시오.</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "동기화"
+
+#~ msgid "Swap Paths"
+#~ msgstr "경로 바꾸기"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "원본과 대상 바꾸기"
+
+#~ msgid "Synchronize"
+#~ msgstr "동기화"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "대상을 원본과 동기화"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "동기화 원본과 대상 디렉터리를 지정하십시오."
+
+#~ msgid "Source:"
+#~ msgstr "원본:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "원본 디렉터리입니다. 이 디렉터리에 있는 내용을 대상 디렉터리로 전송합니다."
+
+#~ msgid "Destination:"
+#~ msgstr "대상:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr "대상 디렉터리입니다. 원본 디렉터리의 데이터로 업데이트됩니다."
 
 #~ msgid "Preview of %1"
 #~ msgstr "%1 미리 보기"

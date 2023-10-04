@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 17:33+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -3515,81 +3515,20 @@ msgstr "Принтер"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "Синхронізація"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Джерело"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Призначення"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Синхронізація"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Поміняти адреси місцями"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Джерело і місце призначення свопінгу"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Синхронізувати"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "Синхронізувати місце призначення з джерелом"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr ""
-"Будь ласка, вкажіть початковий каталог та каталог призначення для "
-"синхронізації."
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Джерело:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"Каталог початкових даних. Дані, які у ньому містяться, буде синхронізовано "
-"каталог призначення."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Призначення:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"Каталог призначення даних. Дані у цьому каталозі буде оновлено за даними з "
-"каталогу джерела."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3605,6 +3544,48 @@ msgid ""
 msgstr ""
 "<qt>Будь ласка, вкажіть ім’я користувача і пароль для доступу до спільного "
 "ресурсу <b>%1</b>.</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Синхронізація"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Поміняти адреси місцями"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Джерело і місце призначення свопінгу"
+
+#~ msgid "Synchronize"
+#~ msgstr "Синхронізувати"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Синхронізувати місце призначення з джерелом"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr ""
+#~ "Будь ласка, вкажіть початковий каталог та каталог призначення для "
+#~ "синхронізації."
+
+#~ msgid "Source:"
+#~ msgstr "Джерело:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Каталог початкових даних. Дані, які у ньому містяться, буде "
+#~ "синхронізовано каталог призначення."
+
+#~ msgid "Destination:"
+#~ msgstr "Призначення:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Каталог призначення даних. Дані у цьому каталозі буде оновлено за даними "
+#~ "з каталогу джерела."
 
 #~ msgid "Preview of %1"
 #~ msgstr "Попередній перегляд %1"

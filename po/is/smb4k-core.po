@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2011-06-20 06:00+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -3026,78 +3026,23 @@ msgstr "Prentari"
 msgid "IPC"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, fuzzy, kde-format
 #| msgid "Synchronizing data..."
 msgid "Synchronizing"
 msgstr "Samræmi gögn..."
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, fuzzy, kde-format
 #| msgid "Source:"
 msgid "Source"
 msgstr "Upphaf:"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, fuzzy, kde-format
 #| msgid "Destination:"
 msgid "Destination"
 msgstr "Áfangastaður:"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Samræming"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Slóðir diskminnis"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Upphaf og áfangastaður diskminnis"
-
-#: smb4ksynchronizer_p.cpp:557
-#, fuzzy, kde-format
-msgid "Synchronize"
-msgstr "Samr&æma"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr ""
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr ""
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Upphaf:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Áfangastaður:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
 
 #: smb4kwalletmanager_p.cpp:35
 #, fuzzy, kde-format
@@ -3109,6 +3054,25 @@ msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "Vinsamlega sláðu inn auðkenningargögn fyrir %1."
+
+#~ msgid "Synchronization"
+#~ msgstr "Samræming"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Slóðir diskminnis"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Upphaf og áfangastaður diskminnis"
+
+#, fuzzy
+#~ msgid "Synchronize"
+#~ msgstr "Samr&æma"
+
+#~ msgid "Source:"
+#~ msgstr "Upphaf:"
+
+#~ msgid "Destination:"
+#~ msgstr "Áfangastaður:"
 
 #, fuzzy
 #~| msgid "Preview"

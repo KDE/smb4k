@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2023-09-09 00:33+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -3452,79 +3452,20 @@ msgstr "Inprimagailua"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "Sinkronizatzea"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Sorburua"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Jomuga"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Sinkronizatzea"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Trukatu bide-izenak"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Trukatu sorburua eta jomuga"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Sinkronizatzea"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "Sinkronizatu jomuga sorburuarekin"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr "Hornitu sinkronizatzeko sorburu eta jomuga direktorioa."
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Sorburua:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"Hau da sorburu direktorioa. Barnean dituen datuak jomugako direktoriora "
-"idatziko da."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Jomuga:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"Hau da jomugako direktorioa. Sorburuko direktorioak barnean dituen datuekin "
-"eguneratuko da."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3539,6 +3480,46 @@ msgid ""
 msgstr ""
 "<qt>Sartu erabiltzaile-izen bat eta pasahitz bat <b>%1</b> partekatzerako.</"
 "qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Sinkronizatzea"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Trukatu bide-izenak"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Trukatu sorburua eta jomuga"
+
+#~ msgid "Synchronize"
+#~ msgstr "Sinkronizatzea"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Sinkronizatu jomuga sorburuarekin"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Hornitu sinkronizatzeko sorburu eta jomuga direktorioa."
+
+#~ msgid "Source:"
+#~ msgstr "Sorburua:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Hau da sorburu direktorioa. Barnean dituen datuak jomugako direktoriora "
+#~ "idatziko da."
+
+#~ msgid "Destination:"
+#~ msgstr "Jomuga:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Hau da jomugako direktorioa. Sorburuko direktorioak barnean dituen "
+#~ "datuekin eguneratuko da."
 
 #~ msgid "Preview of %1"
 #~ msgstr "%1(r)en aurreikuspegia"

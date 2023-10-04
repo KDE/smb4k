@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-network-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-09 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 12:29+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -161,7 +161,7 @@ msgstr "Yer İmlerini Dü&zenle"
 
 #: smb4k/smb4kbookmarkmenu.cpp:47 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:154
-#: smb4k/smb4ksharesviewdockwidget.cpp:226
+#: smb4k/smb4ksharesviewdockwidget.cpp:227
 #, kde-format
 msgid "Add &Bookmark"
 msgstr "Yer İmi &Ekle"
@@ -191,7 +191,8 @@ msgstr "Bağlama"
 msgid "Authentication"
 msgstr "Kimlik Denetimi"
 
-#: smb4k/smb4kconfigdialog.cpp:136
+#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "Eşleme"
@@ -216,63 +217,63 @@ msgstr ""
 "<qt>Hatalı bir ayar bulundu. Bunu düzeltebilmeniz için ilgini yapılandırma "
 "sayfası açılacaktır.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:42
+#: smb4k/smb4kconfigpageauthentication.cpp:34
 #: smb4k/smb4kconfigpageprofiles.cpp:36
 #, kde-format
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:64
+#: smb4k/smb4kconfigpageauthentication.cpp:53
 #, kde-format
 msgid "Wallet Entries"
 msgstr "Cüzdan Girdileri"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:97
+#: smb4k/smb4kconfigpageauthentication.cpp:72
 #, kde-format
 msgid "Load"
 msgstr "Yükle"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:106
+#: smb4k/smb4kconfigpageauthentication.cpp:77
 #, kde-format
 msgid "Save"
 msgstr "Kaydet"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:116
+#: smb4k/smb4kconfigpageauthentication.cpp:83
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Düzenle"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:126
+#: smb4k/smb4kconfigpageauthentication.cpp:89
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, kde-format
 msgid "Remove"
 msgstr "Kaldır"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:136
+#: smb4k/smb4kconfigpageauthentication.cpp:95
 #: smb4k/smb4knetworksearchtoolbar.cpp:108
 #, kde-format
 msgid "Clear"
 msgstr "Temizle"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:201
+#: smb4k/smb4kconfigpageauthentication.cpp:134
 #, kde-format
 msgid "Default Login"
 msgstr "Öntanımlı Oturum Açma Verisi"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:327
+#: smb4k/smb4kconfigpageauthentication.cpp:243
 #, kde-format
 msgid "Enter the default login information."
 msgstr "Öntanımlı oturum bilgisini girin."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:406
+#: smb4k/smb4kconfigpageauthentication.cpp:305
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr "%1 cüzdan girdisi için kullanıcı adı ve parolayı ayarlayın."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:408
+#: smb4k/smb4kconfigpageauthentication.cpp:307
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""
@@ -679,7 +680,7 @@ msgstr "Sayfa 3: Ağdan Uyan"
 msgid "Dock Widgets"
 msgstr "Araç Takımlarını Rıhtımla"
 
-#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:40
+#: smb4k/smb4kmainwindow.cpp:240 smb4k/smb4ksharesmenu.cpp:43
 #, kde-format
 msgid "Mounted Shares"
 msgstr "Bağlı Paylaşımlar"
@@ -856,19 +857,19 @@ msgid "&Search"
 msgstr "&Ara"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:160
-#: smb4k/smb4ksharesviewdockwidget.cpp:231
+#: smb4k/smb4ksharesviewdockwidget.cpp:232
 #, kde-format
 msgid "Ctrl+B"
 msgstr "Kontrol+B"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:193
-#: smb4k/smb4ksharesviewdockwidget.cpp:236
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:165 smb4k/smb4ksharesmenu.cpp:196
+#: smb4k/smb4ksharesviewdockwidget.cpp:237
 #, kde-format
 msgid "Add &Custom Settings"
 msgstr "Öz&el Ayarlar Ekle"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:171
-#: smb4k/smb4ksharesviewdockwidget.cpp:241
+#: smb4k/smb4ksharesviewdockwidget.cpp:242
 #, kde-format
 msgid "Ctrl+C"
 msgstr "Kontrol+C"
@@ -919,7 +920,7 @@ msgid "&Mount"
 msgstr "&Bağla"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:231
-#: smb4k/smb4ksharesviewdockwidget.cpp:198
+#: smb4k/smb4ksharesviewdockwidget.cpp:199
 #, kde-format
 msgid "&Unmount"
 msgstr "&Bağlantıyı Kes"
@@ -942,7 +943,7 @@ msgid "Scan Wo&rkgroup"
 msgstr "Çalışma &Grubunu Tara"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:986
-#: smb4k/smb4ksharesviewdockwidget.cpp:203
+#: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
 msgstr "Kontrol+U"
@@ -1032,87 +1033,87 @@ msgstr "Yazdır"
 msgid "Print a file to printer <b>%1</b>."
 msgstr "<b>%1</b> yazıcısıyla bir dosya yazdırın."
 
-#: smb4k/smb4ksharesmenu.cpp:55 smb4k/smb4ksharesviewdockwidget.cpp:208
+#: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
 msgid "U&nmount All"
 msgstr "&Tümünün Bağlantısını Kes"
 
-#: smb4k/smb4ksharesmenu.cpp:161
+#: smb4k/smb4ksharesmenu.cpp:164
 #, kde-format
 msgid "Unmount"
 msgstr "Bağlantıyı Kes"
 
-#: smb4k/smb4ksharesmenu.cpp:180
+#: smb4k/smb4ksharesmenu.cpp:183
 #, kde-format
 msgid "Add Bookmark"
 msgstr "Yer İmi Ekle"
 
-#: smb4k/smb4ksharesmenu.cpp:206
+#: smb4k/smb4ksharesmenu.cpp:209 smb4k/smb4ksynchronizationdialog.cpp:92
 #, kde-format
 msgid "Synchronize"
 msgstr "Eşzamanla"
 
-#: smb4k/smb4ksharesmenu.cpp:225
+#: smb4k/smb4ksharesmenu.cpp:228
 #, kde-format
 msgid "Open with Konsole"
 msgstr "Konsole ile Aç"
 
-#: smb4k/smb4ksharesmenu.cpp:239
+#: smb4k/smb4ksharesmenu.cpp:242
 #, kde-format
 msgid "Open with File Manager"
 msgstr "Dosya Yöneticisi ile Aç"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:153
+#: smb4k/smb4ksharesviewdockwidget.cpp:154
 #, kde-format
 msgid "View Modes"
 msgstr "Görünüm Kipleri"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:159
+#: smb4k/smb4ksharesviewdockwidget.cpp:160
 #, kde-format
 msgid "Icon View"
 msgstr "Simge Görünümü"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:165
+#: smb4k/smb4ksharesviewdockwidget.cpp:166
 #, kde-format
 msgid "List View"
 msgstr "Liste Görünümü"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:213
+#: smb4k/smb4ksharesviewdockwidget.cpp:214
 #, kde-format
 msgid "Ctrl+N"
 msgstr "Kontrol+N"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:246
+#: smb4k/smb4ksharesviewdockwidget.cpp:247
 #, kde-format
 msgid "S&ynchronize"
 msgstr "&Eşzamanla"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:251
+#: smb4k/smb4ksharesviewdockwidget.cpp:252
 #, kde-format
 msgid "Ctrl+Y"
 msgstr "Kontrol+Y"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:264
+#: smb4k/smb4ksharesviewdockwidget.cpp:265
 #, kde-format
 msgid "Open with Konso&le"
 msgstr "&Konsole ile Aç"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:269
+#: smb4k/smb4ksharesviewdockwidget.cpp:270
 #, kde-format
 msgid "Ctrl+L"
 msgstr "Kontrol+L"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:271
+#: smb4k/smb4ksharesviewdockwidget.cpp:272
 #, kde-format
 msgid "Open with F&ile Manager"
 msgstr "&Dosya Yöneticisi ile Aç"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:276
+#: smb4k/smb4ksharesviewdockwidget.cpp:277
 #, kde-format
 msgid "Ctrl+I"
 msgstr "Kontrol+I"
 
-#: smb4k/smb4ksharesviewdockwidget.cpp:391
+#: smb4k/smb4ksharesviewdockwidget.cpp:392
 #, kde-format
 msgid ""
 "<qt>There is no active connection to the share <b>%1</b>! You cannot drop "
@@ -1120,6 +1121,29 @@ msgid ""
 msgstr ""
 "<qt><b>%1</b> paylaşımına etkin bir bağlantı yok! Buraya herhangi bir dosya  "
 "bırakamazsınız.</qt>"
+
+#: smb4k/smb4ksynchronizationdialog.cpp:62
+#, kde-format
+msgid "Source:"
+msgstr ""
+
+#: smb4k/smb4ksynchronizationdialog.cpp:72
+#, fuzzy, kde-format
+#| msgid "Restrictions"
+msgid "Destination:"
+msgstr "Kısıtlamalar"
+
+#: smb4k/smb4ksynchronizationdialog.cpp:90
+#, kde-format
+msgid "Swap Paths"
+msgstr ""
+
+#: smb4k/smb4ksynchronizationdialog.cpp:130
+#, kde-format
+msgid ""
+"Please provide the source and destination directory for the synchronization "
+"of <b>%1</b>."
+msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format

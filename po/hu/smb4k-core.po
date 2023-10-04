@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2014-06-15 16:44+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -3247,77 +3247,20 @@ msgstr "Nyomtató"
 msgid "IPC"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "Szinkronizálás"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Forrás"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Cél"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Szinkronizálás"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Elérési utak cseréje"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Forrás és cél cseréje"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Szinkronizálás"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "A cél szinkronizálása a forrással"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr "Adja meg a forrás- és célmappát a szinkronizációhoz."
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Forrás:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"Ez a forrásmappa. A benne található adatok kerülnek írásra a célmappába."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Cél:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"Ez a célmappa, amely frissítve lesz a forráskönyvtárból származó adatokkal."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3332,6 +3275,45 @@ msgid ""
 msgstr ""
 "<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> megosztáshoz.</"
 "qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Szinkronizálás"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Elérési utak cseréje"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Forrás és cél cseréje"
+
+#~ msgid "Synchronize"
+#~ msgstr "Szinkronizálás"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "A cél szinkronizálása a forrással"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Adja meg a forrás- és célmappát a szinkronizációhoz."
+
+#~ msgid "Source:"
+#~ msgstr "Forrás:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Ez a forrásmappa. A benne található adatok kerülnek írásra a célmappába."
+
+#~ msgid "Destination:"
+#~ msgstr "Cél:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Ez a célmappa, amely frissítve lesz a forráskönyvtárból származó "
+#~ "adatokkal."
 
 #~ msgid "Preview of %1"
 #~ msgstr "%1 előnézete"

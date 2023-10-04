@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k-core\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -3394,78 +3394,20 @@ msgstr "Tlačiareň"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "Synchronizujem"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Zdroj"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Cieľ"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Synchronizácia"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Vymeniť cesty"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Vymeniť zdroj a cieľ"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Synchronizovať"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "Synchronizovať cieľ so zdrojom"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr "Prosím, uveďte zdrojový a cieľový adresár pre synchronizáciu."
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Zdroj:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"Toto je zdrojový adresár. Dáta v ňom obsiahnuté budú zapísané do cieľového "
-"adresára."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Cieľ:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"To je cieľový adresár. Bude aktualizovaný dátami zo zdrojového adresára."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3479,6 +3421,45 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Prosím zadajte meno používateľa a heslo pre zdieľanie <b>%1</b>.</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Synchronizácia"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Vymeniť cesty"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Vymeniť zdroj a cieľ"
+
+#~ msgid "Synchronize"
+#~ msgstr "Synchronizovať"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Synchronizovať cieľ so zdrojom"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Prosím, uveďte zdrojový a cieľový adresár pre synchronizáciu."
+
+#~ msgid "Source:"
+#~ msgstr "Zdroj:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Toto je zdrojový adresár. Dáta v ňom obsiahnuté budú zapísané do "
+#~ "cieľového adresára."
+
+#~ msgid "Destination:"
+#~ msgstr "Cieľ:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "To je cieľový adresár. Bude aktualizovaný dátami zo zdrojového adresára."
 
 #~ msgid "Preview of %1"
 #~ msgstr "Náhľad %1"
