@@ -42,6 +42,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
 
     m_useDefaultLogin = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), settingsBox);
     m_useDefaultLogin->setObjectName(QStringLiteral("kcfg_UseDefaultLogin"));
+    m_useDefaultLogin->setEnabled(false);
 
     connect(m_useDefaultLogin, &QCheckBox::toggled, this, &Smb4KConfigPageAuthentication::slotDefaultLoginToggled);
 
@@ -53,6 +54,7 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     QVBoxLayout *walletEntriesBoxLayout = new QVBoxLayout(walletEntriesBox);
 
     m_walletEntriesEditor = new QWidget(walletEntriesBox);
+    m_walletEntriesEditor->setEnabled(false);
     QHBoxLayout *walletEntriesEditorLayout = new QHBoxLayout(m_walletEntriesEditor);
     walletEntriesEditorLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -107,9 +109,6 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     walletEntriesBoxLayout->addWidget(m_walletEntriesEditor);
 
     layout->addWidget(walletEntriesBox);
-
-    // FIXME: Replace this with the simple contents of the slot.
-    slotKWalletButtonToggled(useWallet->isChecked());
 
     connect(this, &Smb4KConfigPageAuthentication::walletEntriesModified, this, &Smb4KConfigPageAuthentication::slotEnableResetButton);
 }
