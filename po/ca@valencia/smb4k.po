@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-06 11:54+0200\n"
+"PO-Revision-Date: 2023-10-04 09:33+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -1132,18 +1132,17 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "Origen:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Destination:"
-msgstr "Restriccions"
+msgstr "Destinació:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "Intercanvia els camins"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
@@ -1151,6 +1150,8 @@ msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
 msgstr ""
+"Proporcioneu el directori d'origen i de destinació per a la sincronització "
+"de <b>%1</b>."
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format

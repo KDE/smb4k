@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-06 17:35+0300\n"
+"PO-Revision-Date: 2023-10-04 09:08+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -1140,18 +1140,17 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "Джерело:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Default Destination"
+#, kde-format
 msgid "Destination:"
-msgstr "Типове місце призначення"
+msgstr "Призначення:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "Поміняти адреси місцями"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
@@ -1159,6 +1158,8 @@ msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
 msgstr ""
+"Будь ласка, вкажіть початковий каталог та каталог призначення для "
+"синхронізації <b>%1</b>."
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format

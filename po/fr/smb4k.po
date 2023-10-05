@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-10 15:49+0200\n"
+"PO-Revision-Date: 2023-10-04 12:39+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -1151,18 +1151,17 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "Source :"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Default Destination"
+#, kde-format
 msgid "Destination:"
-msgstr "Destination par défaut"
+msgstr "Destination :"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "Permuter les emplacements"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
@@ -1170,6 +1169,8 @@ msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
 msgstr ""
+"Veuillez préciser les dossiers source et destination pour la synchronisation "
+"de <b>%1</b>."
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format

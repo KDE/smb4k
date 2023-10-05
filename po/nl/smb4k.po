@@ -13,14 +13,14 @@ msgstr ""
 "Project-Id-Version: nl\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-06 11:51+0200\n"
+"PO-Revision-Date: 2023-10-04 11:30+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -1148,14 +1148,12 @@ msgid "Swap Paths"
 msgstr "Wissel Paden Om"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Please provide the source and destination directory for the "
-#| "synchronization."
+#, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr "Bied de bron- en bestemmingsmap aan voor de synchronisatie."
+msgstr ""
+"Bied de bron- en bestemmingsmap aan voor de synchronisatie van <b>%1</b>."
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
