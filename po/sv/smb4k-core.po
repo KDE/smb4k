@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 19:19+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -3409,78 +3409,20 @@ msgstr "Skrivare"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "Synkroniserar"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Källa"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Mål"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Synkronisering"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Byt sökvägar"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Byt källa och mål"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Synkronisera"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "Synkronisera målet med källan"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr "Ange käll- och målkatalog för synkronisering."
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Källa:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"Det här är källkatalogen. Data den innehåller ska skrivas till målkatalogen."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Mål:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"Det här är målkatalogen. Den kommer att uppdateras med data från "
-"källkatalogen."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3494,6 +3436,46 @@ msgid ""
 msgstr ""
 "<qt>Ange ett användarnamn och ett lösenord för den delade resursen <b>%1</b>."
 "</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Synkronisering"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Byt sökvägar"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Byt källa och mål"
+
+#~ msgid "Synchronize"
+#~ msgstr "Synkronisera"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Synkronisera målet med källan"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Ange käll- och målkatalog för synkronisering."
+
+#~ msgid "Source:"
+#~ msgstr "Källa:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Det här är källkatalogen. Data den innehåller ska skrivas till "
+#~ "målkatalogen."
+
+#~ msgid "Destination:"
+#~ msgstr "Mål:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Det här är målkatalogen. Den kommer att uppdateras med data från "
+#~ "källkatalogen."
 
 #~ msgid "Preview of %1"
 #~ msgstr "Förhandsgranskning av %1"

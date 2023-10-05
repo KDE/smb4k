@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2011-04-24 13:22-0700\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -3428,81 +3428,23 @@ msgstr "プリンタ"
 msgid "IPC"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, fuzzy, kde-format
 #| msgid "Synchronizing %1"
 msgid "Synchronizing"
 msgstr "%1 を同期中"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, fuzzy, kde-format
 #| msgid "Source:"
 msgid "Source"
 msgstr "元:"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, fuzzy, kde-format
 #| msgid "Destination:"
 msgid "Destination"
 msgstr "行き先:"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "同期化"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "スワップパス"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "スワップ元とスワップ先"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "同期"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "送り先とソースと同期します"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr ""
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "元:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"これはソースディレクトリです。データが含まれるところが、目的のディレクトリで"
-"す。"
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "行き先:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"これは行き先のディレクトリです。ソースディレクトリのファイルで更新されます。"
 
 #: smb4kwalletmanager_p.cpp:35
 #, fuzzy, kde-format
@@ -3516,6 +3458,41 @@ msgstr "<qt>ホスト %1 のユーザ名とパスワードを入力してくだ�
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>共有 %1 のユーザ名とパスワードを入力してください。</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "同期化"
+
+#~ msgid "Swap Paths"
+#~ msgstr "スワップパス"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "スワップ元とスワップ先"
+
+#~ msgid "Synchronize"
+#~ msgstr "同期"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "送り先とソースと同期します"
+
+#~ msgid "Source:"
+#~ msgstr "元:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "これはソースディレクトリです。データが含まれるところが、目的のディレクトリ"
+#~ "です。"
+
+#~ msgid "Destination:"
+#~ msgstr "行き先:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "これは行き先のディレクトリです。ソースディレクトリのファイルで更新されま"
+#~ "す。"
 
 #, fuzzy
 #~| msgid "Preview"

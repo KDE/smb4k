@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2014-08-28 14:43+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -3454,76 +3454,21 @@ msgstr "Drucker"
 msgid "IPC"
 msgstr ""
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, fuzzy, kde-format
 #| msgid "Synchronizing %1"
 msgid "Synchronizing"
 msgstr "%1 warrt synkroniseert"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Born"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Teel"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Synkroniseren"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr ""
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Born un Teel tuschen"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Synkroniseren"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "Teel mit Born synkroniseren"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr ""
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Born:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Teel:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3535,6 +3480,24 @@ msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Bitte Brukernaam un Passwoort för Freegaav <b>%1</b> ingeven.</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Synkroniseren"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Born un Teel tuschen"
+
+#~ msgid "Synchronize"
+#~ msgstr "Synkroniseren"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Teel mit Born synkroniseren"
+
+#~ msgid "Source:"
+#~ msgstr "Born:"
+
+#~ msgid "Destination:"
+#~ msgstr "Teel:"
 
 #, fuzzy
 #~| msgid "Preview"

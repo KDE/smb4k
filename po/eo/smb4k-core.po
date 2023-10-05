@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2023-09-06 21:19+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -3407,79 +3407,20 @@ msgstr "Presilo"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "Sinkronigante"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Fonto"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Celo"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Sinkronigo"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Interŝanĝi Vojetojn"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Interŝanĝi fonton kaj celon"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Sinkronigi"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "Sinkronigi la celon kun la fonto"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr "Bonvolu provizi la fontan kaj cel-dosierujon por la sinkronigo."
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Fonto:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"Ĉi tio estas la fonta dosierujo. La datumoj kiujn ĝi enhavas estas "
-"skribendaj al la celdosierujo."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Celo:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"Ĉi tio estas la cela dosierujo. Ĝi estos ĝisdatigita kun la datumoj de la "
-"fonta dosierujo."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3493,3 +3434,43 @@ msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
 "<qt>Bonvolu enigi uzantnomon kaj pasvorton por la kundivido <b>%1</b>.</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Sinkronigo"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Interŝanĝi Vojetojn"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Interŝanĝi fonton kaj celon"
+
+#~ msgid "Synchronize"
+#~ msgstr "Sinkronigi"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Sinkronigi la celon kun la fonto"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Bonvolu provizi la fontan kaj cel-dosierujon por la sinkronigo."
+
+#~ msgid "Source:"
+#~ msgstr "Fonto:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Ĉi tio estas la fonta dosierujo. La datumoj kiujn ĝi enhavas estas "
+#~ "skribendaj al la celdosierujo."
+
+#~ msgid "Destination:"
+#~ msgstr "Celo:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Ĉi tio estas la cela dosierujo. Ĝi estos ĝisdatigita kun la datumoj de la "
+#~ "fonta dosierujo."

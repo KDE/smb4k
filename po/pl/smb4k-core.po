@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-06 00:46+0000\n"
+"POT-Creation-Date: 2023-10-04 00:43+0000\n"
 "PO-Revision-Date: 2023-03-04 09:30+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -3423,78 +3423,20 @@ msgstr "Drukarka"
 msgid "IPC"
 msgstr "IPC"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Synchronizing"
 msgstr "Synchronizacja"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Source"
 msgstr "Źródło"
 
-#: smb4ksynchronizer_p.cpp:433 smb4ksynchronizer_p.cpp:514
+#: smb4ksynchronizer_p.cpp:397 smb4ksynchronizer_p.cpp:478
 #, kde-format
 msgid "Destination"
 msgstr "Cel"
-
-#: smb4ksynchronizer_p.cpp:552
-#, kde-format
-msgid "Synchronization"
-msgstr "Synchronizacja"
-
-#: smb4ksynchronizer_p.cpp:555
-#, kde-format
-msgid "Swap Paths"
-msgstr "Zamień ścieżki"
-
-#: smb4ksynchronizer_p.cpp:556
-#, kde-format
-msgid "Swap source and destination"
-msgstr "Zamień katalogi źródłowy i docelowy"
-
-#: smb4ksynchronizer_p.cpp:557
-#, kde-format
-msgid "Synchronize"
-msgstr "Synchronizuj"
-
-#: smb4ksynchronizer_p.cpp:558
-#, kde-format
-msgid "Synchronize the destination with the source"
-msgstr "Synchronizuj docelowy ze źródłowym"
-
-#: smb4ksynchronizer_p.cpp:572
-#, kde-format
-msgid ""
-"Please provide the source and destination directory for the synchronization."
-msgstr "Proszę podać katalog źródłowy i docelowy dla synchronizacji. "
-
-#: smb4ksynchronizer_p.cpp:582
-#, kde-format
-msgid "Source:"
-msgstr "Źródło:"
-
-#: smb4ksynchronizer_p.cpp:590
-#, kde-format
-msgid ""
-"This is the source directory. The data that it contains is to be written to "
-"the destination directory."
-msgstr ""
-"Jest to katalog źródłowy. Dane w nim zawarte zostaną zapisane w katalogu "
-"docelowym."
-
-#: smb4ksynchronizer_p.cpp:593
-#, kde-format
-msgid "Destination:"
-msgstr "Cel:"
-
-#: smb4ksynchronizer_p.cpp:601
-#, kde-format
-msgid ""
-"This is the destination directory. It will be updated with the data from the "
-"source directory."
-msgstr ""
-"Jest to katalog docelowy. Zostanie uaktualniony danymi z katalogu źródłowego."
 
 #: smb4kwalletmanager_p.cpp:35
 #, kde-format
@@ -3507,6 +3449,46 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>Wpisz nazwę użytkownika i hasło dostępu do zasobu <b>%1</b>.</qt>"
+
+#~ msgid "Synchronization"
+#~ msgstr "Synchronizacja"
+
+#~ msgid "Swap Paths"
+#~ msgstr "Zamień ścieżki"
+
+#~ msgid "Swap source and destination"
+#~ msgstr "Zamień katalogi źródłowy i docelowy"
+
+#~ msgid "Synchronize"
+#~ msgstr "Synchronizuj"
+
+#~ msgid "Synchronize the destination with the source"
+#~ msgstr "Synchronizuj docelowy ze źródłowym"
+
+#~ msgid ""
+#~ "Please provide the source and destination directory for the "
+#~ "synchronization."
+#~ msgstr "Proszę podać katalog źródłowy i docelowy dla synchronizacji. "
+
+#~ msgid "Source:"
+#~ msgstr "Źródło:"
+
+#~ msgid ""
+#~ "This is the source directory. The data that it contains is to be written "
+#~ "to the destination directory."
+#~ msgstr ""
+#~ "Jest to katalog źródłowy. Dane w nim zawarte zostaną zapisane w katalogu "
+#~ "docelowym."
+
+#~ msgid "Destination:"
+#~ msgstr "Cel:"
+
+#~ msgid ""
+#~ "This is the destination directory. It will be updated with the data from "
+#~ "the source directory."
+#~ msgstr ""
+#~ "Jest to katalog docelowy. Zostanie uaktualniony danymi z katalogu "
+#~ "źródłowego."
 
 #~ msgid "Preview of %1"
 #~ msgstr "Podgląd %1"
