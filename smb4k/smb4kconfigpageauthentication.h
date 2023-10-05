@@ -1,7 +1,7 @@
 /*
     The configuration page for the authentication settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -16,6 +16,7 @@
 #include <QListWidget>
 #include <QPushButton>
 #include <QWidget>
+#include <QCheckBox>
 
 // Forward declarations
 class QListWidgetItem;
@@ -166,8 +167,10 @@ private:
     QPushButton *m_removeButton;
     QPushButton *m_clearButton;
     QPushButton *m_resetButton;
+    QCheckBox *m_useDefaultLogin;
     QList<Smb4KAuthInfo *> m_entriesList;
-    bool m_entries_loaded;
+    // FIXME: Do we need this at all?
+    bool m_entriesLoaded;
 };
 
 #endif

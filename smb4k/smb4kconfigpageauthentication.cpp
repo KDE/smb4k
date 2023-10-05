@@ -1,7 +1,7 @@
 /*
     The configuration page for the authentication settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -11,7 +11,6 @@
 #include "core/smb4kwalletmanager.h"
 
 // Qt includes
-#include <QCheckBox>
 #include <QDialogButtonBox>
 #include <QGroupBox>
 #include <QHBoxLayout>
@@ -27,7 +26,7 @@
 Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     : QWidget(parent)
 {
-    m_entries_loaded = false;
+    m_entriesLoaded = false;
 
     QVBoxLayout *layout = new QVBoxLayout(this);
 
@@ -37,16 +36,16 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
     QCheckBox *useWallet = new QCheckBox(Smb4KSettings::self()->useWalletItem()->label(), settingsBox);
     useWallet->setObjectName(QStringLiteral("kcfg_UseWallet"));
 
-    connect(useWallet, SIGNAL(toggled(bool)), this, SLOT(slotKWalletButtonToggled(bool)));
+    connect(useWallet, &QCheckBox::toggled, this, &Smb4KConfigPageAuthentication::slotKWalletButtonToggled);
 
     settingsBoxLayout->addWidget(useWallet);
 
-    QCheckBox *useDefaultLogin = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), settingsBox);
-    useDefaultLogin->setObjectName(QStringLiteral("kcfg_UseDefaultLogin"));
+    m_useDefaultLogin = new QCheckBox(Smb4KSettings::self()->useDefaultLoginItem()->label(), settingsBox);
+    m_useDefaultLogin->setObjectName(QStringLiteral("kcfg_UseDefaultLogin"));
 
-    connect(useDefaultLogin, SIGNAL(toggled(bool)), this, SLOT(slotDefaultLoginToggled(bool)));
+    connect(m_useDefaultLogin, &QCheckBox::toggled, this, &Smb4KConfigPageAuthentication::slotDefaultLoginToggled);
 
-    settingsBoxLayout->addWidget(useDefaultLogin);
+    settingsBoxLayout->addWidget(m_useDefaultLogin);
 
     layout->addWidget(settingsBox);
 
@@ -109,9 +108,8 @@ Smb4KConfigPageAuthentication::Smb4KConfigPageAuthentication(QWidget *parent)
 
     layout->addWidget(walletEntriesBox);
 
-    // FIXME: Find way to make this work with signals and slots.
+    // FIXME: Replace this with the simple contents of the slot.
     slotKWalletButtonToggled(useWallet->isChecked());
-    slotDefaultLoginToggled(useDefaultLogin->isChecked());
 
     connect(this, &Smb4KConfigPageAuthentication::walletEntriesModified, this, &Smb4KConfigPageAuthentication::slotEnableResetButton);
 }
@@ -145,7 +143,7 @@ void Smb4KConfigPageAuthentication::loadLoginCredentials()
 
     m_walletEntriesWidget->sortItems();
 
-    m_entries_loaded = true;
+    m_entriesLoaded = true;
 
     m_saveButton->setEnabled(m_walletEntriesWidget->count() != 0);
     m_clearButton->setEnabled(m_walletEntriesWidget->count() != 0);
@@ -164,14 +162,14 @@ void Smb4KConfigPageAuthentication::saveLoginCredentials()
 
 bool Smb4KConfigPageAuthentication::loginCredentialsLoaded()
 {
-    return m_entries_loaded;
+    return m_entriesLoaded;
 }
 
 bool Smb4KConfigPageAuthentication::loginCredentialsChanged()
 {
     bool changed = false;
 
-    if (m_entries_loaded) {
+    if (m_entriesLoaded) {
         QList<Smb4KAuthInfo *> savedLoginCredentials = Smb4KWalletManager::self()->loginCredentialsList();
 
         if (savedLoginCredentials.size() != m_entriesList.size()) {
@@ -229,7 +227,7 @@ bool Smb4KConfigPageAuthentication::eventFilter(QObject *object, QEvent *e)
 
 void Smb4KConfigPageAuthentication::slotKWalletButtonToggled(bool checked)
 {
-    findChild<QCheckBox *>(QStringLiteral("kcfg_UseDefaultLogin"))->setEnabled(checked);
+    m_useDefaultLogin->setEnabled(checked);
     m_walletEntriesEditor->setEnabled(checked);
 }
 
@@ -250,11 +248,11 @@ void Smb4KConfigPageAuthentication::slotDefaultLoginToggled(bool checked)
 
                 Smb4KWalletManager::self()->writeLoginCredentials(&authInfo);
 
-                if (m_entries_loaded) {
+                if (m_entriesLoaded) {
                     loadLoginCredentials();
                 }
             } else {
-                findChild<QCheckBox *>(QStringLiteral("kcfg_UseDefaultLogin"))->setChecked(false);
+                m_useDefaultLogin->setChecked(false);
             }
         }
     }
@@ -264,7 +262,7 @@ void Smb4KConfigPageAuthentication::slotLoadButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    if (!m_entries_loaded) {
+    if (!m_entriesLoaded) {
         loadLoginCredentials();
     }
 
@@ -276,7 +274,7 @@ void Smb4KConfigPageAuthentication::slotSaveButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    if (m_entries_loaded) {
+    if (m_entriesLoaded) {
         saveLoginCredentials();
     }
 
@@ -335,8 +333,7 @@ void Smb4KConfigPageAuthentication::slotRemoveButtonClicked(bool checked)
         if (m_walletEntriesWidget->currentItem()->data(Qt::UserRole).toUrl() == m_entriesList.at(i)->url()) {
             switch (m_entriesList.at(i)->type()) {
             case UnknownNetworkItem: {
-                QCheckBox *useDefaultLogin = findChild<QCheckBox *>(QStringLiteral("kcfg_UseDefaultLogin"));
-                useDefaultLogin->setChecked(false);
+                m_useDefaultLogin->setChecked(false);
                 break;
             }
             default: {
@@ -372,7 +369,7 @@ void Smb4KConfigPageAuthentication::slotClearButtonClicked(bool checked)
 
     m_clearButton->setEnabled(false);
 
-    findChild<QCheckBox *>(QStringLiteral("kcfg_UseDefaultLogin"))->setChecked(false);
+    m_useDefaultLogin->setChecked(false);
 
     Q_EMIT walletEntriesModified();
 }
@@ -381,7 +378,7 @@ void Smb4KConfigPageAuthentication::slotResetButtonClicked(bool checked)
 {
     Q_UNUSED(checked);
 
-    if (m_entries_loaded) {
+    if (m_entriesLoaded) {
         loadLoginCredentials();
     }
 
