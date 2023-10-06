@@ -1,7 +1,7 @@
 /*
     This class provides the network search toolbar.
 
-    SPDX-FileCopyrightText: 2018-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2018-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -15,6 +15,10 @@
 #include <QList>
 #include <QListIterator>
 #include <QToolBar>
+
+// KDE includes
+#include <KComboBox>
+#include <KDualAction>
 
 class Smb4KNetworkSearchToolBar : public QToolBar
 {
@@ -128,15 +132,13 @@ protected Q_SLOTS:
     void slotClearSearch();
 
 private:
-    /**
-     * The search results
-     */
     QStringList m_searchResults;
-
-    /**
-     * String list iterator
-     */
     QStringListIterator m_iterator;
+    KComboBox *m_searchComboBox;
+    KDualAction *m_searchAction;
+    QAction *m_downAction;
+    QAction *m_upAction;
+    QAction *m_clearAction;
 };
 
 #endif
