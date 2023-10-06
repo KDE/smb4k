@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-18 10:09-0300\n"
+"POT-Creation-Date: 2023-10-06 00:42+0000\n"
+"PO-Revision-Date: 2023-10-05 18:20-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -222,7 +222,7 @@ msgstr ""
 "<qt>Foi encontrada uma configuração incorreta. Você será levado à página de "
 "configuração respectiva para corrigi-la.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:34
+#: smb4k/smb4kconfigpageauthentication.cpp:33
 #: smb4k/smb4kconfigpageprofiles.cpp:36
 #, kde-format
 msgid "Settings"
@@ -233,52 +233,52 @@ msgstr "Configurações"
 msgid "Wallet Entries"
 msgstr "Entradas da carteira"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:72
+#: smb4k/smb4kconfigpageauthentication.cpp:73
 #, kde-format
 msgid "Load"
 msgstr "Carregar"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:77
+#: smb4k/smb4kconfigpageauthentication.cpp:78
 #, kde-format
 msgid "Save"
 msgstr "Salvar"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:83
+#: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Editar"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:89
+#: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, kde-format
 msgid "Remove"
 msgstr "Remover"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:95
+#: smb4k/smb4kconfigpageauthentication.cpp:96
 #: smb4k/smb4knetworksearchtoolbar.cpp:108
 #, kde-format
 msgid "Clear"
 msgstr "Limpar"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:134
+#: smb4k/smb4kconfigpageauthentication.cpp:131
 #, kde-format
 msgid "Default Login"
 msgstr "Conta padrão"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:243
+#: smb4k/smb4kconfigpageauthentication.cpp:240
 #, kde-format
 msgid "Enter the default login information."
 msgstr "Insira a informação de autenticação padrão."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:305
+#: smb4k/smb4kconfigpageauthentication.cpp:302
 #, kde-format
 msgid "Set the username and password for wallet entry %1."
 msgstr "Definir o nome de usuário e senha para a entrada da carteira %1."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:307
+#: smb4k/smb4kconfigpageauthentication.cpp:304
 #, kde-format
 msgid "Set the username and password for the default login."
 msgstr "Definir o nome de usuário e senha para a conta padrão."
@@ -1136,25 +1136,24 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "Origem:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Default Destination"
+#, kde-format
 msgid "Destination:"
-msgstr "Destino padrão"
+msgstr "Destino:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "Trocar as localizações"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr ""
+msgstr "Indique as pastas de origem e destino da sincronização de <b>%1</b>."
 
 #: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
 #, kde-format
