@@ -1,7 +1,7 @@
 /*
     smb4ktooltip  -  Provides tooltips for Smb4K
 
-    SPDX-FileCopyrightText: 2020-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2020-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -62,34 +62,11 @@ public:
     void update();
 
 private:
-    /**
-     * Setup the contents widget for a remote network item
-     */
     void setupNetworkItemContents();
-
-    /**
-     * Setup the contents widget for a mounted share
-     */
     void setupMountedShareContents();
-
-    /**
-     * The network item
-     */
     NetworkItemPtr m_item;
-
-    /**
-     * The type
-     */
     Type m_type;
-
-    /**
-     * The contents widget for the tooltip
-     */
     QWidget *m_contentsWidget;
-
-    /**
-     * The main layout
-     */
     QHBoxLayout *m_mainLayout;
 };
 

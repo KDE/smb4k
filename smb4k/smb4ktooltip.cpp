@@ -1,7 +1,7 @@
 /*
     smb4ktooltip  -  Provides tooltips for Smb4K
 
-    SPDX-FileCopyrightText: 2020-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2020-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -39,8 +39,13 @@ Smb4KToolTip::~Smb4KToolTip()
 
 void Smb4KToolTip::setupToolTip(Smb4KToolTip::Type type, NetworkItemPtr item)
 {
-    m_type = type;
-    m_item = item;
+    if (type != m_type) {
+        m_type = type;
+    }
+
+    if (item != m_item) {
+        m_item = item;
+    }
 
     qDeleteAll(m_contentsWidget->children());
 
@@ -67,19 +72,7 @@ void Smb4KToolTip::update()
         return;
     }
 
-    switch (m_type) {
-    case NetworkItem: {
-        setupNetworkItemContents();
-        break;
-    }
-    case MountedShare: {
-        setupMountedShareContents();
-        break;
-    }
-    default: {
-        break;
-    }
-    }
+    setupToolTip(m_type, m_item);
 }
 
 void Smb4KToolTip::show(const QPoint &pos, QWindow *transientParent)
@@ -106,55 +99,6 @@ void Smb4KToolTip::show(const QPoint &pos, QWindow *transientParent)
 
 void Smb4KToolTip::setupNetworkItemContents()
 {
-    if (!m_contentsWidget->layout()->isEmpty()) {
-        switch (m_item->type()) {
-        case Workgroup: {
-            WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
-            QLabel *masterBrowserName = m_contentsWidget->findChild<QLabel *>(QStringLiteral("MasterBrowserName"));
-
-            if (workgroup->hasMasterBrowser()) {
-                if (workgroup->hasMasterBrowserIpAddress()) {
-                    masterBrowserName->setText(workgroup->masterBrowserName() + QStringLiteral(" (") + workgroup->masterBrowserIpAddress()
-                                               + QStringLiteral(")"));
-                } else {
-                    masterBrowserName->setText(workgroup->masterBrowserName());
-                }
-            } else {
-                masterBrowserName->setText(QStringLiteral("-"));
-            }
-            break;
-        }
-        case Host: {
-            HostPtr host = m_item.staticCast<Smb4KHost>();
-            m_contentsWidget->findChild<QLabel *>(QStringLiteral("CommentString"))->setText(!host->comment().isEmpty() ? host->comment() : QStringLiteral("-"));
-            m_contentsWidget->findChild<QLabel *>(QStringLiteral("IPAddressString"))->setText(host->hasIpAddress() ? host->ipAddress() : QStringLiteral("-"));
-            break;
-        }
-        case Share: {
-            SharePtr share = m_item.staticCast<Smb4KShare>();
-
-            m_contentsWidget->findChild<QLabel *>(QStringLiteral("CommentString"))
-                ->setText(!share->comment().isEmpty() ? share->comment() : QStringLiteral("-"));
-            m_contentsWidget->findChild<QLabel *>(QStringLiteral("IPAddressString"))
-                ->setText(share->hasHostIpAddress() ? share->hostIpAddress() : QStringLiteral("-"));
-
-            QLabel *mountedState = m_contentsWidget->findChild<QLabel *>(QStringLiteral("MountedState"));
-
-            if (!share->isPrinter()) {
-                mountedState->setText(share->isMounted() ? i18n("yes") : i18n("no"));
-            } else {
-                mountedState->setText(QStringLiteral("-"));
-            }
-            break;
-        }
-        default: {
-            break;
-        }
-        }
-
-        return;
-    }
-
     QLabel *iconLabel = new QLabel(m_contentsWidget);
     iconLabel->setPixmap(m_item->icon().pixmap(KIconLoader::SizeEnormous));
     m_mainLayout->addWidget(iconLabel, Qt::AlignHCenter);
@@ -260,23 +204,6 @@ void Smb4KToolTip::setupNetworkItemContents()
 void Smb4KToolTip::setupMountedShareContents()
 {
     SharePtr share = m_item.staticCast<Smb4KShare>();
-
-    if (!m_contentsWidget->layout()->isEmpty()) {
-        m_contentsWidget->findChild<QLabel *>(QStringLiteral("IconLabel"))->setPixmap(share->icon().pixmap(KIconLoader::SizeEnormous));
-        m_contentsWidget->findChild<QLabel *>(QStringLiteral("LoginString"))->setText(!share->userName().isEmpty() ? share->userName() : i18n("unknown"));
-
-        QString sizeIndication;
-
-        if (share->totalDiskSpace() != 0 && share->freeDiskSpace() != 0) {
-            sizeIndication = i18n("%1 free of %2 (%3 used)", share->freeDiskSpaceString(), share->totalDiskSpaceString(), share->diskUsageString());
-        } else {
-            sizeIndication = i18n("unknown");
-        }
-
-        m_contentsWidget->findChild<QLabel *>(QStringLiteral("SizeString"))->setText(sizeIndication);
-
-        return;
-    }
 
     QLabel *iconLabel = new QLabel(m_contentsWidget);
     iconLabel->setPixmap(share->icon().pixmap(KIconLoader::SizeEnormous));
