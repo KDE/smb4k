@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-10-06 00:42+0000\n"
 "PO-Revision-Date: 2011-10-19 22:13+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -217,7 +217,7 @@ msgid ""
 "corresponding configuration page to fix it.</qt>"
 msgstr ""
 
-#: smb4k/smb4kconfigpageauthentication.cpp:34
+#: smb4k/smb4kconfigpageauthentication.cpp:33
 #: smb4k/smb4kconfigpageprofiles.cpp:36
 #, fuzzy, kde-format
 #| msgid "&Settings"
@@ -230,55 +230,55 @@ msgstr "&Instellen"
 msgid "Wallet Entries"
 msgstr "Indrääg wegmaken"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:72
+#: smb4k/smb4kconfigpageauthentication.cpp:73
 #, kde-format
 msgid "Load"
 msgstr "Laden"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:77
+#: smb4k/smb4kconfigpageauthentication.cpp:78
 #, kde-format
 msgid "Save"
 msgstr "Sekern"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:83
+#: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Bewerken"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:89
+#: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, kde-format
 msgid "Remove"
 msgstr "Wegmaken"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:95
+#: smb4k/smb4kconfigpageauthentication.cpp:96
 #: smb4k/smb4knetworksearchtoolbar.cpp:108
 #, fuzzy, kde-format
 #| msgid "&Clear"
 msgid "Clear"
 msgstr "&Leddig maken"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:134
+#: smb4k/smb4kconfigpageauthentication.cpp:131
 #, kde-format
 msgid "Default Login"
 msgstr "Standardanmellen"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:243
+#: smb4k/smb4kconfigpageauthentication.cpp:240
 #, kde-format
 msgid "Enter the default login information."
 msgstr ""
 
-#: smb4k/smb4kconfigpageauthentication.cpp:305
+#: smb4k/smb4kconfigpageauthentication.cpp:302
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgid "Set the username and password for wallet entry %1."
 msgstr "<qt>Bitte Brukernaam un Passwoort för Reekner <b>%1</b> ingeven.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:307
+#: smb4k/smb4kconfigpageauthentication.cpp:304
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"

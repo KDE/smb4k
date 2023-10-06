@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-04 00:43+0000\n"
+"POT-Creation-Date: 2023-10-06 00:42+0000\n"
 "PO-Revision-Date: 2015-09-07 11:14+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -228,7 +228,7 @@ msgid ""
 "corresponding configuration page to fix it.</qt>"
 msgstr ""
 
-#: smb4k/smb4kconfigpageauthentication.cpp:34
+#: smb4k/smb4kconfigpageauthentication.cpp:33
 #: smb4k/smb4kconfigpageprofiles.cpp:36
 #, kde-format
 msgid "Settings"
@@ -240,48 +240,48 @@ msgstr "Beállítások"
 msgid "Wallet Entries"
 msgstr "A jelszótároló bejegyzései"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:72
+#: smb4k/smb4kconfigpageauthentication.cpp:73
 #, kde-format
 msgid "Load"
 msgstr "Betöltés"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:77
+#: smb4k/smb4kconfigpageauthentication.cpp:78
 #, kde-format
 msgid "Save"
 msgstr "Mentés"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:83
+#: smb4k/smb4kconfigpageauthentication.cpp:84
 #: smb4k/smb4kconfigpagebookmarks.cpp:125
 #: smb4k/smb4kconfigpagecustomsettings.cpp:80
 #, kde-format
 msgid "Edit"
 msgstr "Szerkesztés"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:89
+#: smb4k/smb4kconfigpageauthentication.cpp:90
 #: smb4k/smb4kconfigpagebookmarks.cpp:137
 #: smb4k/smb4kconfigpagecustomsettings.cpp:84
 #, kde-format
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:95
+#: smb4k/smb4kconfigpageauthentication.cpp:96
 #: smb4k/smb4knetworksearchtoolbar.cpp:108
 #, fuzzy, kde-format
 #| msgid "&Clear"
 msgid "Clear"
 msgstr "&Törlés"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:134
+#: smb4k/smb4kconfigpageauthentication.cpp:131
 #, kde-format
 msgid "Default Login"
 msgstr "Alapértelmezett belépés"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:243
+#: smb4k/smb4kconfigpageauthentication.cpp:240
 #, kde-format
 msgid "Enter the default login information."
 msgstr "Adja meg az alapértelmezett bejelentkezési információkat."
 
-#: smb4k/smb4kconfigpageauthentication.cpp:305
+#: smb4k/smb4kconfigpageauthentication.cpp:302
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
@@ -289,7 +289,7 @@ msgid "Set the username and password for wallet entry %1."
 msgstr ""
 "<qt>Adja meg a felhasználónevet és a jelszót a(z) <b>%1</b> géphez.</qt>"
 
-#: smb4k/smb4kconfigpageauthentication.cpp:307
+#: smb4k/smb4kconfigpageauthentication.cpp:304
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
