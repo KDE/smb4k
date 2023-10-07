@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-06 00:42+0000\n"
+"POT-Creation-Date: 2023-10-07 00:42+0000\n"
 "PO-Revision-Date: 2023-08-25 23:44+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -247,7 +247,7 @@ msgid "Remove"
 msgstr "삭제"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:96
-#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#: smb4k/smb4knetworksearchtoolbar.cpp:81
 #, kde-format
 msgid "Clear"
 msgstr "비우기"
@@ -272,19 +272,19 @@ msgstr "지갑 항목 %1의 사용자 이름과 암호를 설정하십시오."
 msgid "Set the username and password for the default login."
 msgstr "기본 로그인 사용자 이름과 암호를 설정하십시오."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:235
 #, kde-format
 msgid "Username:"
 msgstr "사용자 이름:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
-#: smb4k/smb4ktooltip.cpp:216
+#: smb4k/smb4ktooltip.cpp:160
 #, kde-format
 msgid "Workgroup:"
 msgstr "작업 그룹:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
-#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
+#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:188
 #, kde-format
 msgid "IP Address:"
 msgstr "IP 주소:"
@@ -795,8 +795,8 @@ msgstr ""
 "공유를 마운트하려면 공유의 위치와 IP 주소, 작업 그룹(선택 사항)을 입력하십시"
 "오."
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:247
-#: smb4k/smb4ktooltip.cpp:301
+#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:191
+#: smb4k/smb4ktooltip.cpp:228
 #, kde-format
 msgid "Location:"
 msgstr "위치:"
@@ -936,32 +936,32 @@ msgstr "작업 그룹 검색(&R)"
 msgid "Ctrl+U"
 msgstr "Ctrl+U"
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#: smb4k/smb4knetworksearchtoolbar.cpp:34
 #, kde-format
 msgid "Close"
 msgstr "닫기"
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, kde-format
 msgid "Search string"
 msgstr "검색 문자열"
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
 #, kde-format
 msgid "Search"
 msgstr "검색"
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#: smb4k/smb4knetworksearchtoolbar.cpp:54
 #, kde-format
 msgid "Stop"
 msgstr "정지"
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#: smb4k/smb4knetworksearchtoolbar.cpp:63
 #, kde-format
 msgid "Item Down"
 msgstr "항목 아래로"
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#: smb4k/smb4knetworksearchtoolbar.cpp:72
 #, kde-format
 msgid "Item Up"
 msgstr "항목 위로"
@@ -1133,84 +1133,83 @@ msgid ""
 "of <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
-#, kde-format
-msgid "yes"
-msgstr "예"
-
-#: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
-#, kde-format
-msgid "no"
-msgstr "아니요"
-
-#: smb4k/smb4ktooltip.cpp:177
+#: smb4k/smb4ktooltip.cpp:121
 #, kde-format
 msgid "Type:"
 msgstr "형식:"
 
-#: smb4k/smb4ktooltip.cpp:184
+#: smb4k/smb4ktooltip.cpp:128
 #, kde-format
 msgid "Workgroup"
 msgstr "작업 그룹"
 
-#: smb4k/smb4ktooltip.cpp:188
+#: smb4k/smb4ktooltip.cpp:132
 #, kde-format
 msgid "Master Browser:"
 msgstr "마스터 브라우저:"
 
-#: smb4k/smb4ktooltip.cpp:205
+#: smb4k/smb4ktooltip.cpp:149
 #, kde-format
 msgid "Host"
 msgstr "호스트"
 
-#: smb4k/smb4ktooltip.cpp:209 smb4k/smb4ktooltip.cpp:227
+#: smb4k/smb4ktooltip.cpp:153 smb4k/smb4ktooltip.cpp:171
 #, kde-format
 msgid "Comment:"
 msgstr "설명:"
 
-#: smb4k/smb4ktooltip.cpp:223
+#: smb4k/smb4ktooltip.cpp:167
 #, kde-format
 msgid "Share (%1)"
 msgstr "공유(%1)"
 
-#: smb4k/smb4ktooltip.cpp:231
+#: smb4k/smb4ktooltip.cpp:175
 #, kde-format
 msgid "Mounted:"
 msgstr "마운트됨:"
 
-#: smb4k/smb4ktooltip.cpp:240
+#: smb4k/smb4ktooltip.cpp:178
+#, kde-format
+msgid "yes"
+msgstr "예"
+
+#: smb4k/smb4ktooltip.cpp:178
+#, kde-format
+msgid "no"
+msgstr "아니요"
+
+#: smb4k/smb4ktooltip.cpp:184
 #, kde-format
 msgid "Host:"
 msgstr "호스트:"
 
-#: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
-#: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
-#: smb4k/smb4ktooltip.cpp:311 smb4k/smb4ktooltip.cpp:324
-#, kde-format
-msgid "unknown"
-msgstr "알 수 없음"
-
-#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:322
-#, kde-format
-msgid "%1 free of %2 (%3 used)"
-msgstr "%2 중 %1 남음(%3% 사용함)"
-
-#: smb4k/smb4ktooltip.cpp:304
+#: smb4k/smb4ktooltip.cpp:231
 #, kde-format
 msgid "Mountpoint:"
 msgstr "마운트 지점:"
 
-#: smb4k/smb4ktooltip.cpp:314
+#: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:237
+#: smb4k/smb4ktooltip.cpp:238 smb4k/smb4ktooltip.cpp:251
+#, kde-format
+msgid "unknown"
+msgstr "알 수 없음"
+
+#: smb4k/smb4ktooltip.cpp:241
 #, kde-format
 msgid "Owner:"
 msgstr "소유자:"
 
-#: smb4k/smb4ktooltip.cpp:317
+#: smb4k/smb4ktooltip.cpp:244
 #, kde-format
 msgid "File system:"
 msgstr "파일 시스템:"
 
-#: smb4k/smb4ktooltip.cpp:329
+#: smb4k/smb4ktooltip.cpp:249
+#, kde-format
+msgid "%1 free of %2 (%3 used)"
+msgstr "%2 중 %1 남음(%3% 사용함)"
+
+#: smb4k/smb4ktooltip.cpp:256
 #, kde-format
 msgid "Size:"
 msgstr "크기:"

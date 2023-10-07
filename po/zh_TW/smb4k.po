@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k 0.7.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-06 00:42+0000\n"
+"POT-Creation-Date: 2023-10-07 00:42+0000\n"
 "PO-Revision-Date: 2019-04-09 23:19+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -252,7 +252,7 @@ msgid "Remove"
 msgstr "全部删除"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:96
-#: smb4k/smb4knetworksearchtoolbar.cpp:108
+#: smb4k/smb4knetworksearchtoolbar.cpp:81
 #, fuzzy, kde-format
 msgid "Clear"
 msgstr "搜尋(&S)"
@@ -277,19 +277,19 @@ msgstr ""
 msgid "Set the username and password for the default login."
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:308
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:235
 #, kde-format
 msgid "Username:"
 msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:84 smb4k/smb4kmountdialog.cpp:81
-#: smb4k/smb4ktooltip.cpp:216
+#: smb4k/smb4ktooltip.cpp:160
 #, fuzzy, kde-format
 msgid "Workgroup:"
 msgstr "工作群組："
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
-#: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
+#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:188
 #, kde-format
 msgid "IP Address:"
 msgstr "IP 位址："
@@ -810,8 +810,8 @@ msgid ""
 "share."
 msgstr ""
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:247
-#: smb4k/smb4ktooltip.cpp:301
+#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:191
+#: smb4k/smb4ktooltip.cpp:228
 #, fuzzy, kde-format
 #| msgid "Restrictions"
 msgid "Location:"
@@ -952,34 +952,34 @@ msgstr "掃描工作群組(&R)"
 msgid "Ctrl+U"
 msgstr ""
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:41
+#: smb4k/smb4knetworksearchtoolbar.cpp:34
 #, kde-format
 msgid "Close"
 msgstr ""
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:52
+#: smb4k/smb4knetworksearchtoolbar.cpp:41
 #, fuzzy, kde-format
 #| msgid "&Search"
 msgid "Search string"
 msgstr "搜尋(&S)"
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:67
+#: smb4k/smb4knetworksearchtoolbar.cpp:52
 #, fuzzy, kde-format
 #| msgid "&Search"
 msgid "Search"
 msgstr "搜尋(&S)"
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:69
+#: smb4k/smb4knetworksearchtoolbar.cpp:54
 #, kde-format
 msgid "Stop"
 msgstr ""
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:82
+#: smb4k/smb4knetworksearchtoolbar.cpp:63
 #, kde-format
 msgid "Item Down"
 msgstr ""
 
-#: smb4k/smb4knetworksearchtoolbar.cpp:95
+#: smb4k/smb4knetworksearchtoolbar.cpp:72
 #, kde-format
 msgid "Item Up"
 msgstr ""
@@ -1153,94 +1153,93 @@ msgid ""
 "of <b>%1</b>."
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
-#, kde-format
-msgid "yes"
-msgstr ""
-
-#: smb4k/smb4ktooltip.cpp:144 smb4k/smb4ktooltip.cpp:234
-#, kde-format
-msgid "no"
-msgstr ""
-
-#: smb4k/smb4ktooltip.cpp:177
+#: smb4k/smb4ktooltip.cpp:121
 #, fuzzy, kde-format
 #| msgid "Type"
 msgid "Type:"
 msgstr "類型"
 
-#: smb4k/smb4ktooltip.cpp:184
+#: smb4k/smb4ktooltip.cpp:128
 #, fuzzy, kde-format
 msgid "Workgroup"
 msgstr "工作群組："
 
-#: smb4k/smb4ktooltip.cpp:188
+#: smb4k/smb4ktooltip.cpp:132
 #, fuzzy, kde-format
 #| msgid "Master browser:"
 msgid "Master Browser:"
 msgstr "主伺服器："
 
-#: smb4k/smb4ktooltip.cpp:205
+#: smb4k/smb4ktooltip.cpp:149
 #, fuzzy, kde-format
 #| msgid "Host:"
 msgid "Host"
 msgstr "主機："
 
-#: smb4k/smb4ktooltip.cpp:209 smb4k/smb4ktooltip.cpp:227
+#: smb4k/smb4ktooltip.cpp:153 smb4k/smb4ktooltip.cpp:171
 #, fuzzy, kde-format
 #| msgid "Comment"
 msgid "Comment:"
 msgstr "註解"
 
-#: smb4k/smb4ktooltip.cpp:223
+#: smb4k/smb4ktooltip.cpp:167
 #, fuzzy, kde-format
 #| msgid "Share:"
 msgid "Share (%1)"
 msgstr "共享："
 
-#: smb4k/smb4ktooltip.cpp:231
+#: smb4k/smb4ktooltip.cpp:175
 #, fuzzy, kde-format
 #| msgid "Mounted:"
 msgid "Mounted:"
 msgstr "掛載："
 
-#: smb4k/smb4ktooltip.cpp:240
+#: smb4k/smb4ktooltip.cpp:178
+#, kde-format
+msgid "yes"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:178
+#, kde-format
+msgid "no"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:184
 #, fuzzy, kde-format
 #| msgid "Host:"
 msgid "Host:"
 msgstr "主機："
 
-#: smb4k/smb4ktooltip.cpp:266 smb4k/smb4ktooltip.cpp:273
-#: smb4k/smb4ktooltip.cpp:306 smb4k/smb4ktooltip.cpp:310
-#: smb4k/smb4ktooltip.cpp:311 smb4k/smb4ktooltip.cpp:324
-#, fuzzy, kde-format
-msgid "unknown"
-msgstr "不明的"
-
-#: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:322
-#, fuzzy, kde-format
-#| msgid "%1 %2 out of %3 %4 (%5\\% used)"
-msgid "%1 free of %2 (%3 used)"
-msgstr "%3 %4 之中的 %1 %2 (%5\\% 已使用)"
-
-#: smb4k/smb4ktooltip.cpp:304
+#: smb4k/smb4ktooltip.cpp:231
 #, fuzzy, kde-format
 #| msgid "Mount point:"
 msgid "Mountpoint:"
 msgstr "掛載點："
 
-#: smb4k/smb4ktooltip.cpp:314
+#: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:237
+#: smb4k/smb4ktooltip.cpp:238 smb4k/smb4ktooltip.cpp:251
+#, fuzzy, kde-format
+msgid "unknown"
+msgstr "不明的"
+
+#: smb4k/smb4ktooltip.cpp:241
 #, kde-format
 msgid "Owner:"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:317
+#: smb4k/smb4ktooltip.cpp:244
 #, fuzzy, kde-format
 #| msgid "File system:"
 msgid "File system:"
 msgstr "檔案系統："
 
-#: smb4k/smb4ktooltip.cpp:329
+#: smb4k/smb4ktooltip.cpp:249
+#, fuzzy, kde-format
+#| msgid "%1 %2 out of %3 %4 (%5\\% used)"
+msgid "%1 free of %2 (%3 used)"
+msgstr "%3 %4 之中的 %1 %2 (%5\\% 已使用)"
+
+#: smb4k/smb4ktooltip.cpp:256
 #, fuzzy, kde-format
 #| msgid "Size:"
 msgid "Size:"
