@@ -1175,17 +1175,20 @@ msgstr ""
 "soltar ningún ficheiro nela.</qt>"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Source:"
 msgid "Source:"
 msgstr "Fonte:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Destination:"
 msgid "Destination:"
 msgstr "Destino:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Swap Paths"
 msgid "Swap Paths"
 msgstr "Intercambiar os camiños"
 

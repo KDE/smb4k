@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-07 00:42+0000\n"
-"PO-Revision-Date: 2023-09-17 16:46+0200\n"
+"PO-Revision-Date: 2023-10-05 23:16+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1143,15 +1143,13 @@ msgid "Swap Paths"
 msgstr "Scambia i percorsi"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Please provide the source and destination directory for the "
-#| "synchronization."
+#, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
 msgstr ""
-"Inserisci la cartella sorgente e di destinazione per la sincronizzazione."
+"Inserisci la cartella sorgente e di destinazione per la sincronizzazione di "
+"<b>%1</b>."
 
 #: smb4k/smb4ktooltip.cpp:121
 #, kde-format
