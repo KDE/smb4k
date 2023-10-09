@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-07 00:42+0000\n"
-"PO-Revision-Date: 2023-08-25 23:44+0200\n"
+"PO-Revision-Date: 2023-10-08 23:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -114,10 +114,9 @@ msgid "Main Toolbar"
 msgstr "주 도구 모음"
 
 #: smb4k/smb4kbookmarkdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Bookmark this share"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "이 공유를 책갈피에 추가"
+msgstr "책갈피에 등록된 공유"
 
 #: smb4k/smb4kbookmarkdialog.cpp:48
 #, kde-format
@@ -125,6 +124,8 @@ msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
+"목록에 있는 모든 공유를 책갈피에 추가합니다. 레이블이나 분류를 추가하려면 해"
+"당 책갈피 항목을 두 번 클릭하십시오."
 
 #: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:116
@@ -1113,25 +1114,24 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "원본:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Default Destination"
+#, kde-format
 msgid "Destination:"
-msgstr "기본 대상"
+msgstr "대상:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "경로 바꾸기"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr ""
+msgstr "<b>%1</b>의 동기화 원본과 대상 디렉터리를 지정하십시오."
 
 #: smb4k/smb4ktooltip.cpp:121
 #, kde-format

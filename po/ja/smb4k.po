@@ -148,10 +148,9 @@ msgid "Category:"
 msgstr ""
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Bookmarks"
+#, kde-format
 msgid "Bookmark Editor"
-msgstr "ブックマーク"
+msgstr "ブックマークエディタ"
 
 #: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:137
 #, kde-format
@@ -1018,18 +1017,17 @@ msgstr "マウント中"
 #: smb4k/smb4kpreviewdialog.cpp:47
 #, kde-format
 msgid "Reload"
-msgstr ""
+msgstr "再読み込み"
 
 #: smb4k/smb4kpreviewdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "&Abort"
+#, kde-format
 msgid "Abort"
-msgstr "中断(&A)"
+msgstr "中断"
 
 #: smb4k/smb4kpreviewdialog.cpp:57
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "上"
 
 #: smb4k/smb4kpreviewdialog.cpp:118
 #, fuzzy, kde-format
@@ -1050,15 +1048,14 @@ msgid "Print a file."
 msgstr "ファイルを印刷(&P)"
 
 #: smb4k/smb4kprintdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "&File"
+#, kde-format
 msgid "File:"
-msgstr "ファイル(&F)"
+msgstr "ファイル:"
 
 #: smb4k/smb4kprintdialog.cpp:68
 #, kde-format
 msgid "Copies:"
-msgstr ""
+msgstr "部数:"
 
 #: smb4k/smb4kprintdialog.cpp:86
 #, fuzzy, kde-format
@@ -1166,18 +1163,17 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "元:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Destination:"
-msgstr "制限事項"
+msgstr "行き先:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "スワップパス"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
@@ -1273,11 +1269,3 @@ msgstr ""
 #, kde-format
 msgid "Size:"
 msgstr ""
-
-#~ msgid "Custom Options"
-#~ msgstr "カスタムオプション"
-
-#, fuzzy
-#~| msgid "Add Bookmarks"
-#~ msgid "Mount All Bookmarks"
-#~ msgstr "ブックマークを追加(&B)"

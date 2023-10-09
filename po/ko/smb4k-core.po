@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-08-06 22:55+0200\n"
+"PO-Revision-Date: 2023-10-08 23:56+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -61,16 +61,13 @@ msgstr "사용 가능한 경우 사용자 정의 책갈피 이름표 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowCustomBookmarkLabel), group (UserInterface)
 #: smb4k.kcfg:36
-#, fuzzy, kde-format
-#| msgid ""
-#| "Do not show the name of the share that is represented by the bookmark but "
-#| "the custom label that was defined in the bookmark editor."
+#, kde-format
 msgid ""
 "Do not show the name of the bookmarked share, but the custom label that was "
 "defined in the bookmark editor."
 msgstr ""
-"책갈피가 가리키는 공유의 이름 대신 책갈피 편집기에서 정의한 사용자 정의 이름"
-"표를 표시합니다."
+"책갈피에 등록된 공유의 이름 대신 책갈피 편집기에서 정의한 사용자 정의 이름표"
+"를 표시합니다."
 
 #. i18n: ectx: label, entry (StartMainWindowDocked), group (UserInterface)
 #: smb4k.kcfg:40
