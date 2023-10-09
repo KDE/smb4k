@@ -1,7 +1,7 @@
 /*
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
 
-    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -50,8 +50,8 @@ Smb4KNetworkBrowser::Smb4KNetworkBrowser(QWidget *parent)
     //
     // Connections
     //
-    connect(this, SIGNAL(itemActivated(QTreeWidgetItem *, int)), this, SLOT(slotItemActivated(QTreeWidgetItem *, int)));
-    connect(this, SIGNAL(itemSelectionChanged()), this, SLOT(slotItemSelectionChanged()));
+    connect(this, &Smb4KNetworkBrowser::itemActivated, this, &Smb4KNetworkBrowser::slotItemActivated);
+    connect(this, &Smb4KNetworkBrowser::itemSelectionChanged, this, &Smb4KNetworkBrowser::slotItemSelectionChanged);
 }
 
 Smb4KNetworkBrowser::~Smb4KNetworkBrowser()
@@ -67,9 +67,6 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
 {
     switch (e->type()) {
     case QEvent::ToolTip: {
-        //
-        // Intercept the tool tip event and show our own tool tip
-        //
         QPoint pos = viewport()->mapFromGlobal(cursor().pos());
         Smb4KNetworkBrowserItem *item = static_cast<Smb4KNetworkBrowserItem *>(itemAt(pos));
 
@@ -92,18 +89,8 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
                 }
                 }
 
-                //
-                // Show the tooltip
-                //
                 if (pos.x() > ind * indentation()) {
-                    //
-                    // Set up the tooltip
-                    //
                     m_toolTip->setupToolTip(Smb4KToolTip::NetworkItem, item->networkItem());
-
-                    //
-                    // Show the tooltip
-                    //
                     m_toolTip->show(cursor().pos(), nativeParentWidget()->windowHandle());
                 }
             }
@@ -121,17 +108,10 @@ bool Smb4KNetworkBrowser::event(QEvent *e)
 
 void Smb4KNetworkBrowser::mousePressEvent(QMouseEvent *e)
 {
-    //
-    // Hide the tooltip
-    //
     if (m_toolTip->isVisible()) {
         m_toolTip->hide();
     }
 
-    //
-    // Get the item that is under the mouse. If there is no
-    // item, unselect the current item.
-    //
     QTreeWidgetItem *item = itemAt(e->pos());
 
     if (!item && currentItem()) {
@@ -144,9 +124,6 @@ void Smb4KNetworkBrowser::mousePressEvent(QMouseEvent *e)
 
 void Smb4KNetworkBrowser::mouseMoveEvent(QMouseEvent *e)
 {
-    //
-    // Hide the tooltip
-    //
     if (m_toolTip->isVisible()) {
         m_toolTip->hide();
     }

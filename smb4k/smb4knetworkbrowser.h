@@ -1,7 +1,7 @@
 /*
     smb4knetworkbrowser  -  The network browser widget of Smb4K.
 
-    SPDX-FileCopyrightText: 2007-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2007-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -86,9 +86,6 @@ protected Q_SLOTS:
     void slotItemSelectionChanged();
 
 private:
-    /**
-     * The tool top widget
-     */
     Smb4KToolTip *m_toolTip;
 };
 
