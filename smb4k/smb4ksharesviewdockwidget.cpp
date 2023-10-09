@@ -429,11 +429,6 @@ void Smb4KSharesViewDockWidget::slotShareMounted(const SharePtr &share)
         // Sort the view
         m_sharesView->sortItems(Qt::AscendingOrder);
 
-        //
-        // Update the tooltip
-        //
-        m_sharesView->toolTip()->update();
-
         // Enable/disable the 'Unmount All' action
         actionCollection()
             ->action(QStringLiteral("unmount_all_action"))
@@ -472,10 +467,9 @@ void Smb4KSharesViewDockWidget::slotShareUnmounted(const SharePtr &share)
 
 void Smb4KSharesViewDockWidget::slotShareUpdated(const SharePtr &share)
 {
-    //
-    // Get the share item and updated it
-    //
     if (share) {
+        m_sharesView->toolTip()->update();
+
         for (int i = 0; i < m_sharesView->count(); ++i) {
             Smb4KSharesViewItem *item = static_cast<Smb4KSharesViewItem *>(m_sharesView->item(i));
 

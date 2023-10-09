@@ -567,11 +567,6 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroups()
         // Sort the items
         //
         m_networkBrowser->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
-
-        //
-        // Update the tooltip
-        //
-        m_networkBrowser->toolTip()->update();
     } else {
         //
         // Clear the tree widget
@@ -665,11 +660,6 @@ void Smb4KNetworkBrowserDockWidget::slotWorkgroupMembers(const WorkgroupPtr &wor
             // Sort the items
             //
             m_networkBrowser->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
-
-            //
-            // Update the tooltip
-            //
-            m_networkBrowser->toolTip()->update();
         }
     }
 }
@@ -755,11 +745,6 @@ void Smb4KNetworkBrowserDockWidget::slotShares(const HostPtr &host)
         // Sort the items
         //
         m_networkBrowser->sortItems(Smb4KNetworkBrowser::Network, Qt::AscendingOrder);
-
-        //
-        // Update the tooltip
-        //
-        m_networkBrowser->toolTip()->update();
     }
 }
 
