@@ -1108,18 +1108,17 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "Zdroj:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Destination:"
-msgstr "Omezení"
+msgstr "Cíl:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "Cesty pro odkládací prostor (swap)"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
