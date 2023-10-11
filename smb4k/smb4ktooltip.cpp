@@ -68,7 +68,7 @@ void Smb4KToolTip::setupToolTip(Smb4KToolTip::Type type, NetworkItemPtr item)
 
 void Smb4KToolTip::update()
 {
-    if (!m_item.isNull() || m_type == Unknown) {
+    if (m_item.isNull() || m_type == Unknown) {
         return;
     }
 
@@ -125,20 +125,22 @@ void Smb4KToolTip::setupNetworkItemContents()
         WorkgroupPtr workgroup = m_item.staticCast<Smb4KWorkgroup>();
 
         caption->setText(workgroup->workgroupName());
-        typeName->setText(i18n("Workgroup"));
 
-        QLabel *masterBrowserName = new QLabel(m_contentsWidget);
-        masterBrowserName->setObjectName(QStringLiteral("MasterBrowserName"));
-        descriptionLayout->addRow(i18n("Master Browser:"), masterBrowserName);
+        if (workgroup->dnsDiscovered()) {
+            typeName->setText(i18n("DNS-SD Browsing Domain"));
+        } else {
+            typeName->setText(i18n("Workgroup"));
+        }
 
         if (workgroup->hasMasterBrowser()) {
+            QLabel *masterBrowserName = new QLabel(m_contentsWidget);
+            descriptionLayout->addRow(i18n("Master Browser:"), masterBrowserName);
+
             if (workgroup->hasMasterBrowserIpAddress()) {
                 masterBrowserName->setText(workgroup->masterBrowserName() + QStringLiteral(" (") + workgroup->masterBrowserIpAddress() + QStringLiteral(")"));
             } else {
                 masterBrowserName->setText(workgroup->masterBrowserName());
             }
-        } else {
-            masterBrowserName->setText(QStringLiteral("-"));
         }
 
         break;
@@ -149,11 +151,9 @@ void Smb4KToolTip::setupNetworkItemContents()
         typeName->setText(i18n("Host"));
 
         QLabel *commentString = new QLabel(!host->comment().isEmpty() ? host->comment() : QStringLiteral("-"), m_contentsWidget);
-        commentString->setObjectName(QStringLiteral("CommentString"));
         descriptionLayout->addRow(i18n("Comment:"), commentString);
 
         QLabel *ipAddress = new QLabel(host->hasIpAddress() ? host->ipAddress() : QStringLiteral("-"), m_contentsWidget);
-        ipAddress->setObjectName(QStringLiteral("IPAddressString"));
         descriptionLayout->addRow(i18n("IP Address:"), ipAddress);
 
         QLabel *workgroupName = new QLabel(host->workgroupName(), m_contentsWidget);
@@ -167,7 +167,6 @@ void Smb4KToolTip::setupNetworkItemContents()
         typeName->setText(i18n("Share (%1)", share->shareTypeString()));
 
         QLabel *commentString = new QLabel(!share->comment().isEmpty() ? share->comment() : QStringLiteral("-"), m_contentsWidget);
-        commentString->setObjectName(QStringLiteral("CommentString"));
         descriptionLayout->addRow(i18n("Comment:"), commentString);
 
         QLabel *mountedState = new QLabel(m_contentsWidget);
@@ -184,7 +183,6 @@ void Smb4KToolTip::setupNetworkItemContents()
         descriptionLayout->addRow(i18n("Host:"), hostName);
 
         QLabel *ipAddressString = new QLabel(share->hasHostIpAddress() ? share->hostIpAddress() : QStringLiteral("-"), m_contentsWidget);
-        ipAddressString->setObjectName(QStringLiteral("IPAddressString"));
         descriptionLayout->addRow(i18n("IP Address:"), ipAddressString);
 
         QLabel *locationString = new QLabel(share->displayString(), m_contentsWidget);
