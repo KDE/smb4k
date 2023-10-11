@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 00:42+0000\n"
+"POT-Creation-Date: 2023-10-10 00:42+0000\n"
 "PO-Revision-Date: 2022-04-07 18:24+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -958,7 +958,7 @@ msgid "&Unmount"
 msgstr "&Odpojiť"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:969
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -974,7 +974,7 @@ msgstr "Prehľadať počítač"
 msgid "Scan Wo&rkgroup"
 msgstr "Prehľadať pracovnú skupinu"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:971
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"

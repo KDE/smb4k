@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 00:42+0000\n"
-"PO-Revision-Date: 2023-09-16 10:09\n"
+"POT-Creation-Date: 2023-10-10 00:42+0000\n"
+"PO-Revision-Date: 2023-10-10 14:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -909,7 +909,7 @@ msgid "&Unmount"
 msgstr "卸载(&U)"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:969
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -925,7 +925,7 @@ msgstr "扫描计算机(&R)"
 msgid "Scan Wo&rkgroup"
 msgstr "扫描工作组(&R)"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:971
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -1106,25 +1106,24 @@ msgstr "<qt>当前没有连接到共享 <b>%1</b>。您无法在此处放置文�
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "来源："
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Destination:"
-msgstr "限制"
+msgstr "目标："
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "对调路径"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr ""
+msgstr "请提供 <b>%1</b> 同步使用的来源和目标目录。"
 
 #: smb4k/smb4ktooltip.cpp:121
 #, kde-format

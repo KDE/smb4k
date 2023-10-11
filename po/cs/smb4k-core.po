@@ -3003,21 +3003,3 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
-
-#~ msgid "Synchronization"
-#~ msgstr "Synchronizace"
-
-#~ msgid "Swap Paths"
-#~ msgstr "Cesty pro odkládací prostor (swap)"
-
-#~ msgid "Swap source and destination"
-#~ msgstr "Zdroj odkládacího souboru a místo určení"
-
-#~ msgid "Synchronize"
-#~ msgstr "Synchronizovat"
-
-#~ msgid "Source:"
-#~ msgstr "Zdroj:"
-
-#~ msgid "Destination:"
-#~ msgstr "Místo určení :"

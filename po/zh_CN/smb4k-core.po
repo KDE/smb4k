@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-16 10:09\n"
+"PO-Revision-Date: 2023-10-10 14:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -3241,39 +3241,3 @@ msgstr "<qt>请输入主机 <b>%1</b> 的用户名和密码。</qt>"
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr "<qt>请输入共享 <b>%1</b> 的用户名和密码。</qt>"
-
-#~ msgid "Synchronization"
-#~ msgstr "同步"
-
-#~ msgid "Swap Paths"
-#~ msgstr "对调路径"
-
-#~ msgid "Swap source and destination"
-#~ msgstr "对调来源和目标"
-
-#~ msgid "Synchronize"
-#~ msgstr "同步"
-
-#~ msgid "Synchronize the destination with the source"
-#~ msgstr "同步来源到目标"
-
-#~ msgid ""
-#~ "Please provide the source and destination directory for the "
-#~ "synchronization."
-#~ msgstr "请提供同步使用的来源和目标目录。"
-
-#~ msgid "Source:"
-#~ msgstr "来源："
-
-#~ msgid ""
-#~ "This is the source directory. The data that it contains is to be written "
-#~ "to the destination directory."
-#~ msgstr "在此设置来源目录。此目录中的数据将被写入到目标目录。"
-
-#~ msgid "Destination:"
-#~ msgstr "目标："
-
-#~ msgid ""
-#~ "This is the destination directory. It will be updated with the data from "
-#~ "the source directory."
-#~ msgstr "在此设置目标目录。此目录中的数据将被更新为来源目录的数据。"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 00:42+0000\n"
+"POT-Creation-Date: 2023-10-10 00:42+0000\n"
 "PO-Revision-Date: 2023-07-03 12:00+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -911,7 +911,7 @@ msgid "&Unmount"
 msgstr "&Odpojit"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:969
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ctrl+M"
@@ -927,7 +927,7 @@ msgstr "Skenovat Počíta&č"
 msgid "Scan Wo&rkgroup"
 msgstr "Skenovat Pra&covní skupinu"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:971
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -1108,18 +1108,17 @@ msgstr ""
 #: smb4k/smb4ksynchronizationdialog.cpp:62
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "Zdroj:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Restrictions"
+#, kde-format
 msgid "Destination:"
-msgstr "Omezení"
+msgstr "Cíl:"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:90
 #, kde-format
 msgid "Swap Paths"
-msgstr ""
+msgstr "Cesty pro odkládací prostor (swap)"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
 #, kde-format

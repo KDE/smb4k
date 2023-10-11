@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 00:42+0000\n"
+"POT-Creation-Date: 2023-10-10 00:42+0000\n"
 "PO-Revision-Date: 2022-08-10 23:29+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: Arabic <kde-l10n-ar@kde.org>\n"
@@ -929,7 +929,7 @@ msgid "&Unmount"
 msgstr "أزل ال&ضمّ"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:969
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -945,7 +945,7 @@ msgstr "افحص ال&حاسوب"
 msgid "Scan Wo&rkgroup"
 msgstr "افحص &مجموعة العمل"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:971
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 00:42+0000\n"
+"POT-Creation-Date: 2023-10-10 00:42+0000\n"
 "PO-Revision-Date: 2023-10-07 19:01+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -929,7 +929,7 @@ msgid "&Unmount"
 msgstr "&Desmuntatu"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:969
 #, kde-format
 msgid "Ctrl+M"
 msgstr "Ktrl+M"
@@ -945,7 +945,7 @@ msgstr "Miatu o&rdenagailua"
 msgid "Scan Wo&rkgroup"
 msgstr "Miatu la&ntaldea"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:971
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
