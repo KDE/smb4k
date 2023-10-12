@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-10 00:42+0000\n"
+"POT-Creation-Date: 2023-10-12 00:42+0000\n"
 "PO-Revision-Date: 2022-09-05 09:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -287,7 +287,7 @@ msgstr "Укажите имя пользователя и пароль для у
 msgid "Set the username and password for the default login."
 msgstr "Укажите имя пользователя и пароль для учётной записи по умолчанию."
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:235
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr "Имя пользователя:"
@@ -299,7 +299,7 @@ msgid "Workgroup:"
 msgstr "Рабочая группа"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
-#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:188
+#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-адрес:"
@@ -832,8 +832,8 @@ msgid ""
 "share."
 msgstr ""
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:191
-#: smb4k/smb4ktooltip.cpp:228
+#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
+#: smb4k/smb4ktooltip.cpp:226
 #, kde-format
 msgid "Location:"
 msgstr "Расположение:"
@@ -1180,22 +1180,27 @@ msgstr ""
 msgid "Type:"
 msgstr "Тип:"
 
-#: smb4k/smb4ktooltip.cpp:128
+#: smb4k/smb4ktooltip.cpp:130
+#, kde-format
+msgid "DNS-SD Browsing Domain"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:132
 #, kde-format
 msgid "Workgroup"
 msgstr "Рабочая группа"
 
-#: smb4k/smb4ktooltip.cpp:132
+#: smb4k/smb4ktooltip.cpp:137
 #, kde-format
 msgid "Master Browser:"
 msgstr "Основной браузер:"
 
-#: smb4k/smb4ktooltip.cpp:149
+#: smb4k/smb4ktooltip.cpp:151
 #, kde-format
 msgid "Host"
 msgstr "Хост"
 
-#: smb4k/smb4ktooltip.cpp:153 smb4k/smb4ktooltip.cpp:171
+#: smb4k/smb4ktooltip.cpp:154 smb4k/smb4ktooltip.cpp:170
 #, kde-format
 msgid "Comment:"
 msgstr "КоментарийЖ"
@@ -1207,53 +1212,53 @@ msgid "Share (%1)"
 msgstr "Ресурс (%1)"
 
 # [общая папка] подключена: да/нет --aspotashev
-#: smb4k/smb4ktooltip.cpp:175
+#: smb4k/smb4ktooltip.cpp:174
 #, kde-format
 msgid "Mounted:"
 msgstr "Подключена:"
 
-#: smb4k/smb4ktooltip.cpp:178
+#: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "yes"
 msgstr "да"
 
-#: smb4k/smb4ktooltip.cpp:178
+#: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "no"
 msgstr "нет"
 
-#: smb4k/smb4ktooltip.cpp:184
+#: smb4k/smb4ktooltip.cpp:183
 #, kde-format
 msgid "Host:"
 msgstr "Узел:"
 
-#: smb4k/smb4ktooltip.cpp:231
+#: smb4k/smb4ktooltip.cpp:229
 #, kde-format
 msgid "Mountpoint:"
 msgstr "Точка подключения:"
 
-#: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:237
-#: smb4k/smb4ktooltip.cpp:238 smb4k/smb4ktooltip.cpp:251
+#: smb4k/smb4ktooltip.cpp:231 smb4k/smb4ktooltip.cpp:235
+#: smb4k/smb4ktooltip.cpp:236 smb4k/smb4ktooltip.cpp:249
 #, kde-format
 msgid "unknown"
 msgstr "неизвестно"
 
-#: smb4k/smb4ktooltip.cpp:241
+#: smb4k/smb4ktooltip.cpp:239
 #, kde-format
 msgid "Owner:"
 msgstr "Владелец:"
 
-#: smb4k/smb4ktooltip.cpp:244
+#: smb4k/smb4ktooltip.cpp:242
 #, kde-format
 msgid "File system:"
 msgstr "Файловая система:"
 
-#: smb4k/smb4ktooltip.cpp:249
+#: smb4k/smb4ktooltip.cpp:247
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
 msgstr "свободно %1 из %2 (использовано %3)"
 
-#: smb4k/smb4ktooltip.cpp:256
+#: smb4k/smb4ktooltip.cpp:254
 #, kde-format
 msgid "Size:"
 msgstr "Размер:"

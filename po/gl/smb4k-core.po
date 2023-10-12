@@ -628,7 +628,7 @@ msgid ""
 "encrypted on your hard drive. If this setting is disabled, the login is not "
 "stored permanently but only temporarily."
 msgstr ""
-"Usar unha carteira para gardar o acceso. O nome de usuario e o contrasinal "
+"Usar unha carteira para gardar o acceso. O nome de usuaria e o contrasinal "
 "gárdanse cifrados no sistema de almacenamento. Se desactiva esta opción, os "
 "datos de autenticación só se almacenan temporalmente."
 
@@ -2043,7 +2043,7 @@ msgstr "Indicar o usuario"
 #: smb4khomesshareshandler_p.cpp:172
 #, kde-format
 msgid "Please specify a username for share<br><b>%1</b>."
-msgstr "Indique un nome de usuario para a compartición <br><b>%1</b>."
+msgstr "Indique un nome de usuaria para a compartición <br><b>%1</b>."
 
 #: smb4khomesshareshandler_p.cpp:186
 #, kde-format
@@ -3467,7 +3467,7 @@ msgstr "Destino"
 #, kde-format
 msgid "<qt>Please enter a username and a password for the host <b>%1</b>.</qt>"
 msgstr ""
-"<qt>Escriba o seu nome de usuario e contrasinal para o servidor <b>%1</b>.</"
+"<qt>Escriba o seu nome de usuaria e contrasinal para o servidor <b>%1</b>.</"
 "qt>"
 
 #: smb4kwalletmanager_p.cpp:53 smb4kwalletmanager_p.cpp:55
@@ -3475,7 +3475,7 @@ msgstr ""
 msgid ""
 "<qt>Please enter a username and a password for the share <b>%1</b>.</qt>"
 msgstr ""
-"<qt>Escriba o seu nome de usuario e contrasinal para a compartición <b>%1</"
+"<qt>Escriba o seu nome de usuaria e contrasinal para a compartición <b>%1</"
 "b>.</qt>"
 
 #~ msgid "Synchronization"
