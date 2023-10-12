@@ -1,3 +1,27 @@
+Smb4K 3.2.4 (2023-10-11):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
+
+- Fix the reported paths of the synchronization progress information: Use
+  the relative path returned by rsync and emit the correct paths with the
+  description() signal.
+- In the 'Authentication' configuration page, fix the missing connection
+  of the reset button to its slot.
+- In the 'Authentication' configuration page, fix the wrong parent for
+  the button box. This got previously mended by adding the button box
+  to the editor's layout, but we should fix it anyway.
+
+Smb4K 3.2.3 (2023-09-06):
+
+See the summary of changes below. For a full list of changes, please
+refer to the Git log at https://invent.kde.org/network/smb4k/-/commits/3.2
+
+- Fix bug in the copy constructors of the derived network item classes.
+- Fix the remounting of shares after the computer went online again / woke 
+  up from suspend/resume. Thank you to Hendrik Haddorp and Stefan v. Wachter
+  for reporting this issue.
+
 Smb4K 3.2.2 (2023-07-28):
 
 See the summary of changes below. For a full list of changes, please
