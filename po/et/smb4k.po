@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-10 00:42+0000\n"
+"POT-Creation-Date: 2023-10-12 00:42+0000\n"
 "PO-Revision-Date: 2020-06-05 22:57+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -288,7 +288,7 @@ msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 msgid "Set the username and password for the default login."
 msgstr "<qt>Palun sisesta masina <b>%1</b> jaoks kasutajanimi ja parool.</qt>"
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:235
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
 #, fuzzy, kde-format
 #| msgid "User:"
 msgid "Username:"
@@ -301,7 +301,7 @@ msgid "Workgroup:"
 msgstr "Töögrupp:"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
-#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:188
+#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-aadress:"
@@ -857,8 +857,8 @@ msgstr ""
 "Sisesta jagatud ressursi ühendamiseks asukoht (UNC aadress) ja vajaduse "
 "korral ka IP-aadress ja töögrupp."
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:191
-#: smb4k/smb4ktooltip.cpp:228
+#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
+#: smb4k/smb4ktooltip.cpp:226
 #, kde-format
 msgid "Location:"
 msgstr "Asukoht:"
@@ -1211,22 +1211,27 @@ msgstr "Palun määra sünkroonimiseks lähte- ja sihtkataloog."
 msgid "Type:"
 msgstr "Tüüp:"
 
-#: smb4k/smb4ktooltip.cpp:128
+#: smb4k/smb4ktooltip.cpp:130
+#, kde-format
+msgid "DNS-SD Browsing Domain"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:132
 #, kde-format
 msgid "Workgroup"
 msgstr "Töögrupp"
 
-#: smb4k/smb4ktooltip.cpp:132
+#: smb4k/smb4ktooltip.cpp:137
 #, kde-format
 msgid "Master Browser:"
 msgstr "Nimekirjahoidja:"
 
-#: smb4k/smb4ktooltip.cpp:149
+#: smb4k/smb4ktooltip.cpp:151
 #, kde-format
 msgid "Host"
 msgstr "Masin"
 
-#: smb4k/smb4ktooltip.cpp:153 smb4k/smb4ktooltip.cpp:171
+#: smb4k/smb4ktooltip.cpp:154 smb4k/smb4ktooltip.cpp:170
 #, kde-format
 msgid "Comment:"
 msgstr "Kommentaar:"
@@ -1236,53 +1241,53 @@ msgstr "Kommentaar:"
 msgid "Share (%1)"
 msgstr "Jagatud ressurss (%1)"
 
-#: smb4k/smb4ktooltip.cpp:175
+#: smb4k/smb4ktooltip.cpp:174
 #, kde-format
 msgid "Mounted:"
 msgstr "Ühendatud:"
 
-#: smb4k/smb4ktooltip.cpp:178
+#: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "yes"
 msgstr "jah"
 
-#: smb4k/smb4ktooltip.cpp:178
+#: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "no"
 msgstr "ei"
 
-#: smb4k/smb4ktooltip.cpp:184
+#: smb4k/smb4ktooltip.cpp:183
 #, kde-format
 msgid "Host:"
 msgstr "Masin:"
 
-#: smb4k/smb4ktooltip.cpp:231
+#: smb4k/smb4ktooltip.cpp:229
 #, kde-format
 msgid "Mountpoint:"
 msgstr "Ühenduspunkt:"
 
-#: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:237
-#: smb4k/smb4ktooltip.cpp:238 smb4k/smb4ktooltip.cpp:251
+#: smb4k/smb4ktooltip.cpp:231 smb4k/smb4ktooltip.cpp:235
+#: smb4k/smb4ktooltip.cpp:236 smb4k/smb4ktooltip.cpp:249
 #, kde-format
 msgid "unknown"
 msgstr "tundmatu"
 
-#: smb4k/smb4ktooltip.cpp:241
+#: smb4k/smb4ktooltip.cpp:239
 #, kde-format
 msgid "Owner:"
 msgstr "Omanik:"
 
-#: smb4k/smb4ktooltip.cpp:244
+#: smb4k/smb4ktooltip.cpp:242
 #, kde-format
 msgid "File system:"
 msgstr "Failisüsteem:"
 
-#: smb4k/smb4ktooltip.cpp:249
+#: smb4k/smb4ktooltip.cpp:247
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
 msgstr "%1 vaba, kokku %2 (kasutusel %3)"
 
-#: smb4k/smb4ktooltip.cpp:256
+#: smb4k/smb4ktooltip.cpp:254
 #, kde-format
 msgid "Size:"
 msgstr "Suurus:"
