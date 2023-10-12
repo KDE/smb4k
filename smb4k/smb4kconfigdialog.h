@@ -1,21 +1,29 @@
 /*
     The configuration dialog of Smb4K
 
-    SPDX-FileCopyrightText: 2004-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2004-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 #ifndef SMB4KCONFIGDIALOG_H
 #define SMB4KCONFIGDIALOG_H
 
+// application specific includes
+#include "core/smb4kglobal.h"
+#include "smb4kconfigpageauthentication.h"
+#include "smb4kconfigpagebookmarks.h"
+#include "smb4kconfigpagecustomsettings.h"
+#include "smb4kconfigpagemounting.h"
+#include "smb4kconfigpagenetwork.h"
+#include "smb4kconfigpageprofiles.h"
+#include "smb4kconfigpagesynchronization.h"
+#include "smb4kconfigpageuserinterface.h"
+
 // Qt includes
 #include <QAbstractButton>
 
 // KDE includes
 #include <KConfigDialog>
-
-// application specific includes
-#include "core/smb4kglobal.h"
 
 // forward declarations
 class Smb4KSettings;
@@ -66,46 +74,6 @@ protected Q_SLOTS:
 
 private:
     /**
-     * "User Interface" page
-     */
-    KPageWidgetItem *m_user_interface;
-
-    /**
-     * "Network" page
-     */
-    KPageWidgetItem *m_network;
-
-    /**
-     * "Authentication" page
-     */
-    KPageWidgetItem *m_authentication;
-
-    /**
-     * "Mounting" page
-     */
-    KPageWidgetItem *m_mounting;
-
-    /**
-     * "Synchronization" page
-     */
-    KPageWidgetItem *m_synchronization;
-
-    /**
-     * "Custom Settings" page
-     */
-    KPageWidgetItem *m_custom_settings;
-
-    /**
-     * "Profiles" page
-     */
-    KPageWidgetItem *m_profiles;
-
-    /**
-     * "Bookmarks" page
-     */
-    KPageWidgetItem *m_bookmarks;
-
-    /**
      * Set up the config dialog.
      */
     void setupDialog();
@@ -120,6 +88,24 @@ private:
      * @returns TRUE if the check passed and FALSE if it failed.
      */
     bool checkSettings(KPageWidgetItem *page = nullptr);
+
+    Smb4KConfigPageUserInterface *m_userInterfacePage;
+    Smb4KConfigPageNetwork *m_networkPage;
+    Smb4KConfigPageMounting *m_mountingPage;
+    Smb4KConfigPageAuthentication *m_authenticationPage;
+    Smb4KConfigPageSynchronization *m_synchronizationPage;
+    Smb4KConfigPageCustomSettings *m_customSettingsPage;
+    Smb4KConfigPageProfiles *m_profilesPage;
+    Smb4KConfigPageBookmarks *m_bookmarksPage;
+
+    KPageWidgetItem *m_userInterface;
+    KPageWidgetItem *m_network;
+    KPageWidgetItem *m_mounting;
+    KPageWidgetItem *m_authentication;
+    KPageWidgetItem *m_synchronization;
+    KPageWidgetItem *m_customSettings;
+    KPageWidgetItem *m_profiles;
+    KPageWidgetItem *m_bookmarks;
 };
 
 #endif
