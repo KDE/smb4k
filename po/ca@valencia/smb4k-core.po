@@ -4,14 +4,14 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Josep M. Ferrer <txemaq@gmail.com>, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
-# Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2016, 2017, 2018, 2019, 2020.
+# SPDX-FileCopyrightText: 2014, 2016, 2017, 2018, 2019, 2020, 2023 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-06 11:48+0200\n"
-"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"PO-Revision-Date: 2023-10-11 20:48+0200\n"
+"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -795,7 +795,7 @@ msgstr ""
 "es deixaran sense canvis si existixen, i qualsevol directori implícit que "
 "falte es crearà amb els atributs predeterminats. Açò inclús permet que estos "
 "elements de camí implícits tinguen grans diferències, com que siga un enllaç "
-"simbòlic a un directori en un costat de la transferència, i un directori "
+"simbòlic cap a un directori en un costat de la transferència, i un directori "
 "real en l'altra costat."
 
 #. i18n: ectx: label, entry (TransferDirectories), group (Synchronization)
@@ -973,13 +973,13 @@ msgid ""
 "to slip in a symlink to an unexpected place. For more details, see the "
 "manual page of rsync."
 msgstr ""
-"Esta opció diu a «rsync» que (1) modifique tots els enllaços simbòlics en la "
-"banda de la recepció en una manera que el faça inusables però recuperables, "
-"o (2) que desmastegue els enllaços simbòlics en la banda de l'enviament que "
-"s'han emmagatzemat en un estat de mastegats (--munge-links). Açò és útil si "
-"no confieu suficientment en l'origen de les dades per a no intentar "
-"introduir un enllaç simbòlic a un lloc inesperat. Per a més detalls, vegeu "
-"la pàgina del manual de «rsync»."
+"Esta opció diu a «rsync» que (1) modifique tots els enllaços simbòlics cap a "
+"la banda de la recepció en una manera que els faça inusables però "
+"recuperables, o (2) que desmastegue els enllaços simbòlics cap a la banda de "
+"l'enviament que s'han emmagatzemat en un estat de mastegats (--munge-links). "
+"Açò és útil si no confieu suficientment en l'origen de les dades per a no "
+"intentar introduir un enllaç simbòlic cap a un lloc inesperat. Per a més "
+"detalls, vegeu la pàgina del manual de «rsync»."
 
 #. i18n: ectx: label, entry (PreserveHardLinks), group (Synchronization)
 #: smb4k.kcfg:360
@@ -1020,9 +1020,9 @@ msgid ""
 msgstr ""
 "Tracta els enllaços simbòlics cap a directoris en la banda de l'enviament "
 "com si foren reals (-k, --copy-dirlinks). Açò és útil si no voleu que es "
-"vegen afectats els enllaços simbòlics a no directoris, com si s'utilitza --"
-"copy-links. Sense esta opció, si la banda de l'enviament ha substituït un "
-"directori per un enllaç simbòlic a un directori, la banda de la recepció "
+"vegen afectats els enllaços simbòlics cap a no directoris, com si s'utilitza "
+"--copy-links. Sense esta opció, si la banda de l'enviament ha substituït un "
+"directori per un enllaç simbòlic cap a un directori, la banda de la recepció "
 "suprimirà tot el que estiga en el camí de l'enllaç simbòlic nou, inclosa la "
 "jerarquia a un directori (si són efectius --force o --delete). Per a més "
 "detalls, vegeu la pàgina del manual de «rsync»."
@@ -3516,45 +3516,3 @@ msgid ""
 msgstr ""
 "<qt>Introduïu un nom d'usuari i una contrasenya per a la compartició <b>%1</"
 "b>.</qt>"
-
-#~ msgid "Synchronization"
-#~ msgstr "Sincronització"
-
-#~ msgid "Swap Paths"
-#~ msgstr "Intercanvia els camins"
-
-#~ msgid "Swap source and destination"
-#~ msgstr "Intercanvia l'origen i la destinació"
-
-#~ msgid "Synchronize"
-#~ msgstr "Sincronitza"
-
-#~ msgid "Synchronize the destination with the source"
-#~ msgstr "Sincronitza la destinació amb l'origen"
-
-#~ msgid ""
-#~ "Please provide the source and destination directory for the "
-#~ "synchronization."
-#~ msgstr ""
-#~ "Proporcioneu el directori d'origen i de destinació per a la "
-#~ "sincronització."
-
-#~ msgid "Source:"
-#~ msgstr "Origen:"
-
-#~ msgid ""
-#~ "This is the source directory. The data that it contains is to be written "
-#~ "to the destination directory."
-#~ msgstr ""
-#~ "Este és el directori d'origen. Les dades que conté s'escriuran al "
-#~ "directori de destinació."
-
-#~ msgid "Destination:"
-#~ msgstr "Destinació:"
-
-#~ msgid ""
-#~ "This is the destination directory. It will be updated with the data from "
-#~ "the source directory."
-#~ msgstr ""
-#~ "Este és el directori de destinació. S'actualitzarà amb les dades del "
-#~ "directori d'origen."
