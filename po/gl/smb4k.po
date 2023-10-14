@@ -1,15 +1,15 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Xosé <xosecalvo@gmail.com>, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2016.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019.
+# SPDX-FileCopyrightText: 2023 Adrián Chaves (Gallaecio)
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 02:26+0000\n"
-"PO-Revision-Date: 2019-10-19 22:40+0200\n"
+"PO-Revision-Date: 2023-10-13 07:07+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -17,17 +17,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.11.70\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Adrián Chaves Fernández"
+msgstr "Adrian Chaves (Gallaecio)"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "adriyetichaves@gmail.com"
+msgstr "adrian@chaves.io"
 
 #: helpers/smb4kmounthelper.cpp:135
 #, kde-format
@@ -57,10 +57,9 @@ msgstr ""
 "comparticións de Samba de KDE."
 
 #: smb4k/main.cpp:47
-#, fuzzy, kde-format
-#| msgid "© 2003-2019 Alexander Reinholdt"
+#, kde-format
 msgid "© 2003-2023 Alexander Reinholdt"
-msgstr "© 2003-2019 Alexander Reinholdt"
+msgstr "© 2003-2023 Alexander Reinholdt"
 
 #: smb4k/main.cpp:56
 #, kde-format
@@ -70,7 +69,7 @@ msgstr "Alexander Reinholdt"
 #: smb4k/main.cpp:56
 #, kde-format
 msgid "Developer"
-msgstr "Desenvolvedor."
+msgstr "Desenvolvemento."
 
 #: smb4k/main.cpp:61
 #, kde-format
@@ -126,7 +125,7 @@ msgstr "Marcadores"
 #: smb4k/smb4kbookmarkmenu.cpp:49
 #, kde-format
 msgid "&Edit Bookmarks"
-msgstr "&Modificar os marcadores"
+msgstr "&Editar os marcadores"
 
 #: smb4k/smb4kbookmarkmenu.cpp:58 smb4k/smb4kmainwindow.cpp:145
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:150
@@ -136,15 +135,14 @@ msgid "Add &Bookmark"
 msgstr "Engadir un &marcador"
 
 #: smb4k/smb4kbookmarkmenu.cpp:69 smb4k/smb4kbookmarkmenu.cpp:209
-#, fuzzy, kde-format
-#| msgid "Mount All Bookmarks"
+#, kde-format
 msgid "Mount Bookmarks"
-msgstr "Montar todos os marcadores"
+msgstr "Montar os marcadores"
 
 #: smb4k/smb4kconfigdialog.cpp:107
 #, kde-format
 msgid "User Interface"
-msgstr "Interface do usuario"
+msgstr "Interface"
 
 #: smb4k/smb4kconfigdialog.cpp:108 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
@@ -167,10 +165,9 @@ msgid "Synchronization"
 msgstr "Sincronización"
 
 #: smb4k/smb4kconfigdialog.cpp:112
-#, fuzzy, kde-format
-#| msgid "Common Mount Settings"
+#, kde-format
 msgid "Custom Settings"
-msgstr "Configuración de montaxe común"
+msgstr "Configuración personalizada"
 
 #: smb4k/smb4kconfigdialog.cpp:113 smb4k/smb4kconfigpageprofiles.cpp:52
 #: smb4k/smb4kprofilesmenu.cpp:22
@@ -212,7 +209,7 @@ msgstr "Gardar"
 #: smb4k/smb4kconfigpagecustomoptions.cpp:82
 #, kde-format
 msgid "Edit"
-msgstr "Modificar"
+msgstr "Editar"
 
 #: smb4k/smb4kconfigpageauthentication.cpp:126
 #: smb4k/smb4kconfigpagecustomoptions.cpp:87
@@ -234,26 +231,23 @@ msgstr "Inicio de sesión por omisión"
 #: smb4k/smb4kconfigpageauthentication.cpp:324
 #, kde-format
 msgid "Enter the default login information."
-msgstr "Introduza os datos de acceso predeterminados."
+msgstr "Introduza as credenciais predeterminadas."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:403
-#, fuzzy, kde-format
-#| msgid "<qt>Please enter a username and a password for the host %1.</qt>"
+#, kde-format
 msgid "Set the username and password for wallet entry %1."
-msgstr ""
-"<qt>Introduza un nome de usuario e un contrasinal para a máquina %1.</qt>"
+msgstr "Definir o nome de usuaria e contrasinal da entrada %1 da carteira."
 
 #: smb4k/smb4kconfigpageauthentication.cpp:405
-#, fuzzy, kde-format
-#| msgid "<qt>Please enter a username and a password for the host %1.</qt>"
+#, kde-format
 msgid "Set the username and password for the default login."
 msgstr ""
-"<qt>Introduza un nome de usuario e un contrasinal para a máquina %1.</qt>"
+"Definir o nome de usuaria e contrasinal das credenciais predeterminada."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:65
 #, kde-format
 msgid "All fine."
-msgstr ""
+msgstr "Todo ben."
 
 #: smb4k/smb4kconfigpagecustomoptions.cpp:92
 #, kde-format
@@ -264,11 +258,13 @@ msgstr "Limpar a lista"
 #, kde-format
 msgid "The item %1 was removed, because all custom settings were reset."
 msgstr ""
+"Eliminouse o elemento %1 porque se restabeleceron todas as opcións "
+"personalizadas."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
 msgid "Directories"
-msgstr "Directorios"
+msgstr "Cartafoles"
 
 #: smb4k/smb4kconfigpagemounting.cpp:119 smb4k/smb4kconfigpagemounting.cpp:524
 #: smb4k/smb4kconfigpagenetwork.cpp:112
@@ -302,7 +298,7 @@ msgstr "Compatibilidade con extensións CIFS de Unix"
 #: smb4k/smb4kconfigpagemounting.cpp:254 smb4k/smb4kconfigpagemounting.cpp:599
 #, kde-format
 msgid "Choose a different user"
-msgstr "Escoller un usuario diferente"
+msgstr "Escoller unha persoa usuaria diferente"
 
 #: smb4k/smb4kconfigpagemounting.cpp:290 smb4k/smb4kconfigpagemounting.cpp:635
 #, kde-format
@@ -348,8 +344,8 @@ msgstr "Opcións de CIFS adicionais"
 #, kde-format
 msgid "<qt>Enter the desired options as a comma separated list:</qt>"
 msgstr ""
-"<qt>Introduza as opcións que queira en forma de lista de elementos separados "
-"por comas:</qt>"
+"<qt>Introduza as opcións que queira en forma de lista separada por comas:</"
+"qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:862
 #, kde-format
@@ -367,10 +363,9 @@ msgstr[1] ""
 "Consulte o manual para máis información.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
-#, fuzzy, kde-format
-#| msgid "Basic Settings"
+#, kde-format
 msgid "Browse Settings"
-msgstr "Configuración básica"
+msgstr "Examinar a configuración"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:144
 #, kde-format
@@ -388,33 +383,27 @@ msgid " s"
 msgstr " s"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:225
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Define the hosts that should be woken up via the custom options "
-#| "dialog.</qt>"
+#, kde-format
 msgid ""
 "Define the hosts that should be woken up via the custom settings editor."
 msgstr ""
-"<qt>Define os servidores para espertar mediante o diálogo de configuración "
-"personalizada.</qt>"
+"Define os servidores para espertar mediante o editor de opcións "
+"personalizadas."
 
 #: smb4k/smb4kconfigpagenetwork.cpp:235
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Advanced Settings"
-msgstr "Configuración de montaxe avanzada"
+msgstr "Configuración avanzada"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:36
-#, fuzzy, kde-format
-#| msgid "Synchronization prefix:"
+#, kde-format
 msgid "Synchronization Directory"
-msgstr "Prefixo de sincronización:"
+msgstr "Cartafol de sincronización"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:90
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backups"
-msgstr "Copias de seguranza"
+msgstr "Salvagardas"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:140
 #, kde-format
@@ -434,18 +423,17 @@ msgstr "Xestión de ficheiros"
 #: smb4k/smb4kconfigpagesynchronization.cpp:231
 #, kde-format
 msgid "File Attributes"
-msgstr ""
+msgstr "Atributos de ficheiro"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:276
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Ownership"
-msgstr "Propietario"
+msgstr "Pertenza"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:292
 #, kde-format
 msgid "File Attributes && Ownership"
-msgstr ""
+msgstr "Atributos de ficheiro e pertenza"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:301
 #, kde-format
@@ -459,8 +447,7 @@ msgstr "Ficheiros"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:343
 #: smb4k/smb4kconfigpagesynchronization.cpp:354
-#, fuzzy, kde-format
-#| msgid " kB"
+#, kde-format
 msgid " kB"
 msgstr " kB"
 
@@ -474,7 +461,7 @@ msgstr "Diverso"
 #: smb4k/smb4kconfigpagesynchronization.cpp:387
 #, kde-format
 msgid " kB/s"
-msgstr ""
+msgstr " kB/s"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:394
 #, kde-format
@@ -484,7 +471,7 @@ msgstr "Transferencia de ficheiros"
 #: smb4k/smb4kconfigpagesynchronization.cpp:403
 #, kde-format
 msgid "Files && Directories"
-msgstr "Ficheiros e directorios"
+msgstr "Ficheiros e cartafoles"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:449
 #, kde-format
@@ -497,10 +484,9 @@ msgid "File Deletion"
 msgstr "Eliminación de ficheiros"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:474
-#, fuzzy, kde-format
-#| msgid "General Settings"
+#, kde-format
 msgid "General Filtering Settings"
-msgstr "Configuración xeral"
+msgstr "Configuración xeral de filtro"
 
 #: smb4k/smb4kconfigpagesynchronization.cpp:529
 #, kde-format
@@ -543,16 +529,14 @@ msgid "Mounted Shares"
 msgstr "Comparticións montadas"
 
 #: smb4k/smb4kmainwindow.cpp:402
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>Closing the main window will keep Smb4K running in the system tray. "
-#| "Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
+#, kde-format
 msgid ""
 "<qt>Closing the main window will keep Smb4K running in the system tray."
 "<br>Use <i>Quit</i> from the <i>File</i> menu to quit the application.</qt>"
 msgstr ""
 "<qt>Se pecha a xanela principal, Smb4K seguirá a executarse na área de "
-"notificación. Use o menú <i>Ficheiro → Saír</i> para saír da aplicación.</qt>"
+"notificación.<br> Use o menú <i>Ficheiro → Saír</i> para saír da aplicación."
+"</qt>"
 
 #: smb4k/smb4kmainwindow.cpp:404
 #, kde-format
@@ -584,22 +568,22 @@ msgstr "O diálogo de contrasinal úsase."
 #: smb4k/smb4kmainwindow.cpp:643
 #, kde-format
 msgid "Looking for workgroups and domains..."
-msgstr "A buscar grupos de traballo e dominios…"
+msgstr "Buscando grupos de traballo e dominios…"
 
 #: smb4k/smb4kmainwindow.cpp:648
 #, kde-format
 msgid "Looking for hosts in domain %1..."
-msgstr "A buscar as máquinas do dominio %1…"
+msgstr "Buscando as máquinas do dominio %1…"
 
 #: smb4k/smb4kmainwindow.cpp:653
 #, kde-format
 msgid "Looking for shares provided by host %1..."
-msgstr "A buscar as comparticións fornecidas pola máquina %1…"
+msgstr "Buscando as comparticións fornecidas pola máquina %1…"
 
 #: smb4k/smb4kmainwindow.cpp:661 smb4k/smb4kmainwindow.cpp:669
 #, kde-format
 msgid "Looking for files and directories in %1..."
-msgstr "Buscando ficheiros e directorios en %1…"
+msgstr "Buscando ficheiros e cartafoles en %1…"
 
 #: smb4k/smb4kmainwindow.cpp:686
 #, kde-format
@@ -609,7 +593,7 @@ msgstr "Espertando os servidores remotos…"
 #: smb4k/smb4kmainwindow.cpp:691
 #, kde-format
 msgid "Sending file to printer %1..."
-msgstr "A enviar o ficheiro á impresora %1…"
+msgstr "Enviando o ficheiro á impresora %1…"
 
 #: smb4k/smb4kmainwindow.cpp:695
 #, kde-format
@@ -686,10 +670,9 @@ msgstr "&Buscar"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:161 smb4k/smb4ksharesmenu.cpp:191
 #: smb4k/smb4ksharesviewdockwidget.cpp:236
-#, fuzzy, kde-format
-#| msgid "Advanced Mount Settings"
+#, kde-format
 msgid "Add &Custom Settings"
-msgstr "Configuración de montaxe avanzada"
+msgstr "Engadir op&cións personalizadas"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:173 smb4k/smb4ksystemtray.cpp:72
 #, kde-format
@@ -843,10 +826,9 @@ msgid "no"
 msgstr "non"
 
 #: smb4k/smb4ktooltip.cpp:177
-#, fuzzy, kde-format
-#| msgid "Type"
+#, kde-format
 msgid "Type:"
-msgstr "Tipo"
+msgstr "Tipo:"
 
 #: smb4k/smb4ktooltip.cpp:184
 #, kde-format
@@ -854,10 +836,9 @@ msgid "Workgroup"
 msgstr "Grupo de traballo"
 
 #: smb4k/smb4ktooltip.cpp:188
-#, fuzzy, kde-format
-#| msgid "Master browser"
+#, kde-format
 msgid "Master Browser:"
-msgstr "Navegador mestre"
+msgstr "Navegador principal:"
 
 #: smb4k/smb4ktooltip.cpp:205
 #, kde-format
@@ -865,10 +846,9 @@ msgid "Host"
 msgstr "Máquina"
 
 #: smb4k/smb4ktooltip.cpp:209 smb4k/smb4ktooltip.cpp:227
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgid "Comment:"
-msgstr "Comentario"
+msgstr "Comentario:"
 
 #: smb4k/smb4ktooltip.cpp:213 smb4k/smb4ktooltip.cpp:244
 #, kde-format
@@ -886,16 +866,14 @@ msgid "Share (%1)"
 msgstr "Compartición (%1)"
 
 #: smb4k/smb4ktooltip.cpp:231
-#, fuzzy, kde-format
-#| msgid "Mounted"
+#, kde-format
 msgid "Mounted:"
-msgstr "Montada"
+msgstr "Montada:"
 
 #: smb4k/smb4ktooltip.cpp:240
-#, fuzzy, kde-format
-#| msgid "Host"
+#, kde-format
 msgid "Host:"
-msgstr "Máquina"
+msgstr "Servidor:"
 
 #: smb4k/smb4ktooltip.cpp:247 smb4k/smb4ktooltip.cpp:301
 #, kde-format
@@ -912,37 +890,32 @@ msgstr "descoñecido"
 #: smb4k/smb4ktooltip.cpp:271 smb4k/smb4ktooltip.cpp:322
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
-msgstr "%1 de %2 libres (%3 empregado)"
+msgstr "%1 de %2 libres (%3 en uso)"
 
 #: smb4k/smb4ktooltip.cpp:304
-#, fuzzy, kde-format
-#| msgid "Mountpoint"
+#, kde-format
 msgid "Mountpoint:"
-msgstr "Punto de montaxe"
+msgstr "Punto de montaxe:"
 
 #: smb4k/smb4ktooltip.cpp:308
-#, fuzzy, kde-format
-#| msgid "User:"
+#, kde-format
 msgid "Username:"
-msgstr "Usuario:"
+msgstr "Nome de usuaria:"
 
 #: smb4k/smb4ktooltip.cpp:314
-#, fuzzy, kde-format
-#| msgid "Owner"
+#, kde-format
 msgid "Owner:"
-msgstr "Propietario"
+msgstr "Pertenza:"
 
 #: smb4k/smb4ktooltip.cpp:317
-#, fuzzy, kde-format
-#| msgid "File system"
+#, kde-format
 msgid "File system:"
-msgstr "Sistema de ficheiros"
+msgstr "Sistema de ficheiros:"
 
 #: smb4k/smb4ktooltip.cpp:329
-#, fuzzy, kde-format
-#| msgid "Size"
+#, kde-format
 msgid "Size:"
-msgstr "Tamaño"
+msgstr "Tamaño:"
 
 #~ msgid "Custom Options"
 #~ msgstr "Opcións personalizadas"
