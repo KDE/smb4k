@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-13 00:42+0000\n"
-"PO-Revision-Date: 2023-04-10 11:49+0200\n"
+"PO-Revision-Date: 2023-10-14 12:08+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
@@ -120,22 +120,18 @@ msgid "Main Toolbar"
 msgstr "Główny pasek narzędzi"
 
 #: smb4k/smb4kbookmarkdialog.cpp:31
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark Shares"
-msgstr "Edytor zakładek"
+msgstr "Dodaj zasób do zakładek"
 
 #: smb4k/smb4kbookmarkdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "All listed shares will be bookmarked. To edit the label or group, click "
-#| "the respective bookmark entry."
+#, kde-format
 msgid ""
 "All listed shares will be bookmarked. To add a label or category, double-"
 "click the respective bookmark entry."
 msgstr ""
-"Wszystkim wymienionym udziałom zostanie przypisana zakładka. Aby edytować "
-"etykietę grupy, kliknij na odpowiadający wpis zakładki."
+"Wszystkim wymienionym zasobom zostanie przypisana zakładka. Aby dodać "
+"etykietę lub kategorię, kliknij na odpowiedni wpis zakładki."
 
 #: smb4k/smb4kbookmarkdialog.cpp:72 smb4k/smb4kconfigpagebookmarks.cpp:58
 #: smb4k/smb4kmountdialog.cpp:116
@@ -147,7 +143,7 @@ msgstr "Etykieta:"
 #: smb4k/smb4kmountdialog.cpp:123
 #, kde-format
 msgid "Category:"
-msgstr ""
+msgstr "Kategoria:"
 
 #: smb4k/smb4kbookmarkeditor.cpp:29
 #, kde-format
@@ -303,7 +299,7 @@ msgstr "Adres IP:"
 #: smb4k/smb4kconfigpagebookmarks.cpp:131
 #, kde-format
 msgid "Add Category"
-msgstr ""
+msgstr "Dodaj kategorię"
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:143
 #: smb4k/smb4kconfigpagecustomsettings.cpp:88
@@ -314,7 +310,7 @@ msgstr "Wyczyść listę"
 #: smb4k/smb4kconfigpagebookmarks.cpp:463
 #, kde-format
 msgid "New Category"
-msgstr ""
+msgstr "Nowa kategoria"
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:64
 #, kde-format
@@ -322,11 +318,11 @@ msgid "All fine."
 msgstr "Wszystko w porządku."
 
 #: smb4k/smb4kconfigpagecustomsettings.cpp:193
-#, fuzzy, kde-format
-#| msgid "The item %1 was removed, because all custom settings were reset."
+#, kde-format
 msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
-"Rzecz %1 została usunięta, bo wszystkie własne ustawienia zostały wyzerowane."
+"Rzecz <b>%1</b> została usunięta, bo wszystkie własne ustawienia zostały "
+"wyzerowane."
 
 #: smb4k/smb4kconfigpagemounting.cpp:97 smb4k/smb4kconfigpagemounting.cpp:502
 #, kde-format
@@ -592,33 +588,27 @@ msgid "Shares View"
 msgstr "Widok zasobów"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:29
-#, fuzzy, kde-format
-#| msgid "Custom Settings"
+#, kde-format
 msgid "Custom Settings Editor"
-msgstr "Własne ustawienia"
+msgstr "Edytor własnych ustawień"
 
 #: smb4k/smb4kcustomsettingseditor.cpp:53
-#, fuzzy, kde-format
-#| msgid "Network Item"
+#, kde-format
 msgid "No network item was set."
-msgstr "Element sieci"
+msgstr "Nie ustawiono żadnej rzeczy sieciowej."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:115
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Define custom options for host <b>%1</b> and all the shares it "
-#| "provides.</p>"
+#, kde-format
 msgid ""
 "Define custom settings for host <b>%1</b> and all the shares it provides."
 msgstr ""
-"<p>Określ własne opcje dla hosta <b>%1</b> i wszystkich udziałów jakie on "
-"zapewnia.</p>"
+"Określ własne ustawienia dla gospodarza <b>%1</b> i wszystkich zasobów jakie "
+"on zapewnia."
 
 #: smb4k/smb4kcustomsettingseditor.cpp:131
-#, fuzzy, kde-format
-#| msgid "<p>Define custom options for share <b>%1</b> at host <b>%2</b>.</p>"
+#, kde-format
 msgid "Define custom settings for share <b>%1</b>."
-msgstr "<p>Określ własne opcje dla udziału <b>%1</b> na hoście <b>%2</b>.</p>"
+msgstr "Określ własne ustawienia dla zasobu <b>%1</b>."
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:46
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:269
@@ -628,10 +618,9 @@ msgstr "Sam podpinaj ten zasób"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:78
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:325
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 1: Mounting"
-msgstr "Podpinanie"
+msgstr "Strona 1: Podpinanie"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:83
 #, kde-format
@@ -639,21 +628,19 @@ msgid "This server supports the CIFS Unix extensions"
 msgstr "Ten serwer obsługuje rozszerzenia CIFS Unix"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:138
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Mounting"
-msgstr "Podpinanie"
+msgstr "Strona 2: Podpinanie"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 3: Mounting"
-msgstr "Podpinanie"
+msgstr "Strona 3: Podpinanie"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:232
 #, kde-format
 msgid "Page 4: Browsing"
-msgstr ""
+msgstr "Strona 4: Przeglądanie"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:234
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:386
@@ -669,35 +656,30 @@ msgstr "Adres MAC:"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:247
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:399
-#, fuzzy, kde-format
-#| msgid "Send magic package before scanning the network neighborhood"
+#, kde-format
 msgid "Send magic packet before scanning the network neighborhood"
-msgstr "Wyślij magiczny pakiet przed skanowaniem otoczenia sieciowego"
+msgstr "Wyślij magiczny pakiet przed przeszukaniem otoczenia sieciowego"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:249
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:401
-#, fuzzy, kde-format
-#| msgid "Send magic package before mounting a share"
+#, kde-format
 msgid "Send magic packet before mounting a share"
 msgstr "Wyślij magiczny pakiet przed podpięciem zasobu"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 5: Wake-On-LAN"
-msgstr "Obudź-po-LANie:"
+msgstr "Strona 5: Obudź-po-LANie"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:384
-#, fuzzy, kde-format
-#| msgid "Mounting"
+#, kde-format
 msgid "Page 2: Browsing"
-msgstr "Podpinanie"
+msgstr "Strona 2: Przeglądanie"
 
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:413
-#, fuzzy, kde-format
-#| msgid "Wake-On-LAN"
+#, kde-format
 msgid "Page 3: Wake-On-LAN"
-msgstr "Obudź-po-LANie:"
+msgstr "Strona 3: Obudź-po-LANie"
 
 #: smb4k/smb4kmainwindow.cpp:135
 #, kde-format
@@ -819,22 +801,17 @@ msgid "Synchronizing %1"
 msgstr "Synchronizacja %1"
 
 #: smb4k/smb4kmountdialog.cpp:34
-#, fuzzy, kde-format
-#| msgid "&Open Mount Dialog"
+#, kde-format
 msgid "Mount Dialog"
-msgstr "&Otwórz okno dialogowe montowania"
+msgstr "Okno podpinania"
 
 #: smb4k/smb4kmountdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid ""
-#| "Enter the location (UNC address) and optionally the IP address and "
-#| "workgroup to mount a share."
+#, kde-format
 msgid ""
 "Enter the location and optionally the IP address and workgroup to mount a "
 "share."
 msgstr ""
-"Podaj położenie (adres UNC) i opcjonalnie adres IP i grupę roboczą do "
-"zamontowania udziału."
+"Podaj położenie i opcjonalnie adres IP i grupę roboczą do podpięcia zasobu."
 
 #: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
 #: smb4k/smb4ktooltip.cpp:226
@@ -843,17 +820,15 @@ msgid "Location:"
 msgstr "Położenie:"
 
 #: smb4k/smb4kmountdialog.cpp:106
-#, fuzzy, kde-format
-#| msgid "Bookmark Editor"
+#, kde-format
 msgid "Bookmark this share"
-msgstr "Edytor zakładek"
+msgstr "Dodaj ten zasób do zakładek"
 
 #: smb4k/smb4kmountdialog.cpp:145
-#, fuzzy, kde-format
-#| msgid "Bookmark"
+#, kde-format
 msgctxt "Bookmark a share in the mount dialog."
 msgid "Bookmark >>"
-msgstr "Zakładka"
+msgstr "Zakładka >>"
 
 #: smb4k/smb4knetworkbrowser.cpp:43
 #, kde-format
@@ -1010,8 +985,7 @@ msgid "Item Up"
 msgstr "Element w górę"
 
 #: smb4k/smb4kpreviewdialog.cpp:30
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Preview Dialog"
 msgstr "Okno podglądu"
 
@@ -1031,22 +1005,19 @@ msgid "Up"
 msgstr "Do góry"
 
 #: smb4k/smb4kpreviewdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "Preview"
+#, kde-format
 msgid "Preview of %1"
-msgstr "Podgląd"
+msgstr "Podgląd %1"
 
 #: smb4k/smb4kprintdialog.cpp:29
-#, fuzzy, kde-format
-#| msgid "Preview Dialog"
+#, kde-format
 msgid "Print Dialog"
-msgstr "Okno podglądu"
+msgstr "Okno drukowania"
 
 #: smb4k/smb4kprintdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Print File"
+#, kde-format
 msgid "Print a file."
-msgstr "Drukuj plik"
+msgstr "Wydrukuj plik."
 
 #: smb4k/smb4kprintdialog.cpp:60
 #, kde-format
@@ -1059,16 +1030,14 @@ msgid "Copies:"
 msgstr "Kopie:"
 
 #: smb4k/smb4kprintdialog.cpp:86
-#, fuzzy, kde-format
-#| msgid "Printer"
+#, kde-format
 msgid "Print"
-msgstr "Drukarka"
+msgstr "Wydrukuj"
 
 #: smb4k/smb4kprintdialog.cpp:122
-#, fuzzy, kde-format
-#| msgid "Sending file to printer %1..."
+#, kde-format
 msgid "Print a file to printer <b>%1</b>."
-msgstr "Wysyłanie pliku do drukarki %1..."
+msgstr "Wydrukuj plik na drukarce <b>%1</b>."
 
 #: smb4k/smb4ksharesmenu.cpp:58 smb4k/smb4ksharesviewdockwidget.cpp:209
 #, kde-format
@@ -1175,24 +1144,21 @@ msgid "Swap Paths"
 msgstr "Zamień ścieżki"
 
 #: smb4k/smb4ksynchronizationdialog.cpp:130
-#, fuzzy, kde-format
-#| msgid ""
-#| "Please provide the source and destination directory for the "
-#| "synchronization."
+#, kde-format
 msgid ""
 "Please provide the source and destination directory for the synchronization "
 "of <b>%1</b>."
-msgstr "Proszę podać katalog źródłowy i docelowy dla synchronizacji. "
+msgstr "Podaj katalog źródłowy i docelowy dla synchronizacji <b>%1</b>. "
 
 #: smb4k/smb4ktooltip.cpp:121
 #, kde-format
 msgid "Type:"
-msgstr "Typ:"
+msgstr "Rodzaj:"
 
 #: smb4k/smb4ktooltip.cpp:130
 #, kde-format
 msgid "DNS-SD Browsing Domain"
-msgstr ""
+msgstr "Domena przeglądania DNS-SD"
 
 #: smb4k/smb4ktooltip.cpp:132
 #, kde-format
