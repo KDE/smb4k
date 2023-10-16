@@ -96,7 +96,6 @@
     },
     "X-Plasma-API": "declarativeappletscript",
     "X-Plasma-DefaultSize": "200,300",
-    "X-Plasma-MainScript": "ui/main.qml",
     "X-Plasma-Requires-FileDialog": "Unused",
     "X-Plasma-Requires-LaunchApp": "Unused"
 }
