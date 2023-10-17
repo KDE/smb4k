@@ -501,8 +501,8 @@ void Smb4KConfigPageMounting::setupWidget()
     QCheckBox *lowercaseSubdirs = new QCheckBox(Smb4KMountSettings::self()->forceLowerCaseSubdirsItem()->label(), directoryBox);
     lowercaseSubdirs->setObjectName(QStringLiteral("kcfg_ForceLowerCaseSubdirs"));
 
-    directoryBoxLayout->addWidget(prefixLabel, 0, 0);
-    directoryBoxLayout->addWidget(prefix, 0, 1);
+    directoryBoxLayout->addWidget(mountPrefixLabel, 0, 0);
+    directoryBoxLayout->addWidget(m_mountPrefix, 0, 1);
     directoryBoxLayout->addWidget(lowercaseSubdirs, 1, 0, 1, 2);
 
     basicTabLayout->addWidget(directoryBox, 0);
@@ -680,14 +680,14 @@ void Smb4KConfigPageMounting::setupWidget()
     QCheckBox *useCharacterSets = new QCheckBox(Smb4KMountSettings::self()->useCharacterSetsItem()->label(), characterSetsBox);
     useCharacterSets->setObjectName(QStringLiteral("kcfg_UseCharacterSets"));
 
-    m_characterSetSettingsWigdet = new QWidget(characterSetsBox);
-    QGridLayout *characterSetSettingsWidgetLayout = new QGridLayout(m_characterSetSettingsWigdet);
+    m_characterSetSettingsWidget = new QWidget(characterSetsBox);
+    QGridLayout *characterSetSettingsWidgetLayout = new QGridLayout(m_characterSetSettingsWidget);
     characterSetSettingsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
-    QLabel *clientCharacterSetLabel = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), m_characterSetSettingsWigdet);
+    QLabel *clientCharacterSetLabel = new QLabel(Smb4KMountSettings::self()->clientCharsetItem()->label(), m_characterSetSettingsWidget);
     clientCharacterSetLabel->setIndent(25);
 
-    KComboBox *clientCharacterSet = new KComboBox(m_characterSetSettingsWigdet);
+    KComboBox *clientCharacterSet = new KComboBox(m_characterSetSettingsWidget);
     clientCharacterSet->setObjectName(QStringLiteral("kcfg_ClientCharset"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> charsetChoices = Smb4KMountSettings::self()->clientCharsetItem()->choices();
@@ -699,11 +699,11 @@ void Smb4KConfigPageMounting::setupWidget()
     clientCharacterSetLabel->setBuddy(clientCharacterSet);
 
     // Server character set
-    QLabel *serverCharacterSetLabel = new QLabel(Smb4KMountSettings::self()->serverCodepageItem()->label(), m_characterSetSettingsWigdet);
+    QLabel *serverCharacterSetLabel = new QLabel(Smb4KMountSettings::self()->serverCodepageItem()->label(), m_characterSetSettingsWidget);
     serverCharacterSetLabel->setIndent(25);
     serverCharacterSetLabel->setObjectName(QStringLiteral("ServerCodepageLabel"));
 
-    KComboBox *serverCharacterSet = new KComboBox(m_characterSetSettingsWigdet);
+    KComboBox *serverCharacterSet = new KComboBox(m_characterSetSettingsWidget);
     serverCharacterSet->setObjectName(QStringLiteral("kcfg_ServerCodepage"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> codepageChoices = Smb4KMountSettings::self()->serverCodepageItem()->choices();
@@ -720,7 +720,7 @@ void Smb4KConfigPageMounting::setupWidget()
     characterSetSettingsWidgetLayout->addWidget(serverCharacterSet, 1, 1);
 
     characterSetsBoxLayout->addWidget(useCharacterSets);
-    characterSetsBoxLayout->addWidget(m_characterSetSettingsWigdet);
+    characterSetsBoxLayout->addWidget(m_characterSetSettingsWidget);
 
     mountTabLayout->addWidget(commonOptionsBox, 0);
     mountTabLayout->addWidget(characterSetsBox, 0);
@@ -830,7 +830,7 @@ void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()
 #if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 void Smb4KConfigPageMounting::slotCharacterSets(bool on)
 {
-    m_charsetSettingsWigdet->setEnabled(on);
+    m_characterSetSettingsWidget->setEnabled(on);
 }
 #endif
 
