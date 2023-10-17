@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-12 00:42+0000\n"
+"POT-Creation-Date: 2023-10-13 00:42+0000\n"
 "PO-Revision-Date: 2023-10-08 05:41+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -147,7 +147,7 @@ msgstr "კატეგორია:"
 msgid "Bookmark Editor"
 msgstr "სანიშნების რედაქტორი"
 
-#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:137
+#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Bookmarks"
 msgstr "სანიშნები"
@@ -169,44 +169,44 @@ msgstr "&სანიშნის დამატება"
 msgid "Mount Bookmarks"
 msgstr "სანიშნების მიმაგრება"
 
-#: smb4k/smb4kconfigdialog.cpp:132
+#: smb4k/smb4kconfigdialog.cpp:124
 #, kde-format
 msgid "User Interface"
 msgstr "სამომხმარებლო ინტერფეისი"
 
-#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "ქსელი"
 
-#: smb4k/smb4kconfigdialog.cpp:134
+#: smb4k/smb4kconfigdialog.cpp:126
 #, kde-format
 msgid "Mounting"
 msgstr "მიმაგრება"
 
-#: smb4k/smb4kconfigdialog.cpp:135
+#: smb4k/smb4kconfigdialog.cpp:127
 #, kde-format
 msgid "Authentication"
 msgstr "ავთენტიკაცია"
 
-#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "სინქრონიზაცია"
 
-#: smb4k/smb4kconfigdialog.cpp:138
+#: smb4k/smb4kconfigdialog.cpp:130
 #, kde-format
 msgid "Custom Settings"
 msgstr "პარამეტრების ხელით მითითება"
 
-#: smb4k/smb4kconfigdialog.cpp:139 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "პროფილები"
 
-#: smb4k/smb4kconfigdialog.cpp:162
+#: smb4k/smb4kconfigdialog.cpp:154
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
