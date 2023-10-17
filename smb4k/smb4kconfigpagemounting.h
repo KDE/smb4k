@@ -1,7 +1,7 @@
 /*
     The configuration page for the mount options
 
-    SPDX-FileCopyrightText: 2015-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2015-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -10,6 +10,11 @@
 
 // Qt includes
 #include <QTabWidget>
+#include <QCheckBox>
+
+// KDE includes
+#include <KUrlRequester>
+#include <KLineEdit>
 
 /**
  * This configuration page contains the mount options
@@ -56,6 +61,7 @@ protected Q_SLOTS:
      */
     void slotNewGroupTriggered(QAction *action);
 
+#if defined(Q_OS_LINUX)
     /**
      * Enable / disable the options that are only necessary when the servers
      * do not support the CIFS Unix extensions.
@@ -69,12 +75,15 @@ protected Q_SLOTS:
      * edited (Linux only).
      */
     void slotAdditionalCIFSOptions();
+#endif
 
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
     /**
      * This slot is activated when the setting of the character set usage is changed
      * (BSD only).
      */
     void slotCharacterSets(bool on);
+#endif
 
     /**
      * This slot is activated when the "Remount shares" check box is toggled
@@ -82,10 +91,26 @@ protected Q_SLOTS:
     void slotRemountSharesToggled(bool on);
 
 private:
-    /**
-     * Set up the widget
-     */
     void setupWidget();
+    KUrlRequester *m_mountPrefix;
+    QWidget *m_remountSettingsWidget;
+    QCheckBox *m_useFileMode;
+    KLineEdit *m_fileMode;
+    QCheckBox *m_useDirectoryMode;
+    KLineEdit *m_directoryMode;
+    KLineEdit *m_userId;
+    KLineEdit *m_groupId;
+#if defined(Q_OS_LINUX)
+    QWidget *m_userIdInputWidget;
+    QCheckBox *m_useUserId;
+    QWidget *m_groupIdInputWidget;
+    QCheckBox *m_useGroupId;
+    KLineEdit *m_additionalCifsOptions;
+#endif
+
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
+    QWidget *m_characterSetSettingsWidget;
+#endif
 };
 
 #endif
