@@ -60,7 +60,6 @@ add_library(smb4kcore SHARED ${smb4kcore_LIB_SRCS})
 target_link_libraries(smb4kcore
   Qt${QT_MAJOR_VERSION}::Core
   Qt${QT_MAJOR_VERSION}::Widgets
-  Qt${QT_MAJOR_VERSION}::Gui
   Qt${QT_MAJOR_VERSION}::PrintSupport
   Qt${QT_MAJOR_VERSION}::Network
   KF${QT_MAJOR_VERSION}::ConfigCore
