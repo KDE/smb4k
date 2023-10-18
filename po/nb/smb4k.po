@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nb\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-07 00:42+0000\n"
+"POT-Creation-Date: 2023-10-13 00:42+0000\n"
 "PO-Revision-Date: 2006-04-12 21:04+0200\n"
 "Last-Translator: Nils Kristian Tomren <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Bookmark Editor"
 msgstr ""
 
-#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:137
+#: smb4k/smb4kbookmarkmenu.cpp:33 smb4k/smb4kconfigdialog.cpp:129
 #, kde-format
 msgid "Bookmarks"
 msgstr ""
@@ -166,44 +166,44 @@ msgstr ""
 msgid "Mount Bookmarks"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:132
+#: smb4k/smb4kconfigdialog.cpp:124
 #, kde-format
 msgid "User Interface"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:133 smb4k/smb4knetworkbrowser.cpp:42
+#: smb4k/smb4kconfigdialog.cpp:125 smb4k/smb4knetworkbrowser.cpp:42
 #, kde-format
 msgid "Network"
 msgstr "Nettverk"
 
-#: smb4k/smb4kconfigdialog.cpp:134
+#: smb4k/smb4kconfigdialog.cpp:126
 #, kde-format
 msgid "Mounting"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:135
+#: smb4k/smb4kconfigdialog.cpp:127
 #, kde-format
 msgid "Authentication"
 msgstr "Autentisere"
 
-#: smb4k/smb4kconfigdialog.cpp:136 smb4k/smb4ksynchronizationdialog.cpp:29
+#: smb4k/smb4kconfigdialog.cpp:128 smb4k/smb4ksynchronizationdialog.cpp:29
 #: smb4k/smb4ksynchronizationdialog.cpp:47
 #, kde-format
 msgid "Synchronization"
 msgstr "Synkronisering"
 
-#: smb4k/smb4kconfigdialog.cpp:138
+#: smb4k/smb4kconfigdialog.cpp:130
 #, kde-format
 msgid "Custom Settings"
 msgstr ""
 
-#: smb4k/smb4kconfigdialog.cpp:139 smb4k/smb4kconfigpageprofiles.cpp:54
+#: smb4k/smb4kconfigdialog.cpp:131 smb4k/smb4kconfigpageprofiles.cpp:54
 #: smb4k/smb4kprofilesmenu.cpp:22
 #, kde-format
 msgid "Profiles"
 msgstr "Profiler"
 
-#: smb4k/smb4kconfigdialog.cpp:162
+#: smb4k/smb4kconfigdialog.cpp:154
 #, kde-format
 msgid ""
 "<qt>An incorrect setting has been found. You are now taken to the "
@@ -271,7 +271,7 @@ msgstr ""
 msgid "Set the username and password for the default login."
 msgstr ""
 
-#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:235
+#: smb4k/smb4kconfigpagebookmarks.cpp:75 smb4k/smb4ktooltip.cpp:233
 #, kde-format
 msgid "Username:"
 msgstr ""
@@ -283,7 +283,7 @@ msgid "Workgroup:"
 msgstr ""
 
 #: smb4k/smb4kconfigpagebookmarks.cpp:92 smb4k/smb4kmountdialog.cpp:74
-#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:188
+#: smb4k/smb4ktooltip.cpp:157 smb4k/smb4ktooltip.cpp:186
 #, kde-format
 msgid "IP Address:"
 msgstr "IP-Adresse:"
@@ -788,8 +788,8 @@ msgid ""
 "share."
 msgstr ""
 
-#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:191
-#: smb4k/smb4ktooltip.cpp:228
+#: smb4k/smb4kmountdialog.cpp:65 smb4k/smb4ktooltip.cpp:189
+#: smb4k/smb4ktooltip.cpp:226
 #, kde-format
 msgid "Location:"
 msgstr ""
@@ -907,7 +907,7 @@ msgid "&Unmount"
 msgstr "&Avmonter"
 
 #: smb4k/smb4knetworkbrowserdockwidget.cpp:242
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:984
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:969
 #, kde-format
 msgid "Ctrl+M"
 msgstr ""
@@ -923,7 +923,7 @@ msgstr "Søk på datamaskinen"
 msgid "Scan Wo&rkgroup"
 msgstr "Søk i a&rbeidsgruppe"
 
-#: smb4k/smb4knetworkbrowserdockwidget.cpp:986
+#: smb4k/smb4knetworkbrowserdockwidget.cpp:971
 #: smb4k/smb4ksharesviewdockwidget.cpp:204
 #, kde-format
 msgid "Ctrl+U"
@@ -1128,22 +1128,27 @@ msgstr ""
 msgid "Type:"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:128
+#: smb4k/smb4ktooltip.cpp:130
 #, kde-format
-msgid "Workgroup"
+msgid "DNS-SD Browsing Domain"
 msgstr ""
 
 #: smb4k/smb4ktooltip.cpp:132
 #, kde-format
+msgid "Workgroup"
+msgstr ""
+
+#: smb4k/smb4ktooltip.cpp:137
+#, kde-format
 msgid "Master Browser:"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:149
+#: smb4k/smb4ktooltip.cpp:151
 #, kde-format
 msgid "Host"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:153 smb4k/smb4ktooltip.cpp:171
+#: smb4k/smb4ktooltip.cpp:154 smb4k/smb4ktooltip.cpp:170
 #, kde-format
 msgid "Comment:"
 msgstr ""
@@ -1153,53 +1158,53 @@ msgstr ""
 msgid "Share (%1)"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:175
+#: smb4k/smb4ktooltip.cpp:174
 #, kde-format
 msgid "Mounted:"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:178
+#: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "yes"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:178
+#: smb4k/smb4ktooltip.cpp:177
 #, kde-format
 msgid "no"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:184
+#: smb4k/smb4ktooltip.cpp:183
 #, kde-format
 msgid "Host:"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:231
+#: smb4k/smb4ktooltip.cpp:229
 #, kde-format
 msgid "Mountpoint:"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:233 smb4k/smb4ktooltip.cpp:237
-#: smb4k/smb4ktooltip.cpp:238 smb4k/smb4ktooltip.cpp:251
+#: smb4k/smb4ktooltip.cpp:231 smb4k/smb4ktooltip.cpp:235
+#: smb4k/smb4ktooltip.cpp:236 smb4k/smb4ktooltip.cpp:249
 #, kde-format
 msgid "unknown"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:241
+#: smb4k/smb4ktooltip.cpp:239
 #, kde-format
 msgid "Owner:"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:244
+#: smb4k/smb4ktooltip.cpp:242
 #, kde-format
 msgid "File system:"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:249
+#: smb4k/smb4ktooltip.cpp:247
 #, kde-format
 msgid "%1 free of %2 (%3 used)"
 msgstr ""
 
-#: smb4k/smb4ktooltip.cpp:256
+#: smb4k/smb4ktooltip.cpp:254
 #, kde-format
 msgid "Size:"
 msgstr ""
