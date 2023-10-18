@@ -106,6 +106,7 @@ void Smb4KConfigPageMounting::setupWidget()
     remountShares->setObjectName(QStringLiteral("kcfg_RemountShares"));
 
     m_remountSettingsWidget = new QWidget(behaviorBox);
+    m_remountSettingsWidget->setEnabled(false);
     QGridLayout *remountSettingsWidgetLayout = new QGridLayout(m_remountSettingsWidget);
     remountSettingsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -215,30 +216,35 @@ void Smb4KConfigPageMounting::setupWidget()
     // CIFS Unix Extensions Support group box
     //
     QGroupBox *cifsExtensionSupportBox = new QGroupBox(i18n("CIFS Unix Extensions Support"), commonTab);
-    QGridLayout *cifsExtensionSupportLayout = new QGridLayout(cifsExtensionSupportBox);
+    QVBoxLayout *cifsExtensionSupportLayout = new QVBoxLayout(cifsExtensionSupportBox);
 
     // CIFS Unix extensions support
     QCheckBox *cifsExtensionsSupport = new QCheckBox(Smb4KMountSettings::self()->cifsUnixExtensionsSupportItem()->label(), cifsExtensionSupportBox);
     cifsExtensionsSupport->setObjectName(QStringLiteral("kcfg_CifsUnixExtensionsSupport"));
 
-    cifsExtensionSupportLayout->addWidget(cifsExtensionsSupport, 0, 0, 1, 2);
+    cifsExtensionSupportLayout->addWidget(cifsExtensionsSupport);
+
+    m_singleCifsExtensionsSettingsWidget = new QWidget(cifsExtensionSupportBox);
+    m_singleCifsExtensionsSettingsWidget->setEnabled(false);
+    QGridLayout *singleCifsSettingsWidgetLayout = new QGridLayout(m_singleCifsExtensionsSettingsWidget);
+    singleCifsSettingsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
     // User information
-    m_useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), cifsExtensionSupportBox);
-    m_useUserId->setObjectName(QStringLiteral("kcfg_UseUserId"));
+    QCheckBox *useUserId = new QCheckBox(Smb4KMountSettings::self()->useUserIdItem()->label(), m_singleCifsExtensionsSettingsWidget);
+    useUserId->setObjectName(QStringLiteral("kcfg_UseUserId"));
 
-    m_userIdInputWidget = new QWidget(cifsExtensionSupportBox);
-    m_userIdInputWidget->setObjectName(QStringLiteral("UserIdInputWidget"));
+    QWidget *userIdInputWidget = new QWidget(m_singleCifsExtensionsSettingsWidget);
+    userIdInputWidget->setObjectName(QStringLiteral("UserIdInputWidget"));
 
-    QGridLayout *userLayout = new QGridLayout(m_userIdInputWidget);
-    userLayout->setContentsMargins(0, 0, 0, 0);
+    QGridLayout *userIdInputWidgetLayout = new QGridLayout(userIdInputWidget);
+    userIdInputWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
-    m_userId = new KLineEdit(m_userIdInputWidget);
+    m_userId = new KLineEdit(userIdInputWidget);
     m_userId->setObjectName(QStringLiteral("kcfg_UserId"));
     m_userId->setAlignment(Qt::AlignRight);
     m_userId->setReadOnly(true);
 
-    QToolButton *userChooser = new QToolButton(m_userIdInputWidget);
+    QToolButton *userChooser = new QToolButton(userIdInputWidget);
     userChooser->setIcon(KDE::icon(QStringLiteral("edit-find-user")));
     userChooser->setToolTip(i18n("Choose a different user"));
     userChooser->setPopupMode(QToolButton::InstantPopup);
@@ -253,28 +259,28 @@ void Smb4KConfigPageMounting::setupWidget()
         userAction->setData(u.userId().nativeId());
     }
 
-    userLayout->addWidget(m_userId, 0, 0);
-    userLayout->addWidget(userChooser, 0, 1, Qt::AlignCenter);
+    userIdInputWidgetLayout->addWidget(m_userId, 0, 0);
+    userIdInputWidgetLayout->addWidget(userChooser, 0, 1, Qt::AlignCenter);
 
-    cifsExtensionSupportLayout->addWidget(m_useUserId, 1, 0);
-    cifsExtensionSupportLayout->addWidget(m_userIdInputWidget, 1, 1);
+    singleCifsSettingsWidgetLayout->addWidget(useUserId, 0, 0);
+    singleCifsSettingsWidgetLayout->addWidget(userIdInputWidget, 0, 1);
 
     // Group information
-    m_useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), cifsExtensionSupportBox);
-    m_useGroupId->setObjectName(QStringLiteral("kcfg_UseGroupId"));
+    QCheckBox *useGroupId = new QCheckBox(Smb4KMountSettings::self()->useGroupIdItem()->label(), m_singleCifsExtensionsSettingsWidget);
+    useGroupId->setObjectName(QStringLiteral("kcfg_UseGroupId"));
 
-    m_groupIdInputWidget = new QWidget(cifsExtensionSupportBox);
-    m_groupIdInputWidget->setObjectName(QStringLiteral("GroupIdInputWidget"));
+    QWidget *groupIdInputWidget = new QWidget(m_singleCifsExtensionsSettingsWidget);
+    groupIdInputWidget->setObjectName(QStringLiteral("GroupIdInputWidget"));
 
-    QGridLayout *groupLayout = new QGridLayout(m_groupIdInputWidget);
-    groupLayout->setContentsMargins(0, 0, 0, 0);
+    QGridLayout *groupIdInputWidgetLayout = new QGridLayout(groupIdInputWidget);
+    groupIdInputWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
-    m_groupId = new KLineEdit(m_groupIdInputWidget);
+    m_groupId = new KLineEdit(groupIdInputWidget);
     m_groupId->setObjectName(QStringLiteral("kcfg_GroupId"));
     m_groupId->setAlignment(Qt::AlignRight);
     m_groupId->setReadOnly(true);
 
-    QToolButton *groupChooser = new QToolButton(m_groupIdInputWidget);
+    QToolButton *groupChooser = new QToolButton(groupIdInputWidget);
     groupChooser->setIcon(KDE::icon(QStringLiteral("edit-find-user")));
     groupChooser->setToolTip(i18n("Choose a different group"));
     groupChooser->setPopupMode(QToolButton::InstantPopup);
@@ -289,35 +295,37 @@ void Smb4KConfigPageMounting::setupWidget()
         groupAction->setData(g.groupId().nativeId());
     }
 
-    groupLayout->addWidget(m_groupId, 0, 0);
-    groupLayout->addWidget(groupChooser, 0, 1, Qt::AlignCenter);
+    groupIdInputWidgetLayout->addWidget(m_groupId, 0, 0);
+    groupIdInputWidgetLayout->addWidget(groupChooser, 0, 1, Qt::AlignCenter);
 
-    cifsExtensionSupportLayout->addWidget(m_useGroupId, 2, 0);
-    cifsExtensionSupportLayout->addWidget(m_groupIdInputWidget, 2, 1);
+    singleCifsSettingsWidgetLayout->addWidget(useGroupId, 1, 0);
+    singleCifsSettingsWidgetLayout->addWidget(groupIdInputWidget, 1, 1);
 
     // File mask
-    m_useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), cifsExtensionSupportBox);
+    m_useFileMode = new QCheckBox(Smb4KMountSettings::self()->useFileModeItem()->label(), m_singleCifsExtensionsSettingsWidget);
     m_useFileMode->setObjectName(QStringLiteral("kcfg_UseFileMode"));
 
-    m_fileMode = new KLineEdit(cifsExtensionSupportBox);
+    m_fileMode = new KLineEdit(m_singleCifsExtensionsSettingsWidget);
     m_fileMode->setObjectName(QStringLiteral("kcfg_FileMode"));
     m_fileMode->setClearButtonEnabled(true);
     m_fileMode->setAlignment(Qt::AlignRight);
 
-    cifsExtensionSupportLayout->addWidget(m_useFileMode, 3, 0);
-    cifsExtensionSupportLayout->addWidget(m_fileMode, 3, 1);
+    singleCifsSettingsWidgetLayout->addWidget(m_useFileMode, 2, 0);
+    singleCifsSettingsWidgetLayout->addWidget(m_fileMode, 2, 1);
 
     // Directory mask
-    m_useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), cifsExtensionSupportBox);
+    m_useDirectoryMode = new QCheckBox(Smb4KMountSettings::self()->useDirectoryModeItem()->label(), m_singleCifsExtensionsSettingsWidget);
     m_useDirectoryMode->setObjectName(QStringLiteral("kcfg_UseDirectoryMode"));
 
-    m_directoryMode = new KLineEdit(cifsExtensionSupportBox);
+    m_directoryMode = new KLineEdit(m_singleCifsExtensionsSettingsWidget);
     m_directoryMode->setObjectName(QStringLiteral("kcfg_DirectoryMode"));
     m_directoryMode->setClearButtonEnabled(true);
     m_directoryMode->setAlignment(Qt::AlignRight);
 
-    cifsExtensionSupportLayout->addWidget(m_useDirectoryMode, 4, 0);
-    cifsExtensionSupportLayout->addWidget(m_directoryMode, 4, 1);
+    singleCifsSettingsWidgetLayout->addWidget(m_useDirectoryMode, 3, 0);
+    singleCifsSettingsWidgetLayout->addWidget(m_directoryMode, 3, 1);
+
+    cifsExtensionSupportLayout->addWidget(m_singleCifsExtensionsSettingsWidget);
 
     commonTabLayout->addWidget(cifsExtensionSupportBox, 1);
     commonTabLayout->addStretch(100);
@@ -459,12 +467,6 @@ void Smb4KConfigPageMounting::setupWidget()
     addTab(advancedTab, i18n("Advanced Mount Settings"));
 
     //
-    // Adjust widgets
-    //
-    slotCIFSUnixExtensionsSupport(Smb4KMountSettings::cifsUnixExtensionsSupport());
-    slotRemountSharesToggled(Smb4KMountSettings::remountShares());
-
-    //
     // Connections
     //
     connect(userMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotNewUserTriggered(QAction *)));
@@ -517,6 +519,7 @@ void Smb4KConfigPageMounting::setupWidget()
     remountShares->setObjectName(QStringLiteral("kcfg_RemountShares"));
 
     m_remountSettingsWidget = new QWidget(behaviorBox);
+    m_remountSettingsWidget->setEnabled(false);
     QGridLayout *remountSettingsWidgetLayout = new QGridLayout(m_remountSettingsWidget);
     remountSettingsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -681,6 +684,7 @@ void Smb4KConfigPageMounting::setupWidget()
     useCharacterSets->setObjectName(QStringLiteral("kcfg_UseCharacterSets"));
 
     m_characterSetSettingsWidget = new QWidget(characterSetsBox);
+    m_characterSetSettingsWidget->setEnabled(false);
     QGridLayout *characterSetSettingsWidgetLayout = new QGridLayout(m_characterSetSettingsWidget);
     characterSetSettingsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -735,12 +739,6 @@ void Smb4KConfigPageMounting::setupWidget()
     connect(groupMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotNewGroupTriggered(QAction *)));
     connect(useCharacterSets, SIGNAL(toggled(bool)), this, SLOT(slotCharacterSets(bool)));
     connect(remountShares, SIGNAL(toggled(bool)), this, SLOT(slotRemountSharesToggled(bool)));
-
-    //
-    // Enable / disable widgets
-    //
-    slotCharacterSets(Smb4KMountSettings::useCharacterSets());
-    slotRemountSharesToggled(Smb4KMountSettings::remountShares());
 }
 #else
 //
@@ -764,17 +762,7 @@ void Smb4KConfigPageMounting::slotNewGroupTriggered(QAction *action)
 #if defined(Q_OS_LINUX)
 void Smb4KConfigPageMounting::slotCIFSUnixExtensionsSupport(bool checked)
 {
-    m_useUserId->setEnabled(!checked);
-    m_userIdInputWidget->setEnabled(!checked);
-
-    m_useGroupId->setEnabled(!checked);
-    m_groupIdInputWidget->setEnabled(!checked);
-
-    m_useFileMode->setEnabled(!checked);
-    m_fileMode->setEnabled(!checked);
-
-    m_useDirectoryMode->setEnabled(!checked);
-    m_directoryMode->setEnabled(!checked);
+    m_singleCifsExtensionsSettingsWidget->setEnabled(!checked);
 }
 
 void Smb4KConfigPageMounting::slotAdditionalCIFSOptions()

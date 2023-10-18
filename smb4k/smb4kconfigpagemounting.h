@@ -101,10 +101,7 @@ private:
     KLineEdit *m_userId;
     KLineEdit *m_groupId;
 #if defined(Q_OS_LINUX)
-    QWidget *m_userIdInputWidget;
-    QCheckBox *m_useUserId;
-    QWidget *m_groupIdInputWidget;
-    QCheckBox *m_useGroupId;
+    QWidget *m_singleCifsExtensionsSettingsWidget;
     KLineEdit *m_additionalCifsOptions;
 #endif
 
