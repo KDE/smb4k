@@ -466,14 +466,11 @@ void Smb4KConfigPageMounting::setupWidget()
 
     addTab(advancedTab, i18n("Advanced Mount Settings"));
 
-    //
-    // Connections
-    //
-    connect(userMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotNewUserTriggered(QAction *)));
-    connect(groupMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotNewGroupTriggered(QAction *)));
-    connect(cifsExtensionsSupport, SIGNAL(toggled(bool)), this, SLOT(slotCIFSUnixExtensionsSupport(bool)));
-    connect(additionalOptionsEdit, SIGNAL(clicked(bool)), this, SLOT(slotAdditionalCIFSOptions()));
-    connect(remountShares, SIGNAL(toggled(bool)), this, SLOT(slotRemountSharesToggled(bool)));
+    connect(userMenu, &QMenu::triggered, this, &Smb4KConfigPageMounting::slotNewUserTriggered);
+    connect(groupMenu, &QMenu::triggered, this, &Smb4KConfigPageMounting::slotNewGroupTriggered);
+    connect(cifsExtensionsSupport, &QCheckBox::toggled, this, &Smb4KConfigPageMounting::slotCIFSUnixExtensionsSupport);
+    connect(additionalOptionsEdit, &QToolButton::clicked, this, &Smb4KConfigPageMounting::slotAdditionalCIFSOptions);
+    connect(remountShares, &QCheckBox::toggled, this, &Smb4KConfigPageMounting::slotRemountSharesToggled);
 }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_NETBSD)
 //
@@ -732,13 +729,10 @@ void Smb4KConfigPageMounting::setupWidget()
 
     addTab(mountTab, i18n("Mount Settings"));
 
-    //
-    // Connections
-    //
-    connect(userMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotNewUserTriggered(QAction *)));
-    connect(groupMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotNewGroupTriggered(QAction *)));
-    connect(useCharacterSets, SIGNAL(toggled(bool)), this, SLOT(slotCharacterSets(bool)));
-    connect(remountShares, SIGNAL(toggled(bool)), this, SLOT(slotRemountSharesToggled(bool)));
+    connect(userMenu, &QMenu::triggered, this, &Smb4KConfigPageMounting::slotNewUserTriggered);
+    connect(groupMenu, &QMenu::triggered, this, &Smb4KConfigPageMounting::slotNewGroupTriggered);
+    connect(useCharacterSets, &QCheckBox::toggled, this, &Smb4KConfigPageMounting::slotCharacterSets);
+    connect(remountShares, &QCheckBox::toggled, this, &Smb4KConfigPageMounting::slotRemountSharesToggled);
 }
 #else
 //
