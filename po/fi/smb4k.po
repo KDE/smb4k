@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-18 00:43+0000\n"
+"POT-Creation-Date: 2023-10-19 00:43+0000\n"
 "PO-Revision-Date: 2023-08-28 18:00+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -320,95 +320,95 @@ msgid "The item <b>%1</b> was removed, because all custom settings were reset."
 msgstr ""
 "Tietue <b>%1<(b> poistettiin, koska kaikki mukautetut valinnat palautettiin."
 
-#: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:491
+#: smb4k/smb4kconfigpagemounting.cpp:80 smb4k/smb4kconfigpagemounting.cpp:493
 #, kde-format
 msgid "Directories"
 msgstr "Kansiot"
 
-#: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:513
+#: smb4k/smb4kconfigpagemounting.cpp:102 smb4k/smb4kconfigpagemounting.cpp:515
 #: smb4k/smb4kconfigpagenetwork.cpp:112
 #: smb4k/smb4kconfigpagesynchronization.cpp:59
 #, kde-format
 msgid "Behavior"
 msgstr "Toiminta"
 
-#: smb4k/smb4kconfigpagemounting.cpp:126 smb4k/smb4kconfigpagemounting.cpp:537
+#: smb4k/smb4kconfigpagemounting.cpp:127 smb4k/smb4kconfigpagemounting.cpp:540
 #, kde-format
 msgid " min"
 msgstr " min"
 
-#: smb4k/smb4kconfigpagemounting.cpp:156 smb4k/smb4kconfigpagemounting.cpp:563
+#: smb4k/smb4kconfigpagemounting.cpp:157 smb4k/smb4kconfigpagemounting.cpp:566
 #: smb4k/smb4kconfigpagenetwork.cpp:133
 #: smb4k/smb4kconfigpagesynchronization.cpp:131
 #, kde-format
 msgid "Basic Settings"
 msgstr "Perusasetukset"
 
-#: smb4k/smb4kconfigpagemounting.cpp:167 smb4k/smb4kconfigpagemounting.cpp:574
+#: smb4k/smb4kconfigpagemounting.cpp:168 smb4k/smb4kconfigpagemounting.cpp:577
 #, kde-format
 msgid "Common Options"
 msgstr "Yleisasetukset"
 
-#: smb4k/smb4kconfigpagemounting.cpp:217
+#: smb4k/smb4kconfigpagemounting.cpp:218
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:80
 #, kde-format
 msgid "CIFS Unix Extensions Support"
 msgstr "CIFSin UNIX-laajennustuki"
 
-#: smb4k/smb4kconfigpagemounting.cpp:243 smb4k/smb4kconfigpagemounting.cpp:594
+#: smb4k/smb4kconfigpagemounting.cpp:249 smb4k/smb4kconfigpagemounting.cpp:597
 #, kde-format
 msgid "Choose a different user"
 msgstr "Valitse toinen käyttäjä"
 
-#: smb4k/smb4kconfigpagemounting.cpp:279 smb4k/smb4kconfigpagemounting.cpp:630
+#: smb4k/smb4kconfigpagemounting.cpp:285 smb4k/smb4kconfigpagemounting.cpp:633
 #, kde-format
 msgid "Choose a different group"
 msgstr "Valitse toinen ryhmä"
 
-#: smb4k/smb4kconfigpagemounting.cpp:325
+#: smb4k/smb4kconfigpagemounting.cpp:333
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:43
 #, kde-format
 msgid "Common Mount Settings"
 msgstr "Yleiset liitosasetukset"
 
-#: smb4k/smb4kconfigpagemounting.cpp:333
+#: smb4k/smb4kconfigpagemounting.cpp:341
 #, kde-format
 msgid "Advanced Options"
 msgstr "Lisäasetukset"
 
-#: smb4k/smb4kconfigpagemounting.cpp:446
+#: smb4k/smb4kconfigpagemounting.cpp:454
 #, kde-format
 msgid "Edit the additional CIFS options."
 msgstr "Muokkaa CIFS-lisäasetuksia."
 
-#: smb4k/smb4kconfigpagemounting.cpp:459
+#: smb4k/smb4kconfigpagemounting.cpp:467
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:140
 #, kde-format
 msgid "Advanced Mount Settings"
 msgstr "Liittämisen lisäasetukset"
 
-#: smb4k/smb4kconfigpagemounting.cpp:676
+#: smb4k/smb4kconfigpagemounting.cpp:679
 #, kde-format
 msgid "Character Sets"
 msgstr "Merkistöt"
 
-#: smb4k/smb4kconfigpagemounting.cpp:729
+#: smb4k/smb4kconfigpagemounting.cpp:733
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:266
 #, kde-format
 msgid "Mount Settings"
 msgstr "Liitosasetukset"
 
-#: smb4k/smb4kconfigpagemounting.cpp:786
+#: smb4k/smb4kconfigpagemounting.cpp:774
 #, kde-format
 msgid "Additional CIFS Options"
 msgstr "CIFS-lisäasetukset"
 
-#: smb4k/smb4kconfigpagemounting.cpp:787
+#: smb4k/smb4kconfigpagemounting.cpp:775
 #, kde-format
 msgid "<qt>Enter the desired options as a comma separated list:</qt>"
 msgstr "<qt>Anna halutut valinnat pilkuin erotettuna luettelona:</qt>"
 
-#: smb4k/smb4kconfigpagemounting.cpp:815
+#: smb4k/smb4kconfigpagemounting.cpp:803
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>The following entry is going to be removed from the additional "
