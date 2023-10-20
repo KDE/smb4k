@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: smb4k\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-19 00:43+0000\n"
-"PO-Revision-Date: 2023-10-08 05:41+0200\n"
+"PO-Revision-Date: 2023-10-19 06:02+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -409,13 +409,7 @@ msgid "<qt>Enter the desired options as a comma separated list:</qt>"
 msgstr "<qt>შეიყვანეთ სასურველი პარამეტრები მძიმით გამოყოფილი სიის სახით.</qt>"
 
 #: smb4k/smb4kconfigpagemounting.cpp:803
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>The following entry is going to be removed from the additional "
-#| "options: %2. Please read the handbook for details.</qt>"
-#| msgid_plural ""
-#| "<qt>The following %1 entries are going to be removed from the additional "
-#| "options: %2. Please read the handbook for details.</qt>"
+#, kde-format
 msgid ""
 "The following entry is going to be removed from the additional options:<br>"
 "%2.<br>Please read the handbook for details."
@@ -423,11 +417,11 @@ msgid_plural ""
 "The following %1 entries are going to be removed from the additional options:"
 "<br>%2.<br>Please read the handbook for details."
 msgstr[0] ""
-"<qt>დამატებითი პარამეტრებიდან წაიშლება შემდეგი ჩანაწერი: %2 დეტალებისთვის "
-"გადაიკითხეთ სახელმძღვანელო.</qt>"
+"დამატებითი პარამეტრებიდან წაიშლება შემდეგი ჩანაწერი: <br>%2.<br> "
+"დეტალებისთვის გადაიკითხეთ სახელმძღვანელო."
 msgstr[1] ""
-"<qt>დამატებითი პარამეტრებიდან წაიშლება შემდეგი %1 ჩანაწერი: %2 დეტალებისთვის "
-"გადაიკითხეთ სახელმძღვანელო.</qt>"
+"დამატებითი პარამეტრებიდან წაიშლება შემდეგი %1 ჩანაწერი: <br>%2 "
+"<br>sდეტალებისთვის გადაიკითხეთ სახელმძღვანელო.</qt>"
 
 #: smb4k/smb4kconfigpagenetwork.cpp:40
 #: smb4k/smb4kcustomsettingseditorwidget.cpp:175
@@ -1158,7 +1152,7 @@ msgstr "ტიპი:"
 #: smb4k/smb4ktooltip.cpp:130
 #, kde-format
 msgid "DNS-SD Browsing Domain"
-msgstr ""
+msgstr "DNS-SD დათვალიერების დომენი"
 
 #: smb4k/smb4ktooltip.cpp:132
 #, kde-format

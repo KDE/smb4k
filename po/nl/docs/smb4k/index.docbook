@@ -6812,7 +6812,7 @@ ntlm auth = yes
             <term>
               <menuchoice
 ><guibutton
->Behoud folder symlinks</guibutton
+>Behoud symlinks van mappen</guibutton
 ></menuchoice>
             </term>
             <listitem>
