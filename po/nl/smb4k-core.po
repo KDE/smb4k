@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-04 00:43+0000\n"
-"PO-Revision-Date: 2023-09-06 11:49+0200\n"
+"PO-Revision-Date: 2023-10-18 23:16+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #. i18n: ectx: label, entry (MainWindowTabOrientation), group (UserInterface)
 #: smb4k.kcfg:16
@@ -1017,7 +1017,7 @@ msgstr ""
 #: smb4k.kcfg:370
 #, kde-format
 msgid "Keep directory symlinks"
-msgstr "Behoud folder symlinks"
+msgstr "Behoud symlinks van mappen"
 
 #. i18n: ectx: whatsthis, entry (KeepDirectorySymlinks), group (Synchronization)
 #: smb4k.kcfg:371
@@ -1818,7 +1818,7 @@ msgstr "Achtervoegsel van reservekopieën"
 #: smb4k.kcfg:623
 #, kde-format
 msgid "Backup directory:"
-msgstr "Backup Folder:"
+msgstr "Map voor reservekopie:"
 
 #. i18n: ectx: whatsthis, entry (UseBackupDirectory), group (Synchronization)
 #: smb4k.kcfg:624
