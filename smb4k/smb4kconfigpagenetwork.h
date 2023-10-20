@@ -1,7 +1,7 @@
 /*
     The configuration page for the network settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -47,5 +47,9 @@ protected Q_SLOTS:
      * feature is toggled.
      */
     void slotEnableWakeOnLanFeatureToggled(bool on);
+
+private:
+    QWidget *m_protocolVersionsWidget;
+    QWidget *m_waitingTimeWidget;
 };
 #endif

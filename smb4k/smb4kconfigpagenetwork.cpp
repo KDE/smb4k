@@ -1,7 +1,7 @@
 /*
     The configuration page for the network settings of Smb4K
 
-    SPDX-FileCopyrightText: 2003-2022 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+    SPDX-FileCopyrightText: 2003-2023 Alexander Reinholdt <alexander.reinholdt@kdemail.net>
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
@@ -66,15 +66,15 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     browseSettingsBoxLayout->addWidget(useClientProtocolVersions);
 
-    QWidget *versionsWidget = new QWidget(browseSettingsBox);
-    QGridLayout *versionsLayout = new QGridLayout(versionsWidget);
-    versionsLayout->setContentsMargins(0, 0, 0, 0);
+    m_protocolVersionsWidget = new QWidget(browseSettingsBox);
+    m_protocolVersionsWidget->setEnabled(false);
+    QGridLayout *protocolVersionsWidgetLayout = new QGridLayout(m_protocolVersionsWidget);
+    protocolVersionsWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
-    QLabel *minimalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), versionsWidget);
+    QLabel *minimalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->minimalClientProtocolVersionItem()->label(), m_protocolVersionsWidget);
     minimalProtocolVersionLabel->setIndent(25);
-    minimalProtocolVersionLabel->setObjectName(QStringLiteral("MinimalProtocolVersionLabel"));
 
-    KComboBox *minimalProtocolVersion = new KComboBox(versionsWidget);
+    KComboBox *minimalProtocolVersion = new KComboBox(m_protocolVersionsWidget);
     minimalProtocolVersion->setObjectName(QStringLiteral("kcfg_MinimalClientProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> minimalProtocolVersionChoices = Smb4KSettings::self()->minimalClientProtocolVersionItem()->choices();
@@ -83,14 +83,13 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
         minimalProtocolVersion->addItem(c.label);
     }
 
-    versionsLayout->addWidget(minimalProtocolVersionLabel, 0, 0);
-    versionsLayout->addWidget(minimalProtocolVersion, 0, 1);
+    protocolVersionsWidgetLayout->addWidget(minimalProtocolVersionLabel, 0, 0);
+    protocolVersionsWidgetLayout->addWidget(minimalProtocolVersion, 0, 1);
 
-    QLabel *maximalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), versionsWidget);
+    QLabel *maximalProtocolVersionLabel = new QLabel(Smb4KSettings::self()->maximalClientProtocolVersionItem()->label(), m_protocolVersionsWidget);
     maximalProtocolVersionLabel->setIndent(25);
-    maximalProtocolVersionLabel->setObjectName(QStringLiteral("MaximalProtocolVersionLabel"));
 
-    KComboBox *maximalProtocolVersion = new KComboBox(versionsWidget);
+    KComboBox *maximalProtocolVersion = new KComboBox(m_protocolVersionsWidget);
     maximalProtocolVersion->setObjectName(QStringLiteral("kcfg_MaximalClientProtocolVersion"));
 
     QList<KCoreConfigSkeleton::ItemEnum::Choice> maximalProtocolVersionChoices = Smb4KSettings::self()->maximalClientProtocolVersionItem()->choices();
@@ -99,10 +98,10 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
         maximalProtocolVersion->addItem(c.label);
     }
 
-    versionsLayout->addWidget(maximalProtocolVersionLabel, 1, 0);
-    versionsLayout->addWidget(maximalProtocolVersion, 1, 1);
+    protocolVersionsWidgetLayout->addWidget(maximalProtocolVersionLabel, 1, 0);
+    protocolVersionsWidgetLayout->addWidget(maximalProtocolVersion, 1, 1);
 
-    browseSettingsBoxLayout->addWidget(versionsWidget);
+    browseSettingsBoxLayout->addWidget(m_protocolVersionsWidget);
 
     basicTabLayout->addWidget(browseSettingsBox);
 
@@ -201,17 +200,17 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     wakeOnLanBoxLayout->addWidget(enableWakeOnLan);
 
-    QWidget *waitingTimeWidget = new QWidget(wakeOnLanBox);
-    QHBoxLayout *waitingTimeWidgetLayout = new QHBoxLayout(waitingTimeWidget);
+    m_waitingTimeWidget = new QWidget(wakeOnLanBox);
+    m_waitingTimeWidget->setEnabled(false);
+    QHBoxLayout *waitingTimeWidgetLayout = new QHBoxLayout(m_waitingTimeWidget);
     waitingTimeWidgetLayout->setContentsMargins(0, 0, 0, 0);
 
-    QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), waitingTimeWidget);
+    QLabel *wakeOnLanWaitingTimeLabel = new QLabel(Smb4KSettings::self()->wakeOnLANWaitingTimeItem()->label(), m_waitingTimeWidget);
     wakeOnLanWaitingTimeLabel->setIndent(25);
-    wakeOnLanWaitingTimeLabel->setObjectName(QStringLiteral("WakeOnLanWaitingTimeLabel"));
 
     waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTimeLabel);
 
-    QSpinBox *wakeOnLanWaitingTime = new QSpinBox(waitingTimeWidget);
+    QSpinBox *wakeOnLanWaitingTime = new QSpinBox(m_waitingTimeWidget);
     wakeOnLanWaitingTime->setObjectName(QStringLiteral("kcfg_WakeOnLANWaitingTime"));
     wakeOnLanWaitingTime->setSuffix(i18n(" s"));
     wakeOnLanWaitingTime->setSingleStep(1);
@@ -219,7 +218,7 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     waitingTimeWidgetLayout->addWidget(wakeOnLanWaitingTime);
 
-    wakeOnLanBoxLayout->addWidget(waitingTimeWidget);
+    wakeOnLanBoxLayout->addWidget(m_waitingTimeWidget);
 
     KMessageWidget *wakeOnLanNote = new KMessageWidget(wakeOnLanBox);
     wakeOnLanNote->setText(i18n("Define the hosts that should be woken up via the custom settings editor."));
@@ -234,17 +233,8 @@ Smb4KConfigPageNetwork::Smb4KConfigPageNetwork(QWidget *parent)
 
     addTab(advancedTab, i18n("Advanced Settings"));
 
-    //
-    // Connections
-    //
-    connect(useClientProtocolVersions, SIGNAL(toggled(bool)), this, SLOT(slotSetProtocolVersionsToggled(bool)));
-    connect(enableWakeOnLan, SIGNAL(toggled(bool)), this, SLOT(slotEnableWakeOnLanFeatureToggled(bool)));
-
-    //
-    // Set the correct states to the widgets
-    //
-    slotSetProtocolVersionsToggled(Smb4KSettings::useClientProtocolVersions());
-    slotEnableWakeOnLanFeatureToggled(Smb4KSettings::enableWakeOnLAN());
+    connect(useClientProtocolVersions, &QCheckBox::toggled, this, &Smb4KConfigPageNetwork::slotSetProtocolVersionsToggled);
+    connect(enableWakeOnLan, &QCheckBox::toggled, this, &Smb4KConfigPageNetwork::slotEnableWakeOnLanFeatureToggled);
 }
 
 Smb4KConfigPageNetwork::~Smb4KConfigPageNetwork()
@@ -253,34 +243,10 @@ Smb4KConfigPageNetwork::~Smb4KConfigPageNetwork()
 
 void Smb4KConfigPageNetwork::slotSetProtocolVersionsToggled(bool on)
 {
-    //
-    // Get the widgets
-    //
-    QLabel *minimalProtocolVersionLabel = findChild<QLabel *>(QStringLiteral("MinimalProtocolVersionLabel"));
-    KComboBox *minimalProtocolVersion = findChild<KComboBox *>(QStringLiteral("kcfg_MinimalClientProtocolVersion"));
-    QLabel *maximalProtocolVersionLabel = findChild<QLabel *>(QStringLiteral("MaximalProtocolVersionLabel"));
-    KComboBox *maximalProtocolVersion = findChild<KComboBox *>(QStringLiteral("kcfg_MaximalClientProtocolVersion"));
-
-    //
-    // Enable / disable widgets
-    //
-    minimalProtocolVersionLabel->setEnabled(on);
-    minimalProtocolVersion->setEnabled(on);
-    maximalProtocolVersionLabel->setEnabled(on);
-    maximalProtocolVersion->setEnabled(on);
+    m_protocolVersionsWidget->setEnabled(on);
 }
 
 void Smb4KConfigPageNetwork::slotEnableWakeOnLanFeatureToggled(bool on)
 {
-    //
-    // Get the widgets
-    //
-    QLabel *wakeOnLanWaitingTimeLabel = findChild<QLabel *>(QStringLiteral("WakeOnLanWaitingTimeLabel"));
-    QSpinBox *wakeOnLanWaitingTime = findChild<QSpinBox *>(QStringLiteral("kcfg_WakeOnLANWaitingTime"));
-
-    //
-    // Enable / disable widgets
-    //
-    wakeOnLanWaitingTimeLabel->setEnabled(on);
-    wakeOnLanWaitingTime->setEnabled(on);
+    m_waitingTimeWidget->setEnabled(on);
 }
